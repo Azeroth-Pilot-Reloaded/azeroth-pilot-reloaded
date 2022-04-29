@@ -1,0 +1,15 @@
+## Interface: 90200
+## X-Min-Interface: 90200
+
+## Title: |cffff7d0aAzeroth Pilot Reloaded|r - Vanilla
+## Notes: Provides Vanilla & Cataclysm implementation for Azeroth Pilot Reloaded.
+## Author: Rycia
+
+## LoadOnDemand: 1
+## RequiredDeps: APR-Core
+EasternKingdoms_Alliance.lua
+EasternKingdoms_Horde.lua
+Kalimdor_Alliance.lua
+Kalimdor_Horde.lua
+Cataclysm_Alliance.lua
+Cataclysm_Horde.lua

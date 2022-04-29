@@ -1,0 +1,11 @@
+## Interface: 90200
+## X-Min-Interface: 90200
+
+## Title: |cffff7d0aAzeroth Pilot Reloaded|r - Legion
+## Notes: Provides Legion implementation for Azeroth Pilot Reloaded.
+## Author: Rycia
+
+## LoadOnDemand: 1
+## RequiredDeps: APR-Core
+Legion_Alliance.lua
+Legion_Horde.lua

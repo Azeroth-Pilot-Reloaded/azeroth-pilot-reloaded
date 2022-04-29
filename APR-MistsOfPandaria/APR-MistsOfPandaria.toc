@@ -1,0 +1,11 @@
+## Interface: 90200
+## X-Min-Interface: 90200
+
+## Title: |cffff7d0aAzeroth Pilot Reloaded|r - Mists of Pandaria
+## Notes: Provides Mists of Pandaria implementation for Azeroth Pilot Reloaded.
+## Author: Rycia
+
+## LoadOnDemand: 1
+## RequiredDeps: APR-Core
+MistsOfPandaria_Alliance.lua
+MistsOfPandaria_Horde.lua

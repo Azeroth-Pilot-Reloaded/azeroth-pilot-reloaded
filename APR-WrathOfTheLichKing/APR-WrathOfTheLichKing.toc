@@ -1,0 +1,11 @@
+## Interface: 90200
+## X-Min-Interface: 90200
+
+## Title: |cffff7d0aAzeroth Pilot Reloaded|r - Wrath of the Lich King
+## Notes: Provides Wrath of the Lich King implementation for Azeroth Pilot Reloaded.
+## Author: Rycia
+
+## LoadOnDemand: 1
+## RequiredDeps: APR-Core
+WrathOfTheLichKing_Alliance.lua
+WrathOfTheLichKing_Horde.lua
