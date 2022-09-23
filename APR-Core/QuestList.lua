@@ -492,7 +492,7 @@ APR.QuestList.QuestFrames["MyProgress"].texture = t
 		APR["Icons"][CLi]:SetFrameStrata("HIGH")
 		APR["Icons"][CLi]:SetWidth(5)
 		APR["Icons"][CLi]:SetHeight(5)
-		local t = 	APR["Icons"][CLi]:CreateTexture(nil,"HIGH")
+		local t = 	APR["Icons"][CLi]:CreateTexture(nil,"BACKGROUND")
 		t:SetTexture("Interface\\Addons\\APR-Core\\Img\\Icon.blp")
 		t:SetAllPoints(APR["Icons"][CLi])
 		APR["Icons"][CLi].texture = t
@@ -507,7 +507,7 @@ APR.QuestList.QuestFrames["MyProgress"].texture = t
 		APR["MapIcons"][CLi]:SetFrameStrata("HIGH")
 		APR["MapIcons"][CLi]:SetWidth(5)
 		APR["MapIcons"][CLi]:SetHeight(5)
-		local t = 	APR["MapIcons"][CLi]:CreateTexture(nil,"HIGH")
+		local t = 	APR["MapIcons"][CLi]:CreateTexture(nil,"BACKGROUND")
 		t:SetTexture("Interface\\Addons\\APR-Core\\Img\\Icon.blp")
 		t:SetAllPoints(APR["MapIcons"][CLi])
 		APR["MapIcons"][CLi].texture = t
