@@ -4321,7 +4321,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			if (QuestGetAutoAccept()) then
 				CloseQuest()
 			else
-				QuestInfoDescriptionText:SetAlphaGradient(0, -1)
+				QuestInfoDescriptionText:SetAlphaGradient(1, 1)
 				QuestInfoDescriptionText:SetAlpha(1)
 				APR.BookingList["AcceptQuest"] = 1
 			end

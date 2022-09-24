@@ -1522,10 +1522,34 @@ APR.RoutePlan.FG1["Fxz2Custom"..CLi].texture = t
 				if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
 					local zew = APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]]
 					if (APR["EasternKingdomDB"] and APR["EasternKingdomDB"][zew] and IsAddOnLoaded("APR-EasternKingdoms") == false) then
-						local loaded, reason = LoadAddOn("APR-EasternKingdoms")
+						local loaded, reason = LoadAddOn("APR-Vanilla")
 						if (not loaded) then
 							if (reason == "DISABLED") then
 								print("APR: APR - Eastern Kingdoms is Disabled in your Addon-List!")
+							end
+						end
+					end
+					if (APR["BattleForAzeroth"] and APR["BattleForAzeroth"][zew] and IsAddOnLoaded("APR-BattleForAzeroth") == false) then
+						local loaded, reason = LoadAddOn("APR-BattleForAzeroth")
+						if (not loaded) then
+							if (reason == "DISABLED") then
+								print("APR: APR - BattleForAzeroth is Disabled in your Addon-List!")
+							end
+						end
+					end
+					if (APR["Kalimdor"] and APR["Kalimdor"][zew] and IsAddOnLoaded("APR-Kalimdor") == false) then
+						local loaded, reason = LoadAddOn("APR-Vanilla")
+						if (not loaded) then
+							if (reason == "DISABLED") then
+								print("APR: APR - Vanilla is Disabled in your Addon-List!")
+							end
+						end
+					end
+					if (APR["Legion"] and APR["Legion"][zew] and IsAddOnLoaded("APR-Legion") == false) then
+						local loaded, reason = LoadAddOn("APR-Legion")
+						if (not loaded) then
+							if (reason == "DISABLED") then
+								print("APR: APR - Legion is Disabled in your Addon-List!")
 							end
 						end
 					end
@@ -1873,13 +1897,37 @@ function APR.CheckPosMove(zeActivz)
 		if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
 			local zew = APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]]
 			if (APR["EasternKingdomDB"] and APR["EasternKingdomDB"][zew] and IsAddOnLoaded("APR-EasternKingdoms") == false) then
-				local loaded, reason = LoadAddOn("APR-EasternKingdoms")
-				if (not loaded) then
-					if (reason == "DISABLED") then
-						print("APR: APR - Eastern Kingdoms is Disabled in your Addon-List!")
+				local loaded, reason = LoadAddOn("APR-Vanilla")
+						if (not loaded) then
+							if (reason == "DISABLED") then
+								print("APR: APR - Eastern Kingdoms is Disabled in your Addon-List!")
+							end
+						end
 					end
-				end
-			end
+					if (APR["Kalimdor"] and APR["Kalimdor"][zew] and IsAddOnLoaded("APR-Kalimdor") == false) then
+						local loaded, reason = LoadAddOn("APR-Vanilla")
+						if (not loaded) then
+							if (reason == "DISABLED") then
+								print("APR: APR - Vanilla is Disabled in your Addon-List!")
+							end
+						end
+					end
+					if (APR["BattleForAzeroth"] and APR["BattleForAzeroth"][zew] and IsAddOnLoaded("APR-BattleForAzeroth") == false) then
+						local loaded, reason = LoadAddOn("APR-BattleForAzeroth")
+						if (not loaded) then
+							if (reason == "DISABLED") then
+								print("APR: APR - BattleForAzeroth is Disabled in your Addon-List!")
+							end
+						end
+					end
+					if (APR["Legion"] and APR["Legion"][zew] and IsAddOnLoaded("APR-Legion") == false) then
+						local loaded, reason = LoadAddOn("APR-Legion")
+						if (not loaded) then
+							if (reason == "DISABLED") then
+								print("APR: APR - Legion is Disabled in your Addon-List!")
+							end
+						end
+					end
 			if (APR["ShadowlandsDB"] and APR["ShadowlandsDB"][zew] and IsAddOnLoaded("APR-Shadowlands") == false) then
 				local loaded, reason = LoadAddOn("APR-Shadowlands")
 				if (not loaded) then
