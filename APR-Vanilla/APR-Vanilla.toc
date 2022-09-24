@@ -7,9 +7,5 @@
 
 ## LoadOnDemand: 1
 ## RequiredDeps: APR-Core
-EasternKingdoms_Alliance.lua
-EasternKingdoms_Horde.lua
-Kalimdor_Alliance.lua
-Kalimdor_Horde.lua
-Cataclysm_Alliance.lua
-Cataclysm_Horde.lua
+EasternKingdoms.lua
+Kalimdor.lua
