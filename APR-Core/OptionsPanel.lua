@@ -120,7 +120,7 @@ APR.OptionsFrame.MainFrame.Options.texture = t
 	APR.OptionsFrame.FontString1:SetWidth(240)
 	APR.OptionsFrame.FontString1:SetHeight(20)
 	APR.OptionsFrame.FontString1:SetFontObject("GameFontHighlightLarge")
-	APR.OptionsFrame.FontString1:SetText("Azeroth Auto Pilot - v" .. APR.Version)
+	APR.OptionsFrame.FontString1:SetText("Azeroth Pilot Reloaded - v" .. APR.Version)
 	APR.OptionsFrame.FontString1:SetTextColor(1, 1, 0)
 -------------------- Quest Options ----------------------------------------
 	APR.OptionsFrame.MainFrame.OptionsB1 = CreateFrame("frame", "APR_OptionsMainFrame_QuestOptions",  APR_OptionsMainFrame)

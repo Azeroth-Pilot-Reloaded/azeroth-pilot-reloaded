@@ -283,7 +283,7 @@ APR.QuestList.Greetings.texture = t
 	APR.QuestList.Greetings2FS1:SetHeight(38)
 	APR.QuestList.Greetings2FS1:SetJustifyH("LEFT")
 	APR.QuestList.Greetings2FS1:SetFontObject("GameFontNormal")
-	APR.QuestList.Greetings2FS1:SetText("Welcome to Azeroth Auto Pilot")
+	APR.QuestList.Greetings2FS1:SetText("Welcome to Azeroth Pilot Reloaded")
 	APR.QuestList.Greetings2FS1:SetTextColor(1, 1, 0)
 
 	APR.QuestList.Greetings2FS221 = APR.QuestList.Greetings:CreateFontString("APRGreetingsFS221","ARTWORK", "ChatFontNormal")
