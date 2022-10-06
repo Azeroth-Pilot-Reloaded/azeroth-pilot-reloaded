@@ -7,4 +7,4 @@
 
 ## LoadOnDemand: 1
 ## RequiredDeps: APR-Core
-Shadowlands_Neutral.lua
+Shadowlands.lua

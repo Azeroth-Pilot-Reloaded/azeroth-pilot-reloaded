@@ -7,5 +7,5 @@
 
 ## LoadOnDemand: 1
 ## RequiredDeps: APR-Core
-BattleForAzeroth_Alliance.lua
+BattleForAzeroth.lua
 BattleForAzeroth_Horde.lua

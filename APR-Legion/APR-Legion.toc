@@ -7,5 +7,5 @@
 
 ## LoadOnDemand: 1
 ## RequiredDeps: APR-Core
-Legion_Alliance.lua
+Legion.lua
 Legion_Horde.lua

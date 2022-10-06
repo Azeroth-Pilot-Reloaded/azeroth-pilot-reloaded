@@ -3503,7 +3503,7 @@ APR_QH_EventFrame:RegisterEvent ("ITEM_PUSH")
 APR_QH_EventFrame:RegisterEvent ("QUEST_AUTOCOMPLETE")
 APR_QH_EventFrame:RegisterEvent ("QUEST_ACCEPT_CONFIRM")
 APR_QH_EventFrame:RegisterEvent ("UNIT_ENTERED_VEHICLE")
-APR_QH_EventFrame:RegisterEvent ("CHROMIE_TIME_OPEN")
+--APR_QH_EventFrame:RegisterEvent ("CHROMIE_TIME_OPEN")
 APR_QH_EventFrame:RegisterEvent ("QUEST_LOG_UPDATE")
 APR_QH_EventFrame:RegisterEvent ("PLAYER_TARGET_CHANGED")
 APR_QH_EventFrame:RegisterEvent ("PLAYER_REGEN_ENABLED")
@@ -4321,7 +4321,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			if (QuestGetAutoAccept()) then
 				CloseQuest()
 			else
-				QuestInfoDescriptionText:SetAlphaGradient(0, -1)
+				QuestInfoDescriptionText:SetAlphaGradient(1, 1)
 				QuestInfoDescriptionText:SetAlpha(1)
 				APR.BookingList["AcceptQuest"] = 1
 			end

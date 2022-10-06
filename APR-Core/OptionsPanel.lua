@@ -6,7 +6,7 @@ APR_panel.title = CreateFrame("SimpleHTML",nil,APR.APR_panel)
 APR_panel.title:SetWidth(500)
 APR_panel.title:SetHeight(20)
 APR_panel.title:SetPoint("TOPLEFT", APR.APR_panel, 0,-30)
-APR_panel.title:SetFontObject("GameFontHighlightLarge")
+APR_panel.title:SetFontObject("P", "GameFontNormal")
 
 APR_panel.title:SetText("Azeroth Pilot Reloaded - v" .. APR.Version) -- Header text of the options menu
 
@@ -32,7 +32,7 @@ APR_panel.Button1ptex:SetTexCoord(0, 0.625, 0, 0.6875)
 APR_panel.Button1ptex:SetAllPoints()
 APR_panel.Button1:SetPushedTexture(APR_panel.Button1ptex)
 APR_panel.Button1:SetScript("OnClick", function(self, arg1)
-	InterfaceOptionsFrame:Hide()
+	SettingsPanel:Hide()
 	HideUIPanel(GameMenuFrame)
 	APR.OptionsFrame.MainFrame:Show()
 end)
