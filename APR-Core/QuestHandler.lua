@@ -1,3 +1,6 @@
+local app = select(2, ...);
+local L = app.L;
+
 local QNumberLocal = 0
 local APR_ArrowUpdateNr = 0
 local ETAStep = 0
@@ -641,8 +644,8 @@ local function APR_QAskPopWanted()
 		APR.BookingList["PrintQStep"] = 1
 	else
 		local SugGroupNr = steps["Group"]
-		APR.QuestList.SugQuestFrameFS1:SetText(APR_Locals["Optional"])
-		APR.QuestList.SugQuestFrameFS2:SetText(APR_Locals["Suggested Players"]..": "..SugGroupNr)
+		APR.QuestList.SugQuestFrameFS1:SetText(L["Optional"])
+		APR.QuestList.SugQuestFrameFS2:SetText(L["Suggested Players"]..": "..SugGroupNr)
 		APR.QuestList.SugQuestFrame:Show()
 	end
 end
@@ -911,7 +914,7 @@ local function APR_PrintQStep()
 		if (steps["UseGlider"] and APR.ZoneTransfer == 0) then
 			if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1) then
 				LineNr = LineNr + 1
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Use Item"]..": "..APR.GliderFunc())
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Use Item"]..": "..APR.GliderFunc())
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 				local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -925,7 +928,7 @@ local function APR_PrintQStep()
 		if (steps["Bloodlust"] and APR.ZoneTransfer == 0) then
 			if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1) then
 				LineNr = LineNr + 1
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..APR_Locals["Bloodlust"].." **")
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..APR_LLocals["Bloodlust"].." **")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 				local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -972,7 +975,7 @@ local function APR_PrintQStep()
 		if (steps["DalaranToOgri"] and APR.ZoneTransfer == 0) then
 			if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1) then
 				LineNr = LineNr + 1
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["DalaranToOgri"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["DalaranToOgri"])
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 				local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -1044,109 +1047,109 @@ local function APR_PrintQStep()
 				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..steps["ExtraLineText"])
 			end
 			if (APRExtralk == 1) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..APR_Locals["HeFlying"].." **")
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["HeFlying"].." **")
 			end
 			if (APRExtralk == 2) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["ClickShrine"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["ClickShrine"])
 			end
 			if (APRExtralk == 3) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Talk to NPC to ride boat"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Talk to NPC to ride boat"])
 			end
 			if (APRExtralk == 4) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Takes little dmg at start1"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Takes little dmg at start1"])
 			end
 			if (APRExtralk == 5) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Click 1 Dirt Pile"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Click 1 Dirt Pile"])
 			end
 			if (APRExtralk == 6) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Go Up Elevator"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Go Up Elevator"])
 			end
 			if (APRExtralk == 7) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Jump off Bridge"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Jump off Bridge"])
 			end
 			if (APRExtralk == 8) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Jump off"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Jump off"])
 			end
 			if (APRExtralk == 9) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["ClickAltar"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["ClickAltar"])
 			end
 			if (APRExtralk == 10) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["ClickTotem"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["ClickTotem"])
 			end
 			if (APRExtralk == 11) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Kajamite"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Kajamite"])
 			end
 			if (APRExtralk == 12) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Spices"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Spices"])
 			end
 			if (APRExtralk == 13) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["SeaUrchineBrine"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["SeaUrchineBrine"])
 			end
 			if (APRExtralk == 14) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["JolPoweder"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["JolPoweder"])
 			end
 			if (APRExtralk == 15) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["JolStir"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["JolStir"])
 			end
 			if (APRExtralk == 16) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["JolNotes"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["JolNotes"])
 			end
 			if (APRExtralk == 17) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["JolHandin"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["JolHandin"])
 			end
 			if (APRExtralk == 18) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["TopOfBoat"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["TopOfBoat"])
 			end
 			if (APRExtralk == 19) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Dontwaitrun"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Dontwaitrun"])
 			end
 			if (APRExtralk == 20) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Doesntmatterwep"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Doesntmatterwep"])
 			end
 			if (APRExtralk == 21) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Extracaravans"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Extracaravans"])
 			end
 			if (APRExtralk == 22) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["dotsexpire"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["dotsexpire"])
 			end
 			if (APRExtralk == 23) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Banneronstuff"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Banneronstuff"])
 			end
 			if (APRExtralk == 24) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["GetSaurolistBuff"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["GetSaurolistBuff"])
 			end
 			if (APRExtralk == 25) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Get Flight Point"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Get Flight Point"])
 			end
 			if (APRExtralk == 26) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Fixed Quest"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Fixed Quest"])
 			end
 			if (APRExtralk == 27) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Talk to Princess Talanji"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Talk to Princess Talanji"])
 			end
 			if (APRExtralk == 28) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Zone Complete"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Zone Complete"])
 			end
 			if (APRExtralk == 29) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Missing quest"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Missing quest"])
 			end
 			if (APRExtralk == 30) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..APR_Locals["waitforportal"].." **")
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["waitforportal"].." **")
 			end
 			if (APRExtralk == 31) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..APR_Locals["WaitforsetHS"].." **")
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["WaitforsetHS"].." **")
 			end
 			if (APRExtralk == 32) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["BeneathHandin"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["BeneathHandin"])
 			end
 			if (APRExtralk == 33) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..APR_Locals["Totemdmg"].." **")
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["Totemdmg"].." **")
 			end
 			if (APRExtralk == 34) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..APR_Locals["WarModeOff"].." **")
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["WarModeOff"].." **")
 			end
 			if (APRExtralk == 35) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..APR_Locals["LoaInfo1"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["LoaInfo1"])
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 				local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -1158,10 +1161,10 @@ local function APR_PrintQStep()
 			end
 			if (APRExtralk == 35) then
 				LineNr = LineNr + 1
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..APR_Locals["LoaInfo2"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["LoaInfo2"])
 			end
 			if (APRExtralk == 36) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Dontglide"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Dontglide"])
 			end
 			if (APRExtralk == 37) then
 				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Use Orb on a Canyon Ettin, then save Oslow")
@@ -1787,7 +1790,7 @@ local function APR_PrintQStep()
 				else
 					if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 						LineNr = LineNr + 1
-						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Pick Up Quests"]..": 1")
+						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Pick Up Quests"]..": 1")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 						local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -1845,7 +1848,7 @@ local function APR_PrintQStep()
 				else
 					if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 						LineNr = LineNr + 1
-						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Pick Up Quests"]..": "..NrLeft)
+						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Pick Up Quests"]..": "..NrLeft)
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 						local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -1961,7 +1964,7 @@ local function APR_PrintQStep()
 			else
 				if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 					LineNr = LineNr + 1
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Turn in Quest"]..": "..NrLeft)
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Turn in Quest"]..": "..NrLeft)
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 					local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -2007,7 +2010,7 @@ local function APR_PrintQStep()
 						end
 						APR.SetButtonVar["12112552-1"] = LineNr
 					end
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["UseDalaHS"])
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["UseDalaHS"])
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 					local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -2026,7 +2029,7 @@ local function APR_PrintQStep()
 			else
 				if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 					LineNr = LineNr + 1
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["UseGarrisonHS"])
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["UseGarrisonHS"])
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 					if (steps["Button"] and steps["Button"][tostring(steps["UseGarrisonHS"])]) then
@@ -2047,7 +2050,7 @@ local function APR_PrintQStep()
 		elseif (StepP == "ZonePick") then
 			if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 				LineNr = LineNr + 1
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Pick Zone"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Pick Zone"])
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 				local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -2060,7 +2063,7 @@ local function APR_PrintQStep()
 		elseif (StepP == "SetHS") then
 			if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 				LineNr = LineNr + 1
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Set Hearthstone"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Set Hearthstone"])
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 				local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -2080,7 +2083,7 @@ local function APR_PrintQStep()
 		elseif (StepP == "UseHS") then
 			if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 				LineNr = LineNr + 1
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Use Hearthstone"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Use Hearthstone"])
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 				local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -2102,7 +2105,7 @@ local function APR_PrintQStep()
 			if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 				APR.FP.GoToZone = nil
 				LineNr = LineNr + 1
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Get Flight Point"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Get Flight Point"])
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 				local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -2121,16 +2124,16 @@ local function APR_PrintQStep()
 				LineNr = LineNr + 1
 				if (steps["Boat"]) then
 					if (steps["Name"]) then
-						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Boat to"]..": "..steps["Name"])
+						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Boat to"]..": "..steps["Name"])
 					else
-						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Boat to"])
+						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Boat to"])
 					end
 
 				else
 					if (steps["Name"]) then
-						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Fly to"]..": "..steps["Name"])
+						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Fly to"]..": "..steps["Name"])
 					else
-						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(APR_Locals["Fly to"])
+						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["Fly to"])
 					end
 				end
 				APR.QuestList.QuestFrames[LineNr]:Show()
@@ -2561,14 +2564,14 @@ function APR.CheckCRangeText()
 		CurStep = CurStep + 1
 		steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		if (steps and steps["FlightPath"]) then
-			local Derp2 = "[WayPoint] - "..APR_Locals["Get Flight Point"]
+			local Derp2 = "[WayPoint] - "..L["Get Flight Point"]
 			return Derp2
 		elseif (steps and steps["UseFlightPath"]) then
 			if (steps["Boat"]) then
-				local Derp2 = "[WayPoint] - "..APR_Locals["Boat to"]
+				local Derp2 = "[WayPoint] - "..L["Boat to"]
 				return Derp2
 			else
-				local Derp2 = "[WayPoint] - "..APR_Locals["Fly to"]
+				local Derp2 = "[WayPoint] - "..L["Fly to"]
 				return Derp2
 			end
 		elseif (steps and steps["PickUp"]) then
@@ -2590,7 +2593,7 @@ function APR.CheckCRangeText()
 
 		i = i + 1
 	end
-	local Derp2 = APR_Locals["Travel to"]
+	local Derp2 = L["Travel to"]
 	return Derp2
 end
 local function APR_UpdateQuest()
@@ -3070,7 +3073,7 @@ local function APR_PosTest()
 				local col = cell % 9
 				local row = floor(cell / 9)
 				APR.ArrowFrame.arrow:SetTexCoord((col * 56) / 512,((col + 1) * 56) / 512,(row * 42) / 512,((row + 1) * 42) / 512)
-				APR.ArrowFrame.distance:SetText(floor(distance + APR_CheckDistance()) .. " "..APR_Locals["Yards"])
+				APR.ArrowFrame.distance:SetText(floor(distance + APR_CheckDistance()) .. " "..L["Yards"])
 				local APR_ArrowActive_Distance = 0
 				if (CurStep and APR.ActiveMap and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
 					if (APR.QuestStepList[APR.ActiveMap][CurStep]["Trigger"]) then

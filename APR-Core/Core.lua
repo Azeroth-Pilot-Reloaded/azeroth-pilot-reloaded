@@ -4,6 +4,9 @@
 		as everything here unless defined local is globally usable outside of this file.
 ]]--
 
+local app = select(2, ...);
+local L = app.L;
+
 APR = {}
 APR.Name = UnitName("player")
 APR.Realm = string.gsub(GetRealmName(), " ", "")
@@ -299,7 +302,7 @@ MovieFrame_PlayMovie = function(...)
 	if (IsControlKeyDown() or (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 0)) then
 		PlayMovie_hook(...) --MovieFrame_PlayMovie, as previously stated
 	else
-		print("APR: "..APR_Locals["Skipped cutscene"])
+		print("APR: "..L["Skipped cutscene"])
 		GameMovieFinished()
 	end
 end
