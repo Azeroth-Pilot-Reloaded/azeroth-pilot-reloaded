@@ -1134,7 +1134,7 @@ local function APR_PrintQStep()
 				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["MISSING_QUEST"])
 			end
 			if (APRExtralk == 30) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["PORTAL_WILL_APPIER"].." **")
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["PORTAL_WILL_APPEAR"].." **")
 			end
 			if (APRExtralk == 31) then
 				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["WAIT_FOR_NPC"].." **")
