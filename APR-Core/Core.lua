@@ -302,7 +302,7 @@ MovieFrame_PlayMovie = function(...)
 	if (IsControlKeyDown() or (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 0)) then
 		PlayMovie_hook(...) --MovieFrame_PlayMovie, as previously stated
 	else
-		print("APR: "..L["Skipped cutscene"])
+		print("APR: "..L["SKIPPED_CUTSCENE"])
 		GameMovieFinished()
 	end
 end
