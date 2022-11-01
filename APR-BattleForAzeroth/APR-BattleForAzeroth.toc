@@ -1,10 +1,10 @@
-## Interface: 90200
-## X-Min-Interface: 90200
+## Interface: 100000
+## X-Min-Interface: 100000
 
 ## Title: |cffff7d0aAzeroth Pilot Reloaded|r - Battle for Azeroth
 ## Notes: Provides Battle for Azeroth implementation for Azeroth Pilot Reloaded.
 ## Author: Rycia
 
-## LoadOnDemand: 1
+
 ## RequiredDeps: APR-Core
 BattleForAzeroth.lua
