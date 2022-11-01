@@ -1,4 +1,4 @@
-## Interface: 90200
+## Interface: 100000
 # X-WoWI-ID: 0
 
 ## Title: |cffff7d0aAzeroth Pilot Reloaded|r
@@ -12,7 +12,7 @@ lib\HereBeDragons\CallbackHandler-1.0\CallbackHandler-1.0.xml
 lib\HereBeDragons\HereBeDragons-2.0.lua
 lib\HereBeDragons\HereBeDragons-Pins-2.0.lua
 Localization.lua
-Bindings.xml
+
 Core.lua
 TransportDB.lua
 OptionsPanel.lua
