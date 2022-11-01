@@ -1009,12 +1009,12 @@ local function APR_PrintQStep()
 		end
 
 		if (GetSpellBookItemInfo(GetSpellInfo(90265))) then
-		elseif (APR.Level > 39) then
+		elseif (APR.Level == 39) then
 			LineNr = LineNr + 1
 			APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** You can now learn Master Riding!")
 			APR.QuestList.QuestFrames[LineNr]:Show()
 		elseif (GetSpellBookItemInfo(GetSpellInfo(34090))) then
-		elseif (APR.Level > 29) then
+		elseif (APR.Level == 29) then
 			LineNr = LineNr + 1
 			if (APR.Faction == "Alliance" and APR.ActiveMap and APR.ActiveMap == "A543-DesMephisto-Gorgrond") then
 				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("* HS to Stormwind and learn Expert Riding!")
@@ -1027,12 +1027,12 @@ local function APR_PrintQStep()
 				APR.QuestList.QuestFrames[LineNr]:Show()
 			end
 		elseif (GetSpellBookItemInfo(GetSpellInfo(33391))) then
-		elseif (APR.Level > 19) then
+		elseif (APR.Level == 19) then
 			LineNr = LineNr + 1
 			APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** You can now learn Journeyman Riding!")
 			APR.QuestList.QuestFrames[LineNr]:Show()
 		elseif (GetSpellBookItemInfo(GetSpellInfo(33388))) then
-		elseif (APR.Level > 9) then
+		elseif (APR.Level == 9) then
 			LineNr = LineNr + 1
 			APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** You can now learn Apprentice Riding!")
 			APR.QuestList.QuestFrames[LineNr]:Show()
