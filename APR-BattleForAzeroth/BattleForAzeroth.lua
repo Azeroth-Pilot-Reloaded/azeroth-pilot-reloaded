@@ -98,6 +98,8 @@ if (APR.Faction == "Alliance") then
 		{		-- [step 9
 			["ExtraLineText"] = "Train Apprentice Riding**",
 			["SpellInTab"] = 33388,
+			["SpellInTab"] = 33391,
+			["SpellInTab"] = 34090,
 			["PahonixMadeMe"] = 34398,
 			["RaidIcon"] = 44919,
 			["TT"] = {
@@ -25034,6 +25036,8 @@ if (APR.Faction == "Horde") then
 		{		-- [step 1
 			["ExtraLineText"] = "Train Apprentice Riding**",
 			["SpellInTab"] = 33388,
+			["SpellInTab"] = 33391,
+			["SpellInTab"] = 34090,
 			["PahonixMadeMe"] = 34398,
 			["RaidIcon"] = 44919,
 			["TT"] = {
