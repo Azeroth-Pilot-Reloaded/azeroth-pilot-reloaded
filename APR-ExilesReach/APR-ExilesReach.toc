@@ -1,11 +1,11 @@
-## Interface: 90200
-## X-Min-Interface: 90200
+## Interface: 100000
+## X-Min-Interface: 100000
 
 ## Title: |cffff7d0aAzeroth Pilot Reloaded|r - Exile's Reach
 ## Notes: Provides Exile's Reach implementation for Azeroth Pilot Reloaded.
 ## Author: Rycia
 
-## LoadOnDemand: 1
+
 ## RequiredDeps: APR-Core
 ExilesReach_Horde.lua
 ExilesReach_Alliance.lua
