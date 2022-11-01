@@ -1,11 +1,11 @@
-## Interface: 90200
-## X-Min-Interface: 90200
+## Interface: 100000
+## X-Min-Interface: 100000
 
 ## Title: |cffff7d0aAzeroth Pilot Reloaded|r - Warlords of Draenor
 ## Notes: Provides Warlords of Draenor implementation for Azeroth Pilot Reloaded.
 ## Author: Rycia
 
-## LoadOnDemand: 1
+
 ## RequiredDeps: APR-Core
 WarlordsOfDraenor_Alliance.lua
 WarlordsOfDraenor_Horde.lua
