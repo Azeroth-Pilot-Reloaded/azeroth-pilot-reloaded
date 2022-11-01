@@ -928,7 +928,7 @@ local function APR_PrintQStep()
 		if (steps["Bloodlust"] and APR.ZoneTransfer == 0) then
 			if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1) then
 				LineNr = LineNr + 1
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..APR_LLocals["Bloodlust"].." **")
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["Bloodlust"].." **")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 				local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
