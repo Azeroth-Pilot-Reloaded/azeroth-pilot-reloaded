@@ -1,4 +1,4 @@
-## Interface: 90200
+## Interface: 100000
 # X-WoWI-ID: 0
 
 ## Title: |cffff7d0aAzeroth Pilot Reloaded|r
