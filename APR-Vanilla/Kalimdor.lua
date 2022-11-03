@@ -56651,15 +56651,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 
 		{
-			["TT"] = {
-				["y"] = 1870.5,
-				["x"] = -1755,
-			},
-			["UseFlightPath"] = 27368,
-			["PosX"] = 51.2,
-			["PosY"] = 34,
-			["Name"] = "Thondroril River, Eastern Plaguelands",
-			["ETA"] = 44,
+			["ZoneDoneSave"] = 1,
 		},
 
 	}
