@@ -1,3 +1,6 @@
+local app = select(2, ...);
+local L = app.L;
+
 APR.APR_panel = CreateFrame( "Frame", "CLPanelFrame", UIParent)
 APR.APR_panel.name = "Azeroth Pilot Reloaded" -- Name of the wow ui panel in interface > options menu
 InterfaceOptions_AddCategory(APR.APR_panel)
@@ -215,7 +218,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	else
 		APR.OptionsFrame.AutoAcceptCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.AutoAcceptCheckButton:GetName() .. 'Text'):SetText(": "..APR_Locals["Accept Quest"])
+	getglobal(APR.OptionsFrame.AutoAcceptCheckButton:GetName() .. 'Text'):SetText(": "..L["ACCEPT_QUEST"])
 	getglobal(APR.OptionsFrame.AutoAcceptCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.AutoAcceptCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.AutoAcceptCheckButton:GetChecked() == true) then
@@ -231,7 +234,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	else
 		APR.OptionsFrame.AutoHandInCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.AutoHandInCheckButton:GetName() .. 'Text'):SetText(": "..APR_Locals["Turn in Quest"])
+	getglobal(APR.OptionsFrame.AutoHandInCheckButton:GetName() .. 'Text'):SetText(": "..L["TURN_IN_QUEST"])
 	getglobal(APR.OptionsFrame.AutoHandInCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.AutoHandInCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.AutoHandInCheckButton:GetChecked() == true) then
@@ -247,7 +250,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	else
 		APR.OptionsFrame.AutoHandInChoiceCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.AutoHandInChoiceCheckButton:GetName() .. 'Text'):SetText(": "..APR_Locals["Choose Reward Ilvl"])
+	getglobal(APR.OptionsFrame.AutoHandInChoiceCheckButton:GetName() .. 'Text'):SetText(": "..L["AUTO_PICK_REWARD_ITEM"])
 	getglobal(APR.OptionsFrame.AutoHandInChoiceCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.AutoHandInChoiceCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.AutoHandInChoiceCheckButton:GetChecked() == true) then
@@ -263,7 +266,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	else
 		APR.OptionsFrame.ShowQListCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.ShowQListCheckButton:GetName() .. 'Text'):SetText(": "..APR_Locals["Show QuestList"])
+	getglobal(APR.OptionsFrame.ShowQListCheckButton:GetName() .. 'Text'):SetText(": "..L["SHOW_QUESTLIST"])
 	getglobal(APR.OptionsFrame.ShowQListCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.ShowQListCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.ShowQListCheckButton:GetChecked() == true) then
@@ -286,7 +289,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	else
 		APR.OptionsFrame.LockQuestListCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.LockQuestListCheckButton:GetName() .. 'Text'):SetText(": "..APR_Locals["Lock QuestList"])
+	getglobal(APR.OptionsFrame.LockQuestListCheckButton:GetName() .. 'Text'):SetText(": "..L["LOCK_QUESTLIST_WINDOW"])
 	getglobal(APR.OptionsFrame.LockQuestListCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.LockQuestListCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.LockQuestListCheckButton:GetChecked() == true) then
@@ -484,7 +487,7 @@ APR.OptionsFrame.MainFrame.OptionsArrow.texture = t
 	else
 		APR.OptionsFrame.LockArrowCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.LockArrowCheckButton:GetName() .. 'Text'):SetText(": "..APR_Locals["Lock Arrow"])
+	getglobal(APR.OptionsFrame.LockArrowCheckButton:GetName() .. 'Text'):SetText(": "..L["LOCK_ARROW_WINDOW"])
 	getglobal(APR.OptionsFrame.LockArrowCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.LockArrowCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.LockArrowCheckButton:GetChecked() == true) then
@@ -500,7 +503,7 @@ APR.OptionsFrame.MainFrame.OptionsArrow.texture = t
 	else
 		APR.OptionsFrame.ShowArrowCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.ShowArrowCheckButton:GetName() .. 'Text'):SetText(": "..APR_Locals["Show Arrow"])
+	getglobal(APR.OptionsFrame.ShowArrowCheckButton:GetName() .. 'Text'):SetText(": "..L["SHOW_ARROW"])
 	getglobal(APR.OptionsFrame.ShowArrowCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.ShowArrowCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.ShowArrowCheckButton:GetChecked() == true) then
@@ -691,7 +694,7 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	else
 		APR.OptionsFrame.CutSceneCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.CutSceneCheckButton:GetName() .. 'Text'):SetText(": "..APR_Locals["Skipped cutscene"])
+	getglobal(APR.OptionsFrame.CutSceneCheckButton:GetName() .. 'Text'):SetText(": "..L["SKIPPED_CUTSCENE"])
 	getglobal(APR.OptionsFrame.CutSceneCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.CutSceneCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.CutSceneCheckButton:GetChecked() == true) then
@@ -707,7 +710,7 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	else
 		APR.OptionsFrame.AutoVendorCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.AutoVendorCheckButton:GetName() .. 'Text'):SetText(": "..APR_Locals["AutoVendor"])
+	getglobal(APR.OptionsFrame.AutoVendorCheckButton:GetName() .. 'Text'):SetText(": "..L["AUTO_VENDOR"])
 	getglobal(APR.OptionsFrame.AutoVendorCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.AutoVendorCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.AutoVendorCheckButton:GetChecked() == true) then
@@ -723,7 +726,7 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	else
 		APR.OptionsFrame.AutoRepairCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.AutoRepairCheckButton:GetName() .. 'Text'):SetText(": "..APR_Locals["AutoRepair"])
+	getglobal(APR.OptionsFrame.AutoRepairCheckButton:GetName() .. 'Text'):SetText(": "..L["AUTO_REPAIR"])
 	getglobal(APR.OptionsFrame.AutoRepairCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.AutoRepairCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.AutoRepairCheckButton:GetChecked() == true) then
@@ -739,7 +742,7 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	else
 		APR.OptionsFrame.ShowGroupCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.ShowGroupCheckButton:GetName() .. 'Text'):SetText(": "..APR_Locals["ShowGroup"])
+	getglobal(APR.OptionsFrame.ShowGroupCheckButton:GetName() .. 'Text'):SetText(": "..L["SHOW_GROUP_PROGRESS"])
 	getglobal(APR.OptionsFrame.ShowGroupCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.ShowGroupCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.ShowGroupCheckButton:GetChecked() == true) then
@@ -759,7 +762,7 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	else
 		APR.OptionsFrame.AutoGossipCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.AutoGossipCheckButton:GetName() .. 'Text'):SetText(": "..APR_Locals["Auto-selection of dialog"])
+	getglobal(APR.OptionsFrame.AutoGossipCheckButton:GetName() .. 'Text'):SetText(": "..L["AUTO_SELECTION_OF_DIALOG"])
 	getglobal(APR.OptionsFrame.AutoGossipCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.AutoGossipCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.AutoGossipCheckButton:GetChecked() == true) then
@@ -793,7 +796,7 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	else
 		APR.OptionsFrame.BlobsShowCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.BlobsShowCheckButton:GetName() .. 'Text'):SetText(": "..APR_Locals["ShowBlobs"])
+	getglobal(APR.OptionsFrame.BlobsShowCheckButton:GetName() .. 'Text'):SetText(": "..L["SHOW_BLOBS_ON_MINIMAP"])
 	getglobal(APR.OptionsFrame.BlobsShowCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.BlobsShowCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.BlobsShowCheckButton:GetChecked() == true) then
@@ -842,7 +845,7 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	else
 		APR.OptionsFrame.MapBlobsShowCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.MapBlobsShowCheckButton:GetName() .. 'Text'):SetText(": "..APR_Locals["ShowMapBlobs"])
+	getglobal(APR.OptionsFrame.MapBlobsShowCheckButton:GetName() .. 'Text'):SetText(": "..L["SHOW_BLOBS_ON_MAP"])
 	getglobal(APR.OptionsFrame.MapBlobsShowCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.MapBlobsShowCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.MapBlobsShowCheckButton:GetChecked() == true) then
@@ -1015,7 +1018,7 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	APR.OptionsFrame["Button2"]:SetPoint("BOTTOMRIGHT",APR.OptionsFrame.MainFrame,"BOTTOMRIGHT",-185,5)
 	APR.OptionsFrame["Button2"]:SetWidth(100)
 	APR.OptionsFrame["Button2"]:SetHeight(30)
-	APR.OptionsFrame["Button2"]:SetText(APR_Locals["Keybinds"])
+	APR.OptionsFrame["Button2"]:SetText(L["KEYBINDS"])
 	APR.OptionsFrame["Button2"]:SetParent(APR.OptionsFrame.MainFrame)
 	APR.OptionsFrame.Button2:SetFrameStrata("HIGH")
 	APR.OptionsFrame.Button2:SetNormalFontObject("GameFontNormal")

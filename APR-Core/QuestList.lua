@@ -1,3 +1,6 @@
+local app = select(2, ...);
+local L = app.L;
+
 local function APR_CreateQuestList()
 	if (not APR1[APR.Realm][APR.Name]["Settings"]["Partyleft"]) then
 		APR1[APR.Realm][APR.Name]["Settings"]["Partyleft"] = GetScreenWidth() / 2.5
@@ -188,14 +191,14 @@ APR.QuestList.SugQuestFrame.texture = t
 	APR.QuestList.SugQuestFrameFS2:SetHeight(38)
 	APR.QuestList.SugQuestFrameFS2:SetJustifyH("CENTER")
 	APR.QuestList.SugQuestFrameFS2:SetFontObject("GameFontNormalLarge")
-	APR.QuestList.SugQuestFrameFS2:SetText(APR_Locals["Suggested Players"]..": ")
+	APR.QuestList.SugQuestFrameFS2:SetText(L["SUGGESTED_PLAYERS"]..": ")
 	APR.QuestList.SugQuestFrameFS2:SetTextColor(1, 1, 0)
 
 	APR.QuestList.SugQuestFrame["Button1"] = CreateFrame("Button", "APR_SBX1", UIParent, "SecureActionButtonTemplate")
 	APR.QuestList.SugQuestFrame["Button1"]:SetPoint("BOTTOMLEFT",APR.QuestList.SugQuestFrame,"BOTTOMLEFT",15,5)
 	APR.QuestList.SugQuestFrame["Button1"]:SetWidth(110)
 	APR.QuestList.SugQuestFrame["Button1"]:SetHeight(30)
-	APR.QuestList.SugQuestFrame["Button1"]:SetText(APR_Locals["Accept Quest"])
+	APR.QuestList.SugQuestFrame["Button1"]:SetText(L["ACCEPT_QUEST"])
 	APR.QuestList.SugQuestFrame["Button1"]:SetParent(APR.QuestList.SugQuestFrame)
 	APR.QuestList.SugQuestFrame.Button1:SetNormalFontObject("GameFontNormal")
 	APR.QuestList.SugQuestFrame.Button1ntex = APR.QuestList.SugQuestFrame.Button1:CreateTexture()
@@ -220,7 +223,7 @@ APR.QuestList.SugQuestFrame.texture = t
 	APR.QuestList.SugQuestFrame["Button2"]:SetPoint("BOTTOMRIGHT",APR.QuestList.SugQuestFrame,"BOTTOMRIGHT",-15,5)
 	APR.QuestList.SugQuestFrame["Button2"]:SetWidth(110)
 	APR.QuestList.SugQuestFrame["Button2"]:SetHeight(30)
-	APR.QuestList.SugQuestFrame["Button2"]:SetText(APR_Locals["Decline Quest"])
+	APR.QuestList.SugQuestFrame["Button2"]:SetText(L["DECLINE_QUEST"])
 	APR.QuestList.SugQuestFrame["Button2"]:SetParent(APR.QuestList.SugQuestFrame)
 	APR.QuestList.SugQuestFrame.Button2:SetNormalFontObject("GameFontNormal")
 	APR.QuestList.SugQuestFrame.Button2ntex = APR.QuestList.SugQuestFrame.Button2:CreateTexture()
