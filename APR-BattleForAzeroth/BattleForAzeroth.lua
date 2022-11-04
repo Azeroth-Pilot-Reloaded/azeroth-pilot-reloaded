@@ -6,7 +6,7 @@ if (APR.Faction == "Alliance") then
 			["Done"] = {
 				55991,
 			},
-			["ExtraLineText"] = "Yes To Exit Tutorial",
+			["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
 			["Gossip"] = 1,
 			["TT"] = {
 				["y"] = -9055,
@@ -50,7 +50,7 @@ if (APR.Faction == "Alliance") then
 			},
 		},
 		{		-- [step 5 
-			["ExtraLineText"] = "From Hero's Herald **",
+			["ExtraLineText"] = "FROM_HEROS_HERALD",
 			["PickUp"] = {
 				46727,
 			},
@@ -96,7 +96,7 @@ if (APR.Faction == "Alliance") then
 			},
 		},
 		{		-- [step 9
-			["ExtraLineText"] = "Train Apprentice Riding**",
+			["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
 			["SpellInTab"] = 33388,
 			["SpellInTab"] = 33391,
 			["SpellInTab"] = 34090,
@@ -204,7 +204,7 @@ if (APR.Faction == "Alliance") then
 			},
 		},
 		{		-- [step 18
-			["ExtraLineText"] = "Listen",
+			["ExtraLineText"] = "LISTEN",
 			["Trigger"] = {
 				["y"] = -8384.2,
 				["x"] = 326.6,
@@ -221,7 +221,7 @@ if (APR.Faction == "Alliance") then
 			},
 		},
 		{		-- [step 19
-			["ExtraLineText"] = "Click the vision**",
+			["ExtraLineText"] = "CLICK_THE_VISION",
 			["Trigger"] = {
 				["y"] = -8384.2,
 				["x"] = 326.6,
@@ -280,7 +280,7 @@ if (APR.Faction == "Alliance") then
 			},
 		},
 		{		-- [step 24
-			["ExtraLineText"] = "Jump**",
+			["ExtraLineText"] = "JUMP",
 			["Trigger"] = {
 				["y"] = -8538.1,
 				["x"] = 467.1,
@@ -401,7 +401,7 @@ if (APR.Faction == "Alliance") then
 			},
 		},
 		{		-- [step 34
-			["ExtraLineText"] = "Jump**",
+			["ExtraLineText"] = "JUMP",
 			["Trigger"] = {
 				["y"] = -8406.7,
 				["x"] = 1078.5,
@@ -1202,7 +1202,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, 
 		{		-- [step 61
-			["ExtraLineText"] = "From the Map on the wall**",
+			["ExtraLineText"] = "MAP_WALL",
 			["PickUp"] = {
 				47960, 
 			},
@@ -2262,7 +2262,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, 
 		{		-- [step 131
-			["ExtraLineText"] = "One from each around the cookpot**",
+			["ExtraLineText"] = "AROUND_COOKPOT",
 			["PickUp"] = {
 				48368, 
 				48370, 
@@ -25034,7 +25034,7 @@ if (APR.Faction == "Horde") then
 				----- Orgrimmar part of intro -----
 	APR.QuestStepList["1-Orgrimmar"] = {
 		{		-- [step 1
-			["ExtraLineText"] = "Train Apprentice Riding**",
+			["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
 			["SpellInTab"] = 33388,
 			["SpellInTab"] = 33391,
 			["SpellInTab"] = 34090,
@@ -25145,7 +25145,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 
 		{		-- [step 10
-			["ExtraLineText"] = "do the scenario **",
+			["ExtraLineText"] = "SCENARIO",
 			["Trigger"] = {
 				["y"] = 1517.4,
 				["x"] = -4394.8,
@@ -25279,7 +25279,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -1096.5,
 				["x"] = 816.6,
 			},
-			["ExtraLineText"] = "Follow Zolani **",
+			["ExtraLineText"] = "FOLLOW_ZOLANI",
 			["CRange"] = 46931,
 			["Range"] = 5,
 			["TT"] = {
@@ -25293,7 +25293,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -1126.4,
 				["x"] = 852.2,
 			},
-			["ExtraLineText"] = "Use the Elevator **",
+			["ExtraLineText"] = "USE_ELEVATOR",
 			["CRange"] = 46931,
 			["Range"] = 2,
 			["TT"] = {
@@ -25416,7 +25416,7 @@ if (APR.Faction == "Horde") then
 			["PickUp"] = {
 				47514, 
 			},
-			["ExtraLineText"] = "From the scouting map **",
+			["ExtraLineText"] = "SCOUTING_MAP",
 			["TT"] = {
 				["y"] = -1119,
 				["x"] = 818.9,
@@ -25467,7 +25467,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 4
-			["ExtraLineText"] = "Go up the Elevator **",
+			["ExtraLineText"] = "UP_ELEVATOR",
 			["Trigger"] = {
 				["y"] = -1126.1,
 				["x"] = 852.4,
@@ -25480,7 +25480,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 5
-			["ExtraLineText"] = "Go up the Elevator **",
+			["ExtraLineText"] = "UP_ELEVATOR",
 			["Trigger"] = {
 				["y"] = -1101.5,
 				["x"] = 836.5,
@@ -25525,7 +25525,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 9
-			["ExtraLineText"] = "Go Down the Elevator **",
+			["ExtraLineText"] = "DOWN_ELEVATOR",
 			["Trigger"] = {
 				["y"] = -1126.1,
 				["x"] = 852.4,
@@ -25538,7 +25538,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 	
 		{		-- [step 10
-			["ExtraLineText"] = "Go Down the Elevator **",
+			["ExtraLineText"] = "DOWN_ELEVATOR",
 			["Trigger"] = {
 				["y"] = -1110.7,
 				["x"] = 819.6,
@@ -26078,7 +26078,7 @@ if (APR.Faction == "Horde") then
 			},
 		},		
 		{		-- [Step 45
-			["ExtraLineText"] = "Take Boat to Seeker's Outpost **",
+			["ExtraLineText"] = "TAKE_BOAT_TO_SEEKERS_OUTPOST",
 			["Trigger"] = {
 				["y"] = -2304.5,
 				["x"] = -253.2,
@@ -26091,7 +26091,7 @@ if (APR.Faction == "Horde") then
 			},
 		},		
 		{		-- [Step 46
-			["ExtraLineText"] = "The Quest givers wander around the area",
+			["ExtraLineText"] = "GIVERS_AROUND_AREA",
 			["PickUp"] = {
 				49284, 
 				49285,
@@ -26258,7 +26258,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 		
 		{		-- [Step 55
-			["ExtraLineText"] = "inside the cave",
+			["ExtraLineText"] = "INSIDE_CAVE",
 			["Qpart"] = {
 				[49286] = {
 					["1"] = "1",
@@ -26387,7 +26387,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 		
 		{		-- [Step 62
-			["ExtraLineText"] = "!!BEWARE!! Two Level ?? ",
+			["ExtraLineText"] = "BEWARE_TWO_LEVEL",
 			["Qpart"] = {
 				[49287] = {
 					["4"] = "4",
@@ -26658,7 +26658,7 @@ if (APR.Faction == "Horde") then
 		},		
 
 		{		-- [Step 81
-			["ExtraLineText"] = "Get Flightpath",
+			["ExtraLineText"] = "USE_FLIGHTPATH",
 			["Trigger"] = {
 				["y"] = -955.7,
 				["x"] = -1057.9,
@@ -27138,7 +27138,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 112
-			["ExtraLineText"] = "Use elevator",
+			["ExtraLineText"] = "USE_ELEVATOR",
 			["Trigger"] = {
 				["y"] = -1126.3,
 				["x"] = 854.6,
@@ -27151,7 +27151,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 
 		{		-- [Step 113
-			["ExtraLineText"] = "Use elevator",
+			["ExtraLineText"] = "USE_ELEVATOR",
 			["Trigger"] = {
 				["y"] = -1126.4,
 				["x"] = 851.2,
@@ -27164,7 +27164,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 114
-			["ExtraLineText"] = "Use elevator",
+			["ExtraLineText"] = "USE_ELEVATOR",
 			["Trigger"] = {
 				["y"] = -1101.5,
 				["x"] = 835.5,
@@ -28960,7 +28960,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 
 		{		-- [Step 249
-			["ExtraLineText"] = "If Assult is going on skip he wont be here ",
+			["ExtraLineText"] = "ASSULT_SKIP",
 			["Trigger"] = {
 				["y"] = -722.3,
 				["x"] = 28.5,
@@ -29294,7 +29294,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 277
-			["ExtraLineText"] = "Fly to the Great Seal **",
+			["ExtraLineText"] = "FLY_GREAT_SEAL",
 			["Trigger"] = {
 				["y"] = -1047.4,
 				["x"] = 17.3,
@@ -39461,7 +39461,7 @@ if (APR.Faction == "Horde") then
 		}, 
 		{		-- [Step 17
 			["ETA"] = 40,
-			["ExtraLineText"] = "Walk with Bladeguard Kaja **",
+			["ExtraLineText"] = "Walk with Bladeguard Kaja",
 			--["RaidIcon"] = 122320,
 			["Done"] = {
 				47314, 

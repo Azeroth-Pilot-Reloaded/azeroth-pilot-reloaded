@@ -114,7 +114,6 @@ local APR_BonusObj = {
 	[48093] = 1,
 	[47996] = 1,
 	[48934] = 1,
-	[49315] = 1,
 	[48852] = 1,
 	[49406] = 1,
 	[48588] = 1,
@@ -1044,113 +1043,12 @@ local function APR_PrintQStep()
 		end
 		if ((steps["ExtraLine"] or steps["ExtraLineText"]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 			LineNr = LineNr + 1
-			local APRExtralk = steps["ExtraLine"]
+			local APRExtraLine = steps["ExtraLine"]
+			local APRExtraText = steps["ExtraLineText"]
 			if (steps["ExtraLineText"]) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..steps["ExtraLineText"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L[APRExtraText].." **")
 			end
-			if (APRExtralk == 1) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["SPEAR_DOWN_THE_UFO"].." **")
-			end
-			if (APRExtralk == 2) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["CLICK_THE_SHRINE"])
-			end
-			if (APRExtralk == 3) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["TALK_TO_NPC_TO_RIDE_BOAT"])
-			end
-			if (APRExtralk == 4) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["REDUCED_DAMAGE_INFO_1"])
-			end
-			if (APRExtralk == 5) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["CLICK_1_DIRT_PILE"])
-			end
-			if (APRExtralk == 6) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["GO_TO_ELEVATOR"])
-			end
-			if (APRExtralk == 7) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["JUMP_OFF_BRIDGE"])
-			end
-			if (APRExtralk == 8) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["JUMP_OFF"])
-			end
-			if (APRExtralk == 9) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["CLICK_ALTAR"])
-			end
-			if (APRExtralk == 10) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["CLICK_TOTEM"])
-			end
-			if (APRExtralk == 11) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["KAJAMITE"])
-			end
-			if (APRExtralk == 12) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["GET_SPICES"])
-			end
-			if (APRExtralk == 13) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["SEA_URCHINE_BRINE"])
-			end
-			if (APRExtralk == 14) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["JOL_POWEDER"])
-			end
-			if (APRExtralk == 15) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["JOL_STIR"])
-			end
-			if (APRExtralk == 16) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["JOL_NOTES"])
-			end
-			if (APRExtralk == 17) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["JOL_HANDIN"])
-			end
-			if (APRExtralk == 18) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["TOP_OF_BOAT"])
-			end
-			if (APRExtralk == 19) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["RUN_FOREST_RUN"])
-			end
-			if (APRExtralk == 20) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["WEAPON_PICK_DOESNT_MATTER"])
-			end
-			if (APRExtralk == 21) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["EXTRA_ACTION_BUTTON_NOT_NEEDED"])
-			end
-			if (APRExtralk == 22) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["DOTS_EXPIRE"])
-			end
-			if (APRExtralk == 23) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["USE_BANNER_ON_CORPSES"])
-			end
-			if (APRExtralk == 24) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["CLICK_BUFFS_IN_ZONE"])
-			end
-			if (APRExtralk == 25) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["GET_FLIGHT_POINT"])
-			end
-			if (APRExtralk == 26) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["FIXED_QUEST"])
-			end
-			if (APRExtralk == 27) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["TALK_TO_TALANJI"])
-			end
-			if (APRExtralk == 28) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["ZONE_COMPLETE"])
-			end
-			if (APRExtralk == 29) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["MISSING_QUEST"])
-			end
-			if (APRExtralk == 30) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["PORTAL_WILL_APPEAR"].." **")
-			end
-			if (APRExtralk == 31) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["WAIT_FOR_NPC"].." **")
-			end
-			if (APRExtralk == 32) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["BENEATH_HANDIN"])
-			end
-			if (APRExtralk == 33) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["TOTEM_DAMAGE_BUFF"].." **")
-			end
-			if (APRExtralk == 34) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["TURN_ON_WARMODE"].." **")
-			end
-			if (APRExtralk == 35) then
+			if (APRExtraLine == 35) then
 				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["LOA_INFO_1"])
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
@@ -1160,313 +1058,13 @@ local function APR_PrintQStep()
 				else
 					APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
 				end
-			end
-			if (APRExtralk == 35) then
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["LOA_INFO_2"])
 			end
-			if (APRExtralk == 36) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["DO_NOT_USE_GLIDER"])
-			end
-			if (APRExtralk == 37) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Use Orb on a Canyon Ettin, then save Oslow")
-			end
-			if (APRExtralk == 38) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Get Key in cave")
-			end
-			if (APRExtralk == 39) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Talk to FlightMaster")
-			end
-			if (APRExtralk == 40) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Talk to War-Mage Erallier to teleport")
-			end
-			if (APRExtralk == 41) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Leveling Starts in Redridge Mountains")
-			end
-			if (APRExtralk == 42) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("NPC is ontop of the tower")
-			end
-			if (APRExtralk == 43) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("*** Open the Cannary's Cache Bag to continue!")
-			end
-			if (APRExtralk == 44) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("*** disguise yourself as a plant close by the murlocs")
-			end
-			if (APRExtralk == 45) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("*** Use Pheromones Close by Mosshide Representative")
-			end
-			if (APRExtralk == 46) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use Command Board")
-			end
-			if (APRExtralk == 47) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use Portal To Undercity on top of the tower")
-			end
-			if (APRExtralk == 48) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Don't skip video")
-			end
-			if (APRExtralk == 49) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use Dalaran Crater Portal")
-			end
-			if (APRExtralk == 50) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use Portal Back")
-			end
-			if (APRExtralk == 51) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use Portal")
-			end
-			if (APRExtralk == 52) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use Zepelin to Stranglethorn Vale")
-			end
-			if (APRExtralk == 53) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Learn Journeyman Riding and then type /APR skip or click skip waypoint")
-			end
-			if (APRExtralk == 54) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Loot: Pamela's Doll's Head, Left and Right Side and combine them.")
-			end
-			if (APRExtralk == 55) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Use Disguise.")
-			end
-			if (APRExtralk == 56) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Place Lightwells around the corpsebeasts")
-			end
-			if (APRExtralk == 57) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Take Portal to Stranglethorn Vale")
-			end
-			if (APRExtralk == 58) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Get Cozzle's Key")
-			end
-			if (APRExtralk == 59) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use Portal to Orgrimmar")
-			end
-			if (APRExtralk == 60) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Train Flying")
-			end
-			if (APRExtralk == 61) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Go to Borean Tundra on Zepelin")
-			end
-			if (APRExtralk == 62) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Handin is on roof")
-			end
-			if (APRExtralk == 63) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Beryl Hounds drops Cores to release Kaskala")
-			end
-			if (APRExtralk == 64) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Beryl Reclaimers drop bombs")
-			end
-			if (APRExtralk == 65) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Beryl Mage Hunters drops the key for the Arcane Prison")
-			end
-			if (APRExtralk == 66) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Hand in far up, on a flying rock")
-			end
-			if (APRExtralk == 67) then
-				local CL_Items, itemLink, clt3, clt4, clt5, clt6, clt7, clt8, clt9, CL_ItemTex = GetItemInfo(35586)
-				if (itemLink and GetItemCount(itemLink)) then
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Kill Coldarra Wyrmkin and loot 5 Frozen Axes (".. GetItemCount(itemLink) .."/5)")
-					if (GetItemCount(itemLink) > 4) then
-						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
-						APR.BookingList["UpdateQuest"] = 1
-						APR.BookingList["PrintQStep"] = 1
-					end
-				else
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Kill Coldarra Wyrmkin and loot 5 Frozen Axes (0/5)")
-				end
-			end
-			if (APRExtralk == 68) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Use item on a dead Mechagnome to capture")
-			end
-			if (APRExtralk == 69) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("*** Click Valve")
-			end
-			if (APRExtralk == 70) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Loot Dead Mage Hunters for the plans")
-			end
-			if (APRExtralk == 71) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Use Unholy gem on Duke Vallenhal below 35%hp")
-			end
-			if (APRExtralk == 72) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Talk to Rokhan to make Sarathstra land")
-			end
-			if (APRExtralk == 73) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Woodlands Walkers drop bark for Lothalor Ancients")
-			end
-			if (APRExtralk == 74) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Lieutenant Ta'zinni drops Ley Line Focus")
-			end
-			if (APRExtralk == 75) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Talk to Budd")
-			end
-			if (APRExtralk == 76) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Use Budds stun on a troll and then cage it")
-			end
-			if (APRExtralk == 77) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Use Dull Carving Knife (by the tree stump), then talk to him")
-			end
-			if (APRExtralk == 78) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Buy a Crystal Vial from Ameenah")
-			end
-			if (APRExtralk == 79) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Loot a mummy")
-			end
-			if (APRExtralk == 80) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Kill Trolls for 5 Frozen Mojo")
-			end
-			if (APRExtralk == 81) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Kill Warlord Zim 'bo for his Mojo")
-			end
-			if (APRExtralk == 82) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Kill Trolls for 5 Desperate Mojo")
-			end
-			if (APRExtralk == 83) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Drakuru mobs drop Lock Openers")
-			end
-			if (APRExtralk == 84) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Talk to Thrallmar Mage to go to Dark Portal")
-			end
-			if (APRExtralk == 85) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use Portal to Hyjal")
-			end
-			if (APRExtralk == 86) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Loot Juniper Berries and use them on Faerie Dragons")
-			end
-			if (APRExtralk == 87) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Kill Explosive Hatreds to disable shield")
-			end
-			if (APRExtralk == 88) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use boat to go to Northrend")
-			end
-			if (APRExtralk == 89) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Loot bombs")
-			end
-			if (APRExtralk == 90) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Dismiss pets and pick up a miner (don't mount), and run and deliver miner")
-			end
-			if (APRExtralk == 91) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use Portal to Blasted Lands")
-			end
-			if (APRExtralk == 92) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Talk to Flamebringer")
-			end
-			if (APRExtralk == 93) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Take Portal to Hellfire Peninsula")
-			end
-			if (APRExtralk == 94) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Start Questing in Zangarmarsh")
-			end
-			if (APRExtralk == 95) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use Portal to Hyjal")
-			end
-			if (APRExtralk == 96) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Talk to Dread-Rider Cullen")
-			end
-			if (APRExtralk == 97) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Talk to Recruiter Lee to skip to Dalaran")
-			end
-			if (APRExtralk == 98) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Talk to Ensign Ward")
-			end
-			if (APRExtralk == 99) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** talk to Bilgewater Rocket-jockey")
-			end
-			if (APRExtralk == 100) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Loot Cages and deliver back to Subject Nine (Don't mount)")
-			end
-			if (APRExtralk == 101) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Pull Handle and Follow Core (put out fires on Labgoblin)")
-			end
-			if (APRExtralk == 102) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Go to Azshara")
-			end
-			if (APRExtralk == 103) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Go to Tirisfal Glades")
-			end
-			if (APRExtralk == 104) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Go to Silverpine Forest")
-			end
-			if (APRExtralk == 105) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Dodge Mines")
-			end
-			if (APRExtralk == 106) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Talk to Assistant Greely to get shrinked")
-			end
-			if (APRExtralk == 107) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Mount a Rocketway Rat")
-			end
-			if (APRExtralk == 108) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Talk to Friz for a free flight")
-			end
-			if (APRExtralk == 109) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use rocket to fly to Shattered Strand")
-			end
-			if (APRExtralk == 110) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use Military Gyrocopter to return to Bilgewater Harbor")
-			end
-			if (APRExtralk == 111) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Kill a troll then use the quest item to collect")
-			end
-			if (APRExtralk == 112) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use Disguise and Buy Bitter Plasma")
-			end
-			if (APRExtralk == 113) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Loot the big Sack")
-			end
-			if (APRExtralk == 114) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** both are on 2nd shelf, on the right side")
-			end
-			if (APRExtralk == 115) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Bottom shelf, left side")
-			end
-			if (APRExtralk == 116) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Do Class Hall and pick zone and go there")
-			end
-			if (APRExtralk == 117) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Use Cart")
-			end
-			if (APRExtralk == 118) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Treasure is ontop of the tower")
-			end
-			if (APRExtralk == 119) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Treasure is up on the tree")
-			end
-			if (APRExtralk == 120) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Killing a Bloodfang Stalker spawns a quest")
-			end
-			if (APRExtralk == 121) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("If your mounted Npcs might not spawn.")
-			end
-			if (APRExtralk == 122) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Only one can do the quest at a time so you might have to wait for npc to respawn")
-			end
-			if (APRExtralk == 123) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Talk to Orkus after RP and then loot Plans")
-			end
-			if (APRExtralk == 124) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Use Pet ability (Call to Arms) to Enlist Troops")
-			end
-			if (APRExtralk == 125) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Click on the the npc (Zen'Kiki) so he pulls Hawks")
-			end
-			if (APRExtralk == 126) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Upstairs")
-			end
-			if (APRExtralk == 127) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Use Insense Burner quest item.")
-			end
-			if (APRExtralk == 128) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Exit Dungeon.")
-			end
-			if (APRExtralk == 129) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Enter Dungeon.")
-			end
-			if (APRExtralk == 130) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Chop down trees to spawn snipers")
-			end
-			if (APRExtralk == 131) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Talk to Sassy Hardwrench for a ride")
-			end
-			if (APRExtralk == 13544) then
+			if (APRExtraLine == 13544) then
 				local CL_Items, itemLink, clt3, clt4, clt5, clt6, clt7, clt8, clt9, CL_ItemTex = GetItemInfo(44886)
 				if (itemLink and GetItemCount(itemLink)) then
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Kill Fleetfoot and loot his tail (".. GetItemCount(itemLink) .."/1)")
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["KILL_FLEETFOOT"].." "..(".. GetItemCount(itemLink) .."/1))
 					if (GetItemCount(itemLink) and GetItemCount(itemLink) > 0) then
 						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 						APR.BookingList["UpdateQuest"] = 1
@@ -1474,10 +1072,10 @@ local function APR_PrintQStep()
 					end
 				end
 			end
-			if (APRExtralk == 13595) then
+			if (APRExtraLine == 13595) then
 				local CL_Items, itemLink, clt3, clt4, clt5, clt6, clt7, clt8, clt9, CL_ItemTex = GetItemInfo(44967)
 				if (itemLink and GetItemCount(itemLink)) then
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Loot Bottle of Wildfire from table (".. GetItemCount(itemLink) .."/1)")
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["LOOT_WILDFIRE_BOTTLE"].." "..(".. GetItemCount(itemLink) .."/1))
 					if (GetItemCount(itemLink) and GetItemCount(itemLink) > 0) then
 						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 						APR.BookingList["UpdateQuest"] = 1
@@ -1485,14 +1083,13 @@ local function APR_PrintQStep()
 					end
 				end
 			end
-
-			if (APRExtralk == 14358) then
+			if (APRExtraLine == 14358) then
 				local zdsLine = 0
 				local zdsLine2 = 0
 				local zdsLine3 = 0
 				if (GetItemInfo(48106) and GetItemCount(GetItemInfo(48106))) then
 					if (GetItemCount(GetItemInfo(48106)) and GetItemCount(GetItemInfo(48106)) < 8) then
-						APR.QuestList.QuestFrames["FS"..LineNr]:SetText("["..LineNr.."] ".. GetItemCount(GetItemInfo(48106)) .."/8 Loot Melonfruit")
+						APR.QuestList.QuestFrames["FS"..LineNr]:SetText("["..LineNr.."] ".. GetItemCount(GetItemInfo(48106)) .."/8 "..L["LOOT_MELONFRUIT"])
 						zdsLine = 1
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
@@ -1509,7 +1106,7 @@ local function APR_PrintQStep()
 						if (zdsLine == 1) then
 							LineNr = LineNr + 1
 						end
-						APR.QuestList.QuestFrames["FS"..LineNr]:SetText("["..LineNr.."] ".. GetItemCount(GetItemInfo(48857)) .."/10 Kill Satyrs for Satyr Flesh")
+						APR.QuestList.QuestFrames["FS"..LineNr]:SetText("["..LineNr.."] ".. GetItemCount(GetItemInfo(48857)) .."/10 "..L["KILL_SATYR_FLESH"])
 						zdsLine2 = 1
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
@@ -1526,7 +1123,7 @@ local function APR_PrintQStep()
 						if (zdsLine2 == 1) then
 							LineNr = LineNr + 1
 						end
-						APR.QuestList.QuestFrames["FS"..LineNr]:SetText("["..LineNr.."] ".. GetItemCount(GetItemInfo(48943)) .."/20 Loot weaponracks for Satyr Sabers")
+						APR.QuestList.QuestFrames["FS"..LineNr]:SetText("["..LineNr.."] ".. GetItemCount(GetItemInfo(48943)) .."/20 "..L["LOOT_SATYR_SABER"])
 						zdsLine3 = 1
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
@@ -1544,7 +1141,7 @@ local function APR_PrintQStep()
 					APR.BookingList["PrintQStep"] = 1
 				end
 			end
-			if (APRExtralk == 25654) then
+			if (APRExtraLine == 25654) then
 				if (GetItemInfo(9530) and GetItemCount(GetItemInfo(9530))) then
 					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Loot Horn from Harpys (".. GetItemCount(GetItemInfo(9530)) .."/1)")
 					if (GetItemCount(GetItemInfo(9530)) and GetItemCount(GetItemInfo(9530)) > 0) then
@@ -1554,7 +1151,7 @@ local function APR_PrintQStep()
 					end
 				end
 			end
-			if (APRExtralk == 27237) then
+			if (APRExtraLine == 27237) then
 				local CL_Items, itemLink, clt3, clt4, clt5, clt6, clt7, clt8, clt9, CL_ItemTex = GetItemInfo(33044)
 				if (itemLink and GetItemCount(itemLink)) then
 					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Open Bag")
@@ -1577,7 +1174,7 @@ local function APR_PrintQStep()
 		if ((steps["ExtraLineText2"]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 			LineNr = LineNr + 1
 			if (steps["ExtraLineText2"]) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..steps["ExtraLineText2"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..steps["ExtraLineText2"].." **")
 			end
 			APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 			APR.QuestList.QuestFrames[LineNr]:Show()
@@ -2009,7 +1606,7 @@ local function APR_PrintQStep()
 			else
 				if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 					LineNr = LineNr + 1
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("*** Turn on WARMODE ***")
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("*** "..L["TURN_ON_WARMODE"].." ***")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 					local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
