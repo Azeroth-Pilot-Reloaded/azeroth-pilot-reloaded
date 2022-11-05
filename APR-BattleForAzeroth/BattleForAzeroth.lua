@@ -31731,7 +31731,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 438
-			["ExtraLineText"] = "Follow Jol's commands",
+			["ExtraLineText"] = "JOLS_COMMANDS",
 			["Qpart"] = {
 				[51677] = {
 					["2"] = "2",
@@ -32257,7 +32257,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 474
-			["ExtraLineText"] = "Talk to King Rastakhan",
+			["ExtraLineText"] = "TALK_KING_RASTAKHAN",
 			["CRange"] = 47741,
 			["Gossip"] = 1,
 			["Trigger"] = {
@@ -39190,7 +39190,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 413
-			["ExtraLineText"] = "Speak to Rokhan for a ride down",
+			["ExtraLineText"] = "TALK_ROKHAN_RIDE_DOWN",
 			["Gossip"] = 1,
 			["Trigger"] = {
 				["y"] = 1482.4,
@@ -39235,7 +39235,7 @@ if (APR.Faction == "Horde") then
 			["LeaveQuest"] = 51302,
 		},
 		{		-- [Step 417
-			["ExtraLineText"] = "Speak to Rokhan for a ride to Zul'jan",
+			["ExtraLineText"] = "TALK_ROKHAN_RIDE_ZULJAN",
 			["Trigger"] = {
 				["y"] = 1239.9,
 				["x"] = 735.1,
@@ -39461,7 +39461,7 @@ if (APR.Faction == "Horde") then
 		}, 
 		{		-- [Step 17
 			["ETA"] = 40,
-			["ExtraLineText"] = "Walk with Bladeguard Kaja",
+			["ExtraLineText"] = "TALK_ROKHAN_RIDE_ZULJAN",
 			--["RaidIcon"] = 122320,
 			["Done"] = {
 				47314, 

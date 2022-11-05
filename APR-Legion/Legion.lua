@@ -9312,7 +9312,7 @@ if (APR.Faction == "Alliance") then
                 },
             }, -- [12]
             {
-                ["ExtraLine"] = 98,
+                ["ExtraLineText"] = "TALK_ENSIGN_WARD",
                 ["DropQuest"] = 39060,
                 ["Gossip"] = 38872,
                 ["TT"] = {
@@ -19366,7 +19366,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [36]
 			{
-				["ExtraLine"] = 96,
+				["ExtraLineText"] = "TALK_DREAD_RIDER_CULLEN",
 				["DropQuest"] = 38873,
 				["Gossip"] = 38872,
 				["TT"] = {

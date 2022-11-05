@@ -1071,7 +1071,7 @@ APR.QuestStepList = {
 			},
 		}, -- [10]
 		{
-			["ExtraLine"] = 117,
+			["ExtraLineText"] = "USE_CART",
 			["Trigger"] = {
 				["y"] = 945.7,
 				["x"] = 2835.4,
@@ -1395,7 +1395,7 @@ APR.QuestStepList = {
 			},
 		}, -- [18]
 		{
-			["ExtraLine"] = 117,
+			["ExtraLineText"] = "USE_CART",
 			["Trigger"] = {
 				["y"] = 544.6,
 				["x"] = 3200.9,
@@ -2332,7 +2332,7 @@ APR.QuestStepList = {
 			},
 		}, -- [2]
 		{
-			["ExtraLine"] = 117,
+			["ExtraLineText"] = "USE_CART",
 			["Trigger"] = {
 				["y"] = 334.6,
 				["x"] = 3887,
