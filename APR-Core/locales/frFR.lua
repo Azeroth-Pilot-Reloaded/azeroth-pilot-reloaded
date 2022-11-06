@@ -14,8 +14,6 @@ L.DECLINE_QUEST = "Déclinez les quêtes";
 L.KEYBINDS = "Raccourcis clavier";
 L.LOCK_ARROW_WINDOW = "Verrouiller la flèche";
 L.LOCK_QUESTLIST_WINDOW = "Verrouiller la fenêtre de liste de quêtes";
-L.PICK_UP_QUESTS = "Prendre les quêtes";
-L.PICK_ZONE = "Sélectionnez une zone";
 L.SETTINGS = "Réglages";
 L.SHOW_ARROW = "Afficher la flèche";
 L.SHOW_BLOBS_ON_MAP = "Afficher les pointillers sur la carte";
@@ -25,9 +23,25 @@ L.SHOW_QUESTLIST = "Afficher la liste de quêtes";
 L.SKIPPED_CUTSCENE = "Passer les cinématiques";
 L.YARDS = "mètres";
 
+-- ZONE 
+L.GET_FLIGHPATH = "Prenez le point de vol";
+L.GET_TREASURE = "Prenez le trésor";
+L.GROUP_QUEST = "Recherchez un groupe pour les quêtes";
+L.HAND_IN_QUEST = "Rendez la quête";
+L.PICK_UP_QUESTS = "Prenez les quêtes";
+L.PICK_ZONE = "Sélectionnez une zone";
+L.QUEST_DROP = "Récupérez la quête";
+L.QUEST_PART = "Faites la quete";
+L.ROUTE_COMPLETED = "Guide terminée";
+L.RUN_WAYPOINT = "Allez au point de passage";
+L.TRAIN_RIDING = "Apprennez la compétence de monture";
+L.USE_ORGRIMMAR_PORTAL = "Prend le portail pour Orgrimmar";
+L.ZONE = "Zone";
+L.ZONE_DONE = "Zone terminée";
+
+
 -- Extra Quest text=
 L.BLOODLUST = "Un bon moment pour utiliser la BL";
-L.GET_FLIGHT_POINT = "Prenez le point de vol";
 L.GO_TO_ORGRIMMAR = "Allez à Orgrimmar";
 L.JUMP_OFF = "Sautez";
 L.LOA_INFO_1 = "Totem de Gonk: 40% de vitesse de déplacement pendant 30s";

@@ -12,8 +12,6 @@ L.DECLINE_QUEST = "Rechazar misión";
 L.KEYBINDS = "Establecer Teclas";
 L.LOCK_ARROW_WINDOW = "Bloquear marco de Flecha";
 L.LOCK_QUESTLIST_WINDOW = "Bloquear marco de Registro de misiones";
-L.PICK_UP_QUESTS = "Tomar misión";
-L.PICK_ZONE = "Elegir Zona";
 L.SETTINGS = "Opciones";
 L.SHOW_ARROW = "Mostrar Flecha";
 L.SHOW_BLOBS_ON_MAP = "Mostrar puntos verdes en el mapa";
@@ -23,11 +21,25 @@ L.SHOW_QUESTLIST = "mostrar Registro de misiones";
 L.SKIPPED_CUTSCENE = "cinemática omitida";
 L.YARDS = "yardas";
 
--- Extra Quest text
+-- Zone
+L.GET_FLIGHPATH = "Obtener Punto de Vuelo";
+-- TODO : L.GET_TREASURE = "Get Treasure",
+-- TODO : L.GROUP_QUEST = "Ask for group quest",
+-- TODO : L.HAND_IN_QUEST = "Hand In Quest",
+L.PICK_UP_QUESTS = "Tomar misión";
+L.PICK_ZONE = "Elegir Zona";
+-- TODO : L.QUEST_DROP = "Quest Drop",
+-- TODO : L.QUEST_PART = "Do Quest Part",
+-- TODO : L.ROUTE_COMPLETED = "Route Completed",
+-- TODO : L.RUN_WAYPOINT = "Run to Waypoint",
+-- TODO : L.TRAIN_RIDING = "Train Riding",
+-- TODO : L.USE_ORGRIMMAR_PORTAL = "Use Orgrimmar Portal",
+-- TODO : L.ZONE = "Zone",
+-- TODO : L.ZONE_DONE = "Zone Done",
 
+-- Extra Quest text
 L.USE_BOAT = "Barco a";
 L.USE_FLIGHTPATH = "Volar a";
-L.GET_FLIGHT_POINT = "Obtener Punto de Vuelo";
 L.OPTIONAL = "Opcional";
 L.SET_HEARTHSTONE = "Poner Piedra de Hogar";
 L.TRAVEL_TO = "Viajar a";

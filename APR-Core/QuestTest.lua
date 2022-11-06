@@ -1,3 +1,6 @@
+local app = select(2, ...);
+local L = app.L;
+
 APR.Test = {}
 local MainQuest = 0
 local SubQuestId = 0
@@ -109,7 +112,7 @@ APR.ZoneQuestOrder.ZoneName.texture = t
 	APR.ZoneQuestOrder.ZoneName.FS:SetHeight(16)
 	APR.ZoneQuestOrder.ZoneName.FS:SetJustifyH("CENTER")
 	APR.ZoneQuestOrder.ZoneName.FS:SetFontObject("GameFontNormalSmall")
-	APR.ZoneQuestOrder.ZoneName.FS:SetText("Zone")
+	APR.ZoneQuestOrder.ZoneName.FS:SetText(L["ZONE"])
 	APR.ZoneQuestOrder.ZoneName.FS:SetTextColor(1, 1, 0)
 
 	APR.ZoneQuestOrder["APR_Button"] = CreateFrame("Button", "APR_SBXOZ", APR.ZoneQuestOrder, APR.ZoneQuestOrder)
@@ -500,7 +503,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					APR.ZoneQuestOrder["Current"]:Show()
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["PickUp"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Pick Up Quest")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["PICK_UP_QUESTS"])
 					IdList = APR.QuestStepList[APR.ActiveMap][CCLi]["PickUp"]
 					local NrLeft = 0
 					local Flagged = 0
@@ -582,7 +585,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					end
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["Qpart"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Do Quest Part")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["QUEST_PART"])
 					IdList = APR.QuestStepList[APR.ActiveMap][CCLi]["Qpart"]
 					local Flagged = 0
 					local Total = 0
@@ -677,7 +680,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					end
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["Done"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Hand In Quest")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["HAND_IN_QUEST"])
 					IdList = APR.QuestStepList[APR.ActiveMap][CCLi]["Done"]
 					local NrLeft = 0
 					local Flagged = 0
@@ -737,7 +740,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					end
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["CRange"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Run to Waypoint")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["RUN_WAYPOINT"])
 					if (C_QuestLog.IsQuestFlaggedCompleted(APR.QuestStepList[APR.ActiveMap][CCLi]["CRange"]) or CurStep > CCLi) then
 						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(0, 1, 0)
 						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(0, 1, 0)
@@ -747,7 +750,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					end
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["UseDalaHS"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Use Dalaran HS")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["USE_DALARAN_HEARTHSTONE"])
 					if (C_QuestLog.IsQuestFlaggedCompleted(APR.QuestStepList[APR.ActiveMap][CCLi]["UseDalaHS"]) or CurStep > CCLi) then
 						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(0, 1, 0)
 						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(0, 1, 0)
@@ -757,19 +760,19 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					end
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["DalaranToOgri"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Use Orgrimmar Portal")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["USE_ORGRIMMAR_PORTAL"])
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["PahonixMadeMe"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Train Riding")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText("TRAIN_RIDING")
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["UseGarrisonHS"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Use GarrisonHS")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["USE_GARRISON_HEARTHSTONE"])
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["ZonePick"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Pick Zone")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["PICK_ZONE"])
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["QpartPart"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Do Quest Part")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["QUEST_PART"])
 					IdList = APR.QuestStepList[APR.ActiveMap][CCLi]["QpartPart"]
 					local Flagged = 0
 					local Total = 0
@@ -865,7 +868,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					end
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["DropQuest"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Quest Drop")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["QUEST_DROP"])
 					if (C_QuestLog.IsQuestFlaggedCompleted(APR.QuestStepList[APR.ActiveMap][CCLi]["DropQuest"]) or APR.ActiveQuests[APR.QuestStepList[APR.ActiveMap][CCLi]["DropQuest"]]) then
 						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(0, 1, 0)
 						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(0, 1, 0)
@@ -876,7 +879,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["SetHS"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Set Hearthstone")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["SET_HEARTHSTONE"])
 					if (C_QuestLog.IsQuestFlaggedCompleted(APR.QuestStepList[APR.ActiveMap][CCLi]["SetHS"]) or CurStep > CCLi) then
 						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(0, 1, 0)
 						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(0, 1, 0)
@@ -886,7 +889,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					end
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["UseHS"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Use Hearthstone")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["USE_HEARTHSTONE"])
 					if (C_QuestLog.IsQuestFlaggedCompleted(APR.QuestStepList[APR.ActiveMap][CCLi]["UseHS"]) or CurStep > CCLi) then
 						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(0, 1, 0)
 						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(0, 1, 0)
@@ -896,12 +899,12 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					end
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["ZoneDoneSave"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Route Completed")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["ROUTE_COMPLETED"])
 					APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(1, 0, 0)
 					APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(1, 0, 0)
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["GetFP"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Get Flightpath")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["GET_FLIGHPATH"])
 					if (C_QuestLog.IsQuestFlaggedCompleted(APR.QuestStepList[APR.ActiveMap][CCLi]["GetFP"]) or CurStep > CCLi) then
 						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(0, 1, 0)
 						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(0, 1, 0)
@@ -911,7 +914,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					end
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["UseFlightPath"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Use Flightpath")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["USE_FLIGHTPATH"])
 					if (C_QuestLog.IsQuestFlaggedCompleted(APR.QuestStepList[APR.ActiveMap][CCLi]["UseFlightPath"]) or CurStep > CCLi) then
 						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(0, 1, 0)
 						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(0, 1, 0)
@@ -921,7 +924,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					end
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["QaskPopup"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Ask for group quest")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["GROUP_QUEST"])
 					if (C_QuestLog.IsQuestFlaggedCompleted(APR.QuestStepList[APR.ActiveMap][CCLi]["QaskPopup"]) or CurStep > CCLi) then
 						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(0, 1, 0)
 						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(0, 1, 0)
@@ -965,7 +968,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					end
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["Treasure"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Get Treasure")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["GET_TREASURE"])
 					if (C_QuestLog.IsQuestFlaggedCompleted(APR.QuestStepList[APR.ActiveMap][CCLi]["Treasure"])) then
 						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(0, 1, 0)
 						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(0, 1, 0)
@@ -1007,10 +1010,10 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					end
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["ZoneDone"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Zone Done")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["ZONE_DONE"])
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["WarMode"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("Auto Enable Warmode")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["TURN_ON_WARMODE"])
 				end
 				APR.ZoneQuestOrder[CLi]:Show()
 				APR.ZoneQuestOrder["Order1"][CLi]:Show()

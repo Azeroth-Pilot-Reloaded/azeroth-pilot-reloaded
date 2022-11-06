@@ -1729,7 +1729,7 @@ local function APR_PrintQStep()
 			if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 				APR.FP.GoToZone = nil
 				LineNr = LineNr + 1
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["GET_FLIGHT_POINT"])
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["GET_FLIGHPATH"])
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 				local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -2188,7 +2188,7 @@ function APR.CheckCRangeText()
 		CurStep = CurStep + 1
 		steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		if (steps and steps["FlightPath"]) then
-			local Derp2 = "[WayPoint] - "..L["GET_FLIGHT_POINT"]
+			local Derp2 = "[WayPoint] - "..L["GET_FLIGHPATH"]
 			return Derp2
 		elseif (steps and steps["UseFlightPath"]) then
 			if (steps["Boat"]) then

@@ -15,7 +15,6 @@ L.DECLINE_QUEST = "拒絕任務";
 L.KEYBINDS = "設置使用任務道具的快捷鍵";
 L.LOCK_ARROW_WINDOW = "鎖定箭頭視窗";
 L.LOCK_QUESTLIST_WINDOW = "鎖定任務表單視窗";
-L.PICK_ZONE = "選擇地圖";
 L.SETTINGS = "設置";
 L.SHOW_GROUP_PROGRESS = "顯示小隊進度";
 L.SKIPPED_CUTSCENE = "跳過動過";
@@ -27,9 +26,24 @@ L.YARDS = "碼";
 -- TODO : L.SHOW_BLOBS_ON_MINIMAP = "Show Green blobs on minimap";
 -- TODO : L.SHOW_QUESTLIST = "Show QuestList";
 
+-- Zone
+L.GET_FLIGHPATH = "開啟鳥點";
+-- TODO : L.GET_TREASURE = "Get Treasure",
+-- TODO : L.GROUP_QUEST = "Ask for group quest",
+-- TODO : L.HAND_IN_QUEST = "Hand In Quest",
+-- TODO : L.PICK_UP_QUESTS = "Pick Up Quests";
+L.PICK_ZONE = "選擇地圖";
+-- TODO : L.QUEST_DROP = "Quest Drop",
+-- TODO : L.QUEST_PART = "Do Quest Part",
+-- TODO : L.ROUTE_COMPLETED = "Route Completed",
+-- TODO : L.RUN_WAYPOINT = "Run to Waypoint",
+-- TODO : L.TRAIN_RIDING = "Train Riding",
+-- TODO : L.USE_ORGRIMMAR_PORTAL = "Use Orgrimmar Portal",
+-- TODO : L.ZONE = "Zone",
+-- TODO : L.ZONE_DONE = "Zone Done",
+
 -- Extra Quest text
 L.BLOODLUST = "開嗜血/英勇的好時機";
-L.GET_FLIGHT_POINT = "開啟鳥點";
 L.GO_TO_ORGRIMMAR = "去奧格瑞瑪";
 L.JUMP_OFF = "跳下";
 L.LOA_INFO_1 = "Gonk圖騰，增加移動速度40%維持30秒";

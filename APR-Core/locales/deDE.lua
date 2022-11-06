@@ -16,17 +16,33 @@ L.YARDS = "yards";
 -- TODO : L.AUTO_SELECTION_OF_DIALOG = "Auto-selection of dialog";
 -- TODO : L.LOCK_ARROW_WINDOW = "Lock Arrow Window";
 -- TODO : L.LOCK_QUESTLIST_WINDOW = "Lock QuestList Window";
--- TODO : L.PICK_UP_QUESTS = "Pick Up Quests";
--- TODO : L.PICK_ZONE = "Pick Zone";
 -- TODO : L.SHOW_ARROW = "Show Arrow";
 -- TODO : L.SHOW_BLOBS_ON_MAP = "Show Green blobs on map";
 -- TODO : L.SHOW_BLOBS_ON_MINIMAP = "Show Green blobs on minimap";
 -- TODO : L.SHOW_QUESTLIST = "Show QuestList";
 
 
+
+-- Zone
+L.GET_FLIGHPATH = "Flugpunkt entdecken";
+-- TODO : L.GET_TREASURE = "Get Treasure",
+-- TODO : L.GROUP_QUEST = "Ask for group quest",
+-- TODO : L.HAND_IN_QUEST = "Hand In Quest",
+-- TODO : L.PICK_UP_QUESTS = "Pick Up Quests";
+-- TODO : L.PICK_ZONE = "Pick Zone";,
+-- TODO : L.QUEST_DROP = "Quest Drop",
+-- TODO : L.QUEST_PART = "Do Quest Part",
+-- TODO : L.ROUTE_COMPLETED = "Route Completed",
+-- TODO : L.RUN_WAYPOINT = "Run to Waypoint",
+-- TODO : L.TRAIN_RIDING = "Train Riding",
+-- TODO : L.USE_ORGRIMMAR_PORTAL = "Use Orgrimmar Portal",
+-- TODO : L.ZONE = "Zone",
+-- TODO : L.ZONE_DONE = "Zone Done",
+    
+
 -- Extra Quest text=
 L.BLOODLUST = "Gute Gelegenheit Hero zu nutzen";
-L.GET_FLIGHT_POINT = "Flugpunkt entdecken";
+
 L.GO_TO_ORGRIMMAR = "Reise nach Orgrimmar";
 L.JUMP_OFF = "Spring runter";
 L.LOA_INFO_1 = "Gonk: Totems; 40% Laufgeschwindigkeit 30 Sekunden";

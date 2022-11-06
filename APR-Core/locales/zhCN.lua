@@ -9,7 +9,6 @@ L.AUTO_REPAIR = "自动修理";
 L.AUTO_VENDOR = "自动摧毁灰色物品";
 L.DECLINE_QUEST = "——拒绝任务";
 L.KEYBINDS = "设置键绑定：使用任务项";
-L.PICK_ZONE = "——选择任务地图";
 L.SETTINGS = "——设置";
 L.SHOW_GROUP_PROGRESS = "显示小队进度";
 L.SKIPPED_CUTSCENE = "——跳过图景";
@@ -23,10 +22,24 @@ L.YARDS = "码";
 -- TODO : L.SHOW_BLOBS_ON_MINIMAP = "Show Green blobs on minimap";
 -- TODO : L.SHOW_QUESTLIST = "Show QuestList";
 
+-- Zone
+L.GET_FLIGHPATH = "——开飞行点";
+-- TODO : L.GET_TREASURE = "Get Treasure",
+-- TODO : L.GROUP_QUEST = "Ask for group quest",
+-- TODO : L.HAND_IN_QUEST = "Hand In Quest",
+-- TODO : L.PICK_UP_QUESTS = "Pick Up Quests";
+L.PICK_ZONE = "——选择任务地图";
+-- TODO : L.QUEST_DROP = "Quest Drop",
+-- TODO : L.QUEST_PART = "Do Quest Part",
+-- TODO : L.ROUTE_COMPLETED = "Route Completed",
+-- TODO : L.RUN_WAYPOINT = "Run to Waypoint",
+-- TODO : L.TRAIN_RIDING = "Train Riding",
+-- TODO : L.USE_ORGRIMMAR_PORTAL = "Use Orgrimmar Portal",
+-- TODO : L.ZONE = "Zone",
+-- TODO : L.ZONE_DONE = "Zone Done",
 
 -- Extra Quest text
 L.BLOODLUST = "——开嗜血的好时机";
-L.GET_FLIGHT_POINT = "——开飞行点";
 L.GO_TO_ORGRIMMAR = "去奥格瑞玛";
 L.JUMP_OFF = "跳下";
 L.LOA_INFO_1 = "——贡克：图腾，40%秒移动";
