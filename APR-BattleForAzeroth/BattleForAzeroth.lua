@@ -32929,12 +32929,6 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 526
-		["DropQuest"] = 52210,
-		},
-		{		-- [Step 527
-		["DropQuest"] = 49901,
-		},
-		{		-- [Step 528
 			["ZoneDoneSave"] = 1,
 		},
 	}
