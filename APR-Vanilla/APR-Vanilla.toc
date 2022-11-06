@@ -7,5 +7,7 @@
 
 
 ## RequiredDeps: APR-Core
-EasternKingdoms.lua
-Kalimdor.lua
+EasternKingdoms_Horde.lua
+Kalimdor_Alliance.lua
+Kalimdor_Horde.lua
+Kalimdor_Alliance.lua
