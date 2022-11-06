@@ -3530,6 +3530,7 @@ APR.QuestStepListListingZone = {
 	["10-30 Northern Barrens"] = 10,
 	["10-30 Southern Barrens"] = 199,
 
+	["SL-IntroQline"] = 85,
 	["Z-00-TheMaw-Story"] = 1648,
 	["Z-01-Oribos-Story"] = 1670,
 	["Z-02-Bastion-Story"] = 1533,
@@ -3559,6 +3560,7 @@ APR.QuestStepListListingZone = {
 	["Legion - Azsuna"] = 630,
 	["Legion - Val'Sharah"] = 641,
 	["Legion - Stormheim"] = 634,
+	
 	["10-10 BFA Intro"] = 85,
 	["10-10 BFA intro 2"] = 1012,
 	["10-10 BFA intro 2"] = 862,
@@ -3573,8 +3575,7 @@ APR.QuestStepListListingZone = {
 	["DEV - StoryMode Only (Not Enough XP)"] = 1670,
 }
 APR.QuestStepListListing = {}
-APR.QuestStepListListing["Shadowlands"] = {
-
+APR.QuestStepListListing["Extra"] = {
 	["630-Azsuna"] = "Legion - Azsuna",
 	["641-ValSharah"] = "Legion - Val'Sharah",
 	["634-Stormheim"] = "Legion - Stormheim",
@@ -3584,6 +3585,33 @@ APR.QuestStepListListing["Shadowlands"] = {
 	["863-Nazmir"] = "20-50 Nazmir",
 	["862-Zuldazar-2"] = "30-30 Naz-end Vol-begin",
 	["864-Vol'dun"] = "30-50 Vol'dun",
+	["85-DesMephisto-Orgrimmar-p1"] = "(1/6 WOD) 10-50 Orgrimmar",
+	["577-DesMephisto-TanaanJungle"] = "(2/6 WOD) 10-50 Tanaan Jungle",
+	["525-DesMephisto-FrostfireRidge-p1"] = "(3/6 WOD) 10-50 Frostfire Ridge",
+	["543-DesMephisto-Gorgrond-p1"] = "(4/6 WOD) 10-50 Gorgrond",
+	["535-DesMephisto-Talador-p1"] = "(5/6 WOD) 10-50 Talador",
+	["542-DesMephisto-SpiresOfArak"] = "(6/6 WOD) 10-50 Spires of Arak",
+	["550-DesMephisto-Nagrand"] = "(7-extra) 10-50 Nagrand",
+}
+APR.QuestStepListListing["Shadowlands"] = {
+
+	["85-IntroQline"] = "SL-IntroQline",
+	["1648-Z0-TheMaw-Story"] = "Z-00-TheMaw-Story",
+	["1670-Z1-Oribos-Story"] = "Z-01-Oribos-Story",
+	["1533-Z2-Bastion-Story"] = "Z-02-Bastion-Story",
+	["1613-Z3-Oribos-Story"] = "Z-03-Oribos-Story",
+	["1536-Z4-Maldraxxus-Story"]= "Z-04-Maldraxxus-Story",
+	["1670-Z5-Oribos-Story"] = "Z-05-Oribos-Story",
+	["1543-Z6-TheMaw-Story"] = "Z-06-The Maw-Story",
+	["1670-Z7-Oribos-Story"] = "Z-07-Oribos-Story",
+	["1536-Z8-Maldraxxus-Story"] = "Z-08-Maldraxxus-Story",
+	["1670-Z9-Oribos-Story"] = "Z-09-Oribos-Story",
+	["1565-Z10-Ardenweald-Story"] = "Z-10-Ardenweald-Story",
+	["1671-Z11-Oribos-Story"] = "Z-11-Oribos-Story",
+	["1525-Z12-Revendreth-Story"] = "Z-12-Revendreth-Story",
+	["1543-Z13-TheMaw-Story"] = "Z-13-The Maw-Story",
+	["1525-Z14-Revendreth-Story"] = "Z-14-Revendreth-Story",
+	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
 
 	["Shadowlands-StoryOnly-H"] = "DEV - StoryMode Only (Not Enough XP)",
 }
@@ -3595,9 +3623,7 @@ APR.QuestStepListListing["Kalimdor"] = {
 	["1-Durotar"] = "01-30 Durotar (Full)",
 	["10-NorthernBarrens"] = "10-30 Northern Barrens",
 	["199-SouthernBarrens"] = "10-30 Southern Barrens",
-	["DEV-Western Plaguelands"] = "DEV - Western Plaguelands",
-	["DEV-Silverpine"] = "DEV - Silverpine Forest",
-	["DEV-Hillsbrad"] = "DEV - Hillsbrad Foothills",
+	
 	
 }
 APR.QuestStepListListing["SpeedRun"] = {
@@ -3619,8 +3645,16 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
 
 	["1533-Bastion-NonStoryMode-1"] = "Test1",
-}
-APR.QuestStepListListing["EasternKingdom"] = {
+	["630-Azsuna"] = "Legion - Azsuna",
+	["641-ValSharah"] = "Legion - Val'Sharah",
+	["634-Stormheim"] = "Legion - Stormheim",
+	["1-Orgrimmar"] = "10-10 BFA Intro",
+	["862-Zuldazar"] = "10-10 BFA intro 2",
+	["862-Zuldazar-1"] = "10-50 Zuldazar",
+	["863-Nazmir"] = "20-50 Nazmir",
+	["862-Zuldazar-2"] = "30-30 Naz-end Vol-begin",
+	["864-Vol'dun"] = "30-50 Vol'dun",
+	
 	["85-DesMephisto-Orgrimmar-p1"] = "(1/6 WOD) 10-50 Orgrimmar",
 	["577-DesMephisto-TanaanJungle"] = "(2/6 WOD) 10-50 Tanaan Jungle",
 	["525-DesMephisto-FrostfireRidge-p1"] = "(3/6 WOD) 10-50 Frostfire Ridge",
@@ -3628,6 +3662,16 @@ APR.QuestStepListListing["EasternKingdom"] = {
 	["535-DesMephisto-Talador-p1"] = "(5/6 WOD) 10-50 Talador",
 	["542-DesMephisto-SpiresOfArak"] = "(6/6 WOD) 10-50 Spires of Arak",
 	["550-DesMephisto-Nagrand"] = "(7-extra) 10-50 Nagrand",
+	
+}
+APR.QuestStepListListing["EasternKingdom"] = {
+	["DEV-Western Plaguelands"] = "DEV - Western Plaguelands",
+	["DEV-Silverpine"] = "DEV - Silverpine Forest",
+	["DEV-Hillsbrad"] = "DEV - Hillsbrad Foothills",
+	
+}
+APR.QuestStepListListing["Dragonflight"] = {
+	
 	
 }
 
@@ -3643,16 +3687,22 @@ APR["Kalimdor"][21] = 1
 APR["Kalimdor"][25] = 1
 APR["Kalimdor"][199] = 1
 APR["Kalimdor"][94] = 1
-APR["ShadowlandsDB"] = {}
-APR["ShadowlandsDB"][1409] = 1
-APR["ShadowlandsDB"][1525] = 1
-APR["ShadowlandsDB"][1533] = 1
-APR["ShadowlandsDB"][1536] = 1
-APR["ShadowlandsDB"][1565] = 1
-APR["ShadowlandsDB"][1613] = 1
-APR["ShadowlandsDB"][1670] = 1
+APR["EasternKingdom"] = {}
+APR["EasternKingdom"][21] = 1
+APR["EasternKingdom"][25] = 1
+APR["EasternKingdom"][22] = 1
+APR["Shadowlands"] = {}
+APR["Shadowlands"][1409] = 1
+APR["Shadowlands"][1525] = 1
+APR["Shadowlands"][1533] = 1
+APR["Shadowlands"][1536] = 1
+APR["Shadowlands"][1565] = 1
+APR["Shadowlands"][1613] = 1
+APR["Shadowlands"][1670] = 1
 APR["Legion"] = {}
 APR["Legion"][630] = 1
 APR["Legion"][634] = 1
 APR["Legion"][641] = 1
+
+
 end

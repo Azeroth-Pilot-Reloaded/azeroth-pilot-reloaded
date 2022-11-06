@@ -6254,6 +6254,7 @@ APR.QuestStepListListingZone = {
 	["55-55 Maldraxxus"] = 1536,
 	["56 Oribos (Maldrax-Ardenw)"] = 1670,
 	["57 Oribos (Ardenw-Revend)"] = 1670,
+	["SL-IntroQline"] = 84,
 	["Z-00-TheMaw-Story"] = 1648,
 	["Z-01-Oribos-Story"] = 1670,
 	["Z-02-Bastion-Story"] = 1533,
@@ -6293,7 +6294,7 @@ APR.QuestStepListListingZone = {
 	["DEV - StoryMode Only (Not Enough XP)"] = 1670,
 }
 APR.QuestStepListListing = {}
-APR.QuestStepListListing["Shadowlands"] = {
+APR.QuestStepListListing["Extra"] = {
 	["A84-DesMephisto-Stormwind-War"] = "(1/8) 10-50 Stormwind",
 	["A577-DesMephisto-TanaanJungle"] = "(2/8) 10-50 Tanaan Jungle",
 	["A539-DesMephisto-Shadowmoon1"] = "(3/8) 10-50 Shadowmoon",
@@ -6302,8 +6303,6 @@ APR.QuestStepListListing["Shadowlands"] = {
 	["A539-DesMephisto-Shadowmoon2"] = "(6/8) 10-50 Shadowmoon",
 	["A535-DesMephisto-Talador2"] = "(7/8) 10-50 Talador",
 	["A542-DesMephisto-SpiresOfArak"] = "(8/8) 10-50 Spires of Arak",
-
-	["Shadowlands-StoryOnly-A"] = "DEV - StoryMode Only (Not Enough XP)",
 	["A630-Azsuna"] = "Legion - Azsuna",
 	["A641-ValSharah"] = "Legion - Val'Sharah",
 	["A634-Stormheim"] = "Legion - Stormheim",
@@ -6311,7 +6310,27 @@ APR.QuestStepListListing["Shadowlands"] = {
 	["A895-Tiragarde Sound"] = "BFA 10-50 Tiragarde Sound Test",
 	["A942-Stormsong Valley"] = "BFA 30-50 Stormsong Valley Test",
 	["A896-Dustvar"] = "BFA 20-50 Dustvar Test",
+}
+APR.QuestStepListListing["Shadowlands"] = {
 	
+	["Shadowlands-StoryOnly-A"] = "DEV - StoryMode Only (Not Enough XP)",
+	["84-IntroQline"] = "SL-IntroQline",
+	["1648-Z0-TheMaw-Story"] = "Z-00-TheMaw-Story",
+	["1670-Z1-Oribos-Story"] = "Z-01-Oribos-Story",
+	["1533-Z2-Bastion-Story"] = "Z-02-Bastion-Story",
+	["1613-Z3-Oribos-Story"] = "Z-03-Oribos-Story",
+	["1536-Z4-Maldraxxus-Story"]= "Z-04-Maldraxxus-Story",
+	["1670-Z5-Oribos-Story"] = "Z-05-Oribos-Story",
+	["1543-Z6-TheMaw-Story"] = "Z-06-The Maw-Story",
+	["1670-Z7-Oribos-Story"] = "Z-07-Oribos-Story",
+	["1536-Z8-Maldraxxus-Story"] = "Z-08-Maldraxxus-Story",
+	["1670-Z9-Oribos-Story"] = "Z-09-Oribos-Story",
+	["1565-Z10-Ardenweald-Story"] = "Z-10-Ardenweald-Story",
+	["1671-Z11-Oribos-Story"] = "Z-11-Oribos-Story",
+	["1525-Z12-Revendreth-Story"] = "Z-12-Revendreth-Story",
+	["1543-Z13-TheMaw-Story"] = "Z-13-The Maw-Story",
+	["1525-Z14-Revendreth-Story"] = "Z-14-Revendreth-Story",
+	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
 	
 }
 if (APR.Level < 33) then
@@ -6356,7 +6375,21 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
 
 	["1533-Bastion-NonStoryMode-1"] = "Test1",
-
+	["A630-Azsuna"] = "Legion - Azsuna",
+	["A641-ValSharah"] = "Legion - Val'Sharah",
+	["A634-Stormheim"] = "Legion - Stormheim",
+	["A84-Stormwind"] = "BFA 10-10 INTRO Test",
+	["A895-Tiragarde Sound"] = "BFA 10-50 Tiragarde Sound Test",
+	["A942-Stormsong Valley"] = "BFA 30-50 Stormsong Valley Test",
+	["A896-Dustvar"] = "BFA 20-50 Dustvar Test",
+	["A84-DesMephisto-Stormwind-War"] = "(1/8) 10-50 Stormwind",
+	["A577-DesMephisto-TanaanJungle"] = "(2/8) 10-50 Tanaan Jungle",
+	["A539-DesMephisto-Shadowmoon1"] = "(3/8) 10-50 Shadowmoon",
+	["A543-DesMephisto-Gorgrond"] = "(4/8) 10-50 Gorgrond",
+	["A535-DesMephisto-Talador"] = "(5/8) 10-50 Talador",
+	["A539-DesMephisto-Shadowmoon2"] = "(6/8) 10-50 Shadowmoon",
+	["A535-DesMephisto-Talador2"] = "(7/8) 10-50 Talador",
+	["A542-DesMephisto-SpiresOfArak"] = "(8/8) 10-50 Spires of Arak",
 }
 
 APR.QuestStepListListing["EasternKingdom"] = {
@@ -6379,36 +6412,39 @@ APR.QuestStepListListing["EasternKingdom"] = {
 	["A224-NorthernStranglethorn"] = "20-30 Northern Stranglethorn (Full)",
 	["A224-TheCapeofStranglethorn"] = "20-30 Cape of Stranglethorn (F)",
 }
+APR.QuestStepListListing["Dragonflight"] = {
+	
+}
 
-APR["EasternKingdomDB"] = {}
-APR["EasternKingdomDB"][14] = 1
-APR["EasternKingdomDB"][15] = 1
-APR["EasternKingdomDB"][17] = 1
-APR["EasternKingdomDB"][22] = 1
-APR["EasternKingdomDB"][23] = 1
-APR["EasternKingdomDB"][26] = 1
-APR["EasternKingdomDB"][27] = 1
-APR["EasternKingdomDB"][32] = 1
-APR["EasternKingdomDB"][36] = 1
-APR["EasternKingdomDB"][37] = 1
-APR["EasternKingdomDB"][47] = 1
-APR["EasternKingdomDB"][48] = 1
-APR["EasternKingdomDB"][49] = 1
-APR["EasternKingdomDB"][51] = 1
-APR["EasternKingdomDB"][52] = 1
-APR["EasternKingdomDB"][56] = 1
-APR["EasternKingdomDB"][179] = 1
-APR["EasternKingdomDB"][224] = 1
-APR["ShadowlandsDB"] = {}
-APR["ShadowlandsDB"][1648] = 1
-APR["ShadowlandsDB"][1409] = 1
-APR["ShadowlandsDB"][1525] = 1
-APR["ShadowlandsDB"][1533] = 1
-APR["ShadowlandsDB"][1536] = 1
-APR["ShadowlandsDB"][1565] = 1
-APR["ShadowlandsDB"][1613] = 1
-APR["ShadowlandsDB"][1670] = 1
-APR["ShadowlandsDB"][1728] = 1
+APR["EasternKingdom"] = {}
+APR["EasternKingdom"][14] = 1
+APR["EasternKingdom"][15] = 1
+APR["EasternKingdom"][17] = 1
+APR["EasternKingdom"][22] = 1
+APR["EasternKingdom"][23] = 1
+APR["EasternKingdom"][26] = 1
+APR["EasternKingdom"][27] = 1
+APR["EasternKingdom"][32] = 1
+APR["EasternKingdom"][36] = 1
+APR["EasternKingdom"][37] = 1
+APR["EasternKingdom"][47] = 1
+APR["EasternKingdom"][48] = 1
+APR["EasternKingdom"][49] = 1
+APR["EasternKingdom"][51] = 1
+APR["EasternKingdom"][52] = 1
+APR["EasternKingdom"][56] = 1
+APR["EasternKingdom"][179] = 1
+APR["EasternKingdom"][224] = 1
+APR["Shadowlands"] = {}
+APR["Shadowlands"][1648] = 1
+APR["Shadowlands"][1409] = 1
+APR["Shadowlands"][1525] = 1
+APR["Shadowlands"][1533] = 1
+APR["Shadowlands"][1536] = 1
+APR["Shadowlands"][1565] = 1
+APR["Shadowlands"][1613] = 1
+APR["Shadowlands"][1670] = 1
+APR["Shadowlands"][1728] = 1
 APR["Legion"] = {}
 APR["Legion"][630] = 1
 APR["Legion"][634] = 1
