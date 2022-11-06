@@ -595,7 +595,7 @@ local function APR_SettingsButtons()
 		local CL_Items, clt2, clt3, clt4, clt5, clt6, clt7, clt8, clt9, CL_ItemTex = GetItemInfo(6948)
 		APR.QuestList2["BF"..CLi]["APR_Buttonptex"]:SetTexture(CL_ItemTex)
 		APR.QuestList2["BF"..CLi]["APR_Buttonntex"]:SetTexture(CL_ItemTex)
-		APR.QuestList2["BF"..CLi]["APR_Button"]:SetNormalTexture(CL_ItemTex)
+		--APR.QuestList2["BF"..CLi]["APR_Button"]:SetNormalTexture(CL_ItemTex)
 		APR.QuestList2["BF"..CLi]["APR_Button"]:SetText("")
 		local Topz = APR1[APR.Realm][APR.Name]["Settings"]["left"]
 		local Topz2 = APR1[APR.Realm][APR.Name]["Settings"]["top"]
@@ -871,6 +871,8 @@ local function APR_PrintQStep()
 				zeMApz = APR.QuestStepListListingStartAreas["EasternKingdom"][APR.ActiveMap]
 			elseif (APR.QuestStepListListingStartAreas["Kalimdor"] and APR.QuestStepListListingStartAreas["Kalimdor"][APR.ActiveMap]) then
 				zeMApz = APR.QuestStepListListingStartAreas["Kalimdor"][APR.ActiveMap]
+			elseif (APR.QuestStepListListing["Extra"][APR.ActiveMap]) then
+				zeMApz = APR.QuestStepListListing["Extra"][APR.ActiveMap]
 			elseif (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][APR.ActiveMap]) then
 				zeMApz = APR_Custom[APR.Name.."-"..APR.Realm][APR.ActiveMap]
 			end
@@ -1586,6 +1588,34 @@ local function APR_PrintQStep()
 				APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
 			end
 		end
+		if ((steps["ExtraLineText3"]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+			LineNr = LineNr + 1
+			if (steps["ExtraLineText3"]) then
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..steps["ExtraLineText3"])
+			end
+			APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
+			APR.QuestList.QuestFrames[LineNr]:Show()
+			local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
+			if (APRwidth and APRwidth > 400) then
+				APR.QuestList.QuestFrames[LineNr]:SetWidth(APRwidth+10)
+			else
+				APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
+			end
+		end
+		if ((steps["ExtraLineText4"]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+			LineNr = LineNr + 1
+			if (steps["ExtraLineText4"]) then
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..steps["ExtraLineText4"])
+			end
+			APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
+			APR.QuestList.QuestFrames[LineNr]:Show()
+			local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
+			if (APRwidth and APRwidth > 400) then
+				APR.QuestList.QuestFrames[LineNr]:SetWidth(APRwidth+10)
+			else
+				APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
+			end
+		end
 		if (APR.ActiveQuests and APR.ActiveQuests[57867] and APR.ZoneTransfer == 0) then
 			APR.QuestList.SweatOfOurBrowBuffFrame:Show()
 		else
@@ -1755,9 +1785,6 @@ local function APR_PrintQStep()
 			if (Flagged == Total and Flagged > 0) then
 				APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 				APR.BookingList["PrintQStep"] = 1
---			elseif (LineNr == 0) then
---				APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
---				APR.BookingList["PrintQStep"] = 1
 			end
 			if (steps and steps["Gossip"] and (APR.GossipOpen == 1) and APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 1 and not IsControlKeyDown()) then
 				if (steps and steps["Gossip"] and steps["Gossip"] == 34398) then
@@ -3673,7 +3700,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
 			steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		end
-		local Choizs = C_PlayerChoice.GetPlayerChoiceInfo()
+		local Choizs = C_PlayerChoice.GetCurrentPlayerChoiceInfo ()
 		if (Choizs) then
 			local choiceID = Choizs["choiceID"]
 			local questionText = Choizs["questionText"]

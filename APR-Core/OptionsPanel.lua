@@ -23,7 +23,7 @@ APR_panel.Button1ntex = APR_panel.Button1:CreateTexture()
 APR_panel.Button1ntex:SetTexture("Interface/Buttons/UI-Panel-Button-Up")
 APR_panel.Button1ntex:SetTexCoord(0, 0.625, 0, 0.6875)
 APR_panel.Button1ntex:SetAllPoints()
-APR_panel.Button1:SetNormalTexture(APR_panel.Button1ntex)
+--APR_panel.Button1:SetNormalTexture(APR_panel.Button1ntex)
 APR_panel.Button1htex = APR_panel.Button1:CreateTexture()
 APR_panel.Button1htex:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
 APR_panel.Button1htex:SetTexCoord(0, 0.625, 0, 0.6875)
@@ -35,8 +35,7 @@ APR_panel.Button1ptex:SetTexCoord(0, 0.625, 0, 0.6875)
 APR_panel.Button1ptex:SetAllPoints()
 APR_panel.Button1:SetPushedTexture(APR_panel.Button1ptex)
 APR_panel.Button1:SetScript("OnClick", function(self, arg1)
-	SettingsPanel:Hide()
-	HideUIPanel(GameMenuFrame)
+	HideUIPanel(SettingsPanel)
 	APR.OptionsFrame.MainFrame:Show()
 end)
 function APR.LoadOptionsFrame()
@@ -48,13 +47,7 @@ function APR.LoadOptionsFrame()
 	APR.OptionsFrame.MainFrame:SetPoint("CENTER",  UIParent, "CENTER",0,0)
 	APR.OptionsFrame.MainFrame:SetMovable(true)
 	APR.OptionsFrame.MainFrame:EnableMouse(true)
-	--[[ From original author
-		APR.OptionsFrame.MainFrame:SetBackdrop( {
-			bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-			tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		});
-	]]
+	
 local t = APR.OptionsFrame.MainFrame:CreateTexture(nil,"BACKGROUND")
 t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 t:SetAllPoints(APR.OptionsFrame.MainFrame)
@@ -87,13 +80,7 @@ APR.OptionsFrame.MainFrame.texture = t
 	APR.OptionsFrame.MainFrame.Options:SetPoint("LEFT",  APR_OptionsMainFrame, "LEFT",0,-20)
 	APR.OptionsFrame.MainFrame.Options:SetMovable(true)
 	APR.OptionsFrame.MainFrame.Options:EnableMouse(true)
-	--[[ From original author
-		APR.OptionsFrame.MainFrame.Options:SetBackdrop( {
-			bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-			tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		});
-	]]
+	
 local t = APR.OptionsFrame.MainFrame.Options:CreateTexture(nil,"BACKGROUND")
 t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 t:SetAllPoints(APR.OptionsFrame.MainFrame.Options)
@@ -180,13 +167,7 @@ APR.OptionsFrame.MainFrame.OptionsB1.texture = t
 	APR.OptionsFrame.MainFrame.OptionsQuests:SetPoint("LEFT",  APR_OptionsMainFrame, "LEFT",155,-20)
 	APR.OptionsFrame.MainFrame.OptionsQuests:SetMovable(true)
 	APR.OptionsFrame.MainFrame.OptionsQuests:EnableMouse(true)
-	--[[
-		APR.OptionsFrame.MainFrame.OptionsQuests:SetBackdrop( {
-			bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-			tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		});
-	]]
+	
 local t = APR.OptionsFrame.MainFrame.OptionsQuests:CreateTexture(nil,"BACKGROUND")
 t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 t:SetAllPoints(APR.OptionsFrame.MainFrame.OptionsQuests)
@@ -378,7 +359,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	APR.OptionsFrame.ResetQorderLntex:SetTexture("Interface/Buttons/UI-Panel-Button-Up")
 	APR.OptionsFrame.ResetQorderLntex:SetTexCoord(0, 0.625, 0, 0.6875)
 	APR.OptionsFrame.ResetQorderLntex:SetAllPoints()
-	APR.OptionsFrame.ResetQorderL:SetNormalTexture(APR.OptionsFrame.ResetQorderLntex)
+--	APR.OptionsFrame.ResetQorderL:SetNormalTexture(APR.OptionsFrame.ResetQorderLntex)
 	APR.OptionsFrame.ResetQorderLhtex = APR.OptionsFrame.ResetQorderL:CreateTexture()
 	APR.OptionsFrame.ResetQorderLhtex:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
 	APR.OptionsFrame.ResetQorderLhtex:SetTexCoord(0, 0.625, 0, 0.6875)
@@ -402,13 +383,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	APR.OptionsFrame.MainFrame.OptionsB2:SetPoint("TOPLEFT",  APR_OptionsMainFrame, "TOPLEFT",0,-70)
 	APR.OptionsFrame.MainFrame.OptionsB2:SetMovable(true)
 	APR.OptionsFrame.MainFrame.OptionsB2:EnableMouse(true)
-	--[[
-		APR.OptionsFrame.MainFrame.OptionsB2:SetBackdrop( {
-			bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-			tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		});
-	]]
+	
 local t = APR.OptionsFrame.MainFrame.OptionsB2:CreateTexture(nil,"BACKGROUND")
 t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 t:SetAllPoints(APR.OptionsFrame.MainFrame.OptionsB2)
@@ -449,13 +424,7 @@ APR.OptionsFrame.MainFrame.OptionsB2.texture = t
 	APR.OptionsFrame.MainFrame.OptionsArrow:SetPoint("LEFT",  APR_OptionsMainFrame, "LEFT",155,-20)
 	APR.OptionsFrame.MainFrame.OptionsArrow:SetMovable(true)
 	APR.OptionsFrame.MainFrame.OptionsArrow:EnableMouse(true)
-	--[[ From original author
-		APR.OptionsFrame.MainFrame.OptionsArrow:SetBackdrop( {
-			bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-			tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		});
-	]]
+	
 local t = APR.OptionsFrame.MainFrame.OptionsArrow:CreateTexture(nil,"BACKGROUND")
 t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 t:SetAllPoints(APR.OptionsFrame.MainFrame.OptionsArrow)
@@ -572,7 +541,7 @@ APR.OptionsFrame.MainFrame.OptionsArrow.texture = t
 	APR.OptionsFrame.ResetARrowntex:SetTexture("Interface/Buttons/UI-Panel-Button-Up")
 	APR.OptionsFrame.ResetARrowntex:SetTexCoord(0, 0.625, 0, 0.6875)
 	APR.OptionsFrame.ResetARrowntex:SetAllPoints()
-	APR.OptionsFrame.ResetARrow:SetNormalTexture(APR.OptionsFrame.ResetARrowntex)
+--	APR.OptionsFrame.ResetARrow:SetNormalTexture(APR.OptionsFrame.ResetARrowntex)
 	APR.OptionsFrame.ResetARrowhtex = APR.OptionsFrame.ResetARrow:CreateTexture()
 	APR.OptionsFrame.ResetARrowhtex:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
 	APR.OptionsFrame.ResetARrowhtex:SetTexCoord(0, 0.625, 0, 0.6875)
@@ -609,14 +578,7 @@ APR.OptionsFrame.MainFrame.OptionsArrow.texture = t
 	APR.OptionsFrame.MainFrame.OptionsB3:SetPoint("TOPLEFT",  APR_OptionsMainFrame, "TOPLEFT",0,-100)
 	APR.OptionsFrame.MainFrame.OptionsB3:SetMovable(true)
 	APR.OptionsFrame.MainFrame.OptionsB3:EnableMouse(true)
-	--[[ From original author
-		APR.OptionsFrame.MainFrame.OptionsB3:SetBackdrop( {
-			bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-			tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		});
-	]]
-local t = APR.OptionsFrame.MainFrame.OptionsB3:CreateTexture(nil,"BACKGROUND")
+	local t = APR.OptionsFrame.MainFrame.OptionsB3:CreateTexture(nil,"BACKGROUND")
 t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 t:SetAllPoints(APR.OptionsFrame.MainFrame.OptionsB3)
 APR.OptionsFrame.MainFrame.OptionsB3.texture = t
@@ -656,13 +618,7 @@ APR.OptionsFrame.MainFrame.OptionsB3.texture = t
 	APR.OptionsFrame.MainFrame.OptionsGeneral:SetPoint("LEFT",  APR_OptionsMainFrame, "LEFT",155,-20)
 	APR.OptionsFrame.MainFrame.OptionsGeneral:SetMovable(true)
 	APR.OptionsFrame.MainFrame.OptionsGeneral:EnableMouse(true)
-	--[[ From original author
-		APR.OptionsFrame.MainFrame.OptionsGeneral:SetBackdrop( {
-			bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-			tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		});
-	]]
+	
 local t = APR.OptionsFrame.MainFrame.OptionsGeneral:CreateTexture(nil,"BACKGROUND")
 t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 t:SetAllPoints(APR.OptionsFrame.MainFrame.OptionsGeneral)
@@ -966,7 +922,7 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	APR.OptionsFrame.Button1ntex:SetTexture("Interface/Buttons/UI-Panel-Button-Up")
 	APR.OptionsFrame.Button1ntex:SetTexCoord(0, 0.625, 0, 0.6875)
 	APR.OptionsFrame.Button1ntex:SetAllPoints()
-	APR.OptionsFrame.Button1:SetNormalTexture(APR.OptionsFrame.Button1ntex)
+--	APR.OptionsFrame.Button1:SetNormalTexture(APR.OptionsFrame.Button1ntex)
 	APR.OptionsFrame.Button1htex = APR.OptionsFrame.Button1:CreateTexture()
 	APR.OptionsFrame.Button1htex:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
 	APR.OptionsFrame.Button1htex:SetTexCoord(0, 0.625, 0, 0.6875)
@@ -1026,7 +982,7 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	APR.OptionsFrame.Button2ntex:SetTexture("Interface/Buttons/UI-Panel-Button-Up")
 	APR.OptionsFrame.Button2ntex:SetTexCoord(0, 0.625, 0, 0.6875)
 	APR.OptionsFrame.Button2ntex:SetAllPoints()
-	APR.OptionsFrame.Button2:SetNormalTexture(APR.OptionsFrame.Button2ntex)
+--	APR.OptionsFrame.Button2:SetNormalTexture(APR.OptionsFrame.Button2ntex)
 	APR.OptionsFrame.Button2htex = APR.OptionsFrame.Button2:CreateTexture()
 	APR.OptionsFrame.Button2htex:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
 	APR.OptionsFrame.Button2htex:SetTexCoord(0, 0.625, 0, 0.6875)
@@ -1038,8 +994,10 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	APR.OptionsFrame.Button2ptex:SetAllPoints()
 	APR.OptionsFrame.Button2:SetPushedTexture(APR.OptionsFrame.Button2ptex)
 	APR.OptionsFrame["Button2"]:SetScript("OnClick", function(self, arg1)
-		KeyBindingFrame_LoadUI()
-		KeyBindingFrame:Show()
+		--KeyBindingFrame_LoadUI()
+		--KeyBindingFrame:Show()
+		ShowUIPanel(KeyBindingFrame)
+		--QuickKeybindFrame:Show()
 	end)
 
 	APR.OptionsFrame["Button3"] = CreateFrame("Button", "APR_OptionsButtons3", APR.OptionsFrame.MainFrame, "SecureActionButtonTemplate")
@@ -1054,7 +1012,7 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	APR.OptionsFrame.Button3ntex:SetTexture("Interface/Buttons/UI-Panel-Button-Up")
 	APR.OptionsFrame.Button3ntex:SetTexCoord(0, 0.625, 0, 0.6875)
 	APR.OptionsFrame.Button3ntex:SetAllPoints()
-	APR.OptionsFrame.Button3:SetNormalTexture(APR.OptionsFrame.Button3ntex)
+--	APR.OptionsFrame.Button3:SetNormalTexture(APR.OptionsFrame.Button3ntex)
 	APR.OptionsFrame.Button3htex = APR.OptionsFrame.Button3:CreateTexture()
 	APR.OptionsFrame.Button3htex:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
 	APR.OptionsFrame.Button3htex:SetTexCoord(0, 0.625, 0, 0.6875)

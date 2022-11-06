@@ -5,8 +5,7 @@
 ]]--
 
 local app = select(2, ...);
-local L = app.L;
-
+local L = app.L;						   
 APR = {}
 APR.Name = UnitName("player")
 APR.Realm = string.gsub(GetRealmName(), " ", "")
@@ -51,40 +50,12 @@ APR.MapLoaded = 0
 APR.WQActive = 0
 APR.WQSpecialActive = 0
 
-APR.Dinged60 = 0
-APR.Dinged60nr = 0
-APR.Dinged80 = 0
-APR.Dinged80nr = 0
-APR.Dinged90 = 0
-APR.Dinged90nr = 0
-APR.Dinged100 = 0
-APR.Dinged100nr = 0
-APR.Dinged110 = 0
-APR.Dinged1100nr = 0
-
 APR.ArrowActive = 0
 APR.ArrowActive_X = 0
 APR.ArrowActive_Y = 0
 APR.MiniMap_X = 0
 APR.MiniMap_Y = 0
 APR.MacroUpdaterVar = {}
-
---[[ -- Useless
-	local zzloaded, zzreason = LoadAddOn("APR-Test")
-	if (zzloaded) then
-			APR.ErrorzFrame = CreateFrame("Frame")
-			APR_ErrorrzInTimer = APR.ErrorzFrame:CreateAnimationGroup()
-			APR_ErrorrzInTimer.anim = APR_ErrorrzInTimer:CreateAnimation()
-			APR_ErrorrzInTimer.anim:SetDuration(3)
-			APR_ErrorrzInTimer:SetLooping("REPEAT")
-			APR_ErrorrzInTimer:SetScript("OnLoop", function(self, event, ...)
-				print("APR-Core: Error - Please disable or delete: APR-Test")
-				print("APR-Core: It will not be used anymore.")
-				print("------------------------------------------")
-			end)
-			APR_ErrorrzInTimer:Play()
-	end
-]]--
 
 function APR.AutoPathOnBeta(ChoiceZ) -- Finds the path to objective probably
 	local ZeMap = C_Map.GetBestMapForUnit("player")
@@ -302,7 +273,7 @@ MovieFrame_PlayMovie = function(...)
 	if (IsControlKeyDown() or (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 0)) then
 		PlayMovie_hook(...) --MovieFrame_PlayMovie, as previously stated
 	else
-		print("APR: "..L["SKIPPED_CUTSCENE"])
+print("APR: "..L["SKIPPED_CUTSCENE"])
 		GameMovieFinished()
 	end
 end
@@ -587,6 +558,7 @@ function APR.RoutePlanLoadIn() --Loads RoutePlan and option frame. RoutePlan is 
 	APR.LoadInOptionFrame["FS"]:SetJustifyH("CENTER")
 	APR.LoadInOptionFrame["FS"]:SetFontObject("GameFontNormalLarge")
 	APR.LoadInOptionFrame["FS"]:SetText("APR: Pick Route")
+	
 	APR.LoadInOptionFrame["B1"] = CreateFrame("Button", "APR_LoadInOptionFrameButton1", APR.LoadInOptionFrame, "UIPanelButtonTemplate")
 	APR.LoadInOptionFrame["B1"]:SetWidth(140)
 	APR.LoadInOptionFrame["B1"]:SetHeight(30)
@@ -613,6 +585,7 @@ APR.LoadInOptionFrame["B2"]:Hide()
 			APR.LoadInOptionFrame:Hide()
 		end
 	end)
+	
 	APR.LoadInOptionFrame["B3"] = CreateFrame("Button", "APR_LoadInOptionFrameButton3", APR.LoadInOptionFrame, "UIPanelButtonTemplate")
 	APR.LoadInOptionFrame["B3"]:SetWidth(140)
 	APR.LoadInOptionFrame["B3"]:SetHeight(30)
@@ -626,14 +599,16 @@ APR.LoadInOptionFrame["B2"]:Hide()
 		end
 	end)
 
-	APR.RoutePlan = CreateFrame("frame", "APR.RoutePlanMainFraexg1", UIParent)
+-- Main Frame
+	APR.RoutePlan = CreateFrame("frame", "APR.RoutePlanMainFrame1", UIParent)
 	APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
 	APR.RoutePlan:SetWidth(1)
 	APR.RoutePlan:SetHeight(1)
 	APR.RoutePlan:SetMovable(true)
 	APR.RoutePlan:EnableMouse(true)
 	APR.RoutePlan:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1 = CreateFrame("frame", "APR.RoutePlanMainFramexg1", APR.RoutePlan.FG1)
+	
+	APR.RoutePlan.FG1 = CreateFrame("frame", "APR.RoutePlanMainFrame2", APR.RoutePlan.FG1)
 	APR.RoutePlan.FG1:SetWidth(1)
 	APR.RoutePlan.FG1:SetHeight(1)
 	APR.RoutePlan.FG1:SetMovable(true)
@@ -642,542 +617,35 @@ APR.LoadInOptionFrame["B2"]:Hide()
 	APR.RoutePlan.FG1:SetPoint("TOPLEFT", APR.RoutePlan, "TOPLEFT", 0, 0)
 	APR.RoutePlan.FG1:SetScale(0.9)
 
-	APR.RoutePlan.FG1.F22 = CreateFrame("frame", "APR.RoutePlanMainFr22ame3", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.F22:SetWidth(165)
-	APR.RoutePlan.FG1.F22:SetHeight(275)
-	APR.RoutePlan.FG1.F22:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.F22:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 165, 0)
-	local t = APR.RoutePlan.FG1.F22:CreateTexture(nil,"BACKGROUND")
-	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-	t:SetAllPoints(APR.RoutePlan.FG1.F22)
-	APR.RoutePlan.FG1.F22.texture = t
-
-	APR.RoutePlan.FG1.F22:SetScript("OnMouseDown", function(self, button) -- When mouse pressed
-			if button == "RightButton" then
-				APR.RoutePlan:StartMoving();
-				APR.RoutePlan.isMoving = true;
-			else
-				APR.RoutePlan:StopMovingOrSizing();
-				APR.RoutePlan.isMoving = false;
-				APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-				APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-				APR.RoutePlan:ClearAllPoints()
-				APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-			end
-	end)
-
-	APR.RoutePlan.FG1.F22:SetScript("OnMouseUp", function(self, button) -- When mouse released after being pressed
-		if button == "RightButton" and APR.RoutePlan.isMoving then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-			APR.RoutePlan:ClearAllPoints()
-			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-		end
-	end)
-	APR.RoutePlan.FG1.F22:SetScript("OnHide", function(self) -- prevent routeplan from being movable or resizable when hidden, since you can't see it anyways
-		if ( APR.RoutePlan.isMoving ) then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-		end
-	end)
-
-	APR.RoutePlan.FG1.xg2 = CreateFrame("frame", "APR.RoutePlanMainFr22ame3x2", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.xg2:SetWidth(165)
-	APR.RoutePlan.FG1.xg2:SetHeight(275)
-	APR.RoutePlan.FG1.xg2:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.xg2:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 0, 0)
-
-	local t = APR.RoutePlan.FG1.xg2:CreateTexture(nil,"BACKGROUND")
-	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-	t:SetAllPoints(APR.RoutePlan.FG1.xg2)
-	APR.RoutePlan.FG1.xg2.texture = t
-
-	APR.RoutePlan.FG1.xg2:SetScript("OnMouseDown", function(self, button)--When mouse pressed
-			if button == "RightButton" then
-				APR.RoutePlan:StartMoving();
-				APR.RoutePlan.isMoving = true;
-			else
-				APR.RoutePlan:StopMovingOrSizing();
-				APR.RoutePlan.isMoving = false;
-				APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-				APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-				APR.RoutePlan:ClearAllPoints()
-				APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-			end
-	end)
-
-	APR.RoutePlan.FG1.xg2:SetScript("OnMouseUp", function(self, button) -- When mouse released after being pressed
-		if button == "RightButton" and APR.RoutePlan.isMoving then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-			APR.RoutePlan:ClearAllPoints()
-			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-		end
-	end)
-	APR.RoutePlan.FG1.xg2:SetScript("OnHide", function(self) -- prevent routeplan from being movable or resizable when hidden, since you can't see it anyways
-		if ( APR.RoutePlan.isMoving ) then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-		end
-	end)
-
-		APR.RoutePlan.FG1.HelpText = CreateFrame("frame", "APR.RoutePlanMainFsramex2xxxshlp", APR.RoutePlan.FG1)
-		APR.RoutePlan.FG1.HelpText:SetWidth(250)
-		APR.RoutePlan.FG1.HelpText:SetHeight(20)
-		APR.RoutePlan.FG1.HelpText:SetMovable(true)
-		APR.RoutePlan.FG1.HelpText:EnableMouse(true)
-		APR.RoutePlan.FG1.HelpText:SetFrameStrata("HIGH")
-		APR.RoutePlan.FG1.HelpText:SetResizable(true)
-		APR.RoutePlan.FG1.HelpText:SetScale(0.7)
-		APR.RoutePlan.FG1.HelpText:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.xg2, "BOTTOMLEFT", 20,-15)
-	--[[ stuff original author commented out
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetBackdrop( {
-		bgFile = "Interface\\Buttons\\WHITE8X8", tile = false, tileSize=0,
-		edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-		tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		});
-	]]--
-		local t = APR.RoutePlan.FG1.HelpText:CreateTexture(nil,"BACKGROUND")
+APR.RoutePlan.FG1.HelpText = CreateFrame("frame", "APR.RoutePlanHelpTextFrame", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.HelpText:SetWidth(250)
+	APR.RoutePlan.FG1.HelpText:SetHeight(20)
+	APR.RoutePlan.FG1.HelpText:SetMovable(true)
+	APR.RoutePlan.FG1.HelpText:EnableMouse(true)
+	APR.RoutePlan.FG1.HelpText:SetFrameStrata("MEDIUM")
+	APR.RoutePlan.FG1.HelpText:SetResizable(true)
+	APR.RoutePlan.FG1.HelpText:SetScale(0.7)
+	APR.RoutePlan.FG1.HelpText:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 5,-402)
+	local t = APR.RoutePlan.FG1.HelpText:CreateTexture(nil,"BACKGROUND")
 		t:SetTexture("Interface\\Buttons\\WHITE8X8")
 		t:SetAllPoints(APR.RoutePlan.FG1.HelpText)
 		t:SetColorTexture(0.1,0.1,0.4,1)
-		APR.RoutePlan.FG1.HelpText.texture = t
-		APR.RoutePlan.FG1.HelpText.FS = APR.RoutePlan.FG1.HelpText:CreateFontString("APR.RoutePlan_Fx3x_FFGs1Shlp","ARTWORK", "ChatFontNormal")
-		APR.RoutePlan.FG1.HelpText.FS:SetParent(APR.RoutePlan.FG1.HelpText)
-		APR.RoutePlan.FG1.HelpText.FS:SetPoint("TOP",APR.RoutePlan.FG1.HelpText,"TOP",0,1)
-		APR.RoutePlan.FG1.HelpText.FS:SetWidth(250)
-		APR.RoutePlan.FG1.HelpText.FS:SetHeight(20)
-		APR.RoutePlan.FG1.HelpText.FS:SetJustifyH("CENTER")
-		APR.RoutePlan.FG1.HelpText.FS:SetFontObject("GameFontNormal")
-		APR.RoutePlan.FG1.HelpText.FS:SetText("Right-click or drag to move routes")
-
-	APR.RoutePlan.FG1.F24 = CreateFrame("frame", "APR.RoutePlanMainFr22ame4", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.F24:SetWidth(165)
-	APR.RoutePlan.FG1.F24:SetHeight(275)
-	APR.RoutePlan.FG1.F24:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.F24:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 495, 0)
-
-	local t = APR.RoutePlan.FG1.F24:CreateTexture(nil,"BACKGROUND")
-	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-	t:SetAllPoints(APR.RoutePlan.FG1.F24)
-	APR.RoutePlan.FG1.F24.texture = t
-
-	APR.RoutePlan.FG1.F24:SetScript("OnMouseDown", function(self, button)
-			if button == "RightButton" then
-				APR.RoutePlan:StartMoving();
-				APR.RoutePlan.isMoving = true;
-			else
-				APR.RoutePlan:StopMovingOrSizing();
-				APR.RoutePlan.isMoving = false;
-				APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-				APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-				APR.RoutePlan:ClearAllPoints()
-				APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-			end
-	end)
-	APR.RoutePlan.FG1.F24:SetScript("OnMouseUp", function(self, button)
-		if button == "RightButton" and APR.RoutePlan.isMoving then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-			APR.RoutePlan:ClearAllPoints()
-			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-		end
-	end)
-	APR.RoutePlan.FG1.F24:SetScript("OnHide", function(self)
-		if ( APR.RoutePlan.isMoving ) then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-		end
-	end)
-
-	APR.RoutePlan.FG1.xg3 = CreateFrame("frame", "APR.RoutePlanMainFr22ame3x3", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.xg3:SetWidth(165)
-	APR.RoutePlan.FG1.xg3:SetHeight(275)
-	APR.RoutePlan.FG1.xg3:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.xg3:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 330, 0)
-
-	local t = APR.RoutePlan.FG1.xg3:CreateTexture(nil,"BACKGROUND")
-	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-	t:SetAllPoints(APR.RoutePlan.FG1.xg3)
-	APR.RoutePlan.FG1.xg3.texture = t
-
-	APR.RoutePlan.FG1.xg3:SetScript("OnMouseDown", function(self, button)
-			if button == "RightButton" then
-				APR.RoutePlan:StartMoving();
-				APR.RoutePlan.isMoving = true;
-			else
-				APR.RoutePlan:StopMovingOrSizing();
-				APR.RoutePlan.isMoving = false;
-				APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-				APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-				APR.RoutePlan:ClearAllPoints()
-				APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-			end
-	end)
-	APR.RoutePlan.FG1.xg3:SetScript("OnMouseUp", function(self, button)
-		if button == "RightButton" and APR.RoutePlan.isMoving then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-			APR.RoutePlan:ClearAllPoints()
-			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-		end
-	end)
-	APR.RoutePlan.FG1.xg3:SetScript("OnHide", function(self)
-		if ( APR.RoutePlan.isMoving ) then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-		end
-	end)
-
-	APR.RoutePlan.FG1.F23 = CreateFrame("frame", "APR.RoutePlanMainFr22ame13", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.F23:SetWidth(165)
-	APR.RoutePlan.FG1.F23:SetHeight(20)
-	APR.RoutePlan.FG1.F23:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.F23:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 330, 0)
-
-	local t = APR.RoutePlan.FG1.F23:CreateTexture(nil,"BACKGROUND")
-	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-	t:SetAllPoints(APR.RoutePlan.FG1.F23)
-	APR.RoutePlan.FG1.F23.texture = t
-
-	APR.RoutePlan.FG1.F23:SetScript("OnMouseDown", function(self, button)
-			if button == "RightButton" then
-				APR.RoutePlan:StartMoving();
-				APR.RoutePlan.isMoving = true;
-			else
-				APR.RoutePlan:StopMovingOrSizing();
-				APR.RoutePlan.isMoving = false;
-			end
-	end)
-	APR.RoutePlan.FG1.F23:SetScript("OnMouseUp", function(self, button)
-		if button == "RightButton" and APR.RoutePlan.isMoving then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-			APR.RoutePlan:ClearAllPoints()
-			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-		end
-	end)
-	APR.RoutePlan.FG1.F23:SetScript("OnHide", function(self)
-		if ( APR.RoutePlan.isMoving ) then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-		end
-	end)
-	APR.RoutePlan.FG1.F23["FS"] = APR.RoutePlan.FG1.F23:CreateFontString("APR.RoutePlan_Fxx3x_FFGs1S","ARTWORK", "ChatFontNormal")
-	APR.RoutePlan.FG1.F23["FS"]:SetParent(APR.RoutePlan.FG1.F23)
-	APR.RoutePlan.FG1.F23["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.F23,"TOP",0,0)
-	APR.RoutePlan.FG1.F23["FS"]:SetWidth(165)
-	APR.RoutePlan.FG1.F23["FS"]:SetHeight(20)
-	APR.RoutePlan.FG1.F23["FS"]:SetJustifyH("CENTER")
-	APR.RoutePlan.FG1.F23["FS"]:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1.F23["FS"]:SetText("Eastern Kingdoms")
-	APR.RoutePlan.FG1.Fx1 = CreateFrame("frame", "APR.RoutePlanMainFr22amex1", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.Fx1:SetWidth(165)
-	APR.RoutePlan.FG1.Fx1:SetHeight(20)
-	APR.RoutePlan.FG1.Fx1:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.Fx1:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 165, 0)
-
-	local t = APR.RoutePlan.FG1.Fx1:CreateTexture(nil,"BACKGROUND")
-	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-	t:SetAllPoints(APR.RoutePlan.FG1.Fx1)
-	APR.RoutePlan.FG1.Fx1.texture = t
-
-	APR.RoutePlan.FG1.Fx1:SetScript("OnMouseDown", function(self, button)
-			if button == "RightButton" then
-				APR.RoutePlan:StartMoving();
-				APR.RoutePlan.isMoving = true;
-			else
-				APR.RoutePlan:StopMovingOrSizing();
-				APR.RoutePlan.isMoving = false;
-			end
-	end)
-	APR.RoutePlan.FG1.Fx1:SetScript("OnMouseUp", function(self, button)
-		if button == "RightButton" and APR.RoutePlan.isMoving then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-			APR.RoutePlan:ClearAllPoints()
-			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-		end
-	end)
-	APR.RoutePlan.FG1.Fx1:SetScript("OnHide", function(self)
-		if ( APR.RoutePlan.isMoving ) then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-		end
-	end)
-	APR.RoutePlan.FG1.Fx1["FS"] = APR.RoutePlan.FG1.Fx1:CreateFontString("APR.RoutePlan_Fxx3x_FFGs1Sx1","ARTWORK", "ChatFontNormal")
-	APR.RoutePlan.FG1.Fx1["FS"]:SetParent(APR.RoutePlan.FG1.Fx1)
-	APR.RoutePlan.FG1.Fx1["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.Fx1,"TOP",0,0)
-	APR.RoutePlan.FG1.Fx1["FS"]:SetWidth(165)
-	APR.RoutePlan.FG1.Fx1["FS"]:SetHeight(20)
-	APR.RoutePlan.FG1.Fx1["FS"]:SetJustifyH("CENTER")
-	APR.RoutePlan.FG1.Fx1["FS"]:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1.Fx1["FS"]:SetText("Kalimdor")
-
-	APR.RoutePlan.FG1.Fx2x2 = CreateFrame("frame", "APR.RoutePlanMainFr22amex2x2", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.Fx2x2:SetWidth(165)
-	APR.RoutePlan.FG1.Fx2x2:SetHeight(20)
-	APR.RoutePlan.FG1.Fx2x2:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.Fx2x2:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 495, 0)
-
-	APR.RoutePlan.FG1.Fx2 = CreateFrame("frame", "APR.RoutePlanMainFr22amex2", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.Fx2:SetWidth(165)
-	APR.RoutePlan.FG1.Fx2:SetHeight(20)
-	APR.RoutePlan.FG1.Fx2:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.Fx2:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 495, 0)
-
-	local t = APR.RoutePlan.FG1.Fx2:CreateTexture(nil,"BACKGROUND")
-	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-	t:SetAllPoints(APR.RoutePlan.FG1.Fx2)
-	APR.RoutePlan.FG1.Fx2.texture = t
-
-	APR.RoutePlan.FG1.Fx2:SetScript("OnMouseDown", function(self, button) --While right mouse button is clicked, allow the route plan to be moved around
-			if button == "RightButton" then
-				APR.RoutePlan:StartMoving();
-				APR.RoutePlan.isMoving = true;
-			else
-				APR.RoutePlan:StopMovingOrSizing();
-				APR.RoutePlan.isMoving = false;
-			end
-	end)
-	APR.RoutePlan.FG1.Fx2:SetScript("OnMouseUp", function(self, button)
-		if button == "RightButton" and APR.RoutePlan.isMoving then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-			APR.RoutePlan:ClearAllPoints()
-			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-		end
-	end)
-	APR.RoutePlan.FG1.Fx2:SetScript("OnHide", function(self)
-		if ( APR.RoutePlan.isMoving ) then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-		end
-	end)
-	APR.RoutePlan.FG1.Fx2["FS"] = APR.RoutePlan.FG1.Fx2:CreateFontString("APR.RoutePlan_Fxx3x_FFGs1Sx1","ARTWORK", "ChatFontNormal")
-	APR.RoutePlan.FG1.Fx2["FS"]:SetParent(APR.RoutePlan.FG1.Fx2)
-	APR.RoutePlan.FG1.Fx2["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.Fx2,"TOP",0,0)
-	APR.RoutePlan.FG1.Fx2["FS"]:SetWidth(165)
-	APR.RoutePlan.FG1.Fx2["FS"]:SetHeight(20)
-	APR.RoutePlan.FG1.Fx2["FS"]:SetJustifyH("CENTER")
-	APR.RoutePlan.FG1.Fx2["FS"]:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1.Fx2["FS"]:SetText("Shadowlands")
-
------------------------ SpeedFrame Start ---------------
-
-	APR.RoutePlan.FG1.F26 = CreateFrame("frame", "APR.RoutePlanMainFr22ame411", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.F26:SetWidth(165)
-	APR.RoutePlan.FG1.F26:SetHeight(275)
-	APR.RoutePlan.FG1.F26:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.F26:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 660, 0)
-
-	local t = APR.RoutePlan.FG1.F26:CreateTexture(nil,"BACKGROUND")
-	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-	t:SetAllPoints(APR.RoutePlan.FG1.F26)
-	APR.RoutePlan.FG1.F26.texture = t
-
-	APR.RoutePlan.FG1.F26:SetScript("OnMouseDown", function(self, button)
-			if button == "RightButton" then
-				APR.RoutePlan:StartMoving();
-				APR.RoutePlan.isMoving = true;
-			else
-				APR.RoutePlan:StopMovingOrSizing();
-				APR.RoutePlan.isMoving = false;
-				APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-				APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-				APR.RoutePlan:ClearAllPoints()
-				APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-			end
-	end)
-	APR.RoutePlan.FG1.F26:SetScript("OnMouseUp", function(self, button)
-		if button == "RightButton" and APR.RoutePlan.isMoving then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-			APR.RoutePlan:ClearAllPoints()
-			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-		end
-	end)
-	APR.RoutePlan.FG1.F26:SetScript("OnHide", function(self)
-		if ( APR.RoutePlan.isMoving ) then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-		end
-	end)
-	APR.RoutePlan.FG1.F25x3 = CreateFrame("frame", "APR.RoutePlanMainFr22ameF25x2", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.F25x3:SetWidth(165)
-	APR.RoutePlan.FG1.F25x3:SetHeight(20)
-	APR.RoutePlan.FG1.F25x3:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.F25x3:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 660, 0)
-
-	APR.RoutePlan.FG1.F25 = CreateFrame("frame", "APR.RoutePlanMainFr22ame3x1", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.F25:SetWidth(165)
-	APR.RoutePlan.FG1.F25:SetHeight(20)
-	APR.RoutePlan.FG1.F25:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.F25:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 660, 0)
-	APR.RoutePlan.FG1.F25:SetScript("OnMouseDown", function(self, button)
-			if button == "RightButton" then
-				APR.RoutePlan:StartMoving();
-				APR.RoutePlan.isMoving = true;
-			else
-				APR.RoutePlan:StopMovingOrSizing();
-				APR.RoutePlan.isMoving = false;
-				APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-				APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-				APR.RoutePlan:ClearAllPoints()
-				APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-			end
-	end)
-	APR.RoutePlan.FG1.F25:SetScript("OnMouseUp", function(self, button)
-		if button == "RightButton" and APR.RoutePlan.isMoving then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-			APR.RoutePlan:ClearAllPoints()
-			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-		end
-	end)
-	APR.RoutePlan.FG1.F25:SetScript("OnHide", function(self)
-		if ( APR.RoutePlan.isMoving ) then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-		end
-	end)
-
-	APR.RoutePlan.FG1.Fx3 = CreateFrame("frame", "APR.RoutePlanMainFr22amex3", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.Fx3:SetWidth(165)
-	APR.RoutePlan.FG1.Fx3:SetHeight(20)
-	APR.RoutePlan.FG1.Fx3:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.Fx3:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 660, 0)
-
-	local t = APR.RoutePlan.FG1.Fx3:CreateTexture(nil,"BACKGROUND")
-	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-	t:SetAllPoints(APR.RoutePlan.FG1.Fx3)
-	APR.RoutePlan.FG1.Fx3.texture = t
-
-	APR.RoutePlan.FG1.Fx3:SetScript("OnMouseDown", function(self, button) -- On right mouse clicked, start moving the frame
-			if button == "RightButton" then
-				APR.RoutePlan:StartMoving();
-				APR.RoutePlan.isMoving = true;
-			else
-				APR.RoutePlan:StopMovingOrSizing();
-				APR.RoutePlan.isMoving = false;
-			end
-	end)
-	APR.RoutePlan.FG1.Fx3:SetScript("OnMouseUp", function(self, button) --On let go
-		if button == "RightButton" and APR.RoutePlan.isMoving then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-			APR.RoutePlan:ClearAllPoints()
-			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-		end
-	end)
-	APR.RoutePlan.FG1.Fx3:SetScript("OnHide", function(self)
-		if ( APR.RoutePlan.isMoving ) then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-		end
-	end)
-	APR.RoutePlan.FG1.Fx3["FS"] = APR.RoutePlan.FG1.Fx3:CreateFontString("APR.RoutePlan_Fxx3x_FFGs1Sx3","ARTWORK", "ChatFontNormal")
-	APR.RoutePlan.FG1.Fx3["FS"]:SetParent(APR.RoutePlan.FG1.Fx3)
-	APR.RoutePlan.FG1.Fx3["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.Fx3,"TOP",0,0)
-	APR.RoutePlan.FG1.Fx3["FS"]:SetWidth(165)
-	APR.RoutePlan.FG1.Fx3["FS"]:SetHeight(20)
-	APR.RoutePlan.FG1.Fx3["FS"]:SetJustifyH("CENTER")
-	APR.RoutePlan.FG1.Fx3["FS"]:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1.Fx3["FS"]:SetText("Speed Runs")
-
-	local zenr = APR.NumbRoutePlan("SpeedRun")
-	for CLi = 1, zenr do
-		APR.RoutePlan.FG1["Fx3z"..CLi] = CreateFrame("frame", "APR.RoutePlanMainFsramex2x3xxs"..CLi, APR.RoutePlan.FG1)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetWidth(225)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetHeight(20)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetMovable(true)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:EnableMouse(true)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetFrameStrata("HIGH")
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetResizable(true)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetScale(0.7)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 0, -(20*CLi))
-		--[[ Code by original author commented
-			APR.RoutePlan.FG1["Fx3z"..CLi]:SetBackdrop( {
-				bgFile = "Interface\\Buttons\\WHITE8X8", tile = false, tileSize=0,
-				edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-				tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-			});
-		]]--
-
-local t = APR.RoutePlan.FG1["Fx3z"..CLi]:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\Buttons\\WHITE8X8")
-t:SetAllPoints(APR.RoutePlan.FG1["Fx3z"..CLi])
-t:SetColorTexture(0.1,0.1,0.4,1)
-APR.RoutePlan.FG1["Fx3z"..CLi].texture = t
-
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetScript("OnMouseDown", function(self, button)
-				if button == "LeftButton" then
-					APR.RoutePlan.FG1["Fx3z"..CLi]:StartMoving();
-					APR.RoutePlan.FG1["Fx3z"..CLi].isMoving = true;
-				elseif button == "RightButton" then
-					local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
-					if (zenew < 19 or zenew == 19) then
-						tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["Fx3z"..CLi]["FS"]:GetText())
-						APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["Fx3z"..CLi]["FS"]:GetText())
-						APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
-					end
-					APR.RoutePlanCheckPos()
-					APR.CheckCustomEmpty()
-				end
-		end)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetScript("OnMouseUp", function(self, button)
-			if button == "LeftButton" and APR.RoutePlan.FG1["Fx3z"..CLi].isMoving then
-				APR.RoutePlan.FG1["Fx3z"..CLi]:StopMovingOrSizing();
-				APR.RoutePlan.FG1["Fx3z"..CLi].isMoving = false;
-				APR.CheckPosMove(5)
-				APR.RoutePlanCheckPos()
-				APR.CheckCustomEmpty()
-			end
-		end)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetScript("OnHide", function(self)
-			if ( APR.RoutePlan.FG1.isMoving ) then
-				APR.RoutePlan.FG1:StopMovingOrSizing();
-				APR.RoutePlan.FG1.isMoving = false;
-			end
-		end)
-		--APR.RoutePlan.FG1["Fx3z"..CLi]:SetBackdropColor(0.1,0.1,0.4,1)
-		APR.RoutePlan.FG1["Fx3z"..CLi]["FS"] = APR.RoutePlan.FG1["Fx3z"..CLi]:CreateFontString("APR.RoutePlan_Fx3x_FFGs3S"..CLi,"ARTWORK", "ChatFontNormal")
-		APR.RoutePlan.FG1["Fx3z"..CLi]["FS"]:SetParent(APR.RoutePlan.FG1["Fx3z"..CLi])
-		APR.RoutePlan.FG1["Fx3z"..CLi]["FS"]:SetPoint("TOP",APR.RoutePlan.FG1["Fx3z"..CLi],"TOP",0,1)
-		APR.RoutePlan.FG1["Fx3z"..CLi]["FS"]:SetWidth(210)
-		APR.RoutePlan.FG1["Fx3z"..CLi]["FS"]:SetHeight(20)
-		APR.RoutePlan.FG1["Fx3z"..CLi]["FS"]:SetJustifyH("LEFT")
-		APR.RoutePlan.FG1["Fx3z"..CLi]["FS"]:SetFontObject("GameFontNormal")
-		APR.RoutePlan.FG1["Fx3z"..CLi]["FS"]:SetText("")
-	end
-
------------------------ SpeedFrame End ---------------
-
+		
+	APR.RoutePlan.FG1.HelpText.texture = t
+	APR.RoutePlan.FG1.HelpText.FS = APR.RoutePlan.FG1.HelpText:CreateFontString("APR.RoutePlan_Help_Text","ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1.HelpText.FS:SetParent(APR.RoutePlan.FG1.HelpText)
+	APR.RoutePlan.FG1.HelpText.FS:SetPoint("TOP",APR.RoutePlan.FG1.HelpText,"TOP",5,1)
+	APR.RoutePlan.FG1.HelpText.FS:SetWidth(250)
+	APR.RoutePlan.FG1.HelpText.FS:SetHeight(20)
+	APR.RoutePlan.FG1.HelpText.FS:SetJustifyH("LEFT")
+	APR.RoutePlan.FG1.HelpText.FS:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1.HelpText.FS:SetText("Right-click or drag zone to move routes")
+	
 	APR.RoutePlan.FG1["CloseButton"] = CreateFrame("Button", "APR_RoutePlan_FG1_CloseButton", APR.RoutePlan.FG1, "UIPanelButtonTemplate")
-	APR.RoutePlan.FG1["CloseButton"]:SetWidth(25)
-	APR.RoutePlan.FG1["CloseButton"]:SetHeight(25)
+	APR.RoutePlan.FG1["CloseButton"]:SetWidth(20)
+	APR.RoutePlan.FG1["CloseButton"]:SetHeight(20)
 	APR.RoutePlan.FG1["CloseButton"]:SetText("X")
-	APR.RoutePlan.FG1["CloseButton"]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1, "TOPRIGHT", 840, 25)
+	APR.RoutePlan.FG1["CloseButton"]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1, "TOPRIGHT", 1008, 20)
 	APR.RoutePlan.FG1["CloseButton"]:SetNormalFontObject("GameFontNormalLarge")
 	APR.RoutePlan.FG1["CloseButton"]:SetScript("OnMouseUp", function(self, button)
 		if button == "LeftButton" then
@@ -1186,27 +654,30 @@ APR.RoutePlan.FG1["Fx3z"..CLi].texture = t
 	end)
 APR.RoutePlan.FG1:Hide()
 
-	APR.RoutePlan.FG1.Fx0 = CreateFrame("frame", "APR.RoutePlanMainFr22amex0", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.Fx0:SetWidth(165)
-	APR.RoutePlan.FG1.Fx0:SetHeight(20)
-	APR.RoutePlan.FG1.Fx0:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.Fx0:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 0, 0)
-
-	local t = APR.RoutePlan.FG1.Fx0:CreateTexture(nil,"BACKGROUND")
-	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-	t:SetAllPoints(APR.RoutePlan.FG1.Fx0)
-	APR.RoutePlan.FG1.Fx0.texture = t
-
-	APR.RoutePlan.FG1.Fx0:SetScript("OnMouseDown", function(self, button)
-			if button == "RightButton" then
-				APR.RoutePlan:StartMoving();
-				APR.RoutePlan.isMoving = true;
-			else
-				APR.RoutePlan:StopMovingOrSizing();
-				APR.RoutePlan.isMoving = false;
-			end
+--Custom Path
+	APR.RoutePlan.FG1.CPF = CreateFrame("frame", "APR.RoutePlanCustomPathFrame", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.CPF:SetWidth(165)
+	APR.RoutePlan.FG1.CPF:SetHeight(275)
+	APR.RoutePlan.FG1.CPF:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.CPF:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 0, 0)
+		local t = APR.RoutePlan.FG1.CPF:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.CPF)
+			APR.RoutePlan.FG1.CPF.texture = t
+	APR.RoutePlan.FG1.CPF:SetScript("OnMouseDown", function(self, button)--When mouse pressed
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
 	end)
-	APR.RoutePlan.FG1.Fx0:SetScript("OnMouseUp", function(self, button)
+	APR.RoutePlan.FG1.CPF:SetScript("OnMouseUp", function(self, button) -- When mouse released after being pressed
 		if button == "RightButton" and APR.RoutePlan.isMoving then
 			APR.RoutePlan:StopMovingOrSizing();
 			APR.RoutePlan.isMoving = false;
@@ -1216,216 +687,889 @@ APR.RoutePlan.FG1:Hide()
 			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
 		end
 	end)
-	APR.RoutePlan.FG1.Fx0:SetScript("OnHide", function(self)
+	APR.RoutePlan.FG1.CPF:SetScript("OnHide", function(self) -- prevent routeplan from being movable or resizable when hidden, since you can't see it anyways
 		if ( APR.RoutePlan.isMoving ) then
 			APR.RoutePlan:StopMovingOrSizing();
 			APR.RoutePlan.isMoving = false;
 		end
 	end)
-	APR.RoutePlan.FG1.Fx0["FS"] = APR.RoutePlan.FG1.Fx0:CreateFontString("APR.RoutePlan_Fxx3x_FFGs1Sx1","ARTWORK", "ChatFontNormal")
-	APR.RoutePlan.FG1.Fx0["FS"]:SetParent(APR.RoutePlan.FG1.Fx0)
-	APR.RoutePlan.FG1.Fx0["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.Fx0,"TOP",0,0)
-	APR.RoutePlan.FG1.Fx0["FS"]:SetWidth(165)
-	APR.RoutePlan.FG1.Fx0["FS"]:SetHeight(20)
-	APR.RoutePlan.FG1.Fx0["FS"]:SetJustifyH("CENTER")
-	APR.RoutePlan.FG1.Fx0["FS"]:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1.Fx0["FS"]:SetText("Custom Path")
+
+	APR.RoutePlan.FG1.CPT = CreateFrame("frame", "APR.RoutePlanCustomPathTitle", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.CPT:SetWidth(165)
+	APR.RoutePlan.FG1.CPT:SetHeight(20)
+	APR.RoutePlan.FG1.CPT:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.CPT:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 0, 0)
+		local t = APR.RoutePlan.FG1.CPT:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.CPT)
+			APR.RoutePlan.FG1.CPT.texture = t
+	APR.RoutePlan.FG1.CPT:SetScript("OnMouseDown", function(self, button)
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.CPT:SetScript("OnMouseUp", function(self, button)
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.CPT:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.CPT["FS"] = APR.RoutePlan.FG1.CPT:CreateFontString("APR.RoutePlanCustomPathTitle","ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1.CPT["FS"]:SetParent(APR.RoutePlan.FG1.CPT)
+	APR.RoutePlan.FG1.CPT["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.CPT,"TOP",0,0)
+	APR.RoutePlan.FG1.CPT["FS"]:SetWidth(165)
+	APR.RoutePlan.FG1.CPT["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1.CPT["FS"]:SetJustifyH("CENTER")
+	APR.RoutePlan.FG1.CPT["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1.CPT["FS"]:SetText("Custom Path")
+
+--Kalimdor 
+	APR.RoutePlan.FG1.KALF = CreateFrame("frame", "APR.RoutePlanKalimdorFrame", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.KALF:SetWidth(165)
+	APR.RoutePlan.FG1.KALF:SetHeight(275)
+	APR.RoutePlan.FG1.KALF:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.KALF:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 165, 0)
+		local t = APR.RoutePlan.FG1.KALF:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.KALF)
+			APR.RoutePlan.FG1.KALF.texture = t
+	APR.RoutePlan.FG1.KALF:SetScript("OnMouseDown", function(self, button) -- When mouse pressed
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.KALF:SetScript("OnMouseUp", function(self, button) -- When mouse released after being pressed
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.KALF:SetScript("OnHide", function(self) -- prevent routeplan from being movable or resizable when hidden, since you can't see it anyways
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+
+	APR.RoutePlan.FG1.KALT = CreateFrame("frame", "APR.RoutePlanKalimdorTitle", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.KALT:SetWidth(165)
+	APR.RoutePlan.FG1.KALT:SetHeight(20)
+	APR.RoutePlan.FG1.KALT:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.KALT:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 165, 0)
+		local t = APR.RoutePlan.FG1.KALT:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.KALT)
+			APR.RoutePlan.FG1.KALT.texture = t
+	APR.RoutePlan.FG1.KALT:SetScript("OnMouseDown", function(self, button)
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.KALT:SetScript("OnMouseUp", function(self, button)
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.KALT:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.KALT["FS"] = APR.RoutePlan.FG1.KALT:CreateFontString("APR.RoutePlanKalimdorTitle","ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1.KALT["FS"]:SetParent(APR.RoutePlan.FG1.KALT)
+	APR.RoutePlan.FG1.KALT["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.KALT,"TOP",0,0)
+	APR.RoutePlan.FG1.KALT["FS"]:SetWidth(165)
+	APR.RoutePlan.FG1.KALT["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1.KALT["FS"]:SetJustifyH("CENTER")
+	APR.RoutePlan.FG1.KALT["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1.KALT["FS"]:SetText("Kalimdor")
+
+--EasternKingdoms 
+	APR.RoutePlan.FG1.EKF = CreateFrame("frame", "APR.RoutePlanEasternKingdomsframe", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.EKF:SetWidth(165)
+	APR.RoutePlan.FG1.EKF:SetHeight(275)
+	APR.RoutePlan.FG1.EKF:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.EKF:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 330, 0)
+		local t = APR.RoutePlan.FG1.EKF:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.EKF)
+			APR.RoutePlan.FG1.EKF.texture = t
+	APR.RoutePlan.FG1.EKF:SetScript("OnMouseDown", function(self, button)
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.EKF:SetScript("OnMouseUp", function(self, button)
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.EKF:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+
+	APR.RoutePlan.FG1.EKT = CreateFrame("frame", "APR.RoutePlanEasternKingdomsTitle", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.EKT:SetWidth(165)
+	APR.RoutePlan.FG1.EKT:SetHeight(20)
+	APR.RoutePlan.FG1.EKT:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.EKT:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 330, 0)
+		local t = APR.RoutePlan.FG1.EKT:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.EKT)
+			APR.RoutePlan.FG1.EKT.texture = t
+	APR.RoutePlan.FG1.EKT:SetScript("OnMouseDown", function(self, button)
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.EKT:SetScript("OnMouseUp", function(self, button)
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.EKT:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.EKT["FS"] = APR.RoutePlan.FG1.EKT:CreateFontString("APR.RoutePlanEasternKingdomsTitle","ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1.EKT["FS"]:SetParent(APR.RoutePlan.FG1.EKT)
+	APR.RoutePlan.FG1.EKT["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.EKT,"TOP",0,0)
+	APR.RoutePlan.FG1.EKT["FS"]:SetWidth(165)
+	APR.RoutePlan.FG1.EKT["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1.EKT["FS"]:SetJustifyH("CENTER")
+	APR.RoutePlan.FG1.EKT["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1.EKT["FS"]:SetText("Eastern Kingdoms")
+
+--Shadowlands
+	APR.RoutePlan.FG1.SLF = CreateFrame("frame", "APR.RoutePlanShadowlandsFrame", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.SLF:SetWidth(165)
+	APR.RoutePlan.FG1.SLF:SetHeight(275)
+	APR.RoutePlan.FG1.SLF:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.SLF:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 495, 0)
+		local t = APR.RoutePlan.FG1.SLF:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.SLF)
+			APR.RoutePlan.FG1.SLF.texture = t
+	APR.RoutePlan.FG1.SLF:SetScript("OnMouseDown", function(self, button)
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.SLF:SetScript("OnMouseUp", function(self, button)
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.SLF:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+
+	APR.RoutePlan.FG1.SLT = CreateFrame("frame", "APR.RoutePlanShadowlandsTitle", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.SLT:SetWidth(165)
+	APR.RoutePlan.FG1.SLT:SetHeight(20)
+	APR.RoutePlan.FG1.SLT:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.SLT:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 495, 0)
+		local t = APR.RoutePlan.FG1.SLT:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.SLT)
+			APR.RoutePlan.FG1.SLT.texture = t
+	APR.RoutePlan.FG1.SLT:SetScript("OnMouseDown", function(self, button) --While right mouse button is clicked, allow the route plan to be moved around
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.SLT:SetScript("OnMouseUp", function(self, button)
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.SLT:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.SLT["FS"] = APR.RoutePlan.FG1.SLT:CreateFontString("APR.RoutePlanShadowlandsTitle","ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1.SLT["FS"]:SetParent(APR.RoutePlan.FG1.SLT)
+	APR.RoutePlan.FG1.SLT["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.SLT,"TOP",0,0)
+	APR.RoutePlan.FG1.SLT["FS"]:SetWidth(165)
+	APR.RoutePlan.FG1.SLT["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1.SLT["FS"]:SetJustifyH("CENTER")
+	APR.RoutePlan.FG1.SLT["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1.SLT["FS"]:SetText("Shadowlands")
+
+--Extra 
+	APR.RoutePlan.FG1.EXTF = CreateFrame("frame", "APR.RoutePlanExtraFrame", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.EXTF:SetWidth(165)
+	APR.RoutePlan.FG1.EXTF:SetHeight(275)
+	APR.RoutePlan.FG1.EXTF:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.EXTF:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 660, 0)
+		local t = APR.RoutePlan.FG1.EXTF:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.EXTF)
+			APR.RoutePlan.FG1.EXTF.texture = t
+	APR.RoutePlan.FG1.EXTF:SetScript("OnMouseDown", function(self, button)
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.EXTF:SetScript("OnMouseUp", function(self, button)
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.EXTF:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+
+	APR.RoutePlan.FG1.EXTT = CreateFrame("frame", "APR.RoutePlanExtraTitle", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.EXTT:SetWidth(165)
+	APR.RoutePlan.FG1.EXTT:SetHeight(20)
+	APR.RoutePlan.FG1.EXTT:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.EXTT:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 660, 0)
+		local t = APR.RoutePlan.FG1.EXTT:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.EXTT)
+			APR.RoutePlan.FG1.EXTT.texture = t
+	APR.RoutePlan.FG1.EXTT:SetScript("OnMouseDown", function(self, button) --While right mouse button is clicked, allow the route plan to be moved around
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.EXTT:SetScript("OnMouseUp", function(self, button)
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.EXTT:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.EXTT["FS"] = APR.RoutePlan.FG1.EXTT:CreateFontString("APR.RoutePlanExtraTitle","ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1.EXTT["FS"]:SetParent(APR.RoutePlan.FG1.EXTT)
+	APR.RoutePlan.FG1.EXTT["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.EXTT,"TOP",0,0)
+	APR.RoutePlan.FG1.EXTT["FS"]:SetWidth(165)
+	APR.RoutePlan.FG1.EXTT["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1.EXTT["FS"]:SetJustifyH("CENTER")
+	APR.RoutePlan.FG1.EXTT["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1.EXTT["FS"]:SetText("Extra")
+
+--Dragonflight
+	APR.RoutePlan.FG1.DFF = CreateFrame("frame", "APR.RoutePlanDragonflightFrame", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.DFF:SetWidth(165)
+	APR.RoutePlan.FG1.DFF:SetHeight(275)
+	APR.RoutePlan.FG1.DFF:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.DFF:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 825, 0)
+		local t = APR.RoutePlan.FG1.DFF:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.DFF)
+			APR.RoutePlan.FG1.DFF.texture = t
+	APR.RoutePlan.FG1.DFF:SetScript("OnMouseDown", function(self, button) -- When mouse pressed
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.DFF:SetScript("OnMouseUp", function(self, button) -- When mouse released after being pressed
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.DFF:SetScript("OnHide", function(self) -- prevent routeplan from being movable or resizable when hidden, since you can't see it anyways
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+
+	APR.RoutePlan.FG1.DFT = CreateFrame("frame", "APR.RoutePlanDragonflightTitle", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.DFT:SetWidth(165)
+	APR.RoutePlan.FG1.DFT:SetHeight(20)
+	APR.RoutePlan.FG1.DFT:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.DFT:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 825, 0)
+		local t = APR.RoutePlan.FG1.DFT:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.DFT)
+			APR.RoutePlan.FG1.DFT.texture = t
+	APR.RoutePlan.FG1.DFT:SetScript("OnMouseDown", function(self, button)
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.DFT:SetScript("OnMouseUp", function(self, button)
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.DFT:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.DFT["FS"] = APR.RoutePlan.FG1.DFT:CreateFontString("APR.RoutePlanDragonflightTitle","ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1.DFT["FS"]:SetParent(APR.RoutePlan.FG1.DFT)
+	APR.RoutePlan.FG1.DFT["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.DFT,"TOP",0,0)
+	APR.RoutePlan.FG1.DFT["FS"]:SetWidth(165)
+	APR.RoutePlan.FG1.DFT["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1.DFT["FS"]:SetJustifyH("CENTER")
+	APR.RoutePlan.FG1.DFT["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1.DFT["FS"]:SetText("Dragonflight")
+
+
+--[[ SpeedFrame 
+	APR.RoutePlan.FG1.SRF = CreateFrame("frame", "APR.RoutePlanSpeedRunFrame", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.SRF:SetWidth(165)
+	APR.RoutePlan.FG1.SRF:SetHeight(275)
+	APR.RoutePlan.FG1.SRF:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.SRF:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 825, 0)
+		local t = APR.RoutePlan.FG1.SRF:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.SRF)
+			APR.RoutePlan.FG1.SRF.texture = t
+	APR.RoutePlan.FG1.SRF:SetScript("OnMouseDown", function(self, button)
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.SRF:SetScript("OnMouseUp", function(self, button)
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.SRF:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+
+	APR.RoutePlan.FG1.SRT = CreateFrame("frame", "APR.RoutePlanSpeedRunTitle", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.SRT:SetWidth(165)
+	APR.RoutePlan.FG1.SRT:SetHeight(20)
+	APR.RoutePlan.FG1.SRT:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.SRT:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 825, 0)
+		local t = APR.RoutePlan.FG1.SRT:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.SRT)
+			APR.RoutePlan.FG1.SRT.texture = t
+	APR.RoutePlan.FG1.SRT:SetScript("OnMouseDown", function(self, button) -- On right mouse clicked, start moving the frame
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.SRT:SetScript("OnMouseUp", function(self, button) --On let go
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.SRT:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.SRT["FS"] = APR.RoutePlan.FG1.SRT:CreateFontString("APR.RoutePlanSpeedRunTitle","ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1.SRT["FS"]:SetParent(APR.RoutePlan.FG1.SRT)
+	APR.RoutePlan.FG1.SRT["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.SRT,"TOP",0,0)
+	APR.RoutePlan.FG1.SRT["FS"]:SetWidth(165)
+	APR.RoutePlan.FG1.SRT["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1.SRT["FS"]:SetJustifyH("CENTER")
+	APR.RoutePlan.FG1.SRT["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1.SRT["FS"]:SetText("Speed Runs")]]
+
+	local zenr = APR.NumbRoutePlan("SpeedRun")
+		for CLi = 1, zenr do
+			APR.RoutePlan.FG1["SPR3"..CLi] = CreateFrame("frame", "APR.RoutePlanSpeedRun3"..CLi, APR.RoutePlan.FG1)
+			APR.RoutePlan.FG1["SPR3"..CLi]:SetWidth(225)
+			APR.RoutePlan.FG1["SPR3"..CLi]:SetHeight(20)
+			APR.RoutePlan.FG1["SPR3"..CLi]:SetMovable(true)
+			APR.RoutePlan.FG1["SPR3"..CLi]:EnableMouse(true)
+			APR.RoutePlan.FG1["SPR3"..CLi]:SetFrameStrata("MEDIUM")
+			APR.RoutePlan.FG1["SPR3"..CLi]:SetResizable(true)
+			APR.RoutePlan.FG1["SPR3"..CLi]:SetScale(0.7)
+			APR.RoutePlan.FG1["SPR3"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 0, -(20*CLi))
+	local t = APR.RoutePlan.FG1["SPR3"..CLi]:CreateTexture(nil,"BACKGROUND")
+		t:SetTexture("Interface\\Buttons\\WHITE8X8")
+		t:SetAllPoints(APR.RoutePlan.FG1["SPR3"..CLi])
+		t:SetColorTexture(0.1,0.1,0.4,1)
+		APR.RoutePlan.FG1["SPR3"..CLi].texture = t
+	APR.RoutePlan.FG1["SPR3"..CLi]:SetScript("OnMouseDown", function(self, button)
+		if button == "LeftButton" then
+			APR.RoutePlan.FG1["SPR3"..CLi]:StartMoving();
+			APR.RoutePlan.FG1["SPR3"..CLi].isMoving = true;
+		elseif button == "RightButton" then
+	local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
+		if (zenew < 19 or zenew == 19) then
+			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:GetText())
+			APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:GetText())
+			APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
+		end
+			APR.RoutePlanCheckPos()
+			APR.CheckCustomEmpty()
+		end
+	end)
+	APR.RoutePlan.FG1["SPR3"..CLi]:SetScript("OnMouseUp", function(self, button)
+		if button == "LeftButton" and APR.RoutePlan.FG1["SPR3"..CLi].isMoving then
+			APR.RoutePlan.FG1["SPR3"..CLi]:StopMovingOrSizing();
+			APR.RoutePlan.FG1["SPR3"..CLi].isMoving = false;
+			APR.CheckPosMove(5)
+			APR.RoutePlanCheckPos()
+			APR.CheckCustomEmpty()
+		end
+	end)
+	APR.RoutePlan.FG1["SPR3"..CLi]:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.FG1.isMoving ) then
+			APR.RoutePlan.FG1:StopMovingOrSizing();
+			APR.RoutePlan.FG1.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1["SPR3"..CLi]["FS"] = APR.RoutePlan.FG1["SPR3"..CLi]:CreateFontString("APR.RoutePlanSpeedRun3"..CLi,"ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:SetParent(APR.RoutePlan.FG1["SPR3"..CLi])
+	APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:SetPoint("TOP",APR.RoutePlan.FG1["SPR3"..CLi],"TOP",0,1)
+	APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:SetWidth(210)
+	APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:SetJustifyH("LEFT")
+	APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:SetText("Group"..CLi)
+	end
 
 	local zenr = APR.NumbRoutePlan("EasternKingdom")
-	for CLi = 1, zenr do
-		APR.RoutePlan.FG1["Fxz"..CLi] = CreateFrame("frame", "APR.RoutePlanMainFsramex2xxxs"..CLi, APR.RoutePlan.FG1)
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetWidth(225)
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetHeight(20)
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetMovable(true)
-		APR.RoutePlan.FG1["Fxz"..CLi]:EnableMouse(true)
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetFrameStrata("HIGH")
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetResizable(true)
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetScale(0.7)
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 0, -(20*CLi))
-		--[[ Stuff written by original author originally commented
-			APR.RoutePlan.FG1["Fxz"..CLi]:SetBackdrop( {
-			bgFile = "Interface\\Buttons\\WHITE8X8", tile = false, tileSize=0,
-			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-			tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-			});
-		]]--
-local t = APR.RoutePlan.FG1["Fxz"..CLi]:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\Buttons\\WHITE8X8")
-t:SetAllPoints(APR.RoutePlan.FG1["Fxz"..CLi])
-t:SetColorTexture(0.1,0.1,0.4,1)
-APR.RoutePlan.FG1["Fxz"..CLi].texture = t
-
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetScript("OnMouseDown", function(self, button) --On clicked, move stuff
-				if button == "LeftButton" then
-					APR.RoutePlan.FG1["Fxz"..CLi]:StartMoving();
-					APR.RoutePlan.FG1["Fxz"..CLi].isMoving = true;
-				elseif button == "RightButton" then
-					local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
-					if (zenew < 19 or zenew == 19) then
-						tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["Fxz"..CLi]["FS"]:GetText())
-						APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["Fxz"..CLi]["FS"]:GetText())
-						APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
-					end
-					APR.RoutePlanCheckPos()
-					APR.CheckCustomEmpty()
+		for CLi = 1, zenr do
+			APR.RoutePlan.FG1["EK3"..CLi] = CreateFrame("frame", "APR.RoutePlanEasternKingdoms3"..CLi, APR.RoutePlan.FG1)
+			APR.RoutePlan.FG1["EK3"..CLi]:SetWidth(225)
+			APR.RoutePlan.FG1["EK3"..CLi]:SetHeight(20)
+			APR.RoutePlan.FG1["EK3"..CLi]:SetMovable(true)
+			APR.RoutePlan.FG1["EK3"..CLi]:EnableMouse(true)
+			APR.RoutePlan.FG1["EK3"..CLi]:SetFrameStrata("MEDIUM")
+			APR.RoutePlan.FG1["EK3"..CLi]:SetResizable(true)
+			APR.RoutePlan.FG1["EK3"..CLi]:SetScale(0.7)
+			APR.RoutePlan.FG1["EK3"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 0, -(20*CLi))
+	local t = APR.RoutePlan.FG1["EK3"..CLi]:CreateTexture(nil,"BACKGROUND")
+		t:SetTexture("Interface\\Buttons\\WHITE8X8")
+		t:SetAllPoints(APR.RoutePlan.FG1["EK3"..CLi])
+		t:SetColorTexture(0.1,0.1,0.4,1)
+		APR.RoutePlan.FG1["EK3"..CLi].texture = t
+	APR.RoutePlan.FG1["EK3"..CLi]:SetScript("OnMouseDown", function(self, button) 
+		if button == "LeftButton" then
+			APR.RoutePlan.FG1["EK3"..CLi]:StartMoving();
+			APR.RoutePlan.FG1["EK3"..CLi].isMoving = true;
+		elseif button == "RightButton" then
+			local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
+				if (zenew < 19 or zenew == 19) then
+					tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["EK3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["EK3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
 				end
-		end)
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetScript("OnMouseUp", function(self, button)
-			if button == "LeftButton" and APR.RoutePlan.FG1["Fxz"..CLi].isMoving then
-				APR.RoutePlan.FG1["Fxz"..CLi]:StopMovingOrSizing();
-				APR.RoutePlan.FG1["Fxz"..CLi].isMoving = false;
-				APR.CheckPosMove(1)
-				APR.RoutePlanCheckPos()
-				APR.CheckCustomEmpty()
-			end
-		end)
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetScript("OnHide", function(self)
-			if ( APR.RoutePlan.FG1.isMoving ) then
-				APR.RoutePlan.FG1:StopMovingOrSizing();
-				APR.RoutePlan.FG1.isMoving = false;
-			end
-		end)
-		--APR.RoutePlan.FG1["Fxz"..CLi]:SetBackdropColor(0.1,0.1,0.4,1)
-		APR.RoutePlan.FG1["Fxz"..CLi]["FS"] = APR.RoutePlan.FG1["Fxz"..CLi]:CreateFontString("APR.RoutePlan_Fx3x_FFGs1S"..CLi,"ARTWORK", "ChatFontNormal")
-		APR.RoutePlan.FG1["Fxz"..CLi]["FS"]:SetParent(APR.RoutePlan.FG1["Fxz"..CLi])
-		APR.RoutePlan.FG1["Fxz"..CLi]["FS"]:SetPoint("TOP",APR.RoutePlan.FG1["Fxz"..CLi],"TOP",0,1)
-		APR.RoutePlan.FG1["Fxz"..CLi]["FS"]:SetWidth(210)
-		APR.RoutePlan.FG1["Fxz"..CLi]["FS"]:SetHeight(20)
-		APR.RoutePlan.FG1["Fxz"..CLi]["FS"]:SetJustifyH("LEFT")
-		APR.RoutePlan.FG1["Fxz"..CLi]["FS"]:SetFontObject("GameFontNormal")
-		APR.RoutePlan.FG1["Fxz"..CLi]["FS"]:SetText("Group "..CLi)
+			APR.RoutePlanCheckPos()
+			APR.CheckCustomEmpty()
+		end
+	end)
+	APR.RoutePlan.FG1["EK3"..CLi]:SetScript("OnMouseUp", function(self, button)
+		if button == "LeftButton" and APR.RoutePlan.FG1["EK3"..CLi].isMoving then
+			APR.RoutePlan.FG1["EK3"..CLi]:StopMovingOrSizing();
+			APR.RoutePlan.FG1["EK3"..CLi].isMoving = false;
+			APR.CheckPosMove(1)
+			APR.RoutePlanCheckPos()
+			APR.CheckCustomEmpty()
+		end
+	end)
+	APR.RoutePlan.FG1["EK3"..CLi]:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.FG1.isMoving ) then
+			APR.RoutePlan.FG1:StopMovingOrSizing();
+			APR.RoutePlan.FG1.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1["EK3"..CLi]["FS"] = APR.RoutePlan.FG1["EK3"..CLi]:CreateFontString("APR.RoutePlanEasternKingdoms3"..CLi,"ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1["EK3"..CLi]["FS"]:SetParent(APR.RoutePlan.FG1["EK3"..CLi])
+	APR.RoutePlan.FG1["EK3"..CLi]["FS"]:SetPoint("TOP",APR.RoutePlan.FG1["EK3"..CLi],"TOP",0,1)
+	APR.RoutePlan.FG1["EK3"..CLi]["FS"]:SetWidth(210)
+	APR.RoutePlan.FG1["EK3"..CLi]["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1["EK3"..CLi]["FS"]:SetJustifyH("LEFT")
+	APR.RoutePlan.FG1["EK3"..CLi]["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1["EK3"..CLi]["FS"]:SetText("Group "..CLi)
 	end
 
 	local zenr = APR.NumbRoutePlan("Kalimdor")
-	for CLi = 1, zenr do
-		APR.RoutePlan.FG1["Fxzx2"..CLi] = CreateFrame("frame", "APR.RoutePlanMainFsramex2xxx2s"..CLi, APR.RoutePlan.FG1)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetWidth(225)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetHeight(20)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetMovable(true)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:EnableMouse(true)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetFrameStrata("HIGH")
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetResizable(true)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetScale(0.7)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 0, -(20*CLi))
-		--[[ Stuff commented by original author
-			APR.RoutePlan.FG1["Fxzx2"..CLi]:SetBackdrop( {
-			bgFile = "Interface\\Buttons\\WHITE8X8", tile = false, tileSize=0,
-			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-			tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-			});
-		]]--
-local t = APR.RoutePlan.FG1["Fxzx2"..CLi]:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\Buttons\\WHITE8X8")
-t:SetAllPoints(APR.RoutePlan.FG1["Fxzx2"..CLi])
-t:SetColorTexture(0.1,0.1,0.4,1)
-APR.RoutePlan.FG1["Fxzx2"..CLi].texture = t
-
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetScript("OnMouseDown", function(self, button) --On clicked
-				if button == "LeftButton" then
-					APR.RoutePlan.FG1["Fxzx2"..CLi]:StartMoving();
-					APR.RoutePlan.FG1["Fxzx2"..CLi].isMoving = true;
-				elseif button == "RightButton" then
-					local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
-					if (zenew < 19 or zenew == 19) then
-						tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["Fxzx2"..CLi]["FS"]:GetText())
-						APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["Fxzx2"..CLi]["FS"]:GetText())
-						APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
-					end
-					APR.RoutePlanCheckPos()
-					APR.CheckCustomEmpty()
+		for CLi = 1, zenr do
+			APR.RoutePlan.FG1["KAL3"..CLi] = CreateFrame("frame", "APR.RoutePlanKalimdor3"..CLi, APR.RoutePlan.FG1)
+			APR.RoutePlan.FG1["KAL3"..CLi]:SetWidth(225)
+			APR.RoutePlan.FG1["KAL3"..CLi]:SetHeight(20)
+			APR.RoutePlan.FG1["KAL3"..CLi]:SetMovable(true)
+			APR.RoutePlan.FG1["KAL3"..CLi]:EnableMouse(true)
+			APR.RoutePlan.FG1["KAL3"..CLi]:SetFrameStrata("MEDIUM")
+			APR.RoutePlan.FG1["KAL3"..CLi]:SetResizable(true)
+			APR.RoutePlan.FG1["KAL3"..CLi]:SetScale(0.7)
+			APR.RoutePlan.FG1["KAL3"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 0, -(20*CLi))
+	local t = APR.RoutePlan.FG1["KAL3"..CLi]:CreateTexture(nil,"BACKGROUND")
+		t:SetTexture("Interface\\Buttons\\WHITE8X8")
+		t:SetAllPoints(APR.RoutePlan.FG1["KAL3"..CLi])
+		t:SetColorTexture(0.1,0.1,0.4,1)
+		APR.RoutePlan.FG1["KAL3"..CLi].texture = t
+	APR.RoutePlan.FG1["KAL3"..CLi]:SetScript("OnMouseDown", function(self, button) --On clicked
+		if button == "LeftButton" then
+			APR.RoutePlan.FG1["KAL3"..CLi]:StartMoving();
+			APR.RoutePlan.FG1["KAL3"..CLi].isMoving = true;
+		elseif button == "RightButton" then
+			local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
+				if (zenew < 19 or zenew == 19) then
+					tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
 				end
-		end)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetScript("OnMouseUp", function(self, button) -- On click release
-			if button == "LeftButton" and APR.RoutePlan.FG1["Fxzx2"..CLi].isMoving then
-				APR.RoutePlan.FG1["Fxzx2"..CLi]:StopMovingOrSizing();
-				APR.RoutePlan.FG1["Fxzx2"..CLi].isMoving = false;
-				APR.CheckPosMove(3)
 				APR.RoutePlanCheckPos()
 				APR.CheckCustomEmpty()
 			end
 		end)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetScript("OnHide", function(self) -- Prevent from moving while hidden
-			if ( APR.RoutePlan.FG1.isMoving ) then
-				APR.RoutePlan.FG1:StopMovingOrSizing();
-				APR.RoutePlan.FG1.isMoving = false;
-			end
-		end)
-		--APR.RoutePlan.FG1["Fxzx2"..CLi]:SetBackdropColor(0.1,0.1,0.4,1)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]["FS"] = APR.RoutePlan.FG1["Fxzx2"..CLi]:CreateFontString("APR.RoutePlan_Fx3x_FFGs1S"..CLi,"ARTWORK", "ChatFontNormal")
-		APR.RoutePlan.FG1["Fxzx2"..CLi]["FS"]:SetParent(APR.RoutePlan.FG1["Fxzx2"..CLi])
-		APR.RoutePlan.FG1["Fxzx2"..CLi]["FS"]:SetPoint("TOP",APR.RoutePlan.FG1["Fxzx2"..CLi],"TOP",0,1)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]["FS"]:SetWidth(210)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]["FS"]:SetHeight(20)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]["FS"]:SetJustifyH("LEFT")
-		APR.RoutePlan.FG1["Fxzx2"..CLi]["FS"]:SetFontObject("GameFontNormal")
-		APR.RoutePlan.FG1["Fxzx2"..CLi]["FS"]:SetText("Group "..CLi)
+	APR.RoutePlan.FG1["KAL3"..CLi]:SetScript("OnMouseUp", function(self, button) -- On click release
+		if button == "LeftButton" and APR.RoutePlan.FG1["KAL3"..CLi].isMoving then
+			APR.RoutePlan.FG1["KAL3"..CLi]:StopMovingOrSizing();
+			APR.RoutePlan.FG1["KAL3"..CLi].isMoving = false;
+			APR.CheckPosMove(3)
+			APR.RoutePlanCheckPos()
+			APR.CheckCustomEmpty()
+		end
+	end)
+	APR.RoutePlan.FG1["KAL3"..CLi]:SetScript("OnHide", function(self) -- Prevent from moving while hidden
+		if ( APR.RoutePlan.FG1.isMoving ) then
+			APR.RoutePlan.FG1:StopMovingOrSizing();
+			APR.RoutePlan.FG1.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1["KAL3"..CLi]["FS"] = APR.RoutePlan.FG1["KAL3"..CLi]:CreateFontString("APR.RoutePlanKalimdor3"..CLi,"ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:SetParent(APR.RoutePlan.FG1["KAL3"..CLi])
+	APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:SetPoint("TOP",APR.RoutePlan.FG1["KAL3"..CLi],"TOP",0,1)
+	APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:SetWidth(210)
+	APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:SetJustifyH("LEFT")
+	APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:SetText("Group "..CLi)
 	end
 
 	local zenr = APR.NumbRoutePlan("Shadowlands")
-	for CLi = 1, zenr do
-		APR.RoutePlan.FG1["Fxzx3"..CLi] = CreateFrame("frame", "APR.RoutePlanMainFsramex2xx3x2s"..CLi, APR.RoutePlan.FG1)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetWidth(225)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetHeight(20)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetMovable(true)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:EnableMouse(true)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetFrameStrata("HIGH")
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetResizable(true)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetScale(0.7)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 0, -(20*CLi))
-		--[[ Stuff from original author
-			APR.RoutePlan.FG1["Fxzx3"..CLi]:SetBackdrop( {
-				bgFile = "Interface\\Buttons\\WHITE8X8", tile = false, tileSize=0,
-				edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-				tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-			});
-		]]
---APR.RoutePlan.FG1["Fxzx3"..CLi]:Hide()
-
-local t = APR.RoutePlan.FG1["Fxzx3"..CLi]:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\Buttons\\WHITE8X8")
-t:SetAllPoints(APR.RoutePlan.FG1["Fxzx3"..CLi])
-t:SetColorTexture(0.1,0.1,0.4,1)
-APR.RoutePlan.FG1["Fxzx3"..CLi].texture = t
-
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetScript("OnMouseDown", function(self, button) -- On clicked
-				if button == "LeftButton" then
-					APR.RoutePlan.FG1["Fxzx3"..CLi]:StartMoving();
-					APR.RoutePlan.FG1["Fxzx3"..CLi].isMoving = true;
-				elseif button == "RightButton" then
-					local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
-					if (zenew < 19 or zenew == 19) then
-						tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["Fxzx3"..CLi]["FS"]:GetText())
-						APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["Fxzx3"..CLi]["FS"]:GetText())
-						APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
-					end
-					APR.RoutePlanCheckPos()
-					APR.CheckCustomEmpty()
+		for CLi = 1, zenr do
+			APR.RoutePlan.FG1["SL3"..CLi] = CreateFrame("frame", "APR.RoutePlanShadowlands3"..CLi, APR.RoutePlan.FG1)
+			APR.RoutePlan.FG1["SL3"..CLi]:SetWidth(225)
+			APR.RoutePlan.FG1["SL3"..CLi]:SetHeight(20)
+			APR.RoutePlan.FG1["SL3"..CLi]:SetMovable(true)
+			APR.RoutePlan.FG1["SL3"..CLi]:EnableMouse(true)
+			APR.RoutePlan.FG1["SL3"..CLi]:SetFrameStrata("MEDIUM")
+			APR.RoutePlan.FG1["SL3"..CLi]:SetResizable(true)
+			APR.RoutePlan.FG1["SL3"..CLi]:SetScale(0.7)
+			APR.RoutePlan.FG1["SL3"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 0, -(20*CLi))
+	local t = APR.RoutePlan.FG1["SL3"..CLi]:CreateTexture(nil,"BACKGROUND")
+		t:SetTexture("Interface\\Buttons\\WHITE8X8")
+		t:SetAllPoints(APR.RoutePlan.FG1["SL3"..CLi])
+		t:SetColorTexture(0.1,0.1,0.4,1)
+		APR.RoutePlan.FG1["SL3"..CLi].texture = t
+	APR.RoutePlan.FG1["SL3"..CLi]:SetScript("OnMouseDown", function(self, button) -- On clicked
+		if button == "LeftButton" then
+			APR.RoutePlan.FG1["SL3"..CLi]:StartMoving();
+			APR.RoutePlan.FG1["SL3"..CLi].isMoving = true;
+		elseif button == "RightButton" then
+			local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
+				if (zenew < 19 or zenew == 19) then
+					tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["SL3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["SL3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
 				end
-		end)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetScript("OnMouseUp", function(self, button) -- On click release
-			if button == "LeftButton" and APR.RoutePlan.FG1["Fxzx3"..CLi].isMoving then
-				APR.RoutePlan.FG1["Fxzx3"..CLi]:StopMovingOrSizing();
-				APR.RoutePlan.FG1["Fxzx3"..CLi].isMoving = false;
-				APR.CheckPosMove(4)
 				APR.RoutePlanCheckPos()
 				APR.CheckCustomEmpty()
 			end
 		end)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetScript("OnHide", function(self) --Prevent moving on hide
-			if ( APR.RoutePlan.FG1.isMoving ) then
-				APR.RoutePlan.FG1:StopMovingOrSizing();
-				APR.RoutePlan.FG1.isMoving = false;
+	APR.RoutePlan.FG1["SL3"..CLi]:SetScript("OnMouseUp", function(self, button) -- On click release
+		if button == "LeftButton" and APR.RoutePlan.FG1["SL3"..CLi].isMoving then
+			APR.RoutePlan.FG1["SL3"..CLi]:StopMovingOrSizing();
+			APR.RoutePlan.FG1["SL3"..CLi].isMoving = false;
+			APR.CheckPosMove(4)
+			APR.RoutePlanCheckPos()
+			APR.CheckCustomEmpty()
+		end
+	end)
+	APR.RoutePlan.FG1["SL3"..CLi]:SetScript("OnHide", function(self) --Prevent moving on hide
+		if ( APR.RoutePlan.FG1.isMoving ) then
+			APR.RoutePlan.FG1:StopMovingOrSizing();
+			APR.RoutePlan.FG1.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1["SL3"..CLi]["FS"] = APR.RoutePlan.FG1["SL3"..CLi]:CreateFontString("APR.RoutePlanShadowlands3"..CLi,"ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1["SL3"..CLi]["FS"]:SetParent(APR.RoutePlan.FG1["SL3"..CLi])
+	APR.RoutePlan.FG1["SL3"..CLi]["FS"]:SetPoint("TOP",APR.RoutePlan.FG1["SL3"..CLi],"TOP",0,1)
+	APR.RoutePlan.FG1["SL3"..CLi]["FS"]:SetWidth(210)
+	APR.RoutePlan.FG1["SL3"..CLi]["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1["SL3"..CLi]["FS"]:SetJustifyH("LEFT")
+	APR.RoutePlan.FG1["SL3"..CLi]["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1["SL3"..CLi]["FS"]:SetText("Group "..CLi)
+	end
+
+	local zenr = APR.NumbRoutePlan("Extra")
+		for CLi = 1, zenr do
+			APR.RoutePlan.FG1["EX3"..CLi] = CreateFrame("frame", "APR.RoutePlanExtra3"..CLi, APR.RoutePlan.FG1)
+			APR.RoutePlan.FG1["EX3"..CLi]:SetWidth(225)
+			APR.RoutePlan.FG1["EX3"..CLi]:SetHeight(20)
+			APR.RoutePlan.FG1["EX3"..CLi]:SetMovable(true)
+			APR.RoutePlan.FG1["EX3"..CLi]:EnableMouse(true)
+			APR.RoutePlan.FG1["EX3"..CLi]:SetFrameStrata("MEDIUM")
+			APR.RoutePlan.FG1["EX3"..CLi]:SetResizable(true)
+			APR.RoutePlan.FG1["EX3"..CLi]:SetScale(0.7)
+			APR.RoutePlan.FG1["EX3"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 0, -(20*CLi))
+	local t = APR.RoutePlan.FG1["EX3"..CLi]:CreateTexture(nil,"BACKGROUND")
+		t:SetTexture("Interface\\Buttons\\WHITE8X8")
+		t:SetAllPoints(APR.RoutePlan.FG1["EX3"..CLi])
+		t:SetColorTexture(0.1,0.1,0.4,1)
+		APR.RoutePlan.FG1["EX3"..CLi].texture = t
+	APR.RoutePlan.FG1["EX3"..CLi]:SetScript("OnMouseDown", function(self, button) -- On clicked
+		if button == "LeftButton" then
+			APR.RoutePlan.FG1["EX3"..CLi]:StartMoving();
+			APR.RoutePlan.FG1["EX3"..CLi].isMoving = true;
+		elseif button == "RightButton" then
+			local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
+				if (zenew < 19 or zenew == 19) then
+					tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["EX3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["EX3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
+				end
+				APR.RoutePlanCheckPos()
+				APR.CheckCustomEmpty()
 			end
 		end)
-		--APR.RoutePlan.FG1["Fxzx3"..CLi]:SetBackdropColor(0.1,0.1,0.4,1)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]["FS"] = APR.RoutePlan.FG1["Fxzx3"..CLi]:CreateFontString("APR.RoutePlan_Fx3x_FFGs1S"..CLi,"ARTWORK", "ChatFontNormal")
-		APR.RoutePlan.FG1["Fxzx3"..CLi]["FS"]:SetParent(APR.RoutePlan.FG1["Fxzx3"..CLi])
-		APR.RoutePlan.FG1["Fxzx3"..CLi]["FS"]:SetPoint("TOP",APR.RoutePlan.FG1["Fxzx3"..CLi],"TOP",0,1)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]["FS"]:SetWidth(210)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]["FS"]:SetHeight(20)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]["FS"]:SetJustifyH("LEFT")
-		APR.RoutePlan.FG1["Fxzx3"..CLi]["FS"]:SetFontObject("GameFontNormal")
-		APR.RoutePlan.FG1["Fxzx3"..CLi]["FS"]:SetText("Group "..CLi)
+	APR.RoutePlan.FG1["EX3"..CLi]:SetScript("OnMouseUp", function(self, button) -- On click release
+		if button == "LeftButton" and APR.RoutePlan.FG1["EX3"..CLi].isMoving then
+			APR.RoutePlan.FG1["EX3"..CLi]:StopMovingOrSizing();
+			APR.RoutePlan.FG1["EX3"..CLi].isMoving = false;
+			APR.CheckPosMove(4)
+			APR.RoutePlanCheckPos()
+			APR.CheckCustomEmpty()
+		end
+	end)
+	APR.RoutePlan.FG1["EX3"..CLi]:SetScript("OnHide", function(self) --Prevent moving on hide
+		if ( APR.RoutePlan.FG1.isMoving ) then
+			APR.RoutePlan.FG1:StopMovingOrSizing();
+			APR.RoutePlan.FG1.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1["EX3"..CLi]["FS"] = APR.RoutePlan.FG1["EX3"..CLi]:CreateFontString("APR.RoutePlanExtra3"..CLi,"ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1["EX3"..CLi]["FS"]:SetParent(APR.RoutePlan.FG1["EX3"..CLi])
+	APR.RoutePlan.FG1["EX3"..CLi]["FS"]:SetPoint("TOP",APR.RoutePlan.FG1["EX3"..CLi],"TOP",0,1)
+	APR.RoutePlan.FG1["EX3"..CLi]["FS"]:SetWidth(210)
+	APR.RoutePlan.FG1["EX3"..CLi]["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1["EX3"..CLi]["FS"]:SetJustifyH("LEFT")
+	APR.RoutePlan.FG1["EX3"..CLi]["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1["EX3"..CLi]["FS"]:SetText("Group "..CLi)
+	end
+
+	local zenr = APR.NumbRoutePlan("Dragonflight")
+		for CLi = 1, zenr do
+			APR.RoutePlan.FG1["DF3"..CLi] = CreateFrame("frame", "APR.RoutePlanKalimdor3"..CLi, APR.RoutePlan.FG1)
+			APR.RoutePlan.FG1["DF3"..CLi]:SetWidth(225)
+			APR.RoutePlan.FG1["DF3"..CLi]:SetHeight(20)
+			APR.RoutePlan.FG1["DF3"..CLi]:SetMovable(true)
+			APR.RoutePlan.FG1["DF3"..CLi]:EnableMouse(true)
+			APR.RoutePlan.FG1["DF3"..CLi]:SetFrameStrata("MEDIUM")
+			APR.RoutePlan.FG1["DF3"..CLi]:SetResizable(true)
+			APR.RoutePlan.FG1["DF3"..CLi]:SetScale(0.7)
+			APR.RoutePlan.FG1["DF3"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 0, -(20*CLi))
+	local t = APR.RoutePlan.FG1["DF3"..CLi]:CreateTexture(nil,"BACKGROUND")
+		t:SetTexture("Interface\\Buttons\\WHITE8X8")
+		t:SetAllPoints(APR.RoutePlan.FG1["DF3"..CLi])
+		t:SetColorTexture(0.1,0.1,0.4,1)
+		APR.RoutePlan.FG1["DF3"..CLi].texture = t
+	APR.RoutePlan.FG1["DF3"..CLi]:SetScript("OnMouseDown", function(self, button) --On clicked
+		if button == "LeftButton" then
+			APR.RoutePlan.FG1["DF3"..CLi]:StartMoving();
+			APR.RoutePlan.FG1["DF3"..CLi].isMoving = true;
+		elseif button == "RightButton" then
+			local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
+				if (zenew < 19 or zenew == 19) then
+					tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["DF3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["DF3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
+				end
+				APR.RoutePlanCheckPos()
+				APR.CheckCustomEmpty()
+			end
+		end)
+	APR.RoutePlan.FG1["DF3"..CLi]:SetScript("OnMouseUp", function(self, button) -- On click release
+		if button == "LeftButton" and APR.RoutePlan.FG1["DF3"..CLi].isMoving then
+			APR.RoutePlan.FG1["DF3"..CLi]:StopMovingOrSizing();
+			APR.RoutePlan.FG1["DF3"..CLi].isMoving = false;
+			APR.CheckPosMove(3)
+			APR.RoutePlanCheckPos()
+			APR.CheckCustomEmpty()
+		end
+	end)
+	APR.RoutePlan.FG1["DF3"..CLi]:SetScript("OnHide", function(self) -- Prevent from moving while hidden
+		if ( APR.RoutePlan.FG1.isMoving ) then
+			APR.RoutePlan.FG1:StopMovingOrSizing();
+			APR.RoutePlan.FG1.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1["DF3"..CLi]["FS"] = APR.RoutePlan.FG1["DF3"..CLi]:CreateFontString("APR.RoutePlanKalimdor3"..CLi,"ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1["DF3"..CLi]["FS"]:SetParent(APR.RoutePlan.FG1["DF3"..CLi])
+	APR.RoutePlan.FG1["DF3"..CLi]["FS"]:SetPoint("TOP",APR.RoutePlan.FG1["DF3"..CLi],"TOP",0,1)
+	APR.RoutePlan.FG1["DF3"..CLi]["FS"]:SetWidth(210)
+	APR.RoutePlan.FG1["DF3"..CLi]["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1["DF3"..CLi]["FS"]:SetJustifyH("LEFT")
+	APR.RoutePlan.FG1["DF3"..CLi]["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1["DF3"..CLi]["FS"]:SetText("Group "..CLi)
 	end
 
 	for CLi = 1, 19 do
@@ -1434,113 +1578,97 @@ APR.RoutePlan.FG1["Fxzx3"..CLi].texture = t
 		APR.RoutePlan.FG1["FxzCustom"..CLi]:SetHeight(20)
 		APR.RoutePlan.FG1["FxzCustom"..CLi]:SetMovable(true)
 		APR.RoutePlan.FG1["FxzCustom"..CLi]:EnableMouse(true)
-		APR.RoutePlan.FG1["FxzCustom"..CLi]:SetFrameStrata("HIGH")
+		APR.RoutePlan.FG1["FxzCustom"..CLi]:SetFrameStrata("MEDIUM")
 		APR.RoutePlan.FG1["FxzCustom"..CLi]:SetResizable(true)
 		APR.RoutePlan.FG1["FxzCustom"..CLi]:SetScale(0.7)
-		APR.RoutePlan.FG1["FxzCustom"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", -15, -((20*CLi)-17))
-		--APR.RoutePlan.FG1["FxzCustom"..CLi]:SetBackdrop( {
-		--	bgFile = "Interface\\Buttons\\WHITE8X8", tile = false, tileSize=0,
-		--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-		--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		--});
-local t = APR.RoutePlan.FG1["FxzCustom"..CLi]:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\Buttons\\WHITE8X8")
-t:SetAllPoints(APR.RoutePlan.FG1["FxzCustom"..CLi])
-t:SetColorTexture(0.1,0.1,0.4,1)
-APR.RoutePlan.FG1["FxzCustom"..CLi].texture = t
+		APR.RoutePlan.FG1["FxzCustom"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", -18, -((20*CLi)-17))
+	local t = APR.RoutePlan.FG1["FxzCustom"..CLi]:CreateTexture(nil,"BACKGROUND")
+		t:SetTexture("Interface\\Buttons\\WHITE8X8")
+		t:SetAllPoints(APR.RoutePlan.FG1["FxzCustom"..CLi])
+		t:SetColorTexture(0.1,0.1,0.4,1)
+		APR.RoutePlan.FG1["FxzCustom"..CLi].texture = t
+	APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"] = APR.RoutePlan.FG1["FxzCustom"..CLi]:CreateFontString("APR.RoutePlan_Fx3x_FFGs1S"..CLi,"ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"]:SetParent(APR.RoutePlan.FG1["FxzCustom"..CLi])
+	APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"]:SetPoint("TOP",APR.RoutePlan.FG1["FxzCustom"..CLi],"TOP",0,1)
+	APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"]:SetWidth(25)
+	APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"]:SetJustifyH("CENTER")
+	APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"]:SetText(CLi)
 
-		--APR.RoutePlan.FG1["FxzCustom"..CLi]:SetBackdropColor(0,0.9,0,1)
-		APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"] = APR.RoutePlan.FG1["FxzCustom"..CLi]:CreateFontString("APR.RoutePlan_Fx3x_FFGs1S"..CLi,"ARTWORK", "ChatFontNormal")
-		APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"]:SetParent(APR.RoutePlan.FG1["FxzCustom"..CLi])
-		APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"]:SetPoint("TOP",APR.RoutePlan.FG1["FxzCustom"..CLi],"TOP",0,1)
-		APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"]:SetWidth(25)
-		APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"]:SetHeight(20)
-		APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"]:SetJustifyH("CENTER")
-		APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"]:SetFontObject("GameFontNormal")
-		APR.RoutePlan.FG1["FxzCustom"..CLi]["FS"]:SetText(CLi)
-
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi] = CreateFrame("frame", "APR.RoutePlanMainFsramex2xc2x"..CLi, APR.RoutePlan.FG1)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetWidth(225)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetHeight(20)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetMovable(true)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:EnableMouse(true)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetFrameStrata("HIGH")
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetResizable(true)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetScale(0.7)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 0, -(20*CLi))
-		--[[ Stuff from original maintainer
-			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetBackdrop( {
-				bgFile = "Interface\\Buttons\\WHITE8X8", tile = false, tileSize=0,
-				edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-				tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-			});
-		]]
-local t = APR.RoutePlan.FG1["Fxz2Custom"..CLi]:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\Buttons\\WHITE8X8")
-t:SetAllPoints(APR.RoutePlan.FG1["Fxz2Custom"..CLi])
-t:SetColorTexture(0.1,0.1,0.4,1)
-APR.RoutePlan.FG1["Fxz2Custom"..CLi].texture = t
-
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetScript("OnMouseDown", function(self, button)
-				if button == "LeftButton" then
-					APR.RoutePlan.FG1["Fxz2Custom"..CLi]:StartMoving();
-					APR.RoutePlan.FG1["Fxz2Custom"..CLi].isMoving = true;
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi] = CreateFrame("frame", "APR.RoutePlanMainFsramex2xc2x"..CLi, APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetWidth(225)
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetHeight(20)
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetMovable(true)
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]:EnableMouse(true)
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetFrameStrata("MEDIUM")
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetResizable(true)
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetScale(0.7)
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 0, -(20*CLi))
+	local t = APR.RoutePlan.FG1["Fxz2Custom"..CLi]:CreateTexture(nil,"BACKGROUND")
+		t:SetTexture("Interface\\Buttons\\WHITE8X8")
+		t:SetAllPoints(APR.RoutePlan.FG1["Fxz2Custom"..CLi])
+		t:SetColorTexture(0.1,0.1,0.4,1)
+		APR.RoutePlan.FG1["Fxz2Custom"..CLi].texture = t
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetScript("OnMouseDown", function(self, button)
+		if button == "LeftButton" then
+			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:StartMoving();
+			APR.RoutePlan.FG1["Fxz2Custom"..CLi].isMoving = true;
+		end
+	end)
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetScript("OnMouseUp", function(self, button)
+		if button == "LeftButton" and APR.RoutePlan.FG1["Fxz2Custom"..CLi].isMoving then
+			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:StopMovingOrSizing();
+			APR.RoutePlan.FG1["Fxz2Custom"..CLi].isMoving = false;
+			APR.CheckPosMove(2)
+			APR.RoutePlanCheckPos()
+			APR.CheckCustomEmpty()
+		else
+			APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText("")
+			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
+			APR.FP.QuedFP = nil
+			APR.CheckPosMove(2)
+			APR.RoutePlanCheckPos()
+			APR.CheckCustomEmpty()
+		end
+	end)
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.FG1.isMoving ) then
+			APR.RoutePlan.FG1:StopMovingOrSizing();
+			APR.RoutePlan.FG1.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"] = APR.RoutePlan.FG1["Fxz2Custom"..CLi]:CreateFontString("APR.RoutePlan_Fx3x_FFGs21Sx"..CLi,"ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetParent(APR.RoutePlan.FG1["Fxz2Custom"..CLi])
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetPoint("TOP",APR.RoutePlan.FG1["Fxz2Custom"..CLi],"TOP",0,1)
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetWidth(210)
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetJustifyH("LEFT")
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetFontObject("GameFontNormal")
+	if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
+		if (APR_ZoneComplete[APR.Name.."-"..APR.Realm][APR_Custom[APR.Name.."-"..APR.Realm][CLi]]) then
+			APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText("")
+			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
+		else
+			if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
+				local zew = APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]]
+					if (APR["EasternKingdom"] and APR["EasternKingdom"][zew] and IsAddOnLoaded("APR-Vanilla") == false) then
+					local loaded, reason = LoadAddOn("APR-Vanilla")
+						if (not loaded) then
+						if (reason == "DISABLED") then
+						print("APR: APR - Eastern Kingdoms is Disabled in your Addon-List!")
+						end
+					end
 				end
-		end)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetScript("OnMouseUp", function(self, button)
-			if button == "LeftButton" and APR.RoutePlan.FG1["Fxz2Custom"..CLi].isMoving then
-				APR.RoutePlan.FG1["Fxz2Custom"..CLi]:StopMovingOrSizing();
-				APR.RoutePlan.FG1["Fxz2Custom"..CLi].isMoving = false;
-				APR.CheckPosMove(2)
-				APR.RoutePlanCheckPos()
-				APR.CheckCustomEmpty()
-			else
-				APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText("")
-				APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
-				APR.FP.QuedFP = nil
-				APR.CheckPosMove(2)
-				APR.RoutePlanCheckPos()
-				APR.CheckCustomEmpty()
-			end
-		end)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetScript("OnHide", function(self)
-			if ( APR.RoutePlan.FG1.isMoving ) then
-				APR.RoutePlan.FG1:StopMovingOrSizing();
-				APR.RoutePlan.FG1.isMoving = false;
-			end
-		end)
-		--APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetBackdropColor(0.1,0.1,0.4,1)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"] = APR.RoutePlan.FG1["Fxz2Custom"..CLi]:CreateFontString("APR.RoutePlan_Fx3x_FFGs21Sx"..CLi,"ARTWORK", "ChatFontNormal")
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetParent(APR.RoutePlan.FG1["Fxz2Custom"..CLi])
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetPoint("TOP",APR.RoutePlan.FG1["Fxz2Custom"..CLi],"TOP",0,1)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetWidth(210)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetHeight(20)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetJustifyH("LEFT")
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetFontObject("GameFontNormal")
-		if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
-			if (APR_ZoneComplete[APR.Name.."-"..APR.Realm][APR_Custom[APR.Name.."-"..APR.Realm][CLi]]) then
-				APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText("")
-				APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
-			else
-				if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
-					local zew = APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]]
-					if (APR["EasternKingdomDB"] and APR["EasternKingdomDB"][zew] and IsAddOnLoaded("APR-EasternKingdoms") == false) then
-						local loaded, reason = LoadAddOn("APR-Vanilla")
-						if (not loaded) then
-							if (reason == "DISABLED") then
-								print("APR: APR - Eastern Kingdoms is Disabled in your Addon-List!")
-							end
-						end
-					end
-					if (APR["BattleForAzeroth"] and APR["BattleForAzeroth"][zew] and IsAddOnLoaded("APR-BattleForAzeroth") == false) then
-						local loaded, reason = LoadAddOn("APR-BattleForAzeroth")
-						if (not loaded) then
-							if (reason == "DISABLED") then
+			if (APR["BattleForAzeroth"] and APR["BattleForAzeroth"][zew] and IsAddOnLoaded("APR-BattleForAzeroth") == false) then
+				local loaded, reason = LoadAddOn("APR-BattleForAzeroth")
+					if (not loaded) then
+						if (reason == "DISABLED") then
 								print("APR: APR - BattleForAzeroth is Disabled in your Addon-List!")
-							end
 						end
 					end
-					if (APR["Kalimdor"] and APR["Kalimdor"][zew] and IsAddOnLoaded("APR-Kalimdor") == false) then
+			end
+					if (APR["Kalimdor"] and APR["Kalimdor"][zew] and IsAddOnLoaded("APR-Vanilla") == false) then
 						local loaded, reason = LoadAddOn("APR-Vanilla")
 						if (not loaded) then
 							if (reason == "DISABLED") then
@@ -1582,7 +1710,7 @@ APR.RoutePlan.FG1["Fxz2Custom"..CLi].texture = t
 		end
 		for APR_index2,APR_value2 in APR.pairsByKeys(dzer2) do
 			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["Fxzx2"..zenr2]["FS"]:SetText(APR_index2)
+			APR.RoutePlan.FG1["KAL3"..zenr2]["FS"]:SetText(APR_index2)
 		end
 	end
 	if (APR.QuestStepListListing and APR.QuestStepListListing["Kalimdor"]) then
@@ -1591,7 +1719,7 @@ APR.RoutePlan.FG1["Fxz2Custom"..CLi].texture = t
 		end
 		for APR_index2,APR_value2 in APR.pairsByKeys(dzer) do
 			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["Fxzx2"..zenr2]["FS"]:SetText(APR_index2)
+			APR.RoutePlan.FG1["KAL3"..zenr2]["FS"]:SetText(APR_index2)
 		end
 	end
 	zenr2 = 0
@@ -1599,14 +1727,13 @@ APR.RoutePlan.FG1["Fxz2Custom"..CLi].texture = t
 	dzer = {}
 	dzer2 = nil
 	dzer2 = {}
-
 	if (APR.QuestStepListListingStartAreas["EasternKingdom"]) then
 		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListingStartAreas["EasternKingdom"]) do
 			dzer2[APR_value2] = APR_index2
 		end
 		for APR_index2,APR_value2 in APR.pairsByKeys(dzer2) do
 			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["Fxz"..zenr2]["FS"]:SetText(APR_index2)
+			APR.RoutePlan.FG1["EK3"..zenr2]["FS"]:SetText(APR_index2)
 		end
 	end
 	if (APR.QuestStepListListing and APR.QuestStepListListing["EasternKingdom"]) then
@@ -1615,7 +1742,7 @@ APR.RoutePlan.FG1["Fxz2Custom"..CLi].texture = t
 		end
 		for APR_index2,APR_value2 in APR.pairsByKeys(dzer) do
 			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["Fxz"..zenr2]["FS"]:SetText(APR_index2)
+			APR.RoutePlan.FG1["EK3"..zenr2]["FS"]:SetText(APR_index2)
 		end
 	end
 	zenr2 = 0
@@ -1629,8 +1756,35 @@ APR.RoutePlan.FG1["Fxz2Custom"..CLi].texture = t
 		end
 		for APR_index2,APR_value2 in APR.pairsByKeys(dzer) do
 			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["Fxzx3"..zenr2]["FS"]:SetText(APR_index2)
-			--APR.RoutePlan.FG1["Fxzx3"..zenr2]["FS"]:SetText("")
+			APR.RoutePlan.FG1["SL3"..zenr2]["FS"]:SetText(APR_index2)
+		end
+	end
+	zenr2 = 0
+	dzer = nil
+	dzer = {}
+	dzer2 = nil
+	dzer2 = {}
+	if (APR.QuestStepListListing and APR.QuestStepListListing["Extra"]) then
+		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Extra"]) do
+			dzer[APR_value2] = APR_index2
+		end
+		for APR_index2,APR_value2 in APR.pairsByKeys(dzer) do
+			zenr2 = zenr2 + 1
+			APR.RoutePlan.FG1["EX3"..zenr2]["FS"]:SetText(APR_index2)
+		end
+	end
+	zenr2 = 0
+	dzer = nil
+	dzer = {}
+	dzer2 = nil
+	dzer2 = {}
+	if (APR.QuestStepListListing and APR.QuestStepListListing["Dragonflight"]) then
+		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Dragonflight"]) do
+			dzer[APR_value2] = APR_index2
+		end
+		for APR_index2,APR_value2 in APR.pairsByKeys(dzer) do
+			zenr2 = zenr2 + 1
+			APR.RoutePlan.FG1["DF3"..zenr2]["FS"]:SetText(APR_index2)
 		end
 	end
 	zenr2 = 0
@@ -1644,8 +1798,7 @@ APR.RoutePlan.FG1["Fxz2Custom"..CLi].texture = t
 		end
 		for APR_index2,APR_value2 in APR.pairsByKeys(dzer) do
 			zenr2 = zenr2 + 1
-			--APR.RoutePlan.FG1["Fx3z"..zenr2]["FS"]:SetText(APR_index2)
-			APR.RoutePlan.FG1["Fx3z"..zenr2]["FS"]:SetText("")
+			APR.RoutePlan.FG1["SPR3"..zenr2]["FS"]:SetText("")
 		end
 	end
 
@@ -1661,14 +1814,16 @@ function APR.CheckPosMove(zeActivz)
 	local zenr2 = APR.NumbRoutePlan("Kalimdor")
 	local zenr3 = APR.NumbRoutePlan("Shadowlands")
 	local zenr4 = APR.NumbRoutePlan("SpeedRun")
+	local zenr5 = APR.NumbRoutePlan("Extra")
+	local zenr6 = APR.NumbRoutePlan("Dragonflight")
 	local ZeBreak = 0
 	local zfrom
 	local zto
 	for CLi = 1, zenr do
-		local ZeMTop = APR.RoutePlan.FG1["Fxz"..CLi]:GetTop()
-		local ZeMBottom = APR.RoutePlan.FG1["Fxz"..CLi]:GetBottom()
-		local ZeMLeft = APR.RoutePlan.FG1["Fxz"..CLi]:GetLeft()
-		local ZeMRight = APR.RoutePlan.FG1["Fxz"..CLi]:GetRight()
+		local ZeMTop = APR.RoutePlan.FG1["EK3"..CLi]:GetTop()
+		local ZeMBottom = APR.RoutePlan.FG1["EK3"..CLi]:GetBottom()
+		local ZeMLeft = APR.RoutePlan.FG1["EK3"..CLi]:GetLeft()
+		local ZeMRight = APR.RoutePlan.FG1["EK3"..CLi]:GetRight()
 		local ZeMHeight = ((ZeMTop - ZeMBottom) / 2)+ZeMTop
 		local ZeMWidth = ((ZeMRight - ZeMLeft) / 2)+ZeMLeft
 		for CLi2 = 1, 19 do
@@ -1691,10 +1846,10 @@ function APR.CheckPosMove(zeActivz)
 		end
 	end
 	for CLi = 1, zenr2 do
-		local ZeMTop = APR.RoutePlan.FG1["Fxzx2"..CLi]:GetTop()
-		local ZeMBottom = APR.RoutePlan.FG1["Fxzx2"..CLi]:GetBottom()
-		local ZeMLeft = APR.RoutePlan.FG1["Fxzx2"..CLi]:GetLeft()
-		local ZeMRight = APR.RoutePlan.FG1["Fxzx2"..CLi]:GetRight()
+		local ZeMTop = APR.RoutePlan.FG1["KAL3"..CLi]:GetTop()
+		local ZeMBottom = APR.RoutePlan.FG1["KAL3"..CLi]:GetBottom()
+		local ZeMLeft = APR.RoutePlan.FG1["KAL3"..CLi]:GetLeft()
+		local ZeMRight = APR.RoutePlan.FG1["KAL3"..CLi]:GetRight()
 		local ZeMHeight = ((ZeMTop - ZeMBottom) / 2)+ZeMTop
 		local ZeMWidth = ((ZeMRight - ZeMLeft) / 2)+ZeMLeft
 		for CLi2 = 1, 19 do
@@ -1717,10 +1872,10 @@ function APR.CheckPosMove(zeActivz)
 		end
 	end
 	for CLi = 1, zenr3 do
-		local ZeMTop = APR.RoutePlan.FG1["Fxzx3"..CLi]:GetTop()
-		local ZeMBottom = APR.RoutePlan.FG1["Fxzx3"..CLi]:GetBottom()
-		local ZeMLeft = APR.RoutePlan.FG1["Fxzx3"..CLi]:GetLeft()
-		local ZeMRight = APR.RoutePlan.FG1["Fxzx3"..CLi]:GetRight()
+		local ZeMTop = APR.RoutePlan.FG1["SL3"..CLi]:GetTop()
+		local ZeMBottom = APR.RoutePlan.FG1["SL3"..CLi]:GetBottom()
+		local ZeMLeft = APR.RoutePlan.FG1["SL3"..CLi]:GetLeft()
+		local ZeMRight = APR.RoutePlan.FG1["SL3"..CLi]:GetRight()
 		local ZeMHeight = ((ZeMTop - ZeMBottom) / 2)+ZeMTop
 		local ZeMWidth = ((ZeMRight - ZeMLeft) / 2)+ZeMLeft
 		for CLi2 = 1, 19 do
@@ -1743,10 +1898,62 @@ function APR.CheckPosMove(zeActivz)
 		end
 	end
 	for CLi = 1, zenr4 do
-		local ZeMTop = APR.RoutePlan.FG1["Fx3z"..CLi]:GetTop()
-		local ZeMBottom = APR.RoutePlan.FG1["Fx3z"..CLi]:GetBottom()
-		local ZeMLeft = APR.RoutePlan.FG1["Fx3z"..CLi]:GetLeft()
-		local ZeMRight = APR.RoutePlan.FG1["Fx3z"..CLi]:GetRight()
+		local ZeMTop = APR.RoutePlan.FG1["SPR3"..CLi]:GetTop()
+		local ZeMBottom = APR.RoutePlan.FG1["SPR3"..CLi]:GetBottom()
+		local ZeMLeft = APR.RoutePlan.FG1["SPR3"..CLi]:GetLeft()
+		local ZeMRight = APR.RoutePlan.FG1["SPR3"..CLi]:GetRight()
+		local ZeMHeight = ((ZeMTop - ZeMBottom) / 2)+ZeMTop
+		local ZeMWidth = ((ZeMRight - ZeMLeft) / 2)+ZeMLeft
+		for CLi2 = 1, 19 do
+			local zsda = APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetTop()+(APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetTop()-APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetBottom())
+			local zsda2 = APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetLeft()+(APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetRight()-APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetLeft())
+
+			if (ZeMHeight > APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetTop() and ZeMHeight < zsda) then
+				if (ZeMWidth > APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetLeft() and ZeMWidth < zsda2) then
+					zfrom = CLi
+					zto = CLi2
+					ZeBreak = 1
+				end
+			end
+			if (ZeBreak == 1) then
+				break
+			end
+		end
+		if (ZeBreak == 1) then
+			break
+		end
+	end
+	for CLi = 1, zenr5 do
+		local ZeMTop = APR.RoutePlan.FG1["EX3"..CLi]:GetTop()
+		local ZeMBottom = APR.RoutePlan.FG1["EX3"..CLi]:GetBottom()
+		local ZeMLeft = APR.RoutePlan.FG1["EX3"..CLi]:GetLeft()
+		local ZeMRight = APR.RoutePlan.FG1["EX3"..CLi]:GetRight()
+		local ZeMHeight = ((ZeMTop - ZeMBottom) / 2)+ZeMTop
+		local ZeMWidth = ((ZeMRight - ZeMLeft) / 2)+ZeMLeft
+		for CLi2 = 1, 19 do
+			local zsda = APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetTop()+(APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetTop()-APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetBottom())
+			local zsda2 = APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetLeft()+(APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetRight()-APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetLeft())
+
+			if (ZeMHeight > APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetTop() and ZeMHeight < zsda) then
+				if (ZeMWidth > APR.RoutePlan.FG1["Fxz2Custom"..CLi2]:GetLeft() and ZeMWidth < zsda2) then
+					zfrom = CLi
+					zto = CLi2
+					ZeBreak = 1
+				end
+			end
+			if (ZeBreak == 1) then
+				break
+			end
+		end
+		if (ZeBreak == 1) then
+			break
+		end
+	end
+	for CLi = 1, zenr6 do
+		local ZeMTop = APR.RoutePlan.FG1["DF3"..CLi]:GetTop()
+		local ZeMBottom = APR.RoutePlan.FG1["DF3"..CLi]:GetBottom()
+		local ZeMLeft = APR.RoutePlan.FG1["DF3"..CLi]:GetLeft()
+		local ZeMRight = APR.RoutePlan.FG1["DF3"..CLi]:GetRight()
 		local ZeMHeight = ((ZeMTop - ZeMBottom) / 2)+ZeMTop
 		local ZeMWidth = ((ZeMRight - ZeMLeft) / 2)+ZeMLeft
 		for CLi2 = 1, 19 do
@@ -1783,11 +1990,26 @@ function APR.CheckPosMove(zeActivz)
 				end
 			end
 		end
-		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["Fxz"..zfrom]["FS"]:GetText())
+		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["EK3"..zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Show()
 	elseif (zeActivz == 2 and zfrom and zto) then
-		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText("")
-		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Hide()
+		if (APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:GetText() ~= nil) then
+			local zerpd = 20
+			for CLi2z = 1, 19 do
+				zerpd = zerpd - 1
+				if (zerpd ~= 1 and zerpd > zto) then
+					APR.RoutePlan.FG1["Fxz2Custom"..zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom"..zerpd-1]["FS"]:GetText())
+				end
+				if (APR.RoutePlan.FG1["Fxz2Custom"..zerpd]["FS"]:GetText()) then
+					APR.RoutePlan.FG1["Fxz2Custom"..zerpd]:Show()
+				else
+					APR.RoutePlan.FG1["Fxz2Custom"..zerpd]:Hide()
+				end
+			end
+		end
+		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["EX3"..zfrom]["FS"]:GetText())
+		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Show()
+	
 	elseif (zeActivz == 3 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
@@ -1803,7 +2025,7 @@ function APR.CheckPosMove(zeActivz)
 				end
 			end
 		end
-		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["Fxzx2"..zfrom]["FS"]:GetText())
+		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["KAL3"..zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Show()
 	elseif (zeActivz == 4 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:GetText() ~= nil) then
@@ -1820,9 +2042,10 @@ function APR.CheckPosMove(zeActivz)
 				end
 			end
 		end
-		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["Fxzx3"..zfrom]["FS"]:GetText())
+		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["SL3"..zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Show()
 	end
+	
 	if (zeActivz == 5 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
@@ -1838,63 +2061,82 @@ function APR.CheckPosMove(zeActivz)
 				end
 			end
 		end
-		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["Fx3z"..zfrom]["FS"]:GetText())
+		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["SPR3"..zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Show()
 	end
+	if (zeActivz == 6 and zfrom and zto) then
+		if (APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:GetText() ~= nil) then
+			local zerpd = 20
+			for CLi2z = 1, 19 do
+				zerpd = zerpd - 1
+				if (zerpd ~= 1 and zerpd > zto) then
+					APR.RoutePlan.FG1["Fxz2Custom"..zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom"..zerpd-1]["FS"]:GetText())
+				end
+				if (APR.RoutePlan.FG1["Fxz2Custom"..zerpd]["FS"]:GetText()) then
+					APR.RoutePlan.FG1["Fxz2Custom"..zerpd]:Show()
+				else
+					APR.RoutePlan.FG1["Fxz2Custom"..zerpd]:Hide()
+				end
+			end
+		end
+		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["DF3"..zfrom]["FS"]:GetText())
+		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Show()
+	end
+	
 	for CLi = 1, zenr do
-		local zeTex = APR.RoutePlan.FG1["Fxz"..CLi]["FS"]:GetText()
+		local zeTex = APR.RoutePlan.FG1["EK3"..CLi]["FS"]:GetText()
 		local ZeMatch = 0
 		for CLi2 = 1, 19 do
 			if (APR.RoutePlan.FG1["Fxz2Custom"..CLi2]["FS"]:GetText() == zeTex) then
-				APR.RoutePlan.FG1["Fxz"..CLi]:Hide()
+				APR.RoutePlan.FG1["EK3"..CLi]:Hide()
 				ZeMatch = 1
 			end
 		end
 		if (ZeMatch == 0) then
-			if (APR_ZoneComplete[APR.Name.."-"..APR.Realm][APR.RoutePlan.FG1["Fxz"..CLi]["FS"]:GetText()]) then
-				APR.RoutePlan.FG1["Fxz"..CLi]:Hide()
+			if (APR_ZoneComplete[APR.Name.."-"..APR.Realm][APR.RoutePlan.FG1["EK3"..CLi]["FS"]:GetText()]) then
+				APR.RoutePlan.FG1["EK3"..CLi]:Hide()
 				APR.FP.GoToZone = nil
 				APR.ActiveMap = nil
 			else
-				APR.RoutePlan.FG1["Fxz"..CLi]:Show()
+				APR.RoutePlan.FG1["EK3"..CLi]:Show()
 			end
 		end
 	end
 	for CLi = 1, zenr2 do
-		local zeTex = APR.RoutePlan.FG1["Fxzx2"..CLi]["FS"]:GetText()
+		local zeTex = APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:GetText()
 		local ZeMatch = 0
 		for CLi2 = 1, 19 do
 			if (APR.RoutePlan.FG1 and APR.RoutePlan.FG1["Fxz2Custom"..CLi2] and APR.RoutePlan.FG1["Fxz2Custom"..CLi2]["FS"] and APR.RoutePlan.FG1["Fxz2Custom"..CLi2]["FS"]:GetText() == zeTex) then
-				APR.RoutePlan.FG1["Fxzx2"..CLi]:Hide()
+				APR.RoutePlan.FG1["KAL3"..CLi]:Hide()
 				ZeMatch = 1
 			end
 		end
 		if (ZeMatch == 0) then
-			if (APR_ZoneComplete[APR.Name.."-"..APR.Realm][APR.RoutePlan.FG1["Fxzx2"..CLi]["FS"]:GetText()]) then
-				APR.RoutePlan.FG1["Fxzx2"..CLi]:Hide()
+			if (APR_ZoneComplete[APR.Name.."-"..APR.Realm][APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:GetText()]) then
+				APR.RoutePlan.FG1["KAL3"..CLi]:Hide()
 				APR.FP.GoToZone = nil
 				APR.ActiveMap = nil
 			else
-				APR.RoutePlan.FG1["Fxzx2"..CLi]:Show()
+				APR.RoutePlan.FG1["KAL3"..CLi]:Show()
 			end
 		end
 	end
 	for CLi = 1, zenr3 do
-		local zeTex = APR.RoutePlan.FG1["Fxzx3"..CLi]["FS"]:GetText()
+		local zeTex = APR.RoutePlan.FG1["SL3"..CLi]["FS"]:GetText()
 		local ZeMatch = 0
 		for CLi2 = 1, 19 do
 			if (APR.RoutePlan.FG1["Fxz2Custom"..CLi2]["FS"]:GetText() == zeTex) then
-				APR.RoutePlan.FG1["Fxzx3"..CLi]:Hide()
+				APR.RoutePlan.FG1["SL3"..CLi]:Hide()
 				ZeMatch = 1
 			end
 		end
 		if (ZeMatch == 0) then
-			if (APR_ZoneComplete[APR.Name.."-"..APR.Realm][APR.RoutePlan.FG1["Fxzx3"..CLi]["FS"]:GetText()]) then
-				APR.RoutePlan.FG1["Fxzx3"..CLi]:Hide()
+			if (APR_ZoneComplete[APR.Name.."-"..APR.Realm][APR.RoutePlan.FG1["SL3"..CLi]["FS"]:GetText()]) then
+				APR.RoutePlan.FG1["SL3"..CLi]:Hide()
 				APR.FP.GoToZone = nil
 				APR.ActiveMap = nil
 			else
-				APR.RoutePlan.FG1["Fxzx3"..CLi]:Show()
+				APR.RoutePlan.FG1["SL3"..CLi]:Show()
 			end
 		end
 		if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
@@ -1942,21 +2184,21 @@ function APR.CheckPosMove(zeActivz)
 		end
 	end
 	for CLi = 1, zenr4 do
-		local zeTex = APR.RoutePlan.FG1["Fx3z"..CLi]["FS"]:GetText()
+		local zeTex = APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:GetText()
 		local ZeMatch = 0
 		for CLi2 = 1, 19 do
 			if (APR.RoutePlan.FG1["Fxz2Custom"..CLi2]["FS"]:GetText() == zeTex) then
-				APR.RoutePlan.FG1["Fx3z"..CLi]:Hide()
+				APR.RoutePlan.FG1["SPR3"..CLi]:Hide()
 				ZeMatch = 1
 			end
 		end
 		if (ZeMatch == 0) then
-			if (APR_ZoneComplete[APR.Name.."-"..APR.Realm][APR.RoutePlan.FG1["Fx3z"..CLi]["FS"]:GetText()]) then
-				APR.RoutePlan.FG1["Fx3z"..CLi]:Hide()
+			if (APR_ZoneComplete[APR.Name.."-"..APR.Realm][APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:GetText()]) then
+				APR.RoutePlan.FG1["SPR3"..CLi]:Hide()
 				APR.FP.GoToZone = nil
 				APR.ActiveMap = nil
 			else
-				APR.RoutePlan.FG1["Fx3z"..CLi]:Show()
+				APR.RoutePlan.FG1["SPR3"..CLi]:Show()
 			end
 		end
 		if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
@@ -1968,6 +2210,44 @@ function APR.CheckPosMove(zeActivz)
 						print("APR: APR - Shadowlands is Disabled in your Addon-List!")
 					end
 				end
+			end
+		end
+	end
+	for CLi = 1, zenr5 do
+		local zeTex = APR.RoutePlan.FG1["EX3"..CLi]["FS"]:GetText()
+		local ZeMatch = 0
+		for CLi2 = 1, 19 do
+			if (APR.RoutePlan.FG1["Fxz2Custom"..CLi2]["FS"]:GetText() == zeTex) then
+				APR.RoutePlan.FG1["EX3"..CLi]:Hide()
+				ZeMatch = 1
+			end
+		end
+		if (ZeMatch == 0) then
+			if (APR_ZoneComplete[APR.Name.."-"..APR.Realm][APR.RoutePlan.FG1["EX3"..CLi]["FS"]:GetText()]) then
+				APR.RoutePlan.FG1["EX3"..CLi]:Hide()
+				APR.FP.GoToZone = nil
+				APR.ActiveMap = nil
+			else
+				APR.RoutePlan.FG1["EX3"..CLi]:Show()
+			end
+		end
+	end
+	for CLi = 1, zenr6 do
+		local zeTex = APR.RoutePlan.FG1["DF3"..CLi]["FS"]:GetText()
+		local ZeMatch = 0
+		for CLi2 = 1, 19 do
+			if (APR.RoutePlan.FG1["Fxz2Custom"..CLi2]["FS"]:GetText() == zeTex) then
+				APR.RoutePlan.FG1["DF3"..CLi]:Hide()
+				ZeMatch = 1
+			end
+		end
+		if (ZeMatch == 0) then
+			if (APR_ZoneComplete[APR.Name.."-"..APR.Realm][APR.RoutePlan.FG1["DF3"..CLi]["FS"]:GetText()]) then
+				APR.RoutePlan.FG1["DF3"..CLi]:Hide()
+				APR.FP.GoToZone = nil
+				APR.ActiveMap = nil
+			else
+				APR.RoutePlan.FG1["DF3"..CLi]:Show()
 			end
 		end
 	end
@@ -1999,69 +2279,98 @@ function APR.RoutePlanCheckPos() --Check current position for route plan
 		end
 	end
 	for CLi = 1, zenr do
-		APR.RoutePlan.FG1["Fxz"..CLi]:ClearAllPoints()
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.F23, "TOPRIGHT", -10, -(20*CLi)-10)
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.F23, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.F23, "BOTTOMLEFT", 10, -(20*CLi)+10-10)
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.F23, "BOTTOMRIGHT", -10, -(20*CLi)-10)
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.F23, "TOPLEFT", 10, -(20*CLi)-10)
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetWidth(225)
-		APR.RoutePlan.FG1["Fxz"..CLi]:SetHeight(20)
-		if (ZeHide and ZeHide[APR.RoutePlan.FG1["Fxz"..CLi]["FS"]:GetText()]) then
-			APR.RoutePlan.FG1["Fxz"..CLi]:Hide()
+		APR.RoutePlan.FG1["EK3"..CLi]:ClearAllPoints()
+		APR.RoutePlan.FG1["EK3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.EKT, "TOPRIGHT", -10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["EK3"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.EKT, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
+		APR.RoutePlan.FG1["EK3"..CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.EKT, "BOTTOMLEFT", 10, -(20*CLi)+10-10)
+		APR.RoutePlan.FG1["EK3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.EKT, "BOTTOMRIGHT", -10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["EK3"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.EKT, "TOPLEFT", 10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["EK3"..CLi]:SetWidth(225)
+		APR.RoutePlan.FG1["EK3"..CLi]:SetHeight(20)
+		if (ZeHide and ZeHide[APR.RoutePlan.FG1["EK3"..CLi]["FS"]:GetText()]) then
+			APR.RoutePlan.FG1["EK3"..CLi]:Hide()
 		end
 	end
 	local zenr = APR.NumbRoutePlan("Kalimdor")
 	for CLi = 1, zenr do
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:ClearAllPoints()
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.Fx1, "TOPRIGHT", -10, -(20*CLi)-10)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.Fx1, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.Fx1, "BOTTOMLEFT", 10, -(20*CLi)+10-10)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.Fx1, "BOTTOMRIGHT", -10, -(20*CLi)-10)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.Fx1, "TOPLEFT", 10, -(20*CLi)-10)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetWidth(225)
-		APR.RoutePlan.FG1["Fxzx2"..CLi]:SetHeight(20)
-		if (ZeHide and ZeHide[APR.RoutePlan.FG1["Fxzx2"..CLi]["FS"]:GetText()]) then
-			APR.RoutePlan.FG1["Fxzx2"..CLi]:Hide()
+		APR.RoutePlan.FG1["KAL3"..CLi]:ClearAllPoints()
+		APR.RoutePlan.FG1["KAL3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.KALT, "TOPRIGHT", -10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["KAL3"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.KALT, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
+		APR.RoutePlan.FG1["KAL3"..CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.KALT, "BOTTOMLEFT", 10, -(20*CLi)+10-10)
+		APR.RoutePlan.FG1["KAL3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.KALT, "BOTTOMRIGHT", -10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["KAL3"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.KALT, "TOPLEFT", 10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["KAL3"..CLi]:SetWidth(225)
+		APR.RoutePlan.FG1["KAL3"..CLi]:SetHeight(20)
+		if (ZeHide and ZeHide[APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:GetText()]) then
+			APR.RoutePlan.FG1["KAL3"..CLi]:Hide()
 		end
 	end
+	
 	local zenr = APR.NumbRoutePlan("Shadowlands")
 	for CLi = 1, zenr do
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:ClearAllPoints()
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.Fx2x2, "TOPRIGHT", -10, -(20*CLi)-10)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.Fx2x2, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.Fx2x2, "BOTTOMLEFT", 10, -(20*CLi)+10-10)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.Fx2x2, "BOTTOMRIGHT", -10, -(20*CLi)-10)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.Fx2x2, "TOPLEFT", 10, -(20*CLi)-10)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetWidth(225)
-		APR.RoutePlan.FG1["Fxzx3"..CLi]:SetHeight(20)
-		if (ZeHide and ZeHide[APR.RoutePlan.FG1["Fxzx3"..CLi]["FS"]:GetText()]) then
-			APR.RoutePlan.FG1["Fxzx3"..CLi]:Hide()
+		APR.RoutePlan.FG1["SL3"..CLi]:ClearAllPoints()
+		APR.RoutePlan.FG1["SL3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.SLT, "TOPRIGHT", -10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["SL3"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.SLT, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
+		APR.RoutePlan.FG1["SL3"..CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.SLT, "BOTTOMLEFT", 10, -(20*CLi)+10-10)
+		APR.RoutePlan.FG1["SL3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.SLT, "BOTTOMRIGHT", -10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["SL3"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.SLT, "TOPLEFT", 10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["SL3"..CLi]:SetWidth(225)
+		APR.RoutePlan.FG1["SL3"..CLi]:SetHeight(20)
+		if (ZeHide and ZeHide[APR.RoutePlan.FG1["SL3"..CLi]["FS"]:GetText()]) then
+			APR.RoutePlan.FG1["SL3"..CLi]:Hide()
+		end
+	end
+	local zenr = APR.NumbRoutePlan("Extra")
+	for CLi = 1, zenr do
+		APR.RoutePlan.FG1["EX3"..CLi]:ClearAllPoints()
+		APR.RoutePlan.FG1["EX3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.EXTT, "TOPRIGHT", -10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["EX3"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.EXTT, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
+		APR.RoutePlan.FG1["EX3"..CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.EXTT, "BOTTOMLEFT", 10, -(20*CLi)+10-10)
+		APR.RoutePlan.FG1["EX3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.EXTT, "BOTTOMRIGHT", -10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["EX3"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.EXTT, "TOPLEFT", 10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["EX3"..CLi]:SetWidth(225)
+		APR.RoutePlan.FG1["EX3"..CLi]:SetHeight(20)
+		if (ZeHide and ZeHide[APR.RoutePlan.FG1["EX3"..CLi]["FS"]:GetText()]) then
+			APR.RoutePlan.FG1["EX3"..CLi]:Hide()
+		end
+	end
+	local zenr = APR.NumbRoutePlan("Dragonflight")
+	for CLi = 1, zenr do
+		APR.RoutePlan.FG1["DF3"..CLi]:ClearAllPoints()
+		APR.RoutePlan.FG1["DF3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.DFT, "TOPRIGHT", -10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["DF3"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.DFT, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
+		APR.RoutePlan.FG1["DF3"..CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.DFT, "BOTTOMLEFT", 10, -(20*CLi)+10-10)
+		APR.RoutePlan.FG1["DF3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.DFT, "BOTTOMRIGHT", -10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["DF3"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.DFT, "TOPLEFT", 10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["DF3"..CLi]:SetWidth(225)
+		APR.RoutePlan.FG1["DF3"..CLi]:SetHeight(20)
+		if (ZeHide and ZeHide[APR.RoutePlan.FG1["DF3"..CLi]["FS"]:GetText()]) then
+			APR.RoutePlan.FG1["DF3"..CLi]:Hide()
 		end
 	end
 	local zenr = APR.NumbRoutePlan("SpeedRun")
 	for CLi = 1, zenr do
-		APR.RoutePlan.FG1["Fx3z"..CLi]:ClearAllPoints()
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.F25x3, "TOPRIGHT", -10, -(20*CLi)-10)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.F25x3, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.F25x3, "BOTTOMLEFT", 10, -(20*CLi)+10-10)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.F25x3, "BOTTOMRIGHT", -10, -(20*CLi)-10)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.F25x3, "TOPLEFT", 10, -(20*CLi)-10)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetWidth(225)
-		APR.RoutePlan.FG1["Fx3z"..CLi]:SetHeight(20)
---		if (ZeHide and ZeHide[APR.RoutePlan.FG1["Fx3z"..CLi]["FS"]:GetText()]) then
-			APR.RoutePlan.FG1["Fx3z"..CLi]:Hide()
---		end
+		APR.RoutePlan.FG1["SPR3"..CLi]:ClearAllPoints()
+		APR.RoutePlan.FG1["SPR3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.F25x3, "TOPRIGHT", -10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["SPR3"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.F25x3, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
+		APR.RoutePlan.FG1["SPR3"..CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.F25x3, "BOTTOMLEFT", 10, -(20*CLi)+10-10)
+		APR.RoutePlan.FG1["SPR3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.F25x3, "BOTTOMRIGHT", -10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["SPR3"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.F25x3, "TOPLEFT", 10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["SPR3"..CLi]:SetWidth(225)
+		APR.RoutePlan.FG1["SPR3"..CLi]:SetHeight(20)
+		if (ZeHide and ZeHide[APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:GetText()]) then
+			APR.RoutePlan.FG1["SPR3"..CLi]:Hide()
+		end
 	end
 	APR_Custom[APR.Name.."-"..APR.Realm] = nil
 	APR_Custom[APR.Name.."-"..APR.Realm] = {}
 	for CLi = 1, 19 do
 		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:ClearAllPoints()
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.Fx0, "TOPRIGHT", -10, -(20*CLi)-10)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.Fx0, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.Fx0, "BOTTOMLEFT", 10, -(20*CLi)+10-10)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.Fx0, "BOTTOMRIGHT", -10, -(20*CLi)-10)
-		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.Fx0, "TOPLEFT", 10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.CPT, "TOPRIGHT", -10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.CPT, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
+		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.CPT, "BOTTOMLEFT", 10, -(20*CLi)+10-10)
+		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.CPT, "BOTTOMRIGHT", -10, -(20*CLi)-10)
+		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.CPT, "TOPLEFT", 10, -(20*CLi)-10)
 		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetWidth(225)
 		APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetHeight(20)
 		if (APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:GetText() ~= "") then
@@ -2092,6 +2401,18 @@ function APR.NumbRoutePlan(Continz)
 		end
 		if (APR.QuestStepListListing["Kalimdor"]) then
 			for APR_index2,APR_value2 in pairs(APR.QuestStepListListing["Kalimdor"]) do
+				zenr = zenr + 1
+			end
+		end
+	elseif (Continz == "Extra") then
+		if (APR.QuestStepListListing["Extra"]) then
+			for APR_index2,APR_value2 in pairs(APR.QuestStepListListing["Extra"]) do
+				zenr = zenr + 1
+			end
+		end
+	elseif (Continz == "Dragonflight") then
+		if (APR.QuestStepListListing["Dragonflight"]) then
+			for APR_index2,APR_value2 in pairs(APR.QuestStepListListing["Dragonflight"]) do
 				zenr = zenr + 1
 			end
 		end
