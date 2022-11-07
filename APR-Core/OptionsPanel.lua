@@ -76,7 +76,7 @@ APR.OptionsFrame.MainFrame.texture = t
 	APR.OptionsFrame.MainFrame.Options = CreateFrame("frame", "APR_OptionsMainFrame_1",  APR_OptionsMainFrame)
 	APR.OptionsFrame.MainFrame.Options:SetWidth(150)
 	APR.OptionsFrame.MainFrame.Options:SetHeight(320)
-	APR.OptionsFrame.MainFrame.Options:SetFrameStrata("MEDIUM")
+	APR.OptionsFrame.MainFrame.Options:SetFrameStrata("Low")
 	APR.OptionsFrame.MainFrame.Options:SetPoint("LEFT",  APR_OptionsMainFrame, "LEFT",0,-20)
 	APR.OptionsFrame.MainFrame.Options:SetMovable(true)
 	APR.OptionsFrame.MainFrame.Options:EnableMouse(true)
