@@ -412,18 +412,21 @@ function APR.ResetSettings()
 end
 -- Chat commands, such as /apr reset, /apr skip, /apr skipcamp
 local function APR_SlashCmd(APR_index)
-	if (APR_index == "reset") then --Command for making the quest rescan on completion and reset, including previously skipped steps
-		print("APR: Resetting Zone.")
+	if (APR_index == "reset") then 
+		--Command for making the quest rescan on completion and reset, including previously skipped steps
+		print("APR: "..L["RESET"])
 		APR1[APR.Realm][APR.Name][APR.ActiveMap] = 1
 		APR.BookingList["UpdateQuest"] = 1
 		APR.BookingList["PrintQStep"] = 1
 	elseif (APR_index == "skip") then
-		print("APR: Skipping Quest Step.") -- Command for skipping the current quest step
+		-- Command for skipping the current quest step
+		print("APR: "..L["SKIP"]) 
 		APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 		APR.BookingList["UpdateQuest"] = 1
 		APR.BookingList["PrintQStep"] = 1
 	elseif (APR_index == "skipcamp") then
-		print("APR: Skipping Camp Step.") -- Command for skipping "camp" step
+		-- Command for skipping "camp" step
+		print("APR: "..L["SKIPCAMP"]) 
 		APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 14
 		APR.BookingList["UpdateQuest"] = 1
 		APR.BookingList["PrintQStep"] = 1
@@ -492,7 +495,7 @@ APR.ArrowFrame.Button:SetParent(APR.ArrowFrame)
 APR.ArrowFrame.Button:SetPoint("BOTTOM", APR.ArrowFrame, "BOTTOM", 0, -30)
 APR.ArrowFrame.Button:SetScript("OnMouseDown", function(self, button)
 	APR.ArrowFrame.Button:Hide()
-	print("APR: Skipping Waypoint")
+	print("APR: "..L["SKIP_WAYPOINT"])
 	APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 	APR.ArrowActive_X = 0
 	APR.ArrowActive_Y = 0
@@ -1912,6 +1915,22 @@ local zenr = APR.NumbRoutePlan("MISC 2")
 			APR.CheckCustomEmpty()
 		end
 	end)
+	APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetScript("OnMouseUp", function(self, button)
+		if button == "LeftButton" and APR.RoutePlan.FG1["Fxz2Custom"..CLi].isMoving then
+			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:StopMovingOrSizing();
+			APR.RoutePlan.FG1["Fxz2Custom"..CLi].isMoving = false;
+			APR.CheckPosMove(2)
+			APR.RoutePlanCheckPos()
+			APR.CheckCustomEmpty()
+		else
+			APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText("")
+			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
+			APR.FP.QuedFP = nil
+			APR.CheckPosMove(2)
+			APR.RoutePlanCheckPos()
+			APR.CheckCustomEmpty()
+		end
+	end)
 	APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetScript("OnHide", function(self)
 		if ( APR.RoutePlan.FG1.isMoving ) then
 			APR.RoutePlan.FG1:StopMovingOrSizing();
@@ -1932,50 +1951,50 @@ local zenr = APR.NumbRoutePlan("MISC 2")
 		else
 			if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
 				local zew = APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]]
-					if (APR["EasternKingdom"] and APR["EasternKingdom"][zew] and IsAddOnLoaded("APR-Vanilla") == false) then
+				if (APR["EasternKingdomDB"] and APR["EasternKingdomDB"][zew] and IsAddOnLoaded("APR-EasternKingdoms") == false) then
 					local loaded, reason = LoadAddOn("APR-Vanilla")
-						if (not loaded) then
-						if (reason == "DISABLED") then
-						print("APR: APR - Eastern Kingdoms is Disabled in your Addon-List!")
-						end
-					end
-				end
-			if (APR["BattleForAzeroth"] and APR["BattleForAzeroth"][zew] and IsAddOnLoaded("APR-BattleForAzeroth") == false) then
-				local loaded, reason = LoadAddOn("APR-BattleForAzeroth")
 					if (not loaded) then
 						if (reason == "DISABLED") then
-								print("APR: APR - BattleForAzeroth is Disabled in your Addon-List!")
-						end
-					end
-			end
-					if (APR["Kalimdor"] and APR["Kalimdor"][zew] and IsAddOnLoaded("APR-Vanilla") == false) then
-						local loaded, reason = LoadAddOn("APR-Vanilla")
-						if (not loaded) then
-							if (reason == "DISABLED") then
-								print("APR: APR - Vanilla is Disabled in your Addon-List!")
-							end
-						end
-					end
-					if (APR["Legion"] and APR["Legion"][zew] and IsAddOnLoaded("APR-Legion") == false) then
-						local loaded, reason = LoadAddOn("APR-Legion")
-						if (not loaded) then
-							if (reason == "DISABLED") then
-								print("APR: APR - Legion is Disabled in your Addon-List!")
-							end
-						end
-					end
-					if (APR["ShadowlandsDB"] and APR["ShadowlandsDB"][zew] and IsAddOnLoaded("APR-Shadowlands") == false) then
-						local loaded, reason = LoadAddOn("APR-Shadowlands")
-						if (not loaded) then
-							if (reason == "DISABLED") then
-								print("APR: APR - Shadowlands is Disabled in your Addon-List!")
-							end
+							print("APR: APR - Eastern Kingdoms "..L["DISABLED_ADDON_LIST"])
 						end
 					end
 				end
-				APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText(APR_Custom[APR.Name.."-"..APR.Realm][CLi])
-				APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Show()
+				if (APR["BattleForAzeroth"] and APR["BattleForAzeroth"][zew] and IsAddOnLoaded("APR-BattleForAzeroth") == false) then
+					local loaded, reason = LoadAddOn("APR-BattleForAzeroth")
+					if (not loaded) then
+						if (reason == "DISABLED") then
+							print("APR: APR - BattleForAzeroth "..L["DISABLED_ADDON_LIST"])
+						end
+					end
+				end
+				if (APR["Kalimdor"] and APR["Kalimdor"][zew] and IsAddOnLoaded("APR-Vanilla") == false) then
+					local loaded, reason = LoadAddOn("APR-Vanilla")
+					if (not loaded) then
+						if (reason == "DISABLED") then
+							print("APR: APR - Vanilla "..L["DISABLED_ADDON_LIST"])
+						end
+					end
+				end
+				if (APR["Legion"] and APR["Legion"][zew] and IsAddOnLoaded("APR-Legion") == false) then
+					local loaded, reason = LoadAddOn("APR-Legion")
+					if (not loaded) then
+						if (reason == "DISABLED") then
+							print("APR: APR - Legion "..L["DISABLED_ADDON_LIST"])
+						end
+					end
+				end
+				if (APR["ShadowlandsDB"] and APR["ShadowlandsDB"][zew] and IsAddOnLoaded("APR-Shadowlands") == false) then
+					local loaded, reason = LoadAddOn("APR-Shadowlands")
+					if (not loaded) then
+						if (reason == "DISABLED") then
+							print("APR: APR - Shadowlands "..L["DISABLED_ADDON_LIST"])
+						end
+					end
+				end
 			end
+			APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText(APR_Custom[APR.Name.."-"..APR.Realm][CLi])
+			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Show()
+		end
 		else
 			APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText("")
 			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
@@ -2563,7 +2582,7 @@ function APR.CheckPosMove(zeActivz)
 				local loaded, reason = LoadAddOn("APR-Vanilla")
 						if (not loaded) then
 							if (reason == "DISABLED") then
-								print("APR: APR - Eastern Kingdoms is Disabled in your Addon-List!")
+								print("APR: APR - Eastern Kingdoms "..L["DISABLED_ADDON_LIST"])
 							end
 						end
 					end
@@ -2571,7 +2590,7 @@ function APR.CheckPosMove(zeActivz)
 						local loaded, reason = LoadAddOn("APR-Vanilla")
 						if (not loaded) then
 							if (reason == "DISABLED") then
-								print("APR: APR - Vanilla is Disabled in your Addon-List!")
+								print("APR: APR - Vanilla "..L["DISABLED_ADDON_LIST"])
 							end
 						end
 					end
@@ -2579,7 +2598,7 @@ function APR.CheckPosMove(zeActivz)
 						local loaded, reason = LoadAddOn("APR-BattleForAzeroth")
 						if (not loaded) then
 							if (reason == "DISABLED") then
-								print("APR: APR - BattleForAzeroth is Disabled in your Addon-List!")
+								print("APR: APR - BattleForAzeroth "..L["DISABLED_ADDON_LIST"])
 							end
 						end
 					end
@@ -2587,7 +2606,7 @@ function APR.CheckPosMove(zeActivz)
 						local loaded, reason = LoadAddOn("APR-Legion")
 						if (not loaded) then
 							if (reason == "DISABLED") then
-								print("APR: APR - Legion is Disabled in your Addon-List!")
+								print("APR: APR - Legion "..L["DISABLED_ADDON_LIST"])
 							end
 						end
 					end
@@ -2595,7 +2614,7 @@ function APR.CheckPosMove(zeActivz)
 				local loaded, reason = LoadAddOn("APR-Shadowlands")
 				if (not loaded) then
 					if (reason == "DISABLED") then
-						print("APR: APR - Shadowlands is Disabled in your Addon-List!")
+						print("APR: APR - Shadowlands "..L["DISABLED_ADDON_LIST"])
 					end
 				end
 			end
@@ -2626,7 +2645,7 @@ function APR.CheckPosMove(zeActivz)
 				local loaded, reason = LoadAddOn("APR-Shadowlands")
 				if (not loaded) then
 					if (reason == "DISABLED") then
-						print("APR: APR - Shadowlands is Disabled in your Addon-List!")
+						print("APR: APR - Shadowlands "..L["DISABLED_ADDON_LIST"])
 					end
 				end
 			end
@@ -3044,7 +3063,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 				else
 					APR.LoadInOptionFrame:Hide()
 				end
-				print("APR Loaded")
+				print("APR "..L["LOADED"])
 				APR_LoadInTimer:Stop()
 				C_Timer.After(4, APR_UpdatezeMapId)
 				C_Timer.After(5, APR_BookQStep)

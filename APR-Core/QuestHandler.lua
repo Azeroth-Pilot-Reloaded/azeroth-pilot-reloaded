@@ -2188,30 +2188,30 @@ function APR.CheckCRangeText()
 		CurStep = CurStep + 1
 		steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		if (steps and steps["FlightPath"]) then
-			local Derp2 = "[WayPoint] - "..L["GET_FLIGHPATH"]
+			local Derp2 = "["..L["WAYPOINT"].."] - "..L["GET_FLIGHPATH"]
 			return Derp2
 		elseif (steps and steps["UseFlightPath"]) then
 			if (steps["Boat"]) then
-				local Derp2 = "[WayPoint] - "..L["USE_BOAT"]
+				local Derp2 = "["..L["WAYPOINT"].."] - "..L["USE_BOAT"]
 				return Derp2
 			else
-				local Derp2 = "[WayPoint] - "..L["USE_FLIGHTPATH"]
+				local Derp2 = "["..L["WAYPOINT"].."] - "..L["USE_FLIGHTPATH"]
 				return Derp2
 			end
 		elseif (steps and steps["PickUp"]) then
-			local Derp2 = "[WayPoint] - Accept Quest"
+			local Derp2 = "["..L["WAYPOINT"].."] - "..L["ACCEPT_QUEST"]
 			return Derp2
 		elseif (steps and steps["Done"]) then
-			local Derp2 = "[WayPoint] - Turn in Quest"
+			local Derp2 = "["..L["WAYPOINT"].."] - "..L["TURN_IN_QUEST"]
 			return Derp2
 		elseif (steps and steps["Qpart"]) then
-			local Derp2 ="[WayPoint] - Complete Quest"
+			local Derp2 ="["..L["WAYPOINT"].."] - "..L["COMPLETE_QUEST"] 
 			return Derp2
 		elseif (steps and steps["SetHS"]) then
-			local Derp2 = "[WayPoint] - Set Hearthstone"
+			local Derp2 = "["..L["WAYPOINT"].."] - "..L["SET_HEARTHSTONE"]
 			return Derp2
 		elseif (steps and steps["QpartPart"]) then
-			local Derp2 = "[WayPoint] - Complete Quest"
+			local Derp2 = "["..L["WAYPOINT"].."] - "..L["COMPLETE_QUEST"]
 			return Derp2
 		end
 
@@ -3384,7 +3384,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			for APR_index,APR_value in pairs(APRChromie) do
 				if (steps["ChromiePick"] == APRChromie[APR_index]["id"]) then
 					C_ChromieTime.SelectChromieTimeOption(APRChromie[APR_index]["id"])
-					print("APR: Switched to "..APRChromie[APR_index]["name"].." time.")
+					print("APR: "..L["SWITCH_TO"].." "..APRChromie[APR_index]["name"])
 					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 					APR.BookingList["UpdateQuest"] = 1
 					APR.BookingList["PrintQStep"] = 1
@@ -3523,7 +3523,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 					end
 					if (repairAllCost <= GetMoney() and not guildRepairedItems) then
 						RepairAllItems(false);
-						print("APR: Equipment has been repaired for "..GetCoinTextureString(repairAllCost))
+						print("APR: "..L["REPAIR_EQUIPEMENT"].." "..GetCoinTextureString(repairAllCost))
 					end
 				end
 			end
@@ -3702,7 +3702,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 	if (event=="QUEST_ACCEPTED") then
 		local arg1, arg2, arg3, arg4, arg5 = ...;
 		if (APR1["Debug"]) then
-			print("QUEST_ACCEPTED: ".. arg1)
+			print(L["QUEST_ACCEPTED"]..": ".. arg1)
 		end
 		C_Timer.After(0.1, APR_UpdMapIDz)
 		C_Timer.After(3, APR_UpdMapIDz)
@@ -3725,7 +3725,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 	end
 	if (event=="QUEST_REMOVED") then
 		if (APR1["Debug"]) then
-			print("QUEST_REMOVED")
+			print(L["QUEST_REMOVED"])
 		end
 		local arg1, arg2, arg3, arg4, arg5 = ...;
 		APR.BookingList["RemoveQuest"] = arg1
@@ -3815,7 +3815,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			end
 			if (APRDenied == 1) then
 				C_GossipInfo.CloseGossip()
-				print("APR: Not Yet!")
+				print("APR: "..L["NOT_YET"])
 			elseif (steps and steps["Gossip"] and steps["Gossip"] == 28202 and APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 1 and not IsControlKeyDown()) then
 				APRGOSSIPCOUNT = APRGOSSIPCOUNT + 1
 				print(APRGOSSIPCOUNT)
@@ -3940,7 +3940,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				end
 				if (APRDenied == 1) then
 					CloseQuest()
-					print("APR: Not Yet!")
+					print("APR: "..L["NOT_YET"])
 				end
 			end
 		end
@@ -4106,7 +4106,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			if (npc_id and name) then
 				if (tonumber(npc_id) == 159477) then
 					if (APR_GigglingBasket[arg1]) then
-						print("APR: Doing Emote: "..APR_GigglingBasket[arg1])
+						print("APR: "..L["DOING_EMOTE"]..": "..APR_GigglingBasket[arg1])
 						DoEmote(APR_GigglingBasket[arg1])
 					end
 				end

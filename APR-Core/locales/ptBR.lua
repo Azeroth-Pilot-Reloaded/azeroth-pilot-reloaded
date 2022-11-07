@@ -21,7 +21,7 @@ L.SKIPPED_CUTSCENE = "Cena esquecida";
 -- TODO : L.SHOW_QUESTLIST = "Show QuestList";
 -- TODO : L.YARDS = "yards";
 
--- Zone
+-- Zone Interface
 L.GET_FLIGHPATH = "Obter ponto de v\195\180o";
 -- TODO : L.GET_TREASURE = "Get Treasure",
 -- TODO : L.GROUP_QUEST = "Ask for group quest",
@@ -221,6 +221,7 @@ L.USE_ITEM = "Usar Item";
 -- TODO : L.TALK_DREAD_RIDER_CULLEN = "Talk to Dread-Rider Cullen";
 -- TODO : L.TALK_EFFIGY = "Talk to Effigy";
 -- TODO : L.TALK_ENSIGN_WARD = "Talk to Ensign Ward";
+-- TODO : L.TALK_ERUL = "Talk to Erul Dawnbrook";
 -- TODO : L.TALK_HALANNIA = "Talk to Halannia";
 -- TODO : L.TALK_JHASH = "Talk to Jhash for a ride";
 -- TODO : L.TALK_JORNUN = "Talk to Jornun to Ride";

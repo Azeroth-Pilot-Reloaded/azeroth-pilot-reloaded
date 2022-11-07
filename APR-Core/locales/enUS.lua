@@ -2,7 +2,6 @@ local name, app = ...;
 
 app.L = {
     -- SETTINGS
-    ACCEPT_QUEST = "Accept Quest",
     AUTO_PICK_REWARD_ITEM = "Auto pick Quest Reward by ilvl upgrade",
     AUTO_REPAIR = "Auto Repair",
     AUTO_SELECTION_OF_DIALOG = "Auto-selection of dialog",
@@ -19,8 +18,10 @@ app.L = {
     SHOW_QUESTLIST = "Show QuestList",
     SKIPPED_CUTSCENE = "Skip cutscene",
     YARDS = "yards",
-
-    -- Zone
+    
+    -- Zone / Interface
+    ACCEPT_QUEST = "Accept Quest",
+    COMPLETE_QUEST = "Complete Quest";
     GET_FLIGHPATH = "Get Flightpath",
     GET_TREASURE = "Get Treasure",
     GROUP_QUEST = "Ask for group quest",
@@ -35,7 +36,26 @@ app.L = {
     USE_ORGRIMMAR_PORTAL = "Use Orgrimmar Portal",
     ZONE = "Zone",
     ZONE_DONE = "Zone Done",
+    WAYPOINT = "WayPoint",
+    DOING_EMOTE = "Doing Emote",
+    SWITCH_TO = "Chromie switch to timeline",
+    REPAIR_EQUIPEMENT = "Equipment has been repaired for",
+    ITEM_SOLD = "Items were sold for",
+    QUEST_ACCEPTED = "Quest accepted",
+    QUEST_REMOVED = "Quest removed",
+    NOT_YET = "Not Yet!",
     
+    -- commands
+    RESET = "Resetting Zone",
+    SKIP = "Skipping Quest Step",
+    SKIPCAMP = "Skipping Camp Step",
+    SKIP_WAYPOINT = "Skipping Waypoint",
+    
+    -- Error
+    DISABLED_ADDON_LIST ="is Disabled in your Addon-List!",
+    QUESTLIST_OUT_SCREEN = "QuestList Out of screen, resetting!",
+    LOADED = "Loaded",
+
     -- Extra Quest text
     AROUND_COOKPOT = "One from each around the cookpot",
     AT_GAZLOWE = "At Gazlowe",
@@ -212,6 +232,7 @@ app.L = {
     TALK_DREAD_RIDER_CULLEN = "Talk to Dread-Rider Cullen",
     TALK_EFFIGY = "Talk to Effigy",
     TALK_ENSIGN_WARD = "Talk to Ensign Ward",
+    TALK_ERUL = "Talk to Erul Dawnbrook",
     TALK_HALANNIA = "Talk to Halannia",
     TALK_JHASH = "Talk to Jhash for a ride",
     TALK_JORNUN = "Talk to Jornun to Ride",
@@ -281,4 +302,5 @@ app.L = {
     USE_WHISTLE_ON_RAMS = "use /whistle on rams",
     WALK_BLADEGUARD_KAJA = "Walk with Bladeguard Kaja",
     YES_TO_EXIT_TUTORIAL = "Yes To Exit Tutorial",
+
 };

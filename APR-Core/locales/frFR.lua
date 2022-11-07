@@ -5,7 +5,6 @@ local L = app.L;
 -- Author: Neogeekmo
 
 -- SETTINGS
-L.ACCEPT_QUEST = "Acceptez les quêtes";
 L.AUTO_PICK_REWARD_ITEM = "Choix des récompenses en fonction du ilvl";
 L.AUTO_REPAIR = "Réparation automatique";
 L.AUTO_VENDOR = "Vendre automatiquement les objets gris";
@@ -23,7 +22,9 @@ L.SHOW_QUESTLIST = "Afficher la liste de quêtes";
 L.SKIPPED_CUTSCENE = "Passer les cinématiques";
 L.YARDS = "mètres";
 
--- ZONE 
+-- ZONE / UI
+L.ACCEPT_QUEST = "Acceptez la quête";
+L.COMPLETE_QUEST = "Quête terminée";
 L.GET_FLIGHPATH = "Prenez le point de vol";
 L.GET_TREASURE = "Prenez le trésor";
 L.GROUP_QUEST = "Recherchez un groupe pour les quêtes";
@@ -35,10 +36,30 @@ L.QUEST_PART = "Faites la quete";
 L.ROUTE_COMPLETED = "Guide terminée";
 L.RUN_WAYPOINT = "Allez au point de passage";
 L.TRAIN_RIDING = "Apprennez la compétence de monture";
+L.TURN_IN_QUEST = "Rendre la quête";
 L.USE_ORGRIMMAR_PORTAL = "Prend le portail pour Orgrimmar";
 L.ZONE = "Zone";
+L.WAYPOINT = "Point de passage";
 L.ZONE_DONE = "Zone terminée";
+L.DOING_EMOTE = "Faites l'Emote";
+L.CHROMIE_SWITCH_TO = "Chromie : Changez de ligne temporelle pour";
+L.REPAIR_EQUIPEMENT = "La réparation de l'équipement a coûté";
+L.ITEM_SOLD = "La camelote a été vendu contre";
+L.QUEST_ACCEPTED = "Quête acceptée";
+L.QUEST_REMOVED = "Quête supprimée";
+L.NOT_YET = "Pas le moment!";
 
+-- commands
+L.RESET = "Zone réinitialisée";
+L.SKIP = "Etape sautée";
+L.SKIPCAMP = "Etape du camp sautée";
+L.SKIP_WAYPOINT = "Sauter le point de passage";
+
+-- Error
+L.DISABLED_ADDON_LIST ="est désactivé dans votre liste d'addon!";
+L.QUESTLIST_OUT_SCREEN = "Réinitialisation! Liste de quête en dehors de l'écran!";
+L.LOADED = "Chargé";
+    
 
 -- Extra Quest text=
 L.BLOODLUST = "Un bon moment pour utiliser la BL";
@@ -50,7 +71,6 @@ L.OPTIONAL = "Facultatif";
 L.SET_HEARTHSTONE = "Fixez votre foyer";
 L.SUGGESTED_PLAYERS = "Joueurs suggérés";
 L.TRAVEL_TO = "Voyagez vers";
-L.TURN_IN_QUEST = "Rendre les quêtes";
 L.TURN_ON_WARMODE = "Activez le Mode Guerre dans la fenêtre de vos talents";
 L.USE_BOAT = "Prenez le bateau pour";
 L.USE_DALARAN_HEARTHSTONE = "Utilisez la pierre de foyer de Dalaran";
@@ -58,6 +78,8 @@ L.USE_FLIGHTPATH = "Volez vers";
 L.USE_GARRISON_HEARTHSTONE = "Utilisez la Pierre de foyer de fief";
 L.USE_HEARTHSTONE = "Utilisez votre pierre de foyer";
 L.USE_ITEM = "Utilisez l'objet";
+
+
 
 -- TODO - Translate
 -- L.AROUND_COOKPOT = "One from each around the cookpot";
@@ -227,6 +249,7 @@ L.USE_ITEM = "Utilisez l'objet";
 -- L.TALK_DREAD_RIDER_CULLEN = "Talk to Dread-Rider Cullen";
 -- L.TALK_EFFIGY = "Talk to Effigy";
 -- L.TALK_ENSIGN_WARD = "Talk to Ensign Ward";
+-- L.TALK_ERUL = "Talk to Erul Dawnbrook";
 -- L.TALK_HALANNIA = "Talk to Halannia";
 -- L.TALK_JHASH = "Talk to Jhash for a ride";
 -- L.TALK_JORNUN = "Talk to Jornun to Ride";

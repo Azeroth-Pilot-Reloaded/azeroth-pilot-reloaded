@@ -375,7 +375,7 @@ APR.QuestList.Greetings.texture = t
 		APR1[APR.Realm][APR.Name]["Settings"]["top"] = -150
 		APR.QuestList.MainFrame:ClearAllPoints()
 		APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
-		print("APR: QuestList Out of screen, resetting!")
+		print("APR: "..L["QUESTLIST_OUT_SCREEN"])
 	end
 	APR.QuestList.ListFrame:SetWidth(1)
 	APR.QuestList.ListFrame:SetHeight(1)
@@ -402,7 +402,7 @@ APR.QuestList.Greetings.texture = t
 				APR1[APR.Realm][APR.Name]["Settings"]["top"] = -150
 				APR.QuestList.MainFrame:ClearAllPoints()
 				APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
-				print("APR: QuestList Out of screen, resetting!")
+				print("APR: "..L["QUESTLIST_OUT_SCREEN"])
 			end
 			APR_CombatTestVar = 1
 		end
@@ -464,7 +464,7 @@ APR.QuestList.QuestFrames["MyProgress"].texture = t
 				APR1[APR.Realm][APR.Name]["Settings"]["top"] = -150
 				APR.QuestList.MainFrame:ClearAllPoints()
 				APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
-				print("APR: QuestList Out of screen, resetting!")
+				print("APR: "..L["QUESTLIST_OUT_SCREEN"])
 			end
 			APR_CombatTestVar = 1
 		end
@@ -554,7 +554,7 @@ APR.QuestList.QuestFrames[CLi].texture = t
 					APR1[APR.Realm][APR.Name]["Settings"]["top"] = -150
 					APR.QuestList.MainFrame:ClearAllPoints()
 					APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
-					print("APR: QuestList Out of screen, resetting!")
+					print("APR: "..L["QUESTLIST_OUT_SCREEN"])
 				end
 				APR_CombatTestVar = 1
 			end

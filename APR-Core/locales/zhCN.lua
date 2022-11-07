@@ -22,7 +22,7 @@ L.YARDS = "码";
 -- TODO : L.SHOW_BLOBS_ON_MINIMAP = "Show Green blobs on minimap";
 -- TODO : L.SHOW_QUESTLIST = "Show QuestList";
 
--- Zone
+-- Zone Interface
 L.GET_FLIGHPATH = "——开飞行点";
 -- TODO : L.GET_TREASURE = "Get Treasure",
 -- TODO : L.GROUP_QUEST = "Ask for group quest",
@@ -222,6 +222,7 @@ L.USE_ITEM = "——使用物品";
 -- TODO : L.TALK_DREAD_RIDER_CULLEN = "Talk to Dread-Rider Cullen";
 -- TODO : L.TALK_EFFIGY = "Talk to Effigy";
 -- TODO : L.TALK_ENSIGN_WARD = "Talk to Ensign Ward";
+-- TODO : L.TALK_ERUL = "Talk to Erul Dawnbrook";
 -- TODO : L.TALK_HALANNIA = "Talk to Halannia";
 -- TODO : L.TALK_JHASH = "Talk to Jhash for a ride";
 -- TODO : L.TALK_JORNUN = "Talk to Jornun to Ride";

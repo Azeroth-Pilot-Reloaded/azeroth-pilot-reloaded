@@ -524,8 +524,7 @@ function APR.FP.GetCustomZone()
 				local loaded, reason = LoadAddOn("APR-Shadowlands")
 				if (not loaded) then
 					if (reason == "DISABLED") then
-						print("APR: APR - Shadowlands is Disabled in your Addon-List!")
-					end
+						print("APR: APR - Shadowlands "..L["DISABLED_ADDON_LIST"])
 				end
 			end
 		--	return APR.QuestStepListListingZone["01-10 Exile's Reach"], "1409-Exile's Reach"
@@ -2066,7 +2065,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				end
 			elseif (APRt_Zone == 895) then
 				if (zdep == "Plunder Harbor, Tiragarde Sound") then
-					print("Talk to Erul Dawnbrook")
+					print(L["TALK_ERUL"])
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("["..ShownLineNr.."]: Talk to Erul Dawnbrook")
