@@ -489,10 +489,8 @@ APR.ArrowFrame:SetScript("OnHide", function(self)
 end)
 
 APR.ArrowFrame.Button = CreateFrame("Button", "APR_ArrowActiveButton", APR_ArrowFrame)
-APR.ArrowFrame.Button:SetWidth(85)
-APR.ArrowFrame.Button:SetHeight(17)
 APR.ArrowFrame.Button:SetParent(APR.ArrowFrame)
-APR.ArrowFrame.Button:SetPoint("BOTTOM", APR.ArrowFrame, "BOTTOM", 0, -30)
+APR.ArrowFrame.Button:SetPoint("BOTTOM", APR.ArrowFrame, "BOTTOM", 0, -40)
 APR.ArrowFrame.Button:SetScript("OnMouseDown", function(self, button)
 	APR.ArrowFrame.Button:Hide()
 	print("APR: "..L["SKIP_WAYPOINT"])
@@ -510,10 +508,14 @@ APR.ArrowFrame.Button.texture = t
 
 APR.ArrowFrame.Fontstring = APR.ArrowFrame:CreateFontString("CLSettingsFS2212","ARTWORK", "ChatFontNormal")
 APR.ArrowFrame.Fontstring:SetParent(APR.ArrowFrame.Button)
-APR.ArrowFrame.Fontstring:SetPoint("CENTER", APR.ArrowFrame.Button, "CENTER", 0, 0)
-
-APR.ArrowFrame.Fontstring:SetFontObject("GameFontNormalSmall")
+APR.ArrowFrame.Fontstring:SetPoint("CENTER", APR.ArrowFrame.Button)
 APR.ArrowFrame.Fontstring:SetText(L["SKIP_WAYPOINT"])
+local skiplenght = (APR.ArrowFrame.Fontstring:GetStringWidth()+10)/2
+APR.ArrowFrame.Button:SetWidth(skiplenght)
+APR.ArrowFrame.Button:SetHeight(APR.ArrowFrame.Fontstring:GetStringHeight()+10)
+APR.ArrowFrame.Fontstring:SetWidth(skiplenght)
+APR.ArrowFrame.Fontstring:SetWordWrap(true)
+APR.ArrowFrame.Fontstring:SetFontObject("GameFontNormalSmall")
 APR.ArrowFrame.Fontstring:SetTextColor(1, 1, 0)
 APR.ArrowFrame.Button:Hide()
 
