@@ -510,10 +510,11 @@ APR.ArrowFrame.Fontstring = APR.ArrowFrame:CreateFontString("CLSettingsFS2212","
 APR.ArrowFrame.Fontstring:SetParent(APR.ArrowFrame.Button)
 APR.ArrowFrame.Fontstring:SetPoint("CENTER", APR.ArrowFrame.Button)
 APR.ArrowFrame.Fontstring:SetText(L["SKIP_WAYPOINT"])
-local skiplenght = (APR.ArrowFrame.Fontstring:GetStringWidth()+10)/2
-APR.ArrowFrame.Button:SetWidth(skiplenght)
-APR.ArrowFrame.Button:SetHeight(APR.ArrowFrame.Fontstring:GetStringHeight()+10)
-APR.ArrowFrame.Fontstring:SetWidth(skiplenght)
+local skipWidth = APR.ArrowFrame.Fontstring:GetStringWidth()+10 < 85 and (APR.ArrowFrame.Fontstring:GetStringWidth()+10)/2 or 85
+local skipHeight = skipWidth < 85 and APR.ArrowFrame.Fontstring:GetStringHeight()+10 or APR.ArrowFrame.Fontstring:GetStringHeight()+5
+APR.ArrowFrame.Button:SetWidth(skipWidth)
+APR.ArrowFrame.Button:SetHeight(skipHeight)
+APR.ArrowFrame.Fontstring:SetWidth(skipWidth)
 APR.ArrowFrame.Fontstring:SetWordWrap(true)
 APR.ArrowFrame.Fontstring:SetFontObject("GameFontNormalSmall")
 APR.ArrowFrame.Fontstring:SetTextColor(1, 1, 0)
