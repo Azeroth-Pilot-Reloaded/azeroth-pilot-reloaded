@@ -513,7 +513,7 @@ APR.ArrowFrame.Fontstring:SetParent(APR.ArrowFrame.Button)
 APR.ArrowFrame.Fontstring:SetPoint("CENTER", APR.ArrowFrame.Button, "CENTER", 0, 0)
 
 APR.ArrowFrame.Fontstring:SetFontObject("GameFontNormalSmall")
-APR.ArrowFrame.Fontstring:SetText("Skip waypoint")
+APR.ArrowFrame.Fontstring:SetText(L["SKIP_WAYPOINT"])
 APR.ArrowFrame.Fontstring:SetTextColor(1, 1, 0)
 APR.ArrowFrame.Button:Hide()
 

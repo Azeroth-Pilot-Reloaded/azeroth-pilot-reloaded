@@ -51,9 +51,10 @@ L.NOT_YET = "Pas le moment!";
 
 -- commands
 L.RESET = "Zone réinitialisée";
-L.SKIP = "Etape sautée";
-L.SKIPCAMP = "Etape du camp sautée";
+L.SKIP = "Etape passée";
+L.SKIPCAMP = "Etape du camp passée";
 L.SKIP_WAYPOINT = "Sauter le point de passage";
+L.SKIP_BUTTON = "Passer";
 
 -- Error
 L.DISABLED_ADDON_LIST ="est désactivé dans votre liste d'addon!";

@@ -1,4 +1,6 @@
-﻿APR.FP = {}
+﻿local app = select(2, ...);
+local L = app.L;
+APR.FP = {}
 APR.FP.Zonening = 0
 local APRLumberCheck = 0
 
@@ -525,6 +527,7 @@ function APR.FP.GetCustomZone()
 				if (not loaded) then
 					if (reason == "DISABLED") then
 						print("APR: APR - Shadowlands "..L["DISABLED_ADDON_LIST"])
+					end
 				end
 			end
 		--	return APR.QuestStepListListingZone["01-10 Exile's Reach"], "1409-Exile's Reach"

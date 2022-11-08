@@ -612,7 +612,7 @@ APR.QuestList.QuestFrames["FS"..CLi]["Button"].texture = t
 		APR.QuestList.QuestFrames["FS"..CLi]["Fontstring1"]:SetWidth(43)
 		APR.QuestList.QuestFrames["FS"..CLi]["Fontstring1"]:SetHeight(14)
 		APR.QuestList.QuestFrames["FS"..CLi]["Fontstring1"]:SetFontObject("GameFontNormalLarge")
-		APR.QuestList.QuestFrames["FS"..CLi]["Fontstring1"]:SetText("Skip")
+		APR.QuestList.QuestFrames["FS"..CLi]["Fontstring1"]:SetText(L["SKIP_BUTTON"])
 		APR.QuestList.QuestFrames["FS"..CLi]["Fontstring1"]:SetTextColor(1, 1, 0)
 		APR.QuestList.QuestFrames["FS"..CLi]["Button"]:Hide()
 

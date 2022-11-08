@@ -49,7 +49,8 @@ app.L = {
     RESET = "Resetting Zone",
     SKIP = "Skipping Quest Step",
     SKIPCAMP = "Skipping Camp Step",
-    SKIP_WAYPOINT = "Skipping Waypoint",
+    SKIP_WAYPOINT = "Skip Waypoint",
+    SKIP_BUTTON = "Skip",
     
     -- Error
     DISABLED_ADDON_LIST ="is Disabled in your Addon-List!",
