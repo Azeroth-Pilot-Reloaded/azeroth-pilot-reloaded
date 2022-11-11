@@ -724,35 +724,17 @@ local function APR_PrintQStep()
 		if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 0 and APR.ZoneTransfer == 0) then
 			return
 		end
-		LineNr = LineNr + 1
-		APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Test Quest number 1")
-		APR.QuestList.QuestFrames[LineNr]:Show()
-		APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
-		local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
-		if (APRwidth and APRwidth > 400) then
-			APR.QuestList.QuestFrames[LineNr]:SetWidth(APRwidth+10)
-		else
-			APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
-		end
-		LineNr = LineNr + 1
-		APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Test Quest number 2")
-		APR.QuestList.QuestFrames[LineNr]:Show()
-		APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
-		local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
-		if (APRwidth and APRwidth > 400) then
-			APR.QuestList.QuestFrames[LineNr]:SetWidth(APRwidth+10)
-		else
-			APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
-		end
-		LineNr = LineNr + 1
-		APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Test Quest number 3")
-		APR.QuestList.QuestFrames[LineNr]:Show()
-		APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
-		local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
-		if (APRwidth and APRwidth > 400) then
-			APR.QuestList.QuestFrames[LineNr]:SetWidth(APRwidth+10)
-		else
-			APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
+		for i=1,3 do
+			LineNr = LineNr + 1
+			APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Test Quest number "..i)
+			APR.QuestList.QuestFrames[LineNr]:Show()
+			APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
+			local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
+			if (APRwidth and APRwidth > 400) then
+				APR.QuestList.QuestFrames[LineNr]:SetWidth(APRwidth+10)
+			else
+				APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
+			end
 		end
 		return
 	end
@@ -942,7 +924,7 @@ local function APR_PrintQStep()
 		end
 		if (steps["InVehicle"] and not UnitInVehicle("player") and APR.ZoneTransfer == 0) then
 			LineNr = LineNr + 1
-			APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Mount a Horse and scare Spiders")
+			APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["MOUNT_HORSE_SCARE_SPIDER"])
 			APR.QuestList.QuestFrames[LineNr]:Show()
 			APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 			local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -953,7 +935,7 @@ local function APR_PrintQStep()
 			end
 		elseif (steps["InVehicle"] and steps["InVehicle"] == 2 and UnitInVehicle("player") and APR.ZoneTransfer == 0) then
 			LineNr = LineNr + 1
-			APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Scare Spiders into the Lumbermill")
+			APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["SCARE_SPIDER_INTO_LUMBERMILL"])
 			APR.QuestList.QuestFrames[LineNr]:Show()
 			APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 			local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -999,7 +981,7 @@ local function APR_PrintQStep()
 				end
 				if (OnTime == 0) then
 					LineNr = LineNr + 1
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** You are not in Chromie Time!")
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["NOT_IN_CHROMIE_TIMELINE"].." **")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 				end
 			end
@@ -1015,30 +997,30 @@ local function APR_PrintQStep()
 		if (GetSpellBookItemInfo(GetSpellInfo(90265))) then
 		elseif (APR.Level == 39) then
 			LineNr = LineNr + 1
-			APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** You can now learn Master Riding!")
+			APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["YOU_CAN_LEARN"].." "..L["MASTER_RIDING!"].." **")
 			APR.QuestList.QuestFrames[LineNr]:Show()
 		elseif (GetSpellBookItemInfo(GetSpellInfo(34090))) then
 		elseif (APR.Level == 29) then
 			LineNr = LineNr + 1
 			if (APR.Faction == "Alliance" and APR.ActiveMap and APR.ActiveMap == "A543-DesMephisto-Gorgrond") then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("* HS to Stormwind and learn Expert Riding!")
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["USE_HEARTHSTONE"].." "..L["GO_TO_STORMWIND"]..", "..L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING!"].." **")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 			elseif (APR.Faction == "Horde" and APR.ActiveMap and APR.ActiveMap == "543-DesMephisto-Gorgrond-p1") then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("* HS to Orgrimmar and learn Expert Riding! And get back")
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["USE_HEARTHSTONE"].." "..L["GO_TO_ORGRIMMAR"]..", "..L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING!"].." **")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 			else
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** You can now learn Expert Riding!")
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING!"].." **")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 			end
 		elseif (GetSpellBookItemInfo(GetSpellInfo(33391))) then
 		elseif (APR.Level == 19) then
 			LineNr = LineNr + 1
-			APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** You can now learn Journeyman Riding!")
+			APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["YOU_CAN_LEARN"].." "..L["JOURNEYMAN_RIDING!"].." **")
 			APR.QuestList.QuestFrames[LineNr]:Show()
 		elseif (GetSpellBookItemInfo(GetSpellInfo(33388))) then
 		elseif (APR.Level == 9) then
 			LineNr = LineNr + 1
-			APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** You can now learn Apprentice Riding!")
+			APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["YOU_CAN_LEARN"].." "..L["APPRENTICE_RIDING!"].." **")
 			APR.QuestList.QuestFrames[LineNr]:Show()
 		end
 		if ((steps["ExtraLine"] or steps["ExtraLineText"]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
@@ -1143,7 +1125,7 @@ local function APR_PrintQStep()
 			end
 			if (APRExtraLine == 25654) then
 				if (GetItemInfo(9530) and GetItemCount(GetItemInfo(9530))) then
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Loot Horn from Harpys (".. GetItemCount(GetItemInfo(9530)) .."/1)")
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["LOOT_HARPYS_HORN"].."(".. GetItemCount(GetItemInfo(9530)) .."/1)")
 					if (GetItemCount(GetItemInfo(9530)) and GetItemCount(GetItemInfo(9530)) > 0) then
 						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 						APR.BookingList["UpdateQuest"] = 1
@@ -1154,7 +1136,7 @@ local function APR_PrintQStep()
 			if (APRExtraLine == 27237) then
 				local CL_Items, itemLink, clt3, clt4, clt5, clt6, clt7, clt8, clt9, CL_ItemTex = GetItemInfo(33044)
 				if (itemLink and GetItemCount(itemLink)) then
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Open Bag")
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["OPEN_BAG"])
 					if (GetItemCount(itemLink) and GetItemCount(itemLink) > 0) then
 						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 						APR.BookingList["UpdateQuest"] = 1
@@ -1171,46 +1153,21 @@ local function APR_PrintQStep()
 				APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
 			end
 		end
-		if ((steps["ExtraLineText2"]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
-			LineNr = LineNr + 1
-			if (steps["ExtraLineText2"]) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..steps["ExtraLineText2"].." **")
-			end
-			APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
-			APR.QuestList.QuestFrames[LineNr]:Show()
-			local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
-			if (APRwidth and APRwidth > 400) then
-				APR.QuestList.QuestFrames[LineNr]:SetWidth(APRwidth+10)
-			else
-				APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
-			end
-		end
-		if ((steps["ExtraLineText3"]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
-			LineNr = LineNr + 1
-			if (steps["ExtraLineText3"]) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..steps["ExtraLineText3"])
-			end
-			APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
-			APR.QuestList.QuestFrames[LineNr]:Show()
-			local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
-			if (APRwidth and APRwidth > 400) then
-				APR.QuestList.QuestFrames[LineNr]:SetWidth(APRwidth+10)
-			else
-				APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
-			end
-		end
-		if ((steps["ExtraLineText4"]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
-			LineNr = LineNr + 1
-			if (steps["ExtraLineText4"]) then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..steps["ExtraLineText4"])
-			end
-			APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
-			APR.QuestList.QuestFrames[LineNr]:Show()
-			local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
-			if (APRwidth and APRwidth > 400) then
-				APR.QuestList.QuestFrames[LineNr]:SetWidth(APRwidth+10)
-			else
-				APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
+		for i = 2, 4 do
+			local extraLineTestX = "ExtraLineText"..i
+			if ((steps[extraLineTestX]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+				LineNr = LineNr + 1
+				if (steps[extraLineTestX]) then
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..steps[extraLineTestX].." **")
+				end
+				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
+				APR.QuestList.QuestFrames[LineNr]:Show()
+				local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
+				if (APRwidth and APRwidth > 400) then
+					APR.QuestList.QuestFrames[LineNr]:SetWidth(APRwidth+10)
+				else
+					APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
+				end
 			end
 		end
 		if (APR.ActiveQuests and APR.ActiveQuests[57867] and APR.ZoneTransfer == 0) then
@@ -1243,7 +1200,7 @@ local function APR_PrintQStep()
 					local name, rank, count, debuffType, duration, expirationTime, unitCaster, isStealable, asd, spellId  = UnitDebuff("player", i)
 					if (spellId and spellId == 309806) then
 						LineNr = LineNr + 1
-						APR.QuestList.QuestFrames["FS"..LineNr]:SetText("["..LineNr.."] "..count.."/30 gormlings collected.")
+						APR.QuestList.QuestFrames["FS"..LineNr]:SetText("["..LineNr.."] "..count.."/30 "..L["GORMLINGS_COLLECTED"])
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
 						if (APRwidth and APRwidth > 400) then
@@ -1266,7 +1223,7 @@ local function APR_PrintQStep()
 				end
 				if (QuestSpecial57710 == 0) then
 					LineNr = LineNr + 1
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** Click The Eternal Flame")
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["CLICK_ETERNAL_FLAME"].." **")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
 					if (APRwidth and APRwidth > 400) then
@@ -1337,7 +1294,7 @@ local function APR_PrintQStep()
 						if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 							if (APR_BonusObj[APR_index]) then
 								LineNr = LineNr + 1
-								APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Do Bonus Objective: "..APR_index)
+								APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["DO_BONUS_OBJECTIVE"]..": "..APR_index)
 								APR.QuestList.QuestFrames[LineNr]:Show()
 								APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 								local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -1355,7 +1312,7 @@ local function APR_PrintQStep()
 								end
 							else
 								LineNr = LineNr + 1
-								APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Error - Missing Quest: "..APR_index)
+								APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["ERROR"].." - "..L["MISSING_QUEST"]..": "..APR_index)
 								APR.QuestList.QuestFrames[LineNr]:Show()
 								APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 								local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -1528,7 +1485,7 @@ local function APR_PrintQStep()
 			else
 				if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 					LineNr = LineNr + 1
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Get the Treasure")
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["GET_TREASURE"])
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 					local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -1820,7 +1777,7 @@ local function APR_PrintQStep()
 						if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 							if (APR_BonusObj[APR_index]) then
 								LineNr = LineNr + 1
-								APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Do Bonus Objective: "..APR_index)
+								APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["DO_BONUS_OBJECTIVE"]..": "..APR_index)
 								APR.QuestList.QuestFrames[LineNr]:Show()
 								APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 								local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -1838,7 +1795,7 @@ local function APR_PrintQStep()
 								end
 							elseif (APR.ZoneTransfer == 0) then
 								LineNr = LineNr + 1
-								APR.QuestList.QuestFrames["FS"..LineNr]:SetText("Error - Missing Quest: "..APR_index)
+								APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["ERROR"].." - "..L["MISSING_QUEST"]..": "..APR_index)
 								APR.QuestList.QuestFrames[LineNr]:Show()
 								APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 								local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -1885,7 +1842,7 @@ local function APR_PrintQStep()
 				if (APR.NPCList[steps["DroppableQuest"]["MobId"]]) then
 					MobName = APR.NPCList[steps["DroppableQuest"]["MobId"]]
 				end
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("[".. LineNr .."] "..MobName.." drops quest")
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("[".. LineNr .."] "..MobName..L["QUEST_DROP"])
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 				local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -1982,7 +1939,7 @@ local function APR_PrintQStep()
 		end
 	elseif (APRWhereToGo and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 		LineNr = LineNr + 1
-		APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** APR: GoTo ".. APRWhereToGo)
+		APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** APR: "..L["GO_TO"].." ".. APRWhereToGo.." **")
 		APR.QuestList.QuestFrames[LineNr]:Show()
 		APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 		local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -3544,7 +3501,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				end
 			end
 			if APRtotal ~= 0 then
-				print("APR: Items were sold for "..GetCoinTextureString(APRtotal))
+				print("APR:"..L["ITEM_SOLD"].." "..GetCoinTextureString(APRtotal))
 			end
 		end
 	end

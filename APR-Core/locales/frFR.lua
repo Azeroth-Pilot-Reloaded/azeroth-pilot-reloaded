@@ -21,8 +21,39 @@ L.SHOW_GROUP_PROGRESS = "Afficher la progression du groupe";
 L.SHOW_QUESTLIST = "Afficher la liste de quêtes";
 L.SKIPPED_CUTSCENE = "Passer les cinématiques";
 L.YARDS = "mètres";
+L.PICK_ROUTE = "Sélectionnez une route";
+L.SPEEDRUN = "Speed Run";
+L.ALL_QUEST = "Toutes les quêtes";
+L.CUSTOM_PATH = "Route custome";
+L.MOVE_ZONE = "Clic droit ou clic/déposer la zone dans la colonnes routes";
+L.EXTRA = "Extra";
+L.GROUP = "Groupe";
+L.AFK = "AKF";
+L.LOAD = "Chargement";
+L.QUEST_OPTIONS = "Paramètres de la quête";
+L.QUESTLIST_SCALE = "Taille de la fenêtre de liste de quêtes";
+L.QUESTORDERLIST_SCALE = "Taille de la fenêtre d'ordre des quêtes";
+L.SHOW_QUESTORDERLIST = "Afficher la fenêtre d'ordre des quêtes";
+L.RESET_QUESTORDERLIST  = "Réinitialiser la liste des quêtes";
+L.ARROW_OPTION = "Paramètre de la flèche";
+L.ARROW_SCALE = "Taille de la flèche";
+L.UPDATE_ARROW = "Mise àjour de flèche tous les";
+L.RESET_ARROW = "Réinitialiser de la flèche";
+L.GENERAL_OPTION = "Options Général";
+L.MINIMAP_BLOB_ALPHA = "Transparence des pointillers sur la minicarte";
+L.SHOW_STEPS_MAP  = "Afficher 10 étapes sur la carte";
+L.DISABLE_HEIRLOOM_WARNING = "Désactiver l'avertissement de l'héritage";
+L.DETACH_QUEST_ITEM_BTN = "Détacher le bouton d'objet de quête";
+L.QUEST_BTN_SCALE = "Taille du bouton de quête";
+L.CLOSE = "Fermer";
+L.AUTO_PATH_HELPER = "Aide à la navigation automatique";
+L.RESET = "Réinitialiser"
+
 
 -- ZONE / UI
+L.NOT_IN_CHROMIE_TIMELINE = "Vous n'êtes pas dans une ligne temporelle de Chromie:";
+L.MOUNT_HORSE_SCARE_SPIDER = "Monter à cheval et effrayer les araignées";
+L.SCARE_SPIDER_INTO_LUMBERMILL = "Effrayer les araignées dans la scierie";
 L.ACCEPT_QUEST = "Acceptez la quête";
 L.COMPLETE_QUEST = "Quête terminée";
 L.GET_FLIGHPATH = "Prenez le point de vol";
@@ -48,23 +79,38 @@ L.ITEM_SOLD = "La camelote a été vendu contre";
 L.QUEST_ACCEPTED = "Quête acceptée";
 L.QUEST_REMOVED = "Quête supprimée";
 L.NOT_YET = "Pas le moment!";
+L.NAME = "Nom";
+L.QUESTS_TEXT = "Texte des quêtes";
 
 -- commands
-L.RESET = "Zone réinitialisée";
+L.RESET_ZONE = "Zone réinitialisée";
 L.SKIP = "Etape passée";
 L.SKIPCAMP = "Etape du camp passée";
 L.SKIP_WAYPOINT = "Sauter le point de passage";
 L.SKIP_BUTTON = "Passer";
 
 -- Error
+L.ERROR = "Erreur";
 L.DISABLED_ADDON_LIST ="est désactivé dans votre liste d'addon!";
 L.QUESTLIST_OUT_SCREEN = "Réinitialisation! Liste de quête en dehors de l'écran!";
 L.LOADED = "Chargé";
-    
+L.MISSING_QUEST = "Quête manquante";
+L.ROUTE_NOT_FOUND = "Route introuvable pour";
 
 -- Extra Quest text=
+L.SAIL_TO = "Naviguer vers";
+L.TALK_TO = "Parlez à ";
+L.GO_PORTAL_ROOM = "Allez à la salle des portails";
+L.NEDD_BUFF_DISARM_TRAP = "Buff nécessaires pour désarmer les pièges";
+L.YOU_CAN_LEARN = "Vous pouvez apprendre";
+L.EXPERT_RIDING = "Expert cavalier";
+L.JOURNEYMAN_RIDING = "Compagnon cavalier";
+L.APPRENTICE_RIDING = "Apprenti cavalier";
+L.MASTER_RIDING = "Maître cavalier";
 L.BLOODLUST = "Un bon moment pour utiliser la BL";
 L.GO_TO_ORGRIMMAR = "Allez à Orgrimmar";
+L.GO_TO_STORMWIND = "Allez à Hurlevent";
+L.GO_TO = "Allez à";
 L.JUMP_OFF = "Sautez";
 L.LOA_INFO_1 = "Totem de Gonk: 40% de vitesse de déplacement pendant 30s";
 L.LOA_INFO_2 = "Totem de Pa'Ku: Voiyage entre 6 différents totem en Zuldazar";
@@ -79,8 +125,19 @@ L.USE_FLIGHTPATH = "Volez vers";
 L.USE_GARRISON_HEARTHSTONE = "Utilisez la Pierre de foyer de fief";
 L.USE_HEARTHSTONE = "Utilisez votre pierre de foyer";
 L.USE_ITEM = "Utilisez l'objet";
-
-
+L.LOOT_HARPYS_HORN = "Récupérez la corne sur les Harpies";
+L.OPEN_BAG = "Ouvrez le sac";
+L.GORMLINGS_COLLECTED = "Gormelins récupérés";
+L.CLICK_ETERNAL_FLAME = "Cliquez sur La flamme éternelle";
+L.DO_BONUS_OBJECTIVE = "Faite l'objectif bonus";
+L.SOULWEB_TRAP = "Âmetoile étrangement intacte";
+L.FRESHLEAF_BUFF = "Buff Vertefeuille";
+L.HARP_TRAP = "Harpe étrangement intacte";
+L.GOSSAMER_THREAD_BUFF = "Buff Fil de tulle";
+L.BASKET_TRAP = "Pannier étrangement intacte";
+L.SHUMMERDUST_BUFF = "Buff Tas de poussière scintillante";
+L.DESTINATION = "Destination";
+L.CLOSEST_FP = "Point de vol le plus proche";
 
 -- TODO - Translate
 -- L.AROUND_COOKPOT = "One from each around the cookpot";
@@ -127,6 +184,7 @@ L.USE_ITEM = "Utilisez l'objet";
 -- L.FLY_GREAT_SEAL = "Fly to the Great Seal";
 -- L.FLY_NISHA = "Fly with Nisha";
 -- L.FLY_OVER_MOUNTAIN = "Fly over the mountain";
+-- L.FLY_TO = "Fly to";
 -- L.FOLLOW_ZOLANI = "Follow Zolani";
 -- L.FROM_CORDANA = "From Cordana Felsong by the Bonfire";
 -- L.FROM_GAZLOWE = "From Gazlowe";
@@ -261,7 +319,9 @@ L.USE_ITEM = "Utilisez l'objet";
 -- L.TALK_SASSY = "Talk to Sassy Hardwrench for a ride";
 -- L.TALK_SENTINEL_AVANA = "Talk to Sentinel Avana";
 -- L.TALK_STEWARD = "Talk to Steward";
+-- L.TALK_SWELLTHRASHER = "Talk to Swellthrasher";
 -- L.TALK_THELARON = "Talk to Thelaron";
+-- L.TALK_GRAND_AMIRAL_JES_TERETH = "Talk to Grand Admiral Jes-Tereth";
 -- L.TAVERN = "Tavern";
 -- L.TELEPORT_UP_AND_JUMP = "Teleport up and jump in the ring";
 -- L.TOP_BIG_MUSHROOM = "Ontop the big mushroom";
@@ -303,6 +363,7 @@ L.USE_ITEM = "Utilisez l'objet";
 -- L.USE_ORB_CANYON_ETTIN = "Use Orb on a Canyon Ettin; then save Oslow";
 -- L.USE_PHASEBLOOD_POTION = "Use Phaseblood Potion on Mark";
 -- L.USE_PORTAL = "Use Portal";
+-- L.USE_PORTAL_TO = "Use Portal to";
 -- L.USE_QITEM_DUNGEON = "Use quest item inside dungeon";
 -- L.USE_SOULBREAKER = "Use Soulbreaker Traps for extra dmg";
 -- L.USE_SOULSHAPE = "Use Soulshape";
@@ -311,3 +372,4 @@ L.USE_ITEM = "Utilisez l'objet";
 -- L.USE_WHISTLE_ON_RAMS = "use /whistle on rams";
 -- L.WALK_BLADEGUARD_KAJA = "Walk with Bladeguard Kaja";
 -- L.YES_TO_EXIT_TUTORIAL = "Yes To Exit Tutorial";
+-- L.NEED_CHECK_FPS = "Need to check FPS";

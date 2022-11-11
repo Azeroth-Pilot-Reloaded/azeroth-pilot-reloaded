@@ -414,7 +414,7 @@ end
 local function APR_SlashCmd(APR_index)
 	if (APR_index == "reset") then 
 		--Command for making the quest rescan on completion and reset, including previously skipped steps
-		print("APR: "..L["RESET"])
+		print("APR: "..L["RESET_ZONE"])
 		APR1[APR.Realm][APR.Name][APR.ActiveMap] = 1
 		APR.BookingList["UpdateQuest"] = 1
 		APR.BookingList["PrintQStep"] = 1
@@ -564,12 +564,12 @@ function APR.RoutePlanLoadIn() --Loads RoutePlan and option frame. RoutePlan is 
 	APR.LoadInOptionFrame["FS"]:SetHeight(20)
 	APR.LoadInOptionFrame["FS"]:SetJustifyH("CENTER")
 	APR.LoadInOptionFrame["FS"]:SetFontObject("GameFontNormalLarge")
-	APR.LoadInOptionFrame["FS"]:SetText("APR: Pick Route")
+	APR.LoadInOptionFrame["FS"]:SetText("APR: "..L["PICK_ROUTE"])
 	
 	APR.LoadInOptionFrame["B1"] = CreateFrame("Button", "APR_LoadInOptionFrameButton1", APR.LoadInOptionFrame, "UIPanelButtonTemplate")
 	APR.LoadInOptionFrame["B1"]:SetWidth(140)
 	APR.LoadInOptionFrame["B1"]:SetHeight(30)
-	APR.LoadInOptionFrame["B1"]:SetText("Speed Run")
+	APR.LoadInOptionFrame["B1"]:SetText(L["SPEEDRUN"])
 	APR.LoadInOptionFrame["B1"]:SetPoint("TOPLEFT", APR.LoadInOptionFrame, "TOPLEFT", 20, -35)
 	APR.LoadInOptionFrame["B1"]:SetNormalFontObject("GameFontNormalLarge")
 	APR.LoadInOptionFrame["B1"]:SetScript("OnMouseUp", function(self, button)
@@ -582,7 +582,7 @@ function APR.RoutePlanLoadIn() --Loads RoutePlan and option frame. RoutePlan is 
 	APR.LoadInOptionFrame["B2"] = CreateFrame("Button", "APR_LoadInOptionFrameButton2", APR.LoadInOptionFrame, "UIPanelButtonTemplate")
 	APR.LoadInOptionFrame["B2"]:SetWidth(140)
 	APR.LoadInOptionFrame["B2"]:SetHeight(30)
-	APR.LoadInOptionFrame["B2"]:SetText("All Quests")
+	APR.LoadInOptionFrame["B2"]:SetText(L["ALL_QUEST"])
 	APR.LoadInOptionFrame["B2"]:Hide()
 	APR.LoadInOptionFrame["B2"]:SetPoint("TOPRIGHT", APR.LoadInOptionFrame, "TOPRIGHT", -20, -35)
 	APR.LoadInOptionFrame["B2"]:SetNormalFontObject("GameFontNormalLarge")
@@ -596,7 +596,7 @@ function APR.RoutePlanLoadIn() --Loads RoutePlan and option frame. RoutePlan is 
 	APR.LoadInOptionFrame["B3"] = CreateFrame("Button", "APR_LoadInOptionFrameButton3", APR.LoadInOptionFrame, "UIPanelButtonTemplate")
 	APR.LoadInOptionFrame["B3"]:SetWidth(140)
 	APR.LoadInOptionFrame["B3"]:SetHeight(30)
-	APR.LoadInOptionFrame["B3"]:SetText("Custom Path")
+	APR.LoadInOptionFrame["B3"]:SetText(L["CUSTOM_PATH"])
 	APR.LoadInOptionFrame["B3"]:SetPoint("BOTTOM", APR.LoadInOptionFrame, "BOTTOM", 0, 25)
 	APR.LoadInOptionFrame["B3"]:SetNormalFontObject("GameFontNormalLarge")
 	APR.LoadInOptionFrame["B3"]:SetScript("OnMouseUp", function(self, button)
@@ -646,7 +646,7 @@ APR.RoutePlan.FG1.HelpText = CreateFrame("frame", "APR.RoutePlanHelpTextFrame", 
 	APR.RoutePlan.FG1.HelpText.FS:SetHeight(20)
 	APR.RoutePlan.FG1.HelpText.FS:SetJustifyH("LEFT")
 	APR.RoutePlan.FG1.HelpText.FS:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1.HelpText.FS:SetText("Right-click or drag zone to move routes")
+	APR.RoutePlan.FG1.HelpText.FS:SetText(L["MOVE_ZONE"])
 	
 	APR.RoutePlan.FG1["CloseButton"] = CreateFrame("Button", "APR_RoutePlan_FG1_CloseButton", APR.RoutePlan.FG1, "UIPanelButtonTemplate")
 	APR.RoutePlan.FG1["CloseButton"]:SetWidth(20)
@@ -742,7 +742,7 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1.CPT["FS"]:SetHeight(20)
 	APR.RoutePlan.FG1.CPT["FS"]:SetJustifyH("CENTER")
 	APR.RoutePlan.FG1.CPT["FS"]:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1.CPT["FS"]:SetText("Custom Path")
+	APR.RoutePlan.FG1.CPT["FS"]:SetText(L["CUSTOM_PATH"])
 
 --Kalimdor 
 	APR.RoutePlan.FG1.KALF = CreateFrame("frame", "APR.RoutePlanKalimdorFrame", APR.RoutePlan.FG1)
@@ -1407,7 +1407,7 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1.SRT["FS"]:SetHeight(20)
 	APR.RoutePlan.FG1.SRT["FS"]:SetJustifyH("CENTER")
 	APR.RoutePlan.FG1.SRT["FS"]:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1.SRT["FS"]:SetText("Speed Runs")]]
+	APR.RoutePlan.FG1.SRT["FS"]:SetText(L["SPEEDRUN"])]]
 
 	local zenr = APR.NumbRoutePlan("SpeedRun")
 		for CLi = 1, zenr do
@@ -1462,7 +1462,7 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:SetHeight(20)
 	APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:SetJustifyH("LEFT")
 	APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:SetText("Group"..CLi)
+	APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:SetText(L["GROUP"]..CLi)
 	end
 
 	local zenr = APR.NumbRoutePlan("EasternKingdom")
@@ -1518,7 +1518,7 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1["EK3"..CLi]["FS"]:SetHeight(20)
 	APR.RoutePlan.FG1["EK3"..CLi]["FS"]:SetJustifyH("LEFT")
 	APR.RoutePlan.FG1["EK3"..CLi]["FS"]:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1["EK3"..CLi]["FS"]:SetText("Group "..CLi)
+	APR.RoutePlan.FG1["EK3"..CLi]["FS"]:SetText(L["GROUP"]..CLi)
 	end
 
 	local zenr = APR.NumbRoutePlan("Kalimdor")
@@ -1574,7 +1574,7 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:SetHeight(20)
 	APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:SetJustifyH("LEFT")
 	APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:SetText("Group "..CLi)
+	APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:SetText(L["GROUP"]..CLi)
 	end
 
 	local zenr = APR.NumbRoutePlan("Shadowlands")
@@ -1630,7 +1630,7 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1["SL3"..CLi]["FS"]:SetHeight(20)
 	APR.RoutePlan.FG1["SL3"..CLi]["FS"]:SetJustifyH("LEFT")
 	APR.RoutePlan.FG1["SL3"..CLi]["FS"]:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1["SL3"..CLi]["FS"]:SetText("Group "..CLi)
+	APR.RoutePlan.FG1["SL3"..CLi]["FS"]:SetText(L["GROUP"]..CLi)
 	end
 
 	local zenr = APR.NumbRoutePlan("Extra")
@@ -1686,7 +1686,7 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1["EX3"..CLi]["FS"]:SetHeight(20)
 	APR.RoutePlan.FG1["EX3"..CLi]["FS"]:SetJustifyH("LEFT")
 	APR.RoutePlan.FG1["EX3"..CLi]["FS"]:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1["EX3"..CLi]["FS"]:SetText("Group "..CLi)
+	APR.RoutePlan.FG1["EX3"..CLi]["FS"]:SetText(L["GROUP"]..CLi)
 	end
 
 	local zenr = APR.NumbRoutePlan("MISC 1")
@@ -1854,7 +1854,7 @@ local zenr = APR.NumbRoutePlan("MISC 2")
 	APR.RoutePlan.FG1["DF3"..CLi]["FS"]:SetHeight(20)
 	APR.RoutePlan.FG1["DF3"..CLi]["FS"]:SetJustifyH("LEFT")
 	APR.RoutePlan.FG1["DF3"..CLi]["FS"]:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1["DF3"..CLi]["FS"]:SetText("Group "..CLi)
+	APR.RoutePlan.FG1["DF3"..CLi]["FS"]:SetText(L["GROUP"]..CLi)
 	end
 
 	for CLi = 1, 19 do
@@ -3270,7 +3270,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 				local ZeTime = APR.AfkTimerVar - floor(GetTime())
 				if (ZeTime > 0) then
 
-					APR.AfkFrame.Fontstring:SetText("AFK: " .. string.format(SecondsToTime(ZeTime)))
+					APR.AfkFrame.Fontstring:SetText(L["AFK"].." ".. string.format(SecondsToTime(ZeTime)))
 					local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 					if (APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
 						local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
