@@ -3549,13 +3549,13 @@ APR.QuestStepListListingZone = {
 	["Z-15-Oribos-Story"] = 1670,
 
 	["Test1"] = 1533,
-	["(1/6 WOD) 10-50 Orgrimmar"] = 85,
-	["(2/6 WOD) 10-50 Tanaan Jungle"] = 577,
-	["(3/6 WOD) 10-50 Frostfire Ridge"] = 525,
-	["(4/6 WOD) 10-50 Gorgrond"] = 543,
-	["(5/6 WOD) 10-50 Talador"] = 535,
-	["(6/6 WOD) 10-50 Spires of Arak"] = 542,
-	["(7-extra) 10-50 Nagrand"] = 550,
+	["(1/7) 10-50 Orgrimmar"] = 85,
+	["(2/7) 10-50 Tanaan Jungle"] = 577,
+	["(3/7) 10-50 Frostfire Ridge"] = 525,
+	["(4/7) 10-50 Gorgrond"] = 543,
+	["(5/7) 10-50 Talador"] = 535,
+	["(6/7) 10-50 Spires of Arak"] = 542,
+	["(7/7) 10-50 Nagrand"] = 550,
 
 	["Legion - Azsuna"] = 630,
 	["Legion - Val'Sharah"] = 641,
@@ -3585,13 +3585,13 @@ APR.QuestStepListListing["Extra"] = {
 	["863-Nazmir"] = "20-50 Nazmir",
 	["862-Zuldazar-2"] = "30-30 Naz-end Vol-begin",
 	["864-Vol'dun"] = "30-50 Vol'dun",
-	["85-DesMephisto-Orgrimmar-p1"] = "(1/6 WOD) 10-50 Orgrimmar",
-	["577-DesMephisto-TanaanJungle"] = "(2/6 WOD) 10-50 Tanaan Jungle",
-	["525-DesMephisto-FrostfireRidge-p1"] = "(3/6 WOD) 10-50 Frostfire Ridge",
-	["543-DesMephisto-Gorgrond-p1"] = "(4/6 WOD) 10-50 Gorgrond",
-	["535-DesMephisto-Talador-p1"] = "(5/6 WOD) 10-50 Talador",
-	["542-DesMephisto-SpiresOfArak"] = "(6/6 WOD) 10-50 Spires of Arak",
-	["550-DesMephisto-Nagrand"] = "(7-extra) 10-50 Nagrand",
+	["85-DesMephisto-Orgrimmar-p1"] = "(1/7) 10-50 Orgrimmar",
+	["577-DesMephisto-TanaanJungle"] = "(2/7) 10-50 Tanaan Jungle",
+	["525-DesMephisto-FrostfireRidge-p1"] = "(3/7) 10-50 Frostfire Ridge",
+	["543-DesMephisto-Gorgrond-p1"] = "(4/7) 10-50 Gorgrond",
+	["535-DesMephisto-Talador-p1"] = "(5/7) 10-50 Talador",
+	["542-DesMephisto-SpiresOfArak"] = "(6/7) 10-50 Spires of Arak",
+	["550-DesMephisto-Nagrand"] = "(7/7) 10-50 Nagrand",
 }
 APR.QuestStepListListing["Shadowlands"] = {
 
@@ -3655,13 +3655,13 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["862-Zuldazar-2"] = "30-30 Naz-end Vol-begin",
 	["864-Vol'dun"] = "30-50 Vol'dun",
 	
-	["85-DesMephisto-Orgrimmar-p1"] = "(1/6 WOD) 10-50 Orgrimmar",
-	["577-DesMephisto-TanaanJungle"] = "(2/6 WOD) 10-50 Tanaan Jungle",
-	["525-DesMephisto-FrostfireRidge-p1"] = "(3/6 WOD) 10-50 Frostfire Ridge",
-	["543-DesMephisto-Gorgrond-p1"] = "(4/6 WOD) 10-50 Gorgrond",
-	["535-DesMephisto-Talador-p1"] = "(5/6 WOD) 10-50 Talador",
-	["542-DesMephisto-SpiresOfArak"] = "(6/6 WOD) 10-50 Spires of Arak",
-	["550-DesMephisto-Nagrand"] = "(7-extra) 10-50 Nagrand",
+	["85-DesMephisto-Orgrimmar-p1"] = "(1/7) 10-50 Orgrimmar",
+	["577-DesMephisto-TanaanJungle"] = "(2/7) 10-50 Tanaan Jungle",
+	["525-DesMephisto-FrostfireRidge-p1"] = "(3/7) 10-50 Frostfire Ridge",
+	["543-DesMephisto-Gorgrond-p1"] = "(4/7) 10-50 Gorgrond",
+	["535-DesMephisto-Talador-p1"] = "(5/7) 10-50 Talador",
+	["542-DesMephisto-SpiresOfArak"] = "(6/7) 10-50 Spires of Arak",
+	["550-DesMephisto-Nagrand"] = "(7/7) 10-50 Nagrand",
 	
 }
 APR.QuestStepListListing["EasternKingdom"] = {
