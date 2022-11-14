@@ -107,13 +107,13 @@ function APR.AutoPathOnBeta(ChoiceZ) -- Finds the path to objective probably
 			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
 		end
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/6) 10-50 Orgrimmar")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(2/6) 10-50 Tanaan Jungle")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(3/6) 10-50 Frostfire Ridge")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(4/6) 10-50 Gorgrond")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(5/6) 10-50 Talador")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/6) 10-50 Spires of Arak")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7-extra) 10-50 Nagrand")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/7) 10-50 Orgrimmar")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(2/7) 10-50 Tanaan Jungle")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(3/7) 10-50 Frostfire Ridge")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(4/7) 10-50 Gorgrond")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(5/7) 10-50 Talador")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/7) 10-50 Spires of Arak")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/7) 10-50 Nagrand")
 	elseif (ChoiceZ == 1 and APR.Level < 50 and APR.Level > 9 and APR.Faction == "Horde") then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
@@ -121,13 +121,13 @@ function APR.AutoPathOnBeta(ChoiceZ) -- Finds the path to objective probably
 			APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText("")
 			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
 		end
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/6) 10-50 Orgrimmar")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(2/6) 10-50 Tanaan Jungle")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(3/6) 10-50 Frostfire Ridge")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(4/6) 10-50 Gorgrond")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(5/6) 10-50 Talador")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/6) 10-50 Spires of Arak")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7-extra) 10-50 Nagrand")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/7) 10-50 Orgrimmar")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(2/7) 10-50 Tanaan Jungle")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(3/7) 10-50 Frostfire Ridge")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(4/7) 10-50 Gorgrond")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(5/7) 10-50 Talador")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/7) 10-50 Spires of Arak")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/7) 10-50 Nagrand")
 	elseif (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727) then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
