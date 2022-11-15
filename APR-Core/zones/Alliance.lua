@@ -6290,10 +6290,28 @@ APR.QuestStepListListingZone = {
 	["BFA 30-50 Stormsong Valley Test"] = 942,
 	["BFA 20-50 Dustvar Test"] = 896,
 	
-
 	["DEV - StoryMode Only (Not Enough XP)"] = 1670,
+	
+	["WIP - Dragonflight intro"] = 84,
 }
 APR.QuestStepListListing = {}
+
+APR.QuestStepListListing["MISC 1"] = {
+	["A630-Azsuna"] = "Legion - Azsuna",
+	["A641-ValSharah"] = "Legion - Val'Sharah",
+	["A634-Stormheim"] = "Legion - Stormheim",
+	["A84-Stormwind"] = "BFA 10-10 INTRO Test",
+	["A895-Tiragarde Sound"] = "BFA 10-50 Tiragarde Sound Test",
+	["A942-Stormsong Valley"] = "BFA 30-50 Stormsong Valley Test",
+	["A896-Dustvar"] = "BFA 20-50 Dustvar Test",
+
+}
+
+APR.QuestStepListListing["MISC 1"] = {
+
+
+}
+
 APR.QuestStepListListing["Extra"] = {
 	["A84-DesMephisto-Stormwind-War"] = "(1/8) 10-50 Stormwind",
 	["A577-DesMephisto-TanaanJungle"] = "(2/8) 10-50 Tanaan Jungle",
@@ -6303,16 +6321,10 @@ APR.QuestStepListListing["Extra"] = {
 	["A539-DesMephisto-Shadowmoon2"] = "(6/8) 10-50 Shadowmoon",
 	["A535-DesMephisto-Talador2"] = "(7/8) 10-50 Talador",
 	["A542-DesMephisto-SpiresOfArak"] = "(8/8) 10-50 Spires of Arak",
-	["A630-Azsuna"] = "Legion - Azsuna",
-	["A641-ValSharah"] = "Legion - Val'Sharah",
-	["A634-Stormheim"] = "Legion - Stormheim",
-	["A84-Stormwind"] = "BFA 10-10 INTRO Test",
-	["A895-Tiragarde Sound"] = "BFA 10-50 Tiragarde Sound Test",
-	["A942-Stormsong Valley"] = "BFA 30-50 Stormsong Valley Test",
-	["A896-Dustvar"] = "BFA 20-50 Dustvar Test",
+
 }
+
 APR.QuestStepListListing["Shadowlands"] = {
-	
 	["Shadowlands-StoryOnly-A"] = "DEV - StoryMode Only (Not Enough XP)",
 	["84-IntroQline"] = "SL-IntroQline",
 	["1648-Z0-TheMaw-Story"] = "Z-00-TheMaw-Story",
@@ -6333,7 +6345,7 @@ APR.QuestStepListListing["Shadowlands"] = {
 	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
 	
 }
-if (APR.Level < 33) then
+if (APR.Level < 10) then
 	APR.QuestStepListListing["Shadowlands"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
 end
 
@@ -6356,6 +6368,7 @@ APR.QuestStepListListing["Kalimdor"] = {
 	["A57-Teldrassil"] = "01-30 Teldrassil (Full)",
 	
 }
+
 APR.QuestStepListListing["SpeedRun"] = {
 	["1648-Z0-TheMaw-Story"] = "Z-00-TheMaw-Story",
 	["1670-Z1-Oribos-Story"] = "Z-01-Oribos-Story",
@@ -6373,7 +6386,6 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["1543-Z13-TheMaw-Story"] = "Z-13-The Maw-Story",
 	["1525-Z14-Revendreth-Story"] = "Z-14-Revendreth-Story",
 	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
-
 	["1533-Bastion-NonStoryMode-1"] = "Test1",
 	["A630-Azsuna"] = "Legion - Azsuna",
 	["A641-ValSharah"] = "Legion - Val'Sharah",
@@ -6390,6 +6402,7 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["A539-DesMephisto-Shadowmoon2"] = "(6/8) 10-50 Shadowmoon",
 	["A535-DesMephisto-Talador2"] = "(7/8) 10-50 Talador",
 	["A542-DesMephisto-SpiresOfArak"] = "(8/8) 10-50 Spires of Arak",
+	["DF01A-84-Stormwind"] = "WIP - Dragonflight intro",
 }
 
 APR.QuestStepListListing["EasternKingdom"] = {
@@ -6411,12 +6424,16 @@ APR.QuestStepListListing["EasternKingdom"] = {
 	["A32-SearingGorge"] = "25-30 Searing Gorge (Full)",
 	["A224-NorthernStranglethorn"] = "20-30 Northern Stranglethorn (Full)",
 	["A224-TheCapeofStranglethorn"] = "20-30 Cape of Stranglethorn (F)",
+	
+	
 }
 APR.QuestStepListListing["Dragonflight"] = {
+
+	["DF01A-84-Stormwind"] = "WIP - Dragonflight intro",
 	
 }
 
-APR["EasternKingdom"] = {}
+--[[APR["EasternKingdom"] = {}
 APR["EasternKingdom"][14] = 1
 APR["EasternKingdom"][15] = 1
 APR["EasternKingdom"][17] = 1
@@ -6466,6 +6483,6 @@ APR["Kalimdor"][69] = 1
 APR["Kalimdor"][64] = 1
 APR["Kalimdor"][71] = 1
 APR["Kalimdor"][78] = 1
-APR["Kalimdor"][81] = 1
+APR["Kalimdor"][81] = 1]]
 
 end
