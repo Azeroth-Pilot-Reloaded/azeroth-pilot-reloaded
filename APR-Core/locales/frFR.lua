@@ -37,8 +37,8 @@ L.SHOW_QUESTORDERLIST = "Afficher la fenêtre d'ordre des quêtes";
 L.RESET_QUESTORDERLIST  = "Réinitialiser la liste des quêtes";
 L.ARROW_OPTION = "Options flèche";
 L.ARROW_SCALE = "Taille de la flèche";
-L.UPDATE_ARROW = "Mise àjour de flèche tous les";
-L.RESET_ARROW = "Réinitialiser de la flèche";
+L.UPDATE_ARROW = "Mise à jour de flèche tous les";
+L.RESET_ARROW = "Réinitialiser la flèche";
 L.GENERAL_OPTION = "Options Général";
 L.MINIMAP_BLOB_ALPHA = "Transparence des pointillers sur la minicarte";
 L.SHOW_STEPS_MAP  = "Afficher 10 étapes sur la carte";
@@ -98,6 +98,8 @@ L.MISSING_QUEST = "Quête manquante";
 L.ROUTE_NOT_FOUND = "Route introuvable pour";
 
 -- Extra Quest text=
+-- Need to be before the calls to it
+L.YOU_CAN_LEARN = "Vous pouvez apprendre";
 L.APPRENTICE_RIDING = "Apprenti cavalier";
 L.BASKET_TRAP = "Pannier étrangement intacte";
 L.BLOODLUST = "Un bon moment pour utiliser la BL";
@@ -138,7 +140,6 @@ L.USE_FLIGHTPATH = "Volez vers";
 L.USE_GARRISON_HEARTHSTONE = "Utilisez la Pierre de foyer de fief";
 L.USE_HEARTHSTONE = "Utilisez votre pierre de foyer";
 L.USE_ITEM = "Utilisez l'objet";
-L.YOU_CAN_LEARN = "Vous pouvez apprendre";
 
 -- TODO - Translate
 -- L.AROUND_COOKPOT = "One from each around the cookpot";

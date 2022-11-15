@@ -9,7 +9,7 @@ APR_panel.title = CreateFrame("SimpleHTML",nil,APR.APR_panel)
 APR_panel.title:SetWidth(500)
 APR_panel.title:SetHeight(20)
 APR_panel.title:SetPoint("TOPLEFT", APR.APR_panel, 0,-30)
-APR_panel.title:SetFontObject("P", "GameFontNormal")
+APR_panel.title:SetFontObject("GameFontNormal")
 
 APR_panel.title:SetText("Azeroth Pilot Reloaded - v" .. APR.Version) -- Header text of the options menu
 

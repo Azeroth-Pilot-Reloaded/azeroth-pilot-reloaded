@@ -8,7 +8,7 @@ local meta = {__index = function(tbl, key) tbl[key] = {} return tbl[key] end}
 
 -- Lua APIs
 local tconcat = table.concat
-local assert, error, loadstring = assert, error, loadstring
+local assert, error = assert, error
 local setmetatable, rawset, rawget = setmetatable, rawset, rawget
 local next, select, pairs, type, tostring = next, select, pairs, type, tostring
 
