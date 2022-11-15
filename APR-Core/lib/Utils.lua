@@ -1,12 +1,15 @@
 --[[
 Return a string with surrounding stars
 
-textWithStars("hello")          -- "** hello **"
-textWithStars("hello", 3)       -- "*** hello ***"
-textWithStars("hello", 4, true) -- "**** hello"
-textWithStars("hello", 0)       -- "hello"
+TextWithStars("hello")          -- "\*\* hello \*\*"
+
+TextWithStars("hello", 3)       -- "\*\*\* hello \*\*\*"
+
+TextWithStars("hello", 4, true) -- "\*\*\*\* hello"
+
+TextWithStars("hello", 0)       -- "hello"
 ]]
-function textWithStars(text, count, onlyLeft)
+function TextWithStars(text, count, onlyLeft)
     count = count or 2;
 
     if count < 1 then

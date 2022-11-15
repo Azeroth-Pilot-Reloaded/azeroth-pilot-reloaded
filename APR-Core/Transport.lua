@@ -954,7 +954,7 @@ function APR.FP.GetMeToNextZone2()
 					end
 				end
 				if (OnTime == 0) then
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("** "..L["NOT_IN_CHROMIE_TIMELINE"].." **")
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["NOT_IN_CHROMIE_TIMELINE"]))
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					LineNr = LineNr + 1
 				end
