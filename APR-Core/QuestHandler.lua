@@ -46,7 +46,7 @@ local APR_GigglingBasket = {
 	["The fae courts are very big on manners, you know. The slightest lapse in decorum can have... devastating consequences. Introductions are an important part of first impressions!"] = "introduce",
 	["Oh, my feet are practically jumping with excitement! I could just dance for an eternity! Dance with me!"] = "dance",
 	["We do so much to help out the people of the lands. I'm sure you've heard the stories. Mending shoes, growing fields, reuniting lost loves. But what do we get in return? Not so much as a word of praise! Hmph!"] = "praise",
-}
+	}
 local APR_BonusObj = {
 ---- WoD Bonus Obj ----
 	[36473] = 1,
@@ -994,34 +994,33 @@ local function APR_PrintQStep()
 			end
 		end
 
-		if (GetSpellBookItemInfo(GetSpellInfo(90265))) then
-		elseif (APR.Level == 39) then
-			LineNr = LineNr + 1
-			APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["YOU_CAN_LEARN"].." "..L["MASTER_RIDING!"]))
+		function DisplayRiding(text) 
+			APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(text))
 			APR.QuestList.QuestFrames[LineNr]:Show()
-		elseif (GetSpellBookItemInfo(GetSpellInfo(34090))) then
-		elseif (APR.Level == 29) then
+		end
+		if (APR.Level >= 40 and not GetSpellBookItemInfo(GetSpellInfo(90265))) then
 			LineNr = LineNr + 1
+			DisplayRiding(L["YOU_CAN_LEARN"].." "..L["MASTER_RIDING"])
+		end
+		if (APR.Level >= 30 and not GetSpellBookItemInfo(GetSpellInfo(34090))) then
+			LineNr = LineNr + 1
+			local ridingText
 			if (APR.Faction == "Alliance" and APR.ActiveMap and APR.ActiveMap == "A543-DesMephisto-Gorgrond") then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["USE_HEARTHSTONE"].." "..L["GO_TO"].." Stormwind, "..L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING!"]))
-				APR.QuestList.QuestFrames[LineNr]:Show()
+				ridingText = L["USE_HEARTHSTONE"].." "..L["GO_TO"].." Stormwind, "..L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING"]
 			elseif (APR.Faction == "Horde" and APR.ActiveMap and APR.ActiveMap == "543-DesMephisto-Gorgrond-p1") then
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["USE_HEARTHSTONE"].." "..L["GO_TO"].." Orgrimmar, "..L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING!"]))
-				APR.QuestList.QuestFrames[LineNr]:Show()
+				ridingText = L["USE_HEARTHSTONE"].." "..L["GO_TO"].." Orgrimmar, "..L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING"]
 			else
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING!"]))
-				APR.QuestList.QuestFrames[LineNr]:Show()
+				ridingText = L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING"]
 			end
-		elseif (GetSpellBookItemInfo(GetSpellInfo(33391))) then
-		elseif (APR.Level == 19) then
+			DisplayRiding(ridingText)
+		end
+		if (APR.Level >= 20 and not GetSpellBookItemInfo(GetSpellInfo(33391))) then
 			LineNr = LineNr + 1
-			APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["YOU_CAN_LEARN"].." "..L["JOURNEYMAN_RIDING!"]))
-			APR.QuestList.QuestFrames[LineNr]:Show()
-		elseif (GetSpellBookItemInfo(GetSpellInfo(33388))) then
-		elseif (APR.Level == 9) then
+			DisplayRiding(L["YOU_CAN_LEARN"].." "..L["JOURNEYMAN_RIDING"])
+		end
+		if (APR.Level >= 10 and not GetSpellBookItemInfo(GetSpellInfo(33388))) then
 			LineNr = LineNr + 1
-			APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["YOU_CAN_LEARN"].." "..L["APPRENTICE_RIDING!"]))
-			APR.QuestList.QuestFrames[LineNr]:Show()
+			DisplayRiding(L["YOU_CAN_LEARN"].." "..L["APPRENTICE_RIDING"])
 		end
 		if ((steps["ExtraLine"] or steps["ExtraLineText"]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 			LineNr = LineNr + 1
