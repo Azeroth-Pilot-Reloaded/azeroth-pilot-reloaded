@@ -557,7 +557,7 @@
 			},
 		}, -- [12]
 		{
-			["ExtraLineText"] = "skip waypoint if you glide to quest mob",
+			["ExtraLineText"] = "SKIP_WAYPOINT_IF_YOU_GLIDE",
 			["Trigger"] = {
 				["y"] = 4813.1,
 				["x"] = 7653,
@@ -570,7 +570,7 @@
 			},
 		}, -- [13]
 		{
-			["ExtraLineText"] = "skip waypoint if you glide to quest mob",
+			["ExtraLineText"] = "SKIP_WAYPOINT_IF_YOU_GLIDE",
 			["Trigger"] = {
 				["y"] = 4842.3,
 				["x"] = 7607.5,
@@ -583,7 +583,7 @@
 			},
 		}, -- [14]
 		{
-			["ExtraLineText"] = "skip waypoint if you glide to quest mob",
+			["ExtraLineText"] = "SKIP_WAYPOINT_IF_YOU_GLIDE",
 			["Trigger"] = {
 				["y"] = 5026.1,
 				["x"] = 7667.8,
@@ -1058,7 +1058,7 @@
 			},
 		}, -- [14]
 		{
-			["ExtraLineText"] = "Stay Close to Jaina or she won't move",
+			["ExtraLineText"] = "CLOSE_JAINA",
 			["Qpart"] = {
 				[59767] = {
 					["2"] = "2",
@@ -1236,7 +1236,7 @@
 			},
 		}, -- [6]
 		{
-			["ExtraLineText"] = "If the NPCs aren't talking to one another right away, drop the quest and pick it back up again.",
+			["ExtraLineText"] = "NPC_DROP_QUEST",
 			["Qpart"] = {
 				[60148] = {
 					["1"] = "1",
@@ -1254,7 +1254,7 @@
 			},
 		}, -- [7]
 		{
-			["ExtraLineText"] = "If the NPCs aren't talking to one another right away, drop the quest and pick it back up again.",
+			["ExtraLineText"] = "NPC_DROP_QUEST",
 			["Trigger"] = {
 				["y"] = -1920.9,
 				["x"] = 1383.8,
@@ -1852,7 +1852,7 @@
 		{
 			["SpecialETAHide"] = 1,
 			["ETA"] = 55,
-			["ExtraLineText"] = "You can run ahead if you don't want to RP walk.",
+			["ExtraLineText"] = "GOHEAD_NO_RP",
 			["Trigger"] = {
 				["y"] = -4342.5,
 				["x"] = -4228.9,
@@ -3088,7 +3088,7 @@
 				["y"] = -4783.7,
 				["x"] = -5343.9,
 			},
-			["ExtraLineText"] = "Can ignore mobs (if you're fast)",
+			["ExtraLineText"] = "IGNORE_MOBS_FAST",
 			["Range"] = 23.67,
 			["TT"] = {
 				["y"] = -4783.7,
@@ -3845,7 +3845,7 @@
 			},
 		}, -- [140]
 		{
-			["ExtraLineText"] = "Hurl Kyrian Hammer on the gongs!",
+			["ExtraLineText"] = "HAMMER_ON_GONGS",
 			["Trigger"] = {
 				["y"] = -4093,
 				["x"] = -5709.9,
@@ -4995,7 +4995,7 @@
 			},
 		}, -- [264]
 		{
-			["ExtraLineText"] = "Talk to Steward",
+			["ExtraLineText"] = "TALK_STEWARD",
 			["Qpart"] = {
 				[59197] = {
 					["2"] = "2",
@@ -5087,7 +5087,7 @@
 			},
 		}, -- [272]
 		{
-			["ExtraLineText"] = "Upstairs",
+			["ExtraLineText"] = "UPSTAIRS",
 			["TT"] = {
 				["y"] = -1596.4,
 				["x"] = -5856,
@@ -6026,7 +6026,7 @@
 			},
 		}, -- [13]
 		{
-			["ExtraLineText"] = "Grab your weapon on the ground when you're disarmed!",
+			["ExtraLineText"] = "GRAB_WEAPON_ON_GROUND",
 			["Qpart"] = {
 				[57425] = {
 					["1"] = "1",
@@ -6517,7 +6517,7 @@
 				["y"] = 2004.4,
 				["x"] = -1765.8,
 			},
-			["ExtraLineText"] = "Use teleport",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 11.53,
 			["TT"] = {
 				["y"] = 1944.2,
@@ -6548,7 +6548,7 @@
 				["y"] = 1932.3,
 				["x"] = -1766.6,
 			},
-			["ExtraLineText"] = "Jump off",
+			["ExtraLineText"] = "JUMP_OFF",
 			["Range"] = 13.69,
 			["TT"] = {
 				["y"] = 1932.3,
@@ -6842,7 +6842,7 @@
 				["y"] = 1974,
 				["x"] = -1709.5,
 			},
-			["ExtraLineText"] = "Use Teleporter",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 12.22,
 			["TT"] = {
 				["y"] = 2004.4,
@@ -8616,7 +8616,7 @@
 			},
 		}, -- [125]
 		{
-			["ExtraLineText"] = "Loot and use Javelins to speed up killing",
+			["ExtraLineText"] = "USE_JAVELINS_TO_SPEED",
 			["Qpart"] = {
 				[57986] = {
 					["1"] = "1",
@@ -8644,7 +8644,7 @@
 			},
 		}, -- [126]
 		{
-			["ExtraLineText"] = "Loot and use Javelins to speed up killing",
+			["ExtraLineText"] = "USE_JAVELINS_TO_SPEED",
 			["Qpart"] = {
 				[57986] = {
 					["2"] = "2",
@@ -8672,7 +8672,7 @@
 			},
 		}, -- [127]
 		{
-			["ExtraLineText"] = "Loot and use Javelins to speed up killing",
+			["ExtraLineText"] = "USE_JAVELINS_TO_SPEED",
 			["Trigger"] = {
 				["y"] = 3619.3,
 				["x"] = -1306.8,
@@ -9182,7 +9182,7 @@
 				["y"] = -1873.6,
 				["x"] = 1283.5,
 			},
-			["ExtraLineText"] = "Use Telepad",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 5.29,
 			["TT"] = {
 				["y"] = -1873.6,
@@ -9234,7 +9234,7 @@
 			},
 		}, -- [3]
 		{
-			["ExtraLineText"] = "Teleport up and jump in the ring",
+			["ExtraLineText"] = "TELEPORT_UP_AND_JUMP",
 			["Trigger"] = {
 				["y"] = -1875.5,
 				["x"] = 1284.4,
@@ -9869,7 +9869,7 @@
 				["y"] = -1874.9,
 				["x"] = 1283.5,
 			},
-			["ExtraLineText"] = "Use Telepad",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 2.6,
 			["TT"] = {
 				["y"] = -1873.1,
@@ -10006,7 +10006,7 @@
 				["y"] = -1875.9,
 				["x"] = 1284.2,
 			},
-			["ExtraLineText"] = "Use Telepad",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 4.23,
 			["TT"] = {
 				["y"] = -1875.9,
@@ -11162,7 +11162,7 @@
 			},
 		}, -- [70]
 		{
-			["ExtraLineText"] = "Do NOT loot the Hydra NPCs until you have gutted them!!!",
+			["ExtraLineText"] = "DO_NOT_LOOT_HYDRA",
 			["Qpart"] = {
 				[60575] = {
 					["1"] = "1",
@@ -11822,7 +11822,7 @@
 				["y"] = -6214.5,
 				["x"] = -351.5,
 			},
-			["ExtraLineText"] = "Click and kite Gromlings to Wildseed",
+			["ExtraLineText"] = "KITE_GROMLINGS",
 			["Qpart"] = {
 				[57818] = {
 					["3"] = "3",
@@ -12016,7 +12016,7 @@
 			},
 		}, -- [132]
 		{
-			["ExtraLineText"] = "Use the branch on large, hostile Gorms before you kill them",
+			["ExtraLineText"] = "USE_BRANCH_ON_GORMS",
 			["CRange"] = 58022,
 			["Fillers"] = {
 				[58022] = {
@@ -12037,7 +12037,7 @@
 			},
 		}, -- [133]
 		{
-			["ExtraLineText"] = "Use the branch on large, hostile Gorms before you kill them",
+			["ExtraLineText"] = "USE_BRANCH_ON_GORMS",
 			["PickUp"] = {
 				58024, 
 			},
@@ -12052,7 +12052,7 @@
 			},
 		}, -- [134]
 		{
-			["ExtraLineText"] = "Use the branch on large, hostile Gorms before you kill them",
+			["ExtraLineText"] = "USE_BRANCH_ON_GORMS",
 			["Qpart"] = {
 				[58023] = {
 					["2"] = "2",
@@ -12081,7 +12081,7 @@
 			},
 		}, -- [135]
 		{
-			["ExtraLineText"] = "Use the branch on large, hostile Gorms before you kill them",
+			["ExtraLineText"] = "USE_BRANCH_ON_GORMS",
 			["CRange"] = 58024,
 			["Fillers"] = {
 				[58024] = {
@@ -12105,7 +12105,7 @@
 			},
 		}, -- [136]
 		{
-			["ExtraLineText"] = "Use the branch on large, hostile Gorms before you kill them",
+			["ExtraLineText"] = "USE_BRANCH_ON_GORMS",
 			["CRange"] = 58023,
 			["Fillers"] = {
 				[58024] = {
@@ -12129,7 +12129,7 @@
 			},
 		}, -- [137]
 		{
-			["ExtraLineText"] = "Use the branch on large, hostile Gorms before you kill them",
+			["ExtraLineText"] = "USE_BRANCH_ON_GORMS",
 			["Qpart"] = {
 				[58023] = {
 					["3"] = "3",
@@ -12157,7 +12157,7 @@
 			},
 		}, -- [138]
 		{
-			["ExtraLineText"] = "Use the branch on large, hostile Gorms before you kill them",
+			["ExtraLineText"] = "USE_BRANCH_ON_GORMS",
 			["Qpart"] = {
 				[58024] = {
 					["1"] = "1",
@@ -12376,7 +12376,7 @@
 			},
 		}, -- [155]
 		{
-			["ExtraLineText"] = "Caves around the big tree",
+			["ExtraLineText"] = "CAVES_AROUND_TREE",
 			["Qpart"] = {
 				[58163] = {
 					["1"] = "1",
@@ -13930,7 +13930,7 @@
 			},
 		}, -- [60]
 		{
-			["ExtraLineText"] = "Keep Trickster targeted for auto-Emotes (English Client Only)",
+			["ExtraLineText"] = "KEEP_TRICKSTER_TARGETED",
 			["Qpart"] = {
 				[57870] = {
 					["1"] = "1",
@@ -14448,7 +14448,7 @@
 			},
 		}, -- [92]
 		{
-			["ExtraLineText"] = "When he stops taking damage, click on the horn on the ground and use it",
+			["ExtraLineText"] = "HORN_ON_THE_GROUND",
 			["Qpart"] = {
 				[60856] = {
 					["1"] = "1",
@@ -14592,7 +14592,7 @@
 			},
 		}, -- [104]
 		{
-			["ExtraLineText"] = "use your Soulshape covenant ability",
+			["ExtraLineText"] = "USE_COVENANT_ABILITY",
 			["Qpart"] = {
 				[60905] = {
 					["1"] = "1",
@@ -15321,7 +15321,7 @@
 			},
 		}, -- [154]
 		{
-			["ExtraLineText"] = "The faster you kill the NPCs, the faster Ysera dies",
+			["ExtraLineText"] = "KILL_NPCS_FASTER_YSERA_DIES",
 			["Trigger"] = {
 				["y"] = -6879.5,
 				["x"] = 31.6,
@@ -15595,7 +15595,7 @@
 			},
 		}, -- [174]
 		{
-			["ExtraLineText"] = "Grab the healing, haste, and damage buffs (Big Circles)",
+			["ExtraLineText"] = "GRAB_HEAL_DMG_BUFF",
 			["Qpart"] = {
 				[58869] = {
 					["1"] = "1",
@@ -15956,7 +15956,7 @@
 				["y"] = -1875.3,
 				["x"] = 1284.2,
 			},
-			["ExtraLineText"] = "Use Telepad",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 7.39,
 			["TT"] = {
 				["y"] = -1875.3,
@@ -16528,7 +16528,7 @@
 				["y"] = -2673.5,
 				["x"] = 5858.3,
 			},
-			["ExtraLineText"] = "Loot lantern",
+			["ExtraLineText"] = "LOOT_LANTERN",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = -2673.5,
@@ -16841,7 +16841,7 @@
 		}, -- [3]
 
 		{
-			["ExtraLineText"] = "He Patrols",
+			["ExtraLineText"] = "HE_PATROLS",
 			["Trigger"] = {
 				["y"] = -3088.2,
 				["x"] = 5870.6,
@@ -16928,7 +16928,7 @@
 			},
 		}, -- [45]
 		{
-			["ExtraLineText"] = "use the barrels to weaken Mucksquint",
+			["ExtraLineText"] = "USE_BARRELS",
 			["Qpart"] = {
 				[59714] = {
 					["1"] = "1",
@@ -18632,7 +18632,7 @@
 			},
 		}, -- [188]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57189,
 			["Trigger"] = {
 				["y"] = -3180.5,
@@ -18653,7 +18653,7 @@
 			},
 		}, -- [189]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Trigger"] = {
 				["y"] = -3182.2,
 				["x"] = 6968.8,
@@ -18666,7 +18666,7 @@
 			},
 		}, -- [190]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[59209] = {
 					["1"] = "1",
@@ -18688,7 +18688,7 @@
 			},
 		}, -- [191]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57189,
 			["Trigger"] = {
 				["y"] = -3181.2,
@@ -18706,7 +18706,7 @@
 			},
 		}, -- [192]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[57189] = {
 					["1"] = "1",
@@ -18734,7 +18734,7 @@
 			},
 		}, -- [193]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57190,
 			["Trigger"] = {
 				["y"] = -3189,
@@ -18755,7 +18755,7 @@
 			},
 		}, -- [194]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57189,
 			["Trigger"] = {
 				["y"] = -3179,
@@ -18773,7 +18773,7 @@
 			},
 		}, -- [195]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[57189] = {
 					["2"] = "2",
@@ -18802,7 +18802,7 @@
 			},
 		}, -- [196]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[59209] = {
 					["2"] = "2",
@@ -18827,7 +18827,7 @@
 			},
 		}, -- [197]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57189,
 			["Trigger"] = {
 				["y"] = -3151.2,
@@ -18848,7 +18848,7 @@
 			},
 		}, -- [198]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57190,
 			["Trigger"] = {
 				["y"] = -3205.4,
@@ -18869,7 +18869,7 @@
 			},
 		}, -- [199]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[57189] = {
 					["3"] = "3",
@@ -18898,7 +18898,7 @@
 			},
 		}, -- [200]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Trigger"] = {
 				["y"] = -3264.5,
 				["x"] = 7094.3,
@@ -19953,7 +19953,7 @@
 				["y"] = -2095,
 				["x"] = 7620,
 			},
-			["ExtraLineText"] = "Enter Mirror",
+			["ExtraLineText"] = "ENTER_MIRROR",
 			["Range"] = 12.25,
 			["TT"] = {
 				["y"] = -2227.5,
@@ -20584,7 +20584,7 @@
 				["y"] = -1955.9,
 				["x"] = 7790.7,
 			},
-			["ExtraLineText"] = "Enter Portal",
+			["ExtraLineText"] = "USE_PORTAL",
 			["Range"] = 5.44,
 			["TT"] = {
 				["y"] = -1955.9,
@@ -20865,7 +20865,7 @@
 				["y"] = -1955.9,
 				["x"] = 7790.7,
 			},
-			["ExtraLineText"] = "Enter Portal",
+			["ExtraLineText"] = "USE_PORTAL",
 			["Range"] = 5.44,
 			["TT"] = {
 				["y"] = -1955.9,
@@ -21920,7 +21920,7 @@
 			},
 		}, -- [12]
 		{
-			["ExtraLineText"] = "skip waypoint if you glide to quest mob",
+			["ExtraLineText"] = "SKIP_WAYPOINT_IF_YOU_GLIDE",
 			["Trigger"] = {
 				["y"] = 4813.1,
 				["x"] = 7653,
@@ -21933,7 +21933,7 @@
 			},
 		}, -- [13]
 		{
-			["ExtraLineText"] = "skip waypoint if you glide to quest mob",
+			["ExtraLineText"] = "SKIP_WAYPOINT_IF_YOU_GLIDE",
 			["Trigger"] = {
 				["y"] = 4842.3,
 				["x"] = 7607.5,
@@ -21946,7 +21946,7 @@
 			},
 		}, -- [14]
 		{
-			["ExtraLineText"] = "skip waypoint if you glide to quest mob",
+			["ExtraLineText"] = "SKIP_WAYPOINT_IF_YOU_GLIDE",
 			["Trigger"] = {
 				["y"] = 5026.1,
 				["x"] = 7667.8,
@@ -22421,7 +22421,7 @@
 			},
 		}, -- [14]
 		{
-			["ExtraLineText"] = "Stay Close to Jaina or she won't move",
+			["ExtraLineText"] = "CLOSE_JAINA",
 			["Qpart"] = {
 				[59767] = {
 					["2"] = "2",
@@ -22594,7 +22594,7 @@
 			},
 		}, -- [6]
 		{
-			["ExtraLineText"] = "If the NPCs aren't talking to one another right away, drop the quest and pick it back up again.",
+			["ExtraLineText"] = "NPC_DROP_QUEST",
 			["Qpart"] = {
 				[60148] = {
 					["1"] = "1",
@@ -22612,7 +22612,7 @@
 			},
 		}, -- [7]
 		{
-			["ExtraLineText"] = "If the NPCs aren't talking to one another right away, drop the quest and pick it back up again.",
+			["ExtraLineText"] = "NPC_DROP_QUEST",
 			["Trigger"] = {
 				["y"] = -1920.9,
 				["x"] = 1383.8,
@@ -23205,7 +23205,7 @@
 		{
 			["SpecialETAHide"] = 1,
 			["ETA"] = 55,
-			["ExtraLineText"] = "You can run ahead if you don't want to RP walk.",
+			["ExtraLineText"] = "GOHEAD_NO_RP",
 			["Trigger"] = {
 				["y"] = -4342.5,
 				["x"] = -4228.9,
@@ -24393,7 +24393,7 @@
 				["y"] = -4783.7,
 				["x"] = -5343.9,
 			},
-			["ExtraLineText"] = "Can ignore mobs (if you're fast)",
+			["ExtraLineText"] = "IGNORE_MOBS_FAST",
 			["Range"] = 23.67,
 			["TT"] = {
 				["y"] = -4783.7,
@@ -25085,7 +25085,7 @@
 			},
 		}, -- [140]
 		{
-			["ExtraLineText"] = "Hurl Kyrian Hammer on the gongs!",
+			["ExtraLineText"] = "HAMMER_ON_GONGS",
 			["Trigger"] = {
 				["y"] = -4093,
 				["x"] = -5709.9,
@@ -26009,7 +26009,7 @@
 			},
 		}, -- [264]
 		{
-			["ExtraLineText"] = "Talk to Steward",
+			["ExtraLineText"] = "TALK_STEWARD",
 			["Qpart"] = {
 				[59197] = {
 					["2"] = "2",
@@ -26101,7 +26101,7 @@
 			},
 		}, -- [272]
 		{
-			["ExtraLineText"] = "Upstairs",
+			["ExtraLineText"] = "UPSTAIRS",
 			["TT"] = {
 				["y"] = -1596.4,
 				["x"] = -5856,
@@ -27030,7 +27030,7 @@
 			},
 		}, -- [13]
 		{
-			["ExtraLineText"] = "Grab your weapon on the ground when you're disarmed!",
+			["ExtraLineText"] = "GRAB_WEAPON_ON_GROUND",
 			["Qpart"] = {
 				[57425] = {
 					["1"] = "1",
@@ -27521,7 +27521,7 @@
 				["y"] = 2004.4,
 				["x"] = -1765.8,
 			},
-			["ExtraLineText"] = "Use teleport",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 11.53,
 			["TT"] = {
 				["y"] = 1944.2,
@@ -27552,7 +27552,7 @@
 				["y"] = 1932.3,
 				["x"] = -1766.6,
 			},
-			["ExtraLineText"] = "Jump off",
+			["ExtraLineText"] = "JUMP_OFF",
 			["Range"] = 13.69,
 			["TT"] = {
 				["y"] = 1932.3,
@@ -27846,7 +27846,7 @@
 				["y"] = 1974,
 				["x"] = -1709.5,
 			},
-			["ExtraLineText"] = "Use Teleporter",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 12.22,
 			["TT"] = {
 				["y"] = 2004.4,
@@ -29620,7 +29620,7 @@
 			},
 		}, -- [125]
 		{
-			["ExtraLineText"] = "Loot and use Javelins to speed up killing",
+			["ExtraLineText"] = "USE_JAVELINS_TO_SPEED",
 			["Qpart"] = {
 				[57986] = {
 					["1"] = "1",
@@ -29648,7 +29648,7 @@
 			},
 		}, -- [126]
 		{
-			["ExtraLineText"] = "Loot and use Javelins to speed up killing",
+			["ExtraLineText"] = "USE_JAVELINS_TO_SPEED",
 			["Qpart"] = {
 				[57986] = {
 					["2"] = "2",
@@ -29676,7 +29676,7 @@
 			},
 		}, -- [127]
 		{
-			["ExtraLineText"] = "Loot and use Javelins to speed up killing",
+			["ExtraLineText"] = "USE_JAVELINS_TO_SPEED",
 			["Trigger"] = {
 				["y"] = 3619.3,
 				["x"] = -1306.8,
@@ -30186,7 +30186,7 @@
 				["y"] = -1873.6,
 				["x"] = 1283.5,
 			},
-			["ExtraLineText"] = "Use Telepad",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 5.29,
 			["TT"] = {
 				["y"] = -1873.6,
@@ -30212,7 +30212,7 @@
 			},
 		}, -- [3]
 		{
-			["ExtraLineText"] = "Teleport up and jump in the ring",
+			["ExtraLineText"] = "TELEPORT_UP_AND_JUMP",
 			["Trigger"] = {
 				["y"] = -1875.5,
 				["x"] = 1284.4,
@@ -30823,7 +30823,7 @@
 				["y"] = -1874.9,
 				["x"] = 1283.5,
 			},
-			["ExtraLineText"] = "Use Telepad",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 2.6,
 			["TT"] = {
 				["y"] = -1873.1,
@@ -30946,7 +30946,7 @@
 				["y"] = -1875.9,
 				["x"] = 1284.2,
 			},
-			["ExtraLineText"] = "Use Telepad",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 4.23,
 			["TT"] = {
 				["y"] = -1875.9,
@@ -31983,7 +31983,7 @@
 			},
 		}, -- [70]
 		{
-			["ExtraLineText"] = "Do NOT loot the Hydra NPCs until you have gutted them!!!",
+			["ExtraLineText"] = "DO_NOT_LOOT_HYDRA",
 			["Qpart"] = {
 				[60575] = {
 					["1"] = "1",
@@ -33213,7 +33213,7 @@
 			},
 		}, -- [92]
 		{
-			["ExtraLineText"] = "When he stops taking damage, click on the horn on the ground and use it",
+			["ExtraLineText"] = "HORN_ON_THE_GROUND",
 			["Qpart"] = {
 				[60856] = {
 					["1"] = "1",
@@ -33357,7 +33357,7 @@
 			},
 		}, -- [104]
 		{
-			["ExtraLineText"] = "use your Soulshape covenant ability",
+			["ExtraLineText"] = "USE_COVENANT_ABILITY",
 			["Qpart"] = {
 				[60905] = {
 					["1"] = "1",
@@ -34086,7 +34086,7 @@
 			},
 		}, -- [154]
 		{
-			["ExtraLineText"] = "The faster you kill the NPCs, the faster Ysera dies",
+			["ExtraLineText"] = "KILL_NPCS_FASTER_YSERA_DIES",
 			["Trigger"] = {
 				["y"] = -6879.5,
 				["x"] = 31.6,
@@ -34360,7 +34360,7 @@
 			},
 		}, -- [174]
 		{
-			["ExtraLineText"] = "Grab the healing, haste, and damage buffs (Big Circles)",
+			["ExtraLineText"] = "GRAB_HEAL_DMG_BUFF",
 			["Qpart"] = {
 				[58869] = {
 					["1"] = "1",
@@ -34721,7 +34721,7 @@
 				["y"] = -1875.3,
 				["x"] = 1284.2,
 			},
-			["ExtraLineText"] = "Use Telepad",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 7.39,
 			["TT"] = {
 				["y"] = -1875.3,
@@ -35219,7 +35219,7 @@
 				["y"] = -2673.5,
 				["x"] = 5858.3,
 			},
-			["ExtraLineText"] = "Loot lantern",
+			["ExtraLineText"] = "LOOT_LANTERN",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = -2673.5,
@@ -36509,7 +36509,7 @@
 			},
 		}, -- [188]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57189,
 			["Trigger"] = {
 				["y"] = -3180.5,
@@ -36530,7 +36530,7 @@
 			},
 		}, -- [189]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Trigger"] = {
 				["y"] = -3182.2,
 				["x"] = 6968.8,
@@ -36543,7 +36543,7 @@
 			},
 		}, -- [190]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[59209] = {
 					["1"] = "1",
@@ -36565,7 +36565,7 @@
 			},
 		}, -- [191]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57189,
 			["Trigger"] = {
 				["y"] = -3181.2,
@@ -36583,7 +36583,7 @@
 			},
 		}, -- [192]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[57189] = {
 					["1"] = "1",
@@ -36611,7 +36611,7 @@
 			},
 		}, -- [193]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57190,
 			["Trigger"] = {
 				["y"] = -3189,
@@ -36632,7 +36632,7 @@
 			},
 		}, -- [194]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57189,
 			["Trigger"] = {
 				["y"] = -3179,
@@ -36650,7 +36650,7 @@
 			},
 		}, -- [195]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[57189] = {
 					["2"] = "2",
@@ -36679,7 +36679,7 @@
 			},
 		}, -- [196]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[59209] = {
 					["2"] = "2",
@@ -36704,7 +36704,7 @@
 			},
 		}, -- [197]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57189,
 			["Trigger"] = {
 				["y"] = -3151.2,
@@ -36725,7 +36725,7 @@
 			},
 		}, -- [198]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57190,
 			["Trigger"] = {
 				["y"] = -3205.4,
@@ -36746,7 +36746,7 @@
 			},
 		}, -- [199]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[57189] = {
 					["3"] = "3",
@@ -36775,7 +36775,7 @@
 			},
 		}, -- [200]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Trigger"] = {
 				["y"] = -3264.5,
 				["x"] = 7094.3,
@@ -37319,7 +37319,7 @@
 		--		["y"] = -2095,
 		--		["x"] = 7620,
 		--	},
-		--	["ExtraLineText"] = "Enter Mirror",
+		--	["ExtraLineText"] = "ENTER_MIRROR",
 		--	["Range"] = 12.25,
 		--	["TT"] = {
 		--		["y"] = -2227.5,
@@ -37891,7 +37891,7 @@
 				["y"] = -1955.9,
 				["x"] = 7790.7,
 			},
-			["ExtraLineText"] = "Enter Portal",
+			["ExtraLineText"] = "USE_PORTAL",
 			["Range"] = 5.44,
 			["TT"] = {
 				["y"] = -1955.9,
@@ -38982,7 +38982,7 @@
 			},
 		}, -- [12]
 		{
-			["ExtraLineText"] = "skip waypoint if you glide to quest mob",
+			["ExtraLineText"] = "SKIP_WAYPOINT_IF_YOU_GLIDE",
 			["Trigger"] = {
 				["y"] = 4813.1,
 				["x"] = 7653,
@@ -38995,7 +38995,7 @@
 			},
 		}, -- [13]
 		{
-			["ExtraLineText"] = "skip waypoint if you glide to quest mob",
+			["ExtraLineText"] = "SKIP_WAYPOINT_IF_YOU_GLIDE",
 			["Trigger"] = {
 				["y"] = 4842.3,
 				["x"] = 7607.5,
@@ -39008,7 +39008,7 @@
 			},
 		}, -- [14]
 		{
-			["ExtraLineText"] = "skip waypoint if you glide to quest mob",
+			["ExtraLineText"] = "SKIP_WAYPOINT_IF_YOU_GLIDE",
 			["Trigger"] = {
 				["y"] = 5026.1,
 				["x"] = 7667.8,
@@ -39483,7 +39483,7 @@
 			},
 		}, -- [14]
 		{
-			["ExtraLineText"] = "Stay Close to Jaina or she won't move",
+			["ExtraLineText"] = "CLOSE_JAINA",
 			["Qpart"] = {
 				[59767] = {
 					["2"] = "2",
@@ -39656,7 +39656,7 @@
 			},
 		}, -- [6]
 		{
-			["ExtraLineText"] = "If the NPCs aren't talking to one another right away, drop the quest and pick it back up again.",
+			["ExtraLineText"] = "NPC_DROP_QUEST",
 			["Qpart"] = {
 				[60148] = {
 					["1"] = "1",
@@ -39674,7 +39674,7 @@
 			},
 		}, -- [7]
 		{
-			["ExtraLineText"] = "If the NPCs aren't talking to one another right away, drop the quest and pick it back up again.",
+			["ExtraLineText"] = "NPC_DROP_QUEST",
 			["Trigger"] = {
 				["y"] = -1920.9,
 				["x"] = 1383.8,
@@ -40267,7 +40267,7 @@
 		{
 			["SpecialETAHide"] = 1,
 			["ETA"] = 55,
-			["ExtraLineText"] = "You can run ahead if you don't want to RP walk.",
+			["ExtraLineText"] = "GOHEAD_NO_RP",
 			["Trigger"] = {
 				["y"] = -4342.5,
 				["x"] = -4228.9,
@@ -41455,7 +41455,7 @@
 				["y"] = -4783.7,
 				["x"] = -5343.9,
 			},
-			["ExtraLineText"] = "Can ignore mobs (if you're fast)",
+			["ExtraLineText"] = "IGNORE_MOBS_FAST",
 			["Range"] = 23.67,
 			["TT"] = {
 				["y"] = -4783.7,
@@ -42147,7 +42147,7 @@
 			},
 		}, -- [140]
 		{
-			["ExtraLineText"] = "Hurl Kyrian Hammer on the gongs!",
+			["ExtraLineText"] = "HAMMER_ON_GONGS",
 			["Trigger"] = {
 				["y"] = -4093,
 				["x"] = -5709.9,
@@ -43070,7 +43070,7 @@
 			},
 		}, -- [264]
 		{
-			["ExtraLineText"] = "Talk to Steward",
+			["ExtraLineText"] = "TALK_STEWARD",
 			["Qpart"] = {
 				[59197] = {
 					["2"] = "2",
@@ -43162,7 +43162,7 @@
 			},
 		}, -- [272]
 		{
-			["ExtraLineText"] = "Upstairs",
+			["ExtraLineText"] = "UPSTAIRS",
 			["TT"] = {
 				["y"] = -1596.4,
 				["x"] = -5856,
@@ -44091,7 +44091,7 @@
 			},
 		}, -- [13]
 		{
-			["ExtraLineText"] = "Grab your weapon on the ground when you're disarmed!",
+			["ExtraLineText"] = "GRAB_WEAPON_ON_GROUND",
 			["Qpart"] = {
 				[57425] = {
 					["1"] = "1",
@@ -44582,7 +44582,7 @@
 				["y"] = 2004.4,
 				["x"] = -1765.8,
 			},
-			["ExtraLineText"] = "Use teleport",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 11.53,
 			["TT"] = {
 				["y"] = 1944.2,
@@ -44613,7 +44613,7 @@
 				["y"] = 1932.3,
 				["x"] = -1766.6,
 			},
-			["ExtraLineText"] = "Jump off",
+			["ExtraLineText"] = "JUMP_OFF",
 			["Range"] = 13.69,
 			["TT"] = {
 				["y"] = 1932.3,
@@ -44907,7 +44907,7 @@
 				["y"] = 1974,
 				["x"] = -1709.5,
 			},
-			["ExtraLineText"] = "Use Teleporter",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 12.22,
 			["TT"] = {
 				["y"] = 2004.4,
@@ -46681,7 +46681,7 @@
 			},
 		}, -- [125]
 		{
-			["ExtraLineText"] = "Loot and use Javelins to speed up killing",
+			["ExtraLineText"] = "USE_JAVELINS_TO_SPEED",
 			["Qpart"] = {
 				[57986] = {
 					["1"] = "1",
@@ -46709,7 +46709,7 @@
 			},
 		}, -- [126]
 		{
-			["ExtraLineText"] = "Loot and use Javelins to speed up killing",
+			["ExtraLineText"] = "USE_JAVELINS_TO_SPEED",
 			["Qpart"] = {
 				[57986] = {
 					["2"] = "2",
@@ -46737,7 +46737,7 @@
 			},
 		}, -- [127]
 		{
-			["ExtraLineText"] = "Loot and use Javelins to speed up killing",
+			["ExtraLineText"] = "USE_JAVELINS_TO_SPEED",
 			["Trigger"] = {
 				["y"] = 3619.3,
 				["x"] = -1306.8,
@@ -47247,7 +47247,7 @@
 				["y"] = -1873.6,
 				["x"] = 1283.5,
 			},
-			["ExtraLineText"] = "Use Telepad",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 5.29,
 			["TT"] = {
 				["y"] = -1873.6,
@@ -47273,7 +47273,7 @@
 			},
 		}, -- [3]
 		{
-			["ExtraLineText"] = "Teleport up and jump in the ring",
+			["ExtraLineText"] = "TELEPORT_UP_AND_JUMP",
 			["Trigger"] = {
 				["y"] = -1875.5,
 				["x"] = 1284.4,
@@ -47884,7 +47884,7 @@
 				["y"] = -1874.9,
 				["x"] = 1283.5,
 			},
-			["ExtraLineText"] = "Use Telepad",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 2.6,
 			["TT"] = {
 				["y"] = -1873.1,
@@ -48007,7 +48007,7 @@
 				["y"] = -1875.9,
 				["x"] = 1284.2,
 			},
-			["ExtraLineText"] = "Use Telepad",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 4.23,
 			["TT"] = {
 				["y"] = -1875.9,
@@ -49044,7 +49044,7 @@
 			},
 		}, -- [70]
 		{
-			["ExtraLineText"] = "Do NOT loot the Hydra NPCs until you have gutted them!!!",
+			["ExtraLineText"] = "DO_NOT_LOOT_HYDRA",
 			["Qpart"] = {
 				[60575] = {
 					["1"] = "1",
@@ -50274,7 +50274,7 @@
 			},
 		}, -- [92]
 		{
-			["ExtraLineText"] = "When he stops taking damage, click on the horn on the ground and use it",
+			["ExtraLineText"] = "HORN_ON_THE_GROUND",
 			["Qpart"] = {
 				[60856] = {
 					["1"] = "1",
@@ -50418,7 +50418,7 @@
 			},
 		}, -- [104]
 		{
-			["ExtraLineText"] = "use your Soulshape covenant ability",
+			["ExtraLineText"] = "USE_COVENANT_ABILITY",
 			["Qpart"] = {
 				[60905] = {
 					["1"] = "1",
@@ -51147,7 +51147,7 @@
 			},
 		}, -- [154]
 		{
-			["ExtraLineText"] = "The faster you kill the NPCs, the faster Ysera dies",
+			["ExtraLineText"] = "KILL_NPCS_FASTER_YSERA_DIES",
 			["Trigger"] = {
 				["y"] = -6879.5,
 				["x"] = 31.6,
@@ -51421,7 +51421,7 @@
 			},
 		}, -- [174]
 		{
-			["ExtraLineText"] = "Grab the healing, haste, and damage buffs (Big Circles)",
+			["ExtraLineText"] = "GRAB_HEAL_DMG_BUFF",
 			["Qpart"] = {
 				[58869] = {
 					["1"] = "1",
@@ -51782,7 +51782,7 @@
 				["y"] = -1875.3,
 				["x"] = 1284.2,
 			},
-			["ExtraLineText"] = "Use Telepad",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 7.39,
 			["TT"] = {
 				["y"] = -1875.3,
@@ -52280,7 +52280,7 @@
 				["y"] = -2673.5,
 				["x"] = 5858.3,
 			},
-			["ExtraLineText"] = "Loot lantern",
+			["ExtraLineText"] = "LOOT_LANTERN",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = -2673.5,
@@ -53570,7 +53570,7 @@
 			},
 		}, -- [188]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57189,
 			["Trigger"] = {
 				["y"] = -3180.5,
@@ -53591,7 +53591,7 @@
 			},
 		}, -- [189]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Trigger"] = {
 				["y"] = -3182.2,
 				["x"] = 6968.8,
@@ -53604,7 +53604,7 @@
 			},
 		}, -- [190]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[59209] = {
 					["1"] = "1",
@@ -53626,7 +53626,7 @@
 			},
 		}, -- [191]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57189,
 			["Trigger"] = {
 				["y"] = -3181.2,
@@ -53644,7 +53644,7 @@
 			},
 		}, -- [192]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[57189] = {
 					["1"] = "1",
@@ -53672,7 +53672,7 @@
 			},
 		}, -- [193]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57190,
 			["Trigger"] = {
 				["y"] = -3189,
@@ -53693,7 +53693,7 @@
 			},
 		}, -- [194]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57189,
 			["Trigger"] = {
 				["y"] = -3179,
@@ -53711,7 +53711,7 @@
 			},
 		}, -- [195]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[57189] = {
 					["2"] = "2",
@@ -53740,7 +53740,7 @@
 			},
 		}, -- [196]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[59209] = {
 					["2"] = "2",
@@ -53765,7 +53765,7 @@
 			},
 		}, -- [197]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57189,
 			["Trigger"] = {
 				["y"] = -3151.2,
@@ -53786,7 +53786,7 @@
 			},
 		}, -- [198]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["CRange"] = 57190,
 			["Trigger"] = {
 				["y"] = -3205.4,
@@ -53807,7 +53807,7 @@
 			},
 		}, -- [199]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Qpart"] = {
 				[57189] = {
 					["3"] = "3",
@@ -53836,7 +53836,7 @@
 			},
 		}, -- [200]
 		{
-			["ExtraLineText"] = "Use Soulbreaker Traps for extra dmg",
+			["ExtraLineText"] = "USE_SOULBREAKER",
 			["Trigger"] = {
 				["y"] = -3264.5,
 				["x"] = 7094.3,
@@ -54380,7 +54380,7 @@
 		--		["y"] = -2095,
 		--		["x"] = 7620,
 		--	},
-		--	["ExtraLineText"] = "Enter Mirror",
+		--	["ExtraLineText"] = "ENTER_MIRROR",
 		--	["Range"] = 12.25,
 		--	["TT"] = {
 		--		["y"] = -2227.5,
@@ -54952,7 +54952,7 @@
 				["y"] = -1955.9,
 				["x"] = 7790.7,
 			},
-			["ExtraLineText"] = "Enter Portal",
+			["ExtraLineText"] = "USE_PORTAL",
 			["Range"] = 5.44,
 			["TT"] = {
 				["y"] = -1955.9,
@@ -55446,7 +55446,7 @@
 				["y"] = -1875.4,
 				["x"] = 1283.5,
 			},
-			["ExtraLineText"] = "Use Teleport",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 4.63,
 			["TT"] = {
 				["y"] = -1875.4,
@@ -55513,7 +55513,7 @@
 				["y"] = -1873.6,
 				["x"] = 1283.5,
 			},
-			["ExtraLineText"] = "Use Telepad",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 2.75,
 			["TT"] = {
 				["y"] = -1875.1,
@@ -55579,7 +55579,7 @@
 				["y"] = -1874.8,
 				["x"] = 1282.7,
 			},
-			["ExtraLineText"] = "Use Teleporter",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 3.42,
 			["TT"] = {
 				["y"] = -1874.8,
@@ -55608,7 +55608,7 @@
 				["y"] = -2067.4,
 				["x"] = 1283.2,
 			},
-			["ExtraLineText"] = "Use Gateway",
+			["ExtraLineText"] = "USE_GATEWAY",
 			["Range"] = 58.92,
 			["TT"] = {
 				["y"] = -1946,
@@ -55659,7 +55659,7 @@
 				["y"] = -1874.4,
 				["x"] = 1283,
 			},
-			["ExtraLineText"] = "Use Teleport",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 3.15,
 			["TT"] = {
 				["y"] = -1874.4,
@@ -55700,7 +55700,7 @@
 				["y"] = -1832.9,
 				["x"] = 1493,
 			},
-			["ExtraLineText"] = "Use Gate",
+			["ExtraLineText"] = "USE_GATE",
 			["Range"] = 38.9,
 			["TT"] = {
 				["y"] = -1834.4,
@@ -55719,7 +55719,7 @@
 	}
 	APR.QuestStepList["1670-Z1-Oribos-ZonePick"] = {
 		{
-			["ExtraLineText"] = "Use HS to Oribos or fly there",
+			["ExtraLineText"] = "HS_ORIBOS_OR_FLY",
 			["TT"] = {
 				["y"] = -1941.1,
 				["x"] = 1391.2,
@@ -55752,7 +55752,7 @@
 				["y"] = -1875,
 				["x"] = 1283.3,
 			},
-			["ExtraLineText"] = "Use Teleport",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 4.21,
 			["TT"] = {
 				["y"] = -1875,
@@ -56137,7 +56137,7 @@
 				["y"] = -1875.3,
 				["x"] = 1283.5,
 			},
-			["ExtraLineText"] = "Use Teleport",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 3.75,
 			["TT"] = {
 				["y"] = -1875.3,
@@ -56909,7 +56909,7 @@
 				["y"] = -1875.3,
 				["x"] = 1283.5,
 			},
-			["ExtraLineText"] = "Use Teleport",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 3.55,
 			["TT"] = {
 				["y"] = -1875.3,
@@ -56930,7 +56930,7 @@
 				["y"] = -1896.4,
 				["x"] = 7700.5,
 			},
-			["ExtraLineText"] = "Go Into Sinfall",
+			["ExtraLineText"] = "GO_SINFALL",
 			["Range"] = 12.21,
 			["TT"] = {
 				["y"] = -1896.4,
@@ -56943,7 +56943,7 @@
 				["y"] = -1943.6,
 				["x"] = 7764.7,
 			},
-			["ExtraLineText"] = "Enter Mirror",
+			["ExtraLineText"] = "ENTER_MIRROR",
 			["Range"] = 3.41,
 			["TT"] = {
 				["y"] = -1944.6,
@@ -57123,7 +57123,7 @@
 				["y"] = -1922.5,
 				["x"] = 7718.6,
 			},
-			["ExtraLineText"] = "Enter Mirror",
+			["ExtraLineText"] = "ENTER_MIRROR",
 			["Range"] = 10.78,
 			["TT"] = {
 				["y"] = -1919.9,
@@ -57340,7 +57340,7 @@
 				["y"] = -1875,
 				["x"] = 1283,
 			},
-			["ExtraLineText"] = "Use Teleport",
+			["ExtraLineText"] = "USE_TELEPORT",
 			["Range"] = 5.99,
 			["TT"] = {
 				["y"] = -1875,
@@ -57353,7 +57353,7 @@
 				["y"] = 1975.2,
 				["x"] = -2691.4,
 			},
-			["ExtraLineText"] = "Use Gateway",
+			["ExtraLineText"] = "USE_GATEWAY",
 			["Range"] = 17.37,
 			["TT"] = {
 				["y"] = -1753.1,
@@ -58618,7 +58618,7 @@
 				["y"] = -3214.5,
 				["x"] = -5162.2,
 			},
-			["ExtraLineText"] = "Use Gateway",
+			["ExtraLineText"] = "USE_GATEWAY",
 			["Range"] = 23.11,
 			["TT"] = {
 				["y"] = -3024,
@@ -59441,7 +59441,7 @@
 				["y"] = -2864.2,
 				["x"] = -4968.8,
 			},
-			["ExtraLineText"] = "Use Gateway",
+			["ExtraLineText"] = "USE_GATEWAY",
 			["Range"] = 22.63,
 			["TT"] = {
 				["y"] = -2552.7,
@@ -59464,7 +59464,7 @@
 				["y"] = -3214.5,
 				["x"] = -5162.2,
 			},
-			["ExtraLineText"] = "Use Gateway",
+			["ExtraLineText"] = "USE_GATEWAY",
 			["Range"] = 17.47,
 			["TT"] = {
 				["y"] = -3023.9,

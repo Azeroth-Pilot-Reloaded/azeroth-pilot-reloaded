@@ -1538,7 +1538,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "No Waypoints in Garrison complete quests",
+			["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
 			["TT"] = {
 				["y"] = 1867.4,
 				["x"] = 264,
@@ -1548,7 +1548,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "No Waypoints in Garrison complete quests",
+			["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
 			["PickUp"] = {
 				35176, 
 				35166, 
@@ -1561,7 +1561,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "No Waypoints in Garrison complete quests",
+			["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
 			["Qpart"] = {
 				[35176] = {
 					["1"] = "1",
@@ -1595,8 +1595,8 @@ APR.QuestStepList = {
 				["y"] = 2340.3,
 				["x"] = 338.2,
 			},
-			["ExtraLineText"] = "Go North West of Garrison",
-			["ExtraLineText2"] = "Treasure is North of ship",
+			["ExtraLineText"] = "GO_NORTH_WEST_GARRISON",
+			["ExtraLineText2"] = "TREASURE_NORTH_SHIP",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 2340.3,
@@ -1618,7 +1618,7 @@ APR.QuestStepList = {
 				["y"] = 2462.4,
 				["x"] = 411.6,
 			},
-			["ExtraLineText"] = "Treasure in cave",
+			["ExtraLineText"] = "TREASURE_CAVE",
 			["Range"] = 20.9,
 			["TT"] = {
 				["y"] = 2462.4,
@@ -1701,7 +1701,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "No Waypoints in Garrison complete quests",
+			["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
 			["PickUp"] = {
 				34587, 
 			},
@@ -1711,7 +1711,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "No Waypoints in Garrison complete quests",
+			["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
 			["Trigger"] = {
 				["y"] = 1907.9,
 				["x"] = 235.6,
@@ -1728,7 +1728,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "No Waypoints in Garrison complete quests",
+			["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
 			["Qpart"] = {
 				[34587] = {
 					["2"] = "2",
@@ -1751,7 +1751,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "No Waypoints in Garrison complete quests",
+			["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
 			["Trigger"] = {
 				["y"] = 1869,
 				["x"] = 265,
@@ -1768,7 +1768,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "No Waypoints in Garrison complete quests",
+			["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
 			["Trigger"] = {
 				["y"] = 1892.2,
 				["x"] = 242,
@@ -1785,7 +1785,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "No Waypoints in Garrison complete quests",
+			["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
 			["Done"] = {
 				34587, 
 			},
@@ -1795,7 +1795,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "No Waypoints in Garrison complete quests",
+			["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
 			["PickUp"] = {
 				34646, 
 			},
@@ -1805,7 +1805,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "Go South",
+			["ExtraLineText"] = "GO_SOUTH",
 			["PickUp"] = {
 				33833, 
 			},
@@ -2116,7 +2116,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "At Flightpath",
+			["ExtraLineText"] = "AT_FLIGHTPATH",
 			["PickUp"] = {
 				33075, 
 			},
@@ -2162,7 +2162,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "Handin news from Talador",
+			["ExtraLineText"] = "HANDIN_NEWS_TALADOR",
 			["Done"] = {
 				36495, 
 			},
@@ -2186,7 +2186,7 @@ APR.QuestStepList = {
 				["y"] = 1498.4,
 				["x"] = -221.7,
 			},
-			["ExtraLineText"] = "Head Southeast",
+			["ExtraLineText"] = "HEAD_SOUTHEAST",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 1498.4,
@@ -2199,7 +2199,7 @@ APR.QuestStepList = {
 				["y"] = 1664.5,
 				["x"] = -280.4,
 			},
-			["ExtraLineText"] = "Go into the Cave",
+			["ExtraLineText"] = "GO_CAVE",
 			["Range"] = 12.7,
 			["TT"] = {
 				["y"] = 1664.5,
@@ -2224,7 +2224,7 @@ APR.QuestStepList = {
 				["y"] = 1415,
 				["x"] = -498.9,
 			},
-			["ExtraLineText"] = "Loot the Tusks",
+			["ExtraLineText"] = "LOOT_TUSKS",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 1415,
@@ -2380,7 +2380,7 @@ APR.QuestStepList = {
 				["y"] = 1076.2,
 				["x"] = -1199.5,
 			},
-			["ExtraLineText"] = "Loot Jar",
+			["ExtraLineText"] = "LOOT_JAR",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 1076.2,
@@ -2629,7 +2629,7 @@ APR.QuestStepList = {
 				["y"] = 1385.4,
 				["x"] = -1872.4,
 			},
-			["ExtraLineText"] = "into the cave",
+			["ExtraLineText"] = "GO_CAVE",
 			["Range"] = 10.25,
 			["TT"] = {
 				["y"] = 1385.4,
@@ -3090,7 +3090,7 @@ APR.QuestStepList = {
 				["y"] = 636.2,
 				["x"] = -1611.9,
 			},
-			["ExtraLineText"] = "Kaliri Egg",
+			["ExtraLineText"] = "KALIRI_EGG",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = 636.2,
@@ -3103,7 +3103,7 @@ APR.QuestStepList = {
 				["y"] = 650.1,
 				["x"] = -1412.3,
 			},
-			["ExtraLineText"] = "Loot bag",
+			["ExtraLineText"] = "LOOT_BAG",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = 650.1,
@@ -3186,7 +3186,7 @@ APR.QuestStepList = {
 				["y"] = 982.4,
 				["x"] = -1040,
 			},
-			["ExtraLineText"] = "Upstairs",
+			["ExtraLineText"] = "UPSTAIRS",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = 982.4,
@@ -3434,7 +3434,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "In the Lake",
+			["ExtraLineText"] = "IN_LAKE",
 			["Trigger"] = {
 				["y"] = 6540,
 				["x"] = 338.6,
@@ -3770,7 +3770,7 @@ APR.QuestStepList = {
 				["y"] = 5978.8,
 				["x"] = 1705.4,
 			},
-			["ExtraLineText"] = "Up the Tower",
+			["ExtraLineText"] = "UP_TOWER",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = 5978.8,
@@ -3778,7 +3778,7 @@ APR.QuestStepList = {
 			},
 		}, 
 		{
-			["ExtraLineText"] = "In the Hut",
+			["ExtraLineText"] = "IN_HUT",
 			["Qpart"] = {
 				[34698] = {
 					["2"] = "2",
@@ -3814,7 +3814,7 @@ APR.QuestStepList = {
 				["y"] = 6058,
 				["x"] = 1771.2,
 			},
-			["ExtraLineText"] = "Click the shackle, in the Hut",
+			["ExtraLineText"] = "SHACKLE_HUT",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 6058,
@@ -3857,7 +3857,7 @@ APR.QuestStepList = {
 				["y"] = 5900.8,
 				["x"] = 1756,
 			},
-			["ExtraLineText"] = "Click Gong",
+			["ExtraLineText"] = "CLICK_GONG",
 			["Range"] = 0.61,
 			["TT"] = {
 				["y"] = 5907.6,
@@ -3879,7 +3879,7 @@ APR.QuestStepList = {
 				["y"] = 5892.8,
 				["x"] = 1816.5,
 			},
-			["ExtraLineText"] = "Click Shackle",
+			["ExtraLineText"] = "CLICK_SHACKLE",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = 5892.8,
@@ -3897,7 +3897,7 @@ APR.QuestStepList = {
 				["y"] = 5955.3,
 				["x"] = 1851.8,
 			},
-			["ExtraLineText"] = "Go into the Hut",
+			["ExtraLineText"] = "GO_INTO_HUT",
 			["Range"] = 14.58,
 			["TT"] = {
 				["y"] = 5955.3,
@@ -3919,7 +3919,7 @@ APR.QuestStepList = {
 				["y"] = 5926.2,
 				["x"] = 1865.5,
 			},
-			["ExtraLineText"] = "Click Shackle in the hut",
+			["ExtraLineText"] = "SHACKLE_HUT",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 5926.2,
@@ -3958,7 +3958,7 @@ APR.QuestStepList = {
 				["y"] = 5843.8,
 				["x"] = 1879.4,
 			},
-			["ExtraLineText"] = "In the Tower",
+			["ExtraLineText"] = "IN_TOWER",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 5843.8,
@@ -3971,7 +3971,7 @@ APR.QuestStepList = {
 				["y"] = 5877.3,
 				["x"] = 1875,
 			},
-			["ExtraLineText"] = "Ontop of the tower over the edge",
+			["ExtraLineText"] = "TOP_TOWER_OVER_EDGE",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = 5877.3,
@@ -3989,7 +3989,7 @@ APR.QuestStepList = {
 				["y"] = 5920.3,
 				["x"] = 1911.5,
 			},
-			["ExtraLineText"] = "Go into cave",
+			["ExtraLineText"] = "GO_CAVE",
 			["Range"] = 18.82,
 			["TT"] = {
 				["y"] = 5920.3,
@@ -4005,7 +4005,7 @@ APR.QuestStepList = {
 			["Done"] = {
 				34699, 
 			},
-			["ExtraLineText"] = "In Cave",
+			["ExtraLineText"] = "GO_CAVE",
 			["TT"] = {
 				["y"] = 5889.8,
 				["x"] = 2053.3,
@@ -4104,7 +4104,7 @@ APR.QuestStepList = {
 				["y"] = 5918.3,
 				["x"] = 1915,
 			},
-			["ExtraLineText"] = "Get out of cave",
+			["ExtraLineText"] = "OUT_CAVE",
 			["Range"] = 20.71,
 			["TT"] = {
 				["y"] = 5918.3,
@@ -4220,7 +4220,7 @@ APR.QuestStepList = {
 				["y"] = 6964,
 				["x"] = 1502.3,
 			},
-			["ExtraLineText"] = "Into the Cave",
+			["ExtraLineText"] = "GO_CAVE",
 			["Range"] = 16.04,
 			["TT"] = {
 				["y"] = 6964,
@@ -4233,7 +4233,7 @@ APR.QuestStepList = {
 				["y"] = 7037.5,
 				["x"] = 1583.8,
 			},
-			["ExtraLineText"] = "Bottom of the Cave",
+			["ExtraLineText"] = "BOTTOM_CAVE",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 7037.5,
@@ -4246,7 +4246,7 @@ APR.QuestStepList = {
 				["y"] = 7068.1,
 				["x"] = 1601.7,
 			},
-			["ExtraLineText"] = "Get out of cave",
+			["ExtraLineText"] = "OUT_CAVE",
 			["Range"] = 13.03,
 			["TT"] = {
 				["y"] = 7068.1,
@@ -4319,7 +4319,7 @@ APR.QuestStepList = {
 				["y"] = 7267.7,
 				["x"] = 1391.5,
 			},
-			["ExtraLineText"] = "Get Crossbow",
+			["ExtraLineText"] = "GET_CROSSBOW",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 7267.7,
@@ -4332,7 +4332,7 @@ APR.QuestStepList = {
 				["y"] = 7249.3,
 				["x"] = 1285.5,
 			},
-			["ExtraLineText"] = "Get Egg",
+			["ExtraLineText"] = "GET_EGG",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 7249.3,
@@ -4357,7 +4357,7 @@ APR.QuestStepList = {
 				["y"] = 7213.6,
 				["x"] = 1037.4,
 			},
-			["ExtraLineText"] = "Get Weapons Cache",
+			["ExtraLineText"] = "GET_WEAPONS_CACHE",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 7213.6,
@@ -4394,7 +4394,7 @@ APR.QuestStepList = {
 				["y"] = 7012.3,
 				["x"] = 1065.8,
 			},
-			["ExtraLineText"] = "In the Cave",
+			["ExtraLineText"] = "GO_CAVE",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 7012.3,
@@ -4868,7 +4868,7 @@ APR.QuestStepList = {
 				["y"] = 6863.1,
 				["x"] = 1296.4,
 			},
-			["ExtraLineText"] = "In the Cave",
+			["ExtraLineText"] = "GO_CAVE",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 6863.1,
@@ -5065,7 +5065,7 @@ APR.QuestStepList = {
 				["y"] = 6931.8,
 				["x"] = 1473.7,
 			},
-			["ExtraLineText"] = "Talk to Nisha",
+			["ExtraLineText"] = "TALK_NISHA",
 			["Range"] = 32.2,
 			["TT"] = {
 				["y"] = 6596.6,
@@ -5264,7 +5264,7 @@ APR.QuestStepList = {
 				["y"] = 6356.2,
 				["x"] = 743,
 			},
-			["ExtraLineText"] = "Ride Nisha",
+			["ExtraLineText"] = "RIDE_NISHA",
 			["Range"] = 34.97,
 			["TT"] = {
 				["y"] = 7164.8,
@@ -5673,7 +5673,7 @@ APR.QuestStepList = {
 				["y"] = 5543.5,
 				["x"] = 1454.3,
 			},
-			["ExtraLineText"] = "Up the tree",
+			["ExtraLineText"] = "UP_TREE",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 5543.5,
@@ -5686,7 +5686,7 @@ APR.QuestStepList = {
 				["y"] = 5649.2,
 				["x"] = 1791.5,
 			},
-			["ExtraLineText"] = "loot femur underneath big rock",
+			["ExtraLineText"] = "LOOT_FEMUR",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 5649.2,
@@ -5699,7 +5699,7 @@ APR.QuestStepList = {
 				["y"] = 5415.8,
 				["x"] = 1765.7,
 			},
-			["ExtraLineText"] = "In the water",
+			["ExtraLineText"] = "IN_WATER",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = 5415.8,
@@ -5757,7 +5757,7 @@ APR.QuestStepList = {
 				["y"] = 5044.1,
 				["x"] = 1603,
 			},
-			["ExtraLineText"] = "Left of stairs",
+			["ExtraLineText"] = "LEFT_STAIRS",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = 5044.1,
@@ -5920,7 +5920,7 @@ APR.QuestStepList = {
 				["y"] = 4501.7,
 				["x"] = 1134.9,
 			},
-			["ExtraLineText"] = "Up in the crane",
+			["ExtraLineText"] = "UP_CRANE",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 4501.7,
@@ -5984,7 +5984,7 @@ APR.QuestStepList = {
 				["y"] = 5358.3,
 				["x"] = 866.7,
 			},
-			["ExtraLineText"] = "Go to Cave",
+			["ExtraLineText"] = "GO_CAVE",
 			["Range"] = 22.19,
 			["TT"] = {
 				["y"] = 5358.3,
@@ -6023,7 +6023,7 @@ APR.QuestStepList = {
 				["y"] = 5232.8,
 				["x"] = 735.9,
 			},
-			["ExtraLineText"] = "Loot Dagger",
+			["ExtraLineText"] = "LOOT_DAGGER",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = 5232.8,
@@ -6054,7 +6054,7 @@ APR.QuestStepList = {
 				["y"] = 5358.7,
 				["x"] = 865.9,
 			},
-			["ExtraLineText"] = "Exit cave",
+			["ExtraLineText"] = "OUT_CAVE",
 			["Range"] = 10.25,
 			["TT"] = {
 				["y"] = 5358.7,

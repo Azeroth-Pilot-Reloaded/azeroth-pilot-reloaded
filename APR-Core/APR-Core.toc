@@ -3,7 +3,7 @@
 
 ## Title: |cffff7d0aAzeroth Pilot Reloaded|r
 ## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.
-## Author: Rycia, Willowsmate, & zyrrael
+## Author: Rycia, Willowsmate, zyrrael, Neogeekmo
 ## Version: 15
 
 ## SavedVariables: APR1, APR2, APR3, APRQuestNames, APR_HoldZoneVar, APR_Transport, APR_Custom, APR_ZoneComplete, APR_TaxiTimers
@@ -11,6 +11,7 @@ lib\HereBeDragons\LibStub\LibStub.lua
 lib\HereBeDragons\CallbackHandler-1.0\CallbackHandler-1.0.xml
 lib\HereBeDragons\HereBeDragons-2.0.lua
 lib\HereBeDragons\HereBeDragons-Pins-2.0.lua
+lib\Utils.lua
 locales\enUS.lua
 locales\deDE.lua
 locales\esES.lua

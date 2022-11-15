@@ -39,10 +39,10 @@ local function APR_CreateQuestList()
 		--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 		--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
 		--});
-local t = APR.PartyList.PartyFrames[CLi]:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-t:SetAllPoints(APR.PartyList.PartyFrames[CLi])
-APR.PartyList.PartyFrames[CLi].texture = t
+		local t = APR.PartyList.PartyFrames[CLi]:CreateTexture(nil,"BACKGROUND")
+		t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+		t:SetAllPoints(APR.PartyList.PartyFrames[CLi])
+		APR.PartyList.PartyFrames[CLi].texture = t
 
 		APR.PartyList.PartyFrames[CLi]:SetScript("OnMouseDown", function(self, button)
 			if button == "LeftButton" and APR1[APR.Realm][APR.Name]["Settings"]["Lock"] == 0 then
@@ -76,7 +76,7 @@ APR.PartyList.PartyFrames[CLi].texture = t
 		APR.PartyList.PartyFramesFS1[CLi]:SetHeight(38)
 		APR.PartyList.PartyFramesFS1[CLi]:SetJustifyH("LEFT")
 		APR.PartyList.PartyFramesFS1[CLi]:SetFontObject("GameFontNormalLarge")
-		APR.PartyList.PartyFramesFS1[CLi]:SetText("Name")
+		APR.PartyList.PartyFramesFS1[CLi]:SetText(L["NAME"])
 		APR.PartyList.PartyFramesFS1[CLi]:SetTextColor(1, 1, 0)
 
 		APR.PartyList.PartyFrames2[CLi] = CreateFrame("frame", "CLQaListF"..CLi, APR.PartyList.PartyFrame)
@@ -90,10 +90,10 @@ APR.PartyList.PartyFrames[CLi].texture = t
 		--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 		--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
 		--});
-local t = APR.PartyList.PartyFrames2[CLi]:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-t:SetAllPoints(APR.PartyList.PartyFrames2[CLi])
-APR.PartyList.PartyFrames2[CLi].texture = t
+		local t = APR.PartyList.PartyFrames2[CLi]:CreateTexture(nil,"BACKGROUND")
+		t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+		t:SetAllPoints(APR.PartyList.PartyFrames2[CLi])
+		APR.PartyList.PartyFrames2[CLi].texture = t
 
 		APR.PartyList.PartyFrames2[CLi]:SetScript("OnMouseDown", function(self, button)
 			if button == "LeftButton" and APR1[APR.Realm][APR.Name]["Settings"]["Lock"] == 0 then
@@ -146,10 +146,10 @@ APR.PartyList.PartyFrames2[CLi].texture = t
 	--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 	--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
 	--});
-local t = APR.QuestList.SugQuestFrame:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-t:SetAllPoints(APR.QuestList.SugQuestFrame)
-APR.QuestList.SugQuestFrame.texture = t
+	local t = APR.QuestList.SugQuestFrame:CreateTexture(nil,"BACKGROUND")
+	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+	t:SetAllPoints(APR.QuestList.SugQuestFrame)
+	APR.QuestList.SugQuestFrame.texture = t
 
 	APR.QuestList.SugQuestFrame:SetScript("OnMouseDown", function(self, button)
 		if button == "LeftButton" then
@@ -182,7 +182,7 @@ APR.QuestList.SugQuestFrame.texture = t
 	APR.QuestList.SugQuestFrameFS1:SetHeight(38)
 	APR.QuestList.SugQuestFrameFS1:SetJustifyH("CENTER")
 	APR.QuestList.SugQuestFrameFS1:SetFontObject("GameFontNormalLarge")
-	APR.QuestList.SugQuestFrameFS1:SetText("Quests Text")
+	APR.QuestList.SugQuestFrameFS1:SetText(L["QUESTS_TEXT"])
 	APR.QuestList.SugQuestFrameFS1:SetTextColor(1, 1, 0)
 	APR.QuestList.SugQuestFrameFS2 = APR.QuestList.SugQuestFrame:CreateFontString("CLQaaFS2","ARTWORK", "ChatFontNormal")
 	APR.QuestList.SugQuestFrameFS2:SetParent(APR.QuestList.SugQuestFrame)
@@ -256,10 +256,10 @@ APR.QuestList.SugQuestFrame.texture = t
 	--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 	--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
 	--});
-local t = APR.QuestList.Greetings:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-t:SetAllPoints(APR.QuestList.Greetings)
-APR.QuestList.Greetings.texture = t
+	local t = APR.QuestList.Greetings:CreateTexture(nil,"BACKGROUND")
+	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+	t:SetAllPoints(APR.QuestList.Greetings)
+	APR.QuestList.Greetings.texture = t
 
 	APR.QuestList.Greetings:SetScript("OnMouseDown", function(self, button)
 		if button == "LeftButton" then
@@ -336,7 +336,7 @@ APR.QuestList.Greetings.texture = t
 	APR.QuestList.GreetingsHideB:SetPoint("BOTTOMRIGHT",APR.QuestList.Greetings,"BOTTOMRIGHT",-15,5)
 	APR.QuestList.GreetingsHideB:SetWidth(90)
 	APR.QuestList.GreetingsHideB:SetHeight(22)
-	APR.QuestList.GreetingsHideB:SetText("Close")
+	APR.QuestList.GreetingsHideB:SetText(L["CLOSE"])
 	APR.QuestList.GreetingsHideB:SetParent(APR.QuestList.Greetings)
 	APR.QuestList.GreetingsHideB:SetNormalFontObject("GameFontNormalLarge")
 	APR.QuestList.GreetingsHideBntex = APR.QuestList.GreetingsHideB:CreateTexture()
@@ -375,7 +375,7 @@ APR.QuestList.Greetings.texture = t
 		APR1[APR.Realm][APR.Name]["Settings"]["top"] = -150
 		APR.QuestList.MainFrame:ClearAllPoints()
 		APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
-		print("APR: QuestList Out of screen, resetting!")
+		print("APR: "..L["QUESTLIST_OUT_SCREEN"])
 	end
 	APR.QuestList.ListFrame:SetWidth(1)
 	APR.QuestList.ListFrame:SetHeight(1)
@@ -402,7 +402,7 @@ APR.QuestList.Greetings.texture = t
 				APR1[APR.Realm][APR.Name]["Settings"]["top"] = -150
 				APR.QuestList.MainFrame:ClearAllPoints()
 				APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
-				print("APR: QuestList Out of screen, resetting!")
+				print("APR: "..L["QUESTLIST_OUT_SCREEN"])
 			end
 			APR_CombatTestVar = 1
 		end
@@ -440,10 +440,10 @@ APR.QuestList.Greetings.texture = t
 	--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 	--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
 	--});
-local t = APR.QuestList.QuestFrames["MyProgress"]:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-t:SetAllPoints(APR.QuestList.QuestFrames["MyProgress"])
-APR.QuestList.QuestFrames["MyProgress"].texture = t
+	local t = APR.QuestList.QuestFrames["MyProgress"]:CreateTexture(nil,"BACKGROUND")
+	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+	t:SetAllPoints(APR.QuestList.QuestFrames["MyProgress"])
+	APR.QuestList.QuestFrames["MyProgress"].texture = t
 
 	APR.QuestList.QuestFrames["MyProgress"]:SetScript("OnMouseDown", function(self, button)
 		if button == "LeftButton" and not APR.QuestList.MainFrame.isMoving and APR1[APR.Realm][APR.Name]["Settings"]["Lock"] == 0 then
@@ -464,7 +464,7 @@ APR.QuestList.QuestFrames["MyProgress"].texture = t
 				APR1[APR.Realm][APR.Name]["Settings"]["top"] = -150
 				APR.QuestList.MainFrame:ClearAllPoints()
 				APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
-				print("APR: QuestList Out of screen, resetting!")
+				print("APR: "..L["QUESTLIST_OUT_SCREEN"])
 			end
 			APR_CombatTestVar = 1
 		end
@@ -530,10 +530,10 @@ APR.QuestList.QuestFrames["MyProgress"].texture = t
 		--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 		--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
 		--});
-local t = APR.QuestList.QuestFrames[CLi]:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-t:SetAllPoints(APR.QuestList.QuestFrames[CLi])
-APR.QuestList.QuestFrames[CLi].texture = t
+		local t = APR.QuestList.QuestFrames[CLi]:CreateTexture(nil,"BACKGROUND")
+		t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+		t:SetAllPoints(APR.QuestList.QuestFrames[CLi])
+		APR.QuestList.QuestFrames[CLi].texture = t
 
 		APR.QuestList.QuestFrames[CLi]:SetScript("OnMouseDown", function(self, button)
 			if button == "LeftButton" and not APR.QuestList.MainFrame.isMoving and APR1[APR.Realm][APR.Name]["Settings"]["Lock"] == 0 then
@@ -554,7 +554,7 @@ APR.QuestList.QuestFrames[CLi].texture = t
 					APR1[APR.Realm][APR.Name]["Settings"]["top"] = -150
 					APR.QuestList.MainFrame:ClearAllPoints()
 					APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
-					print("APR: QuestList Out of screen, resetting!")
+					print("APR: "..L["QUESTLIST_OUT_SCREEN"])
 				end
 				APR_CombatTestVar = 1
 			end
@@ -577,44 +577,45 @@ APR.QuestList.QuestFrames[CLi].texture = t
 		APR.QuestList.QuestFrames["FS"..CLi]:SetTextColor(1, 1, 0)
 
 		APR.QuestList.QuestFrames["FS"..CLi]["BQid"] = 0
-		APR.QuestList.QuestFrames["FS"..CLi]["Button"] = CreateFrame("Button", "APR_SkipActiveButton"..CLi, APR.QuestList.QuestFrames[CLi])
-		APR.QuestList.QuestFrames["FS"..CLi]["Button"]:SetWidth(43)
-		APR.QuestList.QuestFrames["FS"..CLi]["Button"]:SetHeight(17)
-		APR.QuestList.QuestFrames["FS"..CLi]["Button"]:SetPoint("RIGHT", APR.QuestList.QuestFrames[CLi], "RIGHT", -4, 0)
-		APR.QuestList.QuestFrames["FS"..CLi]["Button"]:SetScript("OnMouseDown", function(self, button)
+		APR.QuestList.QuestFrames["FS"..CLi].Button = CreateFrame("Button", "APR_SkipActiveButton"..CLi, APR.QuestList.QuestFrames[CLi])
+		APR.QuestList.QuestFrames["FS"..CLi].Button:SetPoint("RIGHT", APR.QuestList.QuestFrames[CLi], "RIGHT", 0, 0)
+		APR.QuestList.QuestFrames["FS"..CLi].Button:SetScript("OnMouseDown", function(self, button)
 			local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 			if (APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
 				local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 				if (steps and steps["UseDalaHS"]) then
 					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 					APR.BookingList["PrintQStep"] = 1
-					APR.QuestList.QuestFrames["FS"..CLi]["Button"]:Hide()
+					APR.QuestList.QuestFrames["FS"..CLi].Button:Hide()
 				else
 					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 					APR.BookingList["PrintQStep"] = 1
-					APR.QuestList.QuestFrames["FS"..CLi]["Button"]:Hide()
+					APR.QuestList.QuestFrames["FS"..CLi].Button:Hide()
 				end
 			end
 		end)
-		--APR.QuestList.QuestFrames["FS"..CLi]["Button"]:SetBackdrop( {
+		--APR.QuestList.QuestFrames["FS"..CLi].Button:SetBackdrop( {
 		--	bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
 		--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 		--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
 		--});
-local t = APR.QuestList.QuestFrames["FS"..CLi]["Button"]:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-t:SetAllPoints(APR.QuestList.QuestFrames["FS"..CLi]["Button"])
-APR.QuestList.QuestFrames["FS"..CLi]["Button"].texture = t
+		local t = APR.QuestList.QuestFrames["FS"..CLi].Button:CreateTexture(nil,"BACKGROUND")
+		t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+		t:SetAllPoints(APR.QuestList.QuestFrames["FS"..CLi].Button)
+		APR.QuestList.QuestFrames["FS"..CLi].Button.texture = t
 
-		APR.QuestList.QuestFrames["FS"..CLi]["Fontstring1"] = APR.ArrowFrame:CreateFontString("CLSettingsFS2212","ARTWORK", "ChatFontNormal")
-		APR.QuestList.QuestFrames["FS"..CLi]["Fontstring1"]:SetParent(APR.QuestList.QuestFrames["FS"..CLi]["Button"])
-		APR.QuestList.QuestFrames["FS"..CLi]["Fontstring1"]:SetPoint("CENTER", APR.QuestList.QuestFrames["FS"..CLi]["Button"], "CENTER", 0, 0)
-		APR.QuestList.QuestFrames["FS"..CLi]["Fontstring1"]:SetWidth(43)
-		APR.QuestList.QuestFrames["FS"..CLi]["Fontstring1"]:SetHeight(14)
-		APR.QuestList.QuestFrames["FS"..CLi]["Fontstring1"]:SetFontObject("GameFontNormalLarge")
-		APR.QuestList.QuestFrames["FS"..CLi]["Fontstring1"]:SetText("Skip")
-		APR.QuestList.QuestFrames["FS"..CLi]["Fontstring1"]:SetTextColor(1, 1, 0)
-		APR.QuestList.QuestFrames["FS"..CLi]["Button"]:Hide()
+		APR.QuestList.QuestFrames["FS"..CLi].Fontstring = APR.ArrowFrame:CreateFontString("CLSettingsFS2212","ARTWORK", "ChatFontNormal")
+		APR.QuestList.QuestFrames["FS"..CLi].Fontstring:SetParent(APR.QuestList.QuestFrames["FS"..CLi].Button)
+		APR.QuestList.QuestFrames["FS"..CLi].Fontstring:SetPoint("CENTER", APR.QuestList.QuestFrames["FS"..CLi].Button)
+		APR.QuestList.QuestFrames["FS"..CLi].Fontstring:SetText(L["SKIP_BUTTON"])
+		local skiplenght = APR.QuestList.QuestFrames["FS"..CLi].Fontstring:GetStringWidth()+20
+		APR.QuestList.QuestFrames["FS"..CLi].Button:SetWidth(skiplenght)
+		APR.QuestList.QuestFrames["FS"..CLi].Button:SetHeight(20)
+		APR.QuestList.QuestFrames["FS"..CLi].Fontstring:SetWidth(skiplenght)
+		APR.QuestList.QuestFrames["FS"..CLi].Fontstring:SetHeight(APR.QuestList.QuestFrames["FS"..CLi].Button:GetHeight() - 3)
+		APR.QuestList.QuestFrames["FS"..CLi].Fontstring:SetFontObject("GameFontNormalLarge")
+		APR.QuestList.QuestFrames["FS"..CLi].Fontstring:SetTextColor(1, 1, 0)
+		APR.QuestList.QuestFrames["FS"..CLi].Button:Hide()
 
 		APR.QuestList2["BF"..CLi] = CreateFrame("frame", "CLQListF2z"..CLi, APR.QuestList21)
 		APR.QuestList2["BF"..CLi]:SetWidth(410)
@@ -662,10 +663,10 @@ APR.QuestList.QuestFrames["FS"..CLi]["Button"].texture = t
 	--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
 	--});
 	APR.QuestList.SweatOfOurBrowBuffFrame:Hide()
-local t = APR.QuestList.SweatOfOurBrowBuffFrame:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-t:SetAllPoints(APR.QuestList.SweatOfOurBrowBuffFrame)
-APR.QuestList.SweatOfOurBrowBuffFrame.texture = t
+	local t = APR.QuestList.SweatOfOurBrowBuffFrame:CreateTexture(nil,"BACKGROUND")
+	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+	t:SetAllPoints(APR.QuestList.SweatOfOurBrowBuffFrame)
+	APR.QuestList.SweatOfOurBrowBuffFrame.texture = t
 
 	APR.QuestList.SweatOfOurBrowBuffFrame:SetScript("OnMouseDown", function(self, button)
 		if button == "LeftButton" then
@@ -692,7 +693,7 @@ APR.QuestList.SweatOfOurBrowBuffFrame.texture = t
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS1:SetHeight(38)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS1:SetJustifyH("LEFT")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS1:SetFontObject("GameFontNormal")
-	APR.QuestList.SweatOfOurBrowBuffFrame.FS1:SetText("Needed buffs for Disarming Traps:")
+	APR.QuestList.SweatOfOurBrowBuffFrame.FS1:SetText(L["NEDD_BUFF_DISARM_TRAP"])
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS1:SetTextColor(1, 1, 0)
 
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps = CreateFrame("frame", "APR_SugQuestFrameFramebufffraTraps", APR.QuestList.SweatOfOurBrowBuffFrame)
@@ -702,11 +703,11 @@ APR.QuestList.SweatOfOurBrowBuffFrame.texture = t
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps:EnableMouse(true)
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps:SetFrameStrata("LOW")
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps:SetPoint("TOPLEFT",APR.QuestList.SweatOfOurBrowBuffFrame,"TOPLEFT",2,-40)
-local t = APR.QuestList.SweatOfOurBrowBuffFrame.Traps:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\Buttons\\WHITE8X8")
-t:SetAllPoints(APR.QuestList.SweatOfOurBrowBuffFrame.Traps)
-t:SetColorTexture(0.5,0.1,0.1,1)
-APR.QuestList.SweatOfOurBrowBuffFrame.Traps.texture = t
+	local t = APR.QuestList.SweatOfOurBrowBuffFrame.Traps:CreateTexture(nil,"BACKGROUND")
+	t:SetTexture("Interface\\Buttons\\WHITE8X8")
+	t:SetAllPoints(APR.QuestList.SweatOfOurBrowBuffFrame.Traps)
+	t:SetColorTexture(0.5,0.1,0.1,1)
+	APR.QuestList.SweatOfOurBrowBuffFrame.Traps.texture = t
 
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS2 = APR.QuestList.SweatOfOurBrowBuffFrame:CreateFontString("APR_QuestList_SweatOfOurBrowBuffFrame_FS2","ARTWORK", "ChatFontNormal")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS2:SetParent(APR.QuestList.SweatOfOurBrowBuffFrame.Traps)
@@ -715,7 +716,7 @@ APR.QuestList.SweatOfOurBrowBuffFrame.Traps.texture = t
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS2:SetHeight(38)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS2:SetJustifyH("LEFT")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS2:SetFontObject("GameFontNormalSmall")
-	APR.QuestList.SweatOfOurBrowBuffFrame.FS2:SetText("Soulweb Trap")
+	APR.QuestList.SweatOfOurBrowBuffFrame.FS2:SetText(L["SOULWEB_TRAP"])
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS2:SetTextColor(1, 1, 0)
 
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS21 = APR.QuestList.SweatOfOurBrowBuffFrame:CreateFontString("APR_QuestList_SweatOfOurBrowBuffFrame_FS21","ARTWORK", "ChatFontNormal")
@@ -725,7 +726,7 @@ APR.QuestList.SweatOfOurBrowBuffFrame.Traps.texture = t
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS21:SetHeight(38)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS21:SetJustifyH("LEFT")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS21:SetFontObject("GameFontNormalSmall")
-	APR.QuestList.SweatOfOurBrowBuffFrame.FS21:SetText("Freshleaf buff")
+	APR.QuestList.SweatOfOurBrowBuffFrame.FS21:SetText(L["FRESHLEAF_BUFF"])
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS21:SetTextColor(1, 1, 0)
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps2 = CreateFrame("frame", "APR_SugQuestFrameFramebufffraTraps2", APR.QuestList.SweatOfOurBrowBuffFrame)
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps2:SetWidth(220)
@@ -733,11 +734,11 @@ APR.QuestList.SweatOfOurBrowBuffFrame.Traps.texture = t
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps2:SetMovable(true)
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps2:EnableMouse(true)
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps2:SetPoint("TOPLEFT",APR.QuestList.SweatOfOurBrowBuffFrame,"TOPLEFT",2,-60)
-local t = APR.QuestList.SweatOfOurBrowBuffFrame.Traps2:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\Buttons\\WHITE8X8")
-t:SetAllPoints(APR.QuestList.SweatOfOurBrowBuffFrame.Traps2)
-t:SetColorTexture(0.5,0.1,0.1,1)
-APR.QuestList.SweatOfOurBrowBuffFrame.Traps2.texture = t
+	local t = APR.QuestList.SweatOfOurBrowBuffFrame.Traps2:CreateTexture(nil,"BACKGROUND")
+	t:SetTexture("Interface\\Buttons\\WHITE8X8")
+	t:SetAllPoints(APR.QuestList.SweatOfOurBrowBuffFrame.Traps2)
+	t:SetColorTexture(0.5,0.1,0.1,1)
+	APR.QuestList.SweatOfOurBrowBuffFrame.Traps2.texture = t
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS3 = APR.QuestList.SweatOfOurBrowBuffFrame:CreateFontString("APR_QuestList_SweatOfOurBrowBuffFrame_FS3","ARTWORK", "ChatFontNormal")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS3:SetParent(APR.QuestList.SweatOfOurBrowBuffFrame.Traps2)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS3:SetPoint("LEFT",APR.QuestList.SweatOfOurBrowBuffFrame.Traps2,"LEFT",5,0)
@@ -745,7 +746,7 @@ APR.QuestList.SweatOfOurBrowBuffFrame.Traps2.texture = t
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS3:SetHeight(38)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS3:SetJustifyH("LEFT")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS3:SetFontObject("GameFontNormalSmall")
-	APR.QuestList.SweatOfOurBrowBuffFrame.FS3:SetText("Harp Trap")
+	APR.QuestList.SweatOfOurBrowBuffFrame.FS3:SetText(L["HARP_TRAP"])
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS3:SetTextColor(1, 1, 0)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS31 = APR.QuestList.SweatOfOurBrowBuffFrame:CreateFontString("APR_QuestList_SweatOfOurBrowBuffFrame_FS31","ARTWORK", "ChatFontNormal")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS31:SetParent(APR.QuestList.SweatOfOurBrowBuffFrame.Traps2)
@@ -754,7 +755,7 @@ APR.QuestList.SweatOfOurBrowBuffFrame.Traps2.texture = t
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS31:SetHeight(38)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS31:SetJustifyH("LEFT")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS31:SetFontObject("GameFontNormalSmall")
-	APR.QuestList.SweatOfOurBrowBuffFrame.FS31:SetText("Gossamer Thread buff")
+	APR.QuestList.SweatOfOurBrowBuffFrame.FS31:SetText(L["GOSSAMER_THREAD_BUFF"])
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS31:SetTextColor(1, 1, 0)
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps3 = CreateFrame("frame", "APR_SugQuestFrameFramebufffraTraps3", APR.QuestList.SweatOfOurBrowBuffFrame)
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps3:SetWidth(220)
@@ -762,11 +763,11 @@ APR.QuestList.SweatOfOurBrowBuffFrame.Traps2.texture = t
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps3:SetMovable(true)
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps3:EnableMouse(true)
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps3:SetPoint("TOPLEFT",APR.QuestList.SweatOfOurBrowBuffFrame,"TOPLEFT",2,-80)
-local t = APR.QuestList.SweatOfOurBrowBuffFrame.Traps3:CreateTexture(nil,"BACKGROUND")
-t:SetTexture("Interface\\Buttons\\WHITE8X8")
-t:SetAllPoints(APR.QuestList.SweatOfOurBrowBuffFrame.Traps3)
-t:SetColorTexture(0.5,0.1,0.1,1)
-APR.QuestList.SweatOfOurBrowBuffFrame.Traps3.texture = t
+	local t = APR.QuestList.SweatOfOurBrowBuffFrame.Traps3:CreateTexture(nil,"BACKGROUND")
+	t:SetTexture("Interface\\Buttons\\WHITE8X8")
+	t:SetAllPoints(APR.QuestList.SweatOfOurBrowBuffFrame.Traps3)
+	t:SetColorTexture(0.5,0.1,0.1,1)
+	APR.QuestList.SweatOfOurBrowBuffFrame.Traps3.texture = t
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4 = APR.QuestList.SweatOfOurBrowBuffFrame:CreateFontString("APR_QuestList_SweatOfOurBrowBuffFrame_FS4","ARTWORK", "ChatFontNormal")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetParent(APR.QuestList.SweatOfOurBrowBuffFrame.Traps3)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetPoint("LEFT",APR.QuestList.SweatOfOurBrowBuffFrame.Traps3,"LEFT",5,0)
@@ -774,7 +775,7 @@ APR.QuestList.SweatOfOurBrowBuffFrame.Traps3.texture = t
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetHeight(38)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetJustifyH("LEFT")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetFontObject("GameFontNormalSmall")
-	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetText("Basket Trap")
+	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetText(L["BASKET_TRAP"])
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetTextColor(1, 1, 0)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS41 = APR.QuestList.SweatOfOurBrowBuffFrame:CreateFontString("APR_QuestList_SweatOfOurBrowBuffFrame_FS41","ARTWORK", "ChatFontNormal")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS41:SetParent(APR.QuestList.SweatOfOurBrowBuffFrame.Traps3)
@@ -783,7 +784,7 @@ APR.QuestList.SweatOfOurBrowBuffFrame.Traps3.texture = t
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS41:SetHeight(38)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS41:SetJustifyH("LEFT")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS41:SetFontObject("GameFontNormalSmall")
-	APR.QuestList.SweatOfOurBrowBuffFrame.FS41:SetText("Shummerdust pile buff")
+	APR.QuestList.SweatOfOurBrowBuffFrame.FS41:SetText(L["SHUMMERDUST_BUFF"])
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS41:SetTextColor(1, 1, 0)
 
 end

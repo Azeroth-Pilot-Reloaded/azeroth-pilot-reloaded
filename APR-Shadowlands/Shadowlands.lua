@@ -15655,7 +15655,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "Leave Tutorial",
+			["ExtraLineText"] = "LEAVE_TUTORIAL",
 			["PickUp"] = {
 				34398, -- [1]
 			},
@@ -17090,7 +17090,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "Leave Tutorial",
+			["ExtraLineText"] = "LEAVE_TUTORIAL",
 			["PickUp"] = {
 				34398, -- [1]
 			},
@@ -18588,7 +18588,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "Leave Tutorial",
+			["ExtraLineText"] = "LEAVE_TUTORIAL",
 			["PickUp"] = {
 				34398, -- [1]
 			},
@@ -20016,7 +20016,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "Leave Tutorial",
+			["ExtraLineText"] = "LEAVE_TUTORIAL",
 			["PickUp"] = {
 				34398, -- [1]
 			},
@@ -21410,7 +21410,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "Leave Tutorial",
+			["ExtraLineText"] = "LEAVE_TUTORIAL",
 			["PickUp"] = {
 				34398, -- [1]
 			},
@@ -22801,7 +22801,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "Leave Tutorial",
+			["ExtraLineText"] = "LEAVE_TUTORIAL",
 			["PickUp"] = {
 				34398, -- [1]
 			},
@@ -24211,7 +24211,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "Leave Tutorial",
+			["ExtraLineText"] = "LEAVE_TUTORIAL",
 			["PickUp"] = {
 				34398, -- [1]
 			},
@@ -25619,7 +25619,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "Leave Tutorial",
+			["ExtraLineText"] = "LEAVE_TUTORIAL",
 			["PickUp"] = {
 				34398, -- [1]
 			},
@@ -27017,7 +27017,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "Leave Tutorial",
+			["ExtraLineText"] = "LEAVE_TUTORIAL",
 			["PickUp"] = {
 				34398, -- [1]
 			},
@@ -28376,7 +28376,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "Leave Tutorial",
+			["ExtraLineText"] = "LEAVE_TUTORIAL",
 			["PickUp"] = {
 				34398, -- [1]
 			},
@@ -29470,7 +29470,7 @@ APR.QuestStepList["1648-TheMaw (Intro)"] = {
 		},
 	}, -- [15]
 	{
-		["ExtraLineText"] = "Stay Close to Jaina or she won't move",
+		["ExtraLineText"] = "CLOSE_JAINA",
 		["Trigger"] = {
 			["y"] = 4570.3,
 			["x"] = 6913,
@@ -30213,7 +30213,7 @@ APR.QuestStepList["1525-Revendreth"] = {
 			["y"] = -2673.5,
 			["x"] = 5858.3,
 		},
-		["ExtraLineText"] = "Loot lantern",
+		["ExtraLineText"] = "LOOT_LANTERN",
 		["Range"] = 0.69,
 		["TT"] = {
 			["y"] = -2673.5,
@@ -34101,7 +34101,7 @@ APR.QuestStepList["1525-Revendreth"] = {
 			["y"] = -2095,
 			["x"] = 7620,
 		},
-		["ExtraLineText"] = "Enter Mirror",
+		["ExtraLineText"] = "ENTER_MIRROR",
 		["Range"] = 12.25,
 		["TT"] = {
 			["y"] = -2227.5,
@@ -34811,7 +34811,7 @@ APR.QuestStepList["1533-Bastion"] = {
 			["y"] = -4106.2,
 			["x"] = -4627.8,
 		},
-		["ExtraLineText"] = "Buy a Elysian Thread",
+		["ExtraLineText"] = "BUY_ELYSIAN_THREAD",
 		["Range"] = 0.61,
 		["TT"] = {
 			["y"] = -4106.2,
@@ -35714,7 +35714,7 @@ APR.QuestStepList["1533-Bastion"] = {
 			["y"] = -4783.7,
 			["x"] = -5343.9,
 		},
-		["ExtraLineText"] = "Can ignore mobs (if your fast)",
+		["ExtraLineText"] = "IGNORE_MOBS_FAST",
 		["Range"] = 23.67,
 		["TT"] = {
 			["y"] = -4783.7,
@@ -39998,7 +39998,7 @@ APR.QuestStepList["1536-Maldraxxus"] = {
 			["y"] = 2004.4,
 			["x"] = -1765.8,
 		},
-		["ExtraLineText"] = "Use teleport",
+		["ExtraLineText"] = "USE_TELEPORT",
 		["Range"] = 11.53,
 		["TT"] = {
 			["y"] = 1944.2,
@@ -40403,7 +40403,7 @@ APR.QuestStepList["1536-Maldraxxus"] = {
 			["y"] = 1974,
 			["x"] = -1709.5,
 		},
-		["ExtraLineText"] = "Use Teleporter",
+		["ExtraLineText"] = "USE_TELEPORT",
 		["Range"] = 12.22,
 		["TT"] = {
 			["y"] = 2004.4,
@@ -42914,7 +42914,7 @@ APR.QuestStepList["1536-Maldraxxus"] = {
 			["y"] = 2005.5,
 			["x"] = -1776.6,
 		},
-		["ExtraLineText"] = "Use Portal",
+		["ExtraLineText"] = "USE_PORTAL",
 		["Range"] = 0.69,
 		["TT"] = {
 			["y"] = 2005.5,
@@ -47043,7 +47043,7 @@ APR.QuestStepList["1565-Ardenweald"] = {
 		},
 	}, -- [104]
 	{
-		["ExtraLineText"] = "Use Soulshape",
+		["ExtraLineText"] = "USE_SOULSHAPE",
 		["Qpart"] = {
 			[60905] = {
 				["1"] = "1",
@@ -48330,7 +48330,7 @@ APR.QuestStepList["1613-Oribos (Bastion-Maldraxxus)"] = {
 			["y"] = -1874.9,
 			["x"] = 1283.5,
 		},
-		["ExtraLineText"] = "Use Telepad",
+		["ExtraLineText"] = "USE_TELEPORT",
 		["Range"] = 3.37,
 		["TT"] = {
 			["y"] = -1874.9,
@@ -49578,7 +49578,7 @@ APR.QuestStepList["1670-Oribos (Maw-Maldraxxus)"] = {
 			["y"] = -1875,
 			["x"] = 1283.8,
 		},
-		["ExtraLineText"] = "Use Teleporter",
+		["ExtraLineText"] = "USE_TELEPORT",
 		["Range"] = 5.15,
 		["TT"] = {
 			["y"] = -1875,
@@ -49591,7 +49591,7 @@ APR.QuestStepList["1670-Oribos (Maw-Maldraxxus)"] = {
 			["y"] = -1981,
 			["x"] = 1149.8,
 		},
-		["ExtraLineText"] = "Use Gate to Maldraxxus",
+		["ExtraLineText"] = "USE_GATE_MALDRAXXUS",
 		["Range"] = 79.19,
 		["TT"] = {
 			["y"] = -1756.5,
@@ -49728,7 +49728,7 @@ APR.QuestStepList["1671-Oribos (Ardenweald-Revendreth)"] = {
 			["y"] = -1890,
 			["x"] = 1752,
 		},
-		["ExtraLineText"] = "Use Portal",
+		["ExtraLineText"] = "USE_PORTAL",
 		["Range"] = 103.13,
 		["TT"] = {
 			["y"] = -1833.5,
@@ -49857,7 +49857,7 @@ APR.QuestStepList["1670-Oribos (Maldraxxus-Ardenweald)"] = {
 			["y"] = -1875.9,
 			["x"] = 1284.2,
 		},
-		["ExtraLineText"] = "Go upstairs",
+		["ExtraLineText"] = "UPSTAIRS",
 		["Range"] = 4.23,
 		["TT"] = {
 			["y"] = -1875.9,
@@ -49886,7 +49886,7 @@ APR.QuestStepList["1670-Oribos (Maldraxxus-Ardenweald)"] = {
 			["y"] = -2386.5,
 			["x"] = 1179.2,
 		},
-		["ExtraLineText"] = "Use Gate",
+		["ExtraLineText"] = "USE_GATE",
 		["Range"] = 78.23,
 		["TT"] = {
 			["y"] = -1948,

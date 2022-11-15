@@ -2141,7 +2141,7 @@
 				["y"] = -1716.5,
 				["x"] = 1457,
 			},
-			["ExtraLineText"] = "Go Upstairs",
+			["ExtraLineText"] = "UPSTAIRS",
 			["Range"] = 14.05,
 			["TT"] = {
 				["y"] = -1716.5,
@@ -7529,7 +7529,7 @@
 				["y"] = -10952.7,
 				["x"] = 1496.3,
 			},
-			["ExtraLineText"] = "Upstairs",
+			["ExtraLineText"] = "UPSTAIRS",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = -10952.7,
@@ -7751,7 +7751,7 @@
 			["Button"] = {
 				["26320-1"] = 58147,
 			},
-			["ExtraLineText"] = "Use qitem inside dungeon",
+			["ExtraLineText"] = "USE_QITEM_DUNGEON",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = -11206,
@@ -8277,7 +8277,7 @@
 			["Done"] = {
 				27600, -- [1]
 			},
-			["ExtraLineText"] = "Use cannon to get back",
+			["ExtraLineText"] = "USE_CANNON",
 			["TT"] = {
 				["y"] = -10206,
 				["x"] = -4188.5,
@@ -9344,7 +9344,7 @@
 			["Done"] = {
 				25714, -- [1]
 			},
-			["ExtraLineText"] = "Up tower",
+			["ExtraLineText"] = "UP_TOWER",
 			["TT"] = {
 				["y"] = -10994,
 				["x"] = -3507.7,
@@ -9379,7 +9379,7 @@
 			["Done"] = {
 				25716, -- [1]
 			},
-			["ExtraLineText"] = "Up tower",
+			["ExtraLineText"] = "UP_TOWER",
 			["TT"] = {
 				["y"] = -10994.3,
 				["x"] = -3506.7,
@@ -10391,7 +10391,7 @@
 				["y"] = -11234.8,
 				["x"] = -2831.7,
 			},
-			["ExtraLineText"] = "Speak to Deathly Usher",
+			["ExtraLineText"] = "SPEAK_DEATHLY_USHER",
 			["Range"] = 16.35,
 			["TT"] = {
 				["y"] = -11116,
@@ -10997,7 +10997,7 @@
 				["y"] = -7957.9,
 				["x"] = -1896.6,
 			},
-			["ExtraLineText"] = "Talk to Thelaron",
+			["ExtraLineText"] = "TALK_THELARON",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = -7957.9,
@@ -11092,7 +11092,7 @@
 			["Done"] = {
 				28239, -- [1]
 			},
-			["ExtraLineText"] = "Use Disguise",
+			["ExtraLineText"] = "USE_DISGUISE",
 			["TT"] = {
 				["y"] = -8071.9,
 				["x"] = -1892.9,
@@ -11714,7 +11714,7 @@
 				["y"] = -7956.4,
 				["x"] = -2531.5,
 			},
-			["ExtraLineText"] = "Use Disguise",
+			["ExtraLineText"] = "USE_DISGUISE",
 			["Range"] = 16.72,
 			["TT"] = {
 				["y"] = -7956.4,
@@ -12209,7 +12209,7 @@
 				["y"] = -5601.3,
 				["x"] = -530.8,
 			},
-			["ExtraLineText"] = "Buy Malt off innkeeper",
+			["ExtraLineText"] = "BUY_MALT_OFF_INNKEEPER",
 			["Range"] = 0.61,
 			["TT"] = {
 				["y"] = -5601.3,
@@ -12898,7 +12898,7 @@
 				["y"] = -5786.4,
 				["x"] = -1241.5,
 			},
-			["ExtraLineText"] = "use /whistle on rams",
+			["ExtraLineText"] = "USE_WHISTLE_ON_RAMS",
 			["Range"] = 73.72,
 			["TT"] = {
 				["y"] = -5786.4,
@@ -14211,7 +14211,7 @@
 				["y"] = -5527.5,
 				["x"] = -3356.5,
 			},
-			["ExtraLineText"] = "Open Cannery bag, use Disguise and Tagg Mosshide",
+			["ExtraLineText"] = "CANNERY_BAG_DISGUISE",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = -5527.5,
@@ -16722,7 +16722,7 @@
 				["y"] = -1629.3,
 				["x"] = -2860.9,
 			},
-			["ExtraLineText"] = "Find the Curier along road",
+			["ExtraLineText"] = "FIND_CURIER",
 			["Range"] = 0.61,
 			["TT"] = {
 				["y"] = -1629.3,
@@ -17161,7 +17161,7 @@
 				["y"] = -2233.9,
 				["x"] = -1662.3,
 			},
-			["ExtraLineText"] = "Equip goggles and find gems",
+			["ExtraLineText"] = "EQUIP_GOGGLES",
 			["Range"] = 134.92,
 			["TT"] = {
 				["y"] = -2233.9,
@@ -19539,7 +19539,7 @@
 			},
 		}, -- [12]
 		{
-			["ExtraLine"] = 125,
+			["ExtraLineText"] = "NPC_ZENKIKI",
 			["Trigger"] = {
 				["y"] = 1825.3,
 				["x"] = -1902.3,
@@ -20542,7 +20542,7 @@
 				},
 			},
 			["Gossip"] = 1,
-			["ExtraLine"] = 42,
+			["ExtraLineText"] = "NPC_TOP_TOWER",
 			["Trigger"] = {
 				["y"] = 2839.3,
 				["x"] = -1553.5,
@@ -21111,7 +21111,7 @@
 			},
 		}, -- [5]
 		{
-		["ExtraLine"] = 42,
+		["ExtraLineText"] = "NPC_TOP_TOWER",
 			["Qpart"] = {
 				[27381] = {
 					["1"] = "1",
@@ -21283,7 +21283,7 @@
 				["y"] = 1435.9,
 				["x"] = -3667,
 			},
-			["ExtraLine"] = 54,
+			["ExtraLineText"] = "LOOT_PAMELA_HEAD",
 			["Qpart"] = {
 				[27384] = {
 					["1"] = "1",
@@ -21383,7 +21383,7 @@
 			},
 		}, -- [5]
 		{
-			["ExtraLine"] = 42,
+			["ExtraLineText"] = "NPC_TOP_TOWER",
 			["TT"] = {
 				["y"] = 1859,
 				["x"] = -3727.7,
@@ -21840,7 +21840,7 @@
 			},
 		}, -- [3]
 		{
-			["ExtraLine"] = 42,
+			["ExtraLineText"] = "NPC_TOP_TOWER",
 			["PickUp"] = {
 				27450, -- [1]
 			},
@@ -21964,7 +21964,7 @@
 			},
 		}, -- [5]
 		{
-			["ExtraLine"] = 55,
+			["ExtraLineText"] = "USE_DISGUISE",
 			["Qpart"] = {
 				[27454] = {
 					["1"] = "1",
@@ -22010,7 +22010,7 @@
 			},
 		}, -- [1]
 		{
-			["ExtraLine"] = 42,
+			["ExtraLineText"] = "NPC_TOP_TOWER",
 			["Done"] = {
 				27450, -- [1]
 			},
@@ -23788,7 +23788,7 @@
 			},
 		}, -- [8]
 		{
-			["ExtraLine"] = 56,
+			["ExtraLineText"] = "PLACE_LIGHTWELLS",
 			["Qpart"] = {
 				[27530] = {
 					["1"] = "1",
@@ -26060,7 +26060,7 @@
 			["PickUp"] = {
 				26503, -- [1]
 			},
-			["ExtraLine"] = 42,
+			["ExtraLineText"] = "NPC_TOP_TOWER",
 			["TT"] = {
 				["y"] = -9623.5,
 				["x"] = -1872,
@@ -26597,7 +26597,7 @@
 			},
 		}, -- [25]
 		{
-			["ExtraLine"] = 37,
+			["ExtraLineText"] = "USE_ORB_CANYON_ETTIN",
 			["Qpart"] = {
 				[26520] = {
 					["1"] = "1",
@@ -27501,7 +27501,7 @@
 					["1"] = "1",
 				},
 			},
-			["ExtraLine"] = 38,
+			["ExtraLineText"] = "GET_KEY_CAVE",
 			["Trigger"] = {
 				["y"] = -9821,
 				["x"] = -3264,
@@ -29560,7 +29560,7 @@
 				["y"] = -6765,
 				["x"] = -1532,
 			},
-			["ExtraLineText"] = "Kill Dark irons untill boss spawns",
+			["ExtraLineText"] = "KILL_DARK_IRONS",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = -6765,
@@ -33367,7 +33367,7 @@
 				["y"] = -14347.8,
 				["x"] = 48.7,
 			},
-			["ExtraLineText"] = "Gorlash patrolls",
+			["ExtraLineText"] = "GORLASH_PATROLLS",
 			["Range"] = 50.12,
 			["TT"] = {
 				["y"] = -14347.8,

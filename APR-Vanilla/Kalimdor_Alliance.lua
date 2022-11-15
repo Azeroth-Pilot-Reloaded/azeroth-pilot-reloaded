@@ -3874,7 +3874,7 @@
 				["y"] = -2521.9,
 				["x"] = -12299.3,
 			},
-			["ExtraLineText"] = "Kill Bristlelimbs to summon Chief",
+			["ExtraLineText"] = "KILL_BRISTLELIMBS",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = -2521.9,
@@ -4261,7 +4261,7 @@
 				["y"] = -2101.4,
 				["x"] = -11307.8,
 			},
-			["ExtraLineText"] = "Kill Blood elves",
+			["ExtraLineText"] = "KILL_BLOOD_ELVES",
 			["Range"] = 41.48,
 			["TT"] = {
 				["y"] = -2101.4,
@@ -4443,7 +4443,7 @@
 				["y"] = -1703,
 				["x"] = -12162.3,
 			},
-			["ExtraLineText"] = "Kill naga",
+			["ExtraLineText"] = "KILL_NAGA",
 			["Range"] = 100.32,
 			["TT"] = {
 				["y"] = -1703,
@@ -5518,7 +5518,7 @@
 			["PickUp"] = {
 				9672,
 			},
-			["ExtraLineText"] = "pick up letter from mail",
+			["ExtraLineText"] = "PICK_UP_LETTER",
 			["TT"] = {
 				["y"] = -2043.9,
 				["x"] = -11873.2,
@@ -6315,7 +6315,7 @@
 				["y"] = 6541.2,
 				["x"] = 241.1,
 			},
-			["ExtraLineText"] = "Click Essence on ground",
+			["ExtraLineText"] = "CLICK_ESSENCE",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = 6541.2,
@@ -8508,7 +8508,7 @@
 				["y"] = 3103.4,
 				["x"] = 145.4,
 			},
-			["ExtraLineText"] = "Upstairs",
+			["ExtraLineText"] = "UPSTAIRS",
 			["Button"] = {
 				["13626-2"] = 45044,
 			},
@@ -8737,7 +8737,7 @@
 		}, -- [41]
 		{
 			["CRange"] = 13646,
-			["ExtraLineText"] = "Talk to Sentinel Avana",
+			["ExtraLineText"] = "TALK_SENTINEL_AVANA",
 			["Trigger"] = {
 				["y"] = 3023,
 				["x"] = -50.3,
@@ -8863,7 +8863,7 @@
 				["y"] = 2740.8,
 				["x"] = -333.4,
 			},
-			["ExtraLineText"] = "Use Astranaar Thrower",
+			["ExtraLineText"] = "USE_ASTRANAAR_THROWER",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 2740.8,
@@ -9058,7 +9058,7 @@
 				["y"] = 2163.5,
 				["x"] = -961.8,
 			},
-			["ExtraLineText"] = "Kill Painmaster on the wagon",
+			["ExtraLineText"] = "KILL_PAINMASTER",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = 2163.5,
@@ -9234,7 +9234,7 @@
 				},
 			},
 			["Gossip"] = 1,
-			["ExtraLineText"] = "Talk to Halannia",
+			["ExtraLineText"] = "TALK_HALANNIA",
 			["Trigger"] = {
 				["y"] = 2710.8,
 				["x"] = -1889.9,
@@ -10815,7 +10815,7 @@
 				["y"] = 3178.1,
 				["x"] = -223.2,
 			},
-			["ExtraLineText"] = "Drops from Thistlefurs",
+			["ExtraLineText"] = "DROPS_FROM_THISTLEFURS",
 			["DropQuest"] = 13868,
 			["DroppableQuest"] = {
 				["Text"] = "Thistlefur Avenger",
@@ -11360,7 +11360,7 @@
 				["y"] = 4176.5,
 				["x"] = -684.7,
 			},
-			["ExtraLineText"] = "Use Phaseblood Potion on Mark",
+			["ExtraLineText"] = "USE_PHASEBLOOD_POTION",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = 4176.5,
@@ -11431,7 +11431,7 @@
 				["y"] = 4576.3,
 				["x"] = -388.4,
 			},
-			["ExtraLineText"] = "Use the Claw",
+			["ExtraLineText"] = "USE_CLAW",
 			["SpellTrigger"] = 88697,
 			["Range"] = 0.61,
 			["TT"] = {
@@ -12364,7 +12364,7 @@
 				["x"] = -871.5,
 			},
 			["SpellTrigger"] = 89402,
-			["ExtraLineText"] = "Fill the Vial",
+			["ExtraLineText"] = "FILL_VIAL",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = 6090.3,
@@ -13349,7 +13349,7 @@
 				["y"] = 6815.7,
 				["x"] = -2469.2,
 			},
-			["ExtraLineText"] = "Kill Winterfall mobs",
+			["ExtraLineText"] = "KILL_WINTERFALL_MOBS",
 			["DropQuest"] = 28656,
 			["DroppableQuest"] = {
 				["Text"] = "Winterfall Totemic",
@@ -15180,7 +15180,7 @@
 				["y"] = 2163.5,
 				["x"] = -961.8,
 			},
-			["ExtraLineText"] = "Kill Painmaster on the wagon",
+			["ExtraLineText"] = "KILL_PAINMASTER",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = 2163.5,
@@ -16827,7 +16827,7 @@
 				["y"] = 1955.4,
 				["x"] = 1500.2,
 			},
-			["ExtraLineText"] = "Use Glaive Thrower",
+			["ExtraLineText"] = "USE_GLAIVE_THROWER",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = 1955.4,
@@ -18110,7 +18110,7 @@
 					["1"] = "1",
 				},
 			},
-			["ExtraLineText"] = "Kill Sapper",
+			["ExtraLineText"] = "KILL_SAPPER",
 			["Trigger"] = {
 				["y"] = -3197.7,
 				["x"] = -2177,
@@ -20166,7 +20166,7 @@
 				["y"] = -2736.7,
 				["x"] = -4445.8,
 			},
-			["ExtraLineText"] = "Salvage floating debris",
+			["ExtraLineText"] = "SALVAGE_FLOATING_DEBRIS",
 			["Range"] = 147.06,
 			["TT"] = {
 				["y"] = -2736.7,
@@ -20660,7 +20660,7 @@
 				["y"] = 96.5,
 				["x"] = 1523.8,
 			},
-			["ExtraLineText"] = "Use Mount",
+			["ExtraLineText"] = "USE_MOUNT",
 			["Range"] = 87.9,
 			["TT"] = {
 				["y"] = 171.9,
@@ -21088,7 +21088,7 @@
 						["1"] = "1",
 					},
 				},
-				["ExtraLineText"] = "Loot skulls in room and summon",
+				["ExtraLineText"] = "LOOT_SKULLS_AND_SUMMON",
 				["Range"] = 0.69,
 				["TT"] = {
 					["y"] = -347.3,
@@ -23846,7 +23846,7 @@
 				["y"] = -5270.4,
 				["x"] = 274,
 			},
-			["ExtraLineText"] = "Flying around the forest",
+			["ExtraLineText"] = "FLYING_AROUND_THE_FOREST",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = -5270.4,
@@ -24347,7 +24347,7 @@
 			["Button"] = {
 				["25517-1"] = 54746,
 			},
-			["ExtraLineText"] = "Buy a Bottle of Grog",
+			["ExtraLineText"] = "BUY_BOTTLE_OF_GROG",
 			["Trigger"] = {
 				["y"] = -6160,
 				["x"] = -3798.7,
@@ -24401,7 +24401,7 @@
 				["y"] = -6168.3,
 				["x"] = -3935.7,
 			},
-			["ExtraLineText"] = "Get Crowbar from Treasure hunters",
+			["ExtraLineText"] = "GET_CROWBAR",
 			["Range"] = 0.69,
 			["TT"] = {
 				["y"] = -6168.3,
@@ -25261,7 +25261,7 @@
 				["y"] = -6667.3,
 				["x"] = -4219.7,
 			},
-			["ExtraLineText"] = "Click Portal",
+			["ExtraLineText"] = "USE_PORTAL",
 			["Range"] = 57.74,
 			["TT"] = {
 				["y"] = -6083.9,
@@ -25293,7 +25293,7 @@
 				["y"] = -6088.4,
 				["x"] = -4692.3,
 			},
-			["ExtraLineText"] = "Use Portal",
+			["ExtraLineText"] = "USE_PORTAL",
 			["Range"] = 19.45,
 			["TT"] = {
 				["y"] = -6669.3,
@@ -27770,7 +27770,7 @@
 				["y"] = -8690.5,
 				["x"] = -4071.7,
 			},
-			["ExtraLineText"] = "Mounting de-spawns the swarmer",
+			["ExtraLineText"] = "MOUNTING_DESPAWNS_SWARMER",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = -8690.5,
@@ -28546,7 +28546,7 @@
 				["y"] = -6976.3,
 				["x"] = -2057,
 			},
-			["ExtraLineText"] = "Open quest bag, place meat, use pheromones",
+			["ExtraLineText"] = "PLACE_MEAT",
 			["Range"] = 0.61,
 			["TT"] = {
 				["y"] = -6976.3,
@@ -29409,7 +29409,7 @@
 				["y"] = -6429.9,
 				["x"] = -1749.6,
 			},
-			["ExtraLineText"] = "Loot Coconut",
+			["ExtraLineText"] = "LOOT_COCONUT",
 			["Range"] = 0.75,
 			["TT"] = {
 				["y"] = -6429.9,
@@ -29790,7 +29790,7 @@
 				["y"] = -7372.9,
 				["x"] = -707,
 			},
-			["ExtraLineText"] = "Let Maxomillian pray to Furys",
+			["ExtraLineText"] = "MAXOMILLIAN_PRAY",
 			["Range"] = 81.89,
 			["TT"] = {
 				["y"] = -7372.9,
@@ -32316,4 +32316,3 @@
 			["ZoneDoneSave"] = 1,
 		}, 
 	}
---end
