@@ -139,6 +139,8 @@ L.USE_DALARAN_HEARTHSTONE = "Utilisez la pierre de foyer de Dalaran";
 L.USE_FLIGHTPATH = "Volez vers";
 L.USE_GARRISON_HEARTHSTONE = "Utilisez la Pierre de foyer de fief";
 L.USE_HEARTHSTONE = "Utilisez votre pierre de foyer";
+L.USE_PORTAL = "Utilisez le portail";
+L.USE_PORTAL_TO = "Utilisez le portail vers";
 L.USE_ITEM = "Utilisez l'objet";
 
 -- TODO - Translate
@@ -361,8 +363,6 @@ L.USE_ITEM = "Utilisez l'objet";
 -- L.USE_MOUNT = "Use Mount";
 -- L.USE_ORB_CANYON_ETTIN = "Use Orb on a Canyon Ettin; then save Oslow";
 -- L.USE_PHASEBLOOD_POTION = "Use Phaseblood Potion on Mark";
--- L.USE_PORTAL = "Use Portal";
--- L.USE_PORTAL_TO = "Use Portal to";
 -- L.USE_QITEM_DUNGEON = "Use quest item inside dungeon";
 -- L.USE_SOULBREAKER = "Use Soulbreaker Traps for extra dmg";
 -- L.USE_SOULSHAPE = "Use Soulshape";
