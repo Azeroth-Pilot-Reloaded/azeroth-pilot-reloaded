@@ -52,7 +52,6 @@ L.BLOODLUST = "Momento de usar Ansia de sangre";
 L.LOA_INFO_1 = "Gonk: Tótems, 40% de velocidad de movimiento 30 seg.";
 L.LOA_INFO_2 = "Pa'Ku: Señora de los Vientos, volar lugares definidos.";
 L.USE_DALARAN_HEARTHSTONE = "Usar Piedra de Hogar de Dalaran";
-L.GO_TO_ORGRIMMAR = "Ir a Orgrimmar";
 L.JUMP_OFF = "Saltar de";
 L.TURN_ON_WARMODE = "Activar Modo Guerra!";
 

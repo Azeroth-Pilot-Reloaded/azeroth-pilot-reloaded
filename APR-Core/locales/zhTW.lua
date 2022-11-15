@@ -44,7 +44,6 @@ L.PICK_ZONE = "選擇地圖";
 
 -- Extra Quest text
 L.BLOODLUST = "開嗜血/英勇的好時機";
-L.GO_TO_ORGRIMMAR = "去奧格瑞瑪";
 L.JUMP_OFF = "跳下";
 L.LOA_INFO_1 = "Gonk圖騰，增加移動速度40%維持30秒";
 L.LOA_INFO_2 = "Pa'ku Waverider，飛往定點";

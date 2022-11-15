@@ -40,8 +40,6 @@ L.PICK_ZONE = "Elegir Zona";
 
 -- Extra Quest text
 L.BLOODLUST = "Momento de usar Ansia de sangre";
-
-L.GO_TO_ORGRIMMAR = "Ir a Orgrimmar";
 L.JUMP_OFF = "Saltar de";
 L.LOA_INFO_1 = "Gonk: Tótems, 40% de velocidad de movimiento 30 seg.";
 L.LOA_INFO_2 = "Pa'Ku: Señora de los Vientos, volar lugares definidos.";

@@ -119,7 +119,6 @@ L.USE_ITEM = "Usar Item";
 -- TODO : L.GO_NORTH_WEST_GARRISON = "Go North West of Garrison";
 -- TODO : L.GO_SINFALL = "Go Into Sinfall";
 -- TODO : L.GO_SOUTH = "Go South";
--- TODO : L.GO_TO_ORGRIMMAR = "Go to Orgrimmar";
 -- TODO : L.GO_WEST = "go West";
 -- TODO : L.GRAB_HEAL_DMG_BUFF = "Grab the healing; haste; and damage buffs (Big Circles)";
 -- TODO : L.GRAB_WEAPON_ON_GROUND = "Grab your weapon on the ground when you're disarmed!";

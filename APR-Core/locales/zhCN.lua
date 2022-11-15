@@ -40,7 +40,6 @@ L.PICK_ZONE = "——选择任务地图";
 
 -- Extra Quest text
 L.BLOODLUST = "——开嗜血的好时机";
-L.GO_TO_ORGRIMMAR = "去奥格瑞玛";
 L.JUMP_OFF = "跳下";
 L.LOA_INFO_1 = "——贡克：图腾，40%秒移动";
 L.LOA_INFO_2 = "——Paku：Wrav骑师，飞定义的地方";

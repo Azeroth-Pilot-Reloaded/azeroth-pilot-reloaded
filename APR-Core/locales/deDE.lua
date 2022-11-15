@@ -43,7 +43,6 @@ L.GET_FLIGHPATH = "Flugpunkt entdecken";
 -- Extra Quest text=
 L.BLOODLUST = "Gute Gelegenheit Hero zu nutzen";
 
-L.GO_TO_ORGRIMMAR = "Reise nach Orgrimmar";
 L.JUMP_OFF = "Spring runter";
 L.LOA_INFO_1 = "Gonk: Totems; 40% Laufgeschwindigkeit 30 Sekunden";
 L.LOA_INFO_2 = "Mithilfe von Pa'ku's Totems zum Zielort gelangen";
