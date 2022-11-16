@@ -702,7 +702,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["USE_ORGRIMMAR_PORTAL"])
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["PahonixMadeMe"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText("TRAIN_RIDING")
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["TRAIN_RIDING"])
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["UseGarrisonHS"]) then
 					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["USE_GARRISON_HEARTHSTONE"])
