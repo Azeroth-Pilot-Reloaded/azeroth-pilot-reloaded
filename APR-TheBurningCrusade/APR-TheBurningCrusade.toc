@@ -1,5 +1,5 @@
-## Interface: 100000
-## X-Min-Interface: 100000
+## Interface: 100002
+## X-Min-Interface: 100002
 
 ## Title: |cffff7d0aAzeroth Pilot Reloaded|r - The Burning Crusade
 ## Notes: Provides The Burning Crusade implementation for Azeroth Pilot Reloaded.
