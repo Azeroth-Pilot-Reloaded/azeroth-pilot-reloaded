@@ -591,10 +591,10 @@ APR.ButtonVisual = nil
 local function APR_SettingsButtons()
 	local CLi
 	for CLi = 1, 3 do
-		local CL_Items, clt2, clt3, clt4, clt5, clt6, clt7, clt8, clt9, CL_ItemTex = GetItemInfo(6948)
-		APR.QuestList2["BF"..CLi]["APR_Buttonptex"]:SetTexture(CL_ItemTex)
-		APR.QuestList2["BF"..CLi]["APR_Buttonntex"]:SetTexture(CL_ItemTex)
-		--APR.QuestList2["BF"..CLi]["APR_Button"]:SetNormalTexture(CL_ItemTex)
+		local itemName, _, _, _, _, _, _, _, _, itemTexture = GetItemInfo(6948)
+		APR.QuestList2["BF"..CLi]["APR_Buttonptex"]:SetTexture(itemTexture)
+		APR.QuestList2["BF"..CLi]["APR_Buttonntex"]:SetTexture(itemTexture)
+		--APR.QuestList2["BF"..CLi]["APR_Button"]:SetNormalTexture(itemTexture)
 		APR.QuestList2["BF"..CLi]["APR_Button"]:SetText("")
 		local Topz = APR1[APR.Realm][APR.Name]["Settings"]["left"]
 		local Topz2 = APR1[APR.Realm][APR.Name]["Settings"]["top"]
@@ -1026,8 +1026,10 @@ local function APR_PrintQStep()
 			LineNr = LineNr + 1
 			local APRExtraLine = steps["ExtraLine"]
 			local APRExtraText = steps["ExtraLineText"]
-			if (steps["ExtraLineText"]) then
+			if (steps["ExtraLineText"] and L[APRExtraText]) then
 				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L[APRExtraText]))
+			else
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(APRExtraText))
 			end
 			if (APRExtraLine == 35) then
 				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["LOA_INFO_1"]))
@@ -1043,7 +1045,7 @@ local function APR_PrintQStep()
 				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["LOA_INFO_2"]))
 			end
 			if (APRExtraLine == 13544) then
-				local CL_Items, itemLink, clt3, clt4, clt5, clt6, clt7, clt8, clt9, CL_ItemTex = GetItemInfo(44886)
+				local itemName, itemLink, _, _, _, _, _, _, _, itemTexture = GetItemInfo(44886)
 				if (itemLink and GetItemCount(itemLink)) then
 					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["KILL_FLEETFOOT"].." "..(".. GetItemCount(itemLink) .."/1))
 					if (GetItemCount(itemLink) and GetItemCount(itemLink) > 0) then
@@ -1054,7 +1056,7 @@ local function APR_PrintQStep()
 				end
 			end
 			if (APRExtraLine == 13595) then
-				local CL_Items, itemLink, clt3, clt4, clt5, clt6, clt7, clt8, clt9, CL_ItemTex = GetItemInfo(44967)
+				local itemName, itemLink, _, _, _, _, _, _, _, itemTexture = GetItemInfo(44967)
 				if (itemLink and GetItemCount(itemLink)) then
 					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["LOOT_WILDFIRE_BOTTLE"].." "..(".. GetItemCount(itemLink) .."/1))
 					if (GetItemCount(itemLink) and GetItemCount(itemLink) > 0) then
@@ -1133,7 +1135,7 @@ local function APR_PrintQStep()
 				end
 			end
 			if (APRExtraLine == 27237) then
-				local CL_Items, itemLink, clt3, clt4, clt5, clt6, clt7, clt8, clt9, CL_ItemTex = GetItemInfo(33044)
+				local itemName, itemLink, _, _, _, _, _, _, _, itemTexture = GetItemInfo(33044)
 				if (itemLink and GetItemCount(itemLink)) then
 					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["OPEN_BAG"])
 					if (GetItemCount(itemLink) and GetItemCount(itemLink) > 0) then
@@ -1998,13 +2000,13 @@ function APR.SetButton()
 							print(APR_index)
 						end
 						if (APR_index2 == APR_index or steps["UseHS"] or steps["UseGarrisonHS"]) then
-							local CL_Items, itemLink, clt3, clt4, clt5, clt6, clt7, clt8, clt9, CL_ItemTex = GetItemInfo(APR_value)
-							if (CL_Items and string.sub(CL_Items, 1, 1) and CL_ItemTex) then
+							local itemName, itemLink, _, _, _, _, _, _, _, itemTexture = GetItemInfo(APR_value)
+							if (itemName and string.sub(itemName, 1, 1) and itemTexture) then
 								HideVar[APR_value2] = APR_value2
 								APR.ButtonList[APR_index] = APR_value2
-								APR.QuestList2["BF"..APR_value2]["APR_Buttonptex"]:SetTexture(CL_ItemTex)
-								APR.QuestList2["BF"..APR_value2]["APR_Buttonntex"]:SetTexture(CL_ItemTex)
-								APR.QuestList2["BF"..APR_value2]["APR_Button"]:SetNormalTexture(CL_ItemTex)
+								APR.QuestList2["BF"..APR_value2]["APR_Buttonptex"]:SetTexture(itemTexture)
+								APR.QuestList2["BF"..APR_value2]["APR_Buttonntex"]:SetTexture(itemTexture)
+								APR.QuestList2["BF"..APR_value2]["APR_Button"]:SetNormalTexture(itemTexture)
 								APR.QuestList2["BF"..APR_value2]["APR_Button"]:SetText("")
 								APR.QuestList2["BF"..APR_value2]["APR_Button"]:SetAttribute("type", "item");
 								APR.QuestList2["BF"..APR_value2]["APR_Button"]:SetAttribute("item", "item:"..APR_value);
@@ -2022,24 +2024,24 @@ function APR.SetButton()
 								if (not APR.ButtonVisual) then
 									APR.ButtonVisual = {}
 								end
-								local _, Spellidz = GetItemSpell(APR_value)
-								if (Spellidz) then
-									APR.QuestStepList[APR.ActiveMap][CurStep]["ButtonSpellId"] = { [Spellidz] = APR_index }
+								local _, spellID = GetItemSpell(APR_value)
+								if (spellID) then
+									APR.QuestStepList[APR.ActiveMap][CurStep]["ButtonSpellId"] = { [spellID] = APR_index }
 								end
 								APR.ButtonVisual[APR_value2] = APR_value2
 								local isFound, macroSlot = APR.MacroFinder()
 								if isFound and macroSlot then
 									if (steps and steps["SpecialDubbleMacro"]) then
 										if (not APR.DubbleMacro[1]) then
-											APR.DubbleMacro[1] = CL_Items
+											APR.DubbleMacro[1] = itemName
 										elseif (APR.DubbleMacro and APR.DubbleMacro[1] and not APR.DubbleMacro[2]) then
-											APR.DubbleMacro[2] = CL_Items
+											APR.DubbleMacro[2] = itemName
 										end
 									else
 										APR.DubbleMacro = nil
 										APR.DubbleMacro = {}
 									end
-									APR.MacroUpdater(macroSlot, CL_Items)
+									APR.MacroUpdater(macroSlot, itemName)
 								end
 							end
 						end
@@ -2051,13 +2053,13 @@ function APR.SetButton()
 					end
 				end
 				if (APR.Dinged100 == 1 and APR.Dinged100nr > 0) then
-					local CL_Items, clt2, clt3, clt4, clt5, clt6, clt7, clt8, clt9, CL_ItemTex = GetItemInfo(6948)
-					if (CL_Items and string.sub(CL_Items, 1, 1) and CL_ItemTex) then
+					local itemName, _, _, _, _, _, _, _, _, itemTexture = GetItemInfo(6948)
+					if (itemName and string.sub(itemName, 1, 1) and itemTexture) then
 						HideVar[APR.Dinged100nr] = APR.Dinged100nr
 						APR.ButtonList[123451234] = APR.Dinged100nr
-						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Buttonptex"]:SetTexture(CL_ItemTex)
-						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Buttonntex"]:SetTexture(CL_ItemTex)
-						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Button"]:SetNormalTexture(CL_ItemTex)
+						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Buttonptex"]:SetTexture(itemTexture)
+						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Buttonntex"]:SetTexture(itemTexture)
+						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Button"]:SetNormalTexture(itemTexture)
 						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Button"]:SetText("")
 						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Button"]:SetAttribute("type", "item");
 						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Button"]:SetAttribute("item", "item:6948");
@@ -2076,15 +2078,15 @@ function APR.SetButton()
 						if isFound and macroSlot then
 							if (steps and steps["SpecialDubbleMacro"]) then
 								if (not APR.DubbleMacro[1]) then
-									APR.DubbleMacro[1] = CL_Items
+									APR.DubbleMacro[1] = itemName
 								elseif (APR.DubbleMacro and APR.DubbleMacro[1] and not APR.DubbleMacro[2]) then
-									APR.DubbleMacro[2] = CL_Items
+									APR.DubbleMacro[2] = itemName
 								end
 							else
 								APR.DubbleMacro = nil
 								APR.DubbleMacro = {}
 							end
-							APR.MacroUpdater(macroSlot, CL_Items)
+							APR.MacroUpdater(macroSlot, itemName)
 						end
 					end
 				end
@@ -2095,12 +2097,12 @@ function APR.SetButton()
 					end
 				end
 				if (APR.Dinged100 == 1 and APR.Dinged100nr > 0) then
-					local CL_Items, clt2, clt3, clt4, clt5, clt6, clt7, clt8, clt9, CL_ItemTex = GetItemInfo(6948)
-					if (CL_Items and string.sub(CL_Items, 1, 1) and CL_ItemTex) then
+					local itemName, _, _, _, _, _, _, _, _, itemTexture = GetItemInfo(6948)
+					if (itemName and string.sub(itemName, 1, 1) and itemTexture) then
 						APR.ButtonList[123451234] = APR.Dinged100nr
-						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Buttonptex"]:SetTexture(CL_ItemTex)
-						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Buttonntex"]:SetTexture(CL_ItemTex)
-						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Button"]:SetNormalTexture(CL_ItemTex)
+						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Buttonptex"]:SetTexture(itemTexture)
+						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Buttonntex"]:SetTexture(itemTexture)
+						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Button"]:SetNormalTexture(itemTexture)
 						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Button"]:SetText("")
 						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Button"]:SetAttribute("type", "item");
 						APR.QuestList2["BF"..APR.Dinged100nr]["APR_Button"]:SetAttribute("item", "item:6948");
@@ -2119,7 +2121,7 @@ function APR.SetButton()
 						if isFound and macroSlot then
 							APR.DubbleMacro = nil
 							APR.DubbleMacro = {}
-							APR.MacroUpdater(macroSlot, CL_Items)
+							APR.MacroUpdater(macroSlot, itemName)
 						end
 					end
 				end
@@ -2283,18 +2285,14 @@ function APR.MacroFinder()
 	if (APR1["Debug"]) then
 		print("Function: APR.MacroFinder()")
 	end
-	local found = false
 	local global, character = GetNumMacros()
 	for i=1, global do
 		local name = GetMacroInfo(i)
 		if name == "APR_MACRO" then
-			found = true
 			return true, i
 		end
 	end
-	if not found then
-		return false, nil
-	end
+	return false, nil
 end
 function APR.CreateMacro()
 	if InCombatLockdown() then
@@ -2357,8 +2355,8 @@ function APR.GliderFunc()
 		local bag, slot, itemLink, itemName, count
 		local DerpGot = 0
 		for bag = 0,4 do
-			for slot = 1,GetContainerNumSlots(bag) do
-				local itemID = GetContainerItemID(bag, slot)
+			for slot = 1,C_Container.GetContainerNumSlots(bag) do
+				local itemID = C_Container.GetContainerItemID(bag, slot)
 				if (itemID and itemID == 109076) then
 					DerpGot = 1
 					itemLink = GetContainerItemLink(bag,slot)
@@ -2958,16 +2956,11 @@ local function APR_InstanceTest()
 	local inInstance, instanceType = IsInInstance()
 	if (inInstance) then
 		local name, type, difficultyIndex, difficultyName, maxPlayers, dynamicDifficulty, isDynamic, instanceMapId, lfgID = GetInstanceInfo()
-		if (instanceMapId == 1760) then
-			return 0
-		elseif (instanceMapId == 1904) then
-			return 0
-		else
+		if (not instanceMapId == 1760 or not instanceMapId == 1904) then
 			return 1
 		end
-	else
-		return 0
 	end
+	return 0
 end
 function APR.GroupListingFunc(APR_StepStuffs, APR_GListName)
 	if (not APR.GroupListSteps[1]) then
@@ -3253,7 +3246,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
 			steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		end
-		local Choizs = C_PlayerChoice.GetCurrentPlayerChoiceInfo ()
+		local Choizs = C_PlayerChoice.GetCurrentPlayerChoiceInfo()
 		if (Choizs) then
 			local choiceID = Choizs["choiceID"]
 			local questionText = Choizs["questionText"]
@@ -3288,19 +3281,21 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				end
 			end
 		end
-		if (numOptions and numOptions > 1 and steps and steps["PickUpSpecial"]) then
-			local CLi
-			for CLi = 1, numOptions do
-				local optionID, buttonText, description, artFile = GetQuestChoiceOptionInfo(CLi)
-				if (steps["PickUpSpecial"] == optionID) then
-					SendQuestChoiceResponse(GetQuestChoiceOptionInfo(CLi))
-					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
-					APR.BookingList["UpdateQuest"] = 1
-					APR.BookingList["PrintQStep"] = 1
-					break
-				end
-			end
-		end
+		-- steps["PickUpSpecial"] is never used
+		--
+		-- if (numOptions and numOptions > 1 and steps and steps["PickUpSpecial"]) then
+		-- 	local CLi
+		-- 	for CLi = 1, numOptions do
+		-- 		local optionID, buttonText, description, artFile = GetQuestChoiceOptionInfo(CLi)
+		-- 		if (steps["PickUpSpecial"] == optionID) then
+		-- 			SendQuestChoiceResponse(GetQuestChoiceOptionInfo(CLi))
+		-- 			APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
+		-- 			APR.BookingList["UpdateQuest"] = 1
+		-- 			APR.BookingList["PrintQStep"] = 1
+		-- 			break
+		-- 		end
+		-- 	end
+		-- end
 	end
 	if (event=="UNIT_ENTERED_VEHICLE") then
 		local arg1, arg2, arg3, arg4, arg5 = ...;
@@ -3487,14 +3482,14 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoVendor"] == 1) then
 			local APRtotal = 0
 			for myBags = 0,4 do
-				for bagSlots = 1, GetContainerNumSlots(myBags) do
-					local CurrentItemLink = GetContainerItemLink(myBags, bagSlots)
-					if CurrentItemLink then
-						local _, _, itemRarity, _, _, _, _, _, _, _, itemSellPrice = GetItemInfo(CurrentItemLink)
-						local _, itemCount = GetContainerItemInfo(myBags, bagSlots)
-						if itemRarity == 0 and itemSellPrice ~= 0 then
-							APRtotal = APRtotal + (itemSellPrice * itemCount)
-							UseContainerItem(myBags, bagSlots)
+				for bagSlots = 1, C_Container.GetContainerNumSlots(myBags) do
+					local CurrentItemId = C_Container.GetContainerItemID(myBags, bagSlots)
+					if CurrentItemId then
+						local _, _, itemQuality, _, _, _, _, _, _, _, sellPrice = GetItemInfo(CurrentItemId)
+						local itemInfo = C_Container.GetContainerItemInfo(myBags, bagSlots)
+						if itemQuality == 0 and sellPrice > 0 and itemInfo.stackCount > 0 then
+							APRtotal = APRtotal + (sellPrice * itemInfo.stackCount)
+							C_Container.UseContainerItem(myBags, bagSlots)
 						end
 					end
 				end
@@ -3963,26 +3958,29 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				local APR_GearIlvlList = {}
 				for slots2 = 0,18 do
 					if (GetInventoryItemLink("player", slots2)) then
-						local _, _, itemRarity, itemLevel, _, _, _, _, SpotName = GetItemInfo(GetInventoryItemLink("player", slots2))
-						if (itemRarity == 7) then
+						local _, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc = GetItemInfo(GetInventoryItemLink("player", slots2))
+						local _, _, itemQuality, itemLevel, _, _, _,_, itemEquipLoc, itemTexture, sellPrice, classID, subclassID, bindType,
+expacID, setID, isCraftingReagent
+    = GetItemInfo(item) 
+						if (itemQuality == 7) then
 							itemLevel = GetDetailedItemLevelInfo(GetInventoryItemLink("player", slots2))
 						end
-						if (SpotName and itemLevel) then
-							if (SpotName == "INVTYPE_WEAPONOFFHAND") then
-								SpotName = "INVTYPE_WEAPON"
+						if (itemEquipLoc and itemLevel) then
+							if (itemEquipLoc == "INVTYPE_WEAPONOFFHAND") then
+								itemEquipLoc = "INVTYPE_WEAPON"
 							end
-							if (SpotName == "INVTYPE_WEAPONMAINHAND") then
-								SpotName = "INVTYPE_WEAPON"
+							if (itemEquipLoc == "INVTYPE_WEAPONMAINHAND") then
+								itemEquipLoc = "INVTYPE_WEAPON"
 							end
-							if (SpotName == "INVTYPE_WEAPON" or SpotName == "INVTYPE_SHIELD" or SpotName == "INVTYPE_2HWEAPON" or SpotName == "INVTYPE_WEAPONMAINHAND" or SpotName == "INVTYPE_WEAPONOFFHAND" or SpotName == "INVTYPE_HOLDABLE" or SpotName == "INVTYPE_RANGED" or SpotName == "INVTYPE_THROWN" or SpotName == "INVTYPE_RANGEDRIGHT" or SpotName == "INVTYPE_RELIC") then
-								SpotName = "INVTYPE_WEAPON"
+							if (itemEquipLoc == "INVTYPE_WEAPON" or itemEquipLoc == "INVTYPE_SHIELD" or itemEquipLoc == "INVTYPE_2HWEAPON" or itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or itemEquipLoc == "INVTYPE_HOLDABLE" or itemEquipLoc == "INVTYPE_RANGED" or itemEquipLoc == "INVTYPE_THROWN" or itemEquipLoc == "INVTYPE_RANGEDRIGHT" or itemEquipLoc == "INVTYPE_RELIC") then
+								itemEquipLoc = "INVTYPE_WEAPON"
 							end
-							if (APR_GearIlvlList[SpotName]) then
-								if (APR_GearIlvlList[SpotName] > itemLevel) then
-									APR_GearIlvlList[SpotName] = itemLevel
+							if (APR_GearIlvlList[itemEquipLoc]) then
+								if (APR_GearIlvlList[itemEquipLoc] > itemLevel) then
+									APR_GearIlvlList[itemEquipLoc] = itemLevel
 								end
 							else
-								APR_GearIlvlList[SpotName] = itemLevel
+								APR_GearIlvlList[itemEquipLoc] = itemLevel
 							end
 						end
 					end
@@ -3991,25 +3989,25 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				local isweaponz = 0
 				local APRColorof = 0
 				for h=1, GetNumQuestChoices() do
-					local _, _, ItemRarityz, _, _, _, _, _, SpotName = GetItemInfo(GetQuestItemLink("choice", h))
+					local _, _, itemQuality, _, _, _, _, _, itemEquipLoc = GetItemInfo(GetQuestItemLink("choice", h))
 					local ilvl = GetDetailedItemLevelInfo(GetQuestItemLink("choice", h))
-					if (SpotName == "INVTYPE_WEAPONOFFHAND") then
-						SpotName = "INVTYPE_WEAPON"
+					if (itemEquipLoc == "INVTYPE_WEAPONOFFHAND") then
+						itemEquipLoc = "INVTYPE_WEAPON"
 					end
-					if (SpotName == "INVTYPE_WEAPONMAINHAND") then
-						SpotName = "INVTYPE_WEAPON"
+					if (itemEquipLoc == "INVTYPE_WEAPONMAINHAND") then
+						itemEquipLoc = "INVTYPE_WEAPON"
 					end
-					if (SpotName == "INVTYPE_WEAPON" or SpotName == "INVTYPE_SHIELD" or SpotName == "INVTYPE_2HWEAPON" or SpotName == "INVTYPE_WEAPONMAINHAND" or SpotName == "INVTYPE_WEAPONOFFHAND" or SpotName == "INVTYPE_HOLDABLE" or SpotName == "INVTYPE_RANGED" or SpotName == "INVTYPE_THROWN" or SpotName == "INVTYPE_RANGEDRIGHT" or SpotName == "INVTYPE_RELIC") then
-						SpotName = "INVTYPE_WEAPON"
-						print(SpotName)
+					if (itemEquipLoc == "INVTYPE_WEAPON" or itemEquipLoc == "INVTYPE_SHIELD" or itemEquipLoc == "INVTYPE_2HWEAPON" or itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or itemEquipLoc == "INVTYPE_HOLDABLE" or itemEquipLoc == "INVTYPE_RANGED" or itemEquipLoc == "INVTYPE_THROWN" or itemEquipLoc == "INVTYPE_RANGEDRIGHT" or itemEquipLoc == "INVTYPE_RELIC") then
+						itemEquipLoc = "INVTYPE_WEAPON"
+						print(itemEquipLoc)
 					end
-					if (APR_GearIlvlList[SpotName]) then
-						if (ItemRarityz > 2) then
-							--APRColorof = ItemRarityz
+					if (APR_GearIlvlList[itemEquipLoc]) then
+						if (itemQuality > 2) then
+							--APRColorof = itemQuality
 						end
-						APRTempGearList[h] = ilvl - APR_GearIlvlList[SpotName]
-						print("Qilvl: "..ItemRarityz.." - "..SpotName.." - MySpot: "..APR_GearIlvlList[SpotName])
-						if (SpotName == "INVTYPE_WEAPON" or SpotName == "INVTYPE_SHIELD" or SpotName == "INVTYPE_2HWEAPON" or SpotName == "INVTYPE_WEAPONMAINHAND" or SpotName == "INVTYPE_WEAPONOFFHAND" or SpotName == "INVTYPE_HOLDABLE" or SpotName == "INVTYPE_RANGED" or SpotName == "INVTYPE_THROWN" or SpotName == "INVTYPE_RANGEDRIGHT" or SpotName == "INVTYPE_RELIC") then
+						APRTempGearList[h] = ilvl - APR_GearIlvlList[itemEquipLoc]
+						print("Qilvl: "..itemQuality.." - "..itemEquipLoc.." - MySpot: "..APR_GearIlvlList[itemEquipLoc])
+						if (itemEquipLoc == "INVTYPE_WEAPON" or itemEquipLoc == "INVTYPE_SHIELD" or itemEquipLoc == "INVTYPE_2HWEAPON" or itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or itemEquipLoc == "INVTYPE_HOLDABLE" or itemEquipLoc == "INVTYPE_RANGED" or itemEquipLoc == "INVTYPE_THROWN" or itemEquipLoc == "INVTYPE_RANGEDRIGHT" or itemEquipLoc == "INVTYPE_RELIC") then
 							--isweaponz = 1
 						end
 					end
