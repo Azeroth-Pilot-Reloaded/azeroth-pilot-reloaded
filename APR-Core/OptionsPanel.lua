@@ -342,7 +342,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 			APR.ZoneQuestOrder:Show()
 		else
 			APR1[APR.Realm][APR.Name]["Settings"]["ShowQuestListOrder"] = 0
-			APR.ZoneQuestOrder:Hide()
+			APR.ZoneQuestOrder:Hide() 
 		end
 	end)
 
