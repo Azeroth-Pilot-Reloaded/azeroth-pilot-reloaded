@@ -7760,7 +7760,7 @@
 					["y"] = -8423,
 					["x"] = 1363.3,
 				},
-				["ExtraLine"] = 126,
+				["ExtraLineText"] = "UPSTAIRS",
 				["Done"] = {
 					14116,
 				},
@@ -8091,7 +8091,7 @@
 				},
 			}, -- [72]
 			{
-				["ExtraLine"] = 131,
+				["ExtraLineText"] = "TALK_SASSY",
 				["Done"] = {
 					14126,
 				},
@@ -8702,7 +8702,7 @@
 					["y"] = -8423,
 					["x"] = 1363.3,
 				},
-				["ExtraLine"] = 126,
+				["ExtraLineText"] = "UPSTAIRS",
 				["Done"] = {
 					14116,
 				},
@@ -9033,7 +9033,7 @@
 				},
 			}, -- [72]
 			{
-				["ExtraLine"] = 131,
+				["ExtraLineText"] = "TALK_SASSY",
 				["Done"] = {
 					14126,
 				},
@@ -10742,7 +10742,7 @@
 						["1"] = "1",
 					},
 				},
-				["ExtraLine"] = 131,
+				["ExtraLineText"] = "TALK_SASSY",
 				["Gossip"] = 38872,
 				["Trigger"] = {
 					["y"] = 1619.5,
@@ -11430,7 +11430,7 @@
 					["x"] = 2462.1,
 				},
 				["RaidIcon"] = 38387,
-				["ExtraLine"] = 131,
+				["ExtraLineText"] = "TALK_SASSY",
 				["Done"] = {
 					25266,
 				},
@@ -16088,7 +16088,7 @@
 				["x"] = 1206.5,
 			},
 			["CRange"] = 27045,
-			["ExtraLine"] = 48,
+			["ExtraLineText"] = "NOT_SKIP_VIDEO",
 			["Range"] = 4.69,
 			["TT"] = {
 				["y"] = 1309,
@@ -16097,7 +16097,7 @@
 		}, -- [10]
 		{
 			["Dontskipvid"] = 1,
-			["ExtraLine"] = 48,
+			["ExtraLineText"] = "NOT_SKIP_VIDEO",
 			["Trigger"] = {
 				["y"] = 1315.3,
 				["x"] = 1211.7,
@@ -16732,7 +16732,7 @@
 			},
 		}, -- [5]
 		{
-			["ExtraLine"] = 120,
+			["ExtraLineText"] = "KILL_BLOODFANG_STALKER",
 			["PickUp"] = {
 				27181,
 			},
@@ -17157,7 +17157,7 @@
 				["y"] = 452.8,
 				["x"] = 1465.5,
 			},
-			["ExtraLine"] = 49,
+			["ExtraLineText"] = "DALARAN_CRATER_PORTAL",
 			["Qpart"] = {
 				[27483] = {
 					["1"] = "1",
@@ -17301,7 +17301,7 @@
 			},
 		}, -- [8]
 		{
-			["ExtraLine"] = 51,
+			["ExtraLineText"] = "USE_PORTAL",
 			["Gossip"] = 1,
 			["Trigger"] = {
 				["y"] = -290.5,
@@ -17589,7 +17589,7 @@
 			},
 		},
 		{
-			["ExtraLine"] = 49,
+			["ExtraLineText"] = "DALARAN_CRATER_PORTAL",
 			["Done"] = {
 				27483,
 				27480,
@@ -17800,7 +17800,7 @@
 			},
 		}, -- [7]
 		{
-			["ExtraLine"] = 122,
+			["ExtraLineText"] = "ONLY_ONE_WAIT_NPC",
 			["PickUp"] = {
 				28156,
 			},
@@ -18793,7 +18793,7 @@
 			},
 		}, -- [4]
 		{
-			["ExtraLine"] = 123,
+			["ExtraLineText"] = "TALK_ORKUS",
 			["Gossip"] = 1,
 			["Trigger"] = {
 				["y"] = -1318.5,
@@ -20137,7 +20137,7 @@
 			},
 		}, -- [7]
 		{
-			["ExtraLine"] = 122,
+			["ExtraLineText"] = "ONLY_ONE_WAIT_NPC",
 			["PickUp"] = {
 				28156,
 			},
@@ -21129,7 +21129,7 @@
 			},
 		}, -- [4]
 		{
-			["ExtraLine"] = 123,
+			["ExtraLineText"] = "TALK_ORKUS",
 			["Gossip"] = 1,
 			["Trigger"] = {
 				["y"] = -1318.5,
@@ -22711,7 +22711,7 @@
 			},
 		}, -- [4]
 		{
-			["ExtraLine"] = 124,
+			["ExtraLineText"] = "PUS_PET_ABILITY",
 			["Trigger"] = {
 				["y"] = 1756.8,
 				["x"] = -1214.3,
@@ -22990,7 +22990,7 @@
 			},
 		}, -- [12]
 		{
-			["ExtraLine"] = 125,
+			["ExtraLineText"] = "CLICK_ON_NPC",
 			["Trigger"] = {
 				["y"] = 1825.3,
 				["x"] = -1902.3,
@@ -24023,7 +24023,7 @@
 				["x"] = -1553.5,
 			},
 			["Range"] = 0.75,
-			["ExtraLine"] = 42,
+			["ExtraLineText"] = "NPC_TOP_TOWER",
 			["TT"] = {
 				["y"] = 2839.3,
 				["x"] = -1553.5,

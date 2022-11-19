@@ -911,7 +911,7 @@ local function APR_PrintQStep()
 		if (steps["Bloodlust"] and APR.ZoneTransfer == 0) then
 			if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1) then
 				LineNr = LineNr + 1
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["Bloodlust"]))
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["BLOODLUST"]))
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 				local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -994,33 +994,39 @@ local function APR_PrintQStep()
 			end
 		end
 
-		function DisplayRiding(text) 
-			APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(text))
-			APR.QuestList.QuestFrames[LineNr]:Show()
-		end
-		if (APR.Level >= 40 and not GetSpellBookItemInfo(GetSpellInfo(90265))) then
-			LineNr = LineNr + 1
-			DisplayRiding(L["YOU_CAN_LEARN"].." "..L["MASTER_RIDING"])
-		end
-		if (APR.Level >= 30 and not GetSpellBookItemInfo(GetSpellInfo(34090))) then
-			LineNr = LineNr + 1
-			local ridingText
-			if (APR.Faction == "Alliance" and APR.ActiveMap and APR.ActiveMap == "A543-DesMephisto-Gorgrond") then
-				ridingText = L["USE_HEARTHSTONE"].." "..L["GO_TO"].." Stormwind, "..L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING"]
-			elseif (APR.Faction == "Horde" and APR.ActiveMap and APR.ActiveMap == "543-DesMephisto-Gorgrond-p1") then
-				ridingText = L["USE_HEARTHSTONE"].." "..L["GO_TO"].." Orgrimmar, "..L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING"]
-			else
-				ridingText = L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING"]
+		function DisplayRiding(text)
+			if(not APR1[APR.Realm][APR.Name]["hideRidingSkill"] or APR1[APR.Realm][APR.Name]["hideRidingSkill"] == 0) then
+				LineNr = LineNr + 1
+				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(text))
+				--skip waypoint button 
+				-- TODO : fix display button
+				AddQuestListButton(L["SKIP_BUTTON"], LineNr, function(self, button)
+					APR1[APR.Realm][APR.Name]["hideRidingSkill"] = 1
+					APR.QuestList.QuestFrames["FS"..LineNr].Button:Hide()
+					APR.QuestList.QuestFrames[LineNr]:Hide()
+				end)
+				APR.QuestList.QuestFrames[LineNr]:Show()
 			end
-			DisplayRiding(ridingText)
 		end
-		if (APR.Level >= 20 and not GetSpellBookItemInfo(GetSpellInfo(33391))) then
-			LineNr = LineNr + 1
-			DisplayRiding(L["YOU_CAN_LEARN"].." "..L["JOURNEYMAN_RIDING"])
-		end
-		if (APR.Level >= 10 and not GetSpellBookItemInfo(GetSpellInfo(33388))) then
-			LineNr = LineNr + 1
-			DisplayRiding(L["YOU_CAN_LEARN"].." "..L["APPRENTICE_RIDING"])
+		if(not GetSpellBookItemInfo(GetSpellInfo(90265))) then
+			if (APR.Level >= 40) then
+				DisplayRiding(L["YOU_CAN_LEARN"].." "..L["MASTER_RIDING"])
+			
+			elseif (APR.Level >= 30 and not GetSpellBookItemInfo(GetSpellInfo(34090))) then
+				local ridingText
+				if (APR.Faction == "Alliance" and APR.ActiveMap and APR.ActiveMap == "A543-DesMephisto-Gorgrond") then
+					ridingText = L["USE_HEARTHSTONE"].." "..L["GO_TO"].." Stormwind, "..L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING"]
+				elseif (APR.Faction == "Horde" and APR.ActiveMap and APR.ActiveMap == "543-DesMephisto-Gorgrond-p1") then
+					ridingText = L["USE_HEARTHSTONE"].." "..L["GO_TO"].." Orgrimmar, "..L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING"]
+				else
+					ridingText = L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING"]
+				end
+				DisplayRiding(ridingText)
+			elseif (APR.Level >= 20 and not GetSpellBookItemInfo(GetSpellInfo(33391))) then
+				DisplayRiding(L["YOU_CAN_LEARN"].." "..L["JOURNEYMAN_RIDING"])
+			elseif (APR.Level >= 10 and not GetSpellBookItemInfo(GetSpellInfo(33388))) then
+				DisplayRiding(L["YOU_CAN_LEARN"].." "..L["APPRENTICE_RIDING"])
+			end
 		end
 		if ((steps["ExtraLine"] or steps["ExtraLineText"]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 			LineNr = LineNr + 1
@@ -1028,7 +1034,7 @@ local function APR_PrintQStep()
 			local APRExtraText = steps["ExtraLineText"]
 			if (steps["ExtraLineText"] and L[APRExtraText]) then
 				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L[APRExtraText]))
-			else
+			elseif(steps["ExtraLineText"]) then
 				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(APRExtraText))
 			end
 			if (APRExtraLine == 35) then

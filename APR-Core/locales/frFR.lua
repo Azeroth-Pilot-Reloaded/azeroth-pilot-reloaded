@@ -88,6 +88,9 @@ L.SKIP = "Etape passée";
 L.SKIPCAMP = "Etape du camp passée";
 L.SKIP_WAYPOINT = "Sauter le point de passage";
 L.SKIP_BUTTON = "Passer";
+L.ROLLBACK = "Retour à l'étape passée";
+L.SHOW_RIDING = "Afficher les messages d'apprentissage de compétence de monture";
+L.HIDE_RIDING = "Cacher les messages d'apprentissage de compétence de monture";
 
 -- Error
 L.ERROR = "Erreur";
@@ -142,6 +145,24 @@ L.USE_HEARTHSTONE = "Utilisez votre pierre de foyer";
 L.USE_PORTAL = "Utilisez le portail";
 L.USE_PORTAL_TO = "Utilisez le portail vers";
 L.USE_ITEM = "Utilisez l'objet";
+L.SPEAR_DOWN_THE_UFO = "S'il vole, utilisez la lance pour l'attirer";
+L.TALK_TO_NPC_TO_RIDE_BOAT = "Parler au PNJ pour monter sur le bateau";
+L.REDUCED_DAMAGE_INFO_1 = "Attendez que ses buffs disparaissent";
+L.JUMP_OFF_BRIDGE = "Sautez du pont";
+L.KAJAMITE = "Morceaux de Kaja'mite: 10% de bonus de dégâts"; 
+L.TOP_OF_BOAT = "Il est en haut du bateau";
+L.RUN_FOREST_RUN = "N'ATTENDEZ PAS, COUREZ VERS LA DIRECTION INDIQUÉE!!!";
+L.WEAPON_PICK_DOESNT_MATTER = "Qu'importe l'arme que vous choisissez";
+L.EXTRA_ACTION_BUTTON_NOT_NEEDED = "La technique supplémentaire n'est pas nécessaire";
+L.DOTS_EXPIRE = "Attendre la fin des dégâts avant de cliquer sur l'autel";
+L.USE_BANNER_ON_CORPSES = "Utilisez la bannière sur les cadavres";
+L.CLICK_BUFFS_IN_ZONE = "Il y a des buffs récupérables partout dans la zone";
+L.GET_FLIGHT_POINT = "Prenez le point de vol";
+L.PORTAL_WILL_APPEAR = "Un portail va apparaître";
+L.WAIT_FOR_NPC = "Attendez que le PNJ se mette en place";
+L.BENEATH_HANDIN = "Allez à la surface si vous ne pouvez pas rendre";
+L.TOTEM_DAMAGE_BUFF = "Se tenir proche du totem pour avoir le bonus de dégâts";
+L.DO_NOT_USE_GLIDER = "ATTENTION NE SURTOUT PAS UTILISER DE PLANEUR GOBELIN";
 
 -- TODO - Translate
 -- L.AROUND_COOKPOT = "One from each around the cookpot";
