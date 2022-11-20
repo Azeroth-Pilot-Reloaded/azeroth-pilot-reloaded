@@ -1,15 +1,15 @@
 package-as: APR
 
 move-folders:
-    azeroth-pilot-reloaded/APR-Core: APR_Core
-    azeroth-pilot-reloaded/APR-BattleForAzeroth: APR_BattleForAzeroth
-    azeroth-pilot-reloaded/APR-Dragonflight: APR_Dragonflight
-    azeroth-pilot-reloaded/APR-ExilesReach: APR_ExilesReach
-    azeroth-pilot-reloaded/APR-Legion: APR_Legion
-    azeroth-pilot-reloaded/APR-MistsOfPandaria: APR_MistsOfPandaria
-    azeroth-pilot-reloaded/APR-Shadowlands: APR_Shadowlands
-    azeroth-pilot-reloaded/APR-TheBurningCrusade: APR_TheBurningCrusade
-    azeroth-pilot-reloaded/APR-Vanilla: APR_Vanilla
-    azeroth-pilot-reloaded/APR-WarlordsOfDraenor: APR_WarlordsOfDraenor
-    azeroth-pilot-reloaded/APR-WrathOfTheLichKing: APR_WrathOfTheLichKing
+   APR/APR-Core: APR-Core
+   APR/APR-BattleForAzeroth: APR-BattleForAzeroth
+   APR/APR-Dragonflight: APR-Dragonflight
+   APR/APR-ExilesReach: APR-ExilesReach
+   APR/APR-Legion: APR-Legion
+   APR/APR-MistsOfPandaria: APR-MistsOfPandaria
+   APR/APR-Shadowlands: APR-Shadowlands
+   APR/APR-TheBurningCrusade: APR-TheBurningCrusade
+   APR/APR-Vanilla: APR-Vanilla
+   APR/APR-WarlordsOfDraenor: APR-WarlordsOfDraenor
+   APR/APR-WrathOfTheLichKing: APR-WrathOfTheLichKing
 
