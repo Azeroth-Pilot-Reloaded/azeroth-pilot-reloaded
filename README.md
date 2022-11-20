@@ -49,7 +49,7 @@ Commandes list:
 ### Tips
 You can hold ctrl right before doing something that would otherwise be automated, and it will temporarily disable the skipping of that thing, such as a cutscene.
 
-### Usefull Links
+### Useful Links
 [APR Curse Forge page](https://www.curseforge.com/wow/addons/azeroth-pilot-reloaded)
 
 [APR Discord](https://discord.com/invite/YgcdybKdWX)
