@@ -19076,7 +19076,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, 
 		{
-			["ExtraLine"] = 25,
+			["ExtraLineText"] = "GET_FLIGHT_POINT",
 			["Trigger"] = {
 				["y"] = -298,
 				["x"] = 1228.7,
@@ -25630,7 +25630,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 		
 		{		-- [Step 18
-			["ExtraLine"] = 7,
+			["ExtraLineText"] = "JUMP_OFF_BRIDGE",
 			["Trigger"] = {
 				["y"] = -1826.9,
 				["x"] = 1024,
@@ -25764,7 +25764,7 @@ if (APR.Faction == "Horde") then
 			},
 		},		
 		{		-- [step 27
-			["ExtraLine"] = 8,
+			["ExtraLineText"] = "JUMP_OFF",
 			["Trigger"] = {
 				["y"] = -1948.9,
 				["x"] = 679.7,
@@ -26065,7 +26065,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 		
 		{		-- [Step 44
-			["ExtraLine"] = 3,
+			["ExtraLineText"] = "TALK_TO_NPC_TO_RIDE_BOAT",
 			["CRange"] = 49284,
 			["Range"] = 5,
 			["Trigger"] = {
@@ -26482,7 +26482,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 		
 		{		-- [Step 69
-			["ExtraLine"] = 30,
+			["ExtraLineText"] = "PORTAL_WILL_APPEAR",
 			["Trigger"] = {
 				["y"] = -2089,
 				["x"] = -657,
@@ -26862,7 +26862,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 92
-			["ExtraLine"] = 32,
+			["ExtraLineText"] = "BENEATH_HANDIN",
 			["TT"] = {
 				["y"] = -1116.6,
 				["x"] = -1370.5,
@@ -27502,7 +27502,7 @@ if (APR.Faction == "Horde") then
 		}, 
 
 		{		-- [Step 141
-			["ExtraLine"] = 33,
+			["ExtraLineText"] = "TOTEM_DAMAGE_BUFF",
 			["Trigger"] = {
 				["y"] = -401.8,
 				["x"] = 979.9,
@@ -27705,7 +27705,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 157
-			["ExtraLine"] = 6,
+			["ExtraLineText"] = "UP_ELEVATOR",
 			["PickedLoa"] = 1,
 			["Trigger"] = {
 				["y"] = -1125.1,
@@ -27719,7 +27719,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 158
-			["ExtraLine"] = 6,
+			["ExtraLineText"] = "UP_ELEVATOR",
 			["PickedLoa"] = 1,
 			["Trigger"] = {
 				["y"] = -1101.5,
@@ -27867,7 +27867,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 170
-			["ExtraLine"] = 36,
+			["ExtraLineText"] = "DO_NOT_USE_GLIDER",
 			["PickedLoa"] = 2,
 			["Done"] = {
 				47439, 
@@ -29332,7 +29332,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 280
-			["ExtraLine"] = 6,
+			["ExtraLineText"] = "UP_ELEVATOR",
 			["Trigger"] = {
 				["y"] = -1125.6,
 				["x"] = 854.2,
@@ -29346,7 +29346,7 @@ if (APR.Faction == "Horde") then
 		},
 
 		{		-- [Step 281
-			["ExtraLine"] = 6,
+			["ExtraLineText"] = "UP_ELEVATOR",
 			["Trigger"] = {
 				["y"] = -1121.2,
 				["x"] = 840.7,
@@ -29528,7 +29528,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 
 		{		-- [Step 295
-			["ExtraLine"] = 11,
+			["ExtraLineText"] = "KAJAMITE",
 			["Qpart"] = {
 				[49920] = {
 					["1"] = "1",
@@ -29553,7 +29553,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 
 		{		-- [Step 296
-			["ExtraLine"] = 11,
+			["ExtraLineText"] = "KAJAMITE",
 			["Qpart"] = {
 				[49922] = {
 					["1"] = "1",
@@ -31953,7 +31953,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 454
-			["ExtraLine"] = 18,
+			["ExtraLineText"] = "TOP_BOAT",
 			["Trigger"] = {
 				["y"] = 271.3,
 				["x"] = -1170.8,
@@ -32224,7 +32224,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 472
-			["ExtraLine"] = 4,
+			["ExtraLineText"] = "REDUCED_DAMAGE_INFO_1",
 			["Trigger"] = {
 				["y"] = -21.4,
 				["x"] = -717.8,
@@ -32388,7 +32388,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 
 		{		-- [Step 486
-			["ExtraLine"] = 19,
+			["ExtraLineText"] = "RUN_FOREST_RUN",
 			["LeaveQuest"] = 52210,
 			["Trigger"] = {
 				["y"] = -878.8,
@@ -32963,7 +32963,7 @@ if (APR.Faction == "Horde") then
 		}, 
 		{		-- [Step 3
 			["ClearZP"] = 1,
-			["ExtraLine"] = 24,
+			["ExtraLineText"] = "CLICK_BUFFS_IN_ZONE",
 			["Trigger"] = {
 				["y"] = 727.7,
 				["x"] = 967.2,
@@ -32980,7 +32980,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 
 		{		-- [Step 4
-			["ExtraLine"] = 24,
+			["ExtraLineText"] = "CLICK_BUFFS_IN_ZONE",
 			["Done"] = {
 				47105, 
 			},
@@ -36759,7 +36759,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 
 		{		-- [Step 248
-			["ExtraLine"] = 31,
+			["ExtraLineText"] = "WAIT_FOR_NPC",
 			["SetHS"] = 47245,
 			["TT"] = {
 				["y"] = 2062,
@@ -39540,7 +39540,7 @@ if (APR.Faction == "Horde") then
 		},
 		{		-- [Step 3
 			["ClearZP"] = 1,
-			["ExtraLine"] = 20,
+			["ExtraLineText"] = "WEAPON_PICK_DOESNT_MATTER",
 			["Trigger"] = {
 				["y"] = 2673.6,
 				["x"] = 2197.1,
@@ -39770,7 +39770,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 19
-			["ExtraLine"] = 21,
+			["ExtraLineText"] = "EXTRA_ACTION_BUTTON_NOT_NEEDED",
 			["Trigger"] = {
 				["y"] = 2044.9,
 				["x"] = 2798,
@@ -40676,7 +40676,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 81
-			["ExtraLine"] = 22,
+			["ExtraLineText"] = "DOTS_EXPIRE",
 			["Qpart"] = {
 				[48887] = {
 					["1"] = "1",
@@ -43374,7 +43374,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 
 		{		-- [Step 2
-			["ExtraLine"] = 29,
+			["ExtraLineText"] = "MISSING_QUEST",
 			["PickUp"] = {
 				48332, 
 				48334, 
@@ -43793,7 +43793,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 3
-			["ExtraLine"] = 23,
+			["ExtraLineText"] = "USE_BANNER_ON_CORPSES",
 			["Qpart"] = {
 				[49667] = {
 					["1"] = "1",
@@ -43828,7 +43828,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 
 		{		-- [Step 3
-			["ExtraLine"] = 23,
+			["ExtraLineText"] = "USE_BANNER_ON_CORPSES",
 			["Qpart"] = {
 				[49666] = {
 					["1"] = "1",
@@ -44493,7 +44493,7 @@ if (APR.Faction == "Horde") then
 			},
 		},
 		{		-- [Step 3
-			["ExtraLine"] = 1,
+			["ExtraLineText"] = "SPEAR_DOWN_THE_UFO",
 			["SpecialMacro2"] = 1,
 			["DenyNPC"] = 129763,
 			["Qpart"] = {
@@ -44827,7 +44827,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, 
 		{		-- [Step 3
-			["ExtraLine"] = 28,
+			["ExtraLineText"] = "ZONE_COMPLETE",
 			["UseDalaHS"] = 50703,
 			["TT"] = {
 				["y"] = 1950.9,

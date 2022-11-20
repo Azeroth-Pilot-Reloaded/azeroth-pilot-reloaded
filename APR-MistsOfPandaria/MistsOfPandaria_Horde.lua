@@ -2039,7 +2039,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [14]
 		{
-			["ExtraLine"] = 87,
+			["ExtraLineText"] = "KILL_EXPLOSIVE_HATRED",
 			["Trigger"] = {
 				["y"] = 2173.8,
 				["x"] = 381.6,
