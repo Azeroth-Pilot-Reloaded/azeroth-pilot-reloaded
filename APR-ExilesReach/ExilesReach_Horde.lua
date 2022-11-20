@@ -1384,19 +1384,6 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "LEAVE_TUTORIAL",
-			["PickUp"] = {
-				34398, -- [1]
-			},
-			["BlockQuests"] = 1,
-			["Gossip"] = 1,
-			["TT"] = {
-				["y"] = 1464.3,
-				["x"] = -4419.2,
-			},
-			["LeaveQuest"] = 60343,
-		}, -- [2]
-		{
 			["ZoneDoneSave"] = 1,
 		}, -- [2]
 	}
@@ -2818,19 +2805,6 @@ if (APR.Faction == "Horde") then
 				["x"] = -4419.2,
 			},
 		}, -- [1]
-		{
-			["ExtraLineText"] = "LEAVE_TUTORIAL",
-			["PickUp"] = {
-				34398, -- [1]
-			},
-			["BlockQuests"] = 1,
-			["Gossip"] = 1,
-			["TT"] = {
-				["y"] = 1464.3,
-				["x"] = -4419.2,
-			},
-			["LeaveQuest"] = 60343,
-		}, -- [2]
 		{
 			["ZoneDoneSave"] = 1,
 		}, -- [2]
@@ -4317,19 +4291,6 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "LEAVE_TUTORIAL",
-			["PickUp"] = {
-				34398, -- [1]
-			},
-			["BlockQuests"] = 1,
-			["Gossip"] = 1,
-			["TT"] = {
-				["y"] = 1464.3,
-				["x"] = -4419.2,
-			},
-			["LeaveQuest"] = 60343,
-		}, -- [2]
-		{
 			["ZoneDoneSave"] = 1,
 		}, -- [2]
 	}
@@ -5745,19 +5706,6 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "LEAVE_TUTORIAL",
-			["PickUp"] = {
-				34398, -- [1]
-			},
-			["BlockQuests"] = 1,
-			["Gossip"] = 1,
-			["TT"] = {
-				["y"] = 1464.3,
-				["x"] = -4419.2,
-			},
-			["LeaveQuest"] = 60343,
-		}, -- [2]
-		{
 			["ZoneDoneSave"] = 1,
 		}, -- [2]
 	}
@@ -7139,19 +7087,6 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "LEAVE_TUTORIAL",
-			["PickUp"] = {
-				34398, -- [1]
-			},
-			["BlockQuests"] = 1,
-			["Gossip"] = 1,
-			["TT"] = {
-				["y"] = 1464.3,
-				["x"] = -4419.2,
-			},
-			["LeaveQuest"] = 60343,
-		}, -- [2]
-		{
 			["ZoneDoneSave"] = 1,
 		}, -- [2]
 	}
@@ -8529,19 +8464,6 @@ if (APR.Faction == "Horde") then
 				["x"] = -4419.2,
 			},
 		}, -- [1]
-		{
-			["ExtraLineText"] = "LEAVE_TUTORIAL",
-			["PickUp"] = {
-				34398, -- [1]
-			},
-			["BlockQuests"] = 1,
-			["Gossip"] = 1,
-			["TT"] = {
-				["y"] = 1464.3,
-				["x"] = -4419.2,
-			},
-			["LeaveQuest"] = 60343,
-		}, -- [2]
 		{
 			["ZoneDoneSave"] = 1,
 		}, -- [2]
@@ -9940,19 +9862,6 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "LEAVE_TUTORIAL",
-			["PickUp"] = {
-				34398, -- [1]
-			},
-			["BlockQuests"] = 1,
-			["Gossip"] = 1,
-			["TT"] = {
-				["y"] = 1464.3,
-				["x"] = -4419.2,
-			},
-			["LeaveQuest"] = 60343,
-		}, -- [2]
-		{
 			["ZoneDoneSave"] = 1,
 		}, -- [2]
 	}
@@ -11348,19 +11257,6 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "LEAVE_TUTORIAL",
-			["PickUp"] = {
-				34398, -- [1]
-			},
-			["BlockQuests"] = 1,
-			["Gossip"] = 1,
-			["TT"] = {
-				["y"] = 1464.3,
-				["x"] = -4419.2,
-			},
-			["LeaveQuest"] = 60343,
-		}, -- [2]
-		{
 			["ZoneDoneSave"] = 1,
 		}, -- [2]
 	}
@@ -12746,19 +12642,6 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["ExtraLineText"] = "LEAVE_TUTORIAL",
-			["PickUp"] = {
-				34398, -- [1]
-			},
-			["BlockQuests"] = 1,
-			["Gossip"] = 1,
-			["TT"] = {
-				["y"] = 1464.3,
-				["x"] = -4419.2,
-			},
-			["LeaveQuest"] = 60343,
-		}, -- [2]
-		{
 			["ZoneDoneSave"] = 1,
 		}, -- [2]
 		}
@@ -14094,32 +13977,19 @@ if (APR.Faction == "Horde") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-		}, -- [121]
+		}, 
 		{
 			["Done"] = {
-				59985, -- [1]
+				59985, 
 			},
 			["TT"] = {
 				["y"] = 1465,
 				["x"] = -4419.2,
 			},
-		}, -- [1]
-		{
-			["ExtraLineText"] = "LEAVE_TUTORIAL",
-			["PickUp"] = {
-				34398, -- [1]
-			},
-			["BlockQuests"] = 1,
-			["Gossip"] = 1,
-			["TT"] = {
-				["y"] = 1464.3,
-				["x"] = -4419.2,
-			},
-			["LeaveQuest"] = 60343,
-		}, -- [2]
+		}, 
 		{
 			["ZoneDoneSave"] = 1,
-		}, -- [2]
+		}, 
 	}
 	end
 end
