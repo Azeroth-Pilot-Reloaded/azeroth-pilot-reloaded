@@ -1,0 +1,12 @@
+## Interface: 100002
+
+## Title: Azeroth Pilot Reloaded
+## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.
+## Author: Rycia, Willowsmate, zyrrael, Neogeekmo
+## Version: @project-version@
+
+## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.
+## X-Website: https://github.com/Rycia/azeroth-pilot-reloaded
+## X-Curse-Project-ID: 618667
+## X-WoWI-ID: 26457
+

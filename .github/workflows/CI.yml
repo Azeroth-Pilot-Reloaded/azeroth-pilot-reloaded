@@ -26,5 +26,7 @@ jobs:
       #     args: "--no-color -q"
 
       - name: WoW Packager
-        uses: BigWigsMods/packager@v2.0.3
+        uses: BigWigsMods/packager@master
+        with:
+          args: -p 618667 -w 26457
 
