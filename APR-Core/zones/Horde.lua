@@ -3686,9 +3686,9 @@ APR.QuestStepListListing["SpeedRun"] = {
 }
 
 APR.QuestStepListListing["EasternKingdom"] = {
-	["WIP-Western Plaguelands"] = "WIP - Western Plaguelands",
-	["WIP-Silverpine"] = "WIP - Silverpine Forest",
-	["WIP-Hillsbrad"] = "WIP - Hillsbrad Foothills",
+	["DEV-Western Plaguelands"] = "WIP - Western Plaguelands",
+	["DEV-Silverpine"] = "WIP - Silverpine Forest",
+	["DEV-Hillsbrad"] = "WIP - Hillsbrad Foothills",
 	
 }
 
@@ -3697,7 +3697,7 @@ APR.QuestStepListListing["Dragonflight"] = {
 	["DF02H-2022-WakingShores"] = "WIP - WakingShores",
 }
 
---[[APR["BattleForAzeroth"] = {}
+APR["BattleForAzeroth"] = {}
 APR["BattleForAzeroth"][85] = 1
 APR["BattleForAzeroth"][862] = 1
 APR["BattleForAzeroth"][863] = 1
@@ -3724,7 +3724,7 @@ APR["Shadowlands"][1670] = 1
 APR["Legion"] = {}
 APR["Legion"][630] = 1
 APR["Legion"][634] = 1
-APR["Legion"][641] = 1]]
+APR["Legion"][641] = 1
 
 
 end
