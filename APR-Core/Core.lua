@@ -84,6 +84,11 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/8) 10-50 Shadowmoon")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/8) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(8/8) 10-50 Spires of Arak")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50 The Maw Intro")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-50 Oribos (Start-Bastion)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-52 Bastion (Full)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52 Oribos (Bastion-Maldraxxus)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52-54 Maldraxxus (Full)")		
 	elseif (ChoiceZ == 1 and APR.Level < 60 and APR.Level > 9 and APR.Faction == "Alliance") then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
@@ -99,6 +104,12 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/8) 10-50 Shadowmoon")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/8) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(8/8) 10-50 Spires of Arak")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50 The Maw Intro")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50 The Maw Intro")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-50 Oribos (Start-Bastion)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-52 Bastion (Full)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52 Oribos (Bastion-Maldraxxus)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52-54 Maldraxxus (Full)")
 	elseif (ChoiceZ == 1 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728) and APR.Faction == "Horde") then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
@@ -114,6 +125,11 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(5/7) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/7) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/7) 10-50 Nagrand")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50 The Maw Intro")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-50 Oribos (Start-Bastion)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-52 Bastion (Full)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52 Oribos (Bastion-Maldraxxus)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52-54 Maldraxxus (Full)")
 	elseif (ChoiceZ == 1 and APR.Level < 60 and APR.Level > 9 and APR.Faction == "Horde") then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
@@ -128,6 +144,11 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(5/7) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/7) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/7) 10-50 Nagrand")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50 The Maw Intro")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-50 Oribos (Start-Bastion)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-52 Bastion (Full)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52 Oribos (Bastion-Maldraxxus)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52-54 Maldraxxus (Full)")
 	elseif (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727) then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
