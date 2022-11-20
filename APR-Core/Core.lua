@@ -84,7 +84,7 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/8) 10-50 Shadowmoon")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/8) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(8/8) 10-50 Spires of Arak")
-	elseif (ChoiceZ == 1 and APR.Level < 50 and APR.Level > 9 and APR.Faction == "Alliance") then
+	elseif (ChoiceZ == 1 and APR.Level < 60 and APR.Level > 9 and APR.Faction == "Alliance") then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
 		for CLi = 1, 19 do
@@ -114,7 +114,7 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(5/7) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/7) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/7) 10-50 Nagrand")
-	elseif (ChoiceZ == 1 and APR.Level < 50 and APR.Level > 9 and APR.Faction == "Horde") then
+	elseif (ChoiceZ == 1 and APR.Level < 60 and APR.Level > 9 and APR.Faction == "Horde") then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
 		for CLi = 1, 19 do
