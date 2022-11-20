@@ -1,0 +1,15 @@
+package-as: APR
+
+move-folders:
+    azeroth-pilot-reloaded/APR-Core: APR_Core
+    azeroth-pilot-reloaded/APR-BattleForAzeroth: APR_BattleForAzeroth
+    azeroth-pilot-reloaded/APR-Dragonflight: APR_Dragonflight
+    azeroth-pilot-reloaded/APR-ExilesReach: APR_ExilesReach
+    azeroth-pilot-reloaded/APR-Legion: APR_Legion
+    azeroth-pilot-reloaded/APR-MistsOfPandaria: APR_MistsOfPandaria
+    azeroth-pilot-reloaded/APR-Shadowlands: APR_Shadowlands
+    azeroth-pilot-reloaded/APR-TheBurningCrusade: APR_TheBurningCrusade
+    azeroth-pilot-reloaded/APR-Vanilla: APR_Vanilla
+    azeroth-pilot-reloaded/APR-WarlordsOfDraenor: APR_WarlordsOfDraenor
+    azeroth-pilot-reloaded/APR-WrathOfTheLichKing: APR_WrathOfTheLichKing
+
