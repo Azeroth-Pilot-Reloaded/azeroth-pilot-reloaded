@@ -31,7 +31,6 @@ QuestHandler.lua
 zones\Alliance.lua
 zones\Horde.lua
 zones\Neutral.lua
-zones\Speedruns_Alliance.lua
 Minimap.lua
 QuestTest.lua
 Transport.lua

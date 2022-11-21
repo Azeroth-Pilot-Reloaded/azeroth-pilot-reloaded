@@ -1,4 +1,3 @@
-
 APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 	{ --1
 	   ["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
@@ -119,6 +118,7 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
+
  APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 	{ --1
 	   ["Done"] = {
@@ -1436,6 +1436,7 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
+
  APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 	{ --1
 	   ["Done"] = {
@@ -5837,6 +5838,7 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
+
  APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 	{		-- [step 1
 	   ["PickUp"] = {
@@ -8517,6 +8519,7 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
+
  APR.QuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
 	{
 	   ["PickUp"] = {
@@ -9913,6 +9916,7 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
+
  APR.QuestStepList["535-DesMephisto-Talador-p1"] = {
 	{
 	   ["Trigger"] = {
@@ -13082,6 +13086,7 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
+
  APR.QuestStepList["542-DesMephisto-SpiresOfArak"] = {
 	{
 	   ["PickUp"] = {
@@ -16500,6 +16505,7 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
+
  APR.QuestStepList["550-DesMephisto-Nagrand"] = {
 	{
 	   ["PickUp"] = {

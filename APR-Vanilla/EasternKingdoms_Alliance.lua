@@ -1,4 +1,3 @@
---if (APR.Faction == "Alliance") then
 --- Coldridge Valley
 	APR.QuestStepList["A27-ColdridgeValleyDwarf"] = {
 		{
@@ -34951,4 +34950,4 @@
 			["ZoneDoneSave"] = 1,
 		}, -- [2]
 	}
---end
+
