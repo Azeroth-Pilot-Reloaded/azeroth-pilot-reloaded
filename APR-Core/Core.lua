@@ -84,11 +84,8 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/8) 10-50 Shadowmoon")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/8) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(8/8) 10-50 Spires of Arak")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50 The Maw Intro")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-50 Oribos (Start-Bastion)")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-52 Bastion (Full)")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52 Oribos (Bastion-Maldraxxus)")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52-54 Maldraxxus (Full)")		
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - AStoryMode Only (Not Enough XP)")
+		
 	elseif (ChoiceZ == 1 and APR.Level < 60 and APR.Level > 9 and APR.Faction == "Alliance") then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
@@ -104,12 +101,8 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/8) 10-50 Shadowmoon")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/8) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(8/8) 10-50 Spires of Arak")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50 The Maw Intro")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50 The Maw Intro")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-50 Oribos (Start-Bastion)")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-52 Bastion (Full)")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52 Oribos (Bastion-Maldraxxus)")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52-54 Maldraxxus (Full)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - AStoryMode Only (Not Enough XP)")
+		
 	elseif (ChoiceZ == 1 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728) and APR.Faction == "Horde") then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
@@ -125,11 +118,8 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(5/7) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/7) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/7) 10-50 Nagrand")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50 The Maw Intro")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-50 Oribos (Start-Bastion)")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-52 Bastion (Full)")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52 Oribos (Bastion-Maldraxxus)")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52-54 Maldraxxus (Full)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - HStoryMode Only (Not Enough XP)")
+
 	elseif (ChoiceZ == 1 and APR.Level < 60 and APR.Level > 9 and APR.Faction == "Horde") then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
@@ -144,11 +134,8 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(5/7) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/7) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/7) 10-50 Nagrand")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50 The Maw Intro")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-50 Oribos (Start-Bastion)")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-52 Bastion (Full)")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52 Oribos (Bastion-Maldraxxus)")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52-54 Maldraxxus (Full)")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - HStoryMode Only (Not Enough XP)")
+
 	elseif (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727) then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
@@ -437,26 +424,32 @@ local function APR_SlashCmd(APR_index)
 		--Command for making the quest rescan on completion and reset, including previously skipped steps
 		print("APR: "..L["RESET_ZONE"])
 		APR1[APR.Realm][APR.Name][APR.ActiveMap] = 1
-		APR.BookingList["UpdateQuest"] = 1
-		APR.BookingList["PrintQStep"] = 1
+	elseif (APR_index == "showriding") then 
+		print("APR: "..L["SHOW_RIDING"])
+		APR1[APR.Realm][APR.Name]["hideRidingSkill"] = 0
+	elseif (APR_index == "hideriding") then 
+		print("APR: "..L["HIDE_RIDING"])
+		APR1[APR.Realm][APR.Name]["hideRidingSkill"] = 1
 	elseif (APR_index == "skip") then
 		-- Command for skipping the current quest step
 		print("APR: "..L["SKIP"]) 
 		APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
-		APR.BookingList["UpdateQuest"] = 1
-		APR.BookingList["PrintQStep"] = 1
+	elseif (APR_index == "rollback") then
+		-- Command for rollback the current quest step
+		print("APR: "..L["ROLLBACK"]) 
+		APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] - 1
 	elseif (APR_index == "skipcamp") then
 		-- Command for skipping "camp" step
 		print("APR: "..L["SKIPCAMP"]) 
 		APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 14
-		APR.BookingList["UpdateQuest"] = 1
-		APR.BookingList["PrintQStep"] = 1
 	else
 		APR.SettingsOpen = 1
 		APR.OptionsFrame.MainFrame:Show()
 		APR.RemoveIcons()
 		APR.BookingList["OpenedSettings"] = 1
 	end
+	APR.BookingList["UpdateQuest"] = 1
+	APR.BookingList["PrintQStep"] = 1
 end
 --More UI stuff, to do with arrowframe
 	--Arrowframe is the "arrow" that looks like the tomtom one
@@ -2602,30 +2595,30 @@ function APR.CheckPosMove(zeActivz)
 		end
 		if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
 			local zew = APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]]
-			if (APR["EasternKingdomDB"] and APR["EasternKingdomDB"][zew] and IsAddOnLoaded("APR-EasternKingdoms") == false) then
+			if (APR["EasternKingdom"] and APR["EasternKingdom"][zew] and IsAddOnLoaded("APR-Vanilla") == false) then
+				local loaded, ADDON_DEMAND_LOADED = LoadAddOn("APR-Vanilla")
+					if not loaded then
+						if reason == "DISABLED" then
+							print("APR: APR-Vanilla "..L["DISABLED_ADDON_LIST"])
+						end
+					end
+			end
+			if (APR["Kalimdor"] and APR["Kalimdor"][zew] and IsAddOnLoaded("APR-Vanilla") == false) then
 				local loaded, reason = LoadAddOn("APR-Vanilla")
-						if (not loaded) then
-							if (reason == "DISABLED") then
-								print("APR: APR - Eastern Kingdoms "..L["DISABLED_ADDON_LIST"])
-							end
+					if (not loaded) then
+						if (reason == "DISABLED") then
+							print("APR: APR-Vanilla "..L["DISABLED_ADDON_LIST"])
 						end
 					end
-					if (APR["Kalimdor"] and APR["Kalimdor"][zew] and IsAddOnLoaded("APR-Kalimdor") == false) then
-						local loaded, reason = LoadAddOn("APR-Vanilla")
-						if (not loaded) then
-							if (reason == "DISABLED") then
-								print("APR: APR - Vanilla "..L["DISABLED_ADDON_LIST"])
-							end
+			end
+			if (APR["BattleForAzeroth"] and APR["BattleForAzeroth"][zew] and IsAddOnLoaded("APR-BattleForAzeroth") == false) then
+				local loaded, reason = LoadAddOn("APR-BattleForAzeroth")
+					if (not loaded) then
+						if (reason == "DISABLED") then
+							print("APR: APR-BattleForAzeroth "..L["DISABLED_ADDON_LIST"])
 						end
 					end
-					if (APR["BattleForAzeroth"] and APR["BattleForAzeroth"][zew] and IsAddOnLoaded("APR-BattleForAzeroth") == false) then
-						local loaded, reason = LoadAddOn("APR-BattleForAzeroth")
-						if (not loaded) then
-							if (reason == "DISABLED") then
-								print("APR: APR - BattleForAzeroth "..L["DISABLED_ADDON_LIST"])
-							end
-						end
-					end
+			end
 					if (APR["Legion"] and APR["Legion"][zew] and IsAddOnLoaded("APR-Legion") == false) then
 						local loaded, reason = LoadAddOn("APR-Legion")
 						if (not loaded) then
@@ -2634,7 +2627,7 @@ function APR.CheckPosMove(zeActivz)
 							end
 						end
 					end
-			if (APR["ShadowlandsDB"] and APR["ShadowlandsDB"][zew] and IsAddOnLoaded("APR-Shadowlands") == false) then
+			if (APR["Shadowlands"] and APR["Shadowlands"][zew] and IsAddOnLoaded("APR-Shadowlands") == false) then
 				local loaded, reason = LoadAddOn("APR-Shadowlands")
 				if (not loaded) then
 					if (reason == "DISABLED") then
