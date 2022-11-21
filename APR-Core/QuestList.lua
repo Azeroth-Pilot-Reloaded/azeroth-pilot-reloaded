@@ -1,6 +1,29 @@
 local app = select(2, ...);
 local L = app.L;
 
+function AddQuestListButton(text, index, buttonFunction)
+	APR.QuestList.QuestFrames["FS"..index].Button = CreateFrame("Button", "APR_SkipActiveButton"..index, APR.QuestList.QuestFrames[index])
+	APR.QuestList.QuestFrames["FS"..index].Button:SetPoint("RIGHT", APR.QuestList.QuestFrames[index], "RIGHT", 0, 0)
+	APR.QuestList.QuestFrames["FS"..index].Button:SetScript("OnMouseDown", buttonFunction)
+	local t = APR.QuestList.QuestFrames["FS"..index].Button:CreateTexture(nil,"BACKGROUND")
+	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+	t:SetAllPoints(APR.QuestList.QuestFrames["FS"..index].Button)
+	APR.QuestList.QuestFrames["FS"..index].Button.texture = t
+
+	APR.QuestList.QuestFrames["FS"..index].Fontstring = APR.ArrowFrame:CreateFontString("CLSettingsFS2212","ARTWORK", "ChatFontNormal")
+	APR.QuestList.QuestFrames["FS"..index].Fontstring:SetParent(APR.QuestList.QuestFrames["FS"..index].Button)
+	APR.QuestList.QuestFrames["FS"..index].Fontstring:SetPoint("CENTER", APR.QuestList.QuestFrames["FS"..index].Button)
+	APR.QuestList.QuestFrames["FS"..index].Fontstring:SetText(text)
+	local skiplenght = APR.QuestList.QuestFrames["FS"..index].Fontstring:GetStringWidth()+20
+	APR.QuestList.QuestFrames["FS"..index].Button:SetWidth(skiplenght)
+	APR.QuestList.QuestFrames["FS"..index].Button:SetHeight(20)
+	APR.QuestList.QuestFrames["FS"..index].Fontstring:SetWidth(skiplenght)
+	APR.QuestList.QuestFrames["FS"..index].Fontstring:SetHeight(APR.QuestList.QuestFrames["FS"..index].Button:GetHeight() - 3)
+	APR.QuestList.QuestFrames["FS"..index].Fontstring:SetFontObject("GameFontNormalLarge")
+	APR.QuestList.QuestFrames["FS"..index].Fontstring:SetTextColor(1, 1, 0)
+	APR.QuestList.QuestFrames["FS"..index].Button:Hide()
+end
+
 local function APR_CreateQuestList()
 	if (not APR1[APR.Realm][APR.Name]["Settings"]["Partyleft"]) then
 		APR1[APR.Realm][APR.Name]["Settings"]["Partyleft"] = GetScreenWidth() / 2.5
@@ -576,10 +599,9 @@ local function APR_CreateQuestList()
 		APR.QuestList.QuestFrames["FS"..CLi]:SetText("")
 		APR.QuestList.QuestFrames["FS"..CLi]:SetTextColor(1, 1, 0)
 
-		APR.QuestList.QuestFrames["FS"..CLi]["BQid"] = 0
-		APR.QuestList.QuestFrames["FS"..CLi].Button = CreateFrame("Button", "APR_SkipActiveButton"..CLi, APR.QuestList.QuestFrames[CLi])
-		APR.QuestList.QuestFrames["FS"..CLi].Button:SetPoint("RIGHT", APR.QuestList.QuestFrames[CLi], "RIGHT", 0, 0)
-		APR.QuestList.QuestFrames["FS"..CLi].Button:SetScript("OnMouseDown", function(self, button)
+		APR.QuestList.QuestFrames["FS"..CLi]["BQid"] = 0		
+		--skip waypoint button
+		AddQuestListButton(L["SKIP_BUTTON"], CLi, function(self, button)
 			local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 			if (APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
 				local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
@@ -594,28 +616,6 @@ local function APR_CreateQuestList()
 				end
 			end
 		end)
-		--APR.QuestList.QuestFrames["FS"..CLi].Button:SetBackdrop( {
-		--	bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-		--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-		--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		--});
-		local t = APR.QuestList.QuestFrames["FS"..CLi].Button:CreateTexture(nil,"BACKGROUND")
-		t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-		t:SetAllPoints(APR.QuestList.QuestFrames["FS"..CLi].Button)
-		APR.QuestList.QuestFrames["FS"..CLi].Button.texture = t
-
-		APR.QuestList.QuestFrames["FS"..CLi].Fontstring = APR.ArrowFrame:CreateFontString("CLSettingsFS2212","ARTWORK", "ChatFontNormal")
-		APR.QuestList.QuestFrames["FS"..CLi].Fontstring:SetParent(APR.QuestList.QuestFrames["FS"..CLi].Button)
-		APR.QuestList.QuestFrames["FS"..CLi].Fontstring:SetPoint("CENTER", APR.QuestList.QuestFrames["FS"..CLi].Button)
-		APR.QuestList.QuestFrames["FS"..CLi].Fontstring:SetText(L["SKIP_BUTTON"])
-		local skiplenght = APR.QuestList.QuestFrames["FS"..CLi].Fontstring:GetStringWidth()+20
-		APR.QuestList.QuestFrames["FS"..CLi].Button:SetWidth(skiplenght)
-		APR.QuestList.QuestFrames["FS"..CLi].Button:SetHeight(20)
-		APR.QuestList.QuestFrames["FS"..CLi].Fontstring:SetWidth(skiplenght)
-		APR.QuestList.QuestFrames["FS"..CLi].Fontstring:SetHeight(APR.QuestList.QuestFrames["FS"..CLi].Button:GetHeight() - 3)
-		APR.QuestList.QuestFrames["FS"..CLi].Fontstring:SetFontObject("GameFontNormalLarge")
-		APR.QuestList.QuestFrames["FS"..CLi].Fontstring:SetTextColor(1, 1, 0)
-		APR.QuestList.QuestFrames["FS"..CLi].Button:Hide()
 
 		APR.QuestList2["BF"..CLi] = CreateFrame("frame", "CLQListF2z"..CLi, APR.QuestList21)
 		APR.QuestList2["BF"..CLi]:SetWidth(410)

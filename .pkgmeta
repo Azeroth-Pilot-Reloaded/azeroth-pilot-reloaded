@@ -1,0 +1,14 @@
+package-as: APR
+
+move-folders:
+   APR/APR-Core: APR-Core
+   APR/APR-BattleForAzeroth: APR-BattleForAzeroth
+   APR/APR-Dragonflight: APR-Dragonflight
+   APR/APR-ExilesReach: APR-ExilesReach
+   APR/APR-Legion: APR-Legion
+   APR/APR-MistsOfPandaria: APR-MistsOfPandaria
+   APR/APR-Shadowlands: APR-Shadowlands
+   APR/APR-TheBurningCrusade: APR-TheBurningCrusade
+   APR/APR-Vanilla: APR-Vanilla
+   APR/APR-WarlordsOfDraenor: APR-WarlordsOfDraenor
+   APR/APR-WrathOfTheLichKing: APR-WrathOfTheLichKing
