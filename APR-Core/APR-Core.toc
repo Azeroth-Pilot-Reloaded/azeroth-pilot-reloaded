@@ -3,8 +3,7 @@
 
 ## Title: |cffff7d0aAzeroth Pilot Reloaded|r
 ## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.
-## Author: Rycia, Willowsmate, zyrrael, Neogeekmo
-## Version: 15
+## Author: Rycia, Deathmessinger, zyrrael, Neogeekmo
 
 ## SavedVariables: APR1, APR2, APR3, APRQuestNames, APR_HoldZoneVar, APR_Transport, APR_Custom, APR_ZoneComplete, APR_TaxiTimers
 lib\HereBeDragons\LibStub\LibStub.lua

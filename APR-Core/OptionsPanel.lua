@@ -10,7 +10,7 @@ APR_panel.title:SetWidth(500)
 APR_panel.title:SetHeight(20)
 APR_panel.title:SetPoint("TOPLEFT", APR.APR_panel, 0,-30)
 
-APR_panel.title:SetText("Azeroth Pilot Reloaded - v" .. APR.Version) -- Header text of the options menu
+APR_panel.title:SetText("Azeroth Pilot Reloaded - " .. APR.Version) -- Header text of the options menu
 
 APR_panel.Button1 = CreateFrame("Button", "ZPButton2", APR.APR_panel)
 APR_panel.Button1:SetPoint("TOPLEFT", APR.APR_panel, "TOPLEFT", 120, -100)
@@ -106,10 +106,10 @@ APR.OptionsFrame.MainFrame.Options.texture = t
 	APR.OptionsFrame.FontString1 = APR.OptionsFrame.MainFrame:CreateFontString("APRSettingsFS1","ARTWORK", "ChatFontNormal")
 	APR.OptionsFrame.FontString1:SetParent(APR.OptionsFrame.MainFrame)
 	APR.OptionsFrame.FontString1:SetPoint("TOP",APR.OptionsFrame.MainFrame,"TOP",0,0)
-	APR.OptionsFrame.FontString1:SetWidth(240)
+	APR.OptionsFrame.FontString1:SetText("Azeroth Pilot Reloaded - " .. APR.Version)
+	APR.OptionsFrame.FontString1:SetWidth(APR.OptionsFrame.FontString1:GetStringWidth() * 1.5)
 	APR.OptionsFrame.FontString1:SetHeight(20)
 	APR.OptionsFrame.FontString1:SetFontObject("GameFontHighlightLarge")
-	APR.OptionsFrame.FontString1:SetText("Azeroth Pilot Reloaded - v" .. APR.Version)
 	APR.OptionsFrame.FontString1:SetTextColor(1, 1, 0)
 -------------------- Quest Options ----------------------------------------
 	APR.OptionsFrame.MainFrame.OptionsB1 = CreateFrame("frame", "APR_OptionsMainFrame_QuestOptions",  APR_OptionsMainFrame)
