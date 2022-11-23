@@ -1,7 +1,7 @@
 ## Interface: 100002
 ## X-Min-Interface: 100002
 
-## Title: |cffff7d0aAzeroth Pilot Reloaded|r - Wrath of the Lich King
+## Title: Azeroth Pilot Reloaded - [|cffeda55fWrath of the Lich King|r]
 ## Notes: Provides Wrath of the Lich King implementation for Azeroth Pilot Reloaded.
 ## Author: Rycia
 

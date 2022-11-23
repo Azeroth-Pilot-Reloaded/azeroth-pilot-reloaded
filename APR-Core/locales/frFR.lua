@@ -1,14 +1,13 @@
 ﻿if GetLocale() ~= "frFR" then return; end
 local app = select(2, ...);
-local L = app.L;
 
 -- Author: Neogeekmo
-L = {
+app.L = {
 	["ACCEPT_Q"] = "Acceptez la quête",
 	["AFK"] = "AKF",
 	["ALL_Q"] = "Toutes les quêtes",
 	["APPRENTICE_RIDING"] = "Apprenti cavalier",
-	["ARROW_OPTION"] = "Options flèche",
+	-- ["ARROW_OPTION"] = "Options flèche",
 	["ARROW_SCALE"] = "Taille de la flèche",
 	--[[Translation missing --]]
 	["ASSULT_SKIP"] = "The NPC won't be there if an assault is active! If so, skip ahead",
