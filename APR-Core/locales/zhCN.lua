@@ -373,7 +373,7 @@ L = {
 	--[[Translation missing --]]
 	["MAXOMILLIAN_PRAY"] = "Let Maxomillian pray to Furys",
 	--[[Translation missing --]]
-	["MINIMAP_BLOB_ALPHA"] = "Set Minimap blobs alpha",
+	["minimap_BLOB_ALPHA"] = "Set minimap blobs alpha",
 	--[[Translation missing --]]
 	["MINING_PICK"] = "Mining Pick",
 	--[[Translation missing --]]
@@ -511,7 +511,7 @@ L = {
 	--[[Translation missing --]]
 	["SHOW_BLOBS_ON_MAP"] = "Show Green blobs on map",
 	--[[Translation missing --]]
-	["SHOW_BLOBS_ON_MINIMAP"] = "Show Green blobs on minimap",
+	["SHOW_BLOBS_ON_minimap"] = "Show Green blobs on minimap",
 	["SHOW_GROUP_PROGRESS"] = "显示小队进度",
 	--[[Translation missing --]]
 	["SHOW_QLIST"] = "Show QuestList",

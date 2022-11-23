@@ -751,46 +751,46 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	else
 		APR.OptionsFrame.BlobsShowCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.BlobsShowCheckButton:GetName() .. 'Text'):SetText(": "..L["SHOW_BLOBS_ON_MINIMAP"])
+	getglobal(APR.OptionsFrame.BlobsShowCheckButton:GetName() .. 'Text'):SetText(": "..L["SHOW_BLOBS_ON_minimap"])
 	getglobal(APR.OptionsFrame.BlobsShowCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.BlobsShowCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.BlobsShowCheckButton:GetChecked() == true) then
 			APR1[APR.Realm][APR.Name]["Settings"]["ShowBlobs"] = 1
-			APR.OptionsFrame.MiniMapBlobAlphaSlider:Show()
+			APR.OptionsFrame.minimapBlobAlphaSlider:Show()
 		else
 			APR1[APR.Realm][APR.Name]["Settings"]["ShowBlobs"] = 0
 			APR.RemoveIcons()
-			APR.OptionsFrame.MiniMapBlobAlphaSlider:Hide()
+			APR.OptionsFrame.minimapBlobAlphaSlider:Hide()
 		end
 	end)
 
-	APR.OptionsFrame.MiniMapBlobAlphaSlider = CreateFrame("Slider", "APR_MiniMapBlobAlphaSlider",APR.OptionsFrame.MainFrame.OptionsGeneral, "OptionsSliderTemplate")
-	APR.OptionsFrame.MiniMapBlobAlphaSlider:SetWidth(160)
-	APR.OptionsFrame.MiniMapBlobAlphaSlider:SetHeight(15)
-	APR.OptionsFrame.MiniMapBlobAlphaSlider:SetPoint("TOPLEFT", APR.OptionsFrame.MainFrame.OptionsGeneral, "TOPLEFT", 50, -205)
-	APR.OptionsFrame.MiniMapBlobAlphaSlider:SetOrientation("HORIZONTAL")
-	APR.OptionsFrame.MiniMapBlobAlphaSlider:SetMinMaxValues(1, 100)
-	APR.OptionsFrame.MiniMapBlobAlphaSlider.minValue, APR.OptionsFrame.MiniMapBlobAlphaSlider.maxValue = APR.OptionsFrame.MiniMapBlobAlphaSlider:GetMinMaxValues()
-	getglobal(APR.OptionsFrame.MiniMapBlobAlphaSlider:GetName() .. 'Low'):SetText("1%")
-	getglobal(APR.OptionsFrame.MiniMapBlobAlphaSlider:GetName() .. 'High'):SetText("100%")
-	getglobal(APR.OptionsFrame.MiniMapBlobAlphaSlider:GetName() .. 'Text'):SetText(L["MINIMAP_BLOB_ALPHA"])
-	APR.OptionsFrame.MiniMapBlobAlphaSlider:SetValueStep(1)
-	APR.OptionsFrame.MiniMapBlobAlphaSlider:SetValue(100)
-	APR.OptionsFrame.MiniMapBlobAlphaSlider:SetScript("OnValueChanged", function(self,event)
+	APR.OptionsFrame.minimapBlobAlphaSlider = CreateFrame("Slider", "APR_minimapBlobAlphaSlider",APR.OptionsFrame.MainFrame.OptionsGeneral, "OptionsSliderTemplate")
+	APR.OptionsFrame.minimapBlobAlphaSlider:SetWidth(160)
+	APR.OptionsFrame.minimapBlobAlphaSlider:SetHeight(15)
+	APR.OptionsFrame.minimapBlobAlphaSlider:SetPoint("TOPLEFT", APR.OptionsFrame.MainFrame.OptionsGeneral, "TOPLEFT", 50, -205)
+	APR.OptionsFrame.minimapBlobAlphaSlider:SetOrientation("HORIZONTAL")
+	APR.OptionsFrame.minimapBlobAlphaSlider:SetMinMaxValues(1, 100)
+	APR.OptionsFrame.minimapBlobAlphaSlider.minValue, APR.OptionsFrame.minimapBlobAlphaSlider.maxValue = APR.OptionsFrame.minimapBlobAlphaSlider:GetMinMaxValues()
+	getglobal(APR.OptionsFrame.minimapBlobAlphaSlider:GetName() .. 'Low'):SetText("1%")
+	getglobal(APR.OptionsFrame.minimapBlobAlphaSlider:GetName() .. 'High'):SetText("100%")
+	getglobal(APR.OptionsFrame.minimapBlobAlphaSlider:GetName() .. 'Text'):SetText(L["minimap_BLOB_ALPHA"])
+	APR.OptionsFrame.minimapBlobAlphaSlider:SetValueStep(1)
+	APR.OptionsFrame.minimapBlobAlphaSlider:SetValue(100)
+	APR.OptionsFrame.minimapBlobAlphaSlider:SetScript("OnValueChanged", function(self,event)
 		event = event - event%1
-		APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"] = event / 100
+		APR1[APR.Realm][APR.Name]["Settings"]["minimapBlobAlpha"] = event / 100
 		local CLi
 		for CLi = 1, 20 do
-			APR["Icons"][CLi].texture:SetAlpha(APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"])
+			APR["Icons"][CLi].texture:SetAlpha(APR1[APR.Realm][APR.Name]["Settings"]["minimapBlobAlpha"])
 		end
 	end)
-	APR.OptionsFrame.MiniMapBlobAlphaSlider:SetScript("OnMouseWheel", function(self,delta)
+	APR.OptionsFrame.minimapBlobAlphaSlider:SetScript("OnMouseWheel", function(self,delta)
 		if tonumber(self:GetValue()) == nil then return end
 		self:SetValue(tonumber(self:GetValue())+delta)
 	end)
-	APR.OptionsFrame.MiniMapBlobAlphaSlider:SetValue(APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"] * 100)
+	APR.OptionsFrame.minimapBlobAlphaSlider:SetValue(APR1[APR.Realm][APR.Name]["Settings"]["minimapBlobAlpha"] * 100)
 	if (APR1[APR.Realm][APR.Name]["Settings"]["ShowBlobs"] == 0) then
-		APR.OptionsFrame.MiniMapBlobAlphaSlider:Hide()
+		APR.OptionsFrame.minimapBlobAlphaSlider:Hide()
 	end
 
 	APR.OptionsFrame.MapBlobsShowCheckButton = CreateFrame("CheckButton", "APR_MapBlobsShowCheckButton", APR.OptionsFrame.MainFrame.OptionsGeneral, "ChatConfigCheckButtonTemplate");

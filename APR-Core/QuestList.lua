@@ -31,8 +31,8 @@ local function APR_CreateQList()
 	if (not APR1[APR.Realm][APR.Name]["Settings"]["Partytop"]) then
 		APR1[APR.Realm][APR.Name]["Settings"]["Partytop"] = -(GetScreenHeight() / 4)
 	end
-	if (not APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"]) then
-		APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"] = 1
+	if (not APR1[APR.Realm][APR.Name]["Settings"]["minimapBlobAlpha"]) then
+		APR1[APR.Realm][APR.Name]["Settings"]["minimapBlobAlpha"] = 1
 	end
 	if (not APR.PartyList) then
 		APR.PartyList = {}
@@ -527,7 +527,7 @@ local function APR_CreateQList()
 		APR["Icons"][CLi].P = 0
 		APR["Icons"][CLi].A = 0
 		APR["Icons"][CLi].D = 0
-		APR["Icons"][CLi].texture:SetAlpha(APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"])
+		APR["Icons"][CLi].texture:SetAlpha(APR1[APR.Realm][APR.Name]["Settings"]["minimapBlobAlpha"])
 
 		APR["MapIcons"][CLi] = CreateFrame("Frame",nil,UIParent)
 		APR["MapIcons"][CLi]:SetFrameStrata("HIGH")

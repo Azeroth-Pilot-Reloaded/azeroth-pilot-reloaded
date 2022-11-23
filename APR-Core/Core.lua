@@ -53,8 +53,8 @@ APR.WQSpecialActive = 0
 APR.ArrowActive = 0
 APR.ArrowActive_X = 0
 APR.ArrowActive_Y = 0
-APR.MiniMap_X = 0
-APR.MiniMap_Y = 0
+APR.minimap_X = 0
+APR.minimap_Y = 0
 APR.MacroUpdaterVar = {}
 
 function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
@@ -336,7 +336,7 @@ function APR.ResetSettings()
 	APR1[APR.Realm][APR.Name]["Settings"]["LockArrow"] = 0
 	APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"] = 2
 	APR1[APR.Realm][APR.Name]["Settings"]["DisableHeirloomWarning"] = 0
-	APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"] = 1
+	APR1[APR.Realm][APR.Name]["Settings"]["minimapBlobAlpha"] = 1
 	APR1[APR.Realm][APR.Name]["Settings"]["OrderListScale"] = 1
 	if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 0) then
 		APR.OptionsFrame.ShowQListCheckButton:SetChecked(false)
@@ -3163,8 +3163,8 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 			if (not APR1[APR.Realm][APR.Name]["Settings"]["QButtons"]) then
 				APR1[APR.Realm][APR.Name]["Settings"]["QButtons"] = 1
 			end
-			if (not APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"]) then
-				APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"] = 1
+			if (not APR1[APR.Realm][APR.Name]["Settings"]["minimapBlobAlpha"]) then
+				APR1[APR.Realm][APR.Name]["Settings"]["minimapBlobAlpha"] = 1
 			end
 			if (not APR1[APR.Realm][APR.Name]["Settings"]["QButtonDetatch"]) then
 				APR1[APR.Realm][APR.Name]["Settings"]["QButtonDetatch"] = 0

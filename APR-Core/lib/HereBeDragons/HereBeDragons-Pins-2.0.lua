@@ -14,7 +14,7 @@ pins.updateFrame          = pins.updateFrame or CreateFrame("Frame")
 
 -- storage for minimap pins
 pins.minimapPins          = pins.minimapPins or {}
-pins.activeMinimapPins    = pins.activeMinimapPins or {}
+pins.activeminimapPins    = pins.activeminimapPins or {}
 pins.minimapPinRegistry   = pins.minimapPinRegistry or {}
 
 -- and worldmap pins
@@ -25,7 +25,7 @@ pins.worldmapProvider     = pins.worldmapProvider or CreateFromMixins(MapCanvasD
 pins.worldmapProviderPin  = pins.worldmapProviderPin or CreateFromMixins(MapCanvasPinMixin)
 
 -- store a reference to the active minimap object
-pins.Minimap = pins.Minimap or Minimap
+pins.minimap = pins.minimap or minimap
 
 -- Data Constants
 local WORLD_MAP_ID = 947
@@ -39,7 +39,7 @@ local GetPlayerFacing = GetPlayerFacing
 
 -- upvalue data tables
 local minimapPins         = pins.minimapPins
-local activeMinimapPins   = pins.activeMinimapPins
+local activeminimapPins   = pins.activeminimapPins
 local minimapPinRegistry  = pins.minimapPinRegistry
 
 local worldmapPins        = pins.worldmapPins
@@ -101,23 +101,23 @@ local function recycle(t)
 end
 
 -------------------------------------------------------------------------------------------
--- Minimap pin position logic
+-- minimap pin position logic
 
 -- minimap rotation
-local rotateMinimap = GetCVar("rotateMinimap") == "1"
+local rotateminimap = GetCVar("rotateminimap") == "1"
 
 -- is the minimap indoors or outdoors
-local indoors = GetCVar("miniMapsoom")+0 == pins.Minimap:GetZoom() and "outdoor" or "indoor"
+local indoors = GetCVar("minimapZoom")+0 == pins.minimap:GetZoom() and "outdoor" or "indoor"
 
 local minimapPinCount, queueFullUpdate = 0, false
 local minimapScale, minimapShape, mapRadius, minimapWidth, minimapHeight, mapSin, mapCos
 local lastZoom, lastFacing, lastXY, lastYY
 
-local function drawMinimapPin(pin, data)
+local function drawminimapPin(pin, data)
     local xDist, yDist = lastXY - data.x, lastYY - data.y
 
     -- handle rotation
-    if rotateMinimap then
+    if rotateminimap then
         local dx, dy = xDist, yDist
         xDist = dx*mapCos - dy*mapSin
         yDist = dx*mapSin + dy*mapCos
@@ -156,7 +156,7 @@ local function drawMinimapPin(pin, data)
     if dist <= 1 or data.floatOnEdge then
         pin:Show()
         pin:ClearAllPoints()
-        pin:SetPoint("CENTER", pins.Minimap, "CENTER", diffX * minimapWidth, -diffY * minimapHeight)
+        pin:SetPoint("CENTER", pins.minimap, "CENTER", diffX * minimapWidth, -diffY * minimapHeight)
         data.onEdge = (dist > 1)
     else
         pin:Hide()
@@ -180,34 +180,34 @@ local function IsParentMap(originMapId, toCheckMapId)
     return false
 end
 
-local function UpdateMinimapPins(force)
+local function UpdateminimapPins(force)
     -- get the current player position
     local x, y, instanceID = HBD:GetPlayerWorldPosition()
     local mapID = HBD:GetPlayerZone()
 
     -- get data from the API for calculations
-    local zoom = pins.Minimap:GetZoom()
+    local zoom = pins.minimap:GetZoom()
     local diffZoom = zoom ~= lastZoom
 
     -- for rotating minimap support
     local facing
-    if rotateMinimap then
+    if rotateminimap then
         facing = GetPlayerFacing()
     else
         facing = lastFacing
     end
 
     -- check for all values to be available (starting with 7.1.0, instances don't report coordinates)
-    if not x or not y or (rotateMinimap and not facing) then
+    if not x or not y or (rotateminimap and not facing) then
         minimapPinCount = 0
-        for pin in pairs(activeMinimapPins) do
+        for pin in pairs(activeminimapPins) do
             pin:Hide()
-            activeMinimapPins[pin] = nil
+            activeminimapPins[pin] = nil
         end
         return
     end
 
-    local newScale = pins.Minimap:GetScale()
+    local newScale = pins.minimap:GetScale()
     if minimapScale ~= newScale then
         minimapScale = newScale
         force = true
@@ -215,11 +215,11 @@ local function UpdateMinimapPins(force)
 
     if x ~= lastXY or y ~= lastYY or diffZoom or facing ~= lastFacing or force then
         -- minimap information
-        minimapShape = GetMinimapShape and minimap_shapes[GetMinimapShape() or "ROUND"]
-        minimapWidth = pins.Minimap:GetWidth() / 2
-        minimapHeight = pins.Minimap:GetHeight() / 2
+        minimapShape = GetminimapShape and minimap_shapes[GetminimapShape() or "ROUND"]
+        minimapWidth = pins.minimap:GetWidth() / 2
+        minimapHeight = pins.minimap:GetHeight() / 2
         if WoW90 then
-            mapRadius = C_Minimap.GetViewRadius()
+            mapRadius = C_minimap.GetViewRadius()
         else
             mapRadius = minimap_size[indoors][zoom] / 2
         end
@@ -229,25 +229,25 @@ local function UpdateMinimapPins(force)
         lastFacing = facing
         lastXY, lastYY = x, y
 
-        if rotateMinimap then
+        if rotateminimap then
             mapSin = sin(facing)
             mapCos = cos(facing)
         end
 
         for pin, data in pairs(minimapPins) do
             if data.instanceID == instanceID and (not data.uiMapID or data.uiMapID == mapID or (data.showInParentZone and IsParentMap(data.uiMapID, mapID))) then
-                activeMinimapPins[pin] = data
+                activeminimapPins[pin] = data
                 data.keep = true
                 -- draw the pin (this may reset data.keep if outside of the map)
-                drawMinimapPin(pin, data)
+                drawminimapPin(pin, data)
             end
         end
 
         minimapPinCount = 0
-        for pin, data in pairs(activeMinimapPins) do
+        for pin, data in pairs(activeminimapPins) do
             if not data.keep then
                 pin:Hide()
-                activeMinimapPins[pin] = nil
+                activeminimapPins[pin] = nil
             else
                 minimapPinCount = minimapPinCount + 1
                 data.keep = nil
@@ -256,14 +256,14 @@ local function UpdateMinimapPins(force)
     end
 end
 
-local function UpdateMinimapIconPosition()
+local function UpdateminimapIconPosition()
 
     -- get the current map  zoom
-    local zoom = pins.Minimap:GetZoom()
+    local zoom = pins.minimap:GetZoom()
     local diffZoom = zoom ~= lastZoom
     -- if the map zoom changed, run a full update sweep
     if diffZoom then
-        UpdateMinimapPins()
+        UpdateminimapPins()
         return
     end
 
@@ -274,20 +274,20 @@ local function UpdateMinimapIconPosition()
 
     -- for rotating minimap support
     local facing
-    if rotateMinimap then
+    if rotateminimap then
         facing = GetPlayerFacing()
     else
         facing = lastFacing
     end
 
     -- check for all values to be available (starting with 7.1.0, instances don't report coordinates)
-    if not x or not y or (rotateMinimap and not facing) then
-        UpdateMinimapPins()
+    if not x or not y or (rotateminimap and not facing) then
+        UpdateminimapPins()
         return
     end
 
     local refresh
-    local newScale = pins.Minimap:GetScale()
+    local newScale = pins.minimap:GetScale()
     if minimapScale ~= newScale then
         minimapScale = newScale
         refresh = true
@@ -296,7 +296,7 @@ local function UpdateMinimapIconPosition()
     if x ~= lastXY or y ~= lastYY or facing ~= lastFacing or refresh then
         -- update radius of the map
         if WoW90 then
-            mapRadius = C_Minimap.GetViewRadius()
+            mapRadius = C_minimap.GetViewRadius()
         else
             mapRadius = minimap_size[indoors][zoom] / 2
         end
@@ -304,27 +304,27 @@ local function UpdateMinimapIconPosition()
         lastXY, lastYY = x, y
         lastFacing = facing
 
-        if rotateMinimap then
+        if rotateminimap then
             mapSin = sin(facing)
             mapCos = cos(facing)
         end
 
         -- iterate all nodes and check if they are still in range of our minimap display
-        for pin, data in pairs(activeMinimapPins) do
+        for pin, data in pairs(activeminimapPins) do
             -- update the position of the node
-            drawMinimapPin(pin, data)
+            drawminimapPin(pin, data)
         end
     end
 end
 
-local function UpdateMiniMapsoom()
+local function UpdateminimapZoom()
     if not WoW90 then
-        local zoom = pins.Minimap:GetZoom()
-        if GetCVar("miniMapsoom") == GetCVar("minimapInsideZoom") then
-            pins.Minimap:SetZoom(zoom < 2 and zoom + 1 or zoom - 1)
+        local zoom = pins.minimap:GetZoom()
+        if GetCVar("minimapZoom") == GetCVar("minimapInsideZoom") then
+            pins.minimap:SetZoom(zoom < 2 and zoom + 1 or zoom - 1)
         end
-        indoors = GetCVar("miniMapsoom")+0 == pins.Minimap:GetZoom() and "outdoor" or "indoor"
-        pins.Minimap:SetZoom(zoom)
+        indoors = GetCVar("minimapZoom")+0 == pins.minimap:GetZoom() and "outdoor" or "indoor"
+        pins.minimap:SetZoom(zoom)
     end
 end
 
@@ -468,9 +468,9 @@ end
 WorldMapFrame:AddDataProvider(worldmapProvider)
 
 -- map event handling
-local function UpdateMinimap()
-    UpdateMiniMapsoom()
-    UpdateMinimapPins()
+local function Updateminimap()
+    UpdateminimapZoom()
+    UpdateminimapPins()
 end
 
 local function UpdateWorldMap()
@@ -481,11 +481,11 @@ local last_update = 0
 local function OnUpdateHandler(frame, elapsed)
     last_update = last_update + elapsed
     if last_update > 1 or queueFullUpdate then
-        UpdateMinimapPins(queueFullUpdate)
+        UpdateminimapPins(queueFullUpdate)
         last_update = 0
         queueFullUpdate = false
     else
-        UpdateMinimapIconPosition()
+        UpdateminimapIconPosition()
     end
 end
 pins.updateFrame:SetScript("OnUpdate", OnUpdateHandler)
@@ -493,17 +493,17 @@ pins.updateFrame:SetScript("OnUpdate", OnUpdateHandler)
 local function OnEventHandler(frame, event, ...)
     if event == "CVAR_UPDATE" then
         local cvar, value = ...
-        if cvar == "ROTATE_MINIMAP" then
-            rotateMinimap = (value == "1")
+        if cvar == "ROTATE_minimap" then
+            rotateminimap = (value == "1")
             queueFullUpdate = true
         end
-    elseif event == "MINIMAP_UPDATE_ZOOM" then
-        UpdateMinimap()
+    elseif event == "minimap_UPDATE_ZOOM" then
+        Updateminimap()
     elseif event == "PLAYER_LOGIN" then
         -- recheck cvars after login
-        rotateMinimap = GetCVar("rotateMinimap") == "1"
+        rotateminimap = GetCVar("rotateminimap") == "1"
     elseif event == "PLAYER_ENTERING_WORLD" then
-        UpdateMinimap()
+        Updateminimap()
         UpdateWorldMap()
     end
 end
@@ -511,11 +511,11 @@ end
 pins.updateFrame:SetScript("OnEvent", OnEventHandler)
 pins.updateFrame:UnregisterAllEvents()
 pins.updateFrame:RegisterEvent("CVAR_UPDATE")
-pins.updateFrame:RegisterEvent("MINIMAP_UPDATE_ZOOM")
+pins.updateFrame:RegisterEvent("minimap_UPDATE_ZOOM")
 pins.updateFrame:RegisterEvent("PLAYER_LOGIN")
 pins.updateFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
-HBD.RegisterCallback(pins, "PlayerZoneChanged", UpdateMinimap)
+HBD.RegisterCallback(pins, "PlayerZoneChanged", Updateminimap)
 
 
 --- Add a icon to the minimap (x/y world coordinate version)
@@ -526,15 +526,15 @@ HBD.RegisterCallback(pins, "PlayerZoneChanged", UpdateMinimap)
 -- @param x X position in world coordinates
 -- @param y Y position in world coordinates
 -- @param floatOnEdge flag if the icon should float on the edge of the minimap when going out of range, or hide immediately (default false)
-function pins:AddMinimapIconWorld(ref, icon, instanceID, x, y, floatOnEdge)
+function pins:AddminimapIconWorld(ref, icon, instanceID, x, y, floatOnEdge)
     if not ref then
-        error(MAJOR..": AddMinimapIconWorld: 'ref' must not be nil", 2)
+        error(MAJOR..": AddminimapIconWorld: 'ref' must not be nil", 2)
     end
     if type(icon) ~= "table" or not icon.SetPoint then
-        error(MAJOR..": AddMinimapIconWorld: 'icon' must be a frame", 2)
+        error(MAJOR..": AddminimapIconWorld: 'icon' must be a frame", 2)
     end
     if type(instanceID) ~= "number" or type(x) ~= "number" or type(y) ~= "number" then
-        error(MAJOR..": AddMinimapIconWorld: 'instanceID', 'x' and 'y' must be numbers", 2)
+        error(MAJOR..": AddminimapIconWorld: 'instanceID', 'x' and 'y' must be numbers", 2)
     end
 
     if not minimapPinRegistry[ref] then
@@ -554,7 +554,7 @@ function pins:AddMinimapIconWorld(ref, icon, instanceID, x, y, floatOnEdge)
     minimapPins[icon] = t
     queueFullUpdate = true
 
-    icon:SetParent(pins.Minimap)
+    icon:SetParent(pins.minimap)
 end
 
 --- Add a icon to the minimap (UiMapID zone coordinate version)
@@ -566,22 +566,22 @@ end
 -- @param y Y position in local/point coordinates (0-1), relative to the zone
 -- @param showInParentZone flag if the icon should be shown in its parent zone - ie. an icon in a microdungeon in the outdoor zone itself (default false)
 -- @param floatOnEdge flag if the icon should float on the edge of the minimap when going out of range, or hide immediately (default false)
-function pins:AddMinimapIconMap(ref, icon, uiMapID, x, y, showInParentZone, floatOnEdge)
+function pins:AddminimapIconMap(ref, icon, uiMapID, x, y, showInParentZone, floatOnEdge)
     if not ref then
-        error(MAJOR..": AddMinimapIconMap: 'ref' must not be nil", 2)
+        error(MAJOR..": AddminimapIconMap: 'ref' must not be nil", 2)
     end
     if type(icon) ~= "table" or not icon.SetPoint then
-        error(MAJOR..": AddMinimapIconMap: 'icon' must be a frame", 2)
+        error(MAJOR..": AddminimapIconMap: 'icon' must be a frame", 2)
     end
     if type(uiMapID) ~= "number" or type(x) ~= "number" or type(y) ~= "number" then
-        error(MAJOR..": AddMinimapIconMap: 'uiMapID', 'x' and 'y' must be numbers", 2)
+        error(MAJOR..": AddminimapIconMap: 'uiMapID', 'x' and 'y' must be numbers", 2)
     end
 
     -- convert to world coordinates and use our known adding function
     local xCoord, yCoord, instanceID = HBD:GetWorldCoordinatesFromZone(x, y, uiMapID)
     if not xCoord then return end
 
-    self:AddMinimapIconWorld(ref, icon, instanceID, xCoord, yCoord, floatOnEdge)
+    self:AddminimapIconWorld(ref, icon, instanceID, xCoord, yCoord, floatOnEdge)
 
     -- store extra information
     minimapPins[icon].uiMapID = uiMapID
@@ -590,7 +590,7 @@ end
 
 --- Check if a floating minimap icon is on the edge of the map
 -- @param icon the minimap icon
-function pins:IsMinimapIconOnEdge(icon)
+function pins:IsminimapIconOnEdge(icon)
     if not icon then return false end
     local data = minimapPins[icon]
     if not data then return nil end
@@ -601,38 +601,38 @@ end
 --- Remove a minimap icon
 -- @param ref Reference to your addon to track the icon under (ie. your "self" or string identifier)
 -- @param icon Icon Frame
-function pins:RemoveMinimapIcon(ref, icon)
+function pins:RemoveminimapIcon(ref, icon)
     if not ref or not icon or not minimapPinRegistry[ref] then return end
     minimapPinRegistry[ref][icon] = nil
     if minimapPins[icon] then
         recycle(minimapPins[icon])
         minimapPins[icon] = nil
-        activeMinimapPins[icon] = nil
+        activeminimapPins[icon] = nil
     end
     icon:Hide()
 end
 
 --- Remove all minimap icons belonging to your addon (as tracked by "ref")
 -- @param ref Reference to your addon to track the icon under (ie. your "self" or string identifier)
-function pins:RemoveAllMinimapIcons(ref)
+function pins:RemoveAllminimapIcons(ref)
     if not ref or not minimapPinRegistry[ref] then return end
     for icon in pairs(minimapPinRegistry[ref]) do
         recycle(minimapPins[icon])
         minimapPins[icon] = nil
-        activeMinimapPins[icon] = nil
+        activeminimapPins[icon] = nil
         icon:Hide()
     end
     wipe(minimapPinRegistry[ref])
 end
 
---- Set the minimap object to position the pins on. Needs to support the usual functions a Minimap-type object exposes.
+--- Set the minimap object to position the pins on. Needs to support the usual functions a minimap-type object exposes.
 -- @param minimapObject The new minimap object, or nil to restore the default
-function pins:SetMinimapObject(minimapObject)
-    pins.Minimap = minimapObject or Minimap
+function pins:SetminimapObject(minimapObject)
+    pins.minimap = minimapObject or minimap
     for pin in pairs(minimapPins) do
-        pin:SetParent(pins.Minimap)
+        pin:SetParent(pins.minimap)
     end
-    UpdateMinimapPins(true)
+    UpdateminimapPins(true)
 end
 
 -- world map constants

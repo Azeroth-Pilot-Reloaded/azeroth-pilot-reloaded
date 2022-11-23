@@ -177,7 +177,7 @@ function APR.RemoveIcons()
 			APR["Icons"][CLi].A = 0
 			APR["Icons"][CLi].P = 0
 			APR["Icons"][CLi].D = 0
-			APR.HBDP:RemoveMinimapIcon("APR", APR["Icons"][CLi])
+			APR.HBDP:RemoveminimapIcon("APR", APR["Icons"][CLi])
 		end
 	end
 end
@@ -256,12 +256,12 @@ function APR:MoveIcons()
 					px2 = px - px2 * APR["Icons"][CLi]["P"]
 					py2 = py - py2 * APR["Icons"][CLi]["P"]
 					APR["Icons"][CLi]["D"] = 1
-					APR.HBDP:AddMinimapIconMap("APR", APR["Icons"][CLi], C_Map.GetBestMapForUnit('player'), px2, py2, true, true)
+					APR.HBDP:AddminimapIconMap("APR", APR["Icons"][CLi], C_Map.GetBestMapForUnit('player'), px2, py2, true, true)
 				else
 					APR["Icons"][CLi]["A"] = 1
 					APR["Icons"][CLi]["P"] = 0
 					APR["Icons"][CLi]["D"] = 2
-					APR.HBDP:RemoveMinimapIcon("APR", APR["Icons"][CLi])
+					APR.HBDP:RemoveminimapIcon("APR", APR["Icons"][CLi])
 				end
 			end
 		end
@@ -272,7 +272,7 @@ function APR:MoveIcons()
 		local CLi, CLi2
 		if (not APR.QStepList[APR.ActiveMap][CurStep+1]) then
 			for CLi = 1, 20 do
-				APR.HBDP:RemoveMinimapIcon("APR", APR["Icons"][CLi])
+				APR.HBDP:RemoveminimapIcon("APR", APR["Icons"][CLi])
 			end
 		else
 			if (not C_Map.GetBestMapForUnit('player')) then
@@ -291,7 +291,7 @@ function APR:MoveIcons()
 						px2 = px - px2 * APR["Icons"][CLi]["P"]
 						py2 = py - py2 * APR["Icons"][CLi]["P"]
 						APR["Icons"][CLi]["D"] = 2
-						APR.HBDP:AddMinimapIconMap("APR", APR["Icons"][CLi], C_Map.GetBestMapForUnit('player'), px2, py2, true, true)
+						APR.HBDP:AddminimapIconMap("APR", APR["Icons"][CLi], C_Map.GetBestMapForUnit('player'), px2, py2, true, true)
 					else
 						APR["Icons"][CLi]["A"] = 0
 						APR["Icons"][CLi]["P"] = 0
@@ -303,7 +303,7 @@ function APR:MoveIcons()
 						elseif (totalCR == 1) then
 							APR["Icons"][CLi]["D"] = 1
 						end
-						APR.HBDP:RemoveMinimapIcon("APR", APR["Icons"][CLi])
+						APR.HBDP:RemoveminimapIcon("APR", APR["Icons"][CLi])
 					end
 				end
 			end
@@ -327,12 +327,12 @@ function APR:MoveIcons()
 						px2 = px - px2 * APR["Icons"][CLi]["P"]
 						py2 = py - py2 * APR["Icons"][CLi]["P"]
 						APR["Icons"][CLi]["D"] = 3
-						APR.HBDP:AddMinimapIconMap("APR", APR["Icons"][CLi], C_Map.GetBestMapForUnit('player'), px2, py2, true, true)
+						APR.HBDP:AddminimapIconMap("APR", APR["Icons"][CLi], C_Map.GetBestMapForUnit('player'), px2, py2, true, true)
 					else
 						APR["Icons"][CLi]["A"] = 0
 						APR["Icons"][CLi]["P"] = 0
 						APR["Icons"][CLi]["D"] = 0
-						APR.HBDP:RemoveMinimapIcon("APR", APR["Icons"][CLi])
+						APR.HBDP:RemoveminimapIcon("APR", APR["Icons"][CLi])
 					end
 				end
 			end
@@ -347,7 +347,7 @@ function APR:MoveIcons()
 			if (not px) then
 				APR["Icons"][CLi]["A"] = 0
 				APR["Icons"][CLi]["P"] = 0
-				APR.HBDP:RemoveMinimapIcon("APR", APR["Icons"][CLi])
+				APR.HBDP:RemoveminimapIcon("APR", APR["Icons"][CLi])
 			else
 				local px2, py2
 				px2 = px - ix
@@ -367,11 +367,11 @@ function APR:MoveIcons()
 					if (APR["Icons"][CLi].P < 1) then
 						px2 = px - px2 * APR["Icons"][CLi]["P"]
 						py2 = py - py2 * APR["Icons"][CLi]["P"]
-						APR.HBDP:AddMinimapIconMap("APR", APR["Icons"][CLi], C_Map.GetBestMapForUnit('player'), px2, py2, true, true)
+						APR.HBDP:AddminimapIconMap("APR", APR["Icons"][CLi], C_Map.GetBestMapForUnit('player'), px2, py2, true, true)
 					else
 						APR["Icons"][CLi]["A"] = 0
 						APR["Icons"][CLi]["P"] = 0
-						APR.HBDP:RemoveMinimapIcon("APR", APR["Icons"][CLi])
+						APR.HBDP:RemoveminimapIcon("APR", APR["Icons"][CLi])
 					end
 				end
 			end

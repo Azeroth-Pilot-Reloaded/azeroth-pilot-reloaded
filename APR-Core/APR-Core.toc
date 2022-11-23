@@ -30,6 +30,6 @@ QHandler.lua
 zones\Alliance.lua
 zones\Horde.lua
 zones\Neutral.lua
-Minimap.lua
+minimap.lua
 QTest.lua
 Transport.lua

@@ -323,7 +323,7 @@ L = {
 	["MASTER_RIDING"] = "Maître cavalier",
 	--[[Translation missing --]]
 	["MAXOMILLIAN_PRAY"] = "Let Maxomillian pray to Furys",
-	["MINIMAP_BLOB_ALPHA"] = "Transparence des pointillers sur la minicarte",
+	["minimap_BLOB_ALPHA"] = "Transparence des pointillers sur la minicarte",
 	--[[Translation missing --]]
 	["MINING_PICK"] = "Mining Pick",
 	["MISSING_Q"] = "Quête manquante",
@@ -424,7 +424,7 @@ L = {
 	["SHIMMERDUST_BUFF"] = "Shimmerdust Pile buff",
 	["SHOW_ARROW"] = "Afficher la flèche",
 	["SHOW_BLOBS_ON_MAP"] = "Afficher les pointillers sur la carte",
-	["SHOW_BLOBS_ON_MINIMAP"] = "Afficher les pointillers sur la minicarte",
+	["SHOW_BLOBS_ON_minimap"] = "Afficher les pointillers sur la minicarte",
 	["SHOW_GROUP_PROGRESS"] = "Afficher la progression du groupe",
 	["SHOW_QLIST"] = "Afficher la liste de quêtes",
 	["SHOW_QORDERLIST"] = "Afficher la fenêtre d'ordre des quêtes",
