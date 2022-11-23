@@ -1,9 +1,12 @@
 ## Interface: 100002
 # X-WoWI-ID: 0
 
-## Title: |cffff7d0aAzeroth Pilot Reloaded|r
-## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.
+## Title: Azeroth Pilot Reloaded - [|cffeda55fCore|r]
+## Title-frFR: Azeroth Pilot Reloaded - [|cffeda55fNoyau|r]
+## Notes: Provides Core for Azeroth Pilot Reloaded.
 ## Author: Rycia, Deathmessinger, zyrrael, Neogeekmo
+
+## RequiredDeps: APR
 
 ## SavedVariables: APR1, APR2, APR3, APRQuestNames, APR_HoldZoneVar, APR_Transport, APR_Custom, APR_ZoneComplete, APR_TaxiTimers
 lib\HereBeDragons\LibStub\LibStub.lua
@@ -22,6 +25,7 @@ locales\ptBR.lua
 locales\ruRU.lua
 locales\zhCN.lua
 locales\zhTW.lua
+Commands.lua
 Core.lua
 TransportDB.lua
 OptionsPanel.lua

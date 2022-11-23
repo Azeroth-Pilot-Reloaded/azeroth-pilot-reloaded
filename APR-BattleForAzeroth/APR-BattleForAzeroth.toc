@@ -1,7 +1,7 @@
 ## Interface: 100002
 ## X-Min-Interface: 100002
 
-## Title: |cffff7d0aAzeroth Pilot Reloaded|r - Battle for Azeroth
+## Title: Azeroth Pilot Reloaded - [|cffeda55fBattle for Azeroth|r]
 ## Notes: Provides Battle for Azeroth implementation for Azeroth Pilot Reloaded.
 ## Author: Rycia
 

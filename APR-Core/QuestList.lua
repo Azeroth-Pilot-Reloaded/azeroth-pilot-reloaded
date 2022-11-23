@@ -205,7 +205,7 @@ local function APR_CreateQuestList()
 	APR.QuestList.SugQuestFrameFS1:SetHeight(38)
 	APR.QuestList.SugQuestFrameFS1:SetJustifyH("CENTER")
 	APR.QuestList.SugQuestFrameFS1:SetFontObject("GameFontNormalLarge")
-	APR.QuestList.SugQuestFrameFS1:SetText(L["QUESTS_TEXT"])
+	APR.QuestList.SugQuestFrameFS1:SetText(L["Q_TEXT"])
 	APR.QuestList.SugQuestFrameFS1:SetTextColor(1, 1, 0)
 	APR.QuestList.SugQuestFrameFS2 = APR.QuestList.SugQuestFrame:CreateFontString("CLQaaFS2","ARTWORK", "ChatFontNormal")
 	APR.QuestList.SugQuestFrameFS2:SetParent(APR.QuestList.SugQuestFrame)
@@ -221,7 +221,7 @@ local function APR_CreateQuestList()
 	APR.QuestList.SugQuestFrame["Button1"]:SetPoint("BOTTOMLEFT",APR.QuestList.SugQuestFrame,"BOTTOMLEFT",15,5)
 	APR.QuestList.SugQuestFrame["Button1"]:SetWidth(110)
 	APR.QuestList.SugQuestFrame["Button1"]:SetHeight(30)
-	APR.QuestList.SugQuestFrame["Button1"]:SetText(L["ACCEPT_QUEST"])
+	APR.QuestList.SugQuestFrame["Button1"]:SetText(L["ACCEPT_Q"])
 	APR.QuestList.SugQuestFrame["Button1"]:SetParent(APR.QuestList.SugQuestFrame)
 	APR.QuestList.SugQuestFrame.Button1:SetNormalFontObject("GameFontNormal")
 	APR.QuestList.SugQuestFrame.Button1ntex = APR.QuestList.SugQuestFrame.Button1:CreateTexture()
@@ -246,7 +246,7 @@ local function APR_CreateQuestList()
 	APR.QuestList.SugQuestFrame["Button2"]:SetPoint("BOTTOMRIGHT",APR.QuestList.SugQuestFrame,"BOTTOMRIGHT",-15,5)
 	APR.QuestList.SugQuestFrame["Button2"]:SetWidth(110)
 	APR.QuestList.SugQuestFrame["Button2"]:SetHeight(30)
-	APR.QuestList.SugQuestFrame["Button2"]:SetText(L["DECLINE_QUEST"])
+	APR.QuestList.SugQuestFrame["Button2"]:SetText(L["DECLINE_Q"])
 	APR.QuestList.SugQuestFrame["Button2"]:SetParent(APR.QuestList.SugQuestFrame)
 	APR.QuestList.SugQuestFrame.Button2:SetNormalFontObject("GameFontNormal")
 	APR.QuestList.SugQuestFrame.Button2ntex = APR.QuestList.SugQuestFrame.Button2:CreateTexture()
@@ -398,7 +398,7 @@ local function APR_CreateQuestList()
 		APR1[APR.Realm][APR.Name]["Settings"]["top"] = -150
 		APR.QuestList.MainFrame:ClearAllPoints()
 		APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
-		print("APR: "..L["QUESTLIST_OUT_SCREEN"])
+		print("APR: "..L["QLIST_OUT_SCREEN"])
 	end
 	APR.QuestList.ListFrame:SetWidth(1)
 	APR.QuestList.ListFrame:SetHeight(1)
@@ -425,7 +425,7 @@ local function APR_CreateQuestList()
 				APR1[APR.Realm][APR.Name]["Settings"]["top"] = -150
 				APR.QuestList.MainFrame:ClearAllPoints()
 				APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
-				print("APR: "..L["QUESTLIST_OUT_SCREEN"])
+				print("APR: "..L["QLIST_OUT_SCREEN"])
 			end
 			APR_CombatTestVar = 1
 		end
@@ -487,7 +487,7 @@ local function APR_CreateQuestList()
 				APR1[APR.Realm][APR.Name]["Settings"]["top"] = -150
 				APR.QuestList.MainFrame:ClearAllPoints()
 				APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
-				print("APR: "..L["QUESTLIST_OUT_SCREEN"])
+				print("APR: "..L["QLIST_OUT_SCREEN"])
 			end
 			APR_CombatTestVar = 1
 		end
@@ -577,7 +577,7 @@ local function APR_CreateQuestList()
 					APR1[APR.Realm][APR.Name]["Settings"]["top"] = -150
 					APR.QuestList.MainFrame:ClearAllPoints()
 					APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
-					print("APR: "..L["QUESTLIST_OUT_SCREEN"])
+					print("APR: "..L["QLIST_OUT_SCREEN"])
 				end
 				APR_CombatTestVar = 1
 			end
@@ -599,7 +599,7 @@ local function APR_CreateQuestList()
 		APR.QuestList.QuestFrames["FS"..CLi]:SetText("")
 		APR.QuestList.QuestFrames["FS"..CLi]:SetTextColor(1, 1, 0)
 
-		APR.QuestList.QuestFrames["FS"..CLi]["BQid"] = 0		
+		APR.QuestList.QuestFrames["FS"..CLi]["BQid"] = 0
 		--skip waypoint button
 		AddQuestListButton(L["SKIP_BUTTON"], CLi, function(self, button)
 			local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
@@ -775,7 +775,7 @@ local function APR_CreateQuestList()
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetHeight(38)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetJustifyH("LEFT")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetFontObject("GameFontNormalSmall")
-	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetText(L["BASKET_TRAP"])
+	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetText(L["UNTOUCHED_BASKET"])
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetTextColor(1, 1, 0)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS41 = APR.QuestList.SweatOfOurBrowBuffFrame:CreateFontString("APR_QuestList_SweatOfOurBrowBuffFrame_FS41","ARTWORK", "ChatFontNormal")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS41:SetParent(APR.QuestList.SweatOfOurBrowBuffFrame.Traps3)

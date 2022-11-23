@@ -20,7 +20,7 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["SetHS"] = 34398,
 	},
 	{
-	   ["ExtraLineText"] = "SWITCH_TIMELINE",
+	   ["ExtraLineText"] = "SWITCH_TO_CHROMIE",
 	   ["PickUp"] = {
 		  34398,
 	   },
@@ -117,7 +117,7 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["Gossip"] = 1,
 	   ["LeaveQuest"] = 59583,
 	},
- 
+
 	{
 	   ["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
 	   ["SpellInTab"] = 33388,
@@ -150,7 +150,7 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["SetHS"] = 34398,
 	},
 	{
-	   ["ExtraLineText"] = "SWITCH_TIMELINE",
+	   ["ExtraLineText"] = "SWITCH_TO_CHROMIE",
 	   ["PickUp"] = {
 		  34398,
 	   },
@@ -245,7 +245,7 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["SetHS"] = 34398,
 	},
 	{
-	   ["ExtraLineText"] = "SWITCH_TIMELINE",
+	   ["ExtraLineText"] = "SWITCH_TO_CHROMIE",
 	   ["PickUp"] = {
 		  34398,
 	   },
@@ -1974,7 +1974,7 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["x"] = 240.6,
 	   },
 	}, -- [20]
- 
+
 	{
 	   ["Treasure"] = 35279,
 	   ["Fillers"] = {
@@ -2204,7 +2204,7 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["x"] = 264,
 	   },
 	}, -- [6]
- 
+
 	{
 	   ["ExtraLineText"] = "GO_SOUTH",
 	   ["Done"] = {
@@ -2307,7 +2307,7 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["x"] = 304.5,
 	   },
 	}, -- [13]
- 
+
 	{
 	   ["Trigger"] = {
 		  ["y"] = 1028.9,
@@ -2888,7 +2888,7 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 		  33116,
 	   },
 	}, -- [16]
- 
+
 	{
 	   ["PickUp"] = {
 		  33833,
@@ -8309,7 +8309,7 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 		  34692,
 	   },
 	}, -- [4]
- 
+
 	{
 	   ["Treasure"] = 36879,
 	   ["Trigger"] = {
@@ -10364,7 +10364,7 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["x"] = 2567.1,
 	   },
 	}, -- [5]
- 
+
 	{
 	   ["Qpart"] = {
 		  [34104] = {
@@ -10709,7 +10709,7 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 		  34701,
 	   },
 	}, -- [6]
- 
+
 	{
 	   ["PickUp"] = {
 		  34458,
@@ -11864,7 +11864,7 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["x"] = 3323.6,
 	   },
 	}, -- [7]
- 
+
 	{
 	   ["TT"] = {
 		  ["y"] = 3571.3,
@@ -14348,5 +14348,3 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
- 
- 
