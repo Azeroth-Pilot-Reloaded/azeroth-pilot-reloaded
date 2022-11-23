@@ -126,9 +126,11 @@ APR.QuestStepListListing["MISC 1"] = {
 }
 if (APR.Class[3] == 12) then
 APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
-end
-if (APR.Level < 10) then
+elseif (APR.Level == 1) then
 	APR.QuestStepListListing["MISC 1"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
+elseif (APR.Race == "Goblin" and APR.Level < 2) then
+	APR.QuestStepListListing["MISC 1"]["194-Kezan"] = "01-30 Goblin Start (Kezan)"
+	APR.QuestStepListListing["MISC 1"]["174-LostIsles"] = "01-30 Goblin Start (Lost Isles)"	
 end
 
 APR.QuestStepListListing["MISC 2"] = {
