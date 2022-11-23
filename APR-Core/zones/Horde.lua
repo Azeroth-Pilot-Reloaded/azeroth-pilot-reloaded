@@ -10,6 +10,8 @@ if (APR.Race == "Goblin" and APR.Level < 33) then
 	}
 elseif (APR.Race == "Orc") then
 	APR.QuestStepListListingStartAreas["Kalimdor"]["1-ValleyOfTrialsOrc"] = "01-10 Orc Start"
+elseif (APR.Race == "Tauren") then
+	APR.QuestStepListListingStartAreas["Kalimdor"]["7-MulgoreTauren"] = "01-10 Tauren Start"
 elseif (APR.Race == "Scourge") then
 	APR.QuestStepListListingStartAreas["EasternKingdom"]["18-TirisfalGladesUndead"] = "01-10 Scourge Start"
 elseif (APR.Race == "BloodElf") then
@@ -37,6 +39,7 @@ end
 APR.QuestStepListListingZone = {
 	["01-10 Orc Start"] = 1,
 	["01-10 Troll Start"] = 1,
+	["01-10 Tauren Start"] = 7,
 	["01-10 Scourge Start"] = 18,
 	["01-10 Blood Elf Start"] = 94,
 	["01-30 Goblin Start (Kezan)"] = 194,
