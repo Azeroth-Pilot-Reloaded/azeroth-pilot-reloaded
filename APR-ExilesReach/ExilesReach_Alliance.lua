@@ -1,6 +1,6 @@
 if (APR.Faction == "Alliance") then
 	if (APR.Class[3] == 1 and APR.Level < 33) then
-		APR.QuestStepList["1409-Exile's Reach"] = {
+		APR.QStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				56775, -- [1]
@@ -17,7 +17,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 6694.7,
 				["x"] = -4736.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[56775] = {
 					["1"] = "1",
 				},
@@ -50,7 +50,7 @@ if (APR.Faction == "Alliance") then
 		}, -- [4]
 		{
 			["NoArrows"] = 1,
-			["Qpart"] = {
+			["QPart"] = {
 				[58209] = {
 					["1"] = "1",
 				},
@@ -111,7 +111,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -359.8,
 				["x"] = -2563.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55122] = {
 					["1"] = "1",
 				},
@@ -141,7 +141,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [12]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["2"] = "2",
 				},
@@ -161,7 +161,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [13]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["3"] = "3",
 				},
@@ -181,7 +181,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [14]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["1"] = "1",
 				},
@@ -223,7 +223,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -273.9,
 				["x"] = -2493,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54952] = {
 					["1"] = "1",
 				},
@@ -257,7 +257,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -182.4,
 				["x"] = -2498.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["1"] = "1",
 				},
@@ -273,7 +273,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -247.4,
 				["x"] = -2490.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["2"] = "2",
 				},
@@ -307,7 +307,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -196.7,
 				["x"] = -2464.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59254] = {
 					["1"] = "1",
 				},
@@ -390,7 +390,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [32]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55186] = {
 					["1"] = "1",
 				},
@@ -416,7 +416,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 43.1,
 				["x"] = -2559.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55184] = {
 					["1"] = "1",
 				},
@@ -459,7 +459,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [38]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55193] = {
 					["1"] = "1",
 				},
@@ -494,7 +494,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [41]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56034] = {
 					["1"] = "1",
 				},
@@ -535,7 +535,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 115.3,
 				["x"] = -2428.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["1"] = "1",
 				},
@@ -551,7 +551,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 213.1,
 				["x"] = -2300.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["2"] = "2",
 				},
@@ -563,7 +563,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [46]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["3"] = "3",
 				},
@@ -610,7 +610,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [50]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55194] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -695,7 +695,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [58]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55763] = {
 					["1"] = "1",
 				},
@@ -725,7 +725,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 496.1,
 				["x"] = -2507.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55764] = {
 					["1"] = "1",
 				},
@@ -773,7 +773,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 313.8,
 				["x"] = -2460.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -789,7 +789,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 325.3,
 				["x"] = -2495.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -805,7 +805,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 291.6,
 				["x"] = -2513.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -821,7 +821,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 280,
 				["x"] = -2473.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -850,7 +850,7 @@ if (APR.Faction == "Alliance") then
 				["x"] = -2288.7,
 			},
 		}, -- [69]
----- Class Quest Start
+---- Class Q Start
 		{
 			["PickUp"] = {
 				58914, -- [1]
@@ -903,7 +903,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [5]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[58915] = {
 					["1"] = "1",
 				},
@@ -928,7 +928,7 @@ if (APR.Faction == "Alliance") then
 				58915, -- [1]
 			},
 		}, -- [7]
----- Class Quest End
+---- Class Q End
 		{
 			["Done"] = {
 				55965, -- [1]
@@ -952,7 +952,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 71,
 				["x"] = -2240,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["1"] = "1",
 				},
@@ -976,7 +976,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [86]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["2"] = "2",
 				},
@@ -997,7 +997,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 75.3,
 				["x"] = -2134.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["3"] = "3",
 				},
@@ -1036,7 +1036,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [91]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -1104,7 +1104,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [97]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["1"] = "1",
 				},
@@ -1126,7 +1126,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["2"] = "2",
 				},
@@ -1142,7 +1142,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["3"] = "3",
 				},
@@ -1158,7 +1158,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["4"] = "4",
 				},
@@ -1214,7 +1214,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [106]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["2"] = "2",
 				},
@@ -1231,7 +1231,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [107]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["1"] = "1",
 				},
@@ -1256,7 +1256,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [108]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["3"] = "3",
 				},
@@ -1280,7 +1280,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [109]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55989] = {
 					["1"] = "1",
 				},
@@ -1305,7 +1305,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 608.9,
 				["x"] = -2085.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55988] = {
 					["1"] = "1",
 				},
@@ -1331,7 +1331,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["4"] = "4",
 				},
@@ -1365,7 +1365,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55992] = {
 					["1"] = "1",
 				},
@@ -1399,7 +1399,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55991] = {
 					["1"] = "1",
 				},
@@ -1416,7 +1416,7 @@ if (APR.Faction == "Alliance") then
 	}
 	end
 	if (APR.Class[3] == 2 and APR.Level < 33) then
-		APR.QuestStepList["1409-Exile's Reach"] = {
+		APR.QStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				56775, -- [1]
@@ -1433,7 +1433,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 6694.7,
 				["x"] = -4736.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[56775] = {
 					["1"] = "1",
 				},
@@ -1466,7 +1466,7 @@ if (APR.Faction == "Alliance") then
 		}, -- [4]
 		{
 			["NoArrows"] = 1,
-			["Qpart"] = {
+			["QPart"] = {
 				[58209] = {
 					["1"] = "1",
 				},
@@ -1527,7 +1527,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -359.8,
 				["x"] = -2563.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55122] = {
 					["1"] = "1",
 				},
@@ -1557,7 +1557,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [12]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["2"] = "2",
 				},
@@ -1577,7 +1577,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [13]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["3"] = "3",
 				},
@@ -1597,7 +1597,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [14]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["1"] = "1",
 				},
@@ -1639,7 +1639,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -273.9,
 				["x"] = -2493,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54952] = {
 					["1"] = "1",
 				},
@@ -1673,7 +1673,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -182.4,
 				["x"] = -2498.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["1"] = "1",
 				},
@@ -1689,7 +1689,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -247.4,
 				["x"] = -2490.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["2"] = "2",
 				},
@@ -1709,7 +1709,7 @@ if (APR.Faction == "Alliance") then
 				55174, -- [1]
 			},
 		}, -- [24]
----- Class Quests Start
+---- Class Qs Start
 		{
 			["PickUp"] = {
 				59254, -- [1]
@@ -1724,7 +1724,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -211,
 				["x"] = -2522,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59254] = {
 					["1"] = "1",
 				},
@@ -1807,7 +1807,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [32]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55186] = {
 					["1"] = "1",
 				},
@@ -1833,7 +1833,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 43.1,
 				["x"] = -2559.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55184] = {
 					["1"] = "1",
 				},
@@ -1876,7 +1876,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [38]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55193] = {
 					["1"] = "1",
 				},
@@ -1911,7 +1911,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [41]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56034] = {
 					["1"] = "1",
 				},
@@ -1952,7 +1952,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 115.3,
 				["x"] = -2428.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["1"] = "1",
 				},
@@ -1968,7 +1968,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 213.1,
 				["x"] = -2300.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["2"] = "2",
 				},
@@ -1980,7 +1980,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [46]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["3"] = "3",
 				},
@@ -2027,7 +2027,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [50]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55194] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -2112,7 +2112,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [58]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55763] = {
 					["1"] = "1",
 				},
@@ -2142,7 +2142,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 496.1,
 				["x"] = -2507.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55764] = {
 					["1"] = "1",
 				},
@@ -2190,7 +2190,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 313.8,
 				["x"] = -2460.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -2206,7 +2206,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 325.3,
 				["x"] = -2495.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -2222,7 +2222,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 291.6,
 				["x"] = -2513.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -2238,7 +2238,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 280,
 				["x"] = -2473.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -2267,7 +2267,7 @@ if (APR.Faction == "Alliance") then
 				["x"] = -2288.7,
 			},
 		}, -- [69]
----- Class Quest Start
+---- Class Q Start
 		{
 			["PickUp"] = {
 				58923, -- [1]
@@ -2302,7 +2302,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [3]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[58923] = {
 					["1"] = "1",
 				},
@@ -2342,7 +2342,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 258.5,
 				["x"] = -2463.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[58946] = {
 					["1"] = "1",
 				},
@@ -2358,7 +2358,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 246.6,
 				["x"] = -2450,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[58946] = {
 					["2"] = "2",
 				},
@@ -2378,7 +2378,7 @@ if (APR.Faction == "Alliance") then
 				58946, -- [1]
 			},
 		}, -- [9]
----- Class Quest End
+---- Class Q End
 		{
 			["Done"] = {
 				55965, -- [1]
@@ -2402,7 +2402,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 71,
 				["x"] = -2240,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["1"] = "1",
 				},
@@ -2426,7 +2426,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [86]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["2"] = "2",
 				},
@@ -2447,7 +2447,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 75.3,
 				["x"] = -2134.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["3"] = "3",
 				},
@@ -2486,7 +2486,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [91]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -2554,7 +2554,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [97]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["1"] = "1",
 				},
@@ -2576,7 +2576,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["2"] = "2",
 				},
@@ -2592,7 +2592,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["3"] = "3",
 				},
@@ -2608,7 +2608,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["4"] = "4",
 				},
@@ -2664,7 +2664,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [106]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["2"] = "2",
 				},
@@ -2681,7 +2681,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [107]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["1"] = "1",
 				},
@@ -2706,7 +2706,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [108]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["3"] = "3",
 				},
@@ -2730,7 +2730,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [109]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55989] = {
 					["1"] = "1",
 				},
@@ -2755,7 +2755,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 608.9,
 				["x"] = -2085.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55988] = {
 					["1"] = "1",
 				},
@@ -2781,7 +2781,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["4"] = "4",
 				},
@@ -2815,7 +2815,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55992] = {
 					["1"] = "1",
 				},
@@ -2849,7 +2849,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55991] = {
 					["1"] = "1",
 				},
@@ -2866,7 +2866,7 @@ if (APR.Faction == "Alliance") then
 	}
 	end
 	if (APR.Class[3] == 3 and APR.Level < 33) then
-		APR.QuestStepList["1409-Exile's Reach"] = {
+		APR.QStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				56775, -- [1]
@@ -2883,7 +2883,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 6694.7,
 				["x"] = -4736.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[56775] = {
 					["1"] = "1",
 				},
@@ -2916,7 +2916,7 @@ if (APR.Faction == "Alliance") then
 		}, -- [4]
 		{
 			["NoArrows"] = 1,
-			["Qpart"] = {
+			["QPart"] = {
 				[58209] = {
 					["1"] = "1",
 				},
@@ -2977,7 +2977,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -359.8,
 				["x"] = -2563.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55122] = {
 					["1"] = "1",
 				},
@@ -3007,7 +3007,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [12]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["2"] = "2",
 				},
@@ -3027,7 +3027,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [13]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["3"] = "3",
 				},
@@ -3047,7 +3047,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [14]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["1"] = "1",
 				},
@@ -3089,7 +3089,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -273.9,
 				["x"] = -2493,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54952] = {
 					["1"] = "1",
 				},
@@ -3123,7 +3123,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -182.4,
 				["x"] = -2498.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["1"] = "1",
 				},
@@ -3139,7 +3139,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -247.4,
 				["x"] = -2490.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["2"] = "2",
 				},
@@ -3191,7 +3191,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -170,
 				["x"] = -2574.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59342] = {
 					["2"] = "2",
 				},
@@ -3256,7 +3256,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [32]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55186] = {
 					["1"] = "1",
 				},
@@ -3282,7 +3282,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 43.1,
 				["x"] = -2559.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55184] = {
 					["1"] = "1",
 				},
@@ -3325,7 +3325,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [38]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55193] = {
 					["1"] = "1",
 				},
@@ -3360,7 +3360,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [41]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56034] = {
 					["1"] = "1",
 				},
@@ -3401,7 +3401,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 115.3,
 				["x"] = -2428.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["1"] = "1",
 				},
@@ -3417,7 +3417,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 213.1,
 				["x"] = -2300.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["2"] = "2",
 				},
@@ -3429,7 +3429,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [46]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["3"] = "3",
 				},
@@ -3476,7 +3476,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [50]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55194] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -3561,7 +3561,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [58]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55763] = {
 					["1"] = "1",
 				},
@@ -3591,7 +3591,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 496.1,
 				["x"] = -2507.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55764] = {
 					["1"] = "1",
 				},
@@ -3639,7 +3639,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 313.8,
 				["x"] = -2460.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -3655,7 +3655,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 325.3,
 				["x"] = -2495.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -3671,7 +3671,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 291.6,
 				["x"] = -2513.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -3687,7 +3687,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 280,
 				["x"] = -2473.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -3727,7 +3727,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [70]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[59355] = {
 					["1"] = "1",
 				},
@@ -3749,7 +3749,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 237.8,
 				["x"] = -2283.9,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59355] = {
 					["2"] = "2",
 				},
@@ -3765,7 +3765,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 270,
 				["x"] = -2270.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59355] = {
 					["3"] = "3",
 				},
@@ -3799,7 +3799,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 228.8,
 				["x"] = -2273,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59356] = {
 					["1"] = "1",
 				},
@@ -3833,7 +3833,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 189.4,
 				["x"] = -2289.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[60168] = {
 					["1"] = "1",
 				},
@@ -3845,7 +3845,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [79]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[60168] = {
 					["2"] = "2",
 				},
@@ -3863,7 +3863,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [80]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[60168] = {
 					["3"] = "3",
 				},
@@ -3912,7 +3912,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 71,
 				["x"] = -2240,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["1"] = "1",
 				},
@@ -3936,7 +3936,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [86]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["2"] = "2",
 				},
@@ -3957,7 +3957,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 75.3,
 				["x"] = -2134.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["3"] = "3",
 				},
@@ -3996,7 +3996,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [91]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -4064,7 +4064,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [97]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["1"] = "1",
 				},
@@ -4086,7 +4086,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["2"] = "2",
 				},
@@ -4102,7 +4102,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["3"] = "3",
 				},
@@ -4118,7 +4118,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["4"] = "4",
 				},
@@ -4174,7 +4174,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [106]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["2"] = "2",
 				},
@@ -4191,7 +4191,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [107]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["1"] = "1",
 				},
@@ -4216,7 +4216,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [108]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["3"] = "3",
 				},
@@ -4240,7 +4240,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [109]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55989] = {
 					["1"] = "1",
 				},
@@ -4265,7 +4265,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 608.9,
 				["x"] = -2085.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55988] = {
 					["1"] = "1",
 				},
@@ -4291,7 +4291,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["4"] = "4",
 				},
@@ -4325,7 +4325,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55992] = {
 					["1"] = "1",
 				},
@@ -4359,7 +4359,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55991] = {
 					["1"] = "1",
 				},
@@ -4376,7 +4376,7 @@ if (APR.Faction == "Alliance") then
 	}
 	end
 	if (APR.Class[3] == 4 and APR.Level < 33) then
-		APR.QuestStepList["1409-Exile's Reach"] = {
+		APR.QStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				56775, -- [1]
@@ -4393,7 +4393,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 6694.7,
 				["x"] = -4736.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[56775] = {
 					["1"] = "1",
 				},
@@ -4426,7 +4426,7 @@ if (APR.Faction == "Alliance") then
 		}, -- [4]
 		{
 			["NoArrows"] = 1,
-			["Qpart"] = {
+			["QPart"] = {
 				[58209] = {
 					["1"] = "1",
 				},
@@ -4487,7 +4487,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -359.8,
 				["x"] = -2563.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55122] = {
 					["1"] = "1",
 				},
@@ -4517,7 +4517,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [12]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["2"] = "2",
 				},
@@ -4537,7 +4537,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [13]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["3"] = "3",
 				},
@@ -4557,7 +4557,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [14]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["1"] = "1",
 				},
@@ -4599,7 +4599,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -273.9,
 				["x"] = -2493,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54952] = {
 					["1"] = "1",
 				},
@@ -4633,7 +4633,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -182.4,
 				["x"] = -2498.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["1"] = "1",
 				},
@@ -4649,7 +4649,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -247.4,
 				["x"] = -2490.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["2"] = "2",
 				},
@@ -4669,7 +4669,7 @@ if (APR.Faction == "Alliance") then
 				55174, -- [1]
 			},
 		}, -- [24]
----- Class Quests Start
+---- Class Qs Start
 		{
 			["PickUp"] = {
 				59254, -- [1]
@@ -4684,7 +4684,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -224.2,
 				["x"] = -2524,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59254] = {
 					["1"] = "1",
 				},
@@ -4767,7 +4767,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [32]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55186] = {
 					["1"] = "1",
 				},
@@ -4793,7 +4793,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 43.1,
 				["x"] = -2559.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55184] = {
 					["1"] = "1",
 				},
@@ -4836,7 +4836,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [38]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55193] = {
 					["1"] = "1",
 				},
@@ -4871,7 +4871,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [41]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56034] = {
 					["1"] = "1",
 				},
@@ -4912,7 +4912,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 115.3,
 				["x"] = -2428.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["1"] = "1",
 				},
@@ -4928,7 +4928,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 213.1,
 				["x"] = -2300.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["2"] = "2",
 				},
@@ -4940,7 +4940,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [46]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["3"] = "3",
 				},
@@ -4987,7 +4987,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [50]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55194] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -5072,7 +5072,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [58]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55763] = {
 					["1"] = "1",
 				},
@@ -5102,7 +5102,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 496.1,
 				["x"] = -2507.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55764] = {
 					["1"] = "1",
 				},
@@ -5150,7 +5150,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 313.8,
 				["x"] = -2460.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -5166,7 +5166,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 325.3,
 				["x"] = -2495.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -5182,7 +5182,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 291.6,
 				["x"] = -2513.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -5198,7 +5198,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 280,
 				["x"] = -2473.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -5227,7 +5227,7 @@ if (APR.Faction == "Alliance") then
 				["x"] = -2288.7,
 			},
 		}, -- [69]
----- Class Quest Start
+---- Class Q Start
 		{
 			["PickUp"] = {
 				58917, -- [1]
@@ -5238,7 +5238,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [1]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[58917] = {
 					["1"] = "1",
 				},
@@ -5260,7 +5260,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 185,
 				["x"] = -2038.6,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[58917] = {
 					["2"] = "2",
 				},
@@ -5294,7 +5294,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 175.5,
 				["x"] = -2063.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[58933] = {
 					["1"] = "1",
 				},
@@ -5306,7 +5306,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [6]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[58933] = {
 					["2"] = "2",
 				},
@@ -5331,7 +5331,7 @@ if (APR.Faction == "Alliance") then
 				58933, -- [1]
 			},
 		}, -- [8]
----- Class Quest End
+---- Class Q End
 		{
 			["Done"] = {
 				55965, -- [1]
@@ -5355,7 +5355,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 71,
 				["x"] = -2240,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["1"] = "1",
 				},
@@ -5379,7 +5379,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [86]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["2"] = "2",
 				},
@@ -5400,7 +5400,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 75.3,
 				["x"] = -2134.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["3"] = "3",
 				},
@@ -5439,7 +5439,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [91]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -5507,7 +5507,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [97]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["1"] = "1",
 				},
@@ -5529,7 +5529,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["2"] = "2",
 				},
@@ -5545,7 +5545,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["3"] = "3",
 				},
@@ -5561,7 +5561,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["4"] = "4",
 				},
@@ -5617,7 +5617,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [106]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["2"] = "2",
 				},
@@ -5634,7 +5634,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [107]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["1"] = "1",
 				},
@@ -5659,7 +5659,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [108]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["3"] = "3",
 				},
@@ -5683,7 +5683,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [109]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55989] = {
 					["1"] = "1",
 				},
@@ -5708,7 +5708,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 608.9,
 				["x"] = -2085.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55988] = {
 					["1"] = "1",
 				},
@@ -5734,7 +5734,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["4"] = "4",
 				},
@@ -5768,7 +5768,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55992] = {
 					["1"] = "1",
 				},
@@ -5802,7 +5802,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55991] = {
 					["1"] = "1",
 				},
@@ -5819,7 +5819,7 @@ if (APR.Faction == "Alliance") then
 	}
 	end
 	if (APR.Class[3] == 5 and APR.Level < 33) then
-		APR.QuestStepList["1409-Exile's Reach"] = {
+		APR.QStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				56775, -- [1]
@@ -5836,7 +5836,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 6694.7,
 				["x"] = -4736.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[56775] = {
 					["1"] = "1",
 				},
@@ -5869,7 +5869,7 @@ if (APR.Faction == "Alliance") then
 		}, -- [4]
 		{
 			["NoArrows"] = 1,
-			["Qpart"] = {
+			["QPart"] = {
 				[58209] = {
 					["1"] = "1",
 				},
@@ -5930,7 +5930,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -359.8,
 				["x"] = -2563.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55122] = {
 					["1"] = "1",
 				},
@@ -5960,7 +5960,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [12]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["2"] = "2",
 				},
@@ -5980,7 +5980,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [13]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["3"] = "3",
 				},
@@ -6000,7 +6000,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [14]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["1"] = "1",
 				},
@@ -6042,7 +6042,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -273.9,
 				["x"] = -2493,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54952] = {
 					["1"] = "1",
 				},
@@ -6076,7 +6076,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -182.4,
 				["x"] = -2498.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["1"] = "1",
 				},
@@ -6092,7 +6092,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -247.4,
 				["x"] = -2490.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["2"] = "2",
 				},
@@ -6112,7 +6112,7 @@ if (APR.Faction == "Alliance") then
 				55174, -- [1]
 			},
 		}, -- [24]
----- Class Quests Start
+---- Class Qs Start
 		{
 			["PickUp"] = {
 				59254, -- [1]
@@ -6127,7 +6127,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -221.5,
 				["x"] = -2478.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59254] = {
 					["1"] = "1",
 				},
@@ -6210,7 +6210,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [32]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55186] = {
 					["1"] = "1",
 				},
@@ -6236,7 +6236,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 43.1,
 				["x"] = -2559.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55184] = {
 					["1"] = "1",
 				},
@@ -6279,7 +6279,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [38]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55193] = {
 					["1"] = "1",
 				},
@@ -6314,7 +6314,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [41]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56034] = {
 					["1"] = "1",
 				},
@@ -6355,7 +6355,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 115.3,
 				["x"] = -2428.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["1"] = "1",
 				},
@@ -6371,7 +6371,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 213.1,
 				["x"] = -2300.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["2"] = "2",
 				},
@@ -6383,7 +6383,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [46]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["3"] = "3",
 				},
@@ -6430,7 +6430,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [50]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55194] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -6515,7 +6515,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [58]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55763] = {
 					["1"] = "1",
 				},
@@ -6545,7 +6545,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 496.1,
 				["x"] = -2507.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55764] = {
 					["1"] = "1",
 				},
@@ -6593,7 +6593,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 313.8,
 				["x"] = -2460.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -6609,7 +6609,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 325.3,
 				["x"] = -2495.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -6625,7 +6625,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 291.6,
 				["x"] = -2513.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -6641,7 +6641,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 280,
 				["x"] = -2473.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -6670,7 +6670,7 @@ if (APR.Faction == "Alliance") then
 				["x"] = -2288.7,
 			},
 		}, -- [69]
----- Class Quest Start
+---- Class Q Start
 		{
 			["PickUp"] = {
 				58953, -- [1]
@@ -6685,7 +6685,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 221.9,
 				["x"] = -2415.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[58953] = {
 					["1"] = "1",
 				},
@@ -6719,7 +6719,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 228.1,
 				["x"] = -2419.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[58960] = {
 					["1"] = "1",
 				},
@@ -6739,7 +6739,7 @@ if (APR.Faction == "Alliance") then
 				58960, -- [1]
 			},
 		}, -- [6]
----- Class Quest End
+---- Class Q End
 		{
 			["Done"] = {
 				55965, -- [1]
@@ -6763,7 +6763,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 71,
 				["x"] = -2240,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["1"] = "1",
 				},
@@ -6787,7 +6787,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [86]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["2"] = "2",
 				},
@@ -6808,7 +6808,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 75.3,
 				["x"] = -2134.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["3"] = "3",
 				},
@@ -6847,7 +6847,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [91]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -6915,7 +6915,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [97]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["1"] = "1",
 				},
@@ -6937,7 +6937,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["2"] = "2",
 				},
@@ -6953,7 +6953,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["3"] = "3",
 				},
@@ -6969,7 +6969,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["4"] = "4",
 				},
@@ -7025,7 +7025,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [106]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["2"] = "2",
 				},
@@ -7042,7 +7042,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [107]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["1"] = "1",
 				},
@@ -7067,7 +7067,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [108]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["3"] = "3",
 				},
@@ -7091,7 +7091,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [109]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55989] = {
 					["1"] = "1",
 				},
@@ -7116,7 +7116,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 608.9,
 				["x"] = -2085.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55988] = {
 					["1"] = "1",
 				},
@@ -7142,7 +7142,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["4"] = "4",
 				},
@@ -7176,7 +7176,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55992] = {
 					["1"] = "1",
 				},
@@ -7210,7 +7210,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55991] = {
 					["1"] = "1",
 				},
@@ -7227,7 +7227,7 @@ if (APR.Faction == "Alliance") then
 	}
 	end
 	if (APR.Class[3] == 7 and APR.Level < 33) then
-		APR.QuestStepList["1409-Exile's Reach"] = {
+		APR.QStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				56775, -- [1]
@@ -7244,7 +7244,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 6694.7,
 				["x"] = -4736.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[56775] = {
 					["1"] = "1",
 				},
@@ -7277,7 +7277,7 @@ if (APR.Faction == "Alliance") then
 		}, -- [4]
 		{
 			["NoArrows"] = 1,
-			["Qpart"] = {
+			["QPart"] = {
 				[58209] = {
 					["1"] = "1",
 				},
@@ -7338,7 +7338,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -359.8,
 				["x"] = -2563.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55122] = {
 					["1"] = "1",
 				},
@@ -7368,7 +7368,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [12]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["2"] = "2",
 				},
@@ -7388,7 +7388,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [13]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["3"] = "3",
 				},
@@ -7408,7 +7408,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [14]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["1"] = "1",
 				},
@@ -7450,7 +7450,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -273.9,
 				["x"] = -2493,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54952] = {
 					["1"] = "1",
 				},
@@ -7484,7 +7484,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -182.4,
 				["x"] = -2498.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["1"] = "1",
 				},
@@ -7500,7 +7500,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -247.4,
 				["x"] = -2490.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["2"] = "2",
 				},
@@ -7520,7 +7520,7 @@ if (APR.Faction == "Alliance") then
 				55174, -- [1]
 			},
 		}, -- [24]
----- Class Quests Start
+---- Class Qs Start
 		{
 			["PickUp"] = {
 				59254, -- [1]
@@ -7535,7 +7535,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -207.2,
 				["x"] = -2471.9,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59254] = {
 					["1"] = "1",
 				},
@@ -7618,7 +7618,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [32]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55186] = {
 					["1"] = "1",
 				},
@@ -7644,7 +7644,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 43.1,
 				["x"] = -2559.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55184] = {
 					["1"] = "1",
 				},
@@ -7687,7 +7687,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [38]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55193] = {
 					["1"] = "1",
 				},
@@ -7722,7 +7722,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [41]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56034] = {
 					["1"] = "1",
 				},
@@ -7763,7 +7763,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 115.3,
 				["x"] = -2428.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["1"] = "1",
 				},
@@ -7779,7 +7779,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 213.1,
 				["x"] = -2300.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["2"] = "2",
 				},
@@ -7791,7 +7791,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [46]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["3"] = "3",
 				},
@@ -7838,7 +7838,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [50]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55194] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -7923,7 +7923,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [58]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55763] = {
 					["1"] = "1",
 				},
@@ -7953,7 +7953,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 496.1,
 				["x"] = -2507.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55764] = {
 					["1"] = "1",
 				},
@@ -8001,7 +8001,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 313.8,
 				["x"] = -2460.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -8017,7 +8017,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 325.3,
 				["x"] = -2495.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -8033,7 +8033,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 291.6,
 				["x"] = -2513.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -8049,7 +8049,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 280,
 				["x"] = -2473.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -8078,7 +8078,7 @@ if (APR.Faction == "Alliance") then
 				["x"] = -2288.7,
 			},
 		}, -- [69]
----- Class Quest Start
+---- Class Q Start
 		{
 			["PickUp"] = {
 				59002, -- [1]
@@ -8093,7 +8093,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 276.1,
 				["x"] = -2288.9,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59002] = {
 					["1"] = "1",
 				},
@@ -8109,7 +8109,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 180.9,
 				["x"] = -2284,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59002] = {
 					["2"] = "2",
 				},
@@ -8125,7 +8125,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 148,
 				["x"] = -2352.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59002] = {
 					["3"] = "3",
 				},
@@ -8145,7 +8145,7 @@ if (APR.Faction == "Alliance") then
 				59002, -- [1]
 			},
 		}, -- [5]
----- Class Quest End
+---- Class Q End
 		{
 			["Done"] = {
 				55965, -- [1]
@@ -8169,7 +8169,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 71,
 				["x"] = -2240,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["1"] = "1",
 				},
@@ -8193,7 +8193,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [86]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["2"] = "2",
 				},
@@ -8214,7 +8214,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 75.3,
 				["x"] = -2134.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["3"] = "3",
 				},
@@ -8253,7 +8253,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [91]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -8321,7 +8321,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [97]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["1"] = "1",
 				},
@@ -8343,7 +8343,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["2"] = "2",
 				},
@@ -8359,7 +8359,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["3"] = "3",
 				},
@@ -8375,7 +8375,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["4"] = "4",
 				},
@@ -8431,7 +8431,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [106]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["2"] = "2",
 				},
@@ -8448,7 +8448,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [107]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["1"] = "1",
 				},
@@ -8473,7 +8473,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [108]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["3"] = "3",
 				},
@@ -8497,7 +8497,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [109]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55989] = {
 					["1"] = "1",
 				},
@@ -8522,7 +8522,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 608.9,
 				["x"] = -2085.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55988] = {
 					["1"] = "1",
 				},
@@ -8548,7 +8548,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["4"] = "4",
 				},
@@ -8582,7 +8582,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55992] = {
 					["1"] = "1",
 				},
@@ -8616,7 +8616,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55991] = {
 					["1"] = "1",
 				},
@@ -8633,7 +8633,7 @@ if (APR.Faction == "Alliance") then
 	}
 	end
 	if (APR.Class[3] == 8 and APR.Level < 33) then
-		APR.QuestStepList["1409-Exile's Reach"] = {
+		APR.QStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				56775, -- [1]
@@ -8650,7 +8650,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 6694.7,
 				["x"] = -4736.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[56775] = {
 					["1"] = "1",
 				},
@@ -8683,7 +8683,7 @@ if (APR.Faction == "Alliance") then
 		}, -- [4]
 		{
 			["NoArrows"] = 1,
-			["Qpart"] = {
+			["QPart"] = {
 				[58209] = {
 					["1"] = "1",
 				},
@@ -8744,7 +8744,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -359.8,
 				["x"] = -2563.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55122] = {
 					["1"] = "1",
 				},
@@ -8774,7 +8774,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [12]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["2"] = "2",
 				},
@@ -8794,7 +8794,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [13]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["3"] = "3",
 				},
@@ -8814,7 +8814,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [14]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["1"] = "1",
 				},
@@ -8856,7 +8856,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -273.9,
 				["x"] = -2493,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54952] = {
 					["1"] = "1",
 				},
@@ -8890,7 +8890,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -182.4,
 				["x"] = -2498.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["1"] = "1",
 				},
@@ -8906,7 +8906,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -247.4,
 				["x"] = -2490.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["2"] = "2",
 				},
@@ -8926,7 +8926,7 @@ if (APR.Faction == "Alliance") then
 				55174, -- [1]
 			},
 		}, -- [24]
----- Class Quests Start
+---- Class Qs Start
 		{
 			["PickUp"] = {
 				59254, -- [1]
@@ -8941,7 +8941,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -196.7,
 				["x"] = -2464.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59254] = {
 					["1"] = "1",
 				},
@@ -9024,7 +9024,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [32]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55186] = {
 					["1"] = "1",
 				},
@@ -9050,7 +9050,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 43.1,
 				["x"] = -2559.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55184] = {
 					["1"] = "1",
 				},
@@ -9093,7 +9093,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [38]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55193] = {
 					["1"] = "1",
 				},
@@ -9128,7 +9128,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [41]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56034] = {
 					["1"] = "1",
 				},
@@ -9169,7 +9169,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 115.3,
 				["x"] = -2428.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["1"] = "1",
 				},
@@ -9185,7 +9185,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 213.1,
 				["x"] = -2300.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["2"] = "2",
 				},
@@ -9197,7 +9197,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [46]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["3"] = "3",
 				},
@@ -9244,7 +9244,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [50]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55194] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -9329,7 +9329,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [58]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55763] = {
 					["1"] = "1",
 				},
@@ -9359,7 +9359,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 496.1,
 				["x"] = -2507.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55764] = {
 					["1"] = "1",
 				},
@@ -9407,7 +9407,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 313.8,
 				["x"] = -2460.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -9423,7 +9423,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 325.3,
 				["x"] = -2495.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -9439,7 +9439,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 291.6,
 				["x"] = -2513.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -9455,7 +9455,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 280,
 				["x"] = -2473.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -9484,7 +9484,7 @@ if (APR.Faction == "Alliance") then
 				["x"] = -2288.7,
 			},
 		}, -- [69]
----- Class Quest Start
+---- Class Q Start
 		{
 			["PickUp"] = {
 				59352, -- [1]
@@ -9499,7 +9499,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 310.3,
 				["x"] = -2274.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59352] = {
 					["1"] = "1",
 				},
@@ -9529,7 +9529,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [4]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[59354] = {
 					["1"] = "1",
 				},
@@ -9550,7 +9550,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 178.9,
 				["x"] = -2332.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59354] = {
 					["2"] = "2",
 				},
@@ -9570,7 +9570,7 @@ if (APR.Faction == "Alliance") then
 				59354, -- [1]
 			},
 		}, -- [7]
----- Class Quest End
+---- Class Q End
 		{
 			["Done"] = {
 				55965, -- [1]
@@ -9594,7 +9594,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 71,
 				["x"] = -2240,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["1"] = "1",
 				},
@@ -9618,7 +9618,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [86]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["2"] = "2",
 				},
@@ -9639,7 +9639,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 75.3,
 				["x"] = -2134.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["3"] = "3",
 				},
@@ -9678,7 +9678,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [91]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -9746,7 +9746,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [97]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["1"] = "1",
 				},
@@ -9768,7 +9768,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["2"] = "2",
 				},
@@ -9784,7 +9784,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["3"] = "3",
 				},
@@ -9800,7 +9800,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["4"] = "4",
 				},
@@ -9856,7 +9856,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [106]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["2"] = "2",
 				},
@@ -9873,7 +9873,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [107]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["1"] = "1",
 				},
@@ -9898,7 +9898,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [108]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["3"] = "3",
 				},
@@ -9922,7 +9922,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [109]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55989] = {
 					["1"] = "1",
 				},
@@ -9947,7 +9947,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 608.9,
 				["x"] = -2085.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55988] = {
 					["1"] = "1",
 				},
@@ -9973,7 +9973,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["4"] = "4",
 				},
@@ -10007,7 +10007,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55992] = {
 					["1"] = "1",
 				},
@@ -10041,7 +10041,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55991] = {
 					["1"] = "1",
 				},
@@ -10058,7 +10058,7 @@ if (APR.Faction == "Alliance") then
 	}
 	end
 	if (APR.Class[3] == 9 and APR.Level < 33) then
-		APR.QuestStepList["1409-Exile's Reach"] = {
+		APR.QStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				56775, -- [1]
@@ -10075,7 +10075,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 6694.7,
 				["x"] = -4736.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[56775] = {
 					["1"] = "1",
 				},
@@ -10108,7 +10108,7 @@ if (APR.Faction == "Alliance") then
 		}, -- [4]
 		{
 			["NoArrows"] = 1,
-			["Qpart"] = {
+			["QPart"] = {
 				[58209] = {
 					["1"] = "1",
 				},
@@ -10169,7 +10169,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -359.8,
 				["x"] = -2563.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55122] = {
 					["1"] = "1",
 				},
@@ -10199,7 +10199,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [12]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["2"] = "2",
 				},
@@ -10219,7 +10219,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [13]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["3"] = "3",
 				},
@@ -10239,7 +10239,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [14]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["1"] = "1",
 				},
@@ -10281,7 +10281,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -273.9,
 				["x"] = -2493,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54952] = {
 					["1"] = "1",
 				},
@@ -10315,7 +10315,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -182.4,
 				["x"] = -2498.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["1"] = "1",
 				},
@@ -10331,7 +10331,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -247.4,
 				["x"] = -2490.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["2"] = "2",
 				},
@@ -10351,7 +10351,7 @@ if (APR.Faction == "Alliance") then
 				55174, -- [1]
 			},
 		}, -- [24]
----- Class Quests Start
+---- Class Qs Start
 		{
 			["PickUp"] = {
 				59254, -- [1]
@@ -10366,7 +10366,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -221.5,
 				["x"] = -2478.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59254] = {
 					["1"] = "1",
 				},
@@ -10449,7 +10449,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [32]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55186] = {
 					["1"] = "1",
 				},
@@ -10475,7 +10475,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 43.1,
 				["x"] = -2559.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55184] = {
 					["1"] = "1",
 				},
@@ -10518,7 +10518,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [38]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55193] = {
 					["1"] = "1",
 				},
@@ -10553,7 +10553,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [41]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56034] = {
 					["1"] = "1",
 				},
@@ -10594,7 +10594,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 115.3,
 				["x"] = -2428.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["1"] = "1",
 				},
@@ -10610,7 +10610,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 213.1,
 				["x"] = -2300.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["2"] = "2",
 				},
@@ -10622,7 +10622,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [46]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["3"] = "3",
 				},
@@ -10669,7 +10669,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [50]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55194] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -10754,7 +10754,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [58]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55763] = {
 					["1"] = "1",
 				},
@@ -10784,7 +10784,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 496.1,
 				["x"] = -2507.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55764] = {
 					["1"] = "1",
 				},
@@ -10832,7 +10832,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 313.8,
 				["x"] = -2460.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -10848,7 +10848,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 325.3,
 				["x"] = -2495.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -10864,7 +10864,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 291.6,
 				["x"] = -2513.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -10880,7 +10880,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 280,
 				["x"] = -2473.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -10909,7 +10909,7 @@ if (APR.Faction == "Alliance") then
 				["x"] = -2288.7,
 			},
 		}, -- [69]
----- Class Quest Start
+---- Class Q Start
 		{
 			["PickUp"] = {
 				58962, -- [1]
@@ -10932,7 +10932,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [2]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[58962] = {
 					["1"] = "1",
 				},
@@ -10954,7 +10954,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 399.8,
 				["x"] = -2296.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[58962] = {
 					["2"] = "2",
 				},
@@ -10966,7 +10966,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [4]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[58962] = {
 					["3"] = "3",
 				},
@@ -10993,7 +10993,7 @@ if (APR.Faction == "Alliance") then
 				58962, -- [1]
 			},
 		}, -- [6]
----- Class Quest End
+---- Class Q End
 		{
 			["Done"] = {
 				55965, -- [1]
@@ -11017,7 +11017,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 71,
 				["x"] = -2240,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["1"] = "1",
 				},
@@ -11041,7 +11041,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [86]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["2"] = "2",
 				},
@@ -11062,7 +11062,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 75.3,
 				["x"] = -2134.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["3"] = "3",
 				},
@@ -11101,7 +11101,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [91]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -11169,7 +11169,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [97]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["1"] = "1",
 				},
@@ -11191,7 +11191,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["2"] = "2",
 				},
@@ -11207,7 +11207,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["3"] = "3",
 				},
@@ -11223,7 +11223,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["4"] = "4",
 				},
@@ -11279,7 +11279,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [106]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["2"] = "2",
 				},
@@ -11296,7 +11296,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [107]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["1"] = "1",
 				},
@@ -11321,7 +11321,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [108]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["3"] = "3",
 				},
@@ -11345,7 +11345,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [109]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55989] = {
 					["1"] = "1",
 				},
@@ -11370,7 +11370,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 608.9,
 				["x"] = -2085.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55988] = {
 					["1"] = "1",
 				},
@@ -11396,7 +11396,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["4"] = "4",
 				},
@@ -11430,7 +11430,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55992] = {
 					["1"] = "1",
 				},
@@ -11464,7 +11464,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55991] = {
 					["1"] = "1",
 				},
@@ -11481,7 +11481,7 @@ if (APR.Faction == "Alliance") then
 	}
 	end
 	if (APR.Class[3] == 10 and APR.Level < 33) then
-		APR.QuestStepList["1409-Exile's Reach"] = {
+		APR.QStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				56775, -- [1]
@@ -11498,7 +11498,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 6694.7,
 				["x"] = -4736.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[56775] = {
 					["1"] = "1",
 				},
@@ -11531,7 +11531,7 @@ if (APR.Faction == "Alliance") then
 		}, -- [4]
 		{
 			["NoArrows"] = 1,
-			["Qpart"] = {
+			["QPart"] = {
 				[58209] = {
 					["1"] = "1",
 				},
@@ -11592,7 +11592,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -359.8,
 				["x"] = -2563.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55122] = {
 					["1"] = "1",
 				},
@@ -11622,7 +11622,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [12]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["2"] = "2",
 				},
@@ -11642,7 +11642,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [13]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["3"] = "3",
 				},
@@ -11662,7 +11662,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [14]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["1"] = "1",
 				},
@@ -11704,7 +11704,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -273.9,
 				["x"] = -2493,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54952] = {
 					["1"] = "1",
 				},
@@ -11738,7 +11738,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -182.4,
 				["x"] = -2498.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["1"] = "1",
 				},
@@ -11754,7 +11754,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -247.4,
 				["x"] = -2490.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["2"] = "2",
 				},
@@ -11774,7 +11774,7 @@ if (APR.Faction == "Alliance") then
 				55174, -- [1]
 			},
 		}, -- [24]
----- Class Quests Start
+---- Class Qs Start
 		{
 			["PickUp"] = {
 				59339, -- [1]
@@ -11785,7 +11785,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [1]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[59339] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -11874,7 +11874,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [32]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55186] = {
 					["1"] = "1",
 				},
@@ -11900,7 +11900,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 43.1,
 				["x"] = -2559.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55184] = {
 					["1"] = "1",
 				},
@@ -11943,7 +11943,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [38]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55193] = {
 					["1"] = "1",
 				},
@@ -11978,7 +11978,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [41]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56034] = {
 					["1"] = "1",
 				},
@@ -12019,7 +12019,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 115.3,
 				["x"] = -2428.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["1"] = "1",
 				},
@@ -12035,7 +12035,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 213.1,
 				["x"] = -2300.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["2"] = "2",
 				},
@@ -12047,7 +12047,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [46]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["3"] = "3",
 				},
@@ -12094,7 +12094,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [50]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55194] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -12179,7 +12179,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [58]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55763] = {
 					["1"] = "1",
 				},
@@ -12209,7 +12209,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 496.1,
 				["x"] = -2507.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55764] = {
 					["1"] = "1",
 				},
@@ -12257,7 +12257,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 313.8,
 				["x"] = -2460.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -12273,7 +12273,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 325.3,
 				["x"] = -2495.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -12289,7 +12289,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 291.6,
 				["x"] = -2513.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -12305,7 +12305,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 280,
 				["x"] = -2473.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -12334,7 +12334,7 @@ if (APR.Faction == "Alliance") then
 				["x"] = -2288.7,
 			},
 		}, -- [69]
----- Class Quest Start
+---- Class Q Start
 		{
 			["PickUp"] = {
 				59347, -- [1]
@@ -12345,7 +12345,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [1]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[59347] = {
 					["1"] = "1",
 				},
@@ -12381,7 +12381,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [4]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[59349] = {
 					["1"] = "1",
 				},
@@ -12406,7 +12406,7 @@ if (APR.Faction == "Alliance") then
 				59349, -- [1]
 			},
 		}, -- [6]
----- Class Quest End
+---- Class Q End
 		{
 			["Done"] = {
 				55965, -- [1]
@@ -12430,7 +12430,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 71,
 				["x"] = -2240,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["1"] = "1",
 				},
@@ -12454,7 +12454,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [86]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["2"] = "2",
 				},
@@ -12475,7 +12475,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 75.3,
 				["x"] = -2134.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["3"] = "3",
 				},
@@ -12514,7 +12514,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [91]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -12582,7 +12582,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [97]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["1"] = "1",
 				},
@@ -12604,7 +12604,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["2"] = "2",
 				},
@@ -12620,7 +12620,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["3"] = "3",
 				},
@@ -12636,7 +12636,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["4"] = "4",
 				},
@@ -12692,7 +12692,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [106]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["2"] = "2",
 				},
@@ -12709,7 +12709,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [107]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["1"] = "1",
 				},
@@ -12734,7 +12734,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [108]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["3"] = "3",
 				},
@@ -12758,7 +12758,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [109]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55989] = {
 					["1"] = "1",
 				},
@@ -12783,7 +12783,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 608.9,
 				["x"] = -2085.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55988] = {
 					["1"] = "1",
 				},
@@ -12809,7 +12809,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["4"] = "4",
 				},
@@ -12843,7 +12843,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55992] = {
 					["1"] = "1",
 				},
@@ -12877,7 +12877,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55991] = {
 					["1"] = "1",
 				},
@@ -12894,7 +12894,7 @@ if (APR.Faction == "Alliance") then
 	}
 	end
 	if (APR.Class[3] == 11 and APR.Level < 33) then
-		APR.QuestStepList["1409-Exile's Reach"] = {
+		APR.QStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				56775, -- [1]
@@ -12911,7 +12911,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 6694.7,
 				["x"] = -4736.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[56775] = {
 					["1"] = "1",
 				},
@@ -12944,7 +12944,7 @@ if (APR.Faction == "Alliance") then
 		}, -- [4]
 		{
 			["NoArrows"] = 1,
-			["Qpart"] = {
+			["QPart"] = {
 				[58209] = {
 					["1"] = "1",
 				},
@@ -13005,7 +13005,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -359.8,
 				["x"] = -2563.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55122] = {
 					["1"] = "1",
 				},
@@ -13035,7 +13035,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [12]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["2"] = "2",
 				},
@@ -13055,7 +13055,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [13]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["3"] = "3",
 				},
@@ -13075,7 +13075,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [14]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[54951] = {
 					["1"] = "1",
 				},
@@ -13117,7 +13117,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -273.9,
 				["x"] = -2493,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54952] = {
 					["1"] = "1",
 				},
@@ -13151,7 +13151,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -182.4,
 				["x"] = -2498.7,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["1"] = "1",
 				},
@@ -13167,7 +13167,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -247.4,
 				["x"] = -2490.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55174] = {
 					["2"] = "2",
 				},
@@ -13187,7 +13187,7 @@ if (APR.Faction == "Alliance") then
 				55174, -- [1]
 			},
 		}, -- [24]
----- Class Quests Start
+---- Class Qs Start
 		{
 			["PickUp"] = {
 				59254, -- [1]
@@ -13202,7 +13202,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = -211,
 				["x"] = -2522,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59254] = {
 					["1"] = "1",
 				},
@@ -13285,7 +13285,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [32]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55186] = {
 					["1"] = "1",
 				},
@@ -13311,7 +13311,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 43.1,
 				["x"] = -2559.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55184] = {
 					["1"] = "1",
 				},
@@ -13354,7 +13354,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [38]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55193] = {
 					["1"] = "1",
 				},
@@ -13389,7 +13389,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [41]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56034] = {
 					["1"] = "1",
 				},
@@ -13430,7 +13430,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 115.3,
 				["x"] = -2428.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["1"] = "1",
 				},
@@ -13446,7 +13446,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 213.1,
 				["x"] = -2300.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["2"] = "2",
 				},
@@ -13458,7 +13458,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [46]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55879] = {
 					["3"] = "3",
 				},
@@ -13505,7 +13505,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [50]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55194] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -13590,7 +13590,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [58]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55763] = {
 					["1"] = "1",
 				},
@@ -13620,7 +13620,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 496.1,
 				["x"] = -2507.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55764] = {
 					["1"] = "1",
 				},
@@ -13668,7 +13668,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 313.8,
 				["x"] = -2460.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -13684,7 +13684,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 325.3,
 				["x"] = -2495.4,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -13700,7 +13700,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 291.6,
 				["x"] = -2513.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -13716,7 +13716,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 280,
 				["x"] = -2473.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -13745,9 +13745,9 @@ if (APR.Faction == "Alliance") then
 				["x"] = -2288.7,
 			},
 		}, -- [69]
----- Class Quest Start
+---- Class Q Start
 
----- Class Quest End
+---- Class Q End
 		{
 			["Done"] = {
 				55965, -- [1]
@@ -13771,7 +13771,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 71,
 				["x"] = -2240,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["1"] = "1",
 				},
@@ -13795,7 +13795,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [86]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["2"] = "2",
 				},
@@ -13816,7 +13816,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 75.3,
 				["x"] = -2134.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55639] = {
 					["3"] = "3",
 				},
@@ -13850,7 +13850,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 323.1,
 				["x"] = -2053,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[59350] = {
 					["1"] = "1",
 				},
@@ -13889,7 +13889,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [91]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -13957,7 +13957,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [97]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["1"] = "1",
 				},
@@ -13979,7 +13979,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["2"] = "2",
 				},
@@ -13995,7 +13995,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["3"] = "3",
 				},
@@ -14011,7 +14011,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55981] = {
 					["4"] = "4",
 				},
@@ -14067,7 +14067,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [106]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["2"] = "2",
 				},
@@ -14084,7 +14084,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [107]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["1"] = "1",
 				},
@@ -14109,7 +14109,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [108]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["3"] = "3",
 				},
@@ -14133,7 +14133,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}, -- [109]
 		{
-			["Qpart"] = {
+			["QPart"] = {
 				[55989] = {
 					["1"] = "1",
 				},
@@ -14158,7 +14158,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 608.9,
 				["x"] = -2085.2,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55988] = {
 					["1"] = "1",
 				},
@@ -14184,7 +14184,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55990] = {
 					["4"] = "4",
 				},
@@ -14218,7 +14218,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55992] = {
 					["1"] = "1",
 				},
@@ -14252,7 +14252,7 @@ if (APR.Faction == "Alliance") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["Qpart"] = {
+			["QPart"] = {
 				[55991] = {
 					["1"] = "1",
 				},

@@ -5,30 +5,30 @@
 ]]--
 
 local app = select(2, ...);
-local L = app.L;						   
+local L = app.L;
 APR = {}
 APR.Name = UnitName("player")
 APR.Realm = string.gsub(GetRealmName(), " ", "")
 APR.Faction = UnitFactionGroup("player") -- "Horde" or "Alliance"
 APR.Level = UnitLevel("player")
 APR.Class = {}
-APR.QuestStepList = {}
+APR.QStepList = {}
 APR.Heirlooms = 0
 
-APR.SweatBuff = {}
-APR.SweatBuff[1] = 0
-APR.SweatBuff[2] = 0
-APR.SweatBuff[3] = 0
+APR.QBuff = {}
+APR.QBuff[1] = 0
+APR.QBuff[2] = 0
+APR.QBuff[3] = 0
 
 APR.RaceLocale, APR.Race = UnitRace("player")
 APR.Class[1],APR.Class[2],APR.Class[3] = UnitClass("player")
-APR.QuestList = {} --where the quest parts go
+APR.QList = {} --where the Q parts go
 APR.NPCList = {}
 APR.Gender = UnitSex("player")
 APR.Icons = {}
 APR.MapIcons = {}
 APR.Breadcrums = {}
-APR.ActiveQuests = {}
+APR.ActiveQs = {}
 APR.RegisterChat = C_ChatInfo.RegisterAddonMessagePrefix("APRChat")
 APR.LastSent = 0
 APR.GroupListSteps = {}
@@ -36,7 +36,7 @@ APR.GroupListStepsNr = 1
 APR.Version = GetAddOnMetadata("APR", "Version")
 local CoreLoadin = 0
 APR.AfkTimerVar = 0
-APR.QuestListLoadin = 0
+APR.QListLoadin = 0
 APR.ZoneTransfer = 0
 APR.BookingList = {}
 APR.MapZoneIcons = {}
@@ -45,7 +45,7 @@ APR.SettingsOpen = 0
 APR.InCombat = 0
 APR.ProgressShown = 0
 APR.BookUpdAfterCombat = 0
-APR.QuestListShown = 0
+APR.QListShown = 0
 APR.MapLoaded = 0
 APR.WQActive = 0
 APR.WQSpecialActive = 0
@@ -53,22 +53,22 @@ APR.WQSpecialActive = 0
 APR.ArrowActive = 0
 APR.ArrowActive_X = 0
 APR.ArrowActive_Y = 0
-APR.MiniMap_X = 0
-APR.MiniMap_Y = 0
+APR.Minimap_X = 0
+APR.Minimap_Y = 0
 APR.MacroUpdaterVar = {}
 
 function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
-	local ZeMap = C_Map.GetBestMapForUnit("player")
+	local Map = C_Map.GetBestMapForUnit("player")
 	local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
 	if (Enum and Enum.UIMapType and Enum.UIMapType.Continent and currentMapId) then
-		ZeMap = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent+1, TOP_MOST)
+		Map = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent+1, TOP_MOST)
 	end
-	if (ZeMap and ZeMap["mapID"]) then
-		ZeMap = ZeMap["mapID"]
+	if (Map and Map["mapID"]) then
+		Map = Map["mapID"]
 	else
-		ZeMap = C_Map.GetBestMapForUnit("player")
+		Map = C_Map.GetBestMapForUnit("player")
 	end
-	if (ChoiceZ == 1 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728) and APR.Faction == "Alliance") then
+	if (ChoiceZ == 1 and (Map == 1409 or Map == 1726 or Map == 1727 or Map == 1728) and APR.Faction == "Alliance") then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
 		for CLi = 1, 19 do
@@ -85,7 +85,7 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/8) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(8/8) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - AStoryMode Only (Not Enough XP)")
-		
+
 	elseif (ChoiceZ == 1 and APR.Level < 60 and APR.Level > 9 and APR.Faction == "Alliance") then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
@@ -102,8 +102,8 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/8) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(8/8) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - AStoryMode Only (Not Enough XP)")
-		
-	elseif (ChoiceZ == 1 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728) and APR.Faction == "Horde") then
+
+	elseif (ChoiceZ == 1 and (Map == 1409 or Map == 1726 or Map == 1727 or Map == 1728) and APR.Faction == "Horde") then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
 		for CLi = 1, 19 do
@@ -136,7 +136,7 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/7) 10-50 Nagrand")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - HStoryMode Only (Not Enough XP)")
 
-	elseif (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727) then
+	elseif (Map == 1409 or Map == 1726 or Map == 1727) then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
 	elseif (ChoiceZ == 1) then
@@ -233,9 +233,9 @@ function APR.getContinent() -- Getting the continent the player is on and its in
 end
 -- APR Global Variables, UI oriented
 BINDING_HEADER_AzerothPilotReloaded = "Azeroth Pilot Reloaded" -- Header text for APR's main frame
-BINDING_NAME_APR_MACRO = "Quest Item 1"
+BINDING_NAME_APR_MACRO = "Q Item 1"
 
---AFK Frame Stuff.. How long you will wait  for questgiver/flight
+--AFK Frame Stuff.. How long you will wait  for Qgiver/flight
 APR.AfkFrame = CreateFrame("frame", "APR_AfkFrames", UIParent)
 APR.AfkFrame:SetWidth(190)
 APR.AfkFrame:SetHeight(40)
@@ -323,7 +323,7 @@ function APR.ResetSettings()
 	APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] = 1
 	APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] = 1
 	APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] = 1
-	APR1[APR.Realm][APR.Name]["Settings"]["ChooseQuests"] = 0
+	APR1[APR.Realm][APR.Name]["Settings"]["ChooseQs"] = 0
 	APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"] = UIParent:GetScale()
 	APR1[APR.Realm][APR.Name]["Settings"]["AutoHandInChoice"] = 0
 	APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] = 1
@@ -336,7 +336,7 @@ function APR.ResetSettings()
 	APR1[APR.Realm][APR.Name]["Settings"]["LockArrow"] = 0
 	APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"] = 2
 	APR1[APR.Realm][APR.Name]["Settings"]["DisableHeirloomWarning"] = 0
-	APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"] = 1
+	APR1[APR.Realm][APR.Name]["Settings"]["MinimapBlobAlpha"] = 1
 	APR1[APR.Realm][APR.Name]["Settings"]["OrderListScale"] = 1
 	if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 0) then
 		APR.OptionsFrame.ShowQListCheckButton:SetChecked(false)
@@ -364,9 +364,9 @@ function APR.ResetSettings()
 		APR.OptionsFrame.AutoRepairCheckButton:SetChecked(true)
 	end
 	if (APR1[APR.Realm][APR.Name]["Settings"]["Lock"] == 0) then
-		APR.OptionsFrame.LockQuestListCheckButton:SetChecked(false)
+		APR.OptionsFrame.LockQListCheckButton:SetChecked(false)
 	else
-		APR.OptionsFrame.LockQuestListCheckButton:SetChecked(true)
+		APR.OptionsFrame.LockQListCheckButton:SetChecked(true)
 	end
 	if (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 0) then
 		APR.OptionsFrame.CutSceneCheckButton:SetChecked(false)
@@ -388,20 +388,20 @@ function APR.ResetSettings()
 	else
 		APR.OptionsFrame.AutoHandInChoiceCheckButton:SetChecked(true)
 	end
-	-- UI stuff regarding questlist and options frame
-	APR.QuestList.ButtonParent:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["Scale"])
-	APR.QuestList.ListFrame:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["Scale"])
-	APR.QuestList21:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["Scale"])
-	APR.OptionsFrame.QuestListScaleSlider:SetValue(APR1[APR.Realm][APR.Name]["Settings"]["Scale"] * 100)
+	-- UI stuff regarding Qlist and options frame
+	APR.QList.ButtonParent:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["Scale"])
+	APR.QList.ListFrame:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["Scale"])
+	APR.QList21:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["Scale"])
+	APR.OptionsFrame.QListScaleSlider:SetValue(APR1[APR.Realm][APR.Name]["Settings"]["Scale"] * 100)
 	APR.OptionsFrame.ArrowScaleSlider:SetValue(APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"] * 100)
 
-	APR.QuestList.MainFrame:ClearAllPoints()
-	APR.QuestList.MainFrame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
+	APR.QList.MainFrame:ClearAllPoints()
+	APR.QList.MainFrame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
 	APR.ArrowFrame:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"])
 	APR.ArrowFrameM:ClearAllPoints()
 	APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"], APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"])
-	APR.ZoneQuestOrder:ClearAllPoints()
-	APR.ZoneQuestOrder:SetPoint("CENTER", UIParent, "CENTER",1,1)
+	APR.ZoneQOrder:ClearAllPoints()
+	APR.ZoneQOrder:SetPoint("CENTER", UIParent, "CENTER",1,1)
 	APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"] = UIParent:GetScale()
 	APR1[APR.Realm][APR.Name]["Settings"]["LockArrow"] = 0
 	APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"] = 2
@@ -420,27 +420,27 @@ function APR.ResetSettings()
 end
 -- Chat commands, such as /apr reset, /apr skip, /apr skipcamp
 local function APR_SlashCmd(APR_index)
-	if (APR_index == "reset") then 
-		--Command for making the quest rescan on completion and reset, including previously skipped steps
+	if (APR_index == "reset") then
+		--Command for making the Q rescan on completion and reset, including previously skipped steps
 		print("APR: "..L["RESET_ZONE"])
 		APR1[APR.Realm][APR.Name][APR.ActiveMap] = 1
-	elseif (APR_index == "showriding") then 
+	elseif (APR_index == "showriding") then
 		print("APR: "..L["SHOW_RIDING"])
 		APR1[APR.Realm][APR.Name]["hideRidingSkill"] = 0
-	elseif (APR_index == "hideriding") then 
+	elseif (APR_index == "hideriding") then
 		print("APR: "..L["HIDE_RIDING"])
 		APR1[APR.Realm][APR.Name]["hideRidingSkill"] = 1
 	elseif (APR_index == "skip") then
-		-- Command for skipping the current quest step
-		print("APR: "..L["SKIP"]) 
+		-- Command for skipping the current Q step
+		print("APR: "..L["SKIP"])
 		APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 	elseif (APR_index == "rollback") then
-		-- Command for rollback the current quest step
-		print("APR: "..L["ROLLBACK"]) 
+		-- Command for rollback the current Q step
+		print("APR: "..L["ROLLBACK"])
 		APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] - 1
 	elseif (APR_index == "skipcamp") then
 		-- Command for skipping "camp" step
-		print("APR: "..L["SKIPCAMP"]) 
+		print("APR: "..L["SKIPCAMP"])
 		APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 14
 	else
 		APR.SettingsOpen = 1
@@ -448,7 +448,7 @@ local function APR_SlashCmd(APR_index)
 		APR.RemoveIcons()
 		APR.BookingList["OpenedSettings"] = 1
 	end
-	APR.BookingList["UpdateQuest"] = 1
+	APR.BookingList["UpdateQ"] = 1
 	APR.BookingList["PrintQStep"] = 1
 end
 --More UI stuff, to do with arrowframe
@@ -511,7 +511,7 @@ APR.ArrowFrame.Button:SetScript("OnMouseDown", function(self, button)
 	APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 	APR.ArrowActive_X = 0
 	APR.ArrowActive_Y = 0
-	APR.BookingList["UpdateQuest"] = 1
+	APR.BookingList["UpdateQ"] = 1
 	APR.BookingList["PrintQStep"] = 1
 end)
 
@@ -570,7 +570,7 @@ function APR.RoutePlanLoadIn() --Loads RoutePlan and option frame. RoutePlan is 
 			APR.LoadInOptionFrame.isMoving = false;
 		end
 	end)
-	
+
 	APR.LoadInOptionFrame["FS"] = APR.LoadInOptionFrame:CreateFontString("APR_LoadInOptionFrameFS","ARTWORK", "ChatFontNormal")
 	APR.LoadInOptionFrame["FS"]:SetParent(APR.LoadInOptionFrame)
 	APR.LoadInOptionFrame["FS"]:SetPoint("TOP",APR.LoadInOptionFrame,"TOP")
@@ -579,7 +579,7 @@ function APR.RoutePlanLoadIn() --Loads RoutePlan and option frame. RoutePlan is 
 	APR.LoadInOptionFrame["FS"]:SetHeight(20)
 	APR.LoadInOptionFrame["FS"]:SetJustifyH("CENTER")
 	APR.LoadInOptionFrame["FS"]:SetFontObject("GameFontNormalLarge")
-	
+
 	APR.LoadInOptionFrame["B1"] = CreateFrame("Button", "APR_LoadInOptionFrameButton1", APR.LoadInOptionFrame, "UIPanelButtonTemplate")
 	APR.LoadInOptionFrame["B1"]:SetWidth(140)
 	APR.LoadInOptionFrame["B1"]:SetHeight(30)
@@ -596,7 +596,7 @@ function APR.RoutePlanLoadIn() --Loads RoutePlan and option frame. RoutePlan is 
 	APR.LoadInOptionFrame["B2"] = CreateFrame("Button", "APR_LoadInOptionFrameButton2", APR.LoadInOptionFrame, "UIPanelButtonTemplate")
 	APR.LoadInOptionFrame["B2"]:SetWidth(140)
 	APR.LoadInOptionFrame["B2"]:SetHeight(30)
-	APR.LoadInOptionFrame["B2"]:SetText(L["ALL_QUEST"])
+	APR.LoadInOptionFrame["B2"]:SetText(L["ALL_Q"])
 	APR.LoadInOptionFrame["B2"]:Hide()
 	APR.LoadInOptionFrame["B2"]:SetPoint("CENTER", APR.LoadInOptionFrame, "CENTER",0,0)
 	APR.LoadInOptionFrame["B2"]:SetNormalFontObject("GameFontNormalLarge")
@@ -606,7 +606,7 @@ function APR.RoutePlanLoadIn() --Loads RoutePlan and option frame. RoutePlan is 
 			APR.LoadInOptionFrame:Hide()
 		end
 	end)
-	
+
 	APR.LoadInOptionFrame["B3"] = CreateFrame("Button", "APR_LoadInOptionFrameButton3", APR.LoadInOptionFrame, "UIPanelButtonTemplate")
 	APR.LoadInOptionFrame["B3"]:SetWidth(140)
 	APR.LoadInOptionFrame["B3"]:SetHeight(30)
@@ -628,7 +628,7 @@ function APR.RoutePlanLoadIn() --Loads RoutePlan and option frame. RoutePlan is 
 	APR.RoutePlan:SetMovable(true)
 	APR.RoutePlan:EnableMouse(true)
 	APR.RoutePlan:SetFrameStrata("LOW")
-	
+
 	APR.RoutePlan.FG1 = CreateFrame("frame", "APR.RoutePlanMainFrame2", APR.RoutePlan.FG1)
 	APR.RoutePlan.FG1:SetWidth(1)
 	APR.RoutePlan.FG1:SetHeight(1)
@@ -650,7 +650,7 @@ APR.RoutePlan.FG1.HelpText = CreateFrame("frame", "APR.RoutePlanHelpTextFrame", 
 		t:SetTexture("Interface\\Buttons\\WHITE8X8")
 		t:SetAllPoints(APR.RoutePlan.FG1.HelpText)
 		t:SetColorTexture(0.1,0.1,0.4,1)
-		
+
 	APR.RoutePlan.FG1.HelpText.texture = t
 	APR.RoutePlan.FG1.HelpText.FS = APR.RoutePlan.FG1.HelpText:CreateFontString("APR.RoutePlan_Help_Text","ARTWORK", "ChatFontNormal")
 	APR.RoutePlan.FG1.HelpText.FS:SetParent(APR.RoutePlan.FG1.HelpText)
@@ -661,7 +661,7 @@ APR.RoutePlan.FG1.HelpText = CreateFrame("frame", "APR.RoutePlanHelpTextFrame", 
 	APR.RoutePlan.FG1.HelpText.FS:SetHeight(20)
 	APR.RoutePlan.FG1.HelpText.FS:SetJustifyH("CENTER")
 	APR.RoutePlan.FG1.HelpText.FS:SetFontObject("GameFontNormal")
-	
+
 	APR.RoutePlan.FG1["CloseButton"] = CreateFrame("Button", "APR_RoutePlan_FG1_CloseButton", APR.RoutePlan.FG1, "UIPanelButtonTemplate")
 	APR.RoutePlan.FG1["CloseButton"]:SetWidth(20)
 	APR.RoutePlan.FG1["CloseButton"]:SetHeight(20)
@@ -758,7 +758,7 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1.CPT["FS"]:SetFontObject("GameFontNormal")
 	APR.RoutePlan.FG1.CPT["FS"]:SetText(L["CUSTOM_PATH"])
 
---Kalimdor 
+--Kalimdor
 	APR.RoutePlan.FG1.KALF = CreateFrame("frame", "APR.RoutePlanKalimdorFrame", APR.RoutePlan.FG1)
 	APR.RoutePlan.FG1.KALF:SetWidth(165)
 	APR.RoutePlan.FG1.KALF:SetHeight(275)
@@ -841,7 +841,7 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1.KALT["FS"]:SetFontObject("GameFontNormal")
 	APR.RoutePlan.FG1.KALT["FS"]:SetText("Kalimdor")
 
---EasternKingdoms 
+--EasternKingdoms
 	APR.RoutePlan.FG1.EKF = CreateFrame("frame", "APR.RoutePlanEasternKingdomsframe", APR.RoutePlan.FG1)
 	APR.RoutePlan.FG1.EKF:SetWidth(165)
 	APR.RoutePlan.FG1.EKF:SetHeight(275)
@@ -1007,7 +1007,7 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1.SLT["FS"]:SetFontObject("GameFontNormal")
 	APR.RoutePlan.FG1.SLT["FS"]:SetText("Shadowlands")
 
---Extra 
+--Extra
 	APR.RoutePlan.FG1.EXTF = CreateFrame("frame", "APR.RoutePlanExtraFrame", APR.RoutePlan.FG1)
 	APR.RoutePlan.FG1.EXTF:SetWidth(165)
 	APR.RoutePlan.FG1.EXTF:SetHeight(275)
@@ -1340,7 +1340,7 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1.DFT["FS"]:SetText("Dragonflight")
 
 
---[[ SpeedFrame 
+--[[ SpeedFrame
 	APR.RoutePlan.FG1.SRF = CreateFrame("frame", "APR.RoutePlanSpeedRunFrame", APR.RoutePlan.FG1)
 	APR.RoutePlan.FG1.SRF:SetWidth(165)
 	APR.RoutePlan.FG1.SRF:SetHeight(275)
@@ -1423,8 +1423,8 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1.SRT["FS"]:SetFontObject("GameFontNormal")
 	APR.RoutePlan.FG1.SRT["FS"]:SetText(L["SPEEDRUN"])]]
 
-	local zenr = APR.NumbRoutePlan("SpeedRun")
-		for CLi = 1, zenr do
+	local NumbRoute = APR.NumbRoutePlan("SpeedRun")
+		for CLi = 1, NumbRoute do
 			APR.RoutePlan.FG1["SPR3"..CLi] = CreateFrame("frame", "APR.RoutePlanSpeedRun3"..CLi, APR.RoutePlan.FG1)
 			APR.RoutePlan.FG1["SPR3"..CLi]:SetWidth(225)
 			APR.RoutePlan.FG1["SPR3"..CLi]:SetHeight(20)
@@ -1444,11 +1444,11 @@ APR.RoutePlan.FG1:Hide()
 			APR.RoutePlan.FG1["SPR3"..CLi]:StartMoving();
 			APR.RoutePlan.FG1["SPR3"..CLi].isMoving = true;
 		elseif button == "RightButton" then
-	local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
-		if (zenew < 19 or zenew == 19) then
+	local NameRealm = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
+		if (NameRealm < 19 or NameRealm == 19) then
 			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:GetText())
-			APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:GetText())
-			APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
+			APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]["FS"]:SetText(APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:GetText())
+			APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]:Show()
 		end
 			APR.RoutePlanCheckPos()
 			APR.CheckCustomEmpty()
@@ -1479,8 +1479,8 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:SetText(L["GROUP"]..CLi)
 	end
 
-	local zenr = APR.NumbRoutePlan("EasternKingdom")
-		for CLi = 1, zenr do
+	local NumbRoute = APR.NumbRoutePlan("EasternKingdom")
+		for CLi = 1, NumbRoute do
 			APR.RoutePlan.FG1["EK3"..CLi] = CreateFrame("frame", "APR.RoutePlanEasternKingdoms3"..CLi, APR.RoutePlan.FG1)
 			APR.RoutePlan.FG1["EK3"..CLi]:SetWidth(225)
 			APR.RoutePlan.FG1["EK3"..CLi]:SetHeight(20)
@@ -1495,16 +1495,16 @@ APR.RoutePlan.FG1:Hide()
 		t:SetAllPoints(APR.RoutePlan.FG1["EK3"..CLi])
 		t:SetColorTexture(0.1,0.1,0.4,1)
 		APR.RoutePlan.FG1["EK3"..CLi].texture = t
-	APR.RoutePlan.FG1["EK3"..CLi]:SetScript("OnMouseDown", function(self, button) 
+	APR.RoutePlan.FG1["EK3"..CLi]:SetScript("OnMouseDown", function(self, button)
 		if button == "LeftButton" then
 			APR.RoutePlan.FG1["EK3"..CLi]:StartMoving();
 			APR.RoutePlan.FG1["EK3"..CLi].isMoving = true;
 		elseif button == "RightButton" then
-			local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
-				if (zenew < 19 or zenew == 19) then
+			local NameRealm = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
+				if (NameRealm < 19 or NameRealm == 19) then
 					tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["EK3"..CLi]["FS"]:GetText())
-					APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["EK3"..CLi]["FS"]:GetText())
-					APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
+					APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]["FS"]:SetText(APR.RoutePlan.FG1["EK3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]:Show()
 				end
 			APR.RoutePlanCheckPos()
 			APR.CheckCustomEmpty()
@@ -1535,8 +1535,8 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1["EK3"..CLi]["FS"]:SetText(L["GROUP"]..CLi)
 	end
 
-	local zenr = APR.NumbRoutePlan("Kalimdor")
-		for CLi = 1, zenr do
+	local NumbRoute = APR.NumbRoutePlan("Kalimdor")
+		for CLi = 1, NumbRoute do
 			APR.RoutePlan.FG1["KAL3"..CLi] = CreateFrame("frame", "APR.RoutePlanKalimdor3"..CLi, APR.RoutePlan.FG1)
 			APR.RoutePlan.FG1["KAL3"..CLi]:SetWidth(225)
 			APR.RoutePlan.FG1["KAL3"..CLi]:SetHeight(20)
@@ -1556,11 +1556,11 @@ APR.RoutePlan.FG1:Hide()
 			APR.RoutePlan.FG1["KAL3"..CLi]:StartMoving();
 			APR.RoutePlan.FG1["KAL3"..CLi].isMoving = true;
 		elseif button == "RightButton" then
-			local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
-				if (zenew < 19 or zenew == 19) then
+			local NameRealm = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
+				if (NameRealm < 19 or NameRealm == 19) then
 					tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:GetText())
-					APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:GetText())
-					APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
+					APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]["FS"]:SetText(APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]:Show()
 				end
 				APR.RoutePlanCheckPos()
 				APR.CheckCustomEmpty()
@@ -1591,8 +1591,8 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:SetText(L["GROUP"]..CLi)
 	end
 
-	local zenr = APR.NumbRoutePlan("Shadowlands")
-		for CLi = 1, zenr do
+	local NumbRoute = APR.NumbRoutePlan("Shadowlands")
+		for CLi = 1, NumbRoute do
 			APR.RoutePlan.FG1["SL3"..CLi] = CreateFrame("frame", "APR.RoutePlanShadowlands3"..CLi, APR.RoutePlan.FG1)
 			APR.RoutePlan.FG1["SL3"..CLi]:SetWidth(225)
 			APR.RoutePlan.FG1["SL3"..CLi]:SetHeight(20)
@@ -1612,11 +1612,11 @@ APR.RoutePlan.FG1:Hide()
 			APR.RoutePlan.FG1["SL3"..CLi]:StartMoving();
 			APR.RoutePlan.FG1["SL3"..CLi].isMoving = true;
 		elseif button == "RightButton" then
-			local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
-				if (zenew < 19 or zenew == 19) then
+			local NameRealm = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
+				if (NameRealm < 19 or NameRealm == 19) then
 					tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["SL3"..CLi]["FS"]:GetText())
-					APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["SL3"..CLi]["FS"]:GetText())
-					APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
+					APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]["FS"]:SetText(APR.RoutePlan.FG1["SL3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]:Show()
 				end
 				APR.RoutePlanCheckPos()
 				APR.CheckCustomEmpty()
@@ -1647,8 +1647,8 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1["SL3"..CLi]["FS"]:SetText(L["GROUP"]..CLi)
 	end
 
-	local zenr = APR.NumbRoutePlan("Extra")
-		for CLi = 1, zenr do
+	local NumbRoute = APR.NumbRoutePlan("Extra")
+		for CLi = 1, NumbRoute do
 			APR.RoutePlan.FG1["EX3"..CLi] = CreateFrame("frame", "APR.RoutePlanExtra3"..CLi, APR.RoutePlan.FG1)
 			APR.RoutePlan.FG1["EX3"..CLi]:SetWidth(225)
 			APR.RoutePlan.FG1["EX3"..CLi]:SetHeight(20)
@@ -1668,11 +1668,11 @@ APR.RoutePlan.FG1:Hide()
 			APR.RoutePlan.FG1["EX3"..CLi]:StartMoving();
 			APR.RoutePlan.FG1["EX3"..CLi].isMoving = true;
 		elseif button == "RightButton" then
-			local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
-				if (zenew < 19 or zenew == 19) then
+			local NameRealm = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
+				if (NameRealm < 19 or NameRealm == 19) then
 					tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["EX3"..CLi]["FS"]:GetText())
-					APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["EX3"..CLi]["FS"]:GetText())
-					APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
+					APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]["FS"]:SetText(APR.RoutePlan.FG1["EX3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]:Show()
 				end
 				APR.RoutePlanCheckPos()
 				APR.CheckCustomEmpty()
@@ -1703,8 +1703,8 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1["EX3"..CLi]["FS"]:SetText(L["GROUP"]..CLi)
 	end
 
-	local zenr = APR.NumbRoutePlan("MISC 1")
-		for CLi = 1, zenr do
+	local NumbRoute = APR.NumbRoutePlan("MISC 1")
+		for CLi = 1, NumbRoute do
 			APR.RoutePlan.FG1["MISC3"..CLi] = CreateFrame("frame", "APR.RoutePlanMISC3"..CLi, APR.RoutePlan.FG1)
 			APR.RoutePlan.FG1["MISC3"..CLi]:SetWidth(225)
 			APR.RoutePlan.FG1["MISC3"..CLi]:SetHeight(20)
@@ -1724,11 +1724,11 @@ APR.RoutePlan.FG1:Hide()
 			APR.RoutePlan.FG1["MISC3"..CLi]:StartMoving();
 			APR.RoutePlan.FG1["MISC3"..CLi].isMoving = true;
 		elseif button == "RightButton" then
-			local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
-				if (zenew < 19 or zenew == 19) then
+			local NameRealm = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
+				if (NameRealm < 19 or NameRealm == 19) then
 					tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["MISC3"..CLi]["FS"]:GetText())
-					APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["MISC3"..CLi]["FS"]:GetText())
-					APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
+					APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]["FS"]:SetText(APR.RoutePlan.FG1["MISC3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]:Show()
 				end
 				APR.RoutePlanCheckPos()
 				APR.CheckCustomEmpty()
@@ -1759,8 +1759,8 @@ APR.RoutePlan.FG1:Hide()
 	APR.RoutePlan.FG1["MISC3"..CLi]["FS"]:SetText("Group "..CLi)
 	end
 
-local zenr = APR.NumbRoutePlan("MISC 2")
-		for CLi = 1, zenr do
+local NumbRoute = APR.NumbRoutePlan("MISC 2")
+		for CLi = 1, NumbRoute do
 			APR.RoutePlan.FG1["MISC23"..CLi] = CreateFrame("frame", "APR.RoutePlanMISC2"..CLi, APR.RoutePlan.FG1)
 			APR.RoutePlan.FG1["MISC23"..CLi]:SetWidth(225)
 			APR.RoutePlan.FG1["MISC23"..CLi]:SetHeight(20)
@@ -1780,11 +1780,11 @@ local zenr = APR.NumbRoutePlan("MISC 2")
 			APR.RoutePlan.FG1["MISC23"..CLi]:StartMoving();
 			APR.RoutePlan.FG1["MISC23"..CLi].isMoving = true;
 		elseif button == "RightButton" then
-			local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
-				if (zenew < 19 or zenew == 19) then
+			local NameRealm = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
+				if (NameRealm < 19 or NameRealm == 19) then
 					tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["MISC23"..CLi]["FS"]:GetText())
-					APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["MISC23"..CLi]["FS"]:GetText())
-					APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
+					APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]["FS"]:SetText(APR.RoutePlan.FG1["MISC23"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]:Show()
 				end
 				APR.RoutePlanCheckPos()
 				APR.CheckCustomEmpty()
@@ -1815,8 +1815,8 @@ local zenr = APR.NumbRoutePlan("MISC 2")
 	APR.RoutePlan.FG1["MISC23"..CLi]["FS"]:SetText("Group "..CLi)
 	end
 
-	local zenr = APR.NumbRoutePlan("Dragonflight")
-		for CLi = 1, zenr do
+	local NumbRoute = APR.NumbRoutePlan("Dragonflight")
+		for CLi = 1, NumbRoute do
 			APR.RoutePlan.FG1["DF3"..CLi] = CreateFrame("frame", "APR.RoutePlanKalimdor3"..CLi, APR.RoutePlan.FG1)
 			APR.RoutePlan.FG1["DF3"..CLi]:SetWidth(225)
 			APR.RoutePlan.FG1["DF3"..CLi]:SetHeight(20)
@@ -1836,11 +1836,11 @@ local zenr = APR.NumbRoutePlan("MISC 2")
 			APR.RoutePlan.FG1["DF3"..CLi]:StartMoving();
 			APR.RoutePlan.FG1["DF3"..CLi].isMoving = true;
 		elseif button == "RightButton" then
-			local zenew = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
-				if (zenew < 19 or zenew == 19) then
+			local NameRealm = getn(APR_Custom[APR.Name.."-"..APR.Realm]) + 1
+				if (NameRealm < 19 or NameRealm == 19) then
 					tinsert(APR_Custom[APR.Name.."-"..APR.Realm],APR.RoutePlan.FG1["DF3"..CLi]["FS"]:GetText())
-					APR.RoutePlan.FG1["Fxz2Custom"..zenew]["FS"]:SetText(APR.RoutePlan.FG1["DF3"..CLi]["FS"]:GetText())
-					APR.RoutePlan.FG1["Fxz2Custom"..zenew]:Show()
+					APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]["FS"]:SetText(APR.RoutePlan.FG1["DF3"..CLi]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom"..NameRealm]:Show()
 				end
 				APR.RoutePlanCheckPos()
 				APR.CheckCustomEmpty()
@@ -1909,7 +1909,7 @@ local zenr = APR.NumbRoutePlan("MISC 2")
 		t:SetAllPoints(APR.RoutePlan.FG1["Fxz2Custom"..CLi])
 		t:SetColorTexture(0.1,0.1,0.4,1)
 		APR.RoutePlan.FG1["Fxz2Custom"..CLi].texture = t
-		
+
 	APR.RoutePlan.FG1["Fxz2Custom"..CLi]:SetScript("OnMouseDown", function(self, button)
 		if button == "LeftButton" then
 			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:StartMoving();
@@ -1967,7 +1967,7 @@ local zenr = APR.NumbRoutePlan("MISC 2")
 			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
 		else
 			if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
-				local zew = APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]]
+				local zew = APR.QStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]]
 				if (APR["EasternKingdomDB"] and APR["EasternKingdomDB"][zew] and IsAddOnLoaded("APR-EasternKingdoms") == false) then
 					local loaded, reason = LoadAddOn("APR-Vanilla")
 					if (not loaded) then
@@ -2017,140 +2017,140 @@ local zenr = APR.NumbRoutePlan("MISC 2")
 			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
 		end
 	end
-	
-	local zenr2 = 0
-	local dzer = {}
-	local dzer2 = {}
-	if (APR.QuestStepListListingStartAreas["Kalimdor"]) then
-		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListingStartAreas["Kalimdor"]) do
-			dzer2[APR_value2] = APR_index2
+
+	local NumbRoute2 = 0
+	local NumbRouteValue = {}
+	local NumbRouteValue2 = {}
+	if (APR.QStepListListingStartAreas["Kalimdor"]) then
+		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QStepListListingStartAreas["Kalimdor"]) do
+			NumbRouteValue2[APR_value2] = APR_index2
 		end
-		for APR_index2,APR_value2 in APR.pairsByKeys(dzer2) do
-			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["KAL3"..zenr2]["FS"]:SetText(APR_index2)
-		end
-	end
-	if (APR.QuestStepListListing and APR.QuestStepListListing["Kalimdor"]) then
-		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Kalimdor"]) do
-			dzer[APR_value2] = APR_index2
-		end
-		for APR_index2,APR_value2 in APR.pairsByKeys(dzer) do
-			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["KAL3"..zenr2]["FS"]:SetText(APR_index2)
+		for APR_index2,APR_value2 in APR.pairsByKeys(NumbRouteValue2) do
+			NumbRoute2 = NumbRoute2 + 1
+			APR.RoutePlan.FG1["KAL3"..NumbRoute2]["FS"]:SetText(APR_index2)
 		end
 	end
-	
-	zenr2 = 0
-	dzer = nil
-	dzer = {}
-	dzer2 = nil
-	dzer2 = {}
-	if (APR.QuestStepListListingStartAreas["EasternKingdom"]) then
-		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListingStartAreas["EasternKingdom"]) do
-			dzer2[APR_value2] = APR_index2
+	if (APR.QStepListListing and APR.QStepListListing["Kalimdor"]) then
+		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QStepListListing["Kalimdor"]) do
+			NumbRouteValue[APR_value2] = APR_index2
 		end
-		for APR_index2,APR_value2 in APR.pairsByKeys(dzer2) do
-			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["EK3"..zenr2]["FS"]:SetText(APR_index2)
-		end
-	end
-	if (APR.QuestStepListListing and APR.QuestStepListListing["EasternKingdom"]) then
-		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["EasternKingdom"]) do
-			dzer[APR_value2] = APR_index2
-		end
-		for APR_index2,APR_value2 in APR.pairsByKeys(dzer) do
-			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["EK3"..zenr2]["FS"]:SetText(APR_index2)
-		end
-	end
-	
-	zenr2 = 0
-	dzer = nil
-	dzer = {}
-	dzer2 = nil
-	dzer2 = {}
-	if (APR.QuestStepListListing and APR.QuestStepListListing["Shadowlands"]) then
-		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Shadowlands"]) do
-			dzer[APR_value2] = APR_index2
-		end
-		for APR_index2,APR_value2 in APR.pairsByKeys(dzer) do
-			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["SL3"..zenr2]["FS"]:SetText(APR_index2)
-		end
-	end
-	
-	zenr2 = 0
-	dzer = nil
-	dzer = {}
-	dzer2 = nil
-	dzer2 = {}
-	if (APR.QuestStepListListing and APR.QuestStepListListing["Extra"]) then
-		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Extra"]) do
-			dzer[APR_value2] = APR_index2
-		end
-		for APR_index2,APR_value2 in APR.pairsByKeys(dzer) do
-			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["EX3"..zenr2]["FS"]:SetText(APR_index2)
+		for APR_index2,APR_value2 in APR.pairsByKeys(NumbRouteValue) do
+			NumbRoute2 = NumbRoute2 + 1
+			APR.RoutePlan.FG1["KAL3"..NumbRoute2]["FS"]:SetText(APR_index2)
 		end
 	end
 
-zenr2 = 0
-	dzer = nil
-	dzer = {}
-	dzer2 = nil
-	dzer2 = {}
-	if (APR.QuestStepListListing and APR.QuestStepListListing["MISC 2"]) then
-		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["MISC 2"]) do
-			dzer[APR_value2] = APR_index2
+	NumbRoute2 = 0
+	NumbRouteValue = nil
+	NumbRouteValue = {}
+	NumbRouteValue2 = nil
+	NumbRouteValue2 = {}
+	if (APR.QStepListListingStartAreas["EasternKingdom"]) then
+		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QStepListListingStartAreas["EasternKingdom"]) do
+			NumbRouteValue2[APR_value2] = APR_index2
 		end
-		for APR_index2,APR_value2 in APR.pairsByKeys(dzer) do
-			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["MISC23"..zenr2]["FS"]:SetText(APR_index2)
+		for APR_index2,APR_value2 in APR.pairsByKeys(NumbRouteValue2) do
+			NumbRoute2 = NumbRoute2 + 1
+			APR.RoutePlan.FG1["EK3"..NumbRoute2]["FS"]:SetText(APR_index2)
+		end
+	end
+	if (APR.QStepListListing and APR.QStepListListing["EasternKingdom"]) then
+		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QStepListListing["EasternKingdom"]) do
+			NumbRouteValue[APR_value2] = APR_index2
+		end
+		for APR_index2,APR_value2 in APR.pairsByKeys(NumbRouteValue) do
+			NumbRoute2 = NumbRoute2 + 1
+			APR.RoutePlan.FG1["EK3"..NumbRoute2]["FS"]:SetText(APR_index2)
 		end
 	end
 
-	zenr2 = 0
-	dzer = nil
-	dzer = {}
-	dzer2 = nil
-	dzer2 = {}
-	if (APR.QuestStepListListing and APR.QuestStepListListing["MISC 1"]) then
-		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["MISC 1"]) do
-			dzer[APR_value2] = APR_index2
+	NumbRoute2 = 0
+	NumbRouteValue = nil
+	NumbRouteValue = {}
+	NumbRouteValue2 = nil
+	NumbRouteValue2 = {}
+	if (APR.QStepListListing and APR.QStepListListing["Shadowlands"]) then
+		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QStepListListing["Shadowlands"]) do
+			NumbRouteValue[APR_value2] = APR_index2
 		end
-		for APR_index2,APR_value2 in APR.pairsByKeys(dzer) do
-			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["MISC3"..zenr2]["FS"]:SetText(APR_index2)
-		end
-	end	
-
-	zenr2 = 0
-	dzer = nil
-	dzer = {}
-	dzer2 = nil
-	dzer2 = {}
-	if (APR.QuestStepListListing and APR.QuestStepListListing["Dragonflight"]) then
-		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Dragonflight"]) do
-			dzer[APR_value2] = APR_index2
-		end
-		for APR_index2,APR_value2 in APR.pairsByKeys(dzer) do
-			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["DF3"..zenr2]["FS"]:SetText(APR_index2)
+		for APR_index2,APR_value2 in APR.pairsByKeys(NumbRouteValue) do
+			NumbRoute2 = NumbRoute2 + 1
+			APR.RoutePlan.FG1["SL3"..NumbRoute2]["FS"]:SetText(APR_index2)
 		end
 	end
-	
-	zenr2 = 0
-	dzer = nil
-	dzer = {}
-	dzer2 = nil
-	dzer2 = {}
-	if (APR.QuestStepListListing and APR.QuestStepListListing["SpeedRun"]) then
-		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["SpeedRun"]) do
-			dzer[APR_value2] = APR_index2
+
+	NumbRoute2 = 0
+	NumbRouteValue = nil
+	NumbRouteValue = {}
+	NumbRouteValue2 = nil
+	NumbRouteValue2 = {}
+	if (APR.QStepListListing and APR.QStepListListing["Extra"]) then
+		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QStepListListing["Extra"]) do
+			NumbRouteValue[APR_value2] = APR_index2
 		end
-		for APR_index2,APR_value2 in APR.pairsByKeys(dzer) do
-			zenr2 = zenr2 + 1
-			APR.RoutePlan.FG1["SPR3"..zenr2]["FS"]:SetText("")
+		for APR_index2,APR_value2 in APR.pairsByKeys(NumbRouteValue) do
+			NumbRoute2 = NumbRoute2 + 1
+			APR.RoutePlan.FG1["EX3"..NumbRoute2]["FS"]:SetText(APR_index2)
+		end
+	end
+
+NumbRoute2 = 0
+	NumbRouteValue = nil
+	NumbRouteValue = {}
+	NumbRouteValue2 = nil
+	NumbRouteValue2 = {}
+	if (APR.QStepListListing and APR.QStepListListing["MISC 2"]) then
+		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QStepListListing["MISC 2"]) do
+			NumbRouteValue[APR_value2] = APR_index2
+		end
+		for APR_index2,APR_value2 in APR.pairsByKeys(NumbRouteValue) do
+			NumbRoute2 = NumbRoute2 + 1
+			APR.RoutePlan.FG1["MISC23"..NumbRoute2]["FS"]:SetText(APR_index2)
+		end
+	end
+
+	NumbRoute2 = 0
+	NumbRouteValue = nil
+	NumbRouteValue = {}
+	NumbRouteValue2 = nil
+	NumbRouteValue2 = {}
+	if (APR.QStepListListing and APR.QStepListListing["MISC 1"]) then
+		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QStepListListing["MISC 1"]) do
+			NumbRouteValue[APR_value2] = APR_index2
+		end
+		for APR_index2,APR_value2 in APR.pairsByKeys(NumbRouteValue) do
+			NumbRoute2 = NumbRoute2 + 1
+			APR.RoutePlan.FG1["MISC3"..NumbRoute2]["FS"]:SetText(APR_index2)
+		end
+	end
+
+	NumbRoute2 = 0
+	NumbRouteValue = nil
+	NumbRouteValue = {}
+	NumbRouteValue2 = nil
+	NumbRouteValue2 = {}
+	if (APR.QStepListListing and APR.QStepListListing["Dragonflight"]) then
+		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QStepListListing["Dragonflight"]) do
+			NumbRouteValue[APR_value2] = APR_index2
+		end
+		for APR_index2,APR_value2 in APR.pairsByKeys(NumbRouteValue) do
+			NumbRoute2 = NumbRoute2 + 1
+			APR.RoutePlan.FG1["DF3"..NumbRoute2]["FS"]:SetText(APR_index2)
+		end
+	end
+
+	NumbRoute2 = 0
+	NumbRouteValue = nil
+	NumbRouteValue = {}
+	NumbRouteValue2 = nil
+	NumbRouteValue2 = {}
+	if (APR.QStepListListing and APR.QStepListListing["SpeedRun"]) then
+		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QStepListListing["SpeedRun"]) do
+			NumbRouteValue[APR_value2] = APR_index2
+		end
+		for APR_index2,APR_value2 in APR.pairsByKeys(NumbRouteValue) do
+			NumbRoute2 = NumbRoute2 + 1
+			APR.RoutePlan.FG1["SPR3"..NumbRoute2]["FS"]:SetText("")
 		end
 	end
 
@@ -2158,23 +2158,23 @@ zenr2 = 0
 	APR.CheckPosMove()
 end
 
-function APR.CheckPosMove(zeActivz)
+function APR.CheckPosMove(TheActive)
 	if (APR1["Debug"]) then
 		print("Function: APR.CheckPosMove()")
 	end
-	local zenr = APR.NumbRoutePlan("EasternKingdom")
-	local zenr2 = APR.NumbRoutePlan("Kalimdor")
-	local zenr3 = APR.NumbRoutePlan("Shadowlands")
-	local zenr4 = APR.NumbRoutePlan("SpeedRun")
-	local zenr5 = APR.NumbRoutePlan("Extra")
-	local zenr6 = APR.NumbRoutePlan("Dragonflight")
-	local zenr7 = APR.NumbRoutePlan("MISC 1")
-	local zenr8 = APR.NumbRoutePlan("MISC 2")
+	local NumbRoute = APR.NumbRoutePlan("EasternKingdom")
+	local NumbRoute2 = APR.NumbRoutePlan("Kalimdor")
+	local NumbRoute3 = APR.NumbRoutePlan("Shadowlands")
+	local NumbRoute4 = APR.NumbRoutePlan("SpeedRun")
+	local NumbRoute5 = APR.NumbRoutePlan("Extra")
+	local NumbRoute6 = APR.NumbRoutePlan("Dragonflight")
+	local NumbRoute7 = APR.NumbRoutePlan("MISC 1")
+	local NumbRoute8 = APR.NumbRoutePlan("MISC 2")
 	local ZeBreak = 0
 	local zfrom
 	local zto
 
-	for CLi = 1, zenr do
+	for CLi = 1, NumbRoute do
 		local ZeMTop = APR.RoutePlan.FG1["EK3"..CLi]:GetTop()
 		local ZeMBottom = APR.RoutePlan.FG1["EK3"..CLi]:GetBottom()
 		local ZeMLeft = APR.RoutePlan.FG1["EK3"..CLi]:GetLeft()
@@ -2201,7 +2201,7 @@ function APR.CheckPosMove(zeActivz)
 		end
 	end
 
-	for CLi = 1, zenr2 do
+	for CLi = 1, NumbRoute2 do
 		local ZeMTop = APR.RoutePlan.FG1["KAL3"..CLi]:GetTop()
 		local ZeMBottom = APR.RoutePlan.FG1["KAL3"..CLi]:GetBottom()
 		local ZeMLeft = APR.RoutePlan.FG1["KAL3"..CLi]:GetLeft()
@@ -2228,7 +2228,7 @@ function APR.CheckPosMove(zeActivz)
 		end
 	end
 
-	for CLi = 1, zenr3 do
+	for CLi = 1, NumbRoute3 do
 		local ZeMTop = APR.RoutePlan.FG1["SL3"..CLi]:GetTop()
 		local ZeMBottom = APR.RoutePlan.FG1["SL3"..CLi]:GetBottom()
 		local ZeMLeft = APR.RoutePlan.FG1["SL3"..CLi]:GetLeft()
@@ -2255,7 +2255,7 @@ function APR.CheckPosMove(zeActivz)
 		end
 	end
 
-	for CLi = 1, zenr4 do
+	for CLi = 1, NumbRoute4 do
 		local ZeMTop = APR.RoutePlan.FG1["SPR3"..CLi]:GetTop()
 		local ZeMBottom = APR.RoutePlan.FG1["SPR3"..CLi]:GetBottom()
 		local ZeMLeft = APR.RoutePlan.FG1["SPR3"..CLi]:GetLeft()
@@ -2282,7 +2282,7 @@ function APR.CheckPosMove(zeActivz)
 		end
 	end
 
-	for CLi = 1, zenr5 do
+	for CLi = 1, NumbRoute5 do
 		local ZeMTop = APR.RoutePlan.FG1["EX3"..CLi]:GetTop()
 		local ZeMBottom = APR.RoutePlan.FG1["EX3"..CLi]:GetBottom()
 		local ZeMLeft = APR.RoutePlan.FG1["EX3"..CLi]:GetLeft()
@@ -2309,7 +2309,7 @@ function APR.CheckPosMove(zeActivz)
 		end
 	end
 
-	for CLi = 1, zenr6 do
+	for CLi = 1, NumbRoute6 do
 		local ZeMTop = APR.RoutePlan.FG1["DF3"..CLi]:GetTop()
 		local ZeMBottom = APR.RoutePlan.FG1["DF3"..CLi]:GetBottom()
 		local ZeMLeft = APR.RoutePlan.FG1["DF3"..CLi]:GetLeft()
@@ -2336,7 +2336,7 @@ function APR.CheckPosMove(zeActivz)
 		end
 	end
 
-	for CLi = 1, zenr7 do
+	for CLi = 1, NumbRoute7 do
 		local ZeMTop = APR.RoutePlan.FG1["MISC3"..CLi]:GetTop()
 		local ZeMBottom = APR.RoutePlan.FG1["MISC3"..CLi]:GetBottom()
 		local ZeMLeft = APR.RoutePlan.FG1["MISC3"..CLi]:GetLeft()
@@ -2362,8 +2362,8 @@ function APR.CheckPosMove(zeActivz)
 			break
 		end
 	end
-	
-	for CLi = 1, zenr8 do
+
+	for CLi = 1, NumbRoute8 do
 		local ZeMTop = APR.RoutePlan.FG1["MISC23"..CLi]:GetTop()
 		local ZeMBottom = APR.RoutePlan.FG1["MISC23"..CLi]:GetBottom()
 		local ZeMLeft = APR.RoutePlan.FG1["MISC23"..CLi]:GetLeft()
@@ -2389,8 +2389,8 @@ function APR.CheckPosMove(zeActivz)
 			break
 		end
 	end
-	
-	if (zeActivz == 1 and zfrom and zto) then
+
+	if (TheActive == 1 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
@@ -2407,8 +2407,8 @@ function APR.CheckPosMove(zeActivz)
 		end
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["EK3"..zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Show()
-		
-	elseif (zeActivz == 2 and zfrom and zto) then
+
+	elseif (TheActive == 2 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
@@ -2425,8 +2425,8 @@ function APR.CheckPosMove(zeActivz)
 		end
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["KAL3"..zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Show()
-		
-	elseif (zeActivz == 3 and zfrom and zto) then
+
+	elseif (TheActive == 3 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
@@ -2443,8 +2443,8 @@ function APR.CheckPosMove(zeActivz)
 		end
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["SL3"..zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Show()
-	
-	elseif (zeActivz == 4 and zfrom and zto) then
+
+	elseif (TheActive == 4 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
@@ -2461,8 +2461,8 @@ function APR.CheckPosMove(zeActivz)
 		end
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["SPR3"..zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Show()
-	
-	elseif (zeActivz == 5 and zfrom and zto) then
+
+	elseif (TheActive == 5 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
@@ -2479,8 +2479,8 @@ function APR.CheckPosMove(zeActivz)
 		end
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["EX3"..zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Show()
-	
-	elseif (zeActivz == 6 and zfrom and zto) then
+
+	elseif (TheActive == 6 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
@@ -2497,8 +2497,8 @@ function APR.CheckPosMove(zeActivz)
 		end
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["DF3"..zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Show()
-	
-	elseif (zeActivz == 7 and zfrom and zto) then
+
+	elseif (TheActive == 7 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
@@ -2516,7 +2516,7 @@ function APR.CheckPosMove(zeActivz)
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["MISC3"..zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Show()
 
-	elseif (zeActivz == 8 and zfrom and zto) then
+	elseif (TheActive == 8 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
@@ -2533,9 +2533,9 @@ function APR.CheckPosMove(zeActivz)
 		end
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]["FS"]:SetText(APR.RoutePlan.FG1["MISC23"..zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom"..zto]:Show()
-	end	
-		
-	for CLi = 1, zenr do
+	end
+
+	for CLi = 1, NumbRoute do
 		local zeTex = APR.RoutePlan.FG1["EK3"..CLi]["FS"]:GetText()
 		local ZeMatch = 0
 		for CLi2 = 1, 19 do
@@ -2554,8 +2554,8 @@ function APR.CheckPosMove(zeActivz)
 			end
 		end
 	end
-	
-	for CLi = 1, zenr2 do
+
+	for CLi = 1, NumbRoute2 do
 		local zeTex = APR.RoutePlan.FG1["KAL3"..CLi]["FS"]:GetText()
 		local ZeMatch = 0
 		for CLi2 = 1, 19 do
@@ -2575,7 +2575,7 @@ function APR.CheckPosMove(zeActivz)
 		end
 	end
 
-	for CLi = 1, zenr3 do
+	for CLi = 1, NumbRoute3 do
 		local zeTex = APR.RoutePlan.FG1["SL3"..CLi]["FS"]:GetText()
 		local ZeMatch = 0
 		for CLi2 = 1, 19 do
@@ -2594,7 +2594,7 @@ function APR.CheckPosMove(zeActivz)
 			end
 		end
 		if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
-			local zew = APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]]
+			local zew = APR.QStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]]
 			if (APR["EasternKingdom"] and APR["EasternKingdom"][zew] and IsAddOnLoaded("APR-Vanilla") == false) then
 				local loaded, ADDON_DEMAND_LOADED = LoadAddOn("APR-Vanilla")
 					if not loaded then
@@ -2638,7 +2638,7 @@ function APR.CheckPosMove(zeActivz)
 		end
 	end
 
-	for CLi = 1, zenr4 do
+	for CLi = 1, NumbRoute4 do
 		local zeTex = APR.RoutePlan.FG1["SPR3"..CLi]["FS"]:GetText()
 		local ZeMatch = 0
 		for CLi2 = 1, 19 do
@@ -2657,7 +2657,7 @@ function APR.CheckPosMove(zeActivz)
 			end
 		end
 		if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
-			local zew = APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]]
+			local zew = APR.QStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]]
 			if (APR["ShadowlandsDB"] and APR["ShadowlandsDB"][zew] and IsAddOnLoaded("APR-Shadowlands") == false) then
 				local loaded, reason = LoadAddOn("APR-Shadowlands")
 				if (not loaded) then
@@ -2669,7 +2669,7 @@ function APR.CheckPosMove(zeActivz)
 		end
 	end
 
-	for CLi = 1, zenr5 do
+	for CLi = 1, NumbRoute5 do
 		local zeTex = APR.RoutePlan.FG1["EX3"..CLi]["FS"]:GetText()
 		local ZeMatch = 0
 		for CLi2 = 1, 19 do
@@ -2689,7 +2689,7 @@ function APR.CheckPosMove(zeActivz)
 		end
 	end
 
-	for CLi = 1, zenr6 do
+	for CLi = 1, NumbRoute6 do
 		local zeTex = APR.RoutePlan.FG1["DF3"..CLi]["FS"]:GetText()
 		local ZeMatch = 0
 		for CLi2 = 1, 19 do
@@ -2708,8 +2708,8 @@ function APR.CheckPosMove(zeActivz)
 			end
 		end
 	end
-	
-	for CLi = 1, zenr7 do
+
+	for CLi = 1, NumbRoute7 do
 		local zeTex = APR.RoutePlan.FG1["MISC3"..CLi]["FS"]:GetText()
 		local ZeMatch = 0
 		for CLi2 = 1, 19 do
@@ -2728,8 +2728,8 @@ function APR.CheckPosMove(zeActivz)
 			end
 		end
 	end
-	
-	for CLi = 1, zenr8 do
+
+	for CLi = 1, NumbRoute8 do
 		local zeTex = APR.RoutePlan.FG1["MISC23"..CLi]["FS"]:GetText()
 		local ZeMatch = 0
 		for CLi2 = 1, 19 do
@@ -2748,7 +2748,7 @@ function APR.CheckPosMove(zeActivz)
 			end
 		end
 	end
-	
+
 end
 function APR.CheckCustomEmpty()
 	if (APR1["Debug"]) then
@@ -2769,14 +2769,14 @@ function APR.RoutePlanCheckPos() --Check current position for route plan
 	if (APR1["Debug"]) then
 		print("Function: APR.RoutePlanCheckPos()")
 	end
-	local zenr = APR.NumbRoutePlan("EasternKingdom")
+	local NumbRoute = APR.NumbRoutePlan("EasternKingdom")
 	local ZeHide = {}
 	for CLi = 1, 19 do
 		if (APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:GetText() and APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:GetText() ~= "") then
 			ZeHide[APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:GetText()] = 1
 		end
 	end
-	for CLi = 1, zenr do
+	for CLi = 1, NumbRoute do
 		APR.RoutePlan.FG1["EK3"..CLi]:ClearAllPoints()
 		APR.RoutePlan.FG1["EK3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.EKT, "TOPRIGHT", -10, -(20*CLi)-10)
 		APR.RoutePlan.FG1["EK3"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.EKT, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
@@ -2789,8 +2789,8 @@ function APR.RoutePlanCheckPos() --Check current position for route plan
 			APR.RoutePlan.FG1["EK3"..CLi]:Hide()
 		end
 	end
-	local zenr = APR.NumbRoutePlan("Kalimdor")
-	for CLi = 1, zenr do
+	local NumbRoute = APR.NumbRoutePlan("Kalimdor")
+	for CLi = 1, NumbRoute do
 		APR.RoutePlan.FG1["KAL3"..CLi]:ClearAllPoints()
 		APR.RoutePlan.FG1["KAL3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.KALT, "TOPRIGHT", -10, -(20*CLi)-10)
 		APR.RoutePlan.FG1["KAL3"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.KALT, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
@@ -2803,9 +2803,9 @@ function APR.RoutePlanCheckPos() --Check current position for route plan
 			APR.RoutePlan.FG1["KAL3"..CLi]:Hide()
 		end
 	end
-	
-	local zenr = APR.NumbRoutePlan("Shadowlands")
-	for CLi = 1, zenr do
+
+	local NumbRoute = APR.NumbRoutePlan("Shadowlands")
+	for CLi = 1, NumbRoute do
 		APR.RoutePlan.FG1["SL3"..CLi]:ClearAllPoints()
 		APR.RoutePlan.FG1["SL3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.SLT, "TOPRIGHT", -10, -(20*CLi)-10)
 		APR.RoutePlan.FG1["SL3"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.SLT, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
@@ -2818,8 +2818,8 @@ function APR.RoutePlanCheckPos() --Check current position for route plan
 			APR.RoutePlan.FG1["SL3"..CLi]:Hide()
 		end
 	end
-	local zenr = APR.NumbRoutePlan("Extra")
-	for CLi = 1, zenr do
+	local NumbRoute = APR.NumbRoutePlan("Extra")
+	for CLi = 1, NumbRoute do
 		APR.RoutePlan.FG1["EX3"..CLi]:ClearAllPoints()
 		APR.RoutePlan.FG1["EX3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.EXTT, "TOPRIGHT", -10, -(20*CLi)-10)
 		APR.RoutePlan.FG1["EX3"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.EXTT, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
@@ -2832,8 +2832,8 @@ function APR.RoutePlanCheckPos() --Check current position for route plan
 			APR.RoutePlan.FG1["EX3"..CLi]:Hide()
 		end
 	end
-	local zenr = APR.NumbRoutePlan("MISC 1")
-	for CLi = 1, zenr do
+	local NumbRoute = APR.NumbRoutePlan("MISC 1")
+	for CLi = 1, NumbRoute do
 		APR.RoutePlan.FG1["MISC3"..CLi]:ClearAllPoints()
 		APR.RoutePlan.FG1["MISC3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.MISC1T, "TOPRIGHT", -10, -(20*CLi)-10)
 		APR.RoutePlan.FG1["MISC3"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.MISC1T, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
@@ -2846,8 +2846,8 @@ function APR.RoutePlanCheckPos() --Check current position for route plan
 			APR.RoutePlan.FG1["MISC3"..CLi]:Hide()
 		end
 	end
-	local zenr = APR.NumbRoutePlan("MISC 2")
-	for CLi = 1, zenr do
+	local NumbRoute = APR.NumbRoutePlan("MISC 2")
+	for CLi = 1, NumbRoute do
 		APR.RoutePlan.FG1["MISC23"..CLi]:ClearAllPoints()
 		APR.RoutePlan.FG1["MISC23"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.MISC2T, "TOPRIGHT", -10, -(20*CLi)-10)
 		APR.RoutePlan.FG1["MISC23"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.MISC2T, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
@@ -2860,8 +2860,8 @@ function APR.RoutePlanCheckPos() --Check current position for route plan
 			APR.RoutePlan.FG1["MISC23"..CLi]:Hide()
 		end
 	end
-	local zenr = APR.NumbRoutePlan("Dragonflight")
-	for CLi = 1, zenr do
+	local NumbRoute = APR.NumbRoutePlan("Dragonflight")
+	for CLi = 1, NumbRoute do
 		APR.RoutePlan.FG1["DF3"..CLi]:ClearAllPoints()
 		APR.RoutePlan.FG1["DF3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.DFT, "TOPRIGHT", -10, -(20*CLi)-10)
 		APR.RoutePlan.FG1["DF3"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.DFT, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
@@ -2874,8 +2874,8 @@ function APR.RoutePlanCheckPos() --Check current position for route plan
 			APR.RoutePlan.FG1["DF3"..CLi]:Hide()
 		end
 	end
-	local zenr = APR.NumbRoutePlan("SpeedRun")
-	for CLi = 1, zenr do
+	local NumbRoute = APR.NumbRoutePlan("SpeedRun")
+	for CLi = 1, NumbRoute do
 		APR.RoutePlan.FG1["SPR3"..CLi]:ClearAllPoints()
 		APR.RoutePlan.FG1["SPR3"..CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.F25x3, "TOPRIGHT", -10, -(20*CLi)-10)
 		APR.RoutePlan.FG1["SPR3"..CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.F25x3, "BOTTOMRIGHT", 10, -(20*CLi)+10-10)
@@ -2906,74 +2906,74 @@ function APR.RoutePlanCheckPos() --Check current position for route plan
 	APR.BookingList["UpdateMapId"] = 1
 end
 function APR.NumbRoutePlan(Continz)
-	local zenr = 0
+	local NumbRoute = 0
 
 	if (Continz == "EasternKingdom") then
-		if (APR.QuestStepListListingStartAreas["EasternKingdom"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepListListingStartAreas["EasternKingdom"]) do
-				zenr = zenr + 1
+		if (APR.QStepListListingStartAreas["EasternKingdom"]) then
+			for APR_index2,APR_value2 in pairs(APR.QStepListListingStartAreas["EasternKingdom"]) do
+				NumbRoute = NumbRoute + 1
 			end
 		end
-		if (APR.QuestStepListListing["EasternKingdom"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepListListing["EasternKingdom"]) do
-				zenr = zenr + 1
+		if (APR.QStepListListing["EasternKingdom"]) then
+			for APR_index2,APR_value2 in pairs(APR.QStepListListing["EasternKingdom"]) do
+				NumbRoute = NumbRoute + 1
 			end
 		end
 	elseif (Continz == "Kalimdor") then
-		if (APR.QuestStepListListingStartAreas["Kalimdor"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepListListingStartAreas["Kalimdor"]) do
-				zenr = zenr + 1
+		if (APR.QStepListListingStartAreas["Kalimdor"]) then
+			for APR_index2,APR_value2 in pairs(APR.QStepListListingStartAreas["Kalimdor"]) do
+				NumbRoute = NumbRoute + 1
 			end
 		end
-		if (APR.QuestStepListListing["Kalimdor"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepListListing["Kalimdor"]) do
-				zenr = zenr + 1
+		if (APR.QStepListListing["Kalimdor"]) then
+			for APR_index2,APR_value2 in pairs(APR.QStepListListing["Kalimdor"]) do
+				NumbRoute = NumbRoute + 1
 			end
 		end
 	elseif (Continz == "Extra") then
-		if (APR.QuestStepListListing["Extra"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepListListing["Extra"]) do
-				zenr = zenr + 1
+		if (APR.QStepListListing["Extra"]) then
+			for APR_index2,APR_value2 in pairs(APR.QStepListListing["Extra"]) do
+				NumbRoute = NumbRoute + 1
 			end
 		end
 	elseif (Continz == "MISC 1") then
-		if (APR.QuestStepListListing["MISC 1"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepListListing["MISC 1"]) do
-				zenr = zenr + 1
+		if (APR.QStepListListing["MISC 1"]) then
+			for APR_index2,APR_value2 in pairs(APR.QStepListListing["MISC 1"]) do
+				NumbRoute = NumbRoute + 1
 			end
 		end
 	elseif (Continz == "MISC 2") then
-		if (APR.QuestStepListListing["MISC 2"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepListListing["MISC 2"]) do
-				zenr = zenr + 1
+		if (APR.QStepListListing["MISC 2"]) then
+			for APR_index2,APR_value2 in pairs(APR.QStepListListing["MISC 2"]) do
+				NumbRoute = NumbRoute + 1
 			end
 		end
 	elseif (Continz == "Dragonflight") then
-		if (APR.QuestStepListListing["Dragonflight"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepListListing["Dragonflight"]) do
-				zenr = zenr + 1
+		if (APR.QStepListListing["Dragonflight"]) then
+			for APR_index2,APR_value2 in pairs(APR.QStepListListing["Dragonflight"]) do
+				NumbRoute = NumbRoute + 1
 			end
 		end
 	elseif (Continz == "BrokenIsles") then
-		if (APR.QuestStepListListingStartAreas["BrokenIsles"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepListListingStartAreas["BrokenIsles"]) do
-				zenr = zenr + 1
+		if (APR.QStepListListingStartAreas["BrokenIsles"]) then
+			for APR_index2,APR_value2 in pairs(APR.QStepListListingStartAreas["BrokenIsles"]) do
+				NumbRoute = NumbRoute + 1
 			end
 		end
 	elseif (Continz == "SpeedRun") then
-		if (APR.QuestStepListListing["SpeedRun"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepListListing["SpeedRun"]) do
-				zenr = zenr + 1
+		if (APR.QStepListListing["SpeedRun"]) then
+			for APR_index2,APR_value2 in pairs(APR.QStepListListing["SpeedRun"]) do
+				NumbRoute = NumbRoute + 1
 			end
 		end
 	elseif (Continz == "Shadowlands") then
-		if (APR.QuestStepListListing["Shadowlands"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepListListing["Shadowlands"]) do
-				zenr = zenr + 1
+		if (APR.QStepListListing["Shadowlands"]) then
+			for APR_index2,APR_value2 in pairs(APR.QStepListListing["Shadowlands"]) do
+				NumbRoute = NumbRoute + 1
 			end
 		end
 	end
-	return zenr
+	return NumbRoute
 end
 
 function APR.TimeFPs(CurrentFP, DestFP)
@@ -3008,7 +3008,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 		if (not APR1[APR.Realm][APR.Name]["BonusSkips"]) then
 			APR1[APR.Realm][APR.Name]["BonusSkips"] = {}
 		end
-		APR.ZoneQuestOrderList() --Where steps go
+		APR.ZoneQOrderList() --Where steps go
 
 		APR_TaxicTimer = APR.CoreEventFrame:CreateAnimationGroup()
 		APR_TaxicTimer.anim = APR_TaxicTimer:CreateAnimation()
@@ -3032,7 +3032,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 		APR_LoadInTimer.anim:SetDuration(2)
 		APR_LoadInTimer:SetLooping("REPEAT")
 		APR_LoadInTimer:SetScript("OnLoop", function(self, event, ...)
-			if (CoreLoadin == 1 and APR.QuestListLoadin == 1) then
+			if (CoreLoadin == 1 and APR.QListLoadin == 1) then
 				if (not APR_Transport) then
 					APR_Transport = {}
 				end
@@ -3069,7 +3069,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 				end
 				APR.LoadOptionsFrame()
 				APR.BookingList["UpdateMapId"] = 1
-				APR.BookingList["UpdateQuest"] = 1
+				APR.BookingList["UpdateQ"] = 1
 				APR.BookingList["PrintQStep"] = 1
 				APR.BookingList["Heirloomscheck"] = 1
 				APR.CreateMacro()
@@ -3082,27 +3082,27 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 				end
 				print("APR "..L["LOADED"])
 				APR_LoadInTimer:Stop()
-				C_Timer.After(4, APR_UpdatezeMapId)
+				C_Timer.After(4, APR_UpdateMapId)
 				C_Timer.After(5, APR_BookQStep)
 				APR.RegisterChat = C_ChatInfo.RegisterAddonMessagePrefix("APRChat")
 				--APR.FP.ToyFPs()
-				local CQIDs = C_QuestLog.GetAllCompletedQuestIDs()
-				APR1[APR.Realm][APR.Name]["QuestCounter"] = getn(CQIDs)
-				APR1[APR.Realm][APR.Name]["QuestCounter2"] = APR1[APR.Realm][APR.Name]["QuestCounter"]
-				APR_QidsTimer:Play()
+				local CQIDs = C_QuestLog.GetAllCompletedQIDs()
+				APR1[APR.Realm][APR.Name]["QCounter"] = getn(CQIDs)
+				APR1[APR.Realm][APR.Name]["QCounter2"] = APR1[APR.Realm][APR.Name]["QCounter"]
+				APR_QIDsTimer:Play()
 			end
 		end)
 		APR_LoadInTimer:Play()
 		APR.RegisterChat = C_ChatInfo.RegisterAddonMessagePrefix("APRChat")
 
-		APR_QidsTimer = APR.CoreEventFrame:CreateAnimationGroup()
-		APR_QidsTimer.anim = APR_QidsTimer:CreateAnimation()
-		APR_QidsTimer.anim:SetDuration(1)
-		APR_QidsTimer:SetLooping("REPEAT")
-		APR_QidsTimer:SetScript("OnLoop", function(self, event, ...)
-			if (APR1[APR.Realm][APR.Name]["QuestCounter2"] ~= APR1[APR.Realm][APR.Name]["QuestCounter"]) then
+		APR_QIDsTimer = APR.CoreEventFrame:CreateAnimationGroup()
+		APR_QIDsTimer.anim = APR_QIDsTimer:CreateAnimation()
+		APR_QIDsTimer.anim:SetDuration(1)
+		APR_QIDsTimer:SetLooping("REPEAT")
+		APR_QIDsTimer:SetScript("OnLoop", function(self, event, ...)
+			if (APR1[APR.Realm][APR.Name]["QCounter2"] ~= APR1[APR.Realm][APR.Name]["QCounter"]) then
 				APR.BookingList["PrintQStep"] = 1
-				APR1[APR.Realm][APR.Name]["QuestCounter"] = APR1[APR.Realm][APR.Name]["QuestCounter2"]
+				APR1[APR.Realm][APR.Name]["QCounter"] = APR1[APR.Realm][APR.Name]["QCounter2"]
 
 			end
 			if (not InCombatLockdown() and APR.MacroUpdaterVar[1]) then
@@ -3136,8 +3136,8 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 		if (not APR1[APR.Realm][APR.Name]["LoaPick"]) then
 			APR1[APR.Realm][APR.Name]["LoaPick"] = 0
 		end
-			if (not APR1[APR.Realm][APR.Name]["QlineSkip"]) then
-				APR1[APR.Realm][APR.Name]["QlineSkip"] = {}
+			if (not APR1[APR.Realm][APR.Name]["QuestlineSkip"]) then
+				APR1[APR.Realm][APR.Name]["QuestlineSkip"] = {}
 			end
 			if (not APR1[APR.Realm][APR.Name]["SkippedBonusObj"]) then
 				APR1[APR.Realm][APR.Name]["SkippedBonusObj"] = {}
@@ -3160,25 +3160,25 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 			if (not APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"]) then
 				APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"] = 2
 			end
-			if (not APR1[APR.Realm][APR.Name]["Settings"]["QuestButtons"]) then
-				APR1[APR.Realm][APR.Name]["Settings"]["QuestButtons"] = 1
+			if (not APR1[APR.Realm][APR.Name]["Settings"]["QButtons"]) then
+				APR1[APR.Realm][APR.Name]["Settings"]["QButtons"] = 1
 			end
-			if (not APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"]) then
-				APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"] = 1
+			if (not APR1[APR.Realm][APR.Name]["Settings"]["MinimapBlobAlpha"]) then
+				APR1[APR.Realm][APR.Name]["Settings"]["MinimapBlobAlpha"] = 1
 			end
-			if (not APR1[APR.Realm][APR.Name]["Settings"]["QuestButtonDetatch"]) then
-				APR1[APR.Realm][APR.Name]["Settings"]["QuestButtonDetatch"] = 0
+			if (not APR1[APR.Realm][APR.Name]["Settings"]["QButtonDetatch"]) then
+				APR1[APR.Realm][APR.Name]["Settings"]["QButtonDetatch"] = 0
 			end
-			if (not APR1[APR.Realm][APR.Name]["Settings"]["ShowQuestListOrder"]) then
-				APR1[APR.Realm][APR.Name]["Settings"]["ShowQuestListOrder"] = 1
+			if (not APR1[APR.Realm][APR.Name]["Settings"]["ShowQListOrder"]) then
+				APR1[APR.Realm][APR.Name]["Settings"]["ShowQListOrder"] = 1
 			end
 			if (not APR1[APR.Realm][APR.Name]["Settings"]["OrderListScale"]) then
 				APR1[APR.Realm][APR.Name]["Settings"]["OrderListScale"] = 1
 			end
-			if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQuestListOrder"] == 1) then
-				APR.ZoneQuestOrder:Show()
+			if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQListOrder"] == 1) then
+				APR.ZoneQOrder:Show()
 			else
-				APR.ZoneQuestOrder:Hide()
+				APR.ZoneQOrder:Hide()
 			end
 			if (not APR1[APR.Realm][APR.Name]["Settings"]["ShowBlobs"]) then
 				APR1[APR.Realm][APR.Name]["Settings"]["ShowBlobs"] = 1
@@ -3218,8 +3218,8 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 				APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] = 1
 			end
 			APR1[APR.Realm][APR.Name]["Settings"]["AutoShareQ"] = 0
-			if (not APR1[APR.Realm][APR.Name]["Settings"]["ChooseQuests"]) then
-				APR1[APR.Realm][APR.Name]["Settings"]["ChooseQuests"] = 0
+			if (not APR1[APR.Realm][APR.Name]["Settings"]["ChooseQs"]) then
+				APR1[APR.Realm][APR.Name]["Settings"]["ChooseQs"] = 0
 			end
 			if (not APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"]) then
 				APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"] = UIParent:GetScale()
@@ -3252,10 +3252,10 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 				APR1[APR.Realm][APR.Name]["APR_DoWarCampaign"] = 0
 			end
 
-			if (not APR1[APR.Realm][APR.Name]["WantedQuestList"]) then
-				APR1[APR.Realm][APR.Name]["WantedQuestList"] = {}
+			if (not APR1[APR.Realm][APR.Name]["WantedQList"]) then
+				APR1[APR.Realm][APR.Name]["WantedQList"] = {}
 			end
-			APR.ZoneQuestOrder:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["OrderListScale"])
+			APR.ZoneQOrder:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["OrderListScale"])
 			APR.ArrowFrame:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"])
 			APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"], APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"])
 
@@ -3286,8 +3286,8 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 
 					APR.AfkFrame.Fontstring:SetText(L["AFK"].." ".. string.format(SecondsToTime(ZeTime)))
 					local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
-					if (APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
-						local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
+					if (APR.QStepList[APR.ActiveMap] and APR.QStepList[APR.ActiveMap][CurStep]) then
+						local steps = APR.QStepList[APR.ActiveMap][CurStep]
 						if (steps and steps["SpecialETAHide"]) then
 							APR.AfkFrame:Hide()
 						else
@@ -3308,10 +3308,10 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 		if (not IsControlKeyDown()) then  -- unless control key is down
 			local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 			local steps
-			if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
-				steps = APR.QuestStepList[APR.ActiveMap][CurStep]
+			if (CurStep and APR.QStepList and APR.QStepList[APR.ActiveMap]) then
+				steps = APR.QStepList[APR.ActiveMap][CurStep]
 			end
-			if (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 1 and (steps and not steps["Dontskipvid"]) and (APR.ActiveQuests and not APR.ActiveQuests[52042])) then
+			if (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 1 and (steps and not steps["Dontskipvid"]) and (APR.ActiveQs and not APR.ActiveQs[52042])) then
 				APR.BookingList["SkipCutscene"] = 1
 			end
 		end
