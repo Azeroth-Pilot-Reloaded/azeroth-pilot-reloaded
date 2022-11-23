@@ -1,40 +1,40 @@
 if (APR.Faction == "Horde") then
 
-APR.QStepListListingStartAreas = {}
-APR.QStepListListingStartAreas["Kalimdor"] = {}
-APR.QStepListListingStartAreas["EasternKingdom"] = {}
+APR.QuestStepListListingStartAreas = {}
+APR.QuestStepListListingStartAreas["Kalimdor"] = {}
+APR.QuestStepListListingStartAreas["EasternKingdom"] = {}
 if (APR.Race == "Goblin" and APR.Level < 33) then
-	APR.QStepListListingStartAreas["Kalimdor"] = {
+	APR.QuestStepListListingStartAreas["Kalimdor"] = {
 		["194-Kezan"] = "01-30 Goblin Start (Kezan)",
 		["174-LostIsles"] = "01-30 Goblin Start (Lost Isles)",
 	}
 elseif (APR.Race == "Orc") then
-	APR.QStepListListingStartAreas["Kalimdor"]["1-ValleyOfTrialsOrc"] = "01-10 Orc Start"
+	APR.QuestStepListListingStartAreas["Kalimdor"]["1-ValleyOfTrialsOrc"] = "01-10 Orc Start"
 elseif (APR.Race == "Scourge") then
-	APR.QStepListListingStartAreas["EasternKingdom"]["18-TirisfalGladesUndead"] = "01-10 Scourge Start"
+	APR.QuestStepListListingStartAreas["EasternKingdom"]["18-TirisfalGladesUndead"] = "01-10 Scourge Start"
 elseif (APR.Race == "BloodElf") then
-	APR.QStepListListingStartAreas["EasternKingdom"]["94-EversongWoodsBloodElf"] = "01-10 Blood Elf Start"
+	APR.QuestStepListListingStartAreas["EasternKingdom"]["94-EversongWoodsBloodElf"] = "01-10 Blood Elf Start"
 elseif (APR.Class[3] == 1 and APR.Race == "Troll") then
-	APR.QStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollWar"] = "01-10 Troll Start"
+	APR.QuestStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollWar"] = "01-10 Troll Start"
 elseif (APR.Class[3] == 3 and APR.Race == "Troll") then
-	APR.QStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollHunter"] = "01-10 Troll Start"
+	APR.QuestStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollHunter"] = "01-10 Troll Start"
 elseif (APR.Class[3] == 4 and APR.Race == "Troll") then
-	APR.QStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollRogue"] = "01-10 Troll Start"
+	APR.QuestStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollRogue"] = "01-10 Troll Start"
 elseif (APR.Class[3] == 5 and APR.Race == "Troll") then
-	APR.QStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollPriest"] = "01-10 Troll Start"
+	APR.QuestStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollPriest"] = "01-10 Troll Start"
 elseif (APR.Class[3] == 7 and APR.Race == "Troll") then
-	APR.QStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollShaman"] = "01-10 Troll Start"
+	APR.QuestStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollShaman"] = "01-10 Troll Start"
 elseif (APR.Class[3] == 8 and APR.Race == "Troll") then
-	APR.QStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollMage"] = "01-10 Troll Start"
+	APR.QuestStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollMage"] = "01-10 Troll Start"
 elseif (APR.Class[3] == 9 and APR.Race == "Troll") then
-	APR.QStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollWarlock"] = "01-10 Troll Start"
+	APR.QuestStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollWarlock"] = "01-10 Troll Start"
 elseif (APR.Class[3] == 10 and APR.Race == "Troll") then
-	APR.QStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollMonk"] = "01-10 Troll Start"
+	APR.QuestStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollMonk"] = "01-10 Troll Start"
 elseif (APR.Class[3] == 11 and APR.Race == "Troll") then
-	APR.QStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollDruid"] = "01-10 Troll Start"
+	APR.QuestStepListListingStartAreas["Kalimdor"]["1-EchoIslesTrollDruid"] = "01-10 Troll Start"
 end
 
-APR.QStepListListingZone = {
+APR.QuestStepListListingZone = {
 	["01-10 Orc Start"] = 1,
 	["01-10 Troll Start"] = 1,
 	["01-10 Scourge Start"] = 18,
@@ -91,9 +91,9 @@ APR.QStepListListingZone = {
 	["Legion - Azsuna"] = 630,
 	["Legion - Val'Sharah"] = 641,
 	["Legion - Stormheim"] = 634,
-
+	
 	["10-10 BFA Intro"] = 85,
---	["10-10 BFA intro 2"] = 1012,
+	["10-10 BFA intro 2"] = 1012,
 	["10-10 BFA intro 2"] = 862,
 	["10-50 Zuldazar"] = 862,
 	["20-50 Nazmir"] = 863,
@@ -109,9 +109,9 @@ APR.QStepListListingZone = {
 	["WIP-Kun-Lai Summit"] = 379,
 	["WIP-Highmountain"] = 650,
 }
-APR.QStepListListing = {}
+APR.QuestStepListListing = {}
 
-APR.QStepListListing["MISC 1"] = {
+APR.QuestStepListListing["MISC 1"] = {
 	["630-Azsuna"] = "Legion - Azsuna",
 	["641-ValSharah"] = "Legion - Val'Sharah",
 	["634-Stormheim"] = "Legion - Stormheim",
@@ -121,24 +121,24 @@ APR.QStepListListing["MISC 1"] = {
 	["863-Nazmir"] = "20-50 Nazmir",
 	["862-Zuldazar-2"] = "30-30 Naz-end Vol-begin",
 	["864-Vol'dun"] = "30-50 Vol'dun",
-
-
+	
+	
 }
 if (APR.Class[3] == 12) then
-APR.QStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
+APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
 end
 if (APR.Level < 10) then
-	APR.QStepListListing["Shadowlands"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
+	APR.QuestStepListListing["Shadowlands"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
 end
 
-APR.QStepListListing["MISC 2"] = {
+APR.QuestStepListListing["MISC 2"] = {
 	["371-The Jade Forest"] = "WIP-The Jade Forest",
 	["379-Kun-Lai Summit"] = "WIP-Kun-Lai Summit",
 	["650-Highmountain"] = "WIP-Highmountain",
-
+	
 }
 
-APR.QStepListListing["Extra"] = {
+APR.QuestStepListListing["Extra"] = {
 	["85-DesMephisto-Orgrimmar-p1"] = "(1/7) 10-50 Orgrimmar",
 	["577-DesMephisto-TanaanJungle"] = "(2/7) 10-50 Tanaan Jungle",
 	["525-DesMephisto-FrostfireRidge-p1"] = "(3/7) 10-50 Frostfire Ridge",
@@ -148,7 +148,7 @@ APR.QStepListListing["Extra"] = {
 	["550-DesMephisto-Nagrand"] = "(7/7) 10-50 Nagrand",
 }
 
-APR.QStepListListing["Shadowlands"] = {
+APR.QuestStepListListing["Shadowlands"] = {
 	["85-IntroQline"] = "SL-IntroQline",
 	["1648-Z0-TheMaw-Story"] = "Z-00-TheMaw-Story",
 	["1670-Z1-Oribos-Story"] = "Z-01-Oribos-Story",
@@ -170,15 +170,15 @@ APR.QStepListListing["Shadowlands"] = {
 }
 
 
-APR.QStepListListing["Kalimdor"] = {
+APR.QuestStepListListing["Kalimdor"] = {
 	["1-Durotar"] = "01-30 Durotar (Full)",
 	["10-NorthernBarrens"] = "10-30 Northern Barrens",
 	["199-SouthernBarrens"] = "10-30 Southern Barrens",
-
-
+	
+	
 }
 
-APR.QStepListListing["SpeedRun"] = {
+APR.QuestStepListListing["SpeedRun"] = {
 	["1648-Z0-TheMaw-Story"] = "Z-00-TheMaw-Story",
 	["1670-Z1-Oribos-Story"] = "Z-01-Oribos-Story",
 	["1533-Z2-Bastion-Story"] = "Z-02-Bastion-Story",
@@ -218,17 +218,16 @@ APR.QStepListListing["SpeedRun"] = {
 	["379-Kun-Lai Summit"] = "WIP-Kun-Lai Summit",
 	["650-Highmountain"] = "WIP-Highmountain",
 	["672-Mardum"] = "01-30 Demon Hunter Start",
-	["1409-Exile's Reach"] = "01-10 Exile's Reach",
 }
 
-APR.QStepListListing["EasternKingdom"] = {
+APR.QuestStepListListing["EasternKingdom"] = {
 	["DEV-Western Plaguelands"] = "WIP - Western Plaguelands",
 	["DEV-Silverpine"] = "WIP - Silverpine Forest",
 	["DEV-Hillsbrad"] = "WIP - Hillsbrad Foothills",
-
+	
 }
 
-APR.QStepListListing["Dragonflight"] = {
+APR.QuestStepListListing["Dragonflight"] = {
 	["DF01H-85-Orgrimmar"] = "WIP - Dragonflight intro",
 	["DF02H-2022-WakingShores"] = "WIP - WakingShores",
 }
