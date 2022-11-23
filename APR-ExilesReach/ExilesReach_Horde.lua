@@ -1,6 +1,6 @@
 if (APR.Faction == "Horde") then
 	if (APR.Class[3] == 1 and APR.Level < 33) then
-		APR.QStepList["1409-Exile's Reach"] = {
+		APR.QuestStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				59926, -- [1]
@@ -16,7 +16,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -10731.3,
 				["x"] = -1398.3,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59926] = {
 					["1"] = "1",
 				},
@@ -49,7 +49,7 @@ if (APR.Faction == "Horde") then
 			["NoArrows"] = 1,
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59927] = {
 					["1"] = "1",
 				},
@@ -110,7 +110,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -365.9,
 				["x"] = -2561.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59929] = {
 					["1"] = "1",
 				},
@@ -140,7 +140,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["2"] = "2",
 				},
@@ -160,7 +160,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["3"] = "3",
 				},
@@ -180,7 +180,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [6]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["1"] = "1",
 				},
@@ -223,7 +223,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.9,
 				["x"] = -2492.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59931] = {
 					["1"] = "1",
 				},
@@ -257,7 +257,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -184,
 				["x"] = -2477.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["1"] = "1",
 				},
@@ -273,7 +273,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.2,
 				["x"] = -2490.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["2"] = "2",
 				},
@@ -293,7 +293,7 @@ if (APR.Faction == "Horde") then
 				59932, -- [1]
 			},
 		}, -- [15]
---- Class Q
+--- Class Quest
 		{
 			["PickUp"] = {
 				59933, -- [1]
@@ -308,7 +308,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -235.4,
 				["x"] = -2482.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59933] = {
 					["1"] = "1",
 				},
@@ -392,7 +392,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59938] = {
 					["1"] = "1",
 				},
@@ -418,7 +418,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 50.6,
 				["x"] = -2581,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59939] = {
 					["1"] = "1",
 				},
@@ -453,7 +453,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 107.8,
 				["x"] = -2412.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59940] = {
 					["1"] = "1",
 				},
@@ -483,7 +483,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [12]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59941] = {
 					["1"] = "1",
 				},
@@ -524,7 +524,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["1"] = "1",
 				},
@@ -540,7 +540,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["2"] = "2",
 				},
@@ -552,7 +552,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [17]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["3"] = "3",
 				},
@@ -600,7 +600,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [21]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59950] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -656,7 +656,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [26]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59944] = {
 					["1"] = "1",
 				},
@@ -677,7 +677,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59946] = {
 					["1"] = "1",
 				},
@@ -729,7 +729,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 313.7,
 				["x"] = -2460.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -745,7 +745,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 325.3,
 				["x"] = -2495.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -761,7 +761,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 291.3,
 				["x"] = -2513.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -777,7 +777,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 279.8,
 				["x"] = -2473.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -839,7 +839,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 85,
 				["x"] = -2228,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["1"] = "1",
 				},
@@ -863,7 +863,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [41]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["2"] = "2",
 				},
@@ -884,7 +884,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 75.3,
 				["x"] = -2134,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["3"] = "3",
 				},
@@ -904,7 +904,7 @@ if (APR.Faction == "Horde") then
 				59949, -- [1]
 			},
 		}, -- [44]
---- Class Q Start
+--- Class Quest Start
 		{
 			["PickUp"] = {
 				59971, -- [1]
@@ -957,7 +957,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59972] = {
 					["1"] = "1",
 				},
@@ -982,7 +982,7 @@ if (APR.Faction == "Horde") then
 				59972, -- [1]
 			},
 		}, -- [7]
---- Class Q End
+--- Class Quest End
 		{
 			["PickUp"] = {
 				59975, -- [1]
@@ -1002,7 +1002,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [91]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -1070,7 +1070,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [97]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["1"] = "1",
 				},
@@ -1092,7 +1092,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["2"] = "2",
 				},
@@ -1108,7 +1108,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["3"] = "3",
 				},
@@ -1124,7 +1124,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["4"] = "4",
 				},
@@ -1152,7 +1152,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 699,
 				["x"] = -1893.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["6"] = "6",
 				},
@@ -1196,7 +1196,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [106]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["2"] = "2",
 				},
@@ -1213,7 +1213,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [107]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["1"] = "1",
 				},
@@ -1238,7 +1238,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [108]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["3"] = "3",
 				},
@@ -1262,7 +1262,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [109]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59980] = {
 					["1"] = "1",
 				},
@@ -1295,7 +1295,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["4"] = "4",
 				},
@@ -1329,7 +1329,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59984] = {
 					["1"] = "1",
 				},
@@ -1363,7 +1363,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59985] = {
 					["1"] = "1",
 				},
@@ -1389,7 +1389,7 @@ if (APR.Faction == "Horde") then
 	}
 	end
 	if (APR.Class[3] == 2 and APR.Level < 33) then
-		APR.QStepList["1409-Exile's Reach"] = {
+		APR.QuestStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				59926, -- [1]
@@ -1405,7 +1405,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -10731.3,
 				["x"] = -1398.3,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59926] = {
 					["1"] = "1",
 				},
@@ -1438,7 +1438,7 @@ if (APR.Faction == "Horde") then
 			["NoArrows"] = 1,
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59927] = {
 					["1"] = "1",
 				},
@@ -1499,7 +1499,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -365.9,
 				["x"] = -2561.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59929] = {
 					["1"] = "1",
 				},
@@ -1529,7 +1529,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["2"] = "2",
 				},
@@ -1549,7 +1549,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["3"] = "3",
 				},
@@ -1569,7 +1569,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [6]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["1"] = "1",
 				},
@@ -1612,7 +1612,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.9,
 				["x"] = -2492.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59931] = {
 					["1"] = "1",
 				},
@@ -1646,7 +1646,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -184,
 				["x"] = -2477.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["1"] = "1",
 				},
@@ -1662,7 +1662,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.2,
 				["x"] = -2490.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["2"] = "2",
 				},
@@ -1682,7 +1682,7 @@ if (APR.Faction == "Horde") then
 				59932, -- [1]
 			},
 		}, -- [15]
---- Class Q
+--- Class Quest
 		{
 			["PickUp"] = {
 				59933, -- [1]
@@ -1697,7 +1697,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -235.4,
 				["x"] = -2482.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59933] = {
 					["1"] = "1",
 				},
@@ -1781,7 +1781,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59938] = {
 					["1"] = "1",
 				},
@@ -1807,7 +1807,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 50.6,
 				["x"] = -2581,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59939] = {
 					["1"] = "1",
 				},
@@ -1842,7 +1842,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 107.8,
 				["x"] = -2412.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59940] = {
 					["1"] = "1",
 				},
@@ -1872,7 +1872,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [12]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59941] = {
 					["1"] = "1",
 				},
@@ -1913,7 +1913,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["1"] = "1",
 				},
@@ -1929,7 +1929,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["2"] = "2",
 				},
@@ -1941,7 +1941,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [17]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["3"] = "3",
 				},
@@ -1989,7 +1989,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [21]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59950] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -2045,7 +2045,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [26]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59944] = {
 					["1"] = "1",
 				},
@@ -2066,7 +2066,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59946] = {
 					["1"] = "1",
 				},
@@ -2118,7 +2118,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 313.7,
 				["x"] = -2460.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -2134,7 +2134,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 325.3,
 				["x"] = -2495.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -2150,7 +2150,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 291.3,
 				["x"] = -2513.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -2166,7 +2166,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 279.8,
 				["x"] = -2473.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -2228,7 +2228,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 85,
 				["x"] = -2228,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["1"] = "1",
 				},
@@ -2252,7 +2252,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [41]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["2"] = "2",
 				},
@@ -2273,7 +2273,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 75.3,
 				["x"] = -2134,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["3"] = "3",
 				},
@@ -2293,7 +2293,7 @@ if (APR.Faction == "Horde") then
 				59949, -- [1]
 			},
 		}, -- [44]
---- Class Q Start
+--- Class Quest Start
 		{
 			["PickUp"] = {
 				59958, -- [1]
@@ -2328,7 +2328,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [3]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59958] = {
 					["1"] = "1",
 				},
@@ -2368,7 +2368,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 258.5,
 				["x"] = -2463.7,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[60174] = {
 					["1"] = "1",
 				},
@@ -2384,7 +2384,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 246.6,
 				["x"] = -2450,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[60174] = {
 					["2"] = "2",
 				},
@@ -2404,7 +2404,7 @@ if (APR.Faction == "Horde") then
 				60174, -- [1]
 			},
 		}, -- [9]
---- Class Q End
+--- Class Quest End
 		{
 			["PickUp"] = {
 				59975, -- [1]
@@ -2424,7 +2424,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [91]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -2492,7 +2492,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [97]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["1"] = "1",
 				},
@@ -2514,7 +2514,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["2"] = "2",
 				},
@@ -2530,7 +2530,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["3"] = "3",
 				},
@@ -2546,7 +2546,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["4"] = "4",
 				},
@@ -2574,7 +2574,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 699,
 				["x"] = -1893.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["6"] = "6",
 				},
@@ -2618,7 +2618,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [106]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["2"] = "2",
 				},
@@ -2635,7 +2635,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [107]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["1"] = "1",
 				},
@@ -2660,7 +2660,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [108]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["3"] = "3",
 				},
@@ -2684,7 +2684,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [109]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59980] = {
 					["1"] = "1",
 				},
@@ -2717,7 +2717,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["4"] = "4",
 				},
@@ -2751,7 +2751,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59984] = {
 					["1"] = "1",
 				},
@@ -2785,7 +2785,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59985] = {
 					["1"] = "1",
 				},
@@ -2811,7 +2811,7 @@ if (APR.Faction == "Horde") then
 	}
 	end
 	if (APR.Class[3] == 3 and APR.Level < 33) then
-		APR.QStepList["1409-Exile's Reach"] = {
+		APR.QuestStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				59926, -- [1]
@@ -2827,7 +2827,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -10731.3,
 				["x"] = -1398.3,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59926] = {
 					["1"] = "1",
 				},
@@ -2860,7 +2860,7 @@ if (APR.Faction == "Horde") then
 			["NoArrows"] = 1,
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59927] = {
 					["1"] = "1",
 				},
@@ -2921,7 +2921,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -365.9,
 				["x"] = -2561.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59929] = {
 					["1"] = "1",
 				},
@@ -2951,7 +2951,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["2"] = "2",
 				},
@@ -2971,7 +2971,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["3"] = "3",
 				},
@@ -2991,7 +2991,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [6]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["1"] = "1",
 				},
@@ -3034,7 +3034,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.9,
 				["x"] = -2492.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59931] = {
 					["1"] = "1",
 				},
@@ -3068,7 +3068,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -184,
 				["x"] = -2477.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["1"] = "1",
 				},
@@ -3084,7 +3084,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.2,
 				["x"] = -2490.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["2"] = "2",
 				},
@@ -3123,7 +3123,7 @@ if (APR.Faction == "Horde") then
 				59935, -- [1]
 			},
 		}, -- [2]
---- Class Q
+--- Class Quest
 
 		{
 			["PickUp"] = {
@@ -3139,7 +3139,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -170,
 				["x"] = -2574.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59937] = {
 					["2"] = "2",
 				},
@@ -3205,7 +3205,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59938] = {
 					["1"] = "1",
 				},
@@ -3231,7 +3231,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 50.6,
 				["x"] = -2581,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59939] = {
 					["1"] = "1",
 				},
@@ -3266,7 +3266,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 107.8,
 				["x"] = -2412.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59940] = {
 					["1"] = "1",
 				},
@@ -3296,7 +3296,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [12]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59941] = {
 					["1"] = "1",
 				},
@@ -3337,7 +3337,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["1"] = "1",
 				},
@@ -3353,7 +3353,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["2"] = "2",
 				},
@@ -3365,7 +3365,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [17]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["3"] = "3",
 				},
@@ -3413,7 +3413,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [21]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59950] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -3469,7 +3469,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [26]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59944] = {
 					["1"] = "1",
 				},
@@ -3490,7 +3490,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59946] = {
 					["1"] = "1",
 				},
@@ -3542,7 +3542,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 313.7,
 				["x"] = -2460.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -3558,7 +3558,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 325.3,
 				["x"] = -2495.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -3574,7 +3574,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 291.3,
 				["x"] = -2513.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -3590,7 +3590,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 279.8,
 				["x"] = -2473.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -3652,7 +3652,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 85,
 				["x"] = -2228,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["1"] = "1",
 				},
@@ -3676,7 +3676,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [41]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["2"] = "2",
 				},
@@ -3697,7 +3697,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 75.3,
 				["x"] = -2134,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["3"] = "3",
 				},
@@ -3717,7 +3717,7 @@ if (APR.Faction == "Horde") then
 				59949, -- [1]
 			},
 		}, -- [44]
---- Class Q Start
+--- Class Quest Start
 		{
 			["PickUp"] = {
 				59952, -- [1]
@@ -3728,7 +3728,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [70]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59952] = {
 					["1"] = "1",
 				},
@@ -3750,7 +3750,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 237.8,
 				["x"] = -2283.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59952] = {
 					["2"] = "2",
 				},
@@ -3766,7 +3766,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 270,
 				["x"] = -2270.7,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59952] = {
 					["3"] = "3",
 				},
@@ -3800,7 +3800,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 228.8,
 				["x"] = -2273,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59953] = {
 					["1"] = "1",
 				},
@@ -3834,7 +3834,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 189.4,
 				["x"] = -2289.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[60162] = {
 					["1"] = "1",
 				},
@@ -3846,7 +3846,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [79]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[60162] = {
 					["2"] = "2",
 				},
@@ -3864,7 +3864,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [80]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[60162] = {
 					["3"] = "3",
 				},
@@ -3889,7 +3889,7 @@ if (APR.Faction == "Horde") then
 				["x"] = -2290,
 			},
 		}, -- [82]
---- Class Q End
+--- Class Quest End
 		{
 			["PickUp"] = {
 				59975, -- [1]
@@ -3909,7 +3909,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [91]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -3977,7 +3977,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [97]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["1"] = "1",
 				},
@@ -3999,7 +3999,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["2"] = "2",
 				},
@@ -4015,7 +4015,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["3"] = "3",
 				},
@@ -4031,7 +4031,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["4"] = "4",
 				},
@@ -4059,7 +4059,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 699,
 				["x"] = -1893.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["6"] = "6",
 				},
@@ -4103,7 +4103,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [106]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["2"] = "2",
 				},
@@ -4120,7 +4120,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [107]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["1"] = "1",
 				},
@@ -4145,7 +4145,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [108]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["3"] = "3",
 				},
@@ -4169,7 +4169,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [109]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59980] = {
 					["1"] = "1",
 				},
@@ -4202,7 +4202,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["4"] = "4",
 				},
@@ -4236,7 +4236,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59984] = {
 					["1"] = "1",
 				},
@@ -4270,7 +4270,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59985] = {
 					["1"] = "1",
 				},
@@ -4296,7 +4296,7 @@ if (APR.Faction == "Horde") then
 	}
 	end
 	if (APR.Class[3] == 4 and APR.Level < 33) then
-		APR.QStepList["1409-Exile's Reach"] = {
+		APR.QuestStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				59926, -- [1]
@@ -4312,7 +4312,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -10731.3,
 				["x"] = -1398.3,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59926] = {
 					["1"] = "1",
 				},
@@ -4345,7 +4345,7 @@ if (APR.Faction == "Horde") then
 			["NoArrows"] = 1,
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59927] = {
 					["1"] = "1",
 				},
@@ -4406,7 +4406,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -365.9,
 				["x"] = -2561.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59929] = {
 					["1"] = "1",
 				},
@@ -4436,7 +4436,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["2"] = "2",
 				},
@@ -4456,7 +4456,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["3"] = "3",
 				},
@@ -4476,7 +4476,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [6]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["1"] = "1",
 				},
@@ -4519,7 +4519,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.9,
 				["x"] = -2492.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59931] = {
 					["1"] = "1",
 				},
@@ -4553,7 +4553,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -184,
 				["x"] = -2477.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["1"] = "1",
 				},
@@ -4569,7 +4569,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.2,
 				["x"] = -2490.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["2"] = "2",
 				},
@@ -4589,7 +4589,7 @@ if (APR.Faction == "Horde") then
 				59932, -- [1]
 			},
 		}, -- [15]
---- Class Q
+--- Class Quest
 		{
 			["PickUp"] = {
 				59933, -- [1]
@@ -4604,7 +4604,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -235.4,
 				["x"] = -2482.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59933] = {
 					["1"] = "1",
 				},
@@ -4688,7 +4688,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59938] = {
 					["1"] = "1",
 				},
@@ -4714,7 +4714,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 50.6,
 				["x"] = -2581,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59939] = {
 					["1"] = "1",
 				},
@@ -4749,7 +4749,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 107.8,
 				["x"] = -2412.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59940] = {
 					["1"] = "1",
 				},
@@ -4779,7 +4779,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [12]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59941] = {
 					["1"] = "1",
 				},
@@ -4820,7 +4820,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["1"] = "1",
 				},
@@ -4836,7 +4836,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["2"] = "2",
 				},
@@ -4848,7 +4848,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [17]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["3"] = "3",
 				},
@@ -4896,7 +4896,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [21]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59950] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -4952,7 +4952,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [26]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59944] = {
 					["1"] = "1",
 				},
@@ -4973,7 +4973,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59946] = {
 					["1"] = "1",
 				},
@@ -5025,7 +5025,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 313.7,
 				["x"] = -2460.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -5041,7 +5041,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 325.3,
 				["x"] = -2495.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -5057,7 +5057,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 291.3,
 				["x"] = -2513.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -5073,7 +5073,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 279.8,
 				["x"] = -2473.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -5135,7 +5135,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 85,
 				["x"] = -2228,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["1"] = "1",
 				},
@@ -5159,7 +5159,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [41]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["2"] = "2",
 				},
@@ -5180,7 +5180,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 75.3,
 				["x"] = -2134,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["3"] = "3",
 				},
@@ -5200,7 +5200,7 @@ if (APR.Faction == "Horde") then
 				59949, -- [1]
 			},
 		}, -- [44]
---- Class Q Start
+--- Class Quest Start
 		{
 			["PickUp"] = {
 				59967, -- [1]
@@ -5211,7 +5211,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59967] = {
 					["1"] = "1",
 				},
@@ -5233,7 +5233,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 185,
 				["x"] = -2038.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59967] = {
 					["2"] = "2",
 				},
@@ -5267,7 +5267,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 175.5,
 				["x"] = -2063.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59968] = {
 					["1"] = "1",
 				},
@@ -5279,7 +5279,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [6]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59968] = {
 					["2"] = "2",
 				},
@@ -5304,7 +5304,7 @@ if (APR.Faction == "Horde") then
 				59968, -- [1]
 			},
 		}, -- [8]
---- Class Q End
+--- Class Quest End
 		{
 			["PickUp"] = {
 				59975, -- [1]
@@ -5324,7 +5324,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [91]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -5392,7 +5392,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [97]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["1"] = "1",
 				},
@@ -5414,7 +5414,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["2"] = "2",
 				},
@@ -5430,7 +5430,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["3"] = "3",
 				},
@@ -5446,7 +5446,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["4"] = "4",
 				},
@@ -5474,7 +5474,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 699,
 				["x"] = -1893.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["6"] = "6",
 				},
@@ -5518,7 +5518,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [106]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["2"] = "2",
 				},
@@ -5535,7 +5535,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [107]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["1"] = "1",
 				},
@@ -5560,7 +5560,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [108]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["3"] = "3",
 				},
@@ -5584,7 +5584,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [109]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59980] = {
 					["1"] = "1",
 				},
@@ -5617,7 +5617,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["4"] = "4",
 				},
@@ -5651,7 +5651,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59984] = {
 					["1"] = "1",
 				},
@@ -5685,7 +5685,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59985] = {
 					["1"] = "1",
 				},
@@ -5711,7 +5711,7 @@ if (APR.Faction == "Horde") then
 	}
 	end
 	if (APR.Class[3] == 5 and APR.Level < 33) then
-		APR.QStepList["1409-Exile's Reach"] = {
+		APR.QuestStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				59926, -- [1]
@@ -5727,7 +5727,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -10731.3,
 				["x"] = -1398.3,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59926] = {
 					["1"] = "1",
 				},
@@ -5760,7 +5760,7 @@ if (APR.Faction == "Horde") then
 			["NoArrows"] = 1,
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59927] = {
 					["1"] = "1",
 				},
@@ -5821,7 +5821,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -365.9,
 				["x"] = -2561.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59929] = {
 					["1"] = "1",
 				},
@@ -5851,7 +5851,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["2"] = "2",
 				},
@@ -5871,7 +5871,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["3"] = "3",
 				},
@@ -5891,7 +5891,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [6]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["1"] = "1",
 				},
@@ -5934,7 +5934,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.9,
 				["x"] = -2492.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59931] = {
 					["1"] = "1",
 				},
@@ -5968,7 +5968,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -184,
 				["x"] = -2477.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["1"] = "1",
 				},
@@ -5984,7 +5984,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.2,
 				["x"] = -2490.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["2"] = "2",
 				},
@@ -6004,7 +6004,7 @@ if (APR.Faction == "Horde") then
 				59932, -- [1]
 			},
 		}, -- [15]
---- Class Q
+--- Class Quest
 		{
 			["PickUp"] = {
 				59933, -- [1]
@@ -6019,7 +6019,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -235.4,
 				["x"] = -2482.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59933] = {
 					["1"] = "1",
 				},
@@ -6103,7 +6103,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59938] = {
 					["1"] = "1",
 				},
@@ -6129,7 +6129,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 50.6,
 				["x"] = -2581,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59939] = {
 					["1"] = "1",
 				},
@@ -6164,7 +6164,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 107.8,
 				["x"] = -2412.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59940] = {
 					["1"] = "1",
 				},
@@ -6194,7 +6194,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [12]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59941] = {
 					["1"] = "1",
 				},
@@ -6235,7 +6235,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["1"] = "1",
 				},
@@ -6251,7 +6251,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["2"] = "2",
 				},
@@ -6263,7 +6263,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [17]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["3"] = "3",
 				},
@@ -6311,7 +6311,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [21]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59950] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -6367,7 +6367,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [26]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59944] = {
 					["1"] = "1",
 				},
@@ -6388,7 +6388,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59946] = {
 					["1"] = "1",
 				},
@@ -6440,7 +6440,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 313.7,
 				["x"] = -2460.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -6456,7 +6456,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 325.3,
 				["x"] = -2495.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -6472,7 +6472,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 291.3,
 				["x"] = -2513.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -6488,7 +6488,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 279.8,
 				["x"] = -2473.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -6550,7 +6550,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 85,
 				["x"] = -2228,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["1"] = "1",
 				},
@@ -6574,7 +6574,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [41]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["2"] = "2",
 				},
@@ -6595,7 +6595,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 75.3,
 				["x"] = -2134,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["3"] = "3",
 				},
@@ -6615,7 +6615,7 @@ if (APR.Faction == "Horde") then
 				59949, -- [1]
 			},
 		}, -- [44]
---- Class Q Start
+--- Class Quest Start
 		{
 			["PickUp"] = {
 				59961, -- [1]
@@ -6626,7 +6626,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59961] = {
 					["1"] = "1",
 				},
@@ -6665,7 +6665,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 227.8,
 				["x"] = -2421.7,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59965] = {
 					["1"] = "1",
 				},
@@ -6685,7 +6685,7 @@ if (APR.Faction == "Horde") then
 				59965, -- [1]
 			},
 		}, -- [6]
---- Class Q End
+--- Class Quest End
 		{
 			["PickUp"] = {
 				59975, -- [1]
@@ -6705,7 +6705,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [91]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -6773,7 +6773,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [97]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["1"] = "1",
 				},
@@ -6795,7 +6795,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["2"] = "2",
 				},
@@ -6811,7 +6811,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["3"] = "3",
 				},
@@ -6827,7 +6827,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["4"] = "4",
 				},
@@ -6855,7 +6855,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 699,
 				["x"] = -1893.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["6"] = "6",
 				},
@@ -6899,7 +6899,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [106]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["2"] = "2",
 				},
@@ -6916,7 +6916,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [107]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["1"] = "1",
 				},
@@ -6941,7 +6941,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [108]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["3"] = "3",
 				},
@@ -6965,7 +6965,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [109]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59980] = {
 					["1"] = "1",
 				},
@@ -6998,7 +6998,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["4"] = "4",
 				},
@@ -7032,7 +7032,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59984] = {
 					["1"] = "1",
 				},
@@ -7066,7 +7066,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59985] = {
 					["1"] = "1",
 				},
@@ -7092,7 +7092,7 @@ if (APR.Faction == "Horde") then
 	}
 	end
 	if (APR.Class[3] == 7 and APR.Level < 33) then
-		APR.QStepList["1409-Exile's Reach"] = {
+		APR.QuestStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				59926, -- [1]
@@ -7108,7 +7108,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -10731.3,
 				["x"] = -1398.3,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59926] = {
 					["1"] = "1",
 				},
@@ -7141,7 +7141,7 @@ if (APR.Faction == "Horde") then
 			["NoArrows"] = 1,
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59927] = {
 					["1"] = "1",
 				},
@@ -7202,7 +7202,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -365.9,
 				["x"] = -2561.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59929] = {
 					["1"] = "1",
 				},
@@ -7232,7 +7232,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["2"] = "2",
 				},
@@ -7252,7 +7252,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["3"] = "3",
 				},
@@ -7272,7 +7272,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [6]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["1"] = "1",
 				},
@@ -7315,7 +7315,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.9,
 				["x"] = -2492.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59931] = {
 					["1"] = "1",
 				},
@@ -7349,7 +7349,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -184,
 				["x"] = -2477.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["1"] = "1",
 				},
@@ -7365,7 +7365,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.2,
 				["x"] = -2490.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["2"] = "2",
 				},
@@ -7385,7 +7385,7 @@ if (APR.Faction == "Horde") then
 				59932, -- [1]
 			},
 		}, -- [15]
---- Class Q
+--- Class Quest
 		{
 			["PickUp"] = {
 				59933, -- [1]
@@ -7400,7 +7400,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -235.4,
 				["x"] = -2482.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59933] = {
 					["1"] = "1",
 				},
@@ -7484,7 +7484,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59938] = {
 					["1"] = "1",
 				},
@@ -7510,7 +7510,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 50.6,
 				["x"] = -2581,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59939] = {
 					["1"] = "1",
 				},
@@ -7545,7 +7545,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 107.8,
 				["x"] = -2412.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59940] = {
 					["1"] = "1",
 				},
@@ -7575,7 +7575,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [12]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59941] = {
 					["1"] = "1",
 				},
@@ -7616,7 +7616,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["1"] = "1",
 				},
@@ -7632,7 +7632,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["2"] = "2",
 				},
@@ -7644,7 +7644,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [17]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["3"] = "3",
 				},
@@ -7692,7 +7692,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [21]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59950] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -7748,7 +7748,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [26]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59944] = {
 					["1"] = "1",
 				},
@@ -7769,7 +7769,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59946] = {
 					["1"] = "1",
 				},
@@ -7821,7 +7821,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 313.7,
 				["x"] = -2460.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -7837,7 +7837,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 325.3,
 				["x"] = -2495.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -7853,7 +7853,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 291.3,
 				["x"] = -2513.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -7869,7 +7869,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 279.8,
 				["x"] = -2473.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -7931,7 +7931,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 85,
 				["x"] = -2228,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["1"] = "1",
 				},
@@ -7955,7 +7955,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [41]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["2"] = "2",
 				},
@@ -7976,7 +7976,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 75.3,
 				["x"] = -2134,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["3"] = "3",
 				},
@@ -7996,7 +7996,7 @@ if (APR.Faction == "Horde") then
 				59949, -- [1]
 			},
 		}, -- [44]
---- Class Q Start
+--- Class Quest Start
 		{
 			["PickUp"] = {
 				59969, -- [1]
@@ -8011,7 +8011,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 276.1,
 				["x"] = -2288.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59969] = {
 					["1"] = "1",
 				},
@@ -8027,7 +8027,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 180.9,
 				["x"] = -2284,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59969] = {
 					["2"] = "2",
 				},
@@ -8043,7 +8043,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 148,
 				["x"] = -2352.7,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59969] = {
 					["3"] = "3",
 				},
@@ -8063,7 +8063,7 @@ if (APR.Faction == "Horde") then
 				59969, -- [1]
 			},
 		}, -- [5]
---- Class Q End
+--- Class Quest End
 		{
 			["PickUp"] = {
 				59975, -- [1]
@@ -8083,7 +8083,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [91]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -8151,7 +8151,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [97]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["1"] = "1",
 				},
@@ -8173,7 +8173,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["2"] = "2",
 				},
@@ -8189,7 +8189,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["3"] = "3",
 				},
@@ -8205,7 +8205,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["4"] = "4",
 				},
@@ -8233,7 +8233,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 699,
 				["x"] = -1893.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["6"] = "6",
 				},
@@ -8277,7 +8277,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [106]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["2"] = "2",
 				},
@@ -8294,7 +8294,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [107]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["1"] = "1",
 				},
@@ -8319,7 +8319,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [108]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["3"] = "3",
 				},
@@ -8343,7 +8343,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [109]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59980] = {
 					["1"] = "1",
 				},
@@ -8376,7 +8376,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["4"] = "4",
 				},
@@ -8410,7 +8410,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59984] = {
 					["1"] = "1",
 				},
@@ -8444,7 +8444,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59985] = {
 					["1"] = "1",
 				},
@@ -8470,7 +8470,7 @@ if (APR.Faction == "Horde") then
 	}
 	end
 	if (APR.Class[3] == 8 and APR.Level < 33) then
-		APR.QStepList["1409-Exile's Reach"] = {
+		APR.QuestStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				59926, -- [1]
@@ -8486,7 +8486,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -10731.3,
 				["x"] = -1398.3,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59926] = {
 					["1"] = "1",
 				},
@@ -8519,7 +8519,7 @@ if (APR.Faction == "Horde") then
 			["NoArrows"] = 1,
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59927] = {
 					["1"] = "1",
 				},
@@ -8580,7 +8580,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -365.9,
 				["x"] = -2561.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59929] = {
 					["1"] = "1",
 				},
@@ -8610,7 +8610,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["2"] = "2",
 				},
@@ -8630,7 +8630,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["3"] = "3",
 				},
@@ -8650,7 +8650,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [6]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["1"] = "1",
 				},
@@ -8693,7 +8693,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.9,
 				["x"] = -2492.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59931] = {
 					["1"] = "1",
 				},
@@ -8727,7 +8727,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -184,
 				["x"] = -2477.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["1"] = "1",
 				},
@@ -8743,7 +8743,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.2,
 				["x"] = -2490.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["2"] = "2",
 				},
@@ -8763,7 +8763,7 @@ if (APR.Faction == "Horde") then
 				59932, -- [1]
 			},
 		}, -- [15]
---- Class Q
+--- Class Quest
 		{
 			["PickUp"] = {
 				59933, -- [1]
@@ -8778,7 +8778,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -235.4,
 				["x"] = -2482.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59933] = {
 					["1"] = "1",
 				},
@@ -8862,7 +8862,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59938] = {
 					["1"] = "1",
 				},
@@ -8888,7 +8888,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 50.6,
 				["x"] = -2581,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59939] = {
 					["1"] = "1",
 				},
@@ -8923,7 +8923,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 107.8,
 				["x"] = -2412.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59940] = {
 					["1"] = "1",
 				},
@@ -8953,7 +8953,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [12]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59941] = {
 					["1"] = "1",
 				},
@@ -8994,7 +8994,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["1"] = "1",
 				},
@@ -9010,7 +9010,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["2"] = "2",
 				},
@@ -9022,7 +9022,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [17]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["3"] = "3",
 				},
@@ -9070,7 +9070,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [21]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59950] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -9126,7 +9126,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [26]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59944] = {
 					["1"] = "1",
 				},
@@ -9147,7 +9147,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59946] = {
 					["1"] = "1",
 				},
@@ -9199,7 +9199,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 313.7,
 				["x"] = -2460.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -9215,7 +9215,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 325.3,
 				["x"] = -2495.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -9231,7 +9231,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 291.3,
 				["x"] = -2513.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -9247,7 +9247,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 279.8,
 				["x"] = -2473.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -9309,7 +9309,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 85,
 				["x"] = -2228,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["1"] = "1",
 				},
@@ -9333,7 +9333,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [41]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["2"] = "2",
 				},
@@ -9354,7 +9354,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 75.3,
 				["x"] = -2134,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["3"] = "3",
 				},
@@ -9374,7 +9374,7 @@ if (APR.Faction == "Horde") then
 				59949, -- [1]
 			},
 		}, -- [44]
---- Class Q Start
+--- Class Quest Start
 		{
 			["PickUp"] = {
 				59954, -- [1]
@@ -9389,7 +9389,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 310.3,
 				["x"] = -2274.7,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59954] = {
 					["1"] = "1",
 				},
@@ -9419,7 +9419,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59955] = {
 					["1"] = "1",
 				},
@@ -9440,7 +9440,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 178.9,
 				["x"] = -2332.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59955] = {
 					["2"] = "2",
 				},
@@ -9460,7 +9460,7 @@ if (APR.Faction == "Horde") then
 				59955, -- [1]
 			},
 		}, -- [7]
---- Class Q End
+--- Class Quest End
 		{
 			["PickUp"] = {
 				59975, -- [1]
@@ -9480,7 +9480,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [91]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -9548,7 +9548,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [97]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["1"] = "1",
 				},
@@ -9570,7 +9570,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["2"] = "2",
 				},
@@ -9586,7 +9586,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["3"] = "3",
 				},
@@ -9602,7 +9602,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["4"] = "4",
 				},
@@ -9630,7 +9630,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 699,
 				["x"] = -1893.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["6"] = "6",
 				},
@@ -9674,7 +9674,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [106]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["2"] = "2",
 				},
@@ -9691,7 +9691,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [107]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["1"] = "1",
 				},
@@ -9716,7 +9716,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [108]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["3"] = "3",
 				},
@@ -9740,7 +9740,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [109]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59980] = {
 					["1"] = "1",
 				},
@@ -9773,7 +9773,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["4"] = "4",
 				},
@@ -9807,7 +9807,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59984] = {
 					["1"] = "1",
 				},
@@ -9841,7 +9841,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59985] = {
 					["1"] = "1",
 				},
@@ -9867,7 +9867,7 @@ if (APR.Faction == "Horde") then
 	}
 	end
 	if (APR.Class[3] == 9 and APR.Level < 33) then
-		APR.QStepList["1409-Exile's Reach"] = {
+		APR.QuestStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				59926, -- [1]
@@ -9883,7 +9883,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -10731.3,
 				["x"] = -1398.3,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59926] = {
 					["1"] = "1",
 				},
@@ -9916,7 +9916,7 @@ if (APR.Faction == "Horde") then
 			["NoArrows"] = 1,
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59927] = {
 					["1"] = "1",
 				},
@@ -9977,7 +9977,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -365.9,
 				["x"] = -2561.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59929] = {
 					["1"] = "1",
 				},
@@ -10007,7 +10007,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["2"] = "2",
 				},
@@ -10027,7 +10027,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["3"] = "3",
 				},
@@ -10047,7 +10047,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [6]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["1"] = "1",
 				},
@@ -10090,7 +10090,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.9,
 				["x"] = -2492.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59931] = {
 					["1"] = "1",
 				},
@@ -10124,7 +10124,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -184,
 				["x"] = -2477.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["1"] = "1",
 				},
@@ -10140,7 +10140,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.2,
 				["x"] = -2490.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["2"] = "2",
 				},
@@ -10160,7 +10160,7 @@ if (APR.Faction == "Horde") then
 				59932, -- [1]
 			},
 		}, -- [15]
---- Class Q
+--- Class Quest
 		{
 			["PickUp"] = {
 				59933, -- [1]
@@ -10175,7 +10175,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -235.4,
 				["x"] = -2482.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59933] = {
 					["1"] = "1",
 				},
@@ -10259,7 +10259,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59938] = {
 					["1"] = "1",
 				},
@@ -10285,7 +10285,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 50.6,
 				["x"] = -2581,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59939] = {
 					["1"] = "1",
 				},
@@ -10320,7 +10320,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 107.8,
 				["x"] = -2412.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59940] = {
 					["1"] = "1",
 				},
@@ -10350,7 +10350,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [12]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59941] = {
 					["1"] = "1",
 				},
@@ -10391,7 +10391,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["1"] = "1",
 				},
@@ -10407,7 +10407,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["2"] = "2",
 				},
@@ -10419,7 +10419,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [17]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["3"] = "3",
 				},
@@ -10467,7 +10467,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [21]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59950] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -10523,7 +10523,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [26]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59944] = {
 					["1"] = "1",
 				},
@@ -10544,7 +10544,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59946] = {
 					["1"] = "1",
 				},
@@ -10596,7 +10596,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 313.7,
 				["x"] = -2460.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -10612,7 +10612,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 325.3,
 				["x"] = -2495.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -10628,7 +10628,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 291.3,
 				["x"] = -2513.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -10644,7 +10644,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 279.8,
 				["x"] = -2473.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -10706,7 +10706,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 85,
 				["x"] = -2228,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["1"] = "1",
 				},
@@ -10730,7 +10730,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [41]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["2"] = "2",
 				},
@@ -10751,7 +10751,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 75.3,
 				["x"] = -2134,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["3"] = "3",
 				},
@@ -10771,7 +10771,7 @@ if (APR.Faction == "Horde") then
 				59949, -- [1]
 			},
 		}, -- [44]
---- Class Q Start
+--- Class Quest Start
 		{
 			["PickUp"] = {
 				59970, -- [1]
@@ -10794,7 +10794,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [2]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59970] = {
 					["1"] = "1",
 				},
@@ -10816,7 +10816,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 399.8,
 				["x"] = -2296.7,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59970] = {
 					["2"] = "2",
 				},
@@ -10828,7 +10828,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59970] = {
 					["3"] = "3",
 				},
@@ -10855,7 +10855,7 @@ if (APR.Faction == "Horde") then
 				59970, -- [1]
 			},
 		}, -- [6]
---- Class Q End
+--- Class Quest End
 		{
 			["PickUp"] = {
 				59975, -- [1]
@@ -10875,7 +10875,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [91]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -10943,7 +10943,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [97]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["1"] = "1",
 				},
@@ -10965,7 +10965,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["2"] = "2",
 				},
@@ -10981,7 +10981,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["3"] = "3",
 				},
@@ -10997,7 +10997,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["4"] = "4",
 				},
@@ -11025,7 +11025,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 699,
 				["x"] = -1893.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["6"] = "6",
 				},
@@ -11069,7 +11069,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [106]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["2"] = "2",
 				},
@@ -11086,7 +11086,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [107]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["1"] = "1",
 				},
@@ -11111,7 +11111,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [108]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["3"] = "3",
 				},
@@ -11135,7 +11135,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [109]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59980] = {
 					["1"] = "1",
 				},
@@ -11168,7 +11168,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["4"] = "4",
 				},
@@ -11202,7 +11202,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59984] = {
 					["1"] = "1",
 				},
@@ -11236,7 +11236,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59985] = {
 					["1"] = "1",
 				},
@@ -11262,7 +11262,7 @@ if (APR.Faction == "Horde") then
 	}
 	end
 	if (APR.Class[3] == 10 and APR.Level < 33) then
-		APR.QStepList["1409-Exile's Reach"] = {
+		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
 					59926, -- [1]
@@ -11278,7 +11278,7 @@ if (APR.Faction == "Horde") then
 					["y"] = -10731.3,
 					["x"] = -1398.3,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59926] = {
 						["1"] = "1",
 					},
@@ -11311,7 +11311,7 @@ if (APR.Faction == "Horde") then
 				["NoArrows"] = 1,
 			}, -- [4]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59927] = {
 						["1"] = "1",
 					},
@@ -11372,7 +11372,7 @@ if (APR.Faction == "Horde") then
 					["y"] = -365.9,
 					["x"] = -2561.9,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59929] = {
 						["1"] = "1",
 					},
@@ -11402,7 +11402,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [4]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59930] = {
 						["2"] = "2",
 					},
@@ -11422,7 +11422,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [5]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59930] = {
 						["3"] = "3",
 					},
@@ -11442,7 +11442,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [6]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59930] = {
 						["1"] = "1",
 					},
@@ -11485,7 +11485,7 @@ if (APR.Faction == "Horde") then
 					["y"] = -247.9,
 					["x"] = -2492.9,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59931] = {
 						["1"] = "1",
 					},
@@ -11519,7 +11519,7 @@ if (APR.Faction == "Horde") then
 					["y"] = -184,
 					["x"] = -2477.5,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59932] = {
 						["1"] = "1",
 					},
@@ -11535,7 +11535,7 @@ if (APR.Faction == "Horde") then
 					["y"] = -247.2,
 					["x"] = -2490.4,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59932] = {
 						["2"] = "2",
 					},
@@ -11555,7 +11555,7 @@ if (APR.Faction == "Horde") then
 					59932, -- [1]
 				},
 			}, -- [15]
-	--- Class Q
+	--- Class Quest
 			{
 				["PickUp"] = {
 					59934, -- [1]
@@ -11566,7 +11566,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [1]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59934] = {
 						["1"] = "1",
 						["2"] = "2",
@@ -11656,7 +11656,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [5]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59938] = {
 						["1"] = "1",
 					},
@@ -11682,7 +11682,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 50.6,
 					["x"] = -2581,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59939] = {
 						["1"] = "1",
 					},
@@ -11717,7 +11717,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 107.8,
 					["x"] = -2412.5,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59940] = {
 						["1"] = "1",
 					},
@@ -11747,7 +11747,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [12]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59941] = {
 						["1"] = "1",
 					},
@@ -11788,7 +11788,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 108.5,
 					["x"] = -2414.2,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59942] = {
 						["1"] = "1",
 					},
@@ -11804,7 +11804,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 108.5,
 					["x"] = -2414.2,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59942] = {
 						["2"] = "2",
 					},
@@ -11816,7 +11816,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [17]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59942] = {
 						["3"] = "3",
 					},
@@ -11864,7 +11864,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [21]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59950] = {
 						["1"] = "1",
 						["2"] = "2",
@@ -11920,7 +11920,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [26]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59944] = {
 					["1"] = "1",
 				},
@@ -11941,7 +11941,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59946] = {
 					["1"] = "1",
 				},
@@ -11993,7 +11993,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 313.7,
 					["x"] = -2460.4,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[54933] = {
 						["1"] = "1",
 					},
@@ -12009,7 +12009,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 325.3,
 					["x"] = -2495.5,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[54933] = {
 						["2"] = "2",
 					},
@@ -12025,7 +12025,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 291.3,
 					["x"] = -2513.2,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[54933] = {
 						["3"] = "3",
 					},
@@ -12041,7 +12041,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 279.8,
 					["x"] = -2473.5,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[54933] = {
 						["4"] = "4",
 					},
@@ -12103,7 +12103,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 85,
 					["x"] = -2228,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59949] = {
 						["1"] = "1",
 					},
@@ -12127,7 +12127,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [41]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59949] = {
 						["2"] = "2",
 					},
@@ -12148,7 +12148,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 75.3,
 					["x"] = -2134,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59949] = {
 						["3"] = "3",
 					},
@@ -12168,7 +12168,7 @@ if (APR.Faction == "Horde") then
 					59949, -- [1]
 				},
 			}, -- [44]
-	--- Class Q Start
+	--- Class Quest Start
 			{
 				["PickUp"] = {
 					59956, -- [1]
@@ -12179,7 +12179,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [1]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59956] = {
 						["1"] = "1",
 					},
@@ -12215,7 +12215,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [4]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59957] = {
 						["1"] = "1",
 					},
@@ -12240,7 +12240,7 @@ if (APR.Faction == "Horde") then
 					59957, -- [1]
 				},
 			}, -- [6]
-	--- Class Q End
+	--- Class Quest End
 			{
 				["PickUp"] = {
 					59975, -- [1]
@@ -12260,7 +12260,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [91]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[56839] = {
 						["1"] = "1",
 					},
@@ -12328,7 +12328,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [97]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59978] = {
 						["1"] = "1",
 					},
@@ -12350,7 +12350,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 457.3,
 					["x"] = -2044.8,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59978] = {
 						["2"] = "2",
 					},
@@ -12366,7 +12366,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 575.4,
 					["x"] = -2063,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59978] = {
 						["3"] = "3",
 					},
@@ -12382,7 +12382,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 586.4,
 					["x"] = -2062.5,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59978] = {
 						["4"] = "4",
 					},
@@ -12410,7 +12410,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 699,
 					["x"] = -1893.6,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59978] = {
 						["6"] = "6",
 					},
@@ -12454,7 +12454,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [106]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59981] = {
 						["2"] = "2",
 					},
@@ -12471,7 +12471,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [107]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59981] = {
 						["1"] = "1",
 					},
@@ -12496,7 +12496,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [108]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59981] = {
 						["3"] = "3",
 					},
@@ -12520,7 +12520,7 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [109]
 			{
-				["QPart"] = {
+				["Qpart"] = {
 					[59980] = {
 						["1"] = "1",
 					},
@@ -12553,7 +12553,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 708.9,
 					["x"] = -1869.5,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59981] = {
 						["4"] = "4",
 					},
@@ -12587,7 +12587,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 709,
 					["x"] = -1869,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59984] = {
 						["1"] = "1",
 					},
@@ -12621,7 +12621,7 @@ if (APR.Faction == "Horde") then
 					["y"] = 698.6,
 					["x"] = -1882.6,
 				},
-				["QPart"] = {
+				["Qpart"] = {
 					[59985] = {
 						["1"] = "1",
 					},
@@ -12647,7 +12647,7 @@ if (APR.Faction == "Horde") then
 		}
 	end
 	if (APR.Class[3] == 11 and APR.Level < 33) then
-		APR.QStepList["1409-Exile's Reach"] = {
+		APR.QuestStepList["1409-Exile's Reach"] = {
 		{
 			["PickUp"] = {
 				59926, -- [1]
@@ -12663,7 +12663,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -10731.3,
 				["x"] = -1398.3,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59926] = {
 					["1"] = "1",
 				},
@@ -12696,7 +12696,7 @@ if (APR.Faction == "Horde") then
 			["NoArrows"] = 1,
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59927] = {
 					["1"] = "1",
 				},
@@ -12757,7 +12757,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -365.9,
 				["x"] = -2561.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59929] = {
 					["1"] = "1",
 				},
@@ -12787,7 +12787,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [4]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["2"] = "2",
 				},
@@ -12807,7 +12807,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["3"] = "3",
 				},
@@ -12827,7 +12827,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [6]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59930] = {
 					["1"] = "1",
 				},
@@ -12870,7 +12870,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.9,
 				["x"] = -2492.9,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59931] = {
 					["1"] = "1",
 				},
@@ -12904,7 +12904,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -184,
 				["x"] = -2477.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["1"] = "1",
 				},
@@ -12920,7 +12920,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -247.2,
 				["x"] = -2490.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59932] = {
 					["2"] = "2",
 				},
@@ -12940,7 +12940,7 @@ if (APR.Faction == "Horde") then
 				59932, -- [1]
 			},
 		}, -- [15]
---- Class Q
+--- Class Quest
 		{
 			["PickUp"] = {
 				59933, -- [1]
@@ -12955,7 +12955,7 @@ if (APR.Faction == "Horde") then
 				["y"] = -235.4,
 				["x"] = -2482.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59933] = {
 					["1"] = "1",
 				},
@@ -13039,7 +13039,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59938] = {
 					["1"] = "1",
 				},
@@ -13065,7 +13065,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 50.6,
 				["x"] = -2581,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59939] = {
 					["1"] = "1",
 				},
@@ -13100,7 +13100,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 107.8,
 				["x"] = -2412.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59940] = {
 					["1"] = "1",
 				},
@@ -13130,7 +13130,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [12]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59941] = {
 					["1"] = "1",
 				},
@@ -13171,7 +13171,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["1"] = "1",
 				},
@@ -13187,7 +13187,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 108.5,
 				["x"] = -2414.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["2"] = "2",
 				},
@@ -13199,7 +13199,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [17]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59942] = {
 					["3"] = "3",
 				},
@@ -13247,7 +13247,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [21]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59950] = {
 					["1"] = "1",
 					["2"] = "2",
@@ -13303,7 +13303,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [26]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59944] = {
 					["1"] = "1",
 				},
@@ -13324,7 +13324,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [1]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59946] = {
 					["1"] = "1",
 				},
@@ -13376,7 +13376,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 313.7,
 				["x"] = -2460.4,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["1"] = "1",
 				},
@@ -13392,7 +13392,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 325.3,
 				["x"] = -2495.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["2"] = "2",
 				},
@@ -13408,7 +13408,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 291.3,
 				["x"] = -2513.2,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["3"] = "3",
 				},
@@ -13424,7 +13424,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 279.8,
 				["x"] = -2473.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[54933] = {
 					["4"] = "4",
 				},
@@ -13486,7 +13486,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 85,
 				["x"] = -2228,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["1"] = "1",
 				},
@@ -13510,7 +13510,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [41]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["2"] = "2",
 				},
@@ -13531,7 +13531,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 75.3,
 				["x"] = -2134,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59949] = {
 					["3"] = "3",
 				},
@@ -13551,7 +13551,7 @@ if (APR.Faction == "Horde") then
 				59949, -- [1]
 			},
 		}, -- [44]
---- Class Q Start
+--- Class Quest Start
 		{
 			["PickUp"] = {
 				59951, -- [1]
@@ -13566,7 +13566,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 323.1,
 				["x"] = -2053,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59951] = {
 					["1"] = "1",
 				},
@@ -13586,7 +13586,7 @@ if (APR.Faction == "Horde") then
 				59951, -- [1]
 			},
 		}, -- [3]
---- Class Q End
+--- Class Quest End
 		{
 			["PickUp"] = {
 				59975, -- [1]
@@ -13606,7 +13606,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [91]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[56839] = {
 					["1"] = "1",
 				},
@@ -13674,7 +13674,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [97]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["1"] = "1",
 				},
@@ -13696,7 +13696,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 457.3,
 				["x"] = -2044.8,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["2"] = "2",
 				},
@@ -13712,7 +13712,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 575.4,
 				["x"] = -2063,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["3"] = "3",
 				},
@@ -13728,7 +13728,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 586.4,
 				["x"] = -2062.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["4"] = "4",
 				},
@@ -13756,7 +13756,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 699,
 				["x"] = -1893.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59978] = {
 					["6"] = "6",
 				},
@@ -13800,7 +13800,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [106]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["2"] = "2",
 				},
@@ -13817,7 +13817,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [107]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["1"] = "1",
 				},
@@ -13842,7 +13842,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [108]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["3"] = "3",
 				},
@@ -13866,7 +13866,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [109]
 		{
-			["QPart"] = {
+			["Qpart"] = {
 				[59980] = {
 					["1"] = "1",
 				},
@@ -13899,7 +13899,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 708.9,
 				["x"] = -1869.5,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59981] = {
 					["4"] = "4",
 				},
@@ -13933,7 +13933,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 709,
 				["x"] = -1869,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59984] = {
 					["1"] = "1",
 				},
@@ -13967,7 +13967,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-			["QPart"] = {
+			["Qpart"] = {
 				[59985] = {
 					["1"] = "1",
 				},
@@ -13977,19 +13977,20 @@ if (APR.Faction == "Horde") then
 				["y"] = 698.6,
 				["x"] = -1882.6,
 			},
-		},
+		}, 
 		{
 			["Done"] = {
-				59985,
+				59985, 
 			},
 			["TT"] = {
 				["y"] = 1465,
 				["x"] = -4419.2,
 			},
-		},
+		}, 
 		{
 			["ZoneDoneSave"] = 1,
-		},
+		}, 
 	}
 	end
 end
+

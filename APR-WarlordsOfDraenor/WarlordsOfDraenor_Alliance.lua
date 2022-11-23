@@ -1,5 +1,5 @@
 
-APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
+APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 	{
 	   ["Trigger"] = {
 		  ["y"] = -8374,
@@ -43,7 +43,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	},
 	{
 	   ["ExtraLineText"] = "GO_BLASTEDLANDS",
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34398] = {
 			 ["1"] = "1",
 		  },
@@ -73,7 +73,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [3]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34398] = {
 			 ["2"] = "2",
 		  },
@@ -94,7 +94,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
- APR.QStepList["A84-DesMephisto-Stormwind-War2"] = {
+ APR.QuestStepList["A84-DesMephisto-Stormwind-War2"] = {
 	{
 	   ["TT"] = {
 		  ["y"] = -9053,
@@ -113,11 +113,11 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -9053.3,
 		  ["x"] = 442.7,
 	   },
-	   ["BlockQs"] = 1,
+	   ["BlockQuests"] = 1,
 	   ["Gossip"] = 1,
-	   ["LeaveQ"] = 59583,
+	   ["LeaveQuest"] = 59583,
 	},
-
+ 
 	{
 	   ["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
 	   ["SpellInTab"] = 33388,
@@ -173,7 +173,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	},
 	{
 	   ["ExtraLineText"] = "GO_BLASTEDLANDS",
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34398] = {
 			 ["1"] = "1",
 		  },
@@ -203,7 +203,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [3]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34398] = {
 			 ["2"] = "2",
 		  },
@@ -224,7 +224,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
- APR.QStepList["A84-DesMephisto-Stormwind-War3"] = {
+ APR.QuestStepList["A84-DesMephisto-Stormwind-War3"] = {
 	{
 	   ["Trigger"] = {
 		  ["y"] = -8374,
@@ -268,7 +268,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	},
 	{
 	   ["ExtraLineText"] = "GO_BLASTEDLANDS",
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34398] = {
 			 ["1"] = "1",
 		  },
@@ -298,7 +298,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [3]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34398] = {
 			 ["2"] = "2",
 		  },
@@ -319,7 +319,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
- APR.QStepList["A577-DesMephisto-TanaanJungle"] = {
+ APR.QuestStepList["A577-DesMephisto-TanaanJungle"] = {
 	{
 	   ["Done"] = {
 		  34398,
@@ -347,7 +347,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4068.1,
 		  ["x"] = -2340.2,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35933] = {
 			 ["1"] = "1",
 		  },
@@ -393,7 +393,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3965.8,
 		  ["x"] = -2284.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34392] = {
 			 ["2"] = "2",
 		  },
@@ -421,7 +421,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4167.8,
 		  ["x"] = -2282.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34392] = {
 			 ["1"] = "1",
 		  },
@@ -491,7 +491,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4036.1,
 		  ["x"] = -2403.2,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34393] = {
 			 ["4"] = "4",
 		  },
@@ -507,7 +507,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4068.1,
 		  ["x"] = -2432.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34393] = {
 			 ["3"] = "3",
 		  },
@@ -523,7 +523,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4098.1,
 		  ["x"] = -2403,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34393] = {
 			 ["2"] = "2",
 		  },
@@ -539,7 +539,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4067.3,
 		  ["x"] = -2401.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34393] = {
 			 ["5"] = "5",
 		  },
@@ -649,12 +649,12 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [26]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35240] = {
 			 ["2"] = "2",
 		  },
 	   },
-	   ["QPartDB"] = {
+	   ["QpartDB"] = {
 		  35240,
 		  34421,
 	   },
@@ -680,12 +680,12 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [27]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35240] = {
 			 ["1"] = "1",
 		  },
 	   },
-	   ["QPartDB"] = {
+	   ["QpartDB"] = {
 		  35240,
 		  34421,
 	   },
@@ -718,7 +718,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["Button"] = {
 		  ["34422-1"] = 113191,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34422] = {
 			 ["1"] = "1",
 		  },
@@ -742,7 +742,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["Button"] = {
 		  ["34422-1"] = 113191,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35242] = {
 			 ["1"] = "1",
 		  },
@@ -752,7 +752,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3834.6,
 		  ["x"] = -2523.4,
 	   },
-	   ["QPartDB"] = {
+	   ["QpartDB"] = {
 		  35241,
 		  35242,
 	   },
@@ -818,7 +818,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [32]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34423] = {
 			 ["1"] = "1",
 		  },
@@ -833,7 +833,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3842.3,
 		  ["x"] = -2787,
 	   },
-	   ["QPartDB"] = {
+	   ["QpartDB"] = {
 		  34423,
 		  34817,
 	   },
@@ -843,12 +843,12 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3958.8,
 		  ["x"] = -2888.9,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34423] = {
 			 ["2"] = "2",
 		  },
 	   },
-	   ["QPartDB"] = {
+	   ["QpartDB"] = {
 		  34423,
 		  34817,
 	   },
@@ -863,7 +863,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3957.8,
 		  ["x"] = -2887.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34423] = {
 			 ["3"] = "3",
 		  },
@@ -873,7 +873,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3957.8,
 		  ["x"] = -2887.4,
 	   },
-	   ["QPartDB"] = {
+	   ["QpartDB"] = {
 		  34423,
 		  34817,
 	   },
@@ -895,7 +895,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4194.3,
 		  ["x"] = -2786.9,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34423] = {
 			 ["4"] = "4",
 		  },
@@ -905,7 +905,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4194.3,
 		  ["x"] = -2786.9,
 	   },
-	   ["QPartDB"] = {
+	   ["QpartDB"] = {
 		  34423,
 		  34817,
 	   },
@@ -951,7 +951,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [41]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34478] = {
 			 ["1"] = "1",
 		  },
@@ -995,7 +995,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4394,
 		  ["x"] = -2824.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34429] = {
 			 ["1"] = "1",
 		  },
@@ -1011,7 +1011,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4394,
 		  ["x"] = -2824.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34429] = {
 			 ["3"] = "3",
 			 ["2"] = "2",
@@ -1166,7 +1166,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [10]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34431] = {
 			 ["2"] = "2",
 		  },
@@ -1187,7 +1187,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [11]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34431] = {
 			 ["1"] = "1",
 		  },
@@ -1212,7 +1212,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4429.7,
 		  ["x"] = -2465.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34432] = {
 			 ["1"] = "1",
 		  },
@@ -1248,7 +1248,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4509.7,
 		  ["x"] = -2425.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34436] = {
 			 ["1"] = "1",
 		  },
@@ -1282,7 +1282,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4589.7,
 		  ["x"] = -2138.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35019] = {
 			 ["1"] = "1",
 		  },
@@ -1316,7 +1316,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4599.5,
 		  ["x"] = -2132.9,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34439] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -1357,7 +1357,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [7]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34987] = {
 			 ["1"] = "1",
 		  },
@@ -1378,7 +1378,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34987] = {
 			 ["2"] = "2",
 		  },
@@ -1465,7 +1465,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [14]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34925] = {
 			 ["1"] = "1",
 		  },
@@ -1525,7 +1525,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4253.3,
 		  ["x"] = -2077.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34958] = {
 			 ["1"] = "1",
 		  },
@@ -1564,7 +1564,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [22]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35747] = {
 			 ["1"] = "1",
 		  },
@@ -1597,7 +1597,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4069.9,
 		  ["x"] = -1951.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35747] = {
 			 ["2"] = "2",
 		  },
@@ -1613,7 +1613,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4065.1,
 		  ["x"] = -2019,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35747] = {
 			 ["3"] = "3",
 		  },
@@ -1647,7 +1647,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4053.8,
 		  ["x"] = -2020.3,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34445] = {
 			 ["1"] = "1",
 		  },
@@ -1663,7 +1663,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4059.1,
 		  ["x"] = -2021.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34445] = {
 			 ["2"] = "2",
 		  },
@@ -1679,7 +1679,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4066.1,
 		  ["x"] = -2022.3,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34445] = {
 			 ["3"] = "3",
 		  },
@@ -1713,7 +1713,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3538.8,
 		  ["x"] = -2125,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35884] = {
 			 ["1"] = "1",
 		  },
@@ -1737,7 +1737,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
- APR.QStepList["A539-DesMephisto-Shadowmoon1"] = {
+ APR.QuestStepList["A539-DesMephisto-Shadowmoon1"] = {
 	{
 	   ["Done"] = {
 		  34575,
@@ -1761,7 +1761,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1936.7,
 		  ["x"] = 339.2,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34582] = {
 			 ["1"] = "1",
 		  },
@@ -1795,7 +1795,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1940,
 		  ["x"] = 321.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34583] = {
 			 ["1"] = "1",
 		  },
@@ -1830,7 +1830,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1779.3,
 		  ["x"] = 241,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34584] = {
 			 ["1"] = "1",
 		  },
@@ -1885,7 +1885,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1697.5,
 		  ["x"] = 256.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34585] = {
 			 ["1"] = "1",
 		  },
@@ -1915,7 +1915,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [16]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34586] = {
 			 ["1"] = "1",
 		  },
@@ -1956,7 +1956,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	}, -- [18]
 	{
 	   ["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35176] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -1974,7 +1974,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["x"] = 240.6,
 	   },
 	}, -- [20]
-
+ 
 	{
 	   ["Treasure"] = 35279,
 	   ["Fillers"] = {
@@ -2063,7 +2063,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35174] = {
 			 ["1"] = "1",
 		  },
@@ -2091,7 +2091,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 2408.5,
 		  ["x"] = 551.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35174] = {
 			 ["2"] = "2",
 		  },
@@ -2133,7 +2133,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1833.7,
 		  ["x"] = 459.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34587] = {
 			 ["1"] = "1",
 		  },
@@ -2146,7 +2146,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	}, -- [3]
 	{
 	   ["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34587] = {
 			 ["2"] = "2",
 			 ["3"] = "3",
@@ -2188,7 +2188,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	}, -- [5]
 	{
 	   ["ExtraLineText"]= "GO_SOUTH",
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34646] = {
 			 ["1"] = "1",
 		  },
@@ -2204,7 +2204,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["x"] = 264,
 	   },
 	}, -- [6]
-
+ 
 	{
 	   ["ExtraLineText"] = "GO_SOUTH",
 	   ["Done"] = {
@@ -2247,7 +2247,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1734.4,
 		  ["x"] = 721.2,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33113] = {
 			 ["1"] = "1",
 		  },
@@ -2271,7 +2271,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [10]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33062] = {
 			 ["1"] = "1",
 		  },
@@ -2307,13 +2307,13 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["x"] = 304.5,
 	   },
 	}, -- [13]
-
+ 
 	{
 	   ["Trigger"] = {
 		  ["y"] = 1028.9,
 		  ["x"] = 625,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33834] = {
 			 ["1"] = "1",
 		  },
@@ -2352,7 +2352,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [4]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33419] = {
 			 ["2"] = "2",
 		  },
@@ -2374,7 +2374,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [5]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33419] = {
 			 ["1"] = "1",
 		  },
@@ -2432,7 +2432,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33419] = {
 			 ["3"] = "3",
 		  },
@@ -2458,7 +2458,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1104,
 		  ["x"] = 757.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34504] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -2492,7 +2492,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33115] = {
 			 ["3"] = "3",
 		  },
@@ -2513,7 +2513,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33115] = {
 			 ["1"] = "1",
 		  },
@@ -2534,7 +2534,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [3]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33115] = {
 			 ["2"] = "2",
 		  },
@@ -2559,7 +2559,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1766,
 		  ["x"] = 563,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33120] = {
 			 ["1"] = "1",
 		  },
@@ -2598,7 +2598,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33112] = {
 			 ["1"] = "1",
 		  },
@@ -2634,7 +2634,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33066] = {
 			 ["2"] = "2",
 		  },
@@ -2674,7 +2674,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33066] = {
 			 ["1"] = "1",
 		  },
@@ -2696,7 +2696,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [3]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33066] = {
 			 ["3"] = "3",
 		  },
@@ -2741,7 +2741,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [6]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33168] = {
 			 ["1"] = "1",
 		  },
@@ -2786,7 +2786,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33114] = {
 			 ["1"] = "1",
 		  },
@@ -2823,7 +2823,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [12]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33116] = {
 			 ["1"] = "1",
 		  },
@@ -2851,7 +2851,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1334.5,
 		  ["x"] = 1050.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33116] = {
 			 ["2"] = "2",
 		  },
@@ -2867,7 +2867,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1409.7,
 		  ["x"] = 930.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33269] = {
 			 ["1"] = "1",
 		  },
@@ -2888,7 +2888,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  33116,
 	   },
 	}, -- [16]
-
+ 
 	{
 	   ["PickUp"] = {
 		  33833,
@@ -2903,7 +2903,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1466.9,
 		  ["x"] = -55.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33833] = {
 			 ["1"] = "1",
 		  },
@@ -3127,7 +3127,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1987.5,
 		  ["x"] = -952,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34847] = {
 			 ["1"] = "1",
 		  },
@@ -3143,7 +3143,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1988.2,
 		  ["x"] = -950.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34847] = {
 			 ["3"] = "3",
 			 ["2"] = "2",
@@ -3206,7 +3206,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1742,
 		  ["x"] = -1149.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34836] = {
 			 ["1"] = "1",
 		  },
@@ -3376,7 +3376,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1077.3,
 		  ["x"] = -1932.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33084] = {
 			 ["1"] = "1",
 		  },
@@ -3425,7 +3425,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34728] = {
 			 ["3"] = "3",
 		  },
@@ -3451,7 +3451,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -223.4,
 		  ["x"] = -1796.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34728] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -3492,7 +3492,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -8780.3,
 		  ["x"] = 381.5,
 	   },
-	   ["LeaveQs"] = {
+	   ["LeaveQuests"] = {
 		  35556,
 		  33533,
 		  36632,
@@ -3545,7 +3545,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
- APR.QStepList["A543-DesMephisto-Gorgrond"] = {
+ APR.QuestStepList["A543-DesMephisto-Gorgrond"] = {
 	{
 	   ["Done"] = {
 		  49564,
@@ -3577,7 +3577,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6800.2,
 		  ["x"] = -170.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35033] = {
 			 ["1"] = "1",
 		  },
@@ -3659,7 +3659,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35065] = {
 			 ["1"] = "1",
 		  },
@@ -3684,7 +3684,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6919.8,
 		  ["x"] = -140,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35834] = {
 			 ["1"] = "1",
 		  },
@@ -3733,7 +3733,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6665.2,
 		  ["x"] = 6.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36571] = {
 			 ["1"] = "1",
 			 ["3"] = "3",
@@ -3747,7 +3747,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [14]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35050] = {
 			 ["1"] = "1",
 		  },
@@ -3764,7 +3764,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [15]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35050] = {
 			 ["2"] = "2",
 		  },
@@ -3793,7 +3793,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35050] = {
 			 ["3"] = "3",
 		  },
@@ -3810,7 +3810,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35055] = {
 			 ["1"] = "1",
 		  },
@@ -3852,7 +3852,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6303.3,
 		  ["x"] = 696.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35063] = {
 			 ["1"] = "1",
 		  },
@@ -3901,7 +3901,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [3]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35686] = {
 			 ["1"] = "1",
 		  },
@@ -3961,7 +3961,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6096.3,
 		  ["x"] = 1385.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35693] = {
 			 ["1"] = "1",
 		  },
@@ -4037,7 +4037,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34698] = {
 			 ["2"] = "2",
 		  },
@@ -4060,7 +4060,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [3]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34698] = {
 			 ["1"] = "1",
 		  },
@@ -4082,7 +4082,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [4]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34702] = {
 			 ["1"] = "1",
 		  },
@@ -4103,7 +4103,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [5]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34699] = {
 			 ["2"] = "2",
 		  },
@@ -4141,7 +4141,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [7]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34699] = {
 			 ["1"] = "1",
 		  },
@@ -4179,7 +4179,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34699] = {
 			 ["3"] = "3",
 		  },
@@ -4234,7 +4234,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [12]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34698] = {
 			 ["3"] = "3",
 		  },
@@ -4350,7 +4350,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34703] = {
 			 ["1"] = "1",
 		  },
@@ -4401,7 +4401,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [4]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34700] = {
 			 ["1"] = "1",
 		  },
@@ -4450,7 +4450,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 5980.8,
 		  ["x"] = 1775,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34012] = {
 			 ["1"] = "1",
 		  },
@@ -4492,7 +4492,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [11]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35665] = {
 			 ["1"] = "1",
 		  },
@@ -4531,7 +4531,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6247.3,
 		  ["x"] = 1438.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35730] = {
 			 ["1"] = "1",
 		  },
@@ -4547,7 +4547,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6233.3,
 		  ["x"] = 1447.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35730] = {
 			 ["2"] = "2",
 		  },
@@ -4582,7 +4582,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6327.2,
 		  ["x"] = 1503.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35870] = {
 			 ["1"] = "1",
 		  },
@@ -4616,7 +4616,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [11]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36508] = {
 			 ["1"] = "1",
 		  },
@@ -4662,7 +4662,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [15]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35037] = {
 			 ["1"] = "1",
 		  },
@@ -4697,7 +4697,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [18]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35037] = {
 			 ["2"] = "2",
 		  },
@@ -4723,7 +4723,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6761.3,
 		  ["x"] = 1141.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35934] = {
 			 ["1"] = "1",
 		  },
@@ -4800,7 +4800,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6715.3,
 		  ["x"] = 1383.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36210] = {
 			 ["1"] = "1",
 		  },
@@ -4849,7 +4849,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6571.7,
 		  ["x"] = 1231.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36209] = {
 			 ["1"] = "1",
 		  },
@@ -4865,7 +4865,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6845,
 		  ["x"] = 1321,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36209] = {
 			 ["2"] = "2",
 		  },
@@ -4881,7 +4881,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6845.7,
 		  ["x"] = 1323.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36209] = {
 			 ["3"] = "3",
 		  },
@@ -4897,7 +4897,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 7312.5,
 		  ["x"] = 1444.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36209] = {
 			 ["4"] = "4",
 		  },
@@ -4921,7 +4921,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [35]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36209] = {
 			 ["5"] = "5",
 		  },
@@ -4942,7 +4942,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 7274.2,
 		  ["x"] = 1550.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36209] = {
 			 ["6"] = "6",
 		  },
@@ -5000,7 +5000,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6731,
 		  ["x"] = 1779.9,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36603] = {
 			 ["1"] = "1",
 			 ["3"] = "3",
@@ -5078,7 +5078,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [3]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35128] = {
 			 ["2"] = "2",
 		  },
@@ -5112,7 +5112,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [10]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36223] = {
 			 ["1"] = "1",
 		  },
@@ -5139,7 +5139,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6987.8,
 		  ["x"] = 1596.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36223] = {
 			 ["2"] = "2",
 		  },
@@ -5155,7 +5155,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 7044.6,
 		  ["x"] = 1606,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35128] = {
 			 ["1"] = "1",
 		  },
@@ -5180,7 +5180,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 7039.1,
 		  ["x"] = 1635.2,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35210] = {
 			 ["1"] = "1",
 		  },
@@ -5212,7 +5212,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [5]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35139] = {
 			 ["1"] = "1",
 		  },
@@ -5289,7 +5289,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 7003.2,
 		  ["x"] = 1258.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36480] = {
 			 ["1"] = "1",
 			 ["3"] = "3",
@@ -5331,7 +5331,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 7149.8,
 		  ["x"] = 1035.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35702] = {
 			 ["1"] = "1",
 		  },
@@ -5347,7 +5347,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 7200.2,
 		  ["x"] = 1000.1,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35702] = {
 			 ["2"] = "2",
 		  },
@@ -5402,7 +5402,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [19]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36437] = {
 			 ["1"] = "1",
 		  },
@@ -5429,7 +5429,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 7006.5,
 		  ["x"] = 972.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36436] = {
 			 ["1"] = "1",
 		  },
@@ -5488,7 +5488,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6786.8,
 		  ["x"] = 928.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36438] = {
 			 ["1"] = "1",
 		  },
@@ -5531,7 +5531,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6807,
 		  ["x"] = 827.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36441] = {
 			 ["1"] = "1",
 		  },
@@ -5589,7 +5589,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [34]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36442] = {
 			 ["1"] = "1",
 		  },
@@ -5628,7 +5628,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6999.5,
 		  ["x"] = 953.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36443] = {
 			 ["1"] = "1",
 		  },
@@ -5689,12 +5689,12 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 			 ["1"] = "1",
 		  },
 	   },
-	   ["DroppableQ"] = {
+	   ["DroppableQuest"] = {
 		  ["Text"] = "Fungal Lurcher",
 		  ["Qid"] = 35642,
 		  ["MobId"] = 80714,
 	   },
-	   ["DropQ"] = 35642,
+	   ["DropQuest"] = 35642,
 	   ["TT"] = {
 		  ["y"] = 6432.8,
 		  ["x"] = 200.6,
@@ -5705,7 +5705,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6358.2,
 		  ["x"] = 238.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35633] = {
 			 ["1"] = "1",
 		  },
@@ -5745,7 +5745,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6321.8,
 		  ["x"] = 402.2,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35644] = {
 			 ["1"] = "1",
 		  },
@@ -5780,7 +5780,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [10]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35656] = {
 			 ["1"] = "1",
 		  },
@@ -5805,7 +5805,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6189,
 		  ["x"] = 251.1,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35647] = {
 			 ["1"] = "1",
 		  },
@@ -5836,7 +5836,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [15]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35659] = {
 			 ["1"] = "1",
 		  },
@@ -5900,7 +5900,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 5925.7,
 		  ["x"] = 833.2,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36563] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -5913,7 +5913,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [6]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36500] = {
 			 ["2"] = "2",
 		  },
@@ -5939,7 +5939,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 5601.6,
 		  ["x"] = 1169,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36500] = {
 			 ["1"] = "1",
 			 ["3"] = "3",
@@ -5952,7 +5952,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36564] = {
 			 ["3"] = "3",
 		  },
@@ -5978,7 +5978,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 5849.8,
 		  ["x"] = 164.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36564] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -5991,7 +5991,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [3]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35881] = {
 			 ["3"] = "3",
 		  },
@@ -6017,7 +6017,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 5264.6,
 		  ["x"] = 949.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35881] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -6107,7 +6107,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [6]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34724] = {
 			 ["3"] = "3",
 		  },
@@ -6152,7 +6152,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 5285.5,
 		  ["x"] = 795.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34724] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -6251,7 +6251,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [16]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36504] = {
 			 ["2"] = "2",
 		  },
@@ -6291,7 +6291,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [18]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36504] = {
 			 ["3"] = "3",
 		  },
@@ -6316,7 +6316,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 5191.2,
 		  ["x"] = 1585.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36504] = {
 			 ["1"] = "1",
 		  },
@@ -6358,7 +6358,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [22]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36520] = {
 			 ["3"] = "3",
 		  },
@@ -6384,7 +6384,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4620.3,
 		  ["x"] = 1397.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36520] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -6424,7 +6424,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
- APR.QStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
+ APR.QuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
 	{
 	   ["Done"] = {
 		  35556,
@@ -6449,7 +6449,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6800.2,
 		  ["x"] = -170.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35033] = {
 			 ["1"] = "1",
 		  },
@@ -6531,7 +6531,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35065] = {
 			 ["1"] = "1",
 		  },
@@ -6556,7 +6556,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6919.8,
 		  ["x"] = -140,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35834] = {
 			 ["1"] = "1",
 		  },
@@ -6605,7 +6605,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6665.2,
 		  ["x"] = 6.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36571] = {
 			 ["1"] = "1",
 			 ["3"] = "3",
@@ -6619,7 +6619,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [14]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35050] = {
 			 ["1"] = "1",
 		  },
@@ -6636,7 +6636,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [15]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35050] = {
 			 ["2"] = "2",
 		  },
@@ -6665,7 +6665,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35050] = {
 			 ["3"] = "3",
 		  },
@@ -6682,7 +6682,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35055] = {
 			 ["1"] = "1",
 		  },
@@ -6722,7 +6722,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6303.3,
 		  ["x"] = 696.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35063] = {
 			 ["1"] = "1",
 		  },
@@ -6747,7 +6747,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6101,
 		  ["x"] = 1313.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36473] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -6760,7 +6760,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36566] = {
 			 ["3"] = "3",
 		  },
@@ -6782,7 +6782,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36566] = {
 			 ["4"] = "4",
 		  },
@@ -6816,7 +6816,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [4]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36566] = {
 			 ["5"] = "5",
 		  },
@@ -6842,7 +6842,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 5846.7,
 		  ["x"] = 1875.2,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36566] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -6859,7 +6859,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6467.3,
 		  ["x"] = 1787,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36603] = {
 			 ["1"] = "1",
 			 ["3"] = "3",
@@ -6889,7 +6889,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6646.8,
 		  ["x"] = 1190,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36476] = {
 			 ["1"] = "1",
 			 ["3"] = "3",
@@ -6986,7 +6986,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6989.7,
 		  ["x"] = 1164.3,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36480] = {
 			 ["1"] = "1",
 			 ["3"] = "3",
@@ -7055,7 +7055,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [3]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36437] = {
 			 ["1"] = "1",
 		  },
@@ -7081,7 +7081,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6989.6,
 		  ["x"] = 981.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36436] = {
 			 ["1"] = "1",
 		  },
@@ -7128,7 +7128,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6940.3,
 		  ["x"] = 796.9,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36439] = {
 			 ["1"] = "1",
 		  },
@@ -7171,7 +7171,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6864.3,
 		  ["x"] = 825.2,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36440] = {
 			 ["1"] = "1",
 		  },
@@ -7221,7 +7221,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6726.5,
 		  ["x"] = 632,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36442] = {
 			 ["1"] = "1",
 		  },
@@ -7276,7 +7276,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 6628.3,
 		  ["x"] = 53.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36571] = {
 			 ["1"] = "1",
 			 ["3"] = "3",
@@ -7365,7 +7365,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [4]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35651] = {
 			 ["1"] = "1",
 		  },
@@ -7396,7 +7396,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 5715.3,
 		  ["x"] = 170,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35650] = {
 			 ["1"] = "1",
 		  },
@@ -7448,7 +7448,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 5940.8,
 		  ["x"] = 771.1,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36563] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -7581,7 +7581,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [34]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34724] = {
 			 ["3"] = "3",
 		  },
@@ -7607,7 +7607,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 5251.3,
 		  ["x"] = 673.1,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34724] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -7632,7 +7632,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [37]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35881] = {
 			 ["3"] = "3",
 		  },
@@ -7658,7 +7658,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 5163.6,
 		  ["x"] = 809.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35881] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -7779,7 +7779,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [45]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36520] = {
 			 ["3"] = "3",
 		  },
@@ -7805,7 +7805,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 4750.3,
 		  ["x"] = 1432.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36520] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -7845,7 +7845,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
- APR.QStepList["A535-DesMephisto-Talador"] = {
+ APR.QuestStepList["A535-DesMephisto-Talador"] = {
 	{
 	   ["PickUp"] = {
 		  34558,
@@ -7860,7 +7860,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3607,
 		  ["x"] = 1672.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34558] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -7921,7 +7921,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3662.3,
 		  ["x"] = 1704,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34563] = {
 			 ["1"] = "1",
 		  },
@@ -7955,7 +7955,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3629.4,
 		  ["x"] = 1652.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35045] = {
 			 ["1"] = "1",
 		  },
@@ -8021,7 +8021,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3847.5,
 		  ["x"] = 2413.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35236] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -8078,7 +8078,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 2058,
 		  ["x"] = 454.3,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34587] = {
 			 ["1"] = "1",
 		  },
@@ -8090,7 +8090,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34587] = {
 			 ["2"] = "2",
 		  },
@@ -8113,7 +8113,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1921.4,
 		  ["x"] = 486.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34587] = {
 			 ["3"] = "3",
 		  },
@@ -8129,7 +8129,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1984.5,
 		  ["x"] = 466.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34587] = {
 			 ["4"] = "4",
 		  },
@@ -8153,7 +8153,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
- APR.QStepList["A539-DesMephisto-Shadowmoon2"] = {
+ APR.QuestStepList["A539-DesMephisto-Shadowmoon2"] = {
 	{
 	   ["PickUp"] = {
 		  34587,
@@ -8168,7 +8168,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 2058,
 		  ["x"] = 454.3,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34587] = {
 			 ["1"] = "1",
 		  },
@@ -8180,7 +8180,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34587] = {
 			 ["2"] = "2",
 		  },
@@ -8203,7 +8203,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1921.4,
 		  ["x"] = 486.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34587] = {
 			 ["3"] = "3",
 		  },
@@ -8219,7 +8219,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1984.5,
 		  ["x"] = 466.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34587] = {
 			 ["4"] = "4",
 		  },
@@ -8249,7 +8249,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [7]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34646] = {
 			 ["1"] = "1",
 		  },
@@ -8289,7 +8289,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1653.5,
 		  ["x"] = 134.1,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34692] = {
 			 ["1"] = "1",
 		  },
@@ -8309,7 +8309,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  34692,
 	   },
 	}, -- [4]
-
+ 
 	{
 	   ["Treasure"] = 36879,
 	   ["Trigger"] = {
@@ -8534,7 +8534,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [26]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33078] = {
 			 ["2"] = "2",
 		  },
@@ -8576,7 +8576,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [28]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33078] = {
 			 ["1"] = "1",
 		  },
@@ -8618,7 +8618,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [30]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33078] = {
 			 ["3"] = "3",
 		  },
@@ -8660,7 +8660,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [32]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33078] = {
 			 ["4"] = "4",
 		  },
@@ -8706,7 +8706,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -97.1,
 		  ["x"] = -714.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34076] = {
 			 ["1"] = "1",
 			 ["3"] = "3",
@@ -8739,7 +8739,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [37]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33077] = {
 			 ["1"] = "1",
 		  },
@@ -8797,7 +8797,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34571] = {
 			 ["1"] = "1",
 		  },
@@ -8848,7 +8848,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
- APR.QStepList["A535-DesMephisto-Talador2"] = {
+ APR.QuestStepList["A535-DesMephisto-Talador2"] = {
 	{
 	   ["CRange"] = 34624,
 	   ["Trigger"] = {
@@ -8870,7 +8870,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34571] = {
 			 ["1"] = "1",
 		  },
@@ -8960,7 +8960,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3646.1,
 		  ["x"] = 1521,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34773] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -8991,7 +8991,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [11]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34804] = {
 			 ["1"] = "1",
 		  },
@@ -9039,7 +9039,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3388.3,
 		  ["x"] = 2073.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34087] = {
 			 ["1"] = "1",
 		  },
@@ -9080,7 +9080,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [19]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34090] = {
 			 ["3"] = "3",
 		  },
@@ -9104,7 +9104,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [20]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34090] = {
 			 ["2"] = "2",
 		  },
@@ -9128,7 +9128,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [21]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34089] = {
 			 ["1"] = "1",
 		  },
@@ -9149,7 +9149,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [22]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34090] = {
 			 ["1"] = "1",
 		  },
@@ -9177,7 +9177,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3296.6,
 		  ["x"] = 1926.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34088] = {
 			 ["1"] = "1",
 		  },
@@ -9189,7 +9189,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [24]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34091] = {
 			 ["1"] = "1",
 		  },
@@ -9210,7 +9210,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3489,
 		  ["x"] = 2068.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34091] = {
 			 ["2"] = "2",
 		  },
@@ -9226,7 +9226,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3400.6,
 		  ["x"] = 2070.1,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34091] = {
 			 ["3"] = "3",
 		  },
@@ -9261,7 +9261,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [29]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34959] = {
 			 ["1"] = "1",
 		  },
@@ -9302,7 +9302,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [31]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33973] = {
 			 ["1"] = "1",
 		  },
@@ -9344,7 +9344,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [33]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34105] = {
 			 ["1"] = "1",
 		  },
@@ -9373,7 +9373,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3334.8,
 		  ["x"] = 2467.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34095] = {
 			 ["1"] = "1",
 		  },
@@ -9412,7 +9412,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3389.1,
 		  ["x"] = 2072.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34096] = {
 			 ["1"] = "1",
 		  },
@@ -9446,7 +9446,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3383.4,
 		  ["x"] = 2071.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34097] = {
 			 ["1"] = "1",
 		  },
@@ -9462,7 +9462,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 2929.8,
 		  ["x"] = 2214.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34097] = {
 			 ["2"] = "2",
 		  },
@@ -9492,7 +9492,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [44]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34098] = {
 			 ["1"] = "1",
 		  },
@@ -9561,7 +9561,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3023.4,
 		  ["x"] = 2787.9,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34099] = {
 			 ["1"] = "1",
 		  },
@@ -9595,7 +9595,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 3251.5,
 		  ["x"] = 860.1,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [37422] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -9650,7 +9650,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [57]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33734] = {
 			 ["1"] = "1",
 		  },
@@ -9676,7 +9676,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [58]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33734] = {
 			 ["3"] = "3",
 		  },
@@ -9724,7 +9724,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [60]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33734] = {
 			 ["2"] = "2",
 		  },
@@ -9769,7 +9769,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [62]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33578] = {
 			 ["1"] = "1",
 		  },
@@ -9824,7 +9824,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [65]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33761] = {
 			 ["1"] = "1",
 			 ["3"] = "3",
@@ -9885,7 +9885,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 2945.4,
 		  ["x"] = 935.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33740] = {
 			 ["1"] = "1",
 		  },
@@ -9925,7 +9925,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 2924.5,
 		  ["x"] = 904.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33579] = {
 			 ["1"] = "1",
 		  },
@@ -9984,7 +9984,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [77]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34639] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -10047,7 +10047,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [81]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33582] = {
 			 ["1"] = "1",
 		  },
@@ -10075,7 +10075,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1982.8,
 		  ["x"] = 1247,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33581] = {
 			 ["1"] = "1",
 		  },
@@ -10134,7 +10134,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34777] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -10171,7 +10171,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [5]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34400] = {
 			 ["1"] = "1",
 		  },
@@ -10213,7 +10213,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 2473.1,
 		  ["x"] = 2724.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34403] = {
 			 ["1"] = "1",
 		  },
@@ -10247,7 +10247,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [11]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34415] = {
 			 ["1"] = "1",
 		  },
@@ -10282,7 +10282,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [14]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34448] = {
 			 ["1"] = "1",
 		  },
@@ -10300,7 +10300,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [15]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34448] = {
 			 ["2"] = "2",
 		  },
@@ -10339,7 +10339,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 2008.3,
 		  ["x"] = 3301.1,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34667] = {
 			 ["1"] = "1",
 			 ["3"] = "3",
@@ -10364,9 +10364,9 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["x"] = 2567.1,
 	   },
 	}, -- [5]
-
+ 
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34104] = {
 			 ["1"] = "1",
 		  },
@@ -10401,7 +10401,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [88]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34976] = {
 			 ["1"] = "1",
 		  },
@@ -10420,7 +10420,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [89]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34976] = {
 			 ["2"] = "2",
 		  },
@@ -10439,7 +10439,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [90]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34976] = {
 			 ["3"] = "3",
 		  },
@@ -10462,7 +10462,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1684.5,
 		  ["x"] = 1717,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34976] = {
 			 ["4"] = "4",
 		  },
@@ -10494,7 +10494,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [94]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34979] = {
 			 ["1"] = "1",
 		  },
@@ -10519,7 +10519,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [95]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34979] = {
 			 ["2"] = "2",
 		  },
@@ -10544,7 +10544,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [96]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34979] = {
 			 ["3"] = "3",
 		  },
@@ -10593,7 +10593,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1275.5,
 		  ["x"] = 1773.2,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34978] = {
 			 ["1"] = "1",
 		  },
@@ -10628,7 +10628,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [101]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34980] = {
 			 ["1"] = "1",
 		  },
@@ -10709,7 +10709,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  34701,
 	   },
 	}, -- [6]
-
+ 
 	{
 	   ["PickUp"] = {
 		  34458,
@@ -10836,7 +10836,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [30]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34351] = {
 			 ["2"] = "2",
 		  },
@@ -10869,7 +10869,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [32]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33530] = {
 			 ["1"] = "1",
 		  },
@@ -10890,7 +10890,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [33]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33530] = {
 			 ["2"] = "2",
 		  },
@@ -10933,7 +10933,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1846.4,
 		  ["x"] = 2220.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34351] = {
 			 ["1"] = "1",
 		  },
@@ -10969,7 +10969,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [38]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33920] = {
 			 ["1"] = "1",
 		  },
@@ -10994,7 +10994,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [39]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33920] = {
 			 ["2"] = "2",
 		  },
@@ -11022,7 +11022,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1887,
 		  ["x"] = 2485.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33917] = {
 			 ["1"] = "1",
 		  },
@@ -11115,7 +11115,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 887.7,
 		  ["x"] = 2631.3,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34660] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -11168,7 +11168,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [52]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33958] = {
 			 ["1"] = "1",
 		  },
@@ -11193,7 +11193,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [53]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33958] = {
 			 ["2"] = "2",
 		  },
@@ -11221,7 +11221,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1153.8,
 		  ["x"] = 2299.3,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33967] = {
 			 ["1"] = "1",
 		  },
@@ -11306,7 +11306,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [62]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34013] = {
 			 ["1"] = "1",
 		  },
@@ -11327,7 +11327,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [63]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33988] = {
 			 ["1"] = "1",
 		  },
@@ -11348,7 +11348,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [64]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34013] = {
 			 ["2"] = "2",
 		  },
@@ -11372,7 +11372,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [65]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34013] = {
 			 ["3"] = "3",
 		  },
@@ -11414,7 +11414,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33976] = {
 			 ["1"] = "1",
 		  },
@@ -11435,7 +11435,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 816.7,
 		  ["x"] = 3180.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33976] = {
 			 ["2"] = "2",
 		  },
@@ -11469,7 +11469,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 837.5,
 		  ["x"] = 2931.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [33988] = {
 			 ["2"] = "2",
 		  },
@@ -11530,7 +11530,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [3]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34092] = {
 			 ["1"] = "1",
 		  },
@@ -11552,7 +11552,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [4]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34092] = {
 			 ["2"] = "2",
 		  },
@@ -11574,7 +11574,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [5]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34092] = {
 			 ["3"] = "3",
 		  },
@@ -11599,7 +11599,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1152.2,
 		  ["x"] = 3380.9,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35227] = {
 			 ["1"] = "1",
 		  },
@@ -11645,7 +11645,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [10]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34163] = {
 			 ["1"] = "1",
 		  },
@@ -11666,7 +11666,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [11]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34163] = {
 			 ["2"] = "2",
 		  },
@@ -11701,7 +11701,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [13]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34164] = {
 			 ["1"] = "1",
 		  },
@@ -11738,7 +11738,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [15]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34163] = {
 			 ["3"] = "3",
 		  },
@@ -11772,7 +11772,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1561.7,
 		  ["x"] = 3785.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35254] = {
 			 ["1"] = "1",
 		  },
@@ -11818,7 +11818,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 1519,
 		  ["x"] = 3987.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34154] = {
 			 ["1"] = "1",
 		  },
@@ -11864,7 +11864,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["x"] = 3323.6,
 	   },
 	}, -- [7]
-
+ 
 	{
 	   ["TT"] = {
 		  ["y"] = 3571.3,
@@ -11895,7 +11895,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
- APR.QStepList["A542-DesMephisto-SpiresOfArak"] = {
+ APR.QuestStepList["A542-DesMephisto-SpiresOfArak"] = {
 	{
 	   ["PickUp"] = {
 		  34655,
@@ -11919,7 +11919,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34655] = {
 			 ["1"] = "1",
 		  },
@@ -11956,7 +11956,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [5]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34656] = {
 			 ["2"] = "2",
 		  },
@@ -11977,7 +11977,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [6]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34656] = {
 			 ["1"] = "1",
 		  },
@@ -12002,7 +12002,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 772.7,
 		  ["x"] = 2052.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34657] = {
 			 ["1"] = "1",
 		  },
@@ -12037,7 +12037,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 762.4,
 		  ["x"] = 1903.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34658] = {
 			 ["1"] = "1",
 		  },
@@ -12105,7 +12105,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [3]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34659] = {
 			 ["1"] = "1",
 		  },
@@ -12202,7 +12202,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [11]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35636] = {
 			 ["1"] = "1",
 		  },
@@ -12227,7 +12227,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [12]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35636] = {
 			 ["2"] = "2",
 		  },
@@ -12273,7 +12273,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -160.7,
 		  ["x"] = 1633.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34756] = {
 			 ["1"] = "1",
 		  },
@@ -12301,7 +12301,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [17]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35668] = {
 			 ["1"] = "1",
 		  },
@@ -12354,7 +12354,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -458.9,
 		  ["x"] = 1863.3,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35671] = {
 			 ["1"] = "1",
 		  },
@@ -12384,7 +12384,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [24]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35274] = {
 			 ["1"] = "1",
 		  },
@@ -12451,7 +12451,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [30]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35286] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -12584,7 +12584,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -613.3,
 		  ["x"] = 2412.1,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35329] = {
 			 ["1"] = "1",
 		  },
@@ -12596,7 +12596,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35329] = {
 			 ["2"] = "2",
 		  },
@@ -12635,7 +12635,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -735.3,
 		  ["x"] = 2422.3,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35339] = {
 			 ["1"] = "1",
 		  },
@@ -12647,7 +12647,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [13]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35339] = {
 			 ["2"] = "2",
 		  },
@@ -12684,7 +12684,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [16]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35353] = {
 			 ["1"] = "1",
 		  },
@@ -12759,7 +12759,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [23]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35408] = {
 			 ["2"] = "2",
 		  },
@@ -12787,7 +12787,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -764,
 		  ["x"] = 2441.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35408] = {
 			 ["1"] = "1",
 		  },
@@ -12825,7 +12825,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -911.8,
 		  ["x"] = 2450.3,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35482] = {
 			 ["1"] = "1",
 		  },
@@ -12841,7 +12841,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -915.3,
 		  ["x"] = 2450.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35482] = {
 			 ["2"] = "2",
 		  },
@@ -12857,7 +12857,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -932,
 		  ["x"] = 2450.3,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35482] = {
 			 ["3"] = "3",
 		  },
@@ -12900,7 +12900,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -574.7,
 		  ["x"] = 2029.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [37296] = {
 			 ["1"] = "1",
 		  },
@@ -12950,7 +12950,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [38]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34884] = {
 			 ["1"] = "1",
 		  },
@@ -12991,7 +12991,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -98.4,
 		  ["x"] = 1929.2,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34838] = {
 			 ["1"] = "1",
 		  },
@@ -13012,7 +13012,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [43]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34885] = {
 			 ["2"] = "2",
 		  },
@@ -13041,7 +13041,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -141.5,
 		  ["x"] = 1946.5,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34886] = {
 			 ["1"] = "1",
 		  },
@@ -13065,7 +13065,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [46]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34827] = {
 			 ["1"] = "1",
 		  },
@@ -13117,7 +13117,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [50]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34828] = {
 			 ["1"] = "1",
 		  },
@@ -13145,7 +13145,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 160,
 		  ["x"] = 1822.3,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36425] = {
 			 ["1"] = "1",
 		  },
@@ -13179,7 +13179,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [54]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34830] = {
 			 ["1"] = "1",
 		  },
@@ -13217,7 +13217,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [57]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34882] = {
 			 ["1"] = "1",
 		  },
@@ -13260,7 +13260,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 359.7,
 		  ["x"] = 2056.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [34883] = {
 			 ["1"] = "1",
 		  },
@@ -13365,7 +13365,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [67]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35259] = {
 			 ["1"] = "1",
 		  },
@@ -13426,7 +13426,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [70]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35259] = {
 			 ["2"] = "2",
 		  },
@@ -13472,7 +13472,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [73]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35260] = {
 			 ["1"] = "1",
 		  },
@@ -13494,7 +13494,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [75]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35261] = {
 			 ["1"] = "1",
 		  },
@@ -13529,7 +13529,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [3]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35273] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -13629,7 +13629,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35734] = {
 			 ["3"] = "3",
 		  },
@@ -13654,7 +13654,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [11]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35734] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -13778,7 +13778,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	},
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36179] = {
 			 ["1"] = "1",
 		  },
@@ -13827,7 +13827,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -1814.3,
 		  ["x"] = 1099,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35080] = {
 			 ["1"] = "1",
 		  },
@@ -13883,7 +13883,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -1901.8,
 		  ["x"] = 1067.7,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35081] = {
 			 ["1"] = "1",
 		  },
@@ -13962,7 +13962,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [15]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35089] = {
 			 ["1"] = "1",
 		  },
@@ -13984,7 +13984,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [16]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36384] = {
 			 ["1"] = "1",
 		  },
@@ -14042,7 +14042,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [21]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35211] = {
 			 ["1"] = "1",
 		  },
@@ -14073,7 +14073,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -2406.5,
 		  ["x"] = 1227.8,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35091] = {
 			 ["1"] = "1",
 		  },
@@ -14117,7 +14117,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -2342.5,
 		  ["x"] = 1136,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35298] = {
 			 ["1"] = "1",
 		  },
@@ -14133,7 +14133,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -2366.9,
 		  ["x"] = 1114,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35298] = {
 			 ["2"] = "2",
 		  },
@@ -14154,7 +14154,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [29]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35675] = {
 			 ["1"] = "1",
 		  },
@@ -14171,7 +14171,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [30]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35674] = {
 			 ["1"] = "1",
 		  },
@@ -14188,7 +14188,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [31]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36660] = {
 			 ["5"] = "5",
 		  },
@@ -14211,7 +14211,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [32]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36660] = {
 			 ["4"] = "4",
 		  },
@@ -14234,7 +14234,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [33]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36660] = {
 			 ["3"] = "3",
 		  },
@@ -14257,7 +14257,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   },
 	}, -- [34]
 	{
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36660] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -14297,7 +14297,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = -401.4,
 		  ["x"] = 2672.6,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [35649] = {
 			 ["1"] = "1",
 			 ["4"] = "4",
@@ -14328,7 +14328,7 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 		  ["y"] = 296.5,
 		  ["x"] = 2844.4,
 	   },
-	   ["QPart"] = {
+	   ["Qpart"] = {
 		  [36792] = {
 			 ["1"] = "1",
 			 ["2"] = "2",
@@ -14348,3 +14348,5 @@ APR.QStepList["A84-DesMephisto-Stormwind-War"] = {
 	   ["ZoneDoneSave"] = 1,
 	},
  }
+ 
+ 

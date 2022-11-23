@@ -9,3 +9,4 @@
 ## X-Website: https://github.com/Rycia/azeroth-pilot-reloaded
 ## X-Curse-Project-ID: 618667
 ## X-WoWI-ID: 26457
+
