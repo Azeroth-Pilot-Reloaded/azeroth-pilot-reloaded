@@ -995,7 +995,7 @@ local function APR_PrintQStep()
 		end
 
 		function DisplayRiding(text)
-			if(not APR1[APR.Realm][APR.Name]["hideRidingSkill"] or APR1[APR.Realm][APR.Name]["hideRidingSkill"] == 0) then
+			if(APR1[APR.Realm][APR.Name]["hideRidingSkill"] == 0) then
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(text))
 				--skip waypoint button
@@ -1378,7 +1378,7 @@ local function APR_PrintQStep()
 				else
 					if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 						LineNr = LineNr + 1
-						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["PICK_UP_QS"]..": 1")
+						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["PICK_UP_Q"]..": 1")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 						local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
@@ -1436,7 +1436,7 @@ local function APR_PrintQStep()
 				else
 					if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 						LineNr = LineNr + 1
-						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["PICK_UP_QS"]..": "..NrLeft)
+						APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["PICK_UP_Q"]..": "..NrLeft)
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 						local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()

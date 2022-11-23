@@ -1,6 +1,120 @@
 local app = select(2, ...);
 local L = app.L;
 
+--Resets settings for APR
+function APR.ResetSettings()
+	APR1[APR.Realm][APR.Name]["Settings"] = {}
+	APR1[APR.Realm][APR.Name]["Settings"]["left"] = 150
+	APR1[APR.Realm][APR.Name]["Settings"]["top"] = -150
+	APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = 150
+	APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = -150
+	APR1[APR.Realm][APR.Name]["Settings"]["Scale"] = UIParent:GetScale()
+	APR1[APR.Realm][APR.Name]["Settings"]["Lock"] = 0
+	APR1[APR.Realm][APR.Name]["Settings"]["Hide"] = 0
+	APR1[APR.Realm][APR.Name]["Settings"]["alpha"] = 1
+	APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"] = 150
+	APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"] = -150
+	APR1[APR.Realm][APR.Name]["Settings"]["Hcampleft"] = 150
+	APR1[APR.Realm][APR.Name]["Settings"]["Hcamptop"] = -150
+	APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] = 1
+	APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] = 1
+	APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] = 1
+	APR1[APR.Realm][APR.Name]["Settings"]["ChooseQuests"] = 0
+	APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"] = UIParent:GetScale()
+	APR1[APR.Realm][APR.Name]["Settings"]["AutoHandInChoice"] = 0
+	APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] = 1
+	APR1[APR.Realm][APR.Name]["Settings"]["AutoVendor"] = 0
+	APR1[APR.Realm][APR.Name]["Settings"]["AutoRepair"] = 0
+	APR1[APR.Realm][APR.Name]["Settings"]["ShowGroup"] = 1
+	APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] = 1
+	APR1[APR.Realm][APR.Name]["Settings"]["BannerShow"] = 0
+	APR1[APR.Realm][APR.Name]["Settings"]["ShowBlobs"] = 1
+	APR1[APR.Realm][APR.Name]["Settings"]["LockArrow"] = 0
+	APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"] = 2
+	APR1[APR.Realm][APR.Name]["Settings"]["DisableHeirloomWarning"] = 0
+	APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"] = 1
+	APR1[APR.Realm][APR.Name]["Settings"]["OrderListScale"] = 1
+	if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 0) then
+		APR.OptionsFrame.ShowQListCheckButton:SetChecked(false)
+	else
+		APR.OptionsFrame.ShowQListCheckButton:SetChecked(true)
+	end
+	if (APR1[APR.Realm][APR.Name]["Settings"]["ShowGroup"] == 0) then
+		APR.OptionsFrame.ShowGroupCheckButton:SetChecked(false)
+	else
+		APR.OptionsFrame.ShowGroupCheckButton:SetChecked(true)
+	end
+	if (APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 0) then
+		APR.OptionsFrame.AutoGossipCheckButton:SetChecked(false)
+	else
+		APR.OptionsFrame.AutoGossipCheckButton:SetChecked(true)
+	end
+	if (APR1[APR.Realm][APR.Name]["Settings"]["AutoVendor"] == 0) then
+		APR.OptionsFrame.AutoVendorCheckButton:SetChecked(false)
+	else
+		APR.OptionsFrame.AutoVendorCheckButton:SetChecked(true)
+	end
+	if (APR1[APR.Realm][APR.Name]["Settings"]["AutoRepair"] == 0) then
+		APR.OptionsFrame.AutoRepairCheckButton:SetChecked(false)
+	else
+		APR.OptionsFrame.AutoRepairCheckButton:SetChecked(true)
+	end
+	if (APR1[APR.Realm][APR.Name]["Settings"]["Lock"] == 0) then
+		APR.OptionsFrame.LockQuestListCheckButton:SetChecked(false)
+	else
+		APR.OptionsFrame.LockQuestListCheckButton:SetChecked(true)
+	end
+	if (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 0) then
+		APR.OptionsFrame.CutSceneCheckButton:SetChecked(false)
+	else
+		APR.OptionsFrame.CutSceneCheckButton:SetChecked(true)
+	end
+	if (APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 0) then
+		APR.OptionsFrame.AutoAcceptCheckButton:SetChecked(false)
+	else
+		APR.OptionsFrame.AutoAcceptCheckButton:SetChecked(true)
+	end
+	if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 0) then
+		APR.OptionsFrame.AutoHandInCheckButton:SetChecked(false)
+	else
+		APR.OptionsFrame.AutoHandInCheckButton:SetChecked(true)
+	end
+	if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandInChoice"] == 0) then
+		APR.OptionsFrame.AutoHandInChoiceCheckButton:SetChecked(false)
+	else
+		APR.OptionsFrame.AutoHandInChoiceCheckButton:SetChecked(true)
+	end
+	-- UI stuff regarding questlist and options frame
+	APR.QuestList.ButtonParent:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["Scale"])
+	APR.QuestList.ListFrame:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["Scale"])
+	APR.QuestList21:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["Scale"])
+	APR.OptionsFrame.QuestListScaleSlider:SetValue(APR1[APR.Realm][APR.Name]["Settings"]["Scale"] * 100)
+	APR.OptionsFrame.ArrowScaleSlider:SetValue(APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"] * 100)
+
+	APR.QuestList.MainFrame:ClearAllPoints()
+	APR.QuestList.MainFrame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
+	APR.ArrowFrame:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"])
+	APR.ArrowFrameM:ClearAllPoints()
+	APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"], APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"])
+	APR.ZoneQuestOrder:ClearAllPoints()
+	APR.ZoneQuestOrder:SetPoint("CENTER", UIParent, "CENTER",1,1)
+	APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"] = UIParent:GetScale()
+	APR1[APR.Realm][APR.Name]["Settings"]["LockArrow"] = 0
+	APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"] = 2
+	APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"] = GetScreenWidth() / 2.05
+	APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"] = -(GetScreenHeight() / 1.5)
+	APR.ArrowFrame:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"])
+	APR.ArrowFrameM:ClearAllPoints()
+	APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"], APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"])
+	APR.OptionsFrame.ArrowFpsSlider:SetValue(APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"])
+	if (APR1[APR.Realm][APR.Name]["Settings"]["LockArrow"] == 0) then
+		APR.OptionsFrame.LockArrowCheckButton:SetChecked(false)
+	else
+		APR.OptionsFrame.LockArrowCheckButton:SetChecked(true)
+	end
+	APR.OptionsFrame.ArrowScaleSlider:SetValue(APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"] * 100)
+end
+
 APR.APR_panel = CreateFrame( "Frame", "CLPanelFrame", UIParent)
 APR.APR_panel.name = "Azeroth Pilot Reloaded" -- Name of the wow ui panel in interface > options menu
 InterfaceOptions_AddCategory(APR.APR_panel)

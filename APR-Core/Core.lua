@@ -68,13 +68,16 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 	else
 		ZeMap = C_Map.GetBestMapForUnit("player")
 	end
-	if (ChoiceZ == 1 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728) and APR.Faction == "Alliance") then
+	local function autoPatchStartInsertRoute()
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
 		for CLi = 1, 19 do
 			APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText("")
 			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
 		end
+	end
+	if (ChoiceZ == 1 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728) and APR.Faction == "Alliance") then
+		autoPatchStartInsertRoute()
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/8) 10-50 Stormwind")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(2/8) 10-50 Tanaan Jungle")
@@ -87,12 +90,7 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - AStoryMode Only (Not Enough XP)")
 
 	elseif (ChoiceZ == 1 and APR.Level < 60 and APR.Level > 9 and APR.Faction == "Alliance") then
-		APR_Custom[APR.Name.."-"..APR.Realm] = nil
-		APR_Custom[APR.Name.."-"..APR.Realm] = {}
-		for CLi = 1, 19 do
-			APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText("")
-			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
-		end
+		autoPatchStartInsertRoute()
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/8) 10-50 Stormwind")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(2/8) 10-50 Tanaan Jungle")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(3/8) 10-50 Shadowmoon")
@@ -104,12 +102,7 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - AStoryMode Only (Not Enough XP)")
 
 	elseif (ChoiceZ == 1 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728) and APR.Faction == "Horde") then
-		APR_Custom[APR.Name.."-"..APR.Realm] = nil
-		APR_Custom[APR.Name.."-"..APR.Realm] = {}
-		for CLi = 1, 19 do
-			APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText("")
-			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
-		end
+		autoPatchStartInsertRoute()
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/7) 10-50 Orgrimmar")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(2/7) 10-50 Tanaan Jungle")
@@ -121,12 +114,7 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - HStoryMode Only (Not Enough XP)")
 
 	elseif (ChoiceZ == 1 and APR.Level < 60 and APR.Level > 9 and APR.Faction == "Horde") then
-		APR_Custom[APR.Name.."-"..APR.Realm] = nil
-		APR_Custom[APR.Name.."-"..APR.Realm] = {}
-		for CLi = 1, 19 do
-			APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText("")
-			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
-		end
+		autoPatchStartInsertRoute()
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/7) 10-50 Orgrimmar")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(2/7) 10-50 Tanaan Jungle")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(3/7) 10-50 Frostfire Ridge")
@@ -140,58 +128,31 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
 	elseif (ChoiceZ == 1) then
-		APR_Custom[APR.Name.."-"..APR.Realm] = nil
-		APR_Custom[APR.Name.."-"..APR.Realm] = {}
-		for CLi = 1, 19 do
-			APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText("")
-			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
-		end
+		autoPatchStartInsertRoute()
 	elseif (ChoiceZ == 2) then
-		APR_Custom[APR.Name.."-"..APR.Realm] = nil
-		APR_Custom[APR.Name.."-"..APR.Realm] = {}
-		for CLi = 1, 19 do
-			APR.RoutePlan.FG1["Fxz2Custom"..CLi]["FS"]:SetText("")
-			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
+		autoPatchStartInsertRoute()
+		local routes = {
+			{id = 59770, text = "50 The Maw Intro"},
+			{id = 59773, text = "50-50 Oribos (Start-Bastion)"},
+			{id = 60056, text = "50-52 Bastion (Full)"},
+			{id = 57386, text = "52 Oribos (Bastion-Maldraxxus)"},
+			{id = 59874, text = "52-54 Maldraxxus (Full)"},
+			{id = 59897, text = "54 Oribos (Maldraxxus-Maw)"},
+			{id = 61190, text = "54-55 The Maw"},
+			{id = 59974, text = "55 Oribos (Maw-Maldraxxus)"},
+			{id = 60737, text = "55-55 Maldraxxus"},
+			{id = 60338, text = "56 Oribos (Maldrax-Ardenw)"},
+			{id = 58724, text = "56-57 Ardenweald (Full)"},
+			{id = 57025, text = "57 Oribos (Ardenw-Revend)"},
+			{id = 57689, text = "57-60 Revendreth (Full)"},
+			
+		}
+		for i, route in ipairs(routes) do
+			if (C_QuestLog.IsQuestFlaggedCompleted(route.id) == false) then
+				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],route.text)
+			end
 		end
-		if (C_QuestLog.IsQuestFlaggedCompleted(59770) == false) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50 The Maw Intro")
-		end
-		if (C_QuestLog.IsQuestFlaggedCompleted(59773) == false) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-50 Oribos (Start-Bastion)")
-		end
-		if (C_QuestLog.IsQuestFlaggedCompleted(60056) == false) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"50-52 Bastion (Full)")
-		end
-		if (C_QuestLog.IsQuestFlaggedCompleted(57386) == false) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52 Oribos (Bastion-Maldraxxus)")
-		end
-		if (C_QuestLog.IsQuestFlaggedCompleted(59874) == false) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"52-54 Maldraxxus (Full)")
-		end
-		if (C_QuestLog.IsQuestFlaggedCompleted(59897) == false) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"54 Oribos (Maldraxxus-Maw)")
-		end
-		if (C_QuestLog.IsQuestFlaggedCompleted(61190) == false) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"54-55 The Maw")
-		end
-		if (C_QuestLog.IsQuestFlaggedCompleted(59974) == false) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"55 Oribos (Maw-Maldraxxus)")
-		end
-		if (C_QuestLog.IsQuestFlaggedCompleted(60737) == false) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"55-55 Maldraxxus")
-		end
-		if (C_QuestLog.IsQuestFlaggedCompleted(60338) == false) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"56 Oribos (Maldrax-Ardenw)")
-		end
-		if (C_QuestLog.IsQuestFlaggedCompleted(58724) == false) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"56-57 Ardenweald (Full)")
-		end
-		if (C_QuestLog.IsQuestFlaggedCompleted(57025) == false) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"57 Oribos (Ardenw-Revend)")
-		end
-		if (C_QuestLog.IsQuestFlaggedCompleted(57689) == false) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"57-60 Revendreth (Full)")
-		end
+
 	end
 	for CLi = 1, 19 do
 		if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
@@ -305,152 +266,6 @@ function APR.pairsByKeys (t, f)
      return iter
 end
 
---Resets settings for APR?
-function APR.ResetSettings()
-	APR1[APR.Realm][APR.Name]["Settings"] = {}
-	APR1[APR.Realm][APR.Name]["Settings"]["left"] = 150
-	APR1[APR.Realm][APR.Name]["Settings"]["top"] = -150
-	APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = 150
-	APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = -150
-	APR1[APR.Realm][APR.Name]["Settings"]["Scale"] = UIParent:GetScale()
-	APR1[APR.Realm][APR.Name]["Settings"]["Lock"] = 0
-	APR1[APR.Realm][APR.Name]["Settings"]["Hide"] = 0
-	APR1[APR.Realm][APR.Name]["Settings"]["alpha"] = 1
-	APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"] = 150
-	APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"] = -150
-	APR1[APR.Realm][APR.Name]["Settings"]["Hcampleft"] = 150
-	APR1[APR.Realm][APR.Name]["Settings"]["Hcamptop"] = -150
-	APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] = 1
-	APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] = 1
-	APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] = 1
-	APR1[APR.Realm][APR.Name]["Settings"]["ChooseQuests"] = 0
-	APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"] = UIParent:GetScale()
-	APR1[APR.Realm][APR.Name]["Settings"]["AutoHandInChoice"] = 0
-	APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] = 1
-	APR1[APR.Realm][APR.Name]["Settings"]["AutoVendor"] = 0
-	APR1[APR.Realm][APR.Name]["Settings"]["AutoRepair"] = 0
-	APR1[APR.Realm][APR.Name]["Settings"]["ShowGroup"] = 1
-	APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] = 1
-	APR1[APR.Realm][APR.Name]["Settings"]["BannerShow"] = 0
-	APR1[APR.Realm][APR.Name]["Settings"]["ShowBlobs"] = 1
-	APR1[APR.Realm][APR.Name]["Settings"]["LockArrow"] = 0
-	APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"] = 2
-	APR1[APR.Realm][APR.Name]["Settings"]["DisableHeirloomWarning"] = 0
-	APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"] = 1
-	APR1[APR.Realm][APR.Name]["Settings"]["OrderListScale"] = 1
-	if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 0) then
-		APR.OptionsFrame.ShowQListCheckButton:SetChecked(false)
-	else
-		APR.OptionsFrame.ShowQListCheckButton:SetChecked(true)
-	end
-	if (APR1[APR.Realm][APR.Name]["Settings"]["ShowGroup"] == 0) then
-		APR.OptionsFrame.ShowGroupCheckButton:SetChecked(false)
-	else
-		APR.OptionsFrame.ShowGroupCheckButton:SetChecked(true)
-	end
-	if (APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 0) then
-		APR.OptionsFrame.AutoGossipCheckButton:SetChecked(false)
-	else
-		APR.OptionsFrame.AutoGossipCheckButton:SetChecked(true)
-	end
-	if (APR1[APR.Realm][APR.Name]["Settings"]["AutoVendor"] == 0) then
-		APR.OptionsFrame.AutoVendorCheckButton:SetChecked(false)
-	else
-		APR.OptionsFrame.AutoVendorCheckButton:SetChecked(true)
-	end
-	if (APR1[APR.Realm][APR.Name]["Settings"]["AutoRepair"] == 0) then
-		APR.OptionsFrame.AutoRepairCheckButton:SetChecked(false)
-	else
-		APR.OptionsFrame.AutoRepairCheckButton:SetChecked(true)
-	end
-	if (APR1[APR.Realm][APR.Name]["Settings"]["Lock"] == 0) then
-		APR.OptionsFrame.LockQuestListCheckButton:SetChecked(false)
-	else
-		APR.OptionsFrame.LockQuestListCheckButton:SetChecked(true)
-	end
-	if (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 0) then
-		APR.OptionsFrame.CutSceneCheckButton:SetChecked(false)
-	else
-		APR.OptionsFrame.CutSceneCheckButton:SetChecked(true)
-	end
-	if (APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 0) then
-		APR.OptionsFrame.AutoAcceptCheckButton:SetChecked(false)
-	else
-		APR.OptionsFrame.AutoAcceptCheckButton:SetChecked(true)
-	end
-	if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 0) then
-		APR.OptionsFrame.AutoHandInCheckButton:SetChecked(false)
-	else
-		APR.OptionsFrame.AutoHandInCheckButton:SetChecked(true)
-	end
-	if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandInChoice"] == 0) then
-		APR.OptionsFrame.AutoHandInChoiceCheckButton:SetChecked(false)
-	else
-		APR.OptionsFrame.AutoHandInChoiceCheckButton:SetChecked(true)
-	end
-	-- UI stuff regarding questlist and options frame
-	APR.QuestList.ButtonParent:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["Scale"])
-	APR.QuestList.ListFrame:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["Scale"])
-	APR.QuestList21:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["Scale"])
-	APR.OptionsFrame.QuestListScaleSlider:SetValue(APR1[APR.Realm][APR.Name]["Settings"]["Scale"] * 100)
-	APR.OptionsFrame.ArrowScaleSlider:SetValue(APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"] * 100)
-
-	APR.QuestList.MainFrame:ClearAllPoints()
-	APR.QuestList.MainFrame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"], APR1[APR.Realm][APR.Name]["Settings"]["top"])
-	APR.ArrowFrame:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"])
-	APR.ArrowFrameM:ClearAllPoints()
-	APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"], APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"])
-	APR.ZoneQuestOrder:ClearAllPoints()
-	APR.ZoneQuestOrder:SetPoint("CENTER", UIParent, "CENTER",1,1)
-	APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"] = UIParent:GetScale()
-	APR1[APR.Realm][APR.Name]["Settings"]["LockArrow"] = 0
-	APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"] = 2
-	APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"] = GetScreenWidth() / 2.05
-	APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"] = -(GetScreenHeight() / 1.5)
-	APR.ArrowFrame:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"])
-	APR.ArrowFrameM:ClearAllPoints()
-	APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"], APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"])
-	APR.OptionsFrame.ArrowFpsSlider:SetValue(APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"])
-	if (APR1[APR.Realm][APR.Name]["Settings"]["LockArrow"] == 0) then
-		APR.OptionsFrame.LockArrowCheckButton:SetChecked(false)
-	else
-		APR.OptionsFrame.LockArrowCheckButton:SetChecked(true)
-	end
-	APR.OptionsFrame.ArrowScaleSlider:SetValue(APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"] * 100)
-end
--- Chat commands, such as /apr reset, /apr skip, /apr skipcamp
-local function APR_SlashCmd(APR_index)
-	if (APR_index == "reset") then
-		--Command for making the quest rescan on completion and reset, including previously skipped steps
-		print("APR: "..L["RESET_ZONE"])
-		APR1[APR.Realm][APR.Name][APR.ActiveMap] = 1
-	elseif (APR_index == "showriding") then
-		print("APR: "..L["SHOW_RIDING"])
-		APR1[APR.Realm][APR.Name]["hideRidingSkill"] = 0
-	elseif (APR_index == "hideriding") then
-		print("APR: "..L["HIDE_RIDING"])
-		APR1[APR.Realm][APR.Name]["hideRidingSkill"] = 1
-	elseif (APR_index == "skip") then
-		-- Command for skipping the current quest step
-		print("APR: "..L["SKIP"])
-		APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
-	elseif (APR_index == "rollback") then
-		-- Command for rollback the current quest step
-		print("APR: "..L["ROLLBACK"])
-		APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] - 1
-	elseif (APR_index == "skipcamp") then
-		-- Command for skipping "camp" step
-		print("APR: "..L["SKIPCAMP"])
-		APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 14
-	else
-		APR.SettingsOpen = 1
-		APR.OptionsFrame.MainFrame:Show()
-		APR.RemoveIcons()
-		APR.BookingList["OpenedSettings"] = 1
-	end
-	APR.BookingList["UpdateQuest"] = 1
-	APR.BookingList["PrintQStep"] = 1
-end
 --More UI stuff, to do with arrowframe
 	--Arrowframe is the "arrow" that looks like the tomtom one
 APR.ArrowFrameM = CreateFrame("Button", "APR_Arrow", UIParent)
@@ -534,8 +349,8 @@ APR.ArrowFrame.Fontstring:SetFontObject("GameFontNormalSmall")
 APR.ArrowFrame.Fontstring:SetTextColor(1, 1, 0)
 APR.ArrowFrame.Button:Hide()
 
-function APR.RoutePlanLoadIn() --Loads RoutePlan and option frame. RoutePlan is gui that pops when you hit "Custom Path" and a gui comes up allowing you to order them
-
+--Loads RoutePlan and option frame. RoutePlan is gui that pops when you hit "Custom Path" and a gui comes up allowing you to order them
+function APR.RoutePlanLoadIn()
 	if (APR1["Debug"]) then
 		print("Function: APR.RoutePlanLoadIn()")
 	end
@@ -2765,7 +2580,9 @@ function APR.CheckCustomEmpty()
 		APR.ActiveMap = nil
 	end
 end
-function APR.RoutePlanCheckPos() --Check current position for route plan
+
+--Check current position for route plan
+function APR.RoutePlanCheckPos()
 	if (APR1["Debug"]) then
 		print("Function: APR.RoutePlanCheckPos()")
 	end
@@ -2985,11 +2802,9 @@ function APR.TimeFPs(CurrentFP, DestFP)
 		APR.AFK_Timer(APR_TaxiTimers[CurrentFP.."-"..DestFP])
 	end
 end
-
 APR.CoreEventFrame = CreateFrame("Frame")
 APR.CoreEventFrame:RegisterEvent ("ADDON_LOADED")
 APR.CoreEventFrame:RegisterEvent ("CINEMATIC_START")
-
 APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 	if (event=="ADDON_LOADED") then
 		local arg1, arg2, arg3, arg4, arg5 = ...;
@@ -3251,7 +3066,9 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 			if (not APR1[APR.Realm][APR.Name]["APR_DoWarCampaign"]) then
 				APR1[APR.Realm][APR.Name]["APR_DoWarCampaign"] = 0
 			end
-
+			if (not APR1[APR.Realm][APR.Name]["hideRidingSkill"]) then
+				APR1[APR.Realm][APR.Name]["hideRidingSkill"] = 0
+			end
 			if (not APR1[APR.Realm][APR.Name]["WantedQuestList"]) then
 				APR1[APR.Realm][APR.Name]["WantedQuestList"] = {}
 			end

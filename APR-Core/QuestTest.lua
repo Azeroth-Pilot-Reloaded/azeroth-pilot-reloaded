@@ -503,7 +503,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					APR.ZoneQuestOrder["Current"]:Show()
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["PickUp"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["PICK_UP_QS"])
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["PICK_UP_Q"])
 					IdList = APR.QuestStepList[APR.ActiveMap][CCLi]["PickUp"]
 					local NrLeft = 0
 					local Flagged = 0

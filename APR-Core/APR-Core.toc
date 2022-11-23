@@ -25,6 +25,7 @@ locales\ptBR.lua
 locales\ruRU.lua
 locales\zhCN.lua
 locales\zhTW.lua
+Commands.lua
 Core.lua
 TransportDB.lua
 OptionsPanel.lua
