@@ -706,7 +706,7 @@
 					[250] = {
 						["y"] = 3261.3,
 						["x"] = -2263.7,
-						["name"] = "Conquest Hold, Grizzly Hills",
+						["name"] = "ConQ Hold, Grizzly Hills",
 						["Starter"] = 1,
 					},
 				},
@@ -4444,7 +4444,7 @@
 					},
 				},
 				[116] = {
-					["Conquest Hold, Grizzly Hills"] = {
+					["ConQ Hold, Grizzly Hills"] = {
 						["Starter"] = 1,
 						["y"] = 3261.3,
 						["x"] = -2263.7,
