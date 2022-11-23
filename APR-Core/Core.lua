@@ -1929,6 +1929,15 @@ zenr2 = 0
 	dzer = {}
 	dzer2 = nil
 	dzer2 = {}
+	if (APR.QuestStepListListingStartAreas["MISC 1"]) then
+		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListingStartAreas["MISC 1"]) do
+			dzer2[APR_value2] = APR_index2
+		end
+		for APR_index2,APR_value2 in APR.pairsByKeys(dzer2) do
+			zenr2 = zenr2 + 1
+			APR.RoutePlan.FG1["MISC3"..zenr2]["FS"]:SetText(APR_index2)
+		end
+	end
 	if (APR.QuestStepListListing and APR.QuestStepListListing["MISC 1"]) then
 		for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["MISC 1"]) do
 			dzer[APR_value2] = APR_index2
