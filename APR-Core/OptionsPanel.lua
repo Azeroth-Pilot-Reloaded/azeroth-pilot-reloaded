@@ -46,7 +46,7 @@ function APR.LoadOptionsFrame()
 	APR.OptionsFrame.MainFrame:SetPoint("CENTER",  UIParent, "CENTER",0,0)
 	APR.OptionsFrame.MainFrame:SetMovable(true)
 	APR.OptionsFrame.MainFrame:EnableMouse(true)
-	
+
 local t = APR.OptionsFrame.MainFrame:CreateTexture(nil,"BACKGROUND")
 t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 t:SetAllPoints(APR.OptionsFrame.MainFrame)
@@ -79,7 +79,7 @@ APR.OptionsFrame.MainFrame.texture = t
 	APR.OptionsFrame.MainFrame.Options:SetPoint("LEFT",  APR_OptionsMainFrame, "LEFT",0,-20)
 	APR.OptionsFrame.MainFrame.Options:SetMovable(true)
 	APR.OptionsFrame.MainFrame.Options:EnableMouse(true)
-	
+
 local t = APR.OptionsFrame.MainFrame.Options:CreateTexture(nil,"BACKGROUND")
 t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 t:SetAllPoints(APR.OptionsFrame.MainFrame.Options)
@@ -156,7 +156,7 @@ APR.OptionsFrame.MainFrame.OptionsB1.texture = t
 	APR.OptionsFrame.MainFrame.OptionsB1.FontString:SetWidth(240)
 	APR.OptionsFrame.MainFrame.OptionsB1.FontString:SetHeight(20)
 	APR.OptionsFrame.MainFrame.OptionsB1.FontString:SetFontObject("GameFontHighlightLarge")
-	APR.OptionsFrame.MainFrame.OptionsB1.FontString:SetText(L["QUEST_OPTIONS"])
+	APR.OptionsFrame.MainFrame.OptionsB1.FontString:SetText(L["Q_OPTIONS"])
 	APR.OptionsFrame.MainFrame.OptionsB1.FontString:SetTextColor(1, 1, 0)
 
 	APR.OptionsFrame.MainFrame.OptionsQuests = CreateFrame("frame", "APR_OptionsMainFrame_Quests",  APR_OptionsMainFrame)
@@ -166,7 +166,7 @@ APR.OptionsFrame.MainFrame.OptionsB1.texture = t
 	APR.OptionsFrame.MainFrame.OptionsQuests:SetPoint("LEFT",  APR_OptionsMainFrame, "LEFT",155,-20)
 	APR.OptionsFrame.MainFrame.OptionsQuests:SetMovable(true)
 	APR.OptionsFrame.MainFrame.OptionsQuests:EnableMouse(true)
-	
+
 local t = APR.OptionsFrame.MainFrame.OptionsQuests:CreateTexture(nil,"BACKGROUND")
 t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 t:SetAllPoints(APR.OptionsFrame.MainFrame.OptionsQuests)
@@ -198,7 +198,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	else
 		APR.OptionsFrame.AutoAcceptCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.AutoAcceptCheckButton:GetName() .. 'Text'):SetText(": "..L["ACCEPT_QUEST"])
+	getglobal(APR.OptionsFrame.AutoAcceptCheckButton:GetName() .. 'Text'):SetText(": "..L["ACCEPT_Q"])
 	getglobal(APR.OptionsFrame.AutoAcceptCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.AutoAcceptCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.AutoAcceptCheckButton:GetChecked() == true) then
@@ -214,7 +214,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	else
 		APR.OptionsFrame.AutoHandInCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.AutoHandInCheckButton:GetName() .. 'Text'):SetText(": "..L["TURN_IN_QUEST"])
+	getglobal(APR.OptionsFrame.AutoHandInCheckButton:GetName() .. 'Text'):SetText(": "..L["TURN_IN_Q"])
 	getglobal(APR.OptionsFrame.AutoHandInCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.AutoHandInCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.AutoHandInCheckButton:GetChecked() == true) then
@@ -246,7 +246,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	else
 		APR.OptionsFrame.ShowQListCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.ShowQListCheckButton:GetName() .. 'Text'):SetText(": "..L["SHOW_QUESTLIST"])
+	getglobal(APR.OptionsFrame.ShowQListCheckButton:GetName() .. 'Text'):SetText(": "..L["SHOW_QLIST"])
 	getglobal(APR.OptionsFrame.ShowQListCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.ShowQListCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.ShowQListCheckButton:GetChecked() == true) then
@@ -269,7 +269,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	else
 		APR.OptionsFrame.LockQuestListCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.LockQuestListCheckButton:GetName() .. 'Text'):SetText(": "..L["LOCK_QUESTLIST_WINDOW"])
+	getglobal(APR.OptionsFrame.LockQuestListCheckButton:GetName() .. 'Text'):SetText(": "..L["LOCK_QLIST_WINDOW"])
 	getglobal(APR.OptionsFrame.LockQuestListCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.LockQuestListCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.LockQuestListCheckButton:GetChecked() == true) then
@@ -287,7 +287,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	APR.OptionsFrame.QuestListScaleSlider.minValue, APR.OptionsFrame.QuestListScaleSlider.maxValue = APR.OptionsFrame.QuestListScaleSlider:GetMinMaxValues()
 	getglobal(APR.OptionsFrame.QuestListScaleSlider:GetName() .. 'Low'):SetText("1%")
 	getglobal(APR.OptionsFrame.QuestListScaleSlider:GetName() .. 'High'):SetText("200%")
-	getglobal(APR.OptionsFrame.QuestListScaleSlider:GetName() .. 'Text'):SetText(L["QUESTLIST_SCALE"]..":")
+	getglobal(APR.OptionsFrame.QuestListScaleSlider:GetName() .. 'Text'):SetText(L["QLIST_SCALE"]..":")
 	APR.OptionsFrame.QuestListScaleSlider:SetValueStep(1)
 	APR.OptionsFrame.QuestListScaleSlider:SetValue(100)
 	APR.OptionsFrame.QuestListScaleSlider:SetScript("OnValueChanged", function(self,event)
@@ -312,7 +312,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	APR.OptionsFrame.QuestOrderListScaleSlider.minValue, APR.OptionsFrame.QuestOrderListScaleSlider.maxValue = APR.OptionsFrame.QuestOrderListScaleSlider:GetMinMaxValues()
 	getglobal(APR.OptionsFrame.QuestOrderListScaleSlider:GetName() .. 'Low'):SetText("1%")
 	getglobal(APR.OptionsFrame.QuestOrderListScaleSlider:GetName() .. 'High'):SetText("200%")
-	getglobal(APR.OptionsFrame.QuestOrderListScaleSlider:GetName() .. 'Text'):SetText(L["QUESTORDERLIST_SCALE"]..":")
+	getglobal(APR.OptionsFrame.QuestOrderListScaleSlider:GetName() .. 'Text'):SetText(L["QORDERLIST_SCALE"]..":")
 	APR.OptionsFrame.QuestOrderListScaleSlider:SetValueStep(1)
 	APR.OptionsFrame.QuestOrderListScaleSlider:SetValue(100)
 	APR.OptionsFrame.QuestOrderListScaleSlider:SetScript("OnValueChanged", function(self,event)
@@ -333,7 +333,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	else
 		APR.OptionsFrame.QorderListzCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.QorderListzCheckButton:GetName() .. 'Text'):SetText(L["SHOW_QUESTORDERLIST"])
+	getglobal(APR.OptionsFrame.QorderListzCheckButton:GetName() .. 'Text'):SetText(L["SHOW_QORDERLIST"])
 	getglobal(APR.OptionsFrame.QorderListzCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.QorderListzCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.QorderListzCheckButton:GetChecked() == true) then
@@ -342,7 +342,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 			APR.ZoneQuestOrder:Show()
 		else
 			APR1[APR.Realm][APR.Name]["Settings"]["ShowQuestListOrder"] = 0
-			APR.ZoneQuestOrder:Hide() 
+			APR.ZoneQuestOrder:Hide()
 		end
 	end)
 
@@ -350,7 +350,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	APR.OptionsFrame["ResetQorderL"]:SetPoint("TOPLEFT", APR.OptionsFrame.MainFrame.OptionsQuests, "TOPLEFT", 10, -210)
 	APR.OptionsFrame["ResetQorderL"]:SetWidth(150)
 	APR.OptionsFrame["ResetQorderL"]:SetHeight(30)
-	APR.OptionsFrame["ResetQorderL"]:SetText(L["RESET_QUESTORDERLIST"])
+	APR.OptionsFrame["ResetQorderL"]:SetText(L["RESET_QORDERLIST"])
 	APR.OptionsFrame["ResetQorderL"]:SetParent(APR.OptionsFrame.MainFrame.OptionsQuests)
 	APR.OptionsFrame.ResetQorderL:SetFrameStrata("HIGH")
 	APR.OptionsFrame.ResetQorderL:SetNormalFontObject("GameFontNormal")
@@ -382,7 +382,7 @@ APR.OptionsFrame.MainFrame.OptionsQuests.texture = t
 	APR.OptionsFrame.MainFrame.OptionsB2:SetPoint("TOPLEFT",  APR_OptionsMainFrame, "TOPLEFT",0,-70)
 	APR.OptionsFrame.MainFrame.OptionsB2:SetMovable(true)
 	APR.OptionsFrame.MainFrame.OptionsB2:EnableMouse(true)
-	
+
 local t = APR.OptionsFrame.MainFrame.OptionsB2:CreateTexture(nil,"BACKGROUND")
 t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 t:SetAllPoints(APR.OptionsFrame.MainFrame.OptionsB2)
@@ -423,7 +423,7 @@ APR.OptionsFrame.MainFrame.OptionsB2.texture = t
 	APR.OptionsFrame.MainFrame.OptionsArrow:SetPoint("LEFT",  APR_OptionsMainFrame, "LEFT",155,-20)
 	APR.OptionsFrame.MainFrame.OptionsArrow:SetMovable(true)
 	APR.OptionsFrame.MainFrame.OptionsArrow:EnableMouse(true)
-	
+
 local t = APR.OptionsFrame.MainFrame.OptionsArrow:CreateTexture(nil,"BACKGROUND")
 t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 t:SetAllPoints(APR.OptionsFrame.MainFrame.OptionsArrow)
@@ -617,7 +617,7 @@ APR.OptionsFrame.MainFrame.OptionsB3.texture = t
 	APR.OptionsFrame.MainFrame.OptionsGeneral:SetPoint("LEFT",  APR_OptionsMainFrame, "LEFT",155,-20)
 	APR.OptionsFrame.MainFrame.OptionsGeneral:SetMovable(true)
 	APR.OptionsFrame.MainFrame.OptionsGeneral:EnableMouse(true)
-	
+
 local t = APR.OptionsFrame.MainFrame.OptionsGeneral:CreateTexture(nil,"BACKGROUND")
 t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 t:SetAllPoints(APR.OptionsFrame.MainFrame.OptionsGeneral)
@@ -855,7 +855,7 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	else
 		APR.OptionsFrame.QuestButtonsCheckButton:SetChecked(true)
 	end
-	getglobal(APR.OptionsFrame.QuestButtonsCheckButton:GetName() .. 'Text'):SetText(L["DETACH_QUEST_ITEM_BTN"])
+	getglobal(APR.OptionsFrame.QuestButtonsCheckButton:GetName() .. 'Text'):SetText(L["DETACH_Q_ITEM_BTN"])
 	getglobal(APR.OptionsFrame.QuestButtonsCheckButton:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	APR.OptionsFrame.QuestButtonsCheckButton:SetScript("OnClick", function()
 		if (APR.OptionsFrame.QuestButtonsCheckButton:GetChecked() == true) then
@@ -887,7 +887,7 @@ APR.OptionsFrame.MainFrame.OptionsGeneral.texture = t
 	APR.OptionsFrame.QuestButtonsSlider.minValue, APR.OptionsFrame.QuestButtonsSlider.maxValue = APR.OptionsFrame.QuestButtonsSlider:GetMinMaxValues()
 	getglobal(APR.OptionsFrame.QuestButtonsSlider:GetName() .. 'Low'):SetText("1%")
 	getglobal(APR.OptionsFrame.QuestButtonsSlider:GetName() .. 'High'):SetText("200%")
-	getglobal(APR.OptionsFrame.QuestButtonsSlider:GetName() .. 'Text'):SetText(L["QUEST_BTN_SCALE"])
+	getglobal(APR.OptionsFrame.QuestButtonsSlider:GetName() .. 'Text'):SetText(L["Q_BTN_SCALE"])
 	APR.OptionsFrame.QuestButtonsSlider:SetValueStep(1)
 	APR.OptionsFrame.QuestButtonsSlider:SetValue(100)
 	APR.OptionsFrame.QuestButtonsSlider:SetScript("OnValueChanged", function(self,event)
