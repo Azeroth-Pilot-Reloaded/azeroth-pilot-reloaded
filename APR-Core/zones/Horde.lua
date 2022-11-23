@@ -128,7 +128,7 @@ if (APR.Class[3] == 12) then
 APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
 end
 if (APR.Level < 10) then
-	APR.QuestStepListListing["Shadowlands"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
+	APR.QuestStepListListing["MISC 1"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
 end
 
 APR.QuestStepListListing["MISC 2"] = {

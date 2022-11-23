@@ -3062,8 +3062,8 @@ APR.LoopBooking = CreateFrame("frame")
 APR.LoopBooking:SetScript("OnUpdate", APR_LoopBookingFunc)
 
 APR_QH_EventFrame = CreateFrame("Frame")
-APR_QH_EventFrame:RegisterEvent ("Q_REMOVED")
-APR_QH_EventFrame:RegisterEvent ("Q_ACCEPTED")
+APR_QH_EventFrame:RegisterEvent ("QUEST_REMOVED")
+APR_QH_EventFrame:RegisterEvent ("QUEST_ACCEPTED")
 APR_QH_EventFrame:RegisterEvent ("UNIT_QUEST_LOG_CHANGED")
 APR_QH_EventFrame:RegisterEvent ("ZONE_CHANGED")
 APR_QH_EventFrame:RegisterEvent ("ZONE_CHANGED_NEW_AREA")
@@ -3083,7 +3083,7 @@ APR_QH_EventFrame:RegisterEvent ("MERCHANT_SHOW")
 APR_QH_EventFrame:RegisterEvent ("QUEST_GREETING")
 APR_QH_EventFrame:RegisterEvent ("ITEM_PUSH")
 APR_QH_EventFrame:RegisterEvent ("QUEST_AUTOCOMPLETE")
-APR_QH_EventFrame:RegisterEvent ("Q_ACCEPT_CONFIRM")
+APR_QH_EventFrame:RegisterEvent ("QUEST_ACCEPT_CONFIRM")
 APR_QH_EventFrame:RegisterEvent ("UNIT_ENTERED_VEHICLE")
 --APR_QH_EventFrame:RegisterEvent ("CHROMIE_TIME_OPEN")
 APR_QH_EventFrame:RegisterEvent ("QUEST_LOG_UPDATE")
@@ -3350,7 +3350,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			end
 		end
 	end
-	if (event=="Q_ACCEPT_CONFIRM") then
+	if (event=="QUEST_ACCEPT_CONFIRM") then
 		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 1 and not IsControlKeyDown()) then
 			AcceptQuest()
 		end
@@ -3656,7 +3656,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			APR.BookingList["PrintQStep"] = 1
 		end
 	end
-	if (event=="Q_ACCEPTED") then
+	if (event=="QUEST_ACCEPTED") then
 		local arg1, arg2, arg3, arg4, arg5 = ...;
 		if (APR1["Debug"]) then
 			print(L["Q_ACCEPTED"]..": ".. arg1)
@@ -3680,7 +3680,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		C_Timer.After(0.1, APR_BookQStep)
 		C_Timer.After(3, APR_BookQStep)
 	end
-	if (event=="Q_REMOVED") then
+	if (event=="QUEST_REMOVED") then
 		if (APR1["Debug"]) then
 			print(L["Q_REMOVED"])
 		end

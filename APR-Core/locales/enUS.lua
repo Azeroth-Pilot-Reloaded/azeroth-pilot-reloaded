@@ -1,6 +1,6 @@
 local name, app = ...;
 
-L = {
+app.L = {
 	["ACCEPT_Q"] = "Accept the quest(s)",
 	["AFK"] = "AFK",
 	["ALL_Q"] = "All quest(s)",
