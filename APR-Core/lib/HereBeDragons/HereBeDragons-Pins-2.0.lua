@@ -107,7 +107,7 @@ end
 local rotateMinimap = GetCVar("rotateMinimap") == "1"
 
 -- is the minimap indoors or outdoors
-local indoors = GetCVar("minimapZoom")+0 == pins.Minimap:GetZoom() and "outdoor" or "indoor"
+local indoors = GetCVar("miniMapsoom")+0 == pins.Minimap:GetZoom() and "outdoor" or "indoor"
 
 local minimapPinCount, queueFullUpdate = 0, false
 local minimapScale, minimapShape, mapRadius, minimapWidth, minimapHeight, mapSin, mapCos
@@ -317,13 +317,13 @@ local function UpdateMinimapIconPosition()
     end
 end
 
-local function UpdateMinimapZoom()
+local function UpdateMiniMapsoom()
     if not WoW90 then
         local zoom = pins.Minimap:GetZoom()
-        if GetCVar("minimapZoom") == GetCVar("minimapInsideZoom") then
+        if GetCVar("miniMapsoom") == GetCVar("minimapInsideZoom") then
             pins.Minimap:SetZoom(zoom < 2 and zoom + 1 or zoom - 1)
         end
-        indoors = GetCVar("minimapZoom")+0 == pins.Minimap:GetZoom() and "outdoor" or "indoor"
+        indoors = GetCVar("miniMapsoom")+0 == pins.Minimap:GetZoom() and "outdoor" or "indoor"
         pins.Minimap:SetZoom(zoom)
     end
 end
@@ -469,7 +469,7 @@ WorldMapFrame:AddDataProvider(worldmapProvider)
 
 -- map event handling
 local function UpdateMinimap()
-    UpdateMinimapZoom()
+    UpdateMiniMapsoom()
     UpdateMinimapPins()
 end
 

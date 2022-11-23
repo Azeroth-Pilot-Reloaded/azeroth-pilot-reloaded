@@ -498,7 +498,7 @@ MapMigrationData = {
     [381] = { mapFile = "Darnassus", [0] = 89},
     [756] = { mapFile = "TheDeadmines", [1] = 291, [2] = 292},
     [884] = { mapFile = "KunLaiPassScenario", [0] = 452},
-    [540] = { mapFile = "IsleofConquest", [0] = 169},
+    [540] = { mapFile = "IsleofConQ", [0] = 169},
     [604] = { mapFile = "IcecrownCitadel", [1] = 186, [2] = 187, [3] = 188, [4] = 189, [5] = 190, [6] = 191, [7] = 192, [8] = 193},
     [757] = { mapFile = "GrimBatol", [1] = 293},
     [885] = { mapFile = "MogushanPalace", [1] = 453, [2] = 454, [3] = 455},

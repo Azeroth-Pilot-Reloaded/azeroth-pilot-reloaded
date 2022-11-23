@@ -5,7 +5,7 @@
 ## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.
 ## Author: Rycia, Deathmessinger, zyrrael, Neogeekmo
 
-## SavedVariables: APR1, APR2, APR3, APRQuestNames, APR_HoldZoneVar, APR_Transport, APR_Custom, APR_ZoneComplete, APR_TaxiTimers
+## SavedVariables: APR1, APR2, APR3, APRQNames, APR_HoldZoneVar, APR_Transport, APR_Custom, APR_ZoneComplete, APR_TaxiTimers
 lib\HereBeDragons\LibStub\LibStub.lua
 lib\HereBeDragons\CallbackHandler-1.0\CallbackHandler-1.0.xml
 lib\HereBeDragons\HereBeDragons-2.0.lua
@@ -25,11 +25,11 @@ locales\zhTW.lua
 Core.lua
 TransportDB.lua
 OptionsPanel.lua
-QuestList.lua
-QuestHandler.lua
+QList.lua
+QHandler.lua
 zones\Alliance.lua
 zones\Horde.lua
 zones\Neutral.lua
 Minimap.lua
-QuestTest.lua
+QTest.lua
 Transport.lua
