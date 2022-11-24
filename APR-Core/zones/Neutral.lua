@@ -1,7 +1,8 @@
 if (APR.Faction == "Neutral") then
-APR.QuestStepList = {
 --- The Wandering Isle
-	["378-WanderingIsle"] = {
+APR.QuestStepList ["378-WanderingIsle"] = {
+
+	
 		{
 			["PickUp"] = {
 				30027, -- [1]
@@ -2412,19 +2413,7 @@ APR.QuestStepList = {
 		{
 			["ZoneDoneSave"] = 1,
 		}, -- [2]
-	},
-
-}
-APR.QuestStepListListingStartAreas = {}
-APR.QuestStepListListingStartAreas["EasternKingdom"] = {
-	["378-WanderingIsle"] = "01-30 Pandaren Start",
-}
-APR.QuestStepListListingZone = {
-	["01-30 Pandaren Start"] = 378,
-}
-APR.QuestStepListListing = {}
-
-end
+	}
 APR.QuestStepList["672-Mardum"] = {
 		{
 			["PickUp"] = {
@@ -4291,3 +4280,17 @@ APR.QuestStepList["672-Mardum"] = {
 			["ZoneDoneSave"] = 1,
 		}, 
 	}
+
+APR.QuestStepListListingStartAreas = {}
+
+APR.QuestStepListListingZone = {
+	["01-30 Pandaren Start"] = 378,
+}
+
+APR.QuestStepListListing = {}
+APR.QuestStepListListing["EasternKingdom"] = {
+["378-WanderingIsle"] = "01-30 Pandaren Start",
+}
+
+
+end

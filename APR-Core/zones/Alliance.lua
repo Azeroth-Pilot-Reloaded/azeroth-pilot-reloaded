@@ -1,21 +1,6 @@
 if (APR.Faction == "Alliance") then
 
 APR.QuestStepListListingStartAreas = {}
-APR.QuestStepListListingStartAreas["Kalimdor"] = {}
-APR.QuestStepListListingStartAreas["EasternKingdom"] = {}
-if (APR.Race == "Dwarf") then
-	APR.QuestStepListListingStartAreas["EasternKingdom"]["A27-ColdridgeValleyDwarf"] = "01-10 Dwarf Start" 
-elseif (APR.Race == "Human") then
-	APR.QuestStepListListingStartAreas["EasternKingdom"]["A37-NorthshireHuman"] = "01-10 Human Start"
-elseif (APR.Race == "NightElf") then
-	APR.QuestStepListListingStartAreas["Kalimdor"]["A57-ShadowglenNightElf"] = "01-10 Night Elf Start"
-elseif (APR.Race == "Gnome") then
-	APR.QuestStepListListingStartAreas["EasternKingdom"]["A27-NewTinkertown"] = "01-10 Gnome Start"
-elseif (APR.Race == "Draenei") then
-	APR.QuestStepListListingStartAreas["Kalimdor"]["A97-AmmenVale"] = "01-10 Draenei Start"
-elseif (APR.Race == "Worgen") then
-	APR.QuestStepListListingStartAreas["EasternKingdom"]["A179-Gilneas"] = "01-10 Worgen Start"
-end
 
 APR.QuestStepListListingZone = {
 	["01-10 Dwarf Start"] = 27,
@@ -116,7 +101,6 @@ APR.QuestStepListListingZone = {
 }
 
 APR.QuestStepListListing = {}
-
 APR.QuestStepListListing["MISC 1"] = {
 	["A630-Azsuna"] = "Legion - Azsuna",
 	["A641-ValSharah"] = "Legion - Val'Sharah",
@@ -129,16 +113,15 @@ APR.QuestStepListListing["MISC 1"] = {
 }
 if (APR.Class[3] == 12) then
 APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
-end
-if (APR.Level < 2) then
+elseif (APR.Level < 2) then
 	APR.QuestStepListListing["MISC 1"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
+elseif (APR.Faction == "Neutral" and APR.race == 24 and APR.Level == 1) then
+	APR.QuestStepListListing["MISC 1"]["378-WanderingIsle"] = "01-30 Pandaren Start"
 end
-
 APR.QuestStepListListing["MISC 2"] = {
 
 
 }
-
 APR.QuestStepListListing["Extra"] = {
 	["A84-DesMephisto-Stormwind-War"] = "(1/8) 10-50 Stormwind",
 	["A577-DesMephisto-TanaanJungle"] = "(2/8) 10-50 Tanaan Jungle",
@@ -150,7 +133,6 @@ APR.QuestStepListListing["Extra"] = {
 	["A542-DesMephisto-SpiresOfArak"] = "(8/8) 10-50 Spires of Arak",
 
 }
-
 APR.QuestStepListListing["Shadowlands"] = {
 	["Shadowlands-StoryOnly-A"] = "DEV - AStoryMode Only (Not Enough XP)",
 	["84-IntroQline"] = "SL-IntroQline",
@@ -172,8 +154,6 @@ APR.QuestStepListListing["Shadowlands"] = {
 	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
 	
 }
-
-
 APR.QuestStepListListing["Kalimdor"] = {
 	["A97-AzuremystIsle"] = "01-10 Azuremyst Isle (Full)",
 	["A106-BloodmystIsle"] = "01-30 Bloodmyst Isle (Full)",
@@ -193,7 +173,11 @@ APR.QuestStepListListing["Kalimdor"] = {
 	["A57-Teldrassil"] = "01-30 Teldrassil (Full)",
 	
 }
-
+if (APR.Race == "NightElf") then
+	APR.QuestStepListListing["Kalimdor"]["A57-ShadowglenNightElf"] = "01-10 Night Elf Start"
+elseif (APR.Race == "Draenei") then
+	APR.QuestStepListListing["Kalimdor"]["A97-AmmenVale"] = "01-10 Draenei Start"
+end
 APR.QuestStepListListing["SpeedRun"] = {
 	["1648-Z0-TheMaw-Story"] = "Z-00-TheMaw-Story",
 	["1670-Z1-Oribos-Story"] = "Z-01-Oribos-Story",
@@ -229,9 +213,9 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["A542-DesMephisto-SpiresOfArak"] = "(8/8) 10-50 Spires of Arak",
 	["DF01A-84-Stormwind"] = "WIP - Dragonflight intro",
 	["672-Mardum"] = "01-30 Demon Hunter Start",
+	["378-WanderingIsle"] = "01-30 Pandaren Start",
 	["1409-Exile's Reach"] = "01-10 Exile's Reach",
 }
-
 APR.QuestStepListListing["EasternKingdom"] = {
 	["A27-Kharanos"] = "01-30 Dun Morogh (Full)",
 	["A48-LochModan"] = "10-30 Loch Modan (Full)",
@@ -251,9 +235,17 @@ APR.QuestStepListListing["EasternKingdom"] = {
 	["A32-SearingGorge"] = "25-30 Searing Gorge (Full)",
 	["A224-NorthernStranglethorn"] = "20-30 Northern Stranglethorn (Full)",
 	["A224-TheCapeofStranglethorn"] = "20-30 Cape of Stranglethorn (F)",
-	
-	
+		
 }
+if (APR.Race == "Dwarf") then
+	APR.QuestStepListListing["EasternKingdom"]["A27-ColdridgeValleyDwarf"] = "01-10 Dwarf Start" 
+elseif (APR.Race == "Human") then
+	APR.QuestStepListListing["EasternKingdom"]["A37-NorthshireHuman"] = "01-10 Human Start"
+elseif (APR.Race == "Gnome") then
+	APR.QuestStepListListing["EasternKingdom"]["A27-NewTinkertown"] = "01-10 Gnome Start"
+elseif (APR.Race == "Worgen") then
+	APR.QuestStepListListing["EasternKingdom"]["A179-Gilneas"] = "01-10 Worgen Start"
+end
 APR.QuestStepListListing["Dragonflight"] = {
 
 	["DF01A-84-Stormwind"] = "WIP - Dragonflight intro",
