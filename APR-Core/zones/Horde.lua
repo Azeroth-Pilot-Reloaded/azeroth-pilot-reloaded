@@ -218,6 +218,7 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["379-Kun-Lai Summit"] = "WIP-Kun-Lai Summit",
 	["650-Highmountain"] = "WIP-Highmountain",
 	["672-Mardum"] = "01-30 Demon Hunter Start",
+	["1409-Exile's Reach"] = "01-10 Exile's Reach",
 }
 
 APR.QuestStepListListing["EasternKingdom"] = {

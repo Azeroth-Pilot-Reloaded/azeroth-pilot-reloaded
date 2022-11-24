@@ -229,6 +229,7 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["A542-DesMephisto-SpiresOfArak"] = "(8/8) 10-50 Spires of Arak",
 	["DF01A-84-Stormwind"] = "WIP - Dragonflight intro",
 	["672-Mardum"] = "01-30 Demon Hunter Start",
+	["1409-Exile's Reach"] = "01-10 Exile's Reach",
 }
 
 APR.QuestStepListListing["EasternKingdom"] = {
