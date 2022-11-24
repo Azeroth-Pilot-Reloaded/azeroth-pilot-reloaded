@@ -4281,7 +4281,6 @@ APR.QuestStepList["672-Mardum"] = {
 		}, 
 	}
 
-
 APR.QuestStepListListingStartAreas = {}
 
 APR.QuestStepListListingZone = {
