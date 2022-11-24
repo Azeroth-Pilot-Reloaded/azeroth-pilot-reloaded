@@ -1340,7 +1340,7 @@ local function APR_PrintQStep()
 					end
 				end
 				if (steps and steps["Gossip"] and (APR.GossipOpen == 1) and APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 1 and not IsControlKeyDown()) then
-					C_GossipInfo.SelectOption(steps["Gossip"])
+					SelectGossipOption(steps["Gossip"])
 				end
 			end
 			if (Flagged == Total and Flagged > 0) then
@@ -1349,7 +1349,7 @@ local function APR_PrintQStep()
 			end
 			if (steps and steps["Gossip"] and (APR.GossipOpen == 1) and APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 1 and not IsControlKeyDown()) then
 				if (steps and steps["Gossip"] and steps["Gossip"] == 34398) then
-					C_GossipInfo.SelectOption(1)
+					SelectGossipOption(1)
 					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 					APR.BookingList["UpdateQuest"] = 1
 					APR.BookingList["PrintQStep"] = 1
@@ -3733,20 +3733,20 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				if (npc_id and ((tonumber(npc_id) == 141584) or (tonumber(npc_id) == 142063) or (tonumber(npc_id) == 45400) or (tonumber(npc_id) == 25809) or (tonumber(npc_id) == 87391))) then
 					local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 					if (steps and steps["Gossip"] and steps["Gossip"] == 27373) then
-						C_GossipInfo.SelectOption(1)
+						SelectGossipOption(1)
 						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 						APR.BookingList["PrintQStep"] = 1
 					end
 					return
 				end
 				if (steps and steps["Gossip"] and steps["Gossip"] == 34398) then
-					C_GossipInfo.SelectOption(1)
+					SelectGossipOption(1)
 					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 					APR.BookingList["UpdateQuest"] = 1
 					APR.BookingList["PrintQStep"] = 1
 				end
 				if (steps and steps["Gossip"] and steps["Gossip"] == 3433398) then
-					C_GossipInfo.SelectOption(2)
+					SelectGossipOption(2)
 					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 					APR.BookingList["UpdateQuest"] = 1
 					APR.BookingList["PrintQStep"] = 1
@@ -3777,43 +3777,43 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				APRGOSSIPCOUNT = APRGOSSIPCOUNT + 1
 				print(APRGOSSIPCOUNT)
 				if (APRGOSSIPCOUNT == 1) then
-					C_GossipInfo.SelectOption(1)
+					SelectGossipOption(1)
 				elseif (APRGOSSIPCOUNT == 2) then
 					if (APR.Race == "Gnome") then
-						C_GossipInfo.SelectOption(1)
+						SelectGossipOption(1)
 					elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-						C_GossipInfo.SelectOption(2)
+						SelectGossipOption(2)
 					elseif (APR.Race == "NightElf") then
-						C_GossipInfo.SelectOption(3)
+						SelectGossipOption(3)
 					elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-						C_GossipInfo.SelectOption(4)
+						SelectGossipOption(4)
 					end
 				elseif (APRGOSSIPCOUNT == 3) then
 					if (APR.Race == "Gnome") then
-						C_GossipInfo.SelectOption(3)
+						SelectGossipOption(3)
 					elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-						C_GossipInfo.SelectOption(4)
+						SelectGossipOption(4)
 					elseif (APR.Race == "NightElf") then
-						C_GossipInfo.SelectOption(2)
+						SelectGossipOption(2)
 					elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-						C_GossipInfo.SelectOption(1)
+						SelectGossipOption(1)
 					end
 				elseif (APRGOSSIPCOUNT == 4) then
 					if (APR.Race == "Gnome") then
-						C_GossipInfo.SelectOption(4)
+						SelectGossipOption(4)
 					elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-						C_GossipInfo.SelectOption(2)
+						SelectGossipOption(2)
 					elseif (APR.Race == "NightElf") then
-						C_GossipInfo.SelectOption(1)
+						SelectGossipOption(1)
 					elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-						C_GossipInfo.SelectOption(3)
+						SelectGossipOption(3)
 					end
 				elseif (APRGOSSIPCOUNT == 5) then
 					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 					APR.BookingList["PrintQStep"] = 1
 				end
 			elseif (steps and steps["Gossip"] and APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 1 and not IsControlKeyDown()) then
-				C_GossipInfo.SelectOption(steps["Gossip"])
+				SelectGossipOption(steps["Gossip"])
 				local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 				local steps
 				if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
@@ -3835,7 +3835,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				end
 			end
 		end
-		local arg1, arg2, arg3, arg4 = ...;
 		local ActiveQuests = C_GossipInfo.GetActiveQuests()
 		local ActiveQNr = C_GossipInfo.GetNumActiveQuests()
 		local CLi
