@@ -781,7 +781,6 @@ local function APR_PrintQStep()
 			end
 			return
 		elseif (steps["PickUp"]) then
-			print("Picked up")
 			StepP = "PickUp"
 		elseif (steps["WarMode"]) then
 			StepP = "WarMode"
@@ -1357,7 +1356,6 @@ local function APR_PrintQStep()
 				end
 			end
 		elseif (StepP == "PickUp") then
-			print(" StepP Picked up")
 			IdList = steps["PickUp"]
 			if (steps["PickDraenor"]) then
 				if not EncounterJournal then
@@ -2165,7 +2163,6 @@ function APR.CheckCRangeText()
 				return Derp2
 			end
 		elseif (steps and steps["PickUp"]) then
-			print("Picked up WAYPOINT")
 			local Derp2 = "["..L["WAYPOINT"].."] - "..L["ACCEPT_Q"]
 			return Derp2
 		elseif (steps and steps["Done"]) then
@@ -2388,7 +2385,6 @@ local function APR_QuestStepIds()
 		if (CurStep and APR.QuestStepList[APR.ActiveMap][CurStep]) then
 			local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 			if (steps["PickUp"]) then
-				print("Picked up APR_QuestStepIds")
 				return steps["PickUp"], "PickUp"
 			elseif (steps["Qpart"]) then
 				return steps["Qpart"], "Qpart"
@@ -2437,7 +2433,6 @@ local function APR_AddQuest(questID)
 	APR.ActiveQuests[questID] = "P"
 	local IdList, StepP = APR_QuestStepIds()
 	if (StepP == "PickUp") then
-		print("Picked up APR_AddQuest")
 		local NrLeft = 0
 		for APR_index,APR_value in pairs(IdList) do
 			if (not APRQuestNames[APR_value]) then
