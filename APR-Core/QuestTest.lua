@@ -27,41 +27,6 @@ local function GetPlayerMapPos(MapID, dx, dy)
     P:Subtract(R[1]);
     return (1/R[2].y)*P.y, (1/R[2].x)*P.x;
 end
-function APR.Testa()
-	APRHFiller2 = nil
-	APRHFiller2 = {}
-	APRHFiller2["LeaveQuests"] = {}
-	APRHFiller2["LeaveQuests"]["LeaveQuests"] = {}
-	APRHFiller2["LeaveQuests"]["LeaveQuests"]["LeaveQuests"] = {}
-	for APR_index,APR_value in pairs(APR.QuestStepList["A198-80-93"]) do
-		if (APR.QuestStepList["A198-80-93"][APR_index] and APR.QuestStepList["A198-80-93"][APR_index]["PickUp"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepList["A198-80-93"][APR_index]["PickUp"]) do
-				tinsert(APRHFiller2["LeaveQuests"]["LeaveQuests"]["LeaveQuests"], APR_value2)
-			end
-		end
-	end
-	for APR_index,APR_value in pairs(APR.QuestStepList["A371-80-93"]) do
-		if (APR.QuestStepList["A371-80-93"][APR_index] and APR.QuestStepList["A371-80-93"][APR_index]["PickUp"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepList["A371-80-93"][APR_index]["PickUp"]) do
-				tinsert(APRHFiller2["LeaveQuests"]["LeaveQuests"]["LeaveQuests"], APR_value2)
-			end
-		end
-	end
-	for APR_index,APR_value in pairs(APR.QuestStepList["A379-80-93"]) do
-		if (APR.QuestStepList["A379-80-93"][APR_index] and APR.QuestStepList["A379-80-93"][APR_index]["PickUp"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepList["A379-80-93"][APR_index]["PickUp"]) do
-				tinsert(APRHFiller2["LeaveQuests"]["LeaveQuests"]["LeaveQuests"], APR_value2)
-			end
-		end
-	end
-	for APR_index,APR_value in pairs(APR.QuestStepList["A388-80-93"]) do
-		if (APR.QuestStepList["A388-80-93"][APR_index] and APR.QuestStepList["A388-80-93"][APR_index]["PickUp"]) then
-			for APR_index2,APR_value2 in pairs(APR.QuestStepList["A388-80-93"][APR_index]["PickUp"]) do
-				tinsert(APRHFiller2["LeaveQuests"]["LeaveQuests"]["LeaveQuests"], APR_value2)
-			end
-		end
-	end
-end
 function APR.ZoneQuestOrderList()
 	if (APR1["Debug"]) then
 		print("Function: APR.ZoneQuestOrderList()")
