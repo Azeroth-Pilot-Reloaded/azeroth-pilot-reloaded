@@ -26,3 +26,13 @@ function TextWithStars(text, count, onlyLeft)
 
     return stars .. " " .. text .. " " .. stars;
 end
+
+function CheckRidingSkill() 
+    local mountSkillIDs = {90265, 34090, 33391, 33388}
+    for _, skill in pairs(mountSkillIDs) do
+       if(GetSpellBookItemInfo(GetSpellInfo(skill))) then
+           return true 
+       end
+    end
+    return false
+   end
