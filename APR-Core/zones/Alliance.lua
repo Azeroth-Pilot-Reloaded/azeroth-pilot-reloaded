@@ -87,6 +87,10 @@ APR.QuestStepListListingZone = {
 	["BFA 20-50 Dustvar Test"] = 896,
 	["DEV - AStoryMode Only (Not Enough XP)"] = 1670,
 	["WIP - Dragonflight intro"] = 84,
+	["WIP - WakingShores"] = 2022,
+	["WIP - Ohn'Ahran"] = 2023,
+	["WIP - Azure Span"] = 2024,
+	["WIP - Valdrakken"] = 2112,
 }
 
 APR.QuestStepListListing = {}
@@ -185,7 +189,11 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["1525-Z14-Revendreth-Story"] = "Z-14-Revendreth-Story",
 	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
 	["1533-Bastion-NonStoryMode-1"] = "Test1",
-	
+	["DF01A-84-Stormwind"] = "WIP - Dragonflight intro",
+	["DF03A-2023-WakingShores"] = "WIP - WakingShores",
+	["2023-Ohn'Ahran"] = "WIP - Ohn'Ahran",
+	["2024-Azure Span"] = "WIP - Azure Span",
+	["2112-Valdrakken"] = "WIP - Valdrakken",
 }
 APR.QuestStepListListing["EasternKingdom"] = {
 	["A27-Kharanos"] = "01-30 Dun Morogh (Full)",
@@ -220,6 +228,10 @@ end
 APR.QuestStepListListing["Dragonflight"] = {
 
 	["DF01A-84-Stormwind"] = "WIP - Dragonflight intro",
+	["DF03A-2022-WakingShores"] = "WIP - WakingShores",
+	["2023-Ohn'Ahran"] = "WIP - Ohn'Ahran",
+	["2024-Azure Span"] = "WIP - Azure Span",
+	["2112-Valdrakken"] = "WIP - Valdrakken",
 	
 }
 
@@ -278,4 +290,11 @@ APR["Kalimdor"][71] = 1
 APR["Kalimdor"][78] = 1
 APR["Kalimdor"][81] = 1
 
+
+APR["Dragonflight"] = {}
+APR["Dragonflight"][2109] = 1
+APR["Dragonflight"][2022] = 1
+APR["Dragonflight"][2023] = 1
+APR["Dragonflight"][2024] = 1
+APR["Dragonflight"][2112] = 1
 end

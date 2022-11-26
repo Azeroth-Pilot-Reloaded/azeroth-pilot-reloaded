@@ -54,7 +54,11 @@ APR.QuestStepListListingZone = {
 	["WIP - Western Plaguelands"] = 22,
 	["DEV - HStoryMode Only (Not Enough XP)"] = 1670,
 	["WIP - Dragonflight intro"] = 85,
+	["WIP - Dragonflight intro2"] = 1,
 	["WIP - WakingShores"] = 2022,
+	["WIP - Ohn'Ahran"] = 2023,
+	["WIP - Azure Span"] = 2024,
+	["WIP - Valdrakken"] = 2112,
 	["WIP-The Jade Forest"] = 371,
 	["WIP-Kun-Lai Summit"] = 379,
 	["WIP-Highmountain"] = 650,
@@ -163,6 +167,12 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["1543-Z13-TheMaw-Story"] = "Z-13-The Maw-Story",
 	["1525-Z14-Revendreth-Story"] = "Z-14-Revendreth-Story",
 	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
+	["DF01H-85-Orgrimmar"] = "WIP - Dragonflight intro",
+	["DF02H-1-Durotar"] = "WIP - Dragonflight intro2",
+	["DF03H-2022-WakingShores"] = "WIP - WakingShores",
+	["2023-Ohn'Ahran"] = "WIP - Ohn'Ahran",
+	["2024-Azure Span"] = "WIP - Azure Span",
+	["2112-Valdrakken"] = "WIP - Valdrakken",
 	
 }
 APR.QuestStepListListing["EasternKingdom"] = {
@@ -178,7 +188,11 @@ elseif (APR.Race == "BloodElf") then
 end
 APR.QuestStepListListing["Dragonflight"] = {
 	["DF01H-85-Orgrimmar"] = "WIP - Dragonflight intro",
-	["DF02H-2022-WakingShores"] = "WIP - WakingShores",
+	["DF02H-1-Durotar"] = "WIP - Dragonflight intro2",
+	["DF03H-2022-WakingShores"] = "WIP - WakingShores",
+	["2023-Ohn'Ahran"] = "WIP - Ohn'Ahran",
+	["2024-Azure Span"] = "WIP - Azure Span",
+	["2112-Valdrakken"] = "WIP - Valdrakken",
 }
 if (APR.Race == "Dracthyr") then
 	APR.QuestStepListListing["Dragonflight"]["2109-Dragonstart"] = "01-10 Dracthyr Start"
@@ -217,5 +231,8 @@ APR["Legion"][641] = 1
 APR["Dragonflight"] = {}
 APR["Dragonflight"][2109] = 1
 APR["Dragonflight"][2022] = 1
+APR["Dragonflight"][2023] = 1
+APR["Dragonflight"][2024] = 1
+APR["Dragonflight"][2112] = 1
 
 end
