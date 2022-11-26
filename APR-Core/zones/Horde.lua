@@ -10,22 +10,8 @@ APR.QuestStepListListingZone = {
 	["01-10 Blood Elf Start"] = 94,
 	["01-30 Goblin Start (Kezan)"] = 194,
 	["01-30 Goblin Start (Lost Isles)"] = 174,
-	["01-30 Death Knight Start"] = 23,
 	["01-30 Demon Hunter Start"] = 672,
-	["50 The Maw Intro"] = 1648,
-	["50-52 Bastion (Full)"] = 1533,
-	["56-57 Ardenweald (Full)"] = 1565,
-	["57 Oribos (Ardenw-Revend)"] = 1670,
-	["57-60 Revendreth (Full)"] = 1525,
-	["52-54 Maldraxxus (Full)"] = 1536,
-	["52 Oribos (Bastion-Maldraxxus)"] = 1670,
-	["56 Oribos (Maldrax-Ardenw)"] = 1670,
 	["01-10 Exile's Reach"] = 1409,
-	["50-50 Oribos (Start-Bastion)"] = 1670,
-	["54 Oribos (Maldraxxus-Maw)"] = 1670,
-	["54-55 The Maw"] = 1543,
-	["55 Oribos (Maw-Maldraxxus)"] = 1670,
-	["55-55 Maldraxxus"] = 1536,
 	["01-30 Durotar (Full)"] = 1,
 	["10-30 Northern Barrens"] = 10,
 	["10-30 Southern Barrens"] = 199,
@@ -72,6 +58,7 @@ APR.QuestStepListListingZone = {
 	["WIP-The Jade Forest"] = 371,
 	["WIP-Kun-Lai Summit"] = 379,
 	["WIP-Highmountain"] = 650,
+	["01-10 Dracthyr Start"] = 2109
 }
 
 APR.QuestStepListListing = {}
@@ -176,35 +163,7 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["1543-Z13-TheMaw-Story"] = "Z-13-The Maw-Story",
 	["1525-Z14-Revendreth-Story"] = "Z-14-Revendreth-Story",
 	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
-	["1533-Bastion-NonStoryMode-1"] = "Test1",
-	["630-Azsuna"] = "Legion - Azsuna",
-	["641-ValSharah"] = "Legion - Val'Sharah",
-	["634-Stormheim"] = "Legion - Stormheim",
-	["1-Orgrimmar"] = "10-10 BFA Intro",
-	["862-Zuldazar"] = "10-10 BFA intro 2",
-	["862-Zuldazar-1"] = "10-50 Zuldazar",
-	["863-Nazmir"] = "20-50 Nazmir",
-	["862-Zuldazar-2"] = "30-30 Naz-end Vol-begin",
-	["864-Vol'dun"] = "30-50 Vol'dun",
-	["85-DesMephisto-Orgrimmar-p1"] = "(1/7) 10-50 Orgrimmar",
-	["577-DesMephisto-TanaanJungle"] = "(2/7) 10-50 Tanaan Jungle",
-	["525-DesMephisto-FrostfireRidge-p1"] = "(3/7) 10-50 Frostfire Ridge",
-	["543-DesMephisto-Gorgrond-p1"] = "(4/7) 10-50 Gorgrond",
-	["535-DesMephisto-Talador-p1"] = "(5/7) 10-50 Talador",
-	["542-DesMephisto-SpiresOfArak"] = "(6/7) 10-50 Spires of Arak",
-	["550-DesMephisto-Nagrand"] = "(7/7) 10-50 Nagrand",
-	["DF01H-85-Orgrimmar"] = "WIP - Dragonflight intro",
-	["DF02H-2022-WakingShores"] = "WIP - WakingShores",
-	["371-The Jade Forest"] = "WIP-The Jade Forest",
-	["379-Kun-Lai Summit"] = "WIP-Kun-Lai Summit",
-	["650-Highmountain"] = "WIP-Highmountain",
-	["672-Mardum"] = "01-30 Demon Hunter Start",
-	["1409-Exile's Reach"] = "01-10 Exile's Reach",
-	["378-WanderingIsle"] = "01-30 Pandaren Start",
-	["194-Kezan"] = "01-30 Goblin Start (Kezan)",
-	["174-LostIsles"] = "01-30 Goblin Start (Lost Isles)",
-	["1-EchoIslesTrollWar"] = "01-10 Troll Start",
-	["378-WanderingIsle"] = "01-30 Pandaren Start"
+	
 }
 APR.QuestStepListListing["EasternKingdom"] = {
 	["DEV-Western Plaguelands"] = "WIP - Western Plaguelands",
@@ -221,7 +180,9 @@ APR.QuestStepListListing["Dragonflight"] = {
 	["DF01H-85-Orgrimmar"] = "WIP - Dragonflight intro",
 	["DF02H-2022-WakingShores"] = "WIP - WakingShores",
 }
-
+if (APR.Race == "Dracthyr") then
+	APR.QuestStepListListing["Dragonflight"]["2109-Dragonstart"] = "01-10 Dracthyr Start"
+end
 APR["BattleForAzeroth"] = {}
 APR["BattleForAzeroth"][85] = 1
 APR["BattleForAzeroth"][862] = 1
@@ -253,5 +214,8 @@ APR["Legion"][630] = 1
 APR["Legion"][634] = 1
 APR["Legion"][641] = 1
 
+APR["Dragonflight"] = {}
+APR["Dragonflight"][2109] = 1
+APR["Dragonflight"][2022] = 1
 
 end

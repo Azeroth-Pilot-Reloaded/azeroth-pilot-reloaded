@@ -10,7 +10,6 @@ APR.QuestStepListListingZone = {
 	["01-10 Night Elf Start"] = 57,
 	["01-10 Worgen Start"] = 179,
 	["01-30 Demon Hunter Start"] = 672,
-	["01-30 Death Knight Start"] = 23,
 	["01-30 Dun Morogh (Full)"] = 27,
 	["01-30 Elwynn Forest (Full)"] = 37,
 	["10-30 Loch Modan (Full)"] = 48,
@@ -45,11 +44,6 @@ APR.QuestStepListListingZone = {
 	["25-30 Searing Gorge (Full)"] = 32,
 	["20-30 Northern Stranglethorn (Full)"] = 224,
 	["20-30 Cape of Stranglethorn (F)"] = 224,
-	["57-60 Revendreth (Full)"] = 1525,
-	["50-52 Bastion (Full)"] = 1533,
-	["56-57 Ardenweald (Full)"] = 1565,
-	["52-54 Maldraxxus (Full)"] = 1536,
-	["52 Oribos (Bastion-Maldraxxus)"] = 1670,
 	["01-10 Exile's Reach"] = 1409,
 	["50 The Maw Intro"] = 1648,
 	["50-50 Oribos (Start-Bastion)"] = 1670,
@@ -84,19 +78,14 @@ APR.QuestStepListListingZone = {
 	["(6/8) 10-50 Shadowmoon"] = 539,
 	["(7/8) 10-50 Talador"] = 535,
 	["(8/8) 10-50 Spires of Arak"] = 542,
-	["Test1"] = 1533,
-
 	["Legion - Azsuna"] = 630,
 	["Legion - Val'Sharah"] = 641,
 	["Legion - Stormheim"] = 634,
-	
 	["BFA 10-10 INTRO Test"] = 84,
 	["BFA 10-50 Tiragarde Sound Test"] = 895,
 	["BFA 30-50 Stormsong Valley Test"] = 942,
 	["BFA 20-50 Dustvar Test"] = 896,
-	
 	["DEV - AStoryMode Only (Not Enough XP)"] = 1670,
-	
 	["WIP - Dragonflight intro"] = 84,
 }
 
@@ -196,25 +185,7 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["1525-Z14-Revendreth-Story"] = "Z-14-Revendreth-Story",
 	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
 	["1533-Bastion-NonStoryMode-1"] = "Test1",
-	["A630-Azsuna"] = "Legion - Azsuna",
-	["A641-ValSharah"] = "Legion - Val'Sharah",
-	["A634-Stormheim"] = "Legion - Stormheim",
-	["A84-Stormwind"] = "BFA 10-10 INTRO Test",
-	["A895-Tiragarde Sound"] = "BFA 10-50 Tiragarde Sound Test",
-	["A942-Stormsong Valley"] = "BFA 30-50 Stormsong Valley Test",
-	["A896-Dustvar"] = "BFA 20-50 Dustvar Test",
-	["A84-DesMephisto-Stormwind-War"] = "(1/8) 10-50 Stormwind",
-	["A577-DesMephisto-TanaanJungle"] = "(2/8) 10-50 Tanaan Jungle",
-	["A539-DesMephisto-Shadowmoon1"] = "(3/8) 10-50 Shadowmoon",
-	["A543-DesMephisto-Gorgrond"] = "(4/8) 10-50 Gorgrond",
-	["A535-DesMephisto-Talador"] = "(5/8) 10-50 Talador",
-	["A539-DesMephisto-Shadowmoon2"] = "(6/8) 10-50 Shadowmoon",
-	["A535-DesMephisto-Talador2"] = "(7/8) 10-50 Talador",
-	["A542-DesMephisto-SpiresOfArak"] = "(8/8) 10-50 Spires of Arak",
-	["DF01A-84-Stormwind"] = "WIP - Dragonflight intro",
-	["672-Mardum"] = "01-30 Demon Hunter Start",
-	["378-WanderingIsle"] = "01-30 Pandaren Start",
-	["1409-Exile's Reach"] = "01-10 Exile's Reach",
+	
 }
 APR.QuestStepListListing["EasternKingdom"] = {
 	["A27-Kharanos"] = "01-30 Dun Morogh (Full)",
