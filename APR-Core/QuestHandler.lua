@@ -739,7 +739,7 @@ local function APR_PrintQStep()
 		return
 	end
 
-	if (APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.ProgressText and APR.ProgressShown == 1) then
+	if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.ProgressText and APR.ProgressShown == 1) then
 		APR.QuestList.QuestFrames["MyProgress"]:Show()
 		APR.QuestList.QuestFrames["MyProgressFS"]:SetText(APR.ProgressText)
 	else
