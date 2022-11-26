@@ -635,6 +635,30 @@ function APR.FP.GetCustomZone()
 					return APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]], APR_index2
 				end
 			end
+			for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Extra"]) do
+				if (APR_Custom[APR.Name.."-"..APR.Realm][CLi] == APR_value2) then
+					APR.ProgressShown = 1
+					return APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]], APR_index2
+				end
+			end
+			for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["MISC 1"]) do
+				if (APR_Custom[APR.Name.."-"..APR.Realm][CLi] == APR_value2) then
+					APR.ProgressShown = 1
+					return APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]], APR_index2
+				end
+			end
+			for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["MISC 2"]) do
+				if (APR_Custom[APR.Name.."-"..APR.Realm][CLi] == APR_value2) then
+					APR.ProgressShown = 1
+					return APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]], APR_index2
+				end
+			end
+			for APR_index2,APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Dragonflight"]) do
+				if (APR_Custom[APR.Name.."-"..APR.Realm][CLi] == APR_value2) then
+					APR.ProgressShown = 1
+					return APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]], APR_index2
+				end
+			end
 		end
 	end
 	APR.ProgressText = nil

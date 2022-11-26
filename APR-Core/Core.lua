@@ -979,7 +979,7 @@ APR.RoutePlan.FG1:Hide()
 			APR.RoutePlan.isMoving = false;
 		end
 	end)
-	APR.RoutePlan.FG1.MISC1T["FS"] = APR.RoutePlan.FG1.MISC1T:CreateFontString("APR.RoutePlanExtraTitle","ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1.MISC1T["FS"] = APR.RoutePlan.FG1.MISC1T:CreateFontString("APR.RoutePlanMISC1Title","ARTWORK", "ChatFontNormal")
 	APR.RoutePlan.FG1.MISC1T["FS"]:SetParent(APR.RoutePlan.FG1.MISC1T)
 	APR.RoutePlan.FG1.MISC1T["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.MISC1T,"TOP",0,0)
 	APR.RoutePlan.FG1.MISC1T["FS"]:SetWidth(165)
@@ -1062,7 +1062,7 @@ APR.RoutePlan.FG1:Hide()
 			APR.RoutePlan.isMoving = false;
 		end
 	end)
-	APR.RoutePlan.FG1.MISC2T["FS"] = APR.RoutePlan.FG1.MISC2T:CreateFontString("APR.RoutePlanExtraTitle","ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1.MISC2T["FS"] = APR.RoutePlan.FG1.MISC2T:CreateFontString("APR.RoutePlanMISC2Title","ARTWORK", "ChatFontNormal")
 	APR.RoutePlan.FG1.MISC2T["FS"]:SetParent(APR.RoutePlan.FG1.MISC2T)
 	APR.RoutePlan.FG1.MISC2T["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.MISC2T,"TOP",0,0)
 	APR.RoutePlan.FG1.MISC2T["FS"]:SetWidth(165)
@@ -1632,7 +1632,7 @@ local zenr = APR.NumbRoutePlan("MISC 2")
 
 	local zenr = APR.NumbRoutePlan("Dragonflight")
 		for CLi = 1, zenr do
-			APR.RoutePlan.FG1["DF3"..CLi] = CreateFrame("frame", "APR.RoutePlanKalimdor3"..CLi, APR.RoutePlan.FG1)
+			APR.RoutePlan.FG1["DF3"..CLi] = CreateFrame("frame", "APR.RoutePlanDragonflight3"..CLi, APR.RoutePlan.FG1)
 			APR.RoutePlan.FG1["DF3"..CLi]:SetWidth(225)
 			APR.RoutePlan.FG1["DF3"..CLi]:SetHeight(20)
 			APR.RoutePlan.FG1["DF3"..CLi]:SetMovable(true)
@@ -2620,7 +2620,6 @@ function APR.RoutePlanCheckPos()
 			APR.RoutePlan.FG1["KAL3"..CLi]:Hide()
 		end
 	end
-
 	local zenr = APR.NumbRoutePlan("Shadowlands")
 	for CLi = 1, zenr do
 		APR.RoutePlan.FG1["SL3"..CLi]:ClearAllPoints()
