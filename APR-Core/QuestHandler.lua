@@ -993,7 +993,7 @@ local function APR_PrintQStep()
 				APR.BookingList["PrintQStep"] = 1
 			end
 		end
-
+		-- check if you have the lvl and the skill in your spell book
 		function DisplayRiding(text)
 			if(APR1[APR.Realm][APR.Name]["hideRidingSkill"] == 0) then
 				LineNr = LineNr + 1
@@ -1011,7 +1011,6 @@ local function APR_PrintQStep()
 		if(not GetSpellBookItemInfo(GetSpellInfo(90265))) then
 			if (APR.Level >= 40) then
 				DisplayRiding(L["YOU_CAN_LEARN"].." "..L["MASTER_RIDING"])
-
 			elseif (APR.Level >= 30 and not GetSpellBookItemInfo(GetSpellInfo(34090))) then
 				local ridingText
 				if (APR.Faction == "Alliance" and APR.ActiveMap and APR.ActiveMap == "A543-DesMephisto-Gorgrond") then
@@ -1022,9 +1021,9 @@ local function APR_PrintQStep()
 					ridingText = L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING"]
 				end
 				DisplayRiding(ridingText)
-			elseif (APR.Level >= 20 and not GetSpellBookItemInfo(GetSpellInfo(33391))) then
+			elseif (APR.Level >= 20 and APR.Level < 30 and not GetSpellBookItemInfo(GetSpellInfo(33391))) then
 				DisplayRiding(L["YOU_CAN_LEARN"].." "..L["JOURNEYMAN_RIDING"])
-			elseif (APR.Level >= 10 and not GetSpellBookItemInfo(GetSpellInfo(33388))) then
+			elseif (APR.Level >= 10 and APR.Level < 20 and not GetSpellBookItemInfo(GetSpellInfo(33388))) then
 				DisplayRiding(L["YOU_CAN_LEARN"].." "..L["APPRENTICE_RIDING"])
 			end
 		end
@@ -1475,7 +1474,7 @@ local function APR_PrintQStep()
 			end
 		elseif (StepP == "TrainRiding") then
 			IdList = steps["PahonixMadeMe"]
-			if (C_QuestLog.IsQuestFlaggedCompleted(IdList) or (GetSpellBookItemInfo(GetSpellInfo(steps["SpellInTab"])))) then
+			if (C_QuestLog.IsQuestFlaggedCompleted(IdList) or CheckRidingSkill()) then
 				APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 				APR.BookingList["UpdateQuest"] = 1
 				APR.BookingList["PrintQStep"] = 1
