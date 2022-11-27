@@ -8,3 +8,5 @@
 
 ## RequiredDeps: APR-Core
 Dragonflight.lua
+Dragonflight_Alliance.lua
+Dragonflight_horde.lua
