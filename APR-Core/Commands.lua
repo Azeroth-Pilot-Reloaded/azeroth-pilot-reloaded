@@ -42,7 +42,7 @@ function APR_SlashCmd(APR_index)
 		print("/apr hideriding, hr")
 		print("/apr discord, d")
 		print(" ")
-		print("Need help ? " ..DISCORD)
+		print(L["NEED_HELP"].." "..DISCORD)
 	else
 		APR.SettingsOpen = 1
 		APR.OptionsFrame.MainFrame:Show()
