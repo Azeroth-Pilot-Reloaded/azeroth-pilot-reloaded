@@ -86,7 +86,11 @@ APR.QuestStepListListingZone = {
 	["BFA 30-50 Stormsong Valley Test"] = 942,
 	["BFA 20-50 Dustvar Test"] = 896,
 	["DEV - AStoryMode Only (Not Enough XP)"] = 1670,
-	["WIP - Dragonflight intro"] = 84,
+	["DF01 - Dragonflight intro"] = 84,
+	["DF03 - Waking Shores"] = 2022,
+	["DF04 - Ohn'Ahran"] = 2023,
+	["DF05 - Azure Span"] = 2024,
+	["DF06 - Valdrakken"] = 2025,
 }
 
 APR.QuestStepListListing = {}
@@ -184,8 +188,6 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["1543-Z13-TheMaw-Story"] = "Z-13-The Maw-Story",
 	["1525-Z14-Revendreth-Story"] = "Z-14-Revendreth-Story",
 	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
-	["1533-Bastion-NonStoryMode-1"] = "Test1",
-	
 }
 APR.QuestStepListListing["EasternKingdom"] = {
 	["A27-Kharanos"] = "01-30 Dun Morogh (Full)",
@@ -219,7 +221,11 @@ elseif (APR.Race == "Worgen") then
 end
 APR.QuestStepListListing["Dragonflight"] = {
 
-	["DF01A-84-Stormwind"] = "WIP - Dragonflight intro",
+	["DF01A-84-Stormwind"] = "DF01 - Dragonflight intro",
+	["DF03A-2022-WakingShores"] = "DF03 - Waking Shores",
+	["DF05-2023-OhnahranPlains"] = "DF04 - Ohn'Ahran",
+	["DF05-2024-AzureSpan"] = "DF05 - Azure Span",
+	["DF06-2025-Valdrakken"] = "DF06 - Valdrakken",
 	
 }
 
@@ -278,4 +284,11 @@ APR["Kalimdor"][71] = 1
 APR["Kalimdor"][78] = 1
 APR["Kalimdor"][81] = 1
 
+
+APR["Dragonflight"] = {}
+APR["Dragonflight"][2109] = 1
+APR["Dragonflight"][2022] = 1
+APR["Dragonflight"][2023] = 1
+APR["Dragonflight"][2024] = 1
+APR["Dragonflight"][2025] = 1
 end

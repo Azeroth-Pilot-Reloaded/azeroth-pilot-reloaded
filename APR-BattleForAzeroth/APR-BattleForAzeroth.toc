@@ -8,4 +8,4 @@
 
 ## RequiredDeps: APR-Core
 BattleForAzeroth_Horde.lua
-BattleForAzeroth_Aliance.lua
+BattleForAzeroth_Alliance.lua
