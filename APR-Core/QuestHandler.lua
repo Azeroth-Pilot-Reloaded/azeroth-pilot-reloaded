@@ -842,6 +842,14 @@ local function APR_PrintQStep()
 			local zeMApz
 			if (APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]) then
 				zeMApz = APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]
+			elseif (APR.QuestStepListListing["Extra"][APR.ActiveMap]) then
+				zeMApz = APR.QuestStepListListing["Extra"][APR.ActiveMap]
+			elseif (APR.QuestStepListListing["MISC 1"][APR.ActiveMap]) then
+				zeMApz = APR.QuestStepListListing["MISC 1"][APR.ActiveMap]
+			elseif (APR.QuestStepListListing["MISC 2"][APR.ActiveMap]) then
+				zeMApz = APR.QuestStepListListing["MISC 2"][APR.ActiveMap]
+			elseif (APR.QuestStepListListing["Dragonflight"][APR.ActiveMap]) then
+				zeMApz = APR.QuestStepListListing["Dragonflight"][APR.ActiveMap]
 			elseif (APR.QuestStepListListing["Kalimdor"][APR.ActiveMap]) then
 				zeMApz = APR.QuestStepListListing["Kalimdor"][APR.ActiveMap]
 			elseif (APR.QuestStepListListing["SpeedRun"][APR.ActiveMap]) then
@@ -852,8 +860,6 @@ local function APR_PrintQStep()
 				zeMApz = APR.QuestStepListListingStartAreas["EasternKingdom"][APR.ActiveMap]
 			elseif (APR.QuestStepListListingStartAreas["Kalimdor"] and APR.QuestStepListListingStartAreas["Kalimdor"][APR.ActiveMap]) then
 				zeMApz = APR.QuestStepListListingStartAreas["Kalimdor"][APR.ActiveMap]
-			elseif (APR.QuestStepListListing["Extra"][APR.ActiveMap]) then
-				zeMApz = APR.QuestStepListListing["Extra"][APR.ActiveMap]
 			elseif (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][APR.ActiveMap]) then
 				zeMApz = APR_Custom[APR.Name.."-"..APR.Realm][APR.ActiveMap]
 			end
