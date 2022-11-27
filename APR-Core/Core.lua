@@ -88,7 +88,6 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/8) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(8/8) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - AStoryMode Only (Not Enough XP)")
-
 	elseif (ChoiceZ == 1 and APR.Level < 60 and APR.Level > 9 and APR.Faction == "Alliance") then
 		autoPatchStartInsertRoute()
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/8) 10-50 Stormwind")
@@ -100,7 +99,13 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/8) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(8/8) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - AStoryMode Only (Not Enough XP)")
-
+	elseif (ChoiceZ == 1 and APR.Level < 70 and APR.Level >= 60 and APR.Faction == "Alliance") then
+		autoPatchStartInsertRoute()
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF01 - Dragonflight intro")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF03 - Waking Shores")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF04 - Ohn'Ahran")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF05 - Azure Span")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF06 - Valdrakken")
 	elseif (ChoiceZ == 1 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728) and APR.Faction == "Horde") then
 		autoPatchStartInsertRoute()
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
@@ -112,7 +117,6 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/7) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/7) 10-50 Nagrand")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - HStoryMode Only (Not Enough XP)")
-
 	elseif (ChoiceZ == 1 and APR.Level < 60 and APR.Level > 9 and APR.Faction == "Horde") then
 		autoPatchStartInsertRoute()
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/7) 10-50 Orgrimmar")
@@ -123,7 +127,14 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/7) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/7) 10-50 Nagrand")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - HStoryMode Only (Not Enough XP)")
-
+	elseif (ChoiceZ == 1 and APR.Level < 70 and APR.Level >= 60 and APR.Faction == "Horde") then
+		autoPatchStartInsertRoute()
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF01 - Dragonflight intro")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF02 - Dragonflight intro 2")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF03 - Waking Shores")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF04 - Ohn'Ahran")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF05 - Azure Span")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF06 - Valdrakken")
 	elseif (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727) then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
