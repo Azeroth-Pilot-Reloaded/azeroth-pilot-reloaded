@@ -6,6 +6,7 @@
 
 local app = select(2, ...);
 local L = app.L;
+DISCORD = "https://discord.gg/YgcdybKdWX"
 APR = {}
 APR.Name = UnitName("player")
 APR.Realm = string.gsub(GetRealmName(), " ", "")
