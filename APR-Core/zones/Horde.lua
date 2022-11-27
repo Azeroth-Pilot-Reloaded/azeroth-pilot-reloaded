@@ -166,14 +166,7 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["1525-Z12-Revendreth-Story"] = "Z-12-Revendreth-Story",
 	["1543-Z13-TheMaw-Story"] = "Z-13-The Maw-Story",
 	["1525-Z14-Revendreth-Story"] = "Z-14-Revendreth-Story",
-	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
-	["DF01H-85-Orgrimmar"] = "DF01 - Dragonflight intro",
-	["DF02H-1-Durotar"] = "DF02 - Dragonflight intro 2",
-	["DF04H-2022-WakingShores"] = "DF03 - Waking Shores",
-	["DF05-2023-OhnahranPlains"] = "DF04 - Ohn'Ahran",
-	["DF05-2024-AzureSpan"] = "DF05 - Azure Span",
-	["DF06-2025-Valdrakken"] = "DF06 - Valdrakken",
-	
+	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story"
 }
 APR.QuestStepListListing["EasternKingdom"] = {
 	["DEV-Western Plaguelands"] = "WIP - Western Plaguelands",

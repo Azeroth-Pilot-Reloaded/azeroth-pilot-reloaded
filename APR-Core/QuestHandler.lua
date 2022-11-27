@@ -270,7 +270,7 @@ function APR:MoveIcons()
 		end
 		local px, py = GetPlayerMapPos(C_Map.GetBestMapForUnit('player'), APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["y"],APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["x"])
 		local CLi, CLi2
-		if (not APR.QuestStepList[APR.ActiveMap][CurStep+1]) then
+		if (not APR.QuestStepList[APR.ActiveMap][CurStep+1] or APR.QuestStepList[APR.ActiveMap][CurStep+1]["ZoneDoneSave"] ) then
 			for CLi = 1, 20 do
 				APR.HBDP:RemoveMinimapIcon("APR", APR["Icons"][CLi])
 			end
@@ -474,7 +474,7 @@ function APR:MoveMapIcons()
 		end
 		local px, py = GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["y"],APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["x"])
 		local CLi, CLi2
-		if (not APR.QuestStepList[APR.ActiveMap][CurStep+1]) then
+		if (not APR.QuestStepList[APR.ActiveMap][CurStep+1] or APR.QuestStepList[APR.ActiveMap][CurStep+1]["ZoneDoneSave"]) then
 			for CLi = 1, 20 do
 				APR.HBDP:RemoveWorldMapIcon("APRMap", APR["MapIcons"][CLi])
 			end

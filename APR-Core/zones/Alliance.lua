@@ -188,12 +188,6 @@ APR.QuestStepListListing["SpeedRun"] = {
 	["1543-Z13-TheMaw-Story"] = "Z-13-The Maw-Story",
 	["1525-Z14-Revendreth-Story"] = "Z-14-Revendreth-Story",
 	["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
-	["1533-Bastion-NonStoryMode-1"] = "Test1",
-	["DF01A-84-Stormwind"] = "DF01 - Dragonflight intro",
-	["DF03A-2023-WakingShores"] = "DF03 - Waking Shores",
-	["DF05-2023-OhnahranPlains"] = "DF04 - Ohn'Ahran",
-	["DF05-2024-AzureSpan"] = "DF05 - Azure Span",
-	["DF06-2025-Valdrakken"] = "DF06 - Valdrakken",
 }
 APR.QuestStepListListing["EasternKingdom"] = {
 	["A27-Kharanos"] = "01-30 Dun Morogh (Full)",
