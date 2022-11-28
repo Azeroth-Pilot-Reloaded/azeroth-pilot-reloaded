@@ -187,7 +187,7 @@ APR.QuestStepListListing["Dragonflight"] = {
 	["DF03N-2022-WakingShores"] = "DF04 - Waking Shores - Neutral",
 	["DF04-2023-OhnahranPlains"] = "DF05 - Ohn'Ahran Plains",
 	["DF05-2024-AzureSpan"] = "DF06 - Azure Span",
-	["DF06-2025-Thaldraszus"] = "DF07 - Thaldraszus",
+	["DF06H-2025-Thaldraszus"] = "DF07 - Thaldraszus",
 }
 if (APR.Race == "Dracthyr") then
 	APR.QuestStepListListing["Dragonflight"]["2109-Dragonstart"] = "01-10 Dracthyr Start"
