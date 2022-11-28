@@ -14,7 +14,6 @@ local Delaytime = 0
 local APRGOSSIPCOUNT = 0
 local QuestSpecial57710 = 0
 local Quest2Special57710 = 0
-APR.GossipOpen = 0
 APR.BookingList = {}
 APR.HBDP = HBDP
 APR.HBD = HBD
@@ -816,7 +815,7 @@ local function APR_PrintQStep()
 			StepP = "UseGarrisonHS"
 		elseif (steps["ZoneDone"]) then
 			StepP = "ZoneDone"
-		elseif (steps["PahonixMadeMe"]) then
+		elseif (steps["TrainRidingSkill"]) then
 			StepP = "TrainRiding"
 		end
 		if (steps["BreadCrum"]) then
@@ -1015,9 +1014,9 @@ local function APR_PrintQStep()
 			end
 		end
 		if(not GetSpellBookItemInfo(GetSpellInfo(90265))) then
-			if (APR.Level >= 40) then
+			if (APR.Level >= 40 and APR.Level < 60) then
 				DisplayRiding(L["YOU_CAN_LEARN"].." "..L["MASTER_RIDING"])
-			elseif (APR.Level >= 30 and not GetSpellBookItemInfo(GetSpellInfo(34090))) then
+			elseif (APR.Level >= 30 and APR.Level < 40 and not GetSpellBookItemInfo(GetSpellInfo(34090))) then
 				local ridingText
 				if (APR.Faction == "Alliance" and APR.ActiveMap and APR.ActiveMap == "A543-DesMephisto-Gorgrond") then
 					ridingText = L["USE_HEARTHSTONE"].." "..L["GO_TO"].." Stormwind, "..L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING"]
@@ -1058,7 +1057,7 @@ local function APR_PrintQStep()
 			if (APRExtraLine == 13544) then
 				local itemName, itemLink, _, _, _, _, _, _, _, itemTexture = GetItemInfo(44886)
 				if (itemLink and GetItemCount(itemLink)) then
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["KILL_FLEETFOOT"].." "..(".. GetItemCount(itemLink) .."/1))
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["KILL_FLEETFOOT"].." (".. GetItemCount(itemLink) .."/1)")
 					if (GetItemCount(itemLink) and GetItemCount(itemLink) > 0) then
 						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 						APR.BookingList["UpdateQuest"] = 1
@@ -1069,7 +1068,7 @@ local function APR_PrintQStep()
 			if (APRExtraLine == 13595) then
 				local itemName, itemLink, _, _, _, _, _, _, _, itemTexture = GetItemInfo(44967)
 				if (itemLink and GetItemCount(itemLink)) then
-					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["LOOT_WILDFIRE_BOTTLE"].." "..(".. GetItemCount(itemLink) .."/1))
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["LOOT_WILDFIRE_BOTTLE"].." (".. GetItemCount(itemLink) .."/1)")
 					if (GetItemCount(itemLink) and GetItemCount(itemLink) > 0) then
 						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 						APR.BookingList["UpdateQuest"] = 1
@@ -1165,7 +1164,7 @@ local function APR_PrintQStep()
 				APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
 			end
 		end
-		for i = 2, 4 do
+		for i = 2, 4 do -- other ExtraLineText
 			local extraLineTestX = "ExtraLineText"..i
 			if ((steps[extraLineTestX]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 				LineNr = LineNr + 1
@@ -1344,22 +1343,12 @@ local function APR_PrintQStep()
 						end
 					end
 				end
-				if (steps and steps["Gossip"] and (APR.GossipOpen == 1) and APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 1 and not IsControlKeyDown()) then
-					SelectGossipOption(steps["Gossip"])
-				end
 			end
 			if (Flagged == Total and Flagged > 0) then
 				APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 				APR.BookingList["PrintQStep"] = 1
 			end
-			if (steps and steps["Gossip"] and (APR.GossipOpen == 1) and APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 1 and not IsControlKeyDown()) then
-				if (steps and steps["Gossip"] and steps["Gossip"] == 34398) then
-					SelectGossipOption(1)
-					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
-					APR.BookingList["UpdateQuest"] = 1
-					APR.BookingList["PrintQStep"] = 1
-				end
-			end
+		
 		elseif (StepP == "PickUp") then
 			IdList = steps["PickUp"]
 			if (steps["PickDraenor"]) then
@@ -1479,7 +1468,7 @@ local function APR_PrintQStep()
 				end
 			end
 		elseif (StepP == "TrainRiding") then
-			IdList = steps["PahonixMadeMe"]
+			IdList = steps["TrainRidingSkill"]
 			if (C_QuestLog.IsQuestFlaggedCompleted(IdList) or CheckRidingSkill()) then
 				APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 				APR.BookingList["UpdateQuest"] = 1
@@ -2963,16 +2952,6 @@ local function APR_ZoneResetQnumb()
 	QNumberLocal = 0
 	APR_SetQPTT()
 end
-local function APR_InstanceTest()
-	local inInstance, instanceType = IsInInstance()
-	if (inInstance) then
-		local name, type, difficultyIndex, difficultyName, maxPlayers, dynamicDifficulty, isDynamic, instanceMapId, lfgID = GetInstanceInfo()
-		if (not instanceMapId == 1760 or not instanceMapId == 1904) then
-			return 1
-		end
-	end
-	return 0
-end
 function APR.GroupListingFunc(APR_StepStuffs, APR_GListName)
 	if (not APR.GroupListSteps[1]) then
 		APR.GroupListSteps[1] = {}
@@ -3334,7 +3313,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			end
 		end
 	end
-
 	if (event=="CHROMIE_TIME_OPEN") then
 		local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 		local steps
@@ -3355,17 +3333,23 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			end
 		end
 	end
-	if (event=="QUEST_ACCEPT_CONFIRM") then
+	if (event=="QUEST_ACCEPT_CONFIRM") then -- escort quest
 		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 1 and not IsControlKeyDown()) then
-			AcceptQuest()
+			APR.BookingList["AcceptQuest"] = 1
 		end
 	end
-	if (event=="QUEST_GREETING") then
+	if (event=="QUEST_GREETING" or event=="GOSSIP_SHOW") then
+		-- Exit function if you press Ctrl key before the
+		if IsControlKeyDown() then return end
 		local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 		local steps
 		if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
 			steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		end
+		if (steps and steps["SpecialNoAutoHandin"]) then
+			return
+		end
+		-- Deny NPC
 		if (steps and steps["DenyNPC"]) then
 			if (UnitGUID("target") and UnitName("target")) then
 				local guid, name = UnitGUID("target"), UnitName("target")
@@ -3373,75 +3357,123 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				if (npc_id and name) then
 					if (tonumber(npc_id) == steps["DenyNPC"]) then
 						C_GossipInfo.CloseGossip()
+						print("APR: "..L["NOT_YET"])
 					end
 				end
 			end
-		end
-		if (steps and steps["SpecialNoAutoHandin"]) then
-			return
 		end
 		if (UnitGUID("target") and string.find(UnitGUID("target"), "(.*)-(.*)")) then
 			local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",UnitGUID("target"))
-			if (npc_id and ((tonumber(npc_id) == 141584) or (tonumber(npc_id) == 142063) or (tonumber(npc_id) == 25809) or (tonumber(npc_id) == 87391))) then
+			if (npc_id and (tonumber(npc_id) == 43733) and (tonumber(npc_id) == 45312)) then
+				Dismount()
+			end
+			if (npc_id and ((tonumber(npc_id) == 141584) or (tonumber(npc_id) == 142063) or (tonumber(npc_id) == 25809) or (tonumber(npc_id) == 45400) or (tonumber(npc_id) == 87391))) then
 				return
 			end
 		end
-		local numAvailableQuests = 0;
-		local numActiveQuests = 0;
-		local lastActiveQuest = 0
-		local lastAvailableQuest = 0;
-		numAvailableQuests = GetNumAvailableQuests();
-		numActiveQuests = GetNumActiveQuests();
-		if numAvailableQuests > 0 or numActiveQuests > 0 then
-			local guid = UnitGUID("target");
-			if lastNPC ~= guid then
-				lastActiveQuest = 1;
-				lastAvailableQuest = 1;
-				lastNPC = guid;
-			end
-			if (lastAvailableQuest > numAvailableQuests) then
-				lastAvailableQuest = 1;
-			end
-			for i = lastAvailableQuest, numAvailableQuests do
-				lastAvailableQuest = i;
-				if (APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 1 and not IsControlKeyDown()) then
-					SelectAvailableQuest(i);
+	----------------------------------------------
+		-- GOSSIP
+		if(APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 1)then
+			-- GOSSIP HARDCODED
+			if (steps and steps["Gossip"]) then
+				if (steps["Gossip"] == 27373 or steps["Gossip"] == 34398) then
+					SelectGossipOption(1)
+					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
+					APR.BookingList["UpdateQuest"] = 1
+					APR.BookingList["PrintQStep"] = 1
 				end
-			end
-		end
-		if lastActiveQuest > numActiveQuests then
-			lastActiveQuest = 1;
-		end
-		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 1 and not IsControlKeyDown()) then
-			local TempQList = {}
-			local i = 1
-			local UpdateQpart = 0
-			while C_QuestLog.GetTitleForLogIndex(i) do
-				local ZeInfoz = C_QuestLog.GetInfo(i)
-				if (ZeInfoz) then
-					local questID = ZeInfoz["questID"]
-					if (questID > 0) then
-						local isHeader = ZeInfoz["isHeader"]
-						local questTitle = C_QuestLog.GetTitleForQuestID(questID)
-						local isComplete = C_QuestLog.IsComplete(questID)
-						if (not isHeader) then
-							TempQList[questID] = {}
-							if (isComplete) then
-								TempQList[questID]["C"] = 1
-							end
-							TempQList[questID]["T"] = questTitle
+				if (steps["Gossip"] == 3433398) then
+					SelectGossipOption(2)
+					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
+					APR.BookingList["UpdateQuest"] = 1
+					APR.BookingList["PrintQStep"] = 1
+				end
+				if (steps["Gossip"] == 28202) then
+					APRGOSSIPCOUNT = APRGOSSIPCOUNT + 1
+					if (APRGOSSIPCOUNT == 1) then
+						SelectGossipOption(1)
+					elseif (APRGOSSIPCOUNT == 2) then
+						if (APR.Race == "Gnome") then
+							SelectGossipOption(1)
+						elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
+							SelectGossipOption(2)
+						elseif (APR.Race == "NightElf") then
+							SelectGossipOption(3)
+						elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
+							SelectGossipOption(4)
 						end
+					elseif (APRGOSSIPCOUNT == 3) then
+						if (APR.Race == "Gnome") then
+							SelectGossipOption(3)
+						elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
+							SelectGossipOption(4)
+						elseif (APR.Race == "NightElf") then
+							SelectGossipOption(2)
+						elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
+							SelectGossipOption(1)
+						end
+					elseif (APRGOSSIPCOUNT == 4) then
+						if (APR.Race == "Gnome") then
+							SelectGossipOption(4)
+						elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
+							SelectGossipOption(2)
+						elseif (APR.Race == "NightElf") then
+							SelectGossipOption(1)
+						elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
+							SelectGossipOption(3)
+						end
+					elseif (APRGOSSIPCOUNT == 5) then
+						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
+						APR.BookingList["PrintQStep"] = 1
 					end
 				else
-					break
+					local info = C_GossipInfo.GetOptions()
+					if info then
+						for i, v in pairs(info) do
+							if(v.orderIndex == steps["Gossip"]) then
+								C_GossipInfo.SelectOption(v.gossipOptionID)
+							end
+						end
+					else
+						SelectGossipOption(steps["Gossip"])
+					end
 				end
-				i = i + 1
 			end
-			local CLi
-			for CLi = 1, numActiveQuests do
-				for CL_index,CL_value in pairs(TempQList) do
-					if (GetActiveTitle(CLi) == TempQList[CL_index]["T"] and TempQList[CL_index]["C"] and TempQList[CL_index]["C"] == 1) then
-						SelectActiveQuest(CLi)
+		end
+		--PICKUP / HANDIN
+		local availableQuests = C_GossipInfo.GetAvailableQuests()
+		local activeQuests = C_GossipInfo.GetActiveQuests()
+		if(APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 1) then
+			if (event == "QUEST_GREETING") then
+				for i = 1, GetNumAvailableQuests() do
+					local title, isComplete = GetAvailableTitle(i)
+					if title and not isComplete then
+						return SelectAvailableQuest(i)
+					end
+				end
+	
+			elseif activeQuests then
+				for titleIndex, questInfo in ipairs(activeQuests) do
+					if questInfo.questID then
+						return C_GossipInfo.SelectAvailableQuest(quests.questID)
+					end
+				end
+			end
+		end
+		if(APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 1) then
+			if (event == "QUEST_GREETING") then
+				for i = 1, GetNumActiveQuests() do
+					local title, isComplete = GetActiveTitle(i)
+					if title and isComplete then
+						return SelectActiveQuest(i)
+					end
+				end
+			elseif availableQuests then
+				for titleIndex, questInfo in ipairs(activeQuests) do
+					if questInfo.title and questInfo.isComplete then
+						if questInfo.questID then
+							return C_GossipInfo.SelectActiveQuest(questInfo.questID)
+						end
 					end
 				end
 			end
@@ -3720,152 +3752,10 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			APR.BookingList["UpdateMapId"] = 1
 		end
 	end
-	if (event=="GOSSIP_SHOW") then
-		APR.GossipOpen = 1
-		if (UnitGUID("target") and string.find(UnitGUID("target"), "(.*)-(.*)")) then
-			local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",UnitGUID("target"))
-			if (UnitGUID("target") and string.find(UnitGUID("target"), "(.*)-(.*)")) then
-				if (npc_id and ((tonumber(npc_id) == 141584) or (tonumber(npc_id) == 142063))) then
-					return
-				end
-			end
-		end
-		local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
-		if (CurStep and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] and APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 1 and not IsControlKeyDown()) then
-			local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-			if (UnitGUID("target") and string.find(UnitGUID("target"), "(.*)-(.*)")) then
-				local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",UnitGUID("target"))
-				if (npc_id and ((tonumber(npc_id) == 141584) or (tonumber(npc_id) == 142063) or (tonumber(npc_id) == 45400) or (tonumber(npc_id) == 25809) or (tonumber(npc_id) == 87391))) then
-					local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-					if (steps and steps["Gossip"] and steps["Gossip"] == 27373) then
-						SelectGossipOption(1)
-						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
-						APR.BookingList["PrintQStep"] = 1
-					end
-					return
-				end
-				if (steps and steps["Gossip"] and steps["Gossip"] == 34398) then
-					SelectGossipOption(1)
-					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
-					APR.BookingList["UpdateQuest"] = 1
-					APR.BookingList["PrintQStep"] = 1
-				end
-				if (steps and steps["Gossip"] and steps["Gossip"] == 3433398) then
-					SelectGossipOption(2)
-					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
-					APR.BookingList["UpdateQuest"] = 1
-					APR.BookingList["PrintQStep"] = 1
-				end
-				if (npc_id and (tonumber(npc_id) == 43733) and (tonumber(npc_id) == 45312)) then
-					Dismount()
-				end
-			end
-			local APRDenied = 0
-			if (steps and steps["DenyNPC"]) then
-				if (UnitGUID("target") and UnitName("target")) then
-					local guid, name = UnitGUID("target"), UnitName("target")
-					local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
-					if (npc_id and name) then
-						if (tonumber(npc_id) == steps["DenyNPC"]) then
-							APRDenied = 1
-						end
-					end
-				end
-			end
-			if (steps and steps["SpecialNoAutoHandin"]) then
-				return
-			end
-			if (APRDenied == 1) then
-				C_GossipInfo.CloseGossip()
-				print("APR: "..L["NOT_YET"])
-			elseif (steps and steps["Gossip"] and steps["Gossip"] == 28202 and APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 1 and not IsControlKeyDown()) then
-				APRGOSSIPCOUNT = APRGOSSIPCOUNT + 1
-				print(APRGOSSIPCOUNT)
-				if (APRGOSSIPCOUNT == 1) then
-					SelectGossipOption(1)
-				elseif (APRGOSSIPCOUNT == 2) then
-					if (APR.Race == "Gnome") then
-						SelectGossipOption(1)
-					elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-						SelectGossipOption(2)
-					elseif (APR.Race == "NightElf") then
-						SelectGossipOption(3)
-					elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-						SelectGossipOption(4)
-					end
-				elseif (APRGOSSIPCOUNT == 3) then
-					if (APR.Race == "Gnome") then
-						SelectGossipOption(3)
-					elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-						SelectGossipOption(4)
-					elseif (APR.Race == "NightElf") then
-						SelectGossipOption(2)
-					elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-						SelectGossipOption(1)
-					end
-				elseif (APRGOSSIPCOUNT == 4) then
-					if (APR.Race == "Gnome") then
-						SelectGossipOption(4)
-					elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-						SelectGossipOption(2)
-					elseif (APR.Race == "NightElf") then
-						SelectGossipOption(1)
-					elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-						SelectGossipOption(3)
-					end
-				elseif (APRGOSSIPCOUNT == 5) then
-					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
-					APR.BookingList["PrintQStep"] = 1
-				end
-			elseif (steps and steps["Gossip"] and APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 1 and not IsControlKeyDown()) then
-				SelectGossipOption(steps["Gossip"])
-				local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
-				local steps
-				if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
-					steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-				end
-				if (steps and steps["BlockQuests"]) then
-					StaticPopup1Button1:SetScript("OnMouseDown", function(self, button)
-						local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
-						local steps
-						if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
-							steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-						end
-						if (steps and steps["BlockQuests"]) then
-							APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
-							APR.BookingList["UpdateQuest"] = 1
-							APR.BookingList["PrintQStep"] = 1
-						end
-					end)
-				end
-			end
-		end
-		local ActiveQuests = C_GossipInfo.GetActiveQuests()
-		local ActiveQNr = C_GossipInfo.GetNumActiveQuests()
-		local CLi
-		local NumAvailableQuests = C_GossipInfo.GetNumAvailableQuests()
-		local AvailableQuests = {C_GossipInfo.GetAvailableQuests()}
-		if (ActiveQuests and APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 1 and not IsControlKeyDown()) then
-			for CLi = 1, ActiveQNr do
-				if (ActiveQuests[CLi] and ActiveQuests[CLi]["isComplete"] == true) then
-					C_GossipInfo.SelectActiveQuest(CLi)
-				end
-			end
-		end
-		if (NumAvailableQuests > 0 and APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 1 and not IsControlKeyDown()) then
-			if (steps and steps["BlockQuests"]) then
-			elseif (steps and steps["SpecialPickupOrder"]) then
-				C_GossipInfo.SelectAvailableQuest(2)
-			else
-				C_GossipInfo.SelectAvailableQuest(1)
-			end
-		end
-	end
 	if (event=="GOSSIP_CLOSED") then
 		APRGOSSIPCOUNT = 0
-		APR.GossipOpen = 0
 	end
-	if (event=="QUEST_DETAIL") then
+	if (event=="QUEST_DETAIL") then -- Fired when the player is given a more detailed view of his quest.
 		local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 		local steps
 		if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
@@ -3945,7 +3835,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			end
 		end
 	end
-
 	if (event=="QUEST_COMPLETE") then
 		local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 		local steps

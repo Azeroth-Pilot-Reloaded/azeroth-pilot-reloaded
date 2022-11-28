@@ -666,7 +666,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["DalaranToOgri"]) then
 					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["USE_ORGRIMMAR_PORTAL"])
 				end
-				if (APR.QuestStepList[APR.ActiveMap][CCLi]["PahonixMadeMe"]) then
+				if (APR.QuestStepList[APR.ActiveMap][CCLi]["TrainRidingSkill"]) then
 					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["TRAIN_RIDING"])
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["UseGarrisonHS"]) then
