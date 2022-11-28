@@ -100,7 +100,7 @@ if (APR.Faction == "Alliance") then
 			["SpellInTab"] = 33388,
 			["SpellInTab"] = 33391,
 			["SpellInTab"] = 34090,
-			["PahonixMadeMe"] = 34398,
+			["TrainRidingSkill"] = 34398,
 			["RaidIcon"] = 44919,
 			["TT"] = {
 				["y"] = -8846.7,
@@ -6956,7 +6956,6 @@ if (APR.Faction == "Alliance") then
 			},
 		},
 		{
-			["SpecialPickupOrder"] = 1,
 			["PickUp"] = {
 				49066,
 			},
@@ -25037,7 +25036,7 @@ if (APR.Faction == "Horde") then
 			["SpellInTab"] = 33388,
 			["SpellInTab"] = 33391,
 			["SpellInTab"] = 34090,
-			["PahonixMadeMe"] = 34398,
+			["TrainRidingSkill"] = 34398,
 			["RaidIcon"] = 44919,
 			["TT"] = {
 				["y"] = 1799.5,

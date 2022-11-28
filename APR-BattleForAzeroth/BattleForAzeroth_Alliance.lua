@@ -98,7 +98,7 @@
 			["SpellInTab"] = 33388,
 			["SpellInTab"] = 33391,
 			["SpellInTab"] = 34090,
-			["PahonixMadeMe"] = 34398,
+			["TrainRidingSkill"] = 34398,
 			["RaidIcon"] = 44919,
 			["TT"] = {
 				["y"] = -8846.7,
@@ -6941,7 +6941,6 @@
 			},
 		},
 		{	-- [step
-			["SpecialPickupOrder"] = 1,
 			["PickUp"] = {
 				49066,
 			},
