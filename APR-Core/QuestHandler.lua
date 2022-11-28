@@ -3380,7 +3380,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 					SelectGossipOption(1)
 					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 					APR.BookingList["UpdateQuest"] = 1
-
 					APR.BookingList["PrintQStep"] = 1
 				end
 				if (steps["Gossip"] == 3433398) then
