@@ -3428,7 +3428,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 					end
 				else
 					local info = C_GossipInfo.GetOptions()
-					if info then
+					if next(info) then
 						for i, v in pairs(info) do
 							if(v.orderIndex == steps["Gossip"]) then
 								C_GossipInfo.SelectOption(v.gossipOptionID)
@@ -3452,10 +3452,10 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 					end
 				end
 	
-			elseif activeQuests then
-				for titleIndex, questInfo in ipairs(activeQuests) do
+			elseif availableQuests then
+				for titleIndex, questInfo in ipairs(availableQuests) do
 					if questInfo.questID then
-						return C_GossipInfo.SelectAvailableQuest(quests.questID)
+						return C_GossipInfo.SelectAvailableQuest(questInfo.questID)
 					end
 				end
 			end
@@ -3468,7 +3468,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 						return SelectActiveQuest(i)
 					end
 				end
-			elseif availableQuests then
+			elseif activeQuests then
 				for titleIndex, questInfo in ipairs(activeQuests) do
 					if questInfo.title and questInfo.isComplete then
 						if questInfo.questID then
