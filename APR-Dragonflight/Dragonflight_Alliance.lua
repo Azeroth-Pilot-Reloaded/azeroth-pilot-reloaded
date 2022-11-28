@@ -801,6 +801,9 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1424.7,
                },
           },
+          {	-- Step 45
+               ["ZoneDoneSave"] = 1,
+          },
      }
      -- Thaldraszus
      APR.QuestStepList["DF06A-2025-Thaldraszus"] = {
@@ -2795,6 +2798,9 @@ if (APR.Faction == "Alliance") then
                     ["y"] = 308.2,
                     ["x"] = -1041.0,
                },
+          },
+          {	-- Step 158
+               ["ZoneDoneSave"] = 1,
           },
      }
      

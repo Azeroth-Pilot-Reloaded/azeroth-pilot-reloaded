@@ -11633,4 +11633,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Name"] = "Pinewood Post, Ohn'Ahran Plains",
           ["ExtraLineText"] = "TO_PINEWOOD_POST",
      },
+     {	-- Step 351
+          ["ZoneDoneSave"] = 1,
+     },
 }
