@@ -227,7 +227,7 @@ APR.QuestStepListListing["Dragonflight"] = {
 	["DF03N-2022-WakingShores"] = "DF03 - Waking Shores - Neutral",
 	["DF04-2023-OhnahranPlains"] = "DF04 - Ohn'Ahran Plains",
 	["DF05-2024-AzureSpan"] = "DF05 - Azure Span",
-	["DF06-2025-Thaldraszus"] = "DF06 - Thaldraszus",
+	["DF06A-2025-Thaldraszus"] = "DF06 - Thaldraszus",
 	
 }
 
