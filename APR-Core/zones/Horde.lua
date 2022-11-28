@@ -53,12 +53,13 @@ APR.QuestStepListListingZone = {
 	["WIP - Hillsbrad Foothills"] = 25,
 	["WIP - Western Plaguelands"] = 22,
 	["DEV - HStoryMode Only (Not Enough XP)"] = 1670,
-	["DF01 - Dragonflight intro"] = 85,
-	["DF02 - Dragonflight intro 2"] = 1,
-	["DF03 - Waking Shores"] = 2022,
-	["DF04 - Ohn'Ahran"] = 2023,
-	["DF05 - Azure Span"] = 2024,
-	["DF06 - Valdrakken"] = 2025,
+	["DF01 - Dragonflight Orgrimmar"] = 85,
+	["DF02 - Dragonflight Durotar"] = 1,
+	["DF03 - Waking Shores - Horde"] = 2022,
+	["DF04 - Waking Shores - Neutral"] = 2022,
+	["DF05 - Ohn'Ahran Plains"] = 2023,
+	["DF06 - Azure Span"] = 2024,
+	["DF07 - Thaldraszus"] = 2025,
 	["WIP-The Jade Forest"] = 371,
 	["WIP-Kun-Lai Summit"] = 379,
 	["WIP-Highmountain"] = 650,
@@ -180,12 +181,13 @@ elseif (APR.Race == "BloodElf") then
 	APR.QuestStepListListing["EasternKingdom"]["94-EversongWoodsBloodElf"] = "01-10 Blood Elf Start"
 end
 APR.QuestStepListListing["Dragonflight"] = {
-	["DF01H-85-Orgrimmar"] = "DF01 - Dragonflight intro",
-	["DF02H-1-Durotar"] = "DF02 - Dragonflight intro 2",
-	["DF04H-2022-WakingShores"] = "DF03 - Waking Shores",
-	["DF05-2023-OhnahranPlains"] = "DF04 - Ohn'Ahran",
-	["DF05-2024-AzureSpan"] = "DF05 - Azure Span",
-	["DF06-2025-Valdrakken"] = "DF06 - Valdrakken",
+	["DF01H-85-Orgrimmar"] = "DF01 - Dragonflight Orgrimmar",
+	["DF02H-1-Durotar"] = "DF02 - Dragonflight Durotar",
+	["DF03H-2022-WakingShores"] = "DF03 - Waking Shores - Horde",
+	["DF03N-2022-WakingShores"] = "DF04 - Waking Shores - Neutral",
+	["DF04-2023-OhnahranPlains"] = "DF05 - Ohn'Ahran Plains",
+	["DF05-2024-AzureSpan"] = "DF06 - Azure Span",
+	["DF06-2025-Thaldraszus"] = "DF07 - Thaldraszus",
 }
 if (APR.Race == "Dracthyr") then
 	APR.QuestStepListListing["Dragonflight"]["2109-Dragonstart"] = "01-10 Dracthyr Start"

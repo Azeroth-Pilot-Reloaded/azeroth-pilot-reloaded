@@ -86,11 +86,12 @@ APR.QuestStepListListingZone = {
 	["BFA 30-50 Stormsong Valley Test"] = 942,
 	["BFA 20-50 Dustvar Test"] = 896,
 	["DEV - AStoryMode Only (Not Enough XP)"] = 1670,
-	["DF01 - Dragonflight intro"] = 84,
-	["DF03 - Waking Shores"] = 2022,
-	["DF04 - Ohn'Ahran"] = 2023,
+	["DF01 - Dragonflight Stormwind"] = 84,
+	["DF02 - Waking Shores - Alliance"] = 2022,
+	["DF03 - Waking Shores - Neutral"] = 2022,
+	["DF04 - Ohn'Ahran Plains"] = 2023,
 	["DF05 - Azure Span"] = 2024,
-	["DF06 - Valdrakken"] = 2025,
+	["DF06 - Thaldraszus"] = 2025,
 }
 
 APR.QuestStepListListing = {}
@@ -221,11 +222,12 @@ elseif (APR.Race == "Worgen") then
 end
 APR.QuestStepListListing["Dragonflight"] = {
 
-	["DF01A-84-Stormwind"] = "DF01 - Dragonflight intro",
-	["DF03A-2022-WakingShores"] = "DF03 - Waking Shores",
-	["DF05-2023-OhnahranPlains"] = "DF04 - Ohn'Ahran",
+	["DF01A-84-Stormwind"] = "DF01 - Dragonflight Stormwind",
+	["DF03A-2022-WakingShores"] = "DF02 - Waking Shores - Alliance",
+	["DF03N-2022-WakingShores"] = "DF03 - Waking Shores - Neutral",
+	["DF04-2023-OhnahranPlains"] = "DF04 - Ohn'Ahran Plains",
 	["DF05-2024-AzureSpan"] = "DF05 - Azure Span",
-	["DF06-2025-Valdrakken"] = "DF06 - Valdrakken",
+	["DF06-2025-Thaldraszus"] = "DF06 - Thaldraszus",
 	
 }
 
