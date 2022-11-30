@@ -99,7 +99,7 @@ if (APR.Faction == "Horde") then
                ["Gossip"] = 1,
           },
           {	-- Step 9
-               ["CRange"] = 	65443,
+               ["CRange"] = 65443,
                ["TT"] = {
                     ["y"] = 1920.5,
                     ["x"] = -4726.4,
@@ -147,7 +147,7 @@ if (APR.Faction == "Horde") then
                ["Gossip"] = 1,
           },
           {	-- Step 12
-               ["CRange"] = 	65443,
+               ["CRange"] = 65443,
                ["TT"] = {
                     ["y"] = 1401.3,
                     ["x"] = -4563.9,
@@ -160,7 +160,7 @@ if (APR.Faction == "Horde") then
                ["ExtraLineText"] = "HEAD_ZEPPELIN_TOWER",
           },
           {	-- Step 13
-               ["CRange"] = 	65443,
+               ["CRange"] = 65443,
                ["TT"] = {
                     ["y"] = 1399.2,
                     ["x"] = -4575.6,
@@ -173,7 +173,7 @@ if (APR.Faction == "Horde") then
                ["ExtraLineText"] = "HEAD_ZEPPELIN_TOWER",
           },
           {	-- Step 14
-               ["CRange"] = 	65443,
+               ["CRange"] = 65443,
                ["TT"] = {
                     ["y"] = 1362.0,
                     ["x"] = -4913.5,
@@ -189,6 +189,7 @@ if (APR.Faction == "Horde") then
                ["ZoneDoneSave"] = 1,
           },
      }
+
     -- durotar
      APR.QuestStepList["DF02H-1-Durotar"] = {
           {	-- Step 1
@@ -246,7 +247,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {	-- Step 6
-               ["CRange"] = 	65444,
+               ["CRange"] = 65444,
                ["TT"] = {
                     ["y"] = 1343.4,
                     ["x"] = -4922.5,
@@ -279,6 +280,7 @@ if (APR.Faction == "Horde") then
                ["ZoneDoneSave"] = 1,
           },
      }
+
     -- WakingShores
      APR.QuestStepList["DF03H-2022-WakingShores"] = {
           {	-- Step 1
@@ -382,6 +384,31 @@ if (APR.Faction == "Horde") then
                },
           },
           {	-- Step 8
+               ["DropQuest"] = 72708,
+               ["DroppableQuest"] = {
+                    ["Text"] = "PRIMAL_PROTODRAKE",
+                    ["Qid"] = 72708,
+                    ["MobId"] = 190056,
+               },
+               ["TT"] = {
+                    ["y"] = 3834,
+                    ["x"] = -1552,
+               },
+               ["Trigger"] = {
+                    ["y"] = 3834,
+                    ["x"] = -1552,
+               },
+               ["Range"] = 10,
+               ["Fillers"] = {
+                    [65453] = {
+                         ["1"] = "1",
+                    },
+                    [65451] = {
+                         ["1"] = "1",
+                    },
+               },
+          },
+          {	-- Step 9
                ["Qpart"] = {
                     [65452] = {
                          ["3"] = "3",
@@ -405,7 +432,7 @@ if (APR.Faction == "Horde") then
                     },
                },
           },
-          {	-- Step 9
+          {	-- Step 10
                ["Qpart"] = {
                     [65453] = {
                          ["1"] = "1",
@@ -421,7 +448,7 @@ if (APR.Faction == "Horde") then
                },
                ["Range"] = 180,
           },
-          {	-- Step 10
+          {	-- Step 11
                ["Qpart"] = {
                     [65451] = {
                          ["1"] = "1",
@@ -437,7 +464,7 @@ if (APR.Faction == "Horde") then
                },
                ["Range"] = 180,
           },
-          {	-- Step 11
+          {	-- Step 12
                ["Done"] = {
                     65452,
                },
@@ -446,7 +473,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1458.6,
                },
           },
-          {	-- Step 12
+          {	-- Step 13
                ["PickUp"] = {
                     69910,
                },
@@ -455,7 +482,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1458.6,
                },
           },
-          {	-- Step 13
+          {	-- Step 14
                ["Qpart"] = {
                     [69910] = {
                          ["1"] = "1",
@@ -473,7 +500,7 @@ if (APR.Faction == "Horde") then
                ["ExtraLineText"] = "CHOOSE_WHY_ARENT_DRAGONS_HERE_MEET_US",
                ["Gossip"] = 1,
           },
-          {	-- Step 14
+          {	-- Step 15
                ["Done"] = {
                     69910,
                },
@@ -482,7 +509,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1456.2,
                },
           },
-          {	-- Step 15
+          {	-- Step 16
                ["PickUp"] = {
                     69911,
                },
@@ -491,7 +518,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1456.2,
                },
           },
-          {	-- Step 16
+          {	-- Step 17
                ["PickUp"] = {
                     66110,
                },
@@ -500,7 +527,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1438.4,
                },
           },
-          {	-- Step 17
+          {	-- Step 18
                ["Done"] = {
                     65453,
                },
@@ -509,7 +536,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1432.3,
                },
           },
-          {	-- Step 18
+          {	-- Step 19
                ["Done"] = {
                     65451,
                },
@@ -518,7 +545,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1405.0,
                },
           },
-          {	-- Step 19
+          {	-- Step 20
                ["PickUp"] = {
                     66101,
                },
@@ -527,7 +554,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1397.9,
                },
           },
-          {	-- Step 20
+          {	-- Step 21
                ["Qpart"] = {
                     [66101] = {
                          ["1"] = "1",
@@ -544,7 +571,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 5,
                ["ExtraLineText"] = "CLICK_SURVEYORS_DISC",
           },
-          {	-- Step 21
+          {	-- Step 22
                ["Qpart"] = {
                     [66101] = {
                          ["2"] = "2",
@@ -562,7 +589,7 @@ if (APR.Faction == "Horde") then
                ["ExtraLineText"] = "PRESS_1",
                ["Dontskipvid"] = 1,
           },
-          {	-- Step 22
+          {	-- Step 23
                ["Qpart"] = {
                     [66101] = {
                          ["3"] = "3",
@@ -580,7 +607,7 @@ if (APR.Faction == "Horde") then
                ["ExtraLineText"] = "PRESS_2",
                ["Dontskipvid"] = 1,
           },
-          {	-- Step 23
+          {	-- Step 24
                ["Qpart"] = {
                     [66101] = {
                          ["4"] = "4",
@@ -597,7 +624,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 5,
                ["ExtraLineText"] = "PRESS_3",
           },
-          {	-- Step 24
+          {	-- Step 25
                ["Done"] = {
                     66101,
                },
@@ -606,7 +633,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1397.9,
                },
           },
-          {	-- Step 25
+          {	-- Step 26
                ["Done"] = {
                     72708,
                },
@@ -615,7 +642,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1452.9,
                },
           },
-          {	-- Step 26
+          {	-- Step 27
                ["Done"] = {
                     66110,
                },
@@ -624,7 +651,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1467.4,
                },
           },
-          {	-- Step 27
+          {	-- Step 28
                ["PickUp"] = {
                     66111,
                },
@@ -633,7 +660,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1467.4,
                },
           },
-          {	-- Step 28
+          {	-- Step 29
                ["PickUp"] = {
                     69965,
                },
@@ -642,7 +669,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1442.4,
                },
           },
-          {	-- Step 29
+          {	-- Step 30
                ["PickUp"] = {
                     66112,
                },
@@ -651,7 +678,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1437.9,
                },
           },
-          {	-- Step 30
+          {	-- Step 31
                ["Qpart"] = {
                     [69911] = {
                          ["1"] = "1",
@@ -669,7 +696,7 @@ if (APR.Faction == "Horde") then
                ["Gossip"] = 2,
                ["RaidIcon"] = 193393,
           },
-          {	-- Step 31
+          {	-- Step 32
                ["Qpart"] = {
                     [69911] = {
                          ["2"] = "2",
@@ -687,8 +714,8 @@ if (APR.Faction == "Horde") then
                ["ExtraLineText"] = "CLICK_BOOK_CHOICES_DONT_MATTER",
                ["Gossip"] = 1,
           },
-          {	-- Step 32
-               ["GetFP"] = 	69911,
+          {	-- Step 33
+               ["GetFP"] = 69911,
                ["TT"] = {
                     ["y"] = 3508.2,
                     ["x"] = -1411.7,
@@ -699,7 +726,7 @@ if (APR.Faction == "Horde") then
                },
                ["Range"] = 1,
           },
-          {	-- Step 33
+          {	-- Step 34
                ["Qpart"] = {
                     [69911] = {
                          ["3"] = "3",
@@ -716,7 +743,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 5,
                ["ExtraLineText"] = "CLICK_STONE_TABLET",
           },
-          {	-- Step 34
+          {	-- Step 35
                ["Qpart"] = {
                     [69911] = {
                          ["4"] = "4",
@@ -733,7 +760,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 5,
                ["ExtraLineText"] = "CLICK_BRAZIER",
           },
-          {	-- Step 35
+          {	-- Step 36
                ["Done"] = {
                     69911,
                },
@@ -742,7 +769,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1456.0,
                },
           },
-          {	-- Step 36
+          {	-- Step 37
                ["PickUp"] = {
                     69912,
                },
@@ -751,7 +778,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1456.0,
                },
           },
-          {	-- Step 37
+          {	-- Step 38
                ["Qpart"] = {
                     [69912] = {
                          ["1"] = "1",
@@ -769,8 +796,8 @@ if (APR.Faction == "Horde") then
                ["ExtraLineText"] = "SPEAK_SENDRAX_SEND_SIGNAL_FLARES",
                ["Gossip"] = 1,
           },
-          {	-- Step 38
-               ["CRange"] = 	66112,
+          {	-- Step 39
+               ["CRange"] = 66112,
                ["TT"] = {
                     ["y"] = 3418.8,
                     ["x"] = -1379.0,
@@ -782,7 +809,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 10,
                ["ExtraLineText"] = "HEAD_CAVE",
           },
-          {	-- Step 39
+          {	-- Step 40
                ["Qpart"] = {
                     [66112] = {
                          ["2"] = "2",
@@ -808,7 +835,7 @@ if (APR.Faction == "Horde") then
                ["ExtraLineText"] = "ITEM_DROPS_FROM_BARON_CRUSTCORE_AT_BACK_OF_THE_CAVE",
                ["RaidIcon"] = 192266,
           },
-          {	-- Step 40
+          {	-- Step 41
                ["Qpart"] = {
                     [66112] = {
                          ["1"] = "1",
@@ -834,7 +861,7 @@ if (APR.Faction == "Horde") then
                ["ExtraLineText"] = "ITEM_DROPS_FROM_BARON_ASHFLOW_AT_TOP_OF_THE_LAVA_FLOW",
                ["RaidIcon"] = 192274,
           },
-          {	-- Step 41
+          {	-- Step 42
                ["Qpart"] = {
                     [69965] = {
                          ["1"] = "1",
@@ -850,7 +877,7 @@ if (APR.Faction == "Horde") then
                },
                ["Range"] = 200,
           },
-          {	-- Step 42
+          {	-- Step 43
                ["Qpart"] = {
                     [66111] = {
                          ["1"] = "1",
@@ -866,7 +893,7 @@ if (APR.Faction == "Horde") then
                },
                ["Range"] = 200,
           },
-          {	-- Step 43
+          {	-- Step 44
                ["Done"] = {
                     66112,
                },
@@ -875,7 +902,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1437.9,
                },
           },
-          {	-- Step 44
+          {	-- Step 45
                ["Done"] = {
                     69965,
                },
@@ -884,7 +911,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1442.4,
                },
           },
-          {	-- Step 45
+          {	-- Step 46
                ["Done"] = {
                     66111,
                },
@@ -893,7 +920,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1467.4,
                },
           },
-          {	-- Step 46
+          {	-- Step 47
                ["Done"] = {
                     69912,
                },
@@ -902,10 +929,11 @@ if (APR.Faction == "Horde") then
                     ["x"] = -1424.7,
                },
           },
-          {	-- Step 47
+          {	-- Step 48
                ["ZoneDoneSave"] = 1,
           },
      }
+
      -- Thaldraszus
      APR.QuestStepList["DF06H-2025-Thaldraszus"] = {
           {	-- Step 1
@@ -933,6 +961,7 @@ if (APR.Faction == "Horde") then
                     ["y"] = 306.5,
                     ["x"] = -1042.4,
                },
+               ["ExtraLineText"] = "GET_INSIDE_AND_USE_PORTAL_TOP",
           },
           {	-- Step 3
                ["PickUp"] = {
@@ -1477,7 +1506,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 2,
           },
           {	-- Step 45
-               ["SetHS"] = 1,
+               ["SetHS"] = 66252,
                ["TT"] = {
                     ["y"] = 200.9,
                     ["x"] = -887.5,
@@ -1528,7 +1557,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {	-- Step 50
-               ["GetFP"] = 1,
+               ["GetFP"] = 66080,
                ["TT"] = {
                     ["y"] = -1127.2,
                     ["x"] = -2716.1,
@@ -1740,6 +1769,7 @@ if (APR.Faction == "Horde") then
                     ["x"] = -2718.0,
                },
                ["Range"] = 2,
+               ["Gossip"] = 1,
           },
           {	-- Step 67
                ["Qpart"] = {
@@ -2079,6 +2109,9 @@ if (APR.Faction == "Horde") then
                     [66646] = {
                          ["1"] = "1",
                     },
+                    [65948] = {
+                         ["3"] = "3",
+                    },
                },
           },
           {	-- Step 91
@@ -2102,6 +2135,9 @@ if (APR.Faction == "Horde") then
                     },
                     [66646] = {
                          ["1"] = "1",
+                    },
+                    [65948] = {
+                         ["3"] = "3",
                     },
                },
           },
@@ -2870,8 +2906,10 @@ if (APR.Faction == "Horde") then
                },
           },
           {	-- Step 155
-               ["UseHS"] = 1,
-               66221-1,
+               ["UseHS"] = 66221,
+               ["Button"] = {
+                    ["22345678-1"] = 6948,
+               },
           },
           {	-- Step 156
                ["Qpart"] = {
@@ -2904,5 +2942,4 @@ if (APR.Faction == "Horde") then
                ["ZoneDoneSave"] = 1,
           },
      }
-     
 end

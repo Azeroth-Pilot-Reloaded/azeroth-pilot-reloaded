@@ -17,12 +17,11 @@ if (APR.Faction == "Alliance") then
                          ["1"] = "1",
                     },
                },
-               ["Gossip"] = 1,
                ["Trigger"] = {
-                    ["y"] = undefined,
-                    ["x"] = undefined,
+                    ["y"] = -8308.9,
+                    ["x"] = 336.3,
                },
-               ["Range"] = 5,
+               ["Gossip"] = 1,
           },
           {	-- Step 4
                ["Done"] = {
@@ -170,7 +169,7 @@ if (APR.Faction == "Alliance") then
                },
           },
           {	-- Step 17
-               ["CRange"] = 	67700,
+               ["CRange"] = 67700,
                ["TT"] = {
                     ["y"] = -8640.6,
                     ["x"] = 1328.2,
@@ -202,7 +201,8 @@ if (APR.Faction == "Alliance") then
           {	-- Step 19
                ["ZoneDoneSave"] = 1,
           },
-     }
+     }     
+     
     -- WakingShores
      APR.QuestStepList["DF03A-2022-WakingShores"] = {
           {	-- Step 1
@@ -587,7 +587,7 @@ if (APR.Faction == "Alliance") then
                ["Gossip"] = 1,
           },
           {	-- Step 30
-               ["GetFP"] = 	69911,
+               ["GetFP"] = 69911,
                ["TT"] = {
                     ["y"] = 3508.2,
                     ["x"] = -1411.7,
@@ -669,7 +669,7 @@ if (APR.Faction == "Alliance") then
                ["Gossip"] = 1,
           },
           {	-- Step 36
-               ["CRange"] = 	66112,
+               ["CRange"] = 66112,
                ["TT"] = {
                     ["y"] = 3418.8,
                     ["x"] = -1379.0,
@@ -805,6 +805,7 @@ if (APR.Faction == "Alliance") then
                ["ZoneDoneSave"] = 1,
           },
      }
+
      -- Thaldraszus
      APR.QuestStepList["DF06A-2025-Thaldraszus"] = {
           {	-- Step 1
@@ -1376,7 +1377,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
           },
           {	-- Step 45
-               ["SetHS"] = 1,
+               ["SetHS"] = 66252,
                ["TT"] = {
                     ["y"] = 200.9,
                     ["x"] = -887.5,
@@ -1427,7 +1428,7 @@ if (APR.Faction == "Alliance") then
                },
           },
           {	-- Step 50
-               ["GetFP"] = 1,
+               ["GetFP"] = 66080,
                ["TT"] = {
                     ["y"] = -1127.2,
                     ["x"] = -2716.1,
@@ -1639,6 +1640,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2718.0,
                },
                ["Range"] = 2,
+               ["Gossip"] = 1,
           },
           {	-- Step 67
                ["Qpart"] = {
@@ -2769,8 +2771,10 @@ if (APR.Faction == "Alliance") then
                },
           },
           {	-- Step 155
-               ["UseHS"] = 1,
-               66221-1,
+               ["UseHS"] = 66221,
+               ["Button"] = {
+                    ["22345678-1"] = 6948,
+               },
           },
           {	-- Step 156
                ["Qpart"] = {
@@ -2803,5 +2807,4 @@ if (APR.Faction == "Alliance") then
                ["ZoneDoneSave"] = 1,
           },
      }
-     
 end
