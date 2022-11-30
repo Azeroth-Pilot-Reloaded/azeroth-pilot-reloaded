@@ -1843,7 +1843,11 @@ local function APR_PrintQStep()
 				if (APR.NPCList[steps["DroppableQuest"]["MobId"]]) then
 					MobName = APR.NPCList[steps["DroppableQuest"]["MobId"]]
 				end
-				APR.QuestList.QuestFrames["FS"..LineNr]:SetText("[".. LineNr .."] "..MobName..L["Q_DROP"])
+				if (L[MobName]) then
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("[".. LineNr .."] "..L[MobName].." - "..L["Q_DROP"])
+				else
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText("[".. LineNr .."] "..MobName.." - "..L["Q_DROP"])
+				end
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.QuestList.QuestFrames["FS"..LineNr]["Button"]:Hide()
 				local APRwidth = APR.QuestList.QuestFrames["FS"..LineNr]:GetStringWidth()
