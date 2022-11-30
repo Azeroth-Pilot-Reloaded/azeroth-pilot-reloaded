@@ -15971,6 +15971,9 @@
 				58724,
 			},
 		},
+		{
+			["ZoneDoneSave"] = 1,
+		},
 	}
 	APR.QuestStepList["1671-Z11-Oribos-Story"] = {
 		{
@@ -20312,6 +20315,9 @@
 				["x"] = 7067.1,
 			},
 		},
+		{
+			["ZoneDoneSave"] = 1,
+		},
 	}
 	APR.QuestStepList["1543-Z13-TheMaw-Story"] = {
 		{
@@ -20886,6 +20892,9 @@
 			["Done"] = {
 				57878,
 			},
+		},
+		{
+			["ZoneDoneSave"] = 1,
 		},
 	}
 	APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
@@ -37949,6 +37958,9 @@
 				57878,
 			},
 		},
+		{
+			["ZoneDoneSave"] = 1,
+		},
 	}
 	APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
 		{
@@ -55010,6 +55022,9 @@
 				57878,
 			},
 		},
+		{
+			["ZoneDoneSave"] = 1,
+		},
 	}
 	APR.QuestStepList["84-IntroQline"] = {
 		{
@@ -55254,6 +55269,9 @@
 				59751,
 			},
 		},
+		{
+			["ZoneDoneSave"] = 1,
+		},
 	}
 	APR.QuestStepList["85-IntroQline"] = {
 		{
@@ -55497,5 +55515,8 @@
 			["Done"] = {
 				59751,
 			},
+		},
+		{
+			["ZoneDoneSave"] = 1,
 		},
 	}

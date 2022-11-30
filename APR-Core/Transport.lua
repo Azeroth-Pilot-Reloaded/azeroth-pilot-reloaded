@@ -562,22 +562,6 @@ function APR.FP.GetCustomZone()
 		end
 
 	end
-	if (zenr == 0 and C_QuestLog.IsQuestFlaggedCompleted(62023) == true and C_QuestLog.IsQuestFlaggedCompleted(57904) == false) then
-		APR.ProgressShown = 1
-		return 1533, "1670-Kyrian"
-	end
-	if (zenr == 0 and C_QuestLog.IsQuestFlaggedCompleted(62019) == true and C_QuestLog.IsQuestFlaggedCompleted(58159) == false) then
-		APR.ProgressShown = 1
-		return 1565, "1670-NightFae"
-	end
-	if (zenr == 0 and C_QuestLog.IsQuestFlaggedCompleted(62020) == true and C_QuestLog.IsQuestFlaggedCompleted(59320) == false) then
-		APR.ProgressShown = 1
-		return 1525, "1670-Venthyr"
-	end
-	if (zenr == 0 and C_QuestLog.IsQuestFlaggedCompleted(62017) == true and C_QuestLog.IsQuestFlaggedCompleted(60049) == false) then
-		APR.ProgressShown = 1
-		return 1536, "1670-Necrolords"
-	end
 	APR.ProgressText = "Custom Path"
 	if (not APR_Custom) then
 		return
@@ -828,20 +812,6 @@ function APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
 	if (APR.ActiveMap == "1525-Z14-Revendreth-Story" and APRt_Zone == 1670) then
 		APRt_Zone = 1525
 	end
-
-	if (APR.ActiveMap == "1670-Necrolords" and APRt_Zone == 1670) then
-		APRt_Zone = 1536
-	end
-	if (APR.ActiveMap == "1670-Venthyr" and APRt_Zone == 1670) then
-		APRt_Zone = 1525
-	end
-	if (APR.ActiveMap == "1670-NightFae" and APRt_Zone == 1670) then
-		APRt_Zone = 1565
-	end
-	if (APR.ActiveMap == "1670-Kyrian" and APRt_Zone == 1670) then
-		APRt_Zone = 1533
-	end
-
 	if (APR.ActiveMap == "1670-Z1-Oribos-StoryXBastion" and APRt_Zone == 1533) then
 		APRt_Zone = 1670
 	end
@@ -984,9 +954,11 @@ function APR.FP.GetMeToNextZone2()
 				end
 			end
 		end
-		APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["DESTINATION"]..": "..mapzinfoz.name..", "..mapzinfoz2.name.." ("..GoToZone..")")
-		APR.QuestList.QuestFrames[LineNr]:Show()
-		DestSet = 1
+		if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1) then
+			APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["DESTINATION"]..": "..mapzinfoz.name..", "..mapzinfoz2.name.." ("..GoToZone..")")
+			APR.QuestList.QuestFrames[LineNr]:Show()
+			DestSet = 1
+		end
 	end
 	if (((APRt_Zone == 181) or (APRt_Zone == 202) or (APRt_Zone == 179)) and APR.ActiveMap == "A179-Gilneas") then
 		APR.ZoneTransfer = 0
