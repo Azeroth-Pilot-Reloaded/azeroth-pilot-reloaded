@@ -4813,6 +4813,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2315,
           },
           ["Range"] = 20,
+          ["Gossip"] = 1,
      },
      {	-- Step 98
           ["Done"] = {
@@ -5146,28 +5147,10 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                [66654] = {
                     ["1"] = "1",
                },
-          },
-          ["TT"] = {
-               ["y"] = -1968.8,
-               ["x"] = 4139.1,
-          },
-          ["Trigger"] = {
-               ["y"] = -1968.8,
-               ["x"] = 4139.1,
-          },
-          ["Range"] = 75,
-          ["Fillers"] = {
                [66655] = {
                     ["1"] = "1",
                },
           },
-     },
-     {	-- Step 128
-          ["Qpart"] = {
-               [66654] = {
-                    ["1"] = "1",
-               },
-          },
           ["TT"] = {
                ["y"] = -1968.8,
                ["x"] = 4139.1,
@@ -5178,7 +5161,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 75,
      },
-     {	-- Step 129
+     {	-- Step 128
           ["Done"] = {
                66654,
                66655,
@@ -5188,7 +5171,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4264.8,
           },
      },
-     {	-- Step 130
+     {	-- Step 129
           ["PickUp"] = {
                69936,
           },
@@ -5197,7 +5180,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4264.8,
           },
      },
-     {	-- Step 131
+     {	-- Step 130
           ["Qpart"] = {
                [69936] = {
                     ["1"] = "1",
@@ -5213,8 +5196,9 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 75,
           ["ExtraLineText"] = "PATROLS_AROUND_AREA",
+          ["RaidIcon"] = 191145,
      },
-     {	-- Step 132
+     {	-- Step 131
           ["Done"] = {
                69936,
           },
@@ -5223,7 +5207,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4264.8,
           },
      },
-     {	-- Step 133
+     {	-- Step 132
           ["PickUp"] = {
                66656,
           },
@@ -5232,45 +5216,110 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4264.8,
           },
      },
-     {	-- Step 134
+     {	-- Step 133
           ["Qpart"] = {
                [66656] = {
                     ["1"] = "1",
                },
           },
           ["TT"] = {
-               ["y"] = -2138.5,
-               ["x"] = 4396.0,
+               ["y"] = -2061.5,
+               ["x"] = 4467.0,
           },
           ["Trigger"] = {
-               ["y"] = -2138.5,
-               ["x"] = 4396.0,
+               ["y"] = -2061.5,
+               ["x"] = 4467.0,
           },
-          ["Range"] = 225,
-          ["ExtraLineText"] = "KILL_SPIRITS_AND_USE_THE_TOTEM_ON_THE_SPIRITS",
+          ["Range"] = 10,
+          ["ExtraLineText"] = "KILL_CATHAN_AND_USE_ZORIGS_TOTEM_OF_RESPITE_ON_THEIR_CORPSE",
           ["Button"] = {
                ["66656-1"] = 194447,
           },
+          ["RaidIcon"] = 192224,
+     },
+     {	-- Step 134
+          ["Qpart"] = {
+               [66656] = {
+                    ["2"] = "2",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -2169.4,
+               ["x"] = 4467.4,
+          },
+          ["Trigger"] = {
+               ["y"] = -2169.4,
+               ["x"] = 4467.4,
+          },
+          ["Range"] = 28,
+          ["ExtraLineText"] = "KILL_ZAPHIL_AND_USE_ZORIGS_TOTEM_OF_RESPITE_ON_THEIR_CORPSE",
+          ["Button"] = {
+               ["66656-2"] = 194447,
+          },
+          ["RaidIcon"] = 192223,
      },
      {	-- Step 135
+          ["Qpart"] = {
+               [66656] = {
+                    ["4"] = "4",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -2203.1,
+               ["x"] = 4310.4,
+          },
+          ["Trigger"] = {
+               ["y"] = -2203.1,
+               ["x"] = 4310.4,
+          },
+          ["Range"] = 33,
+          ["ExtraLineText"] = "KILL_DIHAR_AND_USE_ZORIGS_TOTEM_OF_RESPITE_ON_THEIR_CORPSE",
+          ["Button"] = {
+               ["66656-4"] = 194447,
+          },
+          ["RaidIcon"] = 192225,
+     },
+     {	-- Step 136
+          ["Qpart"] = {
+               [66656] = {
+                    ["3"] = "3",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -2154.0,
+               ["x"] = 4369.8,
+          },
+          ["Trigger"] = {
+               ["y"] = -2154.0,
+               ["x"] = 4369.8,
+          },
+          ["Range"] = 40,
+          ["ExtraLineText"] = "KILL_GANMAT_AND_USE_ZORIGS_TOTEM_OF_RESPITE_ON_THEIR_CORPSE",
+          ["Button"] = {
+               ["66656-3"] = 194447,
+          },
+          ["RaidIcon"] = 192226,
+     },
+     {	-- Step 137
           ["Done"] = {
                66656,
           },
           ["TT"] = {
-               ["y"] = -2187.1,
-               ["x"] = 4437.1,
+               ["y"] = -2115.5,
+               ["x"] = 4401.1,
           },
+          ["ExtraLineText"] = "TURN_IN_INITIATE_ZORIG_WHO_SHOULD_BE_RIGHT_BESIDE_YOU",
      },
-     {	-- Step 136
+     {	-- Step 138
           ["PickUp"] = {
                66657,
           },
           ["TT"] = {
-               ["y"] = -2187.1,
-               ["x"] = 4437.1,
+               ["y"] = -2115.5,
+               ["x"] = 4401.1,
           },
      },
-     {	-- Step 137
+     {	-- Step 139
           ["Qpart"] = {
                [66657] = {
                     ["1"] = "1",
@@ -5286,7 +5335,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 15,
      },
-     {	-- Step 138
+     {	-- Step 140
           ["Qpart"] = {
                [66657] = {
                     ["2"] = "2",
@@ -5302,7 +5351,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 139
+     {	-- Step 141
           ["Qpart"] = {
                [66657] = {
                     ["3"] = "3",
@@ -5318,7 +5367,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 140
+     {	-- Step 142
           ["Done"] = {
                66657,
           },
@@ -5327,7 +5376,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4437.1,
           },
      },
-     {	-- Step 141
+     {	-- Step 143
           ["Qpart"] = {
                [66222] = {
                     ["4"] = "4",
@@ -5343,8 +5392,9 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
           ["Gossip"] = 1,
+          ["GossipOptionID"] = 55139,
      },
-     {	-- Step 142
+     {	-- Step 144
           ["Qpart"] = {
                [66222] = {
                     ["1"] = "1",
@@ -5360,8 +5410,9 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
           ["Gossip"] = 1,
+          ["GossipOptionID"] = 87457,
      },
-     {	-- Step 143
+     {	-- Step 145
           ["PickUp"] = {
                71027,
           },
@@ -5371,7 +5422,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["ExtraLineText"] = "POSTER_ON_POLE",
      },
-     {	-- Step 144
+     {	-- Step 146
           ["Qpart"] = {
                [66222] = {
                     ["2"] = "2",
@@ -5387,8 +5438,9 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
           ["Gossip"] = 1,
+          ["GossipOptionID"] = 56252,
      },
-     {	-- Step 145
+     {	-- Step 147
           ["Qpart"] = {
                [66222] = {
                     ["3"] = "3",
@@ -5404,8 +5456,9 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
           ["Gossip"] = 1,
+          ["GossipOptionID"] = 54937,
      },
-     {	-- Step 146
+     {	-- Step 148
           ["PickUp"] = {
                66687,
           },
@@ -5414,7 +5467,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 3670.5,
           },
      },
-     {	-- Step 147
+     {	-- Step 149
           ["PickUp"] = {
                66688,
           },
@@ -5423,39 +5476,39 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 3670.5,
           },
      },
-     {	-- Step 148
+     {	-- Step 150
           ["Qpart"] = {
                [66688] = {
                     ["1"] = "1",
                },
           },
           ["TT"] = {
-               ["y"] = -1236.0,
-               ["x"] = 3314.6,
+               ["y"] = -1268.7,
+               ["x"] = 3334.3,
           },
           ["Trigger"] = {
-               ["y"] = -1236.0,
-               ["x"] = 3314.6,
+               ["y"] = -1268.7,
+               ["x"] = 3334.3,
           },
-          ["Range"] = 2,
+          ["Range"] = 191,
      },
-     {	-- Step 149
+     {	-- Step 151
           ["Qpart"] = {
                [66687] = {
                     ["3"] = "3",
                },
           },
           ["TT"] = {
-               ["y"] = -1086.9,
-               ["x"] = 3117.1,
+               ["y"] = -1221.1,
+               ["x"] = 2761.6,
           },
           ["Trigger"] = {
-               ["y"] = -1086.9,
-               ["x"] = 3117.1,
+               ["y"] = -1221.1,
+               ["x"] = 2761.6,
           },
-          ["Range"] = 2,
+          ["Range"] = 365,
      },
-     {	-- Step 150
+     {	-- Step 152
           ["Done"] = {
                66688,
           },
@@ -5464,7 +5517,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 3084.6,
           },
      },
-     {	-- Step 151
+     {	-- Step 153
           ["PickUp"] = {
                70374,
           },
@@ -5473,7 +5526,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 3084.6,
           },
      },
-     {	-- Step 152
+     {	-- Step 154
           ["Qpart"] = {
                [70374] = {
                     ["1"] = "1",
@@ -5487,15 +5540,11 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["y"] = -1079.7,
                ["x"] = 3084.6,
           },
-          ["Range"] = 2,
+          ["Range"] = 10,
           ["Gossip"] = 1,
      },
-     {	-- Step 153
-          ["Qpart"] = {
-               [66687] = {
-                    ["1"] = "1",
-               },
-          },
+     {	-- Step 155
+          ["CRange"] = 66687,
           ["TT"] = {
                ["y"] = -993.7,
                ["x"] = 3531.3,
@@ -5504,10 +5553,39 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["y"] = -993.7,
                ["x"] = 3531.3,
           },
-          ["Range"] = 2,
-          ["ExtraLineText"] = "INSIDE_CAVE",
+          ["Range"] = 10,
+          ["ExtraLineText"] = "GO_INSIDE_CAVE",
      },
-     {	-- Step 154
+     {	-- Step 156
+          ["Qpart"] = {
+               [66687] = {
+                    ["1"] = "1",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1112.6,
+               ["x"] = 3521.1,
+          },
+          ["Trigger"] = {
+               ["y"] = -1112.6,
+               ["x"] = 3521.1,
+          },
+          ["Range"] = 88,
+     },
+     {	-- Step 157
+          ["CRange"] = 66687,
+          ["TT"] = {
+               ["y"] = -993.7,
+               ["x"] = 3531.3,
+          },
+          ["Trigger"] = {
+               ["y"] = -993.7,
+               ["x"] = 3531.3,
+          },
+          ["Range"] = 10,
+          ["ExtraLineText"] = "EXIT_CAVE",
+     },
+     {	-- Step 158
           ["Qpart"] = {
                [71027] = {
                     ["1"] = "1",
@@ -5522,24 +5600,29 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 3624.5,
           },
           ["Range"] = 2,
+          ["Fillers"] = {
+               [66687] = {
+                    ["2"] = "2",
+               },
+          },
      },
-     {	-- Step 155
+     {	-- Step 159
           ["Qpart"] = {
                [66687] = {
                     ["2"] = "2",
                },
           },
           ["TT"] = {
-               ["y"] = -965.6,
-               ["x"] = 3624.5,
+               ["y"] = -927.9,
+               ["x"] = 3596.4,
           },
           ["Trigger"] = {
-               ["y"] = -965.6,
-               ["x"] = 3624.5,
+               ["y"] = -927.9,
+               ["x"] = 3596.4,
           },
-          ["Range"] = 2,
+          ["Range"] = 165,
      },
-     {	-- Step 156
+     {	-- Step 160
           ["Done"] = {
                66687,
           },
@@ -5548,7 +5631,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 3668.1,
           },
      },
-     {	-- Step 157
+     {	-- Step 161
           ["Done"] = {
                70374,
           },
@@ -5557,7 +5640,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 3668.1,
           },
      },
-     {	-- Step 158
+     {	-- Step 162
           ["PickUp"] = {
                66834,
           },
@@ -5566,7 +5649,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 3668.1,
           },
      },
-     {	-- Step 159
+     {	-- Step 163
           ["Qpart"] = {
                [66834] = {
                     ["1"] = "1",
@@ -5583,7 +5666,112 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "INSIDE_CAVE",
      },
-     {	-- Step 160
+     {	-- Step 164
+          ["Qpart"] = {
+               [66834] = {
+                    ["2"] = "2",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1501.7,
+               ["x"] = 3776.2,
+          },
+          ["Trigger"] = {
+               ["y"] = -1501.7,
+               ["x"] = 3776.2,
+          },
+          ["Range"] = 1,
+          ["ExtraLineText"] = "PICK_UP_TORCH",
+     },
+     {	-- Step 165
+          ["Qpart"] = {
+               [66834] = {
+                    ["3"] = "3",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1501.7,
+               ["x"] = 3776.2,
+          },
+          ["Trigger"] = {
+               ["y"] = -1501.7,
+               ["x"] = 3776.2,
+          },
+          ["Range"] = 1,
+          ["ExtraLineText"] = "CLICK_EXTRAACTIONBUTTON",
+          ["ExtraActionB"] = 1,
+     },
+     {	-- Step 166
+          ["Qpart"] = {
+               [66834] = {
+                    ["4"] = "4",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1496.0,
+               ["x"] = 3786.7,
+          },
+          ["Trigger"] = {
+               ["y"] = -1496.0,
+               ["x"] = 3786.7,
+          },
+          ["Range"] = 1,
+          ["ExtraLineText"] = "PICK_UP_SPEAR",
+     },
+     {	-- Step 167
+          ["Qpart"] = {
+               [66834] = {
+                    ["5"] = "5",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1496.0,
+               ["x"] = 3786.7,
+          },
+          ["Trigger"] = {
+               ["y"] = -1496.0,
+               ["x"] = 3786.7,
+          },
+          ["Range"] = 1,
+          ["ExtraLineText"] = "CLICK_EXTRAACTIONBUTTON",
+          ["ExtraActionB"] = 1,
+     },
+     {	-- Step 168
+          ["Qpart"] = {
+               [66834] = {
+                    ["6"] = "6",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1493.9,
+               ["x"] = 3787.8,
+          },
+          ["Trigger"] = {
+               ["y"] = -1493.9,
+               ["x"] = 3787.8,
+          },
+          ["Range"] = 1,
+          ["ExtraLineText"] = "PICK_UP_BOW",
+     },
+     {	-- Step 169
+          ["Qpart"] = {
+               [66834] = {
+                    ["7"] = "7",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1493.9,
+               ["x"] = 3787.8,
+          },
+          ["Trigger"] = {
+               ["y"] = -1493.9,
+               ["x"] = 3787.8,
+          },
+          ["Range"] = 1,
+          ["ExtraLineText"] = "CLICK_EXTRAACTIONBUTTON",
+          ["ExtraActionB"] = 1,
+     },
+     {	-- Step 170
           ["Done"] = {
                66834,
           },
@@ -5592,7 +5780,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 3668.1,
           },
      },
-     {	-- Step 161
+     {	-- Step 171
           ["Done"] = {
                71027,
           },
@@ -5601,7 +5789,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 3650.5,
           },
      },
-     {	-- Step 162
+     {	-- Step 172
           ["Done"] = {
                66222,
           },
@@ -5610,7 +5798,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 3650.5,
           },
      },
-     {	-- Step 163
+     {	-- Step 173
           ["PickUp"] = {
                70229,
           },
@@ -5619,7 +5807,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 3650.5,
           },
      },
-     {	-- Step 164
+     {	-- Step 174
           ["Done"] = {
                70229,
           },
@@ -5628,7 +5816,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4033.4,
           },
      },
-     {	-- Step 165
+     {	-- Step 175
           ["PickUp"] = {
                66254,
           },
@@ -5637,7 +5825,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4033.4,
           },
      },
-     {	-- Step 166
+     {	-- Step 176
           ["Qpart"] = {
                [66254] = {
                     ["1"] = "1",
@@ -5653,7 +5841,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 50,
      },
-     {	-- Step 167
+     {	-- Step 177
           ["Done"] = {
                66254,
           },
@@ -5662,7 +5850,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4033.4,
           },
      },
-     {	-- Step 168
+     {	-- Step 178
           ["PickUp"] = {
                66224,
           },
@@ -5671,40 +5859,40 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4033.4,
           },
      },
-     {	-- Step 169
+     {	-- Step 179
           ["Qpart"] = {
                [66224] = {
                     ["1"] = "1",
                },
           },
           ["TT"] = {
-               ["y"] = -1707.3,
-               ["x"] = 3447.0,
+               ["y"] = -1699.3,
+               ["x"] = 3443.8,
           },
           ["Trigger"] = {
-               ["y"] = -1707.3,
-               ["x"] = 3447.0,
+               ["y"] = -1699.3,
+               ["x"] = 3443.8,
           },
-          ["Range"] = 2,
+          ["Range"] = 10,
      },
-     {	-- Step 170
+     {	-- Step 180
           ["Qpart"] = {
                [66224] = {
                     ["2"] = "2",
                },
           },
           ["TT"] = {
-               ["y"] = -1771.7,
-               ["x"] = 3298.0,
+               ["y"] = -1707.2,
+               ["x"] = 3446.5,
           },
           ["Trigger"] = {
-               ["y"] = -1771.7,
-               ["x"] = 3298.0,
+               ["y"] = -1707.2,
+               ["x"] = 3446.5,
           },
-          ["Range"] = 2,
+          ["Range"] = 3,
           ["Gossip"] = 1,
      },
-     {	-- Step 171
+     {	-- Step 181
           ["Qpart"] = {
                [66224] = {
                     ["3"] = "3",
@@ -5712,46 +5900,71 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["TT"] = {
                ["y"] = -1772.0,
-               ["x"] = 3086.8,
+               ["x"] = 3297.2,
           },
           ["Trigger"] = {
                ["y"] = -1772.0,
-               ["x"] = 3086.8,
+               ["x"] = 3297.2,
           },
-          ["Range"] = 2,
+          ["Range"] = 20,
+     },
+     {	-- Step 182
+          ["Qpart"] = {
+               [66224] = {
+                    ["4"] = "4",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1772.0,
+               ["x"] = 3297.2,
+          },
+          ["Trigger"] = {
+               ["y"] = -1772.0,
+               ["x"] = 3297.2,
+          },
+          ["Range"] = 3,
           ["Gossip"] = 1,
      },
-     {	-- Step 172
+     {	-- Step 183
+          ["Qpart"] = {
+               [66224] = {
+                    ["5"] = "5",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1770.1,
+               ["x"] = 3085.4,
+          },
+          ["Trigger"] = {
+               ["y"] = -1770.1,
+               ["x"] = 3085.4,
+          },
+          ["Range"] = 24,
+     },
+     {	-- Step 184
           ["Done"] = {
                66224,
           },
           ["TT"] = {
-               ["y"] = -1772.0,
-               ["x"] = 3086.8,
+               ["y"] = -1770.1,
+               ["x"] = 3085.4,
           },
      },
-     {	-- Step 173
+     {	-- Step 185
           ["PickUp"] = {
                66225,
-          },
-          ["TT"] = {
-               ["y"] = -1772.0,
-               ["x"] = 3086.8,
-          },
-     },
-     {	-- Step 174
-          ["PickUp"] = {
                70195,
           },
           ["TT"] = {
-               ["y"] = -1772.0,
-               ["x"] = 3086.8,
+               ["y"] = -1770.1,
+               ["x"] = 3085.4,
           },
      },
-     {	-- Step 175
+     {	-- Step 186
           ["Qpart"] = {
                [70195] = {
                     ["1"] = "1",
+                    ["2"] = "2",
                },
           },
           ["TT"] = {
@@ -5762,40 +5975,33 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["y"] = -2055.1,
                ["x"] = 3114.1,
           },
-          ["Range"] = 2,
+          ["Range"] = 10,
           ["Fillers"] = {
                [66225] = {
                     ["1"] = "1",
                },
           },
+          ["ExtraLineText"] = "LOOT_RETREAT_ORDERS_FROM_SHELA_WINDBINDER",
      },
-     {	-- Step 176
+     {	-- Step 187
           ["Qpart"] = {
                [66225] = {
                     ["1"] = "1",
                },
           },
           ["TT"] = {
-               ["y"] = -1969.0,
-               ["x"] = 3045.9,
+               ["y"] = -1986.0,
+               ["x"] = 3027.8,
           },
           ["Trigger"] = {
-               ["y"] = -1969.0,
-               ["x"] = 3045.9,
+               ["y"] = -1986.0,
+               ["x"] = 3027.8,
           },
-          ["Range"] = 2,
+          ["Range"] = 141,
      },
-     {	-- Step 177
+     {	-- Step 188
           ["Done"] = {
                66225,
-          },
-          ["TT"] = {
-               ["y"] = -1772.0,
-               ["x"] = 3086.8,
-          },
-     },
-     {	-- Step 178
-          ["Done"] = {
                70195,
           },
           ["TT"] = {
@@ -5803,7 +6009,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 3086.8,
           },
      },
-     {	-- Step 179
+     {	-- Step 189
           ["PickUp"] = {
                66236,
           },
@@ -5812,7 +6018,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 3086.8,
           },
      },
-     {	-- Step 180
+     {	-- Step 190
           ["Done"] = {
                66236,
           },
@@ -5821,7 +6027,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2419.9,
           },
      },
-     {	-- Step 181
+     {	-- Step 191
           ["PickUp"] = {
                66242,
           },
@@ -5830,7 +6036,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2419.9,
           },
      },
-     {	-- Step 182
+     {	-- Step 192
           ["PickUp"] = {
                66256,
           },
@@ -5839,7 +6045,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2419.9,
           },
      },
-     {	-- Step 183
+     {	-- Step 193
           ["PickUp"] = {
                66257,
           },
@@ -5848,7 +6054,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2419.9,
           },
      },
-     {	-- Step 184
+     {	-- Step 194
           ["Qpart"] = {
                [66257] = {
                     ["1"] = "1",
@@ -5875,7 +6081,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 185
+     {	-- Step 195
           ["Qpart"] = {
                [66256] = {
                     ["1"] = "1",
@@ -5891,7 +6097,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 225,
      },
-     {	-- Step 186
+     {	-- Step 196
           ["Qpart"] = {
                [66242] = {
                     ["1"] = "1",
@@ -5907,7 +6113,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 225,
      },
-     {	-- Step 187
+     {	-- Step 197
           ["Qpart"] = {
                [69968] = {
                     ["1"] = "1",
@@ -5923,7 +6129,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 40,
      },
-     {	-- Step 188
+     {	-- Step 198
           ["Done"] = {
                66256,
           },
@@ -5932,7 +6138,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2227.3,
           },
      },
-     {	-- Step 189
+     {	-- Step 199
           ["Done"] = {
                66257,
           },
@@ -5941,7 +6147,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2227.3,
           },
      },
-     {	-- Step 190
+     {	-- Step 200
           ["Done"] = {
                66242,
           },
@@ -5950,7 +6156,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2227.3,
           },
      },
-     {	-- Step 191
+     {	-- Step 201
           ["PickUp"] = {
                66258,
           },
@@ -5959,7 +6165,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2227.3,
           },
      },
-     {	-- Step 192
+     {	-- Step 202
           ["Qpart"] = {
                [66258] = {
                     ["1"] = "1",
@@ -5975,7 +6181,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 50,
      },
-     {	-- Step 193
+     {	-- Step 203
           ["Done"] = {
                66258,
           },
@@ -5984,7 +6190,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2169.3,
           },
      },
-     {	-- Step 194
+     {	-- Step 204
           ["PickUp"] = {
                66259,
           },
@@ -5993,7 +6199,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2169.3,
           },
      },
-     {	-- Step 195
+     {	-- Step 205
           ["Qpart"] = {
                [66259] = {
                     ["1"] = "1",
@@ -6011,7 +6217,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["ExtraLineText"] = "TALK_NPC",
           ["Gossip"] = 1,
      },
-     {	-- Step 196
+     {	-- Step 206
           ["Done"] = {
                66259,
           },
@@ -6020,7 +6226,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2275.3,
           },
      },
-     {	-- Step 197
+     {	-- Step 207
           ["PickUp"] = {
                66327,
           },
@@ -6029,7 +6235,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2275.3,
           },
      },
-     {	-- Step 198
+     {	-- Step 208
           ["Qpart"] = {
                [66327] = {
                     ["1"] = "1",
@@ -6047,7 +6253,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Gossip"] = 1,
           ["ETA"] = 50,
      },
-     {	-- Step 199
+     {	-- Step 209
           ["Qpart"] = {
                [66327] = {
                     ["2"] = "2",
@@ -6064,7 +6270,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 200
+     {	-- Step 210
           ["Qpart"] = {
                [66327] = {
                     ["3"] = "3",
@@ -6080,7 +6286,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 201
+     {	-- Step 211
           ["Done"] = {
                66327,
           },
@@ -6089,7 +6295,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1289.9,
           },
      },
-     {	-- Step 202
+     {	-- Step 212
           ["PickUp"] = {
                70244,
           },
@@ -6098,7 +6304,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1289.9,
           },
      },
-     {	-- Step 203
+     {	-- Step 213
           ["Qpart"] = {
                [70244] = {
                     ["1"] = "1",
@@ -6114,7 +6320,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 204
+     {	-- Step 214
           ["Qpart"] = {
                [70244] = {
                     ["2"] = "2",
@@ -6130,7 +6336,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 205
+     {	-- Step 215
           ["Done"] = {
                70244,
           },
@@ -6139,7 +6345,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1010.7,
           },
      },
-     {	-- Step 206
+     {	-- Step 216
           ["PickUp"] = {
                66329,
           },
@@ -6148,7 +6354,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1010.7,
           },
      },
-     {	-- Step 207
+     {	-- Step 217
           ["Qpart"] = {
                [66329] = {
                     ["1"] = "1",
@@ -6165,7 +6371,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 208
+     {	-- Step 218
           ["Done"] = {
                66329,
           },
@@ -6174,7 +6380,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1010.7,
           },
      },
-     {	-- Step 209
+     {	-- Step 219
           ["PickUp"] = {
                66328,
           },
@@ -6183,7 +6389,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1010.7,
           },
      },
-     {	-- Step 210
+     {	-- Step 220
           ["Qpart"] = {
                [66328] = {
                     ["1"] = "1",
@@ -6200,7 +6406,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 211
+     {	-- Step 221
           ["GetFP"] = 66328,
           ["TT"] = {
                ["y"] = -1501.9,
@@ -6212,7 +6418,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 212
+     {	-- Step 222
           ["PickUp"] = {
                66681,
           },
@@ -6221,7 +6427,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 683.9,
           },
      },
-     {	-- Step 213
+     {	-- Step 223
           ["PickUp"] = {
                66680,
           },
@@ -6230,7 +6436,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 683.9,
           },
      },
-     {	-- Step 214
+     {	-- Step 224
           ["SetHS"] = 66680,
           ["TT"] = {
                ["y"] = -1572.8,
@@ -6238,7 +6444,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["ExtraLineText"] = "PINEWOOD_POST_HS",
      },
-     {	-- Step 215
+     {	-- Step 225
           ["Qpart"] = {
                [66680] = {
                     ["1"] = "1",
@@ -6255,7 +6461,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "BUY_DICED_MEAT",
      },
-     {	-- Step 216
+     {	-- Step 226
           ["Qpart"] = {
                [66680] = {
                     ["2"] = "2",
@@ -6273,7 +6479,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["ExtraLineText"] = "CLICK_DOG",
           ["Gossip"] = 1,
      },
-     {	-- Step 217
+     {	-- Step 227
           ["Qpart"] = {
                [66680] = {
                     ["3"] = "3",
@@ -6293,7 +6499,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["66680-3"] = 193892,
           },
      },
-     {	-- Step 218
+     {	-- Step 228
           ["PickUp"] = {
                66689,
           },
@@ -6303,7 +6509,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["ExtraLineText"] = "LOOTED_FROM_A_SLAIN_MOB",
      },
-     {	-- Step 219
+     {	-- Step 229
           ["Qpart"] = {
                [66681] = {
                     ["1"] = "1",
@@ -6319,7 +6525,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 125,
      },
-     {	-- Step 220
+     {	-- Step 230
           ["Done"] = {
                66681,
           },
@@ -6328,7 +6534,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 683.5,
           },
      },
-     {	-- Step 221
+     {	-- Step 231
           ["Done"] = {
                66689,
           },
@@ -6337,7 +6543,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 683.5,
           },
      },
-     {	-- Step 222
+     {	-- Step 232
           ["Done"] = {
                66680,
           },
@@ -6346,7 +6552,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 683.5,
           },
      },
-     {	-- Step 223
+     {	-- Step 233
           ["PickUp"] = {
                66683,
           },
@@ -6355,7 +6561,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 683.5,
           },
      },
-     {	-- Step 224
+     {	-- Step 234
           ["Qpart"] = {
                [66683] = {
                     ["1"] = "1",
@@ -6372,7 +6578,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 225
+     {	-- Step 235
           ["Qpart"] = {
                [66683] = {
                     ["3"] = "3",
@@ -6389,7 +6595,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 2,
      },
-     {	-- Step 226
+     {	-- Step 236
           ["Qpart"] = {
                [66683] = {
                     ["2"] = "2",
@@ -6406,7 +6612,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 2,
      },
-     {	-- Step 227
+     {	-- Step 237
           ["Done"] = {
                66683,
           },
@@ -6415,7 +6621,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 683.5,
           },
      },
-     {	-- Step 228
+     {	-- Step 238
           ["PickUp"] = {
                65836,
           },
@@ -6424,7 +6630,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 683.5,
           },
      },
-     {	-- Step 229
+     {	-- Step 239
           ["Qpart"] = {
                [65836] = {
                     ["1"] = "1",
@@ -6440,7 +6646,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 10,
      },
-     {	-- Step 230
+     {	-- Step 240
           ["Done"] = {
                65836,
           },
@@ -6449,7 +6655,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 459.0,
           },
      },
-     {	-- Step 231
+     {	-- Step 241
           ["PickUp"] = {
                66684,
           },
@@ -6458,7 +6664,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 459.0,
           },
      },
-     {	-- Step 232
+     {	-- Step 242
           ["Qpart"] = {
                [66684] = {
                     ["1"] = "1",
@@ -6475,7 +6681,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 15,
           ["ExtraLineText"] = "DESTROY_PILLAR_INSIDE_THE_CAVE",
      },
-     {	-- Step 233
+     {	-- Step 243
           ["Done"] = {
                66684,
           },
@@ -6484,7 +6690,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 696.4,
           },
      },
-     {	-- Step 234
+     {	-- Step 244
           ["Done"] = {
                66328,
           },
@@ -6493,7 +6699,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1341.4,
           },
      },
-     {	-- Step 235
+     {	-- Step 245
           ["PickUp"] = {
                66344,
           },
@@ -6502,7 +6708,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1333.8,
           },
      },
-     {	-- Step 236
+     {	-- Step 246
           ["Qpart"] = {
                [66344] = {
                     ["1"] = "1",
@@ -6520,7 +6726,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["ExtraLineText"] = "TAKE_DRAGON",
           ["Gossip"] = 1,
      },
-     {	-- Step 237
+     {	-- Step 247
           ["Done"] = {
                66344,
           },
@@ -6529,7 +6735,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4681.8,
           },
      },
-     {	-- Step 238
+     {	-- Step 248
           ["PickUp"] = {
                70220,
           },
@@ -6538,7 +6744,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4681.8,
           },
      },
-     {	-- Step 239
+     {	-- Step 249
           ["Qpart"] = {
                [70220] = {
                     ["4"] = "4",
@@ -6556,7 +6762,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["ExtraLineText"] = "USE_TORNADO_IN_FRONT_OF_MERITHRA_FOR_BOOST",
           ["Gossip"] = 1,
      },
-     {	-- Step 240
+     {	-- Step 250
           ["GetFP"] = 70220,
           ["TT"] = {
                ["y"] = -1490.4,
@@ -6568,7 +6774,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 241
+     {	-- Step 251
           ["Qpart"] = {
                [70220] = {
                     ["2"] = "2",
@@ -6585,7 +6791,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 242
+     {	-- Step 252
           ["Qpart"] = {
                [70220] = {
                     ["3"] = "3",
@@ -6602,7 +6808,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 243
+     {	-- Step 253
           ["Qpart"] = {
                [70220] = {
                     ["1"] = "1",
@@ -6619,7 +6825,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 244
+     {	-- Step 254
           ["Done"] = {
                70220,
           },
@@ -6628,7 +6834,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4681.7,
           },
      },
-     {	-- Step 245
+     {	-- Step 255
           ["PickUp"] = {
                66331,
           },
@@ -6637,7 +6843,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4681.7,
           },
      },
-     {	-- Step 246
+     {	-- Step 256
           ["Qpart"] = {
                [66331] = {
                     ["3"] = "3",
@@ -6654,7 +6860,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 247
+     {	-- Step 257
           ["Qpart"] = {
                [66331] = {
                     ["2"] = "2",
@@ -6671,7 +6877,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 248
+     {	-- Step 258
           ["Qpart"] = {
                [66331] = {
                     ["4"] = "4",
@@ -6688,7 +6894,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 249
+     {	-- Step 259
           ["Qpart"] = {
                [66331] = {
                     ["5"] = "5",
@@ -6705,7 +6911,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 250
+     {	-- Step 260
           ["Done"] = {
                66331,
           },
@@ -6714,7 +6920,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4878.5,
           },
      },
-     {	-- Step 251
+     {	-- Step 261
           ["PickUp"] = {
                66333,
           },
@@ -6728,7 +6934,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 252
+     {	-- Step 262
           ["Qpart"] = {
                [66333] = {
                     ["1"] = "1",
@@ -6749,7 +6955,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 253
+     {	-- Step 263
           ["Done"] = {
                66333,
           },
@@ -6763,7 +6969,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 254
+     {	-- Step 264
           ["PickUp"] = {
                66784,
           },
@@ -6777,7 +6983,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 255
+     {	-- Step 265
           ["PickUp"] = {
                66335,
           },
@@ -6791,7 +6997,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 256
+     {	-- Step 266
           ["Qpart"] = {
                [66335] = {
                     ["1"] = "1",
@@ -6812,7 +7018,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 257
+     {	-- Step 267
           ["Qpart"] = {
                [66335] = {
                     ["2"] = "2",
@@ -6834,7 +7040,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["ExtraLineText"] = "INSIDE_CAVE",
      },
-     {	-- Step 258
+     {	-- Step 268
           ["Qpart"] = {
                [66335] = {
                     ["3"] = "3",
@@ -6855,7 +7061,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 259
+     {	-- Step 269
           ["Done"] = {
                66335,
           },
@@ -6869,7 +7075,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 260
+     {	-- Step 270
           ["Qpart"] = {
                [66784] = {
                     ["1"] = "1",
@@ -6885,7 +7091,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 261
+     {	-- Step 271
           ["Done"] = {
                66784,
           },
@@ -6894,7 +7100,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4939.5,
           },
      },
-     {	-- Step 262
+     {	-- Step 272
           ["Qpart"] = {
                [66421] = {
                     ["1"] = "1",
@@ -6911,7 +7117,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 250,
           ["ExtraLineText"] = "BONUS_OBJECTIVE",
      },
-     {	-- Step 263
+     {	-- Step 273
           ["PickUp"] = {
                66337,
           },
@@ -6920,7 +7126,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4939.5,
           },
      },
-     {	-- Step 264
+     {	-- Step 274
           ["Qpart"] = {
                [66970] = {
                     ["1"] = "1",
@@ -6936,7 +7142,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 265
+     {	-- Step 275
           ["Qpart"] = {
                [66337] = {
                     ["1"] = "1",
@@ -6953,7 +7159,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "KILL_BIG_DRAGON",
      },
-     {	-- Step 266
+     {	-- Step 276
           ["Qpart"] = {
                [66337] = {
                     ["2"] = "2",
@@ -6971,7 +7177,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["ExtraLineText"] = "TALK_DRAGON",
           ["Gossip"] = 1,
      },
-     {	-- Step 267
+     {	-- Step 277
           ["Done"] = {
                66337,
           },
@@ -6980,7 +7186,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4879.6,
           },
      },
-     {	-- Step 268
+     {	-- Step 278
           ["PickUp"] = {
                66336,
           },
@@ -6989,7 +7195,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4879.6,
           },
      },
-     {	-- Step 269
+     {	-- Step 279
           ["Done"] = {
                66336,
           },
@@ -6998,7 +7204,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 5145.7,
           },
      },
-     {	-- Step 270
+     {	-- Step 280
           ["PickUp"] = {
                66783,
           },
@@ -7008,7 +7214,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Gossip"] = 1,
      },
-     {	-- Step 271
+     {	-- Step 281
           ["Qpart"] = {
                [66783] = {
                     ["1"] = "1",
@@ -7026,7 +7232,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["ExtraLineText"] = "FIRST_HUNT",
           ["Gossip"] = 1,
      },
-     {	-- Step 272
+     {	-- Step 282
           ["Qpart"] = {
                [66783] = {
                     ["2"] = "2",
@@ -7043,7 +7249,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "TAKE_SPEAR",
      },
-     {	-- Step 273
+     {	-- Step 283
           ["Qpart"] = {
                [66783] = {
                     ["3"] = "3",
@@ -7060,7 +7266,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 274
+     {	-- Step 284
           ["Qpart"] = {
                [66783] = {
                     ["4"] = "4",
@@ -7078,7 +7284,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["ExtraLineText"] = "EAGLE_FEATHER",
           ["Gossip"] = 3,
      },
-     {	-- Step 275
+     {	-- Step 285
           ["Qpart"] = {
                [66783] = {
                     ["5"] = "5",
@@ -7095,7 +7301,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "TAKE_FEATHER",
      },
-     {	-- Step 276
+     {	-- Step 286
           ["Qpart"] = {
                [66783] = {
                     ["6"] = "6",
@@ -7112,7 +7318,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 277
+     {	-- Step 287
           ["Qpart"] = {
                [66783] = {
                     ["7"] = "7",
@@ -7130,7 +7336,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["ExtraLineText"] = "BLOOD",
           ["Gossip"] = 3,
      },
-     {	-- Step 278
+     {	-- Step 288
           ["Qpart"] = {
                [66783] = {
                     ["8"] = "8",
@@ -7147,7 +7353,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "TAKE_HORN",
      },
-     {	-- Step 279
+     {	-- Step 289
           ["Qpart"] = {
                [66783] = {
                     ["9"] = "9",
@@ -7164,7 +7370,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 280
+     {	-- Step 290
           ["Qpart"] = {
                [66783] = {
                     ["10"] = "10",
@@ -7181,7 +7387,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "TAKE_SOIL",
      },
-     {	-- Step 281
+     {	-- Step 291
           ["Qpart"] = {
                [66783] = {
                     ["11"] = "11",
@@ -7198,7 +7404,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 282
+     {	-- Step 292
           ["Done"] = {
                66783,
           },
@@ -7207,7 +7413,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 5145.7,
           },
      },
-     {	-- Step 283
+     {	-- Step 293
           ["PickUp"] = {
                66340,
           },
@@ -7216,14 +7422,14 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 5145.7,
           },
      },
-     {	-- Step 284
+     {	-- Step 294
           ["UseHS"] = 66340,
           ["Button"] = {
                ["22345678-1"] = 6948,
           },
           ["ExtraLineText"] = "TO_PINEWOOD_POST",
      },
-     {	-- Step 285
+     {	-- Step 295
           ["Done"] = {
                66340,
           },
@@ -7232,7 +7438,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1393.3,
           },
      },
-     {	-- Step 286
+     {	-- Step 296
           ["PickUp"] = {
                65686,
           },
@@ -7241,11 +7447,11 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1393.3,
           },
      },
-     {	-- Step 287
+     {	-- Step 297
           ["ZoneDoneSave"] = 1,
      },
 }
- 
+
 -- Azure Span
 APR.QuestStepList["DF05-2024-AzureSpan"] = {
      {	-- Step 1
