@@ -3431,16 +3431,18 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 						APR.BookingList["PrintQStep"] = 1
 					end
 				else
-					local info = C_GossipInfo.GetOptions()
-					if next(info) then
-						for i, v in pairs(info) do
-							if(v.orderIndex == steps["Gossip"]) then
-								C_GossipInfo.SelectOption(v.gossipOptionID)
-							end
-						end
-					else
-						SelectGossipOption(steps["Gossip"])
-					end
+					SelectGossipOption(steps["Gossip"])
+					-- Keep this code in case of API update on the gossip selection
+					-- local info = C_GossipInfo.GetOptions()
+					-- if next(info) then
+					-- 	for i, v in pairs(info) do
+					-- 		if(v.orderIndex+1 == steps["Gossip"]) then
+					-- 			C_GossipInfo.SelectOption(v.gossipOptionID)
+					-- 		end
+					-- 	end
+					-- else
+					-- 	SelectGossipOption(steps["Gossip"])
+					-- end
 				end
 			end
 		end
