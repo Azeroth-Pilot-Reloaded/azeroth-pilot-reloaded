@@ -5,7 +5,6 @@
 ]]--
 
 local AceLocale = LibStub("AceLocale-3.0")
-local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale("APR")
 DISCORD = "https://discord.gg/YgcdybKdWX"
 APR = {}
