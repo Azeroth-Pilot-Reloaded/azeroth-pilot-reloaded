@@ -3,4 +3,4 @@ if not L then return end
 
 -- Author: Neogeekmo
 --------------------------------------------------------------------------------------------------------------------------------------------
-@localization(locale="frFR", format="lua_additive_table", handle-unlocalized="ignore", handle-unlocalized="ignore")@
+@localization(locale="frFR", format="lua_additive_table", handle-unlocalized="ignore")@
