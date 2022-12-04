@@ -2,4 +2,4 @@
 if not L then return end 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
-@localization(locale="deDE", format="lua_additive_table")@
+@localization(locale="deDE", format="lua_additive_table", handle-unlocalized="ignore")@
