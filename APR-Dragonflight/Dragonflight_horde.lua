@@ -1032,7 +1032,7 @@ if (APR.Faction == "Horde") then
                },
                ["ExtraLineText"] = "USE_REVEALING_DRAGONS_EYE",
                ["Button"] = {
-                    ["66163-1"] = 198859,
+                    ["66163"] = 198859,
                },
           },
           {	-- Step 9
@@ -2013,7 +2013,7 @@ if (APR.Faction == "Horde") then
                },
                ["Range"] = 225,
                ["Button"] = {
-                    ["66087-1"] = 376679,
+                    ["66087"] = 376679,
                },
           },
           {	-- Step 83
@@ -2230,7 +2230,7 @@ if (APR.Faction == "Horde") then
                },
                ["Range"] = 2,
                ["Button"] = {
-                    ["65938-1"] = 372959,
+                    ["65938"] = 372959,
                },
           },
           {	-- Step 99
@@ -2458,7 +2458,7 @@ if (APR.Faction == "Horde") then
                },
                ["Range"] = 2,
                ["Button"] = {
-                    ["66029-1"] = 192749,
+                    ["66029"] = 192749,
                },
           },
           {	-- Step 117
@@ -2482,7 +2482,7 @@ if (APR.Faction == "Horde") then
                     },
                },
                ["Button"] = {
-                    ["66031-1"] = 372520,
+                    ["66031"] = 372520,
                },
           },
           {	-- Step 118
@@ -2832,7 +2832,7 @@ if (APR.Faction == "Horde") then
                },
                ["Range"] = 2,
                ["Button"] = {
-                    ["66039-1"] = 192749,
+                    ["66039"] = 192749,
                },
           },
           {	-- Step 149

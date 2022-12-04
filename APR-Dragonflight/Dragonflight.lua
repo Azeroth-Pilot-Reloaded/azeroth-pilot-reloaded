@@ -375,6 +375,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
                },
           },
           ["ExtraLineText"] = "CONSULT_LEFT",
+          ["Gossip"] = 1,
      },
      {	-- Step 25
           ["Qpart"] = {
@@ -397,6 +398,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
                },
           },
           ["ExtraLineText"] = "CONSULT_RIGHT",
+          ["Gossip"] = 1,
      },
      {	-- Step 26
           ["CRange"] = 65993,
@@ -3296,7 +3298,6 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
           ["Qpart"] = {
                [66779] = {
                     ["3"] = "3",
-                    ["1"] = "1",
                },
           },
           ["TT"] = {
@@ -4647,7 +4648,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
           ["Button"] = {
-               ["66019-4"] = 375680,
+               ["66019"] = 375680,
           },
      },
      {	-- Step 87
@@ -4682,7 +4683,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
           ["Button"] = {
-               ["66019-6"] = 375765,
+               ["66019"] = 375765,
           },
      },
      {	-- Step 89
@@ -4717,7 +4718,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
           ["Button"] = {
-               ["66019-8"] = 375771,
+               ["66019"] = 375771,
           },
      },
      {	-- Step 91
@@ -4752,7 +4753,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
           ["Button"] = {
-               ["66019-10"] = 375932,
+               ["66019"] = 375932,
           },
      },
      {	-- Step 93
@@ -5233,7 +5234,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 10,
           ["ExtraLineText"] = "KILL_CATHAN_AND_USE_ZORIGS_TOTEM_OF_RESPITE_ON_THEIR_CORPSE",
           ["Button"] = {
-               ["66656-1"] = 194447,
+               ["66656"] = 194447,
           },
           ["RaidIcon"] = 192224,
      },
@@ -5254,7 +5255,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 28,
           ["ExtraLineText"] = "KILL_ZAPHIL_AND_USE_ZORIGS_TOTEM_OF_RESPITE_ON_THEIR_CORPSE",
           ["Button"] = {
-               ["66656-2"] = 194447,
+               ["66656"] = 194447,
           },
           ["RaidIcon"] = 192223,
      },
@@ -5275,7 +5276,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 33,
           ["ExtraLineText"] = "KILL_DIHAR_AND_USE_ZORIGS_TOTEM_OF_RESPITE_ON_THEIR_CORPSE",
           ["Button"] = {
-               ["66656-4"] = 194447,
+               ["66656"] = 194447,
           },
           ["RaidIcon"] = 192225,
      },
@@ -5296,7 +5297,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 40,
           ["ExtraLineText"] = "KILL_GANMAT_AND_USE_ZORIGS_TOTEM_OF_RESPITE_ON_THEIR_CORPSE",
           ["Button"] = {
-               ["66656-3"] = 194447,
+               ["66656"] = 194447,
           },
           ["RaidIcon"] = 192226,
      },
@@ -6055,65 +6056,65 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
      },
      {	-- Step 194
-          ["Qpart"] = {
+          ["QpartPart"] = {
                [66257] = {
                     ["1"] = "1",
                },
           },
           ["TT"] = {
-               ["y"] = -1981.7,
-               ["x"] = 2416.8,
+               ["y"] = -1982.1,
+               ["x"] = 2415.9,
           },
           ["Trigger"] = {
-               ["y"] = -1981.7,
-               ["x"] = 2416.8,
+               ["y"] = -1982.1,
+               ["x"] = 2415.9,
           },
-          ["Range"] = 500,
+          ["Range"] = 3,
           ["Fillers"] = {
                [66242] = {
                     ["1"] = "1",
                },
+               [66242] = {
+                    ["2"] = "2",
+               },
                [66256] = {
                     ["1"] = "1",
                },
-               [69968] = {
-                    ["1"] = "1",
+               [66256] = {
+                    ["2"] = "2",
                },
           },
+          ["ExtraLineText"] = "DESTROY_FIRST_WAGON",
+          ["TrigText"] = "1/4",
      },
      {	-- Step 195
-          ["Qpart"] = {
-               [66256] = {
-                    ["1"] = "1",
-               },
-          },
+          ["CRange"] = 69968,
           ["TT"] = {
-               ["y"] = -1890.5,
-               ["x"] = 2301.6,
+               ["y"] = -1955.3,
+               ["x"] = 2292.6,
           },
           ["Trigger"] = {
-               ["y"] = -1890.5,
-               ["x"] = 2301.6,
+               ["y"] = -1955.3,
+               ["x"] = 2292.6,
           },
-          ["Range"] = 225,
-     },
-     {	-- Step 196
-          ["Qpart"] = {
+          ["Range"] = 5,
+          ["Fillers"] = {
                [66242] = {
                     ["1"] = "1",
                },
+               [66242] = {
+                    ["2"] = "2",
+               },
+               [66256] = {
+                    ["1"] = "1",
+               },
+               [66256] = {
+                    ["2"] = "2",
+               },
           },
-          ["TT"] = {
-               ["y"] = -1890.5,
-               ["x"] = 2301.6,
-          },
-          ["Trigger"] = {
-               ["y"] = -1890.5,
-               ["x"] = 2301.6,
-          },
-          ["Range"] = 225,
+          ["ExtraLineText"] = "HEAD_BONUS_OBJECTIVE",
      },
-     {	-- Step 197
+     {	-- Step 196
           ["Qpart"] = {
                [69968] = {
                     ["1"] = "1",
@@ -6127,19 +6128,145 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["y"] = -1955.3,
                ["x"] = 2292.6,
           },
-          ["Range"] = 40,
+          ["Range"] = 10,
+          ["Fillers"] = {
+               [66242] = {
+                    ["1"] = "1",
+               },
+               [66242] = {
+                    ["2"] = "2",
+               },
+               [66256] = {
+                    ["1"] = "1",
+               },
+               [66256] = {
+                    ["2"] = "2",
+               },
+          },
+          ["ExtraLineText"] = "KILL_PROZELA_GALESHOT_BONUS_OBJECTIVE",
+          ["RaidIcon"] = 193669,
      },
-     {	-- Step 198
-          ["Done"] = {
-               66256,
+     {	-- Step 197
+          ["QpartPart"] = {
+               [66257] = {
+                    ["1"] = "1",
+               },
           },
           ["TT"] = {
-               ["y"] = -1787.2,
-               ["x"] = 2227.3,
+               ["y"] = -1886.3,
+               ["x"] = 2336.1,
           },
+          ["Trigger"] = {
+               ["y"] = -1886.3,
+               ["x"] = 2336.1,
+          },
+          ["Range"] = 3,
+          ["Fillers"] = {
+               [66242] = {
+                    ["1"] = "1",
+               },
+               [66242] = {
+                    ["2"] = "2",
+               },
+               [66256] = {
+                    ["1"] = "1",
+               },
+               [66256] = {
+                    ["2"] = "2",
+               },
+          },
+          ["ExtraLineText"] = "DESTROY_SECOND_WAGON",
+          ["TrigText"] = "2/4",
+     },
+     {	-- Step 198
+          ["QpartPart"] = {
+               [66257] = {
+                    ["1"] = "1",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1701.6,
+               ["x"] = 2364.0,
+          },
+          ["Trigger"] = {
+               ["y"] = -1701.6,
+               ["x"] = 2364.0,
+          },
+          ["Range"] = 3,
+          ["Fillers"] = {
+               [66242] = {
+                    ["1"] = "1",
+               },
+               [66242] = {
+                    ["2"] = "2",
+               },
+               [66256] = {
+                    ["1"] = "1",
+               },
+               [66256] = {
+                    ["2"] = "2",
+               },
+          },
+          ["ExtraLineText"] = "DESTROY_THIRD_WAGON",
+          ["TrigText"] = "3/4",
      },
      {	-- Step 199
+          ["QpartPart"] = {
+               [66257] = {
+                    ["1"] = "1",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1944.5,
+               ["x"] = 2142.4,
+          },
+          ["Trigger"] = {
+               ["y"] = -1944.5,
+               ["x"] = 2142.4,
+          },
+          ["Range"] = 3,
+          ["Fillers"] = {
+               [66242] = {
+                    ["1"] = "1",
+               },
+               [66242] = {
+                    ["2"] = "2",
+               },
+               [66256] = {
+                    ["1"] = "1",
+               },
+               [66256] = {
+                    ["2"] = "2",
+               },
+          },
+          ["ExtraLineText"] = "DESTROY_FOURTH_WAGON",
+          ["TrigText"] = "4/4",
+     },
+     {	-- Step 200
+          ["Qpart"] = {
+               [66242] = {
+                    ["1"] = "1",
+                    ["2"] = "2",
+               },
+               [66256] = {
+                    ["1"] = "1",
+                    ["2"] = "2",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1881.9,
+               ["x"] = 2296.7,
+          },
+          ["Trigger"] = {
+               ["y"] = -1881.9,
+               ["x"] = 2296.7,
+          },
+          ["Range"] = 210,
+     },
+     {	-- Step 201
           ["Done"] = {
+               66242,
+               66256,
                66257,
           },
           ["TT"] = {
@@ -6147,16 +6274,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2227.3,
           },
      },
-     {	-- Step 200
-          ["Done"] = {
-               66242,
-          },
-          ["TT"] = {
-               ["y"] = -1787.2,
-               ["x"] = 2227.3,
-          },
-     },
-     {	-- Step 201
+     {	-- Step 202
           ["PickUp"] = {
                66258,
           },
@@ -6165,10 +6283,11 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2227.3,
           },
      },
-     {	-- Step 202
+     {	-- Step 203
           ["Qpart"] = {
                [66258] = {
                     ["1"] = "1",
+                    ["2"] = "2",
                },
           },
           ["TT"] = {
@@ -6181,7 +6300,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 50,
      },
-     {	-- Step 203
+     {	-- Step 204
           ["Done"] = {
                66258,
           },
@@ -6190,7 +6309,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2169.3,
           },
      },
-     {	-- Step 204
+     {	-- Step 205
           ["PickUp"] = {
                66259,
           },
@@ -6199,7 +6318,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2169.3,
           },
      },
-     {	-- Step 205
+     {	-- Step 206
           ["Qpart"] = {
                [66259] = {
                     ["1"] = "1",
@@ -6217,7 +6336,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["ExtraLineText"] = "TALK_NPC",
           ["Gossip"] = 1,
      },
-     {	-- Step 206
+     {	-- Step 207
           ["Done"] = {
                66259,
           },
@@ -6226,7 +6345,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2275.3,
           },
      },
-     {	-- Step 207
+     {	-- Step 208
           ["PickUp"] = {
                66327,
           },
@@ -6235,7 +6354,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2275.3,
           },
      },
-     {	-- Step 208
+     {	-- Step 209
           ["Qpart"] = {
                [66327] = {
                     ["1"] = "1",
@@ -6253,7 +6372,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Gossip"] = 1,
           ["ETA"] = 50,
      },
-     {	-- Step 209
+     {	-- Step 210
           ["Qpart"] = {
                [66327] = {
                     ["2"] = "2",
@@ -6270,7 +6389,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 210
+     {	-- Step 211
           ["Qpart"] = {
                [66327] = {
                     ["3"] = "3",
@@ -6286,7 +6405,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 211
+     {	-- Step 212
           ["Done"] = {
                66327,
           },
@@ -6295,7 +6414,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1289.9,
           },
      },
-     {	-- Step 212
+     {	-- Step 213
           ["PickUp"] = {
                70244,
           },
@@ -6304,23 +6423,23 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1289.9,
           },
      },
-     {	-- Step 213
+     {	-- Step 214
           ["Qpart"] = {
                [70244] = {
                     ["1"] = "1",
                },
           },
           ["TT"] = {
-               ["y"] = -652.5,
-               ["x"] = 1148.9,
+               ["y"] = -644.1,
+               ["x"] = 1119.3,
           },
           ["Trigger"] = {
                ["y"] = -652.5,
                ["x"] = 1148.9,
           },
-          ["Range"] = 2,
+          ["Range"] = 135,
      },
-     {	-- Step 214
+     {	-- Step 215
           ["Qpart"] = {
                [70244] = {
                     ["2"] = "2",
@@ -6334,9 +6453,10 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["y"] = -641.7,
                ["x"] = 1054.0,
           },
-          ["Range"] = 2,
+          ["Range"] = 5,
+          ["RaidIcon"] = 190932,
      },
-     {	-- Step 215
+     {	-- Step 216
           ["Done"] = {
                70244,
           },
@@ -6345,7 +6465,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1010.7,
           },
      },
-     {	-- Step 216
+     {	-- Step 217
           ["PickUp"] = {
                66329,
           },
@@ -6354,7 +6474,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1010.7,
           },
      },
-     {	-- Step 217
+     {	-- Step 218
           ["Qpart"] = {
                [66329] = {
                     ["1"] = "1",
@@ -6371,7 +6491,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 218
+     {	-- Step 219
           ["Done"] = {
                66329,
           },
@@ -6380,7 +6500,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1010.7,
           },
      },
-     {	-- Step 219
+     {	-- Step 220
           ["PickUp"] = {
                66328,
           },
@@ -6389,7 +6509,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1010.7,
           },
      },
-     {	-- Step 220
+     {	-- Step 221
           ["Qpart"] = {
                [66328] = {
                     ["1"] = "1",
@@ -6403,10 +6523,28 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["y"] = -1120.0,
                ["x"] = 1341.2,
           },
+          ["Range"] = 30,
+          ["ExtraLineText"] = "FIND_GREEN_DRAGONS",
+     },
+     {	-- Step 222
+          ["Qpart"] = {
+               [66328] = {
+                    ["2"] = "2",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1120.0,
+               ["x"] = 1341.2,
+          },
+          ["Trigger"] = {
+               ["y"] = -1120.0,
+               ["x"] = 1341.2,
+          },
           ["Range"] = 2,
+          ["ExtraLineText"] = "SPEAK_KHANAM_MATRA",
           ["Gossip"] = 1,
      },
-     {	-- Step 221
+     {	-- Step 223
           ["GetFP"] = 66328,
           ["TT"] = {
                ["y"] = -1501.9,
@@ -6418,7 +6556,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 222
+     {	-- Step 224
           ["PickUp"] = {
                66681,
           },
@@ -6427,7 +6565,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 683.9,
           },
      },
-     {	-- Step 223
+     {	-- Step 225
           ["PickUp"] = {
                66680,
           },
@@ -6436,15 +6574,16 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 683.9,
           },
      },
-     {	-- Step 224
+     {	-- Step 226
           ["SetHS"] = 66680,
           ["TT"] = {
                ["y"] = -1572.8,
                ["x"] = 660.6,
           },
           ["ExtraLineText"] = "PINEWOOD_POST_HS",
+          ["Gossip"] = 1,
      },
-     {	-- Step 225
+     {	-- Step 227
           ["Qpart"] = {
                [66680] = {
                     ["1"] = "1",
@@ -6460,8 +6599,9 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
           ["ExtraLineText"] = "BUY_DICED_MEAT",
+          ["Gossip"] = 1,
      },
-     {	-- Step 226
+     {	-- Step 228
           ["Qpart"] = {
                [66680] = {
                     ["2"] = "2",
@@ -6479,38 +6619,32 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["ExtraLineText"] = "CLICK_DOG",
           ["Gossip"] = 1,
      },
-     {	-- Step 227
+     {	-- Step 229
+          ["DropQuest"] = 66689,
+          ["DroppableQuest"] = {
+               ["Text"] = "PINEHOOF_DOE",
+               ["Qid"] = 66689,
+               ["MobId"] = 191496,
+          },
+          ["TT"] = {
+               ["y"] = -1878.0,
+               ["x"] = 650.9,
+          },
+          ["Fillers"] = {
+               [66680] = {
+                    ["3"] = "3",
+               },
+               [66681] = {
+                    ["1"] = "1",
+               },
+          },
+          ["ExtraLineText"] = "LOOT_STORMTOUCHED_SHARDS_START_A_QUEST",
+     },
+     {	-- Step 230
           ["Qpart"] = {
                [66680] = {
                     ["3"] = "3",
                },
-          },
-          ["TT"] = {
-               ["y"] = -1878.0,
-               ["x"] = 650.9,
-          },
-          ["Trigger"] = {
-               ["y"] = -1878.0,
-               ["x"] = 650.9,
-          },
-          ["Range"] = 125,
-          ["ExtraLineText"] = "USE_ITEM_ON_ARGALI",
-          ["Button"] = {
-               ["66680-3"] = 193892,
-          },
-     },
-     {	-- Step 228
-          ["PickUp"] = {
-               66689,
-          },
-          ["TT"] = {
-               ["y"] = -1878.0,
-               ["x"] = 650.9,
-          },
-          ["ExtraLineText"] = "LOOTED_FROM_A_SLAIN_MOB",
-     },
-     {	-- Step 229
-          ["Qpart"] = {
                [66681] = {
                     ["1"] = "1",
                },
@@ -6524,18 +6658,15 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 650.9,
           },
           ["Range"] = 125,
-     },
-     {	-- Step 230
-          ["Done"] = {
-               66681,
-          },
-          ["TT"] = {
-               ["y"] = -1556.4,
-               ["x"] = 683.5,
+          ["ExtraLineText"] = "USE_ITEM_ON_ARGALI",
+          ["Button"] = {
+               ["66680"] = 193892,
           },
      },
      {	-- Step 231
           ["Done"] = {
+               66680,
+               66681,
                66689,
           },
           ["TT"] = {
@@ -6544,15 +6675,6 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
      },
      {	-- Step 232
-          ["Done"] = {
-               66680,
-          },
-          ["TT"] = {
-               ["y"] = -1556.4,
-               ["x"] = 683.5,
-          },
-     },
-     {	-- Step 233
           ["PickUp"] = {
                66683,
           },
@@ -6561,7 +6683,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 683.5,
           },
      },
-     {	-- Step 234
+     {	-- Step 233
           ["Qpart"] = {
                [66683] = {
                     ["1"] = "1",
@@ -6578,7 +6700,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 235
+     {	-- Step 234
           ["Qpart"] = {
                [66683] = {
                     ["3"] = "3",
@@ -6595,7 +6717,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 2,
      },
-     {	-- Step 236
+     {	-- Step 235
           ["Qpart"] = {
                [66683] = {
                     ["2"] = "2",
@@ -6612,7 +6734,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 2,
      },
-     {	-- Step 237
+     {	-- Step 236
           ["Done"] = {
                66683,
           },
@@ -6621,7 +6743,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 683.5,
           },
      },
-     {	-- Step 238
+     {	-- Step 237
           ["PickUp"] = {
                65836,
           },
@@ -6630,10 +6752,26 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 683.5,
           },
      },
-     {	-- Step 239
+     {	-- Step 238
           ["Qpart"] = {
                [65836] = {
                     ["1"] = "1",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1646.7,
+               ["x"] = 459.0,
+          },
+          ["Trigger"] = {
+               ["y"] = -1646.7,
+               ["x"] = 459.0,
+          },
+          ["Range"] = 10,
+     },
+     {	-- Step 239
+          ["Qpart"] = {
+               [65836] = {
+                    ["2"] = "2",
                },
           },
           ["TT"] = {
@@ -6668,6 +6806,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Qpart"] = {
                [66684] = {
                     ["1"] = "1",
+                    ["2"] = "2",
                },
           },
           ["TT"] = {
@@ -6747,19 +6886,18 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
      {	-- Step 249
           ["Qpart"] = {
                [70220] = {
-                    ["4"] = "4",
+                    ["2"] = "2",
                },
           },
           ["TT"] = {
-               ["y"] = -1607.0,
-               ["x"] = 4567.8,
+               ["y"] = -1490.4,
+               ["x"] = 4563.0,
           },
           ["Trigger"] = {
-               ["y"] = -1607.0,
-               ["x"] = 4567.8,
+               ["y"] = -1490.4,
+               ["x"] = 4563.0,
           },
           ["Range"] = 2,
-          ["ExtraLineText"] = "USE_TORNADO_IN_FRONT_OF_MERITHRA_FOR_BOOST",
           ["Gossip"] = 1,
      },
      {	-- Step 250
@@ -6777,23 +6915,6 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
      {	-- Step 251
           ["Qpart"] = {
                [70220] = {
-                    ["2"] = "2",
-               },
-          },
-          ["TT"] = {
-               ["y"] = -1490.4,
-               ["x"] = 4563.0,
-          },
-          ["Trigger"] = {
-               ["y"] = -1490.4,
-               ["x"] = 4563.0,
-          },
-          ["Range"] = 2,
-          ["Gossip"] = 1,
-     },
-     {	-- Step 252
-          ["Qpart"] = {
-               [70220] = {
                     ["3"] = "3",
                },
           },
@@ -6808,7 +6929,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 253
+     {	-- Step 252
           ["Qpart"] = {
                [70220] = {
                     ["1"] = "1",
@@ -6825,7 +6946,41 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
+     {	-- Step 253
+          ["Qpart"] = {
+               [70220] = {
+                    ["4"] = "4",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1428.4,
+               ["x"] = 4604.8,
+          },
+          ["Trigger"] = {
+               ["y"] = -1428.4,
+               ["x"] = 4604.8,
+          },
+          ["Range"] = 2,
+          ["Gossip"] = 1,
+     },
      {	-- Step 254
+          ["Qpart"] = {
+               [70220] = {
+                    ["5"] = "5",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -1621.0,
+               ["x"] = 4551.2,
+          },
+          ["Trigger"] = {
+               ["y"] = -1621.0,
+               ["x"] = 4551.2,
+          },
+          ["Range"] = 2,
+          ["Gossip"] = 1,
+     },
+     {	-- Step 255
           ["Done"] = {
                70220,
           },
@@ -6834,7 +6989,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4681.7,
           },
      },
-     {	-- Step 255
+     {	-- Step 256
           ["PickUp"] = {
                66331,
           },
@@ -6843,7 +6998,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4681.7,
           },
      },
-     {	-- Step 256
+     {	-- Step 257
           ["Qpart"] = {
                [66331] = {
                     ["3"] = "3",
@@ -6860,7 +7015,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 257
+     {	-- Step 258
           ["Qpart"] = {
                [66331] = {
                     ["2"] = "2",
@@ -6877,7 +7032,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 258
+     {	-- Step 259
           ["Qpart"] = {
                [66331] = {
                     ["4"] = "4",
@@ -6894,7 +7049,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 259
+     {	-- Step 260
           ["Qpart"] = {
                [66331] = {
                     ["5"] = "5",
@@ -6911,7 +7066,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 260
+     {	-- Step 261
           ["Done"] = {
                66331,
           },
@@ -6920,7 +7075,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4878.5,
           },
      },
-     {	-- Step 261
+     {	-- Step 262
           ["PickUp"] = {
                66333,
           },
@@ -6934,7 +7089,85 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 262
+     {	-- Step 263
+          ["QpartPart"] = {
+               [66333] = {
+                    ["2"] = "2",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -592.5,
+               ["x"] = 4943.5,
+          },
+          ["Trigger"] = {
+               ["y"] = -592.5,
+               ["x"] = 4943.5,
+          },
+          ["Range"] = 3,
+          ["Fillers"] = {
+               [66333] = {
+                    ["1"] = "1",
+               },
+               [66421] = {
+                    ["1"] = "1",
+               },
+          },
+          ["ExtraLineText"] = "DESTROY_FIRST_BALLISTA",
+          ["TrigText"] = "1/3",
+     },
+     {	-- Step 264
+          ["QpartPart"] = {
+               [66333] = {
+                    ["2"] = "2",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -520.5,
+               ["x"] = 4976.7,
+          },
+          ["Trigger"] = {
+               ["y"] = -520.5,
+               ["x"] = 4976.7,
+          },
+          ["Range"] = 3,
+          ["Fillers"] = {
+               [66333] = {
+                    ["1"] = "1",
+               },
+               [66421] = {
+                    ["1"] = "1",
+               },
+          },
+          ["ExtraLineText"] = "DESTROY_SECOND_BALLISTA",
+          ["TrigText"] = "2/3",
+     },
+     {	-- Step 265
+          ["QpartPart"] = {
+               [66333] = {
+                    ["2"] = "2",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -484.1,
+               ["x"] = 4893.4,
+          },
+          ["Trigger"] = {
+               ["y"] = -484.1,
+               ["x"] = 4893.4,
+          },
+          ["Range"] = 3,
+          ["Fillers"] = {
+               [66333] = {
+                    ["1"] = "1",
+               },
+               [66421] = {
+                    ["1"] = "1",
+               },
+          },
+          ["ExtraLineText"] = "DESTROY_THIRD_BALLISTA",
+          ["TrigText"] = "3/3",
+     },
+     {	-- Step 266
           ["Qpart"] = {
                [66333] = {
                     ["1"] = "1",
@@ -6955,7 +7188,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 263
+     {	-- Step 267
           ["Done"] = {
                66333,
           },
@@ -6969,22 +7202,9 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 264
+     {	-- Step 268
           ["PickUp"] = {
                66784,
-          },
-          ["TT"] = {
-               ["y"] = -488.6,
-               ["x"] = 4896.3,
-          },
-          ["Fillers"] = {
-               [66421] = {
-                    ["1"] = "1",
-               },
-          },
-     },
-     {	-- Step 265
-          ["PickUp"] = {
                66335,
           },
           ["TT"] = {
@@ -6997,7 +7217,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 266
+     {	-- Step 269
           ["Qpart"] = {
                [66335] = {
                     ["1"] = "1",
@@ -7018,7 +7238,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 267
+     {	-- Step 270
           ["Qpart"] = {
                [66335] = {
                     ["2"] = "2",
@@ -7040,7 +7260,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["ExtraLineText"] = "INSIDE_CAVE",
      },
-     {	-- Step 268
+     {	-- Step 271
           ["Qpart"] = {
                [66335] = {
                     ["3"] = "3",
@@ -7051,8 +7271,8 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 5138.3,
           },
           ["Trigger"] = {
-               ["y"] = -473.0,
-               ["x"] = 5138.3,
+               ["y"] = -477.3,
+               ["x"] = 5199.2,
           },
           ["Range"] = 2,
           ["Fillers"] = {
@@ -7061,7 +7281,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 269
+     {	-- Step 272
           ["Done"] = {
                66335,
           },
@@ -7075,7 +7295,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                },
           },
      },
-     {	-- Step 270
+     {	-- Step 273
           ["Qpart"] = {
                [66784] = {
                     ["1"] = "1",
@@ -7090,8 +7310,9 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4939.5,
           },
           ["Range"] = 2,
+          ["ExtraLineText"] = "KILL_THREE_STORM_SUMMONERS",
      },
-     {	-- Step 271
+     {	-- Step 274
           ["Done"] = {
                66784,
           },
@@ -7100,7 +7321,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4939.5,
           },
      },
-     {	-- Step 272
+     {	-- Step 275
           ["Qpart"] = {
                [66421] = {
                     ["1"] = "1",
@@ -7117,7 +7338,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 250,
           ["ExtraLineText"] = "BONUS_OBJECTIVE",
      },
-     {	-- Step 273
+     {	-- Step 276
           ["PickUp"] = {
                66337,
           },
@@ -7126,7 +7347,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4939.5,
           },
      },
-     {	-- Step 274
+     {	-- Step 277
           ["Qpart"] = {
                [66970] = {
                     ["1"] = "1",
@@ -7142,7 +7363,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 275
+     {	-- Step 278
           ["Qpart"] = {
                [66337] = {
                     ["1"] = "1",
@@ -7159,7 +7380,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "KILL_BIG_DRAGON",
      },
-     {	-- Step 276
+     {	-- Step 279
           ["Qpart"] = {
                [66337] = {
                     ["2"] = "2",
@@ -7177,7 +7398,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["ExtraLineText"] = "TALK_DRAGON",
           ["Gossip"] = 1,
      },
-     {	-- Step 277
+     {	-- Step 280
           ["Done"] = {
                66337,
           },
@@ -7186,7 +7407,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4879.6,
           },
      },
-     {	-- Step 278
+     {	-- Step 281
           ["PickUp"] = {
                66336,
           },
@@ -7195,7 +7416,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 4879.6,
           },
      },
-     {	-- Step 279
+     {	-- Step 282
           ["Done"] = {
                66336,
           },
@@ -7204,7 +7425,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 5145.7,
           },
      },
-     {	-- Step 280
+     {	-- Step 283
           ["PickUp"] = {
                66783,
           },
@@ -7214,7 +7435,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Gossip"] = 1,
      },
-     {	-- Step 281
+     {	-- Step 284
           ["Qpart"] = {
                [66783] = {
                     ["1"] = "1",
@@ -7229,85 +7450,53 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 5134.8,
           },
           ["Range"] = 2,
-          ["ExtraLineText"] = "FIRST_HUNT",
+          ["ExtraLineText"] = "CHOOSE_FIRST_HUNT_GIVE_SPEAR_MERITHRA",
           ["Gossip"] = 1,
+          ["GossipOptionID"] = 54952,
      },
-     {	-- Step 282
+     {	-- Step 285
           ["Qpart"] = {
                [66783] = {
                     ["2"] = "2",
                },
           },
           ["TT"] = {
-               ["y"] = -1147.7,
-               ["x"] = 5134.8,
+               ["y"] = -1156.2,
+               ["x"] = 5128.9,
           },
           ["Trigger"] = {
-               ["y"] = -1147.7,
-               ["x"] = 5134.8,
+               ["y"] = -1156.2,
+               ["x"] = 5128.9,
           },
           ["Range"] = 2,
-          ["ExtraLineText"] = "TAKE_SPEAR",
+          ["ExtraLineText"] = "CHOOSE_EAGLE_FEATHER_GIVE_FEATHER_MERITHRA",
+          ["Gossip"] = 3,
      },
-     {	-- Step 283
+     {	-- Step 286
           ["Qpart"] = {
                [66783] = {
                     ["3"] = "3",
                },
           },
           ["TT"] = {
-               ["y"] = -1152.8,
-               ["x"] = 5145.7,
+               ["y"] = -1151.7,
+               ["x"] = 5131.2,
           },
           ["Trigger"] = {
-               ["y"] = -1152.8,
-               ["x"] = 5145.7,
+               ["y"] = -1151.7,
+               ["x"] = 5131.2,
           },
           ["Range"] = 2,
-          ["Gossip"] = 1,
+          ["ExtraLineText"] = "CHOOSE_BLOOD_GIVE_BLOOD_MERITHRA",
+          ["Gossip"] = 3,
      },
-     {	-- Step 284
+     {	-- Step 287
           ["Qpart"] = {
                [66783] = {
                     ["4"] = "4",
                },
           },
           ["TT"] = {
-               ["y"] = -1155.9,
-               ["x"] = 5128.6,
-          },
-          ["Trigger"] = {
-               ["y"] = -1155.9,
-               ["x"] = 5128.6,
-          },
-          ["Range"] = 2,
-          ["ExtraLineText"] = "EAGLE_FEATHER",
-          ["Gossip"] = 3,
-     },
-     {	-- Step 285
-          ["Qpart"] = {
-               [66783] = {
-                    ["5"] = "5",
-               },
-          },
-          ["TT"] = {
-               ["y"] = -1155.9,
-               ["x"] = 5128.6,
-          },
-          ["Trigger"] = {
-               ["y"] = -1155.9,
-               ["x"] = 5128.6,
-          },
-          ["Range"] = 2,
-          ["ExtraLineText"] = "TAKE_FEATHER",
-     },
-     {	-- Step 286
-          ["Qpart"] = {
-               [66783] = {
-                    ["6"] = "6",
-               },
-          },
-          ["TT"] = {
                ["y"] = -1152.8,
                ["x"] = 5145.7,
           },
@@ -7316,95 +7505,10 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 5145.7,
           },
           ["Range"] = 2,
-          ["Gossip"] = 1,
-     },
-     {	-- Step 287
-          ["Qpart"] = {
-               [66783] = {
-                    ["7"] = "7",
-               },
-          },
-          ["TT"] = {
-               ["y"] = -1151.4,
-               ["x"] = 5130.8,
-          },
-          ["Trigger"] = {
-               ["y"] = -1151.4,
-               ["x"] = 5130.8,
-          },
-          ["Range"] = 2,
-          ["ExtraLineText"] = "BLOOD",
+          ["ExtraLineText"] = "TAKE_MERITHRAS_OFFERING_KHANAM",
           ["Gossip"] = 3,
      },
      {	-- Step 288
-          ["Qpart"] = {
-               [66783] = {
-                    ["8"] = "8",
-               },
-          },
-          ["TT"] = {
-               ["y"] = -1151.4,
-               ["x"] = 5130.8,
-          },
-          ["Trigger"] = {
-               ["y"] = -1151.4,
-               ["x"] = 5130.8,
-          },
-          ["Range"] = 2,
-          ["ExtraLineText"] = "TAKE_HORN",
-     },
-     {	-- Step 289
-          ["Qpart"] = {
-               [66783] = {
-                    ["9"] = "9",
-               },
-          },
-          ["TT"] = {
-               ["y"] = -1152.8,
-               ["x"] = 5145.7,
-          },
-          ["Trigger"] = {
-               ["y"] = -1152.8,
-               ["x"] = 5145.7,
-          },
-          ["Range"] = 2,
-          ["Gossip"] = 1,
-     },
-     {	-- Step 290
-          ["Qpart"] = {
-               [66783] = {
-                    ["10"] = "10",
-               },
-          },
-          ["TT"] = {
-               ["y"] = -1152.8,
-               ["x"] = 5145.7,
-          },
-          ["Trigger"] = {
-               ["y"] = -1152.8,
-               ["x"] = 5145.7,
-          },
-          ["Range"] = 2,
-          ["ExtraLineText"] = "TAKE_SOIL",
-     },
-     {	-- Step 291
-          ["Qpart"] = {
-               [66783] = {
-                    ["11"] = "11",
-               },
-          },
-          ["TT"] = {
-               ["y"] = -1151.4,
-               ["x"] = 5130.8,
-          },
-          ["Trigger"] = {
-               ["y"] = -1151.4,
-               ["x"] = 5130.8,
-          },
-          ["Range"] = 2,
-          ["Gossip"] = 1,
-     },
-     {	-- Step 292
           ["Done"] = {
                66783,
           },
@@ -7413,7 +7517,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 5145.7,
           },
      },
-     {	-- Step 293
+     {	-- Step 289
           ["PickUp"] = {
                66340,
           },
@@ -7422,14 +7526,26 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 5145.7,
           },
      },
-     {	-- Step 294
+     {	-- Step 290
           ["UseHS"] = 66340,
           ["Button"] = {
                ["22345678-1"] = 6948,
           },
           ["ExtraLineText"] = "TO_PINEWOOD_POST",
      },
-     {	-- Step 295
+     {	-- Step 291
+          ["GetFP"] = 66340,
+          ["TT"] = {
+               ["y"] = -2572.0,
+               ["x"] = 1393.9,
+          },
+          ["Trigger"] = {
+               ["y"] = -2572.0,
+               ["x"] = 1393.9,
+          },
+          ["Range"] = 2,
+     },
+     {	-- Step 292
           ["Done"] = {
                66340,
           },
@@ -7438,7 +7554,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1393.3,
           },
      },
-     {	-- Step 296
+     {	-- Step 293
           ["PickUp"] = {
                65686,
           },
@@ -7447,7 +7563,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 1393.3,
           },
      },
-     {	-- Step 297
+     {	-- Step 294
           ["ZoneDoneSave"] = 1,
      },
 }
@@ -7877,9 +7993,9 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 462.1,
           },
           ["Range"] = 25,
-          ["ExtraLineText"] = "TARGET_AZURE_DEFENDERSUSE_WAND",
+          ["ExtraLineText"] = "TARGET_AZURE_DEFENDERS_USE_WAND",
           ["Button"] = {
-               ["66489-1"] = 192471,
+               ["66489"] = 192471,
           },
      },
      {	-- Step 35
@@ -7938,6 +8054,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Qpart"] = {
                [65914] = {
                     ["1"] = "1",
+                    ["2"] = "2",
                },
           },
           ["TT"] = {
@@ -8032,7 +8149,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
      {	-- Step 47
           ["Qpart"] = {
                [66724] = {
-                    ["3"] = "3",
+                    ["2"] = "2",
                },
           },
           ["TT"] = {
@@ -8050,8 +8167,8 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                66724,
           },
           ["TT"] = {
-               ["y"] = -4859.2,
-               ["x"] = 545.6,
+               ["y"] = -4858.7,
+               ["x"] = 545.1,
           },
      },
      {	-- Step 49
@@ -8059,8 +8176,8 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                65929,
           },
           ["TT"] = {
-               ["y"] = -4859.2,
-               ["x"] = 545.6,
+               ["y"] = -4859.6,
+               ["x"] = 538.3,
           },
      },
      {	-- Step 50
@@ -8207,7 +8324,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "SEARCH_BAG",
           ["Button"] = {
-               ["65709-1"] = 191953,
+               ["65709"] = 191953,
           },
      },
      {	-- Step 62
@@ -8231,7 +8348,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                },
           },
           ["Button"] = {
-               ["65709-2"] = 191952,
+               ["65709"] = 191952,
           },
      },
      {	-- Step 63
@@ -8255,7 +8372,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                },
           },
           ["Button"] = {
-               ["65709-3"] = 191952,
+               ["65709"] = 191952,
           },
      },
      {	-- Step 64
@@ -8308,17 +8425,17 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                },
           },
           ["TT"] = {
-               ["y"] = -5214.3,
-               ["x"] = 1060.5,
+               ["y"] = -5302.3,
+               ["x"] = 1185.4,
           },
           ["Trigger"] = {
-               ["y"] = -5214.3,
-               ["x"] = 1060.5,
+               ["y"] = -5302.3,
+               ["x"] = 1185.4,
           },
-          ["Range"] = 2,
+          ["Range"] = 3,
           ["ExtraLineText"] = "SEARCH_BAG",
           ["Button"] = {
-               ["65852-1"] = 191978,
+               ["65852"] = 191978,
           },
      },
      {	-- Step 69
@@ -8338,7 +8455,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "USE_TELEPORT_THE_TOP",
           ["Button"] = {
-               ["65852-2"] = 378026,
+               ["65852"] = 378026,
           },
      },
      {	-- Step 70
@@ -8407,7 +8524,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 75,
           ["Button"] = {
-               ["65752-1"] = 194891,
+               ["65752"] = 194891,
           },
      },
      {	-- Step 75
@@ -8479,6 +8596,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 1425.7,
           },
           ["ExtraLineText"] = "INSIDE_MOUNTAIN",
+          ["Gossip"] = 1,
      },
      {	-- Step 82
           ["GetFP"] = 65855,
@@ -9003,6 +9121,9 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                [65871] = {
                     ["1"] = "1",
                },
+               [65871] = {
+                    ["2"] = "2",
+               },
           },
      },
      {	-- Step 120
@@ -9026,6 +9147,9 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                },
                [65871] = {
                     ["1"] = "1",
+               },
+               [65871] = {
+                    ["2"] = "2",
                },
           },
      },
@@ -9051,6 +9175,9 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                [65871] = {
                     ["1"] = "1",
                },
+               [65871] = {
+                    ["2"] = "2",
+               },
           },
      },
      {	-- Step 122
@@ -9075,12 +9202,16 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                [65871] = {
                     ["1"] = "1",
                },
+               [65871] = {
+                    ["2"] = "2",
+               },
           },
      },
      {	-- Step 123
           ["Qpart"] = {
                [65871] = {
                     ["1"] = "1",
+                    ["2"] = "2",
                },
           },
           ["TT"] = {
@@ -9185,6 +9316,23 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["y"] = -3475.6,
                ["x"] = 2394.6,
           },
+     },
+     {	-- Step undefined
+          ["Qpart"] = {
+               [65869] = {
+                    ["1"] = "1",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -3448.7,
+               ["x"] = 2371.0,
+          },
+          ["Trigger"] = {
+               ["y"] = -3448.7,
+               ["x"] = 2371.0,
+          },
+          ["Range"] = 2,
+          ["Gossip"] = 1,
      },
      {	-- Step 133
           ["Qpart"] = {
@@ -9412,18 +9560,10 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 3426.8,
           },
      },
-     {	-- Step 152
-          ["Done"] = {
-               66838,
-          },
-          ["TT"] = {
-               ["y"] = -2702.8,
-               ["x"] = 3452.6,
-          },
-     },
      {	-- Step 153
           ["Done"] = {
                66837,
+               66838,
           },
           ["TT"] = {
                ["y"] = -2702.8,
@@ -9465,7 +9605,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 180,
           ["ExtraLineText"] = "WATERFALLS_CAN_BE_SEEN_ON_YOUR_MINIMAP",
           ["Button"] = {
-               ["66840-1"] = 193569,
+               ["66840"] = 193569,
           },
      },
      {	-- Step 157
@@ -9561,8 +9701,8 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 3453.3,
           },
           ["Range"] = 2,
+          ["ExtraLineText"] = "TALK_MYSTERIOUS_APPARITION",
           ["Gossip"] = 1,
-          ["RaidIcon"] = 184595,
      },
      {	-- Step 165
           ["Done"] = {
@@ -9572,6 +9712,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["y"] = -2700.1,
                ["x"] = 3453.3,
           },
+          ["ExtraLineText"] = "MOVE_AWAY_AND_RETURN_IF_YOU_ARE_UNABLE_TURN_IN_QUEST",
      },
      {	-- Step 166
           ["PickUp"] = {
@@ -9585,7 +9726,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
      {	-- Step 167
           ["Qpart"] = {
                [65838] = {
-                    ["1"] = "1",
+                    ["2"] = "2",
                },
           },
           ["TT"] = {
@@ -9607,7 +9748,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
      {	-- Step 168
           ["Qpart"] = {
                [65838] = {
-                    ["2"] = "2",
+                    ["1"] = "1",
                },
           },
           ["TT"] = {
@@ -9743,7 +9884,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                },
           },
           ["Button"] = {
-               ["65845-1"] = 191928,
+               ["65845"] = 191928,
           },
      },
      {	-- Step 175
@@ -9974,7 +10115,8 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["y"] = -3736.9,
                ["x"] = 3852.6,
           },
-          ["Range"] = 2,
+          ["Range"] = 10,
+          ["ExtraLineText"] = "EXIT_CAVE",
      },
      {	-- Step 191
           ["Done"] = {
@@ -10008,7 +10150,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["y"] = -3957.0,
                ["x"] = 3615.6,
           },
-          ["Range"] = 1,
+          ["Range"] = 10,
           ["ExtraLineText"] = "RARE__YOU_SHOULD_ONLY_HAVE_BRING_HIM_TO_40_HP_TO_DEFEAT_HIM",
      },
      {	-- Step 194
@@ -10062,50 +10204,28 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4085.9,
           },
           ["Range"] = 2,
-          ["Fillers"] = {
-               [66210] = {
-                    ["1"] = "1",
-               },
-          },
-          ["ExtraLineText"] = "FUNERAL_OFFERINGS_ARE_MARKED_ON_MINIMAP",
-          ["RaidIcon"] = 186449,
+          ["ExtraLineText"] = "TALK_DRAKE_SCHOLAR",
+          ["RaidIcon"] = 196544,
      },
      {	-- Step 199
           ["Qpart"] = {
                [72435] = {
-                    ["2"] = "2",
-               },
-          },
-          ["TT"] = {
-               ["y"] = -4448.8,
-               ["x"] = 4059.1,
-          },
-          ["Trigger"] = {
-               ["y"] = -4448.8,
-               ["x"] = 4059.1,
-          },
-          ["Range"] = 2,
-          ["Fillers"] = {
-               [66210] = {
                     ["1"] = "1",
                },
           },
-          ["ExtraLineText"] = "FUNERAL_OFFERINGS_ARE_MARKED_ON_MINIMAP",
-          ["RaidIcon"] = 194059,
-     },
-     {	-- Step 200
-          ["GetFP"] = 72435,
           ["TT"] = {
-               ["y"] = -4466.3,
-               ["x"] = 4047.3,
+               ["y"] = -4448.8,
+               ["x"] = 4059.1,
           },
           ["Trigger"] = {
-               ["y"] = -4466.3,
-               ["x"] = 4047.3,
+               ["y"] = -4448.8,
+               ["x"] = 4059.1,
           },
           ["Range"] = 2,
+          ["ExtraLineText"] = "TALK_EQUIPMENT_SUPPLIER",
+          ["RaidIcon"] = 186449,
      },
-     {	-- Step 201
+     {	-- Step 200
           ["Qpart"] = {
                [72435] = {
                     ["3"] = "3",
@@ -10120,18 +10240,61 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4057.3,
           },
           ["Range"] = 2,
-          ["Fillers"] = {
+          ["ExtraLineText"] = "TALK_MOUNT_SUPPLIER",
+          ["RaidIcon"] = 186462,
+     },
+     {	-- Step 201
+          ["GetFP"] = 72435,
+          ["TT"] = {
+               ["y"] = -4466.3,
+               ["x"] = 4047.3,
+          },
+          ["Trigger"] = {
+               ["y"] = -4466.3,
+               ["x"] = 4047.3,
+          },
+          ["Range"] = 2,
+     },
+     {	-- Step 202
+          ["QpartPart"] = {
                [66210] = {
                     ["1"] = "1",
                },
           },
-          ["ExtraLineText"] = "FUNERAL_OFFERINGS_ARE_MARKED_ON_MINIMAP",
-          ["RaidIcon"] = 186462,
+          ["TT"] = {
+               ["y"] = -4452.3,
+               ["x"] = 4025.8,
+          },
+          ["Trigger"] = {
+               ["y"] = -4452.3,
+               ["x"] = 4025.8,
+          },
+          ["Range"] = 2,
+          ["ExtraLineText"] = "CLICK_DECORATED_TEAPOT",
+          ["TrigText"] = "1/4",
      },
-     {	-- Step 202
+     {	-- Step 203
+          ["QpartPart"] = {
+               [66210] = {
+                    ["1"] = "1",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -4518.8,
+               ["x"] = 3983.7,
+          },
+          ["Trigger"] = {
+               ["y"] = -4518.8,
+               ["x"] = 3983.7,
+          },
+          ["Range"] = 2,
+          ["ExtraLineText"] = "CLICK_HANDCRAFTED_BOAT",
+          ["TrigText"] = "2/4",
+     },
+     {	-- Step 204
           ["Qpart"] = {
                [72435] = {
-                    ["4"] = "4",
+                    ["2"] = "2",
                },
           },
           ["TT"] = {
@@ -10143,15 +10306,41 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 3979.5,
           },
           ["Range"] = 2,
-          ["Fillers"] = {
+          ["ExtraLineText"] = "TALK_RECIPE_SUPPLIER",
+          ["RaidIcon"] = 194059,
+     },
+     {	-- Step 205
+          ["QpartPart"] = {
                [66210] = {
                     ["1"] = "1",
                },
           },
-          ["ExtraLineText"] = "FUNERAL_OFFERINGS_ARE_MARKED_ON_MINIMAP",
-          ["RaidIcon"] = 196544,
+          ["TT"] = {
+               ["y"] = -4579.6,
+               ["x"] = 4137.8,
+          },
+          ["Trigger"] = {
+               ["y"] = -4579.6,
+               ["x"] = 4137.8,
+          },
+          ["Range"] = 2,
+          ["ExtraLineText"] = "CLICK_ORNAMENTED_SHIELD",
+          ["TrigText"] = "3/4",
      },
-     {	-- Step 203
+     {	-- Step 206
+          ["CRange"] = 66213,
+          ["TT"] = {
+               ["y"] = -4508.3,
+               ["x"] = 4097.8,
+          },
+          ["Trigger"] = {
+               ["y"] = -4508.3,
+               ["x"] = 4097.8,
+          },
+          ["Range"] = 10,
+          ["ExtraLineText"] = "HEAD_ELDERS_HUT_AND_GO_DOWN_THE_TUNNEL",
+     },
+     {	-- Step 207
           ["PickUp"] = {
                66213,
           },
@@ -10166,41 +10355,24 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "INSIDE_TUNNEL",
      },
-     {	-- Step 204
-          ["Qpart"] = {
-               [66210] = {
-                    ["1"] = "1",
-               },
-          },
-          ["TT"] = {
-               ["y"] = -4507.7,
-               ["x"] = 4075.4,
-          },
-          ["Trigger"] = {
-               ["y"] = -4507.7,
-               ["x"] = 4075.4,
-          },
-          ["Range"] = 200,
-          ["ExtraLineText"] = "FUNERAL_OFFERINGS_ARE_MARKED_ON_MINIMAP",
-     },
-     {	-- Step 205
+     {	-- Step 208
           ["Qpart"] = {
                [66213] = {
                     ["1"] = "1",
                },
           },
           ["TT"] = {
-               ["y"] = -4508,
-               ["x"] = 4142.5,
+               ["y"] = -4508.4,
+               ["x"] = 4142.2,
           },
           ["Trigger"] = {
-               ["y"] = -4508,
-               ["x"] = 4142.5,
+               ["y"] = -4508.4,
+               ["x"] = 4142.2,
           },
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 206
+     {	-- Step 209
           ["Done"] = {
                66213,
           },
@@ -10214,7 +10386,37 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 207
+     {	-- Step 210
+          ["QpartPart"] = {
+               [66210] = {
+                    ["1"] = "1",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -4516.6,
+               ["x"] = 4134.3,
+          },
+          ["Trigger"] = {
+               ["y"] = -4516.6,
+               ["x"] = 4134.3,
+          },
+          ["Range"] = 2,
+          ["ExtraLineText"] = "CLICK_STONE_SCULPTURE",
+     },
+     {	-- Step 211
+          ["CRange"] = 66213,
+          ["TT"] = {
+               ["y"] = -4508.3,
+               ["x"] = 4097.8,
+          },
+          ["Trigger"] = {
+               ["y"] = -4508.3,
+               ["x"] = 4097.8,
+          },
+          ["Range"] = 5,
+          ["ExtraLineText"] = "HEAD_OUT",
+     },
+     {	-- Step 212
           ["Qpart"] = {
                [66210] = {
                     ["2"] = "2",
@@ -10230,7 +10432,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 208
+     {	-- Step 213
           ["Done"] = {
                72435,
           },
@@ -10239,7 +10441,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4063.0,
           },
      },
-     {	-- Step 209
+     {	-- Step 214
           ["Done"] = {
                66210,
           },
@@ -10248,7 +10450,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4051.6,
           },
      },
-     {	-- Step 210
+     {	-- Step 215
           ["PickUp"] = {
                65850,
           },
@@ -10257,7 +10459,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4049.8,
           },
      },
-     {	-- Step 211
+     {	-- Step 216
           ["PickUp"] = {
                66558,
           },
@@ -10266,7 +10468,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 3995.8,
           },
      },
-     {	-- Step 212
+     {	-- Step 217
           ["Qpart"] = {
                [66218] = {
                     ["1"] = "1",
@@ -10283,7 +10485,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 213
+     {	-- Step 218
           ["Done"] = {
                66218,
           },
@@ -10292,7 +10494,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4340.0,
           },
      },
-     {	-- Step 214
+     {	-- Step 219
           ["PickUp"] = {
                66223,
           },
@@ -10301,7 +10503,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4340.0,
           },
      },
-     {	-- Step 215
+     {	-- Step 220
           ["Qpart"] = {
                [66223] = {
                     ["1"] = "1",
@@ -10316,9 +10518,11 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 3985.6,
           },
           ["Range"] = 2,
-          ["ExtraLineText"] = "BUY_7_FRIGIDFISH",
+          ["ExtraLineText"] = "BUY_7_FRIGIDFISH_FROM_JINKUTUK",
+          ["Gossip"] = 1,
+          ["RaidIcon"] = 193637,
      },
-     {	-- Step 216
+     {	-- Step 221
           ["Done"] = {
                66223,
           },
@@ -10327,7 +10531,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4340.0,
           },
      },
-     {	-- Step 217
+     {	-- Step 222
           ["PickUp"] = {
                66781,
           },
@@ -10336,7 +10540,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4661.3,
           },
      },
-     {	-- Step 218
+     {	-- Step 223
           ["Qpart"] = {
                [66781] = {
                     ["1"] = "1",
@@ -10352,7 +10556,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 219
+     {	-- Step 224
           ["Done"] = {
                66781,
           },
@@ -10361,7 +10565,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4661.3,
           },
      },
-     {	-- Step 220
+     {	-- Step 225
           ["PickUp"] = {
                66164,
           },
@@ -10370,88 +10574,9 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4660.7,
           },
      },
-     {	-- Step 221
+     {	-- Step 226
           ["PickUp"] = {
                66154,
-          },
-          ["TT"] = {
-               ["y"] = -4141.5,
-               ["x"] = 4660.7,
-          },
-     },
-     {	-- Step 222
-          ["PickUp"] = {
-               66147,
-          },
-          ["TT"] = {
-               ["y"] = -4141.5,
-               ["x"] = 4660.7,
-          },
-     },
-     {	-- Step 223
-          ["Qpart"] = {
-               [66147] = {
-                    ["1"] = "1",
-               },
-          },
-          ["TT"] = {
-               ["y"] = -4062.1,
-               ["x"] = 4429.8,
-          },
-          ["Trigger"] = {
-               ["y"] = -4062.1,
-               ["x"] = 4429.8,
-          },
-          ["Range"] = 2,
-          ["Fillers"] = {
-               [66154] = {
-                    ["1"] = "1",
-               },
-               [66164] = {
-                    ["1"] = "1",
-               },
-          },
-     },
-     {	-- Step 224
-          ["Qpart"] = {
-               [66154] = {
-                    ["1"] = "1",
-               },
-          },
-          ["TT"] = {
-               ["y"] = -4062.1,
-               ["x"] = 4429.8,
-          },
-          ["Trigger"] = {
-               ["y"] = -4062.1,
-               ["x"] = 4429.8,
-          },
-          ["Range"] = 2,
-          ["Fillers"] = {
-               [66164] = {
-                    ["1"] = "1",
-               },
-          },
-     },
-     {	-- Step 225
-          ["Qpart"] = {
-               [66164] = {
-                    ["1"] = "1",
-               },
-          },
-          ["TT"] = {
-               ["y"] = -4062.1,
-               ["x"] = 4429.8,
-          },
-          ["Trigger"] = {
-               ["y"] = -4062.1,
-               ["x"] = 4429.8,
-          },
-          ["Range"] = 2,
-     },
-     {	-- Step 226
-          ["Done"] = {
-               66147,
           },
           ["TT"] = {
                ["y"] = -4141.5,
@@ -10459,8 +10584,8 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
      },
      {	-- Step 227
-          ["Done"] = {
-               66154,
+          ["PickUp"] = {
+               66147,
           },
           ["TT"] = {
                ["y"] = -4141.5,
@@ -10468,41 +10593,120 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
      },
      {	-- Step 228
+          ["Qpart"] = {
+               [66147] = {
+                    ["1"] = "1",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -4039.3,
+               ["x"] = 4380.6,
+          },
+          ["Trigger"] = {
+               ["y"] = -4039.3,
+               ["x"] = 4380.6,
+          },
+          ["Range"] = 56,
+          ["Fillers"] = {
+               [66154] = {
+                    ["1"] = "1",
+               },
+               [66164] = {
+                    ["1"] = "1",
+               },
+          },
+     },
+     {	-- Step 230
+          ["Qpart"] = {
+               [66164] = {
+                    ["1"] = "1",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -4066.5,
+               ["x"] = 4390.5,
+          },
+          ["Trigger"] = {
+               ["y"] = -4066.5,
+               ["x"] = 4390.5,
+          },
+          ["Range"] = 68,
+          ["Fillers"] = {
+               [66154] = {
+                    ["1"] = "1",
+               },
+          },
+     },
+     {	-- Step 229
+          ["Qpart"] = {
+               [66154] = {
+                    ["1"] = "1",
+               },
+          },
+          ["TT"] = {
+               ["y"] = -4070.7,
+               ["x"] = 4376.8,
+          },
+          ["Trigger"] = {
+               ["y"] = -4070.7,
+               ["x"] = 4376.8,
+          },
+          ["Range"] = 88,
+     },
+     {	-- Step 231
+          ["Done"] = {
+               66147,
+          },
+          ["TT"] = {
+               ["y"] = -4137.6,
+               ["x"] = 4662.1,
+          },
+     },
+     {	-- Step 232
+          ["Done"] = {
+               66154,
+          },
+          ["TT"] = {
+               ["y"] = -4140.1,
+               ["x"] = 4659.1,
+          },
+     },
+     {	-- Step 233
           ["Done"] = {
                66164,
           },
           ["TT"] = {
-               ["y"] = -4141.5,
-               ["x"] = 4660.7,
+               ["y"] = -4145.0,
+               ["x"] = 4661.2,
           },
      },
-     {	-- Step 229
+     {	-- Step 234
           ["PickUp"] = {
                66175,
           },
           ["TT"] = {
-               ["y"] = -4141.5,
-               ["x"] = 4660.7,
+               ["y"] = -4145.0,
+               ["x"] = 4661.2,
           },
      },
-     {	-- Step 230
+     {	-- Step 235
           ["Qpart"] = {
                [66175] = {
                     ["1"] = "1",
                },
           },
           ["TT"] = {
-               ["y"] = -4141.5,
-               ["x"] = 4660.7,
+               ["y"] = -4143.7,
+               ["x"] = 4662.2,
           },
           ["Trigger"] = {
-               ["y"] = -4141.5,
-               ["x"] = 4660.7,
+               ["y"] = -4143.7,
+               ["x"] = 4662.2,
           },
           ["Range"] = 2,
           ["ExtraLineText"] = "ACTIVATE_SCANNER",
      },
-     {	-- Step 231
+     {	-- Step 236
           ["Done"] = {
                66175,
           },
@@ -10511,7 +10715,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4660.7,
           },
      },
-     {	-- Step 232
+     {	-- Step 237
           ["PickUp"] = {
                66177,
           },
@@ -10520,7 +10724,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4660.7,
           },
      },
-     {	-- Step 233
+     {	-- Step 238
           ["PickUp"] = {
                66232,
           },
@@ -10529,7 +10733,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4680.3,
           },
      },
-     {	-- Step 234
+     {	-- Step 239
           ["Qpart"] = {
                [66177] = {
                     ["1"] = "1",
@@ -10551,7 +10755,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["ExtraLineText"] = "FIRST_CLUE",
      },
-     {	-- Step 235
+     {	-- Step 240
           ["Qpart"] = {
                [66177] = {
                     ["2"] = "2",
@@ -10573,7 +10777,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["ExtraLineText"] = "SECOND_CLUE",
      },
-     {	-- Step 236
+     {	-- Step 241
           ["Qpart"] = {
                [66177] = {
                     ["3"] = "3",
@@ -10595,7 +10799,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["ExtraLineText"] = "THIRD_CLUE",
      },
-     {	-- Step 237
+     {	-- Step 242
           ["Qpart"] = {
                [66177] = {
                     ["4"] = "4",
@@ -10617,23 +10821,23 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["ExtraLineText"] = "FOURTH_CLUE",
      },
-     {	-- Step 238
+     {	-- Step 243
           ["Qpart"] = {
                [66232] = {
                     ["1"] = "1",
                },
           },
           ["TT"] = {
-               ["y"] = -3924.9,
-               ["x"] = 4360.6,
+               ["y"] = -3944.9,
+               ["x"] = 4415.8,
           },
           ["Trigger"] = {
-               ["y"] = -3924.9,
-               ["x"] = 4360.6,
+               ["y"] = -3944.9,
+               ["x"] = 4415.8,
           },
-          ["Range"] = 2,
+          ["Range"] = 158,
      },
-     {	-- Step 239
+     {	-- Step 244
           ["Done"] = {
                66177,
           },
@@ -10642,7 +10846,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4321.1,
           },
      },
-     {	-- Step 240
+     {	-- Step 245
           ["PickUp"] = {
                66187,
           },
@@ -10651,7 +10855,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4321.1,
           },
      },
-     {	-- Step 241
+     {	-- Step 246
           ["Qpart"] = {
                [66187] = {
                     ["1"] = "1",
@@ -10668,7 +10872,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "INSIDE_CAVE",
      },
-     {	-- Step 242
+     {	-- Step 247
           ["Done"] = {
                66187,
           },
@@ -10677,7 +10881,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4321.1,
           },
      },
-     {	-- Step 243
+     {	-- Step 248
           ["PickUp"] = {
                66559,
           },
@@ -10686,7 +10890,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4321.1,
           },
      },
-     {	-- Step 244
+     {	-- Step 249
           ["Done"] = {
                66559,
           },
@@ -10695,7 +10899,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4659.2,
           },
      },
-     {	-- Step 245
+     {	-- Step 250
           ["Done"] = {
                66232,
           },
@@ -10704,7 +10908,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4680.8,
           },
      },
-     {	-- Step 246
+     {	-- Step 251
           ["Qpart"] = {
                [65850] = {
                     ["1"] = "1",
@@ -10721,7 +10925,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 247
+     {	-- Step 252
           ["Qpart"] = {
                [65850] = {
                     ["2"] = "2",
@@ -10738,7 +10942,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "PUSH_BOAT",
      },
-     {	-- Step 248
+     {	-- Step 253
           ["Done"] = {
                65850,
           },
@@ -10747,7 +10951,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4085.1,
           },
      },
-     {	-- Step 249
+     {	-- Step 254
           ["PickUp"] = {
                65911,
           },
@@ -10756,7 +10960,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 4085.1,
           },
      },
-     {	-- Step 250
+     {	-- Step 255
           ["Qpart"] = {
                [66558] = {
                     ["1"] = "1",
@@ -10773,7 +10977,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 251
+     {	-- Step 256
           ["Done"] = {
                66558,
           },
@@ -10782,7 +10986,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 3738.6,
           },
      },
-     {	-- Step 252
+     {	-- Step 257
           ["PickUp"] = {
                70129,
           },
@@ -10791,7 +10995,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 3738.6,
           },
      },
-     {	-- Step 253
+     {	-- Step 258
           ["Qpart"] = {
                [70129] = {
                     ["1"] = "1",
@@ -10809,7 +11013,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["ExtraLineText"] = "GO_INSIDE_CAVE",
           ["Gossip"] = 1,
      },
-     {	-- Step 254
+     {	-- Step 259
           ["Done"] = {
                70129,
           },
@@ -10818,18 +11022,18 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 3991.1,
           },
      },
-     {	-- Step 255
+     {	-- Step 260
           ["UseHS"] = 65911,
           ["Button"] = {
                ["22345678-1"] = 6948,
           },
           ["TT"] = {
-               ["y"] = -4584.2,
-               ["x"] = 4085.1,
+               ["y"] = -4484.3,
+               ["x"] = 3991.1,
           },
           ["ExtraLineText"] = "TO_CONJURED_BISCUIT_INN",
      },
-     {	-- Step 256
+     {	-- Step 261
           ["Done"] = {
                65911,
           },
@@ -10838,7 +11042,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 1195.9,
           },
      },
-     {	-- Step 257
+     {	-- Step 262
           ["PickUp"] = {
                66027,
           },
@@ -10847,7 +11051,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 1195.9,
           },
      },
-     {	-- Step 258
+     {	-- Step 263
           ["Qpart"] = {
                [66027] = {
                     ["1"] = "1",
@@ -10864,7 +11068,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 259
+     {	-- Step 264
           ["Done"] = {
                66027,
           },
@@ -10873,7 +11077,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 1195.9,
           },
      },
-     {	-- Step 260
+     {	-- Step 265
           ["PickUp"] = {
                65886,
           },
@@ -10882,7 +11086,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 1195.9,
           },
      },
-     {	-- Step 261
+     {	-- Step 266
           ["CRange"] = 65886,
           ["TT"] = {
                ["y"] = -5390.8,
@@ -10893,12 +11097,12 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 1327.9,
           },
           ["Range"] = 2,
-          ["ExtraLineText"] = "GO_ON_TOP_OF_ARCHIVES",
+          ["ExtraLineText"] = "GO_ON_TOP_OF_ARCHIVES_AND_DRAGONFLY_CAMP_NOWHERE",
           ["Button"] = {
-               ["65886-2"] = 378026,
+               ["65886"] = 378026,
           },
      },
-     {	-- Step 262
+     {	-- Step 267
           ["PickUp"] = {
                66391,
           },
@@ -10907,7 +11111,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1413.0,
           },
      },
-     {	-- Step 263
+     {	-- Step 268
           ["GetFP"] = 66391,
           ["TT"] = {
                ["y"] = -5184.8,
@@ -10919,7 +11123,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 264
+     {	-- Step 269
           ["Done"] = {
                66391,
           },
@@ -10928,7 +11132,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1585.5,
           },
      },
-     {	-- Step 265
+     {	-- Step 270
           ["PickUp"] = {
                66353,
           },
@@ -10937,7 +11141,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1585.5,
           },
      },
-     {	-- Step 266
+     {	-- Step 271
           ["PickUp"] = {
                66352,
           },
@@ -10946,7 +11150,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1583.5,
           },
      },
-     {	-- Step 267
+     {	-- Step 272
           ["Qpart"] = {
                [66353] = {
                     ["1"] = "1",
@@ -10967,10 +11171,10 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                },
           },
           ["Button"] = {
-               ["66353-1"] = 191909,
+               ["66353"] = 191909,
           },
      },
-     {	-- Step 268
+     {	-- Step 273
           ["Qpart"] = {
                [66352] = {
                     ["1"] = "1",
@@ -10986,10 +11190,10 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 125,
           ["Button"] = {
-               ["66352-1"] = 191909,
+               ["66352"] = 191909,
           },
      },
-     {	-- Step 269
+     {	-- Step 274
           ["Done"] = {
                66353,
           },
@@ -10998,7 +11202,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1585.5,
           },
      },
-     {	-- Step 270
+     {	-- Step 275
           ["Done"] = {
                66352,
           },
@@ -11007,7 +11211,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1583.5,
           },
      },
-     {	-- Step 271
+     {	-- Step 276
           ["PickUp"] = {
                66422,
           },
@@ -11016,7 +11220,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1583.5,
           },
      },
-     {	-- Step 272
+     {	-- Step 277
           ["Done"] = {
                66422,
           },
@@ -11025,7 +11229,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1652.5,
           },
      },
-     {	-- Step 273
+     {	-- Step 278
           ["PickUp"] = {
                66423,
           },
@@ -11034,7 +11238,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1652.5,
           },
      },
-     {	-- Step 274
+     {	-- Step 279
           ["Qpart"] = {
                [66423] = {
                     ["1"] = "1",
@@ -11051,7 +11255,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 50,
           ["ExtraLineText"] = "CLUES_CAN_BE_SEEN_ON_YOUR_MINIMAP",
      },
-     {	-- Step 275
+     {	-- Step 280
           ["Done"] = {
                66423,
           },
@@ -11060,7 +11264,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1652.5,
           },
      },
-     {	-- Step 276
+     {	-- Step 281
           ["PickUp"] = {
                66425,
           },
@@ -11069,7 +11273,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1652.2,
           },
      },
-     {	-- Step 277
+     {	-- Step 282
           ["Qpart"] = {
                [66425] = {
                     ["1"] = "1",
@@ -11086,10 +11290,10 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 20,
           ["ExtraLineText"] = "TWO_DOWNSTAIRS_ONE_UPSTAIRS",
           ["Button"] = {
-               ["66425-1"] = 192110,
+               ["66425"] = 192110,
           },
      },
-     {	-- Step 278
+     {	-- Step 283
           ["Done"] = {
                66425,
           },
@@ -11098,7 +11302,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1652.2,
           },
      },
-     {	-- Step 279
+     {	-- Step 284
           ["PickUp"] = {
                66426,
           },
@@ -11107,7 +11311,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1652.5,
           },
      },
-     {	-- Step 280
+     {	-- Step 285
           ["Done"] = {
                66426,
           },
@@ -11117,7 +11321,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["ExtraLineText"] = "FLY_WITH_YOUR_DRAGON_AVOID_BOMBS",
      },
-     {	-- Step 281
+     {	-- Step 286
           ["PickUp"] = {
                66427,
           },
@@ -11126,7 +11330,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1959.5,
           },
      },
-     {	-- Step 282
+     {	-- Step 287
           ["Qpart"] = {
                [66427] = {
                     ["1"] = "1",
@@ -11142,7 +11346,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 283
+     {	-- Step 288
           ["Done"] = {
                66427,
           },
@@ -11151,7 +11355,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1959.5,
           },
      },
-     {	-- Step 284
+     {	-- Step 289
           ["PickUp"] = {
                66428,
           },
@@ -11160,7 +11364,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1961.9,
           },
      },
-     {	-- Step 285
+     {	-- Step 290
           ["Qpart"] = {
                [66428] = {
                     ["1"] = "1",
@@ -11176,10 +11380,10 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 2,
           ["Button"] = {
-               ["66428-1"] = 192475,
+               ["66428"] = 192475,
           },
      },
-     {	-- Step 286
+     {	-- Step 291
           ["Done"] = {
                66428,
           },
@@ -11188,7 +11392,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1964.4,
           },
      },
-     {	-- Step 287
+     {	-- Step 292
           ["PickUp"] = {
                66429,
           },
@@ -11197,7 +11401,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1964.4,
           },
      },
-     {	-- Step 288
+     {	-- Step 293
           ["Done"] = {
                66429,
           },
@@ -11206,7 +11410,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1439.8,
           },
      },
-     {	-- Step 289
+     {	-- Step 294
           ["PickUp"] = {
                66709,
           },
@@ -11215,7 +11419,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -958.5,
           },
      },
-     {	-- Step 290
+     {	-- Step 295
           ["Qpart"] = {
                [66709] = {
                     ["1"] = "1",
@@ -11232,7 +11436,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "PULL_OUT_SPEAR",
      },
-     {	-- Step 291
+     {	-- Step 296
           ["Qpart"] = {
                [66709] = {
                     ["2"] = "2",
@@ -11249,7 +11453,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "COLLECT_WOOD",
      },
-     {	-- Step 292
+     {	-- Step 297
           ["Qpart"] = {
                [66709] = {
                     ["3"] = "3",
@@ -11266,7 +11470,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "BUILD_CAMPFIRE",
      },
-     {	-- Step 293
+     {	-- Step 298
           ["Qpart"] = {
                [66709] = {
                     ["4"] = "4",
@@ -11284,7 +11488,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["ExtraLineText"] = "CAUTERIZE_WOUND",
           ["Gossip"] = 1,
      },
-     {	-- Step 294
+     {	-- Step 299
           ["Done"] = {
                66709,
           },
@@ -11293,7 +11497,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -958.5,
           },
      },
-     {	-- Step 295
+     {	-- Step 300
           ["PickUp"] = {
                66715,
           },
@@ -11302,7 +11506,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -958.5,
           },
      },
-     {	-- Step 296
+     {	-- Step 301
           ["Qpart"] = {
                [66715] = {
                     ["1"] = "1",
@@ -11319,7 +11523,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "COMPLETES_WHEN_YOU_GET_CLOSE",
      },
-     {	-- Step 297
+     {	-- Step 302
           ["Done"] = {
                66715,
           },
@@ -11328,7 +11532,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -860.1,
           },
      },
-     {	-- Step 298
+     {	-- Step 303
           ["PickUp"] = {
                66703,
           },
@@ -11337,7 +11541,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -860.1,
           },
      },
-     {	-- Step 299
+     {	-- Step 304
           ["Qpart"] = {
                [66703] = {
                     ["1"] = "1",
@@ -11359,7 +11563,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["ExtraLineText"] = "SHAMANS_CAN_BE_SEEN_ON_YOUR_MINIMAP",
      },
-     {	-- Step 300
+     {	-- Step 305
           ["Qpart"] = {
                [66718] = {
                     ["2"] = "2",
@@ -11382,7 +11586,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["ExtraLineText"] = "KILL_SNOLL_ICEBREAKER",
           ["RaidIcon"] = 190384,
      },
-     {	-- Step 301
+     {	-- Step 306
           ["Qpart"] = {
                [66718] = {
                     ["1"] = "1",
@@ -11398,7 +11602,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 40,
      },
-     {	-- Step 302
+     {	-- Step 307
           ["Done"] = {
                66703,
           },
@@ -11407,7 +11611,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -860.1,
           },
      },
-     {	-- Step 303
+     {	-- Step 308
           ["PickUp"] = {
                67050,
           },
@@ -11416,7 +11620,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -860.1,
           },
      },
-     {	-- Step 304
+     {	-- Step 309
           ["Qpart"] = {
                [67050] = {
                     ["1"] = "1",
@@ -11433,7 +11637,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "PLACE_TOTEMS",
      },
-     {	-- Step 305
+     {	-- Step 310
           ["Qpart"] = {
                [67050] = {
                     ["2"] = "2",
@@ -11450,7 +11654,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "COMPLETES_WHEN_YOU_TALK_NPC",
      },
-     {	-- Step 306
+     {	-- Step 311
           ["Done"] = {
                67050,
           },
@@ -11459,7 +11663,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -872.2,
           },
      },
-     {	-- Step 307
+     {	-- Step 312
           ["PickUp"] = {
                66730,
           },
@@ -11468,7 +11672,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -872.2,
           },
      },
-     {	-- Step 308
+     {	-- Step 313
           ["Done"] = {
                66730,
           },
@@ -11477,7 +11681,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -906.7,
           },
      },
-     {	-- Step 309
+     {	-- Step 314
           ["Qpart"] = {
                [65886] = {
                     ["1"] = "1",
@@ -11494,7 +11698,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "COMPLETES_WHEN_YOU_ARE_CLOSE_BUBBLE",
      },
-     {	-- Step 310
+     {	-- Step 315
           ["Done"] = {
                65886,
           },
@@ -11503,7 +11707,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1671.0,
           },
      },
-     {	-- Step 311
+     {	-- Step 316
           ["PickUp"] = {
                65887,
           },
@@ -11512,7 +11716,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1671.0,
           },
      },
-     {	-- Step 312
+     {	-- Step 317
           ["PickUp"] = {
                67299,
           },
@@ -11521,7 +11725,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -1671.0,
           },
      },
-     {	-- Step 313
+     {	-- Step 318
           ["GetFP"] = 67299,
           ["TT"] = {
                ["y"] = -2769.8,
@@ -11533,7 +11737,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 314
+     {	-- Step 319
           ["Qpart"] = {
                [67299] = {
                     ["1"] = "1",
@@ -11550,45 +11754,45 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "USE_ARCANE_BLASTER_KILL_DRAGONS",
      },
-     {	-- Step 315
+     {	-- Step 320
           ["Done"] = {
                67299,
           },
           ["TT"] = {
-               ["y"] = -2565.0,
+               ["y"] = -2765.0,
                ["x"] = -1671.0,
           },
      },
-     {	-- Step 316
+     {	-- Step 321
           ["CRange"] = 69895,
           ["TT"] = {
-               ["y"] = -3304.3,
-               ["x"] = -2126.6,
+               ["y"] = -3335.4,
+               ["x"] = -2135.6,
           },
           ["Trigger"] = {
-               ["y"] = -3304.3,
-               ["x"] = -2126.6,
+               ["y"] = -3335.4,
+               ["x"] = -2135.6,
           },
-          ["Range"] = 20,
+          ["Range"] = 25,
      },
-     {	-- Step 317
+     {	-- Step 322
           ["Qpart"] = {
                [69895] = {
                     ["1"] = "1",
                },
           },
           ["TT"] = {
-               ["y"] = -3304.3,
-               ["x"] = -2126.6,
+               ["y"] = -3335.4,
+               ["x"] = -2135.6,
           },
           ["Trigger"] = {
-               ["y"] = -3304.3,
-               ["x"] = -2126.6,
+               ["y"] = -3335.4,
+               ["x"] = -2135.6,
           },
           ["Range"] = 2,
           ["ExtraLineText"] = "BONUS_OBJECTIVE",
      },
-     {	-- Step 318
+     {	-- Step 323
           ["Done"] = {
                65887,
           },
@@ -11597,7 +11801,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -2128.4,
           },
      },
-     {	-- Step 319
+     {	-- Step 324
           ["PickUp"] = {
                65943,
           },
@@ -11606,7 +11810,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -2128.4,
           },
      },
-     {	-- Step 320
+     {	-- Step 325
           ["PickUp"] = {
                65944,
           },
@@ -11615,7 +11819,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -2129.8,
           },
      },
-     {	-- Step 321
+     {	-- Step 326
           ["PickUp"] = {
                66647,
           },
@@ -11624,7 +11828,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -2129.8,
           },
      },
-     {	-- Step 322
+     {	-- Step 327
           ["Qpart"] = {
                [66647] = {
                     ["1"] = "1",
@@ -11649,7 +11853,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["ExtraLineText"] = "LAVA_ORBS_CAN_BE_SEEN_ON_MINIMAP_KILL_AND_LOOT_RUVIN_STONEGRINDER",
      },
-     {	-- Step 323
+     {	-- Step 328
           ["Qpart"] = {
                [65944] = {
                     ["1"] = "1",
@@ -11671,7 +11875,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["ExtraLineText"] = "LAVA_ORBS_CAN_BE_SEEN_ON_MINIMAP",
      },
-     {	-- Step 324
+     {	-- Step 329
           ["Qpart"] = {
                [65943] = {
                     ["1"] = "1",
@@ -11687,7 +11891,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 325
+     {	-- Step 330
           ["Done"] = {
                65943,
           },
@@ -11696,7 +11900,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -2613.3,
           },
      },
-     {	-- Step 326
+     {	-- Step 331
           ["Done"] = {
                65944,
           },
@@ -11705,7 +11909,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -2613.3,
           },
      },
-     {	-- Step 327
+     {	-- Step 332
           ["Done"] = {
                66647,
           },
@@ -11714,7 +11918,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -2613.3,
           },
      },
-     {	-- Step 328
+     {	-- Step 333
           ["PickUp"] = {
                65977,
           },
@@ -11723,7 +11927,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -2613.3,
           },
      },
-     {	-- Step 329
+     {	-- Step 334
           ["PickUp"] = {
                65958,
           },
@@ -11732,7 +11936,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -2613.3,
           },
      },
-     {	-- Step 330
+     {	-- Step 335
           ["Qpart"] = {
                [65977] = {
                     ["1"] = "1",
@@ -11754,10 +11958,10 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["ExtraLineText"] = "KIRIN_TOR_MAGES_CAN_BE_SEEN_ON_MINIMAP",
           ["Button"] = {
-               ["65977-1"] = 192479,
+               ["65977"] = 192479,
           },
      },
-     {	-- Step 331
+     {	-- Step 336
           ["Qpart"] = {
                [65958] = {
                     ["1"] = "1",
@@ -11773,10 +11977,10 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 75,
           ["Button"] = {
-               ["65958-1"] = 192479,
+               ["65958"] = 192479,
           },
      },
-     {	-- Step 332
+     {	-- Step 337
           ["Done"] = {
                65958,
           },
@@ -11785,7 +11989,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -2883.9,
           },
      },
-     {	-- Step 333
+     {	-- Step 338
           ["Done"] = {
                65977,
           },
@@ -11794,7 +11998,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -2883.9,
           },
      },
-     {	-- Step 334
+     {	-- Step 339
           ["PickUp"] = {
                66007,
           },
@@ -11803,7 +12007,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -2883.9,
           },
      },
-     {	-- Step 335
+     {	-- Step 340
           ["Qpart"] = {
                [66007] = {
                     ["1"] = "1",
@@ -11820,7 +12024,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "LAVA_BEACONS_CAN_BE_SEEN_ON_MINIMAP",
      },
-     {	-- Step 336
+     {	-- Step 341
           ["Done"] = {
                66007,
           },
@@ -11829,7 +12033,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -3039.5,
           },
      },
-     {	-- Step 337
+     {	-- Step 342
           ["PickUp"] = {
                66009,
           },
@@ -11838,7 +12042,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -3039.5,
           },
      },
-     {	-- Step 338
+     {	-- Step 343
           ["Qpart"] = {
                [66009] = {
                     ["1"] = "1",
@@ -11854,7 +12058,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 2,
      },
-     {	-- Step 339
+     {	-- Step 344
           ["Done"] = {
                66009,
           },
@@ -11863,7 +12067,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -2997.8,
           },
      },
-     {	-- Step 340
+     {	-- Step 345
           ["PickUp"] = {
                70041,
           },
@@ -11872,7 +12076,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -2997.8,
           },
      },
-     {	-- Step 341
+     {	-- Step 346
           ["Qpart"] = {
                [70041] = {
                     ["1"] = "1",
@@ -11889,7 +12093,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "ENTER_DISC",
      },
-     {	-- Step 342
+     {	-- Step 347
           ["Qpart"] = {
                [70041] = {
                     ["2"] = "2",
@@ -11906,7 +12110,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "KILL_ELEMENTALS",
      },
-     {	-- Step 343
+     {	-- Step 348
           ["Qpart"] = {
                [70041] = {
                     ["3"] = "3",
@@ -11923,7 +12127,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "DISPELL_STORMS",
      },
-     {	-- Step 344
+     {	-- Step 349
           ["Qpart"] = {
                [70041] = {
                     ["4"] = "4",
@@ -11940,7 +12144,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "KILL_ELEMENTALS",
      },
-     {	-- Step 345
+     {	-- Step 350
           ["Done"] = {
                70041,
           },
@@ -11949,7 +12153,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -3022.6,
           },
      },
-     {	-- Step 346
+     {	-- Step 351
           ["PickUp"] = {
                66015,
           },
@@ -11958,7 +12162,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = -3022.6,
           },
      },
-     {	-- Step 347
+     {	-- Step 352
           ["UseHS"] = 66015,
           ["Button"] = {
                ["22345678-1"] = 6948,
@@ -11969,7 +12173,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["ExtraLineText"] = "TO_CONJURED_BISCUIT_INN",
      },
-     {	-- Step 348
+     {	-- Step 353
           ["Qpart"] = {
                [66015] = {
                     ["1"] = "1",
@@ -11986,7 +12190,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["Gossip"] = 1,
      },
-     {	-- Step 349
+     {	-- Step 354
           ["Done"] = {
                66015,
           },
@@ -11995,7 +12199,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 1195.4,
           },
      },
-     {	-- Step 350
+     {	-- Step 355
           ["PickUp"] = {
                66244,
           },
@@ -12004,7 +12208,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 1195.4,
           },
      },
-     {	-- Step 351
+     {	-- Step 356
           ["UseFlightPath"] = 66244-1,
           ["TT"] = {
                ["y"] = -5342.1,
@@ -12015,10 +12219,11 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["x"] = 1457.9,
           },
           ["Range"] = 2,
-          ["Name"] = "Pinewood Post, Ohn'Ahran Plains",
+          ["Name"] = "Pinewood Post, Ohn'ahran Plains",
           ["ExtraLineText"] = "TO_PINEWOOD_POST",
      },
-     {	-- Step 352
+     {	-- Step 357
           ["ZoneDoneSave"] = 1,
      },
 }
+
