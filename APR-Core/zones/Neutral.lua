@@ -2414,6 +2414,20 @@ APR.QuestStepList ["378-WanderingIsle"] = {
 			["ZoneDoneSave"] = 1,
 		}, -- [2]
 	}
+
+APR.QuestStepListListingStartAreas = {}
+
+APR.QuestStepListListingZone = {
+	["01-30 Pandaren Start"] = 378,
+}
+
+APR.QuestStepListListing = {}
+APR.QuestStepListListing["EasternKingdom"] = {
+["378-WanderingIsle"] = "01-30 Pandaren Start",
+}
+
+
+end
 APR.QuestStepList["672-Mardum"] = {
 		{
 			["PickUp"] = {
@@ -4280,18 +4294,3 @@ APR.QuestStepList["672-Mardum"] = {
 			["ZoneDoneSave"] = 1,
 		}, 
 	}
-
-
-APR.QuestStepListListingStartAreas = {}
-
-APR.QuestStepListListingZone = {
-	["01-30 Pandaren Start"] = 378,
-}
-
-APR.QuestStepListListing = {}
-APR.QuestStepListListing["EasternKingdom"] = {
-["378-WanderingIsle"] = "01-30 Pandaren Start",
-}
-
-
-end

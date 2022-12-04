@@ -49,7 +49,11 @@ APR.QuestStepListListingZone = {
 	["20-50 Nazmir"] = 863,
 	["30-30 Naz-end Vol-begin"] = 862,
 	["30-50 Vol'dun"] = 864,
-	["WIP - Silverpine Forest"] = 21,
+	["Silverpine Forest"] = 21,
+	["Silverpine Forest 2"] = 217,
+	["Silverpine Forest 3"] = 21,
+	["Silverpine Forest 4"] = 25,
+	["Silverpine Forest 5"] = 21,
 	["WIP - Hillsbrad Foothills"] = 25,
 	["WIP - Western Plaguelands"] = 22,
 	["DEV - HStoryMode Only (Not Enough XP)"] = 1670,
@@ -81,7 +85,7 @@ APR.QuestStepListListing["MISC 1"] = {
 }
 if (APR.Class[3] == 12) then
 APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
-elseif (APR.Level == 1) then
+elseif (APR.Level < 10) then
 	APR.QuestStepListListing["MISC 1"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
 elseif (APR.Race == "Goblin" and APR.Level < 2) then
 	APR.QuestStepListListing["MISC 1"]["194-Kezan"] = "01-30 Goblin Start (Kezan)"
@@ -171,7 +175,11 @@ APR.QuestStepListListing["SpeedRun"] = {
 }
 APR.QuestStepListListing["EasternKingdom"] = {
 	["DEV-Western Plaguelands"] = "WIP - Western Plaguelands",
-	["DEV-Silverpine"] = "WIP - Silverpine Forest",
+	["DEV-Silverpine"] = "Silverpine Forest",
+	["217-Ruins of Gilneas"] = "Silverpine Forest 2",
+	["DEV-Silverpine2"] = "Silverpine Forest 3",
+	["DEV-DALARAN_CRATER"] = "Silverpine Forest 4",
+	["DEV-Silverpine3"] = "Silverpine Forest 5",
 	["DEV-Hillsbrad"] = "WIP - Hillsbrad Foothills",
 	
 }

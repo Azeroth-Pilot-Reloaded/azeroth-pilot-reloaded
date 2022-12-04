@@ -107,7 +107,7 @@ APR.QuestStepListListing["MISC 1"] = {
 }
 if (APR.Class[3] == 12) then
 APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
-elseif (APR.Level < 2) then
+elseif (APR.Level < 10) then
 	APR.QuestStepListListing["MISC 1"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
 elseif (APR.Faction == "Neutral" and APR.race == 24 and APR.Level == 1) then
 	APR.QuestStepListListing["MISC 1"]["378-WanderingIsle"] = "01-30 Pandaren Start"
