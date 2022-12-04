@@ -1,30 +1,5 @@
-﻿if GetLocale() ~= "zhCN" then return; end
-local app = select(2, ...);
-local L = app.L;
+﻿local L = LibStub("AceLocale-3.0"):NewLocale("APR", "zhCN") 
+if not L then return end 
 
-L["ACCEPT_Q"] = "——接受任务"
-L["AUTO_PICK_REWARD_ITEM"] = "任务升级自动挑选任务奖励"
-L["AUTO_REPAIR"] = "自动修理"
-L["AUTO_VENDOR"] = "自动摧毁灰色物品"
-L["BLOODLUST"] = "——开嗜血的好时机"
-L["DECLINE_Q"] = "——拒绝任务"
-L["JUMP_OFF"] = "跳下"
-L["KEYBINDS"] = "设置键绑定：使用任务项"
-L["LOA_INFO_1"] = "——贡克：图腾，40%秒移动"
-L["LOA_INFO_2"] = "——Paku：Wrav骑师，飞定义的地方"
-L["OPTIONAL"] = "——可选"
-L["PICK_ZONE"] = "——选择任务地图"
-L["SET_HEARTHSTONE"] = "\"——设置炉石"
-L["SETTINGS"] = "——设置"
-L["SHOW_GROUP_PROGRESS"] = "显示小队进度"
-L["SKIPPED_CUTSCENE"] = "——跳过图景"
-L["SUGGESTED_PLAYERS"] = "——建议玩家"
-L["TRAVEL_TO"] = "——旅游"
-L["TURN_IN_Q"] = "——去交任务"
-L["USE_BOAT"] = "——用船"
-L["USE_DALARAN_HEARTHSTONE"] = "使用达拉然炉石"
-L["USE_FLIGHTPATH"] = "——使用飞行点"
-L["USE_HEARTHSTONE"] = "——使用炉石"
-L["USE_ITEM"] = "——使用物品"
-L["YARDS"] = "码"
-
+--------------------------------------------------------------------------------------------------------------------------------------------
+@localization(locale="zhCN", format="lua_additive_table")@

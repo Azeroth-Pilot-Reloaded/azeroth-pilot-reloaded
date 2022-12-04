@@ -1,5 +1,5 @@
-local app = select(2, ...);
-local L = app.L;
+local AceLocale = LibStub("AceLocale-3.0")
+local L = AceLocale:GetLocale("APR")
 
 local QNumberLocal = 0
 local APR_ArrowUpdateNr = 0

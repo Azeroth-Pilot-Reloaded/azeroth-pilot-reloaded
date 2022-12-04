@@ -1,5 +1,5 @@
-local app = select(2, ...);
-local L = app.L;
+local AceLocale = LibStub("AceLocale-3.0")
+local L = AceLocale:GetLocale("APR")
 
 function AddQuestListButton(text, index, buttonFunction)
 	APR.QuestList.QuestFrames["FS"..index].Button = CreateFrame("Button", "APR_SkipActiveButton"..index, APR.QuestList.QuestFrames[index])

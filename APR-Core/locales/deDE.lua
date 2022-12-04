@@ -1,29 +1,5 @@
-﻿if GetLocale() ~= "deDE" then return; end
-local app = select(2, ...);
-local L = app.L;
+﻿local L = LibStub("AceLocale-3.0"):NewLocale ("APR", "deDE") 
+if not L then return end 
 
-L["ACCEPT_Q"] = "Quest annehmen"
-L["AUTO_PICK_REWARD_ITEM"] = "Questbelohnungen automatisch nach Ilvl wählen"
-L["AUTO_REPAIR"] = "Automatisch reparieren"
-L["AUTO_VENDOR"] = "Graue Items automatisch Verkaufen"
-L["BLOODLUST"] = "Gute Gelegenheit Hero zu nutzen"
-L["DECLINE_Q"] = "Quest ablehnen"
-L["GET_FLIGHTPATH"] = "Flugpunkt entdecken"
-L["JUMP_OFF"] = "Spring runter"
-L["KEYBINDS"] = "Tastaturbelegung: Questgegenstand benutzen"
-L["LOA_INFO_1"] = "Gonk: Totems; 40% Laufgeschwindigkeit 30 Sekunden"
-L["LOA_INFO_2"] = "Mithilfe von Pa'ku's Totems zum Zielort gelangen"
-L["OPTIONAL"] = "Optional"
-L["SET_HEARTHSTONE"] = "Ruhestein setzen"
-L["SETTINGS"] = "Einstellungen"
-L["SHOW_GROUP_PROGRESS"] = "Zeige Gruppenfortschritt"
-L["SKIPPED_CUTSCENE"] = "Cutscene überspringen"
-L["SUGGESTED_PLAYERS"] = "Empfohlene Spieler"
-L["TRAVEL_TO"] = "Reise nach"
-L["TURN_IN_Q"] = "Quest abgeben"
-L["USE_BOAT"] = "Boot benutzen"
-L["USE_DALARAN_HEARTHSTONE"] = "Dalaranruhestein benutzen"
-L["USE_FLIGHTPATH"] = "Flugpunkt nehmen"
-L["USE_HEARTHSTONE"] = "Ruhestein benutzen"
-L["USE_ITEM"] = "Gegenstand benutzen"
-L["YARDS"] = "yards"
+--------------------------------------------------------------------------------------------------------------------------------------------
+@localization(locale="deDE", format="lua_additive_table")@

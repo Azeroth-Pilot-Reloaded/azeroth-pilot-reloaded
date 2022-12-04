@@ -4,8 +4,9 @@
 		as everything here unless defined local is globally usable outside of this file.
 ]]--
 
-local app = select(2, ...);
-local L = app.L;
+local AceLocale = LibStub("AceLocale-3.0")
+local AceLocale = LibStub("AceLocale-3.0")
+local L = AceLocale:GetLocale("APR")
 DISCORD = "https://discord.gg/YgcdybKdWX"
 APR = {}
 APR.Name = UnitName("player")
