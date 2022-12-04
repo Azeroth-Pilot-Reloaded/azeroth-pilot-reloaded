@@ -1,32 +1,5 @@
-﻿if GetLocale() ~= "zhTW" then return; end
-local app = select(2, ...);
-local L = app.L;
+﻿local L = LibStub("AceLocale-3.0"):NewLocale("APR", "zhTW") 
+if not L then return end 
 
-L["ACCEPT_Q"] = "接受任務"
-L["AUTO_PICK_REWARD_ITEM"] = "依照裝備等級升級自動選取任務獎勵"
-L["AUTO_REPAIR"] = "自動修理"
-L["AUTO_VENDOR"] = "自動販賣灰色物品"
-L["BLOODLUST"] = "開嗜血/英勇的好時機"
-L["DECLINE_Q"] = "拒絕任務"
-L["JUMP"] = "跳下"
-L["KEYBINDS"] = "設置使用任務道具的快捷鍵"
-L["LOA_INFO_1"] = "Gonk圖騰，增加移動速度40%維持30秒"
-L["LOA_INFO_2"] = "Pa'ku Waverider，飛往定點"
-L["LOCK_ARROW_WINDOW"] = "鎖定箭頭視窗"
-L["LOCK_QLIST_WINDOW"] = "鎖定任務表單視窗"
-L["OPTIONAL"] = "可跳過"
-L["PICK_ZONE"] = "選擇地圖"
-L["SET_HEARTHSTONE"] = "設置爐石"
-L["SETTINGS"] = "設置"
-L["SHOW_GROUP_PROGRESS"] = "顯示小隊進度"
-L["SKIPPED_CUTSCENE"] = "跳過動過"
-L["SUGGESTED_PLAYERS"] = "建議玩家"
-L["TRAVEL_TO"] = "跑到"
-L["TURN_IN_Q"] = "回繳任務"
-L["TURN_ON_WARMODE"] = "開啟戰爭模式！"
-L["USE_BOAT"] = "坐船到"
-L["USE_DALARAN_HEARTHSTONE"] = "使用達拉然爐石"
-L["USE_FLIGHTPATH"] = "用飛行鳥點到"
-L["USE_HEARTHSTONE"] = "使用爐石"
-L["USE_ITEM"] = "使用物品"
-L["YARDS"] = "碼"
+--------------------------------------------------------------------------------------------------------------------------------------------
+@localization(locale="zhTW", format="lua_additive_table")@

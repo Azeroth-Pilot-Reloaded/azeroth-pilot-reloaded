@@ -1,40 +1,5 @@
-﻿if GetLocale() ~= "esES" then return; end
-local app = select(2, ...);
-local L = app.L;
+﻿local L = LibStub("AceLocale-3.0"):NewLocale ("APR", "esES") 
+if not L then return end 
 
-L["ACCEPT_Q"] = "Acceptar misión"
-L["AUTO_PICK_REWARD_ITEM"] = "Auto Elegir Recompensa de Misión por mejora de ilvl"
-L["AUTO_REPAIR"] = "Reparar Automáticamente"
-L["AUTO_SELECTION_OF_DIALOG"] = "selección de diálogo Automáticamente"
-L["AUTO_VENDOR"] = "Vender Objetos en Gris Automáticamente"
-L["BLOODLUST"] = "Momento de usar Ansia de sangre"
-L["DECLINE_Q"] = "Rechazar misión"
-L["GET_FLIGHTPATH"] = "Obtener Punto de Vuelo"
-L["JUMP_OFF"] = "Saltar de"
-L["KEYBINDS"] = "Establecer Teclas"
-L["LOA_INFO_1"] = "Gonk: Tótems, 40% de velocidad de movimiento 30 seg."
-L["LOA_INFO_2"] = "Pa'Ku: Señora de los Vientos, volar lugares definidos."
-L["LOCK_ARROW_WINDOW"] = "Bloquear marco de Flecha"
-L["LOCK_QLIST_WINDOW"] = "Bloquear marco de Registro de misiones"
-L["OPTIONAL"] = "Opcional"
-L["PICK_UP_Q"] = "Tomar misión"
-L["PICK_ZONE"] = "Elegir Zona"
-L["SET_HEARTHSTONE"] = "Poner Piedra de Hogar"
-L["SETTINGS"] = "Opciones"
-L["SHOW_ARROW"] = "Mostrar Flecha"
-L["SHOW_BLOBS_ON_MAP"] = "Mostrar puntos verdes en el mapa"
-L["SHOW_BLOBS_ON_MINIMAP"] = "Mostrar puntos verdes en el minimapa"
-L["SHOW_GROUP_PROGRESS"] = "Mostrar el Progreso del Grupo"
-L["SHOW_QLIST"] = "mostrar Registro de misiones"
-L["SKIPPED_CUTSCENE"] = "cinemática omitida"
-L["SUGGESTED_PLAYERS"] = "Jugadores sugeridos"
-L["TRAVEL_TO"] = "Viajar a"
-L["TURN_IN_Q"] = "Entregar Misión"
-L["TURN_ON_WARMODE"] = "Activar Modo Guerra!"
-L["USE_BOAT"] = "Barco a"
-L["USE_DALARAN_HEARTHSTONE"] = "Usar Piedra de Hogar de Dalaran"
-L["USE_FLIGHTPATH"] = "Volar a"
-L["USE_GARRISON_HEARTHSTONE"] = "Usar Piedra de Hogar de la Ciudadela"
-L["USE_HEARTHSTONE"] = "Usar Piedra de Hogar"
-L["USE_ITEM"] = "Usar Objeto"
-L["YARDS"] = "yardas"
+--------------------------------------------------------------------------------------------------------------------------------------------
+@localization(locale="esES", format="lua_additive_table")@

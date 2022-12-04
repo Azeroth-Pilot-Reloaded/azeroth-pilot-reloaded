@@ -1,11 +1,8 @@
 # Lib: HereBeDragons
 
-## [2.04-release](https://github.com/Nevcairiel/HereBeDragons/tree/2.04-release) (2020-10-13)
-[Full Changelog](https://github.com/Nevcairiel/HereBeDragons/compare/2.03-release...2.04-release) [Previous Releases](https://github.com/Nevcairiel/HereBeDragons/releases)
+## [2.12-release](https://github.com/Nevcairiel/HereBeDragons/tree/2.12-release) (2022-11-16)
+[Full Changelog](https://github.com/Nevcairiel/HereBeDragons/compare/2.11-release...2.12-release) [Previous Releases](https://github.com/Nevcairiel/HereBeDragons/releases)
 
-- Update TOC  
-- Don't consider instance -1 as valid for overrides  
-- Remove HereBeDragons-1.0 compat folder  
-- Use C\_Minimap.GetViewRadius on WoW 9.0 instead guessing based on zoom  
-    This avoids MINIMAP\_UPDATE\_ZOOM spam, which was degrading performance.  
-- Migrate to GitHub actions  
+- Update TOC for 10.0.2  
+- Remove support for WoW 10.0.0 (only 10.0.2 is supported on retail now)  
+- Handle World Map data differences between 10.0.0 and 10.0.2  
