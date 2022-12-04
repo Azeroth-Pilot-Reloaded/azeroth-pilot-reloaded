@@ -2356,16 +2356,15 @@ function APR.GliderFunc()
 	if (APR1["GliderName"]) then
 		return APR1["GliderName"]
 	else
-		local bag, slot, itemLink, itemName, count
+		local itemName
 		local DerpGot = 0
 		for bag = 0,4 do
 			for slot = 1,C_Container.GetContainerNumSlots(bag) do
 				local itemID = C_Container.GetContainerItemID(bag, slot)
 				if (itemID and itemID == 109076) then
 					DerpGot = 1
-					itemLink = GetContainerItemLink(bag,slot)
+					local itemLink = C_Container.GetContainerItemLink(bag,slot)
 					itemName = GetItemInfo(itemLink)
-					count = GetItemCount(itemLink)
 				end
 			end
 		end
