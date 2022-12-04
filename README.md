@@ -2,7 +2,7 @@
 <h3 style="text-align: left;"><span style="font-size: 18px; font-family: arial;">The continuation of <em>Azeroth Auto Pilot</em>, a leveling AddOn.</span></h3>
 <p style="text-align: left;">&nbsp;</p>
 <hr />
-<p style="text-align: center;"><span style="font-size: 24px; font-family: arial;"><strong>If you want to download Azeroth Pilot Reloaded, go to </strong><strong><a href="https://www.curseforge.com/wow/addons/azeroth-pilot-reloaded" target="_blank" rel="noopener noreferrer">CurseForge</a></strong></span>.</p>
+<p style="text-align: center;"><span style="font-size: 24px; font-family: arial;"><strong>If you want to download Azeroth Pilot Reloaded, check out the </strong><strong><a href="https://www.curseforge.com/wow/addons/azeroth-pilot-reloaded" target="_blank" rel="noopener noreferrer">CurseForge</a></strong></span> page.</p>
 <hr />
 <p style="text-align: left;"><span style="font-size: 24px; font-family: arial;"><strong><u>Features</u></strong></span></p>
 <p style="text-align: left;">&nbsp;</p>
