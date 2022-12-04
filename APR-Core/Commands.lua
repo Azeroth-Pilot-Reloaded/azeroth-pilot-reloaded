@@ -1,5 +1,5 @@
-local app = select(2, ...);
-local L = app.L;
+local AceLocale = LibStub("AceLocale-3.0")
+local L = AceLocale:GetLocale("APR")
 
 -- Chat commands, such as /apr reset, /apr skip, /apr skipcamp
 function APR_SlashCmd(APR_index)
@@ -32,15 +32,15 @@ function APR_SlashCmd(APR_index)
 	elseif (APR_index == "discord" or APR_index == "d") then
 		print(DISCORD)
 	elseif (APR_index == "help" or APR_index == "h") then
-		print("Command list: ")
-		print("/apr help, h")
-		print("/apr reset, r")
-		print("/apr forcereset, fr")
-		print("/apr skip, s")
-		print("/apr rollback, rb")
-		print("/apr showriding, sr")
-		print("/apr hideriding, hr")
-		print("/apr discord, d")
+		print(L["COMMAND_LIST"]..":")
+		print("|cffeda55f/apr help, h |r- "..L["HELP_COMMAND"])
+		print("|cffeda55f/apr reset, r |r- "..L["RESET_COMMAND"])
+		print("|cffeda55f/apr forcereset, fr |r- "..L["FORCERESET_COMMAND"])
+		print("|cffeda55f/apr skip, s |r- "..L["SKIP_COMMAND"])
+		print("|cffeda55f/apr rollback, rb |r- "..L["ROLLBACK_COMMAND"])
+		print("|cffeda55f/apr showriding, sr |r- "..L["RIDING_SHOW_COMMAND"])
+		print("|cffeda55f/apr hideriding, hr |r- "..L["RIDING_HIDE_COMMAND"])
+		print("|cffeda55f/apr discord, d |r- "..L["DISCORD_COMMAND"])
 		print(" ")
 		print(L["NEED_HELP"].." "..DISCORD)
 	else
