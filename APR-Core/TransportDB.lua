@@ -4242,7 +4242,6 @@
 			  },
 		 },
 	},
-
 	["FPs2"] = {
 		 ["Horde"] = {
 			  -- Kalimdor
@@ -4828,7 +4827,7 @@
 				   },
 			  },
 			  -- Wrath of the Lich King
-			  [113] = { 
+			  [113] = {
 				   [118] = {
 						["Death's Rise, Icecrown"] = {
 							 ["y"] = 7429.7,
