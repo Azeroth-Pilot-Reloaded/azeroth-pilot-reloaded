@@ -1574,7 +1574,7 @@ local function APR_PrintQStep()
 						APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
 					end
 				end
-				if (C_PvP.IsWarModeDesired() == false and C_PvP.CanToggleWarMode("toggle") == true) then
+				if (C_PvP.IsWarModeDesired() == false and C_PvP.CanToggleWarMode(toggle) == true) then
 					C_PvP.ToggleWarMode()
 					APR.BookingList["PrintQStep"] = 1
 				end
@@ -2310,7 +2310,7 @@ function APR.CreateMacro()
 	local APR_hasSpace = global < MAX_ACCOUNT_MACROS
 	if APR_hasSpace then
 		if not isFound and not InCombatLockdown() then
-			CreateMacro("APR_MACRO","INV_MISC_QUESTIONMARK","/script print('no button yet')",nil,nil)
+			CreateMacro("APR_MACRO",134400,"/script print('no button yet')")
 		end
 	else
 		print("APR: No global macro space. Please delete a macro to create space.")
@@ -2325,28 +2325,29 @@ function APR.MacroUpdater2(macroSlot,itemName,APRextra)
 	if (APR1["Debug"]) then
 		print("Function: APR.MacroUpdater()")
 	end
+	local iconQuestionMark = 134400
 	if (itemName) then
 		if (itemName == 123123123) then
-			EditMacro(macroSlot, "APR_MACRO","INV_MISC_QUESTIONMARK","#showtooltip\n/click ExtraActionButton1",nil,nil)
+			EditMacro(macroSlot, "APR_MACRO",iconQuestionMark,"#showtooltip\n/click ExtraActionButton1")
 		elseif (itemName == 6666666) then
-			EditMacro(macroSlot, "APR_MACRO","INV_MISC_QUESTIONMARK","#showtooltip\n/cast Summon Steward",nil,nil)
+			EditMacro(macroSlot, "APR_MACRO",iconQuestionMark,"#showtooltip\n/cast Summon Steward")
 		elseif (APRextra == 65274) then
-			EditMacro(macroSlot, "APR_MACRO","INV_MISC_QUESTIONMARK","#showtooltip\n/script APR.SaveOldSlot()\n/use "..itemName,nil,nil)
+			EditMacro(macroSlot, "APR_MACRO",iconQuestionMark,"#showtooltip\n/script APR.SaveOldSlot()\n/use "..itemName)
 		else
 			local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 			local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 			if (APR.DubbleMacro and APR.DubbleMacro[1] and APR.DubbleMacro[2] and steps and steps["SpecialDubbleMacro"]) then
-				EditMacro(macroSlot, "APR_MACRO","INV_MISC_QUESTIONMARK","#showtooltip\n/use "..APR.DubbleMacro[1].."\n/use "..APR.DubbleMacro[2],nil,nil)
+				EditMacro(macroSlot, "APR_MACRO",iconQuestionMark,"#showtooltip\n/use "..APR.DubbleMacro[1].."\n/use "..APR.DubbleMacro[2])
 			elseif (steps and steps["SpecialMacro"]) then
-				EditMacro(macroSlot, "APR_MACRO","INV_MISC_QUESTIONMARK","#showtooltip\n/target Serrik\n/use "..itemName,nil,nil)
+				EditMacro(macroSlot, "APR_MACRO",iconQuestionMark,"#showtooltip\n/target Serrik\n/use "..itemName)
 			elseif (steps and steps["SpecialMacro2"]) then
-				EditMacro(macroSlot, "APR_MACRO","INV_MISC_QUESTIONMARK","#showtooltip\n/target Hrillik's\n/use "..itemName,nil,nil)
+				EditMacro(macroSlot, "APR_MACRO",iconQuestionMark,"#showtooltip\n/target Hrillik's\n/use "..itemName)
 			else
-				EditMacro(macroSlot, "APR_MACRO","INV_MISC_QUESTIONMARK","#showtooltip\n/use "..itemName,nil,nil)
+				EditMacro(macroSlot, "APR_MACRO",iconQuestionMark,"#showtooltip\n/use "..itemName)
 			end
 		end
 	else
-		EditMacro(macroSlot, "APR_MACRO","INV_MISC_QUESTIONMARK","/script print('no button yet')",nil,nil)
+		EditMacro(macroSlot, "APR_MACRO",iconQuestionMark,"/script print('no button yet')")
 	end
 end
 function APR.GliderFunc()
@@ -2933,11 +2934,11 @@ function APR_UpdQuestThing()
 		local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
 		if (npc_id and name) then
 			if (APR.ActiveQuests and APR.ActiveQuests["55981-3"] and APR.ActiveQuests["55981-3"] ~= "C" and tonumber(npc_id) == 153580) then
-				DoEmote("hug")
+				DoEmote("HUG")
 			elseif (APR.ActiveQuests and APR.ActiveQuests["55981-4"] and APR.ActiveQuests["55981-4"] ~= "C" and tonumber(npc_id) == 153580) then
-				DoEmote("wave")
+				DoEmote("WAVE")
 			elseif (APR.ActiveQuests and APR.ActiveQuests["59978-4"] and APR.ActiveQuests["59978-4"] ~= "C" and tonumber(npc_id) == 153580) then
-				DoEmote("wave")
+				DoEmote("WAVE")
 			end
 		end
 	end
@@ -3184,11 +3185,11 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
 			if (npc_id and name) then
 				if (APR.ActiveQuests and APR.ActiveQuests["55981-3"] and APR.ActiveQuests["55981-3"] ~= "C" and tonumber(npc_id) == 153580) then
-					DoEmote("hug")
+					DoEmote("HUG")
 				elseif (APR.ActiveQuests and APR.ActiveQuests["55981-4"] and APR.ActiveQuests["55981-4"] ~= "C" and tonumber(npc_id) == 153580) then
-					DoEmote("wave")
+					DoEmote("WAVE")
 				elseif (APR.ActiveQuests and APR.ActiveQuests["59978-4"] and APR.ActiveQuests["59978-4"] ~= "C" and tonumber(npc_id) == 153580) then
-					DoEmote("wave")
+					DoEmote("WAVE")
 				end
 			end
 		end
