@@ -2426,7 +2426,7 @@ function APR.CheckPosMove(zeActivz)
 		if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
 			local zew = APR.QuestStepListListingZone[APR_Custom[APR.Name.."-"..APR.Realm][CLi]]
 			if (APR["EasternKingdom"] and APR["EasternKingdom"][zew] and IsAddOnLoaded("APR-Vanilla") == false) then
-				local loaded, ADDON_DEMAND_LOADED = LoadAddOn("APR-Vanilla")
+				local loaded, reason = LoadAddOn("APR-Vanilla")
 					if not loaded then
 						if reason == "DISABLED" then
 							print("APR: APR-Vanilla "..L["DISABLED_ADDON_LIST"])
