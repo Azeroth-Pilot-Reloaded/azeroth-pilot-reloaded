@@ -147,7 +147,7 @@ local function GetPlayerMapPos(MapID, dx, dy)
 	if (MapID and MapID == 1726 or MapID == 1727 or APRt_Zone == 1727) then
 		return
 	end
-	--if (UnitPosition('Player')) then
+	--if (UnitPosition('player')) then
 	--	return
 	--end
     local R,P,_ = MapRects[MapID],TempVec2D;
@@ -161,7 +161,7 @@ local function GetPlayerMapPos(MapID, dx, dy)
 	if (dx) then
 		P.x, P.y = dx, dy
 	else
-		P.x, P.y = UnitPosition('Player');
+		P.x, P.y = UnitPosition('player');
 	end
 	if (P.x) then
 		P:Subtract(R[1]);

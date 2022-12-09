@@ -519,7 +519,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
                },
           },
           ["Button"] = {
-               ["66998"] = 193917,
+               ["66998-1"] = 193917,
           },
      },
      {	-- Step 33
@@ -552,7 +552,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
           },
           ["Range"] = 290,
           ["Button"] = {
-               ["65996"] = 193917,
+               ["65996-1"] = 193917,
           },
      },
      {	-- Step 35
@@ -1036,7 +1036,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
           ["Range"] = 1,
           ["ExtraLineText"] = "CLICK_EXTRAACTIONBUTTON",
           ["Button"] = {
-               ["70132"] = 383740,
+               ["70132-1"] = 383740,
           },
           ["ExtraActionB"] = 1,
      },
@@ -1924,7 +1924,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
                },
           },
           ["Button"] = {
-               ["66122"] = 192436,
+               ["66122-2"] = 192436,
           },
      },
      {	-- Step 130
@@ -1987,7 +1987,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
           ["Range"] = 45,
           ["ExtraLineText"] = "USE_ITEM_FOR_DAMAGE_BOOST",
           ["Button"] = {
-               ["66123"] = 192436,
+               ["66123-1"] = 192436,
           },
      },
      {	-- Step 135
@@ -2064,7 +2064,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
           ["Range"] = 20,
           ["ExtraLineText"] = "JUMP_OFF_CLIFF_EGG_IS_DOWN_BELOW",
           ["Button"] = {
-               ["66524"] = 192465,
+               ["66524-1"] = 192465,
           },
      },
      {	-- Step 142
@@ -2083,7 +2083,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
           },
           ["Range"] = 20,
           ["Button"] = {
-               ["66524"] = 192465,
+               ["66524-2"] = 192465,
           },
      },
      {	-- Step 143
@@ -2102,7 +2102,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
           },
           ["Range"] = 20,
           ["Button"] = {
-               ["66524"] = 192465,
+               ["66524-3"] = 192465,
           },
      },
      {	-- Step 144
@@ -2153,7 +2153,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
                },
           },
           ["Button"] = {
-               ["66525"] = 192465,
+               ["66525-1"] = 192465,
           },
      },
      {	-- Step 148
@@ -2178,7 +2178,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
           },
           ["ExtraLineText"] = "DRAGON_IS_FLYING_ABOVE_AREA_POINT_THE_CAMERA_AT_DRAGON",
           ["Button"] = {
-               ["66525"] = 192465,
+               ["66525-2"] = 192465,
           },
      },
      {	-- Step 149
@@ -2258,7 +2258,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
           ["Range"] = 1,
           ["ExtraLineText"] = "PHOTOGRAPH_DRAGON",
           ["Button"] = {
-               ["66527"] = 192465,
+               ["66527-2"] = 192465,
           },
      },
      {	-- Step 155
@@ -2681,7 +2681,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
           },
           ["ExtraLineText"] = "KILL_PIERCER_GIGRA",
           ["Button"] = {
-               ["65957"] = 369553,
+               ["65957-1"] = 369553,
           },
      },
      {	-- Step 184
@@ -4638,7 +4638,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
           ["Button"] = {
-               ["66019"] = 375680,
+               ["66019-4"] = 375680,
           },
      },
      {	-- Step 87
@@ -4673,7 +4673,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
           ["Button"] = {
-               ["66019"] = 375765,
+               ["66019-6"] = 375765,
           },
      },
      {	-- Step 89
@@ -4708,7 +4708,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
           ["Button"] = {
-               ["66019"] = 375771,
+               ["66019-8"] = 375771,
           },
      },
      {	-- Step 91
@@ -4743,7 +4743,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
           ["Range"] = 2,
           ["Button"] = {
-               ["66019"] = 375932,
+               ["66019-10"] = 375932,
           },
      },
      {	-- Step 93
@@ -5224,7 +5224,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 10,
           ["ExtraLineText"] = "KILL_CATHAN_AND_USE_ZORIGS_TOTEM_OF_RESPITE_ON_THEIR_CORPSE",
           ["Button"] = {
-               ["66656"] = 194447,
+               ["66656-1"] = 194447,
           },
           ["RaidIcon"] = 192224,
      },
@@ -5245,7 +5245,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 28,
           ["ExtraLineText"] = "KILL_ZAPHIL_AND_USE_ZORIGS_TOTEM_OF_RESPITE_ON_THEIR_CORPSE",
           ["Button"] = {
-               ["66656"] = 194447,
+               ["66656-2"] = 194447,
           },
           ["RaidIcon"] = 192223,
      },
@@ -5266,7 +5266,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 33,
           ["ExtraLineText"] = "KILL_DIHAR_AND_USE_ZORIGS_TOTEM_OF_RESPITE_ON_THEIR_CORPSE",
           ["Button"] = {
-               ["66656"] = 194447,
+               ["66656-4"] = 194447,
           },
           ["RaidIcon"] = 192225,
      },
@@ -5287,7 +5287,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 40,
           ["ExtraLineText"] = "KILL_GANMAT_AND_USE_ZORIGS_TOTEM_OF_RESPITE_ON_THEIR_CORPSE",
           ["Button"] = {
-               ["66656"] = 194447,
+               ["66656-3"] = 194447,
           },
           ["RaidIcon"] = 192226,
      },
@@ -6626,7 +6626,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           ["Range"] = 125,
           ["ExtraLineText"] = "USE_ITEM_ON_ARGALI",
           ["Button"] = {
-               ["66680"] = 193892,
+               ["66680-3"] = 193892,
           },
      },
      {	-- Step 231
@@ -7961,7 +7961,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 25,
           ["ExtraLineText"] = "TARGET_AZURE_DEFENDERS_USE_WAND",
           ["Button"] = {
-               ["66489"] = 192471,
+               ["66489-1"] = 192471,
           },
      },
      {	-- Step 35
@@ -8288,7 +8288,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "SEARCH_BAG",
           ["Button"] = {
-               ["65709"] = 191953,
+               ["65709-1"] = 191953,
           },
      },
      {	-- Step 62
@@ -8312,7 +8312,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                },
           },
           ["Button"] = {
-               ["65709"] = 191952,
+               ["65709-2"] = 191952,
           },
      },
      {	-- Step 63
@@ -8336,7 +8336,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                },
           },
           ["Button"] = {
-               ["65709"] = 191952,
+               ["65709-3"] = 191952,
           },
      },
      {	-- Step 64
@@ -8399,7 +8399,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 3,
           ["ExtraLineText"] = "SEARCH_BAG",
           ["Button"] = {
-               ["65852"] = 191978,
+               ["65852-1"] = 191978,
           },
      },
      {	-- Step 69
@@ -8419,7 +8419,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "USE_TELEPORT_THE_TOP",
           ["Button"] = {
-               ["65852"] = 378026,
+               ["65852-2"] = 378026,
           },
      },
      {	-- Step 70
@@ -8488,7 +8488,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 75,
           ["Button"] = {
-               ["65752"] = 194891,
+               ["65752-1"] = 194891,
           },
      },
      {	-- Step 75
@@ -9561,7 +9561,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 180,
           ["ExtraLineText"] = "WATERFALLS_CAN_BE_SEEN_ON_YOUR_MINIMAP",
           ["Button"] = {
-               ["66840"] = 193569,
+               ["66840-1"] = 193569,
           },
      },
      {	-- Step 157
@@ -9836,7 +9836,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                },
           },
           ["Button"] = {
-               ["65845"] = 191928,
+               ["65845-1"] = 191928,
           },
      },
      {	-- Step 175
@@ -11051,7 +11051,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 2,
           ["ExtraLineText"] = "GO_ON_TOP_OF_ARCHIVES_AND_DRAGONFLY_CAMP_NOWHERE",
           ["Button"] = {
-               ["65886"] = 378026,
+               ["65886-2"] = 378026,
           },
      },
      {	-- Step 267
@@ -11123,7 +11123,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                },
           },
           ["Button"] = {
-               ["66353"] = 191909,
+               ["66353-1"] = 191909,
           },
      },
      {	-- Step 273
@@ -11142,7 +11142,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 125,
           ["Button"] = {
-               ["66352"] = 191909,
+               ["66352-1"] = 191909,
           },
      },
      {	-- Step 274
@@ -11242,7 +11242,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["Range"] = 20,
           ["ExtraLineText"] = "TWO_DOWNSTAIRS_ONE_UPSTAIRS",
           ["Button"] = {
-               ["66425"] = 192110,
+               ["66425-1"] = 192110,
           },
      },
      {	-- Step 283
@@ -11332,7 +11332,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 2,
           ["Button"] = {
-               ["66428"] = 192475,
+               ["66428-1"] = 192475,
           },
      },
      {	-- Step 291
@@ -11910,7 +11910,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["ExtraLineText"] = "KIRIN_TOR_MAGES_CAN_BE_SEEN_ON_MINIMAP",
           ["Button"] = {
-               ["65977"] = 192479,
+               ["65977-1"] = 192479,
           },
      },
      {	-- Step 336
@@ -11929,7 +11929,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           },
           ["Range"] = 75,
           ["Button"] = {
-               ["65958"] = 192479,
+               ["65958-1"] = 192479,
           },
      },
      {	-- Step 337
@@ -12042,7 +12042,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["y"] = -3281.0,
                ["x"] = -3002.0,
           },
-          ["Range"] = 2,
+          ["Range"] = 3,
           ["ExtraLineText"] = "ENTER_DISC",
      },
      {	-- Step 347
@@ -12059,7 +12059,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["y"] = -3281.0,
                ["x"] = -3002.0,
           },
-          ["Range"] = 2,
+          ["Range"] = 20,
           ["ExtraLineText"] = "KILL_ELEMENTALS",
      },
      {	-- Step 348
@@ -12076,7 +12076,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["y"] = -3281.0,
                ["x"] = -3002.0,
           },
-          ["Range"] = 2,
+          ["Range"] = 20,
           ["ExtraLineText"] = "DISPELL_STORMS",
      },
      {	-- Step 349
@@ -12093,7 +12093,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
                ["y"] = -3281.0,
                ["x"] = -3002.0,
           },
-          ["Range"] = 2,
+          ["Range"] = 20,
           ["ExtraLineText"] = "KILL_ELEMENTALS",
      },
      {	-- Step 350
@@ -12178,5 +12178,3 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["ZoneDoneSave"] = 1,
      },
 }
-
-

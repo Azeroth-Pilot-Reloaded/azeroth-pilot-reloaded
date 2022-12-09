@@ -22,7 +22,7 @@ local function GetPlayerMapPos(MapID, dx, dy)
 	if (dx) then
 		P.x, P.y = dx, dy
 	else
-		P.x, P.y = UnitPosition('Player');
+		P.x, P.y = UnitPosition('player');
 	end
     P:Subtract(R[1]);
     return (1/R[2].y)*P.y, (1/R[2].x)*P.x;
