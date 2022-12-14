@@ -58,7 +58,7 @@ APR.MiniMap_X = 0
 APR.MiniMap_Y = 0
 APR.MacroUpdaterVar = {}
 
-function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
+function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First character button
 	local ZeMap = C_Map.GetBestMapForUnit("player")
 	local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
 	if (Enum and Enum.UIMapType and Enum.UIMapType.Continent and currentMapId) then
@@ -77,23 +77,50 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 			APR.RoutePlan.FG1["Fxz2Custom"..CLi]:Hide()
 		end
 	end
-	if (ChoiceZ == 1 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728) and APR.Faction == "Alliance") then
+	if (routeChoice == 2 and APR.Level < 50 and APR.Faction == "Alliance") then
 		autoPatchStartInsertRoute()
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/8) 10-50 Stormwind")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(2/8) 10-50 Tanaan Jungle")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(3/8) 10-50 Shadowmoon")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(4/8) 10-50 Gorgrond")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(5/8) 10-50 Talador")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/8) 10-50 Shadowmoon")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/8) 10-50 Talador")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(8/8) 10-50 Spires of Arak")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - AStoryMode Only (Not Enough XP)")
-	elseif(ChoiceZ == 1 and APR.Level < 60 and APR.Level >= 58 and APR.Race == "Dracthyr") then
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-10 Intro")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-50 Tiragarde Sound")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 20-50 Dustvar")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 30-50 Stormsong Valley")
+	elseif (routeChoice == 2 and APR.Level < 50 and APR.Faction == "Horde") then
+		autoPatchStartInsertRoute()
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-10 Intro")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-10 Intro 2")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-50 Zuldazar")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 20-50 Nazmir")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 30-30 Naz-end Vol-begin")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 30-50 Vol'dun")
+	elseif (routeChoice == 2 and APR.Level >= 50 and APR.Level < 60) then
+		autoPatchStartInsertRoute()
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"SL-IntroQline")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-00-TheMaw-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-01-Oribos-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-02-Bastion-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-03-Oribos-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-04-Maldraxxus-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-05-Oribos-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-06-The Maw-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-07-Oribos-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-08-Maldraxxus-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-09-Oribos-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-10-Ardenweald-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-11-Oribos-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-12-Revendreth-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-13-The Maw-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-14-Revendreth-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-15-Oribos-Story")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - StoryMode Only (Not Enough XP)")
+	elseif(routeChoice == 1 and APR.Level < 60 and APR.Level >= 58 and APR.Race == "Dracthyr") then
 		autoPatchStartInsertRoute()
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"58-60 Dracthyr Start")
-	elseif (ChoiceZ == 1 and APR.Level < 60 and APR.Level > 9 and APR.Faction == "Alliance") then
+	elseif (routeChoice == 1 and APR.Level < 60 and APR.Faction == "Alliance") then
 		autoPatchStartInsertRoute()
+		if(APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728)) then
+			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
+		end
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/8) 10-50 Stormwind")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(2/8) 10-50 Tanaan Jungle")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(3/8) 10-50 Shadowmoon")
@@ -102,8 +129,8 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/8) 10-50 Shadowmoon")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/8) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(8/8) 10-50 Spires of Arak")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - AStoryMode Only (Not Enough XP)")
-	elseif (ChoiceZ == 1 and APR.Level < 70 and APR.Level >= 60 and APR.Faction == "Alliance") then
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - StoryMode Only (Not Enough XP)")
+	elseif (routeChoice >= 1 and APR.Level < 70 and APR.Level >= 60 and APR.Faction == "Alliance") then
 		autoPatchStartInsertRoute()
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF01 - Dragonflight Stormwind")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF02 - Waking Shores - Alliance")
@@ -111,10 +138,11 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF04 - Ohn'Ahran Plains")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF05 - Azure Span")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF06 - Thaldraszus")
-
-	elseif (ChoiceZ == 1 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728) and APR.Faction == "Horde") then
+	elseif (routeChoice == 1 and APR.Level < 60 and APR.Faction == "Horde") then
 		autoPatchStartInsertRoute()
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
+		if(APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728)) then
+			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
+		end
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/7) 10-50 Orgrimmar")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(2/7) 10-50 Tanaan Jungle")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(3/7) 10-50 Frostfire Ridge")
@@ -122,18 +150,8 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(5/7) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/7) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/7) 10-50 Nagrand")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - HStoryMode Only (Not Enough XP)")
-	elseif (ChoiceZ == 1 and APR.Level < 60 and APR.Level > 9 and APR.Faction == "Horde") then
-		autoPatchStartInsertRoute()
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/7) 10-50 Orgrimmar")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(2/7) 10-50 Tanaan Jungle")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(3/7) 10-50 Frostfire Ridge")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(4/7) 10-50 Gorgrond")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(5/7) 10-50 Talador")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/7) 10-50 Spires of Arak")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/7) 10-50 Nagrand")
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - HStoryMode Only (Not Enough XP)")
-	elseif (ChoiceZ == 1 and APR.Level < 70 and APR.Level >= 60 and APR.Faction == "Horde") then
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - StoryMode Only (Not Enough XP)")
+	elseif (routeChoice >= 1 and APR.Level < 70 and APR.Level >= 60 and APR.Faction == "Horde") then
 		autoPatchStartInsertRoute()
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF01 - Dragonflight Orgrimmar")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF02 - Dragonflight Durotar")
@@ -145,32 +163,8 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 	elseif (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727) then
 		APR_Custom[APR.Name.."-"..APR.Realm] = nil
 		APR_Custom[APR.Name.."-"..APR.Realm] = {}
-	elseif (ChoiceZ == 1) then
+	elseif (routeChoice == 1) then
 		autoPatchStartInsertRoute()
-	elseif (ChoiceZ == 2) then
-		autoPatchStartInsertRoute()
-		local routes = {
-			{id = 59770, text = "50 The Maw Intro"},
-			{id = 59773, text = "50-50 Oribos (Start-Bastion)"},
-			{id = 60056, text = "50-52 Bastion (Full)"},
-			{id = 57386, text = "52 Oribos (Bastion-Maldraxxus)"},
-			{id = 59874, text = "52-54 Maldraxxus (Full)"},
-			{id = 59897, text = "54 Oribos (Maldraxxus-Maw)"},
-			{id = 61190, text = "54-55 The Maw"},
-			{id = 59974, text = "55 Oribos (Maw-Maldraxxus)"},
-			{id = 60737, text = "55-55 Maldraxxus"},
-			{id = 60338, text = "56 Oribos (Maldrax-Ardenw)"},
-			{id = 58724, text = "56-57 Ardenweald (Full)"},
-			{id = 57025, text = "57 Oribos (Ardenw-Revend)"},
-			{id = 57689, text = "57-60 Revendreth (Full)"},
-			
-		}
-		for i, route in ipairs(routes) do
-			if (C_QuestLog.IsQuestFlaggedCompleted(route.id) == false) then
-				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],route.text)
-			end
-		end
-
 	end
 	for CLi = 1, 19 do
 		if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
@@ -375,7 +369,7 @@ function APR.RoutePlanLoadIn()
 
 	APR.LoadInOptionFrame = CreateFrame("frame", "APR_LoadInOptionFrame", UIParent)
 	APR.LoadInOptionFrame:SetWidth(350)
-	APR.LoadInOptionFrame:SetHeight(130)
+	APR.LoadInOptionFrame:SetHeight(150)
 	APR.LoadInOptionFrame:SetMovable(true)
 	APR.LoadInOptionFrame:EnableMouse(true)
 	APR.LoadInOptionFrame:SetFrameStrata("LOW")
@@ -417,7 +411,7 @@ function APR.RoutePlanLoadIn()
 	APR.LoadInOptionFrame["B1"]:SetWidth(140)
 	APR.LoadInOptionFrame["B1"]:SetHeight(30)
 	APR.LoadInOptionFrame["B1"]:SetText(L["SPEEDRUN"])
-	APR.LoadInOptionFrame["B1"]:SetPoint("CENTER", APR.LoadInOptionFrame, "CENTER",0, 20)
+	APR.LoadInOptionFrame["B1"]:SetPoint("CENTER", APR.LoadInOptionFrame, "CENTER",0, 30)
 	APR.LoadInOptionFrame["B1"]:SetNormalFontObject("GameFontNormalLarge")
 	APR.LoadInOptionFrame["B1"]:SetScript("OnMouseUp", function(self, button)
 		if button == "LeftButton" then
@@ -426,12 +420,11 @@ function APR.RoutePlanLoadIn()
 		end
 	end)
 
-	APR.LoadInOptionFrame["B2"] = CreateFrame("Button", "APR_LoadInOptionFrameButton2", APR.LoadInOptionFrame, "UIPanelButtonTemplate")
+	APR.LoadInOptionFrame["B2"] = CreateFrame("Button", "APR_LoadInOptionFrameButton1", APR.LoadInOptionFrame, "UIPanelButtonTemplate")
 	APR.LoadInOptionFrame["B2"]:SetWidth(140)
 	APR.LoadInOptionFrame["B2"]:SetHeight(30)
-	APR.LoadInOptionFrame["B2"]:SetText(L["ALL_Q"])
-	APR.LoadInOptionFrame["B2"]:Hide()
-	APR.LoadInOptionFrame["B2"]:SetPoint("CENTER", APR.LoadInOptionFrame, "CENTER",0,0)
+	APR.LoadInOptionFrame["B2"]:SetText(L["FIRST_CHARACTER"])
+	APR.LoadInOptionFrame["B2"]:SetPoint("CENTER", APR.LoadInOptionFrame, "CENTER",0, -10)
 	APR.LoadInOptionFrame["B2"]:SetNormalFontObject("GameFontNormalLarge")
 	APR.LoadInOptionFrame["B2"]:SetScript("OnMouseUp", function(self, button)
 		if button == "LeftButton" then
@@ -444,7 +437,7 @@ function APR.RoutePlanLoadIn()
 	APR.LoadInOptionFrame["B3"]:SetWidth(140)
 	APR.LoadInOptionFrame["B3"]:SetHeight(30)
 	APR.LoadInOptionFrame["B3"]:SetText(L["CUSTOM_PATH"])
-	APR.LoadInOptionFrame["B3"]:SetPoint("CENTER", APR.LoadInOptionFrame, "CENTER",0,-20)
+	APR.LoadInOptionFrame["B3"]:SetPoint("CENTER", APR.LoadInOptionFrame, "CENTER",0,-50)
 	APR.LoadInOptionFrame["B3"]:SetNormalFontObject("GameFontNormalLarge")
 	APR.LoadInOptionFrame["B3"]:SetScript("OnMouseUp", function(self, button)
 		if button == "LeftButton" then

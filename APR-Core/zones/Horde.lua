@@ -42,13 +42,12 @@ if (APR.Faction == "Horde") then
 		 ["Legion - Azsuna"] = 630,
 		 ["Legion - Val'Sharah"] = 641,
 		 ["Legion - Stormheim"] = 634,
-		 ["10-10 BFA Intro"] = 85,
-		 ["10-10 BFA intro 2"] = 1012,
-		 ["10-10 BFA intro 2"] = 862,
-		 ["10-50 Zuldazar"] = 862,
-		 ["20-50 Nazmir"] = 863,
-		 ["30-30 Naz-end Vol-begin"] = 862,
-		 ["30-50 Vol'dun"] = 864,
+		 ["BFA - 10-10 Intro"] = 85,
+		 ["BFA - 10-10 Intro 2"] = 862,
+		 ["BFA - 10-50 Zuldazar"] = 862,
+		 ["BFA - 20-50 Nazmir"] = 863,
+		 ["BFA - 30-30 Naz-end Vol-begin"] = 862,
+		 ["BFA - 30-50 Vol'dun"] = 864,
 		 ["Silverpine Forest"] = 21,
 		 ["Silverpine Forest 2"] = 217,
 		 ["Silverpine Forest 3"] = 21,
@@ -56,7 +55,7 @@ if (APR.Faction == "Horde") then
 		 ["Silverpine Forest 5"] = 21,
 		 ["WIP - Hillsbrad Foothills"] = 25,
 		 ["WIP - Western Plaguelands"] = 22,
-		 ["DEV - HStoryMode Only (Not Enough XP)"] = 1670,
+		 ["DEV - StoryMode Only (Not Enough XP)"] = 1670,
 		 ["DF01 - Dragonflight Orgrimmar"] = 85,
 		 ["DF02 - Dragonflight Durotar"] = 1,
 		 ["DF03 - Waking Shores - Horde"] = 2022,
@@ -75,22 +74,23 @@ if (APR.Faction == "Horde") then
 		 ["630-Azsuna"] = "Legion - Azsuna",
 		 ["641-ValSharah"] = "Legion - Val'Sharah",
 		 ["634-Stormheim"] = "Legion - Stormheim",
-		 ["1-Orgrimmar"] = "10-10 BFA Intro",
-		 ["862-Zuldazar"] = "10-10 BFA intro 2",
-		 ["862-Zuldazar-1"] = "10-50 Zuldazar",
-		 ["863-Nazmir"] = "20-50 Nazmir",
-		 ["862-Zuldazar-2"] = "30-30 Naz-end Vol-begin",
-		 ["864-Vol'dun"] = "30-50 Vol'dun",
+		 ["1-Orgrimmar"] = "BFA - 10-10 Intro",
+		 ["862-Zuldazar"] = "BFA - 10-10 Intro 2",
+		 ["862-Zuldazar-1"] = "BFA - 10-50 Zuldazar",
+		 ["863-Nazmir"] = "BFA - 20-50 Nazmir",
+		 ["862-Zuldazar-2"] = "BFA - 30-30 Naz-end Vol-begin",
+		 ["864-Vol'dun"] = "BFA - 30-50 Vol'dun",
 
 	}
 	if (APR.Class[3] == 12) then
 		 APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
-	elseif (APR.Level < 10) then
-		 APR.QuestStepListListing["MISC 1"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
 	elseif (APR.Race == "Goblin" and APR.Level < 2) then
 		 APR.QuestStepListListing["MISC 1"]["194-Kezan"] = "01-30 Goblin Start (Kezan)"
 		 APR.QuestStepListListing["MISC 1"]["174-LostIsles"] = "01-30 Goblin Start (Lost Isles)"
+	elseif (APR.Level < 10) then
+		APR.QuestStepListListing["MISC 1"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
 	end
+
 	APR.QuestStepListListing["MISC 2"] = {
 		 ["371-The Jade Forest"] = "WIP-The Jade Forest",
 		 ["379-Kun-Lai Summit"] = "WIP-Kun-Lai Summit",
@@ -124,7 +124,7 @@ if (APR.Faction == "Horde") then
 		 ["1543-Z13-TheMaw-Story"] = "Z-13-The Maw-Story",
 		 ["1525-Z14-Revendreth-Story"] = "Z-14-Revendreth-Story",
 		 ["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
-		 ["Shadowlands-StoryOnly-H"] = "DEV - HStoryMode Only (Not Enough XP)",
+		 ["Shadowlands-StoryOnly-H"] = "DEV - StoryMode Only (Not Enough XP)",
 	}
 	APR.QuestStepListListing["Kalimdor"] = {
 		 ["1-Durotar"] = "01-30 Durotar (Full)",

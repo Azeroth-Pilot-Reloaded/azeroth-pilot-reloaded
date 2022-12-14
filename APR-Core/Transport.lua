@@ -735,10 +735,6 @@ function APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
 	if (APR.ActiveMap == "85-IntroQline" and APRt_Zone == 1648) then
 		APRt_Zone = 85
 	end
-
-	if (APR.ActiveMap == "1533-Bastion-NonStoryMode-1" and APRt_Zone == 1670) then
-		APRt_Zone = 1533
-	end
 	if (APR.ActiveMap == "1670-Z1-Oribos-Story" and APRt_Zone == 1533) then
 		APRt_Zone = 1670
 	end
