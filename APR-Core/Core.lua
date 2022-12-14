@@ -79,14 +79,18 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 	end
 	if (routeChoice == 2 and APR.Level < 50 and APR.Faction == "Alliance") then
 		autoPatchStartInsertRoute()
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
+		if(APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728)) then
+			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
+		end
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-10 Intro")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-50 Tiragarde Sound")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 20-50 Dustvar")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 30-50 Stormsong Valley")
 	elseif (routeChoice == 2 and APR.Level < 50 and APR.Faction == "Horde") then
 		autoPatchStartInsertRoute()
-		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
+		if(APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728)) then
+			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
+		end
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-10 Intro")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-10 Intro 2")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-50 Zuldazar")
