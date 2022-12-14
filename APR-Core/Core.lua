@@ -89,6 +89,9 @@ function APR.AutoPathOnBeta(ChoiceZ) -- For the Speed run button
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/8) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(8/8) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - AStoryMode Only (Not Enough XP)")
+	elseif(ChoiceZ == 1 and APR.Level < 60 and APR.Level >= 58 and APR.Race == "Dracthyr") then
+		autoPatchStartInsertRoute()
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"58-60 Dracthyr Start")
 	elseif (ChoiceZ == 1 and APR.Level < 60 and APR.Level > 9 and APR.Faction == "Alliance") then
 		autoPatchStartInsertRoute()
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/8) 10-50 Stormwind")

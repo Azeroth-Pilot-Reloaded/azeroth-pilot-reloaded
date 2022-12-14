@@ -92,6 +92,7 @@ if (APR.Faction == "Alliance") then
 		 ["DF04 - Ohn'Ahran Plains"] = 2023,
 		 ["DF05 - Azure Span"] = 2024,
 		 ["DF06 - Thaldraszus"] = 2025,
+		 ["58-60 Dracthyr Start"] = 2118
 	}
 
 	APR.QuestStepListListing = {}
@@ -230,6 +231,9 @@ if (APR.Faction == "Alliance") then
 		 ["DF06A-2025-Thaldraszus"] = "DF06 - Thaldraszus",
 
 	}
+	if (APR.Race == "Dracthyr") then
+		APR.QuestStepListListing["Dragonflight"]["2107-DracthyrStart"] = "58-60 Dracthyr Start"
+   	end
 
 	APR["EasternKingdom"] = {}
 	APR["EasternKingdom"][14] = 1
@@ -286,11 +290,10 @@ if (APR.Faction == "Alliance") then
 	APR["Kalimdor"][78] = 1
 	APR["Kalimdor"][81] = 1
 
-
 	APR["Dragonflight"] = {}
-	APR["Dragonflight"][2109] = 1
 	APR["Dragonflight"][2022] = 1
 	APR["Dragonflight"][2023] = 1
 	APR["Dragonflight"][2024] = 1
 	APR["Dragonflight"][2025] = 1
+	APR["Dragonflight"][2118] = 1
 end
