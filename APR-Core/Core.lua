@@ -79,7 +79,7 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 	end
 	if (routeChoice == 2 and APR.Level < 50 and APR.Faction == "Alliance") then
 		autoPatchStartInsertRoute()
-		if(APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728)) then
+		if(APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727)) then
 			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
 		end
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-10 Intro")
@@ -88,7 +88,7 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 30-50 Stormsong Valley")
 	elseif (routeChoice == 2 and APR.Level < 50 and APR.Faction == "Horde") then
 		autoPatchStartInsertRoute()
-		if(APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728)) then
+		if(APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727)) then
 			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
 		end
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-10 Intro")
@@ -122,7 +122,7 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"58-60 Dracthyr Start")
 	elseif (routeChoice == 1 and APR.Level < 60 and APR.Faction == "Alliance") then
 		autoPatchStartInsertRoute()
-		if(APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728)) then
+		if(APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727)) then
 			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
 		end
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/8) 10-50 Stormwind")
@@ -144,7 +144,7 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF06 - Thaldraszus")
 	elseif (routeChoice == 1 and APR.Level < 60 and APR.Faction == "Horde") then
 		autoPatchStartInsertRoute()
-		if(APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728)) then
+		if(APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727)) then
 			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-10 Exile's Reach")
 		end
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/7) 10-50 Orgrimmar")
@@ -424,7 +424,7 @@ function APR.RoutePlanLoadIn()
 		end
 	end)
 
-	APR.LoadInOptionFrame["B2"] = CreateFrame("Button", "APR_LoadInOptionFrameButton1", APR.LoadInOptionFrame, "UIPanelButtonTemplate")
+	APR.LoadInOptionFrame["B2"] = CreateFrame("Button", "APR_LoadInOptionFrameButton2", APR.LoadInOptionFrame, "UIPanelButtonTemplate")
 	APR.LoadInOptionFrame["B2"]:SetWidth(140)
 	APR.LoadInOptionFrame["B2"]:SetHeight(30)
 	APR.LoadInOptionFrame["B2"]:SetText(L["SPEEDRUN"])
