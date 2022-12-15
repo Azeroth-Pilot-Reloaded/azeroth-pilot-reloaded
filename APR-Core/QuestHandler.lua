@@ -1468,8 +1468,7 @@ local function APR_PrintQStep()
 				end
 			end
 		elseif (StepP == "TrainRiding") then
-			IdList = steps["TrainRidingSkill"]
-			if (C_QuestLog.IsQuestFlaggedCompleted(IdList) or CheckRidingSkill()) then
+			if (C_QuestLog.IsQuestFlaggedCompleted(steps["TrainRidingSkill"]) or CheckRidingSkill(steps["SpellInTab"])) then
 				APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 				APR.BookingList["UpdateQuest"] = 1
 				APR.BookingList["PrintQStep"] = 1
@@ -3102,13 +3101,12 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		C_Timer.After(1, APR_BookQStep)
 	end
 	if (event=="LEARNED_SPELL_IN_TAB") then
-		local arg1, arg2, arg3, arg4 = ...;
 		local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 		local steps
 		if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
 			steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		end
-		if (steps and steps["SpellInTab"] and (arg1 == steps["SpellInTab"] or arg2 == steps["SpellInTab"])) then
+		if (steps and steps["SpellInTab"]) then
 			APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 			APR.BookingList["UpdateQuest"] = 1
 			APR.BookingList["PrintQStep"] = 1
@@ -3366,8 +3364,9 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				end
 			end
 		end
-		if (UnitGUID("target") and string.find(UnitGUID("target"), "(.*)-(.*)")) then
-			local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",UnitGUID("target"))
+		local target = UnitGUID("target")
+		if (target and string.find(target, "(.*)-(.*)")) then
+			local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",target)
 			if (npc_id and (tonumber(npc_id) == 43733) and (tonumber(npc_id) == 45312)) then
 				Dismount()
 			end

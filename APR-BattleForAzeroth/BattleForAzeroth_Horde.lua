@@ -3,8 +3,6 @@ APR.QuestStepList["1-Orgrimmar"] = {
 	{		-- [step 1
 		 ["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
 		 ["SpellInTab"] = 33388,
-		 ["SpellInTab"] = 33391,
-		 ["SpellInTab"] = 34090,
 		 ["TrainRidingSkill"] = 34398,
 		 ["RaidIcon"] = 44919,
 		 ["TT"] = {
@@ -16,20 +14,28 @@ APR.QuestStepList["1-Orgrimmar"] = {
 		 ["PickUp"] = {
 			  51443,
 		 },
+		 ["PickUpDB"] = {
+			  51443,
+			  60361,
+		 },
 		 ["TT"] = {
 			  ["y"] = 1598.5,
 			  ["x"] = -4365.8,
 		 },
 	},
 	{		-- [step 3
-		 ["Trigger"] = {
-			  ["y"] = 1659.8,
-			  ["x"] = -4347.9,
-		 },
 		 ["Qpart"] = {
 			  [51443] = {
 				   ["1"] = "1",
 			  },
+		 },
+		 ["QpartDB"] = {
+			  51443,
+			  60361,
+		 },
+		 ["Trigger"] = {
+			  ["y"] = 1659.8,
+			  ["x"] = -4347.9,
 		 },
 		 ["Range"] = 7.73,
 		 ["TT"] = {
@@ -62,14 +68,18 @@ APR.QuestStepList["1-Orgrimmar"] = {
 		 },
 	},
 	{ 		-- [step 6
-		 ["Trigger"] = {
-			  ["y"] = 1577,
-			  ["x"] = -4455.2,
-		 },
 		 ["Qpart"] = {
 			  [51443] = {
 				   ["2"] = "2",
 			  },
+		 },
+		 ["QpartDB"] = {
+			  51443,
+			  60361,
+		 },
+		 ["Trigger"] = {
+			  ["y"] = 1577,
+			  ["x"] = -4455.2,
 		 },
 		 ["Range"] = 0.69,
 		 ["TT"] = {
@@ -80,6 +90,10 @@ APR.QuestStepList["1-Orgrimmar"] = {
 	{		-- [step 7
 		 ["Done"] = {
 			  51443,
+		 },
+		 ["DoneDB"] = {
+			  51443,
+			  60361,
 		 },
 		 ["TT"] = {
 			  ["y"] = 1577.3,

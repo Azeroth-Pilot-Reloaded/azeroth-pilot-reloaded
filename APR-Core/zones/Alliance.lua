@@ -81,17 +81,18 @@ if (APR.Faction == "Alliance") then
 		 ["Legion - Azsuna"] = 630,
 		 ["Legion - Val'Sharah"] = 641,
 		 ["Legion - Stormheim"] = 634,
-		 ["BFA 10-10 INTRO Test"] = 84,
-		 ["BFA 10-50 Tiragarde Sound Test"] = 895,
-		 ["BFA 30-50 Stormsong Valley Test"] = 942,
-		 ["BFA 20-50 Dustvar Test"] = 896,
-		 ["DEV - AStoryMode Only (Not Enough XP)"] = 1670,
+		 ["BFA - 10-10 Intro"] = 84,
+		 ["BFA - 10-50 Tiragarde Sound"] = 895,
+		 ["BFA - 30-50 Stormsong Valley"] = 942,
+		 ["BFA - 20-50 Dustvar"] = 896,
+		 ["DEV - StoryMode Only (Not Enough XP)"] = 1670,
 		 ["DF01 - Dragonflight Stormwind"] = 84,
 		 ["DF02 - Waking Shores - Alliance"] = 2022,
 		 ["DF03 - Waking Shores - Neutral"] = 2022,
 		 ["DF04 - Ohn'Ahran Plains"] = 2023,
 		 ["DF05 - Azure Span"] = 2024,
 		 ["DF06 - Thaldraszus"] = 2025,
+		 ["58-60 Dracthyr Start"] = 2118
 	}
 
 	APR.QuestStepListListing = {}
@@ -99,18 +100,18 @@ if (APR.Faction == "Alliance") then
 		 ["A630-Azsuna"] = "Legion - Azsuna",
 		 ["A641-ValSharah"] = "Legion - Val'Sharah",
 		 ["A634-Stormheim"] = "Legion - Stormheim",
-		 ["A84-Stormwind"] = "BFA 10-10 INTRO Test",
-		 ["A895-Tiragarde Sound"] = "BFA 10-50 Tiragarde Sound Test",
-		 ["A942-Stormsong Valley"] = "BFA 30-50 Stormsong Valley Test",
-		 ["A896-Dustvar"] = "BFA 20-50 Dustvar Test",
+		 ["A84-Stormwind"] = "BFA - 10-10 Intro",
+		 ["A895-Tiragarde Sound"] = "BFA - 10-50 Tiragarde Sound",
+		 ["A942-Stormsong Valley"] = "BFA - 30-50 Stormsong Valley",
+		 ["A896-Dustvar"] = "BFA - 20-50 Dustvar",
 
 	}
 	if (APR.Class[3] == 12) then
 		 APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
-	elseif (APR.Level < 10) then
-		 APR.QuestStepListListing["MISC 1"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
 	elseif (APR.Faction == "Neutral" and APR.race == 24 and APR.Level == 1) then
 		 APR.QuestStepListListing["MISC 1"]["378-WanderingIsle"] = "01-30 Pandaren Start"
+	elseif (APR.Level < 10) then
+		APR.QuestStepListListing["MISC 1"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
 	end
 	APR.QuestStepListListing["MISC 2"] = {
 
@@ -128,7 +129,6 @@ if (APR.Faction == "Alliance") then
 
 	}
 	APR.QuestStepListListing["Shadowlands"] = {
-		 ["Shadowlands-StoryOnly-A"] = "DEV - AStoryMode Only (Not Enough XP)",
 		 ["84-IntroQline"] = "SL-IntroQline",
 		 ["1648-Z0-TheMaw-Story"] = "Z-00-TheMaw-Story",
 		 ["1670-Z1-Oribos-Story"] = "Z-01-Oribos-Story",
@@ -146,7 +146,7 @@ if (APR.Faction == "Alliance") then
 		 ["1543-Z13-TheMaw-Story"] = "Z-13-The Maw-Story",
 		 ["1525-Z14-Revendreth-Story"] = "Z-14-Revendreth-Story",
 		 ["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
-
+		 ["Shadowlands-StoryOnly-A"] = "DEV - StoryMode Only (Not Enough XP)",
 	}
 	APR.QuestStepListListing["Kalimdor"] = {
 		 ["A97-AzuremystIsle"] = "01-10 Azuremyst Isle (Full)",
@@ -230,6 +230,9 @@ if (APR.Faction == "Alliance") then
 		 ["DF06A-2025-Thaldraszus"] = "DF06 - Thaldraszus",
 
 	}
+	if (APR.Race == "Dracthyr") then
+		APR.QuestStepListListing["Dragonflight"]["2107-DracthyrStart"] = "58-60 Dracthyr Start"
+   	end
 
 	APR["EasternKingdom"] = {}
 	APR["EasternKingdom"][14] = 1
@@ -286,11 +289,10 @@ if (APR.Faction == "Alliance") then
 	APR["Kalimdor"][78] = 1
 	APR["Kalimdor"][81] = 1
 
-
 	APR["Dragonflight"] = {}
-	APR["Dragonflight"][2109] = 1
 	APR["Dragonflight"][2022] = 1
 	APR["Dragonflight"][2023] = 1
 	APR["Dragonflight"][2024] = 1
 	APR["Dragonflight"][2025] = 1
+	APR["Dragonflight"][2118] = 1
 end

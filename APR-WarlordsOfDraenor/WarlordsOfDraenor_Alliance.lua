@@ -120,8 +120,6 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War2"] = {
 	{
 		 ["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
 		 ["SpellInTab"] = 33388,
-		 ["SpellInTab"] = 33391,
-		 ["SpellInTab"] = 34090,
 		 ["TrainRidingSkill"] = 34398,
 		 ["RaidIcon"] = 44919,
 		 ["TT"] = {

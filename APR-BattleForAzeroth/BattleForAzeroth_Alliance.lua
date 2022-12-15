@@ -96,8 +96,6 @@ APR.QuestStepList["A84-Stormwind"] = {
 	{	-- [step 9
 		 ["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
 		 ["SpellInTab"] = 33388,
-		 ["SpellInTab"] = 33391,
-		 ["SpellInTab"] = 34090,
 		 ["TrainRidingSkill"] = 34398,
 		 ["RaidIcon"] = 44919,
 		 ["TT"] = {
