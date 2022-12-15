@@ -2497,18 +2497,6 @@ local function APR_UpdateMapId()
 	if (APR.ActiveQuests and APR.ActiveQuests[32675] and APRt_Zone == 84 and APR.Faction == "Alliance") then
 		APR.ActiveMap = "A84-LearnFlying"
 	end
-	--if (APR.Race == "Goblin" and APR.ActiveMap == 194) then
-	--	if (APR.Gender == 2) then
-	--		APR.ActiveMap = "194-male"
-	--	else
-	--		APR.ActiveMap = "194-female"
-	--	end
-	--end
---	local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
-	--if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
-	--else
-	--	APR.BookingList["ClosedSettings"] = 1
-	--end
 	if (APR.QuestStepListListingZone) then
 		APR.BookingList["GetMeToNextZone"] = 1
 	end
@@ -2688,7 +2676,6 @@ local function APR_PosTest()
 	end
 end
 local function APR_LoopBookingFunc()
-	local TestaAPR = 0
 	if (not APR.BookingList) then
 		APR.BookingList = {}
 	end
@@ -2704,7 +2691,6 @@ local function APR_LoopBookingFunc()
 			APR["Icons"][1].A = 1
 		end
 		APR.BookingList["PrintQStep"] = 1
-		TestaAPR = "OpenedSettings"
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:OpenedSettings")
 		end
@@ -2723,7 +2709,6 @@ local function APR_LoopBookingFunc()
 			APR.BookingList["UpdateQuest"] = 1
 			APR.BookingList["PrintQStep"] = 1
 		end
-		TestaAPR = "ClosedSettings"
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:ClosedSettings")
 		end
@@ -2739,35 +2724,30 @@ local function APR_LoopBookingFunc()
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:UpdateMapId:"..APR1[APR.Realm][APR.Name][APR.ActiveMap])
 		end
-		TestaAPR = "UpdateMapId"
 	elseif (APR.BookingList["AcceptQuest"]) then
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:AcceptQuest")
 		end
 		APR.BookingList["AcceptQuest"] = nil
 		C_Timer.After(0.2, APR_AcceptQuester)
-		TestaAPR = "AcceptQuest"
 	elseif (APR.BookingList["CompleteQuest"]) then
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:CompleteQuest")
 		end
 		APR.BookingList["CompleteQuest"] = nil
 		CompleteQuest()
-		TestaAPR = "CompleteQuest"
 	elseif (APR.BookingList["CreateMacro"]) then
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:CreateMacro")
 		end
 		APR.BookingList["CreateMacro"] = nil
 		APR_CreateMacro()
-		TestaAPR = "CreateMacro"
 	elseif (APR.BookingList["AddQuest"]) then
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:AddQuest:"..APR1[APR.Realm][APR.Name][APR.ActiveMap])
 		end
 		APR_AddQuest(APR.BookingList["AddQuest"])
 		APR.BookingList["AddQuest"] = nil
-		TestaAPR = "AddQuest"
 	elseif (APR.BookingList["RemoveQuest"]) then
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:RemoveQuest:"..APR1[APR.Realm][APR.Name][APR.ActiveMap])
@@ -2776,53 +2756,45 @@ local function APR_LoopBookingFunc()
 		APR.BookingList["RemoveQuest"] = nil
 		APR.BookingList["UpdateMapId"] = 1
 		APR.BookingList["PrintQStep"] = 1
-		TestaAPR = "RemoveQuest"
 	elseif (APR.BookingList["UpdateQuest"]) then
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:UpdateQuest:")
 		end
 		APR.BookingList["UpdateQuest"] = nil
 		APR_UpdateQuest()
-		TestaAPR = "UpdateQuest"
 	elseif (APR.BookingList["PrintQStep"]) then
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:PrintQStep:")
 		end
 		APR.BookingList["PrintQStep"] = nil
 		APR_PrintQStep()
-		TestaAPR = "PrintQStep"
 	elseif (APR.BookingList["UpdateILVLGear"]) then
 		APR.BookingList["UpdateILVLGear"] = nil
 		APR_UpdateILVLGear()
-		TestaAPR = "UpdateILVLGear"
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:UpdateILVLGear")
 		end
 	elseif (APR.BookingList["CheckSaveOldSlot"]) then
 		APR.BookingList["CheckSaveOldSlot"] = nil
 		APR_CheckSaveOldSlot()
-		TestaAPR = "CheckSaveOldSlot"
 	elseif (APR.BookingList["CheckZonePick"]) then
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:CheckZonePick:"..APR1[APR.Realm][APR.Name][APR.ActiveMap])
 		end
 		APR.BookingList["CheckZonePick"] = nil
 		APR_CheckZonePick()
-		TestaAPR = "CheckZonePick"
 	elseif (APR.BookingList["ZoneTransfer"]) then
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:ZoneTransfer:"..APR1[APR.Realm][APR.Name][APR.ActiveMap])
 		end
 		APR.BookingList["ZoneTransfer"] = nil
 		APR.FP.GetMeToNextZone()
-		TestaAPR = "ZoneTransfer"
 	elseif (APR.BookingList["SetQPTT"]) then
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:SetQPTT:"..APR1[APR.Realm][APR.Name][APR.ActiveMap])
 		end
 		APR.BookingList["SetQPTT"] = nil
 		APR_SetQPTT()
-		TestaAPR = "SetQPTT"
 	elseif (APR.BookingList["TestTaxiFunc"]) then
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:TestTaxiFunc")
@@ -2848,7 +2820,6 @@ local function APR_LoopBookingFunc()
 			APR.BookingList["TestTaxiFunc"] = nil
 			APR_AntiTaxiLoop = 0
 		end
-		TestaAPR = "TestTaxiFunc"
 	elseif (APR.BookingList["UpdateZoneQuestOrderListL"]) then
 		APR.UpdateZoneQuestOrderList("LoadIn")
 		APR.BookingList["UpdateZoneQuestOrderListL"] = nil
@@ -2857,7 +2828,6 @@ local function APR_LoopBookingFunc()
 		--CinematicFrame_CancelCinematic()
 		C_Timer.After(1, CinematicFrame_CancelCinematic)
 		C_Timer.After(3, CinematicFrame_CancelCinematic)
-		TestaAPR = "SkipCutscene"
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:SkipCutscene")
 		end
@@ -2874,7 +2844,6 @@ local function APR_LoopBookingFunc()
 			end
 		end
 		APR.BookingList["ButtonSpellidchk"] = nil
-		TestaAPR = "ButtonSpellidchk"
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:ButtonSpellidchk")
 		end
@@ -2885,9 +2854,6 @@ local function APR_LoopBookingFunc()
 	else
 		APR_ArrowUpdateNr = APR_ArrowUpdateNr + 1
 	end
-	--if (TestaAPR ~= 0) then
-	--	print(TextWithStars(TestaAPR)
-	--end
 end
 local function APR_BuyMerchFunc()
 	local i
@@ -3083,7 +3049,7 @@ APR_QH_EventFrame:RegisterEvent ("CHAT_MSG_MONSTER_SAY")
 APR_QH_EventFrame:RegisterEvent ("CHAT_MSG_COMBAT_XP_GAIN")
 APR_QH_EventFrame:RegisterEvent ("LEARNED_SPELL_IN_TAB")
 APR_QH_EventFrame:RegisterEvent ("UNIT_AURA")
-APR_QH_EventFrame:RegisterEvent ("PLAYER_CHOICE_UPDATE")
+APR_QH_EventFrame:RegisterEvent ("QUEST_CHOICE_UPDATE")
 APR_QH_EventFrame:RegisterEvent ("REQUEST_CEMETERY_LIST_RESPONSE")
 APR_QH_EventFrame:RegisterEvent ("AJ_REFRESH_DISPLAY")
 APR_QH_EventFrame:RegisterEvent ("UPDATE_UI_WIDGET")
@@ -3234,38 +3200,17 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			APR.GroupListingFunc(tonumber(arg2), APR.TrimPlayerServer(arg4))
 		end
 	end
-	if (event=="PLAYER_CHOICE_UPDATE") then
+	if (event=="QUEST_CHOICE_UPDATE") then
 		local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 		local steps
 		if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
 			steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		end
-		local Choizs = C_PlayerChoice.GetCurrentPlayerChoiceInfo()
-		if (Choizs) then
-			local choiceID = Choizs["choiceID"]
-			local questionText = Choizs["questionText"]
-			local numOptions = Choizs["numOptions"]
-			if (numOptions and numOptions > 1 and steps and steps["Brewery"]) then
-				local CLi
-				for CLi = 1, numOptions do
-					local opzios = C_PlayerChoice.GetPlayerChoiceOptionInfo(CLi)
-					local optionID = opzios["id"]
-					if (steps["Brewery"] == optionID) then
-						--C_PlayerChoice.SendQuestChoiceResponse(GetQuestChoiceOptionInfo(CLi))
-						PlayerChoiceFrame["Option"..CLi]["OptionButtonsContainer"]["button1"]:Click()
-						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
-						APR.BookingList["UpdateQuest"] = 1
-						APR.BookingList["PrintQStep"] = 1
-						break
-					end
-				end
-			end
-			if (numOptions and numOptions > 1 and steps and steps["SparringRing"]) then
-				local CLi
-				for CLi = 1, numOptions do
-					local opzios = C_PlayerChoice.GetPlayerChoiceOptionInfo(CLi)
-					local optionID = opzios["id"]
-					if (steps["SparringRing"] == optionID) then
+		local choiceInfo = C_PlayerChoice.GetCurrentPlayerChoiceInfo()
+		if (choiceInfo and steps) then
+			if (steps["Brewery"] or steps["SparringRing"]) then
+				for i, option in ipairs(choiceInfo.options) do
+					if (steps["Brewery"] == option.id or steps["SparringRing"] == option.id) then
 						PlayerChoiceFrame["Option"..CLi]["OptionButtonsContainer"]["button1"]:Click()
 						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 						APR.BookingList["UpdateQuest"] = 1
@@ -3508,9 +3453,9 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		end
 		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoRepair"] == 1) then
 			if (CanMerchantRepair()) then
-				repairAllCost, canRepair = GetRepairAllCost();
+				local repairAllCost, canRepair = GetRepairAllCost();
 				if (canRepair and repairAllCost > 0) then
-					guildRepairedItems = false
+					local guildRepairedItems = false
 					if (IsInGuild() and CanGuildBankRepair()) then
 						local amount = GetGuildBankWithdrawMoney()
 						local guildBankMoney = GetGuildBankMoney()
@@ -3770,10 +3715,12 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		if (steps and steps["DenyNPC"]) then
 			if (UnitGUID("target") and UnitName("target")) then
 				local guid, name = UnitGUID("target"), UnitName("target")
-				local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
-				if (npc_id and name) then
-					if (tonumber(npc_id) == steps["DenyNPC"]) then
-						C_GossipInfo.CloseGossip()
+				if (guid) then
+					local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
+					if (npc_id and name) then
+						if (tonumber(npc_id) == steps["DenyNPC"]) then
+							C_GossipInfo.CloseGossip()
+						end
 					end
 				end
 			end
@@ -3787,10 +3734,12 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				if (steps and steps["DenyNPC"]) then
 					if (UnitGUID("target") and UnitName("target")) then
 						local guid, name = UnitGUID("target"), UnitName("target")
-						local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
-						if (npc_id and name) then
-							if (tonumber(npc_id) == steps["DenyNPC"]) then
-								APRDenied = 1
+						if (guid) then
+							local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
+							if (npc_id and name) then
+								if (tonumber(npc_id) == steps["DenyNPC"]) then
+									APRDenied = 1
+								end
 							end
 						end
 					end
@@ -3823,10 +3772,12 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		if (steps and steps["DenyNPC"]) then
 			if (UnitGUID("target") and UnitName("target")) then
 				local guid, name = UnitGUID("target"), UnitName("target")
-				local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
-				if (npc_id and name) then
-					if (tonumber(npc_id) == steps["DenyNPC"]) then
-						C_GossipInfo.CloseGossip()
+				if (guid) then
+					local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
+					if (npc_id and name) then
+						if (tonumber(npc_id) == steps["DenyNPC"]) then
+							C_GossipInfo.CloseGossip()
+						end
 					end
 				end
 			end
@@ -3862,13 +3813,11 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandInChoice"] == 1) then
 				local APR_GearIlvlList = {}
 				for slots2 = 0,18 do
-					if (GetInventoryItemLink("player", slots2)) then
-						local _, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc = GetItemInfo(GetInventoryItemLink("player", slots2))
-						local _, _, itemQuality, itemLevel, _, _, _,_, itemEquipLoc, itemTexture, sellPrice, classID, subclassID, bindType,
-expacID, setID, isCraftingReagent
-    = GetItemInfo(item)
+					local inventoryitemLink = GetInventoryItemLink("player", slots2)
+					if (inventoryitemLink) then
+						local _, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc = GetItemInfo(inventoryitemLink)
 						if (itemQuality == 7) then
-							itemLevel = GetDetailedItemLevelInfo(GetInventoryItemLink("player", slots2))
+							itemLevel = GetDetailedItemLevelInfo(inventoryitemLink)
 						end
 						if (itemEquipLoc and itemLevel) then
 							if (itemEquipLoc == "INVTYPE_WEAPONOFFHAND") then
@@ -3894,26 +3843,29 @@ expacID, setID, isCraftingReagent
 				local isweaponz = 0
 				local APRColorof = 0
 				for h=1, GetNumQuestChoices() do
-					local _, _, itemQuality, _, _, _, _, _, itemEquipLoc = GetItemInfo(GetQuestItemLink("choice", h))
-					local ilvl = GetDetailedItemLevelInfo(GetQuestItemLink("choice", h))
-					if (itemEquipLoc == "INVTYPE_WEAPONOFFHAND") then
-						itemEquipLoc = "INVTYPE_WEAPON"
-					end
-					if (itemEquipLoc == "INVTYPE_WEAPONMAINHAND") then
-						itemEquipLoc = "INVTYPE_WEAPON"
-					end
-					if (itemEquipLoc == "INVTYPE_WEAPON" or itemEquipLoc == "INVTYPE_SHIELD" or itemEquipLoc == "INVTYPE_2HWEAPON" or itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or itemEquipLoc == "INVTYPE_HOLDABLE" or itemEquipLoc == "INVTYPE_RANGED" or itemEquipLoc == "INVTYPE_THROWN" or itemEquipLoc == "INVTYPE_RANGEDRIGHT" or itemEquipLoc == "INVTYPE_RELIC") then
-						itemEquipLoc = "INVTYPE_WEAPON"
-						print(itemEquipLoc)
-					end
-					if (APR_GearIlvlList[itemEquipLoc]) then
-						if (itemQuality > 2) then
-							--APRColorof = itemQuality
+					local questItemLink = GetQuestItemLink("choice", h)
+					if(questItemLink) then
+						local _, _, itemQuality, _, _, _, _, _, itemEquipLoc = GetItemInfo(questItemLink)
+						local ilvl = GetDetailedItemLevelInfo(questItemLink)
+						if (itemEquipLoc == "INVTYPE_WEAPONOFFHAND") then
+							itemEquipLoc = "INVTYPE_WEAPON"
 						end
-						APRTempGearList[h] = ilvl - APR_GearIlvlList[itemEquipLoc]
-						print("Qilvl: "..itemQuality.." - "..itemEquipLoc.." - MySpot: "..APR_GearIlvlList[itemEquipLoc])
+						if (itemEquipLoc == "INVTYPE_WEAPONMAINHAND") then
+							itemEquipLoc = "INVTYPE_WEAPON"
+						end
 						if (itemEquipLoc == "INVTYPE_WEAPON" or itemEquipLoc == "INVTYPE_SHIELD" or itemEquipLoc == "INVTYPE_2HWEAPON" or itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or itemEquipLoc == "INVTYPE_HOLDABLE" or itemEquipLoc == "INVTYPE_RANGED" or itemEquipLoc == "INVTYPE_THROWN" or itemEquipLoc == "INVTYPE_RANGEDRIGHT" or itemEquipLoc == "INVTYPE_RELIC") then
-							--isweaponz = 1
+							itemEquipLoc = "INVTYPE_WEAPON"
+							print(itemEquipLoc)
+						end
+						if (APR_GearIlvlList[itemEquipLoc]) then
+							if (itemQuality > 2) then
+								--APRColorof = itemQuality
+							end
+							APRTempGearList[h] = ilvl - APR_GearIlvlList[itemEquipLoc]
+							print("Qilvl: "..itemQuality.." - "..itemEquipLoc.." - MySpot: "..APR_GearIlvlList[itemEquipLoc])
+							if (itemEquipLoc == "INVTYPE_WEAPON" or itemEquipLoc == "INVTYPE_SHIELD" or itemEquipLoc == "INVTYPE_2HWEAPON" or itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or itemEquipLoc == "INVTYPE_HOLDABLE" or itemEquipLoc == "INVTYPE_RANGED" or itemEquipLoc == "INVTYPE_THROWN" or itemEquipLoc == "INVTYPE_RANGEDRIGHT" or itemEquipLoc == "INVTYPE_RELIC") then
+								--isweaponz = 1
+							end
 						end
 					end
 				end
@@ -3961,12 +3913,14 @@ expacID, setID, isCraftingReagent
 		local arg1, arg2, arg3, arg4 = ...;
 		if (UnitGUID("target") and UnitName("target")) then
 			local guid, name = UnitGUID("target"), UnitName("target")
-			local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
-			if (npc_id and name) then
-				if (tonumber(npc_id) == 159477) then
-					if (APR_GigglingBasket[arg1]) then
-						print("APR: "..L["DOING_EMOTE"]..": "..APR_GigglingBasket[arg1])
-						DoEmote(APR_GigglingBasket[arg1])
+			if(guid) then
+				local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-", guid);
+				if (npc_id and name) then
+					if (tonumber(npc_id) == 159477) then
+						if (APR_GigglingBasket[arg1]) then
+							print("APR: "..L["DOING_EMOTE"]..": "..APR_GigglingBasket[arg1])
+							DoEmote(APR_GigglingBasket[arg1])
+						end
 					end
 				end
 			end
@@ -3979,7 +3933,7 @@ expacID, setID, isCraftingReagent
 			if (steps and steps["RaidIcon"]) then
 				local guid = UnitGUID("mouseover")
 				if (guid) then
-					local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid)
+					local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-", guid)
 					if (npc_id and tonumber(steps["RaidIcon"]) == tonumber(npc_id)) then
 						if (not GetRaidTargetIndex("mouseover")) then
 							SetRaidTarget("mouseover",8)
@@ -3989,11 +3943,13 @@ expacID, setID, isCraftingReagent
 			elseif (steps and steps["DroppableQuest"]) then
 				if (UnitGUID("mouseover") and UnitName("mouseover")) then
 					local guid, name = UnitGUID("mouseover"), UnitName("mouseover")
-					local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
-					if (type == "Creature" and npc_id and name and steps["DroppableQuest"]["MobId"] == tonumber(npc_id)) then
-						if (APR.NPCList and not APR.NPCList[tonumber(npc_id)]) then
-							APR.NPCList[tonumber(npc_id)] = name
+					if (guid) then
+						local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-", guid);
+						if (type == "Creature" and npc_id and name and steps["DroppableQuest"]["MobId"] == tonumber(npc_id)) then
+							if (APR.NPCList and not APR.NPCList[tonumber(npc_id)]) then
+								APR.NPCList[tonumber(npc_id)] = name
 
+							end
 						end
 					end
 				end
