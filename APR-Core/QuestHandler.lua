@@ -978,11 +978,10 @@ local function APR_PrintQStep()
 		if (APR.Level > 35 and APR.Level < 50) then
 			if (APR.ActiveMap and APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]) then
 				local OnTime = 0
-				local ChrimeTimez = C_ChromieTime.GetChromieTimeExpansionOptions()
-				for APR_index,APR_value in pairs(ChrimeTimez) do
-					if (ChrimeTimez[APR_index] and ChrimeTimez[APR_index]["id"] and ChrimeTimez[APR_index]["id"] == 9 and ChrimeTimez[APR_index]["alreadyOn"] and ChrimeTimez[APR_index]["alreadyOn"] == true) then
-						OnTime = 1
-					end
+				-- 9 = WOD
+				local chromieExpansionOption = C_ChromieTime.GetChromieTimeExpansionOption(9)
+				if (chromieExpansionOption and chromieExpansionOption.alreadyOn == true) then
+					OnTime = 1
 				end
 				if (OnTime == 0) then
 					LineNr = LineNr + 1
@@ -2894,17 +2893,14 @@ function APR_UpdMapIDz()
 	APR.BookingList["UpdateMapId"] = 1
 end
 function APR_UpdQuestThing()
-	if (UnitGUID("target") and UnitName("target")) then
-		local guid, name = UnitGUID("target"), UnitName("target")
-		local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
-		if (npc_id and name) then
-			if (APR.ActiveQuests and APR.ActiveQuests["55981-3"] and APR.ActiveQuests["55981-3"] ~= "C" and tonumber(npc_id) == 153580) then
-				DoEmote("HUG")
-			elseif (APR.ActiveQuests and APR.ActiveQuests["55981-4"] and APR.ActiveQuests["55981-4"] ~= "C" and tonumber(npc_id) == 153580) then
-				DoEmote("WAVE")
-			elseif (APR.ActiveQuests and APR.ActiveQuests["59978-4"] and APR.ActiveQuests["59978-4"] ~= "C" and tonumber(npc_id) == 153580) then
-				DoEmote("WAVE")
-			end
+	local npc_id, name = GetTargetID(), UnitName("target")
+	if (npc_id and name) then
+		if (APR.ActiveQuests and APR.ActiveQuests["55981-3"] and APR.ActiveQuests["55981-3"] ~= "C" and npc_id == 153580) then
+			DoEmote("HUG")
+		elseif (APR.ActiveQuests and APR.ActiveQuests["55981-4"] and APR.ActiveQuests["55981-4"] ~= "C" and npc_id == 153580) then
+			DoEmote("WAVE")
+		elseif (APR.ActiveQuests and APR.ActiveQuests["59978-4"] and APR.ActiveQuests["59978-4"] ~= "C" and npc_id == 153580) then
+			DoEmote("WAVE")
 		end
 	end
 	APR.BookingList["UpdateQuest"] = 1
@@ -3038,7 +3034,6 @@ APR_QH_EventFrame:RegisterEvent ("ITEM_PUSH")
 APR_QH_EventFrame:RegisterEvent ("QUEST_AUTOCOMPLETE")
 APR_QH_EventFrame:RegisterEvent ("QUEST_ACCEPT_CONFIRM")
 APR_QH_EventFrame:RegisterEvent ("UNIT_ENTERED_VEHICLE")
---APR_QH_EventFrame:RegisterEvent ("CHROMIE_TIME_OPEN")
 APR_QH_EventFrame:RegisterEvent ("QUEST_LOG_UPDATE")
 APR_QH_EventFrame:RegisterEvent ("PLAYER_TARGET_CHANGED")
 APR_QH_EventFrame:RegisterEvent ("PLAYER_REGEN_ENABLED")
@@ -3144,17 +3139,14 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		end
 	end
 	if (event=="PLAYER_TARGET_CHANGED") then
-		if (UnitGUID("target") and UnitName("target")) then
-			local guid, name = UnitGUID("target"), UnitName("target")
-			local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
-			if (npc_id and name) then
-				if (APR.ActiveQuests and APR.ActiveQuests["55981-3"] and APR.ActiveQuests["55981-3"] ~= "C" and tonumber(npc_id) == 153580) then
-					DoEmote("HUG")
-				elseif (APR.ActiveQuests and APR.ActiveQuests["55981-4"] and APR.ActiveQuests["55981-4"] ~= "C" and tonumber(npc_id) == 153580) then
-					DoEmote("WAVE")
-				elseif (APR.ActiveQuests and APR.ActiveQuests["59978-4"] and APR.ActiveQuests["59978-4"] ~= "C" and tonumber(npc_id) == 153580) then
-					DoEmote("WAVE")
-				end
+		local npc_id, name = GetTargetID(), UnitName("target")
+		if (npc_id and name) then
+			if (APR.ActiveQuests and APR.ActiveQuests["55981-3"] and APR.ActiveQuests["55981-3"] ~= "C" and npc_id == 153580) then
+				DoEmote("HUG")
+			elseif (APR.ActiveQuests and APR.ActiveQuests["55981-4"] and APR.ActiveQuests["55981-4"] ~= "C" and npc_id == 153580) then
+				DoEmote("WAVE")
+			elseif (APR.ActiveQuests and APR.ActiveQuests["59978-4"] and APR.ActiveQuests["59978-4"] ~= "C" and npc_id == 153580) then
+				DoEmote("WAVE")
 			end
 		end
 	end
@@ -3209,7 +3201,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			if (steps["Brewery"] or steps["SparringRing"]) then
 				for i, option in ipairs(choiceInfo.options) do
 					if (steps["Brewery"] == option.id or steps["SparringRing"] == option.id) then
-						PlayerChoiceFrame["Option"..CLi]["OptionButtonsContainer"]["button1"]:Click()
+						C_PlayerChoice.SendPlayerChoiceResponse(option.buttons[1].id)
 						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 						APR.BookingList["UpdateQuest"] = 1
 						APR.BookingList["PrintQStep"] = 1
@@ -3218,21 +3210,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				end
 			end
 		end
-		-- steps["PickUpSpecial"] is never used
-		--
-		-- if (numOptions and numOptions > 1 and steps and steps["PickUpSpecial"]) then
-		-- 	local CLi
-		-- 	for CLi = 1, numOptions do
-		-- 		local optionID, buttonText, description, artFile = GetQuestChoiceOptionInfo(CLi)
-		-- 		if (steps["PickUpSpecial"] == optionID) then
-		-- 			SendQuestChoiceResponse(GetQuestChoiceOptionInfo(CLi))
-		-- 			APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
-		-- 			APR.BookingList["UpdateQuest"] = 1
-		-- 			APR.BookingList["PrintQStep"] = 1
-		-- 			break
-		-- 		end
-		-- 	end
-		-- end
 	end
 	if (event=="UNIT_ENTERED_VEHICLE") then
 		local arg1, arg2, arg3, arg4, arg5 = ...;
@@ -3260,26 +3237,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			end
 		end
 	end
-	if (event=="CHROMIE_TIME_OPEN") then
-		local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
-		local steps
-		if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
-			steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-		end
-		if (steps and steps["ChromiePick"]) then
-			local APRChromie = C_ChromieTime.GetChromieTimeExpansionOptions()
-			for APR_index,APR_value in pairs(APRChromie) do
-				if (steps["ChromiePick"] == APRChromie[APR_index]["id"]) then
-					C_ChromieTime.SelectChromieTimeOption(APRChromie[APR_index]["id"])
-					print("APR: "..L["SWITCH_TO_CHROMIE"].." "..APRChromie[APR_index]["name"])
-					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
-					APR.BookingList["UpdateQuest"] = 1
-					APR.BookingList["PrintQStep"] = 1
-					break
-				end
-			end
-		end
-	end
 	if (event=="QUEST_ACCEPT_CONFIRM") then -- escort quest
 		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 1 and not IsControlKeyDown()) then
 			APR.BookingList["AcceptQuest"] = 1
@@ -3298,30 +3255,24 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		end
 		-- Deny NPC
 		if (steps and steps["DenyNPC"]) then
-			if (UnitGUID("target") and UnitName("target")) then
-				local guid, name = UnitGUID("target"), UnitName("target")
-				local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
-				if (npc_id and name) then
-					if (tonumber(npc_id) == steps["DenyNPC"]) then
-						C_GossipInfo.CloseGossip()
-						print("APR: "..L["NOT_YET"])
-					end
+			local npc_id, name = GetTargetID(), UnitName("target")
+			if (npc_id and name) then
+				if (npc_id == steps["DenyNPC"]) then
+					C_GossipInfo.CloseGossip()
+					print("APR: "..L["NOT_YET"])
 				end
 			end
 		end
-		local target = UnitGUID("target")
-		if (target and string.find(target, "(.*)-(.*)")) then
-			local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",target)
-			if (npc_id and (tonumber(npc_id) == 43733) and (tonumber(npc_id) == 45312)) then
-				Dismount()
-			end
-			if (npc_id and ((tonumber(npc_id) == 141584) or (tonumber(npc_id) == 142063) or (tonumber(npc_id) == 25809) or (tonumber(npc_id) == 45400) or (tonumber(npc_id) == 87391))) then
-				return
-			end
+		local npc_id = GetTargetID()
+		if (npc_id and (npc_id == 43733) and (npc_id == 45312)) then
+			Dismount()
 		end
-	----------------------------------------------
+		if (npc_id and ((npc_id == 141584) or (npc_id == 142063) or (npc_id == 25809) or (npc_id == 45400) or (npc_id == 87391))) then
+			return
+		end
+		------------------------------------
 		-- GOSSIP
-		if(APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 1)then
+		if(APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 1) then
 			-- GOSSIP HARDCODED
 			if (steps and steps["Gossip"]) then
 				if (steps["Gossip"] == 27373 or steps["Gossip"] == 34398) then
@@ -3387,6 +3338,16 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 					-- else
 					-- 	SelectGossipOption(steps["Gossip"])
 					-- end
+					--CHROMIE
+					if (steps["ChromiePick"]) then
+						local target = GetTargetID()
+						print("c'est crhomie "..target)
+						if (target == 167032) then
+							local extraText = L["SWITCH_TO_CHROMIE"].." ".. C_ChromieTime.GetChromieTimeExpansionOption(steps["ChromiePick"]).name
+							APR.QuestList.QuestFrames["FS1"]:SetText(TextWithStars(extraText))
+							C_Timer.After(3, function() _G.C_ChromieTime.SelectChromieTimeOption(steps["ChromiePick"]) end)
+						end
+					end
 				end
 			end
 		end
@@ -3712,34 +3673,24 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		end
 		if (steps and steps["DenyNPC"]) then
-			if (UnitGUID("target") and UnitName("target")) then
-				local guid, name = UnitGUID("target"), UnitName("target")
-				if (guid) then
-					local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
-					if (npc_id and name) then
-						if (tonumber(npc_id) == steps["DenyNPC"]) then
-							C_GossipInfo.CloseGossip()
-						end
+			local npc_id, name = GetTargetID(), UnitName("target")
+			if (npc_id and name) then
+					if (npc_id == steps["DenyNPC"]) then
+						C_GossipInfo.CloseGossip()
 					end
-				end
 			end
 		end
-		if (UnitGUID("target") and string.find(UnitGUID("target"), "(.*)-(.*)")) then
-			local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",UnitGUID("target"))
+		local target = GetTargetID()
+		if (target) then
 			local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 			if (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
 				local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 				local APRDenied = 0
 				if (steps and steps["DenyNPC"]) then
-					if (UnitGUID("target") and UnitName("target")) then
-						local guid, name = UnitGUID("target"), UnitName("target")
-						if (guid) then
-							local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
-							if (npc_id and name) then
-								if (tonumber(npc_id) == steps["DenyNPC"]) then
-									APRDenied = 1
-								end
-							end
+					local name = UnitName("target")
+					if (target and name) then
+						if (tonumber(target) == steps["DenyNPC"]) then
+							APRDenied = 1
 						end
 					end
 				end
@@ -3769,15 +3720,10 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		end
 		if (steps and steps["DenyNPC"]) then
-			if (UnitGUID("target") and UnitName("target")) then
-				local guid, name = UnitGUID("target"), UnitName("target")
-				if (guid) then
-					local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
-					if (npc_id and name) then
-						if (tonumber(npc_id) == steps["DenyNPC"]) then
-							C_GossipInfo.CloseGossip()
-						end
-					end
+			local npc_id, name = GetTargetID(), UnitName("target")
+			if (npc_id and name) then
+				if (npc_id == steps["DenyNPC"]) then
+					C_GossipInfo.CloseGossip()
 				end
 			end
 		end
@@ -3798,13 +3744,10 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		end
 		if (steps and steps["DenyNPC"]) then
-			if (UnitGUID("target") and UnitName("target")) then
-				local guid, name = UnitGUID("target"), UnitName("target")
-				local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",guid);
-				if (npc_id and name) then
-					if (tonumber(npc_id) == steps["DenyNPC"]) then
-						C_GossipInfo.CloseGossip()
-					end
+			local npc_id, name = GetTargetID(), UnitName("target")
+			if (npc_id and name) then
+				if (npc_id == steps["DenyNPC"]) then
+					C_GossipInfo.CloseGossip()
 				end
 			end
 		end
@@ -3898,11 +3841,9 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				if (steps and steps["SpecialNoAutoHandin"]) then
 					return
 				end
-				if (UnitGUID("target") and string.find(UnitGUID("target"), "(.*)-(.*)")) then
-					local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-",UnitGUID("target"))
-					if (npc_id and ((tonumber(npc_id) == 141584) or (tonumber(npc_id) == 142063) or (tonumber(npc_id) == 45400) or (tonumber(npc_id) == 25809) or (tonumber(npc_id) == 87391))) then
-						return
-					end
+				local npc_id = GetTargetID()
+				if (npc_id and ((npc_id == 141584) or (npc_id == 142063) or (npc_id == 45400) or (npc_id == 25809) or (npc_id == 87391))) then
+					return
 				end
 				GetQuestReward(1)
 			end
@@ -3910,17 +3851,12 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 	end
 	if (event=="CHAT_MSG_MONSTER_SAY") then
 		local arg1, arg2, arg3, arg4 = ...;
-		if (UnitGUID("target") and UnitName("target")) then
-			local guid, name = UnitGUID("target"), UnitName("target")
-			if(guid) then
-				local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-", guid);
-				if (npc_id and name) then
-					if (tonumber(npc_id) == 159477) then
-						if (APR_GigglingBasket[arg1]) then
-							print("APR: "..L["DOING_EMOTE"]..": "..APR_GigglingBasket[arg1])
-							DoEmote(APR_GigglingBasket[arg1])
-						end
-					end
+		local npc_id, name = GetTargetID(), UnitName("target")
+		if (npc_id and name) then
+			if (npc_id == 159477) then
+				if (APR_GigglingBasket[arg1]) then
+					print("APR: "..L["DOING_EMOTE"]..": "..APR_GigglingBasket[arg1])
+					DoEmote(APR_GigglingBasket[arg1])
 				end
 			end
 		end
@@ -3932,7 +3868,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			if (steps and steps["RaidIcon"]) then
 				local guid = UnitGUID("mouseover")
 				if (guid) then
-					local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-", guid)
+					local _, _, _, _, _, npc_id, _ = strsplit("-", guid)
 					if (npc_id and tonumber(steps["RaidIcon"]) == tonumber(npc_id)) then
 						if (not GetRaidTargetIndex("mouseover")) then
 							SetRaidTarget("mouseover",8)
@@ -3943,7 +3879,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				if (UnitGUID("mouseover") and UnitName("mouseover")) then
 					local guid, name = UnitGUID("mouseover"), UnitName("mouseover")
 					if (guid) then
-						local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-", guid);
+						local type, _, _, _, _, npc_id, _ = strsplit("-", guid);
 						if (type == "Creature" and npc_id and name and steps["DroppableQuest"]["MobId"] == tonumber(npc_id)) then
 							if (APR.NPCList and not APR.NPCList[tonumber(npc_id)]) then
 								APR.NPCList[tonumber(npc_id)] = name
