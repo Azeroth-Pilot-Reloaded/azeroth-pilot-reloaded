@@ -3201,7 +3201,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			if (steps["Brewery"] or steps["SparringRing"]) then
 				for i, option in ipairs(choiceInfo.options) do
 					if (steps["Brewery"] == option.id or steps["SparringRing"] == option.id) then
-						PlayerChoiceFrame["Option"..CLi]["OptionButtonsContainer"]["button1"]:Click()
+						C_PlayerChoice.SendPlayerChoiceResponse(option.buttons[1].id)
 						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 						APR.BookingList["UpdateQuest"] = 1
 						APR.BookingList["PrintQStep"] = 1
