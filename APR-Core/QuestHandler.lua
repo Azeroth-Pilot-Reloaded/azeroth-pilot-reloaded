@@ -3048,7 +3048,7 @@ APR_QH_EventFrame:RegisterEvent ("CHAT_MSG_MONSTER_SAY")
 APR_QH_EventFrame:RegisterEvent ("CHAT_MSG_COMBAT_XP_GAIN")
 APR_QH_EventFrame:RegisterEvent ("LEARNED_SPELL_IN_TAB")
 APR_QH_EventFrame:RegisterEvent ("UNIT_AURA")
-APR_QH_EventFrame:RegisterEvent ("QUEST_CHOICE_UPDATE")
+APR_QH_EventFrame:RegisterEvent ("PLAYER_CHOICE_UPDATE")
 APR_QH_EventFrame:RegisterEvent ("REQUEST_CEMETERY_LIST_RESPONSE")
 APR_QH_EventFrame:RegisterEvent ("AJ_REFRESH_DISPLAY")
 APR_QH_EventFrame:RegisterEvent ("UPDATE_UI_WIDGET")
@@ -3198,7 +3198,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			APR.GroupListingFunc(tonumber(arg2), APR.TrimPlayerServer(arg4))
 		end
 	end
-	if (event=="QUEST_CHOICE_UPDATE") then
+	if (event=="PLAYER_CHOICE_UPDATE") then
 		local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 		local steps
 		if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
