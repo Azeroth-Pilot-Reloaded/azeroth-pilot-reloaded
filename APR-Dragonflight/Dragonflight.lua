@@ -2635,7 +2635,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
                ["x"] = 1248.5,
           },
           ["Range"] = 50,
-          ["ExtraLineText"] = "TALK_WITH_BLACKTALON_ASSASSIN_START_COMBAT",
+          ["ExtraLineText"] = "TALK_WITH_BLACKTALON_ASSASSINS_OR_AVENGERS_START_COMBAT_YOU_CAN_DUEL_MULTIPLE_AT_ONCE_IF_INTERACTED_WITH",
           ["Gossip"] = 1,
           ["GossipOptionID"] = 54628,
      },
@@ -3592,6 +3592,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
      },
 }
 
+
 -- Ohn'Ahran Plains
 APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
      {	-- Step 1
@@ -4537,6 +4538,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2004.5,
           },
           ["Range"] = 125,
+          ["ExtraLineText"] = "BONUS_OBJECTIVE_SKIP",
      },
      {	-- Step 79
           ["Done"] = {
