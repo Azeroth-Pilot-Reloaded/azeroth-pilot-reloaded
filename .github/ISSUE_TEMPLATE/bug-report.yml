@@ -1,7 +1,7 @@
 name: "Bug Report"
 description: Report a bug or an issue with Azeroth Pilot Reloaded.
 title: "[ISSUE] - "
-labels: 'bug'
+labels: 'Bug'
 body:
 - type: markdown
   attributes:

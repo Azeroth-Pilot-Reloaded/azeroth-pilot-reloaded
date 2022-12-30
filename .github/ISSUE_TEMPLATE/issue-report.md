@@ -2,7 +2,7 @@
 name: Issue report
 about: Report a bug or an issue with the addon.
 title: "[ISSUE] - "
-labels: 'bug'
+labels: 'Bug'
 assignees: ''
 
 ---
