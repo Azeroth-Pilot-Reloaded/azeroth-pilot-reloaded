@@ -19,7 +19,6 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 		 ["SetHS"] = 34398,
 	},
 	{
-		 ["ExtraLineText"] = "SWITCH_TO_CHROMIE",
 		 ["PickUp"] = {
 			  34398,
 		 },
@@ -105,29 +104,6 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War2"] = {
 	},
 	{
 		 ["ExtraLineText"] = "LEAVE_TUTORIAL",
-		 ["PickUp"] = {
-			  34398,
-		 },
-		 ["TT"] = {
-			  ["y"] = -9053.3,
-			  ["x"] = 442.7,
-		 },
-		 ["BlockQuests"] = 1,
-		 ["Gossip"] = 1,
-		 ["LeaveQuest"] = 59583,
-	},
-
-	{
-		 ["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-		 ["SpellInTab"] = 33388,
-		 ["TrainRidingSkill"] = 34398,
-		 ["RaidIcon"] = 44919,
-		 ["TT"] = {
-			  ["y"] = -8845,
-			  ["x"] = 503,
-		 },
-	},
-	{
 		 ["Trigger"] = {
 			  ["y"] = -8374,
 			  ["x"] = 608,
@@ -147,7 +123,16 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War2"] = {
 		 ["SetHS"] = 34398,
 	},
 	{
-		 ["ExtraLineText"] = "SWITCH_TO_CHROMIE",
+		 ["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
+		 ["SpellInTab"] = 33388,
+		 ["TrainRidingSkill"] = 34398,
+		 ["RaidIcon"] = 44919,
+		 ["TT"] = {
+			  ["y"] = -8845,
+			  ["x"] = 503,
+		 },
+	},
+	{
 		 ["PickUp"] = {
 			  34398,
 		 },
@@ -157,15 +142,6 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War2"] = {
 		 ["TT"] = {
 			  ["y"] = -8196.3,
 			  ["x"] = 745.9,
-		 },
-	}, -- [30]
-	{
-		 ["PickUp"] = {
-			  34398,
-		 },
-		 ["TT"] = {
-			  ["y"] = -8196.2,
-			  ["x"] = 746,
 		 },
 	},
 	{
@@ -242,7 +218,6 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War3"] = {
 		 ["SetHS"] = 34398,
 	},
 	{
-		 ["ExtraLineText"] = "SWITCH_TO_CHROMIE",
 		 ["PickUp"] = {
 			  34398,
 		 },
