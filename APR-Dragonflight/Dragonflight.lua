@@ -3592,7 +3592,6 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
      },
 }
 
-
 -- Ohn'Ahran Plains
 APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
      {	-- Step 1
@@ -4538,7 +4537,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
                ["x"] = 2004.5,
           },
           ["Range"] = 125,
-          ["ExtraLineText"] = "BONUS_OBJECTIVE_SKIP",
+          ["ExtraLineText"] = "BONUS_OBJECTIVE_IF_IT_DOES_NOT_APPEAR_WHEN_YOU_REACH_AREA_DO_APR_SKIP",
      },
      {	-- Step 79
           ["Done"] = {
@@ -5418,7 +5417,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
      {	-- Step 146
           ["Qpart"] = {
                [66222] = {
-                    ["2"] = "2",
+                    ["3"] = "3",
                },
           },
           ["TT"] = {
@@ -5436,7 +5435,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
      {	-- Step 147
           ["Qpart"] = {
                [66222] = {
-                    ["3"] = "3",
+                    ["2"] = "2",
                },
           },
           ["TT"] = {
