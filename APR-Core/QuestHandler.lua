@@ -3341,7 +3341,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 					--CHROMIE
 					if (steps["ChromiePick"]) then
 						local target = GetTargetID()
-						print("c'est crhomie "..target)
 						if (target == 167032) then
 							local extraText = L["SWITCH_TO_CHROMIE"].." ".. C_ChromieTime.GetChromieTimeExpansionOption(steps["ChromiePick"]).name
 							APR.QuestList.QuestFrames["FS1"]:SetText(TextWithStars(extraText))
