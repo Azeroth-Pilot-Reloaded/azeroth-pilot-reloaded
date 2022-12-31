@@ -951,6 +951,7 @@ function APR.FP.GetMeToNextZone2()
 				-- 9 == WOD
 				checkChromieTimeline(9)
 			end
+			-- If we add Sl timeline in the future
 			-- if(APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]) then
 			-- 	-- 14 == Shadowland
 			-- 	checkChromieTimeline(14)
