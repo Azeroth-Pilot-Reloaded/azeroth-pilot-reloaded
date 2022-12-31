@@ -24,6 +24,15 @@ body:
   validations:
     required: true
 
+- type: input
+  attributes:
+    label: APR Route
+    description: |
+      The route that you have selected in `/apr > Auto Path Helper` (Speedrun, First Character, Custom Path "attach a screenshot for custom path")
+    placeholder: "Speedrun"
+  validations:
+    required: true
+
 - type: dropdown
   id: flavor
   attributes:

@@ -13,6 +13,8 @@ assignees: ''
 1.  
 2.  
 3.  
+### Which route do you have selected?
+(Speedrun, First Character, Custom Path "attach a screenshot for custom path")
 
 ### Consider attaching a screenshot below to help describe your issue (Attach directly via "copy & paste," do not link to other sites.)
 
