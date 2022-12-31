@@ -974,21 +974,28 @@ local function APR_PrintQStep()
 				end
 			end
 		end
-
-		if (APR.Level > 35 and APR.Level < 50) then
-			if (APR.ActiveMap and APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]) then
-				local OnTime = 0
-				-- 9 = WOD
-				local chromieExpansionOption = C_ChromieTime.GetChromieTimeExpansionOption(9)
-				if (chromieExpansionOption and chromieExpansionOption.alreadyOn == true) then
-					OnTime = 1
-				end
-				if (OnTime == 0) then
+		if (APR.ActiveMap) then
+			local function checkChromieTimeline(id)
+				local chromieExpansionOption = C_ChromieTime.GetChromieTimeExpansionOption(id)
+				if (not chromieExpansionOption) then
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["NOT_IN_CHROMIE_TIMELINE"]))
 					APR.QuestList.QuestFrames[LineNr]:Show()
+				elseif (chromieExpansionOption.alreadyOn == false) then
+					LineNr = LineNr + 1
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["SWITCH_TO_CHROMIE"].." ".. chromieExpansionOption.name))
+					APR.QuestList.QuestFrames[LineNr]:Show()
 				end
 			end
+			if(APR.QuestStepListListing["Extra"][APR.ActiveMap]) then
+				-- 9 == WOD
+				checkChromieTimeline(9)
+			end
+			-- If we add Sl timeline in the future
+			-- if(APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]) then
+			-- 	-- 14 == Shadowland
+			-- 	checkChromieTimeline(14)
+			-- end
 		end
 		if (steps["DoIHaveFlight"]) then
 			if (GetSpellBookItemInfo(GetSpellInfo(33391)) or GetSpellBookItemInfo(GetSpellInfo(90265)) or GetSpellBookItemInfo(GetSpellInfo(34090))) then
