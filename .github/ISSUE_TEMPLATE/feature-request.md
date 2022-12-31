@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-### Please describe the issues and/or needs to which your feature request relates to.
+### Please describe the issues and/or needs to which your feature request relates.
 
 ### Describe the solution that you would like to see implemented.
 
