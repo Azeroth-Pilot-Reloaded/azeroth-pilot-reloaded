@@ -144,7 +144,7 @@ local APR_BonusObj = {
 local MapRects = {};
 local TempVec2D = CreateVector2D(0,0);
 local function GetPlayerMapPos(MapID, dx, dy)
-	if (MapID and MapID == 1726 or MapID == 1727 or APRt_Zone == 1727) then
+	if (MapID and MapID == 1726 or MapID == 1727 or MapID == 905 or MapID == 948 or APRt_Zone == 1727) then
 		return
 	end
 	--if (UnitPosition('player')) then
