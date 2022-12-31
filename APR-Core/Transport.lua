@@ -934,21 +934,27 @@ function APR.FP.GetMeToNextZone2()
 				end
 			end
 		end
-		if (APR.Level > 35 and APR.Level < 50) then
-			if (APR.ActiveMap and APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]) then
-				local OnTime = 0
-				local ChrimeTimez = C_ChromieTime.GetChromieTimeExpansionOptions()
-				for APR_index,APR_value in pairs(ChrimeTimez) do
-					if (ChrimeTimez[APR_index] and ChrimeTimez[APR_index]["id"] and ChrimeTimez[APR_index]["id"] == 9 and ChrimeTimez[APR_index]["alreadyOn"] and ChrimeTimez[APR_index]["alreadyOn"] == true) then
-						OnTime = 1
-					end
-				end
-				if (OnTime == 0) then
+		if (APR.ActiveMap) then
+			local function checkChromieTimeline(id)
+				local chromieExpansionOption = C_ChromieTime.GetChromieTimeExpansionOption(id)
+				if (not chromieExpansionOption) then
+					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["NOT_IN_CHROMIE_TIMELINE"]))
 					APR.QuestList.QuestFrames[LineNr]:Show()
+				elseif (chromieExpansionOption.alreadyOn == false) then
 					LineNr = LineNr + 1
+					APR.QuestList.QuestFrames["FS"..LineNr]:SetText(TextWithStars(L["SWITCH_TO_CHROMIE"].." ".. chromieExpansionOption.name))
+					APR.QuestList.QuestFrames[LineNr]:Show()
 				end
 			end
+			if(APR.QuestStepListListing["Extra"][APR.ActiveMap]) then
+				-- 9 == WOD
+				checkChromieTimeline(9)
+			end
+			-- if(APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]) then
+			-- 	-- 14 == Shadowland
+			-- 	checkChromieTimeline(14)
+			-- end
 		end
 		if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1) then
 			APR.QuestList.QuestFrames["FS"..LineNr]:SetText(L["DESTINATION"]..": "..mapzinfoz.name..", "..mapzinfoz2.name.." ("..GoToZone..")")
