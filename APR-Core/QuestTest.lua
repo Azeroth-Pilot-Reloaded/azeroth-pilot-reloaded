@@ -42,11 +42,6 @@ function APR.ZoneQuestOrderList()
 	APR.ZoneQuestOrder.ZoneName:SetWidth(100)
 	APR.ZoneQuestOrder.ZoneName:SetHeight(16)
 	APR.ZoneQuestOrder.ZoneName:SetPoint("BOTTOM", APR.ZoneQuestOrder, "TOP",0,0)
-	--APR.ZoneQuestOrder.ZoneName:SetBackdrop( {
-	--	bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-	--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-	--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-	--});
 	local t = APR.ZoneQuestOrder.ZoneName:CreateTexture(nil,"BACKGROUND")
 	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 	t:SetAllPoints(APR.ZoneQuestOrder.ZoneName)
@@ -107,11 +102,6 @@ function APR.ZoneQuestOrderList()
 		APR.ZoneQuestOrder:Hide()
 		APR.OptionsFrame.QorderListzCheckButton:SetChecked(false)
 	end)
-	--APR.ZoneQuestOrder:SetBackdrop( {
-	--	bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-	--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-	--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-	--});
 	local t = APR.ZoneQuestOrder:CreateTexture(nil,"BACKGROUND")
 	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 	t:SetAllPoints(APR.ZoneQuestOrder)
@@ -150,11 +140,6 @@ function APR.ZoneQuestOrderList()
 	APR.ZoneQuestOrder["Current"]:SetWidth(25)
 	APR.ZoneQuestOrder["Current"]:SetHeight(16)
 	APR.ZoneQuestOrder["Current"]:SetPoint("RIGHT", APR.ZoneQuestOrder, "LEFT",0,0)
-	--APR.ZoneQuestOrder["Current"]:SetBackdrop( {
-	--	bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-	--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-	--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-	--});
 	local t = APR.ZoneQuestOrder["Current"]:CreateTexture(nil,"BACKGROUND")
 	t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 	t:SetAllPoints(APR.ZoneQuestOrder["Current"])
@@ -184,11 +169,6 @@ function APR.AddQuestOrderFrame(CLi)
 		APR.ZoneQuestOrder[CLi]:SetWidth(25)
 		APR.ZoneQuestOrder[CLi]:SetHeight(16)
 		APR.ZoneQuestOrder[CLi]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT",5,-((CLPos)-11))
-		--APR.ZoneQuestOrder[CLi]:SetBackdrop( {
-		--	bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-		--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-		--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		--});
 		local t = APR.ZoneQuestOrder[CLi]:CreateTexture(nil,"BACKGROUND")
 		t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 		t:SetAllPoints(APR.ZoneQuestOrder[CLi])
@@ -237,11 +217,6 @@ function APR.AddQuestOrderFrame(CLi)
 		APR.ZoneQuestOrder["Order1"][CLi]:SetWidth(100)
 		APR.ZoneQuestOrder["Order1"][CLi]:SetHeight(16)
 		APR.ZoneQuestOrder["Order1"][CLi]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT",32,-((CLPos)-11))
-		--APR.ZoneQuestOrder["Order1"][CLi]:SetBackdrop( {
-		--	bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-		--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-		--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		--});
 		local t = APR.ZoneQuestOrder["Order1"][CLi]:CreateTexture(nil,"BACKGROUND")
 		t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 		t:SetAllPoints(APR.ZoneQuestOrder["Order1"][CLi])
@@ -293,11 +268,6 @@ function APR.AddQuestIdFrame(CLi)
 		APR.ZoneQuestOrder["Order1iD"][CLi]:SetWidth(50)
 		APR.ZoneQuestOrder["Order1iD"][CLi]:SetHeight(16)
 		APR.ZoneQuestOrder["Order1iD"][CLi]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT",65,-((CLPos)-11))
-		--APR.ZoneQuestOrder["Order1iD"][CLi]:SetBackdrop( {
-		--	bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-		--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-		--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		--});
 		local t = APR.ZoneQuestOrder["Order1iD"][CLi]:CreateTexture(nil,"BACKGROUND")
 		t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 		t:SetAllPoints(APR.ZoneQuestOrder["Order1iD"][CLi])
@@ -349,11 +319,6 @@ function APR.AddQuestNameFrame(CLi)
 		APR.ZoneQuestOrder["OrderName"][CLi]:SetWidth(50)
 		APR.ZoneQuestOrder["OrderName"][CLi]:SetHeight(16)
 		APR.ZoneQuestOrder["OrderName"][CLi]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT",120,-((CLPos)-11))
-		--APR.ZoneQuestOrder["OrderName"][CLi]:SetBackdrop( {
-		--	bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-		--	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-		--	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-		--});
 		local t = APR.ZoneQuestOrder["OrderName"][CLi]:CreateTexture(nil,"BACKGROUND")
 		t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 		t:SetAllPoints(APR.ZoneQuestOrder["OrderName"][CLi])
@@ -895,9 +860,7 @@ function APR.MakeMapOrderIcons(IdZs)
 	local t = APR["MapZoneIcons"][IdZs]:CreateTexture(nil,"ARTWORK")
 	t:SetTexture("Interface\\Addons\\APR-Core\\Img\\Icon.tga")
 	t:SetAllPoints(APR["MapZoneIcons"][IdZs])
-	
-	--APR["MapZoneIcons"][IdZs]:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
-	APR["MapZoneIcons"]["FS"..IdZs] = APR["MapZoneIcons"][IdZs]:CreateFontString("APRMapIconFS"..IdZs,"OVERLAY", "ChatFontNormal")
+	APR["MapZoneIcons"]["FS"..IdZs] = APR["MapZoneIcons"][IdZs]:CreateFontString("APRMapIconFS"..IdZs,"ARTWORK", "ChatFontNormal")
 	APR["MapZoneIcons"]["FS"..IdZs]:SetParent(APR["MapZoneIcons"][IdZs])
 	APR["MapZoneIcons"]["FS"..IdZs]:SetPoint("CENTER",APR["MapZoneIcons"][IdZs],"CENTER",0,0)
 	APR["MapZoneIcons"]["FS"..IdZs]:SetWidth(30)
@@ -910,13 +873,11 @@ function APR.MakeMapOrderIcons(IdZs)
 	APR["MapZoneIconsRed"][IdZs]:SetFrameStrata("MEDIUM")
 	APR["MapZoneIconsRed"][IdZs]:SetWidth(20)
 	APR["MapZoneIconsRed"][IdZs]:SetHeight(20)
-	APR["MapZoneIconsRed"][IdZs]:SetScale(0.8)
-	local t2 = APR["MapZoneIconsRed"][IdZs]:CreateTexture(nil,"ARTWORK")
-	t2:SetTexture("Interface\\Addons\\APR-Core\\Img\\RedIcon.tga")
-	t2:SetAllPoints(APR["MapZoneIconsRed"][IdZs])
-	
-	-- APR["MapZoneIconsRed"][IdZs]:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
-	APR["MapZoneIconsRed"]["FS"..IdZs] = APR["MapZoneIconsRed"][IdZs]:CreateFontString("APRMapIconFS"..IdZs,"OVERLAY", "ChatFontNormal")
+	APR["MapZoneIconsRed"][IdZs]:SetScale(0.6)
+	local t = 	APR["MapZoneIconsRed"][IdZs]:CreateTexture(nil,"HIGH")
+	t:SetTexture("Interface\\Addons\\APR-Core\\Img\\RedIcon.tga")
+	t:SetAllPoints(APR["MapZoneIconsRed"][IdZs])
+	APR["MapZoneIconsRed"]["FS"..IdZs] = APR["MapZoneIconsRed"][IdZs]:CreateFontString("APRMapIconFS"..IdZs,"ARTWORK", "ChatFontNormal")
 	APR["MapZoneIconsRed"]["FS"..IdZs]:SetParent(APR["MapZoneIconsRed"][IdZs])
 	APR["MapZoneIconsRed"]["FS"..IdZs]:SetPoint("CENTER",APR["MapZoneIconsRed"][IdZs],"CENTER",0,0)
 	APR["MapZoneIconsRed"]["FS"..IdZs]:SetWidth(30)
