@@ -134,7 +134,7 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/8) 10-50 Talador")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(8/8) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - StoryMode Only (Not Enough XP)")
-	elseif (routeChoice >= 1 and APR.Level < 70 and APR.Level >= 60 and APR.Faction == "Alliance") then
+	elseif (routeChoice >= 1 and APR.Level >= 60 and APR.Faction == "Alliance") then
 		autoPatchStartInsertRoute()
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF01 - Dragonflight Stormwind")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF02 - Waking Shores - Alliance")
@@ -155,7 +155,7 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/7) 10-50 Spires of Arak")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/7) 10-50 Nagrand")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - StoryMode Only (Not Enough XP)")
-	elseif (routeChoice >= 1 and APR.Level < 70 and APR.Level >= 60 and APR.Faction == "Horde") then
+	elseif (routeChoice >= 1 and APR.Level >= 60 and APR.Faction == "Horde") then
 		autoPatchStartInsertRoute()
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF01 - Dragonflight Orgrimmar")
 		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF02 - Dragonflight Durotar")
