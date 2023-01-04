@@ -670,6 +670,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
                },
                [65998] = {
                     ["1"] = "1",
+                    ["2"] = "2",
                },
                [65999] = {
                     ["1"] = "1",
@@ -702,6 +703,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
                },
                [65998] = {
                     ["1"] = "1",
+                    ["2"] = "2",
                },
           },
      },
@@ -723,6 +725,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
           ["Fillers"] = {
                [65998] = {
                     ["1"] = "1",
+                    ["2"] = "2",
                },
           },
      },
@@ -730,6 +733,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
           ["Qpart"] = {
                [65998] = {
                     ["1"] = "1",
+                    ["2"] = "2",
                },
           },
           ["TT"] = {
@@ -3588,6 +3592,15 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
           },
      },
      {	-- Step 249
+          ["Done"] = {
+               65779,
+          },
+          ["TT"] = {
+               ["y"] = 223.6,
+               ["x"] = 933.9,
+          },
+     },
+     {	-- Step 250
           ["ZoneDoneSave"] = 1,
      },
 }
@@ -7531,6 +7544,15 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
           },
      },
      {	-- Step 294
+          ["Done"] = {
+               65686,
+          },
+          ["TT"] = {
+               ["y"] = -3511.6,
+               ["x"] = 981.7,
+          },
+     },
+     {	-- Step 295
           ["ZoneDoneSave"] = 1,
      },
 }
@@ -12176,6 +12198,33 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
           ["ExtraLineText"] = "TO_PINEWOOD_POST",
      },
      {	-- Step 357
+          ["Qpart"] = {
+               [66244] = {
+                    ["1"] = "1",
+               },
+          },
+          ["TT"] = {
+               ["y"] = 338.8,
+               ["x"] = -1099.5,
+          },
+          ["Trigger"] = {
+               ["y"] = 338.8,
+               ["x"] = -1099.5,
+          },
+          ["Range"] = 2,
+          ["ExtraLineText"] = "GET_INSIDE_AND_USE_PORTAL_TOP",
+     },
+     {	-- Step 358
+          ["Done"] = {
+               66244,
+          },
+          ["TT"] = {
+               ["y"] = 306.5,
+               ["x"] = -1042.4,
+          },
+          ["ExtraLineText"] = "GET_INSIDE_AND_USE_PORTAL_TOP",
+     },
+     {	-- Step 359
           ["ZoneDoneSave"] = 1,
      },
 }

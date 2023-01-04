@@ -186,11 +186,21 @@ if (APR.Faction == "Horde") then
                ["ExtraLineText"] = "HEAD_ZEPPELIN_TOWER",
           },
           {	-- Step 15
+               ["Done"] = {
+                    65443,
+                    72256,
+               },
+               ["TT"] = {
+                    ["y"] = 1362.0,
+                    ["x"] = -4913.5,
+               },
+          },
+          {	-- Step 16
                ["ZoneDoneSave"] = 1,
           },
      }
 
-    -- durotar
+    -- Durotar
      APR.QuestStepList["DF02H-1-Durotar"] = {
           {	-- Step 1
                ["Done"] = {
@@ -277,6 +287,31 @@ if (APR.Faction == "Horde") then
                ["ExtraLineText"] = "WAIT_FOR_ZEPPELIN",
           },
           {	-- Step 8
+               ["Qpart"] = {
+                    [65444] = {
+                         ["2"] = "2",
+                    },
+               },
+               ["TT"] = {
+                    ["y"] = 3895.3,
+                    ["x"] = -1792.7,
+               },
+               ["Trigger"] = {
+                    ["y"] = 3895.3,
+                    ["x"] = -1792.7,
+               },
+               ["Range"] = 5,
+          },
+          {	-- Step 9
+               ["Done"] = {
+                    65444,
+               },
+               ["TT"] = {
+                    ["y"] = 3903.7,
+                    ["x"] = -1778.3,
+               },
+          },
+          {	-- Step 10
                ["ZoneDoneSave"] = 1,
           },
      }
@@ -1967,7 +2002,7 @@ if (APR.Faction == "Horde") then
                     ["y"] = -1090.4,
                     ["x"] = -2891.1,
                },
-               ["Range"] = 2,
+               ["Range"] = 80,
           },
           {	-- Step 81
                ["Done"] = {
@@ -2925,5 +2960,5 @@ if (APR.Faction == "Horde") then
           {	-- Step 159
                ["ZoneDoneSave"] = 1,
           },
-     }  
+     }
 end

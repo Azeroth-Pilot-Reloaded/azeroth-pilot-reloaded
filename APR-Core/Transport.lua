@@ -829,6 +829,24 @@ function APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
 	if (APR.ActiveMap == "1670-Z1-Oribos-ZonePick" and (APRt_Zone == 1762 or APRt_Zone == 1656 or APRt_Zone == 1525 or APRt_Zone == 1543 or APRt_Zone == 1565 or APRt_Zone == 1533 or APRt_Zone == 1536)) then
 		APRt_Zone = 1670
 	end
+	-- Dragonflight
+    if (APR.ActiveMap == "DF01H-85-Orgrimmar" and APRt_Zone == 1) then
+        APRt_Zone = 85
+    elseif (APR.ActiveMap == "DF01A-84-Stormwind" and (APRt_Zone == 1978 or APRt_Zone == 2022)) then
+        APRt_Zone = 84
+    elseif (APR.ActiveMap == "DF02H-1-Durotar" and (APRt_Zone == 1978 or APRt_Zone == 2022)) then
+        APRt_Zone = 1
+    elseif (APR.ActiveMap == "DF03N-2022-WakingShores" and APRt_Zone == 2023) then
+        APRt_Zone = 2022
+    elseif (APR.ActiveMap == "DF04-2023-OhnahranPlains" and APRt_Zone == 2024) then
+        APRt_Zone = 2023
+    elseif (APR.ActiveMap == "DF05-2024-AzureSpan" and APRt_Zone == 2025) then
+        APRt_Zone = 2024
+    elseif (APR.ActiveMap == "DF06H-2025-Thaldraszus" and (APRt_Zone == 2135 or APRt_Zone == 2090 or APRt_Zone == 2091 or APRt_Zone == 2088 or APRt_Zone == 2089)) then
+        APRt_Zone = 2025
+    elseif (APR.ActiveMap == "DF06A-2025-Thaldraszus" and (APRt_Zone == 2135 or APRt_Zone == 2090 or APRt_Zone == 2091 or APRt_Zone == 2088 or APRt_Zone == 2089)) then
+        APRt_Zone = 2025
+    end
 
 	return APRt_Zone
 end
