@@ -47,3 +47,10 @@ function GetTargetID(unit)
 	end
 	return nil
 end
+
+function NumToBool(value)
+    return value==1
+end
+function Booltonumber(value)
+    return value and 1 or 0
+end
