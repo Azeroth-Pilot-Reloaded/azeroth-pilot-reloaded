@@ -998,7 +998,7 @@ local function APR_PrintQStep()
 			-- end
 		end
 		if (steps["DoIHaveFlight"]) then
-			if (GetSpellBookItemInfo(GetSpellInfo(33391)) or GetSpellBookItemInfo(GetSpellInfo(90265)) or GetSpellBookItemInfo(GetSpellInfo(34090))) then
+			if (CheckRidingSkill(33391) or CheckRidingSkill(90265) or CheckRidingSkill(34090)) then
 				APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 				APR.BookingList["UpdateQuest"] = 1
 				APR.BookingList["PrintQStep"] = 1
@@ -1019,10 +1019,10 @@ local function APR_PrintQStep()
 				APR.QuestList.QuestFrames[LineNr]:Show()
 			end
 		end
-		if(not GetSpellBookItemInfo(GetSpellInfo(90265))) then
+		if(not CheckRidingSkill(90265)) then
 			if (APR.Level >= 40 and APR.Level < 60) then
 				DisplayRiding(L["YOU_CAN_LEARN"].." "..L["MASTER_RIDING"])
-			elseif (APR.Level >= 30 and APR.Level < 40 and not GetSpellBookItemInfo(GetSpellInfo(34090))) then
+			elseif (APR.Level >= 30 and APR.Level < 40 and not CheckRidingSkill(34090)) then
 				local ridingText
 				if (APR.Faction == "Alliance" and APR.ActiveMap and APR.ActiveMap == "A543-DesMephisto-Gorgrond") then
 					ridingText = L["USE_HEARTHSTONE"].." "..L["GO_TO"].." Stormwind, "..L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING"]
@@ -1032,9 +1032,9 @@ local function APR_PrintQStep()
 					ridingText = L["YOU_CAN_LEARN"].." "..L["EXPERT_RIDING"]
 				end
 				DisplayRiding(ridingText)
-			elseif (APR.Level >= 20 and APR.Level < 30 and not GetSpellBookItemInfo(GetSpellInfo(33391))) then
+			elseif (APR.Level >= 20 and APR.Level < 30 and not CheckRidingSkill(33391)) then
 				DisplayRiding(L["YOU_CAN_LEARN"].." "..L["JOURNEYMAN_RIDING"])
-			elseif (APR.Level >= 10 and APR.Level < 20 and not GetSpellBookItemInfo(GetSpellInfo(33388))) then
+			elseif (APR.Level >= 10 and APR.Level < 20 and not CheckRidingSkill(33388)) then
 				DisplayRiding(L["YOU_CAN_LEARN"].." "..L["APPRENTICE_RIDING"])
 			end
 		end
