@@ -1,4 +1,4 @@
-## Interface: 100002
+## Interface: 100005
 # X-WoWI-ID: 0
 
 ## Title: Azeroth Pilot Reloaded - [|cffeda55fCore|r]

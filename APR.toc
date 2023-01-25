@@ -1,4 +1,4 @@
-## Interface: 100002
+## Interface: 100005
 
 ## Title: Azeroth Pilot Reloaded
 ## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.
@@ -9,4 +9,3 @@
 ## X-Website: https://github.com/Rycia/azeroth-pilot-reloaded
 ## X-Curse-Project-ID: 618667
 ## X-WoWI-ID: 26457
-
