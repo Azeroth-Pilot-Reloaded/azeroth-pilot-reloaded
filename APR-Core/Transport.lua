@@ -2230,7 +2230,7 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		if (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
 			steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		end
-		if (steps and not IsControlKeyDown() and APR1[APR.Realm][APR.Name]["Settings"]["AutoFlight"] == 1) then
+		if (steps and not IsModifierKeyDown() and APR1[APR.Realm][APR.Name]["Settings"]["AutoFlight"] == 1) then
 			local TName = steps["Name"]
 			local TContonent = APR.getContinent()
 			if (steps["UseFlightPath"]) then

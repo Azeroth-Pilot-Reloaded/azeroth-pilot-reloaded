@@ -3237,7 +3237,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
 			steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		end
-		if(APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 1 and not IsControlKeyDown()) then
+		if(APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 1 and not IsModifierKeyDown()) then
 			if (steps and steps["SpecialNoAutoHandin"]) then
 			else
 				APR_PopupFunc()
@@ -3245,13 +3245,13 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		end
 	end
 	if (event=="QUEST_ACCEPT_CONFIRM") then -- escort quest
-		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 1 and not IsControlKeyDown()) then
+		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 1 and not IsModifierKeyDown()) then
 			APR.BookingList["AcceptQuest"] = 1
 		end
 	end
 	if (event=="QUEST_GREETING" or event=="GOSSIP_SHOW") then
-		-- Exit function if you press Ctrl key before the
-		if IsControlKeyDown() then return end
+		-- Exit function if you press Ctrl/shift/alt key before the
+		if IsModifierKeyDown() then return end
 		local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 		local steps
 		if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
@@ -3413,7 +3413,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		end
 		if (steps and steps["BuyMerchant"]) then
-				if (not IsControlKeyDown() and APR_BuyMerchFunc() == 0) then
+				if (not IsModifierKeyDown() and APR_BuyMerchFunc() == 0) then
 					C_Timer.After(0.1,print(APR_BuyMerchFunc()))
 				end
 		end
@@ -3512,7 +3512,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
 			steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 		end
-		if (steps and steps["GetFP"] and not IsControlKeyDown()) then
+		if (steps and steps["GetFP"] and not IsModifierKeyDown()) then
 			APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 			APR.BookingList["PrintQStep"] = 1
 		end
@@ -3706,7 +3706,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				end
 			end
 		end
-		if (GetQuestID() and (APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 1) and (not IsControlKeyDown())) then
+		if (GetQuestID() and (APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 1) and (not IsModifierKeyDown())) then
 			if (QuestGetAutoAccept()) then
 				CloseQuest()
 			else
@@ -3733,7 +3733,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				end
 			end
 		end
-		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 1 and not IsControlKeyDown()) then
+		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 1 and not IsModifierKeyDown()) then
 			if (steps and steps["SpecialNoAutoHandin"]) then
 				return
 			end
@@ -3843,7 +3843,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
 				steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 			end
-			if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 1 and not IsControlKeyDown()) then
+			if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 1 and not IsModifierKeyDown()) then
 				if (steps and steps["SpecialNoAutoHandin"]) then
 					return
 				end
