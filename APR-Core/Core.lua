@@ -255,7 +255,7 @@ APR.AfkFrame:Hide()
 local PlayMovie_hook = MovieFrame_PlayMovie
 MovieFrame_PlayMovie = function(...)
 
-	if (IsControlKeyDown() or (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 0)) then
+	if (IsModifierKeyDown() or (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 0)) then
 		PlayMovie_hook(...) --MovieFrame_PlayMovie, as previously stated
 	else
 		print("APR: "..L["SKIPPED_CUTSCENE"])
@@ -3136,7 +3136,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 		SLASH_APR_Cmd1 = "/APR" -- Prefix for slash commands, ex. /apr reset, /apr skip
 		CoreLoadin = 1
 	elseif (event=="CINEMATIC_START") then --Cutscene skip when cinematic starts
-		if (not IsControlKeyDown()) then  -- unless control key is down
+		if (not IsModifierKeyDown()) then  -- unless control key is down
 			local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 			local steps
 			if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
