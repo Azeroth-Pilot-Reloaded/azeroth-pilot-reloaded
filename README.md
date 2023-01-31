@@ -60,3 +60,8 @@
 <p style="text-align: left; padding-left: 60px;"><span style="font-family: arial; font-size: 12px;"><em><strong><u>The AAP Team</u></strong> - Huge thanks to the AAP development and Support team in general! They helped me get this started and encouraged me to take over. </em></span></p>
 <p style="text-align: left; padding-left: 60px;"><span style="font-family: arial; font-size: 12px;"><em><a href="https://www.twitch.tv/desmephisto" rel="nofollow">DesMephisto</a> - Worked on the original 'Speed' leveling routes for 10-50 through Warlords of Draenor.</em></span></p>
 <p style="text-align: left; padding-left: 60px;"><span style="font-family: arial; font-size: 12px;"><em><a href="https://www.twitch.tv/brutallstatic" rel="nofollow">BrutallStatic</a> - Assited in creating, and testing the original 50-60 route through Shadowlands, with <strong>Teddyruxpins</strong>.</em></span></p>
+
+<p style="text-align: left;">&nbsp;</p>
+<hr />
+<p style="text-align: left; padding-left: 60px;"><span style="font-size: 12px; font-family: arial;"><em><strong>Translation Credits:</strong></em></span></p>
+<p style="text-align: left; padding-left: 60px;"><span style="text-decoration: underline; font-size: 12px;"><strong><span style="font-family: arial;"><em>French</em></span></strong></span><span style="font-size: 12px;"><span style="font-family: arial;"><em> - Neogeekmo, Mania</em></span></span></p>
