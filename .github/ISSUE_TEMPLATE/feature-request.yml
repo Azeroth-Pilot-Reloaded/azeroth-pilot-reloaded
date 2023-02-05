@@ -1,0 +1,44 @@
+name: "Feature request"
+description: Suggest an idea for Azeroth Pilot Reloaded.
+title: "[ISSUE] - "
+labels: 'Feature'
+
+body:
+- type: markdown
+  attributes:
+    value: |
+      Please [search for existing issues](https://github.com/Rycia/azeroth-pilot-reloaded/issues) before creating a new one.
+
+- type: textarea
+  attributes:
+    label: Description
+    description: Describe the issues and/or needs to which your feature request relates.
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Solution
+    description: |
+      Describe the solution that you would like to see implemented.
+    description:
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Alternative solutions
+    description: |
+      Describe any alternative solutions or features you've considered.
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Any additional information?
+    description: |
+      If you have additional information that does not match the other fields
+    render: true
+  validations:
+    required: false
+
