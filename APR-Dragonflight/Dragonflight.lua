@@ -9686,7 +9686,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
      },
      {	-- Step 165
           ["Done"] = {
-               66848,
+               66846,
           },
           ["TT"] = {
                ["y"] = -2700.1,
