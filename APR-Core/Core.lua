@@ -95,6 +95,7 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-50 Tiragarde Sound")
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 20-50 Dustvar")
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 30-50 Stormsong Valley")
+				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - StoryMode Only (Not Enough XP)")
 			elseif(APR.Faction == "Horde") then
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-10 Intro")
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 10-10 Intro 2")
@@ -102,33 +103,15 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 20-50 Nazmir")
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 30-30 Naz-end Vol-begin")
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"BFA - 30-50 Vol'dun")
+				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - StoryMode Only (Not Enough XP)")
 			end
-		end
-		if (APR.Level >= 50 and APR.Level < 60) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"SL-IntroQline")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-00-TheMaw-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-01-Oribos-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-02-Bastion-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-03-Oribos-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-04-Maldraxxus-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-05-Oribos-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-06-The Maw-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-07-Oribos-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-08-Maldraxxus-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-09-Oribos-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-10-Ardenweald-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-11-Oribos-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-12-Revendreth-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-13-The Maw-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-14-Revendreth-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"Z-15-Oribos-Story")
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - StoryMode Only (Not Enough XP)")
 		end
 	elseif(routeChoice == 1) then
 		if(APR.Level < 60) then
 			if(APR.Level >= 58 and APR.Class[3] == 13) then
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"58-60 Dracthyr Start")
 			elseif(APR.Faction == "Alliance") then
+				-- WOD
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/8) 10-50 Stormwind")
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(2/8) 10-50 Tanaan Jungle")
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(3/8) 10-50 Shadowmoon")
@@ -137,7 +120,9 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/8) 10-50 Shadowmoon")
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/8) 10-50 Talador")
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(8/8) 10-50 Spires of Arak")
+				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - StoryMode Only (Not Enough XP)")
 			elseif(APR.Faction == "Horde") then
+				-- WOD
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(1/7) 10-50 Orgrimmar")
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(2/7) 10-50 Tanaan Jungle")
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(3/7) 10-50 Frostfire Ridge")
@@ -145,29 +130,26 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(5/7) 10-50 Talador")
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(6/7) 10-50 Spires of Arak")
 				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"(7/7) 10-50 Nagrand")
+				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DEV - StoryMode Only (Not Enough XP)")
 			end
 		end
-		if(APR.Level >= 60) then
-			if(APR.Faction == "Alliance")then
-				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF01 - Dragonflight Stormwind")
-				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF02 - Waking Shores - Alliance")
-				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF03 - Waking Shores - Neutral")
-				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF04 - Ohn'Ahran Plains")
-				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF05 - Azure Span")
-				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF06 - Thaldraszus")
-			elseif(APR.Faction == "Horde") then
-				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF01 - Dragonflight Orgrimmar")
-				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF02 - Dragonflight Durotar")
-				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF03 - Waking Shores - Horde")
-				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF04 - Waking Shores - Neutral")
-				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF05 - Ohn'Ahran Plains")
-				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF06 - Azure Span")
-				tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF07 - Thaldraszus")
-			end
-		end
-	elseif (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727) then
-		APR_Custom[APR.Name.."-"..APR.Realm] = nil
-		APR_Custom[APR.Name.."-"..APR.Realm] = {}
+	end
+	-- Dragonflight
+	if(APR.Faction == "Alliance")then
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF01 - Dragonflight Stormwind")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF02 - Waking Shores - Alliance")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF03 - Waking Shores - Neutral")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF04 - Ohn'Ahran Plains")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF05 - Azure Span")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF06 - Thaldraszus")
+	elseif(APR.Faction == "Horde") then
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF01 - Dragonflight Orgrimmar")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF02 - Dragonflight Durotar")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF03 - Waking Shores - Horde")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF04 - Waking Shores - Neutral")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF05 - Ohn'Ahran Plains")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF06 - Azure Span")
+		tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"DF07 - Thaldraszus")
 	end
 	for CLi = 1, 19 do
 		if (APR_Custom[APR.Name.."-"..APR.Realm] and APR_Custom[APR.Name.."-"..APR.Realm][CLi]) then
