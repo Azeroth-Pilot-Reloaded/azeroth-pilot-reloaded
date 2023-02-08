@@ -1188,6 +1188,7 @@ if (APR.Faction == "Horde") then
                   ["x"] = -5713.9,
              },
              ["PickUpDB"] = {
+                  12739,
                   12747,
                   12748,
                   12749,
@@ -1211,6 +1212,7 @@ if (APR.Faction == "Horde") then
              },
              ["Range"] = 6.65,
              ["QpartDB"] = {
+                  12739,
                   12747,
                   12748,
                   12749,
@@ -1227,6 +1229,7 @@ if (APR.Faction == "Horde") then
                   ["x"] = -5720.5,
              },
              ["DoneDB"] = {
+                  12739,
                   12747,
                   12748,
                   12749,

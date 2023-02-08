@@ -83,7 +83,7 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 	end
 	if(APR.Level < 30) then
 		if(APR.Class[3] == 6) then
-			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"08-30 Dark Knight Start")
+			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"08-30 Death Knight Start")
 		elseif(APR.Class[3] == 12) then
 			tinsert(APR_Custom[APR.Name.."-"..APR.Realm],"01-30 Demon Hunter Start")
 		end

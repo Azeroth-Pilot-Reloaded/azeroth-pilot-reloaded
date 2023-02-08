@@ -1188,6 +1188,7 @@ if (APR.Faction == "Alliance") then
                   ["x"] = -5713.9,
              },
              ["PickUpDB"] = {
+                  12742,
                   12743,
                   12744,
                   12745,
@@ -1211,6 +1212,7 @@ if (APR.Faction == "Alliance") then
              },
              ["Range"] = 6.65,
              ["QpartDB"] = {
+                  12742,
                   12743,
                   12744,
                   12745,
@@ -1227,6 +1229,7 @@ if (APR.Faction == "Alliance") then
                   ["x"] = -5720.5,
              },
              ["DoneDB"] = {
+                  12742,
                   12743,
                   12744,
                   12745,

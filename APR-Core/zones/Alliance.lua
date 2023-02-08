@@ -12,7 +12,7 @@ if (APR.Faction == "Alliance") then
 		 ["01-30 Demon Hunter Start"] = 672,
 		 ["01-30 Dun Morogh (Full)"] = 27,
 		 ["01-30 Elwynn Forest (Full)"] = 37,
-		 ["08-30 Dark Knight Start"] = 23,
+		 ["08-30 Death Knight Start"] = 23,
 		 ["10-30 Loch Modan (Full)"] = 48,
 		 ["10-30 Westfall (Full)"] = 52,
 		 ["10-30 Darkshore (Full)"] = 62,
@@ -110,7 +110,7 @@ if (APR.Faction == "Alliance") then
 	if (APR.Class[3] == 12) then
 		 APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
 	elseif (APR.Class[3] == 6) then
-			APR.QuestStepListListing["MISC 1"]["A23-ScarletEnclave"] = "08-30 Dark Knight Start"
+			APR.QuestStepListListing["MISC 1"]["A23-ScarletEnclave"] = "08-30 Death Knight Start"
 	elseif (APR.Faction == "Neutral" and APR.race == 24 and APR.Level == 1) then
 		 APR.QuestStepListListing["MISC 1"]["378-WanderingIsle"] = "01-30 Pandaren Start"
 	elseif (APR.Level < 10) then
