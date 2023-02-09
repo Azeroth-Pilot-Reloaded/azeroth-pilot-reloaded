@@ -13,6 +13,7 @@ if (APR.Faction == "Horde") then
 		 ["01-30 Demon Hunter Start"] = 672,
 		 ["01-10 Exile's Reach"] = 1409,
 		 ["01-30 Durotar (Full)"] = 1,
+		 ["08-30 Death Knight Start"] = 23,
 		 ["10-30 Northern Barrens"] = 10,
 		 ["10-30 Southern Barrens"] = 199,
 		 ["SL-IntroQline"] = 85,
@@ -84,6 +85,8 @@ if (APR.Faction == "Horde") then
 	}
 	if (APR.Class[3] == 12) then
 		 APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
+	elseif (APR.Class[3] == 6) then
+			APR.QuestStepListListing["MISC 1"]["H23-ScarletEnclave"] = "08-30 Death Knight Start"
 	elseif (APR.Race == "Goblin" and APR.Level < 2) then
 		 APR.QuestStepListListing["MISC 1"]["194-Kezan"] = "01-30 Goblin Start (Kezan)"
 		 APR.QuestStepListListing["MISC 1"]["174-LostIsles"] = "01-30 Goblin Start (Lost Isles)"
@@ -214,8 +217,9 @@ if (APR.Faction == "Horde") then
 
 	APR["EasternKingdom"] = {}
 	APR["EasternKingdom"][21] = 1
-	APR["EasternKingdom"][25] = 1
 	APR["EasternKingdom"][22] = 1
+	APR["EasternKingdom"][23] = 1
+	APR["EasternKingdom"][25] = 1
 
 	APR["Shadowlands"] = {}
 	APR["Shadowlands"][1409] = 1

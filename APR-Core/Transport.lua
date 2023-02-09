@@ -829,6 +829,12 @@ function APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
 	if (APR.ActiveMap == "1670-Z1-Oribos-ZonePick" and (APRt_Zone == 1762 or APRt_Zone == 1656 or APRt_Zone == 1525 or APRt_Zone == 1543 or APRt_Zone == 1565 or APRt_Zone == 1533 or APRt_Zone == 1536)) then
 		APRt_Zone = 1670
 	end
+	-- Eastern Kingdoms
+    if (APR.ActiveMap == "A23-ScarletEnclave" and (APRt_Zone == 37 or APRt_Zone == 84 or APRt_Zone == 124)) then
+        APRt_Zone = 23
+    elseif (APR.ActiveMap == "H23-ScarletEnclave" and (APRt_Zone == 1 or APRt_Zone == 85 or APRt_Zone == 124)) then
+        APRt_Zone = 23
+    end
 	-- Dragonflight
     if (APR.ActiveMap == "DF01H-85-Orgrimmar" and APRt_Zone == 1) then
         APRt_Zone = 85
