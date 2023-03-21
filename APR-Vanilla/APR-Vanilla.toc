@@ -1,5 +1,5 @@
-## Interface: 100005
-## X-Min-Interface: 100005
+## Interface: 100007
+## X-Min-Interface: 100007
 
 ## Title: Azeroth Pilot Reloaded - [|cffeda55fVanilla|r]
 ## Notes: Provides Vanilla & Cataclysm implementation for Azeroth Pilot Reloaded.
