@@ -3283,13 +3283,13 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			-- GOSSIP HARDCODED
 			if (steps and steps["Gossip"]) then
 				if (steps["Gossip"] == 27373 or steps["Gossip"] == 34398) then
-					SelectGossipOption(1)
+					C_GossipInfo.SelectOptionByIndex(1)
 					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 					APR.BookingList["UpdateQuest"] = 1
 					APR.BookingList["PrintQStep"] = 1
 				end
 				if (steps["Gossip"] == 3433398) then
-					SelectGossipOption(2)
+					C_GossipInfo.SelectOptionByIndex(2)
 					APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 					APR.BookingList["UpdateQuest"] = 1
 					APR.BookingList["PrintQStep"] = 1
@@ -3297,54 +3297,54 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				if (steps["Gossip"] == 28202) then
 					APRGOSSIPCOUNT = APRGOSSIPCOUNT + 1
 					if (APRGOSSIPCOUNT == 1) then
-						SelectGossipOption(1)
+						C_GossipInfo.SelectOptionByIndex(1)
 					elseif (APRGOSSIPCOUNT == 2) then
 						if (APR.Race == "Gnome") then
-							SelectGossipOption(1)
+							C_GossipInfo.SelectOptionByIndex(1)
 						elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-							SelectGossipOption(2)
+							C_GossipInfo.SelectOptionByIndex(2)
 						elseif (APR.Race == "NightElf") then
-							SelectGossipOption(3)
+							C_GossipInfo.SelectOptionByIndex(3)
 						elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-							SelectGossipOption(4)
+							C_GossipInfo.SelectOptionByIndex(4)
 						end
 					elseif (APRGOSSIPCOUNT == 3) then
 						if (APR.Race == "Gnome") then
-							SelectGossipOption(3)
+							C_GossipInfo.SelectOptionByIndex(3)
 						elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-							SelectGossipOption(4)
+							C_GossipInfo.SelectOptionByIndex(4)
 						elseif (APR.Race == "NightElf") then
-							SelectGossipOption(2)
+							C_GossipInfo.SelectOptionByIndex(2)
 						elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-							SelectGossipOption(1)
+							C_GossipInfo.SelectOptionByIndex(1)
 						end
 					elseif (APRGOSSIPCOUNT == 4) then
 						if (APR.Race == "Gnome") then
-							SelectGossipOption(4)
+							C_GossipInfo.SelectOptionByIndex(4)
 						elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-							SelectGossipOption(2)
+							C_GossipInfo.SelectOptionByIndex(2)
 						elseif (APR.Race == "NightElf") then
-							SelectGossipOption(1)
+							C_GossipInfo.SelectOptionByIndex(1)
 						elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-							SelectGossipOption(3)
+							C_GossipInfo.SelectOptionByIndex(3)
 						end
 					elseif (APRGOSSIPCOUNT == 5) then
 						APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 						APR.BookingList["PrintQStep"] = 1
 					end
 				else
-					SelectGossipOption(steps["Gossip"])
 					-- Keep this code in case of API update on the gossip selection
-					-- local info = C_GossipInfo.GetOptions()
-					-- if next(info) then
-					-- 	for i, v in pairs(info) do
-					-- 		if(v.orderIndex+1 == steps["Gossip"]) then
-					-- 			C_GossipInfo.SelectOption(v.gossipOptionID)
-					-- 		end
-					-- 	end
-					-- else
-					-- 	SelectGossipOption(steps["Gossip"])
-					-- end
+					-- C_GossipInfo.SelectOptionByIndex(steps["Gossip"])
+					local info = C_GossipInfo.GetOptions()
+					if next(info) then
+						for i, v in pairs(info) do
+							if(v.orderIndex+1 == steps["Gossip"]) then
+								C_GossipInfo.SelectOption(v.gossipOptionID)
+							end
+						end
+					else
+						C_GossipInfo.SelectOptionByIndex(steps["Gossip"])
+					end
 					--CHROMIE
 					if (steps["ChromiePick"]) then
 						local target = GetTargetID()
