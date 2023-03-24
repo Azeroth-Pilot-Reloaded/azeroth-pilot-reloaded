@@ -53,12 +53,13 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 608.6,
                },
                ["Range"] = 2,
+               ["ExtraLineText"] = "RECRUIT_ARTISANS",
                ["Gossip"] = 1,
           },
           {	-- Step 8
                ["Qpart"] = {
                     [66589] = {
-                         ["2"] = "2",
+                         ["3"] = "3",
                     },
                },
                ["TT"] = {
@@ -70,6 +71,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 622.4,
                },
                ["Range"] = 2,
+               ["ExtraLineText"] = "RECRUIT_SCHOLARS",
                ["Gossip"] = 1,
           },
           {	-- Step 9
@@ -92,7 +94,7 @@ if (APR.Faction == "Alliance") then
           {	-- Step 10
                ["Qpart"] = {
                     [66589] = {
-                         ["3"] = "3",
+                         ["2"] = "2",
                     },
                },
                ["TT"] = {
@@ -104,6 +106,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 1058.5,
                },
                ["Range"] = 2,
+               ["ExtraLineText"] = "RECRUIT_EXPLORERS",
                ["Gossip"] = 1,
           },
           {	-- Step 11
@@ -208,8 +211,9 @@ if (APR.Faction == "Alliance") then
           },
      }
      
+     
     -- WakingShores
-     APR.QuestStepList["DF03A-2022-WakingShores"] = {
+    APR.QuestStepList["DF03A-2022-WakingShores"] = {
           {	-- Step 1
                ["Done"] = {
                     67700,
@@ -491,7 +495,6 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 5,
                ["ExtraLineText"] = "PRESS_1",
-               ["Dontskipvid"] = 1,
           },
           {	-- Step 23
                ["Qpart"] = {
@@ -509,7 +512,6 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 5,
                ["ExtraLineText"] = "PRESS_2",
-               ["Dontskipvid"] = 1,
           },
           {	-- Step 24
                ["Qpart"] = {
