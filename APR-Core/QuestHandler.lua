@@ -1579,7 +1579,7 @@ local function APR_PrintQStep()
 						APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
 					end
 				end
-				if (C_PvP.IsWarModeDesired() == false and C_PvP.CanToggleWarMode(toggle) == true) then
+				if (C_PvP.IsWarModeDesired() == false and C_PvP.CanToggleWarModeInArea()) then
 					C_PvP.ToggleWarMode()
 					APR.BookingList["PrintQStep"] = 1
 				end
