@@ -17,7 +17,7 @@ function APR_SlashCmd(APR_index)
 	elseif (APR_index == "hideriding" or APR_index == "hr") then
 		print("APR: "..L["HIDE_RIDING"])
 		APR1[APR.Realm][APR.Name]["hideRidingSkill"] = 1
-	elseif (APR_index == "skip" or APR_index == "s") then
+	elseif (APR_index == "skip" or APR_index == "s" or APR_index == "skippiedoodaa") then
 		-- Command for skipping the current quest step
 		print("APR: "..L["SKIP"])
 		APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
@@ -36,7 +36,7 @@ function APR_SlashCmd(APR_index)
 		print("|cffeda55f/apr help, h |r- "..L["HELP_COMMAND"])
 		print("|cffeda55f/apr reset, r |r- "..L["RESET_COMMAND"])
 		print("|cffeda55f/apr forcereset, fr |r- "..L["FORCERESET_COMMAND"])
-		print("|cffeda55f/apr skip, s |r- "..L["SKIP_COMMAND"])
+		print("|cffeda55f/apr skip, s, skippiedoodaa |r- "..L["SKIP_COMMAND"])
 		print("|cffeda55f/apr rollback, rb |r- "..L["ROLLBACK_COMMAND"])
 		print("|cffeda55f/apr showriding, sr |r- "..L["RIDING_SHOW_COMMAND"])
 		print("|cffeda55f/apr hideriding, hr |r- "..L["RIDING_HIDE_COMMAND"])
