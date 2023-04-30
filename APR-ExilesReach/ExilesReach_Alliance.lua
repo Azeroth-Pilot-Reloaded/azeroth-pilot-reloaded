@@ -37,7 +37,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					56775, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -75,7 +75,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58209, -- [1]
 				},
-			},     -- [6]
+			},    -- [6]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -95,7 +95,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58208, -- [1]
 				},
-			},     -- [8]
+			},    -- [8]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -130,7 +130,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55122, -- [1]
 				},
-			},     -- [11]
+			},    -- [11]
 			{
 				["PickUp"] = {
 					54951, -- [1]
@@ -208,7 +208,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54951, -- [1]
 				},
-			},     -- [16]
+			},    -- [16]
 			{
 				["PickUp"] = {
 					54952, -- [1]
@@ -242,7 +242,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54952, -- [1]
 				},
-			},     -- [19]
+			},    -- [19]
 			{
 				["PickUp"] = {
 					55174, -- [1]
@@ -292,7 +292,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55174, -- [1]
 				},
-			},     -- [24]
+			},    -- [24]
 			{
 				["PickUp"] = {
 					59254, -- [1]
@@ -326,7 +326,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59254, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["PickUp"] = {
 					55173, -- [1]
@@ -344,7 +344,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55173, -- [1]
 				},
-			},     -- [26]
+			},    -- [26]
 			{
 				["PickUp"] = {
 					55186, -- [1]
@@ -448,7 +448,7 @@ if (APR.Faction == "Alliance") then
 					55186, -- [1]
 					55184, -- [2]
 				},
-			},     -- [37]
+			},    -- [37]
 			{
 				["PickUp"] = {
 					55193, -- [1]
@@ -483,7 +483,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55193, -- [1]
 				},
-			},     -- [40]
+			},    -- [40]
 			{
 				["PickUp"] = {
 					56034, -- [1]
@@ -733,6 +733,7 @@ if (APR.Faction == "Alliance") then
 						["1"] = "1",
 					},
 				},
+				["Gossip"] = 1,
 				["Range"] = 54.1,
 				["TT"] = {
 					["y"] = 496.1,
@@ -892,7 +893,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58914, -- [1]
 				},
-			},     -- [4]
+			},    -- [4]
 			{
 				["PickUp"] = {
 					58915, -- [1]
@@ -927,7 +928,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58915, -- [1]
 				},
-			},     -- [7]
+			},    -- [7]
 			---- Class Quest End
 			{
 				["Done"] = {
@@ -1325,7 +1326,7 @@ if (APR.Faction == "Alliance") then
 					55989, -- [1]
 					55988, -- [2]
 				},
-			},     -- [114]
+			},    -- [114]
 			{
 				["Trigger"] = {
 					["y"] = 708.9,
@@ -1350,7 +1351,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55990, -- [1]
 				},
-			},     -- [116]
+			},    -- [116]
 			{
 				["PickUp"] = {
 					55992, -- [1]
@@ -1384,7 +1385,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55992, -- [1]
 				},
-			},     -- [119]
+			},    -- [119]
 			{
 				["PickUp"] = {
 					55991, -- [1]
@@ -1453,7 +1454,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					56775, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -1491,7 +1492,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58209, -- [1]
 				},
-			},     -- [6]
+			},    -- [6]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -1511,7 +1512,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58208, -- [1]
 				},
-			},     -- [8]
+			},    -- [8]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -1546,7 +1547,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55122, -- [1]
 				},
-			},     -- [11]
+			},    -- [11]
 			{
 				["PickUp"] = {
 					54951, -- [1]
@@ -1624,7 +1625,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54951, -- [1]
 				},
-			},     -- [16]
+			},    -- [16]
 			{
 				["PickUp"] = {
 					54952, -- [1]
@@ -1658,7 +1659,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54952, -- [1]
 				},
-			},     -- [19]
+			},    -- [19]
 			{
 				["PickUp"] = {
 					55174, -- [1]
@@ -1708,7 +1709,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55174, -- [1]
 				},
-			},     -- [24]
+			},    -- [24]
 			---- Class Quests Start
 			{
 				["PickUp"] = {
@@ -1743,7 +1744,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59254, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["PickUp"] = {
 					55173, -- [1]
@@ -1761,7 +1762,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55173, -- [1]
 				},
-			},     -- [26]
+			},    -- [26]
 			{
 				["PickUp"] = {
 					55186, -- [1]
@@ -1865,7 +1866,7 @@ if (APR.Faction == "Alliance") then
 					55186, -- [1]
 					55184, -- [2]
 				},
-			},     -- [37]
+			},    -- [37]
 			{
 				["PickUp"] = {
 					55193, -- [1]
@@ -1900,7 +1901,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55193, -- [1]
 				},
-			},     -- [40]
+			},    -- [40]
 			{
 				["PickUp"] = {
 					56034, -- [1]
@@ -2150,6 +2151,7 @@ if (APR.Faction == "Alliance") then
 						["1"] = "1",
 					},
 				},
+				["Gossip"] = 1,
 				["Range"] = 54.1,
 				["TT"] = {
 					["y"] = 496.1,
@@ -2327,7 +2329,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58923, -- [1]
 				},
-			},     -- [5]
+			},    -- [5]
 			{
 				["PickUp"] = {
 					58946, -- [1]
@@ -2377,7 +2379,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58946, -- [1]
 				},
-			},     -- [9]
+			},    -- [9]
 			---- Class Quest End
 			{
 				["Done"] = {
@@ -2775,7 +2777,7 @@ if (APR.Faction == "Alliance") then
 					55989, -- [1]
 					55988, -- [2]
 				},
-			},     -- [114]
+			},    -- [114]
 			{
 				["Trigger"] = {
 					["y"] = 708.9,
@@ -2800,7 +2802,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55990, -- [1]
 				},
-			},     -- [116]
+			},    -- [116]
 			{
 				["PickUp"] = {
 					55992, -- [1]
@@ -2834,7 +2836,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55992, -- [1]
 				},
-			},     -- [119]
+			},    -- [119]
 			{
 				["PickUp"] = {
 					55991, -- [1]
@@ -2903,7 +2905,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					56775, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -2941,7 +2943,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58209, -- [1]
 				},
-			},     -- [6]
+			},    -- [6]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -2961,7 +2963,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58208, -- [1]
 				},
-			},     -- [8]
+			},    -- [8]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -2996,7 +2998,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55122, -- [1]
 				},
-			},     -- [11]
+			},    -- [11]
 			{
 				["PickUp"] = {
 					54951, -- [1]
@@ -3074,7 +3076,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54951, -- [1]
 				},
-			},     -- [16]
+			},    -- [16]
 			{
 				["PickUp"] = {
 					54952, -- [1]
@@ -3108,7 +3110,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54952, -- [1]
 				},
-			},     -- [19]
+			},    -- [19]
 			{
 				["PickUp"] = {
 					55174, -- [1]
@@ -3158,7 +3160,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55174, -- [1]
 				},
-			},     -- [24]
+			},    -- [24]
 			{
 				["PickUp"] = {
 					55173, -- [1]
@@ -3176,7 +3178,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55173, -- [1]
 				},
-			},     -- [26]
+			},    -- [26]
 			{
 				["PickUp"] = {
 					59342, -- [1]
@@ -3210,7 +3212,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59342, -- [1]
 				},
-			},     -- [29]
+			},    -- [29]
 			{
 				["PickUp"] = {
 					55186, -- [1]
@@ -3314,7 +3316,7 @@ if (APR.Faction == "Alliance") then
 					55186, -- [1]
 					55184, -- [2]
 				},
-			},     -- [37]
+			},    -- [37]
 			{
 				["PickUp"] = {
 					55193, -- [1]
@@ -3349,7 +3351,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55193, -- [1]
 				},
-			},     -- [40]
+			},    -- [40]
 			{
 				["PickUp"] = {
 					56034, -- [1]
@@ -3599,6 +3601,7 @@ if (APR.Faction == "Alliance") then
 						["1"] = "1",
 					},
 				},
+				["Gossip"] = 1,
 				["Range"] = 54.1,
 				["TT"] = {
 					["y"] = 496.1,
@@ -4285,7 +4288,7 @@ if (APR.Faction == "Alliance") then
 					55989, -- [1]
 					55988, -- [2]
 				},
-			},     -- [114]
+			},    -- [114]
 			{
 				["Trigger"] = {
 					["y"] = 708.9,
@@ -4310,7 +4313,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55990, -- [1]
 				},
-			},     -- [116]
+			},    -- [116]
 			{
 				["PickUp"] = {
 					55992, -- [1]
@@ -4344,7 +4347,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55992, -- [1]
 				},
-			},     -- [119]
+			},    -- [119]
 			{
 				["PickUp"] = {
 					55991, -- [1]
@@ -4413,7 +4416,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					56775, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -4451,7 +4454,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58209, -- [1]
 				},
-			},     -- [6]
+			},    -- [6]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -4471,7 +4474,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58208, -- [1]
 				},
-			},     -- [8]
+			},    -- [8]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -4506,7 +4509,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55122, -- [1]
 				},
-			},     -- [11]
+			},    -- [11]
 			{
 				["PickUp"] = {
 					54951, -- [1]
@@ -4584,7 +4587,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54951, -- [1]
 				},
-			},     -- [16]
+			},    -- [16]
 			{
 				["PickUp"] = {
 					54952, -- [1]
@@ -4618,7 +4621,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54952, -- [1]
 				},
-			},     -- [19]
+			},    -- [19]
 			{
 				["PickUp"] = {
 					55174, -- [1]
@@ -4668,7 +4671,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55174, -- [1]
 				},
-			},     -- [24]
+			},    -- [24]
 			---- Class Quests Start
 			{
 				["PickUp"] = {
@@ -4703,7 +4706,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59254, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["PickUp"] = {
 					55173, -- [1]
@@ -4721,7 +4724,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55173, -- [1]
 				},
-			},     -- [26]
+			},    -- [26]
 			{
 				["PickUp"] = {
 					55186, -- [1]
@@ -4825,7 +4828,7 @@ if (APR.Faction == "Alliance") then
 					55186, -- [1]
 					55184, -- [2]
 				},
-			},     -- [37]
+			},    -- [37]
 			{
 				["PickUp"] = {
 					55193, -- [1]
@@ -4860,7 +4863,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55193, -- [1]
 				},
-			},     -- [40]
+			},    -- [40]
 			{
 				["PickUp"] = {
 					56034, -- [1]
@@ -5110,6 +5113,7 @@ if (APR.Faction == "Alliance") then
 						["1"] = "1",
 					},
 				},
+				["Gossip"] = 1,
 				["Range"] = 54.1,
 				["TT"] = {
 					["y"] = 496.1,
@@ -5279,7 +5283,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58917, -- [1]
 				},
-			},     -- [4]
+			},    -- [4]
 			{
 				["PickUp"] = {
 					58933, -- [1]
@@ -5330,7 +5334,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58933, -- [1]
 				},
-			},     -- [8]
+			},    -- [8]
 			---- Class Quest End
 			{
 				["Done"] = {
@@ -5728,7 +5732,7 @@ if (APR.Faction == "Alliance") then
 					55989, -- [1]
 					55988, -- [2]
 				},
-			},     -- [114]
+			},    -- [114]
 			{
 				["Trigger"] = {
 					["y"] = 708.9,
@@ -5753,7 +5757,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55990, -- [1]
 				},
-			},     -- [116]
+			},    -- [116]
 			{
 				["PickUp"] = {
 					55992, -- [1]
@@ -5787,7 +5791,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55992, -- [1]
 				},
-			},     -- [119]
+			},    -- [119]
 			{
 				["PickUp"] = {
 					55991, -- [1]
@@ -5856,7 +5860,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					56775, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -5894,7 +5898,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58209, -- [1]
 				},
-			},     -- [6]
+			},    -- [6]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -5914,7 +5918,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58208, -- [1]
 				},
-			},     -- [8]
+			},    -- [8]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -5949,7 +5953,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55122, -- [1]
 				},
-			},     -- [11]
+			},    -- [11]
 			{
 				["PickUp"] = {
 					54951, -- [1]
@@ -6027,7 +6031,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54951, -- [1]
 				},
-			},     -- [16]
+			},    -- [16]
 			{
 				["PickUp"] = {
 					54952, -- [1]
@@ -6061,7 +6065,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54952, -- [1]
 				},
-			},     -- [19]
+			},    -- [19]
 			{
 				["PickUp"] = {
 					55174, -- [1]
@@ -6111,7 +6115,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55174, -- [1]
 				},
-			},     -- [24]
+			},    -- [24]
 			---- Class Quests Start
 			{
 				["PickUp"] = {
@@ -6146,7 +6150,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59254, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["PickUp"] = {
 					55173, -- [1]
@@ -6164,7 +6168,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55173, -- [1]
 				},
-			},     -- [26]
+			},    -- [26]
 			{
 				["PickUp"] = {
 					55186, -- [1]
@@ -6268,7 +6272,7 @@ if (APR.Faction == "Alliance") then
 					55186, -- [1]
 					55184, -- [2]
 				},
-			},     -- [37]
+			},    -- [37]
 			{
 				["PickUp"] = {
 					55193, -- [1]
@@ -6303,7 +6307,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55193, -- [1]
 				},
-			},     -- [40]
+			},    -- [40]
 			{
 				["PickUp"] = {
 					56034, -- [1]
@@ -6553,6 +6557,7 @@ if (APR.Faction == "Alliance") then
 						["1"] = "1",
 					},
 				},
+				["Gossip"] = 1,
 				["Range"] = 54.1,
 				["TT"] = {
 					["y"] = 496.1,
@@ -6704,7 +6709,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58953, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["PickUp"] = {
 					58960, -- [1]
@@ -6738,7 +6743,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58960, -- [1]
 				},
-			},     -- [6]
+			},    -- [6]
 			---- Class Quest End
 			{
 				["Done"] = {
@@ -7136,7 +7141,7 @@ if (APR.Faction == "Alliance") then
 					55989, -- [1]
 					55988, -- [2]
 				},
-			},     -- [114]
+			},    -- [114]
 			{
 				["Trigger"] = {
 					["y"] = 708.9,
@@ -7161,7 +7166,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55990, -- [1]
 				},
-			},     -- [116]
+			},    -- [116]
 			{
 				["PickUp"] = {
 					55992, -- [1]
@@ -7195,7 +7200,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55992, -- [1]
 				},
-			},     -- [119]
+			},    -- [119]
 			{
 				["PickUp"] = {
 					55991, -- [1]
@@ -7264,7 +7269,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					56775, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -7302,7 +7307,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58209, -- [1]
 				},
-			},     -- [6]
+			},    -- [6]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -7322,7 +7327,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58208, -- [1]
 				},
-			},     -- [8]
+			},    -- [8]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -7357,7 +7362,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55122, -- [1]
 				},
-			},     -- [11]
+			},    -- [11]
 			{
 				["PickUp"] = {
 					54951, -- [1]
@@ -7435,7 +7440,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54951, -- [1]
 				},
-			},     -- [16]
+			},    -- [16]
 			{
 				["PickUp"] = {
 					54952, -- [1]
@@ -7469,7 +7474,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54952, -- [1]
 				},
-			},     -- [19]
+			},    -- [19]
 			{
 				["PickUp"] = {
 					55174, -- [1]
@@ -7519,7 +7524,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55174, -- [1]
 				},
-			},     -- [24]
+			},    -- [24]
 			---- Class Quests Start
 			{
 				["PickUp"] = {
@@ -7554,7 +7559,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59254, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["PickUp"] = {
 					55173, -- [1]
@@ -7572,7 +7577,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55173, -- [1]
 				},
-			},     -- [26]
+			},    -- [26]
 			{
 				["PickUp"] = {
 					55186, -- [1]
@@ -7676,7 +7681,7 @@ if (APR.Faction == "Alliance") then
 					55186, -- [1]
 					55184, -- [2]
 				},
-			},     -- [37]
+			},    -- [37]
 			{
 				["PickUp"] = {
 					55193, -- [1]
@@ -7711,7 +7716,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55193, -- [1]
 				},
-			},     -- [40]
+			},    -- [40]
 			{
 				["PickUp"] = {
 					56034, -- [1]
@@ -7961,6 +7966,7 @@ if (APR.Faction == "Alliance") then
 						["1"] = "1",
 					},
 				},
+				["Gossip"] = 1,
 				["Range"] = 54.1,
 				["TT"] = {
 					["y"] = 496.1,
@@ -8144,7 +8150,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59002, -- [1]
 				},
-			},     -- [5]
+			},    -- [5]
 			---- Class Quest End
 			{
 				["Done"] = {
@@ -8542,7 +8548,7 @@ if (APR.Faction == "Alliance") then
 					55989, -- [1]
 					55988, -- [2]
 				},
-			},     -- [114]
+			},    -- [114]
 			{
 				["Trigger"] = {
 					["y"] = 708.9,
@@ -8567,7 +8573,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55990, -- [1]
 				},
-			},     -- [116]
+			},    -- [116]
 			{
 				["PickUp"] = {
 					55992, -- [1]
@@ -8601,7 +8607,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55992, -- [1]
 				},
-			},     -- [119]
+			},    -- [119]
 			{
 				["PickUp"] = {
 					55991, -- [1]
@@ -8670,7 +8676,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					56775, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -8708,7 +8714,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58209, -- [1]
 				},
-			},     -- [6]
+			},    -- [6]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -8728,7 +8734,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58208, -- [1]
 				},
-			},     -- [8]
+			},    -- [8]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -8763,7 +8769,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55122, -- [1]
 				},
-			},     -- [11]
+			},    -- [11]
 			{
 				["PickUp"] = {
 					54951, -- [1]
@@ -8841,7 +8847,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54951, -- [1]
 				},
-			},     -- [16]
+			},    -- [16]
 			{
 				["PickUp"] = {
 					54952, -- [1]
@@ -8875,7 +8881,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54952, -- [1]
 				},
-			},     -- [19]
+			},    -- [19]
 			{
 				["PickUp"] = {
 					55174, -- [1]
@@ -8925,7 +8931,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55174, -- [1]
 				},
-			},     -- [24]
+			},    -- [24]
 			---- Class Quests Start
 			{
 				["PickUp"] = {
@@ -8960,7 +8966,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59254, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["PickUp"] = {
 					55173, -- [1]
@@ -8978,7 +8984,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55173, -- [1]
 				},
-			},     -- [26]
+			},    -- [26]
 			{
 				["PickUp"] = {
 					55186, -- [1]
@@ -9082,7 +9088,7 @@ if (APR.Faction == "Alliance") then
 					55186, -- [1]
 					55184, -- [2]
 				},
-			},     -- [37]
+			},    -- [37]
 			{
 				["PickUp"] = {
 					55193, -- [1]
@@ -9117,7 +9123,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55193, -- [1]
 				},
-			},     -- [40]
+			},    -- [40]
 			{
 				["PickUp"] = {
 					56034, -- [1]
@@ -9367,6 +9373,7 @@ if (APR.Faction == "Alliance") then
 						["1"] = "1",
 					},
 				},
+				["Gossip"] = 1,
 				["Range"] = 54.1,
 				["TT"] = {
 					["y"] = 496.1,
@@ -9518,7 +9525,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59352, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["PickUp"] = {
 					59354, -- [1]
@@ -9569,7 +9576,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59354, -- [1]
 				},
-			},     -- [7]
+			},    -- [7]
 			---- Class Quest End
 			{
 				["Done"] = {
@@ -9967,7 +9974,7 @@ if (APR.Faction == "Alliance") then
 					55989, -- [1]
 					55988, -- [2]
 				},
-			},     -- [114]
+			},    -- [114]
 			{
 				["Trigger"] = {
 					["y"] = 708.9,
@@ -9992,7 +9999,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55990, -- [1]
 				},
-			},     -- [116]
+			},    -- [116]
 			{
 				["PickUp"] = {
 					55992, -- [1]
@@ -10026,7 +10033,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55992, -- [1]
 				},
-			},     -- [119]
+			},    -- [119]
 			{
 				["PickUp"] = {
 					55991, -- [1]
@@ -10095,7 +10102,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					56775, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -10133,7 +10140,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58209, -- [1]
 				},
-			},     -- [6]
+			},    -- [6]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -10153,7 +10160,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58208, -- [1]
 				},
-			},     -- [8]
+			},    -- [8]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -10188,7 +10195,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55122, -- [1]
 				},
-			},     -- [11]
+			},    -- [11]
 			{
 				["PickUp"] = {
 					54951, -- [1]
@@ -10266,7 +10273,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54951, -- [1]
 				},
-			},     -- [16]
+			},    -- [16]
 			{
 				["PickUp"] = {
 					54952, -- [1]
@@ -10300,7 +10307,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54952, -- [1]
 				},
-			},     -- [19]
+			},    -- [19]
 			{
 				["PickUp"] = {
 					55174, -- [1]
@@ -10350,7 +10357,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55174, -- [1]
 				},
-			},     -- [24]
+			},    -- [24]
 			---- Class Quests Start
 			{
 				["PickUp"] = {
@@ -10385,7 +10392,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59254, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["PickUp"] = {
 					55173, -- [1]
@@ -10403,7 +10410,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55173, -- [1]
 				},
-			},     -- [26]
+			},    -- [26]
 			{
 				["PickUp"] = {
 					55186, -- [1]
@@ -10507,7 +10514,7 @@ if (APR.Faction == "Alliance") then
 					55186, -- [1]
 					55184, -- [2]
 				},
-			},     -- [37]
+			},    -- [37]
 			{
 				["PickUp"] = {
 					55193, -- [1]
@@ -10542,7 +10549,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55193, -- [1]
 				},
-			},     -- [40]
+			},    -- [40]
 			{
 				["PickUp"] = {
 					56034, -- [1]
@@ -10792,6 +10799,7 @@ if (APR.Faction == "Alliance") then
 						["1"] = "1",
 					},
 				},
+				["Gossip"] = 1,
 				["Range"] = 54.1,
 				["TT"] = {
 					["y"] = 496.1,
@@ -10992,7 +11000,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58962, -- [1]
 				},
-			},     -- [6]
+			},    -- [6]
 			---- Class Quest End
 			{
 				["Done"] = {
@@ -11390,7 +11398,7 @@ if (APR.Faction == "Alliance") then
 					55989, -- [1]
 					55988, -- [2]
 				},
-			},     -- [114]
+			},    -- [114]
 			{
 				["Trigger"] = {
 					["y"] = 708.9,
@@ -11415,7 +11423,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55990, -- [1]
 				},
-			},     -- [116]
+			},    -- [116]
 			{
 				["PickUp"] = {
 					55992, -- [1]
@@ -11449,7 +11457,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55992, -- [1]
 				},
-			},     -- [119]
+			},    -- [119]
 			{
 				["PickUp"] = {
 					55991, -- [1]
@@ -11518,7 +11526,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					56775, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -11556,7 +11564,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58209, -- [1]
 				},
-			},     -- [6]
+			},    -- [6]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -11576,7 +11584,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58208, -- [1]
 				},
-			},     -- [8]
+			},    -- [8]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -11611,7 +11619,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55122, -- [1]
 				},
-			},     -- [11]
+			},    -- [11]
 			{
 				["PickUp"] = {
 					54951, -- [1]
@@ -11689,7 +11697,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54951, -- [1]
 				},
-			},     -- [16]
+			},    -- [16]
 			{
 				["PickUp"] = {
 					54952, -- [1]
@@ -11723,7 +11731,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54952, -- [1]
 				},
-			},     -- [19]
+			},    -- [19]
 			{
 				["PickUp"] = {
 					55174, -- [1]
@@ -11773,7 +11781,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55174, -- [1]
 				},
-			},     -- [24]
+			},    -- [24]
 			---- Class Quests Start
 			{
 				["PickUp"] = {
@@ -11810,7 +11818,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59339, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["PickUp"] = {
 					55173, -- [1]
@@ -11828,7 +11836,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55173, -- [1]
 				},
-			},     -- [26]
+			},    -- [26]
 			{
 				["PickUp"] = {
 					55186, -- [1]
@@ -11932,7 +11940,7 @@ if (APR.Faction == "Alliance") then
 					55186, -- [1]
 					55184, -- [2]
 				},
-			},     -- [37]
+			},    -- [37]
 			{
 				["PickUp"] = {
 					55193, -- [1]
@@ -11967,7 +11975,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55193, -- [1]
 				},
-			},     -- [40]
+			},    -- [40]
 			{
 				["PickUp"] = {
 					56034, -- [1]
@@ -12217,6 +12225,7 @@ if (APR.Faction == "Alliance") then
 						["1"] = "1",
 					},
 				},
+				["Gossip"] = 1,
 				["Range"] = 54.1,
 				["TT"] = {
 					["y"] = 496.1,
@@ -12370,7 +12379,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59347, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["PickUp"] = {
 					59349, -- [1]
@@ -12405,7 +12414,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59349, -- [1]
 				},
-			},     -- [6]
+			},    -- [6]
 			---- Class Quest End
 			{
 				["Done"] = {
@@ -12803,7 +12812,7 @@ if (APR.Faction == "Alliance") then
 					55989, -- [1]
 					55988, -- [2]
 				},
-			},     -- [114]
+			},    -- [114]
 			{
 				["Trigger"] = {
 					["y"] = 708.9,
@@ -12828,7 +12837,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55990, -- [1]
 				},
-			},     -- [116]
+			},    -- [116]
 			{
 				["PickUp"] = {
 					55992, -- [1]
@@ -12862,7 +12871,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55992, -- [1]
 				},
-			},     -- [119]
+			},    -- [119]
 			{
 				["PickUp"] = {
 					55991, -- [1]
@@ -12931,7 +12940,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					56775, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -12969,7 +12978,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58209, -- [1]
 				},
-			},     -- [6]
+			},    -- [6]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -12989,7 +12998,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					58208, -- [1]
 				},
-			},     -- [8]
+			},    -- [8]
 			{
 				["NoArrows"] = 1,
 				["PickUp"] = {
@@ -13024,7 +13033,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55122, -- [1]
 				},
-			},     -- [11]
+			},    -- [11]
 			{
 				["PickUp"] = {
 					54951, -- [1]
@@ -13102,7 +13111,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54951, -- [1]
 				},
-			},     -- [16]
+			},    -- [16]
 			{
 				["PickUp"] = {
 					54952, -- [1]
@@ -13136,7 +13145,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					54952, -- [1]
 				},
-			},     -- [19]
+			},    -- [19]
 			{
 				["PickUp"] = {
 					55174, -- [1]
@@ -13186,7 +13195,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55174, -- [1]
 				},
-			},     -- [24]
+			},    -- [24]
 			---- Class Quests Start
 			{
 				["PickUp"] = {
@@ -13221,7 +13230,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59254, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["PickUp"] = {
 					55173, -- [1]
@@ -13239,7 +13248,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55173, -- [1]
 				},
-			},     -- [26]
+			},    -- [26]
 			{
 				["PickUp"] = {
 					55186, -- [1]
@@ -13343,7 +13352,7 @@ if (APR.Faction == "Alliance") then
 					55186, -- [1]
 					55184, -- [2]
 				},
-			},     -- [37]
+			},    -- [37]
 			{
 				["PickUp"] = {
 					55193, -- [1]
@@ -13378,7 +13387,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55193, -- [1]
 				},
-			},     -- [40]
+			},    -- [40]
 			{
 				["PickUp"] = {
 					56034, -- [1]
@@ -13628,6 +13637,7 @@ if (APR.Faction == "Alliance") then
 						["1"] = "1",
 					},
 				},
+				["Gossip"] = 1,
 				["Range"] = 54.1,
 				["TT"] = {
 					["y"] = 496.1,
@@ -13869,7 +13879,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					59350, -- [1]
 				},
-			},     -- [3]
+			},    -- [3]
 			{
 				["PickUp"] = {
 					56344, -- [1]
@@ -14178,7 +14188,7 @@ if (APR.Faction == "Alliance") then
 					55989, -- [1]
 					55988, -- [2]
 				},
-			},     -- [114]
+			},    -- [114]
 			{
 				["Trigger"] = {
 					["y"] = 708.9,
@@ -14203,7 +14213,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55990, -- [1]
 				},
-			},     -- [116]
+			},    -- [116]
 			{
 				["PickUp"] = {
 					55992, -- [1]
@@ -14237,7 +14247,7 @@ if (APR.Faction == "Alliance") then
 				["Done"] = {
 					55992, -- [1]
 				},
-			},     -- [119]
+			},    -- [119]
 			{
 				["PickUp"] = {
 					55991, -- [1]
