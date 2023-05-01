@@ -89,7 +89,8 @@ if (APR.Faction == "Horde") then
 	elseif (APR.Race == "Goblin" and APR.Level < 2) then
 		APR.QuestStepListListing["MISC 1"]["194-Kezan"] = "01-30 Goblin Start (Kezan)"
 		APR.QuestStepListListing["MISC 1"]["174-LostIsles"] = "01-30 Goblin Start (Lost Isles)"
-	elseif (APR.Level < 10) then
+	end
+	if (APR.Level < 10) then
 		APR.QuestStepListListing["MISC 1"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
 	end
 
