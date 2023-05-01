@@ -1,9 +1,9 @@
-## Interface: 100007
+## Interface: 100100
 ## X-Min-Interface: 100007
 
 ## Title: Azeroth Pilot Reloaded - [|cffeda55fWrath of the Lich King|r]
 ## Notes: Provides Wrath of the Lich King implementation for Azeroth Pilot Reloaded.
-## Author: Rycia
+## Author: Rycia, Neogeekmo, Pahonix
 
 
 ## RequiredDeps: APR-Core

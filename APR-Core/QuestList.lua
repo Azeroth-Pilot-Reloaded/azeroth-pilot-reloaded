@@ -21,7 +21,7 @@ function AddQuestListButton(text, index, buttonFunction)
 	APR.QuestList.QuestFrames["FS" .. index].Button:SetHeight(20)
 	APR.QuestList.QuestFrames["FS" .. index].Fontstring:SetWidth(skiplenght)
 	APR.QuestList.QuestFrames["FS" .. index].Fontstring:SetHeight(APR.QuestList.QuestFrames["FS" .. index].Button
-	:GetHeight() - 3)
+		:GetHeight() - 3)
 	APR.QuestList.QuestFrames["FS" .. index].Fontstring:SetFontObject("GameFontNormalLarge")
 	APR.QuestList.QuestFrames["FS" .. index].Fontstring:SetTextColor(1, 1, 0)
 	APR.QuestList.QuestFrames["FS" .. index].Button:Hide()
@@ -347,8 +347,7 @@ local function APR_CreateQuestList()
 	APR.QuestList.Greetings2FS3:SetHeight(72)
 	APR.QuestList.Greetings2FS3:SetJustifyH("LEFT")
 	APR.QuestList.Greetings2FS3:SetFontObject("GameFontNormal")
-	APR.QuestList.Greetings2FS3:SetText(L["WELCOME_DEV"] .. ": Rycia, Neogeekmo, Deathmessinger, Pahonix")
-
+	APR.QuestList.Greetings2FS3:SetText(L["WELCOME_DEV"] .. ": Rycia, Neogeekmo, Pahonix")
 
 	APR.QuestList.Greetings2FS3 = APR.QuestList.Greetings:CreateFontString("APRGreetingsFS3", "ARTWORK", "ChatFontNormal")
 	APR.QuestList.Greetings2FS3:SetParent(APR.QuestList.Greetings)
@@ -720,7 +719,7 @@ local function APR_CreateQuestList()
 		end
 	end)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS1 = APR.QuestList.SweatOfOurBrowBuffFrame:CreateFontString(
-	"APR_QuestList_SweatOfOurBrowBuffFrame_FS1", "ARTWORK", "ChatFontNormal")
+		"APR_QuestList_SweatOfOurBrowBuffFrame_FS1", "ARTWORK", "ChatFontNormal")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS1:SetParent(APR.QuestList.SweatOfOurBrowBuffFrame)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS1:SetPoint("TOPLEFT", APR.QuestList.SweatOfOurBrowBuffFrame, "TOPLEFT", 5, 0)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS1:SetWidth(300)
@@ -746,7 +745,7 @@ local function APR_CreateQuestList()
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps.texture = t
 
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS2 = APR.QuestList.SweatOfOurBrowBuffFrame:CreateFontString(
-	"APR_QuestList_SweatOfOurBrowBuffFrame_FS2", "ARTWORK", "ChatFontNormal")
+		"APR_QuestList_SweatOfOurBrowBuffFrame_FS2", "ARTWORK", "ChatFontNormal")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS2:SetParent(APR.QuestList.SweatOfOurBrowBuffFrame.Traps)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS2:SetPoint("LEFT", APR.QuestList.SweatOfOurBrowBuffFrame.Traps, "LEFT", 5, 0)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS2:SetWidth(300)
@@ -757,7 +756,7 @@ local function APR_CreateQuestList()
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS2:SetTextColor(1, 1, 0)
 
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS21 = APR.QuestList.SweatOfOurBrowBuffFrame:CreateFontString(
-	"APR_QuestList_SweatOfOurBrowBuffFrame_FS21", "ARTWORK", "ChatFontNormal")
+		"APR_QuestList_SweatOfOurBrowBuffFrame_FS21", "ARTWORK", "ChatFontNormal")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS21:SetParent(APR.QuestList.SweatOfOurBrowBuffFrame.Traps)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS21:SetPoint("LEFT", APR.QuestList.SweatOfOurBrowBuffFrame.Traps, "LEFT", 85, 0)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS21:SetWidth(300)
@@ -780,7 +779,7 @@ local function APR_CreateQuestList()
 	t:SetColorTexture(0.5, 0.1, 0.1, 1)
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps2.texture = t
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS3 = APR.QuestList.SweatOfOurBrowBuffFrame:CreateFontString(
-	"APR_QuestList_SweatOfOurBrowBuffFrame_FS3", "ARTWORK", "ChatFontNormal")
+		"APR_QuestList_SweatOfOurBrowBuffFrame_FS3", "ARTWORK", "ChatFontNormal")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS3:SetParent(APR.QuestList.SweatOfOurBrowBuffFrame.Traps2)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS3:SetPoint("LEFT", APR.QuestList.SweatOfOurBrowBuffFrame.Traps2, "LEFT", 5, 0)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS3:SetWidth(300)
@@ -790,7 +789,7 @@ local function APR_CreateQuestList()
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS3:SetText(L["HARP_TRAP"])
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS3:SetTextColor(1, 1, 0)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS31 = APR.QuestList.SweatOfOurBrowBuffFrame:CreateFontString(
-	"APR_QuestList_SweatOfOurBrowBuffFrame_FS31", "ARTWORK", "ChatFontNormal")
+		"APR_QuestList_SweatOfOurBrowBuffFrame_FS31", "ARTWORK", "ChatFontNormal")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS31:SetParent(APR.QuestList.SweatOfOurBrowBuffFrame.Traps2)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS31:SetPoint("LEFT", APR.QuestList.SweatOfOurBrowBuffFrame.Traps2, "LEFT", 85, 0)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS31:SetWidth(300)
@@ -813,7 +812,7 @@ local function APR_CreateQuestList()
 	t:SetColorTexture(0.5, 0.1, 0.1, 1)
 	APR.QuestList.SweatOfOurBrowBuffFrame.Traps3.texture = t
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4 = APR.QuestList.SweatOfOurBrowBuffFrame:CreateFontString(
-	"APR_QuestList_SweatOfOurBrowBuffFrame_FS4", "ARTWORK", "ChatFontNormal")
+		"APR_QuestList_SweatOfOurBrowBuffFrame_FS4", "ARTWORK", "ChatFontNormal")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetParent(APR.QuestList.SweatOfOurBrowBuffFrame.Traps3)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetPoint("LEFT", APR.QuestList.SweatOfOurBrowBuffFrame.Traps3, "LEFT", 5, 0)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetWidth(300)
@@ -823,7 +822,7 @@ local function APR_CreateQuestList()
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetText(L["UNTOUCHED_BASKET"])
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS4:SetTextColor(1, 1, 0)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS41 = APR.QuestList.SweatOfOurBrowBuffFrame:CreateFontString(
-	"APR_QuestList_SweatOfOurBrowBuffFrame_FS41", "ARTWORK", "ChatFontNormal")
+		"APR_QuestList_SweatOfOurBrowBuffFrame_FS41", "ARTWORK", "ChatFontNormal")
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS41:SetParent(APR.QuestList.SweatOfOurBrowBuffFrame.Traps3)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS41:SetPoint("LEFT", APR.QuestList.SweatOfOurBrowBuffFrame.Traps3, "LEFT", 85, 0)
 	APR.QuestList.SweatOfOurBrowBuffFrame.FS41:SetWidth(300)
