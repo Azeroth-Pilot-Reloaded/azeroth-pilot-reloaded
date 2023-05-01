@@ -1391,9 +1391,6 @@ local function APR_PrintQStep()
 			end
 		elseif (StepP == "ExitTutorial") then
 			if C_QuestLog.IsOnQuest(steps["ExitTutorial"]) then
-				-- Abandon the chromie tutorial quest given by whipping the tutorial
-				C_QuestLog.SetSelectedQuest(steps["ExitTutorial"])
-				C_QuestLog.AbandonQuest()
 				APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 				APR.BookingList["UpdateQuest"] = 1
 				APR.BookingList["PrintQStep"] = 1
@@ -3360,18 +3357,18 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 						APR.BookingList["PrintQStep"] = 1
 					end
 				else
-					C_GossipInfo.SelectOptionByIndex(steps["Gossip"])
 					-- Keep this code in case of API update on the gossip selection
-					-- local info = C_GossipInfo.GetOptions()
-					-- if next(info) then
-					-- 	for i, v in pairs(info) do
-					-- 		if (v.orderIndex + 1 == steps["Gossip"]) then
-					-- 			C_GossipInfo.SelectOption(v.gossipOptionID)
-					-- 		end
-					-- 	end
-					-- else
-					-- 	C_GossipInfo.SelectOptionByIndex(steps["Gossip"])
-					-- end
+					-- C_GossipInfo.SelectOptionByIndex(steps["Gossip"])
+					local info = C_GossipInfo.GetOptions()
+					if next(info) then
+						for i, v in pairs(info) do
+							if (v.orderIndex + 1 == steps["Gossip"]) then
+								C_GossipInfo.SelectOption(v.gossipOptionID)
+							end
+						end
+					else
+						C_GossipInfo.SelectOptionByIndex(steps["Gossip"])
+					end
 					--CHROMIE
 					if (steps["ChromiePick"]) then
 						local target = GetTargetID()

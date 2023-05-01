@@ -1,17 +1,6 @@
 -- Orgrimmar part of intro
 APR.QuestStepList["1-Orgrimmar"] = {
 	{
-	 -- [step 1
-		["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-		["SpellInTab"] = 33388,
-		["TrainRidingSkill"] = 34398,
-		["RaidIcon"] = 44919,
-		["TT"] = {
-			["y"] = 1799.5,
-			["x"] = -4356.7,
-		},
-	},
-	{
 	 -- [step 2
 		["PickUp"] = {
 			51443,
