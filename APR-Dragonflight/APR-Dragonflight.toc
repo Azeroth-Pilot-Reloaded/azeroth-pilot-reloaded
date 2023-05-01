@@ -1,9 +1,9 @@
-## Interface: 100007
+## Interface: 100100
 ## X-Min-Interface: 100007
 
 ## Title: Azeroth Pilot Reloaded - [|cffeda55fDragonflight|r]
 ## Notes: Provides Dragonflight implementation for Azeroth Pilot Reloaded.
-## Author: Rycia
+## Author: Rycia, Neogeekmo, Pahonix
 
 
 ## RequiredDeps: APR-Core
