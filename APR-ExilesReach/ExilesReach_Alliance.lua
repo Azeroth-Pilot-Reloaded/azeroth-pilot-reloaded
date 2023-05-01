@@ -1412,6 +1412,24 @@ if (APR.Faction == "Alliance") then
 				},
 			}, -- [121]
 			{
+				["Done"] = {
+					55991,
+				},
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+			},
+						{
+				["ExitTutorial"] = 62567,
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
 			}, -- [2]
 		}
@@ -2863,8 +2881,26 @@ if (APR.Faction == "Alliance") then
 				},
 			}, -- [121]
 			{
+				["Done"] = {
+					55991,
+				},
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+			},
+						{
+				["ExitTutorial"] = 62567,
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
-			}, -- [2]
+			},
 		}
 	end
 	if (APR.Class[3] == 3 and APR.Level < 33) then
@@ -4374,8 +4410,26 @@ if (APR.Faction == "Alliance") then
 				},
 			}, -- [121]
 			{
+				["Done"] = {
+					55991,
+				},
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+			},
+						{
+				["ExitTutorial"] = 62567,
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
-			}, -- [2]
+			},
 		}
 	end
 	if (APR.Class[3] == 4 and APR.Level < 33) then
@@ -5818,8 +5872,26 @@ if (APR.Faction == "Alliance") then
 				},
 			}, -- [121]
 			{
+				["Done"] = {
+					55991,
+				},
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+			},
+						{
+				["ExitTutorial"] = 62567,
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
-			}, -- [2]
+			},
 		}
 	end
 	if (APR.Class[3] == 5 and APR.Level < 33) then
@@ -7227,8 +7299,26 @@ if (APR.Faction == "Alliance") then
 				},
 			}, -- [121]
 			{
+				["Done"] = {
+					55991,
+				},
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+			},
+						{
+				["ExitTutorial"] = 62567,
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
-			}, -- [2]
+			},
 		}
 	end
 	if (APR.Class[3] == 7 and APR.Level < 33) then
@@ -8634,8 +8724,26 @@ if (APR.Faction == "Alliance") then
 				},
 			}, -- [121]
 			{
+				["Done"] = {
+					55991,
+				},
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+			},
+						{
+				["ExitTutorial"] = 62567,
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
-			}, -- [2]
+			},
 		}
 	end
 	if (APR.Class[3] == 8 and APR.Level < 33) then
@@ -10060,8 +10168,26 @@ if (APR.Faction == "Alliance") then
 				},
 			}, -- [121]
 			{
+				["Done"] = {
+					55991,
+				},
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+			},
+						{
+				["ExitTutorial"] = 62567,
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
-			}, -- [2]
+			},
 		}
 	end
 	if (APR.Class[3] == 9 and APR.Level < 33) then
@@ -11484,8 +11610,26 @@ if (APR.Faction == "Alliance") then
 				},
 			}, -- [121]
 			{
+				["Done"] = {
+					55991,
+				},
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+			},
+						{
+				["ExitTutorial"] = 62567,
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
-			}, -- [2]
+			},
 		}
 	end
 	if (APR.Class[3] == 10 and APR.Level < 33) then
@@ -12898,8 +13042,26 @@ if (APR.Faction == "Alliance") then
 				},
 			}, -- [121]
 			{
+				["Done"] = {
+					55991,
+				},
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+			},
+						{
+				["ExitTutorial"] = 62567,
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
-			}, -- [2]
+			},
 		}
 	end
 	if (APR.Class[3] == 11 and APR.Level < 33) then
@@ -14274,8 +14436,26 @@ if (APR.Faction == "Alliance") then
 				},
 			}, -- [121]
 			{
+				["Done"] = {
+					55991,
+				},
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+			},
+						{
+				["ExitTutorial"] = 62567,
+				["TT"] = {
+					["y"] = -9055,
+					["x"] = 442,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
-			}, -- [2]
+			},
 		}
 	end
 end
