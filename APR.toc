@@ -3,7 +3,7 @@
 
 ## Title: Azeroth Pilot Reloaded
 ## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.
-## Author: Neogeekmo, Rycia, Pahonix, Deathmessinger (legacy: zyrrael)
+## Author: Neogeekmo, Rycia, Pahonix (legacy: zyrrael, Deathmessinger)
 ## Version: @project-version@
 
 ## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.
