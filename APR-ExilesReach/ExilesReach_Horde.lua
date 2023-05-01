@@ -1385,6 +1385,15 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [1]
 			{
+				["ExitTutorial"] = 62568,
+				["TT"] = {
+					["y"] = 1465,
+					["x"] = -4419.2,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
 			}, -- [2]
 		}
@@ -2808,6 +2817,15 @@ if (APR.Faction == "Horde") then
 					["x"] = -4419.2,
 				},
 			}, -- [1]
+			{
+				["ExitTutorial"] = 62568,
+				["TT"] = {
+					["y"] = 1465,
+					["x"] = -4419.2,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
 			{
 				["ZoneDoneSave"] = 1,
 			}, -- [2]
@@ -4295,6 +4313,15 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [1]
 			{
+				["ExitTutorial"] = 62568,
+				["TT"] = {
+					["y"] = 1465,
+					["x"] = -4419.2,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
 			}, -- [2]
 		}
@@ -5711,6 +5738,15 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [1]
 			{
+				["ExitTutorial"] = 62568,
+				["TT"] = {
+					["y"] = 1465,
+					["x"] = -4419.2,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
 			}, -- [2]
 		}
@@ -7093,6 +7129,15 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [1]
 			{
+				["ExitTutorial"] = 62568,
+				["TT"] = {
+					["y"] = 1465,
+					["x"] = -4419.2,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
 			}, -- [2]
 		}
@@ -8471,6 +8516,15 @@ if (APR.Faction == "Horde") then
 					["x"] = -4419.2,
 				},
 			}, -- [1]
+			{
+				["ExitTutorial"] = 62568,
+				["TT"] = {
+					["y"] = 1465,
+					["x"] = -4419.2,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
 			{
 				["ZoneDoneSave"] = 1,
 			}, -- [2]
@@ -9870,6 +9924,15 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [1]
 			{
+				["ExitTutorial"] = 62568,
+				["TT"] = {
+					["y"] = 1465,
+					["x"] = -4419.2,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
 			}, -- [2]
 		}
@@ -11266,6 +11329,15 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [1]
 			{
+				["ExitTutorial"] = 62568,
+				["TT"] = {
+					["y"] = 1465,
+					["x"] = -4419.2,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
 			}, -- [2]
 		}
@@ -12652,6 +12724,15 @@ if (APR.Faction == "Horde") then
 				},
 			}, -- [1]
 			{
+				["ExitTutorial"] = 62568,
+				["TT"] = {
+					["y"] = 1465,
+					["x"] = -4419.2,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
+			},
+			{
 				["ZoneDoneSave"] = 1,
 			}, -- [2]
 		}
@@ -13997,6 +14078,15 @@ if (APR.Faction == "Horde") then
 					["y"] = 1465,
 					["x"] = -4419.2,
 				},
+			},
+			{
+				["ExitTutorial"] = 62568,
+				["TT"] = {
+					["y"] = 1465,
+					["x"] = -4419.2,
+				},
+				["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+				["Gossip"] = 1,
 			},
 			{
 				["ZoneDoneSave"] = 1,
