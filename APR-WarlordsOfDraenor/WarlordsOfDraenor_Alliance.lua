@@ -1,24 +1,5 @@
 APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 	{
-		["Trigger"] = {
-			["y"] = -8374,
-			["x"] = 608,
-		},
-		["Range"] = 6.45,
-		["CRange"] = 34398,
-		["TT"] = {
-			["y"] = -8374,
-			["x"] = 608,
-		},
-	},
-	{
-		["TT"] = {
-			["y"] = -8365.5,
-			["x"] = 594.9,
-		},
-		["SetHS"] = 34398,
-	},
-	{
 		["PickUp"] = {
 			34398,
 		},
@@ -29,14 +10,51 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 			["y"] = -8196.3,
 			["x"] = 745.9,
 		},
-	}, -- [30]
+	},
 	{
-		["PickUp"] = {
-			34398,
-		},
+		["UseHS"] = 34398,
 		["TT"] = {
-			["y"] = -8196.2,
-			["x"] = 746,
+			["y"] = -8867.5,
+			["x"] = 673.2,
+		},
+		["Button"] = {
+			["22345678-1"] = 6948,
+		},
+	},
+	{
+		["Trigger"] = {
+			["y"] = -8824.1,
+			["x"] = 678.9,
+		},
+		["Range"] = 6.45,
+		["CRange"] = 34398,
+		["TT"] = {
+			["y"] = -8824.1,
+			["x"] = 678.9,
+		},
+	},
+	{
+		["Trigger"] = {
+			["y"] = -8848.2,
+			["x"] = 726.9,
+		},
+		["Range"] = 6.45,
+		["CRange"] = 34398,
+		["TT"] = {
+			["y"] = -8848.2,
+			["x"] = 726.9,
+		},
+	},
+	{
+		["Trigger"] = {
+			["y"] = -8973,
+			["x"] = 774.1,
+		},
+		["Range"] = 6.45,
+		["CRange"] = 34398,
+		["TT"] = {
+			["y"] = -8973,
+			["x"] = 774.1,
 		},
 	},
 	{
@@ -94,45 +112,6 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
 }
 APR.QuestStepList["A84-DesMephisto-Stormwind-War2"] = {
 	{
-		["TT"] = {
-			["y"] = -9053,
-			["x"] = 442.8,
-		},
-		["Done"] = {
-			55991,
-		},
-	},
-	{
-		["ExtraLineText"] = "LEAVE_TUTORIAL",
-		["Trigger"] = {
-			["y"] = -8374,
-			["x"] = 608,
-		},
-		["Range"] = 6.45,
-		["CRange"] = 34398,
-		["TT"] = {
-			["y"] = -8374,
-			["x"] = 608,
-		},
-	},
-	{
-		["TT"] = {
-			["y"] = -8365.5,
-			["x"] = 594.9,
-		},
-		["SetHS"] = 34398,
-	},
-	{
-		["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-		["SpellInTab"] = 33388,
-		["TrainRidingSkill"] = 34398,
-		["RaidIcon"] = 44919,
-		["TT"] = {
-			["y"] = -8845,
-			["x"] = 503,
-		},
-	},
-	{
 		["PickUp"] = {
 			34398,
 		},
@@ -142,6 +121,52 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War2"] = {
 		["TT"] = {
 			["y"] = -8196.3,
 			["x"] = 745.9,
+		},
+	},
+	{
+		["UseHS"] = 34398,
+		["TT"] = {
+			["y"] = -8867.5,
+			["x"] = 673.2,
+		},
+		["Button"] = {
+			["22345678-1"] = 6948,
+		},
+	},
+	{
+		["Trigger"] = {
+			["y"] = -8824.1,
+			["x"] = 678.9,
+		},
+		["Range"] = 6.45,
+		["CRange"] = 34398,
+		["TT"] = {
+			["y"] = -8824.1,
+			["x"] = 678.9,
+		},
+	},
+	{
+		["Trigger"] = {
+			["y"] = -8848.2,
+			["x"] = 726.9,
+		},
+		["Range"] = 6.45,
+		["CRange"] = 34398,
+		["TT"] = {
+			["y"] = -8848.2,
+			["x"] = 726.9,
+		},
+	},
+	{
+		["Trigger"] = {
+			["y"] = -8973,
+			["x"] = 774.1,
+		},
+		["Range"] = 6.45,
+		["CRange"] = 34398,
+		["TT"] = {
+			["y"] = -8973,
+			["x"] = 774.1,
 		},
 	},
 	{
@@ -199,25 +224,6 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War2"] = {
 }
 APR.QuestStepList["A84-DesMephisto-Stormwind-War3"] = {
 	{
-		["Trigger"] = {
-			["y"] = -8374,
-			["x"] = 608,
-		},
-		["Range"] = 6.45,
-		["CRange"] = 34398,
-		["TT"] = {
-			["y"] = -8374,
-			["x"] = 608,
-		},
-	},
-	{
-		["TT"] = {
-			["y"] = -8365.5,
-			["x"] = 594.9,
-		},
-		["SetHS"] = 34398,
-	},
-	{
 		["PickUp"] = {
 			34398,
 		},
@@ -228,14 +234,51 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War3"] = {
 			["y"] = -8196.3,
 			["x"] = 745.9,
 		},
-	}, -- [30]
+	},
 	{
-		["PickUp"] = {
-			34398,
-		},
+		["UseHS"] = 34398,
 		["TT"] = {
-			["y"] = -8196.2,
-			["x"] = 746,
+			["y"] = -8867.5,
+			["x"] = 673.2,
+		},
+		["Button"] = {
+			["22345678-1"] = 6948,
+		},
+	},
+	{
+		["Trigger"] = {
+			["y"] = -8824.1,
+			["x"] = 678.9,
+		},
+		["Range"] = 6.45,
+		["CRange"] = 34398,
+		["TT"] = {
+			["y"] = -8824.1,
+			["x"] = 678.9,
+		},
+	},
+	{
+		["Trigger"] = {
+			["y"] = -8848.2,
+			["x"] = 726.9,
+		},
+		["Range"] = 6.45,
+		["CRange"] = 34398,
+		["TT"] = {
+			["y"] = -8848.2,
+			["x"] = 726.9,
+		},
+	},
+	{
+		["Trigger"] = {
+			["y"] = -8973,
+			["x"] = 774.1,
+		},
+		["Range"] = 6.45,
+		["CRange"] = 34398,
+		["TT"] = {
+			["y"] = -8973,
+			["x"] = 774.1,
 		},
 	},
 	{
@@ -1912,7 +1955,7 @@ APR.QuestStepList["A539-DesMephisto-Shadowmoon1"] = {
 		["Done"] = {
 			34586, --
 		},
-	},        -- [17]
+	},      -- [17]
 	{
 		["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
 		["PickUp"] = {
@@ -2088,7 +2131,7 @@ APR.QuestStepList["A539-DesMephisto-Shadowmoon1"] = {
 			35176,
 			35166, -- [3]
 		},
-	},        -- [4]
+	},      -- [4]
 	{
 		["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
 		["PickUp"] = {
@@ -4453,7 +4496,7 @@ APR.QuestStepList["A543-DesMephisto-Gorgrond"] = {
 			34698, -- [3]
 			34703, -- [4]
 		},
-	},        -- [10]
+	},      -- [10]
 	{
 		["PickUp"] = {
 			35137,
@@ -4796,7 +4839,7 @@ APR.QuestStepList["A543-DesMephisto-Gorgrond"] = {
 			35934,
 			35037, -- [3]
 		},
-	},        -- [28]
+	},      -- [28]
 	{
 		["TT"] = {
 			["y"] = 6587.3,
@@ -5173,7 +5216,7 @@ APR.QuestStepList["A543-DesMephisto-Gorgrond"] = {
 			35128,
 			36223, -- [3]
 		},
-	},        -- [4]
+	},      -- [4]
 	{
 		["PickUp"] = {
 			35139,
@@ -9369,7 +9412,7 @@ APR.QuestStepList["A535-DesMephisto-Talador2"] = {
 			34959,
 			34095, -- [3]
 		},
-	},        -- [36]
+	},      -- [36]
 	{
 		["PickUp"] = {
 			34096,
@@ -12311,7 +12354,7 @@ APR.QuestStepList["A542-DesMephisto-SpiresOfArak"] = {
 			34756,
 			35668, -- [3]
 		},
-	},        -- [20]
+	},      -- [20]
 	{
 		["PickUp"] = {
 			35671,
@@ -13528,7 +13571,7 @@ APR.QuestStepList["A542-DesMephisto-SpiresOfArak"] = {
 			35260,
 			35273, -- [3]
 		},
-	},        -- [5]
+	},      -- [5]
 	{
 		["PickUp"] = {
 			35634,
@@ -13557,7 +13600,7 @@ APR.QuestStepList["A542-DesMephisto-SpiresOfArak"] = {
 			34884,
 			34885, -- [3]
 		},
-	},        -- [7]
+	},      -- [7]
 	{
 		["PickUp"] = {
 			35733,

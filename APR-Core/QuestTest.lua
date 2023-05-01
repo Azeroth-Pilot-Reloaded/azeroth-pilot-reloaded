@@ -442,15 +442,22 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					APR.ZoneQuestOrder["Current"]:SetPoint("RIGHT", APR.ZoneQuestOrder[CLi], "LEFT", 0, 0)
 					APR.ZoneQuestOrder["Current"]:Show()
 				end
+				if (APR.QuestStepList[APR.ActiveMap][CCLi]["ExitTutorial"]) then
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["SKIP_TUTORIAL"])
+					if (C_QuestLog.IsOnQuest(APR.QuestStepList[APR.ActiveMap][CCLi]["ExitTutorial"]) or CurStep > CCLi) then
+						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(0, 1, 0)
+						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(0, 1, 0)
+					else
+						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(1, 0, 0)
+						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(1, 0, 0)
+					end
+				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["PickUp"]) then
 					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["PICK_UP_Q"])
 					IdList = APR.QuestStepList[APR.ActiveMap][CCLi]["PickUp"]
 					local NrLeft = 0
 					local Flagged = 0
 					local Total = 0
-					local NrLeft2 = 0
-					local Flagged2 = 0
-					local Total2 = 0
 					for h = 1, getn(IdList) do
 						local theqid = IdList[h]
 						Total = Total + 1
