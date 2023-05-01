@@ -1,16 +1,5 @@
 APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 	{
-		--1
-		["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-		["SpellInTab"] = 33388,
-		["TrainRidingSkill"] = 34398,
-		["RaidIcon"] = 44919,
-		["TT"] = {
-			["y"] = 1799.5,
-			["x"] = -4356.7,
-		},
-	},
-	{
 		--2
 		["PickUp"] = {
 			34398,
@@ -22,14 +11,6 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 			["y"] = 1558.2,
 			["x"] = -4215.9,
 		},
-	},
-	{
-		--3
-		["TT"] = {
-			["y"] = 1573.9,
-			["x"] = -4438.4,
-		},
-		["SetHS"] = 34398,
 	},
 	{
 		--4
