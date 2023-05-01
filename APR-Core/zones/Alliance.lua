@@ -112,7 +112,8 @@ if (APR.Faction == "Alliance") then
 		APR.QuestStepListListing["MISC 1"]["A23-ScarletEnclave"] = "08-30 Death Knight Start"
 	elseif (APR.Faction == "Neutral" and APR.race == 24 and APR.Level == 1) then
 		APR.QuestStepListListing["MISC 1"]["378-WanderingIsle"] = "01-30 Pandaren Start"
-	elseif (APR.Level < 10) then
+	end
+	if (APR.Level < 10) then
 		APR.QuestStepListListing["MISC 1"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
 	end
 	APR.QuestStepListListing["MISC 2"] = {

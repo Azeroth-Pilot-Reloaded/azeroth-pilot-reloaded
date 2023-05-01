@@ -81,7 +81,7 @@ function APR.FP.TestDest()
 			end
 		end)
 		APR.FP.TestDestFrame["F" .. numbrs]["FS" .. numbrs] = APR.FP.TestDestFrame["F" .. numbrs]:CreateFontString(
-		"TestDestFrameFS" .. numbrs, "ARTWORK", "ChatFontNormal")
+			"TestDestFrameFS" .. numbrs, "ARTWORK", "ChatFontNormal")
 		APR.FP.TestDestFrame["F" .. numbrs]["FS" .. numbrs]:SetPoint("TOPLEFT", APR.FP.TestDestFrame["F" .. numbrs],
 			"TOPLEFT", 5, 0)
 		APR.FP.TestDestFrame["F" .. numbrs]["FS" .. numbrs]:SetWidth(120)
@@ -133,7 +133,7 @@ function APR.FP.TestDest()
 			end
 		end)
 		APR.FP.TestDestFrame["F2" .. numbrs]["FS" .. numbrs] = APR.FP.TestDestFrame["F2" .. numbrs]:CreateFontString(
-		"TestDestFrameFS" .. numbrs, "ARTWORK", "ChatFontNormal")
+			"TestDestFrameFS" .. numbrs, "ARTWORK", "ChatFontNormal")
 		APR.FP.TestDestFrame["F2" .. numbrs]["FS" .. numbrs]:SetPoint("TOPLEFT", APR.FP.TestDestFrame["F2" .. numbrs],
 			"TOPLEFT", 5, 0)
 		APR.FP.TestDestFrame["F2" .. numbrs]["FS" .. numbrs]:SetWidth(120)
@@ -541,7 +541,7 @@ function APR.FP.GetCustomZone()
 					end
 				end
 			end
-			--	return APR.QuestStepListListingZone["01-10 Exile's Reach"], "1409-Exile's Reach"
+			return APR.QuestStepListListingZone["01-10 Exile's Reach"], "1409-Exile's Reach"
 		end
 		if (C_QuestLog.IsQuestFlaggedCompleted(34398) == false and APR.Faction == "Alliance") then
 			APR.ProgressShown = 1
@@ -981,7 +981,7 @@ function APR.FP.GetMeToNextZone2()
 				elseif (chromieExpansionOption.alreadyOn == false) then
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(L["SWITCH_TO_CHROMIE"] ..
-					" " .. chromieExpansionOption.name))
+						" " .. chromieExpansionOption.name))
 					APR.QuestList.QuestFrames[LineNr]:Show()
 				end
 			end
@@ -997,7 +997,7 @@ function APR.FP.GetMeToNextZone2()
 		end
 		if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1) then
 			APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["DESTINATION"] ..
-			": " .. mapzinfoz.name .. ", " .. mapzinfoz2.name .. " (" .. GoToZone .. ")")
+				": " .. mapzinfoz.name .. ", " .. mapzinfoz2.name .. " (" .. GoToZone .. ")")
 			APR.QuestList.QuestFrames[LineNr]:Show()
 			DestSet = 1
 		end
@@ -1046,7 +1046,7 @@ function APR.FP.GetMeToNextZone2()
 		ShownLineNr = ShownLineNr + 1
 		LineNr = LineNr + 1
 		APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-		ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Stormwind (down below)")
+			ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Stormwind (down below)")
 		APR.QuestList.QuestFrames[LineNr]:Show()
 		APR.ArrowActive = 1
 		APR.ArrowActive_X = 1469.5
@@ -1096,7 +1096,7 @@ function APR.FP.GetMeToNextZone2()
 				end
 				if (APR_Transport["FPs"][APR.Faction][APR.getContinent()] and APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]["Conts"] and APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]["Conts"][APR.getContinent()]) then
 					ZeContz = APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]["Conts"]
-					[APR.getContinent()]
+							[APR.getContinent()]
 				else
 					ZeContz = nil
 				end
@@ -1143,7 +1143,7 @@ function APR.FP.GetMeToNextZone2()
 							ShownLineNr = ShownLineNr + 1
 							LineNr = LineNr + 1
 							APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["ERROR"] ..
-							" - " .. L["ROUTE_NOT_FOUND"] .. " " .. mapzinfoz.name .. " (" .. GoToZone .. ")")
+								" - " .. L["ROUTE_NOT_FOUND"] .. " " .. mapzinfoz.name .. " (" .. GoToZone .. ")")
 							APR.QuestList.QuestFrames[LineNr]:Show()
 						end
 					end
@@ -1251,7 +1251,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-						L["USE_PORTAL_TO"] .. " Exodar")
+							L["USE_PORTAL_TO"] .. " Exodar")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.ArrowActive = 1
 						APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Exodar"]["x"]
@@ -1260,7 +1260,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr ..
-						"]: " .. L["USE_PORTAL_TO"] .. " Shattrath")
+							"]: " .. L["USE_PORTAL_TO"] .. " Shattrath")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.ArrowActive = 1
 						APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Shattrath"]["x"]
@@ -1269,7 +1269,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-						ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Dalaran, Crystalsong Forest")
+							ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Dalaran, Crystalsong Forest")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.ArrowActive = 1
 						APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["DalaranLichKing"]["x"]
@@ -1278,7 +1278,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-						ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Jade Forest")
+							ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Jade Forest")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.ArrowActive = 1
 						APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["JadeForestMoP"]["x"]
@@ -1287,7 +1287,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-						ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Stormshield, Ashran")
+							ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Stormshield, Ashran")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.ArrowActive = 1
 						APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["StormshieldWoD"]["x"]
@@ -1296,7 +1296,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-						L["USE_PORTAL_TO"] .. " Azsuna")
+							L["USE_PORTAL_TO"] .. " Azsuna")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.ArrowActive = 1
 						APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["AzsunaLegion"]["x"]
@@ -1305,7 +1305,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-						L["USE_PORTAL_TO"] .. " Boralus")
+							L["USE_PORTAL_TO"] .. " Boralus")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.ArrowActive = 1
 						APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["BoralusBFA"]["x"]
@@ -1314,7 +1314,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-						L["USE_PORTAL_TO"] .. " Boralus")
+							L["USE_PORTAL_TO"] .. " Boralus")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.ArrowActive = 1
 						APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["BoralusBFA"]["x"]
@@ -1339,7 +1339,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					zclosestname = APR.TDB["FPs"][APR.Faction][13][84][2]["name"]
 				end
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["FLY_TO"] .. " " ..
-				zclosestname)
+					zclosestname)
 				APR.FP.QuedFP = zclosestname
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -1358,7 +1358,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Stormwind")
+					" Stormwind")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
@@ -1367,7 +1367,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-				ShownLineNr .. "]: " .. L["FLY_TO"] .. " Shattrath, Terokkar Forest")
+					ShownLineNr .. "]: " .. L["FLY_TO"] .. " Shattrath, Terokkar Forest")
 				APR.FP.QuedFP = "Shattrath, Terokkar Forest"
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -1386,7 +1386,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Stormwind")
+					" Stormwind")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
@@ -1413,7 +1413,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Stormwind")
+					" Stormwind")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
@@ -1425,7 +1425,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-						L["USE_PORTAL_TO"] .. " Oribos")
+							L["USE_PORTAL_TO"] .. " Oribos")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.ArrowActive = 1
 						APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["OribosInMaldraxxus"]["x"]
@@ -1434,7 +1434,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-						ShownLineNr .. "]: " .. L["FLY_TO"] .. " Theater of Pain, Maldraxxus")
+							ShownLineNr .. "]: " .. L["FLY_TO"] .. " Theater of Pain, Maldraxxus")
 						APR.FP.QuedFP = "Theater of Pain, Maldraxxus"
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -1469,7 +1469,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Stormwind")
+					" Stormwind")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
@@ -1478,7 +1478,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-				ShownLineNr .. "]: " .. L["FLY_TO"] .. " Paw'Don Village, Jade Forest")
+					ShownLineNr .. "]: " .. L["FLY_TO"] .. " Paw'Don Village, Jade Forest")
 				APR.FP.QuedFP = "Paw'Don Village, Jade Forest"
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -1497,7 +1497,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Stormwind")
+					" Stormwind")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
@@ -1506,7 +1506,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-				ShownLineNr .. "]: " .. L["FLY_TO"] .. " Stormshield (Alliance), Ashran")
+					ShownLineNr .. "]: " .. L["FLY_TO"] .. " Stormshield (Alliance), Ashran")
 				APR.FP.QuedFP = "Stormshield (Alliance), Ashran"
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -1525,7 +1525,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Stormwind")
+					" Stormwind")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
@@ -1552,7 +1552,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Stormwind")
+					" Stormwind")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
@@ -1580,7 +1580,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-					L["TALK_TO"] .. " Daria Smithson")
+						L["TALK_TO"] .. " Daria Smithson")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.ArrowActive = 1
 					APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Zuldazar"]["x"]
@@ -1589,7 +1589,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-					L["FLY_TO"] .. " Xibala, Zuldazar")
+						L["FLY_TO"] .. " Xibala, Zuldazar")
 					APR.FP.QuedFP = "Xibala, Zuldazar"
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -1607,7 +1607,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr ..
-					"]: " .. L["TALK_TO"] .. " Desha Stormwallow")
+						"]: " .. L["TALK_TO"] .. " Desha Stormwallow")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.ArrowActive = 1
 					APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Nazmir"]["x"]
@@ -1616,7 +1616,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-					ShownLineNr .. "]: " .. L["FLY_TO"] .. " Fort Victory, Nazmir")
+						ShownLineNr .. "]: " .. L["FLY_TO"] .. " Fort Victory, Nazmir")
 					APR.FP.QuedFP = "Fort Victory, Nazmir"
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -1634,7 +1634,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-					ShownLineNr .. "]: " .. L["TALK_TO"] .. " Grand Admiral Jes-Tereth")
+						ShownLineNr .. "]: " .. L["TALK_TO"] .. " Grand Admiral Jes-Tereth")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.ArrowActive = 1
 					APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Vol'dun"]["x"]
@@ -1643,7 +1643,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-					ShownLineNr .. "]: " .. L["FLY_TO"] .. " Shatterstone Harbor, Vol'dun")
+						ShownLineNr .. "]: " .. L["FLY_TO"] .. " Shatterstone Harbor, Vol'dun")
 					APR.FP.QuedFP = "Shatterstone Harbor, Vol'dun"
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -1690,7 +1690,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-					L["USE_PORTAL_TO"] .. " Stormwind")
+						L["USE_PORTAL_TO"] .. " Stormwind")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.ArrowActive = 1
 					APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
@@ -1700,7 +1700,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-				ShownLineNr .. "]: " .. L["FLY_TO"] .. " Tradewinds Market, Tiragarde Sound")
+					ShownLineNr .. "]: " .. L["FLY_TO"] .. " Tradewinds Market, Tiragarde Sound")
 				APR.FP.QuedFP = "Tradewinds Market, Tiragarde Sound"
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -1723,7 +1723,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-						ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Zeppelin to Grom'gol, Stranglethorn Vale")
+							ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Zeppelin to Grom'gol, Stranglethorn Vale")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.ArrowActive = 1
 						APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["STVZep"]["x"]
@@ -1732,7 +1732,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-						ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Undercity portal (by zeppelins)")
+							ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Undercity portal (by zeppelins)")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.ArrowActive = 1
 						APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Undercity"]["x"]
@@ -1742,7 +1742,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-					L["USE_PORTAL_TO"] .. " Shattrath")
+						L["USE_PORTAL_TO"] .. " Shattrath")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.ArrowActive = 1
 					APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Shattrath"]["x"]
@@ -1751,7 +1751,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-					ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Dalaran, Crystalsong Forest")
+						ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Dalaran, Crystalsong Forest")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.ArrowActive = 1
 					APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["DalaranLichKing"]["x"]
@@ -1760,7 +1760,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr ..
-					"]: " .. L["USE_PORTAL_TO"] .. " Jade Forest")
+						"]: " .. L["USE_PORTAL_TO"] .. " Jade Forest")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.ArrowActive = 1
 					APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["JadeForest"]["x"]
@@ -1769,7 +1769,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-					ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Warspear, Ashran")
+						ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Warspear, Ashran")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.ArrowActive = 1
 					APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["WarspearWoD"]["x"]
@@ -1778,7 +1778,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-					" Azsuna")
+						" Azsuna")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.ArrowActive = 1
 					APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["AzsunaLegion"]["x"]
@@ -1787,7 +1787,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-					L["USE_PORTAL_TO"] .. " Zuldazar")
+						L["USE_PORTAL_TO"] .. " Zuldazar")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.ArrowActive = 1
 					APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Zuldazar"]["x"]
@@ -1796,7 +1796,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-					L["USE_PORTAL_TO"] .. " Zuldazar")
+						L["USE_PORTAL_TO"] .. " Zuldazar")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.ArrowActive = 1
 					APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Zuldazar"]["x"]
@@ -1806,7 +1806,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-				L["FLY_TO"] .. " Orgrimmar, Durotar")
+					L["FLY_TO"] .. " Orgrimmar, Durotar")
 				APR.FP.QuedFP = "Orgrimmar, Durotar"
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -1825,7 +1825,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Orgrimmar")
+					" Orgrimmar")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
@@ -1837,7 +1837,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-						L["USE_PORTAL_TO"] .. " Oribos")
+							L["USE_PORTAL_TO"] .. " Oribos")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.ArrowActive = 1
 						APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["OribosInMaldraxxus"]["x"]
@@ -1846,7 +1846,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-						ShownLineNr .. "]: " .. L["FLY_TO"] .. " Theater of Pain, Maldraxxus")
+							ShownLineNr .. "]: " .. L["FLY_TO"] .. " Theater of Pain, Maldraxxus")
 						APR.FP.QuedFP = "Theater of Pain, Maldraxxus"
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -1881,7 +1881,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Orgrimmar")
+					" Orgrimmar")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
@@ -1890,7 +1890,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-				ShownLineNr .. "]: " .. L["FLY_TO"] .. " Brill, Tirisfal Glades")
+					ShownLineNr .. "]: " .. L["FLY_TO"] .. " Brill, Tirisfal Glades")
 				APR.FP.QuedFP = "Brill, Tirisfal Glades"
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -1909,7 +1909,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Orgrimmar")
+					" Orgrimmar")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
@@ -1918,7 +1918,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-				ShownLineNr .. "]: " .. L["FLY_TO"] .. " Shattrath, Terokkar Forest")
+					ShownLineNr .. "]: " .. L["FLY_TO"] .. " Shattrath, Terokkar Forest")
 				APR.FP.QuedFP = "Shattrath, Terokkar Forest"
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -1937,7 +1937,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Orgrimmar")
+					" Orgrimmar")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
@@ -1964,7 +1964,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Orgrimmar")
+					" Orgrimmar")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
@@ -1973,7 +1973,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-				ShownLineNr .. "]: " .. L["FLY_TO"] .. " Honeydew Village, Jade Forest")
+					ShownLineNr .. "]: " .. L["FLY_TO"] .. " Honeydew Village, Jade Forest")
 				APR.FP.QuedFP = "Honeydew Village, Jade Forest"
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -1992,7 +1992,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Orgrimmar")
+					" Orgrimmar")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
@@ -2001,7 +2001,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["FLY_TO"] ..
-				" Warspear, Ashran")
+					" Warspear, Ashran")
 				APR.FP.QuedFP = "Warspear, Ashran"
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -2020,7 +2020,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Orgrimmar")
+					" Orgrimmar")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
@@ -2057,7 +2057,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-						ShownLineNr .. "]: " .. L["SAIL_TO"] .. " Stormsong Valley")
+							ShownLineNr .. "]: " .. L["SAIL_TO"] .. " Stormsong Valley")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.ArrowActive = 1
 						APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["StormsongValley"]["x"]
@@ -2066,7 +2066,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 						ShownLineNr = ShownLineNr + 1
 						LineNr = LineNr + 1
 						APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr ..
-						"]: " .. L["SAIL_TO"] .. " Tiragarde Sound")
+							"]: " .. L["SAIL_TO"] .. " Tiragarde Sound")
 						APR.QuestList.QuestFrames[LineNr]:Show()
 						APR.ArrowActive = 1
 						APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["TiragardeSound"]["x"]
@@ -2076,7 +2076,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-					ShownLineNr .. "]: " .. L["FLY_TO"] .. " Port of Zandalar, Zuldazar")
+						ShownLineNr .. "]: " .. L["FLY_TO"] .. " Port of Zandalar, Zuldazar")
 					APR.FP.QuedFP = "Port of Zandalar, Zuldazar"
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -2093,7 +2093,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 				ShownLineNr = ShownLineNr + 1
 				LineNr = LineNr + 1
 				APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] ..
-				" Orgrimmar")
+					" Orgrimmar")
 				APR.QuestList.QuestFrames[LineNr]:Show()
 				APR.ArrowActive = 1
 				APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
@@ -2121,7 +2121,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["TALK_TO"] ..
-					" Swellthrasher")
+						" Swellthrasher")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.ArrowActive = 1
 					APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["DrustvarSail"]["x"]
@@ -2130,7 +2130,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr ..
-					"]: " .. L["FLY_TO"] .. " Anyport, Drustvar")
+						"]: " .. L["FLY_TO"] .. " Anyport, Drustvar")
 					APR.FP.QuedFP = "Anyport, Drustvar"
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -2148,7 +2148,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-					L["TALK_TO"] .. " Grok Seahandler")
+						L["TALK_TO"] .. " Grok Seahandler")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.ArrowActive = 1
 					APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["StormsongValleySail"]["x"]
@@ -2157,7 +2157,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-					ShownLineNr .. "]: " .. L["FLY_TO"] .. " Warfang Hold, Stormsong Valley")
+						ShownLineNr .. "]: " .. L["FLY_TO"] .. " Warfang Hold, Stormsong Valley")
 					APR.FP.QuedFP = "Warfang Hold, Stormsong Valley"
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
@@ -2176,7 +2176,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " ..
-					L["TALK_TO"] .. " Erul Dawnbrook")
+						L["TALK_TO"] .. " Erul Dawnbrook")
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					APR.ArrowActive = 1
 					APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["TiragardeSoundSail"]["x"]
@@ -2185,7 +2185,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 					ShownLineNr = ShownLineNr + 1
 					LineNr = LineNr + 1
 					APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-					ShownLineNr .. "]: " .. L["FLY_TO"] .. " Plunder Harbor, Tiragarde Sound")
+						ShownLineNr .. "]: " .. L["FLY_TO"] .. " Plunder Harbor, Tiragarde Sound")
 					APR.FP.QuedFP = "Plunder Harbor, Tiragarde Sound"
 					APR.QuestList.QuestFrames[LineNr]:Show()
 					local Zefp, ZeX, ZeY = APR.FP.ClosestFP()

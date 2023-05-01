@@ -70,15 +70,12 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 	else
 		ZeMap = C_Map.GetBestMapForUnit("player")
 	end
-	local function autoPatchStartInsertRoute()
-		APR_Custom[APR.Name .. "-" .. APR.Realm] = nil
-		APR_Custom[APR.Name .. "-" .. APR.Realm] = {}
-		for CLi = 1, 19 do
-			APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetText("")
-			APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:Hide()
-		end
+	APR_Custom[APR.Name .. "-" .. APR.Realm] = nil
+	APR_Custom[APR.Name .. "-" .. APR.Realm] = {}
+	for CLi = 1, 19 do
+		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetText("")
+		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:Hide()
 	end
-	autoPatchStartInsertRoute()
 	if (APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727)) then
 		tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "01-10 Exile's Reach")
 	end
