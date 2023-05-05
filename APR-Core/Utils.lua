@@ -57,7 +57,7 @@ function CheckDenyNPC(steps)
         if (npc_id and name) then
             if (npc_id == steps["DenyNPC"]) then
                 C_GossipInfo.CloseGossip()
-                CloseQuest()
+                C_Timer.After(0.3, APR_CloseQuest)
                 print("APR: " .. L["NOT_YET"])
             end
         end
@@ -100,4 +100,12 @@ function Contains(list, x)
         end
     end
     return false
+end
+
+function APR_AcceptQuest()
+    AcceptQuest()
+end
+
+function APR_CloseQuest()
+    CloseQuest()
 end

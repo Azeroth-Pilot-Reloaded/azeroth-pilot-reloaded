@@ -404,7 +404,7 @@ function APR:MoveMapIcons()
 	if (CurMapShown ~= WorldMapFrame:GetMapID()) then
 		CurMapShown = WorldMapFrame:GetMapID()
 		Delaytime = 1
-		C_Timer.After(0.1, APR_MapDelay)
+		C_Timer.After(0.2, APR_MapDelay)
 		return
 	end
 	local SetMapIDs = WorldMapFrame:GetMapID()
@@ -2554,7 +2554,7 @@ local function APR_UpdateMapId()
 		APR.BookingList["UpdateZoneQuestOrderListL"] = 1
 	end
 	APR.BookingList["PrintQStep"] = 1
-	C_Timer.After(0.1, APR_BookQStep)
+	C_Timer.After(0.2, APR_BookQStep)
 end
 local function APR_CheckZonePick()
 	if (APR.ActiveMap == 862) then
@@ -2573,9 +2573,7 @@ local function APR_CheckZonePick()
 		end
 	end
 end
-local function APR_AcceptQuester()
-	AcceptQuest()
-end
+
 local function APR_CheckDistance()
 	local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 	if (CurStep and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
@@ -2769,41 +2767,6 @@ local function APR_LoopBookingFunc()
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:UpdateMapId:" .. APR1[APR.Realm][APR.Name][APR.ActiveMap])
 		end
-	elseif (APR.BookingList["AcceptQuest"]) then
-		if (APR1["Debug"]) then
-			print("LoopBookingFunc:AcceptQuest")
-		end
-		APR.BookingList["AcceptQuest"] = nil
-		if (not IsModifierKeyDown()) then
-			if (APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 1) then
-				C_Timer.After(0.2, APR_AcceptQuester)
-			end
-			if (APR1[APR.Realm][APR.Name]["Settings"]["AutoAcceptQuestRoute"] == 1) then
-				local questId = GetQuestID()
-				if (IsARouteQuest(questId)) then
-					C_Timer.After(0.2, APR_AcceptQuester)
-				else
-					CloseQuest()
-					print("APR: " .. L["NOT_YET"])
-				end
-			end
-		end
-	elseif (APR.BookingList["AcceptQuestEscort"]) then
-		if (APR1["Debug"]) then
-			print("LoopBookingFunc:AcceptQuestEscort")
-		end
-		APR.BookingList["AcceptQuestEscort"] = nil
-		if (not IsModifierKeyDown()) then
-			if (APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 1 or APR1[APR.Realm][APR.Name]["Settings"]["AutoAcceptQuestRoute"] == 1) then
-				C_Timer.After(0.2, APR_AcceptQuester)
-			end
-		end
-	elseif (APR.BookingList["CompleteQuest"]) then
-		if (APR1["Debug"]) then
-			print("LoopBookingFunc:CompleteQuest")
-		end
-		APR.BookingList["CompleteQuest"] = nil
-		CompleteQuest()
 	elseif (APR.BookingList["CreateMacro"]) then
 		if (APR1["Debug"]) then
 			print("LoopBookingFunc:CreateMacro")
@@ -3126,6 +3089,9 @@ APR_QH_EventFrame:RegisterEvent("AJ_REFRESH_DISPLAY")
 APR_QH_EventFrame:RegisterEvent("UPDATE_UI_WIDGET")
 
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
+	local autoHandIn = APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"]
+	local autoAccept = APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"]
+	local autoAcceptRoute = APR1[APR.Realm][APR.Name]["Settings"]["AutoAcceptQuestRoute"]
 	local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 	local steps = GetSteps(CurStep)
 	if (event == "UPDATE_UI_WIDGET") then
@@ -3148,7 +3114,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		end
 	end
 	if (event == "QUEST_LOG_UPDATE") then
-		C_Timer.After(0.1, APR_UpdQuestThing)
+		C_Timer.After(0.2, APR_UpdQuestThing)
 	end
 	if (event == "UNIT_AURA") then
 		local arg1, arg2, arg3, arg4 = ...;
@@ -3276,22 +3242,20 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		end
 	end
 	if (event == "QUEST_AUTOCOMPLETE") then
-		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 1 and not IsModifierKeyDown()) then
-			if (steps and steps["SpecialNoAutoHandin"]) then
-			else
-				APR_PopupFunc()
-			end
+		if IsModifierKeyDown() then return end
+		if (autoHandIn == 1) then
+			APR_PopupFunc()
 		end
 	end
 	if (event == "QUEST_ACCEPT_CONFIRM") then -- escort quest
-		APR.BookingList["AcceptQuestEscort"] = 1
+		if IsModifierKeyDown() then return end
+		if (autoAccept == 1 or autoAcceptRoute == 1) then
+			C_Timer.After(0.2, APR_AcceptQuest)
+		end
 	end
 	if (event == "QUEST_GREETING" or event == "GOSSIP_SHOW") then
 		-- Exit function if you press Ctrl/shift/alt key before the
 		if IsModifierKeyDown() then return end
-		if (steps and steps["SpecialNoAutoHandin"]) then
-			return
-		end
 		-- Deny NPC
 		CheckDenyNPC(steps)
 		local npc_id = GetTargetID()
@@ -3376,7 +3340,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 							local extraText = L["SWITCH_TO_CHROMIE"] ..
 									" " .. C_ChromieTime.GetChromieTimeExpansionOption(steps["ChromiePick"]).name
 							APR.QuestList.QuestFrames["FS1"]:SetText(TextWithStars(extraText))
-							C_Timer.After(3, function() _G.C_ChromieTime.SelectChromieTimeOption(steps["ChromiePick"]) end)
+							C_Timer.After(1, function() _G.C_ChromieTime.SelectChromieTimeOption(steps["ChromiePick"]) end)
 						end
 					end
 				end
@@ -3385,44 +3349,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		--PICKUP / HANDIN
 		local availableQuests = C_GossipInfo.GetAvailableQuests()
 		local activeQuests = C_GossipInfo.GetActiveQuests()
-		-- TODO logique autoaccept
-		-- 2 boucles sur les pickup et pickupdb
-		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 1 or APR1[APR.Realm][APR.Name]["Settings"]["AutoAcceptQuestRoute"] == 1) then
-			local questIds = nil
-			local questIdsDB = nil
-			if steps then
-				questIds = steps["PickUp"]
-				questIdsDB = steps["PickUpDB"]
-			end
-
-			if (event == "QUEST_GREETING") then
-				print("GetNumAvailableQuests:" .. GetNumAvailableQuests())
-				local numAvailableQuests = GetNumAvailableQuests()
-				for i = 1, numAvailableQuests do
-					local _, _, _, _, questId = GetAvailableQuestInfo(i)
-					print(i .. " - quest ID:" .. questId)
-					print(i .. " - IsARouteQuest:" .. Booltonumber(IsARouteQuest(questId)))
-					if (IsARouteQuest(questId)) then
-						print(i .. " - IsARouteQuest YES")
-						return SelectAvailableQuest(i)
-					elseif (i == numAvailableQuests) then
-						CloseQuest()
-						print("APR: " .. L["NOT_YET"])
-					end
-				end
-			elseif availableQuests then
-				for titleIndex, questInfo in ipairs(availableQuests) do
-					if questInfo.questID then
-						if APR1[APR.Realm][APR.Name]["Settings"]["AutoAcceptQuestRoute"] == 1 and (Contains(questIds, questInfo.questID) or Contains(questIdsDB, questInfo.questID)) then
-							return C_GossipInfo.SelectAvailableQuest(questInfo.questID)
-						elseif (APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] == 1) then
-							return C_GossipInfo.SelectAvailableQuest(questInfo.questID)
-						end
-					end
-				end
-			end
-		end
-		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 1) then
+		-- Handin
+		if (autoHandIn == 1) then
 			if (event == "QUEST_GREETING") then
 				for i = 1, GetNumActiveQuests() do
 					local title, isComplete = GetActiveTitle(i)
@@ -3440,16 +3368,36 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				end
 			end
 		end
+		-- Pickup
+		local hasNoRouteMap = not APR.QuestStepList[APR.ActiveMap]
+		if (event == "QUEST_GREETING") then
+			local numAvailableQuests = GetNumAvailableQuests()
+			for i = 1, numAvailableQuests do
+				local _, _, _, _, questID = GetAvailableQuestInfo(i)
+				if (autoAcceptRoute == 1 and (IsARouteQuest(questID) or hasNoRouteMap)) or autoAccept == 1 then
+					return SelectAvailableQuest(i)
+				elseif (i == numAvailableQuests) then
+					C_Timer.After(0.2, APR_CloseQuest)
+				end
+			end
+		elseif availableQuests then
+			for titleIndex, questInfo in ipairs(availableQuests) do
+				if questInfo.questID then
+					if (autoAcceptRoute == 1 and (IsARouteQuest(questInfo.questID) or hasNoRouteMap)) or autoAccept == 1 then
+						return C_GossipInfo.SelectAvailableQuest(questInfo.questID)
+					end
+				end
+			end
+		end
 	end
 	if (event == "ITEM_PUSH") then
 		APR.BookingList["PrintQStep"] = 1
 		C_Timer.After(1, APR_BookQStep)
 	end
 	if (event == "MERCHANT_SHOW") then
+		if IsModifierKeyDown() then return end
 		if (steps and steps["BuyMerchant"]) then
-			if (not IsModifierKeyDown()) then
-				C_Timer.After(0.1, APR_BuyMerchFunc())
-			end
+			C_Timer.After(0.2, APR_BuyMerchFunc)
 		end
 		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoRepair"] == 1) then
 			if (CanMerchantRepair()) then
@@ -3521,7 +3469,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		end
 	end
 	if (event == "TAXIMAP_OPENED") then
-		if (steps and steps["GetFP"] and not IsModifierKeyDown()) then
+		if IsModifierKeyDown() then return end
+		if (steps and steps["GetFP"]) then
 			APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 			APR.BookingList["PrintQStep"] = 1
 		end
@@ -3598,7 +3547,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		if (APR1["Debug"]) then
 			print(L["Q_ACCEPTED"] .. ": " .. arg1)
 		end
-		C_Timer.After(0.1, APR_UpdMapIDz)
+		C_Timer.After(0.2, APR_UpdMapIDz)
 		C_Timer.After(3, APR_UpdMapIDz)
 		if (arg2 and arg2 > 0 and not APR.ActiveQuests[arg2]) then
 			APR.BookingList["AddQuest"] = arg2
@@ -3610,7 +3559,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
 			APR.BookingList["PrintQStep"] = 1
 		end
-		C_Timer.After(0.1, APR_BookQStep)
+		C_Timer.After(0.2, APR_BookQStep)
 		C_Timer.After(3, APR_BookQStep)
 	end
 	if (event == "QUEST_REMOVED") then
@@ -3651,34 +3600,33 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 	if (event == "GOSSIP_CLOSED") then
 		APRGOSSIPCOUNT = 0
 	end
-	if (event == "QUEST_DETAIL") then -- Fired when the player is given a more detailed view of his quest.		
+	if (event == "QUEST_DETAIL") then -- Fired when the player is given a more detailed view of his quest.	
+		if IsModifierKeyDown() then return end
 		-- Deny NPC
 		CheckDenyNPC(steps)
-		if (GetQuestID()) then
+		local questID = GetQuestID()
+		local hasNoRouteMap = not APR.QuestStepList[APR.ActiveMap]
+		if questID then
 			if (QuestGetAutoAccept()) then
-				CloseQuest()
+				C_Timer.After(0.2, APR_CloseQuest)
+			elseif (autoAcceptRoute == 1 and (IsARouteQuest(questID) or hasNoRouteMap)) or autoAccept == 1 then
+				C_Timer.After(0.2, APR_AcceptQuest)
 			else
-				APR.BookingList["AcceptQuest"] = 1
+				C_Timer.After(0.2, APR_CloseQuest)
+				print("APR: " .. L["NOT_YET"])
 			end
 		end
 	end
 	if (event == "QUEST_PROGRESS") then
-		if (APR1["Debug"]) then
-			print("QUEST_PROGRESS")
-		end
+		if IsModifierKeyDown() then return end
 		-- Deny NPC
 		CheckDenyNPC(steps)
-		if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 1 and not IsModifierKeyDown()) then
-			if (steps and steps["SpecialNoAutoHandin"]) then
-				return
-			end
-			APR.BookingList["CompleteQuest"] = 1
-			if (APR1["Debug"]) then
-				print("Complete")
-			end
+		if (autoHandIn == 1) then
+			CompleteQuest()
 		end
 	end
 	if (event == "QUEST_COMPLETE") then
+		if IsModifierKeyDown() then return end
 		-- Deny NPC
 		CheckDenyNPC(steps)
 		if (GetNumQuestChoices() > 1) then
@@ -3762,10 +3710,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				end
 			end
 		else
-			if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] == 1 and not IsModifierKeyDown()) then
-				if (steps and steps["SpecialNoAutoHandin"]) then
-					return
-				end
+			if (autoHandIn == 1) then
 				local npc_id = GetTargetID()
 				if (npc_id and ((npc_id == 141584) or (npc_id == 142063) or (npc_id == 45400) or (npc_id == 25809) or (npc_id == 87391))) then
 					return

@@ -90,7 +90,7 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 				["2"] = "2",
 			},
 		},
-		["Gossip"] = 1,
+		["Gossip"] = 2,
 		["Trigger"] = {
 			["y"] = -11810,
 			["x"] = -3204.5,
