@@ -3089,9 +3089,9 @@ APR_QH_EventFrame:RegisterEvent("AJ_REFRESH_DISPLAY")
 APR_QH_EventFrame:RegisterEvent("UPDATE_UI_WIDGET")
 
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
-	local autoHandIn = APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"]
-	local autoAccept = APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"]
-	local autoAcceptRoute = APR1[APR.Realm][APR.Name]["Settings"]["AutoAcceptQuestRoute"]
+	local autoHandIn = APR1[APR.Realm][APR.Name].Settings.AutoHandIn
+	local autoAccept = APR1[APR.Realm][APR.Name].Settings.AutoAccept
+	local autoAcceptRoute = APR1[APR.Realm][APR.Name].Settings.AutoAcceptQuestRoute
 	local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 	local steps = GetSteps(CurStep)
 	if (event == "UPDATE_UI_WIDGET") then
@@ -3369,22 +3369,24 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			end
 		end
 		-- Pickup
-		local hasNoRouteMap = not APR.QuestStepList[APR.ActiveMap]
-		if (event == "QUEST_GREETING") then
-			local numAvailableQuests = GetNumAvailableQuests()
-			for i = 1, numAvailableQuests do
-				local _, _, _, _, questID = GetAvailableQuestInfo(i)
-				if (autoAcceptRoute == 1 and (IsARouteQuest(questID) or hasNoRouteMap)) or autoAccept == 1 then
-					return SelectAvailableQuest(i)
-				elseif (i == numAvailableQuests) then
-					C_Timer.After(0.2, APR_CloseQuest)
+		if autoAcceptRoute == 1 and autoAccept == 1 then
+			local hasNoRouteMap = not APR.QuestStepList[APR.ActiveMap]
+			if (event == "QUEST_GREETING") then
+				local numAvailableQuests = GetNumAvailableQuests()
+				for i = 1, numAvailableQuests do
+					local _, _, _, _, questID = GetAvailableQuestInfo(i)
+					if (autoAcceptRoute == 1 and (IsARouteQuest(questID) or hasNoRouteMap)) or autoAccept == 1 then
+						return SelectAvailableQuest(i)
+					elseif (i == numAvailableQuests) then
+						C_Timer.After(0.2, APR_CloseQuest)
+					end
 				end
-			end
-		elseif availableQuests then
-			for titleIndex, questInfo in ipairs(availableQuests) do
-				if questInfo.questID then
-					if (autoAcceptRoute == 1 and (IsARouteQuest(questInfo.questID) or hasNoRouteMap)) or autoAccept == 1 then
-						return C_GossipInfo.SelectAvailableQuest(questInfo.questID)
+			elseif availableQuests then
+				for titleIndex, questInfo in ipairs(availableQuests) do
+					if questInfo.questID then
+						if (autoAcceptRoute == 1 and (IsARouteQuest(questInfo.questID) or hasNoRouteMap)) or autoAccept == 1 then
+							return C_GossipInfo.SelectAvailableQuest(questInfo.questID)
+						end
 					end
 				end
 			end
@@ -3607,7 +3609,9 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 		local questID = GetQuestID()
 		local hasNoRouteMap = not APR.QuestStepList[APR.ActiveMap]
 		if questID then
-			if (QuestGetAutoAccept()) then
+			if autoAcceptRoute == 0 and autoAccept == 0 then
+				return
+			elseif (QuestGetAutoAccept()) then
 				C_Timer.After(0.2, APR_CloseQuest)
 			elseif (autoAcceptRoute == 1 and (IsARouteQuest(questID) or hasNoRouteMap)) or autoAccept == 1 then
 				C_Timer.After(0.2, APR_AcceptQuest)
