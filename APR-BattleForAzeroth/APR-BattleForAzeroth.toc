@@ -4,7 +4,7 @@
 ## Title: Azeroth Pilot Reloaded - [|cffeda55fBattle for Azeroth|r]
 ## Notes: Provides Battle for Azeroth implementation for Azeroth Pilot Reloaded.
 ## Author: Rycia, Neogeekmo, Pahonix
-
+## IconTexture: Interface\AddOns\APR-Core\img\APR_logo
 
 ## RequiredDeps: APR-Core
 BattleForAzeroth_Horde.lua
