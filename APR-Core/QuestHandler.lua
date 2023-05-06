@@ -3369,7 +3369,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 			end
 		end
 		-- Pickup
-		if autoAcceptRoute == 1 and autoAccept == 1 then
+		if autoAcceptRoute == 1 or autoAccept == 1 then
 			local hasNoRouteMap = not APR.QuestStepList[APR.ActiveMap]
 			if (event == "QUEST_GREETING") then
 				local numAvailableQuests = GetNumAvailableQuests()
