@@ -74,12 +74,18 @@ end
 function IsARouteQuest(questId)
     local steps = GetSteps(APR1[APR.Realm][APR.Name][APR.ActiveMap])
     if (steps) then
-        local questIds = steps["PickUp"]
-        local questIdsDB = steps["PickUpDB"]
-        if (Contains(questIds, questId) or Contains(questIdsDB, questId)) then
+        if Contains(steps["PickUp"], questId) or Contains(steps["PickUpDB"], questId) then
             return true
-        else
-            return false
+        end
+    end
+    return false
+end
+
+function IsPickupStep()
+    local steps = GetSteps(APR1[APR.Realm][APR.Name][APR.ActiveMap])
+    if (steps) then
+        if steps["PickUp"] or steps["PickUpDB"] then
+            return true
         end
     end
     return false

@@ -3377,7 +3377,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 					local _, _, _, _, questID = GetAvailableQuestInfo(i)
 					if (autoAcceptRoute == 1 and (IsARouteQuest(questID) or hasNoRouteMap)) or autoAccept == 1 then
 						return SelectAvailableQuest(i)
-					elseif (i == numAvailableQuests) then
+					elseif (i == numAvailableQuests and IsPickupStep()) then
 						C_Timer.After(0.2, APR_CloseQuest)
 					end
 				end
@@ -3615,7 +3615,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 				C_Timer.After(0.2, APR_CloseQuest)
 			elseif (autoAcceptRoute == 1 and (IsARouteQuest(questID) or hasNoRouteMap)) or autoAccept == 1 then
 				C_Timer.After(0.2, APR_AcceptQuest)
-			else
+			elseif IsPickupStep() then
 				C_Timer.After(0.2, APR_CloseQuest)
 				print("APR: " .. L["NOT_YET"])
 			end
