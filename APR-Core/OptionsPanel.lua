@@ -462,7 +462,7 @@ function APR.LoadOptionsFrame()
 
 	------------------------- General Options --------------------------------------------------------------------------
 	displayOptionSection("OptionsB3", "OptionsGeneral", "APR_OptionsMainFrame_GeneralOptions", 0, -100, "TOPLEFT",
-		L["ARROW_OPTION"])
+		L["GENERAL_OPTION"])
 	-- auto skip scene checkbox
 	checkboxOptionline("OptionsGeneral", "CutSceneCheckButton", "APR_CutSceneCheckButton", 10, -10, "CutScene",
 		L["SKIPPED_CUTSCENE"])
