@@ -132,6 +132,9 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 			end
 		end
 	end
+	if (APR.Level >= 60) then 
+		wipe(APR_Custom[APR.Name .. "-" .. APR.Realm])
+	end
 	-- Dragonflight
 	if (APR.Faction == "Alliance") then
 		tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF01 - Dragonflight Stormwind")
