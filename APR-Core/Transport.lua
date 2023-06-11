@@ -949,6 +949,9 @@ function APR.FP.GetMeToNextZone2()
 	local CurContinent = APR.getContinent()
 	local Contin, gotoCont = APR.FP.IsSameContinent(GoToZone)
 	local mapzinfoz = C_Map.GetMapInfo(GoToZone)
+	if (not mapzinfoz) then
+		return
+	end
 	local mapzinfoz2 = C_Map.GetMapInfo(mapzinfoz.parentMapID)
 	if (not mapzinfoz2) then
 		return

@@ -66,7 +66,8 @@ if (APR.Faction == "Horde") then
 		["WIP-The Jade Forest"] = 371,
 		["WIP-Kun-Lai Summit"] = 379,
 		["WIP-Highmountain"] = 650,
-		["58-60 Dracthyr Start"] = 2107
+		["58-60 Dracthyr Start"] = 2107,
+		["Allied Death Knight Start"] = 2297
 	}
 
 	APR.QuestStepListListing = {}
@@ -84,6 +85,8 @@ if (APR.Faction == "Horde") then
 	}
 	if (APR.Class[3] == 12) then
 		APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
+	elseif (APR.Class[3] == 6 and APR.RaceID >= 23) then
+		APR.QuestStepListListing["MISC 1"]["H_Allied_Icecrown Citadel"] = "Allied Death Knight Start"
 	elseif (APR.Class[3] == 6) then
 		APR.QuestStepListListing["MISC 1"]["H23-ScarletEnclave"] = "08-30 Death Knight Start"
 	elseif (APR.Race == "Goblin" and APR.Level < 2) then
@@ -220,6 +223,10 @@ if (APR.Faction == "Horde") then
 	APR["EasternKingdom"][22] = 1
 	APR["EasternKingdom"][23] = 1
 	APR["EasternKingdom"][25] = 1
+
+	APR["Northrend"] = {}
+	APR["Northrend"][1602] = 1
+	APR["Northrend"][2297] = 1
 
 	APR["Shadowlands"] = {}
 	APR["Shadowlands"][1409] = 1
