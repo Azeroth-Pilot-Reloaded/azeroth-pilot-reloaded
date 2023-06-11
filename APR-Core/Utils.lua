@@ -108,6 +108,13 @@ function Contains(list, x)
     return false
 end
 
+function IsTableEmpty(table)
+    if (table) then
+        return next(table) == nil
+    end
+    return false
+end
+
 function APR_AcceptQuest()
     AcceptQuest()
 end
