@@ -1,3 +1,5 @@
+local classes = require("helpers.classes")
+
 if (APR.Faction == "Alliance") then
 	APR.QuestStepListListingStartAreas = {}
 
@@ -107,11 +109,11 @@ if (APR.Faction == "Alliance") then
 		["A896-Dustvar"] = "BFA - 20-50 Dustvar",
 
 	}
-	if (APR.Class[3] == 12) then
+	if (APR.Class[3] == classes["Demon Hunter"]) then
 		APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
-	elseif (APR.Class[3] == 6 and APR.RaceID >= 23) then
+	elseif (APR.Class[3] == classes["Death Knight"] and APR.RaceID >= 23) then
 		APR.QuestStepListListing["MISC 1"]["A_Allied_Icecrown Citadel"] = "Allied Death Knight Start"
-	elseif (APR.Class[3] == 6) then
+	elseif (APR.Class[3] == classes["Death Knight"]) then
 		APR.QuestStepListListing["MISC 1"]["A23-ScarletEnclave"] = "08-30 Death Knight Start"
 	elseif (APR.Faction == "Neutral" and APR.race == 24 and APR.Level == 1) then
 		APR.QuestStepListListing["MISC 1"]["378-WanderingIsle"] = "01-30 Pandaren Start"

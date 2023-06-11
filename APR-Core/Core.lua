@@ -58,6 +58,7 @@ APR.ArrowActive_Y = 0
 APR.MiniMap_X = 0
 APR.MiniMap_Y = 0
 APR.MacroUpdaterVar = {}
+local classes = require("helpers.classes")
 
 function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First character button
 	APR1[APR.Realm][APR.Name]["routeChoiceIndex"] = routeChoice
@@ -81,11 +82,11 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 		tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "01-10 Exile's Reach")
 	end
 	if (APR.Level < 30) then
-		if (APR.Class[3] == 6 and APR.RaceID >= 23) then -- Allied DK
+		if (APR.Class[3] == classes["Death Knight"] and APR.RaceID >= 23) then -- Allied DK
 			tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "Allied Death Knight Start")
-		elseif (APR.Class[3] == 6) then                -- DK
+		elseif (APR.Class[3] == classes["Death Knight"]) then                -- DK
 			tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "08-30 Death Knight Start")
-		elseif (APR.Class[3] == 12) then               -- DH
+		elseif (APR.Class[3] == classes["Demon Hunter"]) then
 			tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "01-30 Demon Hunter Start")
 		end
 	end
@@ -109,7 +110,7 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 		end
 	elseif (routeChoice == 1) then
 		if (APR.Level < 60) then
-			if (APR.Level >= 58 and APR.Class[3] == 13) then
+			if (APR.Level >= 58 and APR.Class[3] == classes["Dracthyr"]) then
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "58-60 Dracthyr Start")
 			elseif APR.Level >= 50 then
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DEV - StoryMode Only (Not Enough XP)")

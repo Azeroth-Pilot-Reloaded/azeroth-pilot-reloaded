@@ -1,5 +1,7 @@
+local classes = require("helpers.classes")
+
 if (APR.Faction == "Alliance") then
-	if (APR.Class[3] == 1 and APR.Level < 33) then
+	if (APR.Class[3] == classes["Warrior"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -1525,7 +1527,7 @@ if (APR.Faction == "Alliance") then
 			}, -- [2]
 		}
 	end
-	if (APR.Class[3] == 2 and APR.Level < 33) then
+	if (APR.Class[3] == classes["Paladin"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -3085,7 +3087,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}
 	end
-	if (APR.Class[3] == 3 and APR.Level < 33) then
+	if (APR.Class[3] == classes["Hunter"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -4705,7 +4707,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}
 	end
-	if (APR.Class[3] == 4 and APR.Level < 33) then
+	if (APR.Class[3] == classes["Rogue"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -6258,7 +6260,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}
 	end
-	if (APR.Class[3] == 5 and APR.Level < 33) then
+	if (APR.Class[3] == classes["Priest"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -7776,7 +7778,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}
 	end
-	if (APR.Class[3] == 7 and APR.Level < 33) then
+	if (APR.Class[3] == classes["Shaman"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -9292,7 +9294,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}
 	end
-	if (APR.Class[3] == 8 and APR.Level < 33) then
+	if (APR.Class[3] == classes["Mage"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -10827,7 +10829,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}
 	end
-	if (APR.Class[3] == 9 and APR.Level < 33) then
+	if (APR.Class[3] == classes["Warlock"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -12360,7 +12362,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}
 	end
-	if (APR.Class[3] == 10 and APR.Level < 33) then
+	if (APR.Class[3] == classes["Monk"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -13883,7 +13885,7 @@ if (APR.Faction == "Alliance") then
 			},
 		}
 	end
-	if (APR.Class[3] == 11 and APR.Level < 33) then
+	if (APR.Class[3] == classes["Druid"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
