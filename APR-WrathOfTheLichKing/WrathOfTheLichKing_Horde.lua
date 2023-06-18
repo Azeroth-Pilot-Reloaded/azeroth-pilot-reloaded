@@ -1,7 +1,7 @@
 if (APR.Faction == "Horde") then
      APR.QuestStepList["H23-ScarletEnclave"] = {
           {
-          -- Step 1
+               -- Step 1
                ["PickUp"] = {
                     12593,
                },
@@ -11,7 +11,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 2
+               -- Step 2
                ["CRange"] = 12593,
                ["TT"] = {
                     ["y"] = 2413.1,
@@ -24,7 +24,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 16.93,
           },
           {
-          -- Step 3
+               -- Step 3
                ["Done"] = {
                     12593,
                },
@@ -34,7 +34,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 4
+               -- Step 4
                ["PickUp"] = {
                     12619,
                },
@@ -44,7 +44,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 5
+               -- Step 5
                ["Qpart"] = {
                     [12619] = {
                          ["1"] = "1",
@@ -61,7 +61,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 0.69,
           },
           {
-          -- Step 6
+               -- Step 6
                ["Qpart"] = {
                     [12619] = {
                          ["1"] = "1",
@@ -81,7 +81,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 7
+               -- Step 7
                ["Done"] = {
                     12619,
                },
@@ -91,7 +91,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 8
+               -- Step 8
                ["PickUp"] = {
                     12842,
                },
@@ -101,7 +101,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 9
+               -- Step 9
                ["Qpart"] = {
                     [12842] = {
                          ["1"] = "1",
@@ -118,7 +118,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 0.69,
           },
           {
-          -- Step 10
+               -- Step 10
                ["Done"] = {
                     12842,
                },
@@ -128,7 +128,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 11
+               -- Step 11
                ["PickUp"] = {
                     12848,
                },
@@ -138,7 +138,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 12
+               -- Step 12
                ["Qpart"] = {
                     [12848] = {
                          ["1"] = "1",
@@ -158,7 +158,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 13
+               -- Step 13
                ["Done"] = {
                     12848,
                },
@@ -168,7 +168,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 14
+               -- Step 14
                ["PickUp"] = {
                     12636,
                },
@@ -178,7 +178,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 15
+               -- Step 15
                ["Done"] = {
                     12636,
                },
@@ -188,7 +188,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 16
+               -- Step 16
                ["PickUp"] = {
                     12641,
                },
@@ -198,7 +198,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 17
+               -- Step 17
                ["Qpart"] = {
                     [12641] = {
                          ["4"] = "4",
@@ -218,7 +218,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 5.33,
           },
           {
-          -- Step 18
+               -- Step 18
                ["Done"] = {
                     12641,
                },
@@ -228,7 +228,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 19
+               -- Step 19
                ["PickUp"] = {
                     12657,
                },
@@ -238,7 +238,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 20
+               -- Step 20
                ["CRange"] = 12657,
                ["TT"] = {
                     ["y"] = 2387.6,
@@ -251,7 +251,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 3.97,
           },
           {
-          -- Step 21
+               -- Step 21
                ["Done"] = {
                     12657,
                },
@@ -261,7 +261,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 22
+               -- Step 22
                ["PickUp"] = {
                     12850,
                },
@@ -271,7 +271,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 23
+               -- Step 23
                ["CRange"] = 12850,
                ["TT"] = {
                     ["y"] = 2386.8,
@@ -284,7 +284,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 7.62,
           },
           {
-          -- Step 24
+               -- Step 24
                ["Done"] = {
                     12850,
                },
@@ -294,7 +294,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 25
+               -- Step 25
                ["PickUp"] = {
                     12670,
                },
@@ -304,7 +304,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 26
+               -- Step 26
                ["Done"] = {
                     12670,
                },
@@ -314,7 +314,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 27
+               -- Step 27
                ["PickUp"] = {
                     12678,
                },
@@ -324,7 +324,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 28
+               -- Step 28
                ["PickUp"] = {
                     12680,
                },
@@ -334,7 +334,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 29
+               -- Step 29
                ["PickUp"] = {
                     12679,
                },
@@ -344,7 +344,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 30
+               -- Step 30
                ["PickUp"] = {
                     12733,
                },
@@ -354,7 +354,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 31
+               -- Step 31
                ["Qpart"] = {
                     [12733] = {
                          ["1"] = "1",
@@ -372,7 +372,7 @@ if (APR.Faction == "Horde") then
                ["Gossip"] = 1,
           },
           {
-          -- Step 32
+               -- Step 32
                ["CRange"] = 12678,
                ["TT"] = {
                     ["y"] = 2284.1,
@@ -385,7 +385,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 26.24,
           },
           {
-          -- Step 33
+               -- Step 33
                ["Qpart"] = {
                     [12679] = {
                          ["1"] = "1",
@@ -408,7 +408,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 34
+               -- Step 34
                ["Qpart"] = {
                     [12678] = {
                          ["2"] = "2",
@@ -426,7 +426,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 47.19,
           },
           {
-          -- Step 35
+               -- Step 35
                ["Qpart"] = {
                     [12680] = {
                          ["1"] = "1",
@@ -443,7 +443,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 6.33,
           },
           {
-          -- Step 36
+               -- Step 36
                ["CRange"] = 12680,
                ["TT"] = {
                     ["y"] = 2207.6,
@@ -456,7 +456,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 28.23,
           },
           {
-          -- Step 37
+               -- Step 37
                ["Qpart"] = {
                     [12680] = {
                          ["1"] = "1",
@@ -473,7 +473,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 8.28,
           },
           {
-          -- Step 38
+               -- Step 38
                ["Done"] = {
                     12680,
                },
@@ -483,7 +483,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 39
+               -- Step 39
                ["PickUp"] = {
                     12687,
                },
@@ -493,7 +493,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 40
+               -- Step 40
                ["CRange"] = 12687,
                ["TT"] = {
                     ["y"] = 2231.5,
@@ -506,7 +506,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 24.04,
           },
           {
-          -- Step 41
+               -- Step 41
                ["Qpart"] = {
                     [12687] = {
                          ["1"] = "1",
@@ -523,7 +523,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 7.83,
           },
           {
-          -- Step 42
+               -- Step 42
                ["Done"] = {
                     12687,
                },
@@ -533,7 +533,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 43
+               -- Step 43
                ["Done"] = {
                     12678,
                },
@@ -543,7 +543,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 44
+               -- Step 44
                ["Done"] = {
                     12679,
                },
@@ -553,7 +553,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 45
+               -- Step 45
                ["Done"] = {
                     12733,
                },
@@ -563,7 +563,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 46
+               -- Step 46
                ["PickUp"] = {
                     12697,
                },
@@ -573,7 +573,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 47
+               -- Step 47
                ["Done"] = {
                     12697,
                },
@@ -583,7 +583,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 48
+               -- Step 48
                ["PickUp"] = {
                     12698,
                },
@@ -593,7 +593,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 49
+               -- Step 49
                ["Qpart"] = {
                     [12698] = {
                          ["1"] = "1",
@@ -613,7 +613,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 50
+               -- Step 50
                ["Done"] = {
                     12698,
                },
@@ -623,7 +623,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 51
+               -- Step 51
                ["PickUp"] = {
                     12700,
                },
@@ -633,7 +633,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 52
+               -- Step 52
                ["Done"] = {
                     12700,
                },
@@ -643,7 +643,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 53
+               -- Step 53
                ["PickUp"] = {
                     12701,
                },
@@ -653,7 +653,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 54
+               -- Step 54
                ["Qpart"] = {
                     [12701] = {
                          ["1"] = "1",
@@ -670,7 +670,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 9.18,
           },
           {
-          -- Step 55
+               -- Step 55
                ["Done"] = {
                     12701,
                },
@@ -680,7 +680,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 56
+               -- Step 56
                ["PickUp"] = {
                     12706,
                },
@@ -690,7 +690,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 57
+               -- Step 57
                ["CRange"] = 12706,
                ["TT"] = {
                     ["y"] = 2403.1,
@@ -703,7 +703,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 5.95,
           },
           {
-          -- Step 58
+               -- Step 58
                ["Done"] = {
                     12706,
                },
@@ -713,7 +713,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 59
+               -- Step 59
                ["PickUp"] = {
                     12714,
                },
@@ -723,7 +723,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 60
+               -- Step 60
                ["CRange"] = 12714,
                ["TT"] = {
                     ["y"] = 2326.5,
@@ -736,7 +736,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 8.12,
           },
           {
-          -- Step 61
+               -- Step 61
                ["Done"] = {
                     12714,
                },
@@ -746,7 +746,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 62
+               -- Step 62
                ["PickUp"] = {
                     12715,
                },
@@ -756,7 +756,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 63
+               -- Step 63
                ["PickUp"] = {
                     12716,
                },
@@ -766,7 +766,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 64
+               -- Step 64
                ["CRange"] = 12715,
                ["TT"] = {
                     ["y"] = 1863.8,
@@ -779,7 +779,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 7.73,
           },
           {
-          -- Step 65
+               -- Step 65
                ["CRange"] = 12715,
                ["TT"] = {
                     ["y"] = 1864.0,
@@ -792,7 +792,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 4.27,
           },
           {
-          -- Step 66
+               -- Step 66
                ["CRange"] = 12715,
                ["TT"] = {
                     ["y"] = 1877.5,
@@ -805,7 +805,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 4.6,
           },
           {
-          -- Step 67
+               -- Step 67
                ["Done"] = {
                     12715,
                },
@@ -815,7 +815,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 68
+               -- Step 68
                ["PickUp"] = {
                     12719,
                },
@@ -825,7 +825,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 69
+               -- Step 69
                ["PickUp"] = {
                     12722,
                },
@@ -835,7 +835,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 70
+               -- Step 70
                ["CRange"] = 12722,
                ["TT"] = {
                     ["y"] = 1876.9,
@@ -848,7 +848,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 4.46,
           },
           {
-          -- Step 71
+               -- Step 71
                ["CRange"] = 12722,
                ["TT"] = {
                     ["y"] = 1862.2,
@@ -861,7 +861,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 3.73,
           },
           {
-          -- Step 72
+               -- Step 72
                ["CRange"] = 12722,
                ["TT"] = {
                     ["y"] = 1859.9,
@@ -874,7 +874,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 7.08,
           },
           {
-          -- Step 73
+               -- Step 73
                ["Qpart"] = {
                     [12716] = {
                          ["2"] = "2",
@@ -897,7 +897,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 74
+               -- Step 74
                ["CRange"] = 12716,
                ["TT"] = {
                     ["y"] = 1727.4,
@@ -910,7 +910,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 11.45,
           },
           {
-          -- Step 75
+               -- Step 75
                ["CRange"] = 12716,
                ["TT"] = {
                     ["y"] = 1769.4,
@@ -923,7 +923,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 6.59,
           },
           {
-          -- Step 76
+               -- Step 76
                ["CRange"] = 12716,
                ["TT"] = {
                     ["y"] = 1774.2,
@@ -936,7 +936,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 4.16,
           },
           {
-          -- Step 77
+               -- Step 77
                ["Qpart"] = {
                     [12716] = {
                          ["1"] = "1",
@@ -959,7 +959,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 78
+               -- Step 78
                ["Qpart"] = {
                     [12719] = {
                          ["2"] = "2",
@@ -986,7 +986,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 79
+               -- Step 79
                ["Qpart"] = {
                     [12716] = {
                          ["3"] = "3",
@@ -1007,7 +1007,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 27.4,
           },
           {
-          -- Step 80
+               -- Step 80
                ["CRange"] = 12719,
                ["TT"] = {
                     ["y"] = 1860.9,
@@ -1020,7 +1020,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 8.48,
           },
           {
-          -- Step 81
+               -- Step 81
                ["CRange"] = 12719,
                ["TT"] = {
                     ["y"] = 1864.8,
@@ -1033,7 +1033,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 3.96,
           },
           {
-          -- Step 82
+               -- Step 82
                ["Done"] = {
                     12719,
                },
@@ -1043,7 +1043,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 83
+               -- Step 83
                ["PickUp"] = {
                     12720,
                },
@@ -1053,7 +1053,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 84
+               -- Step 84
                ["Done"] = {
                     12722,
                },
@@ -1063,7 +1063,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 85
+               -- Step 85
                ["Done"] = {
                     12716,
                },
@@ -1073,7 +1073,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 86
+               -- Step 86
                ["PickUp"] = {
                     12717,
                },
@@ -1083,7 +1083,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 87
+               -- Step 87
                ["Done"] = {
                     12717,
                },
@@ -1093,7 +1093,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 88
+               -- Step 88
                ["Qpart"] = {
                     [12720] = {
                          ["1"] = "1",
@@ -1113,7 +1113,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 89
+               -- Step 89
                ["Done"] = {
                     12720,
                },
@@ -1123,7 +1123,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 90
+               -- Step 90
                ["PickUp"] = {
                     12723,
                },
@@ -1133,7 +1133,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 91
+               -- Step 91
                ["CRange"] = 12723,
                ["TT"] = {
                     ["y"] = 1754.3,
@@ -1146,7 +1146,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 34.96,
           },
           {
-          -- Step 92
+               -- Step 92
                ["Done"] = {
                     12723,
                },
@@ -1156,7 +1156,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 93
+               -- Step 93
                ["PickUp"] = {
                     12724,
                },
@@ -1166,7 +1166,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 94
+               -- Step 94
                ["CRange"] = 12724,
                ["TT"] = {
                     ["y"] = 1649.3,
@@ -1179,7 +1179,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 15.06,
           },
           {
-          -- Step 95
+               -- Step 95
                ["Qpart"] = {
                     [12724] = {
                          ["1"] = "1",
@@ -1196,7 +1196,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 9.52,
           },
           {
-          -- Step 96
+               -- Step 96
                ["Done"] = {
                     12724,
                },
@@ -1206,7 +1206,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 97
+               -- Step 97
                ["PickUp"] = {
                     12725,
                },
@@ -1216,7 +1216,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 98
+               -- Step 98
                ["Done"] = {
                     12725,
                },
@@ -1226,7 +1226,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 99
+               -- Step 99
                ["PickUp"] = {
                     12727,
                },
@@ -1236,7 +1236,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 100
+               -- Step 100
                ["Qpart"] = {
                     [12727] = {
                          ["1"] = "1",
@@ -1253,7 +1253,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 5.03,
           },
           {
-          -- Step 101
+               -- Step 101
                ["Done"] = {
                     12727,
                },
@@ -1263,7 +1263,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 102
+               -- Step 102
                ["PickUp"] = {
                     12738,
                },
@@ -1273,7 +1273,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 103
+               -- Step 103
                ["Done"] = {
                     12738,
                },
@@ -1283,7 +1283,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 104
+               -- Step 104
                ["PickUp"] = {
                     12739,
                },
@@ -1301,7 +1301,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 105
+               -- Step 105
                ["Qpart"] = {
                     [12739] = {
                          ["1"] = "1",
@@ -1326,7 +1326,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 106
+               -- Step 106
                ["Done"] = {
                     12739,
                },
@@ -1344,7 +1344,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 107
+               -- Step 107
                ["PickUp"] = {
                     12751,
                },
@@ -1354,7 +1354,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 108
+               -- Step 108
                ["Done"] = {
                     12751,
                },
@@ -1364,7 +1364,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 109
+               -- Step 109
                ["PickUp"] = {
                     12754,
                },
@@ -1374,7 +1374,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 110
+               -- Step 110
                ["Qpart"] = {
                     [12754] = {
                          ["1"] = "1",
@@ -1394,7 +1394,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 111
+               -- Step 111
                ["Qpart"] = {
                     [12754] = {
                          ["2"] = "2",
@@ -1411,7 +1411,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 7.38,
           },
           {
-          -- Step 112
+               -- Step 112
                ["Done"] = {
                     12754,
                },
@@ -1421,7 +1421,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 113
+               -- Step 113
                ["PickUp"] = {
                     12755,
                },
@@ -1431,7 +1431,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 114
+               -- Step 114
                ["CRange"] = 12755,
                ["TT"] = {
                     ["y"] = 1296.4,
@@ -1444,7 +1444,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 23.39,
           },
           {
-          -- Step 115
+               -- Step 115
                ["Done"] = {
                     12755,
                },
@@ -1454,7 +1454,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 116
+               -- Step 116
                ["PickUp"] = {
                     12756,
                },
@@ -1464,7 +1464,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 117
+               -- Step 117
                ["Done"] = {
                     12756,
                },
@@ -1474,7 +1474,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 118
+               -- Step 118
                ["PickUp"] = {
                     12757,
                },
@@ -1484,7 +1484,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 119
+               -- Step 119
                ["Done"] = {
                     12757,
                },
@@ -1494,7 +1494,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 120
+               -- Step 120
                ["PickUp"] = {
                     12778,
                },
@@ -1504,7 +1504,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 121
+               -- Step 121
                ["CRange"] = 12778,
                ["TT"] = {
                     ["y"] = 2349.3,
@@ -1517,7 +1517,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 8.93,
           },
           {
-          -- Step 122
+               -- Step 122
                ["Done"] = {
                     12778,
                },
@@ -1527,7 +1527,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 123
+               -- Step 123
                ["PickUp"] = {
                     12779,
                },
@@ -1537,7 +1537,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 124
+               -- Step 124
                ["Qpart"] = {
                     [12779] = {
                          ["2"] = "2",
@@ -1558,7 +1558,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 125
+               -- Step 125
                ["Done"] = {
                     12779,
                },
@@ -1568,7 +1568,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 126
+               -- Step 126
                ["PickUp"] = {
                     12800,
                },
@@ -1578,7 +1578,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 127
+               -- Step 127
                ["CRange"] = 12800,
                ["TT"] = {
                     ["y"] = 2576.5,
@@ -1591,7 +1591,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 26.3,
           },
           {
-          -- Step 128
+               -- Step 128
                ["CRange"] = 12800,
                ["TT"] = {
                     ["y"] = 2680.0,
@@ -1604,7 +1604,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 33.13,
           },
           {
-          -- Step 129
+               -- Step 129
                ["Done"] = {
                     12800,
                },
@@ -1614,7 +1614,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 130
+               -- Step 130
                ["PickUp"] = {
                     12801,
                },
@@ -1624,7 +1624,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 131
+               -- Step 131
                ["Qpart"] = {
                     [12801] = {
                          ["1"] = "1",
@@ -1641,7 +1641,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 35.57,
           },
           {
-          -- Step 132
+               -- Step 132
                ["Done"] = {
                     12801,
                },
@@ -1651,7 +1651,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 133
+               -- Step 133
                ["PickUp"] = {
                     13165,
                },
@@ -1661,7 +1661,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 134
+               -- Step 134
                ["Done"] = {
                     13165,
                },
@@ -1671,7 +1671,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 135
+               -- Step 135
                ["Done"] = {
                     13165,
                },
@@ -1681,7 +1681,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 136
+               -- Step 136
                ["PickUp"] = {
                     13166,
                },
@@ -1691,7 +1691,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 137
+               -- Step 137
                ["CRange"] = 13166,
                ["TT"] = {
                     ["y"] = 2393.5,
@@ -1704,7 +1704,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 8.99,
           },
           {
-          -- Step 138
+               -- Step 138
                ["Qpart"] = {
                     [13166] = {
                          ["2"] = "2",
@@ -1722,7 +1722,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 10.18,
           },
           {
-          -- Step 139
+               -- Step 139
                ["CRange"] = 13166,
                ["TT"] = {
                     ["y"] = 2389.6,
@@ -1735,7 +1735,7 @@ if (APR.Faction == "Horde") then
                ["Range"] = 5.88,
           },
           {
-          -- Step 140
+               -- Step 140
                ["Done"] = {
                     13166,
                },
@@ -1745,7 +1745,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 141
+               -- Step 141
                ["PickUp"] = {
                     13189,
                },
@@ -1755,7 +1755,7 @@ if (APR.Faction == "Horde") then
                },
           },
           {
-          -- Step 142
+               -- Step 142
                ["CRange"] = 13189,
                ["TT"] = {
                     ["y"] = 2348.4,
@@ -1769,7 +1769,7 @@ if (APR.Faction == "Horde") then
                ["ExtraLineText"] = "TAKE_PORTAL_ORGRIMMAR",
           },
           {
-          -- Step 143
+               -- Step 143
                ["Done"] = {
                     13189,
                },
@@ -1780,6 +1780,121 @@ if (APR.Faction == "Horde") then
                ["ExtraLineText"] = "MAKE_YOUR_WAY_WHOEVER_IS_CURRENTLY_WARCHIEF_IN_GROMMASH_HOLD",
           },
           { -- Step 144
+               ["ZoneDoneSave"] = 1,
+          },
+     }
+     APR.QuestStepList["H_Allied_Icecrown Citadel"] = {
+          {
+               -- Step 1
+               ["PickUp"] = {
+                    58877,
+               },
+               ["TT"] = {
+                    ["y"] = 429,
+                    ["x"] = -2123.4,
+               },
+          },
+          {
+               -- Step 1
+               ["Qpart"] = {
+                    [58877] = {
+                         ["1"] = "1",
+                    },
+               },
+               ["TT"] = {
+                    ["y"] = 429,
+                    ["x"] = -2123.4,
+               },
+               ["Trigger"] = {
+                    ["y"] = 429,
+                    ["x"] = -2123.4,
+               },
+               ["Range"] = 0.5,
+          },
+          {
+               -- Step 3
+               ["Done"] = {
+                    58877,
+               },
+               ["TT"] = {
+                    ["y"] = 429,
+                    ["x"] = -2123.4,
+               },
+          },
+          {
+               -- Step 4
+               ["PickUp"] = {
+                    58903,
+               },
+               ["TT"] = {
+                    ["y"] = 429,
+                    ["x"] = -2123.4,
+               },
+          },
+          {
+               -- Step 5
+               ["Qpart"] = {
+                    [58903] = {
+                         ["1"] = "1",
+                    },
+               },
+               ["TT"] = {
+                    ["y"] = 467.7,
+                    ["x"] = -2126.8,
+               },
+               ["Trigger"] = {
+                    ["y"] = 467.7,
+                    ["x"] = -2126.8,
+               },
+               ["Range"] = 0.5,
+               ["Gossip"] = 1,
+          },
+          {
+               -- Step 6
+               ["Qpart"] = {
+                    [58903] = {
+                         ["2"] = "2",
+                    },
+               },
+               ["TT"] = {
+                    ["y"] = 529,
+                    ["x"] = -2124.69,
+               },
+               ["Trigger"] = {
+                    ["y"] = 529,
+                    ["x"] = -2124.69,
+               },
+               ["Range"] = 0.5,
+               ["ExtraLineText"] = "USE_PORTAL",
+          },
+          {
+               -- Step 7
+               ["Qpart"] = {
+                    [58903] = {
+                         ["4"] = "4",
+                    },
+               },
+               ["TT"] = {
+                    ["y"] = 1600,
+                    ["x"] = -4370.2,
+               },
+               ["Trigger"] = {
+                    ["y"] = 1600,
+                    ["x"] = -4370.2,
+               },
+               ["Range"] = 0.5,
+          },
+          {
+               -- Step 8
+               ["Done"] = {
+                    58903,
+               },
+               ["TT"] = {
+                    ["y"] = 1600,
+                    ["x"] = -4370.2,
+               },
+          },
+          { -- Step 9
                ["ZoneDoneSave"] = 1,
           },
      }

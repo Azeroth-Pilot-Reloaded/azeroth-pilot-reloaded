@@ -92,7 +92,8 @@ if (APR.Faction == "Alliance") then
 		["DF04 - Ohn'Ahran Plains"] = 2023,
 		["DF05 - Azure Span"] = 2024,
 		["DF06 - Thaldraszus"] = 2025,
-		["58-60 Dracthyr Start"] = 2118
+		["58-60 Dracthyr Start"] = 2118,
+		["Allied Death Knight Start"] = 2297
 	}
 
 	APR.QuestStepListListing = {}
@@ -108,6 +109,8 @@ if (APR.Faction == "Alliance") then
 	}
 	if (APR.Class[3] == 12) then
 		APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
+	elseif (APR.Class[3] == 6 and APR.RaceID >= 23) then
+		APR.QuestStepListListing["MISC 1"]["A_Allied_Icecrown Citadel"] = "Allied Death Knight Start"
 	elseif (APR.Class[3] == 6) then
 		APR.QuestStepListListing["MISC 1"]["A23-ScarletEnclave"] = "08-30 Death Knight Start"
 	elseif (APR.Faction == "Neutral" and APR.race == 24 and APR.Level == 1) then
@@ -290,6 +293,10 @@ if (APR.Faction == "Alliance") then
 	APR["Kalimdor"][71] = 1
 	APR["Kalimdor"][78] = 1
 	APR["Kalimdor"][81] = 1
+
+	APR["Northrend"] = {}
+	APR["Northrend"][1602] = 1
+	APR["Northrend"][2297] = 1
 
 	APR["Dragonflight"] = {}
 	APR["Dragonflight"][2022] = 1

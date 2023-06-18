@@ -22,7 +22,7 @@ APR.SweatBuff[1] = 0
 APR.SweatBuff[2] = 0
 APR.SweatBuff[3] = 0
 
-APR.RaceLocale, APR.Race = UnitRace("player")
+APR.RaceLocale, APR.Race, APR.RaceID = UnitRace("player")
 APR.Class[1], APR.Class[2], APR.Class[3] = UnitClass("player")
 APR.QuestList = {} --where the quest parts go
 APR.NPCList = {}
@@ -81,9 +81,11 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 		tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "01-10 Exile's Reach")
 	end
 	if (APR.Level < 30) then
-		if (APR.Class[3] == 6) then
+		if (APR.Class[3] == 6 and APR.RaceID >= 23) then -- Allied DK
+			tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "Allied Death Knight Start")
+		elseif (APR.Class[3] == 6) then                -- DK
 			tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "08-30 Death Knight Start")
-		elseif (APR.Class[3] == 12) then
+		elseif (APR.Class[3] == 12) then               -- DH
 			tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "01-30 Demon Hunter Start")
 		end
 	end
