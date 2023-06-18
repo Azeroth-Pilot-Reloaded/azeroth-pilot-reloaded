@@ -60,6 +60,7 @@ APR.MiniMap_Y = 0
 APR.MacroUpdaterVar = {}
 
 function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First character button
+	APR1[APR.Realm][APR.Name]["routeChoiceIndex"] = routeChoice
 	local ZeMap = C_Map.GetBestMapForUnit("player")
 	local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
 	if (Enum and Enum.UIMapType and Enum.UIMapType.Continent and currentMapId) then
@@ -131,9 +132,6 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(7/7) 10-50 Nagrand")
 			end
 		end
-	end
-	if (APR.Level >= 60) then 
-		wipe(APR_Custom[APR.Name .. "-" .. APR.Realm])
 	end
 	-- Dragonflight
 	if (APR.Faction == "Alliance") then
@@ -2906,6 +2904,7 @@ end
 APR.CoreEventFrame = CreateFrame("Frame")
 APR.CoreEventFrame:RegisterEvent("ADDON_LOADED")
 APR.CoreEventFrame:RegisterEvent("CINEMATIC_START")
+APR.CoreEventFrame:RegisterEvent("PLAYER_LEVEL_UP")
 APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 	if (event == "ADDON_LOADED") then
 		local arg1, arg2, arg3, arg4, arg5 = ...;
@@ -3173,6 +3172,9 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 		if (not APR1[APR.Realm][APR.Name]["hideRidingSkill"]) then
 			APR1[APR.Realm][APR.Name]["hideRidingSkill"] = 0
 		end
+		if (not APR1[APR.Realm][APR.Name]["routeChoiceIndex"]) then
+			APR1[APR.Realm][APR.Name]["routeChoiceIndex"] = 0
+		end
 		if (not APR1[APR.Realm][APR.Name]["WantedQuestList"]) then
 			APR1[APR.Realm][APR.Name]["WantedQuestList"] = {}
 		end
@@ -3235,6 +3237,12 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 			if (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 1 and (steps and not steps["Dontskipvid"]) and (APR.ActiveQuests and not APR.ActiveQuests[52042])) then
 				APR.BookingList["SkipCutscene"] = 1
 			end
+		end
+	end
+	if (event == "PLAYER_LEVEL_UP") then
+		if (APR.Level >= 60 and not IsTableEmpty(APR_Custom[APR.Name .. "-" .. APR.Realm])) then
+			wipe(APR_Custom[APR.Name .. "-" .. APR.Realm])
+			APR.AutoPathOnBeta(APR1[APR.Realm][APR.Name]["routeChoiceIndex"])
 		end
 	end
 end)
