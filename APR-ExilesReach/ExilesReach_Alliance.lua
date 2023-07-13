@@ -1450,28 +1450,7 @@ if (APR.Faction == "Alliance") then
 				["RaidIcon"] = 44919,
 				["SetHS"] = 34398,
 			},
-			{
-				["Trigger"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-				["Range"] = 6.45,
-				["CRange"] = 34398,
-				["TT"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-			},
-			{
-				["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-				["SpellInTab"] = 33388,
-				["TrainRidingSkill"] = 34398,
-				["RaidIcon"] = 44919,
-				["TT"] = {
-					["y"] = -8845,
-					["x"] = 503,
-				},
-			},
+			
 			{
 				["Trigger"] = {
 					["y"] = -8769.9,
@@ -3031,28 +3010,7 @@ if (APR.Faction == "Alliance") then
 				["RaidIcon"] = 44919,
 				["SetHS"] = 34398,
 			},
-			{
-				["Trigger"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-				["Range"] = 6.45,
-				["CRange"] = 34398,
-				["TT"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-			},
-			{
-				["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-				["SpellInTab"] = 33388,
-				["TrainRidingSkill"] = 34398,
-				["RaidIcon"] = 44919,
-				["TT"] = {
-					["y"] = -8845,
-					["x"] = 503,
-				},
-			},
+			
 			{
 				["Trigger"] = {
 					["y"] = -8769.9,
@@ -4672,28 +4630,7 @@ if (APR.Faction == "Alliance") then
 				["RaidIcon"] = 44919,
 				["SetHS"] = 34398,
 			},
-			{
-				["Trigger"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-				["Range"] = 6.45,
-				["CRange"] = 34398,
-				["TT"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-			},
-			{
-				["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-				["SpellInTab"] = 33388,
-				["TrainRidingSkill"] = 34398,
-				["RaidIcon"] = 44919,
-				["TT"] = {
-					["y"] = -8845,
-					["x"] = 503,
-				},
-			},
+			
 			{
 				["Trigger"] = {
 					["y"] = -8769.9,
@@ -6246,28 +6183,7 @@ if (APR.Faction == "Alliance") then
 				["RaidIcon"] = 44919,
 				["SetHS"] = 34398,
 			},
-			{
-				["Trigger"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-				["Range"] = 6.45,
-				["CRange"] = 34398,
-				["TT"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-			},
-			{
-				["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-				["SpellInTab"] = 33388,
-				["TrainRidingSkill"] = 34398,
-				["RaidIcon"] = 44919,
-				["TT"] = {
-					["y"] = -8845,
-					["x"] = 503,
-				},
-			},
+			
 			{
 				["Trigger"] = {
 					["y"] = -8769.9,
@@ -7785,28 +7701,7 @@ if (APR.Faction == "Alliance") then
 				["RaidIcon"] = 44919,
 				["SetHS"] = 34398,
 			},
-			{
-				["Trigger"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-				["Range"] = 6.45,
-				["CRange"] = 34398,
-				["TT"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-			},
-			{
-				["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-				["SpellInTab"] = 33388,
-				["TrainRidingSkill"] = 34398,
-				["RaidIcon"] = 44919,
-				["TT"] = {
-					["y"] = -8845,
-					["x"] = 503,
-				},
-			},
+			
 			{
 				["Trigger"] = {
 					["y"] = -8769.9,
@@ -9322,28 +9217,7 @@ if (APR.Faction == "Alliance") then
 				["RaidIcon"] = 44919,
 				["SetHS"] = 34398,
 			},
-			{
-				["Trigger"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-				["Range"] = 6.45,
-				["CRange"] = 34398,
-				["TT"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-			},
-			{
-				["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-				["SpellInTab"] = 33388,
-				["TrainRidingSkill"] = 34398,
-				["RaidIcon"] = 44919,
-				["TT"] = {
-					["y"] = -8845,
-					["x"] = 503,
-				},
-			},
+			
 			{
 				["Trigger"] = {
 					["y"] = -8769.9,
@@ -10878,28 +10752,7 @@ if (APR.Faction == "Alliance") then
 				["RaidIcon"] = 44919,
 				["SetHS"] = 34398,
 			},
-			{
-				["Trigger"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-				["Range"] = 6.45,
-				["CRange"] = 34398,
-				["TT"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-			},
-			{
-				["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-				["SpellInTab"] = 33388,
-				["TrainRidingSkill"] = 34398,
-				["RaidIcon"] = 44919,
-				["TT"] = {
-					["y"] = -8845,
-					["x"] = 503,
-				},
-			},
+			
 			{
 				["Trigger"] = {
 					["y"] = -8769.9,
@@ -12432,28 +12285,7 @@ if (APR.Faction == "Alliance") then
 				["RaidIcon"] = 44919,
 				["SetHS"] = 34398,
 			},
-			{
-				["Trigger"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-				["Range"] = 6.45,
-				["CRange"] = 34398,
-				["TT"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-			},
-			{
-				["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-				["SpellInTab"] = 33388,
-				["TrainRidingSkill"] = 34398,
-				["RaidIcon"] = 44919,
-				["TT"] = {
-					["y"] = -8845,
-					["x"] = 503,
-				},
-			},
+			
 			{
 				["Trigger"] = {
 					["y"] = -8769.9,
@@ -13976,28 +13808,7 @@ if (APR.Faction == "Alliance") then
 				["RaidIcon"] = 44919,
 				["SetHS"] = 34398,
 			},
-			{
-				["Trigger"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-				["Range"] = 6.45,
-				["CRange"] = 34398,
-				["TT"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-			},
-			{
-				["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-				["SpellInTab"] = 33388,
-				["TrainRidingSkill"] = 34398,
-				["RaidIcon"] = 44919,
-				["TT"] = {
-					["y"] = -8845,
-					["x"] = 503,
-				},
-			},
+			
 			{
 				["Trigger"] = {
 					["y"] = -8769.9,
@@ -15482,28 +15293,7 @@ if (APR.Faction == "Alliance") then
 				["RaidIcon"] = 44919,
 				["SetHS"] = 34398,
 			},
-			{
-				["Trigger"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-				["Range"] = 6.45,
-				["CRange"] = 34398,
-				["TT"] = {
-					["y"] = -8806.8,
-					["x"] = 596.7,
-				},
-			},
-			{
-				["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-				["SpellInTab"] = 33388,
-				["TrainRidingSkill"] = 34398,
-				["RaidIcon"] = 44919,
-				["TT"] = {
-					["y"] = -8845,
-					["x"] = 503,
-				},
-			},
+			
 			{
 				["Trigger"] = {
 					["y"] = -8769.9,

@@ -3746,17 +3746,6 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 		["WarMode"] = 34230,
 	},
 	{
-		["DoIHaveFlight"] = 1,
-		["ExtraLineText"] = "GET_JOURNEYMAN_RIDING",
-		["SpellInTab"] = 33391,
-		["TrainRidingSkill"] = 34230,
-		["RaidIcon"] = 44919,
-		["TT"] = {
-			["y"] = 1799.5,
-			["x"] = -4356.7,
-		},
-	},
-	{
 		["UseGarrisonHS"] = 34230,
 		["TT"] = {
 			["y"] = 1799.5,
