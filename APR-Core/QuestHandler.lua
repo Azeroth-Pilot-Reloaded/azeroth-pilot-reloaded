@@ -835,8 +835,6 @@ local function APR_PrintQStep()
 			StepP = "UseGarrisonHS"
 		elseif (steps["ZoneDone"]) then
 			StepP = "ZoneDone"
-		elseif (steps["TrainRidingSkill"]) then
-			StepP = "TrainRiding"
 		end
 		if (steps["BreadCrum"]) then
 			APR.ChkBreadcrums(steps["BreadCrum"])
@@ -1041,27 +1039,6 @@ local function APR_PrintQStep()
 			end
 		end
 
-		if (not CheckRidingSkill(90265)) then
-			if (APR.Level >= 40 and APR.Level < 60) then
-				DisplayRiding(L["YOU_CAN_LEARN"] .. " " .. L["MASTER_RIDING"])
-			elseif (APR.Level >= 30 and APR.Level < 40 and not CheckRidingSkill(34090)) then
-				local ridingText
-				if (APR.Faction == "Alliance" and APR.ActiveMap and APR.ActiveMap == "A543-DesMephisto-Gorgrond") then
-					ridingText = L["USE_HEARTHSTONE"] ..
-							" " .. L["GO_TO"] .. " Stormwind, " .. L["YOU_CAN_LEARN"] .. " " .. L["EXPERT_RIDING"]
-				elseif (APR.Faction == "Horde" and APR.ActiveMap and APR.ActiveMap == "543-DesMephisto-Gorgrond-p1") then
-					ridingText = L["USE_HEARTHSTONE"] ..
-							" " .. L["GO_TO"] .. " Orgrimmar, " .. L["YOU_CAN_LEARN"] .. " " .. L["EXPERT_RIDING"]
-				else
-					ridingText = L["YOU_CAN_LEARN"] .. " " .. L["EXPERT_RIDING"]
-				end
-				DisplayRiding(ridingText)
-			elseif (APR.Level >= 20 and APR.Level < 30 and not CheckRidingSkill(33391)) then
-				DisplayRiding(L["YOU_CAN_LEARN"] .. " " .. L["JOURNEYMAN_RIDING"])
-			elseif (APR.Level >= 10 and APR.Level < 20 and not CheckRidingSkill(33388)) then
-				DisplayRiding(L["YOU_CAN_LEARN"] .. " " .. L["APPRENTICE_RIDING"])
-			end
-		end
 		if ((steps["ExtraLine"] or steps["ExtraLineText"]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
 			LineNr = LineNr + 1
 			local APRExtraLine = steps["ExtraLine"]
@@ -1486,12 +1463,6 @@ local function APR_PrintQStep()
 						APR.QuestList.QuestFrames[LineNr]:SetWidth(410)
 					end
 				end
-			end
-		elseif (StepP == "TrainRiding") then
-			if (C_QuestLog.IsQuestFlaggedCompleted(steps["TrainRidingSkill"]) or CheckRidingSkill(steps["SpellInTab"])) then
-				APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
-				APR.BookingList["UpdateQuest"] = 1
-				APR.BookingList["PrintQStep"] = 1
 			end
 		elseif (StepP == "Treasure") then
 			IdList = steps["Treasure"]

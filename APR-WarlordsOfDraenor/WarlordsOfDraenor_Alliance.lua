@@ -3488,17 +3488,6 @@ APR.QuestStepList["A539-DesMephisto-Shadowmoon1"] = {
 	}, -- [5]
 	{
 		["DoIHaveFlight"] = 1,
-		["ExtraLineText"] = "GET_JOURNEYMAN_RIDING",
-		["SpellInTab"] = 33391,
-		["TrainRidingSkill"] = 35556,
-		["RaidIcon"] = 43693,
-		["TT"] = {
-			["y"] = -8779.8,
-			["x"] = 380.8,
-		},
-	},
-	{
-		["DoIHaveFlight"] = 1,
 		["WarMode"] = 35556,
 	},
 	{
