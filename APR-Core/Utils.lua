@@ -1,5 +1,3 @@
-local L = LibStub("AceLocale-3.0"):GetLocale("APR", false)
-
 --[[
 Return a string with surrounding stars
 
@@ -38,82 +36,15 @@ end
 
 function GetTargetID(unit)
     unit = unit or "target"
-    local target = UnitGUID("target")
+    local target = UnitGUID(unit)
     if (target and string.find(target, "(.*)-(.*)")) then
-        local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-", target)
+        local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid =
+        strsplit("-", target)
         return tonumber(npc_id)
     end
     return nil
 end
 
-function CheckDenyNPC(steps)
-    if (steps and steps["DenyNPC"]) then
-        local npc_id, name = GetTargetID(), UnitName("target")
-        if (npc_id and name) then
-            if (npc_id == steps["DenyNPC"]) then
-                C_GossipInfo.CloseGossip()
-                C_Timer.After(0.3, APR_CloseQuest)
-                print("APR: " .. L["NOT_YET"])
-            end
-        end
-    end
-end
+function NumToBool(value) return value == 1 end
 
-function GetSteps(CurStep)
-    if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
-        return APR.QuestStepList[APR.ActiveMap][CurStep]
-    end
-    return nil
-end
-
-function IsARouteQuest(questId)
-    local steps = GetSteps(APR1[APR.Realm][APR.Name][APR.ActiveMap])
-    if (steps) then
-        if Contains(steps["PickUp"], questId) or Contains(steps["PickUpDB"], questId) then
-            return true
-        end
-    end
-    return false
-end
-
-function IsPickupStep()
-    local steps = GetSteps(APR1[APR.Realm][APR.Name][APR.ActiveMap])
-    if (steps) then
-        if steps["PickUp"] or steps["PickUpDB"] then
-            return true
-        end
-    end
-    return false
-end
-
-function NumToBool(value)
-    return value == 1
-end
-
-function Booltonumber(value)
-    return value and 1 or 0
-end
-
-function Contains(list, x)
-    if list then
-        for _, v in pairs(list) do
-            if v == x then return true end
-        end
-    end
-    return false
-end
-
-function IsTableEmpty(table)
-    if (table) then
-        return next(table) == nil
-    end
-    return false
-end
-
-function APR_AcceptQuest()
-    AcceptQuest()
-end
-
-function APR_CloseQuest()
-    CloseQuest()
-end
+function Booltonumber(value) return value and 1 or 0 end

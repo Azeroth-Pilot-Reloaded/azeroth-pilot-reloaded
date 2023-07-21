@@ -1,20 +1,17 @@
 if (APR.Faction == "Alliance") then
      -- Stormwind
      APR.QuestStepList["DF01A-84-Stormwind"] = {
-          {
-               -- Step 1
+          { -- Step 1
                ["Done"] = {
                     65436,
                },
           },
-          {
-               -- Step 2
+          { -- Step 2
                ["PickUp"] = {
                     66577,
                },
           },
-          {
-               -- Step 3
+          { -- Step 3
                ["Qpart"] = {
                     [66577] = {
                          ["1"] = "1",
@@ -26,26 +23,22 @@ if (APR.Faction == "Alliance") then
                },
                ["Gossip"] = 1,
           },
-          {
-               -- Step 4
+          { -- Step 4
                ["Done"] = {
                     66577,
                },
           },
-          {
-               -- Step 5
+          { -- Step 5
                ["PickUp"] = {
                     72240,
                },
           },
-          {
-               -- Step 6
+          { -- Step 6
                ["PickUp"] = {
                     66589,
                },
           },
-          {
-               -- Step 7
+          { -- Step 7
                ["Qpart"] = {
                     [66589] = {
                          ["1"] = "1",
@@ -60,14 +53,12 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 608.6,
                },
                ["Range"] = 2,
-               ["ExtraLineText"] = "RECRUIT_ARTISANS",
                ["Gossip"] = 1,
           },
-          {
-               -- Step 8
+          { -- Step 8
                ["Qpart"] = {
                     [66589] = {
-                         ["3"] = "3",
+                         ["2"] = "2",
                     },
                },
                ["TT"] = {
@@ -79,11 +70,9 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 622.4,
                },
                ["Range"] = 2,
-               ["ExtraLineText"] = "RECRUIT_SCHOLARS",
                ["Gossip"] = 1,
           },
-          {
-               -- Step 9
+          { -- Step 9
                ["Qpart"] = {
                     [72240] = {
                          ["1"] = "1",
@@ -100,11 +89,10 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["Gossip"] = 1,
           },
-          {
-               -- Step 10
+          { -- Step 10
                ["Qpart"] = {
                     [66589] = {
-                         ["2"] = "2",
+                         ["3"] = "3",
                     },
                },
                ["TT"] = {
@@ -116,11 +104,9 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 1058.5,
                },
                ["Range"] = 2,
-               ["ExtraLineText"] = "RECRUIT_EXPLORERS",
                ["Gossip"] = 1,
           },
-          {
-               -- Step 11
+          { -- Step 11
                ["Done"] = {
                     66589,
                },
@@ -129,8 +115,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 1328.2,
                },
           },
-          {
-               -- Step 12
+          { -- Step 12
                ["Done"] = {
                     72240,
                },
@@ -139,8 +124,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 1328.2,
                },
           },
-          {
-               -- Step 13
+          { -- Step 13
                ["PickUp"] = {
                     66596,
                },
@@ -149,8 +133,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 1323.4,
                },
           },
-          {
-               -- Step 14
+          { -- Step 14
                ["Qpart"] = {
                     [66596] = {
                          ["1"] = "1",
@@ -167,8 +150,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["Gossip"] = 1,
           },
-          {
-               -- Step 15
+          { -- Step 15
                ["Done"] = {
                     66596,
                },
@@ -177,8 +159,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 1324.4,
                },
           },
-          {
-               -- Step 16
+          { -- Step 16
                ["PickUp"] = {
                     67700,
                },
@@ -187,8 +168,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 1328.2,
                },
           },
-          {
-               -- Step 17
+          { -- Step 17
                ["CRange"] = 67700,
                ["TT"] = {
                     ["y"] = -8640.6,
@@ -201,8 +181,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 10,
                ["ExtraLineText"] = "WAIT_FOR_SHIP",
           },
-          {
-               -- Step 18
+          { -- Step 18
                ["Qpart"] = {
                     [67700] = {
                          ["1"] = "1",
@@ -219,8 +198,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 0.5,
                ["ExtraLineText"] = "WAIT_FOR_SHIP",
           },
-          {
-               -- Step 19
+          { -- Step 19
                ["Done"] = {
                     67700,
                },
@@ -230,11 +208,9 @@ if (APR.Faction == "Alliance") then
           },
      }
 
-
      -- WakingShores
      APR.QuestStepList["DF03A-2022-WakingShores"] = {
-          {
-               -- Step 1
+          { -- Step 1
                ["Done"] = {
                     67700,
                },
@@ -243,8 +219,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1898.5,
                },
           },
-          {
-               -- Step 2
+          { -- Step 2
                ["PickUp"] = {
                     70122,
                },
@@ -253,8 +228,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1898.5,
                },
           },
-          {
-               -- Step 3
+          { -- Step 3
                ["PickUp"] = {
                     70123,
                },
@@ -263,8 +237,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1901.0,
                },
           },
-          {
-               -- Step 4
+          { -- Step 4
                ["PickUp"] = {
                     70124,
                },
@@ -273,8 +246,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1896.0,
                },
           },
-          {
-               -- Step 5
+          { -- Step 5
                ["Qpart"] = {
                     [70122] = {
                          ["1"] = "1",
@@ -298,8 +270,7 @@ if (APR.Faction == "Alliance") then
                     },
                },
           },
-          {
-               -- Step 6
+          { -- Step 6
                ["Qpart"] = {
                     [70122] = {
                          ["2"] = "2",
@@ -323,8 +294,7 @@ if (APR.Faction == "Alliance") then
                     },
                },
           },
-          {
-               -- Step 7
+          { -- Step 7
                ["Qpart"] = {
                     [70122] = {
                          ["3"] = "3",
@@ -348,8 +318,7 @@ if (APR.Faction == "Alliance") then
                     },
                },
           },
-          {
-               -- Step 8
+          { -- Step 8
                ["Qpart"] = {
                     [70123] = {
                          ["1"] = "1",
@@ -365,8 +334,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 180,
           },
-          {
-               -- Step 9
+          { -- Step 9
                ["Qpart"] = {
                     [70124] = {
                          ["1"] = "1",
@@ -382,8 +350,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 180,
           },
-          {
-               -- Step 10
+          { -- Step 10
                ["Done"] = {
                     70122,
                },
@@ -392,8 +359,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1459.9,
                },
           },
-          {
-               -- Step 11
+          { -- Step 11
                ["PickUp"] = {
                     70125,
                },
@@ -402,8 +368,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1459.9,
                },
           },
-          {
-               -- Step 12
+          { -- Step 12
                ["Qpart"] = {
                     [70125] = {
                          ["1"] = "1",
@@ -421,8 +386,7 @@ if (APR.Faction == "Alliance") then
                ["ExtraLineText"] = "CHOOSE_WHY_ARENT_DRAGONS_HERE_MEET_US",
                ["Gossip"] = 1,
           },
-          {
-               -- Step 13
+          { -- Step 13
                ["Done"] = {
                     70125,
                },
@@ -431,8 +395,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1455.9,
                },
           },
-          {
-               -- Step 14
+          { -- Step 14
                ["PickUp"] = {
                     69911,
                },
@@ -441,8 +404,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1455.9,
                },
           },
-          {
-               -- Step 15
+          { -- Step 15
                ["Done"] = {
                     70123,
                },
@@ -451,8 +413,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1469.2,
                },
           },
-          {
-               -- Step 16
+          { -- Step 16
                ["PickUp"] = {
                     67053,
                },
@@ -461,8 +422,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1467.8,
                },
           },
-          {
-               -- Step 17
+          { -- Step 17
                ["Done"] = {
                     70124,
                },
@@ -471,8 +431,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1447.8,
                },
           },
-          {
-               -- Step 18
+          { -- Step 18
                ["Done"] = {
                     67053,
                },
@@ -481,8 +440,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1438.4,
                },
           },
-          {
-               -- Step 19
+          { -- Step 19
                ["PickUp"] = {
                     70135,
                },
@@ -491,8 +449,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1438.4,
                },
           },
-          {
-               -- Step 20
+          { -- Step 20
                ["PickUp"] = {
                     66101,
                },
@@ -501,8 +458,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1397.9,
                },
           },
-          {
-               -- Step 21
+          { -- Step 21
                ["Qpart"] = {
                     [66101] = {
                          ["1"] = "1",
@@ -519,8 +475,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 5,
                ["ExtraLineText"] = "CLICK_SURVEYORS_DISC",
           },
-          {
-               -- Step 22
+          { -- Step 22
                ["Qpart"] = {
                     [66101] = {
                          ["2"] = "2",
@@ -536,9 +491,9 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 5,
                ["ExtraLineText"] = "PRESS_1",
+               ["Dontskipvid"] = 1,
           },
-          {
-               -- Step 23
+          { -- Step 23
                ["Qpart"] = {
                     [66101] = {
                          ["3"] = "3",
@@ -554,9 +509,9 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 5,
                ["ExtraLineText"] = "PRESS_2",
+               ["Dontskipvid"] = 1,
           },
-          {
-               -- Step 24
+          { -- Step 24
                ["Qpart"] = {
                     [66101] = {
                          ["4"] = "4",
@@ -573,8 +528,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 5,
                ["ExtraLineText"] = "PRESS_3",
           },
-          {
-               -- Step 25
+          { -- Step 25
                ["Done"] = {
                     66101,
                },
@@ -583,8 +537,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1397.9,
                },
           },
-          {
-               -- Step 26
+          { -- Step 26
                ["PickUp"] = {
                     69965,
                },
@@ -593,8 +546,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1442.4,
                },
           },
-          {
-               -- Step 27
+          { -- Step 27
                ["PickUp"] = {
                     66112,
                },
@@ -603,8 +555,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1437.9,
                },
           },
-          {
-               -- Step 28
+          { -- Step 28
                ["Qpart"] = {
                     [69911] = {
                          ["1"] = "1",
@@ -622,8 +573,7 @@ if (APR.Faction == "Alliance") then
                ["Gossip"] = 2,
                ["RaidIcon"] = 193393,
           },
-          {
-               -- Step 29
+          { -- Step 29
                ["Qpart"] = {
                     [69911] = {
                          ["2"] = "2",
@@ -641,8 +591,7 @@ if (APR.Faction == "Alliance") then
                ["ExtraLineText"] = "CLICK_BOOK_CHOICES_DONT_MATTER",
                ["Gossip"] = 1,
           },
-          {
-               -- Step 30
+          { -- Step 30
                ["GetFP"] = 69911,
                ["TT"] = {
                     ["y"] = 3508.2,
@@ -654,8 +603,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 1,
           },
-          {
-               -- Step 31
+          { -- Step 31
                ["Qpart"] = {
                     [69911] = {
                          ["3"] = "3",
@@ -672,8 +620,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 5,
                ["ExtraLineText"] = "CLICK_STONE_TABLET",
           },
-          {
-               -- Step 32
+          { -- Step 32
                ["Qpart"] = {
                     [69911] = {
                          ["4"] = "4",
@@ -690,8 +637,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 5,
                ["ExtraLineText"] = "CLICK_BRAZIER",
           },
-          {
-               -- Step 33
+          { -- Step 33
                ["Done"] = {
                     69911,
                },
@@ -700,8 +646,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1456.0,
                },
           },
-          {
-               -- Step 34
+          { -- Step 34
                ["PickUp"] = {
                     69912,
                },
@@ -710,8 +655,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1456.0,
                },
           },
-          {
-               -- Step 35
+          { -- Step 35
                ["Qpart"] = {
                     [69912] = {
                          ["1"] = "1",
@@ -729,8 +673,7 @@ if (APR.Faction == "Alliance") then
                ["ExtraLineText"] = "SPEAK_SENDRAX_SEND_SIGNAL_FLARES",
                ["Gossip"] = 1,
           },
-          {
-               -- Step 36
+          { -- Step 36
                ["CRange"] = 66112,
                ["TT"] = {
                     ["y"] = 3418.8,
@@ -743,8 +686,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 10,
                ["ExtraLineText"] = "HEAD_CAVE",
           },
-          {
-               -- Step 37
+          { -- Step 37
                ["Qpart"] = {
                     [66112] = {
                          ["2"] = "2",
@@ -770,8 +712,7 @@ if (APR.Faction == "Alliance") then
                ["ExtraLineText"] = "ITEM_DROPS_FROM_BARON_CRUSTCORE_AT_BACK_OF_THE_CAVE",
                ["RaidIcon"] = 192266,
           },
-          {
-               -- Step 38
+          { -- Step 38
                ["Qpart"] = {
                     [66112] = {
                          ["1"] = "1",
@@ -797,8 +738,7 @@ if (APR.Faction == "Alliance") then
                ["ExtraLineText"] = "ITEM_DROPS_FROM_BARON_ASHFLOW_AT_TOP_OF_THE_LAVA_FLOW",
                ["RaidIcon"] = 192274,
           },
-          {
-               -- Step 39
+          { -- Step 39
                ["Qpart"] = {
                     [69965] = {
                          ["1"] = "1",
@@ -814,8 +754,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 200,
           },
-          {
-               -- Step 40
+          { -- Step 40
                ["Qpart"] = {
                     [70135] = {
                          ["1"] = "1",
@@ -831,8 +770,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 200,
           },
-          {
-               -- Step 41
+          { -- Step 41
                ["Done"] = {
                     66112,
                },
@@ -841,8 +779,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1437.9,
                },
           },
-          {
-               -- Step 42
+          { -- Step 42
                ["Done"] = {
                     69965,
                },
@@ -851,8 +788,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1442.4,
                },
           },
-          {
-               -- Step 43
+          { -- Step 43
                ["Done"] = {
                     70135,
                },
@@ -861,8 +797,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1467.4,
                },
           },
-          {
-               -- Step 44
+          { -- Step 44
                ["Done"] = {
                     69912,
                },
@@ -878,8 +813,7 @@ if (APR.Faction == "Alliance") then
 
      -- Thaldraszus
      APR.QuestStepList["DF06A-2025-Thaldraszus"] = {
-          {
-               -- Step 1
+          { -- Step 1
                ["Qpart"] = {
                     [66244] = {
                          ["1"] = "1",
@@ -896,8 +830,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["ExtraLineText"] = "GET_INSIDE_AND_USE_PORTAL_TOP",
           },
-          {
-               -- Step 2
+          { -- Step 2
                ["Done"] = {
                     66244,
                },
@@ -906,8 +839,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1042.4,
                },
           },
-          {
-               -- Step 3
+          { -- Step 3
                ["PickUp"] = {
                     66159,
                },
@@ -916,8 +848,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1042.4,
                },
           },
-          {
-               -- Step 4
+          { -- Step 4
                ["Qpart"] = {
                     [66159] = {
                          ["1"] = "1",
@@ -934,8 +865,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["Gossip"] = 1,
           },
-          {
-               -- Step 5
+          { -- Step 5
                ["Done"] = {
                     66159,
                },
@@ -944,8 +874,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1042.4,
                },
           },
-          {
-               -- Step 6
+          { -- Step 6
                ["PickUp"] = {
                     66163,
                },
@@ -954,8 +883,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1061.9,
                },
           },
-          {
-               -- Step 7
+          { -- Step 7
                ["PickUp"] = {
                     66166,
                },
@@ -964,8 +892,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1061.9,
                },
           },
-          {
-               -- Step 8
+          { -- Step 8
                ["Qpart"] = {
                     [66163] = {
                          ["1"] = "1",
@@ -984,8 +911,7 @@ if (APR.Faction == "Alliance") then
                     ["66163-1"] = 198859,
                },
           },
-          {
-               -- Step 9
+          { -- Step 9
                ["Qpart"] = {
                     [66166] = {
                          ["3"] = "3",
@@ -1007,8 +933,7 @@ if (APR.Faction == "Alliance") then
                },
                ["ExtraLineText"] = "INSIDE_INN",
           },
-          {
-               -- Step 10
+          { -- Step 10
                ["Qpart"] = {
                     [66166] = {
                          ["2"] = "2",
@@ -1030,8 +955,7 @@ if (APR.Faction == "Alliance") then
                },
                ["ExtraLineText"] = "INSIDE_BANK",
           },
-          {
-               -- Step 11
+          { -- Step 11
                ["Qpart"] = {
                     [66166] = {
                          ["1"] = "1",
@@ -1053,8 +977,7 @@ if (APR.Faction == "Alliance") then
                },
                ["ExtraLineText"] = "ON_TOP_OF_BOX",
           },
-          {
-               -- Step 12
+          { -- Step 12
                ["Qpart"] = {
                     [66163] = {
                          ["2"] = "2",
@@ -1072,8 +995,7 @@ if (APR.Faction == "Alliance") then
                ["ExtraLineText"] = "INFILTRATORS_ARE_ACROSS_CITY_THEY_GLOW_RED_WHEN_YOU_ARE_CLOSE",
                ["Gossip"] = 1,
           },
-          {
-               -- Step 13
+          { -- Step 13
                ["Done"] = {
                     66163,
                },
@@ -1082,8 +1004,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -994.1,
                },
           },
-          {
-               -- Step 14
+          { -- Step 14
                ["Done"] = {
                     66166,
                },
@@ -1092,8 +1013,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -994.1,
                },
           },
-          {
-               -- Step 15
+          { -- Step 15
                ["PickUp"] = {
                     66167,
                },
@@ -1102,8 +1022,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -994.1,
                },
           },
-          {
-               -- Step 16
+          { -- Step 16
                ["Qpart"] = {
                     [66167] = {
                          ["1"] = "1",
@@ -1120,8 +1039,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["ExtraLineText"] = "FLY_GUARDIAN_VELOMIR",
           },
-          {
-               -- Step 17
+          { -- Step 17
                ["Qpart"] = {
                     [66167] = {
                          ["2"] = "2",
@@ -1138,8 +1056,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["ExtraLineText"] = "AID_GUARDIAN",
           },
-          {
-               -- Step 18
+          { -- Step 18
                ["Done"] = {
                     66167,
                },
@@ -1148,8 +1065,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -511.3,
                },
           },
-          {
-               -- Step 19
+          { -- Step 19
                ["PickUp"] = {
                     66169,
                },
@@ -1158,8 +1074,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -511.3,
                },
           },
-          {
-               -- Step 20
+          { -- Step 20
                ["PickUp"] = {
                     66246,
                },
@@ -1168,8 +1083,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -511.3,
                },
           },
-          {
-               -- Step 21
+          { -- Step 21
                ["Qpart"] = {
                     [66246] = {
                          ["1"] = "1",
@@ -1192,8 +1106,7 @@ if (APR.Faction == "Alliance") then
                ["ExtraLineText"] = "VELOMIRS_UNITS_ARE_MARKED_ON_MINIMAP",
                ["Gossip"] = 1,
           },
-          {
-               -- Step 22
+          { -- Step 22
                ["Qpart"] = {
                     [66169] = {
                          ["1"] = "1",
@@ -1209,8 +1122,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 125,
           },
-          {
-               -- Step 23
+          { -- Step 23
                ["Done"] = {
                     66169,
                },
@@ -1219,8 +1131,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -691.2,
                },
           },
-          {
-               -- Step 24
+          { -- Step 24
                ["Done"] = {
                     66246,
                },
@@ -1230,8 +1141,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Gossip"] = 1,
           },
-          {
-               -- Step 25
+          { -- Step 25
                ["PickUp"] = {
                     66245,
                },
@@ -1241,8 +1151,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Gossip"] = 1,
           },
-          {
-               -- Step 26
+          { -- Step 26
                ["PickUp"] = {
                     66247,
                },
@@ -1252,8 +1161,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Gossip"] = 1,
           },
-          {
-               -- Step 27
+          { -- Step 27
                ["PickUp"] = {
                     66248,
                },
@@ -1262,8 +1170,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -784.6,
                },
           },
-          {
-               -- Step 28
+          { -- Step 28
                ["Qpart"] = {
                     [66247] = {
                          ["1"] = "1",
@@ -1287,8 +1194,7 @@ if (APR.Faction == "Alliance") then
                     },
                },
           },
-          {
-               -- Step 29
+          { -- Step 29
                ["Qpart"] = {
                     [66248] = {
                          ["1"] = "1",
@@ -1309,8 +1215,7 @@ if (APR.Faction == "Alliance") then
                     },
                },
           },
-          {
-               -- Step 30
+          { -- Step 30
                ["Qpart"] = {
                     [66245] = {
                          ["1"] = "1",
@@ -1326,8 +1231,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 200,
           },
-          {
-               -- Step 31
+          { -- Step 31
                ["Done"] = {
                     66247,
                },
@@ -1336,8 +1240,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -691.2,
                },
           },
-          {
-               -- Step 32
+          { -- Step 32
                ["Done"] = {
                     66248,
                },
@@ -1346,8 +1249,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -691.2,
                },
           },
-          {
-               -- Step 33
+          { -- Step 33
                ["Done"] = {
                     66245,
                },
@@ -1356,8 +1258,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -691.2,
                },
           },
-          {
-               -- Step 34
+          { -- Step 34
                ["PickUp"] = {
                     66249,
                },
@@ -1366,8 +1267,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -691.2,
                },
           },
-          {
-               -- Step 35
+          { -- Step 35
                ["Qpart"] = {
                     [66249] = {
                          ["1"] = "1",
@@ -1384,8 +1284,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["ExtraLineText"] = "SHOOT_DRAGONS",
           },
-          {
-               -- Step 36
+          { -- Step 36
                ["Qpart"] = {
                     [66249] = {
                          ["2"] = "2",
@@ -1402,8 +1301,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["ExtraLineText"] = "SHOOT_DRAGONS",
           },
-          {
-               -- Step 37
+          { -- Step 37
                ["Done"] = {
                     66249,
                },
@@ -1412,8 +1310,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -987.0,
                },
           },
-          {
-               -- Step 38
+          { -- Step 38
                ["PickUp"] = {
                     66250,
                },
@@ -1422,8 +1319,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -987.0,
                },
           },
-          {
-               -- Step 39
+          { -- Step 39
                ["Qpart"] = {
                     [66250] = {
                          ["1"] = "1",
@@ -1440,8 +1336,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["Gossip"] = 1,
           },
-          {
-               -- Step 40
+          { -- Step 40
                ["Done"] = {
                     66250,
                },
@@ -1450,8 +1345,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -946.7,
                },
           },
-          {
-               -- Step 41
+          { -- Step 41
                ["PickUp"] = {
                     66251,
                },
@@ -1460,8 +1354,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -946.7,
                },
           },
-          {
-               -- Step 42
+          { -- Step 42
                ["Qpart"] = {
                     [66251] = {
                          ["1"] = "1",
@@ -1477,8 +1370,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 2,
           },
-          {
-               -- Step 43
+          { -- Step 43
                ["Done"] = {
                     66251,
                },
@@ -1487,8 +1379,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -946.7,
                },
           },
-          {
-               -- Step 44
+          { -- Step 44
                ["PickUp"] = {
                     66252,
                },
@@ -1497,8 +1388,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -946.7,
                },
           },
-          {
-               -- Step 45
+          { -- Step 45
                ["CRange"] = 1,
                ["TT"] = {
                     ["y"] = 164.0,
@@ -1510,16 +1400,14 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 2,
           },
-          {
-               -- Step 46
+          { -- Step 46
                ["SetHS"] = 66252,
                ["TT"] = {
                     ["y"] = 200.9,
                     ["x"] = -887.5,
                },
           },
-          {
-               -- Step 47
+          { -- Step 47
                ["CRange"] = 66252,
                ["TT"] = {
                     ["y"] = 338.3,
@@ -1532,8 +1420,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 5,
                ["ExtraLineText"] = "TAKE_TELEPORTER_SEAT_OF_ASPECTS",
           },
-          {
-               -- Step 48
+          { -- Step 48
                ["Done"] = {
                     66252,
                },
@@ -1543,8 +1430,7 @@ if (APR.Faction == "Alliance") then
                },
                ["ExtraLineText"] = "ON_TOP_OF_TOWER",
           },
-          {
-               -- Step 49
+          { -- Step 49
                ["PickUp"] = {
                     66320,
                },
@@ -1553,8 +1439,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -1085.0,
                },
           },
-          {
-               -- Step 50
+          { -- Step 50
                ["Qpart"] = {
                     [66320] = {
                          ["1"] = "1",
@@ -1571,8 +1456,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["Gossip"] = 1,
           },
-          {
-               -- Step 51
+          { -- Step 51
                ["Done"] = {
                     66320,
                },
@@ -1581,8 +1465,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2699.0,
                },
           },
-          {
-               -- Step 52
+          { -- Step 52
                ["GetFP"] = 66080,
                ["TT"] = {
                     ["y"] = -1127.2,
@@ -1594,8 +1477,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 2,
           },
-          {
-               -- Step 53
+          { -- Step 53
                ["PickUp"] = {
                     66080,
                },
@@ -1604,8 +1486,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2705.4,
                },
           },
-          {
-               -- Step 54
+          { -- Step 54
                ["Qpart"] = {
                     [66080] = {
                          ["1"] = "1",
@@ -1622,8 +1503,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["ExtraLineText"] = "COMPLETES_WHEN_YOU_GET_CLOSE",
           },
-          {
-               -- Step 55
+          { -- Step 55
                ["Done"] = {
                     66080,
                },
@@ -1633,8 +1513,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Gossip"] = 1,
           },
-          {
-               -- Step 56
+          { -- Step 56
                ["PickUp"] = {
                     70136,
                },
@@ -1643,8 +1522,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2446.5,
                },
           },
-          {
-               -- Step 57
+          { -- Step 57
                ["Qpart"] = {
                     [70136] = {
                          ["2"] = "2",
@@ -1660,8 +1538,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 5,
           },
-          {
-               -- Step 58
+          { -- Step 58
                ["Qpart"] = {
                     [70136] = {
                          ["3"] = "3",
@@ -1678,8 +1555,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 5,
                ["ExtraLineText"] = "INSIDE_CAVE",
           },
-          {
-               -- Step 59
+          { -- Step 59
                ["Qpart"] = {
                     [70136] = {
                          ["1"] = "1",
@@ -1696,8 +1572,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 5,
                ["ExtraLineText"] = "LOOT_STAFF",
           },
-          {
-               -- Step 60
+          { -- Step 60
                ["Done"] = {
                     70136,
                },
@@ -1706,8 +1581,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2446.5,
                },
           },
-          {
-               -- Step 61
+          { -- Step 61
                ["PickUp"] = {
                     66081,
                },
@@ -1716,8 +1590,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2446.5,
                },
           },
-          {
-               -- Step 62
+          { -- Step 62
                ["PickUp"] = {
                     66082,
                },
@@ -1726,8 +1599,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2446.5,
                },
           },
-          {
-               -- Step 63
+          { -- Step 63
                ["Qpart"] = {
                     [66081] = {
                          ["1"] = "1",
@@ -1748,8 +1620,7 @@ if (APR.Faction == "Alliance") then
                     },
                },
           },
-          {
-               -- Step 64
+          { -- Step 64
                ["Qpart"] = {
                     [66082] = {
                          ["1"] = "1",
@@ -1765,8 +1636,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 125,
           },
-          {
-               -- Step 65
+          { -- Step 65
                ["Done"] = {
                     66081,
                },
@@ -1775,8 +1645,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2699.0,
                },
           },
-          {
-               -- Step 66
+          { -- Step 66
                ["Done"] = {
                     66082,
                },
@@ -1785,8 +1654,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2699.0,
                },
           },
-          {
-               -- Step 67
+          { -- Step 67
                ["PickUp"] = {
                     66083,
                },
@@ -1795,8 +1663,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2705.8,
                },
           },
-          {
-               -- Step 68
+          { -- Step 68
                ["Qpart"] = {
                     [66083] = {
                          ["1"] = "1",
@@ -1813,8 +1680,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["Gossip"] = 1,
           },
-          {
-               -- Step 69
+          { -- Step 69
                ["Qpart"] = {
                     [66083] = {
                          ["2"] = "2",
@@ -1830,8 +1696,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 2,
           },
-          {
-               -- Step 70
+          { -- Step 70
                ["Qpart"] = {
                     [66083] = {
                          ["3"] = "3",
@@ -1847,8 +1712,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 2,
           },
-          {
-               -- Step 71
+          { -- Step 71
                ["Qpart"] = {
                     [66083] = {
                          ["4"] = "4",
@@ -1865,8 +1729,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["Gossip"] = 1,
           },
-          {
-               -- Step 72
+          { -- Step 72
                ["Done"] = {
                     66083,
                },
@@ -1875,8 +1738,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2705.8,
                },
           },
-          {
-               -- Step 73
+          { -- Step 73
                ["PickUp"] = {
                     66084,
                },
@@ -1885,8 +1747,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2705.8,
                },
           },
-          {
-               -- Step 74
+          { -- Step 74
                ["PickUp"] = {
                     66085,
                },
@@ -1895,8 +1756,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2698.6,
                },
           },
-          {
-               -- Step 75
+          { -- Step 75
                ["Qpart"] = {
                     [66085] = {
                          ["1"] = "1",
@@ -1917,8 +1777,7 @@ if (APR.Faction == "Alliance") then
                     },
                },
           },
-          {
-               -- Step 76
+          { -- Step 76
                ["Qpart"] = {
                     [66085] = {
                          ["2"] = "2",
@@ -1940,8 +1799,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Gossip"] = 1,
           },
-          {
-               -- Step 77
+          { -- Step 77
                ["Qpart"] = {
                     [66085] = {
                          ["3"] = "3",
@@ -1962,8 +1820,7 @@ if (APR.Faction == "Alliance") then
                     },
                },
           },
-          {
-               -- Step 78
+          { -- Step 78
                ["Qpart"] = {
                     [66085] = {
                          ["4"] = "4",
@@ -1984,8 +1841,7 @@ if (APR.Faction == "Alliance") then
                     },
                },
           },
-          {
-               -- Step 79
+          { -- Step 79
                ["Qpart"] = {
                     [66085] = {
                          ["5"] = "5",
@@ -2007,8 +1863,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Gossip"] = 1,
           },
-          {
-               -- Step 80
+          { -- Step 80
                ["Qpart"] = {
                     [66084] = {
                          ["1"] = "1",
@@ -2024,8 +1879,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 80,
           },
-          {
-               -- Step 81
+          { -- Step 81
                ["Done"] = {
                     66084,
                },
@@ -2034,8 +1888,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2705.8,
                },
           },
-          {
-               -- Step 82
+          { -- Step 82
                ["Done"] = {
                     66085,
                },
@@ -2044,8 +1897,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2698.6,
                },
           },
-          {
-               -- Step 83
+          { -- Step 83
                ["PickUp"] = {
                     66087,
                },
@@ -2054,8 +1906,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2708.0,
                },
           },
-          {
-               -- Step 84
+          { -- Step 84
                ["Qpart"] = {
                     [66087] = {
                          ["1"] = "1",
@@ -2074,8 +1925,7 @@ if (APR.Faction == "Alliance") then
                     ["66087-1"] = 376679,
                },
           },
-          {
-               -- Step 85
+          { -- Step 85
                ["Done"] = {
                     66087,
                },
@@ -2084,8 +1934,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2708.0,
                },
           },
-          {
-               -- Step 86
+          { -- Step 86
                ["PickUp"] = {
                     65935,
                },
@@ -2094,8 +1943,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2705.6,
                },
           },
-          {
-               -- Step 87
+          { -- Step 87
                ["Qpart"] = {
                     [65935] = {
                          ["1"] = "1",
@@ -2112,8 +1960,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["ExtraLineText"] = "COMPLETES_ONCE_YOU_REACH_CHROMIE",
           },
-          {
-               -- Step 88
+          { -- Step 88
                ["Done"] = {
                     65935,
                },
@@ -2122,8 +1969,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2913.4,
                },
           },
-          {
-               -- Step 89
+          { -- Step 89
                ["PickUp"] = {
                     65947,
                },
@@ -2132,8 +1978,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2913.4,
                },
           },
-          {
-               -- Step 90
+          { -- Step 90
                ["PickUp"] = {
                     65948,
                },
@@ -2142,8 +1987,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2913.4,
                },
           },
-          {
-               -- Step 91
+          { -- Step 91
                ["PickUp"] = {
                     66646,
                },
@@ -2152,8 +1996,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2911.3,
                },
           },
-          {
-               -- Step 92
+          { -- Step 92
                ["Qpart"] = {
                     [65948] = {
                          ["1"] = "1",
@@ -2177,8 +2020,7 @@ if (APR.Faction == "Alliance") then
                     },
                },
           },
-          {
-               -- Step 93
+          { -- Step 93
                ["Qpart"] = {
                     [65948] = {
                          ["2"] = "2",
@@ -2202,8 +2044,7 @@ if (APR.Faction == "Alliance") then
                     },
                },
           },
-          {
-               -- Step 94
+          { -- Step 94
                ["Qpart"] = {
                     [65947] = {
                          ["1"] = "1",
@@ -2225,8 +2066,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 180,
           },
-          {
-               -- Step 95
+          { -- Step 95
                ["Done"] = {
                     65948,
                },
@@ -2235,8 +2075,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2913.4,
                },
           },
-          {
-               -- Step 96
+          { -- Step 96
                ["Done"] = {
                     65947,
                },
@@ -2245,8 +2084,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2913.4,
                },
           },
-          {
-               -- Step 97
+          { -- Step 97
                ["Done"] = {
                     66646,
                },
@@ -2255,8 +2093,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2911.3,
                },
           },
-          {
-               -- Step 98
+          { -- Step 98
                ["PickUp"] = {
                     65938,
                },
@@ -2265,8 +2102,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2913.4,
                },
           },
-          {
-               -- Step 99
+          { -- Step 99
                ["Qpart"] = {
                     [65938] = {
                          ["1"] = "1",
@@ -2285,8 +2121,7 @@ if (APR.Faction == "Alliance") then
                     ["65938-1"] = 372959,
                },
           },
-          {
-               -- Step 100
+          { -- Step 100
                ["Qpart"] = {
                     [65938] = {
                          ["2"] = "2",
@@ -2303,8 +2138,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["ExtraLineText"] = "KILL_ELEMENTAL",
           },
-          {
-               -- Step 101
+          { -- Step 101
                ["Done"] = {
                     65938,
                },
@@ -2313,8 +2147,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2913.4,
                },
           },
-          {
-               -- Step 102
+          { -- Step 102
                ["PickUp"] = {
                     65962,
                },
@@ -2323,8 +2156,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2913.4,
                },
           },
-          {
-               -- Step 103
+          { -- Step 103
                ["Qpart"] = {
                     [65962] = {
                          ["1"] = "1",
@@ -2341,8 +2173,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["Gossip"] = 6,
           },
-          {
-               -- Step 104
+          { -- Step 104
                ["Done"] = {
                     65962,
                },
@@ -2351,8 +2182,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2961.0,
                },
           },
-          {
-               -- Step 105
+          { -- Step 105
                ["PickUp"] = {
                     70040,
                },
@@ -2361,8 +2191,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2961.0,
                },
           },
-          {
-               -- Step 106
+          { -- Step 106
                ["Qpart"] = {
                     [70040] = {
                          ["2"] = "2",
@@ -2379,8 +2208,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["Gossip"] = 1,
           },
-          {
-               -- Step 107
+          { -- Step 107
                ["Qpart"] = {
                     [70040] = {
                          ["1"] = "1",
@@ -2397,8 +2225,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["Gossip"] = 1,
           },
-          {
-               -- Step 108
+          { -- Step 108
                ["Qpart"] = {
                     [70040] = {
                          ["3"] = "3",
@@ -2415,8 +2242,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["Gossip"] = 1,
           },
-          {
-               -- Step 109
+          { -- Step 109
                ["Qpart"] = {
                     [70040] = {
                          ["4"] = "4",
@@ -2433,8 +2259,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["Gossip"] = 1,
           },
-          {
-               -- Step 110
+          { -- Step 110
                ["Done"] = {
                     70040,
                },
@@ -2443,8 +2268,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2961.0,
                },
           },
-          {
-               -- Step 111
+          { -- Step 111
                ["PickUp"] = {
                     66028,
                },
@@ -2453,8 +2277,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2961.0,
                },
           },
-          {
-               -- Step 112
+          { -- Step 112
                ["PickUp"] = {
                     66029,
                },
@@ -2463,8 +2286,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2961.0,
                },
           },
-          {
-               -- Step 113
+          { -- Step 113
                ["Qpart"] = {
                     [66028] = {
                          ["1"] = "1",
@@ -2481,8 +2303,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["ExtraLineText"] = "USE_PORTAL",
           },
-          {
-               -- Step 114
+          { -- Step 114
                ["Done"] = {
                     66028,
                },
@@ -2491,8 +2312,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2937.1,
                },
           },
-          {
-               -- Step 115
+          { -- Step 115
                ["PickUp"] = {
                     66030,
                },
@@ -2501,8 +2321,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2937.1,
                },
           },
-          {
-               -- Step 116
+          { -- Step 116
                ["PickUp"] = {
                     66031,
                },
@@ -2511,8 +2330,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2945.3,
                },
           },
-          {
-               -- Step 117
+          { -- Step 117
                ["Qpart"] = {
                     [66029] = {
                          ["1"] = "1",
@@ -2531,8 +2349,7 @@ if (APR.Faction == "Alliance") then
                     ["66029-1"] = 192749,
                },
           },
-          {
-               -- Step 118
+          { -- Step 118
                ["Qpart"] = {
                     [66031] = {
                          ["1"] = "1",
@@ -2556,8 +2373,7 @@ if (APR.Faction == "Alliance") then
                     ["66031-1"] = 372520,
                },
           },
-          {
-               -- Step 119
+          { -- Step 119
                ["Qpart"] = {
                     [66030] = {
                          ["1"] = "1",
@@ -2573,8 +2389,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 2,
           },
-          {
-               -- Step 120
+          { -- Step 120
                ["Done"] = {
                     66030,
                },
@@ -2583,8 +2398,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2937.1,
                },
           },
-          {
-               -- Step 121
+          { -- Step 121
                ["Done"] = {
                     66031,
                },
@@ -2593,8 +2407,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2945.3,
                },
           },
-          {
-               -- Step 122
+          { -- Step 122
                ["PickUp"] = {
                     66032,
                },
@@ -2603,8 +2416,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2937.1,
                },
           },
-          {
-               -- Step 123
+          { -- Step 123
                ["Done"] = {
                     66032,
                },
@@ -2614,8 +2426,7 @@ if (APR.Faction == "Alliance") then
                },
                ["ExtraLineText"] = "LEAVE_PORTAL",
           },
-          {
-               -- Step 124
+          { -- Step 124
                ["Done"] = {
                     66029,
                },
@@ -2624,8 +2435,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2961.9,
                },
           },
-          {
-               -- Step 125
+          { -- Step 125
                ["PickUp"] = {
                     72519,
                },
@@ -2634,8 +2444,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2961.9,
                },
           },
-          {
-               -- Step 126
+          { -- Step 126
                ["PickUp"] = {
                     66033,
                },
@@ -2644,8 +2453,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2961.9,
                },
           },
-          {
-               -- Step 127
+          { -- Step 127
                ["Qpart"] = {
                     [66033] = {
                          ["1"] = "1",
@@ -2661,8 +2469,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 2,
           },
-          {
-               -- Step 128
+          { -- Step 128
                ["Done"] = {
                     66033,
                },
@@ -2671,8 +2478,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 272.0,
                },
           },
-          {
-               -- Step 129
+          { -- Step 129
                ["PickUp"] = {
                     66035,
                },
@@ -2681,8 +2487,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 272.0,
                },
           },
-          {
-               -- Step 130
+          { -- Step 130
                ["PickUp"] = {
                     66036,
                },
@@ -2691,8 +2496,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 263.5,
                },
           },
-          {
-               -- Step 131
+          { -- Step 131
                ["Qpart"] = {
                     [72519] = {
                          ["1"] = "1",
@@ -2708,8 +2512,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 2,
           },
-          {
-               -- Step 132
+          { -- Step 132
                ["Qpart"] = {
                     [66035] = {
                          ["1"] = "1",
@@ -2726,8 +2529,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 250,
                ["ExtraLineText"] = "MOTES_CAN_BE_SEEN_ON_MINIMAP",
           },
-          {
-               -- Step 133
+          { -- Step 133
                ["Qpart"] = {
                     [66036] = {
                          ["1"] = "1",
@@ -2743,8 +2545,7 @@ if (APR.Faction == "Alliance") then
                },
                ["Range"] = 250,
           },
-          {
-               -- Step 134
+          { -- Step 134
                ["Done"] = {
                     66036,
                },
@@ -2753,8 +2554,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 263.2,
                },
           },
-          {
-               -- Step 135
+          { -- Step 135
                ["Done"] = {
                     66035,
                },
@@ -2763,8 +2563,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 271.5,
                },
           },
-          {
-               -- Step 136
+          { -- Step 136
                ["PickUp"] = {
                     70373,
                },
@@ -2773,8 +2572,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 263.2,
                },
           },
-          {
-               -- Step 137
+          { -- Step 137
                ["Qpart"] = {
                     [70373] = {
                          ["1"] = "1",
@@ -2791,8 +2589,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["ExtraLineText"] = "ENTER_PLANE",
           },
-          {
-               -- Step 138
+          { -- Step 138
                ["Done"] = {
                     70373,
                },
@@ -2801,8 +2598,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 263.2,
                },
           },
-          {
-               -- Step 139
+          { -- Step 139
                ["PickUp"] = {
                     66037,
                },
@@ -2811,8 +2607,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 271.5,
                },
           },
-          {
-               -- Step 140
+          { -- Step 140
                ["Qpart"] = {
                     [66037] = {
                          ["1"] = "1",
@@ -2829,8 +2624,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["ExtraLineText"] = "ENTER_PORTAL",
           },
-          {
-               -- Step 141
+          { -- Step 141
                ["Done"] = {
                     72519,
                },
@@ -2839,8 +2633,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2961.6,
                },
           },
-          {
-               -- Step 142
+          { -- Step 142
                ["Done"] = {
                     66037,
                },
@@ -2849,8 +2642,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2961.6,
                },
           },
-          {
-               -- Step 143
+          { -- Step 143
                ["PickUp"] = {
                     66660,
                },
@@ -2859,8 +2651,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2961.6,
                },
           },
-          {
-               -- Step 144
+          { -- Step 144
                ["Qpart"] = {
                     [66660] = {
                          ["1"] = "1",
@@ -2877,8 +2668,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["ExtraLineText"] = "ENTER_PORTAL",
           },
-          {
-               -- Step 145
+          { -- Step 145
                ["Done"] = {
                     66660,
                },
@@ -2887,8 +2677,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 15512.9,
                },
           },
-          {
-               -- Step 146
+          { -- Step 146
                ["PickUp"] = {
                     66038,
                },
@@ -2897,8 +2686,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 15512.9,
                },
           },
-          {
-               -- Step 147
+          { -- Step 147
                ["Done"] = {
                     66038,
                },
@@ -2907,8 +2695,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 7427.0,
                },
           },
-          {
-               -- Step 148
+          { -- Step 148
                ["PickUp"] = {
                     66039,
                },
@@ -2917,8 +2704,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 7427.0,
                },
           },
-          {
-               -- Step 149
+          { -- Step 149
                ["Qpart"] = {
                     [66039] = {
                          ["1"] = "1",
@@ -2937,8 +2723,7 @@ if (APR.Faction == "Alliance") then
                     ["66039-1"] = 192749,
                },
           },
-          {
-               -- Step 150
+          { -- Step 150
                ["Done"] = {
                     66039,
                },
@@ -2947,8 +2732,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 7407.1,
                },
           },
-          {
-               -- Step 151
+          { -- Step 151
                ["PickUp"] = {
                     66040,
                },
@@ -2957,8 +2741,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 7407.1,
                },
           },
-          {
-               -- Step 152
+          { -- Step 152
                ["Qpart"] = {
                     [66040] = {
                          ["1"] = "1",
@@ -2975,8 +2758,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["Gossip"] = 1,
           },
-          {
-               -- Step 153
+          { -- Step 153
                ["Qpart"] = {
                     [66040] = {
                          ["2"] = "2",
@@ -2993,8 +2775,7 @@ if (APR.Faction == "Alliance") then
                ["Range"] = 2,
                ["Gossip"] = 1,
           },
-          {
-               -- Step 154
+          { -- Step 154
                ["Done"] = {
                     66040,
                },
@@ -3003,8 +2784,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2962.0,
                },
           },
-          {
-               -- Step 155
+          { -- Step 155
                ["PickUp"] = {
                     66221,
                },
@@ -3013,15 +2793,13 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2962.0,
                },
           },
-          {
-               -- Step 156
+          { -- Step 156
                ["UseHS"] = 66221,
                ["Button"] = {
                     ["22345678-1"] = 6948,
                },
           },
-          {
-               -- Step 157
+          { -- Step 157
                ["Qpart"] = {
                     [66221] = {
                          ["1"] = "1",
@@ -3039,8 +2817,7 @@ if (APR.Faction == "Alliance") then
                ["ExtraLineText"] = "ON_TOP_OF_TOWER",
                ["Gossip"] = 1,
           },
-          {
-               -- Step 158
+          { -- Step 158
                ["Done"] = {
                     66221,
                },

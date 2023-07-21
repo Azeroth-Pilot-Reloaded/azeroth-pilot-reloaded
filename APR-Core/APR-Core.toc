@@ -1,11 +1,10 @@
-## Interface: 100105
-## X-Min-Interface: 100007
+## Interface: 100005
+# X-WoWI-ID: 0
 
 ## Title: Azeroth Pilot Reloaded - [|cffeda55fCore|r]
 ## Title-frFR: Azeroth Pilot Reloaded - [|cffeda55fNoyau|r]
 ## Notes: Provides Core for Azeroth Pilot Reloaded.
-## Author: Neogeekmo, Rycia (legacy: zyrrael, Deathmessinger)
-## IconTexture: Interface\AddOns\APR-Core\img\APR_logo
+## Author: Rycia, Deathmessinger, zyrrael, Neogeekmo
 
 ## RequiredDeps: APR
 

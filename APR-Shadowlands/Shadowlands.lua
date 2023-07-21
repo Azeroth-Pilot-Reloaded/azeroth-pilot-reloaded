@@ -3787,7 +3787,7 @@ APR.QuestStepList["1533-Z2-Bastion-Story"] = {
 			57037,
 			59147, -- [3]
 		},
-	},        -- [137]
+	}, -- [137]
 	{
 		["TT"] = {
 			["y"] = -4168.2,
@@ -6106,7 +6106,7 @@ APR.QuestStepList["1536-Z4-Maldraxxus-Story"] = {
 			57511,
 			57512, -- [3]
 		},
-	},        -- [19]
+	}, -- [19]
 	{
 		["PickUp"] = {
 			60181,
@@ -8304,7 +8304,7 @@ APR.QuestStepList["1536-Z4-Maldraxxus-Story"] = {
 			57976,
 			58268, -- [3]
 		},
-	},        -- [98]
+	}, -- [98]
 	{
 		["PickUp"] = {
 			57979,
@@ -9058,7 +9058,7 @@ APR.QuestStepList["1536-Z4-Maldraxxus-Story"] = {
 			60733,
 			59009, -- [3]
 		},
-	},        -- [248]
+	}, -- [248]
 	{
 		["PickUp"] = {
 			59202,
@@ -11459,7 +11459,7 @@ APR.QuestStepList["1565-Z10-Ardenweald-Story"] = {
 			60637,
 			60639, -- [3]
 		},
-	},        -- [88]
+	}, -- [88]
 	{
 		["PickUp"] = {
 			60647,
@@ -12200,7 +12200,7 @@ APR.QuestStepList["1565-Z10-Ardenweald-Story"] = {
 			58024,
 			58023, -- [3]
 		},
-	},        -- [141]
+	}, -- [141]
 	{
 		["PickUp"] = {
 			58025,
@@ -18929,7 +18929,7 @@ APR.QuestStepList["1525-Z12-Revendreth-Story"] = {
 			57189,
 			57190, -- [3]
 		},
-	},        -- [202]
+	}, -- [202]
 	{
 		["PickUp"] = {
 			59256,
@@ -24805,7 +24805,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
 			57037,
 			59147, -- [3]
 		},
-	},        -- [137]
+	}, -- [137]
 	{
 		["TT"] = {
 			["y"] = -4168.2,
@@ -26888,7 +26888,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
 			57511,
 			57512, -- [3]
 		},
-	},        -- [19]
+	}, -- [19]
 	{
 		["PickUp"] = {
 			60181,
@@ -29086,7 +29086,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
 			57976,
 			58268, -- [3]
 		},
-	},        -- [98]
+	}, -- [98]
 	{
 		["PickUp"] = {
 			57979,
@@ -29840,7 +29840,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
 			60733,
 			59009, -- [3]
 		},
-	},        -- [248]
+	}, -- [248]
 	{
 		["PickUp"] = {
 			59202,
@@ -32058,7 +32058,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
 			60637,
 			60639, -- [3]
 		},
-	},        -- [88]
+	}, -- [88]
 	{
 		["PickUp"] = {
 			60647,
@@ -36581,7 +36581,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
 			57189,
 			57190, -- [3]
 		},
-	},        -- [202]
+	}, -- [202]
 	{
 		["PickUp"] = {
 			59256,
@@ -41870,7 +41870,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
 			57037,
 			59147, -- [3]
 		},
-	},        -- [137]
+	}, -- [137]
 	{
 		["TT"] = {
 			["y"] = -4168.2,
@@ -43952,7 +43952,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
 			57511,
 			57512, -- [3]
 		},
-	},        -- [19]
+	}, -- [19]
 	{
 		["PickUp"] = {
 			60181,
@@ -46150,7 +46150,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
 			57976,
 			58268, -- [3]
 		},
-	},        -- [98]
+	}, -- [98]
 	{
 		["PickUp"] = {
 			57979,
@@ -46904,7 +46904,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
 			60733,
 			59009, -- [3]
 		},
-	},        -- [248]
+	}, -- [248]
 	{
 		["PickUp"] = {
 			59202,
@@ -49122,7 +49122,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
 			60637,
 			60639, -- [3]
 		},
-	},        -- [88]
+	}, -- [88]
 	{
 		["PickUp"] = {
 			60647,
@@ -53645,7 +53645,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
 			57189,
 			57190, -- [3]
 		},
-	},        -- [202]
+	}, -- [202]
 	{
 		["PickUp"] = {
 			59256,
