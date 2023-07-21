@@ -26,7 +26,6 @@ local function GetPlayerMapPos(MapID, dx, dy)
 	P:Subtract(R[1]);
 	return (1 / R[2].y) * P.y, (1 / R[2].x) * P.x;
 end
-
 function APR.ZoneQuestOrderList()
 	if (APR1["Debug"]) then
 		print("Function: APR.ZoneQuestOrderList()")
@@ -65,8 +64,8 @@ function APR.ZoneQuestOrderList()
 			APR.ZoneQuestOrder.isMoving = false;
 		end
 	end)
-	APR.ZoneQuestOrder.ZoneName.FS = APR.ZoneQuestOrder.ZoneName:CreateFontString("APR_ZoneOrder_lvl60_next1_FS", "ARTWORK"
-		, "ChatFontNormal")
+	APR.ZoneQuestOrder.ZoneName.FS = APR.ZoneQuestOrder.ZoneName:CreateFontString("APR_ZoneOrder_lvl60_next1_FS", "ARTWORK",
+		"ChatFontNormal")
 	APR.ZoneQuestOrder.ZoneName.FS:SetParent(APR.ZoneQuestOrder.ZoneName)
 	APR.ZoneQuestOrder.ZoneName.FS:SetPoint("CENTER", APR.ZoneQuestOrder.ZoneName, "CENTER", 1, 0)
 	APR.ZoneQuestOrder.ZoneName.FS:SetWidth(100)
@@ -308,8 +307,8 @@ function APR.AddQuestIdFrame(CLi)
 			APR.UpdateZoneQuestOrderList(ScrollMod)
 		end
 	end)
-	APR.ZoneQuestOrder["Order1iDFS"][CLi] = APR.ZoneQuestOrder["Order1iD"][CLi]:CreateFontString("APRZoneQuestOrderFS2AID"
-		.. CLi, "ARTWORK", "ChatFontNormal")
+	APR.ZoneQuestOrder["Order1iDFS"][CLi] = APR.ZoneQuestOrder["Order1iD"][CLi]:CreateFontString(
+		"APRZoneQuestOrderFS2AID" .. CLi, "ARTWORK", "ChatFontNormal")
 	APR.ZoneQuestOrder["Order1iDFS"][CLi]:SetParent(APR.ZoneQuestOrder["Order1iD"][CLi])
 	APR.ZoneQuestOrder["Order1iDFS"][CLi]:SetPoint("LEFT", APR.ZoneQuestOrder["Order1iD"][CLi], "LEFT", 5, 0)
 	APR.ZoneQuestOrder["Order1iDFS"][CLi]:SetWidth(50)
@@ -361,8 +360,8 @@ function APR.AddQuestNameFrame(CLi)
 			APR.UpdateZoneQuestOrderList(ScrollMod)
 		end
 	end)
-	APR.ZoneQuestOrder["OrderNameFS"][CLi] = APR.ZoneQuestOrder["OrderName"][CLi]:CreateFontString("APRZoneQuestOrderFS2NameD"
-		.. CLi, "ARTWORK", "ChatFontNormal")
+	APR.ZoneQuestOrder["OrderNameFS"][CLi] = APR.ZoneQuestOrder["OrderName"][CLi]:CreateFontString(
+		"APRZoneQuestOrderFS2NameD" .. CLi, "ARTWORK", "ChatFontNormal")
 	APR.ZoneQuestOrder["OrderNameFS"][CLi]:SetParent(APR.ZoneQuestOrder["OrderName"][CLi])
 	APR.ZoneQuestOrder["OrderNameFS"][CLi]:SetPoint("LEFT", APR.ZoneQuestOrder["OrderName"][CLi], "LEFT", 5, 0)
 	APR.ZoneQuestOrder["OrderNameFS"][CLi]:SetWidth(50)
@@ -382,9 +381,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 	end
 	local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 	local steps
-	if (
-		CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and
-			APR.QuestStepList[APR.ActiveMap][CurStep]) then
+	if (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
 		steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 	end
 	APR.ZoneQuestOrder["Current"]:Hide()
@@ -444,15 +441,22 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					APR.ZoneQuestOrder["Current"]:SetPoint("RIGHT", APR.ZoneQuestOrder[CLi], "LEFT", 0, 0)
 					APR.ZoneQuestOrder["Current"]:Show()
 				end
+				if (APR.QuestStepList[APR.ActiveMap][CCLi]["ExitTutorial"]) then
+					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["SKIP_TUTORIAL"])
+					if (C_QuestLog.IsOnQuest(APR.QuestStepList[APR.ActiveMap][CCLi]["ExitTutorial"]) or CurStep > CCLi) then
+						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(0, 1, 0)
+						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(0, 1, 0)
+					else
+						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(1, 0, 0)
+						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(1, 0, 0)
+					end
+				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["PickUp"]) then
 					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["PICK_UP_Q"])
 					IdList = APR.QuestStepList[APR.ActiveMap][CCLi]["PickUp"]
 					local NrLeft = 0
 					local Flagged = 0
 					local Total = 0
-					local NrLeft2 = 0
-					local Flagged2 = 0
-					local Total2 = 0
 					for h = 1, getn(IdList) do
 						local theqid = IdList[h]
 						Total = Total + 1
@@ -463,23 +467,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 							Flagged = Flagged + 1
 						end
 					end
-					if (APR.QuestStepList[APR.ActiveMap][CCLi]["PickUp2"]) then
-						IdList2 = APR.QuestStepList[APR.ActiveMap][CCLi]["PickUp2"]
-						for h = 1, getn(IdList2) do
-							local theqid = IdList2[h]
-							Total2 = Total2 + 1
-							if (not APR.ActiveQuests[theqid]) then
-								NrLeft2 = NrLeft2 + 1
-							end
-							if (C_QuestLog.IsQuestFlaggedCompleted(theqid) or APR.ActiveQuests[theqid] or APR.BreadCrumSkips[theqid]) then
-								Flagged2 = Flagged2 + 1
-							end
-						end
-					end
 					if (Total == Flagged) then
-						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(0, 1, 0)
-						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(0, 1, 0)
-					elseif (steps["PickUp2"] and Total2 == Flagged2) then
 						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(0, 1, 0)
 						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(0, 1, 0)
 					else
@@ -499,8 +487,8 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 								APR.ZoneQuestOrder["Order1iDFS"][SubQuestId]:SetText(theqid)
 								APR.ZoneQuestOrder["Order1iDFS"][SubQuestId]:SetTextColor(1, 1, 0)
 								Pos = Pos + 1
-								APR.ZoneQuestOrder["Order1iD"][SubQuestId]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT", 65, -((16 * Pos) -
-									11))
+								APR.ZoneQuestOrder["Order1iD"][SubQuestId]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT", 65,
+									-((16 * Pos) - 11))
 								APR.ZoneQuestOrder["Order1iD"][SubQuestId]:Show()
 								if (APRQuestNames[theqid] and APRQuestNames[theqid] ~= 1) then
 									SubQuestName = SubQuestName + 1
@@ -512,10 +500,10 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 									APR.ZoneQuestOrder["OrderName"][SubQuestName]:Show()
 									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetText(APRQuestNames[theqid])
 									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(250)
-									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:
-										GetStringWidth() + 10)
-									APR.ZoneQuestOrder["OrderName"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:
-										GetStringWidth() + 10)
+									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"]
+										[SubQuestName]:GetStringWidth() + 10)
+									APR.ZoneQuestOrder["OrderName"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]
+										:GetStringWidth() + 10)
 									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetTextColor(1, 1, 0)
 								end
 							end
@@ -531,10 +519,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 						for APR_index2, APR_value2 in pairs(APR_value) do
 							Total = Total + 1
 							local qid = APR_index .. "-" .. APR_index2
-							if (
-								C_QuestLog.IsQuestFlaggedCompleted(APR_index) or
-									((UnitLevel("player") == 120) and APR_BonusObj and APR_BonusObj[APR_index]) or
-									APR1[APR.Realm][APR.Name]["BonusSkips"][APR_index]) then
+							if (C_QuestLog.IsQuestFlaggedCompleted(APR_index) or ((UnitLevel("player") == 120) and APR_BonusObj and APR_BonusObj[APR_index]) or APR1[APR.Realm][APR.Name]["BonusSkips"][APR_index]) then
 								Flagged = Flagged + 1
 							elseif (APR.ActiveQuests[qid] and APR.ActiveQuests[qid] == "C") then
 								Flagged = Flagged + 1
@@ -552,8 +537,8 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 								APR.ZoneQuestOrder["Order1iDFS"][SubQuestId]:SetText(theqid)
 								APR.ZoneQuestOrder["Order1iDFS"][SubQuestId]:SetTextColor(1, 1, 0)
 								Pos = Pos + 1
-								APR.ZoneQuestOrder["Order1iD"][SubQuestId]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT", 65, -((16 * Pos) -
-									11))
+								APR.ZoneQuestOrder["Order1iD"][SubQuestId]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT", 65,
+									-((16 * Pos) - 11))
 								APR.ZoneQuestOrder["Order1iD"][SubQuestId]:Show()
 								if (APRQuestNames[theqid] and APRQuestNames[theqid] ~= 1) then
 									SubQuestName = SubQuestName + 1
@@ -565,10 +550,10 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 									APR.ZoneQuestOrder["OrderName"][SubQuestName]:Show()
 									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetText(APRQuestNames[theqid])
 									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(250)
-									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:
-										GetStringWidth() + 10)
-									APR.ZoneQuestOrder["OrderName"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:
-										GetStringWidth() + 10)
+									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"]
+										[SubQuestName]:GetStringWidth() + 10)
+									APR.ZoneQuestOrder["OrderName"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]
+										:GetStringWidth() + 10)
 									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetTextColor(1, 1, 0)
 								end
 							end
@@ -613,8 +598,8 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 							APR.ZoneQuestOrder["Order1iDFS"][SubQuestId]:SetText(theqid)
 							APR.ZoneQuestOrder["Order1iDFS"][SubQuestId]:SetTextColor(1, 1, 0)
 							Pos = Pos + 1
-							APR.ZoneQuestOrder["Order1iD"][SubQuestId]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT", 65, -((16 * Pos) -
-								11))
+							APR.ZoneQuestOrder["Order1iD"][SubQuestId]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT", 65,
+								-((16 * Pos) - 11))
 							APR.ZoneQuestOrder["Order1iD"][SubQuestId]:Show()
 							if (APRQuestNames[theqid] and APRQuestNames[theqid] ~= 1) then
 								SubQuestName = SubQuestName + 1
@@ -626,10 +611,10 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 								APR.ZoneQuestOrder["OrderName"][SubQuestName]:Show()
 								APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetText(APRQuestNames[theqid])
 								APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(250)
-								APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth((
-									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:GetStringWidth() + 10) / 2)
-								APR.ZoneQuestOrder["OrderName"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:
-									GetStringWidth() + 10)
+								APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth((APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:GetStringWidth() + 10) /
+									2)
+								APR.ZoneQuestOrder["OrderName"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]
+									:GetStringWidth() + 10)
 								APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetTextColor(1, 1, 0)
 							end
 						end
@@ -657,9 +642,6 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["DalaranToOgri"]) then
 					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["USE_ORGRIMMAR_PORTAL"])
-				end
-				if (APR.QuestStepList[APR.ActiveMap][CCLi]["TrainRidingSkill"]) then
-					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["TRAIN_RIDING"])
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["UseGarrisonHS"]) then
 					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["USE_GARRISON_HEARTHSTONE"])
@@ -695,8 +677,8 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 								APR.ZoneQuestOrder["Order1iDFS"][SubQuestId]:SetText(theqid)
 								APR.ZoneQuestOrder["Order1iDFS"][SubQuestId]:SetTextColor(1, 1, 0)
 								Pos = Pos + 1
-								APR.ZoneQuestOrder["Order1iD"][SubQuestId]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT", 65, -((16 * Pos) -
-									11))
+								APR.ZoneQuestOrder["Order1iD"][SubQuestId]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT", 65,
+									-((16 * Pos) - 11))
 								APR.ZoneQuestOrder["Order1iD"][SubQuestId]:Show()
 								if (APRQuestNames[theqid] and APRQuestNames[theqid] ~= 1) then
 									SubQuestName = SubQuestName + 1
@@ -708,10 +690,10 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 									APR.ZoneQuestOrder["OrderName"][SubQuestName]:Show()
 									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetText(APRQuestNames[theqid])
 									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(250)
-									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:
-										GetStringWidth() + 10)
-									APR.ZoneQuestOrder["OrderName"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:
-										GetStringWidth() + 10)
+									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"]
+										[SubQuestName]:GetStringWidth() + 10)
+									APR.ZoneQuestOrder["OrderName"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]
+										:GetStringWidth() + 10)
 									APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetTextColor(1, 1, 0)
 								end
 							end
@@ -724,16 +706,13 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["DropQuest"]) then
 					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["Q_DROP"])
-					if (
-						C_QuestLog.IsQuestFlaggedCompleted(APR.QuestStepList[APR.ActiveMap][CCLi]["DropQuest"]) or
-							APR.ActiveQuests[APR.QuestStepList[APR.ActiveMap][CCLi]["DropQuest"]]) then
+					if (C_QuestLog.IsQuestFlaggedCompleted(APR.QuestStepList[APR.ActiveMap][CCLi]["DropQuest"]) or APR.ActiveQuests[APR.QuestStepList[APR.ActiveMap][CCLi]["DropQuest"]]) then
 						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(0, 1, 0)
 						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(0, 1, 0)
 					else
 						APR.ZoneQuestOrder["FS"][CLi]:SetTextColor(1, 0, 0)
 						APR.ZoneQuestOrder["FS2"][CLi]:SetTextColor(1, 0, 0)
 					end
-
 				end
 				if (APR.QuestStepList[APR.ActiveMap][CCLi]["SetHS"]) then
 					APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["SET_HEARTHSTONE"])
@@ -799,8 +778,8 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 						APR.ZoneQuestOrder["Order1iDFS"][SubQuestId]:SetText(theqid)
 						APR.ZoneQuestOrder["Order1iDFS"][SubQuestId]:SetTextColor(1, 1, 0)
 						Pos = Pos + 1
-						APR.ZoneQuestOrder["Order1iD"][SubQuestId]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT", 65, -((16 * Pos) - 11
-							))
+						APR.ZoneQuestOrder["Order1iD"][SubQuestId]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT", 65,
+							-((16 * Pos) - 11))
 						APR.ZoneQuestOrder["Order1iD"][SubQuestId]:Show()
 						if (APRQuestNames[theqid] and APRQuestNames[theqid] ~= 1) then
 							SubQuestName = SubQuestName + 1
@@ -812,10 +791,10 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 							APR.ZoneQuestOrder["OrderName"][SubQuestName]:Show()
 							APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetText(APRQuestNames[theqid])
 							APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(250)
-							APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:
-								GetStringWidth() + 10)
-							APR.ZoneQuestOrder["OrderName"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:
-								GetStringWidth() + 10)
+							APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]
+								:GetStringWidth() + 10)
+							APR.ZoneQuestOrder["OrderName"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]
+								:GetStringWidth() + 10)
 							APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetTextColor(1, 1, 0)
 						end
 					end
@@ -838,8 +817,8 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 					APR.ZoneQuestOrder["Order1iDFS"][SubQuestId]:SetText(theqid)
 					APR.ZoneQuestOrder["Order1iDFS"][SubQuestId]:SetTextColor(1, 1, 0)
 					Pos = Pos + 1
-					APR.ZoneQuestOrder["Order1iD"][SubQuestId]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT", 65, -((16 * Pos) - 11
-						))
+					APR.ZoneQuestOrder["Order1iD"][SubQuestId]:SetPoint("TOPLEFT", APR.ZoneQuestOrder, "TOPLEFT", 65,
+						-((16 * Pos) - 11))
 					APR.ZoneQuestOrder["Order1iD"][SubQuestId]:Show()
 					if (APRQuestNames[theqid] and APRQuestNames[theqid] ~= 1) then
 						SubQuestName = SubQuestName + 1
@@ -851,10 +830,10 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 						APR.ZoneQuestOrder["OrderName"][SubQuestName]:Show()
 						APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetText(APRQuestNames[theqid])
 						APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(250)
-						APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:
-							GetStringWidth() + 10)
-						APR.ZoneQuestOrder["OrderName"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:
-							GetStringWidth() + 10)
+						APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]
+							:GetStringWidth() + 10)
+						APR.ZoneQuestOrder["OrderName"][SubQuestName]:SetWidth(APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]
+							:GetStringWidth() + 10)
 						APR.ZoneQuestOrder["OrderNameFS"][SubQuestName]:SetTextColor(1, 1, 0)
 					end
 				end
@@ -943,9 +922,7 @@ function APR.MapOrderNumbers()
 		end
 		for APR_index, APR_value in pairs(APR.QuestStepList[APR.ActiveMap]) do
 			znr = znr + 1
-			if (
-				APR.QuestStepList[APR.ActiveMap][znr] and APR.QuestStepList[APR.ActiveMap][znr]["TT"] and CurStep < znr and
-					CurStep > (znr - 11)) then
+			if (APR.QuestStepList[APR.ActiveMap][znr] and APR.QuestStepList[APR.ActiveMap][znr]["TT"] and CurStep < znr and CurStep > (znr - 11)) then
 				if (not APR["MapZoneIcons"][znr]) then
 					APR.MakeMapOrderIcons(znr)
 				end
@@ -969,9 +946,7 @@ APR_QH_EventFrame = CreateFrame("Frame")
 APR_QH_EventFrame:RegisterEvent("QUEST_LOG_UPDATE")
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 	if (event == "QUEST_LOG_UPDATE") then
-		if (
-			APR1[APR.Realm][APR.Name]["Settings"]["ShowMap10s"] and APR1[APR.Realm][APR.Name]["Settings"]["ShowMap10s"] == 1 and
-				WorldMapFrame:IsShown() and APR.ActiveMap and APR1[APR.Realm][APR.Name][APR.ActiveMap]) then
+		if (APR1[APR.Realm][APR.Name]["Settings"]["ShowMap10s"] and APR1[APR.Realm][APR.Name]["Settings"]["ShowMap10s"] == 1 and WorldMapFrame:IsShown() and APR.ActiveMap and APR1[APR.Realm][APR.Name][APR.ActiveMap]) then
 			local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 			if (CurStep and MapIconUpdateStep ~= CurStep and CurStep > 1) then
 				APR.MapOrderNumbers()

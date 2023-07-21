@@ -1,8 +1,10 @@
-## Interface: 100005
+## Interface: 100105
+## X-Min-Interface: 100007
 
 ## Title: Azeroth Pilot Reloaded
 ## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.
-## Author: Rycia, Deathmessinger, zyrrael, Neogeekmo
+## Author: Neogeekmo, Rycia, Pahonix (legacy: zyrrael, Deathmessinger)
+## IconTexture: Interface\AddOns\APR-Core\img\APR_logo
 ## Version: @project-version@
 
 ## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.

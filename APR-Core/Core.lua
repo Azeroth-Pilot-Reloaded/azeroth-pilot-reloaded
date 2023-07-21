@@ -2,7 +2,8 @@
 		GLOBAL VARIABLES
 		Usable within any APR-NAMEHERE addon, or any addon in general,
 		as everything here unless defined local is globally usable outside of this file.
-]] --
+]]
+   --
 
 local AceLocale = LibStub("AceLocale-3.0")
 local L = AceLocale:GetLocale("APR")
@@ -21,7 +22,7 @@ APR.SweatBuff[1] = 0
 APR.SweatBuff[2] = 0
 APR.SweatBuff[3] = 0
 
-APR.RaceLocale, APR.Race = UnitRace("player")
+APR.RaceLocale, APR.Race, APR.RaceID = UnitRace("player")
 APR.Class[1], APR.Class[2], APR.Class[3] = UnitClass("player")
 APR.QuestList = {} --where the quest parts go
 APR.NPCList = {}
@@ -34,7 +35,7 @@ APR.RegisterChat = C_ChatInfo.RegisterAddonMessagePrefix("APRChat")
 APR.LastSent = 0
 APR.GroupListSteps = {}
 APR.GroupListStepsNr = 1
-APR.Version = GetAddOnMetadata("APR", "Version")
+APR.Version = C_AddOns.GetAddOnMetadata("APR", "Version")
 local CoreLoadin = 0
 APR.AfkTimerVar = 0
 APR.QuestListLoadin = 0
@@ -59,6 +60,7 @@ APR.MiniMap_Y = 0
 APR.MacroUpdaterVar = {}
 
 function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First character button
+	APR1[APR.Realm][APR.Name]["routeChoiceIndex"] = routeChoice
 	local ZeMap = C_Map.GetBestMapForUnit("player")
 	local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
 	if (Enum and Enum.UIMapType and Enum.UIMapType.Continent and currentMapId) then
@@ -69,34 +71,33 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 	else
 		ZeMap = C_Map.GetBestMapForUnit("player")
 	end
-	local function autoPatchStartInsertRoute()
-		APR_Custom[APR.Name .. "-" .. APR.Realm] = nil
-		APR_Custom[APR.Name .. "-" .. APR.Realm] = {}
-		for CLi = 1, 19 do
-			APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetText("")
-			APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:Hide()
-		end
+	APR_Custom[APR.Name .. "-" .. APR.Realm] = nil
+	APR_Custom[APR.Name .. "-" .. APR.Realm] = {}
+	for CLi = 1, 19 do
+		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetText("")
+		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:Hide()
 	end
-
-	autoPatchStartInsertRoute()
 	if (APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727)) then
 		tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "01-10 Exile's Reach")
 	end
 	if (APR.Level < 30) then
-		if (APR.Class[3] == 6) then
+		if (APR.Class[3] == 6 and APR.RaceID >= 23) then -- Allied DK
+			tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "Allied Death Knight Start")
+		elseif (APR.Class[3] == 6) then                -- DK
 			tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "08-30 Death Knight Start")
-		elseif (APR.Class[3] == 12) then
+		elseif (APR.Class[3] == 12) then               -- DH
 			tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "01-30 Demon Hunter Start")
 		end
 	end
 	if (routeChoice == 2) then
 		if (APR.Level < 50) then
-			if (APR.Faction == "Alliance") then
+			if APR.Level >= 50 then
+				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DEV - StoryMode Only (Not Enough XP)")
+			elseif (APR.Faction == "Alliance") then
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 10-10 Intro")
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 10-50 Tiragarde Sound")
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 20-50 Dustvar")
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 30-50 Stormsong Valley")
-				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DEV - StoryMode Only (Not Enough XP)")
 			elseif (APR.Faction == "Horde") then
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 10-10 Intro")
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 10-10 Intro 2")
@@ -104,13 +105,14 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 20-50 Nazmir")
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 30-30 Naz-end Vol-begin")
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 30-50 Vol'dun")
-				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DEV - StoryMode Only (Not Enough XP)")
 			end
 		end
 	elseif (routeChoice == 1) then
 		if (APR.Level < 60) then
 			if (APR.Level >= 58 and APR.Class[3] == 13) then
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "58-60 Dracthyr Start")
+			elseif APR.Level >= 50 then
+				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DEV - StoryMode Only (Not Enough XP)")
 			elseif (APR.Faction == "Alliance") then
 				-- WOD
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(1/8) 10-50 Stormwind")
@@ -121,7 +123,6 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(6/8) 10-50 Shadowmoon")
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(7/8) 10-50 Talador")
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(8/8) 10-50 Spires of Arak")
-				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DEV - StoryMode Only (Not Enough XP)")
 			elseif (APR.Faction == "Horde") then
 				-- WOD
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(1/7) 10-50 Orgrimmar")
@@ -131,7 +132,6 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(5/7) 10-50 Talador")
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(6/7) 10-50 Spires of Arak")
 				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(7/7) 10-50 Nagrand")
-				tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DEV - StoryMode Only (Not Enough XP)")
 			end
 		end
 	end
@@ -238,7 +238,6 @@ APR.AfkFrame:Hide()
 -- Likely deals with automatically skipping cutscenes using PlayMovie_hook
 local PlayMovie_hook = MovieFrame_PlayMovie
 MovieFrame_PlayMovie = function(...)
-
 	if (IsModifierKeyDown() or (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 0)) then
 		PlayMovie_hook(...) --MovieFrame_PlayMovie, as previously stated
 	else
@@ -260,8 +259,10 @@ function APR.pairsByKeys(t, f)
 	local i = 0
 	local iter = function()
 		i = i + 1
-		if a[i] == nil then return nil
-		else return a[i], t[a[i]]
+		if a[i] == nil then
+			return nil
+		else
+			return a[i], t[a[i]]
 		end
 	end
 	return iter
@@ -343,9 +344,9 @@ APR.ArrowFrame.Fontstring:SetParent(APR.ArrowFrame.Button)
 APR.ArrowFrame.Fontstring:SetPoint("CENTER", APR.ArrowFrame.Button)
 APR.ArrowFrame.Fontstring:SetText(L["SKIP_WAYPOINT"])
 local skipWidth = APR.ArrowFrame.Fontstring:GetStringWidth() + 10 < 85 and
-	(APR.ArrowFrame.Fontstring:GetStringWidth() + 10) / 2 or 85
+		(APR.ArrowFrame.Fontstring:GetStringWidth() + 10) / 2 or 85
 local skipHeight = skipWidth < 85 and APR.ArrowFrame.Fontstring:GetStringHeight() + 10 or
-	APR.ArrowFrame.Fontstring:GetStringHeight() + 5
+		APR.ArrowFrame.Fontstring:GetStringHeight() + 5
 APR.ArrowFrame.Button:SetWidth(skipWidth)
 APR.ArrowFrame.Button:SetHeight(skipHeight)
 APR.ArrowFrame.Fontstring:SetWidth(skipWidth)
@@ -1205,6 +1206,88 @@ function APR.RoutePlanLoadIn()
 	APR.RoutePlan.FG1.DFT["FS"]:SetText("Dragonflight")
 
 
+	--[[ SpeedFrame
+	APR.RoutePlan.FG1.SRF = CreateFrame("frame", "APR.RoutePlanSpeedRunFrame", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.SRF:SetWidth(165)
+	APR.RoutePlan.FG1.SRF:SetHeight(275)
+	APR.RoutePlan.FG1.SRF:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.SRF:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 825, 0)
+		local t = APR.RoutePlan.FG1.SRF:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.SRF)
+			APR.RoutePlan.FG1.SRF.texture = t
+	APR.RoutePlan.FG1.SRF:SetScript("OnMouseDown", function(self, button)
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.SRF:SetScript("OnMouseUp", function(self, button)
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.SRF:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+
+	APR.RoutePlan.FG1.SRT = CreateFrame("frame", "APR.RoutePlanSpeedRunTitle", APR.RoutePlan.FG1)
+	APR.RoutePlan.FG1.SRT:SetWidth(165)
+	APR.RoutePlan.FG1.SRT:SetHeight(20)
+	APR.RoutePlan.FG1.SRT:SetFrameStrata("LOW")
+	APR.RoutePlan.FG1.SRT:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 825, 0)
+		local t = APR.RoutePlan.FG1.SRT:CreateTexture(nil,"BACKGROUND")
+			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
+			t:SetAllPoints(APR.RoutePlan.FG1.SRT)
+			APR.RoutePlan.FG1.SRT.texture = t
+	APR.RoutePlan.FG1.SRT:SetScript("OnMouseDown", function(self, button) -- On right mouse clicked, start moving the frame
+		if button == "RightButton" then
+			APR.RoutePlan:StartMoving();
+			APR.RoutePlan.isMoving = true;
+		else
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.SRT:SetScript("OnMouseUp", function(self, button) --On let go
+		if button == "RightButton" and APR.RoutePlan.isMoving then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
+			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+			APR.RoutePlan:ClearAllPoints()
+			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+		end
+	end)
+	APR.RoutePlan.FG1.SRT:SetScript("OnHide", function(self)
+		if ( APR.RoutePlan.isMoving ) then
+			APR.RoutePlan:StopMovingOrSizing();
+			APR.RoutePlan.isMoving = false;
+		end
+	end)
+	APR.RoutePlan.FG1.SRT["FS"] = APR.RoutePlan.FG1.SRT:CreateFontString("APR.RoutePlanSpeedRunTitle","ARTWORK", "ChatFontNormal")
+	APR.RoutePlan.FG1.SRT["FS"]:SetParent(APR.RoutePlan.FG1.SRT)
+	APR.RoutePlan.FG1.SRT["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.SRT,"TOP",0,0)
+	APR.RoutePlan.FG1.SRT["FS"]:SetWidth(165)
+	APR.RoutePlan.FG1.SRT["FS"]:SetHeight(20)
+	APR.RoutePlan.FG1.SRT["FS"]:SetJustifyH("CENTER")
+	APR.RoutePlan.FG1.SRT["FS"]:SetFontObject("GameFontNormal")
+	APR.RoutePlan.FG1.SRT["FS"]:SetText(L["SPEEDRUN"])]]
 	local zenr = APR.NumbRoutePlan("SpeedRun")
 	for CLi = 1, zenr do
 		APR.RoutePlan.FG1["SPR3" .. CLi] = CreateFrame("frame", "APR.RoutePlanSpeedRun3" .. CLi, APR.RoutePlan.FG1)
@@ -1251,8 +1334,8 @@ function APR.RoutePlanLoadIn()
 				APR.RoutePlan.FG1.isMoving = false;
 			end
 		end)
-		APR.RoutePlan.FG1["SPR3" .. CLi]["FS"] = APR.RoutePlan.FG1["SPR3" .. CLi]:CreateFontString("APR.RoutePlanSpeedRun3" ..
-			CLi, "ARTWORK", "ChatFontNormal")
+		APR.RoutePlan.FG1["SPR3" .. CLi]["FS"] = APR.RoutePlan.FG1["SPR3" .. CLi]:CreateFontString(
+			"APR.RoutePlanSpeedRun3" .. CLi, "ARTWORK", "ChatFontNormal")
 		APR.RoutePlan.FG1["SPR3" .. CLi]["FS"]:SetParent(APR.RoutePlan.FG1["SPR3" .. CLi])
 		APR.RoutePlan.FG1["SPR3" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.FG1["SPR3" .. CLi], "TOP", 0, 1)
 		APR.RoutePlan.FG1["SPR3" .. CLi]["FS"]:SetWidth(210)
@@ -1308,8 +1391,8 @@ function APR.RoutePlanLoadIn()
 				APR.RoutePlan.FG1.isMoving = false;
 			end
 		end)
-		APR.RoutePlan.FG1["EK3" .. CLi]["FS"] = APR.RoutePlan.FG1["EK3" .. CLi]:CreateFontString("APR.RoutePlanEasternKingdoms3"
-			.. CLi, "ARTWORK", "ChatFontNormal")
+		APR.RoutePlan.FG1["EK3" .. CLi]["FS"] = APR.RoutePlan.FG1["EK3" .. CLi]:CreateFontString(
+			"APR.RoutePlanEasternKingdoms3" .. CLi, "ARTWORK", "ChatFontNormal")
 		APR.RoutePlan.FG1["EK3" .. CLi]["FS"]:SetParent(APR.RoutePlan.FG1["EK3" .. CLi])
 		APR.RoutePlan.FG1["EK3" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.FG1["EK3" .. CLi], "TOP", 0, 1)
 		APR.RoutePlan.FG1["EK3" .. CLi]["FS"]:SetWidth(210)
@@ -1365,8 +1448,8 @@ function APR.RoutePlanLoadIn()
 				APR.RoutePlan.FG1.isMoving = false;
 			end
 		end)
-		APR.RoutePlan.FG1["KAL3" .. CLi]["FS"] = APR.RoutePlan.FG1["KAL3" .. CLi]:CreateFontString("APR.RoutePlanKalimdor3" ..
-			CLi, "ARTWORK", "ChatFontNormal")
+		APR.RoutePlan.FG1["KAL3" .. CLi]["FS"] = APR.RoutePlan.FG1["KAL3" .. CLi]:CreateFontString(
+			"APR.RoutePlanKalimdor3" .. CLi, "ARTWORK", "ChatFontNormal")
 		APR.RoutePlan.FG1["KAL3" .. CLi]["FS"]:SetParent(APR.RoutePlan.FG1["KAL3" .. CLi])
 		APR.RoutePlan.FG1["KAL3" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.FG1["KAL3" .. CLi], "TOP", 0, 1)
 		APR.RoutePlan.FG1["KAL3" .. CLi]["FS"]:SetWidth(210)
@@ -1422,8 +1505,8 @@ function APR.RoutePlanLoadIn()
 				APR.RoutePlan.FG1.isMoving = false;
 			end
 		end)
-		APR.RoutePlan.FG1["SL3" .. CLi]["FS"] = APR.RoutePlan.FG1["SL3" .. CLi]:CreateFontString("APR.RoutePlanShadowlands3" ..
-			CLi, "ARTWORK", "ChatFontNormal")
+		APR.RoutePlan.FG1["SL3" .. CLi]["FS"] = APR.RoutePlan.FG1["SL3" .. CLi]:CreateFontString(
+			"APR.RoutePlanShadowlands3" .. CLi, "ARTWORK", "ChatFontNormal")
 		APR.RoutePlan.FG1["SL3" .. CLi]["FS"]:SetParent(APR.RoutePlan.FG1["SL3" .. CLi])
 		APR.RoutePlan.FG1["SL3" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.FG1["SL3" .. CLi], "TOP", 0, 1)
 		APR.RoutePlan.FG1["SL3" .. CLi]["FS"]:SetWidth(210)
@@ -1479,7 +1562,8 @@ function APR.RoutePlanLoadIn()
 				APR.RoutePlan.FG1.isMoving = false;
 			end
 		end)
-		APR.RoutePlan.FG1["EX3" .. CLi]["FS"] = APR.RoutePlan.FG1["EX3" .. CLi]:CreateFontString("APR.RoutePlanExtra3" .. CLi,
+		APR.RoutePlan.FG1["EX3" .. CLi]["FS"] = APR.RoutePlan.FG1["EX3" .. CLi]:CreateFontString(
+			"APR.RoutePlanExtra3" .. CLi,
 			"ARTWORK", "ChatFontNormal")
 		APR.RoutePlan.FG1["EX3" .. CLi]["FS"]:SetParent(APR.RoutePlan.FG1["EX3" .. CLi])
 		APR.RoutePlan.FG1["EX3" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.FG1["EX3" .. CLi], "TOP", 0, 1)
@@ -1536,8 +1620,8 @@ function APR.RoutePlanLoadIn()
 				APR.RoutePlan.FG1.isMoving = false;
 			end
 		end)
-		APR.RoutePlan.FG1["MISC3" .. CLi]["FS"] = APR.RoutePlan.FG1["MISC3" .. CLi]:CreateFontString("APR.RoutePlanMISC3" ..
-			CLi, "ARTWORK", "ChatFontNormal")
+		APR.RoutePlan.FG1["MISC3" .. CLi]["FS"] = APR.RoutePlan.FG1["MISC3" .. CLi]:CreateFontString(
+			"APR.RoutePlanMISC3" .. CLi, "ARTWORK", "ChatFontNormal")
 		APR.RoutePlan.FG1["MISC3" .. CLi]["FS"]:SetParent(APR.RoutePlan.FG1["MISC3" .. CLi])
 		APR.RoutePlan.FG1["MISC3" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.FG1["MISC3" .. CLi], "TOP", 0, 1)
 		APR.RoutePlan.FG1["MISC3" .. CLi]["FS"]:SetWidth(210)
@@ -1593,8 +1677,8 @@ function APR.RoutePlanLoadIn()
 				APR.RoutePlan.FG1.isMoving = false;
 			end
 		end)
-		APR.RoutePlan.FG1["MISC23" .. CLi]["FS"] = APR.RoutePlan.FG1["MISC23" .. CLi]:CreateFontString("APR.RoutePlanMISC23" ..
-			CLi, "ARTWORK", "ChatFontNormal")
+		APR.RoutePlan.FG1["MISC23" .. CLi]["FS"] = APR.RoutePlan.FG1["MISC23" .. CLi]:CreateFontString(
+			"APR.RoutePlanMISC23" .. CLi, "ARTWORK", "ChatFontNormal")
 		APR.RoutePlan.FG1["MISC23" .. CLi]["FS"]:SetParent(APR.RoutePlan.FG1["MISC23" .. CLi])
 		APR.RoutePlan.FG1["MISC23" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.FG1["MISC23" .. CLi], "TOP", 0, 1)
 		APR.RoutePlan.FG1["MISC23" .. CLi]["FS"]:SetWidth(210)
@@ -1650,8 +1734,8 @@ function APR.RoutePlanLoadIn()
 				APR.RoutePlan.FG1.isMoving = false;
 			end
 		end)
-		APR.RoutePlan.FG1["DF3" .. CLi]["FS"] = APR.RoutePlan.FG1["DF3" .. CLi]:CreateFontString("APR.RoutePlanKalimdor3" ..
-			CLi, "ARTWORK", "ChatFontNormal")
+		APR.RoutePlan.FG1["DF3" .. CLi]["FS"] = APR.RoutePlan.FG1["DF3" .. CLi]:CreateFontString(
+			"APR.RoutePlanKalimdor3" .. CLi, "ARTWORK", "ChatFontNormal")
 		APR.RoutePlan.FG1["DF3" .. CLi]["FS"]:SetParent(APR.RoutePlan.FG1["DF3" .. CLi])
 		APR.RoutePlan.FG1["DF3" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.FG1["DF3" .. CLi], "TOP", 0, 1)
 		APR.RoutePlan.FG1["DF3" .. CLi]["FS"]:SetWidth(210)
@@ -1662,7 +1746,8 @@ function APR.RoutePlanLoadIn()
 	end
 
 	for CLi = 1, 19 do
-		APR.RoutePlan.FG1["FxzCustom" .. CLi] = CreateFrame("frame", "APR.RoutePlanMainFsramex2xxxsc" .. CLi, APR.RoutePlan.FG1)
+		APR.RoutePlan.FG1["FxzCustom" .. CLi] = CreateFrame("frame", "APR.RoutePlanMainFsramex2xxxsc" .. CLi,
+			APR.RoutePlan.FG1)
 		APR.RoutePlan.FG1["FxzCustom" .. CLi]:SetWidth(25)
 		APR.RoutePlan.FG1["FxzCustom" .. CLi]:SetHeight(20)
 		APR.RoutePlan.FG1["FxzCustom" .. CLi]:SetMovable(true)
@@ -1676,8 +1761,8 @@ function APR.RoutePlanLoadIn()
 		t:SetAllPoints(APR.RoutePlan.FG1["FxzCustom" .. CLi])
 		t:SetColorTexture(0.1, 0.1, 0.4, 1)
 		APR.RoutePlan.FG1["FxzCustom" .. CLi].texture = t
-		APR.RoutePlan.FG1["FxzCustom" .. CLi]["FS"] = APR.RoutePlan.FG1["FxzCustom" .. CLi]:CreateFontString("APR.RoutePlan_Fx3x_FFGs1S"
-			.. CLi, "ARTWORK", "ChatFontNormal")
+		APR.RoutePlan.FG1["FxzCustom" .. CLi]["FS"] = APR.RoutePlan.FG1["FxzCustom" .. CLi]:CreateFontString(
+			"APR.RoutePlan_Fx3x_FFGs1S" .. CLi, "ARTWORK", "ChatFontNormal")
 		APR.RoutePlan.FG1["FxzCustom" .. CLi]["FS"]:SetParent(APR.RoutePlan.FG1["FxzCustom" .. CLi])
 		APR.RoutePlan.FG1["FxzCustom" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.FG1["FxzCustom" .. CLi], "TOP", 0, 1)
 		APR.RoutePlan.FG1["FxzCustom" .. CLi]["FS"]:SetWidth(25)
@@ -1686,7 +1771,8 @@ function APR.RoutePlanLoadIn()
 		APR.RoutePlan.FG1["FxzCustom" .. CLi]["FS"]:SetFontObject("GameFontNormal")
 		APR.RoutePlan.FG1["FxzCustom" .. CLi]["FS"]:SetText(CLi)
 
-		APR.RoutePlan.FG1["Fxz2Custom" .. CLi] = CreateFrame("frame", "APR.RoutePlanMainFsramex2xc2x" .. CLi, APR.RoutePlan.FG1)
+		APR.RoutePlan.FG1["Fxz2Custom" .. CLi] = CreateFrame("frame", "APR.RoutePlanMainFsramex2xc2x" .. CLi,
+			APR.RoutePlan.FG1)
 		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:SetWidth(225)
 		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:SetHeight(20)
 		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:SetMovable(true)
@@ -1745,8 +1831,8 @@ function APR.RoutePlanLoadIn()
 				APR.RoutePlan.FG1.isMoving = false;
 			end
 		end)
-		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"] = APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:CreateFontString("APR.RoutePlan_Fx3x_FFGs21Sx"
-			.. CLi, "ARTWORK", "ChatFontNormal")
+		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"] = APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:CreateFontString(
+			"APR.RoutePlan_Fx3x_FFGs21Sx" .. CLi, "ARTWORK", "ChatFontNormal")
 		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetParent(APR.RoutePlan.FG1["Fxz2Custom" .. CLi])
 		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.FG1["Fxz2Custom" .. CLi], "TOP", 0, 1)
 		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetWidth(210)
@@ -1975,9 +2061,9 @@ function APR.CheckPosMove(zeActivz)
 		local ZeMWidth = ((ZeMRight - ZeMLeft) / 2) + ZeMLeft
 		for CLi2 = 1, 19 do
 			local zsda = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
 			local zsda2 = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
 
 			if (ZeMHeight > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() and ZeMHeight < zsda) then
 				if (ZeMWidth > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() and ZeMWidth < zsda2) then
@@ -2004,9 +2090,9 @@ function APR.CheckPosMove(zeActivz)
 		local ZeMWidth = ((ZeMRight - ZeMLeft) / 2) + ZeMLeft
 		for CLi2 = 1, 19 do
 			local zsda = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
 			local zsda2 = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
 
 			if (ZeMHeight > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() and ZeMHeight < zsda) then
 				if (ZeMWidth > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() and ZeMWidth < zsda2) then
@@ -2033,9 +2119,9 @@ function APR.CheckPosMove(zeActivz)
 		local ZeMWidth = ((ZeMRight - ZeMLeft) / 2) + ZeMLeft
 		for CLi2 = 1, 19 do
 			local zsda = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
 			local zsda2 = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
 
 			if (ZeMHeight > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() and ZeMHeight < zsda) then
 				if (ZeMWidth > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() and ZeMWidth < zsda2) then
@@ -2062,9 +2148,9 @@ function APR.CheckPosMove(zeActivz)
 		local ZeMWidth = ((ZeMRight - ZeMLeft) / 2) + ZeMLeft
 		for CLi2 = 1, 19 do
 			local zsda = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
 			local zsda2 = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
 
 			if (ZeMHeight > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() and ZeMHeight < zsda) then
 				if (ZeMWidth > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() and ZeMWidth < zsda2) then
@@ -2091,9 +2177,9 @@ function APR.CheckPosMove(zeActivz)
 		local ZeMWidth = ((ZeMRight - ZeMLeft) / 2) + ZeMLeft
 		for CLi2 = 1, 19 do
 			local zsda = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
 			local zsda2 = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
 
 			if (ZeMHeight > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() and ZeMHeight < zsda) then
 				if (ZeMWidth > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() and ZeMWidth < zsda2) then
@@ -2120,9 +2206,9 @@ function APR.CheckPosMove(zeActivz)
 		local ZeMWidth = ((ZeMRight - ZeMLeft) / 2) + ZeMLeft
 		for CLi2 = 1, 19 do
 			local zsda = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
 			local zsda2 = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
 
 			if (ZeMHeight > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() and ZeMHeight < zsda) then
 				if (ZeMWidth > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() and ZeMWidth < zsda2) then
@@ -2149,9 +2235,9 @@ function APR.CheckPosMove(zeActivz)
 		local ZeMWidth = ((ZeMRight - ZeMLeft) / 2) + ZeMLeft
 		for CLi2 = 1, 19 do
 			local zsda = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
 			local zsda2 = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
 
 			if (ZeMHeight > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() and ZeMHeight < zsda) then
 				if (ZeMWidth > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() and ZeMWidth < zsda2) then
@@ -2178,9 +2264,9 @@ function APR.CheckPosMove(zeActivz)
 		local ZeMWidth = ((ZeMRight - ZeMLeft) / 2) + ZeMLeft
 		for CLi2 = 1, 19 do
 			local zsda = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetBottom())
 			local zsda2 = APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() +
-				(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
+					(APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetRight() - APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft())
 
 			if (ZeMHeight > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetTop() and ZeMHeight < zsda) then
 				if (ZeMWidth > APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]:GetLeft() and ZeMWidth < zsda2) then
@@ -2204,7 +2290,8 @@ function APR.CheckPosMove(zeActivz)
 			for CLi2z = 1, 19 do
 				zerpd = zerpd - 1
 				if (zerpd ~= 1 and zerpd > zto) then
-					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]
+						:GetText())
 				end
 				if (APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:GetText()) then
 					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]:Show()
@@ -2215,14 +2302,14 @@ function APR.CheckPosMove(zeActivz)
 		end
 		APR.RoutePlan.FG1["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.FG1["EK3" .. zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom" .. zto]:Show()
-
 	elseif (zeActivz == 2 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom" .. zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
 				zerpd = zerpd - 1
 				if (zerpd ~= 1 and zerpd > zto) then
-					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]
+						:GetText())
 				end
 				if (APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:GetText()) then
 					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]:Show()
@@ -2233,14 +2320,14 @@ function APR.CheckPosMove(zeActivz)
 		end
 		APR.RoutePlan.FG1["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.FG1["KAL3" .. zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom" .. zto]:Show()
-
 	elseif (zeActivz == 3 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom" .. zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
 				zerpd = zerpd - 1
 				if (zerpd ~= 1 and zerpd > zto) then
-					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]
+						:GetText())
 				end
 				if (APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:GetText()) then
 					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]:Show()
@@ -2251,14 +2338,14 @@ function APR.CheckPosMove(zeActivz)
 		end
 		APR.RoutePlan.FG1["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.FG1["SL3" .. zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom" .. zto]:Show()
-
 	elseif (zeActivz == 4 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom" .. zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
 				zerpd = zerpd - 1
 				if (zerpd ~= 1 and zerpd > zto) then
-					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]
+						:GetText())
 				end
 				if (APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:GetText()) then
 					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]:Show()
@@ -2269,14 +2356,14 @@ function APR.CheckPosMove(zeActivz)
 		end
 		APR.RoutePlan.FG1["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.FG1["SPR3" .. zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom" .. zto]:Show()
-
 	elseif (zeActivz == 5 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom" .. zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
 				zerpd = zerpd - 1
 				if (zerpd ~= 1 and zerpd > zto) then
-					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]
+						:GetText())
 				end
 				if (APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:GetText()) then
 					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]:Show()
@@ -2287,14 +2374,14 @@ function APR.CheckPosMove(zeActivz)
 		end
 		APR.RoutePlan.FG1["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.FG1["EX3" .. zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom" .. zto]:Show()
-
 	elseif (zeActivz == 6 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom" .. zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
 				zerpd = zerpd - 1
 				if (zerpd ~= 1 and zerpd > zto) then
-					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]
+						:GetText())
 				end
 				if (APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:GetText()) then
 					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]:Show()
@@ -2305,14 +2392,14 @@ function APR.CheckPosMove(zeActivz)
 		end
 		APR.RoutePlan.FG1["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.FG1["DF3" .. zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom" .. zto]:Show()
-
 	elseif (zeActivz == 7 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom" .. zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
 				zerpd = zerpd - 1
 				if (zerpd ~= 1 and zerpd > zto) then
-					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]
+						:GetText())
 				end
 				if (APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:GetText()) then
 					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]:Show()
@@ -2323,14 +2410,14 @@ function APR.CheckPosMove(zeActivz)
 		end
 		APR.RoutePlan.FG1["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.FG1["MISC3" .. zfrom]["FS"]:GetText())
 		APR.RoutePlan.FG1["Fxz2Custom" .. zto]:Show()
-
 	elseif (zeActivz == 8 and zfrom and zto) then
 		if (APR.RoutePlan.FG1["Fxz2Custom" .. zto]["FS"]:GetText() ~= nil) then
 			local zerpd = 20
 			for CLi2z = 1, 19 do
 				zerpd = zerpd - 1
 				if (zerpd ~= 1 and zerpd > zto) then
-					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]:GetText())
+					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.FG1["Fxz2Custom" .. zerpd - 1]["FS"]
+						:GetText())
 				end
 				if (APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]["FS"]:GetText()) then
 					APR.RoutePlan.FG1["Fxz2Custom" .. zerpd]:Show()
@@ -2367,9 +2454,7 @@ function APR.CheckPosMove(zeActivz)
 		local zeTex = APR.RoutePlan.FG1["KAL3" .. CLi]["FS"]:GetText()
 		local ZeMatch = 0
 		for CLi2 = 1, 19 do
-			if (
-				APR.RoutePlan.FG1 and APR.RoutePlan.FG1["Fxz2Custom" .. CLi2] and APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]["FS"] and
-					APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]["FS"]:GetText() == zeTex) then
+			if (APR.RoutePlan.FG1 and APR.RoutePlan.FG1["Fxz2Custom" .. CLi2] and APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]["FS"] and APR.RoutePlan.FG1["Fxz2Custom" .. CLi2]["FS"]:GetText() == zeTex) then
 				APR.RoutePlan.FG1["KAL3" .. CLi]:Hide()
 				ZeMatch = 1
 			end
@@ -2558,7 +2643,6 @@ function APR.CheckPosMove(zeActivz)
 			end
 		end
 	end
-
 end
 
 function APR.CheckCustomEmpty()
@@ -2585,17 +2669,15 @@ function APR.RoutePlanCheckPos()
 	local zenr = APR.NumbRoutePlan("EasternKingdom")
 	local ZeHide = {}
 	for CLi = 1, 19 do
-		if (
-			APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:GetText() and
-				APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:GetText() ~=
-				"") then
+		if (APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:GetText() and APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:GetText() ~= "") then
 			ZeHide[APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:GetText()] = 1
 		end
 	end
 	for CLi = 1, zenr do
 		APR.RoutePlan.FG1["EK3" .. CLi]:ClearAllPoints()
 		APR.RoutePlan.FG1["EK3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.EKT, "TOPRIGHT", -10, -(20 * CLi) - 10)
-		APR.RoutePlan.FG1["EK3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.EKT, "BOTTOMRIGHT", 10, -(20 * CLi) + 10 - 10)
+		APR.RoutePlan.FG1["EK3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.EKT, "BOTTOMRIGHT", 10, -(20 * CLi) + 10 -
+			10)
 		APR.RoutePlan.FG1["EK3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.EKT, "BOTTOMLEFT", 10, -(20 * CLi) + 10 - 10)
 		APR.RoutePlan.FG1["EK3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.EKT, "BOTTOMRIGHT", -10, -(20 * CLi) - 10)
 		APR.RoutePlan.FG1["EK3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.EKT, "TOPLEFT", 10, -(20 * CLi) - 10)
@@ -2612,7 +2694,8 @@ function APR.RoutePlanCheckPos()
 		APR.RoutePlan.FG1["KAL3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.KALT, "BOTTOMRIGHT", 10,
 			-(20 * CLi) + 10 -
 			10)
-		APR.RoutePlan.FG1["KAL3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.KALT, "BOTTOMLEFT", 10, -(20 * CLi) + 10 - 10)
+		APR.RoutePlan.FG1["KAL3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.KALT, "BOTTOMLEFT", 10, -(20 * CLi) + 10 -
+			10)
 		APR.RoutePlan.FG1["KAL3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.KALT, "BOTTOMRIGHT", -10, -(20 * CLi) - 10)
 		APR.RoutePlan.FG1["KAL3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.KALT, "TOPLEFT", 10, -(20 * CLi) - 10)
 		APR.RoutePlan.FG1["KAL3" .. CLi]:SetWidth(225)
@@ -2625,7 +2708,8 @@ function APR.RoutePlanCheckPos()
 	for CLi = 1, zenr do
 		APR.RoutePlan.FG1["SL3" .. CLi]:ClearAllPoints()
 		APR.RoutePlan.FG1["SL3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.SLT, "TOPRIGHT", -10, -(20 * CLi) - 10)
-		APR.RoutePlan.FG1["SL3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.SLT, "BOTTOMRIGHT", 10, -(20 * CLi) + 10 - 10)
+		APR.RoutePlan.FG1["SL3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.SLT, "BOTTOMRIGHT", 10, -(20 * CLi) + 10 -
+			10)
 		APR.RoutePlan.FG1["SL3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.SLT, "BOTTOMLEFT", 10, -(20 * CLi) + 10 - 10)
 		APR.RoutePlan.FG1["SL3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.SLT, "BOTTOMRIGHT", -10, -(20 * CLi) - 10)
 		APR.RoutePlan.FG1["SL3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.SLT, "TOPLEFT", 10, -(20 * CLi) - 10)
@@ -2639,10 +2723,10 @@ function APR.RoutePlanCheckPos()
 	for CLi = 1, zenr do
 		APR.RoutePlan.FG1["EX3" .. CLi]:ClearAllPoints()
 		APR.RoutePlan.FG1["EX3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.EXTT, "TOPRIGHT", -10, -(20 * CLi) - 10)
-		APR.RoutePlan.FG1["EX3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.EXTT, "BOTTOMRIGHT", 10,
-			-(20 * CLi) + 10 -
+		APR.RoutePlan.FG1["EX3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.EXTT, "BOTTOMRIGHT", 10, -(20 * CLi) + 10 -
 			10)
-		APR.RoutePlan.FG1["EX3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.EXTT, "BOTTOMLEFT", 10, -(20 * CLi) + 10 - 10)
+		APR.RoutePlan.FG1["EX3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.EXTT, "BOTTOMLEFT", 10, -(20 * CLi) + 10 -
+			10)
 		APR.RoutePlan.FG1["EX3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.EXTT, "BOTTOMRIGHT", -10, -(20 * CLi) - 10)
 		APR.RoutePlan.FG1["EX3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.EXTT, "TOPLEFT", 10, -(20 * CLi) - 10)
 		APR.RoutePlan.FG1["EX3" .. CLi]:SetWidth(225)
@@ -2656,8 +2740,7 @@ function APR.RoutePlanCheckPos()
 		APR.RoutePlan.FG1["MISC3" .. CLi]:ClearAllPoints()
 		APR.RoutePlan.FG1["MISC3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.MISC1T, "TOPRIGHT", -10, -(20 * CLi) - 10)
 		APR.RoutePlan.FG1["MISC3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.MISC1T, "BOTTOMRIGHT", 10,
-			-(20 * CLi) + 10
-			- 10)
+			-(20 * CLi) + 10 - 10)
 		APR.RoutePlan.FG1["MISC3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.MISC1T, "BOTTOMLEFT", 10,
 			-(20 * CLi) + 10 -
 			10)
@@ -2674,12 +2757,11 @@ function APR.RoutePlanCheckPos()
 		APR.RoutePlan.FG1["MISC23" .. CLi]:ClearAllPoints()
 		APR.RoutePlan.FG1["MISC23" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.MISC2T, "TOPRIGHT", -10, -(20 * CLi) - 10)
 		APR.RoutePlan.FG1["MISC23" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.MISC2T, "BOTTOMRIGHT", 10,
-			-(20 * CLi) +
+			-(20 * CLi) + 10 - 10)
+		APR.RoutePlan.FG1["MISC23" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.MISC2T, "BOTTOMLEFT", 10, -(20 * CLi) +
 			10 - 10)
-		APR.RoutePlan.FG1["MISC23" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.MISC2T, "BOTTOMLEFT", 10,
-			-(20 * CLi) + 10
-			- 10)
-		APR.RoutePlan.FG1["MISC23" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.MISC2T, "BOTTOMRIGHT", -10, -(20 * CLi) - 10)
+		APR.RoutePlan.FG1["MISC23" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.MISC2T, "BOTTOMRIGHT", -10, -(20 * CLi) -
+			10)
 		APR.RoutePlan.FG1["MISC23" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.MISC2T, "TOPLEFT", 10, -(20 * CLi) - 10)
 		APR.RoutePlan.FG1["MISC23" .. CLi]:SetWidth(225)
 		APR.RoutePlan.FG1["MISC23" .. CLi]:SetHeight(20)
@@ -2691,7 +2773,8 @@ function APR.RoutePlanCheckPos()
 	for CLi = 1, zenr do
 		APR.RoutePlan.FG1["DF3" .. CLi]:ClearAllPoints()
 		APR.RoutePlan.FG1["DF3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.DFT, "TOPRIGHT", -10, -(20 * CLi) - 10)
-		APR.RoutePlan.FG1["DF3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.DFT, "BOTTOMRIGHT", 10, -(20 * CLi) + 10 - 10)
+		APR.RoutePlan.FG1["DF3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.DFT, "BOTTOMRIGHT", 10, -(20 * CLi) + 10 -
+			10)
 		APR.RoutePlan.FG1["DF3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.DFT, "BOTTOMLEFT", 10, -(20 * CLi) + 10 - 10)
 		APR.RoutePlan.FG1["DF3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.DFT, "BOTTOMRIGHT", -10, -(20 * CLi) - 10)
 		APR.RoutePlan.FG1["DF3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.DFT, "TOPLEFT", 10, -(20 * CLi) - 10)
@@ -2708,8 +2791,7 @@ function APR.RoutePlanCheckPos()
 		APR.RoutePlan.FG1["SPR3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.F25x3, "BOTTOMRIGHT", 10,
 			-(20 * CLi) + 10 -
 			10)
-		APR.RoutePlan.FG1["SPR3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.F25x3, "BOTTOMLEFT", 10,
-			-(20 * CLi) + 10 -
+		APR.RoutePlan.FG1["SPR3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.F25x3, "BOTTOMLEFT", 10, -(20 * CLi) + 10 -
 			10)
 		APR.RoutePlan.FG1["SPR3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.F25x3, "BOTTOMRIGHT", -10, -(20 * CLi) - 10)
 		APR.RoutePlan.FG1["SPR3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.F25x3, "TOPLEFT", 10, -(20 * CLi) - 10)
@@ -2727,9 +2809,9 @@ function APR.RoutePlanCheckPos()
 		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.FG1.CPT, "BOTTOMRIGHT", 10,
 			-(20 * CLi) + 10 - 10)
 		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1.CPT, "BOTTOMLEFT", 10,
-			-(20 * CLi) + 10
-			- 10)
-		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.CPT, "BOTTOMRIGHT", -10, -(20 * CLi) - 10)
+			-(20 * CLi) + 10 - 10)
+		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.CPT, "BOTTOMRIGHT", -10, -(20 * CLi) -
+			10)
 		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.FG1.CPT, "TOPLEFT", 10, -(20 * CLi) - 10)
 		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:SetWidth(225)
 		APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:SetHeight(20)
@@ -2824,6 +2906,7 @@ end
 APR.CoreEventFrame = CreateFrame("Frame")
 APR.CoreEventFrame:RegisterEvent("ADDON_LOADED")
 APR.CoreEventFrame:RegisterEvent("CINEMATIC_START")
+APR.CoreEventFrame:RegisterEvent("PLAYER_LEVEL_UP")
 APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 	if (event == "ADDON_LOADED") then
 		local arg1, arg2, arg3, arg4, arg5 = ...;
@@ -2853,8 +2936,8 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 				if (not APR_TaxiTimers[APR.TaxiTimerCur .. "-" .. APR.TaxiTimerDes]) then
 					APR_TaxiTimers[APR.TaxiTimerCur .. "-" .. APR.TaxiTimerDes] = 3
 				end
-				APR_TaxiTimers[APR.TaxiTimerCur .. "-" .. APR.TaxiTimerDes] = APR_TaxiTimers[APR.TaxiTimerCur ..
-					"-" .. APR.TaxiTimerDes] + 1
+				APR_TaxiTimers[APR.TaxiTimerCur .. "-" .. APR.TaxiTimerDes] = APR_TaxiTimers
+						[APR.TaxiTimerCur .. "-" .. APR.TaxiTimerDes] + 1
 			else
 				APR.TaxiTimerCur = nil
 				APR.TaxiTimerDes = nil
@@ -2899,9 +2982,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 					APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm] = {}
 				end
 				local CLi
-				if (
-					APR.getContinent() and not APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm][
-						"Conts"]) then
+				if (APR.getContinent() and not APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]["Conts"]) then
 					APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]["Conts"] = {}
 				end
 				APR.LoadOptionsFrame()
@@ -2940,7 +3021,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 			if (APR1[APR.Realm][APR.Name]["QuestCounter2"] ~= APR1[APR.Realm][APR.Name]["QuestCounter"]) then
 				APR.BookingList["PrintQStep"] = 1
 				APR1[APR.Realm][APR.Name]["QuestCounter"] = APR1[APR.Realm][APR.Name]["QuestCounter2"]
-
 			end
 			if (not InCombatLockdown() and APR.MacroUpdaterVar[1]) then
 				local macroSlot = APR.MacroUpdaterVar[1]
@@ -3049,7 +3129,10 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 			APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] = 1
 		end
 		if (not APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"]) then
-			APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] = 1
+			APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] = 0
+		end
+		if (not APR1[APR.Realm][APR.Name]["Settings"]["AutoAcceptQuestRoute"]) then
+			APR1[APR.Realm][APR.Name]["Settings"]["AutoAcceptQuestRoute"] = 1
 		end
 		if (not APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"]) then
 			APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] = 1
@@ -3091,6 +3174,9 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 		if (not APR1[APR.Realm][APR.Name]["hideRidingSkill"]) then
 			APR1[APR.Realm][APR.Name]["hideRidingSkill"] = 0
 		end
+		if (not APR1[APR.Realm][APR.Name]["routeChoiceIndex"]) then
+			APR1[APR.Realm][APR.Name]["routeChoiceIndex"] = 0
+		end
 		if (not APR1[APR.Realm][APR.Name]["WantedQuestList"]) then
 			APR1[APR.Realm][APR.Name]["WantedQuestList"] = {}
 		end
@@ -3123,7 +3209,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 		APR.ArrowEventAFkTimer:SetScript("OnLoop", function(self, event, ...)
 			local ZeTime = APR.AfkTimerVar - floor(GetTime())
 			if (ZeTime > 0) then
-
 				APR.AfkFrame.Fontstring:SetText(L["AFK"] .. " " .. string.format(SecondsToTime(ZeTime)))
 				local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 				if (APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
@@ -3142,20 +3227,24 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 			end
 		end)
 		SlashCmdList["APR_Cmd"] = APR_SlashCmd
-		SLASH_APR_Cmd1 = "/APR" -- Prefix for slash commands, ex. /apr reset, /apr skip
+		SLASH_APR_Cmd1 = "/APR"               -- Prefix for slash commands, ex. /apr reset, /apr skip
 		CoreLoadin = 1
 	elseif (event == "CINEMATIC_START") then --Cutscene skip when cinematic starts
-		if (not IsModifierKeyDown()) then -- unless control key is down
+		if (not IsModifierKeyDown()) then     -- unless control key is down
 			local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
 			local steps
 			if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
 				steps = APR.QuestStepList[APR.ActiveMap][CurStep]
 			end
-			if (
-				APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 1 and (steps and not steps["Dontskipvid"]) and
-					(APR.ActiveQuests and not APR.ActiveQuests[52042])) then
+			if (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 1 and (steps and not steps["Dontskipvid"]) and (APR.ActiveQuests and not APR.ActiveQuests[52042])) then
 				APR.BookingList["SkipCutscene"] = 1
 			end
+		end
+	end
+	if (event == "PLAYER_LEVEL_UP") then
+		if (APR.Level >= 60 and not IsTableEmpty(APR_Custom[APR.Name .. "-" .. APR.Realm])) then
+			wipe(APR_Custom[APR.Name .. "-" .. APR.Realm])
+			APR.AutoPathOnBeta(APR1[APR.Realm][APR.Name]["routeChoiceIndex"])
 		end
 	end
 end)

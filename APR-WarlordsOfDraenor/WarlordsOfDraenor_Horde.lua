@@ -1,15 +1,6 @@
 APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
-	{ --1
-		["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
-		["SpellInTab"] = 33388,
-		["TrainRidingSkill"] = 34398,
-		["RaidIcon"] = 44919,
-		["TT"] = {
-			["y"] = 1799.5,
-			["x"] = -4356.7,
-		},
-	},
-	{ --2
+	{
+		--2
 		["PickUp"] = {
 			34398,
 		},
@@ -21,14 +12,8 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 			["x"] = -4215.9,
 		},
 	},
-	{ --3
-		["TT"] = {
-			["y"] = 1573.9,
-			["x"] = -4438.4,
-		},
-		["SetHS"] = 34398,
-	},
-	{ --4
+	{
+		--4
 		["Trigger"] = {
 			["y"] = 1443.5,
 			["x"] = -4426.3,
@@ -40,7 +25,8 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 			["x"] = -4426.3,
 		},
 	},
-	{ --5
+	{
+		--5
 		["Trigger"] = {
 			["y"] = 1441.7,
 			["x"] = -4458.8,
@@ -52,7 +38,8 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 			["x"] = -4458.8,
 		},
 	},
-	{ --6
+	{
+		--6
 		["Trigger"] = {
 			["y"] = 1475.5,
 			["x"] = -4457.8,
@@ -64,7 +51,8 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 			["x"] = -4457.8,
 		},
 	},
-	{ --7
+	{
+		--7
 		["Trigger"] = {
 			["y"] = 1478.3,
 			["x"] = -4479.3,
@@ -76,7 +64,8 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 			["x"] = -4479.3,
 		},
 	},
-	{ --8
+	{
+		--8
 		["Qpart"] = {
 			[34398] = {
 				["1"] = "1",
@@ -94,13 +83,14 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 			["x"] = -4477.2,
 		},
 	},
-	{ --9
+	{
+		--9
 		["Qpart"] = {
 			[34398] = {
 				["2"] = "2",
 			},
 		},
-		["Gossip"] = 1,
+		["Gossip"] = 2,
 		["Trigger"] = {
 			["y"] = -11810,
 			["x"] = -3204.5,
@@ -118,7 +108,8 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
 }
 
 APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
-	{ --1
+	{
+		--1
 		["Done"] = {
 			34398,
 		},
@@ -127,7 +118,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2373.2,
 		},
 	},
-	{ --2
+	{
+		--2
 		["PickUp"] = {
 			35933,
 		},
@@ -136,7 +128,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2373.2,
 		},
 	},
-	{ --3
+	{
+		--3
 		["Trigger"] = {
 			["y"] = 4068.1,
 			["x"] = -2340.2,
@@ -152,7 +145,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2340.2,
 		},
 	}, -- [3]
-	{ --4
+	{
+		--4
 		["Done"] = {
 			35933,
 		},
@@ -161,7 +155,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2357,
 		},
 	}, -- [4]
-	{ --5
+	{
+		--5
 		["PickUp"] = {
 			34392,
 		},
@@ -170,7 +165,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2357,
 		},
 	}, -- [5]
-	{ --6
+	{
+		--6
 		["Trigger"] = {
 			["y"] = 3969.8,
 			["x"] = -2314.5,
@@ -182,7 +178,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2314.5,
 		},
 	}, -- [6]
-	{ --7
+	{
+		--7
 		["Trigger"] = {
 			["y"] = 3965.8,
 			["x"] = -2284.7,
@@ -198,7 +195,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2284.7,
 		},
 	}, -- [7]
-	{ --8
+	{
+		--8
 		["Trigger"] = {
 			["y"] = 4168.3,
 			["x"] = -2311,
@@ -210,7 +208,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2311,
 		},
 	},
-	{ --9
+	{
+		--9
 		["Trigger"] = {
 			["y"] = 4167.8,
 			["x"] = -2282.7,
@@ -226,7 +225,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2282.7,
 		},
 	},
-	{ --10
+	{
+		--10
 		["Trigger"] = {
 			["y"] = 4078.8,
 			["x"] = -2323.2,
@@ -238,7 +238,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2323.2,
 		},
 	}, -- [10]
-	{ --12
+	{
+		--12
 		["Done"] = {
 			34392,
 		},
@@ -247,7 +248,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2371,
 		},
 	}, -- [11]
-	{ --13
+	{
+		--13
 		["PickUp"] = {
 			34393,
 		},
@@ -256,7 +258,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2371,
 		},
 	}, -- [12]
-	{ --14
+	{
+		--14
 		["Trigger"] = {
 			["y"] = 4014.1,
 			["x"] = -2377.5,
@@ -268,7 +271,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2377.5,
 		},
 	}, -- [13]
-	{ --15
+	{
+		--15
 		["Trigger"] = {
 			["y"] = 4039.9,
 			["x"] = -2380.4,
@@ -280,7 +284,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2380.4,
 		},
 	}, -- [14]
-	{ --16
+	{
+		--16
 		["Trigger"] = {
 			["y"] = 4036.1,
 			["x"] = -2403.2,
@@ -296,7 +301,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2403.2,
 		},
 	}, -- [15]
-	{ --17
+	{
+		--17
 		["Trigger"] = {
 			["y"] = 4068.1,
 			["x"] = -2432.7,
@@ -312,7 +318,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2432.7,
 		},
 	}, -- [16]
-	{ --18
+	{
+		--18
 		["Trigger"] = {
 			["y"] = 4098.1,
 			["x"] = -2403,
@@ -328,7 +335,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2403,
 		},
 	}, -- [17]
-	{ --19
+	{
+		--19
 		["Trigger"] = {
 			["y"] = 4067.3,
 			["x"] = -2401.7,
@@ -344,7 +352,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2401.7,
 		},
 	}, -- [18]
-	{ --20
+	{
+		--20
 		["Trigger"] = {
 			["y"] = 4115.8,
 			["x"] = -2377,
@@ -356,7 +365,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2377,
 		},
 	}, -- [19]
-	{ --21
+	{
+		--21
 		["Trigger"] = {
 			["y"] = 4108.8,
 			["x"] = -2422.5,
@@ -368,7 +378,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2422.5,
 		},
 	}, -- [20]
-	{ --22
+	{
+		--22
 		["Done"] = {
 			34393,
 		},
@@ -377,7 +388,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2372,
 		},
 	}, -- [21]
-	{ --23
+	{
+		--23
 		["PickUp"] = {
 			34420,
 		},
@@ -386,7 +398,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2372,
 		},
 	}, -- [22]
-	{ --24
+	{
+		--24
 		["Trigger"] = {
 			["y"] = 3970.6,
 			["x"] = -2530.9,
@@ -398,7 +411,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2530.9,
 		},
 	}, -- [23]
-	{ --25
+	{
+		--25
 		["Done"] = {
 			34420,
 		},
@@ -407,7 +421,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2504.9,
 		},
 	}, -- [24]
-	{ --26
+	{
+		--26
 		["PickUp"] = {
 			34422,
 		},
@@ -416,7 +431,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2505.2,
 		},
 	}, -- [25]
-	{ --27
+	{
+		--27
 		["PickUp"] = {
 			34421,
 			35241,
@@ -426,7 +442,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2551.2,
 		},
 	}, -- [26]
-	{ --28
+	{
+		--28
 		["Qpart"] = {
 			[34421] = {
 				["1"] = "1",
@@ -453,7 +470,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2635.5,
 		},
 	}, -- [27]
-	{ --29
+	{
+		--29
 		["Qpart"] = {
 			[34421] = {
 				["2"] = "2",
@@ -480,7 +498,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2523.4,
 		},
 	}, -- [28]
-	{ --30
+	{
+		--30
 		["Trigger"] = {
 			["y"] = 3834.6,
 			["x"] = -2523.4,
@@ -502,7 +521,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2523.4,
 		},
 	}, -- [29]
-	{ --31
+	{
+		--31
 		["Trigger"] = {
 			["y"] = 3873.8,
 			["x"] = -2696,
@@ -514,7 +534,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2696,
 		},
 	}, -- [30]
-	{ --32
+	{
+		--32
 		["Done"] = {
 			34421,
 			34422,
@@ -525,7 +546,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2781.4,
 		},
 	}, -- [31]
-	{ --33
+	{
+		--33
 		["PickUp"] = {
 			34423,
 		},
@@ -534,7 +556,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2777,
 		},
 	}, -- [32]
-	{ --34
+	{
+		--34
 		["Qpart"] = {
 			[34423] = {
 				["1"] = "1",
@@ -551,7 +574,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2787,
 		},
 	}, -- [33]
-	{ --35
+	{
+		--35
 		["Trigger"] = {
 			["y"] = 3958.8,
 			["x"] = -2888.9,
@@ -567,7 +591,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2888.9,
 		},
 	}, -- [34]
-	{ --36
+	{
+		--36
 		["Trigger"] = {
 			["y"] = 3957.8,
 			["x"] = -2887.4,
@@ -583,7 +608,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2887.4,
 		},
 	}, -- [35]
-	{ --37
+	{
+		--37
 		["Trigger"] = {
 			["y"] = 4051.4,
 			["x"] = -2810.5,
@@ -595,7 +621,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2812.4,
 		},
 	}, -- [36]
-	{ --38
+	{
+		--38
 		["Trigger"] = {
 			["y"] = 4194.3,
 			["x"] = -2786.9,
@@ -611,7 +638,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2786.9,
 		},
 	}, -- [37]
-	{ --39
+	{
+		--39
 		["Done"] = {
 			34423,
 		},
@@ -620,7 +648,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2786.7,
 		},
 	}, -- [38]
-	{ --40
+	{
+		--40
 		["PickUp"] = {
 			34425,
 		},
@@ -629,7 +658,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2786.7,
 		},
 	}, -- [39]
-	{ --41
+	{
+		--41
 		["Done"] = {
 			34425,
 		},
@@ -638,7 +668,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2812.2,
 		},
 	}, -- [40]
-	{ --42
+	{
+		--42
 		["PickUp"] = {
 			34427,
 		},
@@ -647,7 +678,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2812.2,
 		},
 	}, -- [41]
-	{ --43
+	{
+		--43
 		["Qpart"] = {
 			[34427] = {
 				["1"] = "1",
@@ -669,7 +701,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2728,
 		},
 	}, -- [42]
-	{ --44
+	{
+		--44
 		["Done"] = {
 			34427,
 		},
@@ -678,7 +711,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2816.2,
 		},
 	}, -- [43]
-	{ --45
+	{
+		--45
 		["PickUp"] = {
 			34429,
 		},
@@ -687,7 +721,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2811.7,
 		},
 	}, -- [44]
-	{ --46
+	{
+		--46
 		["Trigger"] = {
 			["y"] = 4394,
 			["x"] = -2824.7,
@@ -703,7 +738,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2824.7,
 		},
 	}, -- [45]
-	{ --47
+	{
+		--47
 		["Trigger"] = {
 			["y"] = 4394,
 			["x"] = -2824.7,
@@ -720,7 +756,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2824.7,
 		},
 	}, -- [46]
-	{ --48
+	{
+		--48
 		["Done"] = {
 			34429,
 		},
@@ -729,7 +766,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2634.7,
 		},
 	},
-	{ --49
+	{
+		--49
 		["PickUp"] = {
 			34737,
 			34739,
@@ -739,7 +777,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2638.2,
 		},
 	},
-	{ --50
+	{
+		--50
 		["Trigger"] = {
 			["y"] = 4532.3,
 			["x"] = -2613.5,
@@ -751,7 +790,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2613.5,
 		},
 	}, -- [3]
-	{ --51
+	{
+		--51
 		["CRange"] = 34737,
 		["Trigger"] = {
 			["y"] = 4526.1,
@@ -768,7 +808,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2593.4,
 		},
 	}, -- [4]
-	{ --52
+	{
+		--52
 		["CRange"] = 34737,
 		["Trigger"] = {
 			["y"] = 4550.3,
@@ -785,7 +826,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2583.2,
 		},
 	}, -- [5]
-	{ --53
+	{
+		--53
 		["CRange"] = 34737,
 		["Trigger"] = {
 			["y"] = 4559.2,
@@ -802,7 +844,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2544.5,
 		},
 	}, -- [6]
-	{ --54
+	{
+		--54
 		["CRange"] = 34737,
 		["Trigger"] = {
 			["y"] = 4619.3,
@@ -819,7 +862,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2499.9,
 		},
 	}, -- [7]
-	{ --55
+	{
+		--55
 		["PickUp"] = {
 			34740,
 		},
@@ -828,7 +872,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2470.9,
 		},
 	},
-	{ --56
+	{
+		--56
 		["CRange"] = 34737,
 		["Trigger"] = {
 			["y"] = 4567.7,
@@ -845,7 +890,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2540,
 		},
 	},
-	{ --57
+	{
+		--57
 		["CRange"] = 34737,
 		["Trigger"] = {
 			["y"] = 4543.3,
@@ -862,7 +908,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2481,
 		},
 	}, -- [10]
-	{ --58
+	{
+		--58
 		["Qpart"] = {
 			[34737] = {
 				["2"] = "2",
@@ -883,7 +930,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2505,
 		},
 	}, -- [11]
-	{ --59
+	{
+		--59
 		["Qpart"] = {
 			[34737] = {
 				["1"] = "1",
@@ -904,7 +952,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2464,
 		},
 	}, -- [12]
-	{ --60
+	{
+		--60
 		["Trigger"] = {
 			["y"] = 4429.7,
 			["x"] = -2465.5,
@@ -920,7 +969,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2465.5,
 		},
 	}, -- [13]
-	{ --61
+	{
+		--61
 		["Done"] = {
 			34739,
 			34740,
@@ -931,7 +981,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2496.5,
 		},
 	}, -- [14]
-	{ --62
+	{
+		--62
 		["PickUp"] = {
 			34741,
 		},
@@ -940,7 +991,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2495,
 		},
 	}, -- [15]
-	{ --63
+	{
+		--63
 		["Trigger"] = {
 			["y"] = 4509.7,
 			["x"] = -2425.4,
@@ -956,7 +1008,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2425.4,
 		},
 	}, -- [16]
-	{ --64
+	{
+		--64
 		["Done"] = {
 			34741,
 		},
@@ -965,7 +1018,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2246.2,
 		},
 	}, -- [47]
-	{ --65
+	{
+		--65
 		["PickUp"] = {
 			35005,
 		},
@@ -974,7 +1028,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2259,
 		},
 	}, -- [48]
-	{ --66
+	{
+		--66
 		["Trigger"] = {
 			["y"] = 4589.7,
 			["x"] = -2138.7,
@@ -990,7 +1045,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2138.7,
 		},
 	},
-	{ --67
+	{
+		--67
 		["Done"] = {
 			35005,
 		},
@@ -999,7 +1055,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2259.2,
 		},
 	},
-	{ --68
+	{
+		--68
 		["PickUp"] = {
 			34439,
 		},
@@ -1008,7 +1065,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2246.7,
 		},
 	}, -- [3]
-	{ --69
+	{
+		--69
 		["Trigger"] = {
 			["y"] = 4599.5,
 			["x"] = -2132.9,
@@ -1025,7 +1083,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2132.9,
 		},
 	}, -- [4]
-	{ --70
+	{
+		--70
 		["Done"] = {
 			34439,
 		},
@@ -1034,7 +1093,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2090.2,
 		},
 	}, -- [5]
-	{ --71
+	{
+		--71
 		["PickUp"] = {
 			34442,
 		},
@@ -1043,7 +1103,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2090.2,
 		},
 	}, -- [6]
-	{ --72
+	{
+		--72
 		["PickUp"] = {
 			34987,
 			34958,
@@ -1053,7 +1114,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2114.7,
 		},
 	}, -- [7]
-	{ --73
+	{
+		--73
 		["Qpart"] = {
 			[34987] = {
 				["1"] = "1",
@@ -1074,7 +1136,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2183.7,
 		},
 	},
-	{ --74
+	{
+		--74
 		["Qpart"] = {
 			[34987] = {
 				["2"] = "2",
@@ -1095,7 +1158,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2115.5,
 		},
 	},
-	{ --75
+	{
+		--75
 		["Done"] = {
 			34987,
 		},
@@ -1104,7 +1168,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2113.9,
 		},
 	}, -- [10]
-	{ --76
+	{
+		--76
 		["Fillers"] = {
 			[34958] = {
 				["1"] = "1",
@@ -1118,7 +1183,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2063.2,
 		},
 	}, -- [11]
-	{ --77
+	{
+		--77
 		["PickUp"] = {
 			34925,
 		},
@@ -1127,7 +1193,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2063.2,
 		},
 	}, -- [12]
-	{ --78
+	{
+		--78
 		["CRange"] = 34925,
 		["Trigger"] = {
 			["y"] = 4232.8,
@@ -1144,7 +1211,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2110.5,
 		},
 	}, -- [13]
-	{ --79
+	{
+		--79
 		["CRange"] = 34925,
 		["Trigger"] = {
 			["y"] = 4223.6,
@@ -1161,7 +1229,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2144.2,
 		},
 	}, -- [14]
-	{ --80
+	{
+		--80
 		["Qpart"] = {
 			[34925] = {
 				["1"] = "1",
@@ -1182,7 +1251,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2153,
 		},
 	}, -- [15]
-	{ --81
+	{
+		--81
 		["Trigger"] = {
 			["y"] = 4231.8,
 			["x"] = -2114.2,
@@ -1194,7 +1264,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2114.2,
 		},
 	}, -- [16]
-	{ --82
+	{
+		--82
 		["Fillers"] = {
 			[34958] = {
 				["1"] = "1",
@@ -1208,7 +1279,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2062,
 		},
 	}, -- [17]
-	{ --83
+	{
+		--83
 		["PickUp"] = {
 			34437,
 		},
@@ -1217,7 +1289,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2062,
 		},
 	}, -- [18]
-	{ --84
+	{
+		--84
 		["Trigger"] = {
 			["y"] = 4253.3,
 			["x"] = -2077.5,
@@ -1233,7 +1306,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2077.5,
 		},
 	}, -- [19]
-	{ --85
+	{
+		--85
 		["Done"] = {
 			34958,
 		},
@@ -1242,7 +1316,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2114.7,
 		},
 	}, -- [20]
-	{ --86
+	{
+		--86
 		["Done"] = {
 			34437,
 		},
@@ -1251,7 +1326,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2090.4,
 		},
 	}, -- [21]
-	{ --87
+	{
+		--87
 		["PickUp"] = {
 			35747,
 		},
@@ -1260,7 +1336,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2092,
 		},
 	}, -- [22]
-	{ --88
+	{
+		--88
 		["Qpart"] = {
 			[35747] = {
 				["1"] = "1",
@@ -1277,7 +1354,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2115.7,
 		},
 	}, -- [23]
-	{ --89
+	{
+		--89
 		["Trigger"] = {
 			["y"] = 4212.3,
 			["x"] = -1978.5,
@@ -1289,7 +1367,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -1978.5,
 		},
 	}, -- [24]
-	{ --90
+	{
+		--90
 		["Trigger"] = {
 			["y"] = 4069.9,
 			["x"] = -1951.5,
@@ -1305,7 +1384,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -1951.5,
 		},
 	}, -- [25]
-	{ --91
+	{
+		--91
 		["Trigger"] = {
 			["y"] = 4065.1,
 			["x"] = -2019,
@@ -1321,7 +1401,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2019,
 		},
 	}, -- [26]
-	{ --92
+	{
+		--92
 		["Done"] = {
 			35747,
 		},
@@ -1330,7 +1411,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2019.5,
 		},
 	}, -- [27]
-	{ --93
+	{
+		--93
 		["PickUp"] = {
 			34445,
 		},
@@ -1339,7 +1421,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2018.5,
 		},
 	}, -- [28]
-	{ --94
+	{
+		--94
 		["Trigger"] = {
 			["y"] = 4053.8,
 			["x"] = -2020.3,
@@ -1355,7 +1438,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2020.3,
 		},
 	}, -- [29]
-	{ --95
+	{
+		--95
 		["Trigger"] = {
 			["y"] = 4059.1,
 			["x"] = -2021.5,
@@ -1371,7 +1455,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2021.5,
 		},
 	}, -- [30]
-	{ --96
+	{
+		--96
 		["Trigger"] = {
 			["y"] = 4066.1,
 			["x"] = -2022.3,
@@ -1387,7 +1472,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2022.3,
 		},
 	}, -- [31]
-	{ --97
+	{
+		--97
 		["Done"] = {
 			34445,
 		},
@@ -1396,7 +1482,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2019.3,
 		},
 	}, -- [32]
-	{ --98
+	{
+		--98
 		["PickUp"] = {
 			34446,
 		},
@@ -1405,7 +1492,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2019.3,
 		},
 	}, -- [33]
-	{ --99
+	{
+		--99
 		["Trigger"] = {
 			["y"] = 3538.8,
 			["x"] = -2125,
@@ -1421,7 +1509,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 			["x"] = -2125,
 		},
 	},
-	{ --100
+	{
+		--100
 		["Done"] = {
 			34446,
 		},
@@ -1436,7 +1525,8 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
 }
 
 APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
-	{ --1
+	{
+		--1
 		["Done"] = {
 			33868,
 		},
@@ -1445,7 +1535,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 5013.1,
 		},
 	},
-	{ --2
+	{
+		--2
 		["PickUp"] = {
 			33815,
 		},
@@ -1454,7 +1545,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 5013.1,
 		},
 	},
-	{ --3
+	{
+		--3
 		["Trigger"] = {
 			["y"] = 5524.1,
 			["x"] = 4967.8,
@@ -1466,7 +1558,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4967.8,
 		},
 	},
-	{ --4
+	{
+		--4
 		["Trigger"] = {
 			["y"] = 5452.3,
 			["x"] = 4968.3,
@@ -1478,7 +1571,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4968.3,
 		},
 	},
-	{ --5
+	{
+		--5
 		["TT"] = {
 			["y"] = 5436.3,
 			["x"] = 4950.8,
@@ -1487,7 +1581,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			33815,
 		},
 	},
-	{ --6
+	{
+		--6
 		["PickUp"] = {
 			34402,
 		},
@@ -1496,7 +1591,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4950.8,
 		},
 	}, -- [3]
-	{ --7
+	{
+		--7
 		["TT"] = {
 			["y"] = 5612.6,
 			["x"] = 4526.1,
@@ -1505,7 +1601,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			34402,
 		},
 	}, -- [4]
-	{ --8
+	{
+		--8
 		["PickUp"] = {
 			34364,
 		},
@@ -1514,7 +1611,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4526.1,
 		},
 	}, -- [5]
-	{ --9
+	{
+		--9
 		["Trigger"] = {
 			["y"] = 5629.8,
 			["x"] = 4530,
@@ -1530,7 +1628,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4530,
 		},
 	}, -- [6]
-	{ --10
+	{
+		--10
 		["ExtraLineText"] = "GAZLOWE_PORTAL",
 		["TT"] = {
 			["y"] = 5629.3,
@@ -1540,7 +1639,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			34364,
 		},
 	}, -- [7]
-	{ --11
+	{
+		--11
 		["ExtraLineText"] = "FROM_GAZLOWE",
 		["PickUp"] = {
 			34592,
@@ -1551,7 +1651,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4526.5,
 		},
 	},
-	{ --12
+	{
+		--12
 		["Trigger"] = {
 			["y"] = 5628.3,
 			["x"] = 4511.2,
@@ -1570,7 +1671,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4511.2,
 		},
 	},
-	{ --13
+	{
+		--13
 		["ExtraLineText"] = "TO_GAZLOWE",
 		["Done"] = {
 			34592,
@@ -1581,7 +1683,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4526.8,
 		},
 	}, -- [10]
-	{ --14
+	{
+		--14
 		["ExtraLineText"] = "FROM_GAZLOWE",
 		["PickUp"] = {
 			34765,
@@ -1591,7 +1694,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4526.8,
 		},
 	}, -- [11]
-	{ --15
+	{
+		--15
 		["Trigger"] = {
 			["y"] = 5416.5,
 			["x"] = 4541.8,
@@ -1607,7 +1711,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4541.8,
 		},
 	}, -- [12]
-	{ --16
+	{
+		--16
 		["Done"] = {
 			34765,
 		},
@@ -1616,7 +1721,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4526.3,
 		},
 	}, -- [13]
-	{ --17
+	{
+		--17
 		["PickUp"] = {
 			34378,
 		},
@@ -1625,7 +1731,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4526.3,
 		},
 	}, -- [14]
-	{ --18
+	{
+		--18
 		["Trigger"] = {
 			["y"] = 5569.3,
 			["x"] = 4637.7,
@@ -1641,7 +1748,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4637.7,
 		},
 	}, -- [15]
-	{ --19
+	{
+		--19
 		["ExtraLineText"] = "TO_GAZLOWE",
 		["Done"] = {
 			34378,
@@ -1651,7 +1759,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4518.1,
 		},
 	}, -- [16]
-	{ --20
+	{
+		--20
 		["PickUp"] = {
 			34824,
 			34822,
@@ -1661,7 +1770,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4518.2,
 		},
 	}, -- [17]
-	{ --21
+	{
+		--21
 		["Trigger"] = {
 			["y"] = 5569.3,
 			["x"] = 4503,
@@ -1677,7 +1787,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4503,
 		},
 	}, -- [18]
-	{ --22
+	{
+		--22
 		["ExtraLineText"] = "FROM_ROKHAN",
 		["PickUp"] = {
 			34823,
@@ -1687,7 +1798,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4525.2,
 		},
 	}, -- [19]
-	{ --23
+	{
+		--23
 		["ExtraLineText"] = "FROM_CORDANA",
 		["PickUp"] = {
 			34209,
@@ -1697,7 +1809,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4537.7,
 		},
 	}, -- [20]
-	{ --24
+	{
+		--24
 		["ExtraLineText"] = "OUT_WEST_GATE",
 		["Qpart"] = {
 			[34824] = {
@@ -1715,7 +1828,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4597.6,
 		},
 	}, -- [21]
-	{ --25
+	{
+		--25
 		["ExtraLineText"] = "NORTH_OUTPOST",
 		["Qpart"] = {
 			[34824] = {
@@ -1733,7 +1847,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4539.8,
 		},
 	}, -- [22]
-	{ --26
+	{
+		--26
 		["ExtraLineText"] = "GO_WEST",
 		["CRange"] = 34823,
 		["Trigger"] = {
@@ -1751,7 +1866,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 5041.8,
 		},
 	}, -- [23]
-	{ --27
+	{
+		--27
 		["CRange"] = 34823,
 		["Trigger"] = {
 			["y"] = 5871.8,
@@ -1768,7 +1884,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 5039.3,
 		},
 	}, -- [24]
-	{ --28
+	{
+		--28
 		["Qpart"] = {
 			[34823] = {
 				["1"] = "1",
@@ -1789,7 +1906,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4945.5,
 		},
 	}, -- [25]
-	{ --29
+	{
+		--29
 		["Trigger"] = {
 			["y"] = 5865.3,
 			["x"] = 4945.5,
@@ -1805,7 +1923,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4945.5,
 		},
 	}, -- [26]
-	{ --30
+	{
+		--30
 		["Trigger"] = {
 			["y"] = 5801.6,
 			["x"] = 5066.6,
@@ -1817,7 +1936,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 5066.6,
 		},
 	}, -- [27]
-	{ --31
+	{
+		--31
 		["ExtraLineText"] = "TREASURE_TOP_TOWER",
 		["Trigger"] = {
 			["y"] = 5861.5,
@@ -1830,7 +1950,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 5229,
 		},
 	}, -- [28]
-	{ --32
+	{
+		--32
 		["Trigger"] = {
 			["y"] = 5978.2,
 			["x"] = 5222.3,
@@ -1842,7 +1963,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 5222.3,
 		},
 	},
-	{ --33
+	{
+		--33
 		["Trigger"] = {
 			["y"] = 6010.3,
 			["x"] = 4839.8,
@@ -1854,7 +1976,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4839.8,
 		},
 	},
-	{ --34
+	{
+		--34
 		["ExtraLineText"] = "TREASURE_TOP_TOWER",
 		["Trigger"] = {
 			["y"] = 6008.3,
@@ -1867,7 +1990,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4835.2,
 		},
 	}, -- [29]
-	{ --35
+	{
+		--35
 		["Trigger"] = {
 			["y"] = 5857.3,
 			["x"] = 4530.1,
@@ -1879,7 +2003,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4530.1,
 		},
 	},
-	{ --36
+	{
+		--36
 		["ExtraLineText"] = "TO_ROKHAN_GAZLOWE",
 		["Done"] = {
 			34823,
@@ -1891,7 +2016,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4520.8,
 		},
 	}, -- [30]
-	{ --37
+	{
+		--37
 		["ExtraLineText"] = "FROM_GAZLOWE",
 		["PickUp"] = {
 			34461,
@@ -1901,7 +2027,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4517.8,
 		},
 	}, -- [31]
-	{ --38
+	{
+		--38
 		["ExtraLineText"] = "EMPTY_GREAT_HALL",
 		["Trigger"] = {
 			["y"] = 5579.8,
@@ -1918,7 +2045,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4466.7,
 		},
 	}, -- [32]
-	{ --39
+	{
+		--39
 		["Qpart"] = {
 			[34461] = {
 				["2"] = "2",
@@ -1940,7 +2068,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4468.8,
 		},
 	}, -- [33]
-	{ --40
+	{
+		--40
 		["Trigger"] = {
 			["y"] = 5564,
 			["x"] = 4519.2,
@@ -1956,7 +2085,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4519.2,
 		},
 	}, -- [34]
-	{ --41
+	{
+		--41
 		["Trigger"] = {
 			["y"] = 5587.8,
 			["x"] = 4478.8,
@@ -1972,7 +2102,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4478.8,
 		},
 	}, -- [35]
-	{ --42
+	{
+		--42
 		["Trigger"] = {
 			["y"] = 5587.6,
 			["x"] = 4478.8,
@@ -1988,7 +2119,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4478.8,
 		},
 	}, -- [36]
-	{ --43
+	{
+		--43
 		["ExtraLineText"] = "AT_GAZLOWE",
 		["Done"] = {
 			34461,
@@ -1998,7 +2130,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4482.7,
 		},
 	}, -- [37]
-	{ --44
+	{
+		--44
 		["ExtraLineText"] = "FROM_GAZLOWE",
 		["PickUp"] = {
 			34861,
@@ -2008,7 +2141,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4482.7,
 		},
 	}, -- [38]
-	{ --45
+	{
+		--45
 		["ExtraLineText"] = "TO_WARMASTER_ZOG",
 		["Done"] = {
 			34861,
@@ -2018,7 +2152,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4507.8,
 		},
 	}, -- [39]
-	{ --46
+	{
+		--46
 		["ExtraLineText"] = "FROM_WARMASTER_ZOG",
 		["PickUp"] = {
 			34462,
@@ -2028,7 +2163,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4507.8,
 		},
 	}, -- [40]
-	{ --47
+	{
+		--47
 		["ExtraLineText"] = "GO_EAST",
 		["UseGlider"] = 1,
 		["Trigger"] = {
@@ -2042,7 +2178,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4039.6,
 		},
 	},
-	{ --48
+	{
+		--48
 		["Trigger"] = {
 			["y"] = 5710.6,
 			["x"] = 4001.5,
@@ -2058,7 +2195,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4001.5,
 		},
 	},
-	{ --49
+	{
+		--49
 		["Done"] = {
 			34462,
 		},
@@ -2067,7 +2205,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4508,
 		},
 	},
-	{ --50
+	{
+		--50
 		["PickUp"] = {
 			34775,
 		},
@@ -2076,7 +2215,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4508,
 		},
 	}, -- [4]
-	{ --51
+	{
+		--51
 		["Trigger"] = {
 			["y"] = 5559.6,
 			["x"] = 4507.6,
@@ -2092,7 +2232,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			["x"] = 4507.6,
 		},
 	}, -- [5]
-	{ --52
+	{
+		--52
 		["Done"] = {
 			34775,
 		},
@@ -3605,17 +3746,6 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 		["WarMode"] = 34230,
 	},
 	{
-		["DoIHaveFlight"] = 1,
-		["ExtraLineText"] = "GET_JOURNEYMAN_RIDING",
-		["SpellInTab"] = 33391,
-		["TrainRidingSkill"] = 34230,
-		["RaidIcon"] = 44919,
-		["TT"] = {
-			["y"] = 1799.5,
-			["x"] = -4356.7,
-		},
-	},
-	{
 		["UseGarrisonHS"] = 34230,
 		["TT"] = {
 			["y"] = 1799.5,
@@ -4229,7 +4359,7 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			34345,
 			34344, -- [3]
 		},
-	}, -- [5]
+	},      -- [5]
 	{
 		["PickUp"] = {
 			34348,
@@ -4304,7 +4434,7 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 			34345,
 			34344, -- [3]
 		},
-	}, -- [5]
+	},      -- [5]
 	{
 		["PickUp"] = {
 			34348,
@@ -5838,7 +5968,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
 }
 
 APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
-	{ -- [step 1
+	{
+		-- [step 1
 		["PickUp"] = {
 			33543,
 		},
@@ -5851,7 +5982,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 2018.5,
 		},
 	},
-	{ -- [step 2
+	{
+		-- [step 2
 		["Trigger"] = {
 			["y"] = 5561,
 			["x"] = 1910.7,
@@ -5867,7 +5999,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1910.7,
 		},
 	},
-	{ -- [step 3
+	{
+		-- [step 3
 		["Done"] = {
 			33543,
 		},
@@ -5876,7 +6009,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1898,
 		},
 	}, -- [3]
-	{ -- [step 4
+	{
+		-- [step 4
 		["PickUp"] = {
 			33544,
 		},
@@ -5885,7 +6019,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1898,
 		},
 	}, -- [4]
-	{ -- [step 5
+	{
+		-- [step 5
 		["PickUp"] = {
 			33548,
 		},
@@ -5899,7 +6034,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1850.9,
 		},
 	}, -- [5]
-	{ -- [step 6
+	{
+		-- [step 6
 		["Treasure"] = 36170,
 		["Trigger"] = {
 			["y"] = 5652.1,
@@ -5919,7 +6055,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1797.5,
 		},
 	}, -- [6]
-	{ -- [step 7
+	{
+		-- [step 7
 		["PickUp"] = {
 			33563,
 		},
@@ -5928,7 +6065,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1757.3,
 		},
 	}, -- [7]
-	{ -- [step 8
+	{
+		-- [step 8
 		["Qpart"] = {
 			[33563] = {
 				["1"] = "1",
@@ -5952,7 +6090,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1678.4,
 		},
 	},
-	{ -- [step 9
+	{
+		-- [step 9
 		["Trigger"] = {
 			["y"] = 5626.8,
 			["x"] = 1676.3,
@@ -5971,7 +6110,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1676.3,
 		},
 	},
-	{ -- [step 10
+	{
+		-- [step 10
 		["Done"] = {
 			33563,
 			33548,
@@ -5981,7 +6121,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1676.8,
 		},
 	}, -- [3]
-	{ -- [step 11
+	{
+		-- [step 11
 		["PickUp"] = {
 			33593,
 		},
@@ -5990,7 +6131,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1675.5,
 		},
 	}, -- [4]
-	{ -- [step 12
+	{
+		-- [step 12
 		["Qpart"] = {
 			[33593] = {
 				["1"] = "1",
@@ -6012,7 +6154,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1667.2,
 		},
 	}, -- [5]
-	{ -- [step 13
+	{
+		-- [step 13
 		["Done"] = {
 			33593,
 		},
@@ -6021,7 +6164,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1674,
 		},
 	}, -- [6]
-	{ -- [step 14
+	{
+		-- [step 14
 		["PickUp"] = {
 			36434,
 		},
@@ -6030,7 +6174,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1674,
 		},
 	}, -- [7]
-	{ -- [step 15
+	{
+		-- [step 15
 		["Trigger"] = {
 			["y"] = 5415.5,
 			["x"] = 1766.5,
@@ -6042,7 +6187,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1766.5,
 		},
 	},
-	{ -- [step 16
+	{
+		-- [step 16
 		["ExtraLineText"] = "UP_TREE",
 		["Trigger"] = {
 			["y"] = 5543.7,
@@ -6055,7 +6201,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1453.8,
 		},
 	}, -- [10]
-	{ -- [step 17
+	{
+		-- [step 17
 		["Trigger"] = {
 			["y"] = 5748,
 			["x"] = 1474.2,
@@ -6067,7 +6214,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1474.2,
 		},
 	}, -- [11]
-	{ -- [step 18
+	{
+		-- [step 18
 		["Done"] = {
 			36434,
 		},
@@ -6076,7 +6224,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1332.7,
 		},
 	}, -- [12]
-	{ -- [step 19
+	{
+		-- [step 19
 		["PickUp"] = {
 			36460,
 		},
@@ -6085,7 +6234,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1332.7,
 		},
 	}, -- [13]
-	{ -- [step 20
+	{
+		-- [step 20
 		["Trigger"] = {
 			["y"] = 5742,
 			["x"] = 1333,
@@ -6101,7 +6251,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1333,
 		},
 	}, -- [14]
-	{ -- [step 21
+	{
+		-- [step 21
 		["Done"] = {
 			36460,
 		},
@@ -6110,7 +6261,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1317.3,
 		},
 	}, -- [15]
-	{ -- [step 22
+	{
+		-- [step 22
 		["ExtraLineText"] = "SAVAGE_FIGHT_CLUB",
 		["SparringRing"] = 130,
 		["PickUp"] = {
@@ -6121,7 +6273,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1317.3,
 		},
 	}, -- [16]
-	{ -- [step 23
+	{
+		-- [step 23
 		["ExtraLineText"] = "SAVAGE_FIGHT_CLUB",
 		["SparringRing"] = 130,
 		["Trigger"] = {
@@ -6139,7 +6292,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1317.2,
 		},
 	}, -- [17]
-	{ -- [step 24
+	{
+		-- [step 24
 		["Done"] = {
 			35151,
 		},
@@ -6148,7 +6302,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1297.8,
 		},
 	}, -- [18]
-	{ -- [step 25
+	{
+		-- [step 25
 		["PickUp"] = {
 			35880,
 		},
@@ -6157,7 +6312,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1298.9,
 		},
 	},
-	{ -- [step 26
+	{
+		-- [step 26
 		["PickUp"] = {
 			33694,
 			35667,
@@ -6167,7 +6323,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1282.4,
 		},
 	},
-	{ -- [step 27
+	{
+		-- [step 27
 		["PickUp"] = {
 			34697,
 		},
@@ -6176,7 +6333,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1279.2,
 		},
 	}, -- [3]
-	{ -- [step 28
+	{
+		-- [step 28
 		["Trigger"] = {
 			["y"] = 5816.8,
 			["x"] = 1306.5,
@@ -6188,7 +6346,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1306.5,
 		},
 	}, -- [4]
-	{ -- [step 29
+	{
+		-- [step 29
 		["Trigger"] = {
 			["y"] = 5769.5,
 			["x"] = 1443.7,
@@ -6200,7 +6359,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1443.7,
 		},
 	}, -- [5]
-	{ -- [step 30
+	{
+		-- [step 30
 		["TT"] = {
 			["y"] = 6047.8,
 			["x"] = 1505.2,
@@ -6209,7 +6369,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			35880,
 		},
 	}, -- [6]
-	{ -- [step 31
+	{
+		-- [step 31
 		["PickUp"] = {
 			35248,
 			35035,
@@ -6219,7 +6380,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1505.2,
 		},
 	}, -- [7]
-	{ -- [step 32
+	{
+		-- [step 32
 		["Trigger"] = {
 			["y"] = 6077.8,
 			["x"] = 1400.5,
@@ -6238,7 +6400,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1400.5,
 		},
 	},
-	{ -- [step 33
+	{
+		-- [step 33
 		["TT"] = {
 			["y"] = 6047.3,
 			["x"] = 1505,
@@ -6248,7 +6411,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			35248,
 		},
 	},
-	{ -- [step 34
+	{
+		-- [step 34
 		["PickUp"] = {
 			35025,
 		},
@@ -6257,7 +6421,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1505.5,
 		},
 	}, -- [3]
-	{ -- [step 35
+	{
+		-- [step 35
 		["TT"] = {
 			["y"] = 6153.7,
 			["x"] = 1571.2,
@@ -6266,7 +6431,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			34697,
 		},
 	}, -- [4]
-	{ -- [step 36
+	{
+		-- [step 36
 		["PickUp"] = {
 			34700,
 			34702,
@@ -6278,7 +6444,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1573.5,
 		},
 	}, -- [5]
-	{ -- [step 37
+	{
+		-- [step 37
 		["PickUp"] = {
 			34012,
 		},
@@ -6287,7 +6454,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1680.2,
 		},
 	}, -- [6]
-	{ -- [step 38
+	{
+		-- [step 38
 		["Qpart"] = {
 			[34698] = {
 				["2"] = "2",
@@ -6310,7 +6478,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1709,
 		},
 	}, -- [3]
-	{ -- [step 39
+	{
+		-- [step 39
 		["Qpart"] = {
 			[34698] = {
 				["1"] = "1",
@@ -6332,7 +6501,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1754.9,
 		},
 	}, -- [4]
-	{ -- [step 40
+	{
+		-- [step 40
 		["Qpart"] = {
 			[34702] = {
 				["1"] = "1",
@@ -6353,7 +6523,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1764.4,
 		},
 	}, -- [5]
-	{ -- [step 41
+	{
+		-- [step 41
 		["Qpart"] = {
 			[34699] = {
 				["2"] = "2",
@@ -6374,7 +6545,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1816.3,
 		},
 	}, -- [6]
-	{ -- [step 42
+	{
+		-- [step 42
 		["CRange"] = 34699,
 		["Trigger"] = {
 			["y"] = 5950.5,
@@ -6391,7 +6563,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1853.4,
 		},
 	}, -- [7]
-	{ -- [step 43
+	{
+		-- [step 43
 		["Qpart"] = {
 			[34699] = {
 				["1"] = "1",
@@ -6412,7 +6585,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1865.5,
 		},
 	},
-	{ -- [step 44
+	{
+		-- [step 44
 		["CRange"] = 34699,
 		["Trigger"] = {
 			["y"] = 6043.7,
@@ -6429,7 +6603,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1762.5,
 		},
 	},
-	{ -- [step 45
+	{
+		-- [step 45
 		["Qpart"] = {
 			[34699] = {
 				["3"] = "3",
@@ -6450,7 +6625,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1771.4,
 		},
 	}, -- [10]
-	{ -- [step 46
+	{
+		-- [step 46
 		["CRange"] = 34699,
 		["Trigger"] = {
 			["y"] = 5981,
@@ -6467,7 +6643,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1882,
 		},
 	}, -- [11]
-	{ -- [step 47
+	{
+		-- [step 47
 		["CRange"] = 34699,
 		["Trigger"] = {
 			["y"] = 5879.6,
@@ -6484,7 +6661,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1880.3,
 		},
 	}, -- [12]
-	{ -- [step 48
+	{
+		-- [step 48
 		["Qpart"] = {
 			[34698] = {
 				["3"] = "3",
@@ -6506,7 +6684,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1879.4,
 		},
 	}, -- [13]
-	{ -- [step 49
+	{
+		-- [step 49
 		["Treasure"] = 36631,
 		["Trigger"] = {
 			["y"] = 5880.8,
@@ -6519,7 +6698,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1874.5,
 		},
 	}, -- [14]
-	{ -- [step 50
+	{
+		-- [step 50
 		["CRange"] = 34699,
 		["Trigger"] = {
 			["y"] = 5917.8,
@@ -6536,7 +6716,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1914.5,
 		},
 	}, -- [15]
-	{ -- [step 51
+	{
+		-- [step 51
 		["CRange"] = 34699,
 		["Trigger"] = {
 			["y"] = 5911.3,
@@ -6553,7 +6734,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1937,
 		},
 	}, -- [16]
-	{ -- [step 52
+	{
+		-- [step 52
 		["Trigger"] = {
 			["y"] = 5876.3,
 			["x"] = 1967,
@@ -6565,7 +6747,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1967,
 		},
 	}, -- [17]
-	{ -- [step 53
+	{
+		-- [step 53
 		["Fillers"] = {
 			[34012] = {
 				["1"] = "1",
@@ -6579,7 +6762,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 2053.3,
 		},
 	}, -- [18]
-	{ -- [step 54
+	{
+		-- [step 54
 		["PickUp"] = {
 			34703,
 		},
@@ -6588,7 +6772,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 2053.3,
 		},
 	}, -- [19]
-	{ -- [step 55
+	{
+		-- [step 55
 		["Trigger"] = {
 			["y"] = 5848.6,
 			["x"] = 2101.1,
@@ -6600,7 +6785,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 2101.1,
 		},
 	},
-	{ -- [step 56
+	{
+		-- [step 56
 		["Qpart"] = {
 			[34703] = {
 				["1"] = "1",
@@ -6617,7 +6803,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 2085.6,
 		},
 	},
-	{ -- [step 57
+	{
+		-- [step 57
 		["CRange"] = 34700,
 		["Trigger"] = {
 			["y"] = 5822.7,
@@ -6634,7 +6821,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 2018.5,
 		},
 	}, -- [3]
-	{ -- [step 58
+	{
+		-- [step 58
 		["CRange"] = 34700,
 		["Trigger"] = {
 			["y"] = 5797.6,
@@ -6651,7 +6839,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1995.5,
 		},
 	}, -- [4]
-	{ -- [step 59
+	{
+		-- [step 59
 		["Qpart"] = {
 			[34700] = {
 				["1"] = "1",
@@ -6672,7 +6861,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 2054.6,
 		},
 	}, -- [5]
-	{ -- [step 60
+	{
+		-- [step 60
 		["Trigger"] = {
 			["y"] = 5873.3,
 			["x"] = 1969.2,
@@ -6684,7 +6874,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1969.2,
 		},
 	}, -- [6]
-	{ -- [step 61
+	{
+		-- [step 61
 		["Trigger"] = {
 			["y"] = 5917,
 			["x"] = 1920.2,
@@ -6696,7 +6887,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1920.2,
 		},
 	}, -- [7]
-	{ -- [step 62
+	{
+		-- [step 62
 		["Trigger"] = {
 			["y"] = 5980.8,
 			["x"] = 1775,
@@ -6712,7 +6904,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1775,
 		},
 	},
-	{ -- [step 63
+	{
+		-- [step 63
 		["TT"] = {
 			["y"] = 5986,
 			["x"] = 1681.2,
@@ -6721,7 +6914,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			34012,
 		},
 	},
-	{ -- [step 64
+	{
+		-- [step 64
 		["TT"] = {
 			["y"] = 6155,
 			["x"] = 1573.7,
@@ -6732,8 +6926,9 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			34698, -- [3]
 			34703, -- [4]
 		},
-	}, -- [10]
-	{ -- [step 65
+	},      -- [10]
+	{
+		-- [step 65
 		["PickUp"] = {
 			35152,
 		},
@@ -6742,7 +6937,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1570.8,
 		},
 	}, -- [7]
-	{ -- [step 66
+	{
+		-- [step 66
 		["Qpart"] = {
 			[35025] = {
 				["1"] = "1",
@@ -6759,7 +6955,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1447.4,
 		},
 	},
-	{ -- [step 67
+	{
+		-- [step 67
 		["TT"] = {
 			["y"] = 6230.5,
 			["x"] = 1446.5,
@@ -6768,7 +6965,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			35025,
 		},
 	},
-	{ -- [step 68
+	{
+		-- [step 68
 		["PickUp"] = {
 			35730,
 		},
@@ -6777,7 +6975,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1446.5,
 		},
 	}, -- [3]
-	{ -- [step 69
+	{
+		-- [step 69
 		["Trigger"] = {
 			["y"] = 6247.3,
 			["x"] = 1438.5,
@@ -6793,7 +6992,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1438.5,
 		},
 	}, -- [4]
-	{ -- [step 70
+	{
+		-- [step 70
 		["Trigger"] = {
 			["y"] = 6233.3,
 			["x"] = 1447.5,
@@ -6809,7 +7009,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1447.5,
 		},
 	}, -- [5]
-	{ -- [step 71
+	{
+		-- [step 71
 		["TT"] = {
 			["y"] = 6230.7,
 			["x"] = 1446.2,
@@ -6818,7 +7019,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			35730,
 		},
 	}, -- [6]
-	{ -- [step 72
+	{
+		-- [step 72
 		["PickUp"] = {
 			35026,
 			35870,
@@ -6828,7 +7030,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1446.2,
 		},
 	}, -- [7]
-	{ -- [step 73
+	{
+		-- [step 73
 		["Trigger"] = {
 			["y"] = 6327.2,
 			["x"] = 1503.4,
@@ -6847,7 +7050,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1503.4,
 		},
 	},
-	{ -- [step 74
+	{
+		-- [step 74
 		["TT"] = {
 			["y"] = 6594.1,
 			["x"] = 1316.7,
@@ -6857,7 +7061,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			35870,
 		},
 	}, -- [10]
-	{ -- [step 75
+	{
+		-- [step 75
 		["PickUp"] = {
 			35036,
 		},
@@ -6866,7 +7071,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1302.5,
 		},
 	}, -- [11]
-	{ -- [step 76
+	{
+		-- [step 76
 		["Qpart"] = {
 			[35036] = {
 				["1"] = "1",
@@ -6883,7 +7089,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1302.5,
 		},
 	}, -- [12]
-	{ -- [step 77
+	{
+		-- [step 77
 		["TT"] = {
 			["y"] = 6587.7,
 			["x"] = 1289.7,
@@ -6892,7 +7099,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			35036,
 		},
 	}, -- [13]
-	{ -- [step 78
+	{
+		-- [step 78
 		["PickUp"] = {
 			35202,
 			35038,
@@ -6902,7 +7110,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1289.7,
 		},
 	}, -- [14]
-	{ -- [step 79
+	{
+		-- [step 79
 		["PickUp"] = {
 			35037,
 			35934,
@@ -6912,7 +7121,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1302.2,
 		},
 	}, -- [15]
-	{ -- [step 80
+	{
+		-- [step 80
 		["Qpart"] = {
 			[35037] = {
 				["1"] = "1",
@@ -6933,7 +7143,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1144.9,
 		},
 	}, -- [16]
-	{ -- [step 81
+	{
+		-- [step 81
 		["PickUp"] = {
 			35925,
 		},
@@ -6947,7 +7158,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1164,
 		},
 	}, -- [18]
-	{ -- [step 82
+	{
+		-- [step 82
 		["Qpart"] = {
 			[35037] = {
 				["2"] = "2",
@@ -6969,7 +7181,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1161.7,
 		},
 	}, -- [19]
-	{ -- [step 83
+	{
+		-- [step 83
 		["Trigger"] = {
 			["y"] = 6761.3,
 			["x"] = 1141.5,
@@ -6985,7 +7198,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1141.5,
 		},
 	}, -- [20]
-	{ -- [step 84
+	{
+		-- [step 84
 		["Trigger"] = {
 			["y"] = 6881,
 			["x"] = 1332,
@@ -6997,7 +7211,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1332,
 		},
 	}, -- [21]
-	{ -- [step 85
+	{
+		-- [step 85
 		["Trigger"] = {
 			["y"] = 6821.8,
 			["x"] = 1429,
@@ -7009,7 +7224,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1429,
 		},
 	}, -- [22]
-	{ -- [step 86
+	{
+		-- [step 86
 		["CRange"] = 35038,
 		["Trigger"] = {
 			["y"] = 6834.1,
@@ -7022,7 +7238,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1347.3,
 		},
 	}, -- [23]
-	{ -- [step 87
+	{
+		-- [step 87
 		["Trigger"] = {
 			["y"] = 6864.5,
 			["x"] = 1298.4,
@@ -7034,7 +7251,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1298.4,
 		},
 	}, -- [24]
-	{ -- [step 88
+	{
+		-- [step 88
 		["Trigger"] = {
 			["y"] = 6816.7,
 			["x"] = 1423.4,
@@ -7046,7 +7264,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1423.4,
 		},
 	}, -- [25]
-	{ -- [step 89
+	{
+		-- [step 89
 		["Trigger"] = {
 			["y"] = 6715.3,
 			["x"] = 1383.5,
@@ -7065,7 +7284,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1383.5,
 		},
 	}, -- [27]
-	{ -- [step 90
+	{
+		-- [step 90
 		["TT"] = {
 			["y"] = 6606.8,
 			["x"] = 1302,
@@ -7075,8 +7295,9 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			35934,
 			35037, -- [3]
 		},
-	}, -- [28]
-	{ -- [step 91
+	},      -- [28]
+	{
+		-- [step 91
 		["TT"] = {
 			["y"] = 6587.3,
 			["x"] = 1289.7,
@@ -7086,7 +7307,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			35202,
 		},
 	}, -- [29]
-	{ -- [step 92
+	{
+		-- [step 92
 		["PickUp"] = {
 			35041,
 		},
@@ -7095,7 +7317,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1289.7,
 		},
 	}, -- [30]
-	{ -- [step 93
+	{
+		-- [step 93
 		["Trigger"] = {
 			["y"] = 6571.7,
 			["x"] = 1231.7,
@@ -7111,7 +7334,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1231.7,
 		},
 	}, -- [31]
-	{ -- [step 94
+	{
+		-- [step 94
 		["Trigger"] = {
 			["y"] = 6845,
 			["x"] = 1321,
@@ -7127,7 +7351,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1321,
 		},
 	}, -- [32]
-	{ -- [step 95
+	{
+		-- [step 95
 		["Trigger"] = {
 			["y"] = 6845.7,
 			["x"] = 1323.8,
@@ -7143,7 +7368,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1323.8,
 		},
 	}, -- [33]
-	{ -- [step 96
+	{
+		-- [step 96
 		["Trigger"] = {
 			["y"] = 7312.5,
 			["x"] = 1444.4,
@@ -7159,7 +7385,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1444.4,
 		},
 	}, -- [34]
-	{ -- [step 97
+	{
+		-- [step 97
 		["Trigger"] = {
 			["y"] = 7275,
 			["x"] = 1494.5,
@@ -7171,7 +7398,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1494.5,
 		},
 	}, -- [35]
-	{ -- [step 98
+	{
+		-- [step 98
 		["Qpart"] = {
 			[35041] = {
 				["5"] = "5",
@@ -7188,7 +7416,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1537.8,
 		},
 	}, -- [36]
-	{ -- [step 99
+	{
+		-- [step 99
 		["Trigger"] = {
 			["y"] = 7274.2,
 			["x"] = 1550.5,
@@ -7204,7 +7433,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1550.5,
 		},
 	}, -- [37]
-	{ -- [step 100
+	{
+		-- [step 100
 		["Done"] = {
 			35041,
 		},
@@ -7213,7 +7443,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1290.3,
 		},
 	}, -- [38]
-	{ -- [step 101
+	{
+		-- [step 101
 		["PickUp"] = {
 			35129,
 		},
@@ -7222,7 +7453,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1290.3,
 		},
 	}, -- [39]
-	{ -- [step 102
+	{
+		-- [step 102
 		["Trigger"] = {
 			["y"] = 6703.3,
 			["x"] = 1655,
@@ -7234,7 +7466,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1655,
 		},
 	},
-	{ -- [step 103
+	{
+		-- [step 103
 		["Trigger"] = {
 			["y"] = 6731,
 			["x"] = 1779.9,
@@ -7252,7 +7485,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1779.9,
 		},
 	}, -- [3]
-	{ -- [step 104
+	{
+		-- [step 104
 		["PickUp"] = {
 			35128,
 		},
@@ -7261,7 +7495,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1302.2,
 		},
 	}, -- [40]
-	{ -- [step 105
+	{
+		-- [step 105
 		["CRange"] = 35128,
 		["Trigger"] = {
 			["y"] = 6931.8,
@@ -7275,7 +7510,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1317.3,
 		},
 	}, -- [41]
-	{ -- [step 106
+	{
+		-- [step 106
 		["Trigger"] = {
 			["y"] = 6970.7,
 			["x"] = 1497.8,
@@ -7287,7 +7523,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1497.8,
 		},
 	},
-	{ -- [step 107
+	{
+		-- [step 107
 		["Treasure"] = 35056,
 		["Trigger"] = {
 			["y"] = 7037.3,
@@ -7304,7 +7541,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1583.5,
 		},
 	}, -- [3]
-	{ -- [step 108
+	{
+		-- [step 108
 		["Qpart"] = {
 			[35128] = {
 				["2"] = "2",
@@ -7321,7 +7559,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1649.7,
 		},
 	},
-	{ -- [step 109
+	{
+		-- [step 109
 		["CRange"] = 35128,
 		["Trigger"] = {
 			["y"] = 7036,
@@ -7338,7 +7577,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1617.2,
 		},
 	}, -- [10]
-	{ -- [step 110
+	{
+		-- [step 110
 		["Qpart"] = {
 			[35129] = {
 				["1"] = "1",
@@ -7361,7 +7601,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1595,
 		},
 	}, -- [11]
-	{ -- [step 111
+	{
+		-- [step 111
 		["Trigger"] = {
 			["y"] = 6987.8,
 			["x"] = 1596.7,
@@ -7377,7 +7618,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1596.7,
 		},
 	}, -- [12]
-	{ -- [step 112
+	{
+		-- [step 112
 		["Trigger"] = {
 			["y"] = 7044.6,
 			["x"] = 1606,
@@ -7393,7 +7635,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1606,
 		},
 	},
-	{ -- [step 113
+	{
+		-- [step 113
 		["PickUp"] = {
 			35210,
 		},
@@ -7402,7 +7645,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1635.2,
 		},
 	},
-	{ -- [step 114
+	{
+		-- [step 114
 		["Trigger"] = {
 			["y"] = 7039.1,
 			["x"] = 1635.2,
@@ -7418,7 +7662,8 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			["x"] = 1635.2,
 		},
 	}, -- [3]
-	{ -- [step 115
+	{
+		-- [step 115
 		["TT"] = {
 			["y"] = 6927.3,
 			["x"] = 1474,
@@ -7428,8 +7673,9 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			35128,
 			35129, -- [3]
 		},
-	}, -- [4]
-	{ -- [step 116
+	},      -- [4]
+	{
+		-- [step 116
 		["PickUp"] = {
 			35139,
 		},
@@ -7943,7 +8189,7 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
 			35017,
 			35016, -- [3]
 		},
-	}, -- [5]
+	},      -- [5]
 	{
 		["PickUp"] = {
 			35027,
@@ -10677,7 +10923,7 @@ APR.QuestStepList["535-DesMephisto-Talador-p1"] = {
 			35226,
 			33720, -- [3]
 		},
-	}, -- [28]
+	},      -- [28]
 	{
 		["PickUp"] = {
 			34950,
@@ -12434,7 +12680,7 @@ APR.QuestStepList["535-DesMephisto-Talador-p1"] = {
 			33970,
 			33972, -- [3]
 		},
-	}, -- [4]
+	},      -- [4]
 	{
 		["PickUp"] = {
 			34242,
@@ -13529,7 +13775,7 @@ APR.QuestStepList["542-DesMephisto-SpiresOfArak"] = {
 			34756,
 			35668, -- [3]
 		},
-	}, -- [20]
+	},      -- [20]
 	{
 		["PickUp"] = {
 			35671,
@@ -14734,7 +14980,7 @@ APR.QuestStepList["542-DesMephisto-SpiresOfArak"] = {
 			35260,
 			35273, -- [3]
 		},
-	}, -- [5]
+	},      -- [5]
 	{
 		["PickUp"] = {
 			35634,
@@ -14794,7 +15040,7 @@ APR.QuestStepList["542-DesMephisto-SpiresOfArak"] = {
 			34884,
 			34885, -- [3]
 		},
-	}, -- [7]
+	},      -- [7]
 	{
 		["PickUp"] = {
 			35733,
@@ -15211,7 +15457,7 @@ APR.QuestStepList["542-DesMephisto-SpiresOfArak"] = {
 			35011,
 			35004, -- [3]
 		},
-	}, -- [3]
+	},      -- [3]
 	{
 		["PickUp"] = {
 			35013,

@@ -1220,7 +1220,7 @@ elseif (APR.Class[3] == 1 and APR.Race == "Troll") then
 				24624,
 				24625, -- [3]
 			},
-		}, -- [3]
+		},     -- [3]
 		{
 			["PickUp"] = {
 				24626,
@@ -1773,7 +1773,7 @@ elseif (APR.Class[3] == 3 and APR.Race == "Troll") then
 				24624,
 				24625, -- [3]
 			},
-		}, -- [3]
+		},     -- [3]
 		{
 			["PickUp"] = {
 				24626,
@@ -2310,7 +2310,7 @@ elseif (APR.Class[3] == 4 and APR.Race == "Troll") then
 				24624,
 				24625, -- [3]
 			},
-		}, -- [3]
+		},     -- [3]
 		{
 			["PickUp"] = {
 				24626,
@@ -3009,7 +3009,7 @@ elseif (APR.Class[3] == 5 and APR.Race == "Troll") then
 				24624,
 				24625, -- [3]
 			},
-		}, -- [3]
+		},     -- [3]
 		{
 			["PickUp"] = {
 				24626,
@@ -3562,7 +3562,7 @@ elseif (APR.Class[3] == 7 and APR.Race == "Troll") then
 				24624,
 				24625, -- [3]
 			},
-		}, -- [3]
+		},     -- [3]
 		{
 			["PickUp"] = {
 				24626,
@@ -4115,7 +4115,7 @@ elseif (APR.Class[3] == 8 and APR.Race == "Troll") then
 				24624,
 				24625, -- [3]
 			},
-		}, -- [3]
+		},     -- [3]
 		{
 			["PickUp"] = {
 				24626,
@@ -4668,7 +4668,7 @@ elseif (APR.Class[3] == 9 and APR.Race == "Troll") then
 				24624,
 				24625, -- [3]
 			},
-		}, -- [3]
+		},     -- [3]
 		{
 			["PickUp"] = {
 				24626,
@@ -5221,7 +5221,7 @@ elseif (APR.Class[3] == 10 and APR.Race == "Troll") then
 				24624,
 				24625, -- [3]
 			},
-		}, -- [3]
+		},     -- [3]
 		{
 			["PickUp"] = {
 				24626,
@@ -5774,7 +5774,7 @@ elseif (APR.Class[3] == 11 and APR.Race == "Troll") then
 				24624,
 				24625, -- [3]
 			},
-		}, -- [3]
+		},     -- [3]
 		{
 			["PickUp"] = {
 				24626,
@@ -6532,7 +6532,7 @@ elseif (APR.Race == "Goblin" and APR.Gender == 2) then
 				24520,
 				14070, -- [3]
 			},
-		}, -- [39]
+		},     -- [39]
 		{
 			["PickUp"] = {
 				14113,
@@ -7474,7 +7474,7 @@ elseif (APR.Race == "Goblin") then
 				24520,
 				14070, -- [3]
 			},
-		}, -- [39]
+		},     -- [39]
 		{
 			["PickUp"] = {
 				14153,
@@ -13897,7 +13897,7 @@ APR.QuestStepList["10-NorthernBarrens"] = {
 			14042,
 			895, -- [3]
 		},
-	}, -- [75]
+	},    -- [75]
 	{
 		["PickUp"] = {
 			14050,

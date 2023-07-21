@@ -16,7 +16,7 @@ function APR.ResetSettings()
 	APR1[APR.Realm][APR.Name].Settings["Hcampleft"] = 150
 	APR1[APR.Realm][APR.Name].Settings["Hcamptop"] = -150
 	APR1[APR.Realm][APR.Name].Settings["CutScene"] = 1
-	APR1[APR.Realm][APR.Name].Settings["AutoAccept"] = 1
+	APR1[APR.Realm][APR.Name].Settings["AutoAccept"] = 0
 	APR1[APR.Realm][APR.Name].Settings["AutoAcceptQuestRoute"] = 1
 	APR1[APR.Realm][APR.Name].Settings["AutoHandIn"] = 1
 	APR1[APR.Realm][APR.Name].Settings["ChooseQuests"] = 0
@@ -43,11 +43,11 @@ function APR.ResetSettings()
 	APR.OptionsFrame.LockQuestListCheckButton:SetChecked(NumToBool(APR1[APR.Realm][APR.Name].Settings["Lock"]))
 	APR.OptionsFrame.CutSceneCheckButton:SetChecked(NumToBool(APR1[APR.Realm][APR.Name].Settings["CutScene"]))
 	APR.OptionsFrame.AutoAcceptCheckButton:SetChecked(NumToBool(APR1[APR.Realm][APR.Name].Settings["AutoAccept"]))
-	APR.OptionsFrame.AutoAcceptQuestRouteCheckButton:SetChecked(NumToBool(APR1[APR.Realm][APR.Name].Settings[
-		"AutoAcceptQuestRoute"]))
+	APR.OptionsFrame.AutoAcceptQuestRouteCheckButton:SetChecked(NumToBool(APR1[APR.Realm][APR.Name].Settings
+		["AutoAcceptQuestRoute"]))
 	APR.OptionsFrame.AutoHandInCheckButton:SetChecked(NumToBool(APR1[APR.Realm][APR.Name].Settings["AutoHandIn"]))
-	APR.OptionsFrame.AutoHandInChoiceCheckButton:SetChecked(NumToBool(APR1[APR.Realm][APR.Name].Settings["AutoHandInChoice"
-		]))
+	APR.OptionsFrame.AutoHandInChoiceCheckButton:SetChecked(NumToBool(APR1[APR.Realm][APR.Name].Settings
+		["AutoHandInChoice"]))
 
 	-- UI stuff regarding questlist and options frame
 	APR.QuestList.ButtonParent:SetScale(APR1[APR.Realm][APR.Name].Settings["Scale"])
@@ -115,8 +115,8 @@ local function displayOptionSection(optionFrame, subOptionFrame, frameName, x, y
 	APR.OptionsFrame.MainFrame[optionFrame].FontString = APR.OptionsFrame.MainFrame:CreateFontString("APR_OptionsB3FS1",
 		"ARTWORK", "ChatFontNormal")
 	APR.OptionsFrame.MainFrame[optionFrame].FontString:SetParent(APR.OptionsFrame.MainFrame[optionFrame])
-	APR.OptionsFrame.MainFrame[optionFrame].FontString:SetPoint("CENTER", APR.OptionsFrame.MainFrame[optionFrame], "CENTER"
-		, 0, 0)
+	APR.OptionsFrame.MainFrame[optionFrame].FontString:SetPoint("CENTER", APR.OptionsFrame.MainFrame[optionFrame], "CENTER",
+		0, 0)
 	APR.OptionsFrame.MainFrame[optionFrame].FontString:SetWidth(240)
 	APR.OptionsFrame.MainFrame[optionFrame].FontString:SetHeight(20)
 	APR.OptionsFrame.MainFrame[optionFrame].FontString:SetFontObject("GameFontHighlightLarge")
@@ -165,13 +165,15 @@ local function checkboxOptionline(parentFrame, optionFrameButton, frameName, x, 
 	getglobal(APR.OptionsFrame[optionFrameButton]:GetName() .. 'Text'):SetText(": " .. text)
 	getglobal(APR.OptionsFrame[optionFrameButton]:GetName() .. 'Text'):SetTextColor(1, 1, 1)
 	optionalFunction = optionalFunction or
-		function() APR1[APR.Realm][APR.Name].Settings[checkValue] = Booltonumber(APR.OptionsFrame[optionFrameButton]:
-			GetChecked()) end
+			function()
+				APR1[APR.Realm][APR.Name].Settings[checkValue] = Booltonumber(APR.OptionsFrame[optionFrameButton]
+					:GetChecked())
+			end
 	APR.OptionsFrame[optionFrameButton]:SetScript("OnClick", optionalFunction)
 end
 
 local function sliderOptionLine(parentFrame, optionFrameSlide, frameName, x, y, checkValue, text, functionOnChanged,
-                                offset)
+																offset)
 	APR.OptionsFrame[optionFrameSlide] = CreateFrame("Slider", frameName, APR.OptionsFrame.MainFrame[parentFrame],
 		"OptionsSliderTemplate")
 	APR.OptionsFrame[optionFrameSlide]:SetWidth(160)
@@ -179,8 +181,8 @@ local function sliderOptionLine(parentFrame, optionFrameSlide, frameName, x, y, 
 	APR.OptionsFrame[optionFrameSlide]:SetPoint("TOPLEFT", APR.OptionsFrame.MainFrame[parentFrame], "TOPLEFT", x, y)
 	APR.OptionsFrame[optionFrameSlide]:SetOrientation("HORIZONTAL")
 	APR.OptionsFrame[optionFrameSlide]:SetMinMaxValues(1, 200)
-	APR.OptionsFrame[optionFrameSlide].minValue, APR.OptionsFrame[optionFrameSlide].maxValue = APR.OptionsFrame[
-		optionFrameSlide]:GetMinMaxValues()
+	APR.OptionsFrame[optionFrameSlide].minValue, APR.OptionsFrame[optionFrameSlide].maxValue = APR.OptionsFrame
+			[optionFrameSlide]:GetMinMaxValues()
 	getglobal(APR.OptionsFrame[optionFrameSlide]:GetName() .. 'Low'):SetText("1%")
 	getglobal(APR.OptionsFrame[optionFrameSlide]:GetName() .. 'High'):SetText("200%")
 	getglobal(APR.OptionsFrame[optionFrameSlide]:GetName() .. 'Text'):SetText(text .. ":")
@@ -194,13 +196,12 @@ local function sliderOptionLine(parentFrame, optionFrameSlide, frameName, x, y, 
 	offset = offset or 100
 	APR.OptionsFrame[optionFrameSlide]:SetValue(APR1[APR.Realm][APR.Name].Settings[checkValue] * offset)
 end
-
-local function displayButton(parentFrame, optionFrameButton, frameName, width, height, x, y, pointValue, text, fontStyle
-                             , onClickFunction)
+local function displayButton(parentFrame, optionFrameButton, frameName, width, height, x, y, pointValue, text, fontStyle,
+														 onClickFunction)
 	APR.OptionsFrame[optionFrameButton] = CreateFrame("Button", frameName, parentFrame, "UIPanelButtonTemplate")
 
-	APR.OptionsFrame[optionFrameButton].Fontstring = APR.OptionsFrame.MainFrame:CreateFontString("APRSettingsFS1", "ARTWORK"
-		, "ChatFontNormal")
+	APR.OptionsFrame[optionFrameButton].Fontstring = APR.OptionsFrame.MainFrame:CreateFontString("APRSettingsFS1",
+		"ARTWORK", "ChatFontNormal")
 	APR.OptionsFrame[optionFrameButton].Fontstring:SetParent(APR.OptionsFrame[optionFrameButton])
 	APR.OptionsFrame[optionFrameButton].Fontstring:SetPoint("CENTER", APR.OptionsFrame[optionFrameButton])
 	APR.OptionsFrame[optionFrameButton].Fontstring:SetText(text)
@@ -215,7 +216,6 @@ local function displayButton(parentFrame, optionFrameButton, frameName, width, h
 	APR.OptionsFrame[optionFrameButton]:SetNormalFontObject(fontStyle)
 	APR.OptionsFrame[optionFrameButton]:SetScript("OnClick", onClickFunction)
 end
-
 APR.APR_panel = CreateFrame("Frame", "CLPanelFrame", UIParent)
 APR.APR_panel.name = "Azeroth Pilot Reloaded" -- Name of the wow ui panel in interface > options menu
 InterfaceOptions_AddCategory(APR.APR_panel)
@@ -227,6 +227,31 @@ APR_panel.title:SetPoint("TOPLEFT", APR.APR_panel, 0, -30)
 
 APR_panel.title:SetText("Azeroth Pilot Reloaded - " .. APR.Version) -- Header text of the options menu
 
+APR_panel.Button1 = CreateFrame("Button", "ZPButton2", APR.APR_panel)
+APR_panel.Button1:SetPoint("TOPLEFT", APR.APR_panel, "TOPLEFT", 120, -100)
+APR_panel.Button1:SetWidth(70)
+APR_panel.Button1:SetHeight(30)
+APR_panel.Button1:SetText(L["LOAD"])
+APR_panel.Button1:SetNormalFontObject("GameFontNormal")
+APR_panel.Button1ntex = APR_panel.Button1:CreateTexture()
+APR_panel.Button1ntex:SetTexture("Interface/Buttons/UI-Panel-Button-Up")
+APR_panel.Button1ntex:SetTexCoord(0, 0.625, 0, 0.6875)
+APR_panel.Button1ntex:SetAllPoints()
+--APR_panel.Button1:SetNormalTexture(APR_panel.Button1ntex)
+APR_panel.Button1htex = APR_panel.Button1:CreateTexture()
+APR_panel.Button1htex:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
+APR_panel.Button1htex:SetTexCoord(0, 0.625, 0, 0.6875)
+APR_panel.Button1htex:SetAllPoints()
+APR_panel.Button1:SetHighlightTexture(APR_panel.Button1htex)
+APR_panel.Button1ptex = APR_panel.Button1:CreateTexture()
+APR_panel.Button1ptex:SetTexture("Interface/Buttons/UI-Panel-Button-Down")
+APR_panel.Button1ptex:SetTexCoord(0, 0.625, 0, 0.6875)
+APR_panel.Button1ptex:SetAllPoints()
+APR_panel.Button1:SetPushedTexture(APR_panel.Button1ptex)
+APR_panel.Button1:SetScript("OnClick", function(self, arg1)
+	HideUIPanel(SettingsPanel)
+	APR.OptionsFrame.MainFrame:Show()
+end)
 function APR.LoadOptionsFrame()
 	APR.OptionsFrame = {}
 	APR.OptionsFrame.MainFrame = CreateFrame("frame", "APR_OptionsMainFrame", UIParent)
@@ -293,7 +318,8 @@ function APR.LoadOptionsFrame()
 			APR.OptionsFrame.MainFrame.isMoving = false;
 		end
 	end)
-	APR.OptionsFrame.FontString1 = APR.OptionsFrame.MainFrame:CreateFontString("APRSettingsFS1", "ARTWORK", "ChatFontNormal")
+	APR.OptionsFrame.FontString1 = APR.OptionsFrame.MainFrame:CreateFontString("APRSettingsFS1", "ARTWORK",
+		"ChatFontNormal")
 	APR.OptionsFrame.FontString1:SetParent(APR.OptionsFrame.MainFrame)
 	APR.OptionsFrame.FontString1:SetPoint("TOP", APR.OptionsFrame.MainFrame, "TOP", 0, 0)
 	APR.OptionsFrame.FontString1:SetText("Azeroth Pilot Reloaded - " .. APR.Version)
@@ -308,9 +334,25 @@ function APR.LoadOptionsFrame()
 	APR.OptionsFrame.MainFrame.OptionsQuests:Show()
 	-- Auto pickup checkbox
 	checkboxOptionline("OptionsQuests", "AutoAcceptCheckButton", "APR_AutoAcceptCheckButton", 10, -10, "AutoAccept",
-		L["ACCEPT_Q"])
+		L["ACCEPT_Q"],
+		function()
+			APR1[APR.Realm][APR.Name].Settings.AutoAccept = Booltonumber(APR.OptionsFrame.AutoAcceptCheckButton:GetChecked())
+			if (APR.OptionsFrame.AutoAcceptCheckButton:GetChecked() == true) then
+				APR1[APR.Realm][APR.Name].Settings.AutoAcceptQuestRoute = 0
+				APR.OptionsFrame.AutoAcceptQuestRouteCheckButton:SetChecked(false)
+			end
+		end)
 	-- Auto pickup quest route checkbox
-	-- checkboxOptionline("OptionsQuests", "AutoAcceptQuestRouteCheckButton","APR_AutoAcceptQuestRouteCheckButton", 10, -30, "AutoAcceptQuestRoute", L["ACCEPT_Q"])
+	checkboxOptionline("OptionsQuests", "AutoAcceptQuestRouteCheckButton", "APR_AutoAcceptQuestRouteCheckButton", 10, -30,
+		"AutoAcceptQuestRoute", L["ACCEPT_Q_ROUTE"],
+		function()
+			APR1[APR.Realm][APR.Name].Settings.AutoAcceptQuestRoute = Booltonumber(APR.OptionsFrame
+				.AutoAcceptQuestRouteCheckButton:GetChecked())
+			if (APR.OptionsFrame.AutoAcceptQuestRouteCheckButton:GetChecked() == true) then
+				APR1[APR.Realm][APR.Name].Settings.AutoAccept = 0
+				APR.OptionsFrame.AutoAcceptCheckButton:SetChecked(false)
+			end
+		end)
 	-- Auto handin checkbox
 	checkboxOptionline("OptionsQuests", "AutoHandInCheckButton", "APR_AutoHandInCheckButton", 10, -50, "AutoHandIn",
 		L["TURN_IN_Q"])
@@ -320,53 +362,53 @@ function APR.LoadOptionsFrame()
 	-- Display Quest list/ current step checkbox
 	checkboxOptionline("OptionsQuests", "ShowQListCheckButton", "APR_ShowQListCheckButton", 10, -90, "ShowQList",
 		L["SHOW_QLIST"], function()
-		APR1[APR.Realm][APR.Name].Settings.ShowQList = Booltonumber(APR.OptionsFrame.ShowQListCheckButton:GetChecked())
-		APR.BookingList.PrintQStep = 1
-		if (APR.OptionsFrame.ShowQListCheckButton:GetChecked() == false) then
-			for CLi = 1, 10 do
-				APR.QuestList.QuestFrames[CLi]:Hide()
-				APR.QuestList.QuestFrames["FS" .. CLi].Button:Hide()
-				APR.QuestList2["BF" .. CLi]:Hide()
+			APR1[APR.Realm][APR.Name].Settings.ShowQList = Booltonumber(APR.OptionsFrame.ShowQListCheckButton:GetChecked())
+			APR.BookingList.PrintQStep = 1
+			if (APR.OptionsFrame.ShowQListCheckButton:GetChecked() == false) then
+				for CLi = 1, 10 do
+					APR.QuestList.QuestFrames[CLi]:Hide()
+					APR.QuestList.QuestFrames["FS" .. CLi].Button:Hide()
+					APR.QuestList2["BF" .. CLi]:Hide()
+				end
 			end
-		end
-	end)
+		end)
 	-- Display Quest list/ current step checkbox
 	checkboxOptionline("OptionsQuests", "LockQuestListCheckButton", "APR_LockQuestListCheckButton", 10, -110, "Lock",
 		L["LOCK_QLIST_WINDOW"])
 	-- Quest list/ current step scale slider
 	sliderOptionLine("OptionsQuests", "QuestListScaleSlider", "APR_QuestListScaleSlider", 62, -150, "Scale",
 		L["QLIST_SCALE"], function(self, event)
-		event = event - event % 1
-		APR1[APR.Realm][APR.Name].Settings.Scale = event / 100
-		APR.QuestList.ButtonParent:SetScale(APR1[APR.Realm][APR.Name].Settings.Scale)
-		APR.QuestList.ListFrame:SetScale(APR1[APR.Realm][APR.Name].Settings.Scale)
-		APR.QuestList21:SetScale(APR1[APR.Realm][APR.Name].Settings.Scale)
-	end)
+			event = event - event % 1
+			APR1[APR.Realm][APR.Name].Settings.Scale = event / 100
+			APR.QuestList.ButtonParent:SetScale(APR1[APR.Realm][APR.Name].Settings.Scale)
+			APR.QuestList.ListFrame:SetScale(APR1[APR.Realm][APR.Name].Settings.Scale)
+			APR.QuestList21:SetScale(APR1[APR.Realm][APR.Name].Settings.Scale)
+		end)
 	-- DQuest order list scale slider
 	sliderOptionLine("OptionsQuests", "QuestOrderListScaleSlider", "APR_QuestOrderListScaleSlider", 62, -190,
 		"OrderListScale", L["QORDERLIST_SCALE"], function(self, event)
-		event = event - event % 1
-		APR1[APR.Realm][APR.Name].Settings.OrderListScale = event / 100
-		APR.ZoneQuestOrder:SetScale(APR1[APR.Realm][APR.Name].Settings.OrderListScale)
-	end)
+			event = event - event % 1
+			APR1[APR.Realm][APR.Name].Settings.OrderListScale = event / 100
+			APR.ZoneQuestOrder:SetScale(APR1[APR.Realm][APR.Name].Settings.OrderListScale)
+		end)
 	-- Display Quest order list checkbox
 	checkboxOptionline("OptionsQuests", "QorderListzCheckButton", "APR_QorderListzCheckButton", 10, -215,
 		"ShowQuestListOrder", L["SHOW_QORDERLIST"], function()
-		APR1[APR.Realm][APR.Name].Settings.ShowQuestListOrder = Booltonumber(APR.OptionsFrame.QorderListzCheckButton:
-			GetChecked())
-		if (APR.OptionsFrame.QorderListzCheckButton:GetChecked() == true) then
-			APR.UpdateZoneQuestOrderList("LoadIn")
-			APR.ZoneQuestOrder:Show()
-		else
-			APR.ZoneQuestOrder:Hide()
-		end
-	end)
+			APR1[APR.Realm][APR.Name].Settings.ShowQuestListOrder = Booltonumber(APR.OptionsFrame.QorderListzCheckButton
+				:GetChecked())
+			if (APR.OptionsFrame.QorderListzCheckButton:GetChecked() == true) then
+				APR.UpdateZoneQuestOrderList("LoadIn")
+				APR.ZoneQuestOrder:Show()
+			else
+				APR.ZoneQuestOrder:Hide()
+			end
+		end)
 	-- Reset quest order list button
 	displayButton(APR.OptionsFrame.MainFrame.OptionsQuests, "ResetQorderL", "APR_OptionsButtons3", 150, 30, 50, -245,
 		"TOPLEFT", L["RESET_QORDERLIST"], "GameFontNormal", function(self, arg1)
-		APR.ZoneQuestOrder:ClearAllPoints()
-		APR.ZoneQuestOrder:SetPoint("CENTER", UIParent, "CENTER", 1, 1)
-	end)
+			APR.ZoneQuestOrder:ClearAllPoints()
+			APR.ZoneQuestOrder:SetPoint("CENTER", UIParent, "CENTER", 1, 1)
+		end)
 	----------------- Arrow Options --------------------------------------------------------------------------------------------
 	displayOptionSection("OptionsB2", "OptionsArrow", "APR_OptionsMainFrame_ArrowOptions", 0, -70, "TOPLEFT",
 		L["ARROW_OPTION"])
@@ -376,11 +418,11 @@ function APR.LoadOptionsFrame()
 	-- Display arrow checkbox
 	checkboxOptionline("OptionsArrow", "ShowArrowCheckButton", "APR_ShowArrowCheckButton", 10, -30, "ShowArrow",
 		L["SHOW_ARROW"], function()
-		APR1[APR.Realm][APR.Name].Settings.ShowArrow = Booltonumber(APR.OptionsFrame.ShowArrowCheckButton:GetChecked())
-		if (APR.OptionsFrame.ShowArrowCheckButton:GetChecked() == true) then
-			APR.ArrowActive = 1
-		end
-	end)
+			APR1[APR.Realm][APR.Name].Settings.ShowArrow = Booltonumber(APR.OptionsFrame.ShowArrowCheckButton:GetChecked())
+			if (APR.OptionsFrame.ShowArrowCheckButton:GetChecked() == true) then
+				APR.ArrowActive = 1
+			end
+		end)
 	-- Arrow scale slider
 	sliderOptionLine("OptionsArrow", "ArrowScaleSlider", "APR_ArrowScaleSlider", 62, -70, "ArrowScale", L["ARROW_SCALE"],
 		function(self, event)
@@ -397,29 +439,29 @@ function APR.LoadOptionsFrame()
 				" " .. APR1[APR.Realm][APR.Name].Settings["ArrowFPS"] .. " FPS:")
 		end, 1)
 	-- Reset arrow button
-	displayButton(APR.OptionsFrame.MainFrame.OptionsArrow, "ResetARrow", "APR_OptionsButtons3", 90, 30, 50, -140, "TOPLEFT"
-		, L["RESET_ARROW"], "GameFontNormal", function(self, arg1)
-		APR1[APR.Realm][APR.Name].Settings["ArrowScale"] = UIParent:GetScale()
-		APR1[APR.Realm][APR.Name].Settings["LockArrow"] = 0
-		APR1[APR.Realm][APR.Name].Settings["ArrowFPS"] = 2
-		APR1[APR.Realm][APR.Name].Settings["arrowleft"] = GetScreenWidth() / 2.05
-		APR1[APR.Realm][APR.Name].Settings["arrowtop"] = -(GetScreenHeight() / 1.5)
-		APR.ArrowFrame:SetScale(APR1[APR.Realm][APR.Name].Settings["ArrowScale"])
-		APR.ArrowFrameM:ClearAllPoints()
-		APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name].Settings["arrowleft"],
-			APR1[APR.Realm][APR.Name].Settings["arrowtop"])
-		APR.OptionsFrame.ArrowFpsSlider:SetValue(APR1[APR.Realm][APR.Name].Settings["ArrowFPS"])
-		if (APR1[APR.Realm][APR.Name].Settings["LockArrow"] == 0) then
-			APR.OptionsFrame.LockArrowCheckButton:SetChecked(false)
-		else
-			APR.OptionsFrame.LockArrowCheckButton:SetChecked(true)
-		end
-		APR.OptionsFrame.ArrowScaleSlider:SetValue(APR1[APR.Realm][APR.Name].Settings["ArrowScale"] * 100)
-	end)
+	displayButton(APR.OptionsFrame.MainFrame.OptionsArrow, "ResetARrow", "APR_OptionsButtons3", 90, 30, 50, -140, "TOPLEFT",
+		L["RESET_ARROW"], "GameFontNormal", function(self, arg1)
+			APR1[APR.Realm][APR.Name].Settings["ArrowScale"] = UIParent:GetScale()
+			APR1[APR.Realm][APR.Name].Settings["LockArrow"] = 0
+			APR1[APR.Realm][APR.Name].Settings["ArrowFPS"] = 2
+			APR1[APR.Realm][APR.Name].Settings["arrowleft"] = GetScreenWidth() / 2.05
+			APR1[APR.Realm][APR.Name].Settings["arrowtop"] = -(GetScreenHeight() / 1.5)
+			APR.ArrowFrame:SetScale(APR1[APR.Realm][APR.Name].Settings["ArrowScale"])
+			APR.ArrowFrameM:ClearAllPoints()
+			APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name].Settings["arrowleft"],
+				APR1[APR.Realm][APR.Name].Settings["arrowtop"])
+			APR.OptionsFrame.ArrowFpsSlider:SetValue(APR1[APR.Realm][APR.Name].Settings["ArrowFPS"])
+			if (APR1[APR.Realm][APR.Name].Settings["LockArrow"] == 0) then
+				APR.OptionsFrame.LockArrowCheckButton:SetChecked(false)
+			else
+				APR.OptionsFrame.LockArrowCheckButton:SetChecked(true)
+			end
+			APR.OptionsFrame.ArrowScaleSlider:SetValue(APR1[APR.Realm][APR.Name].Settings["ArrowScale"] * 100)
+		end)
 
 	------------------------- General Options --------------------------------------------------------------------------
 	displayOptionSection("OptionsB3", "OptionsGeneral", "APR_OptionsMainFrame_GeneralOptions", 0, -100, "TOPLEFT",
-		L["ARROW_OPTION"])
+		L["GENERAL_OPTION"])
 	-- auto skip scene checkbox
 	checkboxOptionline("OptionsGeneral", "CutSceneCheckButton", "APR_CutSceneCheckButton", 10, -10, "CutScene",
 		L["SKIPPED_CUTSCENE"])
@@ -432,14 +474,14 @@ function APR.LoadOptionsFrame()
 	-- Group progress checkbox
 	checkboxOptionline("OptionsGeneral", "ShowGroupCheckButton", "APR_ShowGroupCheckButton", 10, -70, "AutoRepair",
 		L["SHOW_GROUP_PROGRESS"], function()
-		APR1[APR.Realm][APR.Name].Settings.ShowGroup = Booltonumber(APR.OptionsFrame.ShowGroupCheckButton:GetChecked())
-		if (APR.OptionsFrame.ShowGroupCheckButton:GetChecked() == false) then
-			for CLi = 1, 5 do
-				APR.PartyList.PartyFrames[CLi]:Hide()
-				APR.PartyList.PartyFrames2[CLi]:Hide()
+			APR1[APR.Realm][APR.Name].Settings.ShowGroup = Booltonumber(APR.OptionsFrame.ShowGroupCheckButton:GetChecked())
+			if (APR.OptionsFrame.ShowGroupCheckButton:GetChecked() == false) then
+				for CLi = 1, 5 do
+					APR.PartyList.PartyFrames[CLi]:Hide()
+					APR.PartyList.PartyFrames2[CLi]:Hide()
+				end
 			end
-		end
-	end)
+		end)
 	-- auto gossip checkbox
 	checkboxOptionline("OptionsGeneral", "AutoGossipCheckButton", "APR_AutoGossipCheckButton", 10, -90, "AutoGossip",
 		L["AUTO_SELECTION_OF_DIALOG"])
@@ -449,81 +491,81 @@ function APR.LoadOptionsFrame()
 	-- MiniMap quest blob display checkbox
 	checkboxOptionline("OptionsGeneral", "BlobsShowCheckButton", "APR_BlobsShowCheckButton", 10, -130, "ShowBlobs",
 		L["SHOW_BLOBS_ON_MINIMAP"], function()
-		APR1[APR.Realm][APR.Name].Settings.ShowBlobs = Booltonumber(APR.OptionsFrame.BlobsShowCheckButton:GetChecked())
-		if (APR.OptionsFrame.BlobsShowCheckButton:GetChecked() == true) then
-			APR.OptionsFrame.MiniMapBlobAlphaSlider:Show()
-		else
-			APR.RemoveIcons()
-			APR.OptionsFrame.MiniMapBlobAlphaSlider:Hide()
-		end
-	end)
+			APR1[APR.Realm][APR.Name].Settings.ShowBlobs = Booltonumber(APR.OptionsFrame.BlobsShowCheckButton:GetChecked())
+			if (APR.OptionsFrame.BlobsShowCheckButton:GetChecked() == true) then
+				APR.OptionsFrame.MiniMapBlobAlphaSlider:Show()
+			else
+				APR.RemoveIcons()
+				APR.OptionsFrame.MiniMapBlobAlphaSlider:Hide()
+			end
+		end)
 
 	-- MiniMap Blob Alpha scale slider
-	sliderOptionLine("OptionsGeneral", "MiniMapBlobAlphaSlider", "APR_MiniMapBlobAlphaSlider", 62, -160, "MiniMapBlobAlpha"
-		, L["MINIMAP_BLOB_ALPHA"], function(self, event)
-		event = event - event % 1
-		APR1[APR.Realm][APR.Name].Settings.MiniMapBlobAlpha = event / 100
-		for CLi = 1, 20 do
-			APR["Icons"][CLi].texture:SetAlpha(APR1[APR.Realm][APR.Name].Settings.MiniMapBlobAlpha)
-		end
-	end)
+	sliderOptionLine("OptionsGeneral", "MiniMapBlobAlphaSlider", "APR_MiniMapBlobAlphaSlider", 62, -160, "MiniMapBlobAlpha",
+		L["MINIMAP_BLOB_ALPHA"], function(self, event)
+			event = event - event % 1
+			APR1[APR.Realm][APR.Name].Settings.MiniMapBlobAlpha = event / 100
+			for CLi = 1, 20 do
+				APR["Icons"][CLi].texture:SetAlpha(APR1[APR.Realm][APR.Name].Settings.MiniMapBlobAlpha)
+			end
+		end)
 	if (APR1[APR.Realm][APR.Name].Settings.ShowBlobs == 0) then
 		APR.OptionsFrame.MiniMapBlobAlphaSlider:Hide()
 	end
 	-- Map quest blob display checkbox
-	checkboxOptionline("OptionsGeneral", "MapBlobsShowCheckButton", "APR_MapBlobsShowCheckButton", 10, -180, "ShowMapBlobs"
-		, L["SHOW_BLOBS_ON_MAP"], function()
-		APR1[APR.Realm][APR.Name].Settings.ShowMapBlobs = Booltonumber(APR.OptionsFrame.MapBlobsShowCheckButton:GetChecked())
-		if (APR.OptionsFrame.MapBlobsShowCheckButton:GetChecked() == false) then
-			APR:MoveMapIcons()
-		end
-	end)
+	checkboxOptionline("OptionsGeneral", "MapBlobsShowCheckButton", "APR_MapBlobsShowCheckButton", 10, -180, "ShowMapBlobs",
+		L["SHOW_BLOBS_ON_MAP"], function()
+			APR1[APR.Realm][APR.Name].Settings.ShowMapBlobs = Booltonumber(APR.OptionsFrame.MapBlobsShowCheckButton:GetChecked())
+			if (APR.OptionsFrame.MapBlobsShowCheckButton:GetChecked() == false) then
+				APR:MoveMapIcons()
+			end
+		end)
 	-- Map 10 next quest marker display checkbox
 	checkboxOptionline("OptionsGeneral", "ShowMap10sCheckButton", "APR_ShowMap10sCheckButton", 10, -200, "ShowMap10s",
 		L["SHOW_STEPS_MAP"], function()
-		APR1[APR.Realm][APR.Name].Settings.ShowMap10s = Booltonumber(APR.OptionsFrame.ShowMap10sCheckButton:GetChecked())
-		if (APR.OptionsFrame.ShowMap10sCheckButton:GetChecked() == false) then
-			APR.HBDP:RemoveAllWorldMapIcons("APRMapOrder")
-		end
-	end)
+			APR1[APR.Realm][APR.Name].Settings.ShowMap10s = Booltonumber(APR.OptionsFrame.ShowMap10sCheckButton:GetChecked())
+			if (APR.OptionsFrame.ShowMap10sCheckButton:GetChecked() == false) then
+				APR.HBDP:RemoveAllWorldMapIcons("APRMapOrder")
+			end
+		end)
 	-- Heirloom checkbox
 	checkboxOptionline("OptionsGeneral", "QuestButtonsCheckButton", "APR_QuestButtonsCheckButton", 10, -220,
 		"QuestButtonDetatch", L["DETACH_Q_ITEM_BTN"], function()
-		APR1[APR.Realm][APR.Name].Settings.QuestButtonDetatch = Booltonumber(APR.OptionsFrame.QuestButtonsCheckButton:
-			GetChecked())
-		if (APR.OptionsFrame.QuestButtonsCheckButton:GetChecked() == true) then
-			APR.OptionsFrame.QuestButtonsSlider:Show()
-		else
-			APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name].Settings["left"],
-				APR1[APR.Realm][APR.Name].Settings["top"])
-			for CLi = 1, 3 do
-				APR1[APR.Realm][APR.Name].Settings.QuestButtons = 1
-				APR.QuestList2["BF" .. CLi]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT", 0, -((CLi * 38) + CLi))
-				APR.QuestList2["BF" .. CLi].APR_Button:SetScale(APR1[APR.Realm][APR.Name].Settings.QuestButtons)
-				APR.OptionsFrame.QuestButtonsSlider:SetValue(APR1[APR.Realm][APR.Name].Settings.QuestButtons * 100)
+			APR1[APR.Realm][APR.Name].Settings.QuestButtonDetatch = Booltonumber(APR.OptionsFrame.QuestButtonsCheckButton
+				:GetChecked())
+			if (APR.OptionsFrame.QuestButtonsCheckButton:GetChecked() == true) then
+				APR.OptionsFrame.QuestButtonsSlider:Show()
+			else
+				APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name].Settings["left"],
+					APR1[APR.Realm][APR.Name].Settings["top"])
+				for CLi = 1, 3 do
+					APR1[APR.Realm][APR.Name].Settings.QuestButtons = 1
+					APR.QuestList2["BF" .. CLi]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT", 0, -((CLi * 38) + CLi))
+					APR.QuestList2["BF" .. CLi].APR_Button:SetScale(APR1[APR.Realm][APR.Name].Settings.QuestButtons)
+					APR.OptionsFrame.QuestButtonsSlider:SetValue(APR1[APR.Realm][APR.Name].Settings.QuestButtons * 100)
+				end
+				APR.OptionsFrame.QuestButtonsSlider:Hide()
 			end
-			APR.OptionsFrame.QuestButtonsSlider:Hide()
-		end
-	end)
+		end)
 	-- Quest buttons scale slider
 	sliderOptionLine("OptionsGeneral", "QuestButtonsSlider", "APR_QuestButtonsSlider", 62, -260, "QuestButtons",
 		L["Q_BTN_SCALE"], function(self, event)
-		event = event - event % 1
-		APR1[APR.Realm][APR.Name].Settings.QuestButtons = event / 100
-		for CLi = 1, 20 do
-			APR.QuestList2["BF" .. CLi].APR_Button:SetScale(APR1[APR.Realm][APR.Name].Settings.QuestButtons)
-		end
-	end)
+			event = event - event % 1
+			APR1[APR.Realm][APR.Name].Settings.QuestButtons = event / 100
+			for CLi = 1, 20 do
+				APR.QuestList2["BF" .. CLi].APR_Button:SetScale(APR1[APR.Realm][APR.Name].Settings.QuestButtons)
+			end
+		end)
 	if (APR1[APR.Realm][APR.Name].Settings.QuestButtonDetatch == 0) then
 		APR.OptionsFrame.QuestButtonsSlider:Hide()
 	end
 	-- Heirloom checkbox
 	checkboxOptionline("OptionsGeneral", "DisableHeirloomWarningCheckButton", "APR_DisableHeirloomWarningCheckButton", 10,
 		-280, "DisableHeirloomWarning", L["DISABLE_HEIRLOOM_WARNING"], function()
-		APR1[APR.Realm][APR.Name].Settings.DisableHeirloomWarning = Booltonumber(APR.OptionsFrame.DisableHeirloomWarningCheckButton
-			:GetChecked())
-		APR.BookingList.PrintQStep = 1
-	end)
+			APR1[APR.Realm][APR.Name].Settings.DisableHeirloomWarning = Booltonumber(APR.OptionsFrame
+				.DisableHeirloomWarningCheckButton:GetChecked())
+			APR.BookingList.PrintQStep = 1
+		end)
 	-- hide/useless broken settings
 	APR.OptionsFrame.QuestButtonsCheckButton:Hide()
 	APR.OptionsFrame.QuestButtonsSlider:Hide()
@@ -532,20 +574,20 @@ function APR.LoadOptionsFrame()
 	-- Keybind button
 	displayButton(APR.OptionsFrame.MainFrame, "Button2", "APR_OptionsButtons2", 100, 30, -175, 5, "BOTTOMRIGHT",
 		L["KEYBINDS"], "GameFontNormal", function(self, arg1)
-		ShowUIPanel(KeyBindingFrame)
-	end)
+			ShowUIPanel(KeyBindingFrame)
+		end)
 	-- Reset button
 	displayButton(APR.OptionsFrame.MainFrame, "Button3", "APR_OptionsButtons3", 70, 30, -80, 5, "BOTTOMRIGHT", L["RESET"],
 		"GameFontNormal", function(self, arg1)
-		APR.ResetSettings()
-	end)
+			APR.ResetSettings()
+		end)
 	-- Close button
 	displayButton(APR.OptionsFrame.MainFrame, "Button1", "APR_OptionsButtons1", 70, 30, -5, 5, "BOTTOMRIGHT", L["CLOSE"],
 		"GameFontNormal", function(self, arg1)
-		APR.OptionsFrame.MainFrame:Hide()
-		APR.SettingsOpen = 0
-		APR.BookingList["ClosedSettings"] = 1
-	end)
+			APR.OptionsFrame.MainFrame:Hide()
+			APR.SettingsOpen = 0
+			APR.BookingList["ClosedSettings"] = 1
+		end)
 	------------------------- General Button --------------------------------------------------------------------------
 	-- Auto path helper button
 	APR.OptionsFrame["ShowStuffs2"] = CreateFrame("Button", "APR_RoutePlan_FG1_ShowStuffs2", APR.OptionsFrame.MainFrame,
