@@ -1,7 +1,7 @@
 ﻿APR.TDB = {
 	["FPs"] = {
 		["Horde"] = {
-			[13] = {  -- ParentUIMapID
+			[13] = { -- ParentUIMapID
 				[17] = { -- UiMapID
 					[1537] = { --TaxiNodesID
 						["y"] = -11770.7,

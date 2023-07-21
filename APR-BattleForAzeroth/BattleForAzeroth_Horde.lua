@@ -1,7 +1,16 @@
 -- Orgrimmar part of intro
 APR.QuestStepList["1-Orgrimmar"] = {
-	{
-		-- [step 2
+	{ -- [step 1
+		["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
+		["SpellInTab"] = 33388,
+		["TrainRidingSkill"] = 34398,
+		["RaidIcon"] = 44919,
+		["TT"] = {
+			["y"] = 1799.5,
+			["x"] = -4356.7,
+		},
+	},
+	{ -- [step 2
 		["PickUp"] = {
 			51443,
 		},
@@ -14,8 +23,7 @@ APR.QuestStepList["1-Orgrimmar"] = {
 			["x"] = -4365.8,
 		},
 	},
-	{
-		-- [step 3
+	{ -- [step 3
 		["Qpart"] = {
 			[51443] = {
 				["1"] = "1",
@@ -35,8 +43,7 @@ APR.QuestStepList["1-Orgrimmar"] = {
 			["x"] = -4347.9,
 		},
 	},
-	{
-		-- [step 4
+	{ -- [step 4
 		["Trigger"] = {
 			["y"] = 1610.3,
 			["x"] = -4375.5,
@@ -48,8 +55,7 @@ APR.QuestStepList["1-Orgrimmar"] = {
 			["x"] = -4375.5,
 		},
 	},
-	{
-		-- [step 5
+	{ -- [step 5
 		["Trigger"] = {
 			["y"] = 1573.7,
 			["x"] = -4432.7,
@@ -61,8 +67,7 @@ APR.QuestStepList["1-Orgrimmar"] = {
 			["x"] = -4432.7,
 		},
 	},
-	{
-		-- [step 6
+	{ -- [step 6
 		["Qpart"] = {
 			[51443] = {
 				["2"] = "2",
@@ -82,8 +87,7 @@ APR.QuestStepList["1-Orgrimmar"] = {
 			["x"] = -4455.2,
 		},
 	},
-	{
-		-- [step 7
+	{ -- [step 7
 		["Done"] = {
 			51443,
 		},
@@ -96,8 +100,7 @@ APR.QuestStepList["1-Orgrimmar"] = {
 			["x"] = -4452.4,
 		},
 	},
-	{
-		-- [step 8
+	{ -- [step 8
 		["PickUp"] = {
 			50769,
 		},
@@ -106,8 +109,7 @@ APR.QuestStepList["1-Orgrimmar"] = {
 			["x"] = -4452.4,
 		},
 	},
-	{
-		-- [step 9
+	{ -- [step 9
 		["Trigger"] = {
 			["y"] = 1578.4,
 			["x"] = -4455.3,
@@ -123,8 +125,7 @@ APR.QuestStepList["1-Orgrimmar"] = {
 			["x"] = -4455.3,
 		},
 	},
-	{
-		-- [step 10
+	{ -- [step 10
 		["ExtraLineText"] = "SCENARIO",
 		["Trigger"] = {
 			["y"] = 1517.4,
@@ -147,8 +148,7 @@ APR.QuestStepList["1-Orgrimmar"] = {
 }
 -- Zuldazar part of intro
 APR.QuestStepList["862-Zuldazar"] = {
-	{
-		-- [step 1
+	{ -- [step 1
 		["Done"] = {
 			50769,
 		},
@@ -157,8 +157,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 804.7,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["PickUp"] = {
 			46957,
 		},
@@ -167,8 +166,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 804.4,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Qpart"] = {
 			[46957] = {
 				["1"] = "1",
@@ -185,8 +183,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 803.7,
 		},
 	},
-	{
-		-- [Step 4
+	{ -- [Step 4
 		["Done"] = {
 			46957,
 		},
@@ -195,8 +192,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 803.7,
 		},
 	},
-	{
-		-- [Step 5
+	{ -- [Step 5
 		["PickUp"] = {
 			46930,
 		},
@@ -205,8 +201,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 803.7,
 		},
 	},
-	{
-		-- [step 6
+	{ -- [step 6
 		["Trigger"] = {
 			["y"] = -1804.0,
 			["x"] = 803.2,
@@ -223,8 +218,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 803.2,
 		},
 	},
-	{
-		-- [Step 7
+	{ -- [Step 7
 		["Qpart"] = {
 			[46930] = {
 				["2"] = "2",
@@ -241,8 +235,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 837.7,
 		},
 	},
-	{
-		-- [Step 8
+	{ -- [Step 8
 		["Done"] = {
 			46930,
 		},
@@ -251,8 +244,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 806.1,
 		},
 	},
-	{
-		-- [Step 9
+	{ -- [Step 9
 		["PickUp"] = {
 			46931,
 		},
@@ -261,8 +253,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 806.1,
 		},
 	},
-	{
-		-- [Step 10
+	{ -- [Step 10
 		["SayTriggerStartH"] = 1,
 		["Trigger"] = {
 			["y"] = -1096.5,
@@ -276,8 +267,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 816.6,
 		},
 	},
-	{
-		-- [Step 11
+	{ -- [Step 11
 		["SayTriggerStartH"] = 1,
 		["Trigger"] = {
 			["y"] = -1126.4,
@@ -291,8 +281,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 852.2,
 		},
 	},
-	{
-		-- [Step 12
+	{ -- [Step 12
 		["SayTriggerStartH"] = 1,
 		["Trigger"] = {
 			["y"] = -1111.7,
@@ -305,8 +294,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 819.7,
 		},
 	},
-	{
-		-- [Step 13
+	{ -- [Step 13
 		["Trigger"] = {
 			["y"] = -1005.3,
 			["x"] = 805.7,
@@ -323,8 +311,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 805.7,
 		},
 	},
-	{
-		-- [Step 14
+	{ -- [Step 14
 		["Trigger"] = {
 			["y"] = -1124.8,
 			["x"] = 804.7,
@@ -340,8 +327,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 804.7,
 		},
 	},
-	{
-		-- [Step 15
+	{ -- [Step 15
 		["Trigger"] = {
 			["y"] = -1124.3,
 			["x"] = 775.9,
@@ -357,8 +343,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 775.9,
 		},
 	},
-	{
-		-- [Step 16
+	{ -- [Step 16
 		["Trigger"] = {
 			["y"] = -1124.0,
 			["x"] = 832.9,
@@ -374,8 +359,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 832.9,
 		},
 	},
-	{
-		-- [Step 17
+	{ -- [Step 17
 		["Trigger"] = {
 			["y"] = -1124.9,
 			["x"] = 812.4,
@@ -387,8 +371,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 812.4,
 		},
 	},
-	{
-		-- [Step 18
+	{ -- [Step 18
 		["Trigger"] = {
 			["y"] = -1090.7,
 			["x"] = 814,
@@ -400,8 +383,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 814,
 		},
 	},
-	{
-		-- [Step 19
+	{ -- [Step 19
 		["TT"] = {
 			["y"] = -1120.0,
 			["x"] = 818.5,
@@ -410,8 +392,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			46931,
 		},
 	},
-	{
-		-- [Step 20
+	{ -- [Step 20
 		["PickUp"] = {
 			47514,
 		},
@@ -421,8 +402,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 			["x"] = 818.9,
 		},
 	},
-	{
-		-- [Step 21
+	{ -- [Step 21
 		["Done"] = {
 			47514,
 		},
@@ -437,8 +417,7 @@ APR.QuestStepList["862-Zuldazar"] = {
 }
 -- Zuldazar
 APR.QuestStepList["862-Zuldazar-1"] = {
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["PickUp"] = {
 			49615,
 		},
@@ -447,16 +426,14 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 819.2,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["SetHS"] = 49615,
 		["TT"] = {
 			["y"] = -1125.5,
 			["x"] = 805.7,
 		},
 	},
-	{
-		-- [step 3
+	{ -- [step 3
 		["Trigger"] = {
 			["y"] = -1138.9,
 			["x"] = 815.9,
@@ -468,8 +445,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 815.9,
 		},
 	},
-	{
-		-- [Step 4
+	{ -- [Step 4
 		["ExtraLineText"] = "UP_ELEVATOR",
 		["Trigger"] = {
 			["y"] = -1126.1,
@@ -482,8 +458,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 852.4,
 		},
 	},
-	{
-		-- [Step 5
+	{ -- [Step 5
 		["ExtraLineText"] = "UP_ELEVATOR",
 		["Trigger"] = {
 			["y"] = -1101.5,
@@ -496,8 +471,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 836.5,
 		},
 	},
-	{
-		-- [Step 6
+	{ -- [Step 6
 		["Done"] = {
 			49615,
 		},
@@ -506,8 +480,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 805.5,
 		},
 	},
-	{
-		-- [Step 7
+	{ -- [Step 7
 		["PickUp"] = {
 			47445,
 			50835,
@@ -518,8 +491,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 807.6,
 		},
 	},
-	{
-		-- [Step 8
+	{ -- [Step 8
 		["Trigger"] = {
 			["y"] = -1101.5,
 			["x"] = 836.5,
@@ -531,8 +503,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 836.5,
 		},
 	},
-	{
-		-- [Step 9
+	{ -- [Step 9
 		["ExtraLineText"] = "DOWN_ELEVATOR",
 		["Trigger"] = {
 			["y"] = -1126.1,
@@ -545,8 +516,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 852.4,
 		},
 	},
-	{
-		-- [step 10
+	{ -- [step 10
 		["ExtraLineText"] = "DOWN_ELEVATOR",
 		["Trigger"] = {
 			["y"] = -1110.7,
@@ -560,8 +530,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [step 11
+	{ -- [step 11
 		["Trigger"] = {
 			["y"] = -1049.3,
 			["x"] = 802.9,
@@ -573,8 +542,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 802.9,
 		},
 	},
-	{
-		-- [Step 12
+	{ -- [Step 12
 		["ETA"] = 38,
 		["UseFlightPath"] = 50835,
 		["Name"] = "Port of Zandalar, Zuldazar",
@@ -583,8 +551,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 751.1,
 		},
 	},
-	{
-		-- [Step 13
+	{ -- [Step 13
 		["Trigger"] = {
 			["y"] = -1950.9,
 			["x"] = 744.5,
@@ -596,8 +563,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 744.5,
 		},
 	},
-	{
-		-- [Step 14
+	{ -- [Step 14
 		["TT"] = {
 			["y"] = -1858.9,
 			["x"] = 803.2,
@@ -606,8 +572,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			50835,
 		},
 	},
-	{
-		-- [Step 15
+	{ -- [Step 15
 		["PickUp"] = {
 			46926,
 			46846,
@@ -617,8 +582,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 802.2,
 		},
 	},
-	{
-		-- [Step 16
+	{ -- [Step 16
 		["PickUp"] = {
 			48452,
 		},
@@ -632,8 +596,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 17
+	{ -- [Step 17
 		["Trigger"] = {
 			["y"] = -1801.5,
 			["x"] = 1026,
@@ -645,8 +608,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1026,
 		},
 	},
-	{
-		-- [Step 18
+	{ -- [Step 18
 		["ExtraLineText"] = "JUMP_OFF_BRIDGE",
 		["Trigger"] = {
 			["y"] = -1826.9,
@@ -659,8 +621,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1024,
 		},
 	},
-	{
-		-- [Step 19
+	{ -- [Step 19
 		["Trigger"] = {
 			["y"] = -1822.6,
 			["x"] = 998.4,
@@ -677,8 +638,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 998.4,
 		},
 	},
-	{
-		-- [step 20
+	{ -- [step 20
 		["Trigger"] = {
 			["y"] = -1734.1,
 			["x"] = 1014.1,
@@ -691,8 +651,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [step 21
+	{ -- [step 21
 		["Done"] = {
 			48452,
 		},
@@ -701,8 +660,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 965.2,
 		},
 	},
-	{
-		-- [step 22
+	{ -- [step 22
 		["PickUp"] = {
 			48454,
 		},
@@ -711,8 +669,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 964.7,
 		},
 	},
-	{
-		-- [step 23
+	{ -- [step 23
 		["Qpart"] = {
 			[46846] = {
 				["3"] = "3",
@@ -734,8 +691,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 935.2,
 		},
 	},
-	{
-		-- [step 24
+	{ -- [step 24
 		["Trigger"] = {
 			["y"] = -1874,
 			["x"] = 775.7,
@@ -752,8 +708,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [step 25
+	{ -- [step 25
 		["Qpart"] = {
 			[46846] = {
 				["1"] = "1",
@@ -775,8 +730,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 761.2,
 		},
 	},
-	{
-		-- [step 26
+	{ -- [step 26
 		["Trigger"] = {
 			["y"] = -1954,
 			["x"] = 758.4,
@@ -788,8 +742,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 758.4,
 		},
 	},
-	{
-		-- [step 27
+	{ -- [step 27
 		["ExtraLineText"] = "JUMP_OFF",
 		["Trigger"] = {
 			["y"] = -1948.9,
@@ -802,8 +755,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 679.7,
 		},
 	},
-	{
-		-- [step 28
+	{ -- [step 28
 		["Qpart"] = {
 			[46846] = {
 				["2"] = "2",
@@ -825,8 +777,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [step 29
+	{ -- [step 29
 		["Trigger"] = {
 			["y"] = -1941.5,
 			["x"] = 793,
@@ -838,8 +789,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 793,
 		},
 	},
-	{
-		-- [step 30
+	{ -- [step 30
 		["Trigger"] = {
 			["y"] = -1856.1,
 			["x"] = 805.2,
@@ -856,8 +806,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [step 31
+	{ -- [step 31
 		["TT"] = {
 			["y"] = -1856.1,
 			["x"] = 805.2,
@@ -873,8 +822,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [step 32
+	{ -- [step 32
 		["PickUp"] = {
 			46928,
 			46927,
@@ -890,8 +838,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [step 33
+	{ -- [step 33
 		["Trigger"] = {
 			["y"] = -1740.8,
 			["x"] = 810.5,
@@ -908,8 +855,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [step 34
+	{ -- [step 34
 		["Qpart"] = {
 			[46928] = {
 				["1"] = "1",
@@ -933,8 +879,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 898.9,
 		},
 	},
-	{
-		-- [step 35
+	{ -- [step 35
 		["Trigger"] = {
 			["y"] = -1724,
 			["x"] = 858.2,
@@ -955,8 +900,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [step 36
+	{ -- [step 36
 		["Trigger"] = {
 			["y"] = -1728.4,
 			["x"] = 751.7,
@@ -976,8 +920,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 751.7,
 		},
 	},
-	{
-		-- [step 37
+	{ -- [step 37
 		["Trigger"] = {
 			["y"] = -1782.8,
 			["x"] = 631.7,
@@ -997,8 +940,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [step 38
+	{ -- [step 38
 		["Bloodlust"] = 1,
 		["Qpart"] = {
 			[46927] = {
@@ -1023,8 +965,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 629.1,
 		},
 	},
-	{
-		-- [step 39
+	{ -- [step 39
 		["Trigger"] = {
 			["y"] = -1784.6,
 			["x"] = 629,
@@ -1045,8 +986,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [step 40
+	{ -- [step 40
 		["Trigger"] = {
 			["y"] = -1769,
 			["x"] = 632.6,
@@ -1060,8 +1000,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 
 	},
 
-	{
-		-- [step 41
+	{ -- [step 41
 		["Trigger"] = {
 			["y"] = -1731.0,
 			["x"] = 790.4,
@@ -1074,8 +1013,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 
 	},
-	{
-		-- [step 42
+	{ -- [step 42
 		["Done"] = {
 			46928,
 			46927,
@@ -1091,8 +1029,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [step 43
+	{ -- [step 43
 		["PickUp"] = {
 			50881,
 		},
@@ -1106,8 +1043,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 44
+	{ -- [Step 44
 		["ExtraLineText"] = "TALK_TO_NPC_TO_RIDE_BOAT",
 		["CRange"] = 49284,
 		["Range"] = 5,
@@ -1120,8 +1056,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 723.1,
 		},
 	},
-	{
-		-- [Step 45
+	{ -- [Step 45
 		["ExtraLineText"] = "TAKE_BOAT_TO_SEEKERS_OUTPOST",
 		["Trigger"] = {
 			["y"] = -2304.5,
@@ -1134,8 +1069,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -253.2,
 		},
 	},
-	{
-		-- [Step 46
+	{ -- [Step 46
 		["ExtraLineText"] = "GIVERS_AROUND_AREA",
 		["PickUp"] = {
 			49284,
@@ -1146,8 +1080,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -253.2,
 		},
 	},
-	{
-		-- [Step 47
+	{ -- [Step 47
 		["Qpart"] = {
 			[49284] = {
 				["1"] = "1",
@@ -1168,8 +1101,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -314.8,
 		},
 	},
-	{
-		-- [Step 48
+	{ -- [Step 48
 		["Qpart"] = {
 			[49285] = {
 				["1"] = "1",
@@ -1190,8 +1122,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -355.4,
 		},
 	},
-	{
-		-- [Step 49
+	{ -- [Step 49
 		["Qpart"] = {
 			[49285] = {
 				["2"] = "2",
@@ -1212,8 +1143,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -484.2,
 		},
 	},
-	{
-		-- [Step 50
+	{ -- [Step 50
 		["Qpart"] = {
 			[49285] = {
 				["3"] = "3",
@@ -1235,8 +1165,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 51
+	{ -- [Step 51
 		["Qpart"] = {
 			[49284] = {
 				["2"] = "2",
@@ -1257,8 +1186,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -438,
 		},
 	},
-	{
-		-- [Step 52
+	{ -- [Step 52
 		["Qpart"] = {
 			[49284] = {
 				["3"] = "3",
@@ -1279,8 +1207,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -553.3,
 		},
 	},
-	{
-		-- [Step 53
+	{ -- [Step 53
 		["TT"] = {
 			["y"] = -2063,
 			["x"] = -524.3,
@@ -1295,8 +1222,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			49284,
 		},
 	},
-	{
-		-- [Step 54
+	{ -- [Step 54
 		["PickUp"] = {
 			49286,
 		},
@@ -1310,8 +1236,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -524.3,
 		},
 	},
-	{
-		-- [Step 55
+	{ -- [Step 55
 		["ExtraLineText"] = "INSIDE_CAVE",
 		["Qpart"] = {
 			[49286] = {
@@ -1333,8 +1258,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -584.8,
 		},
 	},
-	{
-		-- [Step 56
+	{ -- [Step 56
 		["Qpart"] = {
 			[49286] = {
 				["2"] = "2",
@@ -1355,8 +1279,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -523.5,
 		},
 	},
-	{
-		-- [Step 57
+	{ -- [Step 57
 		["TT"] = {
 			["y"] = -2059.7,
 			["x"] = -523.2,
@@ -1365,8 +1288,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			49286,
 		},
 	},
-	{
-		-- [Step 58
+	{ -- [Step 58
 		["PickUp"] = {
 			49287,
 			49288,
@@ -1376,8 +1298,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -523.2,
 		},
 	},
-	{
-		-- [Step 59
+	{ -- [Step 59
 		["Qpart"] = {
 			[49287] = {
 				["1"] = "1",
@@ -1401,8 +1322,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -549.3,
 		},
 	},
-	{
-		-- [Step 60
+	{ -- [Step 60
 		["Qpart"] = {
 			[49287] = {
 				["2"] = "2",
@@ -1424,8 +1344,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 61
+	{ -- [Step 61
 		["Qpart"] = {
 			[49287] = {
 				["3"] = "3",
@@ -1446,8 +1365,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -810.8,
 		},
 	},
-	{
-		-- [Step 62
+	{ -- [Step 62
 		["ExtraLineText"] = "BEWARE_TWO_LEVEL",
 		["Qpart"] = {
 			[49287] = {
@@ -1469,8 +1387,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -833.3,
 		},
 	},
-	{
-		-- [Step 63
+	{ -- [Step 63
 		["Trigger"] = {
 			["y"] = -2256,
 			["x"] = -827.3,
@@ -1486,8 +1403,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -827.3,
 		},
 	},
-	{
-		-- [Step 64
+	{ -- [Step 64
 		["TT"] = {
 			["y"] = -2088.7,
 			["x"] = -657.2,
@@ -1497,8 +1413,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			49288,
 		},
 	},
-	{
-		-- [Step 65
+	{ -- [Step 65
 		["PickUp"] = {
 			49289,
 		},
@@ -1507,8 +1422,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -657,
 		},
 	},
-	{
-		-- [Step 66
+	{ -- [Step 66
 		["Qpart"] = {
 			[49289] = {
 				["1"] = "1",
@@ -1528,8 +1442,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -772.3,
 		},
 	},
-	{
-		-- [Step 67
+	{ -- [Step 67
 		["TT"] = {
 			["y"] = -2089.5,
 			["x"] = -656.5,
@@ -1538,8 +1451,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			49289,
 		},
 	},
-	{
-		-- [Step 68
+	{ -- [Step 68
 		["PickUp"] = {
 			51407,
 		},
@@ -1548,8 +1460,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -657,
 		},
 	},
-	{
-		-- [Step 69
+	{ -- [Step 69
 		["ExtraLineText"] = "PORTAL_WILL_APPEAR",
 		["Trigger"] = {
 			["y"] = -2089,
@@ -1563,8 +1474,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -262,
 		}
 	},
-	{
-		-- [Step 70
+	{ -- [Step 70
 		["PickUp"] = {
 			50331,
 		},
@@ -1574,8 +1484,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 71
+	{ -- [Step 71
 		["Qpart"] = {
 			[50331] = {
 				["1"] = "1",
@@ -1592,8 +1501,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -171.9,
 		},
 	},
-	{
-		-- [Step 72
+	{ -- [Step 72
 		["Qpart"] = {
 			[50331] = {
 				["1"] = "1",
@@ -1609,8 +1517,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1175,
 		},
 	},
-	{
-		-- [Step 73
+	{ -- [Step 73
 		["TT"] = {
 			["y"] = -1203.6,
 			["x"] = -1175,
@@ -1619,8 +1526,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			50331,
 		},
 	},
-	{
-		-- [Step 74
+	{ -- [Step 74
 		["PickUp"] = {
 			48015,
 			48014,
@@ -1630,8 +1536,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1175,
 		},
 	},
-	{
-		-- [Step 75
+	{ -- [Step 75
 		["Qpart"] = {
 			[48015] = {
 				["1"] = "1",
@@ -1652,8 +1557,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1104.8,
 		},
 	},
-	{
-		-- [Step 76
+	{ -- [Step 76
 		["Qpart"] = {
 			[48015] = {
 				["3"] = "3",
@@ -1674,8 +1578,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1124.9,
 		},
 	},
-	{
-		-- [Step 77
+	{ -- [Step 77
 		["Qpart"] = {
 			[48015] = {
 				["2"] = "2",
@@ -1696,8 +1599,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1060.9,
 		},
 	},
-	{
-		-- [Step 78
+	{ -- [Step 78
 		["Trigger"] = {
 			["y"] = -1063.5,
 			["x"] = -1124.9,
@@ -1713,8 +1615,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1124.9,
 		},
 	},
-	{
-		-- [Step 79
+	{ -- [Step 79
 		["TT"] = {
 			["y"] = -1000.8,
 			["x"] = -993.8,
@@ -1724,8 +1625,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			48014,
 		},
 	},
-	{
-		-- [Step 80
+	{ -- [Step 80
 		["PickUp"] = {
 			49969,
 			48025,
@@ -1736,8 +1636,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 81
+	{ -- [Step 81
 		["ExtraLineText"] = "USE_FLIGHTPATH",
 		["Trigger"] = {
 			["y"] = -955.7,
@@ -1751,8 +1650,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1057.9,
 		},
 	},
-	{
-		-- [Step 82
+	{ -- [Step 82
 		["Qpart"] = {
 			[48025] = {
 				["1"] = "1",
@@ -1776,8 +1674,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -917.7,
 		},
 	},
-	{
-		-- [Step 83
+	{ -- [Step 83
 		["Qpart"] = {
 			[48025] = {
 				["2"] = "2",
@@ -1801,8 +1698,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1032.1,
 		},
 	},
-	{
-		-- [Step 84
+	{ -- [Step 84
 
 		["Qpart"] = {
 			[48025] = {
@@ -1827,8 +1723,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1177.1,
 		},
 	},
-	{
-		-- [Step 85
+	{ -- [Step 85
 		["Qpart"] = {
 			[48025] = {
 				["5"] = "5",
@@ -1852,8 +1747,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1357,
 		},
 	},
-	{
-		-- [Step 86
+	{ -- [Step 86
 		["Qpart"] = {
 			[48025] = {
 				["4"] = "4",
@@ -1877,8 +1771,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1208.9,
 		},
 	},
-	{
-		-- [Step 87
+	{ -- [Step 87
 		["Trigger"] = {
 			["y"] = -750,
 			["x"] = -933.3,
@@ -1894,8 +1787,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1208.9,
 		},
 	},
-	{
-		-- [Step 88
+	{ -- [Step 88
 		["TT"] = {
 			["y"] = -1006.5,
 			["x"] = -1293.6,
@@ -1904,8 +1796,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			49969,
 		},
 	},
-	{
-		-- [Step 89
+	{ -- [Step 89
 		["PickUp"] = {
 			48026,
 		},
@@ -1914,8 +1805,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1293.6,
 		},
 	},
-	{
-		-- [Step 90
+	{ -- [Step 90
 		["Trigger"] = {
 			["y"] = -1116,
 			["x"] = -1370,
@@ -1932,8 +1822,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 91
+	{ -- [Step 91
 		["Trigger"] = {
 			["y"] = -1116,
 			["x"] = -1370,
@@ -1949,8 +1838,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1370,
 		},
 	},
-	{
-		-- [Step 92
+	{ -- [Step 92
 		["ExtraLineText"] = "BENEATH_HANDIN",
 		["TT"] = {
 			["y"] = -1116.6,
@@ -1960,8 +1848,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			48026,
 		},
 	},
-	{
-		-- [Step 93
+	{ -- [Step 93
 		["PickUp"] = {
 			51538,
 		},
@@ -1970,8 +1857,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1370.5,
 		},
 	},
-	{
-		-- [Step 94
+	{ -- [Step 94
 		["TT"] = {
 			["y"] = -997.3,
 			["x"] = -992.7,
@@ -1981,8 +1867,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			51538,
 		},
 	},
-	{
-		-- [Step 95
+	{ -- [Step 95
 		["PickUp"] = {
 			51539,
 		},
@@ -1991,8 +1876,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -992.7,
 		},
 	},
-	{
-		-- [Step 96
+	{ -- [Step 96
 		["Trigger"] = {
 			["y"] = -1168.5,
 			["x"] = -1005.8,
@@ -2004,8 +1888,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1005.8,
 		},
 	},
-	{
-		-- [Step 97
+	{ -- [Step 97
 		["Trigger"] = {
 			["y"] = -1279.3,
 			["x"] = -932.2,
@@ -2017,8 +1900,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -932.2,
 		},
 	},
-	{
-		-- [Step 98
+	{ -- [Step 98
 		["PickUp"] = {
 			51246,
 			51247,
@@ -2028,8 +1910,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -774.5,
 		},
 	},
-	{
-		-- [Step 99
+	{ -- [Step 99
 		["PickUp"] = {
 			51249,
 			51248,
@@ -2039,8 +1920,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -756.5,
 		},
 	},
-	{
-		-- [Step 100
+	{ -- [Step 100
 		["Qpart"] = {
 			[51247] = {
 				["2"] = "2",
@@ -2068,8 +1948,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 101
+	{ -- [Step 101
 		["Qpart"] = {
 			[51247] = {
 				["1"] = "1",
@@ -2096,8 +1975,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -774.2,
 		},
 	},
-	{
-		-- [Step 102
+	{ -- [Step 102
 		["Qpart"] = {
 			[51247] = {
 				["3"] = "3",
@@ -2124,8 +2002,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -599.5,
 		},
 	},
-	{
-		-- [Step 103
+	{ -- [Step 103
 		["Trigger"] = {
 			["y"] = -1534.8,
 			["x"] = -601,
@@ -2147,8 +2024,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -601,
 		},
 	},
-	{
-		-- [Step 104
+	{ -- [Step 104
 		["Done"] = {
 			51248,
 			51247,
@@ -2160,8 +2036,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -756.3,
 		},
 	},
-	{
-		-- [Step 105
+	{ -- [Step 105
 		["PickUp"] = {
 			51286,
 		},
@@ -2170,8 +2045,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -774.6,
 		},
 	},
-	{
-		-- [Step 106
+	{ -- [Step 106
 		["Qpart"] = {
 			[51286] = {
 				["1"] = "1",
@@ -2188,8 +2062,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1058.3,
 		},
 	},
-	{
-		-- [Step 107
+	{ -- [Step 107
 		["Done"] = {
 			51286,
 		},
@@ -2198,8 +2071,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -774.6,
 		},
 	},
-	{
-		-- [Step 108
+	{ -- [Step 108
 		["UseFlightPath"] = 51539,
 		["ETA"] = 71,
 		["Name"] = "The Great Seal",
@@ -2208,8 +2080,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1058.4,
 		},
 	},
-	{
-		-- [Step 109
+	{ -- [Step 109
 		["Trigger"] = {
 			["y"] = -1046.8,
 			["x"] = 800.4,
@@ -2221,8 +2092,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 800.4,
 		},
 	},
-	{
-		-- [Step 110
+	{ -- [Step 110
 		["Trigger"] = {
 			["y"] = -1093,
 			["x"] = 814.9,
@@ -2235,8 +2105,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 111
+	{ -- [Step 111
 		["Done"] = {
 			51539,
 		},
@@ -2245,8 +2114,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 819.5,
 		},
 	},
-	{
-		-- [Step 112
+	{ -- [Step 112
 		["ExtraLineText"] = "USE_ELEVATOR",
 		["Trigger"] = {
 			["y"] = -1126.3,
@@ -2259,8 +2127,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 854.6,
 		},
 	},
-	{
-		-- [Step 113
+	{ -- [Step 113
 		["ExtraLineText"] = "USE_ELEVATOR",
 		["Trigger"] = {
 			["y"] = -1126.4,
@@ -2273,8 +2140,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 851.2,
 		},
 	},
-	{
-		-- [Step 114
+	{ -- [Step 114
 		["ExtraLineText"] = "USE_ELEVATOR",
 		["Trigger"] = {
 			["y"] = -1101.5,
@@ -2287,8 +2153,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 835.5,
 		},
 	},
-	{
-		-- [Step 115
+	{ -- [Step 115
 		["Trigger"] = {
 			["y"] = -1103.7,
 			["x"] = 815.1,
@@ -2300,8 +2165,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 815.1,
 		},
 	},
-	{
-		-- [Step 116
+	{ -- [Step 116
 		["Done"] = {
 			50881,
 		},
@@ -2310,8 +2174,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 802.7,
 		},
 	},
-	{
-		-- [Step 117
+	{ -- [Step 117
 		["UseGlider"] = 1,
 		["TT"] = {
 			["y"] = -712.7,
@@ -2321,8 +2184,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			47445,
 		},
 	},
-	{
-		-- [Step 118
+	{ -- [Step 118
 		["PickUp"] = {
 			47423,
 		},
@@ -2331,8 +2193,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 936.6,
 		},
 	},
-	{
-		-- [Step 119
+	{ -- [Step 119
 		["Qpart"] = {
 			[47423] = {
 				["1"] = "1",
@@ -2357,8 +2218,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 887.1,
 		},
 	},
-	{
-		-- [Step 120
+	{ -- [Step 120
 		["TT"] = {
 			["y"] = -486.4,
 			["x"] = 752.2,
@@ -2368,8 +2228,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 121
+	{ -- [Step 121
 		["PickUp"] = {
 			47433,
 		},
@@ -2378,8 +2237,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 752.2,
 		},
 	},
-	{
-		-- [Step 122
+	{ -- [Step 122
 		["Trigger"] = {
 			["y"] = -481.5,
 			["x"] = 721,
@@ -2395,8 +2253,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 721,
 		},
 	},
-	{
-		-- [Step 123
+	{ -- [Step 123
 		["Trigger"] = {
 			["y"] = -376.9,
 			["x"] = 575.7,
@@ -2412,8 +2269,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 578.2,
 		},
 	},
-	{
-		-- [Step 124
+	{ -- [Step 124
 		["Done"] = {
 			47433,
 		},
@@ -2422,8 +2278,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 911.4,
 		},
 	},
-	{
-		-- [Step 125
+	{ -- [Step 125
 		["PickUp"] = {
 			47435,
 			47434,
@@ -2433,8 +2288,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 989.6,
 		},
 	},
-	{
-		-- [Step 126
+	{ -- [Step 126
 		["Trigger"] = {
 			["y"] = -606.8,
 			["x"] = 1003.6,
@@ -2453,8 +2307,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1003.6,
 		},
 	},
-	{
-		-- [Step 127
+	{ -- [Step 127
 		["Done"] = {
 			47435,
 			47434,
@@ -2464,8 +2317,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1059.5,
 		},
 	},
-	{
-		-- [Step 128
+	{ -- [Step 128
 		["PickUp"] = {
 			47437,
 		},
@@ -2474,8 +2326,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1059.5,
 		},
 	},
-	{
-		-- [Step 129
+	{ -- [Step 129
 		["Trigger"] = {
 			["y"] = -470.9,
 			["x"] = 994.7,
@@ -2491,8 +2342,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 994.7,
 		},
 	},
-	{
-		-- [Step 130
+	{ -- [Step 130
 		["Trigger"] = {
 			["y"] = -414.5,
 			["x"] = 1047.4,
@@ -2505,8 +2355,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 121
+	{ -- [Step 121
 		["Trigger"] = {
 			["y"] = -401,
 			["x"] = 1034.7,
@@ -2518,8 +2367,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1034.7,
 		},
 	},
-	{
-		-- [Step 132
+	{ -- [Step 132
 		["Trigger"] = {
 			["y"] = -424.9,
 			["x"] = 1008.2,
@@ -2531,8 +2379,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1008.2,
 		},
 	},
-	{
-		-- [Step 133
+	{ -- [Step 133
 		["Trigger"] = {
 			["y"] = -426.9,
 			["x"] = 962.5,
@@ -2548,8 +2395,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 962.5,
 		},
 	},
-	{
-		-- [Step 134
+	{ -- [Step 134
 		["Trigger"] = {
 			["y"] = -471.8,
 			["x"] = 960.6,
@@ -2561,8 +2407,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 960.6,
 		},
 	},
-	{
-		-- [Step 135
+	{ -- [Step 135
 		["Trigger"] = {
 			["y"] = -498.9,
 			["x"] = 926.7,
@@ -2574,8 +2419,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 926.7,
 		},
 	},
-	{
-		-- [Step 136
+	{ -- [Step 136
 		["Trigger"] = {
 			["y"] = -568.3,
 			["x"] = 963.4,
@@ -2591,8 +2435,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 963.4,
 		},
 	},
-	{
-		-- [Step 137
+	{ -- [Step 137
 		["Trigger"] = {
 			["y"] = -560,
 			["x"] = 917.7,
@@ -2604,8 +2447,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 917.7,
 		},
 	},
-	{
-		-- [Step 138
+	{ -- [Step 138
 		["Done"] = {
 			47437,
 		},
@@ -2614,8 +2456,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 912.5,
 		},
 	},
-	{
-		-- [Step 139
+	{ -- [Step 139
 		["PickUp"] = {
 			47422,
 		},
@@ -2624,8 +2465,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 914.2,
 		},
 	},
-	{
-		-- [Step 140
+	{ -- [Step 140
 		["Trigger"] = {
 			["y"] = -488.4,
 			["x"] = 913.7,
@@ -2638,8 +2478,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 141
+	{ -- [Step 141
 		["ExtraLineText"] = "TOTEM_DAMAGE_BUFF",
 		["Trigger"] = {
 			["y"] = -401.8,
@@ -2656,8 +2495,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 982.9,
 		},
 	},
-	{
-		-- [Step 142
+	{ -- [Step 142
 		["Done"] = {
 			47422,
 		},
@@ -2666,8 +2504,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1019.7,
 		},
 	},
-	{
-		-- [Step 143
+	{ -- [Step 143
 		["PickUp"] = {
 			47438,
 		},
@@ -2676,8 +2513,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1019.7,
 		},
 	},
-	{
-		-- [Step 144
+	{ -- [Step 144
 		["ExtraLine"] = 35,
 		["Trigger"] = {
 			["y"] = -433.2,
@@ -2694,8 +2530,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1012.6,
 		},
 	},
-	{
-		-- [Step 145
+	{ -- [Step 145
 		["Done"] = {
 			47438,
 		},
@@ -2704,8 +2539,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1019.6,
 		},
 	},
-	{
-		-- [Step 146
+	{ -- [Step 146
 		["PickedLoa"] = 1,
 		["PickUp"] = {
 			47440,
@@ -2715,8 +2549,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1014.1,
 		},
 	},
-	{
-		-- [Step 147
+	{ -- [Step 147
 		["PickedLoa"] = 1,
 		["Trigger"] = {
 			["y"] = -448.9,
@@ -2733,8 +2566,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1014.7,
 		},
 	},
-	{
-		-- [Step 148
+	{ -- [Step 148
 		["PickedLoa"] = 1,
 		["Trigger"] = {
 			["y"] = -1361.3,
@@ -2747,8 +2579,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -320.7,
 		},
 	},
-	{
-		-- [Step 149
+	{ -- [Step 149
 		["PickedLoa"] = 1,
 		["Trigger"] = {
 			["y"] = -1401.3,
@@ -2765,8 +2596,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -338.5,
 		},
 	},
-	{
-		-- [Step 150
+	{ -- [Step 150
 		["PickedLoa"] = 1,
 		["Trigger"] = {
 			["y"] = -1397.9,
@@ -2784,8 +2614,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 151
+	{ -- [Step 151
 		["PickedLoa"] = 1,
 		["Done"] = {
 			47440,
@@ -2796,8 +2625,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 804.5,
 		},
 	},
-	{
-		-- [Step 152
+	{ -- [Step 152
 		["PickedLoa"] = 1,
 		["PickUp"] = {
 			47432,
@@ -2807,8 +2635,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 804.5,
 		},
 	},
-	{
-		-- [Step 153
+	{ -- [Step 153
 		["PickedLoa"] = 1,
 		["PickUp"] = {
 			49768,
@@ -2818,8 +2645,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 749.1,
 		},
 	},
-	{
-		-- [Step 154
+	{ -- [Step 154
 		["PickedLoa"] = 1,
 		["Trigger"] = {
 			["y"] = -1047.5,
@@ -2832,8 +2658,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 799.2,
 		},
 	},
-	{
-		-- [Step 155
+	{ -- [Step 155
 		["PickedLoa"] = 1,
 		["Trigger"] = {
 			["y"] = -1107.4,
@@ -2846,8 +2671,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 791.4,
 		},
 	},
-	{
-		-- [Step 156
+	{ -- [Step 156
 		["PickedLoa"] = 1,
 		["PickUp"] = {
 			50538,
@@ -2857,8 +2681,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 773.6,
 		},
 	},
-	{
-		-- [Step 157
+	{ -- [Step 157
 		["ExtraLineText"] = "UP_ELEVATOR",
 		["PickedLoa"] = 1,
 		["Trigger"] = {
@@ -2872,8 +2695,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 754.9,
 		},
 	},
-	{
-		-- [Step 158
+	{ -- [Step 158
 		["ExtraLineText"] = "UP_ELEVATOR",
 		["PickedLoa"] = 1,
 		["Trigger"] = {
@@ -2887,8 +2709,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 790.2,
 		},
 	},
-	{
-		-- [Step 159
+	{ -- [Step 159
 		["PickedLoa"] = 1,
 		["Done"] = {
 			47432,
@@ -2898,8 +2719,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 804.6,
 		},
 	},
-	{
-		-- [Step 160
+	{ -- [Step 160
 		["UseGlider"] = 1,
 		["PickedLoa"] = 1,
 		["TT"] = {
@@ -2911,8 +2731,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 161
+	{ -- [Step 161
 		["PickedLoa"] = 2,
 		["PickUp"] = {
 			47439,
@@ -2922,8 +2741,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1019.4,
 		},
 	},
-	{
-		-- [Step 162
+	{ -- [Step 162
 		["UseGlider"] = 1,
 		["PickedLoa"] = 2,
 		["Trigger"] = {
@@ -2937,8 +2755,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1226.9,
 		},
 	},
-	{
-		-- [Step 163
+	{ -- [Step 163
 		["PickedLoa"] = 2,
 		["Qpart"] = {
 			[47439] = {
@@ -2956,8 +2773,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1631.5,
 		},
 	},
-	{
-		-- [Step 164
+	{ -- [Step 164
 		["PickedLoa"] = 2,
 		["UseHS"] = 47439,
 		["TT"] = {
@@ -2968,8 +2784,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["12112552-1"] = 140192,
 		},
 	},
-	{
-		-- [Step 165
+	{ -- [Step 165
 		["PickedLoa"] = 2,
 		["Trigger"] = {
 			["y"] = -1136.5,
@@ -2982,8 +2797,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 801.7,
 		},
 	},
-	{
-		-- [Step 166
+	{ -- [Step 166
 		["PickedLoa"] = 2,
 		["PickUp"] = {
 			50538,
@@ -2993,8 +2807,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 773.6,
 		},
 	},
-	{
-		-- [Step 167
+	{ -- [Step 167
 		["PickedLoa"] = 2,
 		["Trigger"] = {
 			["y"] = -1108.1,
@@ -3007,8 +2820,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 790.7,
 		},
 	},
-	{
-		-- [Step 168
+	{ -- [Step 168
 		["PickedLoa"] = 2,
 		["Trigger"] = {
 			["y"] = -1050.6,
@@ -3021,8 +2833,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 801.2,
 		},
 	},
-	{
-		-- [Step 169
+	{ -- [Step 169
 		["PickedLoa"] = 2,
 		["PickUp"] = {
 			49768,
@@ -3032,8 +2843,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 749.1,
 		},
 	},
-	{
-		-- [Step 170
+	{ -- [Step 170
 		["ExtraLineText"] = "DO_NOT_USE_GLIDER",
 		["PickedLoa"] = 2,
 		["Done"] = {
@@ -3045,8 +2855,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 171
+	{ -- [Step 171
 		["PickedLoa"] = 2,
 		["PickUp"] = {
 			48897,
@@ -3056,8 +2865,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 804.5,
 		},
 	},
-	{
-		-- [Step 172
+	{ -- [Step 172
 		["PickedLoa"] = 2,
 		["UseGlider"] = 1,
 		["TT"] = {
@@ -3068,8 +2876,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			49488,
 		},
 	},
-	{
-		-- [Step 173
+	{ -- [Step 173
 		["PickUp"] = {
 			49489,
 			49490,
@@ -3079,8 +2886,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 394.8,
 		},
 	},
-	{
-		-- [Step 174
+	{ -- [Step 174
 		["PickUp"] = {
 			49491,
 		},
@@ -3089,8 +2895,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 326.8,
 		},
 	},
-	{
-		-- [Step 175
+	{ -- [Step 175
 		["Trigger"] = {
 			["y"] = -453.2,
 			["x"] = 297.5,
@@ -3110,8 +2915,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 176
+	{ -- [Step 176
 		["QpartPart"] = {
 			[49489] = {
 				["1"] = "1",
@@ -3136,8 +2940,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 207.3,
 		},
 	},
-	{
-		-- [Step 177
+	{ -- [Step 177
 		["Trigger"] = {
 			["y"] = -451.2,
 			["x"] = 297.8,
@@ -3157,8 +2960,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 178
+	{ -- [Step 178
 		["QpartPart"] = {
 			[49489] = {
 				["1"] = "1",
@@ -3183,8 +2985,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 366.8,
 		},
 	},
-	{
-		-- [Step 179
+	{ -- [Step 179
 		["Trigger"] = {
 			["y"] = -259.9,
 			["x"] = 361.5,
@@ -3203,8 +3004,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 361.5,
 		},
 	},
-	{
-		-- [Step 180
+	{ -- [Step 180
 		["TT"] = {
 			["y"] = -226.5,
 			["x"] = 399.8,
@@ -3214,8 +3014,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 181
+	{ -- [Step 181
 		["TT"] = {
 			["y"] = -215.4,
 			["x"] = 390.8,
@@ -3225,8 +3024,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			49490,
 		},
 	},
-	{
-		-- [Step 182
+	{ -- [Step 182
 		["PickUp"] = {
 			49492,
 		},
@@ -3235,8 +3033,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 390.8,
 		},
 	},
-	{
-		-- [Step 183
+	{ -- [Step 183
 		["Trigger"] = {
 			["y"] = -201.7,
 			["x"] = 388.6,
@@ -3252,8 +3049,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 388.6,
 		},
 	},
-	{
-		-- [Step 184
+	{ -- [Step 184
 		["Trigger"] = {
 			["y"] = -205.2,
 			["x"] = 338.8,
@@ -3269,8 +3065,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 338.8,
 		},
 	},
-	{
-		-- [Step 185
+	{ -- [Step 185
 		["Trigger"] = {
 			["y"] = -221,
 			["x"] = 285.6,
@@ -3286,8 +3081,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 285.6,
 		},
 	},
-	{
-		-- [Step 186
+	{ -- [Step 186
 		["ETA"] = 19,
 		["TT"] = {
 			["y"] = -231.5,
@@ -3297,8 +3091,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			49492,
 		},
 	},
-	{
-		-- [Step 187
+	{ -- [Step 187
 		["PickUp"] = {
 			49493,
 			49494,
@@ -3308,8 +3101,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 263.2,
 		},
 	},
-	{
-		-- [Step 188
+	{ -- [Step 188
 		["PickUp"] = {
 			51663,
 		},
@@ -3332,8 +3124,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			[257795] = 3,
 		},
 	},
-	{
-		-- [Step 189
+	{ -- [Step 189
 		["Qpart"] = {
 			[49494] = {
 				["1"] = "1",
@@ -3366,8 +3157,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 217.6,
 		},
 	},
-	{
-		-- [Step 190
+	{ -- [Step 190
 		["Qpart"] = {
 			[51663] = {
 				["1"] = "1",
@@ -3396,8 +3186,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 191
+	{ -- [Step 191
 		["Trigger"] = {
 			["y"] = -253.7,
 			["x"] = 173.6,
@@ -3409,8 +3198,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 173.6,
 		},
 	},
-	{
-		-- [Step 192
+	{ -- [Step 192
 		["Done"] = {
 			49493,
 			49494,
@@ -3421,8 +3209,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 147.6,
 		},
 	},
-	{
-		-- [Step 193
+	{ -- [Step 193
 		["PickUp"] = {
 			49495,
 		},
@@ -3431,8 +3218,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 147.6,
 		},
 	},
-	{
-		-- [Step 194
+	{ -- [Step 194
 		["Trigger"] = {
 			["y"] = -373.5,
 			["x"] = 133.4,
@@ -3448,8 +3234,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 133.4,
 		},
 	},
-	{
-		-- [Step 195
+	{ -- [Step 195
 		["Trigger"] = {
 			["y"] = -349.3,
 			["x"] = 137,
@@ -3465,8 +3250,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 137,
 		},
 	},
-	{
-		-- [Step 196
+	{ -- [Step 196
 		["Trigger"] = {
 			["y"] = -350.2,
 			["x"] = 137.8,
@@ -3482,8 +3266,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 137.8,
 		},
 	},
-	{
-		-- [Step 197
+	{ -- [Step 197
 		["Trigger"] = {
 			["y"] = -384.4,
 			["x"] = 162.1,
@@ -3499,8 +3282,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 162.1,
 		},
 	},
-	{
-		-- [Step 198
+	{ -- [Step 198
 		["Done"] = {
 			49495,
 		},
@@ -3509,8 +3291,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 147.6,
 		},
 	},
-	{
-		-- [Step 199
+	{ -- [Step 199
 		["PickUp"] = {
 			49905,
 		},
@@ -3519,8 +3300,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 148.9,
 		},
 	},
-	{
-		-- [Step 200
+	{ -- [Step 200
 		["Trigger"] = {
 			["y"] = -352.2,
 			["x"] = 155.6,
@@ -3537,8 +3317,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 201
+	{ -- [Step 201
 		["Bloodlust"] = 1,
 		["Trigger"] = {
 			["y"] = -364.4,
@@ -3555,8 +3334,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 152.5,
 		},
 	},
-	{
-		-- [Step 202
+	{ -- [Step 202
 		["Done"] = {
 			49905,
 		},
@@ -3565,8 +3343,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 157.5,
 		},
 	},
-	{
-		-- [Step 203
+	{ -- [Step 203
 		["PickUp"] = {
 			49663,
 		},
@@ -3575,8 +3352,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 157.5,
 		},
 	},
-	{
-		-- [Step 204
+	{ -- [Step 204
 		["Trigger"] = {
 			["y"] = -408.5,
 			["x"] = 192.1,
@@ -3588,8 +3364,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 192.1,
 		},
 	},
-	{
-		-- [Step 205
+	{ -- [Step 205
 		["UseGlider"] = 1,
 		["PickUp"] = {
 			49810,
@@ -3599,8 +3374,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 284.3,
 		},
 	},
-	{
-		-- [Step 206
+	{ -- [Step 206
 		["Qpart"] = {
 			[49810] = {
 				["1"] = "1",
@@ -3625,8 +3399,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 374,
 		},
 	},
-	{
-		-- [Step 207
+	{ -- [Step 207
 		["Qpart"] = {
 			[49810] = {
 				["2"] = "2",
@@ -3651,8 +3424,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 285.5,
 		},
 	},
-	{
-		-- [Step 208
+	{ -- [Step 208
 		["Done"] = {
 			49810,
 		},
@@ -3661,8 +3433,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 285.1,
 		},
 	},
-	{
-		-- [Step 209
+	{ -- [Step 209
 		["PickUp"] = {
 			49814,
 			50154,
@@ -3673,8 +3444,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 285.1,
 		},
 	},
-	{
-		-- [Step 210
+	{ -- [Step 210
 		["Trigger"] = {
 			["y"] = -641.5,
 			["x"] = 372.8,
@@ -3694,8 +3464,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 211
+	{ -- [Step 211
 		["Trigger"] = {
 			["y"] = -970.8,
 			["x"] = 344.5,
@@ -3711,8 +3480,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 344.5,
 		},
 	},
-	{
-		-- [Step 212
+	{ -- [Step 212
 		["TT"] = {
 			["y"] = -618.8,
 			["x"] = 286,
@@ -3723,8 +3491,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			50154,
 		},
 	},
-	{
-		-- [Step 213
+	{ -- [Step 213
 		["PickUp"] = {
 			50074,
 			50150,
@@ -3734,8 +3501,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 286,
 		},
 	},
-	{
-		-- [Step 214
+	{ -- [Step 214
 		["Qpart"] = {
 			[50074] = {
 				["1"] = "1",
@@ -3754,8 +3520,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 371.3,
 		},
 	},
-	{
-		-- [Step 215
+	{ -- [Step 215
 		["Trigger"] = {
 			["y"] = -821.8,
 			["x"] = 292,
@@ -3771,8 +3536,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 292,
 		},
 	},
-	{
-		-- [Step 216
+	{ -- [Step 216
 		["Trigger"] = {
 			["y"] = -816,
 			["x"] = 269.7,
@@ -3788,8 +3552,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 269.7,
 		},
 	},
-	{
-		-- [Step 217
+	{ -- [Step 217
 		["Done"] = {
 			50150,
 			50074,
@@ -3799,8 +3562,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 286,
 		},
 	},
-	{
-		-- [Step 218
+	{ -- [Step 218
 		["PickUp"] = {
 			50252,
 		},
@@ -3809,8 +3571,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 286.1,
 		},
 	},
-	{
-		-- [Step 219
+	{ -- [Step 219
 		["Qpart"] = {
 			[50252] = {
 				["1"] = "1",
@@ -3828,8 +3589,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 285,
 		},
 	},
-	{
-		-- [Step 220
+	{ -- [Step 220
 		["TT"] = {
 			["y"] = -617,
 			["x"] = 284.5,
@@ -3839,8 +3599,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 221
+	{ -- [Step 221
 		["PickUp"] = {
 			50268,
 		},
@@ -3849,8 +3608,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 287,
 		},
 	},
-	{
-		-- [Step 222
+	{ -- [Step 222
 		["Trigger"] = {
 			["y"] = -613.5,
 			["x"] = 283.5,
@@ -3866,8 +3624,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 283.5,
 		},
 	},
-	{
-		-- [Step 223
+	{ -- [Step 223
 		["TT"] = {
 			["y"] = -619.8,
 			["x"] = 287.7,
@@ -3876,8 +3633,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			50268,
 		},
 	},
-	{
-		-- [Step 224
+	{ -- [Step 224
 		["PickUp"] = {
 			49870,
 		},
@@ -3886,8 +3642,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 287.7,
 		},
 	},
-	{
-		-- [Step 225
+	{ -- [Step 225
 		["Qpart"] = {
 			[49870] = {
 				["1"] = "1",
@@ -3906,8 +3661,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 372.6,
 		},
 	},
-	{
-		-- [Step 226
+	{ -- [Step 226
 		["Trigger"] = {
 			["y"] = -989.3,
 			["x"] = 269.6,
@@ -3923,8 +3677,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 269.6,
 		},
 	},
-	{
-		-- [Step 227
+	{ -- [Step 227
 		["Trigger"] = {
 			["y"] = -994.8,
 			["x"] = 214,
@@ -3940,8 +3693,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 214,
 		},
 	},
-	{
-		-- [Step 228
+	{ -- [Step 228
 		["Trigger"] = {
 			["y"] = -938.5,
 			["x"] = 311.5,
@@ -3953,8 +3705,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 311.5,
 		},
 	},
-	{
-		-- [Step 229
+	{ -- [Step 229
 		["Trigger"] = {
 			["y"] = -773.3,
 			["x"] = 299.8,
@@ -3966,8 +3717,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 299.8,
 		},
 	},
-	{
-		-- [Step 230
+	{ -- [Step 230
 		["TT"] = {
 			["y"] = -618,
 			["x"] = 284.3,
@@ -3977,8 +3727,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 231
+	{ -- [Step 231
 		["PickUp"] = {
 			50297,
 		},
@@ -3987,8 +3736,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 284.3,
 		},
 	},
-	{
-		-- [Step 232
+	{ -- [Step 232
 		["Trigger"] = {
 			["y"] = -817.3,
 			["x"] = 275.3,
@@ -4004,8 +3752,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 275.3,
 		},
 	},
-	{
-		-- [Step 233
+	{ -- [Step 233
 		["Trigger"] = {
 			["y"] = -824.8,
 			["x"] = 279.8,
@@ -4021,8 +3768,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 279.8,
 		},
 	},
-	{
-		-- [Step 234
+	{ -- [Step 234
 		["TT"] = {
 			["y"] = -617.8,
 			["x"] = 284.8,
@@ -4031,8 +3777,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			50297,
 		},
 	},
-	{
-		-- [Step 235
+	{ -- [Step 235
 		["Trigger"] = {
 			["y"] = -881.3,
 			["x"] = 138.8,
@@ -4044,8 +3789,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 138.8,
 		},
 	},
-	{
-		-- [Step 236
+	{ -- [Step 236
 		["TT"] = {
 			["y"] = -945.2,
 			["x"] = 161.5,
@@ -4054,8 +3798,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			50538,
 		},
 	},
-	{
-		-- [Step 237
+	{ -- [Step 237
 		["PickUp"] = {
 			47226,
 		},
@@ -4064,8 +3807,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 155.3,
 		},
 	},
-	{
-		-- [Step 238
+	{ -- [Step 238
 		["Trigger"] = {
 			["y"] = -1047,
 			["x"] = 174.9,
@@ -4077,8 +3819,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 174.9,
 		},
 	},
-	{
-		-- [Step 239
+	{ -- [Step 239
 		["Trigger"] = {
 			["y"] = -1129.5,
 			["x"] = 160.8,
@@ -4090,8 +3831,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 160.8,
 		},
 	},
-	{
-		-- [Step 240
+	{ -- [Step 240
 		["Trigger"] = {
 			["y"] = -1097.4,
 			["x"] = 87.3,
@@ -4104,8 +3844,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 241
+	{ -- [Step 241
 		["TT"] = {
 			["y"] = -1019.8,
 			["x"] = 55.7,
@@ -4114,8 +3853,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			47226,
 		},
 	},
-	{
-		-- [Step 242
+	{ -- [Step 242
 		["PickUp"] = {
 			47259,
 			48527,
@@ -4125,8 +3863,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 55.7,
 		},
 	},
-	{
-		-- [Step 243
+	{ -- [Step 243
 		["Trigger"] = {
 			["y"] = -1048.0,
 			["x"] = 18.3,
@@ -4138,8 +3875,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 18.3,
 		},
 	},
-	{
-		-- [Step 244
+	{ -- [Step 244
 		["Qpart"] = {
 			[47259] = {
 				["1"] = "1",
@@ -4154,8 +3890,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -99.4,
 		},
 	},
-	{
-		-- [Step 245
+	{ -- [Step 245
 		["TT"] = {
 			["y"] = -1018.5,
 			["x"] = 55.4,
@@ -4165,8 +3900,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			48527,
 		},
 	},
-	{
-		-- [Step 246
+	{ -- [Step 246
 		["PickUp"] = {
 			47311,
 			47272,
@@ -4176,8 +3910,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 55.2,
 		},
 	},
-	{
-		-- [Step 247
+	{ -- [Step 247
 		["PickUp"] = {
 			47312,
 			51980,
@@ -4187,8 +3920,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -127.5,
 		},
 	},
-	{
-		-- [Step 248
+	{ -- [Step 248
 		["Trigger"] = {
 			["y"] = -875,
 			["x"] = -118.5,
@@ -4200,8 +3932,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -118.5,
 		},
 	},
-	{
-		-- [Step 249
+	{ -- [Step 249
 		["ExtraLineText"] = "ASSULT_SKIP",
 		["Trigger"] = {
 			["y"] = -722.3,
@@ -4218,8 +3949,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 28.5,
 		},
 	},
-	{
-		-- [Step 250
+	{ -- [Step 250
 		["Qpart"] = {
 			[47312] = {
 				["1"] = "1",
@@ -4244,8 +3974,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 251
+	{ -- [Step 251
 		["Done"] = {
 			47312,
 			51980,
@@ -4255,8 +3984,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -131.2,
 		},
 	},
-	{
-		-- [Step 252
+	{ -- [Step 252
 		["Done"] = {
 			47311,
 			47272,
@@ -4266,8 +3994,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 53.7,
 		},
 	},
-	{
-		-- [Step 253
+	{ -- [Step 253
 		["PickUp"] = {
 			51990,
 			51998,
@@ -4277,8 +4004,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 53.7,
 		},
 	},
-	{
-		-- [Step 254
+	{ -- [Step 254
 		["Trigger"] = {
 			["y"] = -1023.6,
 			["x"] = 22.1,
@@ -4290,8 +4016,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 22.1,
 		},
 	},
-	{
-		-- [Step 255
+	{ -- [Step 255
 		["Trigger"] = {
 			["y"] = -1003.7,
 			["x"] = -78.8,
@@ -4303,8 +4028,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -78.8,
 		},
 	},
-	{
-		-- [Step 256
+	{ -- [Step 256
 		["Trigger"] = {
 			["y"] = -775.2,
 			["x"] = -82.5,
@@ -4316,8 +4040,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -82.5,
 		},
 	},
-	{
-		-- [Step 257
+	{ -- [Step 257
 		["Trigger"] = {
 			["y"] = -560.1,
 			["x"] = -32.5,
@@ -4329,8 +4052,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -32.5,
 		},
 	},
-	{
-		-- [Step 258
+	{ -- [Step 258
 		["Qpart"] = {
 			[51990] = {
 				["1"] = "1",
@@ -4351,8 +4073,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -11.5,
 		},
 	},
-	{
-		-- [Step 259
+	{ -- [Step 259
 		["Qpart"] = {
 			[51998] = {
 				["1"] = "1",
@@ -4364,8 +4085,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -11.5,
 		},
 	},
-	{
-		-- [Step 260
+	{ -- [Step 260
 		["Trigger"] = {
 			["y"] = -560.1,
 			["x"] = -32.5,
@@ -4378,8 +4098,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 261
+	{ -- [Step 261
 		["Trigger"] = {
 			["y"] = -775.2,
 			["x"] = -82.5,
@@ -4391,8 +4110,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -82.5,
 		},
 	},
-	{
-		-- [Step 262
+	{ -- [Step 262
 		["Trigger"] = {
 			["y"] = -882.7,
 			["x"] = -127,
@@ -4404,8 +4122,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -127,
 		},
 	},
-	{
-		-- [Step 263
+	{ -- [Step 263
 		["Trigger"] = {
 			["y"] = -1023.6,
 			["x"] = 22.1,
@@ -4417,8 +4134,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 22.1,
 		},
 	},
-	{
-		-- [Step 264
+	{ -- [Step 264
 		["Done"] = {
 			51990,
 			51998,
@@ -4428,8 +4144,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 53.7
 		},
 	},
-	{
-		-- [Step 265
+	{ -- [Step 265
 		["PickUp"] = {
 			47418,
 		},
@@ -4438,8 +4153,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 53.7
 		},
 	},
-	{
-		-- [Step 266
+	{ -- [Step 266
 		["Qpart"] = {
 			[47418] = {
 				["1"] = "1",
@@ -4451,8 +4165,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 51.9,
 		},
 	},
-	{
-		-- [Step 267
+	{ -- [Step 267
 		["Done"] = {
 			47418,
 		},
@@ -4461,8 +4174,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 53.7
 		},
 	},
-	{
-		-- [Step 268
+	{ -- [Step 268
 		["PickUp"] = {
 			47261,
 		},
@@ -4471,8 +4183,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 53.7
 		},
 	},
-	{
-		-- [Step 269
+	{ -- [Step 269
 		["Qpart"] = {
 			[47261] = {
 				["1"] = "1",
@@ -4485,8 +4196,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -6.3,
 		},
 	},
-	{
-		-- [Step 270
+	{ -- [Step 270
 		["Done"] = {
 			47261,
 		},
@@ -4496,8 +4206,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 271
+	{ -- [Step 271
 		["PickUp"] = {
 			48581,
 		},
@@ -4506,8 +4215,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 53.7
 		},
 	},
-	{
-		-- [Step 272
+	{ -- [Step 272
 		["Qpart"] = {
 			[48581] = {
 				["1"] = "1",
@@ -4519,8 +4227,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -28.6,
 		},
 	},
-	{
-		-- [Step 273
+	{ -- [Step 273
 		["Done"] = {
 			48581,
 		},
@@ -4529,8 +4236,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 55.2,
 		},
 	},
-	{
-		-- [Step 274
+	{ -- [Step 274
 		["PickUp"] = {
 			47310,
 		},
@@ -4539,8 +4245,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 55.2,
 		},
 	},
-	{
-		-- [Step 275
+	{ -- [Step 275
 		["Qpart"] = {
 			[47310] = {
 				["1"] = "1",
@@ -4552,8 +4257,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -64.7,
 		},
 	},
-	{
-		-- [Step 276
+	{ -- [Step 276
 		["Done"] = {
 			47310,
 		},
@@ -4562,8 +4266,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 55.2,
 		},
 	},
-	{
-		-- [Step 277
+	{ -- [Step 277
 		["ExtraLineText"] = "FLY_GREAT_SEAL",
 		["Trigger"] = {
 			["y"] = -1047.4,
@@ -4577,8 +4280,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 17.3,
 		}
 	},
-	{
-		-- [Step 278
+	{ -- [Step 278
 		["Trigger"] = {
 			["y"] = -1047.5,
 			["x"] = 802.7,
@@ -4590,8 +4292,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 802.7,
 		},
 	},
-	{
-		-- [Step 279
+	{ -- [Step 279
 		["Trigger"] = {
 			["y"] = -1110.6,
 			["x"] = 820.4,
@@ -4603,8 +4304,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 820.4,
 		},
 	},
-	{
-		-- [Step 280
+	{ -- [Step 280
 		["ExtraLineText"] = "UP_ELEVATOR",
 		["Trigger"] = {
 			["y"] = -1125.6,
@@ -4618,8 +4318,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 281
+	{ -- [Step 281
 		["ExtraLineText"] = "UP_ELEVATOR",
 		["Trigger"] = {
 			["y"] = -1121.2,
@@ -4632,8 +4331,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 840.7,
 		},
 	},
-	{
-		-- [Step 282
+	{ -- [Step 282
 		["Trigger"] = {
 			["y"] = -1101,
 			["x"] = 833.2,
@@ -4645,8 +4343,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 833.2,
 		},
 	},
-	{
-		-- [Step 283
+	{ -- [Step 283
 		["Trigger"] = {
 			["y"] = -1102.0,
 			["x"] = 820.1,
@@ -4658,8 +4355,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 820.1,
 		},
 	},
-	{
-		-- [Step 284
+	{ -- [Step 284
 		["Done"] = {
 			49663,
 			48897,
@@ -4669,8 +4365,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 806,
 		},
 	},
-	{
-		-- [Step 285
+	{ -- [Step 285
 		["PickUp"] = {
 			49122,
 		},
@@ -4679,8 +4374,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 806,
 		},
 	},
-	{
-		-- [Step 286
+	{ -- [Step 286
 		["UseGlider"] = 1,
 		["PickUp"] = {
 			51072,
@@ -4691,8 +4385,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1339.5,
 		},
 	},
-	{
-		-- [Step 287
+	{ -- [Step 287
 		["Trigger"] = {
 			["y"] = -1140.5,
 			["x"] = 1292.3,
@@ -4708,8 +4401,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1292.3,
 		},
 	},
-	{
-		-- [Step 288
+	{ -- [Step 288
 		["Trigger"] = {
 			["y"] = -1304,
 			["x"] = 1288.5,
@@ -4725,8 +4417,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1288.5,
 		},
 	},
-	{
-		-- [Step 289
+	{ -- [Step 289
 		["TT"] = {
 			["y"] = -1468.8,
 			["x"] = 1339.5,
@@ -4736,8 +4427,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			51072,
 		},
 	},
-	{
-		-- [Step 290
+	{ -- [Step 290
 		["PickUp"] = {
 			49919,
 			49922,
@@ -4748,16 +4438,14 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 291
+	{ -- [Step 291
 		["SetHS"] = 49919,
 		["TT"] = {
 			["y"] = -1509.8,
 			["x"] = 1369.7,
 		},
 	},
-	{
-		-- [Step 292
+	{ -- [Step 292
 		["Trigger"] = {
 			["y"] = -1545,
 			["x"] = 1290.8,
@@ -4769,8 +4457,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1290.8,
 		},
 	},
-	{
-		-- [Step 293
+	{ -- [Step 293
 		["Trigger"] = {
 			["y"] = -1645,
 			["x"] = 1359.7,
@@ -4793,8 +4480,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 294
+	{ -- [Step 294
 		["PickUp"] = {
 			49920,
 		},
@@ -4814,8 +4500,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 295
+	{ -- [Step 295
 		["ExtraLineText"] = "KAJAMITE",
 		["Qpart"] = {
 			[49920] = {
@@ -4840,8 +4525,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1460,
 		},
 	},
-	{
-		-- [Step 296
+	{ -- [Step 296
 		["ExtraLineText"] = "KAJAMITE",
 		["Qpart"] = {
 			[49922] = {
@@ -4869,8 +4553,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1741.5,
 		},
 	},
-	{
-		-- [Step 297
+	{ -- [Step 297
 		["Done"] = {
 			49920,
 		},
@@ -4879,8 +4562,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1689.5,
 		},
 	},
-	{
-		-- [Step 298
+	{ -- [Step 298
 		["Trigger"] = {
 			["y"] = -1553.9,
 			["x"] = 1689.5,
@@ -4896,8 +4578,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1689.5,
 		},
 	},
-	{
-		-- [Step 299
+	{ -- [Step 299
 		["UseHS"] = 49919,
 		["HSSteps"] = 4,
 		["TT"] = {
@@ -4908,8 +4589,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["22345678-1"] = 6948,
 		},
 	},
-	{
-		-- [Step 300
+	{ -- [Step 300
 		["Done"] = {
 			49919,
 			49922,
@@ -4920,8 +4600,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 301
+	{ -- [Step 301
 		["Trigger"] = {
 			["y"] = -1550.5,
 			["x"] = 1245,
@@ -4933,8 +4612,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1245,
 		},
 	},
-	{
-		-- [Step 302
+	{ -- [Step 302
 		["Trigger"] = {
 			["y"] = -1584,
 			["x"] = 1276.8,
@@ -4946,8 +4624,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1276.8,
 		},
 	},
-	{
-		-- [Step 303
+	{ -- [Step 303
 		["Trigger"] = {
 			["y"] = -1861.5,
 			["x"] = 1535,
@@ -4959,8 +4636,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1535,
 		},
 	},
-	{
-		-- [Step 304
+	{ -- [Step 304
 		["Trigger"] = {
 			["y"] = -2023.3,
 			["x"] = 1630.5,
@@ -4972,8 +4648,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1630.5,
 		},
 	},
-	{
-		-- [Step 305
+	{ -- [Step 305
 		["Done"] = {
 			49122,
 		},
@@ -4982,8 +4657,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1654.2,
 		},
 	},
-	{
-		-- [Step 306
+	{ -- [Step 306
 		["PickUp"] = {
 			49144,
 			49145,
@@ -4993,8 +4667,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1657,
 		},
 	},
-	{
-		-- [Step 307
+	{ -- [Step 307
 		["PickUp"] = {
 			49146,
 		},
@@ -5003,8 +4676,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1719,
 		},
 	},
-	{
-		-- [Step 308
+	{ -- [Step 308
 		["Qpart"] = {
 			[49146] = {
 				["1"] = "1",
@@ -5031,8 +4703,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1852,
 		},
 	},
-	{
-		-- [Step 309
+	{ -- [Step 309
 		["Qpart"] = {
 			[49146] = {
 				["3"] = "3",
@@ -5059,8 +4730,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1833,
 		},
 	},
-	{
-		-- [Step 310
+	{ -- [Step 310
 		["Qpart"] = {
 			[49146] = {
 				["2"] = "2",
@@ -5088,8 +4758,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 311
+	{ -- [Step 311
 		["Qpart"] = {
 			[49145] = {
 				["1"] = "1",
@@ -5111,8 +4780,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1751.5,
 		},
 	},
-	{
-		-- [Step 312
+	{ -- [Step 312
 		["Trigger"] = {
 			["y"] = -2030.6,
 			["x"] = 1715.3,
@@ -5124,8 +4792,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1715.3,
 		},
 	},
-	{
-		-- [Step 313
+	{ -- [Step 313
 		["Done"] = {
 			49145,
 			49144,
@@ -5136,8 +4803,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1652.7,
 		},
 	},
-	{
-		-- [Step 314
+	{ -- [Step 314
 		["PickUp"] = {
 			49148,
 			49147,
@@ -5148,8 +4814,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1653.9,
 		},
 	},
-	{
-		-- [Step 315
+	{ -- [Step 315
 		["QpartPart"] = {
 			[49149] = {
 				["1"] = "1",
@@ -5171,8 +4836,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1713.8,
 		},
 	},
-	{
-		-- [Step 316
+	{ -- [Step 316
 		["QpartPart"] = {
 			[49149] = {
 				["1"] = "1",
@@ -5197,8 +4861,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1650.2,
 		},
 	},
-	{
-		-- [Step 317
+	{ -- [Step 317
 		["QpartPart"] = {
 			[49149] = {
 				["1"] = "1",
@@ -5223,8 +4886,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1751.5,
 		},
 	},
-	{
-		-- [Step 318
+	{ -- [Step 318
 		["QpartPart"] = {
 			[49149] = {
 				["1"] = "1",
@@ -5249,8 +4911,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1695.2,
 		},
 	},
-	{
-		-- [Step 319
+	{ -- [Step 319
 		["Qpart"] = {
 			[49147] = {
 				["1"] = "1",
@@ -5274,8 +4935,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1637.7,
 		},
 	},
-	{
-		-- [Step 320
+	{ -- [Step 320
 		["Trigger"] = {
 			["y"] = -2420.2,
 			["x"] = 1664.2,
@@ -5296,8 +4956,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 321
+	{ -- [Step 321
 		["Qpart"] = {
 			[49149] = {
 				["1"] = "1",
@@ -5318,8 +4977,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1692.2,
 		},
 	},
-	{
-		-- [Step 322
+	{ -- [Step 322
 		["Qpart"] = {
 			[49147] = {
 				["2"] = "2",
@@ -5343,8 +5001,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1820.3,
 		},
 	},
-	{
-		-- [Step 323
+	{ -- [Step 323
 		["Trigger"] = {
 			["y"] = -2374.7,
 			["x"] = 1815.2,
@@ -5363,8 +5020,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1815.2,
 		},
 	},
-	{
-		-- [Step 324
+	{ -- [Step 324
 		["Done"] = {
 			49148,
 			49147,
@@ -5375,8 +5031,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1512.9,
 		},
 	},
-	{
-		-- [Step 325
+	{ -- [Step 325
 		["PickUp"] = {
 			49309,
 		},
@@ -5385,8 +5040,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1512.9,
 		},
 	},
-	{
-		-- [Step 326
+	{ -- [Step 326
 		["Trigger"] = {
 			["y"] = -2266.5,
 			["x"] = 1469.4,
@@ -5398,8 +5052,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1469.4,
 		},
 	},
-	{
-		-- [Step 327
+	{ -- [Step 327
 		["Trigger"] = {
 			["y"] = -2304.2,
 			["x"] = 1465.2,
@@ -5415,8 +5068,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1465,
 		},
 	},
-	{
-		-- [Step 328
+	{ -- [Step 328
 		["Done"] = {
 			49309,
 		},
@@ -5425,8 +5077,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1511.4,
 		},
 	},
-	{
-		-- [Step 329
+	{ -- [Step 329
 		["PickUp"] = {
 			49310,
 		},
@@ -5435,8 +5086,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1511.4,
 		},
 	},
-	{
-		-- [Step 330
+	{ -- [Step 330
 		["Trigger"] = {
 			["y"] = -2250.7,
 			["x"] = 1522,
@@ -5453,8 +5103,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 331
+	{ -- [Step 331
 		["TT"] = {
 			["y"] = -1124.5,
 			["x"] = 819.2,
@@ -5463,8 +5112,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			49310,
 		},
 	},
-	{
-		-- [Step 332
+	{ -- [Step 332
 		["PickUp"] = {
 			51101,
 			47509,
@@ -5474,16 +5122,14 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 819.7,
 		},
 	},
-	{
-		-- [Step 333
+	{ -- [Step 333
 		["SetHS"] = 47509,
 		["TT"] = {
 			["y"] = -1125.5,
 			["x"] = 805.7,
 		},
 	},
-	{
-		-- [Step 334
+	{ -- [Step 334
 		["Trigger"] = {
 			["y"] = -1049.9,
 			["x"] = 808.7,
@@ -5495,8 +5141,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 808.7,
 		},
 	},
-	{
-		-- [Step 335
+	{ -- [Step 335
 		["UseGlider"] = 1,
 		["Done"] = {
 			47509,
@@ -5506,8 +5151,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1011.2,
 		},
 	},
-	{
-		-- [Step 336
+	{ -- [Step 336
 		["PickUp"] = {
 			47897,
 			47915,
@@ -5517,8 +5161,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1011.2,
 		},
 	},
-	{
-		-- [Step 337
+	{ -- [Step 337
 		["Trigger"] = {
 			["y"] = -605.5,
 			["x"] = 1042,
@@ -5530,8 +5173,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1042,
 		},
 	},
-	{
-		-- [Step 338
+	{ -- [Step 338
 		["Qpart"] = {
 			[47915] = {
 				["1"] = "1",
@@ -5552,8 +5194,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 987.4,
 		},
 	},
-	{
-		-- [Step 339
+	{ -- [Step 339
 		["Trigger"] = {
 			["y"] = -605,
 			["x"] = 994.4,
@@ -5569,8 +5210,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 994.4,
 		},
 	},
-	{
-		-- [Step 340
+	{ -- [Step 340
 		["TT"] = {
 			["y"] = -520.5,
 			["x"] = 1105,
@@ -5581,8 +5221,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 341
+	{ -- [Step 341
 		["PickUp"] = {
 			47520,
 			47518,
@@ -5592,8 +5231,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1105,
 		},
 	},
-	{
-		-- [Step 342
+	{ -- [Step 342
 		["Trigger"] = {
 			["y"] = -438.5,
 			["x"] = 1030.3,
@@ -5610,8 +5248,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 343
+	{ -- [Step 343
 		["Trigger"] = {
 			["y"] = -414.5,
 			["x"] = 1045.7,
@@ -5628,8 +5265,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 344
+	{ -- [Step 344
 		["Trigger"] = {
 			["y"] = -402.4,
 			["x"] = 1034,
@@ -5646,8 +5282,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 345
+	{ -- [Step 345
 		["Trigger"] = {
 			["y"] = -478,
 			["x"] = 953.6,
@@ -5664,8 +5299,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 346
+	{ -- [Step 346
 		["Trigger"] = {
 			["y"] = -498.4,
 			["x"] = 926.1,
@@ -5682,8 +5316,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 347
+	{ -- [Step 347
 		["Trigger"] = {
 			["y"] = -567.8,
 			["x"] = 919.4,
@@ -5700,8 +5333,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 348
+	{ -- [Step 348
 		["Trigger"] = {
 			["y"] = -510.8,
 			["x"] = 913.5,
@@ -5718,8 +5350,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 349
+	{ -- [Step 349
 		["Trigger"] = {
 			["y"] = -401.3,
 			["x"] = 983.1,
@@ -5738,8 +5369,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 984.2,
 		},
 	},
-	{
-		-- [Step 350
+	{ -- [Step 350
 		["TT"] = {
 			["y"] = -400.9,
 			["x"] = 982.4,
@@ -5750,8 +5380,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 351
+	{ -- [Step 351
 		["PickUp"] = {
 			47521,
 		},
@@ -5760,8 +5389,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1012.7,
 		},
 	},
-	{
-		-- [Step 352
+	{ -- [Step 352
 		["Trigger"] = {
 			["y"] = -448.4,
 			["x"] = 1014.2,
@@ -5777,8 +5405,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1014.2,
 		},
 	},
-	{
-		-- [Step 353
+	{ -- [Step 353
 		["TT"] = {
 			["y"] = -292.9,
 			["x"] = 1419.2,
@@ -5787,8 +5414,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			47521,
 		},
 	},
-	{
-		-- [Step 354
+	{ -- [Step 354
 		["PickUp"] = {
 			47522,
 			47963,
@@ -5798,8 +5424,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1419.7,
 		},
 	},
-	{
-		-- [Step 355
+	{ -- [Step 355
 		["Trigger"] = {
 			["y"] = -402.9,
 			["x"] = 1436.3,
@@ -5816,8 +5441,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 356
+	{ -- [Step 356
 		["Trigger"] = {
 			["y"] = -434.4,
 			["x"] = 1394.4,
@@ -5834,8 +5458,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 357
+	{ -- [Step 357
 		["Qpart"] = {
 			[47963] = {
 				["1"] = "1",
@@ -5856,8 +5479,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1303.7,
 		},
 	},
-	{
-		-- [Step 358
+	{ -- [Step 358
 		["TT"] = {
 			["y"] = -467.5,
 			["x"] = 1298,
@@ -5871,8 +5493,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 359
+	{ -- [Step 359
 		["Trigger"] = {
 			["y"] = -426.7,
 			["x"] = 1419.7,
@@ -5889,8 +5510,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 360
+	{ -- [Step 360
 		["Trigger"] = {
 			["y"] = -433.5,
 			["x"] = 1615.8,
@@ -5912,8 +5532,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 361
+	{ -- [Step 361
 		["TT"] = {
 			["y"] = -430.8,
 			["x"] = 1613,
@@ -5927,8 +5546,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 362
+	{ -- [Step 362
 		["PickUp"] = {
 			47528,
 		},
@@ -5942,8 +5560,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 363
+	{ -- [Step 363
 		["Trigger"] = {
 			["y"] = -391.9,
 			["x"] = 1594.8,
@@ -5960,8 +5577,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 364
+	{ -- [Step 364
 		["Trigger"] = {
 			["y"] = -253.4,
 			["x"] = 1670,
@@ -5978,8 +5594,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 365
+	{ -- [Step 365
 		["Trigger"] = {
 			["y"] = -194,
 			["x"] = 1720.9,
@@ -6001,8 +5616,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 366
+	{ -- [Step 366
 		["Trigger"] = {
 			["y"] = -194,
 			["x"] = 1720.9,
@@ -6024,8 +5638,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 367
+	{ -- [Step 367
 		["Trigger"] = {
 			["y"] = -252.4,
 			["x"] = 1668.4,
@@ -6042,8 +5655,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 368
+	{ -- [Step 368
 		["Trigger"] = {
 			["y"] = -269.2,
 			["x"] = 1653,
@@ -6059,8 +5671,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1653,
 		},
 	},
-	{
-		-- [Step 369
+	{ -- [Step 369
 		["TT"] = {
 			["y"] = -133,
 			["x"] = 1601.4,
@@ -6069,8 +5680,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			47528,
 		},
 	},
-	{
-		-- [Step 370
+	{ -- [Step 370
 		["Trigger"] = {
 			["y"] = -103.3,
 			["x"] = 1502.8,
@@ -6083,8 +5693,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 371
+	{ -- [Step 371
 		["PickUp"] = {
 			49679,
 			49678,
@@ -6095,8 +5704,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1708.7,
 		},
 	},
-	{
-		-- [Step 372
+	{ -- [Step 372
 		["QpartPart"] = {
 			[49678] = {
 				["1"] = "1",
@@ -6118,8 +5726,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1789.8,
 		},
 	},
-	{
-		-- [Step 373
+	{ -- [Step 373
 		["PickUp"] = {
 			49681,
 		},
@@ -6133,8 +5740,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 374
+	{ -- [Step 374
 		["Trigger"] = {
 			["y"] = 64.1,
 			["x"] = 1799.3,
@@ -6155,8 +5761,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 375
+	{ -- [Step 375
 		["QpartPart"] = {
 			[49678] = {
 				["1"] = "1",
@@ -6178,8 +5783,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1816.3,
 		},
 	},
-	{
-		-- [Step 376
+	{ -- [Step 376
 		["QpartPart"] = {
 			[49678] = {
 				["1"] = "1",
@@ -6201,8 +5805,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1848.5,
 		},
 	},
-	{
-		-- [Step 377
+	{ -- [Step 377
 		["QpartPart"] = {
 			[49678] = {
 				["1"] = "1",
@@ -6224,8 +5827,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1891.5,
 		},
 	},
-	{
-		-- [Step 378
+	{ -- [Step 378
 		["Trigger"] = {
 			["y"] = -109,
 			["x"] = 1871.5,
@@ -6246,8 +5848,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 379
+	{ -- [Step 379
 		["Trigger"] = {
 			["y"] = -91,
 			["x"] = 1899.7,
@@ -6264,8 +5865,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 380
+	{ -- [Step 380
 		["Trigger"] = {
 			["y"] = -108.4,
 			["x"] = 1885.4,
@@ -6285,8 +5885,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 381
+	{ -- [Step 381
 		["Done"] = {
 			49679,
 			49678,
@@ -6298,8 +5897,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1706.8,
 		},
 	},
-	{
-		-- [Step 382
+	{ -- [Step 382
 		["Trigger"] = {
 			["y"] = -93.9,
 			["x"] = 1558.2,
@@ -6311,8 +5909,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1558.2,
 		},
 	},
-	{
-		-- [Step 383
+	{ -- [Step 383
 		["Trigger"] = {
 			["y"] = -149.7,
 			["x"] = 1473,
@@ -6324,8 +5921,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1473,
 		},
 	},
-	{
-		-- [Step 384
+	{ -- [Step 384
 		["Trigger"] = {
 			["y"] = -166.9,
 			["x"] = 1409.5,
@@ -6337,8 +5933,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1409.5,
 		},
 	},
-	{
-		-- [Step 385
+	{ -- [Step 385
 		["UseGlider"] = 1,
 		["Trigger"] = {
 			["y"] = -153.7,
@@ -6351,8 +5946,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1336.4,
 		},
 	},
-	{
-		-- [Step 386
+	{ -- [Step 386
 		["UseGlider"] = 1,
 		["Trigger"] = {
 			["y"] = 119,
@@ -6365,8 +5959,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 353.2,
 		},
 	},
-	{
-		-- [Step 387
+	{ -- [Step 387
 		["Trigger"] = {
 			["y"] = 162.1,
 			["x"] = 273.2,
@@ -6378,8 +5971,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 273.2,
 		},
 	},
-	{
-		-- [Step 388
+	{ -- [Step 388
 		["Trigger"] = {
 			["y"] = 317.8,
 			["x"] = 195.5,
@@ -6391,8 +5983,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 195.5,
 		},
 	},
-	{
-		-- [Step 389
+	{ -- [Step 389
 		["Trigger"] = {
 			["y"] = 386.3,
 			["x"] = 106.8,
@@ -6404,8 +5995,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 106.8,
 		},
 	},
-	{
-		-- [Step 390
+	{ -- [Step 390
 		["PickUp"] = {
 			47706,
 			51091,
@@ -6416,8 +6006,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 391
+	{ -- [Step 391
 		["UseGlider"] = 1,
 		["Done"] = {
 			49768,
@@ -6427,8 +6016,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -2.8,
 		},
 	},
-	{
-		-- [Step 392
+	{ -- [Step 392
 		["PickUp"] = {
 			47584,
 			50466,
@@ -6439,8 +6027,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -3.8,
 		},
 	},
-	{
-		-- [Step 393
+	{ -- [Step 393
 		["PickUp"] = {
 			47585,
 		},
@@ -6449,8 +6036,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -116.1,
 		},
 	},
-	{
-		-- [Step 394
+	{ -- [Step 394
 		["Qpart"] = {
 			[47585] = {
 				["1"] = "1",
@@ -6474,8 +6060,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -269.3,
 		},
 	},
-	{
-		-- [Step 395
+	{ -- [Step 395
 		["Qpart"] = {
 			[47706] = {
 				["1"] = "1",
@@ -6499,8 +6084,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -336.8,
 		},
 	},
-	{
-		-- [Step 396
+	{ -- [Step 396
 		["Trigger"] = {
 			["y"] = 40.7,
 			["x"] = -289.7,
@@ -6512,8 +6096,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -289.7,
 		},
 	},
-	{
-		-- [Step 397
+	{ -- [Step 397
 		["Qpart"] = {
 			[50466] = {
 				["1"] = "1",
@@ -6537,8 +6120,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -288.8,
 		},
 	},
-	{
-		-- [Step 398
+	{ -- [Step 398
 		["Qpart"] = {
 			[47585] = {
 				["2"] = "2",
@@ -6562,8 +6144,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -29.4,
 		},
 	},
-	{
-		-- [Step 399
+	{ -- [Step 399
 		["Qpart"] = {
 			[51091] = {
 				["1"] = "1",
@@ -6588,8 +6169,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 482.8,
 		},
 	},
-	{
-		-- [Step 400
+	{ -- [Step 400
 		["Trigger"] = {
 			["y"] = -28,
 			["x"] = 37.2,
@@ -6609,8 +6189,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 401
+	{ -- [Step 401
 		["Done"] = {
 			47583,
 		},
@@ -6619,8 +6198,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -4.9,
 		},
 	},
-	{
-		-- [Step 402
+	{ -- [Step 402
 		["Done"] = {
 			47584,
 		},
@@ -6629,8 +6207,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -45.5,
 		},
 	},
-	{
-		-- [Step 403
+	{ -- [Step 403
 		["Done"] = {
 			47585,
 			50466,
@@ -6642,8 +6219,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -2.5,
 		},
 	},
-	{
-		-- [Step 404
+	{ -- [Step 404
 		["PickUp"] = {
 			47586,
 		},
@@ -6652,8 +6228,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -2.5,
 		},
 	},
-	{
-		-- [Step 405
+	{ -- [Step 405
 		["Trigger"] = {
 			["y"] = 386.8,
 			["x"] = 107.7,
@@ -6665,8 +6240,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 107.7,
 		},
 	},
-	{
-		-- [Step 406
+	{ -- [Step 406
 		["Qpart"] = {
 			[47586] = {
 				["1"] = "1",
@@ -6687,8 +6261,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 424.2,
 		},
 	},
-	{
-		-- [Step 407
+	{ -- [Step 407
 		["Qpart"] = {
 			[47586] = {
 				["2"] = "2",
@@ -6709,8 +6282,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 506.3,
 		},
 	},
-	{
-		-- [Step 408
+	{ -- [Step 408
 		["Qpart"] = {
 			[47586] = {
 				["3"] = "3",
@@ -6731,8 +6303,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 435.8,
 		},
 	},
-	{
-		-- [Step 409
+	{ -- [Step 409
 		["Done"] = {
 			47586,
 		},
@@ -6741,8 +6312,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 340.8,
 		},
 	},
-	{
-		-- [Step 410
+	{ -- [Step 410
 		["PickUp"] = {
 			47587,
 		},
@@ -6752,8 +6322,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 411
+	{ -- [Step 411
 		["Trigger"] = {
 			["y"] = 484.3,
 			["x"] = 375.6,
@@ -6769,8 +6338,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 375.6,
 		},
 	},
-	{
-		-- [Step 412
+	{ -- [Step 412
 		["Done"] = {
 			47587,
 		},
@@ -6779,8 +6347,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 337.6,
 		},
 	},
-	{
-		-- [Step 413
+	{ -- [Step 413
 		["Trigger"] = {
 			["y"] = 349,
 			["x"] = 375.1,
@@ -6796,8 +6363,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 375.1,
 		},
 	},
-	{
-		-- [Step 414
+	{ -- [Step 414
 		["Trigger"] = {
 			["y"] = 284.2,
 			["x"] = -248,
@@ -6809,8 +6375,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -248,
 		},
 	},
-	{
-		-- [Step 415
+	{ -- [Step 415
 		["UseGlider"] = 1,
 		["Trigger"] = {
 			["y"] = 183.6,
@@ -6823,8 +6388,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -380.8,
 		},
 	},
-	{
-		-- [Step 416
+	{ -- [Step 416
 		["Trigger"] = {
 			["y"] = 283,
 			["x"] = -735.2,
@@ -6836,8 +6400,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -735.2,
 		},
 	},
-	{
-		-- [Step 417
+	{ -- [Step 417
 		["Trigger"] = {
 			["y"] = 455,
 			["x"] = -803.7,
@@ -6849,8 +6412,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -803.7,
 		},
 	},
-	{
-		-- [Step 418
+	{ -- [Step 418
 		["Done"] = {
 			51101,
 		},
@@ -6859,8 +6421,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -781,
 		},
 	},
-	{
-		-- [Step 419
+	{ -- [Step 419
 		["PickUp"] = {
 			51680,
 		},
@@ -6869,8 +6430,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -781,
 		},
 	},
-	{
-		-- [Step 420
+	{ -- [Step 420
 		["Qpart"] = {
 			[51680] = {
 				["1"] = "1",
@@ -6888,8 +6448,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 421
+	{ -- [Step 421
 		["Qpart"] = {
 			[51680] = {
 				["2"] = "2",
@@ -6906,8 +6465,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -763.6,
 		},
 	},
-	{
-		-- [Step 422
+	{ -- [Step 422
 		["Done"] = {
 			51680,
 		},
@@ -6916,8 +6474,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -763.6,
 		},
 	},
-	{
-		-- [Step 423
+	{ -- [Step 423
 		["PickUp"] = {
 			47735,
 			47739,
@@ -6927,8 +6484,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -763.6,
 		},
 	},
-	{
-		-- [Step 424
+	{ -- [Step 424
 		["PickUp"] = {
 			50235,
 		},
@@ -6937,8 +6493,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -780.7,
 		},
 	},
-	{
-		-- [Step 425
+	{ -- [Step 425
 		["Trigger"] = {
 			["y"] = 514.5,
 			["x"] = -838,
@@ -6950,8 +6505,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -838,
 		},
 	},
-	{
-		-- [Step 426
+	{ -- [Step 426
 		["Qpart"] = {
 			[47735] = {
 				["2"] = "2",
@@ -6975,8 +6529,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -940,
 		},
 	},
-	{
-		-- [Step 427
+	{ -- [Step 427
 		["Qpart"] = {
 			[47735] = {
 				["1"] = "1",
@@ -7000,8 +6553,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1043.5,
 		},
 	},
-	{
-		-- [Step 428
+	{ -- [Step 428
 		["PickUp"] = {
 			47733,
 		},
@@ -7018,8 +6570,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 429
+	{ -- [Step 429
 		["Trigger"] = {
 			["y"] = 456.8,
 			["x"] = -1044.6,
@@ -7035,8 +6586,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1044.6,
 		},
 	},
-	{
-		-- [Step 430
+	{ -- [Step 430
 		["Qpart"] = {
 			[47733] = {
 				["1"] = "1",
@@ -7058,8 +6608,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 431
+	{ -- [Step 431
 		["Qpart"] = {
 			[47735] = {
 				["3"] = "3",
@@ -7080,8 +6629,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1019,
 		},
 	},
-	{
-		-- [Step 432
+	{ -- [Step 432
 		["Trigger"] = {
 			["y"] = 333.8,
 			["x"] = -961.8,
@@ -7097,8 +6645,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -961.8,
 		},
 	},
-	{
-		-- [Step 433
+	{ -- [Step 433
 		["Trigger"] = {
 			["y"] = 462.3,
 			["x"] = -801.5,
@@ -7110,8 +6657,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -801.5,
 		},
 	},
-	{
-		-- [Step 434
+	{ -- [Step 434
 		["Done"] = {
 			50235,
 			47733,
@@ -7121,8 +6667,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -782,
 		},
 	},
-	{
-		-- [Step 435
+	{ -- [Step 435
 		["Done"] = {
 			47739,
 			47735,
@@ -7132,8 +6677,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -763.6,
 		},
 	},
-	{
-		-- [Step 436
+	{ -- [Step 436
 		["PickUp"] = {
 			51677,
 		},
@@ -7142,8 +6686,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -763.6,
 		},
 	},
-	{
-		-- [Step 437
+	{ -- [Step 437
 		["Qpart"] = {
 			[51677] = {
 				["1"] = "1",
@@ -7160,8 +6703,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -763.6,
 		},
 	},
-	{
-		-- [Step 438
+	{ -- [Step 438
 		["ExtraLineText"] = "JOLS_COMMANDS",
 		["Qpart"] = {
 			[51677] = {
@@ -7179,8 +6721,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -769.5,
 		},
 	},
-	{
-		-- [Step 439
+	{ -- [Step 439
 		["Done"] = {
 			51677,
 		},
@@ -7189,8 +6730,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -763.6,
 		},
 	},
-	{
-		-- [Step 440
+	{ -- [Step 440
 		["PickUp"] = {
 			47738,
 		},
@@ -7200,8 +6740,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 441
+	{ -- [Step 441
 		["Trigger"] = {
 			["y"] = 473,
 			["x"] = -777.5,
@@ -7213,8 +6752,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -777.5,
 		},
 	},
-	{
-		-- [Step 442
+	{ -- [Step 442
 		["Trigger"] = {
 			["y"] = 633.2,
 			["x"] = -794.5,
@@ -7230,8 +6768,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -794.5,
 		},
 	},
-	{
-		-- [Step 443
+	{ -- [Step 443
 		["Qpart"] = {
 			[47738] = {
 				["2"] = "2",
@@ -7248,8 +6785,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -808,
 		},
 	},
-	{
-		-- [Step 444
+	{ -- [Step 444
 		["ETA"] = 69,
 		["Trigger"] = {
 			["y"] = 632.1,
@@ -7266,8 +6802,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -801.8,
 		},
 	},
-	{
-		-- [Step 445
+	{ -- [Step 445
 		["Trigger"] = {
 			["y"] = 473.8,
 			["x"] = -776.2,
@@ -7279,8 +6814,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -776.2,
 		},
 	},
-	{
-		-- [Step 446
+	{ -- [Step 446
 		["Trigger"] = {
 			["y"] = 474.8,
 			["x"] = -759.5,
@@ -7296,8 +6830,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -759.5,
 		},
 	},
-	{
-		-- [Step 447
+	{ -- [Step 447
 		["TT"] = {
 			["y"] = 469.7,
 			["x"] = -778.8,
@@ -7306,8 +6839,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			47738,
 		},
 	},
-	{
-		-- [Step 448
+	{ -- [Step 448
 		["PickUp"] = {
 			51678,
 			47742,
@@ -7318,8 +6850,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -778.8,
 		},
 	},
-	{
-		-- [Step 449
+	{ -- [Step 449
 		["Trigger"] = {
 			["y"] = 223,
 			["x"] = -1128.5,
@@ -7331,8 +6862,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1128.5,
 		},
 	},
-	{
-		-- [Step 450
+	{ -- [Step 450
 		["Trigger"] = {
 			["y"] = 229.1,
 			["x"] = -1135,
@@ -7345,8 +6875,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 451
+	{ -- [Step 451
 		["Trigger"] = {
 			["y"] = 238.1,
 			["x"] = -1154,
@@ -7358,8 +6887,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1154,
 		},
 	},
-	{
-		-- [Step 452
+	{ -- [Step 452
 		["Trigger"] = {
 			["y"] = 264.3,
 			["x"] = -1167.9,
@@ -7375,8 +6903,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1167.9,
 		},
 	},
-	{
-		-- [Step 453
+	{ -- [Step 453
 		["Qpart"] = {
 			[51679] = {
 				["2"] = "2",
@@ -7398,8 +6925,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1167.9,
 		},
 	},
-	{
-		-- [Step 454
+	{ -- [Step 454
 		["ExtraLineText"] = "TOP_BOAT",
 		["Trigger"] = {
 			["y"] = 271.3,
@@ -7421,8 +6947,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 455
+	{ -- [Step 455
 		["Trigger"] = {
 			["y"] = 270.5,
 			["x"] = -1170.5,
@@ -7438,8 +6963,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -1170.5,
 		},
 	},
-	{
-		-- [Step 456
+	{ -- [Step 456
 		["TT"] = {
 			["y"] = 468.2,
 			["x"] = -780.5,
@@ -7450,8 +6974,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			47742,
 		},
 	},
-	{
-		-- [Step 457
+	{ -- [Step 457
 		["PickUp"] = {
 			47737,
 		},
@@ -7460,8 +6983,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -780.5,
 		},
 	},
-	{
-		-- [Step 458
+	{ -- [Step 458
 		["Trigger"] = {
 			["y"] = 251.6,
 			["x"] = -699.8,
@@ -7473,8 +6995,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -699.8,
 		},
 	},
-	{
-		-- [Step 459
+	{ -- [Step 459
 		["TT"] = {
 			["y"] = 192.5,
 			["x"] = -384.3,
@@ -7483,8 +7004,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			47737,
 		},
 	},
-	{
-		-- [Step 460
+	{ -- [Step 460
 		["PickUp"] = {
 			47736,
 			47740,
@@ -7495,8 +7015,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 461
+	{ -- [Step 461
 		["Qpart"] = {
 			[47740] = {
 				["1"] = "1",
@@ -7520,8 +7039,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -406.5,
 		},
 	},
-	{
-		-- [Step 462
+	{ -- [Step 462
 		["Qpart"] = {
 			[47740] = {
 				["3"] = "3",
@@ -7545,8 +7063,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -537.3,
 		},
 	},
-	{
-		-- [Step 463
+	{ -- [Step 463
 		["Trigger"] = {
 			["y"] = 12.5,
 			["x"] = -472.7,
@@ -7566,8 +7083,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 464
+	{ -- [Step 464
 		["Qpart"] = {
 			[47740] = {
 				["2"] = "2",
@@ -7591,8 +7107,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -529.7,
 		},
 	},
-	{
-		-- [Step 465
+	{ -- [Step 465
 		["Trigger"] = {
 			["y"] = -75.9,
 			["x"] = -531.7,
@@ -7611,8 +7126,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -531.7,
 		},
 	},
-	{
-		-- [Step 466
+	{ -- [Step 466
 		["Done"] = {
 			47740,
 			47736,
@@ -7622,8 +7136,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -623.2,
 		},
 	},
-	{
-		-- [Step 467
+	{ -- [Step 467
 		["PickUp"] = {
 			47734,
 		},
@@ -7632,8 +7145,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -624.8,
 		},
 	},
-	{
-		-- [Step 468
+	{ -- [Step 468
 		["Trigger"] = {
 			["y"] = 70,
 			["x"] = -651.5,
@@ -7649,8 +7161,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -651.5,
 		},
 	},
-	{
-		-- [Step 469
+	{ -- [Step 469
 		["Trigger"] = {
 			["y"] = -111,
 			["x"] = -648.5,
@@ -7666,8 +7177,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -648.5,
 		},
 	},
-	{
-		-- [Step 470
+	{ -- [Step 470
 		["TT"] = {
 			["y"] = -28.4,
 			["x"] = -627,
@@ -7677,8 +7187,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 471
+	{ -- [Step 471
 		["PickUp"] = {
 			47741,
 		},
@@ -7687,8 +7196,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -627,
 		},
 	},
-	{
-		-- [Step 472
+	{ -- [Step 472
 		["ExtraLineText"] = "REDUCED_DAMAGE_INFO_1",
 		["Trigger"] = {
 			["y"] = -21.4,
@@ -7705,8 +7213,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -717.8,
 		},
 	},
-	{
-		-- [Step 473
+	{ -- [Step 473
 		["Trigger"] = {
 			["y"] = -24.7,
 			["x"] = -725.7,
@@ -7722,8 +7229,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -725.7,
 		},
 	},
-	{
-		-- [Step 474
+	{ -- [Step 474
 		["ExtraLineText"] = "TALK_KING_RASTAKHAN",
 		["CRange"] = 47741,
 		["Gossip"] = 1,
@@ -7737,8 +7243,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -727.2,
 		},
 	},
-	{
-		-- [Step 475
+	{ -- [Step 475
 		["Trigger"] = {
 			["y"] = -159.7,
 			["x"] = -574.2,
@@ -7750,8 +7255,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -574.2,
 		},
 	},
-	{
-		-- [Step 476
+	{ -- [Step 476
 		["Trigger"] = {
 			["y"] = -277.4,
 			["x"] = -378.8,
@@ -7763,8 +7267,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -378.8,
 		},
 	},
-	{
-		-- [Step 477
+	{ -- [Step 477
 		["Done"] = {
 			47741,
 		},
@@ -7773,8 +7276,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -291.9,
 		},
 	},
-	{
-		-- [Step 478
+	{ -- [Step 478
 		["PickUp"] = {
 			51111,
 		},
@@ -7783,8 +7285,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = -293.9,
 		},
 	},
-	{
-		-- [Step 479
+	{ -- [Step 479
 		["TT"] = {
 			["y"] = -290.7,
 			["x"] = -280.4,
@@ -7793,8 +7294,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		["Name"] = "The Great Seal",
 		["ETA"] = 1,
 	},
-	{
-		-- [Step 480
+	{ -- [Step 480
 		["Trigger"] = {
 			["y"] = -1049,
 			["x"] = 801.2,
@@ -7807,8 +7307,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 481
+	{ -- [Step 481
 		["Done"] = {
 			51111,
 		},
@@ -7817,8 +7316,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 819.4,
 		},
 	},
-	{
-		-- [Step 482
+	{ -- [Step 482
 		["PickUp"] = {
 			49421,
 		},
@@ -7828,8 +7326,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 		["LeaveQuest"] = 52210,
 	},
-	{
-		-- [Step 483
+	{ -- [Step 483
 		["Trigger"] = {
 			["y"] = -1052.6,
 			["x"] = 809.2,
@@ -7842,8 +7339,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 809.2,
 		},
 	},
-	{
-		-- [Step 484
+	{ -- [Step 484
 		["UseGlider"] = 1,
 		["LeaveQuest"] = 52210,
 		["TT"] = {
@@ -7854,8 +7350,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			49421,
 		},
 	},
-	{
-		-- [Step 485
+	{ -- [Step 485
 		["PickUp"] = {
 			49965,
 		},
@@ -7865,8 +7360,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1115.5,
 		},
 	},
-	{
-		-- [Step 486
+	{ -- [Step 486
 		["ExtraLineText"] = "RUN_FOREST_RUN",
 		["LeaveQuest"] = 52210,
 		["Trigger"] = {
@@ -7880,8 +7374,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1229.3,
 		},
 	},
-	{
-		-- [Step 487
+	{ -- [Step 487
 		["LeaveQuest"] = 52210,
 		["Trigger"] = {
 			["y"] = -891,
@@ -7894,8 +7387,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1331,
 		},
 	},
-	{
-		-- [Step 488
+	{ -- [Step 488
 		["Trigger"] = {
 			["y"] = -1160,
 			["x"] = 1411.8,
@@ -7908,8 +7400,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1411.8,
 		},
 	},
-	{
-		-- [Step 489
+	{ -- [Step 489
 		["LeaveQuest"] = 52210,
 		["Trigger"] = {
 			["y"] = -1217.1,
@@ -7922,8 +7413,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1443.7,
 		},
 	},
-	{
-		-- [Step 490
+	{ -- [Step 490
 		["LeaveQuest"] = 52210,
 		["Trigger"] = {
 			["y"] = -1154.5,
@@ -7937,8 +7427,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 491
+	{ -- [Step 491
 		["Trigger"] = {
 			["y"] = -1121.1,
 			["x"] = 1540.4,
@@ -7954,8 +7443,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1540.4,
 		},
 	},
-	{
-		-- [Step 492
+	{ -- [Step 492
 		["TT"] = {
 			["y"] = -1121.3,
 			["x"] = 1540,
@@ -7964,8 +7452,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			49965,
 		},
 	},
-	{
-		-- [Step 493
+	{ -- [Step 493
 		["PickUp"] = {
 			49422,
 			49424,
@@ -7975,8 +7462,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1536.9,
 		},
 	},
-	{
-		-- [Step 494
+	{ -- [Step 494
 		["Trigger"] = {
 			["y"] = -1135.6,
 			["x"] = 1495.4,
@@ -7988,8 +7474,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1495.4,
 		},
 	},
-	{
-		-- [Step 495
+	{ -- [Step 495
 		["Qpart"] = {
 			[49424] = {
 				["3"] = "3",
@@ -8010,8 +7495,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1578.7,
 		},
 	},
-	{
-		-- [Step 496
+	{ -- [Step 496
 		["Trigger"] = {
 			["y"] = -999.7,
 			["x"] = 1498.5,
@@ -8028,8 +7512,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 497
+	{ -- [Step 497
 		["Trigger"] = {
 			["y"] = -959.2,
 			["x"] = 1502.7,
@@ -8046,8 +7529,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 498
+	{ -- [Step 498
 		["Qpart"] = {
 			[49424] = {
 				["2"] = "2",
@@ -8068,8 +7550,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1561.5,
 		},
 	},
-	{
-		-- [Step 499
+	{ -- [Step 499
 		["Trigger"] = {
 			["y"] = -912.8,
 			["x"] = 1504,
@@ -8086,8 +7567,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			},
 		},
 	},
-	{
-		-- [Step 500
+	{ -- [Step 500
 		["Trigger"] = {
 			["y"] = -868.7,
 			["x"] = 1501.5,
@@ -8105,8 +7585,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 501
+	{ -- [Step 501
 		["Qpart"] = {
 			[49424] = {
 				["1"] = "1",
@@ -8127,8 +7606,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1584.8,
 		},
 	},
-	{
-		-- [Step 502
+	{ -- [Step 502
 		["Trigger"] = {
 			["y"] = -844.2,
 			["x"] = 1575.5,
@@ -8144,8 +7622,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1575.5,
 		},
 	},
-	{
-		-- [Step 503
+	{ -- [Step 503
 		["TT"] = {
 			["y"] = -763.8,
 			["x"] = 1508,
@@ -8155,8 +7632,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			49424,
 		},
 	},
-	{
-		-- [Step 504
+	{ -- [Step 504
 		["PickUp"] = {
 			49425,
 		},
@@ -8165,8 +7641,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1508,
 		},
 	},
-	{
-		-- [Step 505
+	{ -- [Step 505
 		["Trigger"] = {
 			["y"] = -760,
 			["x"] = 1508,
@@ -8182,8 +7657,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1508,
 		},
 	},
-	{
-		-- [Step 506
+	{ -- [Step 506
 		["Trigger"] = {
 			["y"] = -824.7,
 			["x"] = 1528.7,
@@ -8199,8 +7673,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 1524.3,
 		},
 	},
-	{
-		-- [Step 507
+	{ -- [Step 507
 		["TT"] = {
 			["y"] = -838.5,
 			["x"] = 2009.5,
@@ -8209,8 +7682,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			49425,
 		},
 	},
-	{
-		-- [Step 508
+	{ -- [Step 508
 		["Trigger"] = {
 			["y"] = -850,
 			["x"] = 2152.6,
@@ -8226,8 +7698,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 2152.6,
 		},
 	},
-	{
-		-- [Step 509
+	{ -- [Step 509
 		["Qpart"] = {
 			[49426] = {
 				["2"] = "2",
@@ -8244,8 +7715,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 2149.1,
 		},
 	},
-	{
-		-- [Step 510
+	{ -- [Step 510
 		["Qpart"] = {
 			[49426] = {
 				["3"] = "3",
@@ -8263,8 +7733,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 511
+	{ -- [Step 511
 		["Trigger"] = {
 			["y"] = -754,
 			["x"] = 2144.6,
@@ -8276,8 +7745,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 2144.6,
 		},
 	},
-	{
-		-- [Step 512
+	{ -- [Step 512
 		["Qpart"] = {
 			[49426] = {
 				["3"] = "3",
@@ -8293,8 +7761,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 2093.9,
 		},
 	},
-	{
-		-- [Step 513
+	{ -- [Step 513
 		["TT"] = {
 			["y"] = -743.7,
 			["x"] = 2093.9,
@@ -8303,8 +7770,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			49426,
 		},
 	},
-	{
-		-- [Step 514
+	{ -- [Step 514
 		["PickUp"] = {
 			50963,
 		},
@@ -8314,8 +7780,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 2093.9,
 		},
 	},
-	{
-		-- [Step 515
+	{ -- [Step 515
 		["UseHS"] = 50963,
 		["TT"] = {
 			["y"] = -743.7,
@@ -8326,8 +7791,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["12112552-1"] = 140192,
 		},
 	},
-	{
-		-- [Step 516
+	{ -- [Step 516
 		["Trigger"] = {
 			["y"] = -1137.5,
 			["x"] = 810.6,
@@ -8339,8 +7803,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 810.6,
 		},
 	},
-	{
-		-- [Step 517
+	{ -- [Step 517
 		["Done"] = {
 			50963,
 		},
@@ -8351,8 +7814,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 819.2,
 		},
 	},
-	{
-		-- [Step 518
+	{ -- [Step 518
 		["PickUp"] = {
 			47512,
 		},
@@ -8363,8 +7825,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 820,
 		},
 	},
-	{
-		-- [Step 519
+	{ -- [Step 519
 		["Done"] = {
 			47512,
 		},
@@ -8373,8 +7834,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 819,
 		},
 	},
-	{
-		-- [Step 520
+	{ -- [Step 520
 		["PickUp"] = {
 			47103,
 		},
@@ -8384,8 +7844,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 		},
 	},
 
-	{
-		-- [Step 521
+	{ -- [Step 521
 		["Trigger"] = {
 			["y"] = -1052.8,
 			["x"] = 801.7,
@@ -8397,8 +7856,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 801.7,
 		},
 	},
-	{
-		-- [Step 522
+	{ -- [Step 522
 		["Done"] = {
 			47103,
 		},
@@ -8407,8 +7865,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 757.7,
 		},
 	},
-	{
-		-- [Step 523
+	{ -- [Step 523
 		["PickUp"] = {
 			48535,
 		},
@@ -8417,8 +7874,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 759,
 		},
 	},
-	{
-		-- [Step 524
+	{ -- [Step 524
 		["Qpart"] = {
 			[48535] = {
 				["1"] = "1",
@@ -8435,8 +7891,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 			["x"] = 751.9,
 		},
 	},
-	{
-		-- [Step 525
+	{ -- [Step 525
 		["UseGlider"] = 1,
 		["TT"] = {
 			["y"] = 514.5,
@@ -8452,8 +7907,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
 }
 -- Nazmir
 APR.QuestStepList["863-Nazmir"] = {
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["Done"] = {
 			48535,
 		},
@@ -8466,8 +7920,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			49901,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			47105,
 		},
@@ -8480,8 +7933,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			49901,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["ClearZP"] = 1,
 		["ExtraLineText"] = "CLICK_BUFFS_IN_ZONE",
 		["Trigger"] = {
@@ -8499,8 +7951,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 967.2,
 		},
 	},
-	{
-		-- [Step 4
+	{ -- [Step 4
 		["ExtraLineText"] = "CLICK_BUFFS_IN_ZONE",
 		["Done"] = {
 			47105,
@@ -8510,8 +7961,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 965,
 		},
 	},
-	{
-		-- [Step 5
+	{ -- [Step 5
 		["PickUp"] = {
 			47130,
 			47264,
@@ -8521,8 +7971,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 966.7,
 		},
 	},
-	{
-		-- [Step 6
+	{ -- [Step 6
 		["Qpart"] = {
 			[47130] = {
 				["1"] = "1",
@@ -8550,8 +7999,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 901.4,
 		},
 	},
-	{
-		-- [Step 7
+	{ -- [Step 7
 		["TT"] = {
 			["y"] = 908.6,
 			["x"] = 1048.3,
@@ -8561,8 +8009,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			47130,
 		},
 	},
-	{
-		-- [Step 8
+	{ -- [Step 8
 		["PickUp"] = {
 			47262,
 		},
@@ -8571,8 +8018,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1048.3,
 		},
 	},
-	{
-		-- [Step 9
+	{ -- [Step 9
 		["Bloodlust"] = 1,
 		["Trigger"] = {
 			["y"] = 1015.9,
@@ -8589,8 +8035,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1084.5,
 		},
 	},
-	{
-		-- [Step 10
+	{ -- [Step 10
 		["TT"] = {
 			["y"] = 1038,
 			["x"] = 1072.5,
@@ -8599,8 +8044,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			47262,
 		},
 	},
-	{
-		-- [Step 11
+	{ -- [Step 11
 		["PickUp"] = {
 			47263,
 		},
@@ -8609,8 +8053,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1072.5,
 		},
 	},
-	{
-		-- [Step 12
+	{ -- [Step 12
 		["Qpart"] = {
 			[47263] = {
 				["1"] = "1",
@@ -8627,8 +8070,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1053.5,
 		},
 	},
-	{
-		-- [Step 13
+	{ -- [Step 13
 		["Trigger"] = {
 			["y"] = 818.2,
 			["x"] = 1349.7,
@@ -8640,8 +8082,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1349.7,
 		},
 	},
-	{
-		-- [Step 14
+	{ -- [Step 14
 		["PickUp"] = {
 			51089,
 		},
@@ -8650,8 +8091,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1368,
 		},
 	},
-	{
-		-- [Step 15
+	{ -- [Step 15
 		["TT"] = {
 			["y"] = 758.1,
 			["x"] = 1390,
@@ -8660,8 +8100,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			47263,
 		},
 	},
-	{
-		-- [Step 16
+	{ -- [Step 16
 		["PickUp"] = {
 			47188,
 		},
@@ -8670,8 +8109,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1390.2,
 		},
 	},
-	{
-		-- [Step 17
+	{ -- [Step 17
 		["Gossip"] = 101,
 		["Qpart"] = {
 			[47188] = {
@@ -8688,8 +8126,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1390.2,
 		},
 	},
-	{
-		-- [Step 18
+	{ -- [Step 18
 		["Qpart"] = {
 			[47188] = {
 				["1"] = "1",
@@ -8705,8 +8142,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1390.2,
 		},
 	},
-	{
-		-- [Step 19
+	{ -- [Step 19
 		["TT"] = {
 			["y"] = 757.5,
 			["x"] = 1390.2,
@@ -8715,8 +8151,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			47188,
 		},
 	},
-	{
-		-- [Step 20
+	{ -- [Step 20
 		["PickUp"] = {
 			47241,
 		},
@@ -8725,8 +8160,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1390.2,
 		},
 	},
-	{
-		-- [Step 21
+	{ -- [Step 21
 		["Trigger"] = {
 			["y"] = 791.2,
 			["x"] = 1405.9,
@@ -8738,8 +8172,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1405.9,
 		},
 	},
-	{
-		-- [Step 22
+	{ -- [Step 22
 		["PickUp"] = {
 			48669,
 		},
@@ -8748,8 +8181,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1406.2,
 		},
 	},
-	{
-		-- [Step 23
+	{ -- [Step 23
 		["Qpart"] = {
 			[48669] = {
 				["1"] = "1",
@@ -8766,8 +8198,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1406.2,
 		},
 	},
-	{
-		-- [Step 24
+	{ -- [Step 24
 		["TT"] = {
 			["y"] = 805.4,
 			["x"] = 1407,
@@ -8776,8 +8207,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			48669,
 		},
 	},
-	{
-		-- [Step 25
+	{ -- [Step 25
 		["PickUp"] = {
 			48573,
 			48574,
@@ -8787,8 +8217,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1407,
 		},
 	},
-	{
-		-- [Step 26
+	{ -- [Step 26
 		["Qpart"] = {
 			[48574] = {
 				["1"] = "1",
@@ -8816,8 +8245,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1481.2,
 		},
 	},
-	{
-		-- [Step 27
+	{ -- [Step 27
 		["TT"] = {
 			["y"] = 776.2,
 			["x"] = 1656.4,
@@ -8827,8 +8255,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			48574,
 		},
 	},
-	{
-		-- [Step 28
+	{ -- [Step 28
 		["PickUp"] = {
 			48578,
 			48577,
@@ -8839,8 +8266,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1656,
 		},
 	},
-	{
-		-- [Step 29
+	{ -- [Step 29
 		["Qpart"] = {
 			[48578] = {
 				["1"] = "1",
@@ -8873,8 +8299,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1655,
 		},
 	},
-	{
-		-- [Step 30
+	{ -- [Step 30
 		["Qpart"] = {
 			[48576] = {
 				["1"] = "1",
@@ -8902,8 +8327,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1639.4,
 		},
 	},
-	{
-		-- [Step 31
+	{ -- [Step 31
 		["UseGlider"] = 1,
 		["Done"] = {
 			48578,
@@ -8915,8 +8339,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1655.7,
 		},
 	},
-	{
-		-- [Step 32
+	{ -- [Step 32
 		["PickUp"] = {
 			48584,
 			48590,
@@ -8926,8 +8349,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1655.4,
 		},
 	},
-	{
-		-- [Step 33
+	{ -- [Step 33
 		["Qpart"] = {
 			[48590] = {
 				["3"] = "3",
@@ -8960,8 +8382,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1935.9,
 		},
 	},
-	{
-		-- [Step 34
+	{ -- [Step 34
 		["Qpart"] = {
 			[48590] = {
 				["1"] = "1",
@@ -8994,8 +8415,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1785.7,
 		},
 	},
-	{
-		-- [Step 35
+	{ -- [Step 35
 		["Qpart"] = {
 			[48590] = {
 				["2"] = "2",
@@ -9028,8 +8448,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1815.5,
 		},
 	},
-	{
-		-- [Step 36
+	{ -- [Step 36
 		["Qpart"] = {
 			[48584] = {
 				["1"] = "1",
@@ -9059,8 +8478,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1932.2,
 		},
 	},
-	{
-		-- [Step 37
+	{ -- [Step 37
 		["TT"] = {
 			["y"] = 983.6,
 			["x"] = 1935.7,
@@ -9075,8 +8493,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 38
+	{ -- [Step 38
 		["PickUp"] = {
 			48591,
 		},
@@ -9090,8 +8507,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 39
+	{ -- [Step 39
 		["Trigger"] = {
 			["y"] = 951,
 			["x"] = 2079.4,
@@ -9112,8 +8528,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2079.4,
 		},
 	},
-	{
-		-- [Step 40
+	{ -- [Step 40
 		["TT"] = {
 			["y"] = 984,
 			["x"] = 1935.9,
@@ -9127,8 +8542,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 41
+	{ -- [Step 41
 		["Trigger"] = {
 			["y"] = 1161,
 			["x"] = 2008,
@@ -9149,8 +8563,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 42
+	{ -- [Step 42
 		["Trigger"] = {
 			["y"] = 994.7,
 			["x"] = 1918.7,
@@ -9166,8 +8579,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1918.7,
 		},
 	},
-	{
-		-- [Step 43
+	{ -- [Step 43
 		["Trigger"] = {
 			["y"] = 1252,
 			["x"] = 1367.2,
@@ -9183,8 +8595,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1367.2,
 		},
 	},
-	{
-		-- [Step 44
+	{ -- [Step 44
 		["Trigger"] = {
 			["y"] = 1318.5,
 			["x"] = 1475.9,
@@ -9200,8 +8611,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1475.9,
 		},
 	},
-	{
-		-- [Step 45
+	{ -- [Step 45
 		["PickUp"] = {
 			48468,
 			48473,
@@ -9211,8 +8621,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1394.3,
 		},
 	},
-	{
-		-- [Step 46
+	{ -- [Step 46
 		["Qpart"] = {
 			[48473] = {
 				["1"] = "1",
@@ -9241,8 +8650,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1339.2,
 		},
 	},
-	{
-		-- [Step 47
+	{ -- [Step 47
 		["TT"] = {
 			["y"] = 1428.5,
 			["x"] = 1401.9,
@@ -9252,8 +8660,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			48473,
 		},
 	},
-	{
-		-- [Step 48
+	{ -- [Step 48
 		["PickUp"] = {
 			48478,
 			48479,
@@ -9263,8 +8670,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1401.9,
 		},
 	},
-	{
-		-- [Step 49
+	{ -- [Step 49
 		["Qpart"] = {
 			[48478] = {
 				["2"] = "2",
@@ -9294,8 +8700,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1377.8,
 		},
 	},
-	{
-		-- [Step 50
+	{ -- [Step 50
 		["Qpart"] = {
 			[48478] = {
 				["3"] = "3",
@@ -9325,8 +8730,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1434.2,
 		},
 	},
-	{
-		-- [Step 51
+	{ -- [Step 51
 		["Qpart"] = {
 			[48478] = {
 				["1"] = "1",
@@ -9356,8 +8760,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1293.8,
 		},
 	},
-	{
-		-- [Step 52
+	{ -- [Step 52
 		["Trigger"] = {
 			["y"] = 1698.5,
 			["x"] = 1323.4,
@@ -9373,8 +8776,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1323.4,
 		},
 	},
-	{
-		-- [Step 53
+	{ -- [Step 53
 		["Done"] = {
 			48479,
 			48478,
@@ -9384,8 +8786,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1400,
 		},
 	},
-	{
-		-- [Step 54
+	{ -- [Step 54
 		["PickUp"] = {
 			48480,
 		},
@@ -9394,8 +8795,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1401,
 		},
 	},
-	{
-		-- [Step 55
+	{ -- [Step 55
 		["Trigger"] = {
 			["y"] = 1510.8,
 			["x"] = 1319.2,
@@ -9408,8 +8808,7 @@ APR.QuestStepList["863-Nazmir"] = {
 		},
 		["LeaveQuest"] = 52210,
 	},
-	{
-		-- [Step 56
+	{ -- [Step 56
 		["Trigger"] = {
 			["y"] = 1515,
 			["x"] = 1231.7,
@@ -9425,8 +8824,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1231.7,
 		},
 	},
-	{
-		-- [Step 57
+	{ -- [Step 57
 		["Done"] = {
 			48480,
 		},
@@ -9435,8 +8833,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1402.8,
 		},
 	},
-	{
-		-- [Step 58
+	{ -- [Step 58
 		["Trigger"] = {
 			["y"] = 1476.7,
 			["x"] = 1574,
@@ -9452,8 +8849,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1574,
 		},
 	},
-	{
-		-- [Step 59
+	{ -- [Step 59
 		["Done"] = {
 			47241,
 		},
@@ -9462,8 +8858,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1523,
 		},
 	},
-	{
-		-- [Step 60
+	{ -- [Step 60
 		["PickUp"] = {
 			47244,
 		},
@@ -9472,8 +8867,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1523,
 		},
 	},
-	{
-		-- [Step 61
+	{ -- [Step 61
 		["Trigger"] = {
 			["y"] = 1768,
 			["x"] = 1422.5,
@@ -9489,8 +8883,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1422.5,
 		},
 	},
-	{
-		-- [Step 62
+	{ -- [Step 62
 		["Done"] = {
 			47244,
 		},
@@ -9499,8 +8892,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1370.5,
 		},
 	},
-	{
-		-- [Step 63
+	{ -- [Step 63
 		["PickUp"] = {
 			49278,
 		},
@@ -9509,8 +8901,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1370.5,
 		},
 	},
-	{
-		-- [Step 64
+	{ -- [Step 64
 		["Trigger"] = {
 			["y"] = 2028,
 			["x"] = 1336,
@@ -9522,8 +8913,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1336,
 		},
 	},
-	{
-		-- [Step 65
+	{ -- [Step 65
 		["Trigger"] = {
 			["y"] = 2028,
 			["x"] = 1336,
@@ -9539,8 +8929,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1336,
 		},
 	},
-	{
-		-- [Step 66
+	{ -- [Step 66
 		["Done"] = {
 			49278,
 		},
@@ -9549,8 +8938,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1370,
 		},
 	},
-	{
-		-- [Step 67
+	{ -- [Step 67
 		["PickUp"] = {
 			49440,
 			47868,
@@ -9560,8 +8948,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1366.7,
 		},
 	},
-	{
-		-- [Step 68
+	{ -- [Step 68
 		["Qpart"] = {
 			[49440] = {
 				["1"] = "1",
@@ -9578,8 +8965,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1367.4,
 		},
 	},
-	{
-		-- [Step 69
+	{ -- [Step 69
 		["Qpart"] = {
 			[49440] = {
 				["2"] = "2",
@@ -9596,8 +8982,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1365.7,
 		},
 	},
-	{
-		-- [Step 70
+	{ -- [Step 70
 		["TT"] = {
 			["y"] = 1991,
 			["x"] = 1364.5,
@@ -9606,8 +8991,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			49440,
 		},
 	},
-	{
-		-- [Step 71
+	{ -- [Step 71
 		["PickUp"] = {
 			48699,
 		},
@@ -9616,8 +9000,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1364.5,
 		},
 	},
-	{
-		-- [Step 72
+	{ -- [Step 72
 		["PickUp"] = {
 			48854,
 		},
@@ -9626,8 +9009,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1820.3,
 		},
 	},
-	{
-		-- [Step 73
+	{ -- [Step 73
 		["Qpart"] = {
 			[48854] = {
 				["1"] = "1",
@@ -9644,8 +9026,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1820.3,
 		},
 	},
-	{
-		-- [Step 74
+	{ -- [Step 74
 		["Trigger"] = {
 			["y"] = 1702.8,
 			["x"] = 1819.2,
@@ -9661,8 +9042,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1819.2,
 		},
 	},
-	{
-		-- [Step 75
+	{ -- [Step 75
 		["TT"] = {
 			["y"] = 1703.7,
 			["x"] = 1816,
@@ -9671,8 +9051,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			48854,
 		},
 	},
-	{
-		-- [Step 76
+	{ -- [Step 76
 		["PickUp"] = {
 			48823,
 			48825,
@@ -9682,8 +9061,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1819.2,
 		},
 	},
-	{
-		-- [Step 77
+	{ -- [Step 77
 		["Qpart"] = {
 			[48823] = {
 				["1"] = "1",
@@ -9700,8 +9078,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1816,
 		},
 	},
-	{
-		-- [Step 78
+	{ -- [Step 78
 		["Qpart"] = {
 			[48825] = {
 				["1"] = "1",
@@ -9734,8 +9111,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1709.9,
 		},
 	},
-	{
-		-- [Step 79
+	{ -- [Step 79
 		["Qpart"] = {
 			[48823] = {
 				["2"] = "2",
@@ -9765,8 +9141,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1714.3,
 		},
 	},
-	{
-		-- [Step 80
+	{ -- [Step 80
 		["Done"] = {
 			48823,
 			48825,
@@ -9776,8 +9151,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1815.7,
 		},
 	},
-	{
-		-- [Step 81
+	{ -- [Step 81
 		["PickUp"] = {
 			48857,
 			48856,
@@ -9788,8 +9162,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1818.5,
 		},
 	},
-	{
-		-- [Step 82
+	{ -- [Step 82
 		["Qpart"] = {
 			[48857] = {
 				["1"] = "1",
@@ -9806,8 +9179,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1822.3,
 		},
 	},
-	{
-		-- [Step 83
+	{ -- [Step 83
 		["Qpart"] = {
 			[48857] = {
 				["2"] = "2",
@@ -9834,8 +9206,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1899.9,
 		},
 	},
-	{
-		-- [Step 84
+	{ -- [Step 84
 		["Qpart"] = {
 			[48856] = {
 				["1"] = "1",
@@ -9857,8 +9228,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1892.2,
 		},
 	},
-	{
-		-- [Step 85
+	{ -- [Step 85
 		["TT"] = {
 			["y"] = 1702.2,
 			["x"] = 1819.9,
@@ -9869,8 +9239,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			48855,
 		},
 	},
-	{
-		-- [Step 86
+	{ -- [Step 86
 		["PickUp"] = {
 			48869,
 		},
@@ -9879,8 +9248,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1819.9,
 		},
 	},
-	{
-		-- [Step 87
+	{ -- [Step 87
 		["Qpart"] = {
 			[48869] = {
 				["1"] = "1",
@@ -9901,8 +9269,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1792.7,
 		},
 	},
-	{
-		-- [Step 88
+	{ -- [Step 88
 		["Trigger"] = {
 			["y"] = 1507.5,
 			["x"] = 1801.5,
@@ -9918,8 +9285,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1801.5,
 		},
 	},
-	{
-		-- [Step 89
+	{ -- [Step 89
 		["TT"] = {
 			["y"] = 1702,
 			["x"] = 1819.5,
@@ -9928,8 +9294,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			48869,
 		},
 	},
-	{
-		-- [Step 90
+	{ -- [Step 90
 		["PickUp"] = {
 			50933,
 		},
@@ -9938,8 +9303,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1910.8,
 		},
 	},
-	{
-		-- [Step 91
+	{ -- [Step 91
 		["Done"] = {
 			50933,
 		},
@@ -9948,8 +9312,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2180.1,
 		},
 	},
-	{
-		-- [Step 92
+	{ -- [Step 92
 		["PickUp"] = {
 			49777,
 			49776,
@@ -9960,8 +9323,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2179.3,
 		},
 	},
-	{
-		-- [Step 93
+	{ -- [Step 93
 		["Qpart"] = {
 			[49777] = {
 				["1"] = "1",
@@ -9986,8 +9348,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2314.1,
 		},
 	},
-	{
-		-- [Step 94
+	{ -- [Step 94
 		["Qpart"] = {
 			[49777] = {
 				["3"] = "3",
@@ -10012,8 +9373,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2326.6,
 		},
 	},
-	{
-		-- [Step 95
+	{ -- [Step 95
 		["Qpart"] = {
 			[49777] = {
 				["2"] = "2",
@@ -10038,8 +9398,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2207.5,
 		},
 	},
-	{
-		-- [Step 96
+	{ -- [Step 96
 		["Trigger"] = {
 			["y"] = 1784,
 			["x"] = 2295,
@@ -10058,8 +9417,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2295,
 		},
 	},
-	{
-		-- [Step 97
+	{ -- [Step 97
 		["TT"] = {
 			["y"] = 1665.5,
 			["x"] = 2179.1,
@@ -10070,8 +9428,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			49777,
 		},
 	},
-	{
-		-- [Step 98
+	{ -- [Step 98
 		["PickUp"] = {
 			49778,
 		},
@@ -10080,8 +9437,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2179.1,
 		},
 	},
-	{
-		-- [Step 99
+	{ -- [Step 99
 		["Qpart"] = {
 			[49778] = {
 				["1"] = "1",
@@ -10098,8 +9454,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2178.3,
 		},
 	},
-	{
-		-- [Step 100
+	{ -- [Step 100
 		["TT"] = {
 			["y"] = 1667.2,
 			["x"] = 2180.1,
@@ -10108,8 +9463,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			49778,
 		},
 	},
-	{
-		-- [Step 101
+	{ -- [Step 101
 		["PickUp"] = {
 			49780,
 			49779,
@@ -10119,8 +9473,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2179.3,
 		},
 	},
-	{
-		-- [Step 102
+	{ -- [Step 102
 		["Qpart"] = {
 			[49779] = {
 				["1"] = "1",
@@ -10142,8 +9495,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2162.4,
 		},
 	},
-	{
-		-- [Step 103
+	{ -- [Step 103
 		["Done"] = {
 			49780,
 			49779,
@@ -10153,8 +9505,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2178.6,
 		},
 	},
-	{
-		-- [Step 104
+	{ -- [Step 104
 		["PickUp"] = {
 			49781,
 		},
@@ -10163,8 +9514,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2178.6,
 		},
 	},
-	{
-		-- [Step 105
+	{ -- [Step 105
 		["Trigger"] = {
 			["y"] = 1658.7,
 			["x"] = 2176.1,
@@ -10180,8 +9530,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2176.1,
 		},
 	},
-	{
-		-- [Step 106
+	{ -- [Step 106
 		["Done"] = {
 			49781,
 		},
@@ -10190,8 +9539,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1957.5,
 		},
 	},
-	{
-		-- [Step 107
+	{ -- [Step 107
 		["PickUp"] = {
 			48492,
 		},
@@ -10200,8 +9548,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1943,
 		},
 	},
-	{
-		-- [Step 108
+	{ -- [Step 108
 		["Trigger"] = {
 			["y"] = 1995.5,
 			["x"] = 1943.3,
@@ -10217,8 +9564,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1943.3,
 		},
 	},
-	{
-		-- [Step 109
+	{ -- [Step 109
 		["Qpart"] = {
 			[48492] = {
 				["2"] = "2",
@@ -10235,8 +9581,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1944.7,
 		},
 	},
-	{
-		-- [Step 110
+	{ -- [Step 110
 
 		["TT"] = {
 			["y"] = 1994.3,
@@ -10246,8 +9591,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			48492,
 		},
 	},
-	{
-		-- [Step 111
+	{ -- [Step 111
 
 		["PickUp"] = {
 			48496,
@@ -10258,8 +9602,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1943.5,
 		},
 	},
-	{
-		-- [Step 112
+	{ -- [Step 112
 
 		["Qpart"] = {
 			[48496] = {
@@ -10281,8 +9624,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2007.4,
 		},
 	},
-	{
-		-- [Step 113
+	{ -- [Step 113
 
 		["Qpart"] = {
 			[48496] = {
@@ -10304,8 +9646,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2072.6,
 		},
 	},
-	{
-		-- [Step 114
+	{ -- [Step 114
 
 		["Qpart"] = {
 			[48496] = {
@@ -10327,8 +9668,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2049.6,
 		},
 	},
-	{
-		-- [Step 115
+	{ -- [Step 115
 
 		["PickUp"] = {
 			48498,
@@ -10338,8 +9678,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2050.3,
 		},
 	},
-	{
-		-- [Step 116
+	{ -- [Step 116
 
 		["Trigger"] = {
 			["y"] = 2191.4,
@@ -10352,8 +9691,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2078,
 		},
 	},
-	{
-		-- [Step 117
+	{ -- [Step 117
 
 		["Qpart"] = {
 			[48498] = {
@@ -10375,8 +9713,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2109.6,
 		},
 	},
-	{
-		-- [Step 118
+	{ -- [Step 118
 
 		["Qpart"] = {
 			[48496] = {
@@ -10398,8 +9735,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2005.7,
 		},
 	},
-	{
-		-- [Step 119
+	{ -- [Step 119
 
 		["Trigger"] = {
 			["y"] = 2175.1,
@@ -10416,8 +9752,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2013,
 		},
 	},
-	{
-		-- [Step 120
+	{ -- [Step 120
 
 		["Done"] = {
 			48497,
@@ -10429,8 +9764,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2088.5,
 		},
 	},
-	{
-		-- [Step 121
+	{ -- [Step 121
 
 		["PickUp"] = {
 			49479,
@@ -10440,8 +9774,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2088.5,
 		},
 	},
-	{
-		-- [Step 122
+	{ -- [Step 122
 
 		["Qpart"] = {
 			[49479] = {
@@ -10459,8 +9792,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2089.1,
 		},
 	},
-	{
-		-- [Step 123
+	{ -- [Step 123
 
 		["Done"] = {
 			49479,
@@ -10470,8 +9802,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2089.4,
 		},
 	},
-	{
-		-- [Step 124
+	{ -- [Step 124
 
 		["PickUp"] = {
 			48499,
@@ -10481,8 +9812,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2089.3,
 		},
 	},
-	{
-		-- [Step 125
+	{ -- [Step 125
 		["ExtraActionB"] = 1,
 
 		["Trigger"] = {
@@ -10500,8 +9830,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2058.3,
 		},
 	},
-	{
-		-- [Step 126
+	{ -- [Step 126
 		["ExtraActionB"] = 1,
 
 		["Trigger"] = {
@@ -10519,8 +9848,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2012,
 		},
 	},
-	{
-		-- [Step 127
+	{ -- [Step 127
 
 		["Done"] = {
 			48499,
@@ -10530,8 +9858,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 2089.1,
 		},
 	},
-	{
-		-- [Step 128
+	{ -- [Step 128
 		["Qpart"] = {
 			[48699] = {
 				["1"] = "1",
@@ -10548,8 +9875,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1746.2,
 		},
 	},
-	{
-		-- [Step 129
+	{ -- [Step 129
 		["Done"] = {
 			48699,
 		},
@@ -10558,8 +9884,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1694.9,
 		},
 	},
-	{
-		-- [Step 130
+	{ -- [Step 130
 		["PickUp"] = {
 			48801,
 			48890,
@@ -10569,8 +9894,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1694.9,
 		},
 	},
-	{
-		-- [Step 131
+	{ -- [Step 131
 		["Trigger"] = {
 			["y"] = 1909,
 			["x"] = 1704.5,
@@ -10582,8 +9906,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1704.5,
 		},
 	},
-	{
-		-- [Step 132
+	{ -- [Step 132
 		["Qpart"] = {
 			[48801] = {
 				["2"] = "2",
@@ -10600,8 +9923,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1592.5,
 		},
 	},
-	{
-		-- [Step 133
+	{ -- [Step 133
 		["Qpart"] = {
 			[48801] = {
 				["3"] = "3",
@@ -10623,8 +9945,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1809.8,
 		},
 	},
-	{
-		-- [Step 134
+	{ -- [Step 134
 		["Qpart"] = {
 			[48801] = {
 				["1"] = "1",
@@ -10646,8 +9967,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1789.7,
 		},
 	},
-	{
-		-- [Step 135
+	{ -- [Step 135
 		["Trigger"] = {
 			["y"] = 1979.5,
 			["x"] = 1764.4,
@@ -10663,8 +9983,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1764.4,
 		},
 	},
-	{
-		-- [Step 136
+	{ -- [Step 136
 		["Done"] = {
 			48890,
 			48801,
@@ -10674,8 +9993,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1695.2,
 		},
 	},
-	{
-		-- [Step 137
+	{ -- [Step 137
 		["PickUp"] = {
 			49078,
 			48800,
@@ -10685,8 +10003,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1694.4,
 		},
 	},
-	{
-		-- [Step 138
+	{ -- [Step 138
 		["Qpart"] = {
 			[48800] = {
 				["1"] = "1",
@@ -10719,8 +10036,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1679.5,
 		},
 	},
-	{
-		-- [Step 139
+	{ -- [Step 139
 		["Qpart"] = {
 			[48800] = {
 				["3"] = "3",
@@ -10753,8 +10069,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1732.5,
 		},
 	},
-	{
-		-- [Step 140
+	{ -- [Step 140
 		["Qpart"] = {
 			[48800] = {
 				["2"] = "2",
@@ -10787,8 +10102,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1822.9,
 		},
 	},
-	{
-		-- [Step 141
+	{ -- [Step 141
 		["Qpart"] = {
 			[49078] = {
 				["1"] = "1",
@@ -10818,8 +10132,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1813.9,
 		},
 	},
-	{
-		-- [Step 142
+	{ -- [Step 142
 		["Done"] = {
 			48800,
 			49078,
@@ -10829,8 +10142,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1694,
 		},
 	},
-	{
-		-- [Step 143
+	{ -- [Step 143
 		["PickUp"] = {
 			49079,
 		},
@@ -10839,8 +10151,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1694,
 		},
 	},
-	{
-		-- [Step 144
+	{ -- [Step 144
 		["Qpart"] = {
 			[49079] = {
 				["1"] = "1",
@@ -10857,8 +10168,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1758.3,
 		},
 	},
-	{
-		-- [Step 145
+	{ -- [Step 145
 		["Trigger"] = {
 			["y"] = 1830.8,
 			["x"] = 1807.8,
@@ -10874,8 +10184,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1810.5,
 		},
 	},
-	{
-		-- [Step 146
+	{ -- [Step 146
 		["Done"] = {
 			49079,
 		},
@@ -10884,8 +10193,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1805.5,
 		},
 	},
-	{
-		-- [Step 147
+	{ -- [Step 147
 		["PickUp"] = {
 			49081,
 		},
@@ -10894,8 +10202,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1805.5,
 		},
 	},
-	{
-		-- [Step 148
+	{ -- [Step 148
 		["Bloodlust"] = 1,
 		["Trigger"] = {
 			["y"] = 1900.5,
@@ -10912,8 +10219,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1891.5,
 		},
 	},
-	{
-		-- [Step 149
+	{ -- [Step 149
 		["Done"] = {
 			49081,
 		},
@@ -10922,8 +10228,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1805.7,
 		},
 	},
-	{
-		-- [Step 150
+	{ -- [Step 150
 		["PickUp"] = {
 			49082,
 		},
@@ -10932,8 +10237,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1805.7,
 		},
 	},
-	{
-		-- [Step 151
+	{ -- [Step 151
 		["Trigger"] = {
 			["y"] = 1891.9,
 			["x"] = 1803.9,
@@ -10949,8 +10253,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1803.9,
 		},
 	},
-	{
-		-- [Step 152
+	{ -- [Step 152
 		["Qpart"] = {
 			[49406] = {
 				["1"] = "1",
@@ -10966,8 +10269,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1644.3,
 		},
 	},
-	{
-		-- [Step 153
+	{ -- [Step 153
 		["Qpart"] = {
 			[49082] = {
 				["2"] = "2",
@@ -10984,8 +10286,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1364.5,
 		},
 	},
-	{
-		-- [Step 154
+	{ -- [Step 154
 		["Done"] = {
 			49082,
 		},
@@ -10994,8 +10295,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1366.2,
 		},
 	},
-	{
-		-- [Step 155
+	{ -- [Step 155
 		["Done"] = {
 			47868,
 		},
@@ -11004,8 +10304,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1367.4,
 		},
 	},
-	{
-		-- [Step 156
+	{ -- [Step 156
 		["PickUp"] = {
 			47880,
 		},
@@ -11014,8 +10313,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1367.4,
 		},
 	},
-	{
-		-- [Step 157
+	{ -- [Step 157
 		["Trigger"] = {
 			["y"] = 2385.3,
 			["x"] = 1367.4,
@@ -11031,8 +10329,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1367,
 		},
 	},
-	{
-		-- [Step 158
+	{ -- [Step 158
 		["Trigger"] = {
 			["y"] = 2411.6,
 			["x"] = 1367,
@@ -11048,8 +10345,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1367,
 		},
 	},
-	{
-		-- [Step 159
+	{ -- [Step 159
 		["Trigger"] = {
 			["y"] = 2503.1,
 			["x"] = 1371,
@@ -11061,8 +10357,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1371,
 		},
 	},
-	{
-		-- [Step 160
+	{ -- [Step 160
 		["Done"] = {
 			47880,
 		},
@@ -11071,8 +10366,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1368,
 		},
 	},
-	{
-		-- [Step 161
+	{ -- [Step 161
 		["PickUp"] = {
 			47491,
 			47247,
@@ -11083,8 +10377,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1367.5,
 		},
 	},
-	{
-		-- [Step 162
+	{ -- [Step 162
 		["Trigger"] = {
 			["y"] = 2574.4,
 			["x"] = 1368.4,
@@ -11096,8 +10389,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1368.4,
 		},
 	},
-	{
-		-- [Step 163
+	{ -- [Step 163
 		["PickUp"] = {
 			47248,
 		},
@@ -11114,8 +10406,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 164
+	{ -- [Step 164
 		["Qpart"] = {
 			[47247] = {
 				["2"] = "2",
@@ -11139,8 +10430,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1549.5,
 		},
 	},
-	{
-		-- [Step 165
+	{ -- [Step 165
 		["Qpart"] = {
 			[47247] = {
 				["1"] = "1",
@@ -11167,8 +10457,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1162,
 		},
 	},
-	{
-		-- [Step 166
+	{ -- [Step 166
 		["PickUp"] = {
 			49432,
 		},
@@ -11188,8 +10477,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 167
+	{ -- [Step 167
 		["Qpart"] = {
 			[49348] = {
 				["1"] = "1",
@@ -11213,8 +10501,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 168
+	{ -- [Step 168
 		["Trigger"] = {
 			["y"] = 2423.9,
 			["x"] = 1367.5,
@@ -11237,8 +10524,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 169
+	{ -- [Step 169
 		["Qpart"] = {
 			[49432] = {
 				["1"] = "1",
@@ -11265,8 +10551,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1367.7,
 		},
 	},
-	{
-		-- [Step 170
+	{ -- [Step 170
 		["Trigger"] = {
 			["y"] = 2305.4,
 			["x"] = 1365,
@@ -11282,8 +10567,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1365,
 		},
 	},
-	{
-		-- [Step 171
+	{ -- [Step 171
 		["Trigger"] = {
 			["y"] = 2428.9,
 			["x"] = 1367,
@@ -11306,8 +10590,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 172
+	{ -- [Step 172
 		["Trigger"] = {
 			["y"] = 2517,
 			["x"] = 1326.5,
@@ -11330,8 +10613,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 173
+	{ -- [Step 173
 		["Qpart"] = {
 			[47248] = {
 				["1"] = "1",
@@ -11358,8 +10640,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1326,
 		},
 	},
-	{
-		-- [Step 174
+	{ -- [Step 174
 		["Trigger"] = {
 			["y"] = 2518.6,
 			["x"] = 1326.5,
@@ -11382,8 +10663,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 175
+	{ -- [Step 175
 		["TT"] = {
 			["y"] = 2568.5,
 			["x"] = 1521.3,
@@ -11403,8 +10683,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 176
+	{ -- [Step 176
 		["Qpart"] = {
 			[47491] = {
 				["1"] = "1",
@@ -11425,8 +10704,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1518.5,
 		},
 	},
-	{
-		-- [Step 177
+	{ -- [Step 177
 		["Qpart"] = {
 			[49348] = {
 				["1"] = "1",
@@ -11445,8 +10723,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1210.9,
 		},
 	},
-	{
-		-- [Step 178
+	{ -- [Step 178
 		["Trigger"] = {
 			["y"] = 2588.1,
 			["x"] = 1367.7,
@@ -11458,8 +10735,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1367.7,
 		},
 	},
-	{
-		-- [Step 179
+	{ -- [Step 179
 		["TT"] = {
 			["y"] = 2662,
 			["x"] = 1368.4,
@@ -11471,8 +10747,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			47491,
 		},
 	},
-	{
-		-- [Step 180
+	{ -- [Step 180
 		["PickUp"] = {
 			47249,
 		},
@@ -11481,8 +10756,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1368.4,
 		},
 	},
-	{
-		-- [Step 181
+	{ -- [Step 181
 		["Qpart"] = {
 			[47249] = {
 				["1"] = "1",
@@ -11499,8 +10773,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1367,
 		},
 	},
-	{
-		-- [Step 182
+	{ -- [Step 182
 		["Trigger"] = {
 			["y"] = 2470.9,
 			["x"] = 1369.9,
@@ -11516,8 +10789,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1369.9,
 		},
 	},
-	{
-		-- [Step 183
+	{ -- [Step 183
 		["TT"] = {
 			["y"] = 2469.6,
 			["x"] = 1368.7,
@@ -11526,8 +10798,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			47249,
 		},
 	},
-	{
-		-- [Step 184
+	{ -- [Step 184
 		["PickUp"] = {
 			47250,
 		},
@@ -11536,8 +10807,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1368.7,
 		},
 	},
-	{
-		-- [Step 185
+	{ -- [Step 185
 		["Trigger"] = {
 			["y"] = 2448.9,
 			["x"] = 1402.2,
@@ -11549,8 +10819,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1402.2,
 		},
 	},
-	{
-		-- [Step 186
+	{ -- [Step 186
 		["Trigger"] = {
 			["y"] = 2412.3,
 			["x"] = 1401.5,
@@ -11562,8 +10831,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1401.5,
 		},
 	},
-	{
-		-- [Step 187
+	{ -- [Step 187
 		["Trigger"] = {
 			["y"] = 2377.6,
 			["x"] = 1375.4,
@@ -11575,8 +10843,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1375.4,
 		},
 	},
-	{
-		-- [Step 188
+	{ -- [Step 188
 		["TT"] = {
 			["y"] = 1991.3,
 			["x"] = 1370.3,
@@ -11585,8 +10852,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			47250,
 		},
 	},
-	{
-		-- [Step 189
+	{ -- [Step 189
 		["PickUp"] = {
 			49185,
 		},
@@ -11595,8 +10861,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1376.3,
 		},
 	},
-	{
-		-- [Step 190
+	{ -- [Step 190
 		["Qpart"] = {
 			[49185] = {
 				["1"] = "1",
@@ -11613,8 +10878,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1376.3,
 		},
 	},
-	{
-		-- [Step 191
+	{ -- [Step 191
 		["Done"] = {
 			49185,
 		},
@@ -11623,8 +10887,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1374.9,
 		},
 	},
-	{
-		-- [Step 192
+	{ -- [Step 192
 		["PickUp"] = {
 			49064,
 		},
@@ -11633,8 +10896,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1374.9,
 		},
 	},
-	{
-		-- [Step 193
+	{ -- [Step 193
 		["Trigger"] = {
 			["y"] = 1953.8,
 			["x"] = 1352.5,
@@ -11646,8 +10908,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1352.5,
 		},
 	},
-	{
-		-- [Step 194
+	{ -- [Step 194
 		["Qpart"] = {
 			[49064] = {
 				["1"] = "1",
@@ -11664,8 +10925,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 523.6,
 		},
 	},
-	{
-		-- [Step 195
+	{ -- [Step 195
 
 		["PickUp"] = {
 			47924,
@@ -11675,8 +10935,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 549.4,
 		},
 	},
-	{
-		-- [Step 196
+	{ -- [Step 196
 
 		["Qpart"] = {
 			[47924] = {
@@ -11707,8 +10966,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 677.7,
 		},
 	},
-	{
-		-- [Step 197
+	{ -- [Step 197
 
 		["Trigger"] = {
 			["y"] = 2345.9,
@@ -11725,8 +10983,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 677.7,
 		},
 	},
-	{
-		-- [Step 198
+	{ -- [Step 198
 
 		["Done"] = {
 			47924,
@@ -11736,8 +10993,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 727,
 		},
 	},
-	{
-		-- [Step 199
+	{ -- [Step 199
 
 		["PickUp"] = {
 			47998,
@@ -11749,8 +11005,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 727,
 		},
 	},
-	{
-		-- [Step 200
+	{ -- [Step 200
 
 		["Qpart"] = {
 			[47919] = {
@@ -11772,8 +11027,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 863.6,
 		},
 	},
-	{
-		-- [Step 201
+	{ -- [Step 201
 
 		["Qpart"] = {
 			[47919] = {
@@ -11795,8 +11049,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 788,
 		},
 	},
-	{
-		-- [Step 202
+	{ -- [Step 202
 
 		["Trigger"] = {
 			["y"] = 2190.1,
@@ -11814,8 +11067,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 203
+	{ -- [Step 203
 
 		["Qpart"] = {
 			[47919] = {
@@ -11837,8 +11089,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 839.4,
 		},
 	},
-	{
-		-- [Step 204
+	{ -- [Step 204
 
 		["Qpart"] = {
 			[47925] = {
@@ -11861,8 +11112,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 849.7,
 		},
 	},
-	{
-		-- [Step 205
+	{ -- [Step 205
 
 		["Trigger"] = {
 			["y"] = 2162.6,
@@ -11879,8 +11129,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 849.2,
 		},
 	},
-	{
-		-- [Step 206
+	{ -- [Step 206
 
 		["TT"] = {
 			["y"] = 2395.3,
@@ -11892,8 +11141,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			47919,
 		},
 	},
-	{
-		-- [Step 207
+	{ -- [Step 207
 		["Trigger"] = {
 			["y"] = 2542.9,
 			["x"] = 520.7,
@@ -11909,8 +11157,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 520.7,
 		},
 	},
-	{
-		-- [Step 208
+	{ -- [Step 208
 		["Done"] = {
 			49064,
 		},
@@ -11919,8 +11166,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 475.1,
 		},
 	},
-	{
-		-- [Step 209
+	{ -- [Step 209
 		["PickUp"] = {
 			49067,
 		},
@@ -11929,8 +11175,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 475.1,
 		},
 	},
-	{
-		-- [Step 210
+	{ -- [Step 210
 		["Qpart"] = {
 			[49067] = {
 				["1"] = "1",
@@ -11947,8 +11192,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 475.1,
 		},
 	},
-	{
-		-- [Step 211
+	{ -- [Step 211
 		["Done"] = {
 			49067,
 		},
@@ -11957,8 +11201,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 476.3,
 		},
 	},
-	{
-		-- [Step 212
+	{ -- [Step 212
 		["PickUp"] = {
 			49070,
 			49071,
@@ -11969,8 +11212,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 476.3,
 		},
 	},
-	{
-		-- [Step 213
+	{ -- [Step 213
 		["Trigger"] = {
 			["y"] = 2658.9,
 			["x"] = 365,
@@ -11982,8 +11224,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 365,
 		},
 	},
-	{
-		-- [Step 214
+	{ -- [Step 214
 		["Qpart"] = {
 			[49071] = {
 				["1"] = "1",
@@ -12011,8 +11252,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 319.3,
 		},
 	},
-	{
-		-- [Step 215
+	{ -- [Step 215
 		["Qpart"] = {
 			[49080] = {
 				["1"] = "1",
@@ -12045,8 +11285,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 241,
 		},
 	},
-	{
-		-- [Step 216
+	{ -- [Step 216
 		["TT"] = {
 			["y"] = 2594.6,
 			["x"] = 476.3,
@@ -12057,8 +11296,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			49080,
 		},
 	},
-	{
-		-- [Step 217
+	{ -- [Step 217
 		["PickUp"] = {
 			49120,
 		},
@@ -12067,8 +11305,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 475.2,
 		},
 	},
-	{
-		-- [Step 218
+	{ -- [Step 218
 		["Qpart"] = {
 			[49120] = {
 				["1"] = "1",
@@ -12085,8 +11322,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 475.2,
 		},
 	},
-	{
-		-- [Step 219
+	{ -- [Step 219
 		["Done"] = {
 			49120,
 		},
@@ -12095,8 +11331,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 475.2,
 		},
 	},
-	{
-		-- [Step 220
+	{ -- [Step 220
 		["PickUp"] = {
 			49125,
 		},
@@ -12105,8 +11340,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 475.2,
 		},
 	},
-	{
-		-- [Step 221
+	{ -- [Step 221
 		["Qpart"] = {
 			[49125] = {
 				["2"] = "2",
@@ -12139,8 +11373,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 176,
 		},
 	},
-	{
-		-- [Step 222
+	{ -- [Step 222
 		["Qpart"] = {
 			[49125] = {
 				["1"] = "1",
@@ -12170,8 +11403,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 179.4,
 		},
 	},
-	{
-		-- [Step 223
+	{ -- [Step 223
 		["Trigger"] = {
 			["y"] = 2599.3,
 			["x"] = 225.9,
@@ -12187,8 +11419,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 225.9,
 		},
 	},
-	{
-		-- [Step 224
+	{ -- [Step 224
 		["Done"] = {
 			49125,
 		},
@@ -12197,8 +11428,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 9,
 		},
 	},
-	{
-		-- [Step 225
+	{ -- [Step 225
 		["PickUp"] = {
 			49126,
 		},
@@ -12207,8 +11437,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -2.5,
 		},
 	},
-	{
-		-- [Step 226
+	{ -- [Step 226
 		["ExtraActionB"] = 1,
 		["Trigger"] = {
 			["y"] = 2934.9,
@@ -12225,8 +11454,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 64.7,
 		},
 	},
-	{
-		-- [Step 227
+	{ -- [Step 227
 		["Trigger"] = {
 			["y"] = 2934.9,
 			["x"] = 64.7,
@@ -12242,8 +11470,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 64.7,
 		},
 	},
-	{
-		-- [Step 228
+	{ -- [Step 228
 		["Done"] = {
 			49126,
 		},
@@ -12252,8 +11479,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 374.8,
 		},
 	},
-	{
-		-- [Step 229
+	{ -- [Step 229
 		["PickUp"] = {
 			49130,
 			49132,
@@ -12264,8 +11490,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 373.6,
 		},
 	},
-	{
-		-- [Step 230
+	{ -- [Step 230
 		["Trigger"] = {
 			["y"] = 2913.5,
 			["x"] = 449,
@@ -12287,8 +11512,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 449,
 		},
 	},
-	{
-		-- [Step 231
+	{ -- [Step 231
 		["Done"] = {
 			49130,
 			49132,
@@ -12299,8 +11523,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 476.8,
 		},
 	},
-	{
-		-- [Step 232
+	{ -- [Step 232
 		["PickUp"] = {
 			49136,
 		},
@@ -12309,8 +11532,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 476.8,
 		},
 	},
-	{
-		-- [Step 233
+	{ -- [Step 233
 		["Trigger"] = {
 			["y"] = 2654.3,
 			["x"] = 368.2,
@@ -12322,8 +11544,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 368.2,
 		},
 	},
-	{
-		-- [Step 234
+	{ -- [Step 234
 		["Bloodlust"] = 1,
 		["Immuneatstart"] = 1,
 		["Trigger"] = {
@@ -12341,8 +11562,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 241.3,
 		},
 	},
-	{
-		-- [Step 235
+	{ -- [Step 235
 		["Done"] = {
 			49136,
 		},
@@ -12351,8 +11571,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 474.8,
 		},
 	},
-	{
-		-- [Step 236
+	{ -- [Step 236
 		["PickUp"] = {
 			49160,
 		},
@@ -12361,8 +11580,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 478,
 		},
 	},
-	{
-		-- [Step 237
+	{ -- [Step 237
 		["Qpart"] = {
 			[49160] = {
 				["1"] = "1",
@@ -12387,8 +11605,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 478,
 		},
 	},
-	{
-		-- [Step 238
+	{ -- [Step 238
 		["Done"] = {
 			49160,
 		},
@@ -12397,8 +11614,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 475,
 		},
 	},
-	{
-		-- [Step 239
+	{ -- [Step 239
 		["PickUp"] = {
 			49902,
 		},
@@ -12407,8 +11623,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 475,
 		},
 	},
-	{
-		-- [Step 240
+	{ -- [Step 240
 		["QpartPart"] = {
 			[49902] = {
 				["1"] = "1",
@@ -12426,8 +11641,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 519.7,
 		},
 	},
-	{
-		-- [Step 241
+	{ -- [Step 241
 		["QpartPart"] = {
 			[49902] = {
 				["1"] = "1",
@@ -12445,8 +11659,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 282.7,
 		},
 	},
-	{
-		-- [Step 242
+	{ -- [Step 242
 		["QpartPart"] = {
 			[49902] = {
 				["1"] = "1",
@@ -12464,8 +11677,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 91.9,
 		},
 	},
-	{
-		-- [Step 243
+	{ -- [Step 243
 		["TT"] = {
 			["y"] = 2045.7,
 			["x"] = -93.5,
@@ -12474,8 +11686,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			49902,
 		},
 	},
-	{
-		-- [Step 244
+	{ -- [Step 244
 		["PickUp"] = {
 			47245,
 			47525,
@@ -12485,8 +11696,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -94,
 		},
 	},
-	{
-		-- [Step 245
+	{ -- [Step 245
 		["PickUp"] = {
 			52477,
 		},
@@ -12495,8 +11705,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -84.6,
 		},
 	},
-	{
-		-- [Step 246
+	{ -- [Step 246
 		["Trigger"] = {
 			["y"] = 2348.6,
 			["x"] = 396.2,
@@ -12512,8 +11721,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 396.2,
 		},
 	},
-	{
-		-- [Step 247
+	{ -- [Step 247
 		["Done"] = {
 			52477,
 		},
@@ -12522,8 +11730,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -110.5,
 		},
 	},
-	{
-		-- [Step 248
+	{ -- [Step 248
 		["ExtraLineText"] = "WAIT_FOR_NPC",
 		["SetHS"] = 47245,
 		["TT"] = {
@@ -12531,8 +11738,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -112.4,
 		},
 	},
-	{
-		-- [Step 249
+	{ -- [Step 249
 
 		["Trigger"] = {
 			["y"] = 1994.2,
@@ -12545,8 +11751,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -70.8,
 		},
 	},
-	{
-		-- [Step 250
+	{ -- [Step 250
 		["Trigger"] = {
 			["y"] = 1991.9,
 			["x"] = -151.9,
@@ -12562,8 +11767,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -151.9,
 		},
 	},
-	{
-		-- [Step 251
+	{ -- [Step 251
 		["Trigger"] = {
 			["y"] = 1892.7,
 			["x"] = -156.4,
@@ -12579,8 +11783,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -156.4,
 		},
 	},
-	{
-		-- [Step 252
+	{ -- [Step 252
 		["TT"] = {
 			["y"] = 1892.7,
 			["x"] = -156.4,
@@ -12589,8 +11792,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			47525,
 		},
 	},
-	{
-		-- [Step 253
+	{ -- [Step 253
 		["PickUp"] = {
 			47659,
 			47660,
@@ -12600,8 +11802,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -155.2,
 		},
 	},
-	{
-		-- [Step 254
+	{ -- [Step 254
 		["PickUp"] = {
 			48402,
 		},
@@ -12615,8 +11816,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 255
+	{ -- [Step 255
 		["Qpart"] = {
 			[47659] = {
 				["1"] = "1",
@@ -12640,8 +11840,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -144.2,
 		},
 	},
-	{
-		-- [Step 256
+	{ -- [Step 256
 		["Trigger"] = {
 			["y"] = 1726,
 			["x"] = -136.4,
@@ -12660,8 +11859,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -136.4,
 		},
 	},
-	{
-		-- [Step 257
+	{ -- [Step 257
 		["Trigger"] = {
 			["y"] = 1653.4,
 			["x"] = -397,
@@ -12673,8 +11871,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -397,
 		},
 	},
-	{
-		-- [Step 258
+	{ -- [Step 258
 		["Done"] = {
 			47660,
 			47659,
@@ -12685,8 +11882,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -509.7,
 		},
 	},
-	{
-		-- [Step 259
+	{ -- [Step 259
 		["PickUp"] = {
 			47623,
 		},
@@ -12695,8 +11891,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -509.7,
 		},
 	},
-	{
-		-- [Step 260
+	{ -- [Step 260
 		["Trigger"] = {
 			["y"] = 1543.2,
 			["x"] = -502.9,
@@ -12712,8 +11907,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -502.9,
 		},
 	},
-	{
-		-- [Step 261
+	{ -- [Step 261
 		["Trigger"] = {
 			["y"] = 1543.5,
 			["x"] = -502.9,
@@ -12729,8 +11923,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -502.9,
 		},
 	},
-	{
-		-- [Step 262
+	{ -- [Step 262
 		["Done"] = {
 			47623,
 		},
@@ -12739,8 +11932,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -507.4,
 		},
 	},
-	{
-		-- [Step 263
+	{ -- [Step 263
 		["PickUp"] = {
 			47621,
 			47622,
@@ -12750,8 +11942,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -507.4,
 		},
 	},
-	{
-		-- [Step 264
+	{ -- [Step 264
 		["Trigger"] = {
 			["y"] = 1652.9,
 			["x"] = -409.2,
@@ -12763,8 +11954,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -409.2,
 		},
 	},
-	{
-		-- [Step 265
+	{ -- [Step 265
 		["Qpart"] = {
 			[47621] = {
 				["1"] = "1",
@@ -12792,8 +11982,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -419.8,
 		},
 	},
-	{
-		-- [Step 266
+	{ -- [Step 266
 
 		["PickUp"] = {
 			48090,
@@ -12804,8 +11993,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -635.5,
 		},
 	},
-	{
-		-- [Step 267
+	{ -- [Step 267
 
 		["Qpart"] = {
 			[48090] = {
@@ -12836,8 +12024,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -722.7,
 		},
 	},
-	{
-		-- [Step 268
+	{ -- [Step 268
 
 		["Qpart"] = {
 			[48090] = {
@@ -12868,8 +12055,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -878.8,
 		},
 	},
-	{
-		-- [Step 269
+	{ -- [Step 269
 
 		["Qpart"] = {
 			[48092] = {
@@ -12891,8 +12077,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -1033.5,
 		},
 	},
-	{
-		-- [Step 270
+	{ -- [Step 270
 
 		["Qpart"] = {
 			[48090] = {
@@ -12923,8 +12108,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -774.7,
 		},
 	},
-	{
-		-- [Step 271
+	{ -- [Step 271
 
 		["Trigger"] = {
 			["y"] = 1763.4,
@@ -12941,8 +12125,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -780.5,
 		},
 	},
-	{
-		-- [Step 272
+	{ -- [Step 272
 
 		["TT"] = {
 			["y"] = 1664.3,
@@ -12953,8 +12136,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			48092,
 		},
 	},
-	{
-		-- [Step 273
+	{ -- [Step 273
 
 		["Trigger"] = {
 			["y"] = 1591.5,
@@ -12967,8 +12149,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -574.8,
 		},
 	},
-	{
-		-- [Step 274
+	{ -- [Step 274
 
 		["Trigger"] = {
 			["y"] = 1606.9,
@@ -12981,8 +12162,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -545.3,
 		},
 	},
-	{
-		-- [Step 275
+	{ -- [Step 275
 
 		["Trigger"] = {
 			["y"] = 1609.3,
@@ -12995,8 +12175,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -511.4,
 		},
 	},
-	{
-		-- [Step 276
+	{ -- [Step 276
 		["TT"] = {
 			["y"] = 1551,
 			["x"] = -511.7,
@@ -13006,8 +12185,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			47622,
 		},
 	},
-	{
-		-- [Step 277
+	{ -- [Step 277
 		["PickUp"] = {
 			47540,
 		},
@@ -13016,8 +12194,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -511.7,
 		},
 	},
-	{
-		-- [Step 278
+	{ -- [Step 278
 		["Trigger"] = {
 			["y"] = 1556.3,
 			["x"] = -518.5,
@@ -13033,8 +12210,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -518.5,
 		},
 	},
-	{
-		-- [Step 279
+	{ -- [Step 279
 		["Done"] = {
 			47540,
 		},
@@ -13043,8 +12219,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -513,
 		},
 	},
-	{
-		-- [Step 280
+	{ -- [Step 280
 		["PickUp"] = {
 			47696,
 		},
@@ -13053,8 +12228,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -513,
 		},
 	},
-	{
-		-- [Step 281
+	{ -- [Step 281
 		["Trigger"] = {
 			["y"] = 1629.8,
 			["x"] = -288.4,
@@ -13066,8 +12240,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -288.4,
 		},
 	},
-	{
-		-- [Step 282
+	{ -- [Step 282
 		["Trigger"] = {
 			["y"] = 1558.4,
 			["x"] = -88.5,
@@ -13079,8 +12252,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -88.5,
 		},
 	},
-	{
-		-- [Step 283
+	{ -- [Step 283
 		["Qpart"] = {
 			[47696] = {
 				["3"] = "3",
@@ -13098,8 +12270,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -88.5,
 		},
 	},
-	{
-		-- [Step 284
+	{ -- [Step 284
 		["Done"] = {
 			47696,
 		},
@@ -13108,8 +12279,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -507.8,
 		},
 	},
-	{
-		-- [Step 285
+	{ -- [Step 285
 		["PickUp"] = {
 			47697,
 		},
@@ -13118,8 +12288,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -503.5,
 		},
 	},
-	{
-		-- [Step 286
+	{ -- [Step 286
 		["UseHS"] = 47697,
 		["TT"] = {
 			["y"] = 1543.7,
@@ -13129,8 +12298,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["22345678-1"] = 6948,
 		},
 	},
-	{
-		-- [Step 287
+	{ -- [Step 287
 		["Done"] = {
 			47697,
 			47245,
@@ -13140,8 +12308,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -92.6,
 		},
 	},
-	{
-		-- [Step 288
+	{ -- [Step 288
 		["PickUp"] = {
 			47631,
 		},
@@ -13150,8 +12317,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -93,
 		},
 	},
-	{
-		-- [Step 289
+	{ -- [Step 289
 		["PickUp"] = {
 			50934,
 		},
@@ -13160,8 +12326,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -66.5,
 		},
 	},
-	{
-		-- [Step 290
+	{ -- [Step 290
 
 		["Trigger"] = {
 			["y"] = 2028.5,
@@ -13174,8 +12339,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -49.3,
 		},
 	},
-	{
-		-- [Step 291
+	{ -- [Step 291
 
 		["Trigger"] = {
 			["y"] = 1849.5,
@@ -13188,8 +12352,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 100.7,
 		},
 	},
-	{
-		-- [Step 292
+	{ -- [Step 292
 
 		["Done"] = {
 			50934,
@@ -13199,8 +12362,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 85.2,
 		},
 	},
-	{
-		-- [Step 293
+	{ -- [Step 293
 
 		["PickUp"] = {
 			49366,
@@ -13210,8 +12372,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 83.9,
 		},
 	},
-	{
-		-- [Step 294
+	{ -- [Step 294
 
 		["Qpart"] = {
 			[49366] = {
@@ -13231,8 +12392,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 85.2,
 		},
 	},
-	{
-		-- [Step 295
+	{ -- [Step 295
 
 		["Done"] = {
 			49366,
@@ -13242,8 +12402,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 129.1,
 		},
 	},
-	{
-		-- [Step 296
+	{ -- [Step 296
 
 		["PickUp"] = {
 			49370,
@@ -13255,8 +12414,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 129.1,
 		},
 	},
-	{
-		-- [Step 297
+	{ -- [Step 297
 
 		["Trigger"] = {
 			["y"] = 1652.9,
@@ -13273,8 +12431,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 160.3,
 		},
 	},
-	{
-		-- [Step 298
+	{ -- [Step 298
 
 		["Done"] = {
 			49370,
@@ -13284,8 +12441,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 153.6,
 		},
 	},
-	{
-		-- [Step 299
+	{ -- [Step 299
 
 		["PickUp"] = {
 			49378,
@@ -13296,8 +12452,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 153.6,
 		},
 	},
-	{
-		-- [Step 300
+	{ -- [Step 300
 
 		["Trigger"] = {
 			["y"] = 1679,
@@ -13314,8 +12469,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 182.3,
 		},
 	},
-	{
-		-- [Step 301
+	{ -- [Step 301
 
 		["Qpart"] = {
 			[49380] = {
@@ -13343,8 +12497,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 180.3,
 		},
 	},
-	{
-		-- [Step 302
+	{ -- [Step 302
 
 		["Qpart"] = {
 			[49377] = {
@@ -13369,8 +12522,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 182.4,
 		},
 	},
-	{
-		-- [Step 303
+	{ -- [Step 303
 
 		["Qpart"] = {
 			[49380] = {
@@ -13398,8 +12550,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 268.7,
 		},
 	},
-	{
-		-- [Step 304
+	{ -- [Step 304
 
 		["Qpart"] = {
 			[49380] = {
@@ -13427,8 +12578,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 285.2,
 		},
 	},
-	{
-		-- [Step 305
+	{ -- [Step 305
 
 		["Trigger"] = {
 			["y"] = 1588.2,
@@ -13451,8 +12601,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 220.6,
 		},
 	},
-	{
-		-- [Step 306
+	{ -- [Step 306
 
 		["TT"] = {
 			["y"] = 1681.3,
@@ -13465,8 +12614,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			49377,
 		},
 	},
-	{
-		-- [Step 307
+	{ -- [Step 307
 
 		["PickUp"] = {
 			49382,
@@ -13476,8 +12624,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 128.6,
 		},
 	},
-	{
-		-- [Step 308
+	{ -- [Step 308
 
 		["Trigger"] = {
 			["y"] = 1631,
@@ -13490,8 +12637,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -216.7,
 		},
 	},
-	{
-		-- [Step 309
+	{ -- [Step 309
 
 		["Trigger"] = {
 			["y"] = 1644.9,
@@ -13504,8 +12650,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -379.2,
 		},
 	},
-	{
-		-- [Step 310
+	{ -- [Step 310
 
 		["Trigger"] = {
 			["y"] = 1549.7,
@@ -13522,8 +12667,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -508.9,
 		},
 	},
-	{
-		-- [Step 311
+	{ -- [Step 311
 
 		["TT"] = {
 			["y"] = 1549.7,
@@ -13533,8 +12677,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			49382,
 		},
 	},
-	{
-		-- [Step 312
+	{ -- [Step 312
 		["Trigger"] = {
 			["y"] = 1657.9,
 			["x"] = -404.8,
@@ -13546,8 +12689,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -404.8,
 		},
 	},
-	{
-		-- [Step 313
+	{ -- [Step 313
 		["Trigger"] = {
 			["y"] = 2165.5,
 			["x"] = -470.5,
@@ -13563,8 +12705,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -470.5,
 		},
 	},
-	{
-		-- [Step 314
+	{ -- [Step 314
 		["TT"] = {
 			["y"] = 2165,
 			["x"] = -470,
@@ -13573,8 +12714,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			47631,
 		},
 	},
-	{
-		-- [Step 315
+	{ -- [Step 315
 		["PickUp"] = {
 			47597,
 			47599,
@@ -13584,8 +12724,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -476.4,
 		},
 	},
-	{
-		-- [Step 316
+	{ -- [Step 316
 		["Trigger"] = {
 			["y"] = 2265,
 			["x"] = -640.7,
@@ -13605,8 +12744,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			},
 		},
 	},
-	{
-		-- [Step 317
+	{ -- [Step 317
 		["Qpart"] = {
 			[47597] = {
 				["2"] = "2",
@@ -13633,8 +12771,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -718.5,
 		},
 	},
-	{
-		-- [Step 318
+	{ -- [Step 318
 		["Qpart"] = {
 			[47597] = {
 				["3"] = "3",
@@ -13661,8 +12798,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -752.8,
 		},
 	},
-	{
-		-- [Step 319
+	{ -- [Step 319
 		["Qpart"] = {
 			[47597] = {
 				["1"] = "1",
@@ -13689,8 +12825,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -597.8,
 		},
 	},
-	{
-		-- [Step 320
+	{ -- [Step 320
 		["Qpart"] = {
 			[47599] = {
 				["1"] = "1",
@@ -13714,8 +12849,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -597.8,
 		},
 	},
-	{
-		-- [Step 321
+	{ -- [Step 321
 		["Trigger"] = {
 			["y"] = 2333.1,
 			["x"] = -711.7,
@@ -13731,8 +12865,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -711.7,
 		},
 	},
-	{
-		-- [Step 322
+	{ -- [Step 322
 		["Trigger"] = {
 			["y"] = 2589.8,
 			["x"] = -860,
@@ -13744,8 +12877,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -860,
 		},
 	},
-	{
-		-- [Step 323
+	{ -- [Step 323
 		["TT"] = {
 			["y"] = 2573.1,
 			["x"] = -879.8,
@@ -13755,8 +12887,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			47599,
 		},
 	},
-	{
-		-- [Step 324
+	{ -- [Step 324
 		["PickUp"] = {
 			47711,
 			47596,
@@ -13767,8 +12898,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -877,
 		},
 	},
-	{
-		-- [Step 325
+	{ -- [Step 325
 		["Trigger"] = {
 			["y"] = 2592.1,
 			["x"] = -869.5,
@@ -13780,8 +12910,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -869.5,
 		},
 	},
-	{
-		-- [Step 326
+	{ -- [Step 326
 		["Qpart"] = {
 			[47596] = {
 				["2"] = "2",
@@ -13802,8 +12931,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -711.2,
 		},
 	},
-	{
-		-- [Step 327
+	{ -- [Step 327
 		["Bloodlust"] = 1,
 		["Qpart"] = {
 			[47711] = {
@@ -13825,8 +12953,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -685.8,
 		},
 	},
-	{
-		-- [Step 328
+	{ -- [Step 328
 		["Qpart"] = {
 			[47596] = {
 				["1"] = "1",
@@ -13847,8 +12974,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -631,
 		},
 	},
-	{
-		-- [Step 329
+	{ -- [Step 329
 		["Qpart"] = {
 			[47596] = {
 				["3"] = "3",
@@ -13869,8 +12995,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -732,
 		},
 	},
-	{
-		-- [Step 330
+	{ -- [Step 330
 		["Trigger"] = {
 			["y"] = 2748.1,
 			["x"] = -728.8,
@@ -13886,8 +13011,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -728.8,
 		},
 	},
-	{
-		-- [Step 331
+	{ -- [Step 331
 		["TT"] = {
 			["y"] = 2572.6,
 			["x"] = -877.2,
@@ -13898,8 +13022,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			47598,
 		},
 	},
-	{
-		-- [Step 332
+	{ -- [Step 332
 		["PickUp"] = {
 			47601,
 		},
@@ -13908,8 +13031,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -878.3,
 		},
 	},
-	{
-		-- [Step 333
+	{ -- [Step 333
 		["Trigger"] = {
 			["y"] = 2616,
 			["x"] = -833.2,
@@ -13925,8 +13047,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -833.2,
 		},
 	},
-	{
-		-- [Step 334
+	{ -- [Step 334
 		["Trigger"] = {
 			["y"] = 2616.5,
 			["x"] = -831.3,
@@ -13943,8 +13064,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -831.3,
 		},
 	},
-	{
-		-- [Step 335
+	{ -- [Step 335
 		["TT"] = {
 			["y"] = 2613.1,
 			["x"] = -827.5,
@@ -13953,8 +13073,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			47601,
 		},
 	},
-	{
-		-- [Step 336
+	{ -- [Step 336
 		["PickUp"] = {
 			47602,
 		},
@@ -13963,8 +13082,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -827.5,
 		},
 	},
-	{
-		-- [Step 337
+	{ -- [Step 337
 		["Qpart"] = {
 			[47602] = {
 				["1"] = "1",
@@ -13981,8 +13099,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -825,
 		},
 	},
-	{
-		-- [Step 338
+	{ -- [Step 338
 		["Trigger"] = {
 			["y"] = 2047,
 			["x"] = -94.5,
@@ -13998,8 +13115,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -94.5,
 		},
 	},
-	{
-		-- [Step 339
+	{ -- [Step 339
 		["Done"] = {
 			47602,
 		},
@@ -14008,8 +13124,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -94.3,
 		},
 	},
-	{
-		-- [Step 340
+	{ -- [Step 340
 		["PickUp"] = {
 			49932,
 		},
@@ -14018,8 +13133,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -97.1,
 		},
 	},
-	{
-		-- [Step 341
+	{ -- [Step 341
 		["Trigger"] = {
 			["y"] = 2167.1,
 			["x"] = -70.7,
@@ -14035,8 +13149,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -70.7,
 		},
 	},
-	{
-		-- [Step 342
+	{ -- [Step 342
 		["Trigger"] = {
 			["y"] = 2167.1,
 			["x"] = -70.7,
@@ -14052,8 +13165,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -70.7,
 		},
 	},
-	{
-		-- [Step 343
+	{ -- [Step 343
 		["Trigger"] = {
 			["y"] = 2166.4,
 			["x"] = -69.4,
@@ -14069,8 +13181,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -69.4,
 		},
 	},
-	{
-		-- [Step 344
+	{ -- [Step 344
 		["Done"] = {
 			49932,
 		},
@@ -14079,8 +13190,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -70,
 		},
 	},
-	{
-		-- [Step 345
+	{ -- [Step 345
 		["PickUp"] = {
 			49937,
 			49935,
@@ -14091,8 +13201,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -70,
 		},
 	},
-	{
-		-- [Step 346
+	{ -- [Step 346
 		["Qpart"] = {
 			[49935] = {
 				["1"] = "1",
@@ -14116,8 +13225,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -188.2,
 		},
 	},
-	{
-		-- [Step 347
+	{ -- [Step 347
 		["Qpart"] = {
 			[49935] = {
 				["2"] = "2",
@@ -14141,8 +13249,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -29.5,
 		},
 	},
-	{
-		-- [Step 348
+	{ -- [Step 348
 		["Trigger"] = {
 			["y"] = 2345.9,
 			["x"] = -32,
@@ -14161,8 +13268,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -32,
 		},
 	},
-	{
-		-- [Step 349
+	{ -- [Step 349
 		["Done"] = {
 			49937,
 			49935,
@@ -14173,8 +13279,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -163.6,
 		},
 	},
-	{
-		-- [Step 350
+	{ -- [Step 350
 		["PickUp"] = {
 			49941,
 			49949,
@@ -14184,8 +13289,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -163.6,
 		},
 	},
-	{
-		-- [Step 351
+	{ -- [Step 351
 		["PickUp"] = {
 			49950,
 		},
@@ -14194,8 +13298,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -189.5,
 		},
 	},
-	{
-		-- [Step 352
+	{ -- [Step 352
 		["Qpart"] = {
 			[49949] = {
 				["1"] = "1",
@@ -14220,8 +13323,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -219.5,
 		},
 	},
-	{
-		-- [Step 353
+	{ -- [Step 353
 		["Done"] = {
 			49949,
 			49941,
@@ -14232,8 +13334,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -161.7,
 		},
 	},
-	{
-		-- [Step 354
+	{ -- [Step 354
 		["PickUp"] = {
 			49955,
 			49957,
@@ -14244,8 +13345,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -161.7,
 		},
 	},
-	{
-		-- [Step 355
+	{ -- [Step 355
 		["Qpart"] = {
 			[49955] = {
 				["1"] = "1",
@@ -14276,8 +13376,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -262.8,
 		},
 	},
-	{
-		-- [Step 356
+	{ -- [Step 356
 		["Done"] = {
 			49955,
 			49957,
@@ -14288,8 +13387,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -361.4,
 		},
 	},
-	{
-		-- [Step 357
+	{ -- [Step 357
 		["PickUp"] = {
 			49980,
 		},
@@ -14298,8 +13396,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -365.6,
 		},
 	},
-	{
-		-- [Step 358
+	{ -- [Step 358
 		["Qpart"] = {
 			[49980] = {
 				["1"] = "1",
@@ -14316,8 +13413,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -365.6,
 		},
 	},
-	{
-		-- [Step 359
+	{ -- [Step 359
 		["Trigger"] = {
 			["y"] = 2500.6,
 			["x"] = -365.6,
@@ -14333,8 +13429,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -365.6,
 		},
 	},
-	{
-		-- [Step 360
+	{ -- [Step 360
 		["Done"] = {
 			49980,
 		},
@@ -14343,8 +13438,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -365.6,
 		},
 	},
-	{
-		-- [Step 361
+	{ -- [Step 361
 		["PickUp"] = {
 			49985,
 		},
@@ -14353,8 +13447,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -365.6,
 		},
 	},
-	{
-		-- [Step 362
+	{ -- [Step 362
 		["Trigger"] = {
 			["y"] = 2464.8,
 			["x"] = -328.9,
@@ -14370,8 +13463,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -328.9,
 		},
 	},
-	{
-		-- [Step 363
+	{ -- [Step 363
 		["Done"] = {
 			49985,
 		},
@@ -14380,8 +13472,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -94.6,
 		},
 	},
-	{
-		-- [Step 364
+	{ -- [Step 364
 		["PickUp"] = {
 			49569,
 		},
@@ -14390,8 +13481,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -94.9,
 		},
 	},
-	{
-		-- [Step 365
+	{ -- [Step 365
 		["Trigger"] = {
 			["y"] = 2026.5,
 			["x"] = -48.5,
@@ -14403,8 +13493,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -48.5,
 		},
 	},
-	{
-		-- [Step 366
+	{ -- [Step 366
 		["Qpart"] = {
 			[49569] = {
 				["1"] = "1",
@@ -14421,8 +13510,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -6.2,
 		},
 	},
-	{
-		-- [Step 367
+	{ -- [Step 367
 		["ETA"] = 150,
 		["Trigger"] = {
 			["y"] = 1950,
@@ -14439,8 +13527,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = -5,
 		},
 	},
-	{
-		-- [Step 368
+	{ -- [Step 368
 		["Trigger"] = {
 			["y"] = 687.2,
 			["x"] = 1348.2,
@@ -14452,8 +13539,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1348.2,
 		},
 	},
-	{
-		-- [Step 369
+	{ -- [Step 369
 		["Done"] = {
 			51089,
 		},
@@ -14462,8 +13548,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1391,
 		},
 	},
-	{
-		-- [Step 370
+	{ -- [Step 370
 		["Done"] = {
 			49569,
 		},
@@ -14472,8 +13557,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1377,
 		},
 	},
-	{
-		-- [Step 371
+	{ -- [Step 371
 		["PickUp"] = {
 			50076,
 		},
@@ -14482,8 +13566,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1377.2,
 		},
 	},
-	{
-		-- [Step 372
+	{ -- [Step 372
 		["Trigger"] = {
 			["y"] = 814.1,
 			["x"] = 1378.5,
@@ -14499,8 +13582,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1378.5,
 		},
 	},
-	{
-		-- [Step 373
+	{ -- [Step 373
 		["ETA"] = 33,
 		["Trigger"] = {
 			["y"] = 806.4,
@@ -14517,8 +13599,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1378,
 		},
 	},
-	{
-		-- [Step 374
+	{ -- [Step 374
 		["Done"] = {
 			50076,
 		},
@@ -14527,8 +13608,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1379.5,
 		},
 	},
-	{
-		-- [Step 375
+	{ -- [Step 375
 		["PickUp"] = {
 			50138,
 		},
@@ -14537,8 +13617,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1379.5,
 		},
 	},
-	{
-		-- [Step 376
+	{ -- [Step 376
 		["Trigger"] = {
 			["y"] = 819.1,
 			["x"] = 1347.8,
@@ -14550,8 +13629,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1347.8,
 		},
 	},
-	{
-		-- [Step 377
+	{ -- [Step 377
 		["Trigger"] = {
 			["y"] = 845,
 			["x"] = 1372,
@@ -14563,8 +13641,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1372,
 		},
 	},
-	{
-		-- [Step 378
+	{ -- [Step 378
 		["Trigger"] = {
 			["y"] = 990.2,
 			["x"] = 1223.9,
@@ -14580,8 +13657,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1223.9,
 		},
 	},
-	{
-		-- [Step 379
+	{ -- [Step 379
 		["PickUp"] = {
 			50078,
 		},
@@ -14590,8 +13666,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1223.9,
 		},
 	},
-	{
-		-- [Step 380
+	{ -- [Step 380
 		["Trigger"] = {
 			["y"] = 991.9,
 			["x"] = 1216.8,
@@ -14610,8 +13685,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1216.8,
 		},
 	},
-	{
-		-- [Step 381
+	{ -- [Step 381
 		["Trigger"] = {
 			["y"] = 1123.5,
 			["x"] = 1097.5,
@@ -14627,8 +13701,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1097.5,
 		},
 	},
-	{
-		-- [Step 382
+	{ -- [Step 382
 		["Done"] = {
 			50138,
 			50078,
@@ -14638,8 +13711,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1086.8,
 		},
 	},
-	{
-		-- [Step 383
+	{ -- [Step 383
 		["PickUp"] = {
 			50079,
 			50081,
@@ -14649,8 +13721,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1085.5,
 		},
 	},
-	{
-		-- [Step 384
+	{ -- [Step 384
 		["Qpart"] = {
 			[50079] = {
 				["1"] = "1",
@@ -14680,8 +13751,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1103.5,
 		},
 	},
-	{
-		-- [Step 385
+	{ -- [Step 385
 		["Qpart"] = {
 			[50079] = {
 				["2"] = "2",
@@ -14711,8 +13781,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1123,
 		},
 	},
-	{
-		-- [Step 386
+	{ -- [Step 386
 		["Qpart"] = {
 			[50079] = {
 				["3"] = "3",
@@ -14742,8 +13811,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1127.2,
 		},
 	},
-	{
-		-- [Step 387
+	{ -- [Step 387
 		["Trigger"] = {
 			["y"] = 1291.5,
 			["x"] = 1130.5,
@@ -14759,8 +13827,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1130.5,
 		},
 	},
-	{
-		-- [Step 388
+	{ -- [Step 388
 		["Done"] = {
 			50079,
 			50081,
@@ -14770,8 +13837,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1124.9,
 		},
 	},
-	{
-		-- [Step 389
+	{ -- [Step 389
 		["PickUp"] = {
 			50082,
 		},
@@ -14780,8 +13846,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1124.9,
 		},
 	},
-	{
-		-- [Step 390
+	{ -- [Step 390
 		["Qpart"] = {
 			[50082] = {
 				["1"] = "1",
@@ -14798,8 +13863,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1081.3,
 		},
 	},
-	{
-		-- [Step 391
+	{ -- [Step 391
 		["Trigger"] = {
 			["y"] = 1421.3,
 			["x"] = 1058.5,
@@ -14815,8 +13879,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1058.5,
 		},
 	},
-	{
-		-- [Step 392
+	{ -- [Step 392
 		["Done"] = {
 			50082,
 		},
@@ -14825,8 +13888,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1071,
 		},
 	},
-	{
-		-- [Step 393
+	{ -- [Step 393
 		["PickUp"] = {
 			52073,
 		},
@@ -14835,8 +13897,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1071,
 		},
 	},
-	{
-		-- [Step 394
+	{ -- [Step 394
 
 		["PickUp"] = {
 			50083,
@@ -14846,8 +13907,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1061.9,
 		},
 	},
-	{
-		-- [Step 395
+	{ -- [Step 395
 
 		["Trigger"] = {
 			["y"] = 1589.7,
@@ -14864,8 +13924,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 997.7,
 		},
 	},
-	{
-		-- [Step 396
+	{ -- [Step 396
 
 		["Trigger"] = {
 			["y"] = 1640.3,
@@ -14878,8 +13937,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 934.7,
 		},
 	},
-	{
-		-- [Step 397
+	{ -- [Step 397
 
 		["Trigger"] = {
 			["y"] = 1643.4,
@@ -14892,8 +13950,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 948.5,
 		},
 	},
-	{
-		-- [Step 398
+	{ -- [Step 398
 
 		["Qpart"] = {
 			[50083] = {
@@ -14913,8 +13970,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 973.4,
 		},
 	},
-	{
-		-- [Step 399
+	{ -- [Step 399
 
 		["TT"] = {
 			["y"] = 1652.3,
@@ -14924,8 +13980,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			50083,
 		},
 	},
-	{
-		-- [Step 400
+	{ -- [Step 400
 
 		["PickUp"] = {
 			50085,
@@ -14935,8 +13990,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 911.1,
 		},
 	},
-	{
-		-- [Step 401
+	{ -- [Step 401
 
 		["Qpart"] = {
 			[50085] = {
@@ -14967,8 +14021,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 905.6,
 		},
 	},
-	{
-		-- [Step 402
+	{ -- [Step 402
 
 		["Trigger"] = {
 			["y"] = 1709.3,
@@ -14985,8 +14038,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1027.5,
 		},
 	},
-	{
-		-- [Step 403
+	{ -- [Step 403
 
 		["Trigger"] = {
 			["y"] = 1652.9,
@@ -14999,8 +14051,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1058,
 		},
 	},
-	{
-		-- [Step 404
+	{ -- [Step 404
 
 		["Done"] = {
 			50085,
@@ -15010,8 +14061,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1112.9,
 		},
 	},
-	{
-		-- [Step 405
+	{ -- [Step 405
 
 		["Trigger"] = {
 			["y"] = 1508.2,
@@ -15024,8 +14074,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1061.5,
 		},
 	},
-	{
-		-- [Step 406
+	{ -- [Step 406
 		["Qpart"] = {
 			[52073] = {
 				["1"] = "1",
@@ -15042,8 +14091,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1072.8,
 		},
 	},
-	{
-		-- [Step 407
+	{ -- [Step 407
 		["Qpart"] = {
 			[52073] = {
 				["2"] = "2",
@@ -15060,8 +14108,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 1072.8,
 		},
 	},
-	{
-		-- [Step 408
+	{ -- [Step 408
 		["TT"] = {
 			["y"] = 1525.5,
 			["x"] = 853.1,
@@ -15070,8 +14117,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			52073,
 		},
 	},
-	{
-		-- [Step 409
+	{ -- [Step 409
 		["PickUp"] = {
 			50087,
 		},
@@ -15080,8 +14126,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 853.1,
 		},
 	},
-	{
-		-- [Step 410
+	{ -- [Step 410
 		["Bloodlust"] = 1,
 		["Trigger"] = {
 			["y"] = 1498.4,
@@ -15098,8 +14143,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 786.2,
 		},
 	},
-	{
-		-- [Step 411
+	{ -- [Step 411
 		["TT"] = {
 			["y"] = 1480.9,
 			["x"] = 804.2,
@@ -15108,8 +14152,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			50087,
 		},
 	},
-	{
-		-- [Step 412
+	{ -- [Step 412
 		["PickUp"] = {
 			51244,
 		},
@@ -15118,8 +14161,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 792.9,
 		},
 	},
-	{
-		-- [Step 413
+	{ -- [Step 413
 		["ExtraLineText"] = "TALK_ROKHAN_RIDE_DOWN",
 		["Gossip"] = 1,
 		["Trigger"] = {
@@ -15133,8 +14175,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 792.9,
 		},
 	},
-	{
-		-- [Step 414
+	{ -- [Step 414
 		["Trigger"] = {
 			["y"] = 1050.3,
 			["x"] = 642.7,
@@ -15146,8 +14187,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			["x"] = 642.7,
 		},
 	},
-	{
-		-- [Step 415
+	{ -- [Step 415
 		["TT"] = {
 			["y"] = 1237.4,
 			["x"] = 738.7,
@@ -15156,8 +14196,7 @@ APR.QuestStepList["863-Nazmir"] = {
 			51244,
 		},
 	},
-	{
-		-- [Step 416
+	{ -- [Step 416
 		["PickUp"] = {
 			50808,
 		},
@@ -15167,8 +14206,7 @@ APR.QuestStepList["863-Nazmir"] = {
 		},
 		["LeaveQuest"] = 51302,
 	},
-	{
-		-- [Step 417
+	{ -- [Step 417
 		["ExtraLineText"] = "TALK_ROKHAN_RIDE_ZULJAN",
 		["Trigger"] = {
 			["y"] = 1239.9,
@@ -15182,8 +14220,7 @@ APR.QuestStepList["863-Nazmir"] = {
 		},
 		["LeaveQuest"] = 51302,
 	},
-	{
-		-- [Step 418
+	{ -- [Step 418
 		["UseFlightPath"] = 50808,
 		["Name"] = "The Great Seal",
 		["TT"] = {
@@ -15197,8 +14234,7 @@ APR.QuestStepList["863-Nazmir"] = {
 }
 --end of Nazmir start of Vol'dun
 APR.QuestStepList["862-Zuldazar-2"] = {
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["Trigger"] = {
 			["y"] = -1047.5,
 			["x"] = 802.7,
@@ -15210,8 +14246,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 802.7,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["TT"] = {
 			["y"] = -1124.3,
 			["x"] = 818.6,
@@ -15221,8 +14256,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 		},
 		["LeaveQuest"] = 52210,
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["PickUp"] = {
 			47513,
 
@@ -15233,8 +14267,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 		},
 		["LeaveQuest"] = 47199,
 	},
-	{
-		-- [Step 4
+	{ -- [Step 4
 		["TT"] = {
 			["y"] = -1120,
 			["x"] = 819,
@@ -15244,8 +14277,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 		},
 		["LeaveQuest"] = 52210,
 	},
-	{
-		-- [Step 5
+	{ -- [Step 5
 		["PickUp"] = {
 			47313,
 		},
@@ -15254,8 +14286,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 818.9,
 		},
 	},
-	{
-		-- [Step 6
+	{ -- [Step 6
 		["Trigger"] = {
 			["y"] = -1046.8,
 			["x"] = 800.9,
@@ -15267,8 +14298,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 800.9,
 		},
 	},
-	{
-		-- [Step 7
+	{ -- [Step 7
 		["Trigger"] = {
 			["y"] = -1018.2,
 			["x"] = 778.2,
@@ -15280,8 +14310,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 778.2,
 		},
 	},
-	{
-		-- [Step 8
+	{ -- [Step 8
 		["Trigger"] = {
 			["y"] = -964.5,
 			["x"] = 799.7,
@@ -15299,8 +14328,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 799.7,
 		},
 	},
-	{
-		-- [Step 9
+	{ -- [Step 9
 		["Trigger"] = {
 			["y"] = -961.9,
 			["x"] = 753.6,
@@ -15312,8 +14340,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 753.6,
 		},
 	},
-	{
-		-- [Step 10
+	{ -- [Step 10
 		["Trigger"] = {
 			["y"] = -1001.6,
 			["x"] = 744.7,
@@ -15325,8 +14352,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 744.7,
 		},
 	},
-	{
-		-- [Step 11
+	{ -- [Step 11
 		["Trigger"] = {
 			["y"] = -966.5,
 			["x"] = 741.4,
@@ -15344,8 +14370,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 741.4,
 		},
 	},
-	{
-		-- [Step 12
+	{ -- [Step 12
 		["Trigger"] = {
 			["y"] = -963.4,
 			["x"] = 676.5,
@@ -15357,8 +14382,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 676.5,
 		},
 	},
-	{
-		-- [Step 13
+	{ -- [Step 13
 		["Trigger"] = {
 			["y"] = -936.3,
 			["x"] = 683.1,
@@ -15376,8 +14400,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 683.1,
 		},
 	},
-	{
-		-- [Step 14
+	{ -- [Step 14
 		["Trigger"] = {
 			["y"] = -878,
 			["x"] = 711.2,
@@ -15389,8 +14412,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 711.2,
 		},
 	},
-	{
-		-- [Step 15
+	{ -- [Step 15
 		["Done"] = {
 			47313,
 		},
@@ -15399,8 +14421,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 760.2,
 		},
 	},
-	{
-		-- [Step 16
+	{ -- [Step 16
 		["PickUp"] = {
 			47314,
 		},
@@ -15409,8 +14430,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 760.2,
 		},
 	},
-	{
-		-- [Step 17
+	{ -- [Step 17
 		["ETA"] = 40,
 		["ExtraLineText"] = "TALK_ROKHAN_RIDE_ZULJAN",
 		--["RaidIcon"] = 122320,
@@ -15422,8 +14442,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 803.4,
 		},
 	},
-	{
-		-- [Step 18
+	{ -- [Step 18
 		["PickUp"] = {
 			47315,
 		},
@@ -15432,8 +14451,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 803.4,
 		},
 	},
-	{
-		-- [Step 19
+	{ -- [Step 19
 		["Trigger"] = {
 			["y"] = -859,
 			["x"] = 799.6,
@@ -15449,8 +14467,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 			["x"] = 799.6,
 		},
 	},
-	{
-		-- [Step 20
+	{ -- [Step 20
 		["ETA"] = 99,
 		["Trigger"] = {
 			["y"] = -661,
@@ -15473,8 +14490,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
 }
 -- Vol'dun
 APR.QuestStepList["864-Vol'dun"] = {
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["Done"] = {
 			47315,
 		},
@@ -15483,8 +14499,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2194.4,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			51357,
 		},
@@ -15493,8 +14508,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2194.4,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["ClearZP"] = 1,
 		["ExtraLineText"] = "WEAPON_PICK_DOESNT_MATTER",
 		["Trigger"] = {
@@ -15513,8 +14527,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 		},
 
 	},
-	{
-		-- [Step 4
+	{ -- [Step 4
 		["Done"] = {
 			51357,
 		},
@@ -15523,8 +14536,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2195.1,
 		},
 	},
-	{
-		-- [Step 5
+	{ -- [Step 5
 		["PickUp"] = {
 			47327,
 			49676,
@@ -15534,8 +14546,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2195.1,
 		},
 	},
-	{
-		-- [Step 6
+	{ -- [Step 6
 		["Trigger"] = {
 			["y"] = 2648.5,
 			["x"] = 2243.9,
@@ -15547,8 +14558,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2243.9,
 		},
 	},
-	{
-		-- [Step 7
+	{ -- [Step 7
 		["Trigger"] = {
 			["y"] = 2688.8,
 			["x"] = 2267.8,
@@ -15560,8 +14570,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2267.8,
 		},
 	},
-	{
-		-- [Step 8
+	{ -- [Step 8
 		["Qpart"] = {
 			[49676] = {
 				["1"] = "1",
@@ -15582,8 +14591,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2283.4,
 		},
 	},
-	{
-		-- [Step 9
+	{ -- [Step 9
 		["Qpart"] = {
 			[49676] = {
 				["2"] = "2",
@@ -15604,8 +14612,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2355.4,
 		},
 	},
-	{
-		-- [Step 10
+	{ -- [Step 10
 		["Qpart"] = {
 			[49676] = {
 				["3"] = "3",
@@ -15626,8 +14633,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2475.1,
 		},
 	},
-	{
-		-- [Step 11
+	{ -- [Step 11
 		["TT"] = {
 			["y"] = 2831.6,
 			["x"] = 2495.1,
@@ -15636,8 +14642,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			49676,
 		},
 	},
-	{
-		-- [Step 12
+	{ -- [Step 12
 		["PickUp"] = {
 			49677,
 		},
@@ -15646,8 +14651,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2495.1,
 		},
 	},
-	{
-		-- [Step 13
+	{ -- [Step 13
 		["Trigger"] = {
 			["y"] = 2857.1,
 			["x"] = 2539.6,
@@ -15668,8 +14672,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2539.6,
 		},
 	},
-	{
-		-- [Step 14
+	{ -- [Step 14
 		["Trigger"] = {
 			["y"] = 2857.1,
 			["x"] = 2539.6,
@@ -15685,8 +14688,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2539.6,
 		},
 	},
-	{
-		-- [Step 15
+	{ -- [Step 15
 		["TT"] = {
 			["y"] = 2878.8,
 			["x"] = 2541.6,
@@ -15696,8 +14698,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			49677,
 		},
 	},
-	{
-		-- [Step 16
+	{ -- [Step 16
 		["PickUp"] = {
 			51364,
 		},
@@ -15706,8 +14707,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2541.6,
 		},
 	},
-	{
-		-- [Step 17
+	{ -- [Step 17
 		["Trigger"] = {
 			["y"] = 2769,
 			["x"] = 2595.9,
@@ -15723,8 +14723,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2595.9,
 		},
 	},
-	{
-		-- [Step 18
+	{ -- [Step 18
 		["Trigger"] = {
 			["y"] = 2768.5,
 			["x"] = 2597.1,
@@ -15740,8 +14739,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2597.1,
 		},
 	},
-	{
-		-- [Step 19
+	{ -- [Step 19
 		["ExtraLineText"] = "EXTRA_ACTION_BUTTON_NOT_NEEDED",
 		["Trigger"] = {
 			["y"] = 2044.9,
@@ -15759,8 +14757,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2798,
 		},
 	},
-	{
-		-- [Step 20
+	{ -- [Step 20
 		["Done"] = {
 			51364,
 		},
@@ -15769,8 +14766,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2821,
 		},
 	},
-	{
-		-- [Step 21
+	{ -- [Step 21
 		["PickUp"] = {
 			47319,
 		},
@@ -15779,8 +14775,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2821,
 		},
 	},
-	{
-		-- [Step 22
+	{ -- [Step 22
 		["PickUp"] = {
 			51574,
 		},
@@ -15789,8 +14784,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2822.6,
 		},
 	},
-	{
-		-- [Step 23
+	{ -- [Step 23
 		["Trigger"] = {
 			["y"] = 2100.3,
 			["x"] = 2809.9,
@@ -15802,8 +14796,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2809.9,
 		},
 	},
-	{
-		-- [Step 24
+	{ -- [Step 24
 		["PickUp"] = {
 			50739,
 		},
@@ -15812,8 +14805,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2929.1,
 		},
 	},
-	{
-		-- [Step 25
+	{ -- [Step 25
 		["Qpart"] = {
 			[50739] = {
 				["1"] = "1",
@@ -15835,8 +14827,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2973.1,
 		},
 	},
-	{
-		-- [Step 26
+	{ -- [Step 26
 		["Done"] = {
 			50739,
 		},
@@ -15845,8 +14836,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2929.1,
 		},
 	},
-	{
-		-- [Step 27
+	{ -- [Step 27
 		["Done"] = {
 			51574,
 			47319,
@@ -15856,8 +14846,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2822,
 		},
 	},
-	{
-		-- [Step 28
+	{ -- [Step 28
 		["PickUp"] = {
 			47320,
 		},
@@ -15866,8 +14855,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2822.1,
 		},
 	},
-	{
-		-- [Step 29
+	{ -- [Step 29
 		["Qpart"] = {
 			[47320] = {
 				["1"] = "1",
@@ -15886,8 +14874,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2818.3,
 		},
 	},
-	{
-		-- [Step 30
+	{ -- [Step 30
 		["Done"] = {
 			47320,
 		},
@@ -15896,8 +14883,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2818.1,
 		},
 	},
-	{
-		-- [Step 31
+	{ -- [Step 31
 		["PickUp"] = {
 			47321,
 			47317,
@@ -15908,8 +14894,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2820.4,
 		},
 	},
-	{
-		-- [Step 32
+	{ -- [Step 32
 		["QpartPart"] = {
 			[47316] = {
 				["1"] = "1",
@@ -15926,8 +14911,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2890.5,
 		},
 	},
-	{
-		-- [Step 33
+	{ -- [Step 33
 		["QpartPart"] = {
 			[47316] = {
 				["1"] = "1",
@@ -15944,8 +14928,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2852.6,
 		},
 	},
-	{
-		-- [Step 34
+	{ -- [Step 34
 		["QpartPart"] = {
 			[47316] = {
 				["1"] = "1",
@@ -15962,8 +14945,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3093.1,
 		},
 	},
-	{
-		-- [Step 35
+	{ -- [Step 35
 		["QpartPart"] = {
 			[47316] = {
 				["1"] = "1",
@@ -15980,8 +14962,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3094.3,
 		},
 	},
-	{
-		-- [Step 36
+	{ -- [Step 36
 		["PickUp"] = {
 			47322,
 			50755,
@@ -15991,8 +14972,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2962.1,
 		},
 	},
-	{
-		-- [Step 37
+	{ -- [Step 37
 		["Qpart"] = {
 			[47322] = {
 				["2"] = "2",
@@ -16016,8 +14996,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2959.3,
 		},
 	},
-	{
-		-- [Step 38
+	{ -- [Step 38
 		["Qpart"] = {
 			[47317] = {
 				["1"] = "1",
@@ -16041,8 +15020,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2968.5,
 		},
 	},
-	{
-		-- [Step 39
+	{ -- [Step 39
 		["Qpart"] = {
 			[47322] = {
 				["1"] = "1",
@@ -16066,8 +15044,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2847.5,
 		},
 	},
-	{
-		-- [Step 40
+	{ -- [Step 40
 		["Qpart"] = {
 			[47317] = {
 				["2"] = "2",
@@ -16091,8 +15068,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2778.5,
 		},
 	},
-	{
-		-- [Step 41
+	{ -- [Step 41
 		["Trigger"] = {
 			["y"] = 2501.4,
 			["x"] = 2784.5,
@@ -16111,8 +15087,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2784.5,
 		},
 	},
-	{
-		-- [Step 42
+	{ -- [Step 42
 		["Done"] = {
 			50755,
 			47322,
@@ -16122,8 +15097,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2961.6,
 		},
 	},
-	{
-		-- [Step 43
+	{ -- [Step 43
 		["Done"] = {
 			47321,
 			47317,
@@ -16134,8 +15108,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2819.6,
 		},
 	},
-	{
-		-- [Step 44
+	{ -- [Step 44
 		["PickUp"] = {
 			47959,
 		},
@@ -16144,8 +15117,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2818.1,
 		},
 	},
-	{
-		-- [Step 45
+	{ -- [Step 45
 		["Qpart"] = {
 			[47959] = {
 				["1"] = "1",
@@ -16162,8 +15134,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2823.3,
 		},
 	},
-	{
-		-- [Step 46
+	{ -- [Step 46
 		["Trigger"] = {
 			["y"] = 1344,
 			["x"] = 3051.1,
@@ -16180,8 +15151,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3051.1,
 		},
 	},
-	{
-		-- [Step 47
+	{ -- [Step 47
 		["Done"] = {
 			47959,
 		},
@@ -16190,8 +15160,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3081.1,
 		},
 	},
-	{
-		-- [Step 48
+	{ -- [Step 48
 		["PickUp"] = {
 			48549,
 			48550,
@@ -16201,8 +15170,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3081.8,
 		},
 	},
-	{
-		-- [Step 49
+	{ -- [Step 49
 		["PickUp"] = {
 			51829,
 		},
@@ -16216,8 +15184,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 50
+	{ -- [Step 50
 		["Qpart"] = {
 			[48549] = {
 				["1"] = "1",
@@ -16238,8 +15205,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3325.6,
 		},
 	},
-	{
-		-- [Step 51
+	{ -- [Step 51
 		["Trigger"] = {
 			["y"] = 1396.7,
 			["x"] = 3318.1,
@@ -16255,8 +15221,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3318.1,
 		},
 	},
-	{
-		-- [Step 52
+	{ -- [Step 52
 		["UseGlider"] = 1,
 		["TT"] = {
 			["y"] = 1186.9,
@@ -16266,8 +15231,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			51829,
 		},
 	},
-	{
-		-- [Step 53
+	{ -- [Step 53
 		["PickUp"] = {
 			48551,
 			48553,
@@ -16278,8 +15242,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3021,
 		},
 	},
-	{
-		-- [Step 54
+	{ -- [Step 54
 		["Qpart"] = {
 			[48553] = {
 				["1"] = "1",
@@ -16306,8 +15269,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3050.6,
 		},
 	},
-	{
-		-- [Step 55
+	{ -- [Step 55
 		["Qpart"] = {
 			[48553] = {
 				["2"] = "2",
@@ -16334,8 +15296,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3084.1,
 		},
 	},
-	{
-		-- [Step 56
+	{ -- [Step 56
 		["Qpart"] = {
 			[48555] = {
 				["1"] = "1",
@@ -16357,8 +15318,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3084.1,
 		},
 	},
-	{
-		-- [Step 57
+	{ -- [Step 57
 		["Done"] = {
 			48551,
 			48553,
@@ -16369,8 +15329,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3021.9,
 		},
 	},
-	{
-		-- [Step 58
+	{ -- [Step 58
 		["PickUp"] = {
 			48554,
 		},
@@ -16379,8 +15338,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3021.9,
 		},
 	},
-	{
-		-- [Step 59
+	{ -- [Step 59
 		["Trigger"] = {
 			["y"] = 1227.7,
 			["x"] = 3025.3,
@@ -16392,8 +15350,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3025.3,
 		},
 	},
-	{
-		-- [Step 60
+	{ -- [Step 60
 		["Trigger"] = {
 			["y"] = 1294.9,
 			["x"] = 2993.3,
@@ -16405,8 +15362,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2993.3,
 		},
 	},
-	{
-		-- [Step 61
+	{ -- [Step 61
 		["Trigger"] = {
 			["y"] = 1295.5,
 			["x"] = 2960.5,
@@ -16418,8 +15374,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2960.5,
 		},
 	},
-	{
-		-- [Step 62
+	{ -- [Step 62
 		["Trigger"] = {
 			["y"] = 1262.5,
 			["x"] = 2929.8,
@@ -16431,8 +15386,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2929.8,
 		},
 	},
-	{
-		-- [Step 63
+	{ -- [Step 63
 		["Trigger"] = {
 			["y"] = 1193,
 			["x"] = 2919.9,
@@ -16448,8 +15402,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2919.9,
 		},
 	},
-	{
-		-- [Step 64
+	{ -- [Step 64
 		["Trigger"] = {
 			["y"] = 1196.4,
 			["x"] = 2919.9,
@@ -16465,8 +15418,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2919.9,
 		},
 	},
-	{
-		-- [Step 65
+	{ -- [Step 65
 		["Done"] = {
 			48554,
 		},
@@ -16475,8 +15427,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3020,
 		},
 	},
-	{
-		-- [Step 66
+	{ -- [Step 66
 		["TT"] = {
 			["y"] = 1338.3,
 			["x"] = 3063.6,
@@ -16486,8 +15437,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			48549,
 		},
 	},
-	{
-		-- [Step 67
+	{ -- [Step 67
 		["PickUp"] = {
 			48684,
 		},
@@ -16496,8 +15446,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3065.5,
 		},
 	},
-	{
-		-- [Step 68
+	{ -- [Step 68
 		["Qpart"] = {
 			[48684] = {
 				["1"] = "1",
@@ -16514,8 +15463,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3065.5,
 		},
 	},
-	{
-		-- [Step 69
+	{ -- [Step 69
 		["Trigger"] = {
 			["y"] = 286,
 			["x"] = 3089.8,
@@ -16532,8 +15480,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3089.8,
 		},
 	},
-	{
-		-- [Step 70
+	{ -- [Step 70
 		["Done"] = {
 			48684,
 		},
@@ -16542,8 +15489,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3091.5,
 		},
 	},
-	{
-		-- [Step 71
+	{ -- [Step 71
 		["PickUp"] = {
 			48895,
 		},
@@ -16552,8 +15498,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3090.6,
 		},
 	},
-	{
-		-- [Step 72
+	{ -- [Step 72
 		["Done"] = {
 			48895,
 		},
@@ -16563,8 +15508,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3067,
 		},
 	},
-	{
-		-- [Step 73
+	{ -- [Step 73
 		["PickUp"] = {
 			48992,
 			48991,
@@ -16576,8 +15520,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3067,
 		},
 	},
-	{
-		-- [Step 74
+	{ -- [Step 74
 		["Trigger"] = {
 			["y"] = 287.3,
 			["x"] = 3031.1,
@@ -16598,8 +15541,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 75
+	{ -- [Step 75
 		["Trigger"] = {
 			["y"] = 422.2,
 			["x"] = 2944.1,
@@ -16619,8 +15561,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 76
+	{ -- [Step 76
 		["Trigger"] = {
 			["y"] = 430.3,
 			["x"] = 2897.6,
@@ -16640,8 +15581,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 77
+	{ -- [Step 77
 		["Qpart"] = {
 			[48993] = {
 				["1"] = "1",
@@ -16665,8 +15605,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2869.5,
 		},
 	},
-	{
-		-- [Step 78
+	{ -- [Step 78
 		["Qpart"] = {
 			[48991] = {
 				["1"] = "1",
@@ -16685,8 +15624,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2889,
 		},
 	},
-	{
-		-- [Step 79
+	{ -- [Step 79
 		["Done"] = {
 			48992,
 			48991,
@@ -16697,8 +15635,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3067.1,
 		},
 	},
-	{
-		-- [Step 80
+	{ -- [Step 80
 		["PickUp"] = {
 			48888,
 			48887,
@@ -16708,8 +15645,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3067.1,
 		},
 	},
-	{
-		-- [Step 81
+	{ -- [Step 81
 		["ExtraLineText"] = "DOTS_EXPIRE",
 		["Qpart"] = {
 			[48887] = {
@@ -16731,8 +15667,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3136.3,
 		},
 	},
-	{
-		-- [Step 82
+	{ -- [Step 82
 		["Qpart"] = {
 			[48887] = {
 				["2"] = "2",
@@ -16753,8 +15688,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3136,
 		},
 	},
-	{
-		-- [Step 83
+	{ -- [Step 83
 		["Trigger"] = {
 			["y"] = 525.1,
 			["x"] = 3134.1,
@@ -16770,8 +15704,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3134.1,
 		},
 	},
-	{
-		-- [Step 84
+	{ -- [Step 84
 		["Done"] = {
 			48888,
 			48887,
@@ -16781,8 +15714,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3066.9,
 		},
 	},
-	{
-		-- [Step 85
+	{ -- [Step 85
 		["PickUp"] = {
 			48894,
 		},
@@ -16791,8 +15723,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3066.9,
 		},
 	},
-	{
-		-- [Step 86
+	{ -- [Step 86
 		["Qpart"] = {
 			[48894] = {
 				["1"] = "1",
@@ -16809,8 +15740,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3066.9,
 		},
 	},
-	{
-		-- [Step 87
+	{ -- [Step 87
 		["Done"] = {
 			48894,
 		},
@@ -16819,8 +15749,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3067.1,
 		},
 	},
-	{
-		-- [Step 88
+	{ -- [Step 88
 		["PickUp"] = {
 			48715,
 		},
@@ -16829,8 +15758,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3068.6,
 		},
 	},
-	{
-		-- [Step 89
+	{ -- [Step 89
 		["Trigger"] = {
 			["y"] = 184.4,
 			["x"] = 3066.6,
@@ -16846,8 +15774,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3066.6,
 		},
 	},
-	{
-		-- [Step 90
+	{ -- [Step 90
 		["Done"] = {
 			48715,
 		},
@@ -16856,8 +15783,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3040.1,
 		},
 	},
-	{
-		-- [Step 91
+	{ -- [Step 91
 		["PickUp"] = {
 			48987,
 		},
@@ -16866,8 +15792,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3040.1,
 		},
 	},
-	{
-		-- [Step 92
+	{ -- [Step 92
 		["Trigger"] = {
 			["y"] = 193.6,
 			["x"] = 3062.4,
@@ -16879,8 +15804,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3062.4,
 		},
 	},
-	{
-		-- [Step 93
+	{ -- [Step 93
 		["Trigger"] = {
 			["y"] = 267.1,
 			["x"] = 3075.9,
@@ -16892,16 +15816,14 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3075.9,
 		},
 	},
-	{
-		-- [Step 94
+	{ -- [Step 94
 		["SetHS"] = 48987,
 		["TT"] = {
 			["y"] = 260.7,
 			["x"] = 3151.6,
 		},
 	},
-	{
-		-- [Step 95
+	{ -- [Step 95
 		["Trigger"] = {
 			["y"] = 366.3,
 			["x"] = 3082.3,
@@ -16913,8 +15835,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3082.3,
 		},
 	},
-	{
-		-- [Step 96
+	{ -- [Step 96
 		["UseGlider"] = 1,
 		["Trigger"] = {
 			["y"] = 691.6,
@@ -16927,8 +15848,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3037.5,
 		},
 	},
-	{
-		-- [Step 97
+	{ -- [Step 97
 		["Done"] = {
 			48987,
 		},
@@ -16937,8 +15857,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3079,
 		},
 	},
-	{
-		-- [Step 98
+	{ -- [Step 98
 		["PickUp"] = {
 			48988,
 			49005,
@@ -16948,8 +15867,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3079,
 		},
 	},
-	{
-		-- [Step 99
+	{ -- [Step 99
 		["Trigger"] = {
 			["y"] = 814.4,
 			["x"] = 3084,
@@ -16969,8 +15887,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3084,
 		},
 	},
-	{
-		-- [Step 100
+	{ -- [Step 100
 		["Done"] = {
 			48988,
 			49005,
@@ -16980,8 +15897,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3077.9,
 		},
 	},
-	{
-		-- [Step 101
+	{ -- [Step 101
 		["PickUp"] = {
 			48889,
 		},
@@ -16990,8 +15906,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3077.9,
 		},
 	},
-	{
-		-- [Step 102
+	{ -- [Step 102
 		["RaidIcon"] = 127989,
 		["Trigger"] = {
 			["y"] = 741.4,
@@ -17004,8 +15919,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3107.4,
 		},
 	},
-	{
-		-- [Step 103
+	{ -- [Step 103
 		["Trigger"] = {
 			["y"] = 718.2,
 			["x"] = 3125,
@@ -17021,8 +15935,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3125,
 		},
 	},
-	{
-		-- [Step 104
+	{ -- [Step 104
 		["Done"] = {
 			48889,
 		},
@@ -17031,8 +15944,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3128.1,
 		},
 	},
-	{
-		-- [Step 105
+	{ -- [Step 105
 		["PickUp"] = {
 			48996,
 		},
@@ -17041,8 +15953,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3128.1,
 		},
 	},
-	{
-		-- [Step 106
+	{ -- [Step 106
 		["UseHS"] = 48996,
 		["TT"] = {
 			["y"] = 712.5,
@@ -17052,8 +15963,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["22345678-1"] = 6948,
 		},
 	},
-	{
-		-- [Step 107
+	{ -- [Step 107
 		["Trigger"] = {
 			["y"] = 268.8,
 			["x"] = 3075.5,
@@ -17065,8 +15975,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3075.5,
 		},
 	},
-	{
-		-- [Step 108
+	{ -- [Step 108
 		["ExtraActionB"] = 1,
 		["Trigger"] = {
 			["y"] = 203.9,
@@ -17083,8 +15992,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3067.1,
 		},
 	},
-	{
-		-- [Step 109
+	{ -- [Step 109
 		["Done"] = {
 			48996,
 		},
@@ -17093,8 +16001,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3067,
 		},
 	},
-	{
-		-- [Step 110
+	{ -- [Step 110
 		["PickUp"] = {
 			50913,
 		},
@@ -17103,8 +16010,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3067.1,
 		},
 	},
-	{
-		-- [Step 111
+	{ -- [Step 111
 		["Trigger"] = {
 			["y"] = 152.1,
 			["x"] = 3066.9,
@@ -17120,8 +16026,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3066.9,
 		},
 	},
-	{
-		-- [Step 112
+	{ -- [Step 112
 		["Done"] = {
 			50913,
 		},
@@ -17130,8 +16035,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3065.3,
 		},
 	},
-	{
-		-- [Step 113
+	{ -- [Step 113
 		["PickUp"] = {
 			47874,
 		},
@@ -17140,8 +16044,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3038.8,
 		},
 	},
-	{
-		-- [Step 114
+	{ -- [Step 114
 		["RaidIcon"] = 130667,
 		["TT"] = {
 			["y"] = 284.8,
@@ -17152,8 +16055,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			47874,
 		},
 	},
-	{
-		-- [Step 115
+	{ -- [Step 115
 		["PickUp"] = {
 			48896,
 		},
@@ -17162,8 +16064,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3093.1,
 		},
 	},
-	{
-		-- [Step 116
+	{ -- [Step 116
 		["Qpart"] = {
 			[48896] = {
 				["1"] = "1",
@@ -17180,8 +16081,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3099.1,
 		},
 	},
-	{
-		-- [Step 117
+	{ -- [Step 117
 		["Trigger"] = {
 			["y"] = 596.6,
 			["x"] = 3426.4,
@@ -17198,8 +16098,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3426.4,
 		},
 	},
-	{
-		-- [Step 118
+	{ -- [Step 118
 		["Trigger"] = {
 			["y"] = 596.6,
 			["x"] = 3426.4,
@@ -17215,8 +16114,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3426.4,
 		},
 	},
-	{
-		-- [Step 119
+	{ -- [Step 119
 		["Done"] = {
 			48896,
 		},
@@ -17225,8 +16123,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3437.1,
 		},
 	},
-	{
-		-- [Step 120
+	{ -- [Step 120
 		["PickUp"] = {
 			47716,
 		},
@@ -17235,8 +16132,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3437.1,
 		},
 	},
-	{
-		-- [Step 121
+	{ -- [Step 121
 		["Trigger"] = {
 			["y"] = 817.7,
 			["x"] = 3503.6,
@@ -17248,8 +16144,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3503.6,
 		},
 	},
-	{
-		-- [Step 122
+	{ -- [Step 122
 		["Trigger"] = {
 			["y"] = 882.7,
 			["x"] = 3513,
@@ -17265,8 +16160,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3513,
 		},
 	},
-	{
-		-- [Step 123
+	{ -- [Step 123
 		["Done"] = {
 			47716,
 		},
@@ -17275,8 +16169,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3483.6,
 		},
 	},
-	{
-		-- [Step 124
+	{ -- [Step 124
 		["PickUp"] = {
 			48314,
 			48313,
@@ -17286,8 +16179,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3484.6,
 		},
 	},
-	{
-		-- [Step 125
+	{ -- [Step 125
 		["PickUp"] = {
 			51573,
 		},
@@ -17304,8 +16196,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3731.3,
 		},
 	},
-	{
-		-- [Step 126
+	{ -- [Step 126
 		["Qpart"] = {
 			[51573] = {
 				["1"] = "1",
@@ -17322,8 +16213,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3731.3,
 		},
 	},
-	{
-		-- [Step 127
+	{ -- [Step 127
 		["ETA"] = 81,
 		["SpecialETAHide"] = 1,
 		["Trigger"] = {
@@ -17337,8 +16227,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3699.4,
 		},
 	},
-	{
-		-- [Step 128
+	{ -- [Step 128
 		["SpecialETAHide"] = 1,
 		["SetHS"] = 51573,
 		["TT"] = {
@@ -17346,8 +16235,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3757.6,
 		},
 	},
-	{
-		-- [Step 129
+	{ -- [Step 129
 		["Trigger"] = {
 			["y"] = 977.1,
 			["x"] = 3733.9,
@@ -17363,8 +16251,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3733.9,
 		},
 	},
-	{
-		-- [Step 130
+	{ -- [Step 130
 		["Done"] = {
 			51573,
 		},
@@ -17373,8 +16260,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3733.6,
 		},
 	},
-	{
-		-- [Step 131
+	{ -- [Step 131
 		["PickUp"] = {
 			48529,
 			48530,
@@ -17384,8 +16270,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3731.6,
 		},
 	},
-	{
-		-- [Step 132
+	{ -- [Step 132
 		["Done"] = {
 			48529,
 		},
@@ -17394,8 +16279,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3713.3,
 		},
 	},
-	{
-		-- [Step 133
+	{ -- [Step 133
 		["PickUp"] = {
 			48531,
 			48533,
@@ -17405,8 +16289,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3713.3,
 		},
 	},
-	{
-		-- [Step 134
+	{ -- [Step 134
 		["Trigger"] = {
 			["y"] = 836.9,
 			["x"] = 3747.1,
@@ -17418,8 +16301,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3747.1,
 		},
 	},
-	{
-		-- [Step 135
+	{ -- [Step 135
 		["Trigger"] = {
 			["y"] = 837.9,
 			["x"] = 3788.8,
@@ -17431,8 +16313,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3788.8,
 		},
 	},
-	{
-		-- [Step 136
+	{ -- [Step 136
 		["Done"] = {
 			48530,
 		},
@@ -17441,8 +16322,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3820.3,
 		},
 	},
-	{
-		-- [Step 137
+	{ -- [Step 137
 		["PickUp"] = {
 			48532,
 		},
@@ -17451,8 +16331,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3820.3,
 		},
 	},
-	{
-		-- [Step 138
+	{ -- [Step 138
 		["PickUp"] = {
 			48585,
 		},
@@ -17485,8 +16364,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			[251267] = 5,
 		},
 	},
-	{
-		-- [Step 139
+	{ -- [Step 139
 		["Qpart"] = {
 			[48532] = {
 				["1"] = "1",
@@ -17517,8 +16395,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3935.6,
 		},
 	},
-	{
-		-- [Step 140
+	{ -- [Step 140
 		["Qpart"] = {
 			[48533] = {
 				["1"] = "1",
@@ -17543,8 +16420,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3806.1,
 		},
 	},
-	{
-		-- [Step 141
+	{ -- [Step 141
 		["TT"] = {
 			["y"] = 915,
 			["x"] = 3734,
@@ -17553,8 +16429,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			48585,
 		},
 	},
-	{
-		-- [Step 142
+	{ -- [Step 142
 		["TT"] = {
 			["y"] = 850.1,
 			["x"] = 3713,
@@ -17564,8 +16439,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			48533,
 		},
 	},
-	{
-		-- [Step 143
+	{ -- [Step 143
 		["PickUp"] = {
 			48655,
 		},
@@ -17574,8 +16448,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3713,
 		},
 	},
-	{
-		-- [Step 144
+	{ -- [Step 144
 		["Trigger"] = {
 			["y"] = 833.7,
 			["x"] = 3755.5,
@@ -17587,8 +16460,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3755.5,
 		},
 	},
-	{
-		-- [Step 145
+	{ -- [Step 145
 		["TT"] = {
 			["y"] = 875.9,
 			["x"] = 3820.4,
@@ -17597,8 +16469,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			48532,
 		},
 	},
-	{
-		-- [Step 146
+	{ -- [Step 146
 		["PickUp"] = {
 			48534,
 		},
@@ -17607,8 +16478,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3819.3,
 		},
 	},
-	{
-		-- [Step 147
+	{ -- [Step 147
 		["Trigger"] = {
 			["y"] = 738.6,
 			["x"] = 3732.1,
@@ -17620,8 +16490,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3732.1,
 		},
 	},
-	{
-		-- [Step 148
+	{ -- [Step 148
 		["TT"] = {
 			["y"] = 765.7,
 			["x"] = 3734,
@@ -17630,8 +16499,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			48655,
 		},
 	},
-	{
-		-- [Step 149
+	{ -- [Step 149
 		["PickUp"] = {
 			48656,
 			48657,
@@ -17641,8 +16509,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3734,
 		},
 	},
-	{
-		-- [Step 150
+	{ -- [Step 150
 		["Trigger"] = {
 			["y"] = 592.5,
 			["x"] = 3730.6,
@@ -17662,8 +16529,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 151
+	{ -- [Step 151
 		["Trigger"] = {
 			["y"] = 510.1,
 			["x"] = 3768.6,
@@ -17687,8 +16553,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 152
+	{ -- [Step 152
 		["Trigger"] = {
 			["y"] = 594.9,
 			["x"] = 3727.1,
@@ -17707,8 +16572,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3727.1,
 		},
 	},
-	{
-		-- [Step 153
+	{ -- [Step 153
 		["TT"] = {
 			["y"] = 765.5,
 			["x"] = 3736.4,
@@ -17718,8 +16582,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			48657,
 		},
 	},
-	{
-		-- [Step 154
+	{ -- [Step 154
 		["Trigger"] = {
 			["y"] = 737,
 			["x"] = 3729.1,
@@ -17731,8 +16594,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3729.1,
 		},
 	},
-	{
-		-- [Step 155
+	{ -- [Step 155
 		["Trigger"] = {
 			["y"] = 740.7,
 			["x"] = 3664.6,
@@ -17744,8 +16606,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3664.6,
 		},
 	},
-	{
-		-- [Step 156
+	{ -- [Step 156
 		["Trigger"] = {
 			["y"] = 755.9,
 			["x"] = 3664.6,
@@ -17757,8 +16618,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3664.6,
 		},
 	},
-	{
-		-- [Step 157
+	{ -- [Step 157
 		["Trigger"] = {
 			["y"] = 765.6,
 			["x"] = 3707.9,
@@ -17770,8 +16630,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3707.9,
 		},
 	},
-	{
-		-- [Step 158
+	{ -- [Step 158
 		["Trigger"] = {
 			["y"] = 810.2,
 			["x"] = 3735.3,
@@ -17783,8 +16642,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3735.3,
 		},
 	},
-	{
-		-- [Step 159
+	{ -- [Step 159
 		["Trigger"] = {
 			["y"] = 837.2,
 			["x"] = 3789.1,
@@ -17796,8 +16654,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3789.1,
 		},
 	},
-	{
-		-- [Step 160
+	{ -- [Step 160
 		["Done"] = {
 			48534,
 		},
@@ -17806,8 +16663,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3819.6,
 		},
 	},
-	{
-		-- [Step 161
+	{ -- [Step 161
 		["Trigger"] = {
 			["y"] = 836.1,
 			["x"] = 3786.1,
@@ -17819,8 +16675,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3786.1,
 		},
 	},
-	{
-		-- [Step 162
+	{ -- [Step 162
 		["PickUp"] = {
 			48846,
 		},
@@ -17829,8 +16684,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3744.1,
 		},
 	},
-	{
-		-- [Step 163
+	{ -- [Step 163
 		["BuyMerchant"] = 1,
 		["Trigger"] = {
 			["y"] = 870.7,
@@ -17847,8 +16701,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3767.9,
 		},
 	},
-	{
-		-- [Step 164
+	{ -- [Step 164
 		["Qpart"] = {
 			[48846] = {
 				["2"] = "2",
@@ -17865,8 +16718,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3744.1,
 		},
 	},
-	{
-		-- [Step 165
+	{ -- [Step 165
 		["Done"] = {
 			48846,
 		},
@@ -17875,8 +16727,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3733.6,
 		},
 	},
-	{
-		-- [Step 166
+	{ -- [Step 166
 		["PickUp"] = {
 			51602,
 			48790,
@@ -17887,8 +16738,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3733.6,
 		},
 	},
-	{
-		-- [Step 167
+	{ -- [Step 167
 		["Trigger"] = {
 			["y"] = 885.2,
 			["x"] = 3946.6,
@@ -17908,8 +16758,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 168
+	{ -- [Step 168
 		["Qpart"] = {
 			[48850] = {
 				["1"] = "1",
@@ -17933,8 +16782,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3909.9,
 		},
 	},
-	{
-		-- [Step 169
+	{ -- [Step 169
 		["Trigger"] = {
 			["y"] = 886,
 			["x"] = 3921.4,
@@ -17953,8 +16801,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3921.4,
 		},
 	},
-	{
-		-- [Step 170
+	{ -- [Step 170
 		["TT"] = {
 			["y"] = 915.5,
 			["x"] = 3733.4,
@@ -17965,8 +16812,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			48850,
 		},
 	},
-	{
-		-- [Step 171
+	{ -- [Step 171
 		["PickUp"] = {
 			48847,
 		},
@@ -17975,8 +16821,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3733.4,
 		},
 	},
-	{
-		-- [Step 172
+	{ -- [Step 172
 		["Qpart"] = {
 			[48847] = {
 				["1"] = "1",
@@ -17993,8 +16838,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3734.1,
 		},
 	},
-	{
-		-- [Step 173
+	{ -- [Step 173
 		["Done"] = {
 			48847,
 		},
@@ -18003,8 +16847,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3733.9,
 		},
 	},
-	{
-		-- [Step 174
+	{ -- [Step 174
 		["PickUp"] = {
 			51668,
 		},
@@ -18013,8 +16856,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3733.9,
 		},
 	},
-	{
-		-- [Step 175
+	{ -- [Step 175
 		["Qpart"] = {
 			[51668] = {
 				["1"] = "1",
@@ -18033,8 +16875,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3733,
 		},
 	},
-	{
-		-- [Step 176
+	{ -- [Step 176
 		["TT"] = {
 			["y"] = 915.1,
 			["x"] = 3733.6,
@@ -18043,8 +16884,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			51668,
 		},
 	},
-	{
-		-- [Step 178
+	{ -- [Step 178
 		["PickUp"] = {
 			51161,
 		},
@@ -18053,8 +16893,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3750.9,
 		},
 	},
-	{
-		-- [Step 179
+	{ -- [Step 179
 		["PickUp"] = {
 			51772,
 		},
@@ -18063,8 +16902,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3713.4,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["Trigger"] = {
 			["y"] = 920.7,
 			["x"] = 3526.5,
@@ -18084,8 +16922,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3526.5,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["Trigger"] = {
 			["y"] = 971.7,
 			["x"] = 3509.1,
@@ -18097,8 +16934,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3509.1,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["Trigger"] = {
 			["y"] = 1004.2,
 			["x"] = 3475.6,
@@ -18114,8 +16950,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3475.6,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["PickUp"] = {
 			51775,
 		},
@@ -18132,8 +16967,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3819.4,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["Done"] = {
 			51775,
 		},
@@ -18142,8 +16976,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4041.6,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["PickUp"] = {
 			48324,
 		},
@@ -18152,8 +16985,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4041.6,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["PickUp"] = {
 			51162,
 		},
@@ -18162,8 +16994,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4042.9,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["Trigger"] = {
 			["y"] = 1124.4,
 			["x"] = 4246.3,
@@ -18175,8 +17006,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4246.3,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["Trigger"] = {
 			["y"] = 1121.9,
 			["x"] = 4270.3,
@@ -18192,8 +17022,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4270.3,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["Done"] = {
 			51162,
 		},
@@ -18202,8 +17031,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4041.5,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["Trigger"] = {
 			["y"] = 777.9,
 			["x"] = 4044.8,
@@ -18215,8 +17043,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4044.8,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 		["Done"] = {
 			48324,
 		},
@@ -18225,8 +17052,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4274.3,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 
 		["PickUp"] = {
 			51053,
@@ -18236,8 +17062,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4275.3,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 
 		["Qpart"] = {
 			[51053] = {
@@ -18257,8 +17082,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4362.3,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 
 		["Done"] = {
 			51053,
@@ -18268,8 +17092,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4275.5,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 
 		["PickUp"] = {
 			51054,
@@ -18279,8 +17102,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4275.3,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 
 		["Trigger"] = {
 			["y"] = 531.6,
@@ -18297,8 +17119,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4275.3,
 		},
 	},
-	{
-		-- [Step 1
+	{ -- [Step 1
 
 		["Done"] = {
 			51054,
@@ -18308,8 +17129,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4284.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["PickUp"] = {
 			51055,
@@ -18320,8 +17140,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4284.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Qpart"] = {
 			[51055] = {
@@ -18343,8 +17162,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4175.2,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Trigger"] = {
 			["y"] = 758.5,
@@ -18362,8 +17180,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Qpart"] = {
 			[51056] = {
@@ -18388,8 +17205,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4234.3,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Qpart"] = {
 			[51055] = {
@@ -18411,8 +17227,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4295.5,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Trigger"] = {
 			["y"] = 864.7,
@@ -18430,8 +17245,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Qpart"] = {
 			[51055] = {
@@ -18453,8 +17267,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4330.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Qpart"] = {
 			[51056] = {
@@ -18479,8 +17292,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4249.8,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["UseGlider"] = 1,
 
 		["Trigger"] = {
@@ -18499,8 +17311,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["TT"] = {
 			["y"] = 559.4,
@@ -18511,8 +17322,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			51055,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["PickUp"] = {
 			49138,
@@ -18539,8 +17349,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			[268665] = 3,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Qpart"] = {
 			[47499] = {
@@ -18577,8 +17386,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4378,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Qpart"] = {
 			[47499] = {
@@ -18615,8 +17423,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4349.2,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Qpart"] = {
 			[47499] = {
@@ -18653,8 +17460,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4440.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Qpart"] = {
 			[49138] = {
@@ -18688,8 +17494,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4525.7,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Qpart"] = {
 			[49138] = {
@@ -18723,8 +17528,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4525.7,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Done"] = {
 			49138,
@@ -18755,8 +17559,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			[268665] = 3,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Trigger"] = {
 			["y"] = 735.5,
@@ -18785,8 +17588,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4527.3,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Done"] = {
 			47499,
@@ -18798,8 +17600,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 		},
 		["LeaveQuest"] = 51059,
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["UseHS"] = 48313,
 		["TT"] = {
@@ -18811,8 +17612,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["22345678-1"] = 6948,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["TT"] = {
 			["y"] = 915.2,
 			["x"] = 3734.1,
@@ -18822,8 +17622,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			51161,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 956.2,
 			["x"] = 3558.1,
@@ -18842,8 +17641,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3558.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 908.7,
 			["x"] = 3511.1,
@@ -18855,8 +17653,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3511.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Done"] = {
 			48314,
 			48313,
@@ -18866,8 +17663,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3485.5,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			50770,
 		},
@@ -18876,8 +17672,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3485.5,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["SpecialMacro"] = 1,
 		["Qpart"] = {
 			[50770] = {
@@ -18897,8 +17692,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3484.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["TT"] = {
 			["y"] = 899.2,
 			["x"] = 3484.4,
@@ -18907,8 +17701,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			50770,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			50539,
 		},
@@ -18917,8 +17710,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3484.4,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 926.5,
 			["x"] = 3514.1,
@@ -18930,8 +17722,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3514.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 972.7,
 			["x"] = 3497.6,
@@ -18943,8 +17734,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3497.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 927.7,
 			["x"] = 3491.1,
@@ -18956,8 +17746,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3491.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 968.9,
 			["x"] = 3469.3,
@@ -18969,8 +17758,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3469.3,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			50536,
 		},
@@ -18979,8 +17767,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3466.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 1036.5,
 			["x"] = 3463.3,
@@ -18996,8 +17783,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3463.3,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["TT"] = {
 			["y"] = 954.9,
 			["x"] = 3358.6,
@@ -19006,8 +17792,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			50539,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			48315,
 		},
@@ -19016,8 +17801,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3359.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 934.2,
 			["x"] = 3415.5,
@@ -19033,8 +17817,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3415.5,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 873,
 			["x"] = 3360.8,
@@ -19050,8 +17833,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3360.8,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 931.7,
 			["x"] = 3302.1,
@@ -19067,8 +17849,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3302.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 966.4,
 			["x"] = 3317.8,
@@ -19080,8 +17861,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3317.8,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 1000.1,
 			["x"] = 3289.1,
@@ -19093,8 +17873,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3289.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["QpartPart"] = {
 			[48315] = {
 				["1"] = "1",
@@ -19111,8 +17890,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3294.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 1071.8,
 			["x"] = 3263.6,
@@ -19124,8 +17902,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3263.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["QpartPart"] = {
 			[48315] = {
 				["1"] = "1",
@@ -19142,8 +17919,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3213.4,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["TT"] = {
 			["y"] = 955.4,
 			["x"] = 3358.5,
@@ -19152,8 +17928,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			48315,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			50561,
 		},
@@ -19162,8 +17937,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3359.4,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 967.9,
 			["x"] = 3400.5,
@@ -19175,8 +17949,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3400.5,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 1015.7,
 			["x"] = 3465,
@@ -19188,8 +17961,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3465,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Done"] = {
 			50536,
 		},
@@ -19198,8 +17970,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3466.4,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			48871,
 		},
@@ -19208,8 +17979,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3466.4,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			48872,
 		},
@@ -19218,8 +17988,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3458.9,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 1005.2,
 			["x"] = 3461.8,
@@ -19231,8 +18000,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3461.8,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 972.9,
 			["x"] = 3399.6,
@@ -19251,8 +18019,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3399.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 1005.7,
 			["x"] = 3462.1,
@@ -19264,8 +18031,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3462.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Done"] = {
 			48872,
 			48871,
@@ -19275,8 +18041,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3464.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			50535,
 		},
@@ -19285,8 +18050,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3465.9,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 967.9,
 			["x"] = 3398.5,
@@ -19298,8 +18062,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3398.5,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 841.6,
 			["x"] = 3392.5,
@@ -19311,8 +18074,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3392.5,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 853.9,
 			["x"] = 3359.6,
@@ -19328,8 +18090,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3359.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 1008.6,
 			["x"] = 3464.8,
@@ -19341,8 +18102,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3464.8,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Done"] = {
 			50535,
 		},
@@ -19351,8 +18111,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3466.3,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 918.5,
 			["x"] = 3512.6,
@@ -19364,8 +18123,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3512.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Done"] = {
 			50561,
 		},
@@ -19374,8 +18132,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3485.3,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 910.7,
 			["x"] = 3501.1,
@@ -19391,8 +18148,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3501.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Done"] = {
 			47324,
 		},
@@ -19402,8 +18158,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4835.3,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			49334,
 			50641,
@@ -19414,8 +18169,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4835.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			50818,
 		},
@@ -19424,8 +18178,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4717.3,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Qpart"] = {
 			[49334] = {
 				["1"] = "1",
@@ -19451,8 +18204,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4646,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 1978.4,
 			["x"] = 4648.6,
@@ -19473,8 +18225,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4648.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 1883.3,
 			["x"] = 4762,
@@ -19486,8 +18237,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4762,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Done"] = {
 			50641,
 			49327,
@@ -19497,16 +18247,14 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4835.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["SetHS"] = 49340,
 		["TT"] = {
 			["y"] = 1963.7,
 			["x"] = 4859.5,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Done"] = {
 			49334,
 		},
@@ -19515,8 +18263,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4808.8,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			49340,
 		},
@@ -19525,8 +18272,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4812.8,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Qpart"] = {
 			[49340] = {
 				["1"] = "1",
@@ -19543,8 +18289,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4812.8,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Done"] = {
 			49340,
 		},
@@ -19553,8 +18298,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4843.8,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			49662,
 		},
@@ -19563,8 +18307,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4843.8,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 1953.4,
 			["x"] = 4873.3,
@@ -19576,8 +18319,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4873.3,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Trigger"] = {
 			["y"] = 2052,
 			["x"] = 4806.6,
@@ -19589,8 +18331,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4806.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["ExtraLineText"] = "MISSING_Q",
 		["PickUp"] = {
 			48332,
@@ -19602,8 +18343,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3598.9,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Qpart"] = {
 			[48334] = {
@@ -19628,8 +18368,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3486.8,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Trigger"] = {
 			["y"] = 2056.1,
@@ -19649,8 +18388,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3499.3,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Done"] = {
 			48332,
@@ -19662,8 +18400,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3598.8,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["PickUp"] = {
 			48335,
@@ -19675,8 +18412,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3598.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Qpart"] = {
 			[49139] = {
@@ -19704,8 +18440,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3402.5,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Trigger"] = {
 			["y"] = 2321.3,
@@ -19729,8 +18464,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["48331-1"] = 154051,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Qpart"] = {
 			[49139] = {
@@ -19758,8 +18492,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3552.5,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Qpart"] = {
 			[48331] = {
@@ -19782,8 +18515,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3540.8,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Done"] = {
 			48335,
@@ -19795,8 +18527,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3599.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["PickUp"] = {
 			48330,
@@ -19806,8 +18537,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3600.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Trigger"] = {
 			["y"] = 2309,
@@ -19820,8 +18550,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3532.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Trigger"] = {
 			["y"] = 2442.8,
@@ -19838,8 +18567,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3470.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 
 		["Done"] = {
 			48330,
@@ -19849,8 +18577,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3600.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["Done"] = {
 			49662,
 		},
@@ -19859,8 +18586,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3766.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["PickUp"] = {
 			50745,
 		},
@@ -19869,8 +18595,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3766.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["SpecialETAHide"] = 1,
 		["ETA"] = 79,
 		["RaidIcon"] = 135172,
@@ -19885,8 +18610,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3769.6,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["SpecialETAHide"] = 1,
 		["Trigger"] = {
 			["y"] = 2793.6,
@@ -19899,8 +18623,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3730.4,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["SpecialETAHide"] = 1,
 		["Trigger"] = {
 			["y"] = 2769,
@@ -19913,8 +18636,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3683.1,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["SpecialETAHide"] = 1,
 		["Trigger"] = {
 			["y"] = 2758.6,
@@ -19927,8 +18649,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3626,
 		},
 	},
-	{
-		-- [Step 2
+	{ -- [Step 2
 		["SpecialETAHide"] = 1,
 		["Trigger"] = {
 			["y"] = 2753.1,
@@ -19941,8 +18662,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3498.3,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["SpecialETAHide"] = 1,
 		["Trigger"] = {
 			["y"] = 2738,
@@ -19955,8 +18675,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3467.9,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["SpecialETAHide"] = 1,
 		["Trigger"] = {
 			["y"] = 2730,
@@ -19969,8 +18688,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3426.9,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["TT"] = {
 			["y"] = 2686.6,
 			["x"] = 3422.4,
@@ -19979,8 +18697,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			50745,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["PickUp"] = {
 			49664,
 			49667,
@@ -19990,8 +18707,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3421.4,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2732.6,
 			["x"] = 3429.3,
@@ -20003,8 +18719,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3429.3,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2778.1,
 			["x"] = 3507.5,
@@ -20016,8 +18731,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3507.5,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Done"] = {
 			49664,
 		},
@@ -20026,8 +18740,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3547.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["PickUp"] = {
 			49665,
 			49666,
@@ -20037,8 +18750,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3547.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["ExtraLineText"] = "USE_BANNER_ON_CORPSES",
 		["Qpart"] = {
 			[49667] = {
@@ -20073,8 +18785,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3388.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["ExtraLineText"] = "USE_BANNER_ON_CORPSES",
 		["Qpart"] = {
 			[49666] = {
@@ -20104,8 +18815,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3386.6,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2802.1,
 			["x"] = 3478,
@@ -20117,8 +18827,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3478,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["TT"] = {
 			["y"] = 2829.6,
 			["x"] = 3547.1,
@@ -20128,8 +18837,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			49666,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["PickUp"] = {
 			49668,
 		},
@@ -20138,8 +18846,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3547.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["PickUp"] = {
 			50746,
 		},
@@ -20148,8 +18855,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3538.9,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2775.6,
 			["x"] = 3505,
@@ -20161,8 +18867,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3505,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2730.3,
 			["x"] = 3425.8,
@@ -20174,8 +18879,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3425.8,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["TT"] = {
 			["y"] = 2681.6,
 			["x"] = 3421.6,
@@ -20185,8 +18889,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			49667,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["PickUp"] = {
 			49141,
 			50748,
@@ -20196,8 +18899,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3421.6,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2770.1,
 			["x"] = 3370.1,
@@ -20209,8 +18911,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3370.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Qpart"] = {
 			[49668] = {
 				["1"] = "1",
@@ -20235,8 +18936,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3238.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Qpart"] = {
 			[49668] = {
 				["2"] = "2",
@@ -20261,8 +18961,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3130.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Qpart"] = {
 			[49668] = {
 				["3"] = "3",
@@ -20287,8 +18986,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3041.5,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["PickUp"] = {
 			49437,
 		},
@@ -20297,8 +18995,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2988,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["TT"] = {
 			["y"] = 2747.3,
 			["x"] = 2914.1,
@@ -20307,8 +19004,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			49668,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["PickUp"] = {
 			49669,
 			50757,
@@ -20318,8 +19014,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2914.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2769.1,
 			["x"] = 2883.1,
@@ -20336,8 +19031,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2788.9,
 			["x"] = 2896.6,
@@ -20354,8 +19048,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Qpart"] = {
 			[49437] = {
 				["1"] = "1",
@@ -20376,8 +19069,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2977.3,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2851.1,
 			["x"] = 2880.1,
@@ -20394,8 +19086,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2880.4,
 			["x"] = 2893.8,
@@ -20412,8 +19103,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Qpart"] = {
 			[49669] = {
 				["1"] = "1",
@@ -20434,8 +19124,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2922.9,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2936.1,
 			["x"] = 2923.1,
@@ -20451,8 +19140,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2923.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Done"] = {
 			50757,
 			49669,
@@ -20462,8 +19150,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2913.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["PickUp"] = {
 			50749,
 		},
@@ -20472,8 +19159,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2913.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2739.1,
 			["x"] = 2928.6,
@@ -20489,8 +19175,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 2928.6,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2807.9,
 			["x"] = 3016.1,
@@ -20502,8 +19187,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3016.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2819.6,
 			["x"] = 3281.9,
@@ -20515,8 +19199,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3281.9,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2774,
 			["x"] = 3335.1,
@@ -20528,8 +19211,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3335.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2728.6,
 			["x"] = 3427.3,
@@ -20541,8 +19223,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3427.3,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["TT"] = {
 			["y"] = 2679.5,
 			["x"] = 3420.3,
@@ -20552,8 +19233,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			49437,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2731.9,
 			["x"] = 3423.6,
@@ -20565,8 +19245,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3423.6,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2771.1,
 			["x"] = 3357,
@@ -20578,8 +19257,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3357,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2741.8,
 			["x"] = 3313.1,
@@ -20591,8 +19269,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3313.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2667.1,
 			["x"] = 3399.1,
@@ -20612,8 +19289,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2637.6,
 			["x"] = 3353.1,
@@ -20633,8 +19309,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2583.4,
 			["x"] = 3348.3,
@@ -20654,8 +19329,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2546.3,
 			["x"] = 3413.6,
@@ -20680,8 +19354,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["DroppableQuest"] = {
 			["Text"] = "Beastbreaker Hakid",
 			["Qid"] = 48329,
@@ -20701,8 +19374,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2531.1,
 			["x"] = 3424.5,
@@ -20726,8 +19398,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			},
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2610.6,
 			["x"] = 3338.4,
@@ -20746,8 +19417,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3338.4,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2620.1,
 			["x"] = 3433.6,
@@ -20759,8 +19429,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3433.6,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2559.6,
 			["x"] = 3419.5,
@@ -20772,8 +19441,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3419.5,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["PickUp"] = {
 			49002,
 		},
@@ -20782,8 +19450,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3480.6,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["ExtraLineText"] = "SPEAR_DOWN_THE_UFO",
 		["SpecialMacro2"] = 1,
 		["DenyNPC"] = 129763,
@@ -20811,8 +19478,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3478.3,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["TT"] = {
 			["y"] = 2553.1,
 			["x"] = 3477.6,
@@ -20821,8 +19487,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			49002,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["TT"] = {
 			["y"] = 2562,
 			["x"] = 3473.6,
@@ -20832,8 +19497,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			50748,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2551.4,
 			["x"] = 3478.6,
@@ -20849,8 +19513,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3478.6,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 2861.3,
 			["x"] = 3505.6,
@@ -20867,8 +19530,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3511.6,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Done"] = {
 			49003,
 		},
@@ -20877,8 +19539,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3151.6,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["PickUp"] = {
 			50750,
 			50752,
@@ -20888,8 +19549,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3151.6,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Qpart"] = {
 			[50752] = {
 				["1"] = "1",
@@ -20910,8 +19570,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3290.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Qpart"] = {
 			[50752] = {
 				["2"] = "2",
@@ -20932,8 +19591,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3266.8,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Qpart"] = {
 			[50752] = {
 				["3"] = "3",
@@ -20954,8 +19612,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3403,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Qpart"] = {
 			[50752] = {
 				["4"] = "4",
@@ -20976,8 +19633,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3314.6,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Done"] = {
 			50750,
 			50752,
@@ -20987,8 +19643,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3151.3,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["PickUp"] = {
 			50550,
 		},
@@ -20997,8 +19652,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3151.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Qpart"] = {
 			[50550] = {
 				["1"] = "1",
@@ -21015,8 +19669,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3151.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Bloodlust"] = 1,
 		["Trigger"] = {
 			["y"] = 3128,
@@ -21033,8 +19686,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3151.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["TT"] = {
 			["y"] = 3080.3,
 			["x"] = 3149.3,
@@ -21043,8 +19695,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			50550,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["PickUp"] = {
 			50751,
 		},
@@ -21053,8 +19704,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3149.3,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 3139.3,
 			["x"] = 3087.1,
@@ -21070,8 +19720,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3087.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Button"] = {
 			["22345678-1"] = 6948,
 		},
@@ -21081,8 +19730,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 3149.3,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 1926,
 			["x"] = 4851.7,
@@ -21094,8 +19742,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4851.7,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 1927.5,
 			["x"] = 4881.8,
@@ -21107,8 +19754,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4881.8,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["Trigger"] = {
 			["y"] = 1950.7,
 			["x"] = 4868.1,
@@ -21120,8 +19766,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4868.1,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["TT"] = {
 			["y"] = 1950.9,
 			["x"] = 4845.3,
@@ -21130,8 +19775,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			50751,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["PickUp"] = {
 			50617,
 		},
@@ -21140,8 +19784,7 @@ APR.QuestStepList["864-Vol'dun"] = {
 			["x"] = 4845.3,
 		},
 	},
-	{
-		-- [Step 3
+	{ -- [Step 3
 		["ExtraLineText"] = "ZONE_COMPLETE",
 		["UseDalaHS"] = 50703,
 		["TT"] = {

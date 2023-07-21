@@ -1,10 +1,10 @@
-## Interface: 100105
-## X-Min-Interface: 100007
+## Interface: 100005
+## X-Min-Interface: 100005
 
 ## Title: Azeroth Pilot Reloaded - [|cffeda55fThe Burning Crusade|r]
 ## Notes: Provides The Burning Crusade implementation for Azeroth Pilot Reloaded.
-## Author: Rycia, Neogeekmo, Pahonix
-## IconTexture: Interface\AddOns\APR-Core\img\APR_logo
+## Author: Rycia
+
 
 ## RequiredDeps: APR-Core
 TheBurningCrusade_Alliance.lua

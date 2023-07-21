@@ -1,17 +1,53 @@
 -- Stormwind
 APR.QuestStepList["A84-Stormwind"] = {
-	{
-		["UseHS"] = 62567,
-		["TT"] = {
-			["y"] = -8867.5,
-			["x"] = 673.2,
+	{ -- [step 1
+		["Done"] = {
+			55991,
 		},
-		["Button"] = {
-			["22345678-1"] = 6948,
+		["ExtraLineText"] = "YES_TO_EXIT_TUTORIAL",
+		["Gossip"] = 1,
+		["TT"] = {
+			["y"] = -9055,
+			["x"] = 442,
 		},
 	},
-	{
-		-- [step 5
+	{ -- [step 2
+		["Trigger"] = {
+			["y"] = -8957.4,
+			["x"] = 505.8,
+		},
+		["CRange"] = 46727,
+		["Range"] = 5,
+		["TT"] = {
+			["y"] = -8957.4,
+			["x"] = 505.8,
+		},
+	},
+	{ -- [step 3
+		["Trigger"] = {
+			["y"] = -8922.2,
+			["x"] = 505.7,
+		},
+		["CRange"] = 46727,
+		["Range"] = 5,
+		["TT"] = {
+			["y"] = -8922.2,
+			["x"] = 505.7,
+		},
+	},
+	{ -- [step 4
+		["Trigger"] = {
+			["y"] = -8920.2,
+			["x"] = 542.6,
+		},
+		["CRange"] = 46727,
+		["Range"] = 5,
+		["TT"] = {
+			["y"] = -8920.2,
+			["x"] = 542.6,
+		},
+	},
+	{ -- [step 5
 		["ExtraLineText"] = "FROM_HEROS_HERALD",
 		["PickUp"] = {
 			46727,
@@ -21,8 +57,53 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 630.1,
 		},
 	},
-	{
-		-- [step 10
+	{ -- [step 6
+		["Trigger"] = {
+			["y"] = -8811.4,
+			["x"] = 600,
+		},
+		["CRange"] = 46727,
+		["Range"] = 5,
+		["TT"] = {
+			["y"] = -8811.4,
+			["x"] = 600,
+		},
+	},
+	{ -- [step 7
+		["Trigger"] = {
+			["y"] = -8847,
+			["x"] = 531.4,
+		},
+		["CRange"] = 46727,
+		["Range"] = 5,
+		["TT"] = {
+			["y"] = -8847,
+			["x"] = 531.4,
+		},
+	},
+	{ -- [step 8
+		["Trigger"] = {
+			["y"] = -8859.4,
+			["x"] = 536.1,
+		},
+		["CRange"] = 46727,
+		["Range"] = 5,
+		["TT"] = {
+			["y"] = -8859.4,
+			["x"] = 536.1,
+		},
+	},
+	{ -- [step 9
+		["ExtraLineText"] = "TRAIN_APPRENTICE_RIDING",
+		["SpellInTab"] = 33388,
+		["TrainRidingSkill"] = 34398,
+		["RaidIcon"] = 44919,
+		["TT"] = {
+			["y"] = -8846.7,
+			["x"] = 503.1,
+		},
+	},
+	{ -- [step 10
 		["Trigger"] = {
 			["y"] = -8769.1,
 			["x"] = 604.7,
@@ -34,8 +115,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 604.7,
 		},
 	},
-	{
-		-- [step 11
+	{ -- [step 11
 		["Trigger"] = {
 			["y"] = -8741,
 			["x"] = 574.7,
@@ -47,8 +127,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 574.7,
 		},
 	},
-	{
-		-- [step 12
+	{ -- [step 12
 		["Trigger"] = {
 			["y"] = -8713.2,
 			["x"] = 522.9,
@@ -60,8 +139,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 522.9,
 		},
 	},
-	{
-		-- [step 13
+	{ -- [step 13
 		["Trigger"] = {
 			["y"] = -8656.5,
 			["x"] = 553.2,
@@ -73,8 +151,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 553.2,
 		},
 	},
-	{
-		-- [step 14
+	{ -- [step 14
 		["Trigger"] = {
 			["y"] = -8487.2,
 			["x"] = 409.6,
@@ -86,8 +163,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 409.6,
 		},
 	},
-	{
-		-- [step 15
+	{ -- [step 15
 		["Trigger"] = {
 			["y"] = -8442.1,
 			["x"] = 416.8,
@@ -99,8 +175,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 416.8,
 		},
 	},
-	{
-		-- [step 16
+	{ -- [step 16
 		["Trigger"] = {
 			["y"] = -8433.2,
 			["x"] = 321.3,
@@ -112,8 +187,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 321.3,
 		},
 	},
-	{
-		-- [step 17
+	{ -- [step 17
 		["Trigger"] = {
 			["y"] = -8414.1,
 			["x"] = 304.5,
@@ -125,8 +199,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 304.5,
 		},
 	},
-	{
-		-- [step 18
+	{ -- [step 18
 		["ExtraLineText"] = "LISTEN",
 		["Trigger"] = {
 			["y"] = -8384.2,
@@ -143,8 +216,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 326.6,
 		},
 	},
-	{
-		-- [step 19
+	{ -- [step 19
 		["ExtraLineText"] = "CLICK_THE_VISION",
 		["Trigger"] = {
 			["y"] = -8384.2,
@@ -161,8 +233,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 326.6,
 		},
 	},
-	{
-		-- [step 20
+	{ -- [step 20
 		["TT"] = {
 			["y"] = -8384.2,
 			["x"] = 326.6,
@@ -171,8 +242,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			46727,
 		},
 	},
-	{
-		-- [step 21
+	{ -- [step 21
 		["PickUp"] = {
 			46728,
 		},
@@ -181,8 +251,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 326.6,
 		},
 	},
-	{
-		-- [step 22
+	{ -- [step 22
 		["Trigger"] = {
 			["y"] = -8414.1,
 			["x"] = 304.5,
@@ -194,8 +263,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 304.5,
 		},
 	},
-	{
-		-- [step 23
+	{ -- [step 23
 		["Trigger"] = {
 			["y"] = -8463.4,
 			["x"] = 352,
@@ -207,8 +275,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 352,
 		},
 	},
-	{
-		-- [step 24
+	{ -- [step 24
 		["ExtraLineText"] = "JUMP",
 		["Trigger"] = {
 			["y"] = -8538.1,
@@ -221,8 +288,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 467.1,
 		},
 	},
-	{
-		-- [step 25
+	{ -- [step 25
 		["Trigger"] = {
 			["y"] = -8583.7,
 			["x"] = 568.5,
@@ -234,8 +300,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 568.5,
 		},
 	},
-	{
-		-- [step 26
+	{ -- [step 26
 		["Trigger"] = {
 			["y"] = -8576.7,
 			["x"] = 599.5,
@@ -247,8 +312,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 599.5,
 		},
 	},
-	{
-		-- [step 27
+	{ -- [step 27
 		["Trigger"] = {
 			["y"] = -8515.2,
 			["x"] = 652.2,
@@ -260,8 +324,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 652.2,
 		},
 	},
-	{
-		-- [step 28
+	{ -- [step 28
 		["Trigger"] = {
 			["y"] = -8536.7,
 			["x"] = 683.9,
@@ -273,8 +336,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 683.9,
 		},
 	},
-	{
-		-- [step 29
+	{ -- [step 29
 		["Trigger"] = {
 			["y"] = -8562.9,
 			["x"] = 678.2,
@@ -286,8 +348,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 678.2,
 		},
 	},
-	{
-		-- [step 30
+	{ -- [step 30
 		["Trigger"] = {
 			["y"] = -8589.4,
 			["x"] = 711.7,
@@ -299,8 +360,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 711.7,
 		},
 	},
-	{
-		-- [step 31
+	{ -- [step 31
 		["Trigger"] = {
 			["y"] = -8583.2,
 			["x"] = 738.7,
@@ -312,8 +372,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 738.7,
 		},
 	},
-	{
-		-- [step 32
+	{ -- [step 32
 		["Trigger"] = {
 			["y"] = -8679.9,
 			["x"] = 877.4,
@@ -325,8 +384,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 877.4,
 		},
 	},
-	{
-		-- [step 33
+	{ -- [step 33
 		["Trigger"] = {
 			["y"] = -8540,
 			["x"] = 1003.9,
@@ -338,8 +396,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 1003.9,
 		},
 	},
-	{
-		-- [step 34
+	{ -- [step 34
 		["ExtraLineText"] = "JUMP",
 		["Trigger"] = {
 			["y"] = -8406.7,
@@ -352,8 +409,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 1078.5,
 		},
 	},
-	{
-		-- [step 35
+	{ -- [step 35
 		["Trigger"] = {
 			["y"] = -8299.7,
 			["x"] = 1229.3,
@@ -365,8 +421,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 			["x"] = 1229.3,
 		},
 	},
-	{
-		-- [step 36
+	{ -- [step 36
 		["Qpart"] = {
 			[46728] = {
 				["1"] = "1",
@@ -389,8 +444,7 @@ APR.QuestStepList["A84-Stormwind"] = {
 }
 -- Tiragarde Sound
 APR.QuestStepList["A895-Tiragarde Sound"] = {
-	{
-		-- [step 1
+	{ -- [step 1
 		["Done"] = {
 			46728,
 		},
@@ -399,8 +453,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -443.2,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["PickUp"] = {
 			51341,
 		},
@@ -409,8 +462,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -443.3,
 		},
 	},
-	{
-		-- [step 3
+	{ -- [step 3
 		["Done"] = {
 			51341,
 		},
@@ -419,8 +471,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2715.3,
 		},
 	},
-	{
-		-- [step 4
+	{ -- [step 4
 		["PickUp"] = {
 			47098,
 		},
@@ -429,8 +480,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2715.3,
 		},
 	},
-	{
-		-- [step 5
+	{ -- [step 5
 		["Trigger"] = {
 			["y"] = 143.8,
 			["x"] = -2711.3,
@@ -446,8 +496,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2711.3,
 		},
 	},
-	{
-		-- [step 6
+	{ -- [step 6
 		["Trigger"] = {
 			["y"] = 163.1,
 			["x"] = -2709.8,
@@ -463,8 +512,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2709.8,
 		},
 	},
-	{
-		-- [step 7
+	{ -- [step 7
 		["Trigger"] = {
 			["y"] = 150.3,
 			["x"] = -2712.6,
@@ -480,8 +528,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2712.6,
 		},
 	},
-	{
-		-- [step 8
+	{ -- [step 8
 		["Trigger"] = {
 			["y"] = 101.2,
 			["x"] = -2666,
@@ -497,8 +544,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2666,
 		},
 	},
-	{
-		-- [step 9
+	{ -- [step 9
 		["Trigger"] = {
 			["y"] = 103.4,
 			["x"] = -2686.9,
@@ -514,8 +560,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2686.9,
 		},
 	},
-	{
-		-- [step 10
+	{ -- [step 10
 		["Trigger"] = {
 			["y"] = 134.8,
 			["x"] = -2688.9,
@@ -527,8 +572,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2688.9,
 		},
 	},
-	{
-		-- [step 11
+	{ -- [step 11
 		["Trigger"] = {
 			["y"] = 155,
 			["x"] = -2666.1,
@@ -540,8 +584,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2666.1,
 		},
 	},
-	{
-		-- [step 12
+	{ -- [step 12
 		["Trigger"] = {
 			["y"] = 183.1,
 			["x"] = -2683.5,
@@ -557,8 +600,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2683.5,
 		},
 	},
-	{
-		-- [step 13
+	{ -- [step 13
 		["Trigger"] = {
 			["y"] = 193.6,
 			["x"] = -2691.8,
@@ -570,8 +612,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2691.8,
 		},
 	},
-	{
-		-- [step 14
+	{ -- [step 14
 		["Trigger"] = {
 			["y"] = 166.1,
 			["x"] = -2732.1,
@@ -583,8 +624,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2732.1,
 		},
 	},
-	{
-		-- [step 15
+	{ -- [step 15
 		["Trigger"] = {
 			["y"] = 151,
 			["x"] = -2722,
@@ -596,8 +636,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2722,
 		},
 	},
-	{
-		-- [step 16
+	{ -- [step 16
 		["Trigger"] = {
 			["y"] = 167.8,
 			["x"] = -2696.3,
@@ -609,8 +648,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2696.3,
 		},
 	},
-	{
-		-- [step 17
+	{ -- [step 17
 		["Trigger"] = {
 			["y"] = 117.3,
 			["x"] = -2657.3,
@@ -626,8 +664,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2657.3,
 		},
 	},
-	{
-		-- [step 18
+	{ -- [step 18
 		["Trigger"] = {
 			["y"] = 100.7,
 			["x"] = -2648.1,
@@ -639,8 +676,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2648.1,
 		},
 	},
-	{
-		-- [step 19
+	{ -- [step 19
 		["Trigger"] = {
 			["y"] = 79.3,
 			["x"] = -2678.9,
@@ -652,8 +688,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2678.9,
 		},
 	},
-	{
-		-- [step 20
+	{ -- [step 20
 		["Trigger"] = {
 			["y"] = 147.3,
 			["x"] = -2727.9,
@@ -665,8 +700,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2727.9,
 		},
 	},
-	{
-		-- [step 21
+	{ -- [step 21
 		["Trigger"] = {
 			["y"] = 129.3,
 			["x"] = -2815.8,
@@ -678,8 +712,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2815.8,
 		},
 	},
-	{
-		-- [step 22
+	{ -- [step 22
 		["Trigger"] = {
 			["y"] = 168.8,
 			["x"] = -2837.8,
@@ -691,8 +724,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -2837.8,
 		},
 	},
-	{
-		-- [step 23
+	{ -- [step 23
 		["Trigger"] = {
 			["y"] = 232.4,
 			["x"] = -2818,
@@ -709,8 +741,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["Dontskipvid"] = 1,
 	},
-	{
-		-- [step 24
+	{ -- [step 24
 		["Done"] = {
 			47098,
 		},
@@ -719,8 +750,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -625.7,
 		},
 	},
-	{
-		-- [step 25
+	{ -- [step 25
 		["PickUp"] = {
 			47099,
 		},
@@ -729,8 +759,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -625.7,
 		},
 	},
-	{
-		-- [step 26
+	{ -- [step 26
 		["Trigger"] = {
 			["y"] = 1047.4,
 			["x"] = -597.2,
@@ -746,8 +775,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -597.2,
 		},
 	},
-	{
-		-- [step 27
+	{ -- [step 27
 		["Trigger"] = {
 			["y"] = 1076.3,
 			["x"] = -592.5,
@@ -759,8 +787,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -592.5,
 		},
 	},
-	{
-		-- [step 28
+	{ -- [step 28
 		["Trigger"] = {
 			["y"] = 1056.9,
 			["x"] = -590.9,
@@ -772,8 +799,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -590.9,
 		},
 	},
-	{
-		-- [step 29
+	{ -- [step 29
 		["Trigger"] = {
 			["y"] = 1058.9,
 			["x"] = -625.6,
@@ -785,8 +811,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -625.6,
 		},
 	},
-	{
-		-- [step 30
+	{ -- [step 30
 		["Trigger"] = {
 			["y"] = 1121.8,
 			["x"] = -621.5,
@@ -802,8 +827,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -621.5,
 		},
 	},
-	{
-		-- [step 31
+	{ -- [step 31
 		["Trigger"] = {
 			["y"] = 1099.5,
 			["x"] = -616.5,
@@ -815,8 +839,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -616.5,
 		},
 	},
-	{
-		-- [step 32
+	{ -- [step 32
 		["Trigger"] = {
 			["y"] = 1122,
 			["x"] = -602.5,
@@ -828,8 +851,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -602.5,
 		},
 	},
-	{
-		-- [step 33
+	{ -- [step 33
 		["Trigger"] = {
 			["y"] = 1127,
 			["x"] = -612.5,
@@ -841,8 +863,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -612.5,
 		},
 	},
-	{
-		-- [step 34
+	{ -- [step 34
 		["Trigger"] = {
 			["y"] = 1169,
 			["x"] = -584.5,
@@ -854,8 +875,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -584.5,
 		},
 	}, -- [11]
-	{
-		-- [step 35
+	{ -- [step 35
 		["Trigger"] = {
 			["y"] = 1182.5,
 			["x"] = -591.5,
@@ -871,8 +891,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -591.5,
 		},
 	},
-	{
-		-- [step 36
+	{ -- [step 36
 		["Trigger"] = {
 			["y"] = 1169,
 			["x"] = -584.5,
@@ -884,8 +903,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -584.5,
 		},
 	},
-	{
-		-- [step 37
+	{ -- [step 37
 		["Trigger"] = {
 			["y"] = 1141.2,
 			["x"] = -532.7,
@@ -897,8 +915,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -532.7,
 		},
 	},
-	{
-		-- [step 38
+	{ -- [step 38
 		["Trigger"] = {
 			["y"] = 1154,
 			["x"] = -468.5,
@@ -914,8 +931,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -468.5,
 		},
 	},
-	{
-		-- [step 39
+	{ -- [step 39
 		["TT"] = {
 			["y"] = 1154,
 			["x"] = -468.5,
@@ -924,8 +940,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			47099,
 		},
 	},
-	{
-		-- [step 40
+	{ -- [step 40
 		["PickUp"] = {
 			46729,
 		},
@@ -934,8 +949,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -468.5,
 		},
 	},
-	{
-		-- [step 41
+	{ -- [step 41
 		["CRange"] = 46729,
 		["Trigger"] = {
 			["y"] = 1123.7,
@@ -947,8 +961,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -528.3,
 		},
 	},
-	{
-		-- [step 42
+	{ -- [step 42
 		["CRange"] = 46729,
 		["Trigger"] = {
 			["y"] = 1083.9,
@@ -960,8 +973,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -500.9,
 		},
 	},
-	{
-		-- [step 43
+	{ -- [step 43
 		["CRange"] = 46729,
 		["Trigger"] = {
 			["y"] = 1075.4,
@@ -973,8 +985,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -474.9,
 		},
 	},
-	{
-		-- [step 44
+	{ -- [step 44
 		["Trigger"] = {
 			["y"] = 1053.3,
 			["x"] = -468.8,
@@ -990,8 +1001,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -468.8,
 		},
 	},
-	{
-		-- [step 45
+	{ -- [step 45
 		["Qpart"] = {
 			[46729] = {
 				[2] = 1,
@@ -1008,8 +1018,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -485.7,
 		},
 	},
-	{
-		-- [step 46
+	{ -- [step 46
 		["Qpart"] = {
 			[46729] = {
 				[3] = 1,
@@ -1027,8 +1036,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -485.7,
 		},
 	},
-	{
-		-- [step 47
+	{ -- [step 47
 		["Done"] = {
 			46729,
 		},
@@ -1037,8 +1045,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -488.5,
 		},
 	},
-	{
-		-- [step 48
+	{ -- [step 48
 		["PickUp"] = {
 			47186,
 			52128,
@@ -1048,8 +1055,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -486.8,
 		},
 	},
-	{
-		-- [step 49
+	{ -- [step 49
 		["Done"] = {
 			52128,
 		},
@@ -1058,8 +1064,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -485.7,
 		},
 	},
-	{
-		-- [step 50
+	{ -- [step 50
 		["Trigger"] = {
 			["y"] = 1061.7,
 			["x"] = -473.4,
@@ -1071,8 +1076,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -473.4,
 		},
 	},
-	{
-		-- [step 51
+	{ -- [step 51
 		["Trigger"] = {
 			["y"] = 1080.4,
 			["x"] = -477.4,
@@ -1084,8 +1088,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -477.4,
 		},
 	},
-	{
-		-- [step 52
+	{ -- [step 52
 		["Trigger"] = {
 			["y"] = 1082,
 			["x"] = -503.7,
@@ -1097,8 +1100,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -503.7,
 		},
 	},
-	{
-		-- [step 53
+	{ -- [step 53
 		["Qpart"] = {
 			[47186] = {
 				["1"] = "1",
@@ -1115,8 +1117,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -534.3,
 		},
 	},
-	{
-		-- [step 54
+	{ -- [step 54
 		["Trigger"] = {
 			["y"] = 1082.9,
 			["x"] = -508,
@@ -1128,8 +1129,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -508,
 		},
 	},
-	{
-		-- [step 55
+	{ -- [step 55
 		["Trigger"] = {
 			["y"] = 1079.3,
 			["x"] = -477.3,
@@ -1141,8 +1141,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -477.3,
 		},
 	},
-	{
-		-- [step 56
+	{ -- [step 56
 		["Trigger"] = {
 			["y"] = 1061.4,
 			["x"] = -475,
@@ -1154,8 +1153,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -475,
 		},
 	},
-	{
-		-- [step 57
+	{ -- [step 57
 		["Done"] = {
 			47186,
 		},
@@ -1164,8 +1162,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -486.9,
 		},
 	},
-	{
-		-- [step 58
+	{ -- [step 58
 		["PickUp"] = {
 			47189,
 		},
@@ -1174,8 +1171,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -486.7,
 		},
 	},
-	{
-		-- [step 59
+	{ -- [step 59
 		["Qpart"] = {
 			[47189] = {
 				["1"] = "1",
@@ -1191,8 +1187,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -492,
 		},
 	},
-	{
-		-- [step 60
+	{ -- [step 60
 		["Done"] = {
 			47189,
 		},
@@ -1201,8 +1196,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -486.7,
 		},
 	},
-	{
-		-- [step 61
+	{ -- [step 61
 		["ExtraLineText"] = "MAP_WALL",
 		["PickUp"] = {
 			47960,
@@ -1212,8 +1206,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -486.7,
 		},
 	},
-	{
-		-- [step 62
+	{ -- [step 62
 		["Done"] = {
 			47960,
 		},
@@ -1222,8 +1215,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -488.7,
 		},
 	},
-	{
-		-- [step 63
+	{ -- [step 63
 		["PickUp"] = {
 			47181,
 		},
@@ -1232,8 +1224,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -479,
 		},
 	},
-	{
-		-- [step 64
+	{ -- [step 64
 		["ExtraActionB"] = 1,
 		["Trigger"] = {
 			["y"] = 1076.3,
@@ -1250,8 +1241,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -482.7,
 		},
 	},
-	{
-		-- [step 65
+	{ -- [step 65
 		["ClearZP"] = 1,
 		["Done"] = {
 			47181,
@@ -1261,8 +1251,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -478.4,
 		},
 	},
-	{
-		-- [step 66
+	{ -- [step 66
 		["PickUp"] = {
 			47485,
 		},
@@ -1272,8 +1261,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 47485,
 	},
-	{
-		-- [step 67
+	{ -- [step 67
 		["Trigger"] = {
 			["y"] = 1061.2,
 			["x"] = -473.9,
@@ -1285,8 +1273,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -473.9,
 		},
 	},
-	{
-		-- [step 68
+	{ -- [step 68
 		["Trigger"] = {
 			["y"] = 1078.8,
 			["x"] = -476.7,
@@ -1298,8 +1285,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -476.7,
 		},
 	},
-	{
-		-- [step 69
+	{ -- [step 69
 		["Trigger"] = {
 			["y"] = 1082,
 			["x"] = -502.7,
@@ -1311,8 +1297,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -502.7,
 		},
 	},
-	{
-		-- [step 70
+	{ -- [step 70
 		["PickUp"] = {
 			51144,
 		},
@@ -1322,8 +1307,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -559.7,
 		},
 	},
-	{
-		-- [step 71
+	{ -- [step 71
 		["Trigger"] = {
 			["y"] = 1134,
 			["x"] = -551.5,
@@ -1335,8 +1319,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -551.5,
 		},
 	},
-	{
-		-- [step 72
+	{ -- [step 72
 		["Trigger"] = {
 			["y"] = 1141.8,
 			["x"] = -545,
@@ -1348,8 +1331,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -545,
 		},
 	},
-	{
-		-- [step 73
+	{ -- [step 73
 		["Trigger"] = {
 			["y"] = 1167.9,
 			["x"] = -584,
@@ -1361,16 +1343,14 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -584,
 		},
 	},
-	{
-		-- [step 74
+	{ -- [step 74
 		["SetHS"] = 51426,
 		["TT"] = {
 			["y"] = 1181.9,
 			["x"] = -593,
 		},
 	},
-	{
-		-- [step 75
+	{ -- [step 75
 		["Trigger"] = {
 			["y"] = 1099.7,
 			["x"] = -602.8,
@@ -1382,8 +1362,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -602.8,
 		},
 	},
-	{
-		-- [step 76
+	{ -- [step 76
 		["Trigger"] = {
 			["y"] = 1063,
 			["x"] = -595.8,
@@ -1395,8 +1374,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -595.8,
 		},
 	},
-	{
-		-- [step 77
+	{ -- [step 77
 		["TT"] = {
 			["y"] = 1038.2,
 			["x"] = -594.8,
@@ -1406,8 +1384,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		["Boat"] = 1,
 		["Name"] = "Southwind Station, Tiragarde Sound",
 	},
-	{
-		-- [step 78
+	{ -- [step 78
 		["PickUp"] = {
 			50542,
 		},
@@ -1417,8 +1394,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 50542,
 	},
-	{
-		-- [step 79
+	{ -- [step 79
 		["PickUp"] = {
 			48070,
 		},
@@ -1427,8 +1403,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 85.9,
 		},
 	},
-	{
-		-- [step 80
+	{ -- [step 80
 		["PickUp"] = {
 			51151,
 		},
@@ -1438,8 +1413,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 51151,
 	},
-	{
-		-- [step 81
+	{ -- [step 81
 		["Done"] = {
 			50542,
 		},
@@ -1449,8 +1423,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -19.7,
 		},
 	},
-	{
-		-- [step 82
+	{ -- [step 82
 		["PickUp"] = {
 			49897,
 			49531,
@@ -1460,8 +1433,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -19.7,
 		},
 	},
-	{
-		-- [step 83
+	{ -- [step 83
 		["Qpart"] = {
 			[49531] = {
 				["2"] = "2",
@@ -1488,8 +1460,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 22.6,
 		},
 	},
-	{
-		-- [step 84
+	{ -- [step 84
 		["Qpart"] = {
 			[49531] = {
 				["3"] = "3",
@@ -1518,8 +1489,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -217.2,
 		},
 	},
-	{
-		-- [step 85
+	{ -- [step 85
 		["Qpart"] = {
 			[49531] = {
 				["4"] = "4",
@@ -1550,8 +1520,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 155.1,
 		},
 	},
-	{
-		-- [step 86
+	{ -- [step 86
 		["PickUp"] = {
 			51426,
 			51430,
@@ -1561,8 +1530,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 166.1,
 		},
 	},
-	{
-		-- [step 87
+	{ -- [step 87
 		["Qpart"] = {
 			[51426] = {
 				["1"] = "1",
@@ -1584,8 +1552,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 164.1,
 		},
 	},
-	{
-		-- [step 88
+	{ -- [step 88
 		["Done"] = {
 			51426,
 			51430,
@@ -1595,8 +1562,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 163.1,
 		},
 	},
-	{
-		-- [step 89
+	{ -- [step 89
 		["Qpart"] = {
 			[49529] = {
 				["1"] = "1",
@@ -1621,8 +1587,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 64.1,
 		},
 	},
-	{
-		-- [step 90
+	{ -- [step 90
 		["TT"] = {
 			["y"] = -447.9,
 			["x"] = -19.7,
@@ -1632,8 +1597,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49897,
 		},
 	},
-	{
-		-- [step 91
+	{ -- [step 91
 
 		["TT"] = {
 			["y"] = -148.5,
@@ -1644,8 +1608,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		["Boat"] = 1,
 		["Name"] = "Anglepoint Wharf, Tiragarde Sound",
 	},
-	{
-		-- [step 92
+	{ -- [step 92
 
 		["PickUp"] = {
 			48540,
@@ -1655,8 +1618,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1850.7,
 		},
 	},
-	{
-		-- [step 93
+	{ -- [step 93
 
 		["Trigger"] = {
 			["y"] = 826.7,
@@ -1673,8 +1635,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1886.4,
 		},
 	},
-	{
-		-- [step 94
+	{ -- [step 94
 
 		["Qpart"] = {
 			[48540] = {
@@ -1692,8 +1653,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1876.5,
 		},
 	},
-	{
-		-- [step 95
+	{ -- [step 95
 
 		["Trigger"] = {
 			["y"] = 845.5,
@@ -1710,8 +1670,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1781.5,
 		},
 	},
-	{
-		-- [step 96
+	{ -- [step 96
 
 		["TT"] = {
 			["y"] = 862,
@@ -1721,8 +1680,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			48540,
 		},
 	},
-	{
-		-- [step 97
+	{ -- [step 97
 
 		["PickUp"] = {
 			49268,
@@ -1734,8 +1692,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1853.8,
 		},
 	},
-	{
-		-- [step 98
+	{ -- [step 98
 
 		["Trigger"] = {
 			["y"] = 900.7,
@@ -1758,8 +1715,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1916.2,
 		},
 	},
-	{
-		-- [step 99
+	{ -- [step 99
 
 		["TT"] = {
 			["y"] = 860.2,
@@ -1771,8 +1727,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			48348,
 		},
 	},
-	{
-		-- [step 100
+	{ -- [step 100
 
 		["PickUp"] = {
 			49292,
@@ -1783,8 +1738,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1852,
 		},
 	},
-	{
-		-- [step 101
+	{ -- [step 101
 
 		["Trigger"] = {
 			["y"] = 864.9,
@@ -1797,8 +1751,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1820.9,
 		},
 	},
-	{
-		-- [step 102
+	{ -- [step 102
 
 		["Trigger"] = {
 			["y"] = 916.2,
@@ -1811,8 +1764,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1817.9,
 		},
 	},
-	{
-		-- [step 103
+	{ -- [step 103
 
 		["PickUp"] = {
 			49393,
@@ -1823,8 +1775,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 49393,
 	}, -- [10]
-	{
-		-- [step 104
+	{ -- [step 104
 
 		["GroupTask"] = 51384,
 		["Group"] = 3,
@@ -1834,8 +1785,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["QaskPopup"] = 51384,
 	}, -- [12]
-	{
-		-- [step 105
+	{ -- [step 105
 
 		["GroupTask"] = 51384,
 		["PickUp"] = {
@@ -1846,8 +1796,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1849.2,
 		},
 	}, -- [11]
-	{
-		-- [step 106
+	{ -- [step 106
 
 		["Qpart"] = {
 			[48353] = {
@@ -1873,8 +1822,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1853.4,
 		},
 	}, -- [13]
-	{
-		-- [step 107
+	{ -- [step 107
 
 		["Qpart"] = {
 			[48353] = {
@@ -1900,8 +1848,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1849.9,
 		},
 	}, -- [14]
-	{
-		-- [step 108
+	{ -- [step 108
 
 		["Qpart"] = {
 			[48353] = {
@@ -1927,8 +1874,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1892,
 		},
 	},
-	{
-		-- [step 109
+	{ -- [step 109
 
 		["Trigger"] = {
 			["y"] = 977.7,
@@ -1945,8 +1891,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1891.3,
 		},
 	},
-	{
-		-- [step 110
+	{ -- [step 110
 
 		["Done"] = {
 			48353,
@@ -1957,8 +1902,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1922.9,
 		},
 	},
-	{
-		-- [step 111
+	{ -- [step 111
 
 		["PickUp"] = {
 			48355,
@@ -1969,8 +1913,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1922.9,
 		},
 	},
-	{
-		-- [step 112
+	{ -- [step 112
 		["ExtraActionB"] = 1,
 		["Trigger"] = {
 			["y"] = 992.5,
@@ -1990,8 +1933,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1965,
 		},
 	},
-	{
-		-- [step 113
+	{ -- [step 113
 
 		["Done"] = {
 			48354,
@@ -2002,8 +1944,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2054.6,
 		},
 	},
-	{
-		-- [step 114
+	{ -- [step 114
 
 		["PickUp"] = {
 			48365,
@@ -2015,8 +1956,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2055.5,
 		},
 	},
-	{
-		-- [step 115
+	{ -- [step 115
 
 		["Trigger"] = {
 			["y"] = 855.9,
@@ -2037,8 +1977,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	},
-	{
-		-- [step 116
+	{ -- [step 116
 
 		["PickUp"] = {
 			48008,
@@ -2057,8 +1996,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	},
-	{
-		-- [step 117
+	{ -- [step 117
 
 		["Trigger"] = {
 			["y"] = 856.1,
@@ -2082,8 +2020,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	},
-	{
-		-- [step 118
+	{ -- [step 118
 
 		["Qpart"] = {
 			[49299] = {
@@ -2111,8 +2048,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2223.5,
 		},
 	},
-	{
-		-- [step 119
+	{ -- [step 119
 
 		["Trigger"] = {
 			["y"] = 866.9,
@@ -2136,8 +2072,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2124.1,
 		},
 	},
-	{
-		-- [step 120
+	{ -- [step 120
 
 		["Trigger"] = {
 			["y"] = 813.2,
@@ -2161,8 +2096,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2115.6,
 		},
 	},
-	{
-		-- [step 121
+	{ -- [step 121
 
 		["Trigger"] = {
 			["y"] = 767.7,
@@ -2186,8 +2120,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2120,
 		},
 	},
-	{
-		-- [step 122
+	{ -- [step 122
 
 		["Trigger"] = {
 			["y"] = 755.4,
@@ -2211,8 +2144,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2068.5,
 		},
 	},
-	{
-		-- [step 123
+	{ -- [step 123
 
 		["Trigger"] = {
 			["y"] = 743.2,
@@ -2229,8 +2161,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2056.5,
 		},
 	},
-	{
-		-- [step 124
+	{ -- [step 124
 
 		["Trigger"] = {
 			["y"] = 759.2,
@@ -2253,8 +2184,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2075.1,
 		},
 	},
-	{
-		-- [step 125
+	{ -- [step 125
 
 		["TT"] = {
 			["y"] = 850,
@@ -2265,8 +2195,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49299,
 		},
 	},
-	{
-		-- [step 126
+	{ -- [step 126
 
 		["TT"] = {
 			["y"] = 991.1,
@@ -2278,8 +2207,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			48356,
 		},
 	},
-	{
-		-- [step 127
+	{ -- [step 127
 
 		["PickUp"] = {
 			48366,
@@ -2289,8 +2217,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2055.1,
 		},
 	},
-	{
-		-- [step 128
+	{ -- [step 128
 
 		["Trigger"] = {
 			["y"] = 981.6,
@@ -2307,8 +2234,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2048.4,
 		},
 	},
-	{
-		-- [step 129
+	{ -- [step 129
 		["Trigger"] = {
 			["y"] = 1080,
 			["x"] = 2350.6,
@@ -2320,8 +2246,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2350.6,
 		},
 	},
-	{
-		-- [step 130
+	{ -- [step 130
 
 		["TT"] = {
 			["y"] = 1115.3,
@@ -2331,8 +2256,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			48366,
 		},
 	},
-	{
-		-- [step 131
+	{ -- [step 131
 		["PickUp"] = {
 			48368,
 			48370,
@@ -2343,8 +2267,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2371.9,
 		},
 	},
-	{
-		-- [step 132
+	{ -- [step 132
 
 		["PickUp"] = {
 			48367,
@@ -2354,8 +2277,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2392.6,
 		},
 	},
-	{
-		-- [step 133
+	{ -- [step 133
 
 		["Trigger"] = {
 			["y"] = 1041.3,
@@ -2368,8 +2290,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2492.6,
 		},
 	},
-	{
-		-- [step 134
+	{ -- [step 134
 
 		["Qpart"] = {
 			[48368] = {
@@ -2397,8 +2318,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2365.1,
 		},
 	},
-	{
-		-- [step 135
+	{ -- [step 135
 
 		["Qpart"] = {
 			[48368] = {
@@ -2426,8 +2346,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2731.5,
 		},
 	},
-	{
-		-- [step 136
+	{ -- [step 136
 
 		["Trigger"] = {
 			["y"] = 1240.9,
@@ -2451,8 +2370,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2701.1,
 		},
 	},
-	{
-		-- [step 137
+	{ -- [step 137
 
 		["Qpart"] = {
 			[48368] = {
@@ -2483,8 +2401,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2760.1,
 		},
 	},
-	{
-		-- [step 138
+	{ -- [step 138
 
 		["Trigger"] = {
 			["y"] = 1232,
@@ -2508,8 +2425,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2707.1,
 		},
 	},
-	{
-		-- [step 139
+	{ -- [step 139
 
 		["Trigger"] = {
 			["y"] = 1201.3,
@@ -2532,8 +2448,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2647,
 		},
 	},
-	{
-		-- [step 140
+	{ -- [step 140
 
 		["CRange"] = 51384,
 		["GroupTask"] = 51384,
@@ -2547,8 +2462,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2619.5,
 		},
 	},
-	{
-		-- [step 141
+	{ -- [step 141
 
 		["Qpart"] = {
 			[51384] = {
@@ -2566,8 +2480,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2724.8,
 		},
 	}, -- [47]
-	{
-		-- [step 142
+	{ -- [step 142
 
 		["GroupTask"] = 51384,
 		["Done"] = {
@@ -2578,8 +2491,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2376.1,
 		},
 	}, -- [48]
-	{
-		-- [step 143
+	{ -- [step 143
 
 		["Done"] = {
 			48368,
@@ -2591,8 +2503,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2373,
 		},
 	}, -- [49]
-	{
-		-- [step 144
+	{ -- [step 144
 
 		["Done"] = {
 			48367,
@@ -2602,8 +2513,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2392,
 		},
 	}, -- [50]
-	{
-		-- [step 145
+	{ -- [step 145
 
 		["PickUp"] = {
 			49302,
@@ -2613,8 +2523,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2391.6,
 		},
 	}, -- [51]
-	{
-		-- [step 146
+	{ -- [step 146
 
 		["Qpart"] = {
 			[49302] = {
@@ -2632,8 +2541,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2369.8,
 		},
 	}, -- [52]
-	{
-		-- [step 147
+	{ -- [step 147
 
 		["Trigger"] = {
 			["y"] = 835.4,
@@ -2650,8 +2558,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2294.3,
 		},
 	},
-	{
-		-- [step 148
+	{ -- [step 148
 
 		["Trigger"] = {
 			["y"] = 839.1,
@@ -2668,8 +2575,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2294.8,
 		},
 	},
-	{
-		-- [step 149
+	{ -- [step 149
 
 		["Trigger"] = {
 			["y"] = 854.9,
@@ -2687,8 +2593,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2287.9,
 		},
 	},
-	{
-		-- [step 150
+	{ -- [step 150
 
 		["Trigger"] = {
 			["y"] = 842.7,
@@ -2705,8 +2610,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2260.9,
 		},
 	},
-	{
-		-- [step 151
+	{ -- [step 151
 
 		["TT"] = {
 			["y"] = 859.7,
@@ -2716,8 +2620,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49302,
 		},
 	}, -- [56]
-	{
-		-- [step 152
+	{ -- [step 152
 		["Trigger"] = {
 			["y"] = 968.6,
 			["x"] = 1834.9,
@@ -2730,8 +2633,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 49393,
 	}, -- [57]
-	{
-		-- [step 153
+	{ -- [step 153
 		["Trigger"] = {
 			["y"] = 989.1,
 			["x"] = 1890.3,
@@ -2744,8 +2646,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 49393,
 	}, -- [58]
-	{
-		-- [step 154
+	{ -- [step 154
 		["Trigger"] = {
 			["y"] = 1054.4,
 			["x"] = 1937.9,
@@ -2758,8 +2659,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 49393,
 	}, -- [59]
-	{
-		-- [step 155
+	{ -- [step 155
 		["Trigger"] = {
 			["y"] = 1121,
 			["x"] = 1953,
@@ -2772,8 +2672,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 49393,
 	}, -- [60]
-	{
-		-- [step 156
+	{ -- [step 156
 		["Trigger"] = {
 			["y"] = 1174.3,
 			["x"] = 1837.3,
@@ -2785,8 +2684,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1837.3,
 		},
 	},
-	{
-		-- [step 157
+	{ -- [step 157
 		["TT"] = {
 			["y"] = 1210,
 			["x"] = 1845,
@@ -2796,8 +2694,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 49393,
 	}, -- [63]
-	{
-		-- [step 158
+	{ -- [step 158
 		["PickUp"] = {
 			49394,
 			49395,
@@ -2807,8 +2704,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1845,
 		},
 	}, -- [64]
-	{
-		-- [step 159
+	{ -- [step 159
 		["GroupTask"] = 51368,
 		["Group"] = 3,
 		["TT"] = {
@@ -2817,8 +2713,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["QaskPopup"] = 51368,
 	}, -- [66]
-	{
-		-- [step 160
+	{ -- [step 160
 		["GroupTask"] = 51368,
 		["PickUp"] = {
 			51368,
@@ -2828,8 +2723,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1859.9,
 		},
 	}, -- [65]
-	{
-		-- [step 161
+	{ -- [step 161
 		["PickUp"] = {
 			49412,
 		},
@@ -2850,8 +2744,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1447.5,
 		},
 	}, -- [68]
-	{
-		-- [step 162
+	{ -- [step 162
 		["Qpart"] = {
 			[49412] = {
 				["1"] = "1",
@@ -2879,8 +2772,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1413.7,
 		},
 	}, -- [69]
-	{
-		-- [step 163
+	{ -- [step 163
 		["Done"] = {
 			49412,
 		},
@@ -2889,8 +2781,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1447.5,
 		},
 	}, -- [70]
-	{
-		-- [step 164
+	{ -- [step 164
 		["Qpart"] = {
 			[51368] = {
 				["1"] = "1",
@@ -2907,8 +2798,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1474.5,
 		},
 	}, -- [71]
-	{
-		-- [step 165
+	{ -- [step 165
 		["Qpart"] = {
 			[49394] = {
 				["1"] = "1",
@@ -2931,8 +2821,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1447.7,
 		},
 	}, -- [72]
-	{
-		-- [step 166
+	{ -- [step 166
 		["TT"] = {
 			["y"] = 1209.5,
 			["x"] = 1843,
@@ -2942,8 +2831,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49395,
 		},
 	}, -- [74]
-	{
-		-- [step 167
+	{ -- [step 167
 		["GroupTask"] = 51368,
 		["Done"] = {
 			51368,
@@ -2953,8 +2841,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1843,
 		},
 	}, -- [75]
-	{
-		-- [step 168
+	{ -- [step 168
 		["PickUp"] = {
 			49735,
 			49710,
@@ -2964,8 +2851,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1835.2,
 		},
 	}, -- [76]
-	{
-		-- [step 169
+	{ -- [step 169
 		["Trigger"] = {
 			["y"] = 1314.4,
 			["x"] = 1707.9,
@@ -2984,8 +2870,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1707.9,
 		},
 	}, -- [77]
-	{
-		-- [step 170
+	{ -- [step 170
 		["Trigger"] = {
 			["y"] = 1476.7,
 			["x"] = 1474,
@@ -2997,8 +2882,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1474,
 		},
 	}, -- [78]
-	{
-		-- [step 171
+	{ -- [step 171
 		["TT"] = {
 			["y"] = 1499.9,
 			["x"] = 1435.8,
@@ -3008,8 +2892,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49735,
 		},
 	}, -- [79]
-	{
-		-- [step 172
+	{ -- [step 172
 		["PickUp"] = {
 			49417,
 		},
@@ -3018,8 +2901,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1435.8,
 		},
 	}, -- [80]
-	{
-		-- [step 173
+	{ -- [step 173
 		["Qpart"] = {
 			[49417] = {
 				["1"] = "1",
@@ -3038,8 +2920,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1436.4,
 		},
 	}, -- [81]
-	{
-		-- [step 174
+	{ -- [step 174
 		["TT"] = {
 			["y"] = 1209.9,
 			["x"] = 1843.5,
@@ -3048,8 +2929,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49417,
 		},
 	}, -- [82]
-	{
-		-- [step 175
+	{ -- [step 175
 		["PickUp"] = {
 			49418,
 		},
@@ -3059,8 +2939,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 49418,
 	}, -- [83]
-	{
-		-- [step 176
+	{ -- [step 176
 		["Trigger"] = {
 			["y"] = 1279.9,
 			["x"] = 1770.9,
@@ -3073,8 +2952,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 49418,
 	}, -- [84]
-	{
-		-- [step 177
+	{ -- [step 177
 		["Trigger"] = {
 			["y"] = 1374,
 			["x"] = 1769.2,
@@ -3087,8 +2965,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 49418,
 	}, -- [85]
-	{
-		-- [step 178
+	{ -- [step 178
 		["Trigger"] = {
 			["y"] = 1450.4,
 			["x"] = 1854.2,
@@ -3101,8 +2978,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 49418,
 	}, -- [86]
-	{
-		-- [step 179
+	{ -- [step 179
 		["TT"] = {
 			["y"] = 1482,
 			["x"] = 1871.4,
@@ -3112,8 +2988,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 49418,
 	}, -- [87]
-	{
-		-- [step 180
+	{ -- [step 180
 		["PickUp"] = {
 			49433,
 			49435,
@@ -3123,8 +2998,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1871,
 		},
 	}, -- [88]
-	{
-		-- [step 181
+	{ -- [step 181
 		["Qpart"] = {
 			[49435] = {
 				["1"] = "1",
@@ -3145,8 +3019,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1852.3,
 		},
 	}, -- [89]
-	{
-		-- [step 182
+	{ -- [step 182
 		["Qpart"] = {
 			[49435] = {
 				["2"] = "2",
@@ -3167,8 +3040,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1744,
 		},
 	}, -- [90]
-	{
-		-- [step 183
+	{ -- [step 183
 		["PickUp"] = {
 			49419,
 		},
@@ -3177,8 +3049,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1747.7,
 		},
 	}, -- [91]
-	{
-		-- [step 184
+	{ -- [step 184
 		["Trigger"] = {
 			["y"] = 1578.5,
 			["x"] = 1737.9,
@@ -3190,8 +3061,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1737.9,
 		},
 	}, -- [92]
-	{
-		-- [step 185
+	{ -- [step 185
 		["PickUp"] = {
 			49431,
 		},
@@ -3200,8 +3070,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1656.5,
 		},
 	}, -- [93]
-	{
-		-- [step 186
+	{ -- [step 186
 		["Qpart"] = {
 			[49419] = {
 				["1"] = "1",
@@ -3222,8 +3091,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1374.4,
 		},
 	}, -- [94]
-	{
-		-- [step 187
+	{ -- [step 187
 		["Trigger"] = {
 			["y"] = 1597.5,
 			["x"] = 1589.5,
@@ -3239,8 +3107,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1589.5,
 		},
 	}, -- [95]
-	{
-		-- [step 188
+	{ -- [step 188
 		["TT"] = {
 			["y"] = 1546,
 			["x"] = 1656.5,
@@ -3249,8 +3116,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49431,
 		},
 	}, -- [99]
-	{
-		-- [step 189
+	{ -- [step 189
 		["TT"] = {
 			["y"] = 1557.2,
 			["x"] = 1746.8,
@@ -3259,8 +3125,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49419,
 		},
 	}, -- [99]
-	{
-		-- [step 190
+	{ -- [step 190
 		["Qpart"] = {
 			[49435] = {
 				["3"] = "3",
@@ -3281,8 +3146,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1905.2,
 		},
 	}, -- [96]
-	{
-		-- [step 191
+	{ -- [step 191
 		["Qpart"] = {
 			[49435] = {
 				["4"] = "4",
@@ -3303,8 +3167,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2042.5,
 		},
 	}, -- [97]
-	{
-		-- [step 192
+	{ -- [step 192
 		["Done"] = {
 			49431,
 		},
@@ -3313,8 +3176,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1656.5,
 		},
 	}, -- [98]
-	{
-		-- [step 193
+	{ -- [step 193
 		["Trigger"] = {
 			["y"] = 1647,
 			["x"] = 2040.5,
@@ -3330,8 +3192,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2040.5,
 		},
 	}, -- [100]
-	{
-		-- [step 194
+	{ -- [step 194
 		["TT"] = {
 			["y"] = 1632.5,
 			["x"] = 1997.9,
@@ -3341,8 +3202,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49435,
 		},
 	}, -- [101]
-	{
-		-- [step 195
+	{ -- [step 195
 		["PickUp"] = {
 			49439,
 		},
@@ -3351,8 +3211,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1997.9,
 		},
 	}, -- [102]
-	{
-		-- [step 196
+	{ -- [step 196
 		["Trigger"] = {
 			["y"] = 1701.9,
 			["x"] = 2073.6,
@@ -3368,8 +3227,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2073.6,
 		},
 	}, -- [103]
-	{
-		-- [step 197
+	{ -- [step 197
 		["TT"] = {
 			["y"] = 1705.5,
 			["x"] = 2071.9,
@@ -3378,8 +3236,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49439,
 		},
 	}, -- [104]
-	{
-		-- [step 198
+	{ -- [step 198
 		["PickUp"] = {
 			49719,
 		},
@@ -3388,8 +3245,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2071.9,
 		},
 	}, -- [105]
-	{
-		-- [step 199
+	{ -- [step 199
 		["Trigger"] = {
 			["y"] = 1665,
 			["x"] = 2040,
@@ -3401,8 +3257,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 2040,
 		},
 	}, -- [106]
-	{
-		-- [step 200
+	{ -- [step 200
 		["Trigger"] = {
 			["y"] = 1453.2,
 			["x"] = 1855,
@@ -3414,8 +3269,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1855,
 		},
 	}, -- [107]
-	{
-		-- [step 201
+	{ -- [step 201
 		["Trigger"] = {
 			["y"] = 1356.3,
 			["x"] = 1768.2,
@@ -3427,8 +3281,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1768.2,
 		},
 	}, -- [108]
-	{
-		-- [step 202
+	{ -- [step 202
 		["Trigger"] = {
 			["y"] = 1233.5,
 			["x"] = 1804.3,
@@ -3440,8 +3293,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1804.3,
 		},
 	}, -- [109]
-	{
-		-- [step 203
+	{ -- [step 203
 		["TT"] = {
 			["y"] = 1210.7,
 			["x"] = 1843,
@@ -3450,8 +3302,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49719,
 		},
 	}, -- [110]
-	{
-		-- [step 204
+	{ -- [step 204
 		["UseHS"] = 49260,
 		["TT"] = {
 			["y"] = 1210.7,
@@ -3461,8 +3312,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["22345678-1"] = 6948,
 		},
 	},
-	{
-		-- [step 205
+	{ -- [step 205
 		["TT"] = {
 			["y"] = 1038.2,
 			["x"] = -594.8,
@@ -3472,8 +3322,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		["Boat"] = 1,
 		["Name"] = "Firebreaker Expedition, Tiragarde Sound",
 	},
-	{
-		-- [step 206
+	{ -- [step 206
 		["TT"] = {
 			["y"] = 832.2,
 			["x"] = 333.2,
@@ -3483,8 +3332,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 51151,
 	}, -- [110]
-	{
-		-- [step 207
+	{ -- [step 207
 		["PickUp"] = {
 			49225,
 			49229,
@@ -3495,8 +3343,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 333.2,
 		},
 	},
-	{
-		-- [step 208
+	{ -- [step 208
 		["PickUp"] = {
 			49234,
 		},
@@ -3505,8 +3352,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 319.1,
 		},
 	},
-	{
-		-- [step 209
+	{ -- [step 209
 		["Trigger"] = {
 			["y"] = 958.7,
 			["x"] = 323.8,
@@ -3523,8 +3369,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 323.8,
 		},
 	},
-	{
-		-- [step 210
+	{ -- [step 210
 		["Trigger"] = {
 			["y"] = 1024.5,
 			["x"] = 349,
@@ -3544,8 +3389,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 349,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["PickUp"] = {
 			49233,
 			49232,
@@ -3560,8 +3404,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 307.3,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1071.5,
 			["x"] = 251.9,
@@ -3590,8 +3433,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 251.9,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["TT"] = {
 			["y"] = 1113.3,
 			["x"] = 273.8,
@@ -3618,8 +3460,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49225,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["PickUp"] = {
 			49260,
 		},
@@ -3645,8 +3486,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 273.8,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["RaidIcon"] = 128349,
 		["Trigger"] = {
 			["y"] = 1108.7,
@@ -3680,8 +3520,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["49233-1"] = 153350,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["TT"] = {
 			["y"] = 1114.2,
 			["x"] = 274.5,
@@ -3707,8 +3546,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["49233-1"] = 153350,
 		},
 	}, -- [10]
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1071,
 			["x"] = 253.5,
@@ -3737,8 +3575,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 253.5,
 		},
 	}, -- [11]
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1081.5,
 			["x"] = 299.5,
@@ -3767,8 +3604,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 299.5,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1063,
 			["x"] = 339.3,
@@ -3797,8 +3633,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 339.3,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1010.1,
 			["x"] = 320.1,
@@ -3827,8 +3662,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 320.1,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1045.5,
 			["x"] = 278.2,
@@ -3857,8 +3691,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 278.2,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1083,
 			["x"] = 272.2,
@@ -3887,8 +3720,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 272.2,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Qpart"] = {
 			[49232] = {
 				["1"] = "1",
@@ -3918,8 +3750,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 288.1,
 		},
 	}, -- [12]
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1021.9,
 			["x"] = 294.1,
@@ -3935,8 +3766,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 294.1,
 		},
 	}, -- [13]
-	{
-		-- [step 2
+	{ -- [step 2
 		["Done"] = {
 			49233,
 			49232,
@@ -3946,8 +3776,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 307.5,
 		},
 	}, -- [14]
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1036.9,
 			["x"] = 329,
@@ -3959,8 +3788,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 329,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1018.6,
 			["x"] = 347.6,
@@ -3972,8 +3800,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 347.6,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 959.7,
 			["x"] = 324.5,
@@ -3985,8 +3812,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 324.5,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Done"] = {
 			49234,
 			49229,
@@ -3996,8 +3822,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 331.3,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Done"] = {
 			51144,
 		},
@@ -4007,8 +3832,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 73.3,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["PickUp"] = {
 			48070,
 		},
@@ -4017,8 +3841,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 9.8,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["GroupTask"] = 51358,
 		["Group"] = 3,
 		["QaskPopup"] = 51358,
@@ -4027,8 +3850,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 29.3,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["GroupTask"] = 51358,
 		["PickUp"] = {
 			51358,
@@ -4038,8 +3860,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 29.3,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["PickUp"] = {
 			50699,
 		},
@@ -4049,8 +3870,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -10.2,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1170.5,
 			["x"] = 22.5,
@@ -4062,8 +3882,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 22.5,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Qpart"] = {
 			[51358] = {
 				["1"] = "1",
@@ -4081,8 +3900,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -8.7,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["GroupTask"] = 51358,
 		["Done"] = {
 			51358,
@@ -4092,8 +3910,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 72.9,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Done"] = {
 			50699,
 		},
@@ -4103,8 +3920,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -127.1,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["PickUp"] = {
 			49465,
 			49452,
@@ -4114,8 +3930,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -127.1,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["PickUp"] = {
 			49451,
 		},
@@ -4124,8 +3939,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -121.4,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1327.8,
 			["x"] = -98.5,
@@ -4147,8 +3961,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -98.5,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Done"] = {
 			49451,
 			49465,
@@ -4159,8 +3972,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -127,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["PickUp"] = {
 			48369,
 		},
@@ -4169,8 +3981,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -127,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1350,
 			["x"] = -124,
@@ -4182,8 +3993,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -124,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1378,
 			["x"] = -214.2,
@@ -4195,8 +4005,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -214.2,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Done"] = {
 			48369,
 		},
@@ -4205,8 +4014,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -217,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["PickUp"] = {
 			49454,
 			49468,
@@ -4217,8 +4025,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -217,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["PickUp"] = {
 			50058,
 		},
@@ -4238,8 +4045,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Qpart"] = {
 			[50058] = {
 				["1"] = "1",
@@ -4266,8 +4072,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -458.5,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Done"] = {
 			50058,
 		},
@@ -4276,8 +4081,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -456.4,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["Trigger"] = {
 			["y"] = 1394.4,
 			["x"] = -456.4,
@@ -4299,8 +4103,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -456.4,
 		},
 	},
-	{
-		-- [step 2
+	{ -- [step 2
 		["TT"] = {
 			["y"] = 1390.8,
 			["x"] = -217.7,
@@ -4311,8 +4114,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49468,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1519.7,
 			["x"] = -277.3,
@@ -4324,8 +4126,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -277.3,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1629.5,
 			["x"] = -237.7,
@@ -4341,8 +4142,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -237.7,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["TT"] = {
 			["y"] = 1659.9,
 			["x"] = -119.8,
@@ -4351,8 +4151,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49467,
 		},
 	}, -- [47]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1637.5,
 			["x"] = -58.2,
@@ -4364,8 +4163,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -58.2,
 		},
 	}, -- [48]
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			49453,
 			48557,
@@ -4375,8 +4173,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 47.4,
 		},
 	}, -- [49]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1479,
 			["x"] = 46.5,
@@ -4395,8 +4192,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 46.5,
 		},
 	}, -- [50]
-	{
-		-- [step
+	{ -- [step
 		["TT"] = {
 			["y"] = 1456.3,
 			["x"] = 46.6,
@@ -4406,8 +4202,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			48557,
 		},
 	}, -- [51]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1424.5,
 			["x"] = 203.1,
@@ -4419,8 +4214,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 203.1,
 		},
 	}, -- [52]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1401.3,
 			["x"] = 414.2,
@@ -4432,8 +4226,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 414.2,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1233.3,
 			["x"] = 664.5,
@@ -4445,8 +4238,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 664.5,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1171.5,
 			["x"] = 717.7,
@@ -4458,8 +4250,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 717.7,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["TT"] = {
 			["y"] = 1091.9,
 			["x"] = 873.7,
@@ -4468,8 +4259,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			48070,
 		},
 	}, -- [56]
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			48080,
 			48616,
@@ -4480,8 +4270,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 871.9,
 		},
 	}, -- [57]
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			48965,
 		},
@@ -4504,8 +4293,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["48616-1"] = 152643,
 		},
 	}, -- [58]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1221.8,
 			["x"] = 453,
@@ -4531,8 +4319,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 453,
 		},
 	}, -- [59]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1185,
 			["x"] = 415.5,
@@ -4562,8 +4349,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 415.5,
 		},
 	}, -- [60]
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			48965,
 		},
@@ -4586,8 +4372,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 663.1,
 		},
 	}, -- [61]
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[48080] = {
 				["1"] = "1",
@@ -4612,8 +4397,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 666.2,
 		},
 	}, -- [62]
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			48080,
 			48616,
@@ -4624,8 +4408,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 872.2,
 		},
 	}, -- [63]
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			48670,
 		},
@@ -4634,8 +4417,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 865.5,
 		},
 	}, -- [64]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 1260.4,
@@ -4648,8 +4430,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 972,
 		},
 	}, -- [65]
-	{
-		-- [step
+	{ -- [step
 
 		["Done"] = {
 			48670,
@@ -4659,8 +4440,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 947.2,
 		},
 	}, -- [66]
-	{
-		-- [step
+	{ -- [step
 
 		["Qpart"] = {
 			[48196] = {
@@ -4683,8 +4463,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 829.5,
 		},
 	}, -- [67]
-	{
-		-- [step
+	{ -- [step
 
 		["PickUp"] = {
 			48778,
@@ -4694,8 +4473,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 824.1,
 		},
 	}, -- [68]
-	{
-		-- [step
+	{ -- [step
 
 		["PickUp"] = {
 			48597,
@@ -4705,8 +4483,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 835,
 		},
 	}, -- [69]
-	{
-		-- [step
+	{ -- [step
 
 		["Qpart"] = {
 			[48196] = {
@@ -4736,8 +4513,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 817.9,
 		},
 	}, -- [70]
-	{
-		-- [step
+	{ -- [step
 
 		["Qpart"] = {
 			[48196] = {
@@ -4767,8 +4543,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 857.2,
 		},
 	}, -- [71]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 1591.8,
@@ -4798,8 +4573,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	}, -- [72]
-	{
-		-- [step
+	{ -- [step
 
 		["Done"] = {
 			48196,
@@ -4822,8 +4596,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	}, -- [73]
-	{
-		-- [step
+	{ -- [step
 
 		["Qpart"] = {
 			[48778] = {
@@ -4853,8 +4626,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 679,
 		},
 	}, -- [74]
-	{
-		-- [step
+	{ -- [step
 
 		["Qpart"] = {
 			[48778] = {
@@ -4884,8 +4656,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 695.2,
 		},
 	}, -- [75]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 1607.8,
@@ -4910,8 +4681,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 695.2,
 		},
 	}, -- [76]
-	{
-		-- [step
+	{ -- [step
 
 		["Done"] = {
 			48778,
@@ -4921,8 +4691,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 795.7,
 		},
 	}, -- [77]
-	{
-		-- [step
+	{ -- [step
 
 		["Done"] = {
 			48195,
@@ -4933,8 +4702,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 946,
 		},
 	}, -- [78]
-	{
-		-- [step
+	{ -- [step
 
 		["PickUp"] = {
 			48003,
@@ -4944,8 +4712,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 946,
 		},
 	}, -- [79]
-	{
-		-- [step
+	{ -- [step
 
 		["Done"] = {
 			48003,
@@ -4955,8 +4722,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1159.7,
 		},
 	}, -- [80]
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			48005,
 		},
@@ -4965,8 +4731,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1159.7,
 		},
 	}, -- [81]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1018.2,
 			["x"] = 1169.9,
@@ -4982,8 +4747,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1169.9,
 		},
 	}, -- [82]
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			48902,
 			48898,
@@ -4994,8 +4758,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1181.5,
 		},
 	}, -- [83]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1026,
 			["x"] = 1250,
@@ -5007,8 +4770,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1250,
 		},
 	}, -- [84]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1064.7,
 			["x"] = 1297.7,
@@ -5024,8 +4786,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1297.7,
 		},
 	}, -- [85]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 921.7,
 			["x"] = 1375,
@@ -5041,8 +4802,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1375,
 		},
 	}, -- [86]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1023.6,
 			["x"] = 1455,
@@ -5054,8 +4814,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1455,
 		},
 	}, -- [87]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1057.5,
 			["x"] = 1416.8,
@@ -5071,8 +4830,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1416.8,
 		},
 	}, -- [88]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1089.8,
 			["x"] = 1370.7,
@@ -5091,8 +4849,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1370.7,
 		},
 	}, -- [89]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1210.8,
 			["x"] = 1229.3,
@@ -5108,8 +4865,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1229.3,
 		},
 	}, -- [90]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1139,
 			["x"] = 1229.5,
@@ -5121,8 +4877,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1229.5,
 		},
 	}, -- [91]
-	{
-		-- [step
+	{ -- [step
 		["TT"] = {
 			["y"] = 1030.7,
 			["x"] = 1183.5,
@@ -5133,8 +4888,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			48902,
 		},
 	}, -- [92]
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			48903,
 		},
@@ -5143,8 +4897,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1183.5,
 		},
 	}, -- [93]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1041.5,
 			["x"] = 1155.4,
@@ -5160,8 +4913,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1155.4,
 		},
 	}, -- [94]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1041.5,
 			["x"] = 1155.4,
@@ -5177,8 +4929,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1155.4,
 		},
 	}, -- [94]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 1033.3,
 			["x"] = 1147,
@@ -5194,8 +4945,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1147,
 		},
 	}, -- [95]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 1026.2,
@@ -5212,8 +4962,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1140.8,
 		},
 	}, -- [96]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 1011.7,
@@ -5230,8 +4979,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1144.3,
 		},
 	}, -- [97]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 1011.2,
@@ -5248,8 +4996,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1145.4,
 		},
 	}, -- [98]
-	{
-		-- [step
+	{ -- [step
 
 		["TT"] = {
 			["y"] = 1009.6,
@@ -5259,8 +5006,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			48903,
 		},
 	}, -- [99]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 981.2,
@@ -5273,8 +5019,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1151.4,
 		},
 	}, -- [100]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 887.9,
 			["x"] = 1064,
@@ -5286,8 +5031,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1064,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 
 		["GroupTask"] = 51367,
 		["Group"] = 3,
@@ -5297,8 +5041,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["QaskPopup"] = 51367,
 	}, -- [104]
-	{
-		-- [step
+	{ -- [step
 
 		["GroupTask"] = 51367,
 		["PickUp"] = {
@@ -5309,8 +5052,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1049.4,
 		},
 	}, -- [103]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 913.2,
@@ -5327,8 +5069,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1033.8,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 891.2,
@@ -5345,8 +5086,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1022.4,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 
 		["Done"] = {
 			48005,
@@ -5356,8 +5096,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1161.5,
 		},
 	}, -- [117]
-	{
-		-- [step
+	{ -- [step
 
 		["PickUp"] = {
 			48004,
@@ -5367,8 +5106,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1161.5,
 		},
 	}, -- [118]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 1015.9,
@@ -5385,8 +5123,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1156.5,
 		},
 	}, -- [119]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 996.2,
@@ -5403,8 +5140,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1187.8,
 		},
 	}, -- [120]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 982.4,
@@ -5421,8 +5157,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1208.7,
 		},
 	}, -- [121]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 975.7,
@@ -5439,8 +5174,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1207.9,
 		},
 	}, -- [122]
-	{
-		-- [step
+	{ -- [step
 
 		["Done"] = {
 			48004,
@@ -5450,8 +5184,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1162.8,
 		},
 	}, -- [123]
-	{
-		-- [step
+	{ -- [step
 
 		["PickUp"] = {
 			48939,
@@ -5461,8 +5194,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1162.8,
 		},
 	}, -- [124]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 964.5,
@@ -5479,8 +5211,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1162,
 		},
 	}, -- [125]
-	{
-		-- [step
+	{ -- [step
 
 		["Done"] = {
 			48939,
@@ -5490,8 +5221,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1162.5,
 		},
 	}, -- [126]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 794.7,
@@ -5508,8 +5238,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1045,
 		},
 	}, -- [129]
-	{
-		-- [step
+	{ -- [step
 
 		["Trigger"] = {
 			["y"] = 901,
@@ -5526,8 +5255,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1090.5,
 		},
 	}, -- [130]
-	{
-		-- [step
+	{ -- [step
 
 		["Done"] = {
 			48087,
@@ -5537,8 +5265,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1090.3,
 		},
 	}, -- [131]
-	{
-		-- [step
+	{ -- [step
 
 		["PickUp"] = {
 			48088,
@@ -5549,8 +5276,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1091.9,
 		},
 	}, -- [132]
-	{
-		-- [step
+	{ -- [step
 
 		["Qpart"] = {
 			[48089] = {
@@ -5573,8 +5299,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1090.9,
 		},
 	}, -- [133]
-	{
-		-- [step
+	{ -- [step
 
 		["Done"] = {
 			48088,
@@ -5585,8 +5310,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1092.5,
 		},
 	}, -- [134]
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			50026,
 		},
@@ -5595,8 +5319,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1318.7,
 		},
 	}, -- [135]
-	{
-		-- [step
+	{ -- [step
 
 		["Qpart"] = {
 			[51367] = {
@@ -5614,8 +5337,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1478.9,
 		},
 	}, -- [136]
-	{
-		-- [step
+	{ -- [step
 		["TT"] = {
 			["y"] = 474.3,
 			["x"] = 1255.3,
@@ -5624,8 +5346,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			50026,
 		},
 	}, -- [137]
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			47755,
 			50002,
@@ -5635,8 +5356,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1255.3,
 		},
 	}, -- [138]
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			50059,
 		},
@@ -5662,8 +5382,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			[246282] = 5,
 		},
 	}, -- [139]
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[50059] = {
 				["1"] = "1",
@@ -5696,8 +5415,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1000.7,
 		},
 	}, -- [140]
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[50002] = {
 				["1"] = "1",
@@ -5730,8 +5448,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 872.6,
 		},
 	}, -- [141]
-	{
-		-- [step
+	{ -- [step
 		["TT"] = {
 			["y"] = 534,
 			["x"] = 871.1,
@@ -5757,8 +5474,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			[246282] = 5,
 		},
 	}, -- [142]
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			50005,
 		},
@@ -5784,8 +5500,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			[246282] = 5,
 		},
 	}, -- [143]
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[50005] = {
 				["1"] = "1",
@@ -5819,8 +5534,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 871.1,
 		},
 	}, -- [144]
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			50005,
 		},
@@ -5846,8 +5560,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			[246282] = 5,
 		},
 	}, -- [145]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 526.2,
 			["x"] = 1174,
@@ -5875,8 +5588,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			[246282] = 5,
 		},
 	}, -- [146]
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			47755,
 		},
@@ -5885,8 +5597,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1253.5,
 		},
 	}, -- [147]
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			50059,
 		},
@@ -5895,8 +5606,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1197.3,
 		},
 	}, -- [148]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 545,
 			["x"] = 1159.5,
@@ -5912,8 +5622,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1159.5,
 		},
 	}, -- [149]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = 684.1,
 			["x"] = 1236.7,
@@ -5926,8 +5635,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 49393,
 	}, -- [150]
-	{
-		-- [step
+	{ -- [step
 
 		["GroupTask"] = 51367,
 		["Done"] = {
@@ -5938,8 +5646,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = 1162.3,
 		},
 	}, -- [151]
-	{
-		-- [step
+	{ -- [step
 		["UseHS"] = 51226,
 		["TT"] = {
 			["y"] = 962.5,
@@ -5949,8 +5656,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["22345678-1"] = 6948,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["TT"] = {
 			["y"] = 1038.2,
 			["x"] = -594.8,
@@ -5960,8 +5666,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		["Boat"] = 1,
 		["Name"] = "Eastpoint Station, Tiragarde Sound",
 	},
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			47485,
 		},
@@ -5971,8 +5676,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -711.2,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			47486,
 			47488,
@@ -5983,8 +5687,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -709.3,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["PickUp"] = {
 			51226,
@@ -5994,8 +5697,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -993.3,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["PickUp"] = {
 			49733,
@@ -6005,8 +5707,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -1026.9,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["Trigger"] = {
 			["y"] = 229.6,
@@ -6026,8 +5727,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -1045.5,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["Done"] = {
 			49733,
@@ -6037,8 +5737,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -1027.1,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["Done"] = {
 			51226,
@@ -6048,8 +5747,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -992.8,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["PickUp"] = {
 			49720,
@@ -6059,8 +5757,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -992.8,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["PickUp"] = {
 			50249,
@@ -6072,8 +5769,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -1027,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["Trigger"] = {
 			["y"] = 363,
@@ -6094,8 +5790,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["Trigger"] = {
 			["y"] = 402.3,
@@ -6116,8 +5811,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	}, -- [10]
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["Qpart"] = {
 			[50249] = {
@@ -6143,8 +5837,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -855.8,
 		},
 	}, -- [11]
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["Trigger"] = {
 			["y"] = 494.3,
@@ -6170,8 +5863,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	}, -- [13]
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["Qpart"] = {
 			[50249] = {
@@ -6197,8 +5889,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -960.5,
 		},
 	}, -- [14]
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["Qpart"] = {
 			[49734] = {
@@ -6224,8 +5915,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -954.3,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["Trigger"] = {
 			["y"] = 408.8,
@@ -6246,8 +5936,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -916,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["Done"] = {
 			49720,
@@ -6257,8 +5946,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -992.8,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["QuestLineSkip"] = 51226,
 		["Done"] = {
 			50249,
@@ -6270,8 +5958,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -1026.6,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["UseGlider"] = 1,
 		["PickUp"] = {
 			50573,
@@ -6281,8 +5968,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -870.3,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[50573] = {
 				["2"] = "2",
@@ -6309,8 +5995,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -879.7,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[50573] = {
 				["1"] = "1",
@@ -6338,8 +6023,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -1108,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[47486] = {
 				["1"] = "1",
@@ -6362,8 +6046,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -1094.5,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			50573,
 			47488,
@@ -6375,8 +6058,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -804.7,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			50531,
 		},
@@ -6386,8 +6068,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -804.7,
 		},
 	}, -- [10]
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			50531,
 		},
@@ -6397,8 +6078,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -639,
 		},
 	}, -- [11]
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			53041,
 		},
@@ -6407,8 +6087,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -639,
 		},
 	}, -- [12]
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			50544,
 		},
@@ -6418,8 +6097,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 50544,
 	},
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			50349,
 		},
@@ -6429,8 +6107,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 50349,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Gossip"] = 1,
 		["Trigger"] = {
 			["y"] = -197,
@@ -6447,8 +6124,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -590,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -166.5,
 			["x"] = -558.3,
@@ -6464,8 +6140,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -558.3,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -90.1,
 			["x"] = -619.8,
@@ -6477,8 +6152,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -619.8,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			53041,
 		},
@@ -6487,8 +6161,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -637.3,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			47489,
 		},
@@ -6497,8 +6170,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -637.3,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["DenyNPC"] = 134166,
 		["Trigger"] = {
 			["y"] = -210.4,
@@ -6512,8 +6184,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 50349,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			50349,
 		},
@@ -6523,8 +6194,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -808.3,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			50351,
 			50352,
@@ -6534,8 +6204,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -806.5,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -501.4,
 			["x"] = -681.8,
@@ -6552,8 +6221,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -504.9,
 			["x"] = -668.3,
@@ -6570,8 +6238,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -518.7,
 			["x"] = -666,
@@ -6588,8 +6255,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[50352] = {
 				["2"] = "2",
@@ -6610,8 +6276,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -656.3,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -534.8,
 			["x"] = -660.7,
@@ -6628,8 +6293,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -585.5,
 			["x"] = -721.2,
@@ -6646,8 +6310,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -589.8,
 			["x"] = -727,
@@ -6664,8 +6327,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -580.8,
 			["x"] = -735.5,
@@ -6682,8 +6344,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	}, -- [10]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -556.5,
 			["x"] = -715.8,
@@ -6700,8 +6361,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	}, -- [11]
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[50351] = {
 				["1"] = "1",
@@ -6723,8 +6383,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	}, -- [12]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -651.3,
 			["x"] = -746.8,
@@ -6741,8 +6400,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	}, -- [13]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -671.5,
 			["x"] = -739.5,
@@ -6759,8 +6417,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			},
 		},
 	}, -- [14]
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[50351] = {
 				["2"] = "2",
@@ -6782,8 +6439,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -745.3,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -635,
 			["x"] = -722.2,
@@ -6799,8 +6455,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -722.2,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -616.3,
 			["x"] = -620.3,
@@ -6812,8 +6467,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -620.3,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			50351,
 			50352,
@@ -6823,8 +6477,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -617,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			50356,
 		},
@@ -6833,8 +6486,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -615,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -616.5,
 			["x"] = -622.5,
@@ -6847,8 +6499,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["ExtraActionB"] = 1,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -644.8,
 			["x"] = -656.8,
@@ -6861,8 +6512,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["ExtraActionB"] = 1,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -683.8,
 			["x"] = -676.3,
@@ -6875,8 +6525,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["ExtraActionB"] = 1,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -649.5,
 			["x"] = -693.3,
@@ -6889,8 +6538,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["ExtraActionB"] = 1,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -622.8,
 			["x"] = -654.8,
@@ -6903,8 +6551,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["ExtraActionB"] = 1,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -655,
 			["x"] = -577.3,
@@ -6921,8 +6568,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["ExtraActionB"] = 1,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -623.3,
 			["x"] = -654.7,
@@ -6935,8 +6581,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["ExtraActionB"] = 1,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -626.8,
 			["x"] = -681.3,
@@ -6949,8 +6594,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["ExtraActionB"] = 1,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -640,
 			["x"] = -702,
@@ -6963,8 +6607,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["ExtraActionB"] = 1,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -684.3,
 			["x"] = -677,
@@ -6977,8 +6620,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["ExtraActionB"] = 1,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -648.5,
 			["x"] = -658,
@@ -6991,8 +6633,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["ExtraActionB"] = 1,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -502.4,
 			["x"] = -763,
@@ -7005,8 +6646,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["ExtraActionB"] = 1,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			50356,
 		},
@@ -7015,8 +6655,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -807.5,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -448.7,
 			["x"] = -835.8,
@@ -7029,8 +6668,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 50544,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -638.7,
 			["x"] = -866,
@@ -7043,8 +6681,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 50544,
 	},
-	{
-		-- [step
+	{ -- [step
 		["TT"] = {
 			["y"] = -942.5,
 			["x"] = -637.3,
@@ -7054,8 +6691,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 50544,
 	},
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			48874,
 			48873,
@@ -7066,8 +6702,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -637.3,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			49028,
 		},
@@ -7076,8 +6711,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -658.2,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["GroupTask"] = 49069,
 		["Group"] = 3,
 		["TT"] = {
@@ -7086,8 +6720,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["QaskPopup"] = 49069,
 	},
-	{
-		-- [step
+	{ -- [step
 		["GroupTask"] = 49069,
 		["PickUp"] = {
 			49069,
@@ -7097,8 +6730,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -658.2,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -922.2,
 			["x"] = -698.3,
@@ -7110,8 +6742,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -698.3,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[49069] = {
 				["1"] = "1",
@@ -7146,8 +6777,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -944.8,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[48873] = {
 				["1"] = "1",
@@ -7178,8 +6808,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -805.7,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -773.8,
 			["x"] = -657,
@@ -7199,8 +6828,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -657,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["TT"] = {
 			["y"] = -904,
 			["x"] = -698,
@@ -7209,8 +6837,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			49028,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["TT"] = {
 			["y"] = -941.2,
 			["x"] = -637.3,
@@ -7221,8 +6848,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			48879,
 		},
 	}, -- [10]
-	{
-		-- [step
+	{ -- [step
 		["GroupTask"] = 49069,
 		["Done"] = {
 			49069,
@@ -7232,8 +6858,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -637.3,
 		},
 	}, -- [11]
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			49072,
 		},
@@ -7243,8 +6868,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 		["BreadCrum"] = 49072,
 	},
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			49039,
 		},
@@ -7253,8 +6877,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -271,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -738.2,
 			["x"] = -269.8,
@@ -7270,8 +6893,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -269.8,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -725.5,
 			["x"] = -264,
@@ -7287,8 +6909,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -264,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -750.5,
 			["x"] = -254.7,
@@ -7304,8 +6925,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -254.7,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			49039,
 		},
@@ -7314,8 +6934,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -270.4,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			49066,
 		},
@@ -7324,8 +6943,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -270.5,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			48909,
 		},
@@ -7334,8 +6952,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -270.5,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[48909] = {
 				["1"] = "1",
@@ -7356,8 +6973,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -228,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[48909] = {
 				["2"] = "2",
@@ -7378,8 +6994,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -147.5,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[48909] = {
 				["3"] = "3",
@@ -7400,8 +7015,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -122,
 		},
 	}, -- [10]
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[48909] = {
 				["4"] = "4",
@@ -7422,8 +7036,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -71,
 		},
 	}, -- [11]
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[48909] = {
 				["5"] = "5",
@@ -7444,8 +7057,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -62.5,
 		},
 	}, -- [12]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -882.5,
 			["x"] = -73.5,
@@ -7461,8 +7073,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -73.5,
 		},
 	}, -- [13]
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			48909,
 			49066,
@@ -7472,8 +7083,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -637.2,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["TT"] = {
 			["y"] = -921.5,
 			["x"] = -696.3,
@@ -7482,8 +7092,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		["Name"] = "Bridgeport, Tiragarde Sound",
 		["ETA"] = 34,
 	},
-	{
-		-- [step
+	{ -- [step
 		["Qpart"] = {
 			[47489] = {
 				["1"] = "1",
@@ -7500,8 +7109,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -639.5,
 		},
 	}, -- [13]
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -77.9,
 			["x"] = -595,
@@ -7517,8 +7125,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -595,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Trigger"] = {
 			["y"] = -66.3,
 			["x"] = -610.5,
@@ -7534,8 +7141,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -610.5,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["Done"] = {
 			47489,
 		},
@@ -7544,8 +7150,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 			["x"] = -1367,
 		},
 	},
-	{
-		-- [step
+	{ -- [step
 		["PickUp"] = {
 			49218,
 			48419,
@@ -8622,6 +8227,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
 		},
 	}, -- [48]
 	{
+
 		["Qpart"] = {
 			[49407] = {
 				["1"] = "1",
@@ -13287,6 +12893,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
 		},
 	},
 	{
+
 		["PickUp"] = {
 			50134,
 			50135,
@@ -13297,6 +12904,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
 		},
 	},
 	{
+
 		["Trigger"] = {
 			["y"] = 2678.1,
 			["x"] = 615.7,
@@ -13317,6 +12925,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
 		},
 	},
 	{
+
 		["Qpart"] = {
 			[50135] = {
 				["3"] = "3",
@@ -13341,6 +12950,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
 		},
 	}, -- [10]
 	{
+
 		["Qpart"] = {
 			[50135] = {
 				["1"] = "1",
@@ -13365,6 +12975,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
 		},
 	}, -- [13]
 	{
+
 		["Qpart"] = {
 			[50135] = {
 				["2"] = "2",
@@ -13389,6 +13000,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
 		},
 	},
 	{
+
 		["Trigger"] = {
 			["y"] = 2737.3,
 			["x"] = 715.2,
@@ -13410,6 +13022,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
 		},
 	},
 	{
+
 		["Done"] = {
 			50134,
 			50135,
@@ -13425,6 +13038,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
 		},
 	},
 	{
+
 		["PickUp"] = {
 			50136,
 		},
@@ -13439,6 +13053,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
 		},
 	},
 	{
+
 		["Trigger"] = {
 			["y"] = 2668.9,
 			["x"] = 416.2,
@@ -13458,6 +13073,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
 		},
 	},
 	{
+
 		["Done"] = {
 			50136,
 		},

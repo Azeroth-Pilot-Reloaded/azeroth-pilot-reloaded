@@ -68,7 +68,7 @@ if (APR.Faction == "Neutral") then
 			["Done"] = {
 				29406, -- [1]
 			},
-		},        -- [1]
+		}, -- [1]
 		{
 			["PickUp"] = {
 				29524, -- [1]
@@ -102,7 +102,7 @@ if (APR.Faction == "Neutral") then
 			["Done"] = {
 				29524, -- [1]
 			},
-		},        -- [4]
+		}, -- [4]
 		{
 			["PickUp"] = {
 				29408, -- [1]
@@ -2423,6 +2423,8 @@ if (APR.Faction == "Neutral") then
 	APR.QuestStepListListing["EasternKingdom"] = {
 		["378-WanderingIsle"] = "01-30 Pandaren Start",
 	}
+
+
 end
 
 APR.QuestStepList["672-Mardum"] = {
