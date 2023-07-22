@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "EditorConfig.EditorConfig",
+        "sumneko.lua",
+        "esbenp.prettier-vscode",
+        "ketho.wow-api",
+        "septh.wow-bundle",
+        "sapu94.wow-lua-error-loader",
+        "stanzilla.vscode-wow-toc"
+    ]
+}

@@ -1,4 +1,4 @@
-local L = LibStub("AceLocale-3.0"):GetLocale("APR", false)
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 --[[
 Return a string with surrounding stars

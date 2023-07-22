@@ -17,6 +17,7 @@ Utils.lua
 Commands.lua
 Core.lua
 TransportDB.lua
+Config.lua
 OptionsPanel.lua
 QuestList.lua
 QuestHandler.lua
