@@ -1,5 +1,4 @@
-local AceLocale = LibStub("AceLocale-3.0")
-local L = AceLocale:GetLocale("APR")
+local L = LibStub("AceLocale-3.0"):GetLocale("APR", false)
 
 -- Chat commands, such as /apr reset, /apr skip, /apr skipcamp
 function APR_SlashCmd(APR_index)

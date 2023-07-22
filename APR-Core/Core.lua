@@ -5,8 +5,7 @@
 ]]
 --
 
-local AceLocale = LibStub("AceLocale-3.0")
-local L = AceLocale:GetLocale("APR")
+local L = LibStub("AceLocale-3.0"):GetLocale("APR", false)
 DISCORD = "https://discord.gg/YgcdybKdWX"
 APR = {}
 APR.Name = UnitName("player")

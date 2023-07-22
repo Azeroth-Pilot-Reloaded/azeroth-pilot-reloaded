@@ -1,5 +1,4 @@
-﻿local AceLocale = LibStub("AceLocale-3.0")
-local L = AceLocale:GetLocale("APR")
+﻿local L = LibStub("AceLocale-3.0"):GetLocale("APR", false)
 APR.FP = {}
 APR.FP.Zonening = 0
 local APRLumberCheck = 0
