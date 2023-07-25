@@ -193,7 +193,7 @@ end
 
 function APR:MoveIcons()
     local d_y, d_x = UnitPosition("player")
-    if (IsInInstance() or APR1[APR.Realm][APR.Name]["Settings"]["ShowBlobs"] == 0 or not d_y) then
+    if (IsInInstance() or not APR.settings.profile.showMiniMapBlobs or not d_y) then
         APR.RemoveIcons()
         return
     end
@@ -398,7 +398,7 @@ local function APR_MapDelay()
 end
 function APR:MoveMapIcons()
     local d_y, d_x = UnitPosition("player")
-    if (IsInInstance() or APR1[APR.Realm][APR.Name]["Settings"]["ShowMapBlobs"] == 0 or not d_y) then
+    if (IsInInstance() or not APR.settings.profile.showMapBlobs or not d_y) then
         return
     end
     if (Delaytime == 1) then
@@ -619,8 +619,8 @@ local function APR_SettingsButtons()
         APR.QuestList2["BF" .. CLi]["APR_Buttonntex"]:SetTexture(itemTexture)
         --APR.QuestList2["BF"..CLi]["APR_Button"]:SetNormalTexture(itemTexture)
         APR.QuestList2["BF" .. CLi]["APR_Button"]:SetText("")
-        local Topz = APR1[APR.Realm][APR.Name]["Settings"]["left"]
-        local Topz2 = APR1[APR.Realm][APR.Name]["Settings"]["top"]
+        local Topz = APR.settings.profile.questListButtonLeft
+        local Topz2 = APR.settings.profile.questListButtonTop
         APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", Topz, Topz2)
         APR.QuestList2["BF" .. CLi]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT", 0, -((CLi * 38) + CLi))
         APR.QuestList2["BF" .. CLi]:Show()
@@ -694,7 +694,7 @@ local function APR_PrintQStep()
     if (APR1["Debug"]) then
         print("Function: APR_PrintQStep()")
     end
-    if (IsInGroup() and APR1[APR.Realm][APR.Name]["Settings"]["ShowGroup"] == 1) then
+    if (IsInGroup() and APR.settings.profile.showGroup) then
     elseif (APR.PartyList.PartyFrames[1]:IsShown()) then
         for CLi = 1, 5 do
             APR.PartyList.PartyFrames[CLi]:Hide()
@@ -708,7 +708,7 @@ local function APR_PrintQStep()
         end
         APR.ZoneQuestOrder:Hide()
         return
-    elseif (APR1[APR.Realm][APR.Name]["Settings"] and APR1[APR.Realm][APR.Name]["Settings"]["ShowQuestListOrder"] and APR1[APR.Realm][APR.Name]["Settings"]["ShowQuestListOrder"] == 1) then
+    elseif (APR.settings.profile.showQuestOrderList) then
         APR.ZoneQuestOrder:Show()
     end
     if (APR.ActiveMap and not APR1[APR.Realm][APR.Name][APR.ActiveMap]) then
@@ -745,7 +745,7 @@ local function APR_PrintQStep()
     APR_SendGroup()
     APR.FP.QuedFP = nil
     if (APR.SettingsOpen == 1) then
-        if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 0 and APR.ZoneTransfer == 0) then
+        if (not APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
             return
         end
         for i = 1, 3 do
@@ -763,7 +763,7 @@ local function APR_PrintQStep()
         return
     end
 
-    if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.ProgressText and APR.ProgressShown == 1) then
+    if (APR.settings.profile.showCurrentStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.ProgressText and APR.ProgressShown == 1) then
         APR.QuestList.QuestFrames["MyProgress"]:Show()
         APR.QuestList.QuestFrames["MyProgressFS"]:SetText(APR.ProgressText)
     else
@@ -925,7 +925,7 @@ local function APR_PrintQStep()
             end
         end
         if (steps["UseGlider"] and APR.ZoneTransfer == 0) then
-            if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1) then
+            if (APR.settings.profile.showCurrentStep) then
                 LineNr = LineNr + 1
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["USE_ITEM"] .. ": " .. APR.GliderFunc())
                 APR.QuestList.QuestFrames[LineNr]:Show()
@@ -939,7 +939,7 @@ local function APR_PrintQStep()
             end
         end
         if (steps["Bloodlust"] and APR.ZoneTransfer == 0) then
-            if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1) then
+            if (APR.settings.profile.showCurrentStep) then
                 LineNr = LineNr + 1
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(L["BLOODLUST"]))
                 APR.QuestList.QuestFrames[LineNr]:Show()
@@ -986,7 +986,7 @@ local function APR_PrintQStep()
             end
         end
         if (steps["DalaranToOgri"] and APR.ZoneTransfer == 0) then
-            if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1) then
+            if (APR.settings.profile.showCurrentStep) then
                 LineNr = LineNr + 1
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["GO_TO"] .. " Orgrimmar")
                 APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1032,21 +1032,12 @@ local function APR_PrintQStep()
         end
         -- check if you have the lvl and the skill in your spell book
         function DisplayRiding(text)
-            if (APR1[APR.Realm][APR.Name]["hideRidingSkill"] == 0) then
-                LineNr = LineNr + 1
-                APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(text))
-                --skip waypoint button
-                -- TODO : fix display button
-                AddQuestListButton(L["SKIP_BUTTON"], LineNr, function(self, button)
-                    APR1[APR.Realm][APR.Name]["hideRidingSkill"] = 1
-                    APR.QuestList.QuestFrames["FS" .. LineNr].Button:Hide()
-                    APR.QuestList.QuestFrames[LineNr]:Hide()
-                end)
-                APR.QuestList.QuestFrames[LineNr]:Show()
-            end
+            LineNr = LineNr + 1
+            APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(text))
+            APR.QuestList.QuestFrames[LineNr]:Show()
         end
 
-        if ((steps["ExtraLine"] or steps["ExtraLineText"]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+        if ((steps["ExtraLine"] or steps["ExtraLineText"]) and APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
             LineNr = LineNr + 1
             local APRExtraLine = steps["ExtraLine"]
             local APRExtraText = steps["ExtraLineText"]
@@ -1187,7 +1178,7 @@ local function APR_PrintQStep()
         end
         for i = 2, 4 do -- other ExtraLineText
             local extraLineTestX = "ExtraLineText" .. i
-            if ((steps[extraLineTestX]) and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+            if ((steps[extraLineTestX]) and APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                 LineNr = LineNr + 1
                 if (steps[extraLineTestX]) then
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(steps[extraLineTestX]))
@@ -1278,14 +1269,14 @@ local function APR_PrintQStep()
                     elseif (APR.ActiveQuests[qid] and APR.ActiveQuests[qid] == "C") then
                         Flagged = Flagged + 1
                     elseif (APR.ActiveQuests[qid]) then
-                        if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+                        if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                             LineNr = LineNr + 1
                             local ZeTExt
                             if (APR.ActiveQuests["57713-4"] and UIWidgetTopCenterContainerFrame and UIWidgetTopCenterContainerFrame["widgetFrames"]) then
                                 for APR_index2, APR_value2 in APR.pairsByKeys(UIWidgetTopCenterContainerFrame["widgetFrames"]) do
                                     if (UIWidgetTopCenterContainerFrame["widgetFrames"][APR_index2]["Text"]) then
                                         ZeTExt = UIWidgetTopCenterContainerFrame["widgetFrames"][APR_index2]["Text"]
-                                        :GetText()
+                                            :GetText()
                                         if (string.find(ZeTExt, "(%d+)(.*)")) then
                                             local _, _, ZeTExt2 = string.find(ZeTExt, "(%d+)(.*)")
                                             ZeTExt = ZeTExt2
@@ -1306,7 +1297,7 @@ local function APR_PrintQStep()
                                     LineNr .. "] " .. ZeTExt .. "% - " .. APR.ActiveQuests[qid])
                             else
                                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-                                LineNr .. "] " .. APR.ActiveQuests[qid])
+                                    LineNr .. "] " .. APR.ActiveQuests[qid])
                             end
                             APR.QuestList.QuestFrames[LineNr]:Show()
                             APR.QuestList.QuestFrames["FS" .. LineNr]["Button"]:Hide()
@@ -1330,11 +1321,11 @@ local function APR_PrintQStep()
                             end
                         end
                     elseif (not APR.ActiveQuests[APR_index] and not MissingQs[APR_index]) then
-                        if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+                        if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                             if (APR_BonusObj[APR_index]) then
                                 LineNr = LineNr + 1
                                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["DO_BONUS_OBJECTIVE"] ..
-                                ": " .. APR_index)
+                                    ": " .. APR_index)
                                 APR.QuestList.QuestFrames[LineNr]:Show()
                                 APR.QuestList.QuestFrames["FS" .. LineNr]["Button"]:Hide()
                                 local APRwidth = APR.QuestList.QuestFrames["FS" .. LineNr]:GetStringWidth()
@@ -1400,7 +1391,7 @@ local function APR_PrintQStep()
                     APR.BookingList["UpdateQuest"] = 1
                     APR.BookingList["PrintQStep"] = 1
                 else
-                    if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+                    if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                         LineNr = LineNr + 1
                         APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["PICK_UP_Q"] .. ": 1")
                         APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1438,7 +1429,7 @@ local function APR_PrintQStep()
                     APR.BookingList["UpdateQuest"] = 1
                     APR.BookingList["PrintQStep"] = 1
                 else
-                    if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+                    if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                         LineNr = LineNr + 1
                         APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["PICK_UP_Q"] .. ": " .. NrLeft)
                         APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1462,7 +1453,7 @@ local function APR_PrintQStep()
                 APR.BookingList["UpdateQuest"] = 1
                 APR.BookingList["PrintQStep"] = 1
             else
-                if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+                if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                     LineNr = LineNr + 1
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(APR.CheckCRangeText())
                     APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1487,7 +1478,7 @@ local function APR_PrintQStep()
                 APR.BookingList["UpdateQuest"] = 1
                 APR.BookingList["PrintQStep"] = 1
             else
-                if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+                if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                     LineNr = LineNr + 1
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["GET_TREASURE"])
                     APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1546,7 +1537,7 @@ local function APR_PrintQStep()
                 APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
                 APR.BookingList["PrintQStep"] = 1
             else
-                if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+                if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                     LineNr = LineNr + 1
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["TURN_IN_Q"] .. ": " .. NrLeft)
                     APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1564,7 +1555,7 @@ local function APR_PrintQStep()
                 APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
                 APR.BookingList["PrintQStep"] = 1
             else
-                if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+                if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                     LineNr = LineNr + 1
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(L["TURN_ON_WARMODE"], 3))
                     APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1586,7 +1577,7 @@ local function APR_PrintQStep()
                 APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
                 APR.BookingList["PrintQStep"] = 1
             else
-                if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+                if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                     LineNr = LineNr + 1
                     if (steps["Button"] and steps["Button"]["12112552-1"]) then
                         if (not APR.SetButtonVar) then
@@ -1611,7 +1602,7 @@ local function APR_PrintQStep()
                 APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
                 APR.BookingList["PrintQStep"] = 1
             else
-                if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+                if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                     LineNr = LineNr + 1
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["USE_GARRISON_HEARTHSTONE"])
                     APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1632,7 +1623,7 @@ local function APR_PrintQStep()
                 end
             end
         elseif (StepP == "ZonePick") then
-            if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+            if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                 LineNr = LineNr + 1
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["PICK_ZONE"])
                 APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1645,7 +1636,7 @@ local function APR_PrintQStep()
                 end
             end
         elseif (StepP == "SetHS") then
-            if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+            if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                 LineNr = LineNr + 1
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["SET_HEARTHSTONE"])
                 APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1665,7 +1656,7 @@ local function APR_PrintQStep()
                 APR.BookingList["PrintQStep"] = 1
             end
         elseif (StepP == "UseHS") then
-            if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+            if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                 LineNr = LineNr + 1
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["USE_HEARTHSTONE"])
                 APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1686,7 +1677,7 @@ local function APR_PrintQStep()
                 APR.BookingList["PrintQStep"] = 1
             end
         elseif (StepP == "GetFP") then
-            if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+            if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                 APR.FP.GoToZone = nil
                 LineNr = LineNr + 1
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["GET_FLIGHTPATH"])
@@ -1704,7 +1695,7 @@ local function APR_PrintQStep()
                 APR.BookingList["PrintQStep"] = 1
             end
         elseif (StepP == "UseFlightPath") then
-            if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+            if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                 LineNr = LineNr + 1
                 if (steps["Boat"]) then
                     if (steps["Name"]) then
@@ -1757,10 +1748,10 @@ local function APR_PrintQStep()
                     if (APR.ActiveQuests[qid] and APR.ActiveQuests[qid] == "C") then
                         Flagged = Flagged + 1
                     elseif (APR.ActiveQuests[qid]) then
-                        if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+                        if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                             LineNr = LineNr + 1
                             APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-                            LineNr .. "] " .. APR.ActiveQuests[qid])
+                                LineNr .. "] " .. APR.ActiveQuests[qid])
                             APR.QuestList.QuestFrames[LineNr]:Show()
                             APR.QuestList.QuestFrames["FS" .. LineNr]["Button"]:Hide()
                             local APRwidth = APR.QuestList.QuestFrames["FS" .. LineNr]:GetStringWidth()
@@ -1777,11 +1768,11 @@ local function APR_PrintQStep()
                             end
                         end
                     elseif (not APR.ActiveQuests[APR_index] and not MissingQs[APR_index]) then
-                        if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+                        if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                             if (APR_BonusObj[APR_index]) then
                                 LineNr = LineNr + 1
                                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["DO_BONUS_OBJECTIVE"] ..
-                                ": " .. APR_index)
+                                    ": " .. APR_index)
                                 APR.QuestList.QuestFrames[LineNr]:Show()
                                 APR.QuestList.QuestFrames["FS" .. LineNr]["Button"]:Hide()
                                 local APRwidth = APR.QuestList.QuestFrames["FS" .. LineNr]:GetStringWidth()
@@ -1842,7 +1833,7 @@ local function APR_PrintQStep()
             end
         end
         if (steps["DroppableQuest"] and not C_QuestLog.IsQuestFlaggedCompleted(steps["DroppableQuest"]["Qid"]) and not APR.ActiveQuests[steps["DroppableQuest"]["Qid"]]) then
-            if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+            if (APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
                 LineNr = LineNr + 1
                 local MobName = steps["DroppableQuest"]["Text"]
                 if (APR.NPCList[steps["DroppableQuest"]["MobId"]]) then
@@ -1850,10 +1841,10 @@ local function APR_PrintQStep()
                 end
                 if (L[MobName]) then
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-                    LineNr .. "] " .. L[MobName] .. " - " .. L["Q_DROP"])
+                        LineNr .. "] " .. L[MobName] .. " - " .. L["Q_DROP"])
                 else
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-                    LineNr .. "] " .. MobName .. " - " .. L["Q_DROP"])
+                        LineNr .. "] " .. MobName .. " - " .. L["Q_DROP"])
                 end
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.QuestList.QuestFrames["FS" .. LineNr]["Button"]:Hide()
@@ -1865,7 +1856,7 @@ local function APR_PrintQStep()
                 end
             end
         end
-        if (steps["Fillers"] and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1) then
+        if (steps["Fillers"] and APR.settings.profile.showCurrentStep) then
             IdList = steps["Fillers"]
             for APR_index, APR_value in pairs(IdList) do
                 for APR_index2, APR_value2 in pairs(APR_value) do
@@ -1882,7 +1873,7 @@ local function APR_PrintQStep()
                                         "] [" .. GetQuestProgressBarPercent(APR_index) .. "%] " .. APR.ActiveQuests[qid])
                                 else
                                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
-                                    LineNr .. "] " .. APR.ActiveQuests[qid])
+                                        LineNr .. "] " .. APR.ActiveQuests[qid])
                                 end
                                 APR.QuestList.QuestFrames[LineNr]:Show()
                                 APR.QuestList.QuestFrames["FS" .. LineNr]["Button"]:Hide()
@@ -1910,7 +1901,7 @@ local function APR_PrintQStep()
                 end
             end
         end
-        if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1) then
+        if (APR.settings.profile.showCurrentStep) then
             APR.SetButton()
         end
         if (APR.QuestListShown ~= LineNr) then
@@ -1952,7 +1943,7 @@ local function APR_PrintQStep()
         if (APR.ZoneQuestOrder:IsShown() == true) then
             APR.BookingList["UpdateZoneQuestOrderListL"] = 1
         end
-    elseif (APRWhereToGo and APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] == 1 and APR.ZoneTransfer == 0) then
+    elseif (APRWhereToGo and APR.settings.profile.showCurrentStep and APR.ZoneTransfer == 0) then
         LineNr = LineNr + 1
         APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars("APR: " .. L["GO_TO"] .. " " .. APRWhereToGo, 2,
             true))
@@ -1989,8 +1980,8 @@ function APR.SetButton()
     if (APR.SettingsOpen == 1) then
         local CLi
         for CLi = 1, 3 do
-            local Topz = APR1[APR.Realm][APR.Name]["Settings"]["left"]
-            local Topz2 = APR1[APR.Realm][APR.Name]["Settings"]["top"]
+            local Topz = APR.settings.profile.questListButtonLeft
+            local Topz2 = APR.settings.profile.questListButtonTop
             APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", Topz, Topz2)
             APR.QuestList2["BF" .. CLi]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT", 0, -((CLi * 38) + CLi))
         end
@@ -2039,8 +2030,8 @@ function APR.SetButton()
                                 else
                                     APR.QuestList2["BF" .. APR_value2]:Hide()
                                 end
-                                local Topz = APR1[APR.Realm][APR.Name]["Settings"]["left"]
-                                local Topz2 = APR1[APR.Realm][APR.Name]["Settings"]["top"]
+                                local Topz = APR.settings.profile.questListButtonLeft
+                                local Topz2 = APR.settings.profile.questListButtonTop
                                 APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", Topz, Topz2)
                                 APR.QuestList2["BF" .. APR_value2]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT",
                                     0,
@@ -2095,8 +2086,8 @@ function APR.SetButton()
                             end)
                         APR.QuestList2["BF" .. APR.Dinged100nr]["APR_Button"]:SetScript("OnLeave",
                             function(self) GameTooltip:Hide() end)
-                        local Topz = APR1[APR.Realm][APR.Name]["Settings"]["left"]
-                        local Topz2 = APR1[APR.Realm][APR.Name]["Settings"]["top"]
+                        local Topz = APR.settings.profile.questListButtonLeft
+                        local Topz2 = APR.settings.profile.questListButtonTop
                         APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", Topz, Topz2)
                         APR.QuestList2["BF" .. APR.Dinged100nr]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT", 0,
                             -((APR.Dinged100nr * 38) + APR.Dinged100nr))
@@ -2144,8 +2135,8 @@ function APR.SetButton()
                             end)
                         APR.QuestList2["BF" .. APR.Dinged100nr]["APR_Button"]:SetScript("OnLeave",
                             function(self) GameTooltip:Hide() end)
-                        local Topz = APR1[APR.Realm][APR.Name]["Settings"]["left"]
-                        local Topz2 = APR1[APR.Realm][APR.Name]["Settings"]["top"]
+                        local Topz = APR.settings.profile.questListButtonLeft
+                        local Topz2 = APR.settings.profile.questListButtonTop
                         APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", Topz, Topz2)
                         APR.QuestList2["BF" .. APR.Dinged100nr]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT", 0,
                             -((APR.Dinged100nr * 38) + APR.Dinged100nr))
@@ -2171,8 +2162,8 @@ function APR.SetButton()
         APR.ButtonVisual = nil
     end
     if (not InCombatLockdown()) then
-        APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["left"],
-            APR1[APR.Realm][APR.Name]["Settings"]["top"])
+        APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.questListButtonLeft,
+            APR.settings.profile.questListButtonTop)
     end
 end
 
@@ -2630,7 +2621,7 @@ local function APR_PosTest()
     if (not d_y) then
         APR.ArrowFrame:Hide()
         APR.RemoveIcons()
-    elseif (APR1 and APR1[APR.Realm][APR.Name] and APR1[APR.Realm][APR.Name]["Settings"] and APR1[APR.Realm][APR.Name]["Settings"]["ShowArrow"] == 0) then
+    elseif (not APR.settings.profile.showArrow) then
         APR.ArrowActive = 0
         APR.ArrowFrame:Hide()
 
@@ -2877,7 +2868,7 @@ local function APR_LoopBookingFunc()
             print("LoopBookingFunc:ButtonSpellidchk")
         end
     end
-    if (APR1 and APR1[APR.Realm][APR.Name] and APR1[APR.Realm][APR.Name]["Settings"] and APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"] and APR_ArrowUpdateNr >= APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"]) then
+    if (APR_ArrowUpdateNr >= APR.settings.profile.arrowFPS) then
         APR_PosTest()
         APR_ArrowUpdateNr = 0
     else
@@ -3016,7 +3007,7 @@ function APR.RepaintGroups()
             end
         end
     end
-    if (APR1[APR.Realm][APR.Name]["Settings"]["ShowGroup"] == 0) then
+    if (not APR.settings.profile.showGroup) then
         local CLi
         for CLi = 1, 5 do
             APR.PartyList.PartyFrames[CLi]:Hide()
@@ -3088,9 +3079,9 @@ APR_QH_EventFrame:RegisterEvent("AJ_REFRESH_DISPLAY")
 APR_QH_EventFrame:RegisterEvent("UPDATE_UI_WIDGET")
 
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
-    local autoHandIn = APR1[APR.Realm][APR.Name].Settings.AutoHandIn
-    local autoAccept = APR1[APR.Realm][APR.Name].Settings.AutoAccept
-    local autoAcceptRoute = APR1[APR.Realm][APR.Name].Settings.AutoAcceptQuestRoute
+    local autoHandIn = APR.settings.profile.autoHandIn
+    local autoAccept = APR.settings.profile.autoAccept
+    local autoAcceptRoute = APR.settings.profile.autoAcceptQuestRoute
     local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
     local steps = GetSteps(CurStep)
     if (event == "UPDATE_UI_WIDGET") then
@@ -3266,7 +3257,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
         ------------------------------------
         -- GOSSIP
-        if (APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] == 1) then
+        if (APR.settings.profile.autoGossip) then
             -- GOSSIP HARDCODED
             if (steps and steps["Gossip"]) then
                 if (steps["Gossip"] == 27373 or steps["Gossip"] == 34398) then
@@ -3401,7 +3392,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (steps and steps["BuyMerchant"]) then
             C_Timer.After(0.2, APR_BuyMerchFunc)
         end
-        if (APR1[APR.Realm][APR.Name]["Settings"]["AutoRepair"] == 1) then
+        if (APR.settings.profile.autoRepair) then
             if (CanMerchantRepair()) then
                 local repairAllCost, canRepair = GetRepairAllCost();
                 if (canRepair and repairAllCost > 0) then
@@ -3423,7 +3414,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 end
             end
         end
-        if (APR1[APR.Realm][APR.Name]["Settings"]["AutoVendor"] == 1) then
+        if (APR.settings.profile.autoVendor) then
             local APRtotal = 0
             for myBags = 0, 4 do
                 for bagSlots = 1, C_Container.GetContainerNumSlots(myBags) do
@@ -3570,8 +3561,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
         local arg1, arg2, arg3, arg4, arg5 = ...;
         APR.BookingList["RemoveQuest"] = arg1
-        if (APR.ActiveMap == arg1 and APR1[APR.Realm][APR.Name]["Settings"]["WQs"] == 1) then
-            APR.WQFunc()
+        if (APR.ActiveMap == arg1) then
             APR.BookingList["UpdateMapId"] = 1
             APR1[APR.Realm][APR.Name][arg1] = nil
             APR.RemoveMapIcons()
@@ -3634,7 +3624,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         -- Deny NPC
         CheckDenyNPC(steps)
         if (GetNumQuestChoices() > 1) then
-            if (APR1[APR.Realm][APR.Name]["Settings"]["AutoHandInChoice"] == 1) then
+            if (APR.settings.profile.autoHandInChoice) then
                 local APR_GearIlvlList = {}
                 for slots2 = 0, 18 do
                     local inventoryitemLink = GetInventoryItemLink("player", slots2)
@@ -3687,7 +3677,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                             end
                             APRTempGearList[h] = ilvl - APR_GearIlvlList[itemEquipLoc]
                             print("Qilvl: " ..
-                            itemQuality .. " - " .. itemEquipLoc .. " - MySpot: " .. APR_GearIlvlList[itemEquipLoc])
+                                itemQuality .. " - " .. itemEquipLoc .. " - MySpot: " .. APR_GearIlvlList[itemEquipLoc])
                             if (itemEquipLoc == "INVTYPE_WEAPON" or itemEquipLoc == "INVTYPE_SHIELD" or itemEquipLoc == "INVTYPE_2HWEAPON" or itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or itemEquipLoc == "INVTYPE_HOLDABLE" or itemEquipLoc == "INVTYPE_RANGED" or itemEquipLoc == "INVTYPE_THROWN" or itemEquipLoc == "INVTYPE_RANGEDRIGHT" or itemEquipLoc == "INVTYPE_RELIC") then
                                 --isweaponz = 1
                             end

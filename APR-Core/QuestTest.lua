@@ -99,9 +99,8 @@ function APR.ZoneQuestOrderList()
     APR.ZoneQuestOrder["APR_Buttonptex"]:SetAllPoints()
     APR.ZoneQuestOrder["APR_Button"]:SetPushedTexture(APR.ZoneQuestOrder["APR_Buttonptex"])
     APR.ZoneQuestOrder["APR_Button"]:SetScript("OnClick", function(self, arg1)
-        APR1[APR.Realm][APR.Name]["Settings"]["ShowQuestListOrder"] = 0
+        APR.settings.profile.showQuestOrderList = false
         APR.ZoneQuestOrder:Hide()
-        APR.OptionsFrame.QorderListzCheckButton:SetChecked(false)
     end)
     local t = APR.ZoneQuestOrder:CreateTexture(nil, "BACKGROUND")
     t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
@@ -969,10 +968,10 @@ APR_QH_EventFrame = CreateFrame("Frame")
 APR_QH_EventFrame:RegisterEvent("QUEST_LOG_UPDATE")
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "QUEST_LOG_UPDATE") then
-        if (APR1[APR.Realm][APR.Name]["Settings"]["ShowMap10s"] and APR1[APR.Realm][APR.Name]["Settings"]["ShowMap10s"] == 1 and WorldMapFrame:IsShown() and APR.ActiveMap and APR1[APR.Realm][APR.Name][APR.ActiveMap]) then
+        if (APR.settings.profile.showMap10s and WorldMapFrame:IsShown() and APR.ActiveMap and APR1[APR.Realm][APR.Name][APR.ActiveMap]) then
             local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
             if (CurStep and MapIconUpdateStep ~= CurStep and CurStep > 1) then
-                APR.MapOrderNumbers()
+                APR.MapOrderNumbers() -- TODO showMap10s : fix lua error showMap10s
             end
         end
     end

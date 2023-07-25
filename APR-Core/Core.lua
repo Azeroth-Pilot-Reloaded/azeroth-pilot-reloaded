@@ -47,8 +47,6 @@ APR.ProgressShown = 0
 APR.BookUpdAfterCombat = 0
 APR.QuestListShown = 0
 APR.MapLoaded = 0
-APR.WQActive = 0
-APR.WQSpecialActive = 0
 
 APR.ArrowActive = 0
 APR.ArrowActive_X = 0
@@ -57,6 +55,11 @@ APR.MiniMap_X = 0
 APR.MiniMap_Y = 0
 APR.MacroUpdaterVar = {}
 local classes = require("helpers.classes")
+
+function APR:OnInitialize()
+    -- APR INIT NEW SETTING - WIP -- TODO
+    APR.settings:InitializeBlizOptions()
+end
 
 function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First character button
     APR1[APR.Realm][APR.Name]["routeChoiceIndex"] = routeChoice
@@ -165,7 +168,6 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
             APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:Hide()
         end
     end
-    APR1[APR.Realm][APR.Name]["Settings"]["Beta1"] = 1
     APR.RoutePlanCheckPos()
     APR.CheckPosMove()
     APR.BookingList["UpdateMapId"] = 1
@@ -237,7 +239,7 @@ APR.AfkFrame:Hide()
 -- Likely deals with automatically skipping cutscenes using PlayMovie_hook
 local PlayMovie_hook = MovieFrame_PlayMovie
 MovieFrame_PlayMovie = function(...)
-    if (IsModifierKeyDown() or (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 0)) then
+    if (IsModifierKeyDown() or (not APR.settings.profile.autoSkipCutScene)) then
         PlayMovie_hook(...) --MovieFrame_PlayMovie, as previously stated
     else
         print("APR: " .. L["SKIPPED_CUTSCENE"])
@@ -290,7 +292,7 @@ APR.ArrowFrame.distance:SetFontObject("GameFontNormalSmall")
 APR.ArrowFrame.distance:SetPoint("TOP", APR.ArrowFrame, "BOTTOM", 0, 0)
 APR.ArrowFrame:Hide()
 APR.ArrowFrame:SetScript("OnMouseDown", function(self, button) --Mouse clicking arrowframe
-    if button == "LeftButton" and not APR.ArrowFrameM.isMoving and APR1[APR.Realm][APR.Name]["Settings"]["LockArrow"] == 0 then
+    if button == "LeftButton" and not APR.ArrowFrameM.isMoving and not APR.settings.profile.lockArrow then
         APR.ArrowFrameM:StartMoving();
         APR.ArrowFrameM.isMoving = true;
     end
@@ -300,11 +302,11 @@ APR.ArrowFrame:SetScript("OnMouseUp", function(self, button)
     if button == "LeftButton" and APR.ArrowFrameM.isMoving then
         APR.ArrowFrameM:StopMovingOrSizing();
         APR.ArrowFrameM.isMoving = false;
-        APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"] = APR.ArrowFrameM:GetLeft()
-        APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"] = APR.ArrowFrameM:GetTop() - GetScreenHeight()
+        APR.settings.profile.arrowleft = APR.ArrowFrameM:GetLeft()
+        APR.settings.profile.arrowtop = APR.ArrowFrameM:GetTop() - GetScreenHeight()
         APR.ArrowFrameM:ClearAllPoints()
-        APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"],
-            APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"])
+        APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
+            APR.settings.profile.arrowtop)
     end
 end)
 --When arrowframe hides
@@ -312,15 +314,15 @@ APR.ArrowFrame:SetScript("OnHide", function(self)
     if (APR.ArrowFrameM.isMoving) then
         APR.ArrowFrameM:StopMovingOrSizing(); -- prevent it from moving or rescaling in the background, it cant be seen anyways
         APR.ArrowFrameM.isMoving = false;
-        APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"] = APR.ArrowFrameM:GetLeft()
-        APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"] = APR.ArrowFrameM:GetTop() - GetScreenHeight()
+        APR.settings.profile.arrowleft = APR.ArrowFrameM:GetLeft()
+        APR.settings.profile.arrowtop = APR.ArrowFrameM:GetTop() - GetScreenHeight()
         APR.ArrowFrameM:ClearAllPoints()
-        APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"],
-            APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"])
+        APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
+            APR.settings.profile.arrowtop)
     end
 end)
 
-APR.ArrowFrame.Button = CreateFrame("Button", "APR_ArrowActiveButton", APR_ArrowFrame)
+APR.ArrowFrame.Button = CreateFrame("Button", "APR_ArrowActiveButton", APR.ArrowFrame)
 APR.ArrowFrame.Button:SetParent(APR.ArrowFrame)
 APR.ArrowFrame.Button:SetPoint("BOTTOM", APR.ArrowFrame, "BOTTOM", 0, -40)
 APR.ArrowFrame.Button:SetScript("OnMouseDown", function(self, button)
@@ -445,8 +447,8 @@ function APR.RoutePlanLoadIn()
 
     -- Main Frame
     APR.RoutePlan = CreateFrame("frame", "APR.RoutePlanMainFrame1", UIParent)
-    APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-        APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+    APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+        APR.settings.profile.topLiz)
     APR.RoutePlan:SetWidth(1)
     APR.RoutePlan:SetHeight(1)
     APR.RoutePlan:SetMovable(true)
@@ -518,22 +520,22 @@ function APR.RoutePlanLoadIn()
         else
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.CPF:SetScript("OnMouseUp", function(self, button) -- When mouse released after being pressed
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.CPF:SetScript("OnHide",
@@ -566,11 +568,11 @@ function APR.RoutePlanLoadIn()
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.CPT:SetScript("OnHide", function(self)
@@ -606,22 +608,22 @@ function APR.RoutePlanLoadIn()
         else
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.KALF:SetScript("OnMouseUp", function(self, button) -- When mouse released after being pressed
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.KALF:SetScript("OnHide",
@@ -654,11 +656,11 @@ function APR.RoutePlanLoadIn()
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.KALT:SetScript("OnHide", function(self)
@@ -694,22 +696,22 @@ function APR.RoutePlanLoadIn()
         else
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.EKF:SetScript("OnMouseUp", function(self, button)
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.EKF:SetScript("OnHide", function(self)
@@ -741,11 +743,11 @@ function APR.RoutePlanLoadIn()
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.EKT:SetScript("OnHide", function(self)
@@ -781,22 +783,22 @@ function APR.RoutePlanLoadIn()
         else
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.SLF:SetScript("OnMouseUp", function(self, button)
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.SLF:SetScript("OnHide", function(self)
@@ -829,11 +831,11 @@ function APR.RoutePlanLoadIn()
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.SLT:SetScript("OnHide", function(self)
@@ -869,22 +871,22 @@ function APR.RoutePlanLoadIn()
         else
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.EXTF:SetScript("OnMouseUp", function(self, button)
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.EXTF:SetScript("OnHide", function(self)
@@ -917,11 +919,11 @@ function APR.RoutePlanLoadIn()
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.EXTT:SetScript("OnHide", function(self)
@@ -957,22 +959,22 @@ function APR.RoutePlanLoadIn()
         else
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.MISC1F:SetScript("OnMouseUp", function(self, button)
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.MISC1F:SetScript("OnHide", function(self)
@@ -1005,11 +1007,11 @@ function APR.RoutePlanLoadIn()
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.MISC1T:SetScript("OnHide", function(self)
@@ -1045,22 +1047,22 @@ function APR.RoutePlanLoadIn()
         else
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.MISC2F:SetScript("OnMouseUp", function(self, button)
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.MISC2F:SetScript("OnHide", function(self)
@@ -1093,11 +1095,11 @@ function APR.RoutePlanLoadIn()
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.MISC2T:SetScript("OnHide", function(self)
@@ -1133,22 +1135,22 @@ function APR.RoutePlanLoadIn()
         else
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.DFF:SetScript("OnMouseUp", function(self, button) -- When mouse released after being pressed
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.DFF:SetScript("OnHide",
@@ -1181,11 +1183,11 @@ function APR.RoutePlanLoadIn()
         if button == "RightButton" and APR.RoutePlan.isMoving then
             APR.RoutePlan:StopMovingOrSizing();
             APR.RoutePlan.isMoving = false;
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
+            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
             APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"],
-                APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
+            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                APR.settings.profile.topLiz)
         end
     end)
     APR.RoutePlan.FG1.DFT:SetScript("OnHide", function(self)
@@ -1205,88 +1207,6 @@ function APR.RoutePlanLoadIn()
     APR.RoutePlan.FG1.DFT["FS"]:SetText("Dragonflight")
 
 
-    --[[ SpeedFrame
-	APR.RoutePlan.FG1.SRF = CreateFrame("frame", "APR.RoutePlanSpeedRunFrame", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.SRF:SetWidth(165)
-	APR.RoutePlan.FG1.SRF:SetHeight(275)
-	APR.RoutePlan.FG1.SRF:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.SRF:SetPoint("TOPLEFT", APR.RoutePlan.FG1, "TOPLEFT", 825, 0)
-		local t = APR.RoutePlan.FG1.SRF:CreateTexture(nil,"BACKGROUND")
-			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-			t:SetAllPoints(APR.RoutePlan.FG1.SRF)
-			APR.RoutePlan.FG1.SRF.texture = t
-	APR.RoutePlan.FG1.SRF:SetScript("OnMouseDown", function(self, button)
-		if button == "RightButton" then
-			APR.RoutePlan:StartMoving();
-			APR.RoutePlan.isMoving = true;
-		else
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-			APR.RoutePlan:ClearAllPoints()
-			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-		end
-	end)
-	APR.RoutePlan.FG1.SRF:SetScript("OnMouseUp", function(self, button)
-		if button == "RightButton" and APR.RoutePlan.isMoving then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-			APR.RoutePlan:ClearAllPoints()
-			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-		end
-	end)
-	APR.RoutePlan.FG1.SRF:SetScript("OnHide", function(self)
-		if ( APR.RoutePlan.isMoving ) then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-		end
-	end)
-
-	APR.RoutePlan.FG1.SRT = CreateFrame("frame", "APR.RoutePlanSpeedRunTitle", APR.RoutePlan.FG1)
-	APR.RoutePlan.FG1.SRT:SetWidth(165)
-	APR.RoutePlan.FG1.SRT:SetHeight(20)
-	APR.RoutePlan.FG1.SRT:SetFrameStrata("LOW")
-	APR.RoutePlan.FG1.SRT:SetPoint("BOTTOMLEFT", APR.RoutePlan.FG1, "BOTTOMLEFT", 825, 0)
-		local t = APR.RoutePlan.FG1.SRT:CreateTexture(nil,"BACKGROUND")
-			t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-			t:SetAllPoints(APR.RoutePlan.FG1.SRT)
-			APR.RoutePlan.FG1.SRT.texture = t
-	APR.RoutePlan.FG1.SRT:SetScript("OnMouseDown", function(self, button) -- On right mouse clicked, start moving the frame
-		if button == "RightButton" then
-			APR.RoutePlan:StartMoving();
-			APR.RoutePlan.isMoving = true;
-		else
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-		end
-	end)
-	APR.RoutePlan.FG1.SRT:SetScript("OnMouseUp", function(self, button) --On let go
-		if button == "RightButton" and APR.RoutePlan.isMoving then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-			APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = APR.RoutePlan:GetLeft()
-			APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = APR.RoutePlan:GetTop() - GetScreenHeight()
-			APR.RoutePlan:ClearAllPoints()
-			APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"], APR1[APR.Realm][APR.Name]["Settings"]["topLiz"])
-		end
-	end)
-	APR.RoutePlan.FG1.SRT:SetScript("OnHide", function(self)
-		if ( APR.RoutePlan.isMoving ) then
-			APR.RoutePlan:StopMovingOrSizing();
-			APR.RoutePlan.isMoving = false;
-		end
-	end)
-	APR.RoutePlan.FG1.SRT["FS"] = APR.RoutePlan.FG1.SRT:CreateFontString("APR.RoutePlanSpeedRunTitle","ARTWORK", "ChatFontNormal")
-	APR.RoutePlan.FG1.SRT["FS"]:SetParent(APR.RoutePlan.FG1.SRT)
-	APR.RoutePlan.FG1.SRT["FS"]:SetPoint("TOP",APR.RoutePlan.FG1.SRT,"TOP",0,0)
-	APR.RoutePlan.FG1.SRT["FS"]:SetWidth(165)
-	APR.RoutePlan.FG1.SRT["FS"]:SetHeight(20)
-	APR.RoutePlan.FG1.SRT["FS"]:SetJustifyH("CENTER")
-	APR.RoutePlan.FG1.SRT["FS"]:SetFontObject("GameFontNormal")
-	APR.RoutePlan.FG1.SRT["FS"]:SetText(L["SPEEDRUN"])]]
     local zenr = APR.NumbRoutePlan("SpeedRun")
     for CLi = 1, zenr do
         APR.RoutePlan.FG1["SPR3" .. CLi] = CreateFrame("frame", "APR.RoutePlanSpeedRun3" .. CLi, APR.RoutePlan.FG1)
@@ -3015,9 +2935,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 if (APR.getContinent() and not APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]["Conts"]) then
                     APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]["Conts"] = {}
                 end
-                -- APR INIT NEW SETTING - WIP -- TODO
-                APR.settings:InitializeSettings()
-                APR.LoadOptionsFrame()
 
                 APR.BookingList["UpdateMapId"] = 1
                 APR.BookingList["UpdateQuest"] = 1
@@ -3071,12 +2988,12 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR_IconTimer:SetLooping("REPEAT")
         APR_IconTimer:SetScript("OnLoop", function(self, event, ...)
             if (APR.Icons and APR.Icons[1]) then
-                if (APR1[APR.Realm][APR.Name]["Settings"]["ShowBlobs"] == 1) then
+                if (APR.settings.profile.showMiniMapBlobs) then
                     APR:MoveIcons()
                 end
             end
             if (APR.MapIcons and APR.MapIcons[1]) then
-                if (APR1[APR.Realm][APR.Name]["Settings"]["ShowMapBlobs"] == 1) then
+                if (APR.settings.profile.showMapBlobs) then
                     APR:MoveMapIcons()
                 end
             end
@@ -3089,131 +3006,16 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         if (not APR1[APR.Realm][APR.Name]["QlineSkip"]) then
             APR1[APR.Realm][APR.Name]["QlineSkip"] = {}
         end
-        if (not APR1[APR.Realm][APR.Name]["SkippedBonusObj"]) then
-            APR1[APR.Realm][APR.Name]["SkippedBonusObj"] = {}
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]) then
-            APR1[APR.Realm][APR.Name]["Settings"] = {}
-            APR1[APR.Realm][APR.Name]["Settings"]["left"] = GetScreenWidth() / 1.6
-            APR1[APR.Realm][APR.Name]["Settings"]["top"] = -(GetScreenHeight() / 5)
-            APR1[APR.Realm][APR.Name]["Settings"]["Scale"] = UIParent:GetScale()
-            APR1[APR.Realm][APR.Name]["Settings"]["Lock"] = 0
-            APR1[APR.Realm][APR.Name]["Settings"]["Hide"] = 0
-            APR1[APR.Realm][APR.Name]["Settings"]["alpha"] = 1
-            APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"] = GetScreenWidth() / 2.05
-            APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"] = -(GetScreenHeight() / 1.5)
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["leftLiz"] = 150
-            APR1[APR.Realm][APR.Name]["Settings"]["topLiz"] = -150
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["ArrowFPS"] = 2
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["QuestButtons"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["QuestButtons"] = 1
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["MiniMapBlobAlpha"] = 1
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["QuestButtonDetatch"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["QuestButtonDetatch"] = 0
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["ShowQuestListOrder"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["ShowQuestListOrder"] = 1
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["OrderListScale"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["OrderListScale"] = 1
-        end
-        if (APR1[APR.Realm][APR.Name]["Settings"]["ShowQuestListOrder"] == 1) then
-            APR.ZoneQuestOrder:Show()
-        else
-            APR.ZoneQuestOrder:Hide()
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["ShowBlobs"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["ShowBlobs"] = 1
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["ShowMap10s"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["ShowMap10s"] = 0
-        end
-
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["ShowMapBlobs"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["ShowMapBlobs"] = 1
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["DisableHeirloomWarning"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["DisableHeirloomWarning"] = 0
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["LockArrow"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["LockArrow"] = 0
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["AutoGossip"] = 1
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["AutoFlight"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["AutoFlight"] = 1
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["Hcampleft"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["Hcampleft"] = GetScreenWidth() / 1.6
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["Hcamptop"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["Hcamptop"] = -(GetScreenHeight() / 5)
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["CutScene"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] = 1
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["AutoAccept"] = 0
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["AutoAcceptQuestRoute"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["AutoAcceptQuestRoute"] = 1
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["AutoHandIn"] = 1
-        end
-        APR1[APR.Realm][APR.Name]["Settings"]["AutoShareQ"] = 0
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"] = UIParent:GetScale()
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["AutoHandInChoice"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["AutoHandInChoice"] = 0
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["Greetings"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["Greetings"] = 0
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["Greetings3"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["Greetings3"] = 0
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["AutoVendor"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["AutoVendor"] = 0
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["AutoRepair"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["AutoRepair"] = 0
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["ShowGroup"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["ShowGroup"] = 1
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["ShowArrow"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["ShowArrow"] = 1
-        end
-        if (not APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"]) then
-            APR1[APR.Realm][APR.Name]["Settings"]["ShowQList"] = 1
-        end
-        if (not APR1[APR.Realm][APR.Name]["APR_DoWarCampaign"]) then
-            APR1[APR.Realm][APR.Name]["APR_DoWarCampaign"] = 0
-        end
-        if (not APR1[APR.Realm][APR.Name]["hideRidingSkill"]) then
-            APR1[APR.Realm][APR.Name]["hideRidingSkill"] = 0
-        end
         if (not APR1[APR.Realm][APR.Name]["routeChoiceIndex"]) then
             APR1[APR.Realm][APR.Name]["routeChoiceIndex"] = 0
         end
         if (not APR1[APR.Realm][APR.Name]["WantedQuestList"]) then
             APR1[APR.Realm][APR.Name]["WantedQuestList"] = {}
         end
-        APR.ZoneQuestOrder:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["OrderListScale"])
-        APR.ArrowFrame:SetScale(APR1[APR.Realm][APR.Name]["Settings"]["ArrowScale"])
-        APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR1[APR.Realm][APR.Name]["Settings"]["arrowleft"],
-            APR1[APR.Realm][APR.Name]["Settings"]["arrowtop"])
+        APR.ZoneQuestOrder:SetScale(APR.settings.profile.questOrderListScale)
+        APR.ArrowFrame:SetScale(APR.settings.profile.arrowScale)
+        APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
+            APR.settings.profile.arrowtop)
 
         APR.ButtonBookingTimer = APR.CoreEventFrame:CreateAnimationGroup()
         APR.ButtonBookingTimer.anim = APR.ButtonBookingTimer:CreateAnimation()
@@ -3256,8 +3058,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR.AfkFrame:Hide()
             end
         end)
-        SlashCmdList["APR_Cmd"] = APR_SlashCmd
-        SLASH_APR_Cmd1 = "/APR"              -- Prefix for slash commands, ex. /apr reset, /apr skip
         CoreLoadin = 1
     elseif (event == "CINEMATIC_START") then --Cutscene skip when cinematic starts
         if (not IsModifierKeyDown()) then    -- unless control key is down
@@ -3266,7 +3066,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
             if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
                 steps = APR.QuestStepList[APR.ActiveMap][CurStep]
             end
-            if (APR1[APR.Realm][APR.Name]["Settings"]["CutScene"] == 1 and (steps and not steps["Dontskipvid"]) and (APR.ActiveQuests and not APR.ActiveQuests[52042])) then
+            if (APR.settings.profile.autoSkipCutScene and (steps and not steps["Dontskipvid"]) and (APR.ActiveQuests and not APR.ActiveQuests[52042])) then
                 APR.BookingList["SkipCutscene"] = 1
             end
         end

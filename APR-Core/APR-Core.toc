@@ -9,16 +9,15 @@
 
 ## RequiredDeps: APR
 
-## SavedVariables: APR1, APR2, APR3, APRQuestNames, APR_HoldZoneVar, APR_Transport, APR_Custom, APR_ZoneComplete, APR_TaxiTimers
+## SavedVariables: APRSettings, APR1, APR2, APR3, APRQuestNames, APR_HoldZoneVar, APR_Transport, APR_Custom, APR_ZoneComplete, APR_TaxiTimers
 libs/embeds.xml
 locales/locales.xml
 
 Utils.lua
-Commands.lua
 Core.lua
-TransportDB.lua
+Commands.lua
 Config.lua
-OptionsPanel.lua
+TransportDB.lua
 QuestList.lua
 QuestHandler.lua
 Minimap.lua
