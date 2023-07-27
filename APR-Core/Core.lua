@@ -2,67 +2,81 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR = {}
 APR = _G.LibStub("AceAddon-3.0"):NewAddon(APR, "APR", "AceEvent-3.0")
 
-APR.title = C_AddOns.GetAddOnMetadata("APR", "Title")
-APR.version = C_AddOns.GetAddOnMetadata("APR", "Version")
-APR.github = C_AddOns.GetAddOnMetadata("APR", "X-Github")
-APR.discord = C_AddOns.GetAddOnMetadata("APR", "X-Discord")
+local CoreLoadin = false
 
+-- Character
 APR.Name = UnitName("player")
 APR.Realm = string.gsub(GetRealmName(), " ", "")
-APR.Faction = UnitFactionGroup("player") -- "Horde" or "Alliance"
+APR.Faction = UnitFactionGroup("player") -- "Alliance", "Horde", "Neutral" or nil
 APR.Level = UnitLevel("player")
-APR.Class = {}
-APR.QuestStepList = {}
-APR.Heirlooms = 0
-
-APR.SweatBuff = {}
-APR.SweatBuff[1] = 0
-APR.SweatBuff[2] = 0
-APR.SweatBuff[3] = 0
-
 APR.RaceLocale, APR.Race, APR.RaceID = UnitRace("player")
-APR.Class[1], APR.Class[2], APR.Class[3] = UnitClass("player")
-APR.QuestList = {} --where the quest parts go
-APR.NPCList = {}
+APR.ClassFilename, APR.ClassId = UnitClassBase("player")
 APR.Gender = UnitSex("player")
-APR.Icons = {}
-APR.MapIcons = {}
-APR.Breadcrums = {}
-APR.ActiveQuests = {}
-APR.RegisterChat = C_ChatInfo.RegisterAddonMessagePrefix("APRChat")
-APR.LastSent = 0
-APR.GroupListSteps = {}
-APR.GroupListStepsNr = 1
 
-local CoreLoadin = 0
-APR.AfkTimerVar = 0
-APR.QuestListLoadin = 0
-APR.ZoneTransfer = 0
-APR.BookingList = {}
-APR.MapZoneIcons = {}
-APR.MapZoneIconsRed = {}
-APR.SettingsOpen = 0
-APR.InCombat = 0
-APR.ProgressShown = 0
-APR.BookUpdAfterCombat = 0
-APR.QuestListShown = 0
-APR.MapLoaded = 0
 
-APR.ArrowActive = 0
-APR.ArrowActive_X = 0
-APR.ArrowActive_Y = 0
-APR.MiniMap_X = 0
-APR.MiniMap_Y = 0
-APR.MacroUpdaterVar = {}
-local classes = require("helpers.classes")
+-- Quest
+APR.QuestStepList = {}
+APR.QuestStepListListing = {}
+APR.QuestStepListListingStartAreas = {}
 
 function APR:OnInitialize()
-    -- APR INIT NEW SETTING - WIP -- TODO
+    -- Init on TOC
+    APR.title = C_AddOns.GetAddOnMetadata("APR", "Title")
+    APR.version = C_AddOns.GetAddOnMetadata("APR", "Version")
+    APR.github = C_AddOns.GetAddOnMetadata("APR", "X-Github")
+    APR.discord = C_AddOns.GetAddOnMetadata("APR", "X-Discord")
+
+    -- Quest and Interface
+    APR.QuestListLoadin = false
+    APR.QuestList = {} --where the quest parts go
+    APR.QuestListShown = 0
+    APR.ActiveQuests = {}
+    APR.NPCList = {}
+    APR.Icons = {}
+    APR.MapIcons = {}
+    APR.Breadcrums = {}
+    APR.AfkTimerVar = 0 --Move to AFK file
+    APR.ZoneTransfer = false
+    APR.ProgressShown = false
+
+    -- BookingList
+    APR.BookingList = {}
+    APR.InCombat = false
+    APR.BookUpdAfterCombat = false
+
+    -- Group
+    APR.RegisterChat = C_ChatInfo.RegisterAddonMessagePrefix("APRChat") -- prefix for Party message
+    APR.LastSent = 0
+    APR.GroupListSteps = {}
+    APR.GroupListStepsNr = 1
+
+    -- Arrow Move in Arrow file
+    APR.ArrowActive = 0
+    APR.ArrowActive_X = 0
+    APR.ArrowActive_Y = 0
+
+    -- Macro
+    APR.MacroUpdaterVar = {} -- TODO REwork
+
+    -- Buff
+    APR.SweatBuff = {}
+    APR.SweatBuff[1] = false -- TODO rename it
+    APR.SweatBuff[2] = false -- TODO rename it
+    APR.SweatBuff[3] = false -- TODO rename it
+    -- APR INIT NEW SETTING
+    APR.SettingsOpen = false
     APR.settings:InitializeBlizOptions()
+
+    -- APR Saved Data
+    APRData = APRData or {}
+    APRData[APR.Realm] = APRData[APR.Realm] or {}
+    APRData[APR.Realm][APR.Name] = APRData[APR.Realm][APR.Name] or {}
+    APRData[APR.Realm][APR.Name].FirstLoad = APRData[APR.Realm][APR.Name].FirstLoad == nil and true or
+        APRData[APR.Realm][APR.Name].FirstLoad
 end
 
 function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First character button
-    APR1[APR.Realm][APR.Name]["routeChoiceIndex"] = routeChoice
+    APRData[APR.Realm][APR.Name]["routeChoiceIndex"] = routeChoice
     local ZeMap = C_Map.GetBestMapForUnit("player")
     local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
     if (Enum and Enum.UIMapType and Enum.UIMapType.Continent and currentMapId) then
@@ -83,11 +97,11 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
         tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "01-10 Exile's Reach")
     end
     if (APR.Level < 30) then
-        if (APR.Class[3] == classes["Death Knight"] and APR.RaceID >= 23) then -- Allied DK
+        if (APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23) then -- Allied DK
             tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "Allied Death Knight Start")
-        elseif (APR.Class[3] == classes["Death Knight"]) then            -- DK
+        elseif (APR.ClassId == APR.Classes["Death Knight"]) then                  -- DK
             tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "08-30 Death Knight Start")
-        elseif (APR.Class[3] == classes["Demon Hunter"]) then
+        elseif (APR.ClassId == APR.Classes["Demon Hunter"]) then
             tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "01-30 Demon Hunter Start")
         end
     end
@@ -111,7 +125,7 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
         end
     elseif (routeChoice == 1) then
         if (APR.Level < 60) then
-            if (APR.Level >= 58 and APR.Class[3] == classes["Dracthyr"]) then
+            if (APR.Level >= 58 and APR.ClassId == APR.Classes["Dracthyr"]) then
                 tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "58-60 Dracthyr Start")
             elseif APR.Level >= 50 then
                 tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DEV - StoryMode Only (Not Enough XP)")
@@ -174,7 +188,7 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
 end
 
 function APR.getContinent() -- Getting the continent the player is on and its info
-    if (APR1["Debug"]) then
+    if (APR.settings.profile.debug) then
         print("Function: APR.getContinent()")
     end
     local mapID = C_Map.GetBestMapForUnit("player")
@@ -328,7 +342,7 @@ APR.ArrowFrame.Button:SetPoint("BOTTOM", APR.ArrowFrame, "BOTTOM", 0, -40)
 APR.ArrowFrame.Button:SetScript("OnMouseDown", function(self, button)
     APR.ArrowFrame.Button:Hide()
     print("APR: " .. L["SKIP_WAYPOINT"])
-    APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
+    APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
     APR.ArrowActive_X = 0
     APR.ArrowActive_Y = 0
     APR.BookingList["UpdateQuest"] = 1
@@ -358,7 +372,7 @@ APR.ArrowFrame.Button:Hide()
 
 --Loads RoutePlan and option frame. RoutePlan is gui that pops when you hit "Custom Path" and a gui comes up allowing you to order them
 function APR.RoutePlanLoadIn()
-    if (APR1["Debug"]) then
+    if (APR.settings.profile.debug) then
         print("Function: APR.RoutePlanLoadIn()")
     end
 
@@ -1960,7 +1974,7 @@ function APR.RoutePlanLoadIn()
 end
 
 function APR.CheckPosMove(zeActivz)
-    if (APR1["Debug"]) then
+    if (APR.settings.profile.debug) then
         print("Function: APR.CheckPosMove()")
     end
     local zenr = APR.NumbRoutePlan("EasternKingdom")
@@ -2577,7 +2591,7 @@ function APR.CheckPosMove(zeActivz)
 end
 
 function APR.CheckCustomEmpty()
-    if (APR1["Debug"]) then
+    if (APR.settings.profile.debug) then
         print("Function: APR.CheckCustomEmpty()")
     end
     local zeemp = 0
@@ -2594,7 +2608,7 @@ end
 
 --Check current position for route plan
 function APR.RoutePlanCheckPos()
-    if (APR1["Debug"]) then
+    if (APR.settings.profile.debug) then
         print("Function: APR.RoutePlanCheckPos()")
     end
     local zenr = APR.NumbRoutePlan("EasternKingdom")
@@ -2863,17 +2877,9 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         if (arg1 ~= "APR-Core") then
             return
         end
-        if (not APR1) then
-            APR1 = {}
-        end
-        if (not APR1[APR.Realm]) then
-            APR1[APR.Realm] = {}
-        end
-        if (not APR1[APR.Realm][APR.Name]) then
-            APR1[APR.Realm][APR.Name] = {}
-        end
-        if (not APR1[APR.Realm][APR.Name]["BonusSkips"]) then
-            APR1[APR.Realm][APR.Name]["BonusSkips"] = {}
+
+        if (not APRData[APR.Realm][APR.Name]["BonusSkips"]) then
+            APRData[APR.Realm][APR.Name]["BonusSkips"] = {}
         end
         APR.ZoneQuestOrderList() --Where steps go
 
@@ -2900,7 +2906,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR_LoadInTimer.anim:SetDuration(2)
         APR_LoadInTimer:SetLooping("REPEAT")
         APR_LoadInTimer:SetScript("OnLoop", function(self, event, ...)
-            if (CoreLoadin == 1 and APR.QuestListLoadin == 1) then
+            if (CoreLoadin and APR.QuestListLoadin) then
                 if (not APR_Transport) then
                     APR_Transport = {}
                 end
@@ -2942,9 +2948,9 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR.BookingList["Heirloomscheck"] = 1
                 APR.CreateMacro()
                 APR.RoutePlanLoadIn()
-                if (not APR1[APR.Realm][APR.Name]["FirstLoadz"]) then
+                if (APRData[APR.Realm][APR.Name].FirstLoad) then
                     APR.LoadInOptionFrame:Show()
-                    APR1[APR.Realm][APR.Name]["FirstLoadz"] = 1
+                    APRData[APR.Realm][APR.Name].FirstLoad = false
                 else
                     APR.LoadInOptionFrame:Hide()
                 end
@@ -2952,25 +2958,23 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR_LoadInTimer:Stop()
                 C_Timer.After(4, APR_UpdatezeMapId)
                 C_Timer.After(5, APR_BookQStep)
-                APR.RegisterChat = C_ChatInfo.RegisterAddonMessagePrefix("APRChat")
                 --APR.FP.ToyFPs()
                 local CQIDs = C_QuestLog.GetAllCompletedQuestIDs()
-                APR1[APR.Realm][APR.Name]["QuestCounter"] = getn(CQIDs)
-                APR1[APR.Realm][APR.Name]["QuestCounter2"] = APR1[APR.Realm][APR.Name]["QuestCounter"]
+                APRData[APR.Realm][APR.Name]["QuestCounter"] = getn(CQIDs)
+                APRData[APR.Realm][APR.Name]["QuestCounter2"] = APRData[APR.Realm][APR.Name]["QuestCounter"]
                 APR_QidsTimer:Play()
             end
         end)
         APR_LoadInTimer:Play()
-        APR.RegisterChat = C_ChatInfo.RegisterAddonMessagePrefix("APRChat")
 
         APR_QidsTimer = APR.CoreEventFrame:CreateAnimationGroup()
         APR_QidsTimer.anim = APR_QidsTimer:CreateAnimation()
         APR_QidsTimer.anim:SetDuration(1)
         APR_QidsTimer:SetLooping("REPEAT")
         APR_QidsTimer:SetScript("OnLoop", function(self, event, ...)
-            if (APR1[APR.Realm][APR.Name]["QuestCounter2"] ~= APR1[APR.Realm][APR.Name]["QuestCounter"]) then
+            if (APRData[APR.Realm][APR.Name]["QuestCounter2"] ~= APRData[APR.Realm][APR.Name]["QuestCounter"]) then
                 APR.BookingList["PrintQStep"] = 1
-                APR1[APR.Realm][APR.Name]["QuestCounter"] = APR1[APR.Realm][APR.Name]["QuestCounter2"]
+                APRData[APR.Realm][APR.Name]["QuestCounter"] = APRData[APR.Realm][APR.Name]["QuestCounter2"]
             end
             if (not InCombatLockdown() and APR.MacroUpdaterVar[1]) then
                 local macroSlot = APR.MacroUpdaterVar[1]
@@ -3000,17 +3004,17 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         end)
         APR_IconTimer:Play()
 
-        if (not APR1[APR.Realm][APR.Name]["LoaPick"]) then
-            APR1[APR.Realm][APR.Name]["LoaPick"] = 0
+        if (not APRData[APR.Realm][APR.Name]["LoaPick"]) then
+            APRData[APR.Realm][APR.Name]["LoaPick"] = 0
         end
-        if (not APR1[APR.Realm][APR.Name]["QlineSkip"]) then
-            APR1[APR.Realm][APR.Name]["QlineSkip"] = {}
+        if (not APRData[APR.Realm][APR.Name]["QlineSkip"]) then
+            APRData[APR.Realm][APR.Name]["QlineSkip"] = {}
         end
-        if (not APR1[APR.Realm][APR.Name]["routeChoiceIndex"]) then
-            APR1[APR.Realm][APR.Name]["routeChoiceIndex"] = 0
+        if (not APRData[APR.Realm][APR.Name]["routeChoiceIndex"]) then
+            APRData[APR.Realm][APR.Name]["routeChoiceIndex"] = 0
         end
-        if (not APR1[APR.Realm][APR.Name]["WantedQuestList"]) then
-            APR1[APR.Realm][APR.Name]["WantedQuestList"] = {}
+        if (not APRData[APR.Realm][APR.Name]["WantedQuestList"]) then
+            APRData[APR.Realm][APR.Name]["WantedQuestList"] = {}
         end
         APR.ZoneQuestOrder:SetScale(APR.settings.profile.questOrderListScale)
         APR.ArrowFrame:SetScale(APR.settings.profile.arrowScale)
@@ -3042,7 +3046,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
             local ZeTime = APR.AfkTimerVar - floor(GetTime())
             if (ZeTime > 0) then
                 APR.AfkFrame.Fontstring:SetText(L["AFK"] .. " " .. string.format(SecondsToTime(ZeTime)))
-                local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
+                local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
                 if (APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
                     local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
                     if (steps and steps["SpecialETAHide"]) then
@@ -3058,10 +3062,11 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR.AfkFrame:Hide()
             end
         end)
-        CoreLoadin = 1
-    elseif (event == "CINEMATIC_START") then --Cutscene skip when cinematic starts
+        CoreLoadin = true
+    end
+    if (event == "CINEMATIC_START") then     --Cutscene skip when cinematic starts
         if (not IsModifierKeyDown()) then    -- unless control key is down
-            local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
+            local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
             local steps
             if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
                 steps = APR.QuestStepList[APR.ActiveMap][CurStep]
@@ -3074,7 +3079,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "PLAYER_LEVEL_UP") then
         if (APR.Level >= 60 and not IsTableEmpty(APR_Custom[APR.Name .. "-" .. APR.Realm])) then
             wipe(APR_Custom[APR.Name .. "-" .. APR.Realm])
-            APR.AutoPathOnBeta(APR1[APR.Realm][APR.Name]["routeChoiceIndex"])
+            APR.AutoPathOnBeta(APRData[APR.Realm][APR.Name]["routeChoiceIndex"])
         end
     end
 end)

@@ -14,6 +14,10 @@ local aceDialog = _G.LibStub("AceConfigDialog-3.0")
 local libDataBroker = LibStub("LibDataBroker-1.1")
 local libDBIcon = LibStub("LibDBIcon-1.0")
 
+-- TMP variable for route bouton
+local auto_path_helper = false
+local custom_path = false
+
 local function GetProfileOption(info) return APR.settings.profile[info[#info]] end
 
 local function SetProfileOption(info, value)
@@ -21,9 +25,7 @@ local function SetProfileOption(info, value)
 end
 
 function APR.settings:ResetSettings()
-    SettingsDB = nil
-    self:InitializeSettings()
-    self:RefreshProfile()
+    SettingsDB:ResetProfile()
 end
 
 function APR.settings:InitializeBlizOptions()
@@ -76,8 +78,6 @@ function APR.settings:InitializeSettings()
             -- group
             showGroup = false,
             -- route
-            auto_path_helper = false,
-            custom_path = false,
             greetings = true, --Greetings2
             -- position
             leftLiz = 150,
@@ -88,9 +88,9 @@ function APR.settings:InitializeSettings()
             partyTop = -(_G.GetScreenHeight() / 4), -- Partytop
             sugQuestLeft = 150,                     -- Sugleft
             sugQuestTop = -150,                     -- Sugtop
-
-
-
+            --debug
+            configMode = false,
+            debug = false,
         }
     }
 
@@ -100,7 +100,7 @@ function APR.settings:InitializeSettings()
     SettingsDB.RegisterCallback(self, "OnProfileCopied", "RefreshProfile")
     SettingsDB.RegisterCallback(self, "OnProfileReset", "RefreshProfile")
     self.profile = SettingsDB.profile
-    LoadedProfileKey = SettingsDB.keys.profile
+    LoadedProfileKey = SettingsDB.keys.profile -- TODO macro
 end
 
 function APR.settings.ChatCommand(input)
@@ -110,10 +110,10 @@ end
 function APR.settings:RefreshProfile()
     self.profile = SettingsDB.profile
 
-    if LoadedProfileKey ~= SettingsDB.keys.profile then
-        print("Profile changed, Reload UI for settings to take effect")
-    end
-    C_UI.Reload()
+    -- if LoadedProfileKey ~= SettingsDB.keys.profile then
+    --     print("Profile changed, Reload UI for settings to take effect")
+    -- end
+    -- C_UI.Reload()
 end
 
 function APR.settings:createBlizzOptions()
@@ -153,10 +153,10 @@ function APR.settings:createBlizzOptions()
                 type = "execute",
                 width = "normal",
                 func = function()
-                    self.profile.auto_path_helper = not self.profile.auto_path_helper
-                    if self.profile.auto_path_helper then
+                    auto_path_helper = not auto_path_helper
+                    if auto_path_helper then
                         APR.LoadInOptionFrame:Show()
-                        APR.BookingList["ClosedSettings"] = 1
+                        APR.BookingList["ClosedSettings"] = true
                     else
                         APR.LoadInOptionFrame:Hide()
                     end
@@ -168,10 +168,10 @@ function APR.settings:createBlizzOptions()
                 type = "execute",
                 width = "normal",
                 func = function()
-                    self.profile.custom_path = not self.profile.custom_path
-                    if self.profile.custom_path then
+                    custom_path = not custom_path
+                    if custom_path then
                         APR.RoutePlan.FG1:Show()
-                        APR.BookingList["ClosedSettings"] = 1
+                        APR.BookingList["ClosedSettings"] = true
                     else
                         APR.RoutePlan.FG1:Hide()
                     end
@@ -607,8 +607,40 @@ function APR.settings:createBlizzOptions()
                 end,
                 hidden = false -- to hide useless/broken settings
             },
+            header_debug = {
+                order = 9,
+                type = "header",
+                width = "full",
+                name = "Debug",
+            },
+            debug = {
+                order = 9.1,
+                type = "toggle",
+                name = "Debug", -- TODO
+                width = optionsWidth,
+                get = GetProfileOption,
+                set = SetProfileOption,
+            },
+            configMode = {
+                order = 9.2,
+                type = "toggle",
+                name = "config Mode",     --TODO
+                desc = "configMode_DESC", --TODO
+                width = optionsWidth,
+                get = GetProfileOption,
+                set = function(info, value)
+                    SetProfileOption(info, value)
+                    if (value) then
+                        APR.SettingsOpen = true
+                        APR.BookingList["OpenedSettings"] = true
+                    else
+                        APR.SettingsOpen = false
+                        APR.BookingList["ClosedSettings"] = true
+                    end
+                end
+            },
             resetButton = {
-                order = 8.4,
+                order = 9.3,
                 name = "Reset option", --TODO
                 type = "execute",
                 width = "normal",
@@ -616,6 +648,7 @@ function APR.settings:createBlizzOptions()
                     self:ResetSettings()
                 end
             },
+
         }
     }
 

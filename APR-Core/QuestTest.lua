@@ -27,7 +27,7 @@ local function GetPlayerMapPos(MapID, dx, dy)
     return (1 / R[2].y) * P.y, (1 / R[2].x) * P.x;
 end
 function APR.ZoneQuestOrderList()
-    if (APR1["Debug"]) then
+    if (APR.settings.profile.debug) then
         print("Function: APR.ZoneQuestOrderList()")
     end
     APR.ZoneQuestOrder = CreateFrame("frame", "APRQOrderList", UIParent)
@@ -373,13 +373,13 @@ function APR.AddQuestNameFrame(CLi)
 end
 
 function APR.UpdateZoneQuestOrderList(APRmod)
-    if (APR1["Debug"]) then
+    if (APR.settings.profile.debug) then
         print("Function: APR.UpdateZoneQuestOrderList()")
     end
     if (not APRQuestNames) then
         APRQuestNames = {}
     end
-    local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
     local steps
     if (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
         steps = APR.QuestStepList[APR.ActiveMap][CurStep]
@@ -523,7 +523,7 @@ function APR.UpdateZoneQuestOrderList(APRmod)
                         for APR_index2, APR_value2 in pairs(APR_value) do
                             Total = Total + 1
                             local qid = APR_index .. "-" .. APR_index2
-                            if (C_QuestLog.IsQuestFlaggedCompleted(APR_index) or ((UnitLevel("player") == 120) and APR_BonusObj and APR_BonusObj[APR_index]) or APR1[APR.Realm][APR.Name]["BonusSkips"][APR_index]) then
+                            if (C_QuestLog.IsQuestFlaggedCompleted(APR_index) or ((UnitLevel("player") == 120) and APR_BonusObj and APR_BonusObj[APR_index]) or APRData[APR.Realm][APR.Name]["BonusSkips"][APR_index]) then
                                 Flagged = Flagged + 1
                             elseif (APR.ActiveQuests[qid] and APR.ActiveQuests[qid] == "C") then
                                 Flagged = Flagged + 1
@@ -935,7 +935,7 @@ end
 
 function APR.MapOrderNumbers()
     APR.HBDP:RemoveAllWorldMapIcons("APRMapOrder")
-    local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
     if (APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and CurStep) then
         local znr = 0
         local SetMapIDs = WorldMapFrame:GetMapID()
@@ -968,8 +968,8 @@ APR_QH_EventFrame = CreateFrame("Frame")
 APR_QH_EventFrame:RegisterEvent("QUEST_LOG_UPDATE")
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "QUEST_LOG_UPDATE") then
-        if (APR.settings.profile.showMap10s and WorldMapFrame:IsShown() and APR.ActiveMap and APR1[APR.Realm][APR.Name][APR.ActiveMap]) then
-            local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
+        if (APR.settings.profile.showMap10s and WorldMapFrame:IsShown() and APR.ActiveMap and APRData[APR.Realm][APR.Name][APR.ActiveMap]) then
+            local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
             if (CurStep and MapIconUpdateStep ~= CurStep and CurStep > 1) then
                 APR.MapOrderNumbers() -- TODO showMap10s : fix lua error showMap10s
             end

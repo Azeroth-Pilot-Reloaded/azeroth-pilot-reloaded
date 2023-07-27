@@ -1,4 +1,4 @@
-local classes = {
+APR.Classes = {
     Warrior = 1,
     Paladin = 2,
     Hunter = 3,
@@ -12,6 +12,4 @@ local classes = {
     Druid = 11,
     ["Demon Hunter"] = 12,
     Dracthyr = 13,
- }
- 
- return classes
+}

@@ -6,23 +6,23 @@ function APR:SlashCmd(input)
     if (input == "reset" or input == "r") then
         --Command for making the quest rescan on completion and reset, including previously skipped steps
         print("APR: " .. L["RESET_ZONE"])
-        APR1[APR.Realm][APR.Name][APR.ActiveMap] = 1
+        APRData[APR.Realm][APR.Name][APR.ActiveMap] = 1
     elseif (input == "forcereset" or input == "fr") then
-        APR1 = nil;
+        APRData = {};
         APR_ZoneComplete[APR.Name .. "-" .. APR.Realm] = nil;
         C_UI.Reload()
     elseif (input == "skip" or input == "s" or input == "skippiedoodaa") then
         -- Command for skipping the current quest step
         print("APR: " .. L["SKIP"])
-        APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
+        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
     elseif (input == "rollback" or input == "rb") then
         -- Command for rollback the current quest step
         print("APR: " .. L["ROLLBACK"])
-        APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] - 1
+        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] - 1
     elseif (input == "skipcamp") then
         -- Command for skipping "camp" step
         print("APR: " .. L["SKIPCAMP"])
-        APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 14
+        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 14
     elseif (input == "discord" or input == "d") then
         print(APR.discord)
     elseif (input == "help" or input == "h") then
@@ -40,8 +40,6 @@ function APR:SlashCmd(input)
     else
         _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
         APR.RemoveIcons()
-        APR.SettingsOpen = 1
-        APR.BookingList["OpenedSettings"] = 1
     end
     APR.BookingList["UpdateQuest"] = 1
     APR.BookingList["PrintQStep"] = 1

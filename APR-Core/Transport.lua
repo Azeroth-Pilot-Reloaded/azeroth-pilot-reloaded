@@ -171,7 +171,7 @@ function APR.FP.TestDestClick2(Zone)
 end
 
 function APR.FP.ToyFPs()
-    if (APR1["Debug"]) then
+    if (APR.settings.profile.debug) then
         print("Function: APR.FP.ToyFPs()")
     end
     if (APR.Faction == "Alliance") then
@@ -359,7 +359,7 @@ function APR.FP.ToyFPs()
 end
 
 function APR.FP.testClickedFPS()
-    if (APR1["Debug"]) then
+    if (APR.settings.profile.debug) then
         print("Function: APR.FP.testClickedFPS()")
     end
     if (APR.Faction == "Alliance" and (C_QuestLog.IsQuestFlaggedCompleted(47954) or PlayerHasToy(150743) == false) and (C_QuestLog.IsQuestFlaggedCompleted(47956) or PlayerHasToy(150746) == false)) then
@@ -387,7 +387,7 @@ function APR.FP.testClickedFPS()
 end
 
 function APR.FP.test()
-    if (APR1["Debug"]) then
+    if (APR.settings.profile.debug) then
         print("Function: APR.FP.test()")
     end
     if (not APR_Transport["Ports"]) then
@@ -408,7 +408,7 @@ function APR.FP.test()
 end
 
 function APR.FP.GetMeToNextZonetest()
-    if (APR1["Debug"]) then
+    if (APR.settings.profile.debug) then
         print("Function: APR.FP.GetMeToNextZonetest()")
     end
     local APRt_Zone2 = C_Map.GetBestMapForUnit("player")
@@ -461,81 +461,63 @@ function APR.FP.GetCustomZone()
     end
     if (zenr == 0 and APR.Level > 49) then
         APR.ProgressText = "Auto Path"
-        APR.ProgressShown = 0
         if (C_QuestLog.IsQuestFlaggedCompleted(58086) == false and (C_QuestLog.IsOnQuest(61874) == true or C_QuestLog.IsQuestFlaggedCompleted(61874) == true or C_QuestLog.IsOnQuest(59751) or C_QuestLog.IsQuestFlaggedCompleted(59751) == true)) then
+            APR.ProgressShown = true
             if (C_QuestLog.IsQuestFlaggedCompleted(59770) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-00-TheMaw-Story"], "1648-Z0-TheMaw-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(59773) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-01-Oribos-Story"], "1670-Z1-Oribos-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(60056) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-02-Bastion-Story"], "1533-Z2-Bastion-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(57386) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-03-Oribos-Story"], "1613-Z3-Oribos-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(59874) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-04-Maldraxxus-Story"], "1536-Z4-Maldraxxus-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(59897) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-05-Oribos-Story"], "1670-Z5-Oribos-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(62654) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-06-The Maw-Story"], "1543-Z6-TheMaw-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(59011) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-07-Oribos-Story"], "1670-Z7-Oribos-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(59206) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-08-Maldraxxus-Story"], "1536-Z8-Maldraxxus-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(60338) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-09-Oribos-Story"], "1670-Z9-Oribos-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(58724) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-10-Ardenweald-Story"], "1565-Z10-Ardenweald-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(57025) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-11-Oribos-Story"], "1671-Z11-Oribos-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(57689) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-12-Revendreth-Story"], "1525-Z12-Revendreth-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(57693) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-13-The Maw-Story"], "1543-Z13-TheMaw-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(57876) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-14-Revendreth-Story"], "1525-Z14-Revendreth-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(57878) == false) then
-                APR.ProgressShown = 1
                 return APR.QuestStepListListingZone["Z-15-Oribos-Story"], "1671-Z15-Oribos-Story"
             end
-        elseif (C_QuestLog.IsOnQuest(61874) == true or C_QuestLog.IsQuestFlaggedCompleted(61874) == true) then
-
         else
-            APR.ProgressShown = 0
+            APR.ProgressShown = false
             return
         end
     elseif (zenr == 0) then
         APR.ProgressText = "Auto Path"
-        APR.ProgressShown = 0
+        APR.ProgressShown = false
         if (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728) then
             if (IsAddOnLoaded("APR-Shadowlands") == false) then
                 local loaded, reason = LoadAddOn("APR-Shadowlands")
@@ -548,31 +530,31 @@ function APR.FP.GetCustomZone()
             return APR.QuestStepListListingZone["01-10 Exile's Reach"], "1409-Exile's Reach"
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(34398) == false and APR.Faction == "Alliance") then
-            APR.ProgressShown = 1
+            APR.ProgressShown = true
             return APR.QuestStepListListingZone["(1/7) 1-50 Stormwind"], "A84-DesMephisto-Stormwind-War"
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(35884) == false and APR.Faction == "Alliance") then
-            APR.ProgressShown = 1
+            APR.ProgressShown = true
             return APR.QuestStepListListingZone["(2/7) 1-50 Tanaan Jungle"], "A577-DesMephisto-TanaanJungle"
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(35556) == false and APR.Faction == "Alliance") then
-            APR.ProgressShown = 1
+            APR.ProgressShown = true
             return APR.QuestStepListListingZone["(3/7) 1-50 Shadowmoon"], "A539-DesMephisto-Shadowmoon1"
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(36937) == false and APR.Faction == "Alliance") then
-            APR.ProgressShown = 1
+            APR.ProgressShown = true
             return APR.QuestStepListListingZone["(4/7) 1-50 Gorgrond"], "A543-DesMephisto-Gorgrond"
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(34587) == false and APR.Faction == "Alliance") then
-            APR.ProgressShown = 1
+            APR.ProgressShown = true
             return APR.QuestStepListListingZone["(5/7) 1-50 Talador"], "A535-DesMephisto-Talador"
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(34624) == false and APR.Faction == "Alliance") then
-            APR.ProgressShown = 1
+            APR.ProgressShown = true
             return APR.QuestStepListListingZone["(6/7) 1-50 Shadowmoon"], "A539-DesMephisto-Shadowmoon2"
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(34707) == false and APR.Faction == "Alliance") then
-            APR.ProgressShown = 1
+            APR.ProgressShown = true
             return APR.QuestStepListListingZone["(7/7) 1-50 Talador"], "A535-DesMephisto-Talador2"
         end
     end
@@ -580,7 +562,7 @@ function APR.FP.GetCustomZone()
     if (not APR_Custom) then
         return
     end
-    if (APR1["Debug"]) then
+    if (APR.settings.profile.debug) then
         print("Function: APR.FP.GetCustomZone()")
     end
     for CLi = 1, 19 do
@@ -588,7 +570,7 @@ function APR.FP.GetCustomZone()
             if (APR.QuestStepListListingStartAreas["EasternKingdom"]) then
                 for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListingStartAreas["EasternKingdom"]) do
                     if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
-                        APR.ProgressShown = 1
+                        APR.ProgressShown = true
                         return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                     end
                 end
@@ -596,7 +578,7 @@ function APR.FP.GetCustomZone()
             if (APR.QuestStepListListingStartAreas["BrokenIsles"]) then
                 for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListingStartAreas["BrokenIsles"]) do
                     if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
-                        APR.ProgressShown = 1
+                        APR.ProgressShown = true
                         return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                     end
                 end
@@ -604,56 +586,56 @@ function APR.FP.GetCustomZone()
             if (APR.QuestStepListListingStartAreas["Kalimdor"]) then
                 for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListingStartAreas["Kalimdor"]) do
                     if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
-                        APR.ProgressShown = 1
+                        APR.ProgressShown = true
                         return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                     end
                 end
             end
             for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["EasternKingdom"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = 1
+                    APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Kalimdor"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = 1
+                    APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["SpeedRun"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = 1
+                    APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Shadowlands"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = 1
+                    APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Extra"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = 1
+                    APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["MISC 1"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = 1
+                    APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["MISC 2"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = 1
+                    APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Dragonflight"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = 1
+                    APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
@@ -873,8 +855,8 @@ function APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
 end
 
 function APR.FP.GetMeToNextZone()
-    APR.ZoneTransfer = 0
-    if (APR1["Debug"]) then
+    APR.ZoneTransfer = false
+    if (APR.settings.profile.debug) then
         print("Function: APR.FP.GetMeToNextZone()")
     end
     local zeZ, Zname = APR.FP.GetCustomZone()
@@ -920,7 +902,7 @@ function APR.FP.GetMeToNextZone()
         APR.FP.GoToZone = nil
         return
     end
-    APR.ZoneTransfer = 1
+    APR.ZoneTransfer = true
     APR.BookingList["GetMeToNextZone2"] = 1
 end
 
@@ -929,10 +911,10 @@ function APR.FP.GetMeToNextZone2()
         return
     end
     if (not APR.FP.GoToZone) then
-        APR.ZoneTransfer = 0
+        APR.ZoneTransfer = false
         return
     end
-    if (APR1["Debug"]) then
+    if (APR.settings.profile.debug) then
         print("Function: APR.FP.GetMeToNextZone2()")
     end
     local LineNr = 0
@@ -973,7 +955,7 @@ function APR.FP.GetMeToNextZone2()
                 if (APR.QuestList.QuestFrames["FS" .. CLi]["Button"]:IsShown()) then
                     APR.QuestList.QuestFrames["FS" .. CLi]["Button"]:Hide()
                 end
-                if (APR.QuestList2["BF" .. CLi]:IsShown() and APR.SettingsOpen ~= 1) then
+                if (APR.QuestList2["BF" .. CLi]:IsShown() and APR.SettingsOpen) then
                     APR.QuestList2["BF" .. CLi]:Hide()
                 end
             end
@@ -1010,17 +992,17 @@ function APR.FP.GetMeToNextZone2()
         end
     end
     if (((APRt_Zone == 181) or (APRt_Zone == 202) or (APRt_Zone == 179)) and APR.ActiveMap == "A179-Gilneas") then
-        APR.ZoneTransfer = 0
+        APR.ZoneTransfer = false
     elseif (((APRt_Zone == 97) or (APRt_Zone == 106)) and APR.ActiveMap == "A106-BloodmystIsle") then
-        APR.ZoneTransfer = 0
+        APR.ZoneTransfer = false
     elseif (((APRt_Zone == 69) or (APRt_Zone == 64)) and APR.ActiveMap == "A64-ThousandNeedles") then
-        APR.ZoneTransfer = 0
+        APR.ZoneTransfer = false
     elseif ((APRt_Zone == 1536) and APR.ActiveQuests and APR.ActiveQuests["59974"]) then
-        APR.ZoneTransfer = 0
+        APR.ZoneTransfer = false
     elseif (((APRt_Zone == 71) or (APRt_Zone == 249)) and APR.ActiveMap == "A71-Tanaris") then
-        APR.ZoneTransfer = 0
+        APR.ZoneTransfer = false
     elseif (APR.ActiveMap == "A84-LearnFlying") then
-        APR.ZoneTransfer = 0
+        APR.ZoneTransfer = false
     elseif (zeReal == 427 and APR.ActiveMap ~= "A27-ColdridgeValleyDwarf") then
         -- Coldridge Valley (Dwarf/gnum)
         ShownLineNr = ShownLineNr + 1
@@ -1094,7 +1076,7 @@ function APR.FP.GetMeToNextZone2()
     else
         if (APRt_Zone == GoToZone) then
             APR.FP.GoToZone = nil
-            APR.ZoneTransfer = 0
+            APR.ZoneTransfer = false
         else
             local togozo, ZefpID
             if (APR.getContinent() and APR_Transport["FPs"][APR.Faction][APR.getContinent()]) then
@@ -1166,10 +1148,10 @@ function APR.FP.GetMeToNextZone2()
             end
         end
     end
-    if (APR.ZoneTransfer == 1) then
+    if (APR.ZoneTransfer) then
         C_Timer.After(2, APR.FP.GetMeToNextZone2)
     end
-    if (DestSet == 1 and LineNr == 1 and APR.SettingsOpen == 0) then
+    if (DestSet == 1 and LineNr == 1 and not APR.SettingsOpen) then
         APR.ArrowActive = 0
         APR.ArrowActive_X = 0
         APR.ArrowActive_Y = 0
@@ -2233,7 +2215,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
 end
 
 function APR.FP.ClosestFP()
-    if (APR1["Debug"]) then
+    if (APR.settings.profile.debug) then
         print("Function: APR.FP.ClosestFP()")
     end
     local testinstsance = UnitPosition("player")
@@ -2289,7 +2271,7 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.FP.Zonening = 1
     elseif (event == "PLAYER_ENTERING_WORLD") then
         APR.FP.Zonening = 0
-        if (APR.ZoneTransfer == 1) then
+        if (APR.ZoneTransfer) then
             APR.BookingList["GetMeToNextZone2"] = 1
         end
     elseif (event == "TAXIMAP_OPENED") then
@@ -2343,7 +2325,7 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm][NodeIDZ] = 1
             end
         end
-        local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
+        local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
         local steps
         if (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
             steps = APR.QuestStepList[APR.ActiveMap][CurStep]
@@ -2379,7 +2361,7 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
             for CLi = 1, NumTaxiNodes() do
                 if (TaxiNodeName(CLi) == APR.FP.QuedFP) then
                     if (steps and steps["UseFlightPath"] and TaxiNodeGetType(CLi) == "CURRENT") then
-                        APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
+                        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
                         APR.BookingList["UpdateQuest"] = 1
                         APR.BookingList["PrintQStep"] = 1
                     else

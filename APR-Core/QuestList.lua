@@ -626,15 +626,15 @@ local function APR_CreateQuestList()
         APR.QuestList.QuestFrames["FS" .. CLi]["BQid"] = 0
         --skip waypoint button
         AddQuestListButton(L["SKIP_BUTTON"], CLi, function(self, button)
-            local CurStep = APR1[APR.Realm][APR.Name][APR.ActiveMap]
+            local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
             if (APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
                 local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
                 if (steps and steps["UseDalaHS"]) then
-                    APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
+                    APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
                     APR.BookingList["PrintQStep"] = 1
                     APR.QuestList.QuestFrames["FS" .. CLi].Button:Hide()
                 else
-                    APR1[APR.Realm][APR.Name][APR.ActiveMap] = APR1[APR.Realm][APR.Name][APR.ActiveMap] + 1
+                    APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
                     APR.BookingList["PrintQStep"] = 1
                     APR.QuestList.QuestFrames["FS" .. CLi].Button:Hide()
                 end
@@ -836,7 +836,7 @@ APR.QuestListEventFrame:SetScript("OnEvent", function(self, event, ...)
         local arg1, arg2, arg3, arg4, arg5 = ...;
         if (arg1 == "APR-Core") then
             APR_CreateQuestList()
-            APR.QuestListLoadin = 1
+            APR.QuestListLoadin = true
         end
     end
 end)
