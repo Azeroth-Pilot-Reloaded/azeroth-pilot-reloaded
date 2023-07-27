@@ -1,3 +1,4 @@
+local classes = require("helpers.classes")
 if (APR.Race == "Tauren") then
 	APR.QuestStepList["7-MulgoreTauren"] = {
 		{
@@ -908,7 +909,7 @@ elseif (APR.Race == "Orc") then
 			["ZoneDoneSave"] = 1,
 		},
 	}
-elseif (APR.Class[3] == 1 and APR.Race == "Troll") then
+elseif (APR.Class[3] == classes["Warrior"] and APR.Race == "Troll") then
 	APR.QuestStepList["1-EchoIslesTrollWar"] = {
 		{
 			["PickUp"] = {
@@ -1473,7 +1474,7 @@ elseif (APR.Class[3] == 1 and APR.Race == "Troll") then
 			["ZoneDoneSave"] = 1,
 		},
 	}
-elseif (APR.Class[3] == 3 and APR.Race == "Troll") then
+elseif (APR.Class[3] == classes["Hunter"] and APR.Race == "Troll") then
 	APR.QuestStepList["1-EchoIslesTrollHunter"] = {
 		{
 			["PickUp"] = {
@@ -2026,7 +2027,7 @@ elseif (APR.Class[3] == 3 and APR.Race == "Troll") then
 			["ZoneDoneSave"] = 1,
 		},
 	}
-elseif (APR.Class[3] == 4 and APR.Race == "Troll") then
+elseif (APR.Class[3] == classes["Rogue"] and APR.Race == "Troll") then
 	APR.QuestStepList["1-EchoIslesTrollRogue"] = {
 		{
 			["PickUp"] = {
@@ -2563,7 +2564,7 @@ elseif (APR.Class[3] == 4 and APR.Race == "Troll") then
 			["ZoneDoneSave"] = 1,
 		},
 	}
-elseif (APR.Class[3] == 5 and APR.Race == "Troll") then
+elseif (APR.Class[3] == classes["Priest"] and APR.Race == "Troll") then
 	APR.QuestStepList["1-EchoIslesTrollPriest"] = {
 		{
 			["PickUp"] = {
@@ -3262,7 +3263,7 @@ elseif (APR.Class[3] == 5 and APR.Race == "Troll") then
 			["ZoneDoneSave"] = 1,
 		},
 	}
-elseif (APR.Class[3] == 7 and APR.Race == "Troll") then
+elseif (APR.Class[3] == classes["Shaman"] and APR.Race == "Troll") then
 	APR.QuestStepList["1-EchoIslesTrollShaman"] = {
 		{
 			["PickUp"] = {
@@ -3815,7 +3816,7 @@ elseif (APR.Class[3] == 7 and APR.Race == "Troll") then
 			["ZoneDoneSave"] = 1,
 		},
 	}
-elseif (APR.Class[3] == 8 and APR.Race == "Troll") then
+elseif (APR.Class[3] == classes["Mage"] and APR.Race == "Troll") then
 	APR.QuestStepList["1-EchoIslesTrollMage"] = {
 		{
 			["PickUp"] = {
@@ -4368,7 +4369,7 @@ elseif (APR.Class[3] == 8 and APR.Race == "Troll") then
 			["ZoneDoneSave"] = 1,
 		},
 	}
-elseif (APR.Class[3] == 9 and APR.Race == "Troll") then
+elseif (APR.Class[3] == classes["Warlock"] and APR.Race == "Troll") then
 	APR.QuestStepList["1-EchoIslesTrollWarlock"] = {
 		{
 			["PickUp"] = {
@@ -4921,7 +4922,7 @@ elseif (APR.Class[3] == 9 and APR.Race == "Troll") then
 			["ZoneDoneSave"] = 1,
 		},
 	}
-elseif (APR.Class[3] == 10 and APR.Race == "Troll") then
+elseif (APR.Class[3] == classes["Monk"] and APR.Race == "Troll") then
 	APR.QuestStepList["1-EchoIslesTrollMonk"] = {
 		{
 			["PickUp"] = {
@@ -5474,7 +5475,7 @@ elseif (APR.Class[3] == 10 and APR.Race == "Troll") then
 			["ZoneDoneSave"] = 1,
 		},
 	}
-elseif (APR.Class[3] == 11 and APR.Race == "Troll") then
+elseif (APR.Class[3] == classes["Druid"] and APR.Race == "Troll") then
 	APR.QuestStepList["1-EchoIslesTrollDruid"] = {
 		{
 			["PickUp"] = {
