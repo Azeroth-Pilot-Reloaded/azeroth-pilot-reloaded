@@ -1,3 +1,5 @@
+local classes = require("helpers.classes")
+
 if (APR.Faction == "Horde") then
 	APR.QuestStepListListingStartAreas = {}
 
@@ -83,11 +85,11 @@ if (APR.Faction == "Horde") then
 		["864-Vol'dun"] = "BFA - 30-50 Vol'dun",
 
 	}
-	if (APR.Class[3] == 12) then
+	if (APR.Class[3] == classes["Demon Hunter"]) then
 		APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
-	elseif (APR.Class[3] == 6 and APR.RaceID >= 23) then
+	elseif (APR.Class[3] == classes["Death Knight"] and APR.RaceID >= 23) then
 		APR.QuestStepListListing["MISC 1"]["H_Allied_Icecrown Citadel"] = "Allied Death Knight Start"
-	elseif (APR.Class[3] == 6) then
+	elseif (APR.Class[3] == classes["Death Knight"]) then
 		APR.QuestStepListListing["MISC 1"]["H23-ScarletEnclave"] = "08-30 Death Knight Start"
 	elseif (APR.Race == "Goblin" and APR.Level < 2) then
 		APR.QuestStepListListing["MISC 1"]["194-Kezan"] = "01-30 Goblin Start (Kezan)"
@@ -142,23 +144,23 @@ if (APR.Faction == "Horde") then
 		APR.QuestStepListListing["Kalimdor"]["1-ValleyOfTrialsOrc"] = "01-10 Orc Start"
 	elseif (APR.Race == "Tauren") then
 		APR.QuestStepListListing["Kalimdor"]["7-MulgoreTauren"] = "01-10 Tauren Start"
-	elseif (APR.Class[3] == 1 and APR.Race == "Troll") then
+	elseif (APR.Class[3] == classes["Warrior"] and APR.Race == "Troll") then
 		APR.QuestStepListListing["Kalimdor"]["1-EchoIslesTrollWar"] = "01-10 Troll Start"
-	elseif (APR.Class[3] == 3 and APR.Race == "Troll") then
+	elseif (APR.Class[3] == classes["Hunter"] and APR.Race == "Troll") then
 		APR.QuestStepListListing["Kalimdor"]["1-EchoIslesTrollHunter"] = "01-10 Troll Start"
-	elseif (APR.Class[3] == 4 and APR.Race == "Troll") then
+	elseif (APR.Class[3] == classes["Rogue"] and APR.Race == "Troll") then
 		APR.QuestStepListListing["Kalimdor"]["1-EchoIslesTrollRogue"] = "01-10 Troll Start"
-	elseif (APR.Class[3] == 5 and APR.Race == "Troll") then
+	elseif (APR.Class[3] == classes["Priest"] and APR.Race == "Troll") then
 		APR.QuestStepListListing["Kalimdor"]["1-EchoIslesTrollPriest"] = "01-10 Troll Start"
-	elseif (APR.Class[3] == 7 and APR.Race == "Troll") then
+	elseif (APR.Class[3] == classes["Shaman"] and APR.Race == "Troll") then
 		APR.QuestStepListListing["Kalimdor"]["1-EchoIslesTrollShaman"] = "01-10 Troll Start"
-	elseif (APR.Class[3] == 8 and APR.Race == "Troll") then
+	elseif (APR.Class[3] == classes["Mage"] and APR.Race == "Troll") then
 		APR.QuestStepListListing["Kalimdor"]["1-EchoIslesTrollMage"] = "01-10 Troll Start"
-	elseif (APR.Class[3] == 9 and APR.Race == "Troll") then
+	elseif (APR.Class[3] == classes["Warlock"] and APR.Race == "Troll") then
 		APR.QuestStepListListing["Kalimdor"]["1-EchoIslesTrollWarlock"] = "01-10 Troll Start"
-	elseif (APR.Class[3] == 10 and APR.Race == "Troll") then
+	elseif (APR.Class[3] == classes["Monk"] and APR.Race == "Troll") then
 		APR.QuestStepListListing["Kalimdor"]["1-EchoIslesTrollMonk"] = "01-10 Troll Start"
-	elseif (APR.Class[3] == 11 and APR.Race == "Troll") then
+	elseif (APR.Class[3] == classes["Druid"] and APR.Race == "Troll") then
 		APR.QuestStepListListing["Kalimdor"]["1-EchoIslesTrollDruid"] = "01-10 Troll Start"
 	end
 	APR.QuestStepListListing["SpeedRun"] = {
