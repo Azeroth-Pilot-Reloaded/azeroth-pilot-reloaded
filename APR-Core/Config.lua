@@ -26,11 +26,13 @@ end
 
 function APR.settings:ResetSettings()
     SettingsDB:ResetProfile()
+    self:RefreshProfile()
 end
 
 function APR.settings:InitializeBlizOptions()
     self:InitializeSettings()
     self:createBlizzOptions()
+    self:CreateMiniMapButton()
 
     self:RegisterChatCommand("apr", self.ChatCommand)
 end
@@ -70,6 +72,7 @@ function APR.settings:InitializeSettings()
             showMiniMapBlobs = true, -- showBlobs
             miniMapBlobAlpha = 0.5,  -- miniMapBlobAlpha
             enableMinimapButton = true,
+            minimap = { minimapPos = 250 },
             -- map
             showMapBlobs = true,
             showMap10s = false,
@@ -109,10 +112,6 @@ end
 
 function APR.settings:RefreshProfile()
     self.profile = SettingsDB.profile
-
-    -- if LoadedProfileKey ~= SettingsDB.keys.profile then
-    --     print("Profile changed, Reload UI for settings to take effect")
-    -- end
     -- C_UI.Reload()
 end
 
@@ -303,7 +302,7 @@ function APR.settings:createBlizzOptions()
                 get = GetProfileOption,
                 set = SetProfileOption,
             },
-            activeTargetScale = {
+            currentStepScale = {
                 order = 4.2,
                 type = "range",
                 name = L["QLIST_SCALE"],
@@ -517,6 +516,7 @@ function APR.settings:createBlizzOptions()
                 type = "toggle",
                 width = optionsWidth,
                 order = 7.3,
+                get = GetProfileOption,
                 set = function(info, value)
                     SetProfileOption(info, value)
                     if value then
@@ -663,24 +663,18 @@ function APR.settings:createBlizzOptions()
     aceDialog:AddToBlizOptions(APR.title .. "/Profile", "PROFILS", APR.title) -- TODO
 end
 
-function APR.settings:UpdateMinimapButton()
+function APR.settings:CreateMiniMapButton()
     if not self.profile.enableMinimapButton then return end
-
-    if not self.minimapFrame then
-        self.minimapFrame = CreateFrame("Frame", "APR_MMMenuFrame",
-            UIParent,
-            "UIDropDownMenuTemplate")
-    end
 
     local minimapButton = libDataBroker:NewDataObject(APR.title, {
         type = "launcher",
         icon = "Interface\\AddOns\\APR-Core\\img\\APR_logo",
-        OnClick = function(_, button)
-            APR.InterfaceOptionsFrame_OpenToCategory(APR.title)
+        OnClick = function()
+            _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
         end,
         OnTooltipShow = function(tooltip)
             tooltip:AddLine(APR.title)
-            tooltip:AddLine("|cff909090Click: |cffffcc00Show Menu|r") -- TODO
+            tooltip:AddLine("Click: |cffeda55fShow Menu|r", 1, 1, 1) -- TODO
         end
     })
 

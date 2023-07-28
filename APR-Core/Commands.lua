@@ -39,7 +39,6 @@ function APR:SlashCmd(input)
         print(L["NEED_HELP"] .. " " .. APR.discord)
     else
         _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
-        APR.RemoveIcons()
     end
     APR.BookingList["UpdateQuest"] = 1
     APR.BookingList["PrintQStep"] = 1
