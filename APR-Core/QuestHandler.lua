@@ -1037,14 +1037,15 @@ local function APR_PrintQStep()
             APR.QuestList.QuestFrames[LineNr]:Show()
         end
 
-        if ((steps["ExtraLine"] or steps["ExtraLineText"]) and APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+        if ((steps["ExtraLine"] or steps["ExtraLineText"] or steps["ExtraLineText2"]) and APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
             LineNr = LineNr + 1
             local APRExtraLine = steps["ExtraLine"]
             local APRExtraText = steps["ExtraLineText"]
-            if (steps["ExtraLineText"] and L[APRExtraText]) then
-                APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(L[APRExtraText]))
-            elseif (steps["ExtraLineText"]) then
-                APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(APRExtraText))
+            local APRExtraText2 = steps["ExtraLineText2"]
+            if (L[APRExtraText] or L[APRExtraText2]) then
+                APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(L[APRExtraText] or L[APRExtraText2]))
+            elseif (steps["ExtraLineText"] or steps["ExtraLineText2"]) then
+                APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(APRExtraText or APRExtraText2))
             end
             if (APRExtraLine == 35) then
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(L["LOA_INFO_1"]))
