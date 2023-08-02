@@ -74,6 +74,7 @@
         "ShowUIPanel",
         "tonumber",
         "HideUIPanel",
-        "Add"
+        "Add",
+        "ChatFrame1"
     ]
 }
