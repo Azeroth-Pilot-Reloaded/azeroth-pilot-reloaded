@@ -117,7 +117,8 @@ end
 
 function APR.settings:createBlizzOptions()
     -- Setting definition
-    local optionsWidth = 1.75
+    local optionsWidth = 1.3
+    local optionsWidthAutomation = 1.75
     local optionsTable = {
         name = APR.title .. ' - ' .. APR.version,
         type = "group",
@@ -148,7 +149,7 @@ function APR.settings:createBlizzOptions()
             },
             resetButton = {
                 order = 1.4,
-                name = "Reset option", --TODO
+                name = "Reset settings", --TODO
                 type = "execute",
                 width = 0.75,
                 func = function()
@@ -172,7 +173,7 @@ function APR.settings:createBlizzOptions()
                         type = "toggle",
                         name = L["ACCEPT_Q"],
                         desc = "ACCEPT_Q_DESC", --TODO
-                        width = optionsWidth,
+                        width = optionsWidthAutomation,
                         get = GetProfileOption,
                         set = function(info, value)
                             SetProfileOption(info, value)
@@ -184,7 +185,7 @@ function APR.settings:createBlizzOptions()
                         type = "toggle",
                         name = L["ACCEPT_Q_ROUTE"],
                         desc = "ACCEPT_Q_ROUTE_DESC", --TODO
-                        width = optionsWidth,
+                        width = optionsWidthAutomation,
                         get = GetProfileOption,
                         set = function(info, value)
                             SetProfileOption(info, value)
@@ -196,7 +197,7 @@ function APR.settings:createBlizzOptions()
                         type = "toggle",
                         name = L["TURN_IN_Q"],
                         desc = "TURN_IN_Q_DESC", --TODO
-                        width = optionsWidth,
+                        width = optionsWidthAutomation,
                         get = GetProfileOption,
                         set = SetProfileOption,
                     },
@@ -205,23 +206,22 @@ function APR.settings:createBlizzOptions()
                         type = "toggle",
                         name = L["AUTO_SELECTION_OF_DIALOG"],
                         desc = "AUTO_SELECTION_OF_DIALOG_DESC", --TODO
-                        width = optionsWidth,
+                        width = optionsWidthAutomation,
                         get = GetProfileOption,
                         set = SetProfileOption,
                     },
                 }
             },
-            header_Prefereces = {
+            header_Preferences = {
                 order = 4,
                 type = "header",
                 width = "full",
-                name = "Prefereces", --TODO
+                name = "Preferences", --TODO
             },
             group_Current_Step = {
-                order = 5,
+                order = 4,
                 type = "group",
                 name = "Current Step", --TODO
-                inline = true,
                 args = {
                     showCurrentStep = {
                         order = 5.1,
@@ -318,7 +318,6 @@ function APR.settings:createBlizzOptions()
                 order = 6,
                 type = "group",
                 name = "Quest Order List", --TODO
-                inline = true,
                 args = {
                     showQuestOrderList = {
                         order = 6.1,
@@ -369,7 +368,6 @@ function APR.settings:createBlizzOptions()
                 order = 7,
                 type = "group",
                 name = "Arrow", --TODO
-                inline = true,
                 args = {
                     showArrow = {
                         order = 7.1,
@@ -442,10 +440,9 @@ function APR.settings:createBlizzOptions()
                     },
                 }
             },
-            header_map_minimap = {
+            group_map_minimap = {
                 order = 8,
                 type = "group",
-                inline = true,
                 name = "Map & Minimap", --TODO
                 args = {
                     showMapBlobs = {
@@ -527,64 +524,13 @@ function APR.settings:createBlizzOptions()
                     },
                 }
             },
-            header_Group = {
+            group_Advanced_Automation = {
                 order = 9,
-                type = "header",
-                width = "full",
-                name = "Group", --TODO
-            },
-            showGroup = {
-                order = 9.1,
-                type = "toggle",
-                name = L["SHOW_GROUP_PROGRESS"],
-                desc = "SHOW_GROUP_PROGRESS_DESC", --TODO
-                width = optionsWidth,
-                get = GetProfileOption,
-                set = function(info, value)
-                    SetProfileOption(info, value)
-                    if not value then
-                        for CLi = 1, 5 do
-                            APR.PartyList.PartyFrames[CLi]:Hide()
-                            APR.PartyList.PartyFrames2[CLi]:Hide()
-                        end
-                    end
-                end
-            },
-        }
-    }
-
-
-    -- Register setting to the option table
-    aceConfig:RegisterOptionsTable(APR.title, optionsTable)
-
-    -- Add settings to bliz option
-    APR.Options = aceDialog:AddToBlizOptions(APR.title)
-
-    -- Add Advanced setting to bliz option
-    APR.settings:CreateAdvancedOption()
-
-    -- Add setting route to bliz option
-    APR.settings:CreateRouteOption()
-
-    -- add profile to bliz option
-    aceConfig:RegisterOptionsTable(APR.title .. "/Profile", _G.LibStub("AceDBOptions-3.0"):GetOptionsTable(SettingsDB))
-    aceDialog:AddToBlizOptions(APR.title .. "/Profile", "PROFILS", APR.title) -- TODO
-end
-
-function APR.settings:CreateAdvancedOption()
-    local optionsWidth = 1.75
-    local optionsTable = {
-        name = "Advanced Settings", --TODO
-        type = "group",
-        args = {
-            group_other = {
-                order = 1,
                 type = "group",
                 name = "Advanced Automation", --TODO
-                inline = true,
                 args = {
                     autoSkipCutScene = {
-                        order = 1.1,
+                        order = 9.1,
                         type = "toggle",
                         name = L["SKIPPED_CUTSCENE"],
                         desc = "SKIPPED_CUTSCENE_DESC", --TODO
@@ -593,7 +539,7 @@ function APR.settings:CreateAdvancedOption()
                         set = SetProfileOption,
                     },
                     autoFlight = {
-                        order = 1.2,
+                        order = 9.2,
                         type = "toggle",
                         name = L["AUTO_USE_FLIGHTPATHS"],
                         desc = "AUTO_USE_FLIGHTPATHS_DESC", --TODO
@@ -602,7 +548,7 @@ function APR.settings:CreateAdvancedOption()
                         set = SetProfileOption,
                     },
                     autoHandInChoice = {
-                        order = 1.3,
+                        order = 9.3,
                         type = "toggle",
                         name = L["AUTO_PICK_REWARD_ITEM"],
                         desc = "AUTO_PICK_REWARD_ITEM_DESC", --TODO
@@ -611,7 +557,7 @@ function APR.settings:CreateAdvancedOption()
                         set = SetProfileOption,
                     },
                     autoVendor = {
-                        order = 1.4,
+                        order = 9.4,
                         type = "toggle",
                         name = L["AUTO_VENDOR"],
                         desc = "AUTO_VENDOR_DESC", --TODO
@@ -620,7 +566,7 @@ function APR.settings:CreateAdvancedOption()
                         set = SetProfileOption,
                     },
                     autoRepair = {
-                        order = 1.5,
+                        order = 9.5,
                         type = "toggle",
                         name = L["AUTO_REPAIR"],
                         desc = "AUTO_REPAIR_DESC", --TODO
@@ -630,62 +576,100 @@ function APR.settings:CreateAdvancedOption()
                     },
                 },
             },
-            header_Heirloom = {
-                order = 2,
-                type = "header",
-                width = "full",
+            group_Heirloom = {
+                order = 10,
+                type = "group",
                 name = "Heirloom", --TODO
+                args = {
+                    heirloomWarning = {
+                        order = 10.1,
+                        type = "toggle",
+                        name = L["DISABLE_HEIRLOOM_WARNING"],
+                        desc = "DISABLE_HEIRLOOM_WARNING_DESC", --TODO
+                        width = "full",
+                        get = GetProfileOption,
+                        set = function(info, value)
+                            SetProfileOption(info, value)
+                            APR.BookingList.PrintQStep = 1
+                        end,
+                        disabled = true,
+                        hidden = false -- to hide useless/broken settings
+                    },
+                }
             },
-            heirloomWarning = {
-                order = 2.1,
-                type = "toggle",
-                name = L["DISABLE_HEIRLOOM_WARNING"],
-                desc = "DISABLE_HEIRLOOM_WARNING_DESC", --TODO
-                width = optionsWidth,
-                get = GetProfileOption,
-                set = function(info, value)
-                    SetProfileOption(info, value)
-                    APR.BookingList.PrintQStep = 1
-                end,
-                disabled = true,
-                hidden = false -- to hide useless/broken settings
+            group_Group = {
+                order = 11,
+                type = "group",
+                name = "Group", --TODO
+                args = {
+                    showGroup = {
+                        order = 11.1,
+                        type = "toggle",
+                        name = L["SHOW_GROUP_PROGRESS"],
+                        desc = "SHOW_GROUP_PROGRESS_DESC", --TODO
+                        width = "full",
+                        get = GetProfileOption,
+                        set = function(info, value)
+                            SetProfileOption(info, value)
+                            if not value then
+                                for CLi = 1, 5 do
+                                    APR.PartyList.PartyFrames[CLi]:Hide()
+                                    APR.PartyList.PartyFrames2[CLi]:Hide()
+                                end
+                            end
+                        end
+                    },
+                }
             },
-            header_debug = {
-                order = 3,
-                type = "header",
-                width = "full",
-                name = "Debug",
-            },
-            debug = {
-                order = 3.1,
-                type = "toggle",
-                name = "Debug", -- TODO
-                width = optionsWidth,
-                get = GetProfileOption,
-                set = SetProfileOption,
-            },
-            configMode = {
-                order = 3.2,
-                type = "toggle",
-                name = "config Mode",     --TODO
-                desc = "configMode_DESC", --TODO
-                width = optionsWidth,
-                get = GetProfileOption,
-                set = function(info, value)
-                    SetProfileOption(info, value)
-                    if (value) then
-                        APR.SettingsOpen = true
-                        APR.BookingList["OpenedSettings"] = true
-                    else
-                        APR.SettingsOpen = false
-                        APR.BookingList["ClosedSettings"] = true
-                    end
-                end
+            header_Debug = {
+                order = 12,
+                type = "group",
+                name = "Debug", --TODO
+                args = {
+                    debug = {
+                        order = 3.1,
+                        type = "toggle",
+                        name = "Debug", -- TODO
+                        width = "full",
+                        get = GetProfileOption,
+                        set = SetProfileOption,
+                    },
+                    configMode = {
+                        order = 3.2,
+                        type = "toggle",
+                        name = "config Mode",     --TODO
+                        desc = "configMode_DESC", --TODO
+                        width = "full",
+                        get = GetProfileOption,
+                        set = function(info, value)
+                            SetProfileOption(info, value)
+                            if (value) then
+                                APR.SettingsOpen = true
+                                APR.BookingList["OpenedSettings"] = true
+                            else
+                                APR.SettingsOpen = false
+                                APR.BookingList["ClosedSettings"] = true
+                            end
+                        end
+                    },
+                }
             },
         }
     }
-    aceConfig:RegisterOptionsTable(APR.title .. "/Advanced", optionsTable)
-    aceDialog:AddToBlizOptions(APR.title .. "/Advanced", "Advanced Settings", APR.title) -- TODO
+
+    -- Register setting to the option table
+    aceConfig:RegisterOptionsTable(APR.title, optionsTable)
+
+    -- Add settings to bliz option
+    APR.Options = aceDialog:AddToBlizOptions(APR.title)
+
+    -- Add setting route to bliz option
+    APR.settings:CreateRouteOption()
+
+
+    -- add profile to bliz option
+    aceConfig:RegisterOptionsTable(APR.title .. "/Profile", _G.LibStub("AceDBOptions-3.0"):GetOptionsTable(SettingsDB))
+    aceDialog:AddToBlizOptions(APR.title .. "/Profile", "Profiles", APR.title) -- TODO
 end
 
 function APR.settings:CreateRouteOption()
