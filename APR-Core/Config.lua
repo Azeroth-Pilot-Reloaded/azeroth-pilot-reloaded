@@ -80,6 +80,7 @@ function APR.settings:InitializeSettings()
             heirloomWarning = true, -- DisableHeirloomWarning
             -- group
             showGroup = false,
+            groupScale = 0.5,
             -- route
             greetings = true, --Greetings2
             -- position
@@ -125,7 +126,7 @@ function APR.settings:createBlizzOptions()
         args = {
             discordButton = {
                 order = 1.1,
-                name = "Join Discord", --TODO
+                name = L["JOIN_DISCORD"],
                 type = "execute",
                 width = 0.75,
                 func = function()
@@ -134,7 +135,7 @@ function APR.settings:createBlizzOptions()
             },
             githubButton = {
                 order = 1.2,
-                name = "Github", --TODO
+                name = "Github",
                 type = "execute",
                 width = 0.75,
                 func = function()
@@ -149,7 +150,7 @@ function APR.settings:createBlizzOptions()
             },
             resetButton = {
                 order = 1.4,
-                name = "Reset settings", --TODO
+                name = L["RESET_SETTINGS"],
                 type = "execute",
                 width = 0.75,
                 func = function()
@@ -160,19 +161,19 @@ function APR.settings:createBlizzOptions()
                 order = 2,
                 type = "header",
                 width = "full",
-                name = "Automation", --TODO
+                name = L["AUTOMATION"],
             },
             group_Automation = {
                 order = 3,
                 type = "group",
-                name = "General Automation", --TODO
+                name = L["GENERAL_AUTOMATION"],
                 inline = true,
                 args = {
                     autoAccept = {
                         order = 3.1,
                         type = "toggle",
                         name = L["ACCEPT_Q"],
-                        desc = "ACCEPT_Q_DESC", --TODO
+                        desc = L["ACCEPT_Q_DESC"],
                         width = optionsWidthAutomation,
                         get = GetProfileOption,
                         set = function(info, value)
@@ -184,7 +185,7 @@ function APR.settings:createBlizzOptions()
                         order = 3.11,
                         type = "toggle",
                         name = L["ACCEPT_Q_ROUTE"],
-                        desc = "ACCEPT_Q_ROUTE_DESC", --TODO
+                        desc = L["ACCEPT_Q_ROUTE_DESC"],
                         width = optionsWidthAutomation,
                         get = GetProfileOption,
                         set = function(info, value)
@@ -196,7 +197,7 @@ function APR.settings:createBlizzOptions()
                         order = 3.12,
                         type = "toggle",
                         name = L["TURN_IN_Q"],
-                        desc = "TURN_IN_Q_DESC", --TODO
+                        desc = L["TURN_IN_Q_DESC"],
                         width = optionsWidthAutomation,
                         get = GetProfileOption,
                         set = SetProfileOption,
@@ -205,7 +206,7 @@ function APR.settings:createBlizzOptions()
                         order = 3.21,
                         type = "toggle",
                         name = L["AUTO_SELECTION_OF_DIALOG"],
-                        desc = "AUTO_SELECTION_OF_DIALOG_DESC", --TODO
+                        desc = L["AUTO_SELECTION_OF_DIALOG_DESC"],
                         width = optionsWidthAutomation,
                         get = GetProfileOption,
                         set = SetProfileOption,
@@ -216,18 +217,18 @@ function APR.settings:createBlizzOptions()
                 order = 4,
                 type = "header",
                 width = "full",
-                name = "Preferences", --TODO
+                name = L["PREFERENCES"],
             },
             group_Current_Step = {
                 order = 4,
                 type = "group",
-                name = "Current Step", --TODO
+                name = L["CURRENT_STEP"],
                 args = {
                     showCurrentStep = {
                         order = 5.1,
                         type = "toggle",
                         name = L["SHOW_QLIST"],
-                        desc = "SHOW_QLIST_DESC", --TODO
+                        desc = L["SHOW_QLIST_DESC"],
                         width = optionsWidth,
                         get = GetProfileOption,
                         set = function(info, value)
@@ -245,16 +246,19 @@ function APR.settings:createBlizzOptions()
                         order = 5.11,
                         type = "toggle",
                         name = L["LOCK_QLIST_WINDOW"],
-                        desc = "LOCK_QLIST_WINDOW_DESC", --TODO
+                        desc = L["LOCK_QLIST_WINDOW_DESC"],
                         width = optionsWidth,
                         get = GetProfileOption,
                         set = SetProfileOption,
+                        disabled = function()
+                            return not self.profile.showCurrentStep
+                        end,
                     },
                     currentStepScale = {
                         order = 5.2,
                         type = "range",
                         name = L["QLIST_SCALE"],
-                        desc = "QLIST_SCALE_DESC", --TODO
+                        desc = L["QLIST_SCALE_DESC"],
                         width = 'full',
                         min = 0.01,
                         max = 2,
@@ -266,13 +270,22 @@ function APR.settings:createBlizzOptions()
                             APR.QuestList.ButtonParent:SetScale(value)
                             APR.QuestList.ListFrame:SetScale(value)
                             APR.QuestList21:SetScale(value)
-                        end
+                        end,
+                        disabled = function()
+                            return not self.profile.showCurrentStep
+                        end,
+                    },
+                    blank_questButtonDetatch = {
+                        order = 5.3,
+                        type = "description",
+                        name = "",
+                        width = "full",
                     },
                     questButtonDetatch = {
-                        order = 5.3,
+                        order = 5.4,
                         type = "toggle",
                         name = L["DETACH_Q_ITEM_BTN"],
-                        desc = "DETACH_Q_ITEM_BTN_DESC", --TODO
+                        desc = L["DETACH_Q_ITEM_BTN_DESC"],
                         width = optionsWidth,
                         get = GetProfileOption,
                         set = function(info, value)
@@ -288,13 +301,16 @@ function APR.settings:createBlizzOptions()
                                 end
                             end
                         end,
+                        disabled = function()
+                            return not self.profile.showCurrentStep
+                        end,
                         hidden = false -- to hide useless/broken settings
                     },
                     questButtonsScale = {
-                        order = 5.31,
+                        order = 5.41,
                         type = "range",
                         name = L["Q_BTN_SCALE"],
-                        desc = "Q_BTN_SCALE_DESC", --TODO
+                        desc = L["Q_BTN_SCALE_DESC"],
                         width = optionsWidth,
                         min = 0.01,
                         max = 2,
@@ -308,7 +324,7 @@ function APR.settings:createBlizzOptions()
                             end
                         end,
                         disabled = function()
-                            return not self.profile.questButtonDetatch
+                            return not self.profile.showCurrentStep or not self.profile.questButtonDetatch
                         end,
                         hidden = false -- to hide useless/broken settings
                     },
@@ -317,14 +333,14 @@ function APR.settings:createBlizzOptions()
             group_quest_order_list_step = {
                 order = 6,
                 type = "group",
-                name = "Quest Order List", --TODO
+                name = L["QUEST_ORDER_LIST"],
                 args = {
                     showQuestOrderList = {
                         order = 6.1,
                         type = "toggle",
                         name = L["SHOW_QORDERLIST"],
-                        desc = "SHOW_QORDERLIST_DESC", --TODO
-                        width = optionsWidth,
+                        desc = L["SHOW_QORDERLIST_DESC"],
+                        width = "full",
                         get = GetProfileOption,
                         set = function(info, value)
                             SetProfileOption(info, value)
@@ -340,8 +356,8 @@ function APR.settings:createBlizzOptions()
                         order = 6.2,
                         type = "range",
                         name = L["QORDERLIST_SCALE"],
-                        desc = "QORDERLIST_SCALE_DESC", --TODO
-                        width = optionsWidth,
+                        desc = L["QORDERLIST_SCALE_DESC"],
+                        width = "full",
                         min = 0.01,
                         max = 2,
                         step = 0.05,
@@ -350,7 +366,10 @@ function APR.settings:createBlizzOptions()
                         set = function(info, value)
                             SetProfileOption(info, value)
                             APR.ZoneQuestOrder:SetScale(value)
-                        end
+                        end,
+                        disabled = function()
+                            return not self.profile.showQuestOrderList
+                        end,
                     },
                     resetQuestOrderList = {
                         name = L["RESET_QORDERLIST"],
@@ -367,13 +386,13 @@ function APR.settings:createBlizzOptions()
             group_Arrow = {
                 order = 7,
                 type = "group",
-                name = "Arrow", --TODO
+                name = L["ARROW"],
                 args = {
                     showArrow = {
                         order = 7.1,
                         type = "toggle",
                         name = L["SHOW_ARROW"],
-                        desc = "SHOW_ARROW_DESC", --TODO
+                        desc = L["SHOW_ARROW_DESC"],
                         width = optionsWidth,
                         get = GetProfileOption,
                         set = function(info, value)
@@ -385,16 +404,19 @@ function APR.settings:createBlizzOptions()
                         order = 7.11,
                         type = "toggle",
                         name = L["LOCK_ARROW_WINDOW"],
-                        desc = "LOCK_ARROW_WINDOW_DESC", --TODO
+                        desc = L["LOCK_ARROW_WINDOW_DESC"],
                         width = optionsWidth,
                         get = GetProfileOption,
                         set = SetProfileOption,
+                        disabled = function()
+                            return not self.profile.showArrow
+                        end,
                     },
                     arrowScale = {
                         order = 7.2,
                         type = "range",
                         name = L["ARROW_SCALE"],
-                        desc = "ARROW_SCALE_DESC", --TODO
+                        desc = L["ARROW_SCALE_DESC"],
                         width = optionsWidth,
                         min = 0.01,
                         max = 3,
@@ -404,13 +426,15 @@ function APR.settings:createBlizzOptions()
                         set = function(info, value)
                             SetProfileOption(info, value)
                             APR.ArrowFrame:SetScale(value)
-                        end
+                        end,
+                        disabled = function()
+                            return not self.profile.showArrow
+                        end,
                     },
                     arrowFPS = {
                         order = 7.21,
                         type = "range",
-                        name = L["UPDATE_ARROW"],
-                        desc = "UPDATE_ARROW_DESC", --TODO
+                        name = L["UPDATE_ARROW"] .. ' X ' .. L["FPS"],
                         width = optionsWidth,
                         min = 1,
                         max = 100,
@@ -418,10 +442,19 @@ function APR.settings:createBlizzOptions()
                         isPercent = false,
                         get = GetProfileOption,
                         set = SetProfileOption,
+                        disabled = function()
+                            return not self.profile.showArrow
+                        end,
+                    },
+                    blank_arrowReset = {
+                        order = 7.3,
+                        type = "description",
+                        name = "",
+                        width = "full",
                     },
                     arrowReset = {
-                        order = 7.3,
-                        name = L["RESET_ARROW"], --TODO
+                        order = 7.4,
+                        name = L["RESET_ARROW"],
                         type = "execute",
                         width = "full",
                         func = function()
@@ -440,173 +473,191 @@ function APR.settings:createBlizzOptions()
                     },
                 }
             },
-            group_map_minimap = {
+            group_Advanced_Automation = {
                 order = 8,
                 type = "group",
-                name = "Map & Minimap", --TODO
-                args = {
-                    showMapBlobs = {
-                        order = 8.1,
-                        type = "toggle",
-                        name = L["SHOW_BLOBS_ON_MAP"],
-                        desc = "SHOW_BLOBS_ON_MAP_DESC", --TODO
-                        width = optionsWidth,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            if not value then
-                                APR:MoveMapIcons()
-                            end
-                        end
-                    },
-                    showMap10s = {
-                        order = 8.11,
-                        type = "toggle",
-                        name = L["SHOW_STEPS_MAP"],
-                        desc = "SHOW_STEPS_MAP_DESC", --TODO Disabled need fix looking for todo showMap10s
-                        width = optionsWidth,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            if not value then
-                                APR.HBDP:RemoveAllWorldMapIcons("APRMapOrder")
-                            end
-                        end,
-                        disabled = true
-                    },
-                    showMiniMapBlobs = {
-                        order = 8.2,
-                        type = "toggle",
-                        name = L["SHOW_BLOBS_ON_MINIMAP"],
-                        desc = "SHOW_BLOBS_ON_MINIMAP_DESC", --TODO
-                        width = optionsWidth,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            if not value then
-                                APR.RemoveIcons()
-                            end
-                        end
-                    },
-                    miniMapBlobAlpha = {
-                        order = 8.21,
-                        type = "range",
-                        name = L["MINIMAP_BLOB_ALPHA"],
-                        desc = "MINIMAP_BLOB_ALPHA_DESC", --TODO
-                        width = optionsWidth,
-                        min = 0.01,
-                        max = 1,
-                        step = 0.05,
-                        isPercent = true,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            for CLi = 1, 20 do
-                                APR.Icons[CLi].texture:SetAlpha(value)
-                            end
-                        end
-                    },
-                    enableMinimapButton = {
-                        name = "Enable Minimap Button", --TODO
-                        desc = "Add main options menu to minimap",
-                        type = "toggle",
-                        width = optionsWidth,
-                        order = 8.3,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            if value then
-                                libDBIcon:Show(APR.title)
-                            else
-                                libDBIcon:Hide(APR.title)
-                            end
-                        end
-                    },
-                }
-            },
-            group_Advanced_Automation = {
-                order = 9,
-                type = "group",
-                name = "Advanced Automation", --TODO
+                name = L["ADVANCED_AUTOMATION"],
                 args = {
                     autoSkipCutScene = {
-                        order = 9.1,
+                        order = 8.1,
                         type = "toggle",
                         name = L["SKIPPED_CUTSCENE"],
-                        desc = "SKIPPED_CUTSCENE_DESC", --TODO
-                        width = optionsWidth,
+                        desc = L["SKIPPED_CUTSCENE_DESC"],
+                        width = "full",
                         get = GetProfileOption,
                         set = SetProfileOption,
                     },
                     autoFlight = {
-                        order = 9.2,
+                        order = 8.2,
                         type = "toggle",
                         name = L["AUTO_USE_FLIGHTPATHS"],
-                        desc = "AUTO_USE_FLIGHTPATHS_DESC", --TODO
-                        width = optionsWidth,
+                        desc = L["AUTO_USE_FLIGHTPATHS_DESC"],
+                        width = "full",
                         get = GetProfileOption,
                         set = SetProfileOption,
                     },
                     autoHandInChoice = {
-                        order = 9.3,
+                        order = 8.3,
                         type = "toggle",
                         name = L["AUTO_PICK_REWARD_ITEM"],
-                        desc = "AUTO_PICK_REWARD_ITEM_DESC", --TODO
-                        width = optionsWidth,
+                        desc = L["AUTO_PICK_REWARD_ITEM_DESC"],
+                        width = "full",
                         get = GetProfileOption,
                         set = SetProfileOption,
                     },
                     autoVendor = {
-                        order = 9.4,
+                        order = 8.4,
                         type = "toggle",
                         name = L["AUTO_VENDOR"],
-                        desc = "AUTO_VENDOR_DESC", --TODO
-                        width = optionsWidth,
+                        desc = L["AUTO_VENDOR_DESC"],
+                        width = "full",
                         get = GetProfileOption,
                         set = SetProfileOption,
                     },
                     autoRepair = {
-                        order = 9.5,
+                        order = 8.5,
                         type = "toggle",
                         name = L["AUTO_REPAIR"],
-                        desc = "AUTO_REPAIR_DESC", --TODO
-                        width = optionsWidth,
+                        desc = L["AUTO_REPAIR_DESC"],
+                        width = "full",
                         get = GetProfileOption,
                         set = SetProfileOption,
                     },
                 },
             },
+            group_map_minimap = {
+                order = 9,
+                type = "group",
+                name = L["MAP_MINIMAP"],
+                args = {
+                    group_map = {
+                        order = 1,
+                        type = "group",
+                        inline = true,
+                        name = L["MAP"],
+                        args = {
+                            showMapBlobs = {
+                                order = 9.4,
+                                type = "toggle",
+                                name = L["SHOW_BLOBS_ON_MAP"],
+                                desc = L["SHOW_BLOBS_ON_MAP_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    if not value then
+                                        APR:MoveMapIcons()
+                                    end
+                                end
+                            },
+                            showMap10s = {
+                                order = 9.41,
+                                type = "toggle",
+                                name = L["SHOW_STEPS_MAP"],
+                                desc = L["SHOW_STEPS_MAP_DESC"], --TODO Disabled need fix looking for todo showMap10s
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    if not value then
+                                        APR.HBDP:RemoveAllWorldMapIcons("APRMapOrder")
+                                    end
+                                end,
+                                disabled = true
+                            },
+                        },
+                    },
+                    group_minimap = {
+                        order = 2,
+                        type = "group",
+                        inline = true,
+                        name = L["MINIMAP"],
+                        args = {
+                            enableMinimapButton = {
+                                name = L["ENABLE_MINIMAP_BUTTON"],
+                                desc = L["ENABLE_MINIMAP_BUTTON_DESC"],
+                                type = "toggle",
+                                width = "full",
+                                order = 9.1,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    if value then
+                                        libDBIcon:Show(APR.title)
+                                    else
+                                        libDBIcon:Hide(APR.title)
+                                    end
+                                end
+                            },
+                            showMiniMapBlobs = {
+                                order = 9.2,
+                                type = "toggle",
+                                name = L["SHOW_BLOBS_ON_MINIMAP"],
+                                desc = L["SHOW_BLOBS_ON_MINIMAP_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    if not value then
+                                        APR.RemoveIcons()
+                                    end
+                                end
+                            },
+                            miniMapBlobAlpha = {
+                                order = 9.21,
+                                type = "range",
+                                name = L["MINIMAP_BLOB_ALPHA"],
+                                desc = L["MINIMAP_BLOB_ALPHA_DESC"],
+                                width = "full",
+                                min = 0.01,
+                                max = 1,
+                                step = 0.05,
+                                isPercent = true,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    for CLi = 1, 20 do
+                                        APR.Icons[CLi].texture:SetAlpha(value)
+                                    end
+                                end,
+                                disabled = function()
+                                    return not self.profile.showMiniMapBlobs
+                                end,
+                            },
+                        }
+                    }
+                }
+            },
             group_Heirloom = {
                 order = 10,
                 type = "group",
-                name = "Heirloom", --TODO
+                name = L["HEIRLOOM"],
                 args = {
                     heirloomWarning = {
                         order = 10.1,
                         type = "toggle",
                         name = L["DISABLE_HEIRLOOM_WARNING"],
-                        desc = "DISABLE_HEIRLOOM_WARNING_DESC", --TODO
+                        desc = L["DISABLE_HEIRLOOM_WARNING_DESC"],
                         width = "full",
                         get = GetProfileOption,
                         set = function(info, value)
                             SetProfileOption(info, value)
                             APR.BookingList.PrintQStep = 1
                         end,
-                        disabled = true,
-                        hidden = false -- to hide useless/broken settings
+                        disabled = true, --TODO Fix HEIRLOOM
                     },
                 }
             },
             group_Group = {
                 order = 11,
                 type = "group",
-                name = "Group", --TODO
+                name = L["GROUP"],
                 args = {
                     showGroup = {
                         order = 11.1,
                         type = "toggle",
                         name = L["SHOW_GROUP_PROGRESS"],
-                        desc = "SHOW_GROUP_PROGRESS_DESC", --TODO
+                        desc = L["SHOW_GROUP_PROGRESS_DESC"],
                         width = "full",
                         get = GetProfileOption,
                         set = function(info, value)
@@ -619,17 +670,37 @@ function APR.settings:createBlizzOptions()
                             end
                         end
                     },
+                    groupScale = {
+                        order = 11.2,
+                        type = "range",
+                        name = L["GROUP_SCALE"],
+                        desc = L["GROUP_SCALE_DESC"],
+                        width = "full",
+                        min = 0.01,
+                        max = 1,
+                        step = 0.05,
+                        isPercent = true,
+                        get = GetProfileOption,
+                        set = function(info, value)
+                            SetProfileOption(info, value)
+                            -- SET Scale
+                        end,
+                        disabled = function()
+                            return not self.profile.showGroup
+                        end,
+                        hidden = true --TODO SCALE
+                    },
                 }
             },
             header_Debug = {
                 order = 12,
                 type = "group",
-                name = "Debug", --TODO
+                name = L["DEBUG"],
                 args = {
                     debug = {
                         order = 3.1,
                         type = "toggle",
-                        name = "Debug", -- TODO
+                        name = L["DEBUG"],
                         width = "full",
                         get = GetProfileOption,
                         set = SetProfileOption,
@@ -637,8 +708,8 @@ function APR.settings:createBlizzOptions()
                     configMode = {
                         order = 3.2,
                         type = "toggle",
-                        name = "config Mode",     --TODO
-                        desc = "configMode_DESC", --TODO
+                        name = L["CONFIG_MODE"],
+                        desc = L["CONFIG_MODE_DESC"],
                         width = "full",
                         get = GetProfileOption,
                         set = function(info, value)
@@ -666,26 +737,28 @@ function APR.settings:createBlizzOptions()
     -- Add setting route to bliz option
     APR.settings:CreateRouteOption()
 
-
     -- add profile to bliz option
     aceConfig:RegisterOptionsTable(APR.title .. "/Profile", _G.LibStub("AceDBOptions-3.0"):GetOptionsTable(SettingsDB))
-    aceDialog:AddToBlizOptions(APR.title .. "/Profile", "Profiles", APR.title) -- TODO
+    aceDialog:AddToBlizOptions(APR.title .. "/Profile", L["PROFILES"], APR.title)
+
+    -- Add about to bliz option
+    APR.settings:CreateAboutOption()
 end
 
 function APR.settings:CreateRouteOption()
     local optionsTable = {
-        name = 'Route', -- TODO
+        name = L["ROUTE"],
         type = "group",
         args = {
             header_route = {
                 order = 2,
                 type = "header",
                 width = "full",
-                name = "Route Helper", --TODO
+                name = L["ROUTE_HELPER"],
             },
             auto_path_helper = {
                 order = 2.1,
-                name = L["AUTO_PATH_HELPER"], --TODO
+                name = L["AUTO_PATH_HELPER"],
                 type = "execute",
                 width = 1.8,
                 func = function()
@@ -700,7 +773,7 @@ function APR.settings:CreateRouteOption()
             },
             custom_path = {
                 order = 2.2,
-                name = L["CUSTOM_PATH"], --TODO
+                name = L["CUSTOM_PATH"],
                 type = "execute",
                 width = 1.8,
                 func = function()
@@ -716,7 +789,144 @@ function APR.settings:CreateRouteOption()
         }
     }
     aceConfig:RegisterOptionsTable(APR.title .. "/Route", optionsTable)
-    aceDialog:AddToBlizOptions(APR.title .. "/Route", "Route", APR.title) -- TODO
+    aceDialog:AddToBlizOptions(APR.title .. "/Route", L["ROUTE"], APR.title)
+end
+
+function APR.settings:CreateAboutOption()
+    local optionsTable = {
+        name = L["ABOUT_HELP"],
+        type = "group",
+        args = {
+            dev = {
+                order = 1,
+                type = "description",
+                width = "full",
+                fontSize = "medium",
+                name = "|cffeda55f" .. L["WELCOME_DEV"] .. ": |r" .. "Neogeekmo, Rycia, 8goldbow",
+            },
+            route_designer = {
+                order = 1.1,
+                type = "description",
+                width = "full",
+                fontSize = "medium",
+                name = "|cffeda55f" .. L["ROUTE_DESIGNER"] .. ": |r" .. "Pahonix, Ola",
+            },
+            support = {
+                order = 1.2,
+                type = "description",
+                width = "full",
+                fontSize = "medium",
+                name = "|cffeda55f" .. L["WELCOME_SUP"] .. ": |r" .. "NightofStarrs, Pahonix",
+            },
+            version = {
+                order = 1.2,
+                type = "description",
+                width = "full",
+                fontSize = "medium",
+                name = "|cffeda55f" .. L["VERSION"] .. ": |r" .. APR.version,
+            },
+            header_help = {
+                order = 2,
+                type = "header",
+                width = "full",
+                name = L["HELP"],
+            },
+            blank0 = {
+                order = 2.1,
+                type = "description",
+                width = "full",
+                name = " ",
+            },
+            command = {
+                order = 2.2,
+                type = "description",
+                width = "full",
+                fontSize = "medium",
+                name = "|cffeda55f/apr help, h |r- " .. L["HELP_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr reset, r |r- " .. L["RESET_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr forcereset, fr |r- " .. L["FORCERESET_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr skip, s, skippiedoodaa |r- " .. L["SKIP_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr rollback, rb |r- " .. L["ROLLBACK_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr scribe, writer |r- ;) \n" ..
+                    "|cffeda55f/apr discord |r- " .. L["DISCORD_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr github |r- " .. L["GITHUB_COMMAND"]
+            },
+            blank01 = {
+                order = 2.3,
+                type = "description",
+                width = "full",
+                name = " ",
+            },
+            header_disable_Auto = {
+                order = 3,
+                type = "header",
+                width = "full",
+                name = L["DISABLED_AUTOMATION"],
+            },
+            blank1 = {
+                order = 3.1,
+                type = "description",
+                width = "full",
+                name = " ",
+            },
+            disable_Auto = {
+                order = 3.2,
+                type = "description",
+                name = L["DISABLED_AUTOMATION_DESC"],
+                width = "full",
+                fontSize = "medium",
+            },
+            blank11 = {
+                order = 3.3,
+                type = "description",
+                width = "full",
+                name = " ",
+            },
+            header_Credit_legacy = {
+                order = 4,
+                type = "header",
+                width = "full",
+                name = L["LEGACY"],
+            },
+            blank2 = {
+                order = 4.1,
+                type = "description",
+                width = "full",
+                name = " ",
+            },
+            Zyrrael = {
+                order = 4.2,
+                type = "description",
+                width = "full",
+                fontSize = "medium",
+                name = L["WELCOME_ZYRR"] .. " " .. L["LEGACY_TEAM"] .. " Deathmessinger, DesMephisto, BrutallStatic",
+            },
+            blank21 = {
+                order = 4.3,
+                type = "description",
+                width = "full",
+                name = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+            },
+            NEED_HELP = {
+                order = 5,
+                type = "description",
+                fontSize = "medium",
+                name = L["NEED_HELP"],
+                width = 0.75,
+            },
+            discordButton = {
+                order = 5.1,
+                name = L["JOIN_DISCORD"],
+                type = "execute",
+                width = 0.75,
+                func = function()
+                    _G.StaticPopup_Show("Discord_Link")
+                end
+            },
+        }
+    }
+    aceConfig:RegisterOptionsTable(APR.title .. "/About", optionsTable)
+    aceDialog:AddToBlizOptions(APR.title .. "/About", L["ABOUT_HELP"], APR.title)
 end
 
 function APR.settings:CreateMiniMapButton()
@@ -730,7 +940,7 @@ function APR.settings:CreateMiniMapButton()
         end,
         OnTooltipShow = function(tooltip)
             tooltip:AddLine(APR.title)
-            tooltip:AddLine("Click: |cffeda55fShow Menu|r", 1, 1, 1) -- TODO
+            tooltip:AddLine(L["CLICK"] .. ": |cffeda55f" .. L["SHOW_MENU"] .. "|r", 1, 1, 1)
         end
     })
 
@@ -739,9 +949,9 @@ end
 
 --Discord frame
 _G.StaticPopupDialogs["Discord_Link"] = {
-    text = "Press Ctrl+C to copy the URL to your clipboard", --TODO
+    text = L["COPY_HELPER"],
     hasEditBox = 1,
-    button1 = "OK",
+    button1 = L["CLOSE"],
     OnShow = function(self)
         if APR.discord then
             local box = getglobal(self:GetName() .. "EditBox")
@@ -761,9 +971,9 @@ _G.StaticPopupDialogs["Discord_Link"] = {
 }
 -- Github Frame
 _G.StaticPopupDialogs["Github_Link"] = {
-    text = "Press Ctrl+C to copy the URL to your clipboard", --TODO
+    text = L["COPY_HELPER"],
     hasEditBox = 1,
-    button1 = "OK",
+    button1 = L["CLOSE"],
     OnShow = function(self)
         if APR.github then
             local box = getglobal(self:GetName() .. "EditBox")

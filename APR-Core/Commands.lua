@@ -19,12 +19,12 @@ function APR:SlashCmd(input)
         -- Command for rollback the current quest step
         print("APR: " .. L["ROLLBACK"])
         APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] - 1
-    elseif (input == "skipcamp") then
-        -- Command for skipping "camp" step
-        print("APR: " .. L["SKIPCAMP"])
-        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 14
-    elseif (input == "discord" or input == "d") then
-        print(APR.discord)
+    elseif (input == "discord") then
+        _G.StaticPopup_Show("Discord_Link")
+    elseif (input == "github") then
+        _G.StaticPopup_Show("Github_Link")
+    elseif (input == "scribe" or input == "writer") then
+        _G.StaticPopup_Show("Scribe")
     elseif (input == "help" or input == "h") then
         print(L["COMMAND_LIST"] .. ":")
         print("|cffeda55f/apr help, h |r- " .. L["HELP_COMMAND"])
@@ -32,14 +32,20 @@ function APR:SlashCmd(input)
         print("|cffeda55f/apr forcereset, fr |r- " .. L["FORCERESET_COMMAND"])
         print("|cffeda55f/apr skip, s, skippiedoodaa |r- " .. L["SKIP_COMMAND"])
         print("|cffeda55f/apr rollback, rb |r- " .. L["ROLLBACK_COMMAND"])
-        print("|cffeda55f/apr showriding, sr |r- " .. L["RIDING_SHOW_COMMAND"])
-        print("|cffeda55f/apr hideriding, hr |r- " .. L["RIDING_HIDE_COMMAND"])
-        print("|cffeda55f/apr discord, d |r- " .. L["DISCORD_COMMAND"])
-        print(" ")
-        print(L["NEED_HELP"] .. " " .. APR.discord)
+        print("|cffeda55f/apr discord |r- " .. L["DISCORD_COMMAND"])
+        print("|cffeda55f/apr github |r- " .. L["GITHUB_COMMAND"])
     else
         _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
     end
     APR.BookingList["UpdateQuest"] = 1
     APR.BookingList["PrintQStep"] = 1
 end
+
+-- Scribe Frame - Astérix et Obélix : Mission Cléopâtre
+_G.StaticPopupDialogs["Scribe"] = {
+    text = L["SCRIBE_HEADER"] .. "\n\n" .. L["SCRIBE"],
+    button1 = L["CLOSE"],
+    timeout = 0,
+    whileDead = 1,
+    hideOnEscape = 1
+}
