@@ -901,28 +901,6 @@ function APR.settings:CreateAboutOption()
                 fontSize = "medium",
                 name = L["WELCOME_ZYRR"] .. " " .. L["LEGACY_TEAM"] .. " Deathmessinger, DesMephisto, BrutallStatic",
             },
-            blank21 = {
-                order = 4.3,
-                type = "description",
-                width = "full",
-                name = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
-            },
-            NEED_HELP = {
-                order = 5,
-                type = "description",
-                fontSize = "medium",
-                name = L["NEED_HELP"],
-                width = 0.75,
-            },
-            discordButton = {
-                order = 5.1,
-                name = L["JOIN_DISCORD"],
-                type = "execute",
-                width = 0.75,
-                func = function()
-                    _G.StaticPopup_Show("Discord_Link")
-                end
-            },
         }
     }
     aceConfig:RegisterOptionsTable(APR.title .. "/About", optionsTable)
