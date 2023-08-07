@@ -31,6 +31,7 @@ local function APR_CreateQuestList()
     if (not APR.PartyList) then
         APR.PartyList = {}
     end
+    -- TODO Party group to ACE3 Frame
     APR.PartyList.PartyFrame = CreateFrame("frame", "APR_PartyListFrame1", UIParent)
     APR.PartyList.PartyFrame:SetWidth(1)
     APR.PartyList.PartyFrame:SetHeight(1)
@@ -156,6 +157,8 @@ local function APR_CreateQuestList()
         APR.PartyList.PartyFramesFS2[CLi]:SetText("123")
         APR.PartyList.PartyFramesFS2[CLi]:SetTextColor(1, 1, 0)
     end
+
+    -- TODO SugQuestFrame (IDK) to ACE3 Frame
     APR.QuestList.SugQuestFrame = {}
     APR.QuestList.SugQuestFrame = CreateFrame("frame", "APR_SugQuestFrameFrame", UIParent)
     APR.QuestList.SugQuestFrame:SetWidth(300)
@@ -265,137 +268,7 @@ local function APR_CreateQuestList()
         APR.QAskPopWantedAsk("no")
     end)
 
-    -- GRETTING
-    APR.QuestList.Greetings = CreateFrame("frame", "APR_GreetingsFrame", UIParent)
-    APR.QuestList.Greetings:SetWidth(480)
-    APR.QuestList.Greetings:SetHeight(180)
-    APR.QuestList.Greetings:SetMovable(true)
-    APR.QuestList.Greetings:EnableMouse(true)
-    APR.QuestList.Greetings:SetFrameStrata("LOW")
-    APR.QuestList.Greetings:SetPoint("LEFT", UIParent, "LEFT", 300, 0)
-    --APR.QuestList.Greetings:SetBackdrop( {
-    --	bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-    --	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-    --	tile = true, tileSize = 10, edgeSize = 10, insets = { left = 2, right = 2, top = 2, bottom = 2 }
-    --});
-    local t = APR.QuestList.Greetings:CreateTexture(nil, "BACKGROUND")
-    t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-    t:SetAllPoints(APR.QuestList.Greetings)
-    APR.QuestList.Greetings.texture = t
-
-    APR.QuestList.Greetings:SetScript("OnMouseDown", function(self, button)
-        if button == "LeftButton" then
-            APR.QuestList.Greetings:StartMoving();
-            APR.QuestList.Greetings.isMoving = true;
-        end
-    end)
-    APR.QuestList.Greetings:SetScript("OnMouseUp", function(self, button)
-        if button == "LeftButton" and APR.QuestList.Greetings.isMoving then
-            APR.QuestList.Greetings:StopMovingOrSizing();
-            APR.QuestList.Greetings.isMoving = false;
-        end
-    end)
-    APR.QuestList.Greetings:SetScript("OnHide", function(self)
-        if (APR.QuestList.Greetings.isMoving) then
-            APR.QuestList.Greetings:StopMovingOrSizing();
-            APR.QuestList.Greetings.isMoving = false;
-        end
-    end)
-    APR.QuestList.Greetings2FS1 = APR.QuestList.Greetings:CreateFontString("APRGreetingsFS1", "ARTWORK", "ChatFontNormal")
-    APR.QuestList.Greetings2FS1:SetParent(APR.QuestList.Greetings)
-    APR.QuestList.Greetings2FS1:SetPoint("TOP", APR.QuestList.Greetings, "TOP", 0, 0)
-    APR.QuestList.Greetings2FS1:SetWidth(480)
-    APR.QuestList.Greetings2FS1:SetHeight(38)
-    APR.QuestList.Greetings2FS1:SetJustifyH("CENTER")
-    APR.QuestList.Greetings2FS1:SetFontObject("BossEmoteNormalHuge")
-    APR.QuestList.Greetings2FS1:SetText(L["WELCOME"])
-    APR.QuestList.Greetings2FS1:SetTextColor(1, 1, 0)
-
-    APR.QuestList.Greetings2FS221 = APR.QuestList.Greetings:CreateFontString("APRGreetingsFS221", "ARTWORK",
-        "ChatFontNormal")
-    APR.QuestList.Greetings2FS221:SetParent(APR.QuestList.Greetings)
-    APR.QuestList.Greetings2FS221:SetPoint("TOP", APR.QuestList.Greetings, "TOP", 0, -8)
-    APR.QuestList.Greetings2FS221:SetWidth(450)
-    APR.QuestList.Greetings2FS221:SetHeight(72)
-    APR.QuestList.Greetings2FS221:SetJustifyH("LEFT")
-    APR.QuestList.Greetings2FS221:SetFontObject("GameFontNormal")
-    APR.QuestList.Greetings2FS221:SetText(L["WELCOME_GLIDER"])
-
-    APR.QuestList.Greetings2FS2 = APR.QuestList.Greetings:CreateFontString("APRGreetingsFS2", "ARTWORK", "ChatFontNormal")
-    APR.QuestList.Greetings2FS2:SetParent(APR.QuestList.Greetings)
-    APR.QuestList.Greetings2FS2:SetPoint("TOP", APR.QuestList.Greetings, "TOP", 0, -38)
-    APR.QuestList.Greetings2FS2:SetWidth(450)
-    APR.QuestList.Greetings2FS2:SetHeight(72)
-    APR.QuestList.Greetings2FS2:SetJustifyH("LEFT")
-    APR.QuestList.Greetings2FS2:SetFontObject("GameFontNormal")
-    APR.QuestList.Greetings2FS2:SetText(L["WELCOME_ZYRR"])
-
-    APR.QuestList.Greetings2FS3 = APR.QuestList.Greetings:CreateFontString("APRGreetingsFS3", "ARTWORK", "ChatFontNormal")
-    APR.QuestList.Greetings2FS3:SetParent(APR.QuestList.Greetings)
-    APR.QuestList.Greetings2FS3:SetPoint("TOP", APR.QuestList.Greetings, "TOP", 0, -68)
-    APR.QuestList.Greetings2FS3:SetWidth(450)
-    APR.QuestList.Greetings2FS3:SetHeight(72)
-    APR.QuestList.Greetings2FS3:SetJustifyH("LEFT")
-    APR.QuestList.Greetings2FS3:SetFontObject("GameFontNormal")
-    APR.QuestList.Greetings2FS3:SetText(L["WELCOME_DEV"] .. ": Rycia, Neogeekmo, Pahonix")
-
-    APR.QuestList.Greetings2FS3 = APR.QuestList.Greetings:CreateFontString("APRGreetingsFS3", "ARTWORK", "ChatFontNormal")
-    APR.QuestList.Greetings2FS3:SetParent(APR.QuestList.Greetings)
-    APR.QuestList.Greetings2FS3:SetPoint("TOP", APR.QuestList.Greetings, "TOP", 0, -88)
-    APR.QuestList.Greetings2FS3:SetWidth(450)
-    APR.QuestList.Greetings2FS3:SetHeight(72)
-    APR.QuestList.Greetings2FS3:SetJustifyH("LEFT")
-    APR.QuestList.Greetings2FS3:SetFontObject("GameFontNormal")
-    APR.QuestList.Greetings2FS3:SetText(L["WELCOME_SUP"] .. ": NightofStarrs")
-
-    APR.QuestList.Greetings2FS3 = APR.QuestList.Greetings:CreateFontString("APRGreetingsFS3", "ARTWORK", "ChatFontNormal")
-    APR.QuestList.Greetings2FS3:SetParent(APR.QuestList.Greetings)
-    APR.QuestList.Greetings2FS3:SetPoint("BOTTOMLEFT", APR.QuestList.Greetings, "BOTTOMLEFT", 15, -20)
-    APR.QuestList.Greetings2FS3:SetWidth(450)
-    APR.QuestList.Greetings2FS3:SetHeight(72)
-    APR.QuestList.Greetings2FS3:SetJustifyH("LEFT")
-    APR.QuestList.Greetings2FS3:SetFontObject("GameFontNormal")
-    APR.QuestList.Greetings2FS3:SetText(L["NEED_HELP"])
-
-    APR.QuestList.Greetings2EB2 = CreateFrame("EditBox", "APRGreetEBox2", APR.QuestList.Greetings, "InputBoxTemplate")
-    APR.QuestList.Greetings2EB2:SetSize(200, 20)
-    APR.QuestList.Greetings2EB2:SetPoint("LEFT", APR.QuestList.Greetings2FS3, "LEFT",
-        APR.QuestList.Greetings2FS3:GetStringWidth() + 10, 0)
-    APR.QuestList.Greetings2EB2:SetAutoFocus(false)
-    APR.QuestList.Greetings2EB2:SetText(APR.discord)
-
-    APR.QuestList.GreetingsHideB = CreateFrame("Button", "APR_GreetingsHideB", APR.QuestList.Greetings,
-        "SecureActionButtonTemplate")
-    APR.QuestList.GreetingsHideB:SetPoint("BOTTOMRIGHT", APR.QuestList.Greetings, "BOTTOMRIGHT", -15, 5)
-    APR.QuestList.GreetingsHideB:SetWidth(90)
-    APR.QuestList.GreetingsHideB:SetHeight(22)
-    APR.QuestList.GreetingsHideB:SetText(L["CLOSE"])
-    APR.QuestList.GreetingsHideB:SetParent(APR.QuestList.Greetings)
-    APR.QuestList.GreetingsHideB:SetNormalFontObject("GameFontNormalLarge")
-    APR.QuestList.GreetingsHideBntex = APR.QuestList.GreetingsHideB:CreateTexture()
-    APR.QuestList.GreetingsHideBntex:SetTexture("Interface/Buttons/UI-Panel-Button-Up")
-    APR.QuestList.GreetingsHideBntex:SetTexCoord(0, 0.625, 0, 0.6875)
-    APR.QuestList.GreetingsHideBntex:SetAllPoints()
-    APR.QuestList.GreetingsHideB:SetNormalTexture(APR.QuestList.GreetingsHideBntex)
-    APR.QuestList.GreetingsHideBhtex = APR.QuestList.GreetingsHideB:CreateTexture()
-    APR.QuestList.GreetingsHideBhtex:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
-    APR.QuestList.GreetingsHideBhtex:SetTexCoord(0, 0.625, 0, 0.6875)
-    APR.QuestList.GreetingsHideBhtex:SetAllPoints()
-    APR.QuestList.GreetingsHideB:SetHighlightTexture(APR.QuestList.GreetingsHideBhtex)
-    APR.QuestList.GreetingsHideBptex = APR.QuestList.GreetingsHideB:CreateTexture()
-    APR.QuestList.GreetingsHideBptex:SetTexture("Interface/Buttons/UI-Panel-Button-Down")
-    APR.QuestList.GreetingsHideBptex:SetTexCoord(0, 0.625, 0, 0.6875)
-    APR.QuestList.GreetingsHideBptex:SetAllPoints()
-    APR.QuestList.GreetingsHideB:SetPushedTexture(APR.QuestList.GreetingsHideBptex)
-    APR.QuestList.GreetingsHideB:SetScript("OnClick", function(self, arg1)
-        APR.settings.profile.greetings = true
-        APR.QuestList.Greetings:Hide()
-    end)
-
-    if (APR.settings.profile.greetings) then
-        APR.QuestList.Greetings:Hide()
-    end
-
+    -- TODO change to quest log frame + windowlib
     APR.QuestList.MainFrame = CreateFrame("frame", "APR_QuestFrame", UIParent)
     APR.QuestList.MainFrame:SetWidth(1)
     APR.QuestList.MainFrame:SetHeight(1)
@@ -675,6 +548,7 @@ local function APR_CreateQuestList()
         APR.QuestList2["BF" .. CLi]["APR_ButtonCD"]:SetAllPoints()
     end
 
+    -- TODO SweatOfOurBrowBuffFrame
     APR.QuestList.SweatOfOurBrowBuffFrame = CreateFrame("frame", "APR_SugQuestFrameFramebufffra", UIParent)
     APR.QuestList.SweatOfOurBrowBuffFrame:SetWidth(230)
     APR.QuestList.SweatOfOurBrowBuffFrame:SetHeight(110)

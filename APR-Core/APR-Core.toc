@@ -13,19 +13,27 @@
 libs/embeds.xml
 locales/locales.xml
 
-Utils.lua
 Core.lua
 
+helpers/Utils.lua
 helpers/classes.lua
 
-Commands.lua
+PlayerPosition.lua
 Config.lua
+Commands.lua
+
 TransportDB.lua
 QuestList.lua
 QuestHandler.lua
-Minimap.lua
 QuestTest.lua
 Transport.lua
+
+Arrow.lua
+CurrentStep.lua
+Map.lua
+Party.lua
+QuestOrderList.lua
+AFK.lua
 
 zones\Alliance.lua
 zones\Horde.lua

@@ -5,27 +5,8 @@ local MainQuest = 0
 local SubQuestId = 0
 local SubQuestName = 0
 local ScrollMod = 0
-local MapIconOrder = {}
 local MapIconUpdateStep = 0
-local MapRects = {};
-local TempVec2D = CreateVector2D(0, 0);
-local function GetPlayerMapPos(MapID, dx, dy)
-    local R, P, _ = MapRects[MapID], TempVec2D;
-    if not R then
-        R = {};
-        _, R[1] = C_Map.GetWorldPosFromMapPos(MapID, CreateVector2D(0, 0));
-        _, R[2] = C_Map.GetWorldPosFromMapPos(MapID, CreateVector2D(1, 1));
-        R[2]:Subtract(R[1]);
-        MapRects[MapID] = R;
-    end
-    if (dx) then
-        P.x, P.y = dx, dy
-    else
-        P.x, P.y = UnitPosition('player');
-    end
-    P:Subtract(R[1]);
-    return (1 / R[2].y) * P.y, (1 / R[2].x) * P.x;
-end
+
 function APR.ZoneQuestOrderList()
     if (APR.settings.profile.debug) then
         print("Function: APR.ZoneQuestOrderList()")
@@ -949,8 +930,8 @@ function APR.MapOrderNumbers()
                     APR.MakeMapOrderIcons(znr)
                 end
                 if (not APR.QuestStepList[APR.ActiveMap][znr]["CRange"]) then
-                    ix, iy = GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][znr]["TT"]["y"],
-                        APR.QuestStepList[APR.ActiveMap][znr]["TT"]["x"])
+                    ix, iy = APR:GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][znr]["TT"]["y"],
+                        APR.QuestStepList[APR.ActiveMap][znr]["TT"]["x"], true)
                     if (CurStep < znr) then
                         APR.HBDP:AddWorldMapIconMap("APRMapOrder", APR["MapZoneIconsRed"][znr], SetMapIDs, ix, iy,
                             HBD_PINS_WORLDMAP_SHOW_PARENT)

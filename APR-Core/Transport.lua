@@ -40,7 +40,7 @@ function APR.FP.TestDest()
         end
     end)
     local numbrs = 0
-    for APR_index, APR_value in APR.pairsByKeys(APR.TDB["FPs"][APR.Faction]) do
+    for APR_index, APR_value in PairsByKeys(APR.TDB["FPs"][APR.Faction]) do
         numbrs = numbrs + 1
         APR.FP.TestDestFrame["F" .. numbrs] = CreateFrame("frame", "TestDestFrames" .. numbrs, APR.FP.TestDestFrame)
         APR.FP.TestDestFrame["F" .. numbrs]:SetWidth(130)
@@ -152,7 +152,7 @@ function APR.FP.TestDestClick(Cont)
         APR.FP.TestDestFrame["F2" .. CLi]["FS" .. CLi]:SetText("")
     end
     local numbrs = 0
-    for APR_index, APR_value in APR.pairsByKeys(APR.TDB["FPs"][APR.Faction][Cont]) do
+    for APR_index, APR_value in PairsByKeys(APR.TDB["FPs"][APR.Faction][Cont]) do
         numbrs = numbrs + 1
         APR.FP.TestDestFrame["F2" .. numbrs]:Show()
         local zename = C_Map.GetMapInfo(APR_index)
@@ -396,15 +396,15 @@ function APR.FP.test()
     if (not APR_Transport["Ports"][APR.Faction]) then
         APR_Transport["Ports"][APR.Faction] = {}
     end
-    if (not APR_Transport["Ports"][APR.Faction][APR.getContinent()]) then
-        APR_Transport["Ports"][APR.Faction][APR.getContinent()] = {}
+    if (not APR_Transport["Ports"][APR.Faction][APR:GetContinent()]) then
+        APR_Transport["Ports"][APR.Faction][APR:GetContinent()] = {}
     end
-    APR_Transport["Ports"][APR.Faction][APR.getContinent()]["Port"] = {}
+    APR_Transport["Ports"][APR.Faction][APR:GetContinent()]["Port"] = {}
     local d_y, d_x = UnitPosition("player")
     d_y = floor((d_y * 10) + 5) / 10
     d_x = floor((d_x * 10) + 5) / 10
-    APR_Transport["Ports"][APR.Faction][APR.getContinent()]["Port"]["y"] = d_y
-    APR_Transport["Ports"][APR.Faction][APR.getContinent()]["Port"]["x"] = d_x
+    APR_Transport["Ports"][APR.Faction][APR:GetContinent()]["Port"]["y"] = d_y
+    APR_Transport["Ports"][APR.Faction][APR:GetContinent()]["Port"]["x"] = d_x
 end
 
 function APR.FP.GetMeToNextZonetest()
@@ -443,7 +443,7 @@ function APR.FP.GetCustomZone()
     end
     local zenr = 0
     if (APR_Custom and APR_Custom[APR.Name .. "-" .. APR.Realm]) then
-        for APR_index2, APR_value2 in APR.pairsByKeys(APR_Custom[APR.Name .. "-" .. APR.Realm]) do
+        for APR_index2, APR_value2 in PairsByKeys(APR_Custom[APR.Name .. "-" .. APR.Realm]) do
             zenr = zenr + 1
         end
     end
@@ -568,7 +568,7 @@ function APR.FP.GetCustomZone()
     for CLi = 1, 19 do
         if (APR_Custom[APR.Name .. "-" .. APR.Realm] and APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] and APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]]) then
             if (APR.QuestStepListListingStartAreas["EasternKingdom"]) then
-                for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListingStartAreas["EasternKingdom"]) do
+                for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListingStartAreas["EasternKingdom"]) do
                     if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
                         APR.ProgressShown = true
                         return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
@@ -576,7 +576,7 @@ function APR.FP.GetCustomZone()
                 end
             end
             if (APR.QuestStepListListingStartAreas["BrokenIsles"]) then
-                for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListingStartAreas["BrokenIsles"]) do
+                for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListingStartAreas["BrokenIsles"]) do
                     if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
                         APR.ProgressShown = true
                         return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
@@ -584,56 +584,56 @@ function APR.FP.GetCustomZone()
                 end
             end
             if (APR.QuestStepListListingStartAreas["Kalimdor"]) then
-                for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListingStartAreas["Kalimdor"]) do
+                for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListingStartAreas["Kalimdor"]) do
                     if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
                         APR.ProgressShown = true
                         return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                     end
                 end
             end
-            for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["EasternKingdom"]) do
+            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["EasternKingdom"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
-            for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Kalimdor"]) do
+            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Kalimdor"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
-            for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["SpeedRun"]) do
+            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["SpeedRun"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
-            for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Shadowlands"]) do
+            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Shadowlands"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
-            for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Extra"]) do
+            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Extra"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
-            for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["MISC 1"]) do
+            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["MISC 1"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
-            for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["MISC 2"]) do
+            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["MISC 2"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
-            for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Dragonflight"]) do
+            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Dragonflight"]) do
                 if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
                     return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
@@ -932,7 +932,7 @@ function APR.FP.GetMeToNextZone2()
     APRt_Zone = APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
     local zeReal = C_Map.GetBestMapForUnit('player')
     local GoToZone = APR.FP.GoToZone
-    local CurContinent = APR.getContinent()
+    local CurContinent = APR:GetContinent()
     local Contin, gotoCont = APR.FP.IsSameContinent(GoToZone)
     local mapzinfoz = C_Map.GetMapInfo(GoToZone)
     if (not mapzinfoz) then
@@ -1079,18 +1079,18 @@ function APR.FP.GetMeToNextZone2()
             APR.ZoneTransfer = false
         else
             local togozo, ZefpID
-            if (APR.getContinent() and APR_Transport["FPs"][APR.Faction][APR.getContinent()]) then
+            if (APR:GetContinent() and APR_Transport["FPs"][APR.Faction][APR:GetContinent()]) then
                 togozo, ZefpID = APR.FP.GetStarterZoneFP(GoToZone)
             end
             if (togozo ~= nil) then
                 local ZeContz
-                if (not APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]) then
-                    APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm] = {}
+                if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]) then
+                    APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm] = {}
                 end
-                if (APR_Transport["FPs"][APR.Faction][APR.getContinent()] and APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]["Conts"] and APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]["Conts"][APR.getContinent()]) then
-                    ZeContz = APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]
+                if (APR_Transport["FPs"][APR.Faction][APR:GetContinent()] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"][APR:GetContinent()]) then
+                    ZeContz = APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]
                         ["Conts"]
-                        [APR.getContinent()]
+                        [APR:GetContinent()]
                 else
                     ZeContz = nil
                 end
@@ -1106,7 +1106,7 @@ function APR.FP.GetMeToNextZone2()
                         APR.ArrowActive_Y = ZeY
                     end
                 else
-                    local zeFP = APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]
+                    local zeFP = APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]
                         [ZefpID]
                     if (zeFP and zeFP == 1) then
                         ShownLineNr = ShownLineNr + 1
@@ -1161,14 +1161,14 @@ end
 function APR.FP.CheckWheretoRun(GoToZone, APRt_Zone)
     if (APR.TDB["ZoneMoveOrder"][APRt_Zone] and APR.TDB["ZoneMoveOrder"][APRt_Zone][GoToZone]) then
         local zdse = APR.TDB["ZoneMoveOrder"][APRt_Zone][GoToZone]
-        if (APR.TDB["ZoneEntry"][APR.getContinent()] and APR.TDB["ZoneEntry"][APR.getContinent()][zdse]) then
+        if (APR.TDB["ZoneEntry"][APR:GetContinent()] and APR.TDB["ZoneEntry"][APR:GetContinent()][zdse]) then
             local closest = 9999
             local zeX = 0
             local zeY = 0
             local d_y, d_x = UnitPosition("player")
-            for APR_index, APR_value in pairs(APR.TDB["ZoneEntry"][APR.getContinent()][zdse]) do
-                local x = APR.TDB["ZoneEntry"][APR.getContinent()][zdse][APR_index]["x"]
-                local y = APR.TDB["ZoneEntry"][APR.getContinent()][zdse][APR_index]["y"]
+            for APR_index, APR_value in pairs(APR.TDB["ZoneEntry"][APR:GetContinent()][zdse]) do
+                local x = APR.TDB["ZoneEntry"][APR:GetContinent()][zdse][APR_index]["x"]
+                local y = APR.TDB["ZoneEntry"][APR:GetContinent()][zdse][APR_index]["y"]
                 local deltaX, deltaY = d_x - x, y - d_y
                 local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
                 if (distance < closest) then
@@ -1195,14 +1195,14 @@ function APR.FP.GetStarterZoneFP(GoToZone, DestCont)
                 return zclosestname, APR_index
             end
         end
-    elseif (GoToZone and APR.TDB["FPs"][APR.Faction][APR.getContinent()] and APR.TDB["FPs"][APR.Faction][APR.getContinent()][GoToZone]) then
-        for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction][APR.getContinent()][GoToZone]) do
-            if (APR.TDB["FPs"][APR.Faction][APR.getContinent()][GoToZone][APR_index]["Starter"]) then
+    elseif (GoToZone and APR.TDB["FPs"][APR.Faction][APR:GetContinent()] and APR.TDB["FPs"][APR.Faction][APR:GetContinent()][GoToZone]) then
+        for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction][APR:GetContinent()][GoToZone]) do
+            if (APR.TDB["FPs"][APR.Faction][APR:GetContinent()][GoToZone][APR_index]["Starter"]) then
                 local zclosestname
-                if (APR_Transport["FPs"] and APR_Transport["FPs"][APR.Faction] and APR_Transport["FPs"][APR.Faction][APR.getContinent()] and APR_Transport["FPs"][APR.Faction][APR.getContinent()]["fpn"] and APR_Transport["FPs"][APR.Faction][APR.getContinent()]["fpn"][APR_index]) then
-                    zclosestname = APR_Transport["FPs"][APR.Faction][APR.getContinent()]["fpn"][APR_index]
+                if (APR_Transport["FPs"] and APR_Transport["FPs"][APR.Faction] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"][APR_index]) then
+                    zclosestname = APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"][APR_index]
                 else
-                    zclosestname = APR.TDB["FPs"][APR.Faction][APR.getContinent()][GoToZone][APR_index]["name"]
+                    zclosestname = APR.TDB["FPs"][APR.Faction][APR:GetContinent()][GoToZone][APR_index]["name"]
                 end
                 return zclosestname, APR_index
             end
@@ -1211,7 +1211,7 @@ function APR.FP.GetStarterZoneFP(GoToZone, DestCont)
 end
 
 function APR.FP.IsSameContinent(GoToZone)
-    local CurContinent = APR.getContinent()
+    local CurContinent = APR:GetContinent()
     if (APR.TDB["FPs"][APR.Faction]) then
         for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction]) do
             for APR_index2, APR_value2 in pairs(APR.TDB["FPs"][APR.Faction][APR_index]) do
@@ -1251,8 +1251,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             L["USE_PORTAL_TO"] .. " Exodar")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Exodar"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Exodar"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Exodar"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Exodar"]["y"]
                     elseif (gotoCont == 101) then
                         ShownLineNr = ShownLineNr + 1
                         LineNr = LineNr + 1
@@ -1260,8 +1260,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             "]: " .. L["USE_PORTAL_TO"] .. " Shattrath")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Shattrath"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Shattrath"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Shattrath"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Shattrath"]["y"]
                     elseif (gotoCont == 113) then
                         ShownLineNr = ShownLineNr + 1
                         LineNr = LineNr + 1
@@ -1269,8 +1269,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Dalaran, Crystalsong Forest")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["DalaranLichKing"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["DalaranLichKing"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["DalaranLichKing"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["DalaranLichKing"]["y"]
                     elseif (gotoCont == 424) then
                         ShownLineNr = ShownLineNr + 1
                         LineNr = LineNr + 1
@@ -1278,8 +1278,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Jade Forest")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["JadeForestMoP"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["JadeForestMoP"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["JadeForestMoP"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["JadeForestMoP"]["y"]
                     elseif (gotoCont == 572) then
                         ShownLineNr = ShownLineNr + 1
                         LineNr = LineNr + 1
@@ -1287,8 +1287,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Stormshield, Ashran")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["StormshieldWoD"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["StormshieldWoD"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormshieldWoD"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormshieldWoD"]["y"]
                     elseif (gotoCont == 619) then
                         ShownLineNr = ShownLineNr + 1
                         LineNr = LineNr + 1
@@ -1296,8 +1296,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             L["USE_PORTAL_TO"] .. " Azsuna")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["AzsunaLegion"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["AzsunaLegion"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["AzsunaLegion"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["AzsunaLegion"]["y"]
                     elseif (gotoCont == 875) then
                         ShownLineNr = ShownLineNr + 1
                         LineNr = LineNr + 1
@@ -1305,8 +1305,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             L["USE_PORTAL_TO"] .. " Boralus")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["BoralusBFA"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["BoralusBFA"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["BoralusBFA"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["BoralusBFA"]["y"]
                     elseif (gotoCont == 876) then
                         ShownLineNr = ShownLineNr + 1
                         LineNr = LineNr + 1
@@ -1314,8 +1314,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             L["USE_PORTAL_TO"] .. " Boralus")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["BoralusBFA"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["BoralusBFA"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["BoralusBFA"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["BoralusBFA"]["y"]
                     end
                 else
                     ShownLineNr = ShownLineNr + 1
@@ -1323,8 +1323,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" .. ShownLineNr .. "]: " .. L["GO_PORTAL_ROOM"])
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["StormwindPortalRoom"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["StormwindPortalRoom"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormwindPortalRoom"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormwindPortalRoom"]["y"]
                 end
             else
                 ShownLineNr = ShownLineNr + 1
@@ -1358,8 +1358,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Stormwind")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
             else
                 ShownLineNr = ShownLineNr + 1
                 LineNr = LineNr + 1
@@ -1386,8 +1386,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Stormwind")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
             else
                 ShownLineNr = ShownLineNr + 1
                 LineNr = LineNr + 1
@@ -1414,8 +1414,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Stormwind")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
             else
                 local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
                 if (APRt_Zone == 1536) then
@@ -1426,8 +1426,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             L["USE_PORTAL_TO"] .. " Oribos")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["OribosInMaldraxxus"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["OribosInMaldraxxus"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["OribosInMaldraxxus"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["OribosInMaldraxxus"]["y"]
                     else
                         ShownLineNr = ShownLineNr + 1
                         LineNr = LineNr + 1
@@ -1471,8 +1471,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Stormwind")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
             else
                 ShownLineNr = ShownLineNr + 1
                 LineNr = LineNr + 1
@@ -1499,8 +1499,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Stormwind")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
             else
                 ShownLineNr = ShownLineNr + 1
                 LineNr = LineNr + 1
@@ -1527,8 +1527,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Stormwind")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
             else
                 ShownLineNr = ShownLineNr + 1
                 LineNr = LineNr + 1
@@ -1555,8 +1555,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Stormwind")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
             else
                 ShownLineNr = ShownLineNr + 1
                 LineNr = LineNr + 1
@@ -1584,8 +1584,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                         L["TALK_TO"] .. " Daria Smithson")
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Zuldazar"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Zuldazar"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Zuldazar"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Zuldazar"]["y"]
                 else
                     ShownLineNr = ShownLineNr + 1
                     LineNr = LineNr + 1
@@ -1611,8 +1611,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                         "]: " .. L["TALK_TO"] .. " Desha Stormwallow")
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Nazmir"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Nazmir"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Nazmir"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Nazmir"]["y"]
                 else
                     ShownLineNr = ShownLineNr + 1
                     LineNr = LineNr + 1
@@ -1638,8 +1638,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                         ShownLineNr .. "]: " .. L["TALK_TO"] .. " Grand Admiral Jes-Tereth")
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Vol'dun"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Vol'dun"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Vol'dun"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Vol'dun"]["y"]
                 else
                     ShownLineNr = ShownLineNr + 1
                     LineNr = LineNr + 1
@@ -1669,8 +1669,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             ShownLineNr .. "]: " .. L["SAIL_TO"] .. " Zuldazar")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Zuldazar"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Zuldazar"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Zuldazar"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Zuldazar"]["y"]
                     elseif (GoToZone == 863) then
                         ShownLineNr = ShownLineNr + 1
                         LineNr = LineNr + 1
@@ -1678,8 +1678,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             ShownLineNr .. "]: " .. L["SAIL_TO"] .. " Nazmir")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Nazmir"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Nazmir"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Nazmir"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Nazmir"]["y"]
                     elseif (GoToZone == 864) then
                         ShownLineNr = ShownLineNr + 1
                         LineNr = LineNr + 1
@@ -1687,8 +1687,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             ShownLineNr .. "]: " .. L["SAIL_TO"] .. " Vol'dun")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Vol'dun"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Vol'dun"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Vol'dun"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Vol'dun"]["y"]
                     end
                 else
                     ShownLineNr = ShownLineNr + 1
@@ -1697,8 +1697,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                         L["USE_PORTAL_TO"] .. " Stormwind")
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Stormwind"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
                 end
             else
                 ShownLineNr = ShownLineNr + 1
@@ -1730,8 +1730,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Zeppelin to Grom'gol, Stranglethorn Vale")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["STVZep"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["STVZep"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["STVZep"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["STVZep"]["y"]
                     else
                         ShownLineNr = ShownLineNr + 1
                         LineNr = LineNr + 1
@@ -1739,8 +1739,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Undercity portal (by zeppelins)")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Undercity"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Undercity"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Undercity"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Undercity"]["y"]
                     end
                 elseif (gotoCont == 101) then
                     ShownLineNr = ShownLineNr + 1
@@ -1749,8 +1749,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                         L["USE_PORTAL_TO"] .. " Shattrath")
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Shattrath"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Shattrath"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Shattrath"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Shattrath"]["y"]
                 elseif (gotoCont == 113) then
                     ShownLineNr = ShownLineNr + 1
                     LineNr = LineNr + 1
@@ -1758,8 +1758,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                         ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Dalaran, Crystalsong Forest")
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["DalaranLichKing"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["DalaranLichKing"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["DalaranLichKing"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["DalaranLichKing"]["y"]
                 elseif (gotoCont == 424) then
                     ShownLineNr = ShownLineNr + 1
                     LineNr = LineNr + 1
@@ -1767,8 +1767,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                         "]: " .. L["USE_PORTAL_TO"] .. " Jade Forest")
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["JadeForest"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["JadeForest"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["JadeForest"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["JadeForest"]["y"]
                 elseif (gotoCont == 572) then
                     ShownLineNr = ShownLineNr + 1
                     LineNr = LineNr + 1
@@ -1776,8 +1776,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                         ShownLineNr .. "]: " .. L["USE_PORTAL_TO"] .. " Warspear, Ashran")
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["WarspearWoD"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["WarspearWoD"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["WarspearWoD"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["WarspearWoD"]["y"]
                 elseif (gotoCont == 619) then
                     ShownLineNr = ShownLineNr + 1
                     LineNr = LineNr + 1
@@ -1786,8 +1786,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                         " Azsuna")
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["AzsunaLegion"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["AzsunaLegion"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["AzsunaLegion"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["AzsunaLegion"]["y"]
                 elseif (gotoCont == 875) then
                     ShownLineNr = ShownLineNr + 1
                     LineNr = LineNr + 1
@@ -1795,8 +1795,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                         L["USE_PORTAL_TO"] .. " Zuldazar")
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Zuldazar"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Zuldazar"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Zuldazar"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Zuldazar"]["y"]
                 elseif (gotoCont == 876) then
                     ShownLineNr = ShownLineNr + 1
                     LineNr = LineNr + 1
@@ -1804,8 +1804,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                         L["USE_PORTAL_TO"] .. " Zuldazar")
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Zuldazar"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Zuldazar"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Zuldazar"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Zuldazar"]["y"]
                 end
             else
                 ShownLineNr = ShownLineNr + 1
@@ -1833,8 +1833,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Orgrimmar")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
             else
                 local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
                 if (APRt_Zone == 1536) then
@@ -1845,8 +1845,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             L["USE_PORTAL_TO"] .. " Oribos")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["OribosInMaldraxxus"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["OribosInMaldraxxus"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["OribosInMaldraxxus"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["OribosInMaldraxxus"]["y"]
                     else
                         ShownLineNr = ShownLineNr + 1
                         LineNr = LineNr + 1
@@ -1890,8 +1890,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Orgrimmar")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
             else
                 ShownLineNr = ShownLineNr + 1
                 LineNr = LineNr + 1
@@ -1918,8 +1918,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Orgrimmar")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
             else
                 ShownLineNr = ShownLineNr + 1
                 LineNr = LineNr + 1
@@ -1946,8 +1946,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Orgrimmar")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
             else
                 ShownLineNr = ShownLineNr + 1
                 LineNr = LineNr + 1
@@ -1974,8 +1974,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Orgrimmar")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
             else
                 ShownLineNr = ShownLineNr + 1
                 LineNr = LineNr + 1
@@ -2002,8 +2002,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Orgrimmar")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
             else
                 ShownLineNr = ShownLineNr + 1
                 LineNr = LineNr + 1
@@ -2030,8 +2030,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Orgrimmar")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
             else
                 ShownLineNr = ShownLineNr + 1
                 LineNr = LineNr + 1
@@ -2060,8 +2060,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             ShownLineNr .. "]: " .. L["SAIL_TO"] .. " Drustvar")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Drustvar"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Drustvar"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Drustvar"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Drustvar"]["y"]
                     elseif (GoToZone == 942) then
                         ShownLineNr = ShownLineNr + 1
                         LineNr = LineNr + 1
@@ -2069,8 +2069,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             ShownLineNr .. "]: " .. L["SAIL_TO"] .. " Stormsong Valley")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["StormsongValley"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["StormsongValley"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormsongValley"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormsongValley"]["y"]
                     elseif (GoToZone == 895) then
                         ShownLineNr = ShownLineNr + 1
                         LineNr = LineNr + 1
@@ -2078,8 +2078,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                             "]: " .. L["SAIL_TO"] .. " Tiragarde Sound")
                         APR.QuestList.QuestFrames[LineNr]:Show()
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["TiragardeSound"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["TiragardeSound"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["TiragardeSound"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["TiragardeSound"]["y"]
                     end
                 else
                     ShownLineNr = ShownLineNr + 1
@@ -2105,8 +2105,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                     " Orgrimmar")
                 APR.QuestList.QuestFrames[LineNr]:Show()
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
             else
                 ShownLineNr = ShownLineNr + 1
                 LineNr = LineNr + 1
@@ -2134,8 +2134,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                         " Swellthrasher")
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["DrustvarSail"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["DrustvarSail"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["DrustvarSail"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["DrustvarSail"]["y"]
                 else
                     ShownLineNr = ShownLineNr + 1
                     LineNr = LineNr + 1
@@ -2161,8 +2161,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                         L["TALK_TO"] .. " Grok Seahandler")
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["StormsongValleySail"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["StormsongValleySail"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormsongValleySail"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormsongValleySail"]["y"]
                 else
                     ShownLineNr = ShownLineNr + 1
                     LineNr = LineNr + 1
@@ -2189,8 +2189,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone, ShownLineNr, LineNr
                         L["TALK_TO"] .. " Erul Dawnbrook")
                     APR.QuestList.QuestFrames[LineNr]:Show()
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["TiragardeSoundSail"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR.getContinent()]["TiragardeSoundSail"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["TiragardeSoundSail"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["TiragardeSoundSail"]["y"]
                 else
                     ShownLineNr = ShownLineNr + 1
                     LineNr = LineNr + 1
@@ -2234,20 +2234,20 @@ function APR.FP.ClosestFP()
         APRt_Zone = C_Map.GetBestMapForUnit("player")
     end
     APRt_Zone = APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
-    if (APR.TDB["FPs"][APR.Faction][APR.getContinent()] and APR.TDB["FPs"][APR.Faction][APR.getContinent()][APRt_Zone]) then
+    if (APR.TDB["FPs"][APR.Faction][APR:GetContinent()] and APR.TDB["FPs"][APR.Faction][APR:GetContinent()][APRt_Zone]) then
         local cloasest = 99999
         local closestname = "derp"
         local closestx = 0
         local closesty = 0
         local zclosestname
-        for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction][APR.getContinent()][APRt_Zone]) do
+        for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction][APR:GetContinent()][APRt_Zone]) do
             local d_y, d_x = UnitPosition("player")
-            x = APR.TDB["FPs"][APR.Faction][APR.getContinent()][APRt_Zone][APR_index]["x"]
-            y = APR.TDB["FPs"][APR.Faction][APR.getContinent()][APRt_Zone][APR_index]["y"]
-            if (APR_Transport["FPs"] and APR_Transport["FPs"][APR.Faction] and APR_Transport["FPs"][APR.Faction][APR.getContinent()] and APR_Transport["FPs"][APR.Faction][APR.getContinent()]["fpn"] and APR_Transport["FPs"][APR.Faction][APR.getContinent()]["fpn"][APR_index]) then
-                zclosestname = APR_Transport["FPs"][APR.Faction][APR.getContinent()]["fpn"][APR_index]
+            x = APR.TDB["FPs"][APR.Faction][APR:GetContinent()][APRt_Zone][APR_index]["x"]
+            y = APR.TDB["FPs"][APR.Faction][APR:GetContinent()][APRt_Zone][APR_index]["y"]
+            if (APR_Transport["FPs"] and APR_Transport["FPs"][APR.Faction] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"][APR_index]) then
+                zclosestname = APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"][APR_index]
             else
-                zclosestname = APR.TDB["FPs"][APR.Faction][APR.getContinent()][APRt_Zone][APR_index]["name"]
+                zclosestname = APR.TDB["FPs"][APR.Faction][APR:GetContinent()][APRt_Zone][APR_index]["name"]
             end
             local deltaX, deltaY = d_x - x, y - d_y
             local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
@@ -2284,20 +2284,20 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (not APR_Transport["FPs"][APR.Faction]) then
             APR_Transport["FPs"][APR.Faction] = {}
         end
-        if (not APR_Transport["FPs"][APR.Faction][APR.getContinent()]) then
-            APR_Transport["FPs"][APR.Faction][APR.getContinent()] = {}
+        if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()]) then
+            APR_Transport["FPs"][APR.Faction][APR:GetContinent()] = {}
         end
-        if (not APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]) then
-            APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm] = {}
+        if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]) then
+            APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm] = {}
         end
         local CLi
-        if (not APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]["Conts"]) then
-            APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]["Conts"] = {}
+        if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"]) then
+            APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"] = {}
         end
-        if (not APR_Transport["FPs"][APR.Faction][APR.getContinent()]["fpn"]) then
-            APR_Transport["FPs"][APR.Faction][APR.getContinent()]["fpn"] = {}
+        if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"]) then
+            APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"] = {}
         end
-        APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]["Conts"][APR.getContinent()] = 1
+        APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"][APR:GetContinent()] = 1
         local APRt_Zone = C_Map.GetBestMapForUnit("player")
         local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
         if (not currentMapId) then
@@ -2311,18 +2311,18 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
         APRt_Zone = APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
         local ZeFPS = C_TaxiMap.GetAllTaxiNodes(APRt_Zone)
-        for APR_index2, APR_value2 in APR.pairsByKeys(ZeFPS) do
+        for APR_index2, APR_value2 in PairsByKeys(ZeFPS) do
             local NodeIDZ = ZeFPS[APR_index2]["nodeID"]
             local ZName = ZeFPS[APR_index2]["name"]
             local ZState = ZeFPS[APR_index2]["state"]
-            APR_Transport["FPs"][APR.Faction][APR.getContinent()]["fpn"][NodeIDZ] = ZName
+            APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"][NodeIDZ] = ZName
             if (ZState == 0) then
                 APR.TaxiTimerCur = ZName
             end
             if (ZState == 2) then
-                --APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name.."-"..APR.Realm][NodeIDZ] = 0
+                --APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name.."-"..APR.Realm][NodeIDZ] = 0
             else
-                APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm][NodeIDZ] = 1
+                APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm][NodeIDZ] = 1
             end
         end
         local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
@@ -2332,7 +2332,7 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
         if (steps and not IsModifierKeyDown() and APR.settings.profile.autoFlight) then
             local TName = steps["Name"]
-            local TContonent = APR.getContinent()
+            local TContonent = APR:GetContinent()
             if (steps["UseFlightPath"]) then
                 local zclosestname
                 for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction][TContonent]) do

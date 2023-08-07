@@ -27,6 +27,7 @@ end
 function APR.settings:ResetSettings()
     SettingsDB:ResetProfile()
     self:RefreshProfile()
+    C_UI.Reload()
 end
 
 function APR.settings:InitializeBlizOptions()
@@ -95,6 +96,7 @@ function APR.settings:InitializeSettings()
             --debug
             configMode = false,
             debug = false,
+            enableAddon = true,
         }
     }
 
@@ -113,7 +115,6 @@ end
 
 function APR.settings:RefreshProfile()
     self.profile = SettingsDB.profile
-    -- C_UI.Reload()
 end
 
 function APR.settings:createBlizzOptions()
@@ -154,7 +155,7 @@ function APR.settings:createBlizzOptions()
                 type = "execute",
                 width = 0.75,
                 func = function()
-                    self:ResetSettings()
+                    _G.StaticPopup_Show("Reset_Settings")
                 end
             },
             header_Automation = {
@@ -692,36 +693,64 @@ function APR.settings:createBlizzOptions()
                     },
                 }
             },
-            header_Debug = {
+            group_Debug = {
                 order = 12,
                 type = "group",
-                name = L["DEBUG"],
+                name = L["ENABLE_AND_DEBUG"],
                 args = {
-                    debug = {
-                        order = 3.1,
-                        type = "toggle",
-                        name = L["DEBUG"],
-                        width = "full",
-                        get = GetProfileOption,
-                        set = SetProfileOption,
+                    subgroup_Enable = {
+                        order = 1,
+                        type = "group",
+                        inline = true,
+                        name = L["ENABLE_ADDON"],
+                        args = {
+                            enableAddon = {
+                                order = 1.1,
+                                type = "toggle",
+                                name = L["ENABLE_ADDON"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    -- disabled addon
+                                end,
+                                disabled = true
+                            },
+                        }
                     },
-                    configMode = {
-                        order = 3.2,
-                        type = "toggle",
-                        name = L["CONFIG_MODE"],
-                        desc = L["CONFIG_MODE_DESC"],
-                        width = "full",
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            if (value) then
-                                APR.SettingsOpen = true
-                                APR.BookingList["OpenedSettings"] = true
-                            else
-                                APR.SettingsOpen = false
-                                APR.BookingList["ClosedSettings"] = true
-                            end
-                        end
+                    subgroup_debug = {
+                        order = 2,
+                        type = "group",
+                        inline = true,
+                        name = L["DEBUG"],
+                        args = {
+                            debug = {
+                                order = 2.1,
+                                type = "toggle",
+                                name = L["DEBUG"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = SetProfileOption,
+                            },
+                            configMode = {
+                                order = 2.2,
+                                type = "toggle",
+                                name = L["CONFIG_MODE"],
+                                desc = L["CONFIG_MODE_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    if (value) then
+                                        APR.SettingsOpen = true
+                                        APR.BookingList["OpenedSettings"] = true
+                                    else
+                                        APR.SettingsOpen = false
+                                        APR.BookingList["ClosedSettings"] = true
+                                    end
+                                end
+                            },
+                        }
                     },
                 }
             },
@@ -913,12 +942,17 @@ function APR.settings:CreateMiniMapButton()
     local minimapButton = libDataBroker:NewDataObject(APR.title, {
         type = "launcher",
         icon = "Interface\\AddOns\\APR-Core\\img\\APR_logo",
-        OnClick = function()
-            _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
+        OnClick = function(_, button)
+            if button == "RightButton" then
+                self.profile.enableAddon = not self.profile.enableAddon
+            else
+                _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
+            end
         end,
         OnTooltipShow = function(tooltip)
             tooltip:AddLine(APR.title)
-            tooltip:AddLine(L["CLICK"] .. ": |cffeda55f" .. L["SHOW_MENU"] .. "|r", 1, 1, 1)
+            tooltip:AddLine(L["LEFT_CLICK"] .. ": |cffeda55f" .. L["SHOW_MENU"] .. "|r", 1, 1, 1)
+            tooltip:AddLine(L["RIGHT_CLICK"] .. ": |cffeda55f" .. L["TOGGLE_ADDON"] .. "|r", 1, 1, 1)
         end
     })
 
@@ -968,4 +1002,16 @@ _G.StaticPopupDialogs["Github_Link"] = {
     timeout = 0,
     whileDead = 1,
     hideOnEscape = 1
+}
+-- confirm reset settings Frame
+_G.StaticPopupDialogs["Reset_Settings"] = {
+    text = CONFIRM_CONTINUE,
+    button1 = YES,
+    button2 = NO,
+    OnAccept = function()
+        APR.settings:ResetSettings()
+    end,
+    timeout = 0,
+    whileDead = true,
+    hideOnEscape = true
 }

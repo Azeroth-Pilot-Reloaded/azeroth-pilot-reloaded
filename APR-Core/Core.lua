@@ -13,7 +13,6 @@ APR.RaceLocale, APR.Race, APR.RaceID = UnitRace("player")
 APR.ClassFilename, APR.ClassId = UnitClassBase("player")
 APR.Gender = UnitSex("player")
 
-
 -- Quest
 APR.QuestStepList = {}
 APR.QuestStepListListing = {}
@@ -187,30 +186,11 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
     APR.BookingList["UpdateMapId"] = 1
 end
 
-function APR.getContinent() -- Getting the continent the player is on and its info
-    if (APR.settings.profile.debug) then
-        print("Function: APR.getContinent()")
-    end
-    local mapID = C_Map.GetBestMapForUnit("player")
-    if (mapID == 378) then
-        return 378
-    elseif (mapID) then
-        local info = C_Map.GetMapInfo(mapID)
-        if (info) then
-            while (info and info['mapType'] and info['mapType'] > 2) do
-                info = C_Map.GetMapInfo(info['parentMapID'])
-            end
-            if (info and info['mapType'] == 2) then
-                return info['mapID']
-            end
-        end
-    end
-end
-
 -- APR Global Variables, UI oriented
 BINDING_HEADER_AzerothPilotReloaded = APR.title -- Header text for APR's main frame
 BINDING_NAME_APR_MACRO = "Quest Item 1"
 
+-- TODO Rework AFK frame
 --AFK Frame Stuff.. How long you will wait  for questgiver/flight
 APR.AfkFrame = CreateFrame("frame", "APR_AfkFrames", UIParent)
 APR.AfkFrame:SetWidth(190)
@@ -250,10 +230,16 @@ APR.AfkFrame.Fontstring:SetText("AFK:")
 APR.AfkFrame.Fontstring:SetJustifyH("LEFT")
 APR.AfkFrame.Fontstring:SetTextColor(1, 1, 0)
 APR.AfkFrame:Hide()
+--Something to do with AFK frame/timer probably
+function APR.AFK_Timer(APR_AFkTimeh)
+    APR.AfkTimerVar = APR_AFkTimeh + floor(GetTime())
+    APR.ArrowEventAFkTimer:Play()
+end
+
 -- Likely deals with automatically skipping cutscenes using PlayMovie_hook
 local PlayMovie_hook = MovieFrame_PlayMovie
 MovieFrame_PlayMovie = function(...)
-    if (IsModifierKeyDown() or (not APR.settings.profile.autoSkipCutScene)) then
+    if (IsModifierKeyDown() or not APR.settings.profile.autoSkipCutScene) then
         PlayMovie_hook(...) --MovieFrame_PlayMovie, as previously stated
     else
         print("APR: " .. L["SKIPPED_CUTSCENE"])
@@ -261,28 +247,8 @@ MovieFrame_PlayMovie = function(...)
     end
 end
 
---Something to do with AFK frame/timer probably
-function APR.AFK_Timer(APR_AFkTimeh)
-    APR.AfkTimerVar = APR_AFkTimeh + floor(GetTime())
-    APR.ArrowEventAFkTimer:Play()
-end
 
-function APR.pairsByKeys(t, f)
-    local a = {}
-    for n in pairs(t) do table.insert(a, n) end
-    table.sort(a, f)
-    local i = 0
-    local iter = function()
-        i = i + 1
-        if a[i] == nil then
-            return nil
-        else
-            return a[i], t[a[i]]
-        end
-    end
-    return iter
-end
-
+-- TODO Rework Arrow frame
 --More UI stuff, to do with arrowframe
 --Arrowframe is the "arrow" that looks like the tomtom one
 APR.ArrowFrameM = CreateFrame("Button", "APR_Arrow", UIParent)
@@ -1837,19 +1803,19 @@ function APR.RoutePlanLoadIn()
     local dzer = {}
     local dzer2 = {}
     if (APR.QuestStepListListingStartAreas["Kalimdor"]) then
-        for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListingStartAreas["Kalimdor"]) do
+        for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListingStartAreas["Kalimdor"]) do
             dzer2[APR_value2] = APR_index2
         end
-        for APR_index2, APR_value2 in APR.pairsByKeys(dzer2) do
+        for APR_index2, APR_value2 in PairsByKeys(dzer2) do
             zenr2 = zenr2 + 1
             APR.RoutePlan.FG1["KAL3" .. zenr2]["FS"]:SetText(APR_index2)
         end
     end
     if (APR.QuestStepListListing and APR.QuestStepListListing["Kalimdor"]) then
-        for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Kalimdor"]) do
+        for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Kalimdor"]) do
             dzer[APR_value2] = APR_index2
         end
-        for APR_index2, APR_value2 in APR.pairsByKeys(dzer) do
+        for APR_index2, APR_value2 in PairsByKeys(dzer) do
             zenr2 = zenr2 + 1
             APR.RoutePlan.FG1["KAL3" .. zenr2]["FS"]:SetText(APR_index2)
         end
@@ -1861,19 +1827,19 @@ function APR.RoutePlanLoadIn()
     dzer2 = nil
     dzer2 = {}
     if (APR.QuestStepListListingStartAreas["EasternKingdom"]) then
-        for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListingStartAreas["EasternKingdom"]) do
+        for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListingStartAreas["EasternKingdom"]) do
             dzer2[APR_value2] = APR_index2
         end
-        for APR_index2, APR_value2 in APR.pairsByKeys(dzer2) do
+        for APR_index2, APR_value2 in PairsByKeys(dzer2) do
             zenr2 = zenr2 + 1
             APR.RoutePlan.FG1["EK3" .. zenr2]["FS"]:SetText(APR_index2)
         end
     end
     if (APR.QuestStepListListing and APR.QuestStepListListing["EasternKingdom"]) then
-        for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["EasternKingdom"]) do
+        for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["EasternKingdom"]) do
             dzer[APR_value2] = APR_index2
         end
-        for APR_index2, APR_value2 in APR.pairsByKeys(dzer) do
+        for APR_index2, APR_value2 in PairsByKeys(dzer) do
             zenr2 = zenr2 + 1
             APR.RoutePlan.FG1["EK3" .. zenr2]["FS"]:SetText(APR_index2)
         end
@@ -1885,10 +1851,10 @@ function APR.RoutePlanLoadIn()
     dzer2 = nil
     dzer2 = {}
     if (APR.QuestStepListListing and APR.QuestStepListListing["Shadowlands"]) then
-        for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Shadowlands"]) do
+        for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Shadowlands"]) do
             dzer[APR_value2] = APR_index2
         end
-        for APR_index2, APR_value2 in APR.pairsByKeys(dzer) do
+        for APR_index2, APR_value2 in PairsByKeys(dzer) do
             zenr2 = zenr2 + 1
             APR.RoutePlan.FG1["SL3" .. zenr2]["FS"]:SetText(APR_index2)
         end
@@ -1900,10 +1866,10 @@ function APR.RoutePlanLoadIn()
     dzer2 = nil
     dzer2 = {}
     if (APR.QuestStepListListing and APR.QuestStepListListing["Extra"]) then
-        for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Extra"]) do
+        for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Extra"]) do
             dzer[APR_value2] = APR_index2
         end
-        for APR_index2, APR_value2 in APR.pairsByKeys(dzer) do
+        for APR_index2, APR_value2 in PairsByKeys(dzer) do
             zenr2 = zenr2 + 1
             APR.RoutePlan.FG1["EX3" .. zenr2]["FS"]:SetText(APR_index2)
         end
@@ -1915,10 +1881,10 @@ function APR.RoutePlanLoadIn()
     dzer2 = nil
     dzer2 = {}
     if (APR.QuestStepListListing and APR.QuestStepListListing["MISC 2"]) then
-        for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["MISC 2"]) do
+        for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["MISC 2"]) do
             dzer[APR_value2] = APR_index2
         end
-        for APR_index2, APR_value2 in APR.pairsByKeys(dzer) do
+        for APR_index2, APR_value2 in PairsByKeys(dzer) do
             zenr2 = zenr2 + 1
             APR.RoutePlan.FG1["MISC23" .. zenr2]["FS"]:SetText(APR_index2)
         end
@@ -1930,10 +1896,10 @@ function APR.RoutePlanLoadIn()
     dzer2 = nil
     dzer2 = {}
     if (APR.QuestStepListListing and APR.QuestStepListListing["MISC 1"]) then
-        for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["MISC 1"]) do
+        for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["MISC 1"]) do
             dzer[APR_value2] = APR_index2
         end
-        for APR_index2, APR_value2 in APR.pairsByKeys(dzer) do
+        for APR_index2, APR_value2 in PairsByKeys(dzer) do
             zenr2 = zenr2 + 1
             APR.RoutePlan.FG1["MISC3" .. zenr2]["FS"]:SetText(APR_index2)
         end
@@ -1945,10 +1911,10 @@ function APR.RoutePlanLoadIn()
     dzer2 = nil
     dzer2 = {}
     if (APR.QuestStepListListing and APR.QuestStepListListing["Dragonflight"]) then
-        for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["Dragonflight"]) do
+        for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Dragonflight"]) do
             dzer[APR_value2] = APR_index2
         end
-        for APR_index2, APR_value2 in APR.pairsByKeys(dzer) do
+        for APR_index2, APR_value2 in PairsByKeys(dzer) do
             zenr2 = zenr2 + 1
             APR.RoutePlan.FG1["DF3" .. zenr2]["FS"]:SetText(APR_index2)
         end
@@ -1960,10 +1926,10 @@ function APR.RoutePlanLoadIn()
     dzer2 = nil
     dzer2 = {}
     if (APR.QuestStepListListing and APR.QuestStepListListing["SpeedRun"]) then
-        for APR_index2, APR_value2 in APR.pairsByKeys(APR.QuestStepListListing["SpeedRun"]) do
+        for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["SpeedRun"]) do
             dzer[APR_value2] = APR_index2
         end
-        for APR_index2, APR_value2 in APR.pairsByKeys(dzer) do
+        for APR_index2, APR_value2 in PairsByKeys(dzer) do
             zenr2 = zenr2 + 1
             APR.RoutePlan.FG1["SPR3" .. zenr2]["FS"]:SetText("")
         end
@@ -2931,15 +2897,15 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 if (not APR_Transport["FPs"][APR.Faction]) then
                     APR_Transport["FPs"][APR.Faction] = {}
                 end
-                if (APR.getContinent() and not APR_Transport["FPs"][APR.Faction][APR.getContinent()]) then
-                    APR_Transport["FPs"][APR.Faction][APR.getContinent()] = {}
+                if (APR:GetContinent() and not APR_Transport["FPs"][APR.Faction][APR:GetContinent()]) then
+                    APR_Transport["FPs"][APR.Faction][APR:GetContinent()] = {}
                 end
-                if (APR.getContinent() and not APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]) then
-                    APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm] = {}
+                if (APR:GetContinent() and not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]) then
+                    APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm] = {}
                 end
                 local CLi
-                if (APR.getContinent() and not APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]["Conts"]) then
-                    APR_Transport["FPs"][APR.Faction][APR.getContinent()][APR.Name .. "-" .. APR.Realm]["Conts"] = {}
+                if (APR:GetContinent() and not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"]) then
+                    APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"] = {}
                 end
 
                 APR.BookingList["UpdateMapId"] = 1
@@ -2956,7 +2922,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 end
                 print("APR " .. L["LOADED"])
                 APR_LoadInTimer:Stop()
-                C_Timer.After(4, APR_UpdatezeMapId)
+                C_Timer.After(4, APR_BookingUpdateMapId)
                 C_Timer.After(5, APR_BookQStep)
                 --APR.FP.ToyFPs()
                 local CQIDs = C_QuestLog.GetAllCompletedQuestIDs()
@@ -3064,8 +3030,8 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         end)
         CoreLoadin = true
     end
-    if (event == "CINEMATIC_START") then     --Cutscene skip when cinematic starts
-        if (not IsModifierKeyDown()) then    -- unless control key is down
+    if (event == "CINEMATIC_START") then  --Cutscene skip when cinematic starts
+        if (not IsModifierKeyDown()) then -- unless control key is down
             local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
             local steps
             if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then

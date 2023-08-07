@@ -1,21 +1,25 @@
+local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+local HBDP = LibStub("HereBeDragons-Pins-2.0")
+local HBD = LibStub("HereBeDragons-2.0")
+
+APR.BookingList = {} --TODO rework BookingList
+APR.HBDP = HBDP
+APR.HBD = HBD
+
 
 local QNumberLocal = 0
 local APR_ArrowUpdateNr = 0
 local ETAStep = 0
 local APR_AntiTaxiLoop = 0
 local Updateblock = 0
-local HBDP = LibStub("HereBeDragons-Pins-2.0")
-local HBD = LibStub("HereBeDragons-2.0")
 local APRWhereToGo
 local CurMapShown
 local Delaytime = 0
 local APRGOSSIPCOUNT = 0
 local QuestSpecial57710 = 0
 local Quest2Special57710 = 0
-APR.BookingList = {}
-APR.HBDP = HBDP
-APR.HBD = HBD
+
 APR.ProgressbarIgnore = {
     ["60520-2"] = 1,
     ["57724-2"] = 1,
@@ -140,35 +144,6 @@ local APR_BonusObj = {
     [62735] = 1,
     [59015] = 1,
 }
-local MapRects = {};
-local TempVec2D = CreateVector2D(0, 0);
-local function GetPlayerMapPos(MapID, dx, dy)
-    if (MapID and MapID == 1726 or MapID == 1727 or MapID == 905 or MapID == 948 or APRt_Zone == 1727) then
-        return
-    end
-    --if (UnitPosition('player')) then
-    --	return
-    --end
-    local R, P, _ = MapRects[MapID], TempVec2D;
-    if not R then
-        R = {};
-        _, R[1] = C_Map.GetWorldPosFromMapPos(MapID, CreateVector2D(0, 0));
-        _, R[2] = C_Map.GetWorldPosFromMapPos(MapID, CreateVector2D(1, 1));
-        R[2]:Subtract(R[1]);
-        MapRects[MapID] = R;
-    end
-    if (dx) then
-        P.x, P.y = dx, dy
-    else
-        P.x, P.y = UnitPosition('player');
-    end
-    if (P.x) then
-        P:Subtract(R[1]);
-        return (1 / R[2].y) * P.y, (1 / R[2].x) * P.x;
-    else
-        return
-    end
-end
 function APR.RemoveIcons()
     for CLi = 1, 20 do
         if (APR["Icons"][CLi].A == 1) then
@@ -200,12 +175,12 @@ function APR:MoveIcons()
     local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
     local ix, iy
     if (APR.SettingsOpen and C_Map.GetBestMapForUnit('player')) then
-        ix, iy = GetPlayerMapPos(C_Map.GetBestMapForUnit('player'), APR.ArrowActive_Y, APR.ArrowActive_X)
+        ix, iy = APR:GetPlayerMapPos(C_Map.GetBestMapForUnit('player'), APR.ArrowActive_Y, APR.ArrowActive_X)
     elseif (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
         local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
         local d_y, d_x = UnitPosition("player")
         if (steps and steps["TT"] and d_y and C_Map.GetBestMapForUnit('player')) then
-            ix, iy = GetPlayerMapPos(C_Map.GetBestMapForUnit('player'), steps["TT"]["y"], steps["TT"]["x"])
+            ix, iy = APR:GetPlayerMapPos(C_Map.GetBestMapForUnit('player'), steps["TT"]["y"], steps["TT"]["x"])
         else
             return
         end
@@ -230,7 +205,7 @@ function APR:MoveIcons()
         if (not C_Map.GetBestMapForUnit('player')) then
             return
         end
-        local px, py = GetPlayerMapPos(C_Map.GetBestMapForUnit('player'))
+        local px, py = APR:GetPlayerMapPos(C_Map.GetBestMapForUnit('player'))
         if (not px) then
             return
         end
@@ -269,7 +244,7 @@ function APR:MoveIcons()
         if (not C_Map.GetBestMapForUnit('player')) then
             return
         end
-        local px, py = GetPlayerMapPos(C_Map.GetBestMapForUnit('player'),
+        local px, py = APR:GetPlayerMapPos(C_Map.GetBestMapForUnit('player'),
             APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["y"], APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["x"])
         local CLi, CLi2
         if (not APR.QuestStepList[APR.ActiveMap][CurStep + 1] or APR.QuestStepList[APR.ActiveMap][CurStep + 1]["ZoneDoneSave"]) then
@@ -280,7 +255,7 @@ function APR:MoveIcons()
             if (not C_Map.GetBestMapForUnit('player')) then
                 return
             end
-            local ix, iy = GetPlayerMapPos(C_Map.GetBestMapForUnit('player'),
+            local ix, iy = APR:GetPlayerMapPos(C_Map.GetBestMapForUnit('player'),
                 APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["y"],
                 APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]
                 ["x"])
@@ -318,12 +293,12 @@ function APR:MoveIcons()
             if (not C_Map.GetBestMapForUnit('player')) then
                 return
             end
-            local px, py = GetPlayerMapPos(C_Map.GetBestMapForUnit('player'),
+            local px, py = APR:GetPlayerMapPos(C_Map.GetBestMapForUnit('player'),
                 APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["y"],
                 APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]
                 ["x"])
             local CLi, CLi2
-            local ix, iy = GetPlayerMapPos(C_Map.GetBestMapForUnit('player'),
+            local ix, iy = APR:GetPlayerMapPos(C_Map.GetBestMapForUnit('player'),
                 APR.QuestStepList[APR.ActiveMap][CurStep + 2]["TT"]["y"],
                 APR.QuestStepList[APR.ActiveMap][CurStep + 2]["TT"]
                 ["x"])
@@ -354,7 +329,7 @@ function APR:MoveIcons()
         if (not C_Map.GetBestMapForUnit('player')) then
             return
         end
-        local px, py = GetPlayerMapPos(C_Map.GetBestMapForUnit('player'))
+        local px, py = APR:GetPlayerMapPos(C_Map.GetBestMapForUnit('player'))
         local CLi, CLi2
         for CLi = 1, 20 do
             if (not px) then
@@ -427,7 +402,7 @@ function APR:MoveMapIcons()
             if (not SetMapIDs) then
                 return
             end
-            ix, iy = GetPlayerMapPos(SetMapIDs, steps["TT"]["y"], steps["TT"]["x"])
+            ix, iy = APR:GetPlayerMapPos(SetMapIDs, steps["TT"]["y"], steps["TT"]["x"])
         else
             return
         end
@@ -449,7 +424,7 @@ function APR:MoveMapIcons()
         if (not SetMapIDs) then
             return
         end
-        local px, py = GetPlayerMapPos(SetMapIDs)
+        local px, py = APR:GetPlayerMapPos(SetMapIDs)
         if (not px) then
             return
         end
@@ -488,7 +463,7 @@ function APR:MoveMapIcons()
         if (not SetMapIDs) then
             return
         end
-        local px, py = GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["y"],
+        local px, py = APR:GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["y"],
             APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["x"])
         local CLi, CLi2
         if (not APR.QuestStepList[APR.ActiveMap][CurStep + 1] or APR.QuestStepList[APR.ActiveMap][CurStep + 1]["ZoneDoneSave"]) then
@@ -499,7 +474,7 @@ function APR:MoveMapIcons()
             if (not SetMapIDs) then
                 return
             end
-            local ix, iy = GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["y"],
+            local ix, iy = APR:GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["y"],
                 APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["x"])
             for CLi = 1, 20 do
                 local px2, py2
@@ -535,10 +510,10 @@ function APR:MoveMapIcons()
             if (not SetMapIDs) then
                 return
             end
-            local px, py = GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["y"],
+            local px, py = APR:GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["y"],
                 APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["x"])
             local CLi, CLi2
-            local ix, iy = GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][CurStep + 2]["TT"]["y"],
+            local ix, iy = APR:GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][CurStep + 2]["TT"]["y"],
                 APR.QuestStepList[APR.ActiveMap][CurStep + 2]["TT"]["x"])
             for CLi = 1, 20 do
                 local px2, py2
@@ -567,7 +542,7 @@ function APR:MoveMapIcons()
         if (not SetMapIDs) then
             return
         end
-        local px, py = GetPlayerMapPos(SetMapIDs)
+        local px, py = APR:GetPlayerMapPos(SetMapIDs)
         local CLi, CLi2
         for CLi = 1, 20 do
             if (not px) then
@@ -611,7 +586,7 @@ APR.ButtonList = {}
 APR.BreadCrumSkips = {}
 APR.SetButtonVar = nil
 APR.ButtonVisual = nil
-local function APR_SettingsButtons()
+local function APR_SettingsButtons() --TODO macro button rework
     local CLi
     for CLi = 1, 3 do
         local itemName, _, _, _, _, _, _, _, _, itemTexture = GetItemInfo(6948)
@@ -626,6 +601,7 @@ local function APR_SettingsButtons()
         APR.QuestList2["BF" .. CLi]:Show()
     end
 end
+
 function APR.ChkBreadcrums(qids)
     if (qids and APR.Breadcrums and APR.Breadcrums[qids]) then
         for APR_index, APR_value in pairs(APR.Breadcrums[qids]) do
@@ -642,10 +618,12 @@ local function APR_SendGroup()
         APR.LastSent = APRData[APR.Realm][APR.Name][APR.ActiveMap]
     end
 end
+
 local function APR_LeaveQuest(QuestIDs)
     C_QuestLog.SetSelectedQuest(QuestIDs)
     C_QuestLog.AbandonQuest()
 end
+
 local function APR_ExitVhicle()
     VehicleExit()
 end
@@ -671,6 +649,7 @@ local function APR_QAskPopWanted()
         APR.QuestList.SugQuestFrame:Show()
     end
 end
+
 function APR.QAskPopWantedAsk(APR_answer)
     local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
     local steps
@@ -690,7 +669,7 @@ function APR.QAskPopWantedAsk(APR_answer)
     end
 end
 
-local function APR_PrintQStep()
+local function APR_PrintQStep() -- TODO Rework display quest step
     if (APR.settings.profile.debug) then
         print("Function: APR_PrintQStep()")
     end
@@ -1030,12 +1009,6 @@ local function APR_PrintQStep()
                 APR.BookingList["PrintQStep"] = 1
             end
         end
-        -- check if you have the lvl and the skill in your spell book
-        function DisplayRiding(text)
-            LineNr = LineNr + 1
-            APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(text))
-            APR.QuestList.QuestFrames[LineNr]:Show()
-        end
 
         if ((steps["ExtraLine"] or steps["ExtraLineText"] or steps["ExtraLineText2"]) and APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
             LineNr = LineNr + 1
@@ -1274,7 +1247,7 @@ local function APR_PrintQStep()
                             LineNr = LineNr + 1
                             local ZeTExt
                             if (APR.ActiveQuests["57713-4"] and UIWidgetTopCenterContainerFrame and UIWidgetTopCenterContainerFrame["widgetFrames"]) then
-                                for APR_index2, APR_value2 in APR.pairsByKeys(UIWidgetTopCenterContainerFrame["widgetFrames"]) do
+                                for APR_index2, APR_value2 in PairsByKeys(UIWidgetTopCenterContainerFrame["widgetFrames"]) do
                                     if (UIWidgetTopCenterContainerFrame["widgetFrames"][APR_index2]["Text"]) then
                                         ZeTExt = UIWidgetTopCenterContainerFrame["widgetFrames"][APR_index2]["Text"]
                                             :GetText()
@@ -1968,6 +1941,7 @@ local function APR_PrintQStep()
         end
     end
 end
+
 function APR.TrimPlayerServer(CLPName)
     if (string.find(CLPName, "(.*)-(.*)")) then
         local _, _, CL_First, CL_Rest = string.find(CLPName, "(.*)-(.*)")
@@ -2315,7 +2289,8 @@ local function APR_UpdateQuest()
         APR.BookingList["PrintQStep"] = 1
     end
 end
-function APR.MacroFinder()
+
+function APR.MacroFinder() --TODO macro button rework
     if (APR.settings.profile.debug) then
         print("Function: APR.MacroFinder()")
     end
@@ -2329,7 +2304,7 @@ function APR.MacroFinder()
     return false, nil
 end
 
-function APR.CreateMacro()
+function APR.CreateMacro() --TODO macro button rework
     if InCombatLockdown() then
         return
     end
@@ -2348,13 +2323,13 @@ function APR.CreateMacro()
     end
 end
 
-function APR.MacroUpdater(macroSlot, itemName, APRextra)
+function APR.MacroUpdater(macroSlot, itemName, APRextra) --TODO macro button rework
     APR.MacroUpdaterVar[1] = macroSlot
     APR.MacroUpdaterVar[2] = itemName
     APR.MacroUpdaterVar[3] = APRextra
 end
 
-function APR.MacroUpdater2(macroSlot, itemName, APRextra)
+function APR.MacroUpdater2(macroSlot, itemName, APRextra) --TODO macro button rework
     if (APR.settings.profile.debug) then
         print("Function: APR.MacroUpdater()")
     end
@@ -2435,6 +2410,7 @@ local function APR_QuestStepIds()
         return
     end
 end
+
 local function APR_RemoveQuest(questID)
     APR.ActiveQuests[questID] = nil
     for APR_index, APR_value in pairs(APR.ActiveQuests) do
@@ -2464,6 +2440,7 @@ local function APR_RemoveQuest(questID)
     end
     APR.BookingList["PrintQStep"] = 1
 end
+
 local function APR_AddQuest(questID)
     APR.ActiveQuests[questID] = "P"
     local IdList, StepP = APR_QuestStepIds()
@@ -2487,16 +2464,12 @@ local function APR_AddQuest(questID)
     end
     APR.BookingList["PrintQStep"] = 1
 end
+
 local function APR_UpdateMapId()
     if (APR.settings.profile.debug) then
         print("Function: APR_UpdateMapId()")
     end
     local OldMap = APR.ActiveMap
-    local levelcheck = 0
-    local levelcheck80 = 0
-    local levelcheck90 = 0
-    local levelcheck100 = 0
-    local levelcheck110 = 0
     APR.Level = UnitLevel("player")
     APR.ActiveMap = C_Map.GetBestMapForUnit("player")
     local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
@@ -2549,6 +2522,7 @@ local function APR_UpdateMapId()
     APR.BookingList["PrintQStep"] = 1
     C_Timer.After(0.2, APR_BookQStep)
 end
+
 local function APR_CheckZonePick()
     if (APR.ActiveMap == 862) then
         if (C_QuestLog.IsQuestFlaggedCompleted(50963) == false and (APR.ActiveQuests[47514] or C_QuestLog.IsQuestFlaggedCompleted(47514) == true)) then
@@ -2603,6 +2577,7 @@ local function APR_CheckDistance()
     end
     return 0
 end
+
 local function APR_SetQPTT()
     if (APR.settings.profile.debug) then
         print("Function: APR_SetQPTT()")
@@ -2620,6 +2595,7 @@ local function APR_SetQPTT()
         APR["MapIcons"][1].A = 1
     end
 end
+
 local function APR_PosTest()
     local d_y, d_x = UnitPosition("player")
     if (not d_y) then
@@ -2711,7 +2687,8 @@ local function APR_PosTest()
         end
     end
 end
-local function APR_LoopBookingFunc()
+
+local function APR_LoopBookingFunc() --TODO rework BookingList
     if (not APR.BookingList) then
         APR.BookingList = {}
     end
@@ -2879,7 +2856,8 @@ local function APR_LoopBookingFunc()
         APR_ArrowUpdateNr = APR_ArrowUpdateNr + 1
     end
 end
-local function APR_BuyMerchFunc()
+
+local function APR_BuyMerchFunc() -- TODO Rework Buy item funtion
     local i
     for i = 1, GetMerchantNumItems() do
         local link = GetMerchantItemLink(i)
@@ -2894,6 +2872,7 @@ local function APR_BuyMerchFunc()
         end
     end
 end
+
 local function APR_PopupFunc()
     if (GetNumAutoQuestPopUps() > 0) then
         local questID, popUpType = GetAutoQuestPopUp(1)
@@ -2908,16 +2887,13 @@ local function APR_PopupFunc()
         C_Timer.After(1, APR_PopupFunc)
     end
 end
+
 function APR_BookQStep()
     APR.BookingList["UpdateQuest"] = 1
     APR.BookingList["PrintQStep"] = 1
     if (APR.settings.profile.debug) then
         print("Extra BookQStep")
     end
-end
-
-function APR_UpdMapIDz()
-    APR.BookingList["UpdateMapId"] = 1
 end
 
 function APR_UpdQuestThing()
@@ -2939,7 +2915,7 @@ function APR_UpdQuestThing()
     end
 end
 
-function APR_UpdatezeMapId()
+function APR_BookingUpdateMapId()
     APR.BookingList["UpdateMapId"] = 1
 end
 
@@ -2947,6 +2923,7 @@ local function APR_ZoneResetQnumb()
     QNumberLocal = 0
     APR_SetQPTT()
 end
+
 function APR.GroupListingFunc(APR_StepStuffs, APR_GListName)
     if (not APR.GroupListSteps[1]) then
         APR.GroupListSteps[1] = {}
@@ -3075,11 +3052,9 @@ APR_QH_EventFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_ADDON")
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_MONSTER_SAY")
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN")
-APR_QH_EventFrame:RegisterEvent("LEARNED_SPELL_IN_TAB")
 APR_QH_EventFrame:RegisterEvent("UNIT_AURA")
 APR_QH_EventFrame:RegisterEvent("PLAYER_CHOICE_UPDATE")
 APR_QH_EventFrame:RegisterEvent("REQUEST_CEMETERY_LIST_RESPONSE")
-APR_QH_EventFrame:RegisterEvent("AJ_REFRESH_DISPLAY")
 APR_QH_EventFrame:RegisterEvent("UPDATE_UI_WIDGET")
 
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
@@ -3092,19 +3067,10 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             APR.BookingList["PrintQStep"] = 1
         end
     end
-    if (event == "AJ_REFRESH_DISPLAY") then
-    end
     if (event == "REQUEST_CEMETERY_LIST_RESPONSE") then
         APR.BookingList["UpdateMapId"] = 1
         C_Timer.After(1, APR_ZoneResetQnumb)
         C_Timer.After(1, APR_BookQStep)
-    end
-    if (event == "LEARNED_SPELL_IN_TAB") then
-        if (steps and steps["SpellInTab"]) then
-            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-            APR.BookingList["UpdateQuest"] = 1
-            APR.BookingList["PrintQStep"] = 1
-        end
     end
     if (event == "QUEST_LOG_UPDATE") then
         C_Timer.After(0.2, APR_UpdQuestThing)
@@ -3168,7 +3134,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             C_Timer.After(2, APR.CheckSweatBuffz)
         end
     end
-    if (event == "PLAYER_TARGET_CHANGED") then
+    if (event == "PLAYER_TARGET_CHANGED") then -- TODO rework for custom target and action
         local npc_id, name = GetTargetID(), UnitName("target")
         if (npc_id and name) then
             if (APR.ActiveQuests and APR.ActiveQuests["55981-3"] and APR.ActiveQuests["55981-3"] ~= "C" and npc_id == 153580) then
@@ -3186,13 +3152,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             APR.BookingList["PrintQStep"] = 1
             C_Timer.After(2, APR_BookQStep)
             C_Timer.After(4, APR_BookQStep)
-        end
-    end
-    if (event == "UNIT_ENTERED_VEHICLE") then
-        if (steps and steps["MountVehicle"]) then
-            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-            APR.BookingList["UpdateQuest"] = 1
-            APR.BookingList["PrintQStep"] = 1
         end
     end
     if (event == "PLAYER_REGEN_ENABLED") then
@@ -3232,6 +3191,11 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             if (steps and steps["InVehicle"]) then
                 APR.BookingList["PrintQStep"] = 1
             end
+        end
+        if (steps and steps["MountVehicle"]) then
+            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
+            APR.BookingList["UpdateQuest"] = 1
+            APR.BookingList["PrintQStep"] = 1
         end
     end
     if (event == "QUEST_AUTOCOMPLETE") then
@@ -3543,8 +3507,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (APR.settings.profile.debug) then
             print(L["Q_ACCEPTED"] .. ": " .. arg1)
         end
-        C_Timer.After(0.2, APR_UpdMapIDz)
-        C_Timer.After(3, APR_UpdMapIDz)
+        C_Timer.After(0.2, APR_BookingUpdateMapId)
+        C_Timer.After(3, APR_UpdateMapId)
         if (arg2 and arg2 > 0 and not APR.ActiveQuests[arg2]) then
             APR.BookingList["AddQuest"] = arg2
         end
@@ -3581,14 +3545,14 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "ZONE_CHANGED") then
         QNumberLocal = 0
         if (not APR.ZoneTransfer) then
-            C_Timer.After(2, APR_UpdatezeMapId)
+            C_Timer.After(2, APR_BookingUpdateMapId)
             C_Timer.After(3, APR_ZoneResetQnumb)
             APR.BookingList["UpdateMapId"] = 1
         end
     end
     if (event == "ZONE_CHANGED_NEW_AREA") then
         if (not APR.ZoneTransfer) then
-            C_Timer.After(2, APR_UpdatezeMapId)
+            C_Timer.After(2, APR_BookingUpdateMapId)
             APR.BookingList["UpdateMapId"] = 1
         end
     end
@@ -3717,7 +3681,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             end
         end
     end
-    if (event == "CHAT_MSG_MONSTER_SAY") then
+    if (event == "CHAT_MSG_MONSTER_SAY") then -- TODO rework chat quest message for all languages
         local arg1, arg2, arg3, arg4 = ...;
         local npc_id, name = GetTargetID(), UnitName("target")
         if (npc_id and name) then

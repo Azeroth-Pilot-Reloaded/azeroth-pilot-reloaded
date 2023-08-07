@@ -90,14 +90,6 @@ function IsPickupStep()
     return false
 end
 
-function NumToBool(value)
-    return value == 1
-end
-
-function Booltonumber(value)
-    return value and 1 or 0
-end
-
 function Contains(list, x)
     if list then
         for _, v in pairs(list) do
@@ -114,10 +106,26 @@ function IsTableEmpty(table)
     return false
 end
 
-function APR_AcceptQuest()
+function PairsByKeys(t, f)
+    local a = {}
+    for n in pairs(t) do table.insert(a, n) end
+    table.sort(a, f)
+    local i = 0
+    local iter = function()
+        i = i + 1
+        if a[i] == nil then
+            return nil
+        else
+            return a[i], t[a[i]]
+        end
+    end
+    return iter
+end
+
+function APR_AcceptQuest() -- TODO rework
     AcceptQuest()
 end
 
-function APR_CloseQuest()
+function APR_CloseQuest() -- TODO rework
     CloseQuest()
 end
