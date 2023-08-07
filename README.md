@@ -33,7 +33,8 @@
 <p style="text-align: left; padding-left: 30px;"><span style="font-family: arial; font-size: 12px;"><strong><em>/apr rollback, rb</em></strong><span style="font-family: arial;"> - This will roll back one step (opposite of skip, useful if you skipped one too far).</span></span></p>
 <p style="text-align: left; padding-left: 30px;"><span style="font-family: arial; font-size: 12px;"><em><strong>/apr reset, r</strong></em> - This will reset your steps for your current zone. Useful if you accidentally went off track or skipped way too far ahead.<br /></span></p>
 <p style="text-align: left; padding-left: 30px;"><span style="font-family: arial; font-size: 12px;"><strong><em>/apr forcereset, fr</em></strong> <span style="font-family: arial; font-size: 12px;">- This will reset APR's saved character cache, this is useful if you run into a major issue with syncing, or started questing, deleted the character and remade a new one using the same name.</span></span></p>
-<p style="text-align: left; padding-left: 30px;"><span style="font-family: arial; font-size: 12px;"><em><strong>/apr discord, d</strong></em> - This displays the URL for the Discord to copy<br /></span></p>
+<p style="text-align: left; padding-left: 30px;"><span style="font-family: arial; font-size: 12px;"><em><strong>/apr discord</strong></em> - This displays the URL for the Discord to copy<br /></span></p>
+<p style="text-align: left; padding-left: 30px;"><span style="font-family: arial; font-size: 12px;"><em><strong>/apr github</strong></em> - This displays the URL for the Github to copy<br /></span></p>
 <p style="text-align: left;">&nbsp;</p>
 <hr />
 <p style="text-align: left;"><span style="font-family: arial; font-size: 18px;">Here's how <em>Azeroth Auto Pilot</em> became <em>Azeroth Pilot Reloaded.</em></span></p>
