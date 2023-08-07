@@ -12,13 +12,13 @@ jobs:
       CF_API_KEY: ${{ secrets.CF_API_KEY }}
       WOWI_API_TOKEN: ${{ secrets.WOWI_API_TOKEN }}
       WAGO_API_TOKEN: ${{ secrets.WAGO_API_TOKEN }}
-      GITHUB_OAUTH: ${{ secrets.GIT_TOKEN }}  
+      GITHUB_OAUTH: ${{ secrets.AZEROTH_PILOT_RELOADED }}
 
     steps:
       - name: Clone project
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  
+          fetch-depth: 0
 
       # - name: Install and run Luacheck
       #   uses: nebularg/actions-luacheck@v1
