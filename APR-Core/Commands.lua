@@ -10,6 +10,7 @@ function APR:SlashCmd(input)
     elseif (input == "forcereset" or input == "fr") then
         APRData = {};
         APR_ZoneComplete[APR.Name .. "-" .. APR.Realm] = nil;
+        APR.ZoneQuestOrder:Hide()
         C_UI.Reload()
     elseif (input == "skip" or input == "s" or input == "skippiedoodaa") then
         -- Command for skipping the current quest step

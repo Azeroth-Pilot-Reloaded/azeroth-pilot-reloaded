@@ -2982,6 +2982,9 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         if (not APRData[APR.Realm][APR.Name]["WantedQuestList"]) then
             APRData[APR.Realm][APR.Name]["WantedQuestList"] = {}
         end
+        if (not APR.settings.profile.showQuestOrderList) then
+            APR.ZoneQuestOrder:Hide()
+        end
         APR.ZoneQuestOrder:SetScale(APR.settings.profile.questOrderListScale)
         APR.ArrowFrame:SetScale(APR.settings.profile.arrowScale)
         APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
