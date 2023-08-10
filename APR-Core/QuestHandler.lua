@@ -594,8 +594,8 @@ local function APR_SettingsButtons() --TODO macro button rework
         APR.QuestList2["BF" .. CLi]["APR_Buttonntex"]:SetTexture(itemTexture)
         --APR.QuestList2["BF"..CLi]["APR_Button"]:SetNormalTexture(itemTexture)
         APR.QuestList2["BF" .. CLi]["APR_Button"]:SetText("")
-        local Topz = APR.settings.profile.questListButtonLeft
-        local Topz2 = APR.settings.profile.questListButtonTop
+        local Topz = APR.settings.profile.currentStepButtonLeft
+        local Topz2 = APR.settings.profile.currentStepButtonTop
         APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", Topz, Topz2)
         APR.QuestList2["BF" .. CLi]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT", 0, -((CLi * 38) + CLi))
         APR.QuestList2["BF" .. CLi]:Show()
@@ -1958,8 +1958,8 @@ function APR.SetButton()
     if (APR.SettingsOpen) then
         local CLi
         for CLi = 1, 3 do
-            local Topz = APR.settings.profile.questListButtonLeft
-            local Topz2 = APR.settings.profile.questListButtonTop
+            local Topz = APR.settings.profile.currentStepButtonLeft
+            local Topz2 = APR.settings.profile.currentStepButtonTop
             APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", Topz, Topz2)
             APR.QuestList2["BF" .. CLi]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT", 0, -((CLi * 38) + CLi))
         end
@@ -2008,8 +2008,8 @@ function APR.SetButton()
                                 else
                                     APR.QuestList2["BF" .. APR_value2]:Hide()
                                 end
-                                local Topz = APR.settings.profile.questListButtonLeft
-                                local Topz2 = APR.settings.profile.questListButtonTop
+                                local Topz = APR.settings.profile.currentStepButtonLeft
+                                local Topz2 = APR.settings.profile.currentStepButtonTop
                                 APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", Topz, Topz2)
                                 APR.QuestList2["BF" .. APR_value2]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT",
                                     0,
@@ -2064,8 +2064,8 @@ function APR.SetButton()
                             end)
                         APR.QuestList2["BF" .. APR.Dinged100nr]["APR_Button"]:SetScript("OnLeave",
                             function(self) GameTooltip:Hide() end)
-                        local Topz = APR.settings.profile.questListButtonLeft
-                        local Topz2 = APR.settings.profile.questListButtonTop
+                        local Topz = APR.settings.profile.currentStepButtonLeft
+                        local Topz2 = APR.settings.profile.currentStepButtonTop
                         APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", Topz, Topz2)
                         APR.QuestList2["BF" .. APR.Dinged100nr]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT", 0,
                             -((APR.Dinged100nr * 38) + APR.Dinged100nr))
@@ -2113,8 +2113,8 @@ function APR.SetButton()
                             end)
                         APR.QuestList2["BF" .. APR.Dinged100nr]["APR_Button"]:SetScript("OnLeave",
                             function(self) GameTooltip:Hide() end)
-                        local Topz = APR.settings.profile.questListButtonLeft
-                        local Topz2 = APR.settings.profile.questListButtonTop
+                        local Topz = APR.settings.profile.currentStepButtonLeft
+                        local Topz2 = APR.settings.profile.currentStepButtonTop
                         APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", Topz, Topz2)
                         APR.QuestList2["BF" .. APR.Dinged100nr]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT", 0,
                             -((APR.Dinged100nr * 38) + APR.Dinged100nr))
@@ -2140,8 +2140,8 @@ function APR.SetButton()
         APR.ButtonVisual = nil
     end
     if (not InCombatLockdown()) then
-        APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.questListButtonLeft,
-            APR.settings.profile.questListButtonTop)
+        APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.currentStepButtonLeft,
+            APR.settings.profile.currentStepButtonTop)
     end
 end
 

@@ -33,10 +33,9 @@ function APR:GetPlayerMapPos(MapID, dx, dy, notCheckMapID)
     -- If the zone does not have a rect yet, calculate and store it for later use
     if not R then
         R = {};
-        local _, mapPos1 = C_Map.GetWorldPosFromMapPos(MapID, CreateVector2D(0, 0));
-        local _, mapPos2 = C_Map.GetWorldPosFromMapPos(MapID, CreateVector2D(1, 1));
-        R[1] = mapPos1;
-        R[2] = mapPos2 - mapPos1;
+        _, R[1] = C_Map.GetWorldPosFromMapPos(MapID, CreateVector2D(0, 0));
+        _, R[2] = C_Map.GetWorldPosFromMapPos(MapID, CreateVector2D(1, 1));
+        R[2]:Subtract(R[1]);
         MapRects[MapID] = R;
     end
 

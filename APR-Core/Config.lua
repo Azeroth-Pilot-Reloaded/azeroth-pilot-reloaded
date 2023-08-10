@@ -53,15 +53,15 @@ function APR.settings:InitializeSettings()
             autoSkipCutScene = true, -- CutScene
             autoFlight = true,
             -- current step
-            showCurrentStep = true,     --showQList
-            lockCurrentStep = false,    --Lock
-            currentStepScale = 0.5,     --Scale
+            showCurrentStep = true,           --showQList
+            lockCurrentStep = false,          --Lock
+            currentStepScale = 0.5,           --Scale
             -- quest order list
-            showQuestOrderList = false, --ShowQuestListOrder
-            questOrderListScale = 1,    --OrderListScale
+            showQuestOrderList = false,       --ShowQuestListOrder
+            questOrderListScale = 1,          --OrderListScale
             --Quest button (not working)
-            questButtonDetatch = false, -- QuestButtonDetatch
-            questButtonsScale = 0.5,    -- QuestButtons
+            currentStepButtonDetatch = false, -- currentStepButtonDetatch
+            currentStepButtonScale = 0.5,     -- QuestButtons
             -- arrow
             showArrow = true,
             lockArrow = false,
@@ -87,8 +87,8 @@ function APR.settings:InitializeSettings()
             -- position
             leftLiz = 150,
             topLiz = -150,
-            questListButtonLeft = 150,              -- left
-            questListButtonTop = -150,              -- top
+            currentStepButtonLeft = 150,            -- left
+            currentStepButtonTop = -150,            -- top
             partyLeft = _G.GetScreenWidth() / 2.5,  -- Partyleft
             partyTop = -(_G.GetScreenHeight() / 4), -- Partytop
             sugQuestLeft = 150,                     -- Sugleft
@@ -276,13 +276,13 @@ function APR.settings:createBlizzOptions()
                             return not self.profile.showCurrentStep
                         end,
                     },
-                    blank_questButtonDetatch = {
+                    blank_currentStepButtonDetatch = {
                         order = 5.3,
                         type = "description",
                         name = "",
                         width = "full",
                     },
-                    questButtonDetatch = {
+                    currentStepButtonDetatch = {
                         order = 5.4,
                         type = "toggle",
                         name = L["DETACH_Q_ITEM_BTN"],
@@ -293,8 +293,8 @@ function APR.settings:createBlizzOptions()
                             SetProfileOption(info, value)
                             if not value then
                                 APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT",
-                                    APR.settings.profile.questListButtonLeft,
-                                    APR.settings.profile.questListButtonTop)
+                                    APR.settings.profile.currentStepButtonLeft,
+                                    APR.settings.profile.currentStepButtonTop)
                                 for CLi = 1, 3 do
                                     APR.QuestList2["BF" .. CLi]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT", 0,
                                         -((CLi * 38) + CLi))
@@ -307,7 +307,7 @@ function APR.settings:createBlizzOptions()
                         end,
                         hidden = false -- to hide useless/broken settings
                     },
-                    questButtonsScale = {
+                    currentStepButtonScale = {
                         order = 5.41,
                         type = "range",
                         name = L["Q_BTN_SCALE"],
@@ -325,7 +325,7 @@ function APR.settings:createBlizzOptions()
                             end
                         end,
                         disabled = function()
-                            return not self.profile.showCurrentStep or not self.profile.questButtonDetatch
+                            return not self.profile.showCurrentStep or not self.profile.currentStepButtonDetatch
                         end,
                         hidden = false -- to hide useless/broken settings
                     },

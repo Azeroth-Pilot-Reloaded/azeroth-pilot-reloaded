@@ -275,15 +275,15 @@ local function APR_CreateQuestList()
     APR.QuestList.MainFrame:SetMovable(true)
     APR.QuestList.MainFrame:EnableMouse(true)
     APR.QuestList.MainFrame:SetFrameStrata("MEDIUM")
-    APR.QuestList.MainFrame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.questListButtonLeft,
-        APR.settings.profile.questListButtonTop)
+    APR.QuestList.MainFrame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.currentStepButtonLeft,
+        APR.settings.profile.currentStepButtonTop)
     APR.QuestList.ListFrame = CreateFrame("frame", "APR_QuestFrameList", UIParent)
-    if (APR.settings.profile.questListButtonTop > 6) then
-        APR.settings.profile.questListButtonLeft = 150
-        APR.settings.profile.questListButtonTop = -150
+    if (APR.settings.profile.currentStepButtonTop > 6) then
+        APR.settings.profile.currentStepButtonLeft = 150
+        APR.settings.profile.currentStepButtonTop = -150
         APR.QuestList.MainFrame:ClearAllPoints()
-        APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR.settings.profile.questListButtonLeft,
-            APR.settings.profile.questListButtonTop)
+        APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR.settings.profile.currentStepButtonLeft,
+            APR.settings.profile.currentStepButtonTop)
         print("APR: " .. L["QLIST_OUT_SCREEN"])
     end
     APR.QuestList.ListFrame:SetWidth(1)
@@ -302,17 +302,17 @@ local function APR_CreateQuestList()
         if button == "LeftButton" and APR.QuestList.MainFrame.isMoving then
             APR.QuestList.MainFrame:StopMovingOrSizing();
             APR.QuestList.MainFrame.isMoving = false;
-            APR.settings.profile.questListButtonLeft = APR.QuestList.MainFrame:GetLeft()
-            APR.settings.profile.questListButtonTop = APR.QuestList.MainFrame:GetTop() - GetScreenHeight()
+            APR.settings.profile.currentStepButtonLeft = APR.QuestList.MainFrame:GetLeft()
+            APR.settings.profile.currentStepButtonTop = APR.QuestList.MainFrame:GetTop() - GetScreenHeight()
             APR.QuestList.MainFrame:ClearAllPoints()
-            APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR.settings.profile.questListButtonLeft,
-                APR.settings.profile.questListButtonTop)
-            if (APR.settings.profile.questListButtonTop > 6) then
-                APR.settings.profile.questListButtonLeft = 150
-                APR.settings.profile.questListButtonTop = -150
+            APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR.settings.profile.currentStepButtonLeft,
+                APR.settings.profile.currentStepButtonTop)
+            if (APR.settings.profile.currentStepButtonTop > 6) then
+                APR.settings.profile.currentStepButtonLeft = 150
+                APR.settings.profile.currentStepButtonTop = -150
                 APR.QuestList.MainFrame:ClearAllPoints()
-                APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR.settings.profile.questListButtonLeft,
-                    APR.settings.profile.questListButtonTop)
+                APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR.settings.profile.currentStepButtonLeft,
+                    APR.settings.profile.currentStepButtonTop)
                 print("APR: " .. L["QLIST_OUT_SCREEN"])
             end
             APR_CombatTestVar = 1
@@ -329,8 +329,8 @@ local function APR_CreateQuestList()
     APR.QuestList20:SetWidth(1)
     APR.QuestList20:SetHeight(1)
     APR.QuestList20:SetFrameStrata("MEDIUM")
-    APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.questListButtonLeft,
-        APR.settings.profile.questListButtonTop)
+    APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.currentStepButtonLeft,
+        APR.settings.profile.currentStepButtonTop)
 
     APR.QuestList21 = CreateFrame("frame", "APR_QuestFrame21", UIParent)
     APR.QuestList21:SetWidth(1)
@@ -367,17 +367,17 @@ local function APR_CreateQuestList()
         if button == "LeftButton" and APR.QuestList.MainFrame.isMoving then
             APR.QuestList.MainFrame:StopMovingOrSizing();
             APR.QuestList.MainFrame.isMoving = false;
-            APR.settings.profile.questListButtonLeft = APR.QuestList.MainFrame:GetLeft()
-            APR.settings.profile.questListButtonTop = APR.QuestList.MainFrame:GetTop() - GetScreenHeight()
+            APR.settings.profile.currentStepButtonLeft = APR.QuestList.MainFrame:GetLeft()
+            APR.settings.profile.currentStepButtonTop = APR.QuestList.MainFrame:GetTop() - GetScreenHeight()
             APR.QuestList.MainFrame:ClearAllPoints()
-            APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR.settings.profile.questListButtonLeft,
-                APR.settings.profile.questListButtonTop)
-            if (APR.settings.profile.questListButtonTop > 6) then
-                APR.settings.profile.questListButtonLeft = 150
-                APR.settings.profile.questListButtonTop = -150
+            APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR.settings.profile.currentStepButtonLeft,
+                APR.settings.profile.currentStepButtonTop)
+            if (APR.settings.profile.currentStepButtonTop > 6) then
+                APR.settings.profile.currentStepButtonLeft = 150
+                APR.settings.profile.currentStepButtonTop = -150
                 APR.QuestList.MainFrame:ClearAllPoints()
-                APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR.settings.profile.questListButtonLeft,
-                    APR.settings.profile.questListButtonTop)
+                APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR.settings.profile.currentStepButtonLeft,
+                    APR.settings.profile.currentStepButtonTop)
                 print("APR: " .. L["QLIST_OUT_SCREEN"])
             end
             APR_CombatTestVar = 1
@@ -462,17 +462,17 @@ local function APR_CreateQuestList()
             if button == "LeftButton" and APR.QuestList.MainFrame.isMoving then
                 APR.QuestList.MainFrame:StopMovingOrSizing();
                 APR.QuestList.MainFrame.isMoving = false;
-                APR.settings.profile.questListButtonLeft = APR.QuestList.MainFrame:GetLeft()
-                APR.settings.profile.questListButtonTop = APR.QuestList.MainFrame:GetTop() - GetScreenHeight()
+                APR.settings.profile.currentStepButtonLeft = APR.QuestList.MainFrame:GetLeft()
+                APR.settings.profile.currentStepButtonTop = APR.QuestList.MainFrame:GetTop() - GetScreenHeight()
                 APR.QuestList.MainFrame:ClearAllPoints()
-                APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR.settings.profile.questListButtonLeft,
-                    APR.settings.profile.questListButtonTop)
-                if (APR.settings.profile.questListButtonTop > 6) then
-                    APR.settings.profile.questListButtonLeft = 150
-                    APR.settings.profile.questListButtonTop = -150
+                APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR.settings.profile.currentStepButtonLeft,
+                    APR.settings.profile.currentStepButtonTop)
+                if (APR.settings.profile.currentStepButtonTop > 6) then
+                    APR.settings.profile.currentStepButtonLeft = 150
+                    APR.settings.profile.currentStepButtonTop = -150
                     APR.QuestList.MainFrame:ClearAllPoints()
-                    APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR.settings.profile.questListButtonLeft,
-                        APR.settings.profile.questListButtonTop)
+                    APR.QuestList.MainFrame:SetPoint("TOPLEFT", APR.settings.profile.currentStepButtonLeft,
+                        APR.settings.profile.currentStepButtonTop)
                     print("APR: " .. L["QLIST_OUT_SCREEN"])
                 end
                 APR_CombatTestVar = 1
