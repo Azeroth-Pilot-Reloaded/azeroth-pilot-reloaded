@@ -670,6 +670,9 @@ function APR.QAskPopWantedAsk(APR_answer)
 end
 
 local function APR_PrintQStep() -- TODO Rework display quest step
+    if not APR.settings.profile.enableAddon then
+        return
+    end
     if (APR.settings.profile.debug) then
         print("Function: APR_PrintQStep()")
     end
@@ -2689,6 +2692,9 @@ local function APR_PosTest()
 end
 
 local function APR_LoopBookingFunc() --TODO rework BookingList
+    if not APR.settings.profile.enableAddon then
+        return
+    end
     if (not APR.BookingList) then
         APR.BookingList = {}
     end
@@ -3058,6 +3064,9 @@ APR_QH_EventFrame:RegisterEvent("REQUEST_CEMETERY_LIST_RESPONSE")
 APR_QH_EventFrame:RegisterEvent("UPDATE_UI_WIDGET")
 
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
+    if not APR.settings.profile.enableAddon then
+        return
+    end
     local autoAccept = APR.settings.profile.autoAccept
     local autoAcceptRoute = APR.settings.profile.autoAcceptQuestRoute
     local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]

@@ -3,6 +3,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Chat commands, such as /apr reset, /apr skip, /apr skipcamp
 function APR:SlashCmd(input)
+    if not APR.settings.profile.enableAddon then
+        _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
+    end
     if (input == "reset" or input == "r") then
         --Command for making the quest rescan on completion and reset, including previously skipped steps
         print("APR: " .. L["RESET_ZONE"])

@@ -241,7 +241,10 @@ function APR.settings:createBlizzOptions()
                                     APR.QuestList2["BF" .. CLi]:Hide()
                                 end
                             end
-                        end
+                        end,
+                        disabled = function()
+                            return not self.profile.enableAddon
+                        end,
                     },
                     lockCurrentStep = {
                         order = 5.11,
@@ -303,9 +306,8 @@ function APR.settings:createBlizzOptions()
                             end
                         end,
                         disabled = function()
-                            return not self.profile.showCurrentStep
+                            return not self.profile.showCurrentStep or not self.profile.enableAddon
                         end,
-                        hidden = false -- to hide useless/broken settings
                     },
                     currentStepButtonScale = {
                         order = 5.41,
@@ -327,7 +329,6 @@ function APR.settings:createBlizzOptions()
                         disabled = function()
                             return not self.profile.showCurrentStep or not self.profile.currentStepButtonDetatch
                         end,
-                        hidden = false -- to hide useless/broken settings
                     },
                 },
             },
@@ -351,7 +352,10 @@ function APR.settings:createBlizzOptions()
                             else
                                 APR.ZoneQuestOrder:Hide()
                             end
-                        end
+                        end,
+                        disabled = function()
+                            return not self.profile.enableAddon
+                        end,
                     },
                     questOrderListScale = {
                         order = 6.2,
@@ -380,7 +384,10 @@ function APR.settings:createBlizzOptions()
                         func = function()
                             APR.ZoneQuestOrder:ClearAllPoints()
                             APR.ZoneQuestOrder:SetPoint("CENTER", UIParent, "CENTER", 1, 1)
-                        end
+                        end,
+                        disabled = function()
+                            return not self.profile.enableAddon
+                        end,
                     },
                 },
             },
@@ -399,7 +406,10 @@ function APR.settings:createBlizzOptions()
                         set = function(info, value)
                             SetProfileOption(info, value)
                             if value then APR.ArrowActive = 1 end
-                        end
+                        end,
+                        disabled = function()
+                            return not self.profile.enableAddon
+                        end,
                     },
                     lockArrow = {
                         order = 7.11,
@@ -470,7 +480,10 @@ function APR.settings:createBlizzOptions()
                             APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT",
                                 self.profile.arrowleft,
                                 self.profile.arrowtop)
-                        end
+                        end,
+                        disabled = function()
+                            return not self.profile.enableAddon
+                        end,
                     },
                 }
             },
@@ -669,7 +682,10 @@ function APR.settings:createBlizzOptions()
                                     APR.PartyList.PartyFrames2[CLi]:Hide()
                                 end
                             end
-                        end
+                        end,
+                        disabled = function()
+                            return not self.profile.enableAddon
+                        end,
                     },
                     groupScale = {
                         order = 11.2,
@@ -713,8 +729,8 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value)
                                     SetProfileOption(info, value)
                                     -- disabled addon
+                                    self:ToggleAddon()
                                 end,
-                                disabled = true
                             },
                         }
                     },
@@ -731,6 +747,9 @@ function APR.settings:createBlizzOptions()
                                 width = "full",
                                 get = GetProfileOption,
                                 set = SetProfileOption,
+                                disabled = function()
+                                    return not self.profile.enableAddon
+                                end,
                             },
                             configMode = {
                                 order = 2.2,
@@ -748,7 +767,10 @@ function APR.settings:createBlizzOptions()
                                         APR.SettingsOpen = false
                                         APR.BookingList["ClosedSettings"] = true
                                     end
-                                end
+                                end,
+                                disabled = function()
+                                    return not self.profile.enableAddon
+                                end,
                             },
                         }
                     },
@@ -945,18 +967,58 @@ function APR.settings:CreateMiniMapButton()
         OnClick = function(_, button)
             if button == "RightButton" then
                 self.profile.enableAddon = not self.profile.enableAddon
+                self:ToggleAddon()
             else
                 _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
             end
         end,
         OnTooltipShow = function(tooltip)
+            local toggleAddon = ''
+            if self.profile.enableAddon then
+                toggleAddon = "|ccce0000f " .. L["DISABLE"] .. "|r"
+            else
+                toggleAddon = "|c33ecc00f " .. L["ENABLE"] .. "|r"
+            end
             tooltip:AddLine(APR.title)
             tooltip:AddLine(L["LEFT_CLICK"] .. ": |cffeda55f" .. L["SHOW_MENU"] .. "|r", 1, 1, 1)
-            tooltip:AddLine(L["RIGHT_CLICK"] .. ": |cffeda55f" .. L["TOGGLE_ADDON"] .. "|r", 1, 1, 1)
+            tooltip:AddLine(L["RIGHT_CLICK"] .. ": " .. toggleAddon .. "|cffeda55f " .. L["ADDON"] .. "|r", 1, 1, 1)
         end
     })
 
     libDBIcon:Register(APR.title, minimapButton, self.profile.minimap);
+end
+
+function APR.settings:ToggleAddon()
+    -- TODO Save old profile
+    if not self.profile.enableAddon then
+        -- settings disable
+        self.profile.showCurrentStep = false
+        self.profile.showQuestOrderList = false
+        self.profile.showArrow = false
+        self.profile.showGroup = false
+        -- frames
+        for CLi = 1, 10 do
+            APR.QuestList.QuestFrames[CLi]:Hide()
+            APR.QuestList.QuestFrames["FS" .. CLi].Button:Hide()
+            APR.QuestList2["BF" .. CLi]:Hide()
+        end
+        APR.ZoneQuestOrder:Hide()
+        for CLi = 1, 5 do
+            APR.PartyList.PartyFrames[CLi]:Hide()
+            APR.PartyList.PartyFrames2[CLi]:Hide()
+        end
+        APR.BookingList["ClosedSettings"] = true
+        APR.LoadInOptionFrame:Hide()
+        APR.RoutePlan.FG1:Hide()
+        APR.ArrowFrame:Hide()
+        APR.AfkFrame:Hide()
+    else
+        -- TODO load old profile
+        -- settings
+        self.profile.showCurrentStep = true
+        self.profile.showArrow = true
+        -- frames
+    end
 end
 
 --Discord frame

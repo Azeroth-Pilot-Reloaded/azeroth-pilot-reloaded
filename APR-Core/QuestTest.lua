@@ -147,6 +147,9 @@ function APR.ZoneQuestOrderList()
 end
 
 function APR.AddQuestOrderFrame(CLi)
+    if not APR.settings.profile.enableAddon then
+        return
+    end
     CLPos = CLi * 16
     APR.ZoneQuestOrder[CLi] = CreateFrame("frame", "APR_ZoneQuestOrder" .. CLi, APR.ZoneQuestOrder)
     APR.ZoneQuestOrder[CLi]:SetWidth(25)
@@ -248,6 +251,9 @@ function APR.AddQuestOrderFrame(CLi)
 end
 
 function APR.AddQuestIdFrame(CLi)
+    if not APR.settings.profile.enableAddon then
+        return
+    end
     CLPos = CLi * 16 + 16
 
     APR.ZoneQuestOrder["Order1iD"][CLi] = CreateFrame("frame", "APR_ZoneQuestOrder2AID" .. CLi, APR.ZoneQuestOrder)
@@ -301,6 +307,9 @@ function APR.AddQuestIdFrame(CLi)
 end
 
 function APR.AddQuestNameFrame(CLi)
+    if not APR.settings.profile.enableAddon then
+        return
+    end
     CLPos = CLi * 16 + 16
 
     APR.ZoneQuestOrder["OrderName"][CLi] = CreateFrame("frame", "APR_ZoneQuestOrder2NameD" .. CLi, APR.ZoneQuestOrder)
@@ -354,6 +363,9 @@ function APR.AddQuestNameFrame(CLi)
 end
 
 function APR.UpdateZoneQuestOrderList(APRmod)
+    if not APR.settings.profile.enableAddon then
+        return
+    end
     if (APR.settings.profile.debug) then
         print("Function: APR.UpdateZoneQuestOrderList()")
     end
@@ -875,6 +887,9 @@ function APR.UpdateZoneQuestOrderList(APRmod)
 end
 
 function APR.MakeMapOrderIcons(IdZs)
+    if not APR.settings.profile.enableAddon then
+        return
+    end
     APR["MapZoneIcons"][IdZs] = CreateFrame("Frame", "MapZoneOrderIcons", UIParent)
     APR["MapZoneIcons"][IdZs]:SetFrameStrata("MEDIUM")
     APR["MapZoneIcons"][IdZs]:SetWidth(20)

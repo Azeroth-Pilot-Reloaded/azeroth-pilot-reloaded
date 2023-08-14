@@ -170,7 +170,7 @@ function APR.FP.TestDestClick2(Zone)
     end
 end
 
-function APR.FP.ToyFPs()
+function APR.FP.ToyFPs() -- TODO rework map toy
     if (APR.settings.profile.debug) then
         print("Function: APR.FP.ToyFPs()")
     end
@@ -2267,6 +2267,9 @@ APR_Transport_EventFrame:RegisterEvent("TAXIMAP_OPENED")
 APR_Transport_EventFrame:RegisterEvent("PLAYER_LEAVING_WORLD")
 APR_Transport_EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
+    if not APR.settings.profile.enableAddon then
+        return
+    end
     if (event == "PLAYER_LEAVING_WORLD") then
         APR.FP.Zonening = 1
     elseif (event == "PLAYER_ENTERING_WORLD") then

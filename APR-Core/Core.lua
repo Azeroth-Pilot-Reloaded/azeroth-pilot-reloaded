@@ -3033,7 +3033,10 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         end)
         CoreLoadin = true
     end
-    if (event == "CINEMATIC_START") then  --Cutscene skip when cinematic starts
+    if (event == "CINEMATIC_START") then --Cutscene skip when cinematic starts
+        if not APR.settings.profile.enableAddon then
+            return
+        end
         if (not IsModifierKeyDown()) then -- unless control key is down
             local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
             local steps
