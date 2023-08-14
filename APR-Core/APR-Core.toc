@@ -9,20 +9,31 @@
 
 ## RequiredDeps: APR
 
-## SavedVariables: APR1, APR2, APR3, APRQuestNames, APR_HoldZoneVar, APR_Transport, APR_Custom, APR_ZoneComplete, APR_TaxiTimers
+## SavedVariables: APRSettings, APRData, APRQuestNames, APR_Transport, APR_Custom, APR_ZoneComplete, APR_TaxiTimers
 libs/embeds.xml
 locales/locales.xml
 
-Utils.lua
-Commands.lua
 Core.lua
+
+helpers/Utils.lua
+helpers/classes.lua
+
+PlayerPosition.lua
+Config.lua
+Commands.lua
+
 TransportDB.lua
-OptionsPanel.lua
 QuestList.lua
 QuestHandler.lua
-Minimap.lua
 QuestTest.lua
 Transport.lua
+
+Arrow.lua
+CurrentStep.lua
+Map.lua
+Party.lua
+QuestOrderList.lua
+AFK.lua
 
 zones\Alliance.lua
 zones\Horde.lua

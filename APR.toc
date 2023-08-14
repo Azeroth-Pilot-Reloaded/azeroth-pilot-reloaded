@@ -7,7 +7,10 @@
 ## IconTexture: Interface\AddOns\APR-Core\img\APR_logo
 ## Version: @project-version@
 
+## SavedVariables: APRSettings
+
 ## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.
-## X-Website: https://github.com/Rycia/azeroth-pilot-reloaded
+## X-Github: https://github.com/Rycia/azeroth-pilot-reloaded
+## X-Discord: https://discord.gg/YgcdybKdWX
 ## X-Curse-Project-ID: 618667
 ## X-WoWI-ID: 26457

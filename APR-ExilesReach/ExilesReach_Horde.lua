@@ -1,6 +1,5 @@
-local classes = require("helpers.classes")
 if (APR.Faction == "Horde") then
-	if (APR.Class[3] == classes["Warrior"] and APR.Level < 33) then
+	if (APR.ClassId == APR.Classes["Warrior"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -1402,7 +1401,7 @@ if (APR.Faction == "Horde") then
 				["Gossip"] = 1,
 				["SetHS"] = 34398,
 			},
-			
+
 			{
 				["Done"] = {
 					62568,
@@ -1418,7 +1417,7 @@ if (APR.Faction == "Horde") then
 			}, -- [2]
 		}
 	end
-	if (APR.Class[3] == classes["Paladin"] and APR.Level < 33) then
+	if (APR.ClassId == APR.Classes["Paladin"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -2854,7 +2853,7 @@ if (APR.Faction == "Horde") then
 				["Gossip"] = 1,
 				["SetHS"] = 34398,
 			},
-			
+
 			{
 				["Done"] = {
 					62568,
@@ -2870,7 +2869,7 @@ if (APR.Faction == "Horde") then
 			}, -- [2]
 		}
 	end
-	if (APR.Class[3] == classes["Hunter"] and APR.Level < 33) then
+	if (APR.ClassId == APR.Classes["Hunter"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -4368,7 +4367,7 @@ if (APR.Faction == "Horde") then
 				["Gossip"] = 1,
 				["SetHS"] = 34398,
 			},
-			
+
 			{
 				["Done"] = {
 					62568,
@@ -4384,7 +4383,7 @@ if (APR.Faction == "Horde") then
 			}, -- [2]
 		}
 	end
-	if (APR.Class[3] == classes["Rogue"] and APR.Level < 33) then
+	if (APR.ClassId == APR.Classes["Rogue"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -5812,7 +5811,7 @@ if (APR.Faction == "Horde") then
 				["Gossip"] = 1,
 				["SetHS"] = 34398,
 			},
-			
+
 			{
 				["Done"] = {
 					62568,
@@ -5828,7 +5827,7 @@ if (APR.Faction == "Horde") then
 			}, -- [2]
 		}
 	end
-	if (APR.Class[3] == classes["Priest"] and APR.Level < 33) then
+	if (APR.ClassId == APR.Classes["Priest"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -7222,7 +7221,7 @@ if (APR.Faction == "Horde") then
 				["Gossip"] = 1,
 				["SetHS"] = 34398,
 			},
-			
+
 			{
 				["Done"] = {
 					62568,
@@ -7238,7 +7237,7 @@ if (APR.Faction == "Horde") then
 			}, -- [2]
 		}
 	end
-	if (APR.Class[3] == classes["Shaman"] and APR.Level < 33) then
+	if (APR.ClassId == APR.Classes["Shaman"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -8629,7 +8628,7 @@ if (APR.Faction == "Horde") then
 				["Gossip"] = 1,
 				["SetHS"] = 34398,
 			},
-			
+
 			{
 				["Done"] = {
 					62568,
@@ -8645,7 +8644,7 @@ if (APR.Faction == "Horde") then
 			}, -- [2]
 		}
 	end
-	if (APR.Class[3] == classes["Mage"] and APR.Level < 33) then
+	if (APR.ClassId == APR.Classes["Mage"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -10055,7 +10054,7 @@ if (APR.Faction == "Horde") then
 				["Gossip"] = 1,
 				["SetHS"] = 34398,
 			},
-			
+
 			{
 				["Done"] = {
 					62568,
@@ -10071,7 +10070,7 @@ if (APR.Faction == "Horde") then
 			}, -- [2]
 		}
 	end
-	if (APR.Class[3] == classes["Warlock"] and APR.Level < 33) then
+	if (APR.ClassId == APR.Classes["Warlock"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -11479,7 +11478,7 @@ if (APR.Faction == "Horde") then
 				["Gossip"] = 1,
 				["SetHS"] = 34398,
 			},
-			
+
 			{
 				["Done"] = {
 					62568,
@@ -11495,7 +11494,7 @@ if (APR.Faction == "Horde") then
 			}, -- [2]
 		}
 	end
-	if (APR.Class[3] == classes["Monk"] and APR.Level < 33) then
+	if (APR.ClassId == APR.Classes["Monk"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -12893,7 +12892,7 @@ if (APR.Faction == "Horde") then
 				["Gossip"] = 1,
 				["SetHS"] = 34398,
 			},
-			
+
 			{
 				["Done"] = {
 					62568,
@@ -12909,7 +12908,7 @@ if (APR.Faction == "Horde") then
 			}, -- [2]
 		}
 	end
-	if (APR.Class[3] == classes["Druid"] and APR.Level < 33) then
+	if (APR.ClassId == APR.Classes["Druid"] and APR.Level < 33) then
 		APR.QuestStepList["1409-Exile's Reach"] = {
 			{
 				["PickUp"] = {
@@ -14268,7 +14267,7 @@ if (APR.Faction == "Horde") then
 				["Gossip"] = 1,
 				["SetHS"] = 34398,
 			},
-			
+
 			{
 				["Done"] = {
 					62568,
