@@ -21,7 +21,6 @@ body:
     label: Solution
     description: |
       Describe the solution that you would like to see implemented.
-    description:
   validations:
     required: true
 

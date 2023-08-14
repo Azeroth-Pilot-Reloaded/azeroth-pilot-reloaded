@@ -1,0 +1,16 @@
+{
+    "Lua.workspace.ignoreDir": [".vscode", "libs", "Scripts"],
+    "git.allowForcePush": true,
+    "Lua.diagnostics.disable": [
+        "undefined-field",
+        "redundant-parameter",
+        "missing-parameter",
+        "param-type-mismatch",
+        "cast-local-type",
+        "undefined-global"
+    ],
+    "[lua]": {
+        "editor.defaultFormatter": "sumneko.lua"
+    },
+    "Lua.diagnostics.globals": []
+}
