@@ -65,7 +65,7 @@ local function APR_CreateQuestList()
         APR.PartyList.PartyFrames[CLi].texture = t
 
         APR.PartyList.PartyFrames[CLi]:SetScript("OnMouseDown", function(self, button)
-            if button == "LeftButton" and not APR.settings.profile.lockCurrentStep then
+            if button == "LeftButton" and not APR.settings.profile.currentStepLock then
                 APR.PartyList.PartyFrame:StartMoving();
                 APR.PartyList.PartyFrame.isMoving = true;
             end
@@ -118,7 +118,7 @@ local function APR_CreateQuestList()
         APR.PartyList.PartyFrames2[CLi].texture = t
 
         APR.PartyList.PartyFrames2[CLi]:SetScript("OnMouseDown", function(self, button)
-            if button == "LeftButton" and not APR.settings.profile.lockCurrentStep then
+            if button == "LeftButton" and not APR.settings.profile.currentStepLock then
                 APR.PartyList.PartyFrame:StartMoving();
                 APR.PartyList.PartyFrame.isMoving = true;
             end
@@ -293,7 +293,7 @@ local function APR_CreateQuestList()
     APR.QuestList.ListFrame:SetMovable(true)
     APR.QuestList.ListFrame:EnableMouse(true)
     APR.QuestList.ListFrame:SetScript("OnMouseDown", function(self, button)
-        if button == "LeftButton" and not APR.QuestList.MainFrame.isMoving and not APR.settings.profile.lockCurrentStep then
+        if button == "LeftButton" and not APR.QuestList.MainFrame.isMoving and not APR.settings.profile.currentStepLock then
             APR.QuestList.MainFrame:StartMoving();
             APR.QuestList.MainFrame.isMoving = true;
         end
@@ -358,7 +358,7 @@ local function APR_CreateQuestList()
     APR.QuestList.QuestFrames["MyProgress"].texture = t
 
     APR.QuestList.QuestFrames["MyProgress"]:SetScript("OnMouseDown", function(self, button)
-        if button == "LeftButton" and not APR.QuestList.MainFrame.isMoving and not APR.settings.profile.lockCurrentStep then
+        if button == "LeftButton" and not APR.QuestList.MainFrame.isMoving and not APR.settings.profile.currentStepLock then
             APR.QuestList.MainFrame:StartMoving();
             APR.QuestList.MainFrame.isMoving = true;
         end
@@ -402,7 +402,7 @@ local function APR_CreateQuestList()
     APR.QuestList.QuestFrames["MyProgressFS"]:SetFontObject("GameFontNormalSmall")
     APR.QuestList.QuestFrames["MyProgressFS"]:SetText("")
     APR.QuestList.QuestFrames["MyProgressFS"]:SetTextColor(1, 1, 0)
-    if (not APR.settings.profile.showCurrentStep) then
+    if (not APR.settings.profile.currentStepShow) then
         APR.QuestList.QuestFrames["MyProgress"]:Hide()
     end
     local CLi
@@ -453,7 +453,7 @@ local function APR_CreateQuestList()
         APR.QuestList.QuestFrames[CLi].texture = t
 
         APR.QuestList.QuestFrames[CLi]:SetScript("OnMouseDown", function(self, button)
-            if button == "LeftButton" and not APR.QuestList.MainFrame.isMoving and not APR.settings.profile.lockCurrentStep then
+            if button == "LeftButton" and not APR.QuestList.MainFrame.isMoving and not APR.settings.profile.currentStepLock then
                 APR.QuestList.MainFrame:StartMoving();
                 APR.QuestList.MainFrame.isMoving = true;
             end

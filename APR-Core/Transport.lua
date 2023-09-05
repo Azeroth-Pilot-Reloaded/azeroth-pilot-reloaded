@@ -984,7 +984,7 @@ function APR.FP.GetMeToNextZone2()
             -- 	checkChromieTimeline(14)
             -- end
         end
-        if (not APR.settings.profile.showCurrentStep) then
+        if (not APR.settings.profile.currentStepShow) then
             APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["DESTINATION"] ..
                 ": " .. mapzinfoz.name .. ", " .. mapzinfoz2.name .. " (" .. GoToZone .. ")")
             APR.QuestList.QuestFrames[LineNr]:Show()

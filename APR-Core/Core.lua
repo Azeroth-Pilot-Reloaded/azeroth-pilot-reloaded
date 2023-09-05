@@ -1,4 +1,6 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+local DF = _G["DetailsFramework"]
+
 APR = {}
 APR = _G.LibStub("AceAddon-3.0"):NewAddon(APR, "APR", "AceEvent-3.0")
 
@@ -27,8 +29,10 @@ function APR:OnInitialize()
 
     -- Quest and Interface
     APR.QuestListLoadin = false
+    --TODO DELETE old
     APR.QuestList = {} --where the quest parts go
     APR.QuestListShown = 0
+
     APR.ActiveQuests = {}
     APR.NPCList = {}
     APR.Icons = {}
@@ -72,6 +76,9 @@ function APR:OnInitialize()
     APRData[APR.Realm][APR.Name] = APRData[APR.Realm][APR.Name] or {}
     APRData[APR.Realm][APR.Name].FirstLoad = APRData[APR.Realm][APR.Name].FirstLoad == nil and true or
         APRData[APR.Realm][APR.Name].FirstLoad
+
+    -- Init current step frame
+    APR.currentStep:CurrentStepFrameOnInit()
 end
 
 function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First character button

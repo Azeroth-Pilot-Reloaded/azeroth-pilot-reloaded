@@ -27,7 +27,6 @@ end
 function APR.settings:ResetSettings()
     SettingsDB:ResetProfile()
     self:RefreshProfile()
-    C_UI.Reload()
 end
 
 function APR.settings:InitializeBlizOptions()
@@ -53,15 +52,16 @@ function APR.settings:InitializeSettings()
             autoSkipCutScene = true, -- CutScene
             autoFlight = true,
             -- current step
-            showCurrentStep = true,           --showQList
-            lockCurrentStep = false,          --Lock
-            currentStepScale = 0.5,           --Scale
-            -- quest order list
-            showQuestOrderList = false,       --ShowQuestListOrder
-            questOrderListScale = 1,          --OrderListScale
+            currentStepShow = true,  --showQList
+            currentStepLock = false, --Lock
+            currentStepScale = 0.5,  --Scale
+            currentStepAttachFrameToQuestLog = true,
             --Quest button (not working)
             currentStepButtonDetatch = false, -- currentStepButtonDetatch
             currentStepButtonScale = 0.5,     -- QuestButtons
+            -- quest order list
+            showQuestOrderList = false,       --ShowQuestListOrder
+            questOrderListScale = 1,          --OrderListScale
             -- arrow
             showArrow = true,
             lockArrow = false,
@@ -115,6 +115,7 @@ end
 
 function APR.settings:RefreshProfile()
     self.profile = SettingsDB.profile
+    C_UI.Reload()
 end
 
 function APR.settings:createBlizzOptions()
@@ -225,7 +226,7 @@ function APR.settings:createBlizzOptions()
                 type = "group",
                 name = L["CURRENT_STEP"],
                 args = {
-                    showCurrentStep = {
+                    currentStepShow = {
                         order = 5.1,
                         type = "toggle",
                         name = L["SHOW_QLIST"],
@@ -234,6 +235,7 @@ function APR.settings:createBlizzOptions()
                         get = GetProfileOption,
                         set = function(info, value)
                             SetProfileOption(info, value)
+                            -- TODO DELETE old
                             if not value then
                                 for CLi = 1, 10 do
                                     APR.QuestList.QuestFrames[CLi]:Hide()
@@ -241,21 +243,42 @@ function APR.settings:createBlizzOptions()
                                     APR.QuestList2["BF" .. CLi]:Hide()
                                 end
                             end
+                            -- new
+                            APR.currentStep:RefreshCurrentStepFrameAnchor()
                         end,
                         disabled = function()
                             return not self.profile.enableAddon
                         end,
                     },
-                    lockCurrentStep = {
+                    currentStepAttachFrameToQuestLog = {
                         order = 5.11,
+                        type = "toggle",
+                        name = "Attach To QuestLog",
+                        desc = "current Step Attach Frame To QuestLog",
+                        width = optionsWidth,
+                        get = GetProfileOption,
+                        set = function(info, value)
+                            SetProfileOption(info, value)
+                            APR.currentStep:RefreshCurrentStepFrameAnchor()
+                        end,
+                        disabled = function()
+                            return not self.profile.currentStepShow
+                        end,
+                    },
+                    currentStepLock = {
+                        order = 5.12,
                         type = "toggle",
                         name = L["LOCK_QLIST_WINDOW"],
                         desc = L["LOCK_QLIST_WINDOW_DESC"],
                         width = optionsWidth,
                         get = GetProfileOption,
-                        set = SetProfileOption,
+                        set = function(info, value)
+                            SetProfileOption(info, value)
+                            APR.currentStep:RefreshCurrentStepFrameAnchor()
+                        end,
                         disabled = function()
-                            return not self.profile.showCurrentStep
+                            return not self.profile.currentStepShow or self.profile
+                                .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
                         end,
                     },
                     currentStepScale = {
@@ -270,21 +293,39 @@ function APR.settings:createBlizzOptions()
                         isPercent = true,
                         get = GetProfileOption,
                         set = function(info, value)
+                            -- TODO DELETE old
                             SetProfileOption(info, value)
                             APR.QuestList.ButtonParent:SetScale(value)
                             APR.QuestList.ListFrame:SetScale(value)
                             APR.QuestList21:SetScale(value)
+                            -- new
+                            APR.currentStep:UpdateFrameScale()
                         end,
                         disabled = function()
-                            return not self.profile.showCurrentStep
+                            return not self.profile.currentStepShow
                         end,
                     },
+                    resetCurrentStepPosition = {
+                        name = "Reset Position", -- TODO TRAD
+                        order = 5.3,
+                        type = 'execute',
+                        width = "full",
+                        func = function()
+                            APR.currentStep:ResetPosition()
+                        end,
+                        disabled = function()
+                            return not self.profile.currentStepShow or self.profile
+                                .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
+                        end,
+                    },
+                    -- TODO DELETE no detach in V3
                     blank_currentStepButtonDetatch = {
                         order = 5.3,
                         type = "description",
                         name = "",
                         width = "full",
                     },
+                    -- TODO DELETE no detach in V3
                     currentStepButtonDetatch = {
                         order = 5.4,
                         type = "toggle",
@@ -306,9 +347,10 @@ function APR.settings:createBlizzOptions()
                             end
                         end,
                         disabled = function()
-                            return not self.profile.showCurrentStep or not self.profile.enableAddon
+                            return not self.profile.currentStepShow or not self.profile.enableAddon
                         end,
                     },
+                    -- TODO DELETE no detach in V3
                     currentStepButtonScale = {
                         order = 5.41,
                         type = "range",
@@ -327,7 +369,7 @@ function APR.settings:createBlizzOptions()
                             end
                         end,
                         disabled = function()
-                            return not self.profile.showCurrentStep or not self.profile.currentStepButtonDetatch
+                            return not self.profile.currentStepShow or not self.profile.currentStepButtonDetatch
                         end,
                     },
                 },
@@ -992,11 +1034,12 @@ function APR.settings:ToggleAddon()
     -- TODO Save old profile
     if not self.profile.enableAddon then
         -- settings disable
-        self.profile.showCurrentStep = false
+        self.profile.currentStepShow = false
         self.profile.showQuestOrderList = false
         self.profile.showArrow = false
         self.profile.showGroup = false
         -- frames
+        --TODO DELETE old APR.QuestList
         for CLi = 1, 10 do
             APR.QuestList.QuestFrames[CLi]:Hide()
             APR.QuestList.QuestFrames["FS" .. CLi].Button:Hide()
@@ -1015,10 +1058,11 @@ function APR.settings:ToggleAddon()
     else
         -- TODO load old profile
         -- settings
-        self.profile.showCurrentStep = true
+        self.profile.currentStepShow = true
         self.profile.showArrow = true
         -- frames
     end
+    APR.currentStep:RefreshCurrentStepFrameAnchor()
 end
 
 --Discord frame

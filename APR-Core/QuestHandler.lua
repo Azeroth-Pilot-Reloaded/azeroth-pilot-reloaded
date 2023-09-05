@@ -727,7 +727,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
     APR_SendGroup()
     APR.FP.QuedFP = nil
     if (APR.SettingsOpen) then
-        if (not APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+        if (not APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
             return
         end
         for i = 1, 3 do
@@ -745,7 +745,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
         return
     end
 
-    if (APR.settings.profile.showCurrentStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.ProgressText and APR.ProgressShown) then
+    if (APR.settings.profile.currentStepShow and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.ProgressText and APR.ProgressShown) then
         APR.QuestList.QuestFrames["MyProgress"]:Show()
         APR.QuestList.QuestFrames["MyProgressFS"]:SetText(APR.ProgressText)
     else
@@ -907,7 +907,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
             end
         end
         if (steps["UseGlider"] and not APR.ZoneTransfer) then
-            if (APR.settings.profile.showCurrentStep) then
+            if (APR.settings.profile.currentStepShow) then
                 LineNr = LineNr + 1
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["USE_ITEM"] .. ": " .. APR.GliderFunc())
                 APR.QuestList.QuestFrames[LineNr]:Show()
@@ -921,7 +921,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
             end
         end
         if (steps["Bloodlust"] and not APR.ZoneTransfer) then
-            if (APR.settings.profile.showCurrentStep) then
+            if (APR.settings.profile.currentStepShow) then
                 LineNr = LineNr + 1
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(L["BLOODLUST"]))
                 APR.QuestList.QuestFrames[LineNr]:Show()
@@ -968,7 +968,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
             end
         end
         if (steps["DalaranToOgri"] and not APR.ZoneTransfer) then
-            if (APR.settings.profile.showCurrentStep) then
+            if (APR.settings.profile.currentStepShow) then
                 LineNr = LineNr + 1
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["GO_TO"] .. " Orgrimmar")
                 APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1013,7 +1013,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
             end
         end
 
-        if ((steps["ExtraLine"] or steps["ExtraLineText"] or steps["ExtraLineText2"]) and APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+        if ((steps["ExtraLine"] or steps["ExtraLineText"] or steps["ExtraLineText2"]) and APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
             LineNr = LineNr + 1
             local APRExtraLine = steps["ExtraLine"]
             local APRExtraText = steps["ExtraLineText"]
@@ -1155,7 +1155,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
         end
         for i = 2, 4 do -- other ExtraLineText
             local extraLineTestX = "ExtraLineText" .. i
-            if ((steps[extraLineTestX]) and APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+            if ((steps[extraLineTestX]) and APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                 LineNr = LineNr + 1
                 if (steps[extraLineTestX]) then
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(steps[extraLineTestX]))
@@ -1246,7 +1246,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                     elseif (APR.ActiveQuests[qid] and APR.ActiveQuests[qid] == "C") then
                         Flagged = Flagged + 1
                     elseif (APR.ActiveQuests[qid]) then
-                        if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+                        if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                             LineNr = LineNr + 1
                             local ZeTExt
                             if (APR.ActiveQuests["57713-4"] and UIWidgetTopCenterContainerFrame and UIWidgetTopCenterContainerFrame["widgetFrames"]) then
@@ -1298,7 +1298,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                             end
                         end
                     elseif (not APR.ActiveQuests[APR_index] and not MissingQs[APR_index]) then
-                        if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+                        if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                             if (APR_BonusObj[APR_index]) then
                                 LineNr = LineNr + 1
                                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["DO_BONUS_OBJECTIVE"] ..
@@ -1368,7 +1368,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                     APR.BookingList["UpdateQuest"] = 1
                     APR.BookingList["PrintQStep"] = 1
                 else
-                    if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+                    if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                         LineNr = LineNr + 1
                         APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["PICK_UP_Q"] .. ": 1")
                         APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1406,7 +1406,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                     APR.BookingList["UpdateQuest"] = 1
                     APR.BookingList["PrintQStep"] = 1
                 else
-                    if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+                    if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                         LineNr = LineNr + 1
                         APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["PICK_UP_Q"] .. ": " .. NrLeft)
                         APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1430,7 +1430,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                 APR.BookingList["UpdateQuest"] = 1
                 APR.BookingList["PrintQStep"] = 1
             else
-                if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+                if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                     LineNr = LineNr + 1
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(APR.CheckCRangeText())
                     APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1455,7 +1455,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                 APR.BookingList["UpdateQuest"] = 1
                 APR.BookingList["PrintQStep"] = 1
             else
-                if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+                if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                     LineNr = LineNr + 1
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["GET_TREASURE"])
                     APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1514,7 +1514,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                 APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
                 APR.BookingList["PrintQStep"] = 1
             else
-                if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+                if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                     LineNr = LineNr + 1
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["TURN_IN_Q"] .. ": " .. NrLeft)
                     APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1532,7 +1532,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                 APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
                 APR.BookingList["PrintQStep"] = 1
             else
-                if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+                if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                     LineNr = LineNr + 1
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(L["TURN_ON_WARMODE"], 3))
                     APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1554,7 +1554,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                 APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
                 APR.BookingList["PrintQStep"] = 1
             else
-                if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+                if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                     LineNr = LineNr + 1
                     if (steps["Button"] and steps["Button"]["12112552-1"]) then
                         if (not APR.SetButtonVar) then
@@ -1579,7 +1579,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                 APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
                 APR.BookingList["PrintQStep"] = 1
             else
-                if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+                if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                     LineNr = LineNr + 1
                     APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["USE_GARRISON_HEARTHSTONE"])
                     APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1600,7 +1600,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                 end
             end
         elseif (StepP == "ZonePick") then
-            if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+            if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                 LineNr = LineNr + 1
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["PICK_ZONE"])
                 APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1613,7 +1613,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                 end
             end
         elseif (StepP == "SetHS") then
-            if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+            if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                 LineNr = LineNr + 1
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["SET_HEARTHSTONE"])
                 APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1633,7 +1633,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                 APR.BookingList["PrintQStep"] = 1
             end
         elseif (StepP == "UseHS") then
-            if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+            if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                 LineNr = LineNr + 1
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["USE_HEARTHSTONE"])
                 APR.QuestList.QuestFrames[LineNr]:Show()
@@ -1654,7 +1654,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                 APR.BookingList["PrintQStep"] = 1
             end
         elseif (StepP == "GetFP") then
-            if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+            if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                 APR.FP.GoToZone = nil
                 LineNr = LineNr + 1
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["GET_FLIGHTPATH"])
@@ -1672,7 +1672,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                 APR.BookingList["PrintQStep"] = 1
             end
         elseif (StepP == "UseFlightPath") then
-            if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+            if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                 LineNr = LineNr + 1
                 if (steps["Boat"]) then
                     if (steps["Name"]) then
@@ -1725,7 +1725,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                     if (APR.ActiveQuests[qid] and APR.ActiveQuests[qid] == "C") then
                         Flagged = Flagged + 1
                     elseif (APR.ActiveQuests[qid]) then
-                        if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+                        if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                             LineNr = LineNr + 1
                             APR.QuestList.QuestFrames["FS" .. LineNr]:SetText("[" ..
                                 LineNr .. "] " .. APR.ActiveQuests[qid])
@@ -1745,7 +1745,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                             end
                         end
                     elseif (not APR.ActiveQuests[APR_index] and not MissingQs[APR_index]) then
-                        if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+                        if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                             if (APR_BonusObj[APR_index]) then
                                 LineNr = LineNr + 1
                                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(L["DO_BONUS_OBJECTIVE"] ..
@@ -1813,7 +1813,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
             end
         end
         if (steps["DroppableQuest"] and not C_QuestLog.IsQuestFlaggedCompleted(steps["DroppableQuest"]["Qid"]) and not APR.ActiveQuests[steps["DroppableQuest"]["Qid"]]) then
-            if (APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+            if (APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
                 LineNr = LineNr + 1
                 local MobName = steps["DroppableQuest"]["Text"]
                 if (APR.NPCList[steps["DroppableQuest"]["MobId"]]) then
@@ -1836,7 +1836,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                 end
             end
         end
-        if (steps["Fillers"] and APR.settings.profile.showCurrentStep) then
+        if (steps["Fillers"] and APR.settings.profile.currentStepShow) then
             IdList = steps["Fillers"]
             for APR_index, APR_value in pairs(IdList) do
                 for APR_index2, APR_value2 in pairs(APR_value) do
@@ -1881,7 +1881,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
                 end
             end
         end
-        if (APR.settings.profile.showCurrentStep) then
+        if (APR.settings.profile.currentStepShow) then
             APR.SetButton()
         end
         if (APR.QuestListShown ~= LineNr) then
@@ -1923,7 +1923,7 @@ local function APR_PrintQStep() -- TODO Rework display quest step
         if (APR.ZoneQuestOrder:IsShown() == true) then
             APR.BookingList["UpdateZoneQuestOrderListL"] = 1
         end
-    elseif (APRWhereToGo and APR.settings.profile.showCurrentStep and not APR.ZoneTransfer) then
+    elseif (APRWhereToGo and APR.settings.profile.currentStepShow and not APR.ZoneTransfer) then
         LineNr = LineNr + 1
         APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars("APR: " .. L["GO_TO"] .. " " .. APRWhereToGo, 2,
             true))
