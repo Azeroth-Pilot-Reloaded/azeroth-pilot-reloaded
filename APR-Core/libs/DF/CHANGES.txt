@@ -1,0 +1,16 @@
+tag ca584d3df46c844aef781b9e2354afb5b7e67055 v10.1.5.460
+Author:	Tercio Jose <terciob19@hotmail.com>
+Date:	Fri Aug 25 11:20:30 2023 -0300
+
+commit d821344e71975105cc4264362e6371ac0b870d66
+Author: Tercio Jose <terciob19@hotmail.com>
+Date:   Fri Aug 25 11:20:15 2023 -0300
+
+    more options added for UnitFrame, Statusbar Mixin, Docs for Math library, Icons got SetIconSimple(), table.dump are now safe for circular references,
+
+commit 61ba92f1b81ec5bb3ee0f53522ffede59821a46d
+Author: Tercio Jose <terciob19@hotmail.com>
+Date:   Sun Aug 13 13:45:15 2023 -0300
+
+    Paperwork
+
