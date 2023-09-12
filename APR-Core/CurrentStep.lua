@@ -47,7 +47,7 @@ end
 CurrentStepFrame_StepHolder.LockButton = DF:CreateButton(CurrentStepFrame_StepHolder, lock_window, 120, 24,
     L["LOCK_QLIST_WINDOW"], nil, nil, nil, nil, "CurrentStepFrameLockButton", nil,
     DF:GetTemplate("button", "OPTIONS_BUTTON_TEMPLATE"))
-CurrentStepFrame_StepHolder.MoveMeLabel = DF:CreateLabel(CurrentStepFrame_StepHolder, "MOVE ME") --TODO TRAD
+CurrentStepFrame_StepHolder.MoveMeLabel = DF:CreateLabel(CurrentStepFrame_StepHolder, L["MOVE_ME"])
 
 CurrentStepFrame_StepHolder.MoveMeLabel:SetPoint("center", 0, 3)
 CurrentStepFrame_StepHolder.LockButton:SetPoint("center", 0, -16)
@@ -212,7 +212,7 @@ ObjectiveTrackerFrame.HeaderMenu.MinimizeButton:HookScript("OnClick", function()
 end)
 
 -- Rollback / skip button
-function APR.currentStep:AddPreviousNextStepButton()
+function APR.currentStep:PreviousNextStepButton()
     -- Helper function to create a button
     local function CreateButton(name, parent, width, height, text, script)
         local button = CreateFrame("Button", name, parent, "BackdropTemplate")
@@ -250,12 +250,27 @@ function APR.currentStep:AddPreviousNextStepButton()
     skipButton:SetDisabledTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled]])
     skipButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
     CurrentStepFrame_StepHolder.skipButton = skipButton
+
+    self.ButtonDisable = function()
+        rollbackButton:Disable()
+        skipButton:Disable()
+    end
+
+    self.ButtonEnable = function()
+        rollbackButton:Enable()
+        skipButton:Enable()
+    end
 end
 
 -- Add a progress bar
-function APR.currentStep:AddProgressBar()
-    local totalSteps = 250
-    local currentStep = 100
+function APR.currentStep:ProgressBar(total, current)
+    local totalSteps = total or 0
+    local currentStep = current or 0
+    if (self.progressBar) then
+        self.progressBar:Hide()
+        self.progressBar:ClearAllPoints()
+        self.progressBar = nil
+    end
     local progressBar = CreateFrame("StatusBar", "CurrentStepFrame_StepHolder_ProgressBar", CurrentStepFrameHeader,
         "BackdropTemplate")
     progressBar:SetSize(155, 20)
@@ -284,23 +299,24 @@ function APR.currentStep:AddProgressBar()
     -- Call UpdateProgressBar with the current step
     UpdateProgressBar(currentStep)
 
-    -- Example function to update the progress bar externally
-    function SetCurrentStep(newStep)
+    self.SetCurrentStepProgressBar = function(newStep)
+        newStep = newStep or 1
         currentStep = newStep
         UpdateProgressBar(currentStep)
     end
+    APR.currentStep.progressBar = progressBar
 end
 
 -- Displaying quest information
 local AddStepsFrame = function(questStepIndex, questDesc, extraLineText)
-    local textTemplate = "GameFontHighlight"
+    local textTemplate = "GameFontHighlight" -- white color
     if extraLineText then
-        textTemplate = "GameFontNormal"
+        textTemplate = "GameFontNormal"      -- yellow color
     end
     -- Create a container for quest information
     local container = CreateFrame("Frame", nil, CurrentStepFrame_StepHolder, "BackdropTemplate")
     -- Create a font for quest information
-    local font = container:CreateFontString(nil, "OVERLAY", textTemplate) -- white color
+    local font = container:CreateFontString(nil, "OVERLAY", textTemplate)
     font:SetWordWrap(true)
     font:SetWidth(FRAME_WIDTH)
     font:SetPoint("TOPLEFT", 5, -5)
@@ -365,22 +381,24 @@ local getExtraLineHeight = function()
     return height
 end
 
-function APR.currentStep:AddExtraLineText(questID, extraLineText, localeKey)
+--- Add a new Extra line text
+---@param key string Locale table key
+---@param text string L[key]
+function APR.currentStep:AddExtraLineText(key, text)
     -- Always reset to header height with a new extra line
     FRAME_STEP_HOLDER_HEIGHT = getExtraLineHeight()
 
-    local textKey = questID .. "-" .. localeKey
-    local existingContainer = self.questsExtraTextList[textKey]
+    local existingContainer = self.questsExtraTextList[key]
     if existingContainer then
         existingContainer:Hide()
         existingContainer:ClearAllPoints()
-        self.questsExtraTextList[textKey] = nil
+        self.questsExtraTextList[key] = nil
     end
 
-    local extraLineTextContainer = AddExtraLineTextFrame(extraLineText)
+    local extraLineTextContainer = AddExtraLineTextFrame(text)
     extraLineTextContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
-    extraLineTextContainer.localeKey = localeKey
-    self.questsExtraTextList[textKey] = extraLineTextContainer
+    extraLineTextContainer.key = key
+    self.questsExtraTextList[key] = extraLineTextContainer
     FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - extraLineTextContainer:GetHeight()
 
     self:ReOrderExtraLineText()
@@ -398,10 +416,8 @@ function APR.currentStep:ReOrderExtraLineText()
     self:ReOrderQuestSteps(false)
 end
 
---[[
-    Re order all the quest Step -
-    `hasExtraLineHeight`:boolean to get the extra line height
- ]]
+--- Re order all the quest Step
+--- @param hasExtraLineHeight boolean to get the extra line height
 function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
     hasExtraLineHeight = hasExtraLineHeight or true
     if hasExtraLineHeight then
@@ -458,5 +474,5 @@ end
 -- Set default display
 setDefaultDisplay()
 -- Add previous/next step buttons and progress bar
-APR.currentStep:AddPreviousNextStepButton()
-APR.currentStep:AddProgressBar()
+APR.currentStep:PreviousNextStepButton()
+APR.currentStep:ProgressBar()

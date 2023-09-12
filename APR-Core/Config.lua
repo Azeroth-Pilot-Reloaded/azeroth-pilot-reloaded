@@ -56,12 +56,9 @@ function APR.settings:InitializeSettings()
             currentStepLock = false, --Lock
             currentStepScale = 0.5,  --Scale
             currentStepAttachFrameToQuestLog = true,
-            --Quest button (not working)
-            currentStepButtonDetatch = false, -- currentStepButtonDetatch
-            currentStepButtonScale = 0.5,     -- QuestButtons
             -- quest order list
-            showQuestOrderList = false,       --ShowQuestListOrder
-            questOrderListScale = 1,          --OrderListScale
+            showQuestOrderList = false, --ShowQuestListOrder
+            questOrderListScale = 1,    --OrderListScale
             -- arrow
             showArrow = true,
             lockArrow = false,
@@ -235,15 +232,6 @@ function APR.settings:createBlizzOptions()
                         get = GetProfileOption,
                         set = function(info, value)
                             SetProfileOption(info, value)
-                            -- TODO DELETE old
-                            if not value then
-                                for CLi = 1, 10 do
-                                    APR.QuestList.QuestFrames[CLi]:Hide()
-                                    APR.QuestList.QuestFrames["FS" .. CLi].Button:Hide()
-                                    APR.QuestList2["BF" .. CLi]:Hide()
-                                end
-                            end
-                            -- new
                             APR.currentStep:RefreshCurrentStepFrameAnchor()
                         end,
                         disabled = function()
@@ -293,12 +281,7 @@ function APR.settings:createBlizzOptions()
                         isPercent = true,
                         get = GetProfileOption,
                         set = function(info, value)
-                            -- TODO DELETE old
                             SetProfileOption(info, value)
-                            APR.QuestList.ButtonParent:SetScale(value)
-                            APR.QuestList.ListFrame:SetScale(value)
-                            APR.QuestList21:SetScale(value)
-                            -- new
                             APR.currentStep:UpdateFrameScale()
                         end,
                         disabled = function()
@@ -306,7 +289,7 @@ function APR.settings:createBlizzOptions()
                         end,
                     },
                     resetCurrentStepPosition = {
-                        name = "Reset Position", -- TODO TRAD
+                        name = L['RESET_CURRENT_STEP_FRAME_POSITION'],
                         order = 5.3,
                         type = 'execute',
                         width = "full",
@@ -316,60 +299,6 @@ function APR.settings:createBlizzOptions()
                         disabled = function()
                             return not self.profile.currentStepShow or self.profile
                                 .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
-                        end,
-                    },
-                    -- TODO DELETE no detach in V3
-                    blank_currentStepButtonDetatch = {
-                        order = 5.3,
-                        type = "description",
-                        name = "",
-                        width = "full",
-                    },
-                    -- TODO DELETE no detach in V3
-                    currentStepButtonDetatch = {
-                        order = 5.4,
-                        type = "toggle",
-                        name = L["DETACH_Q_ITEM_BTN"],
-                        desc = L["DETACH_Q_ITEM_BTN_DESC"],
-                        width = optionsWidth,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            if not value then
-                                APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT",
-                                    APR.settings.profile.currentStepButtonLeft,
-                                    APR.settings.profile.currentStepButtonTop)
-                                for CLi = 1, 3 do
-                                    APR.QuestList2["BF" .. CLi]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT", 0,
-                                        -((CLi * 38) + CLi))
-                                    APR.QuestList2["BF" .. CLi].APR_Button:SetScale(1)
-                                end
-                            end
-                        end,
-                        disabled = function()
-                            return not self.profile.currentStepShow or not self.profile.enableAddon
-                        end,
-                    },
-                    -- TODO DELETE no detach in V3
-                    currentStepButtonScale = {
-                        order = 5.41,
-                        type = "range",
-                        name = L["Q_BTN_SCALE"],
-                        desc = L["Q_BTN_SCALE_DESC"],
-                        width = optionsWidth,
-                        min = 0.01,
-                        max = 2,
-                        step = 0.05,
-                        isPercent = true,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            for CLi = 1, 20 do
-                                APR.QuestList2["BF" .. CLi].APR_Button:SetScale(value)
-                            end
-                        end,
-                        disabled = function()
-                            return not self.profile.currentStepShow or not self.profile.currentStepButtonDetatch
                         end,
                     },
                 },
