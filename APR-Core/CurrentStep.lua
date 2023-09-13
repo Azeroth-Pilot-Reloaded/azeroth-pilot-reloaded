@@ -92,7 +92,7 @@ minimizeButton:SetDisabledTexture([[Interface\Buttons\UI-Panel-QuestHideButton-d
 
 -- Initialize the current step frame
 function APR.currentStep:CurrentStepFrameOnInit()
-    LibWindow.RegisterConfig(CurrentStepScreenPanel, APR.settings.profile)
+    LibWindow.RegisterConfig(CurrentStepScreenPanel, APR.settings.profile.currentStepFrame)
     CurrentStepScreenPanel.RegisteredForLibWindow = true
     LibWindow.MakeDraggable(CurrentStepScreenPanel)
 
@@ -529,8 +529,12 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
 end
 
 function APR.currentStep:RemoveStepButtonByKey(questsListKey)
-    self.questsList[questsListKey]:Hide()
-    self.questsList[questsListKey]:ClearAllPoints()
+    local existingButton = self.questsList[questsListKey]
+    if not existingButton then
+        return
+    end
+    existingButton:Hide()
+    existingButton:ClearAllPoints()
     self.questsList[questsListKey] = nil
 end
 
