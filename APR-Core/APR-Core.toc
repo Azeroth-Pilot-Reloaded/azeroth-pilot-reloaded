@@ -30,8 +30,8 @@ Transport.lua
 
 Arrow.lua
 CurrentStep.lua
-Map.lua
 Party.lua
+Map.lua
 QuestOrderList.lua
 AFK.lua
 
