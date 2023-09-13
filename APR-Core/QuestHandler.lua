@@ -586,21 +586,6 @@ APR.ButtonList = {}
 APR.BreadCrumSkips = {}
 APR.SetButtonVar = nil
 APR.ButtonVisual = nil
-local function APR_SettingsButtons() --TODO macro button rework
-    local CLi
-    for CLi = 1, 3 do
-        local itemName, _, _, _, _, _, _, _, _, itemTexture = GetItemInfo(6948)
-        APR.QuestList2["BF" .. CLi]["APR_Buttonptex"]:SetTexture(itemTexture)
-        APR.QuestList2["BF" .. CLi]["APR_Buttonntex"]:SetTexture(itemTexture)
-        --APR.QuestList2["BF"..CLi]["APR_Button"]:SetNormalTexture(itemTexture)
-        APR.QuestList2["BF" .. CLi]["APR_Button"]:SetText("")
-        local Topz = APR.settings.profile.currentStepButtonLeft
-        local Topz2 = APR.settings.profile.currentStepButtonTop
-        APR.QuestList20:SetPoint("TOPLEFT", UIParent, "TOPLEFT", Topz, Topz2)
-        APR.QuestList2["BF" .. CLi]:SetPoint("BOTTOMLEFT", APR.QuestList21, "BOTTOMLEFT", 0, -((CLi * 38) + CLi))
-        APR.QuestList2["BF" .. CLi]:Show()
-    end
-end
 
 function APR.ChkBreadcrums(qids)
     if (qids and APR.Breadcrums and APR.Breadcrums[qids]) then
@@ -1019,9 +1004,9 @@ local function APR_PrintQStep() -- TODO Rework display quest step
             local APRExtraText = steps["ExtraLineText"]
             local APRExtraText2 = steps["ExtraLineText2"]
             if (L[APRExtraText] or L[APRExtraText2]) then
-                APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(L[APRExtraText] or L[APRExtraText2]))
+                APR.currentStep:AddExtraLineText(APRExtraText or APRExtraText2, L[APRExtraText] or L[APRExtraText2])
             elseif (steps["ExtraLineText"] or steps["ExtraLineText2"]) then
-                APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(APRExtraText or APRExtraText2))
+                APR.currentStep:AddExtraLineText(APRExtraText or APRExtraText2, APRExtraText or APRExtraText2)
             end
             if (APRExtraLine == 35) then
                 APR.QuestList.QuestFrames["FS" .. LineNr]:SetText(TextWithStars(L["LOA_INFO_1"]))
@@ -2703,7 +2688,6 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
         APR.ArrowActive = 1
         APR.ArrowActive_Y, APR.ArrowActive_X = UnitPosition("player")
         QNumberLocal = 0
-        APR_SettingsButtons()
         if (APR.ArrowActive_Y) then
             APR.ArrowActive_Y = APR.ArrowActive_Y + 150
             APR.ArrowActive_X = APR.ArrowActive_X + 150

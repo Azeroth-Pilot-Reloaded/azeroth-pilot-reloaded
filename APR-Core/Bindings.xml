@@ -1,5 +1,3 @@
 <Bindings>
-	<Binding name="MACRO AAP_MACRO" header="AzerothAutoPilot" category="ADDONS">
-	</Binding>
-
+    <Binding name="CLICK APRItemButton:LeftButton" header="Use Items" category="BINDING_HEADER_APR"/>
 </Bindings>

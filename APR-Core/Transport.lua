@@ -949,16 +949,6 @@ function APR.FP.GetMeToNextZone2()
 
     if (APRt_Zone ~= GoToZone) then
         APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
-
-        --TODO DELETE FOR V3
-        local CLi
-        for CLi = 1, 10 do
-            if (not InCombatLockdown()) then
-                if (APR.QuestList.QuestFrames["FS" .. CLi]["Button"]:IsShown()) then
-                    APR.QuestList.QuestFrames["FS" .. CLi]["Button"]:Hide()
-                end
-            end
-        end
         if (APR.ActiveMap) then
             local function checkChromieTimeline(id)
                 local chromieExpansionOption = C_ChromieTime.GetChromieTimeExpansionOption(id)

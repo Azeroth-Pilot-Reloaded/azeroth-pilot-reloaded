@@ -79,6 +79,10 @@ function APR:OnInitialize()
 
     -- Init current step frame
     APR.currentStep:CurrentStepFrameOnInit()
+
+    -- APR Global Variables, UI oriented
+    BINDING_HEADER_APR = APR.title -- Header text for APR's main frame
+    _G["BINDING_NAME_" .. "CLICK APRItemButton:LeftButton"] = L["USE_QUEST_ITEM"]
 end
 
 function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First character button
@@ -192,10 +196,6 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
     APR.CheckPosMove()
     APR.BookingList["UpdateMapId"] = 1
 end
-
--- APR Global Variables, UI oriented
-BINDING_HEADER_AzerothPilotReloaded = APR.title -- Header text for APR's main frame
-BINDING_NAME_APR_MACRO = "Quest Item 1"
 
 -- TODO Rework AFK frame
 --AFK Frame Stuff.. How long you will wait  for questgiver/flight

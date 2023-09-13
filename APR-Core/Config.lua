@@ -968,12 +968,6 @@ function APR.settings:ToggleAddon()
         self.profile.showArrow = false
         self.profile.showGroup = false
         -- frames
-        --TODO DELETE old APR.QuestList
-        for CLi = 1, 10 do
-            APR.QuestList.QuestFrames[CLi]:Hide()
-            APR.QuestList.QuestFrames["FS" .. CLi].Button:Hide()
-            APR.QuestList2["BF" .. CLi]:Hide()
-        end
         APR.ZoneQuestOrder:Hide()
         for CLi = 1, 5 do
             APR.PartyList.PartyFrames[CLi]:Hide()

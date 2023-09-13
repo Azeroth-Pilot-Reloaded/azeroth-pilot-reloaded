@@ -324,7 +324,7 @@ local AddStepsFrame = function(questStepIndex, questDesc, extraLineText)
         font:SetText(TextWithStars(extraLineText))
     else
         -- Format quest information
-        local questText = '- [' .. questStepIndex .. '] ' .. questDesc
+        local questText = '[' .. questStepIndex .. '] ' .. questDesc
         font:SetText(questText)
     end
     font:SetJustifyH("LEFT")
@@ -461,13 +461,85 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
 end
 
 -- Button management
-function APR.currentStep:AddStepButton()
+--- Create a icon button next to the quest/text step
+--- @param questsListKey string the questsList key (questId-index)
+--- @param itemID number Item ID
+--- @param attribute number Icon attribute spell/item
+function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
+    attribute = attribute or "item"
+    local container = self.questsList[questsListKey] or next(self.questsExtraTextList) or next(self.questsList)
+    if container == nil then
+        return
+    end
+    local function iconName()
+        if attribute == "item" then
+            local itemName, _, _, _, _, _, _, _, _, itemTexture = GetItemInfo(itemID)
+            return itemName, itemTexture
+        else
+            local name, _, icon = GetSpellInfo(itemID)
+            return name, icon
+        end
+    end
+    local iconName, iconTexture = iconName()
+
+    local IconButton = CreateFrame("Button", "$parentIconButton", container,
+        "SecureActionButtonTemplate, BackdropTemplate")
+    IconButton:SetSize(25, 25)
+    IconButton:SetPoint("RIGHT", container, "LEFT", -5, 0)
+    IconButton:SetNormalTexture(iconTexture)
+    IconButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
+    IconButton:RegisterForClicks("AnyUp", "AnyDown")
+    IconButton:SetAttribute("type1", attribute)
+    IconButton:SetAttribute(attribute, iconName)
+
+    IconButton:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
+        if attribute == "item" then
+            GameTooltip:SetItemByID(itemID)
+        else
+            GameTooltip:SetSpellByID(itemID)
+        end
+        GameTooltip:Show()
+    end)
+
+    IconButton:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
+
+    IconButton.cooldown = CreateFrame("Cooldown", "$parentCooldown", IconButton, "CooldownFrameTemplate")
+    IconButton.cooldown:SetAllPoints();
+    IconButton.cooldown:Hide()
+
+    IconButton.itemID = itemID
+    IconButton.attribute = attribute
+    container.IconButton = IconButton
 end
 
-function APR.currentStep:RemoveStepButton()
+function APR.currentStep:RemoveStepButtonByKey(questsListKey)
+    self.questsList[questsListKey]:Hide()
+    self.questsList[questsListKey]:ClearAllPoints()
+    self.questsList[questsListKey] = nil
 end
 
-function APR.currentStep:ReOrderStepButton()
+function APR.currentStep:UpdateCooldowns()
+    for id, questContainer in pairs(self.questsList) do
+        local IconButton = questContainer.IconButton
+        if IconButton.itemID and IconButton:IsShown() then
+            local start, duration
+            if IconButton.attribute == 'spell' then
+                start, duration = GetSpellCooldown(IconButton.itemID)
+            else
+                start, duration = GetItemCooldown(IconButton.itemID)
+            end
+            if start then
+                if IconButton.cooldown:GetCooldownDuration() == 0 or not IconButton.cooldown:IsShown() then
+                    IconButton.cooldown:SetCooldown(start, duration)
+                end
+            else
+                IconButton.cooldown:Clear()
+            end
+        else
+            IconButton.cooldown:Clear()
+        end
+    end
 end
 
 --------------INIT ----------------
@@ -476,3 +548,6 @@ setDefaultDisplay()
 -- Add previous/next step buttons and progress bar
 APR.currentStep:PreviousNextStepButton()
 APR.currentStep:ProgressBar()
+
+APR.currentStep:UpdateQuestSteps(59930, "Trousse de premier soins utilisée pour soigner Bo 0/1", 1)
+APR.currentStep:AddStepButton("59930-1", 168410)
