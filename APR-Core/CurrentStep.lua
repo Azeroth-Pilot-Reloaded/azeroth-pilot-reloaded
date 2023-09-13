@@ -9,30 +9,23 @@ APR.currentStep = APR:NewModule("CurrentStep")
 -- Init quests List to save quest
 APR.currentStep.questsList = {}
 APR.currentStep.questsExtraTextList = {}
+-- Height of the quest frame
+APR.currentStep.FrameHeight = 0
 
 --Local constant
 local FRAME_WIDTH = 235
 local FRAME_HEADER_OPFFSET = -50
 local FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
 
+
+---------------------------------------------------------------------------------------
+--------------------------------- Current Step Frames ---------------------------------
+---------------------------------------------------------------------------------------
+
 -- Create the main current step frame
 local CurrentStepFrame = CreateFrame("Frame", "CurrentStepScreenPanel", UIParent, "BackdropTemplate")
 CurrentStepFrame:SetSize(FRAME_WIDTH, 500)
 CurrentStepFrame:SetFrameStrata("LOW")
-
--- Initialize the current step frame
-function APR.currentStep:CurrentStepFrameOnInit()
-    LibWindow.RegisterConfig(CurrentStepScreenPanel, APR.settings.profile)
-    CurrentStepScreenPanel.RegisteredForLibWindow = true
-    LibWindow.MakeDraggable(CurrentStepScreenPanel)
-
-    if (not APR.settings.profile.currentStepAttachFrameToQuestLog) then
-        LibWindow.RestorePosition(CurrentStepScreenPanel)
-    end
-
-    self:RefreshCurrentStepFrameAnchor()
-    APR.currentStep:UpdateFrameScale()
-end
 
 -- Create the step holder frame
 local CurrentStepFrame_StepHolder = CreateFrame("Frame", "CurrentStepFrame_StepHolder", CurrentStepFrame,
@@ -54,10 +47,6 @@ CurrentStepFrame_StepHolder.LockButton:SetPoint("center", 0, -16)
 CurrentStepFrame_StepHolder.MoveMeLabel:Hide()
 CurrentStepFrame_StepHolder.LockButton:Hide()
 
--- Update the frame scale
-function APR.currentStep:UpdateFrameScale()
-    CurrentStepFrame:SetScale(APR.settings.profile.currentStepScale)
-end
 
 -- Create the frame header
 local CurrentStepFrameHeader = CreateFrame("Frame", "CurrentStepFrameHeader", CurrentStepFrame,
@@ -67,15 +56,6 @@ CurrentStepFrameHeader.Text:SetText("Azeroth Pilot Reloaded") -- Replace with AP
 -- Create the minimize button
 local minimizeButton = CreateFrame("Button", "CurrentStepFrameHeaderMinimizeButton", CurrentStepFrame, "BackdropTemplate")
 local minimizeButtonText = minimizeButton:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-
-local setDefaultDisplay = function()
-    CurrentStepFrame.collapsed = false
-    minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0.5, 1)
-    minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0.5, 1)
-    CurrentStepFrame_StepHolder:Show()
-    CurrentStepFrameHeader:Show()
-    minimizeButtonText:Hide()
-end
 
 CurrentStepFrameHeader.MinimizeButton:Hide()
 minimizeButtonText:SetText(APR.title)
@@ -87,7 +67,7 @@ minimizeButton:SetSize(16, 16)
 minimizeButton:SetPoint("topright", CurrentStepFrameHeader, "topright", 0, -4)
 minimizeButton:SetScript("OnClick", function()
     if (CurrentStepFrame.collapsed) then
-        setDefaultDisplay()
+        APR.currentStep:SetDefaultDisplay()
     else
         CurrentStepFrame.collapsed = true
         minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0, 0.5)
@@ -106,9 +86,44 @@ minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0.5, 1)
 minimizeButton:SetHighlightTexture([[Interface\Buttons\UI-Panel-MinimizeButton-Highlight]])
 minimizeButton:SetDisabledTexture([[Interface\Buttons\UI-Panel-QuestHideButton-disabled]])
 
+---------------------------------------------------------------------------------------
+---------------------------- Function Current Step Frames -----------------------------
+---------------------------------------------------------------------------------------
 
--- Height of the quest frame
-APR.currentStep.FrameHeight = 0
+-- Initialize the current step frame
+function APR.currentStep:CurrentStepFrameOnInit()
+    LibWindow.RegisterConfig(CurrentStepScreenPanel, APR.settings.profile)
+    CurrentStepScreenPanel.RegisteredForLibWindow = true
+    LibWindow.MakeDraggable(CurrentStepScreenPanel)
+
+    -- Set default display
+    self:SetDefaultDisplay()
+    -- Add previous/next step buttons and progress bar
+    self:PreviousNextStepButton()
+    self:ProgressBar()
+
+    if (not APR.settings.profile.currentStepAttachFrameToQuestLog) then
+        LibWindow.RestorePosition(CurrentStepScreenPanel)
+    end
+
+
+    self:RefreshCurrentStepFrameAnchor()
+    self:UpdateFrameScale()
+end
+
+function APR.currentStep:SetDefaultDisplay()
+    CurrentStepFrame.collapsed = false
+    minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0.5, 1)
+    minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0.5, 1)
+    CurrentStepFrame_StepHolder:Show()
+    CurrentStepFrameHeader:Show()
+    minimizeButtonText:Hide()
+end
+
+-- Update the frame scale
+function APR.currentStep:UpdateFrameScale()
+    CurrentStepFrame:SetScale(APR.settings.profile.currentStepScale)
+end
 
 -- Refresh the frame positioning
 function APR.currentStep:RefreshCurrentStepFrameAnchor()
@@ -519,7 +534,7 @@ function APR.currentStep:RemoveStepButtonByKey(questsListKey)
     self.questsList[questsListKey] = nil
 end
 
-function APR.currentStep:UpdateCooldowns()
+function APR.currentStep:UpdateStepButtonCooldowns()
     for id, questContainer in pairs(self.questsList) do
         local IconButton = questContainer.IconButton
         if IconButton.itemID and IconButton:IsShown() then
@@ -542,12 +557,9 @@ function APR.currentStep:UpdateCooldowns()
     end
 end
 
---------------INIT ----------------
--- Set default display
-setDefaultDisplay()
--- Add previous/next step buttons and progress bar
-APR.currentStep:PreviousNextStepButton()
-APR.currentStep:ProgressBar()
-
-APR.currentStep:UpdateQuestSteps(59930, "Trousse de premier soins utilisée pour soigner Bo 0/1", 1)
-APR.currentStep:AddStepButton("59930-1", 168410)
+--- Disable Button, Reset ProgressBar and Remove all quest and extra line
+function APR.currentStep:Disable()
+    self:ButtonDisable()
+    self:ProgressBar()
+    self:RemoveQuestStepsAndExtraLineTexts()
+end

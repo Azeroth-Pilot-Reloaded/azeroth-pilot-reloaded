@@ -907,9 +907,8 @@ function APR.FP.GetMeToNextZone()
 end
 
 function APR.FP.GetMeToNextZone2()
-    -- Disable Current Step Button + progress bar
-    APR.currentStep:ButtonDisable()
-    APR.currentStep:ProgressBar()
+    -- Disable Current Step button/bar/quest/...
+    APR.currentStep:Disable()
 
     if (APR.FP.Zonening == 1) then
         return
