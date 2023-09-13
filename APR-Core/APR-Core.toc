@@ -30,10 +30,13 @@ Transport.lua
 
 Arrow.lua
 CurrentStep.lua
-Map.lua
+QuestionPopUp.lua
 Party.lua
+Map.lua
 QuestOrderList.lua
 AFK.lua
+
+SweatOfOurBrowBuffFrame.lua
 
 zones\Alliance.lua
 zones\Horde.lua

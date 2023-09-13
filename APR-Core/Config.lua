@@ -52,11 +52,13 @@ function APR.settings:InitializeSettings()
             autoSkipCutScene = true, -- CutScene
             autoFlight = true,
             -- current step
+            currentStepFrame = {},
             currentStepShow = true,  --showQList
             currentStepLock = false, --Lock
-            currentStepScale = 0.5,  --Scale
+            currentStepScale = 1,    --Scale
             currentStepAttachFrameToQuestLog = true,
             -- quest order list
+            questOrderListFrame = {},
             showQuestOrderList = false, --ShowQuestListOrder
             questOrderListScale = 1,    --OrderListScale
             -- arrow
@@ -77,23 +79,21 @@ function APR.settings:InitializeSettings()
             -- Heirloom
             heirloomWarning = true, -- DisableHeirloomWarning
             -- group
+            groupFrame = {},
             showGroup = false,
-            groupScale = 0.5,
+            groupScale = 1,
             -- route
             greetings = true, --Greetings2
-            -- position
-            leftLiz = 150,
-            topLiz = -150,
-            currentStepButtonLeft = 150,            -- left
-            currentStepButtonTop = -150,            -- top
-            partyLeft = _G.GetScreenWidth() / 2.5,  -- Partyleft
-            partyTop = -(_G.GetScreenHeight() / 4), -- Partytop
-            sugQuestLeft = 150,                     -- Sugleft
-            sugQuestTop = -150,                     -- Sugtop
             --debug
             configMode = false,
             debug = false,
             enableAddon = true,
+            -- position
+            leftLiz = 150,
+            topLiz = -150,
+            sugQuestLeft = 150, -- Sugleft
+            sugQuestTop = -150, -- Sugtop
+
         }
     }
 
@@ -647,12 +647,7 @@ function APR.settings:createBlizzOptions()
                         get = GetProfileOption,
                         set = function(info, value)
                             SetProfileOption(info, value)
-                            if not value then
-                                for CLi = 1, 5 do
-                                    APR.PartyList.PartyFrames[CLi]:Hide()
-                                    APR.PartyList.PartyFrames2[CLi]:Hide()
-                                end
-                            end
+                            APR.party:RefreshPartyFrameAnchor()
                         end,
                         disabled = function()
                             return not self.profile.enableAddon
@@ -671,12 +666,23 @@ function APR.settings:createBlizzOptions()
                         get = GetProfileOption,
                         set = function(info, value)
                             SetProfileOption(info, value)
-                            -- SET Scale
+                            APR.party:UpdateFrameScale()
                         end,
                         disabled = function()
                             return not self.profile.showGroup
                         end,
-                        hidden = true --TODO SCALE
+                    },
+                    resetPartyPosition = {
+                        name = L['RESET_CURRENT_STEP_FRAME_POSITION'],
+                        order = 11.3,
+                        type = 'execute',
+                        width = "full",
+                        func = function()
+                            APR.party:ResetPosition()
+                        end,
+                        disabled = function()
+                            return not self.profile.showGroup or not self.profile.enableAddon
+                        end,
                     },
                 }
             },

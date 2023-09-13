@@ -623,34 +623,22 @@ local function APR_QAskPopWanted()
     if (C_QuestLog.IsQuestFlaggedCompleted(Qid) == true) then
         APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
         APR.BookingList["PrintQStep"] = 1
-        APR.QuestList.SugQuestFrame:Hide()
-    elseif (steps["QuestLineSkip"] and APRData[APR.Realm][APR.Name]["QlineSkip"][steps["QuestLineSkip"]] and APRData[APR.Realm][APR.Name]["QlineSkip"][steps["QuestLineSkip"]] == 0) then
+    elseif (steps["QuestLineSkip"]) then
         APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
         APR.BookingList["PrintQStep"] = 1
     else
         local SugGroupNr = steps["Group"]
-        APR.QuestList.SugQuestFrameFS1:SetText(L["OPTIONAL"])
-        APR.QuestList.SugQuestFrameFS2:SetText(L["SUGGESTED_PLAYERS"] .. ": " .. SugGroupNr)
-        APR.QuestList.SugQuestFrame:Show()
-    end
-end
-
-function APR.QAskPopWantedAsk(APR_answer)
-    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
-    local steps
-    if (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
-        steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-    end
-    if (APR_answer == "yes") then
-        APRData[APR.Realm][APR.Name]["WantedQuestList"][steps["QaskPopup"]] = 1
-        APR.QuestList.SugQuestFrame:Hide()
-        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-        APR.BookingList["PrintQStep"] = 1
-    else
-        APR.QuestList.SugQuestFrame:Hide()
-        APRData[APR.Realm][APR.Name]["WantedQuestList"][steps["QaskPopup"]] = 0
-        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-        APR.BookingList["PrintQStep"] = 1
+        APR.questionDialog:CreateQuestionPopup(L["OPTIONAL"] .. " - " .. L["SUGGESTED_PLAYERS"] .. ": " .. SugGroupNr,
+            function()
+                APRData[APR.Realm][APR.Name]["WantedQuestList"][steps["QaskPopup"]] = 1
+                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
+                APR.BookingList["PrintQStep"] = 1
+            end,
+            function()
+                APRData[APR.Realm][APR.Name]["WantedQuestList"][steps["QaskPopup"]] = 0
+                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
+                APR.BookingList["PrintQStep"] = 1
+            end)
     end
 end
 
@@ -1156,9 +1144,9 @@ local function APR_PrintQStep() -- TODO Rework display quest step
             end
         end
         if (APR.ActiveQuests and APR.ActiveQuests[57867] and not APR.ZoneTransfer) then
-            APR.QuestList.SweatOfOurBrowBuffFrame:Show()
+            APR.SweatOfOurBrowBuffFrame:Show()
         else
-            APR.QuestList.SweatOfOurBrowBuffFrame:Hide()
+            APR.SweatOfOurBrowBuffFrame:Hide()
         end
         if (StepP == "Qpart") then
             local IdList = steps["Qpart"]
@@ -2994,15 +2982,15 @@ function APR.CheckSweatBuffz()
         if (spellId and name) then
             if (spellId == 311103) then
                 APR.SweatBuff[1] = true
-                APR.QuestList.SweatOfOurBrowBuffFrame.Traps.texture:SetColorTexture(0.1, 0.5, 0.1, 1)
+                APR.SweatOfOurBrowBuffFrame.Traps.texture:SetColorTexture(0.1, 0.5, 0.1, 1)
             end
             if (spellId == 311107) then
                 APR.SweatBuff[2] = true
-                APR.QuestList.SweatOfOurBrowBuffFrame.Traps2.texture:SetColorTexture(0.1, 0.5, 0.1, 1)
+                APR.SweatOfOurBrowBuffFrame.Traps2.texture:SetColorTexture(0.1, 0.5, 0.1, 1)
             end
             if (spellId == 311058) then
                 APR.SweatBuff[3] = true
-                APR.QuestList.SweatOfOurBrowBuffFrame.Traps3.texture:SetColorTexture(0.1, 0.5, 0.1, 1)
+                APR.SweatOfOurBrowBuffFrame.Traps3.texture:SetColorTexture(0.1, 0.5, 0.1, 1)
             end
         end
     end
@@ -3106,19 +3094,19 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             if (APR.SweatBuff[1]) then
                 if (not gotbuff1) then
                     APR.SweatBuff[1] = false
-                    APR.QuestList.SweatOfOurBrowBuffFrame.Traps.texture:SetColorTexture(0.5, 0.1, 0.1, 1)
+                    APR.SweatOfOurBrowBuffFrame.Traps.texture:SetColorTexture(0.5, 0.1, 0.1, 1)
                 end
             end
             if (APR.SweatBuff[2]) then
                 if (not gotbuff2) then
                     APR.SweatBuff[2] = false
-                    APR.QuestList.SweatOfOurBrowBuffFrame.Traps2.texture:SetColorTexture(0.5, 0.1, 0.1, 1)
+                    APR.SweatOfOurBrowBuffFrame.Traps2.texture:SetColorTexture(0.5, 0.1, 0.1, 1)
                 end
             end
             if (APR.SweatBuff[3]) then
                 if (not gotbuff3) then
                     APR.SweatBuff[3] = false
-                    APR.QuestList.SweatOfOurBrowBuffFrame.Traps3.texture:SetColorTexture(0.5, 0.1, 0.1, 1)
+                    APR.SweatOfOurBrowBuffFrame.Traps3.texture:SetColorTexture(0.5, 0.1, 0.1, 1)
                 end
             end
         end
