@@ -27,8 +27,6 @@ function APR:OnInitialize()
     APR.github = C_AddOns.GetAddOnMetadata("APR", "X-Github")
     APR.discord = C_AddOns.GetAddOnMetadata("APR", "X-Discord")
 
-    -- Quest and Interface
-    APR.QuestListLoadin = false
     --TODO DELETE old
     APR.QuestList = {} --where the quest parts go
     APR.QuestListShown = 0
@@ -48,7 +46,6 @@ function APR:OnInitialize()
     APR.BookUpdAfterCombat = false
 
     -- Group
-    APR.RegisterChat = C_ChatInfo.RegisterAddonMessagePrefix("APRChat") -- prefix for Party message
     APR.LastSent = 0
     APR.GroupListSteps = {}
     APR.GroupListStepsNr = 1
@@ -63,9 +60,10 @@ function APR:OnInitialize()
 
     -- Buff
     APR.SweatBuff = {}
-    APR.SweatBuff[1] = false -- TODO rename it
-    APR.SweatBuff[2] = false -- TODO rename it
-    APR.SweatBuff[3] = false -- TODO rename it
+    APR.SweatBuff[1] = false -- TODO REWORK SweatOfOurBrowBuffFrame
+    APR.SweatBuff[2] = false -- TODO REWORK SweatOfOurBrowBuffFrame
+    APR.SweatBuff[3] = false -- TODO REWORK SweatOfOurBrowBuffFrame
+
     -- APR INIT NEW SETTING
     APR.SettingsOpen = false
     APR.settings:InitializeBlizOptions()
@@ -82,6 +80,9 @@ function APR:OnInitialize()
 
     --Init Party frame
     APR.party:PartyFrameOnInit()
+
+    --Init Party frame
+    APR.map:mapIcon() -- TODO REWORK
 
     -- APR Global Variables, UI oriented
     BINDING_HEADER_APR = APR.title -- Header text for APR's main frame
@@ -2982,9 +2983,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 
         if (not APRData[APR.Realm][APR.Name]["LoaPick"]) then
             APRData[APR.Realm][APR.Name]["LoaPick"] = 0
-        end
-        if (not APRData[APR.Realm][APR.Name]["QlineSkip"]) then
-            APRData[APR.Realm][APR.Name]["QlineSkip"] = {}
         end
         if (not APRData[APR.Realm][APR.Name]["routeChoiceIndex"]) then
             APRData[APR.Realm][APR.Name]["routeChoiceIndex"] = 0
