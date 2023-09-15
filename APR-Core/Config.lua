@@ -103,7 +103,7 @@ function APR.settings:InitializeSettings()
     SettingsDB.RegisterCallback(self, "OnProfileCopied", "RefreshProfile")
     SettingsDB.RegisterCallback(self, "OnProfileReset", "RefreshProfile")
     self.profile = SettingsDB.profile
-    LoadedProfileKey = SettingsDB.keys.profile -- TODO macro
+    LoadedProfileKey = SettingsDB.keys.profile
 end
 
 function APR.settings.ChatCommand(input)

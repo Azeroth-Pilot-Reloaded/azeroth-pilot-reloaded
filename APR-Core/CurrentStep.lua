@@ -278,7 +278,7 @@ function APR.currentStep:PreviousNextStepButton()
 end
 
 -- Add a progress bar
-function APR.currentStep:ProgressBar(total, current)
+function APR.currentStep:ProgressBar(key, total, current)
     local totalSteps = total or 0
     local currentStep = current or 0
     if (self.progressBar) then
@@ -314,16 +314,12 @@ function APR.currentStep:ProgressBar(total, current)
     -- Call UpdateProgressBar with the current step
     UpdateProgressBar(currentStep)
 
-    self.SetCurrentStepProgressBar = function(newStep)
-        newStep = newStep or 1
-        currentStep = newStep
-        UpdateProgressBar(currentStep)
-    end
     APR.currentStep.progressBar = progressBar
+    APR.currentStep.progressBar.key = key
 end
 
 -- Displaying quest information
-local AddStepsFrame = function(questStepIndex, questDesc, extraLineText)
+local AddStepsFrame = function(questDesc, extraLineText)
     local textTemplate = "GameFontHighlight" -- white color
     if extraLineText then
         textTemplate = "GameFontNormal"      -- yellow color
@@ -338,9 +334,7 @@ local AddStepsFrame = function(questStepIndex, questDesc, extraLineText)
     if extraLineText then
         font:SetText(TextWithStars(extraLineText))
     else
-        -- Format quest information
-        local questText = '[' .. questStepIndex .. '] ' .. questDesc
-        font:SetText(questText)
+        font:SetText(questDesc)
     end
     font:SetJustifyH("LEFT")
     -- Set the size of the container based on the text length
@@ -357,7 +351,7 @@ local AddStepsFrame = function(questStepIndex, questDesc, extraLineText)
 end
 -- Displaying extra line text information
 local AddExtraLineTextFrame = function(extraLineText)
-    return AddStepsFrame(nil, nil, extraLineText)
+    return AddStepsFrame(nil, extraLineText)
 end
 
 -- Add/Update quest steps
@@ -377,7 +371,7 @@ function APR.currentStep:UpdateQuestSteps(questID, textObjective, objectiveIndex
         self.questsList[questKey] = nil
     end
 
-    local objectiveContainer = AddStepsFrame(objectiveIndex, textObjective)
+    local objectiveContainer = AddStepsFrame(textObjective)
     objectiveContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
     objectiveContainer.questID = questID
     self.questsList[questKey] = objectiveContainer
@@ -482,7 +476,7 @@ end
 --- @param attribute number Icon attribute spell/item
 function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
     attribute = attribute or "item"
-    local container = self.questsList[questsListKey] or next(self.questsExtraTextList) or next(self.questsList)
+    local container = self.questsList[questsListKey] or next(self.questsList) or next(self.questsExtraTextList)
     if container == nil then
         return
     end
@@ -541,22 +535,24 @@ end
 function APR.currentStep:UpdateStepButtonCooldowns()
     for id, questContainer in pairs(self.questsList) do
         local IconButton = questContainer.IconButton
-        if IconButton.itemID and IconButton:IsShown() then
-            local start, duration
-            if IconButton.attribute == 'spell' then
-                start, duration = GetSpellCooldown(IconButton.itemID)
-            else
-                start, duration = GetItemCooldown(IconButton.itemID)
-            end
-            if start then
-                if IconButton.cooldown:GetCooldownDuration() == 0 or not IconButton.cooldown:IsShown() then
-                    IconButton.cooldown:SetCooldown(start, duration)
+        if IconButton then
+            if IconButton:IsShown() then
+                local start, duration
+                if IconButton.attribute == 'spell' then
+                    start, duration = GetSpellCooldown(IconButton.itemID)
+                else
+                    start, duration = GetItemCooldown(IconButton.itemID)
+                end
+                if start then
+                    if IconButton.cooldown:GetCooldownDuration() == 0 or not IconButton.cooldown:IsShown() then
+                        IconButton.cooldown:SetCooldown(start, duration)
+                    end
+                else
+                    IconButton.cooldown:Clear()
                 end
             else
                 IconButton.cooldown:Clear()
             end
-        else
-            IconButton.cooldown:Clear()
         end
     end
 end

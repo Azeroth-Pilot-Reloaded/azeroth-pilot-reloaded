@@ -27,10 +27,6 @@ function APR:OnInitialize()
     APR.github = C_AddOns.GetAddOnMetadata("APR", "X-Github")
     APR.discord = C_AddOns.GetAddOnMetadata("APR", "X-Discord")
 
-    --TODO DELETE old
-    APR.QuestList = {} --where the quest parts go
-    APR.QuestListShown = 0
-
     APR.ActiveQuests = {}
     APR.NPCList = {}
     APR.Icons = {}
@@ -54,9 +50,6 @@ function APR:OnInitialize()
     APR.ArrowActive = 0
     APR.ArrowActive_X = 0
     APR.ArrowActive_Y = 0
-
-    -- Macro
-    APR.MacroUpdaterVar = {} -- TODO REwork
 
     -- Buff
     APR.SweatBuff = {}
@@ -2883,7 +2876,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR_LoadInTimer.anim:SetDuration(2)
         APR_LoadInTimer:SetLooping("REPEAT")
         APR_LoadInTimer:SetScript("OnLoop", function(self, event, ...)
-            if (CoreLoadin and APR.QuestListLoadin) then
+            if (CoreLoadin) then
                 if (not APR_Transport) then
                     APR_Transport = {}
                 end
@@ -2923,7 +2916,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR.BookingList["UpdateQuest"] = 1
                 APR.BookingList["PrintQStep"] = 1
                 APR.BookingList["Heirloomscheck"] = 1
-                APR.CreateMacro()
                 APR.RoutePlanLoadIn()
                 if (APRData[APR.Realm][APR.Name].FirstLoad) then
                     APR.LoadInOptionFrame:Show()
@@ -2952,14 +2944,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
             if (APRData[APR.Realm][APR.Name]["QuestCounter2"] ~= APRData[APR.Realm][APR.Name]["QuestCounter"]) then
                 APR.BookingList["PrintQStep"] = 1
                 APRData[APR.Realm][APR.Name]["QuestCounter"] = APRData[APR.Realm][APR.Name]["QuestCounter2"]
-            end
-            if (not InCombatLockdown() and APR.MacroUpdaterVar[1]) then
-                local macroSlot = APR.MacroUpdaterVar[1]
-                local itemName = APR.MacroUpdaterVar[2]
-                local APRextra = APR.MacroUpdaterVar[3]
-                APR.MacroUpdater2(macroSlot, itemName, APRextra)
-                APR.MacroUpdaterVar = nil
-                APR.MacroUpdaterVar = {}
             end
         end)
 

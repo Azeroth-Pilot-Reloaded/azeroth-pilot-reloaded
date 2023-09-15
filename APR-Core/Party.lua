@@ -114,7 +114,7 @@ function APR.party:ResetPosition()
     LibWindow.SavePosition(PartyScreenPanel)
 end
 
-local AddTeamMate = function(name, stepIndex)
+local AddTeamMate = function(name, stepIndex, color)
     local container = CreateFrame("Frame", nil, PartyFrame_TeamHolder, "BackdropTemplate")
     -- Create a font for mate information
     local fontName = container:CreateFontString("fontName", "OVERLAY", "GameFontHighlight")
@@ -127,7 +127,11 @@ local AddTeamMate = function(name, stepIndex)
     local fontIndex = container:CreateFontString("fontIndex", "OVERLAY", "GameFontHighlight")
     fontIndex:SetPoint("TOPRIGHT", 0, -2)
     fontIndex:SetText(stepIndex)
-    fontIndex:SetTextColor(1, 1, 0)
+    if (color == 'red') then
+        fontIndex:SetTextColor(1, 0, 0)
+    else
+        fontIndex:SetTextColor(0, 1, 0)
+    end
     fontIndex:SetFontObject("GameFontNormalLarge")
 
     -- Set the size of the container based on the text length
@@ -143,7 +147,7 @@ local AddTeamMate = function(name, stepIndex)
     return container
 end
 
-function APR.party:UpdateTeamMate(name, stepIndex)
+function APR.party:UpdateTeamMate(name, stepIndex, color)
     if not next(self.teamList) then
         FRAME_MATE_HOLDER_HEIGHT = FRAME_OFFSET
     end
@@ -154,7 +158,7 @@ function APR.party:UpdateTeamMate(name, stepIndex)
         existingContainer:ClearAllPoints()
         self.teamList[name] = nil
     end
-    local container = AddTeamMate(name, stepIndex)
+    local container = AddTeamMate(name, stepIndex, color)
     container:SetPoint("TOPLEFT", PartyFrame, "TOPLEFT", 0, FRAME_MATE_HOLDER_HEIGHT)
     self.teamList[name] = container
     FRAME_MATE_HOLDER_HEIGHT = FRAME_MATE_HOLDER_HEIGHT - container:GetHeight()
@@ -199,4 +203,8 @@ end
 
 function APR.party:ShowFrame()
     PartyScreenPanel:Show()
+end
+
+function APR.party:IsShowFrame()
+    return PartyScreenPanel:IsShown()
 end
