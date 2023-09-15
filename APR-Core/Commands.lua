@@ -28,7 +28,7 @@ function APR:SlashCmd(input)
     elseif (input == "github") then
         _G.StaticPopup_Show("Github_Link")
     elseif (input == "scribe" or input == "writer") then
-        _G.StaticPopup_Show("Scribe")
+        APR.questionDialog:CreateMessagePopup(L["SCRIBE_HEADER"] .. "\n\n" .. L["SCRIBE"], L["CLOSE"])
     elseif (input == "help" or input == "h") then
         print(L["COMMAND_LIST"] .. ":")
         print("|cffeda55f/apr help, h |r- " .. L["HELP_COMMAND"])
@@ -44,12 +44,3 @@ function APR:SlashCmd(input)
     APR.BookingList["UpdateQuest"] = 1
     APR.BookingList["PrintQStep"] = 1
 end
-
--- Scribe Frame - Astérix et Obélix : Mission Cléopâtre
-_G.StaticPopupDialogs["Scribe"] = {
-    text = L["SCRIBE_HEADER"] .. "\n\n" .. L["SCRIBE"],
-    button1 = L["CLOSE"],
-    timeout = 0,
-    whileDead = 1,
-    hideOnEscape = 1
-}

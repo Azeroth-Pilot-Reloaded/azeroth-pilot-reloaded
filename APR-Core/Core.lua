@@ -3041,9 +3041,18 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         end
     end
     if (event == "PLAYER_LEVEL_UP") then
-        if (APR.Level >= 60 and not IsTableEmpty(APR_Custom[APR.Name .. "-" .. APR.Realm])) then
-            wipe(APR_Custom[APR.Name .. "-" .. APR.Realm])
-            APR.AutoPathOnBeta(APRData[APR.Realm][APR.Name]["routeChoiceIndex"])
+        if not IsTableEmpty(APR_Custom[APR.Name .. "-" .. APR.Realm]) then
+            if APR.Level == 50 then
+                APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_SL"], function()
+                    wipe(APR_Custom[APR.Name .. "-" .. APR.Realm])
+                    APR.AutoPathOnBeta(APRData[APR.Realm][APR.Name]["routeChoiceIndex"])
+                end)
+            elseif APR.Level == 60 then
+                APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_DF"], function()
+                    wipe(APR_Custom[APR.Name .. "-" .. APR.Realm])
+                    APR.AutoPathOnBeta(APRData[APR.Realm][APR.Name]["routeChoiceIndex"])
+                end)
+            end
         end
     end
 end)
