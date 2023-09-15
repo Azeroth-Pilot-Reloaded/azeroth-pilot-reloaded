@@ -650,9 +650,6 @@ function APR.UpdateZoneQuestOrderList(APRmod)
                 if (APR.QuestStepList[APR.ActiveMap][CCLi]["UseGarrisonHS"]) then
                     APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["USE_GARRISON_HEARTHSTONE"])
                 end
-                if (APR.QuestStepList[APR.ActiveMap][CCLi]["ZonePick"]) then
-                    APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["PICK_ZONE"])
-                end
                 if (APR.QuestStepList[APR.ActiveMap][CCLi]["QpartPart"]) then
                     APR.ZoneQuestOrder["FS2"][CLi]:SetText(L["Q_PART"])
                     IdList = APR.QuestStepList[APR.ActiveMap][CCLi]["QpartPart"]

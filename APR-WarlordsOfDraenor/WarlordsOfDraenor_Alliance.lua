@@ -16,10 +16,7 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
         ["TT"] = {
             ["y"] = -8867.5,
             ["x"] = 673.2,
-        },
-        ["Button"] = {
-            ["22345678-1"] = 6948,
-        },
+        }
     },
     {
         ["Trigger"] = {
@@ -129,9 +126,6 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War2"] = {
             ["y"] = -8867.5,
             ["x"] = 673.2,
         },
-        ["Button"] = {
-            ["22345678-1"] = 6948,
-        },
     },
     {
         ["Trigger"] = {
@@ -240,9 +234,6 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War3"] = {
         ["TT"] = {
             ["y"] = -8867.5,
             ["x"] = 673.2,
-        },
-        ["Button"] = {
-            ["22345678-1"] = 6948,
         },
     },
     {
@@ -1955,7 +1946,7 @@ APR.QuestStepList["A539-DesMephisto-Shadowmoon1"] = {
         ["Done"] = {
             34586, --
         },
-    },    -- [17]
+    },             -- [17]
     {
         ["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
         ["PickUp"] = {
@@ -2131,7 +2122,7 @@ APR.QuestStepList["A539-DesMephisto-Shadowmoon1"] = {
             35176,
             35166, -- [3]
         },
-    },    -- [4]
+    },             -- [4]
     {
         ["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
         ["PickUp"] = {
@@ -4485,7 +4476,7 @@ APR.QuestStepList["A543-DesMephisto-Gorgrond"] = {
             34698, -- [3]
             34703, -- [4]
         },
-    },    -- [10]
+    },             -- [10]
     {
         ["PickUp"] = {
             35137,
@@ -4828,7 +4819,7 @@ APR.QuestStepList["A543-DesMephisto-Gorgrond"] = {
             35934,
             35037, -- [3]
         },
-    },    -- [28]
+    },             -- [28]
     {
         ["TT"] = {
             ["y"] = 6587.3,
@@ -5205,7 +5196,7 @@ APR.QuestStepList["A543-DesMephisto-Gorgrond"] = {
             35128,
             36223, -- [3]
         },
-    },    -- [4]
+    },             -- [4]
     {
         ["PickUp"] = {
             35139,
@@ -9401,7 +9392,7 @@ APR.QuestStepList["A535-DesMephisto-Talador2"] = {
             34959,
             34095, -- [3]
         },
-    },    -- [36]
+    },             -- [36]
     {
         ["PickUp"] = {
             34096,
@@ -12343,7 +12334,7 @@ APR.QuestStepList["A542-DesMephisto-SpiresOfArak"] = {
             34756,
             35668, -- [3]
         },
-    },    -- [20]
+    },             -- [20]
     {
         ["PickUp"] = {
             35671,
@@ -13560,7 +13551,7 @@ APR.QuestStepList["A542-DesMephisto-SpiresOfArak"] = {
             35260,
             35273, -- [3]
         },
-    },    -- [5]
+    },             -- [5]
     {
         ["PickUp"] = {
             35634,
@@ -13589,7 +13580,7 @@ APR.QuestStepList["A542-DesMephisto-SpiresOfArak"] = {
             34884,
             34885, -- [3]
         },
-    },    -- [7]
+    },             -- [7]
     {
         ["PickUp"] = {
             35733,
