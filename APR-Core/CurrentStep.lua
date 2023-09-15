@@ -127,6 +127,9 @@ end
 
 -- Refresh the frame positioning
 function APR.currentStep:RefreshCurrentStepFrameAnchor()
+    if InCombatLockdown() then
+        return
+    end
     if (not APR.settings.profile.currentStepShow or not APR.settings.profile.enableAddon) then
         CurrentStepScreenPanel:Hide()
         return
@@ -539,9 +542,9 @@ function APR.currentStep:UpdateStepButtonCooldowns()
             if IconButton:IsShown() then
                 local start, duration
                 if IconButton.attribute == 'spell' then
-                    start, duration = GetSpellCooldown(IconButton.itemID)
+                    start, duration = GetSpellCooldown(tonumber(IconButton.itemID))
                 else
-                    start, duration = GetItemCooldown(IconButton.itemID)
+                    start, duration = C_Container.GetItemCooldown(tonumber(IconButton.itemID))
                 end
                 if start then
                     if IconButton.cooldown:GetCooldownDuration() == 0 or not IconButton.cooldown:IsShown() then

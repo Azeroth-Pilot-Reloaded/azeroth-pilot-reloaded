@@ -2181,9 +2181,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         local arg1, arg2, arg3, arg4 = ...;
         if (arg1 == "player" and steps and steps["Debuffcount"]) then
             for i = 1, 20 do
-                local name, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, nameplateShowPersonal, spellId =
-                    UnitBuff("player", i)
-                if (spellId and name and count) then
+                local _, _, count, _, _, _, _, _, _, spellId = UnitBuff("player", i)
+                if (spellId and count) then
                     if (spellId == 69704 and count == 5) then
                         APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
                         APR.BookingList["UpdateQuest"] = 1
@@ -2197,16 +2196,14 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             local gotbuff2 = false
             local gotbuff3 = false
             for i = 1, 20 do
-                local name, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, nameplateShowPersonal, spellId =
-                    UnitBuff("player", i)
-                if (spellId and name) then
-                    if (spellId == 311103) then
-                        gotbuff1 = true
-                    elseif (spellId == 311107) then
-                        gotbuff2 = true
-                    elseif (spellId == 311058) then
-                        gotbuff3 = true
-                    end
+                local _, _, _, _, _, _, _, _, _, spellId = UnitBuff("player", i)
+
+                if (spellId == 311103) then
+                    gotbuff1 = true
+                elseif (spellId == 311107) then
+                    gotbuff2 = true
+                elseif (spellId == 311058) then
+                    gotbuff3 = true
                 end
             end
             if (APR.SweatBuff[1]) then
@@ -2231,6 +2228,9 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (arg1 == "player" and APR.ActiveQuests and APR.ActiveQuests[57867]) then
             APR.CheckSweatBuffz()
             C_Timer.After(2, APR.CheckSweatBuffz)
+        end
+        if steps and steps.Button then
+            APR.currentStep:UpdateStepButtonCooldowns()
         end
     end
     if (event == "PLAYER_TARGET_CHANGED") then -- TODO rework for custom target and action
@@ -2532,26 +2532,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (steps and steps["GetFP"]) then
             APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
             APR.BookingList["PrintQStep"] = 1
-        end
-    end
-    if (event == "UNIT_SPELLCAST_SUCCEEDED") then
-        local arg1, arg2, arg3, arg4, arg5 = ...;
-        if ((arg1 == "player") and (APR_HSSpellIDs[arg3])) then
-            if (steps and steps["UseHS"]) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = 1
-            end
-        end
-        if (arg1 == "player") then
-            if (steps and steps["Button"]) then
-                APR.currentStep:UpdateStepButtonCooldowns()
-            end
-            if (steps and steps["SpellTrigger"]) then
-                if (arg3 == steps["SpellTrigger"]) then
-                    APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                    APR.BookingList["PrintQStep"] = 1
-                end
-            end
         end
     end
     if event == "UNIT_SPELLCAST_SUCCEEDED" then
