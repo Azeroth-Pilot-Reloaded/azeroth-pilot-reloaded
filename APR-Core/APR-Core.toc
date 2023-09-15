@@ -23,7 +23,6 @@ Config.lua
 Commands.lua
 
 TransportDB.lua
-QuestList.lua
 QuestHandler.lua
 QuestTest.lua
 Transport.lua

@@ -460,7 +460,6 @@ function APR.FP.GetCustomZone()
         return APR.QuestStepListListingZone["Z-14-Revendreth-Story"], "1525-Z14-Revendreth-Story"
     end
     if (zenr == 0 and APR.Level > 49) then
-        APR.ProgressText = "Auto Path"
         if (C_QuestLog.IsQuestFlaggedCompleted(58086) == false and (C_QuestLog.IsOnQuest(61874) == true or C_QuestLog.IsQuestFlaggedCompleted(61874) == true or C_QuestLog.IsOnQuest(59751) or C_QuestLog.IsQuestFlaggedCompleted(59751) == true)) then
             APR.ProgressShown = true
             if (C_QuestLog.IsQuestFlaggedCompleted(59770) == false) then
@@ -516,7 +515,6 @@ function APR.FP.GetCustomZone()
             return
         end
     elseif (zenr == 0) then
-        APR.ProgressText = "Auto Path"
         APR.ProgressShown = false
         if (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728) then
             if (IsAddOnLoaded("APR-Shadowlands") == false) then
@@ -558,7 +556,6 @@ function APR.FP.GetCustomZone()
             return APR.QuestStepListListingZone["(7/7) 1-50 Talador"], "A535-DesMephisto-Talador2"
         end
     end
-    APR.ProgressText = "Custom Path"
     if (not APR_Custom) then
         return
     end
@@ -641,7 +638,6 @@ function APR.FP.GetCustomZone()
             end
         end
     end
-    APR.ProgressText = nil
 end
 
 function APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
