@@ -129,7 +129,7 @@ function APR.settings:createBlizzOptions()
                 type = "execute",
                 width = 0.75,
                 func = function()
-                    _G.StaticPopup_Show("Discord_Link")
+                    APR.questionDialog:CreateEditBoxPopup(L["COPY_HELPER"], L["CLOSE"], APR.discord)
                 end
             },
             githubButton = {
@@ -138,7 +138,7 @@ function APR.settings:createBlizzOptions()
                 type = "execute",
                 width = 0.75,
                 func = function()
-                    _G.StaticPopup_Show("Github_Link")
+                    APR.questionDialog:CreateEditBoxPopup(L["COPY_HELPER"], L["CLOSE"], APR.github)
                 end
             },
             buttonOffset = {
@@ -153,7 +153,10 @@ function APR.settings:createBlizzOptions()
                 type = "execute",
                 width = 0.75,
                 func = function()
-                    _G.StaticPopup_Show("Reset_Settings")
+                    APR.questionDialog:CreateQuestionPopup(
+                        nil,
+                        function() APR.settings:ResetSettings() end
+                    )
                 end
             },
             header_Automation = {
@@ -993,60 +996,3 @@ function APR.settings:ToggleAddon()
     end
     APR.currentStep:RefreshCurrentStepFrameAnchor()
 end
-
---Discord frame
-_G.StaticPopupDialogs["Discord_Link"] = {
-    text = L["COPY_HELPER"],
-    hasEditBox = 1,
-    button1 = L["CLOSE"],
-    OnShow = function(self)
-        if APR.discord then
-            local box = getglobal(self:GetName() .. "EditBox")
-            if box then
-                box:SetWidth(275)
-                box:SetText(APR.discord)
-                box:HighlightText()
-                box:SetFocus()
-            end
-        end
-    end,
-
-    EditBoxOnEscapePressed = function(self) self:GetParent():Hide() end,
-    timeout = 0,
-    whileDead = 1,
-    hideOnEscape = 1
-}
--- Github Frame
-_G.StaticPopupDialogs["Github_Link"] = {
-    text = L["COPY_HELPER"],
-    hasEditBox = 1,
-    button1 = L["CLOSE"],
-    OnShow = function(self)
-        if APR.github then
-            local box = getglobal(self:GetName() .. "EditBox")
-            if box then
-                box:SetWidth(275)
-                box:SetText(APR.github)
-                box:HighlightText()
-                box:SetFocus()
-            end
-        end
-    end,
-
-    EditBoxOnEscapePressed = function(self) self:GetParent():Hide() end,
-    timeout = 0,
-    whileDead = 1,
-    hideOnEscape = 1
-}
--- confirm reset settings Frame
-_G.StaticPopupDialogs["Reset_Settings"] = {
-    text = CONFIRM_CONTINUE,
-    button1 = YES,
-    button2 = NO,
-    OnAccept = function()
-        APR.settings:ResetSettings()
-    end,
-    timeout = 0,
-    whileDead = true,
-    hideOnEscape = true
-}
