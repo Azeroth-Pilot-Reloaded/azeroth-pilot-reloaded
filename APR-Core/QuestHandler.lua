@@ -394,7 +394,7 @@ local function APR_PrintQStep()
             end
         end
         if (steps["SpecialETAHide"]) then
-            APR.AFK:HideAfkFrame()
+            APR.AFK:HideFrame()
         end
         if (steps["UseGlider"] and not APR.ZoneTransfer) then
             APR.currentStep:AddExtraLineText("USE_ITEM_GLIDER", L["USE_ITEM"] .. ": " .. APR.GliderFunc())
