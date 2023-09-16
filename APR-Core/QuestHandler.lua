@@ -823,11 +823,14 @@ local function APR_PrintQStep()
             APR.BookingList["PrintQStep"] = 1
             return
         end
-        if (steps["ETA"] and not steps["UseFlightPath"]) then
+        if (steps["ETA"] and not steps["UseFlightPath"] and not steps["SpecialETAHide"]) then
             if (ETAStep ~= CurStep) then
-                APR.AFK_Timer(steps["ETA"])
+                APR.AFK:SetAfkTimer(steps["ETA"])
                 ETAStep = CurStep
             end
+        end
+        if (steps["SpecialETAHide"]) then
+            APR.AFK:HideAfkFrame()
         end
         if (steps["UseGlider"] and not APR.ZoneTransfer) then
             APR.currentStep:AddExtraLineText("USE_ITEM_GLIDER", L["USE_ITEM"] .. ": " .. APR.GliderFunc())
