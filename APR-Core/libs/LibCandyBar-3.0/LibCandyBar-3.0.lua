@@ -21,7 +21,7 @@ local CreateFrame, error, setmetatable, UIParent = CreateFrame, error, setmetata
 if not LibStub then error("LibCandyBar-3.0 requires LibStub.") end
 local cbh = LibStub:GetLibrary("CallbackHandler-1.0")
 if not cbh then error("LibCandyBar-3.0 requires CallbackHandler-1.0") end
-local lib = LibStub:NewLibrary("LibCandyBar-3.0", 100) -- Bump minor on changes
+local lib = LibStub:NewLibrary("LibCandyBar-3.0", 101) -- Bump minor on changes
 if not lib then return end
 lib.callbacks = lib.callbacks or cbh:New(lib)
 local cb = lib.callbacks
@@ -197,13 +197,21 @@ function barPrototype:Set(key, data) if not self.data then self.data = {} end; s
 -- @param key Key to retrieve
 function barPrototype:Get(key) return self.data and self.data[key] end
 --- Sets the color of the bar.
--- This is basically a wrapper to SetStatusBarColor.
+-- This is basically a wrapper to candyBarBar:SetStatusBarColor.
 -- @paramsig r, g, b, a
 -- @param r Red component (0-1)
 -- @param g Green component (0-1)
 -- @param b Blue component (0-1)
 -- @param a Alpha (0-1)
 function barPrototype:SetColor(...) self.candyBarBar:SetStatusBarColor(...) end
+--- Sets the background color of the bar.
+-- This is basically a wrapper to candyBarBackground:SetVertexColor.
+-- @paramsig r, g, b, a
+-- @param r Red component (0-1)
+-- @param g Green component (0-1)
+-- @param b Blue component (0-1)
+-- @param a Alpha (0-1)
+function barPrototype:SetBackgroundColor(...) self.candyBarBackground:SetVertexColor(...) end
 --- Sets the color of the bar label and bar duration text.
 -- @paramsig r, g, b, a
 -- @param r Red component (0-1)
@@ -480,8 +488,8 @@ function lib:New(texture, width, height)
 		bar:SetScript(scripts[i], nil)
 	end
 
-	bar.candyBarBackground:SetVertexColor(0.5, 0.5, 0.5, 0.3)
-	bar.candyBarBar:SetStatusBarColor(0.5, 0.5, 0.5, 1)
+	bar:SetBackgroundColor(0.5, 0.5, 0.5, 0.3)
+	bar:SetColor(0.5, 0.5, 0.5, 1)
 	bar:ClearAllPoints()
 	SetWidth(bar, width)
 	SetHeight(bar, height)
