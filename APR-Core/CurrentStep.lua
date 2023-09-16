@@ -138,6 +138,7 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
     if (APR.settings.profile.currentStepAttachFrameToQuestLog) then
         CurrentStepScreenPanel:EnableMouse(false)
         CurrentStepScreenPanel:ClearAllPoints()
+        CurrentStepFrame:SetScale(1)
 
         for i = 1, ObjectiveTrackerFrame:GetNumPoints() do
             local point, relativeTo, relativePoint, xOfs, yOfs = ObjectiveTrackerFrame:GetPoint(i)
@@ -180,6 +181,7 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
         end
 
         LibWindow.RestorePosition(CurrentStepScreenPanel)
+        self:UpdateFrameScale()
 
         CurrentStepFrameHeader:ClearAllPoints()
         CurrentStepFrameHeader:SetPoint("bottom", CurrentStepFrame, "top", 0, -20)

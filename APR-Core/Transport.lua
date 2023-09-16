@@ -2025,7 +2025,7 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR.BookingList["TestTaxiFunc"] = 1
                 APR.FP.QuedFP = nil
                 if (steps and steps["ETA"]) then
-                    APR.AFK_Timer(steps["ETA"])
+                    APR.AFK:SetAfkTimer(steps["ETA"])
                 end
             end
             if (UnitOnTaxi("player")) then
