@@ -84,6 +84,8 @@ function APR.settings:InitializeSettings()
             groupScale = 1,
             -- route
             greetings = true, --Greetings2
+            --afk
+            afkFrame = {},
             --debug
             configMode = false,
             debug = false,
@@ -288,7 +290,8 @@ function APR.settings:createBlizzOptions()
                             APR.currentStep:UpdateFrameScale()
                         end,
                         disabled = function()
-                            return not self.profile.currentStepShow
+                            return not self.profile.currentStepShow or self.profile
+                                .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
                         end,
                     },
                     resetCurrentStepPosition = {
@@ -977,16 +980,15 @@ function APR.settings:ToggleAddon()
         self.profile.showArrow = false
         self.profile.showGroup = false
         -- frames
+        -- v3
+        APR.party:HideFrame()
+        APR.AFK:HideFrame()
+        -- v2
         APR.ZoneQuestOrder:Hide()
-        for CLi = 1, 5 do
-            APR.PartyList.PartyFrames[CLi]:Hide()
-            APR.PartyList.PartyFrames2[CLi]:Hide()
-        end
         APR.BookingList["ClosedSettings"] = true
         APR.LoadInOptionFrame:Hide()
         APR.RoutePlan.FG1:Hide()
         APR.ArrowFrame:Hide()
-        APR.AfkFrame:Hide()
     else
         -- TODO load old profile
         -- settings

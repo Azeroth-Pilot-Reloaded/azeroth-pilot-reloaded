@@ -32,7 +32,6 @@ function APR:OnInitialize()
     APR.Icons = {}
     APR.MapIcons = {}
     APR.Breadcrums = {}
-    APR.AfkTimerVar = 0 --Move to AFK file
     APR.ZoneTransfer = false
     APR.ProgressShown = false
 
@@ -76,6 +75,9 @@ function APR:OnInitialize()
 
     --Init Party frame
     APR.map:mapIcon() -- TODO REWORK
+
+    --Init AFK frame
+    APR.AFK:AFKFrameOnInit()
 
     -- APR Global Variables, UI oriented
     BINDING_HEADER_APR = APR.title -- Header text for APR's main frame
@@ -192,52 +194,6 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
     APR.RoutePlanCheckPos()
     APR.CheckPosMove()
     APR.BookingList["UpdateMapId"] = 1
-end
-
--- TODO Rework AFK frame
---AFK Frame Stuff.. How long you will wait  for questgiver/flight
-APR.AfkFrame = CreateFrame("frame", "APR_AfkFrames", UIParent)
-APR.AfkFrame:SetWidth(190)
-APR.AfkFrame:SetHeight(40)
-APR.AfkFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 150)
-APR.AfkFrame:EnableMouse(true)
-APR.AfkFrame:SetMovable(true)
-
-local t = APR.AfkFrame:CreateTexture(nil, "BACKGROUND")
-t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
-t:SetAllPoints(APR.AfkFrame)
-APR.AfkFrame.texture = t
-
-APR.AfkFrame:SetScript("OnMouseDown", function(self, button)
-    if button == "LeftButton" then
-        APR.AfkFrame:StartMoving();
-        APR.AfkFrame.isMoving = true;
-    end
-end)
-APR.AfkFrame:SetScript("OnMouseUp", function(self, button)
-    if button == "LeftButton" and APR.AfkFrame.isMoving then
-        APR.AfkFrame:StopMovingOrSizing();
-        APR.AfkFrame.isMoving = false;
-    end
-end)
-APR.AfkFrame:SetScript("OnHide", function(self)
-    if (APR.AfkFrame.isMoving) then
-        APR.AfkFrame:StopMovingOrSizing();
-        APR.AfkFrame.isMoving = false;
-    end
-end)
-APR.AfkFrame.Fontstring = APR.AfkFrame:CreateFontString("APRAFkFont", "ARTWORK", "ChatFontNormal")
-APR.AfkFrame.Fontstring:SetParent(APR.AfkFrame)
-APR.AfkFrame.Fontstring:SetPoint("LEFT", APR.AfkFrame, "LEFT", 10, 0)
-APR.AfkFrame.Fontstring:SetFontObject("GameFontNormalLarge")
-APR.AfkFrame.Fontstring:SetText("AFK:")
-APR.AfkFrame.Fontstring:SetJustifyH("LEFT")
-APR.AfkFrame.Fontstring:SetTextColor(1, 1, 0)
-APR.AfkFrame:Hide()
---Something to do with AFK frame/timer probably
-function APR.AFK_Timer(APR_AFkTimeh)
-    APR.AfkTimerVar = APR_AFkTimeh + floor(GetTime())
-    APR.ArrowEventAFkTimer:Play()
 end
 
 -- Likely deals with automatically skipping cutscenes using PlayMovie_hook
@@ -2833,7 +2789,7 @@ function APR.TimeFPs(CurrentFP, DestFP)
         APR.TaxiTimerDes = DestFP
         APR_TaxicTimer:Play()
     else
-        APR.AFK_Timer(APR_TaxiTimers[CurrentFP .. "-" .. DestFP])
+        APR.AFK:SetAfkTimer(APR_TaxiTimers[CurrentFP .. "-" .. DestFP])
     end
 end
 
@@ -2999,30 +2955,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
             APR.LoadInTimer:Stop()
         end)
         APR.LoadInTimer:Play()
-        APR.ArrowEventAFkTimer = APR.CoreEventFrame:CreateAnimationGroup()
-        APR.ArrowEventAFkTimer.anim = APR.ArrowEventAFkTimer:CreateAnimation()
-        APR.ArrowEventAFkTimer.anim:SetDuration(0.1)
-        APR.ArrowEventAFkTimer:SetLooping("REPEAT")
-        APR.ArrowEventAFkTimer:SetScript("OnLoop", function(self, event, ...)
-            local ZeTime = APR.AfkTimerVar - floor(GetTime())
-            if (ZeTime > 0) then
-                APR.AfkFrame.Fontstring:SetText(L["AFK"] .. " " .. string.format(SecondsToTime(ZeTime)))
-                local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
-                if (APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
-                    local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-                    if (steps and steps["SpecialETAHide"]) then
-                        APR.AfkFrame:Hide()
-                    else
-                        APR.AfkFrame:Show()
-                    end
-                else
-                    APR.AfkFrame:Show()
-                end
-            else
-                APR.ArrowEventAFkTimer:Stop()
-                APR.AfkFrame:Hide()
-            end
-        end)
         CoreLoadin = true
     end
     if (event == "CINEMATIC_START") then --Cutscene skip when cinematic starts
