@@ -4,6 +4,10 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 -- Initialize APR Map module
 APR.map = APR:NewModule("MAP")
 
+APR.Icons = {}
+APR.MapIcons = {}
+
+-- oldquest list
 function APR.map:mapIcon()
     for CLi = 1, 20 do
         APR["Icons"][CLi] = CreateFrame("Frame", nil, UIParent)
@@ -37,6 +41,7 @@ function APR.map:mapIcon()
     end
 end
 
+-- quest handler
 function APR.RemoveIcons()
     for CLi = 1, 20 do
         if (APR["Icons"][CLi].A == 1) then
@@ -59,6 +64,7 @@ function APR.RemoveMapIcons()
     end
 end
 
+-- pointiller
 function APR:MoveIcons()
     local d_y, d_x = UnitPosition("player")
     if (IsInInstance() or not APR.settings.profile.showMiniMapBlobs or not d_y) then
@@ -264,6 +270,7 @@ end
 local function APR_MapDelay()
     Delaytime = 0
 end
+-- pointiller
 function APR:MoveMapIcons()
     local d_y, d_x = UnitPosition("player")
     if (IsInInstance() or not APR.settings.profile.showMapBlobs or not d_y) then
@@ -467,6 +474,81 @@ function APR:MoveMapIcons()
                         APR["MapIcons"][CLi]["A"] = 0
                         APR["MapIcons"][CLi]["P"] = 0
                         APR.HBDP:RemoveWorldMapIcon("APRMap", APR["MapIcons"][CLi])
+                    end
+                end
+            end
+        end
+    end
+end
+
+-- quest test
+function APR.MakeMapOrderIcons(IdZs)
+    if not APR.settings.profile.enableAddon then
+        return
+    end
+    APR["MapZoneIcons"][IdZs] = CreateFrame("Frame", "MapZoneOrderIcons", UIParent)
+    APR["MapZoneIcons"][IdZs]:SetFrameStrata("MEDIUM")
+    APR["MapZoneIcons"][IdZs]:SetWidth(20)
+    APR["MapZoneIcons"][IdZs]:SetHeight(20)
+    APR["MapZoneIcons"][IdZs]:SetScale(0.8)
+    local t = APR["MapZoneIcons"][IdZs]:CreateTexture(nil, "ARTWORK")
+    t:SetTexture("Interface\\Addons\\APR-Core\\Img\\Icon.tga")
+    t:SetAllPoints(APR["MapZoneIcons"][IdZs])
+    APR["MapZoneIcons"]["FS" .. IdZs] = APR["MapZoneIcons"][IdZs]:CreateFontString("APRMapIconFS" .. IdZs, "ARTWORK",
+        "ChatFontNormal")
+    APR["MapZoneIcons"]["FS" .. IdZs]:SetParent(APR["MapZoneIcons"][IdZs])
+    APR["MapZoneIcons"]["FS" .. IdZs]:SetPoint("CENTER", APR["MapZoneIcons"][IdZs], "CENTER", 0, 0)
+    APR["MapZoneIcons"]["FS" .. IdZs]:SetWidth(30)
+    APR["MapZoneIcons"]["FS" .. IdZs]:SetHeight(25)
+    APR["MapZoneIcons"]["FS" .. IdZs]:SetJustifyH("CENTER")
+    APR["MapZoneIcons"]["FS" .. IdZs]:SetFontObject("GameFontNormalSmall")
+    APR["MapZoneIcons"]["FS" .. IdZs]:SetText(IdZs)
+    APR["MapZoneIcons"]["FS" .. IdZs]:SetTextColor(1, 1, 1)
+    APR["MapZoneIconsRed"][IdZs] = CreateFrame("Frame", "MapZoneOrderIconsRed", UIParent)
+    APR["MapZoneIconsRed"][IdZs]:SetFrameStrata("MEDIUM")
+    APR["MapZoneIconsRed"][IdZs]:SetWidth(20)
+    APR["MapZoneIconsRed"][IdZs]:SetHeight(20)
+    APR["MapZoneIconsRed"][IdZs]:SetScale(0.6)
+    local t = APR["MapZoneIconsRed"][IdZs]:CreateTexture(nil, "HIGH")
+    t:SetTexture("Interface\\Addons\\APR-Core\\Img\\RedIcon.tga")
+    t:SetAllPoints(APR["MapZoneIconsRed"][IdZs])
+    APR["MapZoneIconsRed"]["FS" .. IdZs] = APR["MapZoneIconsRed"][IdZs]:CreateFontString("APRMapIconFS" .. IdZs,
+        "ARTWORK",
+        "ChatFontNormal")
+    APR["MapZoneIconsRed"]["FS" .. IdZs]:SetParent(APR["MapZoneIconsRed"][IdZs])
+    APR["MapZoneIconsRed"]["FS" .. IdZs]:SetPoint("CENTER", APR["MapZoneIconsRed"][IdZs], "CENTER", 0, 0)
+    APR["MapZoneIconsRed"]["FS" .. IdZs]:SetWidth(30)
+    APR["MapZoneIconsRed"]["FS" .. IdZs]:SetHeight(25)
+    APR["MapZoneIconsRed"]["FS" .. IdZs]:SetJustifyH("CENTER")
+    APR["MapZoneIconsRed"]["FS" .. IdZs]:SetFontObject("GameFontNormalSmall")
+    APR["MapZoneIconsRed"]["FS" .. IdZs]:SetText(IdZs)
+    APR["MapZoneIconsRed"]["FS" .. IdZs]:SetTextColor(1, 1, 1)
+end
+
+function APR.MapOrderNumbers()
+    APR.HBDP:RemoveAllWorldMapIcons("APRMapOrder")
+    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+    if (APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and CurStep) then
+        local znr = 0
+        local SetMapIDs = WorldMapFrame:GetMapID()
+        if (SetMapIDs == nil) then
+            SetMapIDs = C_Map.GetBestMapForUnit("player")
+        end
+        for APR_index, APR_value in pairs(APR.QuestStepList[APR.ActiveMap]) do
+            znr = znr + 1
+            if (APR.QuestStepList[APR.ActiveMap][znr] and APR.QuestStepList[APR.ActiveMap][znr]["TT"] and CurStep < znr and CurStep > (znr - 11)) then
+                if (not APR["MapZoneIcons"][znr]) then
+                    APR.MakeMapOrderIcons(znr)
+                end
+                if (not APR.QuestStepList[APR.ActiveMap][znr]["CRange"]) then
+                    ix, iy = APR:GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][znr]["TT"]["y"],
+                        APR.QuestStepList[APR.ActiveMap][znr]["TT"]["x"], true)
+                    if (CurStep < znr) then
+                        APR.HBDP:AddWorldMapIconMap("APRMapOrder", APR["MapZoneIconsRed"][znr], SetMapIDs, ix, iy,
+                            HBD_PINS_WORLDMAP_SHOW_PARENT)
+                    else
+                        APR.HBDP:AddWorldMapIconMap("APRMapOrder", APR["MapZoneIcons"][znr], SetMapIDs, ix, iy,
+                            HBD_PINS_WORLDMAP_SHOW_PARENT)
                     end
                 end
             end

@@ -93,8 +93,6 @@ function APR.settings:InitializeSettings()
             -- position
             leftLiz = 150,
             topLiz = -150,
-            sugQuestLeft = 150, -- Sugleft
-            sugQuestTop = -150, -- Sugtop
 
         }
     }
@@ -545,7 +543,7 @@ function APR.settings:createBlizzOptions()
                                 order = 9.41,
                                 type = "toggle",
                                 name = L["SHOW_STEPS_MAP"],
-                                desc = L["SHOW_STEPS_MAP_DESC"], --TODO Disabled need fix looking for todo showMap10s
+                                desc = L["SHOW_STEPS_MAP_DESC"],
                                 width = "full",
                                 get = GetProfileOption,
                                 set = function(info, value)
@@ -554,7 +552,6 @@ function APR.settings:createBlizzOptions()
                                         APR.HBDP:RemoveAllWorldMapIcons("APRMapOrder")
                                     end
                                 end,
-                                disabled = true
                             },
                         },
                     },
