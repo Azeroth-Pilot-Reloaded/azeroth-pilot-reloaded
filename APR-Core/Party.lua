@@ -79,7 +79,6 @@ function APR.party:PartyFrameOnInit()
     self:SetDefaultDisplay()
 
     self:RefreshPartyFrameAnchor()
-    self:UpdateFrameScale()
 end
 
 function APR.party:SetDefaultDisplay()
@@ -94,7 +93,7 @@ end
 
 -- Update the frame scale
 function APR.party:UpdateFrameScale()
-    PartyFrame:SetScale(APR.settings.profile.groupScale)
+    LibWindow.SetScale(PartyScreenPanel, APR.settings.profile.groupScale)
 end
 
 function APR.party:RefreshPartyFrameAnchor()
@@ -102,6 +101,7 @@ function APR.party:RefreshPartyFrameAnchor()
         PartyScreenPanel:Hide()
         return
     end
+    APR.party:UpdateFrameScale()
     PartyScreenPanel:EnableMouse(true)
     LibWindow.RestorePosition(PartyScreenPanel)
     PartyScreenPanel:Show()

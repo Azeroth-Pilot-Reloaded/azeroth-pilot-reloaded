@@ -122,7 +122,7 @@ end
 
 -- Update the frame scale
 function APR.currentStep:UpdateFrameScale()
-    CurrentStepFrame:SetScale(APR.settings.profile.currentStepScale)
+    LibWindow.SetScale(CurrentStepScreenPanel, APR.settings.profile.currentStepScale)
 end
 
 -- Refresh the frame positioning

@@ -9,7 +9,7 @@
 
 ## RequiredDeps: APR
 
-## SavedVariables: APRSettings, APRData, APRQuestNames, APR_Transport, APR_Custom, APR_ZoneComplete, APR_TaxiTimers
+## SavedVariables: APRSettings, APRData, APR_Transport, APR_Custom, APR_ZoneComplete, APR_TaxiTimers
 libs/embeds.xml
 locales/locales.xml
 
@@ -24,15 +24,14 @@ Commands.lua
 
 TransportDB.lua
 QuestHandler.lua
-QuestTest.lua
 Transport.lua
 
 Arrow.lua
 CurrentStep.lua
 QuestionPopUp.lua
+QuestOrderList.lua
 Party.lua
 Map.lua
-QuestOrderList.lua
 AFK.lua
 
 SweatOfOurBrowBuffFrame.lua

@@ -41,10 +41,10 @@ function APR.AFK:AFKFrameOnInit()
     LibWindow.MakeDraggable(AfkFrameScreen)
     LibWindow.RestorePosition(AfkFrameScreen)
     AfkFrameScreen:EnableMouse(true)
-    AfkFrame:Hide()
+    AfkFrameScreen:Hide()
 
     local function onStop()
-        AfkFrame:Hide()
+        AfkFrameScreen:Hide()
     end
     candy:RegisterCallback("LibCandyBar_Stop", onStop)
 end
@@ -52,14 +52,14 @@ end
 function APR.AFK:SetAfkTimer(duration)
     if not APR.settings.profile.enableAddon then
         bar:Stop()
-        AfkFrame:Hide()
+        AfkFrameScreen:Hide()
         return
     end
-    AfkFrame:Show()
+    AfkFrameScreen:Show()
     bar:SetDuration(duration)
     bar:Start()
 end
 
 function APR.AFK:HideFrame()
-    AfkFrame:Hide()
+    AfkFrameScreen:Hide()
 end

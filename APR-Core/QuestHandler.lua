@@ -214,12 +214,6 @@ local function APR_PrintQStep()
         APR.party:RemoveTeam()
         APR.party:HideFrame()
     end
-    if (IsInInstance()) then
-        APR.ZoneQuestOrder:Hide()
-        return
-    elseif (APR.settings.profile.showQuestOrderList) then
-        APR.ZoneQuestOrder:Show()
-    end
     if (APR.ActiveMap and not APRData[APR.Realm][APR.Name][APR.ActiveMap]) then
         APRData[APR.Realm][APR.Name][APR.ActiveMap] = 1
     end
@@ -281,8 +275,6 @@ local function APR_PrintQStep()
             StepP = "PickUp"
         elseif (steps["WarMode"]) then
             StepP = "WarMode"
-        elseif (steps["DalaranToOgri"]) then
-            StepP = "DalaranToOgri"
         elseif (steps["Qpart"]) then
             StepP = "Qpart"
         elseif (steps["Done"]) then
@@ -309,8 +301,6 @@ local function APR_PrintQStep()
             StepP = "UseDalaHS"
         elseif (steps["UseGarrisonHS"]) then
             StepP = "UseGarrisonHS"
-        elseif (steps["ZoneDone"]) then
-            StepP = "ZoneDone"
         end
         if (steps["BreadCrum"]) then
             APR.ChkBreadcrums(steps["BreadCrum"])
@@ -406,9 +396,6 @@ local function APR_PrintQStep()
             APR.currentStep:AddExtraLineText("MOUNT_HORSE_SCARE_SPIDER", L["MOUNT_HORSE_SCARE_SPIDER"])
         elseif (steps["InVehicle"] and steps["InVehicle"] == 2 and UnitInVehicle("player") and not APR.ZoneTransfer) then
             APR.currentStep:AddExtraLineText("SCARE_SPIDER_INTO_LUMBERMILL", L["SCARE_SPIDER_INTO_LUMBERMILL"])
-        end
-        if (steps["DalaranToOgri"] and not APR.ZoneTransfer) then
-            APR.currentStep:AddExtraLineText("GO_TO_Orgrimmar", L["GO_TO"] .. " " .. C_Map.GetMapInfo(85).name)
         end
         if (APR.ActiveMap) then
             local function checkChromieTimeline(id)
@@ -551,7 +538,7 @@ local function APR_PrintQStep()
                 for APR_index2, APR_value2 in pairs(APR_value) do
                     Total = Total + 1
                     local qid = APR_index .. "-" .. APR_index2
-                    if (C_QuestLog.IsQuestFlaggedCompleted(APR_index) or ((UnitLevel("player") == 121) and APR_BonusObj[APR_index]) or APRData[APR.Realm][APR.Name]["BonusSkips"][APR_index] or APR.BreadCrumSkips[APR_index]) then
+                    if (C_QuestLog.IsQuestFlaggedCompleted(APR_index) or ((UnitLevel("player") == APR.MaxLevel) and APR_BonusObj[APR_index]) or APRData[APR.Realm][APR.Name]["BonusSkips"][APR_index] or APR.BreadCrumSkips[APR_index]) then
                         Flagged = Flagged + 1
                     elseif (APR.ActiveQuests[qid] and APR.ActiveQuests[qid] == "C") then
                         Flagged = Flagged + 1
@@ -896,9 +883,7 @@ local function APR_PrintQStep()
             APR.ArrowActive = 0
         end
         APR.BookingList["SetQPTT"] = 1
-        if (APR.ZoneQuestOrder:IsShown() == true) then
-            APR.BookingList["UpdateZoneQuestOrderListL"] = 1
-        end
+        APR.questOrderList:AddStepFromRoute()
     elseif (APRWhereToGo and not APR.ZoneTransfer) then
         APR.currentStep:AddExtraLineText("GO_TO_" .. APRWhereToGo, L["GO_TO"] .. " " .. APRWhereToGo)
     else
@@ -992,9 +977,6 @@ local function APR_UpdateQuest()
     end
     local i = 1
     local UpdateQpart = 0
-    if (not APRQuestNames) then
-        APRQuestNames = {}
-    end
     while C_QuestLog.GetTitleForLogIndex(i) do
         local ZeInfoz = C_QuestLog.GetInfo(i)
         if (ZeInfoz) then
@@ -1004,7 +986,6 @@ local function APR_UpdateQuest()
                 local questTitle = C_QuestLog.GetTitleForQuestID(questID)
                 local isComplete = C_QuestLog.IsComplete(questID)
                 if (not isHeader) then
-                    APRQuestNames[questID] = questTitle
                     local numObjectives = C_QuestLog.GetNumQuestObjectives(questID)
                     if (not APR.ActiveQuests[questID]) then
                         if (APR.settings.profile.debug) then
@@ -1177,9 +1158,6 @@ local function APR_AddQuest(questID)
     if (StepP == "PickUp") then
         local NrLeft = 0
         for APR_index, APR_value in pairs(IdList) do
-            if (not APRQuestNames[APR_value]) then
-                APRQuestNames[APR_value] = 1
-            end
             if (not APR.ActiveQuests[APR_value]) then
                 NrLeft = NrLeft + 1
             end
@@ -1246,9 +1224,8 @@ local function APR_UpdateMapId()
     if (not APRData[APR.Realm][APR.Name][APR.ActiveMap]) then
         APRData[APR.Realm][APR.Name][APR.ActiveMap] = 1
     end
-    if (APR.ZoneQuestOrder:IsShown() == true) then
-        APR.BookingList["UpdateZoneQuestOrderListL"] = 1
-    end
+
+    APR.questOrderList:AddStepFromRoute()
     APR.BookingList["PrintQStep"] = 1
     C_Timer.After(0.2, APR_BookQStep)
 end
@@ -1517,9 +1494,6 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
             APR.BookingList["TestTaxiFunc"] = nil
             APR_AntiTaxiLoop = 0
         end
-    elseif (APR.BookingList["UpdateZoneQuestOrderListL"]) then
-        APR.UpdateZoneQuestOrderList("LoadIn")
-        APR.BookingList["UpdateZoneQuestOrderListL"] = nil
     elseif (APR.BookingList["SkipCutscene"]) then
         APR.BookingList["SkipCutscene"] = nil
         --CinematicFrame_CancelCinematic()

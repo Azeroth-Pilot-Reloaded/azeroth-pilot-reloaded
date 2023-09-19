@@ -321,12 +321,7 @@ function APR.settings:createBlizzOptions()
                         get = GetProfileOption,
                         set = function(info, value)
                             SetProfileOption(info, value)
-                            if value then
-                                APR.UpdateZoneQuestOrderList("LoadIn")
-                                APR.ZoneQuestOrder:Show()
-                            else
-                                APR.ZoneQuestOrder:Hide()
-                            end
+                            APR.questOrderList:RefreshFrameAnchor()
                         end,
                         disabled = function()
                             return not self.profile.enableAddon
@@ -345,23 +340,22 @@ function APR.settings:createBlizzOptions()
                         get = GetProfileOption,
                         set = function(info, value)
                             SetProfileOption(info, value)
-                            APR.ZoneQuestOrder:SetScale(value)
+                            APR.questOrderList:UpdateFrameScale()
                         end,
                         disabled = function()
                             return not self.profile.showQuestOrderList
                         end,
                     },
-                    resetQuestOrderList = {
-                        name = L["RESET_QORDERLIST"],
+                    resetCurrentStepPosition = {
+                        name = L['RESET_QORDERLIST'],
                         order = 6.3,
                         type = 'execute',
                         width = "full",
                         func = function()
-                            APR.ZoneQuestOrder:ClearAllPoints()
-                            APR.ZoneQuestOrder:SetPoint("CENTER", UIParent, "CENTER", 1, 1)
+                            APR.questOrderList:ResetPosition()
                         end,
                         disabled = function()
-                            return not self.profile.enableAddon
+                            return not self.profile.showQuestOrderList or not self.profile.enableAddon
                         end,
                     },
                 },
@@ -969,29 +963,22 @@ function APR.settings:CreateMiniMapButton()
 end
 
 function APR.settings:ToggleAddon()
-    -- TODO Save old profile
     if not self.profile.enableAddon then
         -- settings disable
-        self.profile.currentStepShow = false
-        self.profile.showQuestOrderList = false
         self.profile.showArrow = false
-        self.profile.showGroup = false
         -- frames
         -- v3
-        APR.party:HideFrame()
         APR.AFK:HideFrame()
         -- v2
-        APR.ZoneQuestOrder:Hide()
         APR.BookingList["ClosedSettings"] = true
         APR.LoadInOptionFrame:Hide()
         APR.RoutePlan.FG1:Hide()
         APR.ArrowFrame:Hide()
     else
-        -- TODO load old profile
         -- settings
-        self.profile.currentStepShow = true
         self.profile.showArrow = true
-        -- frames
     end
     APR.currentStep:RefreshCurrentStepFrameAnchor()
+    APR.questOrderList:RefreshFrameAnchor()
+    APR.party:RefreshPartyFrameAnchor()
 end
