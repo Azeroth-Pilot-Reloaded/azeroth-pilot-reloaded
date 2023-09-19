@@ -555,3 +555,16 @@ function APR.MapOrderNumbers()
         end
     end
 end
+
+APR_QH_EventFrame = CreateFrame("Frame")
+APR_QH_EventFrame:RegisterEvent("QUEST_LOG_UPDATE")
+APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
+    if (event == "QUEST_LOG_UPDATE") then
+        if (APR.settings.profile.showMap10s and WorldMapFrame:IsShown() and APR.ActiveMap and APRData[APR.Realm][APR.Name][APR.ActiveMap]) then
+            local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+            if (CurStep and MapIconUpdateStep ~= CurStep and CurStep > 1) then
+                APR.MapOrderNumbers() -- TODO showMap10s : fix lua error showMap10s
+            end
+        end
+    end
+end)

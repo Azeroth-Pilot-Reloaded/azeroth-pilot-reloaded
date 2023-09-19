@@ -11,6 +11,7 @@ APR.Name = UnitName("player")
 APR.Realm = string.gsub(GetRealmName(), " ", "")
 APR.Faction = UnitFactionGroup("player") -- "Alliance", "Horde", "Neutral" or nil
 APR.Level = UnitLevel("player")
+APR.MaxLevel = 70
 APR.RaceLocale, APR.Race, APR.RaceID = UnitRace("player")
 APR.ClassFilename, APR.ClassId = UnitClassBase("player")
 APR.Gender = UnitSex("player")
@@ -65,7 +66,7 @@ function APR:OnInitialize()
     -- Init current step frame
     APR.currentStep:CurrentStepFrameOnInit()
 
-    --Init Party frame
+    --Init Part0y frame
     APR.party:PartyFrameOnInit()
 
     --Init Party frame
@@ -73,6 +74,9 @@ function APR:OnInitialize()
 
     --Init AFK frame
     APR.AFK:AFKFrameOnInit()
+
+    -- Init Quest Order List frame
+    APR.questOrderList:QuestOrderListFrameOnInit()
 
     -- APR Global Variables, UI oriented
     BINDING_HEADER_APR = APR.title -- Header text for APR's main frame
@@ -2714,7 +2718,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         if (not APRData[APR.Realm][APR.Name]["BonusSkips"]) then
             APRData[APR.Realm][APR.Name]["BonusSkips"] = {}
         end
-        APR.ZoneQuestOrderList() --Where steps go
 
         APR_TaxicTimer = APR.CoreEventFrame:CreateAnimationGroup()
         APR_TaxicTimer.anim = APR_TaxicTimer:CreateAnimation()
@@ -2838,12 +2841,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         if (not APRData[APR.Realm][APR.Name]["WantedQuestList"]) then
             APRData[APR.Realm][APR.Name]["WantedQuestList"] = {}
         end
-        if (not APR.settings.profile.showQuestOrderList) then
-            APR.ZoneQuestOrder:Hide()
-        end
 
-        -- TODO QoL REWORK
-        APR.ZoneQuestOrder:SetScale(APR.settings.profile.questOrderListScale)
         -- TODO ARROW REWORK
         APR.ArrowFrame:SetScale(APR.settings.profile.arrowScale)
         APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
