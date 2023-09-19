@@ -196,14 +196,18 @@
 <p style="padding-left: 30px; text-align: left">
     <span style="font-family: arial"
         ><span style="font-size: 14px"
-            ><a href="https://discord.gg/YgcdybKdWX"
-                ><strong><em>Come visit us on the APR Discord</em></strong></a
-            ></span
+            ><a href="https://discord.gg/YgcdybKdWX" target="_blank"
+                ><strong
+                    ><em
+                        >Come visit us on the APR Discord<br />
+                        <img
+                            src="https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/28711160/06e614ec-556e-474e-8ed1-819f8bd10654"
+                            alt="Discord join frame"
+                            width="408"
+                            height="105" /></em></strong></a></span
         ><br
     /></span>
 </p>
-
-![image](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/28711160/06e614ec-556e-474e-8ed1-819f8bd10654)
 
 <p style="text-align: left; padding-left: 60px">
     <span style="font-size: 12px; font-family: arial"
