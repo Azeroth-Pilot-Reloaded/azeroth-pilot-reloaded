@@ -56,11 +56,14 @@ function APR.settings:InitializeSettings()
             currentStepShow = true,  --showQList
             currentStepLock = false, --Lock
             currentStepScale = 1,    --Scale
+            currentStepbackgroundColorAlpha = { 0, 0, 0, 0.4 },
             currentStepAttachFrameToQuestLog = true,
             -- quest order list
             questOrderListFrame = {},
             showQuestOrderList = false, --ShowQuestListOrder
+            questOrderListLock = false,
             questOrderListScale = 1,    --OrderListScale
+            questOrderListbackgroundColorAlpha = { 0, 0, 0, 0.4 },
             -- arrow
             showArrow = true,
             lockArrow = false,
@@ -259,7 +262,7 @@ function APR.settings:createBlizzOptions()
                     currentStepLock = {
                         order = 5.12,
                         type = "toggle",
-                        name = L["LOCK_QLIST_WINDOW"],
+                        name = L["LOCK_WINDOW"],
                         desc = L["LOCK_QLIST_WINDOW_DESC"],
                         width = optionsWidth,
                         get = GetProfileOption,
@@ -277,7 +280,7 @@ function APR.settings:createBlizzOptions()
                         type = "range",
                         name = L["QLIST_SCALE"],
                         desc = L["QLIST_SCALE_DESC"],
-                        width = 'full',
+                        width = "full",
                         min = 0.01,
                         max = 2,
                         step = 0.05,
@@ -317,7 +320,7 @@ function APR.settings:createBlizzOptions()
                         type = "toggle",
                         name = L["SHOW_QORDERLIST"],
                         desc = L["SHOW_QORDERLIST_DESC"],
-                        width = "full",
+                        width = optionsWidth,
                         get = GetProfileOption,
                         set = function(info, value)
                             SetProfileOption(info, value)
@@ -327,8 +330,22 @@ function APR.settings:createBlizzOptions()
                             return not self.profile.enableAddon
                         end,
                     },
-                    questOrderListScale = {
+                    questOrderListLock = {
                         order = 6.2,
+                        type = "toggle",
+                        name = L["LOCK_WINDOW"],
+                        width = optionsWidth,
+                        get = GetProfileOption,
+                        set = function(info, value)
+                            SetProfileOption(info, value)
+                            APR.questOrderList:RefreshFrameAnchor()
+                        end,
+                        disabled = function()
+                            return not self.profile.showQuestOrderList
+                        end,
+                    },
+                    questOrderListScale = {
+                        order = 6.3,
                         type = "range",
                         name = L["QORDERLIST_SCALE"],
                         desc = L["QORDERLIST_SCALE_DESC"],
@@ -343,15 +360,33 @@ function APR.settings:createBlizzOptions()
                             APR.questOrderList:UpdateFrameScale()
                         end,
                         disabled = function()
-                            return not self.profile.showQuestOrderList
+                            return not self.profile.showQuestOrderList or not self.profile.enableAddon
+                        end,
+                    },
+                    questOrderListbackgroundColorAlpha = {
+                        order = 6.4,
+                        type = "color",
+                        name = L["BACKGROUND_COLOR_ALPHA"],
+                        width = optionsWidth,
+                        hasAlpha = true,
+                        get = function()
+                            return unpack(self.profile.questOrderListbackgroundColorAlpha)
+                        end,
+                        set = function(info, r, g, b, a)
+                            SetProfileOption(info, { r, g, b, a })
+                            APR.questOrderList:UpdateBackgroundColorAlpha()
+                        end,
+                        disabled = function()
+                            return not self.profile.showQuestOrderList or not self.profile.enableAddon
                         end,
                     },
                     resetCurrentStepPosition = {
                         name = L['RESET_QORDERLIST'],
-                        order = 6.3,
+                        order = 6.5,
                         type = 'execute',
-                        width = "full",
+                        width = optionsWidth,
                         func = function()
+                            self.profile.questOrderListbackgroundColorAlpha = { 0, 0, 0, 0.4 }
                             APR.questOrderList:ResetPosition()
                         end,
                         disabled = function()
