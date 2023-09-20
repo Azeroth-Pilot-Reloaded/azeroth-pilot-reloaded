@@ -17,7 +17,6 @@ local FRAME_WIDTH = 235
 local FRAME_HEADER_OPFFSET = -50
 local FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
 
-
 ---------------------------------------------------------------------------------------
 --------------------------------- Current Step Frames ---------------------------------
 ---------------------------------------------------------------------------------------
@@ -31,22 +30,6 @@ CurrentStepFrame:SetFrameStrata("LOW")
 local CurrentStepFrame_StepHolder = CreateFrame("Frame", "CurrentStepFrame_StepHolder", CurrentStepFrame,
     "BackdropTemplate")
 CurrentStepFrame_StepHolder:SetAllPoints()
-
--- Create the "Lock" button and "Move Me" label
-local lock_window = function()
-    APR.settings.profile.currentStepLock = true
-    APR.currentStep:RefreshCurrentStepFrameAnchor()
-end
-CurrentStepFrame_StepHolder.LockButton = DF:CreateButton(CurrentStepFrame_StepHolder, lock_window, 120, 24,
-    L["LOCK_QLIST_WINDOW"], nil, nil, nil, nil, "CurrentStepFrameLockButton", nil,
-    DF:GetTemplate("button", "OPTIONS_BUTTON_TEMPLATE"))
-CurrentStepFrame_StepHolder.MoveMeLabel = DF:CreateLabel(CurrentStepFrame_StepHolder, L["MOVE_ME"])
-
-CurrentStepFrame_StepHolder.MoveMeLabel:SetPoint("center", 0, 3)
-CurrentStepFrame_StepHolder.LockButton:SetPoint("center", 0, -16)
-CurrentStepFrame_StepHolder.MoveMeLabel:Hide()
-CurrentStepFrame_StepHolder.LockButton:Hide()
-
 
 -- Create the frame header
 local CurrentStepFrameHeader = CreateFrame("Frame", "CurrentStepFrameHeader", CurrentStepFrame,
@@ -155,29 +138,12 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
         CurrentStepFrameHeader:ClearAllPoints()
         CurrentStepFrameHeader:SetPoint("bottom", CurrentStepFrame, "top", 0, -20)
 
-        CurrentStepFrame_StepHolder.LockButton:Hide()
-        CurrentStepFrame_StepHolder.MoveMeLabel:Hide()
-        CurrentStepFrame_StepHolder:SetBackdrop(nil)
-
         CurrentStepScreenPanel:Show()
     else
         if (not APR.settings.profile.currentStepLock) then
             CurrentStepScreenPanel:EnableMouse(true)
-
-            CurrentStepFrame_StepHolder:SetBackdrop({
-                bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
-                tile = true,
-                tileSize = 16
-            })
-            CurrentStepFrame_StepHolder:SetBackdropColor(0, 0, 0, 0.75)
-            CurrentStepFrame_StepHolder.LockButton:Show()
-            CurrentStepFrame_StepHolder.MoveMeLabel:Show()
         else
             CurrentStepScreenPanel:EnableMouse(false)
-
-            CurrentStepFrame_StepHolder.LockButton:Hide()
-            CurrentStepFrame_StepHolder.MoveMeLabel:Hide()
-            CurrentStepFrame_StepHolder:SetBackdrop(nil)
         end
 
         LibWindow.RestorePosition(CurrentStepScreenPanel)

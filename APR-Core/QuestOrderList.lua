@@ -23,13 +23,12 @@ QuestOrderListFrame:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
 QuestOrderListFrame:SetFrameStrata("LOW")
 QuestOrderListFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 QuestOrderListFrame:SetBackdrop({
-    bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+    bgFile = "Interface\\BUTTONS\\WHITE8X8",
     tile = true,
     tileSize = 16
 })
-QuestOrderListFrame:SetBackdropColor(0, 0, 0, 0.75)
+QuestOrderListFrame:SetBackdropColor(0, 0, 0, 0)
 
-QuestOrderListFrame:EnableMouse(true)
 QuestOrderListFrame:SetMovable(true)
 QuestOrderListFrame:SetResizable(true)
 QuestOrderListFrame:SetResizeBounds(FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
@@ -63,7 +62,7 @@ QuestOrderListFrame_StepHolder:SetPoint("TOPLEFT", QuestOrderListFrame, "TOPLEFT
 local QuestOrderListFrame_ScrollFrame = CreateFrame("ScrollFrame", "QuestOrderListFrame_ScrollFrame",
     QuestOrderListFrame_StepHolder, "UIPanelScrollFrameTemplate")
 QuestOrderListFrame_ScrollFrame:SetPoint("TOPLEFT", QuestOrderListFrame_StepHolder, "TOPLEFT", 0, -5)
-QuestOrderListFrame_ScrollFrame:SetPoint("BOTTOMRIGHT", QuestOrderListFrame_StepHolder, "BOTTOMRIGHT", -30, 20)
+QuestOrderListFrame_ScrollFrame:SetPoint("BOTTOMRIGHT", QuestOrderListFrame_StepHolder, "BOTTOMRIGHT", -22, 20)
 
 -- Create a child frame for the scroll frame
 local QuestOrderListFrame_ScrollChild = CreateFrame("Frame", "QuestOrderListFrame_ScrollChild",
@@ -80,7 +79,7 @@ QuestOrderListFrame_StepHolderHeader.MinimizeButton:Hide()
 
 local closeButton = CreateFrame("Button", "QuestOrderListFrameCloseButton", QuestOrderListFrame, "UIPanelCloseButton")
 closeButton:SetSize(16, 16)
-closeButton:SetPoint("topright", QuestOrderListFrame, "topright", -8, -5)
+closeButton:SetPoint("topright", QuestOrderListFrame, "topright", 0, -5)
 closeButton:SetScript("OnClick", function()
     QuestOrderListPanel:Hide()
     APR.settings.profile.showQuestOrderList = false
@@ -105,7 +104,14 @@ function APR.questOrderList:RefreshFrameAnchor()
         QuestOrderListPanel:Hide()
         return
     end
+    if not APR.settings.profile.questOrderListLock then
+        QuestOrderListFrame:EnableMouse(true)
+    else
+        QuestOrderListFrame:EnableMouse(false)
+    end
+
     APR.questOrderList:UpdateFrameScale()
+    APR.questOrderList:UpdateBackgroundColorAlpha()
     LibWindow.RestorePosition(QuestOrderListPanel)
     QuestOrderListPanel:Show()
     self:AddStepFromRoute()
@@ -117,11 +123,16 @@ function APR.questOrderList:ResetPosition()
     QuestOrderListPanel:SetPoint("center", UIParent, "center", 0, 0)
     LibWindow.SavePosition(QuestOrderListPanel)
     QuestOrderListPanel:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
+    APR.questOrderList:UpdateBackgroundColorAlpha()
 end
 
 -- Update the frame scale
 function APR.questOrderList:UpdateFrameScale()
     LibWindow.SetScale(QuestOrderListPanel, APR.settings.profile.questOrderListScale)
+end
+
+function APR.questOrderList:UpdateBackgroundColorAlpha(color)
+    QuestOrderListFrame:SetBackdropColor(unpack(color or APR.settings.profile.questOrderListbackgroundColorAlpha))
 end
 
 local SetCurrentStepIndicator = function(stepindex)
@@ -152,7 +163,7 @@ local function CreateTextFont(parent, text, width, color)
     fontString:SetJustifyH("LEFT")
     fontString:SetText(text)
     fontString:SetWidth(width)
-    if color == "red" then
+    if color == "gray" then
         fontString:SetTextColor(105 / 255, 105 / 255, 105 / 255)
     elseif color == "green" then
         fontString:SetTextColor(0, 1, 0)
@@ -181,7 +192,7 @@ local AddStepFrameWithQuest = function(stepIndex, stepText, questInfo, color)
     for i, quest in pairs(questInfo) do
         local questName = quest.questName and ' - ' .. quest.questName or ''
         local questText = quest.questID .. questName
-        local questFont = CreateTextFont(container, questText, FRAME_WIDTH - offset - 10 - 30) -- offset - 10 - scrollbar offset
+        local questFont = CreateTextFont(container, questText, FRAME_WIDTH - offset - 10 - 22) -- offset - 10 - scrollbar offset
 
         questFont:SetPoint("TOPLEFT", container, "TOPLEFT", offset + 10,
             -titleFont:GetStringHeight() - 5 - questFontHeight)
@@ -223,7 +234,7 @@ function APR.questOrderList:UpdateFrameContents()
         container.titleFont:SetWidth(FRAME_WIDTH - offset)
         local questFontHeight = 0
         for _, questFont in pairs(container.questFonts) do
-            questFont:SetWidth(FRAME_WIDTH - offset - 10 - 30) -- offset - 10 - scrollbar offset
+            questFont:SetWidth(FRAME_WIDTH - offset - 10 - 22) -- offset - 10 - scrollbar offset
             questFont:SetPoint("TOPLEFT", container, "TOPLEFT", offset + 10,
                 -container.titleFont:GetStringHeight() - 5 - questFontHeight)
             questFontHeight = questFontHeight + questFont:GetStringHeight()
