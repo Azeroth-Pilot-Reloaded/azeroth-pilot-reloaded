@@ -327,6 +327,9 @@ end
 
 -- Add/Update quest steps
 function APR.currentStep:UpdateQuestSteps(questID, textObjective, objectiveIndex)
+    if InCombatLockdown() then
+        return
+    end
     -- Check if questsExtraTextList or questsList are empty to reset to the default height
     if not next(self.questsExtraTextList) or not next(self.questsList) then
         FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
@@ -365,6 +368,10 @@ end
 ---@param key string Locale table key
 ---@param text string L[key]
 function APR.currentStep:AddExtraLineText(key, text)
+    if InCombatLockdown() then
+        return
+    end
+
     -- Always reset to header height with a new extra line
     FRAME_STEP_HOLDER_HEIGHT = getExtraLineHeight()
 
@@ -385,6 +392,9 @@ function APR.currentStep:AddExtraLineText(key, text)
 end
 
 function APR.currentStep:ReOrderExtraLineText()
+    if InCombatLockdown() then
+        return
+    end
     FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
     for id, textContainer in pairs(self.questsExtraTextList) do
         textContainer:Hide()
@@ -399,6 +409,9 @@ end
 --- Re order all the quest Step
 --- @param hasExtraLineHeight boolean to get the extra line height
 function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
+    if InCombatLockdown() then
+        return
+    end
     hasExtraLineHeight = hasExtraLineHeight or true
     if hasExtraLineHeight then
         FRAME_STEP_HOLDER_HEIGHT = getExtraLineHeight()
@@ -447,9 +460,14 @@ end
 --- @param attribute number Icon attribute spell/item
 function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
     attribute = attribute or "item"
-    local container = self.questsList[questsListKey] or next(self.questsList) or next(self.questsExtraTextList)
+    local container = self.questsList[questsListKey]
     if container == nil then
-        return
+        local containerId = next(self.questsList) or next(self.questsExtraTextList)
+        if containerId == nil then
+            return
+        else
+            container = self.questsList[containerId]
+        end
     end
     local function iconName()
         if attribute == "item" then
@@ -490,7 +508,9 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
 
     IconButton.itemID = itemID
     IconButton.attribute = attribute
-    container.IconButton = IconButton
+    if not IconButton == nil then
+        container.IconButton = IconButton
+    end
 end
 
 function APR.currentStep:RemoveStepButtonByKey(questsListKey)
