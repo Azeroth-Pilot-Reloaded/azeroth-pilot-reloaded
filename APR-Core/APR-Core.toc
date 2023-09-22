@@ -17,8 +17,9 @@ Core.lua
 
 helpers/Utils.lua
 helpers/classes.lua
+helpers/PlayerPosition.lua
+helpers/SceneCutter.lua
 
-PlayerPosition.lua
 Config.lua
 Commands.lua
 

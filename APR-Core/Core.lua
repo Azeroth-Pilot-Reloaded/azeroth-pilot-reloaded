@@ -195,18 +195,6 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
     APR.BookingList["UpdateMapId"] = 1
 end
 
--- Likely deals with automatically skipping cutscenes using PlayMovie_hook
-local PlayMovie_hook = MovieFrame_PlayMovie
-MovieFrame_PlayMovie = function(...)
-    if (IsModifierKeyDown() or not APR.settings.profile.autoSkipCutScene) then
-        PlayMovie_hook(...) --MovieFrame_PlayMovie, as previously stated
-    else
-        print("APR: " .. L["SKIPPED_CUTSCENE"])
-        GameMovieFinished()
-    end
-end
-
-
 --Loads RoutePlan and option frame. RoutePlan is gui that pops when you hit "Custom Path" and a gui comes up allowing you to order them
 function APR.RoutePlanLoadIn()
     if (APR.settings.profile.debug) then
@@ -2706,7 +2694,6 @@ end
 
 APR.CoreEventFrame = CreateFrame("Frame")
 APR.CoreEventFrame:RegisterEvent("ADDON_LOADED")
-APR.CoreEventFrame:RegisterEvent("CINEMATIC_START")
 APR.CoreEventFrame:RegisterEvent("PLAYER_LEVEL_UP")
 APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "ADDON_LOADED") then
@@ -2865,21 +2852,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         end)
         APR.LoadInTimer:Play()
         CoreLoadin = true
-    end
-    if (event == "CINEMATIC_START") then --Cutscene skip when cinematic starts
-        if not APR.settings.profile.enableAddon then
-            return
-        end
-        if (not IsModifierKeyDown()) then -- unless control key is down
-            local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
-            local steps
-            if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
-                steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-            end
-            if (APR.settings.profile.autoSkipCutScene and (steps and not steps["Dontskipvid"]) and (APR.ActiveQuests and not APR.ActiveQuests[52042])) then
-                APR.BookingList["SkipCutscene"] = 1
-            end
-        end
     end
     if (event == "PLAYER_LEVEL_UP") then
         if not IsTableEmpty(APR_Custom[APR.Name .. "-" .. APR.Realm]) then
