@@ -427,7 +427,7 @@ local function APR_PrintQStep()
 
         -- Check for ExtraLineText
         for key, value in pairs(steps) do
-            if string.match(key, "^ExtraLineText%d+$") and not APR.ZoneTransfer then
+            if string.match(key, "ExtraLineText+") and not APR.ZoneTransfer then
                 local APRExtraLine = steps[key]
                 if (L[APRExtraLine]) then
                     APR.currentStep:AddExtraLineText(APRExtraLine, L[APRExtraLine])
