@@ -924,7 +924,11 @@ function APR.SetButton()
             APR.currentStep:AddStepButton(steps["UseGarrisonHS"] .. "-" .. "UseGarrisonHS", 110560)
         elseif steps["Button"] then
             for APR_index, APR_value in pairs(steps["Button"]) do
-                APR.currentStep:AddStepButton(APR_index, APR_value)
+                APR.currentStep:AddStepButton(APR_index, APR_value, 'item')
+            end
+        elseif steps["SpellButton"] then
+            for APR_index, APR_value in pairs(steps["SpellButton"]) do
+                APR.currentStep:AddStepButton(APR_index, APR_value, 'spell')
             end
         end
     end
@@ -1494,14 +1498,6 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
             APR.BookingList["TestTaxiFunc"] = nil
             APR_AntiTaxiLoop = 0
         end
-    elseif (APR.BookingList["SkipCutscene"]) then
-        APR.BookingList["SkipCutscene"] = nil
-        --CinematicFrame_CancelCinematic()
-        C_Timer.After(1, CinematicFrame_CancelCinematic)
-        C_Timer.After(3, CinematicFrame_CancelCinematic)
-        if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:SkipCutscene")
-        end
     elseif (APR.BookingList["GetMeToNextZone2"]) then
         APR.BookingList["GetMeToNextZone2"] = nil
         APR.FP.GetMeToNextZone2()
@@ -1920,7 +1916,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     end
                 else
                     -- Keep this code in case of API update on the gossip selection
-                    -- C_GossipInfo.SelectOptionByIndex(steps["Gossip"])
                     local info = C_GossipInfo.GetOptions()
                     if next(info) then
                         for i, v in pairs(info) do
