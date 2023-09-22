@@ -4,7 +4,6 @@ MovieFrame_PlayMovie = function(...)
     if (IsModifierKeyDown() or not APR.settings.profile.autoSkipCutScene) then
         PlayMovie_hook(...) --MovieFrame_PlayMovie, as previously stated
     else
-        print("APR: " .. L["SKIPPED_CUTSCENE"])
         GameMovieFinished()
     end
 end
@@ -17,5 +16,5 @@ CinematicFrame:HookScript("OnShow", function(self, ...)
             return
         end
     end
-    CinematicFrame_CancelCinematic()
+    C_Timer.After(1, CinematicFrame_CancelCinematic)
 end)
