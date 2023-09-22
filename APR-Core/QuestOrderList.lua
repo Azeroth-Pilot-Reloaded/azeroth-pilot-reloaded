@@ -256,6 +256,7 @@ end
 
 function APR.questOrderList:AddStepFromRoute()
     if not APR.settings.profile.enableAddon or not APR.QuestStepList[APR.ActiveMap] or IsInInstance() then
+        self:RemoveSteps()
         return
     end
     if APR.settings.profile.debug then
