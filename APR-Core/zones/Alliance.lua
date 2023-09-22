@@ -233,7 +233,7 @@ if (APR.Faction == "Alliance") then
 
     }
     if (APR.Race == "Dracthyr") then
-        APR.QuestStepListListing["Dragonflight"]["2107-DracthyrStart"] = "58-60 Dracthyr Start"
+        APR.QuestStepListListing["Dragonflight"]["2109-DracthyrStart-A"] = "58-60 Dracthyr Start"
     end
 
     APR["EasternKingdom"] = {}
@@ -300,5 +300,10 @@ if (APR.Faction == "Alliance") then
     APR["Dragonflight"][2023] = 1
     APR["Dragonflight"][2024] = 1
     APR["Dragonflight"][2025] = 1
+    APR["Dragonflight"][2107] = 1
+    APR["Dragonflight"][2109] = 1
     APR["Dragonflight"][2118] = 1
+    APR["Dragonflight"][2110] = 1
+    APR["Dragonflight"][37] = 1
+    APR["Dragonflight"][84] = 1
 end

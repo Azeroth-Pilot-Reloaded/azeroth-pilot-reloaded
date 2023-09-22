@@ -64,7 +64,7 @@ if (APR.Faction == "Horde") then
         ["WIP-The Jade Forest"] = 371,
         ["WIP-Kun-Lai Summit"] = 379,
         ["WIP-Highmountain"] = 650,
-        ["58-60 Dracthyr Start"] = 2107,
+        ["58-60 Dracthyr Start"] = 2118,
         ["Allied Death Knight Start"] = 2297
     }
 
@@ -202,7 +202,7 @@ if (APR.Faction == "Horde") then
         ["DF06H-2025-Thaldraszus"] = "DF07 - Thaldraszus",
     }
     if (APR.Race == "Dracthyr") then
-        APR.QuestStepListListing["Dragonflight"]["2107-DracthyrStart"] = "58-60 Dracthyr Start"
+        APR.QuestStepListListing["Dragonflight"]["2109-DracthyrStart-H"] = "58-60 Dracthyr Start"
     end
     APR["BattleForAzeroth"] = {}
     APR["BattleForAzeroth"][85] = 1
@@ -246,4 +246,9 @@ if (APR.Faction == "Horde") then
     APR["Dragonflight"][2024] = 1
     APR["Dragonflight"][2025] = 1
     APR["Dragonflight"][2107] = 1
+    APR["Dragonflight"][2109] = 1
+    APR["Dragonflight"][2118] = 1
+    APR["Dragonflight"][2110] = 1
+    APR["Dragonflight"][1] = 1
+    APR["Dragonflight"][85] = 1
 end

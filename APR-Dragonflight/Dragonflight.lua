@@ -13120,37 +13120,3 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-
-APR.QuestStepList["2107-DracthyrStarts"] = {
-    {
-        -- Step 1
-        ["PickUp"] = {
-            64864,
-        },
-        ["TT"] = {
-            ["y"] = 5743,
-            ["x"] = -3067,
-        },
-    },
-    {
-        -- Step 2
-        ["Qpart"] = {
-            [64864] = {
-                ["1"] = "1",
-            },
-        },
-        ["TT"] = {
-            ["y"] = 5752.1,
-            ["x"] = -3058.5,
-        },
-        ["Trigger"] = {
-            ["y"] = 5752.1,
-            ["x"] = -3058.5,
-        },
-        ["Range"] = 1,
-        ["ExtraLineText"] = "ROUTE_CONSTRUCTION",
-    },
-    { -- Step 3
-        ["ZoneDoneSave"] = 1,
-    },
-}
