@@ -54,8 +54,7 @@ if (APR.Faction == "Horde") then
         ["WIP - Hillsbrad Foothills"] = 25,
         ["WIP - Western Plaguelands"] = 22,
         ["DEV - StoryMode Only (Not Enough XP)"] = 1670,
-        ["DF01 - Dragonflight Orgrimmar"] = 85,
-        ["DF02 - Dragonflight Durotar"] = 1,
+        ["DF01/02 - Dragonflight Orgrimmar/Durotar"] = 85,
         ["DF03 - Waking Shores - Horde"] = 2022,
         ["DF04 - Waking Shores - Neutral"] = 2022,
         ["DF05 - Ohn'Ahran Plains"] = 2023,
@@ -193,8 +192,7 @@ if (APR.Faction == "Horde") then
         APR.QuestStepListListing["EasternKingdom"]["94-EversongWoodsBloodElf"] = "01-10 Blood Elf Start"
     end
     APR.QuestStepListListing["Dragonflight"] = {
-        ["DF01H-85-Orgrimmar"] = "DF01 - Dragonflight Orgrimmar",
-        ["DF02H-1-Durotar"] = "DF02 - Dragonflight Durotar",
+        ["DF01H-85-Orgrimmar"] = "DF01/02 - Dragonflight Orgrimmar/Durotar",
         ["DF03H-2022-WakingShores"] = "DF03 - Waking Shores - Horde",
         ["DF03N-2022-WakingShores"] = "DF04 - Waking Shores - Neutral",
         ["DF04-2023-OhnahranPlains"] = "DF05 - Ohn'Ahran Plains",
@@ -202,7 +200,7 @@ if (APR.Faction == "Horde") then
         ["DF06H-2025-Thaldraszus"] = "DF07 - Thaldraszus",
     }
     if (APR.Race == "Dracthyr") then
-        APR.QuestStepListListing["Dragonflight"]["2109-DracthyrStart-H"] = "58-60 Dracthyr Start"
+        APR.QuestStepListListing["Dragonflight"]["2118-DracthyrStart-H"] = "58-60 Dracthyr Start"
     end
     APR["BattleForAzeroth"] = {}
     APR["BattleForAzeroth"][85] = 1

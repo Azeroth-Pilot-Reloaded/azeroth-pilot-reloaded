@@ -168,8 +168,7 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
         tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF05 - Azure Span")
         tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF06 - Thaldraszus")
     elseif (APR.Faction == "Horde") then
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF01 - Dragonflight Orgrimmar")
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF02 - Dragonflight Durotar")
+        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF01/02 - Dragonflight Orgrimmar/Durotar")
         tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF03 - Waking Shores - Horde")
         tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF04 - Waking Shores - Neutral")
         tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF05 - Ohn'Ahran Plains")

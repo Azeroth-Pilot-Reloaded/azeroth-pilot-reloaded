@@ -233,7 +233,7 @@ if (APR.Faction == "Alliance") then
 
     }
     if (APR.Race == "Dracthyr") then
-        APR.QuestStepListListing["Dragonflight"]["2109-DracthyrStart-A"] = "58-60 Dracthyr Start"
+        APR.QuestStepListListing["Dragonflight"]["2118-DracthyrStart-A"] = "58-60 Dracthyr Start"
     end
 
     APR["EasternKingdom"] = {}
