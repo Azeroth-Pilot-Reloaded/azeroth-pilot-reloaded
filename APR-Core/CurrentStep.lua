@@ -479,6 +479,9 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
         end
     end
     local iconName, iconTexture = iconName()
+    if not iconName and not iconTexture then
+        return
+    end
 
     local IconButton = CreateFrame("Button", "$parentIconButton", container,
         "SecureActionButtonTemplate, BackdropTemplate")

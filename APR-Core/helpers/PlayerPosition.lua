@@ -8,7 +8,7 @@ function APR:GetContinent() -- Getting the continent the player is on and its in
         print("Function: APR.getContinent()")
     end
     local mapId = C_Map.GetBestMapForUnit("player")
-    if (mapId == 378) then
+    if (mapId == 378) then -- why ?  The Wandering Isle
         return 378
     elseif (mapId) then
         local info = C_Map.GetMapInfo(mapId)

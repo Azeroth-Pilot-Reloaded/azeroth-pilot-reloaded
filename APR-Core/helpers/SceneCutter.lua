@@ -16,5 +16,5 @@ CinematicFrame:HookScript("OnShow", function(self, ...)
             return
         end
     end
-    C_Timer.After(1, CinematicFrame_CancelCinematic)
+    C_Timer.After(3, CinematicFrame_CancelCinematic)
 end)
