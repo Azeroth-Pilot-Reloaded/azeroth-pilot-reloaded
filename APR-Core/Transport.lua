@@ -219,39 +219,16 @@ function APR.FP.testClickedFPS()
     end
 end
 
-function APR.FP.GetMeToNextZonetest()
-    if (APR.settings.profile.debug) then
-        print("Function: APR.FP.GetMeToNextZonetest()")
-    end
-    local APRt_Zone2 = C_Map.GetBestMapForUnit("player")
-    local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
-    APRt_Zone2 = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent, TOP_MOST)
-    if (APRt_Zone2 and APRt_Zone2["mapID"]) then
-        APRt_Zone2 = APRt_Zone2["mapID"]
-    else
-        APRt_Zone2 = C_Map.GetBestMapForUnit("player")
-    end
-    if (APRt_Zone2 == 1671) then
-        APRt_Zone2 = 1670
-    elseif (APRt_Zone == 578) then
-        APRt_Zone = 577
-    elseif (APR.ActiveMap == "A543-DesMephisto-Gorgrond" and APRt_Zone == 535) then
-        APRt_Zone = 543
-    elseif (APRt_Zone == 1726 or APRt_Zone == 1727 or APRt_Zone == 1728) then
-        APRt_Zone = 1409
-    end
-end
-
 function APR.FP.GetCustomZone()
-    local ZeMap = C_Map.GetBestMapForUnit("player")
+    local playerMapID = C_Map.GetBestMapForUnit("player")
     local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
     if (Enum and Enum.UIMapType and Enum.UIMapType.Continent and currentMapId) then
-        ZeMap = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, TOP_MOST)
+        playerMapID = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, TOP_MOST)
     end
-    if (ZeMap and ZeMap["mapID"]) then
-        ZeMap = ZeMap["mapID"]
+    if (playerMapID and playerMapID["mapID"]) then
+        playerMapID = playerMapID["mapID"]
     else
-        ZeMap = C_Map.GetBestMapForUnit("player")
+        playerMapID = C_Map.GetBestMapForUnit("player")
     end
     local zenr = 0
     if (APR_Custom and APR_Custom[APR.Name .. "-" .. APR.Realm]) then
@@ -265,7 +242,7 @@ function APR.FP.GetCustomZone()
     if (zenr == 0 and UnitFactionGroup("player") == "Horde" and C_QuestLog.IsQuestFlaggedCompleted(59751) == false and (C_QuestLog.IsQuestFlaggedCompleted(61874) == true or C_QuestLog.IsOnQuest(61874) == true)) then
         return 85, "85-IntroQline"
     end
-    if (zenr == 0 and not ZeMap and C_QuestLog.IsOnQuest(57159)) then
+    if (zenr == 0 and not playerMapID and C_QuestLog.IsOnQuest(57159)) then
         return APR.QuestStepListListingZone["Z-12-Revendreth-Story"], "1525-Z12-Revendreth-Story"
     end
     if (zenr == 0 and C_QuestLog.IsOnQuest(57876) and C_QuestLog.IsQuestFlaggedCompleted(57876) == false) then
@@ -328,7 +305,7 @@ function APR.FP.GetCustomZone()
         end
     elseif (zenr == 0) then
         APR.ProgressShown = false
-        if (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727 or ZeMap == 1728) then
+        if (playerMapID == 1409 or playerMapID == 1726 or playerMapID == 1727 or playerMapID == 1728) then
             if (IsAddOnLoaded("APR-Shadowlands") == false) then
                 local loaded, reason = LoadAddOn("APR-Shadowlands")
                 if (not loaded) then
@@ -464,7 +441,7 @@ function APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
         APRLumberCheck = 1
     end
 
-    if (((ZeMap == 1409 or ZeMap == 1726) or C_QuestLog.IsQuestFlaggedCompleted(55992) or C_QuestLog.IsQuestFlaggedCompleted(55991) or C_QuestLog.IsQuestFlaggedCompleted(59984) or C_QuestLog.IsQuestFlaggedCompleted(59985)) and APR.Level < 15) then
+    if ((C_QuestLog.IsQuestFlaggedCompleted(55992) or C_QuestLog.IsQuestFlaggedCompleted(55991) or C_QuestLog.IsQuestFlaggedCompleted(59984) or C_QuestLog.IsQuestFlaggedCompleted(59985)) and APR.Level < 15) then
         if (C_QuestLog.IsOnQuest(59583) == true) then
             C_QuestLog.SetSelectedQuest(59583)
             C_QuestLog.SetAbandonQuest()
@@ -667,27 +644,22 @@ function APR.FP.GetMeToNextZone()
     if (APR.settings.profile.debug) then
         print("Function: APR.FP.GetMeToNextZone()")
     end
-    local zeZ, Zname = APR.FP.GetCustomZone()
-    if (zeZ and Zname) then
-        APR.ActiveMap = Zname
-        APR.FP.GoToZone = zeZ
+    local routeZoneMapID, routeName = APR.FP.GetCustomZone()
+    if (routeZoneMapID and routeName) then
+        APR.ActiveMap = routeName
+        APR.FP.GoToZone = routeZoneMapID
     end
-    local APRt_Zone = C_Map.GetBestMapForUnit("player")
-    local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
-    if (not currentMapId) then
-        return
-    end
-    APRt_Zone = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, TOP_MOST)
-    if (APRt_Zone and APRt_Zone["mapID"]) then
-        APRt_Zone = APRt_Zone["mapID"]
-    else
-        APRt_Zone = C_Map.GetBestMapForUnit("player")
-    end
-    APRt_Zone = APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
-    for APR_index, APR_value in pairs(APR.QuestStepListListing) do
-        if (APR.ActiveMap and APR.QuestStepListListing[APR_index][APR.ActiveMap]) then
-            local zerd = APR.QuestStepListListing[APR_index][APR.ActiveMap]
-            if (APR.QuestStepListListingZone[zerd] and APRt_Zone and APR.QuestStepListListingZone[zerd] == APRt_Zone) then
+
+    local playerMapID = MapUtil.GetMapParentInfo(C_Map.GetBestMapForUnit("player"), Enum.UIMapType.Continent + 1, true)
+    playerMapID = playerMapID and playerMapID.mapID or C_Map.GetBestMapForUnit("player")
+    playerMapID = APR.FP.GetMeToNextZoneSpecialRe(playerMapID)
+
+    for routeCategory, _ in pairs(APR.QuestStepListListing) do
+        if (APR.ActiveMap and APR.QuestStepListListing[routeCategory][APR.ActiveMap]) then
+            local zoneID = APR.QuestStepListListing[routeCategory][APR.ActiveMap]
+            local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+            local step = APR.QuestStepList[APR.ActiveMap][CurStep]
+            if (APR.QuestStepListListingZone[zoneID] and playerMapID and APR.QuestStepListListingZone[zoneID] == playerMapID) or (step and step.Zone == playerMapID) then
                 APR.FP.GoToZone = nil
                 return
             end
@@ -697,24 +669,27 @@ function APR.FP.GetMeToNextZone()
         APR.FP.GoToZone = nil
         return
     end
-    if (APR.ActiveMap == "84-IntroQline" and APRt_Zone == 84) then
+    if (APR.ActiveMap == "84-IntroQline" and playerMapID == 84) then
         APR.FP.GoToZone = nil
         return
     end
-    if (APR.ActiveMap == "85-IntroQline" and APRt_Zone == 85) then
+    if (APR.ActiveMap == "85-IntroQline" and playerMapID == 85) then
         APR.FP.GoToZone = nil
         return
     end
-    if (APR.ActiveQuests and APR.ActiveQuests[32675] and APRt_Zone == 84 and APR.Faction == "Alliance") then
+    if (APR.ActiveQuests and APR.ActiveQuests[32675] and playerMapID == 84 and APR.Faction == "Alliance") then
         APR.ActiveMap = "A84-LearnFlying"
         APR.FP.GoToZone = nil
         return
     end
-    APR.ZoneTransfer = true
-    APR.BookingList["GetMeToNextZone2"] = 1
-end
 
-function APR.FP.GetMeToNextZone2()
+    ----------------------------------------------------------------
+    ----------------- Old GetMeToNextZone2 part --------------------
+    ----------------------------------------------------------------
+    APR.ZoneTransfer = true
+    if (APR.settings.profile.debug) then
+        print("Function: APR.FP.GetMeToNextZone2()")
+    end
     -- Disable Current Step button/bar/quest/...
     APR.currentStep:Disable()
 
@@ -725,36 +700,26 @@ function APR.FP.GetMeToNextZone2()
         APR.ZoneTransfer = false
         return
     end
-    if (APR.settings.profile.debug) then
-        print("Function: APR.FP.GetMeToNextZone2()")
-    end
-    local APRt_Zone = C_Map.GetBestMapForUnit("player")
-    local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
-    if (not currentMapId) then
-        return
-    end
-    APRt_Zone = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, TOP_MOST)
-    if (APRt_Zone and APRt_Zone["mapID"]) then
-        APRt_Zone = APRt_Zone["mapID"]
-    else
-        APRt_Zone = C_Map.GetBestMapForUnit("player")
-    end
-    APRt_Zone = APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
-    local zeReal = C_Map.GetBestMapForUnit('player')
+
+    local playerParentMapID = MapUtil.GetMapParentInfo(C_Map.GetBestMapForUnit("player"), Enum.UIMapType.Continent + 1,
+        true)
+    playerParentMapID = playerParentMapID and playerParentMapID.mapID or C_Map.GetBestMapForUnit("player")
+    local routeMapID = APR.FP.GetMeToNextZoneSpecialRe(playerParentMapID)
+    local playerMapID = C_Map.GetBestMapForUnit('player')
     local GoToZone = APR.FP.GoToZone
     local CurContinent = APR:GetContinent()
-    local Contin, gotoCont = APR.FP.IsSameContinent(GoToZone)
-    local mapzinfoz = C_Map.GetMapInfo(GoToZone)
-    if (not mapzinfoz) then
+    local isSameContinent, gotoCont = APR.FP.IsSameContinent(GoToZone)
+    local mapInfo = C_Map.GetMapInfo(GoToZone)
+    if (not mapInfo) then
         return
     end
-    local mapzinfoz2 = C_Map.GetMapInfo(mapzinfoz.parentMapID)
-    if (not mapzinfoz2) then
+    local parentMapInfo = C_Map.GetMapInfo(mapInfo.parentMapID)
+    if (not parentMapInfo) then
         return
     end
     local DestSet = 0
 
-    if (APRt_Zone ~= GoToZone) then
+    if (routeMapID ~= GoToZone) then
         APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
         if (APR.ActiveMap) then
             local function checkChromieTimeline(id)
@@ -778,73 +743,73 @@ function APR.FP.GetMeToNextZone2()
         end
         if (not APR.settings.profile.currentStepShow) then
             APR.currentStep:AddExtraLineText("DESTINATION", L["DESTINATION"] ..
-                ": " .. mapzinfoz.name .. ", " .. mapzinfoz2.name .. " (" .. GoToZone .. ")")
+                ": " .. mapInfo.name .. ", " .. parentMapInfo.name .. " (" .. GoToZone .. ")")
             DestSet = 1
         end
     end
-    if (((APRt_Zone == 181) or (APRt_Zone == 202) or (APRt_Zone == 179)) and APR.ActiveMap == "A179-Gilneas") then
+    if (((routeMapID == 181) or (routeMapID == 202) or (routeMapID == 179)) and APR.ActiveMap == "A179-Gilneas") then
         APR.ZoneTransfer = false
-    elseif (((APRt_Zone == 97) or (APRt_Zone == 106)) and APR.ActiveMap == "A106-BloodmystIsle") then
+    elseif (((routeMapID == 97) or (routeMapID == 106)) and APR.ActiveMap == "A106-BloodmystIsle") then
         APR.ZoneTransfer = false
-    elseif (((APRt_Zone == 69) or (APRt_Zone == 64)) and APR.ActiveMap == "A64-ThousandNeedles") then
+    elseif (((routeMapID == 69) or (routeMapID == 64)) and APR.ActiveMap == "A64-ThousandNeedles") then
         APR.ZoneTransfer = false
-    elseif ((APRt_Zone == 1536) and APR.ActiveQuests and APR.ActiveQuests["59974"]) then
+    elseif ((routeMapID == 1536) and APR.ActiveQuests and APR.ActiveQuests["59974"]) then
         APR.ZoneTransfer = false
-    elseif (((APRt_Zone == 71) or (APRt_Zone == 249)) and APR.ActiveMap == "A71-Tanaris") then
+    elseif (((routeMapID == 71) or (routeMapID == 249)) and APR.ActiveMap == "A71-Tanaris") then
         APR.ZoneTransfer = false
     elseif (APR.ActiveMap == "A84-LearnFlying") then
         APR.ZoneTransfer = false
-    elseif (zeReal == 427 and APR.ActiveMap ~= "A27-ColdridgeValleyDwarf") then
+    elseif (playerMapID == 427 and APR.ActiveMap ~= "A27-ColdridgeValleyDwarf") then
         -- Coldridge Valley (Dwarf/gnum)
         APR.currentStep:AddExtraLineText("GO_CAVE", L["GO_CAVE"])
         APR.ArrowActive = 1
         APR.ArrowActive_X = 117.2
         APR.ArrowActive_Y = -6216.2
-    elseif (zeReal == 28 and APR.ActiveMap ~= "A27-ColdridgeValleyDwarf") then
+    elseif (playerMapID == 28 and APR.ActiveMap ~= "A27-ColdridgeValleyDwarf") then
         -- Coldridge Valley cave to Dun Morogh
         APR.currentStep:AddExtraLineText("OUT_CAVE", L["OUT_CAVE"])
         APR.ArrowActive = 1
         APR.ArrowActive_X = 48.9
         APR.ArrowActive_Y = -6031.8
-    elseif (zeReal == 971 and APR.Level == 20) then
+    elseif (playerMapID == 971 and APR.Level == 20) then
         -- Void Elf lvl20 StartZone
         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
             L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
         APR.ArrowActive = 1
         APR.ArrowActive_X = 3331.6
         APR.ArrowActive_Y = 2149.6
-    elseif ((zeReal == 940 or zeReal == 941) and APR.Level == 20) then
+    elseif ((playerMapID == 940 or playerMapID == 941) and APR.Level == 20) then
         -- Lightforged Draenei lvl20 StartZone
         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
             L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
         APR.ArrowActive = 1
         APR.ArrowActive_X = 1469.5
         APR.ArrowActive_Y = 499.6
-    elseif (zeReal == 680 and APR.Level == 20) then
+    elseif (playerMapID == 680 and APR.Level == 20) then
         -- Nightborne lvl20 StartZone
         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
             L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
         APR.ArrowActive = 1
         APR.ArrowActive_X = 3428.6
         APR.ArrowActive_Y = 213.6
-    elseif (zeReal == 652 and APR.Level == 20) then
+    elseif (playerMapID == 652 and APR.Level == 20) then
         -- Highmountain Tauren lvl20 StartZone
         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
             L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
         APR.ArrowActive = 1
         APR.ArrowActive_X = 4415
         APR.ArrowActive_Y = 4082.4
-    elseif (zeReal == 1165 and APR.Level == 20) then
+    elseif (playerMapID == 1165 and APR.Level == 20) then
         -- Zandalari Troll lvl20 StartZone
         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
             L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
         APR.ArrowActive = 1
         APR.ArrowActive_X = 805.7
         APR.ArrowActive_Y = -1085.1
-    elseif (Contin == 0) then
+    elseif not isSameContinent then
         APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
     else
-        if (APRt_Zone == GoToZone) then
+        if (routeMapID == GoToZone) then
             APR.FP.GoToZone = nil
             APR.ZoneTransfer = false
         else
@@ -887,7 +852,7 @@ function APR.FP.GetMeToNextZone2()
                             APR.ArrowActive_Y = ZeY
                         end
                     else
-                        local zdse, zX, zY = APR.FP.CheckWheretoRun(GoToZone, APRt_Zone)
+                        local zdse, zX, zY = APR.FP.CheckWheretoRun(GoToZone, routeMapID)
                         if (zdse) then
                             local mapzinfozx = C_Map.GetMapInfo(zdse)
                             APR.currentStep:AddExtraLineText("GO_TO" .. mapzinfozx.name,
@@ -897,7 +862,7 @@ function APR.FP.GetMeToNextZone2()
                             APR.ArrowActive_Y = zY
                         else
                             APR.currentStep:AddExtraLineText("ERROR_ROUTE_NOT_FOUND", L["ERROR"] ..
-                                " - " .. L["ROUTE_NOT_FOUND"] .. " " .. mapzinfoz.name .. " (" .. GoToZone .. ")")
+                                " - " .. L["ROUTE_NOT_FOUND"] .. " " .. mapInfo.name .. " (" .. GoToZone .. ")")
                         end
                     end
                 end
@@ -973,9 +938,9 @@ function APR.FP.IsSameContinent(GoToZone)
             for APR_index2, APR_value2 in pairs(APR.TDB["FPs"][APR.Faction][APR_index]) do
                 if (APR_index2 == GoToZone) then
                     if (CurContinent == APR_index) then
-                        return 1, APR_index
+                        return true, APR_index
                     else
-                        return 0, APR_index
+                        return false, APR_index
                     end
                 end
             end
@@ -1733,7 +1698,7 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
     elseif (event == "PLAYER_ENTERING_WORLD") then
         APR.FP.Zonening = 0
         if (APR.ZoneTransfer) then
-            APR.BookingList["GetMeToNextZone2"] = 1
+            APR.FP.GetMeToNextZone()
         end
     elseif (event == "TAXIMAP_OPENED") then
         if (not APR_Transport) then
