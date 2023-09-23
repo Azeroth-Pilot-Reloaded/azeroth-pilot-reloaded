@@ -561,7 +561,7 @@ local function APR_PrintQStep()
                             local checkpbar = C_QuestLog.GetQuestObjectives(APR_index)
                             if (not string.find(APR.ActiveQuests[qid], "(.*)(%d+)(.*)") and checkpbar and checkpbar[tonumber(APR_index2)] and checkpbar[tonumber(APR_index2)]["type"] and checkpbar[tonumber(APR_index2)]["type"] == "progressbar") then
                                 APR.currentStep:UpdateQuestSteps(APR_index,
-                                    "[" .. GetQuestProgressBarPercent(APR_index) .. "%] " .. APR.ActiveQuests[qid],
+                                    "(" .. GetQuestProgressBarPercent(APR_index) .. "%) " .. APR.ActiveQuests[qid],
                                     APR_index2)
                             elseif (ZeTExt) then
                                 APR.currentStep:UpdateQuestSteps(APR_index, ZeTExt .. "% - " .. APR.ActiveQuests[qid],
@@ -825,8 +825,10 @@ local function APR_PrintQStep()
                     end
 
                     for key, trigerText in pairs(steps) do
-                        if string.match(key, "TrigText+") and string.find(questText, trigerText) then
-                            HasTriggerTextValid = true
+                        if key and trigerText and questText then
+                            if string.match(key, "TrigText+") and string.find(questText, trigerText) then
+                                HasTriggerTextValid = true
+                            end
                         end
                     end
                 end
@@ -868,7 +870,7 @@ local function APR_PrintQStep()
                             local checkpbar = C_QuestLog.GetQuestObjectives(APR_index)
                             local questText = APR.ActiveQuests[qid]
                             if not string.find(questText, "(.*)(%d+)(.*)") and checkpbar and checkpbar[tonumber(APR_index2)] and checkpbar[tonumber(APR_index2)]["type"] and checkpbar[tonumber(APR_index2)]["type"] == "progressbar" then
-                                questText = "[" .. GetQuestProgressBarPercent(APR_index) .. "%] " .. questText
+                                questText = "(" .. GetQuestProgressBarPercent(APR_index) .. "%) " .. questText
                             end
                             APR.currentStep:UpdateQuestSteps(APR_index, questText, APR_index2)
                         end
@@ -1033,26 +1035,15 @@ local function APR_UpdateQuest()
                                 if (not APR.ProgressbarIgnore[questID .. "-" .. h]) then
                                     local APR_Mathstuff = tonumber(GetQuestProgressBarPercent(questID))
                                     APR_Mathstuff = floor((APR_Mathstuff + 0.5))
-                                    text = "[" .. APR_Mathstuff .. "%] " .. text
-                                    if (not APR.ActiveQuests[questID .. "-" .. h]) then
-                                        if (APR.settings.profile.debug) then
-                                            print("New1:" .. text)
-                                        end
-                                    end
+                                    text = "(" .. APR_Mathstuff .. "%) " .. text
                                 end
                                 if (APR.ActiveQuests[questID .. "-" .. h] and APR.ActiveQuests[questID .. "-" .. h] ~= text) then
-                                    if (APR.settings.profile.debug) then
-                                        print("Update:" .. text)
-                                    end
                                     Update = 1
                                     APR.ActiveQuests[questID .. "-" .. h] = text
                                 else
                                     APR.ActiveQuests[questID .. "-" .. h] = text
                                 end
                             else
-                                if (not APR.ActiveQuests[questID .. "-" .. h]) then
-                                    --print("New2:"..text)
-                                end
                                 if (APR.ActiveQuests[questID .. "-" .. h] and APR.ActiveQuests[questID .. "-" .. h] ~= text) then
                                     if (APR.settings.profile.debug) then
                                         print("Update:" .. text)
@@ -1500,9 +1491,6 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
             APR.BookingList["TestTaxiFunc"] = nil
             APR_AntiTaxiLoop = 0
         end
-    elseif (APR.BookingList["GetMeToNextZone2"]) then
-        APR.BookingList["GetMeToNextZone2"] = nil
-        APR.FP.GetMeToNextZone2()
     end
     if (APR_ArrowUpdateNr >= APR.settings.profile.arrowFPS) then
         APR_PosTest()
