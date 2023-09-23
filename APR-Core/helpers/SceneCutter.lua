@@ -7,8 +7,9 @@ MovieFrame_PlayMovie = function(...)
         GameMovieFinished()
     end
 end
-
-CinematicFrame:HookScript("OnShow", function(self, ...)
+APR.SceneCutterEventFrame = CreateFrame("Frame")
+APR.SceneCutterEventFrame:RegisterEvent("CINEMATIC_START")
+APR.SceneCutterEventFrame:SetScript("OnEvent", function(self, event, ...)
     if not APR.settings.profile.enableAddon or not APR.settings.profile.autoSkipCutScene or IsModifierKeyDown() then return end
     if CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] then
         local step = APR.QuestStepList[APR.ActiveMap][APRData[APR.Realm][APR.Name][APR.ActiveMap]]

@@ -826,7 +826,7 @@ local function APR_PrintQStep()
 
                     for key, trigerText in pairs(steps) do
                         if key and trigerText and questText then
-                            if string.match(key, "TrigText+") and string.find(questText, trigerText) then
+                            if string.match(key, "TrigText+") and string.find(questText or '', trigerText) then
                                 HasTriggerTextValid = true
                             end
                         end
@@ -984,7 +984,6 @@ local function APR_UpdateQuest()
         print("Function: APR_UpdateQuest()")
     end
     local i = 1
-    local UpdateQpart = 0
     while C_QuestLog.GetTitleForLogIndex(i) do
         local ZeInfoz = C_QuestLog.GetInfo(i)
         if (ZeInfoz) then

@@ -158,48 +158,6 @@ if (APR.Faction == "Horde") then
             ["Zone"] = 85,
         },
         { -- Step 12
-            ["CRange"] = 65443,
-            ["TT"] = {
-                ["y"] = 1401.3,
-                ["x"] = -4563.9,
-            },
-            ["Trigger"] = {
-                ["y"] = 1401.3,
-                ["x"] = -4563.9,
-            },
-            ["Range"] = 0.5,
-            ["ExtraLineText"] = "HEAD_ZEPPELIN_TOWER",
-            ["Zone"] = 85,
-        },
-        { -- Step 13
-            ["CRange"] = 65443,
-            ["TT"] = {
-                ["y"] = 1399.2,
-                ["x"] = -4575.6,
-            },
-            ["Trigger"] = {
-                ["y"] = 1399.2,
-                ["x"] = -4575.6,
-            },
-            ["Range"] = 0.5,
-            ["ExtraLineText"] = "HEAD_ZEPPELIN_TOWER",
-            ["Zone"] = 85,
-        },
-        { -- Step 14
-            ["CRange"] = 65443,
-            ["TT"] = {
-                ["y"] = 1362.0,
-                ["x"] = -4913.5,
-            },
-            ["Trigger"] = {
-                ["y"] = 1362.0,
-                ["x"] = -4913.5,
-            },
-            ["Range"] = 25,
-            ["ExtraLineText"] = "HEAD_ZEPPELIN_TOWER",
-            ["Zone"] = 85,
-        },
-        { -- Step 15
             ["Done"] = {
                 65443,
                 72256,
@@ -208,9 +166,10 @@ if (APR.Faction == "Horde") then
                 ["y"] = 1362.0,
                 ["x"] = -4913.5,
             },
+            ["ExtraLineText"] = "HEAD_ZEPPELIN_TOWER",
             ["Zone"] = 1,
         },
-        { -- Step 16
+        { -- Step 13
             ["PickUp"] = {
                 65439,
             },
@@ -220,7 +179,7 @@ if (APR.Faction == "Horde") then
             },
             ["Zone"] = 1,
         },
-        { -- Step 17
+        { -- Step 14
             ["Qpart"] = {
                 [65439] = {
                     ["1"] = "1",
@@ -238,7 +197,7 @@ if (APR.Faction == "Horde") then
             ["Gossip"] = 1,
             ["Zone"] = 1,
         },
-        { -- Step 18
+        { -- Step 15
             ["Done"] = {
                 65439,
             },
@@ -248,7 +207,7 @@ if (APR.Faction == "Horde") then
             },
             ["Zone"] = 1,
         },
-        { -- Step 19
+        { -- Step 16
             ["PickUp"] = {
                 65444,
             },
@@ -258,7 +217,7 @@ if (APR.Faction == "Horde") then
             },
             ["Zone"] = 1,
         },
-        { -- Step 20
+        { -- Step 17
             ["CRange"] = 65444,
             ["TT"] = {
                 ["y"] = 1343.4,
@@ -272,7 +231,7 @@ if (APR.Faction == "Horde") then
             ["ExtraLineText"] = "WAIT_FOR_ZEPPELIN",
             ["Zone"] = 1,
         },
-        { -- Step 21
+        { -- Step 18
             ["Qpart"] = {
                 [65444] = {
                     ["1"] = "1",
@@ -290,7 +249,7 @@ if (APR.Faction == "Horde") then
             ["ExtraLineText"] = "WAIT_FOR_ZEPPELIN",
             ["Zone"] = 1,
         },
-        { -- Step 22
+        { -- Step 19
             ["Qpart"] = {
                 [65444] = {
                     ["2"] = "2",
@@ -307,7 +266,7 @@ if (APR.Faction == "Horde") then
             },
             ["Range"] = 5,
         },
-        { -- Step 23
+        { -- Step 20
             ["Done"] = {
                 65444,
             },
@@ -317,7 +276,7 @@ if (APR.Faction == "Horde") then
             },
             ["Zone"] = 1,
         },
-        { -- Step 24
+        { -- Step 21
             ["ZoneDoneSave"] = 1,
         },
     }
@@ -4854,6 +4813,7 @@ if (APR.Faction == "Horde") then
                 ["x"] = -4272.896484375,
             },
             ["Range"] = 1,
+            ["ETA"] = 15,
             ["Zone"] = 85,
         },
         { -- Step 144
@@ -4872,7 +4832,6 @@ if (APR.Faction == "Horde") then
             },
             ["Range"] = 1,
             ["ExtraLineText"] = "CLICK_EXTRAACTIONBUTTON",
-            ["ETA"] = 15,
             ["Zone"] = 85,
         },
         { -- Step 145
