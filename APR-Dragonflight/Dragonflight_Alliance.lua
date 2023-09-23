@@ -4731,6 +4731,7 @@ if (APR.Faction == "Alliance") then
                 ["x"] = 287.56744384766,
             },
             ["Range"] = 1,
+            ["ETA"] = 15,
             ["Zone"] = 84,
         },
         { -- Step 143
@@ -4749,7 +4750,6 @@ if (APR.Faction == "Alliance") then
             },
             ["Range"] = 1,
             ["ExtraLineText"] = "CLICK_EXTRAACTIONBUTTON",
-            ["ETA"] = 15,
             ["Zone"] = 84,
         },
         { -- Step 144
