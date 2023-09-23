@@ -802,35 +802,37 @@ local function APR_PrintQStep()
             local IdList = steps["QpartPart"]
             local Flagged = 0
             local Total = 0
-
-            for APR_index, APR_value in pairs(IdList) do
-                for APR_index2, APR_value2 in pairs(APR_value) do
+            local HasTriggerTextValid = false
+            for questId, objectives in pairs(IdList) do
+                for objectiveId, _ in pairs(objectives) do
                     Total = Total + 1
-                    local qid = APR_index .. "-" .. APR_index2
+                    local qid = questId .. "-" .. objectiveId
+                    local questText = APR.ActiveQuests[qid]
 
-                    if C_QuestLog.IsQuestFlaggedCompleted(APR_index) or (APR.ActiveQuests[qid] and APR.ActiveQuests[qid] == "C") then
+                    if questText == "C" or C_QuestLog.IsQuestFlaggedCompleted(questId) then
                         Flagged = Flagged + 1
-                    elseif APR.ActiveQuests[qid] then
+                    elseif questText then
                         if not APR.ZoneTransfer then
-                            APR.currentStep:UpdateQuestSteps(APR_index, APR.ActiveQuests[qid], APR_index2)
+                            APR.currentStep:UpdateQuestSteps(questId, questText, objectiveId)
                         end
-                    elseif not APR.ActiveQuests[APR_index] and not MissingQs[APR_index] then
+                    elseif not MissingQs[questId] then
                         if not APR.ZoneTransfer then
-                            local questText = ""
-                            if APR_BonusObj[APR_index] then
-                                questText = L["DO_BONUS_OBJECTIVE"] .. ": " .. APR_index
-                            else
-                                questText = L["ERROR"] .. " - " .. L["MISSING_Q"] .. ": " .. APR_index
-                            end
+                            local questTextToAdd = APR_BonusObj[questId] and (L["DO_BONUS_OBJECTIVE"] .. ": " .. questId) or
+                                (L["ERROR"] .. " - " .. L["MISSING_Q"] .. ": " .. questId)
+                            APR.currentStep:UpdateQuestSteps(questId, questTextToAdd, objectiveId)
+                            MissingQs[questId] = 1
+                        end
+                    end
 
-                            APR.currentStep:UpdateQuestSteps(APR_index, questText, APR_index2)
-                            MissingQs[APR_index] = 1
+                    for key, trigerText in pairs(steps) do
+                        if string.match(key, "TrigText+") and string.find(questText, trigerText) then
+                            HasTriggerTextValid = true
                         end
                     end
                 end
             end
 
-            if Flagged == Total or (steps and steps["TrigText"]) then
+            if Flagged == Total or HasTriggerTextValid then
                 APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
                 APR.BookingList["PrintQStep"] = 1
             end

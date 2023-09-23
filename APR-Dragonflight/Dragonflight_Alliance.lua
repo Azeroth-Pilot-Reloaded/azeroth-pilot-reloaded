@@ -3373,7 +3373,11 @@ if (APR.Faction == "Alliance") then
             ["Zone"] = 2109,
         },
         { -- Step 22
-            ["CRange"] = 64866,
+            ["QpartPart"] = {
+                [64866] = {
+                    ["2"] = "2",
+                },
+            },
             ["TT"] = {
                 ["y"] = 6116.8876953125,
                 ["x"] = -3137.6274414062,
@@ -3383,18 +3387,18 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -3137.6274414062,
             },
             ["Range"] = 5,
-            ["Fillers"] = {
-                [64866] = {
-                    ["2"] = "2",
-                },
-            },
             ["SpellButton"] = {
                 ["64866-2"] = 361469,
             },
+            ["TrigText"] = "1/5",
             ["Zone"] = 2109,
         },
         { -- Step 23
-            ["CRange"] = 64866,
+            ["QpartPart"] = {
+                [64866] = {
+                    ["2"] = "2",
+                },
+            },
             ["TT"] = {
                 ["y"] = 6033.3671875,
                 ["x"] = -3200.1586914062,
@@ -3404,18 +3408,18 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -3200.1586914062,
             },
             ["Range"] = 5,
-            ["Fillers"] = {
-                [64866] = {
-                    ["2"] = "2",
-                },
-            },
             ["SpellButton"] = {
                 ["64866-2"] = 361469,
             },
+            ["TrigText"] = "2/5",
             ["Zone"] = 2109,
         },
         { -- Step 24
-            ["CRange"] = 64866,
+            ["QpartPart"] = {
+                [64866] = {
+                    ["2"] = "2",
+                },
+            },
             ["TT"] = {
                 ["y"] = 6035.3974609375,
                 ["x"] = -3238.4387207031,
@@ -3425,18 +3429,18 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -3238.4387207031,
             },
             ["Range"] = 5,
-            ["Fillers"] = {
-                [64866] = {
-                    ["2"] = "2",
-                },
-            },
             ["SpellButton"] = {
                 ["64866-2"] = 361469,
             },
+            ["TrigText"] = "3/5",
             ["Zone"] = 2109,
         },
         { -- Step 25
-            ["CRange"] = 64866,
+            ["QpartPart"] = {
+                [64866] = {
+                    ["2"] = "2",
+                },
+            },
             ["TT"] = {
                 ["y"] = 6087.59765625,
                 ["x"] = -3253.2290039062,
@@ -3446,18 +3450,14 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -3253.2290039062,
             },
             ["Range"] = 5,
-            ["Fillers"] = {
-                [64866] = {
-                    ["2"] = "2",
-                },
-            },
             ["SpellButton"] = {
                 ["64866-2"] = 361469,
             },
+            ["TrigText"] = "4/5",
             ["Zone"] = 2109,
         },
         { -- Step 26
-            ["Qpart"] = {
+            ["QpartPart"] = {
                 [64866] = {
                     ["2"] = "2",
                 },
@@ -3474,6 +3474,7 @@ if (APR.Faction == "Alliance") then
             ["SpellButton"] = {
                 ["64866-2"] = 361469,
             },
+            ["TrigText"] = "5/5",
             ["Zone"] = 2109,
         },
         { -- Step 27
@@ -3869,7 +3870,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 52
             ["Qpart"] = {
-                [65033] = {
+                [65036] = {
                     ["1"] = "1",
                 },
             },
@@ -3884,7 +3885,7 @@ if (APR.Faction == "Alliance") then
             ["Range"] = 1,
             ["ExtraLineText2"] = "CAST_SOAR",
             ["SpellButton"] = {
-                ["65033-1"] = 369536,
+                ["65036-1"] = 369536,
             },
             ["Zone"] = 2118,
         },
@@ -4379,7 +4380,8 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["ExtraLineText"] = "PICK_UP_CRYSTAL_KEY_ON_THE_GROUND",
+            ["ExtraLineText"] = "USE_ITEM_ON_COOLDOWN_REDUCE_TOXICITY",
+            ["ExtraLineText2"] = "PICK_UP_CRYSTAL_KEY_ON_THE_GROUND",
             ["Zone"] = 2110,
         },
         { -- Step 83
