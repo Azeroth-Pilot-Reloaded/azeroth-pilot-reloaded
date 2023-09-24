@@ -21,6 +21,7 @@ local FRAME_DATA_HEIGHT = -5
 local QuestOrderListFrame = CreateFrame("Frame", "QuestOrderListPanel", UIParent, "BackdropTemplate")
 QuestOrderListFrame:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
 QuestOrderListFrame:SetFrameStrata("LOW")
+QuestOrderListFrame:SetClampedToScreen(true)
 QuestOrderListFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 QuestOrderListFrame:SetBackdrop({
     bgFile = "Interface\\BUTTONS\\WHITE8X8",

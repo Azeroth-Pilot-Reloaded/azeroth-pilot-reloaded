@@ -28,6 +28,9 @@ function APR:SlashCmd(input)
         _G.StaticPopup_Show("Github_Link")
     elseif (input == "scribe" or input == "writer") then
         APR.questionDialog:CreateMessagePopup(L["SCRIBE_HEADER"] .. "\n\n" .. L["SCRIBE"], L["CLOSE"])
+    elseif input == 'coord' then
+        APR.settings.profile.coordinateShow = not APR.settings.profile.coordinateShow
+        APR.coordinate:RefreshFrameAnchor()
     elseif (input == "help" or input == "h") then
         print(L["COMMAND_LIST"] .. ":")
         print("|cffeda55f/apr help, h |r- " .. L["HELP_COMMAND"])

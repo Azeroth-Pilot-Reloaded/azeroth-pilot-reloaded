@@ -94,6 +94,8 @@ function APR.settings:InitializeSettings()
             debug = false,
             enableAddon = true,
             -- position
+            coordinateFrame = {},
+            coordinateShow = false,
             leftLiz = 150,
             topLiz = -150,
 

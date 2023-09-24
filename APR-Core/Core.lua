@@ -78,6 +78,9 @@ function APR:OnInitialize()
     -- Init Quest Order List frame
     APR.questOrderList:QuestOrderListFrameOnInit()
 
+    -- Init coordinate frame for dev
+    APR.coordinate:PartyFrameOnInit()
+
     -- APR Global Variables, UI oriented
     BINDING_HEADER_APR = APR.title -- Header text for APR's main frame
     _G["BINDING_NAME_" .. "CLICK APRItemButton:LeftButton"] = L["USE_QUEST_ITEM"]
