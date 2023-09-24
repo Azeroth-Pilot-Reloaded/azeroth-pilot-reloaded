@@ -19,6 +19,7 @@ helpers/Utils.lua
 helpers/classes.lua
 helpers/PlayerPosition.lua
 helpers/SceneCutter.lua
+helpers/CoordinateFrame.lua
 
 Config.lua
 Commands.lua

@@ -20,6 +20,7 @@ APR.party.teamList = {}
 local PartyFrame = CreateFrame("Frame", "PartyScreenPanel", UIParent, "BackdropTemplate")
 PartyFrame:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
 PartyFrame:SetFrameStrata("LOW")
+PartyFrame:SetClampedToScreen(true)
 
 
 -- Create the step holder frame

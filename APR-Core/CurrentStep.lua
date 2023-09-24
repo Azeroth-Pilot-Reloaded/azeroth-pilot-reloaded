@@ -25,6 +25,7 @@ local FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
 local CurrentStepFrame = CreateFrame("Frame", "CurrentStepScreenPanel", UIParent, "BackdropTemplate")
 CurrentStepFrame:SetSize(FRAME_WIDTH, 500)
 CurrentStepFrame:SetFrameStrata("LOW")
+CurrentStepFrame:SetClampedToScreen(true)
 
 -- Create the step holder frame
 local CurrentStepFrame_StepHolder = CreateFrame("Frame", "CurrentStepFrame_StepHolder", CurrentStepFrame,
