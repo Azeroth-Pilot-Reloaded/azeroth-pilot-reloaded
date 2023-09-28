@@ -2802,25 +2802,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
             end
         end)
 
-        -- TODO MAP REWORK - Permet d'animer le déplacement des pointillers
-        APR_IconTimer = APR.CoreEventFrame:CreateAnimationGroup()
-        APR_IconTimer.anim = APR_IconTimer:CreateAnimation()
-        APR_IconTimer.anim:SetDuration(0.05)
-        APR_IconTimer:SetLooping("REPEAT")
-        APR_IconTimer:SetScript("OnLoop", function(self, event, ...)
-            if (APR.Icons and APR.Icons[1]) then
-                if (APR.settings.profile.showMiniMapBlobs) then
-                    APR:MoveIcons()
-                end
-            end
-            if (APR.MapIcons and APR.MapIcons[1]) then
-                if (APR.settings.profile.showMapBlobs) then
-                    APR:MoveMapIcons()
-                end
-            end
-        end)
-        APR_IconTimer:Play()
-
         if (not APRData[APR.Realm][APR.Name]["LoaPick"]) then
             APRData[APR.Realm][APR.Name]["LoaPick"] = 0
         end

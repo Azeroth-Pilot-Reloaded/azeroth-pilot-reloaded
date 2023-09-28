@@ -1,12 +1,7 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-local HBDP = LibStub("HereBeDragons-Pins-2.0")
-local HBD = LibStub("HereBeDragons-2.0")
 
 APR.BookingList = {} --TODO rework BookingList
-APR.HBDP = HBDP
-APR.HBD = HBD
-
 
 local QNumberLocal = 0
 local APR_ArrowUpdateNr = 0
@@ -1276,8 +1271,8 @@ local function APR_SetQPTT()
         APR.ArrowActive_X = APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["x"]
         APR.ArrowActive_Y = APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["y"]
         QNumberLocal = CurStep
-        APR["Icons"][1].A = 1
-        APR["MapIcons"][1].A = 1
+        APR.map.minimapLine[1].A = 1
+        APR.map.line[1].A = 1
     end
 end
 
@@ -1285,12 +1280,12 @@ local function APR_PosTest()
     local d_y, d_x = UnitPosition("player")
     if (not d_y) then
         APR.ArrowFrame:Hide()
-        APR.RemoveIcons()
+        APR.map:RemoveMinimapLine()
     elseif (not APR.settings.profile.showArrow) then
         APR.ArrowActive = 0
         APR.ArrowFrame:Hide()
 
-        APR.RemoveIcons()
+        APR.map:RemoveMinimapLine()
     else
         local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
         if (APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] and APR.QuestStepList[APR.ActiveMap][CurStep]["AreaTriggerZ"]) then
@@ -1309,7 +1304,7 @@ local function APR_PosTest()
             if (APR.ArrowFrame) then
                 APR.ArrowActive = 0
                 APR.ArrowFrame:Hide()
-                APR.RemoveIcons()
+                APR.map:RemoveMinimapLine()
             end
         else
             APR.ArrowFrame:Show()
@@ -1388,7 +1383,7 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
         if (APR.ArrowActive_Y) then
             APR.ArrowActive_Y = APR.ArrowActive_Y + 150
             APR.ArrowActive_X = APR.ArrowActive_X + 150
-            APR["Icons"][1].A = 1
+            APR.map.minimapLine[1].A = 1
         end
         APR.BookingList["PrintQStep"] = 1
         if (APR.settings.profile.debug) then
@@ -1399,7 +1394,7 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
             APR.BookingList["ClosedSettings"] = false
             QNumberLocal = 0
             APR.ArrowActive = 0
-            APR.RemoveIcons()
+            APR.map:RemoveMinimapLine()
             APR.BookingList["UpdateQuest"] = 1
             APR.BookingList["PrintQStep"] = 1
         end
@@ -2132,7 +2127,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (APR.ActiveMap == arg1) then
             APR.BookingList["UpdateMapId"] = 1
             APRData[APR.Realm][APR.Name][arg1] = nil
-            APR.RemoveMapIcons()
+            APR.map:RemoveMapLine()
         end
         APRData[APR.Realm][APR.Name]["QuestCounter2"] = APRData[APR.Realm][APR.Name]["QuestCounter2"] + 1
     end
@@ -2193,22 +2188,29 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         CheckDenyNPC(steps)
         if (GetNumQuestChoices() > 1) then
             if (APR.settings.profile.autoHandInChoice) then
+                -- Get the player ilvl stuff
                 local APR_GearIlvlList = {}
-                for slots2 = 0, 18 do
-                    local inventoryitemLink = GetInventoryItemLink("player", slots2)
+                for playerSlot = 0, 18 do
+                    local inventoryitemLink = GetInventoryItemLink("player", playerSlot)
                     if (inventoryitemLink) then
                         local _, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc = GetItemInfo(inventoryitemLink)
                         if (itemQuality == 7) then
                             itemLevel = GetDetailedItemLevelInfo(inventoryitemLink)
                         end
                         if (itemEquipLoc and itemLevel) then
-                            if (itemEquipLoc == "INVTYPE_WEAPONOFFHAND") then
-                                itemEquipLoc = "INVTYPE_WEAPON"
-                            end
-                            if (itemEquipLoc == "INVTYPE_WEAPONMAINHAND") then
-                                itemEquipLoc = "INVTYPE_WEAPON"
-                            end
-                            if (itemEquipLoc == "INVTYPE_WEAPON" or itemEquipLoc == "INVTYPE_SHIELD" or itemEquipLoc == "INVTYPE_2HWEAPON" or itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or itemEquipLoc == "INVTYPE_HOLDABLE" or itemEquipLoc == "INVTYPE_RANGED" or itemEquipLoc == "INVTYPE_THROWN" or itemEquipLoc == "INVTYPE_RANGEDRIGHT" or itemEquipLoc == "INVTYPE_RELIC") then
+                            if (itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or
+                                    itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or
+                                    itemEquipLoc == "INVTYPE_WEAPON" or
+                                    itemEquipLoc == "INVTYPE_SHIELD" or
+                                    itemEquipLoc == "INVTYPE_2HWEAPON" or
+                                    itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or
+                                    itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or
+                                    itemEquipLoc == "INVTYPE_HOLDABLE" or
+                                    itemEquipLoc == "INVTYPE_RANGED" or
+                                    itemEquipLoc == "INVTYPE_THROWN" or
+                                    itemEquipLoc == "INVTYPE_RANGEDRIGHT" or
+                                    itemEquipLoc == "INVTYPE_RELIC"
+                                ) then
                                 itemEquipLoc = "INVTYPE_WEAPON"
                             end
                             if (APR_GearIlvlList[itemEquipLoc]) then
@@ -2221,55 +2223,48 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                         end
                     end
                 end
+
+                -- Get quest reward ilvl
                 local APRTempGearList = {}
-                local isweaponz = 0
-                local APRColorof = 0
                 for h = 1, GetNumQuestChoices() do
                     local questItemLink = GetQuestItemLink("choice", h)
                     if (questItemLink) then
                         local _, _, itemQuality, _, _, _, _, _, itemEquipLoc = GetItemInfo(questItemLink)
                         local ilvl = GetDetailedItemLevelInfo(questItemLink)
-                        if (itemEquipLoc == "INVTYPE_WEAPONOFFHAND") then
+                        if (itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or
+                                itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or
+                                itemEquipLoc == "INVTYPE_WEAPON" or
+                                itemEquipLoc == "INVTYPE_SHIELD" or
+                                itemEquipLoc == "INVTYPE_2HWEAPON" or
+                                itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or
+                                itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or
+                                itemEquipLoc == "INVTYPE_HOLDABLE" or
+                                itemEquipLoc == "INVTYPE_RANGED" or
+                                itemEquipLoc == "INVTYPE_THROWN" or
+                                itemEquipLoc == "INVTYPE_RANGEDRIGHT" or
+                                itemEquipLoc == "INVTYPE_RELIC"
+                            ) then
                             itemEquipLoc = "INVTYPE_WEAPON"
-                        end
-                        if (itemEquipLoc == "INVTYPE_WEAPONMAINHAND") then
-                            itemEquipLoc = "INVTYPE_WEAPON"
-                        end
-                        if (itemEquipLoc == "INVTYPE_WEAPON" or itemEquipLoc == "INVTYPE_SHIELD" or itemEquipLoc == "INVTYPE_2HWEAPON" or itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or itemEquipLoc == "INVTYPE_HOLDABLE" or itemEquipLoc == "INVTYPE_RANGED" or itemEquipLoc == "INVTYPE_THROWN" or itemEquipLoc == "INVTYPE_RANGEDRIGHT" or itemEquipLoc == "INVTYPE_RELIC") then
-                            itemEquipLoc = "INVTYPE_WEAPON"
-                            print(itemEquipLoc)
                         end
                         if (APR_GearIlvlList[itemEquipLoc]) then
-                            if (itemQuality > 2) then
-                                --APRColorof = itemQuality
-                            end
                             APRTempGearList[h] = ilvl - APR_GearIlvlList[itemEquipLoc]
                             print("Qilvl: " ..
                                 itemQuality .. " - " .. itemEquipLoc .. " - MySpot: " .. APR_GearIlvlList[itemEquipLoc])
-                            if (itemEquipLoc == "INVTYPE_WEAPON" or itemEquipLoc == "INVTYPE_SHIELD" or itemEquipLoc == "INVTYPE_2HWEAPON" or itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or itemEquipLoc == "INVTYPE_HOLDABLE" or itemEquipLoc == "INVTYPE_RANGED" or itemEquipLoc == "INVTYPE_THROWN" or itemEquipLoc == "INVTYPE_RANGEDRIGHT" or itemEquipLoc == "INVTYPE_RELIC") then
-                                --isweaponz = 1
-                            end
                         end
                     end
                 end
-                -- temp remove
-                isweaponz = 0
-                APRColorof = 0
-                if (APRColorof > 2) then
-                elseif (isweaponz == 1) then
-                else
-                    local PickOne = 0
-                    local PickOne2 = -99999
-                    for APR_indexx, APR_valuex in pairs(APRTempGearList) do
-                        if (APR_valuex > PickOne2) then
-                            PickOne = APR_indexx
-                            PickOne2 = APR_valuex
-                        end
+
+                -- Choose the reward
+                local PickOne = 0
+                local PickOne2 = -99999
+                for APR_indexx, APR_valuex in pairs(APRTempGearList) do
+                    if (APR_valuex > PickOne2) then
+                        PickOne = APR_indexx
+                        PickOne2 = APR_valuex
                     end
-                    if (PickOne > 0) then
-                        GetQuestReward(PickOne)
-                        --print("picked: "..PickOne)
-                    end
+                end
+                if (PickOne > 0) then
+                    GetQuestReward(PickOne)
                 end
             end
         else
