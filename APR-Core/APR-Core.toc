@@ -20,6 +20,7 @@ helpers/classes.lua
 helpers/PlayerPosition.lua
 helpers/SceneCutter.lua
 helpers/CoordinateFrame.lua
+helpers/StepHelper.lua
 
 Config.lua
 Commands.lua

@@ -566,7 +566,7 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value)
                                     SetProfileOption(info, value)
                                     if not value then
-                                        APR:MoveMapIcons()
+                                        APR.map:MoveMapLine()
                                     end
                                 end
                             },
@@ -580,7 +580,7 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value)
                                     SetProfileOption(info, value)
                                     if not value then
-                                        APR.HBDP:RemoveAllWorldMapIcons("APRMapOrder")
+                                        APR.map:RemoveMapIcons()
                                     end
                                 end,
                             },
@@ -618,7 +618,7 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value)
                                     SetProfileOption(info, value)
                                     if not value then
-                                        APR.RemoveIcons()
+                                        APR.map:RemoveMinimapLine()
                                     end
                                 end
                             },
@@ -636,7 +636,7 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value)
                                     SetProfileOption(info, value)
                                     for CLi = 1, 20 do
-                                        APR.Icons[CLi].texture:SetAlpha(value)
+                                        APR.map.minimapLine[CLi].texture:SetAlpha(value)
                                     end
                                 end,
                                 disabled = function()
@@ -1018,4 +1018,5 @@ function APR.settings:ToggleAddon()
     APR.currentStep:RefreshCurrentStepFrameAnchor()
     APR.questOrderList:RefreshFrameAnchor()
     APR.party:RefreshPartyFrameAnchor()
+    APR.map:ToggleLine()
 end
