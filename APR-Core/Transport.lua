@@ -698,7 +698,7 @@ function APR.FP.GetMeToNextZone()
     ----------------------------------------------------------------
     APR.ZoneTransfer = true
     if (APR.settings.profile.debug) then
-        print("Function: APR.FP.GetMeToNextZone2()")
+        print("Function: APR.FP.GetMeToNextZone() Part 2")
     end
     -- Disable Current Step button/bar/quest/...
     APR.currentStep:Disable()
@@ -880,7 +880,7 @@ function APR.FP.GetMeToNextZone()
         end
     end
     if (APR.ZoneTransfer) then
-        C_Timer.After(2, APR.FP.GetMeToNextZone2)
+        C_Timer.After(2, APR.FP.GetMeToNextZone)
     end
     if (DestSet == 1) then
         APR.ArrowActive = 0
