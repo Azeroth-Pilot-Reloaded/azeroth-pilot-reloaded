@@ -93,6 +93,9 @@ function APR.settings:InitializeSettings()
             --debug
             debug = false,
             enableAddon = true,
+            changeLogFrame = {},
+            showChangeLog = true,
+            lastRecordedVersion = '',
             -- position
             coordinateFrame = {},
             coordinateShow = false,
@@ -624,8 +627,8 @@ function APR.settings:createBlizzOptions()
                             minimapshow10NextStep = {
                                 order = 9.3,
                                 type = "toggle",
-                                name = L["SHOW_STEPS_MAP"],
-                                desc = L["SHOW_STEPS_MAP_DESC"],
+                                name = L["SHOW_STEPS_MINIMAP"],
+                                desc = L["SHOW_STEPS_MINIMAP_DESC"],
                                 width = "full",
                                 get = GetProfileOption,
                                 set = function(info, value)
@@ -752,6 +755,24 @@ function APR.settings:createBlizzOptions()
                                     SetProfileOption(info, value)
                                     -- disabled addon
                                     self:ToggleAddon()
+                                end,
+                            },
+
+                            showChangeLog = {
+                                order = 1.2,
+                                type = "toggle",
+                                name = L["SHOW_CHANGELOG"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = SetProfileOption,
+                            },
+                            resetPartyPosition = {
+                                name = L["SHOW_CHANGELOG"],
+                                order = 1.3,
+                                type = 'execute',
+                                width = "full",
+                                func = function()
+                                    APR.changelog:ShowChangeLog()
                                 end,
                             },
                         }

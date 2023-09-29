@@ -1392,7 +1392,6 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
             APR.BookingList["ClosedSettings"] = false
             QNumberLocal = 0
             APR.ArrowActive = 0
-            APR.map:RemoveMinimapLine()
             APR.BookingList["UpdateQuest"] = 1
             APR.BookingList["PrintQStep"] = 1
         end
