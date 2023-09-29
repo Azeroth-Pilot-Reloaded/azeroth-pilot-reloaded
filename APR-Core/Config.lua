@@ -49,20 +49,20 @@ function APR.settings:InitializeSettings()
             autoGossip = true,
             autoVendor = false,
             autoRepair = false,
-            autoSkipCutScene = true, -- CutScene
+            autoSkipCutScene = true,
             autoFlight = true,
             -- current step
             currentStepFrame = {},
-            currentStepShow = true,  --showQList
-            currentStepLock = false, --Lock
-            currentStepScale = 1,    --Scale
+            currentStepShow = true,
+            currentStepLock = false,
+            currentStepScale = 1,
             currentStepbackgroundColorAlpha = { 0, 0, 0, 0.4 },
             currentStepAttachFrameToQuestLog = true,
             -- quest order list
             questOrderListFrame = {},
-            showQuestOrderList = false, --ShowQuestListOrder
+            showQuestOrderList = false,
             questOrderListLock = false,
-            questOrderListScale = 1,    --OrderListScale
+            questOrderListScale = 1,
             questOrderListbackgroundColorAlpha = { 0, 0, 0, 0.4 },
             -- arrow
             showArrow = true,
@@ -72,13 +72,14 @@ function APR.settings:InitializeSettings()
             arrowleft = _G.GetScreenWidth() / 2.05,
             arrowtop = -(_G.GetScreenHeight() / 1.5),
             -- minimap
-            showMiniMapBlobs = true, -- showBlobs
-            miniMapBlobAlpha = 0.5,  -- miniMapBlobAlpha
+            showMiniMapBlobs = true,
+            miniMapBlobAlpha = 0.5,
             enableMinimapButton = true,
             minimap = { minimapPos = 250 },
+            minimapshow10NextStep = false,
             -- map
             showMapBlobs = true,
-            showMap10s = false,
+            mapshow10NextStep = false,
             -- Heirloom
             heirloomWarning = true, -- DisableHeirloomWarning
             -- group
@@ -505,6 +506,7 @@ function APR.settings:createBlizzOptions()
                         width = "full",
                         get = GetProfileOption,
                         set = SetProfileOption,
+                        disabled = true -- wait for a change on blizz side
                     },
                     autoFlight = {
                         order = 8.2,
@@ -569,7 +571,7 @@ function APR.settings:createBlizzOptions()
                                     end
                                 end
                             },
-                            showMap10s = {
+                            mapshow10NextStep = {
                                 order = 9.41,
                                 type = "toggle",
                                 name = L["SHOW_STEPS_MAP"],
@@ -578,9 +580,7 @@ function APR.settings:createBlizzOptions()
                                 get = GetProfileOption,
                                 set = function(info, value)
                                     SetProfileOption(info, value)
-                                    if not value then
-                                        APR.map:RemoveMapIcons()
-                                    end
+                                    APR.map:AddMapPins()
                                 end,
                             },
                         },
@@ -621,8 +621,20 @@ function APR.settings:createBlizzOptions()
                                     end
                                 end
                             },
+                            minimapshow10NextStep = {
+                                order = 9.3,
+                                type = "toggle",
+                                name = L["SHOW_STEPS_MAP"],
+                                desc = L["SHOW_STEPS_MAP_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.map:AddMapPins()
+                                end,
+                            },
                             miniMapBlobAlpha = {
-                                order = 9.21,
+                                order = 9.4,
                                 type = "range",
                                 name = L["MINIMAP_BLOB_ALPHA"],
                                 desc = L["MINIMAP_BLOB_ALPHA_DESC"],
