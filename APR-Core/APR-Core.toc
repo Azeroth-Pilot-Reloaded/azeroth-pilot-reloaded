@@ -24,6 +24,7 @@ helpers/StepHelper.lua
 
 Config.lua
 Commands.lua
+ChangeLog.lua
 
 TransportDB.lua
 QuestHandler.lua
