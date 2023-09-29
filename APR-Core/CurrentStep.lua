@@ -218,7 +218,7 @@ function APR.currentStep:PreviousNextStepButton()
     local rollbackButton = CreateButton("CurrentStepFrame_StepHolder_RollbackButton", CurrentStepFrameHeader, 30, 30,
         L["ROLLBACK"],
         function()
-            APR:SlashCmd('rollback')
+            APR.command:SlashCmd('rollback')
         end)
     rollbackButton:SetPoint("BOTTOMLEFT", CurrentStepFrameHeader, "BOTTOMLEFT", 5, -30)
     rollbackButton:SetNormalTexture([[Interface\Buttons\UI-SpellbookIcon-PrevPage-Up]])
@@ -229,7 +229,7 @@ function APR.currentStep:PreviousNextStepButton()
 
     local skipButton = CreateButton("CurrentStepFrame_StepHolder_SkipButton", CurrentStepFrameHeader, 30, 30, L["SKIP"],
         function()
-            APR:SlashCmd('skip')
+            APR.command:SlashCmd('skip')
         end)
     skipButton:SetPoint("BOTTOMRIGHT", CurrentStepFrameHeader, "BOTTOMRIGHT", -5, -30)
     skipButton:SetNormalTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Up]])

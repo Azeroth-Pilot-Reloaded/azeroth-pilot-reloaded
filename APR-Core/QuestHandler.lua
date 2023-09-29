@@ -239,6 +239,7 @@ local function APR_PrintQStep()
 
         APR.currentStep:ButtonEnable()
         APR.currentStep:ProgressBar(APR.ActiveMap, #APR.QuestStepList[APR.ActiveMap], CurStep)
+        APR:SendMessage("APR_MAP_UPDATE")
 
         if (APRExtraText and not APR.ZoneTransfer) then
             local path = APRExtraText.Paths[APR.ActiveMap] and APRExtraText.Paths[APR.ActiveMap][CurStep]
@@ -1262,17 +1263,14 @@ local function APR_SetQPTT()
     if (APR.settings.profile.debug) then
         print("Function: APR_SetQPTT()")
     end
-    if (APR.SettingsOpen) then
-        return
-    end
     local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
     if (QNumberLocal ~= CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] and APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]) then
         APR.ArrowActive = 1
         APR.ArrowActive_X = APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["x"]
         APR.ArrowActive_Y = APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["y"]
         QNumberLocal = CurStep
-        APR.map.minimapLine[1].A = 1
-        APR.map.line[1].A = 1
+        APR.map.minimapLine[1].IsActive = true
+        APR.map.line[1].IsActive = true
     end
 end
 
@@ -1383,7 +1381,7 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
         if (APR.ArrowActive_Y) then
             APR.ArrowActive_Y = APR.ArrowActive_Y + 150
             APR.ArrowActive_X = APR.ArrowActive_X + 150
-            APR.map.minimapLine[1].A = 1
+            APR.map.minimapLine[1].IsActive = true
         end
         APR.BookingList["PrintQStep"] = 1
         if (APR.settings.profile.debug) then

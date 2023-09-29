@@ -53,7 +53,6 @@ function APR:OnInitialize()
     APR.SweatBuff[3] = false -- TODO REWORK SweatOfOurBrowBuffFrame
 
     -- APR INIT NEW SETTING
-    APR.SettingsOpen = false
     APR.settings:InitializeBlizOptions()
 
     -- APR Saved Data
