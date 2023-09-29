@@ -1,8 +1,9 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+APR.command = APR:NewModule("Command")
 -- Chat commands, such as /apr reset, /apr skip, /apr skipcamp
-function APR:SlashCmd(input)
+function APR.command:SlashCmd(input)
     if not APR.settings.profile.enableAddon then
         _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
     end

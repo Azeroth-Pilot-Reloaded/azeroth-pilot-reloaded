@@ -90,7 +90,6 @@ function APR.settings:InitializeSettings()
             --afk
             afkFrame = {},
             --debug
-            configMode = false,
             debug = false,
             enableAddon = true,
             -- position
@@ -112,7 +111,7 @@ function APR.settings:InitializeSettings()
 end
 
 function APR.settings.ChatCommand(input)
-    APR:SlashCmd(input)
+    APR.command:SlashCmd(input)
 end
 
 function APR.settings:RefreshProfile()
@@ -758,27 +757,6 @@ function APR.settings:createBlizzOptions()
                                 width = "full",
                                 get = GetProfileOption,
                                 set = SetProfileOption,
-                                disabled = function()
-                                    return not self.profile.enableAddon
-                                end,
-                            },
-                            configMode = {
-                                order = 2.2,
-                                type = "toggle",
-                                name = L["CONFIG_MODE"],
-                                desc = L["CONFIG_MODE_DESC"],
-                                width = "full",
-                                get = GetProfileOption,
-                                set = function(info, value)
-                                    SetProfileOption(info, value)
-                                    if (value) then
-                                        APR.SettingsOpen = true
-                                        APR.BookingList["OpenedSettings"] = true
-                                    else
-                                        APR.SettingsOpen = false
-                                        APR.BookingList["ClosedSettings"] = true
-                                    end
-                                end,
                                 disabled = function()
                                     return not self.profile.enableAddon
                                 end,
