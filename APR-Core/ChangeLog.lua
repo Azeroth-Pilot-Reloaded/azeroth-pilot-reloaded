@@ -60,7 +60,6 @@ function APR.changelog:OnInit()
         end
         APR.settings.profile.lastRecordedVersion = APR.version
     end
-    self:ShowChangeLog()
 end
 
 function APR.changelog:ShowChangeLog()
@@ -71,7 +70,18 @@ end
 function APR.changelog:SetChangeLog()
     local news = {
         { "V3-Beta-2", "2023-09-29" },
-        "TDB",
+        "#Features",
+        "- Current step icon added to map and minimap",
+        "- Added the option of displaying the next 10 steps on the minimap (as on the map)",
+        "- Added this new path note frame for update news",
+        "- Disabled Automatic skip of Cinematic  (wow changed api, can't do it without lua error :'( )",
+        "#Bugs",
+        "- Fix the display of steps on the map (an improved icon and a tootltip are coming soon)",
+        "- Fix lua error on zone change",
+        "- Add GossipOptionID check to avoid wrong gossip index",
+        "#Route",
+        "- Rework Zuldazar route to account for Blizz changes",
+        "- Fix Dracthyr starting Coordinate",
 
         { "V3-Beta",   "2023-09-23" },
         "#Features",
@@ -91,18 +101,15 @@ function APR.changelog:SetChangeLog()
         "- New Party Frame (can change again in the future to have progress bars if you ask hard enough)",
         "- New AFK Frame (I love progress bar)",
         "- GoodBye APR MACRO and welcome back Item quest button (yeah I finally managed that F£#@ù bug)",
-        "",
         "#Routes",
         "- Merge the DF Horde starting route into one with the new zone step",
         "- Fixed a few errors in the Df route",
         "- Finalization of the Dracthyr route",
-        "",
         "#Dev",
         "- Bunch of rework and optimization",
         "- A Coordinate frame for the route maker",
         "- Add a new zone step for route (zone= uiMapId)",
         "- Test of a new Logo (waiting for the final one)",
-        "",
         "#Localization",
         "- French 100% ( Neogeekmo )",
         "- German 63.21% ( Kamian )",
@@ -110,7 +117,6 @@ function APR.changelog:SetChangeLog()
         { "v2.4.5", "2023-09-06" },
         "#WoW",
         "- Update APR to be sync with the last WoW Interface Version (10.1.7)",
-        "",
         "#Localization",
         "- English -> Fix missing key due to V3 code",
         "- German -> Thanks to Kamian for starting the translation (27.59%)"
@@ -126,7 +132,7 @@ function APR.changelog:SetChangeLog()
         elseif line ~= "" and not line:match("^#") then
             changelog = changelog .. line .. "\n"
         elseif line:match("^#") then
-            changelog = changelog .. "|cffeda55f" .. line .. "|r" .. "\n"
+            changelog = changelog .. "\n|cffeda55f" .. line .. "|r" .. "\n"
         else
             changelog = changelog .. " \n"
         end
