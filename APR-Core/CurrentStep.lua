@@ -251,43 +251,42 @@ end
 
 -- Add a progress bar
 function APR.currentStep:ProgressBar(key, total, current)
-    local totalSteps = total or 0
-    local currentStep = current or 0
-    if (self.progressBar) then
+    if (self.progressBar and self.progressBar.key ~= key) then
         self.progressBar:Hide()
         self.progressBar:ClearAllPoints()
         self.progressBar = nil
     end
-    local progressBar = CreateFrame("StatusBar", "CurrentStepFrame_StepHolder_ProgressBar", CurrentStepFrameHeader,
-        "BackdropTemplate")
-    progressBar:SetSize(155, 20)
-    progressBar:SetPoint("BOTTOM", CurrentStepFrameHeader, "BOTTOM", 0, -25)
-    progressBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
-    progressBar:SetStatusBarColor(0, 87 / 255, 183 / 255)
-    progressBar:SetMinMaxValues(1, totalSteps)
-    progressBar:SetValue(currentStep)
-    progressBar:SetBackdrop({
-        bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
-        tile = true,
-        tileSize = 16
-    })
-    progressBar:SetBackdropColor(0, 0, 0, 0.75)
 
-    local progressBarText = progressBar:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-    progressBarText:SetPoint("CENTER", progressBar, "CENTER", 0, 0)
-    progressBarText:SetText(currentStep .. " / " .. totalSteps)
+    local totalSteps = total or 0
+    local currentStep = current or 0
 
-    -- Update the progress bar when the current step changes
-    local function UpdateProgressBar(newCurrentStep)
-        progressBar:SetValue(newCurrentStep)
-        progressBarText:SetText(newCurrentStep .. " / " .. totalSteps)
+    if not self.progressBar then
+        local progressBar = CreateFrame("StatusBar", "CurrentStepFrame_StepHolder_ProgressBar", CurrentStepFrameHeader,
+            "BackdropTemplate")
+        progressBar:SetSize(155, 20)
+        progressBar:SetPoint("BOTTOM", CurrentStepFrameHeader, "BOTTOM", 0, -25)
+        progressBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
+        progressBar:SetStatusBarColor(0, 87 / 255, 183 / 255)
+        progressBar:SetMinMaxValues(1, totalSteps)
+        progressBar:SetValue(currentStep)
+        progressBar:SetBackdrop({
+            bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+            tile = true,
+            tileSize = 16
+        })
+        progressBar:SetBackdropColor(0, 0, 0, 0.75)
+
+        local progressBarText = progressBar:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        progressBarText:SetPoint("CENTER", progressBar, "CENTER", 0, 0)
+        progressBarText:SetText(currentStep .. " / " .. totalSteps)
+
+        self.progressBar = progressBar
+        self.progressBar.Text = progressBarText
+        self.progressBar.key = key
+    else
+        self.progressBar:SetValue(currentStep)
+        self.progressBar.Text:SetText(currentStep .. " / " .. totalSteps)
     end
-
-    -- Call UpdateProgressBar with the current step
-    UpdateProgressBar(currentStep)
-
-    APR.currentStep.progressBar = progressBar
-    APR.currentStep.progressBar.key = key
 end
 
 -- Displaying quest information
