@@ -69,6 +69,11 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "V3-Beta-3", "2023-10-04" },
+        "#Bugs",
+        "- Optimization of the Current step and Quest order list frame to avoid lag",
+        "- Try another new logo",
+
         { "V3-Beta-2", "2023-09-29" },
         "#Features",
         "- Current step icon added to map and minimap",
@@ -83,7 +88,7 @@ function APR.changelog:SetChangeLog()
         "- Rework Zuldazar route to account for Blizz changes",
         "- Fix Dracthyr starting Coordinate",
 
-        { "V3-Beta",   "2023-09-23" },
+        { "V3-Beta", "2023-09-23" },
         "#Features",
         "- New Settings (now it's all in the blizz' options)",
         "    - Each element has its own tab with more options than before",
@@ -114,7 +119,7 @@ function APR.changelog:SetChangeLog()
         "- French 100% ( Neogeekmo )",
         "- German 63.21% ( Kamian )",
 
-        { "v2.4.5", "2023-09-06" },
+        { "v2.4.5",  "2023-09-06" },
         "#WoW",
         "- Update APR to be sync with the last WoW Interface Version (10.1.7)",
         "#Localization",
