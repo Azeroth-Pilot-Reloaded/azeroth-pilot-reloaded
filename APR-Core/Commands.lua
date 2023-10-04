@@ -19,10 +19,14 @@ function APR.command:SlashCmd(input)
         -- Command for skipping the current quest step
         print("APR: " .. L["SKIP"])
         APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
+        APR.BookingList["UpdateQuest"] = true
+        APR.BookingList["PrintQStep"] = true
     elseif (input == "rollback" or input == "rb") then
         -- Command for rollback the current quest step
         print("APR: " .. L["ROLLBACK"])
         APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] - 1
+        APR.BookingList["UpdateQuest"] = true
+        APR.BookingList["PrintQStep"] = true
     elseif (input == "discord") then
         _G.StaticPopup_Show("Discord_Link")
     elseif (input == "github") then
@@ -44,6 +48,4 @@ function APR.command:SlashCmd(input)
     else
         _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
     end
-    APR.BookingList["UpdateQuest"] = 1
-    APR.BookingList["PrintQStep"] = 1
 end

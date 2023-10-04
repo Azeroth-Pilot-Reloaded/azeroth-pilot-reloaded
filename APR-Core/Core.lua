@@ -196,7 +196,7 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
     end
     APR.RoutePlanCheckPos()
     APR.CheckPosMove()
-    APR.BookingList["UpdateMapId"] = 1
+    APR.BookingList["UpdateMapId"] = true
 end
 
 --Loads RoutePlan and option frame. RoutePlan is gui that pops when you hit "Custom Path" and a gui comes up allowing you to order them
@@ -2612,7 +2612,7 @@ function APR.RoutePlanCheckPos()
             APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] = APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:GetText()
         end
     end
-    APR.BookingList["UpdateMapId"] = 1
+    APR.BookingList["UpdateMapId"] = true
 end
 
 function APR.NumbRoutePlan(Continz)
@@ -2769,10 +2769,9 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                     APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"] = {}
                 end
 
-                APR.BookingList["UpdateMapId"] = 1
-                APR.BookingList["UpdateQuest"] = 1
-                APR.BookingList["PrintQStep"] = 1
-                APR.BookingList["Heirloomscheck"] = 1
+                APR.BookingList["UpdateMapId"] = true
+                APR.BookingList["UpdateQuest"] = true
+                APR.BookingList["PrintQStep"] = true
                 APR.RoutePlanLoadIn()
                 if (APRData[APR.Realm][APR.Name].FirstLoad) then
                     APR.LoadInOptionFrame:Show()
@@ -2799,7 +2798,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR_QidsTimer:SetLooping("REPEAT")
         APR_QidsTimer:SetScript("OnLoop", function(self, event, ...)
             if (APRData[APR.Realm][APR.Name]["QuestCounter2"] ~= APRData[APR.Realm][APR.Name]["QuestCounter"]) then
-                APR.BookingList["PrintQStep"] = 1
+                APR.BookingList["PrintQStep"] = true
                 APRData[APR.Realm][APR.Name]["QuestCounter"] = APRData[APR.Realm][APR.Name]["QuestCounter2"]
             end
         end)
@@ -2832,7 +2831,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.LoadInTimer.anim:SetDuration(10)
         APR.LoadInTimer:SetLooping("REPEAT")
         APR.LoadInTimer:SetScript("OnLoop", function(self, event, ...)
-            APR.BookingList["PrintQStep"] = 1
+            APR.BookingList["PrintQStep"] = true
             APR.LoadInTimer:Stop()
         end)
         APR.LoadInTimer:Play()
