@@ -617,17 +617,17 @@ function APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
     elseif (APR.ActiveMap == "H23-ScarletEnclave" and (APRt_Zone == 1 or APRt_Zone == 85 or APRt_Zone == 124)) then
         APRt_Zone = 23
     end
-        -- Battle for Azeroth
-	if (APR.ActiveMap == "A895-Tiragarde Sound" and APRt_Zone == 1169) then
-	    APRt_Zone = 895
+    -- Battle for Azeroth
+    if (APR.ActiveMap == "A895-Tiragarde Sound" and APRt_Zone == 1169) then
+        APRt_Zone = 895
     elseif (APR.ActiveMap == "862-Zuldazar" and APRt_Zone == 1012) then
-		APRt_Zone = 862
-	elseif (APR.ActiveMap == "862-Zuldazar-1" and APRt_Zone == 875) then
-		APRt_Zone = 862
-	elseif (APR.ActiveMap == "862-Zuldazar-1" and APRt_Zone == 863) then
-		APRt_Zone = 862
-	end
--- Dragonflight
+        APRt_Zone = 862
+    elseif (APR.ActiveMap == "862-Zuldazar-1" and APRt_Zone == 875) then
+        APRt_Zone = 862
+    elseif (APR.ActiveMap == "862-Zuldazar-1" and APRt_Zone == 863) then
+        APRt_Zone = 862
+    end
+    -- Dragonflight
     if (APR.ActiveMap == "DF01H-85-Orgrimmar" and APRt_Zone == 1) then
         APRt_Zone = 85
     elseif (APR.ActiveMap == "DF01A-84-Stormwind" and (APRt_Zone == 1978 or APRt_Zone == 2022)) then
@@ -1798,8 +1798,8 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 if (TaxiNodeName(CLi) == APR.FP.QuedFP) then
                     if (steps and steps["UseFlightPath"] and TaxiNodeGetType(CLi) == "CURRENT") then
                         APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                        APR.BookingList["UpdateQuest"] = 1
-                        APR.BookingList["PrintQStep"] = 1
+                        APR.BookingList["UpdateQuest"] = true
+                        APR.BookingList["PrintQStep"] = true
                     else
                         Nodetotake = CLi
                     end
@@ -1809,7 +1809,7 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
             if (Nodetotake) then
                 TakeTaxiNode(Nodetotake)
                 APR.TimeFPs(APR.TaxiTimerCur, APR.FP.QuedFP)
-                APR.BookingList["TestTaxiFunc"] = 1
+                APR.BookingList["TestTaxiFunc"] = true
                 APR.FP.QuedFP = nil
                 if (steps and steps["ETA"]) then
                     APR.AFK:SetAfkTimer(steps["ETA"])

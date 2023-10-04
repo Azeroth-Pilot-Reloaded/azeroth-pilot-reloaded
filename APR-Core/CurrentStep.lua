@@ -251,6 +251,9 @@ end
 
 -- Add a progress bar
 function APR.currentStep:ProgressBar(key, total, current)
+    if not APR.settings.profile.currentStepShow then
+        return
+    end
     if (self.progressBar and self.progressBar.key ~= key) then
         self.progressBar:Hide()
         self.progressBar:ClearAllPoints()
@@ -327,7 +330,7 @@ end
 
 -- Add/Update quest steps
 function APR.currentStep:UpdateQuestSteps(questID, textObjective, objectiveIndex)
-    if InCombatLockdown() then
+    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
         return
     end
     -- Check if questsExtraTextList or questsList are empty to reset to the default height
@@ -368,7 +371,7 @@ end
 ---@param key string Locale table key
 ---@param text string L[key]
 function APR.currentStep:AddExtraLineText(key, text)
-    if InCombatLockdown() then
+    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
         return
     end
 
@@ -392,7 +395,7 @@ function APR.currentStep:AddExtraLineText(key, text)
 end
 
 function APR.currentStep:ReOrderExtraLineText()
-    if InCombatLockdown() then
+    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
         return
     end
     FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
@@ -409,7 +412,7 @@ end
 --- Re order all the quest Step
 --- @param hasExtraLineHeight boolean to get the extra line height
 function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
-    if InCombatLockdown() then
+    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
         return
     end
     hasExtraLineHeight = hasExtraLineHeight or true
@@ -425,32 +428,23 @@ function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
     end
 end
 
--- Remove all quest steps
-function APR.currentStep:RemoveQuestSteps()
-    for id, questContainer in pairs(self.questsList) do
-        questContainer:Hide()
-        questContainer:ClearAllPoints()
-        questContainer = nil
-    end
-    self.questsList = {}
-    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
-end
-
--- Remove all extra line texts
-function APR.currentStep:RemoveExtraLineTexts()
-    for id, questContainer in pairs(self.questsExtraTextList) do
-        questContainer:Hide()
-        questContainer:ClearAllPoints()
-        questContainer = nil
-    end
-    self.questsExtraTextList = {}
-    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
-end
-
 -- Remove all  quest steps and extra line texts
 function APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
-    self:RemoveQuestSteps()
-    self:RemoveExtraLineTexts()
+    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
+        return
+    end
+    local ResetList = function(list)
+        for id, questContainer in pairs(list) do
+            questContainer:Hide()
+            questContainer:ClearAllPoints()
+            questContainer = nil
+        end
+    end
+    ResetList(self.questsList)
+    self.questsList = {}
+    ResetList(self.questsExtraTextList)
+    self.questsExtraTextList = {}
+    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
 end
 
 -- Button management
@@ -459,6 +453,9 @@ end
 --- @param itemID number Item ID
 --- @param attribute number Icon attribute spell/item
 function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
+    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
+        return
+    end
     attribute = attribute or "item"
     local container = self.questsList[questsListKey]
     if container == nil then
@@ -517,6 +514,9 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
 end
 
 function APR.currentStep:RemoveStepButtonByKey(questsListKey)
+    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
+        return
+    end
     local existingButton = self.questsList[questsListKey]
     if not existingButton then
         return

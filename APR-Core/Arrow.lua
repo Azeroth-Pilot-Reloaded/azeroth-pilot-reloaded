@@ -70,8 +70,8 @@ APR.ArrowFrame.Button:SetScript("OnMouseDown", function(self, button)
     APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
     APR.ArrowActive_X = 0
     APR.ArrowActive_Y = 0
-    APR.BookingList["UpdateQuest"] = 1
-    APR.BookingList["PrintQStep"] = 1
+    APR.BookingList["UpdateQuest"] = true
+    APR.BookingList["PrintQStep"] = true
 end)
 
 local t = APR.ArrowFrame.Button:CreateTexture(nil, "BACKGROUND")
@@ -94,4 +94,3 @@ APR.ArrowFrame.Fontstring:SetWordWrap(true)
 APR.ArrowFrame.Fontstring:SetFontObject("GameFontNormalSmall")
 APR.ArrowFrame.Fontstring:SetTextColor(1, 1, 0)
 APR.ArrowFrame.Button:Hide()
-
