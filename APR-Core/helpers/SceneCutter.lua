@@ -30,7 +30,7 @@ end
 -- APR.SceneCutterEventFrame:SetScript("OnEvent", function(self, event, ...)
 --     if not APR.settings.profile.enableAddon or not APR.settings.profile.autoSkipCutScene or IsModifierKeyDown() then return end
 --     if CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] then
---         local step = APR.QuestStepList[APR.ActiveMap][APRData[APR.Realm][APR.Name][APR.ActiveMap]]
+--         local step = APR.QuestStepList[APR.ActiveMap][APRData[APR.Realm][APR.Username][APR.ActiveMap]]
 --         if step and step["Dontskipvid"] then
 --             return
 --         end

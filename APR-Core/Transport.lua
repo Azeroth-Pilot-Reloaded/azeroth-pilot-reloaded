@@ -231,8 +231,8 @@ function APR.FP.GetCustomZone()
         playerMapID = C_Map.GetBestMapForUnit("player")
     end
     local zenr = 0
-    if (APR_Custom and APR_Custom[APR.Name .. "-" .. APR.Realm]) then
-        for APR_index2, APR_value2 in PairsByKeys(APR_Custom[APR.Name .. "-" .. APR.Realm]) do
+    if (APR_Custom and APR_Custom[APR.Username .. "-" .. APR.Realm]) then
+        for APR_index2, APR_value2 in PairsByKeys(APR_Custom[APR.Username .. "-" .. APR.Realm]) do
             zenr = zenr + 1
         end
     end
@@ -352,77 +352,80 @@ function APR.FP.GetCustomZone()
         print("Function: APR.FP.GetCustomZone()")
     end
     for CLi = 1, 19 do
-        if (APR_Custom[APR.Name .. "-" .. APR.Realm] and APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] and APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]]) then
+        if (APR_Custom[APR.Username .. "-" .. APR.Realm] and APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] and APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]]) then
             if (APR.QuestStepListListingStartAreas["EasternKingdom"]) then
                 for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListingStartAreas["EasternKingdom"]) do
-                    if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
+                    if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                         APR.ProgressShown = true
-                        return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
+                        return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]],
+                            APR_index2
                     end
                 end
             end
             if (APR.QuestStepListListingStartAreas["BrokenIsles"]) then
                 for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListingStartAreas["BrokenIsles"]) do
-                    if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
+                    if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                         APR.ProgressShown = true
-                        return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
+                        return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]],
+                            APR_index2
                     end
                 end
             end
             if (APR.QuestStepListListingStartAreas["Kalimdor"]) then
                 for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListingStartAreas["Kalimdor"]) do
-                    if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
+                    if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                         APR.ProgressShown = true
-                        return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
+                        return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]],
+                            APR_index2
                     end
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["EasternKingdom"]) do
-                if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Kalimdor"]) do
-                if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["SpeedRun"]) do
-                if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Shadowlands"]) do
-                if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Extra"]) do
-                if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["MISC 1"]) do
-                if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["MISC 2"]) do
-                if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Dragonflight"]) do
-                if (APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
         end
@@ -667,7 +670,7 @@ function APR.FP.GetMeToNextZone()
     for routeCategory, _ in pairs(APR.QuestStepListListing) do
         if (APR.ActiveMap and APR.QuestStepListListing[routeCategory][APR.ActiveMap]) then
             local zoneID = APR.QuestStepListListing[routeCategory][APR.ActiveMap]
-            local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+            local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
             local step = APR.QuestStepList[APR.ActiveMap][CurStep]
             if (APR.QuestStepListListingZone[zoneID] and playerMapID and APR.QuestStepListListingZone[zoneID] == playerMapID) or (step and step.Zone == playerMapID) then
                 APR.FP.GoToZone = nil
@@ -829,11 +832,11 @@ function APR.FP.GetMeToNextZone()
             end
             if (togozo ~= nil) then
                 local ZeContz
-                if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]) then
-                    APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm] = {}
+                if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]) then
+                    APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm] = {}
                 end
-                if (APR_Transport["FPs"][APR.Faction][APR:GetContinent()] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"][APR:GetContinent()]) then
-                    ZeContz = APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]
+                if (APR_Transport["FPs"][APR.Faction][APR:GetContinent()] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"][APR:GetContinent()]) then
+                    ZeContz = APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]
                         ["Conts"]
                         [APR:GetContinent()]
                 else
@@ -849,7 +852,7 @@ function APR.FP.GetMeToNextZone()
                         APR.ArrowActive_Y = ZeY
                     end
                 else
-                    local zeFP = APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]
+                    local zeFP = APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]
                         [ZefpID]
                     if (zeFP and zeFP == 1) then
                         APR.currentStep:AddExtraLineText("FLY_TO_" .. togozo, L["FLY_TO"] .. " " .. togozo)
@@ -1723,17 +1726,17 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()]) then
             APR_Transport["FPs"][APR.Faction][APR:GetContinent()] = {}
         end
-        if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]) then
-            APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm] = {}
+        if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]) then
+            APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm] = {}
         end
         local CLi
-        if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"]) then
-            APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"] = {}
+        if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"]) then
+            APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"] = {}
         end
         if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"]) then
             APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"] = {}
         end
-        APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"][APR:GetContinent()] = 1
+        APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"][APR:GetContinent()] = 1
         local APRt_Zone = C_Map.GetBestMapForUnit("player")
         local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
         if (not currentMapId) then
@@ -1756,12 +1759,12 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR.TaxiTimerCur = ZName
             end
             if (ZState == 2) then
-                --APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name.."-"..APR.Realm][NodeIDZ] = 0
+                --APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username.."-"..APR.Realm][NodeIDZ] = 0
             else
-                APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm][NodeIDZ] = 1
+                APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm][NodeIDZ] = 1
             end
         end
-        local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+        local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
         local steps
         if (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
             steps = APR.QuestStepList[APR.ActiveMap][CurStep]
@@ -1797,9 +1800,7 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
             for CLi = 1, NumTaxiNodes() do
                 if (TaxiNodeName(CLi) == APR.FP.QuedFP) then
                     if (steps and steps["UseFlightPath"] and TaxiNodeGetType(CLi) == "CURRENT") then
-                        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                        APR.BookingList["UpdateQuest"] = true
-                        APR.BookingList["PrintQStep"] = true
+                        NextQuestStep()
                     else
                         Nodetotake = CLi
                     end

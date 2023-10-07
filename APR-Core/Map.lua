@@ -86,7 +86,7 @@ function APR.map:MoveMinimapLine()
         return
     end
 
-    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
     local ix, iy
 
     if CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] then
@@ -286,7 +286,7 @@ function APR.map:MoveMapLine()
         return
     end
 
-    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
 
     if not (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
         return
@@ -517,7 +517,7 @@ end
 function APR.map:AddMapPins()
     self:RemoveMapIcons()
 
-    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
     local mapID = WorldMapFrame:GetMapID() or C_Map.GetBestMapForUnit("player")
 
     if APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and CurStep then

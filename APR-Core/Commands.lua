@@ -10,23 +10,19 @@ function APR.command:SlashCmd(input)
     if (input == "reset" or input == "r") then
         --Command for making the quest rescan on completion and reset, including previously skipped steps
         print("APR: " .. L["RESET_ZONE"])
-        APRData[APR.Realm][APR.Name][APR.ActiveMap] = 1
+        APRData[APR.Realm][APR.Username][APR.ActiveMap] = 1
     elseif (input == "forcereset" or input == "fr") then
         APRData = {};
-        APR_ZoneComplete[APR.Name .. "-" .. APR.Realm] = nil;
+        APR_ZoneComplete[APR.Username .. "-" .. APR.Realm] = nil;
         C_UI.Reload()
     elseif (input == "skip" or input == "s" or input == "skippiedoodaa") then
         -- Command for skipping the current quest step
         print("APR: " .. L["SKIP"])
-        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-        APR.BookingList["UpdateQuest"] = true
-        APR.BookingList["PrintQStep"] = true
+        NextQuestStep()
     elseif (input == "rollback" or input == "rb") then
         -- Command for rollback the current quest step
         print("APR: " .. L["ROLLBACK"])
-        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] - 1
-        APR.BookingList["UpdateQuest"] = true
-        APR.BookingList["PrintQStep"] = true
+        PreviousQuestStep()
     elseif (input == "discord") then
         _G.StaticPopup_Show("Discord_Link")
     elseif (input == "github") then

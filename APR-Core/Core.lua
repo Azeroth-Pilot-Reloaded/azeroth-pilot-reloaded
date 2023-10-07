@@ -7,7 +7,7 @@ APR = _G.LibStub("AceAddon-3.0"):NewAddon(APR, "APR", "AceEvent-3.0")
 local CoreLoadin = false
 
 -- Character
-APR.Name = UnitName("player")
+APR.Username = UnitName("player")
 APR.Realm = string.gsub(GetRealmName(), " ", "")
 APR.Faction = UnitFactionGroup("player") -- "Alliance", "Horde", "Neutral" or nil
 APR.Level = UnitLevel("player")
@@ -40,12 +40,6 @@ function APR:OnInitialize()
     APR.InCombat = false
     APR.BookUpdAfterCombat = false
 
-    -- Group
-    APR.LastSent = 0
-    APR.GroupListSteps = {}
-    APR.GroupListStepsNr = 1
-
-
     -- Buff
     APR.SweatBuff = {}
     APR.SweatBuff[1] = false -- TODO REWORK SweatOfOurBrowBuffFrame
@@ -58,9 +52,9 @@ function APR:OnInitialize()
     -- APR Saved Data
     APRData = APRData or {}
     APRData[APR.Realm] = APRData[APR.Realm] or {}
-    APRData[APR.Realm][APR.Name] = APRData[APR.Realm][APR.Name] or {}
-    APRData[APR.Realm][APR.Name].FirstLoad = APRData[APR.Realm][APR.Name].FirstLoad == nil and true or
-        APRData[APR.Realm][APR.Name].FirstLoad
+    APRData[APR.Realm][APR.Username] = APRData[APR.Realm][APR.Username] or {}
+    APRData[APR.Realm][APR.Username].FirstLoad = APRData[APR.Realm][APR.Username].FirstLoad == nil and true or
+        APRData[APR.Realm][APR.Username].FirstLoad
 
     -- Init current step frame
     APR.currentStep:CurrentStepFrameOnInit()
@@ -89,7 +83,7 @@ function APR:OnInitialize()
 end
 
 function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First character button
-    APRData[APR.Realm][APR.Name]["routeChoiceIndex"] = routeChoice
+    APRData[APR.Realm][APR.Username]["routeChoiceIndex"] = routeChoice
     local ZeMap = C_Map.GetBestMapForUnit("player")
     local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
     if (Enum and Enum.UIMapType and Enum.UIMapType.Continent and currentMapId) then
@@ -100,93 +94,93 @@ function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First characte
     else
         ZeMap = C_Map.GetBestMapForUnit("player")
     end
-    APR_Custom[APR.Name .. "-" .. APR.Realm] = nil
-    APR_Custom[APR.Name .. "-" .. APR.Realm] = {}
+    APR_Custom[APR.Username .. "-" .. APR.Realm] = nil
+    APR_Custom[APR.Username .. "-" .. APR.Realm] = {}
     for CLi = 1, 19 do
         APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetText("")
         APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:Hide()
     end
     if (APR.Level < 10 and (ZeMap == 1409 or ZeMap == 1726 or ZeMap == 1727)) then
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "01-10 Exile's Reach")
+        tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "01-10 Exile's Reach")
     end
     if (APR.Level < 30) then
         if (APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23) then -- Allied DK
-            tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "Allied Death Knight Start")
+            tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "Allied Death Knight Start")
         elseif (APR.ClassId == APR.Classes["Death Knight"]) then                  -- DK
-            tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "08-30 Death Knight Start")
+            tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "08-30 Death Knight Start")
         elseif (APR.ClassId == APR.Classes["Demon Hunter"]) then
-            tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "01-30 Demon Hunter Start")
+            tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "01-30 Demon Hunter Start")
         end
     end
     if (routeChoice == 2) then
         if (APR.Level < 50) then
             if APR.Level >= 50 then
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DEV - StoryMode Only (Not Enough XP)")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "DEV - StoryMode Only (Not Enough XP)")
             elseif (APR.Faction == "Alliance") then
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 10-10 Intro")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 10-50 Tiragarde Sound")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 20-50 Dustvar")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 30-50 Stormsong Valley")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "BFA - 10-10 Intro")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "BFA - 10-50 Tiragarde Sound")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "BFA - 20-50 Dustvar")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "BFA - 30-50 Stormsong Valley")
             elseif (APR.Faction == "Horde") then
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 10-10 Intro")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 10-10 Intro 2")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 10-50 Zuldazar")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 20-50 Nazmir")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 30-30 Naz-end Vol-begin")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "BFA - 30-50 Vol'dun")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "BFA - 10-10 Intro")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "BFA - 10-10 Intro 2")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "BFA - 10-50 Zuldazar")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "BFA - 20-50 Nazmir")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "BFA - 30-30 Naz-end Vol-begin")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "BFA - 30-50 Vol'dun")
             end
         end
     elseif (routeChoice == 1) then
         if (APR.Level < 60) then
             if (APR.Level >= 58 and APR.ClassId == APR.Classes["Dracthyr"]) then
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "58-60 Dracthyr Start")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "58-60 Dracthyr Start")
             elseif APR.Level >= 50 then
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DEV - StoryMode Only (Not Enough XP)")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "DEV - StoryMode Only (Not Enough XP)")
             elseif (APR.Faction == "Alliance") then
                 -- WOD
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(1/8) 10-50 Stormwind")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(2/8) 10-50 Tanaan Jungle")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(3/8) 10-50 Shadowmoon")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(4/8) 10-50 Gorgrond")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(5/8) 10-50 Talador")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(6/8) 10-50 Shadowmoon")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(7/8) 10-50 Talador")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(8/8) 10-50 Spires of Arak")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(1/8) 10-50 Stormwind")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(2/8) 10-50 Tanaan Jungle")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(3/8) 10-50 Shadowmoon")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(4/8) 10-50 Gorgrond")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(5/8) 10-50 Talador")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(6/8) 10-50 Shadowmoon")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(7/8) 10-50 Talador")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(8/8) 10-50 Spires of Arak")
             elseif (APR.Faction == "Horde") then
                 -- WOD
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(1/7) 10-50 Orgrimmar")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(2/7) 10-50 Tanaan Jungle")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(3/7) 10-50 Frostfire Ridge")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(4/7) 10-50 Gorgrond")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(5/7) 10-50 Talador")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(6/7) 10-50 Spires of Arak")
-                tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "(7/7) 10-50 Nagrand")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(1/7) 10-50 Orgrimmar")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(2/7) 10-50 Tanaan Jungle")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(3/7) 10-50 Frostfire Ridge")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(4/7) 10-50 Gorgrond")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(5/7) 10-50 Talador")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(6/7) 10-50 Spires of Arak")
+                tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "(7/7) 10-50 Nagrand")
             end
         end
     end
     -- Dragonflight
     if (APR.Faction == "Alliance") then
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF01 - Dragonflight Stormwind")
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF02 - Waking Shores - Alliance")
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF03 - Waking Shores - Neutral")
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF04 - Ohn'Ahran Plains")
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF05 - Azure Span")
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF06 - Thaldraszus")
+        tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "DF01 - Dragonflight Stormwind")
+        tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "DF02 - Waking Shores - Alliance")
+        tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "DF03 - Waking Shores - Neutral")
+        tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "DF04 - Ohn'Ahran Plains")
+        tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "DF05 - Azure Span")
+        tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "DF06 - Thaldraszus")
     elseif (APR.Faction == "Horde") then
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF01/02 - Dragonflight Orgrimmar/Durotar")
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF03 - Waking Shores - Horde")
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF04 - Waking Shores - Neutral")
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF05 - Ohn'Ahran Plains")
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF06 - Azure Span")
-        tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], "DF07 - Thaldraszus")
+        tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "DF01/02 - Dragonflight Orgrimmar/Durotar")
+        tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "DF03 - Waking Shores - Horde")
+        tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "DF04 - Waking Shores - Neutral")
+        tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "DF05 - Ohn'Ahran Plains")
+        tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "DF06 - Azure Span")
+        tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "DF07 - Thaldraszus")
     end
     for CLi = 1, 19 do
-        if (APR_Custom[APR.Name .. "-" .. APR.Realm] and APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]) then
-            if (APR_ZoneComplete[APR.Name .. "-" .. APR.Realm][APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]]) then
+        if (APR_Custom[APR.Username .. "-" .. APR.Realm] and APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]) then
+            if (APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]]) then
                 APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetText("")
                 APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:Hide()
             else
-                APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetText(APR_Custom[APR.Name .. "-" .. APR.Realm][CLi])
+                APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetText(APR_Custom[APR.Username .. "-" .. APR.Realm][CLi])
                 APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:Show()
             end
         else
@@ -1071,9 +1065,10 @@ function APR.RoutePlanLoadIn()
                 APR.RoutePlan.FG1["SPR3" .. CLi]:StartMoving();
                 APR.RoutePlan.FG1["SPR3" .. CLi].isMoving = true;
             elseif button == "RightButton" then
-                local zenew = getn(APR_Custom[APR.Name .. "-" .. APR.Realm]) + 1
+                local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], APR.RoutePlan.FG1["SPR3" .. CLi]["FS"]:GetText())
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm],
+                        APR.RoutePlan.FG1["SPR3" .. CLi]["FS"]:GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.FG1["SPR3" .. CLi]["FS"]
                         :GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]:Show()
@@ -1129,9 +1124,9 @@ function APR.RoutePlanLoadIn()
                 APR.RoutePlan.FG1["EK3" .. CLi]:StartMoving();
                 APR.RoutePlan.FG1["EK3" .. CLi].isMoving = true;
             elseif button == "RightButton" then
-                local zenew = getn(APR_Custom[APR.Name .. "-" .. APR.Realm]) + 1
+                local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], APR.RoutePlan.FG1["EK3" .. CLi]["FS"]:GetText())
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], APR.RoutePlan.FG1["EK3" .. CLi]["FS"]:GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.FG1["EK3" .. CLi]["FS"]:GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]:Show()
                 end
@@ -1186,9 +1181,10 @@ function APR.RoutePlanLoadIn()
                 APR.RoutePlan.FG1["KAL3" .. CLi]:StartMoving();
                 APR.RoutePlan.FG1["KAL3" .. CLi].isMoving = true;
             elseif button == "RightButton" then
-                local zenew = getn(APR_Custom[APR.Name .. "-" .. APR.Realm]) + 1
+                local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], APR.RoutePlan.FG1["KAL3" .. CLi]["FS"]:GetText())
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm],
+                        APR.RoutePlan.FG1["KAL3" .. CLi]["FS"]:GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.FG1["KAL3" .. CLi]["FS"]
                         :GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]:Show()
@@ -1244,9 +1240,9 @@ function APR.RoutePlanLoadIn()
                 APR.RoutePlan.FG1["SL3" .. CLi]:StartMoving();
                 APR.RoutePlan.FG1["SL3" .. CLi].isMoving = true;
             elseif button == "RightButton" then
-                local zenew = getn(APR_Custom[APR.Name .. "-" .. APR.Realm]) + 1
+                local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], APR.RoutePlan.FG1["SL3" .. CLi]["FS"]:GetText())
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], APR.RoutePlan.FG1["SL3" .. CLi]["FS"]:GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.FG1["SL3" .. CLi]["FS"]:GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]:Show()
                 end
@@ -1301,9 +1297,9 @@ function APR.RoutePlanLoadIn()
                 APR.RoutePlan.FG1["EX3" .. CLi]:StartMoving();
                 APR.RoutePlan.FG1["EX3" .. CLi].isMoving = true;
             elseif button == "RightButton" then
-                local zenew = getn(APR_Custom[APR.Name .. "-" .. APR.Realm]) + 1
+                local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], APR.RoutePlan.FG1["EX3" .. CLi]["FS"]:GetText())
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], APR.RoutePlan.FG1["EX3" .. CLi]["FS"]:GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.FG1["EX3" .. CLi]["FS"]:GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]:Show()
                 end
@@ -1359,9 +1355,10 @@ function APR.RoutePlanLoadIn()
                 APR.RoutePlan.FG1["MISC3" .. CLi]:StartMoving();
                 APR.RoutePlan.FG1["MISC3" .. CLi].isMoving = true;
             elseif button == "RightButton" then
-                local zenew = getn(APR_Custom[APR.Name .. "-" .. APR.Realm]) + 1
+                local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], APR.RoutePlan.FG1["MISC3" .. CLi]["FS"]:GetText())
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm],
+                        APR.RoutePlan.FG1["MISC3" .. CLi]["FS"]:GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.FG1["MISC3" .. CLi]["FS"]
                         :GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]:Show()
@@ -1417,9 +1414,10 @@ function APR.RoutePlanLoadIn()
                 APR.RoutePlan.FG1["MISC23" .. CLi]:StartMoving();
                 APR.RoutePlan.FG1["MISC23" .. CLi].isMoving = true;
             elseif button == "RightButton" then
-                local zenew = getn(APR_Custom[APR.Name .. "-" .. APR.Realm]) + 1
+                local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], APR.RoutePlan.FG1["MISC23" .. CLi]["FS"]:GetText())
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm],
+                        APR.RoutePlan.FG1["MISC23" .. CLi]["FS"]:GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.FG1["MISC23" .. CLi]["FS"]
                         :GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]:Show()
@@ -1475,9 +1473,9 @@ function APR.RoutePlanLoadIn()
                 APR.RoutePlan.FG1["DF3" .. CLi]:StartMoving();
                 APR.RoutePlan.FG1["DF3" .. CLi].isMoving = true;
             elseif button == "RightButton" then
-                local zenew = getn(APR_Custom[APR.Name .. "-" .. APR.Realm]) + 1
+                local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Name .. "-" .. APR.Realm], APR.RoutePlan.FG1["DF3" .. CLi]["FS"]:GetText())
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], APR.RoutePlan.FG1["DF3" .. CLi]["FS"]:GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.FG1["DF3" .. CLi]["FS"]:GetText())
                     APR.RoutePlan.FG1["Fxz2Custom" .. zenew]:Show()
                 end
@@ -1605,13 +1603,13 @@ function APR.RoutePlanLoadIn()
         APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetHeight(20)
         APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetJustifyH("LEFT")
         APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetFontObject("GameFontNormal")
-        if (APR_Custom[APR.Name .. "-" .. APR.Realm] and APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]) then
-            if (APR_ZoneComplete[APR.Name .. "-" .. APR.Realm][APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]]) then
+        if (APR_Custom[APR.Username .. "-" .. APR.Realm] and APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]) then
+            if (APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]]) then
                 APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetText("")
                 APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:Hide()
             else
-                if (APR_Custom[APR.Name .. "-" .. APR.Realm] and APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]) then
-                    local zew = APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]]
+                if (APR_Custom[APR.Username .. "-" .. APR.Realm] and APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]) then
+                    local zew = APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]]
                     if (APR["EasternKingdomDB"] and APR["EasternKingdomDB"][zew] and IsAddOnLoaded("APR-EasternKingdoms") == false) then
                         local loaded, reason = LoadAddOn("APR-Vanilla")
                         if (not loaded) then
@@ -1653,7 +1651,7 @@ function APR.RoutePlanLoadIn()
                         end
                     end
                 end
-                APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetText(APR_Custom[APR.Name .. "-" .. APR.Realm][CLi])
+                APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetText(APR_Custom[APR.Username .. "-" .. APR.Realm][CLi])
                 APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:Show()
             end
         else
@@ -2214,7 +2212,7 @@ function APR.CheckPosMove(zeActivz)
             end
         end
         if (ZeMatch == 0) then
-            if (APR_ZoneComplete[APR.Name .. "-" .. APR.Realm][APR.RoutePlan.FG1["EK3" .. CLi]["FS"]:GetText()]) then
+            if (APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][APR.RoutePlan.FG1["EK3" .. CLi]["FS"]:GetText()]) then
                 APR.RoutePlan.FG1["EK3" .. CLi]:Hide()
                 APR.FP.GoToZone = nil
                 APR.ActiveMap = nil
@@ -2234,7 +2232,7 @@ function APR.CheckPosMove(zeActivz)
             end
         end
         if (ZeMatch == 0) then
-            if (APR_ZoneComplete[APR.Name .. "-" .. APR.Realm][APR.RoutePlan.FG1["KAL3" .. CLi]["FS"]:GetText()]) then
+            if (APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][APR.RoutePlan.FG1["KAL3" .. CLi]["FS"]:GetText()]) then
                 APR.RoutePlan.FG1["KAL3" .. CLi]:Hide()
                 APR.FP.GoToZone = nil
                 APR.ActiveMap = nil
@@ -2254,7 +2252,7 @@ function APR.CheckPosMove(zeActivz)
             end
         end
         if (ZeMatch == 0) then
-            if (APR_ZoneComplete[APR.Name .. "-" .. APR.Realm][APR.RoutePlan.FG1["SL3" .. CLi]["FS"]:GetText()]) then
+            if (APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][APR.RoutePlan.FG1["SL3" .. CLi]["FS"]:GetText()]) then
                 APR.RoutePlan.FG1["SL3" .. CLi]:Hide()
                 APR.FP.GoToZone = nil
                 APR.ActiveMap = nil
@@ -2262,8 +2260,8 @@ function APR.CheckPosMove(zeActivz)
                 APR.RoutePlan.FG1["SL3" .. CLi]:Show()
             end
         end
-        if (APR_Custom[APR.Name .. "-" .. APR.Realm] and APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]) then
-            local zew = APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]]
+        if (APR_Custom[APR.Username .. "-" .. APR.Realm] and APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]) then
+            local zew = APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]]
             if (APR["EasternKingdom"] and APR["EasternKingdom"][zew] and IsAddOnLoaded("APR-Vanilla") == false) then
                 local loaded, reason = LoadAddOn("APR-Vanilla")
                 if not loaded then
@@ -2317,7 +2315,7 @@ function APR.CheckPosMove(zeActivz)
             end
         end
         if (ZeMatch == 0) then
-            if (APR_ZoneComplete[APR.Name .. "-" .. APR.Realm][APR.RoutePlan.FG1["SPR3" .. CLi]["FS"]:GetText()]) then
+            if (APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][APR.RoutePlan.FG1["SPR3" .. CLi]["FS"]:GetText()]) then
                 APR.RoutePlan.FG1["SPR3" .. CLi]:Hide()
                 APR.FP.GoToZone = nil
                 APR.ActiveMap = nil
@@ -2325,8 +2323,8 @@ function APR.CheckPosMove(zeActivz)
                 APR.RoutePlan.FG1["SPR3" .. CLi]:Show()
             end
         end
-        if (APR_Custom[APR.Name .. "-" .. APR.Realm] and APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]) then
-            local zew = APR.QuestStepListListingZone[APR_Custom[APR.Name .. "-" .. APR.Realm][CLi]]
+        if (APR_Custom[APR.Username .. "-" .. APR.Realm] and APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]) then
+            local zew = APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]]
             if (APR["ShadowlandsDB"] and APR["ShadowlandsDB"][zew] and IsAddOnLoaded("APR-Shadowlands") == false) then
                 local loaded, reason = LoadAddOn("APR-Shadowlands")
                 if (not loaded) then
@@ -2348,7 +2346,7 @@ function APR.CheckPosMove(zeActivz)
             end
         end
         if (ZeMatch == 0) then
-            if (APR_ZoneComplete[APR.Name .. "-" .. APR.Realm][APR.RoutePlan.FG1["EX3" .. CLi]["FS"]:GetText()]) then
+            if (APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][APR.RoutePlan.FG1["EX3" .. CLi]["FS"]:GetText()]) then
                 APR.RoutePlan.FG1["EX3" .. CLi]:Hide()
                 APR.FP.GoToZone = nil
                 APR.ActiveMap = nil
@@ -2368,7 +2366,7 @@ function APR.CheckPosMove(zeActivz)
             end
         end
         if (ZeMatch == 0) then
-            if (APR_ZoneComplete[APR.Name .. "-" .. APR.Realm][APR.RoutePlan.FG1["DF3" .. CLi]["FS"]:GetText()]) then
+            if (APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][APR.RoutePlan.FG1["DF3" .. CLi]["FS"]:GetText()]) then
                 APR.RoutePlan.FG1["DF3" .. CLi]:Hide()
                 APR.FP.GoToZone = nil
                 APR.ActiveMap = nil
@@ -2388,7 +2386,7 @@ function APR.CheckPosMove(zeActivz)
             end
         end
         if (ZeMatch == 0) then
-            if (APR_ZoneComplete[APR.Name .. "-" .. APR.Realm][APR.RoutePlan.FG1["MISC3" .. CLi]["FS"]:GetText()]) then
+            if (APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][APR.RoutePlan.FG1["MISC3" .. CLi]["FS"]:GetText()]) then
                 APR.RoutePlan.FG1["MISC3" .. CLi]:Hide()
                 APR.FP.GoToZone = nil
                 APR.ActiveMap = nil
@@ -2408,7 +2406,7 @@ function APR.CheckPosMove(zeActivz)
             end
         end
         if (ZeMatch == 0) then
-            if (APR_ZoneComplete[APR.Name .. "-" .. APR.Realm][APR.RoutePlan.FG1["MISC23" .. CLi]["FS"]:GetText()]) then
+            if (APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][APR.RoutePlan.FG1["MISC23" .. CLi]["FS"]:GetText()]) then
                 APR.RoutePlan.FG1["MISC23" .. CLi]:Hide()
                 APR.FP.GoToZone = nil
                 APR.ActiveMap = nil
@@ -2592,8 +2590,8 @@ function APR.RoutePlanCheckPos()
             APR.RoutePlan.FG1["SPR3" .. CLi]:Hide()
         end
     end
-    APR_Custom[APR.Name .. "-" .. APR.Realm] = nil
-    APR_Custom[APR.Name .. "-" .. APR.Realm] = {}
+    APR_Custom[APR.Username .. "-" .. APR.Realm] = nil
+    APR_Custom[APR.Username .. "-" .. APR.Realm] = {}
     for CLi = 1, 19 do
         APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:ClearAllPoints()
         APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.CPT, "TOPRIGHT", -10,
@@ -2609,7 +2607,7 @@ function APR.RoutePlanCheckPos()
         APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:SetWidth(225)
         APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:SetHeight(20)
         if (APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:GetText() ~= "") then
-            APR_Custom[APR.Name .. "-" .. APR.Realm][CLi] = APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:GetText()
+            APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] = APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:GetText()
         end
     end
     APR.BookingList["UpdateMapId"] = true
@@ -2706,8 +2704,8 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
             return
         end
 
-        if (not APRData[APR.Realm][APR.Name]["BonusSkips"]) then
-            APRData[APR.Realm][APR.Name]["BonusSkips"] = {}
+        if (not APRData[APR.Realm][APR.Username]["BonusSkips"]) then
+            APRData[APR.Realm][APR.Username]["BonusSkips"] = {}
         end
 
         APR_TaxicTimer = APR.CoreEventFrame:CreateAnimationGroup()
@@ -2743,14 +2741,14 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 if (not APR_TaxiTimers) then
                     APR_TaxiTimers = {}
                 end
-                if (not APR_Custom[APR.Name .. "-" .. APR.Realm]) then
-                    APR_Custom[APR.Name .. "-" .. APR.Realm] = {}
+                if (not APR_Custom[APR.Username .. "-" .. APR.Realm]) then
+                    APR_Custom[APR.Username .. "-" .. APR.Realm] = {}
                 end
                 if (not APR_ZoneComplete) then
                     APR_ZoneComplete = {}
                 end
-                if (not APR_ZoneComplete[APR.Name .. "-" .. APR.Realm]) then
-                    APR_ZoneComplete[APR.Name .. "-" .. APR.Realm] = {}
+                if (not APR_ZoneComplete[APR.Username .. "-" .. APR.Realm]) then
+                    APR_ZoneComplete[APR.Username .. "-" .. APR.Realm] = {}
                 end
                 if (not APR_Transport["FPs"]) then
                     APR_Transport["FPs"] = {}
@@ -2761,32 +2759,32 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 if (APR:GetContinent() and not APR_Transport["FPs"][APR.Faction][APR:GetContinent()]) then
                     APR_Transport["FPs"][APR.Faction][APR:GetContinent()] = {}
                 end
-                if (APR:GetContinent() and not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]) then
-                    APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm] = {}
+                if (APR:GetContinent() and not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]) then
+                    APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm] = {}
                 end
                 local CLi
-                if (APR:GetContinent() and not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"]) then
-                    APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Name .. "-" .. APR.Realm]["Conts"] = {}
+                if (APR:GetContinent() and not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"]) then
+                    APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"] = {}
                 end
 
                 APR.BookingList["UpdateMapId"] = true
                 APR.BookingList["UpdateQuest"] = true
                 APR.BookingList["PrintQStep"] = true
                 APR.RoutePlanLoadIn()
-                if (APRData[APR.Realm][APR.Name].FirstLoad) then
+                if (APRData[APR.Realm][APR.Username].FirstLoad) then
                     APR.LoadInOptionFrame:Show()
-                    APRData[APR.Realm][APR.Name].FirstLoad = false
+                    APRData[APR.Realm][APR.Username].FirstLoad = false
                 else
                     APR.LoadInOptionFrame:Hide()
                 end
                 print("APR " .. L["LOADED"])
                 APR_LoadInTimer:Stop()
                 C_Timer.After(4, APR_BookingUpdateMapId)
-                C_Timer.After(5, APR_BookQStep)
+                C_Timer.After(5, UpdateQuestAndStep)
                 --APR.FP.ToyFPs()
                 local CQIDs = C_QuestLog.GetAllCompletedQuestIDs()
-                APRData[APR.Realm][APR.Name]["QuestCounter"] = getn(CQIDs)
-                APRData[APR.Realm][APR.Name]["QuestCounter2"] = APRData[APR.Realm][APR.Name]["QuestCounter"]
+                APRData[APR.Realm][APR.Username]["QuestCounter"] = getn(CQIDs)
+                APRData[APR.Realm][APR.Username]["QuestCounter2"] = APRData[APR.Realm][APR.Username]["QuestCounter"]
                 APR_QidsTimer:Play()
             end
         end)
@@ -2797,20 +2795,20 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR_QidsTimer.anim:SetDuration(1)
         APR_QidsTimer:SetLooping("REPEAT")
         APR_QidsTimer:SetScript("OnLoop", function(self, event, ...)
-            if (APRData[APR.Realm][APR.Name]["QuestCounter2"] ~= APRData[APR.Realm][APR.Name]["QuestCounter"]) then
-                APR.BookingList["PrintQStep"] = true
-                APRData[APR.Realm][APR.Name]["QuestCounter"] = APRData[APR.Realm][APR.Name]["QuestCounter2"]
+            if (APRData[APR.Realm][APR.Username]["QuestCounter2"] ~= APRData[APR.Realm][APR.Username]["QuestCounter"]) then
+                APR.BookingList["UpdateStep"] = true
+                APRData[APR.Realm][APR.Username]["QuestCounter"] = APRData[APR.Realm][APR.Username]["QuestCounter2"]
             end
         end)
 
-        if (not APRData[APR.Realm][APR.Name]["LoaPick"]) then
-            APRData[APR.Realm][APR.Name]["LoaPick"] = 0
+        if (not APRData[APR.Realm][APR.Username]["LoaPick"]) then
+            APRData[APR.Realm][APR.Username]["LoaPick"] = 0
         end
-        if (not APRData[APR.Realm][APR.Name]["routeChoiceIndex"]) then
-            APRData[APR.Realm][APR.Name]["routeChoiceIndex"] = 0
+        if (not APRData[APR.Realm][APR.Username]["routeChoiceIndex"]) then
+            APRData[APR.Realm][APR.Username]["routeChoiceIndex"] = 0
         end
-        if (not APRData[APR.Realm][APR.Name]["WantedQuestList"]) then
-            APRData[APR.Realm][APR.Name]["WantedQuestList"] = {}
+        if (not APRData[APR.Realm][APR.Username]["WantedQuestList"]) then
+            APRData[APR.Realm][APR.Username]["WantedQuestList"] = {}
         end
 
         -- TODO ARROW REWORK
@@ -2831,23 +2829,23 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.LoadInTimer.anim:SetDuration(10)
         APR.LoadInTimer:SetLooping("REPEAT")
         APR.LoadInTimer:SetScript("OnLoop", function(self, event, ...)
-            APR.BookingList["PrintQStep"] = true
+            APR.BookingList["UpdateStep"] = true
             APR.LoadInTimer:Stop()
         end)
         APR.LoadInTimer:Play()
         CoreLoadin = true
     end
     if (event == "PLAYER_LEVEL_UP") then
-        if not IsTableEmpty(APR_Custom[APR.Name .. "-" .. APR.Realm]) then
+        if not IsTableEmpty(APR_Custom[APR.Username .. "-" .. APR.Realm]) then
             if APR.Level == 50 then
                 APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_SL"], function()
-                    wipe(APR_Custom[APR.Name .. "-" .. APR.Realm])
-                    APR.AutoPathOnBeta(APRData[APR.Realm][APR.Name]["routeChoiceIndex"])
+                    wipe(APR_Custom[APR.Username .. "-" .. APR.Realm])
+                    APR.AutoPathOnBeta(APRData[APR.Realm][APR.Username]["routeChoiceIndex"])
                 end)
             elseif APR.Level == 60 then
                 APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_DF"], function()
-                    wipe(APR_Custom[APR.Name .. "-" .. APR.Realm])
-                    APR.AutoPathOnBeta(APRData[APR.Realm][APR.Name]["routeChoiceIndex"])
+                    wipe(APR_Custom[APR.Username .. "-" .. APR.Realm])
+                    APR.AutoPathOnBeta(APRData[APR.Realm][APR.Username]["routeChoiceIndex"])
                 end)
             end
         end

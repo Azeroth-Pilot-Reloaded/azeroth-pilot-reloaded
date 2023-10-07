@@ -67,11 +67,9 @@ APR.ArrowFrame.Button:SetPoint("BOTTOM", APR.ArrowFrame, "BOTTOM", 0, -40)
 APR.ArrowFrame.Button:SetScript("OnMouseDown", function(self, button)
     APR.ArrowFrame.Button:Hide()
     print("APR: " .. L["SKIP_WAYPOINT"])
-    APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
+    _G.NextQuestStep()
     APR.ArrowActive_X = 0
     APR.ArrowActive_Y = 0
-    APR.BookingList["UpdateQuest"] = true
-    APR.BookingList["PrintQStep"] = true
 end)
 
 local t = APR.ArrowFrame.Button:CreateTexture(nil, "BACKGROUND")

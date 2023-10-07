@@ -266,7 +266,7 @@ function APR.questOrderList:AddStepFromRoute()
     -- Clean list
     self:RemoveSteps()
 
-    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
     if not CurStep then
         return
     end
@@ -310,7 +310,7 @@ function APR.questOrderList:AddStepFromRoute()
                     local questObjectiveId = questID .. '-' .. objectiveIndex
                     local questFlagged = C_QuestLog.IsQuestFlaggedCompleted(questID) or
                         (isMaxLevel and APR_BonusObj and APR_BonusObj[questID]) or
-                        APRData[APR.Realm][APR.Name]["BonusSkips"][questID]
+                        APRData[APR.Realm][APR.Username]["BonusSkips"][questID]
                     if questFlagged or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
                         flagged = flagged + 1
                     elseif not APR.ActiveQuests[qid] or not APR.ActiveQuests[questID] then
