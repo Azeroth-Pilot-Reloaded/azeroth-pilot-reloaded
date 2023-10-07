@@ -30,34 +30,32 @@ function APR:GetStepString(step)
     return ''
 end
 
--- function APR:GetStepQuestID(step)
---     local stepTypes = {
---         "ExitTutorial",
---         "PickUp",
---         "DropQuest",
---         "Qpart",
---         "Treasure",
---         "QaskPopup",
---         "Done",
---         "CRange",
---         "SetHS",
---         "UseHS",
---         "UseDalaHS",
---         "UseGarrisonHS",
---         "GetFP",
---         "UseFlightPath",
---         "WarMode",
---         "ZoneDoneSave"
---     }
+function APR:HasAchievement(achievementID)
+    local id, name, _, completed = _G.GetAchievementInfo(achievementID)
+    return completed
+end
 
---     for _, stepType in ipairs(stepTypes) do
---         if step[stepType] then
---             if type(step[stepType]) == "table" then
---                 -- local _, questID = next(
---                 return step[stepType][1]
---             else
---                 return step[stepType]
---             end
---         end
---     end
--- end
+function UpdateQuestAndStep()
+    APR.BookingList["UpdateQuest"] = true
+    APR.BookingList["UpdateStep"] = true
+end
+
+function UpdateNextQuest()
+    APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] + 1
+    APR.BookingList["UpdateQuest"] = true
+end
+
+function UpdateNextStep()
+    APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] + 1
+    APR.BookingList["UpdateStep"] = true
+end
+
+function NextQuestStep()
+    APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] + 1
+    UpdateQuestAndStep()
+end
+
+function PreviousQuestStep()
+    APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] - 1
+    UpdateQuestAndStep()
+end

@@ -71,7 +71,7 @@ function GetSteps(CurStep)
 end
 
 function IsARouteQuest(questId)
-    local steps = GetSteps(APRData[APR.Realm][APR.Name][APR.ActiveMap])
+    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveMap])
     if (steps) then
         if Contains(steps["PickUp"], questId) or Contains(steps["PickUpDB"], questId) then
             return true
@@ -81,7 +81,7 @@ function IsARouteQuest(questId)
 end
 
 function IsPickupStep()
-    local steps = GetSteps(APRData[APR.Realm][APR.Name][APR.ActiveMap])
+    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveMap])
     if (steps) then
         if steps["PickUp"] or steps["PickUpDB"] then
             return true
@@ -128,4 +128,9 @@ end
 
 function APR_CloseQuest() -- TODO rework
     CloseQuest()
+end
+
+function TrimPlayerServer(CLPName)
+    local CL_First = string.match(CLPName, "^(.-)-")
+    return CL_First or CLPName
 end

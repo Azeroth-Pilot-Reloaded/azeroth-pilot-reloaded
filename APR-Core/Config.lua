@@ -675,7 +675,7 @@ function APR.settings:createBlizzOptions()
                         get = GetProfileOption,
                         set = function(info, value)
                             SetProfileOption(info, value)
-                            APR.BookingList.PrintQStep = 1
+                            APR.BookingList.UpdateStep = true
                         end,
                         disabled = true, --TODO Fix HEIRLOOM
                     },

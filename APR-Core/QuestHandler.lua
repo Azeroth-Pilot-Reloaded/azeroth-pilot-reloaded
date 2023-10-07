@@ -149,13 +149,6 @@ function APR.ChkBreadcrums(qids)
     end
 end
 
-local function APR_SendGroup()
-    if (IsInGroup(LE_PARTY_CATEGORY_HOME) and APRData[APR.Realm][APR.Name][APR.ActiveMap] and (APR.LastSent ~= APRData[APR.Realm][APR.Name][APR.ActiveMap]) and (IsInInstance() == false)) then
-        C_ChatInfo.SendAddonMessage("APRChat", APRData[APR.Realm][APR.Name][APR.ActiveMap], "PARTY");
-        APR.LastSent = APRData[APR.Realm][APR.Name][APR.ActiveMap]
-    end
-end
-
 local function APR_LeaveQuest(QuestIDs)
     C_QuestLog.SetSelectedQuest(QuestIDs)
     C_QuestLog.AbandonQuest()
@@ -166,7 +159,7 @@ local function APR_ExitVhicle()
 end
 
 local function APR_QAskPopWanted()
-    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
     local steps
     if CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] then
         steps = APR.QuestStepList[APR.ActiveMap][CurStep]
@@ -180,36 +173,33 @@ local function APR_QAskPopWanted()
         APR.questionDialog:CreateQuestionPopup(
             dialogText,
             function()
-                APRData[APR.Realm][APR.Name]["WantedQuestList"][Qid] = 1
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                APRData[APR.Realm][APR.Username]["WantedQuestList"][Qid] = 1
+                _G.UpdateNextStep()
             end,
             function()
-                APRData[APR.Realm][APR.Name]["WantedQuestList"][Qid] = 0
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                APRData[APR.Realm][APR.Username]["WantedQuestList"][Qid] = 0
+                _G.UpdateNextStep()
             end
         )
     else
-        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-        APR.BookingList["PrintQStep"] = true
+        _G.UpdateNextStep()
     end
 end
 
-local function APR_PrintQStep()
+local function APR_UpdateStep()
     if not APR.settings.profile.enableAddon then
         return
     end
     if (APR.settings.profile.debug) then
-        print("Function: APR_PrintQStep()")
+        print("Function: APR_UpdateStep()")
     end
     if (IsInGroup() and APR.settings.profile.showGroup) then
     elseif (APR.party:IsShowFrame() or IsInInstance()) then
         APR.party:RemoveTeam()
         APR.party:HideFrame()
     end
-    if (APR.ActiveMap and not APRData[APR.Realm][APR.Name][APR.ActiveMap]) then
-        APRData[APR.Realm][APR.Name][APR.ActiveMap] = 1
+    if (APR.ActiveMap and not APRData[APR.Realm][APR.Username][APR.ActiveMap]) then
+        APRData[APR.Realm][APR.Username][APR.ActiveMap] = 1
     end
     if not APR.ZoneTransfer then
         if (APR.InCombat) then
@@ -220,7 +210,7 @@ local function APR_PrintQStep()
         end
     end
 
-    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
     -- Extra liners here
     local MissingQs = {}
     if (APR.Level ~= UnitLevel("player")) then
@@ -228,9 +218,9 @@ local function APR_PrintQStep()
         APR.Level = UnitLevel("player")
     end
     if (APR.settings.profile.debug) then
-        print("APR_PrintQStep() Step:", CurStep)
+        print("APR_UpdateStep() Step:", CurStep)
     end
-    APR_SendGroup()
+    APR.party:SendGroupMessage()
     APR.FP.QuedFP = nil
 
     if (APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
@@ -286,12 +276,10 @@ local function APR_PrintQStep()
                             questInfo.description .. " (" .. itemCount .. "/" .. questInfo.count .. ")", questInfo
                             .itemID)
                     else
-                        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                        APR.BookingList["UpdateQuest"] = true
-                        APR.BookingList["PrintQStep"] = true
+                        _G.NextQuestStep()
                         return
                     end
-                    break -- Sortir de la boucle une fois que la quête correspondante a été trouvée
+                    break
                 end
             end
 
@@ -322,27 +310,22 @@ local function APR_PrintQStep()
                         satyrSaberItemID)
                 end
                 if melonFruitCount == requiredMelonFruitCount and satyrFleshCount == requiredSatyrFleshCount and satyrSaberCount == requiredSatyrSaberCount then
-                    APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                    APR.BookingList["UpdateQuest"] = true
-                    APR.BookingList["PrintQStep"] = true
+                    _G.NextQuestStep()
                     return
                 end
             end
         end
         if (steps and steps["LoaPick"] and steps["LoaPick"] == 123 and ((APR.ActiveQuests[47440] or C_QuestLog.IsQuestFlaggedCompleted(47440)) or (APR.ActiveQuests[47439] or C_QuestLog.IsQuestFlaggedCompleted(47439)))) then
-            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-            APR.BookingList["PrintQStep"] = true
+            _G.UpdateNextStep()
             return
         elseif (steps["PickedLoa"] and steps["PickedLoa"] == 2 and (APR.ActiveQuests[47440] or C_QuestLog.IsQuestFlaggedCompleted(47440))) then
-            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-            APR.BookingList["PrintQStep"] = true
+            _G.UpdateNextStep()
             if (APR.settings.profile.debug) then
                 print("PickedLoa Skip 2 step:" .. CurStep)
             end
             return
         elseif (steps["PickedLoa"] and steps["PickedLoa"] == 1 and (APR.ActiveQuests[47439] or C_QuestLog.IsQuestFlaggedCompleted(47439))) then
-            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-            APR.BookingList["PrintQStep"] = true
+            _G.UpdateNextStep()
             if (APR.settings.profile.debug) then
                 print("PickedLoa Skip 1 step:" .. CurStep)
             end
@@ -352,9 +335,9 @@ local function APR_PrintQStep()
             APR.ChkBreadcrums(steps["BreadCrum"])
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(47440) == true) then
-            APRData[APR.Realm][APR.Name]["LoaPick"] = 1
+            APRData[APR.Realm][APR.Username]["LoaPick"] = 1
         elseif (C_QuestLog.IsQuestFlaggedCompleted(47439) == true) then
-            APRData[APR.Realm][APR.Name]["LoaPick"] = 2
+            APRData[APR.Realm][APR.Username]["LoaPick"] = 2
         end
         if (steps["LeaveQuest"]) then
             APR_LeaveQuest(steps["LeaveQuest"])
@@ -386,11 +369,11 @@ local function APR_PrintQStep()
                 zeMApz = APR.QuestStepListListingStartAreas["EasternKingdom"][APR.ActiveMap]
             elseif (APR.QuestStepListListingStartAreas["Kalimdor"] and APR.QuestStepListListingStartAreas["Kalimdor"][APR.ActiveMap]) then
                 zeMApz = APR.QuestStepListListingStartAreas["Kalimdor"][APR.ActiveMap]
-            elseif (APR_Custom[APR.Name .. "-" .. APR.Realm] and APR_Custom[APR.Name .. "-" .. APR.Realm][APR.ActiveMap]) then
-                zeMApz = APR_Custom[APR.Name .. "-" .. APR.Realm][APR.ActiveMap]
+            elseif (APR_Custom[APR.Username .. "-" .. APR.Realm] and APR_Custom[APR.Username .. "-" .. APR.Realm][APR.ActiveMap]) then
+                zeMApz = APR_Custom[APR.Username .. "-" .. APR.Realm][APR.ActiveMap]
             end
             if (zeMApz) then
-                APR_ZoneComplete[APR.Name .. "-" .. APR.Realm][zeMApz] = 1
+                APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][zeMApz] = 1
                 for CLi = 1, 19 do
                     if (APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:GetText() == zeMApz) then
                         APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetText("")
@@ -412,13 +395,11 @@ local function APR_PrintQStep()
             VehicleExit()
         end
         if (steps["SpecialFlight"] and C_QuestLog.IsQuestFlaggedCompleted(steps["SpecialFlight"])) then
-            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-            APR.BookingList["PrintQStep"] = true
+            _G.UpdateNextStep()
             return
         end
-        if (steps["GroupTask"] and APRData[APR.Realm][APR.Name]["WantedQuestList"][steps["GroupTask"]] and APRData[APR.Realm][APR.Name]["WantedQuestList"][steps["GroupTask"]] == 0) then
-            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-            APR.BookingList["PrintQStep"] = true
+        if (steps["GroupTask"] and APRData[APR.Realm][APR.Username]["WantedQuestList"][steps["GroupTask"]] and APRData[APR.Realm][APR.Username]["WantedQuestList"][steps["GroupTask"]] == 0) then
+            _G.UpdateNextStep()
             return
         end
         if (steps["ETA"] and not steps["UseFlightPath"] and not steps["SpecialETAHide"]) then
@@ -463,9 +444,7 @@ local function APR_PrintQStep()
         end
         if (steps["DoIHaveFlight"]) then
             if (CheckRidingSkill(33391) or CheckRidingSkill(90265) or CheckRidingSkill(34090)) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["UpdateQuest"] = true
-                APR.BookingList["PrintQStep"] = true
+                _G.NextQuestStep()
                 return
             end
         end
@@ -496,7 +475,7 @@ local function APR_PrintQStep()
                 for APR_index2, APR_value2 in pairs(APR_value) do
                     Total = Total + 1
                     local qid = APR_index .. "-" .. APR_index2
-                    if (C_QuestLog.IsQuestFlaggedCompleted(APR_index) or ((UnitLevel("player") == APR.MaxLevel) and APR_BonusObj[APR_index]) or APRData[APR.Realm][APR.Name]["BonusSkips"][APR_index] or APR.BreadCrumSkips[APR_index]) then
+                    if (C_QuestLog.IsQuestFlaggedCompleted(APR_index) or ((UnitLevel("player") == APR.MaxLevel) and APR_BonusObj[APR_index]) or APRData[APR.Realm][APR.Username]["BonusSkips"][APR_index] or APR.BreadCrumSkips[APR_index]) then
                         Flagged = Flagged + 1
                     elseif (APR.ActiveQuests[qid] and APR.ActiveQuests[qid] == "C") then
                         Flagged = Flagged + 1
@@ -545,15 +524,12 @@ local function APR_PrintQStep()
                 end
             end
             if (Flagged == Total and Flagged > 0) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                _G.UpdateNextStep()
                 return
             end
         elseif (steps["ExitTutorial"]) then
             if C_QuestLog.IsOnQuest(steps["ExitTutorial"]) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["UpdateQuest"] = true
-                APR.BookingList["PrintQStep"] = true
+                _G.NextQuestStep()
                 return
             end
         elseif (steps["PickUp"]) then
@@ -568,9 +544,7 @@ local function APR_PrintQStep()
                     end
                 end
                 if flaggedQuest > 0 then
-                    APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                    APR.BookingList["UpdateQuest"] = true
-                    APR.BookingList["PrintQStep"] = true
+                    _G.NextQuestStep()
                     return
                 elseif not APR.ZoneTransfer then
                     APR.currentStep:UpdateQuestSteps(steps["PickUp"][1], L["PICK_UP_Q"] .. ": 1", "PickUp")
@@ -588,11 +562,9 @@ local function APR_PrintQStep()
                 end
                 if #IdList == Flagged then
                     if APR.settings.profile.debug then
-                        print("APR.PrintQStep:PickUp:Plus:" .. APRData[APR.Realm][APR.Name][APR.ActiveMap])
+                        print("APR.UpdateStep:PickUp:Plus:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
                     end
-                    APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                    APR.BookingList["UpdateQuest"] = true
-                    APR.BookingList["PrintQStep"] = true
+                    _G.NextQuestStep()
                     return
                 elseif not APR.ZoneTransfer then
                     APR.currentStep:UpdateQuestSteps(steps["PickUp"][1],
@@ -603,11 +575,9 @@ local function APR_PrintQStep()
             IdList = steps["CRange"]
             if (C_QuestLog.IsQuestFlaggedCompleted(IdList) or APR.BreadCrumSkips[IdList]) then
                 if (APR.settings.profile.debug) then
-                    print("APR.PrintQStep:CRange:Plus:" .. APRData[APR.Realm][APR.Name][APR.ActiveMap])
+                    print("APR.UpdateStep:CRange:Plus:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
                 end
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["UpdateQuest"] = true
-                APR.BookingList["PrintQStep"] = true
+                _G.NextQuestStep()
                 return
             elseif not APR.ZoneTransfer then
                 APR.currentStep:UpdateQuestSteps(IdList, APR.CheckCRangeText(), "CRange")
@@ -616,11 +586,9 @@ local function APR_PrintQStep()
             IdList = steps["Treasure"]
             if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
                 if (APR.settings.profile.debug) then
-                    print("APR.PrintQStep:Treasure:Plus:" .. APRData[APR.Realm][APR.Name][APR.ActiveMap])
+                    print("APR.UpdateStep:Treasure:Plus:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
                 end
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["UpdateQuest"] = true
-                APR.BookingList["PrintQStep"] = true
+                _G.NextQuestStep()
                 return
             elseif not APR.ZoneTransfer then
                 APR.currentStep:UpdateQuestSteps(IdList, L["GET_TREASURE"], "Treasure")
@@ -629,11 +597,9 @@ local function APR_PrintQStep()
             IdList = steps["DropQuest"]
             if (C_QuestLog.IsQuestFlaggedCompleted(IdList) or APR.ActiveQuests[IdList]) then
                 if (APR.settings.profile.debug) then
-                    print("APR.PrintQStep:DropQuest:Plus:" .. APRData[APR.Realm][APR.Name][APR.ActiveMap])
+                    print("APR.UpdateStep:DropQuest:Plus:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
                 end
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["UpdateQuest"] = true
-                APR.BookingList["PrintQStep"] = true
+                _G.NextQuestStep()
                 return
             end
         elseif (steps["Done"]) then
@@ -662,10 +628,9 @@ local function APR_PrintQStep()
 
             if #doneList == Flagged then
                 if APR.settings.profile.debug then
-                    print("APR.PrintQStep:Done:" .. APRData[APR.Realm][APR.Name][APR.ActiveMap])
+                    print("APR.UpdateStep:Done:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
                 end
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                _G.UpdateNextStep()
                 return
             elseif not APR.ZoneTransfer then
                 APR.currentStep:UpdateQuestSteps(doneList[1], L["TURN_IN_Q"] .. ": " .. questLeft .. "/" .. #doneList,
@@ -674,16 +639,15 @@ local function APR_PrintQStep()
         elseif (steps["WarMode"]) then
             if (C_QuestLog.IsQuestFlaggedCompleted(steps["WarMode"]) or C_PvP.IsWarModeDesired() == true) then
                 if APR.settings.profile.debug then
-                    print("APR.PrintQStep:WarMode:" .. APRData[APR.Realm][APR.Name][APR.ActiveMap])
+                    print("APR.UpdateStep:WarMode:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
                 end
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                _G.UpdateNextStep()
                 return
             elseif not APR.ZoneTransfer then
                 APR.currentStep:UpdateQuestSteps(steps["WarMode"], L["TURN_ON_WARMODE"], "WarMode")
                 if (C_PvP.IsWarModeDesired() == false and C_PvP.CanToggleWarModeInArea()) then
                     C_PvP.ToggleWarMode()
-                    APR.BookingList["PrintQStep"] = true
+                    APR.BookingList["UpdateStep"] = true
                 end
             end
         elseif steps["UseHS"] or steps["UseDalaHS"] or steps["UseGarrisonHS"] then
@@ -708,8 +672,7 @@ local function APR_PrintQStep()
             end
 
             if C_QuestLog.IsQuestFlaggedCompleted(questKey) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                _G.UpdateNextStep()
                 return
             end
         elseif (steps["SetHS"]) then
@@ -717,12 +680,10 @@ local function APR_PrintQStep()
                 APR.currentStep:UpdateQuestSteps(steps["SetHS"], L["SET_HEARTHSTONE"], "SetHS")
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(steps["SetHS"])) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                _G.UpdateNextStep()
                 return
-            elseif (steps["HSZone"] and APRData[APR.Realm][APR.Name]["HSLoc"] and APRData[APR.Realm][APR.Name]["HSLoc"] == steps["HSZone"]) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+            elseif (steps["HSZone"] and APRData[APR.Realm][APR.Username]["HSLoc"] and APRData[APR.Realm][APR.Username]["HSLoc"] == steps["HSZone"]) then
+                _G.UpdateNextStep()
                 return
             end
         elseif (steps["GetFP"]) then
@@ -730,8 +691,7 @@ local function APR_PrintQStep()
                 APR.currentStep:UpdateQuestSteps(steps["GetFP"], L["GET_FLIGHTPATH"], "GetFP")
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(steps["GetFP"])) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                _G.UpdateNextStep()
                 return
             end
         elseif (steps["UseFlightPath"]) then
@@ -751,20 +711,17 @@ local function APR_PrintQStep()
             end
 
             if steps["SkipIfOnTaxi"] and UnitOnTaxi("player") then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                _G.UpdateNextStep()
                 return
             end
 
             if C_QuestLog.IsQuestFlaggedCompleted(steps["UseFlightPath"]) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                _G.UpdateNextStep()
                 return
             end
         elseif (steps["QaskPopup"]) then
             if (C_QuestLog.IsQuestFlaggedCompleted(steps["QaskPopup"])) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                _G.UpdateNextStep()
                 return
             else
                 APR_QAskPopWanted()
@@ -806,8 +763,7 @@ local function APR_PrintQStep()
             end
 
             if Flagged == Total or HasTriggerTextValid then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                _G.UpdateNextStep()
                 return
             end
         end
@@ -837,7 +793,7 @@ local function APR_PrintQStep()
             for APR_index, APR_value in pairs(IdList) do
                 for APR_index2, APR_value2 in pairs(APR_value) do
                     local qid = APR_index .. "-" .. APR_index2
-                    if C_QuestLog.IsQuestFlaggedCompleted(APR_index) == false and not APRData[APR.Realm][APR.Name]["BonusSkips"][APR_index] then
+                    if C_QuestLog.IsQuestFlaggedCompleted(APR_index) == false and not APRData[APR.Realm][APR.Username]["BonusSkips"][APR_index] then
                         if APR.ActiveQuests[qid] and APR.ActiveQuests[qid] ~= "C" and not APR.ZoneTransfer then
                             local checkpbar = C_QuestLog.GetQuestObjectives(APR_index)
                             local questText = APR.ActiveQuests[qid]
@@ -854,7 +810,7 @@ local function APR_PrintQStep()
         -- Set Quest Item Button
         APR.SetButton()
 
-        if (steps["ZoneDone"] or (APR.ActiveMap == 862 and APRData[APR.Realm][APR.Name]["HordeD"] and APRData[APR.Realm][APR.Name]["HordeD"] == 1)) then
+        if (steps["ZoneDone"] or (APR.ActiveMap == 862 and APRData[APR.Realm][APR.Username]["HordeD"] and APRData[APR.Realm][APR.Username]["HordeD"] == 1)) then
             APR.currentStep:Disable()
             APR.ArrowActive = 0
         end
@@ -864,15 +820,10 @@ local function APR_PrintQStep()
         APR.currentStep:AddExtraLineText("GO_TO_" .. APRWhereToGo, L["GO_TO"] .. " " .. APRWhereToGo)
     else
         if (APR.settings.profile.debug) then
-            print("APR_PrintQStep() else Disabled")
+            print("APR_UpdateStep() else Disabled")
         end
         APR.currentStep:Disable()
     end
-end
-
-function APR.TrimPlayerServer(CLPName)
-    local CL_First = string.match(CLPName, "^(.-)-")
-    return CL_First or CLPName
 end
 
 function APR.SetButton()
@@ -882,7 +833,7 @@ function APR.SetButton()
     if (APR.settings.profile.debug) then
         print("Function: APR.SetButton()")
     end
-    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
     if not CurStep or not APR.ActiveMap or not APR.QuestStepList or not APR.QuestStepList[APR.ActiveMap] then
         return
     end
@@ -908,7 +859,7 @@ function APR.SetButton()
 end
 
 function APR.CheckCRangeText()
-    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
     local i = 1
     local waypoints = {
         ["FlightPath"] = L["GET_FLIGHTPATH"],
@@ -1014,7 +965,7 @@ local function APR_UpdateQuest()
     end
 
     if (Update == 1) then
-        APR.BookingList["PrintQStep"] = true
+        APR.BookingList["UpdateStep"] = true
     end
 end
 
@@ -1037,7 +988,7 @@ function APR.GliderFunc()
                 DerpGot = 1
                 local itemLink = C_Container.GetContainerItemLink(bag, slot)
                 itemName = GetItemInfo(itemLink)
-                break -- Sortir de la boucle intérieure une fois que l'objet est trouvé.
+                break
             end
         end
         if DerpGot == 1 then
@@ -1054,7 +1005,7 @@ local function APR_QuestStepIds()
         return
     end
 
-    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
     if not CurStep or not APR.QuestStepList[APR.ActiveMap][CurStep] then
         return
     end
@@ -1088,15 +1039,14 @@ local function APR_RemoveQuest(questID)
             end
         end
         if NrLeft == 0 then
-            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
+            _G.UpdateNextQuest()
             if APR.settings.profile.debug then
-                print("APR.RemoveQuest:Plus" .. APRData[APR.Realm][APR.Name][APR.ActiveMap])
+                print("APR.RemoveQuest:Plus" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
             end
-            APR.BookingList["UpdateQuest"] = true
         end
     end
 
-    APR.BookingList["PrintQStep"] = true
+    APR.BookingList["UpdateStep"] = true
 end
 
 local function APR_AddQuest(questID)
@@ -1110,14 +1060,13 @@ local function APR_AddQuest(questID)
             end
         end
         if (NrLeft == 0) then
-            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
+            _G.UpdateNextQuest()
             if (APR.settings.profile.debug) then
-                print("APR.AddQuest:Plus" .. APRData[APR.Realm][APR.Name][APR.ActiveMap])
+                print("APR.AddQuest:Plus" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
             end
-            APR.BookingList["UpdateQuest"] = true
         end
     end
-    APR.BookingList["PrintQStep"] = true
+    APR.BookingList["UpdateStep"] = true
 end
 
 local function APR_UpdateMapId()
@@ -1142,7 +1091,7 @@ local function APR_UpdateMapId()
         APR.ActiveMap = 1670
     end
     if OldMap and OldMap ~= APR.ActiveMap then
-        APR.BookingList["PrintQStep"] = true
+        APR.BookingList["UpdateStep"] = true
     end
     APR.ActiveMap = APR.ActiveMap or "NoZone"
     if APR.Faction == "Alliance" then
@@ -1157,16 +1106,15 @@ local function APR_UpdateMapId()
     if APR.ZoneTransfer then
         APR.BookingList["ZoneTransfer"] = true
     end
-    if not APRData[APR.Realm][APR.Name][APR.ActiveMap] then
-        APRData[APR.Realm][APR.Name][APR.ActiveMap] = 1
+    if not APRData[APR.Realm][APR.Username][APR.ActiveMap] then
+        APRData[APR.Realm][APR.Username][APR.ActiveMap] = 1
     end
     APR.questOrderList:AddStepFromRoute()
-    APR.BookingList["PrintQStep"] = true
-    C_Timer.After(0.2, APR_BookQStep)
+    _G.UpdateQuestAndStep()
 end
 
 local function APR_CheckDistance()
-    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
     if not CurStep or not APR.QuestStepList[APR.ActiveMap] or not APR.QuestStepList[APR.ActiveMap][CurStep] then
         return 0
     end
@@ -1203,12 +1151,11 @@ local function APR_CheckDistance()
     return floor(totalDistance + 0.5)
 end
 
-
 local function APR_SetQPTT()
     if (APR.settings.profile.debug) then
         print("Function: APR_SetQPTT()")
     end
-    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
     if (QNumberLocal ~= CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] and APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]) then
         APR.ArrowActive = 1
         APR.ArrowActive_X = APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["x"]
@@ -1230,17 +1177,15 @@ local function APR_PosTest()
 
         APR.map:RemoveMinimapLine()
     else
-        local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+        local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
         if (APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] and APR.QuestStepList[APR.ActiveMap][CurStep]["AreaTriggerZ"]) then
             x = APR.QuestStepList[APR.ActiveMap][CurStep]["AreaTriggerZ"]["x"]
             y = APR.QuestStepList[APR.ActiveMap][CurStep]["AreaTriggerZ"]["y"]
             local deltaX, deltaY = d_x - x, y - d_y
             local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
             if (APR.QuestStepList[APR.ActiveMap][CurStep]["AreaTriggerZ"]["R"] > distance) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
                 QNumberLocal = 0
-                APR.BookingList["UpdateQuest"] = true
-                APR.BookingList["PrintQStep"] = true
+                _G.NextQuestStep()
             end
         end
         if (((APR.ArrowActive == 0) or (APR.ArrowActive_X == 0) or (IsInInstance()) or not APR.QuestStepList) or (APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] and APR.QuestStepList[APR.ActiveMap][CurStep]["NoArrows"])) then
@@ -1299,10 +1244,8 @@ local function APR_PosTest()
                     APR.ArrowActive_X = 0
                     if (CurStep and APR.ActiveMap and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
                         if (APR.QuestStepList[APR.ActiveMap][CurStep]["CRange"]) then
-                            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
                             QNumberLocal = 0
-                            APR.BookingList["UpdateQuest"] = true
-                            APR.BookingList["PrintQStep"] = true
+                            _G.NextQuestStep()
                         end
                     end
                 end
@@ -1323,15 +1266,14 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
             APR.BookingList["ClosedSettings"] = false
             QNumberLocal = 0
             APR.ArrowActive = 0
-            APR.BookingList["UpdateQuest"] = true
-            APR.BookingList["PrintQStep"] = true
+            _G.UpdateQuestAndStep()
         end
         if (APR.settings.profile.debug) then
             print("LoopBookingFunc:ClosedSettings")
         end
     elseif (APR.BookingList["GetMeToNextZone"]) then
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:GetMeToNextZone:" .. APRData[APR.Realm][APR.Name][APR.ActiveMap])
+            print("LoopBookingFunc:GetMeToNextZone:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
         end
         APR.BookingList["GetMeToNextZone"] = false
         APR.FP.GetMeToNextZone()
@@ -1339,43 +1281,43 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
         APR.BookingList["UpdateMapId"] = false
         APR_UpdateMapId()
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:UpdateMapId:" .. APRData[APR.Realm][APR.Name][APR.ActiveMap])
+            print("LoopBookingFunc:UpdateMapId:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
         end
     elseif (APR.BookingList["AddQuest"]) then
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:AddQuest:" .. APRData[APR.Realm][APR.Name][APR.ActiveMap])
+            print("LoopBookingFunc:AddQuest:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
         end
         APR_AddQuest(APR.BookingList["AddQuest"])
         APR.BookingList["AddQuest"] = nil
     elseif (APR.BookingList["RemoveQuest"]) then
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:RemoveQuest:" .. APRData[APR.Realm][APR.Name][APR.ActiveMap])
+            print("LoopBookingFunc:RemoveQuest:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
         end
         APR_RemoveQuest(APR.BookingList["RemoveQuest"])
         APR.BookingList["RemoveQuest"] = nil
         APR.BookingList["UpdateMapId"] = true
-        APR.BookingList["PrintQStep"] = true
+        APR.BookingList["UpdateStep"] = true
     elseif (APR.BookingList["UpdateQuest"]) then
         if (APR.settings.profile.debug) then
             print("LoopBookingFunc:UpdateQuest:")
         end
         APR.BookingList["UpdateQuest"] = false
         APR_UpdateQuest()
-    elseif (APR.BookingList["PrintQStep"]) then
+    elseif (APR.BookingList["UpdateStep"]) then
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:PrintQStep:")
+            print("LoopBookingFunc:UpdateStep:")
         end
-        APR.BookingList["PrintQStep"] = false
-        APR_PrintQStep()
+        APR.BookingList["UpdateStep"] = false
+        APR_UpdateStep()
     elseif (APR.BookingList["ZoneTransfer"]) then
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:ZoneTransfer:" .. APRData[APR.Realm][APR.Name][APR.ActiveMap])
+            print("LoopBookingFunc:ZoneTransfer:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
         end
         APR.BookingList["ZoneTransfer"] = false
         APR.FP.GetMeToNextZone()
     elseif (APR.BookingList["SetQPTT"]) then
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:SetQPTT:" .. APRData[APR.Realm][APR.Name][APR.ActiveMap])
+            print("LoopBookingFunc:SetQPTT:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
         end
         APR.BookingList["SetQPTT"] = false
         APR_SetQPTT()
@@ -1386,15 +1328,15 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
         APR_AntiTaxiLoop = APR_AntiTaxiLoop + 1
         if (UnitOnTaxi("player")) then
             APR.BookingList["TestTaxiFunc"] = false
-            local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+            local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
             local steps
             if (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
                 steps = APR.QuestStepList[APR.ActiveMap][CurStep]
             end
             if (steps and steps["UseFlightPath"]) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
+                APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] + 1
             end
-            APR.BookingList["PrintQStep"] = true
+            APR.BookingList["UpdateStep"] = true
             APR_AntiTaxiLoop = 0
         elseif (APR_AntiTaxiLoop == 50 or APR_AntiTaxiLoop == 100 or APR_AntiTaxiLoop == 150) then
             APR.BookingList["TestTaxiFunc"] = false
@@ -1444,14 +1386,6 @@ local function APR_PopupFunc()
     end
 end
 
-function APR_BookQStep()
-    APR.BookingList["UpdateQuest"] = true
-    APR.BookingList["PrintQStep"] = true
-    if (APR.settings.profile.debug) then
-        print("Extra BookQStep")
-    end
-end
-
 function APR_UpdQuestThing()
     local npc_id, name = GetTargetID(), UnitName("target")
     if (npc_id and name) then
@@ -1463,8 +1397,7 @@ function APR_UpdQuestThing()
             DoEmote("WAVE")
         end
     end
-    APR.BookingList["UpdateQuest"] = true
-    APR.BookingList["PrintQStep"] = true
+    _G.UpdateQuestAndStep()
     Updateblock = 0
     if (APR.settings.profile.debug) then
         print("Extra UpdQuestThing")
@@ -1479,64 +1412,6 @@ local function APR_ZoneResetQnumb()
     QNumberLocal = 0
     APR_SetQPTT()
 end
-
-function APR.GroupListingFunc(APR_StepStuffs, APR_GListName)
-    if (not APR.GroupListSteps[1]) then
-        APR.GroupListSteps[1] = {}
-        APR.GroupListStepsNr = 1
-    end
-    APR.GroupListSteps[1]["Step"] = APR_StepStuffs
-    APR.GroupListSteps[1]["Name"] = APR.Name
-    if (APR_GListName ~= APR.Name) then
-        local APRNews = 0
-        for APR_index, APR_value in pairs(APR.GroupListSteps) do
-            if (APR.GroupListSteps[APR_index]["Name"] == APR_GListName) then
-                APR.GroupListSteps[APR_index]["Step"] = APR_StepStuffs
-                APRNews = 1
-            end
-        end
-        if (APRNews == 0) then
-            APR.GroupListStepsNr = APR.GroupListStepsNr + 1
-            APR.GroupListSteps[APR.GroupListStepsNr] = {}
-            APR.GroupListSteps[APR.GroupListStepsNr]["Name"] = APR_GListName
-            APR.GroupListSteps[APR.GroupListStepsNr]["Step"] = APR_StepStuffs
-        end
-    end
-    APR.RepaintGroups()
-end
-
-function APR.RepaintGroups()
-    if IsInInstance() then
-        APR.party:HideFrame()
-        return
-    end
-    APR.GroupListSteps[1] = APR.GroupListSteps[1] or {}
-    APR.GroupListSteps[1].Step = APRData[APR.Realm][APR.Name][APR.ActiveMap]
-    APR.GroupListSteps[1].Name = APR.Name
-
-    for CLi = 1, 5 do
-        local groupData = APR.GroupListSteps[CLi]
-        if groupData then
-            local highNr = false
-
-            for CLi2 = 1, 5 do
-                local otherGroupData = APR.GroupListSteps[CLi2]
-
-                if otherGroupData and groupData.Step and otherGroupData.Step and otherGroupData.Step > groupData.Step then
-                    highNr = true
-                    break
-                end
-            end
-
-            local color = highNr and 'red' or 'green'
-            APR.party:UpdateTeamMate(groupData.Name, groupData.Step, color)
-        else
-            APR.party:RemoveTeam()
-            APR.party:HideFrame()
-        end
-    end
-end
-
 function APR.CheckSweatBuffz()
     for i = 1, 20 do
         local name, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, nameplateShowPersonal, spellId =
@@ -1603,17 +1478,17 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     local autoAccept = APR.settings.profile.autoAccept
     local autoAcceptRoute = APR.settings.profile.autoAcceptQuestRoute
-    local CurStep = APRData[APR.Realm][APR.Name][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
     local steps = GetSteps(CurStep)
     if (event == "UPDATE_UI_WIDGET") then
         if (APR.ActiveQuests and APR.ActiveQuests["57713-4"]) then
-            APR.BookingList["PrintQStep"] = true
+            APR.BookingList["UpdateStep"] = true
         end
     end
     if (event == "REQUEST_CEMETERY_LIST_RESPONSE") then
         APR.BookingList["UpdateMapId"] = true
         C_Timer.After(1, APR_ZoneResetQnumb)
-        C_Timer.After(1, APR_BookQStep)
+        C_Timer.After(1, UpdateQuestAndStep)
     end
     if (event == "QUEST_LOG_UPDATE") then
         C_Timer.After(0.2, APR_UpdQuestThing)
@@ -1625,9 +1500,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 local _, _, count, _, _, _, _, _, _, spellId = UnitBuff("player", i)
                 if (spellId and count) then
                     if (spellId == 69704 and count == 5) then
-                        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                        APR.BookingList["UpdateQuest"] = true
-                        APR.BookingList["PrintQStep"] = true
+                        _G.NextQuestStep()
                     end
                 end
             end
@@ -1688,16 +1561,15 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     if (event == "CHAT_MSG_COMBAT_XP_GAIN") then
         if (steps and steps["Treasure"]) then
-            APR.BookingList["UpdateQuest"] = true
-            APR.BookingList["PrintQStep"] = true
-            C_Timer.After(2, APR_BookQStep)
-            C_Timer.After(4, APR_BookQStep)
+            _G.UpdateQuestAndStep()
+            C_Timer.After(2, UpdateQuestAndStep)
+            C_Timer.After(4, UpdateQuestAndStep)
         end
     end
     if (event == "PLAYER_REGEN_ENABLED") then
         APR.InCombat = false
         if (APR.BookUpdAfterCombat) then
-            APR.BookingList["PrintQStep"] = true
+            APR.BookingList["UpdateStep"] = true
         end
     end
     if (event == "PLAYER_REGEN_DISABLED") then
@@ -1706,7 +1578,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "CHAT_MSG_ADDON") then
         local arg1, arg2, arg3, arg4 = ...;
         if (arg1 == "APRChat" and arg3 == "PARTY") then
-            APR.GroupListingFunc(tonumber(arg2), APR.TrimPlayerServer(arg4))
+            APR.UpdateGroupListing(tonumber(arg2), TrimPlayerServer(arg4))
         end
     end
     if (event == "PLAYER_CHOICE_UPDATE") then
@@ -1716,9 +1588,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 for i, option in ipairs(choiceInfo.options) do
                     if (steps["Brewery"] == option.id or steps["SparringRing"] == option.id) then
                         C_PlayerChoice.SendPlayerChoiceResponse(option.buttons[1].id)
-                        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                        APR.BookingList["UpdateQuest"] = true
-                        APR.BookingList["PrintQStep"] = true
+                        _G.NextQuestStep()
                         break
                     end
                 end
@@ -1729,13 +1599,11 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         local arg1, arg2, arg3, arg4, arg5 = ...;
         if (arg1 == "player") then
             if (steps and steps["InVehicle"]) then
-                APR.BookingList["PrintQStep"] = true
+                APR.BookingList["UpdateStep"] = true
             end
         end
         if (steps and steps["MountVehicle"]) then
-            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-            APR.BookingList["UpdateQuest"] = true
-            APR.BookingList["PrintQStep"] = true
+            _G.NextQuestStep()
         end
     end
     if (event == "QUEST_AUTOCOMPLETE") then
@@ -1769,15 +1637,11 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             if (steps and steps["Gossip"]) then
                 if (steps["Gossip"] == 27373 or steps["Gossip"] == 34398) then
                     C_GossipInfo.SelectOptionByIndex(1)
-                    APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                    APR.BookingList["UpdateQuest"] = true
-                    APR.BookingList["PrintQStep"] = true
+                    _G.NextQuestStep()
                 end
                 if (steps["Gossip"] == 3433398) then
                     C_GossipInfo.SelectOptionByIndex(2)
-                    APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                    APR.BookingList["UpdateQuest"] = true
-                    APR.BookingList["PrintQStep"] = true
+                    _G.NextQuestStep()
                 end
                 if (steps["Gossip"] == 28202) then
                     APRGOSSIPCOUNT = APRGOSSIPCOUNT + 1
@@ -1814,8 +1678,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                             C_GossipInfo.SelectOptionByIndex(3)
                         end
                     elseif (APRGOSSIPCOUNT == 5) then
-                        APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                        APR.BookingList["PrintQStep"] = true
+                        _G.UpdateNextStep()
                     end
                 else
                     local info = C_GossipInfo.GetOptions()
@@ -1893,8 +1756,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
     end
     if (event == "ITEM_PUSH") then
-        APR.BookingList["PrintQStep"] = true
-        C_Timer.After(1, APR_BookQStep)
+        APR.BookingList["UpdateStep"] = true
+        C_Timer.After(1, UpdateQuestAndStep)
     end
     if (event == "MERCHANT_SHOW") then
         if IsModifierKeyDown() then return end
@@ -1947,34 +1810,29 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         local arg1, arg2, arg3, arg4, arg5 = ...;
         if (arg1 == 280) then
             if (steps and steps["GetFP"]) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                _G.UpdateNextStep()
             end
         end
         if (arg1 == 281) then
             if (steps and steps["GetFP"]) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                _G.UpdateNextStep()
             end
         end
         if (arg1 == 282) then
             if (steps and steps["GetFP"]) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                _G.UpdateNextStep()
             end
         end
         if (arg1 == 283) then
             if (steps and steps["GetFP"]) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList["PrintQStep"] = true
+                _G.UpdateNextStep()
             end
         end
     end
     if (event == "TAXIMAP_OPENED") then
         if IsModifierKeyDown() then return end
         if (steps and steps["GetFP"]) then
-            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-            APR.BookingList["PrintQStep"] = true
+            _G.UpdateNextStep()
         end
     end
     if event == "UNIT_SPELLCAST_SUCCEEDED" then
@@ -1982,8 +1840,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 
         if (arg1 == "player") and steps then
             if (APR_HSSpellIDs[arg3] and steps.UseHS) or (steps.SpellTrigger and arg3 == steps.SpellTrigger) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-                APR.BookingList.PrintQStep = 1
+                _G.UpdateNextStep()
             end
             if steps.Button then
                 APR.currentStep:UpdateStepButtonCooldowns()
@@ -1994,12 +1851,12 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         local arg1, arg2, arg3, arg4, arg5 = ...;
         if ((arg1 == "player") and (arg3 == 171253)) then
             if (steps and steps["UseGarrisonHS"]) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
+                APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] + 1
             end
         end
         if ((arg1 == "player") and (arg3 == 222695)) then
             if (steps and steps["UseDalaHS"]) then
-                APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
+                APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] + 1
             end
         end
     end
@@ -2014,10 +1871,9 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         else
             ZeMap = C_Map.GetBestMapForUnit("player")
         end
-        APRData[APR.Realm][APR.Name]["HSLoc"] = ZeMap
+        APRData[APR.Realm][APR.Username]["HSLoc"] = ZeMap
         if (steps and steps["SetHS"]) then
-            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-            APR.BookingList["PrintQStep"] = true
+            _G.UpdateNextStep()
         end
     end
     if (event == "QUEST_ACCEPTED") then
@@ -2031,11 +1887,10 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             APR.BookingList["AddQuest"] = arg2
         end
         if (steps and steps["LoaPick"] and steps["LoaPick"] == 123 and (APR.ActiveQuests[47440] or APR.ActiveQuests[47439])) then
-            APRData[APR.Realm][APR.Name][APR.ActiveMap] = APRData[APR.Realm][APR.Name][APR.ActiveMap] + 1
-            APR.BookingList["PrintQStep"] = true
+            _G.UpdateNextStep()
         end
-        C_Timer.After(0.2, APR_BookQStep)
-        C_Timer.After(3, APR_BookQStep)
+        C_Timer.After(0.2, UpdateQuestAndStep)
+        C_Timer.After(3, UpdateQuestAndStep)
     end
     if (event == "QUEST_REMOVED") then
         if (APR.settings.profile.debug) then
@@ -2045,10 +1900,10 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.BookingList["RemoveQuest"] = arg1
         if (APR.ActiveMap == arg1) then
             APR.BookingList["UpdateMapId"] = true
-            APRData[APR.Realm][APR.Name][arg1] = nil
+            APRData[APR.Realm][APR.Username][arg1] = nil
             APR.map:RemoveMapLine()
         end
-        APRData[APR.Realm][APR.Name]["QuestCounter2"] = APRData[APR.Realm][APR.Name]["QuestCounter2"] + 1
+        APRData[APR.Realm][APR.Username]["QuestCounter2"] = APRData[APR.Realm][APR.Username]["QuestCounter2"] + 1
     end
     if (event == "UNIT_QUEST_LOG_CHANGED") then
         local arg1, arg2, arg3, arg4, arg5 = ...;

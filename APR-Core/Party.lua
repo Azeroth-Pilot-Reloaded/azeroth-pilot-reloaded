@@ -13,6 +13,9 @@ local FRAME_MATE_HOLDER_HEIGHT = -18
 
 -- Init list
 APR.party.teamList = {}
+APR.party.GroupListSteps = {}
+APR.party.GroupListStepsCount = 1
+APR.party.LastSent = 0
 ---------------------------------------------------------------------------------------
 --------------------------------- Party Frames ----------------------------------------
 ---------------------------------------------------------------------------------------
@@ -208,4 +211,69 @@ end
 
 function APR.party:IsShowFrame()
     return PartyScreenPanel:IsShown()
+end
+
+function APR.party:SendGroupMessage()
+    if (IsInGroup(LE_PARTY_CATEGORY_HOME) and APRData[APR.Realm][APR.Username][APR.ActiveMap] and (APR.party.LastSent ~= APRData[APR.Realm][APR.Username][APR.ActiveMap]) and (IsInInstance() == false)) then
+        C_ChatInfo.SendAddonMessage("APRChat", APRData[APR.Realm][APR.Username][APR.ActiveMap], "PARTY");
+        APR.party.LastSent = APRData[APR.Realm][APR.Username][APR.ActiveMap]
+    end
+end
+
+local function UpdateGroupStep()
+    if IsInInstance() then
+        APR.party:HideFrame()
+        return
+    end
+    APR.party.GroupListSteps[1] = APR.party.GroupListSteps[1] or {}
+    APR.party.GroupListSteps[1].Step = APRData[APR.Realm][APR.Username][APR.ActiveMap]
+    APR.party.GroupListSteps[1].Name = APR.Username
+
+    for i = 1, 5 do
+        local groupData = APR.party.GroupListSteps[i]
+        if groupData then
+            local hasHigherStep = false
+
+            for y = 1, 5 do
+                local otherGroupData = APR.party.GroupListSteps[y]
+
+                if otherGroupData and groupData.Step and otherGroupData.Step and otherGroupData.Step > groupData.Step then
+                    hasHigherStep = true
+                    break
+                end
+            end
+
+            local color = hasHigherStep and 'red' or 'green'
+            APR.party:UpdateTeamMate(groupData.Name, groupData.Step, color)
+        else
+            APR.party:RemoveTeam()
+            APR.party:HideFrame()
+        end
+    end
+end
+
+
+function APR.party:UpdateGroupListing(steps, usernameList)
+    if (not APR.party.GroupListSteps[1]) then
+        APR.party.GroupListSteps[1] = {}
+        APR.party.GroupListStepsCount = 1
+    end
+    APR.party.GroupListSteps[1].Step = steps
+    APR.party.GroupListSteps[1].Name = APR.Username
+    if (usernameList ~= APR.Username) then
+        local hasNewMember = true
+        for i, _ in pairs(APR.party.GroupListSteps) do
+            if (APR.party.GroupListSteps[i].Name == usernameList) then
+                APR.party.GroupListSteps[i].Step = steps
+                hasNewMember = false
+            end
+        end
+        if hasNewMember then
+            APR.party.GroupListStepsCount = APR.party.GroupListStepsCount + 1
+            APR.party.GroupListSteps[APR.party.GroupListStepsCount] = {}
+            APR.party.GroupListSteps[APR.party.GroupListStepsCount].Name = usernameList
+            APR.party.GroupListSteps[APR.party.GroupListStepsCount].Step = steps
+        end
+    end
+    UpdateGroupStep()
 end
