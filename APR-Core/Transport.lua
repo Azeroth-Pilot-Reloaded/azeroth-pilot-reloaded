@@ -640,9 +640,9 @@ function APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
         APRt_Zone = 2023
     elseif (APR.ActiveMap == "DF05-2024-AzureSpan" and APRt_Zone == 2025) then
         APRt_Zone = 2024
-    elseif (APR.ActiveMap == "DF06H-2025-Thaldraszus" and (APRt_Zone == 2135 or APRt_Zone == 2090 or APRt_Zone == 2091 or APRt_Zone == 2088 or APRt_Zone == 2089)) then
+    elseif (APR.ActiveMap == "DF06H-2025-Thaldraszus" and (APRt_Zone == 2028 or APRt_Zone == 2135 or APRt_Zone == 2090 or APRt_Zone == 2091 or APRt_Zone == 2088 or APRt_Zone == 2089)) then
         APRt_Zone = 2025
-    elseif (APR.ActiveMap == "DF06A-2025-Thaldraszus" and (APRt_Zone == 2135 or APRt_Zone == 2090 or APRt_Zone == 2091 or APRt_Zone == 2088 or APRt_Zone == 2089)) then
+    elseif (APR.ActiveMap == "DF06A-2025-Thaldraszus" and (APRt_Zone == 2028 or APRt_Zone == 2135 or APRt_Zone == 2090 or APRt_Zone == 2091 or APRt_Zone == 2088 or APRt_Zone == 2089)) then
         APRt_Zone = 2025
     end
 
