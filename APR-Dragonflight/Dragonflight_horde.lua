@@ -2300,6 +2300,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = -1341.3,
                 ["x"] = -2937.1,
             },
+            ["Zone"] = 2028,
         },
         { -- Step 115
             ["PickUp"] = {
@@ -2309,6 +2310,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = -1341.3,
                 ["x"] = -2937.1,
             },
+            ["Zone"] = 2028,
         },
         { -- Step 116
             ["PickUp"] = {
@@ -2318,6 +2320,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = -1332.3,
                 ["x"] = -2945.3,
             },
+            ["Zone"] = 2028,
         },
         { -- Step 117
             ["Qpart"] = {
@@ -2337,6 +2340,7 @@ if (APR.Faction == "Horde") then
             ["Button"] = {
                 ["66029-1"] = 192749,
             },
+            ["Zone"] = 2028,
         },
         { -- Step 118
             ["Qpart"] = {
@@ -2357,6 +2361,7 @@ if (APR.Faction == "Horde") then
             ["SpellButton"] = {
                 ["66031-1"] = 372520,
             },
+            ["Zone"] = 2028,
         },
         { -- Step 119
             ["Qpart"] = {
@@ -2373,6 +2378,7 @@ if (APR.Faction == "Horde") then
                 ["x"] = -2617.6,
             },
             ["Range"] = 2,
+            ["Zone"] = 2028,
         },
         { -- Step 120
             ["Done"] = {
@@ -2382,6 +2388,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = -1341.3,
                 ["x"] = -2937.1,
             },
+            ["Zone"] = 2028,
         },
         { -- Step 121
             ["Done"] = {
@@ -2391,6 +2398,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = -1332.3,
                 ["x"] = -2945.3,
             },
+            ["Zone"] = 2028,
         },
         { -- Step 122
             ["PickUp"] = {
@@ -2400,6 +2408,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = -1341.3,
                 ["x"] = -2937.1,
             },
+            ["Zone"] = 2028,
         },
         { -- Step 123
             ["Done"] = {
