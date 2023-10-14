@@ -2470,6 +2470,7 @@ if (APR.Faction == "Horde") then
             ["TT"] = {
                 ["y"] = 3101.4,
                 ["x"] = 272.0,
+                ["Zone"] = 2092,
             },
         },
         { -- Step 129
@@ -2480,6 +2481,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = 3101.4,
                 ["x"] = 272.0,
             },
+            ["Zone"] = 2092,
         },
         { -- Step 130
             ["PickUp"] = {
@@ -2489,6 +2491,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = 3108.0,
                 ["x"] = 263.5,
             },
+            ["Zone"] = 2092,
         },
         { -- Step 131
             ["Qpart"] = {
@@ -2505,6 +2508,7 @@ if (APR.Faction == "Horde") then
                 ["x"] = 170.6,
             },
             ["Range"] = 2,
+            ["Zone"] = 2092,
         },
         { -- Step 132
             ["Qpart"] = {
@@ -2522,11 +2526,19 @@ if (APR.Faction == "Horde") then
             },
             ["Range"] = 250,
             ["ExtraLineText"] = "MOTES_CAN_BE_SEEN_ON_MINIMAP",
+            ["Fillers"] = {
+                [66704] = {
+                    ["1"] = "1",
+                    ["2"] = "2",
+                },
+            },
+            ["Zone"] = 2092,
         },
         { -- Step 133
             ["Qpart"] = {
                 [66704] = {
                     ["1"] = "1",
+                    ["2"] = "2",
                 },
             },
             ["TT"] = {
@@ -2538,6 +2550,7 @@ if (APR.Faction == "Horde") then
                 ["x"] = 224.1,
             },
             ["Range"] = 250,
+            ["Zone"] = 2092,
         },
         { -- Step 134
             ["Done"] = {
@@ -2547,6 +2560,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = 3107.9,
                 ["x"] = 263.2,
             },
+            ["Zone"] = 2092,
         },
         { -- Step 135
             ["Done"] = {
@@ -2556,6 +2570,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = 3101.9,
                 ["x"] = 271.5,
             },
+            ["Zone"] = 2092,
         },
         { -- Step 136
             ["PickUp"] = {
@@ -2565,6 +2580,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = 3107.9,
                 ["x"] = 263.2,
             },
+            ["Zone"] = 2092,
         },
         { -- Step 137
             ["Qpart"] = {
@@ -2582,6 +2598,24 @@ if (APR.Faction == "Horde") then
             },
             ["Range"] = 2,
             ["ExtraLineText"] = "ENTER_PLANE",
+            ["Zone"] = 2092,
+        },
+        { -- Step 137a
+            ["Qpart"] = {
+                [70371] = {
+                    ["2"] = "2",
+                },
+            },
+            ["TT"] = {
+                ["y"] = 3345.0,
+                ["x"] = 260.0,
+            },
+            ["Trigger"] = {
+                ["y"] = 3345.0,
+                ["x"] = 260.0,
+            },
+            ["Range"] = 250,
+            ["Zone"] = 2092,
         },
         { -- Step 138
             ["Done"] = {
@@ -2591,6 +2625,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = 3107.9,
                 ["x"] = 263.2,
             },
+            ["Zone"] = 2092,
         },
         { -- Step 139
             ["PickUp"] = {
@@ -2600,6 +2635,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = 3101.9,
                 ["x"] = 271.5,
             },
+            ["Zone"] = 2092,
         },
         { -- Step 140
             ["Qpart"] = {
