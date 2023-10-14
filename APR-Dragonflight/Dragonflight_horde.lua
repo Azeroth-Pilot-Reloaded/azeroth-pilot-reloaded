@@ -2706,6 +2706,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = 15534.9,
                 ["x"] = 15512.9,
             },
+            ["Zone"] = 2090,
         },
         { -- Step 146
             ["PickUp"] = {
@@ -2715,6 +2716,46 @@ if (APR.Faction == "Horde") then
                 ["y"] = 15534.9,
                 ["x"] = 15512.9,
             },
+            ["Zone"] = 2090,
+        },
+        { -- Step 146a
+            ["CRange"] = 66038,
+            ["TT"] = {
+                ["y"] = 15966.0,
+                ["x"] = 15877.4,
+            },
+            ["Trigger"] = {
+                ["y"] = 15966.0,
+                ["x"] = 15877.4,
+            },
+            ["Range"] = 10,
+            ["Zone"] = 2090,
+        },
+        { -- Step 146b
+            ["CRange"] = 66038,
+            ["TT"] = {
+                ["y"] = -7949.9,
+                ["x"] = 1374.5,
+            },
+            ["Trigger"] = {
+                ["y"] = -7949.9,
+                ["x"] = 1374.5,
+           },
+            ["Range"] = 10,
+            ["Zone"] = 2091,
+        },
+        { -- Step 146c
+            ["CRange"] = 66038,
+            ["TT"] = {
+                ["y"] = 960.3,
+                ["x"] = 2092.3,
+            },
+            ["Trigger"] = {
+                ["y"] = 960.3,
+                ["x"] = 2092.3,
+           },
+            ["Range"] = 10,
+            ["Zone"] = 2088,
         },
         { -- Step 147
             ["Done"] = {
@@ -2724,6 +2765,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = -1309.7,
                 ["x"] = 7427.0,
             },
+            ["Zone"] = 2089,
         },
         { -- Step 148
             ["PickUp"] = {
@@ -2733,6 +2775,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = -1309.7,
                 ["x"] = 7427.0,
             },
+            ["Zone"] = 2089,
         },
         { -- Step 149
             ["Qpart"] = {
@@ -2752,6 +2795,7 @@ if (APR.Faction == "Horde") then
             ["Button"] = {
                 ["66039-1"] = 192749,
             },
+            ["Zone"] = 2089,
         },
         { -- Step 150
             ["Done"] = {
@@ -2761,6 +2805,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = -946.7,
                 ["x"] = 7407.1,
             },
+            ["Zone"] = 2089,
         },
         { -- Step 151
             ["PickUp"] = {
@@ -2770,6 +2815,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = -946.7,
                 ["x"] = 7407.1,
             },
+            ["Zone"] = 2089,
         },
         { -- Step 152
             ["Qpart"] = {
@@ -2787,6 +2833,7 @@ if (APR.Faction == "Horde") then
             },
             ["Range"] = 2,
             ["Gossip"] = 1,
+            ["Zone"] = 2089,
         },
         { -- Step 153
             ["Qpart"] = {
@@ -2804,6 +2851,7 @@ if (APR.Faction == "Horde") then
             },
             ["Range"] = 2,
             ["Gossip"] = 1,
+            ["GossipOptionID"] = 55119,
         },
         { -- Step 154
             ["Done"] = {
