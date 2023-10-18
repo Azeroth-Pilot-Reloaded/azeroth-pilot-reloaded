@@ -49,7 +49,7 @@ function APR.settings:InitializeSettings()
             autoGossip = true,
             autoVendor = false,
             autoRepair = false,
-            autoSkipCutScene = true,
+            autoSkipCutScene = false,
             autoFlight = true,
             -- current step
             currentStepFrame = {},
