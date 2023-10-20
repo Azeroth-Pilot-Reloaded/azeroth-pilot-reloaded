@@ -7,6 +7,9 @@ APR.map = APR:NewModule("MAP", "AceEvent-3.0")
 APR.map:RegisterMessage("APR_MAP_UPDATE", function()
     APR.map:AddMapPins()
 end)
+
+local CurMapShown
+local Delaytime = 0
 ---------------------------------------------------------------------------------------
 ---------------------------------- Dotted Lines ---------------------------------------
 ---------------------------------------------------------------------------------------

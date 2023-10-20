@@ -9,8 +9,6 @@ local ETAStep = 0
 local APR_AntiTaxiLoop = 0
 local Updateblock = 0
 local APRWhereToGo
-local CurMapShown
-local Delaytime = 0
 local APRGOSSIPCOUNT = 0
 APR.ProgressbarIgnore = {
     ["60520-2"] = 1,
@@ -1138,44 +1136,6 @@ local function APR_UpdateMapId()
     _G.UpdateQuestAndStep()
 end
 
-local function APR_CheckDistance()
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
-    if not CurStep or not APR.QuestStepList[APR.ActiveMap] or not APR.QuestStepList[APR.ActiveMap][CurStep] then
-        return 0
-    end
-
-    local steps = APR.QuestStepList[APR.ActiveMap]
-    local currentStep = steps[CurStep]
-
-    if not currentStep["CRange"] then
-        return 0
-    end
-
-    APR.ArrowFrame.Button:Show()
-    local totalDistance = 0
-    local includeExtraRange = not currentStep["NoExtraRange"]
-
-    for i = CurStep, #steps do
-        local step = steps[i]
-        if step["CRange"] then
-            local oldTT, newTT = currentStep["TT"], step["TT"]
-            local deltaX, deltaY = oldTT["x"] - newTT["x"], oldTT["y"] - newTT["y"]
-            local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
-            totalDistance = totalDistance + distance
-            currentStep = step
-        elseif includeExtraRange and step["TT"] then
-            local oldTT, newTT = currentStep["TT"], step["TT"]
-            local deltaX, deltaY = oldTT["x"] - newTT["x"], oldTT["y"] - newTT["y"]
-            local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
-            totalDistance = totalDistance + distance
-        else
-            return floor(totalDistance + 0.5)
-        end
-    end
-
-    return floor(totalDistance + 0.5)
-end
-
 local function APR_SetQPTT()
     if (APR.settings.profile.debug) then
         print("Function: APR_SetQPTT()")
@@ -1191,93 +1151,6 @@ local function APR_SetQPTT()
     end
 end
 
-local function APR_PosTest()
-    local d_y, d_x = UnitPosition("player")
-    if (not d_y) then
-        APR.ArrowFrame:Hide()
-        APR.map:RemoveMinimapLine()
-    elseif (not APR.settings.profile.showArrow) then
-        APR.ArrowActive = 0
-        APR.ArrowFrame:Hide()
-
-        APR.map:RemoveMinimapLine()
-    else
-        local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
-        if (APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] and APR.QuestStepList[APR.ActiveMap][CurStep]["AreaTriggerZ"]) then
-            x = APR.QuestStepList[APR.ActiveMap][CurStep]["AreaTriggerZ"]["x"]
-            y = APR.QuestStepList[APR.ActiveMap][CurStep]["AreaTriggerZ"]["y"]
-            local deltaX, deltaY = d_x - x, y - d_y
-            local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
-            if (APR.QuestStepList[APR.ActiveMap][CurStep]["AreaTriggerZ"]["R"] > distance) then
-                QNumberLocal = 0
-                _G.NextQuestStep()
-            end
-        end
-        if (((APR.ArrowActive == 0) or (APR.ArrowActive_X == 0) or (IsInInstance()) or not APR.QuestStepList) or (APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] and APR.QuestStepList[APR.ActiveMap][CurStep]["NoArrows"])) then
-            if (APR.ArrowFrame) then
-                APR.ArrowActive = 0
-                APR.ArrowFrame:Hide()
-                APR.map:RemoveMinimapLine()
-            end
-        else
-            APR.ArrowFrame:Show()
-            APR.ArrowFrame.Button:Hide()
-            local d_y, d_x = UnitPosition("player")
-            if (d_x and d_y and GetPlayerFacing()) then
-                x = APR.ArrowActive_X
-                y = APR.ArrowActive_Y
-                local APR_ArrowActive_TrigDistance
-                local PI2 = math.pi * 2
-                local atan2 = math.atan2
-                local twopi = math.pi * 2
-                local deltaX, deltaY = d_x - x, y - d_y
-                local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
-                local angle = atan2(-deltaX, deltaY)
-                local player = GetPlayerFacing()
-                angle = angle - player
-                local perc = math.abs((math.pi - math.abs(angle)) / math.pi)
-                if perc > 0.98 then
-                    APR.ArrowFrame.arrow:SetVertexColor(0, 1, 0)
-                elseif perc > 0.49 then
-                    APR.ArrowFrame.arrow:SetVertexColor((1 - perc) * 2, 1, 0)
-                else
-                    APR.ArrowFrame.arrow:SetVertexColor(1, perc * 2, 0)
-                end
-                local cell = floor(angle / twopi * 108 + 0.5) % 108
-                local col = cell % 9
-                local row = floor(cell / 9)
-                APR.ArrowFrame.arrow:SetTexCoord((col * 56) / 512, ((col + 1) * 56) / 512, (row * 42) / 512,
-                    ((row + 1) * 42) / 512)
-                APR.ArrowFrame.distance:SetText(floor(distance + APR_CheckDistance()) .. " " .. L["YARDS"])
-                local APR_ArrowActive_Distance = 0
-                if (CurStep and APR.ActiveMap and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
-                    if (APR.QuestStepList[APR.ActiveMap][CurStep]["Trigger"]) then
-                        local d_y, d_x = UnitPosition("player")
-                        local APR_ArrowActive_Trigger_X = APR.QuestStepList[APR.ActiveMap][CurStep]["Trigger"]["x"]
-                        local APR_ArrowActive_Trigger_Y = APR.QuestStepList[APR.ActiveMap][CurStep]["Trigger"]["y"]
-                        local deltaX, deltaY = d_x - APR_ArrowActive_Trigger_X, APR_ArrowActive_Trigger_Y - d_y
-                        APR_ArrowActive_Distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
-                        APR_ArrowActive_TrigDistance = APR.QuestStepList[APR.ActiveMap][CurStep]["Range"]
-                        if (APR.QuestStepList[APR.ActiveMap][CurStep]["HIDEME"]) then
-                            APR.ArrowActive = 0
-                        end
-                    end
-                end
-                if (distance < 5 and APR_ArrowActive_Distance == 0) then
-                    APR.ArrowActive_X = 0
-                elseif (APR_ArrowActive_Distance and APR_ArrowActive_TrigDistance and APR_ArrowActive_Distance < APR_ArrowActive_TrigDistance) then
-                    APR.ArrowActive_X = 0
-                    if (CurStep and APR.ActiveMap and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
-                        if (APR.QuestStepList[APR.ActiveMap][CurStep]["CRange"]) then
-                            QNumberLocal = 0
-                            _G.NextQuestStep()
-                        end
-                    end
-                end
-            end
-        end
-    end
-end
 
 local function APR_LoopBookingFunc() --TODO rework BookingList
     if not APR.settings.profile.enableAddon then
@@ -1373,7 +1246,7 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
         end
     end
     if (APR_ArrowUpdateNr >= APR.settings.profile.arrowFPS) then
-        APR_PosTest()
+        APR.Arrow:CalculPosition()
         APR_ArrowUpdateNr = 0
     else
         APR_ArrowUpdateNr = APR_ArrowUpdateNr + 1

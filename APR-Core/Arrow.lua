@@ -1,11 +1,17 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
--- Arrow Frame
+
+-- Initialize module
+APR.Arrow = APR:NewModule("Arrow")
 
 APR.ArrowActive = 0
 APR.ArrowActive_X = 0
 APR.ArrowActive_Y = 0
+
+---------------------------------------------------------------------------------------
+----------------------------------- Arrow Frames --------------------------------------
+---------------------------------------------------------------------------------------
 
 -- TODO Rework Arrow frame
 --More UI stuff, to do with arrowframe
@@ -92,3 +98,112 @@ APR.ArrowFrame.Fontstring:SetWordWrap(true)
 APR.ArrowFrame.Fontstring:SetFontObject("GameFontNormalSmall")
 APR.ArrowFrame.Fontstring:SetTextColor(1, 1, 0)
 APR.ArrowFrame.Button:Hide()
+
+---------------------------------------------------------------------------------------
+--------------------------------- Arrow Function --------------------------------------
+---------------------------------------------------------------------------------------
+
+local function CheckDistance()
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
+    if CurStep and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] then
+        local stepList = APR.QuestStepList[APR.ActiveMap]
+        if (stepList[CurStep] and stepList[CurStep]["CRange"]) then
+            APR.ArrowFrame.Button:Show()
+            local curStepIndex = CurStep
+            local distance = 0
+            while true do
+                local oldx, oldy = stepList[curStepIndex]["TT"]["x"], stepList[curStepIndex]["TT"]["y"]
+                curStepIndex = curStepIndex + 1
+                local step = stepList[curStepIndex]
+                if (step and step["CRange"]) then
+                    local newx, newy = step["TT"]["x"], step["TT"]["y"]
+                    local deltaX, deltaY = oldx - newx, newy - oldy
+                    local subDistance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
+                    distance = distance + subDistance
+                else
+                    if (step and step["TT"]) then
+                        local newx, newy = step["TT"]["x"], step["TT"]["y"]
+                        local deltaX, deltaY = oldx - newx, newy - oldy
+                        local subDistance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
+                        distance = distance + subDistance
+                    end
+                    return floor(distance + 0.5)
+                end
+            end
+        end
+    end
+    return 0
+end
+
+function APR.Arrow:CalculPosition()
+    local d_y, d_x = UnitPosition("player")
+
+    if not d_y then
+        APR.ArrowFrame:Hide()
+        APR.map:RemoveMinimapLine()
+        return
+    end
+
+    if not APR.settings.profile.showArrow or APR.ArrowActive == 0 or APR.ArrowActive_X == 0 or IsInInstance() or not APR.QuestStepList then
+        APR.ArrowFrame:Hide()
+        APR.map:RemoveMinimapLine()
+        return
+    end
+
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
+    local questStep = APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]
+
+    if questStep and questStep.AreaTriggerZ then
+        local trigger = questStep.AreaTriggerZ
+        local x, y = trigger.x, trigger.y
+        local deltaX, deltaY = d_x - x, y - d_y
+        local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
+
+        if trigger.R > distance then
+            QNumberLocal = 0
+            _G.NextQuestStep()
+            return
+        end
+    end
+
+    APR.ArrowFrame:Show()
+    APR.ArrowFrame.Button:Hide()
+
+    local x, y = APR.ArrowActive_X, APR.ArrowActive_Y
+    local deltaX, deltaY = d_x - x, y - d_y
+    local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
+    local angle = math.atan2(-deltaX, deltaY) - GetPlayerFacing()
+    local perc = math.abs((math.pi - math.abs(angle)) / math.pi)
+
+    if perc > 0.98 then
+        APR.ArrowFrame.arrow:SetVertexColor(0, 1, 0)
+    elseif perc > 0.49 then
+        APR.ArrowFrame.arrow:SetVertexColor((1 - perc) * 2, 1, 0)
+    else
+        APR.ArrowFrame.arrow:SetVertexColor(1, perc * 2, 0)
+    end
+
+    local cell = math.floor(angle / (2 * math.pi) * 108 + 0.5) % 108
+    local col = cell % 9
+    local row = math.floor(cell / 9)
+    APR.ArrowFrame.arrow:SetTexCoord((col * 56) / 512, ((col + 1) * 56) / 512, (row * 42) / 512, ((row + 1) * 42) / 512)
+    APR.ArrowFrame.distance:SetText(math.floor(distance + CheckDistance()) .. " " .. L["YARDS"])
+
+    if CurStep and APR.ActiveMap and questStep and questStep.Trigger then
+        local trigger = questStep.Trigger
+        local APR_ArrowActive_Trigger_X = trigger.x
+        local APR_ArrowActive_Trigger_Y = trigger.y
+        local deltaX, deltaY = d_x - APR_ArrowActive_Trigger_X, APR_ArrowActive_Trigger_Y - d_y
+        local APR_ArrowActive_Distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
+        local APR_ArrowActive_TrigDistance = questStep.Range
+
+        if distance < 5 and APR_ArrowActive_Distance == 0 or (APR_ArrowActive_Distance and APR_ArrowActive_TrigDistance and APR_ArrowActive_Distance < APR_ArrowActive_TrigDistance) then
+            APR.ArrowActive_X = 0
+
+            if CurStep and APR.ActiveMap and questStep.CRange then
+                QNumberLocal = 0
+                _G.NextQuestStep()
+            end
+        end
+    end
+end
