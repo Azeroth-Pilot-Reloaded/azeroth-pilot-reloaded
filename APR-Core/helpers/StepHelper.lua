@@ -1,7 +1,7 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
-function APR:GetStepString(step)
+function GetStepString(step)
     local stepMappings = {
         ExitTutorial = L["SKIP_TUTORIAL"],
         PickUp = L["PICK_UP_Q"],
@@ -30,7 +30,7 @@ function APR:GetStepString(step)
     return ''
 end
 
-function APR:HasAchievement(achievementID)
+function HasAchievement(achievementID)
     local id, name, _, completed = _G.GetAchievementInfo(achievementID)
     return completed
 end
@@ -56,6 +56,23 @@ function NextQuestStep()
 end
 
 function PreviousQuestStep()
-    APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] - 1
+    local previous = true
+    while previous do
+        APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] - 1
+        local steps = APR.QuestStepList[APR.ActiveMap][APRData[APR.Realm][APR.Username][APR.ActiveMap]]
+        previous = false
+
+        if (
+                (steps["Faction"] and steps["Faction"] ~= APR.Faction) or
+                (steps["Race"] and steps["Race"] ~= APR.Race) or
+                (steps["Class"] and steps["Class"] ~= APR.ClassName) or
+                (steps["HasAchievement"] and not _G.HasAchievement(steps["HasAchievement"])) or
+                (steps["DontHaveAchievement"] and _G.HasAchievement(steps["DontHaveAchievement"]))
+            ) then
+            previous = true
+        end
+    end
+
+    -- Update the quest and step
     UpdateQuestAndStep()
 end

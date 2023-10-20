@@ -491,7 +491,7 @@ function APR.map:CreatePin(index, step)
     -- -- GameTooltip
     -- pinFrame:SetScript("OnEnter", function(self)
     --     GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-    --     GameTooltip:AddLine(index .. " - " .. APR:GetStepString(step), 1, 1, 1)
+    --     GameTooltip:AddLine(index .. " - " .. GetStepString(step), 1, 1, 1)
     --     GameTooltip:Show()
     -- end)
     -- pinFrame:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
@@ -529,12 +529,14 @@ function APR.map:AddMapPins()
                 end
 
                 if not steps["CRange"] then
-                    local x, y = APR:GetPlayerMapPos(mapID, steps["TT"]["y"], steps["TT"]["x"], true)
-                    if APR.settings.profile.mapshow10NextStep then
-                        hbdPins:AddWorldMapIconMap(APR.title, self.pinlist[stepIndex], mapID, x, y, 3)
-                    end
-                    if APR.settings.profile.minimapshow10NextStep then
-                        hbdPins:AddMinimapIconMap(APR.title, self.minimapPinlist[stepIndex], mapID, x, y, true, true)
+                    local x, y = APR:GetPlayerMapPos(mapID, steps["TT"]["y"], steps["TT"]["x"])
+                    if x and y then
+                        if APR.settings.profile.mapshow10NextStep then
+                            hbdPins:AddWorldMapIconMap(APR.title, self.pinlist[stepIndex], mapID, x, y, 3)
+                        end
+                        if APR.settings.profile.minimapshow10NextStep then
+                            hbdPins:AddMinimapIconMap(APR.title, self.minimapPinlist[stepIndex], mapID, x, y, true, true)
+                        end
                     end
                 end
             end
@@ -547,9 +549,11 @@ function APR.map:AddMapPins()
                 self.pinlist[CurStep] = self:CreatePin(CurStep, currentStep)
                 self.minimapPinlist[CurStep] = self:CreatePin(CurStep, currentStep)
             end
-            local x, y = APR:GetPlayerMapPos(mapID, currentStep["TT"]["y"], currentStep["TT"]["x"], true)
-            hbdPins:AddWorldMapIconMap(APR.title, self.pinlist[CurStep], mapID, x, y, 3)
-            hbdPins:AddMinimapIconMap(APR.title, self.minimapPinlist[CurStep], mapID, x, y, true, true)
+            local x, y = APR:GetPlayerMapPos(mapID, currentStep["TT"]["y"], currentStep["TT"]["x"])
+            if x and y then
+                hbdPins:AddWorldMapIconMap(APR.title, self.pinlist[CurStep], mapID, x, y, 3)
+                hbdPins:AddMinimapIconMap(APR.title, self.minimapPinlist[CurStep], mapID, x, y, true, true)
+            end
         end
     end
 end

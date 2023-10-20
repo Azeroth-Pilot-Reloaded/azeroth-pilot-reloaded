@@ -23,9 +23,8 @@ function APR:GetContinent() -- Getting the continent the player is on and its in
     end
 end
 
-function APR:GetPlayerMapPos(MapID, dx, dy, notCheckMapID)
-    notCheckMapID = notCheckMapID or false
-    if not notCheckMapID and (MapID and (MapID == 1726 or MapID == 1727 or MapID == 905 or MapID == 948 or APRt_Zone == 1727)) then
+function APR:GetPlayerMapPos(MapID, dx, dy)
+    if (MapID and (MapID == 1726 or MapID == 1727 or MapID == 905 or MapID == 948 or APRt_Zone == 1727)) then
         return
     end
 
