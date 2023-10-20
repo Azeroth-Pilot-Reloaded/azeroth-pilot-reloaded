@@ -186,6 +186,24 @@ local function APR_QAskPopWanted()
     end
 end
 
+local function SkipStepCondition(steps)
+    -- Skip steps if not Faction or Race or Class or Achievement
+    if (
+            (steps["Faction"] and steps["Faction"] ~= APR.Faction) or
+            (steps["Race"] and steps["Race"] ~= APR.Race) or
+            (steps["Class"] and steps["Class"] ~= APR.ClassName) or
+            (steps["HasAchievement"] and not _G.HasAchievement(steps["HasAchievement"])) or
+            (steps["DontHaveAchievement"] and _G.HasAchievement(steps["DontHaveAchievement"]))
+        ) then
+        -- Counter for skipper step in the current route
+        APRData[APR.Realm][APR.Username][APR.ActiveMap .. '-SkippedStep'] = (APRData[APR.Realm][APR.Username]
+            [APR.ActiveMap .. '-SkippedStep'] or 0) + 1
+        _G.UpdateNextStep()
+        return true
+    end
+    return false
+end
+
 local function APR_UpdateStep()
     if not APR.settings.profile.enableAddon then
         return
@@ -213,6 +231,7 @@ local function APR_UpdateStep()
     local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
     -- Extra liners here
     local MissingQs = {}
+    -- why ?
     if (APR.Level ~= UnitLevel("player")) then
         APR.BookingList["UpdateMapId"] = true
         APR.Level = UnitLevel("player")
@@ -228,9 +247,11 @@ local function APR_UpdateStep()
         local IdList
 
         APR.currentStep:ButtonEnable()
-        APR.currentStep:ProgressBar(APR.ActiveMap, #APR.QuestStepList[APR.ActiveMap], CurStep)
         APR:SendMessage("APR_MAP_UPDATE")
 
+        if (SkipStepCondition(steps)) then
+            return
+        end
         if (APR.ActiveQuests and APR.ActiveQuests[57867] and not APR.ZoneTransfer) then
             APR.SweatOfOurBrowBuffFrame:Show()
         else
@@ -1074,8 +1095,12 @@ local function APR_UpdateMapId()
         print("Function: APR_UpdateMapId()")
     end
     local OldMap = APR.ActiveMap
-    APR.ActiveMap = MapUtil.GetMapParentInfo(C_Map.GetBestMapForUnit("player"), Enum.UIMapType.Continent + 1, true)
-    APR.ActiveMap = APR.ActiveMap and APR.ActiveMap.mapID or C_Map.GetBestMapForUnit("player")
+    local playerMapID = C_Map.GetBestMapForUnit("player")
+    if not playerMapID then
+        return
+    end
+    APR.ActiveMap = MapUtil.GetMapParentInfo(playerMapID, Enum.UIMapType.Continent + 1, true)
+    APR.ActiveMap = APR.ActiveMap and APR.ActiveMap.mapID or playerMapID
 
     APRt_Zone = APR.ActiveMap
     if APR.ActiveMap == 1671 then
@@ -1861,10 +1886,10 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
     end
     if (event == "HEARTHSTONE_BOUND") then
-        local ZeMap = C_Map.GetBestMapForUnit("player")
-        local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
+        local ZeMap
+        local currentMapId = C_Map.GetBestMapForUnit('player')
         if (Enum and Enum.UIMapType and Enum.UIMapType.Continent and currentMapId) then
-            ZeMap = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, TOP_MOST)
+            ZeMap = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
         end
         if (ZeMap and ZeMap["mapID"]) then
             ZeMap = ZeMap["mapID"]

@@ -220,10 +220,10 @@ function APR.FP.testClickedFPS()
 end
 
 function APR.FP.GetCustomZone()
-    local playerMapID = C_Map.GetBestMapForUnit("player")
-    local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
+    local playerMapID
+    local currentMapId = C_Map.GetBestMapForUnit('player')
     if (Enum and Enum.UIMapType and Enum.UIMapType.Continent and currentMapId) then
-        playerMapID = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, TOP_MOST)
+        playerMapID = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
     end
     if (playerMapID and playerMapID["mapID"]) then
         playerMapID = playerMapID["mapID"]
@@ -662,17 +662,20 @@ function APR.FP.GetMeToNextZone()
         APR.ActiveMap = routeName
         APR.FP.GoToZone = routeZoneMapID
     end
-
-    local playerMapID = MapUtil.GetMapParentInfo(C_Map.GetBestMapForUnit("player"), Enum.UIMapType.Continent + 1, true)
-    playerMapID = playerMapID and playerMapID.mapID or C_Map.GetBestMapForUnit("player")
-    playerMapID = APR.FP.GetMeToNextZoneSpecialRe(playerMapID)
+    local playerMapID = C_Map.GetBestMapForUnit("player")
+    if not playerMapID then
+        return
+    end
+    local playerMapInfo = MapUtil.GetMapParentInfo(playerMapID, Enum.UIMapType.Continent + 1, true)
+    playerMapInfo = playerMapInfo and playerMapInfo.mapID or playerMapID
+    playerMapInfo = APR.FP.GetMeToNextZoneSpecialRe(playerMapInfo)
 
     for routeCategory, _ in pairs(APR.QuestStepListListing) do
         if (APR.ActiveMap and APR.QuestStepListListing[routeCategory][APR.ActiveMap]) then
             local zoneID = APR.QuestStepListListing[routeCategory][APR.ActiveMap]
             local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
             local step = APR.QuestStepList[APR.ActiveMap][CurStep]
-            if (APR.QuestStepListListingZone[zoneID] and playerMapID and APR.QuestStepListListingZone[zoneID] == playerMapID) or (step and step.Zone == playerMapID) then
+            if (APR.QuestStepListListingZone[zoneID] and playerMapInfo and APR.QuestStepListListingZone[zoneID] == playerMapInfo) or (step and step.Zone == playerMapInfo) then
                 APR.FP.GoToZone = nil
                 return
             end
@@ -682,15 +685,15 @@ function APR.FP.GetMeToNextZone()
         APR.FP.GoToZone = nil
         return
     end
-    if (APR.ActiveMap == "84-IntroQline" and playerMapID == 84) then
+    if (APR.ActiveMap == "84-IntroQline" and playerMapInfo == 84) then
         APR.FP.GoToZone = nil
         return
     end
-    if (APR.ActiveMap == "85-IntroQline" and playerMapID == 85) then
+    if (APR.ActiveMap == "85-IntroQline" and playerMapInfo == 85) then
         APR.FP.GoToZone = nil
         return
     end
-    if (APR.ActiveQuests and APR.ActiveQuests[32675] and playerMapID == 84 and APR.Faction == "Alliance") then
+    if (APR.ActiveQuests and APR.ActiveQuests[32675] and playerMapInfo == 84 and APR.Faction == "Alliance") then
         APR.ActiveMap = "A84-LearnFlying"
         APR.FP.GoToZone = nil
         return
@@ -963,9 +966,9 @@ function APR.FP.IsSameContinent(GoToZone)
 end
 
 function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
-    local APRt_Zone = C_Map.GetBestMapForUnit("player")
-    local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
-    APRt_Zone = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, TOP_MOST)
+    local APRt_Zone
+    local currentMapId = C_Map.GetBestMapForUnit('player')
+    APRt_Zone = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
     if (APRt_Zone and APRt_Zone["mapID"]) then
         APRt_Zone = APRt_Zone["mapID"]
     else
@@ -1658,12 +1661,12 @@ function APR.FP.ClosestFP()
     if (not testinstsance) then
         return
     end
-    local APRt_Zone = C_Map.GetBestMapForUnit("player")
-    local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
+    local APRt_Zone
+    local currentMapId = C_Map.GetBestMapForUnit('player')
     if (not currentMapId) then
         return
     end
-    APRt_Zone = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, TOP_MOST)
+    APRt_Zone = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
     if (APRt_Zone and APRt_Zone["mapID"]) then
         APRt_Zone = APRt_Zone["mapID"]
     else
@@ -1737,12 +1740,12 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
             APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"] = {}
         end
         APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"][APR:GetContinent()] = 1
-        local APRt_Zone = C_Map.GetBestMapForUnit("player")
-        local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
+        local APRt_Zone
+        local currentMapId = C_Map.GetBestMapForUnit('player')
         if (not currentMapId) then
             return
         end
-        APRt_Zone = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, TOP_MOST)
+        APRt_Zone = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
         if (APRt_Zone and APRt_Zone["mapID"]) then
             APRt_Zone = APRt_Zone["mapID"]
         else

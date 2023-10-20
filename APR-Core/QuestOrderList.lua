@@ -270,136 +270,150 @@ function APR.questOrderList:AddStepFromRoute()
     if not CurStep then
         return
     end
+    -- can't use id from the loop due to faction/race/class/achievement step option
+    local stepIndex = 1
     for id, step in pairs(APR.QuestStepList[APR.ActiveMap]) do
-        local stepIndex = tonumber(id)
-        if step.ExitTutorial then
-            local questID = step.ExitTutorial
-            local color = (C_QuestLog.IsOnQuest(questID) or CurStep > stepIndex) and "green" or "gray"
-            AddStepFrame(stepIndex, L["SKIP_TUTORIAL"], color)
-        elseif step.PickUp then
-            IdList = step.PickUp
-            local questInfo = {}
-            local Flagged = 0
-            for _, questID in pairs(IdList) do
-                if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] or APR.BreadCrumSkips[questID] then
-                    Flagged = Flagged + 1
-                else
-                    tinsert(questInfo, { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
+        -- Hide step for Faction, Race, Class, Achievement
+        if (
+                (not step.Faction or step.Faction == APR.Faction) and
+                (not step.Race or step.Race == APR.Race) and
+                (not step.Class or step.Class == APR.ClassName) and
+                (not step.HasAchievement or _G.HasAchievement(step.HasAchievement)) and
+                (not step.DontHaveAchievement or not _G.HasAchievement(step.DontHaveAchievement))
+            ) then
+            if step.ExitTutorial then
+                local questID = step.ExitTutorial
+                local color = (C_QuestLog.IsOnQuest(questID) or CurStep > stepIndex) and "green" or "gray"
+                AddStepFrame(stepIndex, L["SKIP_TUTORIAL"], color)
+            elseif step.PickUp then
+                IdList = step.PickUp
+                local questInfo = {}
+                local Flagged = 0
+                for _, questID in pairs(IdList) do
+                    if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] or APR.BreadCrumSkips[questID] then
+                        Flagged = Flagged + 1
+                    else
+                        tinsert(questInfo, { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                    end
                 end
-            end
-            if #IdList == Flagged then
-                AddStepFrame(stepIndex, L["PICK_UP_Q"], "green")
-            else
-                AddStepFrameWithQuest(stepIndex, L["PICK_UP_Q"], questInfo, "gray")
-            end
-        elseif step.DropQuest then
-            local questID = step.DropQuest
-            local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID]) and "green" or
-                "gray"
-            AddStepFrame(stepIndex, L["Q_DROP"], color)
-        elseif step.Qpart then
-            IdList = step.Qpart
-            local questInfo = {}
-            local flagged = 0
-            local total = 0
+                if #IdList == Flagged then
+                    AddStepFrame(stepIndex, L["PICK_UP_Q"], "green")
+                else
+                    AddStepFrameWithQuest(stepIndex, L["PICK_UP_Q"], questInfo, "gray")
+                end
+            elseif step.DropQuest then
+                local questID = step.DropQuest
+                local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID]) and "green" or
+                    "gray"
+                AddStepFrame(stepIndex, L["Q_DROP"], color)
+            elseif step.Qpart then
+                IdList = step.Qpart
+                local questInfo = {}
+                local flagged = 0
+                local total = 0
 
-            local isMaxLevel = UnitLevel("player") == APR.MaxLevel
-            for questID, objectives in pairs(IdList) do
-                for objectiveIndex, _ in pairs(objectives) do
-                    total = total + 1
-                    local questObjectiveId = questID .. '-' .. objectiveIndex
-                    local questFlagged = C_QuestLog.IsQuestFlaggedCompleted(questID) or
-                        (isMaxLevel and APR_BonusObj and APR_BonusObj[questID]) or
-                        APRData[APR.Realm][APR.Username]["BonusSkips"][questID]
-                    if questFlagged or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
-                        flagged = flagged + 1
-                    elseif not APR.ActiveQuests[qid] or not APR.ActiveQuests[questID] then
-                        tinsert(questInfo,
-                            { questID = questObjectiveId, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                local isMaxLevel = UnitLevel("player") == APR.MaxLevel
+                for questID, objectives in pairs(IdList) do
+                    for objectiveIndex, _ in pairs(objectives) do
+                        total = total + 1
+                        local questObjectiveId = questID .. '-' .. objectiveIndex
+                        local questFlagged = C_QuestLog.IsQuestFlaggedCompleted(questID) or
+                            (isMaxLevel and APR_BonusObj and APR_BonusObj[questID]) or
+                            APRData[APR.Realm][APR.Username]["BonusSkips"][questID]
+                        if questFlagged or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
+                            flagged = flagged + 1
+                        elseif not APR.ActiveQuests[qid] or not APR.ActiveQuests[questID] then
+                            tinsert(questInfo,
+                                { questID = questObjectiveId, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                        end
                     end
                 end
-            end
-            if total == flagged then
-                AddStepFrame(stepIndex, L["Q_PART"], "green")
-            else
-                AddStepFrameWithQuest(stepIndex, L["Q_PART"], questInfo, "gray")
-            end
-        elseif step.QpartPart then
-            IdList = step.QpartPart
-            local questInfo = {}
-            local flagged = 0
-            local total = 0
-            for questID, objectives in pairs(IdList) do
-                for objectiveIndex, _ in pairs(objectives) do
-                    total = total + 1
-                    local questObjectiveId = questID .. '-' .. objectiveIndex
-                    if C_QuestLog.IsQuestFlaggedCompleted(questID) or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
-                        flagged = flagged + 1
-                    elseif not APR.ActiveQuests[qid] or not APR.ActiveQuests[questID] then
-                        tinsert(questInfo,
-                            { questID = questObjectiveId, questName = C_QuestLog.GetTitleForQuestID(questID) })
-                    end
-                end
-            end
-            if total == flagged then
-                AddStepFrame(stepIndex, L["Q_PART"], "green")
-            else
-                AddStepFrameWithQuest(stepIndex, L["Q_PART"], questInfo, "gray")
-            end
-        elseif step.Treasure then
-            local questID = step.Treasure
-            local questInfo = { { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) } }
-            local color = C_QuestLog.IsQuestFlaggedCompleted(questID) and "green" or "gray"
-            AddStepFrameWithQuest(stepIndex, L["GET_TREASURE"], questInfo, color)
-        elseif step.QaskPopup then
-            local questID = step.QaskPopup
-            local questInfo = { { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) } }
-            local color = C_QuestLog.IsQuestFlaggedCompleted(questID) and "green" or "gray"
-            AddStepFrameWithQuest(stepIndex, L["GROUP_Q"], questInfo, color)
-        elseif step.Done then
-            IdList = step.Done
-            local questInfo = {}
-            local Flagged = 0
-            for _, questID in pairs(IdList) do
-                if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.BreadCrumSkips[questID] then
-                    Flagged = Flagged + 1
+                if total == flagged then
+                    AddStepFrame(stepIndex, L["Q_PART"], "green")
                 else
-                    tinsert(questInfo, { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                    AddStepFrameWithQuest(stepIndex, L["Q_PART"], questInfo, "gray")
                 end
+            elseif step.QpartPart then
+                IdList = step.QpartPart
+                local questInfo = {}
+                local flagged = 0
+                local total = 0
+                for questID, objectives in pairs(IdList) do
+                    for objectiveIndex, _ in pairs(objectives) do
+                        total = total + 1
+                        local questObjectiveId = questID .. '-' .. objectiveIndex
+                        if C_QuestLog.IsQuestFlaggedCompleted(questID) or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
+                            flagged = flagged + 1
+                        elseif not APR.ActiveQuests[qid] or not APR.ActiveQuests[questID] then
+                            tinsert(questInfo,
+                                { questID = questObjectiveId, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                        end
+                    end
+                end
+                if total == flagged then
+                    AddStepFrame(stepIndex, L["Q_PART"], "green")
+                else
+                    AddStepFrameWithQuest(stepIndex, L["Q_PART"], questInfo, "gray")
+                end
+            elseif step.Treasure then
+                local questID = step.Treasure
+                local questInfo = { { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) } }
+                local color = C_QuestLog.IsQuestFlaggedCompleted(questID) and "green" or "gray"
+                AddStepFrameWithQuest(stepIndex, L["GET_TREASURE"], questInfo, color)
+            elseif step.QaskPopup then
+                local questID = step.QaskPopup
+                local questInfo = { { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) } }
+                local color = C_QuestLog.IsQuestFlaggedCompleted(questID) and "green" or "gray"
+                AddStepFrameWithQuest(stepIndex, L["GROUP_Q"], questInfo, color)
+            elseif step.Done then
+                IdList = step.Done
+                local questInfo = {}
+                local Flagged = 0
+                for _, questID in pairs(IdList) do
+                    if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.BreadCrumSkips[questID] then
+                        Flagged = Flagged + 1
+                    else
+                        tinsert(questInfo, { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                    end
+                end
+                if #IdList == Flagged then
+                    AddStepFrame(stepIndex, L["TURN_IN_Q"], "green")
+                else
+                    AddStepFrameWithQuest(stepIndex, L["TURN_IN_Q"], questInfo, "gray")
+                end
+            elseif step.CRange then
+                local questID = step.CRange
+                local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
+                AddStepFrame(stepIndex, L["RUN_WAYPOINT"], color)
+            elseif step.SetHS then
+                local questID = step.SetHS
+                local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
+                AddStepFrame(stepIndex, L["SET_HEARTHSTONE"], color)
+            elseif step.UseHS or step.UseDalaHS or step.UseGarrisonHS then
+                local questID = step.UseHS or step.UseDalaHS or step.UseGarrisonHS
+                local questText = step.UseHS and L["USE_HEARTHSTONE"] or
+                    (step.UseDalaHS and L["USE_DALARAN_HEARTHSTONE"] or L["USE_GARRISON_HEARTHSTONE"])
+                local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
+                AddStepFrame(stepIndex, questText, color)
+            elseif step.GetFP then
+                local questID = step.GetFP
+                local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
+                AddStepFrame(stepIndex, L["GET_FLIGHTPATH"], color)
+            elseif step.UseFlightPath then
+                local questID = step.UseFlightPath
+                local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
+                AddStepFrame(stepIndex, L["USE_FLIGHTPATH"], color)
+            elseif step.WarMode then
+                AddStepFrame(stepIndex, L["TURN_ON_WARMODE"], "gray")
+            elseif step.ZoneDoneSave then
+                AddStepFrame(stepIndex, L["ROUTE_COMPLETED"], "gray")
             end
-            if #IdList == Flagged then
-                AddStepFrame(stepIndex, L["TURN_IN_Q"], "green")
-            else
-                AddStepFrameWithQuest(stepIndex, L["TURN_IN_Q"], questInfo, "gray")
-            end
-        elseif step.CRange then
-            local questID = step.CRange
-            local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
-            AddStepFrame(stepIndex, L["RUN_WAYPOINT"], color)
-        elseif step.SetHS then
-            local questID = step.SetHS
-            local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
-            AddStepFrame(stepIndex, L["SET_HEARTHSTONE"], color)
-        elseif step.UseHS or step.UseDalaHS or step.UseGarrisonHS then
-            local questID = step.UseHS or step.UseDalaHS or step.UseGarrisonHS
-            local questText = step.UseHS and L["USE_HEARTHSTONE"] or
-                (step.UseDalaHS and L["USE_DALARAN_HEARTHSTONE"] or L["USE_GARRISON_HEARTHSTONE"])
-            local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
-            AddStepFrame(stepIndex, questText, color)
-        elseif step.GetFP then
-            local questID = step.GetFP
-            local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
-            AddStepFrame(stepIndex, L["GET_FLIGHTPATH"], color)
-        elseif step.UseFlightPath then
-            local questID = step.UseFlightPath
-            local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
-            AddStepFrame(stepIndex, L["USE_FLIGHTPATH"], color)
-        elseif step.WarMode then
-            AddStepFrame(stepIndex, L["TURN_ON_WARMODE"], "gray")
-        elseif step.ZoneDoneSave then
-            AddStepFrame(stepIndex, L["ROUTE_COMPLETED"], "gray")
+            stepIndex = stepIndex + 1
         end
     end
+    local curStepDisplayed = CurStep - (APRData[APR.Realm][APR.Username][APR.ActiveMap .. '-SkippedStep'] or 0)
     -- set current Step indicator
-    SetCurrentStepIndicator(CurStep)
+    SetCurrentStepIndicator(curStepDisplayed)
+    -- set Progress bar with the right total
+    APR.currentStep:ProgressBar(APR.ActiveMap, stepIndex - 1, curStepDisplayed)
 end

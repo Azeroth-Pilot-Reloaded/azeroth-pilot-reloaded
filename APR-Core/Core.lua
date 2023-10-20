@@ -13,7 +13,7 @@ APR.Faction = UnitFactionGroup("player") -- "Alliance", "Horde", "Neutral" or ni
 APR.Level = UnitLevel("player")
 APR.MaxLevel = 70
 APR.RaceLocale, APR.Race, APR.RaceID = UnitRace("player")
-APR.ClassFilename, APR.ClassId = UnitClassBase("player")
+APR.ClassLocalName, APR.ClassName, APR.ClassId = UnitClass("player")
 APR.Gender = UnitSex("player")
 
 -- Quest
@@ -84,10 +84,10 @@ end
 
 function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First character button
     APRData[APR.Realm][APR.Username]["routeChoiceIndex"] = routeChoice
-    local ZeMap = C_Map.GetBestMapForUnit("player")
-    local currentMapId, TOP_MOST = C_Map.GetBestMapForUnit('player'), true
+    local ZeMap
+    local currentMapId = C_Map.GetBestMapForUnit('player')
     if (Enum and Enum.UIMapType and Enum.UIMapType.Continent and currentMapId) then
-        ZeMap = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, TOP_MOST)
+        ZeMap = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
     end
     if (ZeMap and ZeMap["mapID"]) then
         ZeMap = ZeMap["mapID"]
