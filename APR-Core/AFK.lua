@@ -3,7 +3,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
 local candy = LibStub("LibCandyBar-3.0")
 
--- Initialize APR Party  module
+-- Initialize module
 APR.AFK = APR:NewModule("AFK")
 
 local FRAME_WIDTH = 250
