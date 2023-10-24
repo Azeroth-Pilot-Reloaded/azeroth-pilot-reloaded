@@ -34,7 +34,7 @@ function APR.command:SlashCmd(input)
         APR.settings.profile.coordinateShow = not APR.settings.profile.coordinateShow
         APR.coordinate:RefreshFrameAnchor()
     elseif input == 'route' then
-        _G.InterfaceOptionsFrame_OpenToCategory("APR/Route")
+        _G.InterfaceOptionsFrame_OpenToCategory(APR.title .. "/Route")
     elseif input == '42' then
         PlaySoundFile("Interface\\Addons\\APR-Core\\assets\\42.mp3")
         UIErrorsFrame:AddMessage(L["42_COMMAND"], 1.0, 1.0, 0.0, 1.0, UIERRORS_HOLD_TIME)

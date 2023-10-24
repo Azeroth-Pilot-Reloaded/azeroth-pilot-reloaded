@@ -80,7 +80,7 @@ CurrentStepFrameHeader:SetScript("OnMouseDown", function(self, button)
             {
                 text = L["SHOW_MENU_ROUTE"],
                 func = function()
-                    _G.InterfaceOptionsFrame_OpenToCategory("APR/Route")
+                    _G.InterfaceOptionsFrame_OpenToCategory(APR.title .. "/Route")
                 end
             },
             {

@@ -1057,50 +1057,8 @@ function APR.settings:createBlizzOptions()
 end
 
 function APR.settings:CreateRouteOption()
-    local optionsTable = {
-        name = L["ROUTE"],
-        type = "group",
-        args = {
-            header_route = {
-                order = 2,
-                type = "header",
-                width = "full",
-                name = L["ROUTE_HELPER"],
-            },
-            auto_path_helper = {
-                order = 2.1,
-                name = L["AUTO_PATH_HELPER"],
-                type = "execute",
-                width = 1.8,
-                func = function()
-                    auto_path_helper = not auto_path_helper
-                    if auto_path_helper then
-                        APR.LoadInOptionFrame:Show()
-                        APR.BookingList["ClosedSettings"] = true
-                    else
-                        APR.LoadInOptionFrame:Hide()
-                    end
-                end
-            },
-            custom_path = {
-                order = 2.2,
-                name = L["CUSTOM_PATH"],
-                type = "execute",
-                width = 1.8,
-                func = function()
-                    custom_path = not custom_path
-                    if custom_path then
-                        APR.RoutePlan.FG1:Show()
-                        APR.BookingList["ClosedSettings"] = true
-                    else
-                        APR.RoutePlan.FG1:Hide()
-                    end
-                end
-            },
-        }
-    }
-    aceConfig:RegisterOptionsTable("APR/Route", optionsTable)
-    aceDialog:AddToBlizOptions("APR/Route", L["ROUTE"], APR.title)
+    aceConfig:RegisterOptionsTable(APR.title .. "/Route", APR.routeconfig:getConfigOptionTable())
+    aceDialog:AddToBlizOptions(APR.title .. "/Route", L["ROUTE"], APR.title)
 end
 
 function APR.settings:CreateAboutOption()
@@ -1258,7 +1216,7 @@ function APR.settings:ToggleAddon()
         -- v2
         APR.BookingList["ClosedSettings"] = true
         APR.LoadInOptionFrame:Hide()
-        APR.RoutePlan.FG1:Hide()
+        APR.RoutePlan.Custompath:Hide()
         APR.ArrowFrame:Hide()
     else
         -- settings

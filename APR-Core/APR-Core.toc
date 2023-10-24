@@ -23,6 +23,7 @@ helpers/CoordinateFrame.lua
 helpers/StepHelper.lua
 
 Config.lua
+Config_Route.lua
 Commands.lua
 ChangeLog.lua
 
