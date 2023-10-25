@@ -23,5 +23,5 @@ jobs:
       - name: WoW Packager
         uses: BigWigsMods/packager@master
         with:
-          args: -p 618667 -w 26457
+          args: -p 618667 -w 26457 -a XKq9xXKy
 
