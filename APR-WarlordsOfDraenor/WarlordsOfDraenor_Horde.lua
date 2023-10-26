@@ -14294,6 +14294,24 @@ APR.QuestStepList["542-DesMephisto-SpiresOfArak"] = {
             ["x"] = 2145.1,
         },
     }, -- [10]
+    { -- [step X
+        ["PickUp"] = {
+            37326,  -- Befriending the Locals, Pick up from Taskmaster Gornek, 40.18 43.50
+        },
+        ["TT"] = {
+            ["y"] = -374.6,
+            ["x"] = 2245.9,
+        },
+    },
+    { -- [step X
+        ["Done"] = {
+            37326,  -- Befriending the Locals, Turn in to Dusk-Seer Irizzar, 43.90 48.88
+        },
+        ["TT"] = {
+            ["y"] = -592.2,
+            ["x"] = 2020.9,
+        },
+    },
     {
         ["PickUp"] = {
             37296,
