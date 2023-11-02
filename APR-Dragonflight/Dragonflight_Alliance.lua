@@ -443,6 +443,54 @@ if (APR.Faction == "Alliance") then
             ["HasAchievement"] = 16326,
         },
         { -- [step X
+            ["PickUp"] = {
+                72266,
+            },
+            ["TT"] = {
+                ["y"] = 3552.0,
+                ["x"] = -1452.5,
+            },
+            ["ExtraLineText"] = "CHOOSE_ZONE",
+            ["ExtraLineText2"] = "CHOOSE_ZONE_DF_WS",
+            ["HasAchievement"] = 16326,
+        },
+        { -- [step X
+            ["PickUp"] = {
+                72267,
+            },
+            ["TT"] = {
+                ["y"] = 3552.0,
+                ["x"] = -1452.5,
+            },
+            ["ExtraLineText"] = "CHOOSE_ZONE",
+            ["ExtraLineText2"] = "CHOOSE_ZONE_DF_OP",
+            ["HasAchievement"] = 16326,
+        },
+        { -- [step X
+            ["PickUp"] = {
+                72268,
+            },
+            ["TT"] = {
+                ["y"] = 3552.0,
+                ["x"] = -1452.5,
+            },
+            ["ExtraLineText"] = "CHOOSE_ZONE",
+            ["ExtraLineText2"] = "CHOOSE_ZONE_DF_AS",
+            ["HasAchievement"] = 16326,
+        },
+        { -- [step X
+            ["PickUp"] = {
+                72269,
+            },
+            ["TT"] = {
+                ["y"] = 3552.0,
+                ["x"] = -1452.5,
+            },
+            ["ExtraLineText"] = "CHOOSE_ZONE",
+            ["ExtraLineText2"] = "CHOOSE_ZONE_DF_THAL",
+            ["HasAchievement"] = 16326,
+        },
+        { -- [step X
             ["Done"] = {
                 72266,
             },
