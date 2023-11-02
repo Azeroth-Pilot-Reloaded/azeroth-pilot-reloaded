@@ -281,14 +281,22 @@ function APR.currentStep:ProgressBar(key, total, current)
 
         local progressBarText = progressBar:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
         progressBarText:SetPoint("CENTER", progressBar, "CENTER", 0, 0)
-        progressBarText:SetText(currentStep .. " / " .. totalSteps)
+        if totalSteps > 0 then
+            progressBarText:SetText(currentStep .. " / " .. totalSteps)
+        else
+            progressBarText:SetText("")
+        end
 
         self.progressBar = progressBar
         self.progressBar.Text = progressBarText
         self.progressBar.key = key
     else
         self.progressBar:SetValue(currentStep)
-        self.progressBar.Text:SetText(currentStep .. " / " .. totalSteps)
+        if totalSteps > 0 then
+            self.progressBar.Text:SetText(currentStep .. " / " .. totalSteps)
+        else
+            self.progressBar.Text:SetText("")
+        end
     end
 end
 
