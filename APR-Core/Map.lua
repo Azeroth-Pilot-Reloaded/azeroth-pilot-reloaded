@@ -491,11 +491,16 @@ function APR.map:CreatePin(index, step)
     pinFrame.text:SetPoint("CENTER", pinFrame, "CENTER", 0, 0)
     pinFrame.text:SetText(index)
 
-    -- -- GameTooltip
+    -- GameTooltip
     -- pinFrame:SetScript("OnEnter", function(self)
+    --     local string, key = GetStepString(step)
     --     GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-    --     GameTooltip:AddLine(index .. " - " .. GetStepString(step), 1, 1, 1)
+    --     GameTooltip:AddLine(index .. " - " .. string)
+    --     GameTooltip:AddLine(step[key],
+    --         1,
+    --         1, 1)
     --     GameTooltip:Show()
+    --     -- " - |cffeda55f" .. C_QuestLog.GetTitleForQuestID(step[key]) or 'unkown' .. "|r"
     -- end)
     -- pinFrame:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
 
@@ -570,7 +575,7 @@ APR.map.eventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "ADDON_LOADED") then
         APR.map.dottedLine = self:CreateAnimationGroup()
         APR.map.dottedLine.anim = APR.map.dottedLine:CreateAnimation()
-        APR.map.dottedLine.anim:SetDuration(0.1)
+        APR.map.dottedLine.anim:SetDuration(0.2)
         APR.map.dottedLine:SetLooping("REPEAT")
         APR.map.dottedLine:SetScript("OnLoop", function(self, event, ...)
             if next(APR.map.minimapLine) then

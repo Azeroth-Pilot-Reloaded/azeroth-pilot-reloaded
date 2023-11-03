@@ -23,7 +23,7 @@ function GetStepString(step)
 
     for key, _ in pairs(step) do
         if stepMappings[key] then
-            return stepMappings[key]
+            return stepMappings[key], key
         end
     end
 
