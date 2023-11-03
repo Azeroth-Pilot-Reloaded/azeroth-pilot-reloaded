@@ -76,10 +76,12 @@ function APR.settings:InitializeSettings()
             miniMapBlobAlpha = 0.5,
             enableMinimapButton = true,
             minimap = { minimapPos = 250 },
-            minimapshow10NextStep = false,
+            minimapshowNextSteps = false,
+            minimapshowNextStepsCount = 5,
             -- map
             showMapBlobs = true,
-            mapshow10NextStep = false,
+            mapshowNextSteps = false,
+            mapshowNextStepsCount = 5,
             -- Heirloom
             heirloomWarning = true, -- DisableHeirloomWarning
             -- group
@@ -574,16 +576,31 @@ function APR.settings:createBlizzOptions()
                                     end
                                 end
                             },
-                            mapshow10NextStep = {
+                            mapshowNextSteps = {
                                 order = 9.41,
                                 type = "toggle",
                                 name = L["SHOW_STEPS_MAP"],
                                 desc = L["SHOW_STEPS_MAP_DESC"],
-                                width = "full",
                                 get = GetProfileOption,
                                 set = function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:AddMapPins()
+                                end,
+                            },
+                            mapshowNextStepsCount = {
+                                order = 9.42,
+                                type = "range",
+                                name = L["SHOW_STEPS_MAP_COUNT"],
+                                min = 0,
+                                max = 25,
+                                step = 1,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.map:AddMapPins()
+                                end,
+                                disabled = function()
+                                    return not self.profile.mapshowNextSteps
                                 end,
                             },
                         },
@@ -624,20 +641,35 @@ function APR.settings:createBlizzOptions()
                                     end
                                 end
                             },
-                            minimapshow10NextStep = {
+                            minimapshowNextSteps = {
                                 order = 9.3,
                                 type = "toggle",
                                 name = L["SHOW_STEPS_MINIMAP"],
                                 desc = L["SHOW_STEPS_MINIMAP_DESC"],
-                                width = "full",
                                 get = GetProfileOption,
                                 set = function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:AddMapPins()
                                 end,
                             },
-                            miniMapBlobAlpha = {
+                            minimapshowNextStepsCount = {
                                 order = 9.4,
+                                type = "range",
+                                name = L["SHOW_STEPS_MAP_COUNT"],
+                                min = 0,
+                                max = 25,
+                                step = 1,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.map:AddMapPins()
+                                end,
+                                disabled = function()
+                                    return not self.profile.minimapshowNextSteps
+                                end,
+                            },
+                            miniMapBlobAlpha = {
+                                order = 9.5,
                                 type = "range",
                                 name = L["MINIMAP_BLOB_ALPHA"],
                                 desc = L["MINIMAP_BLOB_ALPHA_DESC"],

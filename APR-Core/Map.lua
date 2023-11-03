@@ -524,38 +524,28 @@ function APR.map:AddMapPins()
     local mapID = WorldMapFrame:GetMapID() or C_Map.GetBestMapForUnit("player")
 
     if APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and CurStep then
+        local mapshowNextStepsCount = APR.settings.profile.mapshowNextStepsCount
+        local minimapshowNextStepsCount = APR.settings.profile.minimapshowNextStepsCount
+        local mapStepDisplayed = 0
+        local minimapStepDisplayed = 0
         for stepIndex, steps in pairs(APR.QuestStepList[APR.ActiveMap]) do
-            if steps["TT"] and (stepIndex > CurStep) and (stepIndex < CurStep + 11) then
+            if steps["TT"] and (stepIndex >= CurStep) and (stepIndex <= CurStep + math.max(mapshowNextStepsCount, minimapshowNextStepsCount)) then
                 if not self.pinlist[stepIndex] then
                     self.pinlist[stepIndex] = self:CreatePin(stepIndex, steps)
                     self.minimapPinlist[stepIndex] = self:CreatePin(stepIndex, steps)
                 end
 
-                if not steps["CRange"] then
-                    local x, y = APR:GetPlayerMapPos(mapID, steps["TT"]["y"], steps["TT"]["x"])
-                    if x and y then
-                        if APR.settings.profile.mapshow10NextStep then
-                            hbdPins:AddWorldMapIconMap(APR.title, self.pinlist[stepIndex], mapID, x, y, 3)
-                        end
-                        if APR.settings.profile.minimapshow10NextStep then
-                            hbdPins:AddMinimapIconMap(APR.title, self.minimapPinlist[stepIndex], mapID, x, y, true, true)
-                        end
+                local x, y = APR:GetPlayerMapPos(mapID, steps["TT"]["y"], steps["TT"]["x"])
+                if x and y then
+                    if APR.settings.profile.mapshowNextSteps and mapshowNextStepsCount > mapStepDisplayed then
+                        hbdPins:AddWorldMapIconMap(APR.title, self.pinlist[stepIndex], mapID, x, y, 3)
+                        mapStepDisplayed = mapStepDisplayed + 1
+                    end
+                    if APR.settings.profile.minimapshowNextSteps and minimapshowNextStepsCount > minimapStepDisplayed then
+                        hbdPins:AddMinimapIconMap(APR.title, self.minimapPinlist[stepIndex], mapID, x, y, true, true)
+                        minimapStepDisplayed = minimapStepDisplayed + 1
                     end
                 end
-            end
-        end
-
-        -- Display current step pin
-        local currentStep = APR.QuestStepList[APR.ActiveMap][CurStep]
-        if currentStep and currentStep["TT"] then
-            if not self.pinlist[stepIndex] then
-                self.pinlist[CurStep] = self:CreatePin(CurStep, currentStep)
-                self.minimapPinlist[CurStep] = self:CreatePin(CurStep, currentStep)
-            end
-            local x, y = APR:GetPlayerMapPos(mapID, currentStep["TT"]["y"], currentStep["TT"]["x"])
-            if x and y then
-                hbdPins:AddWorldMapIconMap(APR.title, self.pinlist[CurStep], mapID, x, y, 3)
-                hbdPins:AddMinimapIconMap(APR.title, self.minimapPinlist[CurStep], mapID, x, y, true, true)
             end
         end
     end
