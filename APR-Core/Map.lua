@@ -575,7 +575,7 @@ APR.map.eventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "ADDON_LOADED") then
         APR.map.dottedLine = self:CreateAnimationGroup()
         APR.map.dottedLine.anim = APR.map.dottedLine:CreateAnimation()
-        APR.map.dottedLine.anim:SetDuration(0.2)
+        APR.map.dottedLine.anim:SetDuration(0.15)
         APR.map.dottedLine:SetLooping("REPEAT")
         APR.map.dottedLine:SetScript("OnLoop", function(self, event, ...)
             if next(APR.map.minimapLine) then

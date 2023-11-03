@@ -302,9 +302,26 @@ function APR.settings:createBlizzOptions()
                                 .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
                         end,
                     },
+                    currentStepbackgroundColorAlpha = {
+                        order = 5.3,
+                        type = "color",
+                        name = L["BACKGROUND_COLOR_ALPHA"],
+                        width = optionsWidth,
+                        hasAlpha = true,
+                        get = function()
+                            return unpack(self.profile.currentStepbackgroundColorAlpha)
+                        end,
+                        set = function(info, r, g, b, a)
+                            SetProfileOption(info, { r, g, b, a })
+                            APR.currentStep:UpdateBackgroundColorAlpha()
+                        end,
+                        disabled = function()
+                            return not self.profile.currentStepShow or not self.profile.enableAddon
+                        end,
+                    },
                     resetCurrentStepPosition = {
                         name = L['RESET_CURRENT_STEP_FRAME_POSITION'],
-                        order = 5.3,
+                        order = 5.4,
                         type = 'execute',
                         width = "full",
                         func = function()

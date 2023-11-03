@@ -26,6 +26,12 @@ local CurrentStepFrame = CreateFrame("Frame", "CurrentStepScreenPanel", UIParent
 CurrentStepFrame:SetSize(FRAME_WIDTH, 100)
 CurrentStepFrame:SetFrameStrata("LOW")
 CurrentStepFrame:SetClampedToScreen(true)
+CurrentStepFrame:SetBackdrop({
+    bgFile = "Interface\\BUTTONS\\WHITE8X8",
+    tile = true,
+    tileSize = 16
+})
+CurrentStepFrame:SetBackdropColor(0, 0, 0, 0)
 
 -- Create the step holder frame
 local CurrentStepFrame_StepHolder = CreateFrame("Frame", "CurrentStepFrame_StepHolder", CurrentStepFrame,
@@ -109,6 +115,10 @@ function APR.currentStep:UpdateFrameScale()
     LibWindow.SetScale(CurrentStepScreenPanel, APR.settings.profile.currentStepScale)
 end
 
+function APR.currentStep:UpdateBackgroundColorAlpha(color)
+    CurrentStepFrame:SetBackdropColor(unpack(color or APR.settings.profile.currentStepbackgroundColorAlpha))
+end
+
 -- Refresh the frame positioning
 function APR.currentStep:RefreshCurrentStepFrameAnchor()
     if InCombatLockdown() then
@@ -123,6 +133,7 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
         CurrentStepScreenPanel:EnableMouse(false)
         CurrentStepScreenPanel:ClearAllPoints()
         CurrentStepFrame:SetScale(1)
+        APR.currentStep:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
 
         for i = 1, ObjectiveTrackerFrame:GetNumPoints() do
             local point, relativeTo, relativePoint, xOfs, yOfs = ObjectiveTrackerFrame:GetPoint(i)
@@ -149,6 +160,7 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
 
         LibWindow.RestorePosition(CurrentStepScreenPanel)
         self:UpdateFrameScale()
+        self:UpdateBackgroundColorAlpha()
 
         CurrentStepFrameHeader:ClearAllPoints()
         CurrentStepFrameHeader:SetPoint("bottom", CurrentStepFrame, "top", 0, -20)
@@ -162,6 +174,7 @@ function APR.currentStep:ResetPosition()
     CurrentStepScreenPanel:ClearAllPoints()
     CurrentStepScreenPanel:SetPoint("center", UIParent, "center", 0, 0)
     LibWindow.SavePosition(CurrentStepScreenPanel)
+    self:UpdateBackgroundColorAlpha()
 end
 
 -- Hook on update for ObjectiveTrackerFrame (quests log)
@@ -322,12 +335,6 @@ local AddStepsFrame = function(questDesc, extraLineText)
     -- Set the size of the container based on the text length
     container:SetWidth(FRAME_WIDTH)
     container:SetHeight(font:GetStringHeight() + 10)
-    -- container:SetBackdrop({
-    --     bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
-    --     tile = true,
-    --     tileSize = 16
-    -- })
-    -- container:SetBackdropColor(0, 0, 0, 0.75)
 
     return container
 end
@@ -434,6 +441,9 @@ function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
         questContainer:Show()
         FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - questContainer:GetHeight()
     end
+
+    -- adapt parent height to the contents
+    CurrentStepFrame:SetHeight(FRAME_STEP_HOLDER_HEIGHT)
 end
 
 -- Remove all  quest steps and extra line texts
