@@ -57,7 +57,7 @@ function APR.settings:InitializeSettings()
             currentStepLock = false,
             currentStepScale = 1,
             currentStepbackgroundColorAlpha = { 0, 0, 0, 0.4 },
-            currentStepAttachFrameToQuestLog = true,
+            currentStepAttachFrameToQuestLog = false,
             -- quest order list
             questOrderListFrame = {},
             showQuestOrderList = false,
@@ -254,8 +254,8 @@ function APR.settings:createBlizzOptions()
                     currentStepAttachFrameToQuestLog = {
                         order = 5.11,
                         type = "toggle",
-                        name = "Attach To QuestLog",
-                        desc = "current Step Attach Frame To QuestLog",
+                        name = L["QLIST_ATTACH_QUESTLOG"],
+                        desc = L["QLIST_ATTACH_QUESTLOG_DESC"],
                         width = optionsWidth,
                         get = GetProfileOption,
                         set = function(info, value)
@@ -282,8 +282,26 @@ function APR.settings:createBlizzOptions()
                                 .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
                         end,
                     },
-                    currentStepScale = {
+                    currentStepbackgroundColorAlpha = {
                         order = 5.2,
+                        type = "color",
+                        name = L["BACKGROUND_COLOR_ALPHA"],
+                        width = optionsWidth,
+                        hasAlpha = true,
+                        get = function()
+                            return unpack(self.profile.currentStepbackgroundColorAlpha)
+                        end,
+                        set = function(info, r, g, b, a)
+                            SetProfileOption(info, { r, g, b, a })
+                            APR.currentStep:UpdateBackgroundColorAlpha()
+                        end,
+                        disabled = function()
+                            return not self.profile.currentStepShow or not self.profile.enableAddon or
+                                self.profile.currentStepAttachFrameToQuestLog
+                        end,
+                    },
+                    currentStepScale = {
+                        order = 5.3,
                         type = "range",
                         name = L["QLIST_SCALE"],
                         desc = L["QLIST_SCALE_DESC"],
@@ -300,23 +318,6 @@ function APR.settings:createBlizzOptions()
                         disabled = function()
                             return not self.profile.currentStepShow or self.profile
                                 .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
-                        end,
-                    },
-                    currentStepbackgroundColorAlpha = {
-                        order = 5.3,
-                        type = "color",
-                        name = L["BACKGROUND_COLOR_ALPHA"],
-                        width = optionsWidth,
-                        hasAlpha = true,
-                        get = function()
-                            return unpack(self.profile.currentStepbackgroundColorAlpha)
-                        end,
-                        set = function(info, r, g, b, a)
-                            SetProfileOption(info, { r, g, b, a })
-                            APR.currentStep:UpdateBackgroundColorAlpha()
-                        end,
-                        disabled = function()
-                            return not self.profile.currentStepShow or not self.profile.enableAddon
                         end,
                     },
                     resetCurrentStepPosition = {
