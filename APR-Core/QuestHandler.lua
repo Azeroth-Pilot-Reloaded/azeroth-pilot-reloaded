@@ -210,7 +210,7 @@ local function APR_UpdateStep()
         print("Function: APR_UpdateStep()")
     end
     if (IsInGroup() and APR.settings.profile.showGroup) then
-    elseif (APR.party:IsShowFrame() or IsInInstance()) then
+    elseif (APR.party:IsShowFrame() or IsInInstance() or C_PetBattles.IsInBattle()) then
         APR.party:RemoveTeam()
         APR.party:HideFrame()
     end
@@ -1369,6 +1369,8 @@ APR_QH_EventFrame:RegisterEvent("UNIT_AURA")
 APR_QH_EventFrame:RegisterEvent("PLAYER_CHOICE_UPDATE")
 APR_QH_EventFrame:RegisterEvent("REQUEST_CEMETERY_LIST_RESPONSE")
 APR_QH_EventFrame:RegisterEvent("UPDATE_UI_WIDGET")
+APR_QH_EventFrame:RegisterEvent("PET_BATTLE_OPENING_START")
+APR_QH_EventFrame:RegisterEvent("PET_BATTLE_CLOSE")
 
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if not APR.settings.profile.enableAddon then
@@ -1985,5 +1987,10 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 end
             end
         end
+    end
+    if event == "PET_BATTLE_OPENING_START" or event == "PET_BATTLE_CLOSE" then
+        APR.currentStep:RefreshCurrentStepFrameAnchor()
+        APR.party:RefreshPartyFrameAnchor()
+        APR.questOrderList:RefreshFrameAnchor()
     end
 end)

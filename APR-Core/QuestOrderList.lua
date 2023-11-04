@@ -101,7 +101,7 @@ function APR.questOrderList:QuestOrderListFrameOnInit()
 end
 
 function APR.questOrderList:RefreshFrameAnchor()
-    if (not APR.settings.profile.showQuestOrderList or not APR.settings.profile.enableAddon or IsInInstance()) then
+    if (not APR.settings.profile.showQuestOrderList or not APR.settings.profile.enableAddon or IsInInstance() or C_PetBattles.IsInBattle()) then
         QuestOrderListPanel:Hide()
         return
     end

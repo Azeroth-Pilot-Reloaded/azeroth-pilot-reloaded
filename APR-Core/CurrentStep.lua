@@ -212,7 +212,7 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
     if InCombatLockdown() then
         return
     end
-    if (not APR.settings.profile.currentStepShow or not APR.settings.profile.enableAddon) then
+    if (not APR.settings.profile.currentStepShow or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle()) then
         CurrentStepScreenPanel:Hide()
         return
     end

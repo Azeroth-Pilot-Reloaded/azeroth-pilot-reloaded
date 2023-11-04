@@ -101,7 +101,7 @@ function APR.party:UpdateFrameScale()
 end
 
 function APR.party:RefreshPartyFrameAnchor()
-    if (not APR.settings.profile.showGroup or not APR.settings.profile.enableAddon) then
+    if (not APR.settings.profile.showGroup or not APR.settings.profile.enableAddon) or C_PetBattles.IsInBattle() then
         PartyScreenPanel:Hide()
         return
     end
@@ -225,6 +225,7 @@ local function UpdateGroupStep()
         APR.party:HideFrame()
         return
     end
+    APR.party:ShowFrame()
     APR.party.GroupListSteps[1] = APR.party.GroupListSteps[1] or {}
     APR.party.GroupListSteps[1].Step = APRData[APR.Realm][APR.Username][APR.ActiveMap]
     APR.party.GroupListSteps[1].Name = APR.Username
