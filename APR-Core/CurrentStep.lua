@@ -16,6 +16,7 @@ APR.currentStep.FrameHeight = 0
 local FRAME_WIDTH = 235
 local FRAME_HEADER_OPFFSET = -50
 local FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
+local isDragging = false
 
 ---------------------------------------------------------------------------------------
 --------------------------------- Current Step Frames ---------------------------------
@@ -43,6 +44,91 @@ local CurrentStepFrameHeader = CreateFrame("Frame", "CurrentStepFrameHeader", Cu
     "ObjectiveTrackerHeaderTemplate")
 CurrentStepFrameHeader.Text:SetText("Azeroth Pilot Reloaded") -- Replace with APR.title if needed
 
+CurrentStepFrameHeader:RegisterForDrag("LeftButton")
+CurrentStepFrameHeader:SetScript("OnDragStart", function(self)
+    if not APR.settings.profile.currentStepLock then
+        self:GetParent():StartMoving()
+        isDragging = true
+    end
+end)
+
+CurrentStepFrameHeader:SetScript("OnDragStop", function(self)
+    self:GetParent():StopMovingOrSizing()
+    LibWindow.SavePosition(CurrentStepScreenPanel)
+    isDragging = false
+end)
+CurrentStepFrameHeader:SetScript("OnMouseDown", function(self, button)
+    if button == "LeftButton" and not isDragging and not APR.settings.profile.currentStepLock then
+        self:GetParent():StartMoving()
+        isDragging = true
+    elseif button == "RightButton" then
+        local menu = CreateFrame("Frame", "CurrentStepHeaderContextMenu", UIParent, "UIDropDownMenuTemplate")
+        local toggleAddon = ''
+        if APR.settings.profile.enableAddon then
+            toggleAddon = "|ccce0000f " .. L["DISABLE"] .. "|r"
+        else
+            toggleAddon = "|c33ecc00f " .. L["ENABLE"] .. "|r"
+        end
+        local menuList = {
+            { text = APR.title,         isTitle = true, notCheckable = true },
+            {
+                text = L["SHOW_MENU"],
+                func = function()
+                    _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
+                end
+            },
+            {
+                text = L["CUSTOM_PATH"],
+                func = function()
+                    APR.RoutePlan.FG1:Show()
+                    APR.BookingList["ClosedSettings"] = true
+                end
+            },
+            {
+                text = toggleAddon .. " " .. L["ADDON"],
+                func = function()
+                    APR.settings.profile.enableAddon = not APR.settings.profile.enableAddon
+                    APR.settings:ToggleAddon()
+                end
+            },
+            { text = L["CURRENT_STEP"], isTitle = true, notCheckable = true },
+            {
+                text = L["QLIST_ATTACH_QUESTLOG"],
+                func = function()
+                    APR.settings.profile.currentStepAttachFrameToQuestLog = not APR.settings.profile
+                        .currentStepAttachFrameToQuestLog
+                    APR.currentStep:RefreshCurrentStepFrameAnchor()
+                end
+            },
+            {
+                text = L["LOCK_WINDOW"],
+                func = function()
+                    APR.settings.profile.currentStepLock = not APR.settings.profile
+                        .currentStepLock
+                    APR.currentStep:RefreshCurrentStepFrameAnchor()
+                end
+            },
+            {
+                text = L["RESET_CURRENT_STEP_FRAME_POSITION"],
+                func = function()
+                    APR.currentStep:ResetPosition()
+                end
+            },
+
+        }
+        EasyMenu(menuList, menu, "cursor", 0, 0, "MENU", 5)
+    end
+end)
+
+CurrentStepFrameHeader:SetScript("OnMouseUp", function(self, button)
+    if button == "LeftButton" and isDragging then
+        self:GetParent():StopMovingOrSizing()
+        LibWindow.SavePosition(CurrentStepScreenPanel)
+        isDragging = false
+    end
+end)
+
+
 -- Create the minimize button
 local minimizeButton = CreateFrame("Button", "CurrentStepFrameHeaderMinimizeButton", CurrentStepFrame, "BackdropTemplate")
 local minimizeButtonText = minimizeButton:CreateFontString(nil, "OVERLAY", "GameFontNormal")
@@ -58,6 +144,7 @@ minimizeButton:SetPoint("topright", CurrentStepFrameHeader, "topright", 0, -4)
 minimizeButton:SetScript("OnClick", function()
     if (CurrentStepFrame.collapsed) then
         APR.currentStep:SetDefaultDisplay()
+        APR.currentStep:UpdateBackgroundColorAlpha()
     else
         CurrentStepFrame.collapsed = true
         minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0, 0.5)
@@ -66,6 +153,7 @@ minimizeButton:SetScript("OnClick", function()
         CurrentStepFrameHeader:Hide()
         minimizeButtonText:Show()
         minimizeButtonText:SetText(APR.title)
+        APR.currentStep:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
     end
 end)
 
