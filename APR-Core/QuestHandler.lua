@@ -209,8 +209,9 @@ local function APR_UpdateStep()
     if (APR.settings.profile.debug) then
         print("Function: APR_UpdateStep()")
     end
-    if (IsInGroup() and APR.settings.profile.showGroup) then
-    elseif (APR.party:IsShowFrame() or IsInInstance() or C_PetBattles.IsInBattle()) then
+    if (IsInGroup() and APR.settings.profile.showGroup and not IsInInstance()) then
+        APR.party:ShowFrame()
+    elseif (APR.party:IsShowFrame()) then
         APR.party:RemoveTeam()
         APR.party:HideFrame()
     end
@@ -1371,6 +1372,8 @@ APR_QH_EventFrame:RegisterEvent("REQUEST_CEMETERY_LIST_RESPONSE")
 APR_QH_EventFrame:RegisterEvent("UPDATE_UI_WIDGET")
 APR_QH_EventFrame:RegisterEvent("PET_BATTLE_OPENING_START")
 APR_QH_EventFrame:RegisterEvent("PET_BATTLE_CLOSE")
+APR_QH_EventFrame:RegisterEvent("GROUP_JOINED")
+APR_QH_EventFrame:RegisterEvent("GROUP_LEFT")
 
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if not APR.settings.profile.enableAddon then
@@ -1478,7 +1481,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "CHAT_MSG_ADDON") then
         local arg1, arg2, arg3, arg4 = ...;
         if (arg1 == "APRChat" and arg3 == "PARTY") then
-            APR.UpdateGroupListing(tonumber(arg2), TrimPlayerServer(arg4))
+            APR.party:UpdateGroupListing(tonumber(arg2), TrimPlayerServer(arg4))
         end
     end
     if (event == "PLAYER_CHOICE_UPDATE") then
@@ -1992,5 +1995,12 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.currentStep:RefreshCurrentStepFrameAnchor()
         APR.party:RefreshPartyFrameAnchor()
         APR.questOrderList:RefreshFrameAnchor()
+    end
+    if event == "GROUP_JOINED" then
+        APR.party:SendGroupMessage()
+    end
+    if event == "GROUP_LEFT" then
+        APR.party:RemoveTeam()
+        APR.party:SendGroupMessage()
     end
 end)

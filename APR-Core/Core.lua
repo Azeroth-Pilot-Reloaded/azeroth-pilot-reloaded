@@ -80,8 +80,10 @@ function APR:OnInitialize()
     -- APR Global Variables, UI oriented
     BINDING_HEADER_APR = APR.title -- Header text for APR's main frame
     _G["BINDING_NAME_" .. "CLICK APRItemButton:LeftButton"] = L["USE_QUEST_ITEM"]
-end
 
+    -- Register tot party frame
+    C_ChatInfo.RegisterAddonMessagePrefix("APRChat")
+end
 function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First character button
     APRData[APR.Realm][APR.Username]["routeChoiceIndex"] = routeChoice
     local ZeMap

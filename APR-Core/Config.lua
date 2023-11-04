@@ -86,7 +86,7 @@ function APR.settings:InitializeSettings()
             heirloomWarning = true, -- DisableHeirloomWarning
             -- group
             groupFrame = {},
-            showGroup = false,
+            showGroup = true,
             groupScale = 1,
             -- route
             greetings = true, --Greetings2
