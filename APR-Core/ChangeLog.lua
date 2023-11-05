@@ -69,6 +69,20 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.0.1", "2023-11-05" },
+        "#Features",
+        "- Added Background and color/alpha picker for Current Step Frame",
+        "- Added a right click menu on the Current Step Frame Header with some shortcuts",
+        "- Added slider to select the number of next step to displayed on the map/minimap",
+
+        "#Bugs",
+        "- Hide APR Frame during Pet battle",
+        "- Fix Party frame (no more luad error + it's working now)",
+        "- Change the default placement for the current step frame to not Attach to Quest Log",
+        "- Fix the lock setting for the Current Step Frame",
+        "- Fix Attach to Quest Log translation",
+        "- Fix the constant next step icon on the map/minimap (with the slider + toogle settings)",
+
         { "v3.0.0", "2023-11-02" },
         "#Features",
         "- New Settings (now it's all in the blizz' options)",
