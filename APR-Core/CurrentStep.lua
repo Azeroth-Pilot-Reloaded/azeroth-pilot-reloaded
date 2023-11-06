@@ -24,7 +24,7 @@ local isDragging = false
 
 -- Create the main current step frame
 local CurrentStepFrame = CreateFrame("Frame", "CurrentStepScreenPanel", UIParent, "BackdropTemplate")
-CurrentStepFrame:SetSize(FRAME_WIDTH, 100)
+CurrentStepFrame:SetSize(FRAME_WIDTH, 0)
 CurrentStepFrame:SetFrameStrata("LOW")
 CurrentStepFrame:SetClampedToScreen(true)
 CurrentStepFrame:SetBackdrop({
@@ -46,7 +46,7 @@ CurrentStepFrameHeader.Text:SetText("Azeroth Pilot Reloaded") -- Replace with AP
 
 CurrentStepFrameHeader:RegisterForDrag("LeftButton")
 CurrentStepFrameHeader:SetScript("OnDragStart", function(self)
-    if not APR.settings.profile.currentStepLock then
+    if not APR.settings.profile.currentStepLock and not APR.settings.profile.currentStepAttachFrameToQuestLog then
         self:GetParent():StartMoving()
         isDragging = true
     end
@@ -58,7 +58,7 @@ CurrentStepFrameHeader:SetScript("OnDragStop", function(self)
     isDragging = false
 end)
 CurrentStepFrameHeader:SetScript("OnMouseDown", function(self, button)
-    if button == "LeftButton" and not isDragging and not APR.settings.profile.currentStepLock then
+    if button == "LeftButton" and not isDragging and not APR.settings.profile.currentStepLock and not APR.settings.profile.currentStepAttachFrameToQuestLog then
         self:GetParent():StartMoving()
         isDragging = true
     elseif button == "RightButton" then
@@ -144,7 +144,8 @@ minimizeButton:SetPoint("topright", CurrentStepFrameHeader, "topright", 0, -4)
 minimizeButton:SetScript("OnClick", function()
     if (CurrentStepFrame.collapsed) then
         APR.currentStep:SetDefaultDisplay()
-        APR.currentStep:UpdateBackgroundColorAlpha()
+        APR.currentStep:UpdateBackgroundColorAlpha(APR.settings.profile.currentStepAttachFrameToQuestLog and
+            { 0, 0, 0, 0 } or nil)
     else
         CurrentStepFrame.collapsed = true
         minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0, 0.5)
@@ -226,13 +227,13 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
         for i = 1, ObjectiveTrackerFrame:GetNumPoints() do
             local point, relativeTo, relativePoint, xOfs, yOfs = ObjectiveTrackerFrame:GetPoint(i)
             CurrentStepScreenPanel:SetPoint(point, relativeTo, relativePoint, -10 + xOfs,
-                yOfs - APR.currentStep.FrameHeight - 20)
+                yOfs + FRAME_STEP_HOLDER_HEIGHT - 40)
         end
 
         if (APR.currentStep.FrameAttachToModule) then
             CurrentStepScreenPanel:ClearAllPoints()
             CurrentStepScreenPanel:SetPoint("top", APR.currentStep.FrameAttachToModule.Header, "bottom", 0,
-                -APR.currentStep.FrameHeight + 10)
+                -APR.currentStep.FrameHeight + FRAME_STEP_HOLDER_HEIGHT + 20)
         end
 
         CurrentStepFrameHeader:ClearAllPoints()
@@ -532,6 +533,11 @@ function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
 
     -- adapt parent height to the contents
     CurrentStepFrame:SetHeight(FRAME_STEP_HOLDER_HEIGHT)
+    if not APR.settings.profile.currentStepAttachFrameToQuestLog then
+        LibWindow.RestorePosition(CurrentStepScreenPanel)
+    else
+        self:RefreshCurrentStepFrameAnchor()
+    end
 end
 
 -- Remove all  quest steps and extra line texts
