@@ -224,6 +224,7 @@ local function APR_UpdateStep()
         end
         if (not InCombatLockdown()) then
             APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
+            APR.currentStep:Disable()
         end
     end
 
@@ -600,7 +601,7 @@ local function APR_UpdateStep()
                 _G.NextQuestStep()
                 return
             elseif not APR.ZoneTransfer then
-                APR.currentStep:UpdateQuestSteps(IdList, APR.CheckCRangeText(), "CRange")
+                APR.currentStep:AddExtraLineText("CRange" .. IdList, APR.CheckCRangeText(), true)
             end
         elseif (steps["Treasure"]) then
             IdList = steps["Treasure"]
@@ -880,7 +881,6 @@ end
 
 function APR.CheckCRangeText()
     local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
-    local i = 1
     local waypoints = {
         ["FlightPath"] = L["GET_FLIGHTPATH"],
         ["UseFlightPath"] = L["USE_FLIGHTPATH"],
@@ -892,20 +892,18 @@ function APR.CheckCRangeText()
         ["QpartPart"] = L["COMPLETE_Q"]
     }
 
-    while i <= 15 do
-        CurStep = CurStep + 1
-        local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-
-        if steps and waypoints[steps] then
-            local Derp2 = "[" .. L["WAYPOINT"] .. "] - " .. waypoints[steps]
-            return Derp2
+    for i = CurStep, #APR.QuestStepList[APR.ActiveMap] do
+        local step = APR.QuestStepList[APR.ActiveMap][i]
+        if step then
+            for waypoint, _ in pairs(waypoints) do
+                if step[waypoint] then
+                    return "[" .. L["WAYPOINT"] .. "] - " .. waypoints[waypoint]
+                end
+            end
         end
-
-        i = i + 1
     end
 
-    local Derp2 = L["TRAVEL_TO"]
-    return Derp2
+    return L["TRAVEL_TO"] .. " - " .. L["WAYPOINT"]
 end
 
 local function APR_UpdateQuest()
