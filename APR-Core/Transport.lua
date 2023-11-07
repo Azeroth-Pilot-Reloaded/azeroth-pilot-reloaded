@@ -693,11 +693,6 @@ function APR.FP.GetMeToNextZone()
         APR.FP.GoToZone = nil
         return
     end
-    if (APR.ActiveQuests and APR.ActiveQuests[32675] and playerMapInfo == 84 and APR.Faction == "Alliance") then
-        APR.ActiveMap = "A84-LearnFlying"
-        APR.FP.GoToZone = nil
-        return
-    end
 
     ----------------------------------------------------------------
     ----------------- Old GetMeToNextZone2 part --------------------
@@ -772,8 +767,6 @@ function APR.FP.GetMeToNextZone()
     elseif ((routeMapID == 1536) and APR.ActiveQuests and APR.ActiveQuests["59974"]) then
         APR.ZoneTransfer = false
     elseif (((routeMapID == 71) or (routeMapID == 249)) and APR.ActiveMap == "A71-Tanaris") then
-        APR.ZoneTransfer = false
-    elseif (APR.ActiveMap == "A84-LearnFlying") then
         APR.ZoneTransfer = false
     elseif (playerMapID == 427 and APR.ActiveMap ~= "A27-ColdridgeValleyDwarf") then
         -- Coldridge Valley (Dwarf/gnum)
