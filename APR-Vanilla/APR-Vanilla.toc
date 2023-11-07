@@ -1,4 +1,4 @@
-## Interface: 100107
+## Interface: 100200
 ## X-Min-Interface: 100007
 
 ## Title: Azeroth Pilot Reloaded - [|cffeda55fVanilla|r]
