@@ -256,7 +256,7 @@ function APR.questOrderList:UpdateFrameContents()
 end
 
 function APR.questOrderList:AddStepFromRoute()
-    if not APR.settings.profile.enableAddon or not APR.QuestStepList[APR.ActiveMap] or IsInInstance() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.QuestStepList[APR.ActiveMap] or IsInInstance() then
         self:RemoveSteps()
         return
     end
@@ -414,6 +414,4 @@ function APR.questOrderList:AddStepFromRoute()
     local curStepDisplayed = CurStep - (APRData[APR.Realm][APR.Username][APR.ActiveMap .. '-SkippedStep'] or 0)
     -- set current Step indicator
     SetCurrentStepIndicator(curStepDisplayed)
-    -- set Progress bar with the right total
-    APR.currentStep:ProgressBar(APR.ActiveMap, stepIndex - 1, curStepDisplayed)
 end

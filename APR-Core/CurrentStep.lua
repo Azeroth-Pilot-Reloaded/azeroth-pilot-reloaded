@@ -403,6 +403,18 @@ function APR.currentStep:ProgressBar(key, total, current)
     end
 end
 
+function APR.currentStep:SetProgressBar(CurStep)
+    if APR.ActiveMap then
+        if not APRData[APR.Realm][APR.Username]
+            [APR.ActiveMap .. '-TotalSteps'] then
+            _G.GetTotalSteps()
+        end
+        local curStepDisplayed = CurStep - (APRData[APR.Realm][APR.Username][APR.ActiveMap .. '-SkippedStep'] or 0)
+        APR.currentStep:ProgressBar(APR.ActiveMap, APRData[APR.Realm][APR.Username]
+            [APR.ActiveMap .. '-TotalSteps'], curStepDisplayed)
+    end
+end
+
 -- Displaying quest information
 local AddStepsFrame = function(questDesc, extraLineText, noStars)
     local textTemplate = "GameFontHighlight" -- white color
@@ -476,7 +488,6 @@ end
 ---@param key string Locale table key
 ---@param text string L[key]
 function APR.currentStep:AddExtraLineText(key, text, noStars)
-    noStars = noStars or true
     if InCombatLockdown() or not APR.settings.profile.currentStepShow then
         return
     end
