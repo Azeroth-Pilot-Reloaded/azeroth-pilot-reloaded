@@ -32,7 +32,7 @@ function APR:OnInitialize()
     APR.NPCList = {}
 
     APR.Breadcrums = {}
-    APR.ZoneTransfer = false
+    APR.IsInRouteZone = false
     APR.ProgressShown = false
 
     -- BookingList
@@ -2701,6 +2701,9 @@ APR.CoreEventFrame = CreateFrame("Frame")
 APR.CoreEventFrame:RegisterEvent("ADDON_LOADED")
 APR.CoreEventFrame:RegisterEvent("PLAYER_LEVEL_UP")
 APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
+    if APR.settings.profile.showEvent then
+        print("EVENT: Core - ", event)
+    end
     if (event == "ADDON_LOADED") then
         local arg1, arg2, arg3, arg4, arg5 = ...;
         if (arg1 ~= "APR-Core") then
@@ -2819,23 +2822,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
             APR.settings.profile.arrowtop)
 
-        APR.ButtonBookingTimer = APR.CoreEventFrame:CreateAnimationGroup()
-        APR.ButtonBookingTimer.anim = APR.ButtonBookingTimer:CreateAnimation()
-        APR.ButtonBookingTimer.anim:SetDuration(5)
-        APR.ButtonBookingTimer:SetLooping("REPEAT")
-        APR.ButtonBookingTimer:SetScript("OnLoop", function(self, event, ...)
-            APR.SetButton()
-        end)
-        APR.ButtonBookingTimer:Play()
-        APR.LoadInTimer = APR.CoreEventFrame:CreateAnimationGroup()
-        APR.LoadInTimer.anim = APR.LoadInTimer:CreateAnimation()
-        APR.LoadInTimer.anim:SetDuration(10)
-        APR.LoadInTimer:SetLooping("REPEAT")
-        APR.LoadInTimer:SetScript("OnLoop", function(self, event, ...)
-            APR.BookingList["UpdateStep"] = true
-            APR.LoadInTimer:Stop()
-        end)
-        APR.LoadInTimer:Play()
+        APR.BookingList["UpdateStep"] = true
         CoreLoadin = true
     end
     if (event == "PLAYER_LEVEL_UP") then

@@ -94,6 +94,7 @@ function APR.settings:InitializeSettings()
             afkFrame = {},
             --debug
             debug = false,
+            showEvent = false,
             enableAddon = true,
             changeLogFrame = {},
             showChangeLog = true,
@@ -837,6 +838,17 @@ function APR.settings:createBlizzOptions()
                                 order = 2.1,
                                 type = "toggle",
                                 name = L["DEBUG"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = SetProfileOption,
+                                disabled = function()
+                                    return not self.profile.enableAddon
+                                end,
+                            },
+                            showEvent = {
+                                order = 2.2,
+                                type = "toggle",
+                                name = "Show Event",
                                 width = "full",
                                 get = GetProfileOption,
                                 set = SetProfileOption,
