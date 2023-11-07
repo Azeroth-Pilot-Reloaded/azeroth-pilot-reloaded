@@ -76,3 +76,22 @@ function PreviousQuestStep()
     -- Update the quest and step
     UpdateQuestAndStep()
 end
+
+function GetTotalSteps()
+    local stepIndex = 0
+    for id, step in pairs(APR.QuestStepList[APR.ActiveMap]) do
+        -- Hide step for Faction, Race, Class, Achievement
+        if (
+                (not step.Faction or step.Faction == APR.Faction) and
+                (not step.Race or step.Race == APR.Race) and
+                (not step.Class or step.Class == APR.ClassName) and
+                (not step.HasAchievement or _G.HasAchievement(step.HasAchievement)) and
+                (not step.DontHaveAchievement or not _G.HasAchievement(step.DontHaveAchievement))
+            ) then
+            stepIndex = stepIndex + 1
+        end
+    end
+    APRData[APR.Realm][APR.Username]
+    [APR.ActiveMap .. '-TotalSteps'] = stepIndex
+    return stepIndex
+end

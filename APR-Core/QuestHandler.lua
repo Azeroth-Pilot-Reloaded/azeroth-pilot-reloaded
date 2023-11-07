@@ -838,7 +838,8 @@ local function APR_UpdateStep()
         end
         APR.BookingList["SetQPTT"] = true
         APR.questOrderList:AddStepFromRoute()
-
+        -- set Progress bar with the right total
+        APR.currentStep:SetProgressBar(CurStep)
     elseif (APRWhereToGo and not APR.ZoneTransfer) then
         APR.currentStep:AddExtraLineText("GO_TO_" .. APRWhereToGo, L["GO_TO"] .. " " .. APRWhereToGo)
     else

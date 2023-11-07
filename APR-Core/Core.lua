@@ -84,6 +84,7 @@ function APR:OnInitialize()
     -- Register tot party frame
     C_ChatInfo.RegisterAddonMessagePrefix("APRChat")
 end
+
 function APR.AutoPathOnBeta(routeChoice) -- For the Speed run and First character button
     APRData[APR.Realm][APR.Username]["routeChoiceIndex"] = routeChoice
     local ZeMap
@@ -2764,7 +2765,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 if (APR:GetContinent() and not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]) then
                     APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm] = {}
                 end
-                local CLi
                 if (APR:GetContinent() and not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"]) then
                     APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"] = {}
                 end
@@ -2788,6 +2788,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 APRData[APR.Realm][APR.Username]["QuestCounter"] = getn(CQIDs)
                 APRData[APR.Realm][APR.Username]["QuestCounter2"] = APRData[APR.Realm][APR.Username]["QuestCounter"]
                 APR_QidsTimer:Play()
+                APR_LoadInTimer:Stop()
             end
         end)
         APR_LoadInTimer:Play()
