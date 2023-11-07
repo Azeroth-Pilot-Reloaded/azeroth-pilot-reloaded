@@ -252,6 +252,7 @@ local function APR_UpdateStep()
         if (SkipStepCondition(steps)) then
             return
         end
+
         if (APR.ActiveQuests and APR.ActiveQuests[57867] and not APR.ZoneTransfer) then
             APR.SweatOfOurBrowBuffFrame:Show()
         else
@@ -837,6 +838,7 @@ local function APR_UpdateStep()
         end
         APR.BookingList["SetQPTT"] = true
         APR.questOrderList:AddStepFromRoute()
+
     elseif (APRWhereToGo and not APR.ZoneTransfer) then
         APR.currentStep:AddExtraLineText("GO_TO_" .. APRWhereToGo, L["GO_TO"] .. " " .. APRWhereToGo)
     else
@@ -1118,9 +1120,6 @@ local function APR_UpdateMapId()
     APR.ActiveMap = APR.ActiveMap or "NoZone"
     if APR.Faction == "Alliance" then
         APR.ActiveMap = "A" .. APR.ActiveMap
-    end
-    if APR.ActiveQuests and APR.ActiveQuests[32675] and APRt_Zone == 84 and APR.Faction == "Alliance" then
-        APR.ActiveMap = "A84-LearnFlying"
     end
     if APR.QuestStepListListingZone then
         APR.BookingList["GetMeToNextZone"] = true
