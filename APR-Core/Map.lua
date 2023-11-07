@@ -565,6 +565,9 @@ APR.map.eventFrame = CreateFrame("Frame")
 APR.map.eventFrame:RegisterEvent("QUEST_LOG_UPDATE")
 APR.map.eventFrame:RegisterEvent("ADDON_LOADED")
 APR.map.eventFrame:SetScript("OnEvent", function(self, event, ...)
+    if APR.settings.profile.showEvent then
+        print("EVENT: Map - ", event)
+    end
     if not APR.settings.profile.enableAddon then
         APR.map:RemoveMapIcons()
         return

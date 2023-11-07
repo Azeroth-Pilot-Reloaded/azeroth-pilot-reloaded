@@ -653,7 +653,7 @@ function APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
 end
 
 function APR.FP.GetMeToNextZone()
-    APR.ZoneTransfer = false
+    APR.IsInRouteZone = false
     if (APR.settings.profile.debug) then
         print("Function: APR.FP.GetMeToNextZone()")
     end
@@ -697,7 +697,7 @@ function APR.FP.GetMeToNextZone()
     ----------------------------------------------------------------
     ----------------- Old GetMeToNextZone2 part --------------------
     ----------------------------------------------------------------
-    APR.ZoneTransfer = true
+    APR.IsInRouteZone = true
     if (APR.settings.profile.debug) then
         print("Function: APR.FP.GetMeToNextZone() Part 2")
     end
@@ -708,7 +708,7 @@ function APR.FP.GetMeToNextZone()
         return
     end
     if (not APR.FP.GoToZone) then
-        APR.ZoneTransfer = false
+        APR.IsInRouteZone = false
         return
     end
 
@@ -759,15 +759,15 @@ function APR.FP.GetMeToNextZone()
         end
     end
     if (((routeMapID == 181) or (routeMapID == 202) or (routeMapID == 179)) and APR.ActiveMap == "A179-Gilneas") then
-        APR.ZoneTransfer = false
+        APR.IsInRouteZone = false
     elseif (((routeMapID == 97) or (routeMapID == 106)) and APR.ActiveMap == "A106-BloodmystIsle") then
-        APR.ZoneTransfer = false
+        APR.IsInRouteZone = false
     elseif (((routeMapID == 69) or (routeMapID == 64)) and APR.ActiveMap == "A64-ThousandNeedles") then
-        APR.ZoneTransfer = false
+        APR.IsInRouteZone = false
     elseif ((routeMapID == 1536) and APR.ActiveQuests and APR.ActiveQuests["59974"]) then
-        APR.ZoneTransfer = false
+        APR.IsInRouteZone = false
     elseif (((routeMapID == 71) or (routeMapID == 249)) and APR.ActiveMap == "A71-Tanaris") then
-        APR.ZoneTransfer = false
+        APR.IsInRouteZone = false
     elseif (playerMapID == 427 and APR.ActiveMap ~= "A27-ColdridgeValleyDwarf") then
         -- Coldridge Valley (Dwarf/gnum)
         APR.currentStep:AddExtraLineText("GO_CAVE", L["GO_CAVE"])
@@ -820,21 +820,21 @@ function APR.FP.GetMeToNextZone()
     else
         if (routeMapID == GoToZone) then
             APR.FP.GoToZone = nil
-            APR.ZoneTransfer = false
+            APR.IsInRouteZone = false
         else
             local togozo, ZefpID
-            if (APR:GetContinent() and APR_Transport["FPs"][APR.Faction][APR:GetContinent()]) then
+            local continent = APR:GetContinent()
+            if (continent and APR_Transport["FPs"][APR.Faction][continent]) then
                 togozo, ZefpID = APR.FP.GetStarterZoneFP(GoToZone)
             end
             if (togozo ~= nil) then
                 local ZeContz
-                if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]) then
-                    APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm] = {}
+                if (not APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]) then
+                    APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm] = {}
                 end
-                if (APR_Transport["FPs"][APR.Faction][APR:GetContinent()] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"][APR:GetContinent()]) then
-                    ZeContz = APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]
-                        ["Conts"]
-                        [APR:GetContinent()]
+                if (APR_Transport["FPs"][APR.Faction][continent] and APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"][APR:GetContinent()]) then
+                    ZeContz = APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"]
+                        [continent]
                 else
                     ZeContz = nil
                 end
@@ -848,7 +848,7 @@ function APR.FP.GetMeToNextZone()
                         APR.ArrowActive_Y = ZeY
                     end
                 else
-                    local zeFP = APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]
+                    local zeFP = APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]
                         [ZefpID]
                     if (zeFP and zeFP == 1) then
                         APR.currentStep:AddExtraLineText("FLY_TO_" .. togozo, L["FLY_TO"] .. " " .. togozo)
@@ -878,7 +878,7 @@ function APR.FP.GetMeToNextZone()
             end
         end
     end
-    if (APR.ZoneTransfer) then
+    if APR.IsInRouteZone then
         C_Timer.After(2, APR.FP.GetMeToNextZone)
     end
     if (DestSet == 1) then
@@ -891,14 +891,15 @@ end
 function APR.FP.CheckWheretoRun(GoToZone, APRt_Zone)
     if (APR.TDB["ZoneMoveOrder"][APRt_Zone] and APR.TDB["ZoneMoveOrder"][APRt_Zone][GoToZone]) then
         local zdse = APR.TDB["ZoneMoveOrder"][APRt_Zone][GoToZone]
-        if (APR.TDB["ZoneEntry"][APR:GetContinent()] and APR.TDB["ZoneEntry"][APR:GetContinent()][zdse]) then
+        local continent = APR:GetContinent()
+        if (APR.TDB["ZoneEntry"][continent] and APR.TDB["ZoneEntry"][continent][zdse]) then
             local closest = 9999
             local zeX = 0
             local zeY = 0
             local d_y, d_x = UnitPosition("player")
-            for APR_index, APR_value in pairs(APR.TDB["ZoneEntry"][APR:GetContinent()][zdse]) do
-                local x = APR.TDB["ZoneEntry"][APR:GetContinent()][zdse][APR_index]["x"]
-                local y = APR.TDB["ZoneEntry"][APR:GetContinent()][zdse][APR_index]["y"]
+            for APR_index, APR_value in pairs(APR.TDB["ZoneEntry"][continent][zdse]) do
+                local x = APR.TDB["ZoneEntry"][continent][zdse][APR_index]["x"]
+                local y = APR.TDB["ZoneEntry"][continent][zdse][APR_index]["y"]
                 local deltaX, deltaY = d_x - x, y - d_y
                 local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
                 if (distance < closest) then
@@ -913,6 +914,7 @@ function APR.FP.CheckWheretoRun(GoToZone, APRt_Zone)
 end
 
 function APR.FP.GetStarterZoneFP(GoToZone, DestCont)
+    local continent = APR:GetContinent()
     if (DestCont) then
         for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction][DestCont][GoToZone]) do
             if (APR.TDB["FPs"][APR.Faction][DestCont][GoToZone][APR_index]["Starter"]) then
@@ -925,14 +927,14 @@ function APR.FP.GetStarterZoneFP(GoToZone, DestCont)
                 return zclosestname, APR_index
             end
         end
-    elseif (GoToZone and APR.TDB["FPs"][APR.Faction][APR:GetContinent()] and APR.TDB["FPs"][APR.Faction][APR:GetContinent()][GoToZone]) then
-        for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction][APR:GetContinent()][GoToZone]) do
-            if (APR.TDB["FPs"][APR.Faction][APR:GetContinent()][GoToZone][APR_index]["Starter"]) then
+    elseif (GoToZone and APR.TDB["FPs"][APR.Faction][continent] and APR.TDB["FPs"][APR.Faction][continent][GoToZone]) then
+        for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction][continent][GoToZone]) do
+            if (APR.TDB["FPs"][APR.Faction][continent][GoToZone][APR_index]["Starter"]) then
                 local zclosestname
-                if (APR_Transport["FPs"] and APR_Transport["FPs"][APR.Faction] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"][APR_index]) then
-                    zclosestname = APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"][APR_index]
+                if (APR_Transport["FPs"] and APR_Transport["FPs"][APR.Faction] and APR_Transport["FPs"][APR.Faction][continent] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"][APR_index]) then
+                    zclosestname = APR_Transport["FPs"][APR.Faction][continent]["fpn"][APR_index]
                 else
-                    zclosestname = APR.TDB["FPs"][APR.Faction][APR:GetContinent()][GoToZone][APR_index]["name"]
+                    zclosestname = APR.TDB["FPs"][APR.Faction][continent][GoToZone][APR_index]["name"]
                 end
                 return zclosestname, APR_index
             end
@@ -968,6 +970,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
         APRt_Zone = C_Map.GetBestMapForUnit("player")
     end
     APRt_Zone = APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
+    local continent = APR:GetContinent()
     if (APR.Faction == "Alliance") then
         if (CurContinent == 13) then
             local zdep = APR.FP.ClosestFP()
@@ -978,51 +981,51 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Exodar",
                             L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(103).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Exodar"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Exodar"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Exodar"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Exodar"]["y"]
                     elseif (gotoCont == 101) then
                         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Shattrath",
                             L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(111).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Shattrath"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Shattrath"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Shattrath"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Shattrath"]["y"]
                     elseif (gotoCont == 113) then
                         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Dalaran, Crystalsong Forest",
                             L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(125).name .. ', ' .. C_Map.GetMapInfo(127)
                             .name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["DalaranLichKing"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["DalaranLichKing"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["DalaranLichKing"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["DalaranLichKing"]["y"]
                     elseif (gotoCont == 424) then
                         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Jade Forest",
                             L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(371).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["JadeForestMoP"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["JadeForestMoP"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["JadeForestMoP"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["JadeForestMoP"]["y"]
                     elseif (gotoCont == 572) then
                         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormshield",
                             L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(622).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormshieldWoD"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormshieldWoD"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["StormshieldWoD"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["StormshieldWoD"]["y"]
                     elseif (gotoCont == 619) then
                         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Azsuna",
                             L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(630).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["AzsunaLegion"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["AzsunaLegion"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["AzsunaLegion"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["AzsunaLegion"]["y"]
                     elseif (gotoCont == 875 or gotoCont == 876) then
                         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Boralus",
                             L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(1161).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["BoralusBFA"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["BoralusBFA"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["BoralusBFA"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["BoralusBFA"]["y"]
                     end
                 else
                     APR.currentStep:AddExtraLineText("GO_PORTAL_ROOM", L["GO_PORTAL_ROOM"])
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormwindPortalRoom"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormwindPortalRoom"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["StormwindPortalRoom"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["StormwindPortalRoom"]["y"]
                 end
             else
                 local zclosestname
@@ -1048,8 +1051,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["y"]
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Shattrath", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(108).name)
@@ -1067,8 +1070,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["y"]
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Dalaran", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(41).name)
@@ -1087,8 +1090,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["y"]
             else
                 local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
                 if (APRt_Zone == 1536) then
@@ -1096,8 +1099,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Oribos",
                             L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(1670).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["OribosInMaldraxxus"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["OribosInMaldraxxus"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["OribosInMaldraxxus"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["OribosInMaldraxxus"]["y"]
                     else
                         APR.currentStep:AddExtraLineText("FLY_TO_", L["FLY_TO"] .. " " ..
                             C_Map.GetMapInfo(1683).name .. ', ' .. C_Map.GetMapInfo(1689).name)
@@ -1128,8 +1131,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["y"]
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Paw'Don Village", L["FLY_TO"] .. " Paw'Don Village, " ..
                     C_Map.GetMapInfo(371).name)
@@ -1148,8 +1151,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["y"]
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Stormshield", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(622).name)
@@ -1168,8 +1171,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["y"]
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Exodar", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(103).name)
@@ -1188,8 +1191,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["y"]
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Dalaran", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(125).name)
@@ -1208,8 +1211,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 if (zdep == "Xibala, Zuldazar") then
                     APR.currentStep:AddExtraLineText("TALK_TO_Daria", L["TALK_TO"] .. " Daria Smithson")
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Zuldazar"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Zuldazar"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Zuldazar"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Zuldazar"]["y"]
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_", L["FLY_TO"] .. " Xibala, " ..
                         C_Map.GetMapInfo(862).name)
@@ -1226,8 +1229,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 if (zdep == "Fort Victory, Nazmir") then
                     APR.currentStep:AddExtraLineText("TALK_TO_Desha Stormwallow", L["TALK_TO"] .. " Desha Stormwallow")
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Nazmir"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Nazmir"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Nazmir"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Nazmir"]["y"]
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_", L["FLY_TO"] .. " Fort Victory, " ..
                         C_Map.GetMapInfo(863).name)
@@ -1245,8 +1248,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                     APR.currentStep:AddExtraLineText("TALK_TO_Grand Admiral Jes-Tereth",
                         L["TALK_TO"] .. " Grand Admiral Jes-Tereth")
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Vol'dun"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Vol'dun"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Vol'dun"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Vol'dun"]["y"]
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_Shatterstone Harbor",
                         L["FLY_TO"] .. " Shatterstone Harbor, " ..
@@ -1269,27 +1272,27 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                         APR.currentStep:AddExtraLineText("SAIL_TO_Zuldazar",
                             L["SAIL_TO"] .. " " .. C_Map.GetMapInfo(862).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Zuldazar"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Zuldazar"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Zuldazar"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Zuldazar"]["y"]
                     elseif (GoToZone == 863) then
                         APR.currentStep:AddExtraLineText("SAIL_TO_Nazmir",
                             L["SAIL_TO"] .. " " .. C_Map.GetMapInfo(863).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Nazmir"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Nazmir"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Nazmir"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Nazmir"]["y"]
                     elseif (GoToZone == 864) then
                         APR.currentStep:AddExtraLineText("SAIL_TO_Voldun",
                             L["SAIL_TO"] .. " " .. C_Map.GetMapInfo(864).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Vol'dun"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Vol'dun"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Vol'dun"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Vol'dun"]["y"]
                     end
                 else
                     APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                         L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Stormwind"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["y"]
                 end
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Tradewinds Market", L["FLY_TO"] .. " Tradewinds Market, " ..
@@ -1313,51 +1316,51 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                         APR.currentStep:AddExtraLineText("USE_ZEPPELIN_TO_Stranglethorn",
                             L["USE_ZEPPELIN_TO"] .. " " .. C_Map.GetMapInfo(224).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["STVZep"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["STVZep"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["STVZep"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["STVZep"]["y"]
                     else
                         APR.currentStep:AddExtraLineText("USE_ZEPPELIN_TO_Undercity",
                             L["USE_ZEPPELIN_TO"] .. " " .. C_Map.GetMapInfo(90).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Undercity"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Undercity"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Undercity"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Undercity"]["y"]
                     end
                 elseif (gotoCont == 101) then
                     APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Shattrath",
                         L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(111).name)
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Shattrath"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Shattrath"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Shattrath"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Shattrath"]["y"]
                 elseif (gotoCont == 113) then
                     APR.currentStep:AddExtraLineText("USE_PORTAL_TO_ Dalaran, Crystalsong Forest",
                         L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(126).name .. ', ' .. C_Map.GetMapInfo(127).name)
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["DalaranLichKing"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["DalaranLichKing"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["DalaranLichKing"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["DalaranLichKing"]["y"]
                 elseif (gotoCont == 424) then
                     APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Jade Forest",
                         L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(371).name)
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["JadeForest"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["JadeForest"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["JadeForest"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["JadeForest"]["y"]
                 elseif (gotoCont == 572) then
                     APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Warspear",
                         L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(624).name)
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["WarspearWoD"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["WarspearWoD"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["WarspearWoD"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["WarspearWoD"]["y"]
                 elseif (gotoCont == 619) then
                     APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Azsuna",
                         L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(630).name)
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["AzsunaLegion"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["AzsunaLegion"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["AzsunaLegion"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["AzsunaLegion"]["y"]
                 elseif (gotoCont == 875 or gotoCont == 876) then
                     APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Zuldazar",
                         L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(862).name)
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Zuldazar"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Zuldazar"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Zuldazar"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Zuldazar"]["y"]
                 end
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Orgrimmar", L["FLY_TO"] .. " " ..
@@ -1377,8 +1380,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["y"]
             else
                 local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
                 if (APRt_Zone == 1536) then
@@ -1386,8 +1389,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Oribos",
                             L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(1670).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["OribosInMaldraxxus"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["OribosInMaldraxxus"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["OribosInMaldraxxus"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["OribosInMaldraxxus"]["y"]
                     else
                         APR.currentStep:AddExtraLineText("FLY_TO_Theater of Pain, Maldraxxus", L["FLY_TO"] .. " " ..
                             C_Map.GetMapInfo(1683).name .. ', ' .. C_Map.GetMapInfo(1689).name)
@@ -1418,8 +1421,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["y"]
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Brill", L["FLY_TO"] .. " Brill, " ..
                     C_Map.GetMapInfo(18).name)
@@ -1438,8 +1441,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["y"]
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Shattrath, Terokkar Forest", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(111).name .. ', ' .. C_Map.GetMapInfo(108).name)
@@ -1458,8 +1461,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["y"]
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Dalaran", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(125).name)
@@ -1478,8 +1481,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["y"]
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Honeydew Village", L["FLY_TO"] .. " Honeydew Village, " ..
                     C_Map.GetMapInfo(371).name)
@@ -1498,8 +1501,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["y"]
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Warspear", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(624).name)
@@ -1518,8 +1521,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["y"]
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Dalaran", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(41).name)
@@ -1539,20 +1542,20 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                         APR.currentStep:AddExtraLineText("SAIL_TO_Drustvar",
                             L["SAIL_TO"] .. " " .. C_Map.GetMapInfo(896).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Drustvar"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Drustvar"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Drustvar"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Drustvar"]["y"]
                     elseif (GoToZone == 942) then
                         APR.currentStep:AddExtraLineText("SAIL_TO_Stormsong Valley",
                             L["SAIL_TO"] .. " " .. C_Map.GetMapInfo(942).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormsongValley"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormsongValley"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["StormsongValley"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["StormsongValley"]["y"]
                     elseif (GoToZone == 895) then
                         APR.currentStep:AddExtraLineText("SAIL_TO_Tiragarde Sound",
                             L["SAIL_TO"] .. " " .. C_Map.GetMapInfo(895).name)
                         APR.ArrowActive = 1
-                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["TiragardeSound"]["x"]
-                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["TiragardeSound"]["y"]
+                        APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["TiragardeSound"]["x"]
+                        APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["TiragardeSound"]["y"]
                     end
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_Port of Zandalar", L["FLY_TO"] .. " Port of Zandalar, " ..
@@ -1570,8 +1573,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
                 APR.ArrowActive = 1
-                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["x"]
-                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["Orgrimmar"]["y"]
+                APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["x"]
+                APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["y"]
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_The Great Seal", L["FLY_TO"] .. " The Great Seal, " ..
                     C_Map.GetMapInfo(1165).name)
@@ -1590,8 +1593,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 if (zdep == "Anyport, Drustvar") then
                     APR.currentStep:AddExtraLineText("TALK_TO_Swellthrasher", L["TALK_TO"] .. " Swellthrasher")
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["DrustvarSail"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["DrustvarSail"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["DrustvarSail"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["DrustvarSail"]["y"]
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_Anyport", L["FLY_TO"] .. " Anyport, " ..
                         C_Map.GetMapInfo(896).name)
@@ -1608,8 +1611,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 if (zdep == "Warfang Hold, Stormsong Valley") then
                     APR.currentStep:AddExtraLineText("TALK_TO_Grok Seahandler", L["TALK_TO"] .. " Grok Seahandler")
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormsongValleySail"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["StormsongValleySail"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["StormsongValleySail"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["StormsongValleySail"]["y"]
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_Warfang Hold", L["FLY_TO"] .. " Warfang Hold, " ..
                         C_Map.GetMapInfo(942).name)
@@ -1627,8 +1630,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                     print(L["TALK_ERUL"])
                     APR.currentStep:AddExtraLineText("TALK_TO_Erul Dawnbrook", L["TALK_TO"] .. " Erul Dawnbrook")
                     APR.ArrowActive = 1
-                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["TiragardeSoundSail"]["x"]
-                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][APR:GetContinent()]["TiragardeSoundSail"]["y"]
+                    APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["TiragardeSoundSail"]["x"]
+                    APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["TiragardeSoundSail"]["y"]
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_Plunder Harbor", L["FLY_TO"] .. " Plunder Harbor, " ..
                         C_Map.GetMapInfo(895).name)
@@ -1666,20 +1669,21 @@ function APR.FP.ClosestFP()
         APRt_Zone = C_Map.GetBestMapForUnit("player")
     end
     APRt_Zone = APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
-    if (APR.TDB["FPs"][APR.Faction][APR:GetContinent()] and APR.TDB["FPs"][APR.Faction][APR:GetContinent()][APRt_Zone]) then
+    local continent = APR:GetContinent()
+    if (APR.TDB["FPs"][APR.Faction][continent] and APR.TDB["FPs"][APR.Faction][continent][APRt_Zone]) then
         local cloasest = 99999
         local closestname = "derp"
         local closestx = 0
         local closesty = 0
         local zclosestname
-        for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction][APR:GetContinent()][APRt_Zone]) do
+        for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction][continent][APRt_Zone]) do
             local d_y, d_x = UnitPosition("player")
-            x = APR.TDB["FPs"][APR.Faction][APR:GetContinent()][APRt_Zone][APR_index]["x"]
-            y = APR.TDB["FPs"][APR.Faction][APR:GetContinent()][APRt_Zone][APR_index]["y"]
-            if (APR_Transport["FPs"] and APR_Transport["FPs"][APR.Faction] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"][APR_index]) then
-                zclosestname = APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"][APR_index]
+            x = APR.TDB["FPs"][APR.Faction][continent][APRt_Zone][APR_index]["x"]
+            y = APR.TDB["FPs"][APR.Faction][continent][APRt_Zone][APR_index]["y"]
+            if (APR_Transport["FPs"] and APR_Transport["FPs"][APR.Faction] and APR_Transport["FPs"][APR.Faction][continent] and APR_Transport["FPs"][APR.Faction][continent]["fpn"] and APR_Transport["FPs"][APR.Faction][continent]["fpn"][APR_index]) then
+                zclosestname = APR_Transport["FPs"][APR.Faction][continent]["fpn"][APR_index]
             else
-                zclosestname = APR.TDB["FPs"][APR.Faction][APR:GetContinent()][APRt_Zone][APR_index]["name"]
+                zclosestname = APR.TDB["FPs"][APR.Faction][continent][APRt_Zone][APR_index]["name"]
             end
             local deltaX, deltaY = d_x - x, y - d_y
             local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
@@ -1699,6 +1703,9 @@ APR_Transport_EventFrame:RegisterEvent("TAXIMAP_OPENED")
 APR_Transport_EventFrame:RegisterEvent("PLAYER_LEAVING_WORLD")
 APR_Transport_EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
+    if APR.settings.profile.showEvent then
+        print("EVENT: Transport - ", event)
+    end
     if not APR.settings.profile.enableAddon then
         return
     end
@@ -1706,10 +1713,11 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.FP.Zonening = 1
     elseif (event == "PLAYER_ENTERING_WORLD") then
         APR.FP.Zonening = 0
-        if (APR.ZoneTransfer) then
+        if (APR.IsInRouteZone) then
             APR.FP.GetMeToNextZone()
         end
     elseif (event == "TAXIMAP_OPENED") then
+        local continent = continent
         if (not APR_Transport) then
             APR_Transport = {}
         end
@@ -1719,20 +1727,20 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (not APR_Transport["FPs"][APR.Faction]) then
             APR_Transport["FPs"][APR.Faction] = {}
         end
-        if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()]) then
-            APR_Transport["FPs"][APR.Faction][APR:GetContinent()] = {}
+        if (not APR_Transport["FPs"][APR.Faction][continent]) then
+            APR_Transport["FPs"][APR.Faction][continent] = {}
         end
-        if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]) then
-            APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm] = {}
+        if (not APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]) then
+            APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm] = {}
         end
         local CLi
-        if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"]) then
-            APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"] = {}
+        if (not APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"]) then
+            APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"] = {}
         end
-        if (not APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"]) then
-            APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"] = {}
+        if (not APR_Transport["FPs"][APR.Faction][continent]["fpn"]) then
+            APR_Transport["FPs"][APR.Faction][continent]["fpn"] = {}
         end
-        APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"][APR:GetContinent()] = 1
+        APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"][continent] = 1
         local APRt_Zone
         local currentMapId = C_Map.GetBestMapForUnit('player')
         if (not currentMapId) then
@@ -1750,14 +1758,14 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
             local NodeIDZ = ZeFPS[APR_index2]["nodeID"]
             local ZName = ZeFPS[APR_index2]["name"]
             local ZState = ZeFPS[APR_index2]["state"]
-            APR_Transport["FPs"][APR.Faction][APR:GetContinent()]["fpn"][NodeIDZ] = ZName
+            APR_Transport["FPs"][APR.Faction][continent]["fpn"][NodeIDZ] = ZName
             if (ZState == 0) then
                 APR.TaxiTimerCur = ZName
             end
             if (ZState == 2) then
-                --APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username.."-"..APR.Realm][NodeIDZ] = 0
+                --APR_Transport["FPs"][APR.Faction][continent][APR.Username.."-"..APR.Realm][NodeIDZ] = 0
             else
-                APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm][NodeIDZ] = 1
+                APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm][NodeIDZ] = 1
             end
         end
         local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
@@ -1767,7 +1775,7 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
         if (steps and not IsModifierKeyDown() and APR.settings.profile.autoFlight) then
             local TName = steps["Name"]
-            local TContonent = APR:GetContinent()
+            local TContonent = continent
             if (steps["UseFlightPath"]) then
                 local zclosestname
                 for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction][TContonent]) do

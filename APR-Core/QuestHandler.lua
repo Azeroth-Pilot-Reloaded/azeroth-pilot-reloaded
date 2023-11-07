@@ -8,7 +8,6 @@ local APR_ArrowUpdateNr = 0
 local ETAStep = 0
 local APR_AntiTaxiLoop = 0
 local Updateblock = 0
-local APRWhereToGo
 local APRGOSSIPCOUNT = 0
 APR.ProgressbarIgnore = {
     ["60520-2"] = 1,
@@ -218,7 +217,9 @@ local function APR_UpdateStep()
     if (APR.ActiveMap and not APRData[APR.Realm][APR.Username][APR.ActiveMap]) then
         APRData[APR.Realm][APR.Username][APR.ActiveMap] = 1
     end
-    if not APR.ZoneTransfer then
+
+    -- TODO Return if not in the right zone (check why no data on zone change with the return)
+    if not APR.IsInRouteZone then
         if (APR.InCombat) then
             APR.BookUpdAfterCombat = true
         end
@@ -231,11 +232,6 @@ local function APR_UpdateStep()
     local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
     -- Extra liners here
     local MissingQs = {}
-    -- why ?
-    if (APR.Level ~= UnitLevel("player")) then
-        APR.BookingList["UpdateMapId"] = true
-        APR.Level = UnitLevel("player")
-    end
     if (APR.settings.profile.debug) then
         print("APR_UpdateStep() Step:", CurStep)
     end
@@ -253,14 +249,34 @@ local function APR_UpdateStep()
             return
         end
 
-        if (APR.ActiveQuests and APR.ActiveQuests[57867] and not APR.ZoneTransfer) then
+        if (APR.ActiveQuests and APR.ActiveQuests[57867] and not APR.IsInRouteZone) then
             APR.SweatOfOurBrowBuffFrame:Show()
         else
             APR.SweatOfOurBrowBuffFrame:Hide()
         end
+        if (APR.ActiveMap) then
+            local function checkChromieTimeline(id)
+                local chromieExpansionOption = C_ChromieTime.GetChromieTimeExpansionOption(id)
+                if (not chromieExpansionOption) then
+                    APR.currentStep:AddExtraLineText("NOT_IN_CHROMIE_TIMELINE", L["NOT_IN_CHROMIE_TIMELINE"])
+                elseif (chromieExpansionOption.alreadyOn == false) then
+                    APR.currentStep:AddExtraLineText("SWITCH_TO_CHROMIE" .. chromieExpansionOption.name,
+                        L["SWITCH_TO_CHROMIE"] .. " " .. chromieExpansionOption.name)
+                end
+            end
+            if (APR.QuestStepListListing["Extra"][APR.ActiveMap]) then
+                -- 9 == WOD
+                checkChromieTimeline(9)
+            end
+            -- If we add Sl timeline in the future
+            -- if(APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]) then
+            -- 	-- 14 == Shadowland
+            -- 	checkChromieTimeline(14)
+            -- end
+        end
         -- Check for ExtraLineText
         for key, value in pairs(steps) do
-            if string.match(key, "ExtraLineText+") and not APR.ZoneTransfer then
+            if string.match(key, "ExtraLineText+") and not APR.IsInRouteZone then
                 local APRExtraLine = steps[key]
                 if (L[APRExtraLine]) then
                     APR.currentStep:AddExtraLineText(APRExtraLine, L[APRExtraLine])
@@ -268,7 +284,7 @@ local function APR_UpdateStep()
             end
         end
         -- TODO REWORK ExtraLine
-        if (steps["ExtraLine"] and not APR.ZoneTransfer) then
+        if (steps["ExtraLine"] and not APR.IsInRouteZone) then
             local APRExtraLine = steps["ExtraLine"]
             local fleetfootItemID = 44886
             local wildfireBottleItemID = 44967
@@ -433,36 +449,16 @@ local function APR_UpdateStep()
         if (steps["SpecialETAHide"]) then
             APR.AFK:HideFrame()
         end
-        if (steps["UseGlider"] and not APR.ZoneTransfer) then
+        if (steps["UseGlider"] and not APR.IsInRouteZone) then
             APR.currentStep:AddExtraLineText("USE_ITEM_GLIDER", L["USE_ITEM"] .. ": " .. APR.GliderFunc())
         end
-        if (steps["Bloodlust"] and not APR.ZoneTransfer) then
+        if (steps["Bloodlust"] and not APR.IsInRouteZone) then
             APR.currentStep:AddExtraLineText("BLOODLUST", L["BLOODLUST"])
         end
-        if (steps["InVehicle"] and not UnitInVehicle("player") and not APR.ZoneTransfer) then
+        if (steps["InVehicle"] and not UnitInVehicle("player") and not APR.IsInRouteZone) then
             APR.currentStep:AddExtraLineText("MOUNT_HORSE_SCARE_SPIDER", L["MOUNT_HORSE_SCARE_SPIDER"])
-        elseif (steps["InVehicle"] and steps["InVehicle"] == 2 and UnitInVehicle("player") and not APR.ZoneTransfer) then
+        elseif (steps["InVehicle"] and steps["InVehicle"] == 2 and UnitInVehicle("player") and not APR.IsInRouteZone) then
             APR.currentStep:AddExtraLineText("SCARE_SPIDER_INTO_LUMBERMILL", L["SCARE_SPIDER_INTO_LUMBERMILL"])
-        end
-        if (APR.ActiveMap) then
-            local function checkChromieTimeline(id)
-                local chromieExpansionOption = C_ChromieTime.GetChromieTimeExpansionOption(id)
-                if (not chromieExpansionOption) then
-                    APR.currentStep:AddExtraLineText("NOT_IN_CHROMIE_TIMELINE", L["NOT_IN_CHROMIE_TIMELINE"])
-                elseif (chromieExpansionOption.alreadyOn == false) then
-                    APR.currentStep:AddExtraLineText("SWITCH_TO_CHROMIE" .. chromieExpansionOption.name,
-                        L["SWITCH_TO_CHROMIE"] .. " " .. chromieExpansionOption.name)
-                end
-            end
-            if (APR.QuestStepListListing["Extra"][APR.ActiveMap]) then
-                -- 9 == WOD
-                checkChromieTimeline(9)
-            end
-            -- If we add Sl timeline in the future
-            -- if(APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]) then
-            -- 	-- 14 == Shadowland
-            -- 	checkChromieTimeline(14)
-            -- end
         end
         if (steps["DoIHaveFlight"]) then
             if (CheckRidingSkill(33391) or CheckRidingSkill(90265) or CheckRidingSkill(34090)) then
@@ -502,7 +498,7 @@ local function APR_UpdateStep()
                     elseif (APR.ActiveQuests[qid] and APR.ActiveQuests[qid] == "C") then
                         Flagged = Flagged + 1
                     elseif (APR.ActiveQuests[qid]) then
-                        if (not APR.ZoneTransfer) then
+                        if (not APR.IsInRouteZone) then
                             local ZeTExt
                             if (APR.ActiveQuests["57713-4"] and UIWidgetTopCenterContainerFrame and UIWidgetTopCenterContainerFrame["widgetFrames"]) then
                                 for APR_index2, APR_value2 in PairsByKeys(UIWidgetTopCenterContainerFrame["widgetFrames"]) do
@@ -530,7 +526,7 @@ local function APR_UpdateStep()
                             end
                         end
                     elseif (not APR.ActiveQuests[APR_index] and not MissingQs[APR_index]) then
-                        if (not APR.ZoneTransfer) then
+                        if (not APR.IsInRouteZone) then
                             if (APR_BonusObj[APR_index]) then
                                 APR.currentStep:UpdateQuestSteps(APR_index, L["DO_BONUS_OBJECTIVE"] ..
                                     ": " .. APR_index, APR_index2)
@@ -568,7 +564,7 @@ local function APR_UpdateStep()
                 if flaggedQuest > 0 then
                     _G.NextQuestStep()
                     return
-                elseif not APR.ZoneTransfer then
+                elseif not APR.IsInRouteZone then
                     APR.currentStep:UpdateQuestSteps(steps["PickUp"][1], L["PICK_UP_Q"] .. ": 1", "PickUp")
                 end
             else
@@ -588,7 +584,7 @@ local function APR_UpdateStep()
                     end
                     _G.NextQuestStep()
                     return
-                elseif not APR.ZoneTransfer then
+                elseif not APR.IsInRouteZone then
                     APR.currentStep:UpdateQuestSteps(steps["PickUp"][1],
                         L["PICK_UP_Q"] .. ": " .. pickupLeft .. "/" .. #IdList, "PickUp")
                 end
@@ -601,7 +597,7 @@ local function APR_UpdateStep()
                 end
                 _G.NextQuestStep()
                 return
-            elseif not APR.ZoneTransfer then
+            elseif not APR.IsInRouteZone then
                 APR.currentStep:AddExtraLineText("CRange" .. IdList, APR.CheckCRangeText(), true)
             end
         elseif (steps["Treasure"]) then
@@ -612,7 +608,7 @@ local function APR_UpdateStep()
                 end
                 _G.NextQuestStep()
                 return
-            elseif not APR.ZoneTransfer then
+            elseif not APR.IsInRouteZone then
                 APR.currentStep:UpdateQuestSteps(IdList, L["GET_TREASURE"], "Treasure")
             end
         elseif (steps["DropQuest"]) then
@@ -654,7 +650,7 @@ local function APR_UpdateStep()
                 end
                 _G.UpdateNextStep()
                 return
-            elseif not APR.ZoneTransfer then
+            elseif not APR.IsInRouteZone then
                 APR.currentStep:UpdateQuestSteps(doneList[1], L["TURN_IN_Q"] .. ": " .. questLeft .. "/" .. #doneList,
                     "Done")
             end
@@ -665,7 +661,7 @@ local function APR_UpdateStep()
                 end
                 _G.UpdateNextStep()
                 return
-            elseif not APR.ZoneTransfer then
+            elseif not APR.IsInRouteZone then
                 APR.currentStep:UpdateQuestSteps(steps["WarMode"], L["TURN_ON_WARMODE"], "WarMode")
                 if (C_PvP.IsWarModeDesired() == false and C_PvP.CanToggleWarModeInArea()) then
                     C_PvP.ToggleWarMode()
@@ -689,7 +685,7 @@ local function APR_UpdateStep()
                 useHSKey = "UseGarrisonHS"
             end
 
-            if not APR.ZoneTransfer then
+            if not APR.IsInRouteZone then
                 APR.currentStep:UpdateQuestSteps(questKey, questText, useHSKey)
             end
 
@@ -698,7 +694,7 @@ local function APR_UpdateStep()
                 return
             end
         elseif (steps["SetHS"]) then
-            if not APR.ZoneTransfer then
+            if not APR.IsInRouteZone then
                 APR.currentStep:UpdateQuestSteps(steps["SetHS"], L["SET_HEARTHSTONE"], "SetHS")
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(steps["SetHS"])) then
@@ -709,7 +705,7 @@ local function APR_UpdateStep()
                 return
             end
         elseif (steps["GetFP"]) then
-            if not APR.ZoneTransfer then
+            if not APR.IsInRouteZone then
                 APR.currentStep:UpdateQuestSteps(steps["GetFP"], L["GET_FLIGHTPATH"], "GetFP")
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(steps["GetFP"])) then
@@ -717,7 +713,7 @@ local function APR_UpdateStep()
                 return
             end
         elseif (steps["UseFlightPath"]) then
-            if not APR.ZoneTransfer then
+            if not APR.IsInRouteZone then
                 local questText = ""
                 if steps["Boat"] then
                     questText = L["USE_BOAT"]
@@ -762,11 +758,11 @@ local function APR_UpdateStep()
                     if questText == "C" or C_QuestLog.IsQuestFlaggedCompleted(questId) then
                         Flagged = Flagged + 1
                     elseif questText then
-                        if not APR.ZoneTransfer then
+                        if not APR.IsInRouteZone then
                             APR.currentStep:UpdateQuestSteps(questId, questText, objectiveId)
                         end
                     elseif not MissingQs[questId] then
-                        if not APR.ZoneTransfer then
+                        if not APR.IsInRouteZone then
                             local questTextToAdd = APR_BonusObj[questId] and (L["DO_BONUS_OBJECTIVE"] .. ": " .. questId) or
                                 (L["ERROR"] .. " - " .. L["MISSING_Q"] .. ": " .. questId)
                             APR.currentStep:UpdateQuestSteps(questId, questTextToAdd, objectiveId)
@@ -794,7 +790,7 @@ local function APR_UpdateStep()
             local Qid = questData["Qid"]
 
             if not C_QuestLog.IsQuestFlaggedCompleted(Qid) and not APR.ActiveQuests[Qid] then
-                if not APR.ZoneTransfer then
+                if not APR.IsInRouteZone then
                     local MobName = questData["Text"]
                     local MobId = questData["MobId"]
 
@@ -812,17 +808,17 @@ local function APR_UpdateStep()
         end
         if steps["Fillers"] then
             local IdList = steps["Fillers"]
-            for APR_index, APR_value in pairs(IdList) do
-                for APR_index2, APR_value2 in pairs(APR_value) do
-                    local qid = APR_index .. "-" .. APR_index2
-                    if C_QuestLog.IsQuestFlaggedCompleted(APR_index) == false and not APRData[APR.Realm][APR.Username]["BonusSkips"][APR_index] then
-                        if APR.ActiveQuests[qid] and APR.ActiveQuests[qid] ~= "C" and not APR.ZoneTransfer then
-                            local checkpbar = C_QuestLog.GetQuestObjectives(APR_index)
+            for questId, objectives in pairs(IdList) do
+                for objectiveId, _ in pairs(objectives) do
+                    local qid = questId .. "-" .. objectiveId
+                    if C_QuestLog.IsQuestFlaggedCompleted(questId) == false and not APRData[APR.Realm][APR.Username]["BonusSkips"][questId] then
+                        if APR.ActiveQuests[qid] and APR.ActiveQuests[qid] ~= "C" and not APR.IsInRouteZone then
+                            local checkpbar = C_QuestLog.GetQuestObjectives(questId)
                             local questText = APR.ActiveQuests[qid]
-                            if not string.find(questText, "(.*)(%d+)(.*)") and checkpbar and checkpbar[tonumber(APR_index2)] and checkpbar[tonumber(APR_index2)]["type"] and checkpbar[tonumber(APR_index2)]["type"] == "progressbar" then
-                                questText = "(" .. GetQuestProgressBarPercent(APR_index) .. "%) " .. questText
+                            if not string.find(questText, "(.*)(%d+)(.*)") and checkpbar and checkpbar[tonumber(objectiveId)] and checkpbar[tonumber(objectiveId)]["type"] and checkpbar[tonumber(objectiveId)]["type"] == "progressbar" then
+                                questText = "(" .. GetQuestProgressBarPercent(questId) .. "%) " .. questText
                             end
-                            APR.currentStep:UpdateQuestSteps(APR_index, questText, APR_index2)
+                            APR.currentStep:UpdateQuestSteps(questId, questText, objectiveId)
                         end
                     end
                 end
@@ -831,7 +827,6 @@ local function APR_UpdateStep()
 
         -- Set Quest Item Button
         APR.SetButton()
-
         if (steps["ZoneDone"] or (APR.ActiveMap == 862 and APRData[APR.Realm][APR.Username]["HordeD"] and APRData[APR.Realm][APR.Username]["HordeD"] == 1)) then
             APR.currentStep:Disable()
             APR.ArrowActive = 0
@@ -840,18 +835,11 @@ local function APR_UpdateStep()
         APR.questOrderList:AddStepFromRoute()
         -- set Progress bar with the right total
         APR.currentStep:SetProgressBar(CurStep)
-    elseif (APRWhereToGo and not APR.ZoneTransfer) then
-        APR.currentStep:AddExtraLineText("GO_TO_" .. APRWhereToGo, L["GO_TO"] .. " " .. APRWhereToGo)
-    else
-        if (APR.settings.profile.debug) then
-            print("APR_UpdateStep() else Disabled")
-        end
-        APR.currentStep:Disable()
     end
 end
 
 function APR.SetButton()
-    if InCombatLockdown() then
+    if InCombatLockdown() or not APR.IsInRouteZone then
         return
     end
     if (APR.settings.profile.debug) then
@@ -1125,8 +1113,8 @@ local function APR_UpdateMapId()
     if APR.QuestStepListListingZone then
         APR.BookingList["GetMeToNextZone"] = true
     end
-    if APR.ZoneTransfer then
-        APR.BookingList["ZoneTransfer"] = true
+    if APR.IsInRouteZone then
+        APR.BookingList["IsInRouteZone"] = true
     end
     if not APRData[APR.Realm][APR.Username][APR.ActiveMap] then
         APRData[APR.Realm][APR.Username][APR.ActiveMap] = 1
@@ -1206,11 +1194,11 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
         end
         APR.BookingList["UpdateStep"] = false
         APR_UpdateStep()
-    elseif (APR.BookingList["ZoneTransfer"]) then
+    elseif (APR.BookingList["IsInRouteZone"]) then
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:ZoneTransfer:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+            print("LoopBookingFunc:IsInRouteZone:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
         end
-        APR.BookingList["ZoneTransfer"] = false
+        APR.BookingList["IsInRouteZone"] = false
         APR.FP.GetMeToNextZone()
     elseif (APR.BookingList["SetQPTT"]) then
         if (APR.settings.profile.debug) then
@@ -1374,6 +1362,9 @@ APR_QH_EventFrame:RegisterEvent("GROUP_JOINED")
 APR_QH_EventFrame:RegisterEvent("GROUP_LEFT")
 
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
+    if APR.settings.profile.showEvent then
+        print("EVENT: QuestHandler - ", event)
+    end
     if not APR.settings.profile.enableAddon then
         return
     end
@@ -1813,19 +1804,11 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             C_Timer.After(1, APR_UpdQuestThing)
         end
     end
-    if (event == "ZONE_CHANGED") then
+    if (event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA") then
         QNumberLocal = 0
-        if (not APR.ZoneTransfer) then
-            C_Timer.After(2, APR_BookingUpdateMapId)
-            C_Timer.After(3, APR_ZoneResetQnumb)
-            APR.BookingList["UpdateMapId"] = true
-        end
-    end
-    if (event == "ZONE_CHANGED_NEW_AREA") then
-        if (not APR.ZoneTransfer) then
-            C_Timer.After(2, APR_BookingUpdateMapId)
-            APR.BookingList["UpdateMapId"] = true
-        end
+        C_Timer.After(2, APR_BookingUpdateMapId)
+        C_Timer.After(3, APR_ZoneResetQnumb)
+        APR.BookingList["UpdateMapId"] = true
     end
     if (event == "GOSSIP_CLOSED") then
         APRGOSSIPCOUNT = 0
