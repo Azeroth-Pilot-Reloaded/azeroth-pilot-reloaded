@@ -69,6 +69,20 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.0.2", "2023-11-08" },
+        "#WoW",
+        "- Update compability with 10.2.0",
+
+        "#Bugs",
+        "- Fix the current step frame when his linked to the quest log",
+        "- Fix the waypoint/travel to message",
+        "- Little optimisation on Quest order list update (doesn't run anything if it's hidden)",
+        "- Remove some multiple ugly call to the GetContinent function",
+        "- Remove useless code",
+
+        "#Dev/Debug",
+        "- Add Show event option",
+
         { "v3.0.1", "2023-11-05" },
         "#Features",
         "- Added Background and color/alpha picker for Current Step Frame",
