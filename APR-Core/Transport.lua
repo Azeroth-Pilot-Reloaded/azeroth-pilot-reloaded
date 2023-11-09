@@ -1717,7 +1717,7 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
             APR.FP.GetMeToNextZone()
         end
     elseif (event == "TAXIMAP_OPENED") then
-        local continent = continent
+        local continent = APR:GetContinent()
         if (not APR_Transport) then
             APR_Transport = {}
         end
