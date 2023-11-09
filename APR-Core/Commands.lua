@@ -11,6 +11,7 @@ function APR.command:SlashCmd(input)
         --Command for making the quest rescan on completion and reset, including previously skipped steps
         print("APR: " .. L["RESET_ZONE"])
         APRData[APR.Realm][APR.Username][APR.ActiveMap] = 1
+        C_UI.Reload()
     elseif (input == "forcereset" or input == "fr") then
         APRData = {};
         APR_ZoneComplete[APR.Username .. "-" .. APR.Realm] = nil;
