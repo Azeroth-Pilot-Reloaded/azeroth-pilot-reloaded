@@ -208,6 +208,15 @@ function APR.currentStep:UpdateBackgroundColorAlpha(color)
     CurrentStepFrame:SetBackdropColor(unpack(color or APR.settings.profile.currentStepbackgroundColorAlpha))
 end
 
+function APR.currentStep:UpdateFrameHeight(height)
+    CurrentStepFrame:SetHeight(height)
+    if not APR.settings.profile.currentStepAttachFrameToQuestLog then
+        LibWindow.RestorePosition(CurrentStepFrame)
+    else
+        self:RefreshCurrentStepFrameAnchor()
+    end
+end
+
 -- Refresh the frame positioning
 function APR.currentStep:RefreshCurrentStepFrameAnchor()
     if InCombatLockdown() then
@@ -301,23 +310,23 @@ ObjectiveTrackerFrame.HeaderMenu.MinimizeButton:HookScript("OnClick", function()
     On_ObjectiveTracker_Update()
 end)
 
+-- Helper function to create a button
+local function CreateButton(name, parent, width, height, text, script)
+    local button = CreateFrame("Button", name, parent, "BackdropTemplate")
+    button:SetSize(width, height)
+    button:SetText(text)
+    button:SetScript("OnClick", script)
+    button:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
+        GameTooltip:AddLine(text)
+        GameTooltip:Show()
+    end)
+    button:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
+    return button
+end
+
 -- Rollback / skip button
 function APR.currentStep:PreviousNextStepButton()
-    -- Helper function to create a button
-    local function CreateButton(name, parent, width, height, text, script)
-        local button = CreateFrame("Button", name, parent, "BackdropTemplate")
-        button:SetSize(width, height)
-        button:SetText(text)
-        button:SetScript("OnClick", script)
-        button:SetScript("OnEnter", function(self)
-            GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-            GameTooltip:AddLine(text)
-            GameTooltip:Show()
-        end)
-        button:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
-        return button
-    end
-
     local rollbackButton = CreateButton("CurrentStepFrame_StepHolder_RollbackButton", CurrentStepFrameHeader, 30, 30,
         L["ROLLBACK"],
         function()
@@ -416,7 +425,7 @@ function APR.currentStep:SetProgressBar(CurStep)
 end
 
 -- Displaying quest information
-local AddStepsFrame = function(questDesc, extraLineText, noStars)
+local function AddStepsFrame(questDesc, extraLineText, noStars)
     local textTemplate = "GameFontHighlight" -- white color
     if extraLineText then
         textTemplate = "GameFontNormal"      -- yellow color
@@ -440,8 +449,9 @@ local AddStepsFrame = function(questDesc, extraLineText, noStars)
 
     return container
 end
+
 -- Displaying extra line text information
-local AddExtraLineTextFrame = function(extraLineText, noStars)
+local function AddExtraLineTextFrame(extraLineText, noStars)
     return AddStepsFrame(nil, extraLineText, noStars)
 end
 
@@ -517,10 +527,8 @@ function APR.currentStep:ReOrderExtraLineText()
     end
     FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
     for id, textContainer in pairs(self.questsExtraTextList) do
-        textContainer:Hide()
         textContainer:ClearAllPoints()
         textContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
-        textContainer:Show()
         FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - textContainer:GetHeight()
     end
     self:ReOrderQuestSteps(false)
@@ -537,20 +545,13 @@ function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
         FRAME_STEP_HOLDER_HEIGHT = getExtraLineHeight()
     end
     for id, questContainer in pairs(self.questsList) do
-        questContainer:Hide()
         questContainer:ClearAllPoints()
         questContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
-        questContainer:Show()
         FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - questContainer:GetHeight()
     end
 
     -- adapt parent height to the contents
-    CurrentStepFrame:SetHeight(FRAME_STEP_HOLDER_HEIGHT)
-    if not APR.settings.profile.currentStepAttachFrameToQuestLog then
-        LibWindow.RestorePosition(CurrentStepScreenPanel)
-    else
-        self:RefreshCurrentStepFrameAnchor()
-    end
+    self:UpdateFrameHeight(FRAME_STEP_HOLDER_HEIGHT)
 end
 
 -- Remove all  quest steps and extra line texts
@@ -572,7 +573,7 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
     FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
 
     -- adapt parent height to the contents
-    CurrentStepFrame:SetHeight(50)
+    self:UpdateFrameHeight(50)
 end
 
 -- Button management

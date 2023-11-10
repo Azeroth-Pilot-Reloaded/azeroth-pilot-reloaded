@@ -56,20 +56,24 @@ function NextQuestStep()
 end
 
 function PreviousQuestStep()
-    local previous = true
-    while previous do
-        APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] - 1
-        local steps = APR.QuestStepList[APR.ActiveMap][APRData[APR.Realm][APR.Username][APR.ActiveMap]]
-        previous = false
+    local userMapData = APRData[APR.Realm][APR.Username]
+    local activeMap = APR.ActiveMap
+    local questStepList = APR.QuestStepList[activeMap]
+    local faction = APR.Faction
+    local race = APR.Race
+    local className = APR.ClassName
 
-        if (
-                (steps["Faction"] and steps["Faction"] ~= APR.Faction) or
-                (steps["Race"] and steps["Race"] ~= APR.Race) or
-                (steps["Class"] and steps["Class"] ~= APR.ClassName) or
+    while true do
+        userMapData[activeMap] = userMapData[activeMap] - 1
+        local steps = questStepList[userMapData[activeMap]]
+
+        if not ((steps["Faction"] and steps["Faction"] ~= faction) or
+                (steps["Race"] and steps["Race"] ~= race) or
+                (steps["Class"] and steps["Class"] ~= className) or
                 (steps["HasAchievement"] and not _G.HasAchievement(steps["HasAchievement"])) or
-                (steps["DontHaveAchievement"] and _G.HasAchievement(steps["DontHaveAchievement"]))
-            ) then
-            previous = true
+                (steps["DontHaveAchievement"] and _G.HasAchievement(steps["DontHaveAchievement"])) or
+                steps["CRange"]) then
+            break
         end
     end
 
