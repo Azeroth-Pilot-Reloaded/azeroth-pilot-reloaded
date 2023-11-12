@@ -73,7 +73,6 @@ function APR.settings:InitializeSettings()
             arrowtop = -(_G.GetScreenHeight() / 1.5),
             -- minimap
             showMiniMapBlobs = true,
-            miniMapBlobAlpha = 0.5,
             enableMinimapButton = true,
             minimap = { minimapPos = 250 },
             minimapshowNextSteps = false,
@@ -622,27 +621,6 @@ function APR.settings:createBlizzOptions()
                                     return not self.profile.mapshowNextSteps
                                 end,
                             },
-                            miniMapBlobAlpha = {
-                                order = 9.5,
-                                type = "range",
-                                name = L["MINIMAP_BLOB_ALPHA"],
-                                desc = L["MINIMAP_BLOB_ALPHA_DESC"],
-                                width = "full",
-                                min = 0.01,
-                                max = 1,
-                                step = 0.05,
-                                isPercent = true,
-                                get = GetProfileOption,
-                                set = function(info, value)
-                                    SetProfileOption(info, value)
-                                    for CLi = 1, 20 do
-                                        APR.map.line[CLi].texture:SetAlpha(value)
-                                    end
-                                end,
-                                disabled = function()
-                                    return not self.profile.showMiniMapBlobs
-                                end,
-                            },
                         },
                     },
                     group_minimap = {
@@ -848,7 +826,7 @@ function APR.settings:createBlizzOptions()
                             showEvent = {
                                 order = 2.2,
                                 type = "toggle",
-                                name = "Show Event",
+                                name = L["SHOW_EVENT_DEBUG"],
                                 width = "full",
                                 get = GetProfileOption,
                                 set = SetProfileOption,
@@ -923,8 +901,8 @@ function APR.settings:CreateRouteOption()
             },
         }
     }
-    aceConfig:RegisterOptionsTable(APR.title .. "/Route", optionsTable)
-    aceDialog:AddToBlizOptions(APR.title .. "/Route", L["ROUTE"], APR.title)
+    aceConfig:RegisterOptionsTable("APR/Route", optionsTable)
+    aceDialog:AddToBlizOptions("APR/Route", L["ROUTE"], APR.title)
 end
 
 function APR.settings:CreateAboutOption()
@@ -1047,7 +1025,7 @@ function APR.settings:CreateMiniMapButton()
 
     local minimapButton = libDataBroker:NewDataObject(APR.title, {
         type = "launcher",
-        icon = "Interface\\AddOns\\APR-Core\\img\\APR_logo",
+        icon = "Interface\\AddOns\\APR-Core\\assets\\APR_logo",
         OnClick = function(_, button)
             if button == "RightButton" then
                 self.profile.enableAddon = not self.profile.enableAddon

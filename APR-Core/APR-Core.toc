@@ -5,7 +5,7 @@
 ## Title-frFR: Azeroth Pilot Reloaded - [|cffeda55fNoyau|r]
 ## Notes: Provides Core for Azeroth Pilot Reloaded.
 ## Author: Neogeekmo, Rycia (legacy: zyrrael, Deathmessinger)
-## IconTexture: Interface\AddOns\APR-Core\img\APR_logo
+## IconTexture: Interface\AddOns\APR-Core\assets\APR_logo
 
 ## RequiredDeps: APR
 
