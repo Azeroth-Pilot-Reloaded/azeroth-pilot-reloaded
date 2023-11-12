@@ -78,6 +78,12 @@ CurrentStepFrameHeader:SetScript("OnMouseDown", function(self, button)
                 end
             },
             {
+                text = L["SHOW_MENU_ROUTE"],
+                func = function()
+                    _G.InterfaceOptionsFrame_OpenToCategory("APR/Route")
+                end
+            },
+            {
                 text = L["CUSTOM_PATH"],
                 func = function()
                     APR.RoutePlan.FG1:Show()

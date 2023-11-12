@@ -4,7 +4,7 @@
 ## Title: Azeroth Pilot Reloaded - [|cffeda55fWrath of the Lich King|r]
 ## Notes: Provides Wrath of the Lich King implementation for Azeroth Pilot Reloaded.
 ## Author: Rycia, Neogeekmo, Pahonix
-## IconTexture: Interface\AddOns\APR-Core\img\APR_logo
+## IconTexture: Interface\AddOns\APR-Core\assets\APR_logo
 
 ## RequiredDeps: APR-Core
 WrathOfTheLichKing_Alliance.lua

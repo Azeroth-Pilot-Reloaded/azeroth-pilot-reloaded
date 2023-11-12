@@ -4,7 +4,7 @@
 ## Title: Azeroth Pilot Reloaded - [|cffeda55fWarlords of Draenor|r]
 ## Notes: Provides Warlords of Draenor implementation for Azeroth Pilot Reloaded.
 ## Author: Rycia, Neogeekmo, Pahonix
-## IconTexture: Interface\AddOns\APR-Core\img\APR_logo
+## IconTexture: Interface\AddOns\APR-Core\assets\APR_logo
 
 ## RequiredDeps: APR-Core
 WarlordsOfDraenor_Alliance.lua
