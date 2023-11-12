@@ -591,7 +591,7 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value)
                                     SetProfileOption(info, value)
                                     if not value then
-                                        APR.map:MoveMapLine()
+                                        APR.map:RemoveMapLine()
                                     end
                                 end
                             },
@@ -620,6 +620,27 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 disabled = function()
                                     return not self.profile.mapshowNextSteps
+                                end,
+                            },
+                            miniMapBlobAlpha = {
+                                order = 9.5,
+                                type = "range",
+                                name = L["MINIMAP_BLOB_ALPHA"],
+                                desc = L["MINIMAP_BLOB_ALPHA_DESC"],
+                                width = "full",
+                                min = 0.01,
+                                max = 1,
+                                step = 0.05,
+                                isPercent = true,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    for CLi = 1, 20 do
+                                        APR.map.line[CLi].texture:SetAlpha(value)
+                                    end
+                                end,
+                                disabled = function()
+                                    return not self.profile.showMiniMapBlobs
                                 end,
                             },
                         },
@@ -685,27 +706,6 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 disabled = function()
                                     return not self.profile.minimapshowNextSteps
-                                end,
-                            },
-                            miniMapBlobAlpha = {
-                                order = 9.5,
-                                type = "range",
-                                name = L["MINIMAP_BLOB_ALPHA"],
-                                desc = L["MINIMAP_BLOB_ALPHA_DESC"],
-                                width = "full",
-                                min = 0.01,
-                                max = 1,
-                                step = 0.05,
-                                isPercent = true,
-                                get = GetProfileOption,
-                                set = function(info, value)
-                                    SetProfileOption(info, value)
-                                    for CLi = 1, 20 do
-                                        APR.map.minimapLine[CLi].texture:SetAlpha(value)
-                                    end
-                                end,
-                                disabled = function()
-                                    return not self.profile.showMiniMapBlobs
                                 end,
                             },
                         }
