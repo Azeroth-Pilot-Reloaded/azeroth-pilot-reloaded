@@ -1,6 +1,7 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local hbdPins = LibStub("HereBeDragons-Pins-2.0")
+local hbd = LibStub("HereBeDragons-2.0")
 
 -- Initialize APR Map module
 APR.map = APR:NewModule("MAP", "AceEvent-3.0")
@@ -8,467 +9,235 @@ APR.map:RegisterMessage("APR_MAP_UPDATE", function()
     APR.map:AddMapPins()
 end)
 
+local COSMIC_MAP_ID = 946
+local WORLD_MAP_ID = 947
+
 local CurMapShown
 local Delaytime = 0
+local cos, sin, max = math.cos, math.sin, math.max
+local MinimapRadiusAPI = C_Minimap and C_Minimap.GetViewRadius
+
+-- THX HereBeDragons
+local minimap_size = {
+    indoor = {
+        [0] = 300, -- scale
+        [1] = 240, -- 1.25
+        [2] = 180, -- 5/3
+        [3] = 120, -- 2.5
+        [4] = 80,  -- 3.75
+        [5] = 50,  -- 6
+    },
+    outdoor = {
+        [0] = 466 + 2 / 3, -- scale
+        [1] = 400,         -- 7/6
+        [2] = 333 + 1 / 3, -- 1.4
+        [3] = 266 + 2 / 6, -- 1.75
+        [4] = 200,         -- 7/3
+        [5] = 133 + 1 / 3, -- 3.5
+    },
+}
+
+local minimap_shapes = {
+    -- { upper-left, lower-left, upper-right, lower-right }
+    ["SQUARE"]                = { false, false, false, false },
+    ["CORNER-TOPLEFT"]        = { true, false, false, false },
+    ["CORNER-TOPRIGHT"]       = { false, false, true, false },
+    ["CORNER-BOTTOMLEFT"]     = { false, true, false, false },
+    ["CORNER-BOTTOMRIGHT"]    = { false, false, false, true },
+    ["SIDE-LEFT"]             = { true, true, false, false },
+    ["SIDE-RIGHT"]            = { false, false, true, true },
+    ["SIDE-TOP"]              = { true, false, true, false },
+    ["SIDE-BOTTOM"]           = { false, true, false, true },
+    ["TRICORNER-TOPLEFT"]     = { true, true, true, false },
+    ["TRICORNER-TOPRIGHT"]    = { true, false, true, true },
+    ["TRICORNER-BOTTOMLEFT"]  = { true, true, false, true },
+    ["TRICORNER-BOTTOMRIGHT"] = { false, true, true, true },
+}
+
+local function checkIsInRouteZone()
+    if APR.FP.GoToZone then
+        local currentMapID = C_Map.GetBestMapForUnit("player")
+        local parentMapID = C_Map.GetMapInfo(currentMapID).parentMapID
+        local childrenMap = C_Map.GetMapChildrenInfo(parentMapID)
+
+        local isPresent = false
+        for i, map in ipairs(childrenMap) do
+            if map.mapID == APR.FP.GoToZone then
+                isPresent = true
+                break
+            end
+        end
+        return isPresent
+    end
+    return true
+end
 ---------------------------------------------------------------------------------------
 ---------------------------------- Dotted Lines ---------------------------------------
 ---------------------------------------------------------------------------------------
 
-APR.map.minimapLine = {}
-APR.map.line = {}
+local minimapLine = Minimap:CreateLine()
+minimapLine:SetColorTexture(1, 0, 0)
+minimapLine:SetStartPoint("CENTER", Minimap, 0, 0)
+minimapLine:SetEndPoint("CENTER", Minimap, 0, 0)
+-- line:SetColorTexture(4 / 255, 139 / 255, 154 / 255, 0.6)
+minimapLine:SetColorTexture(1, 0, 0, 1)
+minimapLine:SetThickness(2)
 
-function APR.map:mapIcon()
-    for CLi = 1, 20 do
-        APR.map.minimapLine[CLi] = APR.map:CreateIcon(APR.map.minimapLine)
-        APR.map.line[CLi] = APR.map:CreateIcon(APR.map.line)
+local minimapShape, minimapWidth, minimapHeight, rotateMinimap, indoors, zoom, scale, mapRadius
+local function UpdateMinimapData()
+    minimapShape = GetMinimapShape and minimap_shapes[GetMinimapShape() or "ROUND"]
+    minimapWidth = Minimap:GetWidth() / 2
+    minimapHeight = Minimap:GetHeight() / 2
+    rotateMinimap = GetCVar("rotateMinimap") == "1"
+    indoors = GetCVar("minimapZoom") + 0 == Minimap:GetZoom() and "outdoor" or "indoor"
+    zoom = Minimap:GetZoom()
+    if MinimapRadiusAPI then
+        mapRadius = C_Minimap.GetViewRadius()
+    else
+        mapRadius = minimap_size[indoors][zoom] / 2
+    end
+    if not APR.settings.profile.showMiniMapBlobs then
+        APR.map:RemoveMinimapLine()
     end
 end
+local function PositionMinimapLine(ox, oy)
+    if not minimapLine:IsShown() then
+        minimapLine:Show()
+    end
 
--- Icon varibles:
---   IsActive -> icon IsActive
---   Progress -> icon position
---   State ->
---      0: The icon is in an initial state or is not moving.
---      1: The icon is moving towards its destination.
---      2 : The icon has completed its movement and is inactive.
---      3 : Another status value specific to your code.
-function APR.map:CreateIcon(parent)
-    local icon = CreateFrame("Frame", nil, UIParent)
-    icon:SetFrameStrata("HIGH")
-    icon:SetWidth(5)
-    icon:SetHeight(5)
+    local px, py = hbd:GetPlayerWorldPosition()
+    if not px or not py then
+        APR.map:RemoveMinimapLine()
+        return
+    end
+    local deltaX, deltaY = ox - px, oy - py
+    -- handle rotation
+    if rotateMinimap then
+        local facing = GetPlayerFacing()
+        local mapSin, mapCos = sin(facing), cos(facing)
+        local dx, dy = deltaX, deltaY
+        deltaX = dx * mapCos - dy * mapSin
+        deltaY = dx * mapSin + dy * mapCos
+    end
 
-    local texture = icon:CreateTexture(nil, "BACKGROUND")
-    texture:SetTexture("Interface\\Addons\\APR-Core\\Img\\Icon.blp")
-    texture:SetAllPoints(icon)
+    -- different minimap shapes
+    local isRound = true
+    if minimapShape and not (deltaX == 0 or deltaY == 0) then
+        isRound = (deltaX < 0) and 1 or 3
+        if deltaY < 0 then
+            isRound = minimapShape[isRound]
+        else
+            isRound = minimapShape[isRound + 1]
+        end
+    end
 
-    icon.texture = texture
-    icon:SetPoint("CENTER", 0, 0)
-    icon:Hide()
-    icon.IsActive = false
-    icon.Progress = 0
-    icon.State = 0
-    icon.texture:SetAlpha(APR.settings.profile.miniMapBlobAlpha)
+    -- adapt delta position to the map radius
+    local diffX = deltaX / mapRadius
+    local diffY = deltaY / mapRadius
 
-    table.insert(parent, icon)
+    -- calculate distance from the center of the map
+    local dist
+    if isRound then
+        dist = (diffX * diffX + diffY * diffY) / 0.9 ^ 2
+    else
+        dist = max(diffX * diffX, diffY * diffY) / 0.9 ^ 2
+    end
 
-    return icon
+    if dist > 1 then
+        dist = dist ^ 0.5
+        diffX = diffX / dist
+        diffY = diffY / dist
+    end
+
+    minimapLine:SetEndPoint("CENTER", Minimap, -diffX * minimapWidth, diffY * minimapHeight)
 end
 
--- quest handler
 function APR.map:RemoveMinimapLine()
-    for CLi = 1, 20 do
-        if (self.minimapLine[CLi].IsActive) then
-            self.minimapLine[CLi].IsActive = false
-            self.minimapLine[CLi].Progress = 0
-            self.minimapLine[CLi].State = 0
-            hbdPins:RemoveMinimapIcon("APR", self.minimapLine[CLi])
-        end
-    end
+    minimapLine:Hide()
 end
 
-function APR.map:RemoveMapLine()
-    for CLi = 1, 20 do
-        if (self.line[CLi].IsActive) then
-            self.line[CLi].IsActive = false
-            self.line[CLi].Progress = 0
-            self.line[CLi].State = 0
-            hbdPins:RemoveWorldMapIcon("APRMap", self.line[CLi])
-        end
-    end
-end
-
-function APR.map:MoveMinimapLine()
-    if not APR.settings.profile.showMiniMapBlobs or IsInInstance() then
+function APR.map:UpdateMinimapLine()
+    if not APR.settings.profile.showMiniMapBlobs or IsInInstance() or not checkIsInRouteZone() then
         self:RemoveMinimapLine()
         return
     end
 
-    local playerMap = C_Map.GetBestMapForUnit("player")
-    if not playerMap then
-        return
-    end
-
     local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
-    local ix, iy
-
-    if CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] then
+    if CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] then
         local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-        if steps and steps["TT"] then
-            ix, iy = APR:GetPlayerMapPos(playerMap, steps["TT"]["y"], steps["TT"]["x"])
-        else
+        if steps and steps.TT then
+            PositionMinimapLine(steps.TT.x, steps.TT.y)
             return
         end
-    else
+    end
+end
+
+APR.map.line = {}
+
+
+local WorldMapButton = WorldMapFrame:GetCanvas()
+local MapLineFrame = CreateFrame('frame', nil, WorldMapButton)
+MapLineFrame:SetAllPoints()
+MapLineFrame:SetFrameLevel(15000)
+
+-- These frames are essentially just placeholders to anchor our line to
+local MapStartPoint = CreateFrame('frame', nil, MapLineFrame)
+MapStartPoint:SetSize(1, 1)
+local MapEndPoint = CreateFrame('frame', nil, MapLineFrame)
+MapEndPoint:SetSize(1, 1)
+
+local MapLine = MapLineFrame:CreateLine(nil, 'OVERLAY')
+MapLine:Hide()
+MapLine:SetColorTexture(1, 0, 0, 1)
+MapLine:SetThickness(8)
+MapLine:SetStartPoint('CENTER', MapStartPoint, 0, 0)
+MapLine:SetEndPoint('CENTER', MapEndPoint, 0, 0)
+
+function APR.map:RemoveMapLine()
+    MapLine:Hide()
+end
+
+function APR.map:UpdateLine()
+    if not APR.settings.profile.showMapBlobs or not WorldMapFrame:IsShown() then
+        self:RemoveMapLine()
         return
     end
-
-    local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-    if steps["CRange"] then
-        local totalCR = 1
-
-        if APR.QuestStepList[APR.ActiveMap][CurStep + 1] and APR.QuestStepList[APR.ActiveMap][CurStep + 1]["CRange"] then
-            totalCR = 3
-        end
-
-        for CLi = 1, 20 do
-            local px, py = APR:GetPlayerMapPos(playerMap)
-            if not px then
-                self.minimapLine[CLi].IsActive = false
-                self.minimapLine[CLi].Progress = 0
-                hbdPins:RemoveMinimapIcon("APR", self.minimapLine[CLi])
-            else
-                local px2, py2 = px - ix, py - iy
-
-                if self.minimapLine[CLi].IsActive and (self.minimapLine[CLi].State == 0 or self.minimapLine[CLi].State == 1) then
-                    self.minimapLine[CLi].Progress = self.minimapLine[CLi].Progress + 0.02
-
-                    if self.minimapLine[CLi].Progress > 0.399 and self.minimapLine[CLi].Progress < 0.409 then
-                        local set = 0
-                        for CLi2 = 1, 20 do
-                            if set == 0 and not self.minimapLine[CLi2].IsActive then
-                                self.minimapLine[CLi2].IsActive = true
-                                self.minimapLine[CLi2].State = 1
-                                set = 1
-                            end
-                        end
-                    end
-
-                    if self.minimapLine[CLi].Progress < 1 then
-                        px2 = px - px2 * self.minimapLine[CLi].Progress
-                        py2 = py - py2 * self.minimapLine[CLi].Progress
-                        self.minimapLine[CLi].State = 1
-                        hbdPins:AddMinimapIconMap("APR", self.minimapLine[CLi], playerMap, px2, py2, true, true)
-                    else
-                        self.minimapLine[CLi].IsActive = true
-                        self.minimapLine[CLi].Progress = 0
-                        self.minimapLine[CLi].State = 2
-                        hbdPins:RemoveMinimapIcon("APR", self.minimapLine[CLi])
-                    end
-                end
-            end
-        end
-
-        if not APR.QuestStepList[APR.ActiveMap][CurStep + 1] or APR.QuestStepList[APR.ActiveMap][CurStep + 1]["ZoneDoneSave"] then
-            for CLi = 1, 20 do
-                hbdPins:RemoveMinimapIcon("APR", self.minimapLine[CLi])
-            end
-        else
-            local ix, iy = APR:GetPlayerMapPos(playerMap, APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["y"],
-                APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["x"])
-            for CLi = 1, 20 do
-                local px, py = APR:GetPlayerMapPos(playerMap)
-                if not px then
-                    self.minimapLine[CLi].IsActive = false
-                    self.minimapLine[CLi].Progress = 0
-                    hbdPins:RemoveMinimapIcon("APR", self.minimapLine[CLi])
-                else
-                    local px2, py2 = px - ix, py - iy
-
-                    if self.minimapLine[CLi].IsActive and (self.minimapLine[CLi].State == 0 or self.minimapLine[CLi].State == 2) then
-                        self.minimapLine[CLi].Progress = self.minimapLine[CLi].Progress + 0.02
-
-                        if self.minimapLine[CLi].Progress < 1 then
-                            px2 = px - px2 * self.minimapLine[CLi].Progress
-                            py2 = py - py2 * self.minimapLine[CLi].Progress
-                            self.minimapLine[CLi].State = 2
-                            hbdPins:AddMinimapIconMap("APR", self.minimapLine[CLi], playerMap, px2, py2, true, true)
-                        else
-                            self.minimapLine[CLi].IsActive = false
-                            self.minimapLine[CLi].Progress = 0
-
-                            if totalCR == 3 then
-                                self.minimapLine[CLi].IsActive = true
-                                self.minimapLine[CLi].State = 3
-                            elseif totalCR == 2 then
-                                self.minimapLine[CLi].State = 1
-                            elseif totalCR == 1 then
-                                self.minimapLine[CLi].State = 1
-                            end
-
-                            hbdPins:RemoveMinimapIcon("APR", self.minimapLine[CLi])
-                        end
-                    end
-                end
-            end
-        end
-
-        if totalCR == 3 then
-            local ix, iy = APR:GetPlayerMapPos(playerMap, APR.QuestStepList[APR.ActiveMap][CurStep + 2]["TT"]["y"],
-                APR.QuestStepList[APR.ActiveMap][CurStep + 2]["TT"]["x"])
-            for CLi = 1, 20 do
-                local px, py = APR:GetPlayerMapPos(playerMap, APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["y"],
-                    APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["x"])
-                if not px then
-                    self.minimapLine[CLi].IsActive = false
-                    self.minimapLine[CLi].Progress = 0
-                    hbdPins:RemoveMinimapIcon("APR", self.minimapLine[CLi])
-                else
-                    local px2, py2 = px - ix, py - iy
-
-                    if self.minimapLine[CLi].IsActive and (self.minimapLine[CLi].State == 0 or self.minimapLine[CLi].State == 3) then
-                        self.minimapLine[CLi].Progress = self.minimapLine[CLi].Progress + 0.02
-
-                        if self.minimapLine[CLi].Progress < 1 then
-                            px2 = px - px2 * self.minimapLine[CLi].Progress
-                            py2 = py - py2 * self.minimapLine[CLi].Progress
-                            self.minimapLine[CLi].State = 3
-                            hbdPins:AddMinimapIconMap("APR", self.minimapLine[CLi], playerMap, px2, py2, true, true)
-                        else
-                            self.minimapLine[CLi].IsActive = false
-                            self.minimapLine[CLi].Progress = 0
-                            self.minimapLine[CLi].State = 0
-                            hbdPins:RemoveMinimapIcon("APR", self.minimapLine[CLi])
-                        end
-                    end
-                end
-            end
-        end
-    else
-        local px, py = APR:GetPlayerMapPos(playerMap)
-        for CLi = 1, 20 do
-            if not px then
-                self.minimapLine[CLi].IsActive = false
-                self.minimapLine[CLi].Progress = 0
-                hbdPins:RemoveMinimapIcon("APR", self.minimapLine[CLi])
-            else
-                local px2, py2 = px - ix, py - iy
-
-                if self.minimapLine[CLi].IsActive then
-                    self.minimapLine[CLi].Progress = self.minimapLine[CLi].Progress + 0.02
-
-                    if self.minimapLine[CLi].Progress > 0.39 and self.minimapLine[CLi].Progress < 0.41 then
-                        local set = 0
-                        for CLi2 = 1, 20 do
-                            if set == 0 and not self.minimapLine[CLi2].IsActive then
-                                self.minimapLine[CLi2].IsActive = true
-                                set = 1
-                            end
-                        end
-                    end
-
-                    if self.minimapLine[CLi].Progress < 1 then
-                        px2 = px - px2 * self.minimapLine[CLi].Progress
-                        py2 = py - py2 * self.minimapLine[CLi].Progress
-                        hbdPins:AddMinimapIconMap("APR", self.minimapLine[CLi], playerMap, px2, py2, true, true)
-                    else
-                        self.minimapLine[CLi].IsActive = false
-                        self.minimapLine[CLi].Progress = 0
-                        hbdPins:RemoveMinimapIcon("APR", self.minimapLine[CLi])
-                    end
-                end
-            end
-        end
-    end
-end
-
-local function MapDelay()
-    Delaytime = 0
-end
-
-function APR.map:MoveMapLine()
-    if IsInInstance() or not APR.settings.profile.showMapBlobs or not UnitPosition("player") then
+    if IsInInstance() or WorldMapFrame:GetMapID() == COSMIC_MAP_ID or WorldMapFrame:GetMapID() == WORLD_MAP_ID or not checkIsInRouteZone() then
         self:RemoveMapLine()
         return
     end
 
-    if Delaytime == 1 or (WorldMapFrame:GetMapID() and WorldMapFrame:GetMapID() == 946) then
-        return
-    end
-
-    if CurMapShown ~= WorldMapFrame:GetMapID() then
-        CurMapShown = WorldMapFrame:GetMapID()
-        Delaytime = 1
-        C_Timer.After(0.2, MapDelay)
-        return
-    end
-
-    local SetMapIDs = WorldMapFrame:GetMapID() or C_Map.GetBestMapForUnit("player")
-
-    if not SetMapIDs then
-        return
-    end
-
+    local mapID = WorldMapFrame:GetMapID()
     local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
+    if CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] then
+        local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
+        if steps and steps.TT then
+            local mapHeight, mapWidth = WorldMapButton:GetHeight(), WorldMapButton:GetWidth()
+            local playerPos = C_Map.GetPlayerMapPosition(mapID, "player")
+            local ox, oy = APR:GetPlayerMapPos(mapID, steps.TT.y, steps.TT.x)
+            if not playerPos then
+                self:RemoveMapLine()
+                return
+            end
 
-    if not (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
-        return
-    end
-
-    local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-
-    if not (steps and steps["TT"]) then
-        return
-    end
-
-    local ix, iy = APR:GetPlayerMapPos(SetMapIDs, steps["TT"]["y"], steps["TT"]["x"])
-
-    local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-
-    if steps["CRange"] then
-        local totalCR = 1
-
-        if APR.QuestStepList[APR.ActiveMap][CurStep + 1] and APR.QuestStepList[APR.ActiveMap][CurStep + 1]["CRange"] then
-            totalCR = 3
-        end
-
-        local px, py = APR:GetPlayerMapPos(SetMapIDs)
-
-        if not px then
+            MapStartPoint:ClearAllPoints()
+            MapEndPoint:ClearAllPoints()
+            MapStartPoint:SetPoint('CENTER', WorldMapButton, 'TOPLEFT', playerPos.x * mapWidth, playerPos.y * -mapHeight)
+            MapEndPoint:SetPoint('CENTER', WorldMapButton, 'TOPLEFT', ox * mapWidth, oy * -mapHeight)
+            MapLine:Show()
             return
-        end
-
-        for CLi = 1, 20 do
-            local px2, py2 = px - ix, py - iy
-
-            if self.line[CLi].IsActive and (self.line[CLi].State == 0 or self.line[CLi].State == 1) then
-                self.line[CLi].Progress = self.line[CLi].Progress + 0.02
-
-                if self.line[CLi].Progress > 0.399 and self.line[CLi].Progress < 0.409 then
-                    local set = 0
-                    for CLi2 = 1, 20 do
-                        if set == 0 and not self.line[CLi2].IsActive then
-                            self.line[CLi2].IsActive = true
-                            self.line[CLi2].State = 1
-                            set = 1
-                        end
-                    end
-                end
-
-                if self.line[CLi].Progress < 1 then
-                    px2 = px - px2 * self.line[CLi].Progress
-                    py2 = py - py2 * self.line[CLi].Progress
-                    self.line[CLi].State = 1
-                    hbdPins:AddWorldMapIconMap("APRMap", self.line[CLi], SetMapIDs, px2, py2,
-                        HBD_PINS_WORLDMAP_SHOW_PARENT)
-                else
-                    self.line[CLi].IsActive = true
-                    self.line[CLi].Progress = 0
-                    self.line[CLi].State = 2
-                    hbdPins:RemoveWorldMapIcon("APRMap", self.line[CLi])
-                end
-            end
-        end
-
-        local px, py = APR:GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["y"],
-            APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["x"])
-
-        if not APR.QuestStepList[APR.ActiveMap][CurStep + 1] or APR.QuestStepList[APR.ActiveMap][CurStep + 1]["ZoneDoneSave"] then
-            for CLi = 1, 20 do
-                hbdPins:RemoveWorldMapIcon("APRMap", self.line[CLi])
-            end
-        else
-            local ix, iy = APR:GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["y"],
-                APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["x"])
-
-            for CLi = 1, 20 do
-                local px2, py2 = px - ix, py - iy
-
-                if self.line[CLi].IsActive == 1 and (self.line[CLi].State == 0 or self.line[CLi].State == 2) then
-                    self.line[CLi].Progress = self.line[CLi].Progress + 0.02
-
-                    if self.line[CLi].Progress < 1 then
-                        px2 = px - px2 * self.line[CLi].Progress
-                        py2 = py - py2 * self.line[CLi].Progress
-                        self.line[CLi].State = 2
-                        hbdPins:AddWorldMapIconMap("APRMap", self.line[CLi], SetMapIDs, px2, py2,
-                            HBD_PINS_WORLDMAP_SHOW_PARENT)
-                    else
-                        self.line[CLi].IsActive = false
-                        self.line[CLi].Progress = 0
-                        if totalCR == 3 then
-                            self.line[CLi].IsActive = true
-                            self.line[CLi].State = 3
-                        elseif totalCR == 2 then
-                            self.line[CLi].State = 1
-                        elseif totalCR == 1 then
-                            self.line[CLi].State = 1
-                        end
-                        hbdPins:RemoveWorldMapIcon("APRMap", self.line[CLi])
-                    end
-                end
-            end
-        end
-
-        if totalCR == 3 then
-            local px, py = APR:GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["y"],
-                APR.QuestStepList[APR.ActiveMap][CurStep + 1]["TT"]["x"])
-            local ix, iy = APR:GetPlayerMapPos(SetMapIDs, APR.QuestStepList[APR.ActiveMap][CurStep + 2]["TT"]["y"],
-                APR.QuestStepList[APR.ActiveMap][CurStep + 2]["TT"]["x"])
-
-            for CLi = 1, 20 do
-                local px2, py2 = px - ix, py - iy
-
-                if self.line[CLi].IsActive and (self.line[CLi].State == 0 or self.line[CLi].State == 3) then
-                    self.line[CLi].Progress = self.line[CLi].Progress + 0.02
-
-                    if self.line[CLi].Progress < 1 then
-                        px2 = px - px2 * self.line[CLi].Progress
-                        py2 = py - py2 * self.line[CLi].Progress
-                        self.line[CLi].State = 3
-                        hbdPins:AddWorldMapIconMap("APRMap", self.line[CLi], SetMapIDs, px2, py2,
-                            HBD_PINS_WORLDMAP_SHOW_PARENT)
-                    else
-                        self.line[CLi].IsActive = false
-                        self.line[CLi].Progress = 0
-                        self.line[CLi].State = 0
-                        hbdPins:RemoveWorldMapIcon("APRMap", self.line[CLi])
-                    end
-                end
-            end
-        end
-    else
-        local px, py = APR:GetPlayerMapPos(SetMapIDs)
-
-        for CLi = 1, 20 do
-            if not px then
-                self.line[CLi].IsActive = false
-                self.line[CLi].Progress = 0
-                hbdPins:RemoveWorldMapIcon("APRMap", self.line[CLi])
-            else
-                local px2, py2 = px - ix, py - iy
-
-                if self.line[CLi].IsActive then
-                    self.line[CLi].Progress = self.line[CLi].Progress + 0.02
-
-                    if self.line[CLi].Progress > 0.39 and self.line[CLi].Progress < 0.41 then
-                        local set = 0
-                        for CLi2 = 1, 20 do
-                            if set == 0 and not self.line[CLi2].IsActive then
-                                self.line[CLi2].IsActive = true
-                                set = 1
-                            end
-                        end
-                    end
-
-                    if self.line[CLi].Progress < 1 then
-                        px2 = px - px2 * self.line[CLi].Progress
-                        py2 = py - py2 * self.line[CLi].Progress
-                        hbdPins:AddWorldMapIconMap("APRMap", self.line[CLi], SetMapIDs, px2, py2,
-                            HBD_PINS_WORLDMAP_SHOW_PARENT)
-                    else
-                        self.line[CLi].IsActive = false
-                        self.line[CLi].Progress = 0
-                        hbdPins:RemoveWorldMapIcon("APRMap", self.line[CLi])
-                    end
-                end
-            end
         end
     end
 end
 
 function APR.map:ToggleLine()
     if not APR.settings.profile.enableAddon then
-        for CLi = 1, 20 do
-            self.minimapLine[CLi]:Hide()
-            self.line[CLi]:Hide()
-        end
+        minimapLine:Hide()
+        mapLine:Hide()
         return
     else
-        for CLi = 1, 20 do
-            self.minimapLine[CLi]:Show()
-            self.line[CLi]:Show()
-        end
+        minimapLine:Show()
+        mapLine:Show()
     end
 end
 
@@ -479,15 +248,17 @@ APR.map.pinlist = {}
 APR.map.minimapPinlist = {}
 function APR.map:CreatePin(index, step)
     local pinFrame = CreateFrame("Button", nil, UIParent, "BackdropTemplate")
+    pinFrame:SetFrameLevel(16000)
     pinFrame:SetSize(16, 16)
     pinFrame:EnableMouse()
     pinFrame:Hide()
 
-    pinFrame.icon = pinFrame:CreateTexture(nil, "ARTWORK")
-    pinFrame.icon:SetTexture("Interface\\Addons\\APR-Core\\Img\\Icon.tga")
+    pinFrame.icon = pinFrame:CreateTexture(nil, "OVERLAY")
+    pinFrame.icon:SetTexture("Interface\\Addons\\APR-Core\\assets\\Icon.tga")
     pinFrame.icon:SetAllPoints(pinFrame)
+    pinFrame.icon:SetVertexColor(4 / 255, 139 / 255, 154 / 255, 1)
 
-    pinFrame.text = pinFrame:CreateFontString(nil, "ARTWORK", "GameFontNormalCenter")
+    pinFrame.text = pinFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalCenter")
     pinFrame.text:SetPoint("CENTER", pinFrame, "CENTER", 0, 0)
     pinFrame.text:SetText(index)
 
@@ -508,26 +279,41 @@ function APR.map:CreatePin(index, step)
 end
 
 function APR.map:RemoveMapIcons()
-    for id, pin in pairs(self.minimapPinlist) do
-        pin:Hide()
-        pin:ClearAllPoints()
-        pin = nil
-    end
     for id, pin in pairs(self.pinlist) do
         pin:Hide()
         pin:ClearAllPoints()
         pin = nil
     end
-    hbdPins:RemoveAllWorldMapIcons(APR.title)
-    hbdPins:RemoveAllMinimapIcons(APR.title)
+    hbdPins:RemoveAllWorldMapIcons(self.pinlist)
+end
+
+function APR.map:RemoveMiniMapIcons()
+    for id, pin in pairs(self.minimapPinlist) do
+        pin:Hide()
+        pin:ClearAllPoints()
+        pin = nil
+    end
+    hbdPins:RemoveAllMinimapIcons(self.minimapPinlist)
 end
 
 function APR.map:AddMapPins()
     self:RemoveMapIcons()
+    self:RemoveMiniMapIcons()
+    if not APR.settings.profile.mapshowNextSteps and not APR.settings.profile.minimapshowNextSteps or not checkIsInRouteZone() then
+        return
+    end
+
+    local needDisplayWorldPin = true
+    local mapID = WorldMapFrame:GetMapID()
+    local playermapID = C_Map.GetBestMapForUnit("player")
+    if APR.settings.profile.mapshowNextSteps then
+        local playerPos = C_Map.GetPlayerMapPosition(mapID, "player")
+        if not playerPos then
+            needDisplayWorldPin = false
+        end
+    end
 
     local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
-    local mapID = WorldMapFrame:GetMapID() or C_Map.GetBestMapForUnit("player")
-
     if APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and CurStep then
         local mapshowNextStepsCount = APR.settings.profile.mapshowNextStepsCount
         local minimapshowNextStepsCount = APR.settings.profile.minimapshowNextStepsCount
@@ -540,15 +326,26 @@ function APR.map:AddMapPins()
                     self.minimapPinlist[stepIndex] = self:CreatePin(stepIndex, steps)
                 end
 
-                local x, y = APR:GetPlayerMapPos(mapID, steps["TT"]["y"], steps["TT"]["x"])
+                local x, y = APR:GetPlayerMapPos(needDisplayWorldPin and mapID or playermapID, steps["TT"]["y"],
+                    steps["TT"]["x"])
                 if x and y then
-                    if APR.settings.profile.mapshowNextSteps and mapshowNextStepsCount > mapStepDisplayed then
-                        hbdPins:AddWorldMapIconMap(APR.title, self.pinlist[stepIndex], mapID, x, y, 3)
-                        mapStepDisplayed = mapStepDisplayed + 1
+                    if APR.settings.profile.mapshowNextSteps and needDisplayWorldPin then
+                        if mapshowNextStepsCount > mapStepDisplayed then
+                            hbdPins:AddWorldMapIconMap(self.pinlist, self.pinlist[stepIndex], mapID, x, y, 3)
+                            mapStepDisplayed = mapStepDisplayed + 1
+                        end
+                    else
+                        self:RemoveMapIcons()
                     end
-                    if APR.settings.profile.minimapshowNextSteps and minimapshowNextStepsCount > minimapStepDisplayed then
-                        hbdPins:AddMinimapIconMap(APR.title, self.minimapPinlist[stepIndex], mapID, x, y, true, true)
-                        minimapStepDisplayed = minimapStepDisplayed + 1
+                    if APR.settings.profile.minimapshowNextSteps then
+                        if minimapshowNextStepsCount > minimapStepDisplayed then
+                            hbdPins:AddMinimapIconMap(self.minimapPinlist, self.minimapPinlist[stepIndex], mapID, x, y,
+                                true,
+                                true)
+                            minimapStepDisplayed = minimapStepDisplayed + 1
+                        end
+                    else
+                        self:RemoveMiniMapIcons()
                     end
                 end
             end
@@ -560,10 +357,17 @@ end
 ------------------------------------ Map Event ----------------------------------------
 ---------------------------------------------------------------------------------------
 
-
 APR.map.eventFrame = CreateFrame("Frame")
-APR.map.eventFrame:RegisterEvent("QUEST_LOG_UPDATE")
 APR.map.eventFrame:RegisterEvent("ADDON_LOADED")
+APR.map.eventFrame:RegisterEvent("CVAR_UPDATE")
+APR.map.eventFrame:RegisterEvent("QUEST_LOG_UPDATE")
+APR.map.eventFrame:RegisterEvent("MINIMAP_UPDATE_ZOOM")
+APR.map.eventFrame:RegisterEvent("ZONE_CHANGED")
+APR.map.eventFrame:RegisterEvent("ZONE_CHANGED_INDOORS")
+APR.map.eventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+APR.map.eventFrame:RegisterEvent("NEW_WMO_CHUNK")
+APR.map.eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+
 APR.map.eventFrame:SetScript("OnEvent", function(self, event, ...)
     if APR.settings.profile.showEvent then
         print("EVENT: Map - ", event)
@@ -572,26 +376,37 @@ APR.map.eventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.map:RemoveMapIcons()
         return
     end
-    if (event == "QUEST_LOG_UPDATE") then
-        APR.map:AddMapPins()
-    end
+
     if (event == "ADDON_LOADED") then
-        APR.map.dottedLine = self:CreateAnimationGroup()
-        APR.map.dottedLine.anim = APR.map.dottedLine:CreateAnimation()
-        APR.map.dottedLine.anim:SetDuration(0.15)
-        APR.map.dottedLine:SetLooping("REPEAT")
-        APR.map.dottedLine:SetScript("OnLoop", function(self, event, ...)
-            if next(APR.map.minimapLine) then
-                if (APR.settings.profile.showMiniMapBlobs) then
-                    APR.map:MoveMinimapLine()
-                end
+        UpdateMinimapData()
+        APR.map.stepLine = self:CreateAnimationGroup()
+        APR.map.stepLine.anim = APR.map.stepLine:CreateAnimation()
+        APR.map.stepLine.anim:SetDuration(0.1)
+        APR.map.stepLine:SetLooping("REPEAT")
+        APR.map.stepLine:SetScript("OnLoop", function(self, event, ...)
+            if (APR.settings.profile.showMiniMapBlobs) then
+                APR.map:UpdateMinimapLine()
             end
-            if next(APR.map.line) then
-                if (APR.settings.profile.showMapBlobs) then
-                    APR.map:MoveMapLine()
-                end
+            if (APR.settings.profile.showMapBlobs) then
+                APR.map:UpdateLine()
             end
         end)
-        APR.map.dottedLine:Play()
+        APR.map.stepLine:Play()
+    elseif event == "CVAR_UPDATE" then
+        local cvar, value = ...
+        if cvar == "rotateMinimap" or cvar == "ROTATE_MINIMAP" then
+            rotateMinimap = (value == "1")
+        end
+    elseif event == "PLAYER_LOGIN" then
+        rotateMinimap = GetCVar("rotateMinimap") == "1"
+    elseif event == "MINIMAP_UPDATE_ZOOM"
+        or event == "ZONE_CHANGED"
+        or event == "ZONE_CHANGED_INDOORS"
+        or event == "ZONE_CHANGED_NEW_AREA"
+        or event == "NEW_WMO_CHUNK"
+        or event == "PLAYER_ENTERING_WORLD" then
+        UpdateMinimapData()
+    elseif (event == "QUEST_LOG_UPDATE") then
+        APR.map:AddMapPins()
     end
 end)

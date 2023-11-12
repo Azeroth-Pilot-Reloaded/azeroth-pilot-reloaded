@@ -225,8 +225,8 @@ function APR.FP.GetCustomZone()
     if (Enum and Enum.UIMapType and Enum.UIMapType.Continent and currentMapId) then
         playerMapID = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
     end
-    if (playerMapID and playerMapID["mapID"]) then
-        playerMapID = playerMapID["mapID"]
+    if (playerMapID) then
+        playerMapID = playerMapID.mapID
     else
         playerMapID = C_Map.GetBestMapForUnit("player")
     end
@@ -701,8 +701,6 @@ function APR.FP.GetMeToNextZone()
     if (APR.settings.profile.debug) then
         print("Function: APR.FP.GetMeToNextZone() Part 2")
     end
-    -- Disable Current Step button/bar/quest/...
-    APR.currentStep:Disable()
 
     if (APR.FP.Zonening == 1) then
         return
@@ -732,6 +730,8 @@ function APR.FP.GetMeToNextZone()
 
     if (routeMapID ~= GoToZone) then
         APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
+        APR.currentStep:AddExtraLineText("WRONG_ZONE", L["WRONG_ZONE"])
+
         if (APR.ActiveMap) then
             local function checkChromieTimeline(id)
                 local chromieExpansionOption = C_ChromieTime.GetChromieTimeExpansionOption(id)

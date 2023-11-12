@@ -53,3 +53,16 @@ function APR:GetPlayerMapPos(MapID, dx, dy)
         return scaleY * P.y, scaleX * P.x;
     end
 end
+
+function APR:GetRouteMapID()
+    local customPath = APR_Custom[APR.Username .. "-" .. APR.Realm]
+
+    local customPathKey = math.huge
+    for key in pairs(customPath) do
+        if key < customPathKey then
+            customPathKey = key
+        end
+    end
+
+    return APR.QuestStepListListingZone[customPath[customPathKey]]
+end

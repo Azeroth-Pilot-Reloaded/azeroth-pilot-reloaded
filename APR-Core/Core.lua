@@ -62,9 +62,6 @@ function APR:OnInitialize()
     --Init Part0y frame
     APR.party:PartyFrameOnInit()
 
-    --Init Party frame
-    APR.map:mapIcon() -- TODO REWORK
-
     --Init AFK frame
     APR.AFK:AFKFrameOnInit()
 
@@ -1645,11 +1642,19 @@ function APR.RoutePlanLoadIn()
                             end
                         end
                     end
-                    if (APR["ShadowlandsDB"] and APR["ShadowlandsDB"][zew] and IsAddOnLoaded("APR-Shadowlands") == false) then
+                    if (APR["Shadowlands"] and APR["Shadowlands"][zew] and IsAddOnLoaded("APR-Shadowlands") == false) then
                         local loaded, reason = LoadAddOn("APR-Shadowlands")
                         if (not loaded) then
                             if (reason == "DISABLED") then
                                 print("APR: APR - Shadowlands " .. L["DISABLED_ADDON_LIST"])
+                            end
+                        end
+                    end
+                    if (APR["Dragonflight"] and APR["Dragonflight"][zew] and IsAddOnLoaded("APR-Dragonflight") == false) then
+                        local loaded, reason = LoadAddOn("APR-Dragonflight")
+                        if (not loaded) then
+                            if (reason == "DISABLED") then
+                                print("APR: APR - Dragonflight " .. L["DISABLED_ADDON_LIST"])
                             end
                         end
                     end
@@ -2595,6 +2600,7 @@ function APR.RoutePlanCheckPos()
     end
     APR_Custom[APR.Username .. "-" .. APR.Realm] = nil
     APR_Custom[APR.Username .. "-" .. APR.Realm] = {}
+
     for CLi = 1, 19 do
         APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:ClearAllPoints()
         APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.FG1.CPT, "TOPRIGHT", -10,

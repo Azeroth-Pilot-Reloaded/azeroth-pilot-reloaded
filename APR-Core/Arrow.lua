@@ -140,13 +140,11 @@ function APR.Arrow:CalculPosition()
 
     if not d_y then
         APR.ArrowFrame:Hide()
-        APR.map:RemoveMinimapLine()
         return
     end
 
     if not APR.settings.profile.showArrow or APR.ArrowActive == 0 or APR.ArrowActive_X == 0 or IsInInstance() or not APR.QuestStepList or C_PetBattles.IsInBattle() then
         APR.ArrowFrame:Hide()
-        APR.map:RemoveMinimapLine()
         return
     end
 

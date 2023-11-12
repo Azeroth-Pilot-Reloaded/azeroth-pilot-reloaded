@@ -835,6 +835,11 @@ local function APR_UpdateStep()
         APR.questOrderList:AddStepFromRoute()
         -- set Progress bar with the right total
         APR.currentStep:SetProgressBar(CurStep)
+    else
+        APR.currentStep:AddExtraLineText("NO_ROUTE", L["NO_ROUTE"], true)
+        APR:SendMessage("APR_MAP_UPDATE")
+        APR.map:RemoveMapLine()
+        APR.map:RemoveMinimapLine()
     end
 end
 
@@ -1133,8 +1138,6 @@ local function APR_SetQPTT()
         APR.ArrowActive_X = APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["x"]
         APR.ArrowActive_Y = APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["y"]
         QNumberLocal = CurStep
-        APR.map.minimapLine[1].IsActive = true
-        APR.map.line[1].IsActive = true
     end
 end
 
