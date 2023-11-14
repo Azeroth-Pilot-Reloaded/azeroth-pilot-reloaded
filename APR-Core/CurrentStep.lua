@@ -24,7 +24,7 @@ local isDragging = false
 
 -- Create the main current step frame
 local CurrentStepFrame = CreateFrame("Frame", "CurrentStepScreenPanel", UIParent, "BackdropTemplate")
-CurrentStepFrame:SetSize(FRAME_WIDTH, 10)
+CurrentStepFrame:SetSize(FRAME_WIDTH, 50)
 CurrentStepFrame:SetFrameStrata("LOW")
 CurrentStepFrame:SetClampedToScreen(true)
 CurrentStepFrame:SetBackdrop({
@@ -150,8 +150,6 @@ minimizeButton:SetPoint("topright", CurrentStepFrameHeader, "topright", 0, -4)
 minimizeButton:SetScript("OnClick", function()
     if (CurrentStepFrame.collapsed) then
         APR.currentStep:SetDefaultDisplay()
-        APR.currentStep:UpdateBackgroundColorAlpha(APR.settings.profile.currentStepAttachFrameToQuestLog and
-            { 0, 0, 0, 0 } or nil)
     else
         CurrentStepFrame.collapsed = true
         minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0, 0.5)
@@ -160,7 +158,6 @@ minimizeButton:SetScript("OnClick", function()
         CurrentStepFrameHeader:Hide()
         minimizeButtonText:Show()
         minimizeButtonText:SetText(APR.title)
-        APR.currentStep:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
     end
 end)
 
@@ -203,6 +200,7 @@ function APR.currentStep:SetDefaultDisplay()
     CurrentStepFrame_StepHolder:Show()
     CurrentStepFrameHeader:Show()
     minimizeButtonText:Hide()
+    APR.currentStep:UpdateBackgroundColorAlpha()
 end
 
 -- Update the frame scale
@@ -212,15 +210,13 @@ end
 
 function APR.currentStep:UpdateBackgroundColorAlpha(color)
     CurrentStepFrame:SetBackdropColor(unpack(color or APR.settings.profile.currentStepbackgroundColorAlpha))
-end
-
-function APR.currentStep:UpdateFrameHeight(height)
-    CurrentStepFrame:SetHeight(height)
-    if not APR.settings.profile.currentStepAttachFrameToQuestLog then
-        LibWindow.RestorePosition(CurrentStepFrame)
-    else
-        self:RefreshCurrentStepFrameAnchor()
+    local UpdateColor = function(list)
+        for _, container in pairs(list) do
+            container:SetBackdropColor(unpack(color or APR.settings.profile.currentStepbackgroundColorAlpha))
+        end
     end
+    UpdateColor(self.questsList)
+    UpdateColor(self.questsExtraTextList)
 end
 
 -- Refresh the frame positioning
@@ -237,7 +233,6 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
         CurrentStepScreenPanel:EnableMouse(false)
         CurrentStepScreenPanel:ClearAllPoints()
         CurrentStepFrame:SetScale(1)
-        APR.currentStep:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
 
         for i = 1, ObjectiveTrackerFrame:GetNumPoints() do
             local point, relativeTo, relativePoint, xOfs, yOfs = ObjectiveTrackerFrame:GetPoint(i)
@@ -265,7 +260,6 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
 
         LibWindow.RestorePosition(CurrentStepScreenPanel)
         self:UpdateFrameScale()
-        self:UpdateBackgroundColorAlpha()
 
         CurrentStepFrameHeader:ClearAllPoints()
         CurrentStepFrameHeader:SetPoint("bottom", CurrentStepFrame, "top", 0, -20)
@@ -452,6 +446,12 @@ local function AddStepsFrame(questDesc, extraLineText, noStars)
     -- Set the size of the container based on the text length
     container:SetWidth(FRAME_WIDTH)
     container:SetHeight(font:GetStringHeight() + 10)
+    container:SetBackdrop({
+        bgFile = "Interface\\BUTTONS\\WHITE8X8",
+        tile = true,
+        tileSize = 16
+    })
+    container:SetBackdropColor(unpack(APR.settings.profile.currentStepbackgroundColorAlpha))
 
     return container
 end
@@ -555,9 +555,6 @@ function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
         questContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
         FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - questContainer:GetHeight()
     end
-
-    -- adapt parent height to the contents
-    self:UpdateFrameHeight(FRAME_STEP_HOLDER_HEIGHT)
 end
 
 -- Remove all  quest steps and extra line texts
@@ -577,9 +574,6 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
     ResetList(self.questsExtraTextList)
     self.questsExtraTextList = {}
     FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
-
-    -- adapt parent height to the contents
-    self:UpdateFrameHeight(50)
 end
 
 -- Button management
