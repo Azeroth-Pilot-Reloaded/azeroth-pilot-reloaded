@@ -68,6 +68,9 @@ function APR:OnInitialize()
     -- Init Quest Order List frame
     APR.questOrderList:QuestOrderListFrameOnInit()
 
+    -- Init Map/Minimap lines & Icons
+    APR.map:OnInit()
+
     -- Init coordinate frame for dev
     APR.coordinate:PartyFrameOnInit()
 

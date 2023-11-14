@@ -12,8 +12,6 @@ end)
 local COSMIC_MAP_ID = 946
 local WORLD_MAP_ID = 947
 
-local CurMapShown
-local Delaytime = 0
 local cos, sin, max = math.cos, math.sin, math.max
 local MinimapRadiusAPI = C_Minimap and C_Minimap.GetViewRadius
 
@@ -61,7 +59,7 @@ local function checkIsInRouteZone()
         local childrenMap = C_Map.GetMapChildrenInfo(parentMapID)
 
         local isPresent = false
-        for i, map in ipairs(childrenMap) do
+        for _, map in ipairs(childrenMap) do
             if map.mapID == APR.FP.GoToZone then
                 isPresent = true
                 break
@@ -74,16 +72,10 @@ end
 ---------------------------------------------------------------------------------------
 ---------------------------------- Dotted Lines ---------------------------------------
 ---------------------------------------------------------------------------------------
+local minimapLine, MapLineFrame, MapLine, MapStartPoint, MapEndPoint
+local minimapShape, minimapWidth, minimapHeight, rotateMinimap, indoors, zoom, mapRadius
+local WorldMapButton = WorldMapFrame:GetCanvas()
 
-local minimapLine = Minimap:CreateLine()
-minimapLine:SetColorTexture(1, 0, 0)
-minimapLine:SetStartPoint("CENTER", Minimap, 0, 0)
-minimapLine:SetEndPoint("CENTER", Minimap, 0, 0)
--- line:SetColorTexture(4 / 255, 139 / 255, 154 / 255, 0.6)
-minimapLine:SetColorTexture(1, 0, 0, 1)
-minimapLine:SetThickness(2)
-
-local minimapShape, minimapWidth, minimapHeight, rotateMinimap, indoors, zoom, scale, mapRadius
 local function UpdateMinimapData()
     minimapShape = GetMinimapShape and minimap_shapes[GetMinimapShape() or "ROUND"]
     minimapWidth = Minimap:GetWidth() / 2
@@ -96,10 +88,56 @@ local function UpdateMinimapData()
     else
         mapRadius = minimap_size[indoors][zoom] / 2
     end
-    if not APR.settings.profile.showMiniMapBlobs then
+    if not APR.settings.profile.showMiniMapLine then
         APR.map:RemoveMinimapLine()
     end
 end
+
+function APR.map:OnInit()
+    -- Init Minimap Line
+    minimapLine = Minimap:CreateLine()
+    minimapLine:SetColorTexture(1, 0, 0)
+    minimapLine:SetStartPoint("CENTER", Minimap, 0, 0)
+    minimapLine:SetEndPoint("CENTER", Minimap, 0, 0)
+    minimapLine:SetColorTexture(unpack(APR.settings.profile.showMiniMapLineColor))
+    minimapLine:SetThickness(APR.settings.profile.showMiniMapLineThickness)
+    --Init Minimap Data
+    UpdateMinimapData()
+
+    --Init Map Line
+    MapLineFrame = CreateFrame('frame', nil, WorldMapButton)
+    MapLineFrame:SetAllPoints()
+    MapLineFrame:SetFrameLevel(15000)
+
+    -- These frames are essentially just placeholders to anchor our line to
+    MapStartPoint = CreateFrame('frame', nil, MapLineFrame)
+    MapStartPoint:SetSize(1, 1)
+    MapEndPoint = CreateFrame('frame', nil, MapLineFrame)
+    MapEndPoint:SetSize(1, 1)
+
+    MapLine = MapLineFrame:CreateLine(nil, 'OVERLAY')
+    MapLine:Hide()
+    MapLine:SetColorTexture(unpack(APR.settings.profile.showMapLineColor))
+    MapLine:SetThickness(APR.settings.profile.showMapLineThickness)
+    MapLine:SetStartPoint('CENTER', MapStartPoint, 0, 0)
+    MapLine:SetEndPoint('CENTER', MapEndPoint, 0, 0)
+
+    -- Init Anim for updating lines
+    APR.map.stepLines = APR.map.eventFrame:CreateAnimationGroup()
+    APR.map.stepLines.anim = APR.map.stepLines:CreateAnimation()
+    APR.map.stepLines.anim:SetDuration(0.1)
+    APR.map.stepLines:SetLooping("REPEAT")
+    APR.map.stepLines:SetScript("OnLoop", function(self, event, ...)
+        if (APR.settings.profile.showMiniMapLine) then
+            APR.map:UpdateMinimapLine()
+        end
+        if (APR.settings.profile.showMapLine) then
+            APR.map:UpdateLine()
+        end
+    end)
+    APR.map.stepLines:Play()
+end
+
 local function PositionMinimapLine(ox, oy)
     if not minimapLine:IsShown() then
         minimapLine:Show()
@@ -157,7 +195,7 @@ function APR.map:RemoveMinimapLine()
 end
 
 function APR.map:UpdateMinimapLine()
-    if not APR.settings.profile.showMiniMapBlobs or IsInInstance() or not checkIsInRouteZone() then
+    if not APR.settings.profile.showMiniMapLine or IsInInstance() or not checkIsInRouteZone() then
         self:RemoveMinimapLine()
         return
     end
@@ -172,33 +210,12 @@ function APR.map:UpdateMinimapLine()
     end
 end
 
-APR.map.line = {}
-
-
-local WorldMapButton = WorldMapFrame:GetCanvas()
-local MapLineFrame = CreateFrame('frame', nil, WorldMapButton)
-MapLineFrame:SetAllPoints()
-MapLineFrame:SetFrameLevel(15000)
-
--- These frames are essentially just placeholders to anchor our line to
-local MapStartPoint = CreateFrame('frame', nil, MapLineFrame)
-MapStartPoint:SetSize(1, 1)
-local MapEndPoint = CreateFrame('frame', nil, MapLineFrame)
-MapEndPoint:SetSize(1, 1)
-
-local MapLine = MapLineFrame:CreateLine(nil, 'OVERLAY')
-MapLine:Hide()
-MapLine:SetColorTexture(1, 0, 0, 1)
-MapLine:SetThickness(8)
-MapLine:SetStartPoint('CENTER', MapStartPoint, 0, 0)
-MapLine:SetEndPoint('CENTER', MapEndPoint, 0, 0)
-
 function APR.map:RemoveMapLine()
     MapLine:Hide()
 end
 
 function APR.map:UpdateLine()
-    if not APR.settings.profile.showMapBlobs or not WorldMapFrame:IsShown() then
+    if not APR.settings.profile.showMapLine or not WorldMapFrame:IsShown() then
         self:RemoveMapLine()
         return
     end
@@ -241,22 +258,32 @@ function APR.map:ToggleLine()
     end
 end
 
+function APR.map:UpdateMapLineStyle()
+    MapLine:SetColorTexture(unpack(APR.settings.profile.showMapLineColor))
+    MapLine:SetThickness(APR.settings.profile.showMapLineThickness)
+end
+
+function APR.map:UpdateMinimapLineStyle()
+    minimapLine:SetColorTexture(unpack(APR.settings.profile.showMiniMapLineColor))
+    minimapLine:SetThickness(APR.settings.profile.showMiniMapLineThickness)
+end
+
 ---------------------------------------------------------------------------------------
 --------------------------------- Map/Minimap Icons------------------------------------
 ---------------------------------------------------------------------------------------
 APR.map.pinlist = {}
 APR.map.minimapPinlist = {}
-function APR.map:CreatePin(index, step)
+function APR.map:CreatePin(index, step, size, color)
     local pinFrame = CreateFrame("Button", nil, UIParent, "BackdropTemplate")
     pinFrame:SetFrameLevel(16000)
-    pinFrame:SetSize(16, 16)
+    pinFrame:SetSize(size, size)
     pinFrame:EnableMouse()
     pinFrame:Hide()
 
     pinFrame.icon = pinFrame:CreateTexture(nil, "OVERLAY")
     pinFrame.icon:SetTexture("Interface\\Addons\\APR-Core\\assets\\Icon.tga")
     pinFrame.icon:SetAllPoints(pinFrame)
-    pinFrame.icon:SetVertexColor(4 / 255, 139 / 255, 154 / 255, 1)
+    pinFrame.icon:SetVertexColor(unpack(color))
 
     pinFrame.text = pinFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalCenter")
     pinFrame.text:SetPoint("CENTER", pinFrame, "CENTER", 0, 0)
@@ -276,6 +303,20 @@ function APR.map:CreatePin(index, step)
     -- pinFrame:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
 
     return pinFrame
+end
+
+function APR.map:UpdateMapIconsStyle()
+    for _, pin in pairs(self.pinlist) do
+        pin:SetSize(APR.settings.profile.mapshowNextStepsSize, APR.settings.profile.mapshowNextStepsSize)
+        pin.icon:SetVertexColor(unpack(APR.settings.profile.mapshowNextStepsColor))
+    end
+end
+
+function APR.map:UpdateMiniMapIconsStyle()
+    for _, pin in pairs(self.minimapPinlist) do
+        pin:SetSize(APR.settings.profile.minimapshowNextStepsSize, APR.settings.profile.minimapshowNextStepsSize)
+        pin.icon:SetVertexColor(unpack(APR.settings.profile.minimapshowNextStepsColor))
+    end
 end
 
 function APR.map:RemoveMapIcons()
@@ -322,8 +363,12 @@ function APR.map:AddMapPins()
         for stepIndex, steps in pairs(APR.QuestStepList[APR.ActiveMap]) do
             if steps["TT"] and (stepIndex >= CurStep) and (stepIndex <= CurStep + math.max(mapshowNextStepsCount, minimapshowNextStepsCount)) then
                 if not self.pinlist[stepIndex] then
-                    self.pinlist[stepIndex] = self:CreatePin(stepIndex, steps)
-                    self.minimapPinlist[stepIndex] = self:CreatePin(stepIndex, steps)
+                    self.pinlist[stepIndex] = self:CreatePin(stepIndex, steps, APR.settings.profile.mapshowNextStepsSize,
+                        APR.settings.profile.mapshowNextStepsColor)
+                end
+                if not self.minimapPinlist[stepIndex] then
+                    self.minimapPinlist[stepIndex] = self:CreatePin(stepIndex, steps,
+                        APR.settings.profile.minimapshowNextStepsSize, APR.settings.profile.minimapshowNextStepsColor)
                 end
 
                 local x, y = APR:GetPlayerMapPos(needDisplayWorldPin and mapID or playermapID, steps["TT"]["y"],
@@ -358,7 +403,6 @@ end
 ---------------------------------------------------------------------------------------
 
 APR.map.eventFrame = CreateFrame("Frame")
-APR.map.eventFrame:RegisterEvent("ADDON_LOADED")
 APR.map.eventFrame:RegisterEvent("CVAR_UPDATE")
 APR.map.eventFrame:RegisterEvent("QUEST_LOG_UPDATE")
 APR.map.eventFrame:RegisterEvent("MINIMAP_UPDATE_ZOOM")
@@ -377,22 +421,7 @@ APR.map.eventFrame:SetScript("OnEvent", function(self, event, ...)
         return
     end
 
-    if (event == "ADDON_LOADED") then
-        UpdateMinimapData()
-        APR.map.stepLine = self:CreateAnimationGroup()
-        APR.map.stepLine.anim = APR.map.stepLine:CreateAnimation()
-        APR.map.stepLine.anim:SetDuration(0.1)
-        APR.map.stepLine:SetLooping("REPEAT")
-        APR.map.stepLine:SetScript("OnLoop", function(self, event, ...)
-            if (APR.settings.profile.showMiniMapBlobs) then
-                APR.map:UpdateMinimapLine()
-            end
-            if (APR.settings.profile.showMapBlobs) then
-                APR.map:UpdateLine()
-            end
-        end)
-        APR.map.stepLine:Play()
-    elseif event == "CVAR_UPDATE" then
+    if event == "CVAR_UPDATE" then
         local cvar, value = ...
         if cvar == "rotateMinimap" or cvar == "ROTATE_MINIMAP" then
             rotateMinimap = (value == "1")
