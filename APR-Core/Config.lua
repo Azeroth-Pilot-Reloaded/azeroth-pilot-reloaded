@@ -71,16 +71,25 @@ function APR.settings:InitializeSettings()
             arrowFPS = 2,
             arrowleft = _G.GetScreenWidth() / 2.05,
             arrowtop = -(_G.GetScreenHeight() / 1.5),
-            -- minimap
-            showMiniMapBlobs = true,
-            enableMinimapButton = true,
-            minimap = { minimapPos = 250 },
-            minimapshowNextSteps = false,
-            minimapshowNextStepsCount = 5,
             -- map
-            showMapBlobs = true,
-            mapshowNextSteps = false,
-            mapshowNextStepsCount = 5,
+            mapMinimapSameColor = true,
+            showMapLine = true,
+            showMapLineColor = { 80 / 255, 200 / 255, 120 / 255, 0.8 },
+            showMapLineThickness = 8,
+            mapshowNextSteps = true,
+            mapshowNextStepsColor = { 80 / 255, 200 / 255, 120 / 255, 0.8 },
+            mapshowNextStepsCount = 2,
+            mapshowNextStepsSize = 16,
+            -- minimap
+            minimap = { minimapPos = 250 },
+            enableMinimapButton = true,
+            showMiniMapLine = true,
+            showMiniMapLineColor = { 80 / 255, 200 / 255, 120 / 255, 0.8 },
+            showMiniMapLineThickness = 2,
+            minimapshowNextSteps = true,
+            minimapshowNextStepsColor = { 80 / 255, 200 / 255, 120 / 255, 0.8 },
+            minimapshowNextStepsCount = 2,
+            minimapshowNextStepsSize = 16,
             -- Heirloom
             heirloomWarning = true, -- DisableHeirloomWarning
             -- group
@@ -580,11 +589,10 @@ function APR.settings:createBlizzOptions()
                         inline = true,
                         name = L["MAP"],
                         args = {
-                            showMapBlobs = {
-                                order = 9.4,
+                            showMapLine = {
+                                order = 9.10,
                                 type = "toggle",
-                                name = L["SHOW_BLOBS_ON_MAP"],
-                                desc = L["SHOW_BLOBS_ON_MAP_DESC"],
+                                name = L["MAP_LINE_SHOW"],
                                 width = "full",
                                 get = GetProfileOption,
                                 set = function(info, value)
@@ -594,11 +602,35 @@ function APR.settings:createBlizzOptions()
                                     end
                                 end
                             },
+                            showMapLineThickness = {
+                                order = 9.12,
+                                type = "range",
+                                name = L["MAP_LINE_THICKNESS"],
+                                width = "full",
+                                min = 0.5,
+                                max = 50,
+                                step = 0.5,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.map:UpdateMapLineStyle()
+                                end,
+                                disabled = function()
+                                    return not self.profile.showMapLine
+                                end,
+                            },
+                            mapblank0 = {
+                                order = 9.13,
+                                type = "description",
+                                width = "full",
+                                name = " ",
+                            },
                             mapshowNextSteps = {
-                                order = 9.41,
+                                order = 9.14,
                                 type = "toggle",
                                 name = L["SHOW_STEPS_MAP"],
                                 desc = L["SHOW_STEPS_MAP_DESC"],
+                                width = "full",
                                 get = GetProfileOption,
                                 set = function(info, value)
                                     SetProfileOption(info, value)
@@ -606,7 +638,7 @@ function APR.settings:createBlizzOptions()
                                 end,
                             },
                             mapshowNextStepsCount = {
-                                order = 9.42,
+                                order = 9.15,
                                 type = "range",
                                 name = L["SHOW_STEPS_MAP_COUNT"],
                                 min = 0,
@@ -616,6 +648,22 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:AddMapPins()
+                                end,
+                                disabled = function()
+                                    return not self.profile.mapshowNextSteps
+                                end,
+                            },
+                            mapshowNextStepsSize = {
+                                order = 9.16,
+                                type = "range",
+                                name = L["MAP_STEP_ICON_SIZE"],
+                                min = 1,
+                                max = 100,
+                                step = 1,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.map:UpdateMapIconsStyle()
                                 end,
                                 disabled = function()
                                     return not self.profile.mapshowNextSteps
@@ -634,7 +682,7 @@ function APR.settings:createBlizzOptions()
                                 desc = L["ENABLE_MINIMAP_BUTTON_DESC"],
                                 type = "toggle",
                                 width = "full",
-                                order = 9.1,
+                                order = 9.20,
                                 get = GetProfileOption,
                                 set = function(info, value)
                                     SetProfileOption(info, value)
@@ -645,11 +693,16 @@ function APR.settings:createBlizzOptions()
                                     end
                                 end
                             },
-                            showMiniMapBlobs = {
-                                order = 9.2,
+                            minimapblank0 = {
+                                order = 9.21,
+                                type = "description",
+                                width = "full",
+                                name = " ",
+                            },
+                            showMiniMapLine = {
+                                order = 9.22,
                                 type = "toggle",
-                                name = L["SHOW_BLOBS_ON_MINIMAP"],
-                                desc = L["SHOW_BLOBS_ON_MINIMAP_DESC"],
+                                name = L["MINIMAP_LINE_SHOW"],
                                 width = "full",
                                 get = GetProfileOption,
                                 set = function(info, value)
@@ -659,11 +712,35 @@ function APR.settings:createBlizzOptions()
                                     end
                                 end
                             },
+                            showMiniMapLineThickness = {
+                                order = 9.23,
+                                type = "range",
+                                name = L["MINIMAP_LINE_THICKNESS"],
+                                width = "full",
+                                min = 0.5,
+                                max = 50,
+                                step = 0.5,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.map:UpdateMinimapLineStyle()
+                                end,
+                                disabled = function()
+                                    return not self.profile.showMiniMapLine
+                                end,
+                            },
+                            minimapblank1 = {
+                                order = 9.24,
+                                type = "description",
+                                width = "full",
+                                name = " ",
+                            },
                             minimapshowNextSteps = {
-                                order = 9.3,
+                                order = 9.25,
                                 type = "toggle",
                                 name = L["SHOW_STEPS_MINIMAP"],
                                 desc = L["SHOW_STEPS_MINIMAP_DESC"],
+                                width = "full",
                                 get = GetProfileOption,
                                 set = function(info, value)
                                     SetProfileOption(info, value)
@@ -671,7 +748,7 @@ function APR.settings:createBlizzOptions()
                                 end,
                             },
                             minimapshowNextStepsCount = {
-                                order = 9.4,
+                                order = 9.26,
                                 type = "range",
                                 name = L["SHOW_STEPS_MAP_COUNT"],
                                 min = 0,
@@ -686,6 +763,127 @@ function APR.settings:createBlizzOptions()
                                     return not self.profile.minimapshowNextSteps
                                 end,
                             },
+                            minimapshowNextStepsSize = {
+                                order = 9.27,
+                                type = "range",
+                                name = L["MINIMAP_STEP_ICON_SIZE"],
+                                min = 1,
+                                max = 100,
+                                step = 1,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.map:UpdateMiniMapIconsStyle()
+                                end,
+                                disabled = function()
+                                    return not self.profile.minimapshowNextSteps
+                                end,
+                            },
+                        }
+                    },
+                    group_map_color = {
+                        order = 3,
+                        type = "group",
+                        inline = true,
+                        name = L["COLOR"],
+                        args = {
+                            mapMinimapSameColor = {
+                                order = 9.30,
+                                type = "toggle",
+                                name = L["MAP_MINIMAP_SAME_COLOR"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = SetProfileOption,
+                            },
+                            showMapLineColor = {
+                                order = 9.31,
+                                type = "color",
+                                name = L["MAP_LINE_COLOR"],
+                                hasAlpha = true,
+                                get = function()
+                                    return unpack(self.profile.showMapLineColor)
+                                end,
+                                set = function(info, r, g, b, a)
+                                    SetProfileOption(info, { r, g, b, a })
+                                    APR.map:UpdateMapLineStyle()
+                                    if self.profile.mapMinimapSameColor then
+                                        APR.map:UpdateMinimapLineStyle()
+                                        self.profile.showMiniMapLineColor = self.profile.showMapLineColor
+                                    end
+                                end,
+                                disabled = function()
+                                    if self.profile.mapMinimapSameColor then
+                                        return not self.profile.showMapLine and not self.profile.showMiniMapLine
+                                    else
+                                        return not self.profile.showMapLine
+                                    end
+                                end,
+                            },
+                            mapshowNextStepsColor = {
+                                order = 9.32,
+                                type = "color",
+                                name = L["MAP_STEP_ICON_COLOR"],
+                                hasAlpha = true,
+                                get = function()
+                                    return unpack(self.profile.mapshowNextStepsColor)
+                                end,
+                                set = function(info, r, g, b, a)
+                                    SetProfileOption(info, { r, g, b, a })
+                                    APR.map:UpdateMapIconsStyle()
+                                    if self.profile.mapMinimapSameColor then
+                                        APR.map:UpdateMiniMapIconsStyle()
+                                        self.profile.minimapshowNextStepsColor = self.profile.mapshowNextStepsColor
+                                    end
+                                end,
+                                disabled = function()
+                                    if self.profile.mapMinimapSameColor then
+                                        return not self.profile.mapshowNextSteps and
+                                        not self.profile.minimapshowNextSteps
+                                    else
+                                        return not self.profile.mapshowNextSteps
+                                    end
+                                end,
+                            },
+                            showMiniMapLineColor = {
+                                order = 9.31,
+                                type = "color",
+                                name = L["MINIMAP_LINE_COLOR"],
+                                hasAlpha = true,
+                                get = function()
+                                    return unpack(self.profile.showMiniMapLineColor)
+                                end,
+                                set = function(info, r, g, b, a)
+                                    SetProfileOption(info, { r, g, b, a })
+                                    APR.map:UpdateMinimapLineStyle()
+                                end,
+                                disabled = function()
+                                    return not self.profile.showMiniMapLine
+                                end,
+                                hidden = function()
+                                    return self.profile.mapMinimapSameColor
+                                end,
+                            },
+                            minimapshowNextStepsColor = {
+                                order = 9.32,
+                                type = "color",
+                                name = L["MINIMAP_STEP_ICON_COLOR"],
+                                hasAlpha = true,
+                                get = function()
+                                    return unpack(self.profile.minimapshowNextStepsColor)
+                                end,
+                                set = function(info, r, g, b, a)
+                                    SetProfileOption(info, { r, g, b, a })
+                                    APR.map:UpdateMiniMapIconsStyle()
+                                end,
+                                disabled = function()
+                                    return not self.profile.minimapshowNextSteps
+                                end,
+                                hidden = function()
+                                    return self.profile.mapMinimapSameColor
+                                end,
+                            },
+
+
                         }
                     }
                 }
