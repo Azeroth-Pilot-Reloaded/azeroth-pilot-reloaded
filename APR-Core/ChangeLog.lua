@@ -69,6 +69,21 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.0.3", "2023-11-14" },
+        "#Features",
+        "- Glichy dotted line replaced by normal line (but you can now change color, transparency and size)",
+        "- Add color and size option for the next steps icons on map and minimap",
+        "- New `/apr route` command to open the APR route options (same on current step menu)",
+
+        "#Bugs",
+        "- Fix Error lua on taci map",
+        "- Fix Jumping Current Step frame on update if not attach to quest log",
+        "- Fix rollback did not rollback on waypoint step (Crange)",
+        "- Add UI reload on reset command to the current route reset",
+
+        "#Hint",
+        "Check the help command or `The Ultimate Question of Life, the Universe and Everything`",
+
         { "v3.0.2", "2023-11-08" },
         "#WoW",
         "- Update compability with 10.2.0",
