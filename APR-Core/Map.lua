@@ -55,6 +55,9 @@ local minimap_shapes = {
 local function checkIsInRouteZone()
     if APR.FP.GoToZone then
         local currentMapID = C_Map.GetBestMapForUnit("player")
+        if not currentMapID then
+            return false
+        end
         local parentMapID = C_Map.GetMapInfo(currentMapID).parentMapID
         local childrenMap = C_Map.GetMapChildrenInfo(parentMapID)
 
