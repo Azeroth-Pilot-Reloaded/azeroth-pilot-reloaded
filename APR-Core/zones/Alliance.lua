@@ -104,6 +104,7 @@ if (APR.Faction == "Alliance") then
         ["A896-Dustvar"] = "BFA - 20-50 Dustvar",
 
     }
+
     if (APR.ClassId == APR.Classes["Demon Hunter"]) then
         APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
     elseif (APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23) then
@@ -117,8 +118,6 @@ if (APR.Faction == "Alliance") then
         APR.QuestStepListListing["MISC 1"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
     end
     APR.QuestStepListListing["MISC 2"] = {
-
-
     }
     APR.QuestStepListListing["Extra"] = {
         ["A84-DesMephisto-Stormwind-War"] = "(1/8) 10-50 Stormwind",
@@ -236,6 +235,7 @@ if (APR.Faction == "Alliance") then
         APR.QuestStepListListing["Dragonflight"]["2118-DracthyrStart-A"] = "58-60 Dracthyr Start"
     end
 
+
     APR["EasternKingdom"] = {}
     APR["EasternKingdom"][14] = 1
     APR["EasternKingdom"][15] = 1
@@ -256,54 +256,74 @@ if (APR.Faction == "Alliance") then
     APR["EasternKingdom"][179] = 1
     APR["EasternKingdom"][224] = 1
 
-    APR["Shadowlands"] = {}
-    APR["Shadowlands"][1648] = 1
-    APR["Shadowlands"][1409] = 1
-    APR["Shadowlands"][1525] = 1
-    APR["Shadowlands"][1533] = 1
-    APR["Shadowlands"][1536] = 1
-    APR["Shadowlands"][1565] = 1
-    APR["Shadowlands"][1613] = 1
-    APR["Shadowlands"][1670] = 1
-    APR["Shadowlands"][1728] = 1
-
-    APR["Legion"] = {}
-    APR["Legion"][630] = 1
-    APR["Legion"][634] = 1
-    APR["Legion"][641] = 1
-
     APR["Kalimdor"] = {}
     APR["Kalimdor"][57] = 1
-    APR["Kalimdor"][97] = 1
-    APR["Kalimdor"][672] = 1
-    APR["Kalimdor"][106] = 1
     APR["Kalimdor"][62] = 1
     APR["Kalimdor"][63] = 1
-    APR["Kalimdor"][77] = 1
-    APR["Kalimdor"][83] = 1
+    APR["Kalimdor"][64] = 1
     APR["Kalimdor"][65] = 1
-    APR["Kalimdor"][199] = 1
-    APR["Kalimdor"][70] = 1
     APR["Kalimdor"][66] = 1
     APR["Kalimdor"][69] = 1
-    APR["Kalimdor"][64] = 1
+    APR["Kalimdor"][70] = 1
     APR["Kalimdor"][71] = 1
+    APR["Kalimdor"][77] = 1
     APR["Kalimdor"][78] = 1
     APR["Kalimdor"][81] = 1
+    APR["Kalimdor"][83] = 1
+    APR["Kalimdor"][97] = 1
+    APR["Kalimdor"][106] = 1
+    APR["Kalimdor"][199] = 1
 
     APR["Northrend"] = {}
     APR["Northrend"][1602] = 1
     APR["Northrend"][2297] = 1
 
+    APR["Cataclysm"] = {}
+
+    APR["MistsOfPandaria"] = {}
+
+    APR["WarlordsOfDraenor"] = {}
+    APR["WarlordsOfDraenor"][84] = 1
+    APR["WarlordsOfDraenor"][535] = 1
+    APR["WarlordsOfDraenor"][539] = 1
+    APR["WarlordsOfDraenor"][542] = 1
+    APR["WarlordsOfDraenor"][543] = 1
+    APR["WarlordsOfDraenor"][577] = 1
+
+    APR["Legion"] = {}
+    APR["Legion"][630] = 1
+    APR["Legion"][634] = 1
+    APR["Legion"][641] = 1
+    APR["Legion"][672] = 1
+
+    APR["BattleForAzeroth"] = {}
+    APR["BattleForAzeroth"][84] = 1
+    APR["BattleForAzeroth"][895] = 1
+    APR["BattleForAzeroth"][896] = 1
+    APR["BattleForAzeroth"][942] = 1
+
+    APR["Shadowlands"] = {}
+    APR["Shadowlands"][84] = 1
+    APR["Shadowlands"][1409] = 1
+    APR["Shadowlands"][1525] = 1
+    APR["Shadowlands"][1533] = 1
+    APR["Shadowlands"][1536] = 1
+    APR["Shadowlands"][1543] = 1
+    APR["Shadowlands"][1565] = 1
+    APR["Shadowlands"][1613] = 1
+    APR["Shadowlands"][1648] = 1
+    APR["Shadowlands"][1670] = 1
+    APR["Shadowlands"][1728] = 1
+
     APR["Dragonflight"] = {}
+    APR["Dragonflight"][37] = 1
+    APR["Dragonflight"][84] = 1
     APR["Dragonflight"][2022] = 1
     APR["Dragonflight"][2023] = 1
     APR["Dragonflight"][2024] = 1
     APR["Dragonflight"][2025] = 1
     APR["Dragonflight"][2107] = 1
     APR["Dragonflight"][2109] = 1
-    APR["Dragonflight"][2118] = 1
     APR["Dragonflight"][2110] = 1
-    APR["Dragonflight"][37] = 1
-    APR["Dragonflight"][84] = 1
+    APR["Dragonflight"][2118] = 1
 end

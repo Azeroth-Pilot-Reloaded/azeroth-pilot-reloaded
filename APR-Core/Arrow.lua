@@ -158,6 +158,7 @@ function APR.Arrow:CalculPosition()
         local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
 
         if trigger.R > distance then
+            -- TODO Fix this call
             QNumberLocal = 0
             _G.NextQuestStep()
             return
@@ -199,6 +200,8 @@ function APR.Arrow:CalculPosition()
             APR.ArrowActive_X = 0
 
             if CurStep and APR.ActiveMap and questStep.CRange then
+                            -- TODO Fix this call
+
                 QNumberLocal = 0
                 _G.NextQuestStep()
             end

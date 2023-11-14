@@ -9,10 +9,13 @@ local ETAStep = 0
 local APR_AntiTaxiLoop = 0
 local Updateblock = 0
 local APRGOSSIPCOUNT = 0
+-- TODO Create Step option to ignore progress bar (maybe quets update?)
 APR.ProgressbarIgnore = {
     ["60520-2"] = 1,
     ["57724-2"] = 1,
 }
+
+-- TODO create Spell DB
 local APR_HSSpellIDs = {
     [8690] = 1,
     [298068] = 1,
@@ -30,6 +33,9 @@ local APR_HSSpellIDs = {
     [231504] = 1,
     [308742] = 1,
 }
+
+-- TODO create step option for emote
+-- TODO create step option for emote + trigger
 local APR_GigglingBasket = {
     [L["GIGGLING_BASKET_ONE_TIME"]] = "cheer",
     [L["GIGGLING_BASKET_SPRIGGANS"]] = "flex",
@@ -38,6 +44,8 @@ local APR_GigglingBasket = {
     [L["GIGGLING_BASKET_FEET"]] = "dance",
     [L["GIGGLING_BASKET_HELP"]] = "praise",
 }
+
+-- TODO check what is that shit 
 local APR_BonusObj = {
     ---- WoD Bonus Obj ----
     [36473] = 1,
@@ -1300,26 +1308,6 @@ local function APR_ZoneResetQnumb()
     QNumberLocal = 0
     APR_SetQPTT()
 end
-function APR.CheckSweatBuffz()
-    for i = 1, 20 do
-        local name, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, nameplateShowPersonal, spellId =
-            UnitBuff("player", i)
-        if (spellId and name) then
-            if (spellId == 311103) then
-                APR.SweatBuff[1] = true
-                APR.SweatOfOurBrowBuffFrame.Traps.texture:SetColorTexture(0.1, 0.5, 0.1, 1)
-            end
-            if (spellId == 311107) then
-                APR.SweatBuff[2] = true
-                APR.SweatOfOurBrowBuffFrame.Traps2.texture:SetColorTexture(0.1, 0.5, 0.1, 1)
-            end
-            if (spellId == 311058) then
-                APR.SweatBuff[3] = true
-                APR.SweatOfOurBrowBuffFrame.Traps3.texture:SetColorTexture(0.1, 0.5, 0.1, 1)
-            end
-        end
-    end
-end
 
 APR.LoopBooking = CreateFrame("frame")
 APR.LoopBooking:SetScript("OnUpdate", APR_LoopBookingFunc)
@@ -1703,22 +1691,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     if (event == "UI_INFO_MESSAGE") then
         local arg1, arg2, arg3, arg4, arg5 = ...;
-        if (arg1 == 280) then
-            if (steps and steps["GetFP"]) then
-                _G.UpdateNextStep()
-            end
-        end
-        if (arg1 == 281) then
-            if (steps and steps["GetFP"]) then
-                _G.UpdateNextStep()
-            end
-        end
-        if (arg1 == 282) then
-            if (steps and steps["GetFP"]) then
-                _G.UpdateNextStep()
-            end
-        end
-        if (arg1 == 283) then
+        if Contains({280,281,282,283},arg1) then
             if (steps and steps["GetFP"]) then
                 _G.UpdateNextStep()
             end
