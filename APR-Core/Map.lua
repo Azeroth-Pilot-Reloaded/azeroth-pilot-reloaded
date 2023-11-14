@@ -52,26 +52,6 @@ local minimap_shapes = {
     ["TRICORNER-BOTTOMRIGHT"] = { false, true, true, true },
 }
 
-local function checkIsInRouteZone()
-    if APR.FP.GoToZone then
-        local currentMapID = C_Map.GetBestMapForUnit("player")
-        if not currentMapID then
-            return false
-        end
-        local parentMapID = C_Map.GetMapInfo(currentMapID).parentMapID
-        local childrenMap = C_Map.GetMapChildrenInfo(parentMapID)
-
-        local isPresent = false
-        for _, map in ipairs(childrenMap) do
-            if map.mapID == APR.FP.GoToZone then
-                isPresent = true
-                break
-            end
-        end
-        return isPresent
-    end
-    return true
-end
 ---------------------------------------------------------------------------------------
 ---------------------------------- Dotted Lines ---------------------------------------
 ---------------------------------------------------------------------------------------
@@ -198,7 +178,7 @@ function APR.map:RemoveMinimapLine()
 end
 
 function APR.map:UpdateMinimapLine()
-    if not APR.settings.profile.showMiniMapLine or IsInInstance() or not checkIsInRouteZone() then
+    if not APR.settings.profile.showMiniMapLine or IsInInstance() or not CheckIsInRouteZone() then
         self:RemoveMinimapLine()
         return
     end
@@ -222,7 +202,7 @@ function APR.map:UpdateLine()
         self:RemoveMapLine()
         return
     end
-    if IsInInstance() or WorldMapFrame:GetMapID() == COSMIC_MAP_ID or WorldMapFrame:GetMapID() == WORLD_MAP_ID or not checkIsInRouteZone() then
+    if IsInInstance() or WorldMapFrame:GetMapID() == COSMIC_MAP_ID or WorldMapFrame:GetMapID() == WORLD_MAP_ID or not CheckIsInRouteZone() then
         self:RemoveMapLine()
         return
     end
@@ -343,7 +323,7 @@ end
 function APR.map:AddMapPins()
     self:RemoveMapIcons()
     self:RemoveMiniMapIcons()
-    if not APR.settings.profile.mapshowNextSteps and not APR.settings.profile.minimapshowNextSteps or not checkIsInRouteZone() then
+    if not APR.settings.profile.mapshowNextSteps and not APR.settings.profile.minimapshowNextSteps or not CheckIsInRouteZone() then
         return
     end
 

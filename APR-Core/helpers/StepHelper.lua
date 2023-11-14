@@ -99,3 +99,24 @@ function GetTotalSteps()
     [APR.ActiveMap .. '-TotalSteps'] = stepIndex
     return stepIndex
 end
+
+function CheckIsInRouteZone()
+    if APR.FP.GoToZone then
+        local currentMapID = C_Map.GetBestMapForUnit("player")
+        if not currentMapID then
+            return false
+        end
+        local parentMapID = C_Map.GetMapInfo(currentMapID).parentMapID
+        local childrenMap = C_Map.GetMapChildrenInfo(parentMapID)
+
+        local isPresent = false
+        for _, map in ipairs(childrenMap) do
+            if map.mapID == APR.FP.GoToZone then
+                isPresent = true
+                break
+            end
+        end
+        return isPresent
+    end
+    return true
+end

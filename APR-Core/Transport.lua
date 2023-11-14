@@ -306,8 +306,8 @@ function APR.FP.GetCustomZone()
     elseif (zenr == 0) then
         APR.ProgressShown = false
         if (playerMapID == 1409 or playerMapID == 1726 or playerMapID == 1727 or playerMapID == 1728) then
-            if (IsAddOnLoaded("APR-Shadowlands") == false) then
-                local loaded, reason = LoadAddOn("APR-Shadowlands")
+            if (C_AddOns.IsAddOnLoaded("APR-Shadowlands") == false) then
+                local loaded, reason = C_AddOns.LoadAddOn("APR-Shadowlands")
                 if (not loaded) then
                     if (reason == "DISABLED") then
                         print("APR: APR - Shadowlands " .. L["DISABLED_ADDON_LIST"])
@@ -731,6 +731,9 @@ function APR.FP.GetMeToNextZone()
     if (routeMapID ~= GoToZone) then
         APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
         APR.currentStep:AddExtraLineText("WRONG_ZONE", L["WRONG_ZONE"])
+        if not CheckIsInRouteZone() then
+            APR.ArrowActive = 0
+        end
 
         if (APR.ActiveMap) then
             local function checkChromieTimeline(id)
