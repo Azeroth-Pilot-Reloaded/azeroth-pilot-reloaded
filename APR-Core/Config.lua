@@ -838,7 +838,7 @@ function APR.settings:createBlizzOptions()
                                 disabled = function()
                                     if self.profile.mapMinimapSameColor then
                                         return not self.profile.mapshowNextSteps and
-                                        not self.profile.minimapshowNextSteps
+                                            not self.profile.minimapshowNextSteps
                                     else
                                         return not self.profile.mapshowNextSteps
                                     end
@@ -1215,7 +1215,7 @@ function APR.settings:ToggleAddon()
         APR.AFK:HideFrame()
         -- v2
         APR.BookingList["ClosedSettings"] = true
-        APR.LoadInOptionFrame:Hide()
+        -- APR.LoadInOptionFrame:Hide()
         APR.RoutePlan.Custompath:Hide()
         APR.ArrowFrame:Hide()
     else

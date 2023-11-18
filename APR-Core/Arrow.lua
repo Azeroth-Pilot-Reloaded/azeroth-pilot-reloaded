@@ -5,6 +5,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 -- Initialize module
 APR.Arrow = APR:NewModule("Arrow")
 
+APR.Arrow.currentStep = 0
 APR.ArrowActive = 0
 APR.ArrowActive_X = 0
 APR.ArrowActive_Y = 0
@@ -135,6 +136,19 @@ local function CheckDistance()
     return 0
 end
 
+function APR.Arrow:SetQPTT()
+    if (APR.settings.profile.debug) then
+        print("Function: APR_SetQPTT()")
+    end
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
+    if (APR.Arrow.currentStep ~= CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] and APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]) then
+        APR.ArrowActive = 1
+        APR.ArrowActive_X = APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["x"]
+        APR.ArrowActive_Y = APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["y"]
+        APR.Arrow.currentStep = CurStep
+    end
+end
+
 function APR.Arrow:CalculPosition()
     local d_y, d_x = UnitPosition("player")
 
@@ -158,8 +172,7 @@ function APR.Arrow:CalculPosition()
         local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
 
         if trigger.R > distance then
-            -- TODO Fix this call
-            QNumberLocal = 0
+            APR.Arrow.currentStep = 0
             _G.NextQuestStep()
             return
         end
@@ -200,9 +213,7 @@ function APR.Arrow:CalculPosition()
             APR.ArrowActive_X = 0
 
             if CurStep and APR.ActiveMap and questStep.CRange then
-                            -- TODO Fix this call
-
-                QNumberLocal = 0
+                APR.Arrow.currentStep = 0
                 _G.NextQuestStep()
             end
         end

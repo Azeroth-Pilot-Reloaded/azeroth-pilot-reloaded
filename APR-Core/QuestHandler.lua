@@ -3,10 +3,8 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.BookingList = {} --TODO rework BookingList
 
-local QNumberLocal = 0
 local APR_ArrowUpdateNr = 0
 local ETAStep = 0
-local APR_AntiTaxiLoop = 0
 local Updateblock = 0
 local APRGOSSIPCOUNT = 0
 -- TODO Create Step option to ignore progress bar (maybe quets update?)
@@ -45,7 +43,7 @@ local APR_GigglingBasket = {
     [L["GIGGLING_BASKET_HELP"]] = "praise",
 }
 
--- TODO check what is that shit 
+-- TODO check what is that shit
 local APR_BonusObj = {
     ---- WoD Bonus Obj ----
     [36473] = 1,
@@ -1136,19 +1134,6 @@ local function APR_UpdateMapId()
     _G.UpdateQuestAndStep()
 end
 
-local function APR_SetQPTT()
-    if (APR.settings.profile.debug) then
-        print("Function: APR_SetQPTT()")
-    end
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
-    if (QNumberLocal ~= CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] and APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]) then
-        APR.ArrowActive = 1
-        APR.ArrowActive_X = APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["x"]
-        APR.ArrowActive_Y = APR.QuestStepList[APR.ActiveMap][CurStep]["TT"]["y"]
-        QNumberLocal = CurStep
-    end
-end
-
 
 local function APR_LoopBookingFunc() --TODO rework BookingList
     if not APR.settings.profile.enableAddon then
@@ -1160,7 +1145,7 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
     if (APR.BookingList["ClosedSettings"]) then
         if (not InCombatLockdown()) then
             APR.BookingList["ClosedSettings"] = false
-            QNumberLocal = 0
+            APR.Arrow.currentStep = 0
             APR.ArrowActive = 0
             _G.UpdateQuestAndStep()
         end
@@ -1216,31 +1201,21 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
             print("LoopBookingFunc:SetQPTT:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
         end
         APR.BookingList["SetQPTT"] = false
-        APR_SetQPTT()
-    elseif (APR.BookingList["TestTaxiFunc"]) then
+        APR.Arrow:SetQPTT()
+    elseif (APR.BookingList["UseTaxi"]) then
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:TestTaxiFunc")
+            print("LoopBookingFunc:UseTaxi")
         end
-        APR_AntiTaxiLoop = APR_AntiTaxiLoop + 1
+        APR.BookingList["UseTaxi"] = false
         if (UnitOnTaxi("player")) then
-            APR.BookingList["TestTaxiFunc"] = false
             local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
-            local steps
-            if (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
-                steps = APR.QuestStepList[APR.ActiveMap][CurStep]
+            if (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
+                return
             end
+            local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
             if (steps and steps["UseFlightPath"]) then
-                APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] + 1
+                UpdateNextStep()
             end
-            APR.BookingList["UpdateStep"] = true
-            APR_AntiTaxiLoop = 0
-        elseif (APR_AntiTaxiLoop == 50 or APR_AntiTaxiLoop == 100 or APR_AntiTaxiLoop == 150) then
-            APR.BookingList["TestTaxiFunc"] = false
-        end
-        if (APR_AntiTaxiLoop > 200) then
-            print("APR: Error - AntiTaxiLoop")
-            APR.BookingList["TestTaxiFunc"] = false
-            APR_AntiTaxiLoop = 0
         end
     end
     if (APR_ArrowUpdateNr >= APR.settings.profile.arrowFPS) then
@@ -1305,8 +1280,8 @@ function APR_BookingUpdateMapId()
 end
 
 local function APR_ZoneResetQnumb()
-    QNumberLocal = 0
-    APR_SetQPTT()
+    APR.Arrow.currentStep = 0
+    APR.Arrow:SetQPTT()
 end
 
 APR.LoopBooking = CreateFrame("frame")
@@ -1691,7 +1666,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     if (event == "UI_INFO_MESSAGE") then
         local arg1, arg2, arg3, arg4, arg5 = ...;
-        if Contains({280,281,282,283},arg1) then
+        if Contains({ 280, 281, 282, 283 }, arg1) then
             if (steps and steps["GetFP"]) then
                 _G.UpdateNextStep()
             end
@@ -1781,7 +1756,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
     end
     if (event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA") then
-        QNumberLocal = 0
+        APR.Arrow.currentStep = 0
         C_Timer.After(2, APR_BookingUpdateMapId)
         C_Timer.After(3, APR_ZoneResetQnumb)
         APR.BookingList["UpdateMapId"] = true

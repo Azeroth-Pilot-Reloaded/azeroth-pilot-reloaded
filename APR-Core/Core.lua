@@ -970,16 +970,6 @@ function APR.NumbRoutePlan(Continz)
     return zenr
 end
 
-function APR.TimeFPs(CurrentFP, DestFP)
-    if (not APR_TaxiTimers[CurrentFP .. "-" .. DestFP]) then
-        APR.TaxiTimerCur = CurrentFP
-        APR.TaxiTimerDes = DestFP
-        APR_TaxicTimer:Play()
-    else
-        APR.AFK:SetAfkTimer(APR_TaxiTimers[CurrentFP .. "-" .. DestFP])
-    end
-end
-
 APR.CoreEventFrame = CreateFrame("Frame")
 APR.CoreEventFrame:RegisterEvent("ADDON_LOADED")
 APR.CoreEventFrame:RegisterEvent("PLAYER_LEVEL_UP")
@@ -996,24 +986,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         if (not APRData[APR.Realm][APR.Username]["BonusSkips"]) then
             APRData[APR.Realm][APR.Username]["BonusSkips"] = {}
         end
-
-        APR_TaxicTimer = APR.CoreEventFrame:CreateAnimationGroup()
-        APR_TaxicTimer.anim = APR_TaxicTimer:CreateAnimation()
-        APR_TaxicTimer.anim:SetDuration(1)
-        APR_TaxicTimer:SetLooping("REPEAT")
-        APR_TaxicTimer:SetScript("OnLoop", function(self, event, ...)
-            if (APR.TaxiTimerCur and APR.TaxiTimerDes and UnitOnTaxi("player")) then
-                if (not APR_TaxiTimers[APR.TaxiTimerCur .. "-" .. APR.TaxiTimerDes]) then
-                    APR_TaxiTimers[APR.TaxiTimerCur .. "-" .. APR.TaxiTimerDes] = 3
-                end
-                APR_TaxiTimers[APR.TaxiTimerCur .. "-" .. APR.TaxiTimerDes] = APR_TaxiTimers
-                    [APR.TaxiTimerCur .. "-" .. APR.TaxiTimerDes] + 1
-            else
-                APR.TaxiTimerCur = nil
-                APR.TaxiTimerDes = nil
-                APR_TaxicTimer:Stop()
-            end
-        end)
 
         APR_LoadInTimer = APR.CoreEventFrame:CreateAnimationGroup()
         APR_LoadInTimer.anim = APR_LoadInTimer:CreateAnimation()
@@ -1060,10 +1032,10 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR.BookingList["PrintQStep"] = true
                 APR.RoutePlanLoadIn()
                 if (APRData[APR.Realm][APR.Username].FirstLoad) then
-                    APR.LoadInOptionFrame:Show()
+                    -- APR.LoadInOptionFrame:Show()
                     APRData[APR.Realm][APR.Username].FirstLoad = false
                 else
-                    APR.LoadInOptionFrame:Hide()
+                    -- APR.LoadInOptionFrame:Hide()
                 end
                 print("APR " .. L["LOADED"])
                 APR_LoadInTimer:Stop()
