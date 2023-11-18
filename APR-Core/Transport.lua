@@ -1736,7 +1736,6 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (not APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]) then
             APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm] = {}
         end
-        local CLi
         if (not APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"]) then
             APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"] = {}
         end
@@ -1816,12 +1815,19 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
             end
             if (Nodetotake) then
                 TakeTaxiNode(Nodetotake)
-                APR.TimeFPs(APR.TaxiTimerCur, APR.FP.QuedFP)
-                APR.BookingList["TestTaxiFunc"] = true
-                APR.FP.QuedFP = nil
+                APR.TaxiTimerDes = APR.FP.QuedFP
                 if (steps and steps["ETA"]) then
                     APR.AFK:SetAfkTimer(steps["ETA"])
+                else
+                    local timer = APR_TaxiTimers[APR.TaxiTimerCur .. "-" .. APR.TaxiTimerDes]
+                    if not timer then
+                        APR.AFK.TaxiTimerRecorder:Play()
+                    else
+                        APR.AFK:SetAfkTimer(timer)
+                    end
                 end
+                APR.FP.QuedFP = nil
+                APR.BookingList["UseTaxi"] = true
             end
             if (UnitOnTaxi("player")) then
                 APR.FP.QuedFP = nil
