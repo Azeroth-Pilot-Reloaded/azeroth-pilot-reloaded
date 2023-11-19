@@ -391,6 +391,8 @@ local function APR_UpdateStep()
                 APR_LeaveQuest(APR_value)
             end
         end
+
+        -- TODO:ZONE rework
         if (steps["ZoneDoneSave"]) then
             local zeMApz
             if (APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]) then
@@ -1489,6 +1491,18 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             return
         end
         ------------------------------------
+        -- FlightPath
+        if steps and (steps["UseFlightPath"] or steps["GetFP"]) and not steps["NoAutoFlightMap"] then
+            local gossipOption = C_GossipInfo.GetOptions()
+            if next(gossipOption) then
+                for _, gossip in pairs(gossipOption) do
+                    if gossip.icon == 132057 then
+                        C_GossipInfo.SelectOption(gossip.gossipOptionID)
+                    end
+                end
+            end
+        end
+        ------------------------------------
         -- GOSSIP
         if (APR.settings.profile.autoGossip) then
             -- GOSSIP HARDCODED
@@ -1676,6 +1690,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if IsModifierKeyDown() then return end
         if (steps and steps["GetFP"]) then
             _G.UpdateNextStep()
+            CloseTaxiMap() -- auto Close the taxi map after getting the FP
         end
     end
     if event == "UNIT_SPELLCAST_SUCCEEDED" then
