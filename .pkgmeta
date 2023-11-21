@@ -1,5 +1,16 @@
 package-as: APR
 
+tools-used:
+    - Ace3
+    - CallbackHandler
+    - Libstub
+    - HereBeDragons
+    - DF
+    - LibCandyBar
+    - LibDBIcon
+    - LibSharedMedia
+    - LibWindow
+
 move-folders:
    APR/APR-Core: APR-Core
    APR/APR-BattleForAzeroth: APR-BattleForAzeroth

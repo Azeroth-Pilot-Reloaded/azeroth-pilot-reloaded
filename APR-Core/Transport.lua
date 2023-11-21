@@ -351,6 +351,7 @@ function APR.FP.GetCustomZone()
     if (APR.settings.profile.debug) then
         print("Function: APR.FP.GetCustomZone()")
     end
+    -- TODO: ZOne Rework
     for CLi = 1, 19 do
         if (APR_Custom[APR.Username .. "-" .. APR.Realm] and APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] and APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]]) then
             if (APR.QuestStepListListingStartAreas["EasternKingdom"]) then

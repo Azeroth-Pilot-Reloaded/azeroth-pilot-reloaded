@@ -22,6 +22,9 @@ helpers/SceneCutter.lua
 helpers/CoordinateFrame.lua
 helpers/StepHelper.lua
 
+zones\Alliance.lua
+zones\Horde.lua
+
 Config.lua
 Config_Route.lua
 Commands.lua
@@ -40,7 +43,3 @@ Map.lua
 AFK.lua
 
 SweatOfOurBrowBuffFrame.lua
-
-zones\Alliance.lua
-zones\Horde.lua
-zones\Neutral.lua

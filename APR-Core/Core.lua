@@ -339,7 +339,8 @@ function APR.CheckPosMove(zeActivz)
             for CLi2z = 1, 19 do
                 zerpd = zerpd - 1
                 if (zerpd ~= 1 and zerpd > zto) then
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd - 1]
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath
+                        ["Fxz2Custom" .. zerpd - 1]
                         ["FS"]
                         :GetText())
                 end
@@ -350,7 +351,8 @@ function APR.CheckPosMove(zeActivz)
                 end
             end
         end
-        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["EK3" .. zfrom]["FS"]:GetText())
+        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["EK3" .. zfrom]["FS"]
+            :GetText())
         APR.RoutePlan.Custompath["Fxz2Custom" .. zto]:Show()
     elseif (zeActivz == 2 and zfrom and zto) then
         if (APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:GetText() ~= nil) then
@@ -358,7 +360,8 @@ function APR.CheckPosMove(zeActivz)
             for CLi2z = 1, 19 do
                 zerpd = zerpd - 1
                 if (zerpd ~= 1 and zerpd > zto) then
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd - 1]
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath
+                        ["Fxz2Custom" .. zerpd - 1]
                         ["FS"]
                         :GetText())
                 end
@@ -369,7 +372,8 @@ function APR.CheckPosMove(zeActivz)
                 end
             end
         end
-        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["KAL3" .. zfrom]["FS"]:GetText())
+        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["KAL3" .. zfrom]["FS"]
+            :GetText())
         APR.RoutePlan.Custompath["Fxz2Custom" .. zto]:Show()
     elseif (zeActivz == 3 and zfrom and zto) then
         if (APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:GetText() ~= nil) then
@@ -377,7 +381,8 @@ function APR.CheckPosMove(zeActivz)
             for CLi2z = 1, 19 do
                 zerpd = zerpd - 1
                 if (zerpd ~= 1 and zerpd > zto) then
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd - 1]
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath
+                        ["Fxz2Custom" .. zerpd - 1]
                         ["FS"]
                         :GetText())
                 end
@@ -388,7 +393,8 @@ function APR.CheckPosMove(zeActivz)
                 end
             end
         end
-        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["SL3" .. zfrom]["FS"]:GetText())
+        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["SL3" .. zfrom]["FS"]
+            :GetText())
         APR.RoutePlan.Custompath["Fxz2Custom" .. zto]:Show()
     elseif (zeActivz == 4 and zfrom and zto) then
         if (APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:GetText() ~= nil) then
@@ -396,7 +402,8 @@ function APR.CheckPosMove(zeActivz)
             for CLi2z = 1, 19 do
                 zerpd = zerpd - 1
                 if (zerpd ~= 1 and zerpd > zto) then
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd - 1]
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath
+                        ["Fxz2Custom" .. zerpd - 1]
                         ["FS"]
                         :GetText())
                 end
@@ -407,7 +414,8 @@ function APR.CheckPosMove(zeActivz)
                 end
             end
         end
-        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["SPR3" .. zfrom]["FS"]:GetText())
+        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["SPR3" .. zfrom]["FS"]
+            :GetText())
         APR.RoutePlan.Custompath["Fxz2Custom" .. zto]:Show()
     elseif (zeActivz == 5 and zfrom and zto) then
         if (APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:GetText() ~= nil) then
@@ -415,7 +423,8 @@ function APR.CheckPosMove(zeActivz)
             for CLi2z = 1, 19 do
                 zerpd = zerpd - 1
                 if (zerpd ~= 1 and zerpd > zto) then
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd - 1]
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath
+                        ["Fxz2Custom" .. zerpd - 1]
                         ["FS"]
                         :GetText())
                 end
@@ -426,7 +435,8 @@ function APR.CheckPosMove(zeActivz)
                 end
             end
         end
-        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["EX3" .. zfrom]["FS"]:GetText())
+        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["EX3" .. zfrom]["FS"]
+            :GetText())
         APR.RoutePlan.Custompath["Fxz2Custom" .. zto]:Show()
     elseif (zeActivz == 6 and zfrom and zto) then
         if (APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:GetText() ~= nil) then
@@ -434,7 +444,8 @@ function APR.CheckPosMove(zeActivz)
             for CLi2z = 1, 19 do
                 zerpd = zerpd - 1
                 if (zerpd ~= 1 and zerpd > zto) then
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd - 1]
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath
+                        ["Fxz2Custom" .. zerpd - 1]
                         ["FS"]
                         :GetText())
                 end
@@ -445,7 +456,8 @@ function APR.CheckPosMove(zeActivz)
                 end
             end
         end
-        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["DF3" .. zfrom]["FS"]:GetText())
+        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["DF3" .. zfrom]["FS"]
+            :GetText())
         APR.RoutePlan.Custompath["Fxz2Custom" .. zto]:Show()
     elseif (zeActivz == 7 and zfrom and zto) then
         if (APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:GetText() ~= nil) then
@@ -453,7 +465,8 @@ function APR.CheckPosMove(zeActivz)
             for CLi2z = 1, 19 do
                 zerpd = zerpd - 1
                 if (zerpd ~= 1 and zerpd > zto) then
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd - 1]
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath
+                        ["Fxz2Custom" .. zerpd - 1]
                         ["FS"]
                         :GetText())
                 end
@@ -464,7 +477,8 @@ function APR.CheckPosMove(zeActivz)
                 end
             end
         end
-        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["MISC3" .. zfrom]["FS"]:GetText())
+        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["MISC3" .. zfrom]["FS"]
+            :GetText())
         APR.RoutePlan.Custompath["Fxz2Custom" .. zto]:Show()
     elseif (zeActivz == 8 and zfrom and zto) then
         if (APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:GetText() ~= nil) then
@@ -472,7 +486,8 @@ function APR.CheckPosMove(zeActivz)
             for CLi2z = 1, 19 do
                 zerpd = zerpd - 1
                 if (zerpd ~= 1 and zerpd > zto) then
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd - 1]
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zerpd]["FS"]:SetText(APR.RoutePlan.Custompath
+                        ["Fxz2Custom" .. zerpd - 1]
                         ["FS"]
                         :GetText())
                 end
@@ -483,7 +498,8 @@ function APR.CheckPosMove(zeActivz)
                 end
             end
         end
-        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["MISC23" .. zfrom]["FS"]:GetText())
+        APR.RoutePlan.Custompath["Fxz2Custom" .. zto]["FS"]:SetText(APR.RoutePlan.Custompath["MISC23" .. zfrom]["FS"]
+            :GetText())
         APR.RoutePlan.Custompath["Fxz2Custom" .. zto]:Show()
     end
 
@@ -732,14 +748,17 @@ function APR.RoutePlanCheckPos()
     end
     for CLi = 1, zenr do
         APR.RoutePlan.Custompath["EK3" .. CLi]:ClearAllPoints()
-        APR.RoutePlan.Custompath["EK3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.EKT, "TOPRIGHT", -10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["EK3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.EKT, "TOPRIGHT", -10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["EK3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.Custompath.EKT, "BOTTOMRIGHT", 10,
             -(20 * CLi) + 10 -
             10)
         APR.RoutePlan.Custompath["EK3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.Custompath.EKT, "BOTTOMLEFT", 10,
             -(20 * CLi) + 10 - 10)
-        APR.RoutePlan.Custompath["EK3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.EKT, "BOTTOMRIGHT", -10, -(20 * CLi) - 10)
-        APR.RoutePlan.Custompath["EK3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.EKT, "TOPLEFT", 10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["EK3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.EKT, "BOTTOMRIGHT", -10,
+            -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["EK3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.EKT, "TOPLEFT", 10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["EK3" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["EK3" .. CLi]:SetHeight(20)
         if (ZeHide and ZeHide[APR.RoutePlan.Custompath["EK3" .. CLi]["FS"]:GetText()]) then
@@ -749,7 +768,8 @@ function APR.RoutePlanCheckPos()
     local zenr = APR.NumbRoutePlan("Kalimdor")
     for CLi = 1, zenr do
         APR.RoutePlan.Custompath["KAL3" .. CLi]:ClearAllPoints()
-        APR.RoutePlan.Custompath["KAL3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.KALT, "TOPRIGHT", -10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["KAL3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.KALT, "TOPRIGHT", -10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["KAL3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.Custompath.KALT, "BOTTOMRIGHT", 10,
             -(20 * CLi) + 10 -
             10)
@@ -758,7 +778,8 @@ function APR.RoutePlanCheckPos()
             10)
         APR.RoutePlan.Custompath["KAL3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.KALT, "BOTTOMRIGHT", -10,
             -(20 * CLi) - 10)
-        APR.RoutePlan.Custompath["KAL3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.KALT, "TOPLEFT", 10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["KAL3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.KALT, "TOPLEFT", 10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["KAL3" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["KAL3" .. CLi]:SetHeight(20)
         if (ZeHide and ZeHide[APR.RoutePlan.Custompath["KAL3" .. CLi]["FS"]:GetText()]) then
@@ -768,14 +789,17 @@ function APR.RoutePlanCheckPos()
     local zenr = APR.NumbRoutePlan("Shadowlands")
     for CLi = 1, zenr do
         APR.RoutePlan.Custompath["SL3" .. CLi]:ClearAllPoints()
-        APR.RoutePlan.Custompath["SL3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.SLT, "TOPRIGHT", -10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["SL3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.SLT, "TOPRIGHT", -10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["SL3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.Custompath.SLT, "BOTTOMRIGHT", 10,
             -(20 * CLi) + 10 -
             10)
         APR.RoutePlan.Custompath["SL3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.Custompath.SLT, "BOTTOMLEFT", 10,
             -(20 * CLi) + 10 - 10)
-        APR.RoutePlan.Custompath["SL3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.SLT, "BOTTOMRIGHT", -10, -(20 * CLi) - 10)
-        APR.RoutePlan.Custompath["SL3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.SLT, "TOPLEFT", 10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["SL3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.SLT, "BOTTOMRIGHT", -10,
+            -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["SL3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.SLT, "TOPLEFT", 10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["SL3" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["SL3" .. CLi]:SetHeight(20)
         if (ZeHide and ZeHide[APR.RoutePlan.Custompath["SL3" .. CLi]["FS"]:GetText()]) then
@@ -785,15 +809,18 @@ function APR.RoutePlanCheckPos()
     local zenr = APR.NumbRoutePlan("Extra")
     for CLi = 1, zenr do
         APR.RoutePlan.Custompath["EX3" .. CLi]:ClearAllPoints()
-        APR.RoutePlan.Custompath["EX3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.EXTT, "TOPRIGHT", -10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["EX3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.EXTT, "TOPRIGHT", -10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["EX3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.Custompath.EXTT, "BOTTOMRIGHT", 10,
             -(20 * CLi) + 10 -
             10)
         APR.RoutePlan.Custompath["EX3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.Custompath.EXTT, "BOTTOMLEFT", 10,
             -(20 * CLi) + 10 -
             10)
-        APR.RoutePlan.Custompath["EX3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.EXTT, "BOTTOMRIGHT", -10, -(20 * CLi) - 10)
-        APR.RoutePlan.Custompath["EX3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.EXTT, "TOPLEFT", 10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["EX3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.EXTT, "BOTTOMRIGHT", -10,
+            -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["EX3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.EXTT, "TOPLEFT", 10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["EX3" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["EX3" .. CLi]:SetHeight(20)
         if (ZeHide and ZeHide[APR.RoutePlan.Custompath["EX3" .. CLi]["FS"]:GetText()]) then
@@ -805,14 +832,16 @@ function APR.RoutePlanCheckPos()
         APR.RoutePlan.Custompath["MISC3" .. CLi]:ClearAllPoints()
         APR.RoutePlan.Custompath["MISC3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.MISC1T, "TOPRIGHT", -10,
             -(20 * CLi) - 10)
-        APR.RoutePlan.Custompath["MISC3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.Custompath.MISC1T, "BOTTOMRIGHT", 10,
+        APR.RoutePlan.Custompath["MISC3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.Custompath.MISC1T, "BOTTOMRIGHT",
+            10,
             -(20 * CLi) + 10 - 10)
         APR.RoutePlan.Custompath["MISC3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.Custompath.MISC1T, "BOTTOMLEFT", 10,
             -(20 * CLi) + 10 -
             10)
         APR.RoutePlan.Custompath["MISC3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.MISC1T, "BOTTOMRIGHT", -10,
             -(20 * CLi) - 10)
-        APR.RoutePlan.Custompath["MISC3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.MISC1T, "TOPLEFT", 10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["MISC3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.MISC1T, "TOPLEFT", 10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["MISC3" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["MISC3" .. CLi]:SetHeight(20)
         if (ZeHide and ZeHide[APR.RoutePlan.Custompath["MISC3" .. CLi]["FS"]:GetText()]) then
@@ -824,15 +853,19 @@ function APR.RoutePlanCheckPos()
         APR.RoutePlan.Custompath["MISC23" .. CLi]:ClearAllPoints()
         APR.RoutePlan.Custompath["MISC23" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.MISC2T, "TOPRIGHT", -10,
             -(20 * CLi) - 10)
-        APR.RoutePlan.Custompath["MISC23" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.Custompath.MISC2T, "BOTTOMRIGHT", 10,
+        APR.RoutePlan.Custompath["MISC23" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.Custompath.MISC2T, "BOTTOMRIGHT",
+            10,
             -(20 * CLi) + 10 - 10)
-        APR.RoutePlan.Custompath["MISC23" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.Custompath.MISC2T, "BOTTOMLEFT", 10,
+        APR.RoutePlan.Custompath["MISC23" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.Custompath.MISC2T, "BOTTOMLEFT",
+            10,
             -(20 * CLi) +
             10 - 10)
-        APR.RoutePlan.Custompath["MISC23" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.MISC2T, "BOTTOMRIGHT", -10,
+        APR.RoutePlan.Custompath["MISC23" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.MISC2T, "BOTTOMRIGHT",
+            -10,
             -(20 * CLi) -
             10)
-        APR.RoutePlan.Custompath["MISC23" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.MISC2T, "TOPLEFT", 10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["MISC23" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.MISC2T, "TOPLEFT", 10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["MISC23" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["MISC23" .. CLi]:SetHeight(20)
         if (ZeHide and ZeHide[APR.RoutePlan.Custompath["MISC23" .. CLi]["FS"]:GetText()]) then
@@ -842,14 +875,17 @@ function APR.RoutePlanCheckPos()
     local zenr = APR.NumbRoutePlan("Dragonflight")
     for CLi = 1, zenr do
         APR.RoutePlan.Custompath["DF3" .. CLi]:ClearAllPoints()
-        APR.RoutePlan.Custompath["DF3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.DFT, "TOPRIGHT", -10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["DF3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.DFT, "TOPRIGHT", -10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["DF3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.Custompath.DFT, "BOTTOMRIGHT", 10,
             -(20 * CLi) + 10 -
             10)
         APR.RoutePlan.Custompath["DF3" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.Custompath.DFT, "BOTTOMLEFT", 10,
             -(20 * CLi) + 10 - 10)
-        APR.RoutePlan.Custompath["DF3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.DFT, "BOTTOMRIGHT", -10, -(20 * CLi) - 10)
-        APR.RoutePlan.Custompath["DF3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.DFT, "TOPLEFT", 10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["DF3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.DFT, "BOTTOMRIGHT", -10,
+            -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["DF3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.DFT, "TOPLEFT", 10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["DF3" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["DF3" .. CLi]:SetHeight(20)
         if (ZeHide and ZeHide[APR.RoutePlan.Custompath["DF3" .. CLi]["FS"]:GetText()]) then
@@ -859,7 +895,8 @@ function APR.RoutePlanCheckPos()
     local zenr = APR.NumbRoutePlan("SpeedRun")
     for CLi = 1, zenr do
         APR.RoutePlan.Custompath["SPR3" .. CLi]:ClearAllPoints()
-        APR.RoutePlan.Custompath["SPR3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.F25x3, "TOPRIGHT", -10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["SPR3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.F25x3, "TOPRIGHT", -10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["SPR3" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.Custompath.F25x3, "BOTTOMRIGHT", 10,
             -(20 * CLi) + 10 -
             10)
@@ -868,7 +905,8 @@ function APR.RoutePlanCheckPos()
             10)
         APR.RoutePlan.Custompath["SPR3" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.F25x3, "BOTTOMRIGHT", -10,
             -(20 * CLi) - 10)
-        APR.RoutePlan.Custompath["SPR3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.F25x3, "TOPLEFT", 10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["SPR3" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.F25x3, "TOPLEFT", 10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["SPR3" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["SPR3" .. CLi]:SetHeight(20)
         if (ZeHide and ZeHide[APR.RoutePlan.Custompath["SPR3" .. CLi]["FS"]:GetText()]) then
@@ -882,18 +920,23 @@ function APR.RoutePlanCheckPos()
         APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:ClearAllPoints()
         APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.CPT, "TOPRIGHT", -10,
             -(20 * CLi) - 10)
-        APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.Custompath.CPT, "BOTTOMRIGHT", 10,
+        APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetPoint("BOTTOMRIGHT", APR.RoutePlan.Custompath.CPT, "BOTTOMRIGHT",
+            10,
             -(20 * CLi) + 10 - 10)
-        APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.Custompath.CPT, "BOTTOMLEFT", 10,
+        APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetPoint("BOTTOMLEFT", APR.RoutePlan.Custompath.CPT, "BOTTOMLEFT",
+            10,
             -(20 * CLi) + 10 - 10)
-        APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.CPT, "BOTTOMRIGHT", -10,
+        APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetPoint("TOPRIGHT", APR.RoutePlan.Custompath.CPT, "BOTTOMRIGHT",
+            -10,
             -(20 * CLi) -
             10)
-        APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.CPT, "TOPLEFT", 10, -(20 * CLi) - 10)
+        APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath.CPT, "TOPLEFT", 10,
+            -(20 * CLi) - 10)
         APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetHeight(20)
         if (APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"]:GetText() ~= "") then
-            APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] = APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"]:GetText()
+            APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] = APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"]
+                :GetText()
         end
     end
     APR.BookingList["UpdateMapId"] = true
@@ -1081,6 +1124,8 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         CoreLoadin = true
     end
     if (event == "PLAYER_LEVEL_UP") then
+        local arg1, _ = ...;
+        APR.Level = arg1
         if not IsTableEmpty(APR_Custom[APR.Username .. "-" .. APR.Realm]) then
             if APR.Level == 50 then
                 APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_SL"], function()
