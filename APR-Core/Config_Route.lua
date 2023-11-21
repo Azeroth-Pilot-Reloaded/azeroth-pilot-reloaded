@@ -1,45 +1,44 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-local CustomListMixin = {}
 
 -- Initialize APR Route module
-APR.routeconfig = APR:NewModule("routeconfig")
+APR.routeconfig = APR:NewModule("routeconfig", "AceEvent-3.0")
+local AceGUI = LibStub("AceGUI-3.0")
 
 local alliance = "Alliance"
 local horde = "Horde"
 
+local routePrefab = {
+    speedrun = false,
+    WOD = false,
+    BFA = false,
+    SL = false,
+    custom_path = false, -- TODO: to be deleted
+}
+local optionsWidth = 0.8
+local lineColor = 105 / 255
+local customPathListeWidget = nil
+local tabRouteListWidget = nil
+local currentTabName = nil
 ---------------------------------------------------------------------------------------
 ------------------------- Config functionality for Route ------------------------------
 ---------------------------------------------------------------------------------------
 
-function APR.routeconfig:getConfigOptionTable()
+local function GetConfigOptionTable()
     local routeOptions = {
         name = L["ROUTE_HELPER"],
         type = "group",
         inline = false,
         order = 0,
-        args={
-            firstcharacter = {
-                order = 2.1,
-                name = L["FIRST_CHARACTER"],
-                type = "execute",
-                width = 1.2,
-                func = function()
-                    firstcharacter = not firstcharacter
-                    if firstcharacter then
-                        self.setAutoPathForRoute(2)
-                        APR.BookingList["ClosedSettings"] = true
-                    end
-                end
-            },
+        args = {
             speedrun = {
-                order = 2.2,
+                order = 1.0,
                 name = L["SPEEDRUN"],
                 type = "execute",
-                width = 1.2,
+                width = optionsWidth,
                 func = function()
-                    speedrun = not speedrun
-                    if speedrun then
+                    routePrefab.speedrun = not routePrefab.speedrun
+                    if routePrefab.speedrun then
                         APR.routeconfig:setAutoPathForRoute(1)
                         APR.BookingList["ClosedSettings"] = true
                     else
@@ -47,14 +46,27 @@ function APR.routeconfig:getConfigOptionTable()
                     end
                 end
             },
+            firstcharacter = {
+                order = 1.1,
+                name = L["FIRST_CHARACTER"],
+                type = "execute",
+                width = optionsWidth,
+                func = function()
+                    routePrefab.BFA = not routePrefab.BFA
+                    if routePrefab.BFA then
+                        widget.setAutoPathForRoute(2)
+                        APR.BookingList["ClosedSettings"] = true
+                    end
+                end
+            },
             custom_path = {
-                order = 2.3,
+                order = 1.2,
                 name = L["CUSTOM_PATH"],
                 type = "execute",
-                width = 1.2,
+                width = optionsWidth,
                 func = function()
-                    custom_path = not custom_path
-                    if custom_path then
+                    routePrefab.custom_path = not routePrefab.custom_path
+                    if routePrefab.custom_path then
                         APR.RoutePlan.Custompath:Show()
                         APR.BookingList["ClosedSettings"] = true
                     else
@@ -62,133 +74,438 @@ function APR.routeconfig:getConfigOptionTable()
                     end
                 end
             },
+            reset_custom_path = {
+                order = 1.3,
+                name = "Reset",
+                type = "execute",
+                width = optionsWidth,
+                func = function()
+                    APR_Custom[APR.Username .. "-" .. APR.Realm] = {}
+                end
+            },
             custom_path_area = {
-                order = 3,
+                order = 2,
                 name = L["CUSTOM_PATH"],
                 type = "group",
                 width = full,
                 inline = true,
-                args={
-                    general_settings={
-                        order = 1,
-                        name = "Place for the route",
-                        type = "description",
-                        width = "full",
-                    }
+                args = {
+                    route = {
+                        type = "input",
+                        name = "custom_path_area",
+                        dialogControl = "CustomPathRouteListFrame",
+                    },
                 }
             },
-            kalimdor={
-                name = "Kalimdor",
+            Vanilla = {
+                order = 3,
+                name = "Vanilla",
                 type = "group",
                 childGroups = "tree",
                 inline = false,
+                args = {
+                    route = {
+                        type = "input",
+                        name = "Vanilla",
+                        dialogControl = "RouteListFrame",
+                    },
+                }
+            },
+            TheBurningCrusade = {
                 order = 4,
-                args={
-                    general_settings={
-                        order = 1,
-                        name = "allgemein",
-                        type = "description",
-                        width = "full",
-                    },
-                }
-            },
-            eastern_kingdoms={
-                name = "EASTERN_KINGDOMS",
+                name = "Burning Crusade",
                 type = "group",
                 childGroups = "tree",
                 inline = false,
+                args = {
+                    route = {
+                        type = "input",
+                        name = "TheBurningCrusade",
+                        dialogControl = "RouteListFrame",
+                    },
+                }
+            },
+            WrathOfTheLichKing = {
                 order = 5,
-                args={
-                    general_settings={
-                        order = 1,
-                        name = "allgemei2n",
-                        type = "description",
-                        width = "full",
-                    },
-                }
-            },
-            dragonflight={
-                name = "DRAGONFLIGHT",
+                name = "Wrath of the Lich King",
                 type = "group",
                 childGroups = "tree",
                 inline = false,
+                args = {
+                    route = {
+                        type = "input",
+                        name = "WrathOfTheLichKing",
+                        dialogControl = "RouteListFrame",
+                    },
+                }
+            },
+            Cataclysm = {
                 order = 6,
-                args={
-                    general_settings={
-                        order = 1,
-                        name = "allgemei2n",
-                        type = "description",
-                        width = "full",
-                    },
-                }
-            },
-            misc1={
-                name = "MISC1",
+                name = "Cataclysm",
                 type = "group",
                 childGroups = "tree",
                 inline = false,
+                args = {
+                    route = {
+                        type = "input",
+                        name = "Cataclysm",
+                        dialogControl = "RouteListFrame",
+                    },
+                }
+            },
+            MistsOfPandaria = {
                 order = 7,
-                args={
-                    general_settings={
-                        order = 1,
-                        name = "allgemei2n",
-                        type = "description",
-                        width = "full",
-                    },
-                }
-            },
-            misc2={
-                name = "MISC2",
+                name = "Mists of Pandaria",
                 type = "group",
                 childGroups = "tree",
                 inline = false,
+                args = {
+                    route = {
+                        type = "input",
+                        name = "MistsOfPandaria",
+                        dialogControl = "RouteListFrame",
+                    },
+                }
+            },
+            WarlordsOfDraenor = {
                 order = 8,
-                args={
-                    general_settings={
-                        order = 1,
-                        name = "allgemei2n",
-                        type = "description",
-                        width = "full",
-                    },
-                }
-            },
-            wod={
-                name = "WOD",
+                name = "Warlords of Draenor",
                 type = "group",
                 childGroups = "tree",
                 inline = false,
+                args = {
+                    route = {
+                        type = "input",
+                        name = "WarlordsOfDraenor",
+                        dialogControl = "RouteListFrame",
+                    },
+                }
+            },
+            Legion = {
                 order = 9,
-                args={
-                    general_settings={
-                        order = 1,
-                        name = "allgemei2n",
-                        type = "description",
-                        width = "full",
-                    },
-                }
-            },
-            shadowlands={
-                name = "SHADOWLANDS",
+                name = "Legion",
                 type = "group",
                 childGroups = "tree",
                 inline = false,
+                args = {
+                    route = {
+                        type = "input",
+                        name = "Legion",
+                        dialogControl = "RouteListFrame",
+                    },
+                }
+            },
+            BattleForAzeroth = {
                 order = 10,
-                args={
-                    general_settings={
-                        order = 1,
-                        name = "allgemei2n",
-                        type = "description",
-                        width = "full",
+                name = "Battle for Azeroth",
+                type = "group",
+                childGroups = "tree",
+                inline = false,
+                args = {
+                    route = {
+                        type = "input",
+                        name = "BattleForAzeroth",
+                        dialogControl = "RouteListFrame",
+                    },
+                }
+            },
+            Shadowlands = {
+                order = 11,
+                name = "Shadowlands",
+                type = "group",
+                childGroups = "tree",
+                inline = false,
+                args = {
+                    route = {
+                        type = "input",
+                        name = "Shadowlands",
+                        dialogControl = "RouteListFrame",
+                    },
+                }
+            },
+            Dragonflight = {
+                order = 12,
+                name = "Dragonflight",
+                type = "group",
+                childGroups = "tree",
+                inline = false,
+                args = {
+                    route = {
+                        type = "input",
+                        name = "Dragonflight",
+                        dialogControl = "RouteListFrame",
                     },
                 }
             },
         }
     }
 
+
     return routeOptions
 end
 
+local function CreateCustomPathTableFrame(name)
+    local frame = CreateFrame("Frame", name, UIParent)
+    frame:SetSize(600, 25)
+    frame:SetPoint("CENTER")
 
+    local idColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    idColumn:SetPoint("TOPLEFT", 10, 0)
+    idColumn:SetText("ID")
+
+    local nameColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    nameColumn:SetPoint("TOPLEFT", idColumn, "TOPRIGHT", 50, 0)
+    nameColumn:SetText("Name")
+
+    return frame
+end
+function SetCustomPathListFrame(widget, name)
+    customPathListeWidget = widget
+    -- Hide the content before resetting the data
+    if widget.fontStringsContainer then
+        for _, container in ipairs(widget.fontStringsContainer) do
+            container:Hide()
+            container:ClearAllPoints()
+            container:SetParent(nil)
+        end
+    else
+        widget.fontStringsContainer = {}
+    end
+
+    local routes = APR_Custom[APR.Username .. "-" .. APR.Realm]
+    local yOffset = -15
+    APR_Custom[APR.Username .. "-" .. APR.Realm] = {}
+    for _, routeName in ipairs(routes) do
+        tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], routeName)
+    end
+
+    if #routes == 0 then
+        local noRoutesContainer = CreateFrame("Frame", nil, widget.frame)
+        noRoutesContainer:SetSize(600, 25)
+        noRoutesContainer:SetPoint("TOPLEFT", 10, yOffset)
+
+        local noRoutesID = noRoutesContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        noRoutesID:SetPoint("LEFT")
+        noRoutesID:SetText('-')
+        local noRoutesText = noRoutesContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        noRoutesText:SetPoint("LEFT", noRoutesID, "RIGHT", 50, 0)
+        noRoutesText:SetText(L["NO_ROUTE"])
+
+        -- Store the font string in the table
+        tinsert(widget.fontStringsContainer, noRoutesContainer)
+        widget.frame:SetSize(600, 35)
+    else
+        for i, route in ipairs(routes) do
+            -- Créer un conteneur pour chaque ligne
+            local lineContainer = CreateFrame("Frame", nil, widget.frame)
+            lineContainer:SetSize(600, 25)
+            lineContainer:SetPoint("TOPLEFT", 10, yOffset)
+
+            local borderTexture = lineContainer:CreateTexture(nil, "BACKGROUND")
+            borderTexture:SetTexture("Interface\\Buttons\\UI-Listbox-Highlight")
+            borderTexture:SetSize(600, 1)
+            borderTexture:SetPoint("TOPLEFT", lineContainer, "TOPLEFT", 0, 0)
+            borderTexture:SetPoint("TOPRIGHT", lineContainer, "TOPRIGHT", 0, 0)
+            borderTexture:SetVertexColor(lineColor, lineColor, lineColor, 0.4)
+
+            local routeID = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            routeID:SetPoint("LEFT")
+            routeID:SetText(i)
+
+            local nameText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            nameText:SetPoint("LEFT", routeID, "RIGHT", 50, 0)
+            nameText:SetText(route)
+
+            lineContainer:SetScript("OnEnter", function(self)
+                GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+                GameTooltip:AddLine(route)
+                GameTooltip:AddLine(L["MOVE_ZONE"], 1, 1, 1, true)
+                GameTooltip:Show()
+            end)
+            lineContainer:SetScript("OnLeave", function(self)
+                GameTooltip:Hide()
+            end)
+            lineContainer:SetScript("OnMouseDown", function(self, button)
+                if button == "RightButton" then
+                    tremove(APR_Custom[APR.Username .. "-" .. APR.Realm], i)
+                    APR.routeconfig:SendMessage("APR_Custom_Path_Update")
+                end
+            end)
+
+            yOffset = yOffset - 25
+            tinsert(widget.fontStringsContainer, lineContainer)
+        end
+        widget.frame:SetSize(600, -yOffset)
+    end
+end
+
+local function CreateRouteTableFrame(name)
+    local frame = CreateFrame("Frame", name, UIParent)
+    frame:SetSize(400, 25)
+    frame:SetPoint("CENTER")
+
+    local nameColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    nameColumn:SetPoint("TOPLEFT", 10, 0)
+    nameColumn:SetText("Name")
+
+    local statusColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    statusColumn:SetPoint("TOPRIGHT", -10, 0)
+    statusColumn:SetText("Status")
+
+    return frame
+end
+
+function SetRouteListTab(widget, name)
+    tabRouteListWidget = widget
+    -- Hide the content before resetting the data
+    if widget.fontStringsContainer then
+        for _, container in ipairs(widget.fontStringsContainer) do
+            container:Hide()
+            container:ClearAllPoints()
+            container:SetParent(nil)
+        end
+    else
+        widget.fontStringsContainer = {}
+    end
+
+
+    local routes = APR.QuestStepListListing[name]
+    local sortedRoutes = {}
+    local yOffset = -15
+
+    -- Copy the routes into a new table for sorting
+    for fileName, routeName in pairs(routes) do
+        if not Contains(APR_Custom[APR.Username .. "-" .. APR.Realm], routeName) then
+            tinsert(sortedRoutes, { fileName = fileName, routeName = routeName })
+        end
+    end
+
+    -- Sort the routes alphabetically by routeName
+    table.sort(sortedRoutes, function(a, b)
+        return a.routeName < b.routeName
+    end)
+
+    if #sortedRoutes == 0 then
+        local noRoutesContainer = CreateFrame("Frame", nil, widget.frame)
+        noRoutesContainer:SetSize(400, 25)
+        noRoutesContainer:SetPoint("TOPLEFT", 10, yOffset)
+
+        local noRoutesText = noRoutesContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        noRoutesText:SetPoint("LEFT")
+        noRoutesText:SetText(L["NO_ROUTE"])
+
+        -- Store the font string in the table
+        tinsert(widget.fontStringsContainer, noRoutesContainer)
+    else
+        for _, route in ipairs(sortedRoutes) do
+            local lineContainer = CreateFrame("Frame", nil, widget.frame, "BackdropTemplate")
+            lineContainer:SetSize(430, 25)
+            lineContainer:SetPoint("TOPLEFT", 10, yOffset)
+
+            local borderTexture = lineContainer:CreateTexture(nil, "BACKGROUND")
+            borderTexture:SetTexture("Interface\\Buttons\\UI-Listbox-Highlight")
+            borderTexture:SetSize(450, 1)
+            borderTexture:SetPoint("TOPLEFT", lineContainer, "TOPLEFT", 0, 0)
+            borderTexture:SetPoint("TOPRIGHT", lineContainer, "TOPRIGHT", 0, 0)
+            borderTexture:SetVertexColor(lineColor, lineColor, lineColor, 0.4)
+
+            local nameText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            nameText:SetPoint("LEFT")
+            nameText:SetText(route.routeName)
+
+            local statusText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            statusText:SetPoint("RIGHT")
+            statusText:SetText(APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][route.routeName] and
+                L["ROUTE_COMPLETED"] or
+                "Unknow")
+
+            lineContainer:SetScript("OnEnter", function(self)
+                GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+                GameTooltip:AddLine(route.routeName)
+                GameTooltip:AddLine(L["MOVE_ZONE"], 1, 1, 1, true)
+                GameTooltip:Show()
+            end)
+            lineContainer:SetScript("OnLeave", function(self)
+                GameTooltip:Hide()
+            end)
+            lineContainer:SetScript("OnMouseDown", function(self, button)
+                if button == "RightButton" then
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], route.routeName)
+                    APR.routeconfig:SendMessage("APR_Custom_Path_Update")
+                end
+            end)
+
+            yOffset = yOffset - 25
+
+            tinsert(widget.fontStringsContainer, lineContainer)
+        end
+    end
+    widget.frame:SetSize(400, -yOffset)
+end
+
+local function InitDialogControlFrame(Type, createFrameFunc, setLabelFunction)
+    local function Constructor()
+        local Widget = {}
+
+        -- Container Frame
+        local frame = createFrameFunc(Type)
+        frame.obj = Widget
+
+        -- Widget
+        Widget.frame = frame
+        Widget.type = Type
+        Widget.num = AceGUI:GetNextWidgetNum(Type)
+
+        -- Reccommended place to store ephemeral widget information.
+        Widget.userdata = {}
+
+        Widget.OnAcquire = function(self)
+            self.resizing = true
+            self:SetDisabled(true)
+            self:SetFullWidth(true)
+            self.resizing = nil
+        end
+
+        -- usefull to get set the data from the tab name
+        Widget.SetLabel = function(self, name)
+            currentTabName = name
+            setLabelFunction(self, name)
+        end
+
+        -- Mandatory for ace3, but useless
+        Widget.SetText = function(self) end
+        Widget.OnWidthSet = function(self)
+            if self.resizing then return end
+            -- Whenever OnWidthSet() is called, adjust the height of the frames to contain all child frames.
+            if self.AdjustHeightFunction then self:AdjustHeightFunction() end
+        end
+        -- Not sure if this is really necessary...
+        Widget.SetDisabled = function(self, Disabled)
+            self.disabled = Disabled
+        end
+
+        -- OnRelease gets called when hiding the widget.
+        Widget.OnRelease = function(self)
+            self:SetDisabled(true)
+            self.frame:ClearAllPoints()
+        end
+
+        return AceGUI:RegisterAsWidget(Widget)
+    end
+    AceGUI:RegisterWidgetType(Type, Constructor, 1)
+end
+function APR.routeconfig:InitRouteConfig()
+    APR.routeconfig:RegisterMessage("APR_Custom_Path_Update", function()
+        SetCustomPathListFrame(customPathListeWidget, "custom_path_area")
+        SetRouteListTab(tabRouteListWidget, currentTabName)
+    end)
+
+    InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)
+    InitDialogControlFrame("RouteListFrame", CreateRouteTableFrame, SetRouteListTab)
+    return GetConfigOptionTable()
+end
+
+-- TODO: to be deleted
 function APR.routeconfig:setAutoPathForRoute(routeChoice) -- For the Speed run and First character
     APRData[APR.Realm][APR.Username]["routeChoiceIndex"] = routeChoice
     local playerMapId = C_Map.GetBestMapForUnit("player")
@@ -219,7 +536,7 @@ function APR.routeconfig:setAutoPathForRoute(routeChoice) -- For the Speed run a
             tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], "01-30 Demon Hunter Start")
         end
     end
-    if (routeChoice == 1) then -- speedrun route
+    if (routeChoice == 1) then     -- speedrun route
         self.getSpeedrunRoute()
     elseif (routeChoice == 2) then -- firstcharacter route
         self.getFirstcharacterRoute()
@@ -247,7 +564,8 @@ function APR.routeconfig:setAutoPathForRoute(routeChoice) -- For the Speed run a
                 APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"]:SetText("")
                 APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:Hide()
             else
-                APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"]:SetText(APR_Custom[APR.Username .. "-" .. APR.Realm][CLi])
+                APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"]:SetText(APR_Custom[APR.Username .. "-" .. APR.Realm]
+                    [CLi])
                 APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:Show()
             end
         else
@@ -309,32 +627,6 @@ function APR.routeconfig:getFirstcharacterRoute()
     end
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 --Loads RoutePlan and option frame. RoutePlan is gui that pops when you hit "Custom Path" and a gui comes up allowing you to order them
 function APR.RoutePlanLoadIn()
     -- Main Frame -- When click on custom path
@@ -370,7 +662,8 @@ function APR.RoutePlanLoadIn()
     t:SetColorTexture(0.1, 0.1, 0.4, 1)
 
     APR.RoutePlan.Custompath.HelpText.texture = t
-    APR.RoutePlan.Custompath.HelpText.FS = APR.RoutePlan.Custompath.HelpText:CreateFontString("APR.RoutePlan_Help_Text", "ARTWORK",
+    APR.RoutePlan.Custompath.HelpText.FS = APR.RoutePlan.Custompath.HelpText:CreateFontString("APR.RoutePlan_Help_Text",
+        "ARTWORK",
         "ChatFontNormal")
     APR.RoutePlan.Custompath.HelpText.FS:SetParent(APR.RoutePlan.Custompath.HelpText)
     APR.RoutePlan.Custompath.HelpText.FS:SetPoint("TOP", APR.RoutePlan.Custompath.HelpText, "TOP", 5, 1)
@@ -381,7 +674,8 @@ function APR.RoutePlanLoadIn()
     APR.RoutePlan.Custompath.HelpText.FS:SetJustifyH("CENTER")
     APR.RoutePlan.Custompath.HelpText.FS:SetFontObject("GameFontNormal")
 
-    APR.RoutePlan.Custompath["CloseButton"] = CreateFrame("Button", "APR_RoutePlan_FG1_CloseButton", APR.RoutePlan.Custompath,
+    APR.RoutePlan.Custompath["CloseButton"] = CreateFrame("Button", "APR_RoutePlan_FG1_CloseButton",
+        APR.RoutePlan.Custompath,
         "UIPanelButtonTemplate")
     APR.RoutePlan.Custompath["CloseButton"]:SetWidth(20)
     APR.RoutePlan.Custompath["CloseButton"]:SetHeight(20)
@@ -473,7 +767,8 @@ function APR.RoutePlanLoadIn()
             APR.RoutePlan.isMoving = false;
         end
     end)
-    APR.RoutePlan.Custompath.CPT["FS"] = APR.RoutePlan.Custompath.CPT:CreateFontString("APR.RoutePlanCustomPathTitle", "ARTWORK",
+    APR.RoutePlan.Custompath.CPT["FS"] = APR.RoutePlan.Custompath.CPT:CreateFontString("APR.RoutePlanCustomPathTitle",
+        "ARTWORK",
         "ChatFontNormal")
     APR.RoutePlan.Custompath.CPT["FS"]:SetParent(APR.RoutePlan.Custompath.CPT)
     APR.RoutePlan.Custompath.CPT["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath.CPT, "TOP", 0, 0)
@@ -507,17 +802,18 @@ function APR.RoutePlanLoadIn()
                 APR.settings.profile.topLiz)
         end
     end)
-    APR.RoutePlan.Custompath.KALF:SetScript("OnMouseUp", function(self, button) -- When mouse released after being pressed
-        if button == "RightButton" and APR.RoutePlan.isMoving then
-            APR.RoutePlan:StopMovingOrSizing();
-            APR.RoutePlan.isMoving = false;
-            APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
-            APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
-            APR.RoutePlan:ClearAllPoints()
-            APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
-                APR.settings.profile.topLiz)
-        end
-    end)
+    APR.RoutePlan.Custompath.KALF:SetScript("OnMouseUp",
+        function(self, button) -- When mouse released after being pressed
+            if button == "RightButton" and APR.RoutePlan.isMoving then
+                APR.RoutePlan:StopMovingOrSizing();
+                APR.RoutePlan.isMoving = false;
+                APR.settings.profile.leftLiz = APR.RoutePlan:GetLeft()
+                APR.settings.profile.topLiz = APR.RoutePlan:GetTop() - GetScreenHeight()
+                APR.RoutePlan:ClearAllPoints()
+                APR.RoutePlan:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.leftLiz,
+                    APR.settings.profile.topLiz)
+            end
+        end)
     APR.RoutePlan.Custompath.KALF:SetScript("OnHide",
         function(self) -- prevent routeplan from being movable or resizable when hidden, since you can't see it anyways
             if (APR.RoutePlan.isMoving) then
@@ -561,7 +857,8 @@ function APR.RoutePlanLoadIn()
             APR.RoutePlan.isMoving = false;
         end
     end)
-    APR.RoutePlan.Custompath.KALT["FS"] = APR.RoutePlan.Custompath.KALT:CreateFontString("APR.RoutePlanKalimdorTitle", "ARTWORK",
+    APR.RoutePlan.Custompath.KALT["FS"] = APR.RoutePlan.Custompath.KALT:CreateFontString("APR.RoutePlanKalimdorTitle",
+        "ARTWORK",
         "ChatFontNormal")
     APR.RoutePlan.Custompath.KALT["FS"]:SetParent(APR.RoutePlan.Custompath.KALT)
     APR.RoutePlan.Custompath.KALT["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath.KALT, "TOP", 0, 0)
@@ -648,7 +945,8 @@ function APR.RoutePlanLoadIn()
             APR.RoutePlan.isMoving = false;
         end
     end)
-    APR.RoutePlan.Custompath.EKT["FS"] = APR.RoutePlan.Custompath.EKT:CreateFontString("APR.RoutePlanEasternKingdomsTitle", "ARTWORK",
+    APR.RoutePlan.Custompath.EKT["FS"] = APR.RoutePlan.Custompath.EKT:CreateFontString(
+        "APR.RoutePlanEasternKingdomsTitle", "ARTWORK",
         "ChatFontNormal")
     APR.RoutePlan.Custompath.EKT["FS"]:SetParent(APR.RoutePlan.Custompath.EKT)
     APR.RoutePlan.Custompath.EKT["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath.EKT, "TOP", 0, 0)
@@ -736,7 +1034,8 @@ function APR.RoutePlanLoadIn()
             APR.RoutePlan.isMoving = false;
         end
     end)
-    APR.RoutePlan.Custompath.SLT["FS"] = APR.RoutePlan.Custompath.SLT:CreateFontString("APR.RoutePlanShadowlandsTitle", "ARTWORK",
+    APR.RoutePlan.Custompath.SLT["FS"] = APR.RoutePlan.Custompath.SLT:CreateFontString("APR.RoutePlanShadowlandsTitle",
+        "ARTWORK",
         "ChatFontNormal")
     APR.RoutePlan.Custompath.SLT["FS"]:SetParent(APR.RoutePlan.Custompath.SLT)
     APR.RoutePlan.Custompath.SLT["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath.SLT, "TOP", 0, 0)
@@ -824,7 +1123,8 @@ function APR.RoutePlanLoadIn()
             APR.RoutePlan.isMoving = false;
         end
     end)
-    APR.RoutePlan.Custompath.EXTT["FS"] = APR.RoutePlan.Custompath.EXTT:CreateFontString("APR.RoutePlanExtraTitle", "ARTWORK",
+    APR.RoutePlan.Custompath.EXTT["FS"] = APR.RoutePlan.Custompath.EXTT:CreateFontString("APR.RoutePlanExtraTitle",
+        "ARTWORK",
         "ChatFontNormal")
     APR.RoutePlan.Custompath.EXTT["FS"]:SetParent(APR.RoutePlan.Custompath.EXTT)
     APR.RoutePlan.Custompath.EXTT["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath.EXTT, "TOP", 0, 0)
@@ -912,7 +1212,8 @@ function APR.RoutePlanLoadIn()
             APR.RoutePlan.isMoving = false;
         end
     end)
-    APR.RoutePlan.Custompath.MISC1T["FS"] = APR.RoutePlan.Custompath.MISC1T:CreateFontString("APR.RoutePlanMISC1Title", "ARTWORK",
+    APR.RoutePlan.Custompath.MISC1T["FS"] = APR.RoutePlan.Custompath.MISC1T:CreateFontString("APR.RoutePlanMISC1Title",
+        "ARTWORK",
         "ChatFontNormal")
     APR.RoutePlan.Custompath.MISC1T["FS"]:SetParent(APR.RoutePlan.Custompath.MISC1T)
     APR.RoutePlan.Custompath.MISC1T["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath.MISC1T, "TOP", 0, 0)
@@ -1000,7 +1301,8 @@ function APR.RoutePlanLoadIn()
             APR.RoutePlan.isMoving = false;
         end
     end)
-    APR.RoutePlan.Custompath.MISC2T["FS"] = APR.RoutePlan.Custompath.MISC2T:CreateFontString("APR.RoutePlanMISC2Title", "ARTWORK",
+    APR.RoutePlan.Custompath.MISC2T["FS"] = APR.RoutePlan.Custompath.MISC2T:CreateFontString("APR.RoutePlanMISC2Title",
+        "ARTWORK",
         "ChatFontNormal")
     APR.RoutePlan.Custompath.MISC2T["FS"]:SetParent(APR.RoutePlan.Custompath.MISC2T)
     APR.RoutePlan.Custompath.MISC2T["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath.MISC2T, "TOP", 0, 0)
@@ -1088,7 +1390,8 @@ function APR.RoutePlanLoadIn()
             APR.RoutePlan.isMoving = false;
         end
     end)
-    APR.RoutePlan.Custompath.DFT["FS"] = APR.RoutePlan.Custompath.DFT:CreateFontString("APR.RoutePlanDragonflightTitle", "ARTWORK",
+    APR.RoutePlan.Custompath.DFT["FS"] = APR.RoutePlan.Custompath.DFT:CreateFontString("APR.RoutePlanDragonflightTitle",
+        "ARTWORK",
         "ChatFontNormal")
     APR.RoutePlan.Custompath.DFT["FS"]:SetParent(APR.RoutePlan.Custompath.DFT)
     APR.RoutePlan.Custompath.DFT["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath.DFT, "TOP", 0, 0)
@@ -1102,7 +1405,8 @@ function APR.RoutePlanLoadIn()
     -- Looks like here happens the magic to get the route for speedrun
     local zenr = APR.NumbRoutePlan("SpeedRun")
     for CLi = 1, zenr do
-        APR.RoutePlan.Custompath["SPR3" .. CLi] = CreateFrame("frame", "APR.RoutePlanSpeedRun3" .. CLi, APR.RoutePlan.Custompath)
+        APR.RoutePlan.Custompath["SPR3" .. CLi] = CreateFrame("frame", "APR.RoutePlanSpeedRun3" .. CLi,
+            APR.RoutePlan.Custompath)
         APR.RoutePlan.Custompath["SPR3" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["SPR3" .. CLi]:SetHeight(20)
         APR.RoutePlan.Custompath["SPR3" .. CLi]:SetMovable(true)
@@ -1123,8 +1427,10 @@ function APR.RoutePlanLoadIn()
             elseif button == "RightButton" then
                 local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], APR.RoutePlan.Custompath["SPR3" .. CLi]["FS"]:GetText())
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath["SPR3" .. CLi]["FS"]
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm],
+                        APR.RoutePlan.Custompath["SPR3" .. CLi]["FS"]:GetText())
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath
+                        ["SPR3" .. CLi]["FS"]
                         :GetText())
                     APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]:Show()
                 end
@@ -1150,7 +1456,8 @@ function APR.RoutePlanLoadIn()
         APR.RoutePlan.Custompath["SPR3" .. CLi]["FS"] = APR.RoutePlan.Custompath["SPR3" .. CLi]:CreateFontString(
             "APR.RoutePlanSpeedRun3" .. CLi, "ARTWORK", "ChatFontNormal")
         APR.RoutePlan.Custompath["SPR3" .. CLi]["FS"]:SetParent(APR.RoutePlan.Custompath["SPR3" .. CLi])
-        APR.RoutePlan.Custompath["SPR3" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath["SPR3" .. CLi], "TOP", 0, 1)
+        APR.RoutePlan.Custompath["SPR3" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath["SPR3" .. CLi], "TOP", 0,
+            1)
         APR.RoutePlan.Custompath["SPR3" .. CLi]["FS"]:SetWidth(210)
         APR.RoutePlan.Custompath["SPR3" .. CLi]["FS"]:SetHeight(20)
         APR.RoutePlan.Custompath["SPR3" .. CLi]["FS"]:SetJustifyH("LEFT")
@@ -1160,7 +1467,8 @@ function APR.RoutePlanLoadIn()
 
     local zenr = APR.NumbRoutePlan("EasternKingdom")
     for CLi = 1, zenr do
-        APR.RoutePlan.Custompath["EK3" .. CLi] = CreateFrame("frame", "APR.RoutePlanEasternKingdoms3" .. CLi, APR.RoutePlan.Custompath)
+        APR.RoutePlan.Custompath["EK3" .. CLi] = CreateFrame("frame", "APR.RoutePlanEasternKingdoms3" .. CLi,
+            APR.RoutePlan.Custompath)
         APR.RoutePlan.Custompath["EK3" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["EK3" .. CLi]:SetHeight(20)
         APR.RoutePlan.Custompath["EK3" .. CLi]:SetMovable(true)
@@ -1181,8 +1489,10 @@ function APR.RoutePlanLoadIn()
             elseif button == "RightButton" then
                 local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], APR.RoutePlan.Custompath["EK3" .. CLi]["FS"]:GetText())
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath["EK3" .. CLi]["FS"]:GetText())
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm],
+                        APR.RoutePlan.Custompath["EK3" .. CLi]["FS"]:GetText())
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath["EK3" .. CLi]
+                        ["FS"]:GetText())
                     APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]:Show()
                 end
                 APR.RoutePlanCheckPos()
@@ -1217,7 +1527,8 @@ function APR.RoutePlanLoadIn()
 
     local zenr = APR.NumbRoutePlan("Kalimdor")
     for CLi = 1, zenr do
-        APR.RoutePlan.Custompath["KAL3" .. CLi] = CreateFrame("frame", "APR.RoutePlanKalimdor3" .. CLi, APR.RoutePlan.Custompath)
+        APR.RoutePlan.Custompath["KAL3" .. CLi] = CreateFrame("frame", "APR.RoutePlanKalimdor3" .. CLi,
+            APR.RoutePlan.Custompath)
         APR.RoutePlan.Custompath["KAL3" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["KAL3" .. CLi]:SetHeight(20)
         APR.RoutePlan.Custompath["KAL3" .. CLi]:SetMovable(true)
@@ -1238,8 +1549,10 @@ function APR.RoutePlanLoadIn()
             elseif button == "RightButton" then
                 local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], APR.RoutePlan.Custompath["KAL3" .. CLi]["FS"]:GetText())
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath["KAL3" .. CLi]["FS"]
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm],
+                        APR.RoutePlan.Custompath["KAL3" .. CLi]["FS"]:GetText())
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath
+                        ["KAL3" .. CLi]["FS"]
                         :GetText())
                     APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]:Show()
                 end
@@ -1265,7 +1578,8 @@ function APR.RoutePlanLoadIn()
         APR.RoutePlan.Custompath["KAL3" .. CLi]["FS"] = APR.RoutePlan.Custompath["KAL3" .. CLi]:CreateFontString(
             "APR.RoutePlanKalimdor3" .. CLi, "ARTWORK", "ChatFontNormal")
         APR.RoutePlan.Custompath["KAL3" .. CLi]["FS"]:SetParent(APR.RoutePlan.Custompath["KAL3" .. CLi])
-        APR.RoutePlan.Custompath["KAL3" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath["KAL3" .. CLi], "TOP", 0, 1)
+        APR.RoutePlan.Custompath["KAL3" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath["KAL3" .. CLi], "TOP", 0,
+            1)
         APR.RoutePlan.Custompath["KAL3" .. CLi]["FS"]:SetWidth(210)
         APR.RoutePlan.Custompath["KAL3" .. CLi]["FS"]:SetHeight(20)
         APR.RoutePlan.Custompath["KAL3" .. CLi]["FS"]:SetJustifyH("LEFT")
@@ -1275,7 +1589,8 @@ function APR.RoutePlanLoadIn()
 
     local zenr = APR.NumbRoutePlan("Shadowlands")
     for CLi = 1, zenr do
-        APR.RoutePlan.Custompath["SL3" .. CLi] = CreateFrame("frame", "APR.RoutePlanShadowlands3" .. CLi, APR.RoutePlan.Custompath)
+        APR.RoutePlan.Custompath["SL3" .. CLi] = CreateFrame("frame", "APR.RoutePlanShadowlands3" .. CLi,
+            APR.RoutePlan.Custompath)
         APR.RoutePlan.Custompath["SL3" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["SL3" .. CLi]:SetHeight(20)
         APR.RoutePlan.Custompath["SL3" .. CLi]:SetMovable(true)
@@ -1296,8 +1611,10 @@ function APR.RoutePlanLoadIn()
             elseif button == "RightButton" then
                 local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], APR.RoutePlan.Custompath["SL3" .. CLi]["FS"]:GetText())
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath["SL3" .. CLi]["FS"]:GetText())
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm],
+                        APR.RoutePlan.Custompath["SL3" .. CLi]["FS"]:GetText())
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath["SL3" .. CLi]
+                        ["FS"]:GetText())
                     APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]:Show()
                 end
                 APR.RoutePlanCheckPos()
@@ -1332,7 +1649,8 @@ function APR.RoutePlanLoadIn()
 
     local zenr = APR.NumbRoutePlan("Extra")
     for CLi = 1, zenr do
-        APR.RoutePlan.Custompath["EX3" .. CLi] = CreateFrame("frame", "APR.RoutePlanExtra3" .. CLi, APR.RoutePlan.Custompath)
+        APR.RoutePlan.Custompath["EX3" .. CLi] = CreateFrame("frame", "APR.RoutePlanExtra3" .. CLi,
+            APR.RoutePlan.Custompath)
         APR.RoutePlan.Custompath["EX3" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["EX3" .. CLi]:SetHeight(20)
         APR.RoutePlan.Custompath["EX3" .. CLi]:SetMovable(true)
@@ -1353,8 +1671,10 @@ function APR.RoutePlanLoadIn()
             elseif button == "RightButton" then
                 local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], APR.RoutePlan.Custompath["EX3" .. CLi]["FS"]:GetText())
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath["EX3" .. CLi]["FS"]:GetText())
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm],
+                        APR.RoutePlan.Custompath["EX3" .. CLi]["FS"]:GetText())
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath["EX3" .. CLi]
+                        ["FS"]:GetText())
                     APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]:Show()
                 end
                 APR.RoutePlanCheckPos()
@@ -1390,7 +1710,8 @@ function APR.RoutePlanLoadIn()
 
     local zenr = APR.NumbRoutePlan("MISC 1")
     for CLi = 1, zenr do
-        APR.RoutePlan.Custompath["MISC3" .. CLi] = CreateFrame("frame", "APR.RoutePlanMISC3" .. CLi, APR.RoutePlan.Custompath)
+        APR.RoutePlan.Custompath["MISC3" .. CLi] = CreateFrame("frame", "APR.RoutePlanMISC3" .. CLi,
+            APR.RoutePlan.Custompath)
         APR.RoutePlan.Custompath["MISC3" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["MISC3" .. CLi]:SetHeight(20)
         APR.RoutePlan.Custompath["MISC3" .. CLi]:SetMovable(true)
@@ -1411,8 +1732,10 @@ function APR.RoutePlanLoadIn()
             elseif button == "RightButton" then
                 local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], APR.RoutePlan.Custompath["MISC3" .. CLi]["FS"]:GetText())
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath["MISC3" .. CLi]["FS"]
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm],
+                        APR.RoutePlan.Custompath["MISC3" .. CLi]["FS"]:GetText())
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath
+                        ["MISC3" .. CLi]["FS"]
                         :GetText())
                     APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]:Show()
                 end
@@ -1438,7 +1761,8 @@ function APR.RoutePlanLoadIn()
         APR.RoutePlan.Custompath["MISC3" .. CLi]["FS"] = APR.RoutePlan.Custompath["MISC3" .. CLi]:CreateFontString(
             "APR.RoutePlanMISC3" .. CLi, "ARTWORK", "ChatFontNormal")
         APR.RoutePlan.Custompath["MISC3" .. CLi]["FS"]:SetParent(APR.RoutePlan.Custompath["MISC3" .. CLi])
-        APR.RoutePlan.Custompath["MISC3" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath["MISC3" .. CLi], "TOP", 0, 1)
+        APR.RoutePlan.Custompath["MISC3" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath["MISC3" .. CLi], "TOP", 0,
+            1)
         APR.RoutePlan.Custompath["MISC3" .. CLi]["FS"]:SetWidth(210)
         APR.RoutePlan.Custompath["MISC3" .. CLi]["FS"]:SetHeight(20)
         APR.RoutePlan.Custompath["MISC3" .. CLi]["FS"]:SetJustifyH("LEFT")
@@ -1448,7 +1772,8 @@ function APR.RoutePlanLoadIn()
 
     local zenr = APR.NumbRoutePlan("MISC 2")
     for CLi = 1, zenr do
-        APR.RoutePlan.Custompath["MISC23" .. CLi] = CreateFrame("frame", "APR.RoutePlanMISC2" .. CLi, APR.RoutePlan.Custompath)
+        APR.RoutePlan.Custompath["MISC23" .. CLi] = CreateFrame("frame", "APR.RoutePlanMISC2" .. CLi,
+            APR.RoutePlan.Custompath)
         APR.RoutePlan.Custompath["MISC23" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["MISC23" .. CLi]:SetHeight(20)
         APR.RoutePlan.Custompath["MISC23" .. CLi]:SetMovable(true)
@@ -1469,8 +1794,10 @@ function APR.RoutePlanLoadIn()
             elseif button == "RightButton" then
                 local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], APR.RoutePlan.Custompath["MISC23" .. CLi]["FS"]:GetText())
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath["MISC23" .. CLi]["FS"]
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm],
+                        APR.RoutePlan.Custompath["MISC23" .. CLi]["FS"]:GetText())
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath
+                        ["MISC23" .. CLi]["FS"]
                         :GetText())
                     APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]:Show()
                 end
@@ -1496,7 +1823,8 @@ function APR.RoutePlanLoadIn()
         APR.RoutePlan.Custompath["MISC23" .. CLi]["FS"] = APR.RoutePlan.Custompath["MISC23" .. CLi]:CreateFontString(
             "APR.RoutePlanMISC23" .. CLi, "ARTWORK", "ChatFontNormal")
         APR.RoutePlan.Custompath["MISC23" .. CLi]["FS"]:SetParent(APR.RoutePlan.Custompath["MISC23" .. CLi])
-        APR.RoutePlan.Custompath["MISC23" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath["MISC23" .. CLi], "TOP", 0, 1)
+        APR.RoutePlan.Custompath["MISC23" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath["MISC23" .. CLi], "TOP",
+            0, 1)
         APR.RoutePlan.Custompath["MISC23" .. CLi]["FS"]:SetWidth(210)
         APR.RoutePlan.Custompath["MISC23" .. CLi]["FS"]:SetHeight(20)
         APR.RoutePlan.Custompath["MISC23" .. CLi]["FS"]:SetJustifyH("LEFT")
@@ -1506,7 +1834,8 @@ function APR.RoutePlanLoadIn()
 
     local zenr = APR.NumbRoutePlan("Dragonflight")
     for CLi = 1, zenr do
-        APR.RoutePlan.Custompath["DF3" .. CLi] = CreateFrame("frame", "APR.RoutePlanDragonflight3" .. CLi, APR.RoutePlan.Custompath)
+        APR.RoutePlan.Custompath["DF3" .. CLi] = CreateFrame("frame", "APR.RoutePlanDragonflight3" .. CLi,
+            APR.RoutePlan.Custompath)
         APR.RoutePlan.Custompath["DF3" .. CLi]:SetWidth(225)
         APR.RoutePlan.Custompath["DF3" .. CLi]:SetHeight(20)
         APR.RoutePlan.Custompath["DF3" .. CLi]:SetMovable(true)
@@ -1527,8 +1856,10 @@ function APR.RoutePlanLoadIn()
             elseif button == "RightButton" then
                 local zenew = getn(APR_Custom[APR.Username .. "-" .. APR.Realm]) + 1
                 if (zenew < 19 or zenew == 19) then
-                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm], APR.RoutePlan.Custompath["DF3" .. CLi]["FS"]:GetText())
-                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath["DF3" .. CLi]["FS"]:GetText())
+                    tinsert(APR_Custom[APR.Username .. "-" .. APR.Realm],
+                        APR.RoutePlan.Custompath["DF3" .. CLi]["FS"]:GetText())
+                    APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]["FS"]:SetText(APR.RoutePlan.Custompath["DF3" .. CLi]
+                        ["FS"]:GetText())
                     APR.RoutePlan.Custompath["Fxz2Custom" .. zenew]:Show()
                 end
                 APR.RoutePlanCheckPos()
@@ -1571,16 +1902,19 @@ function APR.RoutePlanLoadIn()
         APR.RoutePlan.Custompath["FxzCustom" .. CLi]:SetFrameStrata("MEDIUM")
         APR.RoutePlan.Custompath["FxzCustom" .. CLi]:SetResizable(true)
         APR.RoutePlan.Custompath["FxzCustom" .. CLi]:SetScale(0.7)
-        APR.RoutePlan.Custompath["FxzCustom" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath, "TOPLEFT", -18, -((20 * CLi) - 17))
+        APR.RoutePlan.Custompath["FxzCustom" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath, "TOPLEFT", -18,
+            -((20 * CLi) - 17))
         local t = APR.RoutePlan.Custompath["FxzCustom" .. CLi]:CreateTexture(nil, "BACKGROUND")
         t:SetTexture("Interface\\Buttons\\WHITE8X8")
         t:SetAllPoints(APR.RoutePlan.Custompath["FxzCustom" .. CLi])
         t:SetColorTexture(0.1, 0.1, 0.4, 1)
         APR.RoutePlan.Custompath["FxzCustom" .. CLi].texture = t
-        APR.RoutePlan.Custompath["FxzCustom" .. CLi]["FS"] = APR.RoutePlan.Custompath["FxzCustom" .. CLi]:CreateFontString(
-            "APR.RoutePlan_Fx3x_FFGs1S" .. CLi, "ARTWORK", "ChatFontNormal")
+        APR.RoutePlan.Custompath["FxzCustom" .. CLi]["FS"] = APR.RoutePlan.Custompath["FxzCustom" .. CLi]
+            :CreateFontString(
+                "APR.RoutePlan_Fx3x_FFGs1S" .. CLi, "ARTWORK", "ChatFontNormal")
         APR.RoutePlan.Custompath["FxzCustom" .. CLi]["FS"]:SetParent(APR.RoutePlan.Custompath["FxzCustom" .. CLi])
-        APR.RoutePlan.Custompath["FxzCustom" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath["FxzCustom" .. CLi], "TOP", 0, 1)
+        APR.RoutePlan.Custompath["FxzCustom" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath["FxzCustom" .. CLi],
+            "TOP", 0, 1)
         APR.RoutePlan.Custompath["FxzCustom" .. CLi]["FS"]:SetWidth(25)
         APR.RoutePlan.Custompath["FxzCustom" .. CLi]["FS"]:SetHeight(20)
         APR.RoutePlan.Custompath["FxzCustom" .. CLi]["FS"]:SetJustifyH("CENTER")
@@ -1596,7 +1930,8 @@ function APR.RoutePlanLoadIn()
         APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetFrameStrata("MEDIUM")
         APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetResizable(true)
         APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetScale(0.7)
-        APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath, "TOPLEFT", 0, -(20 * CLi))
+        APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:SetPoint("TOPLEFT", APR.RoutePlan.Custompath, "TOPLEFT", 0,
+            -(20 * CLi))
         local t = APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:CreateTexture(nil, "BACKGROUND")
         t:SetTexture("Interface\\Buttons\\WHITE8X8")
         t:SetAllPoints(APR.RoutePlan.Custompath["Fxz2Custom" .. CLi])
@@ -1647,10 +1982,12 @@ function APR.RoutePlanLoadIn()
                 APR.RoutePlan.Custompath.isMoving = false;
             end
         end)
-        APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"] = APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:CreateFontString(
-            "APR.RoutePlan_Fx3x_FFGs21Sx" .. CLi, "ARTWORK", "ChatFontNormal")
+        APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"] = APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]
+            :CreateFontString(
+                "APR.RoutePlan_Fx3x_FFGs21Sx" .. CLi, "ARTWORK", "ChatFontNormal")
         APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"]:SetParent(APR.RoutePlan.Custompath["Fxz2Custom" .. CLi])
-        APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath["Fxz2Custom" .. CLi], "TOP", 0, 1)
+        APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"]:SetPoint("TOP", APR.RoutePlan.Custompath
+            ["Fxz2Custom" .. CLi], "TOP", 0, 1)
         APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"]:SetWidth(210)
         APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"]:SetHeight(20)
         APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"]:SetJustifyH("LEFT")
@@ -1662,48 +1999,29 @@ function APR.RoutePlanLoadIn()
             else
                 if (APR_Custom[APR.Username .. "-" .. APR.Realm] and APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]) then
                     local zew = APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]]
-                    if (APR["EasternKingdomDB"] and APR["EasternKingdomDB"][zew] and IsAddOnLoaded("APR-EasternKingdoms") == false) then
-                        local loaded, reason = LoadAddOn("APR-Vanilla")
-                        if (not loaded) then
-                            if (reason == "DISABLED") then
-                                print("APR: APR - Eastern Kingdoms " .. L["DISABLED_ADDON_LIST"])
+                    local function checkAddon(zoneName, addonName)
+                        if APR[zoneName] and APR[zoneName][zew] and not C_AddOns.IsAddOnLoaded(addonName) then
+                            local loaded, _ = C_AddOns.LoadAddOn(addonName)
+                            if (not loaded) then
+                                C_AddOns.EnableAddOn(addonName)
+                                print("APR: " .. addonName .. L["DISABLED_ADDON_LIST"])
                             end
                         end
                     end
-                    if (APR["BattleForAzeroth"] and APR["BattleForAzeroth"][zew] and IsAddOnLoaded("APR-BattleForAzeroth") == false) then
-                        local loaded, reason = LoadAddOn("APR-BattleForAzeroth")
-                        if (not loaded) then
-                            if (reason == "DISABLED") then
-                                print("APR: APR - BattleForAzeroth " .. L["DISABLED_ADDON_LIST"])
-                            end
-                        end
-                    end
-                    if (APR["Kalimdor"] and APR["Kalimdor"][zew] and IsAddOnLoaded("APR-Vanilla") == false) then
-                        local loaded, reason = LoadAddOn("APR-Vanilla")
-                        if (not loaded) then
-                            if (reason == "DISABLED") then
-                                print("APR: APR - Vanilla " .. L["DISABLED_ADDON_LIST"])
-                            end
-                        end
-                    end
-                    if (APR["Legion"] and APR["Legion"][zew] and IsAddOnLoaded("APR-Legion") == false) then
-                        local loaded, reason = LoadAddOn("APR-Legion")
-                        if (not loaded) then
-                            if (reason == "DISABLED") then
-                                print("APR: APR - Legion " .. L["DISABLED_ADDON_LIST"])
-                            end
-                        end
-                    end
-                    if (APR["ShadowlandsDB"] and APR["ShadowlandsDB"][zew] and IsAddOnLoaded("APR-Shadowlands") == false) then
-                        local loaded, reason = LoadAddOn("APR-Shadowlands")
-                        if (not loaded) then
-                            if (reason == "DISABLED") then
-                                print("APR: APR - Shadowlands " .. L["DISABLED_ADDON_LIST"])
-                            end
-                        end
-                    end
+                    checkAddon("Vanilla", "APR-Vanilla")
+                    checkAddon("TheBurningCrusade", "APR-TheBurningCrusade") -- No route
+                    checkAddon("WrathOfTheLichKing", "APR-WrathOfTheLichKing")
+                    checkAddon("Cataclysm", "APR-Vanilla")                   -- No route
+                    checkAddon("MistsOfPandaria", "APR-MistsOfPandaria")
+                    checkAddon("WarlordsOfDraenor", "APR-WarlordsOfDraenor")
+                    checkAddon("Legion", "APR-Legion")
+                    checkAddon("BattleForAzeroth", "APR-BattleForAzeroth")
+                    checkAddon("Shadowlands", "APR-ExilesReach")
+                    checkAddon("Shadowlands", "APR-Shadowlands")
+                    checkAddon("Dragonflight", "APR-Dragonflight")
                 end
-                APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"]:SetText(APR_Custom[APR.Username .. "-" .. APR.Realm][CLi])
+                APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]["FS"]:SetText(APR_Custom[APR.Username .. "-" .. APR.Realm]
+                    [CLi])
                 APR.RoutePlan.Custompath["Fxz2Custom" .. CLi]:Show()
             end
         else
@@ -1850,4 +2168,10 @@ function APR.RoutePlanLoadIn()
 
     APR.RoutePlanCheckPos()
     APR.CheckPosMove()
+end
+
+function APR:BruteForceResetCustomPath()
+    local configOptions = GetConfigOptionTable()
+    local resetCustomPathFunc = configOptions.args.reset_custom_path.func
+    resetCustomPathFunc()
 end

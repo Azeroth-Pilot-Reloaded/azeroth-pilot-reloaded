@@ -14,10 +14,6 @@ local aceDialog = _G.LibStub("AceConfigDialog-3.0")
 local libDataBroker = LibStub("LibDataBroker-1.1")
 local libDBIcon = LibStub("LibDBIcon-1.0")
 
--- TMP variable for route bouton
-local auto_path_helper = false
-local custom_path = false
-
 local function GetProfileOption(info) return APR.settings.profile[info[#info]] end
 
 local function SetProfileOption(info, value)
@@ -112,7 +108,6 @@ function APR.settings:InitializeSettings()
             coordinateShow = false,
             leftLiz = 150,
             topLiz = -150,
-
         }
     }
 
@@ -1046,7 +1041,8 @@ function APR.settings:createBlizzOptions()
     APR.Options = aceDialog:AddToBlizOptions(APR.title)
 
     -- Add setting route to bliz option
-    APR.settings:CreateRouteOption()
+    aceConfig:RegisterOptionsTable(APR.title .. "/Route", APR.routeconfig:InitRouteConfig())
+    APR.settings.routeFrameRef = aceDialog:AddToBlizOptions(APR.title .. "/Route", L["ROUTE"], APR.title)
 
     -- add profile to bliz option
     aceConfig:RegisterOptionsTable(APR.title .. "/Profile", _G.LibStub("AceDBOptions-3.0"):GetOptionsTable(SettingsDB))
@@ -1054,11 +1050,6 @@ function APR.settings:createBlizzOptions()
 
     -- Add about to bliz option
     APR.settings:CreateAboutOption()
-end
-
-function APR.settings:CreateRouteOption()
-    aceConfig:RegisterOptionsTable(APR.title .. "/Route", APR.routeconfig:getConfigOptionTable())
-    aceDialog:AddToBlizOptions(APR.title .. "/Route", L["ROUTE"], APR.title)
 end
 
 function APR.settings:CreateAboutOption()

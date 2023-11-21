@@ -9,3 +9,4 @@
 ## RequiredDeps: APR-Core
 MistsOfPandaria_Alliance.lua
 MistsOfPandaria_Horde.lua
+MistsOfPandaria.lua

@@ -7,40 +7,40 @@ if (APR.Faction == "Alliance") then
         ["01-10 Night Elf Start"] = 57,
         ["01-10 Worgen Start"] = 179,
         ["01-30 Demon Hunter Start"] = 672,
-        ["01-30 Dun Morogh (Full)"] = 27,
-        ["01-30 Elwynn Forest (Full)"] = 37,
+        ["01-30 Dun Morogh"] = 27,
+        ["01-30 Elwynn Forest"] = 37,
         ["08-30 Death Knight Start"] = 23,
-        ["10-30 Loch Modan (Full)"] = 48,
-        ["10-30 Westfall (Full)"] = 52,
-        ["10-30 Darkshore (Full)"] = 62,
-        ["15-30 Ashenvale (Full)"] = 63,
-        ["01-10 Azuremyst Isle (Full)"] = 97,
-        ["01-30 Bloodmyst Isle (Full)"] = 106,
-        ["20-30 Wetlands (Full)"] = 56,
-        ["25-30 Burning Steppes (Full)"] = 36,
-        ["20-30 Arathi Highlands (Full)"] = 14,
-        ["20-30 The Hinterlands (Full)"] = 26,
-        ["20-30 Western Plaguelands (Full)"] = 22,
-        ["25-30 Swamp of Sorrows (Full)"] = 51,
-        ["25-30 Blasted Lands (Full)"] = 17,
-        ["25-30 Eastern Plaguelands (Full)"] = 23,
-        ["25-30 Felwood (Full)"] = 77,
-        ["20-30 Duskwood (Full)"] = 47,
-        ["15-30 Redridge Mountauns (Full)"] = 49,
-        ["25-30 Winterspring (Full)"] = 83,
-        ["20-30 Stonetalon Mountains (Full)"] = 65,
-        ["20-30 Southern Barrens (Full)"] = 199,
-        ["20-30 Dustwallow Marsh (Full)"] = 70,
-        ["20-30 Desolace (Full)"] = 66,
-        ["20-30 Feralas (Full)"] = 69,
-        ["25-30 Thousand Needles (Full)"] = 64,
-        ["25-30 Tanaris (Full)"] = 71,
-        ["25-30 Un'Goro Crater (Full)"] = 78,
-        ["25-30 Silithus (Full)"] = 81,
-        ["01-30 Teldrassil (Full)"] = 57,
-        ["25-30 Badlands (Full)"] = 15,
-        ["25-30 Searing Gorge (Full)"] = 32,
-        ["20-30 Northern Stranglethorn (Full)"] = 224,
+        ["10-30 Loch Modan"] = 48,
+        ["10-30 Westfall"] = 52,
+        ["10-30 Darkshore"] = 62,
+        ["15-30 Ashenvale"] = 63,
+        ["01-10 Azuremyst Isle"] = 97,
+        ["01-30 Bloodmyst Isle"] = 106,
+        ["20-30 Wetlands"] = 56,
+        ["25-30 Burning Steppes"] = 36,
+        ["20-30 Arathi Highlands"] = 14,
+        ["20-30 The Hinterlands"] = 26,
+        ["20-30 Western Plaguelands"] = 22,
+        ["25-30 Swamp of Sorrows"] = 51,
+        ["25-30 Blasted Lands"] = 17,
+        ["25-30 Eastern Plaguelands"] = 23,
+        ["25-30 Felwood"] = 77,
+        ["20-30 Duskwood"] = 47,
+        ["15-30 Redridge Mountauns"] = 49,
+        ["25-30 Winterspring"] = 83,
+        ["20-30 Stonetalon Mountains"] = 65,
+        ["20-30 Southern Barrens"] = 199,
+        ["20-30 Dustwallow Marsh"] = 70,
+        ["20-30 Desolace"] = 66,
+        ["20-30 Feralas"] = 69,
+        ["25-30 Thousand Needles"] = 64,
+        ["25-30 Tanaris"] = 71,
+        ["25-30 Un'Goro Crater"] = 78,
+        ["25-30 Silithus"] = 81,
+        ["01-30 Teldrassil"] = 57,
+        ["25-30 Badlands"] = 15,
+        ["25-30 Searing Gorge"] = 32,
+        ["20-30 Northern Stranglethorn"] = 224,
         ["20-30 Cape of Stranglethorn (F)"] = 224,
         ["01-10 Exile's Reach"] = 1409,
         ["50 The Maw Intro"] = 1648,
@@ -91,35 +91,53 @@ if (APR.Faction == "Alliance") then
         ["DF05 - Azure Span"] = 2024,
         ["DF06 - Thaldraszus"] = 2025,
         ["58-60 Dracthyr Start"] = 2118,
-        ["Allied Death Knight Start"] = 2297
+        ["Allied Death Knight Start"] = 2297,
+        ["01-30 Pandaren Start"] = 378,
     }
 
-    APR.QuestStepListListing["MISC 1"] = {
-        ["A630-Azsuna"] = "Legion - Azsuna",
-        ["A641-ValSharah"] = "Legion - Val'Sharah",
-        ["A634-Stormheim"] = "Legion - Stormheim",
-        ["A84-Stormwind"] = "BFA - 10-10 Intro",
-        ["A895-Tiragarde Sound"] = "BFA - 10-50 Tiragarde Sound",
-        ["A942-Stormsong Valley"] = "BFA - 30-50 Stormsong Valley",
-        ["A896-Dustvar"] = "BFA - 20-50 Dustvar",
+    --TODO: maybe split into kalindor et eastern for map icon/line/arrow
+    APR.QuestStepListListing.Vanilla = {
+        ["A97-AzuremystIsle"] = "01-10 Azuremyst Isle",
+        ["A106-BloodmystIsle"] = "01-30 Bloodmyst Isle",
+        ["A62-Darkshore"] = "10-30 Darkshore",
+        ["A63-Ashenvale"] = "15-30 Ashenvale",
+        ["A77-Felwood"] = "25-30 Felwood",
+        ["A83-Winterspring"] = "25-30 Winterspring",
+        ["A65-StonetalonMountains"] = "20-30 Stonetalon Mountains",
+        ["A199-SouthernBarrens"] = "20-30 Southern Barrens",
+        ["A70-DustwallowMarsh"] = "20-30 Dustwallow Marsh",
+        ["A66-Desolace"] = "20-30 Desolace",
+        ["A69-Feralas"] = "20-30 Feralas",
+        ["A64-ThousandNeedles"] = "25-30 Thousand Needles",
+        ["A71-Tanaris"] = "25-30 Tanaris",
+        ["A78-UnGoroCrater"] = "25-30 Un'Goro Crater",
+        ["A81-Silithus"] = "25-30 Silithus",
+        ["A57-Teldrassil"] = "01-30 Teldrassil",
+        ["A27-Kharanos"] = "01-30 Dun Morogh",
+        ["A48-LochModan"] = "10-30 Loch Modan",
+        ["A37-ElwynnForest"] = "01-30 Elwynn Forest",
+        ["A52-Westfall"] = "10-30 Westfall",
+        ["A51-SwampofSorrows"] = "25-30 Swamp of Sorrows",
+        ["A17-BlastedLands"] = "25-30 Blasted Lands",
+        ["A56-Wetlands"] = "20-30 Wetlands",
+        ["A36-BurningSteppes"] = "25-30 Burning Steppes",
+        ["A14-ArathiHighlands"] = "20-30 Arathi Highlands",
+        ["A26-TheHinterlands"] = "20-30 The Hinterlands",
+        ["A22-WesternPlaguelands"] = "20-30 Western Plaguelands",
+        ["A23-EasternPlaguelands"] = "25-30 Eastern Plaguelands",
+        ["A47-Duskwood"] = "20-30 Duskwood",
+        ["A49-RedridgeMountauns"] = "15-30 Redridge Mountauns",
+        ["A15-Badlands"] = "25-30 Badlands",
+        ["A32-SearingGorge"] = "25-30 Searing Gorge",
+        ["A224-NorthernStranglethorn"] = "20-30 Northern Stranglethorn",
+        ["A224-TheCapeofStranglethorn"] = "20-30 Cape of Stranglethorn",
 
     }
-
-    if (APR.ClassId == APR.Classes["Demon Hunter"]) then
-        APR.QuestStepListListing["MISC 1"]["672-Mardum"] = "01-30 Demon Hunter Start"
-    elseif (APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23) then
-        APR.QuestStepListListing["MISC 1"]["A_Allied_Icecrown Citadel"] = "Allied Death Knight Start"
-    elseif (APR.ClassId == APR.Classes["Death Knight"]) then
-        APR.QuestStepListListing["MISC 1"]["A23-ScarletEnclave"] = "08-30 Death Knight Start"
-    elseif (APR.Faction == "Neutral" and APR.race == 24 and APR.Level == 1) then
-        APR.QuestStepListListing["MISC 1"]["378-WanderingIsle"] = "01-30 Pandaren Start"
-    end
-    if (APR.Level < 10) then
-        APR.QuestStepListListing["MISC 1"]["1409-Exile's Reach"] = "01-10 Exile's Reach"
-    end
-    APR.QuestStepListListing["MISC 2"] = {
-    }
-    APR.QuestStepListListing["Extra"] = {
+    APR.QuestStepListListing.TheBurningCrusade = {}
+    APR.QuestStepListListing.WrathOfTheLichKing = {}
+    APR.QuestStepListListing.Cataclysm = {}
+    APR.QuestStepListListing.MistsOfPandaria = {}
+    APR.QuestStepListListing.WarlordsOfDraenor = {
         ["A84-DesMephisto-Stormwind-War"] = "(1/8) 10-50 Stormwind",
         ["A577-DesMephisto-TanaanJungle"] = "(2/8) 10-50 Tanaan Jungle",
         ["A539-DesMephisto-Shadowmoon1"] = "(3/8) 10-50 Shadowmoon",
@@ -128,9 +146,19 @@ if (APR.Faction == "Alliance") then
         ["A539-DesMephisto-Shadowmoon2"] = "(6/8) 10-50 Shadowmoon",
         ["A535-DesMephisto-Talador2"] = "(7/8) 10-50 Talador",
         ["A542-DesMephisto-SpiresOfArak"] = "(8/8) 10-50 Spires of Arak",
-
     }
-    APR.QuestStepListListing["Shadowlands"] = {
+    APR.QuestStepListListing.Legion = {
+        ["A630-Azsuna"] = "Legion - Azsuna",
+        ["A641-ValSharah"] = "Legion - Val'Sharah",
+        ["A634-Stormheim"] = "Legion - Stormheim",
+    }
+    APR.QuestStepListListing.BattleForAzeroth = {
+        ["A84-Stormwind"] = "BFA - 10-10 Intro",
+        ["A895-Tiragarde Sound"] = "BFA - 10-50 Tiragarde Sound",
+        ["A942-Stormsong Valley"] = "BFA - 30-50 Stormsong Valley",
+        ["A896-Dustvar"] = "BFA - 20-50 Dustvar",
+    }
+    APR.QuestStepListListing.Shadowlands = {
         ["84-IntroQline"] = "SL-IntroQline",
         ["1648-Z0-TheMaw-Story"] = "Z-00-TheMaw-Story",
         ["1670-Z1-Oribos-Story"] = "Z-01-Oribos-Story",
@@ -150,137 +178,89 @@ if (APR.Faction == "Alliance") then
         ["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
         ["Shadowlands-StoryOnly-A"] = "DEV - StoryMode Only (Not Enough XP)",
     }
-    APR.QuestStepListListing["Kalimdor"] = {
-        ["A97-AzuremystIsle"] = "01-10 Azuremyst Isle (Full)",
-        ["A106-BloodmystIsle"] = "01-30 Bloodmyst Isle (Full)",
-        ["A62-Darkshore"] = "10-30 Darkshore (Full)",
-        ["A63-Ashenvale"] = "15-30 Ashenvale (Full)",
-        ["A77-Felwood"] = "25-30 Felwood (Full)",
-        ["A83-Winterspring"] = "25-30 Winterspring (Full)",
-        ["A65-StonetalonMountains"] = "20-30 Stonetalon Mountains (Full)",
-        ["A199-SouthernBarrens"] = "20-30 Southern Barrens (Full)",
-        ["A70-DustwallowMarsh"] = "20-30 Dustwallow Marsh (Full)",
-        ["A66-Desolace"] = "20-30 Desolace (Full)",
-        ["A69-Feralas"] = "20-30 Feralas (Full)",
-        ["A64-ThousandNeedles"] = "25-30 Thousand Needles (Full)",
-        ["A71-Tanaris"] = "25-30 Tanaris (Full)",
-        ["A78-UnGoroCrater"] = "25-30 Un'Goro Crater (Full)",
-        ["A81-Silithus"] = "25-30 Silithus (Full)",
-        ["A57-Teldrassil"] = "01-30 Teldrassil (Full)",
-
-    }
-    if (APR.Race == "NightElf") then
-        APR.QuestStepListListing["Kalimdor"]["A57-ShadowglenNightElf"] = "01-10 Night Elf Start"
-    elseif (APR.Race == "Draenei") then
-        APR.QuestStepListListing["Kalimdor"]["A97-AmmenVale"] = "01-10 Draenei Start"
-    end
-    APR.QuestStepListListing["SpeedRun"] = {
-        ["1648-Z0-TheMaw-Story"] = "Z-00-TheMaw-Story",
-        ["1670-Z1-Oribos-Story"] = "Z-01-Oribos-Story",
-        ["1533-Z2-Bastion-Story"] = "Z-02-Bastion-Story",
-        ["1613-Z3-Oribos-Story"] = "Z-03-Oribos-Story",
-        ["1536-Z4-Maldraxxus-Story"] = "Z-04-Maldraxxus-Story",
-        ["1670-Z5-Oribos-Story"] = "Z-05-Oribos-Story",
-        ["1543-Z6-TheMaw-Story"] = "Z-06-The Maw-Story",
-        ["1670-Z7-Oribos-Story"] = "Z-07-Oribos-Story",
-        ["1536-Z8-Maldraxxus-Story"] = "Z-08-Maldraxxus-Story",
-        ["1670-Z9-Oribos-Story"] = "Z-09-Oribos-Story",
-        ["1565-Z10-Ardenweald-Story"] = "Z-10-Ardenweald-Story",
-        ["1671-Z11-Oribos-Story"] = "Z-11-Oribos-Story",
-        ["1525-Z12-Revendreth-Story"] = "Z-12-Revendreth-Story",
-        ["1543-Z13-TheMaw-Story"] = "Z-13-The Maw-Story",
-        ["1525-Z14-Revendreth-Story"] = "Z-14-Revendreth-Story",
-        ["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
-    }
-    APR.QuestStepListListing["EasternKingdom"] = {
-        ["A27-Kharanos"] = "01-30 Dun Morogh (Full)",
-        ["A48-LochModan"] = "10-30 Loch Modan (Full)",
-        ["A37-ElwynnForest"] = "01-30 Elwynn Forest (Full)",
-        ["A52-Westfall"] = "10-30 Westfall (Full)",
-        ["A51-SwampofSorrows"] = "25-30 Swamp of Sorrows (Full)",
-        ["A17-BlastedLands"] = "25-30 Blasted Lands (Full)",
-        ["A56-Wetlands"] = "20-30 Wetlands (Full)",
-        ["A36-BurningSteppes"] = "25-30 Burning Steppes (Full)",
-        ["A14-ArathiHighlands"] = "20-30 Arathi Highlands (Full)",
-        ["A26-TheHinterlands"] = "20-30 The Hinterlands (Full)",
-        ["A22-WesternPlaguelands"] = "20-30 Western Plaguelands (Full)",
-        ["A23-EasternPlaguelands"] = "25-30 Eastern Plaguelands (Full)",
-        ["A47-Duskwood"] = "20-30 Duskwood (Full)",
-        ["A49-RedridgeMountauns"] = "15-30 Redridge Mountauns (Full)",
-        ["A15-Badlands"] = "25-30 Badlands (Full)",
-        ["A32-SearingGorge"] = "25-30 Searing Gorge (Full)",
-        ["A224-NorthernStranglethorn"] = "20-30 Northern Stranglethorn (Full)",
-        ["A224-TheCapeofStranglethorn"] = "20-30 Cape of Stranglethorn (F)",
-
-    }
-    if (APR.Race == "Dwarf") then
-        APR.QuestStepListListing["EasternKingdom"]["A27-ColdridgeValleyDwarf"] = "01-10 Dwarf Start"
-    elseif (APR.Race == "Human") then
-        APR.QuestStepListListing["EasternKingdom"]["A37-NorthshireHuman"] = "01-10 Human Start"
-    elseif (APR.Race == "Gnome") then
-        APR.QuestStepListListing["EasternKingdom"]["A27-NewTinkertown"] = "01-10 Gnome Start"
-    elseif (APR.Race == "Worgen") then
-        APR.QuestStepListListing["EasternKingdom"]["A179-Gilneas"] = "01-10 Worgen Start"
-    end
-    APR.QuestStepListListing["Dragonflight"] = {
+    APR.QuestStepListListing.Dragonflight = {
         ["DF01A-84-Stormwind"] = "DF01 - Dragonflight Stormwind",
         ["DF03A-2022-WakingShores"] = "DF02 - Waking Shores - Alliance",
         ["DF03N-2022-WakingShores"] = "DF03 - Waking Shores - Neutral",
         ["DF04-2023-OhnahranPlains"] = "DF04 - Ohn'Ahran Plains",
         ["DF05-2024-AzureSpan"] = "DF05 - Azure Span",
         ["DF06A-2025-Thaldraszus"] = "DF06 - Thaldraszus",
-
     }
-    if (APR.Race == "Dracthyr") then
-        APR.QuestStepListListing["Dragonflight"]["2118-DracthyrStart-A"] = "58-60 Dracthyr Start"
+
+
+
+    if (APR.Race == "NightElf") then
+        APR.QuestStepListListing.Vanilla["A57-ShadowglenNightElf"] = "01-10 Night Elf Start"
+    elseif (APR.Race == "Draenei") then
+        APR.QuestStepListListing.Vanilla["A97-AmmenVale"] = "01-10 Draenei Start"
+    elseif (APR.Race == "Dwarf") then
+        APR.QuestStepListListing.Vanilla["A27-ColdridgeValleyDwarf"] = "01-10 Dwarf Start"
+    elseif (APR.Race == "Human") then
+        APR.QuestStepListListing.Vanilla["A37-NorthshireHuman"] = "01-10 Human Start"
+    elseif (APR.Race == "Gnome") then
+        APR.QuestStepListListing.Vanilla["A27-NewTinkertown"] = "01-10 Gnome Start"
+    elseif (APR.Race == "Worgen") then
+        APR.QuestStepListListing.Vanilla["A179-Gilneas"] = "01-10 Worgen Start"
+    elseif (APR.ClassId == APR.Classes["Demon Hunter"]) then
+        APR.QuestStepListListing.Legion["672-Mardum"] = "01-30 Demon Hunter Start"
+    elseif (APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23) then
+        APR.QuestStepListListing.WrathOfTheLichKing["A_Allied_Icecrown Citadel"] = "Allied Death Knight Start"
+    elseif (APR.ClassId == APR.Classes["Death Knight"]) then
+        APR.QuestStepListListing.WrathOfTheLichKing["A23-ScarletEnclave"] = "08-30 Death Knight Start"
+    elseif (APR.Race == "Pandaren") then
+        APR.QuestStepListListing.MistsOfPandaria["378-WanderingIsle"] = "01-30 Pandaren Start"
+    elseif (APR.Level < 10) then
+        APR.QuestStepListListing.Vanilla["1409-Exile's Reach"] = "01-10 Exile's Reach"
+    elseif (APR.Race == "Dracthyr") then
+        APR.QuestStepListListing.Dragonflight["2118-DracthyrStart-A"] = "58-60 Dracthyr Start"
     end
 
+    APR["Vanilla"][14] = 1
+    APR["Vanilla"][15] = 1
+    APR["Vanilla"][17] = 1
+    APR["Vanilla"][22] = 1
+    APR["Vanilla"][23] = 1
+    APR["Vanilla"][26] = 1
+    APR["Vanilla"][27] = 1
+    APR["Vanilla"][32] = 1
+    APR["Vanilla"][36] = 1
+    APR["Vanilla"][37] = 1
+    APR["Vanilla"][47] = 1
+    APR["Vanilla"][48] = 1
+    APR["Vanilla"][49] = 1
+    APR["Vanilla"][51] = 1
+    APR["Vanilla"][52] = 1
+    APR["Vanilla"][56] = 1
+    APR["Vanilla"][57] = 1
+    APR["Vanilla"][62] = 1
+    APR["Vanilla"][63] = 1
+    APR["Vanilla"][64] = 1
+    APR["Vanilla"][65] = 1
+    APR["Vanilla"][66] = 1
+    APR["Vanilla"][69] = 1
+    APR["Vanilla"][70] = 1
+    APR["Vanilla"][71] = 1
+    APR["Vanilla"][77] = 1
+    APR["Vanilla"][78] = 1
+    APR["Vanilla"][81] = 1
+    APR["Vanilla"][83] = 1
+    APR["Vanilla"][97] = 1
+    APR["Vanilla"][106] = 1
+    APR["Vanilla"][179] = 1
+    APR["Vanilla"][199] = 1
+    APR["Vanilla"][224] = 1
+    APR["Vanilla"][1409] = 1
 
-    APR["EasternKingdom"] = {}
-    APR["EasternKingdom"][14] = 1
-    APR["EasternKingdom"][15] = 1
-    APR["EasternKingdom"][17] = 1
-    APR["EasternKingdom"][22] = 1
-    APR["EasternKingdom"][23] = 1
-    APR["EasternKingdom"][26] = 1
-    APR["EasternKingdom"][27] = 1
-    APR["EasternKingdom"][32] = 1
-    APR["EasternKingdom"][36] = 1
-    APR["EasternKingdom"][37] = 1
-    APR["EasternKingdom"][47] = 1
-    APR["EasternKingdom"][48] = 1
-    APR["EasternKingdom"][49] = 1
-    APR["EasternKingdom"][51] = 1
-    APR["EasternKingdom"][52] = 1
-    APR["EasternKingdom"][56] = 1
-    APR["EasternKingdom"][179] = 1
-    APR["EasternKingdom"][224] = 1
+    APR["TheBurningCrusade"] = {}
 
-    APR["Kalimdor"] = {}
-    APR["Kalimdor"][57] = 1
-    APR["Kalimdor"][62] = 1
-    APR["Kalimdor"][63] = 1
-    APR["Kalimdor"][64] = 1
-    APR["Kalimdor"][65] = 1
-    APR["Kalimdor"][66] = 1
-    APR["Kalimdor"][69] = 1
-    APR["Kalimdor"][70] = 1
-    APR["Kalimdor"][71] = 1
-    APR["Kalimdor"][77] = 1
-    APR["Kalimdor"][78] = 1
-    APR["Kalimdor"][81] = 1
-    APR["Kalimdor"][83] = 1
-    APR["Kalimdor"][97] = 1
-    APR["Kalimdor"][106] = 1
-    APR["Kalimdor"][199] = 1
-
-    APR["Northrend"] = {}
-    APR["Northrend"][1602] = 1
-    APR["Northrend"][2297] = 1
+    APR["WrathOfTheLichKing"] = {}
+    APR["WrathOfTheLichKing"][1602] = 1
+    APR["WrathOfTheLichKing"][2297] = 1
 
     APR["Cataclysm"] = {}
 
     APR["MistsOfPandaria"] = {}
+    APR["MistsOfPandaria"][378] = 1
 
     APR["WarlordsOfDraenor"] = {}
     APR["WarlordsOfDraenor"][84] = 1
