@@ -5,7 +5,7 @@ APR.command = APR:NewModule("Command")
 -- Chat commands, such as /apr reset, /apr skip, /apr skipcamp
 function APR.command:SlashCmd(input)
     if not APR.settings.profile.enableAddon then
-        _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
+        APR.settings:OpenSettings(APR.title)
     end
     if (input == "reset" or input == "r") then
         --Command for making the quest rescan on completion and reset, including previously skipped steps
@@ -34,7 +34,7 @@ function APR.command:SlashCmd(input)
         APR.settings.profile.coordinateShow = not APR.settings.profile.coordinateShow
         APR.coordinate:RefreshFrameAnchor()
     elseif input == 'route' then
-        _G.InterfaceOptionsFrame_OpenToCategory(APR.title .. "/Route")
+        APR.settings:OpenSettings(L["ROUTE"])
     elseif input == '42' then
         PlaySoundFile("Interface\\Addons\\APR-Core\\assets\\42.mp3")
         UIErrorsFrame:AddMessage(L["42_COMMAND"], 1.0, 1.0, 0.0, 1.0, UIERRORS_HOLD_TIME)
@@ -51,6 +51,6 @@ function APR.command:SlashCmd(input)
         print("|cffeda55f/apr discord |r- " .. L["DISCORD_COMMAND"])
         print("|cffeda55f/apr github |r- " .. L["GITHUB_COMMAND"])
     else
-        _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
+        APR.settings:OpenSettings(APR.title)
     end
 end

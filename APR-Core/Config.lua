@@ -1038,11 +1038,11 @@ function APR.settings:createBlizzOptions()
     aceConfig:RegisterOptionsTable(APR.title, optionsTable)
 
     -- Add settings to bliz option
-    APR.Options = aceDialog:AddToBlizOptions(APR.title)
+    APR.Options = aceDialog:AddToBlizOptions(APR.title, APR.title)
 
     -- Add setting route to bliz option
     aceConfig:RegisterOptionsTable(APR.title .. "/Route", APR.routeconfig:InitRouteConfig())
-    APR.settings.routeFrameRef = aceDialog:AddToBlizOptions(APR.title .. "/Route", L["ROUTE"], APR.title)
+    APR.OptionsRoute = aceDialog:AddToBlizOptions(APR.title .. "/Route", L["ROUTE"], APR.title)
 
     -- add profile to bliz option
     aceConfig:RegisterOptionsTable(APR.title .. "/Profile", _G.LibStub("AceDBOptions-3.0"):GetOptionsTable(SettingsDB))
@@ -1178,7 +1178,7 @@ function APR.settings:CreateMiniMapButton()
                 self.profile.enableAddon = not self.profile.enableAddon
                 self:ToggleAddon()
             else
-                _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
+                APR.settings:OpenSettings(APR.title)
             end
         end,
         OnTooltipShow = function(tooltip)
@@ -1217,4 +1217,35 @@ function APR.settings:ToggleAddon()
     APR.questOrderList:RefreshFrameAnchor()
     APR.party:RefreshPartyFrameAnchor()
     APR.map:ToggleLine()
+end
+
+function APR.settings:OpenSettings(catName)
+    if catName == APR.title then
+        InterfaceOptionsFrame_OpenToCategory(APR.title)
+        APR.settings:OpenSettings(L["ROUTE"])
+    end
+    if APR.Options then
+        if SettingsPanel then
+            local category = SettingsPanel:GetCategoryList():GetCategory(APR.Options.name)
+            if category then
+                SettingsPanel:Open()
+                SettingsPanel:SelectCategory(category)
+                if APR.OptionsRoute and category:HasSubcategories() then
+                    for _, subcategory in pairs(category:GetSubcategories()) do
+                        if subcategory:GetName() == catName then
+                            SettingsPanel:SelectCategory(subcategory)
+                            break
+                        end
+                    end
+                end
+            end
+            return
+        elseif InterfaceOptionsFrame_OpenToCategory then
+            InterfaceOptionsFrame_OpenToCategory(APR.Options)
+            if APR.OptionsRoute then
+                InterfaceOptionsFrame_OpenToCategory(APR.OptionsRoute)
+            end
+            return
+        end
+    end
 end

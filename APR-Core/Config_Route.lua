@@ -498,6 +498,7 @@ function APR.routeconfig:InitRouteConfig()
     APR.routeconfig:RegisterMessage("APR_Custom_Path_Update", function()
         SetCustomPathListFrame(customPathListeWidget, "custom_path_area")
         SetRouteListTab(tabRouteListWidget, currentTabName)
+        APR.settings:OpenSettings(L["ROUTE"])
     end)
 
     InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)

@@ -74,20 +74,25 @@ CurrentStepFrameHeader:SetScript("OnMouseDown", function(self, button)
             {
                 text = L["SHOW_MENU"],
                 func = function()
-                    _G.InterfaceOptionsFrame_OpenToCategory(APR.title)
+                    APR.settings:OpenSettings(APR.title)
                 end
             },
             {
-                text = L["SHOW_MENU_ROUTE"],
+                text = L["ROUTE"],
                 func = function()
-                    _G.InterfaceOptionsFrame_OpenToCategory(APR.title .. "/Route")
+                    APR.settings:OpenSettings(L["ROUTE"])
                 end
             },
             {
-                text = L["CUSTOM_PATH"],
+                text = L["PROFILES"],
                 func = function()
-                    APR.RoutePlan.FG1:Show()
-                    APR.BookingList["ClosedSettings"] = true
+                    APR.settings:OpenSettings(L["PROFILES"])
+                end
+            },
+            {
+                text = L["ABOUT_HELP"],
+                func = function()
+                    APR.settings:OpenSettings(L["ABOUT_HELP"])
                 end
             },
             {
