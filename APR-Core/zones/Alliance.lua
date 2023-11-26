@@ -6,10 +6,10 @@ if (APR.Faction == "Alliance") then
         ["01-10 Draenei Start"] = 97,
         ["01-10 Night Elf Start"] = 57,
         ["01-10 Worgen Start"] = 179,
-        ["01-30 Demon Hunter Start"] = 672,
+        ["Demon Hunter Start"] = 672,
         ["01-30 Dun Morogh"] = 27,
         ["01-30 Elwynn Forest"] = 37,
-        ["08-30 Death Knight Start"] = 23,
+        ["Death Knight Start"] = 23,
         ["10-30 Loch Modan"] = 48,
         ["10-30 Westfall"] = 52,
         ["10-30 Darkshore"] = 62,
@@ -51,46 +51,46 @@ if (APR.Faction == "Alliance") then
         ["55-55 Maldraxxus"] = 1536,
         ["56 Oribos (Maldrax-Ardenw)"] = 1670,
         ["57 Oribos (Ardenw-Revend)"] = 1670,
-        ["SL-IntroQline"] = 84,
-        ["Z-00-TheMaw-Story"] = 1648,
-        ["Z-01-Oribos-Story"] = 1670,
-        ["Z-02-Bastion-Story"] = 1533,
-        ["Z-03-Oribos-Story"] = 1670,
-        ["Z-04-Maldraxxus-Story"] = 1536,
-        ["Z-05-Oribos-Story"] = 1670,
-        ["Z-06-The Maw-Story"] = 1543,
-        ["Z-07-Oribos-Story"] = 1670,
-        ["Z-08-Maldraxxus-Story"] = 1536,
-        ["Z-09-Oribos-Story"] = 1670,
-        ["Z-10-Ardenweald-Story"] = 1565,
-        ["Z-11-Oribos-Story"] = 1670,
-        ["Z-12-Revendreth-Story"] = 1525,
-        ["Z-13-The Maw-Story"] = 1543,
-        ["Z-14-Revendreth-Story"] = 1525,
-        ["Z-15-Oribos-Story"] = 1670,
-        ["(1/8) 10-50 Stormwind"] = 84,
-        ["(2/8) 10-50 Tanaan Jungle"] = 577,
-        ["(3/8) 10-50 Shadowmoon"] = 539,
-        ["(4/8) 10-50 Gorgrond"] = 543,
-        ["(5/8) 10-50 Talador"] = 535,
-        ["(6/8) 10-50 Shadowmoon"] = 539,
-        ["(7/8) 10-50 Talador"] = 535,
-        ["(8/8) 10-50 Spires of Arak"] = 542,
+        ["SL - Intro"] = 84,
+        ["SL01 - The Maw"] = 1648,
+        ["SL02 - Oribos"] = 1670,
+        ["SL03 - Bastion"] = 1533,
+        ["SL04 - Oribos"] = 1670,
+        ["SL05 - Maldraxxus"] = 1536,
+        ["SL06 - Oribos"] = 1670,
+        ["SL07 - The Maw"] = 1543,
+        ["SL08 - Oribos"] = 1670,
+        ["SL09 - Maldraxxus"] = 1536,
+        ["SL10 - Oribos"] = 1670,
+        ["SL11 - Ardenweald"] = 1565,
+        ["SL12 - Oribos"] = 1670,
+        ["SL13 - Revendreth"] = 1525,
+        ["SL14 - The Maw"] = 1543,
+        ["SL15 - Revendreth"] = 1525,
+        ["SL16 - Oribos"] = 1670,
+        ["WOD01 - Stormwind"] = 84,
+        ["WOD02 - Tanaan Jungle"] = 577,
+        ["WOD03 - Shadowmoon"] = 539,
+        ["WOD04 - Gorgrond"] = 543,
+        ["WOD05 - Talador"] = 535,
+        ["WOD06 - Shadowmoon"] = 539,
+        ["WOD07 - Talador"] = 535,
+        ["WOD08 - Spires of Arak"] = 542,
         ["Legion - Azsuna"] = 630,
         ["Legion - Val'Sharah"] = 641,
         ["Legion - Stormheim"] = 634,
-        ["BFA - 10-10 Intro"] = 84,
-        ["BFA - 10-50 Tiragarde Sound"] = 895,
-        ["BFA - 30-50 Stormsong Valley"] = 942,
-        ["BFA - 20-50 Dustvar"] = 896,
-        ["DEV - StoryMode Only (Not Enough XP)"] = 1670,
+        ["BFA01 - Intro"] = 84,
+        ["BFA02 - Tiragarde Sound"] = 895,
+        ["BFA04 - Stormsong Valley"] = 942,
+        ["BFA03 - Dustvar"] = 896,
+        ["SL - StoryMode Only"] = 1670,
         ["DF01 - Dragonflight Stormwind"] = 84,
         ["DF02 - Waking Shores - Alliance"] = 2022,
         ["DF03 - Waking Shores - Neutral"] = 2022,
         ["DF04 - Ohn'Ahran Plains"] = 2023,
         ["DF05 - Azure Span"] = 2024,
         ["DF06 - Thaldraszus"] = 2025,
-        ["58-60 Dracthyr Start"] = 2118,
+        ["Dracthyr Start"] = 2118,
         ["Allied Death Knight Start"] = 2297,
         ["01-30 Pandaren Start"] = 378,
     }
@@ -138,14 +138,14 @@ if (APR.Faction == "Alliance") then
     APR.QuestStepListListing.Cataclysm = {}
     APR.QuestStepListListing.MistsOfPandaria = {}
     APR.QuestStepListListing.WarlordsOfDraenor = {
-        ["A84-DesMephisto-Stormwind-War"] = "(1/8) 10-50 Stormwind",
-        ["A577-DesMephisto-TanaanJungle"] = "(2/8) 10-50 Tanaan Jungle",
-        ["A539-DesMephisto-Shadowmoon1"] = "(3/8) 10-50 Shadowmoon",
-        ["A543-DesMephisto-Gorgrond"] = "(4/8) 10-50 Gorgrond",
-        ["A535-DesMephisto-Talador"] = "(5/8) 10-50 Talador",
-        ["A539-DesMephisto-Shadowmoon2"] = "(6/8) 10-50 Shadowmoon",
-        ["A535-DesMephisto-Talador2"] = "(7/8) 10-50 Talador",
-        ["A542-DesMephisto-SpiresOfArak"] = "(8/8) 10-50 Spires of Arak",
+        ["A84-DesMephisto-Stormwind-War"] = "WOD01 - Stormwind",
+        ["A577-DesMephisto-TanaanJungle"] = "WOD02 - Tanaan Jungle",
+        ["A539-DesMephisto-Shadowmoon1"] = "WOD03 - Shadowmoon",
+        ["A543-DesMephisto-Gorgrond"] = "WOD04 - Gorgrond",
+        ["A535-DesMephisto-Talador"] = "WOD05 - Talador",
+        ["A539-DesMephisto-Shadowmoon2"] = "WOD06 - Shadowmoon",
+        ["A535-DesMephisto-Talador2"] = "WOD07 - Talador",
+        ["A542-DesMephisto-SpiresOfArak"] = "WOD08 - Spires of Arak",
     }
     APR.QuestStepListListing.Legion = {
         ["A630-Azsuna"] = "Legion - Azsuna",
@@ -153,30 +153,30 @@ if (APR.Faction == "Alliance") then
         ["A634-Stormheim"] = "Legion - Stormheim",
     }
     APR.QuestStepListListing.BattleForAzeroth = {
-        ["A84-Stormwind"] = "BFA - 10-10 Intro",
-        ["A895-Tiragarde Sound"] = "BFA - 10-50 Tiragarde Sound",
-        ["A942-Stormsong Valley"] = "BFA - 30-50 Stormsong Valley",
-        ["A896-Dustvar"] = "BFA - 20-50 Dustvar",
+        ["A84-Stormwind"] = "BFA01 - Intro",
+        ["A895-Tiragarde Sound"] = "BFA02 - Tiragarde Sound",
+        ["A942-Stormsong Valley"] = "BFA04 - Stormsong Valley",
+        ["A896-Dustvar"] = "BFA03 - Dustvar",
     }
     APR.QuestStepListListing.Shadowlands = {
-        ["84-IntroQline"] = "SL-IntroQline",
-        ["1648-Z0-TheMaw-Story"] = "Z-00-TheMaw-Story",
-        ["1670-Z1-Oribos-Story"] = "Z-01-Oribos-Story",
-        ["1533-Z2-Bastion-Story"] = "Z-02-Bastion-Story",
-        ["1613-Z3-Oribos-Story"] = "Z-03-Oribos-Story",
-        ["1536-Z4-Maldraxxus-Story"] = "Z-04-Maldraxxus-Story",
-        ["1670-Z5-Oribos-Story"] = "Z-05-Oribos-Story",
-        ["1543-Z6-TheMaw-Story"] = "Z-06-The Maw-Story",
-        ["1670-Z7-Oribos-Story"] = "Z-07-Oribos-Story",
-        ["1536-Z8-Maldraxxus-Story"] = "Z-08-Maldraxxus-Story",
-        ["1670-Z9-Oribos-Story"] = "Z-09-Oribos-Story",
-        ["1565-Z10-Ardenweald-Story"] = "Z-10-Ardenweald-Story",
-        ["1671-Z11-Oribos-Story"] = "Z-11-Oribos-Story",
-        ["1525-Z12-Revendreth-Story"] = "Z-12-Revendreth-Story",
-        ["1543-Z13-TheMaw-Story"] = "Z-13-The Maw-Story",
-        ["1525-Z14-Revendreth-Story"] = "Z-14-Revendreth-Story",
-        ["1671-Z15-Oribos-Story"] = "Z-15-Oribos-Story",
-        ["Shadowlands-StoryOnly-A"] = "DEV - StoryMode Only (Not Enough XP)",
+        ["84-IntroQline"] = "SL - Intro",
+        ["1648-Z0-TheMaw-Story"] = "SL01 - The Maw",
+        ["1670-Z1-Oribos-Story"] = "SL02 - Oribos",
+        ["1533-Z2-Bastion-Story"] = "SL03 - Bastion",
+        ["1613-Z3-Oribos-Story"] = "SL04 - Oribos",
+        ["1536-Z4-Maldraxxus-Story"] = "SL05 - Maldraxxus",
+        ["1670-Z5-Oribos-Story"] = "SL06 - Oribos",
+        ["1543-Z6-TheMaw-Story"] = "SL07 - The Maw",
+        ["1670-Z7-Oribos-Story"] = "SL08 - Oribos",
+        ["1536-Z8-Maldraxxus-Story"] = "SL09 - Maldraxxus",
+        ["1670-Z9-Oribos-Story"] = "SL10 - Oribos",
+        ["1565-Z10-Ardenweald-Story"] = "SL11 - Ardenweald",
+        ["1671-Z11-Oribos-Story"] = "SL12 - Oribos",
+        ["1525-Z12-Revendreth-Story"] = "SL13 - Revendreth",
+        ["1543-Z13-TheMaw-Story"] = "SL14 - The Maw",
+        ["1525-Z14-Revendreth-Story"] = "SL15 - Revendreth",
+        ["1671-Z15-Oribos-Story"] = "SL16 - Oribos",
+        ["Shadowlands-StoryOnly-A"] = "SL - StoryMode Only",
     }
     APR.QuestStepListListing.Dragonflight = {
         ["DF01A-84-Stormwind"] = "DF01 - Dragonflight Stormwind",
@@ -202,17 +202,17 @@ if (APR.Faction == "Alliance") then
     elseif (APR.Race == "Worgen") then
         APR.QuestStepListListing.Vanilla["A179-Gilneas"] = "01-10 Worgen Start"
     elseif (APR.ClassId == APR.Classes["Demon Hunter"]) then
-        APR.QuestStepListListing.Legion["672-Mardum"] = "01-30 Demon Hunter Start"
+        APR.QuestStepListListing.Legion["672-Mardum"] = "Demon Hunter Start"
     elseif (APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23) then
         APR.QuestStepListListing.WrathOfTheLichKing["A_Allied_Icecrown Citadel"] = "Allied Death Knight Start"
     elseif (APR.ClassId == APR.Classes["Death Knight"]) then
-        APR.QuestStepListListing.WrathOfTheLichKing["A23-ScarletEnclave"] = "08-30 Death Knight Start"
+        APR.QuestStepListListing.WrathOfTheLichKing["A23-ScarletEnclave"] = "Death Knight Start"
     elseif (APR.Race == "Pandaren") then
         APR.QuestStepListListing.MistsOfPandaria["378-WanderingIsle"] = "01-30 Pandaren Start"
     elseif (APR.Level < 10) then
         APR.QuestStepListListing.Vanilla["1409-Exile's Reach"] = "01-10 Exile's Reach"
     elseif (APR.Race == "Dracthyr") then
-        APR.QuestStepListListing.Dragonflight["2118-DracthyrStart-A"] = "58-60 Dracthyr Start"
+        APR.QuestStepListListing.Dragonflight["2118-DracthyrStart-A"] = "Dracthyr Start"
     end
 
     APR["Vanilla"][14] = 1

@@ -9,7 +9,7 @@
 
 ## RequiredDeps: APR
 
-## SavedVariables: APRSettings, APRData, APR_Transport, APR_Custom, APR_ZoneComplete, APR_TaxiTimers
+## SavedVariables: APRSettings, APRData, APR_Transport, APRCustomPath, APR_ZoneComplete, APR_TaxiTimers
 libs/embeds.xml
 locales/locales.xml
 

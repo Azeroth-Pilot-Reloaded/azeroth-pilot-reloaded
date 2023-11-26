@@ -415,8 +415,8 @@ local function APR_UpdateStep()
                 zeMApz = APR.QuestStepListListingStartAreas["EasternKingdom"][APR.ActiveMap]
             elseif (APR.QuestStepListListingStartAreas["Kalimdor"] and APR.QuestStepListListingStartAreas["Kalimdor"][APR.ActiveMap]) then
                 zeMApz = APR.QuestStepListListingStartAreas["Kalimdor"][APR.ActiveMap]
-            elseif (APR_Custom[APR.Username .. "-" .. APR.Realm] and APR_Custom[APR.Username .. "-" .. APR.Realm][APR.ActiveMap]) then
-                zeMApz = APR_Custom[APR.Username .. "-" .. APR.Realm][APR.ActiveMap]
+            elseif (APRCustomPath[APR.Username .. "-" .. APR.Realm] and APRCustomPath[APR.Username .. "-" .. APR.Realm][APR.ActiveMap]) then
+                zeMApz = APRCustomPath[APR.Username .. "-" .. APR.Realm][APR.ActiveMap]
             end
             if (zeMApz) then
                 APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][zeMApz] = 1
@@ -426,7 +426,6 @@ local function APR_UpdateStep()
                         APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:Hide()
                     end
                 end
-                APR.RoutePlanCheckPos()
                 APR.CheckCustomEmpty()
                 APR.BookingList["UpdateMapId"] = true
             end
@@ -1091,6 +1090,7 @@ local function APR_AddQuest(questID)
     APR.BookingList["UpdateStep"] = true
 end
 
+-- TODO: REFACTO revert
 local function APR_UpdateMapId()
     if (APR.settings.profile.debug) then
         print("Function: APR_UpdateMapId()")
@@ -1144,17 +1144,7 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
     if (not APR.BookingList) then
         APR.BookingList = {}
     end
-    if (APR.BookingList["ClosedSettings"]) then
-        if (not InCombatLockdown()) then
-            APR.BookingList["ClosedSettings"] = false
-            APR.Arrow.currentStep = 0
-            APR.ArrowActive = 0
-            _G.UpdateQuestAndStep()
-        end
-        if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:ClosedSettings")
-        end
-    elseif (APR.BookingList["GetMeToNextZone"]) then
+    if (APR.BookingList["GetMeToNextZone"]) then
         if (APR.settings.profile.debug) then
             print("LoopBookingFunc:GetMeToNextZone:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
         end

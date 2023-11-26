@@ -231,8 +231,8 @@ function APR.FP.GetCustomZone()
         playerMapID = C_Map.GetBestMapForUnit("player")
     end
     local zenr = 0
-    if (APR_Custom and APR_Custom[APR.Username .. "-" .. APR.Realm]) then
-        for APR_index2, APR_value2 in PairsByKeys(APR_Custom[APR.Username .. "-" .. APR.Realm]) do
+    if (APRCustomPath and APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
+        for APR_index2, APR_value2 in PairsByKeys(APRCustomPath[APR.Username .. "-" .. APR.Realm]) do
             zenr = zenr + 1
         end
     end
@@ -243,61 +243,61 @@ function APR.FP.GetCustomZone()
         return 85, "85-IntroQline"
     end
     if (zenr == 0 and not playerMapID and C_QuestLog.IsOnQuest(57159)) then
-        return APR.QuestStepListListingZone["Z-12-Revendreth-Story"], "1525-Z12-Revendreth-Story"
+        return APR.QuestStepListListingZone["SL13 - Revendreth"], "1525-Z12-Revendreth-Story"
     end
     if (zenr == 0 and C_QuestLog.IsOnQuest(57876) and C_QuestLog.IsQuestFlaggedCompleted(57876) == false) then
-        return APR.QuestStepListListingZone["Z-14-Revendreth-Story"], "1525-Z14-Revendreth-Story"
+        return APR.QuestStepListListingZone["SL15 - Revendreth"], "1525-Z14-Revendreth-Story"
     end
     if (zenr == 0 and APR.Level > 49) then
         if (C_QuestLog.IsQuestFlaggedCompleted(58086) == false and (C_QuestLog.IsOnQuest(61874) == true or C_QuestLog.IsQuestFlaggedCompleted(61874) == true or C_QuestLog.IsOnQuest(59751) or C_QuestLog.IsQuestFlaggedCompleted(59751) == true)) then
             APR.ProgressShown = true
             if (C_QuestLog.IsQuestFlaggedCompleted(59770) == false) then
-                return APR.QuestStepListListingZone["Z-00-TheMaw-Story"], "1648-Z0-TheMaw-Story"
+                return APR.QuestStepListListingZone["SL01 - The Maw"], "1648-Z0-TheMaw-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(59773) == false) then
-                return APR.QuestStepListListingZone["Z-01-Oribos-Story"], "1670-Z1-Oribos-Story"
+                return APR.QuestStepListListingZone["SL02 - Oribos"], "1670-Z1-Oribos-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(60056) == false) then
-                return APR.QuestStepListListingZone["Z-02-Bastion-Story"], "1533-Z2-Bastion-Story"
+                return APR.QuestStepListListingZone["SL03 - Bastion"], "1533-Z2-Bastion-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(57386) == false) then
-                return APR.QuestStepListListingZone["Z-03-Oribos-Story"], "1613-Z3-Oribos-Story"
+                return APR.QuestStepListListingZone["SL04 - Oribos"], "1613-Z3-Oribos-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(59874) == false) then
-                return APR.QuestStepListListingZone["Z-04-Maldraxxus-Story"], "1536-Z4-Maldraxxus-Story"
+                return APR.QuestStepListListingZone["SL05 - Maldraxxus"], "1536-Z4-Maldraxxus-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(59897) == false) then
-                return APR.QuestStepListListingZone["Z-05-Oribos-Story"], "1670-Z5-Oribos-Story"
+                return APR.QuestStepListListingZone["SL06 - Oribos"], "1670-Z5-Oribos-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(62654) == false) then
-                return APR.QuestStepListListingZone["Z-06-The Maw-Story"], "1543-Z6-TheMaw-Story"
+                return APR.QuestStepListListingZone["SL07 - The Maw"], "1543-Z6-TheMaw-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(59011) == false) then
-                return APR.QuestStepListListingZone["Z-07-Oribos-Story"], "1670-Z7-Oribos-Story"
+                return APR.QuestStepListListingZone["SL08 - Oribos"], "1670-Z7-Oribos-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(59206) == false) then
-                return APR.QuestStepListListingZone["Z-08-Maldraxxus-Story"], "1536-Z8-Maldraxxus-Story"
+                return APR.QuestStepListListingZone["SL09 - Maldraxxus"], "1536-Z8-Maldraxxus-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(60338) == false) then
-                return APR.QuestStepListListingZone["Z-09-Oribos-Story"], "1670-Z9-Oribos-Story"
+                return APR.QuestStepListListingZone["SL10 - Oribos"], "1670-Z9-Oribos-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(58724) == false) then
-                return APR.QuestStepListListingZone["Z-10-Ardenweald-Story"], "1565-Z10-Ardenweald-Story"
+                return APR.QuestStepListListingZone["SL11 - Ardenweald"], "1565-Z10-Ardenweald-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(57025) == false) then
-                return APR.QuestStepListListingZone["Z-11-Oribos-Story"], "1671-Z11-Oribos-Story"
+                return APR.QuestStepListListingZone["SL12 - Oribos"], "1671-Z11-Oribos-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(57689) == false) then
-                return APR.QuestStepListListingZone["Z-12-Revendreth-Story"], "1525-Z12-Revendreth-Story"
+                return APR.QuestStepListListingZone["SL13 - Revendreth"], "1525-Z12-Revendreth-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(57693) == false) then
-                return APR.QuestStepListListingZone["Z-13-The Maw-Story"], "1543-Z13-TheMaw-Story"
+                return APR.QuestStepListListingZone["SL14 - The Maw"], "1543-Z13-TheMaw-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(57876) == false) then
-                return APR.QuestStepListListingZone["Z-14-Revendreth-Story"], "1525-Z14-Revendreth-Story"
+                return APR.QuestStepListListingZone["SL15 - Revendreth"], "1525-Z14-Revendreth-Story"
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(57878) == false) then
-                return APR.QuestStepListListingZone["Z-15-Oribos-Story"], "1671-Z15-Oribos-Story"
+                return APR.QuestStepListListingZone["SL16 - Oribos"], "1671-Z15-Oribos-Story"
             end
         else
             APR.ProgressShown = false
@@ -345,7 +345,7 @@ function APR.FP.GetCustomZone()
             return APR.QuestStepListListingZone["(7/7) 1-50 Talador"], "A535-DesMephisto-Talador2"
         end
     end
-    if (not APR_Custom) then
+    if (not APRCustomPath) then
         return
     end
     if (APR.settings.profile.debug) then
@@ -353,80 +353,80 @@ function APR.FP.GetCustomZone()
     end
     -- TODO: ZOne Rework
     for CLi = 1, 19 do
-        if (APR_Custom[APR.Username .. "-" .. APR.Realm] and APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] and APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]]) then
+        if (APRCustomPath[APR.Username .. "-" .. APR.Realm] and APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] and APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]]) then
             if (APR.QuestStepListListingStartAreas["EasternKingdom"]) then
                 for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListingStartAreas["EasternKingdom"]) do
-                    if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
+                    if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                         APR.ProgressShown = true
-                        return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]],
+                        return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]],
                             APR_index2
                     end
                 end
             end
             if (APR.QuestStepListListingStartAreas["BrokenIsles"]) then
                 for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListingStartAreas["BrokenIsles"]) do
-                    if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
+                    if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                         APR.ProgressShown = true
-                        return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]],
+                        return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]],
                             APR_index2
                     end
                 end
             end
             if (APR.QuestStepListListingStartAreas["Kalimdor"]) then
                 for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListingStartAreas["Kalimdor"]) do
-                    if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
+                    if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                         APR.ProgressShown = true
-                        return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]],
+                        return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]],
                             APR_index2
                     end
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["EasternKingdom"]) do
-                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Kalimdor"]) do
-                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["SpeedRun"]) do
-                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Shadowlands"]) do
-                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Extra"]) do
-                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["MISC 1"]) do
-                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["MISC 2"]) do
-                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
             for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Dragonflight"]) do
-                if (APR_Custom[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
+                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
                     APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APR_Custom[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
+                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
                 end
             end
         end
