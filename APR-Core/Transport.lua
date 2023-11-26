@@ -224,22 +224,19 @@ function APR.FP.GetCustomZone()
     local currentMapId = C_Map.GetBestMapForUnit('player')
     if (Enum and Enum.UIMapType and Enum.UIMapType.Continent and currentMapId) then
         playerMapID = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
+        playerMapID = playerMapID and playerMapID.mapID or currentMapId
     end
-    if (playerMapID) then
-        playerMapID = playerMapID.mapID
-    else
-        playerMapID = C_Map.GetBestMapForUnit("player")
-    end
+
     local zenr = 0
     if (APRCustomPath and APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
-        for APR_index2, APR_value2 in PairsByKeys(APRCustomPath[APR.Username .. "-" .. APR.Realm]) do
-            zenr = zenr + 1
-        end
+        zenr = #APRCustomPath[APR.Username .. "-" .. APR.Realm]
     end
-    if (zenr == 0 and UnitFactionGroup("player") == "Alliance" and C_QuestLog.IsQuestFlaggedCompleted(59751) == false and (C_QuestLog.IsQuestFlaggedCompleted(60545) == true or C_QuestLog.IsOnQuest(60545) == true)) then
+
+    -- TODO: only for SL check why hardcoded ?
+    if (zenr == 0 and APR.Faction == "Alliance" and C_QuestLog.IsQuestFlaggedCompleted(59751) == false and (C_QuestLog.IsQuestFlaggedCompleted(60545) == true or C_QuestLog.IsOnQuest(60545) == true)) then
         return 84, "84-IntroQline"
     end
-    if (zenr == 0 and UnitFactionGroup("player") == "Horde" and C_QuestLog.IsQuestFlaggedCompleted(59751) == false and (C_QuestLog.IsQuestFlaggedCompleted(61874) == true or C_QuestLog.IsOnQuest(61874) == true)) then
+    if (zenr == 0 and APR.Faction == "Horde" and C_QuestLog.IsQuestFlaggedCompleted(59751) == false and (C_QuestLog.IsQuestFlaggedCompleted(61874) == true or C_QuestLog.IsOnQuest(61874) == true)) then
         return 85, "85-IntroQline"
     end
     if (zenr == 0 and not playerMapID and C_QuestLog.IsOnQuest(57159)) then
@@ -250,7 +247,6 @@ function APR.FP.GetCustomZone()
     end
     if (zenr == 0 and APR.Level > 49) then
         if (C_QuestLog.IsQuestFlaggedCompleted(58086) == false and (C_QuestLog.IsOnQuest(61874) == true or C_QuestLog.IsQuestFlaggedCompleted(61874) == true or C_QuestLog.IsOnQuest(59751) or C_QuestLog.IsQuestFlaggedCompleted(59751) == true)) then
-            APR.ProgressShown = true
             if (C_QuestLog.IsQuestFlaggedCompleted(59770) == false) then
                 return APR.QuestStepListListingZone["SL01 - The Maw"], "1648-Z0-TheMaw-Story"
             end
@@ -300,48 +296,31 @@ function APR.FP.GetCustomZone()
                 return APR.QuestStepListListingZone["SL16 - Oribos"], "1671-Z15-Oribos-Story"
             end
         else
-            APR.ProgressShown = false
             return
         end
     elseif (zenr == 0) then
-        APR.ProgressShown = false
         if (playerMapID == 1409 or playerMapID == 1726 or playerMapID == 1727 or playerMapID == 1728) then
-            if (C_AddOns.IsAddOnLoaded("APR-Shadowlands") == false) then
-                local loaded, reason = C_AddOns.LoadAddOn("APR-Shadowlands")
-                if (not loaded) then
-                    if (reason == "DISABLED") then
-                        print("APR: APR - Shadowlands " .. L["DISABLED_ADDON_LIST"])
-                    end
-                end
-            end
             return APR.QuestStepListListingZone["01-10 Exile's Reach"], "1409-Exile's Reach"
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(34398) == false and APR.Faction == "Alliance") then
-            APR.ProgressShown = true
             return APR.QuestStepListListingZone["(1/7) 1-50 Stormwind"], "A84-DesMephisto-Stormwind-War"
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(35884) == false and APR.Faction == "Alliance") then
-            APR.ProgressShown = true
             return APR.QuestStepListListingZone["(2/7) 1-50 Tanaan Jungle"], "A577-DesMephisto-TanaanJungle"
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(35556) == false and APR.Faction == "Alliance") then
-            APR.ProgressShown = true
             return APR.QuestStepListListingZone["(3/7) 1-50 Shadowmoon"], "A539-DesMephisto-Shadowmoon1"
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(36937) == false and APR.Faction == "Alliance") then
-            APR.ProgressShown = true
             return APR.QuestStepListListingZone["(4/7) 1-50 Gorgrond"], "A543-DesMephisto-Gorgrond"
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(34587) == false and APR.Faction == "Alliance") then
-            APR.ProgressShown = true
             return APR.QuestStepListListingZone["(5/7) 1-50 Talador"], "A535-DesMephisto-Talador"
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(34624) == false and APR.Faction == "Alliance") then
-            APR.ProgressShown = true
             return APR.QuestStepListListingZone["(6/7) 1-50 Shadowmoon"], "A539-DesMephisto-Shadowmoon2"
         end
         if (C_QuestLog.IsQuestFlaggedCompleted(34707) == false and APR.Faction == "Alliance") then
-            APR.ProgressShown = true
             return APR.QuestStepListListingZone["(7/7) 1-50 Talador"], "A535-DesMephisto-Talador2"
         end
     end
@@ -351,89 +330,20 @@ function APR.FP.GetCustomZone()
     if (APR.settings.profile.debug) then
         print("Function: APR.FP.GetCustomZone()")
     end
-    -- TODO: ZOne Rework
-    for CLi = 1, 19 do
-        if (APRCustomPath[APR.Username .. "-" .. APR.Realm] and APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] and APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]]) then
-            if (APR.QuestStepListListingStartAreas["EasternKingdom"]) then
-                for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListingStartAreas["EasternKingdom"]) do
-                    if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
-                        APR.ProgressShown = true
-                        return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]],
-                            APR_index2
-                    end
-                end
-            end
-            if (APR.QuestStepListListingStartAreas["BrokenIsles"]) then
-                for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListingStartAreas["BrokenIsles"]) do
-                    if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
-                        APR.ProgressShown = true
-                        return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]],
-                            APR_index2
-                    end
-                end
-            end
-            if (APR.QuestStepListListingStartAreas["Kalimdor"]) then
-                for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListingStartAreas["Kalimdor"]) do
-                    if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
-                        APR.ProgressShown = true
-                        return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]],
-                            APR_index2
-                    end
-                end
-            end
-            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["EasternKingdom"]) do
-                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
-                end
-            end
-            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Kalimdor"]) do
-                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
-                end
-            end
-            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["SpeedRun"]) do
-                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
-                end
-            end
-            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Shadowlands"]) do
-                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
-                end
-            end
-            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Extra"]) do
-                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
-                end
-            end
-            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["MISC 1"]) do
-                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
-                end
-            end
-            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["MISC 2"]) do
-                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
-                end
-            end
-            for APR_index2, APR_value2 in PairsByKeys(APR.QuestStepListListing["Dragonflight"]) do
-                if (APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi] == APR_value2) then
-                    APR.ProgressShown = true
-                    return APR.QuestStepListListingZone[APRCustomPath[APR.Username .. "-" .. APR.Realm][CLi]], APR_index2
-                end
+
+    -- Get the current Route wanted MapID and Route File
+    local _, currentRouteName = next(APRCustomPath[APR.Username .. "-" .. APR.Realm])
+    for _, routeList in pairs(APR.QuestStepListListing) do
+        for routeFileName, routeName in pairs(routeList) do
+            if routeName == currentRouteName then
+                return APR.QuestStepListListingZone[routeName], routeFileName
             end
         end
     end
 end
 
-function APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
+-- TODO: save zone in transportDB
+function APR.FP.GetMeToNextZoneSpecialRe(mapID)
     if (APRLumberCheck == 0 and C_QuestLog.IsQuestFlaggedCompleted(35049)) then
         APR.QuestStepList["A543-DesMephisto-Gorgrond"] = nil
         APR.QuestStepList["A543-DesMephisto-Gorgrond"] = APR.QuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"]
@@ -460,197 +370,197 @@ function APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
     elseif (APR.Level < 15) then
         APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = APR.QuestStepList["A84-DesMephisto-Stormwind-War3"]
     end
-    if (APRt_Zone == 1671) then
-        APRt_Zone = 1670
-    elseif (APRt_Zone == 578) then
-        APRt_Zone = 577
-    elseif (APR.ActiveMap == "A535-DesMephisto-Talador2" and APRt_Zone == 542) then
-        APRt_Zone = 535
-    elseif (APR.ActiveMap == "A84-DesMephisto-Stormwind-War" and APRt_Zone == 17) then
-        APRt_Zone = 84
-    elseif (APR.ActiveMap == "A543-DesMephisto-Gorgrond" and APRt_Zone == 535) then
-        APRt_Zone = 543
-    elseif (APR.ActiveMap == "A539-DesMephisto-Shadowmoon1" and (APRt_Zone == 84 or APRt_Zone == 543)) then
-        APRt_Zone = 539
-    elseif (APR.ActiveMap == "A539-DesMephisto-Shadowmoon2" and APRt_Zone == 535) then
-        APRt_Zone = 539
-    elseif (APR.ActiveMap == "A535-DesMephisto-Talador" and APRt_Zone == 539) then
-        APRt_Zone = 535
-    elseif (APRt_Zone == 1726 or APRt_Zone == 1727 or APRt_Zone == 1728) then
-        APRt_Zone = 1409
+    if (mapID == 1671) then
+        mapID = 1670
+    elseif (mapID == 578) then
+        mapID = 577
+    elseif (APR.ActiveMap == "A535-DesMephisto-Talador2" and mapID == 542) then
+        mapID = 535
+    elseif (APR.ActiveMap == "A84-DesMephisto-Stormwind-War" and mapID == 17) then
+        mapID = 84
+    elseif (APR.ActiveMap == "A543-DesMephisto-Gorgrond" and mapID == 535) then
+        mapID = 543
+    elseif (APR.ActiveMap == "A539-DesMephisto-Shadowmoon1" and (mapID == 84 or mapID == 543)) then
+        mapID = 539
+    elseif (APR.ActiveMap == "A539-DesMephisto-Shadowmoon2" and mapID == 535) then
+        mapID = 539
+    elseif (APR.ActiveMap == "A535-DesMephisto-Talador" and mapID == 539) then
+        mapID = 535
+    elseif (mapID == 1726 or mapID == 1727 or mapID == 1728) then
+        mapID = 1409
     end
 
-    if (APR.ActiveMap == "Shadowlands-StoryOnly-A" and ((APRt_Zone == 84) or (APRt_Zone == 1648) or (APRt_Zone == 1670) or (APRt_Zone == 1671) or (APRt_Zone == 1533) or (APRt_Zone == 1613) or (APRt_Zone == 1536) or (APRt_Zone == 1543) or (APRt_Zone == 1565) or (APRt_Zone == 1525))) then
-        APRt_Zone = 1670
+    if (APR.ActiveMap == "Shadowlands-StoryOnly-A" and ((mapID == 84) or (mapID == 1648) or (mapID == 1670) or (mapID == 1671) or (mapID == 1533) or (mapID == 1613) or (mapID == 1536) or (mapID == 1543) or (mapID == 1565) or (mapID == 1525))) then
+        mapID = 1670
     end
-    if (APR.ActiveMap == "Shadowlands-StoryOnly-H" and ((APRt_Zone == 85) or (APRt_Zone == 1648) or (APRt_Zone == 1670) or (APRt_Zone == 1671) or (APRt_Zone == 1533) or (APRt_Zone == 1613) or (APRt_Zone == 1536) or (APRt_Zone == 1543) or (APRt_Zone == 1565) or (APRt_Zone == 1525))) then
-        APRt_Zone = 1670
+    if (APR.ActiveMap == "Shadowlands-StoryOnly-H" and ((mapID == 85) or (mapID == 1648) or (mapID == 1670) or (mapID == 1671) or (mapID == 1533) or (mapID == 1613) or (mapID == 1536) or (mapID == 1543) or (mapID == 1565) or (mapID == 1525))) then
+        mapID = 1670
     end
-    if (APR.ActiveMap == "85-DesMephisto-Orgrimmar-p1" and APRt_Zone == 17) then
-        APRt_Zone = 85
+    if (APR.ActiveMap == "85-DesMephisto-Orgrimmar-p1" and mapID == 17) then
+        mapID = 85
     end
-    if (APR.ActiveMap == "525-DesMephisto-FrostfireRidge-p1" and APRt_Zone == 85) then
-        APRt_Zone = 525
+    if (APR.ActiveMap == "525-DesMephisto-FrostfireRidge-p1" and mapID == 85) then
+        mapID = 525
     end
-    if (APR.ActiveMap == "525-DesMephisto-FrostfireRidge-p1" and APRt_Zone == 543) then
-        APRt_Zone = 525
+    if (APR.ActiveMap == "525-DesMephisto-FrostfireRidge-p1" and mapID == 543) then
+        mapID = 525
     end
-    if (APR.ActiveMap == "543-DesMephisto-Gorgrond-p1" and APRt_Zone == 535) then
-        APRt_Zone = 543
+    if (APR.ActiveMap == "543-DesMephisto-Gorgrond-p1" and mapID == 535) then
+        mapID = 543
     end
-    if (APR.ActiveMap == "535-DesMephisto-Talador-p1" and APRt_Zone == 542) then
-        APRt_Zone = 535
+    if (APR.ActiveMap == "535-DesMephisto-Talador-p1" and mapID == 542) then
+        mapID = 535
     end
-    if (APR.ActiveMap == "550-DesMephisto-Nagrand" and APRt_Zone == 535) then
-        APRt_Zone = 550
-    end
-
-    if (APR.ActiveMap == "1409-Exile's Reach" and APRt_Zone == 85) then
-        APRt_Zone = 1409
+    if (APR.ActiveMap == "550-DesMephisto-Nagrand" and mapID == 535) then
+        mapID = 550
     end
 
-    if (APR.ActiveMap == "84-IntroQline" and APRt_Zone == 118) then
-        APRt_Zone = 84
-    end
-    if (APR.ActiveMap == "84-IntroQline" and APRt_Zone == 1648) then
-        APRt_Zone = 84
-    end
-    if (APR.ActiveMap == "85-IntroQline" and APRt_Zone == 118) then
-        APRt_Zone = 85
-    end
-    if (APR.ActiveMap == "85-IntroQline" and APRt_Zone == 1648) then
-        APRt_Zone = 85
-    end
-    if (APR.ActiveMap == "1670-Z1-Oribos-Story" and APRt_Zone == 1533) then
-        APRt_Zone = 1670
-    end
-    if (APR.ActiveMap == "1670-Z1-Oribos-Story" and APRt_Zone == 1673) then
-        APRt_Zone = 1670
+    if (APR.ActiveMap == "1409-Exile's Reach" and mapID == 85) then
+        mapID = 1409
     end
 
-    if (APR.ActiveMap == "1533-Z2-Bastion-Story" and APRt_Zone == 1670) then
-        APRt_Zone = 1533
+    if (APR.ActiveMap == "84-IntroQline" and mapID == 118) then
+        mapID = 84
     end
-    if (APR.ActiveMap == "1613-Z3-Oribos-Story" and APRt_Zone == 1536) then
-        APRt_Zone = 1670
+    if (APR.ActiveMap == "84-IntroQline" and mapID == 1648) then
+        mapID = 84
     end
-    if (APR.ActiveMap == "1536-Z4-Maldraxxus-Story" and APRt_Zone == 1670) then
-        APRt_Zone = 1536
+    if (APR.ActiveMap == "85-IntroQline" and mapID == 118) then
+        mapID = 85
     end
-    if (APR.ActiveMap == "1536-Z4-Maldraxxus-Story" and APRt_Zone == 1691) then
-        APRt_Zone = 1536
+    if (APR.ActiveMap == "85-IntroQline" and mapID == 1648) then
+        mapID = 85
     end
-    if (APR.ActiveMap == "1536-Z4-Maldraxxus-Story" and APRt_Zone == 1671) then
-        APRt_Zone = 1536
+    if (APR.ActiveMap == "1670-Z1-Oribos-Story" and mapID == 1533) then
+        mapID = 1670
     end
-    if (APR.ActiveMap == "1536-Z4-Maldraxxus-Story" and APRt_Zone == 1550) then
-        APRt_Zone = 1536
+    if (APR.ActiveMap == "1670-Z1-Oribos-Story" and mapID == 1673) then
+        mapID = 1670
     end
-    if (APR.ActiveMap == "1670-Z5-Oribos-Story" and APRt_Zone == 1543) then
-        APRt_Zone = 1670
+
+    if (APR.ActiveMap == "1533-Z2-Bastion-Story" and mapID == 1670) then
+        mapID = 1533
     end
-    if (APR.ActiveMap == "1543-Z6-TheMaw-Story" and APRt_Zone == 1670) then
-        APRt_Zone = 1543
+    if (APR.ActiveMap == "1613-Z3-Oribos-Story" and mapID == 1536) then
+        mapID = 1670
     end
-    if (APR.ActiveMap == "1670-Z7-Oribos-Story" and APRt_Zone == 1536) then
-        APRt_Zone = 1670
+    if (APR.ActiveMap == "1536-Z4-Maldraxxus-Story" and mapID == 1670) then
+        mapID = 1536
     end
-    if (APR.ActiveMap == "1536-Z8-Maldraxxus-Story" and APRt_Zone == 1670) then
-        APRt_Zone = 1536
+    if (APR.ActiveMap == "1536-Z4-Maldraxxus-Story" and mapID == 1691) then
+        mapID = 1536
     end
-    if (APR.ActiveMap == "1536-Z8-Maldraxxus-Story" and APRt_Zone == 1550) then
-        APRt_Zone = 1536
+    if (APR.ActiveMap == "1536-Z4-Maldraxxus-Story" and mapID == 1671) then
+        mapID = 1536
     end
-    if (APR.ActiveMap == "1536-Z8-Maldraxxus-Story" and APRt_Zone == 1671) then
-        APRt_Zone = 1536
+    if (APR.ActiveMap == "1536-Z4-Maldraxxus-Story" and mapID == 1550) then
+        mapID = 1536
     end
-    if (APR.ActiveMap == "1670-Z9-Oribos-Story" and APRt_Zone == 1565) then
-        APRt_Zone = 1670
+    if (APR.ActiveMap == "1670-Z5-Oribos-Story" and mapID == 1543) then
+        mapID = 1670
     end
-    if (APR.ActiveMap == "1565-Z10-Ardenweald-Story" and APRt_Zone == 1670) then
-        APRt_Zone = 1565
+    if (APR.ActiveMap == "1543-Z6-TheMaw-Story" and mapID == 1670) then
+        mapID = 1543
     end
-    if (APR.ActiveMap == "1565-Z10-Ardenweald-Story" and APRt_Zone == 1824) then
-        APRt_Zone = 1565
+    if (APR.ActiveMap == "1670-Z7-Oribos-Story" and mapID == 1536) then
+        mapID = 1670
     end
-    if (APR.ActiveMap == "1565-Z10-Ardenweald-Story" and APRt_Zone == 1642) then
-        APRt_Zone = 1565
+    if (APR.ActiveMap == "1536-Z8-Maldraxxus-Story" and mapID == 1670) then
+        mapID = 1536
     end
-    if (APR.ActiveMap == "1565-Z10-Ardenweald-Story" and APRt_Zone == 619) then
-        APRt_Zone = 1565
+    if (APR.ActiveMap == "1536-Z8-Maldraxxus-Story" and mapID == 1550) then
+        mapID = 1536
     end
-    if (APR.ActiveMap == "1671-Z11-Oribos-Story" and APRt_Zone == 1525) then
-        APRt_Zone = 1670
+    if (APR.ActiveMap == "1536-Z8-Maldraxxus-Story" and mapID == 1671) then
+        mapID = 1536
     end
-    if (APR.ActiveMap == "1525-Z12-Revendreth-Story" and APRt_Zone == 1543) then
-        APRt_Zone = 1525
+    if (APR.ActiveMap == "1670-Z9-Oribos-Story" and mapID == 1565) then
+        mapID = 1670
     end
-    if (APR.ActiveMap == "1543-Z13-TheMaw-Story" and APRt_Zone == 1525) then
-        APRt_Zone = 1543
+    if (APR.ActiveMap == "1565-Z10-Ardenweald-Story" and mapID == 1670) then
+        mapID = 1565
     end
-    if (APR.ActiveMap == "1543-Z13-TheMaw-Story" and APRt_Zone == 1656) then
-        APRt_Zone = 1543
+    if (APR.ActiveMap == "1565-Z10-Ardenweald-Story" and mapID == 1824) then
+        mapID = 1565
     end
-    if (APR.ActiveMap == "1525-Z14-Revendreth-Story" and APRt_Zone == 1670) then
-        APRt_Zone = 1525
+    if (APR.ActiveMap == "1565-Z10-Ardenweald-Story" and mapID == 1642) then
+        mapID = 1565
     end
-    if (APR.ActiveMap == "1670-Z1-Oribos-StoryXBastion" and APRt_Zone == 1533) then
-        APRt_Zone = 1670
+    if (APR.ActiveMap == "1565-Z10-Ardenweald-Story" and mapID == 619) then
+        mapID = 1565
     end
-    if (APR.ActiveMap == "1670-Z1-Oribos-StoryXMaldraxxus" and APRt_Zone == 1536) then
-        APRt_Zone = 1670
+    if (APR.ActiveMap == "1671-Z11-Oribos-Story" and mapID == 1525) then
+        mapID = 1670
     end
-    if (APR.ActiveMap == "1670-Z1-Oribos-StoryXArdenweald" and APRt_Zone == 1565) then
-        APRt_Zone = 1670
+    if (APR.ActiveMap == "1525-Z12-Revendreth-Story" and mapID == 1543) then
+        mapID = 1525
     end
-    if (APR.ActiveMap == "1670-Z1-Oribos-StoryXRevendreth" and APRt_Zone == 1525) then
-        APRt_Zone = 1670
+    if (APR.ActiveMap == "1543-Z13-TheMaw-Story" and mapID == 1525) then
+        mapID = 1543
     end
-    if (APR.ActiveMap == "1525-Z12-Revendreth-Story" and APRt_Zone == 1543) then
-        APRt_Zone = 1525
+    if (APR.ActiveMap == "1543-Z13-TheMaw-Story" and mapID == 1656) then
+        mapID = 1543
     end
-    if (APR.ActiveMap == "1543-Z13-TheMaw-Story" and (APRt_Zone == 1762 or APRt_Zone == 1656 or APRt_Zone == 1525)) then
-        APRt_Zone = 1543
+    if (APR.ActiveMap == "1525-Z14-Revendreth-Story" and mapID == 1670) then
+        mapID = 1525
     end
-    if (APR.ActiveMap == "1670-Z1-Oribos-ZonePick" and (APRt_Zone == 1762 or APRt_Zone == 1656 or APRt_Zone == 1525 or APRt_Zone == 1543 or APRt_Zone == 1565 or APRt_Zone == 1533 or APRt_Zone == 1536)) then
-        APRt_Zone = 1670
+    if (APR.ActiveMap == "1670-Z1-Oribos-StoryXBastion" and mapID == 1533) then
+        mapID = 1670
+    end
+    if (APR.ActiveMap == "1670-Z1-Oribos-StoryXMaldraxxus" and mapID == 1536) then
+        mapID = 1670
+    end
+    if (APR.ActiveMap == "1670-Z1-Oribos-StoryXArdenweald" and mapID == 1565) then
+        mapID = 1670
+    end
+    if (APR.ActiveMap == "1670-Z1-Oribos-StoryXRevendreth" and mapID == 1525) then
+        mapID = 1670
+    end
+    if (APR.ActiveMap == "1525-Z12-Revendreth-Story" and mapID == 1543) then
+        mapID = 1525
+    end
+    if (APR.ActiveMap == "1543-Z13-TheMaw-Story" and (mapID == 1762 or mapID == 1656 or mapID == 1525)) then
+        mapID = 1543
+    end
+    if (APR.ActiveMap == "1670-Z1-Oribos-ZonePick" and (mapID == 1762 or mapID == 1656 or mapID == 1525 or mapID == 1543 or mapID == 1565 or mapID == 1533 or mapID == 1536)) then
+        mapID = 1670
     end
     -- Eastern Kingdoms
-    if (APR.ActiveMap == "A23-ScarletEnclave" and (APRt_Zone == 37 or APRt_Zone == 84 or APRt_Zone == 124)) then
-        APRt_Zone = 23
-    elseif (APR.ActiveMap == "H23-ScarletEnclave" and (APRt_Zone == 1 or APRt_Zone == 85 or APRt_Zone == 124)) then
-        APRt_Zone = 23
+    if (APR.ActiveMap == "A23-ScarletEnclave" and (mapID == 37 or mapID == 84 or mapID == 124)) then
+        mapID = 23
+    elseif (APR.ActiveMap == "H23-ScarletEnclave" and (mapID == 1 or mapID == 85 or mapID == 124)) then
+        mapID = 23
     end
     -- Battle for Azeroth
-    if (APR.ActiveMap == "A895-Tiragarde Sound" and APRt_Zone == 1169) then
-        APRt_Zone = 895
-    elseif (APR.ActiveMap == "862-Zuldazar" and APRt_Zone == 1012) then
-        APRt_Zone = 862
-    elseif (APR.ActiveMap == "862-Zuldazar-1" and APRt_Zone == 875) then
-        APRt_Zone = 862
-    elseif (APR.ActiveMap == "862-Zuldazar-1" and APRt_Zone == 863) then
-        APRt_Zone = 862
+    if (APR.ActiveMap == "A895-Tiragarde Sound" and mapID == 1169) then
+        mapID = 895
+    elseif (APR.ActiveMap == "862-Zuldazar" and mapID == 1012) then
+        mapID = 862
+    elseif (APR.ActiveMap == "862-Zuldazar-1" and mapID == 875) then
+        mapID = 862
+    elseif (APR.ActiveMap == "862-Zuldazar-1" and mapID == 863) then
+        mapID = 862
     end
     -- Dragonflight
-    if (APR.ActiveMap == "DF01H-85-Orgrimmar" and APRt_Zone == 1) then
-        APRt_Zone = 85
-    elseif (APR.ActiveMap == "DF01A-84-Stormwind" and (APRt_Zone == 1978 or APRt_Zone == 2022)) then
-        APRt_Zone = 84
-    elseif (APR.ActiveMap == "DF02H-1-Durotar" and (APRt_Zone == 1978 or APRt_Zone == 2022)) then
-        APRt_Zone = 1
-    elseif (APR.ActiveMap == "DF03N-2022-WakingShores" and APRt_Zone == 2023) then
-        APRt_Zone = 2022
-    elseif (APR.ActiveMap == "DF04-2023-OhnahranPlains" and APRt_Zone == 2024) then
-        APRt_Zone = 2023
-    elseif (APR.ActiveMap == "DF05-2024-AzureSpan" and APRt_Zone == 2025) then
-        APRt_Zone = 2024
-    elseif (APR.ActiveMap == "DF06H-2025-Thaldraszus" and (APRt_Zone == 2028 or APRt_Zone == 2135 or APRt_Zone == 2090 or APRt_Zone == 2091 or APRt_Zone == 2088 or APRt_Zone == 2089)) then
-        APRt_Zone = 2025
-    elseif (APR.ActiveMap == "DF06A-2025-Thaldraszus" and (APRt_Zone == 2028 or APRt_Zone == 2135 or APRt_Zone == 2090 or APRt_Zone == 2091 or APRt_Zone == 2088 or APRt_Zone == 2089)) then
-        APRt_Zone = 2025
+    if (APR.ActiveMap == "DF01H-85-Orgrimmar" and mapID == 1) then
+        mapID = 85
+    elseif (APR.ActiveMap == "DF01A-84-Stormwind" and (mapID == 1978 or mapID == 2022)) then
+        mapID = 84
+    elseif (APR.ActiveMap == "DF02H-1-Durotar" and (mapID == 1978 or mapID == 2022)) then
+        mapID = 1
+    elseif (APR.ActiveMap == "DF03N-2022-WakingShores" and mapID == 2023) then
+        mapID = 2022
+    elseif (APR.ActiveMap == "DF04-2023-OhnahranPlains" and mapID == 2024) then
+        mapID = 2023
+    elseif (APR.ActiveMap == "DF05-2024-AzureSpan" and mapID == 2025) then
+        mapID = 2024
+    elseif (APR.ActiveMap == "DF06H-2025-Thaldraszus" and (mapID == 2028 or mapID == 2135 or mapID == 2090 or mapID == 2091 or mapID == 2088 or mapID == 2089)) then
+        mapID = 2025
+    elseif (APR.ActiveMap == "DF06A-2025-Thaldraszus" and (mapID == 2028 or mapID == 2135 or mapID == 2090 or mapID == 2091 or mapID == 2088 or mapID == 2089)) then
+        mapID = 2025
     end
 
-    return APRt_Zone
+    return mapID
 end
 
 function APR.FP.GetMeToNextZone()
@@ -671,6 +581,7 @@ function APR.FP.GetMeToNextZone()
     playerMapInfo = playerMapInfo and playerMapInfo.mapID or playerMapID
     playerMapInfo = APR.FP.GetMeToNextZoneSpecialRe(playerMapInfo)
 
+    -- local index, currentRouteName = next(APRCustomPath[APR.Username .. "-" .. APR.Realm])
     for routeCategory, _ in pairs(APR.QuestStepListListing) do
         if (APR.ActiveMap and APR.QuestStepListListing[routeCategory][APR.ActiveMap]) then
             local zoneID = APR.QuestStepListListing[routeCategory][APR.ActiveMap]
@@ -746,7 +657,7 @@ function APR.FP.GetMeToNextZone()
                         " " .. chromieExpansionOption.name)
                 end
             end
-            if (APR.QuestStepListListing["Extra"][APR.ActiveMap]) then
+            if (APR.QuestStepListListing.WarlordsOfDraenor[APR.ActiveMap]) then
                 -- 9 == WOD
                 checkChromieTimeline(9)
             end
@@ -964,6 +875,7 @@ function APR.FP.IsSameContinent(GoToZone)
     return L["CONTINENT_NOT_FOUND"]
 end
 
+-- TODO: Save transition to TransportDB + add missing one (like DF)
 function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
     local APRt_Zone
     local currentMapId = C_Map.GetBestMapForUnit('player')
@@ -1766,7 +1678,7 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR.TaxiTimerCur = ZName
             end
             if (ZState == 2) then
-                --APR_Transport["FPs"][APR.Faction][continent][APR.Username.."-"..APR.Realm][NodeIDZ] = 0
+                APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm][NodeIDZ] = 0
             else
                 APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm][NodeIDZ] = 1
             end

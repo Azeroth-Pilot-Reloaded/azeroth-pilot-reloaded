@@ -441,7 +441,7 @@ function SetRouteListTab(widget, name)
 
             local statusText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
             statusText:SetPoint("RIGHT")
-            statusText:SetText(APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][route.routeName] and
+            statusText:SetText(APRZoneCompleted[APR.Username .. "-" .. APR.Realm][route.routeName] and
                 L["ROUTE_COMPLETED"] or
                 "Unknow")
 
@@ -527,7 +527,7 @@ function APR.routeconfig:InitRouteConfig()
         SetRouteListTab(tabRouteListWidget, currentTabName)
         APR.settings:OpenSettings(L["ROUTE"])
         -- -- TODO: Check if needed
-        -- APR.BookingList["UpdateMapId"] = true
+        APR.BookingList["UpdateMapId"] = true
     end)
     InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)
     InitDialogControlFrame("RouteListFrame", CreateRouteTableFrame, SetRouteListTab)
@@ -663,6 +663,7 @@ end
 ---------------------------------------------------------------------------------------
 
 --Loads addon if needed for a route
+--TODO: call this on addonLoad
 function APR.routeconfig:LoadRouteAddonFile(tabName)
     if APRCustomPath[APR.Username .. "-" .. APR.Realm] then
         local function checkAddon(zoneName, addonName)
@@ -671,7 +672,7 @@ function APR.routeconfig:LoadRouteAddonFile(tabName)
                 if not loaded then
                     C_AddOns.EnableAddOn(addonName, UnitName("player"))
                     C_AddOns.SaveAddOns()
-                    print("APR: " .. addonName .. L["DISABLED_ADDON_LIST"])
+                    print("APR: " .. addonName .. " " .. L["DISABLED_ADDON_LIST"])
                 end
             end
         end
@@ -688,3 +689,25 @@ function APR.routeconfig:LoadRouteAddonFile(tabName)
         checkAddon("Dragonflight", "APR-Dragonflight")
     end
 end
+
+APR.routeconfig.eventFrame = CreateFrame("Frame")
+APR.routeconfig.eventFrame:RegisterEvent("PLAYER_LEVEL_UP")
+APR.routeconfig.eventFrame:SetScript("OnEvent", function(self, event, ...)
+    if (event == "PLAYER_LEVEL_UP") then
+        local arg1, _ = ...;
+        APR.Level = arg1
+        if not IsTableEmpty(APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
+            if APR.Level == 50 then
+                APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_SL"], function()
+                    APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
+                    APR.routeconfig:GetSLPrefab()
+                end)
+            elseif APR.Level == 60 then
+                APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_DF"], function()
+                    APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
+                    APR.routeconfig:GetDFPrefab()
+                end)
+            end
+        end
+    end
+end)

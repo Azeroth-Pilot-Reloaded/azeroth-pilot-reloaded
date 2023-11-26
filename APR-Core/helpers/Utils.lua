@@ -106,6 +106,7 @@ function IsTableEmpty(table)
     return false
 end
 
+-- TODO: Remove this shit
 function PairsByKeys(t, f)
     local a = {}
     for n in pairs(t) do table.insert(a, n) end

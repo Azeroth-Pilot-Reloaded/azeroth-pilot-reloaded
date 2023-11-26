@@ -270,7 +270,8 @@ local function APR_UpdateStep()
                         L["SWITCH_TO_CHROMIE"] .. " " .. chromieExpansionOption.name)
                 end
             end
-            if (APR.QuestStepListListing["Extra"][APR.ActiveMap]) then
+            -- TODO: Check if needed - same code in transport
+            if (APR.QuestStepListListing.WarlordsOfDraenor[APR.ActiveMap]) then
                 -- 9 == WOD
                 checkChromieTimeline(9)
             end
@@ -387,48 +388,16 @@ local function APR_UpdateStep()
             APR_LeaveQuest(steps["LeaveQuest"])
         end
         if (steps["LeaveQuests"]) then
-            for APR_index, APR_value in pairs(steps["LeaveQuests"]) do
-                APR_LeaveQuest(APR_value)
+            for _, questID in pairs(steps["LeaveQuests"]) do
+                APR_LeaveQuest(questID)
             end
         end
-
-        -- TODO:ZONE rework
         if (steps["ZoneDoneSave"]) then
-            local zeMApz
-            if (APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]) then
-                zeMApz = APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]
-            elseif (APR.QuestStepListListing["Extra"][APR.ActiveMap]) then
-                zeMApz = APR.QuestStepListListing["Extra"][APR.ActiveMap]
-            elseif (APR.QuestStepListListing["MISC 1"][APR.ActiveMap]) then
-                zeMApz = APR.QuestStepListListing["MISC 1"][APR.ActiveMap]
-            elseif (APR.QuestStepListListing["MISC 2"][APR.ActiveMap]) then
-                zeMApz = APR.QuestStepListListing["MISC 2"][APR.ActiveMap]
-            elseif (APR.QuestStepListListing["Dragonflight"][APR.ActiveMap]) then
-                zeMApz = APR.QuestStepListListing["Dragonflight"][APR.ActiveMap]
-            elseif (APR.QuestStepListListing["Kalimdor"][APR.ActiveMap]) then
-                zeMApz = APR.QuestStepListListing["Kalimdor"][APR.ActiveMap]
-            elseif (APR.QuestStepListListing["SpeedRun"][APR.ActiveMap]) then
-                zeMApz = APR.QuestStepListListing["SpeedRun"][APR.ActiveMap]
-            elseif (APR.QuestStepListListing["EasternKingdom"][APR.ActiveMap]) then
-                zeMApz = APR.QuestStepListListing["EasternKingdom"][APR.ActiveMap]
-            elseif (APR.QuestStepListListingStartAreas["EasternKingdom"] and APR.QuestStepListListingStartAreas["EasternKingdom"][APR.ActiveMap]) then
-                zeMApz = APR.QuestStepListListingStartAreas["EasternKingdom"][APR.ActiveMap]
-            elseif (APR.QuestStepListListingStartAreas["Kalimdor"] and APR.QuestStepListListingStartAreas["Kalimdor"][APR.ActiveMap]) then
-                zeMApz = APR.QuestStepListListingStartAreas["Kalimdor"][APR.ActiveMap]
-            elseif (APRCustomPath[APR.Username .. "-" .. APR.Realm] and APRCustomPath[APR.Username .. "-" .. APR.Realm][APR.ActiveMap]) then
-                zeMApz = APRCustomPath[APR.Username .. "-" .. APR.Realm][APR.ActiveMap]
-            end
-            if (zeMApz) then
-                APR_ZoneComplete[APR.Username .. "-" .. APR.Realm][zeMApz] = 1
-                for CLi = 1, 19 do
-                    if (APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:GetText() == zeMApz) then
-                        APR.RoutePlan.FG1["Fxz2Custom" .. CLi]["FS"]:SetText("")
-                        APR.RoutePlan.FG1["Fxz2Custom" .. CLi]:Hide()
-                    end
-                end
-                APR.CheckCustomEmpty()
-                APR.BookingList["UpdateMapId"] = true
-            end
+            local index, currentRouteName = next(APRCustomPath[APR.Username .. "-" .. APR.Realm])
+            APRZoneCompleted[APR.Username .. "-" .. APR.Realm][currentRouteName] = true
+            tremove(APRCustomPath[APR.Username .. "-" .. APR.Realm], index)
+            APR.CheckCustomEmpty()
+            APR.BookingList["UpdateMapId"] = true
         end
         if (steps["SpecialLeaveVehicle"]) then
             C_Timer.After(1, APR_ExitVhicle)
