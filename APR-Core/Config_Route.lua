@@ -84,6 +84,9 @@ local function GetConfigOptionTable()
                 width = optionsWidth,
                 func = function()
                     APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
+                end,
+                disabled = function()
+                    return not next(APRCustomPath[APR.Username .. "-" .. APR.Realm])
                 end
             },
             custom_path_area = {
@@ -254,6 +257,8 @@ local function CreateCustomPathTableFrame(name)
     -- Create a ScrollFrame
     local scrollFrame = CreateFrame("ScrollFrame", nil, frame, "UIPanelScrollFrameTemplate")
     scrollFrame:SetAllPoints()
+    scrollFrame.ScrollBar:SetPoint("TOPLEFT", scrollFrame, "TOPRIGHT", -16, -16)
+    scrollFrame.ScrollBar:SetPoint("BOTTOMLEFT", scrollFrame, "BOTTOMRIGHT", -16, 16)
     frame.scrollFrame = scrollFrame
 
     -- Create a content frame
@@ -272,7 +277,6 @@ local function CreateCustomPathTableFrame(name)
 
     return frame
 end
-
 
 function SetCustomPathListFrame(widget, name)
     customPathListeWidget = widget
@@ -308,8 +312,8 @@ function SetCustomPathListFrame(widget, name)
 
         -- Store the font string in the table
         tinsert(widget.fontStringsContainer, noRoutesContainer)
-        widget.frame.contentFrame:SetSize(600, 35)
-        widget.frame:SetSize(600, 35)
+        widget.frame:SetSize(600, 40)
+        widget.frame.contentFrame:SetSize(600, 40)
     else
         for i, route in ipairs(routes) do
             -- Create a container for each line
@@ -351,8 +355,9 @@ function SetCustomPathListFrame(widget, name)
             yOffset = yOffset - 25
             tinsert(widget.fontStringsContainer, lineContainer)
         end
+        local height = (-yOffset < 200 and -yOffset or 200)
+        widget.frame:SetSize(600, height)
         widget.frame.contentFrame:SetSize(600, -yOffset)
-        widget.frame:SetSize(600, (-yOffset < 200 and -yOffset or 200))
     end
     -- Reset the scroll position to the top
     widget.frame.scrollFrame:SetVerticalScroll(0)
@@ -421,6 +426,7 @@ function SetRouteListTab(widget, name)
             local lineContainer = CreateFrame("Frame", nil, widget.frame, "BackdropTemplate")
             lineContainer:SetSize(430, 25)
             lineContainer:SetPoint("TOPLEFT", 10, yOffset)
+            lineContainer:SetPoint("TOPRIGHT", -10, yOffset)
 
             local borderTexture = lineContainer:CreateTexture(nil, "BACKGROUND")
             borderTexture:SetTexture("Interface\\Buttons\\UI-Listbox-Highlight")
@@ -457,7 +463,6 @@ function SetRouteListTab(widget, name)
             end)
 
             yOffset = yOffset - 25
-
             tinsert(widget.fontStringsContainer, lineContainer)
         end
     end
@@ -546,7 +551,7 @@ function APR.routeconfig:GetStartingZonePrefab()
     local currentMapId = C_Map.GetBestMapForUnit('player')
     if currentMapId and Enum and Enum.UIMapType and Enum.UIMapType.Continent then
         playerMapId = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
-        playerMapId = playerMapId.mapID or currentMapId
+        playerMapId = playerMapId and playerMapId.mapID or currentMapId
     end
 
     if APR.Level < 10 and Contains({ 1409, 1726, 1727 }, playerMapId) then
