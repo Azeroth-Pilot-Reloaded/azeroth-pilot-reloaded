@@ -33,7 +33,6 @@ function APR:OnInitialize()
 
     APR.Breadcrums = {}
     APR.IsInRouteZone = false
-    APR.ProgressShown = false
 
     -- BookingList
     APR.BookingList = {}
@@ -97,7 +96,6 @@ end
 
 APR.CoreEventFrame = CreateFrame("Frame")
 APR.CoreEventFrame:RegisterEvent("ADDON_LOADED")
-APR.CoreEventFrame:RegisterEvent("PLAYER_LEVEL_UP")
 APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
     if APR.settings.profile.showEvent then
         print("EVENT: Core - ", event)
@@ -130,11 +128,11 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 if (not APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
                     APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
                 end
-                if (not APR_ZoneComplete) then
-                    APR_ZoneComplete = {}
+                if (not APRZoneCompleted) then
+                    APRZoneCompleted = {}
                 end
-                if (not APR_ZoneComplete[APR.Username .. "-" .. APR.Realm]) then
-                    APR_ZoneComplete[APR.Username .. "-" .. APR.Realm] = {}
+                if (not APRZoneCompleted[APR.Username .. "-" .. APR.Realm]) then
+                    APRZoneCompleted[APR.Username .. "-" .. APR.Realm] = {}
                 end
                 if (not APR_Transport["FPs"]) then
                     APR_Transport["FPs"] = {}
@@ -142,21 +140,26 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 if (not APR_Transport["FPs"][APR.Faction]) then
                     APR_Transport["FPs"][APR.Faction] = {}
                 end
-                if (APR:GetContinent() and not APR_Transport["FPs"][APR.Faction][APR:GetContinent()]) then
-                    APR_Transport["FPs"][APR.Faction][APR:GetContinent()] = {}
+                local continent = APR:GetContinent()
+                if continent then
+                    if not APR_Transport["FPs"][APR.Faction][continent] then
+                        APR_Transport["FPs"][APR.Faction][continent] = {}
+                    end
+                    if not APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm] then
+                        APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm] = {}
+                    end
+                    if not APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"] then
+                        APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"] = {}
+                    end
                 end
-                if (APR:GetContinent() and not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]) then
-                    APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm] = {}
-                end
-                if (APR:GetContinent() and not APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"]) then
-                    APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"] = {}
-                end
+
 
                 APR.BookingList["UpdateMapId"] = true
                 APR.BookingList["UpdateQuest"] = true
                 APR.BookingList["PrintQStep"] = true
 
                 if (APRData[APR.Realm][APR.Username].FirstLoad) then
+                    -- TODO No route frame
                     -- APR.LoadInOptionFrame:Show()
                     APRData[APR.Realm][APR.Username].FirstLoad = false
                 else
@@ -201,22 +204,5 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 
         APR.BookingList["UpdateStep"] = true
         CoreLoadin = true
-    end
-    if (event == "PLAYER_LEVEL_UP") then
-        local arg1, _ = ...;
-        APR.Level = arg1
-        if not IsTableEmpty(APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
-            if APR.Level == 50 then
-                APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_SL"], function()
-                    APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
-                    APR.routeconfig:GetSLPrefab()
-                end)
-            elseif APR.Level == 60 then
-                APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_DF"], function()
-                    APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
-                    APR.routeconfig:GetDFPrefab()
-                end)
-            end
-        end
     end
 end)
