@@ -106,8 +106,6 @@ function APR.settings:InitializeSettings()
             -- position
             coordinateFrame = {},
             coordinateShow = false,
-            leftLiz = 150,
-            topLiz = -150,
         }
     }
 
@@ -1201,13 +1199,7 @@ function APR.settings:ToggleAddon()
     if not self.profile.enableAddon then
         -- settings disable
         self.profile.showArrow = false
-        -- frames
-        -- v3
         APR.AFK:HideFrame()
-        -- v2
-        APR.BookingList["ClosedSettings"] = true
-        -- APR.LoadInOptionFrame:Hide()
-        APR.RoutePlan.Custompath:Hide()
         APR.ArrowFrame:Hide()
     else
         -- settings
