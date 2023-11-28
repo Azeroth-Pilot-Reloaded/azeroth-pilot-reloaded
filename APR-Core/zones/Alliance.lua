@@ -187,8 +187,6 @@ if (APR.Faction == "Alliance") then
         ["DF06A-2025-Thaldraszus"] = "DF06 - Thaldraszus",
     }
 
-
-
     if (APR.Race == "NightElf") then
         APR.QuestStepListListing.Vanilla["A57-ShadowglenNightElf"] = "01-10 Night Elf Start"
     elseif (APR.Race == "Draenei") then
@@ -209,10 +207,11 @@ if (APR.Faction == "Alliance") then
         APR.QuestStepListListing.WrathOfTheLichKing["A23-ScarletEnclave"] = "Death Knight Start"
     elseif (APR.Race == "Pandaren") then
         APR.QuestStepListListing.MistsOfPandaria["378-WanderingIsle"] = "01-30 Pandaren Start"
-    elseif (APR.Level < 10) then
-        APR.QuestStepListListing.Vanilla["1409-Exile's Reach"] = "01-10 Exile's Reach"
     elseif (APR.Race == "Dracthyr") then
         APR.QuestStepListListing.Dragonflight["2118-DracthyrStart-A"] = "Dracthyr Start"
+    end
+    if (APR.Level < 10) then
+        APR.QuestStepListListing.Vanilla["1409-Exile's Reach"] = "01-10 Exile's Reach"
     end
 
     APR.Vanilla = {}

@@ -108,6 +108,12 @@ function CheckIsInRouteZone()
         end
         local parentMapID = C_Map.GetMapInfo(currentMapID).parentMapID
         local childrenMap = C_Map.GetMapChildrenInfo(parentMapID)
+        if not childrenMap then
+            if currentMapID == APR.FP.GoToZone then
+                return true
+            end
+            return false
+        end
 
         local isPresent = false
         for _, map in ipairs(childrenMap) do

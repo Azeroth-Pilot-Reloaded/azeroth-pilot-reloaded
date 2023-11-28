@@ -41,5 +41,6 @@ QuestOrderList.lua
 Party.lua
 Map.lua
 AFK.lua
+Heirloom.lua
 
 SweatOfOurBrowBuffFrame.lua

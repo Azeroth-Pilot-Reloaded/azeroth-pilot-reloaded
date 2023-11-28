@@ -87,7 +87,8 @@ function APR.settings:InitializeSettings()
             minimapshowNextStepsCount = 2,
             minimapshowNextStepsSize = 16,
             -- Heirloom
-            heirloomWarning = true, -- DisableHeirloomWarning
+            heirloomFrame = {},
+            heirloomWarning = false,
             -- group
             groupFrame = {},
             showGroup = true,
@@ -895,9 +896,8 @@ function APR.settings:createBlizzOptions()
                         get = GetProfileOption,
                         set = function(info, value)
                             SetProfileOption(info, value)
-                            APR.BookingList.UpdateStep = true
+                            APR.heirloom:RefreshFrameAnchor()
                         end,
-                        disabled = true, --TODO Fix HEIRLOOM
                     },
                 }
             },
@@ -1208,6 +1208,7 @@ function APR.settings:ToggleAddon()
     APR.currentStep:RefreshCurrentStepFrameAnchor()
     APR.questOrderList:RefreshFrameAnchor()
     APR.party:RefreshPartyFrameAnchor()
+    APR.heirloom:RefreshFrameAnchor()
     APR.map:ToggleLine()
 end
 

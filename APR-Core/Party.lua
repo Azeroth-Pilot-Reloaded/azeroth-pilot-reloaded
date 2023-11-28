@@ -26,7 +26,7 @@ PartyFrame:SetFrameStrata("LOW")
 PartyFrame:SetClampedToScreen(true)
 
 
--- Create the step holder frame
+-- Create the mate holder frame
 local PartyFrame_TeamHolder = CreateFrame("Frame", "PartyFrame_TeamHolder", PartyFrame,
     "BackdropTemplate")
 PartyFrame_TeamHolder:SetAllPoints()
