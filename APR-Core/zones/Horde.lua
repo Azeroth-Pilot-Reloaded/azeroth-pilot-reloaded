@@ -177,10 +177,11 @@ if (APR.Faction == "Horde") then
         APR.QuestStepListListing.MistsOfPandaria["378-WanderingIsle"] = "01-30 Pandaren Start"
     elseif (APR.ClassId == APR.Classes["Demon Hunter"]) then
         APR.QuestStepListListing.Legion["672-Mardum"] = "Demon Hunter Start"
-    elseif (APR.Level < 10) then
-        APR.QuestStepListListing.Vanilla["1409-Exile's Reach"] = "01-10 Exile's Reach"
     elseif (APR.Race == "Dracthyr") then
         APR.QuestStepListListing["Dragonflight"]["2118-DracthyrStart-H"] = "Dracthyr Start"
+    end
+    if (APR.Level < 10) then
+        APR.QuestStepListListing.Vanilla["1409-Exile's Reach"] = "01-10 Exile's Reach"
     end
 
     APR.Vanilla = {}

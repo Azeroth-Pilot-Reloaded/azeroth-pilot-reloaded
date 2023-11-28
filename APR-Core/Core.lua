@@ -76,6 +76,9 @@ function APR:OnInitialize()
     -- Init Changelog frame
     APR.changelog:OnInit()
 
+    -- Init heirloom frame
+    APR.heirloom:HeirloomOnInit()
+
     -- APR Global Variables, UI oriented
     BINDING_HEADER_APR = APR.title -- Header text for APR's main frame
     _G["BINDING_NAME_" .. "CLICK APRItemButton:LeftButton"] = L["USE_QUEST_ITEM"]

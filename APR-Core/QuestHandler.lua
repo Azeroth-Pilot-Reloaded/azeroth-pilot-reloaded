@@ -1901,6 +1901,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.currentStep:RefreshCurrentStepFrameAnchor()
         APR.party:RefreshPartyFrameAnchor()
         APR.questOrderList:RefreshFrameAnchor()
+        APR.heirloom:RefreshFrameAnchor()
     end
     if event == "GROUP_JOINED" then
         APR.party:SendGroupMessage()
