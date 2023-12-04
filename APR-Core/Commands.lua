@@ -24,6 +24,9 @@ function APR.command:SlashCmd(input)
         -- Command for rollback the current quest step
         print("APR: " .. L["ROLLBACK"])
         PreviousQuestStep()
+    elseif (input == "qol") then
+        APR.settings.profile.showQuestOrderList = not APR.settings.profile.showQuestOrderList
+        APR.questOrderList:RefreshFrameAnchor()
     elseif (input == "discord") then
         _G.StaticPopup_Show("Discord_Link")
     elseif (input == "github") then
@@ -46,6 +49,7 @@ function APR.command:SlashCmd(input)
         print("|cffeda55f/apr forcereset, fr |r- " .. L["FORCERESET_COMMAND"])
         print("|cffeda55f/apr skip, s, skippiedoodaa |r- " .. L["SKIP_COMMAND"])
         print("|cffeda55f/apr rollback, rb |r- " .. L["ROLLBACK_COMMAND"])
+        print("|cffeda55f/apr qol |r- " .. L["QOL_COMMAND"])
         print("|cffeda55f/apr coord |r- " .. L["COORD_COMMAND"])
         print("|cffeda55f/apr scribe, writer |r- ;)")
         print("|cffeda55f/apr discord |r- " .. L["DISCORD_COMMAND"])
