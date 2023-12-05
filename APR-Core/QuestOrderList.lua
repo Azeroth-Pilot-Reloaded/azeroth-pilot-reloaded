@@ -256,7 +256,7 @@ function APR.questOrderList:UpdateFrameContents()
 end
 
 function APR.questOrderList:AddStepFromRoute()
-    if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.QuestStepList[APR.ActiveMap] or IsInInstance() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.QuestStepList[APR.ActiveMap] or IsInInstance() or not APR.routeconfig:HasRouteInCustomPaht() then
         self:RemoveSteps()
         return
     end

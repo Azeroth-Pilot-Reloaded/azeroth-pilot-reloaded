@@ -1212,8 +1212,8 @@ function APR.settings:ToggleAddon()
     APR.map:ToggleLine()
 end
 
-function APR.settings:OpenSettings(catName)
-    if catName == APR.title then
+function APR.settings:OpenSettings(name)
+    if name == APR.title then
         InterfaceOptionsFrame_OpenToCategory(APR.title)
         APR.settings:OpenSettings(L["ROUTE"])
     end
@@ -1225,7 +1225,7 @@ function APR.settings:OpenSettings(catName)
                 SettingsPanel:SelectCategory(category)
                 if APR.OptionsRoute and category:HasSubcategories() then
                     for _, subcategory in pairs(category:GetSubcategories()) do
-                        if subcategory:GetName() == catName then
+                        if subcategory:GetName() == name then
                             SettingsPanel:SelectCategory(subcategory)
                             break
                         end
