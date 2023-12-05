@@ -163,6 +163,7 @@ minimizeButton:SetScript("OnClick", function()
         CurrentStepFrameHeader:Hide()
         minimizeButtonText:Show()
         minimizeButtonText:SetText(APR.title)
+        APR.currentStep:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
     end
 end)
 
@@ -277,8 +278,7 @@ end
 function APR.currentStep:ResetPosition()
     CurrentStepScreenPanel:ClearAllPoints()
     CurrentStepScreenPanel:SetPoint("center", UIParent, "center", 0, 0)
-    LibWindow.SavePosition(CurrentStepScreenPanel)
-    self:UpdateBackgroundColorAlpha()
+    self:SetDefaultDisplay()
 end
 
 -- Hook on update for ObjectiveTrackerFrame (quests log)

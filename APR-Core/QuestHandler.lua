@@ -813,6 +813,8 @@ local function APR_UpdateStep()
         APR.currentStep:SetProgressBar(CurStep)
     else
         APR.currentStep:AddExtraLineText("NO_ROUTE", L["NO_ROUTE"], true)
+        APR.currentStep:ButtonDisable()
+        APR.currentStep:ProgressBar()
         APR:SendMessage("APR_MAP_UPDATE")
         APR.map:RemoveMapLine()
         APR.map:RemoveMinimapLine()
