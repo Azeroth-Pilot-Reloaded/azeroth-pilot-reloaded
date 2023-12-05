@@ -546,15 +546,7 @@ function APR.routeconfig:GetSpeedRunPrefab()
 end
 
 function APR.routeconfig:GetStartingZonePrefab()
-    -- Get player position for Exile's Reach (maybe move this to PlayerPosition util function)
-    local playerMapId
-    local currentMapId = C_Map.GetBestMapForUnit('player')
-    if currentMapId and Enum and Enum.UIMapType and Enum.UIMapType.Continent then
-        playerMapId = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
-        playerMapId = playerMapId and playerMapId.mapID or currentMapId
-    end
-
-    if APR.Level < 10 and Contains({ 1409, 1726, 1727 }, playerMapId) then
+    if APR.Level < 10 or Contains({ 1409, 1726, 1727 }, APR:GetPlayerMapID()) then
         tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "01-10 Exile's Reach")
     elseif APR.Level < 30 then
         if APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then -- Allied DK
@@ -688,6 +680,13 @@ function APR.routeconfig:LoadRouteAddonFile(tabName)
         checkAddon("Shadowlands", "APR-Shadowlands")
         checkAddon("Dragonflight", "APR-Dragonflight")
     end
+end
+
+function APR.routeconfig:HasRouteInCustomPaht()
+    if not next(APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
+        return false
+    end
+    return true
 end
 
 APR.routeconfig.eventFrame = CreateFrame("Frame")
