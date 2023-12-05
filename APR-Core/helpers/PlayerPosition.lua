@@ -53,3 +53,13 @@ function APR:GetPlayerMapPos(MapID, dx, dy)
         return scaleY * P.y, scaleX * P.x;
     end
 end
+
+function APR:GetPlayerMapID()
+    local playerMapId
+    local currentMapId = C_Map.GetBestMapForUnit('player')
+    if currentMapId and Enum and Enum.UIMapType and Enum.UIMapType.Continent then
+        playerMapId = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
+        playerMapId = playerMapId and playerMapId.mapID or currentMapId
+    end
+    return playerMapId
+end
