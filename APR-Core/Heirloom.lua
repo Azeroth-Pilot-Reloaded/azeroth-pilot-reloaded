@@ -188,6 +188,14 @@ function APR.heirloom:AddHeirloomIcons()
     local maxElementsPerLine = 4
     local elementsCount = 0
 
+    if next(self.buttons) then
+        for _, btn in ipairs(self.buttons) do
+            btn:Hide()
+            btn:ClearAllPoints()
+            btn = nil
+        end
+    end
+
     for _, heirloom in ipairs(heirlooms) do
         local button
         if heirloom.name == "map" and PlayerHasToy(heirloom.id) and (APR.Faction == heirloom.faction or heirloom.faction == "Neutral") then
@@ -197,7 +205,7 @@ function APR.heirloom:AddHeirloomIcons()
         end
         if button then
             button:SetPoint("TOPLEFT", xOffset, yOffset)
-            table.insert(APR.heirloom.buttons, button)
+            table.insert(self.buttons, button)
             xOffset = xOffset + 62.5
             elementsCount = elementsCount + 1
             if elementsCount % maxElementsPerLine == 0 then
@@ -208,3 +216,11 @@ function APR.heirloom:AddHeirloomIcons()
     end
     HeirloomFrame:SetSize(250, (elementsCount > 4 and 55 or 0) + (-yOffset))
 end
+
+APR.heirloom.EventFrame = CreateFrame("Frame")
+APR.heirloom.EventFrame:RegisterEvent("ADDON_LOADED")
+APR.heirloom.EventFrame:SetScript("OnEvent", function(self, event, ...)
+    if event == "ADDON_LOADED" then
+        APR.heirloom:AddHeirloomIcons()
+    end
+end)
