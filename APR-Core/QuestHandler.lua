@@ -242,7 +242,7 @@ local function APR_UpdateStep()
         print("APR_UpdateStep() Step:", CurStep)
     end
     APR.party:SendGroupMessage()
-    APR.FP.QuedFP = nil
+    APR.transport.QuedFP = nil
 
     if (APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
         local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
@@ -476,6 +476,7 @@ local function APR_UpdateStep()
                     elseif (APR.ActiveQuests[qid]) then
                         if (not APR.IsInRouteZone) then
                             local ZeTExt
+                            -- TODO: WWWWWWWWWWWWWTTTTTTTTTTTTTTFFFFFFFFFFFFFFF ???
                             if (APR.ActiveQuests["57713-4"] and UIWidgetTopCenterContainerFrame and UIWidgetTopCenterContainerFrame["widgetFrames"]) then
                                 for APR_index2, APR_value2 in PairsByKeys(UIWidgetTopCenterContainerFrame["widgetFrames"]) do
                                     if (UIWidgetTopCenterContainerFrame["widgetFrames"][APR_index2]["Text"]) then
@@ -534,7 +535,7 @@ local function APR_UpdateStep()
                 for _, questID in ipairs(pickUpDB) do
                     if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] then
                         flaggedQuest = questID
-                        break -- Sortir de la boucle dès qu'une quête est repérée
+                        break
                     end
                 end
                 if flaggedQuest > 0 then
@@ -684,31 +685,16 @@ local function APR_UpdateStep()
             if not APR.IsInRouteZone then
                 APR.currentStep:UpdateQuestSteps(steps["GetFP"], L["GET_FLIGHTPATH"], "GetFP")
             end
-            if (C_QuestLog.IsQuestFlaggedCompleted(steps["GetFP"])) then
+            if HasTaxiNode(steps["GetFP"]) then
                 _G.UpdateNextStep()
                 return
             end
         elseif (steps["UseFlightPath"]) then
             if not APR.IsInRouteZone then
-                local questText = ""
-                if steps["Boat"] then
-                    questText = L["USE_BOAT"]
-                else
-                    questText = L["USE_FLIGHTPATH"]
-                end
-
-                if steps["Name"] then
-                    questText = questText .. ": " .. steps["Name"]
-                end
-
+                local questText = (steps.Boat and L["USE_BOAT"] or L["USE_FLIGHTPATH"]) ..
+                    ": " .. (APRTaxiNodes[APR.Username .. "-" .. APR.Realm][steps.NodeID] or steps.Name)
                 APR.currentStep:UpdateQuestSteps(steps["UseFlightPath"], questText, "UseFlightPath")
             end
-
-            if steps["SkipIfOnTaxi"] and UnitOnTaxi("player") then
-                _G.UpdateNextStep()
-                return
-            end
-
             if C_QuestLog.IsQuestFlaggedCompleted(steps["UseFlightPath"]) then
                 _G.UpdateNextStep()
                 return
@@ -1071,7 +1057,7 @@ local function APR_UpdateMapId()
     if not playerMapID then
         return
     end
-    APR.ActiveMap = MapUtil.GetMapParentInfo(playerMapID, Enum.UIMapType.Continent + 1, true)
+    APR.ActiveMap = MapUtil.GetMapParentInfo(playerMapID, Enum.UIMapType.Zone, true)
     APR.ActiveMap = APR.ActiveMap and APR.ActiveMap.mapID or playerMapID
 
     APRt_Zone = APR.ActiveMap
@@ -1120,7 +1106,7 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
             print("LoopBookingFunc:GetMeToNextZone:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
         end
         APR.BookingList["GetMeToNextZone"] = false
-        APR.FP.GetMeToNextZone()
+        APR.transport.GetMeToNextZone()
     elseif (APR.BookingList["UpdateMapId"]) then
         APR.BookingList["UpdateMapId"] = false
         APR_UpdateMapId()
@@ -1158,28 +1144,13 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
             print("LoopBookingFunc:IsInRouteZone:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
         end
         APR.BookingList["IsInRouteZone"] = false
-        APR.FP.GetMeToNextZone()
+        APR.transport.GetMeToNextZone()
     elseif (APR.BookingList["SetQPTT"]) then
         if (APR.settings.profile.debug) then
             print("LoopBookingFunc:SetQPTT:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
         end
         APR.BookingList["SetQPTT"] = false
         APR.Arrow:SetQPTT()
-    elseif (APR.BookingList["UseTaxi"]) then
-        if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:UseTaxi")
-        end
-        APR.BookingList["UseTaxi"] = false
-        if (UnitOnTaxi("player")) then
-            local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
-            if (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
-                return
-            end
-            local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-            if (steps and steps["UseFlightPath"]) then
-                UpdateNextStep()
-            end
-        end
     end
     if (APR_ArrowUpdateNr >= APR.settings.profile.arrowFPS) then
         APR.Arrow:CalculPosition()
@@ -1680,17 +1651,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
     end
     if (event == "HEARTHSTONE_BOUND") then
-        local ZeMap
-        local currentMapId = C_Map.GetBestMapForUnit('player')
-        if (Enum and Enum.UIMapType and Enum.UIMapType.Continent and currentMapId) then
-            ZeMap = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
-        end
-        if (ZeMap and ZeMap["mapID"]) then
-            ZeMap = ZeMap["mapID"]
-        else
-            ZeMap = C_Map.GetBestMapForUnit("player")
-        end
-        APRData[APR.Realm][APR.Username]["HSLoc"] = ZeMap
+        local playerMapID = APR:GetPlayerMapID()
+        APRData[APR.Realm][APR.Username]["HSLoc"] = playerMapID
         if (steps and steps["SetHS"]) then
             _G.UpdateNextStep()
         end

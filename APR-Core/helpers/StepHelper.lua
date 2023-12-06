@@ -101,7 +101,7 @@ function GetTotalSteps()
 end
 
 function CheckIsInRouteZone()
-    if APR.FP.GoToZone then
+    if APR.transport.GoToZone then
         local currentMapID = C_Map.GetBestMapForUnit("player")
         if not currentMapID then
             return false
@@ -109,7 +109,7 @@ function CheckIsInRouteZone()
         local parentMapID = C_Map.GetMapInfo(currentMapID).parentMapID
         local childrenMap = C_Map.GetMapChildrenInfo(parentMapID)
         if not childrenMap then
-            if currentMapID == APR.FP.GoToZone then
+            if currentMapID == APR.transport.GoToZone then
                 return true
             end
             return false
@@ -117,7 +117,7 @@ function CheckIsInRouteZone()
 
         local isPresent = false
         for _, map in ipairs(childrenMap) do
-            if map.mapID == APR.FP.GoToZone then
+            if map.mapID == APR.transport.GoToZone then
                 isPresent = true
                 break
             end
@@ -125,4 +125,40 @@ function CheckIsInRouteZone()
         return isPresent
     end
     return true
+end
+
+function GetSteps(CurStep)
+    if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
+        return APR.QuestStepList[APR.ActiveMap][CurStep]
+    end
+    return nil
+end
+
+function IsARouteQuest(questId)
+    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveMap])
+    if (steps) then
+        if Contains(steps["PickUp"], questId) or Contains(steps["PickUpDB"], questId) then
+            return true
+        end
+    end
+    return false
+end
+
+function IsPickupStep()
+    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveMap])
+    if (steps) then
+        if steps["PickUp"] or steps["PickUpDB"] then
+            return true
+        end
+    end
+    return false
+end
+
+function HasTaxiNode(nodeID)
+    for id, name in pairs(APRTaxiNodes[APR.Username .. "-" .. APR.Realm]) do
+        if id == nodeID then
+            return true
+        end
+    end
+    return false
 end

@@ -101,7 +101,7 @@ function APR.party:UpdateFrameScale()
 end
 
 function APR.party:RefreshPartyFrameAnchor()
-    if (not APR.settings.profile.showGroup or not APR.settings.profile.enableAddon) or C_PetBattles.IsInBattle() then
+    if (not APR.settings.profile.showGroup or not APR.settings.profile.enableAddon) or not IsInGroup() or C_PetBattles.IsInBattle() then
         PartyScreenPanel:Hide()
         return
     end

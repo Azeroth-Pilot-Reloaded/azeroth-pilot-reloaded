@@ -3023,7 +3023,7 @@ APR.QuestStepList["A539-DesMephisto-Shadowmoon1"] = {
             ["y"] = 1526,
             ["x"] = -783.8,
         },
-        ["GetFP"] = 34836,
+        ["GetFP"] = 1384,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 1526,
@@ -3292,7 +3292,7 @@ APR.QuestStepList["A539-DesMephisto-Shadowmoon1"] = {
             ["y"] = 925.9,
             ["x"] = -791.2,
         },
-        ["GetFP"] = 33834,
+        ["GetFP"] = 1381,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 925.9,
@@ -3515,6 +3515,7 @@ APR.QuestStepList["A539-DesMephisto-Shadowmoon1"] = {
     {
         ["UseFlightPath"] = 49564,
         ["Name"] = "Wildwood Wash, Gorgrond",
+        ["NodeID"] = 1518,
         ["TT"] = {
             ["y"] = 190.8,
             ["x"] = -459.8,
@@ -7892,11 +7893,11 @@ APR.QuestStepList["A535-DesMephisto-Talador"] = {
             ["y"] = 3575,
             ["x"] = 1668.3,
         },
-        ["GetFP"] = 34563,
+        ["GetFP"] = 1447,
         ["Range"] = 0.69,
         ["TT"] = {
-            ["y"] = 3575,
-            ["x"] = 1668.3,
+            ["y"] = 3576.81,
+            ["x"] = 1669.4,
         },
     }, -- [4.5]
     {
@@ -8766,6 +8767,7 @@ APR.QuestStepList["A539-DesMephisto-Shadowmoon2"] = {
     {
         ["UseFlightPath"] = 34624,
         ["Name"] = "Fort Wrynn (Alliance), Talador",
+        ["NodeID"] = 1447,
         ["TT"] = {
             ["y"] = 190.8,
             ["x"] = -459.8,
@@ -10352,7 +10354,7 @@ APR.QuestStepList["A535-DesMephisto-Talador2"] = {
             ["y"] = 1695.3,
             ["x"] = 2567.1,
         },
-        ["GetFP"] = 34104,
+        ["GetFP"] = 1453,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 1695.3,
@@ -10690,6 +10692,7 @@ APR.QuestStepList["A535-DesMephisto-Talador2"] = {
     {
         ["UseFlightPath"] = 34701,
         ["Name"] = "Exarch's Refuge, Talador",
+        ["NodeID"] = 1453,
         ["TT"] = {
             ["y"] = 3575.6,
             ["x"] = 1668.5,
@@ -11854,6 +11857,7 @@ APR.QuestStepList["A535-DesMephisto-Talador2"] = {
     {
         ["UseFlightPath"] = 34707,
         ["Name"] = "Fort Wrynn (Alliance), Talador",
+        ["NodeID"] = 1447,
         ["TT"] = {
             ["y"] = 1377.5,
             ["x"] = 3323.6,
@@ -11872,6 +11876,7 @@ APR.QuestStepList["A535-DesMephisto-Talador2"] = {
     {
         ["UseFlightPath"] = 34655,
         ["Name"] = "Exarch's Refuge, Talador",
+        ["NodeID"] = 1453,
         ["TT"] = {
             ["y"] = 3575.6,
             ["x"] = 1668.5,

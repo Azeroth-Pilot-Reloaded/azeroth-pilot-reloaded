@@ -976,8 +976,7 @@ APR.QuestStepList["18-TirisfalGladesUndead"] = {
         },
     },
     { -- [Step 81
-        ["SetHS"] =
-            24982,
+        ["SetHS"] = 24982,
         ["TT"] = {
             ["y"] = 2285.4,
             ["x"] = 282.6,
@@ -1201,7 +1200,7 @@ APR.QuestStepList["DEV-Silverpine"] = {
             ["y"] = 1423.9,
             ["x"] = 1017.9,
         },
-        ["GetFP"] = 26989,
+        ["GetFP"] = 645,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 1423.9,
@@ -1517,7 +1516,7 @@ APR.QuestStepList["DEV-Silverpine"] = {
             ["y"] = 1054.5,
             ["x"] = 1519.9,
         },
-        ["GetFP"] = 27065,
+        ["GetFP"] = 681,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 1054.5,
@@ -1857,11 +1856,10 @@ APR.QuestStepList["DEV-Silverpine"] = {
             ["y"] = 1054.2,
             ["x"] = 1520.9,
         },
-        ["Name"] = "Forsaken High Command, Silverpine Forest",
         ["UseFlightPath"] = 27096,
-        ["PosX"] = 42.1,
-        ["PosY"] = 35.9,
         ["ETA"] = 28,
+        ["Name"] = "Forsaken High Command, Silverpine Forest",
+        ["NodeID"] = 645,
     },
     { -- [step 55
         ["Done"] = {
@@ -1985,7 +1983,7 @@ APR.QuestStepList["DEV-Silverpine"] = {
             ["y"] = 477.7,
             ["x"] = 1544,
         },
-        ["GetFP"] = 27180,
+        ["GetFP"] = 10,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 477.7,
@@ -2372,7 +2370,7 @@ APR.QuestStepList["217-Ruins of Gilneas"] = {
             ["y"] = -905.2,
             ["x"] = 1637.9,
         },
-        ["GetFP"] = 27345,
+        ["GetFP"] = 646,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = -905.2,
@@ -2765,7 +2763,7 @@ APR.QuestStepList["DEV-Silverpine2"] = {
             ["y"] = -114.3,
             ["x"] = 1314.5,
         },
-        ["GetFP"] = 27472,
+        ["GetFP"] = 654,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = -114.3,
@@ -2877,10 +2875,9 @@ APR.QuestStepList["DEV-Silverpine2"] = {
             ["x"] = 1313.8,
         },
         ["UseFlightPath"] = 27476,
-        ["Name"] = "The Sepulcher, Silverpine Forest",
-        ["PosX"] = 40.8,
-        ["PosY"] = 39.4,
         ["ETA"] = 42,
+        ["Name"] = "The Sepulcher, Silverpine Forest",
+        ["NodeID"] = 10,
     },
     { -- [step 13
         ["Trigger"] = {
@@ -3020,10 +3017,9 @@ APR.QuestStepList["DEV-Silverpine3"] = {
             ["x"] = 1543.3,
         },
         ["UseFlightPath"] = 27484,
-        ["PosX"] = 41.3,
-        ["PosY"] = 41.5,
-        ["Name"] = "The Forsaken Front, Silverpine Forest",
         ["ETA"] = 29,
+        ["Name"] = "The Forsaken Front, Silverpine Forest",
+        ["NodeID"] = 654,
     },
     { -- [step 5
         ["Done"] = {
@@ -4210,7 +4206,7 @@ APR.QuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -664.7,
             ["x"] = -533.3,
         },
-        ["GetFP"] = 28251,
+        ["GetFP"] = 667,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = -664.7,
@@ -4776,7 +4772,7 @@ APR.QuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -12.2,
             ["x"] = -875.5,
         },
-        ["GetFP"] = 28587,
+        ["GetFP"] = 13,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = -12.2,
@@ -5507,7 +5503,7 @@ APR.QuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -569.2,
             ["x"] = -1048.5,
         },
-        ["GetFP"] = 28620,
+        ["GetFP"] = 669,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = -569.2,
@@ -5629,10 +5625,9 @@ APR.QuestStepList["DEV-Hillsbrad"] = {
             ["x"] = -1048.1,
         },
         ["UseFlightPath"] = 28487,
-        ["Name"] = "Tarren Mill, Hillsbrad",
-        ["PosX"] = 46.7,
-        ["PosY"] = 41.2,
         ["ETA"] = 25,
+        ["Name"] = "Tarren Mill, Hillsbrad",
+        ["NodeID"] = 13,
     },
     {
         ["Done"] = {
@@ -5741,10 +5736,9 @@ APR.QuestStepList["DEV-Hillsbrad"] = {
             ["x"] = -875.8,
         },
         ["UseFlightPath"] = 2864311,
-        ["PosX"] = 43.6,
-        ["PosY"] = 32.7,
-        ["Name"] = "Brill, Trisfal Glades",
         ["ETA"] = 127,
+        ["Name"] = "Brill, Tirisfal Glades",
+        ["NodeID"] = 460,
     },
     {
         ["Done"] = {
@@ -6546,7 +6540,7 @@ APR.QuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -664.7,
             ["x"] = -533.3,
         },
-        ["GetFP"] = 28251,
+        ["GetFP"] = 667,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = -664.7,
@@ -7112,7 +7106,7 @@ APR.QuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -12.2,
             ["x"] = -875.5,
         },
-        ["GetFP"] = 28587,
+        ["GetFP"] = 13,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = -12.2,
@@ -7124,7 +7118,7 @@ APR.QuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 63.5,
             ["x"] = -986,
         },
-        ["CRange"] = 28587,
+        ["CRange"] = 13,
         ["Range"] = 21,
         ["TT"] = {
             ["y"] = 63.5,
@@ -7839,7 +7833,7 @@ APR.QuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -569.2,
             ["x"] = -1048.5,
         },
-        ["GetFP"] = 28620,
+        ["GetFP"] = 669,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = -569.2,
@@ -7961,10 +7955,9 @@ APR.QuestStepList["DEV-Hillsbrad"] = {
             ["x"] = -1048.1,
         },
         ["UseFlightPath"] = 28487,
-        ["Name"] = "Tarren Mill, Hillsbrad",
-        ["PosX"] = 46.7,
-        ["PosY"] = 41.2,
         ["ETA"] = 25,
+        ["Name"] = "Tarren Mill, Hillsbrad",
+        ["NodeID"] = 13,
     },
     {
         ["Done"] = {
@@ -8235,7 +8228,7 @@ APR.QuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 1512.2,
             ["x"] = -1583.5,
         },
-        ["GetFP"] = 26920,
+        ["GetFP"] = 649,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 1512.2,
@@ -8428,10 +8421,9 @@ APR.QuestStepList["DEV-Western Plaguelands"] = {
             ["x"] = -1583.1,
         },
         ["UseFlightPath"] = 26926,
-        ["PosX"] = 46.4,
-        ["PosY"] = 34.8,
-        ["Name"] = "The Bulwark, Tirisfal",
         ["ETA"] = 45,
+        ["Name"] = "The Bulwark, Tirisfal",
+        ["NodeID"] = 384,
     },
     {
         ["Done"] = {
@@ -8632,7 +8624,7 @@ APR.QuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 1869.9,
             ["x"] = -1754.1,
         },
-        ["GetFP"] = 26999,
+        ["GetFP"] = 651,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 1869.9,
@@ -8830,10 +8822,9 @@ APR.QuestStepList["DEV-Western Plaguelands"] = {
             ["x"] = -1754.8,
         },
         ["UseFlightPath"] = 27083,
-        ["PosX"] = 48.4,
-        ["PosY"] = 35.5,
-        ["Name"] = "Andorhal, Western Plaguelands",
         ["ETA"] = 30,
+        ["Name"] = "Andorhal, Western Plaguelands",
+        ["NodeID"] = 649,
     },
     {
         ["Done"] = {
@@ -9090,10 +9081,9 @@ APR.QuestStepList["DEV-Western Plaguelands"] = {
             ["x"] = -1583.5,
         },
         ["UseFlightPath"] = 26935,
-        ["PosX"] = 48.9,
-        ["PosY"] = 34.2,
-        ["Name"] = "The Menders' Stead, Western Plaguelands",
         ["ETA"] = 16,
+        ["Name"] = "The Menders' Stead, Western Plaguelands",
+        ["NodeID"] = 651,
     },
     {
         ["Done"] = {
@@ -9310,7 +9300,7 @@ APR.QuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2837.5,
             ["x"] = -1503,
         },
-        ["GetFP"] = 27002,
+        ["GetFP"] = 672,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 2837.5,
@@ -9883,10 +9873,9 @@ APR.QuestStepList["DEV-Western Plaguelands"] = {
             ["x"] = -1503,
         },
         ["UseFlightPath"] = 26957,
-        ["PosX"] = 48.9,
-        ["PosY"] = 34.2,
-        ["Name"] = "The Menders' Stead, Western Plaguelands",
         ["ETA"] = 53,
+        ["Name"] = "The Menders' Stead, Western Plaguelands",
+        ["NodeID"] = 651,
     },
     {
         ["Done"] = {

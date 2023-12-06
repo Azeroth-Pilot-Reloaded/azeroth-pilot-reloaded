@@ -755,7 +755,7 @@ if (APR.Faction == "Horde") then
             ["Gossip"] = 1,
         },
         { -- Step 31
-            ["GetFP"] = 69911,
+            ["GetFP"] = 2805,
             ["TT"] = {
                 ["y"] = 3508.2,
                 ["x"] = -1411.7,
@@ -1589,7 +1589,7 @@ if (APR.Faction == "Horde") then
             },
         },
         { -- Step 52
-            ["GetFP"] = 66080,
+            ["GetFP"] = 2816,
             ["TT"] = {
                 ["y"] = -1127.2,
                 ["x"] = -2716.1,

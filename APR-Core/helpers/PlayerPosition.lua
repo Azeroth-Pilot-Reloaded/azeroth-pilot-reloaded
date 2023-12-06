@@ -54,12 +54,24 @@ function APR:GetPlayerMapPos(MapID, dx, dy)
     end
 end
 
-function APR:GetPlayerMapID()
+function APR:GetPlayerParentMapID()
     local playerMapId
     local currentMapId = C_Map.GetBestMapForUnit('player')
-    if currentMapId and Enum and Enum.UIMapType and Enum.UIMapType.Continent then
-        playerMapId = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
+    if currentMapId and Enum and Enum.UIMapType then
+        playerMapId = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Zone, true)
         playerMapId = playerMapId and playerMapId.mapID or currentMapId
     end
     return playerMapId
+end
+
+function APR:GetPlayerCurrentTaxiNode()
+    local playerMapID = APR:GetPlayerParentMapID()
+    local taxiNodes = C_TaxiMap.GetAllTaxiNodes(playerMapID)
+
+    for _, node in ipairs(taxiNodes) do
+        if node.state == Enum.FlightPathState.Current then
+            return node
+        end
+    end
+    return {}
 end

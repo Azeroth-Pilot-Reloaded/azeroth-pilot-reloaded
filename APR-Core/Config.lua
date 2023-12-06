@@ -1209,7 +1209,7 @@ function APR.settings:ToggleAddon()
     APR.questOrderList:RefreshFrameAnchor()
     APR.party:RefreshPartyFrameAnchor()
     APR.heirloom:RefreshFrameAnchor()
-    APR.map:ToggleLine()
+    APR.map:ToggleMapPins()
 end
 
 function APR.settings:OpenSettings(name)

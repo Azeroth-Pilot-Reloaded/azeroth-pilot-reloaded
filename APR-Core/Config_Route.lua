@@ -546,7 +546,7 @@ function APR.routeconfig:GetSpeedRunPrefab()
 end
 
 function APR.routeconfig:GetStartingZonePrefab()
-    if APR.Level < 10 or Contains({ 1409, 1726, 1727 }, APR:GetPlayerMapID()) then
+    if APR.Level < 10 or Contains({ 1409, 1726, 1727 }, APR:GetPlayerParentMapID()) then
         tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "01-10 Exile's Reach")
     elseif APR.Level < 30 then
         if APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then -- Allied DK
