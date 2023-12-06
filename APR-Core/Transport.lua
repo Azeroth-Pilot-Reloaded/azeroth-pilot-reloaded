@@ -1,15 +1,15 @@
-﻿local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-APR.FP = {}
-APR.FP.Zonening = 0
+﻿local _G = _G
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+APR.transport = APR:NewModule("Transport")
+
+APR.transport.CurrentTaxiNode = {}
+APR.transport.StepTaxiNode = {}
+APR.transport.Zonening = 0
 local APRLumberCheck = 0
 
-function APR.FP.GetCustomZone()
-    local playerMapID
-    local currentMapId = C_Map.GetBestMapForUnit('player')
-    if (Enum and Enum.UIMapType and Enum.UIMapType.Continent and currentMapId) then
-        playerMapID = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
-        playerMapID = playerMapID and playerMapID.mapID or currentMapId
-    end
+function APR.transport.GetCustomZone()
+    local playerMapID = APR:GetPlayerParentMapID()
 
     local zenr = 0
     if (APRCustomPath and APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
@@ -112,7 +112,7 @@ function APR.FP.GetCustomZone()
         return
     end
     if (APR.settings.profile.debug) then
-        print("Function: APR.FP.GetCustomZone()")
+        print("Function: APR.transport.GetCustomZone()")
     end
 
     -- Get the current Route wanted MapID and Route File
@@ -127,7 +127,7 @@ function APR.FP.GetCustomZone()
 end
 
 -- TODO: save zone in transportDB
-function APR.FP.GetMeToNextZoneSpecialRe(mapID)
+function APR.transport.GetMeToNextZoneSpecialRe(mapID)
     if (APRLumberCheck == 0 and C_QuestLog.IsQuestFlaggedCompleted(35049)) then
         APR.QuestStepList["A543-DesMephisto-Gorgrond"] = nil
         APR.QuestStepList["A543-DesMephisto-Gorgrond"] = APR.QuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"]
@@ -347,23 +347,21 @@ function APR.FP.GetMeToNextZoneSpecialRe(mapID)
     return mapID
 end
 
-function APR.FP.GetMeToNextZone()
+function APR.transport.GetMeToNextZone()
     APR.IsInRouteZone = false
     if (APR.settings.profile.debug) then
-        print("Function: APR.FP.GetMeToNextZone()")
+        print("Function: APR.transport.GetMeToNextZone()")
     end
-    local routeZoneMapID, routeName = APR.FP.GetCustomZone()
+    local routeZoneMapID, routeName = APR.transport.GetCustomZone()
     if (routeZoneMapID and routeName) then
         APR.ActiveMap = routeName
-        APR.FP.GoToZone = routeZoneMapID
+        APR.transport.GoToZone = routeZoneMapID
     end
-    local playerMapID = C_Map.GetBestMapForUnit("player")
-    if not playerMapID then
+    local playerMapInfo = APR:GetPlayerParentMapID()
+    if not playerMapInfo then
         return
     end
-    local playerMapInfo = MapUtil.GetMapParentInfo(playerMapID, Enum.UIMapType.Continent + 1, true)
-    playerMapInfo = playerMapInfo and playerMapInfo.mapID or playerMapID
-    playerMapInfo = APR.FP.GetMeToNextZoneSpecialRe(playerMapInfo)
+    playerMapInfo = APR.transport.GetMeToNextZoneSpecialRe(playerMapInfo)
 
     -- local index, currentRouteName = next(APRCustomPath[APR.Username .. "-" .. APR.Realm])
     for routeCategory, _ in pairs(APR.QuestStepListListing) do
@@ -372,21 +370,21 @@ function APR.FP.GetMeToNextZone()
             local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
             local step = APR.QuestStepList[APR.ActiveMap][CurStep]
             if (APR.QuestStepListListingZone[zoneID] and playerMapInfo and APR.QuestStepListListingZone[zoneID] == playerMapInfo) or (step and step.Zone == playerMapInfo) then
-                APR.FP.GoToZone = nil
+                APR.transport.GoToZone = nil
                 return
             end
         end
     end
     if (APR.ActiveQuests and APR.ActiveQuests[59974] and (APR.ActiveMap == "A1670-Oribos (Maw-Maldraxxus)" or APR.ActiveMap == "1670-Oribos (Maw-Maldraxxus)" or APR.ActiveMap == "A1670-Z7-Oribos-Story" or APR.ActiveMap == "1670-Z7-Oribos-Story")) then
-        APR.FP.GoToZone = nil
+        APR.transport.GoToZone = nil
         return
     end
     if (APR.ActiveMap == "84-IntroQline" and playerMapInfo == 84) then
-        APR.FP.GoToZone = nil
+        APR.transport.GoToZone = nil
         return
     end
     if (APR.ActiveMap == "85-IntroQline" and playerMapInfo == 85) then
-        APR.FP.GoToZone = nil
+        APR.transport.GoToZone = nil
         return
     end
 
@@ -395,25 +393,23 @@ function APR.FP.GetMeToNextZone()
     ----------------------------------------------------------------
     APR.IsInRouteZone = true
     if (APR.settings.profile.debug) then
-        print("Function: APR.FP.GetMeToNextZone() Part 2")
+        print("Function: APR.transport.GetMeToNextZone() Part 2")
     end
 
-    if (APR.FP.Zonening == 1) then
+    if (APR.transport.Zonening == 1) then
         return
     end
-    if (not APR.FP.GoToZone) then
+    if (not APR.transport.GoToZone) then
         APR.IsInRouteZone = false
         return
     end
 
-    local playerParentMapID = MapUtil.GetMapParentInfo(C_Map.GetBestMapForUnit("player"), Enum.UIMapType.Continent + 1,
-        true)
-    playerParentMapID = playerParentMapID and playerParentMapID.mapID or C_Map.GetBestMapForUnit("player")
-    local routeMapID = APR.FP.GetMeToNextZoneSpecialRe(playerParentMapID)
+    local playerParentMapID = APR:GetPlayerParentMapID()
+    local routeMapID = APR.transport.GetMeToNextZoneSpecialRe(playerParentMapID)
     local playerMapID = C_Map.GetBestMapForUnit('player')
-    local GoToZone = APR.FP.GoToZone
+    local GoToZone = APR.transport.GoToZone
     local CurContinent = APR:GetContinent()
-    local isSameContinent, gotoCont = APR.FP.IsSameContinent(GoToZone)
+    local isSameContinent, gotoCont = APR.transport.IsSameContinent(GoToZone)
     local mapInfo = C_Map.GetMapInfo(GoToZone)
     if (not mapInfo) then
         return
@@ -515,16 +511,16 @@ function APR.FP.GetMeToNextZone()
         APR.ArrowActive_X = 805.7
         APR.ArrowActive_Y = -1085.1
     elseif not isSameContinent then
-        APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
+        APR.transport.SwitchCont(CurContinent, gotoCont, GoToZone)
     else
         if (routeMapID == GoToZone) then
-            APR.FP.GoToZone = nil
+            APR.transport.GoToZone = nil
             APR.IsInRouteZone = false
         else
             local togozo, ZefpID
             local continent = APR:GetContinent()
             if (continent and APR_Transport["FPs"][APR.Faction][continent]) then
-                togozo, ZefpID = APR.FP.GetStarterZoneFP(GoToZone)
+                togozo, ZefpID = APR.transport.GetStarterZoneFP(GoToZone)
             end
             if (togozo ~= nil) then
                 local ZeContz
@@ -538,10 +534,10 @@ function APR.FP.GetMeToNextZone()
                     ZeContz = nil
                 end
                 if (not ZeContz) then
-                    local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                    local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                     if (Zefp) then
                         APR.currentStep:AddExtraLineText("NEED_CHECK_FPS", L["NEED_CHECK_FPS"] .. ": " .. Zefp)
-                        APR.FP.QuedFP = togozo
+                        APR.transport.QuedFP = togozo
                         APR.ArrowActive = 1
                         APR.ArrowActive_X = ZeX
                         APR.ArrowActive_Y = ZeY
@@ -551,8 +547,8 @@ function APR.FP.GetMeToNextZone()
                         [ZefpID]
                     if (zeFP and zeFP == 1) then
                         APR.currentStep:AddExtraLineText("FLY_TO_" .. togozo, L["FLY_TO"] .. " " .. togozo)
-                        APR.FP.QuedFP = togozo
-                        local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                        APR.transport.QuedFP = togozo
+                        local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                         if (Zefp and ZeX and ZeY) then
                             APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                             APR.ArrowActive = 1
@@ -560,7 +556,7 @@ function APR.FP.GetMeToNextZone()
                             APR.ArrowActive_Y = ZeY
                         end
                     else
-                        local zdse, zX, zY = APR.FP.CheckWheretoRun(GoToZone, routeMapID)
+                        local zdse, zX, zY = APR.transport.CheckWheretoRun(GoToZone, routeMapID)
                         if (zdse) then
                             local mapzinfozx = C_Map.GetMapInfo(zdse)
                             APR.currentStep:AddExtraLineText("GO_TO" .. mapzinfozx.name,
@@ -578,7 +574,7 @@ function APR.FP.GetMeToNextZone()
         end
     end
     if APR.IsInRouteZone then
-        C_Timer.After(2, APR.FP.GetMeToNextZone)
+        C_Timer.After(2, APR.transport.GetMeToNextZone)
     end
     if (DestSet == 1) then
         APR.ArrowActive = 0
@@ -587,7 +583,7 @@ function APR.FP.GetMeToNextZone()
     end
 end
 
-function APR.FP.CheckWheretoRun(GoToZone, APRt_Zone)
+function APR.transport.CheckWheretoRun(GoToZone, APRt_Zone)
     if (APR.TDB["ZoneMoveOrder"][APRt_Zone] and APR.TDB["ZoneMoveOrder"][APRt_Zone][GoToZone]) then
         local zdse = APR.TDB["ZoneMoveOrder"][APRt_Zone][GoToZone]
         local continent = APR:GetContinent()
@@ -612,7 +608,7 @@ function APR.FP.CheckWheretoRun(GoToZone, APRt_Zone)
     end
 end
 
-function APR.FP.GetStarterZoneFP(GoToZone, DestCont)
+function APR.transport.GetStarterZoneFP(GoToZone, DestCont)
     local continent = APR:GetContinent()
     if (DestCont) then
         for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction][DestCont][GoToZone]) do
@@ -641,7 +637,7 @@ function APR.FP.GetStarterZoneFP(GoToZone, DestCont)
     end
 end
 
-function APR.FP.IsSameContinent(GoToZone)
+function APR.transport.IsSameContinent(GoToZone)
     local CurContinent = APR:GetContinent()
     if (APR.TDB["FPs"][APR.Faction]) then
         for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction]) do
@@ -660,7 +656,7 @@ function APR.FP.IsSameContinent(GoToZone)
 end
 
 -- TODO: Save transition to TransportDB + add missing one (like DF)
-function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
+function APR.transport.SwitchCont(CurContinent, gotoCont, GoToZone)
     local APRt_Zone
     local currentMapId = C_Map.GetBestMapForUnit('player')
     APRt_Zone = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
@@ -669,11 +665,11 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
     else
         APRt_Zone = C_Map.GetBestMapForUnit("player")
     end
-    APRt_Zone = APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
+    APRt_Zone = APR.transport.GetMeToNextZoneSpecialRe(APRt_Zone)
     local continent = APR:GetContinent()
     if (APR.Faction == "Alliance") then
         if (CurContinent == 13) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Stormwind, Elwynn") then
                 local d_y, d_x = UnitPosition("player")
                 if (d_y < -8981.3 and d_x > 866.7) then
@@ -736,8 +732,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
                 APR.currentStep:AddExtraLineText("FLY_TO_" .. zclosestname, L["FLY_TO"] .. " " ..
                     zclosestname)
-                APR.FP.QuedFP = zclosestname
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                APR.transport.QuedFP = zclosestname
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -746,7 +742,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 101) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Shattrath, Terokkar Forest") then
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
@@ -756,7 +752,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Shattrath", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(108).name)
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -765,7 +761,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 113) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Dalaran") then
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
@@ -775,8 +771,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Dalaran", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(41).name)
-                APR.FP.QuedFP = "Dalaran"
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                APR.transport.QuedFP = "Dalaran"
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -785,7 +781,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 1550) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Oribos") then
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
@@ -793,7 +789,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["x"]
                 APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Stormwind"]["y"]
             else
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (APRt_Zone == 1536) then
                     if (zdep == "Theater of Pain, Maldraxxus") then
                         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Oribos",
@@ -804,8 +800,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                     else
                         APR.currentStep:AddExtraLineText("FLY_TO_", L["FLY_TO"] .. " " ..
                             C_Map.GetMapInfo(1683).name .. ', ' .. C_Map.GetMapInfo(1689).name)
-                        APR.FP.QuedFP = "Theater of Pain, Maldraxxus"
-                        local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                        APR.transport.QuedFP = "Theater of Pain, Maldraxxus"
+                        local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                         if (Zefp) then
                             APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                             APR.ArrowActive = 1
@@ -816,7 +812,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_Oribos", L["FLY_TO"] .. " " ..
                         C_Map.GetMapInfo(1670).name)
-                    APR.FP.QuedFP = "Oribos"
+                    APR.transport.QuedFP = "Oribos"
                     if (Zefp) then
                         APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                         APR.ArrowActive = 1
@@ -826,7 +822,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 424) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Paw'Don Village, Jade Forest") then
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
@@ -836,8 +832,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Paw'Don Village", L["FLY_TO"] .. " Paw'Don Village, " ..
                     C_Map.GetMapInfo(371).name)
-                APR.FP.QuedFP = "Paw'Don Village, Jade Forest"
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                APR.transport.QuedFP = "Paw'Don Village, Jade Forest"
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -846,7 +842,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 572) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Stormshield (Alliance), Ashran") then
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
@@ -856,8 +852,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Stormshield", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(622).name)
-                APR.FP.QuedFP = "Stormshield (Alliance), Ashran"
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                APR.transport.QuedFP = "Stormshield (Alliance), Ashran"
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -866,7 +862,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 12) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "The Exodar") then
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
@@ -876,8 +872,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Exodar", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(103).name)
-                APR.FP.QuedFP = "The Exodar"
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                APR.transport.QuedFP = "The Exodar"
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -886,7 +882,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 619) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Dalaran") then
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Stormwind",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(84).name)
@@ -896,8 +892,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Dalaran", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(125).name)
-                APR.FP.QuedFP = "Dalaran"
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                APR.transport.QuedFP = "Dalaran"
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -906,7 +902,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 875) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (APRt_Zone == 862) then
                 if (zdep == "Xibala, Zuldazar") then
                     APR.currentStep:AddExtraLineText("TALK_TO_Daria", L["TALK_TO"] .. " Daria Smithson")
@@ -916,8 +912,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_", L["FLY_TO"] .. " Xibala, " ..
                         C_Map.GetMapInfo(862).name)
-                    APR.FP.QuedFP = "Xibala, Zuldazar"
-                    local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                    APR.transport.QuedFP = "Xibala, Zuldazar"
+                    local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                     if (Zefp) then
                         APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                         APR.ArrowActive = 1
@@ -934,8 +930,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_", L["FLY_TO"] .. " Fort Victory, " ..
                         C_Map.GetMapInfo(863).name)
-                    APR.FP.QuedFP = "Fort Victory, Nazmir"
-                    local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                    APR.transport.QuedFP = "Fort Victory, Nazmir"
+                    local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                     if (Zefp) then
                         APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                         APR.ArrowActive = 1
@@ -954,8 +950,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                     APR.currentStep:AddExtraLineText("FLY_TO_Shatterstone Harbor",
                         L["FLY_TO"] .. " Shatterstone Harbor, " ..
                         C_Map.GetMapInfo(864).name)
-                    APR.FP.QuedFP = "Shatterstone Harbor, Vol'dun"
-                    local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                    APR.transport.QuedFP = "Shatterstone Harbor, Vol'dun"
+                    local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                     if (Zefp) then
                         APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                         APR.ArrowActive = 1
@@ -965,7 +961,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 876) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Tradewinds Market, Tiragarde Sound") then
                 if (gotoCont == 875) then
                     if (GoToZone == 862) then
@@ -997,8 +993,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Tradewinds Market", L["FLY_TO"] .. " Tradewinds Market, " ..
                     C_Map.GetMapInfo(895).name)
-                APR.FP.QuedFP = "Tradewinds Market, Tiragarde Sound"
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                APR.transport.QuedFP = "Tradewinds Market, Tiragarde Sound"
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -1009,7 +1005,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
         end
     else
         if (CurContinent == 12) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Orgrimmar, Durotar") then
                 if (gotoCont == 13) then
                     if (GoToZone == 51 or GoToZone == 224 or GoToZone == 17 or GoToZone == 36) then
@@ -1065,8 +1061,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Orgrimmar", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(85).name)
-                APR.FP.QuedFP = "Orgrimmar, Durotar"
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                APR.transport.QuedFP = "Orgrimmar, Durotar"
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -1075,7 +1071,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 1550) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Oribos") then
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
@@ -1083,7 +1079,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 APR.ArrowActive_X = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["x"]
                 APR.ArrowActive_Y = APR.TDB["Ports"][APR.Faction][continent]["Orgrimmar"]["y"]
             else
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (APRt_Zone == 1536) then
                     if (zdep == "Theater of Pain, Maldraxxus") then
                         APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Oribos",
@@ -1094,8 +1090,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                     else
                         APR.currentStep:AddExtraLineText("FLY_TO_Theater of Pain, Maldraxxus", L["FLY_TO"] .. " " ..
                             C_Map.GetMapInfo(1683).name .. ', ' .. C_Map.GetMapInfo(1689).name)
-                        APR.FP.QuedFP = "Theater of Pain, Maldraxxus"
-                        local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                        APR.transport.QuedFP = "Theater of Pain, Maldraxxus"
+                        local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                         if (Zefp) then
                             APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                             APR.ArrowActive = 1
@@ -1106,7 +1102,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_Oribos", L["FLY_TO"] .. " " ..
                         C_Map.GetMapInfo(1670).name)
-                    APR.FP.QuedFP = "Oribos"
+                    APR.transport.QuedFP = "Oribos"
                     if (Zefp) then
                         APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                         APR.ArrowActive = 1
@@ -1116,7 +1112,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 13) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Brill, Tirisfal Glades") then
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
@@ -1126,8 +1122,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Brill", L["FLY_TO"] .. " Brill, " ..
                     C_Map.GetMapInfo(18).name)
-                APR.FP.QuedFP = "Brill, Tirisfal Glades"
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                APR.transport.QuedFP = "Brill, Tirisfal Glades"
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -1136,7 +1132,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 101) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Shattrath, Terokkar Forest") then
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
@@ -1146,8 +1142,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Shattrath, Terokkar Forest", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(111).name .. ', ' .. C_Map.GetMapInfo(108).name)
-                APR.FP.QuedFP = "Shattrath, Terokkar Forest"
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                APR.transport.QuedFP = "Shattrath, Terokkar Forest"
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -1156,7 +1152,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 113) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Dalaran") then
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
@@ -1166,8 +1162,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Dalaran", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(125).name)
-                APR.FP.QuedFP = "Dalaran"
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                APR.transport.QuedFP = "Dalaran"
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -1176,7 +1172,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 424) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Honeydew Village, Jade Forest") then
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
@@ -1186,8 +1182,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Honeydew Village", L["FLY_TO"] .. " Honeydew Village, " ..
                     C_Map.GetMapInfo(371).name)
-                APR.FP.QuedFP = "Honeydew Village, Jade Forest"
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                APR.transport.QuedFP = "Honeydew Village, Jade Forest"
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -1196,7 +1192,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 572) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Warspear, Ashran") then
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
@@ -1206,8 +1202,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Warspear", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(624).name)
-                APR.FP.QuedFP = "Warspear, Ashran"
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                APR.transport.QuedFP = "Warspear, Ashran"
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -1216,7 +1212,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 619) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (zdep == "Dalaran") then
                 APR.currentStep:AddExtraLineText("USE_PORTAL_TO_Orgrimmar",
                     L["USE_PORTAL_TO"] .. " " .. C_Map.GetMapInfo(85).name)
@@ -1226,7 +1222,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_Dalaran", L["FLY_TO"] .. " " ..
                     C_Map.GetMapInfo(41).name)
-                APR.FP.QuedFP = "Dalaran"
+                APR.transport.QuedFP = "Dalaran"
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -1235,7 +1231,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 875) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (gotoCont == 876) then
                 if (zdep == "Port of Zandalar, Zuldazar") then
                     if (GoToZone == 896) then
@@ -1260,8 +1256,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_Port of Zandalar", L["FLY_TO"] .. " Port of Zandalar, " ..
                         C_Map.GetMapInfo(862).name)
-                    APR.FP.QuedFP = "Port of Zandalar, Zuldazar"
-                    local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                    APR.transport.QuedFP = "Port of Zandalar, Zuldazar"
+                    local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                     if (Zefp) then
                         APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                         APR.ArrowActive = 1
@@ -1278,8 +1274,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
             else
                 APR.currentStep:AddExtraLineText("FLY_TO_The Great Seal", L["FLY_TO"] .. " The Great Seal, " ..
                     C_Map.GetMapInfo(1165).name)
-                APR.FP.QuedFP = "The Great Seal"
-                local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                APR.transport.QuedFP = "The Great Seal"
+                local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                 if (Zefp) then
                     APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                     APR.ArrowActive = 1
@@ -1288,7 +1284,7 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 end
             end
         elseif (CurContinent == 876) then
-            local zdep = APR.FP.ClosestFP()
+            local zdep = APR.transport.ClosestFP()
             if (APRt_Zone == 896) then
                 if (zdep == "Anyport, Drustvar") then
                     APR.currentStep:AddExtraLineText("TALK_TO_Swellthrasher", L["TALK_TO"] .. " Swellthrasher")
@@ -1298,8 +1294,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_Anyport", L["FLY_TO"] .. " Anyport, " ..
                         C_Map.GetMapInfo(896).name)
-                    APR.FP.QuedFP = "Anyport, Drustvar"
-                    local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                    APR.transport.QuedFP = "Anyport, Drustvar"
+                    local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                     if (Zefp) then
                         APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                         APR.ArrowActive = 1
@@ -1316,8 +1312,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_Warfang Hold", L["FLY_TO"] .. " Warfang Hold, " ..
                         C_Map.GetMapInfo(942).name)
-                    APR.FP.QuedFP = "Warfang Hold, Stormsong Valley"
-                    local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                    APR.transport.QuedFP = "Warfang Hold, Stormsong Valley"
+                    local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                     if (Zefp) then
                         APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                         APR.ArrowActive = 1
@@ -1335,8 +1331,8 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
                 else
                     APR.currentStep:AddExtraLineText("FLY_TO_Plunder Harbor", L["FLY_TO"] .. " Plunder Harbor, " ..
                         C_Map.GetMapInfo(895).name)
-                    APR.FP.QuedFP = "Plunder Harbor, Tiragarde Sound"
-                    local Zefp, ZeX, ZeY = APR.FP.ClosestFP()
+                    APR.transport.QuedFP = "Plunder Harbor, Tiragarde Sound"
+                    local Zefp, ZeX, ZeY = APR.transport.ClosestFP()
                     if (Zefp) then
                         APR.currentStep:AddExtraLineText("CLOSEST_FP" .. Zefp, L["CLOSEST_FP"] .. ": " .. Zefp)
                         APR.ArrowActive = 1
@@ -1349,9 +1345,9 @@ function APR.FP.SwitchCont(CurContinent, gotoCont, GoToZone)
     end
 end
 
-function APR.FP.ClosestFP()
+function APR.transport.ClosestFP()
     if (APR.settings.profile.debug) then
-        print("Function: APR.FP.ClosestFP()")
+        print("Function: APR.transport.ClosestFP()")
     end
     local testinstsance = UnitPosition("player")
     if (not testinstsance) then
@@ -1368,7 +1364,7 @@ function APR.FP.ClosestFP()
     else
         APRt_Zone = C_Map.GetBestMapForUnit("player")
     end
-    APRt_Zone = APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
+    APRt_Zone = APR.transport.GetMeToNextZoneSpecialRe(APRt_Zone)
     local continent = APR:GetContinent()
     if (APR.TDB["FPs"][APR.Faction][continent] and APR.TDB["FPs"][APR.Faction][continent][APRt_Zone]) then
         local cloasest = 99999
@@ -1400,9 +1396,11 @@ end
 
 APR_Transport_EventFrame = CreateFrame("Frame")
 APR_Transport_EventFrame:RegisterEvent("TAXIMAP_OPENED")
+APR_Transport_EventFrame:RegisterEvent("PLAYER_CONTROL_LOST")
 APR_Transport_EventFrame:RegisterEvent("PLAYER_LEAVING_WORLD")
 APR_Transport_EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
+    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveMap])
     if APR.settings.profile.showEvent then
         print("EVENT: Transport - ", event)
     end
@@ -1410,125 +1408,72 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
         return
     end
     if (event == "PLAYER_LEAVING_WORLD") then
-        APR.FP.Zonening = 1
+        APR.transport.Zonening = 1
     elseif (event == "PLAYER_ENTERING_WORLD") then
-        APR.FP.Zonening = 0
+        APR.transport.Zonening = 0
         if (APR.IsInRouteZone) then
-            APR.FP.GetMeToNextZone()
+            APR.transport.GetMeToNextZone()
         end
     elseif (event == "TAXIMAP_OPENED") then
-        local continent = APR:GetContinent()
-        if (not APR_Transport) then
-            APR_Transport = {}
-        end
-        if (not APR_Transport["FPs"]) then
-            APR_Transport["FPs"] = {}
-        end
-        if (not APR_Transport["FPs"][APR.Faction]) then
-            APR_Transport["FPs"][APR.Faction] = {}
-        end
-        if (not APR_Transport["FPs"][APR.Faction][continent]) then
-            APR_Transport["FPs"][APR.Faction][continent] = {}
-        end
-        if (not APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]) then
-            APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm] = {}
-        end
-        if (not APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"]) then
-            APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"] = {}
-        end
-        if (not APR_Transport["FPs"][APR.Faction][continent]["fpn"]) then
-            APR_Transport["FPs"][APR.Faction][continent]["fpn"] = {}
-        end
-        APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"][continent] = 1
-        local APRt_Zone
-        local currentMapId = C_Map.GetBestMapForUnit('player')
-        if (not currentMapId) then
-            return
-        end
-        APRt_Zone = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Continent + 1, true)
-        if (APRt_Zone and APRt_Zone["mapID"]) then
-            APRt_Zone = APRt_Zone["mapID"]
-        else
-            APRt_Zone = C_Map.GetBestMapForUnit("player")
-        end
-        APRt_Zone = APR.FP.GetMeToNextZoneSpecialRe(APRt_Zone)
-        local ZeFPS = C_TaxiMap.GetAllTaxiNodes(APRt_Zone)
-        for APR_index2, APR_value2 in PairsByKeys(ZeFPS) do
-            local NodeIDZ = ZeFPS[APR_index2]["nodeID"]
-            local ZName = ZeFPS[APR_index2]["name"]
-            local ZState = ZeFPS[APR_index2]["state"]
-            APR_Transport["FPs"][APR.Faction][continent]["fpn"][NodeIDZ] = ZName
-            if (ZState == 0) then
-                APR.TaxiTimerCur = ZName
+        ------------------------------------------
+        --------------- Save FP ------------------
+        ------------------------------------------
+
+        local playerMapID = APR:GetPlayerParentMapID()
+        -- TODO: Rework this function
+        playerMapID = APR.transport.GetMeToNextZoneSpecialRe(playerMapID)
+        local taxiNodes = C_TaxiMap.GetAllTaxiNodes(playerMapID)
+
+        for _, node in ipairs(taxiNodes) do
+            if node.state ~= Enum.FlightPathState.Unreachable and not APRTaxiNodes[APR.Username .. "-" .. APR.Realm][node.nodeID] then
+                APRTaxiNodes[APR.Username .. "-" .. APR.Realm][node.nodeID] = node.name
             end
-            if (ZState == 2) then
-                APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm][NodeIDZ] = 0
-            else
-                APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm][NodeIDZ] = 1
+            if node.state == Enum.FlightPathState.Current then
+                APR.transport.CurrentTaxiNode = node
+            end
+            if steps then
+                if steps.NodeID == node.nodeID then
+                    APR.transport.StepTaxiNode = node
+                end
             end
         end
-        local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
-        local steps
-        if (CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
-            steps = APR.QuestStepList[APR.ActiveMap][CurStep]
-        end
-        if (steps and not IsModifierKeyDown() and APR.settings.profile.autoFlight) then
-            local TName = steps["Name"]
-            local TContonent = continent
-            if (steps["UseFlightPath"]) then
-                local zclosestname
-                for APR_index, APR_value in pairs(APR.TDB["FPs"][APR.Faction][TContonent]) do
-                    for APR_index2, APR_value2 in pairs(APR.TDB["FPs"][APR.Faction][TContonent][APR_index]) do
-                        if (APR.TDB["FPs"][APR.Faction][TContonent][APR_index][APR_index2]["name"] == TName) then
-                            if (APR_Transport["FPs"] and APR_Transport["FPs"][APR.Faction] and APR_Transport["FPs"][APR.Faction][TContonent] and APR_Transport["FPs"][APR.Faction][TContonent]["fpn"] and APR_Transport["FPs"][APR.Faction][TContonent]["fpn"][APR_index2]) then
-                                zclosestname = APR_Transport["FPs"][APR.Faction][TContonent]["fpn"][APR_index2]
-                            else
-                                zclosestname = APR.TDB["FPs"][APR.Faction][TContonent][APR_index][APR_index2]["name"]
+        -------------------------------------------
+        --------------- Auto Flight----------------
+        -------------------------------------------
+        if steps then
+            if steps.UseFlightPath then
+                if APR.transport.CurrentTaxiNode.nodeID == APR.transport.StepTaxiNode.nodeId then
+                    NextQuestStep()
+                elseif not IsModifierKeyDown() then
+                    for i = 1, _G.NumTaxiNodes() do
+                        if _G.TaxiNodeName(i) == APR.transport.StepTaxiNode.name then
+                            if APR.settings.profile.autoFlight then
+                                TakeTaxiNode(Nodetotake)
                             end
-                            if (zclosestname) then
-                                APR.FP.QuedFP = zclosestname
-                                break
-                            end
+                            break
                         end
                     end
-                    if (zclosestname) then
-                        break
-                    end
                 end
             end
+        end
+    elseif event == "PLAYER_CONTROL_LOST" and UnitOnTaxi("player") then
+        if steps and steps.ETA then
+            APR.AFK:SetAfkTimer(steps.ETA)
+        else
+            -- Reccord timer or play if already in the table
+            local timer = APRTaxiNodesTimer
+                [APR.transport.CurrentTaxiNode.name .. "-" .. APR.transport.StepTaxiNode.name]
+            if not timer then
+                APR.AFK.TaxiTimerRecorder:Play()
+            else
+                APR.AFK:SetAfkTimer(timer)
+            end
+        end
+        if steps and steps.UseFlightPath then
+            UpdateNextStep()
         end
 
-        if (APR.FP.QuedFP and APR.settings.profile.autoFlight) then
-            local Nodetotake
-            for CLi = 1, NumTaxiNodes() do
-                if (TaxiNodeName(CLi) == APR.FP.QuedFP) then
-                    if (steps and steps["UseFlightPath"] and TaxiNodeGetType(CLi) == "CURRENT") then
-                        NextQuestStep()
-                    else
-                        Nodetotake = CLi
-                    end
-                    break
-                end
-            end
-            if (Nodetotake) then
-                TakeTaxiNode(Nodetotake)
-                APR.TaxiTimerDes = APR.FP.QuedFP
-                if (steps and steps["ETA"]) then
-                    APR.AFK:SetAfkTimer(steps["ETA"])
-                else
-                    local timer = APR_TaxiTimers[APR.TaxiTimerCur .. "-" .. APR.TaxiTimerDes]
-                    if not timer then
-                        APR.AFK.TaxiTimerRecorder:Play()
-                    else
-                        APR.AFK:SetAfkTimer(timer)
-                    end
-                end
-                APR.FP.QuedFP = nil
-                APR.BookingList["UseTaxi"] = true
-            end
-            if (UnitOnTaxi("player")) then
-                APR.FP.QuedFP = nil
-            end
-        end
+        -- TODO: delete with rework
+        APR.transport.QuedFP = nil
     end
 end)

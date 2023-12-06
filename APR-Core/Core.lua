@@ -92,7 +92,7 @@ function APR.CheckCustomEmpty() -- TODO: Check that
         print("Function: APR.CheckCustomEmpty()")
     end
     if not next(APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
-        APR.FP.GoToZone = nil
+        APR.transport.GoToZone = nil
         APR.ActiveMap = nil
     end
 end
@@ -119,14 +119,19 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR_LoadInTimer:SetLooping("REPEAT")
         APR_LoadInTimer:SetScript("OnLoop", function(self, event, ...)
             if (CoreLoadin) then
-                if (not APR_Transport) then
-                    APR_Transport = {}
+                if (not APRTaxiNodes) then
+                    APRTaxiNodes = {}
                 end
+                if (not APRTaxiNodes[APR.Username .. "-" .. APR.Realm]) then
+                    APRTaxiNodes[APR.Username .. "-" .. APR.Realm] = {}
+                end
+
+                if (not APRTaxiNodesTimer) then
+                    APRTaxiNodesTimer = {}
+                end
+
                 if (not APRCustomPath) then
                     APRCustomPath = {}
-                end
-                if (not APR_TaxiTimers) then
-                    APR_TaxiTimers = {}
                 end
                 if (not APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
                     APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
@@ -137,25 +142,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 if (not APRZoneCompleted[APR.Username .. "-" .. APR.Realm]) then
                     APRZoneCompleted[APR.Username .. "-" .. APR.Realm] = {}
                 end
-                if (not APR_Transport["FPs"]) then
-                    APR_Transport["FPs"] = {}
-                end
-                if (not APR_Transport["FPs"][APR.Faction]) then
-                    APR_Transport["FPs"][APR.Faction] = {}
-                end
-                local continent = APR:GetContinent()
-                if continent then
-                    if not APR_Transport["FPs"][APR.Faction][continent] then
-                        APR_Transport["FPs"][APR.Faction][continent] = {}
-                    end
-                    if not APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm] then
-                        APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm] = {}
-                    end
-                    if not APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"] then
-                        APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"] = {}
-                    end
-                end
-
 
                 APR.BookingList["UpdateMapId"] = true
                 APR.BookingList["UpdateQuest"] = true
@@ -172,7 +158,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR_LoadInTimer:Stop()
                 C_Timer.After(4, APR_BookingUpdateMapId)
                 C_Timer.After(5, UpdateQuestAndStep)
-                --APR.FP.ToyFPs()
+                --APR.transport.ToyFPs()
                 local CQIDs = C_QuestLog.GetAllCompletedQuestIDs()
                 APRData[APR.Realm][APR.Username]["QuestCounter"] = getn(CQIDs)
                 APRData[APR.Realm][APR.Username]["QuestCounter2"] = APRData[APR.Realm][APR.Username]["QuestCounter"]

@@ -397,13 +397,15 @@ function APR.questOrderList:AddStepFromRoute()
                 local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
                 AddStepFrame(stepIndex, questText, color)
             elseif step.GetFP then
-                local questID = step.GetFP
-                local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
+                local nodeID = step.GetFP
+                local color = (HasTaxiNode(nodeID) or CurStep > stepIndex) and "green" or "gray"
                 AddStepFrame(stepIndex, L["GET_FLIGHTPATH"], color)
             elseif step.UseFlightPath then
                 local questID = step.UseFlightPath
+                local questText = step.Boat and L["USE_BOAT"] or L["USE_FLIGHTPATH"]
+                local questInfo = { { questID = APRTaxiNodes[APR.Username .. "-" .. APR.Realm][step.NodeID] or step.Name } }
                 local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
-                AddStepFrame(stepIndex, L["USE_FLIGHTPATH"], color)
+                AddStepFrameWithQuest(stepIndex, questText, questInfo, color)
             elseif step.WarMode then
                 AddStepFrame(stepIndex, L["TURN_ON_WARMODE"], "gray")
             elseif step.ZoneDoneSave then

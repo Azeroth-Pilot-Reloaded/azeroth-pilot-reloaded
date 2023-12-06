@@ -2857,7 +2857,7 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6756.8,
             ["x"] = 6018.7,
         },
-        ["GetFP"] = 33412,
+        ["GetFP"] = 1387,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 6756.8,
@@ -3704,7 +3704,7 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7885.7,
             ["x"] = 5560.3,
         },
-        ["GetFP"] = 34227,
+        ["GetFP"] = 1388,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 7885.7,
@@ -3757,6 +3757,7 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
         ["RaidIcon"] = 44919,
         ["UseFlightPath"] = 34230,
         ["Name"] = "Throm'Var, Frostfire Ridge",
+        ["NodeID"] = 1388,
         ["TT"] = {
             ["y"] = 5631,
             ["x"] = 4739.1,
@@ -4252,9 +4253,8 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 5560.5,
         },
         ["UseFlightPath"] = 33484,
-        ["PosX"] = 25,
-        ["PosY"] = 29.7,
         ["Name"] = "Bladespire Citadel, Frostfire Ridge",
+        ["NodeID"] = 1387,
         ["ETA"] = 45,
     },
     {
@@ -4292,7 +4292,7 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
         },
     },
     {
-        ["GetFP"] = 34736,
+        ["GetFP"] = 1432,
         ["Trigger"] = {
             ["y"] = 6599,
             ["x"] = 4345.8,
@@ -4356,82 +4356,7 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             34345,
             34344, -- [3]
         },
-    },    -- [5]
-    {
-        ["PickUp"] = {
-            34348,
-        },
-        ["TT"] = {
-            ["y"] = 6627.7,
-            ["x"] = 4288.8,
-        },
-    }, -- [6]
-    {
-        ["GetFP"] = 34736,
-        ["Trigger"] = {
-            ["y"] = 6599,
-            ["x"] = 4345.8,
-        },
-        ["ExtraLineText"] = "GO_NORTH",
-        ["Range"] = 0.69,
-        ["TT"] = {
-            ["y"] = 6599,
-            ["x"] = 4345.8,
-        },
-    },
-    {
-        ["TT"] = {
-            ["y"] = 6630.3,
-            ["x"] = 4291.8,
-        },
-        ["Done"] = {
-            34736,
-        },
-    },
-    {
-        ["PickUp"] = {
-            34346,
-            34345,
-            34344, -- [3]
-        },
-        ["TT"] = {
-            ["y"] = 6629.3,
-            ["x"] = 4292.8,
-        },
-    }, -- [3]
-    {
-        ["Trigger"] = {
-            ["y"] = 6742.3,
-            ["x"] = 3919.1,
-        },
-        ["Qpart"] = {
-            [34346] = {
-                ["1"] = "1",
-            },
-            [34345] = {
-                ["1"] = "1",
-            },
-            [34344] = {
-                ["1"] = "1",
-            },
-        },
-        ["Range"] = 189.23,
-        ["TT"] = {
-            ["y"] = 6742.3,
-            ["x"] = 3919.1,
-        },
-    }, -- [4]
-    {
-        ["TT"] = {
-            ["y"] = 6628.6,
-            ["x"] = 4292.3,
-        },
-        ["Done"] = {
-            34346,
-            34345,
-            34344, -- [3]
-        },
-    },    -- [5]
+    },             -- [5]
     {
         ["PickUp"] = {
             34348,
@@ -4498,6 +4423,7 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
     {
         ["UseFlightPath"] = 36567,
         ["Name"] = "Frostwall Garrison, Frostfire Ridge",
+        ["NodeID"] = 1432,
         ["TT"] = {
             ["y"] = 6599.2,
             ["x"] = 4344.8,
@@ -4549,6 +4475,7 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
     {
         ["UseFlightPath"] = 33468,
         ["Name"] = "Wor'gol, Frostfire Ridge",
+        ["NodeID"] = 1386,
         ["TT"] = {
             ["y"] = 5889.3,
             ["x"] = 4580.6,
@@ -5240,7 +5167,7 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6162.3,
             ["x"] = 5054,
         },
-        ["GetFP"] = 32990,
+        ["GetFP"] = 1390,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 6162.3,
@@ -5862,7 +5789,7 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 5793.5,
             ["x"] = 2393.6,
         },
-        ["GetFP"] = 34066,
+        ["GetFP"] = 1395,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 5793.5,
@@ -6335,7 +6262,7 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             ["y"] = 5816.8,
             ["x"] = 1306.5,
         },
-        ["GetFP"] = 35880,
+        ["GetFP"] = 1442,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 5816.8,
@@ -6922,7 +6849,7 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             34698, -- [3]
             34703, -- [4]
         },
-    },    -- [10]
+    },             -- [10]
     {
         -- [step 65
         ["PickUp"] = {
@@ -7291,7 +7218,7 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             35934,
             35037, -- [3]
         },
-    },    -- [28]
+    },             -- [28]
     {
         -- [step 91
         ["TT"] = {
@@ -7669,7 +7596,7 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             35128,
             35129, -- [3]
         },
-    },    -- [4]
+    },             -- [4]
     {
         -- [step 116
         ["PickUp"] = {
@@ -8185,7 +8112,7 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             35017,
             35016, -- [3]
         },
-    },    -- [5]
+    },             -- [5]
     {
         ["PickUp"] = {
             35027,
@@ -9097,7 +9024,7 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
             ["y"] = 5817,
             ["x"] = 1306.9,
         },
-        ["GetFP"] = 36566,
+        ["GetFP"] = 1442,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 5817,
@@ -10451,7 +10378,7 @@ APR.QuestStepList["535-DesMephisto-Talador-p1"] = {
             ["y"] = 3261.3,
             ["x"] = 1616.4,
         },
-        ["GetFP"] = 34569,
+        ["GetFP"] = 1443,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 3261.3,
@@ -10919,7 +10846,7 @@ APR.QuestStepList["535-DesMephisto-Talador-p1"] = {
             35226,
             33720, -- [3]
         },
-    },    -- [28]
+    },             -- [28]
     {
         ["PickUp"] = {
             34950,
@@ -11486,7 +11413,7 @@ APR.QuestStepList["535-DesMephisto-Talador-p1"] = {
             ["y"] = 2159.6,
             ["x"] = 1639.9,
         },
-        ["GetFP"] = 33581,
+        ["GetFP"] = 1462,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 2159.6,
@@ -12676,7 +12603,7 @@ APR.QuestStepList["535-DesMephisto-Talador-p1"] = {
             33970,
             33972, -- [3]
         },
-    },    -- [4]
+    },             -- [4]
     {
         ["PickUp"] = {
             34242,
@@ -12949,7 +12876,7 @@ APR.QuestStepList["535-DesMephisto-Talador-p1"] = {
             ["y"] = 1377.5,
             ["x"] = 3323.6,
         },
-        ["GetFP"] = 34122,
+        ["GetFP"] = 1452,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 1377.5,
@@ -13771,7 +13698,7 @@ APR.QuestStepList["542-DesMephisto-SpiresOfArak"] = {
             34756,
             35668, -- [3]
         },
-    },    -- [20]
+    },             -- [20]
     {
         ["PickUp"] = {
             35671,
@@ -14293,19 +14220,19 @@ APR.QuestStepList["542-DesMephisto-SpiresOfArak"] = {
             ["y"] = -653,
             ["x"] = 2145.1,
         },
-    }, -- [10]
-    { -- [step X
+    },             -- [10]
+    {              -- [step X
         ["PickUp"] = {
-            37326,  -- Befriending the Locals, Pick up from Taskmaster Gornek, 40.18 43.50
+            37326, -- Befriending the Locals, Pick up from Taskmaster Gornek, 40.18 43.50
         },
         ["TT"] = {
             ["y"] = -374.6,
             ["x"] = 2245.9,
         },
     },
-    { -- [step X
+    {              -- [step X
         ["Done"] = {
-            37326,  -- Befriending the Locals, Turn in to Dusk-Seer Irizzar, 43.90 48.88
+            37326, -- Befriending the Locals, Turn in to Dusk-Seer Irizzar, 43.90 48.88
         },
         ["TT"] = {
             ["y"] = -592.2,
@@ -14994,7 +14921,7 @@ APR.QuestStepList["542-DesMephisto-SpiresOfArak"] = {
             35260,
             35273, -- [3]
         },
-    },    -- [5]
+    },             -- [5]
     {
         ["PickUp"] = {
             35634,
@@ -15054,7 +14981,7 @@ APR.QuestStepList["542-DesMephisto-SpiresOfArak"] = {
             34884,
             34885, -- [3]
         },
-    },    -- [7]
+    },             -- [7]
     {
         ["PickUp"] = {
             35733,
@@ -15471,7 +15398,7 @@ APR.QuestStepList["542-DesMephisto-SpiresOfArak"] = {
             35011,
             35004, -- [3]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             35013,
@@ -16752,6 +16679,7 @@ APR.QuestStepList["542-DesMephisto-SpiresOfArak"] = {
     {
         ["UseFlightPath"] = 34795,
         ["Name"] = "Retribution Point, Talador",
+        ["NodeID"] = 1452,
         ["TT"] = {
             ["y"] = -367.3,
             ["x"] = 2287.6,
@@ -16834,7 +16762,7 @@ APR.QuestStepList["550-DesMephisto-Nagrand"] = {
             ["y"] = 3232.9,
             ["x"] = 4580.8,
         },
-        ["GetFP"] = 34808,
+        ["GetFP"] = 1504,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 3232.9,
@@ -17162,7 +17090,7 @@ APR.QuestStepList["550-DesMephisto-Nagrand"] = {
             ["y"] = 3042.9,
             ["x"] = 4779.1,
         },
-        ["GetFP"] = 34810,
+        ["GetFP"] = 1502,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 3042.9,

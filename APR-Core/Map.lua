@@ -178,7 +178,7 @@ function APR.map:RemoveMinimapLine()
 end
 
 function APR.map:UpdateMinimapLine()
-    if not APR.settings.profile.showMiniMapLine or IsInInstance() or not CheckIsInRouteZone() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.showMiniMapLine or IsInInstance() or not CheckIsInRouteZone() then
         self:RemoveMinimapLine()
         return
     end
@@ -198,7 +198,7 @@ function APR.map:RemoveMapLine()
 end
 
 function APR.map:UpdateLine()
-    if not APR.settings.profile.showMapLine or not WorldMapFrame:IsShown() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.showMapLine or not WorldMapFrame:IsShown() then
         self:RemoveMapLine()
         return
     end
@@ -227,17 +227,6 @@ function APR.map:UpdateLine()
             MapLine:Show()
             return
         end
-    end
-end
-
-function APR.map:ToggleLine()
-    if not APR.settings.profile.enableAddon then
-        minimapLine:Hide()
-        mapLine:Hide()
-        return
-    else
-        minimapLine:Show()
-        mapLine:Show()
     end
 end
 
@@ -323,7 +312,7 @@ end
 function APR.map:AddMapPins()
     self:RemoveMapIcons()
     self:RemoveMiniMapIcons()
-    if not APR.settings.profile.mapshowNextSteps and not APR.settings.profile.minimapshowNextSteps or not CheckIsInRouteZone() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.mapshowNextSteps and not APR.settings.profile.minimapshowNextSteps or not CheckIsInRouteZone() then
         return
     end
 
@@ -379,6 +368,10 @@ function APR.map:AddMapPins()
             end
         end
     end
+end
+
+function APR.map:ToggleMapPins()
+    self:AddMapPins()
 end
 
 ---------------------------------------------------------------------------------------

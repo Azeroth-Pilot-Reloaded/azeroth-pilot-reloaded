@@ -17,7 +17,7 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -123.2,
                 ["x"] = 6894.3,
             },
-            ["GetFP"] = 38834,
+            ["GetFP"] = 1622,
             ["Range"] = 3.91,
             ["TT"] = {
                 ["y"] = -123.2,
@@ -598,7 +598,7 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 573.7,
                 ["x"] = 6639.3,
             },
-            ["GetFP"] = 38443,
+            ["GetFP"] = 1613,
             ["Range"] = 3.91,
             ["TT"] = {
                 ["y"] = 573.7,
@@ -2219,8 +2219,9 @@ if (APR.Faction == "Alliance") then
                 ["x"] = 5625.7,
             },
             ["UseFlightPath"] = 37855,
-            ["Name"] = "Azurewing Repose, Azsuna",
             ["ETA"] = 34,
+            ["Name"] = "Azurewing Repose, Azsuna",
+            ["NodeID"] = 1613,
         }, -- [1]
         {
             ["Trigger"] = {
@@ -2992,8 +2993,9 @@ if (APR.Faction == "Alliance") then
                 ["x"] = 6640.3,
             },
             ["UseFlightPath"] = 37496,
-            ["Name"] = "Illidari Stand, Azsuna",
             ["ETA"] = 28,
+            ["Name"] = "Illidari Stand, Azsuna",
+            ["NodeID"] = 1622,
         }, -- [1]
         {
             ["Done"] = {
@@ -3472,7 +3474,7 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -781.5,
                 ["x"] = 6129.3,
             },
-            ["GetFP"] = 37657,
+            ["GetFP"] = 1633,
             ["Range"] = 5.91,
             ["TT"] = {
                 ["y"] = -781.5,
@@ -10040,7 +10042,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = -123.2,
                 ["x"] = 6894.3,
             },
-            ["GetFP"] = 38834,
+            ["GetFP"] = 1622,
             ["Range"] = 3.91,
             ["TT"] = {
                 ["y"] = -123.2,
@@ -10621,7 +10623,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = 573.7,
                 ["x"] = 6639.3,
             },
-            ["GetFP"] = 38443,
+            ["GetFP"] = 1613,
             ["Range"] = 3.91,
             ["TT"] = {
                 ["y"] = 573.7,
@@ -12242,8 +12244,9 @@ if (APR.Faction == "Horde") then
                 ["x"] = 5625.7,
             },
             ["UseFlightPath"] = 37855,
-            ["Name"] = "Azurewing Repose, Azsuna",
             ["ETA"] = 34,
+            ["Name"] = "Azurewing Repose, Azsuna",
+            ["NodeID"] = 1613,
         }, -- [1]
         {
             ["Trigger"] = {
@@ -13015,8 +13018,9 @@ if (APR.Faction == "Horde") then
                 ["x"] = 6640.3,
             },
             ["UseFlightPath"] = 37496,
-            ["Name"] = "Illidari Stand, Azsuna",
             ["ETA"] = 28,
+            ["Name"] = "Illidari Stand, Azsuna",
+            ["NodeID"] = 1622,
         }, -- [1]
         {
             ["Done"] = {
@@ -13495,7 +13499,7 @@ if (APR.Faction == "Horde") then
                 ["y"] = -781.5,
                 ["x"] = 6129.3,
             },
-            ["GetFP"] = 37657,
+            ["GetFP"] = 1633,
             ["Range"] = 5.91,
             ["TT"] = {
                 ["y"] = -781.5,
@@ -19726,8 +19730,9 @@ if (APR.Faction == "Horde") then
                 ["x"] = 1870,
             },
             ["UseFlightPath"] = 40001,
-            ["Name"] = "Valdisdall, Stormheim",
             ["ETA"] = 32,
+            ["Name"] = "Valdisdall, Stormheim",
+            ["NodeID"] = 1742,
         }, -- [1]
         {
             ["Done"] = {
@@ -21615,8 +21620,9 @@ if (APR.Faction == "Horde") then
                 ["x"] = 4347.8,
             },
             ["UseFlightPath"] = 38913,
-            ["Name"] = "Skyhorn, Highmountain",
             ["ETA"] = 75,
+            ["Name"] = "Skyhorn, Highmountain",
+            ["NodeID"] = 1753,
         }, -- [1]
         {
             ["Done"] = {

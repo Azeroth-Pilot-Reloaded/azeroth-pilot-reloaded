@@ -580,8 +580,12 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
             ["x"] = 154.9,
         },
         ["Range"] = 25,
-        ["Fillers"] = { [66000] = { ["1"] = "1", }, [65998] = { ["1"] = "1", ["2"] = "2", }, [65999] = { ["1"] = "1", },
-            [70648] = { ["1"] = "1", }, },
+        ["Fillers"] = {
+            [66000] = { ["1"] = "1", },
+            [65998] = { ["1"] = "1", ["2"] = "2", },
+            [65999] = { ["1"] = "1", },
+            [70648] = { ["1"] = "1", },
+        },
         ["ExtraLineText"] = "KILL_FIRAVA_REKINDLER_RESPAWNS_WITHIN_A_MINUTE_WANDERS_AROUND_THE_AREA",
         ["RaidIcon"] = 195915,
     },
@@ -870,7 +874,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
         ["GossipOptionID"] = 55289,
     },
     { -- Step 64
-        ["GetFP"] = 68795,
+        ["GetFP"] = 2807,
         ["TT"] = {
             ["y"] = 1749.1,
             ["x"] = 41.9,
@@ -1891,7 +1895,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
         },
     },
     { -- Step 140
-        ["GetFP"] = 66525,
+        ["GetFP"] = 2809,
         ["TT"] = {
             ["y"] = 939.9,
             ["x"] = 832.6,
@@ -2321,7 +2325,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
         },
     },
     { -- Step 173
-        ["GetFP"] = 66048,
+        ["GetFP"] = 2808,
         ["TT"] = {
             ["y"] = 1847.5,
             ["x"] = 1283.5,
@@ -3349,12 +3353,13 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
         },
     },
     { -- Step 246
-        ["UseFlightPath"] = 65795,
         ["TT"] = {
             ["y"] = 1749.9,
             ["x"] = 41.9,
         },
+        ["UseFlightPath"] = 65795,
         ["Name"] = "Dragonscale Basecamp, The Waking Shores",
+        ["NodeID"] = 2809,
     },
     { -- Step 247
         ["Done"] = {
@@ -3616,7 +3621,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
         ["Range"] = 225,
     },
     { -- Step 18
-        ["GetFP"] = 65802,
+        ["GetFP"] = 2790,
         ["TT"] = {
             ["y"] = 204.9,
             ["x"] = 361.8,
@@ -6228,7 +6233,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
         ["Gossip"] = 1,
     },
     { -- Step 223
-        ["GetFP"] = 66328,
+        ["GetFP"] = 2798,
         ["TT"] = {
             ["y"] = -1501.9,
             ["x"] = 727.7,
@@ -6576,7 +6581,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
         ["Gossip"] = 1,
     },
     { -- Step 250
-        ["GetFP"] = 70220,
+        ["GetFP"] = 2796,
         ["TT"] = {
             ["y"] = -1490.4,
             ["x"] = 4563.0,
@@ -7156,7 +7161,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
         ["ExtraLineText"] = "TO_PINEWOOD_POST",
     },
     { -- Step 291
-        ["GetFP"] = 66340,
+        ["GetFP"] = 2793,
         ["TT"] = {
             ["y"] = -2572.0,
             ["x"] = 1393.9,
@@ -7499,7 +7504,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
         ["ExtraLineText"] = "SHOOT_DRAGONS_USING_ARCANE_BLASTER",
     },
     { -- Step 25
-        ["GetFP"] = 66488,
+        ["GetFP"] = 2774,
         ["TT"] = {
             ["y"] = -3798.6,
             ["x"] = 408.3,
@@ -8204,7 +8209,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
         ["Gossip"] = 1,
     },
     { -- Step 82
-        ["GetFP"] = 65855,
+        ["GetFP"] = 2773,
         ["TT"] = {
             ["y"] = -5341.8,
             ["x"] = 1457.9,
@@ -8227,6 +8232,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
         },
         ["Range"] = 2,
         ["Name"] = "Camp Antonidas, Azure Span",
+        ["NodeID"] = 2774,
         ["ExtraLineText"] = "TO_CAMP_ANTODINAS",
     },
     { -- Step 84
@@ -8927,7 +8933,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
         },
     },
     { -- Step 140
-        ["GetFP"] = 66839,
+        ["GetFP"] = 2789,
         ["TT"] = {
             ["y"] = -2653.1,
             ["x"] = 3409.1,
@@ -9708,7 +9714,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
         ["RaidIcon"] = 186462,
     },
     { -- Step 201
-        ["GetFP"] = 72435,
+        ["GetFP"] = 2775,
         ["TT"] = {
             ["y"] = -4466.3,
             ["x"] = 4047.3,
@@ -10549,7 +10555,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
         },
     },
     { -- Step 268
-        ["GetFP"] = 66391,
+        ["GetFP"] = 2784,
         ["TT"] = {
             ["y"] = -5184.8,
             ["x"] = -1414.0,
@@ -11151,7 +11157,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
         },
     },
     { -- Step 318
-        ["GetFP"] = 67299,
+        ["GetFP"] = 2786,
         ["TT"] = {
             ["y"] = -2769.8,
             ["x"] = -1692.0,
@@ -11619,7 +11625,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
         },
     },
     { -- Step 356
-        ["UseFlightPath"] = 66244 - 1,
+        ["UseFlightPath"] = 66244,
         ["TT"] = {
             ["y"] = -5342.1,
             ["x"] = 1457.9,
@@ -11630,6 +11636,7 @@ APR.QuestStepList["DF05-2024-AzureSpan"] = {
         },
         ["Range"] = 2,
         ["Name"] = "Pinewood Post, Ohn'ahran Plains",
+        ["NodeID"] = 2798,
         ["ExtraLineText"] = "TO_PINEWOOD_POST",
     },
     { -- Step 357

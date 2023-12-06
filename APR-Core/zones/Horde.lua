@@ -180,7 +180,7 @@ if (APR.Faction == "Horde") then
     elseif (APR.Race == "Dracthyr") then
         APR.QuestStepListListing["Dragonflight"]["2118-DracthyrStart-H"] = "Dracthyr Start"
     end
-    if APR.Level < 10 or Contains({ 1409, 1726, 1727 }, APR:GetPlayerMapID()) then
+    if APR.Level < 10 or Contains({ 1409, 1726, 1727 }, APR:GetPlayerParentMapID()) then
         APR.QuestStepListListing.Vanilla["1409-Exile's Reach"] = "01-10 Exile's Reach"
     end
 

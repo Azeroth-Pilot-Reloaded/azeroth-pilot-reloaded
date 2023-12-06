@@ -6895,7 +6895,7 @@ APR.QuestStepList["A63-Ashenvale"] = {
             ["y"] = 2828.9,
             ["x"] = -284.2,
         },
-        ["GetFP"] = 13645,
+        ["GetFP"] = 28,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 2828.9,
@@ -7161,7 +7161,7 @@ APR.QuestStepList["A63-Ashenvale"] = {
             ["y"] = 1903,
             ["x"] = -319.2,
         },
-        ["GetFP"] = 13913,
+        ["GetFP"] = 351,
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = 1903,
@@ -8501,6 +8501,7 @@ APR.QuestStepList["A63-Ashenvale"] = {
     {
         ["UseFlightPath"] = 13924,
         ["Name"] = "Astranaar, Ashenvale",
+        ["NodeID"] = 28,
         ["TT"] = {
             ["y"] = 3002.6,
             ["x"] = -3206.2,
@@ -8686,6 +8687,7 @@ APR.QuestStepList["A63-Ashenvale"] = {
     {
         ["UseFlightPath"] = 26470,
         ["Name"] = "Stardust Spire, Ashenvale",
+        ["NodeID"] = 351,
         ["TT"] = {
             ["y"] = 2828,
             ["x"] = -283.8,
@@ -9382,7 +9384,7 @@ APR.QuestStepList["A77-Felwood"] = {
             ["y"] = 3969.1,
             ["x"] = -1325.6,
         },
-        ["GetFP"] = 28150,
+        ["GetFP"] = 166,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 3969.1,
@@ -9640,7 +9642,7 @@ APR.QuestStepList["A77-Felwood"] = {
             ["y"] = 4737.5,
             ["x"] = -886.5,
         },
-        ["GetFP"] = 28121,
+        ["GetFP"] = 595,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 4737.5,
@@ -10322,7 +10324,7 @@ APR.QuestStepList["A77-Felwood"] = {
             ["y"] = 6078.3,
             ["x"] = -844.5,
         },
-        ["GetFP"] = 28360,
+        ["GetFP"] = 594,
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = 6078.3,
@@ -10935,7 +10937,7 @@ APR.QuestStepList["A77-Felwood"] = {
             ["y"] = 6215.7,
             ["x"] = -1870.9,
         },
-        ["GetFP"] = 28382,
+        ["GetFP"] = 65,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 6215.7,
@@ -13651,7 +13653,7 @@ APR.QuestStepList["A65-StonetalonMountains"] = {
             ["y"] = 1269,
             ["x"] = 433.6,
         },
-        ["GetFP"] = 25652,
+        ["GetFP"] = 361,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 1269,
@@ -14622,6 +14624,7 @@ APR.QuestStepList["A65-StonetalonMountains"] = {
     {
         ["UseFlightPath"] = 25768,
         ["Name"] = "Windshear Hold, Stonetalon Mountains",
+        ["NodeID"] = 361,
         ["TT"] = {
             ["y"] = 235.3,
             ["x"] = -281.9,
@@ -14800,7 +14803,7 @@ APR.QuestStepList["A65-StonetalonMountains"] = {
             ["y"] = 2147.4,
             ["x"] = 1535.7,
         },
-        ["GetFP"] = 25889,
+        ["GetFP"] = 33,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 2147.4,
@@ -15007,7 +15010,7 @@ APR.QuestStepList["A65-StonetalonMountains"] = {
             ["y"] = 971.7,
             ["x"] = 2014,
         },
-        ["GetFP"] = 25935,
+        ["GetFP"] = 365,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 971.7,
@@ -16117,7 +16120,7 @@ APR.QuestStepList["A199-SouthernBarrens"] = {
             ["y"] = -3145.7,
             ["x"] = -2290.5,
         },
-        ["GetFP"] = 25082,
+        ["GetFP"] = 389,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -3145.7,
@@ -17455,7 +17458,7 @@ APR.QuestStepList["A70-DustwallowMarsh"] = {
             ["y"] = -4568.3,
             ["x"] = -3223,
         },
-        ["GetFP"] = 27248,
+        ["GetFP"] = 179,
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -4568.3,
@@ -17922,6 +17925,7 @@ APR.QuestStepList["A70-DustwallowMarsh"] = {
     {
         ["UseFlightPath"] = 27221,
         ["Name"] = "Theramore, Dustwallow Marsh",
+        ["NodeID"] = 32,
         ["TT"] = {
             ["y"] = -4567.9,
             ["x"] = -3223,
@@ -18363,6 +18367,7 @@ APR.QuestStepList["A70-DustwallowMarsh"] = {
     {
         ["UseFlightPath"] = 27288,
         ["Name"] = "Theramore, Dustwallow Marsh",
+        ["NodeID"] = 32,
         ["TT"] = {
             ["y"] = -4567.3,
             ["x"] = -3222.5,
@@ -18706,6 +18711,7 @@ APR.QuestStepList["A70-DustwallowMarsh"] = {
     {
         ["UseFlightPath"] = 27430,
         ["Name"] = "Theramore, Dustwallow Marsh",
+        ["NodeID"] = 32,
         ["TT"] = {
             ["y"] = -4567.4,
             ["x"] = -3222.7,
@@ -19570,6 +19576,7 @@ APR.QuestStepList["A66-Desolace"] = {
     {
         ["UseFlightPath"] = 14364,
         ["Name"] = "Nijel's Point, Desolace",
+        ["NodeID"] = 37,
         ["TT"] = {
             ["y"] = -355.9,
             ["x"] = 2478.6,
@@ -19606,6 +19613,7 @@ APR.QuestStepList["A66-Desolace"] = {
     {
         ["UseFlightPath"] = 1456,
         ["Name"] = "Ethel Rethor, Desolace",
+        ["NodeID"] = 370,
         ["TT"] = {
             ["y"] = 136.3,
             ["x"] = 1327.8,
@@ -19631,6 +19639,7 @@ APR.QuestStepList["A66-Desolace"] = {
     {
         ["UseFlightPath"] = 1456,
         ["Name"] = "Nijel's Point, Desolace",
+        ["NodeID"] = 37,
         ["TT"] = {
             ["y"] = -355.4,
             ["x"] = 2477.3,
@@ -19650,7 +19659,7 @@ APR.QuestStepList["A66-Desolace"] = {
             ["y"] = -533.5,
             ["x"] = 1056.4,
         },
-        ["GetFP"] = 14246,
+        ["GetFP"] = 369,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -533.5,
@@ -19809,7 +19818,7 @@ APR.QuestStepList["A66-Desolace"] = {
             ["y"] = -1039,
             ["x"] = 1639,
         },
-        ["GetFP"] = 14306,
+        ["GetFP"] = 368,
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -1039,
@@ -20252,7 +20261,7 @@ APR.QuestStepList["A66-Desolace"] = {
             ["y"] = -1696.4,
             ["x"] = 2581.1,
         },
-        ["GetFP"] = 14374,
+        ["GetFP"] = 367,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -1696.4,
@@ -20617,6 +20626,7 @@ APR.QuestStepList["A66-Desolace"] = {
     {
         ["UseFlightPath"] = 14380,
         ["Name"] = "Karnum's Glade, Desolace",
+        ["NodeID"] = 368,
         ["TT"] = {
             ["y"] = -1696,
             ["x"] = 2582.1,
@@ -20694,7 +20704,7 @@ APR.QuestStepList["A69-Feralas"] = {
             ["y"] = -3141.5,
             ["x"] = 1952.8,
         },
-        ["GetFP"] = 25447,
+        ["GetFP"] = 565,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -3141.5,
@@ -20951,7 +20961,7 @@ APR.QuestStepList["A69-Feralas"] = {
             ["y"] = -4467.4,
             ["x"] = 2190.8,
         },
-        ["GetFP"] = 26402,
+        ["GetFP"] = 41,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -4467.4,
@@ -21216,7 +21226,7 @@ APR.QuestStepList["A69-Feralas"] = {
             ["y"] = -4865.5,
             ["x"] = 1475.7,
         },
-        ["GetFP"] = 25463,
+        ["GetFP"] = 567,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -4865.5,
@@ -21721,6 +21731,7 @@ APR.QuestStepList["A69-Feralas"] = {
     {
         ["UseFlightPath"] = 25451,
         ["Name"] = "Feathermoon, Feralas",
+        ["NodeID"] = 41,
         ["TT"] = {
             ["y"] = -4866.7,
             ["x"] = 1475.7,
@@ -21739,6 +21750,7 @@ APR.QuestStepList["A69-Feralas"] = {
     {
         ["UseFlightPath"] = 26574,
         ["Name"] = "Tower of Estulan, Feralas",
+        ["NodeID"] = 567,
         ["TT"] = {
             ["y"] = -4467.3,
             ["x"] = 2191.4,
@@ -25066,7 +25078,7 @@ APR.QuestStepList["A71-Tanaris"] = {
             ["y"] = -7188,
             ["x"] = -3766.2,
         },
-        ["GetFP"] = 25112,
+        ["GetFP"] = 39,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -7188,
@@ -25766,7 +25778,7 @@ APR.QuestStepList["A71-Tanaris"] = {
             ["y"] = -8683.8,
             ["x"] = -4092.4,
         },
-        ["GetFP"] = 26889,
+        ["GetFP"] = 539,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -8683.8,
@@ -26170,7 +26182,7 @@ APR.QuestStepList["A71-Tanaris"] = {
             ["y"] = -9498.8,
             ["x"] = -2950.5,
         },
-        ["GetFP"] = 25420,
+        ["GetFP"] = 532,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -9498.8,
@@ -26324,6 +26336,7 @@ APR.QuestStepList["A71-Tanaris"] = {
     {
         ["UseFlightPath"] = 25513,
         ["Name"] = "Gadgetzan, Tanaris",
+        ["NodeID"] = 40,
         ["TT"] = {
             ["y"] = -9498.3,
             ["x"] = -2950.5,
@@ -26374,7 +26387,7 @@ APR.QuestStepList["A78-UnGoroCrater"] = {
             ["y"] = -7548.9,
             ["x"] = -1538.3,
         },
-        ["GetFP"] = 24742,
+        ["GetFP"] = 79,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -7548.9,
@@ -27380,7 +27393,7 @@ APR.QuestStepList["A78-UnGoroCrater"] = {
             ["y"] = -6959.9,
             ["x"] = -1098,
         },
-        ["GetFP"] = 24737,
+        ["GetFP"] = 386,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -6959.9,
@@ -27663,6 +27676,7 @@ APR.QuestStepList["A78-UnGoroCrater"] = {
     {
         ["UseFlightPath"] = 24722,
         ["Name"] = "Marshal's Stand, Un'Goro Crater",
+        ["NodeID"] = 79,
         ["TT"] = {
             ["y"] = -6960.7,
             ["x"] = -1098.6,
@@ -28218,7 +28232,7 @@ APR.QuestStepList["A81-Silithus"] = {
             ["y"] = -6758.3,
             ["x"] = 776.2,
         },
-        ["GetFP"] = 9415,
+        ["GetFP"] = 73,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -6758.3,

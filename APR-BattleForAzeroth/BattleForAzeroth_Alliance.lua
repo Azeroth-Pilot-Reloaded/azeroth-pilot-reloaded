@@ -1402,6 +1402,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
         ["ETA"] = 100,
         ["Boat"] = 1,
         ["Name"] = "Southwind Station, Tiragarde Sound",
+        ["NodeID"] = 2055,
     },
     {
         -- [step 78
@@ -1640,6 +1641,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
         ["ETA"] = 124,
         ["Boat"] = 1,
         ["Name"] = "Anglepoint Wharf, Tiragarde Sound",
+        ["NodeID"] = 2052,
     },
     {
         -- [step 92
@@ -2310,7 +2312,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 1080,
             ["x"] = 2350.6,
         },
-        ["GetFP"] = 48366,
+        ["GetFP"] = 2087,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 1080,
@@ -2775,7 +2777,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 1174.3,
             ["x"] = 1837.3,
         },
-        ["GetFP"] = 49394,
+        ["GetFP"] = 2102,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 1174.3,
@@ -3465,6 +3467,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
         ["ETA"] = 53,
         ["Boat"] = 1,
         ["Name"] = "Firebreaker Expedition, Tiragarde Sound",
+        ["NodeID"] = 2054,
     },
     {
         -- [step 206
@@ -4049,7 +4052,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 1170.5,
             ["x"] = 22.5,
         },
-        ["GetFP"] = 49451,
+        ["GetFP"] = 2060,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 1170.5,
@@ -5273,7 +5276,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 887.9,
             ["x"] = 1064,
         },
-        ["GetFP"] = 48005,
+        ["GetFP"] = 2084,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 887.9,
@@ -5950,6 +5953,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
         ["ETA"] = 76,
         ["Boat"] = 1,
         ["Name"] = "Eastpoint Station, Tiragarde Sound",
+        ["NodeID"] = 2104,
     },
     {
         -- [step
@@ -6461,7 +6465,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = -90.1,
             ["x"] = -619.8,
         },
-        ["GetFP"] = 53041,
+        ["GetFP"] = 2074,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = -90.1,
@@ -7470,8 +7474,9 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
             ["x"] = -696.3,
         },
         ["UseFlightPath"] = 47489,
-        ["Name"] = "Bridgeport, Tiragarde Sound",
         ["ETA"] = 34,
+        ["Name"] = "Bridgeport, Tiragarde Sound",
+        ["NodeID"] = 2074,
     },
     {
         -- [step
@@ -10620,7 +10625,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
             ["y"] = 2493.4,
             ["x"] = -46.5,
         },
-        ["GetFP"] = 51401,
+        ["GetFP"] = 2086,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 2493.4,
@@ -11109,7 +11114,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
             ["y"] = 2705.6,
             ["x"] = -549,
         },
-        ["GetFP"] = 50343,
+        ["GetFP"] = 2088,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 2705.6,
@@ -11891,7 +11896,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
             ["y"] = 3347,
             ["x"] = -378.3,
         },
-        ["GetFP"] = 49998,
+        ["GetFP"] = 2085,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 3347,
@@ -12730,7 +12735,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
             ["y"] = 4065.6,
             ["x"] = -1102.5,
         },
-        ["GetFP"] = 49745,
+        ["GetFP"] = 2133,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 4065.6,
@@ -13466,7 +13471,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
             ["y"] = 2503.6,
             ["x"] = 461.6,
         },
-        ["GetFP"] = 49886,
+        ["GetFP"] = 2101,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 2503.6,
@@ -13780,7 +13785,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
             ["y"] = 2991.9,
             ["x"] = 918.9,
         },
-        ["GetFP"] = 51554,
+        ["GetFP"] = 2097,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 2991.9,
@@ -15165,8 +15170,8 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
             ["x"] = 1071.3,
         },
         ["UseFlightPath"] = 50814,
-        ["ETA"] = 1,
         ["Name"] = "Deadwash, Stormsong Valley",
+        ["NodeID"] = 2097,
     },
     {
         ["TT"] = {
@@ -16429,8 +16434,8 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
             ["x"] = -46.7,
         },
         ["UseFlightPath"] = 51218,
-        ["ETA"] = 1,
         ["Name"] = "Deadwash, Stormsong Valley",
+        ["NodeID"] = 2097,
     },
     {
         ["PickUp"] = {
@@ -16446,7 +16451,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
             ["y"] = 2647.1,
             ["x"] = 1597.5,
         },
-        ["GetFP"] = 51218,
+        ["GetFP"] = 2137,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 2647.1,
@@ -17059,7 +17064,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
             ["y"] = 3374.9,
             ["x"] = 1397.5,
         },
-        ["GetFP"] = 50635,
+        ["GetFP"] = 2138,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = 3374.9,
@@ -17872,8 +17877,9 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
             ["x"] = -45.3,
         },
         ["UseFlightPath"] = 1234561234,
-        ["Name"] = "Tradewinds Market, Tiragarde Sound",
         ["ETA"] = 51,
+        ["Name"] = "Tradewinds Market, Tiragarde Sound",
+        ["NodeID"] = 2083,
     },
     {
         ["ZoneDoneSave"] = 1,
@@ -20128,8 +20134,8 @@ APR.QuestStepList["A896-Dustvar"] = {
             ["x"] = 1276.2,
         },
         ["UseFlightPath"] = 48538,
-        ["ETA"] = 1,
         ["Name"] = "Hangman's Point, Drustvar",
+        ["NodeID"] = 2034,
     },
     {
         ["TT"] = {
@@ -24894,6 +24900,7 @@ APR.QuestStepList["A896-Dustvar"] = {
         ["UseFlightPath"] = 50763,
         ["ETA"] = 27,
         ["Name"] = "Watchman's Rise, Drustvar",
+        ["NodeID"] = 2107,
     },
     {
         ["Done"] = {
@@ -25246,8 +25253,9 @@ APR.QuestStepList["A896-Dustvar"] = {
             ["x"] = 2141.3,
         },
         ["UseFlightPath"] = 50639,
-        ["Name"] = "Tradewinds Market, Tiragarde Sound",
         ["ETA"] = 107,
+        ["Name"] = "Tradewinds Market, Tiragarde Sound",
+        ["NodeID"] = 2083,
     },
     {
         ["ZoneDoneSave"] = 1,

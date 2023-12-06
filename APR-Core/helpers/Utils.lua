@@ -63,33 +63,6 @@ function CheckDenyNPC(steps)
     end
 end
 
-function GetSteps(CurStep)
-    if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
-        return APR.QuestStepList[APR.ActiveMap][CurStep]
-    end
-    return nil
-end
-
-function IsARouteQuest(questId)
-    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveMap])
-    if (steps) then
-        if Contains(steps["PickUp"], questId) or Contains(steps["PickUpDB"], questId) then
-            return true
-        end
-    end
-    return false
-end
-
-function IsPickupStep()
-    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveMap])
-    if (steps) then
-        if steps["PickUp"] or steps["PickUpDB"] then
-            return true
-        end
-    end
-    return false
-end
-
 function Contains(list, x)
     if list then
         for _, v in pairs(list) do

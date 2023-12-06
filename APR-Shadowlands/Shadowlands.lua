@@ -1734,7 +1734,7 @@ APR.QuestStepList["1670-Z1-Oribos-Story"] = {
     --			["y"] = -1906.1,
     --			["x"] = 1211.4,
     --		},
-    --		["GetFP"] = 60156,
+    --		["GetFP"] = 2395,
     --		["Range"] = 0.75,
     --		["TT"] = {
     --			["y"] = -1906.1,
@@ -5044,7 +5044,7 @@ APR.QuestStepList["1533-Z2-Bastion-Story"] = {
             ["y"] = -2942.7,
             ["x"] = -4845.9,
         },
-        ["GetFP"] = 59198,
+        ["GetFP"] = 2529,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -2942.7,
@@ -6928,7 +6928,7 @@ APR.QuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 1975.2,
             ["x"] = -2677.9,
         },
-        ["GetFP"] = 59130,
+        ["GetFP"] = 2398,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 1975.2,
@@ -7239,7 +7239,7 @@ APR.QuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 1774.2,
             ["x"] = -3035.5,
         },
-        ["GetFP"] = 59223,
+        ["GetFP"] = 2569,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1774.2,
@@ -7414,7 +7414,7 @@ APR.QuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 2892.8,
             ["x"] = -3653,
         },
-        ["GetFP"] = 58751,
+        ["GetFP"] = 2561,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 2892.8,
@@ -8077,6 +8077,7 @@ APR.QuestStepList["1536-Z4-Maldraxxus-Story"] = {
     {
         ["UseFlightPath"] = 59009,
         ["Name"] = "Theater of Pain, Maldraxxus",
+        ["NodeID"] = 2564,
         ["TT"] = {
             ["y"] = 2891.8,
             ["x"] = -3652.4,
@@ -8123,7 +8124,7 @@ APR.QuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 2497,
             ["x"] = -1831.5,
         },
-        ["GetFP"] = 58268,
+        ["GetFP"] = 2558,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 2497,
@@ -9021,6 +9022,7 @@ APR.QuestStepList["1536-Z4-Maldraxxus-Story"] = {
     {
         ["UseFlightPath"] = 60733,
         ["Name"] = "Bleak Redoubt, Maldraxxus",
+        ["NodeID"] = 2398,
         ["TT"] = {
             ["y"] = 3591,
             ["x"] = -1735.5,
@@ -9172,6 +9174,7 @@ APR.QuestStepList["1536-Z4-Maldraxxus-Story"] = {
     {
         ["UseFlightPath"] = 59874,
         ["Name"] = "Oribos",
+        ["NodeID"] = 2395,
         ["TT"] = {
             ["y"] = 2497.1,
             ["x"] = -1831.4,
@@ -9859,6 +9862,7 @@ APR.QuestStepList["1536-Z8-Maldraxxus-Story"] = {
     {
         ["UseFlightPath"] = 59206,
         ["Name"] = "Oribos",
+        ["NodeID"] = 2395,
         ["TT"] = {
             ["y"] = 1975.5,
             ["x"] = -2677.7,
@@ -10764,7 +10768,7 @@ APR.QuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6145.8,
             ["x"] = -211,
         },
-        ["GetFP"] = 57947,
+        ["GetFP"] = 2585,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -6145.8,
@@ -12695,7 +12699,7 @@ APR.QuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6001.7,
             ["x"] = 647.9,
         },
-        ["GetFP"] = 60629,
+        ["GetFP"] = 2584,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -6001.7,
@@ -14216,6 +14220,7 @@ APR.QuestStepList["1565-Z10-Ardenweald-Story"] = {
     {
         ["UseFlightPath"] = 60522,
         ["Name"] = "Tirna Vaal, Ardenweald",
+        ["NodeID"] = 2585,
         ["TT"] = {
             ["y"] = -6001.4,
             ["x"] = 647.6,
@@ -14542,7 +14547,7 @@ APR.QuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6904.8,
             ["x"] = 10.1,
         },
-        ["GetFP"] = 60905,
+        ["GetFP"] = 2586,
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -6904.8,
@@ -15767,7 +15772,7 @@ APR.QuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6825.4,
             ["x"] = 796.2,
         },
-        ["GetFP"] = 62807,
+        ["GetFP"] = 2590,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -6825.4,
@@ -16066,7 +16071,7 @@ APR.QuestStepList["1525-Z12-Revendreth-Story"] = {
             ["y"] = -3388.9,
             ["x"] = 5459,
         },
-        ["GetFP"] = 57026,
+        ["GetFP"] = 2514,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -3388.9,
@@ -18214,7 +18219,7 @@ APR.QuestStepList["1525-Z12-Revendreth-Story"] = {
             ["y"] = -2947.4,
             ["x"] = 6721.7,
         },
-        ["GetFP"] = 59014,
+        ["GetFP"] = 2518,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -2947.4,
@@ -19439,7 +19444,7 @@ APR.QuestStepList["1525-Z12-Revendreth-Story"] = {
             ["y"] = -2176.5,
             ["x"] = 7697.8,
         },
-        ["GetFP"] = 60566,
+        ["GetFP"] = 2511,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -2176.5,
@@ -22871,7 +22876,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
     --			["y"] = -1906.1,
     --			["x"] = 1211.4,
     --		},
-    --		["GetFP"] = 60156,
+    --		["GetFP"] = 2395,
     --		["Range"] = 0.75,
     --		["TT"] = {
     --			["y"] = -1906.1,
@@ -25837,7 +25842,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -2942.7,
             ["x"] = -4845.9,
         },
-        ["GetFP"] = 59198,
+        ["GetFP"] = 2529,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -2942.7,
@@ -27711,7 +27716,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 1975.2,
             ["x"] = -2677.9,
         },
-        ["GetFP"] = 59130,
+        ["GetFP"] = 2398,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 1975.2,
@@ -28022,7 +28027,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 1774.2,
             ["x"] = -3035.5,
         },
-        ["GetFP"] = 59223,
+        ["GetFP"] = 2569,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1774.2,
@@ -28197,7 +28202,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 2892.8,
             ["x"] = -3653,
         },
-        ["GetFP"] = 58751,
+        ["GetFP"] = 2561,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 2892.8,
@@ -28860,6 +28865,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
     {
         ["UseFlightPath"] = 59009,
         ["Name"] = "Theater of Pain, Maldraxxus",
+        ["NodeID"] = 2564,
         ["TT"] = {
             ["y"] = 2891.8,
             ["x"] = -3652.4,
@@ -28906,7 +28912,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 2497,
             ["x"] = -1831.5,
         },
-        ["GetFP"] = 58268,
+        ["GetFP"] = 2558,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 2497,
@@ -29804,6 +29810,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
     {
         ["UseFlightPath"] = 60733,
         ["Name"] = "Bleak Redoubt, Maldraxxus",
+        ["NodeID"] = 2398,
         ["TT"] = {
             ["y"] = 3591,
             ["x"] = -1735.5,
@@ -29955,6 +29962,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
     {
         ["UseFlightPath"] = 59874,
         ["Name"] = "Oribos",
+        ["NodeID"] = 2395,
         ["TT"] = {
             ["y"] = 2497.1,
             ["x"] = -1831.4,
@@ -30592,6 +30600,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
     {
         ["UseFlightPath"] = 59206,
         ["Name"] = "Oribos",
+        ["NodeID"] = 2395,
         ["TT"] = {
             ["y"] = 1975.5,
             ["x"] = -2677.7,
@@ -31364,7 +31373,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6145.8,
             ["x"] = -211,
         },
-        ["GetFP"] = 57947,
+        ["GetFP"] = 2585,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -6145.8,
@@ -32362,7 +32371,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6001.7,
             ["x"] = 647.9,
         },
-        ["GetFP"] = 60629,
+        ["GetFP"] = 2584,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -6001.7,
@@ -32758,6 +32767,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
     {
         ["UseFlightPath"] = 60522,
         ["Name"] = "Tirna Vaal, Ardenweald",
+        ["NodeID"] = 2585,
         ["TT"] = {
             ["y"] = -6001.4,
             ["x"] = 647.6,
@@ -33087,7 +33097,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6904.8,
             ["x"] = 10.1,
         },
-        ["GetFP"] = 60905,
+        ["GetFP"] = 2586,
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -6904.8,
@@ -34312,7 +34322,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6825.4,
             ["x"] = 796.2,
         },
-        ["GetFP"] = 62807,
+        ["GetFP"] = 2590,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -6825.4,
@@ -34583,7 +34593,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -3388.9,
             ["x"] = 5459,
         },
-        ["GetFP"] = 57026,
+        ["GetFP"] = 2514,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -3388.9,
@@ -35011,7 +35021,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -2618,
             ["x"] = 6012.3,
         },
-        ["GetFP"] = 57174,
+        ["GetFP"] = 2488,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -2618,
@@ -35940,7 +35950,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -2947.4,
             ["x"] = 6721.7,
         },
-        ["GetFP"] = 59014,
+        ["GetFP"] = 2518,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -2947.4,
@@ -37086,7 +37096,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -2176.5,
             ["x"] = 7697.8,
         },
-        ["GetFP"] = 60566,
+        ["GetFP"] = 2511,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -2176.5,
@@ -39938,7 +39948,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
     --			["y"] = -1906.1,
     --			["x"] = 1211.4,
     --		},
-    --		["GetFP"] = 60156,
+    --		["GetFP"] = 2395,
     --		["Range"] = 0.75,
     --		["TT"] = {
     --			["y"] = -1906.1,
@@ -42903,7 +42913,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -2942.7,
             ["x"] = -4845.9,
         },
-        ["GetFP"] = 59198,
+        ["GetFP"] = 2529,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -2942.7,
@@ -44777,7 +44787,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 1975.2,
             ["x"] = -2677.9,
         },
-        ["GetFP"] = 59130,
+        ["GetFP"] = 2398,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 1975.2,
@@ -45088,7 +45098,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 1774.2,
             ["x"] = -3035.5,
         },
-        ["GetFP"] = 59223,
+        ["GetFP"] = 2569,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1774.2,
@@ -45263,7 +45273,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 2892.8,
             ["x"] = -3653,
         },
-        ["GetFP"] = 58751,
+        ["GetFP"] = 2561,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 2892.8,
@@ -45926,6 +45936,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
     {
         ["UseFlightPath"] = 59009,
         ["Name"] = "Theater of Pain, Maldraxxus",
+        ["NodeID"] = 2564,
         ["TT"] = {
             ["y"] = 2891.8,
             ["x"] = -3652.4,
@@ -45972,7 +45983,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 2497,
             ["x"] = -1831.5,
         },
-        ["GetFP"] = 58268,
+        ["GetFP"] = 2558,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 2497,
@@ -46870,6 +46881,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
     {
         ["UseFlightPath"] = 60733,
         ["Name"] = "Bleak Redoubt, Maldraxxus",
+        ["NodeID"] = 2398,
         ["TT"] = {
             ["y"] = 3591,
             ["x"] = -1735.5,
@@ -47021,6 +47033,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
     {
         ["UseFlightPath"] = 59874,
         ["Name"] = "Oribos",
+        ["NodeID"] = 2395,
         ["TT"] = {
             ["y"] = 2497.1,
             ["x"] = -1831.4,
@@ -47658,6 +47671,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
     {
         ["UseFlightPath"] = 59206,
         ["Name"] = "Oribos",
+        ["NodeID"] = 2395,
         ["TT"] = {
             ["y"] = 1975.5,
             ["x"] = -2677.7,
@@ -48430,7 +48444,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6145.8,
             ["x"] = -211,
         },
-        ["GetFP"] = 57947,
+        ["GetFP"] = 2585,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -6145.8,
@@ -49428,7 +49442,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6001.7,
             ["x"] = 647.9,
         },
-        ["GetFP"] = 60629,
+        ["GetFP"] = 2584,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -6001.7,
@@ -49824,6 +49838,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
     {
         ["UseFlightPath"] = 60522,
         ["Name"] = "Tirna Vaal, Ardenweald",
+        ["NodeID"] = 2585,
         ["TT"] = {
             ["y"] = -6001.4,
             ["x"] = 647.6,
@@ -50153,7 +50168,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6904.8,
             ["x"] = 10.1,
         },
-        ["GetFP"] = 60905,
+        ["GetFP"] = 2586,
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -6904.8,
@@ -51378,7 +51393,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6825.4,
             ["x"] = 796.2,
         },
-        ["GetFP"] = 62807,
+        ["GetFP"] = 2590,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -6825.4,
@@ -51649,7 +51664,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -3388.9,
             ["x"] = 5459,
         },
-        ["GetFP"] = 57026,
+        ["GetFP"] = 2514,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -3388.9,
@@ -52077,7 +52092,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -2618,
             ["x"] = 6012.3,
         },
-        ["GetFP"] = 57174,
+        ["GetFP"] = 2488,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -2618,
@@ -53006,7 +53021,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -2947.4,
             ["x"] = 6721.7,
         },
-        ["GetFP"] = 59014,
+        ["GetFP"] = 2518,
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -2947.4,
@@ -54152,7 +54167,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -2176.5,
             ["x"] = 7697.8,
         },
-        ["GetFP"] = 60566,
+        ["GetFP"] = 2511,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -2176.5,

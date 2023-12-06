@@ -888,7 +888,7 @@ elseif (APR.Race == "Orc") then
                 ["y"] = -775,
                 ["x"] = -4890.7,
             },
-            ["GetFP"] = 25133,
+            ["GetFP"] = 536,
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = -775,
@@ -1220,7 +1220,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-        }, -- [3]
+        },             -- [3]
         {
             ["PickUp"] = {
                 24626,
@@ -1773,7 +1773,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-        }, -- [3]
+        },             -- [3]
         {
             ["PickUp"] = {
                 24626,
@@ -2310,7 +2310,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-        }, -- [3]
+        },             -- [3]
         {
             ["PickUp"] = {
                 24626,
@@ -3009,7 +3009,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-        }, -- [3]
+        },             -- [3]
         {
             ["PickUp"] = {
                 24626,
@@ -3562,7 +3562,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-        }, -- [3]
+        },             -- [3]
         {
             ["PickUp"] = {
                 24626,
@@ -4115,7 +4115,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-        }, -- [3]
+        },             -- [3]
         {
             ["PickUp"] = {
                 24626,
@@ -4668,7 +4668,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-        }, -- [3]
+        },             -- [3]
         {
             ["PickUp"] = {
                 24626,
@@ -5221,7 +5221,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-        }, -- [3]
+        },             -- [3]
         {
             ["PickUp"] = {
                 24626,
@@ -5774,7 +5774,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-        }, -- [3]
+        },             -- [3]
         {
             ["PickUp"] = {
                 24626,
@@ -6532,7 +6532,7 @@ elseif (APR.Race == "Goblin" and APR.Gender == 2) then
                 24520,
                 14070, -- [3]
             },
-        }, -- [39]
+        },             -- [39]
         {
             ["PickUp"] = {
                 14113,
@@ -7474,7 +7474,7 @@ elseif (APR.Race == "Goblin") then
                 24520,
                 14070, -- [3]
             },
-        }, -- [39]
+        },             -- [39]
         {
             ["PickUp"] = {
                 14153,
@@ -13897,7 +13897,7 @@ APR.QuestStepList["10-NorthernBarrens"] = {
             14042,
             895, -- [3]
         },
-    },  -- [75]
+    },           -- [75]
     {
         ["PickUp"] = {
             14050,
@@ -14223,6 +14223,7 @@ APR.QuestStepList["10-NorthernBarrens"] = {
     {
         ["UseFlightPath"] = 29109,
         ["Name"] = "The Crossroads, Northern Barrens",
+        ["NodeID"] = 25,
         ["TT"] = {
             ["y"] = 1155.4,
             ["x"] = -3377.2,
