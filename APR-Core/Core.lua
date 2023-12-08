@@ -93,7 +93,7 @@ function APR.CheckCustomEmpty() -- TODO: Check that
     end
     if not next(APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
         APR.transport.GoToZone = nil
-        APR.ActiveMap = nil
+        APR.ActiveRoute = nil
     end
 end
 

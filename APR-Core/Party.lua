@@ -214,9 +214,9 @@ function APR.party:IsShowFrame()
 end
 
 function APR.party:SendGroupMessage()
-    if (IsInGroup(LE_PARTY_CATEGORY_HOME) and APRData[APR.Realm][APR.Username][APR.ActiveMap] and (APR.party.LastSent ~= APRData[APR.Realm][APR.Username][APR.ActiveMap]) and not IsInInstance()) then
-        C_ChatInfo.SendAddonMessage("APRChat", APRData[APR.Realm][APR.Username][APR.ActiveMap], "PARTY");
-        APR.party.LastSent = APRData[APR.Realm][APR.Username][APR.ActiveMap]
+    if (IsInGroup(LE_PARTY_CATEGORY_HOME) and APRData[APR.Realm][APR.Username][APR.ActiveRoute] and (APR.party.LastSent ~= APRData[APR.Realm][APR.Username][APR.ActiveRoute]) and not IsInInstance()) then
+        C_ChatInfo.SendAddonMessage("APRChat", APRData[APR.Realm][APR.Username][APR.ActiveRoute], "PARTY");
+        APR.party.LastSent = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
     end
 end
 

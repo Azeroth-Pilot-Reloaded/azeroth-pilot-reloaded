@@ -162,10 +162,10 @@ local function APR_ExitVhicle()
 end
 
 local function APR_QAskPopWanted()
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
     local steps
-    if CurStep and APR.ActiveMap and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep] then
-        steps = APR.QuestStepList[APR.ActiveMap][CurStep]
+    if CurStep and APR.ActiveRoute and APR.QuestStepList and APR.QuestStepList[APR.ActiveRoute] and APR.QuestStepList[APR.ActiveRoute][CurStep] then
+        steps = APR.QuestStepList[APR.ActiveRoute][CurStep]
     end
 
     local Qid = steps["QaskPopup"]
@@ -199,8 +199,8 @@ local function SkipStepCondition(steps)
             (steps["DontHaveAchievement"] and _G.HasAchievement(steps["DontHaveAchievement"]))
         ) then
         -- Counter for skipper step in the current route
-        APRData[APR.Realm][APR.Username][APR.ActiveMap .. '-SkippedStep'] = (APRData[APR.Realm][APR.Username]
-            [APR.ActiveMap .. '-SkippedStep'] or 0) + 1
+        APRData[APR.Realm][APR.Username][APR.ActiveRoute .. '-SkippedStep'] = (APRData[APR.Realm][APR.Username]
+            [APR.ActiveRoute .. '-SkippedStep'] or 0) + 1
         _G.UpdateNextStep()
         return true
     end
@@ -220,8 +220,8 @@ local function APR_UpdateStep()
         APR.party:RemoveTeam()
         APR.party:HideFrame()
     end
-    if (APR.ActiveMap and not APRData[APR.Realm][APR.Username][APR.ActiveMap]) then
-        APRData[APR.Realm][APR.Username][APR.ActiveMap] = 1
+    if (APR.ActiveRoute and not APRData[APR.Realm][APR.Username][APR.ActiveRoute]) then
+        APRData[APR.Realm][APR.Username][APR.ActiveRoute] = 1
     end
 
     -- TODO Return if not in the right zone (check why no data on zone change with the return)
@@ -235,7 +235,7 @@ local function APR_UpdateStep()
         end
     end
 
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
     -- Extra liners here
     local MissingQs = {}
     if (APR.settings.profile.debug) then
@@ -244,8 +244,8 @@ local function APR_UpdateStep()
     APR.party:SendGroupMessage()
     APR.transport.QuedFP = nil
 
-    if (APR.QuestStepList and APR.QuestStepList[APR.ActiveMap] and APR.QuestStepList[APR.ActiveMap][CurStep]) then
-        local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
+    if (APR.QuestStepList and APR.QuestStepList[APR.ActiveRoute] and APR.QuestStepList[APR.ActiveRoute][CurStep]) then
+        local steps = APR.QuestStepList[APR.ActiveRoute][CurStep]
         local IdList
 
         APR.currentStep:ButtonEnable()
@@ -260,7 +260,7 @@ local function APR_UpdateStep()
         else
             APR.SweatOfOurBrowBuffFrame:Hide()
         end
-        if (APR.ActiveMap) then
+        if (APR.ActiveRoute) then
             local function checkChromieTimeline(id)
                 local chromieExpansionOption = C_ChromieTime.GetChromieTimeExpansionOption(id)
                 if (not chromieExpansionOption) then
@@ -271,12 +271,12 @@ local function APR_UpdateStep()
                 end
             end
             -- TODO: Check if needed - same code in transport
-            if (APR.QuestStepListListing.WarlordsOfDraenor[APR.ActiveMap]) then
+            if (APR.QuestStepListListing.WarlordsOfDraenor[APR.ActiveRoute]) then
                 -- 9 == WOD
                 checkChromieTimeline(9)
             end
             -- If we add Sl timeline in the future
-            -- if(APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]) then
+            -- if(APR.QuestStepListListing["Shadowlands"][APR.ActiveRoute]) then
             -- 	-- 14 == Shadowland
             -- 	checkChromieTimeline(14)
             -- end
@@ -557,7 +557,7 @@ local function APR_UpdateStep()
                 end
                 if #IdList == Flagged then
                     if APR.settings.profile.debug then
-                        print("APR.UpdateStep:PickUp:Plus:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+                        print("APR.UpdateStep:PickUp:Plus:" .. APRData[APR.Realm][APR.Username][APR.ActiveRoute])
                     end
                     _G.NextQuestStep()
                     return
@@ -570,7 +570,7 @@ local function APR_UpdateStep()
             IdList = steps["CRange"]
             if (C_QuestLog.IsQuestFlaggedCompleted(IdList) or APR.BreadCrumSkips[IdList]) then
                 if (APR.settings.profile.debug) then
-                    print("APR.UpdateStep:CRange:Plus:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+                    print("APR.UpdateStep:CRange:Plus:" .. APRData[APR.Realm][APR.Username][APR.ActiveRoute])
                 end
                 _G.NextQuestStep()
                 return
@@ -581,7 +581,7 @@ local function APR_UpdateStep()
             IdList = steps["Treasure"]
             if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
                 if (APR.settings.profile.debug) then
-                    print("APR.UpdateStep:Treasure:Plus:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+                    print("APR.UpdateStep:Treasure:Plus:" .. APRData[APR.Realm][APR.Username][APR.ActiveRoute])
                 end
                 _G.NextQuestStep()
                 return
@@ -592,7 +592,7 @@ local function APR_UpdateStep()
             IdList = steps["DropQuest"]
             if (C_QuestLog.IsQuestFlaggedCompleted(IdList) or APR.ActiveQuests[IdList]) then
                 if (APR.settings.profile.debug) then
-                    print("APR.UpdateStep:DropQuest:Plus:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+                    print("APR.UpdateStep:DropQuest:Plus:" .. APRData[APR.Realm][APR.Username][APR.ActiveRoute])
                 end
                 _G.NextQuestStep()
                 return
@@ -623,7 +623,7 @@ local function APR_UpdateStep()
 
             if #doneList == Flagged then
                 if APR.settings.profile.debug then
-                    print("APR.UpdateStep:Done:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+                    print("APR.UpdateStep:Done:" .. APRData[APR.Realm][APR.Username][APR.ActiveRoute])
                 end
                 _G.UpdateNextStep()
                 return
@@ -634,7 +634,7 @@ local function APR_UpdateStep()
         elseif (steps["WarMode"]) then
             if (C_QuestLog.IsQuestFlaggedCompleted(steps["WarMode"]) or C_PvP.IsWarModeDesired() == true) then
                 if APR.settings.profile.debug then
-                    print("APR.UpdateStep:WarMode:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+                    print("APR.UpdateStep:WarMode:" .. APRData[APR.Realm][APR.Username][APR.ActiveRoute])
                 end
                 _G.UpdateNextStep()
                 return
@@ -789,7 +789,7 @@ local function APR_UpdateStep()
 
         -- Set Quest Item Button
         APR.SetButton()
-        if (steps["ZoneDone"] or (APR.ActiveMap == 862 and APRData[APR.Realm][APR.Username]["HordeD"] and APRData[APR.Realm][APR.Username]["HordeD"] == 1)) then
+        if (steps["ZoneDone"] or (APR.ActiveRoute == 862 and APRData[APR.Realm][APR.Username]["HordeD"] and APRData[APR.Realm][APR.Username]["HordeD"] == 1)) then
             APR.currentStep:Disable()
             APR.ArrowActive = 0
         end
@@ -814,12 +814,12 @@ function APR.SetButton()
     if (APR.settings.profile.debug) then
         print("Function: APR.SetButton()")
     end
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
-    if not CurStep or not APR.ActiveMap or not APR.QuestStepList or not APR.QuestStepList[APR.ActiveMap] then
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
+    if not CurStep or not APR.ActiveRoute or not APR.QuestStepList or not APR.QuestStepList[APR.ActiveRoute] then
         return
     end
 
-    local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
+    local steps = APR.QuestStepList[APR.ActiveRoute][CurStep]
     if not steps then
         return
     end
@@ -840,7 +840,7 @@ function APR.SetButton()
 end
 
 function APR.CheckCRangeText()
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
     local waypoints = {
         ["FlightPath"] = L["GET_FLIGHTPATH"],
         ["UseFlightPath"] = L["USE_FLIGHTPATH"],
@@ -852,8 +852,8 @@ function APR.CheckCRangeText()
         ["QpartPart"] = L["COMPLETE_Q"]
     }
 
-    for i = CurStep, #APR.QuestStepList[APR.ActiveMap] do
-        local step = APR.QuestStepList[APR.ActiveMap][i]
+    for i = CurStep, #APR.QuestStepList[APR.ActiveRoute] do
+        local step = APR.QuestStepList[APR.ActiveRoute][i]
         if step then
             for waypoint, _ in pairs(waypoints) do
                 if step[waypoint] then
@@ -979,16 +979,16 @@ function APR.GliderFunc()
 end
 
 local function APR_QuestStepIds()
-    if not APR.QuestStepList[APR.ActiveMap] then
+    if not APR.QuestStepList[APR.ActiveRoute] then
         return
     end
 
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
-    if not CurStep or not APR.QuestStepList[APR.ActiveMap][CurStep] then
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
+    if not CurStep or not APR.QuestStepList[APR.ActiveRoute][CurStep] then
         return
     end
 
-    local steps = APR.QuestStepList[APR.ActiveMap][CurStep]
+    local steps = APR.QuestStepList[APR.ActiveRoute][CurStep]
     if steps["PickUp"] then
         return steps["PickUp"], "PickUp"
     elseif steps["Qpart"] then
@@ -1019,7 +1019,7 @@ local function APR_RemoveQuest(questID)
         if NrLeft == 0 then
             _G.UpdateNextQuest()
             if APR.settings.profile.debug then
-                print("APR.RemoveQuest:Plus" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+                print("APR.RemoveQuest:Plus" .. APRData[APR.Realm][APR.Username][APR.ActiveRoute])
             end
         end
     end
@@ -1040,7 +1040,7 @@ local function APR_AddQuest(questID)
         if (NrLeft == 0) then
             _G.UpdateNextQuest()
             if (APR.settings.profile.debug) then
-                print("APR.AddQuest:Plus" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+                print("APR.AddQuest:Plus" .. APRData[APR.Realm][APR.Username][APR.ActiveRoute])
             end
         end
     end
@@ -1052,33 +1052,33 @@ local function APR_UpdateMapId()
     if (APR.settings.profile.debug) then
         print("Function: APR_UpdateMapId()")
     end
-    local OldMap = APR.ActiveMap
+    local OldMap = APR.ActiveRoute
     local playerMapID = C_Map.GetBestMapForUnit("player")
     if not playerMapID then
         return
     end
-    APR.ActiveMap = MapUtil.GetMapParentInfo(playerMapID, Enum.UIMapType.Zone, true)
-    APR.ActiveMap = APR.ActiveMap and APR.ActiveMap.mapID or playerMapID
+    APR.ActiveRoute = MapUtil.GetMapParentInfo(playerMapID, Enum.UIMapType.Zone, true)
+    APR.ActiveRoute = APR.ActiveRoute and APR.ActiveRoute.mapID or playerMapID
 
-    APRt_Zone = APR.ActiveMap
-    if APR.ActiveMap == 1671 then
-        APR.ActiveMap = 1670
+    APRt_Zone = APR.ActiveRoute
+    if APR.ActiveRoute == 1671 then
+        APR.ActiveRoute = 1670
     elseif APRt_Zone == 578 then
         APRt_Zone = 577
-    elseif APR.ActiveMap == "A543-DesMephisto-Gorgrond" and APRt_Zone == 535 then
+    elseif APR.ActiveRoute == "A543-DesMephisto-Gorgrond" and APRt_Zone == 535 then
         APRt_Zone = 543
     elseif APRt_Zone == 1726 or APRt_Zone == 1727 then
         APRt_Zone = 1409
     end
-    if APR.ActiveQuests and APR.ActiveQuests[59974] and APR.ActiveMap == 1536 then
-        APR.ActiveMap = 1670
+    if APR.ActiveQuests and APR.ActiveQuests[59974] and APR.ActiveRoute == 1536 then
+        APR.ActiveRoute = 1670
     end
-    if OldMap and OldMap ~= APR.ActiveMap then
+    if OldMap and OldMap ~= APR.ActiveRoute then
         APR.BookingList["UpdateStep"] = true
     end
-    APR.ActiveMap = APR.ActiveMap or "NoZone"
+    APR.ActiveRoute = APR.ActiveRoute or "NoZone"
     if APR.Faction == "Alliance" then
-        APR.ActiveMap = "A" .. APR.ActiveMap
+        APR.ActiveRoute = "A" .. APR.ActiveRoute
     end
     if APR.QuestStepListListingZone then
         APR.BookingList["GetMeToNextZone"] = true
@@ -1086,8 +1086,8 @@ local function APR_UpdateMapId()
     if APR.IsInRouteZone then
         APR.BookingList["IsInRouteZone"] = true
     end
-    if not APRData[APR.Realm][APR.Username][APR.ActiveMap] then
-        APRData[APR.Realm][APR.Username][APR.ActiveMap] = 1
+    if not APRData[APR.Realm][APR.Username][APR.ActiveRoute] then
+        APRData[APR.Realm][APR.Username][APR.ActiveRoute] = 1
     end
     APR.questOrderList:AddStepFromRoute()
     _G.UpdateQuestAndStep()
@@ -1103,7 +1103,7 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
     end
     if (APR.BookingList["GetMeToNextZone"]) then
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:GetMeToNextZone:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+            print("LoopBookingFunc:GetMeToNextZone:" .. APRData[APR.Realm][APR.Username][APR.ActiveRoute])
         end
         APR.BookingList["GetMeToNextZone"] = false
         APR.transport.GetMeToNextZone()
@@ -1111,17 +1111,17 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
         APR.BookingList["UpdateMapId"] = false
         APR_UpdateMapId()
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:UpdateMapId:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+            print("LoopBookingFunc:UpdateMapId:" .. APRData[APR.Realm][APR.Username][APR.ActiveRoute])
         end
     elseif (APR.BookingList["AddQuest"]) then
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:AddQuest:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+            print("LoopBookingFunc:AddQuest:" .. APRData[APR.Realm][APR.Username][APR.ActiveRoute])
         end
         APR_AddQuest(APR.BookingList["AddQuest"])
         APR.BookingList["AddQuest"] = nil
     elseif (APR.BookingList["RemoveQuest"]) then
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:RemoveQuest:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+            print("LoopBookingFunc:RemoveQuest:" .. APRData[APR.Realm][APR.Username][APR.ActiveRoute])
         end
         APR_RemoveQuest(APR.BookingList["RemoveQuest"])
         APR.BookingList["RemoveQuest"] = nil
@@ -1141,13 +1141,13 @@ local function APR_LoopBookingFunc() --TODO rework BookingList
         APR_UpdateStep()
     elseif (APR.BookingList["IsInRouteZone"]) then
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:IsInRouteZone:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+            print("LoopBookingFunc:IsInRouteZone:" .. APRData[APR.Realm][APR.Username][APR.ActiveRoute])
         end
         APR.BookingList["IsInRouteZone"] = false
         APR.transport.GetMeToNextZone()
     elseif (APR.BookingList["SetQPTT"]) then
         if (APR.settings.profile.debug) then
-            print("LoopBookingFunc:SetQPTT:" .. APRData[APR.Realm][APR.Username][APR.ActiveMap])
+            print("LoopBookingFunc:SetQPTT:" .. APRData[APR.Realm][APR.Username][APR.ActiveRoute])
         end
         APR.BookingList["SetQPTT"] = false
         APR.Arrow:SetQPTT()
@@ -1270,7 +1270,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     local autoAccept = APR.settings.profile.autoAccept
     local autoAcceptRoute = APR.settings.profile.autoAcceptQuestRoute
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
     local steps = GetSteps(CurStep)
     if (event == "UPDATE_UI_WIDGET") then
         if (APR.ActiveQuests and APR.ActiveQuests["57713-4"]) then
@@ -1537,7 +1537,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
         -- Pickup
         if autoAcceptRoute or autoAccept then
-            local hasNoRouteMap = not APR.QuestStepList[APR.ActiveMap]
+            local hasNoRouteMap = not APR.QuestStepList[APR.ActiveRoute]
             if (event == "QUEST_GREETING") then
                 local numAvailableQuests = GetNumAvailableQuests()
                 for i = 1, numAvailableQuests do
@@ -1641,12 +1641,12 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         local arg1, arg2, arg3, arg4, arg5 = ...;
         if ((arg1 == "player") and (arg3 == 171253)) then
             if (steps and steps["UseGarrisonHS"]) then
-                APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] + 1
+                APRData[APR.Realm][APR.Username][APR.ActiveRoute] = APRData[APR.Realm][APR.Username][APR.ActiveRoute] + 1
             end
         end
         if ((arg1 == "player") and (arg3 == 222695)) then
             if (steps and steps["UseDalaHS"]) then
-                APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] + 1
+                APRData[APR.Realm][APR.Username][APR.ActiveRoute] = APRData[APR.Realm][APR.Username][APR.ActiveRoute] + 1
             end
         end
     end
@@ -1679,7 +1679,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
         local arg1, arg2, arg3, arg4, arg5 = ...;
         APR.BookingList["RemoveQuest"] = arg1
-        if (APR.ActiveMap == arg1) then
+        if (APR.ActiveRoute == arg1) then
             APR.BookingList["UpdateMapId"] = true
             APRData[APR.Realm][APR.Username][arg1] = nil
             APR.map:RemoveMapLine()
@@ -1707,7 +1707,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         -- Deny NPC
         CheckDenyNPC(steps)
         local questID = GetQuestID()
-        local hasNoRouteMap = not APR.QuestStepList[APR.ActiveMap]
+        local hasNoRouteMap = not APR.QuestStepList[APR.ActiveRoute]
         if questID then
             if not autoAcceptRoute and not autoAccept then
                 return

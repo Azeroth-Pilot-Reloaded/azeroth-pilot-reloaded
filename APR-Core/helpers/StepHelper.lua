@@ -41,23 +41,23 @@ function UpdateQuestAndStep()
 end
 
 function UpdateNextQuest()
-    APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] + 1
+    APRData[APR.Realm][APR.Username][APR.ActiveRoute] = APRData[APR.Realm][APR.Username][APR.ActiveRoute] + 1
     APR.BookingList["UpdateQuest"] = true
 end
 
 function UpdateNextStep()
-    APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] + 1
+    APRData[APR.Realm][APR.Username][APR.ActiveRoute] = APRData[APR.Realm][APR.Username][APR.ActiveRoute] + 1
     APR.BookingList["UpdateStep"] = true
 end
 
 function NextQuestStep()
-    APRData[APR.Realm][APR.Username][APR.ActiveMap] = APRData[APR.Realm][APR.Username][APR.ActiveMap] + 1
+    APRData[APR.Realm][APR.Username][APR.ActiveRoute] = APRData[APR.Realm][APR.Username][APR.ActiveRoute] + 1
     UpdateQuestAndStep()
 end
 
 function PreviousQuestStep()
     local userMapData = APRData[APR.Realm][APR.Username]
-    local activeMap = APR.ActiveMap
+    local activeMap = APR.ActiveRoute
     local questStepList = APR.QuestStepList[activeMap]
     local faction = APR.Faction
     local race = APR.Race
@@ -81,9 +81,10 @@ function PreviousQuestStep()
     UpdateQuestAndStep()
 end
 
-function GetTotalSteps()
+function GetTotalSteps(route)
+    route = route or APR.ActiveRoute
     local stepIndex = 0
-    for id, step in pairs(APR.QuestStepList[APR.ActiveMap]) do
+    for id, step in pairs(APR.QuestStepList[route]) do
         -- Hide step for Faction, Race, Class, Achievement
         if (
                 (not step.Faction or step.Faction == APR.Faction) and
@@ -95,8 +96,7 @@ function GetTotalSteps()
             stepIndex = stepIndex + 1
         end
     end
-    APRData[APR.Realm][APR.Username]
-    [APR.ActiveMap .. '-TotalSteps'] = stepIndex
+    APRData[APR.Realm][APR.Username][route .. '-TotalSteps'] = stepIndex
     return stepIndex
 end
 
@@ -128,14 +128,14 @@ function CheckIsInRouteZone()
 end
 
 function GetSteps(CurStep)
-    if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveMap]) then
-        return APR.QuestStepList[APR.ActiveMap][CurStep]
+    if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveRoute]) then
+        return APR.QuestStepList[APR.ActiveRoute][CurStep]
     end
     return nil
 end
 
 function IsARouteQuest(questId)
-    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveMap])
+    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveRoute])
     if (steps) then
         if Contains(steps["PickUp"], questId) or Contains(steps["PickUpDB"], questId) then
             return true
@@ -145,7 +145,7 @@ function IsARouteQuest(questId)
 end
 
 function IsPickupStep()
-    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveMap])
+    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveRoute])
     if (steps) then
         if steps["PickUp"] or steps["PickUpDB"] then
             return true
