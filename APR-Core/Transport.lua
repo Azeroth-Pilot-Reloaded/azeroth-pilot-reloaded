@@ -158,189 +158,189 @@ function APR.transport.GetMeToNextZoneSpecialRe(mapID)
         mapID = 1670
     elseif (mapID == 578) then
         mapID = 577
-    elseif (APR.ActiveMap == "A535-DesMephisto-Talador2" and mapID == 542) then
+    elseif (APR.ActiveRoute == "A535-DesMephisto-Talador2" and mapID == 542) then
         mapID = 535
-    elseif (APR.ActiveMap == "A84-DesMephisto-Stormwind-War" and mapID == 17) then
+    elseif (APR.ActiveRoute == "A84-DesMephisto-Stormwind-War" and mapID == 17) then
         mapID = 84
-    elseif (APR.ActiveMap == "A543-DesMephisto-Gorgrond" and mapID == 535) then
+    elseif (APR.ActiveRoute == "A543-DesMephisto-Gorgrond" and mapID == 535) then
         mapID = 543
-    elseif (APR.ActiveMap == "A539-DesMephisto-Shadowmoon1" and (mapID == 84 or mapID == 543)) then
+    elseif (APR.ActiveRoute == "A539-DesMephisto-Shadowmoon1" and (mapID == 84 or mapID == 543)) then
         mapID = 539
-    elseif (APR.ActiveMap == "A539-DesMephisto-Shadowmoon2" and mapID == 535) then
+    elseif (APR.ActiveRoute == "A539-DesMephisto-Shadowmoon2" and mapID == 535) then
         mapID = 539
-    elseif (APR.ActiveMap == "A535-DesMephisto-Talador" and mapID == 539) then
+    elseif (APR.ActiveRoute == "A535-DesMephisto-Talador" and mapID == 539) then
         mapID = 535
     elseif (mapID == 1726 or mapID == 1727 or mapID == 1728) then
         mapID = 1409
     end
 
-    if (APR.ActiveMap == "Shadowlands-StoryOnly-A" and ((mapID == 84) or (mapID == 1648) or (mapID == 1670) or (mapID == 1671) or (mapID == 1533) or (mapID == 1613) or (mapID == 1536) or (mapID == 1543) or (mapID == 1565) or (mapID == 1525))) then
+    if (APR.ActiveRoute == "Shadowlands-StoryOnly-A" and ((mapID == 84) or (mapID == 1648) or (mapID == 1670) or (mapID == 1671) or (mapID == 1533) or (mapID == 1613) or (mapID == 1536) or (mapID == 1543) or (mapID == 1565) or (mapID == 1525))) then
         mapID = 1670
     end
-    if (APR.ActiveMap == "Shadowlands-StoryOnly-H" and ((mapID == 85) or (mapID == 1648) or (mapID == 1670) or (mapID == 1671) or (mapID == 1533) or (mapID == 1613) or (mapID == 1536) or (mapID == 1543) or (mapID == 1565) or (mapID == 1525))) then
+    if (APR.ActiveRoute == "Shadowlands-StoryOnly-H" and ((mapID == 85) or (mapID == 1648) or (mapID == 1670) or (mapID == 1671) or (mapID == 1533) or (mapID == 1613) or (mapID == 1536) or (mapID == 1543) or (mapID == 1565) or (mapID == 1525))) then
         mapID = 1670
     end
-    if (APR.ActiveMap == "85-DesMephisto-Orgrimmar-p1" and mapID == 17) then
+    if (APR.ActiveRoute == "85-DesMephisto-Orgrimmar-p1" and mapID == 17) then
         mapID = 85
     end
-    if (APR.ActiveMap == "525-DesMephisto-FrostfireRidge-p1" and mapID == 85) then
+    if (APR.ActiveRoute == "525-DesMephisto-FrostfireRidge-p1" and mapID == 85) then
         mapID = 525
     end
-    if (APR.ActiveMap == "525-DesMephisto-FrostfireRidge-p1" and mapID == 543) then
+    if (APR.ActiveRoute == "525-DesMephisto-FrostfireRidge-p1" and mapID == 543) then
         mapID = 525
     end
-    if (APR.ActiveMap == "543-DesMephisto-Gorgrond-p1" and mapID == 535) then
+    if (APR.ActiveRoute == "543-DesMephisto-Gorgrond-p1" and mapID == 535) then
         mapID = 543
     end
-    if (APR.ActiveMap == "535-DesMephisto-Talador-p1" and mapID == 542) then
+    if (APR.ActiveRoute == "535-DesMephisto-Talador-p1" and mapID == 542) then
         mapID = 535
     end
-    if (APR.ActiveMap == "550-DesMephisto-Nagrand" and mapID == 535) then
+    if (APR.ActiveRoute == "550-DesMephisto-Nagrand" and mapID == 535) then
         mapID = 550
     end
 
-    if (APR.ActiveMap == "1409-Exile's Reach" and mapID == 85) then
+    if (APR.ActiveRoute == "1409-Exile's Reach" and mapID == 85) then
         mapID = 1409
     end
 
-    if (APR.ActiveMap == "84-IntroQline" and mapID == 118) then
+    if (APR.ActiveRoute == "84-IntroQline" and mapID == 118) then
         mapID = 84
     end
-    if (APR.ActiveMap == "84-IntroQline" and mapID == 1648) then
+    if (APR.ActiveRoute == "84-IntroQline" and mapID == 1648) then
         mapID = 84
     end
-    if (APR.ActiveMap == "85-IntroQline" and mapID == 118) then
+    if (APR.ActiveRoute == "85-IntroQline" and mapID == 118) then
         mapID = 85
     end
-    if (APR.ActiveMap == "85-IntroQline" and mapID == 1648) then
+    if (APR.ActiveRoute == "85-IntroQline" and mapID == 1648) then
         mapID = 85
     end
-    if (APR.ActiveMap == "1670-Z1-Oribos-Story" and mapID == 1533) then
+    if (APR.ActiveRoute == "1670-Z1-Oribos-Story" and mapID == 1533) then
         mapID = 1670
     end
-    if (APR.ActiveMap == "1670-Z1-Oribos-Story" and mapID == 1673) then
+    if (APR.ActiveRoute == "1670-Z1-Oribos-Story" and mapID == 1673) then
         mapID = 1670
     end
 
-    if (APR.ActiveMap == "1533-Z2-Bastion-Story" and mapID == 1670) then
+    if (APR.ActiveRoute == "1533-Z2-Bastion-Story" and mapID == 1670) then
         mapID = 1533
     end
-    if (APR.ActiveMap == "1613-Z3-Oribos-Story" and mapID == 1536) then
+    if (APR.ActiveRoute == "1613-Z3-Oribos-Story" and mapID == 1536) then
         mapID = 1670
     end
-    if (APR.ActiveMap == "1536-Z4-Maldraxxus-Story" and mapID == 1670) then
+    if (APR.ActiveRoute == "1536-Z4-Maldraxxus-Story" and mapID == 1670) then
         mapID = 1536
     end
-    if (APR.ActiveMap == "1536-Z4-Maldraxxus-Story" and mapID == 1691) then
+    if (APR.ActiveRoute == "1536-Z4-Maldraxxus-Story" and mapID == 1691) then
         mapID = 1536
     end
-    if (APR.ActiveMap == "1536-Z4-Maldraxxus-Story" and mapID == 1671) then
+    if (APR.ActiveRoute == "1536-Z4-Maldraxxus-Story" and mapID == 1671) then
         mapID = 1536
     end
-    if (APR.ActiveMap == "1536-Z4-Maldraxxus-Story" and mapID == 1550) then
+    if (APR.ActiveRoute == "1536-Z4-Maldraxxus-Story" and mapID == 1550) then
         mapID = 1536
     end
-    if (APR.ActiveMap == "1670-Z5-Oribos-Story" and mapID == 1543) then
+    if (APR.ActiveRoute == "1670-Z5-Oribos-Story" and mapID == 1543) then
         mapID = 1670
     end
-    if (APR.ActiveMap == "1543-Z6-TheMaw-Story" and mapID == 1670) then
+    if (APR.ActiveRoute == "1543-Z6-TheMaw-Story" and mapID == 1670) then
         mapID = 1543
     end
-    if (APR.ActiveMap == "1670-Z7-Oribos-Story" and mapID == 1536) then
+    if (APR.ActiveRoute == "1670-Z7-Oribos-Story" and mapID == 1536) then
         mapID = 1670
     end
-    if (APR.ActiveMap == "1536-Z8-Maldraxxus-Story" and mapID == 1670) then
+    if (APR.ActiveRoute == "1536-Z8-Maldraxxus-Story" and mapID == 1670) then
         mapID = 1536
     end
-    if (APR.ActiveMap == "1536-Z8-Maldraxxus-Story" and mapID == 1550) then
+    if (APR.ActiveRoute == "1536-Z8-Maldraxxus-Story" and mapID == 1550) then
         mapID = 1536
     end
-    if (APR.ActiveMap == "1536-Z8-Maldraxxus-Story" and mapID == 1671) then
+    if (APR.ActiveRoute == "1536-Z8-Maldraxxus-Story" and mapID == 1671) then
         mapID = 1536
     end
-    if (APR.ActiveMap == "1670-Z9-Oribos-Story" and mapID == 1565) then
+    if (APR.ActiveRoute == "1670-Z9-Oribos-Story" and mapID == 1565) then
         mapID = 1670
     end
-    if (APR.ActiveMap == "1565-Z10-Ardenweald-Story" and mapID == 1670) then
+    if (APR.ActiveRoute == "1565-Z10-Ardenweald-Story" and mapID == 1670) then
         mapID = 1565
     end
-    if (APR.ActiveMap == "1565-Z10-Ardenweald-Story" and mapID == 1824) then
+    if (APR.ActiveRoute == "1565-Z10-Ardenweald-Story" and mapID == 1824) then
         mapID = 1565
     end
-    if (APR.ActiveMap == "1565-Z10-Ardenweald-Story" and mapID == 1642) then
+    if (APR.ActiveRoute == "1565-Z10-Ardenweald-Story" and mapID == 1642) then
         mapID = 1565
     end
-    if (APR.ActiveMap == "1565-Z10-Ardenweald-Story" and mapID == 619) then
+    if (APR.ActiveRoute == "1565-Z10-Ardenweald-Story" and mapID == 619) then
         mapID = 1565
     end
-    if (APR.ActiveMap == "1671-Z11-Oribos-Story" and mapID == 1525) then
+    if (APR.ActiveRoute == "1671-Z11-Oribos-Story" and mapID == 1525) then
         mapID = 1670
     end
-    if (APR.ActiveMap == "1525-Z12-Revendreth-Story" and mapID == 1543) then
+    if (APR.ActiveRoute == "1525-Z12-Revendreth-Story" and mapID == 1543) then
         mapID = 1525
     end
-    if (APR.ActiveMap == "1543-Z13-TheMaw-Story" and mapID == 1525) then
+    if (APR.ActiveRoute == "1543-Z13-TheMaw-Story" and mapID == 1525) then
         mapID = 1543
     end
-    if (APR.ActiveMap == "1543-Z13-TheMaw-Story" and mapID == 1656) then
+    if (APR.ActiveRoute == "1543-Z13-TheMaw-Story" and mapID == 1656) then
         mapID = 1543
     end
-    if (APR.ActiveMap == "1525-Z14-Revendreth-Story" and mapID == 1670) then
+    if (APR.ActiveRoute == "1525-Z14-Revendreth-Story" and mapID == 1670) then
         mapID = 1525
     end
-    if (APR.ActiveMap == "1670-Z1-Oribos-StoryXBastion" and mapID == 1533) then
+    if (APR.ActiveRoute == "1670-Z1-Oribos-StoryXBastion" and mapID == 1533) then
         mapID = 1670
     end
-    if (APR.ActiveMap == "1670-Z1-Oribos-StoryXMaldraxxus" and mapID == 1536) then
+    if (APR.ActiveRoute == "1670-Z1-Oribos-StoryXMaldraxxus" and mapID == 1536) then
         mapID = 1670
     end
-    if (APR.ActiveMap == "1670-Z1-Oribos-StoryXArdenweald" and mapID == 1565) then
+    if (APR.ActiveRoute == "1670-Z1-Oribos-StoryXArdenweald" and mapID == 1565) then
         mapID = 1670
     end
-    if (APR.ActiveMap == "1670-Z1-Oribos-StoryXRevendreth" and mapID == 1525) then
+    if (APR.ActiveRoute == "1670-Z1-Oribos-StoryXRevendreth" and mapID == 1525) then
         mapID = 1670
     end
-    if (APR.ActiveMap == "1525-Z12-Revendreth-Story" and mapID == 1543) then
+    if (APR.ActiveRoute == "1525-Z12-Revendreth-Story" and mapID == 1543) then
         mapID = 1525
     end
-    if (APR.ActiveMap == "1543-Z13-TheMaw-Story" and (mapID == 1762 or mapID == 1656 or mapID == 1525)) then
+    if (APR.ActiveRoute == "1543-Z13-TheMaw-Story" and (mapID == 1762 or mapID == 1656 or mapID == 1525)) then
         mapID = 1543
     end
-    if (APR.ActiveMap == "1670-Z1-Oribos-ZonePick" and (mapID == 1762 or mapID == 1656 or mapID == 1525 or mapID == 1543 or mapID == 1565 or mapID == 1533 or mapID == 1536)) then
+    if (APR.ActiveRoute == "1670-Z1-Oribos-ZonePick" and (mapID == 1762 or mapID == 1656 or mapID == 1525 or mapID == 1543 or mapID == 1565 or mapID == 1533 or mapID == 1536)) then
         mapID = 1670
     end
     -- Eastern Kingdoms
-    if (APR.ActiveMap == "A23-ScarletEnclave" and (mapID == 37 or mapID == 84 or mapID == 124)) then
+    if (APR.ActiveRoute == "A23-ScarletEnclave" and (mapID == 37 or mapID == 84 or mapID == 124)) then
         mapID = 23
-    elseif (APR.ActiveMap == "H23-ScarletEnclave" and (mapID == 1 or mapID == 85 or mapID == 124)) then
+    elseif (APR.ActiveRoute == "H23-ScarletEnclave" and (mapID == 1 or mapID == 85 or mapID == 124)) then
         mapID = 23
     end
     -- Battle for Azeroth
-    if (APR.ActiveMap == "A895-Tiragarde Sound" and mapID == 1169) then
+    if (APR.ActiveRoute == "A895-Tiragarde Sound" and mapID == 1169) then
         mapID = 895
-    elseif (APR.ActiveMap == "862-Zuldazar" and mapID == 1012) then
+    elseif (APR.ActiveRoute == "862-Zuldazar" and mapID == 1012) then
         mapID = 862
-    elseif (APR.ActiveMap == "862-Zuldazar-1" and mapID == 875) then
+    elseif (APR.ActiveRoute == "862-Zuldazar-1" and mapID == 875) then
         mapID = 862
-    elseif (APR.ActiveMap == "862-Zuldazar-1" and mapID == 863) then
+    elseif (APR.ActiveRoute == "862-Zuldazar-1" and mapID == 863) then
         mapID = 862
     end
     -- Dragonflight
-    if (APR.ActiveMap == "DF01H-85-Orgrimmar" and mapID == 1) then
+    if (APR.ActiveRoute == "DF01H-85-Orgrimmar" and mapID == 1) then
         mapID = 85
-    elseif (APR.ActiveMap == "DF01A-84-Stormwind" and (mapID == 1978 or mapID == 2022)) then
+    elseif (APR.ActiveRoute == "DF01A-84-Stormwind" and (mapID == 1978 or mapID == 2022)) then
         mapID = 84
-    elseif (APR.ActiveMap == "DF02H-1-Durotar" and (mapID == 1978 or mapID == 2022)) then
+    elseif (APR.ActiveRoute == "DF02H-1-Durotar" and (mapID == 1978 or mapID == 2022)) then
         mapID = 1
-    elseif (APR.ActiveMap == "DF03N-2022-WakingShores" and mapID == 2023) then
+    elseif (APR.ActiveRoute == "DF03N-2022-WakingShores" and mapID == 2023) then
         mapID = 2022
-    elseif (APR.ActiveMap == "DF04-2023-OhnahranPlains" and mapID == 2024) then
+    elseif (APR.ActiveRoute == "DF04-2023-OhnahranPlains" and mapID == 2024) then
         mapID = 2023
-    elseif (APR.ActiveMap == "DF05-2024-AzureSpan" and mapID == 2025) then
+    elseif (APR.ActiveRoute == "DF05-2024-AzureSpan" and mapID == 2025) then
         mapID = 2024
-    elseif (APR.ActiveMap == "DF06H-2025-Thaldraszus" and (mapID == 2028 or mapID == 2135 or mapID == 2090 or mapID == 2091 or mapID == 2088 or mapID == 2089)) then
+    elseif (APR.ActiveRoute == "DF06H-2025-Thaldraszus" and (mapID == 2028 or mapID == 2135 or mapID == 2090 or mapID == 2091 or mapID == 2088 or mapID == 2089)) then
         mapID = 2025
-    elseif (APR.ActiveMap == "DF06A-2025-Thaldraszus" and (mapID == 2028 or mapID == 2135 or mapID == 2090 or mapID == 2091 or mapID == 2088 or mapID == 2089)) then
+    elseif (APR.ActiveRoute == "DF06A-2025-Thaldraszus" and (mapID == 2028 or mapID == 2135 or mapID == 2090 or mapID == 2091 or mapID == 2088 or mapID == 2089)) then
         mapID = 2025
     end
 
@@ -354,7 +354,7 @@ function APR.transport.GetMeToNextZone()
     end
     local routeZoneMapID, routeName = APR.transport.GetCustomZone()
     if (routeZoneMapID and routeName) then
-        APR.ActiveMap = routeName
+        APR.ActiveRoute = routeName
         APR.transport.GoToZone = routeZoneMapID
     end
     local playerMapInfo = APR:GetPlayerParentMapID()
@@ -365,25 +365,25 @@ function APR.transport.GetMeToNextZone()
 
     -- local index, currentRouteName = next(APRCustomPath[APR.Username .. "-" .. APR.Realm])
     for routeCategory, _ in pairs(APR.QuestStepListListing) do
-        if (APR.ActiveMap and APR.QuestStepListListing[routeCategory][APR.ActiveMap]) then
-            local zoneID = APR.QuestStepListListing[routeCategory][APR.ActiveMap]
-            local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
-            local step = APR.QuestStepList[APR.ActiveMap][CurStep]
+        if (APR.ActiveRoute and APR.QuestStepListListing[routeCategory][APR.ActiveRoute]) then
+            local zoneID = APR.QuestStepListListing[routeCategory][APR.ActiveRoute]
+            local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
+            local step = APR.QuestStepList[APR.ActiveRoute][CurStep]
             if (APR.QuestStepListListingZone[zoneID] and playerMapInfo and APR.QuestStepListListingZone[zoneID] == playerMapInfo) or (step and step.Zone == playerMapInfo) then
                 APR.transport.GoToZone = nil
                 return
             end
         end
     end
-    if (APR.ActiveQuests and APR.ActiveQuests[59974] and (APR.ActiveMap == "A1670-Oribos (Maw-Maldraxxus)" or APR.ActiveMap == "1670-Oribos (Maw-Maldraxxus)" or APR.ActiveMap == "A1670-Z7-Oribos-Story" or APR.ActiveMap == "1670-Z7-Oribos-Story")) then
+    if (APR.ActiveQuests and APR.ActiveQuests[59974] and (APR.ActiveRoute == "A1670-Oribos (Maw-Maldraxxus)" or APR.ActiveRoute == "1670-Oribos (Maw-Maldraxxus)" or APR.ActiveRoute == "A1670-Z7-Oribos-Story" or APR.ActiveRoute == "1670-Z7-Oribos-Story")) then
         APR.transport.GoToZone = nil
         return
     end
-    if (APR.ActiveMap == "84-IntroQline" and playerMapInfo == 84) then
+    if (APR.ActiveRoute == "84-IntroQline" and playerMapInfo == 84) then
         APR.transport.GoToZone = nil
         return
     end
-    if (APR.ActiveMap == "85-IntroQline" and playerMapInfo == 85) then
+    if (APR.ActiveRoute == "85-IntroQline" and playerMapInfo == 85) then
         APR.transport.GoToZone = nil
         return
     end
@@ -427,7 +427,7 @@ function APR.transport.GetMeToNextZone()
             APR.ArrowActive = 0
         end
 
-        if (APR.ActiveMap) then
+        if (APR.ActiveRoute) then
             local function checkChromieTimeline(id)
                 local chromieExpansionOption = C_ChromieTime.GetChromieTimeExpansionOption(id)
                 if (not chromieExpansionOption) then
@@ -437,12 +437,12 @@ function APR.transport.GetMeToNextZone()
                         " " .. chromieExpansionOption.name)
                 end
             end
-            if (APR.QuestStepListListing.WarlordsOfDraenor[APR.ActiveMap]) then
+            if (APR.QuestStepListListing.WarlordsOfDraenor[APR.ActiveRoute]) then
                 -- 9 == WOD
                 checkChromieTimeline(9)
             end
             -- If we add Sl timeline in the future
-            -- if(APR.QuestStepListListing["Shadowlands"][APR.ActiveMap]) then
+            -- if(APR.QuestStepListListing["Shadowlands"][APR.ActiveRoute]) then
             -- 	-- 14 == Shadowland
             -- 	checkChromieTimeline(14)
             -- end
@@ -453,23 +453,23 @@ function APR.transport.GetMeToNextZone()
             DestSet = 1
         end
     end
-    if (((routeMapID == 181) or (routeMapID == 202) or (routeMapID == 179)) and APR.ActiveMap == "A179-Gilneas") then
+    if (((routeMapID == 181) or (routeMapID == 202) or (routeMapID == 179)) and APR.ActiveRoute == "A179-Gilneas") then
         APR.IsInRouteZone = false
-    elseif (((routeMapID == 97) or (routeMapID == 106)) and APR.ActiveMap == "A106-BloodmystIsle") then
+    elseif (((routeMapID == 97) or (routeMapID == 106)) and APR.ActiveRoute == "A106-BloodmystIsle") then
         APR.IsInRouteZone = false
-    elseif (((routeMapID == 69) or (routeMapID == 64)) and APR.ActiveMap == "A64-ThousandNeedles") then
+    elseif (((routeMapID == 69) or (routeMapID == 64)) and APR.ActiveRoute == "A64-ThousandNeedles") then
         APR.IsInRouteZone = false
     elseif ((routeMapID == 1536) and APR.ActiveQuests and APR.ActiveQuests["59974"]) then
         APR.IsInRouteZone = false
-    elseif (((routeMapID == 71) or (routeMapID == 249)) and APR.ActiveMap == "A71-Tanaris") then
+    elseif (((routeMapID == 71) or (routeMapID == 249)) and APR.ActiveRoute == "A71-Tanaris") then
         APR.IsInRouteZone = false
-    elseif (playerMapID == 427 and APR.ActiveMap ~= "A27-ColdridgeValleyDwarf") then
+    elseif (playerMapID == 427 and APR.ActiveRoute ~= "A27-ColdridgeValleyDwarf") then
         -- Coldridge Valley (Dwarf/gnum)
         APR.currentStep:AddExtraLineText("GO_CAVE", L["GO_CAVE"])
         APR.ArrowActive = 1
         APR.ArrowActive_X = 117.2
         APR.ArrowActive_Y = -6216.2
-    elseif (playerMapID == 28 and APR.ActiveMap ~= "A27-ColdridgeValleyDwarf") then
+    elseif (playerMapID == 28 and APR.ActiveRoute ~= "A27-ColdridgeValleyDwarf") then
         -- Coldridge Valley cave to Dun Morogh
         APR.currentStep:AddExtraLineText("OUT_CAVE", L["OUT_CAVE"])
         APR.ArrowActive = 1
@@ -1400,7 +1400,7 @@ APR_Transport_EventFrame:RegisterEvent("PLAYER_CONTROL_LOST")
 APR_Transport_EventFrame:RegisterEvent("PLAYER_LEAVING_WORLD")
 APR_Transport_EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
-    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveMap])
+    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveRoute])
     if APR.settings.profile.showEvent then
         print("EVENT: Transport - ", event)
     end

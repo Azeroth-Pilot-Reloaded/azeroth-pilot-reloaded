@@ -418,14 +418,14 @@ function APR.currentStep:ProgressBar(key, total, current)
 end
 
 function APR.currentStep:SetProgressBar(CurStep)
-    if APR.ActiveMap then
+    if APR.ActiveRoute then
         if not APRData[APR.Realm][APR.Username]
-            [APR.ActiveMap .. '-TotalSteps'] then
+            [APR.ActiveRoute .. '-TotalSteps'] then
             _G.GetTotalSteps()
         end
-        local curStepDisplayed = CurStep - (APRData[APR.Realm][APR.Username][APR.ActiveMap .. '-SkippedStep'] or 0)
-        APR.currentStep:ProgressBar(APR.ActiveMap, APRData[APR.Realm][APR.Username]
-            [APR.ActiveMap .. '-TotalSteps'], curStepDisplayed)
+        local curStepDisplayed = CurStep - (APRData[APR.Realm][APR.Username][APR.ActiveRoute .. '-SkippedStep'] or 0)
+        APR.currentStep:ProgressBar(APR.ActiveRoute, APRData[APR.Realm][APR.Username]
+            [APR.ActiveRoute .. '-TotalSteps'], curStepDisplayed)
     end
 end
 

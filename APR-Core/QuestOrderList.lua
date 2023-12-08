@@ -256,23 +256,23 @@ function APR.questOrderList:UpdateFrameContents()
 end
 
 function APR.questOrderList:AddStepFromRoute()
-    if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.QuestStepList[APR.ActiveMap] or IsInInstance() or not APR.routeconfig:HasRouteInCustomPaht() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.QuestStepList[APR.ActiveRoute] or IsInInstance() or not APR.routeconfig:HasRouteInCustomPaht() then
         self:RemoveSteps()
         return
     end
     if APR.settings.profile.debug then
-        print("Function: APR.questOrderList:AddStepFromRoute - " .. APR.ActiveMap)
+        print("Function: APR.questOrderList:AddStepFromRoute - " .. APR.ActiveRoute)
     end
     -- Clean list
     self:RemoveSteps()
 
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveMap]
+    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
     if not CurStep then
         return
     end
     -- can't use id from the loop due to faction/race/class/achievement step option
     local stepIndex = 1
-    for id, step in pairs(APR.QuestStepList[APR.ActiveMap]) do
+    for id, step in pairs(APR.QuestStepList[APR.ActiveRoute]) do
         -- Hide step for Faction, Race, Class, Achievement
         if (
                 (not step.Faction or step.Faction == APR.Faction) and
@@ -414,7 +414,7 @@ function APR.questOrderList:AddStepFromRoute()
             stepIndex = stepIndex + 1
         end
     end
-    local curStepDisplayed = CurStep - (APRData[APR.Realm][APR.Username][APR.ActiveMap .. '-SkippedStep'] or 0)
+    local curStepDisplayed = CurStep - (APRData[APR.Realm][APR.Username][APR.ActiveRoute .. '-SkippedStep'] or 0)
     -- set current Step indicator
     SetCurrentStepIndicator(curStepDisplayed)
 end
