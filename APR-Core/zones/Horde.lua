@@ -1,18 +1,46 @@
 if (APR.Faction == "Horde") then
     APR.QuestStepListListingZone = {
-        ["01-10 Orc Start"] = 1,
-        ["01-10 Troll Start"] = 1,
-        ["01-10 Tauren Start"] = 7,
-        ["01-10 Scourge Start"] = 18,
-        ["01-10 Blood Elf Start"] = 94,
-        ["01-30 Goblin Start (Kezan)"] = 194,
-        ["01-30 Goblin Start (Lost Isles)"] = 174,
-        ["Demon Hunter Start"] = 672,
         ["01-10 Exile's Reach"] = 1409,
-        ["01-30 Durotar (Full)"] = 1,
+        ["Orc Start"] = 1,
+        ["Troll Start"] = 1,
+        ["Tauren Start"] = 7,
+        ["Scourge Start"] = 18,
+        ["Blood Elf Start"] = 94,
+        ["Goblin Start (Kezan)"] = 194,
+        ["Goblin Start (Lost Isles)"] = 174,
+        ["Demon Hunter Start"] = 672,
+        ["Pandaren Start"] = 378,
+        ["Durotar (Full)"] = 1,
         ["Death Knight Start"] = 23,
-        ["10-30 Northern Barrens"] = 10,
-        ["10-30 Southern Barrens"] = 199,
+        ["Allied Death Knight Start"] = 2297,
+        ["Northern Barrens"] = 10,
+        ["Southern Barrens"] = 199,
+        ["Silverpine Forest"] = 21,
+        ["Silverpine Forest 2"] = 217,
+        ["Silverpine Forest 3"] = 21,
+        ["Silverpine Forest 4"] = 25,
+        ["Silverpine Forest 5"] = 21,
+        ["WIP - Hillsbrad Foothills"] = 25,
+        ["WIP - Western Plaguelands"] = 22,
+        ["WIP-The Jade Forest"] = 371,
+        ["WIP-Kun-Lai Summit"] = 379,
+        ["WIP-Highmountain"] = 650,
+        ["WOD01 - Orgrimmar"] = 85,
+        ["WOD02 - Tanaan Jungle"] = 577,
+        ["WOD03 - Frostfire Ridge"] = 525,
+        ["WOD04 - Gorgrond"] = 543,
+        ["WOD05 - Talador"] = 535,
+        ["WOD06 - Spires of Arak"] = 542,
+        ["WOD07 - Nagrand"] = 550,
+        ["Legion - Azsuna"] = 630,
+        ["Legion - Val'Sharah"] = 641,
+        ["Legion - Stormheim"] = 634,
+        ["BFA01 - Intro"] = 85,
+        ["BFA02 - Intro"] = 862,
+        ["BFA03 - Zuldazar"] = 862,
+        ["BFA04 - Nazmir"] = 863,
+        ["BFA05 - Naz-end Vol-begin"] = 862,
+        ["BFA06 - Vol'dun"] = 864,
         ["SL - Intro"] = 85,
         ["SL01 - The Maw"] = 1648,
         ["SL02 - Oribos"] = 1670,
@@ -30,29 +58,6 @@ if (APR.Faction == "Horde") then
         ["SL14 - The Maw"] = 1543,
         ["SL15 - Revendreth"] = 1525,
         ["SL16 - Oribos"] = 1670,
-        ["WOD01 - Orgrimmar"] = 85,
-        ["WOD02 - Tanaan Jungle"] = 577,
-        ["WOD03 - Frostfire Ridge"] = 525,
-        ["WOD04 - Gorgrond"] = 543,
-        ["WOD05 - Talador"] = 535,
-        ["WOD06 - Spires of Arak"] = 542,
-        ["WOD07 - Nagrand"] = 550,
-        ["Legion - Azsuna"] = 630,
-        ["Legion - Val'Sharah"] = 641,
-        ["Legion - Stormheim"] = 634,
-        ["BFA01 - Intro"] = 85,
-        ["BFA02 - Intro"] = 862,
-        ["BFA03 - Zuldazar"] = 862,
-        ["BFA04 - Nazmir"] = 863,
-        ["BFA05 - Naz-end Vol-begin"] = 862,
-        ["BFA06 - Vol'dun"] = 864,
-        ["Silverpine Forest"] = 21,
-        ["Silverpine Forest 2"] = 217,
-        ["Silverpine Forest 3"] = 21,
-        ["Silverpine Forest 4"] = 25,
-        ["Silverpine Forest 5"] = 21,
-        ["WIP - Hillsbrad Foothills"] = 25,
-        ["WIP - Western Plaguelands"] = 22,
         ["SL - StoryMode Only"] = 1670,
         ["DF01/02 - Dragonflight Orgrimmar/Durotar"] = 85,
         ["DF03 - Waking Shores - Horde"] = 2022,
@@ -60,19 +65,14 @@ if (APR.Faction == "Horde") then
         ["DF05 - Ohn'Ahran Plains"] = 2023,
         ["DF06 - Azure Span"] = 2024,
         ["DF07 - Thaldraszus"] = 2025,
-        ["WIP-The Jade Forest"] = 371,
-        ["WIP-Kun-Lai Summit"] = 379,
-        ["WIP-Highmountain"] = 650,
         ["Dracthyr Start"] = 2118,
-        ["Allied Death Knight Start"] = 2297,
-        ["01-30 Pandaren Start"] = 378,
     }
 
     --TODO: maybe split into kalindor et eastern for map icon/line/arrow
     APR.QuestStepListListing.Vanilla = {
-        ["1-Durotar"] = "01-30 Durotar",
-        ["10-NorthernBarrens"] = "10-30 Northern Barrens",
-        ["199-SouthernBarrens"] = "10-30 Southern Barrens",
+        ["1-Durotar"] = "Durotar",
+        ["10-NorthernBarrens"] = "Northern Barrens",
+        ["199-SouthernBarrens"] = "Southern Barrens",
         ["DEV-Silverpine"] = "Silverpine Forest",
         ["217-Ruins of Gilneas"] = "Silverpine Forest 2",
         ["DEV-Silverpine2"] = "Silverpine Forest 3",
@@ -140,48 +140,48 @@ if (APR.Faction == "Horde") then
         ["DF06H-2025-Thaldraszus"] = "DF07 - Thaldraszus",
     }
 
+    if APR.Level < 10 or Contains({ 1409, 1726, 1727 }, APR:GetPlayerParentMapID()) then
+        APR.QuestStepListListing.Vanilla["1409-Exile's Reach"] = "01-10 Exile's Reach"
+    end
     if (APR.Race == "Orc") then
-        APR.QuestStepListListing.Vanilla["1-ValleyOfTrialsOrc"] = "01-10 Orc Start"
+        APR.QuestStepListListing.Vanilla["1-ValleyOfTrialsOrc"] = "Orc Start"
     elseif (APR.Race == "Tauren") then
-        APR.QuestStepListListing.Vanilla["7-MulgoreTauren"] = "01-10 Tauren Start"
+        APR.QuestStepListListing.Vanilla["7-MulgoreTauren"] = "Tauren Start"
     elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
-        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollWar"] = "01-10 Troll Start"
+        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollWar"] = "Troll Start"
     elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
-        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollHunter"] = "01-10 Troll Start"
+        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollHunter"] = "Troll Start"
     elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
-        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollRogue"] = "01-10 Troll Start"
+        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollRogue"] = "Troll Start"
     elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
-        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollPriest"] = "01-10 Troll Start"
+        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollPriest"] = "Troll Start"
     elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
-        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollShaman"] = "01-10 Troll Start"
+        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollShaman"] = "Troll Start"
     elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
-        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollMage"] = "01-10 Troll Start"
+        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollMage"] = "Troll Start"
     elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
-        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollWarlock"] = "01-10 Troll Start"
+        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollWarlock"] = "Troll Start"
     elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
-        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollMonk"] = "01-10 Troll Start"
+        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollMonk"] = "Troll Start"
     elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
-        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollDruid"] = "01-10 Troll Start"
+        APR.QuestStepListListing.Vanilla["1-EchoIslesTrollDruid"] = "Troll Start"
     elseif (APR.Race == "Scourge") then --Undead
-        APR.QuestStepListListing.Vanilla["18-TirisfalGladesUndead"] = "01-10 Scourge Start"
+        APR.QuestStepListListing.Vanilla["18-TirisfalGladesUndead"] = "Scourge Start"
     elseif (APR.Race == "BloodElf") then
-        APR.QuestStepListListing.Vanilla["94-EversongWoodsBloodElf"] = "01-10 Blood Elf Start"
+        APR.QuestStepListListing.Vanilla["94-EversongWoodsBloodElf"] = "Blood Elf Start"
     elseif (APR.Race == "Goblin" and APR.Level < 2) then
-        APR.QuestStepListListing.Cataclysm["194-Kezan"] = "01-30 Goblin Start (Kezan)"
-        APR.QuestStepListListing.Cataclysm["174-LostIsles"] = "01-30 Goblin Start (Lost Isles)"
+        APR.QuestStepListListing.Cataclysm["194-Kezan"] = "Goblin Start (Kezan)"
+        APR.QuestStepListListing.Cataclysm["174-LostIsles"] = "Goblin Start (Lost Isles)"
     elseif (APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23) then
         APR.QuestStepListListing.WrathOfTheLichKing["H_Allied_Icecrown Citadel"] = "Allied Death Knight Start"
     elseif (APR.ClassId == APR.Classes["Death Knight"]) then
         APR.QuestStepListListing.WrathOfTheLichKing["H23-ScarletEnclave"] = "Death Knight Start"
     elseif (APR.Race == "Pandaren") then
-        APR.QuestStepListListing.MistsOfPandaria["378-WanderingIsle"] = "01-30 Pandaren Start"
+        APR.QuestStepListListing.MistsOfPandaria["378-WanderingIsle"] = "Pandaren Start"
     elseif (APR.ClassId == APR.Classes["Demon Hunter"]) then
         APR.QuestStepListListing.Legion["672-Mardum"] = "Demon Hunter Start"
     elseif (APR.Race == "Dracthyr") then
         APR.QuestStepListListing["Dragonflight"]["2118-DracthyrStart-H"] = "Dracthyr Start"
-    end
-    if APR.Level < 10 or Contains({ 1409, 1726, 1727 }, APR:GetPlayerParentMapID()) then
-        APR.QuestStepListListing.Vanilla["1409-Exile's Reach"] = "01-10 Exile's Reach"
     end
 
     APR.Vanilla = {}
