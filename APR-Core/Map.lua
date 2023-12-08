@@ -183,7 +183,7 @@ function APR.map:UpdateMinimapLine()
         return
     end
 
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
+    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     if CurStep and APR.ActiveRoute and APR.QuestStepList and APR.QuestStepList[APR.ActiveRoute] then
         local steps = APR.QuestStepList[APR.ActiveRoute][CurStep]
         if steps and steps.TT then
@@ -208,7 +208,7 @@ function APR.map:UpdateLine()
     end
 
     local mapID = WorldMapFrame:GetMapID()
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
+    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     if CurStep and APR.ActiveRoute and APR.QuestStepList and APR.QuestStepList[APR.ActiveRoute] then
         local steps = APR.QuestStepList[APR.ActiveRoute][CurStep]
         if steps and steps.TT then
@@ -326,7 +326,7 @@ function APR.map:AddMapPins()
         end
     end
 
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
+    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     if APR.ActiveRoute and APR.QuestStepList and APR.QuestStepList[APR.ActiveRoute] and CurStep then
         local mapshowNextStepsCount = APR.settings.profile.mapshowNextStepsCount
         local minimapshowNextStepsCount = APR.settings.profile.minimapshowNextStepsCount

@@ -105,7 +105,7 @@ APR.ArrowFrame.Button:Hide()
 ---------------------------------------------------------------------------------------
 
 local function CheckDistance()
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
+    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     if CurStep and APR.QuestStepList[APR.ActiveRoute] and APR.QuestStepList[APR.ActiveRoute][CurStep] then
         local stepList = APR.QuestStepList[APR.ActiveRoute]
         if (stepList[CurStep] and stepList[CurStep]["CRange"]) then
@@ -140,7 +140,7 @@ function APR.Arrow:SetQPTT()
     if (APR.settings.profile.debug) then
         print("Function: APR_SetQPTT()")
     end
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
+    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     if (APR.Arrow.currentStep ~= CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveRoute] and APR.QuestStepList[APR.ActiveRoute][CurStep] and APR.QuestStepList[APR.ActiveRoute][CurStep]["TT"]) then
         APR.ArrowActive = 1
         APR.ArrowActive_X = APR.QuestStepList[APR.ActiveRoute][CurStep]["TT"]["x"]
@@ -162,7 +162,7 @@ function APR.Arrow:CalculPosition()
         return
     end
 
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
+    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     local questStep = APR.QuestStepList[APR.ActiveRoute] and APR.QuestStepList[APR.ActiveRoute][CurStep]
 
     if questStep and questStep.AreaTriggerZ then

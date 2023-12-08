@@ -5,15 +5,14 @@ APR.transport = APR:NewModule("Transport")
 
 APR.transport.CurrentTaxiNode = {}
 APR.transport.StepTaxiNode = {}
-APR.transport.Zonening = 0
 local APRLumberCheck = 0
 
 function APR.transport.GetCustomZone()
     local playerMapID = APR:GetPlayerParentMapID()
 
     local zenr = 0
-    if (APRCustomPath and APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
-        zenr = #APRCustomPath[APR.Username .. "-" .. APR.Realm]
+    if (APRCustomPath and APRCustomPath[APR.PlayerID]) then
+        zenr = #APRCustomPath[APR.PlayerID]
     end
 
     -- TODO: only for SL check why hardcoded ?
@@ -116,7 +115,7 @@ function APR.transport.GetCustomZone()
     end
 
     -- Get the current Route wanted MapID and Route File
-    local _, currentRouteName = next(APRCustomPath[APR.Username .. "-" .. APR.Realm])
+    local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
     for _, routeList in pairs(APR.QuestStepListListing) do
         for routeFileName, routeName in pairs(routeList) do
             if routeName == currentRouteName then
@@ -343,7 +342,6 @@ function APR.transport.GetMeToNextZoneSpecialRe(mapID)
     elseif (APR.ActiveRoute == "DF06A-2025-Thaldraszus" and (mapID == 2028 or mapID == 2135 or mapID == 2090 or mapID == 2091 or mapID == 2088 or mapID == 2089)) then
         mapID = 2025
     end
-
     return mapID
 end
 
@@ -363,11 +361,11 @@ function APR.transport.GetMeToNextZone()
     end
     playerMapInfo = APR.transport.GetMeToNextZoneSpecialRe(playerMapInfo)
 
-    -- local index, currentRouteName = next(APRCustomPath[APR.Username .. "-" .. APR.Realm])
+    -- local index, currentRouteName = next(APRCustomPath[APR.PlayerID])
     for routeCategory, _ in pairs(APR.QuestStepListListing) do
         if (APR.ActiveRoute and APR.QuestStepListListing[routeCategory][APR.ActiveRoute]) then
             local zoneID = APR.QuestStepListListing[routeCategory][APR.ActiveRoute]
-            local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
+            local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
             local step = APR.QuestStepList[APR.ActiveRoute][CurStep]
             if (APR.QuestStepListListingZone[zoneID] and playerMapInfo and APR.QuestStepListListingZone[zoneID] == playerMapInfo) or (step and step.Zone == playerMapInfo) then
                 APR.transport.GoToZone = nil
@@ -524,11 +522,11 @@ function APR.transport.GetMeToNextZone()
             end
             if (togozo ~= nil) then
                 local ZeContz
-                if (not APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]) then
-                    APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm] = {}
+                if (not APR_Transport["FPs"][APR.Faction][continent][APR.PlayerID]) then
+                    APR_Transport["FPs"][APR.Faction][continent][APR.PlayerID] = {}
                 end
-                if (APR_Transport["FPs"][APR.Faction][continent] and APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.Username .. "-" .. APR.Realm]["Conts"][APR:GetContinent()]) then
-                    ZeContz = APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]["Conts"]
+                if (APR_Transport["FPs"][APR.Faction][continent] and APR_Transport["FPs"][APR.Faction][continent][APR.PlayerID]["Conts"] and APR_Transport["FPs"][APR.Faction][APR:GetContinent()][APR.PlayerID]["Conts"][APR:GetContinent()]) then
+                    ZeContz = APR_Transport["FPs"][APR.Faction][continent][APR.PlayerID]["Conts"]
                         [continent]
                 else
                     ZeContz = nil
@@ -543,7 +541,7 @@ function APR.transport.GetMeToNextZone()
                         APR.ArrowActive_Y = ZeY
                     end
                 else
-                    local zeFP = APR_Transport["FPs"][APR.Faction][continent][APR.Username .. "-" .. APR.Realm]
+                    local zeFP = APR_Transport["FPs"][APR.Faction][continent][APR.PlayerID]
                         [ZefpID]
                     if (zeFP and zeFP == 1) then
                         APR.currentStep:AddExtraLineText("FLY_TO_" .. togozo, L["FLY_TO"] .. " " .. togozo)
@@ -1400,16 +1398,14 @@ APR_Transport_EventFrame:RegisterEvent("PLAYER_CONTROL_LOST")
 APR_Transport_EventFrame:RegisterEvent("PLAYER_LEAVING_WORLD")
 APR_Transport_EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
-    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveRoute])
+    local steps = GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
     if APR.settings.profile.showEvent then
         print("EVENT: Transport - ", event)
     end
     if not APR.settings.profile.enableAddon then
         return
     end
-    if (event == "PLAYER_LEAVING_WORLD") then
-        APR.transport.Zonening = 1
-    elseif (event == "PLAYER_ENTERING_WORLD") then
+    if (event == "PLAYER_ENTERING_WORLD") then
         APR.transport.Zonening = 0
         if (APR.IsInRouteZone) then
             APR.transport.GetMeToNextZone()
@@ -1425,8 +1421,8 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
         local taxiNodes = C_TaxiMap.GetAllTaxiNodes(playerMapID)
 
         for _, node in ipairs(taxiNodes) do
-            if node.state ~= Enum.FlightPathState.Unreachable and not APRTaxiNodes[APR.Username .. "-" .. APR.Realm][node.nodeID] then
-                APRTaxiNodes[APR.Username .. "-" .. APR.Realm][node.nodeID] = node.name
+            if node.state ~= Enum.FlightPathState.Unreachable and not APRTaxiNodes[APR.PlayerID][node.nodeID] then
+                APRTaxiNodes[APR.PlayerID][node.nodeID] = node.name
             end
             if node.state == Enum.FlightPathState.Current then
                 APR.transport.CurrentTaxiNode = node

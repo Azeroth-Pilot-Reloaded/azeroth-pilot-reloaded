@@ -10,11 +10,12 @@ function APR.command:SlashCmd(input)
     if (input == "reset" or input == "r") then
         --Command for making the quest rescan on completion and reset, including previously skipped steps
         print("APR: " .. L["RESET_ZONE"])
-        APRData[APR.Realm][APR.Username][APR.ActiveRoute] = 1
+        APRData[APR.PlayerID][APR.ActiveRoute] = 1
         C_UI.Reload()
     elseif (input == "forcereset" or input == "fr") then
         APRData = {};
-        APRZoneCompleted[APR.Username .. "-" .. APR.Realm] = nil;
+        APRZoneCompleted[APR.PlayerID] = nil;
+        APRCustomPath[APR.PlayerID] = {}
         C_UI.Reload()
     elseif (input == "skip" or input == "s" or input == "skippiedoodaa") then
         -- Command for skipping the current quest step

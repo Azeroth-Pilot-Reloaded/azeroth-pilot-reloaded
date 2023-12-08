@@ -266,7 +266,7 @@ function APR.questOrderList:AddStepFromRoute()
     -- Clean list
     self:RemoveSteps()
 
-    local CurStep = APRData[APR.Realm][APR.Username][APR.ActiveRoute]
+    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     if not CurStep then
         return
     end
@@ -320,7 +320,7 @@ function APR.questOrderList:AddStepFromRoute()
                         -- TODO Remove or add APR_BonusObj from quest handler
                         local questFlagged = C_QuestLog.IsQuestFlaggedCompleted(questID) or
                             (isMaxLevel and APR_BonusObj and APR_BonusObj[questID]) or
-                            APRData[APR.Realm][APR.Username]["BonusSkips"][questID]
+                            APRData[APR.PlayerID]["BonusSkips"][questID]
                         if questFlagged or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
                             flagged = flagged + 1
                         elseif not APR.ActiveQuests[qid] or not APR.ActiveQuests[questID] then
@@ -403,7 +403,7 @@ function APR.questOrderList:AddStepFromRoute()
             elseif step.UseFlightPath then
                 local questID = step.UseFlightPath
                 local questText = step.Boat and L["USE_BOAT"] or L["USE_FLIGHTPATH"]
-                local questInfo = { { questID = APRTaxiNodes[APR.Username .. "-" .. APR.Realm][step.NodeID] or step.Name } }
+                local questInfo = { { questID = APRTaxiNodes[APR.PlayerID][step.NodeID] or step.Name } }
                 local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
                 AddStepFrameWithQuest(stepIndex, questText, questInfo, color)
             elseif step.WarMode then
@@ -414,7 +414,7 @@ function APR.questOrderList:AddStepFromRoute()
             stepIndex = stepIndex + 1
         end
     end
-    local curStepDisplayed = CurStep - (APRData[APR.Realm][APR.Username][APR.ActiveRoute .. '-SkippedStep'] or 0)
+    local curStepDisplayed = CurStep - (APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] or 0)
     -- set current Step indicator
     SetCurrentStepIndicator(curStepDisplayed)
 end

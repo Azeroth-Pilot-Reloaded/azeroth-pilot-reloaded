@@ -30,7 +30,7 @@ local function GetConfigOptionTable()
                 type = "execute",
                 width = optionsWidth,
                 func = function()
-                    APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
+                    APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetSpeedRunPrefab()
                 end
             },
@@ -40,7 +40,7 @@ local function GetConfigOptionTable()
                 type = "execute",
                 width = optionsWidth,
                 func = function()
-                    APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
+                    APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetWODPrefab()
                 end
             },
@@ -50,7 +50,7 @@ local function GetConfigOptionTable()
                 type = "execute",
                 width = optionsWidth,
                 func = function()
-                    APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
+                    APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetBFAPrefab()
                 end
             },
@@ -60,17 +60,17 @@ local function GetConfigOptionTable()
                 type = "execute",
                 width = optionsWidth,
                 func = function()
-                    APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
+                    APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetSLPrefab()
                 end
             },
             DF_prefab = {
                 order = 1.4,
-                name = "Dragonflight -" .. L["ONLY"],
+                name = "Dragonflight - " .. L["ONLY"],
                 type = "execute",
                 width = optionsWidth,
                 func = function()
-                    APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
+                    APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetDFPrefab()
                 end,
                 hidden = function()
@@ -83,10 +83,10 @@ local function GetConfigOptionTable()
                 type = "execute",
                 width = optionsWidth,
                 func = function()
-                    APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
+                    APRCustomPath[APR.PlayerID] = {}
                 end,
                 disabled = function()
-                    return not next(APRCustomPath[APR.Username .. "-" .. APR.Realm])
+                    return not next(APRCustomPath[APR.PlayerID])
                 end
             },
             custom_path_area = {
@@ -291,11 +291,11 @@ function SetCustomPathListFrame(widget, name)
         widget.fontStringsContainer = {}
     end
 
-    local routes = APRCustomPath[APR.Username .. "-" .. APR.Realm]
+    local routes = APRCustomPath[APR.PlayerID]
     local yOffset = -15
-    APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
+    APRCustomPath[APR.PlayerID] = {}
     for _, routeName in ipairs(routes) do
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], routeName)
+        tinsert(APRCustomPath[APR.PlayerID], routeName)
     end
 
     if #routes == 0 then
@@ -344,8 +344,8 @@ function SetCustomPathListFrame(widget, name)
             upButton:SetHighlightTexture("interface/buttons/ui-panel-minimizebutton-highlight")
             upButton:SetDisabledTexture("interface/minimap/ui-minimap-minimizebuttonup-disabled")
             upButton:SetScript("OnClick", function()
-                tremove(APRCustomPath[APR.Username .. "-" .. APR.Realm], i)
-                tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], i - 1, route)
+                tremove(APRCustomPath[APR.PlayerID], i)
+                tinsert(APRCustomPath[APR.PlayerID], i - 1, route)
                 APR.routeconfig:SendMessage("APR_Custom_Path_Update")
             end)
             upButton:SetScript("OnEnter", function(self)
@@ -366,8 +366,8 @@ function SetCustomPathListFrame(widget, name)
             downButton:SetHighlightTexture("interface/buttons/ui-panel-minimizebutton-highlight")
             downButton:SetDisabledTexture("interface/minimap/ui-minimap-minimizebuttondown-disabled")
             downButton:SetScript("OnClick", function()
-                tremove(APRCustomPath[APR.Username .. "-" .. APR.Realm], i)
-                tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], i + 1, route)
+                tremove(APRCustomPath[APR.PlayerID], i)
+                tinsert(APRCustomPath[APR.PlayerID], i + 1, route)
                 APR.routeconfig:SendMessage("APR_Custom_Path_Update")
             end)
             downButton:SetScript("OnEnter", function(self)
@@ -391,7 +391,7 @@ function SetCustomPathListFrame(widget, name)
             end)
             lineContainer:SetScript("OnMouseDown", function(self, button)
                 if button == "RightButton" then
-                    tremove(APRCustomPath[APR.Username .. "-" .. APR.Realm], i)
+                    tremove(APRCustomPath[APR.PlayerID], i)
                     APR.routeconfig:SendMessage("APR_Custom_Path_Update")
                 end
             end)
@@ -443,7 +443,7 @@ function SetRouteListTab(widget, name)
 
     -- Copy the routes into a new table for sorting
     for fileName, routeName in pairs(routes) do
-        if not Contains(APRCustomPath[APR.Username .. "-" .. APR.Realm], routeName) then
+        if not Contains(APRCustomPath[APR.PlayerID], routeName) then
             tinsert(sortedRoutes, { fileName = fileName, routeName = routeName })
         end
     end
@@ -487,14 +487,14 @@ function SetRouteListTab(widget, name)
             statusText:SetPoint("RIGHT")
 
             local status = ""
-            if APRZoneCompleted[APR.Username .. "-" .. APR.Realm][route.routeName] then
-                status = "Route Completed"
-            elseif APRData[APR.Realm][APR.Username][route.fileName] then
-                if not APRData[APR.Realm][APR.Username][route.fileName .. '-TotalSteps'] then
+            if APRZoneCompleted[APR.PlayerID][route.routeName] then
+                status = L["ROUTE_COMPLETED"]
+            elseif APRData[APR.PlayerID][route.fileName] then
+                if not APRData[APR.PlayerID][route.fileName .. '-TotalSteps'] then
                     _G.GetTotalSteps(route.fileName)
                 end
-                status = APRData[APR.Realm][APR.Username][route.fileName] ..
-                    "/" .. APRData[APR.Realm][APR.Username][route.fileName .. '-TotalSteps']
+                status = APRData[APR.PlayerID][route.fileName] ..
+                    "/" .. APRData[APR.PlayerID][route.fileName .. '-TotalSteps']
             end
             statusText:SetText(status)
 
@@ -509,7 +509,7 @@ function SetRouteListTab(widget, name)
             end)
             lineContainer:SetScript("OnMouseDown", function(self, button)
                 if button == "RightButton" then
-                    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], route.routeName)
+                    tinsert(APRCustomPath[APR.PlayerID], route.routeName)
                     APR.routeconfig:LoadRouteAddonFile(name)
                     APR.routeconfig:SendMessage("APR_Custom_Path_Update")
                 end
@@ -599,46 +599,48 @@ function APR.routeconfig:GetSpeedRunPrefab()
 end
 
 function APR.routeconfig:GetStartingZonePrefab()
-    if Contains({ 1409, 1726, 1727 }, APR:GetPlayerParentMapID()) then
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "01-10 Exile's Reach")
-    elseif not APRZoneCompleted[APR.Username .. "-" .. APR.Realm]["01-10 Exile's Reach"] then
+    if Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
+        tinsert(APRCustomPath[APR.PlayerID], "01-10 Exile's Reach")
+    elseif not APRZoneCompleted[APR.PlayerID]["01-10 Exile's Reach"] then
         --NEUTRAL
         if APR.Level >= 58 and APR.ClassId == APR.Classes["Dracthyr"] then
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Dracthyr Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Dracthyr Start")
         elseif APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then -- Allied DK
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Allied Death Knight Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Allied Death Knight Start")
         elseif APR.ClassId == APR.Classes["Death Knight"] then                      -- DK
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Death Knight Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Death Knight Start")
         elseif APR.ClassId == APR.Classes["Demon Hunter"] then
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Demon Hunter Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Demon Hunter Start")
         elseif (APR.Race == "Pandaren") then
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Pandaren Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Pandaren Start")
             -- HORDE
         elseif (APR.Race == "Orc") then
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Orc Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Orc Start")
         elseif (APR.Race == "Tauren") then
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Tauren Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Tauren Start")
         elseif (APR.Race == "Troll") then
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Troll Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Troll Start")
         elseif (APR.Race == "Scourge") then --Undead
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Scourge Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Scourge Start")
         elseif (APR.Race == "BloodElf") then
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Blood Elf Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Blood Elf Start")
         elseif (APR.Race == "Goblin") then
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Goblin Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Goblin Start")
             -- ALLIANCE
         elseif (APR.Race == "NightElf") then
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Night Elf Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Night Elf Start")
         elseif (APR.Race == "Draenei") then
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Draenei Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Draenei Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Azuremyst Isle")
+            tinsert(APRCustomPath[APR.PlayerID], "Bloodmyst Isle")
         elseif (APR.Race == "Dwarf") then
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Dwarf Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Dwarf Start")
         elseif (APR.Race == "Human") then
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Human Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Human Start")
         elseif (APR.Race == "Gnome") then
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Gnome Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Gnome Start")
         elseif (APR.Race == "Worgen") then
-            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Worgen Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Worgen Start")
         end
     end
     self:LoadRouteAddonFile("WrathOfTheLichKing")
@@ -650,22 +652,22 @@ end
 
 function APR.routeconfig:GetWODPrefab()
     if APR.Faction == alliance then
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD01 - Stormwind")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD02 - Tanaan Jungle")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD03 - Shadowmoon")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD04 - Gorgrond")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD05 - Talador")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD06 - Shadowmoon")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD07 - Talador")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD08 - Spires of Arak")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD01 - Stormwind")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD02 - Tanaan Jungle")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD03 - Shadowmoon")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD04 - Gorgrond")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD05 - Talador")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD06 - Shadowmoon")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD07 - Talador")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD08 - Spires of Arak")
     elseif APR.Faction == horde then
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD01 - Orgrimmar")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD02 - Tanaan Jungle")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD03 - Frostfire Ridge")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD04 - Gorgrond")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD05 - Talador")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD06 - Spires of Arak")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "WOD07 - Nagrand")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD01 - Orgrimmar")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD02 - Tanaan Jungle")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD03 - Frostfire Ridge")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD04 - Gorgrond")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD05 - Talador")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD06 - Spires of Arak")
+        tinsert(APRCustomPath[APR.PlayerID], "WOD07 - Nagrand")
     end
     self:LoadRouteAddonFile("WarlordsOfDraenor")
     self:SendMessage("APR_Custom_Path_Update")
@@ -673,60 +675,60 @@ end
 
 function APR.routeconfig:GetBFAPrefab()
     if APR.Faction == alliance then
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "BFA01 - Intro")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "BFA02 - Tiragarde Sound")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "BFA03 - Dustvar")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "BFA04 - Stormsong Valley")
+        tinsert(APRCustomPath[APR.PlayerID], "BFA01 - Intro")
+        tinsert(APRCustomPath[APR.PlayerID], "BFA02 - Tiragarde Sound")
+        tinsert(APRCustomPath[APR.PlayerID], "BFA03 - Dustvar")
+        tinsert(APRCustomPath[APR.PlayerID], "BFA04 - Stormsong Valley")
     elseif APR.Faction == horde then
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "BFA01 - Intro")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "BFA02 - Intro")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "BFA03 - Zuldazar")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "BFA04 - Nazmir")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "BFA05 - Naz-end Vol-begin")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "BFA06 - Vol'dun")
+        tinsert(APRCustomPath[APR.PlayerID], "BFA01 - Intro")
+        tinsert(APRCustomPath[APR.PlayerID], "BFA02 - Intro")
+        tinsert(APRCustomPath[APR.PlayerID], "BFA03 - Zuldazar")
+        tinsert(APRCustomPath[APR.PlayerID], "BFA04 - Nazmir")
+        tinsert(APRCustomPath[APR.PlayerID], "BFA05 - Naz-end Vol-begin")
+        tinsert(APRCustomPath[APR.PlayerID], "BFA06 - Vol'dun")
     end
     self:LoadRouteAddonFile("BattleForAzeroth")
     self:SendMessage("APR_Custom_Path_Update")
 end
 
 function APR.routeconfig:GetSLPrefab()
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL - Intro")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL01 - The Maw")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL02 - Oribos")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL03 - Bastion")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL04 - Oribos")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL05 - Maldraxxus")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL06 - Oribos")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL07 - The Maw")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL08 - Oribos")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL09 - Maldraxxus")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL10 - Oribos")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL11 - Ardenweald")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL12 - Oribos")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL13 - Revendreth")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL14 - The Maw")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL15 - Revendreth")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL16 - Oribos")
-    tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "SL - StoryMode Only")
+    tinsert(APRCustomPath[APR.PlayerID], "SL - Intro")
+    tinsert(APRCustomPath[APR.PlayerID], "SL01 - The Maw")
+    tinsert(APRCustomPath[APR.PlayerID], "SL02 - Oribos")
+    tinsert(APRCustomPath[APR.PlayerID], "SL03 - Bastion")
+    tinsert(APRCustomPath[APR.PlayerID], "SL04 - Oribos")
+    tinsert(APRCustomPath[APR.PlayerID], "SL05 - Maldraxxus")
+    tinsert(APRCustomPath[APR.PlayerID], "SL06 - Oribos")
+    tinsert(APRCustomPath[APR.PlayerID], "SL07 - The Maw")
+    tinsert(APRCustomPath[APR.PlayerID], "SL08 - Oribos")
+    tinsert(APRCustomPath[APR.PlayerID], "SL09 - Maldraxxus")
+    tinsert(APRCustomPath[APR.PlayerID], "SL10 - Oribos")
+    tinsert(APRCustomPath[APR.PlayerID], "SL11 - Ardenweald")
+    tinsert(APRCustomPath[APR.PlayerID], "SL12 - Oribos")
+    tinsert(APRCustomPath[APR.PlayerID], "SL13 - Revendreth")
+    tinsert(APRCustomPath[APR.PlayerID], "SL14 - The Maw")
+    tinsert(APRCustomPath[APR.PlayerID], "SL15 - Revendreth")
+    tinsert(APRCustomPath[APR.PlayerID], "SL16 - Oribos")
+    tinsert(APRCustomPath[APR.PlayerID], "SL - StoryMode Only")
     self:LoadRouteAddonFile("Shadowlands")
     self:SendMessage("APR_Custom_Path_Update")
 end
 
 function APR.routeconfig:GetDFPrefab()
     if APR.Faction == alliance then
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "DF01 - Dragonflight Stormwind")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "DF02 - Waking Shores - Alliance")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "DF03 - Waking Shores - Neutral")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "DF04 - Ohn'Ahran Plains")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "DF05 - Azure Span")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "DF06 - Thaldraszus")
+        tinsert(APRCustomPath[APR.PlayerID], "DF01 - Dragonflight Stormwind")
+        tinsert(APRCustomPath[APR.PlayerID], "DF02 - Waking Shores - Alliance")
+        tinsert(APRCustomPath[APR.PlayerID], "DF03 - Waking Shores - Neutral")
+        tinsert(APRCustomPath[APR.PlayerID], "DF04 - Ohn'Ahran Plains")
+        tinsert(APRCustomPath[APR.PlayerID], "DF05 - Azure Span")
+        tinsert(APRCustomPath[APR.PlayerID], "DF06 - Thaldraszus")
     elseif APR.Faction == horde then
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "DF01/02 - Dragonflight Orgrimmar/Durotar")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "DF03 - Waking Shores - Horde")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "DF04 - Waking Shores - Neutral")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "DF05 - Ohn'Ahran Plains")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "DF06 - Azure Span")
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "DF07 - Thaldraszus")
+        tinsert(APRCustomPath[APR.PlayerID], "DF01/02 - Dragonflight Orgrimmar/Durotar")
+        tinsert(APRCustomPath[APR.PlayerID], "DF03 - Waking Shores - Horde")
+        tinsert(APRCustomPath[APR.PlayerID], "DF04 - Waking Shores - Neutral")
+        tinsert(APRCustomPath[APR.PlayerID], "DF05 - Ohn'Ahran Plains")
+        tinsert(APRCustomPath[APR.PlayerID], "DF06 - Azure Span")
+        tinsert(APRCustomPath[APR.PlayerID], "DF07 - Thaldraszus")
     end
     self:LoadRouteAddonFile("Dragonflight")
     self:SendMessage("APR_Custom_Path_Update")
@@ -739,7 +741,7 @@ end
 --Loads addon if needed for a route
 --TODO: call this on addonLoad
 function APR.routeconfig:LoadRouteAddonFile(tabName)
-    if APRCustomPath[APR.Username .. "-" .. APR.Realm] then
+    if APRCustomPath[APR.PlayerID] then
         local function checkAddon(zoneName, addonName)
             if tabName == zoneName and not C_AddOns.IsAddOnLoaded(addonName) then
                 local loaded, _ = C_AddOns.LoadAddOn(addonName)
@@ -765,7 +767,7 @@ function APR.routeconfig:LoadRouteAddonFile(tabName)
 end
 
 function APR.routeconfig:HasRouteInCustomPaht()
-    if not next(APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
+    if not next(APRCustomPath[APR.PlayerID]) then
         return false
     end
     return true
@@ -777,15 +779,15 @@ APR.routeconfig.eventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "PLAYER_LEVEL_UP") then
         local arg1, _ = ...;
         APR.Level = arg1
-        if not IsTableEmpty(APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
+        if not IsTableEmpty(APRCustomPath[APR.PlayerID]) then
             if APR.Level == 50 then
                 APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_SL"], function()
-                    APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
+                    APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetSLPrefab()
                 end)
             elseif APR.Level == 60 then
                 APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_DF"], function()
-                    APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
+                    APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetDFPrefab()
                 end)
             end
