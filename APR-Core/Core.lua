@@ -7,14 +7,16 @@ APR = _G.LibStub("AceAddon-3.0"):NewAddon(APR, "APR", "AceEvent-3.0")
 local CoreLoadin = false
 
 -- Character
+APR.UserID = UnitGUID("player")
 APR.Username = UnitName("player")
 APR.Realm = string.gsub(GetRealmName(), " ", "")
 APR.Faction = UnitFactionGroup("player") -- "Alliance", "Horde", "Neutral" or nil
 APR.Level = UnitLevel("player")
-APR.MaxLevel = 70
 APR.RaceLocale, APR.Race, APR.RaceID = UnitRace("player")
 APR.ClassLocalName, APR.ClassName, APR.ClassId = UnitClass("player")
 APR.Gender = UnitSex("player")
+APR.MaxLevel = 70
+APR.PlayerID = APR.Username .. "-" .. APR.UserID
 
 -- Quest
 APR.QuestStepList = {}
@@ -50,10 +52,9 @@ function APR:OnInitialize()
 
     -- APR Saved Data
     APRData = APRData or {}
-    APRData[APR.Realm] = APRData[APR.Realm] or {}
-    APRData[APR.Realm][APR.Username] = APRData[APR.Realm][APR.Username] or {}
-    APRData[APR.Realm][APR.Username].FirstLoad = APRData[APR.Realm][APR.Username].FirstLoad == nil and true or
-        APRData[APR.Realm][APR.Username].FirstLoad
+    APRData[APR.PlayerID] = APRData[APR.PlayerID] or {}
+    APRData[APR.PlayerID].FirstLoad = APRData[APR.PlayerID].FirstLoad == nil and true or
+        APRData[APR.PlayerID].FirstLoad
 
     -- Init current step frame
     APR.currentStep:CurrentStepFrameOnInit()
@@ -91,7 +92,7 @@ function APR.CheckCustomEmpty() -- TODO: Check that
     if (APR.settings.profile.debug) then
         print("Function: APR.CheckCustomEmpty()")
     end
-    if not next(APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
+    if not next(APRCustomPath[APR.PlayerID]) then
         APR.transport.GoToZone = nil
         APR.ActiveRoute = nil
     end
@@ -109,8 +110,8 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
             return
         end
 
-        if (not APRData[APR.Realm][APR.Username]["BonusSkips"]) then
-            APRData[APR.Realm][APR.Username]["BonusSkips"] = {}
+        if (not APRData[APR.PlayerID]["BonusSkips"]) then
+            APRData[APR.PlayerID]["BonusSkips"] = {}
         end
 
         APR_LoadInTimer = APR.CoreEventFrame:CreateAnimationGroup()
@@ -122,8 +123,8 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 if (not APRTaxiNodes) then
                     APRTaxiNodes = {}
                 end
-                if (not APRTaxiNodes[APR.Username .. "-" .. APR.Realm]) then
-                    APRTaxiNodes[APR.Username .. "-" .. APR.Realm] = {}
+                if (not APRTaxiNodes[APR.PlayerID]) then
+                    APRTaxiNodes[APR.PlayerID] = {}
                 end
 
                 if (not APRTaxiNodesTimer) then
@@ -133,24 +134,24 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 if (not APRCustomPath) then
                     APRCustomPath = {}
                 end
-                if (not APRCustomPath[APR.Username .. "-" .. APR.Realm]) then
-                    APRCustomPath[APR.Username .. "-" .. APR.Realm] = {}
+                if (not APRCustomPath[APR.PlayerID]) then
+                    APRCustomPath[APR.PlayerID] = {}
                 end
                 if (not APRZoneCompleted) then
                     APRZoneCompleted = {}
                 end
-                if (not APRZoneCompleted[APR.Username .. "-" .. APR.Realm]) then
-                    APRZoneCompleted[APR.Username .. "-" .. APR.Realm] = {}
+                if (not APRZoneCompleted[APR.PlayerID]) then
+                    APRZoneCompleted[APR.PlayerID] = {}
                 end
 
                 APR.BookingList["UpdateMapId"] = true
                 APR.BookingList["UpdateQuest"] = true
                 APR.BookingList["PrintQStep"] = true
 
-                if (APRData[APR.Realm][APR.Username].FirstLoad) then
+                if (APRData[APR.PlayerID].FirstLoad) then
                     -- TODO No route frame
                     -- APR.LoadInOptionFrame:Show()
-                    APRData[APR.Realm][APR.Username].FirstLoad = false
+                    APRData[APR.PlayerID].FirstLoad = false
                 else
                     -- APR.LoadInOptionFrame:Hide()
                 end
@@ -160,8 +161,8 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 C_Timer.After(5, UpdateQuestAndStep)
                 --APR.transport.ToyFPs()
                 local CQIDs = C_QuestLog.GetAllCompletedQuestIDs()
-                APRData[APR.Realm][APR.Username]["QuestCounter"] = getn(CQIDs)
-                APRData[APR.Realm][APR.Username]["QuestCounter2"] = APRData[APR.Realm][APR.Username]["QuestCounter"]
+                APRData[APR.PlayerID]["QuestCounter"] = getn(CQIDs)
+                APRData[APR.PlayerID]["QuestCounter2"] = APRData[APR.PlayerID]["QuestCounter"]
                 APR_QidsTimer:Play()
                 APR_LoadInTimer:Stop()
             end
@@ -173,17 +174,17 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR_QidsTimer.anim:SetDuration(1)
         APR_QidsTimer:SetLooping("REPEAT")
         APR_QidsTimer:SetScript("OnLoop", function(self, event, ...)
-            if (APRData[APR.Realm][APR.Username]["QuestCounter2"] ~= APRData[APR.Realm][APR.Username]["QuestCounter"]) then
+            if (APRData[APR.PlayerID]["QuestCounter2"] ~= APRData[APR.PlayerID]["QuestCounter"]) then
                 APR.BookingList["UpdateStep"] = true
-                APRData[APR.Realm][APR.Username]["QuestCounter"] = APRData[APR.Realm][APR.Username]["QuestCounter2"]
+                APRData[APR.PlayerID]["QuestCounter"] = APRData[APR.PlayerID]["QuestCounter2"]
             end
         end)
 
-        if (not APRData[APR.Realm][APR.Username]["LoaPick"]) then
-            APRData[APR.Realm][APR.Username]["LoaPick"] = 0
+        if (not APRData[APR.PlayerID]["LoaPick"]) then
+            APRData[APR.PlayerID]["LoaPick"] = 0
         end
-        if (not APRData[APR.Realm][APR.Username]["WantedQuestList"]) then
-            APRData[APR.Realm][APR.Username]["WantedQuestList"] = {}
+        if (not APRData[APR.PlayerID]["WantedQuestList"]) then
+            APRData[APR.PlayerID]["WantedQuestList"] = {}
         end
 
         -- TODO ARROW REWORK

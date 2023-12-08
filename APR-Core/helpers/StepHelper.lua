@@ -41,22 +41,22 @@ function UpdateQuestAndStep()
 end
 
 function UpdateNextQuest()
-    APRData[APR.Realm][APR.Username][APR.ActiveRoute] = APRData[APR.Realm][APR.Username][APR.ActiveRoute] + 1
+    APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
     APR.BookingList["UpdateQuest"] = true
 end
 
 function UpdateNextStep()
-    APRData[APR.Realm][APR.Username][APR.ActiveRoute] = APRData[APR.Realm][APR.Username][APR.ActiveRoute] + 1
+    APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
     APR.BookingList["UpdateStep"] = true
 end
 
 function NextQuestStep()
-    APRData[APR.Realm][APR.Username][APR.ActiveRoute] = APRData[APR.Realm][APR.Username][APR.ActiveRoute] + 1
+    APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
     UpdateQuestAndStep()
 end
 
 function PreviousQuestStep()
-    local userMapData = APRData[APR.Realm][APR.Username]
+    local userMapData = APRData[APR.PlayerID]
     local activeMap = APR.ActiveRoute
     local questStepList = APR.QuestStepList[activeMap]
     local faction = APR.Faction
@@ -96,7 +96,7 @@ function GetTotalSteps(route)
             stepIndex = stepIndex + 1
         end
     end
-    APRData[APR.Realm][APR.Username][route .. '-TotalSteps'] = stepIndex
+    APRData[APR.PlayerID][route .. '-TotalSteps'] = stepIndex
     return stepIndex
 end
 
@@ -135,7 +135,7 @@ function GetSteps(CurStep)
 end
 
 function IsARouteQuest(questId)
-    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveRoute])
+    local steps = GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
     if (steps) then
         if Contains(steps["PickUp"], questId) or Contains(steps["PickUpDB"], questId) then
             return true
@@ -145,7 +145,7 @@ function IsARouteQuest(questId)
 end
 
 function IsPickupStep()
-    local steps = GetSteps(APRData[APR.Realm][APR.Username][APR.ActiveRoute])
+    local steps = GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
     if (steps) then
         if steps["PickUp"] or steps["PickUpDB"] then
             return true
@@ -155,7 +155,7 @@ function IsPickupStep()
 end
 
 function HasTaxiNode(nodeID)
-    for id, name in pairs(APRTaxiNodes[APR.Username .. "-" .. APR.Realm]) do
+    for id, name in pairs(APRTaxiNodes[APR.PlayerID]) do
         if id == nodeID then
             return true
         end
