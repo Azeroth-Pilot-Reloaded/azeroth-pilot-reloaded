@@ -348,6 +348,12 @@ function SetCustomPathListFrame(widget, name)
                 tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], i - 1, route)
                 APR.routeconfig:SendMessage("APR_Custom_Path_Update")
             end)
+            upButton:SetScript("OnEnter", function(self)
+                GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+                GameTooltip:AddLine(route .. " - " .. L["UP"])
+                GameTooltip:Show()
+            end)
+            upButton:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
             if i == 1 then
                 upButton:Disable()
             end
@@ -364,6 +370,12 @@ function SetCustomPathListFrame(widget, name)
                 tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], i + 1, route)
                 APR.routeconfig:SendMessage("APR_Custom_Path_Update")
             end)
+            downButton:SetScript("OnEnter", function(self)
+                GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
+                GameTooltip:AddLine(route .. " - " .. L["DOWN"])
+                GameTooltip:Show()
+            end)
+            downButton:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
             if i == #routes then
                 downButton:Disable()
             end
@@ -371,7 +383,7 @@ function SetCustomPathListFrame(widget, name)
             lineContainer:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
                 GameTooltip:AddLine(route)
-                GameTooltip:AddLine(L["MOVE_ZONE_TO_CUSTOM_PATH"], 1, 1, 1, true)
+                GameTooltip:AddLine(L["REMOVE_ZONE_FROM_CUSTOM_PATH"], 1, 1, 1, true)
                 GameTooltip:Show()
             end)
             lineContainer:SetScript("OnLeave", function(self)
@@ -489,7 +501,7 @@ function SetRouteListTab(widget, name)
             lineContainer:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
                 GameTooltip:AddLine(route.routeName)
-                GameTooltip:AddLine(L["REMOVE_ZONE_FROM_CUSTOM_PATH"], 1, 1, 1, true)
+                GameTooltip:AddLine(L["MOVE_ZONE_TO_CUSTOM_PATH"], 1, 1, 1, true)
                 GameTooltip:Show()
             end)
             lineContainer:SetScript("OnLeave", function(self)
@@ -587,18 +599,47 @@ function APR.routeconfig:GetSpeedRunPrefab()
 end
 
 function APR.routeconfig:GetStartingZonePrefab()
-    if APR.Level < 10 or Contains({ 1409, 1726, 1727 }, APR:GetPlayerParentMapID()) then
+    if Contains({ 1409, 1726, 1727 }, APR:GetPlayerParentMapID()) then
         tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "01-10 Exile's Reach")
-    elseif APR.Level < 30 then
-        if APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then -- Allied DK
+    elseif not APRZoneCompleted[APR.Username .. "-" .. APR.Realm]["01-10 Exile's Reach"] then
+        --NEUTRAL
+        if APR.Level >= 58 and APR.ClassId == APR.Classes["Dracthyr"] then
+            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Dracthyr Start")
+        elseif APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then -- Allied DK
             tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Allied Death Knight Start")
-        elseif APR.ClassId == APR.Classes["Death Knight"] then                  -- DK
+        elseif APR.ClassId == APR.Classes["Death Knight"] then                      -- DK
             tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Death Knight Start")
         elseif APR.ClassId == APR.Classes["Demon Hunter"] then
             tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Demon Hunter Start")
+        elseif (APR.Race == "Pandaren") then
+            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Pandaren Start")
+            -- HORDE
+        elseif (APR.Race == "Orc") then
+            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Orc Start")
+        elseif (APR.Race == "Tauren") then
+            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Tauren Start")
+        elseif (APR.Race == "Troll") then
+            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Troll Start")
+        elseif (APR.Race == "Scourge") then --Undead
+            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Scourge Start")
+        elseif (APR.Race == "BloodElf") then
+            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Blood Elf Start")
+        elseif (APR.Race == "Goblin") then
+            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Goblin Start")
+            -- ALLIANCE
+        elseif (APR.Race == "NightElf") then
+            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Night Elf Start")
+        elseif (APR.Race == "Draenei") then
+            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Draenei Start")
+        elseif (APR.Race == "Dwarf") then
+            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Dwarf Start")
+        elseif (APR.Race == "Human") then
+            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Human Start")
+        elseif (APR.Race == "Gnome") then
+            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Gnome Start")
+        elseif (APR.Race == "Worgen") then
+            tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Worgen Start")
         end
-    elseif APR.Level >= 58 and APR.ClassId == APR.Classes["Dracthyr"] then
-        tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], "Dracthyr Start")
     end
     self:LoadRouteAddonFile("WrathOfTheLichKing")
     self:LoadRouteAddonFile("Legion")
