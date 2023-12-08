@@ -36,7 +36,7 @@ local function GetConfigOptionTable()
             },
             WoD_prefab = {
                 order = 1.1,
-                name = "Warlords of Draenor - Only",
+                name = "Warlords of Draenor - " .. L["ONLY"],
                 type = "execute",
                 width = optionsWidth,
                 func = function()
@@ -46,7 +46,7 @@ local function GetConfigOptionTable()
             },
             BFA_prefab = {
                 order = 1.2,
-                name = "Battle for Azeroth - Only",
+                name = "Battle for Azeroth - " .. L["ONLY"],
                 type = "execute",
                 width = optionsWidth,
                 func = function()
@@ -56,7 +56,7 @@ local function GetConfigOptionTable()
             },
             SL_prefab = {
                 order = 1.3,
-                name = "Shadowlands - Only",
+                name = "Shadowlands - " .. L["ONLY"],
                 type = "execute",
                 width = optionsWidth,
                 func = function()
@@ -66,7 +66,7 @@ local function GetConfigOptionTable()
             },
             DF_prefab = {
                 order = 1.4,
-                name = "Dragonflight - Only",
+                name = "Dragonflight -" .. L["ONLY"],
                 type = "execute",
                 width = optionsWidth,
                 func = function()
@@ -79,7 +79,7 @@ local function GetConfigOptionTable()
             },
             reset_custom_path = {
                 order = 1.5,
-                name = "Clean Custom Path",
+                name = L["CLEAN_CUSTOM_PATH"],
                 type = "execute",
                 width = optionsWidth,
                 func = function()
@@ -269,11 +269,11 @@ local function CreateCustomPathTableFrame(name)
 
     local idColumn = contentFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     idColumn:SetPoint("TOPLEFT", 10, 0)
-    idColumn:SetText("ID")
+    idColumn:SetText(L["ROUTE_ID"])
 
     local nameColumn = contentFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     nameColumn:SetPoint("TOPLEFT", idColumn, "TOPRIGHT", 50, 0)
-    nameColumn:SetText("Name")
+    nameColumn:SetText(L["ROUTE_NAME"])
 
     return frame
 end
@@ -336,10 +336,42 @@ function SetCustomPathListFrame(widget, name)
             nameText:SetPoint("LEFT", routeID, "RIGHT", 50, 0)
             nameText:SetText(route)
 
+            local upButton = CreateFrame("Button", nil, lineContainer, "BackdropTemplate")
+            upButton:SetSize(22, 22)
+            upButton:SetPoint("RIGHT", lineContainer, "RIGHT", -10, 7)
+            upButton:SetNormalTexture("interface/minimap/ui-minimap-minimizebuttonup-up")
+            upButton:SetPushedTexture("interface/minimap/ui-minimap-minimizebuttonup-down")
+            upButton:SetHighlightTexture("interface/buttons/ui-panel-minimizebutton-highlight")
+            upButton:SetDisabledTexture("interface/minimap/ui-minimap-minimizebuttonup-disabled")
+            upButton:SetScript("OnClick", function()
+                tremove(APRCustomPath[APR.Username .. "-" .. APR.Realm], i)
+                tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], i - 1, route)
+                APR.routeconfig:SendMessage("APR_Custom_Path_Update")
+            end)
+            if i == 1 then
+                upButton:Disable()
+            end
+
+            local downButton = CreateFrame("Button", nil, lineContainer, "BackdropTemplate")
+            downButton:SetSize(22, 22)
+            downButton:SetPoint("RIGHT", lineContainer, "RIGHT", -10, -5)
+            downButton:SetNormalTexture("interface/minimap/ui-minimap-minimizebuttondown-up")
+            downButton:SetPushedTexture("interface/minimap/ui-minimap-minimizebuttondown-down")
+            downButton:SetHighlightTexture("interface/buttons/ui-panel-minimizebutton-highlight")
+            downButton:SetDisabledTexture("interface/minimap/ui-minimap-minimizebuttondown-disabled")
+            downButton:SetScript("OnClick", function()
+                tremove(APRCustomPath[APR.Username .. "-" .. APR.Realm], i)
+                tinsert(APRCustomPath[APR.Username .. "-" .. APR.Realm], i + 1, route)
+                APR.routeconfig:SendMessage("APR_Custom_Path_Update")
+            end)
+            if i == #routes then
+                downButton:Disable()
+            end
+
             lineContainer:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
                 GameTooltip:AddLine(route)
-                GameTooltip:AddLine(L["MOVE_ZONE"], 1, 1, 1, true)
+                GameTooltip:AddLine(L["MOVE_ZONE_TO_CUSTOM_PATH"], 1, 1, 1, true)
                 GameTooltip:Show()
             end)
             lineContainer:SetScript("OnLeave", function(self)
@@ -370,11 +402,11 @@ local function CreateRouteTableFrame(name)
 
     local nameColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     nameColumn:SetPoint("TOPLEFT", 10, 0)
-    nameColumn:SetText("Name")
+    nameColumn:SetText(L["ROUTE_NAME"])
 
     local statusColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     statusColumn:SetPoint("TOPRIGHT", -10, 0)
-    statusColumn:SetText("Status")
+    statusColumn:SetText(L["ROUTE_STATUS"])
 
     return frame
 end
@@ -441,14 +473,23 @@ function SetRouteListTab(widget, name)
 
             local statusText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
             statusText:SetPoint("RIGHT")
-            statusText:SetText(APRZoneCompleted[APR.Username .. "-" .. APR.Realm][route.routeName] and
-                L["ROUTE_COMPLETED"] or
-                "Unknow")
+
+            local status = ""
+            if APRZoneCompleted[APR.Username .. "-" .. APR.Realm][route.routeName] then
+                status = "Route Completed"
+            elseif APRData[APR.Realm][APR.Username][route.fileName] then
+                if not APRData[APR.Realm][APR.Username][route.fileName .. '-TotalSteps'] then
+                    _G.GetTotalSteps(route.fileName)
+                end
+                status = APRData[APR.Realm][APR.Username][route.fileName] ..
+                    "/" .. APRData[APR.Realm][APR.Username][route.fileName .. '-TotalSteps']
+            end
+            statusText:SetText(status)
 
             lineContainer:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
                 GameTooltip:AddLine(route.routeName)
-                GameTooltip:AddLine(L["MOVE_ZONE"], 1, 1, 1, true)
+                GameTooltip:AddLine(L["REMOVE_ZONE_FROM_CUSTOM_PATH"], 1, 1, 1, true)
                 GameTooltip:Show()
             end)
             lineContainer:SetScript("OnLeave", function(self)

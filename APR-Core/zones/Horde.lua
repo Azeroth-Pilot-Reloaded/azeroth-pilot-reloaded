@@ -70,6 +70,7 @@ if (APR.Faction == "Horde") then
 
     --TODO: maybe split into kalindor et eastern for map icon/line/arrow
     APR.QuestStepListListing.Vanilla = {
+        ["1409-Exile's Reach"] = "01-10 Exile's Reach",
         ["1-Durotar"] = "Durotar",
         ["10-NorthernBarrens"] = "Northern Barrens",
         ["199-SouthernBarrens"] = "Southern Barrens",
@@ -140,9 +141,6 @@ if (APR.Faction == "Horde") then
         ["DF06H-2025-Thaldraszus"] = "DF07 - Thaldraszus",
     }
 
-    if APR.Level < 10 or Contains({ 1409, 1726, 1727 }, APR:GetPlayerParentMapID()) then
-        APR.QuestStepListListing.Vanilla["1409-Exile's Reach"] = "01-10 Exile's Reach"
-    end
     if (APR.Race == "Orc") then
         APR.QuestStepListListing.Vanilla["1-ValleyOfTrialsOrc"] = "Orc Start"
     elseif (APR.Race == "Tauren") then
@@ -169,7 +167,7 @@ if (APR.Faction == "Horde") then
         APR.QuestStepListListing.Vanilla["18-TirisfalGladesUndead"] = "Scourge Start"
     elseif (APR.Race == "BloodElf") then
         APR.QuestStepListListing.Vanilla["94-EversongWoodsBloodElf"] = "Blood Elf Start"
-    elseif (APR.Race == "Goblin" and APR.Level < 2) then
+    elseif (APR.Race == "Goblin") then
         APR.QuestStepListListing.Cataclysm["194-Kezan"] = "Goblin Start (Kezan)"
         APR.QuestStepListListing.Cataclysm["174-LostIsles"] = "Goblin Start (Lost Isles)"
     elseif (APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23) then

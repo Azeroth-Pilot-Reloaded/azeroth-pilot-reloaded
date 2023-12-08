@@ -89,6 +89,7 @@ if (APR.Faction == "Alliance") then
 
     --TODO: maybe split into kalindor et eastern for map icon/line/arrow
     APR.QuestStepListListing.Vanilla = {
+        ["1409-Exile's Reach"] = "01-10 Exile's Reach",
         ["A97-AzuremystIsle"] = "Azuremyst Isle",
         ["A106-BloodmystIsle"] = "Bloodmyst Isle",
         ["A62-Darkshore"] = "Darkshore",
@@ -179,9 +180,6 @@ if (APR.Faction == "Alliance") then
         ["DF06A-2025-Thaldraszus"] = "DF06 - Thaldraszus",
     }
 
-    if APR.Level < 10 or Contains({ 1409, 1726, 1727 }, APR:GetPlayerParentMapID()) then
-        APR.QuestStepListListing.Vanilla["1409-Exile's Reach"] = "01-10 Exile's Reach"
-    end
     if (APR.Race == "NightElf") then
         APR.QuestStepListListing.Vanilla["A57-ShadowglenNightElf"] = "Night Elf Start"
     elseif (APR.Race == "Draenei") then
