@@ -162,3 +162,16 @@ function HasTaxiNode(nodeID)
     end
     return false
 end
+
+function OverrideDataForRetardUser()
+    if string.find(APR.ActiveRoute, "DesMephisto-Gorgrond") then
+        if C_QuestLog.IsQuestFlaggedCompleted(35049) then
+            APR.QuestStepList["A543-DesMephisto-Gorgrond"] = nil
+            APR.QuestStepList["A543-DesMephisto-Gorgrond"] = APR.QuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"]
+        end
+        if C_QuestLog.IsQuestFlaggedCompleted(34992) then
+            APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = nil
+            APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = APR.QuestStepList["543-DesMephisto-Gorgrond-Lumbermill"]
+        end
+    end
+end
