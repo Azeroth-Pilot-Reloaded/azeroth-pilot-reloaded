@@ -1054,12 +1054,9 @@ local function APR_UpdateMapId()
         print("Function: APR_UpdateMapId()")
     end
     local OldMap = APR.ActiveRoute
-    local playerMapID = C_Map.GetBestMapForUnit("player")
-    if not playerMapID then
-        return
-    end
-    APR.ActiveRoute = MapUtil.GetMapParentInfo(playerMapID, Enum.UIMapType.Zone, true)
-    APR.ActiveRoute = APR.ActiveRoute and APR.ActiveRoute.mapID or playerMapID
+    APR.ActiveRoute = APR:GetPlayerParentMapID()
+
+    OverrideDataForRetardUser() -- Lumbermill Wod route
 
     APRt_Zone = APR.ActiveRoute
     if APR.ActiveRoute == 1671 then

@@ -182,76 +182,31 @@ if (APR.Faction == "Horde") then
         APR.QuestStepListListing["Dragonflight"]["2118-DracthyrStart-H"] = "Dracthyr Start"
     end
 
-    APR.Vanilla = {}
-    APR.Vanilla[1] = 1
-    APR.Vanilla[7] = 1
-    APR.Vanilla[10] = 1
-    APR.Vanilla[18] = 1
-    APR.Vanilla[21] = 1
-    APR.Vanilla[22] = 1
-    APR.Vanilla[23] = 1
-    APR.Vanilla[25] = 1
-    APR.Vanilla[94] = 1
-    APR.Vanilla[174] = 1
-    APR.Vanilla[194] = 1
-    APR.Vanilla[199] = 1
-    APR.Vanilla[217] = 1
-    APR.Vanilla[1409] = 1
+    -- Lumbermill Wod route
+    if C_QuestLog.IsQuestFlaggedCompleted(34992) then
+        APR.QuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = "WOD04 - Gorgrond"
+    else
+        APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = "WOD04 - Gorgrond"
+    end
+
+    -- MapID for each Categorie
+    APR.Vanilla = { 1, 7, 10, 18, 21, 22, 23, 25, 85, 94, 124, 174, 194, 199, 217, 1409, 1726, 1727, 1728 }
 
     APR.TheBurningCrusade = {}
 
-    APR.WrathOfTheLichKing = {}
-    APR.WrathOfTheLichKing[1602] = 1
-    APR.WrathOfTheLichKing[2297] = 1
+    APR.WrathOfTheLichKing = { 1602, 2297 }
 
     APR.Cataclysm = {}
 
-    APR.MistsOfPandaria = {}
-    APR.MistsOfPandaria[371] = 1
-    APR.MistsOfPandaria[378] = 1
-    APR.MistsOfPandaria[379] = 1
+    APR.MistsOfPandaria = { 371, 378, 379 }
 
-    APR.WarlordsOfDraenor = {}
-    APR.WarlordsOfDraenor[85] = 1
-    APR.WarlordsOfDraenor[525] = 1
-    APR.WarlordsOfDraenor[535] = 1
-    APR.WarlordsOfDraenor[542] = 1
-    APR.WarlordsOfDraenor[543] = 1
-    APR.WarlordsOfDraenor[550] = 1
-    APR.WarlordsOfDraenor[577] = 1
+    APR.WarlordsOfDraenor = { 17, 85, 525, 535, 542, 543, 550, 577, 578 }
 
-    APR.Legion = {}
-    APR.Legion[630] = 1
-    APR.Legion[634] = 1
-    APR.Legion[641] = 1
-    APR.Legion[672] = 1
+    APR.Legion = { 630, 634, 641, 672 }
 
-    APR.BattleForAzeroth = {}
-    APR.BattleForAzeroth[85] = 1
-    APR.BattleForAzeroth[862] = 1
-    APR.BattleForAzeroth[863] = 1
-    APR.BattleForAzeroth[864] = 1
+    APR.BattleForAzeroth = { 85, 862, 863, 864, 875, 1012 }
 
-    APR.Shadowlands = {}
-    APR.Shadowlands[1409] = 1
-    APR.Shadowlands[1525] = 1
-    APR.Shadowlands[1533] = 1
-    APR.Shadowlands[1536] = 1
-    APR.Shadowlands[1543] = 1
-    APR.Shadowlands[1565] = 1
-    APR.Shadowlands[1613] = 1
-    APR.Shadowlands[1648] = 1
-    APR.Shadowlands[1670] = 1
+    APR.Shadowlands = { 85, 118, 619, 1525, 1533, 1536, 1543, 1550, 1565, 1613, 1648, 1656, 1670, 1671, 1673, 1691, 1728, 1762, 1824 }
 
-    APR.Dragonflight = {}
-    APR.Dragonflight[1] = 1
-    APR.Dragonflight[85] = 1
-    APR.Dragonflight[2022] = 1
-    APR.Dragonflight[2023] = 1
-    APR.Dragonflight[2024] = 1
-    APR.Dragonflight[2025] = 1
-    APR.Dragonflight[2107] = 1
-    APR.Dragonflight[2109] = 1
-    APR.Dragonflight[2110] = 1
-    APR.Dragonflight[2118] = 1
+    APR.Dragonflight = { 1, 85, 1978, 2022, 2023, 2024, 2025, 2028, 2088, 2089, 2090, 2091, 2107, 2109, 2110, 2118, 2135 }
 end
