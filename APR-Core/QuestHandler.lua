@@ -1056,7 +1056,7 @@ local function APR_UpdateMapId()
     local OldMap = APR.ActiveRoute
     APR.ActiveRoute = APR:GetPlayerParentMapID()
 
-    OverrideDataForRetardUser() -- Lumbermill Wod route
+    OverrideDataForLesMecsPasCapablesDeSuivreUneFleche() -- Lumbermill Wod route
 
     APRt_Zone = APR.ActiveRoute
     if APR.ActiveRoute == 1671 then
