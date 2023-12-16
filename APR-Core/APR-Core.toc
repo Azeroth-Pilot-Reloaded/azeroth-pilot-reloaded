@@ -22,15 +22,17 @@ helpers/SceneCutter.lua
 helpers/CoordinateFrame.lua
 helpers/StepHelper.lua
 
-zones\Alliance.lua
-zones\Horde.lua
+database\AllianceRoutes.lua
+database\HordeRoutes.lua
+database\Portals.lua
+database\TaxiNodes.lua
+database\ZoneOrder.lua
 
 Config.lua
 Config_Route.lua
 Commands.lua
 ChangeLog.lua
 
-TransportDB.lua
 QuestHandler.lua
 Transport.lua
 

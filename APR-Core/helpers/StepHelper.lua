@@ -163,7 +163,7 @@ function HasTaxiNode(nodeID)
     return false
 end
 
-function OverrideDataForRetardUser()
+function OverrideDataForLesMecsPasCapablesDeSuivreUneFleche()
     if string.find(APR.ActiveRoute, "DesMephisto-Gorgrond") then
         if C_QuestLog.IsQuestFlaggedCompleted(35049) then
             APR.QuestStepList["A543-DesMephisto-Gorgrond"] = nil
