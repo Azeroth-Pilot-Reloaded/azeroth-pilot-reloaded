@@ -1,5 +1,5 @@
 if (APR.Race == "Tauren") then
-    APR.QuestStepList["7-MulgoreTauren"] = {
+    APR.RouteQuestStepList["7-MulgoreTauren"] = {
         {
             ["PickUp"] = {
                 14449,
@@ -428,7 +428,7 @@ if (APR.Race == "Tauren") then
         },
     }
 elseif (APR.Race == "Orc") then
-    APR.QuestStepList["1-ValleyOfTrialsOrc"] = {
+    APR.RouteQuestStepList["1-ValleyOfTrialsOrc"] = {
         {
             ["PickUp"] = {
                 25152,
@@ -909,7 +909,7 @@ elseif (APR.Race == "Orc") then
         },
     }
 elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
-    APR.QuestStepList["1-EchoIslesTrollWar"] = {
+    APR.RouteQuestStepList["1-EchoIslesTrollWar"] = {
         {
             ["PickUp"] = {
                 24607,
@@ -1474,7 +1474,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
         },
     }
 elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
-    APR.QuestStepList["1-EchoIslesTrollHunter"] = {
+    APR.RouteQuestStepList["1-EchoIslesTrollHunter"] = {
         {
             ["PickUp"] = {
                 24776,
@@ -2027,7 +2027,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
         },
     }
 elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
-    APR.QuestStepList["1-EchoIslesTrollRogue"] = {
+    APR.RouteQuestStepList["1-EchoIslesTrollRogue"] = {
         {
             ["PickUp"] = {
                 24770,
@@ -2564,7 +2564,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
         },
     }
 elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
-    APR.QuestStepList["1-EchoIslesTrollPriest"] = {
+    APR.RouteQuestStepList["1-EchoIslesTrollPriest"] = {
         {
             ["PickUp"] = {
                 24770,
@@ -3263,7 +3263,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
         },
     }
 elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
-    APR.QuestStepList["1-EchoIslesTrollShaman"] = {
+    APR.RouteQuestStepList["1-EchoIslesTrollShaman"] = {
         {
             ["PickUp"] = {
                 24758,
@@ -3816,7 +3816,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
         },
     }
 elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
-    APR.QuestStepList["1-EchoIslesTrollMage"] = {
+    APR.RouteQuestStepList["1-EchoIslesTrollMage"] = {
         {
             ["PickUp"] = {
                 24750,
@@ -4369,7 +4369,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
         },
     }
 elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
-    APR.QuestStepList["1-EchoIslesTrollWarlock"] = {
+    APR.RouteQuestStepList["1-EchoIslesTrollWarlock"] = {
         {
             ["PickUp"] = {
                 26272,
@@ -4922,7 +4922,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
         },
     }
 elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
-    APR.QuestStepList["1-EchoIslesTrollMonk"] = {
+    APR.RouteQuestStepList["1-EchoIslesTrollMonk"] = {
         {
             ["PickUp"] = {
                 31159,
@@ -5475,7 +5475,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
         },
     }
 elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
-    APR.QuestStepList["1-EchoIslesTrollDruid"] = {
+    APR.RouteQuestStepList["1-EchoIslesTrollDruid"] = {
         {
             ["PickUp"] = {
                 24764,
@@ -6028,7 +6028,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
         },
     }
 elseif (APR.Race == "Goblin" and APR.Gender == 2) then
-    APR.QuestStepList["194-Kezan"] = {
+    APR.RouteQuestStepList["194-Kezan"] = {
         {
             ["PickUp"] = {
                 14138,
@@ -6970,7 +6970,7 @@ elseif (APR.Race == "Goblin" and APR.Gender == 2) then
         },
     }
 elseif (APR.Race == "Goblin") then
-    APR.QuestStepList["194-Kezan"] = {
+    APR.RouteQuestStepList["194-Kezan"] = {
         {
             ["PickUp"] = {
                 14138,
@@ -7914,7 +7914,7 @@ elseif (APR.Race == "Goblin") then
 end
 
 if (APR.Race == "Goblin") then
-    APR.QuestStepList["174-LostIsles"] = {
+    APR.RouteQuestStepList["174-LostIsles"] = {
         {
             ["PickUp"] = {
                 14001,
@@ -10297,7 +10297,7 @@ if (APR.Race == "Goblin") then
     }
 end
 
-APR.QuestStepList["1-Durotar"] = {
+APR.RouteQuestStepList["1-Durotar"] = {
     {
         ["PickUp"] = {
             25170,
@@ -11534,7 +11534,7 @@ APR.QuestStepList["1-Durotar"] = {
     },
 }
 
-APR.QuestStepList["10-NorthernBarrens"] = {
+APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["PickUp"] = {
             871,
@@ -14406,7 +14406,7 @@ APR.QuestStepList["10-NorthernBarrens"] = {
     },
 }
 
-APR.QuestStepList["199-SouthernBarrens"] = {
+APR.RouteQuestStepList["199-SouthernBarrens"] = {
     {
         ["PickUp"] = {
             24504,

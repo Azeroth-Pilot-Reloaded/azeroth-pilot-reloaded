@@ -1,6 +1,6 @@
 if (APR.Faction == "Alliance") then
     -- Stormwind
-    APR.QuestStepList["DF01A-84-Stormwind"] = {
+    APR.RouteQuestStepList["DF01A-84-Stormwind"] = {
         { -- Step 1
             ["Done"] = {
                 65436,
@@ -222,7 +222,7 @@ if (APR.Faction == "Alliance") then
         },
     }
 
-    APR.QuestStepList["DF03A-2022-WakingShores"] = {
+    APR.RouteQuestStepList["DF03A-2022-WakingShores"] = {
         { -- Step 1
             ["Qpart"] = {
                 [67700] = {
@@ -901,7 +901,7 @@ if (APR.Faction == "Alliance") then
     }
 
     -- Thaldraszus
-    APR.QuestStepList["DF06A-2025-Thaldraszus"] = {
+    APR.RouteQuestStepList["DF06A-2025-Thaldraszus"] = {
         { -- Step 1
             ["Qpart"] = {
                 [66244] = {
@@ -2852,7 +2852,7 @@ if (APR.Faction == "Alliance") then
     }
 
     --Dracthyr
-    APR.QuestStepList["2118-DracthyrStart-A"] = {
+    APR.RouteQuestStepList["2118-DracthyrStart-A"] = {
         { -- Step 1
             ["PickUp"] = {
                 64864,

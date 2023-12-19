@@ -1,4 +1,4 @@
-APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
+APR.RouteQuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
     {
         --2
         ["PickUp"] = {
@@ -107,7 +107,7 @@ APR.QuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
     },
 }
 
-APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
+APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
     {
         --1
         ["Done"] = {
@@ -1524,7 +1524,7 @@ APR.QuestStepList["577-DesMephisto-TanaanJungle"] = {
     },
 }
 
-APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
+APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
     {
         --1
         ["Done"] = {
@@ -5890,7 +5890,7 @@ APR.QuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
     },
 }
 
-APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
+APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
     {
         -- [step 1
         ["PickUp"] = {
@@ -8687,7 +8687,7 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = {
     },
 }
 
-APR.QuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
+APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
     {
         ["PickUp"] = {
             33543,
@@ -10084,7 +10084,7 @@ APR.QuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
     },
 }
 
-APR.QuestStepList["535-DesMephisto-Talador-p1"] = {
+APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
     {
         ["Trigger"] = {
             ["y"] = 3899.5,
@@ -13254,7 +13254,7 @@ APR.QuestStepList["535-DesMephisto-Talador-p1"] = {
     },
 }
 
-APR.QuestStepList["542-DesMephisto-SpiresOfArak"] = {
+APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
     {
         ["PickUp"] = {
             34655,
@@ -16690,7 +16690,7 @@ APR.QuestStepList["542-DesMephisto-SpiresOfArak"] = {
     },
 }
 
-APR.QuestStepList["550-DesMephisto-Nagrand"] = {
+APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
     {
         ["PickUp"] = {
             34795,

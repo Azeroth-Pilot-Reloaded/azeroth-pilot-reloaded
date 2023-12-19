@@ -1,5 +1,5 @@
 -- Stormwind
-APR.QuestStepList["A84-Stormwind"] = {
+APR.RouteQuestStepList["A84-Stormwind"] = {
     {
         ["UseHS"] = 62567,
         ["TT"] = {
@@ -385,7 +385,7 @@ APR.QuestStepList["A84-Stormwind"] = {
     },
 }
 -- Tiragarde Sound
-APR.QuestStepList["A895-Tiragarde Sound"] = {
+APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 1
         ["Done"] = {
@@ -10566,7 +10566,7 @@ APR.QuestStepList["A895-Tiragarde Sound"] = {
     }, -- [48]
 }
 -- Stormsong Valley
-APR.QuestStepList["A942-Stormsong Valley"] = {
+APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     {
         ["Done"] = {
             51489,
@@ -17886,7 +17886,7 @@ APR.QuestStepList["A942-Stormsong Valley"] = {
     }, -- [48]
 }
 -- Dustvar
-APR.QuestStepList["A896-Dustvar"] = {
+APR.RouteQuestStepList["A896-Dustvar"] = {
     {
         ["Trigger"] = {
             ["y"] = -170,

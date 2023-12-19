@@ -1,4 +1,4 @@
-APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
+APR.RouteQuestStepList["A84-DesMephisto-Stormwind-War"] = {
     {
         ["PickUp"] = {
             34398,
@@ -107,7 +107,7 @@ APR.QuestStepList["A84-DesMephisto-Stormwind-War"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["A577-DesMephisto-TanaanJungle"] = {
+APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
     {
         ["Done"] = {
             34398,
@@ -1525,7 +1525,7 @@ APR.QuestStepList["A577-DesMephisto-TanaanJungle"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["A539-DesMephisto-Shadowmoon1"] = {
+APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
     {
         ["Done"] = {
             34575,
@@ -3323,7 +3323,7 @@ APR.QuestStepList["A539-DesMephisto-Shadowmoon1"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["A543-DesMephisto-Gorgrond"] = {
+APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
     {
         ["Done"] = {
             49564,
@@ -6202,7 +6202,7 @@ APR.QuestStepList["A543-DesMephisto-Gorgrond"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
+APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
     {
         ["Done"] = {
             35556,
@@ -7623,7 +7623,7 @@ APR.QuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["A535-DesMephisto-Talador"] = {
+APR.RouteQuestStepList["A535-DesMephisto-Talador"] = {
     {
         ["PickUp"] = {
             34558,
@@ -7931,7 +7931,7 @@ APR.QuestStepList["A535-DesMephisto-Talador"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["A539-DesMephisto-Shadowmoon2"] = {
+APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
     {
         ["PickUp"] = {
             34587,
@@ -8627,7 +8627,7 @@ APR.QuestStepList["A539-DesMephisto-Shadowmoon2"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["A535-DesMephisto-Talador2"] = {
+APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
     {
         ["CRange"] = 34624,
         ["Trigger"] = {
@@ -11677,7 +11677,7 @@ APR.QuestStepList["A535-DesMephisto-Talador2"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["A542-DesMephisto-SpiresOfArak"] = {
+APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
     {
         ["PickUp"] = {
             34655,

@@ -19,9 +19,8 @@ APR.MaxLevel = 70
 APR.PlayerID = APR.Username .. "-" .. APR.UserID
 
 -- Quest
-APR.QuestStepList = {}
-APR.QuestStepListListing = {}
-APR.QuestStepListListingStartAreas = {}
+APR.RouteList = {}
+APR.RouteQuestStepList = {}
 
 function APR:OnInitialize()
     -- Init on TOC
@@ -42,10 +41,12 @@ function APR:OnInitialize()
     APR.BookUpdAfterCombat = false
 
     -- Buff
+    -- //TODO REWORK SweatOfOurBrowBuffFrame
+
     APR.SweatBuff = {}
-    APR.SweatBuff[1] = false -- TODO REWORK SweatOfOurBrowBuffFrame
-    APR.SweatBuff[2] = false -- TODO REWORK SweatOfOurBrowBuffFrame
-    APR.SweatBuff[3] = false -- TODO REWORK SweatOfOurBrowBuffFrame
+    APR.SweatBuff[1] = false
+    APR.SweatBuff[2] = false
+    APR.SweatBuff[3] = false
 
     -- APR INIT NEW SETTING
     APR.settings:InitializeBlizOptions()
@@ -88,12 +89,11 @@ function APR:OnInitialize()
     C_ChatInfo.RegisterAddonMessagePrefix("APRChat")
 end
 
-function APR.CheckCustomEmpty() -- TODO: Check that
+function APR.CheckCustomEmpty()
     if (APR.settings.profile.debug) then
         print("Function: APR.CheckCustomEmpty()")
     end
     if not next(APRCustomPath[APR.PlayerID]) then
-        APR.transport.GoToZone = nil
         APR.ActiveRoute = nil
     end
 end
@@ -149,7 +149,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR.BookingList["PrintQStep"] = true
 
                 if (APRData[APR.PlayerID].FirstLoad) then
-                    -- TODO No route frame
+                    -- //TODO No route frame
                     -- APR.LoadInOptionFrame:Show()
                     APRData[APR.PlayerID].FirstLoad = false
                 else
@@ -159,7 +159,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR_LoadInTimer:Stop()
                 C_Timer.After(4, APR_BookingUpdateMapId)
                 C_Timer.After(5, UpdateQuestAndStep)
-                --APR.transport.ToyFPs()
                 local CQIDs = C_QuestLog.GetAllCompletedQuestIDs()
                 APRData[APR.PlayerID]["QuestCounter"] = getn(CQIDs)
                 APRData[APR.PlayerID]["QuestCounter2"] = APRData[APR.PlayerID]["QuestCounter"]
@@ -187,7 +186,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
             APRData[APR.PlayerID]["WantedQuestList"] = {}
         end
 
-        -- TODO ARROW REWORK
+        -- //TODO ARROW REWORK
         APR.ArrowFrame:SetScale(APR.settings.profile.arrowScale)
         APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
             APR.settings.profile.arrowtop)

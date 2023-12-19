@@ -58,7 +58,7 @@ end
 function PreviousQuestStep()
     local userMapData = APRData[APR.PlayerID]
     local activeMap = APR.ActiveRoute
-    local questStepList = APR.QuestStepList[activeMap]
+    local questStepList = APR.RouteQuestStepList[activeMap]
     local faction = APR.Faction
     local race = APR.Race
     local className = APR.ClassName
@@ -84,7 +84,7 @@ end
 function GetTotalSteps(route)
     route = route or APR.ActiveRoute
     local stepIndex = 0
-    for id, step in pairs(APR.QuestStepList[route]) do
+    for id, step in pairs(APR.RouteQuestStepList[route]) do
         -- Hide step for Faction, Race, Class, Achievement
         if (
                 (not step.Faction or step.Faction == APR.Faction) and
@@ -101,35 +101,43 @@ function GetTotalSteps(route)
 end
 
 function CheckIsInRouteZone()
-    if APR.transport.GoToZone then
-        local currentMapID = C_Map.GetBestMapForUnit("player")
-        if not currentMapID then
-            return false
-        end
-        local parentMapID = C_Map.GetMapInfo(currentMapID).parentMapID
+    if (APR.settings.profile.debug) then
+        print("Function: APR step helper- CheckIsInRouteZone()")
+    end
+    if not APR.ActiveRoute then
+        return
+    end
+    local routeZoneMapIDs, mapid, routeName, expansion = APR.transport:GetRouteMapIDsAndName()
+    local parentMapID = APR:GetPlayerParentMapID()
+    local currentMapID = C_Map.GetBestMapForUnit("player")
+    local isSameContinent, nextContinent = APR.transport:IsSameContinent(mapid)
+    if not currentMapID or not isSameContinent then
+        return false
+    end
+
+    if APR:IsInExpansionRouteMaps(routeZoneMapIDs, currentMapID) or (step and step.Zone == currentMapID) then
+        return true
+    end
+
+    if parentMapID and (APR:IsInExpansionRouteMaps(routeZoneMapIDs, parentMapID) or (step and step.Zone == parentMapID)) then
         local childrenMap = C_Map.GetMapChildrenInfo(parentMapID)
         if not childrenMap then
-            if currentMapID == APR.transport.GoToZone then
-                return true
-            end
             return false
         end
 
-        local isPresent = false
         for _, map in ipairs(childrenMap) do
-            if map.mapID == APR.transport.GoToZone then
-                isPresent = true
-                break
+            if APR:IsInExpansionRouteMaps(routeZoneMapIDs, map.mapID) or (step and step.Zone == map.mapID) then
+                return true
             end
         end
-        return isPresent
     end
-    return true
+
+    return false
 end
 
 function GetSteps(CurStep)
-    if (CurStep and APR.QuestStepList and APR.QuestStepList[APR.ActiveRoute]) then
-        return APR.QuestStepList[APR.ActiveRoute][CurStep]
+    if (CurStep and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute]) then
+        return APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
     end
     return nil
 end
@@ -166,12 +174,14 @@ end
 function OverrideDataForLesMecsPasCapablesDeSuivreUneFleche()
     if string.find(APR.ActiveRoute, "DesMephisto-Gorgrond") then
         if C_QuestLog.IsQuestFlaggedCompleted(35049) then
-            APR.QuestStepList["A543-DesMephisto-Gorgrond"] = nil
-            APR.QuestStepList["A543-DesMephisto-Gorgrond"] = APR.QuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"]
+            APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = nil
+            APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = APR.RouteQuestStepList
+                ["A543-DesMephisto-Gorgrond-Lumbermill"]
         end
         if C_QuestLog.IsQuestFlaggedCompleted(34992) then
-            APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = nil
-            APR.QuestStepList["543-DesMephisto-Gorgrond-p1"] = APR.QuestStepList["543-DesMephisto-Gorgrond-Lumbermill"]
+            APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = nil
+            APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = APR.RouteQuestStepList
+                ["543-DesMephisto-Gorgrond-Lumbermill"]
         end
     end
 end

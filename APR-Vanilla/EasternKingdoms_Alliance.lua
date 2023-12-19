@@ -1,5 +1,5 @@
 --- Coldridge Valley
-APR.QuestStepList["A27-ColdridgeValleyDwarf"] = {
+APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
     {
         ["PickUp"] = {
             24469, -- [1]
@@ -33,7 +33,7 @@ APR.QuestStepList["A27-ColdridgeValleyDwarf"] = {
         ["Done"] = {
             24469, -- [1]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             24470, -- [1]
@@ -103,7 +103,7 @@ APR.QuestStepList["A27-ColdridgeValleyDwarf"] = {
         ["Done"] = {
             24471, -- [1]
         },
-    },    -- [8]
+    },             -- [8]
     {
         ["TT"] = {
             ["y"] = -6228,
@@ -112,7 +112,7 @@ APR.QuestStepList["A27-ColdridgeValleyDwarf"] = {
         ["Done"] = {
             24470, -- [1]
         },
-    },    -- [9]
+    },             -- [9]
     {
         ["PickUp"] = {
             24473, -- [1]
@@ -142,7 +142,7 @@ APR.QuestStepList["A27-ColdridgeValleyDwarf"] = {
         ["Done"] = {
             24473, -- [1]
         },
-    },    -- [12]
+    },             -- [12]
     {
         ["PickUp"] = {
             24474, -- [1]
@@ -261,7 +261,7 @@ APR.QuestStepList["A27-ColdridgeValleyDwarf"] = {
             24477, -- [1]
             24474, -- [2]
         },
-    },    -- [20]
+    },             -- [20]
     {
         ["PickUp"] = {
             24475, -- [1]
@@ -332,7 +332,7 @@ APR.QuestStepList["A27-ColdridgeValleyDwarf"] = {
             24475, -- [1]
             24486, -- [2]
         },
-    },    -- [25]
+    },             -- [25]
     {
         ["PickUp"] = {
             24487, -- [1]
@@ -350,10 +350,10 @@ APR.QuestStepList["A27-ColdridgeValleyDwarf"] = {
         ["Done"] = {
             24487, -- [1]
         },
-    },    -- [27]
+    },             -- [27]
     {
         ["PickUp"] = {
-            182, -- [1]
+            182,   -- [1]
             24489, -- [2]
         },
         ["TT"] = {
@@ -527,11 +527,11 @@ APR.QuestStepList["A27-ColdridgeValleyDwarf"] = {
             ["x"] = 569.2,
         },
         ["Done"] = {
-            3361, -- [1]
-            182, -- [2]
+            3361,  -- [1]
+            182,   -- [2]
             24489, -- [3]
         },
-    },    -- [37]
+    },             -- [37]
     {
         ["PickUp"] = {
             218, -- [1]
@@ -694,7 +694,7 @@ APR.QuestStepList["A27-ColdridgeValleyDwarf"] = {
         ["Done"] = {
             218, -- [1]
         },
-    },  -- [47]
+    },           -- [47]
     {
         ["PickUp"] = {
             24490, -- [1]
@@ -712,7 +712,7 @@ APR.QuestStepList["A27-ColdridgeValleyDwarf"] = {
         ["Done"] = {
             24490, -- [1]
         },
-    },    -- [49]
+    },             -- [49]
     {
         ["PickUp"] = {
             24491, -- [1]
@@ -730,7 +730,7 @@ APR.QuestStepList["A27-ColdridgeValleyDwarf"] = {
         ["Done"] = {
             24491, -- [1]
         },
-    },    -- [51]
+    },             -- [51]
     {
         ["PickUp"] = {
             24492, -- [1]
@@ -766,13 +766,13 @@ APR.QuestStepList["A27-ColdridgeValleyDwarf"] = {
         ["Done"] = {
             24492, -- [1]
         },
-    },    -- [54]
+    },             -- [54]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]
 }
 --- Northshire
-APR.QuestStepList["A37-NorthshireHuman"] = {
+APR.RouteQuestStepList["A37-NorthshireHuman"] = {
     {
         ["PickUp"] = {
             28766, -- [1]
@@ -839,7 +839,7 @@ APR.QuestStepList["A37-NorthshireHuman"] = {
         ["Done"] = {
             28766, -- [1]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             28774, -- [1]
@@ -906,7 +906,7 @@ APR.QuestStepList["A37-NorthshireHuman"] = {
         ["Done"] = {
             28774, -- [1]
         },
-    },    -- [6]
+    },             -- [6]
     {
         ["PickUp"] = {
             28789, -- [1]
@@ -926,7 +926,7 @@ APR.QuestStepList["A37-NorthshireHuman"] = {
             29080, -- [8]
             28788, -- [9]
         },
-    },    -- [7]
+    },             -- [7]
     {
         ["Trigger"] = {
             ["y"] = -8891,
@@ -970,7 +970,7 @@ APR.QuestStepList["A37-NorthshireHuman"] = {
         ["Done"] = {
             28789, -- [1]
         },
-    },    -- [10]
+    },             -- [10]
     {
         ["PickUp"] = {
             28797, -- [1]
@@ -990,7 +990,7 @@ APR.QuestStepList["A37-NorthshireHuman"] = {
             28797, -- [8]
             29081, -- [9]
         },
-    },    -- [11]
+    },             -- [11]
     {
         ["PickUp"] = {
             28813, -- [1]
@@ -1087,7 +1087,7 @@ APR.QuestStepList["A37-NorthshireHuman"] = {
             28797, -- [8]
             29081, -- [9]
         },
-    },    -- [14]
+    },             -- [14]
     {
         ["TT"] = {
             ["y"] = -8824.5,
@@ -1106,7 +1106,7 @@ APR.QuestStepList["A37-NorthshireHuman"] = {
             28813, -- [7]
             29082, -- [8]
         },
-    },    -- [14]
+    },             -- [14]
     {
         ["PickUp"] = {
             28823, -- [1]
@@ -1126,7 +1126,7 @@ APR.QuestStepList["A37-NorthshireHuman"] = {
             28820, -- [8]
             28818, -- [9]
         },
-    },    -- [15]
+    },             -- [15]
     {
         ["TT"] = {
             ["y"] = -8912.8,
@@ -1146,7 +1146,7 @@ APR.QuestStepList["A37-NorthshireHuman"] = {
             28820, -- [8]
             28818, -- [9]
         },
-    },    -- [16]
+    },             -- [16]
     {
         ["PickUp"] = {
             26389, -- [1]
@@ -1196,7 +1196,7 @@ APR.QuestStepList["A37-NorthshireHuman"] = {
             26389, -- [1]
             26391, -- [2]
         },
-    },    -- [20]
+    },             -- [20]
     {
         ["PickUp"] = {
             26390, -- [1]
@@ -1254,7 +1254,7 @@ APR.QuestStepList["A37-NorthshireHuman"] = {
         ["Done"] = {
             26390, -- [1]
         },
-    },    -- [25]
+    },             -- [25]
     {
         ["PickUp"] = {
             54, -- [1]
@@ -1278,7 +1278,7 @@ APR.QuestStepList["A37-NorthshireHuman"] = {
     }, -- [2]
 }
 --- New Tinkertown
-APR.QuestStepList["A27-NewTinkertown"] = {
+APR.RouteQuestStepList["A27-NewTinkertown"] = {
     {
         ["PickUp"] = {
             27670, -- [1]
@@ -1312,7 +1312,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             27670, -- [1]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             28167, -- [1]
@@ -1330,7 +1330,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             28167, -- [1]
         },
-    },    -- [5]
+    },             -- [5]
     {
         ["PickUp"] = {
             27671, -- [1]
@@ -1367,7 +1367,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             27671, -- [1]
         },
-    },    -- [8]
+    },             -- [8]
     {
         ["PickUp"] = {
             28169, -- [1]
@@ -1385,7 +1385,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             28169, -- [1]
         },
-    },    -- [10]
+    },             -- [10]
     {
         ["PickUp"] = {
             27635, -- [1]
@@ -1419,7 +1419,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             27635, -- [1]
         },
-    },    -- [13]
+    },             -- [13]
     {
         ["PickUp"] = {
             27674, -- [1]
@@ -1454,7 +1454,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             27674, -- [1]
         },
-    },    -- [16]
+    },             -- [16]
     {
         ["PickUp"] = {
             26203, -- [1]
@@ -1472,7 +1472,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             26203, -- [1]
         },
-    },    -- [18]
+    },             -- [18]
     {
         ["PickUp"] = {
             26425, -- [1]
@@ -1490,7 +1490,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             26425, -- [1]
         },
-    },    -- [20]
+    },             -- [20]
     {
         ["PickUp"] = {
             26208, -- [1]
@@ -1524,7 +1524,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             26208, -- [1]
         },
-    },    -- [23]
+    },             -- [23]
     {
         ["PickUp"] = {
             26566, -- [1]
@@ -1542,7 +1542,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             26566, -- [1]
         },
-    },    -- [25]
+    },             -- [25]
     {
         ["PickUp"] = {
             26222, -- [1]
@@ -1576,7 +1576,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             26222, -- [1]
         },
-    },    -- [28]
+    },             -- [28]
     {
         ["PickUp"] = {
             26205, -- [1]
@@ -1634,7 +1634,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             26265, -- [1]
         },
-    },    -- [33]
+    },             -- [33]
     {
         ["TT"] = {
             ["y"] = -5072.4,
@@ -1643,7 +1643,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             26205, -- [1]
         },
-    },    -- [34]
+    },             -- [34]
     {
         ["TT"] = {
             ["y"] = -5054.4,
@@ -1652,7 +1652,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             26264, -- [1]
         },
-    },    -- [35]
+    },             -- [35]
     {
         ["PickUp"] = {
             26316, -- [1]
@@ -1670,7 +1670,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             26316, -- [1]
         },
-    },    -- [37]
+    },             -- [37]
     {
         ["PickUp"] = {
             26285, -- [1]
@@ -1709,7 +1709,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
             26285, -- [1]
             26284, -- [2]
         },
-    },    -- [40]
+    },             -- [40]
     {
         ["PickUp"] = {
             26318, -- [1]
@@ -1744,7 +1744,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             26318, -- [1]
         },
-    },    -- [43]
+    },             -- [43]
     {
         ["PickUp"] = {
             26329, -- [1]
@@ -1762,7 +1762,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             26329, -- [1]
         },
-    },    -- [45]
+    },             -- [45]
     {
         ["PickUp"] = {
             26331, -- [1]
@@ -1812,7 +1812,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
             26331, -- [1]
             26333, -- [2]
         },
-    },    -- [49]
+    },             -- [49]
     {
         ["PickUp"] = {
             26339, -- [1]
@@ -1830,7 +1830,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             26339, -- [1]
         },
-    },    -- [51]
+    },             -- [51]
     {
         ["PickUp"] = {
             26342, -- [1]
@@ -1867,7 +1867,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             26342, -- [1]
         },
-    },    -- [54]
+    },             -- [54]
     {
         ["PickUp"] = {
             26364, -- [1]
@@ -1906,7 +1906,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
         ["Done"] = {
             26364, -- [1]
         },
-    },    -- [57]
+    },             -- [57]
     {
         ["PickUp"] = {
             26373, -- [1]
@@ -1921,7 +1921,7 @@ APR.QuestStepList["A27-NewTinkertown"] = {
     }, -- [2]
 }
 --- Gilneas
-APR.QuestStepList["A179-Gilneas"] = {
+APR.RouteQuestStepList["A179-Gilneas"] = {
     {
         ["PickUp"] = {
             14078, -- [1]
@@ -2155,7 +2155,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             28850, -- [1]
         },
-    },    -- [22]
+    },             -- [22]
     {
         ["PickUp"] = {
             14154, -- [1]
@@ -2189,7 +2189,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14154, -- [1]
         },
-    },    -- [25]
+    },             -- [25]
     {
         ["PickUp"] = {
             26129, -- [1]
@@ -2224,7 +2224,7 @@ APR.QuestStepList["A179-Gilneas"] = {
             26129, -- [1]
             24930, -- [2]
         },
-    },    -- [28]
+    },             -- [28]
     {
         ["PickUp"] = {
             14159, -- [1]
@@ -2266,7 +2266,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14159, -- [1]
         },
-    },    -- [32]
+    },             -- [32]
     {
         ["PickUp"] = {
             14204, -- [1]
@@ -2303,7 +2303,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14204, -- [1]
         },
-    },    -- [35]
+    },             -- [35]
     {
         ["PickUp"] = {
             14214, -- [1]
@@ -2345,7 +2345,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14214, -- [1]
         },
-    },    -- [39]
+    },             -- [39]
     {
         ["PickUp"] = {
             14293, -- [1]
@@ -2379,7 +2379,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14293, -- [1]
         },
-    },    -- [42]
+    },             -- [42]
     {
         ["PickUp"] = {
             14294, -- [1]
@@ -2397,7 +2397,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14294, -- [1]
         },
-    },    -- [44]
+    },             -- [44]
     {
         ["PickUp"] = {
             14212, -- [1]
@@ -2431,7 +2431,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14212, -- [1]
         },
-    },    -- [47]
+    },             -- [47]
     {
         ["PickUp"] = {
             14218, -- [1]
@@ -2465,7 +2465,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14218, -- [1]
         },
-    },    -- [50]
+    },             -- [50]
     {
         ["PickUp"] = {
             14221, -- [1]
@@ -2483,7 +2483,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14221, -- [1]
         },
-    },    -- [52]
+    },             -- [52]
     {
         ["PickUp"] = {
             14222, -- [1]
@@ -2517,7 +2517,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14222, -- [1]
         },
-    },    -- [55]
+    },             -- [55]
     {
         ["PickUp"] = {
             14375, -- [1]
@@ -2565,7 +2565,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14313, -- [1]
         },
-    },    -- [5]
+    },             -- [5]
     {
         ["PickUp"] = {
             14320, -- [1]
@@ -2583,7 +2583,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14320, -- [1]
         },
-    },    -- [7]
+    },             -- [7]
     {
         ["PickUp"] = {
             14321, -- [1]
@@ -2601,7 +2601,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14321, -- [1]
         },
-    },    -- [9]
+    },             -- [9]
     {
         ["PickUp"] = {
             14336, -- [1]
@@ -2631,7 +2631,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14336, -- [1]
         },
-    },    -- [12]
+    },             -- [12]
     {
         ["PickUp"] = {
             14347, -- [1]
@@ -2673,7 +2673,7 @@ APR.QuestStepList["A179-Gilneas"] = {
             14347, -- [1]
             14348, -- [2]
         },
-    },    -- [15]
+    },             -- [15]
     {
         ["PickUp"] = {
             14366, -- [1]
@@ -2691,7 +2691,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14366, -- [1]
         },
-    },    -- [17]
+    },             -- [17]
     {
         ["PickUp"] = {
             14367, -- [1]
@@ -2733,7 +2733,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14367, -- [1]
         },
-    },    -- [21]
+    },             -- [21]
     {
         ["PickUp"] = {
             14382, -- [1]
@@ -2872,7 +2872,7 @@ APR.QuestStepList["A179-Gilneas"] = {
             14369, -- [2]
             14368, -- [3]
         },
-    },    -- [29]
+    },             -- [29]
     {
         ["PickUp"] = {
             14386, -- [1]
@@ -2921,7 +2921,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14386, -- [1]
         },
-    },    -- [33]
+    },             -- [33]
     {
         ["PickUp"] = {
             14396, -- [1]
@@ -2939,7 +2939,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14396, -- [1]
         },
-    },    -- [35]
+    },             -- [35]
     {
         ["PickUp"] = {
             14395, -- [1]
@@ -2973,7 +2973,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14395, -- [1]
         },
-    },    -- [38]
+    },             -- [38]
     {
         ["PickUp"] = {
             14397, -- [1]
@@ -2991,7 +2991,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14397, -- [1]
         },
-    },    -- [40]
+    },             -- [40]
     {
         ["PickUp"] = {
             14406, -- [1]
@@ -3011,7 +3011,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14406, -- [1]
         },
-    },    -- [42]
+    },             -- [42]
     {
         ["PickUp"] = {
             14416, -- [1]
@@ -3045,7 +3045,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14416, -- [1]
         },
-    },    -- [45]
+    },             -- [45]
     {
         ["TT"] = {
             ["y"] = -2299.4,
@@ -3054,7 +3054,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14403, -- [1]
         },
-    },    -- [46]
+    },             -- [46]
     {
         ["PickUp"] = {
             14404, -- [1]
@@ -3153,7 +3153,7 @@ APR.QuestStepList["A179-Gilneas"] = {
             14412, -- [1]
             14404, -- [2]
         },
-    },    -- [52]
+    },             -- [52]
     {
         ["TT"] = {
             ["y"] = -2117,
@@ -3162,7 +3162,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14398, -- [1]
         },
-    },    -- [53]
+    },             -- [53]
     {
         ["PickUp"] = {
             14399, -- [1]
@@ -3196,7 +3196,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14399, -- [1]
         },
-    },    -- [56]
+    },             -- [56]
     {
         ["PickUp"] = {
             14400, -- [1]
@@ -3230,7 +3230,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14400, -- [1]
         },
-    },    -- [59]
+    },             -- [59]
     {
         ["PickUp"] = {
             14401, -- [1]
@@ -3264,7 +3264,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14401, -- [1]
         },
-    },    -- [62]
+    },             -- [62]
     {
         ["PickUp"] = {
             14402, -- [1]
@@ -3282,7 +3282,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14402, -- [1]
         },
-    },    -- [64]
+    },             -- [64]
     {
         ["TT"] = {
             ["y"] = -1583,
@@ -3291,7 +3291,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14465, -- [1]
         },
-    },    -- [1]
+    },             -- [1]
     {
         ["PickUp"] = {
             14466, -- [1]
@@ -3309,7 +3309,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             14466, -- [1]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             24438, -- [1]
@@ -3343,7 +3343,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             24438, -- [1]
         },
-    },    -- [67]
+    },             -- [67]
     {
         ["PickUp"] = {
             24468, -- [1]
@@ -3948,7 +3948,7 @@ APR.QuestStepList["A179-Gilneas"] = {
             24675, -- [2]
             24674, -- [3]
         },
-    },    -- [118]
+    },             -- [118]
     {
         ["PickUp"] = {
             24676, -- [1]
@@ -4058,7 +4058,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             24904, -- [1]
         },
-    },    -- [5]
+    },             -- [5]
     {
         ["PickUp"] = {
             24902, -- [1]
@@ -4093,7 +4093,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             24902, -- [1]
         },
-    },    -- [8]
+    },             -- [8]
     {
         ["PickUp"] = {
             24903, -- [1]
@@ -4147,7 +4147,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             24920, -- [1]
         },
-    },    -- [13]
+    },             -- [13]
     {
         ["PickUp"] = {
             24678, -- [1]
@@ -4189,7 +4189,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             24678, -- [1]
         },
-    },    -- [1]
+    },             -- [1]
     {
         ["PickUp"] = {
             24602, -- [1]
@@ -4223,7 +4223,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             24602, -- [1]
         },
-    },    -- [2]
+    },             -- [2]
     {
         ["PickUp"] = {
             24679, -- [1]
@@ -4260,7 +4260,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             24679, -- [1]
         },
-    },    -- [5]
+    },             -- [5]
     {
         ["PickUp"] = {
             24680, -- [1]
@@ -4278,7 +4278,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             24680, -- [1]
         },
-    },    -- [7]
+    },             -- [7]
     {
         ["PickUp"] = {
             24681, -- [1]
@@ -4315,7 +4315,7 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             24681, -- [1]
         },
-    },    -- [10]
+    },             -- [10]
     {
         ["PickUp"] = {
             26706, -- [1]
@@ -4349,13 +4349,13 @@ APR.QuestStepList["A179-Gilneas"] = {
         ["Done"] = {
             26706, -- [1]
         },
-    },    -- [13]
+    },             -- [13]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]
 }
 --- Plaguelands: The Scarlet Enclave
-APR.QuestStepList["A23-ScarletEnclave"] = {
+APR.RouteQuestStepList["A23-ScarletEnclave"] = {
     {
         ["PickUp"] = {
             12593, -- [1]
@@ -4385,7 +4385,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12593, -- [1]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             12619, -- [1]
@@ -4438,7 +4438,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12619, -- [1]
         },
-    },    -- [7]
+    },             -- [7]
     {
         ["PickUp"] = {
             12842, -- [1]
@@ -4472,7 +4472,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12842, -- [1]
         },
-    },    -- [10]
+    },             -- [10]
     {
         ["PickUp"] = {
             12848, -- [1]
@@ -4509,7 +4509,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12848, -- [1]
         },
-    },    -- [13]
+    },             -- [13]
     {
         ["PickUp"] = {
             12636, -- [1]
@@ -4527,7 +4527,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12636, -- [1]
         },
-    },    -- [15]
+    },             -- [15]
     {
         ["PickUp"] = {
             12641, -- [1]
@@ -4564,7 +4564,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12641, -- [1]
         },
-    },    -- [18]
+    },             -- [18]
     {
         ["PickUp"] = {
             12657, -- [1]
@@ -4594,7 +4594,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12657, -- [1]
         },
-    },    -- [21]
+    },             -- [21]
     {
         ["PickUp"] = {
             12850, -- [1]
@@ -4799,7 +4799,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12680, -- [1]
         },
-    },    -- [38]
+    },             -- [38]
     {
         ["PickUp"] = {
             12687, -- [1]
@@ -4845,7 +4845,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12687, -- [1]
         },
-    },    -- [42]
+    },             -- [42]
     {
         ["TT"] = {
             ["y"] = 2371.5,
@@ -4854,7 +4854,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12678, -- [1]
         },
-    },    -- [43]
+    },             -- [43]
     {
         ["TT"] = {
             ["y"] = 2307.3,
@@ -4863,7 +4863,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12679, -- [1]
         },
-    },    -- [44]
+    },             -- [44]
     {
         ["TT"] = {
             ["y"] = 2360.9,
@@ -4872,7 +4872,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12733, -- [1]
         },
-    },    -- [45]
+    },             -- [45]
     {
         ["PickUp"] = {
             12697, -- [1]
@@ -4890,7 +4890,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12697, -- [1]
         },
-    },    -- [47]
+    },             -- [47]
     {
         ["PickUp"] = {
             12698, -- [1]
@@ -5102,7 +5102,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12715, -- [1]
         },
-    },    -- [67]
+    },             -- [67]
     {
         ["PickUp"] = {
             12719, -- [1]
@@ -5315,7 +5315,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12719, -- [1]
         },
-    },    -- [82]
+    },             -- [82]
     {
         ["PickUp"] = {
             12720, -- [1]
@@ -5333,7 +5333,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12722, -- [1]
         },
-    },    -- [84]
+    },             -- [84]
     {
         ["TT"] = {
             ["y"] = 1983.4,
@@ -5342,7 +5342,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12716, -- [1]
         },
-    },    -- [85]
+    },             -- [85]
     {
         ["PickUp"] = {
             12717, -- [1]
@@ -5360,7 +5360,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12717, -- [1]
         },
-    },    -- [87]
+    },             -- [87]
     {
         ["Qpart"] = {
             [12720] = {
@@ -5388,7 +5388,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12720, -- [1]
         },
-    },    -- [89]
+    },             -- [89]
     {
         ["PickUp"] = {
             12723, -- [1]
@@ -5418,7 +5418,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12723, -- [1]
         },
-    },    -- [92]
+    },             -- [92]
     {
         ["PickUp"] = {
             12724, -- [1]
@@ -5464,7 +5464,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12724, -- [1]
         },
-    },    -- [96]
+    },             -- [96]
     {
         ["PickUp"] = {
             12725, -- [1]
@@ -5482,7 +5482,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12725, -- [1]
         },
-    },    -- [98]
+    },             -- [98]
     {
         ["PickUp"] = {
             12727, -- [1]
@@ -5516,7 +5516,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12727, -- [1]
         },
-    },    -- [101]
+    },             -- [101]
     {
         ["PickUp"] = {
             12738, -- [1]
@@ -5534,7 +5534,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12738, -- [1]
         },
-    },    -- [103]
+    },             -- [103]
     {
         ["PickUp"] = {
             28649, -- [1]
@@ -5568,7 +5568,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             28649, -- [1]
         },
-    },    -- [106]
+    },             -- [106]
     {
         ["PickUp"] = {
             12751, -- [1]
@@ -5586,7 +5586,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12751, -- [1]
         },
-    },    -- [108]
+    },             -- [108]
     {
         ["PickUp"] = {
             12754, -- [1]
@@ -5639,7 +5639,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12754, -- [1]
         },
-    },    -- [112]
+    },             -- [112]
     {
         ["PickUp"] = {
             12755, -- [1]
@@ -5669,7 +5669,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12755, -- [1]
         },
-    },    -- [115]
+    },             -- [115]
     {
         ["PickUp"] = {
             12756, -- [1]
@@ -5687,7 +5687,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12756, -- [1]
         },
-    },    -- [117]
+    },             -- [117]
     {
         ["PickUp"] = {
             12757, -- [1]
@@ -5705,7 +5705,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12757, -- [1]
         },
-    },    -- [119]
+    },             -- [119]
     {
         ["PickUp"] = {
             12778, -- [1]
@@ -5735,7 +5735,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12778, -- [1]
         },
-    },    -- [122]
+    },             -- [122]
     {
         ["PickUp"] = {
             12779, -- [1]
@@ -5773,7 +5773,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12779, -- [1]
         },
-    },    -- [125]
+    },             -- [125]
     {
         ["PickUp"] = {
             12800, -- [1]
@@ -5815,7 +5815,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12800, -- [1]
         },
-    },    -- [129]
+    },             -- [129]
     {
         ["PickUp"] = {
             12801, -- [1]
@@ -5849,7 +5849,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             12801, -- [1]
         },
-    },    -- [132]
+    },             -- [132]
     {
         ["PickUp"] = {
             13165, -- [1]
@@ -5867,7 +5867,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             13165, -- [1]
         },
-    },    -- [134]
+    },             -- [134]
     {
         ["TT"] = {
             ["y"] = 2376.1,
@@ -5876,7 +5876,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             13165, -- [1]
         },
-    },    -- [135]
+    },             -- [135]
     {
         ["PickUp"] = {
             13166, -- [1]
@@ -5935,7 +5935,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
         ["Done"] = {
             13166, -- [1]
         },
-    },    -- [140]
+    },             -- [140]
     {
         ["PickUp"] = {
             13188, -- [1]
@@ -5950,7 +5950,7 @@ APR.QuestStepList["A23-ScarletEnclave"] = {
     }, -- [2]
 }
 --- Elwynn Forest
-APR.QuestStepList["A37-ElwynnForest"] = {
+APR.RouteQuestStepList["A37-ElwynnForest"] = {
     {
         ["PickUp"] = {
             62, -- [1]
@@ -5987,7 +5987,7 @@ APR.QuestStepList["A37-ElwynnForest"] = {
         ["Done"] = {
             40, -- [1]
         },
-    }, -- [4]
+    },          -- [4]
     {
         ["PickUp"] = {
             35, -- [1]
@@ -6047,7 +6047,7 @@ APR.QuestStepList["A37-ElwynnForest"] = {
         ["Done"] = {
             88, -- [1]
         },
-    }, -- [9]
+    },          -- [9]
     {
         ["Fillers"] = {
             [47] = {
@@ -6200,7 +6200,7 @@ APR.QuestStepList["A37-ElwynnForest"] = {
         ["Done"] = {
             106, -- [1]
         },
-    },  -- [20]
+    },           -- [20]
     {
         ["PickUp"] = {
             111, -- [1]
@@ -6218,7 +6218,7 @@ APR.QuestStepList["A37-ElwynnForest"] = {
         ["Done"] = {
             111, -- [1]
         },
-    },  -- [22]
+    },           -- [22]
     {
         ["PickUp"] = {
             107, -- [1]
@@ -6313,7 +6313,7 @@ APR.QuestStepList["A37-ElwynnForest"] = {
     {
         ["Done"] = {
             107, -- [1]
-            60, -- [2]
+            60,  -- [2]
         },
         ["TT"] = {
             ["y"] = -9461.3,
@@ -6523,10 +6523,10 @@ APR.QuestStepList["A37-ElwynnForest"] = {
     }, -- [48]
     {
         ["PickUp"] = {
-            37, -- [1]
-            52, -- [2]
+            37,    -- [1]
+            52,    -- [2]
             26152, -- [3]
-            46, -- [4]
+            46,    -- [4]
         },
         ["TT"] = {
             ["y"] = -9611.2,
@@ -6587,7 +6587,7 @@ APR.QuestStepList["A37-ElwynnForest"] = {
         ["Done"] = {
             123, -- [1]
         },
-    },  -- [54]
+    },           -- [54]
     {
         ["PickUp"] = {
             147, -- [1]
@@ -6605,7 +6605,7 @@ APR.QuestStepList["A37-ElwynnForest"] = {
         ["Done"] = {
             26152, -- [1]
         },
-    },    -- [56]
+    },             -- [56]
     {
         ["Fillers"] = {
             [52] = {
@@ -6743,7 +6743,7 @@ APR.QuestStepList["A37-ElwynnForest"] = {
         ["Done"] = {
             5545, -- [1]
         },
-    },   -- [65]
+    },            -- [65]
     {
         ["TT"] = {
             ["y"] = -9529.5,
@@ -6752,7 +6752,7 @@ APR.QuestStepList["A37-ElwynnForest"] = {
         ["Done"] = {
             83, -- [1]
         },
-    }, -- [66]
+    },          -- [66]
     {
         ["TT"] = {
             ["y"] = -9609.8,
@@ -6763,7 +6763,7 @@ APR.QuestStepList["A37-ElwynnForest"] = {
             71, -- [2]
             46, -- [3]
         },
-    }, -- [67]
+    },          -- [67]
     {
         ["PickUp"] = {
             59, -- [1]
@@ -6797,7 +6797,7 @@ APR.QuestStepList["A37-ElwynnForest"] = {
         ["Done"] = {
             59, -- [1]
         },
-    }, -- [70]
+    },          -- [70]
     {
         ["TT"] = {
             ["y"] = -9467.8,
@@ -6806,13 +6806,13 @@ APR.QuestStepList["A37-ElwynnForest"] = {
         ["Done"] = {
             147, -- [1]
         },
-    },  -- [71]
+    },           -- [71]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]
 }
 --- Westfall
-APR.QuestStepList["A52-Westfall"] = {
+APR.RouteQuestStepList["A52-Westfall"] = {
     {
         ["PickUp"] = {
             26209, -- [1]
@@ -6849,7 +6849,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26209, -- [1]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             26214, -- [1]
@@ -6913,7 +6913,7 @@ APR.QuestStepList["A52-Westfall"] = {
             26214, -- [1]
             26213, -- [2]
         },
-    },    -- [8]
+    },             -- [8]
     {
         ["PickUp"] = {
             26215, -- [1]
@@ -6931,7 +6931,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26215, -- [1]
         },
-    },    -- [10]
+    },             -- [10]
     {
         ["PickUp"] = {
             26229, -- [1]
@@ -7054,7 +7054,7 @@ APR.QuestStepList["A52-Westfall"] = {
             26228, -- [1]
             26229, -- [2]
         },
-    },    -- [18]
+    },             -- [18]
     {
         ["PickUp"] = {
             26232, -- [1]
@@ -7088,7 +7088,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26232, -- [1]
         },
-    },    -- [21]
+    },             -- [21]
     {
         ["PickUp"] = {
             26236, -- [1]
@@ -7106,7 +7106,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26236, -- [1]
         },
-    },    -- [23]
+    },             -- [23]
     {
         ["PickUp"] = {
             26237, -- [1]
@@ -7189,7 +7189,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26237, -- [1]
         },
-    },    -- [29]
+    },             -- [29]
     {
         ["TT"] = {
             ["y"] = -10111.7,
@@ -7198,7 +7198,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26241, -- [1]
         },
-    },    -- [30]
+    },             -- [30]
     {
         ["PickUp"] = {
             26270, -- [1]
@@ -7216,7 +7216,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26270, -- [1]
         },
-    },    -- [32]
+    },             -- [32]
     {
         ["PickUp"] = {
             26266, -- [1]
@@ -7243,7 +7243,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26266, -- [1]
         },
-    },    -- [35]
+    },             -- [35]
     {
         ["PickUp"] = {
             26271, -- [1]
@@ -7319,7 +7319,7 @@ APR.QuestStepList["A52-Westfall"] = {
             26287, -- [2]
             26271, -- [3]
         },
-    },    -- [40]
+    },             -- [40]
     {
         ["PickUp"] = {
             26288, -- [1]
@@ -7377,7 +7377,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26289, -- [1]
         },
-    },    -- [44]
+    },             -- [44]
     {
         ["PickUp"] = {
             26290, -- [1]
@@ -7414,7 +7414,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26290, -- [1]
         },
-    },    -- [47]
+    },             -- [47]
     {
         ["PickUp"] = {
             26291, -- [1]
@@ -7433,7 +7433,7 @@ APR.QuestStepList["A52-Westfall"] = {
             26288, -- [1]
             26291, -- [2]
         },
-    },    -- [49]
+    },             -- [49]
     {
         ["PickUp"] = {
             26292, -- [1]
@@ -7873,7 +7873,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26371, -- [1]
         },
-    },    -- [86]
+    },             -- [86]
     {
         ["PickUp"] = {
             26348, -- [1]
@@ -7955,7 +7955,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26354, -- [1]
         },
-    },    -- [92]
+    },             -- [92]
     {
         ["PickUp"] = {
             26355, -- [1]
@@ -7973,7 +7973,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26355, -- [1]
         },
-    },    -- [94]
+    },             -- [94]
     {
         ["PickUp"] = {
             26356, -- [1]
@@ -7991,7 +7991,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26356, -- [1]
         },
-    },    -- [96]
+    },             -- [96]
     {
         ["Trigger"] = {
             ["y"] = -11107.3,
@@ -8019,7 +8019,7 @@ APR.QuestStepList["A52-Westfall"] = {
             26349, -- [2]
             26347, -- [3]
         },
-    },    -- [98]
+    },             -- [98]
     {
         ["UseFlightPath"] = 26320,
         ["Name"] = "Sentinel Hill, Westfall",
@@ -8037,7 +8037,7 @@ APR.QuestStepList["A52-Westfall"] = {
         ["Done"] = {
             26320, -- [1]
         },
-    },    -- [100]
+    },             -- [100]
     {
         ["PickUp"] = {
             26322, -- [1]
@@ -8068,7 +8068,7 @@ APR.QuestStepList["A52-Westfall"] = {
     }, -- [2]
 }
 --- Swamp of Sorrows
-APR.QuestStepList["A51-SwampofSorrows"] = {
+APR.RouteQuestStepList["A51-SwampofSorrows"] = {
     {
         ["PickUp"] = {
             27587, -- [1]
@@ -8912,7 +8912,7 @@ APR.QuestStepList["A51-SwampofSorrows"] = {
             27822, -- [1]
             27821, -- [2]
         },
-    },    -- [72]
+    },             -- [72]
     {
         ["PickUp"] = {
             27845, -- [1]
@@ -8933,7 +8933,7 @@ APR.QuestStepList["A51-SwampofSorrows"] = {
             27840, -- [1]
             27860, -- [2]
         },
-    },    -- [74]
+    },             -- [74]
     {
         ["PickUp"] = {
             27918, -- [1]
@@ -8976,7 +8976,7 @@ APR.QuestStepList["A51-SwampofSorrows"] = {
         ["Done"] = {
             27918, -- [1]
         },
-    },    -- [77]
+    },             -- [77]
     {
         ["PickUp"] = {
             27875, -- [1]
@@ -9015,7 +9015,7 @@ APR.QuestStepList["A51-SwampofSorrows"] = {
             27875, -- [1]
             27876, -- [2]
         },
-    },    -- [80]
+    },             -- [80]
     {
         ["PickUp"] = {
             27904, -- [1]
@@ -9067,7 +9067,7 @@ APR.QuestStepList["A51-SwampofSorrows"] = {
             27902, -- [1]
             27904, -- [2]
         },
-    },    -- [84]
+    },             -- [84]
     {
         ["PickUp"] = {
             24913, -- [1]
@@ -9101,7 +9101,7 @@ APR.QuestStepList["A51-SwampofSorrows"] = {
         ["Done"] = {
             24913, -- [1]
         },
-    },    -- [87]
+    },             -- [87]
     {
         ["UseFlightPath"] = 27795,
         ["Name"] = "Marshtide Watch, Swamp of Sorrows",
@@ -9121,7 +9121,7 @@ APR.QuestStepList["A51-SwampofSorrows"] = {
             27843, -- [2]
             27795, -- [3]
         },
-    },    -- [89]
+    },             -- [89]
     {
         ["PickUp"] = {
             27849, -- [1]
@@ -9160,13 +9160,13 @@ APR.QuestStepList["A51-SwampofSorrows"] = {
             27849, -- [1]
             27851, -- [2]
         },
-    },    -- [92]
+    },             -- [92]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]
 }
 --- Blasted Lands
-APR.QuestStepList["A17-BlastedLands"] = {
+APR.RouteQuestStepList["A17-BlastedLands"] = {
     {
         ["PickUp"] = {
             25710, -- [1]
@@ -10539,7 +10539,7 @@ APR.QuestStepList["A17-BlastedLands"] = {
         ["Done"] = {
             26184, -- [1]
         },
-    },    -- [110]
+    },             -- [110]
     {
         ["PickUp"] = {
             26185, -- [1]
@@ -10557,7 +10557,7 @@ APR.QuestStepList["A17-BlastedLands"] = {
         ["Done"] = {
             26185, -- [1]
         },
-    },    -- [112]
+    },             -- [112]
     {
         ["PickUp"] = {
             26186, -- [1]
@@ -10591,7 +10591,7 @@ APR.QuestStepList["A17-BlastedLands"] = {
         ["Done"] = {
             26186, -- [1]
         },
-    },    -- [115]
+    },             -- [115]
     {
         ["PickUp"] = {
             26187, -- [1]
@@ -10628,13 +10628,13 @@ APR.QuestStepList["A17-BlastedLands"] = {
         ["Done"] = {
             26187, -- [1]
         },
-    },    -- [118]
+    },             -- [118]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]
 }
 --- Burning Steppes
-APR.QuestStepList["A36-BurningSteppes"] = {
+APR.RouteQuestStepList["A36-BurningSteppes"] = {
     {
         ["PickUp"] = {
             28174, -- [1]
@@ -10685,7 +10685,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
             28174, -- [1]
             28172, -- [2]
         },
-    },    -- [4]
+    },             -- [4]
     {
         ["PickUp"] = {
             28178, -- [1]
@@ -10750,7 +10750,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
             28179, -- [2]
             28177, -- [3]
         },
-    },    -- [8]
+    },             -- [8]
     {
         ["PickUp"] = {
             28180, -- [1]
@@ -10780,7 +10780,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28180, -- [1]
         },
-    },    -- [11]
+    },             -- [11]
     {
         ["PickUp"] = {
             28182, -- [1]
@@ -10879,7 +10879,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
             28182, -- [1]
             28181, -- [2]
         },
-    },    -- [17]
+    },             -- [17]
     {
         ["PickUp"] = {
             28183, -- [1]
@@ -10897,7 +10897,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28183, -- [1]
         },
-    },    -- [19]
+    },             -- [19]
     {
         ["PickUp"] = {
             28184, -- [1]
@@ -10931,7 +10931,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28184, -- [1]
         },
-    },    -- [22]
+    },             -- [22]
     {
         ["PickUp"] = {
             28225, -- [1]
@@ -10959,7 +10959,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28254, -- [1]
         },
-    },    -- [25]
+    },             -- [25]
     {
         ["PickUp"] = {
             28202, -- [1]
@@ -11013,7 +11013,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28202, -- [1]
         },
-    },    -- [1]
+    },             -- [1]
     {
         ["PickUp"] = {
             28239, -- [1]
@@ -11190,7 +11190,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28246, -- [1]
         },
-    },    -- [14]
+    },             -- [14]
     {
         ["Trigger"] = {
             ["y"] = -8124.2,
@@ -11215,7 +11215,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28245, -- [1]
         },
-    },    -- [2]
+    },             -- [2]
     {
         ["PickUp"] = {
             28252, -- [1]
@@ -11252,7 +11252,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28252, -- [1]
         },
-    },    -- [5]
+    },             -- [5]
     {
         ["PickUp"] = {
             28253, -- [1]
@@ -11270,7 +11270,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28253, -- [1]
         },
-    },    -- [7]
+    },             -- [7]
     {
         ["PickUp"] = {
             28265, -- [1]
@@ -11288,7 +11288,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28265, -- [1]
         },
-    },    -- [9]
+    },             -- [9]
     {
         ["PickUp"] = {
             28266, -- [1]
@@ -11323,7 +11323,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28266, -- [1]
         },
-    },    -- [12]
+    },             -- [12]
     {
         ["PickUp"] = {
             28278, -- [1]
@@ -11365,7 +11365,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28279, -- [1]
         },
-    },    -- [15]
+    },             -- [15]
     {
         ["PickUp"] = {
             28286, -- [1]
@@ -11383,7 +11383,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28278, -- [1]
         },
-    },    -- [17]
+    },             -- [17]
     {
         ["TT"] = {
             ["y"] = -7950.2,
@@ -11392,7 +11392,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28286, -- [1]
         },
-    },    -- [18]
+    },             -- [18]
     {
         ["PickUp"] = {
             28310, -- [1]
@@ -11410,7 +11410,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28310, -- [1]
         },
-    },    -- [20]
+    },             -- [20]
     {
         ["PickUp"] = {
             28415, -- [1]
@@ -11515,7 +11515,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
             28311, -- [2]
             28312, -- [3]
         },
-    },    -- [27]
+    },             -- [27]
     {
         ["PickUp"] = {
             28316, -- [1]
@@ -11535,7 +11535,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28415, -- [1]
         },
-    },    -- [29]
+    },             -- [29]
     {
         ["Qpart"] = {
             [28315] = {
@@ -11628,7 +11628,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28315, -- [1]
         },
-    },    -- [34]
+    },             -- [34]
     {
         ["Fillers"] = {
             [28314] = {
@@ -11667,7 +11667,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28314, -- [1]
         },
-    },    -- [37]
+    },             -- [37]
     {
         ["PickUp"] = {
             28326, -- [1]
@@ -11685,7 +11685,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28326, -- [1]
         },
-    },    -- [39]
+    },             -- [39]
     {
         ["PickUp"] = {
             28319, -- [1]
@@ -11730,7 +11730,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28317, -- [1]
         },
-    },    -- [43]
+    },             -- [43]
     {
         ["Trigger"] = {
             ["y"] = -7878,
@@ -11811,7 +11811,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28319, -- [1]
         },
-    },    -- [50]
+    },             -- [50]
     {
         ["Trigger"] = {
             ["y"] = -7910.4,
@@ -11868,7 +11868,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28318, -- [1]
         },
-    },    -- [55]
+    },             -- [55]
     {
         ["PickUp"] = {
             28327, -- [1]
@@ -11898,7 +11898,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28327, -- [1]
         },
-    },    -- [58]
+    },             -- [58]
     {
         ["PickUp"] = {
             28320, -- [1]
@@ -11935,7 +11935,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28320, -- [1]
         },
-    },    -- [61]
+    },             -- [61]
     {
         ["PickUp"] = {
             28321, -- [1]
@@ -12145,7 +12145,7 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28321, -- [1]
         },
-    },    -- [78]
+    },             -- [78]
     {
         ["PickUp"] = {
             28322, -- [1]
@@ -12163,13 +12163,13 @@ APR.QuestStepList["A36-BurningSteppes"] = {
         ["Done"] = {
             28322, -- [1]
         },
-    },    -- [80]
+    },             -- [80]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]
 }
 --- 7-16 Kharanos
-APR.QuestStepList["A27-Kharanos"] = {
+APR.RouteQuestStepList["A27-Kharanos"] = {
     {
         ["PickUp"] = {
             384, -- [1]
@@ -12255,7 +12255,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             6387, -- [1]
         },
-    },   -- [8]
+    },            -- [8]
     {
         ["PickUp"] = {
             6391, -- [1]
@@ -12321,8 +12321,8 @@ APR.QuestStepList["A27-Kharanos"] = {
     {
         ["Done"] = {
             25724, -- [1]
-            315, -- [2]
-            384, -- [3]
+            315,   -- [2]
+            384,   -- [3]
         },
         ["TT"] = {
             ["y"] = -5617.2,
@@ -12333,7 +12333,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["PickUp"] = {
             25667, -- [1]
             25668, -- [2]
-            313, -- [3]
+            313,   -- [3]
         },
         ["TT"] = {
             ["y"] = -5643.5,
@@ -12472,7 +12472,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             25667, -- [1]
             25668, -- [2]
-            313, -- [3]
+            313,   -- [3]
         },
         ["TT"] = {
             ["y"] = -5643.4,
@@ -12548,7 +12548,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             25792, -- [1]
         },
-    },    -- [27]
+    },             -- [27]
     {
         ["TT"] = {
             ["y"] = -5636.2,
@@ -12557,7 +12557,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             412, -- [1]
         },
-    },  -- [28]
+    },           -- [28]
     {
         ["PickUp"] = {
             25838, -- [1]
@@ -12587,7 +12587,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             25838, -- [1]
         },
-    },    -- [31]
+    },             -- [31]
     {
         ["PickUp"] = {
             25839, -- [1]
@@ -12621,7 +12621,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             25839, -- [1]
         },
-    },    -- [34]
+    },             -- [34]
     {
         ["PickUp"] = {
             25841, -- [1]
@@ -12757,7 +12757,7 @@ APR.QuestStepList["A27-Kharanos"] = {
             25840, -- [2]
             28868, -- [3]
         },
-    },    -- [40]
+    },             -- [40]
     {
         ["PickUp"] = {
             25882, -- [1]
@@ -12787,7 +12787,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             25882, -- [1]
         },
-    },    -- [43]
+    },             -- [43]
     {
         ["PickUp"] = {
             25932, -- [1]
@@ -12821,7 +12821,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             25932, -- [1]
         },
-    },    -- [46]
+    },             -- [46]
     {
         ["PickUp"] = {
             25905, -- [1]
@@ -12888,7 +12888,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             314, -- [1]
         },
-    },  -- [52]
+    },           -- [52]
     {
         ["Qpart"] = {
             [25905] = {
@@ -12914,7 +12914,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             25905, -- [1]
         },
-    },    -- [54]
+    },             -- [54]
     {
         ["PickUp"] = {
             25933, -- [1]
@@ -12950,7 +12950,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             25933, -- [1]
         },
-    },    -- [58]
+    },             -- [58]
     {
         ["PickUp"] = {
             432, -- [1]
@@ -13064,7 +13064,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             433, -- [1]
         },
-    },  -- [64]
+    },           -- [64]
     {
         ["TT"] = {
             ["y"] = -5725.8,
@@ -13073,7 +13073,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             432, -- [1]
         },
-    },  -- [65]
+    },           -- [65]
     {
         ["TT"] = {
             ["y"] = -5672.9,
@@ -13082,7 +13082,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             25937, -- [1]
         },
-    },    -- [66]
+    },             -- [66]
     {
         ["PickUp"] = {
             25986, -- [1]
@@ -13112,7 +13112,7 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             25986, -- [1]
         },
-    },    -- [69]
+    },             -- [69]
     {
         ["PickUp"] = {
             25978, -- [1]
@@ -13151,7 +13151,7 @@ APR.QuestStepList["A27-Kharanos"] = {
             25978, -- [1]
             25979, -- [2]
         },
-    },    -- [72]
+    },             -- [72]
     {
         ["PickUp"] = {
             25997, -- [1]
@@ -13206,13 +13206,13 @@ APR.QuestStepList["A27-Kharanos"] = {
         ["Done"] = {
             25997, -- [1]
         },
-    },    -- [76]
+    },             -- [76]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]
 }
 --- 16-29 Loch Modan
-APR.QuestStepList["A48-LochModan"] = {
+APR.RouteQuestStepList["A48-LochModan"] = {
     {
         ["PickUp"] = {
             26854, -- [1]
@@ -13230,7 +13230,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             26854, -- [1]
         },
-    },    -- [2]
+    },             -- [2]
     {
         ["PickUp"] = {
             26855, -- [1]
@@ -13276,7 +13276,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             26855, -- [1]
         },
-    },    -- [6]
+    },             -- [6]
     {
         ["PickUp"] = {
             13635, -- [1]
@@ -14109,7 +14109,7 @@ APR.QuestStepList["A48-LochModan"] = {
             13648, -- [5]
             13656, -- [6]
         },
-    },    -- [8]
+    },             -- [8]
     {
         ["PickUp"] = {
             26927, -- [1]
@@ -14192,7 +14192,7 @@ APR.QuestStepList["A48-LochModan"] = {
             26929, -- [2]
             26932, -- [3]
         },
-    },    -- [7]
+    },             -- [7]
     {
         ["PickUp"] = {
             26868, -- [1]
@@ -14227,7 +14227,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             26868, -- [1]
         },
-    },    -- [10]
+    },             -- [10]
     {
         ["PickUp"] = {
             13639, -- [1]
@@ -14245,7 +14245,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             13639, -- [1]
         },
-    },    -- [1]
+    },             -- [1]
     {
         ["PickUp"] = {
             309, -- [1]
@@ -14300,7 +14300,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             309, -- [1]
         },
-    },  -- [4]
+    },           -- [4]
     {
         ["PickUp"] = {
             13650, -- [1]
@@ -14467,7 +14467,7 @@ APR.QuestStepList["A48-LochModan"] = {
             26961, -- [1]
             13650, -- [2]
         },
-    },    -- [15]
+    },             -- [15]
     {
         ["PickUp"] = {
             13647, -- [1]
@@ -14530,7 +14530,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             13647, -- [1]
         },
-    },    -- [21]
+    },             -- [21]
     {
         ["PickUp"] = {
             27028, -- [1]
@@ -14680,7 +14680,7 @@ APR.QuestStepList["A48-LochModan"] = {
             13658, -- [4]
             13655, -- [5]
         },
-    },    -- [1]
+    },             -- [1]
     {
         ["PickUp"] = {
             13661, -- [1]
@@ -14698,7 +14698,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             13661, -- [1]
         },
-    },    -- [1]
+    },             -- [1]
     {
         ["UseFlightPath"] = 27016,
         ["Name"] = "Farstrider Lodge, Loch Modan",
@@ -14716,7 +14716,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             27031, -- [1]
         },
-    },    -- [1]
+    },             -- [1]
     {
         ["PickUp"] = {
             27032, -- [1]
@@ -14734,7 +14734,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             27025, -- [1]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             27026, -- [1]
@@ -14752,7 +14752,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             27016, -- [1]
         },
-    },    -- [5]
+    },             -- [5]
     {
         ["TT"] = {
             ["y"] = -5622.2,
@@ -14762,7 +14762,7 @@ APR.QuestStepList["A48-LochModan"] = {
             27028, -- [1]
             27030, -- [2]
         },
-    },    -- [6]
+    },             -- [6]
     {
         ["PickUp"] = {
             27036, -- [1]
@@ -14814,7 +14814,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             27032, -- [1]
         },
-    },    -- [10]
+    },             -- [10]
     {
         ["PickUp"] = {
             27033, -- [1]
@@ -14872,7 +14872,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             27026, -- [1]
         },
-    },    -- [15]
+    },             -- [15]
     {
         ["TT"] = {
             ["y"] = -5689.4,
@@ -14881,7 +14881,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             27036, -- [1]
         },
-    },    -- [16]
+    },             -- [16]
     {
         ["PickUp"] = {
             27037, -- [1]
@@ -14899,7 +14899,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             27037, -- [1]
         },
-    },    -- [18]
+    },             -- [18]
     {
         ["TT"] = {
             ["y"] = -5677.7,
@@ -14908,7 +14908,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             27033, -- [1]
         },
-    },    -- [19]
+    },             -- [19]
     {
         ["PickUp"] = {
             27034, -- [1]
@@ -14926,7 +14926,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             27034, -- [1]
         },
-    },    -- [21]
+    },             -- [21]
     {
         ["PickUp"] = {
             27035, -- [1]
@@ -14961,7 +14961,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             27035, -- [1]
         },
-    },    -- [24]
+    },             -- [24]
     {
         ["PickUp"] = {
             27074, -- [1]
@@ -14979,7 +14979,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             27074, -- [1]
         },
-    },    -- [26]
+    },             -- [26]
     {
         ["PickUp"] = {
             27075, -- [1]
@@ -15018,7 +15018,7 @@ APR.QuestStepList["A48-LochModan"] = {
             27077, -- [1]
             27075, -- [2]
         },
-    },    -- [2]
+    },             -- [2]
     {
         ["PickUp"] = {
             27078, -- [1]
@@ -15064,7 +15064,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             27078, -- [1]
         },
-    },    -- [6]
+    },             -- [6]
     {
         ["PickUp"] = {
             27115, -- [1]
@@ -15082,7 +15082,7 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             27115, -- [1]
         },
-    },    -- [8]
+    },             -- [8]
     {
         ["PickUp"] = {
             27116, -- [1]
@@ -15100,13 +15100,13 @@ APR.QuestStepList["A48-LochModan"] = {
         ["Done"] = {
             27116, -- [1]
         },
-    },    -- [10]
+    },             -- [10]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]
 }
 --- 29-38 Wetlands
-APR.QuestStepList["A56-Wetlands"] = {
+APR.RouteQuestStepList["A56-Wetlands"] = {
     {
         ["PickUp"] = {
             25211, -- [1]
@@ -15276,7 +15276,7 @@ APR.QuestStepList["A56-Wetlands"] = {
         ["Done"] = {
             25726, -- [1]
         },
-    },    -- [14]
+    },             -- [14]
     {
         ["PickUp"] = {
             25734, -- [1]
@@ -15332,7 +15332,7 @@ APR.QuestStepList["A56-Wetlands"] = {
             25727, -- [1]
             25725, -- [2]
         },
-    },    -- [18]
+    },             -- [18]
     {
         ["PickUp"] = {
             25735, -- [1]
@@ -15449,7 +15449,7 @@ APR.QuestStepList["A56-Wetlands"] = {
             25735, -- [3]
             25736, -- [4]
         },
-    },    -- [25]
+    },             -- [25]
     {
         ["PickUp"] = {
             25777, -- [1]
@@ -15765,7 +15765,7 @@ APR.QuestStepList["A56-Wetlands"] = {
             25849, -- [2]
             25850, -- [3]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             26189, -- [1]
@@ -15816,7 +15816,7 @@ APR.QuestStepList["A56-Wetlands"] = {
         ["Done"] = {
             26189, -- [1]
         },
-    },    -- [7]
+    },             -- [7]
     {
         ["PickUp"] = {
             26195, -- [1]
@@ -15843,7 +15843,7 @@ APR.QuestStepList["A56-Wetlands"] = {
         ["Done"] = {
             26195, -- [1]
         },
-    },    -- [2]
+    },             -- [2]
     {
         ["UseFlightPath"] = 25777,
         ["Name"] = "Whelgar's Retreat, Wetlands",
@@ -15885,7 +15885,7 @@ APR.QuestStepList["A56-Wetlands"] = {
         ["Done"] = {
             25777, -- [1]
         },
-    },    -- [11]
+    },             -- [11]
     {
         ["PickUp"] = {
             25780, -- [1]
@@ -15919,7 +15919,7 @@ APR.QuestStepList["A56-Wetlands"] = {
         ["Done"] = {
             25780, -- [1]
         },
-    },    -- [14]
+    },             -- [14]
     {
         ["Trigger"] = {
             ["y"] = -3708.2,
@@ -16530,7 +16530,7 @@ APR.QuestStepList["A56-Wetlands"] = {
             25866, -- [1]
             25867, -- [2]
         },
-    },    -- [13]
+    },             -- [13]
     {
         ["PickUp"] = {
             25868, -- [1]
@@ -16564,13 +16564,13 @@ APR.QuestStepList["A56-Wetlands"] = {
         ["Done"] = {
             25868, -- [1]
         },
-    },    -- [16]
+    },             -- [16]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]
 }
 --- Arathi Highlands
-APR.QuestStepList["A14-ArathiHighlands"] = {
+APR.RouteQuestStepList["A14-ArathiHighlands"] = {
     {
         ["PickUp"] = {
             26113, -- [1]
@@ -17033,7 +17033,7 @@ APR.QuestStepList["A14-ArathiHighlands"] = {
         ["Done"] = {
             26041, -- [1]
         },
-    },    -- [39]
+    },             -- [39]
     {
         ["PickUp"] = {
             26042, -- [1]
@@ -17084,7 +17084,7 @@ APR.QuestStepList["A14-ArathiHighlands"] = {
         ["Done"] = {
             26336, -- [1]
         },
-    },    -- [44]
+    },             -- [44]
     {
         ["Trigger"] = {
             ["y"] = -2238,
@@ -17110,7 +17110,7 @@ APR.QuestStepList["A14-ArathiHighlands"] = {
         ["Done"] = {
             26055, -- [1]
         },
-    },    -- [46]
+    },             -- [46]
     {
         ["PickUp"] = {
             26050, -- [1]
@@ -17145,7 +17145,7 @@ APR.QuestStepList["A14-ArathiHighlands"] = {
         ["Done"] = {
             26050, -- [1]
         },
-    },    -- [49]
+    },             -- [49]
     {
         ["PickUp"] = {
             26051, -- [1]
@@ -17180,7 +17180,7 @@ APR.QuestStepList["A14-ArathiHighlands"] = {
         ["Done"] = {
             26051, -- [1]
         },
-    },    -- [52]
+    },             -- [52]
     {
         ["PickUp"] = {
             26052, -- [1]
@@ -17198,7 +17198,7 @@ APR.QuestStepList["A14-ArathiHighlands"] = {
         ["Done"] = {
             26052, -- [1]
         },
-    },    -- [54]
+    },             -- [54]
     {
         ["PickUp"] = {
             26628, -- [1]
@@ -17232,7 +17232,7 @@ APR.QuestStepList["A14-ArathiHighlands"] = {
         ["Done"] = {
             26628, -- [1]
         },
-    },    -- [57]
+    },             -- [57]
     {
         ["Trigger"] = {
             ["y"] = -2042.1,
@@ -17279,7 +17279,7 @@ APR.QuestStepList["A14-ArathiHighlands"] = {
             26079, -- [2]
             26093, -- [3]
         },
-    },    -- [61]
+    },             -- [61]
     {
         ["PickUp"] = {
             26095, -- [1]
@@ -17343,7 +17343,7 @@ APR.QuestStepList["A14-ArathiHighlands"] = {
         ["Done"] = {
             26042, -- [1]
         },
-    },    -- [66]
+    },             -- [66]
     {
         ["PickUp"] = {
             26346, -- [1]
@@ -17403,7 +17403,7 @@ APR.QuestStepList["A14-ArathiHighlands"] = {
             26346, -- [2]
             26095, -- [3]
         },
-    },    -- [71]
+    },             -- [71]
     {
         ["PickUp"] = {
             26049, -- [1]
@@ -17487,7 +17487,7 @@ APR.QuestStepList["A14-ArathiHighlands"] = {
         ["Done"] = {
             26037, -- [1]
         },
-    },    -- [78]
+    },             -- [78]
     {
         ["PickUp"] = {
             26038, -- [1]
@@ -17523,7 +17523,7 @@ APR.QuestStepList["A14-ArathiHighlands"] = {
         ["Done"] = {
             26038, -- [1]
         },
-    },    -- [81]
+    },             -- [81]
     {
         ["Qpart"] = {
             [26049] = {
@@ -17551,13 +17551,13 @@ APR.QuestStepList["A14-ArathiHighlands"] = {
         ["Done"] = {
             26049, -- [1]
         },
-    },    -- [1]
+    },             -- [1]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]
 }
 --- The Hinterlands
-APR.QuestStepList["A26-TheHinterlands"] = {
+APR.RouteQuestStepList["A26-TheHinterlands"] = {
     {
         ["PickUp"] = {
             26546, -- [1]
@@ -17602,7 +17602,7 @@ APR.QuestStepList["A26-TheHinterlands"] = {
             26547, -- [1]
             26546, -- [2]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             26548, -- [1]
@@ -17632,7 +17632,7 @@ APR.QuestStepList["A26-TheHinterlands"] = {
         ["Done"] = {
             26548, -- [1]
         },
-    },    -- [6]
+    },             -- [6]
     {
         ["PickUp"] = {
             26483, -- [1]
@@ -17772,7 +17772,7 @@ APR.QuestStepList["A26-TheHinterlands"] = {
             26485, -- [3]
             26483, -- [4]
         },
-    },    -- [16]
+    },             -- [16]
     {
         ["PickUp"] = {
             26492, -- [1]
@@ -17854,7 +17854,7 @@ APR.QuestStepList["A26-TheHinterlands"] = {
             26490, -- [2]
             26491, -- [3]
         },
-    },    -- [21]
+    },             -- [21]
     {
         ["PickUp"] = {
             26496, -- [1]
@@ -17872,7 +17872,7 @@ APR.QuestStepList["A26-TheHinterlands"] = {
         ["Done"] = {
             26496, -- [1]
         },
-    },    -- [23]
+    },             -- [23]
     {
         ["PickUp"] = {
             26497, -- [1]
@@ -18367,7 +18367,7 @@ APR.QuestStepList["A26-TheHinterlands"] = {
             27625, -- [1]
             27626, -- [2]
         },
-    },    -- [52]
+    },             -- [52]
     {
         ["PickUp"] = {
             26641, -- [1]
@@ -18611,7 +18611,7 @@ APR.QuestStepList["A26-TheHinterlands"] = {
         ["Done"] = {
             26531, -- [1]
         },
-    },    -- [69]
+    },             -- [69]
     {
         ["PickUp"] = {
             26532, -- [1]
@@ -18645,13 +18645,13 @@ APR.QuestStepList["A26-TheHinterlands"] = {
         ["Done"] = {
             26532, -- [1]
         },
-    },    -- [72]
+    },             -- [72]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]
 }
 --- Western Plaguelands
-APR.QuestStepList["A22-WesternPlaguelands"] = {
+APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
     {
         ["PickUp"] = {
             27161, -- [1]
@@ -19481,7 +19481,7 @@ APR.QuestStepList["A22-WesternPlaguelands"] = {
         ["Done"] = {
             26956, -- [1]
         },
-    },    -- [6]
+    },             -- [6]
     {
         ["TT"] = {
             ["y"] = 1797,
@@ -19490,7 +19490,7 @@ APR.QuestStepList["A22-WesternPlaguelands"] = {
         ["Done"] = {
             26953, -- [1]
         },
-    },    -- [7]
+    },             -- [7]
     {
         ["PickUp"] = {
             26954, -- [1]
@@ -19508,7 +19508,7 @@ APR.QuestStepList["A22-WesternPlaguelands"] = {
         ["Done"] = {
             26999, -- [1]
         },
-    },    -- [9]
+    },             -- [9]
     {
         ["PickUp"] = {
             26935, -- [1]
@@ -19586,7 +19586,7 @@ APR.QuestStepList["A22-WesternPlaguelands"] = {
         ["Done"] = {
             27197, -- [1]
         },
-    },    -- [1]
+    },             -- [1]
     {
         ["PickUp"] = {
             27199, -- [1]
@@ -20758,7 +20758,7 @@ APR.QuestStepList["A22-WesternPlaguelands"] = {
         ["Done"] = {
             27054, -- [1]
         },
-    },    -- [2]
+    },             -- [2]
     {
         ["PickUp"] = {
             27055, -- [1]
@@ -20838,7 +20838,7 @@ APR.QuestStepList["A22-WesternPlaguelands"] = {
     }, -- [2]
 }
 --- Eastern Plaguelands
-APR.QuestStepList["A23-EasternPlaguelands"] = {
+APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         ["PickUp"] = {
             27370, -- [1]
@@ -20881,7 +20881,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
         ["Done"] = {
             27367, -- [1]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             27368, -- [1]
@@ -20915,7 +20915,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
         ["Done"] = {
             27368, -- [1]
         },
-    },    -- [6]
+    },             -- [6]
     {
         ["PickUp"] = {
             27369, -- [1]
@@ -20949,7 +20949,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
         ["Done"] = {
             27370, -- [1]
         },
-    },    -- [9]
+    },             -- [9]
     {
         ["PickUp"] = {
             27371, -- [1]
@@ -20983,7 +20983,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
         ["Done"] = {
             27371, -- [1]
         },
-    },    -- [12]
+    },             -- [12]
     {
         ["PickUp"] = {
             27372, -- [1]
@@ -21018,7 +21018,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
             27372, -- [1]
             27369, -- [2]
         },
-    },    -- [15]
+    },             -- [15]
     {
         ["PickUp"] = {
             27373, -- [1]
@@ -21354,7 +21354,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
         ["Done"] = {
             27432, -- [1]
         },
-    },    -- [2]
+    },             -- [2]
     {
         ["TT"] = {
             ["y"] = 1854.3,
@@ -21363,7 +21363,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
         ["Done"] = {
             27381, -- [1]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["TT"] = {
             ["y"] = 1853.7,
@@ -21372,7 +21372,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
         ["Done"] = {
             27385, -- [1]
         },
-    },    -- [4]
+    },             -- [4]
     {
         ["PickUp"] = {
             27386, -- [1]
@@ -21391,7 +21391,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
         ["Done"] = {
             27382, -- [1]
         },
-    },    -- [6]
+    },             -- [6]
     {
         ["TT"] = {
             ["y"] = 1875,
@@ -21400,7 +21400,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
         ["Done"] = {
             27386, -- [1]
         },
-    },    -- [7]
+    },             -- [7]
     {
         ["PickUp"] = {
             27389, -- [1]
@@ -21819,7 +21819,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
         ["Done"] = {
             27448, -- [1]
         },
-    },    -- [1]
+    },             -- [1]
     {
         ["PickUp"] = {
             27455, -- [1]
@@ -23648,7 +23648,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
         ["Done"] = {
             27535, -- [1]
         },
-    },    -- [1]
+    },             -- [1]
     {
         ["PickUp"] = {
             27533, -- [1]
@@ -23839,7 +23839,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
         ["Done"] = {
             27531, -- [1]
         },
-    },    -- [11]
+    },             -- [11]
     {
         ["TT"] = {
             ["y"] = 3144.5,
@@ -23848,7 +23848,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
         ["Done"] = {
             27530, -- [1]
         },
-    },    -- [12]
+    },             -- [12]
     {
         ["TT"] = {
             ["y"] = 2304.6,
@@ -23866,7 +23866,7 @@ APR.QuestStepList["A23-EasternPlaguelands"] = {
     }, -- [2]
 }
 --- Duskwood
-APR.QuestStepList["A47-Duskwood"] = {
+APR.RouteQuestStepList["A47-Duskwood"] = {
     {
         ["Trigger"] = {
             ["y"] = -10513.3,
@@ -24078,7 +24078,7 @@ APR.QuestStepList["A47-Duskwood"] = {
         ["Done"] = {
             26618, -- [1]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             26627, -- [1]
@@ -24097,7 +24097,7 @@ APR.QuestStepList["A47-Duskwood"] = {
         ["Done"] = {
             26667, -- [1]
         },
-    },    -- [5]
+    },             -- [5]
     {
         ["PickUp"] = {
             26669, -- [1]
@@ -24115,7 +24115,7 @@ APR.QuestStepList["A47-Duskwood"] = {
         ["Done"] = {
             26688, -- [1]
         },
-    },    -- [7]
+    },             -- [7]
     {
         ["PickUp"] = {
             26689, -- [1]
@@ -24154,7 +24154,7 @@ APR.QuestStepList["A47-Duskwood"] = {
         ["Done"] = {
             26627, -- [1]
         },
-    },    -- [11]
+    },             -- [11]
     {
         ["PickUp"] = {
             26653, -- [1]
@@ -24196,7 +24196,7 @@ APR.QuestStepList["A47-Duskwood"] = {
         ["Done"] = {
             26653, -- [1]
         },
-    },    -- [15]
+    },             -- [15]
     {
         ["PickUp"] = {
             26652, -- [1]
@@ -24215,7 +24215,7 @@ APR.QuestStepList["A47-Duskwood"] = {
             26652, -- [1]
             26683, -- [2]
         },
-    },    -- [17]
+    },             -- [17]
     {
         ["PickUp"] = {
             26684, -- [1]
@@ -25221,7 +25221,7 @@ APR.QuestStepList["A47-Duskwood"] = {
         ["Done"] = {
             26777, -- [1]
         },
-    },    -- [1]
+    },             -- [1]
     {
         ["TT"] = {
             ["y"] = -10754.5,
@@ -25230,7 +25230,7 @@ APR.QuestStepList["A47-Duskwood"] = {
         ["Done"] = {
             26720, -- [1]
         },
-    },    -- [2]
+    },             -- [2]
     {
         ["PickUp"] = {
             26760, -- [1]
@@ -25265,7 +25265,7 @@ APR.QuestStepList["A47-Duskwood"] = {
         ["Done"] = {
             26760, -- [1]
         },
-    },    -- [4]
+    },             -- [4]
     {
         ["PickUp"] = {
             26723, -- [1]
@@ -25456,7 +25456,7 @@ APR.QuestStepList["A47-Duskwood"] = {
         ["Done"] = {
             26778, -- [1]
         },
-    },    -- [2]
+    },             -- [2]
     {
         ["TT"] = {
             ["y"] = -10766.7,
@@ -25465,7 +25465,7 @@ APR.QuestStepList["A47-Duskwood"] = {
         ["Done"] = {
             26721, -- [1]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             26787, -- [1]
@@ -25483,7 +25483,7 @@ APR.QuestStepList["A47-Duskwood"] = {
         ["Done"] = {
             26723, -- [1]
         },
-    },    -- [5]
+    },             -- [5]
     {
         ["PickUp"] = {
             26724, -- [1]
@@ -25501,7 +25501,7 @@ APR.QuestStepList["A47-Duskwood"] = {
         ["Done"] = {
             26724, -- [1]
         },
-    },    -- [7]
+    },             -- [7]
     {
         ["PickUp"] = {
             26725, -- [1]
@@ -26034,7 +26034,7 @@ APR.QuestStepList["A47-Duskwood"] = {
     }, -- [2]
 }
 --- Redridge Mountauns ----
-APR.QuestStepList["A49-RedridgeMountauns"] = {
+APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
     {
         ["PickUp"] = {
             26504, -- [1]
@@ -26165,7 +26165,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
         ["Done"] = {
             26506, -- [1]
         },
-    },    -- [8]
+    },             -- [8]
     {
         ["TT"] = {
             ["y"] = -9622.2,
@@ -26175,7 +26175,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
             26504, -- [1]
             26503, -- [2]
         },
-    },    -- [9]
+    },             -- [9]
     {
         ["PickUp"] = {
             26505, -- [1]
@@ -26219,7 +26219,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
         ["Done"] = {
             26508, -- [1]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             26511, -- [2]
@@ -26237,7 +26237,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
         ["Done"] = {
             26505, -- [1]
         },
-    },    -- [5]
+    },             -- [5]
     {
         ["PickUp"] = {
             26510, -- [1]
@@ -26316,7 +26316,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
         ["Done"] = {
             26511, -- [1]
         },
-    },    -- [11]
+    },             -- [11]
     {
         ["TT"] = {
             ["y"] = -9218.2,
@@ -26325,7 +26325,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
         ["Done"] = {
             26510, -- [1]
         },
-    },    -- [12]
+    },             -- [12]
     {
         ["PickUp"] = {
             26512, -- [1]
@@ -26364,7 +26364,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
         ["Done"] = {
             26512, -- [1]
         },
-    },    -- [16]
+    },             -- [16]
     {
         ["PickUp"] = {
             26514, -- [1]
@@ -26428,7 +26428,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
         ["Done"] = {
             26514, -- [1]
         },
-    },    -- [8]
+    },             -- [8]
     {
         ["PickUp"] = {
             26544, -- [1]
@@ -26485,7 +26485,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
         ["Done"] = {
             26519, -- [1]
         },
-    },    -- [22]
+    },             -- [22]
     {
         ["PickUp"] = {
             26520, -- [1]
@@ -26850,7 +26850,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
         ["Done"] = {
             26586, -- [1]
         },
-    },    -- [5]
+    },             -- [5]
     {
         ["PickUp"] = {
             26587, -- [1]
@@ -26890,7 +26890,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
         ["Done"] = {
             26571, -- [1]
         },
-    },    -- [8]
+    },             -- [8]
     {
         ["PickUp"] = {
             26573, -- [1]
@@ -26936,7 +26936,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
         ["Done"] = {
             26587, -- [1]
         },
-    },    -- [12]
+    },             -- [12]
     {
         ["PickUp"] = {
             26560, -- [1]
@@ -27172,7 +27172,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
         ["Done"] = {
             26562, -- [1]
         },
-    },    -- [26]
+    },             -- [26]
     {
         ["PickUp"] = {
             26563, -- [1]
@@ -27404,7 +27404,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
         ["Done"] = {
             26616, -- [1]
         },
-    },    -- [1]
+    },             -- [1]
     {
         ["PickUp"] = {
             26636, -- [1]
@@ -27927,7 +27927,7 @@ APR.QuestStepList["A49-RedridgeMountauns"] = {
     }, -- [2]
 }
 --- Badlands
-APR.QuestStepList["A15-Badlands"] = {
+APR.RouteQuestStepList["A15-Badlands"] = {
     {
         ["PickUp"] = {
             27774, -- [1]
@@ -29331,7 +29331,7 @@ APR.QuestStepList["A15-Badlands"] = {
         ["Done"] = {
             27930, -- [1]
         },
-    },    -- [115]
+    },             -- [115]
     {
         ["PickUp"] = {
             27859, -- [1]
@@ -29349,13 +29349,13 @@ APR.QuestStepList["A15-Badlands"] = {
         ["Done"] = {
             27859, -- [1]
         },
-    },    -- [115]
+    },             -- [115]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]
 }
 --- Searing Gorge
-APR.QuestStepList["A32-SearingGorge"] = {
+APR.RouteQuestStepList["A32-SearingGorge"] = {
     {
         ["PickUp"] = {
             27956, -- [1]
@@ -29421,7 +29421,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
             27963, -- [2]
             27960, -- [3]
         },
-    },    -- [4]
+    },             -- [4]
     {
         ["PickUp"] = {
             27962, -- [1]
@@ -29546,7 +29546,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
         ["Done"] = {
             27959, -- [1]
         },
-    },    -- [13]
+    },             -- [13]
     {
         ["Qpart"] = {
             [27964] = {
@@ -29587,7 +29587,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
             27958, -- [3]
             27964, -- [4]
         },
-    },    -- [16]
+    },             -- [16]
     {
         ["PickUp"] = {
             27965, -- [1]
@@ -29650,7 +29650,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
         ["Done"] = {
             27965, -- [1]
         },
-    },    -- [22]
+    },             -- [22]
     {
         ["PickUp"] = {
             28099, -- [1]
@@ -30076,7 +30076,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
             27979, -- [1]
             27982, -- [2]
         },
-    },    -- [50]
+    },             -- [50]
     {
         ["PickUp"] = {
             27986, -- [1]
@@ -30142,7 +30142,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
         ["Done"] = {
             27986, -- [1]
         },
-    },    -- [56]
+    },             -- [56]
     {
         ["PickUp"] = {
             28028, -- [1]
@@ -30250,7 +30250,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
             28028, -- [1]
             28030, -- [2]
         },
-    },    -- [62]
+    },             -- [62]
     {
         ["Trigger"] = {
             ["y"] = -7111.3,
@@ -30307,7 +30307,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
         ["Done"] = {
             28032, -- [1]
         },
-    },    -- [66]
+    },             -- [66]
     {
         ["TT"] = {
             ["y"] = -7108.9,
@@ -30316,7 +30316,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
         ["Done"] = {
             28029, -- [1]
         },
-    },    -- [67]
+    },             -- [67]
     {
         ["PickUp"] = {
             28033, -- [1]
@@ -30334,7 +30334,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
         ["Done"] = {
             28033, -- [1]
         },
-    },    -- [69]
+    },             -- [69]
     {
         ["PickUp"] = {
             28034, -- [1]
@@ -30369,7 +30369,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
         ["Done"] = {
             28034, -- [1]
         },
-    },    -- [72]
+    },             -- [72]
     {
         ["PickUp"] = {
             28035, -- [1]
@@ -30396,7 +30396,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
         ["Done"] = {
             28035, -- [1]
         },
-    },    -- [75]
+    },             -- [75]
     {
         ["PickUp"] = {
             28052, -- [1]
@@ -30431,7 +30431,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
         ["Done"] = {
             28052, -- [1]
         },
-    },    -- [78]
+    },             -- [78]
     {
         ["PickUp"] = {
             28055, -- [1]
@@ -30538,7 +30538,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
             28056, -- [2]
             28054, -- [3]
         },
-    },    -- [84]
+    },             -- [84]
     {
         ["PickUp"] = {
             28057, -- [1]
@@ -30584,7 +30584,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
         ["Done"] = {
             28057, -- [1]
         },
-    },    -- [88]
+    },             -- [88]
     {
         ["PickUp"] = {
             28060, -- [1]
@@ -30655,7 +30655,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
         ["Done"] = {
             28060, -- [1]
         },
-    },    -- [94]
+    },             -- [94]
     {
         ["PickUp"] = {
             28062, -- [1]
@@ -30715,7 +30715,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
         ["Done"] = {
             28062, -- [1]
         },
-    },    -- [98]
+    },             -- [98]
     {
         ["PickUp"] = {
             28064, -- [1]
@@ -30749,7 +30749,7 @@ APR.QuestStepList["A32-SearingGorge"] = {
         ["Done"] = {
             28061, -- [1]
         },
-    },    -- [101]
+    },             -- [101]
     {
         ["Trigger"] = {
             ["y"] = -6631.9,
@@ -30794,13 +30794,13 @@ APR.QuestStepList["A32-SearingGorge"] = {
         ["Done"] = {
             28064, -- [1]
         },
-    },    -- [105]
+    },             -- [105]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]
 }
 --- Northern Stranglethorn
-APR.QuestStepList["A224-NorthernStranglethorn"] = {
+APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
     {
         ["PickUp"] = {
             26732, -- [1]
@@ -30908,7 +30908,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
             26732, -- [2]
             26735, -- [3]
         },
-    },    -- [8]
+    },             -- [8]
     {
         ["PickUp"] = {
             26739, -- [1]
@@ -30967,7 +30967,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
             26733, -- [2]
             26739, -- [3]
         },
-    },    -- [12]
+    },             -- [12]
     {
         ["PickUp"] = {
             26744, -- [1]
@@ -31120,7 +31120,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
             26737, -- [1]
             26734, -- [2]
         },
-    },    -- [22]
+    },             -- [22]
     {
         ["PickUp"] = {
             26729, -- [1]
@@ -31147,7 +31147,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26740, -- [1]
         },
-    },    -- [25]
+    },             -- [25]
     {
         ["PickUp"] = {
             26763, -- [1]
@@ -31175,7 +31175,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             583, -- [1]
         },
-    },  -- [28]
+    },           -- [28]
     {
         ["PickUp"] = {
             194, -- [1]
@@ -31227,7 +31227,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26343, -- [1]
         },
-    },    -- [33]
+    },             -- [33]
     {
         ["PickUp"] = {
             26344, -- [1]
@@ -31261,7 +31261,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             185, -- [1]
         },
-    },  -- [36]
+    },           -- [36]
     {
         ["PickUp"] = {
             186, -- [1]
@@ -31324,7 +31324,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             190, -- [1]
         },
-    },  -- [41]
+    },           -- [41]
     {
         ["PickUp"] = {
             191, -- [1]
@@ -31374,7 +31374,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             186, -- [1]
         },
-    },  -- [45]
+    },           -- [45]
     {
         ["PickUp"] = {
             187, -- [1]
@@ -31424,7 +31424,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             187, -- [1]
         },
-    },  -- [49]
+    },           -- [49]
     {
         ["PickUp"] = {
             188, -- [1]
@@ -31506,7 +31506,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26729, -- [1]
         },
-    },    -- [55]
+    },             -- [55]
     {
         ["PickUp"] = {
             26730, -- [1]
@@ -31540,7 +31540,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             194, -- [1]
         },
-    },  -- [58]
+    },           -- [58]
     {
         ["PickUp"] = {
             195, -- [1]
@@ -31574,7 +31574,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             191, -- [1]
         },
-    },  -- [61]
+    },           -- [61]
     {
         ["PickUp"] = {
             192, -- [1]
@@ -31593,7 +31593,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
             26763, -- [1]
             26344, -- [2]
         },
-    },    -- [63]
+    },             -- [63]
     {
         ["PickUp"] = {
             26345, -- [1]
@@ -31612,7 +31612,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             188, -- [1]
         },
-    },  -- [65]
+    },           -- [65]
     {
         ["TT"] = {
             ["y"] = -11347.8,
@@ -31621,7 +31621,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26742, -- [1]
         },
-    },    -- [66]
+    },             -- [66]
     {
         ["PickUp"] = {
             26743, -- [1]
@@ -31641,7 +31641,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
             26745, -- [2]
             26744, -- [3]
         },
-    },    -- [68]
+    },             -- [68]
     {
         ["PickUp"] = {
             26746, -- [1]
@@ -31712,7 +31712,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             195, -- [1]
         },
-    },  -- [73]
+    },           -- [73]
     {
         ["PickUp"] = {
             196, -- [1]
@@ -31767,7 +31767,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             196, -- [1]
         },
-    },  -- [77]
+    },           -- [77]
     {
         ["PickUp"] = {
             197, -- [1]
@@ -31823,7 +31823,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             192, -- [1]
         },
-    },  -- [81]
+    },           -- [81]
     {
         ["PickUp"] = {
             193, -- [1]
@@ -31946,7 +31946,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
             26781, -- [1]
             26782, -- [2]
         },
-    },    -- [91]
+    },             -- [91]
     {
         ["UseFlightPath"] = 26746,
         ["Name"] = "Rebel Camp, Stranglethorn Vale",
@@ -31964,7 +31964,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26743, -- [1]
         },
-    },    -- [93]
+    },             -- [93]
     {
         ["TT"] = {
             ["y"] = -11301.2,
@@ -31973,7 +31973,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26730, -- [1]
         },
-    },    -- [94]
+    },             -- [94]
     {
         ["PickUp"] = {
             26731, -- [1]
@@ -31991,7 +31991,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26746, -- [1]
         },
-    },    -- [96]
+    },             -- [96]
     {
         ["PickUp"] = {
             26747, -- [1]
@@ -32018,7 +32018,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             193, -- [1]
         },
-    },  -- [99]
+    },           -- [99]
     {
         ["TT"] = {
             ["y"] = -11652,
@@ -32027,7 +32027,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             197, -- [1]
         },
-    },  -- [100]
+    },           -- [100]
     {
         ["PickUp"] = {
             208, -- [1]
@@ -32045,7 +32045,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26345, -- [1]
         },
-    },    -- [102]
+    },             -- [102]
     {
         ["CRange"] = 26747,
         ["Trigger"] = {
@@ -32183,7 +32183,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
             26751, -- [1]
             26731, -- [2]
         },
-    },    -- [110]
+    },             -- [110]
     {
         ["TT"] = {
             ["y"] = -11305.5,
@@ -32192,7 +32192,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26747, -- [1]
         },
-    },    -- [111]
+    },             -- [111]
     {
         ["PickUp"] = {
             26748, -- [1]
@@ -32210,7 +32210,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26748, -- [1]
         },
-    },    -- [113]
+    },             -- [113]
     {
         ["PickUp"] = {
             26749, -- [1]
@@ -32228,7 +32228,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             208, -- [1]
         },
-    },  -- [115]
+    },           -- [115]
     {
         ["UseFlightPath"] = 26749,
         ["Name"] = "Fort Livingston, Stranglethorn",
@@ -32246,7 +32246,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26749, -- [1]
         },
-    },    -- [117]
+    },             -- [117]
     {
         ["PickUp"] = {
             26772, -- [1]
@@ -32280,7 +32280,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26772, -- [1]
         },
-    },    -- [120]
+    },             -- [120]
     {
         ["PickUp"] = {
             26773, -- [1]
@@ -32315,7 +32315,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26773, -- [1]
         },
-    },    -- [123]
+    },             -- [123]
     {
         ["PickUp"] = {
             26774, -- [1]
@@ -32408,7 +32408,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
             26779, -- [2]
             26774, -- [3]
         },
-    },    -- [130]
+    },             -- [130]
     {
         ["PickUp"] = {
             26775, -- [1]
@@ -32494,7 +32494,7 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26775, -- [1]
         },
-    },    -- [136]
+    },             -- [136]
     {
         ["PickUp"] = {
             26776, -- [1]
@@ -32512,13 +32512,13 @@ APR.QuestStepList["A224-NorthernStranglethorn"] = {
         ["Done"] = {
             26776, -- [1]
         },
-    },    -- [138]
+    },             -- [138]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]
 }
 --- The Cape of Stranglethorn
-APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
+APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
     {
         ["PickUp"] = {
             26825, -- [1]
@@ -32545,7 +32545,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26825, -- [1]
         },
-    },    -- [3]
+    },             -- [3]
     {
         ["PickUp"] = {
             26823, -- [1]
@@ -32666,7 +32666,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
             26822, -- [1]
             26823, -- [2]
         },
-    },    -- [12]
+    },             -- [12]
     {
         ["PickUp"] = {
             26819, -- [1]
@@ -32846,7 +32846,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
             26820, -- [3]
             26818, -- [4]
         },
-    },    -- [23]
+    },             -- [23]
     {
         ["PickUp"] = {
             26808, -- [1]
@@ -32865,7 +32865,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26808, -- [1]
         },
-    },    -- [25]
+    },             -- [25]
     {
         ["PickUp"] = {
             26809, -- [1]
@@ -33019,7 +33019,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26810, -- [1]
         },
-    },    -- [36]
+    },             -- [36]
     {
         ["PickUp"] = {
             26811, -- [1]
@@ -33053,7 +33053,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26811, -- [1]
         },
-    },    -- [39]
+    },             -- [39]
     {
         ["PickUp"] = {
             26812, -- [1]
@@ -33087,7 +33087,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26812, -- [1]
         },
-    },    -- [42]
+    },             -- [42]
     {
         ["PickUp"] = {
             26813, -- [1]
@@ -33121,7 +33121,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26813, -- [1]
         },
-    },    -- [45]
+    },             -- [45]
     {
         ["PickUp"] = {
             26814, -- [1]
@@ -33155,7 +33155,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26815, -- [1]
         },
-    },    -- [48]
+    },             -- [48]
     {
         ["PickUp"] = {
             26824, -- [1]
@@ -33174,7 +33174,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26814, -- [1]
         },
-    },    -- [50]
+    },             -- [50]
     {
         ["TT"] = {
             ["y"] = -13633.5,
@@ -33183,7 +33183,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26824, -- [1]
         },
-    },    -- [51]
+    },             -- [51]
     {
         ["PickUp"] = {
             26821, -- [1]
@@ -33241,7 +33241,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26816, -- [1]
         },
-    },    -- [56]
+    },             -- [56]
     {
         ["Trigger"] = {
             ["y"] = -13676.8,
@@ -34627,7 +34627,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26663, -- [1]
         },
-    },    -- [168]
+    },             -- [168]
     {
         ["Trigger"] = {
             ["y"] = -14946.8,
@@ -34655,7 +34655,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26664, -- [1]
         },
-    },    -- [170]
+    },             -- [170]
     {
         ["Qpart"] = {
             [26662] = {
@@ -34681,7 +34681,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26662, -- [1]
         },
-    },    -- [172]
+    },             -- [172]
     {
         ["PickUp"] = {
             26665, -- [1]
@@ -34735,7 +34735,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26613, -- [1]
         },
-    },    -- [177]
+    },             -- [177]
     {
         ["TT"] = {
             ["y"] = -14438.7,
@@ -34744,7 +34744,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26665, -- [1]
         },
-    },    -- [178]
+    },             -- [178]
     {
         ["PickUp"] = {
             26678, -- [1]
@@ -34762,7 +34762,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26678, -- [1]
         },
-    },    -- [180]
+    },             -- [180]
     {
         ["PickUp"] = {
             26679, -- [1]
@@ -34780,7 +34780,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26679, -- [1]
         },
-    },    -- [182]
+    },             -- [182]
     {
         ["PickUp"] = {
             26695, -- [1]
@@ -34799,7 +34799,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26698, -- [1]
         },
-    },    -- [184]
+    },             -- [184]
     {
         ["PickUp"] = {
             26700, -- [1]
@@ -34863,7 +34863,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
             26700, -- [2]
             26695, -- [3]
         },
-    },    -- [188]
+    },             -- [188]
     {
         ["PickUp"] = {
             26697, -- [1]
@@ -34899,7 +34899,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26697, -- [1]
         },
-    },    -- [191]
+    },             -- [191]
     {
         ["PickUp"] = {
             26703, -- [1]
@@ -34947,7 +34947,7 @@ APR.QuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Done"] = {
             26703, -- [1]
         },
-    },    -- [195]
+    },             -- [195]
     {
         ["ZoneDoneSave"] = 1,
     }, -- [2]

@@ -3,11 +3,12 @@ local _G = _G
 local MapRects = {}
 local Vector2D = CreateVector2D(0, 0);
 
-function APR:GetContinent() -- Getting the continent the player is on and its info
+--- Getting the continent the player is on and its info
+function APR:GetContinent(mapId)
     if (APR.settings.profile.debug) then
         print("Function: APR.getContinent()")
     end
-    local mapId = C_Map.GetBestMapForUnit("player")
+    mapId = mapId or C_Map.GetBestMapForUnit("player")
     if (mapId == 378) then -- why ?  The Wandering Isle
         return 378
     elseif (mapId) then
@@ -74,4 +75,11 @@ function APR:GetPlayerCurrentTaxiNode()
         end
     end
     return {}
+end
+
+-- check if the zone ID is in the route map IDs
+--- @param mapIds number
+--- @param mapId Array<number>
+function APR:IsInExpansionRouteMaps(mapIds, mapId)
+    return Contains(mapIds, mapId)
 end

@@ -1,5 +1,5 @@
 -- Orgrimmar part of intro
-APR.QuestStepList["1-Orgrimmar"] = {
+APR.RouteQuestStepList["1-Orgrimmar"] = {
     { -- Step 2
         ["PickUp"] = {
             51443,
@@ -137,7 +137,7 @@ APR.QuestStepList["1-Orgrimmar"] = {
     },
 }
 -- Zuldazar part of intro
-APR.QuestStepList["862-Zuldazar"] = {
+APR.RouteQuestStepList["862-Zuldazar"] = {
     { -- Step 1
         ["Done"] = {
             50769,
@@ -406,7 +406,7 @@ APR.QuestStepList["862-Zuldazar"] = {
     },
 }
 -- Zuldazar
-APR.QuestStepList["862-Zuldazar-1"] = {
+APR.RouteQuestStepList["862-Zuldazar-1"] = {
     { -- [Step 1
         ["PickUp"] = {
             49615,
@@ -8119,7 +8119,7 @@ APR.QuestStepList["862-Zuldazar-1"] = {
     },
 }
 -- Nazmir
-APR.QuestStepList["863-Nazmir"] = {
+APR.RouteQuestStepList["863-Nazmir"] = {
     { -- Step 1
         ["Done"] = {
             48535,
@@ -14447,7 +14447,7 @@ APR.QuestStepList["863-Nazmir"] = {
     },
 }
 --end of Nazmir start of Vol'dun
-APR.QuestStepList["862-Zuldazar-2"] = {
+APR.RouteQuestStepList["862-Zuldazar-2"] = {
     { -- Step 1
         ["Trigger"] = {
             ["y"] = -1047.5,
@@ -14703,7 +14703,7 @@ APR.QuestStepList["862-Zuldazar-2"] = {
     },
 }
 -- Vol'dun
-APR.QuestStepList["864-Vol'dun"] = {
+APR.RouteQuestStepList["864-Vol'dun"] = {
     { -- Step 1
         ["Done"] = {
             47315,
@@ -16899,7 +16899,7 @@ APR.QuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 163
-        ["BuyMerchant"] = 1,
+        ["BuyMerchant"] = 160499,
         ["Trigger"] = {
             ["y"] = 870.7,
             ["x"] = 3767.9,

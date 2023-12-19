@@ -437,7 +437,7 @@ function APR.settings:createBlizzOptions()
                         get = GetProfileOption,
                         set = function(info, value)
                             SetProfileOption(info, value)
-                            if value then APR.ArrowActive = 1 end
+                            if value then APR.ArrowActive = true end
                         end,
                         disabled = function()
                             return not self.profile.enableAddon

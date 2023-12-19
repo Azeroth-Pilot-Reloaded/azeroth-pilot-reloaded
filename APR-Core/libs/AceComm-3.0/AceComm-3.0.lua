@@ -11,12 +11,6 @@
 -- @name AceComm-3.0
 -- @release $Id: AceComm-3.0.lua 1284 2022-09-25 09:15:30Z nevcairiel $
 
---[[ AceComm-3.0
-
-TODO: Time out old data rotting around from dead senders? Not a HUGE deal since the number of possible sender names is somewhat limited.
-
-]]
-
 local CallbackHandler = LibStub("CallbackHandler-1.0")
 local CTL = assert(ChatThrottleLib, "AceComm-3.0 requires ChatThrottleLib")
 

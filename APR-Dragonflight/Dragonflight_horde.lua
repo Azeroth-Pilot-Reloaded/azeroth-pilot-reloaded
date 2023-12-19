@@ -1,6 +1,6 @@
 if (APR.Faction == "Horde") then
     ---- Orgrimmar ----
-    APR.QuestStepList["DF01H-85-Orgrimmar"] = {
+    APR.RouteQuestStepList["DF01H-85-Orgrimmar"] = {
         { -- Step 1
             ["Done"] = {
                 65435,
@@ -282,7 +282,7 @@ if (APR.Faction == "Horde") then
     }
 
     -- WakingShores
-    APR.QuestStepList["DF03H-2022-WakingShores"] = {
+    APR.RouteQuestStepList["DF03H-2022-WakingShores"] = {
         { -- Step 1
             ["Qpart"] = {
                 [65444] = {
@@ -961,7 +961,7 @@ if (APR.Faction == "Horde") then
     }
 
     -- Thaldraszus
-    APR.QuestStepList["DF06H-2025-Thaldraszus"] = {
+    APR.RouteQuestStepList["DF06H-2025-Thaldraszus"] = {
         { -- Step 1
             ["Qpart"] = {
                 [66244] = {
@@ -3006,7 +3006,7 @@ if (APR.Faction == "Horde") then
     }
 
     --Dracthyr
-    APR.QuestStepList["2118-DracthyrStart-H"] = {
+    APR.RouteQuestStepList["2118-DracthyrStart-H"] = {
         { -- Step 1
             ["PickUp"] = {
                 64864,

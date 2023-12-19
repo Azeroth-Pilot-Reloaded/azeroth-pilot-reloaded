@@ -1,5 +1,5 @@
 if (APR.Faction == "Alliance") then
-     APR.QuestStepList["A23-ScarletEnclave"] = {
+     APR.RouteQuestStepList["A23-ScarletEnclave"] = {
           {
                -- Step 1
                ["PickUp"] = {
@@ -1783,7 +1783,7 @@ if (APR.Faction == "Alliance") then
                ["ZoneDoneSave"] = 1,
           },
      }
-     APR.QuestStepList["A_Allied_Icecrown Citadel"] = {
+     APR.RouteQuestStepList["A_Allied_Icecrown Citadel"] = {
           {
                -- Step 1
                ["PickUp"] = {

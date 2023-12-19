@@ -178,14 +178,18 @@ function APR.map:RemoveMinimapLine()
 end
 
 function APR.map:UpdateMinimapLine()
-    if not APR.settings.profile.enableAddon or not APR.settings.profile.showMiniMapLine or IsInInstance() or not CheckIsInRouteZone() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.showMiniMapLine or IsInInstance() then
         self:RemoveMinimapLine()
         return
     end
 
+    if APR.ArrowActive and APR.ArrowActive_X ~= 0 then
+        PositionMinimapLine(APR.ArrowActive_X, APR.ArrowActive_Y)
+        return
+    end
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    if CurStep and APR.ActiveRoute and APR.QuestStepList and APR.QuestStepList[APR.ActiveRoute] then
-        local steps = APR.QuestStepList[APR.ActiveRoute][CurStep]
+    if CurStep and APR.ActiveRoute and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] then
+        local steps = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
         if steps and steps.TT then
             PositionMinimapLine(steps.TT.x, steps.TT.y)
             return
@@ -209,8 +213,8 @@ function APR.map:UpdateLine()
 
     local mapID = WorldMapFrame:GetMapID()
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    if CurStep and APR.ActiveRoute and APR.QuestStepList and APR.QuestStepList[APR.ActiveRoute] then
-        local steps = APR.QuestStepList[APR.ActiveRoute][CurStep]
+    if CurStep and APR.ActiveRoute and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] then
+        local steps = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
         if steps and steps.TT then
             local mapHeight, mapWidth = WorldMapButton:GetHeight(), WorldMapButton:GetWidth()
             local playerPos = C_Map.GetPlayerMapPosition(mapID, "player")
@@ -327,12 +331,12 @@ function APR.map:AddMapPins()
     end
 
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    if APR.ActiveRoute and APR.QuestStepList and APR.QuestStepList[APR.ActiveRoute] and CurStep then
+    if APR.ActiveRoute and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and CurStep then
         local mapshowNextStepsCount = APR.settings.profile.mapshowNextStepsCount
         local minimapshowNextStepsCount = APR.settings.profile.minimapshowNextStepsCount
         local mapStepDisplayed = 0
         local minimapStepDisplayed = 0
-        for stepIndex, steps in pairs(APR.QuestStepList[APR.ActiveRoute]) do
+        for stepIndex, steps in pairs(APR.RouteQuestStepList[APR.ActiveRoute]) do
             if steps["TT"] and (stepIndex >= CurStep) and (stepIndex <= CurStep + math.max(mapshowNextStepsCount, minimapshowNextStepsCount)) then
                 if not self.pinlist[stepIndex] then
                     self.pinlist[stepIndex] = self:CreatePin(stepIndex, steps, APR.settings.profile.mapshowNextStepsSize,

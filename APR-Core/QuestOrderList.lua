@@ -256,7 +256,7 @@ function APR.questOrderList:UpdateFrameContents()
 end
 
 function APR.questOrderList:AddStepFromRoute()
-    if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.QuestStepList[APR.ActiveRoute] or IsInInstance() or not APR.routeconfig:HasRouteInCustomPaht() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.RouteQuestStepList[APR.ActiveRoute] or IsInInstance() or not APR.routeconfig:HasRouteInCustomPaht() then
         self:RemoveSteps()
         return
     end
@@ -272,7 +272,7 @@ function APR.questOrderList:AddStepFromRoute()
     end
     -- can't use id from the loop due to faction/race/class/achievement step option
     local stepIndex = 1
-    for id, step in pairs(APR.QuestStepList[APR.ActiveRoute]) do
+    for id, step in pairs(APR.RouteQuestStepList[APR.ActiveRoute]) do
         -- Hide step for Faction, Race, Class, Achievement
         if (
                 (not step.Faction or step.Faction == APR.Faction) and
@@ -317,7 +317,7 @@ function APR.questOrderList:AddStepFromRoute()
                     for objectiveIndex, _ in pairs(objectives) do
                         total = total + 1
                         local questObjectiveId = questID .. '-' .. objectiveIndex
-                        -- TODO Remove or add APR_BonusObj from quest handler
+                        -- //TODO Remove or add APR_BonusObj from quest handler
                         local questFlagged = C_QuestLog.IsQuestFlaggedCompleted(questID) or
                             (isMaxLevel and APR_BonusObj and APR_BonusObj[questID]) or
                             APRData[APR.PlayerID]["BonusSkips"][questID]

@@ -1,6 +1,6 @@
 if (APR.Faction == "Alliance") then
     ---- Azsuna ----
-    APR.QuestStepList["A630-Azsuna"] = {
+    APR.RouteQuestStepList["A630-Azsuna"] = {
         {
             ["PickUp"] = {
                 44137, -- [1]
@@ -3780,7 +3780,7 @@ if (APR.Faction == "Alliance") then
         }, -- [2]
     }
     ---- Val'Sharah ----
-    APR.QuestStepList["A641-ValSharah"] = {
+    APR.RouteQuestStepList["A641-ValSharah"] = {
         {
             ["TT"] = {
                 ["y"] = 2289.8,
@@ -7008,7 +7008,7 @@ if (APR.Faction == "Alliance") then
         }, -- [2]
     }
     ---- Stormheim ----
-    APR.QuestStepList["A634-Stormheim"] = {
+    APR.RouteQuestStepList["A634-Stormheim"] = {
         {
             ["Done"] = {
                 39800, -- [1]
@@ -10025,7 +10025,7 @@ if (APR.Faction == "Alliance") then
 end
 if (APR.Faction == "Horde") then
     ---- Azsuna ----
-    APR.QuestStepList["630-Azsuna"] = {
+    APR.RouteQuestStepList["630-Azsuna"] = {
         {
             ["PickUp"] = {
                 44137, -- [1]
@@ -13802,7 +13802,7 @@ if (APR.Faction == "Horde") then
         }, -- [2]
     }
     ---- Val'Sharah ----
-    APR.QuestStepList["641-ValSharah"] = {
+    APR.RouteQuestStepList["641-ValSharah"] = {
         {
             ["TT"] = {
                 ["y"] = 2289.8,
@@ -17029,7 +17029,7 @@ if (APR.Faction == "Horde") then
         }, -- [2]
     }
     ---- Stormheim ----
-    APR.QuestStepList["634-Stormheim"] = {
+    APR.RouteQuestStepList["634-Stormheim"] = {
         {
             ["PickUp"] = {
                 38357, -- [1]
@@ -20044,7 +20044,7 @@ if (APR.Faction == "Horde") then
         }, -- [2]
     }
     ---- Highmountain ----
-    APR.QuestStepList["650-Highmountain"] = {
+    APR.RouteQuestStepList["650-Highmountain"] = {
         {
             ["Trigger"] = {
                 ["y"] = 4117.1,
@@ -24092,7 +24092,7 @@ if (APR.Faction == "Horde") then
     }
 end
 
-APR.QuestStepList["672-Mardum"] = {
+APR.RouteQuestStepList["672-Mardum"] = {
     {
         ["PickUp"] = {
             40077,

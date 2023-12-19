@@ -1,4 +1,4 @@
-APR.QuestStepList["18-TirisfalGladesUndead"] = {
+APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
     { -- [step 1
         ["PickUp"] = {
             24959,
@@ -1171,7 +1171,7 @@ APR.QuestStepList["18-TirisfalGladesUndead"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["DEV-Silverpine"] = {
+APR.RouteQuestStepList["DEV-Silverpine"] = {
     { -- [step 1
         ["Trigger"] = {
             ["y"] = 1475.2,
@@ -2336,7 +2336,7 @@ APR.QuestStepList["DEV-Silverpine"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["217-Ruins of Gilneas"] = {
+APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
     { -- [step 1
         ["TT"] = {
             ["y"] = -928.7,
@@ -2736,7 +2736,7 @@ APR.QuestStepList["217-Ruins of Gilneas"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["DEV-Silverpine2"] = {
+APR.RouteQuestStepList["DEV-Silverpine2"] = {
     { -- [step 1
         ["ETA"] = 132,
         ["Done"] = {
@@ -2927,7 +2927,7 @@ APR.QuestStepList["DEV-Silverpine2"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["DEV-DALARAN_CRATER"] = {
+APR.RouteQuestStepList["DEV-DALARAN_CRATER"] = {
     { -- [step 1
         ["DropQuest"] = 27480,
         ["TT"] = {
@@ -2978,7 +2978,7 @@ APR.QuestStepList["DEV-DALARAN_CRATER"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["DEV-Silverpine3"] = {
+APR.RouteQuestStepList["DEV-Silverpine3"] = {
     { -- [step 1
         ["Done"] = {
             27483,
@@ -3335,7 +3335,7 @@ APR.QuestStepList["DEV-Silverpine3"] = {
         ["ZoneDoneSave"] = 1,
     }
 }
-APR.QuestStepList["DEV-Hillsbrad"] = {
+APR.RouteQuestStepList["DEV-Hillsbrad"] = {
     {
         ["Trigger"] = {
             ["y"] = 422,
@@ -8062,7 +8062,7 @@ APR.QuestStepList["DEV-Hillsbrad"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["DEV-Western Plaguelands"] = {
+APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
     {
         ["PickUp"] = {
             26931,
@@ -10133,7 +10133,7 @@ APR.QuestStepList["DEV-Western Plaguelands"] = {
     },
 
 }
-APR.QuestStepList["94-EversongWoodsBloodElf"] = {
+APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
     {
         ["PickUp"] = {
             8325,

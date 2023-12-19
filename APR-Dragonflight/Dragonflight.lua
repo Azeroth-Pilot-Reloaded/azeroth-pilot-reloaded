@@ -1,6 +1,6 @@
 -- same route for both faction
 -- WakingShores neutral
-APR.QuestStepList["DF03N-2022-WakingShores"] = {
+APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
     { -- Step 1
         ["PickUp"] = {
             69914,
@@ -1222,7 +1222,8 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
             ["x"] = -1342.1,
         },
         ["Range"] = 20,
-        ["ExtraLineText"] = "USE_SURGE_FORWARD_PASS_FIRST_FOUR_RINGS_USE_ASCEND_TO_REACH_RING_FIVE_AND_ONCE_MORE_JUST_AFTER",
+        ["ExtraLineText"] =
+        "USE_SURGE_FORWARD_PASS_FIRST_FOUR_RINGS_USE_ASCEND_TO_REACH_RING_FIVE_AND_ONCE_MORE_JUST_AFTER",
     },
     { -- Step 89
         ["Done"] = {
@@ -2462,7 +2463,8 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
             ["x"] = 1248.5,
         },
         ["Range"] = 50,
-        ["ExtraLineText"] = "TALK_WITH_BLACKTALON_ASSASSINS_OR_AVENGERS_START_COMBAT_YOU_CAN_DUEL_MULTIPLE_AT_ONCE_IF_INTERACTED_WITH",
+        ["ExtraLineText"] =
+        "TALK_WITH_BLACKTALON_ASSASSINS_OR_AVENGERS_START_COMBAT_YOU_CAN_DUEL_MULTIPLE_AT_ONCE_IF_INTERACTED_WITH",
         ["Gossip"] = 1,
         ["GossipOptionID"] = 54628,
     },
@@ -3395,7 +3397,7 @@ APR.QuestStepList["DF03N-2022-WakingShores"] = {
 
 
 -- Ohn'Ahran Plains
-APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
+APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
     { -- Step 1
         ["Done"] = {
             65779,
@@ -7206,7 +7208,7 @@ APR.QuestStepList["DF04-2023-OhnahranPlains"] = {
 
 
 -- Azure Span
-APR.QuestStepList["DF05-2024-AzureSpan"] = {
+APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
     { -- Step 1
         ["Done"] = {
             65686,
