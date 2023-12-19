@@ -1,6 +1,6 @@
 if (APR.Faction == "Horde") then
 	---- The Jade Forest ----
-	APR.QuestStepList["371-The Jade Forest"] = {
+	APR.RouteQuestStepList["371-The Jade Forest"] = {
 		{
 			["LeaveQuests"] = {
 				25597,
@@ -967,7 +967,7 @@ if (APR.Faction == "Horde") then
 			["Done"] = {
 				29827, -- [1]
 			},
-		},        -- [1]
+		},     -- [1]
 		{
 			["PickUp"] = {
 				29822, -- [1]
@@ -1236,7 +1236,7 @@ if (APR.Faction == "Horde") then
 			["Done"] = {
 				31152, -- [1]
 			},
-		},        -- [1]
+		},     -- [1]
 		{
 			["PickUp"] = {
 				31167, -- [1]
@@ -1270,7 +1270,7 @@ if (APR.Faction == "Horde") then
 			["Done"] = {
 				31167, -- [1]
 			},
-		},        -- [4]
+		},     -- [4]
 		{
 			["PickUp"] = {
 				29879, -- [1]
@@ -1305,7 +1305,7 @@ if (APR.Faction == "Horde") then
 			["Done"] = {
 				29879, -- [1]
 			},
-		},        -- [7]
+		},     -- [7]
 		{
 			["PickUp"] = {
 				29935, -- [1]
@@ -1371,7 +1371,7 @@ if (APR.Faction == "Horde") then
 			["Done"] = {
 				29924, -- [1]
 			},
-		},        -- [13]
+		},     -- [13]
 		{
 			["Trigger"] = {
 				["y"] = 1729.8,
@@ -1546,7 +1546,7 @@ if (APR.Faction == "Horde") then
 			["Done"] = {
 				29941, -- [1]
 			},
-		},        -- [3]
+		},     -- [3]
 		{
 			["PickUp"] = {
 				29937, -- [1]
@@ -1710,7 +1710,7 @@ if (APR.Faction == "Horde") then
 	}
 
 	---- Kun-Lai Summit ----
-	APR.QuestStepList["379-Kun-Lai Summit"] = {
+	APR.RouteQuestStepList["379-Kun-Lai Summit"] = {
 		{
 			["Trigger"] = {
 				["y"] = 1689.5,
@@ -2365,7 +2365,7 @@ if (APR.Faction == "Horde") then
 			["Done"] = {
 				30595, -- [1]
 			},
-		},        -- [25]
+		},     -- [25]
 		{
 			["TT"] = {
 				["y"] = 2251.9,
@@ -2374,7 +2374,7 @@ if (APR.Faction == "Horde") then
 			["Done"] = {
 				30594, -- [1]
 			},
-		},        -- [26]
+		},     -- [26]
 		{
 			["TT"] = {
 				["y"] = 2296,
@@ -2383,7 +2383,7 @@ if (APR.Faction == "Horde") then
 			["Done"] = {
 				30620, -- [1]
 			},
-		},        -- [27]
+		},     -- [27]
 		{
 			["PickUp"] = {
 				30655, -- [1]
@@ -3435,7 +3435,7 @@ if (APR.Faction == "Horde") then
 				30600, -- [2]
 				30604, -- [3]
 			},
-		},        -- [16]
+		},     -- [16]
 		{
 			["PickUp"] = {
 				30605, -- [1]
@@ -3469,7 +3469,7 @@ if (APR.Faction == "Horde") then
 			["Done"] = {
 				30605, -- [1]
 			},
-		},        -- [19]
+		},     -- [19]
 		{
 			["PickUp"] = {
 				30608, -- [1]
@@ -3630,7 +3630,7 @@ if (APR.Faction == "Horde") then
 				30606, -- [2]
 				30607, -- [3]
 			},
-		},        -- [28]
+		},     -- [28]
 		{
 			["PickUp"] = {
 				30611, -- [1]
@@ -3687,7 +3687,7 @@ if (APR.Faction == "Horde") then
 				30611, -- [1]
 				30610, -- [2]
 			},
-		},        -- [32]
+		},     -- [32]
 		{
 			["PickUp"] = {
 				30612, -- [1]
@@ -3722,7 +3722,7 @@ if (APR.Faction == "Horde") then
 			["Done"] = {
 				30612, -- [1]
 			},
-		},        -- [35]
+		},     -- [35]
 		{
 			["PickUp"] = {
 				30692, -- [1]
@@ -3768,7 +3768,7 @@ if (APR.Faction == "Horde") then
 			["Done"] = {
 				30692, -- [1]
 			},
-		},        -- [1]
+		},     -- [1]
 		{
 			["PickUp"] = {
 				30743, -- [1]

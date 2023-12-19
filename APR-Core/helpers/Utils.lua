@@ -63,6 +63,10 @@ function CheckDenyNPC(steps)
     end
 end
 
+--- Contain data in list
+---@param list array list
+---@param x object object to check if in the list
+---@return true|false Boolean
 function Contains(list, x)
     if list then
         for _, v in pairs(list) do
@@ -79,7 +83,7 @@ function IsTableEmpty(table)
     return false
 end
 
--- TODO: Remove this shit
+-- //TODO: Remove this shit
 function PairsByKeys(t, f)
     local a = {}
     for n in pairs(t) do table.insert(a, n) end
@@ -96,15 +100,33 @@ function PairsByKeys(t, f)
     return iter
 end
 
-function APR_AcceptQuest() -- TODO rework
+function APR_AcceptQuest()
     AcceptQuest()
 end
 
-function APR_CloseQuest() -- TODO rework
+function APR_CloseQuest()
     CloseQuest()
 end
 
 function TrimPlayerServer(CLPName)
     local CL_First = string.match(CLPName, "^(.-)-")
     return CL_First or CLPName
+end
+
+--- Display error in chat
+--- @param errorMessage string
+function APR:PrintError(errorMessage)
+    if (errorMessage and type(errorMessage) == "string") then
+        local redColorCode = "|cffff0000"
+        DEFAULT_CHAT_FRAME:AddMessage(redColorCode .. L["ERROR"] .. ": " .. errorMessage .. "|r")
+    end
+end
+
+--- Display info in chat
+--- @param infoMessage string
+function APR:PrintInfo(infoMessage)
+    if (infoMessage and type(infoMessage) == "string") then
+        local lightBlueColorCode = "|cff00bfff"
+        DEFAULT_CHAT_FRAME:AddMessage(lightBlueColorCode .. "APR: " .. infoMessage .. "|r")
+    end
 end

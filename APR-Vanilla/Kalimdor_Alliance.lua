@@ -1,5 +1,5 @@
 --- Shadowglen
-APR.QuestStepList["A57-ShadowglenNightElf"] = {
+APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
     {
         ["PickUp"] = {
             28713,
@@ -387,7 +387,7 @@ APR.QuestStepList["A57-ShadowglenNightElf"] = {
     },
 }
 --- Ammen Vale
-APR.QuestStepList["A97-AmmenVale"] = {
+APR.RouteQuestStepList["A97-AmmenVale"] = {
     {
         ["PickUp"] = {
             9279,
@@ -809,7 +809,7 @@ APR.QuestStepList["A97-AmmenVale"] = {
     },
 }
 --- Azuremyst Isle
-APR.QuestStepList["A97-AzuremystIsle"] = {
+APR.RouteQuestStepList["A97-AzuremystIsle"] = {
     {
         ["PickUp"] = {
             9314,
@@ -1829,7 +1829,7 @@ APR.QuestStepList["A97-AzuremystIsle"] = {
     },
 }
 --- Bloodmyst Isle
-APR.QuestStepList["A106-BloodmystIsle"] = {
+APR.RouteQuestStepList["A106-BloodmystIsle"] = {
     {
         ["PickUp"] = {
             9624,
@@ -3784,7 +3784,7 @@ APR.QuestStepList["A106-BloodmystIsle"] = {
     },
 }
 --- Darkshore
-APR.QuestStepList["A62-Darkshore"] = {
+APR.RouteQuestStepList["A62-Darkshore"] = {
     {
         ["PickUp"] = {
             13518,
@@ -6319,7 +6319,7 @@ APR.QuestStepList["A62-Darkshore"] = {
     },
 }
 --- Ashenvale
-APR.QuestStepList["A63-Ashenvale"] = {
+APR.RouteQuestStepList["A63-Ashenvale"] = {
     {
         ["PickUp"] = {
             13594,
@@ -9214,7 +9214,7 @@ APR.QuestStepList["A63-Ashenvale"] = {
     },
 }
 --- Felwood
-APR.QuestStepList["A77-Felwood"] = {
+APR.RouteQuestStepList["A77-Felwood"] = {
     {
         ["PickUp"] = {
             28148,
@@ -11340,7 +11340,7 @@ APR.QuestStepList["A77-Felwood"] = {
     },
 }
 --- Winterspring
-APR.QuestStepList["A83-Winterspring"] = {
+APR.RouteQuestStepList["A83-Winterspring"] = {
     {
         ["PickUp"] = {
             28460,
@@ -13273,7 +13273,7 @@ APR.QuestStepList["A83-Winterspring"] = {
     },
 }
 --- Stonetalon Mountains
-APR.QuestStepList["A65-StonetalonMountains"] = {
+APR.RouteQuestStepList["A65-StonetalonMountains"] = {
     {
         ["PickUp"] = {
             25607,
@@ -15103,7 +15103,7 @@ APR.QuestStepList["A65-StonetalonMountains"] = {
     },
 }
 --- Southern Barrens
-APR.QuestStepList["A199-SouthernBarrens"] = {
+APR.RouteQuestStepList["A199-SouthernBarrens"] = {
     {
         ["PickUp"] = {
             24863,
@@ -16830,7 +16830,7 @@ APR.QuestStepList["A199-SouthernBarrens"] = {
     },
 }
 --- Dustwallow Marsh
-APR.QuestStepList["A70-DustwallowMarsh"] = {
+APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
     {
         ["PickUp"] = {
             27216,
@@ -18777,7 +18777,7 @@ APR.QuestStepList["A70-DustwallowMarsh"] = {
     },
 }
 --- Desolace
-APR.QuestStepList["A66-Desolace"] = {
+APR.RouteQuestStepList["A66-Desolace"] = {
     {
         ["PickUp"] = {
             14384,
@@ -20698,7 +20698,7 @@ APR.QuestStepList["A66-Desolace"] = {
     },
 }
 --- Feralas
-APR.QuestStepList["A69-Feralas"] = {
+APR.RouteQuestStepList["A69-Feralas"] = {
     {
         ["Trigger"] = {
             ["y"] = -3141.5,
@@ -22353,7 +22353,7 @@ APR.QuestStepList["A69-Feralas"] = {
     },
 }
 --- Thousand Needles
-APR.QuestStepList["A64-ThousandNeedles"] = {
+APR.RouteQuestStepList["A64-ThousandNeedles"] = {
     {
         ["PickUp"] = {
             25486,
@@ -24951,7 +24951,7 @@ APR.QuestStepList["A64-ThousandNeedles"] = {
     },
 }
 --- Tanaris
-APR.QuestStepList["A71-Tanaris"] = {
+APR.RouteQuestStepList["A71-Tanaris"] = {
     {
         ["PickUp"] = {
             25067,
@@ -26381,7 +26381,7 @@ APR.QuestStepList["A71-Tanaris"] = {
     },
 }
 --- Un'Goro Crater
-APR.QuestStepList["A78-UnGoroCrater"] = {
+APR.RouteQuestStepList["A78-UnGoroCrater"] = {
     {
         ["Trigger"] = {
             ["y"] = -7548.9,
@@ -28226,7 +28226,7 @@ APR.QuestStepList["A78-UnGoroCrater"] = {
     },
 }
 --- Silithus
-APR.QuestStepList["A81-Silithus"] = {
+APR.RouteQuestStepList["A81-Silithus"] = {
     {
         ["Trigger"] = {
             ["y"] = -6758.3,
@@ -29100,7 +29100,7 @@ APR.QuestStepList["A81-Silithus"] = {
     },
 }
 --- Teldrassil
-APR.QuestStepList["A57-Teldrassil"] = {
+APR.RouteQuestStepList["A57-Teldrassil"] = {
     {
         ["PickUp"] = {
             488,

@@ -437,7 +437,7 @@ function SetRouteListTab(widget, name)
     end
 
 
-    local routes = APR.QuestStepListListing[name]
+    local routes = APR.RouteList[name]
     local sortedRoutes = {}
     local yOffset = -15
 
@@ -579,7 +579,7 @@ function APR.routeconfig:InitRouteConfig()
         SetCustomPathListFrame(customPathListeWidget, "custom_path_area")
         SetRouteListTab(tabRouteListWidget, currentTabName)
         APR.settings:OpenSettings(L["ROUTE"])
-        -- -- TODO: Check if needed
+        -- //TODO: Check if needed
         APR.BookingList["UpdateMapId"] = true
     end)
     InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)
@@ -635,6 +635,7 @@ function APR.routeconfig:GetStartingZonePrefab()
             tinsert(APRCustomPath[APR.PlayerID], "Bloodmyst Isle")
         elseif (APR.Race == "Dwarf") then
             tinsert(APRCustomPath[APR.PlayerID], "Dwarf Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Dun Morogh")
         elseif (APR.Race == "Human") then
             tinsert(APRCustomPath[APR.PlayerID], "Human Start")
         elseif (APR.Race == "Gnome") then
@@ -739,7 +740,8 @@ end
 ---------------------------------------------------------------------------------------
 
 --Loads addon if needed for a route
---TODO: call this on addonLoad
+-- //TODO: call this on addonLoad
+
 function APR.routeconfig:LoadRouteAddonFile(tabName)
     if APRCustomPath[APR.PlayerID] then
         local function checkAddon(zoneName, addonName)
@@ -784,6 +786,7 @@ APR.routeconfig.eventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_SL"], function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetSLPrefab()
+                    APR.routeconfig:GetDFPrefab()
                 end)
             elseif APR.Level == 60 then
                 APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_DF"], function()

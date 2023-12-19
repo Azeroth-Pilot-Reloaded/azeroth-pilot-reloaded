@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 local function APR_SweatOfOurBrowBuffFrame()
-    -- TODO REWORK SweatOfOurBrowBuffFrame
+    -- //TODO REWORK SweatOfOurBrowBuffFrame
     APR.SweatOfOurBrowBuffFrame = CreateFrame("frame", "APR_SugQuestFrameFramebufffra", UIParent)
     APR.SweatOfOurBrowBuffFrame:SetWidth(230)
     APR.SweatOfOurBrowBuffFrame:SetHeight(110)

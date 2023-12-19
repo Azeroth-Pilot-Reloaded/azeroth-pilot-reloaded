@@ -1,5 +1,5 @@
 if (APR.Faction == "Alliance") then
-    APR.QuestStepListListingZone = {
+    APR.RouteMainMapID = {
         ["01-10 Exile's Reach"] = 1409,
         ["Dwarf Start"] = 27,
         ["Human Start"] = 37,
@@ -86,9 +86,7 @@ if (APR.Faction == "Alliance") then
         ["DF05 - Azure Span"] = 2024,
         ["DF06 - Thaldraszus"] = 2025,
     }
-
-    --TODO: maybe split into kalindor et eastern for map icon/line/arrow
-    APR.QuestStepListListing.Vanilla = {
+    APR.RouteList.Vanilla = {
         ["672-Mardum"] = "Demon Hunter Start",
         ["1409-Exile's Reach"] = "01-10 Exile's Reach",
         ["A97-AzuremystIsle"] = "Azuremyst Isle",
@@ -127,11 +125,11 @@ if (APR.Faction == "Alliance") then
         ["A224-TheCapeofStranglethorn"] = "Cape of Stranglethorn",
 
     }
-    APR.QuestStepListListing.TheBurningCrusade = {}
-    APR.QuestStepListListing.WrathOfTheLichKing = {}
-    APR.QuestStepListListing.Cataclysm = {}
-    APR.QuestStepListListing.MistsOfPandaria = {}
-    APR.QuestStepListListing.WarlordsOfDraenor = {
+    APR.RouteList.TheBurningCrusade = {}
+    APR.RouteList.WrathOfTheLichKing = {}
+    APR.RouteList.Cataclysm = {}
+    APR.RouteList.MistsOfPandaria = {}
+    APR.RouteList.WarlordsOfDraenor = {
         ["A84-DesMephisto-Stormwind-War"] = "WOD01 - Stormwind",
         ["A577-DesMephisto-TanaanJungle"] = "WOD02 - Tanaan Jungle",
         ["A539-DesMephisto-Shadowmoon1"] = "WOD03 - Shadowmoon",
@@ -140,18 +138,18 @@ if (APR.Faction == "Alliance") then
         ["A535-DesMephisto-Talador2"] = "WOD07 - Talador",
         ["A542-DesMephisto-SpiresOfArak"] = "WOD08 - Spires of Arak",
     }
-    APR.QuestStepListListing.Legion = {
+    APR.RouteList.Legion = {
         ["A630-Azsuna"] = "Legion - Azsuna",
         ["A641-ValSharah"] = "Legion - Val'Sharah",
         ["A634-Stormheim"] = "Legion - Stormheim",
     }
-    APR.QuestStepListListing.BattleForAzeroth = {
+    APR.RouteList.BattleForAzeroth = {
         ["A84-Stormwind"] = "BFA01 - Intro",
         ["A895-Tiragarde Sound"] = "BFA02 - Tiragarde Sound",
         ["A942-Stormsong Valley"] = "BFA04 - Stormsong Valley",
         ["A896-Dustvar"] = "BFA03 - Dustvar",
     }
-    APR.QuestStepListListing.Shadowlands = {
+    APR.RouteList.Shadowlands = {
         ["84-IntroQline"] = "SL - Intro",
         ["1648-Z0-TheMaw-Story"] = "SL01 - The Maw",
         ["1670-Z1-Oribos-Story"] = "SL02 - Oribos",
@@ -171,7 +169,7 @@ if (APR.Faction == "Alliance") then
         ["1671-Z15-Oribos-Story"] = "SL16 - Oribos",
         ["Shadowlands-StoryOnly-A"] = "SL - StoryMode Only",
     }
-    APR.QuestStepListListing.Dragonflight = {
+    APR.RouteList.Dragonflight = {
         ["DF01A-84-Stormwind"] = "DF01 - Dragonflight Stormwind",
         ["DF03A-2022-WakingShores"] = "DF02 - Waking Shores - Alliance",
         ["DF03N-2022-WakingShores"] = "DF03 - Waking Shores - Neutral",
@@ -181,55 +179,33 @@ if (APR.Faction == "Alliance") then
     }
 
     if (APR.Race == "NightElf") then
-        APR.QuestStepListListing.Vanilla["A57-ShadowglenNightElf"] = "Night Elf Start"
+        APR.RouteList.Vanilla["A57-ShadowglenNightElf"] = "Night Elf Start"
     elseif (APR.Race == "Draenei") then
-        APR.QuestStepListListing.Vanilla["A97-AmmenVale"] = "Draenei Start"
+        APR.RouteList.Vanilla["A97-AmmenVale"] = "Draenei Start"
     elseif (APR.Race == "Dwarf") then
-        APR.QuestStepListListing.Vanilla["A27-ColdridgeValleyDwarf"] = "Dwarf Start"
+        APR.RouteList.Vanilla["A27-ColdridgeValleyDwarf"] = "Dwarf Start"
     elseif (APR.Race == "Human") then
-        APR.QuestStepListListing.Vanilla["A37-NorthshireHuman"] = "Human Start"
+        APR.RouteList.Vanilla["A37-NorthshireHuman"] = "Human Start"
     elseif (APR.Race == "Gnome") then
-        APR.QuestStepListListing.Vanilla["A27-NewTinkertown"] = "Gnome Start"
+        APR.RouteList.Vanilla["A27-NewTinkertown"] = "Gnome Start"
     elseif (APR.Race == "Worgen") then
-        APR.QuestStepListListing.Vanilla["A179-Gilneas"] = "Worgen Start"
+        APR.RouteList.Vanilla["A179-Gilneas"] = "Worgen Start"
     elseif (APR.ClassId == APR.Classes["Demon Hunter"]) then
-        APR.QuestStepListListing.Vanilla["672-Mardum"] = "Demon Hunter Start"
+        APR.RouteList.Vanilla["672-Mardum"] = "Demon Hunter Start"
     elseif (APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23) then
-        APR.QuestStepListListing.Vanilla["A_Allied_Icecrown Citadel"] = "Allied Death Knight Start"
+        APR.RouteList.Vanilla["A_Allied_Icecrown Citadel"] = "Allied Death Knight Start"
     elseif (APR.ClassId == APR.Classes["Death Knight"]) then
-        APR.QuestStepListListing.Vanilla["A23-ScarletEnclave"] = "Death Knight Start"
+        APR.RouteList.Vanilla["A23-ScarletEnclave"] = "Death Knight Start"
     elseif (APR.Race == "Pandaren") then
-        APR.QuestStepListListing.Vanilla["378-WanderingIsle"] = "Pandaren Start"
+        APR.RouteList.Vanilla["378-WanderingIsle"] = "Pandaren Start"
     elseif (APR.Race == "Dracthyr") then
-        APR.QuestStepListListing.Dragonflight["2118-DracthyrStart-A"] = "Dracthyr Start"
+        APR.RouteList.Dragonflight["2118-DracthyrStart-A"] = "Dracthyr Start"
     end
 
     -- Lumbermill Wod route
     if C_QuestLog.IsQuestFlaggedCompleted(35049) then
-        APR.QuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = "WOD04 - Gorgrond"
+        APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = "WOD04 - Gorgrond"
     else
-        APR.QuestStepList["A543-DesMephisto-Gorgrond"] = "WOD04 - Gorgrond"
+        APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = "WOD04 - Gorgrond"
     end
-
-
-    -- MapID for each Categorie
-    APR.Vanilla = { 14, 15, 17, 22, 23, 26, 27, 32, 36, 37, 47, 48, 49, 51, 52, 56, 57, 62, 63, 64, 65, 66, 69, 70, 71, 77, 78, 81, 83, 84, 97, 106, 124, 179, 199, 224, 1409, 1726, 1727, 1728 }
-
-    APR.TheBurningCrusade = {}
-
-    APR.WrathOfTheLichKing = { 1602, 2297 }
-
-    APR.Cataclysm = {}
-
-    APR.MistsOfPandaria = { 378 }
-
-    APR.WarlordsOfDraenor = { 17, 84, 535, 539, 542, 543, 577, 578 }
-
-    APR.Legion = { 630, 634, 641, 672 }
-
-    APR.BattleForAzeroth = { 84, 895, 896, 942, 1169 }
-
-    APR.Shadowlands = { 84, 118, 619, 1525, 1533, 1536, 1543, 1550, 1565, 1613, 1648, 1656, 1670, 1671, 1673, 1691, 1728, 1762, 1824 }
-
-    APR.Dragonflight = { 84, 1978, 2022, 2023, 2024, 2025, 2028, 2088, 2089, 2090, 2091, 2107, 2109, 2110, 2118, 2135 }
 end

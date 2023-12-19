@@ -33,6 +33,10 @@ APR.Portals = {
                 x = 887.7,
                 y = -9060.3,
             },
+            ["DarkPorta"] = {
+                x = 869.8,
+                y = -9007.5,
+            },
             ["AzsunaLegion"] = {
                 x = 909.6,
                 y = -9077.8,
@@ -41,12 +45,28 @@ APR.Portals = {
                 x = 889.4,
                 y = -9081.2,
             },
+            ["Ashran"] = {
+                x = 888.1,
+                y = -9061.7,
+            },
+            ["Oribos"] = {
+                x = 895.4,
+                y = -9095,
+            },
+            ["Valdrakken"] = {
+                x = 875.2,
+                y = -9079.1,
+            },
         },
         -- The Burning Crusade
         [101] = {
             ["Stormwind"] = {
                 x = 5388.7,
                 y = -1893.5,
+            },
+            ["Stormwind DarkPortal"] = {
+                x = 931.9,
+                y = -274.6,
             },
         },
         -- Wrath of the Lich King
@@ -76,12 +96,40 @@ APR.Portals = {
                 x = 4548.5,
                 y = -929.5,
             },
+            ["Stormwind AzsunaLegion"] = {
+                x = 6756.2,
+                y = -13.4,
+            },
+            ["Stormwind Telogrus Rift"] = {
+                x = 3331.6,
+                y = 2149.6,
+            },
+            ["Stormwind Vindicaar"] = {
+                x = 1469.5,
+                y = 499.6,
+            },
         },
         -- Battle for Azeroth
         [876] = {
             ["Stormwind"] = {
                 x = -524.3,
                 y = 1133.5,
+            },
+            ["Ironforge"] = {
+                x = -537.9,
+                y = 1149.2,
+            },
+            ["Exodar"] = {
+                x = -528.8,
+                y = 1153.4,
+            },
+            ["Silithus"] = {
+                x = -454.5,
+                y = 1037.9,
+            },
+            ["ArathiHighlands"] = {
+                x = -516.5,
+                y = 1143,
             },
             ["Zuldazar"] = {
                 x = -485.2,
@@ -121,6 +169,13 @@ APR.Portals = {
                 y = 2573.5,
             },
         },
+        -- DragonFlight
+        [1978] = {
+            ["Stormwind"] = {
+                x = -1066.8,
+                y = 246.5
+            },
+        },
     },
     ["Horde"] = {
         -- Kalimdor
@@ -153,13 +208,49 @@ APR.Portals = {
                 x = -4499.5,
                 y = 1474.3,
             },
+            ["TolBarad"] = {
+                x = -4331.7,
+                y = 2031.3,
+            },
+            ["OrgrimmarFromTolBarad"] = {
+                x = 5283.4,
+                y = -1240.5,
+            },
+            ["Uldum"] = {
+                x = -4359.2,
+                y = 2041.1,
+            },
+            ["Hyjal"] = {
+                x = -4391.9,
+                y = 2044.1,
+            },
+            ["TwilightHighlands"] = {
+                x = -4380.2,
+                y = 2030,
+            },
+            ["Deepholm"] = {
+                x = -4390.5,
+                y = 2065.2,
+            },
             ["WarspearWoD"] = {
                 x = -4466.8,
                 y = 1422.3,
             },
+            ["DarkPortal"] = {
+                x = -4499.2,
+                y = 1435.2,
+            },
             ["AzsunaLegion"] = {
                 x = -4484.9,
                 y = 1423.8,
+            },
+            ["Oribos"] = {
+                x = -4519.3,
+                y = 1466.5,
+            },
+            ["Valdrakken"] = {
+                x = -4499.9,
+                y = 1472.5,
             },
         },
         -- Eastern Kingdom
@@ -174,6 +265,10 @@ APR.Portals = {
             ["Orgrimmar"] = {
                 x = 5394.1,
                 y = -1898.9,
+            },
+            ["Orgrimmar DarkPortal"] = {
+                x = 932.3,
+                y = -222.8,
             },
         },
         -- Wrath of the Lich King
@@ -203,6 +298,18 @@ APR.Portals = {
                 x = 4418.6,
                 y = -714.8,
             },
+            ["Orgrimmar AzsunaLegion"] = {
+                x = 6755.1,
+                y = -8.5,
+            },
+            ["Orgrimmar Suramar"] = {
+                x = 3428.6,
+                y = 213.6,
+            },
+            ["Orgrimmar Highmountain"] = {
+                x = 4415,
+                y = 4082.4,
+            },
         },
         -- Battle for Azeroth
         [876] = {
@@ -223,6 +330,10 @@ APR.Portals = {
             ["Orgrimmar"] = {
                 x = 750.6,
                 y = -1123,
+            },
+            ["Orgrimmar Dazaralor"] = {
+                x = 805.7,
+                y = -1085.1,
             },
             ["Drustvar"] = {
                 x = 762.9,
@@ -246,6 +357,13 @@ APR.Portals = {
             ["OribosInMaldraxxus"] = {
                 x = -2517.7,
                 y = 2573.5,
+            },
+        },
+        -- DragonFlight
+        [1978] = {
+            ["Orgrimmar"] = {
+                x = -1023,
+                y = 278
             },
         },
     },

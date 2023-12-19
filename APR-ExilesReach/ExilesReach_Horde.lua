@@ -1,5 +1,5 @@
 if (APR.Faction == "Horde") then
-    APR.QuestStepList["1409-Exile's Reach"] = {
+    APR.RouteQuestStepList["1409-Exile's Reach"] = {
         {
             ["PickUp"] = {
                 59926,

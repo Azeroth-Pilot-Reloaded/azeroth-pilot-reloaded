@@ -1,4 +1,4 @@
-APR.QuestStepList["1648-Z0-TheMaw-Story"] = {
+APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
     {
         ["TT"] = {
             ["y"] = 4154.1,
@@ -1137,7 +1137,7 @@ APR.QuestStepList["1648-Z0-TheMaw-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1670-Z1-Oribos-Story"] = {
+APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
     {
         ["Qpart"] = {
             [60129] = {
@@ -1821,7 +1821,7 @@ APR.QuestStepList["1670-Z1-Oribos-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1533-Z2-Bastion-Story"] = {
+APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
     {
         ["PickUp"] = {
             59774,
@@ -5758,7 +5758,7 @@ APR.QuestStepList["1533-Z2-Bastion-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1613-Z3-Oribos-Story"] = {
+APR.RouteQuestStepList["1613-Z3-Oribos-Story"] = {
     {
         ["TT"] = {
             ["y"] = -1940.4,
@@ -5875,7 +5875,7 @@ APR.QuestStepList["1613-Z3-Oribos-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1536-Z4-Maldraxxus-Story"] = {
+APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
     {
         ["Done"] = {
             57386,
@@ -9206,7 +9206,7 @@ APR.QuestStepList["1536-Z4-Maldraxxus-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1670-Z5-Oribos-Story"] = {
+APR.RouteQuestStepList["1670-Z5-Oribos-Story"] = {
     {
         ["Trigger"] = {
             ["y"] = -1842.5,
@@ -9267,7 +9267,7 @@ APR.QuestStepList["1670-Z5-Oribos-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1543-Z6-TheMaw-Story"] = {
+APR.RouteQuestStepList["1543-Z6-TheMaw-Story"] = {
     {
         ["Done"] = {
             59897,
@@ -9679,7 +9679,7 @@ APR.QuestStepList["1543-Z6-TheMaw-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1670-Z7-Oribos-Story"] = {
+APR.RouteQuestStepList["1670-Z7-Oribos-Story"] = {
     {
         ["Trigger"] = {
             ["y"] = -1842.9,
@@ -9766,7 +9766,7 @@ APR.QuestStepList["1670-Z7-Oribos-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1536-Z8-Maldraxxus-Story"] = {
+APR.RouteQuestStepList["1536-Z8-Maldraxxus-Story"] = {
     {
         ["PickUp"] = {
             59011,
@@ -9894,7 +9894,7 @@ APR.QuestStepList["1536-Z8-Maldraxxus-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1670-Z9-Oribos-Story"] = {
+APR.RouteQuestStepList["1670-Z9-Oribos-Story"] = {
     {
         ["TT"] = {
             ["y"] = -1811.9,
@@ -10065,7 +10065,7 @@ APR.QuestStepList["1670-Z9-Oribos-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1670-Z9-Oribos-Storyx2"] = {
+APR.RouteQuestStepList["1670-Z9-Oribos-Storyx2"] = {
     {
         ["TT"] = {
             ["y"] = -1811.9,
@@ -10170,7 +10170,7 @@ APR.QuestStepList["1670-Z9-Oribos-Storyx2"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1565-Z10-Ardenweald-Story"] = {
+APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     {
         ["Done"] = {
             60338,
@@ -15981,7 +15981,7 @@ APR.QuestStepList["1565-Z10-Ardenweald-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1671-Z11-Oribos-Story"] = {
+APR.RouteQuestStepList["1671-Z11-Oribos-Story"] = {
     {
         ["TT"] = {
             ["y"] = -1869.5,
@@ -16047,7 +16047,7 @@ APR.QuestStepList["1671-Z11-Oribos-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1525-Z12-Revendreth-Story"] = {
+APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
     {
         ["TT"] = {
             ["y"] = -3443,
@@ -20325,7 +20325,7 @@ APR.QuestStepList["1525-Z12-Revendreth-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1543-Z13-TheMaw-Story"] = {
+APR.RouteQuestStepList["1543-Z13-TheMaw-Story"] = {
     {
         ["Done"] = {
             57689,
@@ -20466,7 +20466,7 @@ APR.QuestStepList["1543-Z13-TheMaw-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1525-Z14-Revendreth-Story"] = {
+APR.RouteQuestStepList["1525-Z14-Revendreth-Story"] = {
     {
         ["Done"] = {
             57693,
@@ -20747,7 +20747,7 @@ APR.QuestStepList["1525-Z14-Revendreth-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["1671-Z15-Oribos-Story"] = {
+APR.RouteQuestStepList["1671-Z15-Oribos-Story"] = {
     {
         ["Done"] = {
             57876,
@@ -20903,7 +20903,7 @@ APR.QuestStepList["1671-Z15-Oribos-Story"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
+APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
     {
         ["Qpart"] = {
             [60545] = {
@@ -37975,7 +37975,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-A"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
+APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
     {
         ["Qpart"] = {
             [61874] = {
@@ -55046,7 +55046,7 @@ APR.QuestStepList["Shadowlands-StoryOnly-H"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["84-IntroQline"] = {
+APR.RouteQuestStepList["84-IntroQline"] = {
     {
         ["Qpart"] = {
             [60545] = {
@@ -55293,7 +55293,7 @@ APR.QuestStepList["84-IntroQline"] = {
         ["ZoneDoneSave"] = 1,
     },
 }
-APR.QuestStepList["85-IntroQline"] = {
+APR.RouteQuestStepList["85-IntroQline"] = {
     {
         ["Qpart"] = {
             [61874] = {
