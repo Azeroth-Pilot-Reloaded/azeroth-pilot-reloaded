@@ -408,6 +408,12 @@ local function APR_UpdateStep()
         end
         if (steps["ZoneDoneSave"]) then
             local index, currentRouteName = next(APRCustomPath[APR.PlayerID])
+
+            -- Force reset heirloom to show heirloom taximap (not avalaible in exile reach)
+            if currentRouteName == "01-10 Exile's Reach" then
+                APR.settings.profile.heirloomWarning = false
+                APR.heirloom:RefreshFrameAnchor()
+            end
             APRZoneCompleted[APR.PlayerID][currentRouteName] = true
             tremove(APRCustomPath[APR.PlayerID], index)
             APR.routeconfig:CheckIsCustomPathEmpty()
