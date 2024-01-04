@@ -13,8 +13,9 @@ function APR.command:SlashCmd(input)
         APRData[APR.PlayerID][APR.ActiveRoute] = 1
         C_UI.Reload()
     elseif (input == "forcereset" or input == "fr") then
-        APRData = {};
-        APRZoneCompleted[APR.PlayerID] = nil;
+        -- APRData[APR.PlayerID].FirstLoad = true
+        APRData[APR.PlayerID] = {}
+        APRZoneCompleted[APR.PlayerID] = nil
         APRCustomPath[APR.PlayerID] = {}
         C_UI.Reload()
     elseif (input == "skip" or input == "s" or input == "skippiedoodaa") then

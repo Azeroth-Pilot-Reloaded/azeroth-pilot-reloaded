@@ -25,7 +25,7 @@ local isDragging = false
 -- Create the main current step frame
 local CurrentStepFrame = CreateFrame("Frame", "CurrentStepScreenPanel", UIParent, "BackdropTemplate")
 CurrentStepFrame:SetSize(FRAME_WIDTH, 50)
-CurrentStepFrame:SetFrameStrata("LOW")
+CurrentStepFrame:SetFrameStrata("HIGH")
 CurrentStepFrame:SetClampedToScreen(true)
 CurrentStepFrame:SetBackdrop({
     bgFile = "Interface\\BUTTONS\\WHITE8X8",

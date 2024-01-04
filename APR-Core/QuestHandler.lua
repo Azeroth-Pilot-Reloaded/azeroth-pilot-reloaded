@@ -1,8 +1,6 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
--- //TODO rework BookingList
-APR.BookingList = {}
 
 local APR_ArrowUpdateNr = 0
 local ETAStep = 0
@@ -412,7 +410,7 @@ local function APR_UpdateStep()
             local index, currentRouteName = next(APRCustomPath[APR.PlayerID])
             APRZoneCompleted[APR.PlayerID][currentRouteName] = true
             tremove(APRCustomPath[APR.PlayerID], index)
-            APR.CheckCustomEmpty()
+            APR.routeconfig:CheckIsCustomPathEmpty()
             APR.routeconfig:SendMessage("APR_Custom_Path_Update")
             APR.BookingList["UpdateMapId"] = true
         end
@@ -815,17 +813,12 @@ local function APR_UpdateStep()
         -- set Progress bar with the right total
         APR.currentStep:SetProgressBar(CurStep)
     else
-        APR.currentStep:AddExtraLineText("NO_ROUTE", L["NO_ROUTE"], true)
-        APR.currentStep:ButtonDisable()
-        APR.currentStep:ProgressBar()
-        APR:SendMessage("APR_MAP_UPDATE")
-        APR.map:RemoveMapLine()
-        APR.map:RemoveMinimapLine()
+        APR.routeconfig:CheckIsCustomPathEmpty()
     end
 end
 
 function APR.SetButton()
-    if InCombatLockdown() or APR.IsInRouteZone then
+    if InCombatLockdown() or APR.IsInRouteZone or not APR.IsInRouteZone then
         return
     end
     if (APR.settings.profile.debug) then
@@ -1072,15 +1065,9 @@ local function APR_UpdateMapId()
     if (APR.settings.profile.debug) then
         print("Function: APR_UpdateMapId()")
     end
-    if APR.ActiveRoute then
-        if not APRData[APR.PlayerID][APR.ActiveRoute] then
-            APRData[APR.PlayerID][APR.ActiveRoute] = 1
-        end
-        OverrideDataForLesMecsPasCapablesDeSuivreUneFleche() -- Lumbermill Wod route
-    end
-    APR.questOrderList:AddStepFromRoute()
+    OverrideDataForLesMecsPasCapablesDeSuivreUneFleche() -- Lumbermill Wod route
+    APR.routeconfig:CheckIsCustomPathEmpty()
     APR.BookingList["GetMeToRightZone"] = true
-    _G.UpdateQuestAndStep()
 end
 
 
@@ -1162,10 +1149,6 @@ function APR_UpdQuestThing()
     end
 end
 
-function APR_BookingUpdateMapId()
-    APR.BookingList["UpdateMapId"] = true
-end
-
 local function APR_ZoneResetQnumb()
     APR.Arrow.currentStep = 0
     APR.Arrow:SetQPTT()
@@ -1223,8 +1206,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     local autoAccept = APR.settings.profile.autoAccept
     local autoAcceptRoute = APR.settings.profile.autoAcceptQuestRoute
-    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    local steps = GetSteps(CurStep)
+    local steps = GetSteps(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
     if (event == "UPDATE_UI_WIDGET") then
         if (APR.ActiveQuests and APR.ActiveQuests["57713-4"]) then
             APR.BookingList["UpdateStep"] = true
@@ -1615,7 +1597,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (APR.settings.profile.debug) then
             print(L["Q_ACCEPTED"] .. ": " .. arg1)
         end
-        C_Timer.After(0.2, APR_BookingUpdateMapId)
+        APR.BookingList["UpdateMapId"] = true
         C_Timer.After(3, APR_UpdateMapId)
         if (arg2 and arg2 > 0 and not APR.ActiveQuests[arg2]) then
             APR.BookingList["AddQuest"] = arg2
@@ -1648,7 +1630,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     if (event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA") then
         APR.Arrow.currentStep = 0
-        C_Timer.After(2, APR_BookingUpdateMapId)
         C_Timer.After(3, APR_ZoneResetQnumb)
         APR.BookingList["UpdateMapId"] = true
     end
@@ -1819,6 +1800,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.party:RefreshPartyFrameAnchor()
         APR.questOrderList:RefreshFrameAnchor()
         APR.heirloom:RefreshFrameAnchor()
+        APR.RouteSelection:RefreshFrameAnchor()
     end
     if event == "GROUP_JOINED" then
         APR.party:SendGroupMessage()

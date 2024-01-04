@@ -14,18 +14,23 @@ function APR.transport:GetMeToRightZone()
         print("Function: APR.transport:GetMeToRightZone()")
     end
 
+    if IsInInstance() then
+        return
+    end
+
     local routeZoneMapIDs, mapID, routeName, expansion = self:GetRouteMapIDsAndName()
     if (routeZoneMapIDs and mapID and routeName) then
         APR.ActiveRoute = routeName
     end
-    if not APR.ActiveRoute then
+    if not APR.ActiveRoute or not next(APRCustomPath[APR.PlayerID]) then
+        APR.routeconfig:CheckIsCustomPathEmpty()
         return
     end
 
     local currentContinent = APR:GetContinent()
     local isSameContinent, nextContinent = self:IsSameContinent(mapID)
 
-
+    _G.UpdateQuestAndStep()
     -- //TODO: verifier si on veut accepter les autres zones ou si on veut check que la main pour le fly
     if CheckIsInRouteZone() and isSameContinent then
         APR.IsInRouteZone = true
@@ -73,7 +78,8 @@ function APR.transport:GetMeToRightZone()
                     APR.ArrowActive_Y = zoneEntryY
                 else
                     APR.currentStep:AddExtraLineText("ERROR_PATH_NOT_FOUND", L["ERROR"] ..
-                        " - " .. L["PATH_NOT_FOUND"] .. " " .. mapInfo.name .. " (" .. GoToZone .. ")")
+                        " - " .. L["PATH_NOT_FOUND"] .. " " .. mapInfo.name .. " (" .. mapID .. ")")
+                    APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. mapInfo.name)
                     APR.ArrowActive = false
                     APR.ArrowActive_X = 0
                     APR.ArrowActive_Y = 0
@@ -209,6 +215,11 @@ function APR.transport:SwitchContinent(CurContinent, nextContinent, nextZone)
         else
             portal, portalPosition = handlePortalsCapital(portalsDB, 12, 85) -- Orgrimmar
         end
+    end
+    if not portalPosition then
+        local nextZoneMapInfo = C_Map.GetMapInfo(nextZone)
+        APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. nextZoneMapInfo.name)
+        return
     end
 
     -- TaxiNode
