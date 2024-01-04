@@ -112,6 +112,7 @@ function APR.transport:GetRouteMapIDsAndName()
     for expansion, routeList in pairs(APR.RouteList) do
         for routeFileName, routeName in pairs(routeList) do
             if routeName == currentRouteName then
+                APR.routeconfig:LoadRouteAddonFile(expansion)
                 return APR.ZonesData.ExtensionRouteMaps[APR.Faction][expansion], APR.RouteMainMapID[routeName],
                     routeFileName, expansion
             end

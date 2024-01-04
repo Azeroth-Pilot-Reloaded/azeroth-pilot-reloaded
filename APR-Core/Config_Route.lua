@@ -743,7 +743,6 @@ end
 ---------------------------------------------------------------------------------------
 
 --Loads addon if needed for a route
--- //TODO: call this on addonLoad
 function APR.routeconfig:LoadRouteAddonFile(tabName)
     if APRCustomPath[APR.PlayerID] then
         local function checkAddon(zoneName, addonName)
