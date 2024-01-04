@@ -84,6 +84,7 @@ local function GetConfigOptionTable()
                 width = optionsWidth,
                 func = function()
                     APRCustomPath[APR.PlayerID] = {}
+                    APR.routeconfig:SendMessage("APR_Custom_Path_Update")
                 end,
                 disabled = function()
                     return not next(APRCustomPath[APR.PlayerID])
@@ -579,7 +580,7 @@ function APR.routeconfig:InitRouteConfig()
         SetCustomPathListFrame(customPathListeWidget, "custom_path_area")
         SetRouteListTab(tabRouteListWidget, currentTabName)
         APR.settings:OpenSettings(L["ROUTE"])
-        -- //TODO: Check if needed
+        -- to trigger the frame
         APR.BookingList["UpdateMapId"] = true
     end)
     InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)
@@ -611,37 +612,39 @@ function APR.routeconfig:GetStartingZonePrefab()
             tinsert(APRCustomPath[APR.PlayerID], "Death Knight Start")
         elseif APR.ClassId == APR.Classes["Demon Hunter"] then
             tinsert(APRCustomPath[APR.PlayerID], "Demon Hunter Start")
-        elseif (APR.Race == "Pandaren") then
-            tinsert(APRCustomPath[APR.PlayerID], "Pandaren Start")
-            -- HORDE
-        elseif (APR.Race == "Orc") then
-            tinsert(APRCustomPath[APR.PlayerID], "Orc Start")
-        elseif (APR.Race == "Tauren") then
-            tinsert(APRCustomPath[APR.PlayerID], "Tauren Start")
-        elseif (APR.Race == "Troll") then
-            tinsert(APRCustomPath[APR.PlayerID], "Troll Start")
-        elseif (APR.Race == "Scourge") then --Undead
-            tinsert(APRCustomPath[APR.PlayerID], "Scourge Start")
-        elseif (APR.Race == "BloodElf") then
-            tinsert(APRCustomPath[APR.PlayerID], "Blood Elf Start")
-        elseif (APR.Race == "Goblin") then
-            tinsert(APRCustomPath[APR.PlayerID], "Goblin Start")
-            -- ALLIANCE
-        elseif (APR.Race == "NightElf") then
-            tinsert(APRCustomPath[APR.PlayerID], "Night Elf Start")
-        elseif (APR.Race == "Draenei") then
-            tinsert(APRCustomPath[APR.PlayerID], "Draenei Start")
-            tinsert(APRCustomPath[APR.PlayerID], "Azuremyst Isle")
-            tinsert(APRCustomPath[APR.PlayerID], "Bloodmyst Isle")
-        elseif (APR.Race == "Dwarf") then
-            tinsert(APRCustomPath[APR.PlayerID], "Dwarf Start")
-            tinsert(APRCustomPath[APR.PlayerID], "Dun Morogh")
-        elseif (APR.Race == "Human") then
-            tinsert(APRCustomPath[APR.PlayerID], "Human Start")
-        elseif (APR.Race == "Gnome") then
-            tinsert(APRCustomPath[APR.PlayerID], "Gnome Start")
-        elseif (APR.Race == "Worgen") then
-            tinsert(APRCustomPath[APR.PlayerID], "Worgen Start")
+        elseif APR.Level < 10 then
+            if (APR.Race == "Pandaren") then
+                tinsert(APRCustomPath[APR.PlayerID], "Pandaren Start")
+                -- HORDE
+            elseif (APR.Race == "Orc") then
+                tinsert(APRCustomPath[APR.PlayerID], "Orc Start")
+            elseif (APR.Race == "Tauren") then
+                tinsert(APRCustomPath[APR.PlayerID], "Tauren Start")
+            elseif (APR.Race == "Troll") then
+                tinsert(APRCustomPath[APR.PlayerID], "Troll Start")
+            elseif (APR.Race == "Scourge") then --Undead
+                tinsert(APRCustomPath[APR.PlayerID], "Scourge Start")
+            elseif (APR.Race == "BloodElf") then
+                tinsert(APRCustomPath[APR.PlayerID], "Blood Elf Start")
+            elseif (APR.Race == "Goblin") then
+                tinsert(APRCustomPath[APR.PlayerID], "Goblin Start")
+                -- ALLIANCE
+            elseif (APR.Race == "NightElf") then
+                tinsert(APRCustomPath[APR.PlayerID], "Night Elf Start")
+            elseif (APR.Race == "Draenei") then
+                tinsert(APRCustomPath[APR.PlayerID], "Draenei Start")
+                tinsert(APRCustomPath[APR.PlayerID], "Azuremyst Isle")
+                tinsert(APRCustomPath[APR.PlayerID], "Bloodmyst Isle")
+            elseif (APR.Race == "Dwarf") then
+                tinsert(APRCustomPath[APR.PlayerID], "Dwarf Start")
+                tinsert(APRCustomPath[APR.PlayerID], "Dun Morogh")
+            elseif (APR.Race == "Human") then
+                tinsert(APRCustomPath[APR.PlayerID], "Human Start")
+            elseif (APR.Race == "Gnome") then
+                tinsert(APRCustomPath[APR.PlayerID], "Gnome Start")
+            elseif (APR.Race == "Worgen") then
+                tinsert(APRCustomPath[APR.PlayerID], "Worgen Start")
+            end
         end
     end
     self:LoadRouteAddonFile("WrathOfTheLichKing")
@@ -741,7 +744,6 @@ end
 
 --Loads addon if needed for a route
 -- //TODO: call this on addonLoad
-
 function APR.routeconfig:LoadRouteAddonFile(tabName)
     if APRCustomPath[APR.PlayerID] then
         local function checkAddon(zoneName, addonName)
@@ -773,6 +775,24 @@ function APR.routeconfig:HasRouteInCustomPaht()
         return false
     end
     return true
+end
+
+function APR.routeconfig:CheckIsCustomPathEmpty()
+    if (APR.settings.profile.debug) then
+        print("Function: APR.routeconfig:CheckIsCustomPathEmpty()")
+    end
+    if not next(APRCustomPath[APR.PlayerID]) then
+        APR.ActiveRoute = nil
+        APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
+
+        APR.currentStep:AddExtraLineText("NO_ROUTE", L["NO_ROUTE"], true)
+        APR.currentStep:ButtonDisable()
+        APR.currentStep:ProgressBar()
+        APR:SendMessage("APR_MAP_UPDATE")
+        APR.map:RemoveMapLine()
+        APR.map:RemoveMinimapLine()
+        APR.questOrderList:AddStepFromRoute()
+    end
 end
 
 APR.routeconfig.eventFrame = CreateFrame("Frame")

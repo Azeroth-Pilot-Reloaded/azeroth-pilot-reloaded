@@ -94,7 +94,7 @@ function APR.settings:InitializeSettings()
             showGroup = true,
             groupScale = 1,
             -- route
-            greetings = true, --Greetings2
+            routeSelectionFrame = {},
             --afk
             afkFrame = {},
             --debug
@@ -1209,6 +1209,7 @@ function APR.settings:ToggleAddon()
     APR.questOrderList:RefreshFrameAnchor()
     APR.party:RefreshPartyFrameAnchor()
     APR.heirloom:RefreshFrameAnchor()
+    APR.RouteSelection:RefreshFrameAnchor()
     APR.map:ToggleMapPins()
 end
 
