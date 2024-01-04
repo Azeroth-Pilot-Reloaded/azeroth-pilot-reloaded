@@ -198,7 +198,7 @@ function APR.heirloom:AddHeirloomIcons()
 
     for _, heirloom in ipairs(heirlooms) do
         local button
-        if heirloom.name == "map" and PlayerHasToy(heirloom.id) and (APR.Faction == heirloom.faction or heirloom.faction == "Neutral") then
+        if heirloom.name == "map" and PlayerHasToy(heirloom.id) and (APR.Faction == heirloom.faction or heirloom.faction == "Neutral") and not Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then -- heirloom not availble in the tuto zone
             button = CreateMapButton(HeirloomFrame_body, heirloom.id)
         elseif heirloom.name == "heirloom" then
             button = CreateHeirloomButton(HeirloomFrame_body, heirloom.icon)
