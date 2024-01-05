@@ -38,6 +38,9 @@ function APR.transport:GetMeToRightZone()
     else
         local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
         local step = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
+        if not mapInfo then
+            return
+        end
         local mapInfo = C_Map.GetMapInfo(mapID)
         if not mapInfo then
             return

@@ -10,7 +10,7 @@ if (APR.Faction == "Horde") then
         ["Goblin Start (Lost Isles)"] = 174,
         ["Demon Hunter Start"] = 672,
         ["Pandaren Start"] = 378,
-        ["Durotar (Full)"] = 1,
+        ["Durotar"] = 1,
         ["Death Knight Start"] = 23,
         ["Allied Death Knight Start"] = 2297,
         ["Northern Barrens"] = 10,
