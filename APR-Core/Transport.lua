@@ -183,13 +183,27 @@ function APR.transport:SwitchContinent(CurContinent, nextContinent, nextZone)
     end
 
     local function handlePortals(portalMappings)
+        local closestPortal = nil
+        local closestPortalPosition = nil
+        local closestDistance = nil
+        local playerY, playerX = UnitPosition("player")
+
         for _, portal in ipairs(portalMappings) do
             if CurContinent == portal.continent and (nextContinent == portal.nextContinent or nextZone == portal.nextZone) then
                 local portalPosition = APR.Portals[APR.Faction][portal.continent][portal.portalKey]
-                return portal, portalPosition
+                local distance = math.sqrt((playerX - portalPosition.x) ^ 2 + (playerY - portalPosition.y) ^ 2)
+
+                if closestDistance == nil or distance < closestDistance then
+                    closestPortal = portal
+                    closestPortalPosition = portalPosition
+                    closestDistance = distance
+                end
             end
         end
+
+        return closestPortal, closestPortalPosition
     end
+
     local function handlePortalsCapital(portalMappings, capitalNextContinent, capitalNextZone)
         for _, portal in ipairs(portalMappings) do
             if CurContinent == portal.continent and (capitalNextContinent == portal.nextContinent or capitalNextZone == portal.nextZone) then

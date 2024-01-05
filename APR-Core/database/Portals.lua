@@ -57,6 +57,14 @@ APR.Portals = {
                 x = 875.2,
                 y = -9079.1,
             },
+            ["DarkPortal Talk"] = {
+                x = 869.6,
+                y = -9007.7,
+            },
+            ["DarkPortal"] = {
+                x = -3207.5,
+                y = -11902.7,
+            },
         },
         -- The Burning Crusade
         [101] = {
@@ -236,7 +244,7 @@ APR.Portals = {
                 x = -4466.8,
                 y = 1422.3,
             },
-            ["DarkPortal"] = {
+            ["DarkPortal Talk"] = {
                 x = -4499.2,
                 y = 1435.2,
             },
@@ -258,6 +266,10 @@ APR.Portals = {
             ["Orgrimmar"] = {
                 x = 289.3,
                 y = 2070.5,
+            },
+            ["DarkPortal"] = {
+                x = -3207.5,
+                y = -11902.7,
             },
         },
         -- The Burning Crusade
@@ -366,7 +378,5 @@ APR.Portals = {
                 y = 278
             },
         },
-    },
-    ["Neutral"] = {
     },
 }
