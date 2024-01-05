@@ -87,7 +87,6 @@ if (APR.Faction == "Alliance") then
         ["DF06 - Thaldraszus"] = 2025,
     }
     APR.RouteList.Vanilla = {
-        ["672-Mardum"] = "Demon Hunter Start",
         ["1409-Exile's Reach"] = "01-10 Exile's Reach",
         ["A97-AzuremystIsle"] = "Azuremyst Isle",
         ["A106-BloodmystIsle"] = "Bloodmyst Isle",

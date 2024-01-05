@@ -68,7 +68,6 @@ if (APR.Faction == "Horde") then
         ["Dracthyr Start"] = 2118,
     }
     APR.RouteList.Vanilla = {
-        ["672-Mardum"] = "Demon Hunter Start",
         ["1409-Exile's Reach"] = "01-10 Exile's Reach",
         ["1-Durotar"] = "Durotar",
         ["10-NorthernBarrens"] = "Northern Barrens",
