@@ -69,6 +69,16 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "BETA-v3.1.3", "2024-01-06" },
+        "#Bugs",
+        "- Fix auto open of the route option on zone code step",
+        "- Fix empty route for Durotar (Horde) and Stranglethorn (Alliance)",
+        "- Fix/Add requirement to select some routes (SL, DF, starting zone)",
+        "- Remove Demon Hunter starting zone in the route selection for everyone (only available for DH)",
+        "- Fix the detection of the closest portal",
+
+        { "BETA-v3.1.2", "2024-01-05" },
+        "- Fix deployment issue",
         { "BETA-v3.1.0", "2024-01-04" },
         "#Features",
         "- Rework of the route selection and custom path",
