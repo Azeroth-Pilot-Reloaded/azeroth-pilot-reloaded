@@ -45,7 +45,7 @@ if (APR.Faction == "Alliance") then
         ["Badlands"] = 15,
         ["Searing Gorge"] = 32,
         ["Northern Stranglethorn"] = 224,
-        ["Cape of Stranglethorn (F)"] = 224,
+        ["Cape of Stranglethorn"] = 224,
         ["WOD01 - Stormwind"] = 84,
         ["WOD02 - Tanaan Jungle"] = 577,
         ["WOD03 - Shadowmoon"] = 539,
