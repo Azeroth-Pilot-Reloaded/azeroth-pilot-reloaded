@@ -577,11 +577,13 @@ end
 
 function APR.routeconfig:InitRouteConfig()
     APR.routeconfig:RegisterMessage("APR_Custom_Path_Update", function()
-        SetCustomPathListFrame(customPathListeWidget, "custom_path_area")
-        SetRouteListTab(tabRouteListWidget, currentTabName)
-        APR.settings:OpenSettings(L["ROUTE"])
-        -- to trigger the frame
-        APR.BookingList["UpdateMapId"] = true
+        if APR.OptionsRoute:IsVisible() then
+            SetCustomPathListFrame(customPathListeWidget, "custom_path_area")
+            SetRouteListTab(tabRouteListWidget, currentTabName)
+            APR.settings:OpenSettings(L["ROUTE"])
+            -- to trigger the frame
+            APR.BookingList["UpdateMapId"] = true
+        end
     end)
     InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)
     InitDialogControlFrame("RouteListFrame", CreateRouteTableFrame, SetRouteListTab)
