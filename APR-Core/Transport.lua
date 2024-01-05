@@ -36,11 +36,9 @@ function APR.transport:GetMeToRightZone()
         APR.IsInRouteZone = true
         return
     else
+        APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
         local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
         local step = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
-        if not mapInfo then
-            return
-        end
         local mapInfo = C_Map.GetMapInfo(mapID)
         if not mapInfo then
             return
@@ -50,7 +48,6 @@ function APR.transport:GetMeToRightZone()
             return
         end
 
-        APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
         local destinationText = L["WRONG_ZONE"] ..
             " - " .. L["DESTINATION"] .. ": " .. mapInfo.name .. ", " .. parentMapInfo.name .. " (" .. mapID .. ")"
         APR.currentStep:AddExtraLineText("DESTINATION", destinationText)

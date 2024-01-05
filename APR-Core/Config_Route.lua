@@ -502,7 +502,11 @@ function SetRouteListTab(widget, name)
             lineContainer:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
                 GameTooltip:AddLine(route.routeName)
-                GameTooltip:AddLine(L["MOVE_ZONE_TO_CUSTOM_PATH"], 1, 1, 1, true)
+                if IsRouteDisabled(name, route.routeName) then
+                    GameTooltip:AddLine(L["ROUTE_DISABLED"], 1, 1, 1, true)
+                else
+                    GameTooltip:AddLine(L["MOVE_ZONE_TO_CUSTOM_PATH"], 1, 1, 1, true)
+                end
                 GameTooltip:Show()
             end)
             lineContainer:SetScript("OnLeave", function(self)
@@ -515,6 +519,10 @@ function SetRouteListTab(widget, name)
                     APR.routeconfig:SendMessage("APR_Custom_Path_Update")
                 end
             end)
+            if IsRouteDisabled(name, route.routeName) then
+                nameText:SetTextColor(0.5, 0.5, 0.5)
+                lineContainer:SetScript("OnMouseDown", nil)
+            end
 
             yOffset = yOffset - 25
             tinsert(widget.fontStringsContainer, lineContainer)
@@ -588,6 +596,17 @@ function APR.routeconfig:InitRouteConfig()
     InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)
     InitDialogControlFrame("RouteListFrame", CreateRouteTableFrame, SetRouteListTab)
     return GetConfigOptionTable()
+end
+
+function IsRouteDisabled(tab, routeName)
+    if string.find(tab, "Shadowlands") and APR.Level < 48 then
+        return true
+    elseif string.find(tab, "Dragonflight") and APR.Level < 58 then
+        return true
+    elseif routeName == "01-10 Exile's Reach" and not Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
+        return true
+    end
+    return false
 end
 
 ---------------------------------------------------------------------------------------

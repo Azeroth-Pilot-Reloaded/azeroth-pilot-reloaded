@@ -1072,7 +1072,6 @@ local function APR_UpdateMapId()
         print("Function: APR_UpdateMapId()")
     end
     OverrideDataForLesMecsPasCapablesDeSuivreUneFleche() -- Lumbermill Wod route
-    APR.routeconfig:CheckIsCustomPathEmpty()
     APR.BookingList["GetMeToRightZone"] = true
 end
 
