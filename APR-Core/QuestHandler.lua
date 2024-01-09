@@ -824,7 +824,7 @@ local function APR_UpdateStep()
 end
 
 function APR.SetButton()
-    if InCombatLockdown() or APR.IsInRouteZone or not APR.IsInRouteZone then
+    if InCombatLockdown() or not APR.IsInRouteZone then
         return
     end
     if (APR.settings.profile.debug) then
