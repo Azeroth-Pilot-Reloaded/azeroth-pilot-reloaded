@@ -156,26 +156,6 @@ APR.TaxiNodes = {
                 y = -2299.5400390625,
                 Name = "Bloodhoof Village, Mulgore",
             },
-            [404] = {
-                x = -4985.3500976562,
-                y = -839.64001464844,
-                Name = "Durotar - ET - CC Prologue Spy Frog Start",
-            },
-            [405] = {
-                x = -4986.2797851562,
-                y = -838.01000976563,
-                Name = "Durotar - ET - CC Prologue Spy Frog End",
-            },
-            [438] = {
-                x = -4985.990234375,
-                y = -838.84997558594,
-                Name = "Durotar - ET - CC Prologue Troll Taxi Bat Start",
-            },
-            [439] = {
-                x = -4762.3598632812,
-                y = 284.38000488281,
-                Name = "Durotar - ET - CC Prologue Troll Recruit End",
-            },
             [458] = {
                 x = -3381.7399902344,
                 y = 1152.5999755859,
@@ -322,11 +302,6 @@ APR.TaxiNodes = {
                 x = -6784.2900390625,
                 y = 7594.4702148438,
                 Name = "Tranquillien, Ghostlands",
-            },
-            [95] = {
-                x = 5532.5600585938,
-                y = -146.28999328613,
-                Name = "Zangarmarsh - Quest - As the Crow Flies",
             },
             [99] = {
                 x = 2633.5700683594,
@@ -707,16 +682,6 @@ APR.TaxiNodes = {
                 y = 4026.9499511719,
                 Name = "Coldarra, Keristrasza to Malygos",
             },
-            [239] = {
-                x = 3819.5400390625,
-                y = 3109,
-                Name = "Borean Tundra - Quest - Dusk Start",
-            },
-            [240] = {
-                x = 3670.1201171875,
-                y = 3614.3000488281,
-                Name = "Borean Tundra - Quest - Dusk - End",
-            },
             [248] = {
                 x = -2970.6201171875,
                 y = 2108.1101074219,
@@ -762,35 +727,10 @@ APR.TaxiNodes = {
                 y = 4946.669921875,
                 Name = "Kor'kron Vanguard, Dragonblight",
             },
-            [262] = {
-                x = -3050.9299316406,
-                y = 4267.3901367188,
-                Name = "Grizzly Hills, Alliance Log Ride Start 01",
-            },
-            [267] = {
-                x = -3248.2600097656,
-                y = 4272.08984375,
-                Name = "Grizzly Hills, Alliance Log Ride Start",
-            },
-            [271] = {
-                x = -2956.6101074219,
-                y = 4311.25,
-                Name = "Grizzly Hills, Horde Log Ride Start",
-            },
             [290] = {
                 x = -2606.2700195312,
                 y = 5450.2998046875,
                 Name = "Argent Stand, Zul'Drak",
-            },
-            [311] = {
-                x = -4519.58984375,
-                y = 3877.9099121094,
-                Name = "Camp Onequah, Grizzly Hills (Quest)",
-            },
-            [314] = {
-                x = -3596.419921875,
-                y = 5779.1298828125,
-                Name = "Zim'Torga, Zul'Drak (Quest)",
             },
             [323] = {
                 x = -735.02001953125,
@@ -1413,21 +1353,6 @@ APR.TaxiNodes = {
                 y = 199.16000366211,
                 Name = "Temple of Telhamat, Hellfire Peninsula",
             },
-            [106] = {
-                x = 8149.7099609375,
-                y = -1511.2600097656,
-                Name = "Nagrand - PvP - Attack Run End 2",
-            },
-            [108] = {
-                x = 7771.169921875,
-                y = -1376.7199707031,
-                Name = "Nagrand - PvP - Attack Run End 3",
-            },
-            [110] = {
-                x = 7724.7099609375,
-                y = -1658.9000244141,
-                Name = "Nagrand - PvP - Attack Run End 4",
-            },
             [117] = {
                 x = 6063.75,
                 y = 213.75,
@@ -1492,11 +1417,6 @@ APR.TaxiNodes = {
                 x = -216.83000183106,
                 y = -11344,
                 Name = "Rebel Camp, Stranglethorn Vale",
-            },
-            [292] = {
-                x = 1107.0100097656,
-                y = -8338.3603515625,
-                Name = "Flavor - Stormwind Harbor  - Start",
             },
             [523] = {
                 x = 4308.2797851562,
@@ -1851,11 +1771,6 @@ APR.TaxiNodes = {
                 x = 2185.6499023438,
                 y = 5100.8100585938,
                 Name = "Valiance Landing Camp, Wintergrasp",
-            },
-            [313] = {
-                x = -4250.3798828125,
-                y = 4584.009765625,
-                Name = "Westfall Brigade, Grizzly Hills (Quest)",
             },
             [321] = {
                 x = -258.70001220703,
@@ -2303,11 +2218,6 @@ APR.TaxiNodes = {
                 y = -6958.4399414062,
                 Name = "Mossy Pile, Un'Goro Crater",
             },
-            [440] = {
-                x = -5339.4599609375,
-                y = -848.20001220703,
-                Name = "Durotar - ET - CC Prologue - Troll Battle End",
-            },
             [513] = {
                 x = -3913.4399414062,
                 y = -6075.3701171875,
@@ -2378,16 +2288,6 @@ APR.TaxiNodes = {
                 y = 4397.7900390625,
                 Name = "Sanctuary of Malorne, Hyjal",
             },
-            [1104] = {
-                x = -5133.3999023438,
-                y = 4777.0498046875,
-                Name = "Test - Spy Quest H01a - PRK",
-            },
-            [1105] = {
-                x = -11797.299804688,
-                y = 1567.3800048828,
-                Name = "Test - Spy Quest H01b - PRK",
-            },
         },
         [13] = {
             [24] = {
@@ -2455,45 +2355,10 @@ APR.TaxiNodes = {
                 y = 0,
                 Name = "Transport, Theramore",
             },
-            [96] = {
-                x = 5533.0297851562,
-                y = -145.22999572754,
-                Name = "Zangarmarsh - Quest - As the Crow Flies - End",
-            },
-            [103] = {
-                x = 8032.1098632812,
-                y = -1810.1600341797,
-                Name = "Nagrand - PvP - Attack Run Start 1 ",
-            },
-            [104] = {
-                x = 8049.2900390625,
-                y = -1824.1800537109,
-                Name = "Nagrand - PvP - Attack Run End 1",
-            },
-            [105] = {
-                x = 8140.9301757812,
-                y = -1513.4000244141,
-                Name = "Nagrand - PvP - Attack Run Start 2",
-            },
-            [107] = {
-                x = 7782.41015625,
-                y = -1387.0699462891,
-                Name = "Nagrand - PvP - Attack Run Start 3",
-            },
-            [109] = {
-                x = 7724.91015625,
-                y = -1656.5999755859,
-                Name = "Nagrand - PvP - Attack Run Start 4",
-            },
             [111] = {
                 x = -7883.0698242188,
                 y = 9335.830078125,
                 Name = "Eversong - Duskwither Teleport",
-            },
-            [112] = {
-                x = -7809.7099609375,
-                y = 9335.669921875,
-                Name = "Eversong - Duskwither Teleport End",
             },
             [122] = {
                 x = 3596.1101074219,
@@ -2560,16 +2425,6 @@ APR.TaxiNodes = {
                 y = 0,
                 Name = "Borean Tundra, Naglevar",
             },
-            [228] = {
-                x = 0,
-                y = 0,
-                Name = "Development Land - Pat Test Start",
-            },
-            [229] = {
-                x = 0,
-                y = 0,
-                Name = "Development Land - Pat Test End",
-            },
             [241] = {
                 x = 0,
                 y = 0,
@@ -2610,26 +2465,6 @@ APR.TaxiNodes = {
                 y = 2352.3701171875,
                 Name = "Acherus: The Ebon Hold",
             },
-            [316] = {
-                x = 0,
-                y = 0,
-                Name = "Ebon Hold - Acherus -> Death's Breach Start",
-            },
-            [317] = {
-                x = -5730.2099609375,
-                y = 2431,
-                Name = "Ebon Hold - Acherus -> Death's Breach End",
-            },
-            [318] = {
-                x = 0,
-                y = 0,
-                Name = "Ebon Hold - Death's Breach -> Acherus Start",
-            },
-            [319] = {
-                x = -5664.1801757812,
-                y = 2356.5100097656,
-                Name = "Ebon Hold - Death's Breach -> Acherus End",
-            },
             [348] = {
                 x = 0,
                 y = 0,
@@ -2639,16 +2474,6 @@ APR.TaxiNodes = {
                 x = 0,
                 y = 0,
                 Name = "Isle of Conquest - Gunships",
-            },
-            [371] = {
-                x = 0,
-                y = 0,
-                Name = "Vashj'ir - Alliance Start",
-            },
-            [372] = {
-                x = 0,
-                y = 0,
-                Name = "Vashj'ir - Alliance End",
             },
             [375] = {
                 x = 0,
@@ -2674,26 +2499,6 @@ APR.TaxiNodes = {
                 x = -2694.4799804688,
                 y = 1935.9699707031,
                 Name = "Thondroril River, Eastern Plaguelands",
-            },
-            [392] = {
-                x = -665.08001708984,
-                y = -5448.5,
-                Name = "CC Prologue - GT - Quest - Vent Horizon - Start",
-            },
-            [393] = {
-                x = -665.59002685547,
-                y = -5447.8500976562,
-                Name = "CC Prologue - GT - Quest - Vent Horizon - End",
-            },
-            [394] = {
-                x = -667.72998046875,
-                y = -5451.4799804688,
-                Name = "CC Prologue - GT - Battle Flight - Start",
-            },
-            [395] = {
-                x = 523.09002685547,
-                y = -5434.7099609375,
-                Name = "CC Prologue - GT - Battle Flight - End",
             },
             [521] = {
                 x = 3481.1201171875,
@@ -2964,11 +2769,6 @@ APR.TaxiNodes = {
                 y = 2690.330078125,
                 Name = "Transport, Tuskarr 02",
             },
-            [233] = {
-                x = 4103.9501953125,
-                y = 3443.5200195312,
-                Name = "Borean Tundra - Warsong Hold Wolf End",
-            },
             [237] = {
                 x = 6590.740234375,
                 y = 3929.3999023438,
@@ -2978,21 +2778,6 @@ APR.TaxiNodes = {
                 x = 247.58000183106,
                 y = 3653.2099609375,
                 Name = "Wyrmrest Temple, Dragonblight",
-            },
-            [263] = {
-                x = -2181.4499511719,
-                y = 2663.669921875,
-                Name = "Grizzly Hills, Alliance Log Ride End 01",
-            },
-            [268] = {
-                x = -2344.6298828125,
-                y = 2664.2199707031,
-                Name = "Grizzly Hills, Alliance Log Ride End",
-            },
-            [272] = {
-                x = -1673.7099609375,
-                y = 2883.75,
-                Name = "Grizzly Hills, Horde Log Ride End",
             },
             [273] = {
                 x = 381.48999023438,
@@ -3079,16 +2864,6 @@ APR.TaxiNodes = {
                 y = 2919.1899414062,
                 Name = "Unu'pe, Borean Tundra",
             },
-            [297] = {
-                x = 5802.0498046875,
-                y = 5557.5698242188,
-                Name = "Sholazar Basin - Quest - Reconnaisance - Start",
-            },
-            [298] = {
-                x = 4747.7900390625,
-                y = 5505.3500976562,
-                Name = "Sholazar Basin - Quest - Reconnaisance - End",
-            },
             [304] = {
                 x = -2672.25,
                 y = 5521.6298828125,
@@ -3123,11 +2898,6 @@ APR.TaxiNodes = {
                 x = 449.13000488281,
                 y = 5813.8901367188,
                 Name = "Dalaran",
-            },
-            [312] = {
-                x = -2206.8500976562,
-                y = 5189.669921875,
-                Name = "Light's Breach, Zul'Drak (Quest)",
             },
             [320] = {
                 x = -1052.9100341797,
@@ -3305,16 +3075,6 @@ APR.TaxiNodes = {
                 x = -203.66999816895,
                 y = 784.89898681641,
                 Name = "Tavern in the Mists, The Veiled Stair",
-            },
-            [1046] = {
-                x = -473.21200561523,
-                y = 3377.1201171875,
-                Name = "Jade Forest - Cliff path 04 Start",
-            },
-            [1047] = {
-                x = -502.6130065918,
-                y = 3279.919921875,
-                Name = "Jade Forest - Cliff path 04 End",
             },
             [1052] = {
                 x = -100.46700286865,

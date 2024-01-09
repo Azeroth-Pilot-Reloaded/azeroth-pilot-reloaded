@@ -1291,8 +1291,8 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
         }, -- [8]
         {
             ["Trigger"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
             ["Qpart"] = {
                 [25037] = {
@@ -1301,8 +1301,8 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
             ["Range"] = 50.23,
             ["TT"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
         },
         {
@@ -1844,8 +1844,8 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
         }, -- [8]
         {
             ["Trigger"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
             ["Qpart"] = {
                 [25037] = {
@@ -1854,8 +1854,8 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
             ["Range"] = 50.23,
             ["TT"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
         },
         {
@@ -2381,8 +2381,8 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
         }, -- [8]
         {
             ["Trigger"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
             ["Qpart"] = {
                 [25037] = {
@@ -2391,8 +2391,8 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
             ["Range"] = 50.23,
             ["TT"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
         },
         {
@@ -3080,8 +3080,8 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
         }, -- [8]
         {
             ["Trigger"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
             ["Qpart"] = {
                 [25037] = {
@@ -3090,8 +3090,8 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
             ["Range"] = 50.23,
             ["TT"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
         },
         {
@@ -3633,8 +3633,8 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
         }, -- [8]
         {
             ["Trigger"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
             ["Qpart"] = {
                 [25037] = {
@@ -3643,8 +3643,8 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
             ["Range"] = 50.23,
             ["TT"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
         },
         {
@@ -3918,7 +3918,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                     ["1"] = "1",
                 },
             },
-            ["Gossip"] = 1,
+            ["Gossip"] = 37137,
             ["Trigger"] = {
                 ["y"] = -1157.9,
                 ["x"] = -5529.9,
@@ -4186,8 +4186,8 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
         }, -- [8]
         {
             ["Trigger"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
             ["Qpart"] = {
                 [25037] = {
@@ -4196,8 +4196,8 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
             ["Range"] = 50.23,
             ["TT"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
         },
         {
@@ -4739,8 +4739,8 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
         }, -- [8]
         {
             ["Trigger"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
             ["Qpart"] = {
                 [25037] = {
@@ -4749,8 +4749,8 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
             ["Range"] = 50.23,
             ["TT"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
         },
         {
@@ -5292,8 +5292,8 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
         }, -- [8]
         {
             ["Trigger"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
             ["Qpart"] = {
                 [25037] = {
@@ -5302,8 +5302,8 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
             ["Range"] = 50.23,
             ["TT"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
         },
         {
@@ -5845,8 +5845,8 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
         }, -- [8]
         {
             ["Trigger"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
             ["Qpart"] = {
                 [25037] = {
@@ -5855,8 +5855,8 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
             ["Range"] = 50.23,
             ["TT"] = {
-                ["y"] = -1184.4,
-                ["x"] = -5701.9,
+                ["y"] = 1329.7,
+                ["x"] = -5558.9,
             },
         },
         {

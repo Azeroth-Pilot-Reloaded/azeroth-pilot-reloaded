@@ -38,7 +38,13 @@ function APR.transport:GetMeToRightZone()
     else
         APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
         local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
+        if not CurStep then
+            return
+        end
         local step = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
+        if not step then
+            return
+        end
         local mapInfo = C_Map.GetMapInfo(mapID)
         if not mapInfo then
             return
@@ -103,7 +109,7 @@ function APR.transport:GetRouteMapIDsAndName()
         print("Function: APR.transport:GetRouteMapIDAndName()")
     end
 
-    if not APRCustomPath then
+    if not APRCustomPath and APRCustomPath[APR.PlayerID] then
         APR:PrintError('No APRCustomPath')
         return
     end
