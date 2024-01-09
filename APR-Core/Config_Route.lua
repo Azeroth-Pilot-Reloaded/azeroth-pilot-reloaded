@@ -639,10 +639,12 @@ function APR.routeconfig:GetStartingZonePrefab()
                 -- HORDE
             elseif (APR.Race == "Orc") then
                 tinsert(APRCustomPath[APR.PlayerID], "Orc Start")
+                tinsert(APRCustomPath[APR.PlayerID], "Durotar")
             elseif (APR.Race == "Tauren") then
                 tinsert(APRCustomPath[APR.PlayerID], "Tauren Start")
             elseif (APR.Race == "Troll") then
                 tinsert(APRCustomPath[APR.PlayerID], "Troll Start")
+                tinsert(APRCustomPath[APR.PlayerID], "Durotar")
             elseif (APR.Race == "Scourge") then --Undead
                 tinsert(APRCustomPath[APR.PlayerID], "Scourge Start")
             elseif (APR.Race == "BloodElf") then
@@ -801,7 +803,7 @@ function APR.routeconfig:CheckIsCustomPathEmpty()
     if (APR.settings.profile.debug) then
         print("Function: APR.routeconfig:CheckIsCustomPathEmpty()")
     end
-    if not next(APRCustomPath[APR.PlayerID]) then
+    if APRCustomPath[APR.PlayerID] and not next(APRCustomPath[APR.PlayerID]) then
         APR.ActiveRoute = nil
         APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
 
@@ -822,7 +824,12 @@ APR.routeconfig.eventFrame:SetScript("OnEvent", function(self, event, ...)
         local arg1, _ = ...;
         APR.Level = arg1
         if not IsTableEmpty(APRCustomPath[APR.PlayerID]) then
-            if APR.Level == 50 then
+            if APR.Level == 10 then
+                APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_SPEEDRUN"], function()
+                    APRCustomPath[APR.PlayerID] = {}
+                    APR.routeconfig:GetSpeedRunPrefab()
+                end)
+            elseif APR.Level == 50 then
                 APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_SL"], function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetSLPrefab()
