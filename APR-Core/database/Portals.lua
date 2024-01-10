@@ -271,9 +271,17 @@ APR.Portals = {
                 x = -7109.4,
                 y = 10002.7,
             },
+            ["Howling Fjord"] = {
+                x = 362.8,
+                y = 2062.7,
+            },
             ["DarkPortal"] = {
                 x = -3207.5,
                 y = -11902.7,
+            },
+            ["DarkPortal BC"] = {
+                x = 55.8,
+                y = 1768.7,
             },
         },
         -- The Burning Crusade
