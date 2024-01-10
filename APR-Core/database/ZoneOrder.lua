@@ -2575,6 +2575,7 @@
             { continent = 12,   nextContinent = 1978, nextZone = 2112, portalKey = "Valdrakken",             closestTaxiNode = "Orgrimmar, Durotar" },
 
             { continent = 13,   nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Brill, Tirisfal Glades" },
+            { continent = 13,   nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Silvermoon",   closestTaxiNode = "Silvermoon City" },
             { continent = 101,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Shattrath, Terokkar Forest" },
             { continent = 101,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar DarkPortal",   closestTaxiNode = "Hellfire Peninsula, The Dark Portal" },
             { continent = 113,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Dalaran" },
@@ -2612,7 +2613,7 @@
             Dragonflight = { 84, 1978, 2022, 2023, 2024, 2025, 2028, 2088, 2089, 2090, 2091, 2107, 2109, 2110, 2112, 2118, 2135 },
         },
         ["Horde"] = {
-            Vanilla = { 1, 7, 10, 18, 21, 22, 23, 25, 85, 94, 124, 174, 194, 199, 217, 462, 463, 464, 465, 466, 467, 1409, 1726, 1727, 1728 },
+            Vanilla = { 1, 7, 10, 18, 21, 22, 23, 25, 85, 94, 124, 174, 194, 199, 217, 462, 463, 464, 465, 466, 467, 530, 1409, 1726, 1727, 1728 },
             TheBurningCrusade = {},
             WrathOfTheLichKing = { 1602, 2297 },
             Cataclysm = {},

@@ -267,6 +267,10 @@ APR.Portals = {
                 x = 289.3,
                 y = 2070.5,
             },
+            ["Orgrimmar Silvermoon"] = {
+                x = -7109.4,
+                y = 10002.7,
+            },
             ["DarkPortal"] = {
                 x = -3207.5,
                 y = -11902.7,

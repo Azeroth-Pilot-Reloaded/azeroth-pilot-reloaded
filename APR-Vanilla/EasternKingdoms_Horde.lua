@@ -10190,19 +10190,19 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = 10453.6,
-            ["x"] = -6462.2,
-        },
         ["Qpart"] = {
             [8326] = {
                 ["1"] = "1",
             },
         },
         ["Range"] = 45.33,
-        ["TT"] = {
-            ["y"] = 10453.6,
+        ["Trigger"] = {
             ["x"] = -6462.2,
+            ["y"] = 10453.6,
+        },
+        ["TT"] = {
+            ["x"] = -6462.2,
+            ["y"] = 10453.6,
         },
     }, -- [6]
     {
@@ -10260,6 +10260,9 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
         ["Done"] = {
             8327,
         },
+        ["SpellButton"] = {
+            ["37439-1"] = 28730,
+        },
         ["TT"] = {
             ["y"] = 10302.4,
             ["x"] = -6228.9,
@@ -10288,6 +10291,9 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             [37440] = {
                 ["1"] = "1",
             },
+        },
+        ["SpellButton"] = {
+            ["37439-1"] = 28730,
         },
         ["Range"] = 48.9,
         ["TT"] = {
