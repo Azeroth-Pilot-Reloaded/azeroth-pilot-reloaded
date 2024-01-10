@@ -744,19 +744,19 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             },
         },
         ["Trigger"] = {
-            ["y"] = 2386.5,
-            ["x"] = 1358.4,
+            ["y"] = 2388.5,
+            ["x"] = 1483.8,
         },
-        ["Range"] = 0.75,
+        ["Range"] = 20,
         ["TT"] = {
-            ["y"] = 2386.5,
-            ["x"] = 1358.4,
+            ["y"] = 2388.5,
+            ["x"] = 1483.8,
         },
     },
     { -- [step 63
         ["TT"] = {
-            ["y"] = 10140.6,
-            ["x"] = -6003.8,
+            ["y"] = 2388.5,
+            ["x"] = 1483.8,
         },
         ["DropQuest"] = 24979,
         ["DroppableQuest"] = {
@@ -774,12 +774,13 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
         },
         ["Trigger"] = {
             ["y"] = 2444.1,
-            ["x"] = 1302.3,
+            ["x"] = 1602.3,
         },
+        ["Gossip"] = 1,
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 2444.1,
-            ["x"] = 1302.3,
+            ["x"] = 1602.3,
         },
     },
     { -- [step 65
@@ -804,6 +805,9 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
                 ["1"] = "1",
             },
         },
+        ["Button"] = {
+            ["24974-1"] = 73108,
+        },
         ["Trigger"] = {
             ["y"] = 2575.5,
             ["x"] = 1434,
@@ -817,17 +821,17 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
     { -- [step 67
         ["Qpart"] = {
             [24976] = {
-                ["3"] = "3",
+                ["2"] = "2",
             },
         },
         ["Trigger"] = {
-            ["y"] = 2532.3,
-            ["x"] = 1366.5,
+            ["y"] = 2581.8,
+            ["x"] = 1333.6,
         },
-        ["Range"] = 0.75,
+        ["Range"] = 20,
         ["TT"] = {
-            ["y"] = 2532.3,
-            ["x"] = 1366.5,
+            ["y"] = 2581.8,
+            ["x"] = 1333.6,
         },
     },
     { -- [step 68
@@ -983,10 +987,20 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
         },
     },
     { -- [step 82
-        ["ExtraLineText"] = "UPSTAIRS",
         ["Done"] = {
             24982,
         },
+        ["ExtraLineText"] = "UPSTAIRS",
+        ["TT"] = {
+            ["y"] = 2311.9,
+            ["x"] = 276.8,
+        },
+    },
+    { -- [step 82
+        ["PickUp"] = {
+            24983,
+        },
+        ["ExtraLineText"] = "UPSTAIRS",
         ["TT"] = {
             ["y"] = 2311.9,
             ["x"] = 276.8,
@@ -1158,14 +1172,8 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             ["x"] = 298,
         },
     },
-    { -- [step 97
-        ["Done"] = {
-            32672,
-        },
-        ["TT"] = {
-            ["y"] = 2275.1,
-            ["x"] = 237.8,
-        },
+    {
+        ["Grind"] = 10,
     },
     { -- [step 98
         ["ZoneDoneSave"] = 1,
