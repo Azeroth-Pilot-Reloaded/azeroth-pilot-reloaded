@@ -1,7 +1,7 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
-local hbd = LibStub("HereBeDragons-2.0")
+
 
 -- Initialize APR Party  module
 APR.coordinate = APR:NewModule("Coordinate")
@@ -41,7 +41,7 @@ CoordinateFrame:SetScript("OnUpdate", function(self, elapsed)
     if fpsCounter > frequency then
         fpsCounter = fpsCounter - frequency
 
-        local x, y = hbd:GetUnitWorldPosition("player")
+        local y, x = UnitPosition("player")
         if not x or not y then
             local blank = ("-"):rep(8)
             self.Text:SetText(blank)
