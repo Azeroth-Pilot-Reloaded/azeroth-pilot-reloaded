@@ -207,7 +207,7 @@ function APR.map:UpdateLine()
         self:RemoveMapLine()
         return
     end
-    if IsInInstance() or WorldMapFrame:GetMapID() == COSMIC_MAP_ID or WorldMapFrame:GetMapID() == WORLD_MAP_ID or not CheckIsInRouteZone() then
+    if IsInInstance() or WorldMapFrame:GetMapID() == COSMIC_MAP_ID or WorldMapFrame:GetMapID() == WORLD_MAP_ID then
         self:RemoveMapLine()
         return
     end
@@ -219,7 +219,13 @@ function APR.map:UpdateLine()
         if steps and steps.TT then
             local mapHeight, mapWidth = WorldMapButton:GetHeight(), WorldMapButton:GetWidth()
             local playerPos = C_Map.GetPlayerMapPosition(mapID, "player")
-            local ox, oy = APR:GetPlayerMapPos(mapID, steps.TT.y, steps.TT.x)
+
+            local ox, oy
+            if APR.ArrowActive and APR.ArrowActive_X ~= 0 then
+                ox, oy = APR:GetPlayerMapPos(mapID, APR.ArrowActive_Y, APR.ArrowActive_X)
+            else
+                ox, oy = APR:GetPlayerMapPos(mapID, steps.TT.y, steps.TT.x)
+            end
             if not playerPos then
                 self:RemoveMapLine()
                 return
