@@ -28,7 +28,6 @@ function APR:OnInitialize()
     APR.discord = C_AddOns.GetAddOnMetadata("APR", "X-Discord")
 
     APR.ActiveQuests = {}
-    APR.NPCList = {}
 
     APR.Breadcrums = {}
     APR.IsInRouteZone = false
@@ -51,6 +50,7 @@ function APR:OnInitialize()
 
     -- APR Saved Data
     APRData = APRData or {}
+    APRData.NPCList = APRData.NPCList or {}
     APRData[APR.PlayerID] = APRData[APR.PlayerID] or {}
     APRData[APR.PlayerID].FirstLoad = APRData[APR.PlayerID].FirstLoad == nil and true or
         APRData[APR.PlayerID].FirstLoad

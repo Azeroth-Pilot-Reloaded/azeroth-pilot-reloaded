@@ -408,6 +408,8 @@ function APR.questOrderList:AddStepFromRoute()
                 AddStepFrameWithQuest(stepIndex, questText, questInfo, color)
             elseif step.WarMode then
                 AddStepFrame(stepIndex, L["TURN_ON_WARMODE"], "gray")
+            elseif step.Grind then
+                AddStepFrame(stepIndex, L["GRIND"] .. " " .. step.Grind, "gray")
             elseif step.ZoneDoneSave then
                 AddStepFrame(stepIndex, L["ROUTE_COMPLETED"], "gray")
             end
