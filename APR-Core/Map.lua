@@ -126,7 +126,8 @@ local function PositionMinimapLine(ox, oy)
         minimapLine:Show()
     end
 
-    local px, py = hbd:GetPlayerWorldPosition()
+    local py, px = UnitPosition("player")
+
     if not px or not py then
         APR.map:RemoveMinimapLine()
         return
