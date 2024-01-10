@@ -698,9 +698,6 @@ local function APR_UpdateStep()
             if (C_QuestLog.IsQuestFlaggedCompleted(steps["SetHS"])) then
                 _G.UpdateNextStep()
                 return
-            elseif (steps["HSZone"] and APRData[APR.PlayerID]["HSLoc"] and APRData[APR.PlayerID]["HSLoc"] == steps["HSZone"]) then
-                _G.UpdateNextStep()
-                return
             end
         elseif (steps["GetFP"]) then
             if APR.IsInRouteZone then
@@ -774,17 +771,10 @@ local function APR_UpdateStep()
 
             if not C_QuestLog.IsQuestFlaggedCompleted(Qid) and not APR.ActiveQuests[Qid] then
                 if APR.IsInRouteZone then
-                    local MobName = questData["Text"]
                     local MobId = questData["MobId"]
+                    local MobName = APRData.NPCList[MobId] or questData["Text"]
+                    local questText = L["Q_DROP"] .. " - " .. MobName
 
-                    if APR.NPCList[MobId] then
-                        MobName = APR.NPCList[MobId]
-                    end
-
-                    local questText = MobName .. " - " .. L["Q_DROP"]
-                    if L[MobName] then
-                        questText = L[MobName] .. " - " .. L["Q_DROP"]
-                    end
                     APR.currentStep:UpdateQuestSteps(Qid, questText, "DroppableQuest")
                 end
             end
@@ -805,6 +795,13 @@ local function APR_UpdateStep()
                         end
                     end
                 end
+            end
+        end
+        if steps["Grind"] then
+            if APR.Level < steps["Grind"] then
+                APR.currentStep:AddExtraLineText("GRIND", L["GRIND"] .. " " .. steps["Grind"])
+            else
+                _G.UpdateNextStep()
             end
         end
 
@@ -1591,8 +1588,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
     end
     if (event == "HEARTHSTONE_BOUND") then
-        local playerMapID = APR:GetPlayerMapID()
-        APRData[APR.PlayerID]["HSLoc"] = playerMapID
         if (steps and steps["SetHS"]) then
             _G.UpdateNextStep()
         end
@@ -1792,8 +1787,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 if (guid) then
                     local type, _, _, _, _, npc_id, _ = strsplit("-", guid);
                     if (type == "Creature" and npc_id and name and steps["DroppableQuest"]["MobId"] == tonumber(npc_id)) then
-                        if (APR.NPCList and not APR.NPCList[tonumber(npc_id)]) then
-                            APR.NPCList[tonumber(npc_id)] = name
+                        if (APRData.NPCList and not APRData.NPCList[tonumber(npc_id)]) then
+                            APRData.NPCList[tonumber(npc_id)] = name
                         end
                     end
                 end
