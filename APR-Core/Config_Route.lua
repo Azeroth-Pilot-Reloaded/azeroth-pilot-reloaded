@@ -634,6 +634,7 @@ function APR.routeconfig:GetStartingZonePrefab()
         elseif APR.ClassId == APR.Classes["Demon Hunter"] then
             tinsert(APRCustomPath[APR.PlayerID], "Demon Hunter Start")
         elseif APR.Level < 10 then
+            -- Neutral
             if (APR.Race == "Pandaren") then
                 tinsert(APRCustomPath[APR.PlayerID], "Pandaren Start")
                 -- HORDE
@@ -642,6 +643,7 @@ function APR.routeconfig:GetStartingZonePrefab()
                 tinsert(APRCustomPath[APR.PlayerID], "Durotar")
             elseif (APR.Race == "Tauren") then
                 tinsert(APRCustomPath[APR.PlayerID], "Tauren Start")
+                -- missing part 2
             elseif (APR.Race == "Troll") then
                 tinsert(APRCustomPath[APR.PlayerID], "Troll Start")
                 tinsert(APRCustomPath[APR.PlayerID], "Durotar")
@@ -649,6 +651,7 @@ function APR.routeconfig:GetStartingZonePrefab()
                 tinsert(APRCustomPath[APR.PlayerID], "Scourge Start")
             elseif (APR.Race == "BloodElf") then
                 tinsert(APRCustomPath[APR.PlayerID], "Blood Elf Start")
+                -- missing part 2
             elseif (APR.Race == "Goblin") then
                 tinsert(APRCustomPath[APR.PlayerID], "Goblin Start")
                 -- ALLIANCE

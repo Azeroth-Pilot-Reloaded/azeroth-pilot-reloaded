@@ -69,6 +69,16 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "BETA-v3.1.4", "2024-01-10" },
+        "#Bugs",
+        "- Fix no quest/item button on the current step",
+        "- Fix starting zone for Troll, Orc, Blood Elf, Undead",
+        "- Fix missing map line on switch continent",
+        "- Fix wrong coord for some zone with the minimap line + coord frame",
+
+        "#Route",
+        "- New Grind step option (to ask to grind to lvl XX)",
+
         { "BETA-v3.1.3", "2024-01-06" },
         "#Bugs",
         "- Fix auto open of the route option on zone code step",
