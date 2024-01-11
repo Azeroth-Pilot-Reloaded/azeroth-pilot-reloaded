@@ -654,6 +654,7 @@ function APR.routeconfig:GetStartingZonePrefab()
                 -- missing part 2
             elseif (APR.Race == "Goblin") then
                 tinsert(APRCustomPath[APR.PlayerID], "Goblin Start")
+                tinsert(APRCustomPath[APR.PlayerID], "Goblin - Lost Isles")
                 -- ALLIANCE
             elseif (APR.Race == "NightElf") then
                 tinsert(APRCustomPath[APR.PlayerID], "Night Elf Start")
@@ -828,7 +829,12 @@ APR.routeconfig.eventFrame:SetScript("OnEvent", function(self, event, ...)
         local arg1, _ = ...;
         APR.Level = arg1
         if not IsTableEmpty(APRCustomPath[APR.PlayerID]) then
-            if APR.Level == 10 then
+            local notSkippableRoute = { "01-10 Exile's Reach", "Goblin - Lost Isles", "Dracthyr Start", "Pandaren Start",
+                "Allied Death Knight Start", "Death Knight Start", "Demon Hunter Start" }
+            local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
+            if Contains(notSkippableRoute, currentRouteName) then
+                return
+            elseif APR.Level == 10 then
                 APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_SPEEDRUN"], function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetSpeedRunPrefab()
