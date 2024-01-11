@@ -277,6 +277,7 @@ function APR.questOrderList:AddStepFromRoute()
         if (
                 (not step.Faction or step.Faction == APR.Faction) and
                 (not step.Race or step.Race == APR.Race) and
+                (not step.Gender or step.Gender == APR.Gender) and
                 (not step.Class or step.Class == APR.ClassName) and
                 (not step.HasAchievement or _G.HasAchievement(step.HasAchievement)) and
                 (not step.DontHaveAchievement or not _G.HasAchievement(step.DontHaveAchievement))
