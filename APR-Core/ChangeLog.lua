@@ -128,7 +128,7 @@ function APR.changelog:SetChangeLog()
         "- Rework - transport logic",
         "- Fix bunch of tiny stuff in code",
 
-        { "v3.0.3",      "2023-11-14" },
+        { "v3.0.3", "2023-11-14" },
         "#Features",
         "- Glichy dotted line replaced by normal line (but you can now change color, transparency and size)",
         "- Add color and size option for the next steps icons on map and minimap",
@@ -137,7 +137,7 @@ function APR.changelog:SetChangeLog()
         "#Bugs",
         "- Fix Error lua on taci map",
         "- Fix Jumping Current Step frame on update if not attach to quest log",
-        "- Fix rollback did not rollback on waypoint step (Crange)",
+        "- Fix rollback did not rollback on waypoint step",
         "- Add UI reload on reset command to the current route reset",
 
         "#Hint",

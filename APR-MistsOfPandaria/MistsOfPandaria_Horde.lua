@@ -29,7 +29,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 3137.1,
 				["x"] = -736,
 			},
-			["CRange"] = 31765,
+			["Waypoint"] = 31765,
 			["Range"] = 9.84,
 			["TT"] = {
 				["y"] = 3137.1,
@@ -41,7 +41,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 3113.9,
 				["x"] = -738.8,
 			},
-			["CRange"] = 31765,
+			["Waypoint"] = 31765,
 			["Range"] = 7.49,
 			["TT"] = {
 				["y"] = 3113.9,
@@ -53,7 +53,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 3115.6,
 				["x"] = -723.3,
 			},
-			["CRange"] = 31765,
+			["Waypoint"] = 31765,
 			["Range"] = 9.23,
 			["TT"] = {
 				["y"] = 3115.6,
@@ -160,7 +160,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 3158.1,
 				["x"] = -894.2,
 			},
-			["CRange"] = 31767,
+			["Waypoint"] = 31767,
 			["Range"] = 8.16,
 			["TT"] = {
 				["y"] = 3158.1,
@@ -825,7 +825,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 2506.1,
 				["x"] = -367.9,
 			},
-			["CRange"] = 31779,
+			["Waypoint"] = 31779,
 			["Range"] = 17.65,
 			["TT"] = {
 				["y"] = 2506.1,
@@ -1055,7 +1055,7 @@ if (APR.Faction == "Horde") then
 				["x"] = -454.9,
 			},
 			["Range"] = 15.26,
-			["CRange"] = 29822,
+			["Waypoint"] = 29822,
 			["TT"] = {
 				["y"] = 2163,
 				["x"] = -454.9,
@@ -2606,7 +2606,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 2403.1,
 				["x"] = 1768.8,
 			},
-			["CRange"] = 30661,
+			["Waypoint"] = 30661,
 			["Range"] = 26.65,
 			["TT"] = {
 				["y"] = 2403.1,
@@ -2680,7 +2680,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [2]
 		{
-			["CRange"] = 30489,
+			["Waypoint"] = 30489,
 			["Trigger"] = {
 				["y"] = 2551.6,
 				["x"] = 267,
@@ -2697,7 +2697,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [3]
 		{
-			["CRange"] = 30489,
+			["Waypoint"] = 30489,
 			["Trigger"] = {
 				["y"] = 2512.6,
 				["x"] = 231.3,
@@ -2714,7 +2714,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [4]
 		{
-			["CRange"] = 30489,
+			["Waypoint"] = 30489,
 			["Trigger"] = {
 				["y"] = 2524.1,
 				["x"] = 200.1,
@@ -2731,7 +2731,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [5]
 		{
-			["CRange"] = 30489,
+			["Waypoint"] = 30489,
 			["Trigger"] = {
 				["y"] = 2546.1,
 				["x"] = 186.6,
@@ -2748,7 +2748,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [6]
 		{
-			["CRange"] = 30489,
+			["Waypoint"] = 30489,
 			["Trigger"] = {
 				["y"] = 2518.6,
 				["x"] = 140.3,
@@ -3111,7 +3111,7 @@ if (APR.Faction == "Horde") then
 				["y"] = 3408.8,
 				["x"] = 1118.5,
 			},
-			["CRange"] = 30621,
+			["Waypoint"] = 30621,
 			["Range"] = 32.8,
 			["TT"] = {
 				["y"] = 3408.8,
@@ -3293,7 +3293,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [9]
 		{
-			["CRange"] = 30604,
+			["Waypoint"] = 30604,
 			["Trigger"] = {
 				["y"] = 2641.5,
 				["x"] = 1533.9,
@@ -3314,7 +3314,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [10]
 		{
-			["CRange"] = 30604,
+			["Waypoint"] = 30604,
 			["Trigger"] = {
 				["y"] = 2613.5,
 				["x"] = 1545.5,
@@ -3360,7 +3360,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [12]
 		{
-			["CRange"] = 30604,
+			["Waypoint"] = 30604,
 			["Trigger"] = {
 				["y"] = 2656.6,
 				["x"] = 1529.5,
@@ -3487,14 +3487,14 @@ if (APR.Faction == "Horde") then
 				["x"] = 1687,
 			},
 			["Range"] = 13.74,
-			["CRange"] = 30607,
+			["Waypoint"] = 30607,
 			["TT"] = {
 				["y"] = 3039.3,
 				["x"] = 1687,
 			},
 		}, -- [21]
 		{
-			["CRange"] = 30607,
+			["Waypoint"] = 30607,
 			["Trigger"] = {
 				["y"] = 3089.6,
 				["x"] = 1696.3,
@@ -3514,7 +3514,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [22]
 		{
-			["CRange"] = 30607,
+			["Waypoint"] = 30607,
 			["Trigger"] = {
 				["y"] = 3099.8,
 				["x"] = 1730,
@@ -3534,7 +3534,7 @@ if (APR.Faction == "Horde") then
 			},
 		}, -- [23]
 		{
-			["CRange"] = 30607,
+			["Waypoint"] = 30607,
 			["Trigger"] = {
 				["y"] = 3092.6,
 				["x"] = 1766,

@@ -587,7 +587,7 @@ end
 --- @param itemID number Item ID
 --- @param attribute number Icon attribute spell/item
 function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
-    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
+    if InCombatLockdown() or not APR.settings.profile.currentStepShow and itemID then
         return
     end
     attribute = attribute or "item"

@@ -746,7 +746,7 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["CRange"] = 55186,
+                ["Waypoint"] = 55186,
                 ["Trigger"] = {
                     ["y"] = -77,
                     ["x"] = -2641.2,
@@ -763,7 +763,7 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["CRange"] = 55186,
+                ["Waypoint"] = 55186,
                 ["Trigger"] = {
                     ["y"] = 45.1,
                     ["x"] = -2577.2,
@@ -823,7 +823,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2496.7,
                 },
                 ["Range"] = 15.09,
-                ["CRange"] = 55186,
+                ["Waypoint"] = 55186,
                 ["TT"] = {
                     ["y"] = 49.1,
                     ["x"] = -2496.7,
@@ -983,7 +983,7 @@ if (APR.Faction == "Alliance") then
                     ["y"] = 231.8,
                     ["x"] = -2279.7,
                 },
-                ["CRange"] = 55194,
+                ["Waypoint"] = 55194,
                 ["Range"] = 3.3,
                 ["TT"] = {
                     ["y"] = 231.8,
@@ -1065,7 +1065,7 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["CRange"] = 55763,
+                ["Waypoint"] = 55763,
                 ["Trigger"] = {
                     ["y"] = 492.1,
                     ["x"] = -2423.9,
@@ -1616,7 +1616,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2398.5,
                 },
                 ["Range"] = 12.06,
-                ["CRange"] = 58923,
+                ["Waypoint"] = 58923,
                 ["TT"] = {
                     ["y"] = 347.5,
                     ["x"] = -2398.5,
@@ -1629,7 +1629,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2444.2,
                 },
                 ["Range"] = 8.18,
-                ["CRange"] = 58923,
+                ["Waypoint"] = 58923,
                 ["TT"] = {
                     ["y"] = 313.5,
                     ["x"] = -2444.2,
@@ -1995,7 +1995,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2344.5,
                 },
                 ["Range"] = 11.53,
-                ["CRange"] = 58962,
+                ["Waypoint"] = 58962,
                 ["TT"] = {
                     ["y"] = 354.6,
                     ["x"] = -2344.5,
@@ -2085,7 +2085,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2331.5,
                 },
                 ["Range"] = 20.09,
-                ["CRange"] = 58914,
+                ["Waypoint"] = 58914,
                 ["TT"] = {
                     ["y"] = 272.8,
                     ["x"] = -2331.5,
@@ -2098,7 +2098,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2346.9,
                 },
                 ["Range"] = 10.6,
-                ["CRange"] = 58914,
+                ["Waypoint"] = 58914,
                 ["TT"] = {
                     ["y"] = 352.8,
                     ["x"] = -2346.9,
@@ -2193,7 +2193,7 @@ if (APR.Faction == "Alliance") then
                     ["y"] = 83.3,
                     ["x"] = -2214.2,
                 },
-                ["CRange"] = 55639,
+                ["Waypoint"] = 55639,
                 ["Range"] = 7.92,
                 ["TT"] = {
                     ["y"] = 83.3,
@@ -2330,7 +2330,7 @@ if (APR.Faction == "Alliance") then
                     ["y"] = 217.4,
                     ["x"] = -2060.4,
                 },
-                ["CRange"] = 56344,
+                ["Waypoint"] = 56344,
                 ["Range"] = 17.88,
                 ["TT"] = {
                     ["y"] = 217.4,
@@ -2342,7 +2342,7 @@ if (APR.Faction == "Alliance") then
                     ["y"] = 219.6,
                     ["x"] = -2128,
                 },
-                ["CRange"] = 56344,
+                ["Waypoint"] = 56344,
                 ["Range"] = 20.92,
                 ["TT"] = {
                     ["y"] = 219.6,
@@ -2438,7 +2438,7 @@ if (APR.Faction == "Alliance") then
                     ["y"] = 619,
                     ["x"] = -2076.2,
                 },
-                ["CRange"] = 55981,
+                ["Waypoint"] = 55981,
                 ["Range"] = 11.9,
                 ["TT"] = {
                     ["y"] = 619,
@@ -2471,7 +2471,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = -2012.4,
                 },
                 ["Range"] = 27.27,
-                ["CRange"] = 55990,
+                ["Waypoint"] = 55990,
                 ["TT"] = {
                     ["y"] = 616.5,
                     ["x"] = -2012.4,
@@ -2698,7 +2698,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 610.4,
                 },
                 ["Range"] = 6.45,
-                ["CRange"] = 34398,
+                ["Waypoint"] = 34398,
                 ["TT"] = {
                     ["y"] = -8843,
                     ["x"] = 610.4,
@@ -2720,7 +2720,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 606.3,
                 },
                 ["Range"] = 6.45,
-                ["CRange"] = 34398,
+                ["Waypoint"] = 34398,
                 ["TT"] = {
                     ["y"] = -8769.9,
                     ["x"] = 606.3,
@@ -2732,7 +2732,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 557.5,
                 },
                 ["Range"] = 6.45,
-                ["CRange"] = 34398,
+                ["Waypoint"] = 34398,
                 ["TT"] = {
                     ["y"] = -8745.7,
                     ["x"] = 557.5,
@@ -2744,7 +2744,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 516.1,
                 },
                 ["Range"] = 6.45,
-                ["CRange"] = 34398,
+                ["Waypoint"] = 34398,
                 ["TT"] = {
                     ["y"] = -8610.4,
                     ["x"] = 516.1,
@@ -2756,7 +2756,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 503,
                 },
                 ["Range"] = 6.45,
-                ["CRange"] = 34398,
+                ["Waypoint"] = 34398,
                 ["TT"] = {
                     ["y"] = -8541.5,
                     ["x"] = 503,
@@ -2768,7 +2768,7 @@ if (APR.Faction == "Alliance") then
                     ["x"] = 648,
                 },
                 ["Range"] = 6.45,
-                ["CRange"] = 34398,
+                ["Waypoint"] = 34398,
                 ["TT"] = {
                     ["y"] = -8333.8,
                     ["x"] = 648,

@@ -289,7 +289,7 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
             ["x"] = 887,
         },
         ["Range"] = 10.77,
-        ["CRange"] = 28730,
+        ["Waypoint"] = 28730,
         ["TT"] = {
             ["y"] = 10417.5,
             ["x"] = 887,
@@ -301,7 +301,7 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
             ["x"] = 857.9,
         },
         ["Range"] = 9.32,
-        ["CRange"] = 28730,
+        ["Waypoint"] = 28730,
         ["TT"] = {
             ["y"] = 10464.9,
             ["x"] = 858.7,
@@ -313,7 +313,7 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
             ["x"] = 824.5,
         },
         ["Range"] = 9.15,
-        ["CRange"] = 28730,
+        ["Waypoint"] = 28730,
         ["TT"] = {
             ["y"] = 10517,
             ["x"] = 824.5,
@@ -325,7 +325,7 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
             ["x"] = 843.2,
         },
         ["Range"] = 10.13,
-        ["CRange"] = 28730,
+        ["Waypoint"] = 28730,
         ["TT"] = {
             ["y"] = 10451.7,
             ["x"] = 843.2,
@@ -337,7 +337,7 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
             ["x"] = 819,
         },
         ["Range"] = 10.75,
-        ["CRange"] = 28730,
+        ["Waypoint"] = 28730,
         ["TT"] = {
             ["y"] = 10446.7,
             ["x"] = 819,
@@ -349,7 +349,7 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
             ["x"] = 788.2,
         },
         ["Range"] = 5.7,
-        ["CRange"] = 28730,
+        ["Waypoint"] = 28730,
         ["TT"] = {
             ["y"] = 10501.6,
             ["x"] = 788.2,
@@ -571,7 +571,7 @@ APR.RouteQuestStepList["A97-AmmenVale"] = {
         },
     }, -- [17]
     {
-        ["CRange"] = 37445,
+        ["Waypoint"] = 37445,
         ["Trigger"] = {
             ["y"] = -4458.9,
             ["x"] = -13875.7,
@@ -1174,7 +1174,7 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             ["x"] = -12564.8,
         },
         ["Range"] = 25.37,
-        ["CRange"] = 9560,
+        ["Waypoint"] = 9560,
         ["TT"] = {
             ["y"] = -3381.7,
             ["x"] = -12564.8,
@@ -1289,7 +1289,7 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             ["x"] = -12347.8,
         },
         ["Range"] = 8.63,
-        ["CRange"] = 9573,
+        ["Waypoint"] = 9573,
         ["TT"] = {
             ["y"] = -3304.9,
             ["x"] = -12347.8,
@@ -1301,7 +1301,7 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             ["x"] = -12361.5,
         },
         ["Range"] = 9.31,
-        ["CRange"] = 9573,
+        ["Waypoint"] = 9573,
         ["TT"] = {
             ["y"] = -3256.9,
             ["x"] = -12361.5,
@@ -1394,7 +1394,7 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             ["x"] = -12357.5,
         },
         ["Range"] = 10.09,
-        ["CRange"] = 9573,
+        ["Waypoint"] = 9573,
         ["TT"] = {
             ["y"] = -3261.5,
             ["x"] = -12357.5,
@@ -1659,7 +1659,7 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             ["x"] = -11601,
         },
         ["Range"] = 11.19,
-        ["CRange"] = 9515,
+        ["Waypoint"] = 9515,
         ["TT"] = {
             ["y"] = -4874.2,
             ["x"] = -11601,
@@ -1671,7 +1671,7 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             ["x"] = -11579.5,
         },
         ["Range"] = 10.26,
-        ["CRange"] = 9515,
+        ["Waypoint"] = 9515,
         ["TT"] = {
             ["y"] = -4830.9,
             ["x"] = -11579.5,
@@ -1699,7 +1699,7 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             ["x"] = -11612.8,
         },
         ["Range"] = 7.5,
-        ["CRange"] = 9515,
+        ["Waypoint"] = 9515,
         ["TT"] = {
             ["y"] = -4797,
             ["x"] = -11612.8,
@@ -1711,7 +1711,7 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             ["x"] = -11546.3,
         },
         ["Range"] = 10.67,
-        ["CRange"] = 9515,
+        ["Waypoint"] = 9515,
         ["TT"] = {
             ["y"] = -4733.4,
             ["x"] = -11546.3,
@@ -1723,7 +1723,7 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             ["x"] = -11535.3,
         },
         ["Range"] = 10.64,
-        ["CRange"] = 9515,
+        ["Waypoint"] = 9515,
         ["TT"] = {
             ["y"] = -4767,
             ["x"] = -11535.3,
@@ -1735,7 +1735,7 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             ["x"] = -11599.2,
         },
         ["Range"] = 17.13,
-        ["CRange"] = 9515,
+        ["Waypoint"] = 9515,
         ["TT"] = {
             ["y"] = -4874.9,
             ["x"] = -11599.2,
@@ -2351,7 +2351,7 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
             ["x"] = -11535,
         },
         ["Range"] = 30.95,
-        ["CRange"] = 9578,
+        ["Waypoint"] = 9578,
         ["TT"] = {
             ["y"] = -2131.5,
             ["x"] = -11535,
@@ -3188,7 +3188,7 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [104]
     {
-        ["CRange"] = 9669,
+        ["Waypoint"] = 9669,
         ["Trigger"] = {
             ["y"] = -1550.4,
             ["x"] = -10786,
@@ -3209,7 +3209,7 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [105]
     {
-        ["CRange"] = 9669,
+        ["Waypoint"] = 9669,
         ["Trigger"] = {
             ["y"] = -1374.5,
             ["x"] = -10659.2,
@@ -3230,7 +3230,7 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [106]
     {
-        ["CRange"] = 9669,
+        ["Waypoint"] = 9669,
         ["Trigger"] = {
             ["y"] = -1425.6,
             ["x"] = -10617,
@@ -3456,7 +3456,7 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
             ["y"] = -1634.3,
             ["x"] = -11616.5,
         },
-        ["CRange"] = 9711,
+        ["Waypoint"] = 9711,
         ["Range"] = 39.78,
         ["TT"] = {
             ["y"] = -1635.3,
@@ -3748,7 +3748,7 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
             ["x"] = -12766.5,
         },
         ["Range"] = 34,
-        ["CRange"] = 9683,
+        ["Waypoint"] = 9683,
         ["TT"] = {
             ["y"] = -1785,
             ["x"] = -12766.5,
@@ -4059,7 +4059,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             ["x"] = -618.5,
         },
         ["Range"] = 12,
-        ["CRange"] = 13554,
+        ["Waypoint"] = 13554,
         ["TT"] = {
             ["y"] = 7045.3,
             ["x"] = -618.5,
@@ -4075,7 +4075,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [24]
     {
-        ["CRange"] = 13554,
+        ["Waypoint"] = 13554,
         ["Trigger"] = {
             ["y"] = 6799.1,
             ["x"] = -674.8,
@@ -4124,7 +4124,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [27]
     {
-        ["CRange"] = 13529,
+        ["Waypoint"] = 13529,
         ["Trigger"] = {
             ["y"] = 6818.6,
             ["x"] = -698,
@@ -4895,7 +4895,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             ["x"] = -1084.9,
         },
         ["Range"] = 25.55,
-        ["CRange"] = 13590,
+        ["Waypoint"] = 13590,
         ["TT"] = {
             ["y"] = 7362.8,
             ["x"] = -1084.9,
@@ -4907,7 +4907,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             ["x"] = -1345,
         },
         ["Range"] = 11.36,
-        ["CRange"] = 13590,
+        ["Waypoint"] = 13590,
         ["TT"] = {
             ["y"] = 7417.3,
             ["x"] = -1345,
@@ -5197,7 +5197,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             ["y"] = 6375.3,
             ["x"] = 526.1,
         },
-        ["CRange"] = 13547,
+        ["Waypoint"] = 13547,
         ["Range"] = 8.4,
         ["TT"] = {
             ["y"] = 6375.3,
@@ -5409,7 +5409,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             ["x"] = 125.3,
         },
         ["Range"] = 23.65,
-        ["CRange"] = 13577,
+        ["Waypoint"] = 13577,
         ["TT"] = {
             ["y"] = 6128.6,
             ["x"] = 125.3,
@@ -5671,7 +5671,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             ["x"] = -25,
         },
         ["Range"] = 10.22,
-        ["CRange"] = 13586,
+        ["Waypoint"] = 13586,
         ["TT"] = {
             ["y"] = 5806.1,
             ["x"] = -25,
@@ -5683,7 +5683,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             ["x"] = -108.8,
         },
         ["Range"] = 11.54,
-        ["CRange"] = 13586,
+        ["Waypoint"] = 13586,
         ["TT"] = {
             ["y"] = 5813.6,
             ["x"] = -108.8,
@@ -6015,7 +6015,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             ["x"] = 461.3,
         },
         ["Range"] = 10.72,
-        ["CRange"] = 13948,
+        ["Waypoint"] = 13948,
         ["TT"] = {
             ["y"] = 4518.1,
             ["x"] = 460.3,
@@ -6027,7 +6027,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             ["x"] = 368.3,
         },
         ["Range"] = 17.66,
-        ["CRange"] = 13948,
+        ["Waypoint"] = 13948,
         ["TT"] = {
             ["y"] = 4491.3,
             ["x"] = 368.3,
@@ -6039,7 +6039,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             ["x"] = 357.3,
         },
         ["Range"] = 6.13,
-        ["CRange"] = 13948,
+        ["Waypoint"] = 13948,
         ["TT"] = {
             ["y"] = 4541.3,
             ["x"] = 357.3,
@@ -6051,7 +6051,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             ["x"] = 381.6,
         },
         ["Range"] = 8.08,
-        ["CRange"] = 13948,
+        ["Waypoint"] = 13948,
         ["TT"] = {
             ["y"] = 4558.2,
             ["x"] = 381.6,
@@ -6063,7 +6063,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             ["x"] = 442,
         },
         ["Range"] = 10.77,
-        ["CRange"] = 13948,
+        ["Waypoint"] = 13948,
         ["TT"] = {
             ["y"] = 4543.6,
             ["x"] = 442,
@@ -6868,7 +6868,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [41]
     {
-        ["CRange"] = 13646,
+        ["Waypoint"] = 13646,
         ["ExtraLineText"] = "TALK_SENTINEL_AVANA",
         ["Trigger"] = {
             ["y"] = 3023,
@@ -7042,7 +7042,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -694.5,
         },
         ["Range"] = 20.51,
-        ["CRange"] = 26475,
+        ["Waypoint"] = 26475,
         ["TT"] = {
             ["y"] = 2741,
             ["x"] = -694.5,
@@ -7054,7 +7054,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -761.8,
         },
         ["Range"] = 18.91,
-        ["CRange"] = 26475,
+        ["Waypoint"] = 26475,
         ["TT"] = {
             ["y"] = 2832.4,
             ["x"] = -761.8,
@@ -7066,7 +7066,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -810.8,
         },
         ["Range"] = 21.56,
-        ["CRange"] = 26475,
+        ["Waypoint"] = 26475,
         ["TT"] = {
             ["y"] = 2914.1,
             ["x"] = -810.8,
@@ -7078,7 +7078,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -879.8,
         },
         ["Range"] = 26.08,
-        ["CRange"] = 26475,
+        ["Waypoint"] = 26475,
         ["TT"] = {
             ["y"] = 2916.1,
             ["x"] = -879.8,
@@ -7174,7 +7174,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -768,
         },
         ["Range"] = 29.19,
-        ["CRange"] = 13913,
+        ["Waypoint"] = 13913,
         ["TT"] = {
             ["y"] = 2212.5,
             ["x"] = -768,
@@ -7291,7 +7291,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1652.5,
         },
         ["Range"] = 22.29,
-        ["CRange"] = 26476,
+        ["Waypoint"] = 26476,
         ["TT"] = {
             ["y"] = 2299,
             ["x"] = -1652.5,
@@ -7392,7 +7392,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["y"] = 2528.1,
             ["x"] = -1600.1,
         },
-        ["CRange"] = 13919,
+        ["Waypoint"] = 13919,
         ["Range"] = 23.52,
         ["TT"] = {
             ["y"] = 2528.1,
@@ -7405,7 +7405,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1471.5,
         },
         ["Range"] = 23.78,
-        ["CRange"] = 13919,
+        ["Waypoint"] = 13919,
         ["TT"] = {
             ["y"] = 2719.3,
             ["x"] = -1471.5,
@@ -7417,7 +7417,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1403.9,
         },
         ["Range"] = 19.63,
-        ["CRange"] = 13919,
+        ["Waypoint"] = 13919,
         ["TT"] = {
             ["y"] = 2749.5,
             ["x"] = -1403.9,
@@ -7484,7 +7484,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -2015,
         },
         ["Range"] = 20.97,
-        ["CRange"] = 13922,
+        ["Waypoint"] = 13922,
         ["TT"] = {
             ["y"] = 2640.9,
             ["x"] = -2015,
@@ -7496,7 +7496,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -2108,
         },
         ["Range"] = 21.56,
-        ["CRange"] = 13922,
+        ["Waypoint"] = 13922,
         ["TT"] = {
             ["y"] = 2656,
             ["x"] = -2108,
@@ -7524,7 +7524,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1694,
         },
         ["Range"] = 18.77,
-        ["CRange"] = 26477,
+        ["Waypoint"] = 26477,
         ["TT"] = {
             ["y"] = 3062.8,
             ["x"] = -1694,
@@ -7536,7 +7536,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1567.5,
         },
         ["Range"] = 20.39,
-        ["CRange"] = 26477,
+        ["Waypoint"] = 26477,
         ["TT"] = {
             ["y"] = 3198.6,
             ["x"] = -1567.5,
@@ -7548,7 +7548,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1534.4,
         },
         ["Range"] = 8.64,
-        ["CRange"] = 26477,
+        ["Waypoint"] = 26477,
         ["TT"] = {
             ["y"] = 3186.9,
             ["x"] = -1534.4,
@@ -7576,7 +7576,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1578.8,
         },
         ["Range"] = 24.71,
-        ["CRange"] = 26477,
+        ["Waypoint"] = 26477,
         ["TT"] = {
             ["y"] = 3191.9,
             ["x"] = -1578.8,
@@ -7588,7 +7588,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1718,
         },
         ["Range"] = 27.25,
-        ["CRange"] = 26477,
+        ["Waypoint"] = 26477,
         ["TT"] = {
             ["y"] = 3050.4,
             ["x"] = -1718,
@@ -7600,7 +7600,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1799,
         },
         ["Range"] = 23.96,
-        ["CRange"] = 26477,
+        ["Waypoint"] = 26477,
         ["TT"] = {
             ["y"] = 2882.1,
             ["x"] = -1799,
@@ -7632,7 +7632,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1774.4,
         },
         ["Range"] = 13.01,
-        ["CRange"] = 26478,
+        ["Waypoint"] = 26478,
         ["TT"] = {
             ["y"] = 2299.4,
             ["x"] = -1774.4,
@@ -7644,7 +7644,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1816.3,
         },
         ["Range"] = 10.58,
-        ["CRange"] = 26478,
+        ["Waypoint"] = 26478,
         ["TT"] = {
             ["y"] = 2298.6,
             ["x"] = -1816.3,
@@ -7656,7 +7656,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1894.9,
         },
         ["Range"] = 18.25,
-        ["CRange"] = 26478,
+        ["Waypoint"] = 26478,
         ["TT"] = {
             ["y"] = 2317.3,
             ["x"] = -1894.9,
@@ -7684,7 +7684,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1793,
         },
         ["Range"] = 17.45,
-        ["CRange"] = 26478,
+        ["Waypoint"] = 26478,
         ["TT"] = {
             ["y"] = 2186.1,
             ["x"] = -1793,
@@ -7714,7 +7714,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -2008.9,
         },
         ["Range"] = 33.2,
-        ["CRange"] = 26478,
+        ["Waypoint"] = 26478,
         ["TT"] = {
             ["y"] = 1959.5,
             ["x"] = -2009.3,
@@ -7725,7 +7725,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["y"] = 2036.8,
             ["x"] = -2480.5,
         },
-        ["CRange"] = 26453,
+        ["Waypoint"] = 26453,
         ["Range"] = 18.26,
         ["TT"] = {
             ["y"] = 2036.8,
@@ -7737,7 +7737,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["y"] = 2214.4,
             ["x"] = -2655.5,
         },
-        ["CRange"] = 26453,
+        ["Waypoint"] = 26453,
         ["Range"] = 27.18,
         ["TT"] = {
             ["y"] = 2214.4,
@@ -7749,7 +7749,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["y"] = 2481,
             ["x"] = -2764,
         },
-        ["CRange"] = 26453,
+        ["Waypoint"] = 26453,
         ["Range"] = 26.95,
         ["TT"] = {
             ["y"] = 2480.4,
@@ -7761,7 +7761,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["y"] = 2588.6,
             ["x"] = -2983.2,
         },
-        ["CRange"] = 26453,
+        ["Waypoint"] = 26453,
         ["Range"] = 25.91,
         ["TT"] = {
             ["y"] = 2588.6,
@@ -7773,7 +7773,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["y"] = 2699.5,
             ["x"] = -3100.5,
         },
-        ["CRange"] = 26453,
+        ["Waypoint"] = 26453,
         ["Range"] = 21.05,
         ["TT"] = {
             ["y"] = 2699.5,
@@ -7785,7 +7785,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["y"] = 2810,
             ["x"] = -3134,
         },
-        ["CRange"] = 26453,
+        ["Waypoint"] = 26453,
         ["Range"] = 19.08,
         ["TT"] = {
             ["y"] = 2810,
@@ -7834,7 +7834,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -3102.4,
         },
         ["Range"] = 18.74,
-        ["CRange"] = 26467,
+        ["Waypoint"] = 26467,
         ["TT"] = {
             ["y"] = 2822,
             ["x"] = -3102.4,
@@ -7846,7 +7846,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -3002.5,
         },
         ["Range"] = 22.03,
-        ["CRange"] = 26467,
+        ["Waypoint"] = 26467,
         ["TT"] = {
             ["y"] = 2885.9,
             ["x"] = -3002.5,
@@ -8088,7 +8088,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -3148.5,
         },
         ["Range"] = 22.13,
-        ["CRange"] = 13766,
+        ["Waypoint"] = 13766,
         ["TT"] = {
             ["y"] = 1916.5,
             ["x"] = -3148.5,
@@ -8151,7 +8151,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -3152.5,
         },
         ["Range"] = 22.29,
-        ["CRange"] = 26445,
+        ["Waypoint"] = 26445,
         ["TT"] = {
             ["y"] = 1912,
             ["x"] = -3152.5,
@@ -8163,7 +8163,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -3164.5,
         },
         ["Range"] = 13.37,
-        ["CRange"] = 26445,
+        ["Waypoint"] = 26445,
         ["TT"] = {
             ["y"] = 1691.8,
             ["x"] = -3164.5,
@@ -8175,7 +8175,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -3335.5,
         },
         ["Range"] = 14.07,
-        ["CRange"] = 26445,
+        ["Waypoint"] = 26445,
         ["TT"] = {
             ["y"] = 1637.8,
             ["x"] = -3335.5,
@@ -8203,7 +8203,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -3258,
         },
         ["Range"] = 18.26,
-        ["CRange"] = 26445,
+        ["Waypoint"] = 26445,
         ["TT"] = {
             ["y"] = 1655.2,
             ["x"] = -3258,
@@ -8215,7 +8215,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -3088.7,
         },
         ["Range"] = 17.46,
-        ["CRange"] = 26445,
+        ["Waypoint"] = 26445,
         ["TT"] = {
             ["y"] = 1669.7,
             ["x"] = -3088.7,
@@ -8227,7 +8227,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -2993.7,
         },
         ["Range"] = 10.83,
-        ["CRange"] = 26445,
+        ["Waypoint"] = 26445,
         ["TT"] = {
             ["y"] = 1672.2,
             ["x"] = -2993.7,
@@ -8239,7 +8239,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -2970.2,
         },
         ["Range"] = 13.17,
-        ["CRange"] = 26445,
+        ["Waypoint"] = 26445,
         ["TT"] = {
             ["y"] = 1601.8,
             ["x"] = -2970.2,
@@ -8251,7 +8251,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -2819.2,
         },
         ["Range"] = 6.81,
-        ["CRange"] = 26445,
+        ["Waypoint"] = 26445,
         ["TT"] = {
             ["y"] = 1535.2,
             ["x"] = -2819.2,
@@ -8279,7 +8279,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -2995.5,
         },
         ["Range"] = 9.88,
-        ["CRange"] = 13792,
+        ["Waypoint"] = 13792,
         ["TT"] = {
             ["y"] = 1682.4,
             ["x"] = -2995.5,
@@ -8291,7 +8291,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -3000.2,
         },
         ["Range"] = 10.09,
-        ["CRange"] = 13792,
+        ["Waypoint"] = 13792,
         ["TT"] = {
             ["y"] = 1731.8,
             ["x"] = -3000.2,
@@ -8321,7 +8321,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["y"] = 1770.4,
             ["x"] = -2690.7,
         },
-        ["CRange"] = 13796,
+        ["Waypoint"] = 13796,
         ["Range"] = 6.01,
         ["TT"] = {
             ["y"] = 1770.4,
@@ -8333,7 +8333,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["y"] = 1743,
             ["x"] = -2752.4,
         },
-        ["CRange"] = 13796,
+        ["Waypoint"] = 13796,
         ["Range"] = 6.6,
         ["TT"] = {
             ["y"] = 1743,
@@ -8412,7 +8412,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["y"] = 1774.5,
             ["x"] = -2762.5,
         },
-        ["CRange"] = 26472,
+        ["Waypoint"] = 26472,
         ["Range"] = 5.98,
         ["TT"] = {
             ["y"] = 1774.5,
@@ -8424,7 +8424,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["y"] = 1747.9,
             ["x"] = -2735,
         },
-        ["CRange"] = 26472,
+        ["Waypoint"] = 26472,
         ["Range"] = 7.97,
         ["TT"] = {
             ["y"] = 1747.9,
@@ -8436,7 +8436,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["y"] = 1770.5,
             ["x"] = -2692.5,
         },
-        ["CRange"] = 26472,
+        ["Waypoint"] = 26472,
         ["Range"] = 6.85,
         ["TT"] = {
             ["y"] = 1769.9,
@@ -8567,7 +8567,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = 611.2,
         },
         ["Range"] = 16.13,
-        ["CRange"] = 13976,
+        ["Waypoint"] = 13976,
         ["TT"] = {
             ["y"] = 2409.6,
             ["x"] = 611.2,
@@ -8712,7 +8712,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1112.1,
         },
         ["Range"] = 19.14,
-        ["CRange"] = 26480,
+        ["Waypoint"] = 26480,
         ["TT"] = {
             ["y"] = 2071.1,
             ["x"] = -1112.1,
@@ -8724,7 +8724,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1262.4,
         },
         ["Range"] = 12.46,
-        ["CRange"] = 26480,
+        ["Waypoint"] = 26480,
         ["TT"] = {
             ["y"] = 2068.3,
             ["x"] = -1262.4,
@@ -8736,7 +8736,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1410,
         },
         ["Range"] = 17.05,
-        ["CRange"] = 26480,
+        ["Waypoint"] = 26480,
         ["TT"] = {
             ["y"] = 1870.8,
             ["x"] = -1410,
@@ -8748,7 +8748,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1385.5,
         },
         ["Range"] = 11.15,
-        ["CRange"] = 26480,
+        ["Waypoint"] = 26480,
         ["TT"] = {
             ["y"] = 1826.3,
             ["x"] = -1385.5,
@@ -8797,7 +8797,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1407.6,
         },
         ["Range"] = 13.8,
-        ["CRange"] = 13989,
+        ["Waypoint"] = 13989,
         ["TT"] = {
             ["y"] = 1837.8,
             ["x"] = -1407.6,
@@ -8827,7 +8827,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1421.4,
         },
         ["Range"] = 20.49,
-        ["CRange"] = 26481,
+        ["Waypoint"] = 26481,
         ["TT"] = {
             ["y"] = 1818.9,
             ["x"] = -1421.4,
@@ -8839,7 +8839,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1480.8,
         },
         ["Range"] = 12.13,
-        ["CRange"] = 26481,
+        ["Waypoint"] = 26481,
         ["TT"] = {
             ["y"] = 1723.2,
             ["x"] = -1480.8,
@@ -8867,7 +8867,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1479,
         },
         ["Range"] = 14.99,
-        ["CRange"] = 26481,
+        ["Waypoint"] = 26481,
         ["TT"] = {
             ["y"] = 1738.5,
             ["x"] = -1479,
@@ -8879,7 +8879,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -1393.5,
         },
         ["Range"] = 11.4,
-        ["CRange"] = 26481,
+        ["Waypoint"] = 26481,
         ["TT"] = {
             ["y"] = 1828.5,
             ["x"] = -1393.5,
@@ -8929,7 +8929,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -575.8,
         },
         ["Range"] = 54.25,
-        ["CRange"] = 26482,
+        ["Waypoint"] = 26482,
         ["TT"] = {
             ["y"] = 2458.4,
             ["x"] = -575.8,
@@ -8999,7 +8999,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -250,
         },
         ["Range"] = 63.65,
-        ["CRange"] = 13874,
+        ["Waypoint"] = 13874,
         ["TT"] = {
             ["y"] = 3177.6,
             ["x"] = -250,
@@ -9011,7 +9011,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -333.5,
         },
         ["Range"] = 32.88,
-        ["CRange"] = 13874,
+        ["Waypoint"] = 13874,
         ["TT"] = {
             ["y"] = 3384.9,
             ["x"] = -333.5,
@@ -9023,7 +9023,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -451.9,
         },
         ["Range"] = 26.63,
-        ["CRange"] = 13874,
+        ["Waypoint"] = 13874,
         ["TT"] = {
             ["y"] = 3426,
             ["x"] = -451.9,
@@ -9044,7 +9044,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -522.7,
         },
         ["Range"] = 13.23,
-        ["CRange"] = 13874,
+        ["Waypoint"] = 13874,
         ["TT"] = {
             ["y"] = 3496.6,
             ["x"] = -522.7,
@@ -9120,7 +9120,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             ["x"] = -588.7,
         },
         ["Range"] = 28.65,
-        ["CRange"] = 13877,
+        ["Waypoint"] = 13877,
         ["TT"] = {
             ["y"] = 2445,
             ["x"] = -588.7,
@@ -9312,7 +9312,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [8]
     {
-        ["CRange"] = 27997,
+        ["Waypoint"] = 27997,
         ["Trigger"] = {
             ["y"] = 3898.3,
             ["x"] = -877.2,
@@ -9674,7 +9674,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
             ["x"] = -610.5,
         },
         ["Range"] = 50.85,
-        ["CRange"] = 28116,
+        ["Waypoint"] = 28116,
         ["TT"] = {
             ["y"] = 4887.3,
             ["x"] = -610.5,
@@ -9763,7 +9763,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
             ["x"] = -393,
         },
         ["Range"] = 5.6,
-        ["CRange"] = 28126,
+        ["Waypoint"] = 28126,
         ["TT"] = {
             ["y"] = 4898.8,
             ["x"] = -393,
@@ -9775,7 +9775,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
             ["x"] = -401.9,
         },
         ["Range"] = 8.65,
-        ["CRange"] = 28126,
+        ["Waypoint"] = 28126,
         ["TT"] = {
             ["y"] = 4940.8,
             ["x"] = -401.9,
@@ -9853,7 +9853,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     },
     {
-        ["CRange"] = 28126,
+        ["Waypoint"] = 28126,
         ["Trigger"] = {
             ["y"] = 5050.8,
             ["x"] = -537,
@@ -9912,7 +9912,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [25]
     {
-        ["CRange"] = 28126,
+        ["Waypoint"] = 28126,
         ["Trigger"] = {
             ["y"] = 5126.1,
             ["x"] = -436.4,
@@ -9929,7 +9929,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [26]
     {
-        ["CRange"] = 28126,
+        ["Waypoint"] = 28126,
         ["Trigger"] = {
             ["y"] = 5188.1,
             ["x"] = -490.5,
@@ -9986,7 +9986,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [30]
     {
-        ["CRange"] = 28126,
+        ["Waypoint"] = 28126,
         ["Trigger"] = {
             ["y"] = 5256.3,
             ["x"] = -647,
@@ -10042,7 +10042,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [34]
     {
-        ["CRange"] = 28126,
+        ["Waypoint"] = 28126,
         ["Trigger"] = {
             ["y"] = 5341.2,
             ["x"] = -547.8,
@@ -10059,7 +10059,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [35]
     {
-        ["CRange"] = 28126,
+        ["Waypoint"] = 28126,
         ["Trigger"] = {
             ["y"] = 5395.8,
             ["x"] = -510.5,
@@ -10225,7 +10225,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [10]
     {
-        ["CRange"] = 28213,
+        ["Waypoint"] = 28213,
         ["Trigger"] = {
             ["y"] = 5212.3,
             ["x"] = -411.3,
@@ -10344,7 +10344,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [19]
     {
-        ["CRange"] = 28359,
+        ["Waypoint"] = 28359,
         ["Trigger"] = {
             ["y"] = 5776.1,
             ["x"] = -972.8,
@@ -10523,7 +10523,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
             ["x"] = -1005.5,
         },
         ["Range"] = 22.78,
-        ["CRange"] = 28217,
+        ["Waypoint"] = 28217,
         ["TT"] = {
             ["y"] = 6367,
             ["x"] = -1005.5,
@@ -11043,7 +11043,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
             ["y"] = 6459.7,
             ["x"] = -1554.9,
         },
-        ["CRange"] = 28385,
+        ["Waypoint"] = 28385,
         ["Range"] = 17.51,
         ["TT"] = {
             ["y"] = 6459.7,
@@ -11051,7 +11051,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [25]
     {
-        ["CRange"] = 28385,
+        ["Waypoint"] = 28385,
         ["Trigger"] = {
             ["y"] = 6459.5,
             ["x"] = -1645.3,
@@ -11068,7 +11068,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [26]
     {
-        ["CRange"] = 28385,
+        ["Waypoint"] = 28385,
         ["Trigger"] = {
             ["y"] = 6305.8,
             ["x"] = -1731,
@@ -11114,7 +11114,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
             ["y"] = 6492.8,
             ["x"] = -1556.9,
         },
-        ["CRange"] = 28386,
+        ["Waypoint"] = 28386,
         ["Range"] = 20.18,
         ["TT"] = {
             ["y"] = 6492.8,
@@ -11204,7 +11204,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
             ["y"] = 6566.7,
             ["x"] = -2070.5,
         },
-        ["CRange"] = 28392,
+        ["Waypoint"] = 28392,
         ["Range"] = 30.24,
         ["TT"] = {
             ["y"] = 6566.7,
@@ -11805,7 +11805,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
             ["y"] = 6409.7,
             ["x"] = -3909.7,
         },
-        ["CRange"] = 28537,
+        ["Waypoint"] = 28537,
         ["Range"] = 11.61,
         ["TT"] = {
             ["y"] = 6409.7,
@@ -11817,7 +11817,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
             ["y"] = 6320.8,
             ["x"] = -4027.5,
         },
-        ["CRange"] = 28537,
+        ["Waypoint"] = 28537,
         ["Range"] = 14.77,
         ["TT"] = {
             ["y"] = 6320.8,
@@ -11829,7 +11829,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
             ["y"] = 6250.3,
             ["x"] = -4107.4,
         },
-        ["CRange"] = 28537,
+        ["Waypoint"] = 28537,
         ["Range"] = 14.83,
         ["TT"] = {
             ["y"] = 6250.3,
@@ -11907,7 +11907,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [25]
     {
-        ["CRange"] = 28537,
+        ["Waypoint"] = 28537,
         ["Trigger"] = {
             ["y"] = 6420.8,
             ["x"] = -4511.8,
@@ -12075,7 +12075,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [41]
     {
-        ["CRange"] = 28537,
+        ["Waypoint"] = 28537,
         ["Trigger"] = {
             ["y"] = 6492.7,
             ["x"] = -5089.2,
@@ -12258,7 +12258,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
             ["y"] = 7149.8,
             ["x"] = -3889.7,
         },
-        ["CRange"] = 28676,
+        ["Waypoint"] = 28676,
         ["Range"] = 8.86,
         ["TT"] = {
             ["y"] = 7149.8,
@@ -12270,7 +12270,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
             ["y"] = 7134.8,
             ["x"] = -3873.2,
         },
-        ["CRange"] = 28676,
+        ["Waypoint"] = 28676,
         ["Range"] = 6.88,
         ["TT"] = {
             ["y"] = 7134.8,
@@ -12282,7 +12282,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
             ["y"] = 7146.8,
             ["x"] = -3807.7,
         },
-        ["CRange"] = 28676,
+        ["Waypoint"] = 28676,
         ["Range"] = 8.11,
         ["TT"] = {
             ["y"] = 7146.8,
@@ -12336,7 +12336,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [63]
     {
-        ["CRange"] = 28707,
+        ["Waypoint"] = 28707,
         ["Trigger"] = {
             ["y"] = 7060,
             ["x"] = -3764.5,
@@ -12442,7 +12442,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
             ["y"] = 7146.3,
             ["x"] = -3813,
         },
-        ["CRange"] = 28701,
+        ["Waypoint"] = 28701,
         ["Range"] = 10.09,
         ["TT"] = {
             ["y"] = 7146.3,
@@ -12454,7 +12454,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
             ["y"] = 7130.8,
             ["x"] = -3870.2,
         },
-        ["CRange"] = 28701,
+        ["Waypoint"] = 28701,
         ["Range"] = 7.03,
         ["TT"] = {
             ["y"] = 7130.8,
@@ -12624,7 +12624,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
             ["y"] = 7179.5,
             ["x"] = -4552.7,
         },
-        ["CRange"] = 28639,
+        ["Waypoint"] = 28639,
         ["Range"] = 17.44,
         ["TT"] = {
             ["y"] = 7182.8,
@@ -12708,7 +12708,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [92]
     {
-        ["CRange"] = 29032,
+        ["Waypoint"] = 29032,
         ["Trigger"] = {
             ["y"] = 8058,
             ["x"] = -3766,
@@ -12929,7 +12929,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [110]
     {
-        ["CRange"] = 28839,
+        ["Waypoint"] = 28839,
         ["Trigger"] = {
             ["y"] = 5723.5,
             ["x"] = -4985.5,
@@ -12967,7 +12967,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [112]
     {
-        ["CRange"] = 28839,
+        ["Waypoint"] = 28839,
         ["Trigger"] = {
             ["y"] = 5643.1,
             ["x"] = -5004.3,
@@ -13005,7 +13005,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [114]
     {
-        ["CRange"] = 28839,
+        ["Waypoint"] = 28839,
         ["Trigger"] = {
             ["y"] = 5500.6,
             ["x"] = -4948.3,
@@ -13112,7 +13112,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [122]
     {
-        ["CRange"] = 28831,
+        ["Waypoint"] = 28831,
         ["Trigger"] = {
             ["y"] = 5572.5,
             ["x"] = -4494.9,
@@ -13129,7 +13129,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [123]
     {
-        ["CRange"] = 28831,
+        ["Waypoint"] = 28831,
         ["Trigger"] = {
             ["y"] = 5356.2,
             ["x"] = -4539.9,
@@ -13217,7 +13217,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
             ["x"] = -4317.7,
         },
         ["Range"] = 29,
-        ["CRange"] = 28841,
+        ["Waypoint"] = 28841,
         ["TT"] = {
             ["y"] = 6162.1,
             ["x"] = -4317.7,
@@ -13297,7 +13297,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             ["y"] = 2212.5,
             ["x"] = -768,
         },
-        ["CRange"] = 13913,
+        ["Waypoint"] = 13913,
         ["Range"] = 29.19,
         ["TT"] = {
             ["y"] = 2212.5,
@@ -13362,7 +13362,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             ["x"] = -337.4,
         },
         ["Range"] = 13.31,
-        ["CRange"] = 25613,
+        ["Waypoint"] = 25613,
         ["TT"] = {
             ["y"] = 1867.2,
             ["x"] = -337.4,
@@ -13374,7 +13374,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             ["x"] = -332.4,
         },
         ["Range"] = 24.13,
-        ["CRange"] = 25613,
+        ["Waypoint"] = 25613,
         ["TT"] = {
             ["y"] = 1789.7,
             ["x"] = -332.4,
@@ -13793,7 +13793,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             ["y"] = 1544,
             ["x"] = -197,
         },
-        ["CRange"] = 25730,
+        ["Waypoint"] = 25730,
         ["Range"] = 31.04,
         ["TT"] = {
             ["y"] = 1544,
@@ -13805,7 +13805,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             ["y"] = 1681,
             ["x"] = -81,
         },
-        ["CRange"] = 25730,
+        ["Waypoint"] = 25730,
         ["Range"] = 17.26,
         ["TT"] = {
             ["y"] = 1681,
@@ -13817,7 +13817,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             ["y"] = 1689.5,
             ["x"] = -5.5,
         },
-        ["CRange"] = 25730,
+        ["Waypoint"] = 25730,
         ["Range"] = 13.81,
         ["TT"] = {
             ["y"] = 1689.5,
@@ -13829,7 +13829,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             ["y"] = 1683.5,
             ["x"] = 86.4,
         },
-        ["CRange"] = 25730,
+        ["Waypoint"] = 25730,
         ["Range"] = 10.99,
         ["TT"] = {
             ["y"] = 1683.5,
@@ -14000,7 +14000,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             ["x"] = 644.7,
         },
         ["Range"] = 23.45,
-        ["CRange"] = 25766,
+        ["Waypoint"] = 25766,
         ["TT"] = {
             ["y"] = 878.7,
             ["x"] = 644.7,
@@ -14033,7 +14033,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             ["y"] = 865.1,
             ["x"] = 677.7,
         },
-        ["CRange"] = 25766,
+        ["Waypoint"] = 25766,
         ["Range"] = 26.43,
         ["TT"] = {
             ["y"] = 865.1,
@@ -14045,7 +14045,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             ["y"] = 853.2,
             ["x"] = 472.2,
         },
-        ["CRange"] = 25766,
+        ["Waypoint"] = 25766,
         ["Range"] = 37.26,
         ["TT"] = {
             ["y"] = 853.2,
@@ -14105,7 +14105,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             ["y"] = 229.6,
             ["x"] = 244.1,
         },
-        ["CRange"] = 25765,
+        ["Waypoint"] = 25765,
         ["Range"] = 34.94,
         ["TT"] = {
             ["y"] = 229.6,
@@ -14117,7 +14117,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             ["y"] = 125.5,
             ["x"] = -160.5,
         },
-        ["CRange"] = 25765,
+        ["Waypoint"] = 25765,
         ["Range"] = 35.23,
         ["TT"] = {
             ["y"] = 125.5,
@@ -14147,7 +14147,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             ["y"] = 322.5,
             ["x"] = -354,
         },
-        ["CRange"] = 25793,
+        ["Waypoint"] = 25793,
         ["Range"] = 13.85,
         ["TT"] = {
             ["y"] = 322.5,
@@ -14368,7 +14368,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             ["y"] = 317.5,
             ["x"] = -348.4,
         },
-        ["CRange"] = 25821,
+        ["Waypoint"] = 25821,
         ["Range"] = 9.39,
         ["TT"] = {
             ["y"] = 317.5,
@@ -15457,7 +15457,7 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
             ["x"] = -3734.5,
         },
         ["Range"] = 20.88,
-        ["CRange"] = 24956,
+        ["Waypoint"] = 24956,
         ["TT"] = {
             ["y"] = -1699.5,
             ["x"] = -3734.5,
@@ -15549,7 +15549,7 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
             ["x"] = -3662.4,
         },
         ["Range"] = 24.87,
-        ["CRange"] = 25036,
+        ["Waypoint"] = 25036,
         ["TT"] = {
             ["y"] = -2173.4,
             ["x"] = -3662.4,
@@ -16762,7 +16762,7 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [102]
     {
-        ["CRange"] = 25182,
+        ["Waypoint"] = 25182,
         ["Trigger"] = {
             ["y"] = -3641.4,
             ["x"] = -1636.3,
@@ -17064,7 +17064,7 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             ["x"] = -4527.4,
         },
         ["Range"] = 13.09,
-        ["CRange"] = 27215,
+        ["Waypoint"] = 27215,
         ["TT"] = {
             ["y"] = -3690.2,
             ["x"] = -4527.4,
@@ -17085,7 +17085,7 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             ["x"] = -4538.4,
         },
         ["Range"] = 16.22,
-        ["CRange"] = 27215,
+        ["Waypoint"] = 27215,
         ["TT"] = {
             ["y"] = -3710,
             ["x"] = -4538.4,
@@ -17573,14 +17573,14 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             ["x"] = -3064.7,
         },
         ["Range"] = 12.87,
-        ["CRange"] = 27408,
+        ["Waypoint"] = 27408,
         ["TT"] = {
             ["y"] = -4374.4,
             ["x"] = -3064.7,
         },
     },
     {
-        ["CRange"] = 27408,
+        ["Waypoint"] = 27408,
         ["Trigger"] = {
             ["y"] = -4337.5,
             ["x"] = -3000.9,
@@ -17597,7 +17597,7 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     },
     {
-        ["CRange"] = 27408,
+        ["Waypoint"] = 27408,
         ["Trigger"] = {
             ["y"] = -4434.5,
             ["x"] = -2991.2,
@@ -17827,7 +17827,7 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             ["y"] = -4140.2,
             ["x"] = -3912.7,
         },
-        ["CRange"] = 27219,
+        ["Waypoint"] = 27219,
         ["Range"] = 17.73,
         ["TT"] = {
             ["y"] = -4140.2,
@@ -17895,7 +17895,7 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             ["x"] = -3898,
         },
         ["Range"] = 20.15,
-        ["CRange"] = 11208,
+        ["Waypoint"] = 11208,
         ["TT"] = {
             ["y"] = -4130.9,
             ["x"] = -3901.5,
@@ -17907,7 +17907,7 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             ["x"] = -3838,
         },
         ["Range"] = 28.76,
-        ["CRange"] = 11208,
+        ["Waypoint"] = 11208,
         ["TT"] = {
             ["y"] = -4059.7,
             ["x"] = -3838,
@@ -18101,7 +18101,7 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             ["x"] = -4361.4,
         },
         ["Range"] = 12.52,
-        ["CRange"] = 1258,
+        ["Waypoint"] = 1258,
         ["TT"] = {
             ["y"] = -3621,
             ["x"] = -4361.4,
@@ -18279,7 +18279,7 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
         ["ExtraLineText"] = "OPEN_BAG",
         ["Range"] = 0.61,
-        ["CRange"] = 27237,
+        ["Waypoint"] = 27237,
         ["TT"] = {
             ["y"] = -2632.4,
             ["x"] = -4312.7,
@@ -18339,7 +18339,7 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             ["x"] = -3300.5,
         },
         ["Range"] = 84.13,
-        ["CRange"] = 27287,
+        ["Waypoint"] = 27287,
         ["TT"] = {
             ["y"] = -2910.7,
             ["x"] = -3300.5,
@@ -18609,7 +18609,7 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             ["x"] = -3230.5,
         },
         ["Range"] = 52.51,
-        ["CRange"] = 27428,
+        ["Waypoint"] = 27428,
         ["TT"] = {
             ["y"] = -3046.5,
             ["x"] = -3234.7,
@@ -18788,7 +18788,7 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     },
     {
-        ["CRange"] = 14384,
+        ["Waypoint"] = 14384,
         ["RaidIcon"] = 36416,
         ["Trigger"] = {
             ["y"] = 96.5,
@@ -18843,7 +18843,7 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             ["x"] = 1209.4,
         },
         ["Range"] = 21.04,
-        ["CRange"] = 14354,
+        ["Waypoint"] = 14354,
         ["TT"] = {
             ["y"] = 1.1,
             ["x"] = 1209.4,
@@ -19036,7 +19036,7 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             ["y"] = -12.5,
             ["x"] = 1202.5,
         },
-        ["CRange"] = 14354,
+        ["Waypoint"] = 14354,
         ["Range"] = 22.62,
         ["TT"] = {
             ["y"] = -12.5,
@@ -19076,7 +19076,7 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             ["y"] = -460.7,
             ["x"] = 1665.5,
         },
-        ["CRange"] = 14365,
+        ["Waypoint"] = 14365,
         ["Range"] = 35.8,
         ["TT"] = {
             ["y"] = -460.7,
@@ -19135,7 +19135,7 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     },
     {
-        ["CRange"] = 14363,
+        ["Waypoint"] = 14363,
         ["Trigger"] = {
             ["y"] = -448.3,
             ["x"] = 1701.9,
@@ -19152,7 +19152,7 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [10]
     {
-        ["CRange"] = 14363,
+        ["Waypoint"] = 14363,
         ["Trigger"] = {
             ["y"] = -418.9,
             ["x"] = 1723.2,
@@ -20321,7 +20321,7 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             ["y"] = -2095.7,
             ["x"] = 2523.1,
         },
-        ["CRange"] = 14328,
+        ["Waypoint"] = 14328,
         ["Range"] = 24.57,
         ["TT"] = {
             ["y"] = -2095.7,
@@ -20333,7 +20333,7 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             ["y"] = -2277.5,
             ["x"] = 2502.4,
         },
-        ["CRange"] = 14328,
+        ["Waypoint"] = 14328,
         ["Range"] = 12.13,
         ["TT"] = {
             ["y"] = -2277.5,
@@ -20345,7 +20345,7 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             ["y"] = -2342.7,
             ["x"] = 2509.6,
         },
-        ["CRange"] = 14328,
+        ["Waypoint"] = 14328,
         ["Range"] = 7.57,
         ["TT"] = {
             ["y"] = -2342.7,
@@ -21023,7 +21023,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = 2147.5,
         },
         ["Range"] = 19.87,
-        ["CRange"] = 25466,
+        ["Waypoint"] = 25466,
         ["TT"] = {
             ["y"] = -4439.8,
             ["x"] = 2147.5,
@@ -21044,7 +21044,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["y"] = -4002.5,
             ["x"] = 2023,
         },
-        ["CRange"] = 25449,
+        ["Waypoint"] = 25449,
         ["Range"] = 35.74,
         ["TT"] = {
             ["y"] = -4002.5,
@@ -21072,7 +21072,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["y"] = -3876.9,
             ["x"] = 1876.7,
         },
-        ["CRange"] = 25449,
+        ["Waypoint"] = 25449,
         ["Range"] = 42.8,
         ["TT"] = {
             ["y"] = -3876.9,
@@ -21159,7 +21159,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["y"] = -4562.7,
             ["x"] = 2256.9,
         },
-        ["CRange"] = 25458,
+        ["Waypoint"] = 25458,
         ["Range"] = 28.22,
         ["TT"] = {
             ["y"] = -4562.7,
@@ -21190,7 +21190,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["y"] = -4441.8,
             ["x"] = 2146.1,
         },
-        ["CRange"] = 25463,
+        ["Waypoint"] = 25463,
         ["Range"] = 15.68,
         ["TT"] = {
             ["y"] = -4441.8,
@@ -21202,7 +21202,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["y"] = -4471.4,
             ["x"] = 2051,
         },
-        ["CRange"] = 25463,
+        ["Waypoint"] = 25463,
         ["Range"] = 25.99,
         ["TT"] = {
             ["y"] = -4471.4,
@@ -21214,7 +21214,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["y"] = -4676.3,
             ["x"] = 1938.2,
         },
-        ["CRange"] = 25463,
+        ["Waypoint"] = 25463,
         ["Range"] = 23.2,
         ["TT"] = {
             ["y"] = -4676.3,
@@ -21381,7 +21381,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["y"] = -5312.5,
             ["x"] = 1301.5,
         },
-        ["CRange"] = 25350,
+        ["Waypoint"] = 25350,
         ["Range"] = 56.84,
         ["TT"] = {
             ["y"] = -5312.5,
@@ -21576,7 +21576,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [72]
     {
-        ["CRange"] = 25406,
+        ["Waypoint"] = 25406,
         ["Trigger"] = {
             ["y"] = -4459.9,
             ["x"] = 1333.5,
@@ -21672,7 +21672,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["y"] = -4463.7,
             ["x"] = 1334.5,
         },
-        ["CRange"] = 25333,
+        ["Waypoint"] = 25333,
         ["Range"] = 21.78,
         ["TT"] = {
             ["y"] = -4463.7,
@@ -21684,7 +21684,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["y"] = -4206.3,
             ["x"] = 1315.8,
         },
-        ["CRange"] = 25333,
+        ["Waypoint"] = 25333,
         ["Range"] = 24.47,
         ["TT"] = {
             ["y"] = -4206.3,
@@ -21696,7 +21696,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["y"] = -4164.4,
             ["x"] = 1155.5,
         },
-        ["CRange"] = 25333,
+        ["Waypoint"] = 25333,
         ["Range"] = 29.25,
         ["TT"] = {
             ["y"] = -4164.4,
@@ -21761,7 +21761,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["y"] = -4832.9,
             ["x"] = 1054,
         },
-        ["CRange"] = 26574,
+        ["Waypoint"] = 26574,
         ["Range"] = 24.96,
         ["TT"] = {
             ["y"] = -4832.9,
@@ -21773,7 +21773,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["y"] = -4712.2,
             ["x"] = 1002.1,
         },
-        ["CRange"] = 26574,
+        ["Waypoint"] = 26574,
         ["Range"] = 24.63,
         ["TT"] = {
             ["y"] = -4712.2,
@@ -21785,7 +21785,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["y"] = -4668.2,
             ["x"] = 752.2,
         },
-        ["CRange"] = 26574,
+        ["Waypoint"] = 26574,
         ["Range"] = 34.89,
         ["TT"] = {
             ["y"] = -4668.2,
@@ -21797,7 +21797,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["y"] = -5025.4,
             ["x"] = 157.4,
         },
-        ["CRange"] = 26574,
+        ["Waypoint"] = 26574,
         ["Range"] = 15.89,
         ["TT"] = {
             ["y"] = -5025.4,
@@ -21893,7 +21893,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = 698.6,
         },
         ["Range"] = 38.48,
-        ["CRange"] = 25427,
+        ["Waypoint"] = 25427,
         ["TT"] = {
             ["y"] = -4852.7,
             ["x"] = 698.6,
@@ -22035,7 +22035,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = 223.8,
         },
         ["Range"] = 24.69,
-        ["CRange"] = 25434,
+        ["Waypoint"] = 25434,
         ["TT"] = {
             ["y"] = -3986.9,
             ["x"] = 223.8,
@@ -22047,7 +22047,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = 140.4,
         },
         ["Range"] = 15.62,
-        ["CRange"] = 25434,
+        ["Waypoint"] = 25434,
         ["TT"] = {
             ["y"] = -3894.9,
             ["x"] = 140.4,
@@ -22059,7 +22059,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = 135.6,
         },
         ["Range"] = 21.36,
-        ["CRange"] = 25434,
+        ["Waypoint"] = 25434,
         ["TT"] = {
             ["y"] = -3797.4,
             ["x"] = 135.6,
@@ -22127,7 +22127,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = 203.4,
         },
         ["Range"] = 22.84,
-        ["CRange"] = 25436,
+        ["Waypoint"] = 25436,
         ["TT"] = {
             ["y"] = -4722.5,
             ["x"] = 203.4,
@@ -22139,7 +22139,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = 72.3,
         },
         ["Range"] = 15.38,
-        ["CRange"] = 25436,
+        ["Waypoint"] = 25436,
         ["TT"] = {
             ["y"] = -4606.4,
             ["x"] = 72.3,
@@ -22151,7 +22151,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = -13,
         },
         ["Range"] = 17.24,
-        ["CRange"] = 25436,
+        ["Waypoint"] = 25436,
         ["TT"] = {
             ["y"] = -4572.9,
             ["x"] = -13,
@@ -22179,7 +22179,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = -32,
         },
         ["Range"] = 15.36,
-        ["CRange"] = 25436,
+        ["Waypoint"] = 25436,
         ["TT"] = {
             ["y"] = -4529.3,
             ["x"] = -32,
@@ -22191,7 +22191,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = 133.1,
         },
         ["Range"] = 38.99,
-        ["CRange"] = 25436,
+        ["Waypoint"] = 25436,
         ["TT"] = {
             ["y"] = -4650.4,
             ["x"] = 133.1,
@@ -22221,7 +22221,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = 131.5,
         },
         ["Range"] = 36.84,
-        ["CRange"] = 25437,
+        ["Waypoint"] = 25437,
         ["TT"] = {
             ["y"] = -4653.9,
             ["x"] = 131.5,
@@ -22233,7 +22233,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = -22.9,
         },
         ["Range"] = 28.85,
-        ["CRange"] = 25437,
+        ["Waypoint"] = 25437,
         ["TT"] = {
             ["y"] = -4563.4,
             ["x"] = -22.9,
@@ -22245,7 +22245,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = -147,
         },
         ["Range"] = 14.45,
-        ["CRange"] = 25437,
+        ["Waypoint"] = 25437,
         ["TT"] = {
             ["y"] = -4356.5,
             ["x"] = -147,
@@ -22257,7 +22257,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = -223.5,
         },
         ["Range"] = 19.01,
-        ["CRange"] = 25437,
+        ["Waypoint"] = 25437,
         ["TT"] = {
             ["y"] = -4384,
             ["x"] = -223.5,
@@ -22321,7 +22321,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = -18.9,
         },
         ["Range"] = 23.31,
-        ["CRange"] = 25438,
+        ["Waypoint"] = 25438,
         ["TT"] = {
             ["y"] = -4563.3,
             ["x"] = -18.9,
@@ -22333,7 +22333,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             ["x"] = 130.1,
         },
         ["Range"] = 31.25,
-        ["CRange"] = 25438,
+        ["Waypoint"] = 25438,
         ["TT"] = {
             ["y"] = -4648.8,
             ["x"] = 130.1,
@@ -22420,7 +22420,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["y"] = -6138.8,
             ["x"] = -3806,
         },
-        ["CRange"] = 25504,
+        ["Waypoint"] = 25504,
         ["Range"] = 2.81,
         ["TT"] = {
             ["y"] = -6138.8,
@@ -22459,7 +22459,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["y"] = -6134.8,
             ["x"] = -3834.7,
         },
-        ["CRange"] = 25517,
+        ["Waypoint"] = 25517,
         ["Range"] = 6.27,
         ["TT"] = {
             ["y"] = -6134.8,
@@ -22471,7 +22471,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["y"] = -6147.4,
             ["x"] = -3835.5,
         },
-        ["CRange"] = 25517,
+        ["Waypoint"] = 25517,
         ["Range"] = 4.86,
         ["TT"] = {
             ["y"] = -6147.4,
@@ -22578,7 +22578,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["y"] = -6200.3,
             ["x"] = -3909.9,
         },
-        ["CRange"] = 25515,
+        ["Waypoint"] = 25515,
         ["Range"] = 6.8,
         ["TT"] = {
             ["y"] = -6200.3,
@@ -22590,7 +22590,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["y"] = -6126.8,
             ["x"] = -3891,
         },
-        ["CRange"] = 25515,
+        ["Waypoint"] = 25515,
         ["Range"] = 5.78,
         ["TT"] = {
             ["y"] = -6126.8,
@@ -22602,7 +22602,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["y"] = -6143.5,
             ["x"] = -3866.5,
         },
-        ["CRange"] = 25515,
+        ["Waypoint"] = 25515,
         ["Range"] = 10.02,
         ["TT"] = {
             ["y"] = -6143.5,
@@ -22614,7 +22614,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["y"] = -6138.2,
             ["x"] = -3820.2,
         },
-        ["CRange"] = 25515,
+        ["Waypoint"] = 25515,
         ["Range"] = 11.34,
         ["TT"] = {
             ["y"] = -6138.2,
@@ -22711,7 +22711,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["y"] = -6128.4,
             ["x"] = -3889.5,
         },
-        ["CRange"] = 25542,
+        ["Waypoint"] = 25542,
         ["Range"] = 5.91,
         ["TT"] = {
             ["y"] = -6128.4,
@@ -22723,7 +22723,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["y"] = -6142.8,
             ["x"] = -3846.2,
         },
-        ["CRange"] = 25542,
+        ["Waypoint"] = 25542,
         ["Range"] = 6.77,
         ["TT"] = {
             ["y"] = -6142.8,
@@ -22777,7 +22777,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [32]
     {
-        ["CRange"] = 28031,
+        ["Waypoint"] = 28031,
         ["Trigger"] = {
             ["y"] = -6466.9,
             ["x"] = -3508,
@@ -22957,7 +22957,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [44]
     {
-        ["CRange"] = 25590,
+        ["Waypoint"] = 25590,
         ["Trigger"] = {
             ["y"] = -6334.9,
             ["x"] = -3984.2,
@@ -22981,7 +22981,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["y"] = -6080.9,
             ["x"] = -4373,
         },
-        ["CRange"] = 25590,
+        ["Waypoint"] = 25590,
         ["Range"] = 40.44,
         ["TT"] = {
             ["y"] = -6080.9,
@@ -23065,7 +23065,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [51]
     {
-        ["CRange"] = 25627,
+        ["Waypoint"] = 25627,
         ["Trigger"] = {
             ["y"] = -6400.9,
             ["x"] = -4473.3,
@@ -23108,7 +23108,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["y"] = -6411.7,
             ["x"] = -4490.8,
         },
-        ["CRange"] = 25627,
+        ["Waypoint"] = 25627,
         ["Range"] = 12.76,
         ["TT"] = {
             ["y"] = -6411.7,
@@ -23142,7 +23142,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [56]
     {
-        ["CRange"] = 25660,
+        ["Waypoint"] = 25660,
         ["Trigger"] = {
             ["y"] = -6073.4,
             ["x"] = -4591.4,
@@ -23185,7 +23185,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["x"] = -4415.4,
         },
         ["Range"] = 4.89,
-        ["CRange"] = 25661,
+        ["Waypoint"] = 25661,
         ["TT"] = {
             ["y"] = -6047.4,
             ["x"] = -4415.4,
@@ -23213,7 +23213,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["x"] = -4309.2,
         },
         ["Range"] = 4.17,
-        ["CRange"] = 25661,
+        ["Waypoint"] = 25661,
         ["TT"] = {
             ["y"] = -6134.5,
             ["x"] = -4309.2,
@@ -23249,7 +23249,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["x"] = -4326.4,
         },
         ["Range"] = 3.76,
-        ["CRange"] = 25661,
+        ["Waypoint"] = 25661,
         ["TT"] = {
             ["y"] = -6225.2,
             ["x"] = -4326.4,
@@ -23277,7 +23277,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["x"] = -4400.7,
         },
         ["Range"] = 20.98,
-        ["CRange"] = 25661,
+        ["Waypoint"] = 25661,
         ["TT"] = {
             ["y"] = -6096.4,
             ["x"] = -4400.7,
@@ -23289,7 +23289,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["x"] = -4511.5,
         },
         ["Range"] = 21.77,
-        ["CRange"] = 25661,
+        ["Waypoint"] = 25661,
         ["TT"] = {
             ["y"] = -6184.9,
             ["x"] = -4511.5,
@@ -23351,14 +23351,14 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["x"] = -4400.9,
         },
         ["Range"] = 33.85,
-        ["CRange"] = 25672,
+        ["Waypoint"] = 25672,
         ["TT"] = {
             ["y"] = -6088.5,
             ["x"] = -4400.9,
         },
     }, -- [71]
     {
-        ["CRange"] = 25672,
+        ["Waypoint"] = 25672,
         ["Trigger"] = {
             ["y"] = -6183.9,
             ["x"] = -4512.8,
@@ -23396,7 +23396,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [74]
     {
-        ["CRange"] = 25704,
+        ["Waypoint"] = 25704,
         ["Trigger"] = {
             ["y"] = -6667.3,
             ["x"] = -4219.7,
@@ -23428,7 +23428,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [76]
     {
-        ["CRange"] = 25704,
+        ["Waypoint"] = 25704,
         ["Trigger"] = {
             ["y"] = -6088.4,
             ["x"] = -4692.3,
@@ -23473,7 +23473,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["y"] = -5720.4,
             ["x"] = -4396.9,
         },
-        ["CRange"] = 25744,
+        ["Waypoint"] = 25744,
         ["Range"] = 14.85,
         ["TT"] = {
             ["y"] = -5720.4,
@@ -23543,7 +23543,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [86]
     {
-        ["CRange"] = 25762,
+        ["Waypoint"] = 25762,
         ["Trigger"] = {
             ["y"] = -5065.4,
             ["x"] = -2367,
@@ -23560,7 +23560,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [87]
     {
-        ["CRange"] = 25762,
+        ["Waypoint"] = 25762,
         ["Trigger"] = {
             ["y"] = -5008.2,
             ["x"] = -2379.2,
@@ -23969,7 +23969,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["x"] = -2488.4,
         },
         ["Range"] = 12.11,
-        ["CRange"] = 27275,
+        ["Waypoint"] = 27275,
         ["TT"] = {
             ["y"] = -5606.2,
             ["x"] = -2488.4,
@@ -23981,7 +23981,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["x"] = -2460.5,
         },
         ["Range"] = 11.91,
-        ["CRange"] = 27275,
+        ["Waypoint"] = 27275,
         ["TT"] = {
             ["y"] = -5520.4,
             ["x"] = -2460.5,
@@ -24259,7 +24259,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["x"] = -2154.5,
         },
         ["Range"] = 10.83,
-        ["CRange"] = 27327,
+        ["Waypoint"] = 27327,
         ["TT"] = {
             ["y"] = -4828.5,
             ["x"] = -2154.5,
@@ -24470,7 +24470,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["x"] = -1024,
         },
         ["Range"] = 15.89,
-        ["CRange"] = 28088,
+        ["Waypoint"] = 28088,
         ["TT"] = {
             ["y"] = -5144.9,
             ["x"] = -1024,
@@ -24548,7 +24548,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["x"] = -994.8,
         },
         ["Range"] = 27.37,
-        ["CRange"] = 28098,
+        ["Waypoint"] = 28098,
         ["TT"] = {
             ["y"] = -5308.3,
             ["x"] = -1137.4,
@@ -24725,7 +24725,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["x"] = -1726.5,
         },
         ["Range"] = 27.93,
-        ["CRange"] = 28140,
+        ["Waypoint"] = 28140,
         ["TT"] = {
             ["y"] = -5557.5,
             ["x"] = -1726.5,
@@ -25418,7 +25418,7 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             ["y"] = -6945,
             ["x"] = -3385,
         },
-        ["CRange"] = 25522,
+        ["Waypoint"] = 25522,
         ["Range"] = 20.86,
         ["TT"] = {
             ["y"] = -6945,
@@ -25515,7 +25515,7 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             ["x"] = -4939.4,
         },
         ["Range"] = 19.44,
-        ["CRange"] = 25121,
+        ["Waypoint"] = 25121,
         ["TT"] = {
             ["y"] = -7779.2,
             ["x"] = -4939.4,
@@ -25755,7 +25755,7 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             ["x"] = -5186.9,
         },
         ["Range"] = 30.89,
-        ["CRange"] = 26889,
+        ["Waypoint"] = 26889,
         ["TT"] = {
             ["y"] = -8164.7,
             ["x"] = -5186.9,
@@ -25767,7 +25767,7 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             ["x"] = -4926.5,
         },
         ["Range"] = 42.04,
-        ["CRange"] = 26889,
+        ["Waypoint"] = 26889,
         ["TT"] = {
             ["y"] = -8448.2,
             ["x"] = -4926.5,
@@ -25977,7 +25977,7 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             ["x"] = -3635,
         },
         ["Range"] = 34.36,
-        ["CRange"] = 25061,
+        ["Waypoint"] = 25061,
         ["TT"] = {
             ["y"] = -9566.7,
             ["x"] = -3635,
@@ -26081,7 +26081,7 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             ["x"] = -3615.9,
         },
         ["Range"] = 49.85,
-        ["CRange"] = 25065,
+        ["Waypoint"] = 25065,
         ["TT"] = {
             ["y"] = -9982,
             ["x"] = -3615.9,
@@ -26109,7 +26109,7 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             ["x"] = -3761.7,
         },
         ["Range"] = 38.05,
-        ["CRange"] = 25065,
+        ["Waypoint"] = 25065,
         ["TT"] = {
             ["y"] = -10108.8,
             ["x"] = -3761.7,
@@ -26121,7 +26121,7 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             ["x"] = -3628.4,
         },
         ["Range"] = 34.71,
-        ["CRange"] = 25065,
+        ["Waypoint"] = 25065,
         ["TT"] = {
             ["y"] = -9990.3,
             ["x"] = -3628.4,
@@ -26151,7 +26151,7 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             ["x"] = -3597.7,
         },
         ["Range"] = 44.4,
-        ["CRange"] = 28881,
+        ["Waypoint"] = 28881,
         ["TT"] = {
             ["y"] = -9464,
             ["x"] = -3597.7,
@@ -26250,7 +26250,7 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             ["x"] = -2883,
         },
         ["Range"] = 31.64,
-        ["CRange"] = 25566,
+        ["Waypoint"] = 25566,
         ["TT"] = {
             ["y"] = -9400.7,
             ["x"] = -2883,
@@ -26262,7 +26262,7 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             ["x"] = -2782.9,
         },
         ["Range"] = 26.77,
-        ["CRange"] = 25566,
+        ["Waypoint"] = 25566,
         ["TT"] = {
             ["y"] = -9550.3,
             ["x"] = -2782.9,
@@ -26318,7 +26318,7 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             ["x"] = -2782.7,
         },
         ["Range"] = 20.11,
-        ["CRange"] = 25421,
+        ["Waypoint"] = 25421,
         ["TT"] = {
             ["y"] = -9561.3,
             ["x"] = -2782.7,
@@ -27071,7 +27071,7 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             ["y"] = -7191.4,
             ["x"] = -1427.5,
         },
-        ["CRange"] = 24690,
+        ["Waypoint"] = 24690,
         ["Range"] = 14.31,
         ["TT"] = {
             ["y"] = -7191.4,
@@ -27083,7 +27083,7 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             ["y"] = -7122.2,
             ["x"] = -1373.9,
         },
-        ["CRange"] = 24690,
+        ["Waypoint"] = 24690,
         ["Range"] = 11.41,
         ["TT"] = {
             ["y"] = -7122.2,
@@ -27095,7 +27095,7 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             ["y"] = -7168,
             ["x"] = -1286.9,
         },
-        ["CRange"] = 24690,
+        ["Waypoint"] = 24690,
         ["Range"] = 21.24,
         ["TT"] = {
             ["y"] = -7168,
@@ -27123,7 +27123,7 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             ["y"] = -7231.9,
             ["x"] = -1411,
         },
-        ["CRange"] = 24690,
+        ["Waypoint"] = 24690,
         ["Range"] = 11.4,
         ["TT"] = {
             ["y"] = -7231.9,
@@ -27196,7 +27196,7 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [60]
     {
-        ["CRange"] = 24692,
+        ["Waypoint"] = 24692,
         ["Trigger"] = {
             ["y"] = -7947.7,
             ["x"] = -1321,
@@ -27213,7 +27213,7 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [61]
     {
-        ["CRange"] = 24692,
+        ["Waypoint"] = 24692,
         ["Trigger"] = {
             ["y"] = -8009.9,
             ["x"] = -1294.6,
@@ -27230,7 +27230,7 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [62]
     {
-        ["CRange"] = 24692,
+        ["Waypoint"] = 24692,
         ["Trigger"] = {
             ["y"] = -8012.8,
             ["x"] = -1191.5,
@@ -27268,7 +27268,7 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [64]
     {
-        ["CRange"] = 24692,
+        ["Waypoint"] = 24692,
         ["Trigger"] = {
             ["y"] = -8013.5,
             ["x"] = -1194.5,
@@ -27285,7 +27285,7 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     },
     {
-        ["CRange"] = 24692,
+        ["Waypoint"] = 24692,
         ["Trigger"] = {
             ["y"] = -8006.9,
             ["x"] = -1299.5,
@@ -27302,7 +27302,7 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     },
     {
-        ["CRange"] = 24692,
+        ["Waypoint"] = 24692,
         ["Trigger"] = {
             ["y"] = -7929,
             ["x"] = -1329,
@@ -27576,7 +27576,7 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [86]
     {
-        ["CRange"] = 24717,
+        ["Waypoint"] = 24717,
         ["Trigger"] = {
             ["y"] = -6369,
             ["x"] = -1831.4,
@@ -28118,7 +28118,7 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [127]
     {
-        ["CRange"] = 24694,
+        ["Waypoint"] = 24694,
         ["Trigger"] = {
             ["y"] = -7098.3,
             ["x"] = -2413.9,
@@ -28417,7 +28417,7 @@ APR.RouteQuestStepList["A81-Silithus"] = {
             ["y"] = -8067.9,
             ["x"] = 1067.7,
         },
-        ["CRange"] = 8283,
+        ["Waypoint"] = 8283,
         ["Range"] = 15.57,
         ["TT"] = {
             ["y"] = -8067.9,
@@ -28517,7 +28517,7 @@ APR.RouteQuestStepList["A81-Silithus"] = {
             ["y"] = -6315.7,
             ["x"] = 143.6,
         },
-        ["CRange"] = 8321,
+        ["Waypoint"] = 8321,
         ["Range"] = 18.11,
         ["TT"] = {
             ["y"] = -6315.7,
@@ -28645,7 +28645,7 @@ APR.RouteQuestStepList["A81-Silithus"] = {
             ["x"] = 1066.2,
         },
         ["Range"] = 15.56,
-        ["CRange"] = 8282,
+        ["Waypoint"] = 8282,
         ["TT"] = {
             ["y"] = -8066,
             ["x"] = 1066.2,
@@ -28668,7 +28668,7 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [36]
     {
-        ["CRange"] = 8306,
+        ["Waypoint"] = 8306,
         ["Trigger"] = {
             ["y"] = -7981.2,
             ["x"] = 591.9,
@@ -28685,7 +28685,7 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [37]
     {
-        ["CRange"] = 8306,
+        ["Waypoint"] = 8306,
         ["Trigger"] = {
             ["y"] = -8011.9,
             ["x"] = 659.7,
@@ -28702,7 +28702,7 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [38]
     {
-        ["CRange"] = 8306,
+        ["Waypoint"] = 8306,
         ["Trigger"] = {
             ["y"] = -8051.2,
             ["x"] = 716.2,
@@ -28719,7 +28719,7 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [39]
     {
-        ["CRange"] = 8306,
+        ["Waypoint"] = 8306,
         ["Trigger"] = {
             ["y"] = -8119,
             ["x"] = 694.2,
@@ -28736,7 +28736,7 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [40]
     {
-        ["CRange"] = 8306,
+        ["Waypoint"] = 8306,
         ["Trigger"] = {
             ["y"] = -8173.5,
             ["x"] = 663.9,
@@ -28753,7 +28753,7 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [41]
     {
-        ["CRange"] = 8306,
+        ["Waypoint"] = 8306,
         ["Trigger"] = {
             ["y"] = -8279.3,
             ["x"] = 740.7,
@@ -28807,7 +28807,7 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [44]
     {
-        ["CRange"] = 8306,
+        ["Waypoint"] = 8306,
         ["Trigger"] = {
             ["y"] = -8277,
             ["x"] = 739.5,
@@ -28824,7 +28824,7 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [45]
     {
-        ["CRange"] = 8306,
+        ["Waypoint"] = 8306,
         ["Trigger"] = {
             ["y"] = -8176.9,
             ["x"] = 663.4,
@@ -28841,7 +28841,7 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [46]
     {
-        ["CRange"] = 8306,
+        ["Waypoint"] = 8306,
         ["Trigger"] = {
             ["y"] = -8043.4,
             ["x"] = 714,
@@ -29019,7 +29019,7 @@ APR.RouteQuestStepList["A81-Silithus"] = {
             ["x"] = 1438.4,
         },
         ["Range"] = 77.56,
-        ["CRange"] = 8279,
+        ["Waypoint"] = 8279,
         ["TT"] = {
             ["y"] = -7474.7,
             ["x"] = 1438.4,
@@ -29357,7 +29357,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9937.4,
             ["x"] = 885.4,
         },
-        ["CRange"] = 13946,
+        ["Waypoint"] = 13946,
         ["Range"] = 14.61,
         ["TT"] = {
             ["y"] = 9937.4,
@@ -29369,7 +29369,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 10016.2,
             ["x"] = 978.6,
         },
-        ["CRange"] = 13946,
+        ["Waypoint"] = 13946,
         ["Range"] = 16.31,
         ["TT"] = {
             ["y"] = 10016.2,
@@ -29381,7 +29381,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 10044.5,
             ["x"] = 1032.5,
         },
-        ["CRange"] = 13946,
+        ["Waypoint"] = 13946,
         ["Range"] = 8.43,
         ["TT"] = {
             ["y"] = 10044.5,
@@ -29389,7 +29389,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [24]
     {
-        ["CRange"] = 13946,
+        ["Waypoint"] = 13946,
         ["Trigger"] = {
             ["y"] = 10145.2,
             ["x"] = 1081.5,
@@ -29409,7 +29409,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [25]
     {
-        ["CRange"] = 13946,
+        ["Waypoint"] = 13946,
         ["Trigger"] = {
             ["y"] = 10159,
             ["x"] = 1117,
@@ -29429,7 +29429,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [26]
     {
-        ["CRange"] = 13946,
+        ["Waypoint"] = 13946,
         ["Trigger"] = {
             ["y"] = 10176.4,
             ["x"] = 1169.7,
@@ -29470,7 +29470,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 10080.6,
             ["x"] = 1037.3,
         },
-        ["CRange"] = 13946,
+        ["Waypoint"] = 13946,
         ["Range"] = 12.35,
         ["TT"] = {
             ["y"] = 10080.6,
@@ -29500,7 +29500,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9978.6,
             ["x"] = 1430.2,
         },
-        ["CRange"] = 483,
+        ["Waypoint"] = 483,
         ["Range"] = 30.37,
         ["TT"] = {
             ["y"] = 9978.6,
@@ -29512,7 +29512,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9956.9,
             ["x"] = 1525.5,
         },
-        ["CRange"] = 483,
+        ["Waypoint"] = 483,
         ["Range"] = 14.63,
         ["TT"] = {
             ["y"] = 9956.9,
@@ -29520,7 +29520,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [33]
     {
-        ["CRange"] = 483,
+        ["Waypoint"] = 483,
         ["Trigger"] = {
             ["y"] = 9867.2,
             ["x"] = 1556.9,
@@ -29541,7 +29541,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9843.5,
             ["x"] = 1562.8,
         },
-        ["CRange"] = 483,
+        ["Waypoint"] = 483,
         ["Range"] = 5.47,
         ["TT"] = {
             ["y"] = 9843.5,
@@ -29553,7 +29553,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9847.4,
             ["x"] = 1586,
         },
-        ["CRange"] = 483,
+        ["Waypoint"] = 483,
         ["Range"] = 9.61,
         ["TT"] = {
             ["y"] = 9847.4,
@@ -29565,7 +29565,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9811.7,
             ["x"] = 1622.4,
         },
-        ["CRange"] = 483,
+        ["Waypoint"] = 483,
         ["Range"] = 10.37,
         ["TT"] = {
             ["y"] = 9813.4,
@@ -29577,7 +29577,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9789.6,
             ["x"] = 1594.2,
         },
-        ["CRange"] = 483,
+        ["Waypoint"] = 483,
         ["Range"] = 3.82,
         ["TT"] = {
             ["y"] = 9789.6,
@@ -29598,7 +29598,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9775.7,
             ["x"] = 1606.2,
         },
-        ["CRange"] = 2541,
+        ["Waypoint"] = 2541,
         ["Range"] = 6.75,
         ["TT"] = {
             ["y"] = 9775.7,
@@ -29610,7 +29610,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9741.9,
             ["x"] = 1625.5,
         },
-        ["CRange"] = 2541,
+        ["Waypoint"] = 2541,
         ["Range"] = 8.56,
         ["TT"] = {
             ["y"] = 9741.9,
@@ -29654,7 +29654,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9783.5,
             ["x"] = 1557.7,
         },
-        ["CRange"] = 2541,
+        ["Waypoint"] = 2541,
         ["Range"] = 6.85,
         ["TT"] = {
             ["y"] = 9783.5,
@@ -29666,7 +29666,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9810,
             ["x"] = 1492.2,
         },
-        ["CRange"] = 2541,
+        ["Waypoint"] = 2541,
         ["Range"] = 6.9,
         ["TT"] = {
             ["y"] = 9810,
@@ -29674,7 +29674,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [45]
     {
-        ["CRange"] = 2541,
+        ["Waypoint"] = 2541,
         ["Trigger"] = {
             ["y"] = 9862.5,
             ["x"] = 1506.5,
@@ -29694,7 +29694,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [46]
     {
-        ["CRange"] = 2541,
+        ["Waypoint"] = 2541,
         ["Trigger"] = {
             ["y"] = 9849.5,
             ["x"] = 1461.9,
@@ -29714,7 +29714,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [47]
     {
-        ["CRange"] = 2541,
+        ["Waypoint"] = 2541,
         ["Trigger"] = {
             ["y"] = 9894.2,
             ["x"] = 1480,
@@ -29754,7 +29754,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9843.2,
             ["x"] = 1525,
         },
-        ["CRange"] = 2541,
+        ["Waypoint"] = 2541,
         ["Range"] = 6.84,
         ["TT"] = {
             ["y"] = 9843.2,
@@ -29801,7 +29801,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9792.2,
             ["x"] = 1595.5,
         },
-        ["CRange"] = 2541,
+        ["Waypoint"] = 2541,
         ["Range"] = 4.22,
         ["TT"] = {
             ["y"] = 9792.2,
@@ -29831,7 +29831,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9793.1,
             ["x"] = 1593.5,
         },
-        ["CRange"] = 2561,
+        ["Waypoint"] = 2561,
         ["Range"] = 4.05,
         ["TT"] = {
             ["y"] = 9793.1,
@@ -29843,7 +29843,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9788.9,
             ["x"] = 1574,
         },
-        ["CRange"] = 2561,
+        ["Waypoint"] = 2561,
         ["Range"] = 4.93,
         ["TT"] = {
             ["y"] = 9788.9,
@@ -29874,7 +29874,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9794.1,
             ["x"] = 1594.9,
         },
-        ["CRange"] = 2561,
+        ["Waypoint"] = 2561,
         ["Range"] = 5.23,
         ["TT"] = {
             ["y"] = 9794.1,
@@ -29895,7 +29895,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9798.2,
             ["x"] = 1605.4,
         },
-        ["CRange"] = 13945,
+        ["Waypoint"] = 13945,
         ["Range"] = 7.38,
         ["TT"] = {
             ["y"] = 9798.2,
@@ -29907,7 +29907,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9834,
             ["x"] = 1618.2,
         },
-        ["CRange"] = 13945,
+        ["Waypoint"] = 13945,
         ["Range"] = 7.38,
         ["TT"] = {
             ["y"] = 9833.6,
@@ -29919,7 +29919,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9853.7,
             ["x"] = 1576.8,
         },
-        ["CRange"] = 13945,
+        ["Waypoint"] = 13945,
         ["Range"] = 6.41,
         ["TT"] = {
             ["y"] = 9853.7,
@@ -29950,7 +29950,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 9931.9,
             ["x"] = 1217.5,
         },
-        ["CRange"] = 486,
+        ["Waypoint"] = 486,
         ["Range"] = 22.47,
         ["TT"] = {
             ["y"] = 9931.9,
@@ -29971,7 +29971,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 10181.2,
             ["x"] = 1328.8,
         },
-        ["CRange"] = 486,
+        ["Waypoint"] = 486,
         ["Range"] = 14.5,
         ["TT"] = {
             ["y"] = 10181.2,
@@ -29979,7 +29979,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     },
     {
-        ["CRange"] = 486,
+        ["Waypoint"] = 486,
         ["Trigger"] = {
             ["y"] = 10423.6,
             ["x"] = 1267.7,
@@ -29996,7 +29996,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [69]
     {
-        ["CRange"] = 486,
+        ["Waypoint"] = 486,
         ["Trigger"] = {
             ["y"] = 10319.4,
             ["x"] = 1195.7,
@@ -30165,7 +30165,7 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             ["y"] = 10155.2,
             ["x"] = 1428.7,
         },
-        ["CRange"] = 922,
+        ["Waypoint"] = 922,
         ["Range"] = 54.88,
         ["TT"] = {
             ["y"] = 10155.2,

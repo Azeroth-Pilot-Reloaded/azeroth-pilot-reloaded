@@ -10,7 +10,7 @@ function GetStepString(step)
         Treasure = L["GET_TREASURE"],
         QaskPopup = L["GROUP_Q"],
         Done = L["TURN_IN_Q"],
-        CRange = L["RUN_WAYPOINT"],
+        Waypoint = L["RUN_WAYPOINT"],
         SetHS = L["SET_HEARTHSTONE"],
         UseHS = L["USE_HEARTHSTONE"],
         UseDalaHS = L["USE_DALARAN_HEARTHSTONE"],
@@ -72,7 +72,7 @@ function PreviousQuestStep()
                 (steps["Class"] and steps["Class"] ~= className) or
                 (steps["HasAchievement"] and not _G.HasAchievement(steps["HasAchievement"])) or
                 (steps["DontHaveAchievement"] and _G.HasAchievement(steps["DontHaveAchievement"])) or
-                steps["CRange"]) then
+                steps["Waypoint"]) then
             break
         end
     end

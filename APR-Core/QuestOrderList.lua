@@ -382,8 +382,8 @@ function APR.questOrderList:AddStepFromRoute()
                 else
                     AddStepFrameWithQuest(stepIndex, L["TURN_IN_Q"], questInfo, "gray")
                 end
-            elseif step.CRange then
-                local questID = step.CRange
+            elseif step.Waypoint then
+                local questID = step.Waypoint
                 local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
                 AddStepFrame(stepIndex, L["RUN_WAYPOINT"], color)
             elseif step.SetHS then

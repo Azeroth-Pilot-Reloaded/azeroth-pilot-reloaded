@@ -338,7 +338,7 @@ if (APR.Race == "Tauren") then
                 ["x"] = -114.1,
             },
             ["Range"] = 14.19,
-            ["CRange"] = 23733,
+            ["Waypoint"] = 23733,
             ["TT"] = {
                 ["y"] = -2976,
                 ["x"] = -114.1,
@@ -350,7 +350,7 @@ if (APR.Race == "Tauren") then
                 ["x"] = -47,
             },
             ["Range"] = 13.17,
-            ["CRange"] = 23733,
+            ["Waypoint"] = 23733,
             ["TT"] = {
                 ["y"] = -2907.2,
                 ["x"] = -47,
@@ -362,7 +362,7 @@ if (APR.Race == "Tauren") then
                 ["x"] = 18.8,
             },
             ["Range"] = 8.83,
-            ["CRange"] = 23733,
+            ["Waypoint"] = 23733,
             ["TT"] = {
                 ["y"] = -2903.9,
                 ["x"] = 18.8,
@@ -374,7 +374,7 @@ if (APR.Race == "Tauren") then
                 ["x"] = 14,
             },
             ["Range"] = 13.83,
-            ["CRange"] = 23733,
+            ["Waypoint"] = 23733,
             ["TT"] = {
                 ["y"] = -2919,
                 ["x"] = 14,
@@ -399,7 +399,7 @@ if (APR.Race == "Tauren") then
             },
         }, -- [32]
         {
-            ["CRange"] = 24215,
+            ["Waypoint"] = 24215,
             ["Button"] = {
                 ["24215-0"] = 49652,
             },
@@ -752,7 +752,7 @@ elseif (APR.Race == "Orc") then
                 ["x"] = -4358.9,
             },
             ["Range"] = 10.62,
-            ["CRange"] = 25135,
+            ["Waypoint"] = 25135,
             ["TT"] = {
                 ["y"] = -178.5,
                 ["x"] = -4358.9,
@@ -764,7 +764,7 @@ elseif (APR.Race == "Orc") then
                 ["x"] = -4365.8,
             },
             ["Range"] = 10.61,
-            ["CRange"] = 25135,
+            ["Waypoint"] = 25135,
             ["TT"] = {
                 ["y"] = -136.2,
                 ["x"] = -4365.8,
@@ -792,7 +792,7 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [26]
         {
-            ["CRange"] = 25132,
+            ["Waypoint"] = 25132,
             ["Trigger"] = {
                 ["y"] = -149,
                 ["x"] = -4258.3,
@@ -852,7 +852,7 @@ elseif (APR.Race == "Orc") then
                 ["x"] = -4363.4,
             },
             ["Range"] = 10.95,
-            ["CRange"] = 25132,
+            ["Waypoint"] = 25132,
             ["TT"] = {
                 ["y"] = -143.7,
                 ["x"] = -4363.4,
@@ -883,7 +883,7 @@ elseif (APR.Race == "Orc") then
                 ["x"] = -4595.7,
             },
             ["Range"] = 17.6,
-            ["CRange"] = 25133,
+            ["Waypoint"] = 25133,
             ["TT"] = {
                 ["y"] = -603,
                 ["x"] = -4595.7,
@@ -1069,7 +1069,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 ["y"] = -1242.6,
                 ["x"] = -5543,
             },
-            ["CRange"] = 24643,
+            ["Waypoint"] = 24643,
             ["Range"] = 18.75,
             ["TT"] = {
                 ["y"] = -1242.6,
@@ -1081,7 +1081,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 ["y"] = -1288,
                 ["x"] = -5569.3,
             },
-            ["CRange"] = 24643,
+            ["Waypoint"] = 24643,
             ["Range"] = 7.75,
             ["TT"] = {
                 ["y"] = -1288,
@@ -1139,7 +1139,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
-            ["CRange"] = 24622,
+            ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
                 ["y"] = -1331,
@@ -1321,7 +1321,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["CRange"] = 25035,
+            ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
             ["Trigger"] = {
                 ["y"] = -1201,
@@ -1400,7 +1400,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 ["x"] = -5606.4,
             },
             ["Range"] = 14.91,
-            ["CRange"] = 24814,
+            ["Waypoint"] = 24814,
             ["TT"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
@@ -1635,7 +1635,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 ["x"] = -5569.3,
             },
             ["Range"] = 5.92,
-            ["CRange"] = 24781,
+            ["Waypoint"] = 24781,
             ["TT"] = {
                 ["y"] = -1289,
                 ["x"] = -5569.3,
@@ -1692,7 +1692,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
-            ["CRange"] = 24622,
+            ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
                 ["y"] = -1331,
@@ -1874,7 +1874,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["CRange"] = 25035,
+            ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
             ["Trigger"] = {
                 ["y"] = -1201,
@@ -1953,7 +1953,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 ["x"] = -5606.4,
             },
             ["Range"] = 14.91,
-            ["CRange"] = 24814,
+            ["Waypoint"] = 24814,
             ["TT"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
@@ -2172,7 +2172,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 ["x"] = -5568.5,
             },
             ["Range"] = 8.7,
-            ["CRange"] = 24775,
+            ["Waypoint"] = 24775,
             ["TT"] = {
                 ["y"] = -1287.8,
                 ["x"] = -5568.5,
@@ -2229,7 +2229,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
-            ["CRange"] = 24622,
+            ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
                 ["y"] = -1331,
@@ -2411,7 +2411,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["CRange"] = 25035,
+            ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
             ["Trigger"] = {
                 ["y"] = -1201,
@@ -2490,7 +2490,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 ["x"] = -5606.4,
             },
             ["Range"] = 14.91,
-            ["CRange"] = 24814,
+            ["Waypoint"] = 24814,
             ["TT"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
@@ -2709,7 +2709,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 ["x"] = -5568.5,
             },
             ["Range"] = 8.7,
-            ["CRange"] = 24775,
+            ["Waypoint"] = 24775,
             ["TT"] = {
                 ["y"] = -1287.8,
                 ["x"] = -5568.5,
@@ -2871,7 +2871,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 ["x"] = -5568.3,
             },
             ["Range"] = 6.09,
-            ["CRange"] = 24787,
+            ["Waypoint"] = 24787,
             ["TT"] = {
                 ["y"] = -1288.4,
                 ["x"] = -5568.3,
@@ -2928,7 +2928,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
-            ["CRange"] = 24622,
+            ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
                 ["y"] = -1331,
@@ -3110,7 +3110,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["CRange"] = 25035,
+            ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
             ["Trigger"] = {
                 ["y"] = -1201,
@@ -3189,7 +3189,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 ["x"] = -5606.4,
             },
             ["Range"] = 14.91,
-            ["CRange"] = 24814,
+            ["Waypoint"] = 24814,
             ["TT"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
@@ -3424,7 +3424,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 ["x"] = -5569,
             },
             ["Range"] = 7.77,
-            ["CRange"] = 24763,
+            ["Waypoint"] = 24763,
             ["TT"] = {
                 ["y"] = -1288.4,
                 ["x"] = -5569,
@@ -3481,7 +3481,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
-            ["CRange"] = 24622,
+            ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
                 ["y"] = -1331,
@@ -3663,7 +3663,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["CRange"] = 25035,
+            ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
             ["Trigger"] = {
                 ["y"] = -1201,
@@ -3742,7 +3742,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 ["x"] = -5606.4,
             },
             ["Range"] = 14.91,
-            ["CRange"] = 24814,
+            ["Waypoint"] = 24814,
             ["TT"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
@@ -3977,7 +3977,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 ["x"] = -5569.8,
             },
             ["Range"] = 5.29,
-            ["CRange"] = 24755,
+            ["Waypoint"] = 24755,
             ["TT"] = {
                 ["y"] = -1288.5,
                 ["x"] = -5569.8,
@@ -4034,7 +4034,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
-            ["CRange"] = 24622,
+            ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
                 ["y"] = -1331,
@@ -4216,7 +4216,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["CRange"] = 25035,
+            ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
             ["Trigger"] = {
                 ["y"] = -1201,
@@ -4295,7 +4295,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 ["x"] = -5606.4,
             },
             ["Range"] = 14.91,
-            ["CRange"] = 24814,
+            ["Waypoint"] = 24814,
             ["TT"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
@@ -4530,7 +4530,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 ["x"] = -5567.8,
             },
             ["Range"] = 5.91,
-            ["CRange"] = 26277,
+            ["Waypoint"] = 26277,
             ["TT"] = {
                 ["y"] = -1287.6,
                 ["x"] = -5567.8,
@@ -4587,7 +4587,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
-            ["CRange"] = 24622,
+            ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
                 ["y"] = -1331,
@@ -4769,7 +4769,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["CRange"] = 25035,
+            ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
             ["Trigger"] = {
                 ["y"] = -1201,
@@ -4848,7 +4848,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 ["x"] = -5606.4,
             },
             ["Range"] = 14.91,
-            ["CRange"] = 24814,
+            ["Waypoint"] = 24814,
             ["TT"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
@@ -5083,7 +5083,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 ["x"] = -5569.2,
             },
             ["Range"] = 6.36,
-            ["CRange"] = 31163,
+            ["Waypoint"] = 31163,
             ["TT"] = {
                 ["y"] = -1288.3,
                 ["x"] = -5569.2,
@@ -5140,7 +5140,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
-            ["CRange"] = 24622,
+            ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
                 ["y"] = -1331,
@@ -5322,7 +5322,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["CRange"] = 25035,
+            ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
             ["Trigger"] = {
                 ["y"] = -1201,
@@ -5401,7 +5401,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 ["x"] = -5606.4,
             },
             ["Range"] = 14.91,
-            ["CRange"] = 24814,
+            ["Waypoint"] = 24814,
             ["TT"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
@@ -5636,7 +5636,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 ["x"] = -5569.2,
             },
             ["Range"] = 6.21,
-            ["CRange"] = 24769,
+            ["Waypoint"] = 24769,
             ["TT"] = {
                 ["y"] = -1288.3,
                 ["x"] = -5569.2,
@@ -5693,7 +5693,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
-            ["CRange"] = 24622,
+            ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
                 ["y"] = -1331,
@@ -5875,7 +5875,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["CRange"] = 25035,
+            ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
             ["Trigger"] = {
                 ["y"] = -1201,
@@ -5954,7 +5954,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 ["x"] = -5606.4,
             },
             ["Range"] = 14.91,
-            ["CRange"] = 24814,
+            ["Waypoint"] = 24814,
             ["TT"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
@@ -6088,7 +6088,7 @@ elseif (APR.Race == "Goblin" and APR.Gender == 2) then
                 ["x"] = 1249.3,
             },
             ["Range"] = 25.83,
-            ["CRange"] = 14069,
+            ["Waypoint"] = 14069,
             ["TT"] = {
                 ["y"] = -8441.3,
                 ["x"] = 1249.3,
@@ -6882,7 +6882,7 @@ elseif (APR.Race == "Goblin" and APR.Gender == 2) then
                 ["y"] = -8425.3,
                 ["x"] = 1372.4,
             },
-            ["CRange"] = 14125,
+            ["Waypoint"] = 14125,
             ["Range"] = 4.29,
             ["TT"] = {
                 ["y"] = -8425.3,
@@ -6894,7 +6894,7 @@ elseif (APR.Race == "Goblin" and APR.Gender == 2) then
                 ["y"] = -8419.7,
                 ["x"] = 1364.2,
             },
-            ["CRange"] = 14125,
+            ["Waypoint"] = 14125,
             ["Range"] = 5.04,
             ["TT"] = {
                 ["y"] = -8419.7,
@@ -7006,10 +7006,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = -8457,
-                ["x"] = 1225.9,
-            },
             ["Qpart"] = {
                 [14069] = {
                     ["1"] = "1",
@@ -7019,6 +7015,10 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 30.56,
+            ["Trigger"] = {
+                ["y"] = -8457,
+                ["x"] = 1225.9,
+            },
             ["TT"] = {
                 ["y"] = -8457,
                 ["x"] = 1225.9,
@@ -7030,7 +7030,7 @@ elseif (APR.Race == "Goblin") then
                 ["x"] = 1249.3,
             },
             ["Range"] = 25.83,
-            ["CRange"] = 14069,
+            ["Waypoint"] = 14069,
             ["TT"] = {
                 ["y"] = -8441.3,
                 ["x"] = 1249.3,
@@ -7824,7 +7824,7 @@ elseif (APR.Race == "Goblin") then
                 ["y"] = -8425.3,
                 ["x"] = 1372.4,
             },
-            ["CRange"] = 14125,
+            ["Waypoint"] = 14125,
             ["Range"] = 4.29,
             ["TT"] = {
                 ["y"] = -8425.3,
@@ -7836,7 +7836,7 @@ elseif (APR.Race == "Goblin") then
                 ["y"] = -8419.7,
                 ["x"] = 1364.2,
             },
-            ["CRange"] = 14125,
+            ["Waypoint"] = 14125,
             ["Range"] = 5.04,
             ["TT"] = {
                 ["y"] = -8419.7,
@@ -8122,7 +8122,7 @@ if (APR.Race == "Goblin") then
                 ["x"] = 2946.1,
             },
             ["Range"] = 10.78,
-            ["CRange"] = 14031,
+            ["Waypoint"] = 14031,
             ["TT"] = {
                 ["y"] = 658.1,
                 ["x"] = 2946.1,
@@ -8162,7 +8162,7 @@ if (APR.Race == "Goblin") then
                 ["x"] = 2959,
             },
             ["Range"] = 11.45,
-            ["CRange"] = 14021,
+            ["Waypoint"] = 14021,
             ["TT"] = {
                 ["y"] = 586.4,
                 ["x"] = 2959,
@@ -8292,7 +8292,7 @@ if (APR.Race == "Goblin") then
                 ["y"] = 772.4,
                 ["x"] = 2885.6,
             },
-            ["CRange"] = 14237,
+            ["Waypoint"] = 14237,
             ["Range"] = 31.16,
             ["TT"] = {
                 ["y"] = 772.4,
@@ -8446,7 +8446,7 @@ if (APR.Race == "Goblin") then
                 ["x"] = 3818.4,
             },
             ["Range"] = 7.36,
-            ["CRange"] = 14326,
+            ["Waypoint"] = 14326,
             ["TT"] = {
                 ["y"] = 973.2,
                 ["x"] = 3818.4,
@@ -8458,7 +8458,7 @@ if (APR.Race == "Goblin") then
                 ["x"] = 3812.8,
             },
             ["Range"] = 5.75,
-            ["CRange"] = 14326,
+            ["Waypoint"] = 14326,
             ["TT"] = {
                 ["y"] = 982.7,
                 ["x"] = 3812.8,
@@ -8819,7 +8819,7 @@ if (APR.Race == "Goblin") then
                 ["x"] = 2164,
             },
             ["Range"] = 28.66,
-            ["CRange"] = 24856,
+            ["Waypoint"] = 24856,
             ["TT"] = {
                 ["y"] = 893,
                 ["x"] = 2164,
@@ -9011,7 +9011,7 @@ if (APR.Race == "Goblin") then
                 ["x"] = 2161.5,
             },
             ["Range"] = 17.3,
-            ["CRange"] = 24924,
+            ["Waypoint"] = 24924,
             ["TT"] = {
                 ["y"] = 888.7,
                 ["x"] = 2161.5,
@@ -9037,7 +9037,7 @@ if (APR.Race == "Goblin") then
             },
         }, -- [16]
         {
-            ["CRange"] = 24925,
+            ["Waypoint"] = 24925,
             ["Trigger"] = {
                 ["y"] = 844.2,
                 ["x"] = 1722.5,
@@ -9054,7 +9054,7 @@ if (APR.Race == "Goblin") then
             },
         }, -- [17]
         {
-            ["CRange"] = 24925,
+            ["Waypoint"] = 24925,
             ["Trigger"] = {
                 ["y"] = 845.6,
                 ["x"] = 1681.7,
@@ -9071,7 +9071,7 @@ if (APR.Race == "Goblin") then
             },
         }, -- [18]
         {
-            ["CRange"] = 24925,
+            ["Waypoint"] = 24925,
             ["Trigger"] = {
                 ["y"] = 790.7,
                 ["x"] = 1560.4,
@@ -9710,7 +9710,7 @@ if (APR.Race == "Goblin") then
                 ["x"] = 1941,
             },
             ["Range"] = 8.94,
-            ["CRange"] = 25109,
+            ["Waypoint"] = 25109,
             ["TT"] = {
                 ["y"] = 1797.3,
                 ["x"] = 1941,
@@ -9722,7 +9722,7 @@ if (APR.Race == "Goblin") then
                 ["x"] = 1923.2,
             },
             ["Range"] = 8.9,
-            ["CRange"] = 25109,
+            ["Waypoint"] = 25109,
             ["TT"] = {
                 ["y"] = 1810,
                 ["x"] = 1923.2,
@@ -9734,7 +9734,7 @@ if (APR.Race == "Goblin") then
                 ["x"] = 1913.2,
             },
             ["Range"] = 9.37,
-            ["CRange"] = 25109,
+            ["Waypoint"] = 25109,
             ["TT"] = {
                 ["y"] = 1836.7,
                 ["x"] = 1913.2,
@@ -9746,7 +9746,7 @@ if (APR.Race == "Goblin") then
                 ["x"] = 1898.9,
             },
             ["Range"] = 9.71,
-            ["CRange"] = 25109,
+            ["Waypoint"] = 25109,
             ["TT"] = {
                 ["y"] = 1811.5,
                 ["x"] = 1898.9,
@@ -9758,7 +9758,7 @@ if (APR.Race == "Goblin") then
                 ["x"] = 1946.5,
             },
             ["Range"] = 12.97,
-            ["CRange"] = 25109,
+            ["Waypoint"] = 25109,
             ["TT"] = {
                 ["y"] = 1777.5,
                 ["x"] = 1946.5,
@@ -9770,7 +9770,7 @@ if (APR.Race == "Goblin") then
                 ["x"] = 1976.7,
             },
             ["Range"] = 15.14,
-            ["CRange"] = 25109,
+            ["Waypoint"] = 25109,
             ["TT"] = {
                 ["y"] = 1770.5,
                 ["x"] = 1976.7,
@@ -9969,7 +9969,7 @@ if (APR.Race == "Goblin") then
                 ["x"] = 1817.5,
             },
             ["Range"] = 13.55,
-            ["CRange"] = 25125,
+            ["Waypoint"] = 25125,
             ["TT"] = {
                 ["y"] = 1911.7,
                 ["x"] = 1817.5,
@@ -10401,7 +10401,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     },
     {
-        ["CRange"] = 25169,
+        ["Waypoint"] = 25169,
         ["Trigger"] = {
             ["y"] = -983.5,
             ["x"] = -4661.7,
@@ -10424,7 +10424,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [10]
     {
-        ["CRange"] = 25169,
+        ["Waypoint"] = 25169,
         ["Trigger"] = {
             ["y"] = -1015.3,
             ["x"] = -4617.7,
@@ -10483,7 +10483,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [13]
     {
-        ["CRange"] = 25169,
+        ["Waypoint"] = 25169,
         ["Trigger"] = {
             ["y"] = -1012.5,
             ["x"] = -4492.3,
@@ -10500,7 +10500,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [14]
     {
-        ["CRange"] = 25169,
+        ["Waypoint"] = 25169,
         ["Trigger"] = {
             ["y"] = -1026.8,
             ["x"] = -4448.8,
@@ -10542,7 +10542,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             ["y"] = -980.8,
             ["x"] = -4650.9,
         },
-        ["CRange"] = 25169,
+        ["Waypoint"] = 25169,
         ["Range"] = 20.18,
         ["TT"] = {
             ["y"] = -980.8,
@@ -10589,7 +10589,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [20]
     {
-        ["CRange"] = 25169,
+        ["Waypoint"] = 25169,
         ["ExtraLineText"] = "TALK_JHASH",
         ["Trigger"] = {
             ["y"] = -606.2,
@@ -10643,7 +10643,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             ["y"] = 262,
             ["x"] = -4824.7,
         },
-        ["CRange"] = 25173,
+        ["Waypoint"] = 25173,
         ["Range"] = 11.68,
         ["TT"] = {
             ["y"] = 262,
@@ -10651,7 +10651,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [26]
     {
-        ["CRange"] = 25173,
+        ["Waypoint"] = 25173,
         ["Trigger"] = {
             ["y"] = -245.7,
             ["x"] = -5079.4,
@@ -10835,7 +10835,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             ["y"] = 333.6,
             ["x"] = -4631.5,
         },
-        ["CRange"] = 25232,
+        ["Waypoint"] = 25232,
         ["Range"] = 13.96,
         ["TT"] = {
             ["y"] = 333.6,
@@ -11146,7 +11146,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             ["x"] = -4847.4,
         },
         ["Range"] = 29.49,
-        ["CRange"] = 25232,
+        ["Waypoint"] = 25232,
         ["TT"] = {
             ["y"] = 428.8,
             ["x"] = -4847.4,
@@ -11201,7 +11201,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             ["y"] = 1054.4,
             ["x"] = -4521,
         },
-        ["CRange"] = 834,
+        ["Waypoint"] = 834,
         ["Range"] = 21.83,
         ["TT"] = {
             ["y"] = 1054.4,
@@ -11494,7 +11494,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             ["y"] = 1462.8,
             ["x"] = -4874,
         },
-        ["CRange"] = 25262,
+        ["Waypoint"] = 25262,
         ["Range"] = 12.99,
         ["TT"] = {
             ["y"] = 1462.8,
@@ -11645,7 +11645,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["y"] = -175.5,
             ["x"] = -3610.2,
         },
-        ["CRange"] = 5041,
+        ["Waypoint"] = 5041,
         ["Range"] = 19.92,
         ["TT"] = {
             ["y"] = -175.5,
@@ -11679,7 +11679,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["y"] = -188.7,
             ["x"] = -3597.2,
         },
-        ["CRange"] = 872,
+        ["Waypoint"] = 872,
         ["Range"] = 14.22,
         ["TT"] = {
             ["y"] = -188.7,
@@ -12683,14 +12683,14 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["x"] = -3621.2,
         },
         ["Range"] = 28.89,
-        ["CRange"] = 14006,
+        ["Waypoint"] = 14006,
         ["TT"] = {
             ["y"] = 1077.4,
             ["x"] = -3621.2,
         },
     }, -- [23]
     {
-        ["CRange"] = 14006,
+        ["Waypoint"] = 14006,
         ["Trigger"] = {
             ["y"] = 1311.5,
             ["x"] = -3587.5,
@@ -13086,7 +13086,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["x"] = -3172.2,
         },
         ["Range"] = 17.03,
-        ["CRange"] = 13988,
+        ["Waypoint"] = 13988,
         ["TT"] = {
             ["y"] = -1288.9,
             ["x"] = -3172.2,
@@ -13246,7 +13246,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["y"] = -802.7,
             ["x"] = -1946,
         },
-        ["CRange"] = 852,
+        ["Waypoint"] = 852,
         ["Range"] = 49.25,
         ["TT"] = {
             ["y"] = -802.7,
@@ -13438,7 +13438,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["y"] = -858.8,
             ["x"] = -3754.2,
         },
-        ["CRange"] = 14034,
+        ["Waypoint"] = 14034,
         ["Range"] = 15.87,
         ["TT"] = {
             ["y"] = -858.8,
@@ -13468,7 +13468,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["y"] = -874.8,
             ["x"] = -3562.9,
         },
-        ["CRange"] = 865,
+        ["Waypoint"] = 865,
         ["Range"] = 16.25,
         ["TT"] = {
             ["y"] = -874.8,
@@ -13480,7 +13480,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["y"] = -845.5,
             ["x"] = -3549.9,
         },
-        ["CRange"] = 865,
+        ["Waypoint"] = 865,
         ["Range"] = 15.23,
         ["TT"] = {
             ["y"] = -845.5,
@@ -13518,7 +13518,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["y"] = -1049.4,
             ["x"] = -3697,
         },
-        ["CRange"] = 891,
+        ["Waypoint"] = 891,
         ["Range"] = 20.13,
         ["TT"] = {
             ["y"] = -1047.9,
@@ -13919,7 +13919,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["x"] = -3561.2,
         },
         ["Range"] = 11.49,
-        ["CRange"] = 14050,
+        ["Waypoint"] = 14050,
         ["TT"] = {
             ["y"] = -1059,
             ["x"] = -3561.2,
@@ -13931,7 +13931,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["x"] = -3568.7,
         },
         ["Range"] = 18.64,
-        ["CRange"] = 14050,
+        ["Waypoint"] = 14050,
         ["TT"] = {
             ["y"] = -1109.4,
             ["x"] = -3568.7,
@@ -13959,7 +13959,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["x"] = -3546.9,
         },
         ["Range"] = 17.65,
-        ["CRange"] = 14066,
+        ["Waypoint"] = 14066,
         ["TT"] = {
             ["y"] = -847.7,
             ["x"] = -3546.9,
@@ -14292,7 +14292,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["y"] = 348.7,
             ["x"] = -2514.5,
         },
-        ["CRange"] = 29110,
+        ["Waypoint"] = 29110,
         ["Range"] = 19.41,
         ["TT"] = {
             ["y"] = 348.7,
@@ -14304,7 +14304,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["y"] = 399.3,
             ["x"] = -2393.5,
         },
-        ["CRange"] = 29110,
+        ["Waypoint"] = 29110,
         ["Range"] = 21.65,
         ["TT"] = {
             ["y"] = 399.3,
@@ -14423,7 +14423,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         },
     },
     {
-        ["CRange"] = 24504,
+        ["Waypoint"] = 24504,
         ["Trigger"] = {
             ["y"] = -425.7,
             ["x"] = -1161.6,

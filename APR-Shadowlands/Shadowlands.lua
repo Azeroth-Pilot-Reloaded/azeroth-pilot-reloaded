@@ -430,7 +430,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             ["y"] = 4817.3,
             ["x"] = 7647.8,
         },
-        ["CRange"] = 59757,
+        ["Waypoint"] = 59757,
         ["Range"] = 13.85,
         ["TT"] = {
             ["y"] = 4817.3,
@@ -518,7 +518,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             ["y"] = 4832.1,
             ["x"] = 7610,
         },
-        ["CRange"] = 59915,
+        ["Waypoint"] = 59915,
         ["Range"] = 10.94,
         ["TT"] = {
             ["y"] = 4832.1,
@@ -530,7 +530,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             ["y"] = 4805.1,
             ["x"] = 7655.5,
         },
-        ["CRange"] = 59915,
+        ["Waypoint"] = 59915,
         ["Range"] = 14.95,
         ["TT"] = {
             ["y"] = 4805.1,
@@ -561,7 +561,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             ["y"] = 4813.1,
             ["x"] = 7653,
         },
-        ["CRange"] = 59759,
+        ["Waypoint"] = 59759,
         ["Range"] = 15.5,
         ["TT"] = {
             ["y"] = 4813.1,
@@ -574,7 +574,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             ["y"] = 4842.3,
             ["x"] = 7607.5,
         },
-        ["CRange"] = 59759,
+        ["Waypoint"] = 59759,
         ["Range"] = 13.71,
         ["TT"] = {
             ["y"] = 4842.3,
@@ -587,7 +587,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             ["y"] = 5026.1,
             ["x"] = 7667.8,
         },
-        ["CRange"] = 59759,
+        ["Waypoint"] = 59759,
         ["Range"] = 17.39,
         ["TT"] = {
             ["y"] = 5026.1,
@@ -668,14 +668,14 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             ["x"] = 7527,
         },
         ["Range"] = 14.41,
-        ["CRange"] = 59760,
+        ["Waypoint"] = 59760,
         ["TT"] = {
             ["y"] = 5206.3,
             ["x"] = 7493.3,
         },
     }, -- [21]
     {
-        ["CRange"] = 59760,
+        ["Waypoint"] = 59760,
         ["Trigger"] = {
             ["y"] = 5333.7,
             ["x"] = 7527.3,
@@ -692,7 +692,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
         },
     }, -- [22]
     {
-        ["CRange"] = 59760,
+        ["Waypoint"] = 59760,
         ["Trigger"] = {
             ["y"] = 5395.3,
             ["x"] = 7569.7,
@@ -709,7 +709,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
         },
     }, -- [23]
     {
-        ["CRange"] = 59760,
+        ["Waypoint"] = 59760,
         ["Trigger"] = {
             ["y"] = 5435.3,
             ["x"] = 7531.2,
@@ -768,7 +768,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             ["x"] = 7500.8,
         },
         ["Range"] = 22.44,
-        ["CRange"] = 59761,
+        ["Waypoint"] = 59761,
         ["TT"] = {
             ["y"] = 5249.8,
             ["x"] = 7524.3,
@@ -884,7 +884,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             ["x"] = 7652.1,
         },
         ["Range"] = 10.58,
-        ["CRange"] = 59762,
+        ["Waypoint"] = 59762,
         ["TT"] = {
             ["y"] = 4817.2,
             ["x"] = 7652.1,
@@ -896,7 +896,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             ["x"] = 7603.2,
         },
         ["Range"] = 11.09,
-        ["CRange"] = 59762,
+        ["Waypoint"] = 59762,
         ["TT"] = {
             ["y"] = 4831.3,
             ["x"] = 7603.2,
@@ -1163,7 +1163,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
             ["x"] = 1412.2,
         },
         ["Range"] = 14.54,
-        ["CRange"] = 60129,
+        ["Waypoint"] = 60129,
         ["TT"] = {
             ["y"] = -1843.4,
             ["x"] = 1412.2,
@@ -1176,7 +1176,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
             ["x"] = 1382.8,
         },
         ["Range"] = 26.05,
-        ["CRange"] = 60129,
+        ["Waypoint"] = 60129,
         ["TT"] = {
             ["y"] = -1921.8,
             ["x"] = 1382.8,
@@ -1485,7 +1485,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
             ["x"] = 1417.9,
         },
         ["Range"] = 7.56,
-        ["CRange"] = 60151,
+        ["Waypoint"] = 60151,
         ["TT"] = {
             ["y"] = -1843,
             ["x"] = 1417.9,
@@ -1857,7 +1857,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -4228.9,
         },
         ["Range"] = 20.06,
-        ["CRange"] = 59774,
+        ["Waypoint"] = 59774,
         ["TT"] = {
             ["y"] = -4342.5,
             ["x"] = -4228.9,
@@ -2168,7 +2168,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         },
     }, -- [29]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4045.7,
             ["x"] = -4601.2,
@@ -2185,7 +2185,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         },
     }, -- [30]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4022.5,
             ["x"] = -4544.5,
@@ -2202,7 +2202,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         },
     }, -- [31]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4000.5,
             ["x"] = -4498.8,
@@ -2219,7 +2219,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         },
     }, -- [32]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -3951.5,
             ["x"] = -4441.3,
@@ -2236,7 +2236,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         },
     }, -- [33]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4001.2,
             ["x"] = -4408,
@@ -2253,7 +2253,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         },
     }, -- [34]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4048.2,
             ["x"] = -4376,
@@ -2312,7 +2312,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         },
     }, -- [37]
     {
-        ["CRange"] = 57676,
+        ["Waypoint"] = 57676,
         ["Trigger"] = {
             ["y"] = -3971.2,
             ["x"] = -4422.9,
@@ -2349,7 +2349,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["y"] = -4043.7,
             ["x"] = -4598.9,
         },
-        ["CRange"] = 57676,
+        ["Waypoint"] = 57676,
         ["Range"] = 12.87,
         ["TT"] = {
             ["y"] = -4043.7,
@@ -2963,7 +2963,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["y"] = -4597.4,
             ["x"] = -4991.3,
         },
-        ["CRange"] = 57291,
+        ["Waypoint"] = 57291,
         ["Range"] = 12.05,
         ["TT"] = {
             ["y"] = -4597.4,
@@ -2975,7 +2975,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["y"] = -4704.9,
             ["x"] = -5135.5,
         },
-        ["CRange"] = 57291,
+        ["Waypoint"] = 57291,
         ["Range"] = 22,
         ["TT"] = {
             ["y"] = -4704.9,
@@ -3073,7 +3073,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -5279.5,
         },
         ["Range"] = 10.6,
-        ["CRange"] = 57266,
+        ["Waypoint"] = 57266,
         ["TT"] = {
             ["y"] = -4759.4,
             ["x"] = -5279.5,
@@ -3118,7 +3118,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -5225.5,
         },
         ["Range"] = 7.48,
-        ["CRange"] = 57266,
+        ["Waypoint"] = 57266,
         ["TT"] = {
             ["y"] = -4710.4,
             ["x"] = -5225.5,
@@ -3162,7 +3162,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -5086.5,
         },
         ["Range"] = 11.18,
-        ["CRange"] = 60219,
+        ["Waypoint"] = 60219,
         ["TT"] = {
             ["y"] = -4702.9,
             ["x"] = -5086.5,
@@ -3174,7 +3174,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -5019,
         },
         ["Range"] = 8.27,
-        ["CRange"] = 60219,
+        ["Waypoint"] = 60219,
         ["TT"] = {
             ["y"] = -4745.4,
             ["x"] = -5019,
@@ -3280,7 +3280,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -4990.7,
         },
         ["Range"] = 11.31,
-        ["CRange"] = 58174,
+        ["Waypoint"] = 58174,
         ["TT"] = {
             ["y"] = -4592.3,
             ["x"] = -4990.7,
@@ -3292,7 +3292,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -4893.4,
         },
         ["Range"] = 20.69,
-        ["CRange"] = 58174,
+        ["Waypoint"] = 58174,
         ["TT"] = {
             ["y"] = -4309.9,
             ["x"] = -4893.4,
@@ -3507,7 +3507,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["y"] = -4012.2,
             ["x"] = -5377.2,
         },
-        ["CRange"] = 57716,
+        ["Waypoint"] = 57716,
         ["Range"] = 25.31,
         ["TT"] = {
             ["y"] = -4012.5,
@@ -4207,7 +4207,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         },
     }, -- [167]
     {
-        ["CRange"] = 58978,
+        ["Waypoint"] = 58978,
         ["Trigger"] = {
             ["y"] = -3471.7,
             ["x"] = -5274.9,
@@ -4224,7 +4224,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         },
     }, -- [168]
     {
-        ["CRange"] = 58978,
+        ["Waypoint"] = 58978,
         ["Trigger"] = {
             ["y"] = -3380,
             ["x"] = -5245.2,
@@ -4375,7 +4375,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         },
     }, -- [180]
     {
-        ["CRange"] = 58980,
+        ["Waypoint"] = 58980,
         ["Trigger"] = {
             ["y"] = -3615.9,
             ["x"] = -5428.8,
@@ -4538,7 +4538,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["y"] = -3847.4,
             ["x"] = -5243.7,
         },
-        ["CRange"] = 58843,
+        ["Waypoint"] = 58843,
         ["Range"] = 7.09,
         ["TT"] = {
             ["y"] = -3847.4,
@@ -4653,7 +4653,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -4970.4,
         },
         ["Range"] = 56.74,
-        ["CRange"] = 59196,
+        ["Waypoint"] = 59196,
         ["TT"] = {
             ["y"] = -3653.2,
             ["x"] = -4970.4,
@@ -4794,7 +4794,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -4835.3,
         },
         ["Range"] = 15.73,
-        ["CRange"] = 57547,
+        ["Waypoint"] = 57547,
         ["TT"] = {
             ["y"] = -3370,
             ["x"] = -4835.3,
@@ -4841,7 +4841,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -4686.8,
         },
         ["Range"] = 13.82,
-        ["CRange"] = 57568,
+        ["Waypoint"] = 57568,
         ["TT"] = {
             ["y"] = -3438,
             ["x"] = -4686.8,
@@ -4853,7 +4853,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -4564.9,
         },
         ["Range"] = 7.92,
-        ["CRange"] = 57568,
+        ["Waypoint"] = 57568,
         ["TT"] = {
             ["y"] = -3420.5,
             ["x"] = -4564.9,
@@ -4892,7 +4892,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -4997.4,
         },
         ["Range"] = 25.42,
-        ["CRange"] = 59196,
+        ["Waypoint"] = 59196,
         ["TT"] = {
             ["y"] = -3501.2,
             ["x"] = -4997.4,
@@ -5147,7 +5147,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -5832.9,
         },
         ["Range"] = 11.25,
-        ["CRange"] = 59200,
+        ["Waypoint"] = 59200,
         ["TT"] = {
             ["y"] = -1637.3,
             ["x"] = -5832.9,
@@ -5240,7 +5240,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -5816.5,
         },
         ["Range"] = 8.5,
-        ["CRange"] = 59200,
+        ["Waypoint"] = 59200,
         ["TT"] = {
             ["y"] = -1778,
             ["x"] = -5816.5,
@@ -5252,7 +5252,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             ["x"] = -5829.8,
         },
         ["Range"] = 10.96,
-        ["CRange"] = 59200,
+        ["Waypoint"] = 59200,
         ["TT"] = {
             ["y"] = -1625.9,
             ["x"] = -5829.8,
@@ -5430,7 +5430,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         },
     }, -- [299]
     {
-        ["CRange"] = 60007,
+        ["Waypoint"] = 60007,
         ["Trigger"] = {
             ["y"] = -3197.7,
             ["x"] = -4042,
@@ -5900,7 +5900,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -2544.9,
         },
         ["Range"] = 10.4,
-        ["CRange"] = 57390,
+        ["Waypoint"] = 57390,
         ["TT"] = {
             ["y"] = 2992.5,
             ["x"] = -2544.9,
@@ -6163,7 +6163,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -2158.5,
         },
         ["Range"] = 27.18,
-        ["CRange"] = 57515,
+        ["Waypoint"] = 57515,
         ["TT"] = {
             ["y"] = 2307,
             ["x"] = -2158.5,
@@ -6175,7 +6175,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -2013.6,
         },
         ["Range"] = 18.19,
-        ["CRange"] = 57515,
+        ["Waypoint"] = 57515,
         ["TT"] = {
             ["y"] = 2263.9,
             ["x"] = -2013.6,
@@ -6238,7 +6238,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -1750.1,
         },
         ["Range"] = 17.12,
-        ["CRange"] = 57514,
+        ["Waypoint"] = 57514,
         ["TT"] = {
             ["y"] = 2134.4,
             ["x"] = -1750.1,
@@ -6286,7 +6286,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -1684.1,
         },
         ["Range"] = 21.26,
-        ["CRange"] = 58351,
+        ["Waypoint"] = 58351,
         ["Gossip"] = 1,
         ["TT"] = {
             ["y"] = 2144.3,
@@ -6305,7 +6305,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -1575.6,
         },
         ["Range"] = 17.49,
-        ["CRange"] = 58351,
+        ["Waypoint"] = 58351,
         ["TT"] = {
             ["y"] = 2104.1,
             ["x"] = -1575.6,
@@ -6347,7 +6347,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -1519.4,
         },
         ["Range"] = 22.9,
-        ["CRange"] = 58351,
+        ["Waypoint"] = 58351,
         ["TT"] = {
             ["y"] = 1909.2,
             ["x"] = -1519.4,
@@ -6366,7 +6366,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -1629,
         },
         ["Range"] = 19.6,
-        ["CRange"] = 58617,
+        ["Waypoint"] = 58617,
         ["TT"] = {
             ["y"] = 1723,
             ["x"] = -1629,
@@ -6513,7 +6513,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         },
     }, -- [46]
     {
-        ["CRange"] = 57516,
+        ["Waypoint"] = 57516,
         ["Trigger"] = {
             ["y"] = 2004.4,
             ["x"] = -1765.8,
@@ -6544,7 +6544,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         },
     }, -- [48]
     {
-        ["CRange"] = 58616,
+        ["Waypoint"] = 58616,
         ["Trigger"] = {
             ["y"] = 1932.3,
             ["x"] = -1766.6,
@@ -6562,7 +6562,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -1806,
         },
         ["Range"] = 15.76,
-        ["CRange"] = 58616,
+        ["Waypoint"] = 58616,
         ["TT"] = {
             ["y"] = 1834.3,
             ["x"] = -1806,
@@ -6574,7 +6574,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -1710.5,
         },
         ["Range"] = 24.94,
-        ["CRange"] = 58616,
+        ["Waypoint"] = 58616,
         ["TT"] = {
             ["y"] = 1792.5,
             ["x"] = -1710.5,
@@ -6639,7 +6639,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 1797,
             ["x"] = -1648.1,
         },
-        ["CRange"] = 58618,
+        ["Waypoint"] = 58618,
         ["Range"] = 9.32,
         ["TT"] = {
             ["y"] = 1797,
@@ -6651,7 +6651,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 1792.4,
             ["x"] = -1725.5,
         },
-        ["CRange"] = 58618,
+        ["Waypoint"] = 58618,
         ["Range"] = 19.67,
         ["TT"] = {
             ["y"] = 1792.4,
@@ -6659,7 +6659,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         },
     }, -- [59]
     {
-        ["CRange"] = 58618,
+        ["Waypoint"] = 58618,
         ["Trigger"] = {
             ["y"] = 1846.5,
             ["x"] = -1905,
@@ -6676,7 +6676,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         },
     }, -- [60]
     {
-        ["CRange"] = 58618,
+        ["Waypoint"] = 58618,
         ["Trigger"] = {
             ["y"] = 1938.8,
             ["x"] = -1986,
@@ -6838,7 +6838,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         },
     }, -- [77]
     {
-        ["CRange"] = 60461,
+        ["Waypoint"] = 60461,
         ["Trigger"] = {
             ["y"] = 1974,
             ["x"] = -1709.5,
@@ -6941,7 +6941,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -2859.5,
         },
         ["Range"] = 51.48,
-        ["CRange"] = 59130,
+        ["Waypoint"] = 59130,
         ["TT"] = {
             ["y"] = 2118.1,
             ["x"] = -2859.5,
@@ -7089,7 +7089,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         },
     }, -- [169]
     {
-        ["CRange"] = 58045,
+        ["Waypoint"] = 58045,
         ["Trigger"] = {
             ["y"] = 2280.1,
             ["x"] = -3034.7,
@@ -7112,7 +7112,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         },
     }, -- [170]
     {
-        ["CRange"] = 58045,
+        ["Waypoint"] = 58045,
         ["Trigger"] = {
             ["y"] = 2220.3,
             ["x"] = -3222.5,
@@ -7207,7 +7207,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 2020.8,
             ["x"] = -3016.5,
         },
-        ["CRange"] = 58045,
+        ["Waypoint"] = 58045,
         ["Range"] = 19.79,
         ["TT"] = {
             ["y"] = 2020.8,
@@ -7247,7 +7247,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         },
     }, -- [182]
     {
-        ["CRange"] = 59223,
+        ["Waypoint"] = 59223,
         ["Trigger"] = {
             ["y"] = 1543.4,
             ["x"] = -3094.4,
@@ -7365,7 +7365,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 1839.2,
             ["x"] = -3042.7,
         },
-        ["CRange"] = 58751,
+        ["Waypoint"] = 58751,
         ["Range"] = 20.45,
         ["TT"] = {
             ["y"] = 1839.2,
@@ -7377,7 +7377,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 2137,
             ["x"] = -3053.5,
         },
-        ["CRange"] = 58751,
+        ["Waypoint"] = 58751,
         ["Range"] = 29.47,
         ["TT"] = {
             ["y"] = 2137,
@@ -7389,7 +7389,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 2330.1,
             ["x"] = -3203.7,
         },
-        ["CRange"] = 58751,
+        ["Waypoint"] = 58751,
         ["Range"] = 34.7,
         ["TT"] = {
             ["y"] = 2330.1,
@@ -7401,7 +7401,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 2544.9,
             ["x"] = -3530.2,
         },
-        ["CRange"] = 58751,
+        ["Waypoint"] = 58751,
         ["Range"] = 19.19,
         ["TT"] = {
             ["y"] = 2544.9,
@@ -7573,7 +7573,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -3284.2,
         },
         ["Range"] = 20.61,
-        ["CRange"] = 58821,
+        ["Waypoint"] = 58821,
         ["TT"] = {
             ["y"] = 2847.5,
             ["x"] = -3284.2,
@@ -7585,7 +7585,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -3323.4,
         },
         ["Range"] = 15.37,
-        ["CRange"] = 58821,
+        ["Waypoint"] = 58821,
         ["TT"] = {
             ["y"] = 2881.4,
             ["x"] = -3323.4,
@@ -7748,7 +7748,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         },
     }, -- [226]
     {
-        ["CRange"] = 59188,
+        ["Waypoint"] = 59188,
         ["Trigger"] = {
             ["y"] = 2658.3,
             ["x"] = -3914.7,
@@ -7775,7 +7775,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 2619.4,
             ["x"] = -3942.4,
         },
-        ["CRange"] = 59188,
+        ["Waypoint"] = 59188,
         ["Range"] = 8.75,
         ["TT"] = {
             ["y"] = 2619.4,
@@ -8055,7 +8055,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 2872.6,
             ["x"] = -3801.7,
         },
-        ["CRange"] = 59009,
+        ["Waypoint"] = 59009,
         ["Range"] = 27.74,
         ["TT"] = {
             ["y"] = 2872.6,
@@ -8067,7 +8067,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 2806.3,
             ["x"] = -3711,
         },
-        ["CRange"] = 59009,
+        ["Waypoint"] = 59009,
         ["Range"] = 34.28,
         ["TT"] = {
             ["y"] = 2806.3,
@@ -8358,7 +8358,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 3260.8,
             ["x"] = -1733.4,
         },
-        ["CRange"] = 59616,
+        ["Waypoint"] = 59616,
         ["Range"] = 18.87,
         ["TT"] = {
             ["y"] = 3260.8,
@@ -8503,7 +8503,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 3678.6,
             ["x"] = -1597.1,
         },
-        ["CRange"] = 57984,
+        ["Waypoint"] = 57984,
         ["Range"] = 12.41,
         ["TT"] = {
             ["y"] = 3678.6,
@@ -8532,7 +8532,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 3804.3,
             ["x"] = -1499.6,
         },
-        ["CRange"] = 57984,
+        ["Waypoint"] = 57984,
         ["Range"] = 11.83,
         ["TT"] = {
             ["y"] = 3804.3,
@@ -8578,7 +8578,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 3733.8,
             ["x"] = -1428.8,
         },
-        ["CRange"] = 57984,
+        ["Waypoint"] = 57984,
         ["Range"] = 10.53,
         ["TT"] = {
             ["y"] = 3733.8,
@@ -8590,7 +8590,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 3703.9,
             ["x"] = -1401.8,
         },
-        ["CRange"] = 57984,
+        ["Waypoint"] = 57984,
         ["Range"] = 12.21,
         ["TT"] = {
             ["y"] = 3703.9,
@@ -8891,7 +8891,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         },
     }, -- [143]
     {
-        ["CRange"] = 57994,
+        ["Waypoint"] = 57994,
         ["Trigger"] = {
             ["y"] = 3765.4,
             ["x"] = -1311.5,
@@ -8951,7 +8951,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -1429.9,
         },
         ["Range"] = 16.95,
-        ["CRange"] = 57994,
+        ["Waypoint"] = 57994,
         ["TT"] = {
             ["y"] = 3491.1,
             ["x"] = -1429.9,
@@ -8979,7 +8979,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -1676.4,
         },
         ["Range"] = 22.86,
-        ["CRange"] = 57994,
+        ["Waypoint"] = 57994,
         ["TT"] = {
             ["y"] = 3404,
             ["x"] = -1676.4,
@@ -9077,7 +9077,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 2058.6,
             ["x"] = -2300,
         },
-        ["CRange"] = 59202,
+        ["Waypoint"] = 59202,
         ["Range"] = 17.16,
         ["TT"] = {
             ["y"] = 2058.6,
@@ -9089,7 +9089,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 2141.1,
             ["x"] = -2223,
         },
-        ["CRange"] = 59202,
+        ["Waypoint"] = 59202,
         ["Range"] = 10.97,
         ["TT"] = {
             ["y"] = 2141.1,
@@ -9101,7 +9101,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["y"] = 2308.1,
             ["x"] = -2172.5,
         },
-        ["CRange"] = 59202,
+        ["Waypoint"] = 59202,
         ["Range"] = 35.13,
         ["TT"] = {
             ["y"] = 2308.1,
@@ -9165,7 +9165,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ["x"] = -1949.4,
         },
         ["Range"] = 21.29,
-        ["CRange"] = 59874,
+        ["Waypoint"] = 59874,
         ["TT"] = {
             ["y"] = 2243.6,
             ["x"] = -1949.4,
@@ -9181,7 +9181,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         },
     },
     {
-        ["CRange"] = 59874,
+        ["Waypoint"] = 59874,
         ["Trigger"] = {
             ["y"] = -1873.6,
             ["x"] = 1283.5,
@@ -9212,7 +9212,7 @@ APR.RouteQuestStepList["1670-Z5-Oribos-Story"] = {
             ["y"] = -1842.5,
             ["x"] = 1418.5,
         },
-        ["CRange"] = 59874,
+        ["Waypoint"] = 59874,
         ["Range"] = 12.22,
         ["TT"] = {
             ["y"] = -1842.5,
@@ -9317,7 +9317,7 @@ APR.RouteQuestStepList["1543-Z6-TheMaw-Story"] = {
             ["x"] = 7108.2,
         },
         ["Range"] = 11.83,
-        ["CRange"] = 59960,
+        ["Waypoint"] = 59960,
         ["TT"] = {
             ["y"] = 4379.2,
             ["x"] = 7108.2,
@@ -9366,7 +9366,7 @@ APR.RouteQuestStepList["1543-Z6-TheMaw-Story"] = {
             ["x"] = 7274.3,
         },
         ["Range"] = 17.81,
-        ["CRange"] = 59959,
+        ["Waypoint"] = 59959,
         ["TT"] = {
             ["y"] = 4487.8,
             ["x"] = 7274.3,
@@ -9378,7 +9378,7 @@ APR.RouteQuestStepList["1543-Z6-TheMaw-Story"] = {
             ["x"] = 7233.2,
         },
         ["Range"] = 10.86,
-        ["CRange"] = 59959,
+        ["Waypoint"] = 59959,
         ["TT"] = {
             ["y"] = 4533.7,
             ["x"] = 7233.2,
@@ -9406,7 +9406,7 @@ APR.RouteQuestStepList["1543-Z6-TheMaw-Story"] = {
             ["x"] = 7102.6,
         },
         ["Range"] = 9.25,
-        ["CRange"] = 59959,
+        ["Waypoint"] = 59959,
         ["TT"] = {
             ["y"] = 4383.7,
             ["x"] = 7102.6,
@@ -9686,7 +9686,7 @@ APR.RouteQuestStepList["1670-Z7-Oribos-Story"] = {
             ["x"] = 1418.7,
         },
         ["Range"] = 10.04,
-        ["CRange"] = 61190,
+        ["Waypoint"] = 61190,
         ["TT"] = {
             ["y"] = -1842.9,
             ["x"] = 1418.7,
@@ -9853,7 +9853,7 @@ APR.RouteQuestStepList["1536-Z8-Maldraxxus-Story"] = {
             ["x"] = -2547.7,
         },
         ["Range"] = 15.55,
-        ["CRange"] = 59206,
+        ["Waypoint"] = 59206,
         ["TT"] = {
             ["y"] = 1964,
             ["x"] = -2547.7,
@@ -9869,7 +9869,7 @@ APR.RouteQuestStepList["1536-Z8-Maldraxxus-Story"] = {
         },
     }, -- [5]
     {
-        ["CRange"] = 59206,
+        ["Waypoint"] = 59206,
         ["Trigger"] = {
             ["y"] = -1874.9,
             ["x"] = 1283.5,
@@ -10006,7 +10006,7 @@ APR.RouteQuestStepList["1670-Z9-Oribos-Story"] = {
         },
     },
     {
-        ["CRange"] = 60338,
+        ["Waypoint"] = 60338,
         ["Trigger"] = {
             ["y"] = -1875.9,
             ["x"] = 1284.2,
@@ -10418,7 +10418,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -5401.8,
             ["x"] = -490.7,
         },
-        ["CRange"] = 60857,
+        ["Waypoint"] = 60857,
         ["Range"] = 12.45,
         ["TT"] = {
             ["y"] = -5401.8,
@@ -10605,7 +10605,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -5761,
             ["x"] = -500.2,
         },
-        ["CRange"] = 57787,
+        ["Waypoint"] = 57787,
         ["Range"] = 7.55,
         ["TT"] = {
             ["y"] = -5761,
@@ -10686,7 +10686,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -5761.4,
             ["x"] = -498.4,
         },
-        ["CRange"] = 57787,
+        ["Waypoint"] = 57787,
         ["Range"] = 8.74,
         ["TT"] = {
             ["y"] = -5761.4,
@@ -10795,7 +10795,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         },
     }, -- [51]
     {
-        ["CRange"] = 57949,
+        ["Waypoint"] = 57949,
         ["Fillers"] = {
             [57949] = {
                 ["1"] = "1",
@@ -10815,7 +10815,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         },
     }, -- [52]
     {
-        ["CRange"] = 57949,
+        ["Waypoint"] = 57949,
         ["Fillers"] = {
             [57949] = {
                 ["1"] = "1",
@@ -11002,7 +11002,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -269.3,
         },
         ["Range"] = 12.84,
-        ["CRange"] = 57816,
+        ["Waypoint"] = 57816,
         ["TT"] = {
             ["y"] = -6150.2,
             ["x"] = -269.3,
@@ -11194,7 +11194,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6123.4,
             ["x"] = 5.4,
         },
-        ["CRange"] = 60577,
+        ["Waypoint"] = 60577,
         ["Range"] = 22.35,
         ["TT"] = {
             ["y"] = -6123.4,
@@ -11664,7 +11664,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -280.8,
         },
         ["Range"] = 15.55,
-        ["CRange"] = 60724,
+        ["Waypoint"] = 60724,
         ["TT"] = {
             ["y"] = -5987.4,
             ["x"] = -280.8,
@@ -11766,7 +11766,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -268.8,
         },
         ["Range"] = 12.32,
-        ["CRange"] = 57952,
+        ["Waypoint"] = 57952,
         ["TT"] = {
             ["y"] = -6145.4,
             ["x"] = -268.8,
@@ -11936,7 +11936,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -265.7,
         },
         ["Range"] = 12.1,
-        ["CRange"] = 57825,
+        ["Waypoint"] = 57825,
         ["TT"] = {
             ["y"] = -6143.8,
             ["x"] = -265.7,
@@ -11966,7 +11966,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -277.4,
         },
         ["Range"] = 18.99,
-        ["CRange"] = 61051,
+        ["Waypoint"] = 61051,
         ["TT"] = {
             ["y"] = -5991,
             ["x"] = -277.4,
@@ -11978,7 +11978,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -189,
         },
         ["Range"] = 16.32,
-        ["CRange"] = 61051,
+        ["Waypoint"] = 61051,
         ["TT"] = {
             ["y"] = -5964.7,
             ["x"] = -189,
@@ -12022,7 +12022,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     }, -- [132]
     {
         ["ExtraLineText"] = "USE_BRANCH_ON_GORMS",
-        ["CRange"] = 58022,
+        ["Waypoint"] = 58022,
         ["Fillers"] = {
             [58022] = {
                 ["1"] = "1",
@@ -12087,7 +12087,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     }, -- [135]
     {
         ["ExtraLineText"] = "USE_BRANCH_ON_GORMS",
-        ["CRange"] = 58024,
+        ["Waypoint"] = 58024,
         ["Fillers"] = {
             [58024] = {
                 ["1"] = "1",
@@ -12111,7 +12111,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     }, -- [136]
     {
         ["ExtraLineText"] = "USE_BRANCH_ON_GORMS",
-        ["CRange"] = 58023,
+        ["Waypoint"] = 58023,
         ["Fillers"] = {
             [58024] = {
                 ["1"] = "1",
@@ -12190,7 +12190,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 11.1,
         },
         ["Range"] = 8.98,
-        ["CRange"] = 58023,
+        ["Waypoint"] = 58023,
         ["TT"] = {
             ["y"] = -5914.4,
             ["x"] = 11.1,
@@ -12260,7 +12260,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 12.5,
         },
         ["Range"] = 6.65,
-        ["CRange"] = 58161,
+        ["Waypoint"] = 58161,
         ["TT"] = {
             ["y"] = -5912.9,
             ["x"] = 12.5,
@@ -12272,7 +12272,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -37,
         },
         ["Range"] = 12.51,
-        ["CRange"] = 58161,
+        ["Waypoint"] = 58161,
         ["TT"] = {
             ["y"] = -6029.7,
             ["x"] = -37,
@@ -12284,7 +12284,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -126,
         },
         ["Range"] = 12.17,
-        ["CRange"] = 58161,
+        ["Waypoint"] = 58161,
         ["TT"] = {
             ["y"] = -6090.7,
             ["x"] = -126,
@@ -12314,7 +12314,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -292.8,
         },
         ["Range"] = 15.2,
-        ["CRange"] = 58161,
+        ["Waypoint"] = 58161,
         ["TT"] = {
             ["y"] = -5984.2,
             ["x"] = -292.8,
@@ -12492,7 +12492,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -5882.3,
             ["x"] = -1023.9,
         },
-        ["CRange"] = 58165,
+        ["Waypoint"] = 58165,
         ["Range"] = 9.56,
         ["TT"] = {
             ["y"] = -5882.3,
@@ -12522,7 +12522,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         },
     }, -- [166]
     {
-        ["CRange"] = 58165,
+        ["Waypoint"] = 58165,
         ["Trigger"] = {
             ["y"] = -5769.3,
             ["x"] = -1107.4,
@@ -12623,7 +12623,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -288.2,
         },
         ["Range"] = 50.65,
-        ["CRange"] = 58166,
+        ["Waypoint"] = 58166,
         ["TT"] = {
             ["y"] = -5982.4,
             ["x"] = -288.2,
@@ -12643,7 +12643,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6091.9,
             ["x"] = -131.2,
         },
-        ["CRange"] = 60521,
+        ["Waypoint"] = 60521,
         ["Range"] = 16.67,
         ["TT"] = {
             ["y"] = -6091.9,
@@ -12655,7 +12655,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -5939.5,
             ["x"] = 549.2,
         },
-        ["CRange"] = 60521,
+        ["Waypoint"] = 60521,
         ["Range"] = 22.63,
         ["TT"] = {
             ["y"] = -5939.5,
@@ -12667,7 +12667,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -5924.9,
             ["x"] = 598,
         },
-        ["CRange"] = 60521,
+        ["Waypoint"] = 60521,
         ["Range"] = 11.55,
         ["TT"] = {
             ["y"] = -5924.9,
@@ -12707,7 +12707,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         },
     }, -- [180]
     {
-        ["CRange"] = 60628,
+        ["Waypoint"] = 60628,
         ["Trigger"] = {
             ["y"] = -5951.9,
             ["x"] = 467.3,
@@ -12746,7 +12746,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         },
     },
     {
-        ["CRange"] = 60628,
+        ["Waypoint"] = 60628,
         ["Trigger"] = {
             ["y"] = -5979.4,
             ["x"] = 360.6,
@@ -12851,7 +12851,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 593.7,
         },
         ["Range"] = 14.5,
-        ["CRange"] = 60629,
+        ["Waypoint"] = 60629,
         ["TT"] = {
             ["y"] = -5925,
             ["x"] = 593.7,
@@ -13056,7 +13056,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 739.9,
         },
         ["Range"] = 10.85,
-        ["CRange"] = 60632,
+        ["Waypoint"] = 60632,
         ["TT"] = {
             ["y"] = -6018.2,
             ["x"] = 739.9,
@@ -13068,7 +13068,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 719.7,
         },
         ["Range"] = 9.75,
-        ["CRange"] = 60632,
+        ["Waypoint"] = 60632,
         ["TT"] = {
             ["y"] = -5949.8,
             ["x"] = 719.7,
@@ -13107,7 +13107,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 763.7,
         },
         ["Range"] = 22.24,
-        ["CRange"] = 57651,
+        ["Waypoint"] = 57651,
         ["TT"] = {
             ["y"] = -5866.4,
             ["x"] = 763.7,
@@ -13142,7 +13142,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         },
     }, -- [25]
     {
-        ["CRange"] = 57651,
+        ["Waypoint"] = 57651,
         ["Trigger"] = {
             ["y"] = -5567.4,
             ["x"] = 1043.9,
@@ -13187,7 +13187,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         },
     }, -- [27]
     {
-        ["CRange"] = 59622,
+        ["Waypoint"] = 59622,
         ["Trigger"] = {
             ["y"] = -5539.8,
             ["x"] = 1051.5,
@@ -13207,7 +13207,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         },
     }, -- [28]
     {
-        ["CRange"] = 59622,
+        ["Waypoint"] = 59622,
         ["Trigger"] = {
             ["y"] = -5463,
             ["x"] = 1061.8,
@@ -13252,7 +13252,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         },
     }, -- [30]
     {
-        ["CRange"] = 59622,
+        ["Waypoint"] = 59622,
         ["Trigger"] = {
             ["y"] = -5509.3,
             ["x"] = 1121.4,
@@ -13733,7 +13733,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 982.2,
         },
         ["Range"] = 11.81,
-        ["CRange"] = 59656,
+        ["Waypoint"] = 59656,
         ["TT"] = {
             ["y"] = -5787.7,
             ["x"] = 982.2,
@@ -13745,7 +13745,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 838.7,
         },
         ["Range"] = 20.73,
-        ["CRange"] = 59656,
+        ["Waypoint"] = 59656,
         ["TT"] = {
             ["y"] = -5808.9,
             ["x"] = 839.9,
@@ -13757,7 +13757,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 714.1,
         },
         ["Range"] = 34.51,
-        ["CRange"] = 59656,
+        ["Waypoint"] = 59656,
         ["TT"] = {
             ["y"] = -5908.9,
             ["x"] = 714.1,
@@ -13806,7 +13806,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -5851,
             ["x"] = 775.4,
         },
-        ["CRange"] = 59623,
+        ["Waypoint"] = 59623,
         ["Range"] = 17.22,
         ["TT"] = {
             ["y"] = -5851,
@@ -14316,7 +14316,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6088.2,
             ["x"] = -211.4,
         },
-        ["CRange"] = 60738,
+        ["Waypoint"] = 60738,
         ["Range"] = 16.89,
         ["TT"] = {
             ["y"] = -6088.2,
@@ -14328,7 +14328,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6148.4,
             ["x"] = -271.9,
         },
-        ["CRange"] = 60738,
+        ["Waypoint"] = 60738,
         ["Range"] = 19.55,
         ["TT"] = {
             ["y"] = -6148.4,
@@ -14427,7 +14427,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6721.2,
             ["x"] = -280,
         },
-        ["CRange"] = 60839,
+        ["Waypoint"] = 60839,
         ["Range"] = 8.72,
         ["TT"] = {
             ["y"] = -6721.2,
@@ -14577,7 +14577,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6904.3,
             ["x"] = 19.3,
         },
-        ["CRange"] = 60905,
+        ["Waypoint"] = 60905,
         ["Range"] = 6.43,
         ["TT"] = {
             ["y"] = -6904.3,
@@ -14589,7 +14589,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6926,
             ["x"] = 9,
         },
-        ["CRange"] = 60905,
+        ["Waypoint"] = 60905,
         ["Range"] = 5.19,
         ["TT"] = {
             ["y"] = -6926,
@@ -14621,7 +14621,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6922.5,
             ["x"] = 8,
         },
-        ["CRange"] = 60905,
+        ["Waypoint"] = 60905,
         ["Range"] = 9.59,
         ["TT"] = {
             ["y"] = -6922.5,
@@ -14697,7 +14697,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -96.3,
         },
         ["Range"] = 17.58,
-        ["CRange"] = 58473,
+        ["Waypoint"] = 58473,
         ["TT"] = {
             ["y"] = -6969.9,
             ["x"] = -96.3,
@@ -14709,7 +14709,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -177.9,
         },
         ["Range"] = 29.93,
-        ["CRange"] = 58473,
+        ["Waypoint"] = 58473,
         ["TT"] = {
             ["y"] = -7025.8,
             ["x"] = -177.9,
@@ -14721,7 +14721,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -447.4,
         },
         ["Range"] = 27.3,
-        ["CRange"] = 58473,
+        ["Waypoint"] = 58473,
         ["TT"] = {
             ["y"] = -7033.3,
             ["x"] = -447.4,
@@ -14733,7 +14733,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -569,
         },
         ["Range"] = 11.01,
-        ["CRange"] = 58473,
+        ["Waypoint"] = 58473,
         ["TT"] = {
             ["y"] = -7112.4,
             ["x"] = -569,
@@ -14765,7 +14765,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = -603.3,
         },
         ["Range"] = 10.75,
-        ["CRange"] = 58483,
+        ["Waypoint"] = 58483,
         ["TT"] = {
             ["y"] = -7110.8,
             ["x"] = -603.3,
@@ -14797,7 +14797,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         },
     }, -- [117]
     {
-        ["CRange"] = 58480,
+        ["Waypoint"] = 58480,
         ["Trigger"] = {
             ["y"] = -6918.7,
             ["x"] = -683.8,
@@ -14910,7 +14910,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6913.3,
             ["x"] = -624.7,
         },
-        ["CRange"] = 58486,
+        ["Waypoint"] = 58486,
         ["Range"] = 15.52,
         ["TT"] = {
             ["y"] = -6913.3,
@@ -15081,7 +15081,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 45.1,
         },
         ["Range"] = 27.14,
-        ["CRange"] = 58589,
+        ["Waypoint"] = 58589,
         ["TT"] = {
             ["y"] = -6721.4,
             ["x"] = 45.1,
@@ -15231,7 +15231,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 45.5,
         },
         ["Range"] = 20.53,
-        ["CRange"] = 60578,
+        ["Waypoint"] = 60578,
         ["TT"] = {
             ["y"] = -6717.8,
             ["x"] = 45.5,
@@ -15399,7 +15399,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6932.5,
             ["x"] = -51.8,
         },
-        ["CRange"] = 58719,
+        ["Waypoint"] = 58719,
         ["Range"] = 9.46,
         ["TT"] = {
             ["y"] = -6932.5,
@@ -15407,7 +15407,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         },
     }, -- [160]
     {
-        ["CRange"] = 58719,
+        ["Waypoint"] = 58719,
         ["Fillers"] = {
             [58714] = {
                 ["1"] = "1",
@@ -15444,7 +15444,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         },
     }, -- [162]
     {
-        ["CRange"] = 58719,
+        ["Waypoint"] = 58719,
         ["Fillers"] = {
             [58714] = {
                 ["1"] = "1",
@@ -15462,7 +15462,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         },
     }, -- [163]
     {
-        ["CRange"] = 58719,
+        ["Waypoint"] = 58719,
         ["Fillers"] = {
             [58714] = {
                 ["1"] = "1",
@@ -15544,7 +15544,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -7078.3,
             ["x"] = 233.6,
         },
-        ["CRange"] = 58720,
+        ["Waypoint"] = 58720,
         ["Range"] = 12.15,
         ["TT"] = {
             ["y"] = -7078.3,
@@ -15556,7 +15556,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -7105.9,
             ["x"] = 305.8,
         },
-        ["CRange"] = 58720,
+        ["Waypoint"] = 58720,
         ["Range"] = 11.85,
         ["TT"] = {
             ["y"] = -7105.9,
@@ -15696,7 +15696,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 193.1,
         },
         ["Range"] = 31.29,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6990.9,
             ["x"] = 193.1,
@@ -15708,7 +15708,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 298.6,
         },
         ["Range"] = 33.33,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6864.8,
             ["x"] = 298.6,
@@ -15721,7 +15721,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 409.8,
         },
         ["Range"] = 32.87,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6906.4,
             ["x"] = 409.8,
@@ -15734,7 +15734,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 517.9,
         },
         ["Range"] = 27.25,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6800,
             ["x"] = 517.9,
@@ -15747,7 +15747,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 692.2,
         },
         ["Range"] = 20.3,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6767.2,
             ["x"] = 692.2,
@@ -15760,7 +15760,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["x"] = 690,
         },
         ["Range"] = 15.13,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6824.7,
             ["x"] = 690,
@@ -15865,7 +15865,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -7115.4,
             ["x"] = 994,
         },
-        ["CRange"] = 58723,
+        ["Waypoint"] = 58723,
         ["Range"] = 12.07,
         ["TT"] = {
             ["y"] = -7115.4,
@@ -15877,7 +15877,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6972.5,
             ["x"] = 901.9,
         },
-        ["CRange"] = 58723,
+        ["Waypoint"] = 58723,
         ["Range"] = 16.41,
         ["TT"] = {
             ["y"] = -6972.5,
@@ -15889,7 +15889,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             ["y"] = -6911.9,
             ["x"] = 923.2,
         },
-        ["CRange"] = 58723,
+        ["Waypoint"] = 58723,
         ["Range"] = 11.25,
         ["TT"] = {
             ["y"] = -6911.9,
@@ -15956,7 +15956,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         },
     },
     {
-        ["CRange"] = 58724,
+        ["Waypoint"] = 58724,
         ["Trigger"] = {
             ["y"] = -1875.3,
             ["x"] = 1284.2,
@@ -16564,7 +16564,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["y"] = -2729.5,
             ["x"] = 5914.3,
         },
-        ["CRange"] = 57174,
+        ["Waypoint"] = 57174,
         ["Range"] = 8.2,
         ["TT"] = {
             ["y"] = -2729.5,
@@ -16576,7 +16576,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["y"] = -2745.9,
             ["x"] = 5925.8,
         },
-        ["CRange"] = 57174,
+        ["Waypoint"] = 57174,
         ["Range"] = 8.75,
         ["TT"] = {
             ["y"] = -2745.9,
@@ -16640,7 +16640,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["y"] = -2705.9,
             ["x"] = 6135.2,
         },
-        ["CRange"] = 59710,
+        ["Waypoint"] = 59710,
         ["Range"] = 9.99,
         ["TT"] = {
             ["y"] = -2705.9,
@@ -16894,7 +16894,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         },
     }, -- [42]
     {
-        ["CRange"] = 59714,
+        ["Waypoint"] = 59714,
         ["Trigger"] = {
             ["y"] = -3115,
             ["x"] = 5851.8,
@@ -16917,7 +16917,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 5837.3,
         },
         ["Range"] = 6.36,
-        ["CRange"] = 59714,
+        ["Waypoint"] = 59714,
         ["TT"] = {
             ["y"] = -3133.2,
             ["x"] = 5837.3,
@@ -16929,7 +16929,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 5846,
         },
         ["Range"] = 6.26,
-        ["CRange"] = 59714,
+        ["Waypoint"] = 59714,
         ["TT"] = {
             ["y"] = -3138,
             ["x"] = 5846,
@@ -16959,7 +16959,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 5839,
         },
         ["Range"] = 4.87,
-        ["CRange"] = 59713,
+        ["Waypoint"] = 59713,
         ["TT"] = {
             ["y"] = -3142.5,
             ["x"] = 5839,
@@ -16971,7 +16971,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 5836.3,
         },
         ["Range"] = 3.75,
-        ["CRange"] = 59713,
+        ["Waypoint"] = 59713,
         ["TT"] = {
             ["y"] = -3123.7,
             ["x"] = 5836.3,
@@ -17121,7 +17121,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 6036.2,
         },
         ["Range"] = 10.58,
-        ["CRange"] = 59724,
+        ["Waypoint"] = 59724,
         ["TT"] = {
             ["y"] = -2991.2,
             ["x"] = 6036.2,
@@ -17133,14 +17133,14 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 6062.7,
         },
         ["Range"] = 9.12,
-        ["CRange"] = 59724,
+        ["Waypoint"] = 59724,
         ["TT"] = {
             ["y"] = -3089.7,
             ["x"] = 6062.7,
         },
     }, -- [61]
     {
-        ["CRange"] = 59724,
+        ["Waypoint"] = 59724,
         ["Fillers"] = {
             [59868] = {
                 ["1"] = "1",
@@ -17190,7 +17190,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 5999,
         },
         ["Range"] = 8.8,
-        ["CRange"] = 59724,
+        ["Waypoint"] = 59724,
         ["TT"] = {
             ["y"] = -3309.7,
             ["x"] = 5999,
@@ -17202,7 +17202,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 6053,
         },
         ["Range"] = 6.38,
-        ["CRange"] = 59724,
+        ["Waypoint"] = 59724,
         ["TT"] = {
             ["y"] = -3314,
             ["x"] = 6043.7,
@@ -17214,7 +17214,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 6046.2,
         },
         ["Range"] = 6.48,
-        ["CRange"] = 59724,
+        ["Waypoint"] = 59724,
         ["TT"] = {
             ["y"] = -3328.4,
             ["x"] = 6046.2,
@@ -17226,7 +17226,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 6012.8,
         },
         ["Range"] = 5.16,
-        ["CRange"] = 59724,
+        ["Waypoint"] = 59724,
         ["TT"] = {
             ["y"] = -3329.2,
             ["x"] = 6012.8,
@@ -17257,7 +17257,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 6035.8,
         },
         ["Range"] = 5.29,
-        ["CRange"] = 59726,
+        ["Waypoint"] = 59726,
         ["TT"] = {
             ["y"] = -3285.9,
             ["x"] = 6035.8,
@@ -17316,7 +17316,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["y"] = -2323.5,
             ["x"] = 6221.6,
         },
-        ["CRange"] = 57178,
+        ["Waypoint"] = 57178,
         ["Range"] = 13.23,
         ["TT"] = {
             ["y"] = -2323.5,
@@ -18067,7 +18067,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 6617.3,
         },
         ["Range"] = 6.33,
-        ["CRange"] = 58916,
+        ["Waypoint"] = 58916,
         ["TT"] = {
             ["y"] = -3154.5,
             ["x"] = 6617.3,
@@ -18208,7 +18208,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 6627,
         },
         ["Range"] = 11.23,
-        ["CRange"] = 59014,
+        ["Waypoint"] = 59014,
         ["TT"] = {
             ["y"] = -2974.4,
             ["x"] = 6627,
@@ -18604,7 +18604,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["y"] = -3052,
             ["x"] = 6739.1,
         },
-        ["CRange"] = 60313,
+        ["Waypoint"] = 60313,
         ["Range"] = 14.46,
         ["TT"] = {
             ["y"] = -3052,
@@ -18641,7 +18641,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
     }, -- [188]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["Trigger"] = {
             ["y"] = -3180.5,
             ["x"] = 7002.8,
@@ -18667,7 +18667,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 6968.8,
         },
         ["Range"] = 3.86,
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["TT"] = {
             ["y"] = -3182.2,
             ["x"] = 6968.8,
@@ -18697,7 +18697,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
     }, -- [191]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["Trigger"] = {
             ["y"] = -3181.2,
             ["x"] = 6968.3,
@@ -18743,7 +18743,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
     }, -- [193]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57190,
+        ["Waypoint"] = 57190,
         ["Trigger"] = {
             ["y"] = -3189,
             ["x"] = 7011.1,
@@ -18764,7 +18764,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
     }, -- [194]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["Trigger"] = {
             ["y"] = -3179,
             ["x"] = 7005.3,
@@ -18836,7 +18836,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
     }, -- [197]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["Trigger"] = {
             ["y"] = -3151.2,
             ["x"] = 7062.6,
@@ -18857,7 +18857,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
     }, -- [198]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57190,
+        ["Waypoint"] = 57190,
         ["Trigger"] = {
             ["y"] = -3205.4,
             ["x"] = 7073.3,
@@ -19003,7 +19003,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["y"] = -3021.2,
             ["x"] = 7005.8,
         },
-        ["CRange"] = 57240,
+        ["Waypoint"] = 57240,
         ["Range"] = 16.29,
         ["TT"] = {
             ["y"] = -3021.2,
@@ -19118,7 +19118,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         },
     }, -- [217]
     {
-        ["CRange"] = 57426,
+        ["Waypoint"] = 57426,
         ["Trigger"] = {
             ["y"] = -2618.4,
             ["x"] = 7512.6,
@@ -19211,7 +19211,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["y"] = -2399.5,
             ["x"] = 7632.8,
         },
-        ["CRange"] = 57442,
+        ["Waypoint"] = 57442,
         ["Range"] = 9.95,
         ["TT"] = {
             ["y"] = -2399.5,
@@ -19223,7 +19223,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["y"] = -2484.5,
             ["x"] = 7664,
         },
-        ["CRange"] = 57442,
+        ["Waypoint"] = 57442,
         ["Range"] = 9.25,
         ["TT"] = {
             ["y"] = -2484.5,
@@ -19475,7 +19475,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7675.8,
         },
         ["Range"] = 16.82,
-        ["CRange"] = 60276,
+        ["Waypoint"] = 60276,
         ["TT"] = {
             ["y"] = -2357,
             ["x"] = 7675.8,
@@ -19509,7 +19509,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7633.1,
         },
         ["Range"] = 18.4,
-        ["CRange"] = 60276,
+        ["Waypoint"] = 60276,
         ["TT"] = {
             ["y"] = -2652.5,
             ["x"] = 7633.1,
@@ -19521,7 +19521,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7649.6,
         },
         ["Range"] = 15.13,
-        ["CRange"] = 60276,
+        ["Waypoint"] = 60276,
         ["TT"] = {
             ["y"] = -2529,
             ["x"] = 7649.6,
@@ -19533,7 +19533,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7679.2,
         },
         ["Range"] = 20.17,
-        ["CRange"] = 60276,
+        ["Waypoint"] = 60276,
         ["TT"] = {
             ["y"] = -2347.5,
             ["x"] = 7679.2,
@@ -19774,7 +19774,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         },
     }, -- [3]
     {
-        ["CRange"] = 60275,
+        ["Waypoint"] = 60275,
         ["Trigger"] = {
             ["y"] = -2332.2,
             ["x"] = 8078.2,
@@ -19794,7 +19794,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         },
     },
     {
-        ["CRange"] = 60275,
+        ["Waypoint"] = 60275,
         ["Trigger"] = {
             ["y"] = -2359,
             ["x"] = 8103.6,
@@ -19814,7 +19814,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         },
     }, -- [5]
     {
-        ["CRange"] = 60275,
+        ["Waypoint"] = 60275,
         ["Trigger"] = {
             ["y"] = -2422.9,
             ["x"] = 8136.7,
@@ -19956,7 +19956,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         },
     }, -- [14]
     {
-        ["CRange"] = 57724,
+        ["Waypoint"] = 57724,
         ["Trigger"] = {
             ["y"] = -2095,
             ["x"] = 7620,
@@ -19974,7 +19974,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7626.2,
         },
         ["Range"] = 12.75,
-        ["CRange"] = 60275,
+        ["Waypoint"] = 60275,
         ["TT"] = {
             ["y"] = -2131.2,
             ["x"] = 7626.2,
@@ -19986,7 +19986,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7688.2,
         },
         ["Range"] = 15.05,
-        ["CRange"] = 60275,
+        ["Waypoint"] = 60275,
         ["TT"] = {
             ["y"] = -2154,
             ["x"] = 7688.2,
@@ -20037,7 +20037,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         },
     }, -- [246]
     {
-        ["CRange"] = 57724,
+        ["Waypoint"] = 57724,
         ["Trigger"] = {
             ["y"] = -2003,
             ["x"] = 7678,
@@ -20097,7 +20097,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7829.3,
         },
         ["Range"] = 10.44,
-        ["CRange"] = 57724,
+        ["Waypoint"] = 57724,
         ["TT"] = {
             ["y"] = -1981.6,
             ["x"] = 7829.3,
@@ -20143,7 +20143,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7751.3,
         },
         ["Range"] = 9.16,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1901.1,
             ["x"] = 7751.3,
@@ -20155,7 +20155,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7728.7,
         },
         ["Range"] = 10.12,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1881.9,
             ["x"] = 7728.7,
@@ -20167,7 +20167,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7696.7,
         },
         ["Range"] = 6.98,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1880.5,
             ["x"] = 7696.7,
@@ -20179,7 +20179,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7701,
         },
         ["Range"] = 8.01,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1894.1,
             ["x"] = 7701,
@@ -20191,7 +20191,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7729,
         },
         ["Range"] = 7.63,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1899.6,
             ["x"] = 7729,
@@ -20203,7 +20203,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7741.6,
         },
         ["Range"] = 6.85,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1929.8,
             ["x"] = 7741.6,
@@ -20215,7 +20215,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7764.7,
         },
         ["Range"] = 6.12,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1944.5,
             ["x"] = 7765.6,
@@ -20227,7 +20227,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7732.7,
         },
         ["Range"] = 8.27,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1966,
             ["x"] = 7732.8,
@@ -20239,7 +20239,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             ["x"] = 7676.3,
         },
         ["Range"] = 8.93,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1954.4,
             ["x"] = 7676.3,
@@ -20349,7 +20349,7 @@ APR.RouteQuestStepList["1543-Z13-TheMaw-Story"] = {
             ["y"] = 5142,
             ["x"] = 7251.7,
         },
-        ["CRange"] = 57690,
+        ["Waypoint"] = 57690,
         ["Range"] = 28.18,
         ["TT"] = {
             ["y"] = 5142,
@@ -20415,7 +20415,7 @@ APR.RouteQuestStepList["1543-Z13-TheMaw-Story"] = {
             ["x"] = 7401.7,
         },
         ["Range"] = 20.37,
-        ["CRange"] = 57693,
+        ["Waypoint"] = 57693,
         ["TT"] = {
             ["y"] = 5279.6,
             ["x"] = 7401.7,
@@ -20558,7 +20558,7 @@ APR.RouteQuestStepList["1525-Z14-Revendreth-Story"] = {
             ["y"] = -1955.5,
             ["x"] = 7675.5,
         },
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["Range"] = 12.97,
         ["TT"] = {
             ["y"] = -1955.5,
@@ -20570,7 +20570,7 @@ APR.RouteQuestStepList["1525-Z14-Revendreth-Story"] = {
             ["y"] = -1972.1,
             ["x"] = 7704.5,
         },
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["Range"] = 12.15,
         ["TT"] = {
             ["y"] = -1972.1,
@@ -20582,7 +20582,7 @@ APR.RouteQuestStepList["1525-Z14-Revendreth-Story"] = {
             ["y"] = -1951,
             ["x"] = 7757.7,
         },
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["Range"] = 15.35,
         ["TT"] = {
             ["y"] = -1951,
@@ -20590,7 +20590,7 @@ APR.RouteQuestStepList["1525-Z14-Revendreth-Story"] = {
         },
     }, -- [10]
     {
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["Trigger"] = {
             ["y"] = -1955.9,
             ["x"] = 7790.7,
@@ -20608,7 +20608,7 @@ APR.RouteQuestStepList["1525-Z14-Revendreth-Story"] = {
             ["x"] = 7686,
         },
         ["Range"] = 22.19,
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["TT"] = {
             ["y"] = -1928.5,
             ["x"] = 7686,
@@ -21577,7 +21577,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 4817.3,
             ["x"] = 7647.8,
         },
-        ["CRange"] = 59757,
+        ["Waypoint"] = 59757,
         ["Range"] = 13.85,
         ["TT"] = {
             ["y"] = 4817.3,
@@ -21665,7 +21665,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 4832.1,
             ["x"] = 7610,
         },
-        ["CRange"] = 59915,
+        ["Waypoint"] = 59915,
         ["Range"] = 10.94,
         ["TT"] = {
             ["y"] = 4832.1,
@@ -21677,7 +21677,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 4805.1,
             ["x"] = 7655.5,
         },
-        ["CRange"] = 59915,
+        ["Waypoint"] = 59915,
         ["Range"] = 14.95,
         ["TT"] = {
             ["y"] = 4805.1,
@@ -21708,7 +21708,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 4813.1,
             ["x"] = 7653,
         },
-        ["CRange"] = 59759,
+        ["Waypoint"] = 59759,
         ["Range"] = 15.5,
         ["TT"] = {
             ["y"] = 4813.1,
@@ -21721,7 +21721,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 4842.3,
             ["x"] = 7607.5,
         },
-        ["CRange"] = 59759,
+        ["Waypoint"] = 59759,
         ["Range"] = 13.71,
         ["TT"] = {
             ["y"] = 4842.3,
@@ -21734,7 +21734,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 5026.1,
             ["x"] = 7667.8,
         },
-        ["CRange"] = 59759,
+        ["Waypoint"] = 59759,
         ["Range"] = 17.39,
         ["TT"] = {
             ["y"] = 5026.1,
@@ -21815,14 +21815,14 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7527,
         },
         ["Range"] = 14.41,
-        ["CRange"] = 59760,
+        ["Waypoint"] = 59760,
         ["TT"] = {
             ["y"] = 5206.3,
             ["x"] = 7493.3,
         },
     }, -- [21]
     {
-        ["CRange"] = 59760,
+        ["Waypoint"] = 59760,
         ["Trigger"] = {
             ["y"] = 5333.7,
             ["x"] = 7527.3,
@@ -21839,7 +21839,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [22]
     {
-        ["CRange"] = 59760,
+        ["Waypoint"] = 59760,
         ["Trigger"] = {
             ["y"] = 5395.3,
             ["x"] = 7569.7,
@@ -21856,7 +21856,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [23]
     {
-        ["CRange"] = 59760,
+        ["Waypoint"] = 59760,
         ["Trigger"] = {
             ["y"] = 5435.3,
             ["x"] = 7531.2,
@@ -21915,7 +21915,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7500.8,
         },
         ["Range"] = 22.44,
-        ["CRange"] = 59761,
+        ["Waypoint"] = 59761,
         ["TT"] = {
             ["y"] = 5249.8,
             ["x"] = 7524.3,
@@ -22031,7 +22031,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7652.1,
         },
         ["Range"] = 10.58,
-        ["CRange"] = 59762,
+        ["Waypoint"] = 59762,
         ["TT"] = {
             ["y"] = 4817.2,
             ["x"] = 7652.1,
@@ -22043,7 +22043,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7603.2,
         },
         ["Range"] = 11.09,
-        ["CRange"] = 59762,
+        ["Waypoint"] = 59762,
         ["TT"] = {
             ["y"] = 4831.3,
             ["x"] = 7603.2,
@@ -22305,7 +22305,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 1412.2,
         },
         ["Range"] = 14.54,
-        ["CRange"] = 60129,
+        ["Waypoint"] = 60129,
         ["TT"] = {
             ["y"] = -1843.4,
             ["x"] = 1412.2,
@@ -22318,7 +22318,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 1382.8,
         },
         ["Range"] = 26.05,
-        ["CRange"] = 60129,
+        ["Waypoint"] = 60129,
         ["TT"] = {
             ["y"] = -1921.8,
             ["x"] = 1382.8,
@@ -22627,7 +22627,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 1417.9,
         },
         ["Range"] = 7.56,
-        ["CRange"] = 60151,
+        ["Waypoint"] = 60151,
         ["TT"] = {
             ["y"] = -1843,
             ["x"] = 1417.9,
@@ -22994,7 +22994,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -4228.9,
         },
         ["Range"] = 20.06,
-        ["CRange"] = 59774,
+        ["Waypoint"] = 59774,
         ["TT"] = {
             ["y"] = -4342.5,
             ["x"] = -4228.9,
@@ -23305,7 +23305,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [29]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4045.7,
             ["x"] = -4601.2,
@@ -23322,7 +23322,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [30]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4022.5,
             ["x"] = -4544.5,
@@ -23339,7 +23339,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [31]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4000.5,
             ["x"] = -4498.8,
@@ -23356,7 +23356,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [32]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -3951.5,
             ["x"] = -4441.3,
@@ -23373,7 +23373,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [33]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4001.2,
             ["x"] = -4408,
@@ -23390,7 +23390,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [34]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4048.2,
             ["x"] = -4376,
@@ -23449,7 +23449,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [37]
     {
-        ["CRange"] = 57676,
+        ["Waypoint"] = 57676,
         ["Trigger"] = {
             ["y"] = -3971.2,
             ["x"] = -4422.9,
@@ -23486,7 +23486,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -4043.7,
             ["x"] = -4598.9,
         },
-        ["CRange"] = 57676,
+        ["Waypoint"] = 57676,
         ["Range"] = 12.87,
         ["TT"] = {
             ["y"] = -4043.7,
@@ -24052,7 +24052,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -4597.4,
             ["x"] = -4991.3,
         },
-        ["CRange"] = 57291,
+        ["Waypoint"] = 57291,
         ["Range"] = 12.05,
         ["TT"] = {
             ["y"] = -4597.4,
@@ -24064,7 +24064,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -4704.9,
             ["x"] = -5135.5,
         },
-        ["CRange"] = 57291,
+        ["Waypoint"] = 57291,
         ["Range"] = 22,
         ["TT"] = {
             ["y"] = -4704.9,
@@ -24162,7 +24162,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -5279.5,
         },
         ["Range"] = 10.6,
-        ["CRange"] = 57266,
+        ["Waypoint"] = 57266,
         ["TT"] = {
             ["y"] = -4759.4,
             ["x"] = -5279.5,
@@ -24207,7 +24207,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -5225.5,
         },
         ["Range"] = 7.48,
-        ["CRange"] = 57266,
+        ["Waypoint"] = 57266,
         ["TT"] = {
             ["y"] = -4710.4,
             ["x"] = -5225.5,
@@ -24251,7 +24251,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -5086.5,
         },
         ["Range"] = 11.18,
-        ["CRange"] = 60219,
+        ["Waypoint"] = 60219,
         ["TT"] = {
             ["y"] = -4702.9,
             ["x"] = -5086.5,
@@ -24263,7 +24263,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -5019,
         },
         ["Range"] = 8.27,
-        ["CRange"] = 60219,
+        ["Waypoint"] = 60219,
         ["TT"] = {
             ["y"] = -4745.4,
             ["x"] = -5019,
@@ -24369,7 +24369,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -4990.7,
         },
         ["Range"] = 11.31,
-        ["CRange"] = 58174,
+        ["Waypoint"] = 58174,
         ["TT"] = {
             ["y"] = -4592.3,
             ["x"] = -4990.7,
@@ -24381,7 +24381,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -4893.4,
         },
         ["Range"] = 20.69,
-        ["CRange"] = 58174,
+        ["Waypoint"] = 58174,
         ["TT"] = {
             ["y"] = -4309.9,
             ["x"] = -4893.4,
@@ -24561,7 +24561,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -4012.2,
             ["x"] = -5377.2,
         },
-        ["CRange"] = 57716,
+        ["Waypoint"] = 57716,
         ["Range"] = 25.31,
         ["TT"] = {
             ["y"] = -4012.5,
@@ -25231,7 +25231,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [167]
     {
-        ["CRange"] = 58978,
+        ["Waypoint"] = 58978,
         ["Trigger"] = {
             ["y"] = -3471.7,
             ["x"] = -5274.9,
@@ -25248,7 +25248,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [168]
     {
-        ["CRange"] = 58978,
+        ["Waypoint"] = 58978,
         ["Trigger"] = {
             ["y"] = -3380,
             ["x"] = -5245.2,
@@ -25399,7 +25399,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [180]
     {
-        ["CRange"] = 58980,
+        ["Waypoint"] = 58980,
         ["Trigger"] = {
             ["y"] = -3615.9,
             ["x"] = -5428.8,
@@ -25562,7 +25562,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -3847.4,
             ["x"] = -5243.7,
         },
-        ["CRange"] = 58843,
+        ["Waypoint"] = 58843,
         ["Range"] = 7.09,
         ["TT"] = {
             ["y"] = -3847.4,
@@ -25677,7 +25677,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -4970.4,
         },
         ["Range"] = 56.74,
-        ["CRange"] = 59196,
+        ["Waypoint"] = 59196,
         ["TT"] = {
             ["y"] = -3653.2,
             ["x"] = -4970.4,
@@ -25690,7 +25690,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -4997.4,
         },
         ["Range"] = 25.42,
-        ["CRange"] = 59196,
+        ["Waypoint"] = 59196,
         ["TT"] = {
             ["y"] = -3501.2,
             ["x"] = -4997.4,
@@ -25945,7 +25945,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -5832.9,
         },
         ["Range"] = 11.25,
-        ["CRange"] = 59200,
+        ["Waypoint"] = 59200,
         ["TT"] = {
             ["y"] = -1637.3,
             ["x"] = -5832.9,
@@ -26038,7 +26038,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -5816.5,
         },
         ["Range"] = 8.5,
-        ["CRange"] = 59200,
+        ["Waypoint"] = 59200,
         ["TT"] = {
             ["y"] = -1778,
             ["x"] = -5816.5,
@@ -26050,7 +26050,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -5829.8,
         },
         ["Range"] = 10.96,
-        ["CRange"] = 59200,
+        ["Waypoint"] = 59200,
         ["TT"] = {
             ["y"] = -1625.9,
             ["x"] = -5829.8,
@@ -26228,7 +26228,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [299]
     {
-        ["CRange"] = 60007,
+        ["Waypoint"] = 60007,
         ["Trigger"] = {
             ["y"] = -3197.7,
             ["x"] = -4042,
@@ -26688,7 +26688,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -2544.9,
         },
         ["Range"] = 10.4,
-        ["CRange"] = 57390,
+        ["Waypoint"] = 57390,
         ["TT"] = {
             ["y"] = 2992.5,
             ["x"] = -2544.9,
@@ -26951,7 +26951,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -2158.5,
         },
         ["Range"] = 27.18,
-        ["CRange"] = 57515,
+        ["Waypoint"] = 57515,
         ["TT"] = {
             ["y"] = 2307,
             ["x"] = -2158.5,
@@ -26963,7 +26963,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -2013.6,
         },
         ["Range"] = 18.19,
-        ["CRange"] = 57515,
+        ["Waypoint"] = 57515,
         ["TT"] = {
             ["y"] = 2263.9,
             ["x"] = -2013.6,
@@ -27026,7 +27026,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -1750.1,
         },
         ["Range"] = 17.12,
-        ["CRange"] = 57514,
+        ["Waypoint"] = 57514,
         ["TT"] = {
             ["y"] = 2134.4,
             ["x"] = -1750.1,
@@ -27074,7 +27074,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -1684.1,
         },
         ["Range"] = 21.26,
-        ["CRange"] = 58351,
+        ["Waypoint"] = 58351,
         ["Gossip"] = 1,
         ["TT"] = {
             ["y"] = 2144.3,
@@ -27093,7 +27093,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -1575.6,
         },
         ["Range"] = 17.49,
-        ["CRange"] = 58351,
+        ["Waypoint"] = 58351,
         ["TT"] = {
             ["y"] = 2104.1,
             ["x"] = -1575.6,
@@ -27135,7 +27135,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -1519.4,
         },
         ["Range"] = 22.9,
-        ["CRange"] = 58351,
+        ["Waypoint"] = 58351,
         ["TT"] = {
             ["y"] = 1909.2,
             ["x"] = -1519.4,
@@ -27154,7 +27154,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -1629,
         },
         ["Range"] = 19.6,
-        ["CRange"] = 58617,
+        ["Waypoint"] = 58617,
         ["TT"] = {
             ["y"] = 1723,
             ["x"] = -1629,
@@ -27301,7 +27301,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [46]
     {
-        ["CRange"] = 57516,
+        ["Waypoint"] = 57516,
         ["Trigger"] = {
             ["y"] = 2004.4,
             ["x"] = -1765.8,
@@ -27332,7 +27332,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [48]
     {
-        ["CRange"] = 58616,
+        ["Waypoint"] = 58616,
         ["Trigger"] = {
             ["y"] = 1932.3,
             ["x"] = -1766.6,
@@ -27350,7 +27350,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -1806,
         },
         ["Range"] = 15.76,
-        ["CRange"] = 58616,
+        ["Waypoint"] = 58616,
         ["TT"] = {
             ["y"] = 1834.3,
             ["x"] = -1806,
@@ -27362,7 +27362,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -1710.5,
         },
         ["Range"] = 24.94,
-        ["CRange"] = 58616,
+        ["Waypoint"] = 58616,
         ["TT"] = {
             ["y"] = 1792.5,
             ["x"] = -1710.5,
@@ -27427,7 +27427,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 1797,
             ["x"] = -1648.1,
         },
-        ["CRange"] = 58618,
+        ["Waypoint"] = 58618,
         ["Range"] = 9.32,
         ["TT"] = {
             ["y"] = 1797,
@@ -27439,7 +27439,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 1792.4,
             ["x"] = -1725.5,
         },
-        ["CRange"] = 58618,
+        ["Waypoint"] = 58618,
         ["Range"] = 19.67,
         ["TT"] = {
             ["y"] = 1792.4,
@@ -27447,7 +27447,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [59]
     {
-        ["CRange"] = 58618,
+        ["Waypoint"] = 58618,
         ["Trigger"] = {
             ["y"] = 1846.5,
             ["x"] = -1905,
@@ -27464,7 +27464,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [60]
     {
-        ["CRange"] = 58618,
+        ["Waypoint"] = 58618,
         ["Trigger"] = {
             ["y"] = 1938.8,
             ["x"] = -1986,
@@ -27626,7 +27626,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [77]
     {
-        ["CRange"] = 60461,
+        ["Waypoint"] = 60461,
         ["Trigger"] = {
             ["y"] = 1974,
             ["x"] = -1709.5,
@@ -27729,7 +27729,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -2859.5,
         },
         ["Range"] = 51.48,
-        ["CRange"] = 59130,
+        ["Waypoint"] = 59130,
         ["TT"] = {
             ["y"] = 2118.1,
             ["x"] = -2859.5,
@@ -27877,7 +27877,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [169]
     {
-        ["CRange"] = 58045,
+        ["Waypoint"] = 58045,
         ["Trigger"] = {
             ["y"] = 2280.1,
             ["x"] = -3034.7,
@@ -27900,7 +27900,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [170]
     {
-        ["CRange"] = 58045,
+        ["Waypoint"] = 58045,
         ["Trigger"] = {
             ["y"] = 2220.3,
             ["x"] = -3222.5,
@@ -27995,7 +27995,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 2020.8,
             ["x"] = -3016.5,
         },
-        ["CRange"] = 58045,
+        ["Waypoint"] = 58045,
         ["Range"] = 19.79,
         ["TT"] = {
             ["y"] = 2020.8,
@@ -28035,7 +28035,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [182]
     {
-        ["CRange"] = 59223,
+        ["Waypoint"] = 59223,
         ["Trigger"] = {
             ["y"] = 1543.4,
             ["x"] = -3094.4,
@@ -28153,7 +28153,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 1839.2,
             ["x"] = -3042.7,
         },
-        ["CRange"] = 58751,
+        ["Waypoint"] = 58751,
         ["Range"] = 20.45,
         ["TT"] = {
             ["y"] = 1839.2,
@@ -28165,7 +28165,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 2137,
             ["x"] = -3053.5,
         },
-        ["CRange"] = 58751,
+        ["Waypoint"] = 58751,
         ["Range"] = 29.47,
         ["TT"] = {
             ["y"] = 2137,
@@ -28177,7 +28177,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 2330.1,
             ["x"] = -3203.7,
         },
-        ["CRange"] = 58751,
+        ["Waypoint"] = 58751,
         ["Range"] = 34.7,
         ["TT"] = {
             ["y"] = 2330.1,
@@ -28189,7 +28189,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 2544.9,
             ["x"] = -3530.2,
         },
-        ["CRange"] = 58751,
+        ["Waypoint"] = 58751,
         ["Range"] = 19.19,
         ["TT"] = {
             ["y"] = 2544.9,
@@ -28361,7 +28361,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -3284.2,
         },
         ["Range"] = 20.61,
-        ["CRange"] = 58821,
+        ["Waypoint"] = 58821,
         ["TT"] = {
             ["y"] = 2847.5,
             ["x"] = -3284.2,
@@ -28373,7 +28373,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -3323.4,
         },
         ["Range"] = 15.37,
-        ["CRange"] = 58821,
+        ["Waypoint"] = 58821,
         ["TT"] = {
             ["y"] = 2881.4,
             ["x"] = -3323.4,
@@ -28536,7 +28536,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [226]
     {
-        ["CRange"] = 59188,
+        ["Waypoint"] = 59188,
         ["Trigger"] = {
             ["y"] = 2658.3,
             ["x"] = -3914.7,
@@ -28563,7 +28563,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 2619.4,
             ["x"] = -3942.4,
         },
-        ["CRange"] = 59188,
+        ["Waypoint"] = 59188,
         ["Range"] = 8.75,
         ["TT"] = {
             ["y"] = 2619.4,
@@ -28843,7 +28843,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 2872.6,
             ["x"] = -3801.7,
         },
-        ["CRange"] = 59009,
+        ["Waypoint"] = 59009,
         ["Range"] = 27.74,
         ["TT"] = {
             ["y"] = 2872.6,
@@ -28855,7 +28855,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 2806.3,
             ["x"] = -3711,
         },
-        ["CRange"] = 59009,
+        ["Waypoint"] = 59009,
         ["Range"] = 34.28,
         ["TT"] = {
             ["y"] = 2806.3,
@@ -29146,7 +29146,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 3260.8,
             ["x"] = -1733.4,
         },
-        ["CRange"] = 59616,
+        ["Waypoint"] = 59616,
         ["Range"] = 18.87,
         ["TT"] = {
             ["y"] = 3260.8,
@@ -29291,7 +29291,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 3678.6,
             ["x"] = -1597.1,
         },
-        ["CRange"] = 57984,
+        ["Waypoint"] = 57984,
         ["Range"] = 12.41,
         ["TT"] = {
             ["y"] = 3678.6,
@@ -29320,7 +29320,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 3804.3,
             ["x"] = -1499.6,
         },
-        ["CRange"] = 57984,
+        ["Waypoint"] = 57984,
         ["Range"] = 11.83,
         ["TT"] = {
             ["y"] = 3804.3,
@@ -29366,7 +29366,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 3733.8,
             ["x"] = -1428.8,
         },
-        ["CRange"] = 57984,
+        ["Waypoint"] = 57984,
         ["Range"] = 10.53,
         ["TT"] = {
             ["y"] = 3733.8,
@@ -29378,7 +29378,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 3703.9,
             ["x"] = -1401.8,
         },
-        ["CRange"] = 57984,
+        ["Waypoint"] = 57984,
         ["Range"] = 12.21,
         ["TT"] = {
             ["y"] = 3703.9,
@@ -29679,7 +29679,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [143]
     {
-        ["CRange"] = 57994,
+        ["Waypoint"] = 57994,
         ["Trigger"] = {
             ["y"] = 3765.4,
             ["x"] = -1311.5,
@@ -29739,7 +29739,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -1429.9,
         },
         ["Range"] = 16.95,
-        ["CRange"] = 57994,
+        ["Waypoint"] = 57994,
         ["TT"] = {
             ["y"] = 3491.1,
             ["x"] = -1429.9,
@@ -29767,7 +29767,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -1676.4,
         },
         ["Range"] = 22.86,
-        ["CRange"] = 57994,
+        ["Waypoint"] = 57994,
         ["TT"] = {
             ["y"] = 3404,
             ["x"] = -1676.4,
@@ -29865,7 +29865,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 2058.6,
             ["x"] = -2300,
         },
-        ["CRange"] = 59202,
+        ["Waypoint"] = 59202,
         ["Range"] = 17.16,
         ["TT"] = {
             ["y"] = 2058.6,
@@ -29877,7 +29877,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 2141.1,
             ["x"] = -2223,
         },
-        ["CRange"] = 59202,
+        ["Waypoint"] = 59202,
         ["Range"] = 10.97,
         ["TT"] = {
             ["y"] = 2141.1,
@@ -29889,7 +29889,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 2308.1,
             ["x"] = -2172.5,
         },
-        ["CRange"] = 59202,
+        ["Waypoint"] = 59202,
         ["Range"] = 35.13,
         ["TT"] = {
             ["y"] = 2308.1,
@@ -29953,7 +29953,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -1949.4,
         },
         ["Range"] = 21.29,
-        ["CRange"] = 59874,
+        ["Waypoint"] = 59874,
         ["TT"] = {
             ["y"] = 2243.6,
             ["x"] = -1949.4,
@@ -29969,7 +29969,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     },
     {
-        ["CRange"] = 59874,
+        ["Waypoint"] = 59874,
         ["Trigger"] = {
             ["y"] = -1873.6,
             ["x"] = 1283.5,
@@ -30065,7 +30065,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7108.2,
         },
         ["Range"] = 11.83,
-        ["CRange"] = 59960,
+        ["Waypoint"] = 59960,
         ["TT"] = {
             ["y"] = 4379.2,
             ["x"] = 7108.2,
@@ -30114,7 +30114,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7274.3,
         },
         ["Range"] = 17.81,
-        ["CRange"] = 59959,
+        ["Waypoint"] = 59959,
         ["TT"] = {
             ["y"] = 4487.8,
             ["x"] = 7274.3,
@@ -30126,7 +30126,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7233.2,
         },
         ["Range"] = 10.86,
-        ["CRange"] = 59959,
+        ["Waypoint"] = 59959,
         ["TT"] = {
             ["y"] = 4533.7,
             ["x"] = 7233.2,
@@ -30154,7 +30154,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7102.6,
         },
         ["Range"] = 9.25,
-        ["CRange"] = 59959,
+        ["Waypoint"] = 59959,
         ["TT"] = {
             ["y"] = 4383.7,
             ["x"] = 7102.6,
@@ -30429,7 +30429,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 1418.7,
         },
         ["Range"] = 10.04,
-        ["CRange"] = 61190,
+        ["Waypoint"] = 61190,
         ["TT"] = {
             ["y"] = -1842.9,
             ["x"] = 1418.7,
@@ -30591,7 +30591,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -2547.7,
         },
         ["Range"] = 15.55,
-        ["CRange"] = 59206,
+        ["Waypoint"] = 59206,
         ["TT"] = {
             ["y"] = 1964,
             ["x"] = -2547.7,
@@ -30607,7 +30607,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [5]
     {
-        ["CRange"] = 59206,
+        ["Waypoint"] = 59206,
         ["Trigger"] = {
             ["y"] = -1874.9,
             ["x"] = 1283.5,
@@ -30730,7 +30730,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     },
     {
-        ["CRange"] = 60338,
+        ["Waypoint"] = 60338,
         ["Trigger"] = {
             ["y"] = -1875.9,
             ["x"] = 1284.2,
@@ -31023,7 +31023,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -5401.8,
             ["x"] = -490.7,
         },
-        ["CRange"] = 60857,
+        ["Waypoint"] = 60857,
         ["Range"] = 12.45,
         ["TT"] = {
             ["y"] = -5401.8,
@@ -31210,7 +31210,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -5761,
             ["x"] = -500.2,
         },
-        ["CRange"] = 57787,
+        ["Waypoint"] = 57787,
         ["Range"] = 7.55,
         ["TT"] = {
             ["y"] = -5761,
@@ -31291,7 +31291,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -5761.4,
             ["x"] = -498.4,
         },
-        ["CRange"] = 57787,
+        ["Waypoint"] = 57787,
         ["Range"] = 8.74,
         ["TT"] = {
             ["y"] = -5761.4,
@@ -31400,7 +31400,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [51]
     {
-        ["CRange"] = 57949,
+        ["Waypoint"] = 57949,
         ["Fillers"] = {
             [57949] = {
                 ["1"] = "1",
@@ -31420,7 +31420,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [52]
     {
-        ["CRange"] = 57949,
+        ["Waypoint"] = 57949,
         ["Fillers"] = {
             [57949] = {
                 ["1"] = "1",
@@ -31607,7 +31607,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -269.3,
         },
         ["Range"] = 12.84,
-        ["CRange"] = 57816,
+        ["Waypoint"] = 57816,
         ["TT"] = {
             ["y"] = -6150.2,
             ["x"] = -269.3,
@@ -31799,7 +31799,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6123.4,
             ["x"] = 5.4,
         },
-        ["CRange"] = 60577,
+        ["Waypoint"] = 60577,
         ["Range"] = 22.35,
         ["TT"] = {
             ["y"] = -6123.4,
@@ -32269,7 +32269,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -280.8,
         },
         ["Range"] = 15.55,
-        ["CRange"] = 60724,
+        ["Waypoint"] = 60724,
         ["TT"] = {
             ["y"] = -5987.4,
             ["x"] = -280.8,
@@ -32379,7 +32379,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [180]
     {
-        ["CRange"] = 60628,
+        ["Waypoint"] = 60628,
         ["Trigger"] = {
             ["y"] = -5951.9,
             ["x"] = 467.3,
@@ -32418,7 +32418,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     },
     {
-        ["CRange"] = 60628,
+        ["Waypoint"] = 60628,
         ["Trigger"] = {
             ["y"] = -5979.4,
             ["x"] = 360.6,
@@ -32523,7 +32523,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 593.7,
         },
         ["Range"] = 14.5,
-        ["CRange"] = 60629,
+        ["Waypoint"] = 60629,
         ["TT"] = {
             ["y"] = -5925,
             ["x"] = 593.7,
@@ -32728,7 +32728,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 739.9,
         },
         ["Range"] = 10.85,
-        ["CRange"] = 60632,
+        ["Waypoint"] = 60632,
         ["TT"] = {
             ["y"] = -6018.2,
             ["x"] = 739.9,
@@ -32740,7 +32740,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 719.7,
         },
         ["Range"] = 9.75,
-        ["CRange"] = 60632,
+        ["Waypoint"] = 60632,
         ["TT"] = {
             ["y"] = -5949.8,
             ["x"] = 719.7,
@@ -32863,7 +32863,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6088.2,
             ["x"] = -211.4,
         },
-        ["CRange"] = 60738,
+        ["Waypoint"] = 60738,
         ["Range"] = 16.89,
         ["TT"] = {
             ["y"] = -6088.2,
@@ -32875,7 +32875,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6148.4,
             ["x"] = -271.9,
         },
-        ["CRange"] = 60738,
+        ["Waypoint"] = 60738,
         ["Range"] = 19.55,
         ["TT"] = {
             ["y"] = -6148.4,
@@ -32977,7 +32977,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6721.2,
             ["x"] = -280,
         },
-        ["CRange"] = 60839,
+        ["Waypoint"] = 60839,
         ["Range"] = 8.72,
         ["TT"] = {
             ["y"] = -6721.2,
@@ -33127,7 +33127,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6904.3,
             ["x"] = 19.3,
         },
-        ["CRange"] = 60905,
+        ["Waypoint"] = 60905,
         ["Range"] = 6.43,
         ["TT"] = {
             ["y"] = -6904.3,
@@ -33139,7 +33139,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6926,
             ["x"] = 9,
         },
-        ["CRange"] = 60905,
+        ["Waypoint"] = 60905,
         ["Range"] = 5.19,
         ["TT"] = {
             ["y"] = -6926,
@@ -33171,7 +33171,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6922.5,
             ["x"] = 8,
         },
-        ["CRange"] = 60905,
+        ["Waypoint"] = 60905,
         ["Range"] = 9.59,
         ["TT"] = {
             ["y"] = -6922.5,
@@ -33247,7 +33247,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -96.3,
         },
         ["Range"] = 17.58,
-        ["CRange"] = 58473,
+        ["Waypoint"] = 58473,
         ["TT"] = {
             ["y"] = -6969.9,
             ["x"] = -96.3,
@@ -33259,7 +33259,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -177.9,
         },
         ["Range"] = 29.93,
-        ["CRange"] = 58473,
+        ["Waypoint"] = 58473,
         ["TT"] = {
             ["y"] = -7025.8,
             ["x"] = -177.9,
@@ -33271,7 +33271,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -447.4,
         },
         ["Range"] = 27.3,
-        ["CRange"] = 58473,
+        ["Waypoint"] = 58473,
         ["TT"] = {
             ["y"] = -7033.3,
             ["x"] = -447.4,
@@ -33283,7 +33283,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -569,
         },
         ["Range"] = 11.01,
-        ["CRange"] = 58473,
+        ["Waypoint"] = 58473,
         ["TT"] = {
             ["y"] = -7112.4,
             ["x"] = -569,
@@ -33315,7 +33315,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = -603.3,
         },
         ["Range"] = 10.75,
-        ["CRange"] = 58483,
+        ["Waypoint"] = 58483,
         ["TT"] = {
             ["y"] = -7110.8,
             ["x"] = -603.3,
@@ -33347,7 +33347,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [117]
     {
-        ["CRange"] = 58480,
+        ["Waypoint"] = 58480,
         ["Trigger"] = {
             ["y"] = -6918.7,
             ["x"] = -683.8,
@@ -33460,7 +33460,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6913.3,
             ["x"] = -624.7,
         },
-        ["CRange"] = 58486,
+        ["Waypoint"] = 58486,
         ["Range"] = 15.52,
         ["TT"] = {
             ["y"] = -6913.3,
@@ -33631,7 +33631,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 45.1,
         },
         ["Range"] = 27.14,
-        ["CRange"] = 58589,
+        ["Waypoint"] = 58589,
         ["TT"] = {
             ["y"] = -6721.4,
             ["x"] = 45.1,
@@ -33781,7 +33781,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 45.5,
         },
         ["Range"] = 20.53,
-        ["CRange"] = 60578,
+        ["Waypoint"] = 60578,
         ["TT"] = {
             ["y"] = -6717.8,
             ["x"] = 45.5,
@@ -33949,7 +33949,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6932.5,
             ["x"] = -51.8,
         },
-        ["CRange"] = 58719,
+        ["Waypoint"] = 58719,
         ["Range"] = 9.46,
         ["TT"] = {
             ["y"] = -6932.5,
@@ -33957,7 +33957,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [160]
     {
-        ["CRange"] = 58719,
+        ["Waypoint"] = 58719,
         ["Fillers"] = {
             [58714] = {
                 ["1"] = "1",
@@ -33994,7 +33994,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [162]
     {
-        ["CRange"] = 58719,
+        ["Waypoint"] = 58719,
         ["Fillers"] = {
             [58714] = {
                 ["1"] = "1",
@@ -34012,7 +34012,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [163]
     {
-        ["CRange"] = 58719,
+        ["Waypoint"] = 58719,
         ["Fillers"] = {
             [58714] = {
                 ["1"] = "1",
@@ -34094,7 +34094,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -7078.3,
             ["x"] = 233.6,
         },
-        ["CRange"] = 58720,
+        ["Waypoint"] = 58720,
         ["Range"] = 12.15,
         ["TT"] = {
             ["y"] = -7078.3,
@@ -34106,7 +34106,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -7105.9,
             ["x"] = 305.8,
         },
-        ["CRange"] = 58720,
+        ["Waypoint"] = 58720,
         ["Range"] = 11.85,
         ["TT"] = {
             ["y"] = -7105.9,
@@ -34246,7 +34246,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 193.1,
         },
         ["Range"] = 31.29,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6990.9,
             ["x"] = 193.1,
@@ -34258,7 +34258,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 298.6,
         },
         ["Range"] = 33.33,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6864.8,
             ["x"] = 298.6,
@@ -34271,7 +34271,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 409.8,
         },
         ["Range"] = 32.87,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6906.4,
             ["x"] = 409.8,
@@ -34284,7 +34284,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 517.9,
         },
         ["Range"] = 27.25,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6800,
             ["x"] = 517.9,
@@ -34297,7 +34297,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 692.2,
         },
         ["Range"] = 20.3,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6767.2,
             ["x"] = 692.2,
@@ -34310,7 +34310,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 690,
         },
         ["Range"] = 15.13,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6824.7,
             ["x"] = 690,
@@ -34415,7 +34415,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -7115.4,
             ["x"] = 994,
         },
-        ["CRange"] = 58723,
+        ["Waypoint"] = 58723,
         ["Range"] = 12.07,
         ["TT"] = {
             ["y"] = -7115.4,
@@ -34427,7 +34427,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6972.5,
             ["x"] = 901.9,
         },
-        ["CRange"] = 58723,
+        ["Waypoint"] = 58723,
         ["Range"] = 16.41,
         ["TT"] = {
             ["y"] = -6972.5,
@@ -34439,7 +34439,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -6911.9,
             ["x"] = 923.2,
         },
-        ["CRange"] = 58723,
+        ["Waypoint"] = 58723,
         ["Range"] = 11.25,
         ["TT"] = {
             ["y"] = -6911.9,
@@ -34506,7 +34506,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     },
     {
-        ["CRange"] = 58724,
+        ["Waypoint"] = 58724,
         ["Trigger"] = {
             ["y"] = -1875.3,
             ["x"] = 1284.2,
@@ -35054,7 +35054,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -2729.5,
             ["x"] = 5914.3,
         },
-        ["CRange"] = 57174,
+        ["Waypoint"] = 57174,
         ["Range"] = 8.2,
         ["TT"] = {
             ["y"] = -2729.5,
@@ -35066,7 +35066,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -2745.9,
             ["x"] = 5925.8,
         },
-        ["CRange"] = 57174,
+        ["Waypoint"] = 57174,
         ["Range"] = 8.75,
         ["TT"] = {
             ["y"] = -2745.9,
@@ -35130,7 +35130,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -2323.5,
             ["x"] = 6221.6,
         },
-        ["CRange"] = 57178,
+        ["Waypoint"] = 57178,
         ["Range"] = 13.23,
         ["TT"] = {
             ["y"] = -2323.5,
@@ -35843,7 +35843,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 6617.3,
         },
         ["Range"] = 6.33,
-        ["CRange"] = 58916,
+        ["Waypoint"] = 58916,
         ["TT"] = {
             ["y"] = -3154.5,
             ["x"] = 6617.3,
@@ -35939,7 +35939,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 6627,
         },
         ["Range"] = 11.23,
-        ["CRange"] = 59014,
+        ["Waypoint"] = 59014,
         ["TT"] = {
             ["y"] = -2974.4,
             ["x"] = 6627,
@@ -36263,7 +36263,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -3052,
             ["x"] = 6739.1,
         },
-        ["CRange"] = 60313,
+        ["Waypoint"] = 60313,
         ["Range"] = 14.46,
         ["TT"] = {
             ["y"] = -3052,
@@ -36300,7 +36300,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
     }, -- [188]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["Trigger"] = {
             ["y"] = -3180.5,
             ["x"] = 7002.8,
@@ -36326,7 +36326,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 6968.8,
         },
         ["Range"] = 3.86,
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["TT"] = {
             ["y"] = -3182.2,
             ["x"] = 6968.8,
@@ -36356,7 +36356,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
     }, -- [191]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["Trigger"] = {
             ["y"] = -3181.2,
             ["x"] = 6968.3,
@@ -36402,7 +36402,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
     }, -- [193]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57190,
+        ["Waypoint"] = 57190,
         ["Trigger"] = {
             ["y"] = -3189,
             ["x"] = 7011.1,
@@ -36423,7 +36423,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
     }, -- [194]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["Trigger"] = {
             ["y"] = -3179,
             ["x"] = 7005.3,
@@ -36495,7 +36495,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
     }, -- [197]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["Trigger"] = {
             ["y"] = -3151.2,
             ["x"] = 7062.6,
@@ -36516,7 +36516,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
     }, -- [198]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57190,
+        ["Waypoint"] = 57190,
         ["Trigger"] = {
             ["y"] = -3205.4,
             ["x"] = 7073.3,
@@ -36662,7 +36662,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -3021.2,
             ["x"] = 7005.8,
         },
-        ["CRange"] = 57240,
+        ["Waypoint"] = 57240,
         ["Range"] = 16.29,
         ["TT"] = {
             ["y"] = -3021.2,
@@ -36777,7 +36777,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [217]
     {
-        ["CRange"] = 57426,
+        ["Waypoint"] = 57426,
         ["Trigger"] = {
             ["y"] = -2618.4,
             ["x"] = 7512.6,
@@ -36870,7 +36870,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -2399.5,
             ["x"] = 7632.8,
         },
-        ["CRange"] = 57442,
+        ["Waypoint"] = 57442,
         ["Range"] = 9.95,
         ["TT"] = {
             ["y"] = -2399.5,
@@ -36882,7 +36882,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -2484.5,
             ["x"] = 7664,
         },
-        ["CRange"] = 57442,
+        ["Waypoint"] = 57442,
         ["Range"] = 9.25,
         ["TT"] = {
             ["y"] = -2484.5,
@@ -37104,7 +37104,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [241]
     --{
-    --	["CRange"] = 57724,
+    --	["Waypoint"] = 57724,
     --	["Trigger"] = {
     --		["y"] = -2095,
     --		["x"] = 7620,
@@ -37151,7 +37151,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [246]
     {
-        ["CRange"] = 57724,
+        ["Waypoint"] = 57724,
         ["Trigger"] = {
             ["y"] = -2003,
             ["x"] = 7678,
@@ -37211,7 +37211,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7829.3,
         },
         ["Range"] = 10.44,
-        ["CRange"] = 57724,
+        ["Waypoint"] = 57724,
         ["TT"] = {
             ["y"] = -1981.6,
             ["x"] = 7829.3,
@@ -37257,7 +37257,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7751.3,
         },
         ["Range"] = 9.16,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1901.1,
             ["x"] = 7751.3,
@@ -37269,7 +37269,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7728.7,
         },
         ["Range"] = 10.12,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1881.9,
             ["x"] = 7728.7,
@@ -37281,7 +37281,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7696.7,
         },
         ["Range"] = 6.98,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1880.5,
             ["x"] = 7696.7,
@@ -37293,7 +37293,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7701,
         },
         ["Range"] = 8.01,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1894.1,
             ["x"] = 7701,
@@ -37305,7 +37305,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7729,
         },
         ["Range"] = 7.63,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1899.6,
             ["x"] = 7729,
@@ -37317,7 +37317,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7741.6,
         },
         ["Range"] = 6.85,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1929.8,
             ["x"] = 7741.6,
@@ -37329,7 +37329,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7764.7,
         },
         ["Range"] = 6.12,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1944.5,
             ["x"] = 7765.6,
@@ -37341,7 +37341,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7732.7,
         },
         ["Range"] = 8.27,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1966,
             ["x"] = 7732.8,
@@ -37353,7 +37353,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7676.3,
         },
         ["Range"] = 8.93,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1954.4,
             ["x"] = 7676.3,
@@ -37449,7 +37449,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = 5142,
             ["x"] = 7251.7,
         },
-        ["CRange"] = 57690,
+        ["Waypoint"] = 57690,
         ["Range"] = 28.18,
         ["TT"] = {
             ["y"] = 5142,
@@ -37515,7 +37515,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7401.7,
         },
         ["Range"] = 20.37,
-        ["CRange"] = 57693,
+        ["Waypoint"] = 57693,
         ["TT"] = {
             ["y"] = 5279.6,
             ["x"] = 7401.7,
@@ -37644,7 +37644,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -1955.5,
             ["x"] = 7675.5,
         },
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["Range"] = 12.97,
         ["TT"] = {
             ["y"] = -1955.5,
@@ -37656,7 +37656,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -1972.1,
             ["x"] = 7704.5,
         },
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["Range"] = 12.15,
         ["TT"] = {
             ["y"] = -1972.1,
@@ -37668,7 +37668,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -1951,
             ["x"] = 7757.7,
         },
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["Range"] = 15.35,
         ["TT"] = {
             ["y"] = -1951,
@@ -37676,7 +37676,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [10]
     {
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["Trigger"] = {
             ["y"] = -1955.9,
             ["x"] = 7790.7,
@@ -37694,7 +37694,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["x"] = 7686,
         },
         ["Range"] = 22.19,
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["TT"] = {
             ["y"] = -1928.5,
             ["x"] = 7686,
@@ -38649,7 +38649,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 4817.3,
             ["x"] = 7647.8,
         },
-        ["CRange"] = 59757,
+        ["Waypoint"] = 59757,
         ["Range"] = 13.85,
         ["TT"] = {
             ["y"] = 4817.3,
@@ -38737,7 +38737,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 4832.1,
             ["x"] = 7610,
         },
-        ["CRange"] = 59915,
+        ["Waypoint"] = 59915,
         ["Range"] = 10.94,
         ["TT"] = {
             ["y"] = 4832.1,
@@ -38749,7 +38749,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 4805.1,
             ["x"] = 7655.5,
         },
-        ["CRange"] = 59915,
+        ["Waypoint"] = 59915,
         ["Range"] = 14.95,
         ["TT"] = {
             ["y"] = 4805.1,
@@ -38780,7 +38780,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 4813.1,
             ["x"] = 7653,
         },
-        ["CRange"] = 59759,
+        ["Waypoint"] = 59759,
         ["Range"] = 15.5,
         ["TT"] = {
             ["y"] = 4813.1,
@@ -38793,7 +38793,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 4842.3,
             ["x"] = 7607.5,
         },
-        ["CRange"] = 59759,
+        ["Waypoint"] = 59759,
         ["Range"] = 13.71,
         ["TT"] = {
             ["y"] = 4842.3,
@@ -38806,7 +38806,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 5026.1,
             ["x"] = 7667.8,
         },
-        ["CRange"] = 59759,
+        ["Waypoint"] = 59759,
         ["Range"] = 17.39,
         ["TT"] = {
             ["y"] = 5026.1,
@@ -38887,14 +38887,14 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7527,
         },
         ["Range"] = 14.41,
-        ["CRange"] = 59760,
+        ["Waypoint"] = 59760,
         ["TT"] = {
             ["y"] = 5206.3,
             ["x"] = 7493.3,
         },
     }, -- [21]
     {
-        ["CRange"] = 59760,
+        ["Waypoint"] = 59760,
         ["Trigger"] = {
             ["y"] = 5333.7,
             ["x"] = 7527.3,
@@ -38911,7 +38911,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [22]
     {
-        ["CRange"] = 59760,
+        ["Waypoint"] = 59760,
         ["Trigger"] = {
             ["y"] = 5395.3,
             ["x"] = 7569.7,
@@ -38928,7 +38928,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [23]
     {
-        ["CRange"] = 59760,
+        ["Waypoint"] = 59760,
         ["Trigger"] = {
             ["y"] = 5435.3,
             ["x"] = 7531.2,
@@ -38987,7 +38987,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7500.8,
         },
         ["Range"] = 22.44,
-        ["CRange"] = 59761,
+        ["Waypoint"] = 59761,
         ["TT"] = {
             ["y"] = 5249.8,
             ["x"] = 7524.3,
@@ -39103,7 +39103,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7652.1,
         },
         ["Range"] = 10.58,
-        ["CRange"] = 59762,
+        ["Waypoint"] = 59762,
         ["TT"] = {
             ["y"] = 4817.2,
             ["x"] = 7652.1,
@@ -39115,7 +39115,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7603.2,
         },
         ["Range"] = 11.09,
-        ["CRange"] = 59762,
+        ["Waypoint"] = 59762,
         ["TT"] = {
             ["y"] = 4831.3,
             ["x"] = 7603.2,
@@ -39377,7 +39377,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 1412.2,
         },
         ["Range"] = 14.54,
-        ["CRange"] = 60129,
+        ["Waypoint"] = 60129,
         ["TT"] = {
             ["y"] = -1843.4,
             ["x"] = 1412.2,
@@ -39390,7 +39390,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 1382.8,
         },
         ["Range"] = 26.05,
-        ["CRange"] = 60129,
+        ["Waypoint"] = 60129,
         ["TT"] = {
             ["y"] = -1921.8,
             ["x"] = 1382.8,
@@ -39699,7 +39699,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 1417.9,
         },
         ["Range"] = 7.56,
-        ["CRange"] = 60151,
+        ["Waypoint"] = 60151,
         ["TT"] = {
             ["y"] = -1843,
             ["x"] = 1417.9,
@@ -40066,7 +40066,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -4228.9,
         },
         ["Range"] = 20.06,
-        ["CRange"] = 59774,
+        ["Waypoint"] = 59774,
         ["TT"] = {
             ["y"] = -4342.5,
             ["x"] = -4228.9,
@@ -40377,7 +40377,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [29]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4045.7,
             ["x"] = -4601.2,
@@ -40394,7 +40394,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [30]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4022.5,
             ["x"] = -4544.5,
@@ -40411,7 +40411,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [31]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4000.5,
             ["x"] = -4498.8,
@@ -40428,7 +40428,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [32]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -3951.5,
             ["x"] = -4441.3,
@@ -40445,7 +40445,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [33]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4001.2,
             ["x"] = -4408,
@@ -40462,7 +40462,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [34]
     {
-        ["CRange"] = 57677,
+        ["Waypoint"] = 57677,
         ["Trigger"] = {
             ["y"] = -4048.2,
             ["x"] = -4376,
@@ -40521,7 +40521,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [37]
     {
-        ["CRange"] = 57676,
+        ["Waypoint"] = 57676,
         ["Trigger"] = {
             ["y"] = -3971.2,
             ["x"] = -4422.9,
@@ -40558,7 +40558,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -4043.7,
             ["x"] = -4598.9,
         },
-        ["CRange"] = 57676,
+        ["Waypoint"] = 57676,
         ["Range"] = 12.87,
         ["TT"] = {
             ["y"] = -4043.7,
@@ -41124,7 +41124,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -4597.4,
             ["x"] = -4991.3,
         },
-        ["CRange"] = 57291,
+        ["Waypoint"] = 57291,
         ["Range"] = 12.05,
         ["TT"] = {
             ["y"] = -4597.4,
@@ -41136,7 +41136,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -4704.9,
             ["x"] = -5135.5,
         },
-        ["CRange"] = 57291,
+        ["Waypoint"] = 57291,
         ["Range"] = 22,
         ["TT"] = {
             ["y"] = -4704.9,
@@ -41234,7 +41234,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -5279.5,
         },
         ["Range"] = 10.6,
-        ["CRange"] = 57266,
+        ["Waypoint"] = 57266,
         ["TT"] = {
             ["y"] = -4759.4,
             ["x"] = -5279.5,
@@ -41279,7 +41279,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -5225.5,
         },
         ["Range"] = 7.48,
-        ["CRange"] = 57266,
+        ["Waypoint"] = 57266,
         ["TT"] = {
             ["y"] = -4710.4,
             ["x"] = -5225.5,
@@ -41323,7 +41323,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -5086.5,
         },
         ["Range"] = 11.18,
-        ["CRange"] = 60219,
+        ["Waypoint"] = 60219,
         ["TT"] = {
             ["y"] = -4702.9,
             ["x"] = -5086.5,
@@ -41335,7 +41335,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -5019,
         },
         ["Range"] = 8.27,
-        ["CRange"] = 60219,
+        ["Waypoint"] = 60219,
         ["TT"] = {
             ["y"] = -4745.4,
             ["x"] = -5019,
@@ -41441,7 +41441,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -4990.7,
         },
         ["Range"] = 11.31,
-        ["CRange"] = 58174,
+        ["Waypoint"] = 58174,
         ["TT"] = {
             ["y"] = -4592.3,
             ["x"] = -4990.7,
@@ -41453,7 +41453,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -4893.4,
         },
         ["Range"] = 20.69,
-        ["CRange"] = 58174,
+        ["Waypoint"] = 58174,
         ["TT"] = {
             ["y"] = -4309.9,
             ["x"] = -4893.4,
@@ -41633,7 +41633,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -4012.2,
             ["x"] = -5377.2,
         },
-        ["CRange"] = 57716,
+        ["Waypoint"] = 57716,
         ["Range"] = 25.31,
         ["TT"] = {
             ["y"] = -4012.5,
@@ -42303,7 +42303,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [167]
     {
-        ["CRange"] = 58978,
+        ["Waypoint"] = 58978,
         ["Trigger"] = {
             ["y"] = -3471.7,
             ["x"] = -5274.9,
@@ -42320,7 +42320,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [168]
     {
-        ["CRange"] = 58978,
+        ["Waypoint"] = 58978,
         ["Trigger"] = {
             ["y"] = -3380,
             ["x"] = -5245.2,
@@ -42471,7 +42471,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [180]
     {
-        ["CRange"] = 58980,
+        ["Waypoint"] = 58980,
         ["Trigger"] = {
             ["y"] = -3615.9,
             ["x"] = -5428.8,
@@ -42634,7 +42634,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -3847.4,
             ["x"] = -5243.7,
         },
-        ["CRange"] = 58843,
+        ["Waypoint"] = 58843,
         ["Range"] = 7.09,
         ["TT"] = {
             ["y"] = -3847.4,
@@ -42749,7 +42749,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -4970.4,
         },
         ["Range"] = 56.74,
-        ["CRange"] = 59196,
+        ["Waypoint"] = 59196,
         ["TT"] = {
             ["y"] = -3653.2,
             ["x"] = -4970.4,
@@ -42761,7 +42761,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -4997.4,
         },
         ["Range"] = 25.42,
-        ["CRange"] = 59196,
+        ["Waypoint"] = 59196,
         ["TT"] = {
             ["y"] = -3501.2,
             ["x"] = -4997.4,
@@ -43016,7 +43016,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -5832.9,
         },
         ["Range"] = 11.25,
-        ["CRange"] = 59200,
+        ["Waypoint"] = 59200,
         ["TT"] = {
             ["y"] = -1637.3,
             ["x"] = -5832.9,
@@ -43109,7 +43109,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -5816.5,
         },
         ["Range"] = 8.5,
-        ["CRange"] = 59200,
+        ["Waypoint"] = 59200,
         ["TT"] = {
             ["y"] = -1778,
             ["x"] = -5816.5,
@@ -43121,7 +43121,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -5829.8,
         },
         ["Range"] = 10.96,
-        ["CRange"] = 59200,
+        ["Waypoint"] = 59200,
         ["TT"] = {
             ["y"] = -1625.9,
             ["x"] = -5829.8,
@@ -43299,7 +43299,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [299]
     {
-        ["CRange"] = 60007,
+        ["Waypoint"] = 60007,
         ["Trigger"] = {
             ["y"] = -3197.7,
             ["x"] = -4042,
@@ -43759,7 +43759,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -2544.9,
         },
         ["Range"] = 10.4,
-        ["CRange"] = 57390,
+        ["Waypoint"] = 57390,
         ["TT"] = {
             ["y"] = 2992.5,
             ["x"] = -2544.9,
@@ -44022,7 +44022,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -2158.5,
         },
         ["Range"] = 27.18,
-        ["CRange"] = 57515,
+        ["Waypoint"] = 57515,
         ["TT"] = {
             ["y"] = 2307,
             ["x"] = -2158.5,
@@ -44034,7 +44034,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -2013.6,
         },
         ["Range"] = 18.19,
-        ["CRange"] = 57515,
+        ["Waypoint"] = 57515,
         ["TT"] = {
             ["y"] = 2263.9,
             ["x"] = -2013.6,
@@ -44097,7 +44097,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -1750.1,
         },
         ["Range"] = 17.12,
-        ["CRange"] = 57514,
+        ["Waypoint"] = 57514,
         ["TT"] = {
             ["y"] = 2134.4,
             ["x"] = -1750.1,
@@ -44145,7 +44145,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -1684.1,
         },
         ["Range"] = 21.26,
-        ["CRange"] = 58351,
+        ["Waypoint"] = 58351,
         ["Gossip"] = 1,
         ["TT"] = {
             ["y"] = 2144.3,
@@ -44164,7 +44164,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -1575.6,
         },
         ["Range"] = 17.49,
-        ["CRange"] = 58351,
+        ["Waypoint"] = 58351,
         ["TT"] = {
             ["y"] = 2104.1,
             ["x"] = -1575.6,
@@ -44206,7 +44206,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -1519.4,
         },
         ["Range"] = 22.9,
-        ["CRange"] = 58351,
+        ["Waypoint"] = 58351,
         ["TT"] = {
             ["y"] = 1909.2,
             ["x"] = -1519.4,
@@ -44225,7 +44225,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -1629,
         },
         ["Range"] = 19.6,
-        ["CRange"] = 58617,
+        ["Waypoint"] = 58617,
         ["TT"] = {
             ["y"] = 1723,
             ["x"] = -1629,
@@ -44372,7 +44372,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [46]
     {
-        ["CRange"] = 57516,
+        ["Waypoint"] = 57516,
         ["Trigger"] = {
             ["y"] = 2004.4,
             ["x"] = -1765.8,
@@ -44403,7 +44403,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [48]
     {
-        ["CRange"] = 58616,
+        ["Waypoint"] = 58616,
         ["Trigger"] = {
             ["y"] = 1932.3,
             ["x"] = -1766.6,
@@ -44421,7 +44421,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -1806,
         },
         ["Range"] = 15.76,
-        ["CRange"] = 58616,
+        ["Waypoint"] = 58616,
         ["TT"] = {
             ["y"] = 1834.3,
             ["x"] = -1806,
@@ -44433,7 +44433,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -1710.5,
         },
         ["Range"] = 24.94,
-        ["CRange"] = 58616,
+        ["Waypoint"] = 58616,
         ["TT"] = {
             ["y"] = 1792.5,
             ["x"] = -1710.5,
@@ -44498,7 +44498,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 1797,
             ["x"] = -1648.1,
         },
-        ["CRange"] = 58618,
+        ["Waypoint"] = 58618,
         ["Range"] = 9.32,
         ["TT"] = {
             ["y"] = 1797,
@@ -44510,7 +44510,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 1792.4,
             ["x"] = -1725.5,
         },
-        ["CRange"] = 58618,
+        ["Waypoint"] = 58618,
         ["Range"] = 19.67,
         ["TT"] = {
             ["y"] = 1792.4,
@@ -44518,7 +44518,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [59]
     {
-        ["CRange"] = 58618,
+        ["Waypoint"] = 58618,
         ["Trigger"] = {
             ["y"] = 1846.5,
             ["x"] = -1905,
@@ -44535,7 +44535,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [60]
     {
-        ["CRange"] = 58618,
+        ["Waypoint"] = 58618,
         ["Trigger"] = {
             ["y"] = 1938.8,
             ["x"] = -1986,
@@ -44697,7 +44697,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [77]
     {
-        ["CRange"] = 60461,
+        ["Waypoint"] = 60461,
         ["Trigger"] = {
             ["y"] = 1974,
             ["x"] = -1709.5,
@@ -44800,7 +44800,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -2859.5,
         },
         ["Range"] = 51.48,
-        ["CRange"] = 59130,
+        ["Waypoint"] = 59130,
         ["TT"] = {
             ["y"] = 2118.1,
             ["x"] = -2859.5,
@@ -44948,7 +44948,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [169]
     {
-        ["CRange"] = 58045,
+        ["Waypoint"] = 58045,
         ["Trigger"] = {
             ["y"] = 2280.1,
             ["x"] = -3034.7,
@@ -44971,7 +44971,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [170]
     {
-        ["CRange"] = 58045,
+        ["Waypoint"] = 58045,
         ["Trigger"] = {
             ["y"] = 2220.3,
             ["x"] = -3222.5,
@@ -45066,7 +45066,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 2020.8,
             ["x"] = -3016.5,
         },
-        ["CRange"] = 58045,
+        ["Waypoint"] = 58045,
         ["Range"] = 19.79,
         ["TT"] = {
             ["y"] = 2020.8,
@@ -45106,7 +45106,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [182]
     {
-        ["CRange"] = 59223,
+        ["Waypoint"] = 59223,
         ["Trigger"] = {
             ["y"] = 1543.4,
             ["x"] = -3094.4,
@@ -45224,7 +45224,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 1839.2,
             ["x"] = -3042.7,
         },
-        ["CRange"] = 58751,
+        ["Waypoint"] = 58751,
         ["Range"] = 20.45,
         ["TT"] = {
             ["y"] = 1839.2,
@@ -45236,7 +45236,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 2137,
             ["x"] = -3053.5,
         },
-        ["CRange"] = 58751,
+        ["Waypoint"] = 58751,
         ["Range"] = 29.47,
         ["TT"] = {
             ["y"] = 2137,
@@ -45248,7 +45248,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 2330.1,
             ["x"] = -3203.7,
         },
-        ["CRange"] = 58751,
+        ["Waypoint"] = 58751,
         ["Range"] = 34.7,
         ["TT"] = {
             ["y"] = 2330.1,
@@ -45260,7 +45260,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 2544.9,
             ["x"] = -3530.2,
         },
-        ["CRange"] = 58751,
+        ["Waypoint"] = 58751,
         ["Range"] = 19.19,
         ["TT"] = {
             ["y"] = 2544.9,
@@ -45432,7 +45432,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -3284.2,
         },
         ["Range"] = 20.61,
-        ["CRange"] = 58821,
+        ["Waypoint"] = 58821,
         ["TT"] = {
             ["y"] = 2847.5,
             ["x"] = -3284.2,
@@ -45444,7 +45444,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -3323.4,
         },
         ["Range"] = 15.37,
-        ["CRange"] = 58821,
+        ["Waypoint"] = 58821,
         ["TT"] = {
             ["y"] = 2881.4,
             ["x"] = -3323.4,
@@ -45607,7 +45607,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [226]
     {
-        ["CRange"] = 59188,
+        ["Waypoint"] = 59188,
         ["Trigger"] = {
             ["y"] = 2658.3,
             ["x"] = -3914.7,
@@ -45634,7 +45634,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 2619.4,
             ["x"] = -3942.4,
         },
-        ["CRange"] = 59188,
+        ["Waypoint"] = 59188,
         ["Range"] = 8.75,
         ["TT"] = {
             ["y"] = 2619.4,
@@ -45914,7 +45914,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 2872.6,
             ["x"] = -3801.7,
         },
-        ["CRange"] = 59009,
+        ["Waypoint"] = 59009,
         ["Range"] = 27.74,
         ["TT"] = {
             ["y"] = 2872.6,
@@ -45926,7 +45926,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 2806.3,
             ["x"] = -3711,
         },
-        ["CRange"] = 59009,
+        ["Waypoint"] = 59009,
         ["Range"] = 34.28,
         ["TT"] = {
             ["y"] = 2806.3,
@@ -46217,7 +46217,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 3260.8,
             ["x"] = -1733.4,
         },
-        ["CRange"] = 59616,
+        ["Waypoint"] = 59616,
         ["Range"] = 18.87,
         ["TT"] = {
             ["y"] = 3260.8,
@@ -46362,7 +46362,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 3678.6,
             ["x"] = -1597.1,
         },
-        ["CRange"] = 57984,
+        ["Waypoint"] = 57984,
         ["Range"] = 12.41,
         ["TT"] = {
             ["y"] = 3678.6,
@@ -46391,7 +46391,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 3804.3,
             ["x"] = -1499.6,
         },
-        ["CRange"] = 57984,
+        ["Waypoint"] = 57984,
         ["Range"] = 11.83,
         ["TT"] = {
             ["y"] = 3804.3,
@@ -46437,7 +46437,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 3733.8,
             ["x"] = -1428.8,
         },
-        ["CRange"] = 57984,
+        ["Waypoint"] = 57984,
         ["Range"] = 10.53,
         ["TT"] = {
             ["y"] = 3733.8,
@@ -46449,7 +46449,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 3703.9,
             ["x"] = -1401.8,
         },
-        ["CRange"] = 57984,
+        ["Waypoint"] = 57984,
         ["Range"] = 12.21,
         ["TT"] = {
             ["y"] = 3703.9,
@@ -46750,7 +46750,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [143]
     {
-        ["CRange"] = 57994,
+        ["Waypoint"] = 57994,
         ["Trigger"] = {
             ["y"] = 3765.4,
             ["x"] = -1311.5,
@@ -46810,7 +46810,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -1429.9,
         },
         ["Range"] = 16.95,
-        ["CRange"] = 57994,
+        ["Waypoint"] = 57994,
         ["TT"] = {
             ["y"] = 3491.1,
             ["x"] = -1429.9,
@@ -46838,7 +46838,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -1676.4,
         },
         ["Range"] = 22.86,
-        ["CRange"] = 57994,
+        ["Waypoint"] = 57994,
         ["TT"] = {
             ["y"] = 3404,
             ["x"] = -1676.4,
@@ -46936,7 +46936,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 2058.6,
             ["x"] = -2300,
         },
-        ["CRange"] = 59202,
+        ["Waypoint"] = 59202,
         ["Range"] = 17.16,
         ["TT"] = {
             ["y"] = 2058.6,
@@ -46948,7 +46948,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 2141.1,
             ["x"] = -2223,
         },
-        ["CRange"] = 59202,
+        ["Waypoint"] = 59202,
         ["Range"] = 10.97,
         ["TT"] = {
             ["y"] = 2141.1,
@@ -46960,7 +46960,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 2308.1,
             ["x"] = -2172.5,
         },
-        ["CRange"] = 59202,
+        ["Waypoint"] = 59202,
         ["Range"] = 35.13,
         ["TT"] = {
             ["y"] = 2308.1,
@@ -47024,7 +47024,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -1949.4,
         },
         ["Range"] = 21.29,
-        ["CRange"] = 59874,
+        ["Waypoint"] = 59874,
         ["TT"] = {
             ["y"] = 2243.6,
             ["x"] = -1949.4,
@@ -47040,7 +47040,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     },
     {
-        ["CRange"] = 59874,
+        ["Waypoint"] = 59874,
         ["Trigger"] = {
             ["y"] = -1873.6,
             ["x"] = 1283.5,
@@ -47136,7 +47136,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7108.2,
         },
         ["Range"] = 11.83,
-        ["CRange"] = 59960,
+        ["Waypoint"] = 59960,
         ["TT"] = {
             ["y"] = 4379.2,
             ["x"] = 7108.2,
@@ -47185,7 +47185,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7274.3,
         },
         ["Range"] = 17.81,
-        ["CRange"] = 59959,
+        ["Waypoint"] = 59959,
         ["TT"] = {
             ["y"] = 4487.8,
             ["x"] = 7274.3,
@@ -47197,7 +47197,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7233.2,
         },
         ["Range"] = 10.86,
-        ["CRange"] = 59959,
+        ["Waypoint"] = 59959,
         ["TT"] = {
             ["y"] = 4533.7,
             ["x"] = 7233.2,
@@ -47225,7 +47225,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7102.6,
         },
         ["Range"] = 9.25,
-        ["CRange"] = 59959,
+        ["Waypoint"] = 59959,
         ["TT"] = {
             ["y"] = 4383.7,
             ["x"] = 7102.6,
@@ -47500,7 +47500,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 1418.7,
         },
         ["Range"] = 10.04,
-        ["CRange"] = 61190,
+        ["Waypoint"] = 61190,
         ["TT"] = {
             ["y"] = -1842.9,
             ["x"] = 1418.7,
@@ -47662,7 +47662,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -2547.7,
         },
         ["Range"] = 15.55,
-        ["CRange"] = 59206,
+        ["Waypoint"] = 59206,
         ["TT"] = {
             ["y"] = 1964,
             ["x"] = -2547.7,
@@ -47678,7 +47678,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [5]
     {
-        ["CRange"] = 59206,
+        ["Waypoint"] = 59206,
         ["Trigger"] = {
             ["y"] = -1874.9,
             ["x"] = 1283.5,
@@ -47801,7 +47801,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     },
     {
-        ["CRange"] = 60338,
+        ["Waypoint"] = 60338,
         ["Trigger"] = {
             ["y"] = -1875.9,
             ["x"] = 1284.2,
@@ -48094,7 +48094,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -5401.8,
             ["x"] = -490.7,
         },
-        ["CRange"] = 60857,
+        ["Waypoint"] = 60857,
         ["Range"] = 12.45,
         ["TT"] = {
             ["y"] = -5401.8,
@@ -48281,7 +48281,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -5761,
             ["x"] = -500.2,
         },
-        ["CRange"] = 57787,
+        ["Waypoint"] = 57787,
         ["Range"] = 7.55,
         ["TT"] = {
             ["y"] = -5761,
@@ -48362,7 +48362,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -5761.4,
             ["x"] = -498.4,
         },
-        ["CRange"] = 57787,
+        ["Waypoint"] = 57787,
         ["Range"] = 8.74,
         ["TT"] = {
             ["y"] = -5761.4,
@@ -48471,7 +48471,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [51]
     {
-        ["CRange"] = 57949,
+        ["Waypoint"] = 57949,
         ["Fillers"] = {
             [57949] = {
                 ["1"] = "1",
@@ -48491,7 +48491,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [52]
     {
-        ["CRange"] = 57949,
+        ["Waypoint"] = 57949,
         ["Fillers"] = {
             [57949] = {
                 ["1"] = "1",
@@ -48678,7 +48678,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -269.3,
         },
         ["Range"] = 12.84,
-        ["CRange"] = 57816,
+        ["Waypoint"] = 57816,
         ["TT"] = {
             ["y"] = -6150.2,
             ["x"] = -269.3,
@@ -48870,7 +48870,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6123.4,
             ["x"] = 5.4,
         },
-        ["CRange"] = 60577,
+        ["Waypoint"] = 60577,
         ["Range"] = 22.35,
         ["TT"] = {
             ["y"] = -6123.4,
@@ -49340,7 +49340,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -280.8,
         },
         ["Range"] = 15.55,
-        ["CRange"] = 60724,
+        ["Waypoint"] = 60724,
         ["TT"] = {
             ["y"] = -5987.4,
             ["x"] = -280.8,
@@ -49450,7 +49450,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [180]
     {
-        ["CRange"] = 60628,
+        ["Waypoint"] = 60628,
         ["Trigger"] = {
             ["y"] = -5951.9,
             ["x"] = 467.3,
@@ -49489,7 +49489,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     },
     {
-        ["CRange"] = 60628,
+        ["Waypoint"] = 60628,
         ["Trigger"] = {
             ["y"] = -5979.4,
             ["x"] = 360.6,
@@ -49594,7 +49594,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 593.7,
         },
         ["Range"] = 14.5,
-        ["CRange"] = 60629,
+        ["Waypoint"] = 60629,
         ["TT"] = {
             ["y"] = -5925,
             ["x"] = 593.7,
@@ -49799,7 +49799,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 739.9,
         },
         ["Range"] = 10.85,
-        ["CRange"] = 60632,
+        ["Waypoint"] = 60632,
         ["TT"] = {
             ["y"] = -6018.2,
             ["x"] = 739.9,
@@ -49811,7 +49811,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 719.7,
         },
         ["Range"] = 9.75,
-        ["CRange"] = 60632,
+        ["Waypoint"] = 60632,
         ["TT"] = {
             ["y"] = -5949.8,
             ["x"] = 719.7,
@@ -49934,7 +49934,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6088.2,
             ["x"] = -211.4,
         },
-        ["CRange"] = 60738,
+        ["Waypoint"] = 60738,
         ["Range"] = 16.89,
         ["TT"] = {
             ["y"] = -6088.2,
@@ -49946,7 +49946,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6148.4,
             ["x"] = -271.9,
         },
-        ["CRange"] = 60738,
+        ["Waypoint"] = 60738,
         ["Range"] = 19.55,
         ["TT"] = {
             ["y"] = -6148.4,
@@ -50048,7 +50048,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6721.2,
             ["x"] = -280,
         },
-        ["CRange"] = 60839,
+        ["Waypoint"] = 60839,
         ["Range"] = 8.72,
         ["TT"] = {
             ["y"] = -6721.2,
@@ -50198,7 +50198,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6904.3,
             ["x"] = 19.3,
         },
-        ["CRange"] = 60905,
+        ["Waypoint"] = 60905,
         ["Range"] = 6.43,
         ["TT"] = {
             ["y"] = -6904.3,
@@ -50210,7 +50210,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6926,
             ["x"] = 9,
         },
-        ["CRange"] = 60905,
+        ["Waypoint"] = 60905,
         ["Range"] = 5.19,
         ["TT"] = {
             ["y"] = -6926,
@@ -50242,7 +50242,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6922.5,
             ["x"] = 8,
         },
-        ["CRange"] = 60905,
+        ["Waypoint"] = 60905,
         ["Range"] = 9.59,
         ["TT"] = {
             ["y"] = -6922.5,
@@ -50318,7 +50318,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -96.3,
         },
         ["Range"] = 17.58,
-        ["CRange"] = 58473,
+        ["Waypoint"] = 58473,
         ["TT"] = {
             ["y"] = -6969.9,
             ["x"] = -96.3,
@@ -50330,7 +50330,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -177.9,
         },
         ["Range"] = 29.93,
-        ["CRange"] = 58473,
+        ["Waypoint"] = 58473,
         ["TT"] = {
             ["y"] = -7025.8,
             ["x"] = -177.9,
@@ -50342,7 +50342,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -447.4,
         },
         ["Range"] = 27.3,
-        ["CRange"] = 58473,
+        ["Waypoint"] = 58473,
         ["TT"] = {
             ["y"] = -7033.3,
             ["x"] = -447.4,
@@ -50354,7 +50354,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -569,
         },
         ["Range"] = 11.01,
-        ["CRange"] = 58473,
+        ["Waypoint"] = 58473,
         ["TT"] = {
             ["y"] = -7112.4,
             ["x"] = -569,
@@ -50386,7 +50386,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = -603.3,
         },
         ["Range"] = 10.75,
-        ["CRange"] = 58483,
+        ["Waypoint"] = 58483,
         ["TT"] = {
             ["y"] = -7110.8,
             ["x"] = -603.3,
@@ -50418,7 +50418,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [117]
     {
-        ["CRange"] = 58480,
+        ["Waypoint"] = 58480,
         ["Trigger"] = {
             ["y"] = -6918.7,
             ["x"] = -683.8,
@@ -50531,7 +50531,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6913.3,
             ["x"] = -624.7,
         },
-        ["CRange"] = 58486,
+        ["Waypoint"] = 58486,
         ["Range"] = 15.52,
         ["TT"] = {
             ["y"] = -6913.3,
@@ -50702,7 +50702,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 45.1,
         },
         ["Range"] = 27.14,
-        ["CRange"] = 58589,
+        ["Waypoint"] = 58589,
         ["TT"] = {
             ["y"] = -6721.4,
             ["x"] = 45.1,
@@ -50852,7 +50852,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 45.5,
         },
         ["Range"] = 20.53,
-        ["CRange"] = 60578,
+        ["Waypoint"] = 60578,
         ["TT"] = {
             ["y"] = -6717.8,
             ["x"] = 45.5,
@@ -51020,7 +51020,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6932.5,
             ["x"] = -51.8,
         },
-        ["CRange"] = 58719,
+        ["Waypoint"] = 58719,
         ["Range"] = 9.46,
         ["TT"] = {
             ["y"] = -6932.5,
@@ -51028,7 +51028,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [160]
     {
-        ["CRange"] = 58719,
+        ["Waypoint"] = 58719,
         ["Fillers"] = {
             [58714] = {
                 ["1"] = "1",
@@ -51065,7 +51065,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [162]
     {
-        ["CRange"] = 58719,
+        ["Waypoint"] = 58719,
         ["Fillers"] = {
             [58714] = {
                 ["1"] = "1",
@@ -51083,7 +51083,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [163]
     {
-        ["CRange"] = 58719,
+        ["Waypoint"] = 58719,
         ["Fillers"] = {
             [58714] = {
                 ["1"] = "1",
@@ -51165,7 +51165,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -7078.3,
             ["x"] = 233.6,
         },
-        ["CRange"] = 58720,
+        ["Waypoint"] = 58720,
         ["Range"] = 12.15,
         ["TT"] = {
             ["y"] = -7078.3,
@@ -51177,7 +51177,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -7105.9,
             ["x"] = 305.8,
         },
-        ["CRange"] = 58720,
+        ["Waypoint"] = 58720,
         ["Range"] = 11.85,
         ["TT"] = {
             ["y"] = -7105.9,
@@ -51317,7 +51317,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 193.1,
         },
         ["Range"] = 31.29,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6990.9,
             ["x"] = 193.1,
@@ -51329,7 +51329,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 298.6,
         },
         ["Range"] = 33.33,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6864.8,
             ["x"] = 298.6,
@@ -51342,7 +51342,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 409.8,
         },
         ["Range"] = 32.87,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6906.4,
             ["x"] = 409.8,
@@ -51355,7 +51355,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 517.9,
         },
         ["Range"] = 27.25,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6800,
             ["x"] = 517.9,
@@ -51368,7 +51368,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 692.2,
         },
         ["Range"] = 20.3,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6767.2,
             ["x"] = 692.2,
@@ -51381,7 +51381,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 690,
         },
         ["Range"] = 15.13,
-        ["CRange"] = 62807,
+        ["Waypoint"] = 62807,
         ["TT"] = {
             ["y"] = -6824.7,
             ["x"] = 690,
@@ -51486,7 +51486,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -7115.4,
             ["x"] = 994,
         },
-        ["CRange"] = 58723,
+        ["Waypoint"] = 58723,
         ["Range"] = 12.07,
         ["TT"] = {
             ["y"] = -7115.4,
@@ -51498,7 +51498,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6972.5,
             ["x"] = 901.9,
         },
-        ["CRange"] = 58723,
+        ["Waypoint"] = 58723,
         ["Range"] = 16.41,
         ["TT"] = {
             ["y"] = -6972.5,
@@ -51510,7 +51510,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -6911.9,
             ["x"] = 923.2,
         },
-        ["CRange"] = 58723,
+        ["Waypoint"] = 58723,
         ["Range"] = 11.25,
         ["TT"] = {
             ["y"] = -6911.9,
@@ -51577,7 +51577,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     },
     {
-        ["CRange"] = 58724,
+        ["Waypoint"] = 58724,
         ["Trigger"] = {
             ["y"] = -1875.3,
             ["x"] = 1284.2,
@@ -52125,7 +52125,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -2729.5,
             ["x"] = 5914.3,
         },
-        ["CRange"] = 57174,
+        ["Waypoint"] = 57174,
         ["Range"] = 8.2,
         ["TT"] = {
             ["y"] = -2729.5,
@@ -52137,7 +52137,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -2745.9,
             ["x"] = 5925.8,
         },
-        ["CRange"] = 57174,
+        ["Waypoint"] = 57174,
         ["Range"] = 8.75,
         ["TT"] = {
             ["y"] = -2745.9,
@@ -52201,7 +52201,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -2323.5,
             ["x"] = 6221.6,
         },
-        ["CRange"] = 57178,
+        ["Waypoint"] = 57178,
         ["Range"] = 13.23,
         ["TT"] = {
             ["y"] = -2323.5,
@@ -52914,7 +52914,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 6617.3,
         },
         ["Range"] = 6.33,
-        ["CRange"] = 58916,
+        ["Waypoint"] = 58916,
         ["TT"] = {
             ["y"] = -3154.5,
             ["x"] = 6617.3,
@@ -53010,7 +53010,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 6627,
         },
         ["Range"] = 11.23,
-        ["CRange"] = 59014,
+        ["Waypoint"] = 59014,
         ["TT"] = {
             ["y"] = -2974.4,
             ["x"] = 6627,
@@ -53334,7 +53334,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -3052,
             ["x"] = 6739.1,
         },
-        ["CRange"] = 60313,
+        ["Waypoint"] = 60313,
         ["Range"] = 14.46,
         ["TT"] = {
             ["y"] = -3052,
@@ -53371,7 +53371,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
     }, -- [188]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["Trigger"] = {
             ["y"] = -3180.5,
             ["x"] = 7002.8,
@@ -53397,7 +53397,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 6968.8,
         },
         ["Range"] = 3.86,
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["TT"] = {
             ["y"] = -3182.2,
             ["x"] = 6968.8,
@@ -53427,7 +53427,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
     }, -- [191]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["Trigger"] = {
             ["y"] = -3181.2,
             ["x"] = 6968.3,
@@ -53473,7 +53473,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
     }, -- [193]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57190,
+        ["Waypoint"] = 57190,
         ["Trigger"] = {
             ["y"] = -3189,
             ["x"] = 7011.1,
@@ -53494,7 +53494,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
     }, -- [194]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["Trigger"] = {
             ["y"] = -3179,
             ["x"] = 7005.3,
@@ -53566,7 +53566,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
     }, -- [197]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57189,
+        ["Waypoint"] = 57189,
         ["Trigger"] = {
             ["y"] = -3151.2,
             ["x"] = 7062.6,
@@ -53587,7 +53587,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
     }, -- [198]
     {
         ["ExtraLineText"] = "USE_SOULBREAKER",
-        ["CRange"] = 57190,
+        ["Waypoint"] = 57190,
         ["Trigger"] = {
             ["y"] = -3205.4,
             ["x"] = 7073.3,
@@ -53733,7 +53733,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -3021.2,
             ["x"] = 7005.8,
         },
-        ["CRange"] = 57240,
+        ["Waypoint"] = 57240,
         ["Range"] = 16.29,
         ["TT"] = {
             ["y"] = -3021.2,
@@ -53848,7 +53848,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [217]
     {
-        ["CRange"] = 57426,
+        ["Waypoint"] = 57426,
         ["Trigger"] = {
             ["y"] = -2618.4,
             ["x"] = 7512.6,
@@ -53941,7 +53941,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -2399.5,
             ["x"] = 7632.8,
         },
-        ["CRange"] = 57442,
+        ["Waypoint"] = 57442,
         ["Range"] = 9.95,
         ["TT"] = {
             ["y"] = -2399.5,
@@ -53953,7 +53953,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -2484.5,
             ["x"] = 7664,
         },
-        ["CRange"] = 57442,
+        ["Waypoint"] = 57442,
         ["Range"] = 9.25,
         ["TT"] = {
             ["y"] = -2484.5,
@@ -54175,7 +54175,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [241]
     --{
-    --	["CRange"] = 57724,
+    --	["Waypoint"] = 57724,
     --	["Trigger"] = {
     --		["y"] = -2095,
     --		["x"] = 7620,
@@ -54222,7 +54222,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [246]
     {
-        ["CRange"] = 57724,
+        ["Waypoint"] = 57724,
         ["Trigger"] = {
             ["y"] = -2003,
             ["x"] = 7678,
@@ -54282,7 +54282,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7829.3,
         },
         ["Range"] = 10.44,
-        ["CRange"] = 57724,
+        ["Waypoint"] = 57724,
         ["TT"] = {
             ["y"] = -1981.6,
             ["x"] = 7829.3,
@@ -54328,7 +54328,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7751.3,
         },
         ["Range"] = 9.16,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1901.1,
             ["x"] = 7751.3,
@@ -54340,7 +54340,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7728.7,
         },
         ["Range"] = 10.12,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1881.9,
             ["x"] = 7728.7,
@@ -54352,7 +54352,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7696.7,
         },
         ["Range"] = 6.98,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1880.5,
             ["x"] = 7696.7,
@@ -54364,7 +54364,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7701,
         },
         ["Range"] = 8.01,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1894.1,
             ["x"] = 7701,
@@ -54376,7 +54376,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7729,
         },
         ["Range"] = 7.63,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1899.6,
             ["x"] = 7729,
@@ -54388,7 +54388,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7741.6,
         },
         ["Range"] = 6.85,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1929.8,
             ["x"] = 7741.6,
@@ -54400,7 +54400,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7764.7,
         },
         ["Range"] = 6.12,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1944.5,
             ["x"] = 7765.6,
@@ -54412,7 +54412,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7732.7,
         },
         ["Range"] = 8.27,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1966,
             ["x"] = 7732.8,
@@ -54424,7 +54424,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7676.3,
         },
         ["Range"] = 8.93,
-        ["CRange"] = 59327,
+        ["Waypoint"] = 59327,
         ["TT"] = {
             ["y"] = -1954.4,
             ["x"] = 7676.3,
@@ -54520,7 +54520,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = 5142,
             ["x"] = 7251.7,
         },
-        ["CRange"] = 57690,
+        ["Waypoint"] = 57690,
         ["Range"] = 28.18,
         ["TT"] = {
             ["y"] = 5142,
@@ -54586,7 +54586,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7401.7,
         },
         ["Range"] = 20.37,
-        ["CRange"] = 57693,
+        ["Waypoint"] = 57693,
         ["TT"] = {
             ["y"] = 5279.6,
             ["x"] = 7401.7,
@@ -54715,7 +54715,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -1955.5,
             ["x"] = 7675.5,
         },
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["Range"] = 12.97,
         ["TT"] = {
             ["y"] = -1955.5,
@@ -54727,7 +54727,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -1972.1,
             ["x"] = 7704.5,
         },
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["Range"] = 12.15,
         ["TT"] = {
             ["y"] = -1972.1,
@@ -54739,7 +54739,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -1951,
             ["x"] = 7757.7,
         },
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["Range"] = 15.35,
         ["TT"] = {
             ["y"] = -1951,
@@ -54747,7 +54747,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [10]
     {
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["Trigger"] = {
             ["y"] = -1955.9,
             ["x"] = 7790.7,
@@ -54765,7 +54765,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["x"] = 7686,
         },
         ["Range"] = 22.19,
-        ["CRange"] = 59644,
+        ["Waypoint"] = 59644,
         ["TT"] = {
             ["y"] = -1928.5,
             ["x"] = 7686,

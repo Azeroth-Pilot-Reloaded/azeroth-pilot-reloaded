@@ -587,16 +587,16 @@ local function APR_UpdateStep()
                         L["PICK_UP_Q"] .. ": " .. pickupLeft .. "/" .. #IdList, "PickUp")
                 end
             end
-        elseif (steps["CRange"]) then
-            IdList = steps["CRange"]
+        elseif (steps["Waypoint"]) then
+            IdList = steps["Waypoint"]
             if (C_QuestLog.IsQuestFlaggedCompleted(IdList) or APR.BreadCrumSkips[IdList]) then
                 if (APR.settings.profile.debug) then
-                    print("APR.UpdateStep:CRange:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                    print("APR.UpdateStep:Waypoint:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                 end
                 _G.NextQuestStep()
                 return
             elseif APR.IsInRouteZone then
-                APR.currentStep:AddExtraLineText("CRange" .. IdList, APR.CheckCRangeText(), true)
+                APR.currentStep:AddExtraLineText("Waypoint" .. IdList, APR.CheckWaypointText(), true)
             end
         elseif (steps["Treasure"]) then
             IdList = steps["Treasure"]
@@ -852,7 +852,7 @@ function APR.SetButton()
     end
 end
 
-function APR.CheckCRangeText()
+function APR.CheckWaypointText()
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     local waypoints = {
         ["FlightPath"] = L["GET_FLIGHTPATH"],

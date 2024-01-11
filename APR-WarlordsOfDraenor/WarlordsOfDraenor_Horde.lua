@@ -18,7 +18,7 @@ APR.RouteQuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
             ["y"] = 1443.5,
             ["x"] = -4426.3,
         },
-        ["CRange"] = 34398,
+        ["Waypoint"] = 34398,
         ["Range"] = 10,
         ["TT"] = {
             ["y"] = 1443.5,
@@ -31,7 +31,7 @@ APR.RouteQuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
             ["y"] = 1441.7,
             ["x"] = -4458.8,
         },
-        ["CRange"] = 34398,
+        ["Waypoint"] = 34398,
         ["Range"] = 10,
         ["TT"] = {
             ["y"] = 1441.7,
@@ -44,7 +44,7 @@ APR.RouteQuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
             ["y"] = 1475.5,
             ["x"] = -4457.8,
         },
-        ["CRange"] = 34398,
+        ["Waypoint"] = 34398,
         ["Range"] = 10,
         ["TT"] = {
             ["y"] = 1475.5,
@@ -57,7 +57,7 @@ APR.RouteQuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
             ["y"] = 1478.3,
             ["x"] = -4479.3,
         },
-        ["CRange"] = 34398,
+        ["Waypoint"] = 34398,
         ["Range"] = 10,
         ["TT"] = {
             ["y"] = 1478.3,
@@ -171,7 +171,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
             ["y"] = 3969.8,
             ["x"] = -2314.5,
         },
-        ["CRange"] = 34392,
+        ["Waypoint"] = 34392,
         ["Range"] = 13.13,
         ["TT"] = {
             ["y"] = 3969.8,
@@ -201,7 +201,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
             ["y"] = 4168.3,
             ["x"] = -2311,
         },
-        ["CRange"] = 34392,
+        ["Waypoint"] = 34392,
         ["Range"] = 11.1,
         ["TT"] = {
             ["y"] = 4168.3,
@@ -231,7 +231,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
             ["y"] = 4078.8,
             ["x"] = -2323.2,
         },
-        ["CRange"] = 34392,
+        ["Waypoint"] = 34392,
         ["Range"] = 19.12,
         ["TT"] = {
             ["y"] = 4078.8,
@@ -264,7 +264,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
             ["y"] = 4014.1,
             ["x"] = -2377.5,
         },
-        ["CRange"] = 34393,
+        ["Waypoint"] = 34393,
         ["Range"] = 10.45,
         ["TT"] = {
             ["y"] = 4014.1,
@@ -277,7 +277,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
             ["y"] = 4039.9,
             ["x"] = -2380.4,
         },
-        ["CRange"] = 34393,
+        ["Waypoint"] = 34393,
         ["Range"] = 5.99,
         ["TT"] = {
             ["y"] = 4039.9,
@@ -358,7 +358,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
             ["y"] = 4115.8,
             ["x"] = -2377,
         },
-        ["CRange"] = 34393,
+        ["Waypoint"] = 34393,
         ["Range"] = 8.19,
         ["TT"] = {
             ["y"] = 4115.8,
@@ -371,7 +371,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
             ["y"] = 4108.8,
             ["x"] = -2422.5,
         },
-        ["CRange"] = 34393,
+        ["Waypoint"] = 34393,
         ["Range"] = 6.15,
         ["TT"] = {
             ["y"] = 4108.8,
@@ -404,7 +404,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
             ["y"] = 3970.6,
             ["x"] = -2530.9,
         },
-        ["CRange"] = 34420,
+        ["Waypoint"] = 34420,
         ["Range"] = 19.38,
         ["TT"] = {
             ["y"] = 3970.6,
@@ -527,7 +527,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
             ["y"] = 3873.8,
             ["x"] = -2696,
         },
-        ["CRange"] = 34421,
+        ["Waypoint"] = 34421,
         ["Range"] = 42.2,
         ["TT"] = {
             ["y"] = 3873.8,
@@ -614,7 +614,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
             ["y"] = 4051.4,
             ["x"] = -2810.5,
         },
-        ["CRange"] = 34423,
+        ["Waypoint"] = 34423,
         ["Range"] = 42.98,
         ["TT"] = {
             ["y"] = 4048.9,
@@ -783,7 +783,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
             ["y"] = 4532.3,
             ["x"] = -2613.5,
         },
-        ["CRange"] = 34737,
+        ["Waypoint"] = 34737,
         ["Range"] = 7.65,
         ["TT"] = {
             ["y"] = 4532.3,
@@ -792,7 +792,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
     }, -- [3]
     {
         --51
-        ["CRange"] = 34737,
+        ["Waypoint"] = 34737,
         ["Trigger"] = {
             ["y"] = 4526.1,
             ["x"] = -2593.4,
@@ -810,7 +810,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
     }, -- [4]
     {
         --52
-        ["CRange"] = 34737,
+        ["Waypoint"] = 34737,
         ["Trigger"] = {
             ["y"] = 4550.3,
             ["x"] = -2583.2,
@@ -828,7 +828,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
     }, -- [5]
     {
         --53
-        ["CRange"] = 34737,
+        ["Waypoint"] = 34737,
         ["Trigger"] = {
             ["y"] = 4559.2,
             ["x"] = -2544.5,
@@ -846,7 +846,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
     }, -- [6]
     {
         --54
-        ["CRange"] = 34737,
+        ["Waypoint"] = 34737,
         ["Trigger"] = {
             ["y"] = 4619.3,
             ["x"] = -2499.9,
@@ -874,7 +874,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
     },
     {
         --56
-        ["CRange"] = 34737,
+        ["Waypoint"] = 34737,
         ["Trigger"] = {
             ["y"] = 4567.7,
             ["x"] = -2540,
@@ -892,7 +892,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
     },
     {
         --57
-        ["CRange"] = 34737,
+        ["Waypoint"] = 34737,
         ["Trigger"] = {
             ["y"] = 4543.3,
             ["x"] = -2481,
@@ -1195,7 +1195,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
     }, -- [12]
     {
         --78
-        ["CRange"] = 34925,
+        ["Waypoint"] = 34925,
         ["Trigger"] = {
             ["y"] = 4232.8,
             ["x"] = -2110.5,
@@ -1213,7 +1213,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
     }, -- [13]
     {
         --79
-        ["CRange"] = 34925,
+        ["Waypoint"] = 34925,
         ["Trigger"] = {
             ["y"] = 4223.6,
             ["x"] = -2144.2,
@@ -1257,7 +1257,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
             ["y"] = 4231.8,
             ["x"] = -2114.2,
         },
-        ["CRange"] = 34925,
+        ["Waypoint"] = 34925,
         ["Range"] = 12.99,
         ["TT"] = {
             ["y"] = 4231.8,
@@ -1360,7 +1360,7 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
             ["y"] = 4212.3,
             ["x"] = -1978.5,
         },
-        ["CRange"] = 35747,
+        ["Waypoint"] = 35747,
         ["Range"] = 38,
         ["TT"] = {
             ["y"] = 4212.3,
@@ -1551,7 +1551,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 5524.1,
             ["x"] = 4967.8,
         },
-        ["CRange"] = 33815,
+        ["Waypoint"] = 33815,
         ["Range"] = 17.15,
         ["TT"] = {
             ["y"] = 5524.1,
@@ -1564,7 +1564,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 5452.3,
             ["x"] = 4968.3,
         },
-        ["CRange"] = 33815,
+        ["Waypoint"] = 33815,
         ["Range"] = 19.55,
         ["TT"] = {
             ["y"] = 5452.3,
@@ -1850,7 +1850,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
     {
         --26
         ["ExtraLineText"] = "GO_WEST",
-        ["CRange"] = 34823,
+        ["Waypoint"] = 34823,
         ["Trigger"] = {
             ["y"] = 5811.8,
             ["x"] = 5041.8,
@@ -1868,7 +1868,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
     }, -- [23]
     {
         --27
-        ["CRange"] = 34823,
+        ["Waypoint"] = 34823,
         ["Trigger"] = {
             ["y"] = 5871.8,
             ["x"] = 5039.3,
@@ -1929,7 +1929,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 5801.6,
             ["x"] = 5066.6,
         },
-        ["CRange"] = 34823,
+        ["Waypoint"] = 34823,
         ["Range"] = 28.06,
         ["TT"] = {
             ["y"] = 5801.6,
@@ -1956,7 +1956,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 5978.2,
             ["x"] = 5222.3,
         },
-        ["CRange"] = 34823,
+        ["Waypoint"] = 34823,
         ["Range"] = 31.93,
         ["TT"] = {
             ["y"] = 5978.2,
@@ -1969,7 +1969,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6010.3,
             ["x"] = 4839.8,
         },
-        ["CRange"] = 34823,
+        ["Waypoint"] = 34823,
         ["Range"] = 44.31,
         ["TT"] = {
             ["y"] = 6010.3,
@@ -1997,7 +1997,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 4530.1,
         },
         ["Range"] = 28.08,
-        ["CRange"] = 34823,
+        ["Waypoint"] = 34823,
         ["TT"] = {
             ["y"] = 5857.3,
             ["x"] = 4530.1,
@@ -2171,7 +2171,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 5724.3,
             ["x"] = 4039.6,
         },
-        ["CRange"] = 34462,
+        ["Waypoint"] = 34462,
         ["Range"] = 13.75,
         ["TT"] = {
             ["y"] = 5724.3,
@@ -2364,7 +2364,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 5980.8,
             ["x"] = 6078.3,
         },
-        ["CRange"] = 33784,
+        ["Waypoint"] = 33784,
         ["Range"] = 26.44,
         ["TT"] = {
             ["y"] = 5980.8,
@@ -2376,7 +2376,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6165,
             ["x"] = 5957.1,
         },
-        ["CRange"] = 34505,
+        ["Waypoint"] = 34505,
         ["Range"] = 13.14,
         ["TT"] = {
             ["y"] = 6165,
@@ -2529,7 +2529,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6788.8,
             ["x"] = 5892.7,
         },
-        ["CRange"] = 33526,
+        ["Waypoint"] = 33526,
         ["Range"] = 19.28,
         ["TT"] = {
             ["y"] = 6788.8,
@@ -2591,7 +2591,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6783.2,
             ["x"] = 5883.2,
         },
-        ["CRange"] = 33546,
+        ["Waypoint"] = 33546,
         ["Range"] = 17.01,
         ["TT"] = {
             ["y"] = 6783.2,
@@ -2603,7 +2603,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6768.3,
             ["x"] = 5925.1,
         },
-        ["CRange"] = 33546,
+        ["Waypoint"] = 33546,
         ["Range"] = 18.65,
         ["TT"] = {
             ["y"] = 6768.3,
@@ -2702,7 +2702,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6623.2,
             ["x"] = 5692.8,
         },
-        ["CRange"] = 33622,
+        ["Waypoint"] = 33622,
         ["Range"] = 11.87,
         ["TT"] = {
             ["y"] = 6623.2,
@@ -2714,7 +2714,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6702.7,
             ["x"] = 5819.3,
         },
-        ["CRange"] = 33622,
+        ["Waypoint"] = 33622,
         ["Range"] = 23.55,
         ["TT"] = {
             ["y"] = 6702.7,
@@ -2878,7 +2878,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6789.5,
             ["x"] = 6000.3,
         },
-        ["CRange"] = 33119,
+        ["Waypoint"] = 33119,
         ["Range"] = 20.8,
         ["TT"] = {
             ["y"] = 6789.5,
@@ -2890,7 +2890,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6849.6,
             ["x"] = 6006.7,
         },
-        ["CRange"] = 33119,
+        ["Waypoint"] = 33119,
         ["Range"] = 14.49,
         ["TT"] = {
             ["y"] = 6849.6,
@@ -2902,7 +2902,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6914.2,
             ["x"] = 5970.1,
         },
-        ["CRange"] = 33119,
+        ["Waypoint"] = 33119,
         ["Range"] = 22.88,
         ["TT"] = {
             ["y"] = 6914.2,
@@ -2914,7 +2914,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6867.1,
             ["x"] = 6011.5,
         },
-        ["CRange"] = 33119,
+        ["Waypoint"] = 33119,
         ["Range"] = 17.15,
         ["TT"] = {
             ["y"] = 6867.1,
@@ -3011,7 +3011,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
         },
     }, -- [3]
     {
-        ["CRange"] = 33483,
+        ["Waypoint"] = 33483,
         ["Trigger"] = {
             ["y"] = 6572.8,
             ["x"] = 5693.3,
@@ -3070,7 +3070,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
         },
     }, -- [6]
     {
-        ["CRange"] = 33483,
+        ["Waypoint"] = 33483,
         ["Trigger"] = {
             ["y"] = 6576.3,
             ["x"] = 5693.8,
@@ -3155,7 +3155,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6865.8,
             ["x"] = 6055.2,
         },
-        ["CRange"] = 33412,
+        ["Waypoint"] = 33412,
         ["Range"] = 32.25,
         ["TT"] = {
             ["y"] = 6865.8,
@@ -3182,7 +3182,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
         },
     }, -- [5]
     {
-        ["CRange"] = 33450,
+        ["Waypoint"] = 33450,
         ["Trigger"] = {
             ["y"] = 7234.7,
             ["x"] = 5853.3,
@@ -3230,7 +3230,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7260.6,
             ["x"] = 5806.7,
         },
-        ["CRange"] = 33454,
+        ["Waypoint"] = 33454,
         ["Range"] = 11.56,
         ["TT"] = {
             ["y"] = 7260.6,
@@ -3266,7 +3266,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7264.8,
             ["x"] = 5803.3,
         },
-        ["CRange"] = 33454,
+        ["Waypoint"] = 33454,
         ["Range"] = 12.3,
         ["TT"] = {
             ["y"] = 7264.8,
@@ -3274,7 +3274,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
         },
     }, -- [7]
     {
-        ["CRange"] = 33454,
+        ["Waypoint"] = 33454,
         ["Trigger"] = {
             ["y"] = 7206.8,
             ["x"] = 5783,
@@ -3342,7 +3342,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 6004.3,
         },
         ["Range"] = 15.02,
-        ["CRange"] = 33454,
+        ["Waypoint"] = 33454,
         ["TT"] = {
             ["y"] = 7070.5,
             ["x"] = 6004.3,
@@ -3372,7 +3372,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7067.6,
             ["x"] = 6001.6,
         },
-        ["CRange"] = 33916,
+        ["Waypoint"] = 33916,
         ["Range"] = 13.75,
         ["TT"] = {
             ["y"] = 7067.6,
@@ -3384,7 +3384,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7107,
             ["x"] = 5974,
         },
-        ["CRange"] = 33916,
+        ["Waypoint"] = 33916,
         ["Range"] = 22.28,
         ["TT"] = {
             ["y"] = 7107,
@@ -3396,7 +3396,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7157,
             ["x"] = 6013.6,
         },
-        ["CRange"] = 33916,
+        ["Waypoint"] = 33916,
         ["Range"] = 19.41,
         ["TT"] = {
             ["y"] = 7157,
@@ -3424,7 +3424,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7204.8,
             ["x"] = 6144.8,
         },
-        ["CRange"] = 33916,
+        ["Waypoint"] = 33916,
         ["Range"] = 21.15,
         ["TT"] = {
             ["y"] = 7204.8,
@@ -3436,7 +3436,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7225.8,
             ["x"] = 6206.6,
         },
-        ["CRange"] = 33916,
+        ["Waypoint"] = 33916,
         ["Range"] = 18.29,
         ["TT"] = {
             ["y"] = 7225.8,
@@ -3448,7 +3448,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7253.1,
             ["x"] = 6226.7,
         },
-        ["CRange"] = 33916,
+        ["Waypoint"] = 33916,
         ["Range"] = 15.45,
         ["TT"] = {
             ["y"] = 7253.1,
@@ -3460,7 +3460,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7304.1,
             ["x"] = 6093,
         },
-        ["CRange"] = 33916,
+        ["Waypoint"] = 33916,
         ["Range"] = 23.46,
         ["TT"] = {
             ["y"] = 7304.1,
@@ -3484,7 +3484,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7290.3,
             ["x"] = 6072.6,
         },
-        ["CRange"] = 34648,
+        ["Waypoint"] = 34648,
         ["Range"] = 19.56,
         ["TT"] = {
             ["y"] = 7290.3,
@@ -3496,7 +3496,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7302.8,
             ["x"] = 6019.8,
         },
-        ["CRange"] = 34648,
+        ["Waypoint"] = 34648,
         ["Range"] = 20.54,
         ["TT"] = {
             ["y"] = 7302.8,
@@ -3508,7 +3508,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7361.1,
             ["x"] = 6002,
         },
-        ["CRange"] = 34648,
+        ["Waypoint"] = 34648,
         ["Range"] = 18.65,
         ["TT"] = {
             ["y"] = 7361.1,
@@ -3520,7 +3520,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7380.3,
             ["x"] = 6021.6,
         },
-        ["CRange"] = 34648,
+        ["Waypoint"] = 34648,
         ["Range"] = 15.37,
         ["TT"] = {
             ["y"] = 7380.3,
@@ -3532,7 +3532,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7397.3,
             ["x"] = 6055.3,
         },
-        ["CRange"] = 34648,
+        ["Waypoint"] = 34648,
         ["Range"] = 18.53,
         ["TT"] = {
             ["y"] = 7397.3,
@@ -3769,7 +3769,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 5799.7,
         },
         ["Range"] = 29.07,
-        ["CRange"] = 34647,
+        ["Waypoint"] = 34647,
         ["TT"] = {
             ["y"] = 7536.1,
             ["x"] = 5799.7,
@@ -3797,7 +3797,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 5799.8,
         },
         ["Range"] = 20.15,
-        ["CRange"] = 34647,
+        ["Waypoint"] = 34647,
         ["TT"] = {
             ["y"] = 7531.7,
             ["x"] = 5799.8,
@@ -3809,14 +3809,14 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 5927.8,
         },
         ["Range"] = 27.34,
-        ["CRange"] = 34647,
+        ["Waypoint"] = 34647,
         ["TT"] = {
             ["y"] = 7694.5,
             ["x"] = 5927.8,
         },
     },
     {
-        ["CRange"] = 34647,
+        ["Waypoint"] = 34647,
         ["Trigger"] = {
             ["y"] = 7757.6,
             ["x"] = 5975.5,
@@ -3836,7 +3836,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
         },
     },
     {
-        ["CRange"] = 34647,
+        ["Waypoint"] = 34647,
         ["Trigger"] = {
             ["y"] = 7787.5,
             ["x"] = 6076,
@@ -3856,7 +3856,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
         },
     }, -- [10]
     {
-        ["CRange"] = 34647,
+        ["Waypoint"] = 34647,
         ["Trigger"] = {
             ["y"] = 7746.2,
             ["x"] = 6058.1,
@@ -3888,7 +3888,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
         },
     }, -- [12]
     {
-        ["CRange"] = 34230,
+        ["Waypoint"] = 34230,
         ["Trigger"] = {
             ["y"] = 7940.3,
             ["x"] = 6007.2,
@@ -3955,7 +3955,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 7761.8,
             ["x"] = 5818.5,
         },
-        ["CRange"] = 34278,
+        ["Waypoint"] = 34278,
         ["Range"] = 37.09,
         ["TT"] = {
             ["y"] = 7761.8,
@@ -4025,7 +4025,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 5971.8,
         },
         ["Range"] = 36.25,
-        ["CRange"] = 34291,
+        ["Waypoint"] = 34291,
         ["TT"] = {
             ["y"] = 7676.7,
             ["x"] = 5971.8,
@@ -4184,7 +4184,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 6331.8,
         },
         ["Range"] = 12.7,
-        ["CRange"] = 34295,
+        ["Waypoint"] = 34295,
         ["TT"] = {
             ["y"] = 7678,
             ["x"] = 6331.8,
@@ -4224,7 +4224,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
         },
     }, -- [13]
     {
-        ["CRange"] = 34295,
+        ["Waypoint"] = 34295,
         ["Trigger"] = {
             ["y"] = 7773.3,
             ["x"] = 5576.5,
@@ -4405,7 +4405,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 4210.3,
         },
         ["Range"] = 17.07,
-        ["CRange"] = 34348,
+        ["Waypoint"] = 34348,
         ["TT"] = {
             ["y"] = 7075.7,
             ["x"] = 4210.3,
@@ -4609,7 +4609,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 6384.7,
         },
         ["Range"] = 17.02,
-        ["CRange"] = 33469,
+        ["Waypoint"] = 33469,
         ["TT"] = {
             ["y"] = 5989.1,
             ["x"] = 6384.7,
@@ -4621,7 +4621,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 6433,
         },
         ["Range"] = 16.16,
-        ["CRange"] = 33469,
+        ["Waypoint"] = 33469,
         ["TT"] = {
             ["y"] = 5993.8,
             ["x"] = 6433,
@@ -4740,7 +4740,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 6013.8,
         },
         ["Range"] = 21.71,
-        ["CRange"] = 32783,
+        ["Waypoint"] = 32783,
         ["TT"] = {
             ["y"] = 6797,
             ["x"] = 6013.8,
@@ -4752,7 +4752,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 6009.3,
         },
         ["Range"] = 21.27,
-        ["CRange"] = 32783,
+        ["Waypoint"] = 32783,
         ["TT"] = {
             ["y"] = 6849.3,
             ["x"] = 6009.3,
@@ -4764,7 +4764,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 5966.8,
         },
         ["Range"] = 19.12,
-        ["CRange"] = 32783,
+        ["Waypoint"] = 32783,
         ["TT"] = {
             ["y"] = 6915.1,
             ["x"] = 5966.8,
@@ -4776,7 +4776,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 6046.5,
         },
         ["Range"] = 18.93,
-        ["CRange"] = 32783,
+        ["Waypoint"] = 32783,
         ["TT"] = {
             ["y"] = 6857.5,
             ["x"] = 6046.5,
@@ -5003,7 +5003,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 4690.5,
         },
         ["Range"] = 19.71,
-        ["CRange"] = 32794,
+        ["Waypoint"] = 32794,
         ["TT"] = {
             ["y"] = 6918.2,
             ["x"] = 4690.5,
@@ -5015,7 +5015,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 4729.3,
         },
         ["Range"] = 18.36,
-        ["CRange"] = 32794,
+        ["Waypoint"] = 32794,
         ["TT"] = {
             ["y"] = 6954.8,
             ["x"] = 4729.3,
@@ -5027,7 +5027,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 4699.8,
         },
         ["Range"] = 30.53,
-        ["CRange"] = 32794,
+        ["Waypoint"] = 32794,
         ["TT"] = {
             ["y"] = 7060.5,
             ["x"] = 4699.8,
@@ -5039,7 +5039,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["x"] = 4623,
         },
         ["Range"] = 25.42,
-        ["CRange"] = 32794,
+        ["Waypoint"] = 32794,
         ["TT"] = {
             ["y"] = 7013.6,
             ["x"] = 4623,
@@ -5132,7 +5132,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
         },
     },
     {
-        ["CRange"] = 32989,
+        ["Waypoint"] = 32989,
         ["Trigger"] = {
             ["y"] = 5876.8,
             ["x"] = 4785.1,
@@ -5753,7 +5753,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 6016,
             ["x"] = 2881.9,
         },
-        ["CRange"] = 34066,
+        ["Waypoint"] = 34066,
         ["Range"] = 58.39,
         ["TT"] = {
             ["y"] = 6016,
@@ -5765,7 +5765,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 5948.3,
             ["x"] = 2565.5,
         },
-        ["CRange"] = 34066,
+        ["Waypoint"] = 34066,
         ["Range"] = 66.35,
         ["TT"] = {
             ["y"] = 5948.3,
@@ -5777,7 +5777,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 5798.8,
             ["x"] = 2454.1,
         },
-        ["CRange"] = 34066,
+        ["Waypoint"] = 34066,
         ["Range"] = 24,
         ["TT"] = {
             ["y"] = 5798.8,
@@ -5801,7 +5801,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 5765.3,
             ["x"] = 2450.6,
         },
-        ["CRange"] = 34066,
+        ["Waypoint"] = 34066,
         ["Range"] = 14.89,
         ["TT"] = {
             ["y"] = 5765.3,
@@ -5865,7 +5865,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             ["y"] = 5340.8,
             ["x"] = 2143.1,
         },
-        ["CRange"] = 34264,
+        ["Waypoint"] = 34264,
         ["Range"] = 45.4,
         ["TT"] = {
             ["y"] = 5340.8,
@@ -6276,7 +6276,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             ["x"] = 1443.7,
         },
         ["Range"] = 27.04,
-        ["CRange"] = 34697,
+        ["Waypoint"] = 34697,
         ["TT"] = {
             ["y"] = 5769.5,
             ["x"] = 1443.7,
@@ -6470,7 +6470,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
     }, -- [6]
     {
         -- [step 42
-        ["CRange"] = 34699,
+        ["Waypoint"] = 34699,
         ["Trigger"] = {
             ["y"] = 5950.5,
             ["x"] = 1853.4,
@@ -6510,7 +6510,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
     },
     {
         -- [step 44
-        ["CRange"] = 34699,
+        ["Waypoint"] = 34699,
         ["Trigger"] = {
             ["y"] = 6043.7,
             ["x"] = 1762.5,
@@ -6550,7 +6550,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
     }, -- [10]
     {
         -- [step 46
-        ["CRange"] = 34699,
+        ["Waypoint"] = 34699,
         ["Trigger"] = {
             ["y"] = 5981,
             ["x"] = 1882,
@@ -6568,7 +6568,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
     }, -- [11]
     {
         -- [step 47
-        ["CRange"] = 34699,
+        ["Waypoint"] = 34699,
         ["Trigger"] = {
             ["y"] = 5879.6,
             ["x"] = 1880.3,
@@ -6623,7 +6623,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
     }, -- [14]
     {
         -- [step 50
-        ["CRange"] = 34699,
+        ["Waypoint"] = 34699,
         ["Trigger"] = {
             ["y"] = 5917.8,
             ["x"] = 1914.5,
@@ -6641,7 +6641,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
     }, -- [15]
     {
         -- [step 51
-        ["CRange"] = 34699,
+        ["Waypoint"] = 34699,
         ["Trigger"] = {
             ["y"] = 5911.3,
             ["x"] = 1937,
@@ -6664,7 +6664,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             ["x"] = 1967,
         },
         ["Range"] = 11.08,
-        ["CRange"] = 34699,
+        ["Waypoint"] = 34699,
         ["TT"] = {
             ["y"] = 5876.3,
             ["x"] = 1967,
@@ -6702,7 +6702,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             ["x"] = 2101.1,
         },
         ["Range"] = 9.2,
-        ["CRange"] = 34703,
+        ["Waypoint"] = 34703,
         ["TT"] = {
             ["y"] = 5848.6,
             ["x"] = 2101.1,
@@ -6728,7 +6728,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
     },
     {
         -- [step 57
-        ["CRange"] = 34700,
+        ["Waypoint"] = 34700,
         ["Trigger"] = {
             ["y"] = 5822.7,
             ["x"] = 2018.5,
@@ -6746,7 +6746,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
     }, -- [3]
     {
         -- [step 58
-        ["CRange"] = 34700,
+        ["Waypoint"] = 34700,
         ["Trigger"] = {
             ["y"] = 5797.6,
             ["x"] = 1995.5,
@@ -6791,7 +6791,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             ["x"] = 1969.2,
         },
         ["Range"] = 15.58,
-        ["CRange"] = 34700,
+        ["Waypoint"] = 34700,
         ["TT"] = {
             ["y"] = 5873.3,
             ["x"] = 1969.2,
@@ -6804,7 +6804,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             ["x"] = 1920.2,
         },
         ["Range"] = 9.97,
-        ["CRange"] = 34700,
+        ["Waypoint"] = 34700,
         ["TT"] = {
             ["y"] = 5917,
             ["x"] = 1920.2,
@@ -7141,7 +7141,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             ["x"] = 1429,
         },
         ["Range"] = 14.4,
-        ["CRange"] = 35038,
+        ["Waypoint"] = 35038,
         ["TT"] = {
             ["y"] = 6821.8,
             ["x"] = 1429,
@@ -7149,7 +7149,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
     }, -- [22]
     {
         -- [step 86
-        ["CRange"] = 35038,
+        ["Waypoint"] = 35038,
         ["Trigger"] = {
             ["y"] = 6834.1,
             ["x"] = 1347.3,
@@ -7181,7 +7181,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             ["x"] = 1423.4,
         },
         ["Range"] = 20.58,
-        ["CRange"] = 35038,
+        ["Waypoint"] = 35038,
         ["TT"] = {
             ["y"] = 6816.7,
             ["x"] = 1423.4,
@@ -7420,7 +7420,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
     }, -- [40]
     {
         -- [step 105
-        ["CRange"] = 35128,
+        ["Waypoint"] = 35128,
         ["Trigger"] = {
             ["y"] = 6931.8,
             ["x"] = 1473.7,
@@ -7439,7 +7439,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             ["y"] = 6970.7,
             ["x"] = 1497.8,
         },
-        ["CRange"] = 35128,
+        ["Waypoint"] = 35128,
         ["Range"] = 15.66,
         ["TT"] = {
             ["y"] = 6970.7,
@@ -7484,7 +7484,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
     },
     {
         -- [step 109
-        ["CRange"] = 35128,
+        ["Waypoint"] = 35128,
         ["Trigger"] = {
             ["y"] = 7036,
             ["x"] = 1617.2,
@@ -7679,7 +7679,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
         },
     }, -- [17]
     {
-        ["CRange"] = 35128,
+        ["Waypoint"] = 35128,
         ["Trigger"] = {
             ["y"] = 7016.7,
             ["x"] = 1089.3,
@@ -7930,7 +7930,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             ["x"] = 672.4,
         },
         ["Range"] = 13.19,
-        ["CRange"] = 33695,
+        ["Waypoint"] = 33695,
         ["TT"] = {
             ["y"] = 6766.5,
             ["x"] = 672.4,
@@ -8417,7 +8417,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             ["y"] = 5360,
             ["x"] = 867.6,
         },
-        ["CRange"] = 34724,
+        ["Waypoint"] = 34724,
         ["Range"] = 7.99,
         ["TT"] = {
             ["y"] = 5360,
@@ -8425,7 +8425,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
         },
     }, -- [5]
     {
-        ["CRange"] = 36495,
+        ["Waypoint"] = 36495,
         ["Trigger"] = {
             ["y"] = 5311.2,
             ["x"] = 874,
@@ -8505,7 +8505,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
             ["y"] = 5360,
             ["x"] = 871.4,
         },
-        ["CRange"] = 36495,
+        ["Waypoint"] = 36495,
         ["Range"] = 16.11,
         ["TT"] = {
             ["y"] = 5360,
@@ -8602,7 +8602,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
         },
     }, -- [20]
     {
-        ["CRange"] = 36520,
+        ["Waypoint"] = 36520,
         ["Trigger"] = {
             ["y"] = 4678.3,
             ["x"] = 1409.2,
@@ -9208,7 +9208,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
             ["y"] = 6824,
             ["x"] = 1424.5,
         },
-        ["CRange"] = 36480,
+        ["Waypoint"] = 36480,
         ["Range"] = 22.72,
         ["TT"] = {
             ["y"] = 6824,
@@ -9232,7 +9232,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
             ["y"] = 6825.3,
             ["x"] = 1420.9,
         },
-        ["CRange"] = 36480,
+        ["Waypoint"] = 36480,
         ["Range"] = 19.77,
         ["TT"] = {
             ["y"] = 6825.3,
@@ -9240,7 +9240,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
         },
     }, -- [3]
     {
-        ["CRange"] = 36480,
+        ["Waypoint"] = 36480,
         ["Trigger"] = {
             ["y"] = 7020.3,
             ["x"] = 1089.8,
@@ -9386,7 +9386,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
             ["y"] = 6988.3,
             ["x"] = 887.4,
         },
-        ["CRange"] = 33685,
+        ["Waypoint"] = 33685,
         ["Range"] = 8.75,
         ["TT"] = {
             ["y"] = 6988.3,
@@ -9498,7 +9498,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
             ["y"] = 6774.8,
             ["x"] = 681.2,
         },
-        ["CRange"] = 33695,
+        ["Waypoint"] = 33695,
         ["Range"] = 14.19,
         ["TT"] = {
             ["y"] = 6774.8,
@@ -9554,7 +9554,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
             ["x"] = 61.7,
         },
         ["Range"] = 79.74,
-        ["CRange"] = 36571,
+        ["Waypoint"] = 36571,
         ["TT"] = {
             ["y"] = 6625.8,
             ["x"] = 61.7,
@@ -9763,7 +9763,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
             ["y"] = 5356.3,
             ["x"] = 868.7,
         },
-        ["CRange"] = 34724,
+        ["Waypoint"] = 34724,
         ["Range"] = 14.35,
         ["TT"] = {
             ["y"] = 5356.3,
@@ -9771,7 +9771,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
         },
     }, -- [27]
     {
-        ["CRange"] = 34724,
+        ["Waypoint"] = 34724,
         ["Trigger"] = {
             ["y"] = 5308.7,
             ["x"] = 873.2,
@@ -9789,7 +9789,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
         },
     }, -- [28]
     {
-        ["CRange"] = 34724,
+        ["Waypoint"] = 34724,
         ["Trigger"] = {
             ["y"] = 5281.3,
             ["x"] = 843.9,
@@ -9807,7 +9807,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
         },
     }, -- [29]
     {
-        ["CRange"] = 34724,
+        ["Waypoint"] = 34724,
         ["Trigger"] = {
             ["y"] = 5221.3,
             ["x"] = 826.2,
@@ -9825,7 +9825,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
         },
     }, -- [30]
     {
-        ["CRange"] = 34724,
+        ["Waypoint"] = 34724,
         ["Trigger"] = {
             ["y"] = 5192.8,
             ["x"] = 769.5,
@@ -9843,7 +9843,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
         },
     }, -- [32]
     {
-        ["CRange"] = 34724,
+        ["Waypoint"] = 34724,
         ["Trigger"] = {
             ["y"] = 5207.3,
             ["x"] = 736.9,
@@ -9922,7 +9922,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
             ["y"] = 5360.3,
             ["x"] = 867.9,
         },
-        ["CRange"] = 35881,
+        ["Waypoint"] = 35881,
         ["Range"] = 13.85,
         ["TT"] = {
             ["y"] = 5360.3,
@@ -9992,14 +9992,14 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
             ["x"] = 1345.3,
         },
         ["Range"] = 58.14,
-        ["CRange"] = 36520,
+        ["Waypoint"] = 36520,
         ["TT"] = {
             ["y"] = 4652.3,
             ["x"] = 1345.3,
         },
     }, -- [44]
     {
-        ["CRange"] = 36520,
+        ["Waypoint"] = 36520,
         ["Trigger"] = {
             ["y"] = 4671.3,
             ["x"] = 1410.3,
@@ -10213,7 +10213,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             ["x"] = 2250.6,
         },
         ["Range"] = 17.64,
-        ["CRange"] = 33735,
+        ["Waypoint"] = 33735,
         ["TT"] = {
             ["y"] = 3629.4,
             ["x"] = 2250.6,
@@ -10440,7 +10440,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
         },
     }, -- [10]
     {
-        ["CRange"] = 34579,
+        ["Waypoint"] = 34579,
         ["Trigger"] = {
             ["y"] = 3531.3,
             ["x"] = 1356.9,
@@ -10489,7 +10489,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             ["y"] = 3539.6,
             ["x"] = 1345.5,
         },
-        ["CRange"] = 34579,
+        ["Waypoint"] = 34579,
         ["Range"] = 13.32,
         ["TT"] = {
             ["y"] = 3539.6,
@@ -10769,7 +10769,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             ["x"] = 2154.1,
         },
         ["Range"] = 21.89,
-        ["CRange"] = 33720,
+        ["Waypoint"] = 33720,
         ["TT"] = {
             ["y"] = 3860.8,
             ["x"] = 2154.1,
@@ -10814,7 +10814,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             ["x"] = 2248.8,
         },
         ["Range"] = 24.2,
-        ["CRange"] = 33720,
+        ["Waypoint"] = 33720,
         ["TT"] = {
             ["y"] = 3630.8,
             ["x"] = 2248.8,
@@ -11331,7 +11331,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
         },
     }, -- [14]
     {
-        ["CRange"] = 33579,
+        ["Waypoint"] = 33579,
         ["Trigger"] = {
             ["y"] = 3011.1,
             ["x"] = 1183.4,
@@ -11344,7 +11344,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
         },
     },
     {
-        ["CRange"] = 33579,
+        ["Waypoint"] = 33579,
         ["Trigger"] = {
             ["y"] = 3043,
             ["x"] = 1038.4,
@@ -11481,7 +11481,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
     },
 
     {
-        ["CRange"] = 33582,
+        ["Waypoint"] = 33582,
         ["Trigger"] = {
             ["y"] = 1987.4,
             ["x"] = 1060.3,
@@ -12034,7 +12034,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             ["x"] = 2329.3,
         },
         ["Range"] = 6.53,
-        ["CRange"] = 35249,
+        ["Waypoint"] = 35249,
         ["TT"] = {
             ["y"] = 1850.2,
             ["x"] = 2329.3,
@@ -12046,7 +12046,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             ["x"] = 2248.6,
         },
         ["Range"] = 6.92,
-        ["CRange"] = 35249,
+        ["Waypoint"] = 35249,
         ["TT"] = {
             ["y"] = 1894.4,
             ["x"] = 2248.6,
@@ -12058,7 +12058,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             ["x"] = 2206.6,
         },
         ["Range"] = 10.5,
-        ["CRange"] = 35249,
+        ["Waypoint"] = 35249,
         ["TT"] = {
             ["y"] = 1860.5,
             ["x"] = 2206.6,
@@ -12125,7 +12125,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
         },
     }, -- [41]
     {
-        ["CRange"] = 35249,
+        ["Waypoint"] = 35249,
         ["Trigger"] = {
             ["y"] = 1842.7,
             ["x"] = 2215.8,
@@ -12184,7 +12184,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             ["x"] = 2246.1,
         },
         ["Range"] = 15.14,
-        ["CRange"] = 35249,
+        ["Waypoint"] = 35249,
         ["TT"] = {
             ["y"] = 1896.5,
             ["x"] = 2246.1,
@@ -12196,7 +12196,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             ["x"] = 2331.4,
         },
         ["Range"] = 11.57,
-        ["CRange"] = 35249,
+        ["Waypoint"] = 35249,
         ["TT"] = {
             ["y"] = 1848.4,
             ["x"] = 2331.4,
@@ -12472,7 +12472,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
         },
     },
     {
-        ["CRange"] = 33972,
+        ["Waypoint"] = 33972,
         ["Trigger"] = {
             ["y"] = 1092.5,
             ["x"] = 2188.6,
@@ -12533,7 +12533,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
         },
     }, -- [3]
     {
-        ["CRange"] = 33972,
+        ["Waypoint"] = 33972,
         ["Trigger"] = {
             ["y"] = 1092.5,
             ["x"] = 2188.6,
@@ -13172,7 +13172,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             ["y"] = 1461.7,
             ["x"] = 3924.4,
         },
-        ["CRange"] = 34157,
+        ["Waypoint"] = 34157,
         ["Range"] = 24.66,
         ["TT"] = {
             ["y"] = 1461.7,
@@ -13647,7 +13647,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
         },
     }, -- [16]
     {
-        ["CRange"] = 35668,
+        ["Waypoint"] = 35668,
         ["Trigger"] = {
             ["y"] = -281.8,
             ["x"] = 1708.3,
@@ -13682,7 +13682,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             ["x"] = 1708.5,
         },
         ["Range"] = 8.04,
-        ["CRange"] = 35668,
+        ["Waypoint"] = 35668,
         ["TT"] = {
             ["y"] = -278.3,
             ["x"] = 1708.5,
@@ -14047,7 +14047,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             ["y"] = -769.5,
             ["x"] = 2421.1,
         },
-        ["CRange"] = 35380,
+        ["Waypoint"] = 35380,
         ["Range"] = 5.71,
         ["TT"] = {
             ["y"] = -769.5,
@@ -14700,7 +14700,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
         },
     }, -- [65]
     {
-        ["CRange"] = 35259,
+        ["Waypoint"] = 35259,
         ["Trigger"] = {
             ["y"] = 241.6,
             ["x"] = 2609.3,
@@ -14713,7 +14713,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
         },
     }, -- [66]
     {
-        ["CRange"] = 35259,
+        ["Waypoint"] = 35259,
         ["Trigger"] = {
             ["y"] = 273.8,
             ["x"] = 2681.9,
@@ -14751,7 +14751,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
         },
     }, -- [68]
     {
-        ["CRange"] = 35259,
+        ["Waypoint"] = 35259,
         ["Trigger"] = {
             ["y"] = 242.1,
             ["x"] = 2612.1,
@@ -14768,7 +14768,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
         },
     }, -- [69]
     {
-        ["CRange"] = 35259,
+        ["Waypoint"] = 35259,
         ["Trigger"] = {
             ["y"] = 330.8,
             ["x"] = 2704.3,
@@ -15010,7 +15010,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
         },
     }, -- [10]
     {
-        ["CRange"] = 35734,
+        ["Waypoint"] = 35734,
         ["Trigger"] = {
             ["y"] = -1718.7,
             ["x"] = 1488.6,
@@ -15499,7 +15499,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
         },
     }, -- [12]
     {
-        ["CRange"] = 35895,
+        ["Waypoint"] = 35895,
         ["Trigger"] = {
             ["y"] = -169.4,
             ["x"] = 861.2,
@@ -16959,7 +16959,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             ["x"] = 4315.7,
         },
         ["Range"] = 13.81,
-        ["CRange"] = 34866,
+        ["Waypoint"] = 34866,
         ["TT"] = {
             ["y"] = 2826,
             ["x"] = 4315.7,
@@ -17026,7 +17026,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             ["x"] = 4304.7,
         },
         ["Range"] = 15.72,
-        ["CRange"] = 34868,
+        ["Waypoint"] = 34868,
         ["TT"] = {
             ["y"] = 2823.5,
             ["x"] = 4304.7,
@@ -18029,7 +18029,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
         },
     }, -- [69]
     {
-        ["CRange"] = 35632,
+        ["Waypoint"] = 35632,
         ["Trigger"] = {
             ["y"] = 3042.6,
             ["x"] = 5513.3,
