@@ -7,7 +7,7 @@ if (APR.Faction == "Horde") then
         ["Scourge Start"] = 465,
         ["Blood Elf Start"] = 467,
         ["Goblin Start"] = 194,
-        ["Goblin Start (Lost Isles)"] = 174,
+        ["Goblin - Lost Isles"] = 174,
         ["Demon Hunter Start"] = 672,
         ["Pandaren Start"] = 378,
         ["Durotar"] = 1,
@@ -167,7 +167,7 @@ if (APR.Faction == "Horde") then
         APR.RouteList.Vanilla["94-EversongWoodsBloodElf"] = "Blood Elf Start"
     elseif (APR.Race == "Goblin") then
         APR.RouteList.Vanilla["194-Kezan"] = "Goblin Start"
-        APR.RouteList.Vanilla["174-LostIsles"] = "Goblin Start (Lost Isles)"
+        APR.RouteList.Vanilla["174-LostIsles"] = "Goblin - Lost Isles"
     elseif (APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23) then
         APR.RouteList.Vanilla["H_Allied_Icecrown Citadel"] = "Allied Death Knight Start"
     elseif (APR.ClassId == APR.Classes["Death Knight"]) then
