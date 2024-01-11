@@ -108,7 +108,7 @@ local function CheckDistance()
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     if CurStep and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep] then
         local stepList = APR.RouteQuestStepList[APR.ActiveRoute]
-        if (stepList[CurStep] and stepList[CurStep]["CRange"]) then
+        if (stepList[CurStep] and stepList[CurStep]["Waypoint"]) then
             APR.ArrowFrame.Button:Show()
             local curStepIndex = CurStep
             local distance = 0
@@ -116,7 +116,7 @@ local function CheckDistance()
                 local oldx, oldy = stepList[curStepIndex]["TT"]["x"], stepList[curStepIndex]["TT"]["y"]
                 curStepIndex = curStepIndex + 1
                 local step = stepList[curStepIndex]
-                if (step and step["CRange"]) then
+                if (step and step["Waypoint"]) then
                     local newx, newy = step["TT"]["x"], step["TT"]["y"]
                     local deltaX, deltaY = oldx - newx, newy - oldy
                     local subDistance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
@@ -212,7 +212,7 @@ function APR.Arrow:CalculPosition()
         if distance < 5 and APR_ArrowActive_Distance == 0 or (APR_ArrowActive_Distance and APR_ArrowActive_TrigDistance and APR_ArrowActive_Distance < APR_ArrowActive_TrigDistance) then
             APR.ArrowActive_X = 0
 
-            if CurStep and APR.ActiveRoute and questStep.CRange then
+            if CurStep and APR.ActiveRoute and questStep.Waypoint then
                 APR.Arrow.currentStep = 0
                 _G.NextQuestStep()
             end

@@ -153,7 +153,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         },
     },
     { -- Step 13
-        ["CRange"] = 65991,
+        ["Waypoint"] = 65991,
         ["TT"] = {
             ["y"] = 3486.2,
             ["x"] = -633.9,
@@ -205,7 +205,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["Fillers"] = { [65994] = { ["1"] = "1", }, },
     },
     { -- Step 17
-        ["CRange"] = 65993,
+        ["Waypoint"] = 65993,
         ["TT"] = {
             ["y"] = 3603.2,
             ["x"] = -494.6,
@@ -219,7 +219,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["ExtraLineText"] = "JUMP_DOWN_USE_GOBLIN_GLIDER",
     },
     { -- Step 18
-        ["CRange"] = 66956,
+        ["Waypoint"] = 66956,
         ["TT"] = {
             ["y"] = 3621.8,
             ["x"] = -467.5,
@@ -270,7 +270,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["Gossip"] = 1,
     },
     { -- Step 21
-        ["CRange"] = 65992,
+        ["Waypoint"] = 65992,
         ["TT"] = {
             ["y"] = 3672.0,
             ["x"] = -370.7,
@@ -345,7 +345,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["Gossip"] = 1,
     },
     { -- Step 26
-        ["CRange"] = 65993,
+        ["Waypoint"] = 65993,
         ["TT"] = {
             ["y"] = 3593.7,
             ["x"] = -479.0,
@@ -358,7 +358,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         },
     },
     { -- Step 27
-        ["CRange"] = 65993,
+        ["Waypoint"] = 65993,
         ["TT"] = {
             ["y"] = 3599.3,
             ["x"] = -367.5,
@@ -553,7 +553,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["ExtraLineText"] = "GET_QUEST_FROM_BOOK_ON_ROCK",
     },
     { -- Step 42
-        ["CRange"] = 70648,
+        ["Waypoint"] = 70648,
         ["TT"] = {
             ["y"] = 4075.9,
             ["x"] = 154.9,
@@ -663,7 +663,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["ExtraLineText"] = "PICK_UP_FROM_SENDRAX_WHO_SHOULD_BE_STANDING_NEXT_YOU",
     },
     { -- Step 49
-        ["CRange"] = 66001,
+        ["Waypoint"] = 66001,
         ["TT"] = {
             ["y"] = 4199.5,
             ["x"] = 166.6,
@@ -984,7 +984,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         },
     },
     { -- Step 72
-        ["CRange"] = 65118,
+        ["Waypoint"] = 65118,
         ["TT"] = {
             ["y"] = 1813.8,
             ["x"] = 54.5,
@@ -1049,7 +1049,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         },
     },
     { -- Step 77
-        ["CRange"] = 65120,
+        ["Waypoint"] = 65120,
         ["TT"] = {
             ["y"] = 1813.8,
             ["x"] = 54.5,
@@ -1114,7 +1114,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         },
     },
     { -- Step 82
-        ["CRange"] = 65133,
+        ["Waypoint"] = 65133,
         ["TT"] = {
             ["y"] = 2228.3,
             ["x"] = 70.4,
@@ -1435,7 +1435,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["ETA"] = 20,
     },
     { -- Step 104
-        ["CRange"] = 66115,
+        ["Waypoint"] = 66115,
         ["TT"] = {
             ["y"] = 1717.6,
             ["x"] = -253.0,
@@ -2379,7 +2379,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["RaidIcon"] = 186493,
     },
     { -- Step 176
-        ["CRange"] = 66048,
+        ["Waypoint"] = 66048,
         ["TT"] = {
             ["y"] = 1830.0,
             ["x"] = 1164.4,
@@ -2414,7 +2414,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["RaidIcon"] = 187466,
     },
     { -- Step 178
-        ["CRange"] = 66048,
+        ["Waypoint"] = 66048,
         ["TT"] = {
             ["y"] = 1771.8,
             ["x"] = 1255.9,
@@ -2599,7 +2599,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["GossipOptionID"] = 55405,
     },
     { -- Step 190
-        ["CRange"] = 65939,
+        ["Waypoint"] = 65939,
         ["TT"] = {
             ["y"] = 2078.9,
             ["x"] = 2018.0,
@@ -5312,7 +5312,7 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
         ["GossipOptionID"] = 56476,
     },
     { -- Step 155
-        ["CRange"] = 66687,
+        ["Waypoint"] = 66687,
         ["TT"] = {
             ["y"] = -993.7,
             ["x"] = 3531.3,
@@ -5341,7 +5341,7 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
         ["Range"] = 88,
     },
     { -- Step 157
-        ["CRange"] = 66687,
+        ["Waypoint"] = 66687,
         ["TT"] = {
             ["y"] = -993.7,
             ["x"] = 3531.3,
@@ -5843,7 +5843,7 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
         ["TrigText"] = "1/4",
     },
     { -- Step 195
-        ["CRange"] = 69968,
+        ["Waypoint"] = 69968,
         ["TT"] = {
             ["y"] = -1955.3,
             ["x"] = 2292.6,
@@ -8588,7 +8588,7 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
         ["Range"] = 2,
     },
     { -- Step 110
-        ["CRange"] = 67173,
+        ["Waypoint"] = 67173,
         ["TT"] = {
             ["y"] = -3283.1,
             ["x"] = 1485.0,
@@ -9578,7 +9578,7 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
         ["Range"] = 20,
     },
     { -- Step 190
-        ["CRange"] = 65847,
+        ["Waypoint"] = 65847,
         ["TT"] = {
             ["y"] = -3736.9,
             ["x"] = 3852.6,
@@ -9800,7 +9800,7 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
         ["TrigText"] = "3/4",
     },
     { -- Step 206
-        ["CRange"] = 66213,
+        ["Waypoint"] = 66213,
         ["TT"] = {
             ["y"] = -4508.3,
             ["x"] = 4097.8,
@@ -9876,7 +9876,7 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
         ["ExtraLineText"] = "CLICK_STONE_SCULPTURE",
     },
     { -- Step 211
-        ["CRange"] = 66213,
+        ["Waypoint"] = 66213,
         ["TT"] = {
             ["y"] = -4508.3,
             ["x"] = 4097.8,
@@ -10532,7 +10532,7 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
         },
     },
     { -- Step 266
-        ["CRange"] = 65886,
+        ["Waypoint"] = 65886,
         ["TT"] = {
             ["y"] = -5390.8,
             ["x"] = 1327.9,
@@ -11197,7 +11197,7 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
         },
     },
     { -- Step 321
-        ["CRange"] = 69895,
+        ["Waypoint"] = 69895,
         ["TT"] = {
             ["y"] = -3335.4,
             ["x"] = -2135.6,

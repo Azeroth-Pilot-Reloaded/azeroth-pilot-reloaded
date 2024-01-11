@@ -107,7 +107,7 @@ if (APR.Faction == "Horde") then
             ["Zone"] = 85,
         },
         { -- Step 9
-            ["CRange"] = 65443,
+            ["Waypoint"] = 65443,
             ["TT"] = {
                 ["y"] = 1920.5,
                 ["x"] = -4726.4,
@@ -218,7 +218,7 @@ if (APR.Faction == "Horde") then
             ["Zone"] = 1,
         },
         { -- Step 17
-            ["CRange"] = 65444,
+            ["Waypoint"] = 65444,
             ["TT"] = {
                 ["y"] = 1343.4,
                 ["x"] = -4922.5,
@@ -837,7 +837,7 @@ if (APR.Faction == "Horde") then
             ["Gossip"] = 2,
         },
         { -- Step 37
-            ["CRange"] = 66112,
+            ["Waypoint"] = 66112,
             ["TT"] = {
                 ["y"] = 3418.8,
                 ["x"] = -1379.0,
@@ -1512,7 +1512,7 @@ if (APR.Faction == "Horde") then
             },
         },
         { -- Step 45
-            ["CRange"] = 1,
+            ["Waypoint"] = 1,
             ["TT"] = {
                 ["y"] = 164.0,
                 ["x"] = -902.5,
@@ -1531,7 +1531,7 @@ if (APR.Faction == "Horde") then
             },
         },
         { -- Step 47
-            ["CRange"] = 66252,
+            ["Waypoint"] = 66252,
             ["TT"] = {
                 ["y"] = 338.3,
                 ["x"] = -1099.7,
@@ -2815,7 +2815,7 @@ if (APR.Faction == "Horde") then
             ["Zone"] = 2090,
         },
         { -- Step 146a
-            ["CRange"] = 66038,
+            ["Waypoint"] = 66038,
             ["TT"] = {
                 ["y"] = 15966.0,
                 ["x"] = 15877.4,
@@ -2828,7 +2828,7 @@ if (APR.Faction == "Horde") then
             ["Zone"] = 2090,
         },
         { -- Step 146b
-            ["CRange"] = 66038,
+            ["Waypoint"] = 66038,
             ["TT"] = {
                 ["y"] = -7949.9,
                 ["x"] = 1374.5,
@@ -2841,7 +2841,7 @@ if (APR.Faction == "Horde") then
             ["Zone"] = 2091,
         },
         { -- Step 146c
-            ["CRange"] = 66038,
+            ["Waypoint"] = 66038,
             ["TT"] = {
                 ["y"] = 960.3,
                 ["x"] = 2092.3,
@@ -3071,7 +3071,7 @@ if (APR.Faction == "Horde") then
             ["ExtraLineText"] = "CLICK_ON_BONES_ON_THE_BED",
         },
         { -- Step 5
-            ["CRange"] = 64864,
+            ["Waypoint"] = 64864,
             ["TT"] = {
                 ["y"] = 5806.732421875,
                 ["x"] = -3065.5263671875,
@@ -3083,7 +3083,7 @@ if (APR.Faction == "Horde") then
             ["Range"] = 5,
         },
         { -- Step 6
-            ["CRange"] = 64864,
+            ["Waypoint"] = 64864,
             ["TT"] = {
                 ["y"] = 5804.7026367188,
                 ["x"] = -2982.3325195312,
@@ -3095,7 +3095,7 @@ if (APR.Faction == "Horde") then
             ["Range"] = 5,
         },
         { -- Step 7
-            ["CRange"] = 64864,
+            ["Waypoint"] = 64864,
             ["TT"] = {
                 ["y"] = 5812.169921875,
                 ["x"] = -2928.8276367188,
@@ -3152,7 +3152,7 @@ if (APR.Faction == "Horde") then
             },
         },
         { -- Step 12
-            ["CRange"] = 66010,
+            ["Waypoint"] = 66010,
             ["TT"] = {
                 ["y"] = 5862.2,
                 ["x"] = -2945.5,
@@ -3246,7 +3246,7 @@ if (APR.Faction == "Horde") then
             ["ExtraLineText"] = "RUN_AWAY_WHEN_THEY_HIT_40_THEYRE_SPLIT_INTO_TWO_SMALL_ADDS",
         },
         { -- Step 18
-            ["CRange"] = 64865,
+            ["Waypoint"] = 64865,
             ["TT"] = {
                 ["y"] = 6001.3950195312,
                 ["x"] = -2988.53125,
@@ -3926,7 +3926,7 @@ if (APR.Faction == "Horde") then
             ["Range"] = 30,
         },
         { -- Step 64
-            ["CRange"] = 65074,
+            ["Waypoint"] = 65074,
             ["TT"] = {
                 ["y"] = 7190.877441406,
                 ["x"] = -2658.5036621094,
@@ -4008,7 +4008,7 @@ if (APR.Faction == "Horde") then
             },
         },
         { -- Step 70
-            ["CRange"] = 65307,
+            ["Waypoint"] = 65307,
             ["TT"] = {
                 ["y"] = 7185.271484375,
                 ["x"] = -2799.0112304688,
@@ -4024,7 +4024,7 @@ if (APR.Faction == "Horde") then
             },
         },
         { -- Step 71
-            ["CRange"] = 65307,
+            ["Waypoint"] = 65307,
             ["TT"] = {
                 ["y"] = 7170.8046875,
                 ["x"] = -2802.2661132812,
@@ -4040,7 +4040,7 @@ if (APR.Faction == "Horde") then
             },
         },
         { -- Step 72
-            ["CRange"] = 65307,
+            ["Waypoint"] = 65307,
             ["TT"] = {
                 ["y"] = 7105.5244140625,
                 ["x"] = -2751.8137207031,
@@ -4056,7 +4056,7 @@ if (APR.Faction == "Horde") then
             },
         },
         { -- Step 73
-            ["CRange"] = 65307,
+            ["Waypoint"] = 65307,
             ["TT"] = {
                 ["y"] = 7104.6201171875,
                 ["x"] = -2693.7661132812,
@@ -4072,7 +4072,7 @@ if (APR.Faction == "Horde") then
             },
         },
         { -- Step 74
-            ["CRange"] = 65307,
+            ["Waypoint"] = 65307,
             ["TT"] = {
                 ["y"] = 7174.2407226562,
                 ["x"] = -2690.240234375,
@@ -4200,7 +4200,7 @@ if (APR.Faction == "Horde") then
             ["TrigText"] = "3/3",
         },
         { -- Step 82
-            ["CRange"] = 66324,
+            ["Waypoint"] = 66324,
             ["TT"] = {
                 ["y"] = 7310.103515625,
                 ["x"] = -2397.08984375,
@@ -4236,7 +4236,7 @@ if (APR.Faction == "Horde") then
             },
         },
         { -- Step 84
-            ["CRange"] = 66324,
+            ["Waypoint"] = 66324,
             ["TT"] = {
                 ["y"] = 7321.607421875,
                 ["x"] = -2413.6101074219,
@@ -4267,7 +4267,7 @@ if (APR.Faction == "Horde") then
             },
         },
         { -- Step 87
-            ["CRange"] = 65075,
+            ["Waypoint"] = 65075,
             ["TT"] = {
                 ["y"] = 7151.8173828125,
                 ["x"] = -2653.3500976562,
@@ -4742,7 +4742,7 @@ if (APR.Faction == "Horde") then
             },
         },
         { -- Step 125
-            ["CRange"] = 65100,
+            ["Waypoint"] = 65100,
             ["TT"] = {
                 ["y"] = 6427.9428710938,
                 ["x"] = -3265.8325195312,

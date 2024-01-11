@@ -32,7 +32,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             ["x"] = 1663.7,
         },
         ["Range"] = 5.68,
-        ["CRange"] = 28608,
+        ["Waypoint"] = 28608,
         ["TT"] = {
             ["y"] = 1662.7,
             ["x"] = 1663.7,
@@ -44,7 +44,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             ["x"] = 1665.2,
         },
         ["Range"] = 4.17,
-        ["CRange"] = 28608,
+        ["Waypoint"] = 28608,
         ["TT"] = {
             ["y"] = 1644.2,
             ["x"] = 1665.2,
@@ -56,7 +56,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             ["x"] = 1678.7,
         },
         ["Range"] = 5.05,
-        ["CRange"] = 28608,
+        ["Waypoint"] = 28608,
         ["TT"] = {
             ["y"] = 1646.5,
             ["x"] = 1678.7,
@@ -85,7 +85,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             ["x"] = 1677.2,
         },
         ["Range"] = 5.55,
-        ["CRange"] = 28608,
+        ["Waypoint"] = 28608,
         ["TT"] = {
             ["y"] = 1644,
             ["x"] = 1677.2,
@@ -97,7 +97,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             ["x"] = 1663.3,
         },
         ["Range"] = 4.26,
-        ["CRange"] = 28608,
+        ["Waypoint"] = 28608,
         ["TT"] = {
             ["y"] = 1644,
             ["x"] = 1663.3,
@@ -255,7 +255,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             ["x"] = 1615.4,
         },
         ["Range"] = 4.58,
-        ["CRange"] = 26800,
+        ["Waypoint"] = 26800,
         ["TT"] = {
             ["y"] = 1843.8,
             ["x"] = 1615.4,
@@ -304,7 +304,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             ["x"] = 1615.5,
         },
         ["Range"] = 4.56,
-        ["CRange"] = 26801,
+        ["Waypoint"] = 26801,
         ["TT"] = {
             ["y"] = 1843.9,
             ["x"] = 1615.5,
@@ -352,7 +352,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             ["x"] = 1578.4,
         },
         ["Range"] = 4.65,
-        ["CRange"] = 24961,
+        ["Waypoint"] = 24961,
         ["TT"] = {
             ["y"] = 1861.4,
             ["x"] = 1578.4,
@@ -364,7 +364,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             ["x"] = 1572,
         },
         ["Range"] = 4.61,
-        ["CRange"] = 24961,
+        ["Waypoint"] = 24961,
         ["TT"] = {
             ["y"] = 1876,
             ["x"] = 1572,
@@ -376,7 +376,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             ["x"] = 1576.9,
         },
         ["Range"] = 5.15,
-        ["CRange"] = 24961,
+        ["Waypoint"] = 24961,
         ["TT"] = {
             ["y"] = 1866,
             ["x"] = 1576.9,
@@ -472,7 +472,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
         },
     },
     { -- [step 41
-        ["CRange"] = 24961,
+        ["Waypoint"] = 24961,
         ["Trigger"] = {
             ["y"] = 2049.6,
             ["x"] = 1816.4,
@@ -623,7 +623,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             ["x"] = 1278,
         },
         ["Range"] = 12.89,
-        ["CRange"] = 24972,
+        ["Waypoint"] = 24972,
         ["TT"] = {
             ["y"] = 2160.9,
             ["x"] = 1278,
@@ -635,7 +635,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             ["x"] = 1024.4,
         },
         ["Range"] = 10.49,
-        ["CRange"] = 24972,
+        ["Waypoint"] = 24972,
         ["TT"] = {
             ["y"] = 2231.6,
             ["x"] = 1024.4,
@@ -666,7 +666,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             ["x"] = 1243.5,
         },
         ["Range"] = 10.49,
-        ["CRange"] = 24978,
+        ["Waypoint"] = 24978,
         ["TT"] = {
             ["y"] = 2283.8,
             ["x"] = 1243.5,
@@ -1185,7 +1185,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 1475.2,
             ["x"] = 653.6,
         },
-        ["CRange"] = 26965,
+        ["Waypoint"] = 26965,
         ["Range"] = 22.5,
         ["TT"] = {
             ["y"] = 1475.2,
@@ -1409,7 +1409,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 1293.5,
             ["x"] = 1207.5,
         },
-        ["CRange"] = 27045,
+        ["Waypoint"] = 27045,
         ["Range"] = 6.65,
         ["TT"] = {
             ["y"] = 1293.5,
@@ -1421,7 +1421,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 1303.5,
             ["x"] = 1220.9,
         },
-        ["CRange"] = 27045,
+        ["Waypoint"] = 27045,
         ["Range"] = 8.33,
         ["TT"] = {
             ["y"] = 1303.5,
@@ -1433,7 +1433,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 1297.9,
             ["x"] = 1220.5,
         },
-        ["CRange"] = 27045,
+        ["Waypoint"] = 27045,
         ["Range"] = 2.25,
         ["TT"] = {
             ["y"] = 1297.9,
@@ -1445,7 +1445,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 1298,
             ["x"] = 1211,
         },
-        ["CRange"] = 27045,
+        ["Waypoint"] = 27045,
         ["Range"] = 5.15,
         ["TT"] = {
             ["y"] = 1298,
@@ -1457,7 +1457,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 1309,
             ["x"] = 1206.5,
         },
-        ["CRange"] = 27045,
+        ["Waypoint"] = 27045,
         ["ExtraLineText"] = "NOT_SKIP_VIDEO",
         ["Range"] = 4.69,
         ["TT"] = {
@@ -1641,7 +1641,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
         ["Button"] = {
             ["27088-1"] = 60808,
         },
-        ["CRange"] = 27095,
+        ["Waypoint"] = 27095,
         ["Trigger"] = {
             ["y"] = 1282.5,
             ["x"] = 1951.5,
@@ -1664,7 +1664,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
         },
     },
     { -- [step 42
-        ["CRange"] = 27093,
+        ["Waypoint"] = 27093,
         ["Trigger"] = {
             ["y"] = 1342.5,
             ["x"] = 1968,
@@ -1684,7 +1684,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
         },
     },
     { -- [step 43
-        ["CRange"] = 27093,
+        ["Waypoint"] = 27093,
         ["Trigger"] = {
             ["y"] = 1360,
             ["x"] = 1990.7,
@@ -1708,7 +1708,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 1403.5,
             ["x"] = 2011.8,
         },
-        ["CRange"] = 27093,
+        ["Waypoint"] = 27093,
         ["Range"] = 6.21,
         ["TT"] = {
             ["y"] = 1403.5,
@@ -1724,7 +1724,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
         },
     },
     { -- [step 45
-        ["CRange"] = 27093,
+        ["Waypoint"] = 27093,
         ["Trigger"] = {
             ["y"] = 1445.2,
             ["x"] = 1991,
@@ -1892,7 +1892,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 1102,
             ["x"] = 730.9,
         },
-        ["CRange"] = 27097,
+        ["Waypoint"] = 27097,
         ["Range"] = 43.05,
         ["TT"] = {
             ["y"] = 1102,
@@ -2013,7 +2013,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 569.2,
             ["x"] = 1415.4,
         },
-        ["CRange"] = 27226,
+        ["Waypoint"] = 27226,
         ["Range"] = 30.2,
         ["TT"] = {
             ["y"] = 569.2,
@@ -2081,7 +2081,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 640.5,
             ["x"] = 1081.3,
         },
-        ["CRange"] = 27232,
+        ["Waypoint"] = 27232,
         ["Range"] = 21.69,
         ["TT"] = {
             ["y"] = 640.5,
@@ -2093,7 +2093,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 229.5,
             ["x"] = 1314.2,
         },
-        ["CRange"] = 27232,
+        ["Waypoint"] = 27232,
         ["Range"] = 47.65,
         ["TT"] = {
             ["y"] = 229.5,
@@ -2231,7 +2231,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 444.8,
             ["x"] = 1513,
         },
-        ["CRange"] = 27194,
+        ["Waypoint"] = 27194,
         ["Range"] = 28.32,
         ["TT"] = {
             ["y"] = 444.8,
@@ -2243,7 +2243,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 353.3,
             ["x"] = 1409.8,
         },
-        ["CRange"] = 27194,
+        ["Waypoint"] = 27194,
         ["Range"] = 28.18,
         ["TT"] = {
             ["y"] = 353.3,
@@ -2255,7 +2255,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 311.8,
             ["x"] = 1129.5,
         },
-        ["CRange"] = 27194,
+        ["Waypoint"] = 27194,
         ["Range"] = 18.86,
         ["TT"] = {
             ["y"] = 311.8,
@@ -2303,7 +2303,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 378.2,
             ["x"] = 1078,
         },
-        ["CRange"] = 27195,
+        ["Waypoint"] = 27195,
         ["Range"] = 16.33,
         ["TT"] = {
             ["y"] = 378.2,
@@ -2315,7 +2315,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             ["y"] = 568.2,
             ["x"] = 1412.5,
         },
-        ["CRange"] = 27195,
+        ["Waypoint"] = 27195,
         ["Range"] = 31.08,
         ["TT"] = {
             ["y"] = 568.2,
@@ -2669,7 +2669,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             ["y"] = -1236.5,
             ["x"] = 1117.4,
         },
-        ["CRange"] = 27423,
+        ["Waypoint"] = 27423,
         ["Range"] = 20.87,
         ["TT"] = {
             ["y"] = -1236.5,
@@ -2893,7 +2893,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             ["x"] = 1512.2,
         },
         ["Range"] = 8.45,
-        ["CRange"] = 27476,
+        ["Waypoint"] = 27476,
         ["TT"] = {
             ["y"] = 477.7,
             ["x"] = 1512.2,
@@ -2924,7 +2924,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             ["x"] = 1465.5,
         },
         ["ExtraLineText"] = "DALARAN_CRATER_PORTAL",
-        ["CRange"] = 27483,
+        ["Waypoint"] = 27483,
         ["Range"] = 5.0,
         ["TT"] = {
             ["y"] = 452.8,
@@ -3012,7 +3012,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             ["y"] = 479,
             ["x"] = 1514.9,
         },
-        ["CRange"] = 27484,
+        ["Waypoint"] = 27484,
         ["Range"] = 10.42,
         ["TT"] = {
             ["y"] = 479,
@@ -3073,7 +3073,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
         },
     },
     { -- [step 9
-        ["CRange"] = 27512,
+        ["Waypoint"] = 27512,
         ["Trigger"] = {
             ["y"] = -436.2,
             ["x"] = 923.7,
@@ -3085,7 +3085,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
         },
     },
     { -- [step 10
-        ["CRange"] = 27512,
+        ["Waypoint"] = 27512,
         ["Trigger"] = {
             ["y"] = -363.5,
             ["x"] = 910.7,
@@ -3311,7 +3311,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             ["y"] = -436.4,
             ["x"] = 1104.7,
         },
-        ["CRange"] = 28089,
+        ["Waypoint"] = 28089,
         ["Range"] = 45.55,
         ["TT"] = {
             ["y"] = -436.4,
@@ -3323,7 +3323,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             ["y"] = -556.8,
             ["x"] = 660.2,
         },
-        ["CRange"] = 28089,
+        ["Waypoint"] = 28089,
         ["Range"] = 41.44,
         ["TT"] = {
             ["y"] = -556.8,
@@ -3557,7 +3557,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -850.8,
             ["x"] = 220.1,
         },
-        ["CRange"] = 28168,
+        ["Waypoint"] = 28168,
         ["Range"] = 15.04,
         ["TT"] = {
             ["y"] = -850.8,
@@ -3577,7 +3577,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -822.2,
             ["x"] = 159.6,
         },
-        ["CRange"] = 28168,
+        ["Waypoint"] = 28168,
         ["Range"] = 13.13,
         ["TT"] = {
             ["y"] = -822.2,
@@ -3597,7 +3597,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -833.5,
             ["x"] = 120.5,
         },
-        ["CRange"] = 28168,
+        ["Waypoint"] = 28168,
         ["Range"] = 14.62,
         ["TT"] = {
             ["y"] = -833.5,
@@ -3761,7 +3761,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -843.3,
             ["x"] = 138,
         },
-        ["CRange"] = 28168,
+        ["Waypoint"] = 28168,
         ["Range"] = 37.9,
         ["TT"] = {
             ["y"] = -843.3,
@@ -3773,7 +3773,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -533,
             ["x"] = 147.6,
         },
-        ["CRange"] = 28168,
+        ["Waypoint"] = 28168,
         ["Range"] = 28.17,
         ["TT"] = {
             ["y"] = -533,
@@ -3826,7 +3826,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28197,
+        ["Waypoint"] = 28197,
         ["Trigger"] = {
             ["y"] = -521.5,
             ["x"] = 33.9,
@@ -3843,7 +3843,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28197,
+        ["Waypoint"] = 28197,
         ["Trigger"] = {
             ["y"] = -552.3,
             ["x"] = 26.5,
@@ -3978,7 +3978,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -548.5,
             ["x"] = 23.3,
         },
-        ["CRange"] = 28196,
+        ["Waypoint"] = 28196,
         ["Range"] = 15.68,
         ["TT"] = {
             ["y"] = -548.5,
@@ -4071,7 +4071,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -419,
             ["x"] = -33.5,
         },
-        ["CRange"] = 28230,
+        ["Waypoint"] = 28230,
         ["Range"] = 14.34,
         ["TT"] = {
             ["y"] = -419,
@@ -4202,7 +4202,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -504.5,
             ["x"] = -130.5,
         },
-        ["CRange"] = 28251,
+        ["Waypoint"] = 28251,
         ["Range"] = 30.49,
         ["TT"] = {
             ["y"] = -504.5,
@@ -4680,7 +4680,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 22.8,
             ["x"] = -930.7,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 9.15,
         ["TT"] = {
             ["y"] = 22.8,
@@ -4692,7 +4692,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 44.7,
             ["x"] = -925,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 5.05,
         ["TT"] = {
             ["y"] = 44.7,
@@ -4704,7 +4704,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 42.9,
             ["x"] = -918.5,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 5.64,
         ["TT"] = {
             ["y"] = 42.9,
@@ -4716,7 +4716,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 36.1,
             ["x"] = -926.3,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 5.99,
         ["TT"] = {
             ["y"] = 36.1,
@@ -4738,7 +4738,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 0,
             ["x"] = -938.3,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 4.97,
         ["TT"] = {
             ["y"] = 0,
@@ -4768,7 +4768,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -36.5,
             ["x"] = -902.5,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 10.13,
         ["TT"] = {
             ["y"] = -36.5,
@@ -4793,7 +4793,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 63.5,
             ["x"] = -986,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 21,
         ["TT"] = {
             ["y"] = 63.5,
@@ -4805,7 +4805,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 300.6,
             ["x"] = -961.7,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 37.38,
         ["TT"] = {
             ["y"] = 300.6,
@@ -4835,7 +4835,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 64.1,
             ["x"] = -986,
         },
-        ["CRange"] = 28600,
+        ["Waypoint"] = 28600,
         ["Range"] = 31.11,
         ["TT"] = {
             ["y"] = 64.1,
@@ -4892,7 +4892,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 64.2,
             ["x"] = -987.7,
         },
-        ["CRange"] = 28538,
+        ["Waypoint"] = 28538,
         ["Range"] = 30.88,
         ["TT"] = {
             ["y"] = 64.2,
@@ -4904,7 +4904,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 335.3,
             ["x"] = -866.7,
         },
-        ["CRange"] = 28538,
+        ["Waypoint"] = 28538,
         ["Range"] = 25.97,
         ["TT"] = {
             ["y"] = 335.3,
@@ -4978,7 +4978,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 201.1,
             ["x"] = -597.3,
         },
-        ["CRange"] = 28566,
+        ["Waypoint"] = 28566,
         ["Range"] = 47.9,
         ["TT"] = {
             ["y"] = 201.1,
@@ -5240,7 +5240,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -340,
             ["x"] = -313.3,
         },
-        ["CRange"] = 28484,
+        ["Waypoint"] = 28484,
         ["Range"] = 61.6,
         ["TT"] = {
             ["y"] = -340,
@@ -5259,7 +5259,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -282.9,
             ["x"] = -413.3,
@@ -5285,7 +5285,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -263.2,
             ["x"] = -389.9,
@@ -5302,7 +5302,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -217.2,
             ["x"] = -379,
@@ -5340,7 +5340,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -238.5,
             ["x"] = -346.9,
@@ -5357,7 +5357,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -262.5,
             ["x"] = -313.4,
@@ -5374,7 +5374,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -298.9,
             ["x"] = -275.2,
@@ -5412,7 +5412,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -257.7,
             ["x"] = -326.2,
@@ -5429,7 +5429,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -193.5,
             ["x"] = -370.8,
@@ -5651,7 +5651,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 12,
             ["x"] = -929.3,
         },
-        ["CRange"] = 28487,
+        ["Waypoint"] = 28487,
         ["Range"] = 9.81,
         ["TT"] = {
             ["y"] = 12,
@@ -5663,7 +5663,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 44.7,
             ["x"] = -924.3,
         },
-        ["CRange"] = 28487,
+        ["Waypoint"] = 28487,
         ["Range"] = 4.39,
         ["TT"] = {
             ["y"] = 44.7,
@@ -5675,7 +5675,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 42.6,
             ["x"] = -919,
         },
-        ["CRange"] = 28487,
+        ["Waypoint"] = 28487,
         ["Range"] = 5.9,
         ["TT"] = {
             ["y"] = 42.6,
@@ -5892,7 +5892,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -850.8,
             ["x"] = 220.1,
         },
-        ["CRange"] = 28168,
+        ["Waypoint"] = 28168,
         ["Range"] = 15.04,
         ["TT"] = {
             ["y"] = -850.8,
@@ -5912,7 +5912,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -822.2,
             ["x"] = 159.6,
         },
-        ["CRange"] = 28168,
+        ["Waypoint"] = 28168,
         ["Range"] = 13.13,
         ["TT"] = {
             ["y"] = -822.2,
@@ -5932,7 +5932,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -833.5,
             ["x"] = 120.5,
         },
-        ["CRange"] = 28168,
+        ["Waypoint"] = 28168,
         ["Range"] = 14.62,
         ["TT"] = {
             ["y"] = -833.5,
@@ -6096,7 +6096,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -843.3,
             ["x"] = 138,
         },
-        ["CRange"] = 28168,
+        ["Waypoint"] = 28168,
         ["Range"] = 37.9,
         ["TT"] = {
             ["y"] = -843.3,
@@ -6108,7 +6108,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -533,
             ["x"] = 147.6,
         },
-        ["CRange"] = 28168,
+        ["Waypoint"] = 28168,
         ["Range"] = 28.17,
         ["TT"] = {
             ["y"] = -533,
@@ -6161,7 +6161,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28197,
+        ["Waypoint"] = 28197,
         ["Trigger"] = {
             ["y"] = -521.5,
             ["x"] = 33.9,
@@ -6178,7 +6178,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28197,
+        ["Waypoint"] = 28197,
         ["Trigger"] = {
             ["y"] = -552.3,
             ["x"] = 26.5,
@@ -6312,7 +6312,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -548.5,
             ["x"] = 23.3,
         },
-        ["CRange"] = 28196,
+        ["Waypoint"] = 28196,
         ["Range"] = 15.68,
         ["TT"] = {
             ["y"] = -548.5,
@@ -6405,7 +6405,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -419,
             ["x"] = -33.5,
         },
-        ["CRange"] = 28230,
+        ["Waypoint"] = 28230,
         ["Range"] = 14.34,
         ["TT"] = {
             ["y"] = -419,
@@ -6536,7 +6536,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -504.5,
             ["x"] = -130.5,
         },
-        ["CRange"] = 28251,
+        ["Waypoint"] = 28251,
         ["Range"] = 30.49,
         ["TT"] = {
             ["y"] = -504.5,
@@ -7014,7 +7014,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 22.8,
             ["x"] = -930.7,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 9.15,
         ["TT"] = {
             ["y"] = 22.8,
@@ -7026,7 +7026,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 44.7,
             ["x"] = -925,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 5.05,
         ["TT"] = {
             ["y"] = 44.7,
@@ -7038,7 +7038,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 42.9,
             ["x"] = -918.5,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 5.64,
         ["TT"] = {
             ["y"] = 42.9,
@@ -7050,7 +7050,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 36.1,
             ["x"] = -926.3,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 5.99,
         ["TT"] = {
             ["y"] = 36.1,
@@ -7072,7 +7072,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 0,
             ["x"] = -938.3,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 4.97,
         ["TT"] = {
             ["y"] = 0,
@@ -7102,7 +7102,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -36.5,
             ["x"] = -902.5,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 10.13,
         ["TT"] = {
             ["y"] = -36.5,
@@ -7126,7 +7126,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 63.5,
             ["x"] = -986,
         },
-        ["CRange"] = 13,
+        ["Waypoint"] = 13,
         ["Range"] = 21,
         ["TT"] = {
             ["y"] = 63.5,
@@ -7138,7 +7138,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 300.6,
             ["x"] = -961.7,
         },
-        ["CRange"] = 28587,
+        ["Waypoint"] = 28587,
         ["Range"] = 37.38,
         ["TT"] = {
             ["y"] = 300.6,
@@ -7168,7 +7168,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 64.1,
             ["x"] = -986,
         },
-        ["CRange"] = 28600,
+        ["Waypoint"] = 28600,
         ["Range"] = 31.11,
         ["TT"] = {
             ["y"] = 64.1,
@@ -7225,7 +7225,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 64.2,
             ["x"] = -987.7,
         },
-        ["CRange"] = 28538,
+        ["Waypoint"] = 28538,
         ["Range"] = 30.88,
         ["TT"] = {
             ["y"] = 64.2,
@@ -7237,7 +7237,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 335.3,
             ["x"] = -866.7,
         },
-        ["CRange"] = 28538,
+        ["Waypoint"] = 28538,
         ["Range"] = 25.97,
         ["TT"] = {
             ["y"] = 335.3,
@@ -7311,7 +7311,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 201.1,
             ["x"] = -597.3,
         },
-        ["CRange"] = 28566,
+        ["Waypoint"] = 28566,
         ["Range"] = 47.9,
         ["TT"] = {
             ["y"] = 201.1,
@@ -7572,7 +7572,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = -340,
             ["x"] = -313.3,
         },
-        ["CRange"] = 28484,
+        ["Waypoint"] = 28484,
         ["Range"] = 61.6,
         ["TT"] = {
             ["y"] = -340,
@@ -7591,7 +7591,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -282.9,
             ["x"] = -413.3,
@@ -7617,7 +7617,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -263.2,
             ["x"] = -389.9,
@@ -7634,7 +7634,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -217.2,
             ["x"] = -379,
@@ -7672,7 +7672,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -238.5,
             ["x"] = -346.9,
@@ -7689,7 +7689,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -262.5,
             ["x"] = -313.4,
@@ -7706,7 +7706,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -298.9,
             ["x"] = -275.2,
@@ -7744,7 +7744,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -257.7,
             ["x"] = -326.2,
@@ -7761,7 +7761,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
         },
     },
     {
-        ["CRange"] = 28620,
+        ["Waypoint"] = 28620,
         ["Trigger"] = {
             ["y"] = -193.5,
             ["x"] = -370.8,
@@ -7981,7 +7981,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 12,
             ["x"] = -929.3,
         },
-        ["CRange"] = 28487,
+        ["Waypoint"] = 28487,
         ["Range"] = 9.81,
         ["TT"] = {
             ["y"] = 12,
@@ -7993,7 +7993,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 44.7,
             ["x"] = -924.3,
         },
-        ["CRange"] = 28487,
+        ["Waypoint"] = 28487,
         ["Range"] = 4.39,
         ["TT"] = {
             ["y"] = 44.7,
@@ -8005,7 +8005,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
             ["y"] = 42.6,
             ["x"] = -919,
         },
-        ["CRange"] = 28487,
+        ["Waypoint"] = 28487,
         ["Range"] = 5.9,
         ["TT"] = {
             ["y"] = 42.6,
@@ -8779,7 +8779,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 1862.7,
             ["x"] = -1895.8,
         },
-        ["CRange"] = 26954,
+        ["Waypoint"] = 26954,
         ["Range"] = 14.91,
         ["TT"] = {
             ["y"] = 1862.7,
@@ -8791,7 +8791,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 1842.8,
             ["x"] = -1919.1,
         },
-        ["CRange"] = 26954,
+        ["Waypoint"] = 26954,
         ["Range"] = 15.31,
         ["TT"] = {
             ["y"] = 1842.8,
@@ -8925,7 +8925,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 1536.7,
             ["x"] = -1643,
         },
-        ["CRange"] = 27087,
+        ["Waypoint"] = 27087,
         ["Range"] = 11.98,
         ["TT"] = {
             ["y"] = 1536.7,
@@ -8955,7 +8955,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 1536.3,
             ["x"] = -1641.5,
         },
-        ["CRange"] = 27089,
+        ["Waypoint"] = 27089,
         ["Range"] = 11.34,
         ["TT"] = {
             ["y"] = 1536.3,
@@ -9018,7 +9018,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 1536.4,
             ["x"] = -1641.4,
         },
-        ["CRange"] = 27090,
+        ["Waypoint"] = 27090,
         ["Range"] = 13.15,
         ["TT"] = {
             ["y"] = 1536.4,
@@ -9076,7 +9076,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 1536.9,
             ["x"] = -1643.4,
         },
-        ["CRange"] = 26935,
+        ["Waypoint"] = 26935,
         ["Range"] = 12.32,
         ["TT"] = {
             ["y"] = 1536.9,
@@ -9260,7 +9260,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2687,
             ["x"] = -1840.5,
         },
-        ["CRange"] = 27002,
+        ["Waypoint"] = 27002,
         ["Range"] = 28.62,
         ["TT"] = {
             ["y"] = 2687,
@@ -9272,7 +9272,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2706.6,
             ["x"] = -1719.5,
         },
-        ["CRange"] = 27002,
+        ["Waypoint"] = 27002,
         ["Range"] = 26.86,
         ["TT"] = {
             ["y"] = 2706.6,
@@ -9284,7 +9284,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2767.8,
             ["x"] = -1606.4,
         },
-        ["CRange"] = 27002,
+        ["Waypoint"] = 27002,
         ["Range"] = 12.32,
         ["TT"] = {
             ["y"] = 2767.8,
@@ -9296,7 +9296,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2782.9,
             ["x"] = -1546.6,
         },
-        ["CRange"] = 27002,
+        ["Waypoint"] = 27002,
         ["Range"] = 14.12,
         ["TT"] = {
             ["y"] = 2782.9,
@@ -9364,7 +9364,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2930.9,
             ["x"] = -1410.3,
         },
-        ["CRange"] = 27002,
+        ["Waypoint"] = 27002,
         ["Range"] = 7.15,
         ["TT"] = {
             ["y"] = 2930.9,
@@ -9376,7 +9376,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2919.3,
             ["x"] = -1394,
         },
-        ["CRange"] = 27002,
+        ["Waypoint"] = 27002,
         ["Range"] = 6.17,
         ["TT"] = {
             ["y"] = 2919.3,
@@ -9388,7 +9388,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2922.4,
             ["x"] = -1388,
         },
-        ["CRange"] = 27002,
+        ["Waypoint"] = 27002,
         ["Range"] = 3.43,
         ["TT"] = {
             ["y"] = 2922.4,
@@ -9400,7 +9400,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2935.1,
             ["x"] = -1389,
         },
-        ["CRange"] = 27002,
+        ["Waypoint"] = 27002,
         ["Range"] = 6.07,
         ["TT"] = {
             ["y"] = 2935.1,
@@ -9412,7 +9412,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2947.1,
             ["x"] = -1379.1,
         },
-        ["CRange"] = 27002,
+        ["Waypoint"] = 27002,
         ["Range"] = 4.44,
         ["TT"] = {
             ["y"] = 2947.1,
@@ -9424,7 +9424,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2949,
             ["x"] = -1395,
         },
-        ["CRange"] = 27002,
+        ["Waypoint"] = 27002,
         ["Range"] = 5.46,
         ["TT"] = {
             ["y"] = 2949,
@@ -9436,7 +9436,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2955,
             ["x"] = -1402.8,
         },
-        ["CRange"] = 27002,
+        ["Waypoint"] = 27002,
         ["Range"] = 4.17,
         ["TT"] = {
             ["y"] = 2955,
@@ -9448,7 +9448,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2946.4,
             ["x"] = -1414.5,
         },
-        ["CRange"] = 27002,
+        ["Waypoint"] = 27002,
         ["Range"] = 5.78,
         ["TT"] = {
             ["y"] = 2946.4,
@@ -9487,7 +9487,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2918.1,
             ["x"] = -1442.9,
         },
-        ["CRange"] = 27157,
+        ["Waypoint"] = 27157,
         ["Range"] = 26.73,
         ["TT"] = {
             ["y"] = 2918.1,
@@ -9499,7 +9499,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 3019.6,
             ["x"] = -1553.6,
         },
-        ["CRange"] = 27157,
+        ["Waypoint"] = 27157,
         ["Range"] = 15.13,
         ["TT"] = {
             ["y"] = 3019.6,
@@ -9511,7 +9511,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 3055.1,
             ["x"] = -1547.5,
         },
-        ["CRange"] = 27157,
+        ["Waypoint"] = 27157,
         ["Range"] = 8.39,
         ["TT"] = {
             ["y"] = 3055.1,
@@ -9523,7 +9523,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 3075.1,
             ["x"] = -1530.1,
         },
-        ["CRange"] = 27157,
+        ["Waypoint"] = 27157,
         ["Range"] = 7.13,
         ["TT"] = {
             ["y"] = 3075.1,
@@ -9551,7 +9551,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 3011.6,
             ["x"] = -1554.5,
         },
-        ["CRange"] = 27157,
+        ["Waypoint"] = 27157,
         ["Range"] = 16.58,
         ["TT"] = {
             ["y"] = 3011.6,
@@ -9563,7 +9563,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2790.3,
             ["x"] = -1624.9,
         },
-        ["CRange"] = 27151,
+        ["Waypoint"] = 27151,
         ["Range"] = 16.24,
         ["TT"] = {
             ["y"] = 2790.3,
@@ -9575,7 +9575,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2747,
             ["x"] = -1664.4,
         },
-        ["CRange"] = 27151,
+        ["Waypoint"] = 27151,
         ["Range"] = 20.35,
         ["TT"] = {
             ["y"] = 2747,
@@ -9621,7 +9621,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2430.6,
             ["x"] = -1968.3,
         },
-        ["CRange"] = 27152,
+        ["Waypoint"] = 27152,
         ["Range"] = 24.75,
         ["TT"] = {
             ["y"] = 2430.6,
@@ -9668,7 +9668,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2416.4,
             ["x"] = -1977.9,
         },
-        ["CRange"] = 27153,
+        ["Waypoint"] = 27153,
         ["Range"] = 27.55,
         ["TT"] = {
             ["y"] = 2416.4,
@@ -9680,7 +9680,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2695,
             ["x"] = -1834.9,
         },
-        ["CRange"] = 27153,
+        ["Waypoint"] = 27153,
         ["Range"] = 29.15,
         ["TT"] = {
             ["y"] = 2695,
@@ -9692,7 +9692,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2768.9,
             ["x"] = -1603.9,
         },
-        ["CRange"] = 27153,
+        ["Waypoint"] = 27153,
         ["Range"] = 21.27,
         ["TT"] = {
             ["y"] = 2768.9,
@@ -9704,7 +9704,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2853.6,
             ["x"] = -1428.5,
         },
-        ["CRange"] = 27153,
+        ["Waypoint"] = 27153,
         ["Range"] = 10.53,
         ["TT"] = {
             ["y"] = 2853.6,
@@ -9811,7 +9811,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2850.1,
             ["x"] = -1529.1,
         },
-        ["CRange"] = 27154,
+        ["Waypoint"] = 27154,
         ["Range"] = 16.07,
         ["TT"] = {
             ["y"] = 2850.1,
@@ -9859,7 +9859,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2929.5,
             ["x"] = -1417.5,
         },
-        ["CRange"] = 27155,
+        ["Waypoint"] = 27155,
         ["Range"] = 12.26,
         ["TT"] = {
             ["y"] = 2929.5,
@@ -9917,7 +9917,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 1758,
             ["x"] = -1967.9,
         },
-        ["CRange"] = 27053,
+        ["Waypoint"] = 27053,
         ["Range"] = 25.09,
         ["TT"] = {
             ["y"] = 1758,
@@ -10090,7 +10090,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 2245.6,
             ["x"] = -2390.7,
         },
-        ["CRange"] = 26955,
+        ["Waypoint"] = 26955,
         ["Range"] = 36.52,
         ["TT"] = {
             ["y"] = 2245.6,
@@ -10102,7 +10102,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             ["y"] = 1933.5,
             ["x"] = -2581,
         },
-        ["CRange"] = 26955,
+        ["Waypoint"] = 26955,
         ["Range"] = 22.45,
         ["TT"] = {
             ["y"] = 1933.5,
@@ -10191,7 +10191,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             ["x"] = -6385.3,
         },
         ["Range"] = 16.4,
-        ["CRange"] = 8326,
+        ["Waypoint"] = 8326,
         ["TT"] = {
             ["y"] = 10388.5,
             ["x"] = -6385.3,
@@ -10470,7 +10470,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             ["x"] = -6386.9,
         },
         ["Range"] = 16.57,
-        ["CRange"] = 37442,
+        ["Waypoint"] = 37442,
         ["TT"] = {
             ["y"] = 10353.2,
             ["x"] = -6386.9,
@@ -10501,7 +10501,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             ["x"] = -6096.3,
         },
         ["Range"] = 11.29,
-        ["CRange"] = 8335,
+        ["Waypoint"] = 8335,
         ["TT"] = {
             ["y"] = 10206.7,
             ["x"] = -6096.3,

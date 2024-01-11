@@ -117,7 +117,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["x"] = 3378.1,
         },
         ["Range"] = 4.44,
-        ["CRange"] = 29408,
+        ["Waypoint"] = 29408,
         ["TT"] = {
             ["y"] = 1456,
             ["x"] = 3378.1,
@@ -129,7 +129,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["x"] = 3362.1,
         },
         ["Range"] = 6.24,
-        ["CRange"] = 29408,
+        ["Waypoint"] = 29408,
         ["TT"] = {
             ["y"] = 1451.7,
             ["x"] = 3362.1,
@@ -141,7 +141,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["x"] = 3367.1,
         },
         ["Range"] = 5.93,
-        ["CRange"] = 29408,
+        ["Waypoint"] = 29408,
         ["TT"] = {
             ["y"] = 1428.8,
             ["x"] = 3367.1,
@@ -153,7 +153,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["x"] = 3386.1,
         },
         ["Range"] = 5.24,
-        ["CRange"] = 29408,
+        ["Waypoint"] = 29408,
         ["TT"] = {
             ["y"] = 1436.2,
             ["x"] = 3386.1,
@@ -165,7 +165,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["x"] = 3377.8,
         },
         ["Range"] = 5.62,
-        ["CRange"] = 29408,
+        ["Waypoint"] = 29408,
         ["TT"] = {
             ["y"] = 1455.8,
             ["x"] = 3377.8,
@@ -177,7 +177,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["x"] = 3362,
         },
         ["Range"] = 4.45,
-        ["CRange"] = 29408,
+        ["Waypoint"] = 29408,
         ["TT"] = {
             ["y"] = 1447.9,
             ["x"] = 3362,
@@ -222,7 +222,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1427.4,
             ["x"] = 3332.6,
         },
-        ["CRange"] = 29409,
+        ["Waypoint"] = 29409,
         ["Range"] = 14.58,
         ["TT"] = {
             ["y"] = 1427.4,
@@ -343,7 +343,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1230.2,
             ["x"] = 3479.4,
         },
-        ["CRange"] = 29414,
+        ["Waypoint"] = 29414,
         ["Range"] = 17.32,
         ["TT"] = {
             ["y"] = 1230.2,
@@ -504,7 +504,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1338.3,
             ["x"] = 3863.8,
         },
-        ["CRange"] = 29420,
+        ["Waypoint"] = 29420,
         ["Range"] = 13.02,
         ["TT"] = {
             ["y"] = 1338.3,
@@ -516,7 +516,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1351.9,
             ["x"] = 3888.4,
         },
-        ["CRange"] = 29420,
+        ["Waypoint"] = 29420,
         ["Range"] = 12.57,
         ["TT"] = {
             ["y"] = 1351.9,
@@ -528,7 +528,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1387,
             ["x"] = 3895.6,
         },
-        ["CRange"] = 29420,
+        ["Waypoint"] = 29420,
         ["Range"] = 11.61,
         ["TT"] = {
             ["y"] = 1387,
@@ -644,7 +644,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1312.9,
             ["x"] = 3946,
         },
-        ["CRange"] = 29422,
+        ["Waypoint"] = 29422,
         ["Range"] = 8.04,
         ["TT"] = {
             ["y"] = 1312.9,
@@ -696,7 +696,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1345.9,
             ["x"] = 3890.8,
         },
-        ["CRange"] = 29423,
+        ["Waypoint"] = 29423,
         ["Range"] = 17.21,
         ["TT"] = {
             ["y"] = 1345.9,
@@ -708,7 +708,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1242.8,
             ["x"] = 3616.6,
         },
-        ["CRange"] = 29423,
+        ["Waypoint"] = 29423,
         ["Range"] = 17.88,
         ["TT"] = {
             ["y"] = 1242.8,
@@ -720,7 +720,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1142.4,
             ["x"] = 3594.6,
         },
-        ["CRange"] = 29423,
+        ["Waypoint"] = 29423,
         ["Range"] = 14.83,
         ["TT"] = {
             ["y"] = 1142.4,
@@ -732,7 +732,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1068.2,
             ["x"] = 3601.9,
         },
-        ["CRange"] = 29423,
+        ["Waypoint"] = 29423,
         ["Range"] = 21.49,
         ["TT"] = {
             ["y"] = 1068.2,
@@ -778,7 +778,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 942.1,
             ["x"] = 3557,
         },
-        ["CRange"] = 29521,
+        ["Waypoint"] = 29521,
         ["Range"] = 10.28,
         ["TT"] = {
             ["y"] = 942.1,
@@ -790,7 +790,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 953.2,
             ["x"] = 3455,
         },
-        ["CRange"] = 29521,
+        ["Waypoint"] = 29521,
         ["Range"] = 13.69,
         ["TT"] = {
             ["y"] = 953.2,
@@ -880,7 +880,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1065.2,
             ["x"] = 3101.1,
         },
-        ["CRange"] = 29676,
+        ["Waypoint"] = 29676,
         ["Range"] = 13.99,
         ["TT"] = {
             ["y"] = 1065.2,
@@ -892,7 +892,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1103.5,
             ["x"] = 3060.9,
         },
-        ["CRange"] = 29676,
+        ["Waypoint"] = 29676,
         ["Range"] = 12.81,
         ["TT"] = {
             ["y"] = 1103.5,
@@ -974,7 +974,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1057.8,
             ["x"] = 2844.3,
         },
-        ["CRange"] = 29678,
+        ["Waypoint"] = 29678,
         ["Range"] = 5.9,
         ["TT"] = {
             ["y"] = 1041.5,
@@ -1074,7 +1074,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 945.7,
             ["x"] = 2835.4,
         },
-        ["CRange"] = 29680,
+        ["Waypoint"] = 29680,
         ["Range"] = 11.09,
         ["TT"] = {
             ["y"] = 979.7,
@@ -1109,7 +1109,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [3]
     {
-        ["CRange"] = 29770,
+        ["Waypoint"] = 29770,
         ["Trigger"] = {
             ["y"] = 532.6,
             ["x"] = 3069.5,
@@ -1398,7 +1398,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 544.6,
             ["x"] = 3200.9,
         },
-        ["CRange"] = 29775,
+        ["Waypoint"] = 29775,
         ["Range"] = 14.95,
         ["TT"] = {
             ["y"] = 589.7,
@@ -1428,7 +1428,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 911.2,
             ["x"] = 3614.5,
         },
-        ["CRange"] = 29776,
+        ["Waypoint"] = 29776,
         ["Range"] = 7.93,
         ["TT"] = {
             ["y"] = 911.2,
@@ -1440,7 +1440,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 918.5,
             ["x"] = 3634.6,
         },
-        ["CRange"] = 29776,
+        ["Waypoint"] = 29776,
         ["Range"] = 8.54,
         ["TT"] = {
             ["y"] = 918.5,
@@ -1452,7 +1452,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 882.7,
             ["x"] = 3711.5,
         },
-        ["CRange"] = 29776,
+        ["Waypoint"] = 29776,
         ["Range"] = 16.05,
         ["TT"] = {
             ["y"] = 882.7,
@@ -1464,7 +1464,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 872.7,
             ["x"] = 3776,
         },
-        ["CRange"] = 29776,
+        ["Waypoint"] = 29776,
         ["Range"] = 16.46,
         ["TT"] = {
             ["y"] = 872.7,
@@ -1476,7 +1476,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 875.7,
             ["x"] = 4026.8,
         },
-        ["CRange"] = 29776,
+        ["Waypoint"] = 29776,
         ["Range"] = 18.96,
         ["TT"] = {
             ["y"] = 875.7,
@@ -1584,7 +1584,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1084,
             ["x"] = 4180.2,
         },
-        ["CRange"] = 29779,
+        ["Waypoint"] = 29779,
         ["Range"] = 14.51,
         ["TT"] = {
             ["y"] = 1084,
@@ -1596,7 +1596,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1124.2,
             ["x"] = 4238.7,
         },
-        ["CRange"] = 29779,
+        ["Waypoint"] = 29779,
         ["Range"] = 16.72,
         ["TT"] = {
             ["y"] = 1124.2,
@@ -1715,7 +1715,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 1097.3,
             ["x"] = 4169.1,
         },
-        ["CRange"] = 29785,
+        ["Waypoint"] = 29785,
         ["Range"] = 18.58,
         ["TT"] = {
             ["y"] = 1097.3,
@@ -1727,7 +1727,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 675.7,
             ["x"] = 4202.3,
         },
-        ["CRange"] = 29785,
+        ["Waypoint"] = 29785,
         ["Range"] = 21.82,
         ["TT"] = {
             ["y"] = 675.7,
@@ -1807,7 +1807,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 822.5,
             ["x"] = 4210.1,
         },
-        ["CRange"] = 29787,
+        ["Waypoint"] = 29787,
         ["Range"] = 23.51,
         ["TT"] = {
             ["y"] = 822.5,
@@ -1835,7 +1835,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 848,
             ["x"] = 4405.6,
         },
-        ["CRange"] = 29787,
+        ["Waypoint"] = 29787,
         ["Range"] = 18.12,
         ["TT"] = {
             ["y"] = 848,
@@ -2230,7 +2230,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 269.8,
             ["x"] = 4005.6,
         },
-        ["CRange"] = 30767,
+        ["Waypoint"] = 30767,
         ["Range"] = 7.25,
         ["TT"] = {
             ["y"] = 269.8,
@@ -2242,7 +2242,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 237.5,
             ["x"] = 4010.3,
         },
-        ["CRange"] = 30767,
+        ["Waypoint"] = 30767,
         ["Range"] = 7.46,
         ["TT"] = {
             ["y"] = 237.5,
@@ -2254,7 +2254,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 237.5,
             ["x"] = 3998.5,
         },
-        ["CRange"] = 30767,
+        ["Waypoint"] = 30767,
         ["Range"] = 3.27,
         ["TT"] = {
             ["y"] = 237.5,
@@ -2335,7 +2335,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 334.6,
             ["x"] = 3887,
         },
-        ["CRange"] = 29800,
+        ["Waypoint"] = 29800,
         ["Range"] = 24.94,
         ["TT"] = {
             ["y"] = 263.2,
@@ -2365,7 +2365,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             ["y"] = 334.6,
             ["x"] = 3887,
         },
-        ["CRange"] = 29800,
+        ["Waypoint"] = 29800,
         ["Range"] = 24.94,
         ["TT"] = {
             ["y"] = 263.2,
