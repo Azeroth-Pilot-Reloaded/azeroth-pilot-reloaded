@@ -61,6 +61,7 @@ function PreviousQuestStep()
     local questStepList = APR.RouteQuestStepList[activeMap]
     local faction = APR.Faction
     local race = APR.Race
+    local gender = APR.Gender
     local className = APR.ClassName
 
     while true do
@@ -69,6 +70,7 @@ function PreviousQuestStep()
 
         if not ((steps["Faction"] and steps["Faction"] ~= faction) or
                 (steps["Race"] and steps["Race"] ~= race) or
+                (steps["Gender"] and steps["Gender"] ~= gender) or
                 (steps["Class"] and steps["Class"] ~= className) or
                 (steps["HasAchievement"] and not _G.HasAchievement(steps["HasAchievement"])) or
                 (steps["DontHaveAchievement"] and _G.HasAchievement(steps["DontHaveAchievement"])) or
@@ -89,6 +91,7 @@ function GetTotalSteps(route)
         if (
                 (not step.Faction or step.Faction == APR.Faction) and
                 (not step.Race or step.Race == APR.Race) and
+                (not step.Gender or step.Gender == APR.Gender) and
                 (not step.Class or step.Class == APR.ClassName) and
                 (not step.HasAchievement or _G.HasAchievement(step.HasAchievement)) and
                 (not step.DontHaveAchievement or not _G.HasAchievement(step.DontHaveAchievement))

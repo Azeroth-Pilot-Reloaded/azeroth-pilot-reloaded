@@ -194,6 +194,7 @@ local function SkipStepCondition(steps)
     if (
             (steps["Faction"] and steps["Faction"] ~= APR.Faction) or
             (steps["Race"] and steps["Race"] ~= APR.Race) or
+            (steps["Gender"] and steps["Gender"] ~= APR.Gender) or
             (steps["Class"] and steps["Class"] ~= APR.ClassName) or
             (steps["HasAchievement"] and not _G.HasAchievement(steps["HasAchievement"])) or
             (steps["DontHaveAchievement"] and _G.HasAchievement(steps["DontHaveAchievement"]))
