@@ -10,10 +10,6 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 10311.7,
-            ["x"] = 844.6,
-        },
         ["Qpart"] = {
             [28713] = {
                 ["1"] = "1",
@@ -53,10 +49,6 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = 10309.5,
-            ["x"] = 1014.2,
-        },
         ["Qpart"] = {
             [28715] = {
                 ["1"] = "1",
@@ -109,10 +101,6 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 10559.7,
-            ["x"] = 876.4,
-        },
         ["Qpart"] = {
             [28724] = {
                 ["1"] = "1",
@@ -161,10 +149,6 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
         },
     }, -- [15]
     {
-        ["Trigger"] = {
-            ["y"] = 10835.9,
-            ["x"] = 930.9,
-        },
         ["Qpart"] = {
             [28726] = {
                 ["1"] = "1",
@@ -195,10 +179,6 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
         },
     }, -- [18]
     {
-        ["Trigger"] = {
-            ["y"] = 10939.7,
-            ["x"] = 922.7,
-        },
         ["Qpart"] = {
             [28727] = {
                 ["1"] = "1",
@@ -252,10 +232,6 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 10703.5,
-            ["x"] = 764.2,
-        },
         ["Button"] = {
             ["28729-1"] = 5185,
         },
@@ -284,10 +260,6 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
         },
     }, -- [26]
     {
-        ["Trigger"] = {
-            ["y"] = 10417.5,
-            ["x"] = 887,
-        },
         ["Range"] = 10.77,
         ["Waypoint"] = 28730,
         ["TT"] = {
@@ -296,10 +268,6 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
         },
     }, -- [27]
     {
-        ["Trigger"] = {
-            ["y"] = 10466.9,
-            ["x"] = 857.9,
-        },
         ["Range"] = 9.32,
         ["Waypoint"] = 28730,
         ["TT"] = {
@@ -308,10 +276,6 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
         },
     }, -- [28]
     {
-        ["Trigger"] = {
-            ["y"] = 10517,
-            ["x"] = 824.5,
-        },
         ["Range"] = 9.15,
         ["Waypoint"] = 28730,
         ["TT"] = {
@@ -320,10 +284,6 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
         },
     }, -- [29]
     {
-        ["Trigger"] = {
-            ["y"] = 10451.7,
-            ["x"] = 843.2,
-        },
         ["Range"] = 10.13,
         ["Waypoint"] = 28730,
         ["TT"] = {
@@ -332,10 +292,6 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
         },
     }, -- [30]
     {
-        ["Trigger"] = {
-            ["y"] = 10446.7,
-            ["x"] = 819,
-        },
         ["Range"] = 10.75,
         ["Waypoint"] = 28730,
         ["TT"] = {
@@ -344,10 +300,6 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
         },
     }, -- [31]
     {
-        ["Trigger"] = {
-            ["y"] = 10501.6,
-            ["x"] = 788.2,
-        },
         ["Range"] = 5.7,
         ["Waypoint"] = 28730,
         ["TT"] = {
@@ -416,10 +368,6 @@ APR.RouteQuestStepList["A97-AmmenVale"] = {
         },
     }, -- [3]
     {
-        ["Trigger"] = {
-            ["y"] = -3943.5,
-            ["x"] = -13694.5,
-        },
         ["Qpart"] = {
             [9280] = {
                 ["1"] = "1",
@@ -495,10 +443,6 @@ APR.RouteQuestStepList["A97-AmmenVale"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = -3995.7,
-            ["x"] = -13624.8,
-        },
         ["Qpart"] = {
             [10302] = {
                 ["1"] = "1",
@@ -552,10 +496,6 @@ APR.RouteQuestStepList["A97-AmmenVale"] = {
         },
     }, -- [16]
     {
-        ["Trigger"] = {
-            ["y"] = -4159.5,
-            ["x"] = -13491.5,
-        },
         ["Qpart"] = {
             [9799] = {
                 ["1"] = "1",
@@ -572,10 +512,6 @@ APR.RouteQuestStepList["A97-AmmenVale"] = {
     }, -- [17]
     {
         ["Waypoint"] = 37445,
-        ["Trigger"] = {
-            ["y"] = -4458.9,
-            ["x"] = -13875.7,
-        },
         ["Fillers"] = {
             [37444] = {
                 ["1"] = "1",
@@ -598,10 +534,6 @@ APR.RouteQuestStepList["A97-AmmenVale"] = {
             [37444] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -4597.5,
-            ["x"] = -13977.8,
         },
         ["Button"] = {
             ["37444-1"] = 22962,
@@ -656,10 +588,6 @@ APR.RouteQuestStepList["A97-AmmenVale"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -4385.9,
-            ["x"] = -13635,
-        },
         ["Button"] = {
             ["9294-1"] = 22955,
         },
@@ -688,10 +616,6 @@ APR.RouteQuestStepList["A97-AmmenVale"] = {
         },
     }, -- [26]
     {
-        ["Trigger"] = {
-            ["y"] = -4519.8,
-            ["x"] = -13361,
-        },
         ["Qpart"] = {
             [10303] = {
                 ["1"] = "1",
@@ -722,10 +646,6 @@ APR.RouteQuestStepList["A97-AmmenVale"] = {
         },
     }, -- [29]
     {
-        ["Trigger"] = {
-            ["y"] = -4578.4,
-            ["x"] = -13319.8,
-        },
         ["Qpart"] = {
             [9311] = {
                 ["1"] = "1",
@@ -834,10 +754,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -4073.7,
-            ["x"] = -12999.2,
-        },
         ["Button"] = {
             ["9452-1"] = 23654,
         },
@@ -906,10 +822,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             [9538] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -4178.4,
-            ["x"] = -12510.5,
         },
         ["Button"] = {
             ["9538-1"] = 23818,
@@ -1039,10 +951,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [23]
     {
-        ["Trigger"] = {
-            ["y"] = -4583.5,
-            ["x"] = -11595.5,
-        },
         ["Qpart"] = {
             [9544] = {
                 ["1"] = "1",
@@ -1073,10 +981,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [26]
     {
-        ["Trigger"] = {
-            ["y"] = -5076.5,
-            ["x"] = -11032.2,
-        },
         ["Qpart"] = {
             [9527] = {
                 ["1"] = "1",
@@ -1098,10 +1002,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [28]
     {
-        ["Trigger"] = {
-            ["y"] = -4595.7,
-            ["x"] = -11887.8,
-        },
         ["Qpart"] = {
             [9454] = {
                 ["1"] = "1",
@@ -1169,10 +1069,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [7]
     {
-        ["Trigger"] = {
-            ["y"] = -3381.7,
-            ["x"] = -12564.8,
-        },
         ["Range"] = 25.37,
         ["Waypoint"] = 9560,
         ["TT"] = {
@@ -1186,10 +1082,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -3066.9,
-            ["x"] = -12697.8,
-        },
         ["Fillers"] = {
             [9560] = {
                 ["1"] = "1",
@@ -1202,10 +1094,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -3151.4,
-            ["x"] = -12677.8,
-        },
         ["Qpart"] = {
             [9560] = {
                 ["1"] = "1",
@@ -1218,10 +1106,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = -3293.5,
-            ["x"] = -11871,
-        },
         ["Qpart"] = {
             [9562] = {
                 ["1"] = "1",
@@ -1284,10 +1168,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [16]
     {
-        ["Trigger"] = {
-            ["y"] = -3304.9,
-            ["x"] = -12347.8,
-        },
         ["Range"] = 8.63,
         ["Waypoint"] = 9573,
         ["TT"] = {
@@ -1296,10 +1176,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [17]
     {
-        ["Trigger"] = {
-            ["y"] = -3256.9,
-            ["x"] = -12361.5,
-        },
         ["Range"] = 9.31,
         ["Waypoint"] = 9573,
         ["TT"] = {
@@ -1312,10 +1188,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             [9573] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -3176.5,
-            ["x"] = -12430.5,
         },
         ["Fillers"] = {
             [9573] = {
@@ -1333,10 +1205,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             [9570] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -3144.5,
-            ["x"] = -12529.3,
         },
         ["Fillers"] = {
             [9573] = {
@@ -1373,10 +1241,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -3167.2,
-            ["x"] = -12466.7,
-        },
         ["Qpart"] = {
             [9573] = {
                 ["2"] = "2",
@@ -1389,10 +1253,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [23]
     {
-        ["Trigger"] = {
-            ["y"] = -3261.5,
-            ["x"] = -12357.5,
-        },
         ["Range"] = 10.09,
         ["Waypoint"] = 9573,
         ["TT"] = {
@@ -1455,10 +1315,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [30]
     {
-        ["Trigger"] = {
-            ["y"] = -3706.5,
-            ["x"] = -12603.3,
-        },
         ["Qpart"] = {
             [10324] = {
                 ["1"] = "1",
@@ -1513,10 +1369,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -4595.3,
-            ["x"] = -12883.7,
-        },
         ["Fillers"] = {
             [9512] = {
                 ["1"] = "1",
@@ -1529,10 +1381,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [37]
     {
-        ["Trigger"] = {
-            ["y"] = -4628.8,
-            ["x"] = -12924.3,
-        },
         ["Qpart"] = {
             [9506] = {
                 ["1"] = "1",
@@ -1545,10 +1393,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [38]
     {
-        ["Trigger"] = {
-            ["y"] = -4656.2,
-            ["x"] = -12728,
-        },
         ["Qpart"] = {
             [9512] = {
                 ["1"] = "1",
@@ -1582,10 +1426,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [41]
     {
-        ["Trigger"] = {
-            ["y"] = -4578.4,
-            ["x"] = -12367.3,
-        },
         ["Qpart"] = {
             [9530] = {
                 ["1"] = "1",
@@ -1599,10 +1439,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [42]
     {
-        ["Trigger"] = {
-            ["y"] = -4883.9,
-            ["x"] = -11751,
-        },
         ["Qpart"] = {
             [9523] = {
                 ["1"] = "1",
@@ -1654,10 +1490,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [46]
     {
-        ["Trigger"] = {
-            ["y"] = -4874.2,
-            ["x"] = -11601,
-        },
         ["Range"] = 11.19,
         ["Waypoint"] = 9515,
         ["TT"] = {
@@ -1666,10 +1498,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [47]
     {
-        ["Trigger"] = {
-            ["y"] = -4830.9,
-            ["x"] = -11579.5,
-        },
         ["Range"] = 10.26,
         ["Waypoint"] = 9515,
         ["TT"] = {
@@ -1678,10 +1506,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [48]
     {
-        ["Trigger"] = {
-            ["y"] = -4802.4,
-            ["x"] = -11515.8,
-        },
         ["Qpart"] = {
             [9515] = {
                 ["1"] = "1",
@@ -1694,10 +1518,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [49]
     {
-        ["Trigger"] = {
-            ["y"] = -4797,
-            ["x"] = -11612.8,
-        },
         ["Range"] = 7.5,
         ["Waypoint"] = 9515,
         ["TT"] = {
@@ -1706,10 +1526,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [50]
     {
-        ["Trigger"] = {
-            ["y"] = -4733.4,
-            ["x"] = -11546.3,
-        },
         ["Range"] = 10.67,
         ["Waypoint"] = 9515,
         ["TT"] = {
@@ -1718,10 +1534,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [51]
     {
-        ["Trigger"] = {
-            ["y"] = -4767,
-            ["x"] = -11535.3,
-        },
         ["Range"] = 10.64,
         ["Waypoint"] = 9515,
         ["TT"] = {
@@ -1730,10 +1542,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
         },
     }, -- [52]
     {
-        ["Trigger"] = {
-            ["y"] = -4874.9,
-            ["x"] = -11599.2,
-        },
         ["Range"] = 17.13,
         ["Waypoint"] = 9515,
         ["TT"] = {
@@ -1746,10 +1554,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             [9531] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -5054.4,
-            ["x"] = -11257,
         },
         ["Button"] = {
             ["9531-1"] = 23792,
@@ -1786,10 +1590,6 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -4694.4,
-            ["x"] = -12546.8,
-        },
         ["RaidIcon"] = 17243,
         ["Range"] = 0.61,
         ["TT"] = {
@@ -1858,10 +1658,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [3]
     {
-        ["Trigger"] = {
-            ["y"] = -3352.5,
-            ["x"] = -12400.3,
-        },
         ["Qpart"] = {
             [9663] = {
                 ["1"] = "1",
@@ -1874,10 +1670,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -4167,
-            ["x"] = -12416.8,
-        },
         ["Qpart"] = {
             [9663] = {
                 ["2"] = "2",
@@ -1890,10 +1682,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -4698.5,
-            ["x"] = -12414.5,
-        },
         ["Qpart"] = {
             [9663] = {
                 ["3"] = "3",
@@ -1915,10 +1703,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [7]
     {
-        ["Trigger"] = {
-            ["y"] = -2680.5,
-            ["x"] = -11976.3,
-        },
         ["Qpart"] = {
             [9624] = {
                 ["1"] = "1",
@@ -1958,10 +1742,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2226.9,
-            ["x"] = -12320.8,
-        },
         ["Button"] = {
             ["9666-1"] = 24084,
         },
@@ -1972,10 +1752,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -2219.5,
-            ["x"] = -12320.8,
-        },
         ["Qpart"] = {
             [9666] = {
                 ["2"] = "2",
@@ -2001,10 +1777,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
             [9667] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -2521.9,
-            ["x"] = -12299.3,
         },
         ["ExtraLineText"] = "KILL_BRISTLELIMBS",
         ["Range"] = 0.69,
@@ -2125,10 +1897,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1939,
-            ["x"] = -11850.3,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -1939,
@@ -2191,10 +1959,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [24]
     {
-        ["Trigger"] = {
-            ["y"] = -1800.8,
-            ["x"] = -12094.5,
-        },
         ["Qpart"] = {
             [9648] = {
                 ["3"] = "3",
@@ -2207,10 +1971,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [25]
     {
-        ["Trigger"] = {
-            ["y"] = -2107.2,
-            ["x"] = -12067,
-        },
         ["Qpart"] = {
             [9648] = {
                 ["2"] = "2",
@@ -2223,10 +1983,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [26]
     {
-        ["Trigger"] = {
-            ["y"] = -2173.5,
-            ["x"] = -12126.3,
-        },
         ["Qpart"] = {
             [9648] = {
                 ["1"] = "1",
@@ -2244,10 +2000,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2571,
-            ["x"] = -11973.5,
-        },
         ["Button"] = {
             ["9694-1"] = 23875,
         },
@@ -2263,10 +2015,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2770.7,
-            ["x"] = -11696.8,
-        },
         ["Button"] = {
             ["9694-1"] = 23995,
         },
@@ -2277,10 +2025,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [29]
     {
-        ["Trigger"] = {
-            ["y"] = -2532,
-            ["x"] = -11496.3,
-        },
         ["Qpart"] = {
             [9648] = {
                 ["4"] = "4",
@@ -2297,10 +2041,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
             [9567] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -2310,
-            ["x"] = -11265.7,
         },
         ["Fillers"] = {
             [9641] = {
@@ -2326,10 +2066,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [32]
     {
-        ["Trigger"] = {
-            ["y"] = -2509.2,
-            ["x"] = -11297.8,
-        },
         ["Qpart"] = {
             [9594] = {
                 ["1"] = "1",
@@ -2346,10 +2082,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [33]
     {
-        ["Trigger"] = {
-            ["y"] = -2131.5,
-            ["x"] = -11535,
-        },
         ["Range"] = 30.95,
         ["Waypoint"] = 9578,
         ["TT"] = {
@@ -2389,10 +2121,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2101.4,
-            ["x"] = -11307.8,
-        },
         ["ExtraLineText"] = "KILL_BLOOD_ELVES",
         ["Range"] = 41.48,
         ["TT"] = {
@@ -2401,10 +2129,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [37]
     {
-        ["Trigger"] = {
-            ["y"] = -1911,
-            ["x"] = -11520.5,
-        },
         ["Qpart"] = {
             [9643] = {
                 ["1"] = "1",
@@ -2420,10 +2144,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [38]
     {
-        ["Trigger"] = {
-            ["y"] = -1753,
-            ["x"] = -11632.3,
-        },
         ["Qpart"] = {
             [9694] = {
                 ["1"] = "1",
@@ -2571,10 +2291,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1703,
-            ["x"] = -12162.3,
-        },
         ["ExtraLineText"] = "KILL_NAGA",
         ["Range"] = 100.32,
         ["TT"] = {
@@ -2587,10 +2303,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
             [9574] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -2091.9,
-            ["x"] = -12058,
         },
         ["RaidIcon"] = 17352,
         ["Range"] = 69.45,
@@ -2627,10 +2339,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [58]
     {
-        ["Trigger"] = {
-            ["y"] = -2008,
-            ["x"] = -11497.8,
-        },
         ["Qpart"] = {
             [9647] = {
                 ["1"] = "1",
@@ -2648,10 +2356,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1794.3,
-            ["x"] = -11564.3,
-        },
         ["Button"] = {
             ["9569-1"] = 23876,
         },
@@ -2662,10 +2366,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [60]
     {
-        ["Trigger"] = {
-            ["y"] = -1783.6,
-            ["x"] = -11636.7,
-        },
         ["Qpart"] = {
             [9779] = {
                 ["1"] = "1",
@@ -2782,10 +2482,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1518.3,
-            ["x"] = -11381.3,
-        },
         ["Fillers"] = {
             [9569] = {
                 ["3"] = "3",
@@ -2803,10 +2499,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
             [9569] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1401,
-            ["x"] = -11441,
         },
         ["Fillers"] = {
             [9569] = {
@@ -2826,10 +2518,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1423.4,
-            ["x"] = -11422,
-        },
         ["Button"] = {
             ["9569-1"] = 23877,
         },
@@ -2840,10 +2528,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [75]
     {
-        ["Trigger"] = {
-            ["y"] = -1524.4,
-            ["x"] = -11370.5,
-        },
         ["Qpart"] = {
             [9569] = {
                 ["3"] = "3",
@@ -2857,10 +2541,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [76]
     {
-        ["Trigger"] = {
-            ["y"] = -1414,
-            ["x"] = -11285.3,
-        },
         ["Qpart"] = {
             [9646] = {
                 ["1"] = "1",
@@ -2892,10 +2572,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [79]
     {
-        ["Trigger"] = {
-            ["y"] = -1221.1,
-            ["x"] = -11338.5,
-        },
         ["Qpart"] = {
             [9549] = {
                 ["1"] = "1",
@@ -2936,10 +2612,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1264.5,
-            ["x"] = -11765.3,
-        },
         ["Fillers"] = {
             [9700] = {
                 ["1"] = "1",
@@ -2952,10 +2624,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [83]
     {
-        ["Trigger"] = {
-            ["y"] = -1264.5,
-            ["x"] = -11765.3,
-        },
         ["Qpart"] = {
             [9700] = {
                 ["1"] = "1",
@@ -2968,10 +2636,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [84]
     {
-        ["Trigger"] = {
-            ["y"] = -1107.1,
-            ["x"] = -12414.2,
-        },
         ["Qpart"] = {
             [9649] = {
                 ["1"] = "1",
@@ -3066,10 +2730,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [95]
     {
-        ["Trigger"] = {
-            ["y"] = -2073,
-            ["x"] = -11350.7,
-        },
         ["Qpart"] = {
             [9703] = {
                 ["1"] = "1",
@@ -3121,10 +2781,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [100]
     {
-        ["Trigger"] = {
-            ["y"] = -2024.8,
-            ["x"] = -11084.8,
-        },
         ["Qpart"] = {
             [10065] = {
                 ["1"] = "1",
@@ -3140,10 +2796,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [101]
     {
-        ["Trigger"] = {
-            ["y"] = -2121,
-            ["x"] = -10721.5,
-        },
         ["Qpart"] = {
             [9741] = {
                 ["1"] = "1",
@@ -3156,10 +2808,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [102]
     {
-        ["Trigger"] = {
-            ["y"] = -1913,
-            ["x"] = -10707.3,
-        },
         ["Qpart"] = {
             [9761] = {
                 ["1"] = "1",
@@ -3189,10 +2837,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
     }, -- [104]
     {
         ["Waypoint"] = 9669,
-        ["Trigger"] = {
-            ["y"] = -1550.4,
-            ["x"] = -10786,
-        },
         ["Fillers"] = {
             [9669] = {
                 ["1"] = "1",
@@ -3210,10 +2854,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
     }, -- [105]
     {
         ["Waypoint"] = 9669,
-        ["Trigger"] = {
-            ["y"] = -1374.5,
-            ["x"] = -10659.2,
-        },
         ["Fillers"] = {
             [9669] = {
                 ["1"] = "1",
@@ -3231,10 +2871,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
     }, -- [106]
     {
         ["Waypoint"] = 9669,
-        ["Trigger"] = {
-            ["y"] = -1425.6,
-            ["x"] = -10617,
-        },
         ["Fillers"] = {
             [9669] = {
                 ["1"] = "1",
@@ -3256,10 +2892,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1589.5,
-            ["x"] = -10669,
-        },
         ["Fillers"] = {
             [9669] = {
                 ["1"] = "1",
@@ -3276,10 +2908,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [108]
     {
-        ["Trigger"] = {
-            ["y"] = -1587.8,
-            ["x"] = -10665.3,
-        },
         ["Qpart"] = {
             [9669] = {
                 ["1"] = "1",
@@ -3305,10 +2933,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [110]
     {
-        ["Trigger"] = {
-            ["y"] = -1563.5,
-            ["x"] = -11030,
-        },
         ["Qpart"] = {
             [10067] = {
                 ["1"] = "1",
@@ -3354,10 +2978,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
             [9759] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1882.5,
-            ["x"] = -10970.5,
         },
         ["RaidIcon"] = 17982,
         ["Range"] = 438.88,
@@ -3418,10 +3038,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1486.8,
-            ["x"] = -11198,
-        },
         ["Button"] = {
             ["9748-1"] = 24318,
         },
@@ -3452,10 +3068,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [123]
     {
-        ["Trigger"] = {
-            ["y"] = -1634.3,
-            ["x"] = -11616.5,
-        },
         ["Waypoint"] = 9711,
         ["Range"] = 39.78,
         ["TT"] = {
@@ -3469,10 +3081,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1873.5,
-            ["x"] = -11042.2,
-        },
         ["Button"] = {
             ["9746-1"] = 24278,
         },
@@ -3483,10 +3091,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [125]
     {
-        ["Trigger"] = {
-            ["y"] = -1938,
-            ["x"] = -10854.8,
-        },
         ["Qpart"] = {
             [9746] = {
                 ["1"] = "1",
@@ -3519,10 +3123,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [128]
     {
-        ["Trigger"] = {
-            ["y"] = -2122.4,
-            ["x"] = -10718.8,
-        },
         ["Qpart"] = {
             [9740] = {
                 ["1"] = "1",
@@ -3553,10 +3153,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [131]
     {
-        ["Trigger"] = {
-            ["y"] = -1468,
-            ["x"] = -11982,
-        },
         ["Qpart"] = {
             [9687] = {
                 ["1"] = "1",
@@ -3587,10 +3183,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [134]
     {
-        ["Trigger"] = {
-            ["y"] = -1309.1,
-            ["x"] = -12428.8,
-        },
         ["Qpart"] = {
             [9688] = {
                 ["1"] = "1",
@@ -3622,10 +3214,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [137]
     {
-        ["Trigger"] = {
-            ["y"] = -1211.6,
-            ["x"] = -12448.8,
-        },
         ["Qpart"] = {
             [9689] = {
                 ["1"] = "1",
@@ -3675,10 +3263,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [142]
     {
-        ["Trigger"] = {
-            ["y"] = -1184.8,
-            ["x"] = -12741.3,
-        },
         ["Qpart"] = {
             [9674] = {
                 ["1"] = "1",
@@ -3709,10 +3293,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [145]
     {
-        ["Trigger"] = {
-            ["y"] = -1073,
-            ["x"] = -12872.8,
-        },
         ["Qpart"] = {
             [9682] = {
                 ["1"] = "1",
@@ -3743,10 +3323,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [148]
     {
-        ["Trigger"] = {
-            ["y"] = -1785,
-            ["x"] = -12766.5,
-        },
         ["Range"] = 34,
         ["Waypoint"] = 9683,
         ["TT"] = {
@@ -3755,10 +3331,6 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
         },
     }, -- [149]
     {
-        ["Trigger"] = {
-            ["y"] = -1937.5,
-            ["x"] = -12876.8,
-        },
         ["Qpart"] = {
             [9683] = {
                 ["1"] = "1",
@@ -3809,10 +3381,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["4"] = "4",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 7440.3,
-            ["x"] = 106.4,
-        },
         ["Fillers"] = {
             [13522] = {
                 ["1"] = "1",
@@ -3829,10 +3397,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             [13518] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 7457,
-            ["x"] = 165.6,
         },
         ["Fillers"] = {
             [13522] = {
@@ -3851,10 +3415,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 7366.1,
-            ["x"] = 135.1,
-        },
         ["Fillers"] = {
             [13522] = {
                 ["1"] = "1",
@@ -3872,10 +3432,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 7296.6,
-            ["x"] = 242.6,
-        },
         ["Fillers"] = {
             [13522] = {
                 ["1"] = "1",
@@ -3888,10 +3444,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [7]
     {
-        ["Trigger"] = {
-            ["y"] = 7421.8,
-            ["x"] = 131.4,
-        },
         ["Qpart"] = {
             [13522] = {
                 ["1"] = "1",
@@ -3940,10 +3492,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = 7518.7,
-            ["x"] = -293.4,
-        },
         ["Qpart"] = {
             [13521] = {
                 ["1"] = "1",
@@ -3977,10 +3525,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [15]
     {
-        ["Trigger"] = {
-            ["y"] = 7320.1,
-            ["x"] = -543,
-        },
         ["Qpart"] = {
             [13527] = {
                 ["1"] = "1",
@@ -4020,10 +3564,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [19]
     {
-        ["Trigger"] = {
-            ["y"] = 7180.7,
-            ["x"] = -516.8,
-        },
         ["Qpart"] = {
             [13528] = {
                 ["1"] = "1",
@@ -4054,10 +3594,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 7045.3,
-            ["x"] = -618.5,
-        },
         ["Range"] = 12,
         ["Waypoint"] = 13554,
         ["TT"] = {
@@ -4076,10 +3612,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
     }, -- [24]
     {
         ["Waypoint"] = 13554,
-        ["Trigger"] = {
-            ["y"] = 6799.1,
-            ["x"] = -674.8,
-        },
         ["Fillers"] = {
             [13529] = {
                 ["2"] = "2",
@@ -4125,10 +3657,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
     }, -- [27]
     {
         ["Waypoint"] = 13529,
-        ["Trigger"] = {
-            ["y"] = 6818.6,
-            ["x"] = -698,
-        },
         ["Fillers"] = {
             [13557] = {
                 ["1"] = "1",
@@ -4152,10 +3680,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6801.5,
-            ["x"] = -754,
-        },
         ["Fillers"] = {
             [13557] = {
                 ["1"] = "1",
@@ -4174,10 +3698,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [29]
     {
-        ["Trigger"] = {
-            ["y"] = 6801.5,
-            ["x"] = -754,
-        },
         ["Qpart"] = {
             [13557] = {
                 ["1"] = "1",
@@ -4241,10 +3761,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6749.8,
-            ["x"] = 48.5,
-        },
         ["Fillers"] = {
             [13561] = {
                 ["2"] = "2",
@@ -4263,10 +3779,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6643.8,
-            ["x"] = -112.4,
-        },
         ["Fillers"] = {
             [13561] = {
                 ["1"] = "1",
@@ -4280,10 +3792,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [36]
     {
-        ["Trigger"] = {
-            ["y"] = 6677.3,
-            ["x"] = -77.5,
-        },
         ["Qpart"] = {
             [13561] = {
                 ["1"] = "1",
@@ -4306,10 +3814,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [38]
     {
-        ["Trigger"] = {
-            ["y"] = 6541.3,
-            ["x"] = 239.5,
-        },
         ["Qpart"] = {
             [13564] = {
                 ["1"] = "1",
@@ -4333,10 +3837,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [40]
     {
-        ["Trigger"] = {
-            ["y"] = 6691.3,
-            ["x"] = 391.8,
-        },
         ["Qpart"] = {
             [13566] = {
                 ["1"] = "1",
@@ -4349,10 +3849,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [41]
     {
-        ["Trigger"] = {
-            ["y"] = 6458.6,
-            ["x"] = 110.9,
-        },
         ["Qpart"] = {
             [13566] = {
                 ["2"] = "2",
@@ -4369,10 +3865,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             [13565] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 6481.3,
-            ["x"] = -121.6,
         },
         ["Fillers"] = {
             [13566] = {
@@ -4402,10 +3894,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             [13598] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 6470.3,
-            ["x"] = -96.1,
         },
         ["Button"] = {
             ["13565-2"] = 45911,
@@ -4443,10 +3931,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 6541.2,
-            ["x"] = 241.1,
-        },
         ["ExtraLineText"] = "CLICK_INCENSE",
         ["Range"] = 0.69,
         ["TT"] = {
@@ -4486,10 +3970,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             [13523] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 6969,
-            ["x"] = 220.9,
         },
         ["Button"] = {
             ["13523-1"] = 44975,
@@ -4555,10 +4035,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [57]
     {
-        ["Trigger"] = {
-            ["y"] = 7748.3,
-            ["x"] = -407,
-        },
         ["Qpart"] = {
             [13560] = {
                 ["1"] = "1",
@@ -4590,10 +4066,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [60]
     {
-        ["Trigger"] = {
-            ["y"] = 7418,
-            ["x"] = -953.8,
-        },
         ["Qpart"] = {
             [13505] = {
                 ["1"] = "1",
@@ -4670,10 +4142,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 7994,
-            ["x"] = -1128,
-        },
         ["Qpart"] = {
             [13511] = {
                 ["1"] = "1",
@@ -4709,10 +4177,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 7869.8,
-            ["x"] = -1066.6,
-        },
         ["RaidIcon"] = 32964,
         ["Range"] = 199.45,
         ["TT"] = {
@@ -4729,10 +4193,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             [13509] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 7856.1,
-            ["x"] = -1027,
         },
         ["Button"] = {
             ["13509-1"] = 44999,
@@ -4777,10 +4237,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 7349,
-            ["x"] = -940.8,
-        },
         ["Button"] = {
             ["13512-2"] = 44995,
         },
@@ -4795,10 +4251,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             [13844] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 7194.7,
-            ["x"] = -740,
         },
         ["Fillers"] = {
             [13513] = {
@@ -4817,10 +4269,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 7190,
-            ["x"] = -750.5,
-        },
         ["Fillers"] = {
             [13513] = {
                 ["1"] = "1",
@@ -4838,10 +4286,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 7103.6,
-            ["x"] = -649,
-        },
         ["Fillers"] = {
             [13513] = {
                 ["1"] = "1",
@@ -4854,10 +4298,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [76]
     {
-        ["Trigger"] = {
-            ["y"] = 7151.6,
-            ["x"] = -735.8,
-        },
         ["Qpart"] = {
             [13513] = {
                 ["1"] = "1",
@@ -4890,10 +4330,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [79]
     {
-        ["Trigger"] = {
-            ["y"] = 7362.8,
-            ["x"] = -1084.9,
-        },
         ["Range"] = 25.55,
         ["Waypoint"] = 13590,
         ["TT"] = {
@@ -4902,10 +4338,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [80]
     {
-        ["Trigger"] = {
-            ["y"] = 7417.3,
-            ["x"] = -1345,
-        },
         ["Range"] = 11.36,
         ["Waypoint"] = 13590,
         ["TT"] = {
@@ -4923,10 +4355,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [82]
     {
-        ["Trigger"] = {
-            ["y"] = 7383.3,
-            ["x"] = -1469.5,
-        },
         ["Qpart"] = {
             [13514] = {
                 ["1"] = "1",
@@ -4958,10 +4386,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [85]
     {
-        ["Trigger"] = {
-            ["y"] = 7444.5,
-            ["x"] = -1691.5,
-        },
         ["Qpart"] = {
             [13515] = {
                 ["1"] = "1",
@@ -5045,10 +4469,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6870.5,
-            ["x"] = 195.1,
-        },
         ["RaidIcon"] = 32899,
         ["Range"] = 0.75,
         ["TT"] = {
@@ -5057,10 +4477,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [93]
     {
-        ["Trigger"] = {
-            ["y"] = 6861.5,
-            ["x"] = 188.4,
-        },
         ["Qpart"] = {
             [13519] = {
                 ["2"] = "2",
@@ -5120,10 +4536,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6436,
-            ["x"] = 378.1,
-        },
         ["Fillers"] = {
             [13542] = {
                 ["1"] = "1",
@@ -5155,10 +4567,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["4"] = "4",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6328.5,
-            ["x"] = 553.4,
-        },
         ["Fillers"] = {
             [13542] = {
                 ["1"] = "1",
@@ -5177,10 +4585,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6380,
-            ["x"] = 571.2,
-        },
         ["Fillers"] = {
             [13542] = {
                 ["1"] = "1",
@@ -5193,10 +4597,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [102]
     {
-        ["Trigger"] = {
-            ["y"] = 6375.3,
-            ["x"] = 526.1,
-        },
         ["Waypoint"] = 13547,
         ["Range"] = 8.4,
         ["TT"] = {
@@ -5211,10 +4611,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 6417.3,
-            ["x"] = 525.2,
-        },
         ["Fillers"] = {
             [13542] = {
                 ["1"] = "1",
@@ -5231,10 +4627,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             [13547] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 6439.5,
-            ["x"] = 368.2,
         },
         ["Fillers"] = {
             [13542] = {
@@ -5254,10 +4646,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6545.5,
-            ["x"] = 476.6,
-        },
         ["Fillers"] = {
             [13542] = {
                 ["1"] = "1",
@@ -5276,10 +4664,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6572.6,
-            ["x"] = 486.3,
-        },
         ["Fillers"] = {
             [13542] = {
                 ["1"] = "1",
@@ -5297,10 +4681,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             [13542] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 6409.1,
-            ["x"] = 466.2,
         },
         ["Button"] = {
             ["13542-1"] = 44868,
@@ -5330,10 +4710,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [110]
     {
-        ["Trigger"] = {
-            ["y"] = 6456.3,
-            ["x"] = 655.9,
-        },
         ["Qpart"] = {
             [13558] = {
                 ["1"] = "1",
@@ -5359,10 +4735,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             [13605] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 6397.2,
-            ["x"] = 522.1,
         },
         ["RaidIcon"] = 33232,
         ["Range"] = 196.36,
@@ -5404,10 +4776,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [116]
     {
-        ["Trigger"] = {
-            ["y"] = 6128.6,
-            ["x"] = 125.3,
-        },
         ["Range"] = 23.65,
         ["Waypoint"] = 13577,
         ["TT"] = {
@@ -5434,10 +4802,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [119]
     {
-        ["Trigger"] = {
-            ["y"] = 6168.8,
-            ["x"] = 111.3,
-        },
         ["Qpart"] = {
             [13578] = {
                 ["1"] = "1",
@@ -5468,10 +4832,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [122]
     {
-        ["Trigger"] = {
-            ["y"] = 6059.2,
-            ["x"] = -6.6,
-        },
         ["Qpart"] = {
             [13582] = {
                 ["1"] = "1",
@@ -5520,10 +4880,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [127]
     {
-        ["Trigger"] = {
-            ["y"] = 5778.5,
-            ["x"] = 143.6,
-        },
         ["Qpart"] = {
             [13584] = {
                 ["1"] = "1",
@@ -5577,10 +4933,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 5593.2,
-            ["x"] = 431.2,
-        },
         ["Button"] = {
             ["13576-1"] = 44959,
         },
@@ -5613,10 +4965,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             [13580] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 5534.6,
-            ["x"] = 466.8,
         },
         ["Button"] = {
             ["13580-1"] = 46546,
@@ -5666,10 +5014,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [140]
     {
-        ["Trigger"] = {
-            ["y"] = 5806.1,
-            ["x"] = -25,
-        },
         ["Range"] = 10.22,
         ["Waypoint"] = 13586,
         ["TT"] = {
@@ -5678,10 +5022,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [141]
     {
-        ["Trigger"] = {
-            ["y"] = 5813.6,
-            ["x"] = -108.8,
-        },
         ["Range"] = 11.54,
         ["Waypoint"] = 13586,
         ["TT"] = {
@@ -5708,10 +5048,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [144]
     {
-        ["Trigger"] = {
-            ["y"] = 5840.8,
-            ["x"] = -195.7,
-        },
         ["Qpart"] = {
             [13587] = {
                 ["1"] = "1",
@@ -5760,10 +5096,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [149]
     {
-        ["Trigger"] = {
-            ["y"] = 5908.8,
-            ["x"] = 202.4,
-        },
         ["Qpart"] = {
             [13588] = {
                 ["1"] = "1",
@@ -5836,10 +5168,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 4813.8,
-            ["x"] = 106.3,
-        },
         ["Fillers"] = {
             [13881] = {
                 ["1"] = "1",
@@ -5852,10 +5180,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [157]
     {
-        ["Trigger"] = {
-            ["y"] = 4829.1,
-            ["x"] = 93.4,
-        },
         ["Qpart"] = {
             [13881] = {
                 ["1"] = "1",
@@ -5892,10 +5216,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 4997.5,
-            ["x"] = 83,
-        },
         ["RaidIcon"] = 33072,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -5922,10 +5242,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [163]
     {
-        ["Trigger"] = {
-            ["y"] = 4566.6,
-            ["x"] = 122.7,
-        },
         ["Qpart"] = {
             [13526] = {
                 ["1"] = "1",
@@ -5961,10 +5277,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 4623.2,
-            ["x"] = 230.5,
-        },
         ["RaidIcon"] = 34306,
         ["Range"] = 46.64,
         ["TT"] = {
@@ -5977,10 +5289,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             [13892] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 4589.1,
-            ["x"] = 398.1,
         },
         ["Button"] = {
             ["13892-1"] = 46696,
@@ -6010,10 +5318,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [170]
     {
-        ["Trigger"] = {
-            ["y"] = 4516.8,
-            ["x"] = 461.3,
-        },
         ["Range"] = 10.72,
         ["Waypoint"] = 13948,
         ["TT"] = {
@@ -6022,10 +5326,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [171]
     {
-        ["Trigger"] = {
-            ["y"] = 4491.3,
-            ["x"] = 368.3,
-        },
         ["Range"] = 17.66,
         ["Waypoint"] = 13948,
         ["TT"] = {
@@ -6034,10 +5334,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [172]
     {
-        ["Trigger"] = {
-            ["y"] = 4541.3,
-            ["x"] = 357.3,
-        },
         ["Range"] = 6.13,
         ["Waypoint"] = 13948,
         ["TT"] = {
@@ -6046,10 +5342,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [173]
     {
-        ["Trigger"] = {
-            ["y"] = 4558.2,
-            ["x"] = 381.6,
-        },
         ["Range"] = 8.08,
         ["Waypoint"] = 13948,
         ["TT"] = {
@@ -6058,10 +5350,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [174]
     {
-        ["Trigger"] = {
-            ["y"] = 4543.6,
-            ["x"] = 442,
-        },
         ["Range"] = 10.77,
         ["Waypoint"] = 13948,
         ["TT"] = {
@@ -6070,10 +5358,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [175]
     {
-        ["Trigger"] = {
-            ["y"] = 4565.3,
-            ["x"] = 434.6,
-        },
         ["Qpart"] = {
             [13948] = {
                 ["1"] = "1",
@@ -6107,10 +5391,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 4678.7,
-            ["x"] = 601.7,
-        },
         ["RaidIcon"] = 34343,
         ["Range"] = 174.06,
         ["TT"] = {
@@ -6133,10 +5413,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 4626.3,
-            ["x"] = 624.6,
-        },
         ["Fillers"] = {
             [13907] = {
                 ["1"] = "1",
@@ -6149,10 +5425,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [180]
     {
-        ["Trigger"] = {
-            ["y"] = 4626.3,
-            ["x"] = 624.6,
-        },
         ["Qpart"] = {
             [13907] = {
                 ["1"] = "1",
@@ -6198,10 +5470,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 4651.7,
-            ["x"] = 687.5,
-        },
         ["Button"] = {
             ["13918-1"] = 46388,
         },
@@ -6212,10 +5480,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
         },
     }, -- [184]
     {
-        ["Trigger"] = {
-            ["y"] = 4682.3,
-            ["x"] = 714.2,
-        },
         ["Qpart"] = {
             [13909] = {
                 ["1"] = "1",
@@ -6255,10 +5519,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 4691,
-            ["x"] = 695.4,
-        },
         ["Button"] = {
             ["13910-1"] = 46385,
         },
@@ -6284,10 +5544,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             },
         },
         ["ExtraLine"] = 13544,
-        ["Trigger"] = {
-            ["y"] = 4827.8,
-            ["x"] = 81.7,
-        },
         ["RaidIcon"] = 32997,
         ["Range"] = 0.75,
         ["TT"] = {
@@ -6300,10 +5556,6 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
             [13544] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 4914.8,
-            ["x"] = 89,
         },
         ["Button"] = {
             ["13544-1"] = 44888,
@@ -6362,10 +5614,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3771.9,
-            ["x"] = -154.7,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 3771.9,
@@ -6389,10 +5637,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         ["Button"] = {
             ["13595-1"] = 44967,
         },
-        ["Trigger"] = {
-            ["y"] = 3844.3,
-            ["x"] = -215.7,
-        },
         ["RaidIcon"] = 33183,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -6401,10 +5645,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = 3835.6,
-            ["x"] = -159.5,
-        },
         ["Qpart"] = {
             [26473] = {
                 ["1"] = "1",
@@ -6468,10 +5708,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = 3814.1,
-            ["x"] = 908.7,
-        },
         ["Qpart"] = {
             [13602] = {
                 ["1"] = "1",
@@ -6506,10 +5742,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [14]
     {
-        ["Trigger"] = {
-            ["y"] = 4162,
-            ["x"] = 1317,
-        },
         ["Qpart"] = {
             [26466] = {
                 ["1"] = "1",
@@ -6577,10 +5809,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [21]
     {
-        ["Trigger"] = {
-            ["y"] = 3162.6,
-            ["x"] = 169.6,
-        },
         ["Qpart"] = {
             [13624] = {
                 ["1"] = "1",
@@ -6617,10 +5845,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3195.9,
-            ["x"] = 183.1,
-        },
         ["Button"] = {
             ["13626-1"] = 45044,
         },
@@ -6635,10 +5859,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             [13626] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 3103.4,
-            ["x"] = 145.4,
         },
         ["ExtraLineText"] = "UPSTAIRS",
         ["Button"] = {
@@ -6666,10 +5886,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3398,
-            ["x"] = 111.3,
-        },
         ["Fillers"] = {
             [13632] = {
                 ["1"] = "1",
@@ -6686,10 +5902,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             [13630] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 3457.6,
-            ["x"] = 51.7,
         },
         ["Fillers"] = {
             [13632] = {
@@ -6708,10 +5920,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3467,
-            ["x"] = -51.2,
-        },
         ["Fillers"] = {
             [13632] = {
                 ["1"] = "1",
@@ -6724,10 +5932,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [30]
     {
-        ["Trigger"] = {
-            ["y"] = 3466.1,
-            ["x"] = -50,
-        },
         ["Qpart"] = {
             [13632] = {
                 ["1"] = "1",
@@ -6774,10 +5978,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3041.4,
-            ["x"] = 527.2,
-        },
         ["Fillers"] = {
             [26464] = {
                 ["1"] = "1",
@@ -6795,10 +5995,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3073.9,
-            ["x"] = 613.4,
-        },
         ["Fillers"] = {
             [26464] = {
                 ["1"] = "1",
@@ -6814,10 +6010,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [36]
     {
-        ["Trigger"] = {
-            ["y"] = 3079.5,
-            ["x"] = 521.2,
-        },
         ["Qpart"] = {
             [26464] = {
                 ["1"] = "1",
@@ -6870,10 +6062,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
     {
         ["Waypoint"] = 13646,
         ["ExtraLineText"] = "TALK_SENTINEL_AVANA",
-        ["Trigger"] = {
-            ["y"] = 3023,
-            ["x"] = -50.3,
-        },
         ["RaidIcon"] = 33445,
         ["Range"] = 87.55,
         ["TT"] = {
@@ -6891,10 +6079,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [43]
     {
-        ["Trigger"] = {
-            ["y"] = 2828.9,
-            ["x"] = -284.2,
-        },
         ["GetFP"] = 28,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -6954,10 +6138,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2726,
-            ["x"] = -382.2,
-        },
         ["Button"] = {
             ["13849-1"] = 46094,
         },
@@ -6991,10 +6171,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2740.8,
-            ["x"] = -333.4,
-        },
         ["ExtraLineText"] = "USE_ASTRANAAR_THROWER",
         ["Range"] = 0.75,
         ["TT"] = {
@@ -7012,10 +6188,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [54]
     {
-        ["Trigger"] = {
-            ["y"] = 3087.6,
-            ["x"] = -170.7,
-        },
         ["Qpart"] = {
             [13867] = {
                 ["1"] = "1",
@@ -7037,10 +6209,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [56]
     {
-        ["Trigger"] = {
-            ["y"] = 2741,
-            ["x"] = -694.5,
-        },
         ["Range"] = 20.51,
         ["Waypoint"] = 26475,
         ["TT"] = {
@@ -7049,10 +6217,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [57]
     {
-        ["Trigger"] = {
-            ["y"] = 2832.4,
-            ["x"] = -761.8,
-        },
         ["Range"] = 18.91,
         ["Waypoint"] = 26475,
         ["TT"] = {
@@ -7061,10 +6225,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [58]
     {
-        ["Trigger"] = {
-            ["y"] = 2914.1,
-            ["x"] = -810.8,
-        },
         ["Range"] = 21.56,
         ["Waypoint"] = 26475,
         ["TT"] = {
@@ -7073,10 +6233,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [59]
     {
-        ["Trigger"] = {
-            ["y"] = 2916.1,
-            ["x"] = -879.8,
-        },
         ["Range"] = 26.08,
         ["Waypoint"] = 26475,
         ["TT"] = {
@@ -7085,10 +6241,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [60]
     {
-        ["Trigger"] = {
-            ["y"] = 2876.6,
-            ["x"] = -1002.3,
-        },
         ["Qpart"] = {
             [26475] = {
                 ["1"] = "1",
@@ -7157,10 +6309,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [67]
     {
-        ["Trigger"] = {
-            ["y"] = 1903,
-            ["x"] = -319.2,
-        },
         ["GetFP"] = 351,
         ["Range"] = 0.61,
         ["TT"] = {
@@ -7169,10 +6317,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2212.5,
-            ["x"] = -768,
-        },
         ["Range"] = 29.19,
         ["Waypoint"] = 13913,
         ["TT"] = {
@@ -7186,10 +6330,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2163.5,
-            ["x"] = -961.8,
-        },
         ["ExtraLineText"] = "KILL_PAINMASTER",
         ["Range"] = 0.69,
         ["TT"] = {
@@ -7202,10 +6342,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             [13979] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2301.1,
-            ["x"] = -980.7,
         },
         ["Fillers"] = {
             [25607] = {
@@ -7233,10 +6369,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [72]
     {
-        ["Trigger"] = {
-            ["y"] = 2301.6,
-            ["x"] = -978.7,
-        },
         ["Qpart"] = {
             [25607] = {
                 ["1"] = "1",
@@ -7254,10 +6386,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1992.3,
-            ["x"] = -1080.1,
-        },
         ["Fillers"] = {
             [26470] = {
                 ["1"] = "1",
@@ -7270,10 +6398,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [74]
     {
-        ["Trigger"] = {
-            ["y"] = 1992.3,
-            ["x"] = -1080.1,
-        },
         ["Qpart"] = {
             [26470] = {
                 ["1"] = "1",
@@ -7286,10 +6410,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [75]
     {
-        ["Trigger"] = {
-            ["y"] = 2299,
-            ["x"] = -1652.5,
-        },
         ["Range"] = 22.29,
         ["Waypoint"] = 26476,
         ["TT"] = {
@@ -7330,10 +6450,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2584.1,
-            ["x"] = -1742.6,
-        },
         ["RaidIcon"] = 34426,
         ["Range"] = 121.11,
         ["TT"] = {
@@ -7367,10 +6483,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
         ["Gossip"] = 1,
         ["ExtraLineText"] = "TALK_HALANNIA",
-        ["Trigger"] = {
-            ["y"] = 2710.8,
-            ["x"] = -1889.9,
-        },
         ["RaidIcon"] = 34377,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -7388,10 +6500,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [84]
     {
-        ["Trigger"] = {
-            ["y"] = 2528.1,
-            ["x"] = -1600.1,
-        },
         ["Waypoint"] = 13919,
         ["Range"] = 23.52,
         ["TT"] = {
@@ -7400,10 +6508,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [85]
     {
-        ["Trigger"] = {
-            ["y"] = 2719.3,
-            ["x"] = -1471.5,
-        },
         ["Range"] = 23.78,
         ["Waypoint"] = 13919,
         ["TT"] = {
@@ -7412,10 +6516,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [86]
     {
-        ["Trigger"] = {
-            ["y"] = 2749.5,
-            ["x"] = -1403.9,
-        },
         ["Range"] = 19.63,
         ["Waypoint"] = 13919,
         ["TT"] = {
@@ -7428,10 +6528,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             [13919] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2904.5,
-            ["x"] = -1397,
         },
         ["Button"] = {
             ["13919-1"] = 46389,
@@ -7479,10 +6575,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [92]
     {
-        ["Trigger"] = {
-            ["y"] = 2640.9,
-            ["x"] = -2015,
-        },
         ["Range"] = 20.97,
         ["Waypoint"] = 13922,
         ["TT"] = {
@@ -7491,10 +6583,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [93]
     {
-        ["Trigger"] = {
-            ["y"] = 2656,
-            ["x"] = -2108,
-        },
         ["Range"] = 21.56,
         ["Waypoint"] = 13922,
         ["TT"] = {
@@ -7503,10 +6591,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [94]
     {
-        ["Trigger"] = {
-            ["y"] = 2549.1,
-            ["x"] = -2156.7,
-        },
         ["Qpart"] = {
             [13922] = {
                 ["1"] = "1",
@@ -7519,10 +6603,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [95]
     {
-        ["Trigger"] = {
-            ["y"] = 3062.8,
-            ["x"] = -1694,
-        },
         ["Range"] = 18.77,
         ["Waypoint"] = 26477,
         ["TT"] = {
@@ -7531,10 +6611,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [96]
     {
-        ["Trigger"] = {
-            ["y"] = 3198.6,
-            ["x"] = -1567.5,
-        },
         ["Range"] = 20.39,
         ["Waypoint"] = 26477,
         ["TT"] = {
@@ -7543,10 +6619,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [97]
     {
-        ["Trigger"] = {
-            ["y"] = 3186.9,
-            ["x"] = -1534.4,
-        },
         ["Range"] = 8.64,
         ["Waypoint"] = 26477,
         ["TT"] = {
@@ -7555,10 +6627,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [98]
     {
-        ["Trigger"] = {
-            ["y"] = 3108.3,
-            ["x"] = -1470,
-        },
         ["Qpart"] = {
             [26477] = {
                 ["1"] = "1",
@@ -7571,10 +6639,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [99]
     {
-        ["Trigger"] = {
-            ["y"] = 3191.9,
-            ["x"] = -1578.8,
-        },
         ["Range"] = 24.71,
         ["Waypoint"] = 26477,
         ["TT"] = {
@@ -7583,10 +6647,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [100]
     {
-        ["Trigger"] = {
-            ["y"] = 3050.4,
-            ["x"] = -1718,
-        },
         ["Range"] = 27.25,
         ["Waypoint"] = 26477,
         ["TT"] = {
@@ -7595,10 +6655,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [101]
     {
-        ["Trigger"] = {
-            ["y"] = 2882.1,
-            ["x"] = -1799,
-        },
         ["Range"] = 23.96,
         ["Waypoint"] = 26477,
         ["TT"] = {
@@ -7627,10 +6683,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [104]
     {
-        ["Trigger"] = {
-            ["y"] = 2299.4,
-            ["x"] = -1774.4,
-        },
         ["Range"] = 13.01,
         ["Waypoint"] = 26478,
         ["TT"] = {
@@ -7639,10 +6691,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [105]
     {
-        ["Trigger"] = {
-            ["y"] = 2298.6,
-            ["x"] = -1816.3,
-        },
         ["Range"] = 10.58,
         ["Waypoint"] = 26478,
         ["TT"] = {
@@ -7651,10 +6699,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [106]
     {
-        ["Trigger"] = {
-            ["y"] = 2317.3,
-            ["x"] = -1894.9,
-        },
         ["Range"] = 18.25,
         ["Waypoint"] = 26478,
         ["TT"] = {
@@ -7663,10 +6707,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [107]
     {
-        ["Trigger"] = {
-            ["y"] = 2356.6,
-            ["x"] = -1906.3,
-        },
         ["Qpart"] = {
             [26478] = {
                 ["1"] = "1",
@@ -7679,10 +6719,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [108]
     {
-        ["Trigger"] = {
-            ["y"] = 2186.1,
-            ["x"] = -1793,
-        },
         ["Range"] = 17.45,
         ["Waypoint"] = 26478,
         ["TT"] = {
@@ -7709,10 +6745,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [111]
     {
-        ["Trigger"] = {
-            ["y"] = 1958.5,
-            ["x"] = -2008.9,
-        },
         ["Range"] = 33.2,
         ["Waypoint"] = 26478,
         ["TT"] = {
@@ -7721,10 +6753,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [112]
     {
-        ["Trigger"] = {
-            ["y"] = 2036.8,
-            ["x"] = -2480.5,
-        },
         ["Waypoint"] = 26453,
         ["Range"] = 18.26,
         ["TT"] = {
@@ -7733,10 +6761,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [113]
     {
-        ["Trigger"] = {
-            ["y"] = 2214.4,
-            ["x"] = -2655.5,
-        },
         ["Waypoint"] = 26453,
         ["Range"] = 27.18,
         ["TT"] = {
@@ -7745,10 +6769,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [114]
     {
-        ["Trigger"] = {
-            ["y"] = 2481,
-            ["x"] = -2764,
-        },
         ["Waypoint"] = 26453,
         ["Range"] = 26.95,
         ["TT"] = {
@@ -7757,10 +6777,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [115]
     {
-        ["Trigger"] = {
-            ["y"] = 2588.6,
-            ["x"] = -2983.2,
-        },
         ["Waypoint"] = 26453,
         ["Range"] = 25.91,
         ["TT"] = {
@@ -7769,10 +6785,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [116]
     {
-        ["Trigger"] = {
-            ["y"] = 2699.5,
-            ["x"] = -3100.5,
-        },
         ["Waypoint"] = 26453,
         ["Range"] = 21.05,
         ["TT"] = {
@@ -7781,10 +6793,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [117]
     {
-        ["Trigger"] = {
-            ["y"] = 2810,
-            ["x"] = -3134,
-        },
         ["Waypoint"] = 26453,
         ["Range"] = 19.08,
         ["TT"] = {
@@ -7829,10 +6837,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [122]
     {
-        ["Trigger"] = {
-            ["y"] = 2822,
-            ["x"] = -3102.4,
-        },
         ["Range"] = 18.74,
         ["Waypoint"] = 26467,
         ["TT"] = {
@@ -7841,10 +6845,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [123]
     {
-        ["Trigger"] = {
-            ["y"] = 2885.9,
-            ["x"] = -3002.5,
-        },
         ["Range"] = 22.03,
         ["Waypoint"] = 26467,
         ["TT"] = {
@@ -7871,10 +6871,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [126]
     {
-        ["Trigger"] = {
-            ["y"] = 3035.6,
-            ["x"] = -2818.5,
-        },
         ["Qpart"] = {
             [26468] = {
                 ["1"] = "1",
@@ -7891,10 +6887,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             [26455] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2790.6,
-            ["x"] = -2977.2,
         },
         ["Fillers"] = {
             [26454] = {
@@ -7944,10 +6936,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [132]
     {
-        ["Trigger"] = {
-            ["y"] = 2751.3,
-            ["x"] = -2950.9,
-        },
         ["Qpart"] = {
             [26469] = {
                 ["1"] = "1",
@@ -7992,10 +6980,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [136]
     {
-        ["Trigger"] = {
-            ["y"] = 2025.5,
-            ["x"] = -3029.7,
-        },
         ["Qpart"] = {
             [26444] = {
                 ["1"] = "1",
@@ -8016,10 +7000,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2439.4,
-            ["x"] = -3543.4,
-        },
         ["Fillers"] = {
             [26457] = {
                 ["2"] = "2",
@@ -8035,10 +7015,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [138]
     {
-        ["Trigger"] = {
-            ["y"] = 2401.1,
-            ["x"] = -3324.9,
-        },
         ["Qpart"] = {
             [26457] = {
                 ["2"] = "2",
@@ -8083,10 +7059,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [142]
     {
-        ["Trigger"] = {
-            ["y"] = 1916.5,
-            ["x"] = -3148.5,
-        },
         ["Range"] = 22.13,
         ["Waypoint"] = 13766,
         ["TT"] = {
@@ -8099,10 +7071,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             [13766] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1641,
-            ["x"] = -3080.4,
         },
         ["Button"] = {
             ["13766-1"] = 45545,
@@ -8146,10 +7114,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [147]
     {
-        ["Trigger"] = {
-            ["y"] = 1912,
-            ["x"] = -3152.5,
-        },
         ["Range"] = 22.29,
         ["Waypoint"] = 26445,
         ["TT"] = {
@@ -8158,10 +7122,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [148]
     {
-        ["Trigger"] = {
-            ["y"] = 1691.8,
-            ["x"] = -3164.5,
-        },
         ["Range"] = 13.37,
         ["Waypoint"] = 26445,
         ["TT"] = {
@@ -8170,10 +7130,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [149]
     {
-        ["Trigger"] = {
-            ["y"] = 1637.8,
-            ["x"] = -3335.5,
-        },
         ["Range"] = 14.07,
         ["Waypoint"] = 26445,
         ["TT"] = {
@@ -8182,10 +7138,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [150]
     {
-        ["Trigger"] = {
-            ["y"] = 1724,
-            ["x"] = -3474.4,
-        },
         ["Qpart"] = {
             [26445] = {
                 ["1"] = "1",
@@ -8198,10 +7150,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [151]
     {
-        ["Trigger"] = {
-            ["y"] = 1655.3,
-            ["x"] = -3258,
-        },
         ["Range"] = 18.26,
         ["Waypoint"] = 26445,
         ["TT"] = {
@@ -8210,10 +7158,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [152]
     {
-        ["Trigger"] = {
-            ["y"] = 1669.7,
-            ["x"] = -3088.7,
-        },
         ["Range"] = 17.46,
         ["Waypoint"] = 26445,
         ["TT"] = {
@@ -8222,10 +7166,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [153]
     {
-        ["Trigger"] = {
-            ["y"] = 1672.2,
-            ["x"] = -2993.7,
-        },
         ["Range"] = 10.83,
         ["Waypoint"] = 26445,
         ["TT"] = {
@@ -8234,10 +7174,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [154]
     {
-        ["Trigger"] = {
-            ["y"] = 1601.8,
-            ["x"] = -2970.2,
-        },
         ["Range"] = 13.17,
         ["Waypoint"] = 26445,
         ["TT"] = {
@@ -8246,10 +7182,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [155]
     {
-        ["Trigger"] = {
-            ["y"] = 1535.2,
-            ["x"] = -2819.2,
-        },
         ["Range"] = 6.81,
         ["Waypoint"] = 26445,
         ["TT"] = {
@@ -8258,10 +7190,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [156]
     {
-        ["Trigger"] = {
-            ["y"] = 1448.9,
-            ["x"] = -2823.9,
-        },
         ["Qpart"] = {
             [26445] = {
                 ["2"] = "2",
@@ -8274,10 +7202,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [157]
     {
-        ["Trigger"] = {
-            ["y"] = 1682.4,
-            ["x"] = -2995.5,
-        },
         ["Range"] = 9.88,
         ["Waypoint"] = 13792,
         ["TT"] = {
@@ -8286,10 +7210,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [158]
     {
-        ["Trigger"] = {
-            ["y"] = 1731.8,
-            ["x"] = -3000.2,
-        },
         ["Range"] = 10.09,
         ["Waypoint"] = 13792,
         ["TT"] = {
@@ -8317,10 +7237,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [161]
     {
-        ["Trigger"] = {
-            ["y"] = 1770.4,
-            ["x"] = -2690.7,
-        },
         ["Waypoint"] = 13796,
         ["Range"] = 6.01,
         ["TT"] = {
@@ -8329,10 +7245,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [162]
     {
-        ["Trigger"] = {
-            ["y"] = 1743,
-            ["x"] = -2752.4,
-        },
         ["Waypoint"] = 13796,
         ["Range"] = 6.6,
         ["TT"] = {
@@ -8341,10 +7253,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [163]
     {
-        ["Trigger"] = {
-            ["y"] = 1827.3,
-            ["x"] = -2746.5,
-        },
         ["Qpart"] = {
             [26472] = {
                 ["1"] = "1",
@@ -8357,10 +7265,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [164]
     {
-        ["Trigger"] = {
-            ["y"] = 1872.2,
-            ["x"] = -2803.5,
-        },
         ["Qpart"] = {
             [26472] = {
                 ["2"] = "2",
@@ -8378,10 +7282,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1821.3,
-            ["x"] = -2654.2,
-        },
         ["Button"] = {
             ["13796-1"] = 45571,
         },
@@ -8392,10 +7292,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [166]
     {
-        ["Trigger"] = {
-            ["y"] = 1821.5,
-            ["x"] = -2624.9,
-        },
         ["Qpart"] = {
             [26472] = {
                 ["3"] = "3",
@@ -8408,10 +7304,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [167]
     {
-        ["Trigger"] = {
-            ["y"] = 1774.5,
-            ["x"] = -2762.5,
-        },
         ["Waypoint"] = 26472,
         ["Range"] = 5.98,
         ["TT"] = {
@@ -8420,10 +7312,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [168]
     {
-        ["Trigger"] = {
-            ["y"] = 1747.9,
-            ["x"] = -2735,
-        },
         ["Waypoint"] = 26472,
         ["Range"] = 7.97,
         ["TT"] = {
@@ -8432,10 +7320,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [169]
     {
-        ["Trigger"] = {
-            ["y"] = 1770.5,
-            ["x"] = -2692.5,
-        },
         ["Waypoint"] = 26472,
         ["Range"] = 6.85,
         ["TT"] = {
@@ -8463,10 +7347,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [172]
     {
-        ["Trigger"] = {
-            ["y"] = 2296.8,
-            ["x"] = -3385,
-        },
         ["Qpart"] = {
             [13698] = {
                 ["1"] = "1",
@@ -8562,10 +7442,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [182]
     {
-        ["Trigger"] = {
-            ["y"] = 2409.6,
-            ["x"] = 611.2,
-        },
         ["Range"] = 16.13,
         ["Waypoint"] = 13976,
         ["TT"] = {
@@ -8592,10 +7468,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [185]
     {
-        ["Trigger"] = {
-            ["y"] = 2368.3,
-            ["x"] = 659.7,
-        },
         ["Qpart"] = {
             [13982] = {
                 ["1"] = "1",
@@ -8626,10 +7498,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [188]
     {
-        ["Trigger"] = {
-            ["y"] = 2257.9,
-            ["x"] = 357.8,
-        },
         ["Qpart"] = {
             [13985] = {
                 ["1"] = "1",
@@ -8660,10 +7528,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [191]
     {
-        ["Trigger"] = {
-            ["y"] = 2640.6,
-            ["x"] = 418.8,
-        },
         ["Qpart"] = {
             [13987] = {
                 ["1"] = "1",
@@ -8707,10 +7571,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [195]
     {
-        ["Trigger"] = {
-            ["y"] = 2071.1,
-            ["x"] = -1112.1,
-        },
         ["Range"] = 19.14,
         ["Waypoint"] = 26480,
         ["TT"] = {
@@ -8719,10 +7579,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [196]
     {
-        ["Trigger"] = {
-            ["y"] = 2068.3,
-            ["x"] = -1262.4,
-        },
         ["Range"] = 12.46,
         ["Waypoint"] = 26480,
         ["TT"] = {
@@ -8731,10 +7587,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [197]
     {
-        ["Trigger"] = {
-            ["y"] = 1870.8,
-            ["x"] = -1410,
-        },
         ["Range"] = 17.05,
         ["Waypoint"] = 26480,
         ["TT"] = {
@@ -8743,10 +7595,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [198]
     {
-        ["Trigger"] = {
-            ["y"] = 1826.3,
-            ["x"] = -1385.5,
-        },
         ["Range"] = 11.15,
         ["Waypoint"] = 26480,
         ["TT"] = {
@@ -8778,10 +7626,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2233.3,
-            ["x"] = -1550,
-        },
         ["Button"] = {
             ["13989-1"] = 46777,
         },
@@ -8792,10 +7636,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [202]
     {
-        ["Trigger"] = {
-            ["y"] = 1837.8,
-            ["x"] = -1407.6,
-        },
         ["Range"] = 13.8,
         ["Waypoint"] = 13989,
         ["TT"] = {
@@ -8822,10 +7662,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [205]
     {
-        ["Trigger"] = {
-            ["y"] = 1818.9,
-            ["x"] = -1421.4,
-        },
         ["Range"] = 20.49,
         ["Waypoint"] = 26481,
         ["TT"] = {
@@ -8834,10 +7670,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [206]
     {
-        ["Trigger"] = {
-            ["y"] = 1723.2,
-            ["x"] = -1480.8,
-        },
         ["Range"] = 12.13,
         ["Waypoint"] = 26481,
         ["TT"] = {
@@ -8846,10 +7678,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [207]
     {
-        ["Trigger"] = {
-            ["y"] = 1614.2,
-            ["x"] = -1455.5,
-        },
         ["Qpart"] = {
             [26481] = {
                 ["1"] = "1",
@@ -8862,10 +7690,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [208]
     {
-        ["Trigger"] = {
-            ["y"] = 1738.5,
-            ["x"] = -1479,
-        },
         ["Range"] = 14.99,
         ["Waypoint"] = 26481,
         ["TT"] = {
@@ -8874,10 +7698,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [209]
     {
-        ["Trigger"] = {
-            ["y"] = 1828.5,
-            ["x"] = -1393.5,
-        },
         ["Range"] = 11.4,
         ["Waypoint"] = 26481,
         ["TT"] = {
@@ -8910,10 +7730,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2379.9,
-            ["x"] = -1182.3,
-        },
         ["Button"] = {
             ["26482-1"] = 46781,
         },
@@ -8924,10 +7740,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [213]
     {
-        ["Trigger"] = {
-            ["y"] = 2458.4,
-            ["x"] = -575.8,
-        },
         ["Range"] = 54.25,
         ["Waypoint"] = 26482,
         ["TT"] = {
@@ -8994,10 +7806,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [220]
     {
-        ["Trigger"] = {
-            ["y"] = 3177.6,
-            ["x"] = -250,
-        },
         ["Range"] = 63.65,
         ["Waypoint"] = 13874,
         ["TT"] = {
@@ -9006,10 +7814,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [221]
     {
-        ["Trigger"] = {
-            ["y"] = 3384.9,
-            ["x"] = -333.5,
-        },
         ["Range"] = 32.88,
         ["Waypoint"] = 13874,
         ["TT"] = {
@@ -9018,10 +7822,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [222]
     {
-        ["Trigger"] = {
-            ["y"] = 3426,
-            ["x"] = -451.9,
-        },
         ["Range"] = 26.63,
         ["Waypoint"] = 13874,
         ["TT"] = {
@@ -9039,10 +7839,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [224]
     {
-        ["Trigger"] = {
-            ["y"] = 3496.6,
-            ["x"] = -522.7,
-        },
         ["Range"] = 13.23,
         ["Waypoint"] = 13874,
         ["TT"] = {
@@ -9056,10 +7852,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3299.8,
-            ["x"] = -702.3,
-        },
         ["Fillers"] = {
             [13874] = {
                 ["1"] = "1",
@@ -9072,10 +7864,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [226]
     {
-        ["Trigger"] = {
-            ["y"] = 3330.4,
-            ["x"] = -686,
-        },
         ["Qpart"] = {
             [13874] = {
                 ["1"] = "1",
@@ -9115,10 +7903,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [230]
     {
-        ["Trigger"] = {
-            ["y"] = 2445,
-            ["x"] = -588.7,
-        },
         ["Range"] = 28.65,
         ["Waypoint"] = 13877,
         ["TT"] = {
@@ -9146,10 +7930,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
         },
     }, -- [233]
     {
-        ["Trigger"] = {
-            ["y"] = 2735.3,
-            ["x"] = -1216,
-        },
         ["Qpart"] = {
             [13880] = {
                 ["1"] = "1",
@@ -9190,10 +7970,6 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2491.6,
-            ["x"] = -1316.3,
-        },
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = 2491.6,
@@ -9254,10 +8030,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3649,
-            ["x"] = -1138.4,
-        },
         ["Button"] = {
             ["27989-1"] = 62819,
         },
@@ -9287,10 +8059,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [6]
     {
-        ["Trigger"] = {
-            ["y"] = 3844.9,
-            ["x"] = -1288.1,
-        },
         ["Qpart"] = {
             [27995] = {
                 ["1"] = "1",
@@ -9313,10 +8081,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
     }, -- [8]
     {
         ["Waypoint"] = 27997,
-        ["Trigger"] = {
-            ["y"] = 3898.3,
-            ["x"] = -877.2,
-        },
         ["Fillers"] = {
             [28148] = {
                 ["1"] = "1",
@@ -9329,10 +8093,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3854.4,
-            ["x"] = -732,
-        },
         ["Qpart"] = {
             [27997] = {
                 ["1"] = "1",
@@ -9345,10 +8105,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 4016.3,
-            ["x"] = -1075.9,
-        },
         ["Qpart"] = {
             [28148] = {
                 ["1"] = "1",
@@ -9380,10 +8136,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [13]
     {
-        ["Trigger"] = {
-            ["y"] = 3969.1,
-            ["x"] = -1325.6,
-        },
         ["GetFP"] = 166,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -9415,10 +8167,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 4275.3,
-            ["x"] = -1114,
-        },
         ["Button"] = {
             ["28000-1"] = 62899,
         },
@@ -9447,10 +8195,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [19]
     {
-        ["Trigger"] = {
-            ["y"] = 4459.3,
-            ["x"] = -679.5,
-        },
         ["Qpart"] = {
             [28049] = {
                 ["1"] = "1",
@@ -9490,10 +8234,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
             ["28044-1"] = 62920,
         },
         ["SpellTrigger"] = 88438,
-        ["Trigger"] = {
-            ["y"] = 4176.5,
-            ["x"] = -684.7,
-        },
         ["ExtraLineText"] = "USE_PHASEBLOOD_POTION",
         ["Range"] = 0.69,
         ["TT"] = {
@@ -9502,10 +8242,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [23]
     {
-        ["Trigger"] = {
-            ["y"] = 4007.6,
-            ["x"] = -765,
-        },
         ["Qpart"] = {
             [28044] = {
                 ["1"] = "1",
@@ -9537,10 +8273,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4513.5,
-            ["x"] = -539.7,
-        },
         ["Qpart"] = {
             [28102] = {
                 ["1"] = "1",
@@ -9561,10 +8293,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         ["Button"] = {
             ["28113-1"] = 63031,
         },
-        ["Trigger"] = {
-            ["y"] = 4576.3,
-            ["x"] = -388.4,
-        },
         ["ExtraLineText"] = "USE_CLAW",
         ["SpellTrigger"] = 88697,
         ["Range"] = 0.61,
@@ -9574,10 +8302,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [4]
     {
-        ["Trigger"] = {
-            ["y"] = 4581.7,
-            ["x"] = -230,
-        },
         ["Qpart"] = {
             [28113] = {
                 ["1"] = "1",
@@ -9615,10 +8339,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 4011.1,
-            ["x"] = -762.2,
-        },
         ["Button"] = {
             ["28288-1"] = 63395,
         },
@@ -9638,10 +8358,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = 4737.5,
-            ["x"] = -886.5,
-        },
         ["GetFP"] = 595,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -9669,10 +8385,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [8]
     {
-        ["Trigger"] = {
-            ["y"] = 4887.3,
-            ["x"] = -610.5,
-        },
         ["Range"] = 50.85,
         ["Waypoint"] = 28116,
         ["TT"] = {
@@ -9681,10 +8393,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4815,
-            ["x"] = -514.5,
-        },
         ["Qpart"] = {
             [28116] = {
                 ["1"] = "1",
@@ -9724,10 +8432,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 4848.5,
-            ["x"] = -385.4,
-        },
         ["Button"] = {
             ["28119-1"] = 12922,
         },
@@ -9758,10 +8462,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [15]
     {
-        ["Trigger"] = {
-            ["y"] = 4898.8,
-            ["x"] = -393,
-        },
         ["Range"] = 5.6,
         ["Waypoint"] = 28126,
         ["TT"] = {
@@ -9770,10 +8470,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [16]
     {
-        ["Trigger"] = {
-            ["y"] = 4940.8,
-            ["x"] = -401.9,
-        },
         ["Range"] = 8.65,
         ["Waypoint"] = 28126,
         ["TT"] = {
@@ -9782,10 +8478,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [17]
     {
-        ["Trigger"] = {
-            ["y"] = 4995.8,
-            ["x"] = -444.2,
-        },
         ["Qpart"] = {
             [28129] = {
                 ["1"] = "1",
@@ -9816,10 +8508,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [20]
     {
-        ["Trigger"] = {
-            ["y"] = 4978,
-            ["x"] = -442.2,
-        },
         ["Qpart"] = {
             [28126] = {
                 ["1"] = "1",
@@ -9837,10 +8525,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
                 ["4"] = "4",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 5020.2,
-            ["x"] = -454.4,
-        },
         ["Fillers"] = {
             [28128] = {
                 ["1"] = "1",
@@ -9854,10 +8538,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
     },
     {
         ["Waypoint"] = 28126,
-        ["Trigger"] = {
-            ["y"] = 5050.8,
-            ["x"] = -537,
-        },
         ["Fillers"] = {
             [28128] = {
                 ["1"] = "1",
@@ -9874,10 +8554,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
             [28126] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 5093.6,
-            ["x"] = -468.2,
         },
         ["Fillers"] = {
             [28128] = {
@@ -9896,10 +8572,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 5116,
-            ["x"] = -521.3,
-        },
         ["Fillers"] = {
             [28128] = {
                 ["1"] = "1",
@@ -9913,10 +8585,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
     }, -- [25]
     {
         ["Waypoint"] = 28126,
-        ["Trigger"] = {
-            ["y"] = 5126.1,
-            ["x"] = -436.4,
-        },
         ["Fillers"] = {
             [28128] = {
                 ["1"] = "1",
@@ -9930,10 +8598,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
     }, -- [26]
     {
         ["Waypoint"] = 28126,
-        ["Trigger"] = {
-            ["y"] = 5188.1,
-            ["x"] = -490.5,
-        },
         ["Fillers"] = {
             [28128] = {
                 ["1"] = "1",
@@ -9951,10 +8615,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
                 ["1"] = "1",
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 5202,
-            ["x"] = -560.2,
         },
         ["Fillers"] = {
             [28128] = {
@@ -9987,10 +8647,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
     }, -- [30]
     {
         ["Waypoint"] = 28126,
-        ["Trigger"] = {
-            ["y"] = 5256.3,
-            ["x"] = -647,
-        },
         ["Fillers"] = {
             [28128] = {
                 ["1"] = "1",
@@ -10007,10 +8663,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
             [28153] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 5339.8,
-            ["x"] = -595.5,
         },
         ["Fillers"] = {
             [28128] = {
@@ -10043,10 +8695,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
     }, -- [34]
     {
         ["Waypoint"] = 28126,
-        ["Trigger"] = {
-            ["y"] = 5341.2,
-            ["x"] = -547.8,
-        },
         ["Fillers"] = {
             [28128] = {
                 ["1"] = "1",
@@ -10060,10 +8708,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
     }, -- [35]
     {
         ["Waypoint"] = 28126,
-        ["Trigger"] = {
-            ["y"] = 5395.8,
-            ["x"] = -510.5,
-        },
         ["Fillers"] = {
             [28128] = {
                 ["1"] = "1",
@@ -10081,10 +8725,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 5303.1,
-            ["x"] = -529.5,
-        },
         ["Fillers"] = {
             [28128] = {
                 ["1"] = "1",
@@ -10097,10 +8737,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [37]
     {
-        ["Trigger"] = {
-            ["y"] = 5326.7,
-            ["x"] = -519.5,
-        },
         ["Qpart"] = {
             [28128] = {
                 ["1"] = "1",
@@ -10152,10 +8788,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [4]
     {
-        ["Trigger"] = {
-            ["y"] = 5300.1,
-            ["x"] = -759.5,
-        },
         ["Qpart"] = {
             [28207] = {
                 ["1"] = "1",
@@ -10190,10 +8822,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [7]
     {
-        ["Trigger"] = {
-            ["y"] = 5062.3,
-            ["x"] = -544.8,
-        },
         ["Qpart"] = {
             [28208] = {
                 ["1"] = "1",
@@ -10226,10 +8854,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
     }, -- [10]
     {
         ["Waypoint"] = 28213,
-        ["Trigger"] = {
-            ["y"] = 5212.3,
-            ["x"] = -411.3,
-        },
         ["Fillers"] = {
             [28214] = {
                 ["1"] = "1",
@@ -10252,10 +8876,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 5102.8,
-            ["x"] = -357.9,
-        },
         ["Button"] = {
             ["28213-1"] = 63284,
         },
@@ -10266,10 +8886,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = 5217.8,
-            ["x"] = -385.9,
-        },
         ["Qpart"] = {
             [28214] = {
                 ["1"] = "1",
@@ -10320,10 +8936,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [17]
     {
-        ["Trigger"] = {
-            ["y"] = 6078.3,
-            ["x"] = -844.5,
-        },
         ["GetFP"] = 594,
         ["Range"] = 0.61,
         ["TT"] = {
@@ -10345,10 +8957,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
     }, -- [19]
     {
         ["Waypoint"] = 28359,
-        ["Trigger"] = {
-            ["y"] = 5776.1,
-            ["x"] = -972.8,
-        },
         ["Fillers"] = {
             [28360] = {
                 ["1"] = "1",
@@ -10369,10 +8977,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 5629.8,
-            ["x"] = -1102,
-        },
         ["Fillers"] = {
             [28341] = {
                 ["1"] = "1",
@@ -10385,10 +8989,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [21]
     {
-        ["Trigger"] = {
-            ["y"] = 5597,
-            ["x"] = -799.5,
-        },
         ["Qpart"] = {
             [28358] = {
                 ["1"] = "1",
@@ -10407,10 +9007,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 5852.3,
-            ["x"] = -936.2,
-        },
         ["Qpart"] = {
             [28360] = {
                 ["1"] = "1",
@@ -10445,10 +9041,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [25]
     {
-        ["Trigger"] = {
-            ["y"] = 5973.3,
-            ["x"] = -872,
-        },
         ["Qpart"] = {
             [28374] = {
                 ["1"] = "1",
@@ -10493,10 +9085,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6090.3,
-            ["x"] = -871.5,
-        },
         ["SpellTrigger"] = 89402,
         ["ExtraLineText"] = "FILL_VIAL",
         ["Range"] = 0.69,
@@ -10518,10 +9106,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     },             -- [30]
     {
-        ["Trigger"] = {
-            ["y"] = 6367,
-            ["x"] = -1005.5,
-        },
         ["Range"] = 22.78,
         ["Waypoint"] = 28217,
         ["TT"] = {
@@ -10536,10 +9120,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 6423.1,
-            ["x"] = -964.7,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 6423.1,
@@ -10565,10 +9145,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [34]
     {
-        ["Trigger"] = {
-            ["y"] = 6436.6,
-            ["x"] = -948.8,
-        },
         ["Qpart"] = {
             [28218] = {
                 ["1"] = "1",
@@ -10599,10 +9175,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [37]
     {
-        ["Trigger"] = {
-            ["y"] = 6437.5,
-            ["x"] = -945.8,
-        },
         ["Qpart"] = {
             [28256] = {
                 ["1"] = "1",
@@ -10633,10 +9205,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [40]
     {
-        ["Trigger"] = {
-            ["y"] = 6438.3,
-            ["x"] = -947.8,
-        },
         ["Qpart"] = {
             [28257] = {
                 ["1"] = "1",
@@ -10672,10 +9240,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6505.7,
-            ["x"] = -813.8,
-        },
         ["Button"] = {
             ["28261-1"] = 63419,
         },
@@ -10709,10 +9273,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6221.3,
-            ["x"] = -1151.6,
-        },
         ["Button"] = {
             ["28229-1"] = 63387,
         },
@@ -10742,10 +9302,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [3]
     {
-        ["Trigger"] = {
-            ["y"] = 6066.3,
-            ["x"] = -1160,
-        },
         ["Qpart"] = {
             [28220] = {
                 ["1"] = "1",
@@ -10781,10 +9337,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 6290,
-            ["x"] = -1272.6,
-        },
         ["Qpart"] = {
             [28222] = {
                 ["1"] = "1",
@@ -10819,10 +9371,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = 6263.8,
-            ["x"] = -1423.5,
-        },
         ["Qpart"] = {
             [28224] = {
                 ["1"] = "1",
@@ -10853,10 +9401,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [8]
     {
-        ["Trigger"] = {
-            ["y"] = 6220.5,
-            ["x"] = -1152,
-        },
         ["Qpart"] = {
             [28228] = {
                 ["1"] = "1",
@@ -10884,10 +9428,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 6058.5,
-            ["x"] = -916,
-        },
         ["RaidIcon"] = 47842,
         ["Range"] = 0.75,
         ["TT"] = {
@@ -10933,10 +9473,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [15]
     {
-        ["Trigger"] = {
-            ["y"] = 6215.7,
-            ["x"] = -1870.9,
-        },
         ["GetFP"] = 65,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -10952,10 +9488,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
             [28383] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 6400.6,
-            ["x"] = -2016,
         },
         ["Button"] = {
             ["28383-1"] = 64300,
@@ -11004,10 +9536,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [21]
     {
-        ["Trigger"] = {
-            ["y"] = 6470.8,
-            ["x"] = -1482.4,
-        },
         ["Qpart"] = {
             [28337] = {
                 ["1"] = "1",
@@ -11039,10 +9567,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [24]
     {
-        ["Trigger"] = {
-            ["y"] = 6459.7,
-            ["x"] = -1554.9,
-        },
         ["Waypoint"] = 28385,
         ["Range"] = 17.51,
         ["TT"] = {
@@ -11052,10 +9576,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
     }, -- [25]
     {
         ["Waypoint"] = 28385,
-        ["Trigger"] = {
-            ["y"] = 6459.5,
-            ["x"] = -1645.3,
-        },
         ["Fillers"] = {
             [28386] = {
                 ["1"] = "1",
@@ -11069,10 +9589,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
     }, -- [26]
     {
         ["Waypoint"] = 28385,
-        ["Trigger"] = {
-            ["y"] = 6305.8,
-            ["x"] = -1731,
-        },
         ["Fillers"] = {
             [28386] = {
                 ["1"] = "1",
@@ -11094,10 +9610,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [28]
     {
-        ["Trigger"] = {
-            ["y"] = 6359.8,
-            ["x"] = -1641.5,
-        },
         ["Qpart"] = {
             [28386] = {
                 ["1"] = "1",
@@ -11110,10 +9622,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [29]
     {
-        ["Trigger"] = {
-            ["y"] = 6492.8,
-            ["x"] = -1556.9,
-        },
         ["Waypoint"] = 28386,
         ["Range"] = 20.18,
         ["TT"] = {
@@ -11148,10 +9656,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
             [28387] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 6624.6,
-            ["x"] = -1500.3,
         },
         ["Button"] = {
             ["28387-1"] = 64301,
@@ -11200,10 +9704,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [37]
     {
-        ["Trigger"] = {
-            ["y"] = 6566.7,
-            ["x"] = -2070.5,
-        },
         ["Waypoint"] = 28392,
         ["Range"] = 30.24,
         ["TT"] = {
@@ -11271,10 +9771,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6837.2,
-            ["x"] = -1966,
-        },
         ["Fillers"] = {
             [28338] = {
                 ["1"] = "1",
@@ -11307,10 +9803,6 @@ APR.RouteQuestStepList["A77-Felwood"] = {
         },
     }, -- [44]
     {
-        ["Trigger"] = {
-            ["y"] = 6784.1,
-            ["x"] = -1924.5,
-        },
         ["Qpart"] = {
             [28338] = {
                 ["1"] = "1",
@@ -11353,10 +9845,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 6392.3,
-            ["x"] = -2769.9,
-        },
         ["Qpart"] = {
             [28540] = {
                 ["1"] = "1",
@@ -11422,10 +9910,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6762.5,
-            ["x"] = -3056.4,
-        },
         ["Fillers"] = {
             [28460] = {
                 ["1"] = "1",
@@ -11463,10 +9947,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6820.5,
-            ["x"] = -2507.2,
-        },
         ["Fillers"] = {
             [28469] = {
                 ["1"] = "1",
@@ -11501,10 +9981,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = 6780.5,
-            ["x"] = -2511.9,
-        },
         ["Qpart"] = {
             [28522] = {
                 ["1"] = "1",
@@ -11526,10 +10002,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [7]
     {
-        ["Trigger"] = {
-            ["y"] = 6527.3,
-            ["x"] = -2595.9,
-        },
         ["Qpart"] = {
             [28469] = {
                 ["1"] = "1",
@@ -11562,10 +10034,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 6514.5,
-            ["x"] = -3262.5,
-        },
         ["Qpart"] = {
             [28470] = {
                 ["1"] = "1",
@@ -11645,10 +10113,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [18]
     {
-        ["Trigger"] = {
-            ["y"] = 6618.2,
-            ["x"] = -4078,
-        },
         ["Qpart"] = {
             [28513] = {
                 ["1"] = "1",
@@ -11697,10 +10161,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = 6422,
-            ["x"] = -4309.5,
-        },
         ["Qpart"] = {
             [28518] = {
                 ["1"] = "1",
@@ -11749,10 +10209,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 6447.8,
-            ["x"] = -4046.7,
-        },
         ["Qpart"] = {
             [28519] = {
                 ["1"] = "1",
@@ -11801,10 +10257,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [15]
     {
-        ["Trigger"] = {
-            ["y"] = 6409.7,
-            ["x"] = -3909.7,
-        },
         ["Waypoint"] = 28537,
         ["Range"] = 11.61,
         ["TT"] = {
@@ -11813,10 +10265,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [16]
     {
-        ["Trigger"] = {
-            ["y"] = 6320.8,
-            ["x"] = -4027.5,
-        },
         ["Waypoint"] = 28537,
         ["Range"] = 14.77,
         ["TT"] = {
@@ -11825,10 +10273,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [17]
     {
-        ["Trigger"] = {
-            ["y"] = 6250.3,
-            ["x"] = -4107.4,
-        },
         ["Waypoint"] = 28537,
         ["Range"] = 14.83,
         ["TT"] = {
@@ -11837,10 +10281,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [18]
     {
-        ["Trigger"] = {
-            ["y"] = 6186.8,
-            ["x"] = -4110.8,
-        },
         ["Qpart"] = {
             [28537] = {
                 ["1"] = "1",
@@ -11908,10 +10348,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
     }, -- [25]
     {
         ["Waypoint"] = 28537,
-        ["Trigger"] = {
-            ["y"] = 6420.8,
-            ["x"] = -4511.8,
-        },
         ["Fillers"] = {
             [28610] = {
                 ["1"] = "1",
@@ -11924,10 +10360,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [26]
     {
-        ["Trigger"] = {
-            ["y"] = 6400,
-            ["x"] = -4640.7,
-        },
         ["Qpart"] = {
             [28610] = {
                 ["1"] = "1",
@@ -11994,10 +10426,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [33]
     {
-        ["Trigger"] = {
-            ["y"] = 6766.2,
-            ["x"] = -4178.4,
-        },
         ["Qpart"] = {
             [28625] = {
                 ["1"] = "1",
@@ -12076,10 +10504,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
     }, -- [41]
     {
         ["Waypoint"] = 28537,
-        ["Trigger"] = {
-            ["y"] = 6492.7,
-            ["x"] = -5089.2,
-        },
         ["Fillers"] = {
             [28629] = {
                 ["1"] = "1",
@@ -12106,10 +10530,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [43]
     {
-        ["Trigger"] = {
-            ["y"] = 6733.5,
-            ["x"] = -5279.4,
-        },
         ["Qpart"] = {
             [28631] = {
                 ["1"] = "1",
@@ -12129,10 +10549,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
             [28632] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 6621.1,
-            ["x"] = -5284,
         },
         ["RaidIcon"] = 49233,
         ["Range"] = 139.88,
@@ -12193,10 +10609,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 6706.3,
-            ["x"] = -4685.5,
-        },
         ["Button"] = {
             ["28722-1"] = 12928,
         },
@@ -12254,10 +10666,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [56]
     {
-        ["Trigger"] = {
-            ["y"] = 7149.8,
-            ["x"] = -3889.7,
-        },
         ["Waypoint"] = 28676,
         ["Range"] = 8.86,
         ["TT"] = {
@@ -12266,10 +10674,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [57]
     {
-        ["Trigger"] = {
-            ["y"] = 7134.8,
-            ["x"] = -3873.2,
-        },
         ["Waypoint"] = 28676,
         ["Range"] = 6.88,
         ["TT"] = {
@@ -12278,10 +10682,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [58]
     {
-        ["Trigger"] = {
-            ["y"] = 7146.8,
-            ["x"] = -3807.7,
-        },
         ["Waypoint"] = 28676,
         ["Range"] = 8.11,
         ["TT"] = {
@@ -12337,10 +10737,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
     }, -- [63]
     {
         ["Waypoint"] = 28707,
-        ["Trigger"] = {
-            ["y"] = 7060,
-            ["x"] = -3764.5,
-        },
         ["Fillers"] = {
             [28701] = {
                 ["1"] = "1",
@@ -12409,10 +10805,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 7106.3,
-            ["x"] = -3845.2,
-        },
         ["Qpart"] = {
             [28701] = {
                 ["1"] = "1",
@@ -12438,10 +10830,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [70]
     {
-        ["Trigger"] = {
-            ["y"] = 7146.3,
-            ["x"] = -3813,
-        },
         ["Waypoint"] = 28701,
         ["Range"] = 10.09,
         ["TT"] = {
@@ -12450,10 +10838,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [71]
     {
-        ["Trigger"] = {
-            ["y"] = 7130.8,
-            ["x"] = -3870.2,
-        },
         ["Waypoint"] = 28701,
         ["Range"] = 7.03,
         ["TT"] = {
@@ -12492,10 +10876,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [75]
     {
-        ["Trigger"] = {
-            ["y"] = 7518.1,
-            ["x"] = -4261,
-        },
         ["Qpart"] = {
             [28637] = {
                 ["1"] = "1",
@@ -12536,10 +10916,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 7353.2,
-            ["x"] = -4395.9,
-        },
         ["Fillers"] = {
             [28719] = {
                 ["1"] = "1",
@@ -12570,10 +10946,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [81]
     {
-        ["Trigger"] = {
-            ["y"] = 7294.5,
-            ["x"] = -4239.4,
-        },
         ["Qpart"] = {
             [28782] = {
                 ["1"] = "1",
@@ -12586,10 +10958,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [82]
     {
-        ["Trigger"] = {
-            ["y"] = 7185.8,
-            ["x"] = -4397.4,
-        },
         ["Qpart"] = {
             [28719] = {
                 ["1"] = "1",
@@ -12620,10 +10988,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [85]
     {
-        ["Trigger"] = {
-            ["y"] = 7179.5,
-            ["x"] = -4552.7,
-        },
         ["Waypoint"] = 28639,
         ["Range"] = 17.44,
         ["TT"] = {
@@ -12632,10 +10996,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [86]
     {
-        ["Trigger"] = {
-            ["y"] = 7121.7,
-            ["x"] = -4657,
-        },
         ["Qpart"] = {
             [28639] = {
                 ["1"] = "1",
@@ -12658,10 +11018,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [88]
     {
-        ["Trigger"] = {
-            ["y"] = 7839.8,
-            ["x"] = -4529.9,
-        },
         ["Qpart"] = {
             [28828] = {
                 ["1"] = "1",
@@ -12674,10 +11030,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [89]
     {
-        ["Trigger"] = {
-            ["y"] = 7871.6,
-            ["x"] = -4154.9,
-        },
         ["Qpart"] = {
             [28640] = {
                 ["1"] = "1",
@@ -12709,10 +11061,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
     }, -- [92]
     {
         ["Waypoint"] = 29032,
-        ["Trigger"] = {
-            ["y"] = 8058,
-            ["x"] = -3766,
-        },
         ["Fillers"] = {
             [28641] = {
                 ["1"] = "1",
@@ -12744,10 +11092,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 8027.3,
-            ["x"] = -3882.5,
-        },
         ["Fillers"] = {
             [28641] = {
                 ["1"] = "1",
@@ -12774,10 +11118,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [96]
     {
-        ["Trigger"] = {
-            ["y"] = 7993.3,
-            ["x"] = -3875,
-        },
         ["Qpart"] = {
             [28641] = {
                 ["1"] = "1",
@@ -12808,10 +11148,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [99]
     {
-        ["Trigger"] = {
-            ["y"] = 8075.8,
-            ["x"] = -3832,
-        },
         ["Qpart"] = {
             [28742] = {
                 ["1"] = "1",
@@ -12852,10 +11188,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [103]
     {
-        ["Trigger"] = {
-            ["y"] = 6066.5,
-            ["x"] = -4483.9,
-        },
         ["Qpart"] = {
             [28837] = {
                 ["1"] = "1",
@@ -12886,10 +11218,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [106]
     {
-        ["Trigger"] = {
-            ["y"] = 5701.5,
-            ["x"] = -4504.2,
-        },
         ["Qpart"] = {
             [28838] = {
                 ["1"] = "1",
@@ -12930,10 +11258,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
     }, -- [110]
     {
         ["Waypoint"] = 28839,
-        ["Trigger"] = {
-            ["y"] = 5723.5,
-            ["x"] = -4985.5,
-        },
         ["Fillers"] = {
             [28829] = {
                 ["1"] = "1",
@@ -12951,10 +11275,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 5765.5,
-            ["x"] = -4992.4,
-        },
         ["Fillers"] = {
             [28829] = {
                 ["1"] = "1",
@@ -12968,10 +11288,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
     }, -- [112]
     {
         ["Waypoint"] = 28839,
-        ["Trigger"] = {
-            ["y"] = 5643.1,
-            ["x"] = -5004.3,
-        },
         ["Fillers"] = {
             [28829] = {
                 ["1"] = "1",
@@ -12989,10 +11305,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 5611.6,
-            ["x"] = -5027.3,
-        },
         ["Fillers"] = {
             [28829] = {
                 ["1"] = "1",
@@ -13006,10 +11318,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
     }, -- [114]
     {
         ["Waypoint"] = 28839,
-        ["Trigger"] = {
-            ["y"] = 5500.6,
-            ["x"] = -4948.3,
-        },
         ["Fillers"] = {
             [28829] = {
                 ["1"] = "1",
@@ -13026,10 +11334,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
             [28839] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 5471.5,
-            ["x"] = -4977.2,
         },
         ["Fillers"] = {
             [28829] = {
@@ -13061,10 +11365,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [118]
     {
-        ["Trigger"] = {
-            ["y"] = 5665.6,
-            ["x"] = -4949.7,
-        },
         ["Qpart"] = {
             [28829] = {
                 ["1"] = "1",
@@ -13096,10 +11396,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [121]
     {
-        ["Trigger"] = {
-            ["y"] = 5522.1,
-            ["x"] = -4701.4,
-        },
         ["Qpart"] = {
             [28830] = {
                 ["1"] = "1",
@@ -13113,10 +11409,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
     }, -- [122]
     {
         ["Waypoint"] = 28831,
-        ["Trigger"] = {
-            ["y"] = 5572.5,
-            ["x"] = -4494.9,
-        },
         ["Fillers"] = {
             [28840] = {
                 ["1"] = "1",
@@ -13130,10 +11422,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
     }, -- [123]
     {
         ["Waypoint"] = 28831,
-        ["Trigger"] = {
-            ["y"] = 5356.2,
-            ["x"] = -4539.9,
-        },
         ["Fillers"] = {
             [28840] = {
                 ["1"] = "1",
@@ -13151,10 +11439,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 5267.3,
-            ["x"] = -4878,
-        },
         ["Fillers"] = {
             [28840] = {
                 ["1"] = "1",
@@ -13167,10 +11451,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [125]
     {
-        ["Trigger"] = {
-            ["y"] = 5451.8,
-            ["x"] = -4508.3,
-        },
         ["Qpart"] = {
             [28840] = {
                 ["1"] = "1",
@@ -13212,10 +11492,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [129]
     {
-        ["Trigger"] = {
-            ["y"] = 6162.1,
-            ["x"] = -4317.7,
-        },
         ["Range"] = 29,
         ["Waypoint"] = 28841,
         ["TT"] = {
@@ -13229,10 +11505,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 5980.8,
-            ["x"] = -4188.3,
-        },
         ["Button"] = {
             ["28841-1"] = 66060,
         },
@@ -13243,10 +11515,6 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
         },
     }, -- [131]
     {
-        ["Trigger"] = {
-            ["y"] = 5909.1,
-            ["x"] = -4078.2,
-        },
         ["Qpart"] = {
             [28842] = {
                 ["1"] = "1",
@@ -13293,10 +11561,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2212.5,
-            ["x"] = -768,
-        },
         ["Waypoint"] = 13913,
         ["Range"] = 29.19,
         ["TT"] = {
@@ -13310,10 +11574,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2163.5,
-            ["x"] = -961.8,
-        },
         ["ExtraLineText"] = "KILL_PAINMASTER",
         ["Range"] = 0.69,
         ["TT"] = {
@@ -13322,10 +11582,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [4]
     {
-        ["Trigger"] = {
-            ["y"] = 2301.6,
-            ["x"] = -978.7,
-        },
         ["Qpart"] = {
             [25607] = {
                 ["1"] = "1",
@@ -13357,10 +11613,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [7]
     {
-        ["Trigger"] = {
-            ["y"] = 1867.2,
-            ["x"] = -337.4,
-        },
         ["Range"] = 13.31,
         ["Waypoint"] = 25613,
         ["TT"] = {
@@ -13369,10 +11621,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [8]
     {
-        ["Trigger"] = {
-            ["y"] = 1789.7,
-            ["x"] = -332.4,
-        },
         ["Range"] = 24.13,
         ["Waypoint"] = 25613,
         ["TT"] = {
@@ -13399,10 +11647,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = 1601.2,
-            ["x"] = -336.5,
-        },
         ["Qpart"] = {
             [25614] = {
                 ["1"] = "1",
@@ -13485,10 +11729,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             [25616] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1463,
-            ["x"] = -407.3,
         },
         ["Button"] = {
             ["25622-1"] = 55152,
@@ -13594,10 +11834,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [29]
     {
-        ["Trigger"] = {
-            ["y"] = 928.6,
-            ["x"] = -323.4,
-        },
         ["Qpart"] = {
             [25642] = {
                 ["1"] = "1",
@@ -13633,10 +11869,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [32]
     {
-        ["Trigger"] = {
-            ["y"] = 1001.7,
-            ["x"] = -420.3,
-        },
         ["Qpart"] = {
             [25652] = {
                 ["1"] = "1",
@@ -13649,10 +11881,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [33]
     {
-        ["Trigger"] = {
-            ["y"] = 1269,
-            ["x"] = 433.6,
-        },
         ["GetFP"] = 361,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -13688,10 +11916,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [37]
     {
-        ["Trigger"] = {
-            ["y"] = 878.6,
-            ["x"] = 365.8,
-        },
         ["Qpart"] = {
             [25673] = {
                 ["4"] = "4",
@@ -13704,10 +11928,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [38]
     {
-        ["Trigger"] = {
-            ["y"] = 1173.5,
-            ["x"] = 184.8,
-        },
         ["Qpart"] = {
             [25673] = {
                 ["2"] = "2",
@@ -13739,10 +11959,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1436.8,
-            ["x"] = -2.3,
-        },
         ["Fillers"] = {
             [25662] = {
                 ["1"] = "1",
@@ -13755,10 +11971,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [41]
     {
-        ["Trigger"] = {
-            ["y"] = 1335,
-            ["x"] = 35.7,
-        },
         ["Qpart"] = {
             [25662] = {
                 ["1"] = "1",
@@ -13789,10 +12001,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [44]
     {
-        ["Trigger"] = {
-            ["y"] = 1544,
-            ["x"] = -197,
-        },
         ["Waypoint"] = 25730,
         ["Range"] = 31.04,
         ["TT"] = {
@@ -13801,10 +12009,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [45]
     {
-        ["Trigger"] = {
-            ["y"] = 1681,
-            ["x"] = -81,
-        },
         ["Waypoint"] = 25730,
         ["Range"] = 17.26,
         ["TT"] = {
@@ -13813,10 +12017,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [46]
     {
-        ["Trigger"] = {
-            ["y"] = 1689.5,
-            ["x"] = -5.5,
-        },
         ["Waypoint"] = 25730,
         ["Range"] = 13.81,
         ["TT"] = {
@@ -13825,10 +12025,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [47]
     {
-        ["Trigger"] = {
-            ["y"] = 1683.5,
-            ["x"] = 86.4,
-        },
         ["Waypoint"] = 25730,
         ["Range"] = 10.99,
         ["TT"] = {
@@ -13837,10 +12033,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [48]
     {
-        ["Trigger"] = {
-            ["y"] = 1605.4,
-            ["x"] = 182,
-        },
         ["Qpart"] = {
             [25729] = {
                 ["1"] = "1",
@@ -13862,10 +12054,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [50]
     {
-        ["Trigger"] = {
-            ["y"] = 1608.3,
-            ["x"] = 183,
-        },
         ["Qpart"] = {
             [25673] = {
                 ["1"] = "1",
@@ -13878,10 +12066,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [51]
     {
-        ["Trigger"] = {
-            ["y"] = 1554.7,
-            ["x"] = 52.2,
-        },
         ["Qpart"] = {
             [25730] = {
                 ["1"] = "1",
@@ -13912,10 +12096,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [54]
     {
-        ["Trigger"] = {
-            ["y"] = 1128.8,
-            ["x"] = 172.8,
-        },
         ["Qpart"] = {
             [25728] = {
                 ["1"] = "1",
@@ -13976,10 +12156,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [60]
     {
-        ["Trigger"] = {
-            ["y"] = 539,
-            ["x"] = 536.4,
-        },
         ["Qpart"] = {
             [25739] = {
                 ["1"] = "1",
@@ -13995,10 +12171,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [61]
     {
-        ["Trigger"] = {
-            ["y"] = 878.7,
-            ["x"] = 644.7,
-        },
         ["Range"] = 23.45,
         ["Waypoint"] = 25766,
         ["TT"] = {
@@ -14015,10 +12187,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 491.2,
-            ["x"] = 1040.8,
-        },
         ["Button"] = {
             ["25766-1"] = 55972,
         },
@@ -14029,10 +12197,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [63]
     {
-        ["Trigger"] = {
-            ["y"] = 865.1,
-            ["x"] = 677.7,
-        },
         ["Waypoint"] = 25766,
         ["Range"] = 26.43,
         ["TT"] = {
@@ -14041,10 +12205,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [64]
     {
-        ["Trigger"] = {
-            ["y"] = 853.2,
-            ["x"] = 472.2,
-        },
         ["Waypoint"] = 25766,
         ["Range"] = 37.26,
         ["TT"] = {
@@ -14101,10 +12261,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [70]
     {
-        ["Trigger"] = {
-            ["y"] = 229.6,
-            ["x"] = 244.1,
-        },
         ["Waypoint"] = 25765,
         ["Range"] = 34.94,
         ["TT"] = {
@@ -14113,10 +12269,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [71]
     {
-        ["Trigger"] = {
-            ["y"] = 125.5,
-            ["x"] = -160.5,
-        },
         ["Waypoint"] = 25765,
         ["Range"] = 35.23,
         ["TT"] = {
@@ -14143,10 +12295,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [74]
     {
-        ["Trigger"] = {
-            ["y"] = 322.5,
-            ["x"] = -354,
-        },
         ["Waypoint"] = 25793,
         ["Range"] = 13.85,
         ["TT"] = {
@@ -14188,10 +12336,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 413.7,
-            ["x"] = -265.9,
-        },
         ["Button"] = {
             ["25806-1"] = 56014,
             ["25811-1"] = 56018,
@@ -14207,10 +12351,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             [25811] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 446.2,
-            ["x"] = -208.7,
         },
         ["Fillers"] = {
             [25809] = {
@@ -14236,10 +12376,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 600.1,
-            ["x"] = -151.5,
-        },
         ["Fillers"] = {
             [25809] = {
                 ["1"] = "1",
@@ -14264,10 +12400,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
                 ["4"] = "4",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 550.5,
-            ["x"] = -137.4,
-        },
         ["Fillers"] = {
             [25809] = {
                 ["1"] = "1",
@@ -14287,10 +12419,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [81]
     {
-        ["Trigger"] = {
-            ["y"] = 574.6,
-            ["x"] = -212.9,
-        },
         ["Qpart"] = {
             [25809] = {
                 ["1"] = "1",
@@ -14329,10 +12457,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 554.5,
-            ["x"] = -210.5,
-        },
         ["Button"] = {
             ["25808-1"] = 56014,
         },
@@ -14364,10 +12488,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [87]
     {
-        ["Trigger"] = {
-            ["y"] = 317.5,
-            ["x"] = -348.4,
-        },
         ["Waypoint"] = 25821,
         ["Range"] = 9.39,
         ["TT"] = {
@@ -14412,10 +12532,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [92]
     {
-        ["Trigger"] = {
-            ["y"] = 51.2,
-            ["x"] = 102.5,
-        },
         ["Qpart"] = {
             [25837] = {
                 ["1"] = "1",
@@ -14485,10 +12601,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [99]
     {
-        ["Trigger"] = {
-            ["y"] = 386.3,
-            ["x"] = -614,
-        },
         ["Qpart"] = {
             [25822] = {
                 ["1"] = "1",
@@ -14546,10 +12658,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 109.5,
-            ["x"] = -389.4,
-        },
         ["Button"] = {
             ["25847-1"] = 56069,
         },
@@ -14582,10 +12690,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             [25848] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -43,
-            ["x"] = -491.5,
         },
         ["RaidIcon"] = 41368,
         ["Range"] = 0.75,
@@ -14690,10 +12794,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1650.5,
-            ["x"] = 892.9,
-        },
         ["Button"] = {
             ["25878-1"] = 56140,
         },
@@ -14737,10 +12837,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             [25879] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1590.5,
-            ["x"] = 888.5,
         },
         ["Button"] = {
             ["25878-1"] = 56140,
@@ -14799,10 +12895,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [14]
     {
-        ["Trigger"] = {
-            ["y"] = 2147.4,
-            ["x"] = 1535.7,
-        },
         ["GetFP"] = 33,
         ["Range"] = 0.75,
         ["TT"] = {
@@ -14815,10 +12907,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             [25889] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1600.5,
-            ["x"] = 1586,
         },
         ["Button"] = {
             ["25889-1"] = 56168,
@@ -14882,10 +12970,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2509.8,
-            ["x"] = 1471.2,
-        },
         ["Fillers"] = {
             [25914] = {
                 ["2"] = "2",
@@ -14903,10 +12987,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2726,
-            ["x"] = 1499,
-        },
         ["Fillers"] = {
             [25913] = {
                 ["1"] = "1",
@@ -14922,10 +13002,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2643.1,
-            ["x"] = 1419.9,
-        },
         ["Qpart"] = {
             [25913] = {
                 ["1"] = "1",
@@ -14957,10 +13033,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
                 ["1"] = "1",
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1955.4,
-            ["x"] = 1500.2,
         },
         ["ExtraLineText"] = "USE_GLAIVE_THROWER",
         ["Range"] = 0.75,
@@ -15006,10 +13078,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
         },
     }, -- [16]
     {
-        ["Trigger"] = {
-            ["y"] = 971.7,
-            ["x"] = 2014,
-        },
         ["GetFP"] = 365,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -15030,10 +13098,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
             [25934] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 646.7,
-            ["x"] = 2111.6,
         },
         ["Button"] = {
             ["25930-1"] = 56221,
@@ -15074,10 +13138,6 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 558.1,
-            ["x"] = 2139.5,
-        },
         ["Button"] = {
             ["25931-1"] = 56221,
         },
@@ -15115,10 +13175,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -269.3,
-            ["x"] = -967.8,
-        },
         ["Qpart"] = {
             [24863] = {
                 ["1"] = "1",
@@ -15153,10 +13209,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [3]
     {
-        ["Trigger"] = {
-            ["y"] = -135,
-            ["x"] = -1244.5,
-        },
         ["Qpart"] = {
             [25186] = {
                 ["1"] = "1",
@@ -15193,10 +13245,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -360.4,
-            ["x"] = -1537.8,
-        },
         ["RaidIcon"] = 38383,
         ["Range"] = 0.61,
         ["TT"] = {
@@ -15247,10 +13295,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -2221,
-            ["x"] = -3776.5,
-        },
         ["RaidIcon"] = 38619,
         ["Range"] = 0.61,
         ["TT"] = {
@@ -15286,10 +13330,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -2096.9,
-            ["x"] = -3653.7,
-        },
         ["Qpart"] = {
             [24941] = {
                 ["1"] = "1",
@@ -15337,10 +13377,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1998.9,
-            ["x"] = -3628.5,
-        },
         ["Button"] = {
             ["24944-1"] = 52014,
         },
@@ -15369,10 +13405,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [3]
     {
-        ["Trigger"] = {
-            ["y"] = -1998.5,
-            ["x"] = -3738.5,
-        },
         ["Qpart"] = {
             [24939] = {
                 ["1"] = "1",
@@ -15438,10 +13470,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1809,
-            ["x"] = -3701,
-        },
         ["Button"] = {
             ["24948-1"] = 52017,
         },
@@ -15452,10 +13480,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1699.5,
-            ["x"] = -3734.5,
-        },
         ["Range"] = 20.88,
         ["Waypoint"] = 24956,
         ["TT"] = {
@@ -15474,10 +13498,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1614.4,
-            ["x"] = -3692,
-        },
         ["Button"] = {
             ["24948-2"] = 52017,
         },
@@ -15493,10 +13513,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1604.3,
-            ["x"] = -3646.4,
-        },
         ["Fillers"] = {
             [24956] = {
                 ["1"] = "1",
@@ -15509,10 +13525,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = -1824.6,
-            ["x"] = -3676.5,
-        },
         ["Qpart"] = {
             [24956] = {
                 ["1"] = "1",
@@ -15544,10 +13556,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [8]
     {
-        ["Trigger"] = {
-            ["y"] = -2173.4,
-            ["x"] = -3662.4,
-        },
         ["Range"] = 24.87,
         ["Waypoint"] = 25036,
         ["TT"] = {
@@ -15579,10 +13587,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = -1993.5,
-            ["x"] = -3202,
-        },
         ["Qpart"] = {
             [25002] = {
                 ["1"] = "1",
@@ -15625,10 +13629,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2102.7,
-            ["x"] = -2581.5,
-        },
         ["Fillers"] = {
             [25015] = {
                 ["1"] = "1",
@@ -15645,10 +13645,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [15]
     {
-        ["Trigger"] = {
-            ["y"] = -2167.5,
-            ["x"] = -2680.7,
-        },
         ["Qpart"] = {
             [25008] = {
                 ["1"] = "1",
@@ -15695,10 +13691,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         ["Button"] = {
             ["25027-1"] = 52073,
         },
-        ["Trigger"] = {
-            ["y"] = -2271,
-            ["x"] = -2571.7,
-        },
         ["Fillers"] = {
             [25028] = {
                 ["1"] = "1",
@@ -15712,10 +13704,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [19]
     {
-        ["Trigger"] = {
-            ["y"] = -2076,
-            ["x"] = -2590,
-        },
         ["Qpart"] = {
             [25028] = {
                 ["1"] = "1",
@@ -15778,10 +13766,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1662,
-            ["x"] = -2303,
-        },
         ["RaidIcon"] = 37738,
         ["Range"] = 99.09,
         ["TT"] = {
@@ -15823,10 +13807,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         ["Button"] = {
             ["24566-1"] = 49882,
         },
-        ["Trigger"] = {
-            ["y"] = -1766,
-            ["x"] = -2338.5,
-        },
         ["RaidIcon"] = 37091,
         ["Range"] = 129.71,
         ["TT"] = {
@@ -15860,10 +13840,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1706,
-            ["x"] = -2216.4,
-        },
         ["RaidIcon"] = 37570,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -15915,10 +13891,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2465,
-            ["x"] = -2306,
-        },
         ["Fillers"] = {
             [25041] = {
                 ["1"] = "1",
@@ -15931,10 +13903,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [36]
     {
-        ["Trigger"] = {
-            ["y"] = -2465,
-            ["x"] = -2306,
-        },
         ["Qpart"] = {
             [25045] = {
                 ["2"] = "2",
@@ -15969,10 +13937,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1863,
-            ["x"] = -1833.5,
-        },
         ["Button"] = {
             ["25044-1"] = 49782,
         },
@@ -15988,10 +13952,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2049.9,
-            ["x"] = -1970.5,
-        },
         ["Fillers"] = {
             [25041] = {
                 ["1"] = "1",
@@ -16004,10 +13964,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [40]
     {
-        ["Trigger"] = {
-            ["y"] = -2127,
-            ["x"] = -1914,
-        },
         ["Qpart"] = {
             [25041] = {
                 ["1"] = "1",
@@ -16050,10 +14006,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [44]
     {
-        ["Trigger"] = {
-            ["y"] = -2632.4,
-            ["x"] = -1952,
-        },
         ["Qpart"] = {
             [25042] = {
                 ["1"] = "1",
@@ -16073,10 +14025,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
             [25059] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -2352.5,
-            ["x"] = -1931.6,
         },
         ["Button"] = {
             ["25057-1"] = 52271,
@@ -16116,10 +14064,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [49]
     {
-        ["Trigger"] = {
-            ["y"] = -3145.7,
-            ["x"] = -2290.5,
-        },
         ["GetFP"] = 389,
         ["Range"] = 0.75,
         ["TT"] = {
@@ -16169,10 +14113,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -3172.7,
-            ["x"] = -2217.4,
-        },
         ["Button"] = {
             ["25082-1"] = 50128,
         },
@@ -16201,10 +14141,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [57]
     {
-        ["Trigger"] = {
-            ["y"] = -3247.7,
-            ["x"] = -1970.5,
-        },
         ["Qpart"] = {
             [25081] = {
                 ["1"] = "1",
@@ -16246,10 +14182,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
             },
         },
         ["ExtraLineText"] = "KILL_SAPPER",
-        ["Trigger"] = {
-            ["y"] = -3197.7,
-            ["x"] = -2177,
-        },
         ["RaidIcon"] = 37925,
         ["Range"] = 67.29,
         ["TT"] = {
@@ -16276,10 +14208,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [63]
     {
-        ["Trigger"] = {
-            ["y"] = -3477.5,
-            ["x"] = -2184,
-        },
         ["Qpart"] = {
             [25080] = {
                 ["1"] = "1",
@@ -16325,10 +14253,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -3546.5,
-            ["x"] = -1929.3,
-        },
         ["Fillers"] = {
             [25102] = {
                 ["1"] = "1",
@@ -16341,10 +14265,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -3559.2,
-            ["x"] = -1931.1,
-        },
         ["Qpart"] = {
             [25102] = {
                 ["1"] = "1",
@@ -16385,10 +14305,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [72]
     {
-        ["Trigger"] = {
-            ["y"] = -3865,
-            ["x"] = -2187.5,
-        },
         ["Qpart"] = {
             [24824] = {
                 ["1"] = "1",
@@ -16422,10 +14338,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [75]
     {
-        ["Trigger"] = {
-            ["y"] = -3823.9,
-            ["x"] = -1750.4,
-        },
         ["Qpart"] = {
             [25084] = {
                 ["1"] = "1",
@@ -16466,10 +14378,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -3830.7,
-            ["x"] = -1441.8,
-        },
         ["Fillers"] = {
             [24653] = {
                 ["1"] = "1",
@@ -16482,10 +14390,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [79]
     {
-        ["Trigger"] = {
-            ["y"] = -3927.9,
-            ["x"] = -1713.6,
-        },
         ["Qpart"] = {
             [24653] = {
                 ["1"] = "1",
@@ -16532,10 +14436,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -4219.2,
-            ["x"] = -2282,
-        },
         ["Fillers"] = {
             [25106] = {
                 ["1"] = "1",
@@ -16549,10 +14449,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [84]
     {
-        ["Trigger"] = {
-            ["y"] = -4214.8,
-            ["x"] = -2275,
-        },
         ["Qpart"] = {
             [25106] = {
                 ["3"] = "3",
@@ -16565,10 +14461,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [85]
     {
-        ["Trigger"] = {
-            ["y"] = -4132.2,
-            ["x"] = -2192.2,
-        },
         ["Qpart"] = {
             [25106] = {
                 ["1"] = "1",
@@ -16607,10 +14499,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -4168.9,
-            ["x"] = -2139,
-        },
         ["RaidIcon"] = 39155,
         ["Range"] = 0.61,
         ["TT"] = {
@@ -16683,10 +14571,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -4085,
-            ["x"] = -2399.5,
-        },
         ["Fillers"] = {
             [25153] = {
                 ["1"] = "1",
@@ -16699,10 +14583,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [96]
     {
-        ["Trigger"] = {
-            ["y"] = -4085,
-            ["x"] = -2399.5,
-        },
         ["Qpart"] = {
             [25153] = {
                 ["1"] = "1",
@@ -16763,10 +14643,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
     }, -- [102]
     {
         ["Waypoint"] = 25182,
-        ["Trigger"] = {
-            ["y"] = -3641.4,
-            ["x"] = -1636.3,
-        },
         ["Fillers"] = {
             [25182] = {
                 ["1"] = "1",
@@ -16779,10 +14655,6 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
         },
     }, -- [103]
     {
-        ["Trigger"] = {
-            ["y"] = -3521.7,
-            ["x"] = -1602.3,
-        },
         ["Qpart"] = {
             [25183] = {
                 ["1"] = "1",
@@ -16856,10 +14728,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -3784.2,
-            ["x"] = -4496.8,
-        },
         ["RaidIcon"] = 23602,
         ["Range"] = 125.92,
         ["TT"] = {
@@ -16886,10 +14754,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = -4088.4,
-            ["x"] = -4540.4,
-        },
         ["Qpart"] = {
             [27211] = {
                 ["1"] = "1",
@@ -16925,10 +14789,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -3809.2,
-            ["x"] = -4523.5,
-        },
         ["RaidIcon"] = 4979,
         ["Range"] = 98.64,
         ["TT"] = {
@@ -16955,10 +14815,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = -4029.5,
-            ["x"] = -4980.4,
-        },
         ["Qpart"] = {
             [27213] = {
                 ["1"] = "1",
@@ -16989,10 +14845,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [14]
     {
-        ["Trigger"] = {
-            ["y"] = -3742.9,
-            ["x"] = -4800.9,
-        },
         ["Qpart"] = {
             [27217] = {
                 ["1"] = "1",
@@ -17059,10 +14911,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [21]
     {
-        ["Trigger"] = {
-            ["y"] = -3690.2,
-            ["x"] = -4527.4,
-        },
         ["Range"] = 13.09,
         ["Waypoint"] = 27215,
         ["TT"] = {
@@ -17080,10 +14928,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [23]
     {
-        ["Trigger"] = {
-            ["y"] = -3710,
-            ["x"] = -4538.4,
-        },
         ["Range"] = 16.22,
         ["Waypoint"] = 27215,
         ["TT"] = {
@@ -17176,10 +15020,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -3010,
-            ["x"] = -3903.2,
-        },
         ["RaidIcon"] = 23554,
         ["Range"] = 72.54,
         ["TT"] = {
@@ -17188,10 +15028,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [33]
     {
-        ["Trigger"] = {
-            ["y"] = -3004.7,
-            ["x"] = -3931.4,
-        },
         ["Qpart"] = {
             [27183] = {
                 ["1"] = "1",
@@ -17229,10 +15065,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -3008.2,
-            ["x"] = -4340.9,
-        },
         ["Fillers"] = {
             [1204] = {
                 ["1"] = "1",
@@ -17245,10 +15077,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [37]
     {
-        ["Trigger"] = {
-            ["y"] = -2993.7,
-            ["x"] = -4262.2,
-        },
         ["Qpart"] = {
             [1204] = {
                 ["1"] = "1",
@@ -17261,10 +15089,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [38]
     {
-        ["Trigger"] = {
-            ["y"] = -2973.5,
-            ["x"] = -3862.7,
-        },
         ["Qpart"] = {
             [27189] = {
                 ["1"] = "1",
@@ -17300,10 +15124,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2966.5,
-            ["x"] = -3872,
-        },
         ["Button"] = {
             ["27190-1"] = 33113,
         },
@@ -17323,10 +15143,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [43]
     {
-        ["Trigger"] = {
-            ["y"] = -2812.5,
-            ["x"] = -2775.5,
-        },
         ["Qpart"] = {
             [27184] = {
                 ["1"] = "1",
@@ -17413,10 +15229,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -3959.4,
-            ["x"] = -2988.2,
-        },
         ["Button"] = {
             ["27336-1"] = 33101,
         },
@@ -17427,10 +15239,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [52]
     {
-        ["Trigger"] = {
-            ["y"] = -3709.9,
-            ["x"] = -3439,
-        },
         ["Qpart"] = {
             [27340] = {
                 ["1"] = "1",
@@ -17454,10 +15262,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [54]
     {
-        ["Trigger"] = {
-            ["y"] = -4568.3,
-            ["x"] = -3223,
-        },
         ["GetFP"] = 179,
         ["Range"] = 0.61,
         ["TT"] = {
@@ -17508,10 +15312,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -4332,
-            ["x"] = -2653.4,
-        },
         ["Fillers"] = {
             [27407] = {
                 ["1"] = "1",
@@ -17524,10 +15324,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [60]
     {
-        ["Trigger"] = {
-            ["y"] = -4332,
-            ["x"] = -2653.4,
-        },
         ["Qpart"] = {
             [27407] = {
                 ["1"] = "1",
@@ -17568,10 +15364,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [64]
     {
-        ["Trigger"] = {
-            ["y"] = -4374.4,
-            ["x"] = -3064.7,
-        },
         ["Range"] = 12.87,
         ["Waypoint"] = 27408,
         ["TT"] = {
@@ -17581,10 +15373,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
     },
     {
         ["Waypoint"] = 27408,
-        ["Trigger"] = {
-            ["y"] = -4337.5,
-            ["x"] = -3000.9,
-        },
         ["Fillers"] = {
             [27409] = {
                 ["1"] = "1",
@@ -17598,10 +15386,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
     },
     {
         ["Waypoint"] = 27408,
-        ["Trigger"] = {
-            ["y"] = -4434.5,
-            ["x"] = -2991.2,
-        },
         ["Fillers"] = {
             [27409] = {
                 ["1"] = "1",
@@ -17624,10 +15408,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -4462.7,
-            ["x"] = -2975.7,
-        },
         ["Button"] = {
             ["27409-1"] = 33088,
         },
@@ -17642,10 +15422,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             [27409] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -4346.2,
-            ["x"] = -2992,
         },
         ["Button"] = {
             ["27409-1"] = 33088,
@@ -17676,10 +15452,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [71]
     {
-        ["Trigger"] = {
-            ["y"] = -4316.2,
-            ["x"] = -3319.9,
-        },
         ["Qpart"] = {
             [27410] = {
                 ["1"] = "1",
@@ -17692,10 +15464,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [72]
     {
-        ["Trigger"] = {
-            ["y"] = -4553.5,
-            ["x"] = -3482.4,
-        },
         ["Qpart"] = {
             [27413] = {
                 ["1"] = "1",
@@ -17739,10 +15507,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             [27411] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -4700.9,
-            ["x"] = -3722.7,
         },
         ["Button"] = {
             ["27411-1"] = 33095,
@@ -17790,10 +15554,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -3969,
-            ["x"] = -3692,
-        },
         ["Button"] = {
             ["27347-1"] = 33108,
         },
@@ -17823,10 +15583,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [83]
     {
-        ["Trigger"] = {
-            ["y"] = -4140.2,
-            ["x"] = -3912.7,
-        },
         ["Waypoint"] = 27219,
         ["Range"] = 17.73,
         ["TT"] = {
@@ -17858,10 +15614,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -4252.9,
-            ["x"] = -3913.2,
-        },
         ["Button"] = {
             ["27220-1"] = 33166,
         },
@@ -17890,10 +15642,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [89]
     {
-        ["Trigger"] = {
-            ["y"] = -4127.9,
-            ["x"] = -3898,
-        },
         ["Range"] = 20.15,
         ["Waypoint"] = 11208,
         ["TT"] = {
@@ -17902,10 +15650,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [90]
     {
-        ["Trigger"] = {
-            ["y"] = -4059.7,
-            ["x"] = -3838,
-        },
         ["Range"] = 28.76,
         ["Waypoint"] = 11208,
         ["TT"] = {
@@ -17950,10 +15694,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [95]
     {
-        ["Trigger"] = {
-            ["y"] = -3848.2,
-            ["x"] = -4626.8,
-        },
         ["Qpart"] = {
             [27222] = {
                 ["1"] = "1",
@@ -18096,10 +15836,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [110]
     {
-        ["Trigger"] = {
-            ["y"] = -3621,
-            ["x"] = -4361.4,
-        },
         ["Range"] = 12.52,
         ["Waypoint"] = 1258,
         ["TT"] = {
@@ -18108,10 +15844,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [111]
     {
-        ["Trigger"] = {
-            ["y"] = -3586,
-            ["x"] = -4526.3,
-        },
         ["Qpart"] = {
             [1258] = {
                 ["1"] = "1",
@@ -18170,10 +15902,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [117]
     {
-        ["Trigger"] = {
-            ["y"] = -2669.4,
-            ["x"] = -4020.7,
-        },
         ["Qpart"] = {
             [27186] = {
                 ["1"] = "1",
@@ -18186,10 +15914,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [118]
     {
-        ["Trigger"] = {
-            ["y"] = -2582.9,
-            ["x"] = -4001.7,
-        },
         ["Qpart"] = {
             [27191] = {
                 ["1"] = "1",
@@ -18220,10 +15944,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [121]
     {
-        ["Trigger"] = {
-            ["y"] = -2671.7,
-            ["x"] = -4262.8,
-        },
         ["Qpart"] = {
             [27236] = {
                 ["1"] = "1",
@@ -18236,10 +15956,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [122]
     {
-        ["Trigger"] = {
-            ["y"] = -2692,
-            ["x"] = -4279.4,
-        },
         ["Qpart"] = {
             [27236] = {
                 ["2"] = "2",
@@ -18270,10 +15986,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [125]
     {
-        ["Trigger"] = {
-            ["y"] = -2632.4,
-            ["x"] = -4312.7,
-        },
         ["Button"] = {
             ["27237-1"] = 33045,
         },
@@ -18293,10 +16005,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
         ["Button"] = {
             ["27237-1"] = 33044,
-        },
-        ["Trigger"] = {
-            ["y"] = -2736.7,
-            ["x"] = -4445.8,
         },
         ["ExtraLineText"] = "SALVAGE_FLOATING_DEBRIS",
         ["Range"] = 147.06,
@@ -18334,10 +16042,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [3]
     {
-        ["Trigger"] = {
-            ["y"] = -2910.7,
-            ["x"] = -3300.5,
-        },
         ["Range"] = 84.13,
         ["Waypoint"] = 27287,
         ["TT"] = {
@@ -18416,10 +16120,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -3822,
-            ["x"] = -4509.8,
-        },
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -3822,
@@ -18475,10 +16175,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2494.5,
-            ["x"] = -3201,
-        },
         ["Button"] = {
             ["27242-1"] = 33069,
             ["27426-1"] = 33050,
@@ -18503,10 +16199,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             [1222] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -2709.2,
-            ["x"] = -3458,
         },
         ["RaidIcon"] = 4880,
         ["Range"] = 208.91,
@@ -18564,10 +16256,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2448.9,
-            ["x"] = -3157.7,
-        },
         ["Button"] = {
             ["27243-1"] = 33070,
         },
@@ -18578,10 +16266,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [25]
     {
-        ["Trigger"] = {
-            ["y"] = -2630.5,
-            ["x"] = -3312.7,
-        },
         ["Qpart"] = {
             [27245] = {
                 ["1"] = "1",
@@ -18604,10 +16288,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
         },
     }, -- [27]
     {
-        ["Trigger"] = {
-            ["y"] = -3052,
-            ["x"] = -3230.5,
-        },
         ["Range"] = 52.51,
         ["Waypoint"] = 27428,
         ["TT"] = {
@@ -18639,10 +16319,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -3699.9,
-            ["x"] = -3465.7,
-        },
         ["Button"] = {
             ["27429-3"] = 33072,
         },
@@ -18658,10 +16334,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -3664.7,
-            ["x"] = -3453.2,
-        },
         ["Button"] = {
             ["27429-2"] = 33072,
         },
@@ -18676,10 +16348,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
             [27429] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -3645,
-            ["x"] = -3421.9,
         },
         ["Button"] = {
             ["27429-1"] = 33072,
@@ -18750,10 +16418,6 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -3533.2,
-            ["x"] = -4317.4,
-        },
         ["Button"] = {
             ["27291-1"] = 33082,
         },
@@ -18790,10 +16454,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
     {
         ["Waypoint"] = 14384,
         ["RaidIcon"] = 36416,
-        ["Trigger"] = {
-            ["y"] = 96.5,
-            ["x"] = 1523.8,
-        },
         ["ExtraLineText"] = "USE_MOUNT",
         ["Range"] = 87.9,
         ["TT"] = {
@@ -18838,10 +16498,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [6]
     {
-        ["Trigger"] = {
-            ["y"] = 1.1,
-            ["x"] = 1209.4,
-        },
         ["Range"] = 21.04,
         ["Waypoint"] = 14354,
         ["TT"] = {
@@ -18850,10 +16506,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [7]
     {
-        ["Trigger"] = {
-            ["y"] = -90.6,
-            ["x"] = 771.9,
-        },
         ["Qpart"] = {
             [14354] = {
                 ["3"] = "3",
@@ -18875,10 +16527,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -239.5,
-            ["x"] = 693.6,
-        },
         ["Qpart"] = {
             [14354] = {
                 ["2"] = "2",
@@ -18900,10 +16548,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = -344,
-            ["x"] = 820.9,
-        },
         ["Qpart"] = {
             [14354] = {
                 ["1"] = "1",
@@ -18925,10 +16569,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [13]
     {
-        ["Trigger"] = {
-            ["y"] = -195.4,
-            ["x"] = 825.2,
-        },
         ["ExtraLine"] = 14358,
         ["Qpart"] = {
             [14358] = {
@@ -18952,10 +16592,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             [14357] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -344.4,
-            ["x"] = 820.7,
         },
         ["Button"] = {
             ["14357-1"] = 48943,
@@ -18981,10 +16617,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -242.2,
-            ["x"] = 695.7,
-        },
         ["Button"] = {
             ["14358-1"] = 48857,
         },
@@ -19009,10 +16641,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -90.8,
-            ["x"] = 771.7,
-        },
         ["Button"] = {
             ["14193-1"] = 48106,
         },
@@ -19032,10 +16660,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [3]
     {
-        ["Trigger"] = {
-            ["y"] = -12.5,
-            ["x"] = 1202.5,
-        },
         ["Waypoint"] = 14354,
         ["Range"] = 22.62,
         ["TT"] = {
@@ -19072,10 +16696,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [4]
     {
-        ["Trigger"] = {
-            ["y"] = -460.7,
-            ["x"] = 1665.5,
-        },
         ["Waypoint"] = 14365,
         ["Range"] = 35.8,
         ["TT"] = {
@@ -19100,10 +16720,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             [14361] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -516.3,
-            ["x"] = 1830.4,
         },
         ["Fillers"] = {
             [14362] = {
@@ -19136,10 +16752,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
     },
     {
         ["Waypoint"] = 14363,
-        ["Trigger"] = {
-            ["y"] = -448.3,
-            ["x"] = 1701.9,
-        },
         ["Fillers"] = {
             [14362] = {
                 ["1"] = "1",
@@ -19153,10 +16765,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
     }, -- [10]
     {
         ["Waypoint"] = 14363,
-        ["Trigger"] = {
-            ["y"] = -418.9,
-            ["x"] = 1723.2,
-        },
         ["Fillers"] = {
             [14362] = {
                 ["1"] = "1",
@@ -19173,10 +16781,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             [14363] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -416.8,
-            ["x"] = 1853.7,
         },
         ["Fillers"] = {
             [14362] = {
@@ -19213,10 +16817,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -347.3,
-            ["x"] = 1762.5,
-        },
         ["Fillers"] = {
             [14362] = {
                 ["1"] = "1",
@@ -19230,10 +16830,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [15]
     {
-        ["Trigger"] = {
-            ["y"] = -347.4,
-            ["x"] = 1764.5,
-        },
         ["Qpart"] = {
             [14362] = {
                 ["1"] = "1",
@@ -19270,10 +16866,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -356.8,
-            ["x"] = 2488.6,
-        },
         ["RaidIcon"] = 35773,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -19325,10 +16917,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [23]
     {
-        ["Trigger"] = {
-            ["y"] = -210.7,
-            ["x"] = 2479.9,
-        },
         ["Qpart"] = {
             [14257] = {
                 ["1"] = "1",
@@ -19366,10 +16954,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -356.5,
-            ["x"] = 2488.6,
-        },
         ["Button"] = {
             ["14260-1"] = 49064,
         },
@@ -19398,10 +16982,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [29]
     {
-        ["Trigger"] = {
-            ["y"] = -223.7,
-            ["x"] = 2682,
-        },
         ["Qpart"] = {
             [14264] = {
                 ["1"] = "1",
@@ -19432,10 +17012,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [32]
     {
-        ["Trigger"] = {
-            ["y"] = 33.2,
-            ["x"] = 2721.9,
-        },
         ["Qpart"] = {
             [14268] = {
                 ["1"] = "1",
@@ -19452,10 +17028,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             [14268] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 25.2,
-            ["x"] = 2653.4,
         },
         ["Button"] = {
             ["14268-1"] = 49102,
@@ -19527,10 +17099,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 211.1,
-            ["x"] = 2926.9,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 211.1,
@@ -19625,10 +17193,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 128.4,
-            ["x"] = 2864.6,
-        },
         ["RaidIcon"] = 4719,
         ["Range"] = 61.2,
         ["TT"] = {
@@ -19655,10 +17219,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [53]
     {
-        ["Trigger"] = {
-            ["y"] = -533.5,
-            ["x"] = 1056.4,
-        },
         ["GetFP"] = 369,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -19708,10 +17268,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -217.4,
-            ["x"] = 1270.4,
-        },
         ["Button"] = {
             ["14246-1"] = 49014,
         },
@@ -19749,10 +17305,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             [14251] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -64.5,
-            ["x"] = 1609.7,
         },
         ["Fillers"] = {
             [14253] = {
@@ -19814,10 +17366,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1039,
-            ["x"] = 1639,
-        },
         ["GetFP"] = 368,
         ["Range"] = 0.61,
         ["TT"] = {
@@ -19848,10 +17396,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             [14307] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -932.3,
-            ["x"] = 2217.6,
         },
         ["Fillers"] = {
             [14304] = {
@@ -19884,10 +17428,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             [14305] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -970.8,
-            ["x"] = 1875.5,
         },
         ["Button"] = {
             ["14304-1"] = 49138,
@@ -19953,10 +17493,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1250.4,
-            ["x"] = 1429.9,
-        },
         ["Button"] = {
             ["14309-1"] = 49144,
             ["14311-1"] = 49150,
@@ -19968,10 +17504,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [77]
     {
-        ["Trigger"] = {
-            ["y"] = -1328.5,
-            ["x"] = 1896.7,
-        },
         ["Qpart"] = {
             [5501] = {
                 ["1"] = "1",
@@ -20044,10 +17576,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1221.3,
-            ["x"] = 1021.2,
-        },
         ["Fillers"] = {
             [14316] = {
                 ["1"] = "1",
@@ -20060,10 +17588,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [85]
     {
-        ["Trigger"] = {
-            ["y"] = -1017.5,
-            ["x"] = 916.2,
-        },
         ["Qpart"] = {
             [14316] = {
                 ["1"] = "1",
@@ -20101,10 +17625,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -922.2,
-            ["x"] = 1168.5,
-        },
         ["RaidIcon"] = 36056,
         ["Range"] = 124.84,
         ["TT"] = {
@@ -20131,10 +17651,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [91]
     {
-        ["Trigger"] = {
-            ["y"] = -893.3,
-            ["x"] = 1368.5,
-        },
         ["Qpart"] = {
             [14325] = {
                 ["1"] = "1",
@@ -20206,10 +17722,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1401.8,
-            ["x"] = 1497.4,
-        },
         ["Button"] = {
             ["5561-1"] = 13892,
         },
@@ -20257,10 +17769,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [103]
     {
-        ["Trigger"] = {
-            ["y"] = -1696.4,
-            ["x"] = 2581.1,
-        },
         ["GetFP"] = 367,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -20269,10 +17777,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [104]
     {
-        ["Trigger"] = {
-            ["y"] = -2021.4,
-            ["x"] = 2356,
-        },
         ["Qpart"] = {
             [14328] = {
                 ["1"] = "1",
@@ -20285,10 +17789,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [105]
     {
-        ["Trigger"] = {
-            ["y"] = -1992.1,
-            ["x"] = 2635.1,
-        },
         ["Qpart"] = {
             [14328] = {
                 ["2"] = "2",
@@ -20301,10 +17801,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [106]
     {
-        ["Trigger"] = {
-            ["y"] = -2309.7,
-            ["x"] = 2634.6,
-        },
         ["Qpart"] = {
             [14328] = {
                 ["3"] = "3",
@@ -20317,10 +17813,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [107]
     {
-        ["Trigger"] = {
-            ["y"] = -2095.7,
-            ["x"] = 2523.1,
-        },
         ["Waypoint"] = 14328,
         ["Range"] = 24.57,
         ["TT"] = {
@@ -20329,10 +17821,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [108]
     {
-        ["Trigger"] = {
-            ["y"] = -2277.5,
-            ["x"] = 2502.4,
-        },
         ["Waypoint"] = 14328,
         ["Range"] = 12.13,
         ["TT"] = {
@@ -20341,10 +17829,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [109]
     {
-        ["Trigger"] = {
-            ["y"] = -2342.7,
-            ["x"] = 2509.6,
-        },
         ["Waypoint"] = 14328,
         ["Range"] = 7.57,
         ["TT"] = {
@@ -20376,10 +17860,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2286.7,
-            ["x"] = 1347.4,
-        },
         ["Fillers"] = {
             [14373] = {
                 ["1"] = "1",
@@ -20402,10 +17882,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
             [14376] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1887.1,
-            ["x"] = 1793.2,
         },
         ["Fillers"] = {
             [14329] = {
@@ -20445,10 +17921,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [115]
     {
-        ["Trigger"] = {
-            ["y"] = -1985.9,
-            ["x"] = 1853,
-        },
         ["Qpart"] = {
             [14373] = {
                 ["1"] = "1",
@@ -20501,10 +17973,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1192.9,
-            ["x"] = 2705.1,
-        },
         ["RaidIcon"] = 12277,
         ["Range"] = 356.25,
         ["TT"] = {
@@ -20513,10 +17981,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [120]
     {
-        ["Trigger"] = {
-            ["y"] = -1166.6,
-            ["x"] = 2834.6,
-        },
         ["Qpart"] = {
             [14329] = {
                 ["1"] = "1",
@@ -20572,10 +18036,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2044.5,
-            ["x"] = 2926.5,
-        },
         ["Fillers"] = {
             [14379] = {
                 ["1"] = "1",
@@ -20589,10 +18049,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [126]
     {
-        ["Trigger"] = {
-            ["y"] = -1916.1,
-            ["x"] = 2988.4,
-        },
         ["Qpart"] = {
             [14379] = {
                 ["1"] = "1",
@@ -20651,10 +18107,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [132]
     {
-        ["Trigger"] = {
-            ["y"] = -977.8,
-            ["x"] = 1644.9,
-        },
         ["Qpart"] = {
             [14381] = {
                 ["1"] = "1",
@@ -20667,10 +18119,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
         },
     }, -- [133]
     {
-        ["Trigger"] = {
-            ["y"] = -849.3,
-            ["x"] = 2703.6,
-        },
         ["Qpart"] = {
             [14381] = {
                 ["4"] = "4",
@@ -20700,10 +18148,6 @@ APR.RouteQuestStepList["A66-Desolace"] = {
 --- Feralas
 APR.RouteQuestStepList["A69-Feralas"] = {
     {
-        ["Trigger"] = {
-            ["y"] = -3141.5,
-            ["x"] = 1952.8,
-        },
         ["GetFP"] = 565,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -20731,10 +18175,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [3]
     {
-        ["Trigger"] = {
-            ["y"] = -3431,
-            ["x"] = 2401.4,
-        },
         ["Qpart"] = {
             [25447] = {
                 ["1"] = "1",
@@ -20759,10 +18199,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2901.4,
-            ["x"] = 2687.4,
-        },
         ["Range"] = 56.43,
         ["TT"] = {
             ["y"] = -2901.4,
@@ -20774,10 +18210,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             [25654] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -2760,
-            ["x"] = 2618.4,
         },
         ["Fillers"] = {
             [25448] = {
@@ -20795,10 +18227,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [6]
     {
-        ["Trigger"] = {
-            ["y"] = -2899,
-            ["x"] = 2718.6,
-        },
         ["Qpart"] = {
             [25448] = {
                 ["1"] = "1",
@@ -20840,10 +18268,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = -2776.5,
-            ["x"] = 2128.1,
-        },
         ["Qpart"] = {
             [25394] = {
                 ["1"] = "1",
@@ -20875,10 +18299,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [13]
     {
-        ["Trigger"] = {
-            ["y"] = -3414.4,
-            ["x"] = 2722.9,
-        },
         ["Qpart"] = {
             [25396] = {
                 ["1"] = "1",
@@ -20913,10 +18333,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [16]
     {
-        ["Trigger"] = {
-            ["y"] = -2865.5,
-            ["x"] = 1878,
-        },
         ["Qpart"] = {
             [25398] = {
                 ["1"] = "1",
@@ -20957,10 +18373,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [20]
     {
-        ["Trigger"] = {
-            ["y"] = -4467.4,
-            ["x"] = 2190.8,
-        },
         ["GetFP"] = 41,
         ["Range"] = 0.75,
         ["TT"] = {
@@ -20995,10 +18407,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5134.4,
-            ["x"] = 2197.8,
-        },
         ["Button"] = {
             ["25465-1"] = 18904,
         },
@@ -21018,10 +18426,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [25]
     {
-        ["Trigger"] = {
-            ["y"] = -4439.8,
-            ["x"] = 2147.5,
-        },
         ["Range"] = 19.87,
         ["Waypoint"] = 25466,
         ["TT"] = {
@@ -21040,10 +18444,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [27]
     {
-        ["Trigger"] = {
-            ["y"] = -4002.5,
-            ["x"] = 2023,
-        },
         ["Waypoint"] = 25449,
         ["Range"] = 35.74,
         ["TT"] = {
@@ -21052,10 +18452,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [28]
     {
-        ["Trigger"] = {
-            ["y"] = -3837.2,
-            ["x"] = 1772.7,
-        },
         ["Qpart"] = {
             [25449] = {
                 ["1"] = "1",
@@ -21068,10 +18464,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [29]
     {
-        ["Trigger"] = {
-            ["y"] = -3876.9,
-            ["x"] = 1876.7,
-        },
         ["Waypoint"] = 25449,
         ["Range"] = 42.8,
         ["TT"] = {
@@ -21123,10 +18515,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -4476,
-            ["x"] = 3313.6,
-        },
         ["Fillers"] = {
             [25399] = {
                 ["1"] = "1",
@@ -21139,10 +18527,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [35]
     {
-        ["Trigger"] = {
-            ["y"] = -4458.4,
-            ["x"] = 3300.3,
-        },
         ["Qpart"] = {
             [25399] = {
                 ["1"] = "1",
@@ -21155,10 +18539,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [36]
     {
-        ["Trigger"] = {
-            ["y"] = -4562.7,
-            ["x"] = 2256.9,
-        },
         ["Waypoint"] = 25458,
         ["Range"] = 28.22,
         ["TT"] = {
@@ -21186,10 +18566,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [39]
     {
-        ["Trigger"] = {
-            ["y"] = -4441.8,
-            ["x"] = 2146.1,
-        },
         ["Waypoint"] = 25463,
         ["Range"] = 15.68,
         ["TT"] = {
@@ -21198,10 +18574,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [40]
     {
-        ["Trigger"] = {
-            ["y"] = -4471.4,
-            ["x"] = 2051,
-        },
         ["Waypoint"] = 25463,
         ["Range"] = 25.99,
         ["TT"] = {
@@ -21210,10 +18582,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [41]
     {
-        ["Trigger"] = {
-            ["y"] = -4676.3,
-            ["x"] = 1938.2,
-        },
         ["Waypoint"] = 25463,
         ["Range"] = 23.2,
         ["TT"] = {
@@ -21222,10 +18590,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [42]
     {
-        ["Trigger"] = {
-            ["y"] = -4865.5,
-            ["x"] = 1475.7,
-        },
         ["GetFP"] = 567,
         ["Range"] = 0.75,
         ["TT"] = {
@@ -21277,10 +18641,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -4894.5,
-            ["x"] = 1485,
-        },
         ["Button"] = {
             ["25407-1"] = 53101,
         },
@@ -21309,10 +18669,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [50]
     {
-        ["Trigger"] = {
-            ["y"] = -4983.7,
-            ["x"] = 1600,
-        },
         ["Qpart"] = {
             [25450] = {
                 ["1"] = "1",
@@ -21342,10 +18698,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5474.8,
-            ["x"] = 1551.2,
-        },
         ["Button"] = {
             ["25409-1"] = 53104,
         },
@@ -21361,10 +18713,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5615.4,
-            ["x"] = 1236,
-        },
         ["Fillers"] = {
             [25400] = {
                 ["1"] = "1",
@@ -21377,10 +18725,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [54]
     {
-        ["Trigger"] = {
-            ["y"] = -5312.5,
-            ["x"] = 1301.5,
-        },
         ["Waypoint"] = 25350,
         ["Range"] = 56.84,
         ["TT"] = {
@@ -21408,10 +18752,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [57]
     {
-        ["Trigger"] = {
-            ["y"] = -5165.4,
-            ["x"] = 937.1,
-        },
         ["Qpart"] = {
             [25423] = {
                 ["1"] = "1",
@@ -21450,10 +18790,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
             [25368] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -4962.7,
-            ["x"] = 969.2,
         },
         ["Button"] = {
             ["25368-1"] = 54456,
@@ -21553,10 +18889,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5118,
-            ["x"] = 1358.3,
-        },
         ["Button"] = {
             ["25410-1"] = 53105,
         },
@@ -21577,10 +18909,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
     }, -- [72]
     {
         ["Waypoint"] = 25406,
-        ["Trigger"] = {
-            ["y"] = -4459.9,
-            ["x"] = 1333.5,
-        },
         ["Button"] = {
             ["25403-1"] = 52833,
         },
@@ -21608,10 +18936,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
                 ["1"] = "1",
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -4172.5,
-            ["x"] = 1143.5,
         },
         ["Button"] = {
             ["25403-1"] = 52833,
@@ -21668,10 +18992,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [79]
     {
-        ["Trigger"] = {
-            ["y"] = -4463.7,
-            ["x"] = 1334.5,
-        },
         ["Waypoint"] = 25333,
         ["Range"] = 21.78,
         ["TT"] = {
@@ -21680,10 +19000,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [80]
     {
-        ["Trigger"] = {
-            ["y"] = -4206.3,
-            ["x"] = 1315.8,
-        },
         ["Waypoint"] = 25333,
         ["Range"] = 24.47,
         ["TT"] = {
@@ -21692,10 +19008,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [81]
     {
-        ["Trigger"] = {
-            ["y"] = -4164.4,
-            ["x"] = 1155.5,
-        },
         ["Waypoint"] = 25333,
         ["Range"] = 29.25,
         ["TT"] = {
@@ -21704,10 +19016,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [82]
     {
-        ["Trigger"] = {
-            ["y"] = -3702.2,
-            ["x"] = 1094.2,
-        },
         ["Qpart"] = {
             [25333] = {
                 ["1"] = "1",
@@ -21757,10 +19065,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [87]
     {
-        ["Trigger"] = {
-            ["y"] = -4832.9,
-            ["x"] = 1054,
-        },
         ["Waypoint"] = 26574,
         ["Range"] = 24.96,
         ["TT"] = {
@@ -21769,10 +19073,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [88]
     {
-        ["Trigger"] = {
-            ["y"] = -4712.2,
-            ["x"] = 1002.1,
-        },
         ["Waypoint"] = 26574,
         ["Range"] = 24.63,
         ["TT"] = {
@@ -21781,10 +19081,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [89]
     {
-        ["Trigger"] = {
-            ["y"] = -4668.2,
-            ["x"] = 752.2,
-        },
         ["Waypoint"] = 26574,
         ["Range"] = 34.89,
         ["TT"] = {
@@ -21793,10 +19089,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [90]
     {
-        ["Trigger"] = {
-            ["y"] = -5025.4,
-            ["x"] = 157.4,
-        },
         ["Waypoint"] = 26574,
         ["Range"] = 15.89,
         ["TT"] = {
@@ -21839,10 +19131,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5174.5,
-            ["x"] = 520,
-        },
         ["Button"] = {
             ["25469-1"] = 58967,
         },
@@ -21853,10 +19141,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [95]
     {
-        ["Trigger"] = {
-            ["y"] = -4963.9,
-            ["x"] = 362,
-        },
         ["Qpart"] = {
             [25426] = {
                 ["1"] = "1",
@@ -21888,10 +19172,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [98]
     {
-        ["Trigger"] = {
-            ["y"] = -4852.7,
-            ["x"] = 698.6,
-        },
         ["Range"] = 38.48,
         ["Waypoint"] = 25427,
         ["TT"] = {
@@ -21900,10 +19180,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [99]
     {
-        ["Trigger"] = {
-            ["y"] = -4772.9,
-            ["x"] = 859.6,
-        },
         ["Qpart"] = {
             [25427] = {
                 ["1"] = "1",
@@ -21921,10 +19197,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -4396.3,
-            ["x"] = 516.9,
-        },
         ["Button"] = {
             ["25468-1"] = 58966,
         },
@@ -21935,10 +19207,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [101]
     {
-        ["Trigger"] = {
-            ["y"] = -3905.7,
-            ["x"] = 143.1,
-        },
         ["Qpart"] = {
             [25432] = {
                 ["1"] = "1",
@@ -21982,10 +19250,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5270.4,
-            ["x"] = 274,
-        },
         ["ExtraLineText"] = "FLYING_AROUND_THE_FOREST",
         ["Range"] = 0.69,
         ["TT"] = {
@@ -21994,10 +19258,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [105]
     {
-        ["Trigger"] = {
-            ["y"] = -5263.9,
-            ["x"] = 272.1,
-        },
         ["Qpart"] = {
             [25429] = {
                 ["1"] = "1",
@@ -22030,10 +19290,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [108]
     {
-        ["Trigger"] = {
-            ["y"] = -3986.9,
-            ["x"] = 223.8,
-        },
         ["Range"] = 24.69,
         ["Waypoint"] = 25434,
         ["TT"] = {
@@ -22042,10 +19298,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [109]
     {
-        ["Trigger"] = {
-            ["y"] = -3894.9,
-            ["x"] = 140.4,
-        },
         ["Range"] = 15.62,
         ["Waypoint"] = 25434,
         ["TT"] = {
@@ -22054,10 +19306,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [110]
     {
-        ["Trigger"] = {
-            ["y"] = -3797.4,
-            ["x"] = 135.6,
-        },
         ["Range"] = 21.36,
         ["Waypoint"] = 25434,
         ["TT"] = {
@@ -22071,10 +19319,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -3685.7,
-            ["x"] = 244.6,
-        },
         ["Fillers"] = {
             [25434] = {
                 ["1"] = "1",
@@ -22087,10 +19331,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [112]
     {
-        ["Trigger"] = {
-            ["y"] = -3685.7,
-            ["x"] = 244.6,
-        },
         ["Qpart"] = {
             [25434] = {
                 ["1"] = "1",
@@ -22122,10 +19362,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [115]
     {
-        ["Trigger"] = {
-            ["y"] = -4722.5,
-            ["x"] = 203.4,
-        },
         ["Range"] = 22.84,
         ["Waypoint"] = 25436,
         ["TT"] = {
@@ -22134,10 +19370,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [116]
     {
-        ["Trigger"] = {
-            ["y"] = -4606.4,
-            ["x"] = 72.3,
-        },
         ["Range"] = 15.38,
         ["Waypoint"] = 25436,
         ["TT"] = {
@@ -22146,10 +19378,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [117]
     {
-        ["Trigger"] = {
-            ["y"] = -4572.9,
-            ["x"] = -13,
-        },
         ["Range"] = 17.24,
         ["Waypoint"] = 25436,
         ["TT"] = {
@@ -22158,10 +19386,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [118]
     {
-        ["Trigger"] = {
-            ["y"] = -4333.9,
-            ["x"] = -54.8,
-        },
         ["Qpart"] = {
             [25436] = {
                 ["1"] = "1",
@@ -22174,10 +19398,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [119]
     {
-        ["Trigger"] = {
-            ["y"] = -4529.3,
-            ["x"] = -32,
-        },
         ["Range"] = 15.36,
         ["Waypoint"] = 25436,
         ["TT"] = {
@@ -22186,10 +19406,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [120]
     {
-        ["Trigger"] = {
-            ["y"] = -4650.4,
-            ["x"] = 133.1,
-        },
         ["Range"] = 38.99,
         ["Waypoint"] = 25436,
         ["TT"] = {
@@ -22216,10 +19432,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [123]
     {
-        ["Trigger"] = {
-            ["y"] = -4653.9,
-            ["x"] = 131.5,
-        },
         ["Range"] = 36.84,
         ["Waypoint"] = 25437,
         ["TT"] = {
@@ -22228,10 +19440,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [124]
     {
-        ["Trigger"] = {
-            ["y"] = -4563.4,
-            ["x"] = -22.9,
-        },
         ["Range"] = 28.85,
         ["Waypoint"] = 25437,
         ["TT"] = {
@@ -22240,10 +19448,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [125]
     {
-        ["Trigger"] = {
-            ["y"] = -4356.5,
-            ["x"] = -147,
-        },
         ["Range"] = 14.45,
         ["Waypoint"] = 25437,
         ["TT"] = {
@@ -22252,10 +19456,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [126]
     {
-        ["Trigger"] = {
-            ["y"] = -4384,
-            ["x"] = -223.5,
-        },
         ["Range"] = 19.01,
         ["Waypoint"] = 25437,
         ["TT"] = {
@@ -22282,10 +19482,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [129]
     {
-        ["Trigger"] = {
-            ["y"] = -4336.9,
-            ["x"] = -218,
-        },
         ["Qpart"] = {
             [25379] = {
                 ["1"] = "1",
@@ -22316,10 +19512,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [132]
     {
-        ["Trigger"] = {
-            ["y"] = -4563.3,
-            ["x"] = -18.9,
-        },
         ["Range"] = 23.31,
         ["Waypoint"] = 25438,
         ["TT"] = {
@@ -22328,10 +19520,6 @@ APR.RouteQuestStepList["A69-Feralas"] = {
         },
     }, -- [133]
     {
-        ["Trigger"] = {
-            ["y"] = -4648.8,
-            ["x"] = 130.1,
-        },
         ["Range"] = 31.25,
         ["Waypoint"] = 25438,
         ["TT"] = {
@@ -22364,10 +19552,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -4434.9,
-            ["x"] = -579.3,
-        },
         ["Qpart"] = {
             [25486] = {
                 ["1"] = "1",
@@ -22416,10 +19600,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -6138.8,
-            ["x"] = -3806,
-        },
         ["Waypoint"] = 25504,
         ["Range"] = 2.81,
         ["TT"] = {
@@ -22455,10 +19635,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [6]
     {
-        ["Trigger"] = {
-            ["y"] = -6134.8,
-            ["x"] = -3834.7,
-        },
         ["Waypoint"] = 25517,
         ["Range"] = 6.27,
         ["TT"] = {
@@ -22467,10 +19643,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [7]
     {
-        ["Trigger"] = {
-            ["y"] = -6147.4,
-            ["x"] = -3835.5,
-        },
         ["Waypoint"] = 25517,
         ["Range"] = 4.86,
         ["TT"] = {
@@ -22488,10 +19660,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["25517-1"] = 54746,
         },
         ["ExtraLineText"] = "BUY_BOTTLE_OF_GROG",
-        ["Trigger"] = {
-            ["y"] = -6160,
-            ["x"] = -3798.7,
-        },
         ["RaidIcon"] = 40832,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -22537,10 +19705,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             ["25524-1"] = 54821,
         },
         ["RaidIcon"] = 40449,
-        ["Trigger"] = {
-            ["y"] = -6168.3,
-            ["x"] = -3935.7,
-        },
         ["ExtraLineText"] = "GET_CROWBAR",
         ["Range"] = 0.69,
         ["TT"] = {
@@ -22558,10 +19722,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [13]
     {
-        ["Trigger"] = {
-            ["y"] = -6186.9,
-            ["x"] = -3950.2,
-        },
         ["Qpart"] = {
             [25515] = {
                 ["1"] = "1",
@@ -22574,10 +19734,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [14]
     {
-        ["Trigger"] = {
-            ["y"] = -6200.3,
-            ["x"] = -3909.9,
-        },
         ["Waypoint"] = 25515,
         ["Range"] = 6.8,
         ["TT"] = {
@@ -22586,10 +19742,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [15]
     {
-        ["Trigger"] = {
-            ["y"] = -6126.8,
-            ["x"] = -3891,
-        },
         ["Waypoint"] = 25515,
         ["Range"] = 5.78,
         ["TT"] = {
@@ -22598,10 +19750,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [16]
     {
-        ["Trigger"] = {
-            ["y"] = -6143.5,
-            ["x"] = -3866.5,
-        },
         ["Waypoint"] = 25515,
         ["Range"] = 10.02,
         ["TT"] = {
@@ -22610,10 +19758,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [17]
     {
-        ["Trigger"] = {
-            ["y"] = -6138.2,
-            ["x"] = -3820.2,
-        },
         ["Waypoint"] = 25515,
         ["Range"] = 11.34,
         ["TT"] = {
@@ -22646,10 +19790,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -6187.4,
-            ["x"] = -3906.4,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -6187.4,
@@ -22657,10 +19797,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [21]
     {
-        ["Trigger"] = {
-            ["y"] = -6189.2,
-            ["x"] = -3937.7,
-        },
         ["Qpart"] = {
             [25532] = {
                 ["2"] = "2",
@@ -22691,10 +19827,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [24]
     {
-        ["Trigger"] = {
-            ["y"] = -6255,
-            ["x"] = -3833.7,
-        },
         ["Qpart"] = {
             [25542] = {
                 ["1"] = "1",
@@ -22707,10 +19839,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [25]
     {
-        ["Trigger"] = {
-            ["y"] = -6128.4,
-            ["x"] = -3889.5,
-        },
         ["Waypoint"] = 25542,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -22719,10 +19847,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [26]
     {
-        ["Trigger"] = {
-            ["y"] = -6142.8,
-            ["x"] = -3846.2,
-        },
         ["Waypoint"] = 25542,
         ["Range"] = 6.77,
         ["TT"] = {
@@ -22778,10 +19902,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
     }, -- [32]
     {
         ["Waypoint"] = 28031,
-        ["Trigger"] = {
-            ["y"] = -6466.9,
-            ["x"] = -3508,
-        },
         ["Fillers"] = {
             [25585] = {
                 ["1"] = "1",
@@ -22816,10 +19936,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [35]
     {
-        ["Trigger"] = {
-            ["y"] = -6449.3,
-            ["x"] = -3497.7,
-        },
         ["Qpart"] = {
             [28051] = {
                 ["1"] = "1",
@@ -22860,10 +19976,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -6499.9,
-            ["x"] = -3337.7,
-        },
         ["Button"] = {
             ["28047-1"] = 62912,
         },
@@ -22878,10 +19990,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             [28047] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -6514.9,
-            ["x"] = -3305.9,
         },
         ["Button"] = {
             ["28047-2"] = 62912,
@@ -22898,10 +20006,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -6446.4,
-            ["x"] = -3290.4,
-        },
         ["Button"] = {
             ["28047-3"] = 62912,
         },
@@ -22917,10 +20021,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["4"] = "4",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -6478,
-            ["x"] = -3290.7,
-        },
         ["Button"] = {
             ["28047-4"] = 62912,
         },
@@ -22931,10 +20031,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [42]
     {
-        ["Trigger"] = {
-            ["y"] = -6496.3,
-            ["x"] = -3241.9,
-        },
         ["Qpart"] = {
             [28048] = {
                 ["1"] = "1",
@@ -22958,10 +20054,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
     }, -- [44]
     {
         ["Waypoint"] = 25590,
-        ["Trigger"] = {
-            ["y"] = -6334.9,
-            ["x"] = -3984.2,
-        },
         ["Fillers"] = {
             [25585] = {
                 ["1"] = "1",
@@ -22977,10 +20069,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [45]
     {
-        ["Trigger"] = {
-            ["y"] = -6080.9,
-            ["x"] = -4373,
-        },
         ["Waypoint"] = 25590,
         ["Range"] = 40.44,
         ["TT"] = {
@@ -23019,10 +20107,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             [25609] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -5896.9,
-            ["x"] = -4144.5,
         },
         ["Fillers"] = {
             [25588] = {
@@ -23066,10 +20150,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
     }, -- [51]
     {
         ["Waypoint"] = 25627,
-        ["Trigger"] = {
-            ["y"] = -6400.9,
-            ["x"] = -4473.3,
-        },
         ["Fillers"] = {
             [25588] = {
                 ["1"] = "1",
@@ -23090,10 +20170,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -6299.9,
-            ["x"] = -4622.4,
-        },
         ["Button"] = {
             ["25627-1"] = 55158,
         },
@@ -23104,10 +20180,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [53]
     {
-        ["Trigger"] = {
-            ["y"] = -6411.7,
-            ["x"] = -4490.8,
-        },
         ["Waypoint"] = 25627,
         ["Range"] = 12.76,
         ["TT"] = {
@@ -23143,10 +20215,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
     }, -- [56]
     {
         ["Waypoint"] = 25660,
-        ["Trigger"] = {
-            ["y"] = -6073.4,
-            ["x"] = -4591.4,
-        },
         ["Fillers"] = {
             [25588] = {
                 ["1"] = "1",
@@ -23180,10 +20248,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [59]
     {
-        ["Trigger"] = {
-            ["y"] = -6047.4,
-            ["x"] = -4415.4,
-        },
         ["Range"] = 4.89,
         ["Waypoint"] = 25661,
         ["TT"] = {
@@ -23192,10 +20256,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [60]
     {
-        ["Trigger"] = {
-            ["y"] = -5989.5,
-            ["x"] = -4438,
-        },
         ["Qpart"] = {
             [25661] = {
                 ["1"] = "1",
@@ -23208,10 +20268,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [61]
     {
-        ["Trigger"] = {
-            ["y"] = -6134.5,
-            ["x"] = -4309.2,
-        },
         ["Range"] = 4.17,
         ["Waypoint"] = 25661,
         ["TT"] = {
@@ -23224,10 +20280,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             [25661] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -6103.7,
-            ["x"] = -4325.4,
         },
         ["Fillers"] = {
             [25588] = {
@@ -23244,10 +20296,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [63]
     {
-        ["Trigger"] = {
-            ["y"] = -6225.2,
-            ["x"] = -4326.4,
-        },
         ["Range"] = 3.76,
         ["Waypoint"] = 25661,
         ["TT"] = {
@@ -23256,10 +20304,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [64]
     {
-        ["Trigger"] = {
-            ["y"] = -6195.4,
-            ["x"] = -4299.9,
-        },
         ["Qpart"] = {
             [25661] = {
                 ["3"] = "3",
@@ -23272,10 +20316,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -6096.4,
-            ["x"] = -4400.7,
-        },
         ["Range"] = 20.98,
         ["Waypoint"] = 25661,
         ["TT"] = {
@@ -23284,10 +20324,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -6184.9,
-            ["x"] = -4511.5,
-        },
         ["Range"] = 21.77,
         ["Waypoint"] = 25661,
         ["TT"] = {
@@ -23327,10 +20363,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5992.5,
-            ["x"] = -4188.8,
-        },
         ["Fillers"] = {
             [25588] = {
                 ["1"] = "1",
@@ -23346,10 +20378,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [70]
     {
-        ["Trigger"] = {
-            ["y"] = -6088.5,
-            ["x"] = -4400.9,
-        },
         ["Range"] = 33.85,
         ["Waypoint"] = 25672,
         ["TT"] = {
@@ -23359,10 +20387,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
     }, -- [71]
     {
         ["Waypoint"] = 25672,
-        ["Trigger"] = {
-            ["y"] = -6183.9,
-            ["x"] = -4512.8,
-        },
         ["Fillers"] = {
             [25588] = {
                 ["1"] = "1",
@@ -23397,10 +20421,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
     }, -- [74]
     {
         ["Waypoint"] = 25704,
-        ["Trigger"] = {
-            ["y"] = -6667.3,
-            ["x"] = -4219.7,
-        },
         ["ExtraLineText"] = "USE_PORTAL",
         ["Range"] = 57.74,
         ["TT"] = {
@@ -23414,10 +20434,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -6658.2,
-            ["x"] = -4179.3,
-        },
         ["Button"] = {
             ["25704-1"] = 55230,
         },
@@ -23429,10 +20445,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
     }, -- [76]
     {
         ["Waypoint"] = 25704,
-        ["Trigger"] = {
-            ["y"] = -6088.4,
-            ["x"] = -4692.3,
-        },
         ["ExtraLineText"] = "USE_PORTAL",
         ["Range"] = 19.45,
         ["TT"] = {
@@ -23450,10 +20462,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [78]
     {
-        ["Trigger"] = {
-            ["y"] = -6111.9,
-            ["x"] = -4556.3,
-        },
         ["Qpart"] = {
             [25588] = {
                 ["1"] = "1",
@@ -23469,10 +20477,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [79]
     {
-        ["Trigger"] = {
-            ["y"] = -5720.4,
-            ["x"] = -4396.9,
-        },
         ["Waypoint"] = 25744,
         ["Range"] = 14.85,
         ["TT"] = {
@@ -23513,10 +20517,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5541.2,
-            ["x"] = -4442.9,
-        },
         ["RaidIcon"] = 41199,
         ["Range"] = 0.61,
         ["TT"] = {
@@ -23544,10 +20544,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
     }, -- [86]
     {
         ["Waypoint"] = 25762,
-        ["Trigger"] = {
-            ["y"] = -5065.4,
-            ["x"] = -2367,
-        },
         ["Fillers"] = {
             [25774] = {
                 ["1"] = "1",
@@ -23561,10 +20557,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
     }, -- [87]
     {
         ["Waypoint"] = 25762,
-        ["Trigger"] = {
-            ["y"] = -5008.2,
-            ["x"] = -2379.2,
-        },
         ["Fillers"] = {
             [25774] = {
                 ["1"] = "1",
@@ -23582,10 +20574,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -4891.2,
-            ["x"] = -2280,
-        },
         ["Button"] = {
             ["25762-1"] = 55986,
         },
@@ -23596,10 +20584,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [89]
     {
-        ["Trigger"] = {
-            ["y"] = -4924.3,
-            ["x"] = -2283.5,
-        },
         ["Qpart"] = {
             [25762] = {
                 ["2"] = "2",
@@ -23612,10 +20596,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [90]
     {
-        ["Trigger"] = {
-            ["y"] = -5036.4,
-            ["x"] = -2382.2,
-        },
         ["Qpart"] = {
             [25774] = {
                 ["1"] = "1",
@@ -23697,10 +20677,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5443.4,
-            ["x"] = -4406.9,
-        },
         ["Fillers"] = {
             [25796] = {
                 ["1"] = "1",
@@ -23716,10 +20692,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [99]
     {
-        ["Trigger"] = {
-            ["y"] = -5497.9,
-            ["x"] = -4385.4,
-        },
         ["Qpart"] = {
             [25796] = {
                 ["1"] = "1",
@@ -23751,10 +20723,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [102]
     {
-        ["Trigger"] = {
-            ["y"] = -5345,
-            ["x"] = -4368.4,
-        },
         ["Qpart"] = {
             [25813] = {
                 ["1"] = "1",
@@ -23767,10 +20735,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [103]
     {
-        ["Trigger"] = {
-            ["y"] = -5330.9,
-            ["x"] = -4369.7,
-        },
         ["Qpart"] = {
             [25813] = {
                 ["2"] = "2",
@@ -23883,10 +20847,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5437.9,
-            ["x"] = -2422.5,
-        },
         ["Fillers"] = {
             [25869] = {
                 ["1"] = "1",
@@ -23904,10 +20864,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5477.9,
-            ["x"] = -2459.9,
-        },
         ["Fillers"] = {
             [25869] = {
                 ["1"] = "1",
@@ -23920,10 +20876,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [116]
     {
-        ["Trigger"] = {
-            ["y"] = -5438.9,
-            ["x"] = -2439.5,
-        },
         ["Qpart"] = {
             [25869] = {
                 ["1"] = "1",
@@ -23964,10 +20916,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [120]
     {
-        ["Trigger"] = {
-            ["y"] = -5606.2,
-            ["x"] = -2488.4,
-        },
         ["Range"] = 12.11,
         ["Waypoint"] = 27275,
         ["TT"] = {
@@ -23976,10 +20924,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [121]
     {
-        ["Trigger"] = {
-            ["y"] = -5520.4,
-            ["x"] = -2460.5,
-        },
         ["Range"] = 11.91,
         ["Waypoint"] = 27275,
         ["TT"] = {
@@ -24012,10 +20956,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             [27314] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -5249.9,
-            ["x"] = -2357.7,
         },
         ["Fillers"] = {
             [27312] = {
@@ -24101,10 +21041,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5173.7,
-            ["x"] = -2152.2,
-        },
         ["Fillers"] = {
             [27312] = {
                 ["1"] = "1",
@@ -24143,10 +21079,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5193.5,
-            ["x"] = -2136,
-        },
         ["Fillers"] = {
             [27312] = {
                 ["1"] = "1",
@@ -24175,10 +21107,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             [27323] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -5141.4,
-            ["x"] = -1931.9,
         },
         ["Fillers"] = {
             [27312] = {
@@ -24226,10 +21154,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5053.9,
-            ["x"] = -1927.1,
-        },
         ["Fillers"] = {
             [27312] = {
                 ["1"] = "1",
@@ -24254,10 +21178,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [141]
     {
-        ["Trigger"] = {
-            ["y"] = -4828.5,
-            ["x"] = -2154.5,
-        },
         ["Range"] = 10.83,
         ["Waypoint"] = 27327,
         ["TT"] = {
@@ -24270,10 +21190,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             [27327] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -4746.3,
-            ["x"] = -2097.4,
         },
         ["Fillers"] = {
             [27312] = {
@@ -24339,10 +21255,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5004.8,
-            ["x"] = -2107.5,
-        },
         ["Button"] = {
             ["27329-1"] = 61043,
         },
@@ -24379,10 +21291,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [150]
     {
-        ["Trigger"] = {
-            ["y"] = -5075,
-            ["x"] = -1934,
-        },
         ["Qpart"] = {
             [27312] = {
                 ["1"] = "1",
@@ -24427,10 +21335,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [154]
     {
-        ["Trigger"] = {
-            ["y"] = -5007.9,
-            ["x"] = -917.5,
-        },
         ["Qpart"] = {
             [28087] = {
                 ["1"] = "1",
@@ -24465,10 +21369,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [157]
     {
-        ["Trigger"] = {
-            ["y"] = -5144.9,
-            ["x"] = -1024,
-        },
         ["Range"] = 15.89,
         ["Waypoint"] = 28088,
         ["TT"] = {
@@ -24477,10 +21377,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [158]
     {
-        ["Trigger"] = {
-            ["y"] = -5167.3,
-            ["x"] = -1215.3,
-        },
         ["Qpart"] = {
             [28088] = {
                 ["1"] = "1",
@@ -24511,10 +21407,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [161]
     {
-        ["Trigger"] = {
-            ["y"] = -4966.4,
-            ["x"] = -999,
-        },
         ["Qpart"] = {
             [28098] = {
                 ["1"] = "1",
@@ -24527,10 +21419,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [162]
     {
-        ["Trigger"] = {
-            ["y"] = -5399.3,
-            ["x"] = -1287,
-        },
         ["Qpart"] = {
             [28098] = {
                 ["2"] = "2",
@@ -24543,10 +21431,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [163]
     {
-        ["Trigger"] = {
-            ["y"] = -4966.3,
-            ["x"] = -994.8,
-        },
         ["Range"] = 27.37,
         ["Waypoint"] = 28098,
         ["TT"] = {
@@ -24592,10 +21476,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [168]
     {
-        ["Trigger"] = {
-            ["y"] = -5647.3,
-            ["x"] = -1735.5,
-        },
         ["Qpart"] = {
             [28127] = {
                 ["1"] = "1",
@@ -24636,10 +21516,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -5553.4,
-            ["x"] = -1753.3,
-        },
         ["Button"] = {
             ["28136-2"] = 63071,
         },
@@ -24656,10 +21532,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -5647,
-            ["x"] = -1664.1,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -5647,
@@ -24673,10 +21545,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -5716.8,
-            ["x"] = -1807,
-        },
         ["RaidIcon"] = 47602,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -24685,10 +21553,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [174]
     {
-        ["Trigger"] = {
-            ["y"] = -5719.3,
-            ["x"] = -1806.1,
-        },
         ["Qpart"] = {
             [28139] = {
                 ["1"] = "1",
@@ -24720,10 +21584,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [177]
     {
-        ["Trigger"] = {
-            ["y"] = -5557.5,
-            ["x"] = -1726.5,
-        },
         ["Range"] = 27.93,
         ["Waypoint"] = 28140,
         ["TT"] = {
@@ -24732,10 +21592,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [178]
     {
-        ["Trigger"] = {
-            ["y"] = -5745.2,
-            ["x"] = -2011.6,
-        },
         ["Qpart"] = {
             [28140] = {
                 ["1"] = "1",
@@ -24785,10 +21641,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [183]
     {
-        ["Trigger"] = {
-            ["y"] = -5831.2,
-            ["x"] = -2775.5,
-        },
         ["Qpart"] = {
             [28157] = {
                 ["2"] = "2",
@@ -24801,10 +21653,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [184]
     {
-        ["Trigger"] = {
-            ["y"] = -5706.4,
-            ["x"] = -2780.7,
-        },
         ["Qpart"] = {
             [28158] = {
                 ["1"] = "1",
@@ -24817,10 +21665,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [185]
     {
-        ["Trigger"] = {
-            ["y"] = -5684.2,
-            ["x"] = -2755.2,
-        },
         ["Qpart"] = {
             [28157] = {
                 ["4"] = "4",
@@ -24833,10 +21677,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [186]
     {
-        ["Trigger"] = {
-            ["y"] = -5754.7,
-            ["x"] = -2957.5,
-        },
         ["Qpart"] = {
             [28158] = {
                 ["2"] = "2",
@@ -24849,10 +21689,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [187]
     {
-        ["Trigger"] = {
-            ["y"] = -5713.5,
-            ["x"] = -2966.5,
-        },
         ["Qpart"] = {
             [28157] = {
                 ["1"] = "1",
@@ -24865,10 +21701,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
     }, -- [188]
     {
-        ["Trigger"] = {
-            ["y"] = -5857.5,
-            ["x"] = -3093.7,
-        },
         ["Qpart"] = {
             [28157] = {
                 ["3"] = "3",
@@ -24907,10 +21739,6 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
         },
         ["Button"] = {
             ["28159-1"] = 63104,
-        },
-        ["Trigger"] = {
-            ["y"] = -5815.8,
-            ["x"] = -2849.2,
         },
         ["RaidIcon"] = 47777,
         ["Range"] = 0.61,
@@ -24962,10 +21790,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -7136.5,
-            ["x"] = -3787,
-        },
         ["Qpart"] = {
             [25067] = {
                 ["1"] = "1",
@@ -24996,10 +21820,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = -7136.5,
-            ["x"] = -3786.5,
-        },
         ["Qpart"] = {
             [25094] = {
                 ["1"] = "1",
@@ -25030,10 +21850,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [8]
     {
-        ["Trigger"] = {
-            ["y"] = -7136.9,
-            ["x"] = -3785.9,
-        },
         ["Qpart"] = {
             [25095] = {
                 ["1"] = "1",
@@ -25074,10 +21890,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = -7188,
-            ["x"] = -3766.2,
-        },
         ["GetFP"] = 39,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -25093,10 +21905,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             [25048] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -7636.2,
-            ["x"] = -4015.5,
         },
         ["Fillers"] = {
             [25112] = {
@@ -25117,10 +21925,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             [25112] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -7814.8,
-            ["x"] = -3745.7,
         },
         ["Button"] = {
             ["25112-1"] = 52715,
@@ -25169,10 +21973,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [19]
     {
-        ["Trigger"] = {
-            ["y"] = -7089.7,
-            ["x"] = -3907.2,
-        },
         ["Qpart"] = {
             [25050] = {
                 ["1"] = "1",
@@ -25204,10 +22004,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -7717.5,
-            ["x"] = -3251.5,
-        },
         ["Qpart"] = {
             [25111] = {
                 ["1"] = "1",
@@ -25242,10 +22038,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             [25115] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -7155.3,
-            ["x"] = -3349.4,
         },
         ["Button"] = {
             ["25115-1"] = 52715,
@@ -25307,10 +22099,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -7030.2,
-            ["x"] = -2777.4,
-        },
         ["Fillers"] = {
             [25521] = {
                 ["1"] = "1",
@@ -25346,10 +22134,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -7925,
-            ["x"] = -3300.7,
-        },
         ["Fillers"] = {
             [25521] = {
                 ["1"] = "1",
@@ -25362,10 +22146,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [35]
     {
-        ["Trigger"] = {
-            ["y"] = -7278.4,
-            ["x"] = -3245.4,
-        },
         ["Qpart"] = {
             [25521] = {
                 ["1"] = "1",
@@ -25414,10 +22194,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [40]
     {
-        ["Trigger"] = {
-            ["y"] = -6945,
-            ["x"] = -3385,
-        },
         ["Waypoint"] = 25522,
         ["Range"] = 20.86,
         ["TT"] = {
@@ -25426,10 +22202,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [41]
     {
-        ["Trigger"] = {
-            ["y"] = -6908.8,
-            ["x"] = -3389,
-        },
         ["Qpart"] = {
             [25522] = {
                 ["1"] = "1",
@@ -25451,10 +22223,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [43]
     {
-        ["Trigger"] = {
-            ["y"] = -6912.3,
-            ["x"] = -2761.2,
-        },
         ["Qpart"] = {
             [25026] = {
                 ["1"] = "1",
@@ -25485,10 +22253,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [46]
     {
-        ["Trigger"] = {
-            ["y"] = -7449.8,
-            ["x"] = -2882.2,
-        },
         ["Qpart"] = {
             [25032] = {
                 ["1"] = "1",
@@ -25510,10 +22274,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [48]
     {
-        ["Trigger"] = {
-            ["y"] = -7779.2,
-            ["x"] = -4939.4,
-        },
         ["Range"] = 19.44,
         ["Waypoint"] = 25121,
         ["TT"] = {
@@ -25555,10 +22315,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -7979.5,
-            ["x"] = -5321,
-        },
         ["Button"] = {
             ["25053-3"] = 51547,
         },
@@ -25573,10 +22329,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             [25053] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -8016.3,
-            ["x"] = -5213.8,
         },
         ["Fillers"] = {
             [25052] = {
@@ -25598,10 +22350,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -8071,
-            ["x"] = -5246.4,
-        },
         ["Fillers"] = {
             [25052] = {
                 ["1"] = "1",
@@ -25617,10 +22365,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [6]
     {
-        ["Trigger"] = {
-            ["y"] = -8038.7,
-            ["x"] = -5287.3,
-        },
         ["Qpart"] = {
             [25052] = {
                 ["1"] = "1",
@@ -25657,10 +22401,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -7960.4,
-            ["x"] = -5441.7,
-        },
         ["Qpart"] = {
             [26886] = {
                 ["1"] = "1",
@@ -25682,10 +22422,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = -8331.3,
-            ["x"] = -5096.9,
-        },
         ["Qpart"] = {
             [26887] = {
                 ["1"] = "1",
@@ -25716,10 +22452,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [14]
     {
-        ["Trigger"] = {
-            ["y"] = -8447,
-            ["x"] = -5180.8,
-        },
         ["Qpart"] = {
             [25166] = {
                 ["1"] = "1",
@@ -25750,10 +22482,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [17]
     {
-        ["Trigger"] = {
-            ["y"] = -8164.7,
-            ["x"] = -5186.9,
-        },
         ["Range"] = 30.89,
         ["Waypoint"] = 26889,
         ["TT"] = {
@@ -25762,10 +22490,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [18]
     {
-        ["Trigger"] = {
-            ["y"] = -8448.2,
-            ["x"] = -4926.5,
-        },
         ["Range"] = 42.04,
         ["Waypoint"] = 26889,
         ["TT"] = {
@@ -25774,10 +22498,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [19]
     {
-        ["Trigger"] = {
-            ["y"] = -8683.8,
-            ["x"] = -4092.4,
-        },
         ["GetFP"] = 539,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -25805,10 +22525,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -9013.8,
-            ["x"] = -3978.7,
-        },
         ["Qpart"] = {
             [25072] = {
                 ["1"] = "1",
@@ -25860,10 +22576,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [27]
     {
-        ["Trigger"] = {
-            ["y"] = -8407,
-            ["x"] = -3895.5,
-        },
         ["Qpart"] = {
             [24933] = {
                 ["1"] = "1",
@@ -25906,10 +22618,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         ["Button"] = {
             ["24951-1"] = 52031,
         },
-        ["Trigger"] = {
-            ["y"] = -8690.5,
-            ["x"] = -4071.7,
-        },
         ["ExtraLineText"] = "MOUNTING_DESPAWNS_SWARMER",
         ["Range"] = 0.75,
         ["TT"] = {
@@ -25942,10 +22650,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -8667.8,
-            ["x"] = -4046.2,
-        },
         ["RaidIcon"] = 11811,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -25972,10 +22676,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [36]
     {
-        ["Trigger"] = {
-            ["y"] = -9566.7,
-            ["x"] = -3635,
-        },
         ["Range"] = 34.36,
         ["Waypoint"] = 25061,
         ["TT"] = {
@@ -26003,10 +22703,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [39]
     {
-        ["Trigger"] = {
-            ["y"] = -10200,
-            ["x"] = -3824.2,
-        },
         ["Qpart"] = {
             [25060] = {
                 ["1"] = "1",
@@ -26046,10 +22742,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -10029,
-            ["x"] = -3571,
-        },
         ["RaidIcon"] = 5431,
         ["Range"] = 27.9,
         ["TT"] = {
@@ -26076,10 +22768,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [45]
     {
-        ["Trigger"] = {
-            ["y"] = -9982,
-            ["x"] = -3615.9,
-        },
         ["Range"] = 49.85,
         ["Waypoint"] = 25065,
         ["TT"] = {
@@ -26088,10 +22776,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [46]
     {
-        ["Trigger"] = {
-            ["y"] = -10069.8,
-            ["x"] = -3925,
-        },
         ["Qpart"] = {
             [25065] = {
                 ["1"] = "1",
@@ -26104,10 +22788,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [47]
     {
-        ["Trigger"] = {
-            ["y"] = -10108.8,
-            ["x"] = -3761.7,
-        },
         ["Range"] = 38.05,
         ["Waypoint"] = 25065,
         ["TT"] = {
@@ -26116,10 +22796,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [48]
     {
-        ["Trigger"] = {
-            ["y"] = -9990.3,
-            ["x"] = -3628.4,
-        },
         ["Range"] = 34.71,
         ["Waypoint"] = 25065,
         ["TT"] = {
@@ -26146,10 +22822,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [51]
     {
-        ["Trigger"] = {
-            ["y"] = -9464,
-            ["x"] = -3597.7,
-        },
         ["Range"] = 44.4,
         ["Waypoint"] = 28881,
         ["TT"] = {
@@ -26178,10 +22850,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [54]
     {
-        ["Trigger"] = {
-            ["y"] = -9498.8,
-            ["x"] = -2950.5,
-        },
         ["GetFP"] = 532,
         ["Range"] = 0.75,
         ["TT"] = {
@@ -26190,10 +22858,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [55]
     {
-        ["Trigger"] = {
-            ["y"] = -9445.2,
-            ["x"] = -2772,
-        },
         ["Qpart"] = {
             [25420] = {
                 ["1"] = "1",
@@ -26206,10 +22870,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [56]
     {
-        ["Trigger"] = {
-            ["y"] = -9214.3,
-            ["x"] = -3012.7,
-        },
         ["Qpart"] = {
             [25565] = {
                 ["1"] = "1",
@@ -26245,10 +22905,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [59]
     {
-        ["Trigger"] = {
-            ["y"] = -9400.7,
-            ["x"] = -2883,
-        },
         ["Range"] = 31.64,
         ["Waypoint"] = 25566,
         ["TT"] = {
@@ -26257,10 +22913,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [61]
     {
-        ["Trigger"] = {
-            ["y"] = -9550.3,
-            ["x"] = -2782.9,
-        },
         ["Range"] = 26.77,
         ["Waypoint"] = 25566,
         ["TT"] = {
@@ -26288,10 +22940,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -9804.7,
-            ["x"] = -2790.2,
-        },
         ["Qpart"] = {
             [25070] = {
                 ["1"] = "1",
@@ -26313,10 +22961,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [4]
     {
-        ["Trigger"] = {
-            ["y"] = -9561.3,
-            ["x"] = -2782.7,
-        },
         ["Range"] = 20.11,
         ["Waypoint"] = 25421,
         ["TT"] = {
@@ -26352,10 +22996,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
         },
     }, -- [4]
     {
-        ["Trigger"] = {
-            ["y"] = -7137.9,
-            ["x"] = -3786.9,
-        },
         ["Qpart"] = {
             [25513] = {
                 ["1"] = "1",
@@ -26383,10 +23023,6 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
 --- Un'Goro Crater
 APR.RouteQuestStepList["A78-UnGoroCrater"] = {
     {
-        ["Trigger"] = {
-            ["y"] = -7548.9,
-            ["x"] = -1538.3,
-        },
         ["GetFP"] = 79,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -26436,10 +23072,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             [24697] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -7514.9,
-            ["x"] = -1454,
         },
         ["Button"] = {
             ["24697-1"] = 50430,
@@ -26497,10 +23129,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -7822.4,
-            ["x"] = -1861.6,
-        },
         ["Fillers"] = {
             [24720] = {
                 ["4"] = "4",
@@ -26520,10 +23148,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             [24719] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -7826.8,
-            ["x"] = -1759.9,
         },
         ["Fillers"] = {
             [24720] = {
@@ -26586,10 +23210,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -7348.9,
-            ["x"] = -1975.6,
-        },
         ["Button"] = {
             ["24686-1"] = 50441,
         },
@@ -26609,10 +23229,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             [24720] = {
                 ["4"] = "4",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -7495,
-            ["x"] = -2163.2,
         },
         ["Button"] = {
             ["24686-1"] = 50441,
@@ -26644,10 +23260,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [20]
     {
-        ["Trigger"] = {
-            ["y"] = -7421.3,
-            ["x"] = -2109.9,
-        },
         ["Qpart"] = {
             [24720] = {
                 ["4"] = "4",
@@ -26683,10 +23295,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -6976.3,
-            ["x"] = -2057,
-        },
         ["ExtraLineText"] = "PLACE_MEAT",
         ["Range"] = 0.61,
         ["TT"] = {
@@ -26699,10 +23307,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             [24687] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -6941.7,
-            ["x"] = -2108.7,
         },
         ["Fillers"] = {
             [24720] = {
@@ -26761,10 +23365,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -6867.8,
-            ["x"] = -2014.3,
-        },
         ["Fillers"] = {
             [24720] = {
                 ["3"] = "3",
@@ -26806,10 +23406,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -7197.4,
-            ["x"] = -2323.9,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -7197.4,
@@ -26850,10 +23446,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -7342.2,
-            ["x"] = -1227,
-        },
         ["Button"] = {
             ["24742-1"] = 12472,
         },
@@ -26874,10 +23466,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             [24740] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -7365,
-            ["x"] = -1548.6,
         },
         ["Button"] = {
             ["24742-1"] = 12472,
@@ -26900,10 +23488,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -7036.2,
-            ["x"] = -1508.5,
-        },
         ["Button"] = {
             ["24742-1"] = 12472,
         },
@@ -26924,10 +23508,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             [24740] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -7038.2,
-            ["x"] = -1256.3,
         },
         ["Button"] = {
             ["24742-1"] = 12472,
@@ -26950,10 +23530,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -7160.7,
-            ["x"] = -1148.1,
-        },
         ["Button"] = {
             ["24742-1"] = 12472,
         },
@@ -26974,10 +23550,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -7338.3,
-            ["x"] = -1227.5,
-        },
         ["Button"] = {
             ["24742-1"] = 12472,
         },
@@ -26988,10 +23560,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [41]
     {
-        ["Trigger"] = {
-            ["y"] = -7150.4,
-            ["x"] = -1321.8,
-        },
         ["Qpart"] = {
             [24740] = {
                 ["1"] = "1",
@@ -27067,10 +23635,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [49]
     {
-        ["Trigger"] = {
-            ["y"] = -7191.4,
-            ["x"] = -1427.5,
-        },
         ["Waypoint"] = 24690,
         ["Range"] = 14.31,
         ["TT"] = {
@@ -27079,10 +23643,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [50]
     {
-        ["Trigger"] = {
-            ["y"] = -7122.2,
-            ["x"] = -1373.9,
-        },
         ["Waypoint"] = 24690,
         ["Range"] = 11.41,
         ["TT"] = {
@@ -27091,10 +23651,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [51]
     {
-        ["Trigger"] = {
-            ["y"] = -7168,
-            ["x"] = -1286.9,
-        },
         ["Waypoint"] = 24690,
         ["Range"] = 21.24,
         ["TT"] = {
@@ -27103,10 +23659,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [52]
     {
-        ["Trigger"] = {
-            ["y"] = -7182.5,
-            ["x"] = -1294.1,
-        },
         ["Qpart"] = {
             [24690] = {
                 ["1"] = "1",
@@ -27119,10 +23671,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [53]
     {
-        ["Trigger"] = {
-            ["y"] = -7231.9,
-            ["x"] = -1411,
-        },
         ["Waypoint"] = 24690,
         ["Range"] = 11.4,
         ["TT"] = {
@@ -27144,10 +23692,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             [24735] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -7205.3,
-            ["x"] = -1392.9,
         },
         ["Button"] = {
             ["24735-1"] = 11804,
@@ -27197,10 +23741,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
     }, -- [60]
     {
         ["Waypoint"] = 24692,
-        ["Trigger"] = {
-            ["y"] = -7947.7,
-            ["x"] = -1321,
-        },
         ["Fillers"] = {
             [24691] = {
                 ["1"] = "1",
@@ -27214,10 +23754,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
     }, -- [61]
     {
         ["Waypoint"] = 24692,
-        ["Trigger"] = {
-            ["y"] = -8009.9,
-            ["x"] = -1294.6,
-        },
         ["Fillers"] = {
             [24691] = {
                 ["1"] = "1",
@@ -27231,10 +23767,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
     }, -- [62]
     {
         ["Waypoint"] = 24692,
-        ["Trigger"] = {
-            ["y"] = -8012.8,
-            ["x"] = -1191.5,
-        },
         ["Fillers"] = {
             [24691] = {
                 ["1"] = "1",
@@ -27252,10 +23784,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -8103.9,
-            ["x"] = -1225.6,
-        },
         ["Fillers"] = {
             [24691] = {
                 ["1"] = "1",
@@ -27269,10 +23797,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
     }, -- [64]
     {
         ["Waypoint"] = 24692,
-        ["Trigger"] = {
-            ["y"] = -8013.5,
-            ["x"] = -1194.5,
-        },
         ["Fillers"] = {
             [24691] = {
                 ["1"] = "1",
@@ -27286,10 +23810,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
     },
     {
         ["Waypoint"] = 24692,
-        ["Trigger"] = {
-            ["y"] = -8006.9,
-            ["x"] = -1299.5,
-        },
         ["Fillers"] = {
             [24691] = {
                 ["1"] = "1",
@@ -27303,10 +23823,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
     },
     {
         ["Waypoint"] = 24692,
-        ["Trigger"] = {
-            ["y"] = -7929,
-            ["x"] = -1329,
-        },
         ["Fillers"] = {
             [24691] = {
                 ["1"] = "1",
@@ -27319,10 +23835,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [67]
     {
-        ["Trigger"] = {
-            ["y"] = -7879.4,
-            ["x"] = -1343.3,
-        },
         ["Qpart"] = {
             [24691] = {
                 ["1"] = "1",
@@ -27389,10 +23901,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [73]
     {
-        ["Trigger"] = {
-            ["y"] = -6959.9,
-            ["x"] = -1098,
-        },
         ["GetFP"] = 386,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -27401,10 +23909,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [74]
     {
-        ["Trigger"] = {
-            ["y"] = -6891.4,
-            ["x"] = -715.3,
-        },
         ["Qpart"] = {
             [24736] = {
                 ["1"] = "1",
@@ -27428,10 +23932,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -6483.9,
-            ["x"] = -1165.5,
-        },
         ["Button"] = {
             ["24737-1"] = 50742,
         },
@@ -27442,10 +23942,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [76]
     {
-        ["Trigger"] = {
-            ["y"] = -6179.4,
-            ["x"] = -1104,
-        },
         ["Qpart"] = {
             [24701] = {
                 ["1"] = "1",
@@ -27481,10 +23977,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [79]
     {
-        ["Trigger"] = {
-            ["y"] = -6380,
-            ["x"] = -1609.4,
-        },
         ["Qpart"] = {
             [24720] = {
                 ["3"] = "3",
@@ -27504,10 +23996,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
         ["Button"] = {
             ["24699-1"] = 50746,
-        },
-        ["Trigger"] = {
-            ["y"] = -6800.8,
-            ["x"] = -1711.5,
         },
         ["RaidIcon"] = 38307,
         ["Range"] = 0.69,
@@ -27546,10 +24034,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -6429.9,
-            ["x"] = -1749.6,
-        },
         ["ExtraLineText"] = "LOOT_COCONUT",
         ["Range"] = 0.75,
         ["TT"] = {
@@ -27577,10 +24061,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
     }, -- [86]
     {
         ["Waypoint"] = 24717,
-        ["Trigger"] = {
-            ["y"] = -6369,
-            ["x"] = -1831.4,
-        },
         ["Fillers"] = {
             [24717] = {
                 ["1"] = "1",
@@ -27600,10 +24080,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -6348,
-            ["x"] = -2000.3,
-        },
         ["Fillers"] = {
             [24717] = {
                 ["1"] = "1",
@@ -27618,10 +24094,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [88]
     {
-        ["Trigger"] = {
-            ["y"] = -6372.3,
-            ["x"] = -1838,
-        },
         ["Qpart"] = {
             [24717] = {
                 ["1"] = "1",
@@ -27663,10 +24135,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -6274.3,
-            ["x"] = -1555,
-        },
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -6274.3,
@@ -27739,10 +24207,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -7227.9,
-            ["x"] = -598.5,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -7227.9,
@@ -27774,10 +24238,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -7199.5,
-            ["x"] = -345.2,
-        },
         ["Fillers"] = {
             [24704] = {
                 ["1"] = "1",
@@ -27797,10 +24257,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             [24705] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -7430.5,
-            ["x"] = -815.2,
         },
         ["Fillers"] = {
             [24704] = {
@@ -27824,10 +24280,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             [24705] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -6467.4,
-            ["x"] = -530.3,
         },
         ["Fillers"] = {
             [24704] = {
@@ -27857,10 +24309,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             [24704] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -7611.7,
-            ["x"] = -743.5,
         },
         ["Fillers"] = {
             [24730] = {
@@ -27904,10 +24352,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [109]
     {
-        ["Trigger"] = {
-            ["y"] = -7796,
-            ["x"] = -848.2,
-        },
         ["Qpart"] = {
             [24720] = {
                 ["1"] = "1",
@@ -27927,10 +24371,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             [24706] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -7372.9,
-            ["x"] = -707,
         },
         ["ExtraLineText"] = "MAXOMILLIAN_PRAY",
         ["Range"] = 81.89,
@@ -27958,10 +24398,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [113]
     {
-        ["Trigger"] = {
-            ["y"] = -7956.4,
-            ["x"] = -716.7,
-        },
         ["Qpart"] = {
             [24707] = {
                 ["1"] = "1",
@@ -28006,10 +24442,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -7806.4,
-            ["x"] = -681,
-        },
         ["Button"] = {
             ["24708-1"] = 50405,
         },
@@ -28053,10 +24485,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -7973.9,
-            ["x"] = -901,
-        },
         ["RaidIcon"] = 38329,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -28089,10 +24517,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -7200.4,
-            ["x"] = -333.8,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -7200.4,
@@ -28119,10 +24543,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
     }, -- [127]
     {
         ["Waypoint"] = 24694,
-        ["Trigger"] = {
-            ["y"] = -7098.3,
-            ["x"] = -2413.9,
-        },
         ["RaidIcon"] = 38504,
         ["Range"] = 23.55,
         ["TT"] = {
@@ -28149,10 +24569,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [130]
     {
-        ["Trigger"] = {
-            ["y"] = -7119,
-            ["x"] = -2555.7,
-        },
         ["Qpart"] = {
             [24695] = {
                 ["2"] = "2",
@@ -28165,10 +24581,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [131]
     {
-        ["Trigger"] = {
-            ["y"] = -7110.8,
-            ["x"] = -2573.2,
-        },
         ["Qpart"] = {
             [24695] = {
                 ["3"] = "3",
@@ -28181,10 +24593,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [132]
     {
-        ["Trigger"] = {
-            ["y"] = -7082.9,
-            ["x"] = -2556.4,
-        },
         ["Qpart"] = {
             [24695] = {
                 ["1"] = "1",
@@ -28197,10 +24605,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
         },
     }, -- [133]
     {
-        ["Trigger"] = {
-            ["y"] = -7091.4,
-            ["x"] = -2574.4,
-        },
         ["Qpart"] = {
             [24695] = {
                 ["4"] = "4",
@@ -28228,10 +24632,6 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
 --- Silithus
 APR.RouteQuestStepList["A81-Silithus"] = {
     {
-        ["Trigger"] = {
-            ["y"] = -6758.3,
-            ["x"] = 776.2,
-        },
         ["GetFP"] = 73,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -28278,10 +24678,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = -6534.2,
-            ["x"] = 505.3,
-        },
         ["Qpart"] = {
             [8280] = {
                 ["1"] = "1",
@@ -28334,10 +24730,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = -6983.8,
-            ["x"] = 1170.2,
-        },
         ["Qpart"] = {
             [8320] = {
                 ["1"] = "1",
@@ -28375,10 +24767,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -7056.7,
-            ["x"] = 1342.8,
-        },
         ["Fillers"] = {
             [8281] = {
                 ["1"] = "1",
@@ -28397,10 +24785,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -7741.5,
-            ["x"] = 1500.5,
-        },
         ["Fillers"] = {
             [8281] = {
                 ["1"] = "1",
@@ -28413,10 +24797,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [14]
     {
-        ["Trigger"] = {
-            ["y"] = -8067.9,
-            ["x"] = 1067.7,
-        },
         ["Waypoint"] = 8283,
         ["Range"] = 15.57,
         ["TT"] = {
@@ -28430,10 +24810,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -8085.4,
-            ["x"] = 967.9,
-        },
         ["RaidIcon"] = 15196,
         ["Range"] = 0.75,
         ["TT"] = {
@@ -28442,10 +24818,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [16]
     {
-        ["Trigger"] = {
-            ["y"] = -7250.9,
-            ["x"] = 1211.5,
-        },
         ["Qpart"] = {
             [8281] = {
                 ["1"] = "1",
@@ -28513,10 +24885,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [23]
     {
-        ["Trigger"] = {
-            ["y"] = -6315.7,
-            ["x"] = 143.6,
-        },
         ["Waypoint"] = 8321,
         ["Range"] = 18.11,
         ["TT"] = {
@@ -28529,10 +24897,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
             [8321] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -6320.3,
-            ["x"] = 13.4,
         },
         ["RaidIcon"] = 15202,
         ["Range"] = 0.69,
@@ -28575,10 +24939,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -8011.9,
-            ["x"] = 1100.8,
-        },
         ["RaidIcon"] = 15170,
         ["Range"] = 0.75,
         ["TT"] = {
@@ -28591,10 +24951,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
             [8304] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -8021.8,
-            ["x"] = 1116.5,
         },
         ["RaidIcon"] = 15171,
         ["Range"] = 0.61,
@@ -28640,10 +24996,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [34]
     {
-        ["Trigger"] = {
-            ["y"] = -8066,
-            ["x"] = 1066.2,
-        },
         ["Range"] = 15.56,
         ["Waypoint"] = 8282,
         ["TT"] = {
@@ -28652,10 +25004,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [35]
     {
-        ["Trigger"] = {
-            ["y"] = -8080.3,
-            ["x"] = 985.5,
-        },
         ["Qpart"] = {
             [8282] = {
                 ["1"] = "1",
@@ -28669,10 +25017,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
     }, -- [36]
     {
         ["Waypoint"] = 8306,
-        ["Trigger"] = {
-            ["y"] = -7981.2,
-            ["x"] = 591.9,
-        },
         ["Fillers"] = {
             [8310] = {
                 ["1"] = "1",
@@ -28686,10 +25030,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
     }, -- [37]
     {
         ["Waypoint"] = 8306,
-        ["Trigger"] = {
-            ["y"] = -8011.9,
-            ["x"] = 659.7,
-        },
         ["Fillers"] = {
             [8310] = {
                 ["1"] = "1",
@@ -28703,10 +25043,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
     }, -- [38]
     {
         ["Waypoint"] = 8306,
-        ["Trigger"] = {
-            ["y"] = -8051.2,
-            ["x"] = 716.2,
-        },
         ["Fillers"] = {
             [8310] = {
                 ["1"] = "1",
@@ -28720,10 +25056,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
     }, -- [39]
     {
         ["Waypoint"] = 8306,
-        ["Trigger"] = {
-            ["y"] = -8119,
-            ["x"] = 694.2,
-        },
         ["Fillers"] = {
             [8310] = {
                 ["1"] = "1",
@@ -28737,10 +25069,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
     }, -- [40]
     {
         ["Waypoint"] = 8306,
-        ["Trigger"] = {
-            ["y"] = -8173.5,
-            ["x"] = 663.9,
-        },
         ["Fillers"] = {
             [8310] = {
                 ["1"] = "1",
@@ -28754,10 +25082,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
     }, -- [41]
     {
         ["Waypoint"] = 8306,
-        ["Trigger"] = {
-            ["y"] = -8279.3,
-            ["x"] = 740.7,
-        },
         ["Fillers"] = {
             [8310] = {
                 ["1"] = "1",
@@ -28775,10 +25099,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -8324.5,
-            ["x"] = 727.9,
-        },
         ["Fillers"] = {
             [8310] = {
                 ["1"] = "1",
@@ -28791,10 +25111,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [43]
     {
-        ["Trigger"] = {
-            ["y"] = -8324.5,
-            ["x"] = 727.9,
-        },
         ["Qpart"] = {
             [8309] = {
                 ["1"] = "1",
@@ -28808,10 +25124,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
     }, -- [44]
     {
         ["Waypoint"] = 8306,
-        ["Trigger"] = {
-            ["y"] = -8277,
-            ["x"] = 739.5,
-        },
         ["Fillers"] = {
             [8310] = {
                 ["1"] = "1",
@@ -28825,10 +25137,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
     }, -- [45]
     {
         ["Waypoint"] = 8306,
-        ["Trigger"] = {
-            ["y"] = -8176.9,
-            ["x"] = 663.4,
-        },
         ["Fillers"] = {
             [8310] = {
                 ["1"] = "1",
@@ -28842,10 +25150,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
     }, -- [46]
     {
         ["Waypoint"] = 8306,
-        ["Trigger"] = {
-            ["y"] = -8043.4,
-            ["x"] = 714,
-        },
         ["Fillers"] = {
             [8310] = {
                 ["1"] = "1",
@@ -28858,10 +25162,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [47]
     {
-        ["Trigger"] = {
-            ["y"] = -7967,
-            ["x"] = 555,
-        },
         ["Qpart"] = {
             [8310] = {
                 ["1"] = "1",
@@ -28928,10 +25228,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [54]
     {
-        ["Trigger"] = {
-            ["y"] = -6260.5,
-            ["x"] = 1781.2,
-        },
         ["Qpart"] = {
             [8284] = {
                 ["1"] = "1",
@@ -28985,10 +25281,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -6922.8,
-            ["x"] = 1123,
-        },
         ["RaidIcon"] = 11804,
         ["Range"] = 0.61,
         ["TT"] = {
@@ -29002,10 +25294,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -6801.7,
-            ["x"] = 1597.4,
-        },
         ["RaidIcon"] = 15200,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -29014,10 +25302,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     }, -- [61]
     {
-        ["Trigger"] = {
-            ["y"] = -7474.7,
-            ["x"] = 1438.4,
-        },
         ["Range"] = 77.56,
         ["Waypoint"] = 8279,
         ["TT"] = {
@@ -29030,10 +25314,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
             [8279] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -7966.4,
-            ["x"] = 1980.2,
         },
         ["RaidIcon"] = 11803,
         ["Range"] = 0.69,
@@ -29071,10 +25351,6 @@ APR.RouteQuestStepList["A81-Silithus"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -6982.7,
-            ["x"] = 1168.5,
-        },
         ["Qpart"] = {
             [8323] = {
                 ["1"] = "1",
@@ -29111,10 +25387,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 9829.5,
-            ["x"] = 754.7,
-        },
         ["Qpart"] = {
             [488] = {
                 ["3"] = "3",
@@ -29132,10 +25404,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 9666.2,
-            ["x"] = 580,
-        },
         ["Fillers"] = {
             [488] = {
                 ["1"] = "1",
@@ -29148,10 +25416,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [3]
     {
-        ["Trigger"] = {
-            ["y"] = 9803.7,
-            ["x"] = 742.1,
-        },
         ["Qpart"] = {
             [488] = {
                 ["1"] = "1",
@@ -29200,10 +25464,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [8]
     {
-        ["Trigger"] = {
-            ["y"] = 9934.9,
-            ["x"] = 823.9,
-        },
         ["Qpart"] = {
             [489] = {
                 ["1"] = "1",
@@ -29243,10 +25503,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = 9810.9,
-            ["x"] = 352.5,
-        },
         ["Qpart"] = {
             [2438] = {
                 ["1"] = "1",
@@ -29311,10 +25567,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 10012.6,
-            ["x"] = 284.2,
-        },
         ["Fillers"] = {
             [2459] = {
                 ["1"] = "1",
@@ -29328,10 +25580,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [19]
     {
-        ["Trigger"] = {
-            ["y"] = 10012.7,
-            ["x"] = 286.5,
-        },
         ["Qpart"] = {
             [2459] = {
                 ["1"] = "1",
@@ -29353,10 +25601,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [21]
     {
-        ["Trigger"] = {
-            ["y"] = 9937.4,
-            ["x"] = 885.4,
-        },
         ["Waypoint"] = 13946,
         ["Range"] = 14.61,
         ["TT"] = {
@@ -29365,10 +25609,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 10016.2,
-            ["x"] = 978.6,
-        },
         ["Waypoint"] = 13946,
         ["Range"] = 16.31,
         ["TT"] = {
@@ -29377,10 +25617,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [23]
     {
-        ["Trigger"] = {
-            ["y"] = 10044.5,
-            ["x"] = 1032.5,
-        },
         ["Waypoint"] = 13946,
         ["Range"] = 8.43,
         ["TT"] = {
@@ -29390,10 +25626,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
     }, -- [24]
     {
         ["Waypoint"] = 13946,
-        ["Trigger"] = {
-            ["y"] = 10145.2,
-            ["x"] = 1081.5,
-        },
         ["Fillers"] = {
             [13946] = {
                 ["1"] = "1",
@@ -29410,10 +25642,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
     }, -- [25]
     {
         ["Waypoint"] = 13946,
-        ["Trigger"] = {
-            ["y"] = 10159,
-            ["x"] = 1117,
-        },
         ["Fillers"] = {
             [13946] = {
                 ["1"] = "1",
@@ -29430,10 +25658,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
     }, -- [26]
     {
         ["Waypoint"] = 13946,
-        ["Trigger"] = {
-            ["y"] = 10176.4,
-            ["x"] = 1169.7,
-        },
         ["Fillers"] = {
             [13946] = {
                 ["1"] = "1",
@@ -29454,10 +25678,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 10133.4,
-            ["x"] = 1191.5,
-        },
         ["RaidIcon"] = 2038,
         ["Range"] = 0.75,
         ["TT"] = {
@@ -29466,10 +25686,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [28]
     {
-        ["Trigger"] = {
-            ["y"] = 10080.6,
-            ["x"] = 1037.3,
-        },
         ["Waypoint"] = 13946,
         ["Range"] = 12.35,
         ["TT"] = {
@@ -29496,10 +25712,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [31]
     {
-        ["Trigger"] = {
-            ["y"] = 9978.6,
-            ["x"] = 1430.2,
-        },
         ["Waypoint"] = 483,
         ["Range"] = 30.37,
         ["TT"] = {
@@ -29508,10 +25720,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [32]
     {
-        ["Trigger"] = {
-            ["y"] = 9956.9,
-            ["x"] = 1525.5,
-        },
         ["Waypoint"] = 483,
         ["Range"] = 14.63,
         ["TT"] = {
@@ -29521,10 +25729,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
     }, -- [33]
     {
         ["Waypoint"] = 483,
-        ["Trigger"] = {
-            ["y"] = 9867.2,
-            ["x"] = 1556.9,
-        },
         ["Fillers"] = {
             [13945] = {
                 ["1"] = "1",
@@ -29537,10 +25741,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [34]
     {
-        ["Trigger"] = {
-            ["y"] = 9843.5,
-            ["x"] = 1562.8,
-        },
         ["Waypoint"] = 483,
         ["Range"] = 5.47,
         ["TT"] = {
@@ -29549,10 +25749,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [35]
     {
-        ["Trigger"] = {
-            ["y"] = 9847.4,
-            ["x"] = 1586,
-        },
         ["Waypoint"] = 483,
         ["Range"] = 9.61,
         ["TT"] = {
@@ -29561,10 +25757,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [36]
     {
-        ["Trigger"] = {
-            ["y"] = 9811.7,
-            ["x"] = 1622.4,
-        },
         ["Waypoint"] = 483,
         ["Range"] = 10.37,
         ["TT"] = {
@@ -29573,10 +25765,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [37]
     {
-        ["Trigger"] = {
-            ["y"] = 9789.6,
-            ["x"] = 1594.2,
-        },
         ["Waypoint"] = 483,
         ["Range"] = 3.82,
         ["TT"] = {
@@ -29594,10 +25782,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [39]
     {
-        ["Trigger"] = {
-            ["y"] = 9775.7,
-            ["x"] = 1606.2,
-        },
         ["Waypoint"] = 2541,
         ["Range"] = 6.75,
         ["TT"] = {
@@ -29606,10 +25790,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [40]
     {
-        ["Trigger"] = {
-            ["y"] = 9741.9,
-            ["x"] = 1625.5,
-        },
         ["Waypoint"] = 2541,
         ["Range"] = 8.56,
         ["TT"] = {
@@ -29618,10 +25798,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [41]
     {
-        ["Trigger"] = {
-            ["y"] = 9744.6,
-            ["x"] = 1526.5,
-        },
         ["Qpart"] = {
             [483] = {
                 ["4"] = "4",
@@ -29634,10 +25810,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [42]
     {
-        ["Trigger"] = {
-            ["y"] = 9710.7,
-            ["x"] = 1542.3,
-        },
         ["Qpart"] = {
             [483] = {
                 ["2"] = "2",
@@ -29650,10 +25822,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [43]
     {
-        ["Trigger"] = {
-            ["y"] = 9783.5,
-            ["x"] = 1557.7,
-        },
         ["Waypoint"] = 2541,
         ["Range"] = 6.85,
         ["TT"] = {
@@ -29662,10 +25830,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [44]
     {
-        ["Trigger"] = {
-            ["y"] = 9810,
-            ["x"] = 1492.2,
-        },
         ["Waypoint"] = 2541,
         ["Range"] = 6.9,
         ["TT"] = {
@@ -29675,10 +25839,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
     }, -- [45]
     {
         ["Waypoint"] = 2541,
-        ["Trigger"] = {
-            ["y"] = 9862.5,
-            ["x"] = 1506.5,
-        },
         ["Fillers"] = {
             [13945] = {
                 ["1"] = "1",
@@ -29695,10 +25855,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
     }, -- [46]
     {
         ["Waypoint"] = 2541,
-        ["Trigger"] = {
-            ["y"] = 9849.5,
-            ["x"] = 1461.9,
-        },
         ["Fillers"] = {
             [13945] = {
                 ["1"] = "1",
@@ -29715,10 +25871,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
     }, -- [47]
     {
         ["Waypoint"] = 2541,
-        ["Trigger"] = {
-            ["y"] = 9894.2,
-            ["x"] = 1480,
-        },
         ["Fillers"] = {
             [13945] = {
                 ["1"] = "1",
@@ -29734,10 +25886,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [48]
     {
-        ["Trigger"] = {
-            ["y"] = 9883.6,
-            ["x"] = 1489.5,
-        },
         ["Qpart"] = {
             [483] = {
                 ["1"] = "1",
@@ -29750,10 +25898,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [49]
     {
-        ["Trigger"] = {
-            ["y"] = 9843.2,
-            ["x"] = 1525,
-        },
         ["Waypoint"] = 2541,
         ["Range"] = 6.84,
         ["TT"] = {
@@ -29762,10 +25906,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [50]
     {
-        ["Trigger"] = {
-            ["y"] = 9836.7,
-            ["x"] = 1542.7,
-        },
         ["Qpart"] = {
             [483] = {
                 ["3"] = "3",
@@ -29778,10 +25918,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [51]
     {
-        ["Trigger"] = {
-            ["y"] = 9853.5,
-            ["x"] = 1513.5,
-        },
         ["Qpart"] = {
             [13945] = {
                 ["1"] = "1",
@@ -29797,10 +25933,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [52]
     {
-        ["Trigger"] = {
-            ["y"] = 9792.2,
-            ["x"] = 1595.5,
-        },
         ["Waypoint"] = 2541,
         ["Range"] = 4.22,
         ["TT"] = {
@@ -29827,10 +25959,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [55]
     {
-        ["Trigger"] = {
-            ["y"] = 9793.1,
-            ["x"] = 1593.5,
-        },
         ["Waypoint"] = 2561,
         ["Range"] = 4.05,
         ["TT"] = {
@@ -29839,10 +25967,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [56]
     {
-        ["Trigger"] = {
-            ["y"] = 9788.9,
-            ["x"] = 1574,
-        },
         ["Waypoint"] = 2561,
         ["Range"] = 4.93,
         ["TT"] = {
@@ -29856,10 +25980,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 9781.2,
-            ["x"] = 1552.9,
-        },
         ["Button"] = {
             ["2561-1"] = 8149,
         },
@@ -29870,10 +25990,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [58]
     {
-        ["Trigger"] = {
-            ["y"] = 9794.1,
-            ["x"] = 1594.9,
-        },
         ["Waypoint"] = 2561,
         ["Range"] = 5.23,
         ["TT"] = {
@@ -29891,10 +26007,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [60]
     {
-        ["Trigger"] = {
-            ["y"] = 9798.2,
-            ["x"] = 1605.4,
-        },
         ["Waypoint"] = 13945,
         ["Range"] = 7.38,
         ["TT"] = {
@@ -29903,10 +26015,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [61]
     {
-        ["Trigger"] = {
-            ["y"] = 9834,
-            ["x"] = 1618.2,
-        },
         ["Waypoint"] = 13945,
         ["Range"] = 7.38,
         ["TT"] = {
@@ -29915,10 +26023,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [62]
     {
-        ["Trigger"] = {
-            ["y"] = 9853.7,
-            ["x"] = 1576.8,
-        },
         ["Waypoint"] = 13945,
         ["Range"] = 6.41,
         ["TT"] = {
@@ -29946,10 +26050,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 9931.9,
-            ["x"] = 1217.5,
-        },
         ["Waypoint"] = 486,
         ["Range"] = 22.47,
         ["TT"] = {
@@ -29967,10 +26067,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [67]
     {
-        ["Trigger"] = {
-            ["y"] = 10181.2,
-            ["x"] = 1328.8,
-        },
         ["Waypoint"] = 486,
         ["Range"] = 14.5,
         ["TT"] = {
@@ -29980,10 +26076,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
     },
     {
         ["Waypoint"] = 486,
-        ["Trigger"] = {
-            ["y"] = 10423.6,
-            ["x"] = 1267.7,
-        },
         ["Fillers"] = {
             [487] = {
                 ["1"] = "1",
@@ -29997,10 +26089,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
     }, -- [69]
     {
         ["Waypoint"] = 486,
-        ["Trigger"] = {
-            ["y"] = 10319.4,
-            ["x"] = 1195.7,
-        },
         ["Fillers"] = {
             [487] = {
                 ["1"] = "1",
@@ -30018,10 +26106,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 10295.9,
-            ["x"] = 1198.9,
-        },
         ["Fillers"] = {
             [487] = {
                 ["1"] = "1",
@@ -30034,10 +26118,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [71]
     {
-        ["Trigger"] = {
-            ["y"] = 10354.2,
-            ["x"] = 1233.8,
-        },
         ["Qpart"] = {
             [487] = {
                 ["1"] = "1",
@@ -30096,10 +26176,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [77]
     {
-        ["Trigger"] = {
-            ["y"] = 9612.5,
-            ["x"] = 795.7,
-        },
         ["Qpart"] = {
             [918] = {
                 ["1"] = "1",
@@ -30161,10 +26237,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [83]
     {
-        ["Trigger"] = {
-            ["y"] = 10155.2,
-            ["x"] = 1428.7,
-        },
         ["Waypoint"] = 922,
         ["Range"] = 54.88,
         ["TT"] = {
@@ -30191,10 +26263,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [86]
     {
-        ["Trigger"] = {
-            ["y"] = 10484.6,
-            ["x"] = 1635.5,
-        },
         ["Qpart"] = {
             [923] = {
                 ["1"] = "1",
@@ -30211,10 +26279,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
             [7383] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 10675.2,
-            ["x"] = 1859.9,
         },
         ["Button"] = {
             ["7383-1"] = 18152,
@@ -30249,10 +26313,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 10970.7,
-            ["x"] = 1842.7,
-        },
         ["Fillers"] = {
             [937] = {
                 ["1"] = "1",
@@ -30279,10 +26339,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [92]
     {
-        ["Trigger"] = {
-            ["y"] = 10858.2,
-            ["x"] = 2048.2,
-        },
         ["Qpart"] = {
             [937] = {
                 ["1"] = "1",
@@ -30332,10 +26388,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [97]
     {
-        ["Trigger"] = {
-            ["y"] = 10440.9,
-            ["x"] = 1445.5,
-        },
         ["Qpart"] = {
             [2499] = {
                 ["1"] = "1",
@@ -30380,10 +26432,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 9553.7,
-            ["x"] = 1657,
-        },
         ["Button"] = {
             ["933-1"] = 5621,
         },
@@ -30412,10 +26460,6 @@ APR.RouteQuestStepList["A57-Teldrassil"] = {
         },
     }, -- [104]
     {
-        ["Trigger"] = {
-            ["y"] = 9132.4,
-            ["x"] = 1843.7,
-        },
         ["Qpart"] = {
             [14005] = {
                 ["1"] = "1",

@@ -20,10 +20,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 10
-        ["Trigger"] = {
-            ["y"] = -8769.1,
-            ["x"] = 604.7,
-        },
         ["Waypoint"] = 46727,
         ["Range"] = 5,
         ["TT"] = {
@@ -33,10 +29,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 11
-        ["Trigger"] = {
-            ["y"] = -8741,
-            ["x"] = 574.7,
-        },
         ["Waypoint"] = 46727,
         ["Range"] = 5,
         ["TT"] = {
@@ -46,10 +38,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 12
-        ["Trigger"] = {
-            ["y"] = -8713.2,
-            ["x"] = 522.9,
-        },
         ["Waypoint"] = 46727,
         ["Range"] = 5,
         ["TT"] = {
@@ -59,10 +47,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 13
-        ["Trigger"] = {
-            ["y"] = -8656.5,
-            ["x"] = 553.2,
-        },
         ["Waypoint"] = 46727,
         ["Range"] = 5,
         ["TT"] = {
@@ -72,10 +56,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 14
-        ["Trigger"] = {
-            ["y"] = -8487.2,
-            ["x"] = 409.6,
-        },
         ["Waypoint"] = 46727,
         ["Range"] = 5,
         ["TT"] = {
@@ -85,10 +65,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 15
-        ["Trigger"] = {
-            ["y"] = -8442.1,
-            ["x"] = 416.8,
-        },
         ["Waypoint"] = 46727,
         ["Range"] = 5,
         ["TT"] = {
@@ -98,10 +74,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 16
-        ["Trigger"] = {
-            ["y"] = -8433.2,
-            ["x"] = 321.3,
-        },
         ["Waypoint"] = 46727,
         ["Range"] = 5,
         ["TT"] = {
@@ -111,10 +83,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 17
-        ["Trigger"] = {
-            ["y"] = -8414.1,
-            ["x"] = 304.5,
-        },
         ["Waypoint"] = 46727,
         ["Range"] = 5,
         ["TT"] = {
@@ -125,10 +93,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     {
         -- [step 18
         ["ExtraLineText"] = "LISTEN",
-        ["Trigger"] = {
-            ["y"] = -8384.2,
-            ["x"] = 326.6,
-        },
         ["Qpart"] = {
             [46727] = {
                 ["1"] = "1",
@@ -143,10 +107,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     {
         -- [step 19
         ["ExtraLineText"] = "CLICK_THE_VISION",
-        ["Trigger"] = {
-            ["y"] = -8384.2,
-            ["x"] = 326.6,
-        },
         ["Qpart"] = {
             [46727] = {
                 ["2"] = "1",
@@ -180,10 +140,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 22
-        ["Trigger"] = {
-            ["y"] = -8414.1,
-            ["x"] = 304.5,
-        },
         ["Waypoint"] = 46728,
         ["Range"] = 5,
         ["TT"] = {
@@ -193,10 +149,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 23
-        ["Trigger"] = {
-            ["y"] = -8463.4,
-            ["x"] = 352,
-        },
         ["Waypoint"] = 46728,
         ["Range"] = 5,
         ["TT"] = {
@@ -207,10 +159,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     {
         -- [step 24
         ["ExtraLineText"] = "JUMP",
-        ["Trigger"] = {
-            ["y"] = -8538.1,
-            ["x"] = 467.1,
-        },
         ["Waypoint"] = 46728,
         ["Range"] = 5,
         ["TT"] = {
@@ -220,10 +168,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 25
-        ["Trigger"] = {
-            ["y"] = -8583.7,
-            ["x"] = 568.5,
-        },
         ["Waypoint"] = 46728,
         ["Range"] = 5,
         ["TT"] = {
@@ -233,10 +177,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 26
-        ["Trigger"] = {
-            ["y"] = -8576.7,
-            ["x"] = 599.5,
-        },
         ["Waypoint"] = 46728,
         ["Range"] = 5,
         ["TT"] = {
@@ -246,10 +186,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 27
-        ["Trigger"] = {
-            ["y"] = -8515.2,
-            ["x"] = 652.2,
-        },
         ["Waypoint"] = 46728,
         ["Range"] = 5,
         ["TT"] = {
@@ -259,10 +195,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 28
-        ["Trigger"] = {
-            ["y"] = -8536.7,
-            ["x"] = 683.9,
-        },
         ["Waypoint"] = 46728,
         ["Range"] = 5,
         ["TT"] = {
@@ -272,10 +204,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 29
-        ["Trigger"] = {
-            ["y"] = -8562.9,
-            ["x"] = 678.2,
-        },
         ["Waypoint"] = 46728,
         ["Range"] = 5,
         ["TT"] = {
@@ -285,10 +213,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 30
-        ["Trigger"] = {
-            ["y"] = -8589.4,
-            ["x"] = 711.7,
-        },
         ["Waypoint"] = 46728,
         ["Range"] = 5,
         ["TT"] = {
@@ -298,10 +222,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 31
-        ["Trigger"] = {
-            ["y"] = -8583.2,
-            ["x"] = 738.7,
-        },
         ["Waypoint"] = 46728,
         ["Range"] = 5,
         ["TT"] = {
@@ -311,10 +231,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 32
-        ["Trigger"] = {
-            ["y"] = -8679.9,
-            ["x"] = 877.4,
-        },
         ["Waypoint"] = 46728,
         ["Range"] = 5,
         ["TT"] = {
@@ -324,10 +240,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 33
-        ["Trigger"] = {
-            ["y"] = -8540,
-            ["x"] = 1003.9,
-        },
         ["Waypoint"] = 46728,
         ["Range"] = 5,
         ["TT"] = {
@@ -338,10 +250,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     {
         -- [step 34
         ["ExtraLineText"] = "JUMP",
-        ["Trigger"] = {
-            ["y"] = -8406.7,
-            ["x"] = 1078.5,
-        },
         ["Waypoint"] = 46728,
         ["Range"] = 5,
         ["TT"] = {
@@ -351,10 +259,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 35
-        ["Trigger"] = {
-            ["y"] = -8299.7,
-            ["x"] = 1229.3,
-        },
         ["Waypoint"] = 46728,
         ["Range"] = 5,
         ["TT"] = {
@@ -370,10 +274,6 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -8281.3,
-            ["x"] = 1327.3,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -8281.3,
@@ -428,10 +328,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 5
-        ["Trigger"] = {
-            ["y"] = 143.8,
-            ["x"] = -2711.3,
-        },
         ["Qpart"] = {
             [47098] = {
                 ["1"] = "1",
@@ -445,10 +341,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 6
-        ["Trigger"] = {
-            ["y"] = 163.1,
-            ["x"] = -2709.8,
-        },
         ["Qpart"] = {
             [47098] = {
                 ["2"] = "1",
@@ -462,10 +354,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 7
-        ["Trigger"] = {
-            ["y"] = 150.3,
-            ["x"] = -2712.6,
-        },
         ["Qpart"] = {
             [47098] = {
                 ["3"] = "1",
@@ -479,10 +367,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 8
-        ["Trigger"] = {
-            ["y"] = 101.2,
-            ["x"] = -2666,
-        },
         ["Qpart"] = {
             [47098] = {
                 ["4"] = "1",
@@ -496,10 +380,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 9
-        ["Trigger"] = {
-            ["y"] = 103.4,
-            ["x"] = -2686.9,
-        },
         ["Qpart"] = {
             [47098] = {
                 ["5"] = "1",
@@ -513,10 +393,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 10
-        ["Trigger"] = {
-            ["y"] = 134.8,
-            ["x"] = -2688.9,
-        },
         ["Range"] = 5.75,
         ["Waypoint"] = 47098,
         ["TT"] = {
@@ -526,10 +402,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 11
-        ["Trigger"] = {
-            ["y"] = 155,
-            ["x"] = -2666.1,
-        },
         ["Range"] = 8.27,
         ["Waypoint"] = 47098,
         ["TT"] = {
@@ -539,10 +411,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 12
-        ["Trigger"] = {
-            ["y"] = 183.1,
-            ["x"] = -2683.5,
-        },
         ["Qpart"] = {
             [47098] = {
                 ["6"] = "1",
@@ -556,10 +424,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 13
-        ["Trigger"] = {
-            ["y"] = 193.6,
-            ["x"] = -2691.8,
-        },
         ["Range"] = 8.27,
         ["Waypoint"] = 47098,
         ["TT"] = {
@@ -569,10 +433,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 14
-        ["Trigger"] = {
-            ["y"] = 166.1,
-            ["x"] = -2732.1,
-        },
         ["Range"] = 8.27,
         ["Waypoint"] = 47098,
         ["TT"] = {
@@ -582,10 +442,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 15
-        ["Trigger"] = {
-            ["y"] = 151,
-            ["x"] = -2722,
-        },
         ["Range"] = 8.27,
         ["Waypoint"] = 47098,
         ["TT"] = {
@@ -595,10 +451,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 16
-        ["Trigger"] = {
-            ["y"] = 167.8,
-            ["x"] = -2696.3,
-        },
         ["Range"] = 8.27,
         ["Waypoint"] = 47098,
         ["TT"] = {
@@ -608,10 +460,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 17
-        ["Trigger"] = {
-            ["y"] = 117.3,
-            ["x"] = -2657.3,
-        },
         ["Qpart"] = {
             [47098] = {
                 ["7"] = "1",
@@ -625,10 +473,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 18
-        ["Trigger"] = {
-            ["y"] = 100.7,
-            ["x"] = -2648.1,
-        },
         ["Range"] = 8.27,
         ["Waypoint"] = 47098,
         ["TT"] = {
@@ -638,10 +482,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 19
-        ["Trigger"] = {
-            ["y"] = 79.3,
-            ["x"] = -2678.9,
-        },
         ["Range"] = 8.27,
         ["Waypoint"] = 47098,
         ["TT"] = {
@@ -651,10 +491,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 20
-        ["Trigger"] = {
-            ["y"] = 147.3,
-            ["x"] = -2727.9,
-        },
         ["Range"] = 8.27,
         ["Waypoint"] = 47098,
         ["TT"] = {
@@ -664,10 +500,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 21
-        ["Trigger"] = {
-            ["y"] = 129.3,
-            ["x"] = -2815.8,
-        },
         ["Range"] = 8.27,
         ["Waypoint"] = 47098,
         ["TT"] = {
@@ -677,10 +509,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 22
-        ["Trigger"] = {
-            ["y"] = 168.8,
-            ["x"] = -2837.8,
-        },
         ["Range"] = 8.27,
         ["Waypoint"] = 47098,
         ["TT"] = {
@@ -690,10 +518,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 23
-        ["Trigger"] = {
-            ["y"] = 232.4,
-            ["x"] = -2818,
-        },
         ["Qpart"] = {
             [47098] = {
                 ["8"] = "1",
@@ -728,10 +552,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 26
-        ["Trigger"] = {
-            ["y"] = 1047.4,
-            ["x"] = -597.2,
-        },
         ["Qpart"] = {
             [47099] = {
                 ["1"] = "1",
@@ -745,10 +565,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 27
-        ["Trigger"] = {
-            ["y"] = 1076.3,
-            ["x"] = -592.5,
-        },
         ["Range"] = 8.25,
         ["Waypoint"] = 47099,
         ["TT"] = {
@@ -758,10 +574,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 28
-        ["Trigger"] = {
-            ["y"] = 1056.9,
-            ["x"] = -590.9,
-        },
         ["Range"] = 8.25,
         ["Waypoint"] = 47099,
         ["TT"] = {
@@ -771,10 +583,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 29
-        ["Trigger"] = {
-            ["y"] = 1058.9,
-            ["x"] = -625.6,
-        },
         ["Range"] = 8.25,
         ["Waypoint"] = 47099,
         ["TT"] = {
@@ -784,10 +592,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 30
-        ["Trigger"] = {
-            ["y"] = 1121.8,
-            ["x"] = -621.5,
-        },
         ["Qpart"] = {
             [47099] = {
                 ["2"] = "2",
@@ -801,10 +605,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 31
-        ["Trigger"] = {
-            ["y"] = 1099.5,
-            ["x"] = -616.5,
-        },
         ["Range"] = 8.72,
         ["Waypoint"] = 47099,
         ["TT"] = {
@@ -814,10 +614,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 32
-        ["Trigger"] = {
-            ["y"] = 1122,
-            ["x"] = -602.5,
-        },
         ["Range"] = 8.72,
         ["Waypoint"] = 47099,
         ["TT"] = {
@@ -827,10 +623,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 33
-        ["Trigger"] = {
-            ["y"] = 1127,
-            ["x"] = -612.5,
-        },
         ["Range"] = 6.62,
         ["Waypoint"] = 47099,
         ["TT"] = {
@@ -840,10 +632,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 34
-        ["Trigger"] = {
-            ["y"] = 1169,
-            ["x"] = -584.5,
-        },
         ["Waypoint"] = 47099,
         ["Range"] = 6.61,
         ["TT"] = {
@@ -853,10 +641,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [11]
     {
         -- [step 35
-        ["Trigger"] = {
-            ["y"] = 1182.5,
-            ["x"] = -591.5,
-        },
         ["Qpart"] = {
             [47099] = {
                 ["3"] = "3",
@@ -870,10 +654,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 36
-        ["Trigger"] = {
-            ["y"] = 1169,
-            ["x"] = -584.5,
-        },
         ["Waypoint"] = 47099,
         ["Range"] = 6.61,
         ["TT"] = {
@@ -883,10 +663,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 37
-        ["Trigger"] = {
-            ["y"] = 1141.2,
-            ["x"] = -532.7,
-        },
         ["Range"] = 11.25,
         ["Waypoint"] = 47099,
         ["TT"] = {
@@ -896,10 +672,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 38
-        ["Trigger"] = {
-            ["y"] = 1154,
-            ["x"] = -468.5,
-        },
         ["Qpart"] = {
             [47099] = {
                 ["4"] = "4",
@@ -934,10 +706,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 41
         ["Waypoint"] = 46729,
-        ["Trigger"] = {
-            ["y"] = 1123.7,
-            ["x"] = -528.3,
-        },
         ["Range"] = 5.82,
         ["TT"] = {
             ["y"] = 1123.7,
@@ -947,10 +715,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 42
         ["Waypoint"] = 46729,
-        ["Trigger"] = {
-            ["y"] = 1083.9,
-            ["x"] = -494.9,
-        },
         ["Range"] = 5.82,
         ["TT"] = {
             ["y"] = 1081.7,
@@ -960,10 +724,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 43
         ["Waypoint"] = 46729,
-        ["Trigger"] = {
-            ["y"] = 1075.4,
-            ["x"] = -474.3,
-        },
         ["Range"] = 5.23,
         ["TT"] = {
             ["y"] = 1076.5,
@@ -972,10 +732,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 44
-        ["Trigger"] = {
-            ["y"] = 1053.3,
-            ["x"] = -468.8,
-        },
         ["Qpart"] = {
             [46729] = {
                 1,
@@ -995,10 +751,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1072,
-            ["x"] = -485.5,
-        },
         ["Range"] = 3.45,
         ["TT"] = {
             ["y"] = 1070.8,
@@ -1014,10 +766,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["ETA"] = 83,
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1070.8,
-            ["x"] = -485.7,
-        },
         ["Range"] = 3,
         ["TT"] = {
             ["y"] = 1070.8,
@@ -1057,10 +805,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 50
-        ["Trigger"] = {
-            ["y"] = 1061.7,
-            ["x"] = -473.4,
-        },
         ["Range"] = 4.46,
         ["Waypoint"] = 47186,
         ["TT"] = {
@@ -1070,10 +814,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 51
-        ["Trigger"] = {
-            ["y"] = 1080.4,
-            ["x"] = -477.4,
-        },
         ["Range"] = 4.26,
         ["Waypoint"] = 47186,
         ["TT"] = {
@@ -1083,10 +823,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 52
-        ["Trigger"] = {
-            ["y"] = 1082,
-            ["x"] = -503.7,
-        },
         ["Range"] = 7.78,
         ["Waypoint"] = 47186,
         ["TT"] = {
@@ -1102,10 +838,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1137,
-            ["x"] = -534.3,
-        },
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = 1137,
@@ -1114,10 +846,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 54
-        ["Trigger"] = {
-            ["y"] = 1082.9,
-            ["x"] = -508,
-        },
         ["Waypoint"] = 47186,
         ["Range"] = 7.92,
         ["TT"] = {
@@ -1127,10 +855,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 55
-        ["Trigger"] = {
-            ["y"] = 1079.3,
-            ["x"] = -477.3,
-        },
         ["Waypoint"] = 47186,
         ["Range"] = 3.83,
         ["TT"] = {
@@ -1140,10 +864,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 56
-        ["Trigger"] = {
-            ["y"] = 1061.4,
-            ["x"] = -475,
-        },
         ["Waypoint"] = 47186,
         ["Range"] = 5.78,
         ["TT"] = {
@@ -1177,10 +897,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             [47189] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1069.3,
-            ["x"] = -492,
         },
         ["Range"] = 0.61,
         ["TT"] = {
@@ -1232,10 +948,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 64
         ["ExtraActionB"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1076.3,
-            ["x"] = -482.7,
-        },
         ["Qpart"] = {
             [47181] = {
                 ["1"] = "1",
@@ -1271,10 +983,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 67
-        ["Trigger"] = {
-            ["y"] = 1061.2,
-            ["x"] = -473.9,
-        },
         ["Waypoint"] = 51426,
         ["Range"] = 7.31,
         ["TT"] = {
@@ -1284,10 +992,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 68
-        ["Trigger"] = {
-            ["y"] = 1078.8,
-            ["x"] = -476.7,
-        },
         ["Waypoint"] = 51426,
         ["Range"] = 7.1,
         ["TT"] = {
@@ -1297,10 +1001,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 69
-        ["Trigger"] = {
-            ["y"] = 1082,
-            ["x"] = -502.7,
-        },
         ["Waypoint"] = 51426,
         ["Range"] = 5.86,
         ["TT"] = {
@@ -1321,10 +1021,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 71
-        ["Trigger"] = {
-            ["y"] = 1134,
-            ["x"] = -551.5,
-        },
         ["Waypoint"] = 51426,
         ["Range"] = 5.32,
         ["TT"] = {
@@ -1334,10 +1030,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 72
-        ["Trigger"] = {
-            ["y"] = 1141.8,
-            ["x"] = -545,
-        },
         ["Waypoint"] = 51426,
         ["Range"] = 6.57,
         ["TT"] = {
@@ -1347,10 +1039,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 73
-        ["Trigger"] = {
-            ["y"] = 1167.9,
-            ["x"] = -584,
-        },
         ["Waypoint"] = 51426,
         ["Range"] = 4.85,
         ["TT"] = {
@@ -1368,10 +1056,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 75
-        ["Trigger"] = {
-            ["y"] = 1099.7,
-            ["x"] = -602.8,
-        },
         ["Waypoint"] = 51426,
         ["Range"] = 13.07,
         ["TT"] = {
@@ -1381,10 +1065,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 76
-        ["Trigger"] = {
-            ["y"] = 1063,
-            ["x"] = -595.8,
-        },
         ["Waypoint"] = 51426,
         ["Range"] = 10.65,
         ["TT"] = {
@@ -1473,10 +1153,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -477,
-            ["x"] = 22.6,
-        },
         ["Button"] = {
             ["49531-2"] = 155009,
         },
@@ -1493,10 +1169,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["3"] = "3",
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -459.7,
-            ["x"] = -217.2,
         },
         ["Fillers"] = {
             [49897] = {
@@ -1522,10 +1194,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             [49531] = {
                 ["4"] = "4",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -701.3,
-            ["x"] = 155.1,
         },
         ["Fillers"] = {
             [49529] = {
@@ -1569,10 +1237,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -736,
-            ["x"] = 164.1,
-        },
         ["Button"] = {
             ["51426-1"] = 160245,
         },
@@ -1605,10 +1269,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             [49897] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -503.4,
-            ["x"] = 64.1,
         },
         ["Button"] = {
             ["49531-5"] = 155009,
@@ -1657,10 +1317,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 93
 
-        ["Trigger"] = {
-            ["y"] = 826.7,
-            ["x"] = 1886.4,
-        },
         ["Qpart"] = {
             [48540] = {
                 ["3"] = "3",
@@ -1681,10 +1337,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 816.2,
-            ["x"] = 1876.5,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 816.2,
@@ -1694,10 +1346,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 95
 
-        ["Trigger"] = {
-            ["y"] = 845.5,
-            ["x"] = 1781.5,
-        },
         ["Qpart"] = {
             [48540] = {
                 ["2"] = "2",
@@ -1736,10 +1384,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 98
 
-        ["Trigger"] = {
-            ["y"] = 900.7,
-            ["x"] = 1916.2,
-        },
         ["Qpart"] = {
             [49268] = {
                 ["1"] = "1",
@@ -1785,10 +1429,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 101
 
-        ["Trigger"] = {
-            ["y"] = 864.9,
-            ["x"] = 1820.9,
-        },
         ["Waypoint"] = 48353,
         ["Range"] = 10.79,
         ["TT"] = {
@@ -1799,10 +1439,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 102
 
-        ["Trigger"] = {
-            ["y"] = 916.2,
-            ["x"] = 1817.9,
-        },
         ["Waypoint"] = 48353,
         ["Range"] = 5.85,
         ["TT"] = {
@@ -1854,10 +1490,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 959.1,
-            ["x"] = 1853.4,
-        },
         ["Fillers"] = {
             [49292] = {
                 ["1"] = "1",
@@ -1881,10 +1513,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 994.2,
-            ["x"] = 1849.9,
-        },
         ["Fillers"] = {
             [49292] = {
                 ["1"] = "1",
@@ -1908,10 +1536,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 975.4,
-            ["x"] = 1892,
-        },
         ["Fillers"] = {
             [49292] = {
                 ["1"] = "1",
@@ -1929,10 +1553,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 109
 
-        ["Trigger"] = {
-            ["y"] = 977.7,
-            ["x"] = 1891.3,
-        },
         ["Qpart"] = {
             [49292] = {
                 ["1"] = "1",
@@ -1971,10 +1591,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 112
         ["ExtraActionB"] = 1,
-        ["Trigger"] = {
-            ["y"] = 992.5,
-            ["x"] = 1965,
-        },
         ["Qpart"] = {
             [48355] = {
                 ["1"] = "1",
@@ -2017,10 +1633,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 115
 
-        ["Trigger"] = {
-            ["y"] = 855.9,
-            ["x"] = 2172.3,
-        },
         ["Range"] = 8.02,
         ["Waypoint"] = 48356,
         ["TT"] = {
@@ -2059,10 +1671,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 117
 
-        ["Trigger"] = {
-            ["y"] = 856.1,
-            ["x"] = 2171.5,
-        },
         ["Range"] = 6.47,
         ["Waypoint"] = 49299,
         ["TT"] = {
@@ -2089,10 +1697,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 886.2,
-            ["x"] = 2223.5,
-        },
         ["Fillers"] = {
             [48008] = {
                 ["1"] = "1",
@@ -2113,10 +1717,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 119
 
-        ["Trigger"] = {
-            ["y"] = 866.9,
-            ["x"] = 2124.1,
-        },
         ["Range"] = 9.45,
         ["Waypoint"] = 48365,
         ["Fillers"] = {
@@ -2138,10 +1738,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 120
 
-        ["Trigger"] = {
-            ["y"] = 813.2,
-            ["x"] = 2115.6,
-        },
         ["Range"] = 9.45,
         ["Waypoint"] = 48365,
         ["Fillers"] = {
@@ -2163,10 +1759,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 121
 
-        ["Trigger"] = {
-            ["y"] = 767.7,
-            ["x"] = 2120,
-        },
         ["Range"] = 8.7,
         ["Waypoint"] = 48365,
         ["Fillers"] = {
@@ -2188,10 +1780,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 122
 
-        ["Trigger"] = {
-            ["y"] = 755.4,
-            ["x"] = 2068.5,
-        },
         ["Range"] = 3.39,
         ["Waypoint"] = 48365,
         ["Fillers"] = {
@@ -2213,10 +1801,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 123
 
-        ["Trigger"] = {
-            ["y"] = 743.2,
-            ["x"] = 2056.5,
-        },
         ["Qpart"] = {
             [48365] = {
                 ["1"] = "1",
@@ -2231,10 +1815,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 124
 
-        ["Trigger"] = {
-            ["y"] = 759.2,
-            ["x"] = 2075.1,
-        },
         ["Qpart"] = {
             [48008] = {
                 ["1"] = "1",
@@ -2291,10 +1871,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 128
 
-        ["Trigger"] = {
-            ["y"] = 981.6,
-            ["x"] = 2048.4,
-        },
         ["Qpart"] = {
             [48366] = {
                 ["1"] = "1",
@@ -2308,10 +1884,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 129
-        ["Trigger"] = {
-            ["y"] = 1080,
-            ["x"] = 2350.6,
-        },
         ["GetFP"] = 2087,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -2356,10 +1928,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 133
 
-        ["Trigger"] = {
-            ["y"] = 1041.3,
-            ["x"] = 2492.6,
-        },
         ["Range"] = 13,
         ["Waypoint"] = 48368,
         ["TT"] = {
@@ -2374,10 +1942,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             [48368] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1107.8,
-            ["x"] = 2365.1,
         },
         ["Fillers"] = {
             [48367] = {
@@ -2404,10 +1968,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 775,
-            ["x"] = 2731.5,
-        },
         ["Fillers"] = {
             [48367] = {
                 ["1"] = "1",
@@ -2428,10 +1988,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 136
 
-        ["Trigger"] = {
-            ["y"] = 1240.9,
-            ["x"] = 2701.1,
-        },
         ["Range"] = 17.45,
         ["Waypoint"] = 48372,
         ["Fillers"] = {
@@ -2461,10 +2017,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1351.4,
-            ["x"] = 2760.1,
-        },
         ["Fillers"] = {
             [48367] = {
                 ["1"] = "1",
@@ -2485,10 +2037,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 138
 
-        ["Trigger"] = {
-            ["y"] = 1232,
-            ["x"] = 2707.1,
-        },
         ["Range"] = 13.13,
         ["Fillers"] = {
             [48367] = {
@@ -2510,10 +2058,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 139
 
-        ["Trigger"] = {
-            ["y"] = 1201.3,
-            ["x"] = 2647,
-        },
         ["Qpart"] = {
             [48367] = {
                 ["1"] = "1",
@@ -2536,10 +2080,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
 
         ["Waypoint"] = 51384,
         ["GroupTask"] = 51384,
-        ["Trigger"] = {
-            ["y"] = 1311.4,
-            ["x"] = 2619.5,
-        },
         ["Range"] = 18.47,
         ["TT"] = {
             ["y"] = 1311.4,
@@ -2555,10 +2095,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["GroupTask"] = 51384,
-        ["Trigger"] = {
-            ["y"] = 1424.8,
-            ["x"] = 2724.8,
-        },
         ["Range"] = 14.6,
         ["TT"] = {
             ["y"] = 1424.8,
@@ -2621,10 +2157,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1097,
-            ["x"] = 2369.8,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1097,
@@ -2634,10 +2166,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 147
 
-        ["Trigger"] = {
-            ["y"] = 835.4,
-            ["x"] = 2294.3,
-        },
         ["Qpart"] = {
             [49302] = {
                 ["2"] = "2",
@@ -2652,10 +2180,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 148
 
-        ["Trigger"] = {
-            ["y"] = 839.1,
-            ["x"] = 2294.8,
-        },
         ["Qpart"] = {
             [49302] = {
                 ["3"] = "3",
@@ -2670,10 +2194,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 149
 
-        ["Trigger"] = {
-            ["y"] = 854.9,
-            ["x"] = 2287.9,
-        },
         ["Qpart"] = {
             [49302] = {
                 ["4"] = "4",
@@ -2689,10 +2209,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 150
 
-        ["Trigger"] = {
-            ["y"] = 842.7,
-            ["x"] = 2260.9,
-        },
         ["Qpart"] = {
             [49302] = {
                 ["5"] = "5",
@@ -2717,10 +2233,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [56]
     {
         -- [step 152
-        ["Trigger"] = {
-            ["y"] = 968.6,
-            ["x"] = 1834.9,
-        },
         ["Waypoint"] = 49393,
         ["Range"] = 15.98,
         ["TT"] = {
@@ -2731,10 +2243,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [57]
     {
         -- [step 153
-        ["Trigger"] = {
-            ["y"] = 989.1,
-            ["x"] = 1890.3,
-        },
         ["Waypoint"] = 49393,
         ["Range"] = 15.32,
         ["TT"] = {
@@ -2745,10 +2253,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [58]
     {
         -- [step 154
-        ["Trigger"] = {
-            ["y"] = 1054.4,
-            ["x"] = 1937.9,
-        },
         ["Waypoint"] = 49393,
         ["Range"] = 15.94,
         ["TT"] = {
@@ -2759,10 +2263,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [59]
     {
         -- [step 155
-        ["Trigger"] = {
-            ["y"] = 1121,
-            ["x"] = 1953,
-        },
         ["Waypoint"] = 49393,
         ["Range"] = 8.57,
         ["TT"] = {
@@ -2773,10 +2273,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [60]
     {
         -- [step 156
-        ["Trigger"] = {
-            ["y"] = 1174.3,
-            ["x"] = 1837.3,
-        },
         ["GetFP"] = 2102,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -2868,10 +2364,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Button"] = {
             ["49394-1"] = 153596,
         },
-        ["Trigger"] = {
-            ["y"] = 1417.5,
-            ["x"] = 1413.7,
-        },
         ["Range"] = 23.13,
         ["TT"] = {
             ["y"] = 1417.5,
@@ -2896,10 +2388,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["GroupTask"] = 51368,
-        ["Trigger"] = {
-            ["y"] = 1411.3,
-            ["x"] = 1474.5,
-        },
         ["Range"] = 8.23,
         ["TT"] = {
             ["y"] = 1411.3,
@@ -2916,10 +2404,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1425,
-            ["x"] = 1447.7,
         },
         ["Button"] = {
             ["49394-1"] = 153596,
@@ -2965,10 +2449,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [76]
     {
         -- [step 169
-        ["Trigger"] = {
-            ["y"] = 1314.4,
-            ["x"] = 1707.9,
-        },
         ["Qpart"] = {
             [49710] = {
                 ["1"] = "1",
@@ -2985,10 +2465,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [77]
     {
         -- [step 170
-        ["Trigger"] = {
-            ["y"] = 1476.7,
-            ["x"] = 1474,
-        },
         ["Range"] = 17.06,
         ["Waypoint"] = 49735,
         ["TT"] = {
@@ -3024,10 +2500,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1488.5,
-            ["x"] = 1436.4,
-        },
         ["Button"] = {
             ["49417-1"] = 153679,
         },
@@ -3060,10 +2532,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [83]
     {
         -- [step 176
-        ["Trigger"] = {
-            ["y"] = 1279.9,
-            ["x"] = 1770.9,
-        },
         ["Range"] = 21.42,
         ["Waypoint"] = 49418,
         ["TT"] = {
@@ -3074,10 +2542,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [84]
     {
         -- [step 177
-        ["Trigger"] = {
-            ["y"] = 1374,
-            ["x"] = 1769.2,
-        },
         ["Range"] = 14.5,
         ["Waypoint"] = 49418,
         ["TT"] = {
@@ -3088,10 +2552,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [85]
     {
         -- [step 178
-        ["Trigger"] = {
-            ["y"] = 1450.4,
-            ["x"] = 1854.2,
-        },
         ["Range"] = 12.46,
         ["Waypoint"] = 49418,
         ["TT"] = {
@@ -3129,10 +2589,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1544.4,
-            ["x"] = 1852.3,
-        },
         ["Fillers"] = {
             [49433] = {
                 ["1"] = "1",
@@ -3150,10 +2606,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             [49435] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1587,
-            ["x"] = 1744,
         },
         ["Fillers"] = {
             [49433] = {
@@ -3178,10 +2630,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [91]
     {
         -- [step 184
-        ["Trigger"] = {
-            ["y"] = 1578.5,
-            ["x"] = 1737.9,
-        },
         ["Waypoint"] = 49419,
         ["Range"] = 12.42,
         ["TT"] = {
@@ -3206,10 +2654,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1600.9,
-            ["x"] = 1374.4,
-        },
         ["Fillers"] = {
             [49431] = {
                 ["1"] = "1",
@@ -3223,10 +2667,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [94]
     {
         -- [step 187
-        ["Trigger"] = {
-            ["y"] = 1597.5,
-            ["x"] = 1589.5,
-        },
         ["Qpart"] = {
             [49431] = {
                 ["1"] = "1",
@@ -3265,10 +2705,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1622,
-            ["x"] = 1905.2,
-        },
         ["Fillers"] = {
             [49433] = {
                 ["1"] = "1",
@@ -3286,10 +2722,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             [49435] = {
                 ["4"] = "4",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1650.9,
-            ["x"] = 2042.5,
         },
         ["Fillers"] = {
             [49433] = {
@@ -3314,10 +2746,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [98]
     {
         -- [step 193
-        ["Trigger"] = {
-            ["y"] = 1647,
-            ["x"] = 2040.5,
-        },
         ["Qpart"] = {
             [49433] = {
                 ["1"] = "1",
@@ -3352,10 +2780,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [102]
     {
         -- [step 196
-        ["Trigger"] = {
-            ["y"] = 1701.9,
-            ["x"] = 2073.6,
-        },
         ["Qpart"] = {
             [49439] = {
                 ["1"] = "1",
@@ -3389,10 +2813,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [105]
     {
         -- [step 199
-        ["Trigger"] = {
-            ["y"] = 1665,
-            ["x"] = 2040,
-        },
         ["Range"] = 18.05,
         ["Waypoint"] = 49719,
         ["TT"] = {
@@ -3402,10 +2822,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [106]
     {
         -- [step 200
-        ["Trigger"] = {
-            ["y"] = 1453.2,
-            ["x"] = 1855,
-        },
         ["Range"] = 21.99,
         ["Waypoint"] = 49719,
         ["TT"] = {
@@ -3415,10 +2831,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [107]
     {
         -- [step 201
-        ["Trigger"] = {
-            ["y"] = 1356.3,
-            ["x"] = 1768.2,
-        },
         ["Range"] = 24.11,
         ["Waypoint"] = 49719,
         ["TT"] = {
@@ -3428,10 +2840,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [108]
     {
         -- [step 202
-        ["Trigger"] = {
-            ["y"] = 1233.5,
-            ["x"] = 1804.3,
-        },
         ["Range"] = 18.28,
         ["Waypoint"] = 49719,
         ["TT"] = {
@@ -3504,10 +2912,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 209
-        ["Trigger"] = {
-            ["y"] = 958.7,
-            ["x"] = 323.8,
-        },
         ["Range"] = 12.95,
         ["Waypoint"] = 49260,
         ["Fillers"] = {
@@ -3522,10 +2926,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 210
-        ["Trigger"] = {
-            ["y"] = 1024.5,
-            ["x"] = 349,
-        },
         ["Range"] = 9.28,
         ["Waypoint"] = 49260,
         ["Fillers"] = {
@@ -3559,10 +2959,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1071.5,
-            ["x"] = 251.9,
-        },
         ["Fillers"] = {
             [49229] = {
                 ["1"] = "1",
@@ -3645,10 +3041,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 2
         ["RaidIcon"] = 128349,
-        ["Trigger"] = {
-            ["y"] = 1108.7,
-            ["x"] = 272.2,
-        },
         ["Qpart"] = {
             [49260] = {
                 ["1"] = "1",
@@ -3706,10 +3098,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [10]
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1071,
-            ["x"] = 253.5,
-        },
         ["Fillers"] = {
             [49229] = {
                 ["1"] = "1",
@@ -3736,10 +3124,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [11]
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1081.5,
-            ["x"] = 299.5,
-        },
         ["Fillers"] = {
             [49229] = {
                 ["1"] = "1",
@@ -3766,10 +3150,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1063,
-            ["x"] = 339.3,
-        },
         ["Fillers"] = {
             [49229] = {
                 ["1"] = "1",
@@ -3796,10 +3176,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1010.1,
-            ["x"] = 320.1,
-        },
         ["Fillers"] = {
             [49229] = {
                 ["1"] = "1",
@@ -3826,10 +3202,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1045.5,
-            ["x"] = 278.2,
-        },
         ["Fillers"] = {
             [49229] = {
                 ["1"] = "1",
@@ -3856,10 +3228,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1083,
-            ["x"] = 272.2,
-        },
         ["Fillers"] = {
             [49229] = {
                 ["1"] = "1",
@@ -3897,10 +3265,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1117,
-            ["x"] = 288.1,
-        },
         ["Fillers"] = {
             [49229] = {
                 ["1"] = "1",
@@ -3917,10 +3281,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [12]
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1021.9,
-            ["x"] = 294.1,
-        },
         ["Qpart"] = {
             [49229] = {
                 ["1"] = "1",
@@ -3945,10 +3305,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [14]
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1036.9,
-            ["x"] = 329,
-        },
         ["Waypoint"] = 49234,
         ["Range"] = 6.23,
         ["TT"] = {
@@ -3958,10 +3314,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1018.6,
-            ["x"] = 347.6,
-        },
         ["Waypoint"] = 49234,
         ["Range"] = 6.9,
         ["TT"] = {
@@ -3971,10 +3323,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 959.7,
-            ["x"] = 324.5,
-        },
         ["Waypoint"] = 49234,
         ["Range"] = 9.91,
         ["TT"] = {
@@ -4048,10 +3396,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1170.5,
-            ["x"] = 22.5,
-        },
         ["GetFP"] = 2060,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -4068,10 +3412,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["GroupTask"] = 51358,
-        ["Trigger"] = {
-            ["y"] = 1221.9,
-            ["x"] = -8.7,
-        },
         ["Range"] = 6.71,
         ["TT"] = {
             ["y"] = 1221.9,
@@ -4123,10 +3463,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1327.8,
-            ["x"] = -98.5,
-        },
         ["Qpart"] = {
             [49451] = {
                 ["1"] = "1",
@@ -4168,10 +3504,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1350,
-            ["x"] = -124,
-        },
         ["Waypoint"] = 48369,
         ["Range"] = 9.12,
         ["TT"] = {
@@ -4181,10 +3513,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1378,
-            ["x"] = -214.2,
-        },
         ["Waypoint"] = 48369,
         ["Range"] = 8.03,
         ["TT"] = {
@@ -4242,10 +3570,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1392.7,
-            ["x"] = -458.5,
-        },
         ["Fillers"] = {
             [49454] = {
                 ["1"] = "1",
@@ -4275,10 +3599,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Trigger"] = {
-            ["y"] = 1394.4,
-            ["x"] = -456.4,
-        },
         ["Qpart"] = {
             [49454] = {
                 ["1"] = "1",
@@ -4310,10 +3630,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1519.7,
-            ["x"] = -277.3,
-        },
         ["Range"] = 14.27,
         ["Waypoint"] = 49467,
         ["TT"] = {
@@ -4323,10 +3639,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1629.5,
-            ["x"] = -237.7,
-        },
         ["Qpart"] = {
             [49467] = {
                 ["1"] = "1",
@@ -4350,10 +3662,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [47]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1637.5,
-            ["x"] = -58.2,
-        },
         ["Range"] = 13.42,
         ["Waypoint"] = 48070,
         ["TT"] = {
@@ -4374,10 +3682,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [49]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1479,
-            ["x"] = 46.5,
-        },
         ["Qpart"] = {
             [48557] = {
                 ["1"] = "1",
@@ -4405,10 +3709,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [51]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1424.5,
-            ["x"] = 203.1,
-        },
         ["Range"] = 23.01,
         ["Waypoint"] = 48070,
         ["TT"] = {
@@ -4418,10 +3718,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [52]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1401.3,
-            ["x"] = 414.2,
-        },
         ["Range"] = 23.79,
         ["Waypoint"] = 48070,
         ["TT"] = {
@@ -4431,10 +3727,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1233.3,
-            ["x"] = 664.5,
-        },
         ["Range"] = 18.01,
         ["Waypoint"] = 48070,
         ["TT"] = {
@@ -4444,10 +3736,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1171.5,
-            ["x"] = 717.7,
-        },
         ["Range"] = 14.25,
         ["Waypoint"] = 48070,
         ["TT"] = {
@@ -4503,10 +3791,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [58]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1221.8,
-            ["x"] = 453,
-        },
         ["Fillers"] = {
             [48080] = {
                 ["1"] = "1",
@@ -4530,10 +3814,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [59]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1185,
-            ["x"] = 415.5,
-        },
         ["Qpart"] = {
             [48965] = {
                 ["1"] = "1",
@@ -4596,10 +3876,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1056.5,
-            ["x"] = 666.2,
-        },
         ["Button"] = {
             ["48616-1"] = 152643,
         },
@@ -4634,10 +3910,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 1260.4,
-            ["x"] = 972,
-        },
         ["Waypoint"] = 48670,
         ["Range"] = 14.86,
         ["TT"] = {
@@ -4663,10 +3935,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             [48196] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1422.9,
-            ["x"] = 829.5,
         },
         ["Fillers"] = {
             [48195] = {
@@ -4710,10 +3978,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1512.3,
-            ["x"] = 817.9,
-        },
         ["Fillers"] = {
             [48778] = {
                 ["1"] = "1",
@@ -4741,10 +4005,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1602.2,
-            ["x"] = 857.2,
-        },
         ["Fillers"] = {
             [48778] = {
                 ["1"] = "1",
@@ -4767,10 +4027,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 1591.8,
-            ["x"] = 863.2,
-        },
         ["Qpart"] = {
             [48196] = {
                 ["4"] = "4",
@@ -4827,10 +4083,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["4"] = "4",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1588.5,
-            ["x"] = 679,
-        },
         ["Fillers"] = {
             [48778] = {
                 ["1"] = "1",
@@ -4858,10 +4110,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1607.8,
-            ["x"] = 695.2,
-        },
         ["Fillers"] = {
             [48778] = {
                 ["1"] = "1",
@@ -4884,10 +4132,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 1607.8,
-            ["x"] = 695.2,
-        },
         ["Qpart"] = {
             [48778] = {
                 ["1"] = "1",
@@ -4964,10 +4208,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [81]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1018.2,
-            ["x"] = 1169.9,
-        },
         ["Qpart"] = {
             [48005] = {
                 ["1"] = "1",
@@ -4993,10 +4233,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [83]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1026,
-            ["x"] = 1250,
-        },
         ["Range"] = 9.3,
         ["Waypoint"] = 48898,
         ["TT"] = {
@@ -5006,10 +4242,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [84]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1064.7,
-            ["x"] = 1297.7,
-        },
         ["Qpart"] = {
             [48005] = {
                 ["2"] = "2",
@@ -5023,10 +4255,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [85]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 921.7,
-            ["x"] = 1375,
-        },
         ["Qpart"] = {
             [48898] = {
                 ["1"] = "1",
@@ -5040,10 +4268,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [86]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1023.6,
-            ["x"] = 1455,
-        },
         ["Range"] = 10.54,
         ["Waypoint"] = 48898,
         ["TT"] = {
@@ -5053,10 +4277,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [87]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1057.5,
-            ["x"] = 1416.8,
-        },
         ["Qpart"] = {
             [48898] = {
                 ["2"] = "2",
@@ -5070,10 +4290,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [88]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1089.8,
-            ["x"] = 1370.7,
-        },
         ["Qpart"] = {
             [48902] = {
                 ["1"] = "1",
@@ -5090,10 +4306,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [89]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1210.8,
-            ["x"] = 1229.3,
-        },
         ["Qpart"] = {
             [48898] = {
                 ["3"] = "3",
@@ -5107,10 +4319,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [90]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1139,
-            ["x"] = 1229.5,
-        },
         ["Range"] = 15.31,
         ["Waypoint"] = 48899,
         ["TT"] = {
@@ -5142,10 +4350,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [93]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1041.5,
-            ["x"] = 1155.4,
-        },
         ["Qpart"] = {
             [48903] = {
                 ["1"] = "1",
@@ -5159,10 +4363,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [94]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1041.5,
-            ["x"] = 1155.4,
-        },
         ["Qpart"] = {
             [48903] = {
                 ["2"] = "2",
@@ -5176,10 +4376,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [94]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 1033.3,
-            ["x"] = 1147,
-        },
         ["Qpart"] = {
             [48903] = {
                 ["3"] = "3",
@@ -5194,10 +4390,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 1026.2,
-            ["x"] = 1140.8,
-        },
         ["Qpart"] = {
             [48903] = {
                 ["4"] = "4",
@@ -5212,10 +4404,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 1011.7,
-            ["x"] = 1144.3,
-        },
         ["Qpart"] = {
             [48903] = {
                 ["5"] = "5",
@@ -5230,10 +4418,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 1011.2,
-            ["x"] = 1145.4,
-        },
         ["Qpart"] = {
             [48903] = {
                 ["6"] = "6",
@@ -5259,10 +4443,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 981.2,
-            ["x"] = 1151.4,
-        },
         ["Range"] = 13.91,
         ["Waypoint"] = 48005,
         ["TT"] = {
@@ -5272,10 +4452,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [100]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 887.9,
-            ["x"] = 1064,
-        },
         ["GetFP"] = 2084,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -5309,10 +4485,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 913.2,
-            ["x"] = 1033.8,
-        },
         ["Qpart"] = {
             [48005] = {
                 ["4"] = "4",
@@ -5327,10 +4499,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 891.2,
-            ["x"] = 1022.4,
-        },
         ["Qpart"] = {
             [48005] = {
                 ["3"] = "3",
@@ -5367,10 +4535,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 1015.9,
-            ["x"] = 1156.5,
-        },
         ["Qpart"] = {
             [48004] = {
                 ["1"] = "1",
@@ -5385,10 +4549,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 996.2,
-            ["x"] = 1187.8,
-        },
         ["Qpart"] = {
             [48004] = {
                 ["2"] = "2",
@@ -5403,10 +4563,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 982.4,
-            ["x"] = 1208.7,
-        },
         ["Qpart"] = {
             [48004] = {
                 ["3"] = "3",
@@ -5421,10 +4577,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 975.7,
-            ["x"] = 1207.9,
-        },
         ["Qpart"] = {
             [48004] = {
                 ["4"] = "4",
@@ -5461,10 +4613,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 964.5,
-            ["x"] = 1162,
-        },
         ["Qpart"] = {
             [48939] = {
                 ["2"] = "2",
@@ -5490,10 +4638,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 794.7,
-            ["x"] = 1045,
-        },
         ["Qpart"] = {
             [48087] = {
                 ["1"] = "1",
@@ -5508,10 +4652,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Trigger"] = {
-            ["y"] = 901,
-            ["x"] = 1090.5,
-        },
         ["Qpart"] = {
             [48087] = {
                 ["2"] = "2",
@@ -5557,10 +4697,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 897.7,
-            ["x"] = 1090.9,
-        },
         ["Button"] = {
             ["48089-1"] = 153357,
         },
@@ -5601,10 +4737,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["GroupTask"] = 51367,
-        ["Trigger"] = {
-            ["y"] = 711.9,
-            ["x"] = 1478.9,
-        },
         ["Range"] = 19.23,
         ["TT"] = {
             ["y"] = 711.9,
@@ -5666,10 +4798,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 666.2,
-            ["x"] = 1000.7,
-        },
         ["Fillers"] = {
             [47755] = {
                 ["1"] = "1",
@@ -5699,10 +4827,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             [50002] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 536.5,
-            ["x"] = 872.6,
         },
         ["Fillers"] = {
             [50009] = {
@@ -5796,10 +4920,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 534,
-            ["x"] = 871.1,
-        },
         ["Button"] = {
             ["47755-1"] = 151135,
         },
@@ -5845,10 +4965,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [145]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 526.2,
-            ["x"] = 1174,
-        },
         ["Qpart"] = {
             [47755] = {
                 ["1"] = "1",
@@ -5894,10 +5010,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [148]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 545,
-            ["x"] = 1159.5,
-        },
         ["Qpart"] = {
             [50009] = {
                 ["1"] = "1",
@@ -5911,10 +5023,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [149]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = 684.1,
-            ["x"] = 1236.7,
-        },
         ["Waypoint"] = 49393,
         ["Range"] = 35.77,
         ["TT"] = {
@@ -6003,10 +5111,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
         ["QuestLineSkip"] = 51226,
-        ["Trigger"] = {
-            ["y"] = 229.6,
-            ["x"] = -1045.5,
-        },
         ["Qpart"] = {
             [51226] = {
                 ["1"] = "1",
@@ -6070,10 +5174,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
         ["QuestLineSkip"] = 51226,
-        ["Trigger"] = {
-            ["y"] = 363,
-            ["x"] = -936.3,
-        },
         ["Range"] = 12.37,
         ["Waypoint"] = 49734,
         ["TT"] = {
@@ -6092,10 +5192,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
         ["QuestLineSkip"] = 51226,
-        ["Trigger"] = {
-            ["y"] = 402.3,
-            ["x"] = -918,
-        },
         ["Range"] = 9.37,
         ["Waypoint"] = 49734,
         ["TT"] = {
@@ -6119,10 +5215,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 393.1,
-            ["x"] = -855.8,
-        },
         ["ExtraActionB"] = 1,
         ["Fillers"] = {
             [49716] = {
@@ -6141,10 +5233,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
         ["QuestLineSkip"] = 51226,
-        ["Trigger"] = {
-            ["y"] = 494.3,
-            ["x"] = -824.8,
-        },
         ["Qpart"] = {
             [50249] = {
                 ["3"] = "3",
@@ -6173,10 +5261,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 473.7,
-            ["x"] = -960.5,
-        },
         ["ExtraActionB"] = 1,
         ["Fillers"] = {
             [49716] = {
@@ -6201,10 +5285,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["ExtraActionB"] = 1,
-        ["Trigger"] = {
-            ["y"] = 391.3,
-            ["x"] = -954.3,
-        },
         ["Fillers"] = {
             [49716] = {
                 ["1"] = "1",
@@ -6222,10 +5302,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
         ["QuestLineSkip"] = 51226,
-        ["Trigger"] = {
-            ["y"] = 408.8,
-            ["x"] = -916,
-        },
         ["ExtraActionB"] = 1,
         ["Qpart"] = {
             [49720] = {
@@ -6283,10 +5359,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -9.5,
-            ["x"] = -879.7,
-        },
         ["Fillers"] = {
             [47486] = {
                 ["1"] = "1",
@@ -6312,10 +5384,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -92.9,
-            ["x"] = -1108,
-        },
         ["Fillers"] = {
             [47486] = {
                 ["1"] = "1",
@@ -6347,10 +5415,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -97.3,
-            ["x"] = -1094.5,
-        },
         ["Range"] = 42.07,
         ["TT"] = {
             ["y"] = -97.3,
@@ -6427,10 +5491,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -197,
-            ["x"] = -590,
-        },
         ["Qpart"] = {
             [53041] = {
                 ["1"] = "1",
@@ -6444,10 +5504,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -166.5,
-            ["x"] = -558.3,
-        },
         ["Qpart"] = {
             [53041] = {
                 ["2"] = "2",
@@ -6461,10 +5517,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -90.1,
-            ["x"] = -619.8,
-        },
         ["GetFP"] = 2074,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -6495,10 +5547,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
         ["DenyNPC"] = 134166,
-        ["Trigger"] = {
-            ["y"] = -210.4,
-            ["x"] = -628.7,
-        },
         ["Waypoint"] = 50349,
         ["Range"] = 10.87,
         ["TT"] = {
@@ -6531,10 +5579,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -501.4,
-            ["x"] = -681.8,
-        },
         ["Waypoint"] = 50351,
         ["Range"] = 8.55,
         ["TT"] = {
@@ -6549,10 +5593,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -504.9,
-            ["x"] = -668.3,
-        },
         ["Waypoint"] = 50351,
         ["Range"] = 5.37,
         ["TT"] = {
@@ -6567,10 +5607,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -518.7,
-            ["x"] = -666,
-        },
         ["Waypoint"] = 50351,
         ["Range"] = 4.58,
         ["TT"] = {
@@ -6590,10 +5626,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -527.2,
-            ["x"] = -656.3,
-        },
         ["Fillers"] = {
             [50352] = {
                 ["1"] = "1",
@@ -6607,10 +5639,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -534.8,
-            ["x"] = -660.7,
-        },
         ["Waypoint"] = 50351,
         ["Range"] = 6.11,
         ["TT"] = {
@@ -6625,10 +5653,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -585.5,
-            ["x"] = -721.2,
-        },
         ["Waypoint"] = 50351,
         ["Range"] = 6.63,
         ["TT"] = {
@@ -6643,10 +5667,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -589.8,
-            ["x"] = -727,
-        },
         ["Waypoint"] = 50351,
         ["Range"] = 5.26,
         ["TT"] = {
@@ -6661,10 +5681,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -580.8,
-            ["x"] = -735.5,
-        },
         ["Waypoint"] = 50351,
         ["Range"] = 5.5,
         ["TT"] = {
@@ -6679,10 +5695,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [10]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -556.5,
-            ["x"] = -715.8,
-        },
         ["Waypoint"] = 50351,
         ["Range"] = 6.66,
         ["TT"] = {
@@ -6703,10 +5715,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -546.3,
-            ["x"] = -720.5,
-        },
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -546.3,
@@ -6720,10 +5728,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [12]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -651.3,
-            ["x"] = -746.8,
-        },
         ["Waypoint"] = 50351,
         ["Range"] = 7.63,
         ["TT"] = {
@@ -6738,10 +5742,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [13]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -671.5,
-            ["x"] = -739.5,
-        },
         ["Waypoint"] = 50351,
         ["Range"] = 8.89,
         ["TT"] = {
@@ -6762,10 +5762,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -677.3,
-            ["x"] = -745.3,
-        },
         ["Fillers"] = {
             [50352] = {
                 ["1"] = "1",
@@ -6779,10 +5775,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -635,
-            ["x"] = -722.2,
-        },
         ["Qpart"] = {
             [50352] = {
                 ["1"] = "1",
@@ -6796,10 +5788,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -616.3,
-            ["x"] = -620.3,
-        },
         ["Waypoint"] = 50351,
         ["Range"] = 5.71,
         ["TT"] = {
@@ -6830,10 +5818,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -616.5,
-            ["x"] = -622.5,
-        },
         ["Waypoint"] = 50356,
         ["Range"] = 5.17,
         ["TT"] = {
@@ -6844,10 +5828,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -644.8,
-            ["x"] = -656.8,
-        },
         ["Waypoint"] = 50356,
         ["Range"] = 7.79,
         ["TT"] = {
@@ -6858,10 +5838,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -683.8,
-            ["x"] = -676.3,
-        },
         ["Waypoint"] = 50356,
         ["Range"] = 8.75,
         ["TT"] = {
@@ -6872,10 +5848,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -649.5,
-            ["x"] = -693.3,
-        },
         ["Waypoint"] = 50356,
         ["Range"] = 8.55,
         ["TT"] = {
@@ -6886,10 +5858,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -622.8,
-            ["x"] = -654.8,
-        },
         ["Waypoint"] = 50356,
         ["Range"] = 6.47,
         ["TT"] = {
@@ -6900,10 +5868,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -655,
-            ["x"] = -577.3,
-        },
         ["Qpart"] = {
             [50356] = {
                 ["1"] = "1",
@@ -6918,10 +5882,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -623.3,
-            ["x"] = -654.7,
-        },
         ["Waypoint"] = 50356,
         ["Range"] = 13.87,
         ["TT"] = {
@@ -6932,10 +5892,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -626.8,
-            ["x"] = -681.3,
-        },
         ["Waypoint"] = 50356,
         ["Range"] = 8.95,
         ["TT"] = {
@@ -6946,10 +5902,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -640,
-            ["x"] = -702,
-        },
         ["Waypoint"] = 50356,
         ["Range"] = 4.81,
         ["TT"] = {
@@ -6960,10 +5912,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -684.3,
-            ["x"] = -677,
-        },
         ["Waypoint"] = 50356,
         ["Range"] = 8.74,
         ["TT"] = {
@@ -6974,10 +5922,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -648.5,
-            ["x"] = -658,
-        },
         ["Waypoint"] = 50356,
         ["Range"] = 9.76,
         ["TT"] = {
@@ -6988,10 +5932,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -502.4,
-            ["x"] = -763,
-        },
         ["Waypoint"] = 50356,
         ["Range"] = 11.93,
         ["TT"] = {
@@ -7012,10 +5952,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -448.7,
-            ["x"] = -835.8,
-        },
         ["Waypoint"] = 50544,
         ["Range"] = 13.11,
         ["TT"] = {
@@ -7026,10 +5962,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -638.7,
-            ["x"] = -866,
-        },
         ["Waypoint"] = 50544,
         ["Range"] = 16.85,
         ["TT"] = {
@@ -7094,10 +6026,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -922.2,
-            ["x"] = -698.3,
-        },
         ["Waypoint"] = 48874,
         ["Range"] = 9.55,
         ["TT"] = {
@@ -7113,10 +6041,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["GroupTask"] = 49069,
-        ["Trigger"] = {
-            ["y"] = -932.2,
-            ["x"] = -944.8,
-        },
         ["Fillers"] = {
             [49028] = {
                 ["1"] = "1",
@@ -7160,10 +6084,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -925.3,
-            ["x"] = -805.7,
-        },
         ["Button"] = {
             ["48873-1"] = 152800,
         },
@@ -7175,10 +6095,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -773.8,
-            ["x"] = -657,
-        },
         ["Qpart"] = {
             [48879] = {
                 ["1"] = "1",
@@ -7250,10 +6166,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -738.2,
-            ["x"] = -269.8,
-        },
         ["Qpart"] = {
             [49039] = {
                 ["1"] = "1",
@@ -7267,10 +6179,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -725.5,
-            ["x"] = -264,
-        },
         ["Qpart"] = {
             [49039] = {
                 ["3"] = "3",
@@ -7284,10 +6192,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -750.5,
-            ["x"] = -254.7,
-        },
         ["Qpart"] = {
             [49039] = {
                 ["2"] = "2",
@@ -7336,10 +6240,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -797.5,
-            ["x"] = -228,
-        },
         ["Fillers"] = {
             [49066] = {
                 ["1"] = "1",
@@ -7357,10 +6257,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             [48909] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -774,
-            ["x"] = -147.5,
         },
         ["Fillers"] = {
             [49066] = {
@@ -7380,10 +6276,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -848,
-            ["x"] = -122,
-        },
         ["Fillers"] = {
             [49066] = {
                 ["1"] = "1",
@@ -7401,10 +6293,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             [48909] = {
                 ["4"] = "4",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -907.8,
-            ["x"] = -71,
         },
         ["Fillers"] = {
             [49066] = {
@@ -7424,10 +6312,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["5"] = "5",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -980.5,
-            ["x"] = -62.5,
-        },
         ["Fillers"] = {
             [49066] = {
                 ["1"] = "1",
@@ -7441,10 +6325,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [12]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -882.5,
-            ["x"] = -73.5,
-        },
         ["Qpart"] = {
             [49066] = {
                 ["1"] = "1",
@@ -7486,10 +6366,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -117,
-            ["x"] = -639.5,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -117,
@@ -7498,10 +6374,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [13]
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -77.9,
-            ["x"] = -595,
-        },
         ["Qpart"] = {
             [47489] = {
                 ["2"] = "2",
@@ -7515,10 +6387,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Trigger"] = {
-            ["y"] = -66.3,
-            ["x"] = -610.5,
-        },
         ["Qpart"] = {
             [47489] = {
                 ["3"] = "3",
@@ -7552,10 +6420,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1737.9,
-            ["x"] = -1344.3,
-        },
         ["Waypoint"] = 49218,
         ["Range"] = 12.79,
         ["TT"] = {
@@ -7570,10 +6434,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1683,
-            ["x"] = -1350,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -1683,
@@ -7607,10 +6467,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1676.3,
-            ["x"] = -1350.8,
-        },
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -1676.3,
@@ -7624,10 +6480,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1660.5,
-            ["x"] = -1337.5,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -1660.5,
@@ -7641,10 +6493,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1706.1,
-            ["x"] = -1422.1,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -1706.1,
@@ -7652,10 +6500,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1683.5,
-            ["x"] = -1422,
-        },
         ["Range"] = 5.52,
         ["Waypoint"] = 49178,
         ["TT"] = {
@@ -7678,10 +6522,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["5"] = "5",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1552,
-            ["x"] = -1559.1,
-        },
         ["Fillers"] = {
             [48421] = {
                 ["1"] = "1",
@@ -7701,10 +6541,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             [49178] = {
                 ["6"] = "6",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1402,
-            ["x"] = -1516.1,
         },
         ["Fillers"] = {
             [48421] = {
@@ -7735,10 +6571,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1372.9,
-            ["x"] = -1673.6,
-        },
         ["Fillers"] = {
             [48421] = {
                 ["1"] = "1",
@@ -7758,10 +6590,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             [48419] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1369,
-            ["x"] = -1691,
         },
         ["Fillers"] = {
             [49230] = {
@@ -7783,10 +6611,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["4"] = "4",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1293.1,
-            ["x"] = -1561.6,
-        },
         ["Fillers"] = {
             [48421] = {
                 ["1"] = "1",
@@ -7802,10 +6626,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1277.3,
-            ["x"] = -1426.1,
-        },
         ["Qpart"] = {
             [49226] = {
                 ["1"] = "1",
@@ -7819,10 +6639,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1286.5,
-            ["x"] = -1498.9,
-        },
         ["Qpart"] = {
             [48421] = {
                 ["1"] = "1",
@@ -7847,10 +6663,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1532,
-            ["x"] = -1333.5,
-        },
         ["Waypoint"] = 49230,
         ["Range"] = 20.61,
         ["TT"] = {
@@ -7889,10 +6701,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["AreaTriggerZ"] = {
+        ["ZoneStepTrigger"] = {
             ["y"] = -1284.1,
             ["x"] = -1147.8,
-            ["R"] = 30,
+            ["Range"] = 30,
         },
         ["Qpart"] = {
             [48505] = {
@@ -7901,10 +6713,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["RaidIcon"] = 126490,
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1448.4,
-            ["x"] = -1310.3,
-        },
         ["Range"] = 12.97,
         ["TT"] = {
             ["y"] = -1448.4,
@@ -7931,10 +6739,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1290.1,
-            ["x"] = -1147,
-        },
         ["Fillers"] = {
             [48505] = {
                 ["1"] = "1",
@@ -7952,10 +6756,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1290.1,
-            ["x"] = -1147,
-        },
         ["Fillers"] = {
             [48505] = {
                 ["1"] = "1",
@@ -7972,10 +6772,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             [48516] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1290.1,
-            ["x"] = -1147,
         },
         ["Fillers"] = {
             [48505] = {
@@ -8003,10 +6799,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1289,
-            ["x"] = -1148,
-        },
         ["Qpart"] = {
             [48505] = {
                 ["1"] = "1",
@@ -8037,10 +6829,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1409.4,
-            ["x"] = -958.7,
-        },
         ["Qpart"] = {
             [48539] = {
                 ["1"] = "1",
@@ -8095,10 +6883,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = -1538,
-            ["x"] = -878,
-        },
         ["Waypoint"] = 48558,
         ["Range"] = 6.14,
         ["TT"] = {
@@ -8120,10 +6904,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [13]
     {
-        ["Trigger"] = {
-            ["y"] = -1528.3,
-            ["x"] = -867,
-        },
         ["Waypoint"] = 48558,
         ["Range"] = 5.02,
         ["TT"] = {
@@ -8172,10 +6952,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1592.3,
-            ["x"] = -860.8,
-        },
         ["Fillers"] = {
             [48558] = {
                 ["1"] = "1",
@@ -8201,10 +6977,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1458.5,
-            ["x"] = -728.2,
-        },
         ["Fillers"] = {
             [48558] = {
                 ["1"] = "1",
@@ -8225,10 +6997,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1461,
-            ["x"] = -740.5,
-        },
         ["Qpart"] = {
             [48558] = {
                 ["1"] = "1",
@@ -8260,10 +7028,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1571.9,
-            ["x"] = -939.8,
-        },
         ["Range"] = 22.37,
         ["Waypoint"] = 48558,
         ["TT"] = {
@@ -8307,10 +7071,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1767.1,
-            ["x"] = -930.5,
-        },
         ["Range"] = 15.07,
         ["TT"] = {
             ["y"] = -1767.1,
@@ -8318,10 +7078,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1746.1,
-            ["x"] = -926,
-        },
         ["Range"] = 9.68,
         ["Waypoint"] = 49239,
         ["TT"] = {
@@ -8330,10 +7086,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1851.5,
-            ["x"] = -787.2,
-        },
         ["Range"] = 14.31,
         ["Waypoint"] = 49239,
         ["TT"] = {
@@ -8342,10 +7094,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1845,
-            ["x"] = -745.8,
-        },
         ["Qpart"] = {
             [49239] = {
                 ["2"] = "2",
@@ -8383,10 +7131,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1836.6,
-            ["x"] = -748.5,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -1836.6,
@@ -8398,10 +7142,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             [49398] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1836.6,
-            ["x"] = -748.5,
         },
         ["Button"] = {
             ["49398-2"] = 153599,
@@ -8422,10 +7162,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1853.5,
-            ["x"] = -752.2,
-        },
         ["Range"] = 10.09,
         ["Waypoint"] = 49290,
         ["BreadCrum"] = 49290,
@@ -8435,10 +7171,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1924.1,
-            ["x"] = -752.8,
-        },
         ["Range"] = 10.05,
         ["Waypoint"] = 49290,
         ["BreadCrum"] = 49290,
@@ -8448,10 +7180,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1936.8,
-            ["x"] = -742.7,
-        },
         ["Range"] = 6.98,
         ["Waypoint"] = 49290,
         ["BreadCrum"] = 49290,
@@ -8461,10 +7189,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1937,
-            ["x"] = -752.5,
-        },
         ["Range"] = 4.12,
         ["Waypoint"] = 49290,
         ["BreadCrum"] = 49290,
@@ -8474,10 +7198,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1923.8,
-            ["x"] = -750.3,
-        },
         ["Range"] = 7.39,
         ["Waypoint"] = 49290,
         ["BreadCrum"] = 49290,
@@ -8487,10 +7207,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1926.5,
-            ["x"] = -736.5,
-        },
         ["Range"] = 9.76,
         ["Waypoint"] = 49290,
         ["BreadCrum"] = 49290,
@@ -8500,10 +7216,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1941.5,
-            ["x"] = -723.2,
-        },
         ["Range"] = 4.55,
         ["Waypoint"] = 49290,
         ["BreadCrum"] = 49290,
@@ -8532,10 +7244,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1825.5,
-            ["x"] = -706.8,
-        },
         ["Range"] = 6.63,
         ["Waypoint"] = 49402,
         ["TT"] = {
@@ -8544,10 +7252,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1818.8,
-            ["x"] = -723.2,
-        },
         ["Range"] = 5.71,
         ["Waypoint"] = 49402,
         ["TT"] = {
@@ -8556,10 +7260,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1803.9,
-            ["x"] = -727.5,
-        },
         ["Range"] = 4.86,
         ["Waypoint"] = 49402,
         ["TT"] = {
@@ -8568,10 +7268,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1803,
-            ["x"] = -717.5,
-        },
         ["Range"] = 5.42,
         ["Waypoint"] = 49402,
         ["TT"] = {
@@ -8580,10 +7276,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1814.6,
-            ["x"] = -727.3,
-        },
         ["Range"] = 5.83,
         ["Waypoint"] = 49402,
         ["TT"] = {
@@ -8607,10 +7299,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1786.5,
-            ["x"] = -726.2,
-        },
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -1786.5,
@@ -8624,10 +7312,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1772,
-            ["x"] = -686,
-        },
         ["Fillers"] = {
             [49402] = {
                 ["1"] = "1",
@@ -8654,10 +7338,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1798.3,
-            ["x"] = -685.5,
-        },
         ["Button"] = {
             ["49402-1"] = 154878,
         },
@@ -8674,10 +7354,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [50]
     {
-        ["Trigger"] = {
-            ["y"] = -1819.9,
-            ["x"] = -706.8,
-        },
         ["Range"] = 14.16,
         ["Waypoint"] = 49402,
         ["TT"] = {
@@ -8686,10 +7362,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [51]
     {
-        ["Trigger"] = {
-            ["y"] = -1818.3,
-            ["x"] = -723.3,
-        },
         ["Range"] = 7.22,
         ["Waypoint"] = 49402,
         ["TT"] = {
@@ -8698,10 +7370,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [52]
     {
-        ["Trigger"] = {
-            ["y"] = -1804,
-            ["x"] = -727.8,
-        },
         ["Range"] = 4.88,
         ["Waypoint"] = 49402,
         ["TT"] = {
@@ -8710,10 +7378,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1803,
-            ["x"] = -717.8,
-        },
         ["Waypoint"] = 49402,
         ["Range"] = 3.84,
         ["TT"] = {
@@ -8722,10 +7386,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1814.6,
-            ["x"] = -717.3,
-        },
         ["Waypoint"] = 49402,
         ["Range"] = 4.49,
         ["TT"] = {
@@ -8734,10 +7394,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1813,
-            ["x"] = -728.3,
-        },
         ["Waypoint"] = 49402,
         ["Range"] = 5.29,
         ["TT"] = {
@@ -8764,10 +7420,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1772.8,
-            ["x"] = -727.5,
-        },
         ["Qpart"] = {
             [49403] = {
                 ["1"] = "1",
@@ -8789,10 +7441,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [56]
     {
-        ["Trigger"] = {
-            ["y"] = -1816,
-            ["x"] = -732,
-        },
         ["Range"] = 3.73,
         ["Waypoint"] = 49401,
         ["TT"] = {
@@ -8801,10 +7449,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [57]
     {
-        ["Trigger"] = {
-            ["y"] = -1824,
-            ["x"] = -739,
-        },
         ["Range"] = 4.87,
         ["Waypoint"] = 49401,
         ["TT"] = {
@@ -8832,10 +7476,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [60]
     {
-        ["Trigger"] = {
-            ["y"] = -1849.3,
-            ["x"] = -749.2,
-        },
         ["Waypoint"] = 49400,
         ["Range"] = 6,
         ["TT"] = {
@@ -8853,10 +7493,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [62]
     {
-        ["Trigger"] = {
-            ["y"] = -1903.6,
-            ["x"] = -765.7,
-        },
         ["Waypoint"] = 49399,
         ["Range"] = 6.31,
         ["TT"] = {
@@ -8875,10 +7511,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [63]
     {
-        ["Trigger"] = {
-            ["y"] = -1901.3,
-            ["x"] = -779.7,
-        },
         ["Waypoint"] = 49399,
         ["Range"] = 5.26,
         ["TT"] = {
@@ -8903,10 +7535,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1894.9,
-            ["x"] = -778.7,
-        },
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -1894.9,
@@ -8924,10 +7552,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [65]
     {
-        ["Trigger"] = {
-            ["y"] = -1903.1,
-            ["x"] = -779.3,
-        },
         ["Waypoint"] = 49400,
         ["Range"] = 3.91,
         ["TT"] = {
@@ -8946,10 +7570,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [66]
     {
-        ["Trigger"] = {
-            ["y"] = -1924.4,
-            ["x"] = -752.3,
-        },
         ["Waypoint"] = 49399,
         ["Range"] = 7.85,
         ["TT"] = {
@@ -8968,10 +7588,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [67]
     {
-        ["Trigger"] = {
-            ["y"] = -1930.5,
-            ["x"] = -742,
-        },
         ["Waypoint"] = 49399,
         ["Range"] = 3.33,
         ["TT"] = {
@@ -8990,10 +7606,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [68]
     {
-        ["Trigger"] = {
-            ["y"] = -1939,
-            ["x"] = -750.8,
-        },
         ["Waypoint"] = 49399,
         ["Range"] = 4.11,
         ["TT"] = {
@@ -9012,10 +7624,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [69]
     {
-        ["Trigger"] = {
-            ["y"] = -1924.9,
-            ["x"] = -750,
-        },
         ["Waypoint"] = 49399,
         ["Range"] = 6.53,
         ["TT"] = {
@@ -9034,10 +7642,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [70]
     {
-        ["Trigger"] = {
-            ["y"] = -1927.5,
-            ["x"] = -736.2,
-        },
         ["Waypoint"] = 49399,
         ["Range"] = 5.88,
         ["TT"] = {
@@ -9056,10 +7660,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [71]
     {
-        ["Trigger"] = {
-            ["y"] = -1942,
-            ["x"] = -722.8,
-        },
         ["Waypoint"] = 49399,
         ["Range"] = 6.09,
         ["TT"] = {
@@ -9116,10 +7716,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [74]
     {
-        ["Trigger"] = {
-            ["y"] = -1937.5,
-            ["x"] = -710.3,
-        },
         ["Qpart"] = {
             [49522] = {
                 ["1"] = "1",
@@ -9180,10 +7776,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [77]
     {
-        ["Trigger"] = {
-            ["y"] = -1914,
-            ["x"] = -687.8,
-        },
         ["Waypoint"] = 49399,
         ["Range"] = 5.55,
         ["TT"] = {
@@ -9202,10 +7794,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [78]
     {
-        ["Trigger"] = {
-            ["y"] = -1896.8,
-            ["x"] = -692,
-        },
         ["Waypoint"] = 49399,
         ["Range"] = 5.95,
         ["TT"] = {
@@ -9224,10 +7812,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [79]
     {
-        ["Trigger"] = {
-            ["y"] = -1868.3,
-            ["x"] = -677.2,
-        },
         ["Waypoint"] = 49399,
         ["Range"] = 4.95,
         ["TT"] = {
@@ -9252,10 +7836,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1857.5,
-            ["x"] = -677.5,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -1857.5,
@@ -9273,10 +7853,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [81]
     {
-        ["Trigger"] = {
-            ["y"] = -1869.5,
-            ["x"] = -677,
-        },
         ["Range"] = 5.56,
         ["Waypoint"] = 49399,
         ["TT"] = {
@@ -9295,10 +7871,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [82]
     {
-        ["Trigger"] = {
-            ["y"] = -1841.1,
-            ["x"] = -702.2,
-        },
         ["Range"] = 15.13,
         ["Waypoint"] = 49399,
         ["TT"] = {
@@ -9323,10 +7895,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1794.8,
-            ["x"] = -660.5,
-        },
         ["Fillers"] = {
             [49400] = {
                 ["1"] = "1",
@@ -9344,10 +7912,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [84]
     {
-        ["Trigger"] = {
-            ["y"] = -1794.6,
-            ["x"] = -662,
-        },
         ["Qpart"] = {
             [49400] = {
                 ["1"] = "1",
@@ -9365,10 +7929,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [85]
     {
-        ["Trigger"] = {
-            ["y"] = -1671,
-            ["x"] = -622,
-        },
         ["Qpart"] = {
             [49409] = {
                 ["4"] = "4",
@@ -9381,10 +7941,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [86]
     {
-        ["Trigger"] = {
-            ["y"] = -1681,
-            ["x"] = -670.3,
-        },
         ["Qpart"] = {
             [49409] = {
                 ["5"] = "5",
@@ -9406,10 +7962,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [88]
     {
-        ["Trigger"] = {
-            ["y"] = -1710.3,
-            ["x"] = -689.5,
-        },
         ["Range"] = 13.7,
         ["Waypoint"] = 49399,
         ["TT"] = {
@@ -9418,10 +7970,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [89]
     {
-        ["Trigger"] = {
-            ["y"] = -1739,
-            ["x"] = -733.8,
-        },
         ["Range"] = 13.7,
         ["Waypoint"] = 49399,
         ["TT"] = {
@@ -9430,10 +7978,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [89]
     {
-        ["Trigger"] = {
-            ["y"] = -1780.9,
-            ["x"] = -750.8,
-        },
         ["Range"] = 8.93,
         ["Waypoint"] = 49399,
         ["TT"] = {
@@ -9442,10 +7986,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [90]
     {
-        ["Trigger"] = {
-            ["y"] = -1790.6,
-            ["x"] = -774,
-        },
         ["Range"] = 6.53,
         ["Waypoint"] = 49399,
         ["TT"] = {
@@ -9454,10 +7994,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [91]
     {
-        ["Trigger"] = {
-            ["y"] = -1799,
-            ["x"] = -786.2,
-        },
         ["Range"] = 5.15,
         ["Waypoint"] = 49399,
         ["TT"] = {
@@ -9466,10 +8002,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [92]
     {
-        ["Trigger"] = {
-            ["y"] = -1789.5,
-            ["x"] = -778.5,
-        },
         ["Range"] = 5.05,
         ["Waypoint"] = 49399,
         ["TT"] = {
@@ -9478,10 +8010,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [93]
     {
-        ["Trigger"] = {
-            ["y"] = -1826.6,
-            ["x"] = -719,
-        },
         ["Range"] = 8.77,
         ["Waypoint"] = 49399,
         ["TT"] = {
@@ -9490,10 +8018,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [94]
     {
-        ["Trigger"] = {
-            ["y"] = -1821.5,
-            ["x"] = -710,
-        },
         ["Range"] = 6.48,
         ["Waypoint"] = 49399,
         ["TT"] = {
@@ -9502,10 +8026,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [95]
     {
-        ["Trigger"] = {
-            ["y"] = -1818.8,
-            ["x"] = -722.7,
-        },
         ["Range"] = 3.45,
         ["Waypoint"] = 49399,
         ["TT"] = {
@@ -9514,10 +8034,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [96]
     {
-        ["Trigger"] = {
-            ["y"] = -1804.3,
-            ["x"] = -727.8,
-        },
         ["Range"] = 4.79,
         ["Waypoint"] = 49399,
         ["TT"] = {
@@ -9526,10 +8042,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [97]
     {
-        ["Trigger"] = {
-            ["y"] = -1803.3,
-            ["x"] = -717.3,
-        },
         ["Range"] = 4,
         ["Waypoint"] = 49399,
         ["TT"] = {
@@ -9538,10 +8050,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [98]
     {
-        ["Trigger"] = {
-            ["y"] = -1815,
-            ["x"] = -718.5,
-        },
         ["Range"] = 7.15,
         ["Waypoint"] = 49399,
         ["TT"] = {
@@ -9569,10 +8077,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [101]
     {
-        ["Trigger"] = {
-            ["y"] = -1813.5,
-            ["x"] = -612.2,
-        },
         ["Waypoint"] = 49404,
         ["Range"] = 20.42,
         ["TT"] = {
@@ -9581,10 +8085,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [102]
     {
-        ["Trigger"] = {
-            ["y"] = -1811.3,
-            ["x"] = -497.8,
-        },
         ["Qpart"] = {
             [49404] = {
                 ["1"] = "1",
@@ -9597,10 +8097,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [103]
     {
-        ["Trigger"] = {
-            ["y"] = -1814,
-            ["x"] = -489,
-        },
         ["Qpart"] = {
             [49404] = {
                 ["2"] = "2",
@@ -9613,10 +8109,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [104]
     {
-        ["Trigger"] = {
-            ["y"] = -1813.1,
-            ["x"] = -491.3,
-        },
         ["Qpart"] = {
             [49404] = {
                 ["3"] = "3",
@@ -9648,10 +8140,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [107]
     {
-        ["Trigger"] = {
-            ["y"] = -1786.4,
-            ["x"] = -732.2,
-        },
         ["Qpart"] = {
             [49405] = {
                 ["1"] = "1",
@@ -9665,10 +8153,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [108]
     {
         ["ETA"] = 58,
-        ["Trigger"] = {
-            ["y"] = -1786.4,
-            ["x"] = -732.2,
-        },
         ["Qpart"] = {
             [49405] = {
                 ["2"] = "2",
@@ -9699,10 +8183,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -717,
-            ["x"] = 451,
-        },
         ["Qpart"] = {
             [52431] = {
                 ["1"] = "1",
@@ -9765,10 +8245,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [14]
     {
-        ["Trigger"] = {
-            ["y"] = -682.2,
-            ["x"] = 833.4,
-        },
         ["Qpart"] = {
             [52787] = {
                 ["1"] = "1",
@@ -9815,10 +8291,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -783.3,
-            ["x"] = 826.9,
-        },
         ["Range"] = 15.17,
         ["Waypoint"] = 49738,
         ["TT"] = {
@@ -9827,10 +8299,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -872.5,
-            ["x"] = 819.6,
-        },
         ["Qpart"] = {
             [49738] = {
                 ["1"] = "1",
@@ -9871,10 +8339,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -801.5,
-            ["x"] = 710,
-        },
         ["Waypoint"] = 49736,
         ["Range"] = 22.04,
         ["TT"] = {
@@ -9883,10 +8347,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -882.3,
-            ["x"] = 703.1,
-        },
         ["Waypoint"] = 49736,
         ["Range"] = 16.32,
         ["TT"] = {
@@ -9895,10 +8355,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1042,
-            ["x"] = 851.5,
-        },
         ["Waypoint"] = 49741,
         ["Range"] = 6.92,
         ["TT"] = {
@@ -9924,10 +8380,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1048.4,
-            ["x"] = 858.4,
-        },
         ["Waypoint"] = 49741,
         ["Range"] = 5.84,
         ["TT"] = {
@@ -9953,10 +8405,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1040.5,
-            ["x"] = 879,
-        },
         ["Qpart"] = {
             [49741] = {
                 ["1"] = "1",
@@ -9986,10 +8434,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1028.6,
-            ["x"] = 847.9,
-        },
         ["Qpart"] = {
             [49741] = {
                 ["2"] = "2",
@@ -10035,10 +8479,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["ButtonSpellId"] = {
             [259360] = "49736-1",
         },
-        ["Trigger"] = {
-            ["y"] = -922.2,
-            ["x"] = 713.7,
-        },
         ["ButtonCooldown"] = {
             [259360] = 20,
         },
@@ -10049,10 +8489,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -980.3,
-            ["x"] = 612.6,
-        },
         ["Qpart"] = {
             [49741] = {
                 ["3"] = "3",
@@ -10070,10 +8506,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1078.5,
-            ["x"] = 601.2,
-        },
         ["Qpart"] = {
             [49741] = {
                 ["4"] = "4",
@@ -10086,10 +8518,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1225.5,
-            ["x"] = 718,
-        },
         ["Qpart"] = {
             [49741] = {
                 ["5"] = "5",
@@ -10102,10 +8530,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1408,
-            ["x"] = 792.7,
-        },
         ["Qpart"] = {
             [49741] = {
                 ["6"] = "6",
@@ -10123,10 +8547,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1158.4,
-            ["x"] = 742,
-        },
         ["Fillers"] = {
             [49739] = {
                 ["1"] = "1",
@@ -10139,10 +8559,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1116.6,
-            ["x"] = 744.4,
-        },
         ["Qpart"] = {
             [49739] = {
                 ["1"] = "1",
@@ -10155,10 +8571,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -841.5,
-            ["x"] = 683.4,
-        },
         ["Waypoint"] = 49741,
         ["Range"] = 18.47,
         ["TT"] = {
@@ -10196,10 +8608,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1225.5,
-            ["x"] = 718,
-        },
         ["Qpart"] = {
             [49741] = {
                 ["5"] = "5",
@@ -10212,10 +8620,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1408,
-            ["x"] = 792.7,
-        },
         ["Qpart"] = {
             [49741] = {
                 ["6"] = "6",
@@ -10237,10 +8641,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -720,
-            ["x"] = 796.2,
-        },
         ["Qpart"] = {
             [50110] = {
                 ["1"] = "1",
@@ -10277,10 +8677,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 428,
-            ["x"] = -146.2,
-        },
         ["Range"] = 13.97,
         ["TT"] = {
             ["y"] = 428,
@@ -10306,10 +8702,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 356.7,
-            ["x"] = -128.9,
-        },
         ["Waypoint"] = 50787,
         ["Range"] = 14.66,
         ["TT"] = {
@@ -10318,10 +8710,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 332.8,
-            ["x"] = -143.7,
-        },
         ["Qpart"] = {
             [50787] = {
                 ["1"] = "1",
@@ -10353,10 +8741,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 303.6,
-            ["x"] = -157.5,
-        },
         ["Qpart"] = {
             [50789] = {
                 ["1"] = "1",
@@ -10391,10 +8775,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = 360.2,
-            ["x"] = -122.8,
-        },
         ["Qpart"] = {
             [50790] = {
                 ["1"] = "1",
@@ -10407,10 +8787,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [13]
     {
-        ["Trigger"] = {
-            ["y"] = 710.7,
-            ["x"] = 18,
-        },
         ["Qpart"] = {
             [50790] = {
                 ["2"] = "2",
@@ -10448,10 +8824,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         }
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1164.3,
-            ["x"] = -583,
-        },
         ["Waypoint"] = 49523,
         ["Range"] = 5.69,
         ["TT"] = {
@@ -10460,10 +8832,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1149.2,
-            ["x"] = -619.8,
-        },
         ["Waypoint"] = 49523,
         ["Range"] = 7.15,
         ["TT"] = {
@@ -10472,10 +8840,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1165,
-            ["x"] = -632,
-        },
         ["Waypoint"] = 49523,
         ["Range"] = 8.06,
         ["TT"] = {
@@ -10493,10 +8857,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1183.3,
-            ["x"] = -537.8,
-        },
         ["Waypoint"] = 50972,
         ["Range"] = 13.53,
         ["TT"] = {
@@ -10505,10 +8865,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1151.4,
-            ["x"] = -544.5,
-        },
         ["Waypoint"] = 50972,
         ["Range"] = 10.16,
         ["TT"] = {
@@ -10517,10 +8873,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 1084.4,
-            ["x"] = -509.4,
-        },
         ["Waypoint"] = 50972,
         ["Range"] = 9.11,
         ["TT"] = {
@@ -10529,10 +8881,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = 1080.3,
-            ["x"] = -476.4,
-        },
         ["Waypoint"] = 50972,
         ["Range"] = 4.65,
         ["TT"] = {
@@ -10541,10 +8889,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = 1061.9,
-            ["x"] = -473.9,
-        },
         ["Waypoint"] = 50972,
         ["Range"] = 6.37,
         ["TT"] = {
@@ -10592,10 +8936,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1933.4,
-            ["x"] = 69.3,
-        },
         ["Range"] = 12.37,
         ["TT"] = {
             ["y"] = 1933.4,
@@ -10621,10 +8961,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2493.4,
-            ["x"] = -46.5,
-        },
         ["GetFP"] = 2086,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -10657,10 +8993,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2549,
-            ["x"] = -11.2,
-        },
         ["Button"] = {
             ["49725-1"] = 155859,
         },
@@ -10671,10 +9003,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = 2547.5,
-            ["x"] = -11.7,
-        },
         ["Qpart"] = {
             [49725] = {
                 [2] = 1,
@@ -10743,10 +9071,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2715.4,
-            ["x"] = -181.9,
-        },
         ["Button"] = {
             ["49705-1"] = 155893,
         },
@@ -10792,10 +9116,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [49887] = {
                 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2813.1,
-            ["x"] = -329.9,
         },
         ["Fillers"] = {
             [49791] = {
@@ -10849,10 +9169,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2908.6,
-            ["x"] = -247.2,
-        },
         ["Button"] = {
             ["49791-1"] = 155919,
         },
@@ -10882,10 +9198,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2971,
-            ["x"] = -332.4,
-        },
         ["Button"] = {
             ["49791-1"] = 155919,
         },
@@ -10902,10 +9214,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2906.6,
-            ["x"] = -394.4,
-        },
         ["Range"] = 8.22,
         ["Waypoint"] = 49794,
         ["TT"] = {
@@ -10944,10 +9252,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2870,
-            ["x"] = -378.9,
-        },
         ["Button"] = {
             ["49791-1"] = 155919,
         },
@@ -10977,10 +9281,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2868.8,
-            ["x"] = -449.4,
-        },
         ["Button"] = {
             ["49791-1"] = 155919,
         },
@@ -11004,10 +9304,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [49792] = {
                 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2868.4,
-            ["x"] = -450.4,
         },
         ["Button"] = {
             ["49791-1"] = 155919,
@@ -11050,10 +9346,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [49975] = {
                 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 3025.4,
-            ["x"] = -421.7,
         },
         ["Button"] = {
             ["49975-1"] = 157859,
@@ -11110,10 +9402,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2705.6,
-            ["x"] = -549,
-        },
         ["GetFP"] = 2088,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -11141,10 +9429,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2599.5,
-            ["x"] = -547.5,
-        },
         ["Qpart"] = {
             [50343] = {
                 1,
@@ -11182,10 +9466,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["TrigText"] = "1/5",
-        ["Trigger"] = {
-            ["y"] = 2553.1,
-            ["x"] = -545.8,
-        },
         ["Fillers"] = {
             [50359] = {
                 ["1"] = "1",
@@ -11205,10 +9485,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["TrigText"] = "2/5",
-        ["Trigger"] = {
-            ["y"] = 2541.5,
-            ["x"] = -581.3,
-        },
         ["Fillers"] = {
             [50359] = {
                 ["1"] = "1",
@@ -11228,10 +9504,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["TrigText"] = "3/5",
-        ["Trigger"] = {
-            ["y"] = 2527.5,
-            ["x"] = -675.5,
-        },
         ["Fillers"] = {
             [50359] = {
                 ["1"] = "1",
@@ -11251,10 +9523,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["TrigText"] = "4/5",
-        ["Trigger"] = {
-            ["y"] = 2487.3,
-            ["x"] = -586.5,
-        },
         ["Fillers"] = {
             [50359] = {
                 ["1"] = "1",
@@ -11274,10 +9542,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["TrigText"] = "5/5",
-        ["Trigger"] = {
-            ["y"] = 2479.6,
-            ["x"] = -511.4,
-        },
         ["Fillers"] = {
             [50359] = {
                 ["1"] = "1",
@@ -11296,10 +9560,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2479.6,
-            ["x"] = -511.4,
         },
         ["Range"] = 20.69,
         ["TT"] = {
@@ -11327,10 +9587,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2549,
-            ["x"] = -670.8,
-        },
         ["Waypoint"] = 50064,
         ["Range"] = 4.27,
         ["TT"] = {
@@ -11339,10 +9595,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2537.6,
-            ["x"] = -672.8,
-        },
         ["Waypoint"] = 50064,
         ["Range"] = 2.17,
         ["TT"] = {
@@ -11351,10 +9603,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 2539.8,
-            ["x"] = -684.3,
-        },
         ["Waypoint"] = 50064,
         ["Range"] = 3.41,
         ["TT"] = {
@@ -11363,10 +9611,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = 2549.6,
-            ["x"] = -676.5,
-        },
         ["Qpart"] = {
             [50064] = {
                 1,
@@ -11379,10 +9623,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = 2547,
-            ["x"] = -677.7,
-        },
         ["Qpart"] = {
             [50064] = {
                 [2] = 1,
@@ -11413,10 +9653,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2591.3,
-            ["x"] = -722.7,
-        },
         ["Qpart"] = {
             [50161] = {
                 ["1"] = "1",
@@ -11429,10 +9665,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2566.4,
-            ["x"] = -767.3,
-        },
         ["QpartPart"] = {
             [50161] = {
                 ["2"] = "2",
@@ -11451,10 +9683,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2494.1,
-            ["x"] = -761,
-        },
         ["QpartPart"] = {
             [50161] = {
                 ["2"] = "2",
@@ -11473,10 +9701,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2428.8,
-            ["x"] = -820.8,
-        },
         ["QpartPart"] = {
             [50161] = {
                 ["2"] = "2",
@@ -11495,10 +9719,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2428.8,
-            ["x"] = -820.8,
-        },
         ["Qpart"] = {
             [50161] = {
                 ["1"] = "1",
@@ -11530,10 +9750,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2477.9,
-            ["x"] = -890,
-        },
         ["Waypoint"] = 50168,
         ["Range"] = 13.47,
         ["TT"] = {
@@ -11552,10 +9768,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2459.6,
-            ["x"] = -905,
-        },
         ["Fillers"] = {
             [50162] = {
                 1,
@@ -11568,10 +9780,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2459.6,
-            ["x"] = -903.3,
-        },
         ["Qpart"] = {
             [50162] = {
                 1,
@@ -11603,10 +9811,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2430.1,
-            ["x"] = -790.7,
-        },
         ["Qpart"] = {
             [50504] = {
                 1,
@@ -11640,10 +9844,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2177.3,
-            ["x"] = -408.4,
-        },
         ["Qpart"] = {
             [50534] = {
                 ["1"] = "1",
@@ -11664,10 +9864,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2262.4,
-            ["x"] = -471.3,
-        },
         ["Qpart"] = {
             [50264] = {
                 ["1"] = "1",
@@ -11707,10 +9903,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2549.6,
-            ["x"] = -672.3,
-        },
         ["Waypoint"] = 50553,
         ["Range"] = 6.85,
         ["TT"] = {
@@ -11719,10 +9911,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2537.5,
-            ["x"] = -672.7,
-        },
         ["Waypoint"] = 50553,
         ["Range"] = 2.77,
         ["TT"] = {
@@ -11754,10 +9942,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3273.5,
-            ["x"] = -640.2,
-        },
         ["Fillers"] = {
             [49995] = {
                 1,
@@ -11773,10 +9957,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3272.6,
-            ["x"] = -638.3,
-        },
         ["Qpart"] = {
             [49996] = {
                 1,
@@ -11812,10 +9992,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2942.3,
-            ["x"] = -589.8,
-        },
         ["Qpart"] = {
             [49997] = {
                 1,
@@ -11829,10 +10005,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2966.1,
-            ["x"] = -632.2,
-        },
         ["Qpart"] = {
             [49997] = {
                 ["2"] = "2",
@@ -11863,10 +10035,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3188,
-            ["x"] = -459.9,
-        },
         ["Range"] = 17.33,
         ["Waypoint"] = 49998,
         ["TT"] = {
@@ -11881,10 +10049,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3247,
-            ["x"] = -426.7,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 3247,
@@ -11892,10 +10056,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = 3347,
-            ["x"] = -378.3,
-        },
         ["GetFP"] = 2085,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -11936,10 +10096,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3480.1,
-            ["x"] = -480,
-        },
         ["DroppableQuest"] = {
             ["Text"] = "Tideblood",
             ["Qid"] = 50593,
@@ -11975,10 +10131,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3578.6,
-            ["x"] = -399.7,
-        },
         ["DroppableQuest"] = {
             ["Text"] = "Tideblood",
             ["Qid"] = 50593,
@@ -12013,10 +10165,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [50594] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 3562.1,
-            ["x"] = -494,
         },
         ["DroppableQuest"] = {
             ["Text"] = "Tideblood",
@@ -12061,10 +10209,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["Text"] = "Tideblood",
             ["Qid"] = 50593,
             ["MobId"] = 130116,
-        },
-        ["Trigger"] = {
-            ["y"] = 3560.3,
-            ["x"] = -495.9,
         },
         ["Range"] = 37.76,
         ["TT"] = {
@@ -12116,10 +10260,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3493.9,
-            ["x"] = -477.5,
-        },
         ["Button"] = {
             ["50608-2"] = 158465,
         },
@@ -12145,10 +10285,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3518.8,
-            ["x"] = -421.3,
-        },
         ["Qpart"] = {
             [50609] = {
                 ["3"] = "3",
@@ -12180,10 +10316,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3518.1,
-            ["x"] = -427.5,
-        },
         ["Qpart"] = {
             [50608] = {
                 ["1"] = "1",
@@ -12230,10 +10362,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     },
     {
         ["ExtraActionB"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3374.8,
-            ["x"] = -410.9,
-        },
         ["Qpart"] = {
             [50611] = {
                 ["1"] = "1",
@@ -12307,10 +10435,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3595.9,
-            ["x"] = -61.5,
-        },
         ["Fillers"] = {
             [50777] = {
                 ["1"] = "1",
@@ -12333,10 +10457,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3698.1,
-            ["x"] = -11.7,
-        },
         ["Fillers"] = {
             [50779] = {
                 ["1"] = "1",
@@ -12358,10 +10478,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3721.8,
-            ["x"] = -158.2,
-        },
         ["Fillers"] = {
             [50779] = {
                 ["1"] = "1",
@@ -12383,10 +10499,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3723.9,
-            ["x"] = -157.5,
-        },
         ["Fillers"] = {
             [50779] = {
                 ["1"] = "1",
@@ -12418,10 +10530,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 3823.8,
-            ["x"] = 40,
-        },
         ["Qpart"] = {
             [50783] = {
                 ["1"] = "1",
@@ -12434,10 +10542,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = 3715.1,
-            ["x"] = -70.9,
-        },
         ["Qpart"] = {
             [50779] = {
                 ["1"] = "1",
@@ -12476,10 +10580,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["RaidIcon"] = 136650,
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3789.5,
-            ["x"] = -162.5,
-        },
         ["Range"] = 14.59,
         ["TT"] = {
             ["y"] = 3789.5,
@@ -12487,10 +10587,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3824.6,
-            ["x"] = -507.7,
-        },
         ["Qpart"] = {
             [50784] = {
                 ["2"] = "2",
@@ -12521,10 +10617,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3798.1,
-            ["x"] = -639.2,
-        },
         ["Qpart"] = {
             [50781] = {
                 ["1"] = "1",
@@ -12561,10 +10653,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3799.8,
-            ["x"] = -905.3,
-        },
         ["Fillers"] = {
             [51278] = {
                 ["1"] = "1",
@@ -12582,10 +10670,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 4018.1,
-            ["x"] = -822,
-        },
         ["Fillers"] = {
             [51278] = {
                 ["1"] = "1",
@@ -12598,10 +10682,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4018.6,
-            ["x"] = -723.2,
-        },
         ["Qpart"] = {
             [51320] = {
                 ["2"] = "2",
@@ -12619,10 +10699,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4018.6,
-            ["x"] = -723.2,
-        },
         ["Qpart"] = {
             [51278] = {
                 ["1"] = "1",
@@ -12659,10 +10735,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 4002.1,
-            ["x"] = -869.2,
-        },
         ["Button"] = {
             ["51319-1"] = 160056,
         },
@@ -12697,10 +10769,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4079.5,
-            ["x"] = -983,
-        },
         ["Qpart"] = {
             [50824] = {
                 ["1"] = "1",
@@ -12731,10 +10799,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4065.6,
-            ["x"] = -1102.5,
-        },
         ["GetFP"] = 2133,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -12776,10 +10840,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2834.9,
-            ["x"] = 246.3,
-        },
         ["Fillers"] = {
             [49744] = {
                 ["1"] = "1",
@@ -12803,10 +10863,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [49744] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2772.1,
-            ["x"] = 169.6,
         },
         ["Fillers"] = {
             [51534] = {
@@ -12838,10 +10894,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["ExtraActionB"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2861.3,
-            ["x"] = 245.4,
-        },
         ["Range"] = 0.69,
         ["TrigText"] = "1/2",
         ["TT"] = {
@@ -12850,10 +10902,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [50]
     {
-        ["Trigger"] = {
-            ["y"] = 2865.8,
-            ["x"] = 190.3,
-        },
         ["Qpart"] = {
             [49744] = {
                 ["2"] = "2",
@@ -12940,10 +10988,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3064.3,
-            ["x"] = 57.7,
-        },
         ["Qpart"] = {
             [51159] = {
                 ["1"] = "1",
@@ -12982,10 +11026,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     },
     {
         ["GroupTask"] = 51217,
-        ["Trigger"] = {
-            ["y"] = 3619.9,
-            ["x"] = 168.6,
-        },
         ["Qpart"] = {
             [51217] = {
                 ["1"] = "1",
@@ -13011,10 +11051,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3384.1,
-            ["x"] = 121,
-        },
         ["Button"] = {
             ["50908-1"] = 159144,
         },
@@ -13031,10 +11067,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3283.3,
-            ["x"] = 102,
-        },
         ["Range"] = 12.3,
         ["Waypoint"] = 50908,
         ["TT"] = {
@@ -13051,10 +11083,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 3273.3,
-            ["x"] = 51.4,
-        },
         ["Range"] = 11.34,
         ["Waypoint"] = 50909,
         ["TT"] = {
@@ -13071,10 +11099,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = 3282.1,
-            ["x"] = 2.2,
-        },
         ["Range"] = 14.01,
         ["Waypoint"] = 50908,
         ["TT"] = {
@@ -13095,10 +11119,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [50908] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 3311.6,
-            ["x"] = -14.4,
         },
         ["Button"] = {
             ["50908-2"] = 159144,
@@ -13124,10 +11144,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [13]
     {
-        ["Trigger"] = {
-            ["y"] = 3301.1,
-            ["x"] = -19.8,
-        },
         ["Qpart"] = {
             [50910] = {
                 ["1"] = "1",
@@ -13164,10 +11180,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2954.8,
-            ["x"] = 151,
-        },
         ["Qpart"] = {
             [49755] = {
                 ["1"] = "1",
@@ -13180,10 +11192,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2958.4,
-            ["x"] = 153.8,
-        },
         ["Qpart"] = {
             [49755] = {
                 ["2"] = "2",
@@ -13237,10 +11245,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     },
     {
         ["QuestLineSkip"] = 51310,
-        ["Trigger"] = {
-            ["y"] = 2668.4,
-            ["x"] = 279.7,
-        },
         ["Qpart"] = {
             [51314] = {
                 ["1"] = "1",
@@ -13287,10 +11291,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2678.1,
-            ["x"] = 615.7,
-        },
         ["Waypoint"] = 50134,
         ["Range"] = 8.9,
         ["TT"] = {
@@ -13312,10 +11312,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2626,
-            ["x"] = 622.5,
-        },
         ["Fillers"] = {
             [50133] = {
                 ["1"] = "1",
@@ -13335,10 +11331,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [50135] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2784.5,
-            ["x"] = 599.4,
         },
         ["Fillers"] = {
             [50133] = {
@@ -13360,10 +11352,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2723.3,
-            ["x"] = 708.5,
-        },
         ["Fillers"] = {
             [50133] = {
                 ["1"] = "1",
@@ -13379,10 +11367,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2737.3,
-            ["x"] = 715.2,
-        },
         ["Qpart"] = {
             [50134] = {
                 ["1"] = "1",
@@ -13429,10 +11413,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2668.9,
-            ["x"] = 416.2,
-        },
         ["Qpart"] = {
             [50136] = {
                 ["1"] = "1",
@@ -13467,10 +11447,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2503.6,
-            ["x"] = 461.6,
-        },
         ["GetFP"] = 2101,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -13479,10 +11455,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2642.9,
-            ["x"] = 315.3,
-        },
         ["Range"] = 9.75,
         ["Waypoint"] = 49960,
         ["TT"] = {
@@ -13502,10 +11474,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2589.5,
-            ["x"] = 406.5,
-        },
         ["Fillers"] = {
             [49886] = {
                 ["1"] = "1",
@@ -13518,10 +11486,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2649.6,
-            ["x"] = 313.2,
-        },
         ["Qpart"] = {
             [49886] = {
                 ["1"] = "1",
@@ -13578,10 +11542,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2459.8,
-            ["x"] = 502.8,
-        },
         ["QpartPart"] = {
             [50065] = {
                 ["1"] = "1",
@@ -13610,10 +11570,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [50065] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2467.8,
-            ["x"] = 569.1,
         },
         ["Button"] = {
             ["50041-1"] = 160561,
@@ -13644,10 +11600,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [48]
     {
-        ["Trigger"] = {
-            ["y"] = 2402.8,
-            ["x"] = 463,
-        },
         ["Qpart"] = {
             [50069] = {
                 ["1"] = "1",
@@ -13660,10 +11612,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [49]
     {
-        ["Trigger"] = {
-            ["y"] = 2402.6,
-            ["x"] = 464.6,
-        },
         ["Qpart"] = {
             [50069] = {
                 ["2"] = "2",
@@ -13694,10 +11642,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [52]
     {
-        ["Trigger"] = {
-            ["y"] = 2319.3,
-            ["x"] = 415.8,
-        },
         ["Qpart"] = {
             [50088] = {
                 ["1"] = "1",
@@ -13749,10 +11693,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [63]
     {
-        ["Trigger"] = {
-            ["y"] = 2721.8,
-            ["x"] = 815.1,
-        },
         ["Waypoint"] = 51554,
         ["BreadCrum"] = 51554,
         ["Range"] = 13.9,
@@ -13781,10 +11721,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [63]
     {
-        ["Trigger"] = {
-            ["y"] = 2991.9,
-            ["x"] = 918.9,
-        },
         ["GetFP"] = 2097,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -13814,10 +11750,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [70]
     {
-        ["Trigger"] = {
-            ["y"] = 2981.4,
-            ["x"] = 975.9,
-        },
         ["Range"] = 13.75,
         ["Waypoint"] = 50674,
         ["TT"] = {
@@ -13836,10 +11768,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3007.9,
-            ["x"] = 1008.1,
-        },
         ["Fillers"] = {
             [50802] = {
                 ["1"] = "1",
@@ -13852,10 +11780,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [72]
     {
-        ["Trigger"] = {
-            ["y"] = 3008.9,
-            ["x"] = 843.5,
-        },
         ["Qpart"] = {
             [50810] = {
                 ["1"] = "1",
@@ -13892,10 +11816,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [75]
     {
-        ["Trigger"] = {
-            ["y"] = 3054.5,
-            ["x"] = 845,
-        },
         ["Range"] = 5.63,
         ["Waypoint"] = 50675,
         ["BreadCrum"] = 50675,
@@ -13905,10 +11825,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [76]
     {
-        ["Trigger"] = {
-            ["y"] = 3067.9,
-            ["x"] = 830.7,
-        },
         ["Range"] = 6.2,
         ["Waypoint"] = 50675,
         ["BreadCrum"] = 50675,
@@ -13945,10 +11861,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3023.1,
-            ["x"] = 579.2,
-        },
         ["Fillers"] = {
             [50696] = {
                 ["1"] = "1",
@@ -13970,10 +11882,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [80]
     {
-        ["Trigger"] = {
-            ["y"] = 3002.1,
-            ["x"] = 612.7,
-        },
         ["Range"] = 22.95,
         ["Waypoint"] = 50697,
         ["TT"] = {
@@ -13996,10 +11904,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [81]
     {
-        ["Trigger"] = {
-            ["y"] = 2926.1,
-            ["x"] = 556.1,
-        },
         ["Range"] = 35.15,
         ["Waypoint"] = 50697,
         ["TT"] = {
@@ -14026,10 +11930,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [50697] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2959.6,
-            ["x"] = 455.8,
         },
         ["Fillers"] = {
             [50696] = {
@@ -14087,10 +11987,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2947.3,
-            ["x"] = 451.6,
-        },
         ["Button"] = {
             ["50696-1"] = 158226,
         },
@@ -14130,10 +12026,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3421.5,
-            ["x"] = 628.5,
-        },
         ["Range"] = 23.9,
         ["Waypoint"] = 51752,
         ["TT"] = {
@@ -14142,10 +12034,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3539.3,
-            ["x"] = 623.4,
-        },
         ["Range"] = 20.66,
         ["Waypoint"] = 51752,
         ["TT"] = {
@@ -14154,10 +12042,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3711.4,
-            ["x"] = 638.7,
-        },
         ["Qpart"] = {
             [51711] = {
                 ["1"] = "1",
@@ -14188,10 +12072,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["Text"] = "Mine Technician",
             ["Qid"] = 51881,
             ["MobId"] = 138521,
-        },
-        ["Trigger"] = {
-            ["y"] = 3807.1,
-            ["x"] = 856.9,
         },
         ["ExtraActionB"] = 1,
         ["Fillers"] = {
@@ -14225,10 +12105,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["Qid"] = 51881,
             ["MobId"] = 138521,
         },
-        ["Trigger"] = {
-            ["y"] = 3807.1,
-            ["x"] = 856.9,
-        },
         ["Range"] = 50.93,
         ["TT"] = {
             ["y"] = 3807.1,
@@ -14258,10 +12134,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3794.8,
-            ["x"] = 698.1,
-        },
         ["Waypoint"] = 51752,
         ["Range"] = 6.6,
         ["TT"] = {
@@ -14293,10 +12165,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     },
     {
         ["GroupTask"] = 52876,
-        ["Trigger"] = {
-            ["y"] = 3819.3,
-            ["x"] = 660.7,
-        },
         ["Waypoint"] = 52876,
         ["Range"] = 5.33,
         ["TT"] = {
@@ -14306,10 +12174,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     },
     {
         ["GroupTask"] = 52876,
-        ["Trigger"] = {
-            ["y"] = 3841.1,
-            ["x"] = 686.7,
-        },
         ["Waypoint"] = 52876,
         ["Range"] = 6.17,
         ["TT"] = {
@@ -14319,10 +12183,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     },
     {
         ["GroupTask"] = 52876,
-        ["Trigger"] = {
-            ["y"] = 3858.5,
-            ["x"] = 644.1,
-        },
         ["Waypoint"] = 52876,
         ["Range"] = 7.74,
         ["TT"] = {
@@ -14332,10 +12192,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     },
     {
         ["GroupTask"] = 52876,
-        ["Trigger"] = {
-            ["y"] = 3883.8,
-            ["x"] = 584.1,
-        },
         ["Waypoint"] = 52876,
         ["Range"] = 7.98,
         ["TT"] = {
@@ -14345,10 +12201,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     },
     {
         ["GroupTask"] = 52876,
-        ["Trigger"] = {
-            ["y"] = 3914.5,
-            ["x"] = 590.2,
-        },
         ["Waypoint"] = 52876,
         ["Range"] = 10.42,
         ["TT"] = {
@@ -14358,10 +12210,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     },
     {
         ["GroupTask"] = 52876,
-        ["Trigger"] = {
-            ["y"] = 3881.8,
-            ["x"] = 643.7,
-        },
         ["Qpart"] = {
             [52876] = {
                 ["1"] = "1",
@@ -14385,10 +12233,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [51720] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 3746.5,
-            ["x"] = 551.2,
         },
         ["Button"] = {
             ["51728-2"] = 160604,
@@ -14426,10 +12270,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3772.5,
-            ["x"] = 436.8,
-        },
         ["Qpart"] = {
             [51712] = {
                 ["1"] = "1",
@@ -14442,10 +12282,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3777.4,
-            ["x"] = 445.3,
-        },
         ["Qpart"] = {
             [51712] = {
                 ["3"] = "3",
@@ -14525,10 +12361,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 2,
-        ["Trigger"] = {
-            ["y"] = 3108.3,
-            ["x"] = 921.2,
-        },
         ["Fillers"] = {
             [50814] = {
                 ["1"] = "1",
@@ -14547,10 +12379,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3106.4,
-            ["x"] = 927.2,
-        },
         ["Fillers"] = {
             [50814] = {
                 ["1"] = "1",
@@ -14585,10 +12413,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [50753] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 3136.1,
-            ["x"] = 942.7,
         },
         ["Fillers"] = {
             [50814] = {
@@ -14635,10 +12459,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3212.6,
-            ["x"] = 1097.4,
-        },
         ["Fillers"] = {
             [50814] = {
                 ["1"] = "1",
@@ -14651,10 +12471,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [105]
     {
-        ["Trigger"] = {
-            ["y"] = 3211,
-            ["x"] = 1086.5,
-        },
         ["Qpart"] = {
             [50814] = {
                 ["1"] = "1",
@@ -14693,10 +12509,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3476.5,
-            ["x"] = 1148.5,
-        },
         ["Fillers"] = {
             [51339] = {
                 ["1"] = "1",
@@ -14716,10 +12528,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [51343] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 3676.1,
-            ["x"] = 1137.4,
         },
         ["Fillers"] = {
             [51339] = {
@@ -14741,10 +12549,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3784.1,
-            ["x"] = 1396.3,
-        },
         ["Fillers"] = {
             [51339] = {
                 ["1"] = "1",
@@ -14761,10 +12565,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [111]
     {
-        ["Trigger"] = {
-            ["y"] = 3784.8,
-            ["x"] = 1396.5,
-        },
         ["Qpart"] = {
             [51339] = {
                 ["1"] = "1",
@@ -14801,10 +12601,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [114]
     {
-        ["Trigger"] = {
-            ["y"] = 3752.1,
-            ["x"] = 1071.7,
-        },
         ["Waypoint"] = 51353,
         ["Range"] = 7.29,
         ["TT"] = {
@@ -14813,10 +12609,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [115]
     {
-        ["Trigger"] = {
-            ["y"] = 3924,
-            ["x"] = 1227.5,
-        },
         ["Range"] = 13.14,
         ["Waypoint"] = 51353,
         ["TT"] = {
@@ -14844,10 +12636,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3934.9,
-            ["x"] = 1215.2,
-        },
         ["Range"] = 15.55,
         ["Waypoint"] = 51221,
         ["TT"] = {
@@ -14861,10 +12649,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3979.8,
-            ["x"] = 1197,
-        },
         ["Range"] = 13.44,
         ["Waypoint"] = 51221,
         ["TT"] = {
@@ -14882,10 +12666,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [51221] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 4044.4,
-            ["x"] = 1251.5,
         },
         ["Fillers"] = {
             [51371] = {
@@ -14913,10 +12693,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4084.3,
-            ["x"] = 1197.3,
-        },
         ["Qpart"] = {
             [51540] = {
                 ["1"] = "1",
@@ -14932,10 +12708,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3929.5,
-            ["x"] = 1225.8,
-        },
         ["Waypoint"] = 51371,
         ["Range"] = 22.37,
         ["TT"] = {
@@ -14965,10 +12737,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = 3988.3,
-            ["x"] = 1315.5,
-        },
         ["Qpart"] = {
             [51427] = {
                 ["1"] = "1",
@@ -15000,10 +12768,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [14]
     {
-        ["Trigger"] = {
-            ["y"] = 3941.5,
-            ["x"] = 1217,
-        },
         ["Range"] = 14.07,
         ["Waypoint"] = 51545,
         ["TT"] = {
@@ -15012,10 +12776,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4057.3,
-            ["x"] = 1220.5,
-        },
         ["Range"] = 18.92,
         ["Waypoint"] = 51545,
         ["TT"] = {
@@ -15029,10 +12789,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 4112,
-            ["x"] = 1335,
-        },
         ["ExtraActionB"] = 1,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -15041,10 +12797,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4057.3,
-            ["x"] = 1220.5,
-        },
         ["Range"] = 18.92,
         ["Waypoint"] = 51545,
         ["TT"] = {
@@ -15053,10 +12805,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3941.5,
-            ["x"] = 1217,
-        },
         ["Range"] = 14.07,
         ["Waypoint"] = 51545,
         ["TT"] = {
@@ -15074,10 +12822,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3941.5,
-            ["x"] = 1217,
-        },
         ["Range"] = 14.07,
         ["Waypoint"] = 51220,
         ["TT"] = {
@@ -15086,10 +12830,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4200.2,
-            ["x"] = 1278.9,
-        },
         ["Qpart"] = {
             [51220] = {
                 ["1"] = "1",
@@ -15124,10 +12864,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4181.8,
-            ["x"] = 1392.7,
-        },
         ["Qpart"] = {
             [51386] = {
                 ["1"] = "1",
@@ -15140,10 +12876,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4207.5,
-            ["x"] = 1349.4,
-        },
         ["Qpart"] = {
             [51386] = {
                 ["2"] = "2",
@@ -15234,10 +12966,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3013.1,
-            ["x"] = 1256,
-        },
         ["ExtraActionB"] = 1,
         ["Range"] = 12.88,
         ["TT"] = {
@@ -15270,10 +12998,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3089.4,
-            ["x"] = 1344.8,
-        },
         ["Fillers"] = {
             [52132] = {
                 ["1"] = "1",
@@ -15293,10 +13017,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3118.6,
-            ["x"] = 1197.5,
-        },
         ["Fillers"] = {
             [52132] = {
                 ["1"] = "1",
@@ -15315,10 +13035,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3099.5,
-            ["x"] = 1236,
-        },
         ["ExtraActionB"] = 1,
         ["Range"] = 16.9,
         ["TT"] = {
@@ -15333,10 +13049,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2948.4,
-            ["x"] = 1143.7,
-        },
         ["Fillers"] = {
             [50803] = {
                 ["1"] = "1",
@@ -15354,10 +13066,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["4"] = "4",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3037.3,
-            ["x"] = 1304.2,
-        },
         ["Fillers"] = {
             [50803] = {
                 ["1"] = "1",
@@ -15370,10 +13078,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3010.6,
-            ["x"] = 1166,
-        },
         ["Qpart"] = {
             [50803] = {
                 ["1"] = "1",
@@ -15405,10 +13109,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3102.4,
-            ["x"] = 923,
-        },
         ["Range"] = 13.44,
         ["Waypoint"] = 50742,
         ["TT"] = {
@@ -15426,10 +13126,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2608.1,
-            ["x"] = 933.5,
-        },
         ["Range"] = 15.05,
         ["Waypoint"] = 50354,
         ["TT"] = {
@@ -15477,10 +13173,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [50353] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2438.5,
-            ["x"] = 722.7,
         },
         ["DroppableQuest"] = {
             ["Text"] = "Packmaster",
@@ -15530,10 +13222,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
 
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2441,
-            ["x"] = 726.2,
-        },
         ["Button"] = {
             ["50354-1"] = 156516,
         },
@@ -15555,10 +13243,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     }, -- [51]
     {
         ["GroupTask"] = 49730,
-        ["Trigger"] = {
-            ["y"] = 2420.1,
-            ["x"] = 1018.5,
-        },
         ["Qpart"] = {
             [49730] = {
                 ["1"] = "1",
@@ -15571,10 +13255,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = 2351,
-            ["x"] = 731.4,
-        },
         ["Range"] = 14.69,
         ["Waypoint"] = 50354,
         ["TT"] = {
@@ -15593,10 +13273,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [52]
     {
-        ["Trigger"] = {
-            ["y"] = 2349.3,
-            ["x"] = 709.7,
-        },
         ["Range"] = 10.67,
         ["Waypoint"] = 50354,
         ["TT"] = {
@@ -15656,10 +13332,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2304.6,
-            ["x"] = 723.9,
-        },
         ["Range"] = 10.26,
         ["Waypoint"] = 50363,
         ["TT"] = {
@@ -15703,10 +13375,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [57]
     {
-        ["Trigger"] = {
-            ["y"] = 2246.4,
-            ["x"] = 699.9,
-        },
         ["Range"] = 5.42,
         ["Waypoint"] = 50340,
         ["TT"] = {
@@ -15728,10 +13396,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [58]
     {
-        ["Trigger"] = {
-            ["y"] = 2251.5,
-            ["x"] = 672.9,
-        },
         ["Range"] = 8.42,
         ["Waypoint"] = 50340,
         ["TT"] = {
@@ -15758,10 +13422,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2242.8,
-            ["x"] = 649.2,
-        },
         ["Range"] = 0.75,
         ["TrigText"] = "1/5",
         ["TT"] = {
@@ -15783,10 +13443,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [60]
     {
-        ["Trigger"] = {
-            ["y"] = 2247.1,
-            ["x"] = 719.1,
-        },
         ["Range"] = 6.45,
         ["Waypoint"] = 50340,
         ["TT"] = {
@@ -15808,10 +13464,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [61]
     {
-        ["Trigger"] = {
-            ["y"] = 2254.1,
-            ["x"] = 746.1,
-        },
         ["Range"] = 10.19,
         ["Waypoint"] = 50365,
         ["TT"] = {
@@ -15833,10 +13485,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [62]
     {
-        ["Trigger"] = {
-            ["y"] = 2249.1,
-            ["x"] = 782.6,
-        },
         ["Range"] = 8.8,
         ["Waypoint"] = 50365,
         ["TT"] = {
@@ -15858,10 +13506,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [63]
     {
-        ["Trigger"] = {
-            ["y"] = 2236.8,
-            ["x"] = 797.4,
-        },
         ["Range"] = 12.37,
         ["Waypoint"] = 50365,
         ["TT"] = {
@@ -15883,10 +13527,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [64]
     {
-        ["Trigger"] = {
-            ["y"] = 2181.6,
-            ["x"] = 805.9,
-        },
         ["QpartPart"] = {
             [50340] = {
                 ["1"] = "1",
@@ -15923,10 +13563,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["MobId"] = 134141,
             ["Qid"] = 50367,
         },
-        ["Trigger"] = {
-            ["y"] = 2170.6,
-            ["x"] = 804.7,
-        },
         ["Fillers"] = {
             [50367] = {
                 ["1"] = "1",
@@ -15942,10 +13578,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [66]
     {
-        ["Trigger"] = {
-            ["y"] = 2240.3,
-            ["x"] = 794.2,
-        },
         ["Range"] = 12.22,
         ["Waypoint"] = 50365,
         ["TT"] = {
@@ -15962,10 +13594,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [67]
     {
-        ["Trigger"] = {
-            ["y"] = 2252.5,
-            ["x"] = 746.6,
-        },
         ["Range"] = 13.81,
         ["Waypoint"] = 50365,
         ["TT"] = {
@@ -15982,10 +13610,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [68]
     {
-        ["Trigger"] = {
-            ["y"] = 2226.3,
-            ["x"] = 745.7,
-        },
         ["Range"] = 13.41,
         ["Waypoint"] = 50365,
         ["TT"] = {
@@ -16002,10 +13626,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [69]
     {
-        ["Trigger"] = {
-            ["y"] = 2206.9,
-            ["x"] = 716.6,
-        },
         ["Range"] = 13.38,
         ["Waypoint"] = 50365,
         ["TT"] = {
@@ -16040,10 +13660,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["Qid"] = 50367,
             ["MobId"] = 134141,
         },
-        ["Trigger"] = {
-            ["y"] = 2189.1,
-            ["x"] = 705.6,
-        },
         ["Range"] = 0.69,
         ["TrigText"] = "3/5",
         ["TT"] = {
@@ -16062,10 +13678,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["Qid"] = 50367,
             ["MobId"] = 134141,
         },
-        ["Trigger"] = {
-            ["y"] = 2147.3,
-            ["x"] = 681.7,
-        },
         ["Fillers"] = {
             [50367] = {
                 ["1"] = "1",
@@ -16081,10 +13693,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [72]
     {
-        ["Trigger"] = {
-            ["y"] = 2209.4,
-            ["x"] = 719.7,
-        },
         ["Waypoint"] = 50340,
         ["Range"] = 14.18,
         ["TT"] = {
@@ -16101,10 +13709,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [73]
     {
-        ["Trigger"] = {
-            ["y"] = 2207,
-            ["x"] = 752.7,
-        },
         ["Waypoint"] = 50340,
         ["Range"] = 14.15,
         ["TT"] = {
@@ -16121,10 +13725,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [74]
     {
-        ["Trigger"] = {
-            ["y"] = 2141.9,
-            ["x"] = 714.5,
-        },
         ["QpartPart"] = {
             [50340] = {
                 ["1"] = "1",
@@ -16151,10 +13751,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [75]
     {
-        ["Trigger"] = {
-            ["y"] = 2203.6,
-            ["x"] = 757.6,
-        },
         ["Range"] = 14.06,
         ["Waypoint"] = 50340,
         ["TT"] = {
@@ -16171,10 +13767,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [76]
     {
-        ["Trigger"] = {
-            ["y"] = 2185.9,
-            ["x"] = 793.2,
-        },
         ["Range"] = 12.84,
         ["Waypoint"] = 50340,
         ["TT"] = {
@@ -16191,10 +13783,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [77]
     {
-        ["Trigger"] = {
-            ["y"] = 2193.6,
-            ["x"] = 868,
-        },
         ["Range"] = 14.03,
         ["Waypoint"] = 50340,
         ["TT"] = {
@@ -16221,10 +13809,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["Qid"] = 50367,
             ["MobId"] = 134141,
         },
-        ["Trigger"] = {
-            ["y"] = 2174.8,
-            ["x"] = 894.2,
-        },
         ["Fillers"] = {
             [50367] = {
                 ["1"] = "1",
@@ -16249,10 +13833,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["Text"] = "Packmaster",
             ["Qid"] = 50367,
             ["MobId"] = 134141,
-        },
-        ["Trigger"] = {
-            ["y"] = 2166,
-            ["x"] = 929.2,
         },
         ["Fillers"] = {
             [50367] = {
@@ -16282,10 +13862,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["Qid"] = 50367,
             ["MobId"] = 134141,
         },
-        ["Trigger"] = {
-            ["y"] = 2193,
-            ["x"] = 868.1,
-        },
         ["Range"] = 18.04,
         ["TT"] = {
             ["y"] = 2193,
@@ -16314,10 +13890,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [83]
     {
-        ["Trigger"] = {
-            ["y"] = 2343.4,
-            ["x"] = 746.6,
-        },
         ["Waypoint"] = 50368,
         ["Range"] = 8.39,
         ["TT"] = {
@@ -16326,10 +13898,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [84]
     {
-        ["Trigger"] = {
-            ["y"] = 2305.5,
-            ["x"] = 786.9,
-        },
         ["Waypoint"] = 50368,
         ["Range"] = 6.4,
         ["TT"] = {
@@ -16338,10 +13906,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [85]
     {
-        ["Trigger"] = {
-            ["y"] = 2260.6,
-            ["x"] = 841.5,
-        },
         ["Waypoint"] = 50368,
         ["Range"] = 6.62,
         ["TT"] = {
@@ -16354,10 +13918,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [50368] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2308.1,
-            ["x"] = 905.2,
         },
         ["Button"] = {
             ["50368-1"] = 155824,
@@ -16387,10 +13947,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [89]
     {
-        ["Trigger"] = {
-            ["y"] = 2289.8,
-            ["x"] = 797.2,
-        },
         ["Qpart"] = {
             [50640] = {
                 ["1"] = "1",
@@ -16447,10 +14003,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [95]
     {
-        ["Trigger"] = {
-            ["y"] = 2647.1,
-            ["x"] = 1597.5,
-        },
         ["GetFP"] = 2137,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -16496,10 +14048,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [99]
     {
-        ["Trigger"] = {
-            ["y"] = 2605.8,
-            ["x"] = 1604,
-        },
         ["Qpart"] = {
             [51214] = {
                 ["1"] = "1",
@@ -16512,10 +14060,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [100]
     {
-        ["Trigger"] = {
-            ["y"] = 2625.8,
-            ["x"] = 1651.8,
-        },
         ["Qpart"] = {
             [51214] = {
                 ["3"] = "3",
@@ -16558,10 +14102,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["Button"] = {
             ["51205-1"] = 159882,
         },
-        ["Trigger"] = {
-            ["y"] = 2528.6,
-            ["x"] = 1683,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 2528.6,
@@ -16582,10 +14122,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Button"] = {
             ["51205-1"] = 159882,
-        },
-        ["Trigger"] = {
-            ["y"] = 2528.6,
-            ["x"] = 1683,
         },
         ["Range"] = 120.69,
         ["TT"] = {
@@ -16646,10 +14182,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2312.1,
-            ["x"] = 1837.5,
-        },
         ["Button"] = {
             ["51215-1"] = 159782,
         },
@@ -16674,10 +14206,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2210.6,
-            ["x"] = 1753.5,
-        },
         ["Button"] = {
             ["51215-1"] = 159782,
         },
@@ -16695,10 +14223,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [51215] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2314.6,
-            ["x"] = 1835,
         },
         ["Button"] = {
             ["51215-1"] = 159782,
@@ -16738,10 +14262,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2631.8,
-            ["x"] = 1620.5,
-        },
         ["Qpart"] = {
             [51335] = {
                 ["1"] = "1",
@@ -16754,10 +14274,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2642,
-            ["x"] = 1618.5,
-        },
         ["Qpart"] = {
             [51335] = {
                 ["3"] = "3",
@@ -16790,10 +14306,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = 2515,
-            ["x"] = 1429.8,
-        },
         ["Waypoint"] = 51207,
         ["Range"] = 13.02,
         ["TT"] = {
@@ -16847,10 +14359,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2313.3,
-            ["x"] = 1182.9,
-        },
         ["Waypoint"] = 51209,
         ["Range"] = 28.09,
         ["TT"] = {
@@ -16884,10 +14392,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2480.1,
-            ["x"] = 1162,
-        },
         ["Button"] = {
             ["51207-1"] = 160052,
             ["51209-1"] = 160063,
@@ -16914,10 +14418,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [51208] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2468,
-            ["x"] = 1158.8,
         },
         ["Button"] = {
             ["51207-1"] = 160052,
@@ -16966,10 +14466,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2802.5,
-            ["x"] = 1767.8,
-        },
         ["Fillers"] = {
             [50621] = {
                 ["1"] = "1",
@@ -16990,10 +14486,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2803.9,
-            ["x"] = 1771,
-        },
         ["Fillers"] = {
             [50621] = {
                 ["1"] = "1",
@@ -17009,10 +14501,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2809.9,
-            ["x"] = 1767.9,
-        },
         ["Qpart"] = {
             [50621] = {
                 ["1"] = "1",
@@ -17048,10 +14536,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3278.6,
-            ["x"] = 1351,
-        },
         ["Waypoint"] = 50635,
         ["Range"] = 12.13,
         ["TT"] = {
@@ -17060,10 +14544,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 3374.9,
-            ["x"] = 1397.5,
-        },
         ["GetFP"] = 2138,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -17101,10 +14581,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [14]
     {
-        ["Trigger"] = {
-            ["y"] = 3475.5,
-            ["x"] = 1417.2,
-        },
         ["Qpart"] = {
             [50645] = {
                 ["1"] = "1",
@@ -17172,10 +14648,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3359.1,
-            ["x"] = 1356.9,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 3359.1,
@@ -17192,10 +14664,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3322.5,
-            ["x"] = 1490.4,
-        },
         ["Waypoint"] = 50672,
         ["Range"] = 11.8,
         ["TT"] = {
@@ -17204,10 +14672,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3306.1,
-            ["x"] = 1505.4,
-        },
         ["Qpart"] = {
             [50672] = {
                 ["1"] = "1",
@@ -17247,10 +14711,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3298.3,
-            ["x"] = 1475.5,
-        },
         ["Range"] = 9.45,
         ["Waypoint"] = 50706,
         ["TT"] = {
@@ -17259,10 +14719,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3260.1,
-            ["x"] = 1493.7,
-        },
         ["Range"] = 12.45,
         ["Waypoint"] = 50706,
         ["TT"] = {
@@ -17275,10 +14731,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             [50705] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 3125.1,
-            ["x"] = 1491.7,
         },
         ["Fillers"] = {
             [50706] = {
@@ -17300,10 +14752,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3081.9,
-            ["x"] = 1518.8,
-        },
         ["Fillers"] = {
             [50706] = {
                 ["1"] = "1",
@@ -17324,10 +14772,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3046.4,
-            ["x"] = 1490,
-        },
         ["Fillers"] = {
             [50706] = {
                 ["1"] = "1",
@@ -17343,10 +14787,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3049,
-            ["x"] = 1498.7,
-        },
         ["Qpart"] = {
             [50706] = {
                 ["1"] = "1",
@@ -17359,10 +14799,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 2972.1,
-            ["x"] = 1434,
-        },
         ["Range"] = 11.09,
         ["Waypoint"] = 50706,
         ["TT"] = {
@@ -17371,10 +14807,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3028,
-            ["x"] = 1403.4,
-        },
         ["Range"] = 16.24,
         ["Waypoint"] = 50706,
         ["TT"] = {
@@ -17402,10 +14834,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3086.1,
-            ["x"] = 1406.9,
-        },
         ["Qpart"] = {
             [49831] = {
                 ["1"] = "1",
@@ -17471,10 +14899,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3071.9,
-            ["x"] = 1867.5,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 3071.9,
@@ -17482,10 +14906,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3073.8,
-            ["x"] = 1868,
-        },
         ["Qpart"] = {
             [50376] = {
                 ["2"] = "2",
@@ -17498,10 +14918,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3165.6,
-            ["x"] = 1849.5,
-        },
         ["Qpart"] = {
             [50376] = {
                 ["3"] = "3",
@@ -17538,10 +14954,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3074.5,
-            ["x"] = 1871.2,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 3074.5,
@@ -17549,10 +14961,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3074.8,
-            ["x"] = 1873.3,
-        },
         ["Qpart"] = {
             [50391] = {
                 ["2"] = "2",
@@ -17565,10 +14973,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 3074.8,
-            ["x"] = 1873.3,
-        },
         ["Qpart"] = {
             [50391] = {
                 ["3"] = "3",
@@ -17582,10 +14986,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = 3087.1,
-            ["x"] = 1892.9,
-        },
         ["Qpart"] = {
             [50391] = {
                 ["5"] = "5",
@@ -17598,10 +14998,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = 3104.4,
-            ["x"] = 1866.3,
-        },
         ["Qpart"] = {
             [50391] = {
                 ["6"] = "6",
@@ -17638,10 +15034,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3072.5,
-            ["x"] = 1875.8,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 3072.5,
@@ -17649,10 +15041,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3077.1,
-            ["x"] = 1870,
-        },
         ["Qpart"] = {
             [50418] = {
                 ["2"] = "2",
@@ -17665,10 +15053,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3162.6,
-            ["x"] = 1894,
-        },
         ["Qpart"] = {
             [50418] = {
                 ["3"] = "3",
@@ -17681,10 +15065,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3340.3,
-            ["x"] = 1899.3,
-        },
         ["Qpart"] = {
             [50418] = {
                 ["6"] = "6",
@@ -17698,10 +15078,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3413.3,
-            ["x"] = 2012.3,
-        },
         ["Qpart"] = {
             [50418] = {
                 ["7"] = "7",
@@ -17715,10 +15091,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3260.9,
-            ["x"] = 2051.6,
-        },
         ["Qpart"] = {
             [50418] = {
                 ["5"] = "5",
@@ -17732,10 +15104,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3273.6,
-            ["x"] = 2050.6,
-        },
         ["Qpart"] = {
             [50418] = {
                 ["4"] = "4",
@@ -17772,10 +15140,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3072.1,
-            ["x"] = 1871,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 3072.1,
@@ -17783,10 +15147,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3109.1,
-            ["x"] = 1922.3,
-        },
         ["Qpart"] = {
             [52130] = {
                 ["3"] = "3",
@@ -17799,10 +15159,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3164.8,
-            ["x"] = 1849,
-        },
         ["Qpart"] = {
             [52130] = {
                 ["2"] = "2",
@@ -17815,10 +15171,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3097.9,
-            ["x"] = 1853.7,
-        },
         ["Qpart"] = {
             [52130] = {
                 ["4"] = "4",
@@ -17831,10 +15183,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 3096,
-            ["x"] = 1861.9,
-        },
         ["Qpart"] = {
             [52130] = {
                 ["5"] = "5",
@@ -17888,10 +15236,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
 -- Dustvar
 APR.RouteQuestStepList["A896-Dustvar"] = {
     {
-        ["Trigger"] = {
-            ["y"] = -170,
-            ["x"] = 1859.8,
-        },
         ["Waypoint"] = 48622,
         ["Range"] = 13.34,
         ["TT"] = {
@@ -17900,10 +15244,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -162.2,
-            ["x"] = 1877.4,
-        },
         ["Waypoint"] = 48622,
         ["Range"] = 7.43,
         ["TT"] = {
@@ -17912,10 +15252,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -131.5,
-            ["x"] = 1888.4,
-        },
         ["Waypoint"] = 48622,
         ["Range"] = 8.42,
         ["TT"] = {
@@ -17924,10 +15260,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -83.6,
-            ["x"] = 1933,
-        },
         ["Waypoint"] = 48622,
         ["Range"] = 17.82,
         ["TT"] = {
@@ -17942,10 +15274,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -84.9,
-            ["x"] = 2083.3,
-        },
         ["Range"] = 4.04,
         ["TT"] = {
             ["y"] = -84.9,
@@ -17953,10 +15281,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -77.3,
-            ["x"] = 2099.1,
-        },
         ["Qpart"] = {
             [48622] = {
                 [3] = 1,
@@ -17993,10 +15317,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 [2] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = -100.1,
-            ["x"] = 1980.8,
-        },
         ["Fillers"] = {
             [47969] = {
                 1,
@@ -18010,10 +15330,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["Waypoint"] = 47968,
-        ["Trigger"] = {
-            ["y"] = -95.3,
-            ["x"] = 2133.6,
-        },
         ["Range"] = 5.95,
         ["TT"] = {
             ["y"] = -91.3,
@@ -18031,10 +15347,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 [3] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = -110.5,
-            ["x"] = 2136.6,
-        },
         ["Fillers"] = {
             [47969] = {
                 1,
@@ -18048,10 +15360,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["Waypoint"] = 47968,
-        ["Trigger"] = {
-            ["y"] = -91.8,
-            ["x"] = 2134.1,
-        },
         ["Range"] = 3.73,
         ["TT"] = {
             ["y"] = -91.8,
@@ -18068,10 +15376,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             [47968] = {
                 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -79.6,
-            ["x"] = 2251.3,
         },
         ["Fillers"] = {
             [47969] = {
@@ -18114,10 +15418,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [11]
     {
         ["Waypoint"] = 47978,
-        ["Trigger"] = {
-            ["y"] = 0.2,
-            ["x"] = 2035,
-        },
         ["Range"] = 5.78,
         ["TT"] = {
             ["y"] = 0.2,
@@ -18131,10 +15431,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [12]
     {
         ["Waypoint"] = 47978,
-        ["Trigger"] = {
-            ["y"] = 23.1,
-            ["x"] = 2020.5,
-        },
         ["Range"] = 5.09,
         ["TT"] = {
             ["y"] = 23.1,
@@ -18148,10 +15444,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [13]
     {
         ["Waypoint"] = 47978,
-        ["Trigger"] = {
-            ["y"] = 65,
-            ["x"] = 1826,
-        },
         ["Range"] = 7.07,
         ["TT"] = {
             ["y"] = 65,
@@ -18182,10 +15474,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 57.5,
-            ["x"] = 1834.7,
-        },
         ["Qpart"] = {
             [47979] = {
                 1,
@@ -18222,10 +15510,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["TrigText"] = "1/4",
-        ["Trigger"] = {
-            ["y"] = 180.3,
-            ["x"] = 1887.9,
-        },
         ["Fillers"] = {
             [47980] = {
                 ["1"] = "1",
@@ -18242,10 +15526,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             [47979] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 187.8,
-            ["x"] = 1986.9,
         },
         ["Fillers"] = {
             [47980] = {
@@ -18265,10 +15545,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["TrigText"] = "2/4",
-        ["Trigger"] = {
-            ["y"] = 201.9,
-            ["x"] = 1995.8,
-        },
         ["Fillers"] = {
             [47980] = {
                 ["1"] = "1",
@@ -18287,10 +15563,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["TrigText"] = "3/4",
-        ["Trigger"] = {
-            ["y"] = 115.5,
-            ["x"] = 2002.9,
-        },
         ["Fillers"] = {
             [47980] = {
                 ["1"] = "1",
@@ -18309,10 +15581,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["TrigText"] = "4/4",
-        ["Trigger"] = {
-            ["y"] = 151,
-            ["x"] = 2081,
-        },
         ["Fillers"] = {
             [47980] = {
                 ["1"] = "1",
@@ -18325,10 +15593,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 151,
-            ["x"] = 2081,
-        },
         ["Qpart"] = {
             [47980] = {
                 ["1"] = "1",
@@ -18369,10 +15633,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -76.5,
-            ["x"] = 2098.4,
-        },
         ["Qpart"] = {
             [47982] = {
                 1,
@@ -18385,10 +15645,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -76.1,
-            ["x"] = 2096.4,
-        },
         ["Qpart"] = {
             [47982] = {
                 [2] = 1,
@@ -18439,10 +15695,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["GroupTask"] = 51547,
-        ["Trigger"] = {
-            ["y"] = 17.2,
-            ["x"] = 2203.1,
-        },
         ["Waypoint"] = 51547,
         ["Range"] = 18.86,
         ["TT"] = {
@@ -18452,10 +15704,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["GroupTask"] = 51547,
-        ["Trigger"] = {
-            ["y"] = 241.4,
-            ["x"] = 2322.1,
-        },
         ["Qpart"] = {
             [51547] = {
                 ["1"] = "1",
@@ -18469,10 +15717,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["GroupTask"] = 51547,
-        ["Trigger"] = {
-            ["y"] = -10,
-            ["x"] = 2190.4,
-        },
         ["Waypoint"] = 51547,
         ["Range"] = 32.88,
         ["TT"] = {
@@ -18482,10 +15726,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["GroupTask"] = 51547,
-        ["Trigger"] = {
-            ["y"] = -59.5,
-            ["x"] = 2138.6,
-        },
         ["Waypoint"] = 51547,
         ["Range"] = 25.13,
         ["TT"] = {
@@ -18530,10 +15770,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -5.1,
-            ["x"] = 2037.7,
-        },
         ["Waypoint"] = 47945,
         ["Range"] = 17.43,
         ["TT"] = {
@@ -18547,10 +15783,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 18.3,
-            ["x"] = 2024.7,
-        },
         ["Waypoint"] = 47945,
         ["Range"] = 12.94,
         ["TT"] = {
@@ -18564,10 +15796,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 49.9,
-            ["x"] = 1916.9,
-        },
         ["Waypoint"] = 47945,
         ["Range"] = 14.21,
         ["TT"] = {
@@ -18606,10 +15834,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 182.4,
-            ["x"] = 1619.9,
-        },
         ["Fillers"] = {
             [47947] = {
                 ["1"] = "1",
@@ -18627,10 +15851,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 144.1,
-            ["x"] = 1654.3,
-        },
         ["Fillers"] = {
             [47947] = {
                 ["1"] = "1",
@@ -18643,10 +15863,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 110.7,
-            ["x"] = 1660.3,
-        },
         ["Waypoint"] = 47947,
         ["Range"] = 8.08,
         ["TT"] = {
@@ -18679,10 +15895,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 76.9,
-            ["x"] = 1642.3,
-        },
         ["Fillers"] = {
             [47947] = {
                 ["1"] = "1",
@@ -18699,10 +15911,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             [47946] = {
                 ["4"] = "4",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 59.4,
-            ["x"] = 1629.3,
         },
         ["Fillers"] = {
             [47947] = {
@@ -18721,10 +15929,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 110.5,
-            ["x"] = 1592.4,
-        },
         ["Fillers"] = {
             [47947] = {
                 ["1"] = "1",
@@ -18737,10 +15941,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 109.8,
-            ["x"] = 1593,
-        },
         ["Qpart"] = {
             [47947] = {
                 ["1"] = "1",
@@ -18782,10 +15982,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         ["Button"] = {
             ["47950-1"] = 153432,
         },
-        ["Trigger"] = {
-            ["y"] = 230.3,
-            ["x"] = 1673.5,
-        },
         ["Range"] = 6.01,
         ["TT"] = {
             ["y"] = 230.3,
@@ -18804,10 +16000,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     -------------- Northeast part
     {
         ["QuestLineSkip"] = 48677,
-        ["Trigger"] = {
-            ["y"] = 318.1,
-            ["x"] = 1670.3,
-        },
         ["Waypoint"] = 48677,
         ["Range"] = 13.52,
         ["TT"] = {
@@ -18847,10 +16039,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Trigger"] = {
-            ["y"] = 423.8,
-            ["x"] = 1870.8,
-        },
         ["Qpart"] = {
             [48678] = {
                 1,
@@ -18864,10 +16052,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Trigger"] = {
-            ["y"] = 427.1,
-            ["x"] = 1895.4,
-        },
         ["Qpart"] = {
             [48678] = {
                 [2] = 1,
@@ -18901,10 +16085,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Trigger"] = {
-            ["y"] = 565.2,
-            ["x"] = 1823,
-        },
         ["Range"] = 7.45,
         ["Waypoint"] = 48679,
         ["TT"] = {
@@ -18919,10 +16099,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Trigger"] = {
-            ["y"] = 600.2,
-            ["x"] = 1829.8,
-        },
         ["Qpart"] = {
             [48679] = {
                 1,
@@ -18941,10 +16117,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Trigger"] = {
-            ["y"] = 599.2,
-            ["x"] = 1829.2,
-        },
         ["Qpart"] = {
             [48679] = {
                 [2] = 1,
@@ -18963,10 +16135,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Trigger"] = {
-            ["y"] = 562.2,
-            ["x"] = 1823.4,
-        },
         ["Qpart"] = {
             [48680] = {
                 1,
@@ -19000,10 +16168,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Trigger"] = {
-            ["y"] = 345.3,
-            ["x"] = 2062,
-        },
         ["Qpart"] = {
             [48682] = {
                 1,
@@ -19027,10 +16191,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Trigger"] = {
-            ["y"] = 419.3,
-            ["x"] = 1903.7,
-        },
         ["Qpart"] = {
             [48683] = {
                 1,
@@ -19044,10 +16204,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Trigger"] = {
-            ["y"] = 423.7,
-            ["x"] = 1903.8,
-        },
         ["Qpart"] = {
             [48683] = {
                 [2] = 1,
@@ -19079,10 +16235,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     -------------------------
     {
-        ["Trigger"] = {
-            ["y"] = -132.7,
-            ["x"] = 2172.8,
-        },
         ["Range"] = 7.45,
         ["Waypoint"] = 47289,
         ["TT"] = {
@@ -19110,10 +16262,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = -410.8,
-            ["x"] = 1762.9,
-        },
         ["Fillers"] = {
             [48474] = {
                 1,
@@ -19127,10 +16275,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48475,
-        ["Trigger"] = {
-            ["y"] = -488.3,
-            ["x"] = 1862.2,
-        },
         ["Qpart"] = {
             [48475] = {
                 [2] = 1,
@@ -19149,10 +16293,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48475,
-        ["Trigger"] = {
-            ["y"] = -516.8,
-            ["x"] = 1819.5,
-        },
         ["Qpart"] = {
             [48475] = {
                 [3] = 1,
@@ -19191,10 +16331,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48475,
-        ["Trigger"] = {
-            ["y"] = -589,
-            ["x"] = 1842,
-        },
         ["Qpart"] = {
             [48476] = {
                 1,
@@ -19213,10 +16349,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48475,
-        ["Trigger"] = {
-            ["y"] = -649.8,
-            ["x"] = 1840.9,
-        },
         ["Qpart"] = {
             [48474] = {
                 1,
@@ -19250,10 +16382,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48475,
-        ["Trigger"] = {
-            ["y"] = -673,
-            ["x"] = 1926.9,
-        },
         ["Qpart"] = {
             [48477] = {
                 1,
@@ -19306,10 +16434,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -374.5,
-            ["x"] = 1286.2,
-        },
         ["Range"] = 2.66,
         ["TT"] = {
             ["y"] = -374.5,
@@ -19318,10 +16442,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["ExtraLineText"] = "GET_FLIGHTPATH",
-        ["Trigger"] = {
-            ["y"] = -298,
-            ["x"] = 1228.7,
-        },
         ["Waypoint"] = 48283,
         ["Range"] = 3.15,
         ["TT"] = {
@@ -19349,10 +16469,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -413.3,
-            ["x"] = 1357,
-        },
         ["Qpart"] = {
             [48110] = {
                 ["1"] = 1,
@@ -19394,10 +16510,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -373.7,
-            ["x"] = 1285.8,
-        },
         ["Range"] = 5.88,
         ["TT"] = {
             ["y"] = -373.7,
@@ -19425,10 +16537,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -411.4,
-            ["x"] = 1315.4,
-        },
         ["Qpart"] = {
             [48170] = {
                 ["1"] = 1,
@@ -19450,10 +16558,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [48]
     {
-        ["Trigger"] = {
-            ["y"] = -349.7,
-            ["x"] = 1481,
-        },
         ["Qpart"] = {
             [48113] = {
                 ["1"] = 1,
@@ -19478,10 +16582,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [50]
     {
-        ["Trigger"] = {
-            ["y"] = -281.8,
-            ["x"] = 1461,
-        },
         ["Qpart"] = {
             [48165] = {
                 ["1"] = 1,
@@ -19524,10 +16624,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Gossip"] = 98,
         ["GossipETA"] = 53,
-        ["Trigger"] = {
-            ["y"] = -377.4,
-            ["x"] = 1283.2,
-        },
         ["Range"] = 2.01,
         ["TT"] = {
             ["y"] = -377.4,
@@ -19536,10 +16632,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["GossipETA"] = 38,
-        ["Trigger"] = {
-            ["y"] = -373.3,
-            ["x"] = 1284.5,
-        },
         ["Qpart"] = {
             [48198] = {
                 ["2"] = 1,
@@ -19553,10 +16645,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["GossipETA"] = 43,
-        ["Trigger"] = {
-            ["y"] = -373.4,
-            ["x"] = 1284.4,
-        },
         ["Qpart"] = {
             [48198] = {
                 ["3"] = 1,
@@ -19570,10 +16658,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [56]
     {
         ["GossipETA"] = 40,
-        ["Trigger"] = {
-            ["y"] = -373.2,
-            ["x"] = 1284.2,
-        },
         ["Qpart"] = {
             [48198] = {
                 ["4"] = 1,
@@ -19604,10 +16688,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [59]
     {
-        ["Trigger"] = {
-            ["y"] = -509.4,
-            ["x"] = 1395.9,
-        },
         ["Range"] = 10.25,
         ["Waypoint"] = 48171,
         ["TT"] = {
@@ -19616,10 +16696,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [60]
     {
-        ["Trigger"] = {
-            ["y"] = -579.2,
-            ["x"] = 1379.3,
-        },
         ["Range"] = 10.65,
         ["Waypoint"] = 48171,
         ["TT"] = {
@@ -19674,10 +16750,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [64]
     {
         ["QuestLineSkip"] = 48880,
-        ["Trigger"] = {
-            ["y"] = -733.5,
-            ["x"] = 1223.5,
-        },
         ["Qpart"] = {
             [48881] = {
                 ["1"] = 1,
@@ -19722,10 +16794,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [67]
     {
         ["QuestLineSkip"] = 48880,
-        ["Trigger"] = {
-            ["y"] = -616,
-            ["x"] = 1205,
-        },
         ["Qpart"] = {
             [48883] = {
                 ["1"] = 1,
@@ -19767,10 +16835,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [71]
     {
-        ["Trigger"] = {
-            ["y"] = -1011.3,
-            ["x"] = 1249,
-        },
         ["Qpart"] = {
             [49295] = {
                 ["1"] = 1,
@@ -19805,10 +16869,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [74]
     {
-        ["Trigger"] = {
-            ["y"] = -1046.1,
-            ["x"] = 1315.4,
-        },
         ["Qpart"] = {
             [48519] = {
                 ["1"] = 1,
@@ -19839,10 +16899,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [77]
     {
-        ["Trigger"] = {
-            ["y"] = -1117.5,
-            ["x"] = 1294,
-        },
         ["Waypoint"] = 48520,
         ["Range"] = 4.37,
         ["TT"] = {
@@ -19856,10 +16912,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [78]
     {
-        ["Trigger"] = {
-            ["y"] = -1110.8,
-            ["x"] = 1280.8,
-        },
         ["Qpart"] = {
             [48520] = {
                 ["3"] = 1,
@@ -19891,10 +16943,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [80]
     {
-        ["Trigger"] = {
-            ["y"] = -1152,
-            ["x"] = 1255.7,
-        },
         ["Qpart"] = {
             [48520] = {
                 [2] = 1,
@@ -19924,10 +16972,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [81]
     {
-        ["Trigger"] = {
-            ["y"] = -1169.3,
-            ["x"] = 1371.3,
-        },
         ["Qpart"] = {
             [48520] = {
                 ["1"] = 1,
@@ -19957,10 +17001,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [82]
     {
-        ["Trigger"] = {
-            ["y"] = -1161,
-            ["x"] = 1330.7,
-        },
         ["Qpart"] = {
             [48521] = {
                 ["1"] = 1,
@@ -20040,10 +17080,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [86]
     {
-        ["Trigger"] = {
-            ["y"] = -1043.3,
-            ["x"] = 1291.2,
-        },
         ["Qpart"] = {
             [48523] = {
                 ["1"] = 1,
@@ -20061,10 +17097,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [87]
     {
-        ["Trigger"] = {
-            ["y"] = -1076.6,
-            ["x"] = 1303.5,
-        },
         ["Qpart"] = {
             [48525] = {
                 ["1"] = 1,
@@ -20077,10 +17109,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [88]
     {
-        ["Trigger"] = {
-            ["y"] = -1280,
-            ["x"] = 1296,
-        },
         ["Range"] = 7.38,
         ["Waypoint"] = 48524,
         ["TT"] = {
@@ -20089,10 +17117,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [89]
     {
-        ["Trigger"] = {
-            ["y"] = -1303.5,
-            ["x"] = 1298.2,
-        },
         ["Qpart"] = {
             [48524] = {
                 ["1"] = 1,
@@ -20156,10 +17180,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [95]
     {
-        ["Trigger"] = {
-            ["y"] = -392,
-            ["x"] = 1312.4,
-        },
         ["Qpart"] = {
             [49259] = {
                 ["1"] = 1,
@@ -20172,10 +17192,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [96]
     {
-        ["Trigger"] = {
-            ["y"] = -392,
-            ["x"] = 1312.4,
-        },
         ["Qpart"] = {
             [49259] = {
                 ["2"] = 1,
@@ -20219,10 +17235,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
 
     {
         ["QuestLineSkip"] = 48947,
-        ["Trigger"] = {
-            ["y"] = -514.2,
-            ["x"] = 1397,
-        },
         ["Waypoint"] = 48947,
         ["Range"] = 11.35,
         ["TT"] = {
@@ -20232,10 +17244,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [100]
     {
         ["QuestLineSkip"] = 48947,
-        ["Trigger"] = {
-            ["y"] = -581.7,
-            ["x"] = 1386.7,
-        },
         ["Waypoint"] = 48947,
         ["Range"] = 9.25,
         ["TT"] = {
@@ -20245,10 +17253,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [101]
     {
         ["QuestLineSkip"] = 48947,
-        ["Trigger"] = {
-            ["y"] = -632.8,
-            ["x"] = 1502.4,
-        },
         ["Waypoint"] = 48947,
         ["Range"] = 12.25,
         ["TT"] = {
@@ -20293,10 +17297,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [104]
     {
         ["QuestLineSkip"] = 48947,
-        ["Trigger"] = {
-            ["y"] = -831.5,
-            ["x"] = 1595.5,
-        },
         ["Qpart"] = {
             [48181] = {
                 ["1"] = 1,
@@ -20339,10 +17339,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["TrigText"] = "1/4",
-        ["Trigger"] = {
-            ["y"] = -1068.4,
-            ["x"] = 1811.3,
-        },
         ["Fillers"] = {
             [48179] = {
                 ["1"] = "1",
@@ -20388,10 +17384,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1195,
-            ["x"] = 1946.2,
-        },
         ["Fillers"] = {
             [48179] = {
                 ["1"] = "1",
@@ -20417,10 +17409,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["TrigText"] = "2/4",
-        ["Trigger"] = {
-            ["y"] = -1173.3,
-            ["x"] = 1895.5,
-        },
         ["Fillers"] = {
             [48179] = {
                 ["1"] = "1",
@@ -20446,10 +17434,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["TrigText"] = "3/4",
-        ["Trigger"] = {
-            ["y"] = -1208.8,
-            ["x"] = 1718.3,
-        },
         ["Fillers"] = {
             [48179] = {
                 ["1"] = "1",
@@ -20475,10 +17459,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["TrigText"] = "4/4",
-        ["Trigger"] = {
-            ["y"] = -1268.5,
-            ["x"] = 1899.2,
-        },
         ["Fillers"] = {
             [48179] = {
                 ["1"] = "1",
@@ -20503,10 +17483,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1331.4,
-            ["x"] = 1911.2,
-        },
         ["Fillers"] = {
             [48179] = {
                 ["1"] = "1",
@@ -20526,10 +17502,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48947,
-        ["Trigger"] = {
-            ["y"] = -1331.1,
-            ["x"] = 1911.2,
-        },
         ["Qpart"] = {
             [48179] = {
                 1,
@@ -20600,10 +17572,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 278.8,
-            ["x"] = 2242.9,
-        },
         ["Gossip"] = 1,
         ["Qpart"] = {
             [48793] = {
@@ -20622,10 +17590,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 375.5,
-            ["x"] = 2235.1,
-        },
         ["Qpart"] = {
             [48793] = {
                 ["2"] = "2",
@@ -20643,10 +17607,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 406.2,
-            ["x"] = 2261.6,
-        },
         ["Qpart"] = {
             [48793] = {
                 ["3"] = "3",
@@ -20664,10 +17624,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 341.8,
-            ["x"] = 2330.4,
-        },
         ["Qpart"] = {
             [48793] = {
                 ["4"] = "4",
@@ -20728,10 +17684,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 403,
-            ["x"] = 2369.4,
-        },
         ["Qpart"] = {
             [48805] = {
                 ["3"] = 1,
@@ -20749,10 +17701,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = 420.1,
-            ["x"] = 2399,
-        },
         ["Qpart"] = {
             [48804] = {
                 ["3"] = 1,
@@ -20770,10 +17718,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = 491.7,
-            ["x"] = 2393.3,
-        },
         ["Qpart"] = {
             [48805] = {
                 ["1"] = 1,
@@ -20791,10 +17735,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [13]
     {
-        ["Trigger"] = {
-            ["y"] = 463.2,
-            ["x"] = 2282.6,
-        },
         ["Qpart"] = {
             [48804] = {
                 ["1"] = 1,
@@ -20812,10 +17752,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [14]
     {
-        ["Trigger"] = {
-            ["y"] = 446.3,
-            ["x"] = 2338.6,
-        },
         ["Qpart"] = {
             [48804] = {
                 ["2"] = 1,
@@ -20833,10 +17769,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 427.7,
-            ["x"] = 2342.6,
-        },
         ["Qpart"] = {
             [48805] = {
                 ["2"] = 1,
@@ -20854,10 +17786,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 427.7,
-            ["x"] = 2342.6,
-        },
         ["Qpart"] = {
             [48792] = {
                 ["1"] = "1",
@@ -20890,10 +17818,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 364.7,
-            ["x"] = 2454,
-        },
         ["Qpart"] = {
             [48853] = {
                 ["1"] = 1,
@@ -20906,10 +17830,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 370.3,
-            ["x"] = 2468.6,
-        },
         ["Qpart"] = {
             [48853] = {
                 ["2"] = 1,
@@ -20931,10 +17851,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 270,
-            ["x"] = 2475.1,
-        },
         ["Waypoint"] = 48941,
         ["Range"] = 21.61,
         ["TT"] = {
@@ -20967,10 +17883,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["1"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = -48.8,
-            ["x"] = 2688.4,
-        },
         ["Fillers"] = {
             [48942] = {
                 ["1"] = 1,
@@ -20992,10 +17904,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             ["Text"] = "Undead",
             ["MobId"] = 136490,
             ["Qid"] = 51134,
-        },
-        ["Trigger"] = {
-            ["y"] = 21,
-            ["x"] = 2720.3,
         },
         ["Fillers"] = {
             [48942] = {
@@ -21022,10 +17930,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             ["MobId"] = 136490,
             ["Qid"] = 51134,
         },
-        ["Trigger"] = {
-            ["y"] = 87.5,
-            ["x"] = 2805.3,
-        },
         ["Fillers"] = {
             [48942] = {
                 ["1"] = 1,
@@ -21050,10 +17954,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             ["Text"] = "Undead",
             ["MobId"] = 136490,
             ["Qid"] = 51134,
-        },
-        ["Trigger"] = {
-            ["y"] = 114,
-            ["x"] = 2693.4,
         },
         ["Fillers"] = {
             [48942] = {
@@ -21083,10 +17983,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             ["MobId"] = 136490,
             ["Qid"] = 51134,
         },
-        ["Trigger"] = {
-            ["y"] = 115.4,
-            ["x"] = 2696.1,
-        },
         ["Range"] = 17.29,
         ["TT"] = {
             ["y"] = 115.4,
@@ -21094,10 +17990,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 94.7,
-            ["x"] = 2701.6,
-        },
         ["Qpart"] = {
             [51134] = {
                 ["1"] = 1,
@@ -21130,10 +18022,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 169.4,
-            ["x"] = 2712.4,
-        },
         ["Qpart"] = {
             [48963] = {
                 ["1"] = 1,
@@ -21170,10 +18058,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 209.6,
-            ["x"] = 2725,
-        },
         ["Range"] = 2.91,
         ["TT"] = {
             ["y"] = 209.6,
@@ -21204,10 +18088,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["1"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = 212.1,
-            ["x"] = 2725,
-        },
         ["RaidIcon"] = 128113,
         ["Range"] = 15.36,
         ["TT"] = {
@@ -21234,10 +18114,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 305.8,
-            ["x"] = 2857.6,
-        },
         ["Qpart"] = {
             [48946] = {
                 ["1"] = 1,
@@ -21268,10 +18144,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 287,
-            ["x"] = 2836.8,
-        },
         ["Waypoint"] = 48986,
         ["Range"] = 15.92,
         ["TT"] = {
@@ -21280,10 +18152,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 288.7,
-            ["x"] = 2786.1,
-        },
         ["Waypoint"] = 48986,
         ["Range"] = 8.58,
         ["TT"] = {
@@ -21292,10 +18160,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 250.3,
-            ["x"] = 2783.4,
-        },
         ["Waypoint"] = 48986,
         ["Range"] = 9.31,
         ["TT"] = {
@@ -21304,10 +18168,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 207.1,
-            ["x"] = 2719,
-        },
         ["Waypoint"] = 48986,
         ["Range"] = 9.4,
         ["TT"] = {
@@ -21316,10 +18176,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 196.5,
-            ["x"] = 2712.8,
-        },
         ["Waypoint"] = 48986,
         ["Range"] = 5.31,
         ["TT"] = {
@@ -21349,10 +18205,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["GroupTask"] = 52033,
-        ["Trigger"] = {
-            ["y"] = -376.9,
-            ["x"] = 2866,
-        },
         ["Waypoint"] = 52033,
         ["Range"] = 23.66,
         ["TT"] = {
@@ -21362,10 +18214,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["GroupTask"] = 52033,
-        ["Trigger"] = {
-            ["y"] = -238.7,
-            ["x"] = 2703.3,
-        },
         ["Qpart"] = {
             [52033] = {
                 ["1"] = "1",
@@ -21378,10 +18226,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -489.4,
-            ["x"] = 2955.6,
-        },
         ["Waypoint"] = 48986,
         ["Range"] = 28.22,
         ["TT"] = {
@@ -21418,10 +18262,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -650,
-            ["x"] = 3187.9,
-        },
         ["Qpart"] = {
             [49443] = {
                 ["1"] = 1,
@@ -21434,10 +18274,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -651.5,
-            ["x"] = 3190.9,
-        },
         ["Qpart"] = {
             [49443] = {
                 ["2"] = 1,
@@ -21450,10 +18286,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -649.7,
-            ["x"] = 3184,
-        },
         ["Qpart"] = {
             [49443] = {
                 ["3"] = 1,
@@ -21521,10 +18353,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             ["MobId"] = 129575,
             ["Qid"] = 49806,
         },
-        ["Trigger"] = {
-            ["y"] = -601.8,
-            ["x"] = 3150.3,
-        },
         ["Button"] = {
             ["49804-1"] = 156518,
         },
@@ -21535,10 +18363,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -653.8,
-            ["x"] = 3016.4,
-        },
         ["Qpart"] = {
             [49803] = {
                 ["3"] = 3,
@@ -21582,10 +18406,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             ["MobId"] = 129575,
             ["Qid"] = 49806,
         },
-        ["Trigger"] = {
-            ["y"] = -703.5,
-            ["x"] = 3065.8,
-        },
         ["Fillers"] = {
             [49805] = {
                 ["1"] = 1,
@@ -21615,10 +18435,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             ["MobId"] = 129575,
             ["Qid"] = 49806,
         },
-        ["Trigger"] = {
-            ["y"] = -740.8,
-            ["x"] = 3081.9,
-        },
         ["Fillers"] = {
             [49805] = {
                 ["1"] = 1,
@@ -21635,10 +18451,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
 
     {
-        ["Trigger"] = {
-            ["y"] = -768.2,
-            ["x"] = 3099.5,
-        },
         ["Waypoint"] = 49806,
         ["Range"] = 7.05,
         ["TT"] = {
@@ -21650,10 +18462,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
 
     {
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -773.2,
-            ["x"] = 3109.4,
-        },
         ["Qpart"] = {
             [49806] = {
                 ["1"] = 1,
@@ -21666,10 +18474,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [48]
     {
-        ["Trigger"] = {
-            ["y"] = -773.2,
-            ["x"] = 3109.4,
-        },
         ["Qpart"] = {
             [49806] = {
                 ["2"] = 1,
@@ -21682,10 +18486,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [48]
     {
-        ["Trigger"] = {
-            ["y"] = -756.5,
-            ["x"] = 3096.6,
-        },
         ["Waypoint"] = 49806,
         ["Range"] = 8.14,
         ["TT"] = {
@@ -21707,10 +18507,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             ["Text"] = "Unmasked Witch",
             ["MobId"] = 129575,
             ["Qid"] = 49806,
-        },
-        ["Trigger"] = {
-            ["y"] = -744,
-            ["x"] = 3116.1,
         },
         ["Button"] = {
             ["49804-1"] = 156518,
@@ -21734,10 +18530,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             ["MobId"] = 129575,
             ["Qid"] = 49806,
         },
-        ["Trigger"] = {
-            ["y"] = -766.8,
-            ["x"] = 3280.4,
-        },
         ["Range"] = 1.06,
         ["TT"] = {
             ["y"] = -766.8,
@@ -21745,10 +18537,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -655.8,
-            ["x"] = 3173.3,
-        },
         ["Waypoint"] = 49806,
         ["Range"] = 2.97,
         ["TT"] = {
@@ -21783,10 +18571,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["1"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = -650.2,
-            ["x"] = 3188.3,
-        },
         ["Button"] = {
             ["49807-1"] = 156532,
         },
@@ -21808,10 +18592,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             [49807] = {
                 ["2"] = 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -651,
-            ["x"] = 3188.5,
         },
         ["Button"] = {
             ["49807-2"] = 156532,
@@ -21856,10 +18636,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -837.8,
-            ["x"] = 3079.1,
-        },
         ["Range"] = 7.5,
         ["Waypoint"] = 48504,
         ["TT"] = {
@@ -21868,10 +18644,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -836.2,
-            ["x"] = 3036.1,
-        },
         ["Range"] = 9.29,
         ["Waypoint"] = 48504,
         ["TT"] = {
@@ -21918,10 +18690,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["1"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = -969,
-            ["x"] = 3097.1,
-        },
         ["Fillers"] = {
             [48517] = {
                 ["1"] = 1,
@@ -21941,10 +18709,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             [48184] = {
                 ["2"] = 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -954.3,
-            ["x"] = 3206.1,
         },
         ["Fillers"] = {
             [48517] = {
@@ -21966,10 +18730,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["3"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1074.1,
-            ["x"] = 3051.6,
-        },
         ["Fillers"] = {
             [49898] = {
                 ["1"] = 1,
@@ -21989,10 +18749,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             [48184] = {
                 ["4"] = 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1208.4,
-            ["x"] = 3133.6,
         },
         ["Fillers"] = {
             [48517] = {
@@ -22016,10 +18772,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             [48517] = {
                 ["1"] = 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1078.9,
-            ["x"] = 3208.9,
         },
         ["Fillers"] = {
             [49898] = {
@@ -22062,10 +18814,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1120.8,
-            ["x"] = 3045.8,
-        },
         ["Range"] = 4.99,
         ["Waypoint"] = 49890,
         ["TT"] = {
@@ -22079,10 +18827,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1132.5,
-            ["x"] = 2978.1,
-        },
         ["Qpart"] = {
             [49890] = {
                 ["1"] = 1,
@@ -22100,10 +18844,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1128.8,
-            ["x"] = 2979.3,
-        },
         ["Qpart"] = {
             [49890] = {
                 ["2"] = 1,
@@ -22121,10 +18861,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -1128.8,
-            ["x"] = 2979.3,
-        },
         ["Qpart"] = {
             [49898] = {
                 ["1"] = 1,
@@ -22190,10 +18926,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1355.6,
-            ["x"] = 3817.6,
-        },
         ["Qpart"] = {
             [50001] = {
                 ["1"] = 1,
@@ -22231,10 +18963,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1422.3,
-            ["x"] = 3825.1,
-        },
         ["Qpart"] = {
             [50177] = {
                 ["1"] = 1,
@@ -22249,10 +18977,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [47]
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1422.3,
-            ["x"] = 3825.1,
-        },
         ["Qpart"] = {
             [50177] = {
                 ["2"] = 1,
@@ -22286,10 +19010,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [49]
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1483.1,
-            ["x"] = 3867.1,
-        },
         ["Qpart"] = {
             [49939] = {
                 ["1"] = 1,
@@ -22328,10 +19048,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [52]
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1501.8,
-            ["x"] = 3756.1,
-        },
         ["Range"] = 9.34,
         ["Waypoint"] = 50238,
         ["TT"] = {
@@ -22375,10 +19091,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1388.3,
-            ["x"] = 3878.4,
-        },
         ["Range"] = 4.61,
         ["Waypoint"] = 50238,
         ["TT"] = {
@@ -22393,10 +19105,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1375.1,
-            ["x"] = 3883.9,
-        },
         ["Range"] = 3.45,
         ["Waypoint"] = 50238,
         ["TT"] = {
@@ -22411,10 +19119,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [56]
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1373.8,
-            ["x"] = 3873.1,
-        },
         ["Range"] = 2.56,
         ["Waypoint"] = 50238,
         ["TT"] = {
@@ -22429,10 +19133,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [57]
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1357,
-            ["x"] = 3881.5,
-        },
         ["Qpart"] = {
             [50238] = {
                 ["1"] = 1,
@@ -22451,10 +19151,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [58]
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1338.1,
-            ["x"] = 3836.5,
-        },
         ["Range"] = 4.57,
         ["Waypoint"] = 50238,
         ["TT"] = {
@@ -22469,10 +19165,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [59]
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1327,
-            ["x"] = 3834.1,
-        },
         ["Range"] = 4.41,
         ["Waypoint"] = 50238,
         ["TT"] = {
@@ -22493,10 +19185,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1332,
-            ["x"] = 3852.6,
-        },
         ["Range"] = 3.3,
         ["TT"] = {
             ["y"] = -1332,
@@ -22542,10 +19230,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     {
         ["QuestLineSkip"] = 49896,
         ["GroupTask"] = 51390,
-        ["Trigger"] = {
-            ["y"] = -1265.4,
-            ["x"] = 3637.1,
-        },
         ["Qpart"] = {
             [51390] = {
                 ["1"] = "1",
@@ -22600,10 +19284,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         ["Button"] = {
             ["50092-1"] = 156828,
         },
-        ["Trigger"] = {
-            ["y"] = -1415.4,
-            ["x"] = 3840.1,
-        },
         ["Fillers"] = {
             [50090] = {
                 ["1"] = 1,
@@ -22656,10 +19336,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1305.9,
-            ["x"] = 3857.6,
-        },
         ["Range"] = 3.37,
         ["TT"] = {
             ["y"] = -1305.9,
@@ -22673,10 +19349,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [68]
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1306.1,
-            ["x"] = 3858.6,
-        },
         ["Qpart"] = {
             [50036] = {
                 ["2"] = 1,
@@ -22730,10 +19402,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["1"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1274.6,
-            ["x"] = 3889.6,
-        },
         ["Button"] = {
             ["50063-1"] = 156710,
         },
@@ -22776,10 +19444,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [74]
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1332.4,
-            ["x"] = 3856.8,
-        },
         ["Qpart"] = {
             [50090] = {
                 ["1"] = 1,
@@ -22793,10 +19457,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [75]
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1298,
-            ["x"] = 3786.4,
-        },
         ["Qpart"] = {
             [50090] = {
                 ["2"] = 1,
@@ -22830,10 +19490,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [76]
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1383,
-            ["x"] = 3825,
-        },
         ["Qpart"] = {
             [50091] = {
                 ["1"] = 1,
@@ -22847,10 +19503,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [79]
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -972.8,
-            ["x"] = 4113.8,
-        },
         ["Waypoint"] = 50172,
         ["Range"] = 27.43,
         ["TT"] = {
@@ -22897,10 +19549,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -842.5,
-            ["x"] = 4090.9,
-        },
         ["Qpart"] = {
             [50266] = {
                 ["1"] = 1,
@@ -22925,10 +19573,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["4"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = -874.8,
-            ["x"] = 4046.1,
-        },
         ["Fillers"] = {
             [50306] = {
                 ["1"] = 1,
@@ -22947,10 +19591,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             [50266] = {
                 ["3"] = 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -917.3,
-            ["x"] = 4046,
         },
         ["Fillers"] = {
             [50306] = {
@@ -22971,10 +19611,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["2"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = -917.2,
-            ["x"] = 4079.6,
-        },
         ["Fillers"] = {
             [50306] = {
                 ["1"] = 1,
@@ -22993,10 +19629,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             [50266] = {
                 ["5"] = 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -936.3,
-            ["x"] = 4093.4,
         },
         ["Fillers"] = {
             [50306] = {
@@ -23018,10 +19650,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -846.2,
-            ["x"] = 4090.8,
-        },
         ["Fillers"] = {
             [50306] = {
                 ["1"] = 1,
@@ -23036,10 +19664,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -848.8,
-            ["x"] = 4091.5,
-        },
         ["Qpart"] = {
             [50306] = {
                 ["1"] = 1,
@@ -23085,10 +19709,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -933.8,
-            ["x"] = 4122.6,
-        },
         ["Range"] = 2.48,
         ["TT"] = {
             ["y"] = -933.8,
@@ -23117,10 +19737,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [14]
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -873.3,
-            ["x"] = 3914.1,
-        },
         ["Range"] = 9.79,
         ["Waypoint"] = 50370,
         ["TT"] = {
@@ -23130,10 +19746,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -900,
-            ["x"] = 3895.3,
-        },
         ["Qpart"] = {
             [50370] = {
                 ["1"] = 1,
@@ -23175,10 +19787,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["1"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = -999.8,
-            ["x"] = 3891.6,
-        },
         ["Fillers"] = {
             [50530] = {
                 ["1"] = 1,
@@ -23200,10 +19808,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["3"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = -726,
-            ["x"] = 3789,
-        },
         ["Fillers"] = {
             [50530] = {
                 ["1"] = 1,
@@ -23224,10 +19828,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             [50325] = {
                 ["2"] = 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -652.3,
-            ["x"] = 3856.6,
         },
         ["Fillers"] = {
             [50530] = {
@@ -23265,10 +19865,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         ["ButtonCooldown"] = {
             [264218] = 5,
         },
-        ["Trigger"] = {
-            ["y"] = -780.8,
-            ["x"] = 4188.3,
-        },
         ["Fillers"] = {
             [50530] = {
                 ["1"] = 1,
@@ -23285,10 +19881,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -775.8,
-            ["x"] = 4167.3,
-        },
         ["Qpart"] = {
             [50530] = {
                 ["1"] = 1,
@@ -23328,10 +19920,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -968,
-            ["x"] = 3756.6,
-        },
         ["Range"] = 4.8,
         ["Waypoint"] = 50481,
         ["TT"] = {
@@ -23341,10 +19929,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1010.8,
-            ["x"] = 3731.6,
-        },
         ["Range"] = 6.12,
         ["Waypoint"] = 50481,
         ["TT"] = {
@@ -23354,10 +19938,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1009.3,
-            ["x"] = 3726.6,
-        },
         ["Qpart"] = {
             [50481] = {
                 ["1"] = 1,
@@ -23371,10 +19951,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1040.4,
-            ["x"] = 3746.4,
-        },
         ["Range"] = 5.85,
         ["Waypoint"] = 50481,
         ["TT"] = {
@@ -23384,10 +19960,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1045,
-            ["x"] = 3717.3,
-        },
         ["Range"] = 7.63,
         ["Waypoint"] = 50481,
         ["TT"] = {
@@ -23397,10 +19969,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1023.3,
-            ["x"] = 3711.3,
-        },
         ["Range"] = 4.04,
         ["Waypoint"] = 50481,
         ["TT"] = {
@@ -23410,10 +19978,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -1007.8,
-            ["x"] = 3733.8,
-        },
         ["Range"] = 6.4,
         ["Waypoint"] = 50481,
         ["TT"] = {
@@ -23423,10 +19987,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -965.2,
-            ["x"] = 3757.9,
-        },
         ["Qpart"] = {
             [50481] = {
                 ["2"] = 1,
@@ -23465,10 +20025,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["1"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = -919.8,
-            ["x"] = 3768.5,
-        },
         ["Button"] = {
             ["50533-1"] = 158064,
         },
@@ -23480,10 +20036,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -912.5,
-            ["x"] = 3767.5,
-        },
         ["Qpart"] = {
             [50533] = {
                 ["2"] = 1,
@@ -23497,10 +20049,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -694,
-            ["x"] = 4190.2,
-        },
         ["Qpart"] = {
             [50533] = {
                 ["3"] = 1,
@@ -23520,10 +20068,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -675.8,
-            ["x"] = 4197.2,
-        },
         ["Range"] = 4.74,
         ["TT"] = {
             ["y"] = -675.8,
@@ -23542,10 +20086,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -581.7,
-            ["x"] = 3215,
-        },
         ["Waypoint"] = 49926,
         ["Range"] = 11.39,
         ["TT"] = {
@@ -23555,10 +20095,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Trigger"] = {
-            ["y"] = -411,
-            ["x"] = 3293.9,
-        },
         ["Waypoint"] = 49926,
         ["Range"] = 15.11,
         ["TT"] = {
@@ -23586,10 +20122,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 122,
-            ["x"] = 3513.6,
-        },
         ["Qpart"] = {
             [50003] = {
                 ["1"] = 1,
@@ -23620,10 +20152,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 100.3,
-            ["x"] = 3476.4,
-        },
         ["Waypoint"] = 50149,
         ["Range"] = 2.38,
         ["TT"] = {
@@ -23632,10 +20160,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = 105.7,
-            ["x"] = 3515.1,
-        },
         ["Waypoint"] = 50149,
         ["Range"] = 8.37,
         ["TT"] = {
@@ -23644,10 +20168,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = 124.5,
-            ["x"] = 3534.1,
-        },
         ["Waypoint"] = 50149,
         ["Range"] = 6.78,
         ["TT"] = {
@@ -23662,10 +20182,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 134.5,
-            ["x"] = 3529.1,
-        },
         ["Range"] = 2.15,
         ["TT"] = {
             ["y"] = 134.5,
@@ -23673,10 +20189,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [14]
     {
-        ["Trigger"] = {
-            ["y"] = 141.6,
-            ["x"] = 3537.6,
-        },
         ["Qpart"] = {
             [50149] = {
                 ["2"] = 1,
@@ -23689,10 +20201,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 487.6,
-            ["x"] = 3533.1,
-        },
         ["Qpart"] = {
             [50149] = {
                 ["3"] = 1,
@@ -23705,10 +20213,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 216.5,
-            ["x"] = 3645.6,
-        },
         ["Qpart"] = {
             [50149] = {
                 ["4"] = 1,
@@ -23721,10 +20225,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -110.3,
-            ["x"] = 3870.3,
-        },
         ["Qpart"] = {
             [50149] = {
                 ["5"] = 1,
@@ -23767,10 +20267,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 87.7,
-            ["x"] = 3333.6,
-        },
         ["Waypoint"] = 50175,
         ["Range"] = 2.55,
         ["TT"] = {
@@ -23790,10 +20286,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 63.4,
-            ["x"] = 3322.1,
-        },
         ["Waypoint"] = 50175,
         ["Range"] = 9.6,
         ["TT"] = {
@@ -23813,10 +20305,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 56.5,
-            ["x"] = 3242.8,
-        },
         ["Waypoint"] = 50175,
         ["Range"] = 6.97,
         ["TT"] = {
@@ -23836,10 +20324,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 39.2,
-            ["x"] = 3223.3,
-        },
         ["Qpart"] = {
             [50174] = {
                 ["1"] = 1,
@@ -23886,10 +20370,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -161,
-            ["x"] = 3904.1,
-        },
         ["Waypoint"] = 50151,
         ["Range"] = 4.41,
         ["TT"] = {
@@ -23903,10 +20383,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -160.4,
-            ["x"] = 3891.1,
-        },
         ["Waypoint"] = 50151,
         ["Range"] = 3.32,
         ["TT"] = {
@@ -23926,10 +20402,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -147.7,
-            ["x"] = 3896.3,
-        },
         ["Range"] = 2.92,
         ["TT"] = {
             ["y"] = -147.7,
@@ -23942,10 +20414,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -153.2,
-            ["x"] = 3900.6,
-        },
         ["Qpart"] = {
             [50151] = {
                 ["2"] = 1,
@@ -23963,10 +20431,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -162.5,
-            ["x"] = 3911.6,
-        },
         ["Qpart"] = {
             [50152] = {
                 ["1"] = 1,
@@ -23979,10 +20443,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 47.7,
-            ["x"] = 3540.4,
-        },
         ["Range"] = 22.79,
         ["Waypoint"] = 50151,
         ["TT"] = {
@@ -24016,10 +20476,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 135,
-            ["x"] = 3484.9,
-        },
         ["Range"] = 5.26,
         ["TT"] = {
             ["y"] = 135.3,
@@ -24027,10 +20483,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 127.8,
-            ["x"] = 3473.9,
-        },
         ["Qpart"] = {
             [50253] = {
                 ["2"] = 1,
@@ -24043,10 +20495,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 135.4,
-            ["x"] = 3489.3,
-        },
         ["Qpart"] = {
             [50253] = {
                 ["3"] = 1,
@@ -24059,10 +20507,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 134.5,
-            ["x"] = 3487.3,
-        },
         ["Qpart"] = {
             [50253] = {
                 ["4"] = 1,
@@ -24127,10 +20571,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["2"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = 159.5,
-            ["x"] = 3563.4,
-        },
         ["Fillers"] = {
             [50447] = {
                 ["1"] = 1,
@@ -24150,10 +20590,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             [50446] = {
                 ["1"] = 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 207.5,
-            ["x"] = 3632.5,
         },
         ["Fillers"] = {
             [50447] = {
@@ -24175,10 +20611,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["3"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = 145.1,
-            ["x"] = 3747.1,
-        },
         ["Fillers"] = {
             [50447] = {
                 ["1"] = 1,
@@ -24194,10 +20626,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 154.5,
-            ["x"] = 3729.3,
-        },
         ["Qpart"] = {
             [50447] = {
                 ["1"] = 1,
@@ -24226,10 +20654,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 50449,
-        ["Trigger"] = {
-            ["y"] = 300.3,
-            ["x"] = 3750.3,
-        },
         ["Qpart"] = {
             [50449] = {
                 ["1"] = 1,
@@ -24249,10 +20673,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 50449,
-        ["Trigger"] = {
-            ["y"] = 222.9,
-            ["x"] = 3649.9,
-        },
         ["Qpart"] = {
             [50448] = {
                 ["1"] = 1,
@@ -24287,10 +20707,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 50449,
-        ["Trigger"] = {
-            ["y"] = 308.7,
-            ["x"] = 3731.1,
-        },
         ["Qpart"] = {
             [50450] = {
                 ["1"] = 1,
@@ -24333,10 +20749,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = 45.9,
-            ["x"] = 3541.1,
-        },
         ["Range"] = 17.73,
         ["Waypoint"] = 50452,
         ["TT"] = {
@@ -24383,10 +20795,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 185.6,
-            ["x"] = 3458.6,
-        },
         ["Range"] = 28.58,
         ["Waypoint"] = 50454,
         ["TT"] = {
@@ -24395,10 +20803,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 376.7,
-            ["x"] = 3580.6,
-        },
         ["Range"] = 16.03,
         ["Waypoint"] = 50454,
         ["TT"] = {
@@ -24411,10 +20815,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             [50454] = {
                 ["1"] = 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 535,
-            ["x"] = 3640.6,
         },
         ["Fillers"] = {
             [50454] = {
@@ -24431,10 +20831,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 533.6,
-            ["x"] = 3640.1,
-        },
         ["Qpart"] = {
             [50454] = {
                 ["2"] = 1,
@@ -24451,10 +20847,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["GroupTask"] = 51356,
-        ["Trigger"] = {
-            ["y"] = 515.1,
-            ["x"] = 3750.1,
-        },
         ["Qpart"] = {
             [51356] = {
                 ["1"] = 1,
@@ -24467,10 +20859,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 597.1,
-            ["x"] = 3968,
-        },
         ["Qpart"] = {
             [50754] = {
                 ["1"] = 1,
@@ -24501,10 +20889,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 782.4,
-            ["x"] = 3966.5,
-        },
         ["Qpart"] = {
             [50758] = {
                 ["1"] = 1,
@@ -24535,10 +20919,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 688.5,
-            ["x"] = 3934.5,
-        },
         ["Waypoint"] = 50759,
         ["Range"] = 6.13,
         ["TT"] = {
@@ -24547,10 +20927,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 694.9,
-            ["x"] = 3907.4,
-        },
         ["Waypoint"] = 50759,
         ["Range"] = 3.77,
         ["TT"] = {
@@ -24559,10 +20935,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 687.5,
-            ["x"] = 3905,
-        },
         ["Waypoint"] = 50759,
         ["Range"] = 3.77,
         ["TT"] = {
@@ -24571,10 +20943,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 685,
-            ["x"] = 3915.4,
-        },
         ["Waypoint"] = 50759,
         ["Range"] = 3.77,
         ["TT"] = {
@@ -24589,10 +20957,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 694.1,
-            ["x"] = 3908.5,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 694.1,
@@ -24600,10 +20964,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 689.5,
-            ["x"] = 3912.4,
-        },
         ["Qpart"] = {
             [50759] = {
                 ["2"] = 1,
@@ -24625,10 +20985,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 684.7,
-            ["x"] = 3916,
-        },
         ["Waypoint"] = 50453,
         ["Range"] = 4.32,
         ["TT"] = {
@@ -24637,10 +20993,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 688.2,
-            ["x"] = 3904.1,
-        },
         ["Waypoint"] = 50453,
         ["Range"] = 3.73,
         ["TT"] = {
@@ -24649,10 +21001,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 696.5,
-            ["x"] = 3909.6,
-        },
         ["Waypoint"] = 50453,
         ["Range"] = 5.19,
         ["TT"] = {
@@ -24661,10 +21009,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 684.7,
-            ["x"] = 3928.1,
-        },
         ["Waypoint"] = 50453,
         ["Range"] = 5.19,
         ["TT"] = {
@@ -24673,10 +21017,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 778.1,
-            ["x"] = 3966,
-        },
         ["Waypoint"] = 50453,
         ["Range"] = 8.55,
         ["TT"] = {
@@ -24694,10 +21034,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 770,
-            ["x"] = 3970.1,
-        },
         ["Qpart"] = {
             [50760] = {
                 ["1"] = 1,
@@ -24732,10 +21068,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 738.6,
-            ["x"] = 3951.9,
-        },
         ["Qpart"] = {
             [50761] = {
                 ["1"] = 1,
@@ -24766,10 +21098,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 688.5,
-            ["x"] = 3933.5,
-        },
         ["Waypoint"] = 50762,
         ["Range"] = 7.52,
         ["TT"] = {
@@ -24778,10 +21106,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 686.9,
-            ["x"] = 3920.4,
-        },
         ["Waypoint"] = 50762,
         ["Range"] = 5.11,
         ["TT"] = {
@@ -24790,10 +21114,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [47]
     {
-        ["Trigger"] = {
-            ["y"] = 685.5,
-            ["x"] = 3910.1,
-        },
         ["Waypoint"] = 50762,
         ["Range"] = 2.35,
         ["TT"] = {
@@ -24802,10 +21122,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [48]
     {
-        ["Trigger"] = {
-            ["y"] = 687.7,
-            ["x"] = 3904.1,
-        },
         ["Waypoint"] = 50762,
         ["Range"] = 2.55,
         ["TT"] = {
@@ -24814,10 +21130,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [49]
     {
-        ["Trigger"] = {
-            ["y"] = 698.2,
-            ["x"] = 3910.3,
-        },
         ["Qpart"] = {
             [50762] = {
                 ["1"] = 1,
@@ -24830,10 +21142,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [50]
     {
-        ["Trigger"] = {
-            ["y"] = 693.2,
-            ["x"] = 3912.9,
-        },
         ["Qpart"] = {
             [50762] = {
                 ["2"] = 1,
@@ -24846,10 +21154,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [51]
     {
-        ["Trigger"] = {
-            ["y"] = 690.7,
-            ["x"] = 3913.8,
-        },
         ["Qpart"] = {
             [50762] = {
                 ["3"] = 1,
@@ -24862,10 +21166,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [52]
     {
-        ["Trigger"] = {
-            ["y"] = 680.5,
-            ["x"] = 3930,
-        },
         ["Waypoint"] = 50762,
         ["Range"] = 4.4,
         ["TT"] = {
@@ -24923,10 +21223,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [57]
     {
-        ["Trigger"] = {
-            ["y"] = 221.6,
-            ["x"] = 3498.6,
-        },
         ["Waypoint"] = 50453,
         ["Range"] = 20.21,
         ["TT"] = {
@@ -24935,10 +21231,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [58]
     {
-        ["Trigger"] = {
-            ["y"] = 303.1,
-            ["x"] = 3542.8,
-        },
         ["Waypoint"] = 50453,
         ["Range"] = 25.33,
         ["TT"] = {
@@ -24947,10 +21239,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [59]
     {
-        ["Trigger"] = {
-            ["y"] = 370.6,
-            ["x"] = 3531.5,
-        },
         ["Waypoint"] = 50453,
         ["Range"] = 11.5,
         ["TT"] = {
@@ -24978,10 +21266,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             [50455] = {
                 ["1"] = 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 359.6,
-            ["x"] = 3493.1,
         },
         ["Button"] = {
             ["50456-1"] = 157845,
@@ -25022,10 +21306,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [65]
     {
-        ["Trigger"] = {
-            ["y"] = 437.8,
-            ["x"] = 3550.9,
-        },
         ["Qpart"] = {
             [50457] = {
                 ["1"] = 1,
@@ -25072,10 +21352,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["1"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = 581.5,
-            ["x"] = 3589.1,
-        },
         ["Fillers"] = {
             [50585] = {
                 ["1"] = 1,
@@ -25098,10 +21374,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             [50583] = {
                 ["2"] = 1,
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 481.3,
-            ["x"] = 3439.9,
         },
         ["Fillers"] = {
             [50585] = {
@@ -25126,10 +21398,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
                 ["3"] = 1,
             },
         },
-        ["Trigger"] = {
-            ["y"] = 464.8,
-            ["x"] = 3361.3,
-        },
         ["Fillers"] = {
             [50585] = {
                 ["1"] = 1,
@@ -25148,10 +21416,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [72]
     {
-        ["Trigger"] = {
-            ["y"] = 496.5,
-            ["x"] = 3360.8,
-        },
         ["Qpart"] = {
             [50585] = {
                 ["1"] = 1,
@@ -25191,10 +21455,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [75]
     {
-        ["Trigger"] = {
-            ["y"] = 677.7,
-            ["x"] = 3430.1,
-        },
         ["Qpart"] = {
             [50588] = {
                 ["1"] = 1,
@@ -25207,10 +21467,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [76]
     {
-        ["Trigger"] = {
-            ["y"] = 677,
-            ["x"] = 3424,
-        },
         ["Qpart"] = {
             [50588] = {
                 ["2"] = 1,

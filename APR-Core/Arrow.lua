@@ -6,6 +6,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.Arrow = APR:NewModule("Arrow")
 
 APR.Arrow.currentStep = 0
+APR.Arrow.UpdateFreq = 0
 APR.ArrowActive = false
 APR.ArrowActive_X = 0
 APR.ArrowActive_Y = 0
@@ -113,17 +114,17 @@ local function CheckDistance()
             local curStepIndex = CurStep
             local distance = 0
             while true do
-                local oldx, oldy = stepList[curStepIndex]["TT"]["x"], stepList[curStepIndex]["TT"]["y"]
+                local oldx, oldy = stepList[curStepIndex].TT.x, stepList[curStepIndex].TT.y
                 curStepIndex = curStepIndex + 1
                 local step = stepList[curStepIndex]
                 if (step and step["Waypoint"]) then
-                    local newx, newy = step["TT"]["x"], step["TT"]["y"]
+                    local newx, newy = step.TT.x, step.TT.y
                     local deltaX, deltaY = oldx - newx, newy - oldy
                     local subDistance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
                     distance = distance + subDistance
                 else
-                    if (step and step["TT"]) then
-                        local newx, newy = step["TT"]["x"], step["TT"]["y"]
+                    if (step and step.TT) then
+                        local newx, newy = step.TT.x, step.TT.y
                         local deltaX, deltaY = oldx - newx, newy - oldy
                         local subDistance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
                         distance = distance + subDistance
@@ -141,23 +142,23 @@ function APR.Arrow:SetQPTT()
         print("Function: APR_SetQPTT()")
     end
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    if (APR.Arrow.currentStep ~= CurStep and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep]["TT"] and CheckIsInRouteZone()) then
+    if (APR.Arrow.currentStep ~= CurStep and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep].TT and CheckIsInRouteZone()) then
         APR.ArrowActive = true
-        APR.ArrowActive_X = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]["TT"]["x"]
-        APR.ArrowActive_Y = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]["TT"]["y"]
+        APR.ArrowActive_X = APR.RouteQuestStepList[APR.ActiveRoute][CurStep].TT.x
+        APR.ArrowActive_Y = APR.RouteQuestStepList[APR.ActiveRoute][CurStep].TT.y
         APR.Arrow.currentStep = CurStep
     end
 end
 
 function APR.Arrow:CalculPosition()
-    local d_y, d_x = UnitPosition("player")
+    local playerY, playerX = UnitPosition("player")
 
-    if not d_y then
+    if not playerY or not APR.ActiveRoute or not APR.RouteQuestStepList then
         APR.ArrowFrame:Hide()
         return
     end
 
-    if not APR.settings.profile.showArrow or not APR.ArrowActive or APR.ArrowActive_X == 0 or IsInInstance() or not APR.RouteQuestStepList or C_PetBattles.IsInBattle() then
+    if not APR.settings.profile.showArrow or not APR.ArrowActive or APR.ArrowActive_X == 0 or IsInInstance() or C_PetBattles.IsInBattle() then
         APR.ArrowFrame:Hide()
         return
     end
@@ -165,13 +166,12 @@ function APR.Arrow:CalculPosition()
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     local questStep = APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
 
-    if questStep and questStep.AreaTriggerZ then
-        local trigger = questStep.AreaTriggerZ
-        local x, y = trigger.x, trigger.y
-        local deltaX, deltaY = d_x - x, y - d_y
+    if questStep and questStep.ZoneStepTrigger then -- to trigger a zone detection
+        local trigger = questStep.ZoneStepTrigger
+        local deltaX, deltaY = playerX - trigger.x, trigger.y - playerY
         local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
 
-        if trigger.R > distance then
+        if trigger.Range > distance then
             APR.Arrow.currentStep = 0
             _G.NextQuestStep()
             return
@@ -181,11 +181,23 @@ function APR.Arrow:CalculPosition()
     APR.ArrowFrame:Show()
     APR.ArrowFrame.Button:Hide()
 
-    local x, y = APR.ArrowActive_X, APR.ArrowActive_Y
-    local deltaX, deltaY = d_x - x, y - d_y
+    local x, y = APR.ArrowActive_X, APR.ArrowActive_Y -- step TT
+    local deltaX, deltaY = playerX - x, y - playerY
     local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
     local angle = math.atan2(-deltaX, deltaY) - GetPlayerFacing()
     local perc = math.abs((math.pi - math.abs(angle)) / math.pi)
+
+    if questStep.Waypoint or questStep.Range then
+        local range = questStep.Range
+        if distance < range then
+            APR.ArrowActive_X = 0
+            if questStep.Waypoint then
+                APR.Arrow.currentStep = 0
+                _G.NextQuestStep()
+            end
+            return
+        end
+    end
 
     if perc > 0.98 then
         APR.ArrowFrame.arrow:SetVertexColor(0, 1, 0)
@@ -200,22 +212,4 @@ function APR.Arrow:CalculPosition()
     local row = math.floor(cell / 9)
     APR.ArrowFrame.arrow:SetTexCoord((col * 56) / 512, ((col + 1) * 56) / 512, (row * 42) / 512, ((row + 1) * 42) / 512)
     APR.ArrowFrame.distance:SetText(math.floor(distance + CheckDistance()) .. " " .. L["YARDS"])
-
-    if CurStep and APR.ActiveRoute and questStep and questStep.Trigger then
-        local trigger = questStep.Trigger
-        local APR_ArrowActive_Trigger_X = trigger.x
-        local APR_ArrowActive_Trigger_Y = trigger.y
-        local deltaX, deltaY = d_x - APR_ArrowActive_Trigger_X, APR_ArrowActive_Trigger_Y - d_y
-        local APR_ArrowActive_Distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
-        local APR_ArrowActive_TrigDistance = questStep.Range
-
-        if distance < 5 and APR_ArrowActive_Distance == 0 or (APR_ArrowActive_Distance and APR_ArrowActive_TrigDistance and APR_ArrowActive_Distance < APR_ArrowActive_TrigDistance) then
-            APR.ArrowActive_X = 0
-
-            if CurStep and APR.ActiveRoute and questStep.Waypoint then
-                APR.Arrow.currentStep = 0
-                _G.NextQuestStep()
-            end
-        end
-    end
 end

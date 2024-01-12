@@ -13,10 +13,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = -123.2,
-                ["x"] = 6894.3,
-            },
             ["GetFP"] = 1622,
             ["Range"] = 3.91,
             ["TT"] = {
@@ -65,10 +61,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -96,
-                ["x"] = 7050.1,
-            },
             ["Button"] = {
                 ["37653-1"] = 122100,
             },
@@ -89,10 +81,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -165.9,
-                ["x"] = 7076.3,
-            },
             ["Button"] = {
                 ["37653-1"] = 122100,
             },
@@ -113,10 +101,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -231.9,
-                ["x"] = 7040.7,
-            },
             ["Button"] = {
                 ["37653-1"] = 122100,
             },
@@ -131,10 +115,6 @@ if (APR.Faction == "Alliance") then
                 [37653] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -231.9,
-                ["x"] = 7040.7,
             },
             ["Button"] = {
                 ["37653-1"] = 122100,
@@ -179,10 +159,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -153.5,
-                ["x"] = 6906.6,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = -153.5,
@@ -190,10 +166,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [4]
         {
-            ["Trigger"] = {
-                ["y"] = -158.2,
-                ["x"] = 6895,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["2"] = "2",
@@ -206,10 +178,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -163.5,
-                ["x"] = 6917,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["3"] = "3",
@@ -222,10 +190,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = -163.5,
-                ["x"] = 6917,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["4"] = "4",
@@ -238,10 +202,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = -163.5,
-                ["x"] = 6917,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["5"] = "5",
@@ -254,10 +214,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = -157.4,
-                ["x"] = 6906.1,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["6"] = "6",
@@ -270,10 +226,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = -160.7,
-                ["x"] = 6904.8,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["7"] = "7",
@@ -286,10 +238,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = -89.3,
-                ["x"] = 6980.2,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["8"] = "8",
@@ -302,10 +250,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = -89.3,
-                ["x"] = 6980.2,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["9"] = "9",
@@ -360,10 +304,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -256.7,
-                ["x"] = 7268.8,
-            },
             ["Fillers"] = {
                 [36811] = {
                     ["1"] = "1",
@@ -376,10 +316,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = -732.5,
-                ["x"] = 7331.7,
-            },
             ["Qpart"] = {
                 [37450] = {
                     ["1"] = "1",
@@ -397,10 +333,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [15]
         {
-            ["Trigger"] = {
-                ["y"] = -669.3,
-                ["x"] = 7159.7,
-            },
             ["Qpart"] = {
                 [37450] = {
                     ["2"] = "2",
@@ -418,10 +350,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = -721.5,
-                ["x"] = 7314.2,
-            },
             ["Qpart"] = {
                 [37450] = {
                     ["3"] = "3",
@@ -458,10 +386,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = -745.3,
-                ["x"] = 7327,
-            },
             ["Qpart"] = {
                 [36811] = {
                     ["1"] = "1",
@@ -474,10 +398,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -463.4,
-                ["x"] = 7453.3,
-            },
             ["Range"] = 24.43,
             ["Waypoint"] = 37449,
             ["TT"] = {
@@ -486,10 +406,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [21]
         {
-            ["Trigger"] = {
-                ["y"] = -504,
-                ["x"] = 7498.1,
-            },
             ["Qpart"] = {
                 [37449] = {
                     ["1"] = "1",
@@ -502,10 +418,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [22]
         {
-            ["Trigger"] = {
-                ["y"] = -517.8,
-                ["x"] = 7518.1,
-            },
             ["Qpart"] = {
                 [37449] = {
                     ["2"] = "2",
@@ -536,10 +448,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [25]
         {
-            ["Trigger"] = {
-                ["y"] = -115.5,
-                ["x"] = 6773.2,
-            },
             ["Range"] = 38.36,
             ["Waypoint"] = 38443,
             ["TT"] = {
@@ -548,10 +456,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [26]
         {
-            ["Trigger"] = {
-                ["y"] = -41.7,
-                ["x"] = 6698.3,
-            },
             ["Range"] = 32.47,
             ["Waypoint"] = 38443,
             ["TT"] = {
@@ -560,10 +464,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [27]
         {
-            ["Trigger"] = {
-                ["y"] = 78,
-                ["x"] = 6647.7,
-            },
             ["Range"] = 45.57,
             ["Waypoint"] = 38443,
             ["TT"] = {
@@ -572,10 +472,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [28]
         {
-            ["Trigger"] = {
-                ["y"] = 179.8,
-                ["x"] = 6632.8,
-            },
             ["Range"] = 61.18,
             ["Waypoint"] = 38443,
             ["TT"] = {
@@ -594,10 +490,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [30]
         {
-            ["Trigger"] = {
-                ["y"] = 573.7,
-                ["x"] = 6639.3,
-            },
             ["GetFP"] = 1613,
             ["Range"] = 3.91,
             ["TT"] = {
@@ -624,10 +516,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [33]
         {
-            ["Trigger"] = {
-                ["y"] = 780.7,
-                ["x"] = 6637.2,
-            },
             ["Waypoint"] = 37853,
             ["Range"] = 39.37,
             ["TT"] = {
@@ -636,10 +524,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [34]
         {
-            ["Trigger"] = {
-                ["y"] = 856.9,
-                ["x"] = 6622.5,
-            },
             ["Qpart"] = {
                 [37853] = {
                     ["1"] = "1",
@@ -652,10 +536,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [35]
         {
-            ["Trigger"] = {
-                ["y"] = 830.2,
-                ["x"] = 6645.2,
-            },
             ["Waypoint"] = 37853,
             ["Range"] = 35.32,
             ["TT"] = {
@@ -664,10 +544,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [36]
         {
-            ["Trigger"] = {
-                ["y"] = 673,
-                ["x"] = 6665.3,
-            },
             ["Qpart"] = {
                 [37853] = {
                     ["2"] = "2",
@@ -698,10 +574,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [39]
         {
-            ["Trigger"] = {
-                ["y"] = 647.2,
-                ["x"] = 6609.5,
-            },
             ["Qpart"] = {
                 [37991] = {
                     ["1"] = "1",
@@ -732,10 +604,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [42]
         {
-            ["Trigger"] = {
-                ["y"] = 681.4,
-                ["x"] = 6566.3,
-            },
             ["Qpart"] = {
                 [42271] = {
                     ["1"] = "1",
@@ -748,10 +616,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [43]
         {
-            ["Trigger"] = {
-                ["y"] = 643.9,
-                ["x"] = 6611.5,
-            },
             ["Qpart"] = {
                 [42271] = {
                     ["2"] = "2",
@@ -764,10 +628,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [44]
         {
-            ["Trigger"] = {
-                ["y"] = 649.1,
-                ["x"] = 6615.6,
-            },
             ["Qpart"] = {
                 [42271] = {
                     ["3"] = "3",
@@ -822,10 +682,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 187.5,
-                ["x"] = 6861.8,
-            },
             ["Fillers"] = {
                 [37256] = {
                     ["2"] = "2",
@@ -838,10 +694,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [50]
         {
-            ["Trigger"] = {
-                ["y"] = 191.4,
-                ["x"] = 6846.1,
-            },
             ["Qpart"] = {
                 [37256] = {
                     ["2"] = "2",
@@ -903,10 +755,6 @@ if (APR.Faction == "Alliance") then
                 ["Qid"] = 38407,
                 ["MobId"] = 109174,
             },
-            ["Trigger"] = {
-                ["y"] = 200,
-                ["x"] = 6424.2,
-            },
             ["Fillers"] = {
                 [37257] = {
                     ["1"] = "1",
@@ -928,10 +776,6 @@ if (APR.Faction == "Alliance") then
                 ["Text"] = "Salteye mobs",
                 ["Qid"] = 38407,
                 ["MobId"] = 109174,
-            },
-            ["Trigger"] = {
-                ["y"] = 363.7,
-                ["x"] = 6420,
             },
             ["Fillers"] = {
                 [37257] = {
@@ -960,10 +804,6 @@ if (APR.Faction == "Alliance") then
                 ["Text"] = "Salteye mobs",
                 ["Qid"] = 38407,
                 ["MobId"] = 109174,
-            },
-            ["Trigger"] = {
-                ["y"] = 361.1,
-                ["x"] = 6418.2,
             },
             ["Range"] = 37.28,
             ["TT"] = {
@@ -1013,10 +853,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -10,
-                ["x"] = 6734.5,
-            },
             ["RaidIcon"] = 88115,
             ["Range"] = 23.5,
             ["TT"] = {
@@ -1043,10 +879,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [64]
         {
-            ["Trigger"] = {
-                ["y"] = -183.5,
-                ["x"] = 6380.2,
-            },
             ["Waypoint"] = 37486,
             ["Range"] = 14.87,
             ["TT"] = {
@@ -1065,10 +897,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [66]
         {
-            ["Trigger"] = {
-                ["y"] = -139,
-                ["x"] = 6370.8,
-            },
             ["Waypoint"] = 42692,
             ["Range"] = 13.1,
             ["TT"] = {
@@ -1077,10 +905,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [67]
         {
-            ["Trigger"] = {
-                ["y"] = -115.1,
-                ["x"] = 6338,
-            },
             ["Qpart"] = {
                 [42692] = {
                     ["1"] = "1",
@@ -1093,10 +917,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [68]
         {
-            ["Trigger"] = {
-                ["y"] = -143.2,
-                ["x"] = 6377.8,
-            },
             ["Waypoint"] = 42692,
             ["Range"] = 13.41,
             ["TT"] = {
@@ -1105,10 +925,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [69]
         {
-            ["Trigger"] = {
-                ["y"] = -126.3,
-                ["x"] = 6412.5,
-            },
             ["Waypoint"] = 42692,
             ["Range"] = 9.44,
             ["TT"] = {
@@ -1117,10 +933,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [70]
         {
-            ["Trigger"] = {
-                ["y"] = -110.3,
-                ["x"] = 6406.8,
-            },
             ["Qpart"] = {
                 [42692] = {
                     ["2"] = "2",
@@ -1133,10 +945,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [71]
         {
-            ["Trigger"] = {
-                ["y"] = -171,
-                ["x"] = 6426.6,
-            },
             ["Waypoint"] = 42692,
             ["Range"] = 10.15,
             ["TT"] = {
@@ -1145,10 +953,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [72]
         {
-            ["Trigger"] = {
-                ["y"] = -191.5,
-                ["x"] = 6420,
-            },
             ["Waypoint"] = 42692,
             ["Range"] = 10.04,
             ["TT"] = {
@@ -1157,10 +961,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [73]
         {
-            ["Trigger"] = {
-                ["y"] = -167.2,
-                ["x"] = 6411.7,
-            },
             ["Qpart"] = {
                 [42692] = {
                     ["3"] = "3",
@@ -1173,10 +973,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [74]
         {
-            ["Trigger"] = {
-                ["y"] = -161.4,
-                ["x"] = 6252.3,
-            },
             ["Waypoint"] = 37486,
             ["Range"] = 17.4,
             ["TT"] = {
@@ -1185,10 +981,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [75]
         {
-            ["Trigger"] = {
-                ["y"] = -194.7,
-                ["x"] = 6259.2,
-            },
             ["Waypoint"] = 37486,
             ["Range"] = 6.66,
             ["TT"] = {
@@ -1197,10 +989,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [76]
         {
-            ["Trigger"] = {
-                ["y"] = -222.7,
-                ["x"] = 6212.3,
-            },
             ["Waypoint"] = 37486,
             ["Range"] = 16.82,
             ["TT"] = {
@@ -1213,10 +1001,6 @@ if (APR.Faction == "Alliance") then
                 [37486] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -311.5,
-                ["x"] = 6162.6,
             },
             ["Fillers"] = {
                 [37466] = {
@@ -1234,10 +1018,6 @@ if (APR.Faction == "Alliance") then
                 [42693] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -229.2,
-                ["x"] = 6190.3,
             },
             ["Fillers"] = {
                 [37466] = {
@@ -1275,10 +1055,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -188.7,
-                ["x"] = 6312.7,
-            },
             ["Fillers"] = {
                 [37466] = {
                     ["1"] = "1",
@@ -1295,10 +1071,6 @@ if (APR.Faction == "Alliance") then
                 [42694] = {
                     ["4"] = "4",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -203.2,
-                ["x"] = 6199.3,
             },
             ["Fillers"] = {
                 [37466] = {
@@ -1317,10 +1089,6 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -40.8,
-                ["x"] = 6130.7,
-            },
             ["Fillers"] = {
                 [37466] = {
                     ["1"] = "1",
@@ -1338,10 +1106,6 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 101.8,
-                ["x"] = 6210.8,
-            },
             ["Fillers"] = {
                 [37466] = {
                     ["1"] = "1",
@@ -1354,10 +1118,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [85]
         {
-            ["Trigger"] = {
-                ["y"] = -54.8,
-                ["x"] = 6211.6,
-            },
             ["Qpart"] = {
                 [37466] = {
                     ["1"] = "1",
@@ -1403,10 +1163,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -138.7,
-                ["x"] = 6419.6,
-            },
             ["RaidIcon"] = 88889,
             ["Range"] = 10.17,
             ["TT"] = {
@@ -1433,10 +1189,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [92]
         {
-            ["Trigger"] = {
-                ["y"] = 111.8,
-                ["x"] = 6316.5,
-            },
             ["Waypoint"] = 37468,
             ["Range"] = 9.71,
             ["TT"] = {
@@ -1464,10 +1216,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [95]
         {
-            ["Trigger"] = {
-                ["y"] = 171.1,
-                ["x"] = 6335.2,
-            },
             ["Qpart"] = {
                 [37736] = {
                     ["4"] = "4",
@@ -1480,10 +1228,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [96]
         {
-            ["Trigger"] = {
-                ["y"] = 153.1,
-                ["x"] = 6325.8,
-            },
             ["Qpart"] = {
                 [37736] = {
                     ["1"] = "1",
@@ -1500,10 +1244,6 @@ if (APR.Faction == "Alliance") then
                 [37736] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 96.4,
-                ["x"] = 6274.1,
             },
             ["Fillers"] = {
                 [37678] = {
@@ -1522,10 +1262,6 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 54.7,
-                ["x"] = 6309.2,
-            },
             ["Fillers"] = {
                 [37678] = {
                     ["1"] = "1",
@@ -1538,10 +1274,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [99]
         {
-            ["Trigger"] = {
-                ["y"] = 52.7,
-                ["x"] = 6308.3,
-            },
             ["Qpart"] = {
                 [37678] = {
                     ["1"] = "1",
@@ -1573,10 +1305,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [102]
         {
-            ["Trigger"] = {
-                ["y"] = 170.9,
-                ["x"] = 6386,
-            },
             ["Waypoint"] = 37518,
             ["Range"] = 13.86,
             ["TT"] = {
@@ -1608,10 +1336,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 202.3,
-                ["x"] = 6470.5,
-            },
             ["ExtraActionB"] = 1,
             ["Range"] = 17.82,
             ["TT"] = {
@@ -1638,10 +1362,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [108]
         {
-            ["Trigger"] = {
-                ["y"] = 185.5,
-                ["x"] = 6485,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["1"] = "1",
@@ -1654,10 +1374,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [109]
         {
-            ["Trigger"] = {
-                ["y"] = 193.6,
-                ["x"] = 6464.5,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["2"] = "2",
@@ -1670,10 +1386,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [110]
         {
-            ["Trigger"] = {
-                ["y"] = 201.4,
-                ["x"] = 6453.7,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["3"] = "3",
@@ -1686,10 +1398,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [111]
         {
-            ["Trigger"] = {
-                ["y"] = 180.1,
-                ["x"] = 6481.8,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["4"] = "4",
@@ -1702,10 +1410,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [112]
         {
-            ["Trigger"] = {
-                ["y"] = 194.1,
-                ["x"] = 6464,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["5"] = "5",
@@ -1718,10 +1422,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [113]
         {
-            ["Trigger"] = {
-                ["y"] = 202.1,
-                ["x"] = 6453.1,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["6"] = "6",
@@ -1734,10 +1434,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [114]
         {
-            ["Trigger"] = {
-                ["y"] = 185.3,
-                ["x"] = 6482.8,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["7"] = "7",
@@ -1750,10 +1446,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [115]
         {
-            ["Trigger"] = {
-                ["y"] = 193.6,
-                ["x"] = 6464.3,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["8"] = "8",
@@ -1766,10 +1458,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [116]
         {
-            ["Trigger"] = {
-                ["y"] = 202.3,
-                ["x"] = 6452.1,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["9"] = "9",
@@ -1800,10 +1488,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [119]
         {
-            ["Trigger"] = {
-                ["y"] = 199.6,
-                ["x"] = 6461.7,
-            },
             ["Qpart"] = {
                 [37729] = {
                     ["1"] = "1",
@@ -1842,10 +1526,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 214.1,
-                ["x"] = 6478.8,
-            },
             ["Range"] = 4.88,
             ["TT"] = {
                 ["y"] = 214.1,
@@ -1853,10 +1533,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [123]
         {
-            ["Trigger"] = {
-                ["y"] = 174,
-                ["x"] = 6389.6,
-            },
             ["Range"] = 15.15,
             ["Waypoint"] = 37730,
             ["TT"] = {
@@ -1883,10 +1559,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [126]
         {
-            ["Trigger"] = {
-                ["y"] = 244.6,
-                ["x"] = 6282.3,
-            },
             ["Qpart"] = {
                 [37469] = {
                     ["1"] = "1",
@@ -1923,10 +1595,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -99.1,
-                ["x"] = 6019.8,
-            },
             ["Range"] = 3.63,
             ["TT"] = {
                 ["y"] = -99.1,
@@ -1934,10 +1602,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [130]
         {
-            ["Trigger"] = {
-                ["y"] = 6,
-                ["x"] = 6280.8,
-            },
             ["Qpart"] = {
                 [37530] = {
                     ["2"] = "2",
@@ -1950,10 +1614,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [131]
         {
-            ["Trigger"] = {
-                ["y"] = -19.9,
-                ["x"] = 6190.8,
-            },
             ["Qpart"] = {
                 [37530] = {
                     ["3"] = "3",
@@ -1966,10 +1626,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [132]
         {
-            ["Trigger"] = {
-                ["y"] = -4,
-                ["x"] = 6178.1,
-            },
             ["Qpart"] = {
                 [37530] = {
                     ["4"] = "4",
@@ -1982,10 +1638,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [133]
         {
-            ["Trigger"] = {
-                ["y"] = -17.2,
-                ["x"] = 5974,
-            },
             ["Qpart"] = {
                 [37530] = {
                     ["5"] = "5",
@@ -1998,10 +1650,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [134]
         {
-            ["Trigger"] = {
-                ["y"] = -17.2,
-                ["x"] = 5974,
-            },
             ["Qpart"] = {
                 [37530] = {
                     ["6"] = "6",
@@ -2014,10 +1662,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [135]
         {
-            ["Trigger"] = {
-                ["y"] = -99.8,
-                ["x"] = 6021.7,
-            },
             ["Qpart"] = {
                 [37530] = {
                     ["7"] = "7",
@@ -2048,10 +1692,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [138]
         {
-            ["Trigger"] = {
-                ["y"] = 6.7,
-                ["x"] = 5690.8,
-            },
             ["Qpart"] = {
                 [37470] = {
                     ["1"] = "1",
@@ -2073,10 +1713,6 @@ if (APR.Faction == "Alliance") then
             },
         },             -- [140]
         {
-            ["Trigger"] = {
-                ["y"] = 1.4,
-                ["x"] = 5764.6,
-            },
             ["Qpart"] = {
                 [37779] = {
                     ["1"] = "1",
@@ -2107,10 +1743,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [143]
         {
-            ["Trigger"] = {
-                ["y"] = 533,
-                ["x"] = 5624.8,
-            },
             ["Qpart"] = {
                 [42375] = {
                     ["1"] = "1",
@@ -2150,10 +1782,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 462.3,
-                ["x"] = 5401.5,
-            },
             ["Fillers"] = {
                 [42368] = {
                     ["1"] = "1",
@@ -2171,10 +1799,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 581.7,
-                ["x"] = 5426.8,
-            },
             ["Fillers"] = {
                 [42368] = {
                     ["1"] = "1",
@@ -2187,10 +1811,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [148]
         {
-            ["Trigger"] = {
-                ["y"] = 587.5,
-                ["x"] = 5401.8,
-            },
             ["Qpart"] = {
                 [42368] = {
                     ["1"] = "1",
@@ -2224,10 +1844,6 @@ if (APR.Faction == "Alliance") then
             ["NodeID"] = 1613,
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 644.7,
-                ["x"] = 6510.1,
-            },
             ["Waypoint"] = 37855,
             ["Range"] = 21.48,
             ["TT"] = {
@@ -2236,10 +1852,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 1027.8,
-                ["x"] = 6463.5,
-            },
             ["Waypoint"] = 37855,
             ["Range"] = 33.55,
             ["TT"] = {
@@ -2275,10 +1887,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 1131.5,
-                ["x"] = 6559,
-            },
             ["Qpart"] = {
                 [37859] = {
                     ["1"] = "1",
@@ -2305,10 +1913,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1445,
-                ["x"] = 6723.6,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = 1445,
@@ -2321,10 +1925,6 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1248.8,
-                ["x"] = 6829.5,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 1248.8,
@@ -2336,10 +1936,6 @@ if (APR.Faction == "Alliance") then
                 [38203] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1432.7,
-                ["x"] = 7004,
             },
             ["Range"] = 0.75,
             ["TT"] = {
@@ -2371,10 +1967,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1026,
-                ["x"] = 6996.6,
-            },
             ["Fillers"] = {
                 [37859] = {
                     ["2"] = "2",
@@ -2390,10 +1982,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = 1052.2,
-                ["x"] = 6902.2,
-            },
             ["Qpart"] = {
                 [37859] = {
                     ["2"] = "2",
@@ -2409,10 +1997,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [15]
         {
-            ["Trigger"] = {
-                ["y"] = 1076,
-                ["x"] = 6604.7,
-            },
             ["Qpart"] = {
                 [37957] = {
                     ["2"] = "2",
@@ -2459,10 +2043,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 1099.7,
-                ["x"] = 6588.3,
-            },
             ["RaidIcon"] = 90406,
             ["Range"] = 7.65,
             ["TT"] = {
@@ -2503,10 +2083,6 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1027.5,
-                ["x"] = 6094.2,
-            },
             ["Fillers"] = {
                 [37959] = {
                     ["1"] = "1",
@@ -2524,10 +2100,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1117.7,
-                ["x"] = 6033.8,
-            },
             ["Fillers"] = {
                 [37959] = {
                     ["1"] = "1",
@@ -2544,10 +2116,6 @@ if (APR.Faction == "Alliance") then
                 [37959] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1108,
-                ["x"] = 6031.2,
             },
             ["Range"] = 47.36,
             ["TT"] = {
@@ -2597,10 +2165,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1132.5,
-                ["x"] = 6117.1,
-            },
             ["Range"] = 13.02,
             ["ExtraActionB"] = 1,
             ["TT"] = {
@@ -2613,10 +2177,6 @@ if (APR.Faction == "Alliance") then
                 [37860] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1175.2,
-                ["x"] = 6145.8,
             },
             ["Range"] = 15.11,
             ["ExtraActionB"] = 1,
@@ -2631,10 +2191,6 @@ if (APR.Faction == "Alliance") then
                     ["4"] = "4",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1197,
-                ["x"] = 6080.3,
-            },
             ["Range"] = 8.71,
             ["ExtraActionB"] = 1,
             ["TT"] = {
@@ -2647,10 +2203,6 @@ if (APR.Faction == "Alliance") then
                 [37860] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1226.4,
-                ["x"] = 6166.6,
             },
             ["Range"] = 13.78,
             ["ExtraActionB"] = 1,
@@ -2669,10 +2221,6 @@ if (APR.Faction == "Alliance") then
             },
         },             -- [35]
         {
-            ["Trigger"] = {
-                ["y"] = 1226.5,
-                ["x"] = 6137.5,
-            },
             ["Waypoint"] = 37861,
             ["Range"] = 12.97,
             ["TT"] = {
@@ -2681,10 +2229,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [37]
         {
-            ["Trigger"] = {
-                ["y"] = 1211.8,
-                ["x"] = 6111.8,
-            },
             ["Waypoint"] = 37861,
             ["Range"] = 13.16,
             ["TT"] = {
@@ -2693,10 +2237,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [38]
         {
-            ["Trigger"] = {
-                ["y"] = 1286.5,
-                ["x"] = 6076.1,
-            },
             ["Waypoint"] = 37861,
             ["Range"] = 8.23,
             ["TT"] = {
@@ -2705,10 +2245,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [39]
         {
-            ["Trigger"] = {
-                ["y"] = 1251.8,
-                ["x"] = 6027.8,
-            },
             ["Qpart"] = {
                 [37861] = {
                     ["1"] = "1",
@@ -2745,10 +2281,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 1212.5,
-                ["x"] = 6040,
-            },
             ["Range"] = 7.63,
             ["TT"] = {
                 ["y"] = 1212.5,
@@ -2774,10 +2306,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [45]
         {
-            ["Trigger"] = {
-                ["y"] = 665,
-                ["x"] = 6580.5,
-            },
             ["Waypoint"] = 38014,
             ["Range"] = 10.44,
             ["TT"] = {
@@ -2790,10 +2318,6 @@ if (APR.Faction == "Alliance") then
                 [38015] = {
                     ["4"] = "4",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 705.7,
-                ["x"] = 6557.3,
             },
             ["Button"] = {
                 ["38015-4"] = 138146,
@@ -2815,10 +2339,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 579.6,
-                ["x"] = 6625.1,
-            },
             ["Button"] = {
                 ["38015-1"] = 138146,
             },
@@ -2839,10 +2359,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 614.9,
-                ["x"] = 6669.3,
-            },
             ["Button"] = {
                 ["38015-3"] = 138146,
             },
@@ -2858,10 +2374,6 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 649.2,
-                ["x"] = 6718.3,
-            },
             ["Fillers"] = {
                 [38014] = {
                     ["1"] = "1",
@@ -2874,10 +2386,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [50]
         {
-            ["Trigger"] = {
-                ["y"] = 644.9,
-                ["x"] = 6719.3,
-            },
             ["Qpart"] = {
                 [38014] = {
                     ["1"] = "1",
@@ -2917,10 +2425,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [54]
         {
-            ["Trigger"] = {
-                ["y"] = 699.7,
-                ["x"] = 6651.8,
-            },
             ["Waypoint"] = 42567,
             ["Range"] = 23.25,
             ["TT"] = {
@@ -2947,10 +2451,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [57]
         {
-            ["Trigger"] = {
-                ["y"] = 616.4,
-                ["x"] = 6657.8,
-            },
             ["Qpart"] = {
                 [42756] = {
                     ["1"] = "1",
@@ -2963,10 +2463,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [58]
         {
-            ["Trigger"] = {
-                ["y"] = 614.2,
-                ["x"] = 6657.8,
-            },
             ["Qpart"] = {
                 [42756] = {
                     ["2"] = "2",
@@ -3022,10 +2518,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -354.8,
-                ["x"] = 6593.8,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = -354.8,
@@ -3052,10 +2544,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -258.3,
-                ["x"] = 6589,
-            },
             ["Qpart"] = {
                 [37542] = {
                     ["1"] = "1",
@@ -3077,10 +2565,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = -412.4,
-                ["x"] = 6608.1,
-            },
             ["Waypoint"] = 37528,
             ["Range"] = 7.61,
             ["TT"] = {
@@ -3089,10 +2573,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = -424.5,
-                ["x"] = 6592.2,
-            },
             ["Waypoint"] = 37528,
             ["Range"] = 6.87,
             ["TT"] = {
@@ -3101,10 +2581,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = -421.4,
-                ["x"] = 6583,
-            },
             ["Qpart"] = {
                 [37528] = {
                     ["1"] = "1",
@@ -3153,10 +2629,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = -343.5,
-                ["x"] = 6533.2,
-            },
             ["Waypoint"] = 37536,
             ["Range"] = 17.98,
             ["TT"] = {
@@ -3171,10 +2643,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -379.9,
-                ["x"] = 6519.8,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = -379.9,
@@ -3182,10 +2650,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = -341.8,
-                ["x"] = 6536,
-            },
             ["Waypoint"] = 37536,
             ["Range"] = 13.64,
             ["TT"] = {
@@ -3218,10 +2682,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -337.4,
-                ["x"] = 6675.5,
-            },
             ["Range"] = 14.61,
             ["TT"] = {
                 ["y"] = -337.4,
@@ -3229,10 +2689,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -444.5,
-                ["x"] = 6673.8,
-            },
             ["Waypoint"] = 37538,
             ["Range"] = 16.3,
             ["TT"] = {
@@ -3259,10 +2715,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [23]
         {
-            ["Trigger"] = {
-                ["y"] = -741.8,
-                ["x"] = 6605.3,
-            },
             ["Waypoint"] = 37565,
             ["Range"] = 20.06,
             ["TT"] = {
@@ -3293,10 +2745,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -787.3,
-                ["x"] = 6783.1,
-            },
             ["Button"] = {
                 ["37565-1"] = 118330,
             },
@@ -3319,10 +2767,6 @@ if (APR.Faction == "Alliance") then
                 [37495] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -955.2,
-                ["x"] = 6611.1,
             },
             ["Button"] = {
                 ["37565-1"] = 118330,
@@ -3347,10 +2791,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -872.8,
-                ["x"] = 6448.8,
-            },
             ["Button"] = {
                 ["37565-1"] = 118330,
             },
@@ -3371,10 +2811,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -879.2,
-                ["x"] = 6448.2,
-            },
             ["Button"] = {
                 ["37565-1"] = 118330,
             },
@@ -3385,10 +2821,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [29]
         {
-            ["Trigger"] = {
-                ["y"] = -871.5,
-                ["x"] = 6553.6,
-            },
             ["Qpart"] = {
                 [37495] = {
                     ["1"] = "1",
@@ -3419,10 +2851,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [32]
         {
-            ["Trigger"] = {
-                ["y"] = -1006.2,
-                ["x"] = 6299.3,
-            },
             ["Qpart"] = {
                 [37566] = {
                     ["1"] = "1",
@@ -3470,10 +2898,6 @@ if (APR.Faction == "Alliance") then
             ["SetHS"] = 37657,
         }, -- [37]
         {
-            ["Trigger"] = {
-                ["y"] = -781.5,
-                ["x"] = 6129.3,
-            },
             ["GetFP"] = 1633,
             ["Range"] = 5.91,
             ["TT"] = {
@@ -3482,10 +2906,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [38]
         {
-            ["Trigger"] = {
-                ["y"] = -878.8,
-                ["x"] = 5708.8,
-            },
             ["Waypoint"] = 37657,
             ["Range"] = 27.4,
             ["TT"] = {
@@ -3498,10 +2918,6 @@ if (APR.Faction == "Alliance") then
                 [37657] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -990.8,
-                ["x"] = 5616.8,
             },
             ["Fillers"] = {
                 [37657] = {
@@ -3518,10 +2934,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [40]
         {
-            ["Trigger"] = {
-                ["y"] = -888.7,
-                ["x"] = 5707.2,
-            },
             ["Qpart"] = {
                 [42220] = {
                     ["1"] = "1",
@@ -3556,10 +2968,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [43]
         {
-            ["Trigger"] = {
-                ["y"] = -667.2,
-                ["x"] = 5541.6,
-            },
             ["Waypoint"] = 37659,
             ["Range"] = 5.85,
             ["TT"] = {
@@ -3568,10 +2976,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [44]
         {
-            ["Trigger"] = {
-                ["y"] = -661.5,
-                ["x"] = 5552.3,
-            },
             ["Waypoint"] = 37659,
             ["Range"] = 3.58,
             ["TT"] = {
@@ -3598,10 +3002,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [47]
         {
-            ["Trigger"] = {
-                ["y"] = -592.3,
-                ["x"] = 5637,
-            },
             ["Waypoint"] = 42238,
             ["Range"] = 7.49,
             ["TT"] = {
@@ -3634,10 +3034,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 2,
-            ["Trigger"] = {
-                ["y"] = -438.4,
-                ["x"] = 5762.7,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = -438.4,
@@ -3663,10 +3059,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [53]
         {
-            ["Trigger"] = {
-                ["y"] = -438.8,
-                ["x"] = 5761.8,
-            },
             ["Qpart"] = {
                 [38232] = {
                     ["1"] = "1",
@@ -3699,10 +3091,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [56]
         {
-            ["Trigger"] = {
-                ["y"] = -516.2,
-                ["x"] = 5604.1,
-            },
             ["Range"] = 11.03,
             ["Waypoint"] = 38237,
             ["TT"] = {
@@ -3718,10 +3106,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -518,
-                ["x"] = 5606.8,
-            },
             ["Range"] = 10.44,
             ["TT"] = {
                 ["y"] = -518,
@@ -3729,10 +3113,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [58]
         {
-            ["Trigger"] = {
-                ["y"] = -518.8,
-                ["x"] = 5609.8,
-            },
             ["Range"] = 14.85,
             ["Waypoint"] = 38237,
             ["TT"] = {
@@ -3806,10 +3186,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2289.8,
-                ["x"] = 6593.2,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 2289.8,
@@ -3835,10 +3211,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 2591.4,
-                ["x"] = 6650.3,
-            },
             ["Range"] = 31.04,
             ["Waypoint"] = 38384,
             ["TT"] = {
@@ -3847,10 +3219,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 2532.9,
-                ["x"] = 6618.8,
-            },
             ["Range"] = 25.25,
             ["Waypoint"] = 38384,
             ["TT"] = {
@@ -3859,10 +3227,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 2368.4,
-                ["x"] = 6665.1,
-            },
             ["Range"] = 27.42,
             ["Waypoint"] = 38384,
             ["TT"] = {
@@ -3914,10 +3278,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2352.5,
-                ["x"] = 6144.1,
-            },
             ["Fillers"] = {
                 [39393] = {
                     ["1"] = "1",
@@ -3948,10 +3308,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [15]
         {
-            ["Trigger"] = {
-                ["y"] = 2314,
-                ["x"] = 6112.2,
-            },
             ["Range"] = 12.21,
             ["Waypoint"] = 39384,
             ["TT"] = {
@@ -3960,10 +3316,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = 2389.3,
-                ["x"] = 6099.6,
-            },
             ["Range"] = 13.78,
             ["Waypoint"] = 39384,
             ["TT"] = {
@@ -3972,10 +3324,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 2460.4,
-                ["x"] = 6136.8,
-            },
             ["Range"] = 9.07,
             ["Waypoint"] = 39384,
             ["TT"] = {
@@ -3984,10 +3332,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [18]
         {
-            ["Trigger"] = {
-                ["y"] = 2503.9,
-                ["x"] = 6108.6,
-            },
             ["Range"] = 14.3,
             ["Waypoint"] = 39384,
             ["TT"] = {
@@ -3996,10 +3340,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = 2501.8,
-                ["x"] = 6040.3,
-            },
             ["Qpart"] = {
                 [39384] = {
                     ["2"] = "2",
@@ -4030,10 +3370,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [22]
         {
-            ["Trigger"] = {
-                ["y"] = 2503.5,
-                ["x"] = 6015.5,
-            },
             ["Qpart"] = {
                 [40573] = {
                     ["1"] = "1",
@@ -4046,10 +3382,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [23]
         {
-            ["Trigger"] = {
-                ["y"] = 2499.1,
-                ["x"] = 6123,
-            },
             ["Range"] = 11.15,
             ["Waypoint"] = 40573,
             ["TT"] = {
@@ -4058,10 +3390,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [24]
         {
-            ["Trigger"] = {
-                ["y"] = 2170,
-                ["x"] = 6178.3,
-            },
             ["Range"] = 13.25,
             ["Waypoint"] = 40573,
             ["TT"] = {
@@ -4070,10 +3398,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [25]
         {
-            ["Trigger"] = {
-                ["y"] = 2130.3,
-                ["x"] = 6145.5,
-            },
             ["Range"] = 8.49,
             ["Waypoint"] = 40573,
             ["TT"] = {
@@ -4082,10 +3406,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [26]
         {
-            ["Trigger"] = {
-                ["y"] = 2120.5,
-                ["x"] = 6120.6,
-            },
             ["Range"] = 10.07,
             ["Waypoint"] = 40573,
             ["TT"] = {
@@ -4094,10 +3414,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [27]
         {
-            ["Trigger"] = {
-                ["y"] = 2117.3,
-                ["x"] = 6062.6,
-            },
             ["Qpart"] = {
                 [40573] = {
                     ["4"] = "4",
@@ -4110,10 +3426,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [28]
         {
-            ["Trigger"] = {
-                ["y"] = 2120.9,
-                ["x"] = 6125.8,
-            },
             ["Waypoint"] = 40573,
             ["Range"] = 9.36,
             ["TT"] = {
@@ -4131,10 +3443,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [30]
         {
-            ["Trigger"] = {
-                ["y"] = 2185.6,
-                ["x"] = 6174.8,
-            },
             ["Qpart"] = {
                 [39393] = {
                     ["1"] = "1",
@@ -4147,10 +3455,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [31]
         {
-            ["Trigger"] = {
-                ["y"] = 2236.6,
-                ["x"] = 6044,
-            },
             ["Range"] = 14.89,
             ["Waypoint"] = 38142,
             ["TT"] = {
@@ -4184,10 +3488,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2332.3,
-                ["x"] = 5856.3,
-            },
             ["Fillers"] = {
                 [42884] = {
                     ["1"] = "1",
@@ -4206,10 +3506,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [35]
         {
-            ["Trigger"] = {
-                ["y"] = 2330.4,
-                ["x"] = 5847.1,
-            },
             ["Qpart"] = {
                 [42884] = {
                     ["1"] = "1",
@@ -4240,10 +3536,6 @@ if (APR.Faction == "Alliance") then
             },
         },             -- [37]
         {
-            ["Trigger"] = {
-                ["y"] = 1922,
-                ["x"] = 6214.8,
-            },
             ["Range"] = 34.99,
             ["Waypoint"] = 38142,
             ["TT"] = {
@@ -4262,10 +3554,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [39]
         {
-            ["Trigger"] = {
-                ["y"] = 1924.5,
-                ["x"] = 6310.7,
-            },
             ["Range"] = 16.18,
             ["Waypoint"] = 42747,
             ["TT"] = {
@@ -4288,10 +3576,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1956.5,
-                ["x"] = 6342.2,
-            },
             ["Fillers"] = {
                 [42748] = {
                     ["1"] = "1",
@@ -4308,10 +3592,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [42]
         {
-            ["Trigger"] = {
-                ["y"] = 2006.8,
-                ["x"] = 6342.8,
-            },
             ["Range"] = 16.76,
             ["Waypoint"] = 42747,
             ["TT"] = {
@@ -4320,10 +3600,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [43]
         {
-            ["Trigger"] = {
-                ["y"] = 2053.8,
-                ["x"] = 6299.6,
-            },
             ["Range"] = 14.9,
             ["Waypoint"] = 42747,
             ["TT"] = {
@@ -4336,10 +3612,6 @@ if (APR.Faction == "Alliance") then
                 [42750] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2002.4,
-                ["x"] = 6242.3,
             },
             ["Fillers"] = {
                 [42748] = {
@@ -4357,10 +3629,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [45]
         {
-            ["Trigger"] = {
-                ["y"] = 2046.5,
-                ["x"] = 6317.1,
-            },
             ["Range"] = 12.72,
             ["Waypoint"] = 42747,
             ["TT"] = {
@@ -4369,10 +3637,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [46]
         {
-            ["Trigger"] = {
-                ["y"] = 1981,
-                ["x"] = 6426.3,
-            },
             ["Range"] = 17.3,
             ["Waypoint"] = 42747,
             ["TT"] = {
@@ -4385,10 +3649,6 @@ if (APR.Faction == "Alliance") then
                 [42750] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1985.5,
-                ["x"] = 6504.6,
             },
             ["Fillers"] = {
                 [42748] = {
@@ -4406,10 +3666,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [48]
         {
-            ["Trigger"] = {
-                ["y"] = 1990.2,
-                ["x"] = 6498.2,
-            },
             ["Qpart"] = {
                 [42748] = {
                     ["1"] = "1",
@@ -4426,10 +3682,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [49]
         {
-            ["Trigger"] = {
-                ["y"] = 1918.8,
-                ["x"] = 6248.8,
-            },
             ["Range"] = 16.11,
             ["Waypoint"] = 42747,
             ["TT"] = {
@@ -4458,10 +3710,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [52]
         {
-            ["Trigger"] = {
-                ["y"] = 1867,
-                ["x"] = 6243,
-            },
             ["Waypoint"] = 42751,
             ["Range"] = 9.12,
             ["TT"] = {
@@ -4470,10 +3718,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [53]
         {
-            ["Trigger"] = {
-                ["y"] = 1834.4,
-                ["x"] = 6231.3,
-            },
             ["Waypoint"] = 42751,
             ["Range"] = 7.5,
             ["TT"] = {
@@ -4482,10 +3726,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [54]
         {
-            ["Trigger"] = {
-                ["y"] = 1846.4,
-                ["x"] = 6286.7,
-            },
             ["Waypoint"] = 42751,
             ["Range"] = 13.1,
             ["TT"] = {
@@ -4494,10 +3734,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [55]
         {
-            ["Trigger"] = {
-                ["y"] = 1927.7,
-                ["x"] = 6290.3,
-            },
             ["Qpart"] = {
                 [42751] = {
                     ["1"] = "1",
@@ -4516,10 +3752,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 1930.2,
-                ["x"] = 6279.7,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 1930.2,
@@ -4527,10 +3759,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [57]
         {
-            ["Trigger"] = {
-                ["y"] = 1858.2,
-                ["x"] = 6298.6,
-            },
             ["Range"] = 13.36,
             ["Waypoint"] = 42751,
             ["TT"] = {
@@ -4539,10 +3767,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [58]
         {
-            ["Trigger"] = {
-                ["y"] = 1826.7,
-                ["x"] = 6215.8,
-            },
             ["Range"] = 12.67,
             ["Waypoint"] = 42751,
             ["TT"] = {
@@ -4551,10 +3775,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [59]
         {
-            ["Trigger"] = {
-                ["y"] = 1780,
-                ["x"] = 6187.3,
-            },
             ["Range"] = 17.39,
             ["Waypoint"] = 42751,
             ["TT"] = {
@@ -4563,10 +3783,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [60]
         {
-            ["Trigger"] = {
-                ["y"] = 1761.4,
-                ["x"] = 6252.5,
-            },
             ["Range"] = 17.8,
             ["Waypoint"] = 42751,
             ["TT"] = {
@@ -4575,10 +3791,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [61]
         {
-            ["Trigger"] = {
-                ["y"] = 1824.5,
-                ["x"] = 6309.2,
-            },
             ["Range"] = 28.15,
             ["Waypoint"] = 42751,
             ["TT"] = {
@@ -4596,10 +3808,6 @@ if (APR.Faction == "Alliance") then
             },
         },             -- [63]
         {
-            ["Trigger"] = {
-                ["y"] = 1791.9,
-                ["x"] = 6395.8,
-            },
             ["Range"] = 28.33,
             ["Waypoint"] = 38142,
             ["TT"] = {
@@ -4631,10 +3839,6 @@ if (APR.Faction == "Alliance") then
                 ["MobId"] = 91472,
                 ["Qid"] = 38862,
             },
-            ["Trigger"] = {
-                ["y"] = 2003.5,
-                ["x"] = 6625.7,
-            },
             ["Fillers"] = {
                 [38842] = {
                     ["1"] = "1",
@@ -4659,10 +3863,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1818,
-                ["x"] = 6641,
-            },
             ["Fillers"] = {
                 [38842] = {
                     ["1"] = "1",
@@ -4675,10 +3875,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [68]
         {
-            ["Trigger"] = {
-                ["y"] = 2023.9,
-                ["x"] = 6632.8,
-            },
             ["Qpart"] = {
                 [38842] = {
                     ["1"] = "1",
@@ -4762,10 +3958,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1711.5,
-                ["x"] = 6914.7,
-            },
             ["Fillers"] = {
                 [38455] = {
                     ["1"] = "1",
@@ -4795,10 +3987,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 1716.3,
-                ["x"] = 6912.5,
-            },
             ["Qpart"] = {
                 [38455] = {
                     ["1"] = "1",
@@ -4839,10 +4027,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [4]
         {
-            ["Trigger"] = {
-                ["y"] = 1820.7,
-                ["x"] = 6850.5,
-            },
             ["Range"] = 15.13,
             ["Waypoint"] = 38143,
             ["TT"] = {
@@ -4851,10 +4035,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 1735.7,
-                ["x"] = 6856.8,
-            },
             ["Range"] = 7.71,
             ["Waypoint"] = 38143,
             ["TT"] = {
@@ -4863,10 +4043,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 1737.3,
-                ["x"] = 6871.8,
-            },
             ["Range"] = 7.83,
             ["Waypoint"] = 38143,
             ["TT"] = {
@@ -4894,10 +4070,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = 1784.4,
-                ["x"] = 6879,
-            },
             ["Range"] = 11.03,
             ["Waypoint"] = 38144,
             ["TT"] = {
@@ -4906,10 +4078,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [10]
         {
-            ["Trigger"] = {
-                ["y"] = 1735,
-                ["x"] = 6869.3,
-            },
             ["Range"] = 7.61,
             ["Waypoint"] = 38144,
             ["TT"] = {
@@ -4918,10 +4086,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [11]
         {
-            ["Trigger"] = {
-                ["y"] = 1711.4,
-                ["x"] = 6868.8,
-            },
             ["Range"] = 7.08,
             ["Waypoint"] = 38144,
             ["TT"] = {
@@ -4930,10 +4094,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = 1688.5,
-                ["x"] = 6870.3,
-            },
             ["Range"] = 8.32,
             ["Waypoint"] = 38144,
             ["TT"] = {
@@ -4942,10 +4102,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 1678.3,
-                ["x"] = 6900.5,
-            },
             ["Qpart"] = {
                 [38145] = {
                     ["1"] = "1",
@@ -4980,10 +4136,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = 1719.5,
-                ["x"] = 6851.3,
-            },
             ["Range"] = 10.69,
             ["Waypoint"] = 38147,
             ["TT"] = {
@@ -4992,10 +4144,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 1698.4,
-                ["x"] = 6843.7,
-            },
             ["Range"] = 9.87,
             ["Waypoint"] = 38147,
             ["TT"] = {
@@ -5004,10 +4152,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [18]
         {
-            ["Trigger"] = {
-                ["y"] = 1651.5,
-                ["x"] = 6857.2,
-            },
             ["Range"] = 7.49,
             ["Waypoint"] = 38147,
             ["TT"] = {
@@ -5016,10 +4160,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = 1635.7,
-                ["x"] = 6874.3,
-            },
             ["Qpart"] = {
                 [38147] = {
                     ["1"] = "1",
@@ -5032,10 +4172,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = 1677,
-                ["x"] = 6847,
-            },
             ["Range"] = 10.35,
             ["Waypoint"] = 38147,
             ["TT"] = {
@@ -5044,10 +4180,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [21]
         {
-            ["Trigger"] = {
-                ["y"] = 1719.5,
-                ["x"] = 6851.8,
-            },
             ["Range"] = 7.68,
             ["Waypoint"] = 38147,
             ["TT"] = {
@@ -5056,10 +4188,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [22]
         {
-            ["Trigger"] = {
-                ["y"] = 1755,
-                ["x"] = 6844.2,
-            },
             ["Range"] = 9.36,
             ["Waypoint"] = 38147,
             ["TT"] = {
@@ -5068,10 +4196,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [23]
         {
-            ["Trigger"] = {
-                ["y"] = 1820.7,
-                ["x"] = 6850.8,
-            },
             ["Range"] = 8.23,
             ["Waypoint"] = 38147,
             ["TT"] = {
@@ -5108,10 +4232,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [27]
         {
-            ["Trigger"] = {
-                ["y"] = 2161.1,
-                ["x"] = 7035.5,
-            },
             ["Qpart"] = {
                 [38235] = {
                     ["2"] = "2",
@@ -5124,10 +4244,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [28]
         {
-            ["Trigger"] = {
-                ["y"] = 2131.1,
-                ["x"] = 7095.3,
-            },
             ["Range"] = 6,
             ["Waypoint"] = 38225,
             ["TT"] = {
@@ -5136,10 +4252,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [29]
         {
-            ["Trigger"] = {
-                ["y"] = 2105.9,
-                ["x"] = 7082.3,
-            },
             ["Qpart"] = {
                 [38225] = {
                     ["1"] = "1",
@@ -5152,10 +4264,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [30]
         {
-            ["Trigger"] = {
-                ["y"] = 2197.8,
-                ["x"] = 7191.8,
-            },
             ["Qpart"] = {
                 [38235] = {
                     ["3"] = "3",
@@ -5168,10 +4276,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [31]
         {
-            ["Trigger"] = {
-                ["y"] = 2385.6,
-                ["x"] = 7195,
-            },
             ["Qpart"] = {
                 [38235] = {
                     ["1"] = "1",
@@ -5184,10 +4288,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [32]
         {
-            ["Trigger"] = {
-                ["y"] = 2476.1,
-                ["x"] = 7018.7,
-            },
             ["Range"] = 86.88,
             ["Waypoint"] = 38235,
             ["TT"] = {
@@ -5224,10 +4324,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [36]
         {
-            ["Trigger"] = {
-                ["y"] = 2458.9,
-                ["x"] = 6614.1,
-            },
             ["Qpart"] = {
                 [39354] = {
                     ["1"] = "1",
@@ -5240,10 +4336,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [37]
         {
-            ["Trigger"] = {
-                ["y"] = 2531.5,
-                ["x"] = 6852.6,
-            },
             ["Qpart"] = {
                 [39354] = {
                     ["2"] = "2",
@@ -5289,10 +4381,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2612.5,
-                ["x"] = 6745.6,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 2612.5,
@@ -5318,10 +4406,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [44]
         {
-            ["Trigger"] = {
-                ["y"] = 2636.3,
-                ["x"] = 6504,
-            },
             ["Range"] = 38.25,
             ["Waypoint"] = 38641,
             ["TT"] = {
@@ -5330,10 +4414,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [45]
         {
-            ["Trigger"] = {
-                ["y"] = 2676.1,
-                ["x"] = 6486.1,
-            },
             ["Range"] = 30.97,
             ["Waypoint"] = 38641,
             ["TT"] = {
@@ -5342,10 +4422,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [46]
         {
-            ["Trigger"] = {
-                ["y"] = 2875.3,
-                ["x"] = 6562.3,
-            },
             ["Range"] = 24.79,
             ["Waypoint"] = 38641,
             ["TT"] = {
@@ -5354,10 +4430,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [47]
         {
-            ["Trigger"] = {
-                ["y"] = 2888.6,
-                ["x"] = 6706.7,
-            },
             ["Range"] = 24.97,
             ["Waypoint"] = 38641,
             ["TT"] = {
@@ -5390,10 +4462,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2986.1,
-                ["x"] = 6336.2,
-            },
             ["Fillers"] = {
                 [38655] = {
                     ["1"] = "1",
@@ -5406,10 +4474,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [51]
         {
-            ["Trigger"] = {
-                ["y"] = 2986.1,
-                ["x"] = 6336.2,
-            },
             ["Qpart"] = {
                 [38655] = {
                     ["1"] = "1",
@@ -5441,10 +4505,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [54]
         {
-            ["Trigger"] = {
-                ["y"] = 2845.6,
-                ["x"] = 6599.3,
-            },
             ["Range"] = 33.9,
             ["Waypoint"] = 38663,
             ["TT"] = {
@@ -5453,10 +4513,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [55]
         {
-            ["Trigger"] = {
-                ["y"] = 2772.1,
-                ["x"] = 6564.3,
-            },
             ["Range"] = 19.07,
             ["Waypoint"] = 38663,
             ["TT"] = {
@@ -5489,10 +4545,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2633.5,
-                ["x"] = 6716.3,
-            },
             ["Range"] = 8.59,
             ["TT"] = {
                 ["y"] = 2633.5,
@@ -5519,10 +4571,6 @@ if (APR.Faction == "Alliance") then
         }, -- [61]
         {
             ["ExtraActionB"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2719.3,
-                ["x"] = 6100.7,
-            },
             ["Qpart"] = {
                 [38582] = {
                     ["1"] = "1",
@@ -5535,10 +4583,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [62]
         {
-            ["Trigger"] = {
-                ["y"] = 2904.1,
-                ["x"] = 5939.3,
-            },
             ["Qpart"] = {
                 [38582] = {
                     ["2"] = "2",
@@ -5551,10 +4595,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [63]
         {
-            ["Trigger"] = {
-                ["y"] = 2880.1,
-                ["x"] = 5898.5,
-            },
             ["Range"] = 15.82,
             ["Waypoint"] = 38582,
             ["TT"] = {
@@ -5563,10 +4603,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [64]
         {
-            ["Trigger"] = {
-                ["y"] = 2831.4,
-                ["x"] = 5899.2,
-            },
             ["Qpart"] = {
                 [38582] = {
                     ["3"] = "3",
@@ -5579,10 +4615,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [65]
         {
-            ["Trigger"] = {
-                ["y"] = 2898.5,
-                ["x"] = 5911.8,
-            },
             ["Range"] = 13.21,
             ["Waypoint"] = 38582,
             ["TT"] = {
@@ -5591,10 +4623,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [66]
         {
-            ["Trigger"] = {
-                ["y"] = 2896.8,
-                ["x"] = 5967.6,
-            },
             ["Range"] = 12.75,
             ["Waypoint"] = 38582,
             ["TT"] = {
@@ -5621,10 +4649,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [69]
         {
-            ["Trigger"] = {
-                ["y"] = 2746.1,
-                ["x"] = 5971.5,
-            },
             ["Range"] = 17.45,
             ["Waypoint"] = 38753,
             ["TT"] = {
@@ -5633,10 +4657,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [70]
         {
-            ["Trigger"] = {
-                ["y"] = 2782.1,
-                ["x"] = 5909.1,
-            },
             ["Range"] = 15.88,
             ["Waypoint"] = 38753,
             ["TT"] = {
@@ -5645,10 +4665,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [71]
         {
-            ["Trigger"] = {
-                ["y"] = 2891.6,
-                ["x"] = 5894.7,
-            },
             ["Qpart"] = {
                 [38753] = {
                     ["1"] = "1",
@@ -5699,10 +4715,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [76]
         {
-            ["Trigger"] = {
-                ["y"] = 3108.5,
-                ["x"] = 5857,
-            },
             ["Waypoint"] = 41708,
             ["Range"] = 15.85,
             ["TT"] = {
@@ -5717,10 +4729,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3123.5,
-                ["x"] = 5918.5,
-            },
             ["Fillers"] = {
                 [38671] = {
                     ["1"] = "1",
@@ -5740,10 +4748,6 @@ if (APR.Faction == "Alliance") then
                 [41708] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3134.1,
-                ["x"] = 5912.3,
             },
             ["Gossip"] = 1,
             ["Fillers"] = {
@@ -5787,10 +4791,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [81]
         {
-            ["Trigger"] = {
-                ["y"] = 3119.8,
-                ["x"] = 5921.1,
-            },
             ["Qpart"] = {
                 [38671] = {
                     ["1"] = "1",
@@ -5826,10 +4826,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [84]
         {
-            ["Trigger"] = {
-                ["y"] = 3310,
-                ["x"] = 5952,
-            },
             ["Qpart"] = {
                 [41724] = {
                     ["1"] = "1",
@@ -5862,10 +4858,6 @@ if (APR.Faction == "Alliance") then
         }, -- [87]
         {
             ["Waypoint"] = 41893,
-            ["Trigger"] = {
-                ["y"] = 3596.6,
-                ["x"] = 5945.6,
-            },
             ["Fillers"] = {
                 [38684] = {
                     ["1"] = "1",
@@ -5879,10 +4871,6 @@ if (APR.Faction == "Alliance") then
         }, -- [88]
         {
             ["Waypoint"] = 41893,
-            ["Trigger"] = {
-                ["y"] = 3664.1,
-                ["x"] = 5921.8,
-            },
             ["Fillers"] = {
                 [38684] = {
                     ["1"] = "1",
@@ -5896,10 +4884,6 @@ if (APR.Faction == "Alliance") then
         }, -- [89]
         {
             ["Waypoint"] = 41893,
-            ["Trigger"] = {
-                ["y"] = 3669.5,
-                ["x"] = 5879.8,
-            },
             ["Fillers"] = {
                 [38684] = {
                     ["1"] = "1",
@@ -5917,10 +4901,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3668.4,
-                ["x"] = 5820.8,
-            },
             ["Fillers"] = {
                 [38684] = {
                     ["1"] = "1",
@@ -5933,10 +4913,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [91]
         {
-            ["Trigger"] = {
-                ["y"] = 3623.1,
-                ["x"] = 5937,
-            },
             ["Qpart"] = {
                 [38684] = {
                     ["1"] = "1",
@@ -5968,10 +4944,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [94]
         {
-            ["Trigger"] = {
-                ["y"] = 3360.5,
-                ["x"] = 6008.6,
-            },
             ["Qpart"] = {
                 [43702] = {
                     ["1"] = "1",
@@ -6002,10 +4974,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [97]
         {
-            ["Trigger"] = {
-                ["y"] = 3370.8,
-                ["x"] = 5975.5,
-            },
             ["Waypoint"] = 38687,
             ["Range"] = 112.21,
             ["TT"] = {
@@ -6014,10 +4982,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [98]
         {
-            ["Trigger"] = {
-                ["y"] = 3351.9,
-                ["x"] = 5989,
-            },
             ["Qpart"] = {
                 [43241] = {
                     ["1"] = "1",
@@ -6030,10 +4994,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [99]
         {
-            ["Trigger"] = {
-                ["y"] = 3609.8,
-                ["x"] = 6135.5,
-            },
             ["Qpart"] = {
                 [38687] = {
                     ["1"] = "1",
@@ -6052,10 +5012,6 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3746.9,
-                ["x"] = 6167.3,
-            },
             ["Fillers"] = {
                 [38748] = {
                     ["1"] = "1",
@@ -6073,10 +5029,6 @@ if (APR.Faction == "Alliance") then
                     ["4"] = "4",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3769.1,
-                ["x"] = 6349.2,
-            },
             ["Fillers"] = {
                 [38748] = {
                     ["1"] = "1",
@@ -6089,10 +5041,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [102]
         {
-            ["Trigger"] = {
-                ["y"] = 3769.1,
-                ["x"] = 6349.2,
-            },
             ["Qpart"] = {
                 [38748] = {
                     ["1"] = "1",
@@ -6105,10 +5053,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [103]
         {
-            ["Trigger"] = {
-                ["y"] = 3575.6,
-                ["x"] = 6388.8,
-            },
             ["Qpart"] = {
                 [38687] = {
                     ["5"] = "5",
@@ -6145,10 +5089,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3548.5,
-                ["x"] = 6420.6,
-            },
             ["Range"] = 3.73,
             ["TT"] = {
                 ["y"] = 3548.5,
@@ -6156,10 +5096,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [107]
         {
-            ["Trigger"] = {
-                ["y"] = 2913.4,
-                ["x"] = 6642.8,
-            },
             ["Qpart"] = {
                 [38743] = {
                     ["2"] = "2",
@@ -6246,10 +5182,6 @@ if (APR.Faction == "Alliance") then
         }, -- [5]
         {
             ["Waypoint"] = 38644,
-            ["Trigger"] = {
-                ["y"] = 2569.1,
-                ["x"] = 7485.5,
-            },
             ["Fillers"] = {
                 [38645] = {
                     ["1"] = "1",
@@ -6269,10 +5201,6 @@ if (APR.Faction == "Alliance") then
         }, -- [6]
         {
             ["Waypoint"] = 38644,
-            ["Trigger"] = {
-                ["y"] = 2557.1,
-                ["x"] = 7487.6,
-            },
             ["Fillers"] = {
                 [38645] = {
                     ["1"] = "1",
@@ -6297,10 +5225,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2571.1,
-                ["x"] = 7506.3,
-            },
             ["Fillers"] = {
                 [38645] = {
                     ["1"] = "1",
@@ -6332,10 +5256,6 @@ if (APR.Faction == "Alliance") then
             ["ButtonSpellId"] = {
                 [186052] = "38646-1",
             },
-            ["Trigger"] = {
-                ["y"] = 2817.1,
-                ["x"] = 7564.7,
-            },
             ["Button"] = {
                 ["38646-1"] = 127030,
             },
@@ -6355,10 +5275,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [10]
         {
-            ["Trigger"] = {
-                ["y"] = 2876.9,
-                ["x"] = 7622.3,
-            },
             ["Qpart"] = {
                 [39117] = {
                     ["1"] = "1",
@@ -6394,10 +5310,6 @@ if (APR.Faction == "Alliance") then
             ["ButtonSpellId"] = {
                 [186052] = "38646-1",
             },
-            ["Trigger"] = {
-                ["y"] = 2719.1,
-                ["x"] = 7494.5,
-            },
             ["Button"] = {
                 ["38646-1"] = 127030,
             },
@@ -6418,10 +5330,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = 2797.9,
-                ["x"] = 7271,
-            },
             ["Qpart"] = {
                 [38644] = {
                     ["4"] = "4",
@@ -6459,10 +5367,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2799.1,
-                ["x"] = 7267.2,
-            },
             ["Range"] = 6.64,
             ["TT"] = {
                 ["y"] = 2799.1,
@@ -6488,10 +5392,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = 3018.1,
-                ["x"] = 7353.7,
-            },
             ["Qpart"] = {
                 [38718] = {
                     ["1"] = "1",
@@ -6523,10 +5423,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [23]
         {
-            ["Trigger"] = {
-                ["y"] = 3023.4,
-                ["x"] = 7463,
-            },
             ["Range"] = 11.14,
             ["Waypoint"] = 38715,
             ["TT"] = {
@@ -6535,10 +5431,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [24]
         {
-            ["Trigger"] = {
-                ["y"] = 3039.1,
-                ["x"] = 7457.6,
-            },
             ["Range"] = 12.34,
             ["Waypoint"] = 38715,
             ["TT"] = {
@@ -6551,10 +5443,6 @@ if (APR.Faction == "Alliance") then
                 [38715] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3054.1,
-                ["x"] = 7407.2,
             },
             ["Fillers"] = {
                 [38716] = {
@@ -6573,10 +5461,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3071.5,
-                ["x"] = 7374.7,
-            },
             ["Fillers"] = {
                 [38716] = {
                     ["1"] = "1",
@@ -6593,10 +5477,6 @@ if (APR.Faction == "Alliance") then
                 [38715] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2902.3,
-                ["x"] = 7347.8,
             },
             ["Fillers"] = {
                 [38716] = {
@@ -6615,10 +5495,6 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2894.9,
-                ["x"] = 7355.3,
-            },
             ["Fillers"] = {
                 [38716] = {
                     ["1"] = "1",
@@ -6635,10 +5511,6 @@ if (APR.Faction == "Alliance") then
                 [38715] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3040.8,
-                ["x"] = 7260.6,
             },
             ["Fillers"] = {
                 [38716] = {
@@ -6657,10 +5529,6 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3075.3,
-                ["x"] = 7289.8,
-            },
             ["Fillers"] = {
                 [38716] = {
                     ["1"] = "1",
@@ -6673,10 +5541,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [31]
         {
-            ["Trigger"] = {
-                ["y"] = 3070.4,
-                ["x"] = 7289,
-            },
             ["Qpart"] = {
                 [38716] = {
                     ["1"] = "1",
@@ -6708,10 +5572,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [34]
         {
-            ["Trigger"] = {
-                ["y"] = 3117.6,
-                ["x"] = 7147.8,
-            },
             ["Waypoint"] = 38717,
             ["Range"] = 5.52,
             ["TT"] = {
@@ -6720,10 +5580,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [35]
         {
-            ["Trigger"] = {
-                ["y"] = 3149,
-                ["x"] = 7148.7,
-            },
             ["Waypoint"] = 38717,
             ["Range"] = 6.16,
             ["TT"] = {
@@ -6732,10 +5588,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [36]
         {
-            ["Trigger"] = {
-                ["y"] = 3183.6,
-                ["x"] = 7161.8,
-            },
             ["Waypoint"] = 38717,
             ["Range"] = 5.24,
             ["TT"] = {
@@ -6744,10 +5596,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [37]
         {
-            ["Trigger"] = {
-                ["y"] = 3258.5,
-                ["x"] = 7277.7,
-            },
             ["Qpart"] = {
                 [38717] = {
                     ["1"] = "1",
@@ -6760,10 +5608,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [38]
         {
-            ["Trigger"] = {
-                ["y"] = 3297.3,
-                ["x"] = 7336.6,
-            },
             ["Waypoint"] = 38717,
             ["Range"] = 5.48,
             ["TT"] = {
@@ -6772,10 +5616,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [39]
         {
-            ["Trigger"] = {
-                ["y"] = 3310.8,
-                ["x"] = 7370.6,
-            },
             ["Waypoint"] = 38717,
             ["Range"] = 8.59,
             ["TT"] = {
@@ -6803,10 +5643,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [42]
         {
-            ["Trigger"] = {
-                ["y"] = 3362.1,
-                ["x"] = 7354.2,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 8.63,
             ["TT"] = {
@@ -6833,10 +5669,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [45]
         {
-            ["Trigger"] = {
-                ["y"] = 3405.1,
-                ["x"] = 7414.2,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 5.91,
             ["TT"] = {
@@ -6851,10 +5683,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3393.1,
-                ["x"] = 7427.3,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 3393.1,
@@ -6862,10 +5690,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [47]
         {
-            ["Trigger"] = {
-                ["y"] = 3401.1,
-                ["x"] = 7406.3,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 5.31,
             ["TT"] = {
@@ -6874,10 +5698,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [48]
         {
-            ["Trigger"] = {
-                ["y"] = 3383.6,
-                ["x"] = 7397.6,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 5.9,
             ["TT"] = {
@@ -6892,10 +5712,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3369.1,
-                ["x"] = 7408.3,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = 3369.1,
@@ -6903,10 +5719,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [50]
         {
-            ["Trigger"] = {
-                ["y"] = 3407.8,
-                ["x"] = 7381.8,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 4.8,
             ["TT"] = {
@@ -6915,10 +5727,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [51]
         {
-            ["Trigger"] = {
-                ["y"] = 3429.1,
-                ["x"] = 7369.3,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 5.02,
             ["TT"] = {
@@ -6933,10 +5741,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3400.6,
-                ["x"] = 7316.8,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = 3400.6,
@@ -6944,10 +5748,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [53]
         {
-            ["Trigger"] = {
-                ["y"] = 3413.1,
-                ["x"] = 7329.3,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 6.13,
             ["TT"] = {
@@ -6956,10 +5756,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [54]
         {
-            ["Trigger"] = {
-                ["y"] = 3445.8,
-                ["x"] = 7308.3,
-            },
             ["Qpart"] = {
                 [38721] = {
                     ["1"] = "1",
@@ -6972,10 +5768,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [55]
         {
-            ["Trigger"] = {
-                ["y"] = 3093,
-                ["x"] = 7459.2,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 12.73,
             ["TT"] = {
@@ -7036,10 +5828,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3085.6,
-                ["x"] = 2984.6,
-            },
             ["Fillers"] = {
                 [38036] = {
                     ["1"] = "1",
@@ -7060,10 +5848,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2963.6,
-                ["x"] = 3081.4,
-            },
             ["Fillers"] = {
                 [38052] = {
                     ["1"] = "1",
@@ -7079,10 +5863,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [4]
         {
-            ["Trigger"] = {
-                ["y"] = 3123.3,
-                ["x"] = 3041.5,
-            },
             ["Qpart"] = {
                 [38036] = {
                     ["1"] = "1",
@@ -7128,10 +5908,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 3131.9,
-                ["x"] = 3191.1,
-            },
             ["Waypoint"] = 38057,
             ["Range"] = 46.95,
             ["TT"] = {
@@ -7140,10 +5916,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = 2953.5,
-                ["x"] = 3214.5,
-            },
             ["Waypoint"] = 38057,
             ["Range"] = 21.39,
             ["TT"] = {
@@ -7170,10 +5942,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = 2854.1,
-                ["x"] = 3317.5,
-            },
             ["Qpart"] = {
                 [38058] = {
                     ["1"] = "1",
@@ -7216,10 +5984,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = 3248.1,
-                ["x"] = 3154.6,
-            },
             ["Qpart"] = {
                 [38060] = {
                     ["1"] = "1",
@@ -7232,10 +5996,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 3249.1,
-                ["x"] = 3156.4,
-            },
             ["Qpart"] = {
                 [38060] = {
                     ["2"] = "2",
@@ -7293,10 +6053,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 3276,
-                ["x"] = 2529.3,
-            },
             ["Qpart"] = {
                 [38331] = {
                     ["1"] = "1",
@@ -7334,10 +6090,6 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3321.1,
-                ["x"] = 2403.8,
-            },
             ["Fillers"] = {
                 [38442] = {
                     ["1"] = "1",
@@ -7360,10 +6112,6 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3394,
-                ["x"] = 2585.8,
-            },
             ["Fillers"] = {
                 [38442] = {
                     ["1"] = "1",
@@ -7385,10 +6133,6 @@ if (APR.Faction == "Alliance") then
                 [39590] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3603.6,
-                ["x"] = 2434.9,
             },
             ["Fillers"] = {
                 [38442] = {
@@ -7424,10 +6168,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 3561.8,
-                ["x"] = 2456.3,
-            },
             ["Qpart"] = {
                 [39595] = {
                     ["1"] = "1",
@@ -7471,10 +6211,6 @@ if (APR.Faction == "Alliance") then
                     ["4"] = "4",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3565.3,
-                ["x"] = 2210.1,
-            },
             ["Fillers"] = {
                 [38442] = {
                     ["1"] = "1",
@@ -7491,10 +6227,6 @@ if (APR.Faction == "Alliance") then
                 [39591] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3443.4,
-                ["x"] = 2103.6,
             },
             ["Fillers"] = {
                 [38442] = {
@@ -7513,10 +6245,6 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3412.8,
-                ["x"] = 2177.1,
-            },
             ["Fillers"] = {
                 [38442] = {
                     ["1"] = "1",
@@ -7529,10 +6257,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 3350.1,
-                ["x"] = 2157.6,
-            },
             ["Range"] = 32.3,
             ["Waypoint"] = 39592,
             ["TT"] = {
@@ -7546,10 +6270,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3340.6,
-                ["x"] = 2246.3,
-            },
             ["Fillers"] = {
                 [38442] = {
                     ["1"] = "1",
@@ -7562,10 +6282,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [4]
         {
-            ["Trigger"] = {
-                ["y"] = 3333.6,
-                ["x"] = 2209.9,
-            },
             ["Qpart"] = {
                 [39592] = {
                     ["1"] = "1",
@@ -7583,10 +6299,6 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3391.6,
-                ["x"] = 2202.9,
-            },
             ["Fillers"] = {
                 [38442] = {
                     ["1"] = "1",
@@ -7599,10 +6311,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 3406.5,
-                ["x"] = 2215.1,
-            },
             ["Qpart"] = {
                 [38442] = {
                     ["1"] = "1",
@@ -7635,10 +6343,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = 3446.5,
-                ["x"] = 2267.3,
-            },
             ["Waypoint"] = 39594,
             ["Range"] = 15.3,
             ["TT"] = {
@@ -7647,10 +6351,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [10]
         {
-            ["Trigger"] = {
-                ["y"] = 3452.9,
-                ["x"] = 2175.9,
-            },
             ["Waypoint"] = 39594,
             ["Range"] = 18.81,
             ["TT"] = {
@@ -7659,10 +6359,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [11]
         {
-            ["Trigger"] = {
-                ["y"] = 3544.1,
-                ["x"] = 2163.8,
-            },
             ["Qpart"] = {
                 [39594] = {
                     ["1"] = "1",
@@ -7675,10 +6371,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = 3507.3,
-                ["x"] = 2166.4,
-            },
             ["Qpart"] = {
                 [39594] = {
                     ["2"] = "2",
@@ -7691,10 +6383,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 3445.5,
-                ["x"] = 2188.1,
-            },
             ["Waypoint"] = 39594,
             ["Range"] = 16.39,
             ["TT"] = {
@@ -7727,10 +6415,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3443.6,
-                ["x"] = 2344.8,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 3443.6,
@@ -7756,10 +6440,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = 2892.8,
-                ["x"] = 2548.4,
-            },
             ["Waypoint"] = 38473,
             ["Range"] = 66.24,
             ["TT"] = {
@@ -7805,10 +6485,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 2668.9,
-                ["x"] = 2546.4,
-            },
             ["Qpart"] = {
                 [38318] = {
                     ["1"] = "1",
@@ -7825,10 +6501,6 @@ if (APR.Faction == "Alliance") then
                 [38405] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2604.8,
-                ["x"] = 2387.1,
             },
             ["Fillers"] = {
                 [38374] = {
@@ -7847,10 +6519,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2595.6,
-                ["x"] = 2488,
-            },
             ["Fillers"] = {
                 [38374] = {
                     ["1"] = "1",
@@ -7867,10 +6535,6 @@ if (APR.Faction == "Alliance") then
                 [38405] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2536.5,
-                ["x"] = 2602.6,
             },
             ["Fillers"] = {
                 [38374] = {
@@ -7908,10 +6572,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [11]
         {
-            ["Trigger"] = {
-                ["y"] = 2532.8,
-                ["x"] = 2489.6,
-            },
             ["Qpart"] = {
                 [38410] = {
                     ["1"] = "1",
@@ -7957,10 +6617,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2388.1,
-                ["x"] = 2348.1,
-            },
             ["Fillers"] = {
                 [38374] = {
                     ["1"] = "1",
@@ -7973,10 +6629,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 2405.8,
-                ["x"] = 2339,
-            },
             ["Qpart"] = {
                 [38374] = {
                     ["1"] = "1",
@@ -7989,10 +6641,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 2356,
-                ["x"] = 2385.1,
-            },
             ["Qpart"] = {
                 [38342] = {
                     ["2"] = "2",
@@ -8023,10 +6671,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 2299.1,
-                ["x"] = 2343.8,
-            },
             ["Qpart"] = {
                 [38412] = {
                     ["1"] = "1",
@@ -8039,10 +6683,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 2180.4,
-                ["x"] = 2438.3,
-            },
             ["Qpart"] = {
                 [38412] = {
                     ["2"] = "2",
@@ -8080,10 +6720,6 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2134.5,
-                ["x"] = 2374.8,
-            },
             ["Fillers"] = {
                 [40568] = {
                     ["1"] = "1",
@@ -8097,10 +6733,6 @@ if (APR.Faction == "Alliance") then
         }, -- [11]
         {
             ["Waypoint"] = 38413,
-            ["Trigger"] = {
-                ["y"] = 2096.3,
-                ["x"] = 2193.1,
-            },
             ["Fillers"] = {
                 [40568] = {
                     ["1"] = "1",
@@ -8118,10 +6750,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2037.5,
-                ["x"] = 2187.1,
-            },
             ["Fillers"] = {
                 [40568] = {
                     ["1"] = "1",
@@ -8135,10 +6763,6 @@ if (APR.Faction == "Alliance") then
         }, -- [13]
         {
             ["Waypoint"] = 38413,
-            ["Trigger"] = {
-                ["y"] = 2080.5,
-                ["x"] = 2191.3,
-            },
             ["Fillers"] = {
                 [40568] = {
                     ["1"] = "1",
@@ -8155,10 +6779,6 @@ if (APR.Faction == "Alliance") then
                 [38413] = {
                     ["4"] = "4",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2003.9,
-                ["x"] = 2383.6,
             },
             ["Fillers"] = {
                 [40568] = {
@@ -8177,10 +6797,6 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2058.4,
-                ["x"] = 2474.4,
-            },
             ["Fillers"] = {
                 [40568] = {
                     ["1"] = "1",
@@ -8193,10 +6809,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = 2058.5,
-                ["x"] = 2472.6,
-            },
             ["Qpart"] = {
                 [40568] = {
                     ["1"] = "1",
@@ -8209,10 +6821,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 2011.2,
-                ["x"] = 2566,
-            },
             ["Waypoint"] = 40568,
             ["Range"] = 19.95,
             ["TT"] = {
@@ -8221,10 +6829,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [18]
         {
-            ["Trigger"] = {
-                ["y"] = 2023.8,
-                ["x"] = 2604.5,
-            },
             ["Qpart"] = {
                 [38414] = {
                     ["1"] = "1",
@@ -8238,10 +6842,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = 2009.9,
-                ["x"] = 2556.4,
-            },
             ["Waypoint"] = 40568,
             ["Range"] = 16.09,
             ["TT"] = {
@@ -8276,10 +6876,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 1980,
-                ["x"] = 2550.8,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 1980,
@@ -8293,10 +6889,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2045.2,
-                ["x"] = 2662,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 2045.2,
@@ -8322,10 +6914,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [26]
         {
-            ["Trigger"] = {
-                ["y"] = 2083,
-                ["x"] = 2641.3,
-            },
             ["Qpart"] = {
                 [38624] = {
                     ["1"] = "1",
@@ -8338,10 +6926,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [27]
         {
-            ["Trigger"] = {
-                ["y"] = 2050.4,
-                ["x"] = 2581.1,
-            },
             ["Qpart"] = {
                 [38624] = {
                     ["2"] = "2",
@@ -8390,10 +6974,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [32]
         {
-            ["Trigger"] = {
-                ["y"] = 3189.1,
-                ["x"] = 1513.7,
-            },
             ["Qpart"] = {
                 [39804] = {
                     ["1"] = "1",
@@ -8443,10 +7023,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [37]
         {
-            ["Trigger"] = {
-                ["y"] = 3002.4,
-                ["x"] = 1121.4,
-            },
             ["Qpart"] = {
                 [39788] = {
                     ["1"] = "1",
@@ -8483,10 +7059,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 3088.6,
-                ["x"] = 973,
-            },
             ["Qpart"] = {
                 [38808] = {
                     ["1"] = "1",
@@ -8532,10 +7104,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3376.9,
-                ["x"] = 1273.2,
-            },
             ["Button"] = {
                 ["39791-1"] = 128772,
             },
@@ -8555,10 +7123,6 @@ if (APR.Faction == "Alliance") then
                 [39791] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3407.6,
-                ["x"] = 1154.4,
             },
             ["Button"] = {
                 ["39791-1"] = 128772,
@@ -8580,10 +7144,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3514.1,
-                ["x"] = 1114.8,
-            },
             ["Button"] = {
                 ["39791-1"] = 128772,
             },
@@ -8598,10 +7158,6 @@ if (APR.Faction == "Alliance") then
                 [39791] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3514.1,
-                ["x"] = 1114.8,
             },
             ["Button"] = {
                 ["39791-1"] = 128772,
@@ -8642,10 +7198,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 3468,
-                ["x"] = 965.7,
-            },
             ["Qpart"] = {
                 [38816] = {
                     ["1"] = "1",
@@ -8684,10 +7236,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 3532.9,
-                ["x"] = 888.4,
-            },
             ["Qpart"] = {
                 [38815] = {
                     ["1"] = "1",
@@ -8718,10 +7266,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 3568.6,
-                ["x"] = 799.6,
-            },
             ["Waypoint"] = 38818,
             ["Range"] = 24.18,
             ["TT"] = {
@@ -8730,10 +7274,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 3626.8,
-                ["x"] = 791.9,
-            },
             ["Qpart"] = {
                 [38818] = {
                     ["1"] = "1",
@@ -8768,10 +7308,6 @@ if (APR.Faction == "Alliance") then
                 [39837] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 365,
-                ["x"] = 412.6,
             },
             ["Fillers"] = {
                 [38343] = {
@@ -8812,10 +7348,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 445.7,
-                ["x"] = 411.6,
-            },
             ["Fillers"] = {
                 [38343] = {
                     ["1"] = "1",
@@ -8838,10 +7370,6 @@ if (APR.Faction == "Alliance") then
             },
         },             -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 449.8,
-                ["x"] = 480.1,
-            },
             ["Range"] = 15.08,
             ["Waypoint"] = 38347,
             ["TT"] = {
@@ -8850,10 +7378,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 446,
-                ["x"] = 523.7,
-            },
             ["Range"] = 11.65,
             ["Waypoint"] = 38347,
             ["TT"] = {
@@ -8862,10 +7386,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 452.7,
-                ["x"] = 565.1,
-            },
             ["Range"] = 11.12,
             ["Waypoint"] = 38347,
             ["TT"] = {
@@ -8892,10 +7412,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 446.1,
-                ["x"] = 695.9,
-            },
             ["Range"] = 14.1,
             ["Waypoint"] = 39848,
             ["TT"] = {
@@ -8904,10 +7420,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 487.8,
-                ["x"] = 720,
-            },
             ["Qpart"] = {
                 [39848] = {
                     ["1"] = "1",
@@ -8926,10 +7438,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 490.3,
-                ["x"] = 721.7,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = 490.3,
@@ -8978,10 +7486,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 338.5,
-                ["x"] = 767,
-            },
             ["Range"] = 17.99,
             ["Waypoint"] = 39849,
             ["TT"] = {
@@ -8990,10 +7494,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = 278.6,
-                ["x"] = 839.6,
-            },
             ["Range"] = 12.1,
             ["Waypoint"] = 39849,
             ["TT"] = {
@@ -9006,10 +7506,6 @@ if (APR.Faction == "Alliance") then
                 [39849] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 230.6,
-                ["x"] = 862.1,
             },
             ["Fillers"] = {
                 [38343] = {
@@ -9052,10 +7548,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 231.9,
-                ["x"] = 378.3,
-            },
             ["Fillers"] = {
                 [39851] = {
                     ["1"] = "1",
@@ -9071,10 +7563,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = 138,
-                ["x"] = 530.2,
-            },
             ["Range"] = 13.81,
             ["Waypoint"] = 39850,
             ["TT"] = {
@@ -9087,10 +7575,6 @@ if (APR.Faction == "Alliance") then
                 [39850] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 110.3,
-                ["x"] = 451.3,
             },
             ["Fillers"] = {
                 [39851] = {
@@ -9112,10 +7596,6 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 118,
-                ["x"] = 706.5,
-            },
             ["Fillers"] = {
                 [39851] = {
                     ["1"] = "1",
@@ -9135,10 +7615,6 @@ if (APR.Faction == "Alliance") then
                 [39851] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 118,
-                ["x"] = 705.6,
             },
             ["Fillers"] = {
                 [38343] = {
@@ -9181,10 +7657,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 212.3,
-                ["x"] = 586.4,
-            },
             ["Fillers"] = {
                 [38343] = {
                     ["1"] = "1",
@@ -9215,10 +7687,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [28]
         {
-            ["Trigger"] = {
-                ["y"] = 227.8,
-                ["x"] = 586.7,
-            },
             ["Qpart"] = {
                 [38343] = {
                     ["1"] = "1",
@@ -9237,10 +7705,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 488.7,
-                ["x"] = 720.2,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = 488.7,
@@ -9266,10 +7730,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [32]
         {
-            ["Trigger"] = {
-                ["y"] = 3219.3,
-                ["x"] = 1554.5,
-            },
             ["Qpart"] = {
                 [40078] = {
                     ["1"] = "1",
@@ -9359,10 +7819,6 @@ if (APR.Faction == "Alliance") then
             ["ButtonSpellId"] = {
                 [186745] = "39060-3",
             },
-            ["Trigger"] = {
-                ["y"] = 2826.9,
-                ["x"] = 819.5,
-            },
             ["Button"] = {
                 ["39060-3"] = 127295,
             },
@@ -9377,10 +7833,6 @@ if (APR.Faction == "Alliance") then
                 [39060] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2733.5,
-                ["x"] = 769.2,
             },
             ["ButtonSpellId"] = {
                 [186745] = "39060-2",
@@ -9405,10 +7857,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2775.9,
-                ["x"] = 673.7,
-            },
             ["Fillers"] = {
                 [39061] = {
                     ["1"] = "1",
@@ -9425,10 +7873,6 @@ if (APR.Faction == "Alliance") then
                 [39060] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2923.8,
-                ["x"] = 715.4,
             },
             ["ButtonSpellId"] = {
                 [186745] = "39060-1",
@@ -9448,10 +7892,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 2923.8,
-                ["x"] = 715.4,
-            },
             ["Qpart"] = {
                 [39061] = {
                     ["1"] = "1",
@@ -9484,10 +7924,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [10]
         {
-            ["Trigger"] = {
-                ["y"] = 2769.5,
-                ["x"] = 1155.7,
-            },
             ["Range"] = 43.54,
             ["Waypoint"] = 39062,
             ["TT"] = {
@@ -9539,10 +7975,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2673.9,
-                ["x"] = 1352.5,
-            },
             ["Fillers"] = {
                 [39119] = {
                     ["1"] = "1",
@@ -9574,10 +8006,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 2660,
-                ["x"] = 1519.7,
-            },
             ["Qpart"] = {
                 [39119] = {
                     ["1"] = "1",
@@ -9590,10 +8018,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [18]
         {
-            ["Trigger"] = {
-                ["y"] = 2597.8,
-                ["x"] = 1474.3,
-            },
             ["Qpart"] = {
                 [39092] = {
                     ["4"] = "4",
@@ -9606,10 +8030,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = 2598.1,
-                ["x"] = 1526.5,
-            },
             ["Qpart"] = {
                 [39092] = {
                     ["3"] = "3",
@@ -9622,10 +8042,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = 2487.9,
-                ["x"] = 1527,
-            },
             ["Qpart"] = {
                 [39092] = {
                     ["2"] = "2",
@@ -9638,10 +8054,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [21]
         {
-            ["Trigger"] = {
-                ["y"] = 2485.8,
-                ["x"] = 1474,
-            },
             ["Qpart"] = {
                 [39092] = {
                     ["1"] = "1",
@@ -9654,10 +8066,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [22]
         {
-            ["Trigger"] = {
-                ["y"] = 2542.3,
-                ["x"] = 1452,
-            },
             ["Qpart"] = {
                 [39092] = {
                     ["5"] = "5",
@@ -9689,10 +8097,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 2542.1,
-                ["x"] = 1294.4,
-            },
             ["Qpart"] = {
                 [39122] = {
                     ["1"] = "1",
@@ -9732,10 +8136,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 2946.4,
-                ["x"] = 1238.9,
-            },
             ["Qpart"] = {
                 [40002] = {
                     ["1"] = "1",
@@ -9748,10 +8148,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 2878.6,
-                ["x"] = 1212.5,
-            },
             ["Qpart"] = {
                 [40002] = {
                     ["2"] = "2",
@@ -9788,10 +8184,6 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2557.1,
-                ["x"] = 1165.3,
-            },
             ["Fillers"] = {
                 [39998] = {
                     ["1"] = "1",
@@ -9814,10 +8206,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2469.3,
-                ["x"] = 1061,
-            },
             ["Button"] = {
                 ["40003-3"] = 129161,
             },
@@ -9832,10 +8220,6 @@ if (APR.Faction == "Alliance") then
                 [40004] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2520.4,
-                ["x"] = 1082.3,
             },
             ["Fillers"] = {
                 [39998] = {
@@ -9859,10 +8243,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2597.8,
-                ["x"] = 986.7,
-            },
             ["Button"] = {
                 ["40003-2"] = 129161,
             },
@@ -9877,10 +8257,6 @@ if (APR.Faction == "Alliance") then
                 [40004] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2631.6,
-                ["x"] = 1025.3,
             },
             ["Fillers"] = {
                 [39998] = {
@@ -9898,10 +8274,6 @@ if (APR.Faction == "Alliance") then
                 [40004] = {
                     ["4"] = "4",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2675.3,
-                ["x"] = 890.2,
             },
             ["Fillers"] = {
                 [39998] = {
@@ -9925,10 +8297,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2713.4,
-                ["x"] = 967.4,
-            },
             ["Button"] = {
                 ["40003-1"] = 129161,
             },
@@ -9939,10 +8307,6 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 2710.3,
-                ["x"] = 979.6,
-            },
             ["Qpart"] = {
                 [39998] = {
                     ["1"] = "1",
@@ -9980,10 +8344,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2491,
-                ["x"] = 962.2,
-            },
             ["Range"] = 11.83,
             ["TT"] = {
                 ["y"] = 2491,
@@ -10038,10 +8398,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = -123.2,
-                ["x"] = 6894.3,
-            },
             ["GetFP"] = 1622,
             ["Range"] = 3.91,
             ["TT"] = {
@@ -10090,10 +8446,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -96,
-                ["x"] = 7050.1,
-            },
             ["Button"] = {
                 ["37653-1"] = 122100,
             },
@@ -10114,10 +8466,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -165.9,
-                ["x"] = 7076.3,
-            },
             ["Button"] = {
                 ["37653-1"] = 122100,
             },
@@ -10138,10 +8486,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -231.9,
-                ["x"] = 7040.7,
-            },
             ["Button"] = {
                 ["37653-1"] = 122100,
             },
@@ -10156,10 +8500,6 @@ if (APR.Faction == "Horde") then
                 [37653] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -231.9,
-                ["x"] = 7040.7,
             },
             ["Button"] = {
                 ["37653-1"] = 122100,
@@ -10204,10 +8544,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -153.5,
-                ["x"] = 6906.6,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = -153.5,
@@ -10215,10 +8551,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Trigger"] = {
-                ["y"] = -158.2,
-                ["x"] = 6895,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["2"] = "2",
@@ -10231,10 +8563,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -163.5,
-                ["x"] = 6917,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["3"] = "3",
@@ -10247,10 +8575,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = -163.5,
-                ["x"] = 6917,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["4"] = "4",
@@ -10263,10 +8587,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = -163.5,
-                ["x"] = 6917,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["5"] = "5",
@@ -10279,10 +8599,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = -157.4,
-                ["x"] = 6906.1,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["6"] = "6",
@@ -10295,10 +8611,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = -160.7,
-                ["x"] = 6904.8,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["7"] = "7",
@@ -10311,10 +8623,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = -89.3,
-                ["x"] = 6980.2,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["8"] = "8",
@@ -10327,10 +8635,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = -89.3,
-                ["x"] = 6980.2,
-            },
             ["Qpart"] = {
                 [37660] = {
                     ["9"] = "9",
@@ -10385,10 +8689,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -256.7,
-                ["x"] = 7268.8,
-            },
             ["Fillers"] = {
                 [36811] = {
                     ["1"] = "1",
@@ -10401,10 +8701,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = -732.5,
-                ["x"] = 7331.7,
-            },
             ["Qpart"] = {
                 [37450] = {
                     ["1"] = "1",
@@ -10422,10 +8718,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [15]
         {
-            ["Trigger"] = {
-                ["y"] = -669.3,
-                ["x"] = 7159.7,
-            },
             ["Qpart"] = {
                 [37450] = {
                     ["2"] = "2",
@@ -10443,10 +8735,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = -721.5,
-                ["x"] = 7314.2,
-            },
             ["Qpart"] = {
                 [37450] = {
                     ["3"] = "3",
@@ -10483,10 +8771,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = -745.3,
-                ["x"] = 7327,
-            },
             ["Qpart"] = {
                 [36811] = {
                     ["1"] = "1",
@@ -10499,10 +8783,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -463.4,
-                ["x"] = 7453.3,
-            },
             ["Range"] = 24.43,
             ["Waypoint"] = 37449,
             ["TT"] = {
@@ -10511,10 +8791,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [21]
         {
-            ["Trigger"] = {
-                ["y"] = -504,
-                ["x"] = 7498.1,
-            },
             ["Qpart"] = {
                 [37449] = {
                     ["1"] = "1",
@@ -10527,10 +8803,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [22]
         {
-            ["Trigger"] = {
-                ["y"] = -517.8,
-                ["x"] = 7518.1,
-            },
             ["Qpart"] = {
                 [37449] = {
                     ["2"] = "2",
@@ -10561,10 +8833,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [25]
         {
-            ["Trigger"] = {
-                ["y"] = -115.5,
-                ["x"] = 6773.2,
-            },
             ["Range"] = 38.36,
             ["Waypoint"] = 38443,
             ["TT"] = {
@@ -10573,10 +8841,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [26]
         {
-            ["Trigger"] = {
-                ["y"] = -41.7,
-                ["x"] = 6698.3,
-            },
             ["Range"] = 32.47,
             ["Waypoint"] = 38443,
             ["TT"] = {
@@ -10585,10 +8849,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [27]
         {
-            ["Trigger"] = {
-                ["y"] = 78,
-                ["x"] = 6647.7,
-            },
             ["Range"] = 45.57,
             ["Waypoint"] = 38443,
             ["TT"] = {
@@ -10597,10 +8857,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [28]
         {
-            ["Trigger"] = {
-                ["y"] = 179.8,
-                ["x"] = 6632.8,
-            },
             ["Range"] = 61.18,
             ["Waypoint"] = 38443,
             ["TT"] = {
@@ -10619,10 +8875,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [30]
         {
-            ["Trigger"] = {
-                ["y"] = 573.7,
-                ["x"] = 6639.3,
-            },
             ["GetFP"] = 1613,
             ["Range"] = 3.91,
             ["TT"] = {
@@ -10649,10 +8901,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [33]
         {
-            ["Trigger"] = {
-                ["y"] = 780.7,
-                ["x"] = 6637.2,
-            },
             ["Waypoint"] = 37853,
             ["Range"] = 39.37,
             ["TT"] = {
@@ -10661,10 +8909,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [34]
         {
-            ["Trigger"] = {
-                ["y"] = 856.9,
-                ["x"] = 6622.5,
-            },
             ["Qpart"] = {
                 [37853] = {
                     ["1"] = "1",
@@ -10677,10 +8921,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [35]
         {
-            ["Trigger"] = {
-                ["y"] = 830.2,
-                ["x"] = 6645.2,
-            },
             ["Waypoint"] = 37853,
             ["Range"] = 35.32,
             ["TT"] = {
@@ -10689,10 +8929,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [36]
         {
-            ["Trigger"] = {
-                ["y"] = 673,
-                ["x"] = 6665.3,
-            },
             ["Qpart"] = {
                 [37853] = {
                     ["2"] = "2",
@@ -10723,10 +8959,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [39]
         {
-            ["Trigger"] = {
-                ["y"] = 647.2,
-                ["x"] = 6609.5,
-            },
             ["Qpart"] = {
                 [37991] = {
                     ["1"] = "1",
@@ -10757,10 +8989,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [42]
         {
-            ["Trigger"] = {
-                ["y"] = 681.4,
-                ["x"] = 6566.3,
-            },
             ["Qpart"] = {
                 [42271] = {
                     ["1"] = "1",
@@ -10773,10 +9001,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [43]
         {
-            ["Trigger"] = {
-                ["y"] = 643.9,
-                ["x"] = 6611.5,
-            },
             ["Qpart"] = {
                 [42271] = {
                     ["2"] = "2",
@@ -10789,10 +9013,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [44]
         {
-            ["Trigger"] = {
-                ["y"] = 649.1,
-                ["x"] = 6615.6,
-            },
             ["Qpart"] = {
                 [42271] = {
                     ["3"] = "3",
@@ -10847,10 +9067,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 187.5,
-                ["x"] = 6861.8,
-            },
             ["Fillers"] = {
                 [37256] = {
                     ["2"] = "2",
@@ -10863,10 +9079,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [50]
         {
-            ["Trigger"] = {
-                ["y"] = 191.4,
-                ["x"] = 6846.1,
-            },
             ["Qpart"] = {
                 [37256] = {
                     ["2"] = "2",
@@ -10928,10 +9140,6 @@ if (APR.Faction == "Horde") then
                 ["Qid"] = 38407,
                 ["MobId"] = 109174,
             },
-            ["Trigger"] = {
-                ["y"] = 200,
-                ["x"] = 6424.2,
-            },
             ["Fillers"] = {
                 [37257] = {
                     ["1"] = "1",
@@ -10953,10 +9161,6 @@ if (APR.Faction == "Horde") then
                 ["Text"] = "Salteye mobs",
                 ["Qid"] = 38407,
                 ["MobId"] = 109174,
-            },
-            ["Trigger"] = {
-                ["y"] = 363.7,
-                ["x"] = 6420,
             },
             ["Fillers"] = {
                 [37257] = {
@@ -10985,10 +9189,6 @@ if (APR.Faction == "Horde") then
                 ["Text"] = "Salteye mobs",
                 ["Qid"] = 38407,
                 ["MobId"] = 109174,
-            },
-            ["Trigger"] = {
-                ["y"] = 361.1,
-                ["x"] = 6418.2,
             },
             ["Range"] = 37.28,
             ["TT"] = {
@@ -11038,10 +9238,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -10,
-                ["x"] = 6734.5,
-            },
             ["RaidIcon"] = 88115,
             ["Range"] = 23.5,
             ["TT"] = {
@@ -11068,10 +9264,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [64]
         {
-            ["Trigger"] = {
-                ["y"] = -183.5,
-                ["x"] = 6380.2,
-            },
             ["Waypoint"] = 37486,
             ["Range"] = 14.87,
             ["TT"] = {
@@ -11090,10 +9282,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [66]
         {
-            ["Trigger"] = {
-                ["y"] = -139,
-                ["x"] = 6370.8,
-            },
             ["Waypoint"] = 42692,
             ["Range"] = 13.1,
             ["TT"] = {
@@ -11102,10 +9290,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [67]
         {
-            ["Trigger"] = {
-                ["y"] = -115.1,
-                ["x"] = 6338,
-            },
             ["Qpart"] = {
                 [42692] = {
                     ["1"] = "1",
@@ -11118,10 +9302,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [68]
         {
-            ["Trigger"] = {
-                ["y"] = -143.2,
-                ["x"] = 6377.8,
-            },
             ["Waypoint"] = 42692,
             ["Range"] = 13.41,
             ["TT"] = {
@@ -11130,10 +9310,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [69]
         {
-            ["Trigger"] = {
-                ["y"] = -126.3,
-                ["x"] = 6412.5,
-            },
             ["Waypoint"] = 42692,
             ["Range"] = 9.44,
             ["TT"] = {
@@ -11142,10 +9318,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [70]
         {
-            ["Trigger"] = {
-                ["y"] = -110.3,
-                ["x"] = 6406.8,
-            },
             ["Qpart"] = {
                 [42692] = {
                     ["2"] = "2",
@@ -11158,10 +9330,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [71]
         {
-            ["Trigger"] = {
-                ["y"] = -171,
-                ["x"] = 6426.6,
-            },
             ["Waypoint"] = 42692,
             ["Range"] = 10.15,
             ["TT"] = {
@@ -11170,10 +9338,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [72]
         {
-            ["Trigger"] = {
-                ["y"] = -191.5,
-                ["x"] = 6420,
-            },
             ["Waypoint"] = 42692,
             ["Range"] = 10.04,
             ["TT"] = {
@@ -11182,10 +9346,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [73]
         {
-            ["Trigger"] = {
-                ["y"] = -167.2,
-                ["x"] = 6411.7,
-            },
             ["Qpart"] = {
                 [42692] = {
                     ["3"] = "3",
@@ -11198,10 +9358,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [74]
         {
-            ["Trigger"] = {
-                ["y"] = -161.4,
-                ["x"] = 6252.3,
-            },
             ["Waypoint"] = 37486,
             ["Range"] = 17.4,
             ["TT"] = {
@@ -11210,10 +9366,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [75]
         {
-            ["Trigger"] = {
-                ["y"] = -194.7,
-                ["x"] = 6259.2,
-            },
             ["Waypoint"] = 37486,
             ["Range"] = 6.66,
             ["TT"] = {
@@ -11222,10 +9374,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [76]
         {
-            ["Trigger"] = {
-                ["y"] = -222.7,
-                ["x"] = 6212.3,
-            },
             ["Waypoint"] = 37486,
             ["Range"] = 16.82,
             ["TT"] = {
@@ -11238,10 +9386,6 @@ if (APR.Faction == "Horde") then
                 [37486] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -311.5,
-                ["x"] = 6162.6,
             },
             ["Fillers"] = {
                 [37466] = {
@@ -11259,10 +9403,6 @@ if (APR.Faction == "Horde") then
                 [42693] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -229.2,
-                ["x"] = 6190.3,
             },
             ["Fillers"] = {
                 [37466] = {
@@ -11300,10 +9440,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -188.7,
-                ["x"] = 6312.7,
-            },
             ["Fillers"] = {
                 [37466] = {
                     ["1"] = "1",
@@ -11320,10 +9456,6 @@ if (APR.Faction == "Horde") then
                 [42694] = {
                     ["4"] = "4",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -203.2,
-                ["x"] = 6199.3,
             },
             ["Fillers"] = {
                 [37466] = {
@@ -11342,10 +9474,6 @@ if (APR.Faction == "Horde") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -40.8,
-                ["x"] = 6130.7,
-            },
             ["Fillers"] = {
                 [37466] = {
                     ["1"] = "1",
@@ -11363,10 +9491,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 101.8,
-                ["x"] = 6210.8,
-            },
             ["Fillers"] = {
                 [37466] = {
                     ["1"] = "1",
@@ -11379,10 +9503,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [85]
         {
-            ["Trigger"] = {
-                ["y"] = -54.8,
-                ["x"] = 6211.6,
-            },
             ["Qpart"] = {
                 [37466] = {
                     ["1"] = "1",
@@ -11428,10 +9548,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -138.7,
-                ["x"] = 6419.6,
-            },
             ["RaidIcon"] = 88889,
             ["Range"] = 10.17,
             ["TT"] = {
@@ -11458,10 +9574,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [92]
         {
-            ["Trigger"] = {
-                ["y"] = 111.8,
-                ["x"] = 6316.5,
-            },
             ["Waypoint"] = 37468,
             ["Range"] = 9.71,
             ["TT"] = {
@@ -11489,10 +9601,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [95]
         {
-            ["Trigger"] = {
-                ["y"] = 171.1,
-                ["x"] = 6335.2,
-            },
             ["Qpart"] = {
                 [37736] = {
                     ["4"] = "4",
@@ -11505,10 +9613,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [96]
         {
-            ["Trigger"] = {
-                ["y"] = 153.1,
-                ["x"] = 6325.8,
-            },
             ["Qpart"] = {
                 [37736] = {
                     ["1"] = "1",
@@ -11525,10 +9629,6 @@ if (APR.Faction == "Horde") then
                 [37736] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 96.4,
-                ["x"] = 6274.1,
             },
             ["Fillers"] = {
                 [37678] = {
@@ -11547,10 +9647,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 54.7,
-                ["x"] = 6309.2,
-            },
             ["Fillers"] = {
                 [37678] = {
                     ["1"] = "1",
@@ -11563,10 +9659,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [99]
         {
-            ["Trigger"] = {
-                ["y"] = 52.7,
-                ["x"] = 6308.3,
-            },
             ["Qpart"] = {
                 [37678] = {
                     ["1"] = "1",
@@ -11598,10 +9690,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [102]
         {
-            ["Trigger"] = {
-                ["y"] = 170.9,
-                ["x"] = 6386,
-            },
             ["Waypoint"] = 37518,
             ["Range"] = 13.86,
             ["TT"] = {
@@ -11633,10 +9721,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 202.3,
-                ["x"] = 6470.5,
-            },
             ["ExtraActionB"] = 1,
             ["Range"] = 17.82,
             ["TT"] = {
@@ -11663,10 +9747,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [108]
         {
-            ["Trigger"] = {
-                ["y"] = 185.5,
-                ["x"] = 6485,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["1"] = "1",
@@ -11679,10 +9759,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [109]
         {
-            ["Trigger"] = {
-                ["y"] = 193.6,
-                ["x"] = 6464.5,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["2"] = "2",
@@ -11695,10 +9771,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [110]
         {
-            ["Trigger"] = {
-                ["y"] = 201.4,
-                ["x"] = 6453.7,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["3"] = "3",
@@ -11711,10 +9783,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [111]
         {
-            ["Trigger"] = {
-                ["y"] = 180.1,
-                ["x"] = 6481.8,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["4"] = "4",
@@ -11727,10 +9795,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [112]
         {
-            ["Trigger"] = {
-                ["y"] = 194.1,
-                ["x"] = 6464,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["5"] = "5",
@@ -11743,10 +9807,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [113]
         {
-            ["Trigger"] = {
-                ["y"] = 202.1,
-                ["x"] = 6453.1,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["6"] = "6",
@@ -11759,10 +9819,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [114]
         {
-            ["Trigger"] = {
-                ["y"] = 185.3,
-                ["x"] = 6482.8,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["7"] = "7",
@@ -11775,10 +9831,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [115]
         {
-            ["Trigger"] = {
-                ["y"] = 193.6,
-                ["x"] = 6464.3,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["8"] = "8",
@@ -11791,10 +9843,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [116]
         {
-            ["Trigger"] = {
-                ["y"] = 202.3,
-                ["x"] = 6452.1,
-            },
             ["Qpart"] = {
                 [42371] = {
                     ["9"] = "9",
@@ -11825,10 +9873,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [119]
         {
-            ["Trigger"] = {
-                ["y"] = 199.6,
-                ["x"] = 6461.7,
-            },
             ["Qpart"] = {
                 [37729] = {
                     ["1"] = "1",
@@ -11867,10 +9911,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 214.1,
-                ["x"] = 6478.8,
-            },
             ["Range"] = 4.88,
             ["TT"] = {
                 ["y"] = 214.1,
@@ -11878,10 +9918,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [123]
         {
-            ["Trigger"] = {
-                ["y"] = 174,
-                ["x"] = 6389.6,
-            },
             ["Range"] = 15.15,
             ["Waypoint"] = 37730,
             ["TT"] = {
@@ -11908,10 +9944,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [126]
         {
-            ["Trigger"] = {
-                ["y"] = 244.6,
-                ["x"] = 6282.3,
-            },
             ["Qpart"] = {
                 [37469] = {
                     ["1"] = "1",
@@ -11948,10 +9980,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -99.1,
-                ["x"] = 6019.8,
-            },
             ["Range"] = 3.63,
             ["TT"] = {
                 ["y"] = -99.1,
@@ -11959,10 +9987,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [130]
         {
-            ["Trigger"] = {
-                ["y"] = 6,
-                ["x"] = 6280.8,
-            },
             ["Qpart"] = {
                 [37530] = {
                     ["2"] = "2",
@@ -11975,10 +9999,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [131]
         {
-            ["Trigger"] = {
-                ["y"] = -19.9,
-                ["x"] = 6190.8,
-            },
             ["Qpart"] = {
                 [37530] = {
                     ["3"] = "3",
@@ -11991,10 +10011,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [132]
         {
-            ["Trigger"] = {
-                ["y"] = -4,
-                ["x"] = 6178.1,
-            },
             ["Qpart"] = {
                 [37530] = {
                     ["4"] = "4",
@@ -12007,10 +10023,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [133]
         {
-            ["Trigger"] = {
-                ["y"] = -17.2,
-                ["x"] = 5974,
-            },
             ["Qpart"] = {
                 [37530] = {
                     ["5"] = "5",
@@ -12023,10 +10035,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [134]
         {
-            ["Trigger"] = {
-                ["y"] = -17.2,
-                ["x"] = 5974,
-            },
             ["Qpart"] = {
                 [37530] = {
                     ["6"] = "6",
@@ -12039,10 +10047,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [135]
         {
-            ["Trigger"] = {
-                ["y"] = -99.8,
-                ["x"] = 6021.7,
-            },
             ["Qpart"] = {
                 [37530] = {
                     ["7"] = "7",
@@ -12073,10 +10077,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [138]
         {
-            ["Trigger"] = {
-                ["y"] = 6.7,
-                ["x"] = 5690.8,
-            },
             ["Qpart"] = {
                 [37470] = {
                     ["1"] = "1",
@@ -12098,10 +10098,6 @@ if (APR.Faction == "Horde") then
             },
         },             -- [140]
         {
-            ["Trigger"] = {
-                ["y"] = 1.4,
-                ["x"] = 5764.6,
-            },
             ["Qpart"] = {
                 [37779] = {
                     ["1"] = "1",
@@ -12132,10 +10128,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [143]
         {
-            ["Trigger"] = {
-                ["y"] = 533,
-                ["x"] = 5624.8,
-            },
             ["Qpart"] = {
                 [42375] = {
                     ["1"] = "1",
@@ -12175,10 +10167,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 462.3,
-                ["x"] = 5401.5,
-            },
             ["Fillers"] = {
                 [42368] = {
                     ["1"] = "1",
@@ -12196,10 +10184,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 581.7,
-                ["x"] = 5426.8,
-            },
             ["Fillers"] = {
                 [42368] = {
                     ["1"] = "1",
@@ -12212,10 +10196,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [148]
         {
-            ["Trigger"] = {
-                ["y"] = 587.5,
-                ["x"] = 5401.8,
-            },
             ["Qpart"] = {
                 [42368] = {
                     ["1"] = "1",
@@ -12249,10 +10229,6 @@ if (APR.Faction == "Horde") then
             ["NodeID"] = 1613,
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 644.7,
-                ["x"] = 6510.1,
-            },
             ["Waypoint"] = 37855,
             ["Range"] = 21.48,
             ["TT"] = {
@@ -12261,10 +10237,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 1027.8,
-                ["x"] = 6463.5,
-            },
             ["Waypoint"] = 37855,
             ["Range"] = 33.55,
             ["TT"] = {
@@ -12300,10 +10272,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 1131.5,
-                ["x"] = 6559,
-            },
             ["Qpart"] = {
                 [37859] = {
                     ["1"] = "1",
@@ -12330,10 +10298,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1445,
-                ["x"] = 6723.6,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = 1445,
@@ -12346,10 +10310,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1248.8,
-                ["x"] = 6829.5,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 1248.8,
@@ -12361,10 +10321,6 @@ if (APR.Faction == "Horde") then
                 [38203] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1432.7,
-                ["x"] = 7004,
             },
             ["Range"] = 0.75,
             ["TT"] = {
@@ -12396,10 +10352,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1026,
-                ["x"] = 6996.6,
-            },
             ["Fillers"] = {
                 [37859] = {
                     ["2"] = "2",
@@ -12415,10 +10367,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = 1052.2,
-                ["x"] = 6902.2,
-            },
             ["Qpart"] = {
                 [37859] = {
                     ["2"] = "2",
@@ -12434,10 +10382,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [15]
         {
-            ["Trigger"] = {
-                ["y"] = 1076,
-                ["x"] = 6604.7,
-            },
             ["Qpart"] = {
                 [37957] = {
                     ["2"] = "2",
@@ -12484,10 +10428,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 1099.7,
-                ["x"] = 6588.3,
-            },
             ["RaidIcon"] = 90406,
             ["Range"] = 7.65,
             ["TT"] = {
@@ -12528,10 +10468,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1027.5,
-                ["x"] = 6094.2,
-            },
             ["Fillers"] = {
                 [37959] = {
                     ["1"] = "1",
@@ -12549,10 +10485,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1117.7,
-                ["x"] = 6033.8,
-            },
             ["Fillers"] = {
                 [37959] = {
                     ["1"] = "1",
@@ -12569,10 +10501,6 @@ if (APR.Faction == "Horde") then
                 [37959] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1108,
-                ["x"] = 6031.2,
             },
             ["Range"] = 47.36,
             ["TT"] = {
@@ -12622,10 +10550,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1132.5,
-                ["x"] = 6117.1,
-            },
             ["Range"] = 13.02,
             ["ExtraActionB"] = 1,
             ["TT"] = {
@@ -12638,10 +10562,6 @@ if (APR.Faction == "Horde") then
                 [37860] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1175.2,
-                ["x"] = 6145.8,
             },
             ["Range"] = 15.11,
             ["ExtraActionB"] = 1,
@@ -12656,10 +10576,6 @@ if (APR.Faction == "Horde") then
                     ["4"] = "4",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1197,
-                ["x"] = 6080.3,
-            },
             ["Range"] = 8.71,
             ["ExtraActionB"] = 1,
             ["TT"] = {
@@ -12672,10 +10588,6 @@ if (APR.Faction == "Horde") then
                 [37860] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1226.4,
-                ["x"] = 6166.6,
             },
             ["Range"] = 13.78,
             ["ExtraActionB"] = 1,
@@ -12694,10 +10606,6 @@ if (APR.Faction == "Horde") then
             },
         },             -- [35]
         {
-            ["Trigger"] = {
-                ["y"] = 1226.5,
-                ["x"] = 6137.5,
-            },
             ["Waypoint"] = 37861,
             ["Range"] = 12.97,
             ["TT"] = {
@@ -12706,10 +10614,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [37]
         {
-            ["Trigger"] = {
-                ["y"] = 1211.8,
-                ["x"] = 6111.8,
-            },
             ["Waypoint"] = 37861,
             ["Range"] = 13.16,
             ["TT"] = {
@@ -12718,10 +10622,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [38]
         {
-            ["Trigger"] = {
-                ["y"] = 1286.5,
-                ["x"] = 6076.1,
-            },
             ["Waypoint"] = 37861,
             ["Range"] = 8.23,
             ["TT"] = {
@@ -12730,10 +10630,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [39]
         {
-            ["Trigger"] = {
-                ["y"] = 1251.8,
-                ["x"] = 6027.8,
-            },
             ["Qpart"] = {
                 [37861] = {
                     ["1"] = "1",
@@ -12770,10 +10666,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 1212.5,
-                ["x"] = 6040,
-            },
             ["Range"] = 7.63,
             ["TT"] = {
                 ["y"] = 1212.5,
@@ -12799,10 +10691,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [45]
         {
-            ["Trigger"] = {
-                ["y"] = 665,
-                ["x"] = 6580.5,
-            },
             ["Waypoint"] = 38014,
             ["Range"] = 10.44,
             ["TT"] = {
@@ -12815,10 +10703,6 @@ if (APR.Faction == "Horde") then
                 [38015] = {
                     ["4"] = "4",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 705.7,
-                ["x"] = 6557.3,
             },
             ["Button"] = {
                 ["38015-4"] = 138146,
@@ -12840,10 +10724,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 579.6,
-                ["x"] = 6625.1,
-            },
             ["Button"] = {
                 ["38015-1"] = 138146,
             },
@@ -12864,10 +10744,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 614.9,
-                ["x"] = 6669.3,
-            },
             ["Button"] = {
                 ["38015-3"] = 138146,
             },
@@ -12883,10 +10759,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 649.2,
-                ["x"] = 6718.3,
-            },
             ["Fillers"] = {
                 [38014] = {
                     ["1"] = "1",
@@ -12899,10 +10771,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [50]
         {
-            ["Trigger"] = {
-                ["y"] = 644.9,
-                ["x"] = 6719.3,
-            },
             ["Qpart"] = {
                 [38014] = {
                     ["1"] = "1",
@@ -12942,10 +10810,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [54]
         {
-            ["Trigger"] = {
-                ["y"] = 699.7,
-                ["x"] = 6651.8,
-            },
             ["Waypoint"] = 42567,
             ["Range"] = 23.25,
             ["TT"] = {
@@ -12972,10 +10836,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [57]
         {
-            ["Trigger"] = {
-                ["y"] = 616.4,
-                ["x"] = 6657.8,
-            },
             ["Qpart"] = {
                 [42756] = {
                     ["1"] = "1",
@@ -12988,10 +10848,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [58]
         {
-            ["Trigger"] = {
-                ["y"] = 614.2,
-                ["x"] = 6657.8,
-            },
             ["Qpart"] = {
                 [42756] = {
                     ["2"] = "2",
@@ -13047,10 +10903,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -354.8,
-                ["x"] = 6593.8,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = -354.8,
@@ -13077,10 +10929,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -258.3,
-                ["x"] = 6589,
-            },
             ["Qpart"] = {
                 [37542] = {
                     ["1"] = "1",
@@ -13102,10 +10950,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = -412.4,
-                ["x"] = 6608.1,
-            },
             ["Waypoint"] = 37528,
             ["Range"] = 7.61,
             ["TT"] = {
@@ -13114,10 +10958,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = -424.5,
-                ["x"] = 6592.2,
-            },
             ["Waypoint"] = 37528,
             ["Range"] = 6.87,
             ["TT"] = {
@@ -13126,10 +10966,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = -421.4,
-                ["x"] = 6583,
-            },
             ["Qpart"] = {
                 [37528] = {
                     ["1"] = "1",
@@ -13178,10 +11014,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = -343.5,
-                ["x"] = 6533.2,
-            },
             ["Waypoint"] = 37536,
             ["Range"] = 17.98,
             ["TT"] = {
@@ -13196,10 +11028,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -379.9,
-                ["x"] = 6519.8,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = -379.9,
@@ -13207,10 +11035,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = -341.8,
-                ["x"] = 6536,
-            },
             ["Waypoint"] = 37536,
             ["Range"] = 13.64,
             ["TT"] = {
@@ -13243,10 +11067,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -337.4,
-                ["x"] = 6675.5,
-            },
             ["Range"] = 14.61,
             ["TT"] = {
                 ["y"] = -337.4,
@@ -13254,10 +11074,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -444.5,
-                ["x"] = 6673.8,
-            },
             ["Waypoint"] = 37538,
             ["Range"] = 16.3,
             ["TT"] = {
@@ -13284,10 +11100,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [23]
         {
-            ["Trigger"] = {
-                ["y"] = -741.8,
-                ["x"] = 6605.3,
-            },
             ["Waypoint"] = 37565,
             ["Range"] = 20.06,
             ["TT"] = {
@@ -13318,10 +11130,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -787.3,
-                ["x"] = 6783.1,
-            },
             ["Button"] = {
                 ["37565-1"] = 118330,
             },
@@ -13344,10 +11152,6 @@ if (APR.Faction == "Horde") then
                 [37495] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -955.2,
-                ["x"] = 6611.1,
             },
             ["Button"] = {
                 ["37565-1"] = 118330,
@@ -13372,10 +11176,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -872.8,
-                ["x"] = 6448.8,
-            },
             ["Button"] = {
                 ["37565-1"] = 118330,
             },
@@ -13396,10 +11196,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -879.2,
-                ["x"] = 6448.2,
-            },
             ["Button"] = {
                 ["37565-1"] = 118330,
             },
@@ -13410,10 +11206,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [29]
         {
-            ["Trigger"] = {
-                ["y"] = -871.5,
-                ["x"] = 6553.6,
-            },
             ["Qpart"] = {
                 [37495] = {
                     ["1"] = "1",
@@ -13444,10 +11236,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [32]
         {
-            ["Trigger"] = {
-                ["y"] = -1006.2,
-                ["x"] = 6299.3,
-            },
             ["Qpart"] = {
                 [37566] = {
                     ["1"] = "1",
@@ -13495,10 +11283,6 @@ if (APR.Faction == "Horde") then
             ["SetHS"] = 37657,
         }, -- [37]
         {
-            ["Trigger"] = {
-                ["y"] = -781.5,
-                ["x"] = 6129.3,
-            },
             ["GetFP"] = 1633,
             ["Range"] = 5.91,
             ["TT"] = {
@@ -13507,10 +11291,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [38]
         {
-            ["Trigger"] = {
-                ["y"] = -878.8,
-                ["x"] = 5708.8,
-            },
             ["Waypoint"] = 37657,
             ["Range"] = 27.4,
             ["TT"] = {
@@ -13523,10 +11303,6 @@ if (APR.Faction == "Horde") then
                 [37657] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -990.8,
-                ["x"] = 5616.8,
             },
             ["Fillers"] = {
                 [37657] = {
@@ -13543,10 +11319,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [40]
         {
-            ["Trigger"] = {
-                ["y"] = -888.7,
-                ["x"] = 5707.2,
-            },
             ["Qpart"] = {
                 [42220] = {
                     ["1"] = "1",
@@ -13581,10 +11353,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [43]
         {
-            ["Trigger"] = {
-                ["y"] = -667.2,
-                ["x"] = 5541.6,
-            },
             ["Waypoint"] = 37659,
             ["Range"] = 5.85,
             ["TT"] = {
@@ -13593,10 +11361,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [44]
         {
-            ["Trigger"] = {
-                ["y"] = -661.5,
-                ["x"] = 5552.3,
-            },
             ["Waypoint"] = 37659,
             ["Range"] = 3.58,
             ["TT"] = {
@@ -13623,10 +11387,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [47]
         {
-            ["Trigger"] = {
-                ["y"] = -592.3,
-                ["x"] = 5637,
-            },
             ["Waypoint"] = 42238,
             ["Range"] = 7.49,
             ["TT"] = {
@@ -13659,10 +11419,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 2,
-            ["Trigger"] = {
-                ["y"] = -438.4,
-                ["x"] = 5762.7,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = -438.4,
@@ -13688,10 +11444,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [53]
         {
-            ["Trigger"] = {
-                ["y"] = -438.8,
-                ["x"] = 5761.8,
-            },
             ["Qpart"] = {
                 [38232] = {
                     ["1"] = "1",
@@ -13724,10 +11476,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [56]
         {
-            ["Trigger"] = {
-                ["y"] = -516.2,
-                ["x"] = 5604.1,
-            },
             ["Range"] = 11.03,
             ["Waypoint"] = 38237,
             ["TT"] = {
@@ -13743,10 +11491,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -518,
-                ["x"] = 5606.8,
-            },
             ["Range"] = 10.44,
             ["TT"] = {
                 ["y"] = -518,
@@ -13754,10 +11498,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [58]
         {
-            ["Trigger"] = {
-                ["y"] = -518.8,
-                ["x"] = 5609.8,
-            },
             ["Range"] = 14.85,
             ["Waypoint"] = 38237,
             ["TT"] = {
@@ -13828,10 +11568,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2289.8,
-                ["x"] = 6593.2,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 2289.8,
@@ -13857,10 +11593,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 2591.4,
-                ["x"] = 6650.3,
-            },
             ["Range"] = 31.04,
             ["Waypoint"] = 38384,
             ["TT"] = {
@@ -13869,10 +11601,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 2532.9,
-                ["x"] = 6618.8,
-            },
             ["Range"] = 25.25,
             ["Waypoint"] = 38384,
             ["TT"] = {
@@ -13881,10 +11609,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 2368.4,
-                ["x"] = 6665.1,
-            },
             ["Range"] = 27.42,
             ["Waypoint"] = 38384,
             ["TT"] = {
@@ -13936,10 +11660,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2352.5,
-                ["x"] = 6144.1,
-            },
             ["Fillers"] = {
                 [39393] = {
                     ["1"] = "1",
@@ -13970,10 +11690,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [15]
         {
-            ["Trigger"] = {
-                ["y"] = 2314,
-                ["x"] = 6112.2,
-            },
             ["Range"] = 12.21,
             ["Waypoint"] = 39384,
             ["TT"] = {
@@ -13982,10 +11698,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = 2389.3,
-                ["x"] = 6099.6,
-            },
             ["Range"] = 13.78,
             ["Waypoint"] = 39384,
             ["TT"] = {
@@ -13994,10 +11706,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 2460.4,
-                ["x"] = 6136.8,
-            },
             ["Range"] = 9.07,
             ["Waypoint"] = 39384,
             ["TT"] = {
@@ -14006,10 +11714,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [18]
         {
-            ["Trigger"] = {
-                ["y"] = 2503.9,
-                ["x"] = 6108.6,
-            },
             ["Range"] = 14.3,
             ["Waypoint"] = 39384,
             ["TT"] = {
@@ -14018,10 +11722,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = 2501.8,
-                ["x"] = 6040.3,
-            },
             ["Qpart"] = {
                 [39384] = {
                     ["2"] = "2",
@@ -14052,10 +11752,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [22]
         {
-            ["Trigger"] = {
-                ["y"] = 2503.5,
-                ["x"] = 6015.5,
-            },
             ["Qpart"] = {
                 [40573] = {
                     ["1"] = "1",
@@ -14068,10 +11764,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [23]
         {
-            ["Trigger"] = {
-                ["y"] = 2499.1,
-                ["x"] = 6123,
-            },
             ["Range"] = 11.15,
             ["Waypoint"] = 40573,
             ["TT"] = {
@@ -14080,10 +11772,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [24]
         {
-            ["Trigger"] = {
-                ["y"] = 2170,
-                ["x"] = 6178.3,
-            },
             ["Range"] = 13.25,
             ["Waypoint"] = 40573,
             ["TT"] = {
@@ -14092,10 +11780,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [25]
         {
-            ["Trigger"] = {
-                ["y"] = 2130.3,
-                ["x"] = 6145.5,
-            },
             ["Range"] = 8.49,
             ["Waypoint"] = 40573,
             ["TT"] = {
@@ -14104,10 +11788,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [26]
         {
-            ["Trigger"] = {
-                ["y"] = 2120.5,
-                ["x"] = 6120.6,
-            },
             ["Range"] = 10.07,
             ["Waypoint"] = 40573,
             ["TT"] = {
@@ -14116,10 +11796,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [27]
         {
-            ["Trigger"] = {
-                ["y"] = 2117.3,
-                ["x"] = 6062.6,
-            },
             ["Qpart"] = {
                 [40573] = {
                     ["4"] = "4",
@@ -14132,10 +11808,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [28]
         {
-            ["Trigger"] = {
-                ["y"] = 2120.9,
-                ["x"] = 6125.8,
-            },
             ["Waypoint"] = 40573,
             ["Range"] = 9.36,
             ["TT"] = {
@@ -14153,10 +11825,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [30]
         {
-            ["Trigger"] = {
-                ["y"] = 2185.6,
-                ["x"] = 6174.8,
-            },
             ["Qpart"] = {
                 [39393] = {
                     ["1"] = "1",
@@ -14169,10 +11837,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [31]
         {
-            ["Trigger"] = {
-                ["y"] = 2236.6,
-                ["x"] = 6044,
-            },
             ["Range"] = 14.89,
             ["Waypoint"] = 38142,
             ["TT"] = {
@@ -14206,10 +11870,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2332.3,
-                ["x"] = 5856.3,
-            },
             ["Fillers"] = {
                 [42884] = {
                     ["1"] = "1",
@@ -14228,10 +11888,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [35]
         {
-            ["Trigger"] = {
-                ["y"] = 2330.4,
-                ["x"] = 5847.1,
-            },
             ["Qpart"] = {
                 [42884] = {
                     ["1"] = "1",
@@ -14262,10 +11918,6 @@ if (APR.Faction == "Horde") then
             },
         },             -- [37]
         {
-            ["Trigger"] = {
-                ["y"] = 1922,
-                ["x"] = 6214.8,
-            },
             ["Range"] = 34.99,
             ["Waypoint"] = 38142,
             ["TT"] = {
@@ -14284,10 +11936,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [39]
         {
-            ["Trigger"] = {
-                ["y"] = 1924.5,
-                ["x"] = 6310.7,
-            },
             ["Range"] = 16.18,
             ["Waypoint"] = 42747,
             ["TT"] = {
@@ -14310,10 +11958,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1956.5,
-                ["x"] = 6342.2,
-            },
             ["Fillers"] = {
                 [42748] = {
                     ["1"] = "1",
@@ -14330,10 +11974,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [42]
         {
-            ["Trigger"] = {
-                ["y"] = 2006.8,
-                ["x"] = 6342.8,
-            },
             ["Range"] = 16.76,
             ["Waypoint"] = 42747,
             ["TT"] = {
@@ -14342,10 +11982,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [43]
         {
-            ["Trigger"] = {
-                ["y"] = 2053.8,
-                ["x"] = 6299.6,
-            },
             ["Range"] = 14.9,
             ["Waypoint"] = 42747,
             ["TT"] = {
@@ -14358,10 +11994,6 @@ if (APR.Faction == "Horde") then
                 [42750] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2002.4,
-                ["x"] = 6242.3,
             },
             ["Fillers"] = {
                 [42748] = {
@@ -14379,10 +12011,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [45]
         {
-            ["Trigger"] = {
-                ["y"] = 2046.5,
-                ["x"] = 6317.1,
-            },
             ["Range"] = 12.72,
             ["Waypoint"] = 42747,
             ["TT"] = {
@@ -14391,10 +12019,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [46]
         {
-            ["Trigger"] = {
-                ["y"] = 1981,
-                ["x"] = 6426.3,
-            },
             ["Range"] = 17.3,
             ["Waypoint"] = 42747,
             ["TT"] = {
@@ -14407,10 +12031,6 @@ if (APR.Faction == "Horde") then
                 [42750] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1985.5,
-                ["x"] = 6504.6,
             },
             ["Fillers"] = {
                 [42748] = {
@@ -14428,10 +12048,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [48]
         {
-            ["Trigger"] = {
-                ["y"] = 1990.2,
-                ["x"] = 6498.2,
-            },
             ["Qpart"] = {
                 [42748] = {
                     ["1"] = "1",
@@ -14448,10 +12064,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [49]
         {
-            ["Trigger"] = {
-                ["y"] = 1918.8,
-                ["x"] = 6248.8,
-            },
             ["Range"] = 16.11,
             ["Waypoint"] = 42747,
             ["TT"] = {
@@ -14480,10 +12092,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [52]
         {
-            ["Trigger"] = {
-                ["y"] = 1867,
-                ["x"] = 6243,
-            },
             ["Waypoint"] = 42751,
             ["Range"] = 9.12,
             ["TT"] = {
@@ -14492,10 +12100,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [53]
         {
-            ["Trigger"] = {
-                ["y"] = 1834.4,
-                ["x"] = 6231.3,
-            },
             ["Waypoint"] = 42751,
             ["Range"] = 7.5,
             ["TT"] = {
@@ -14504,10 +12108,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [54]
         {
-            ["Trigger"] = {
-                ["y"] = 1846.4,
-                ["x"] = 6286.7,
-            },
             ["Waypoint"] = 42751,
             ["Range"] = 13.1,
             ["TT"] = {
@@ -14516,10 +12116,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [55]
         {
-            ["Trigger"] = {
-                ["y"] = 1927.7,
-                ["x"] = 6290.3,
-            },
             ["Qpart"] = {
                 [42751] = {
                     ["1"] = "1",
@@ -14538,10 +12134,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 1930.2,
-                ["x"] = 6279.7,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 1930.2,
@@ -14549,10 +12141,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [57]
         {
-            ["Trigger"] = {
-                ["y"] = 1858.2,
-                ["x"] = 6298.6,
-            },
             ["Range"] = 13.36,
             ["Waypoint"] = 42751,
             ["TT"] = {
@@ -14561,10 +12149,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [58]
         {
-            ["Trigger"] = {
-                ["y"] = 1826.7,
-                ["x"] = 6215.8,
-            },
             ["Range"] = 12.67,
             ["Waypoint"] = 42751,
             ["TT"] = {
@@ -14573,10 +12157,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [59]
         {
-            ["Trigger"] = {
-                ["y"] = 1780,
-                ["x"] = 6187.3,
-            },
             ["Range"] = 17.39,
             ["Waypoint"] = 42751,
             ["TT"] = {
@@ -14585,10 +12165,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [60]
         {
-            ["Trigger"] = {
-                ["y"] = 1761.4,
-                ["x"] = 6252.5,
-            },
             ["Range"] = 17.8,
             ["Waypoint"] = 42751,
             ["TT"] = {
@@ -14597,10 +12173,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [61]
         {
-            ["Trigger"] = {
-                ["y"] = 1824.5,
-                ["x"] = 6309.2,
-            },
             ["Range"] = 28.15,
             ["Waypoint"] = 42751,
             ["TT"] = {
@@ -14618,10 +12190,6 @@ if (APR.Faction == "Horde") then
             },
         },             -- [63]
         {
-            ["Trigger"] = {
-                ["y"] = 1791.9,
-                ["x"] = 6395.8,
-            },
             ["Range"] = 28.33,
             ["Waypoint"] = 38142,
             ["TT"] = {
@@ -14653,10 +12221,6 @@ if (APR.Faction == "Horde") then
                 ["MobId"] = 91472,
                 ["Qid"] = 38862,
             },
-            ["Trigger"] = {
-                ["y"] = 2003.5,
-                ["x"] = 6625.7,
-            },
             ["Fillers"] = {
                 [38842] = {
                     ["1"] = "1",
@@ -14681,10 +12245,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1818,
-                ["x"] = 6641,
-            },
             ["Fillers"] = {
                 [38842] = {
                     ["1"] = "1",
@@ -14697,10 +12257,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [68]
         {
-            ["Trigger"] = {
-                ["y"] = 2023.9,
-                ["x"] = 6632.8,
-            },
             ["Qpart"] = {
                 [38842] = {
                     ["1"] = "1",
@@ -14784,10 +12340,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1711.5,
-                ["x"] = 6914.7,
-            },
             ["Fillers"] = {
                 [38455] = {
                     ["1"] = "1",
@@ -14817,10 +12369,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 1716.3,
-                ["x"] = 6912.5,
-            },
             ["Qpart"] = {
                 [38455] = {
                     ["1"] = "1",
@@ -14861,10 +12409,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Trigger"] = {
-                ["y"] = 1820.7,
-                ["x"] = 6850.5,
-            },
             ["Range"] = 15.13,
             ["Waypoint"] = 38143,
             ["TT"] = {
@@ -14873,10 +12417,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 1735.7,
-                ["x"] = 6856.8,
-            },
             ["Range"] = 7.71,
             ["Waypoint"] = 38143,
             ["TT"] = {
@@ -14885,10 +12425,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 1737.3,
-                ["x"] = 6871.8,
-            },
             ["Range"] = 7.83,
             ["Waypoint"] = 38143,
             ["TT"] = {
@@ -14916,10 +12452,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = 1784.4,
-                ["x"] = 6879,
-            },
             ["Range"] = 11.03,
             ["Waypoint"] = 38144,
             ["TT"] = {
@@ -14928,10 +12460,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Trigger"] = {
-                ["y"] = 1735,
-                ["x"] = 6869.3,
-            },
             ["Range"] = 7.61,
             ["Waypoint"] = 38144,
             ["TT"] = {
@@ -14940,10 +12468,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [11]
         {
-            ["Trigger"] = {
-                ["y"] = 1711.4,
-                ["x"] = 6868.8,
-            },
             ["Range"] = 7.08,
             ["Waypoint"] = 38144,
             ["TT"] = {
@@ -14952,10 +12476,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = 1688.5,
-                ["x"] = 6870.3,
-            },
             ["Range"] = 8.32,
             ["Waypoint"] = 38144,
             ["TT"] = {
@@ -14964,10 +12484,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 1678.3,
-                ["x"] = 6900.5,
-            },
             ["Qpart"] = {
                 [38145] = {
                     ["1"] = "1",
@@ -15002,10 +12518,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = 1719.5,
-                ["x"] = 6851.3,
-            },
             ["Range"] = 10.69,
             ["Waypoint"] = 38147,
             ["TT"] = {
@@ -15014,10 +12526,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 1698.4,
-                ["x"] = 6843.7,
-            },
             ["Range"] = 9.87,
             ["Waypoint"] = 38147,
             ["TT"] = {
@@ -15026,10 +12534,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [18]
         {
-            ["Trigger"] = {
-                ["y"] = 1651.5,
-                ["x"] = 6857.2,
-            },
             ["Range"] = 7.49,
             ["Waypoint"] = 38147,
             ["TT"] = {
@@ -15038,10 +12542,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = 1635.7,
-                ["x"] = 6874.3,
-            },
             ["Qpart"] = {
                 [38147] = {
                     ["1"] = "1",
@@ -15054,10 +12554,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = 1677,
-                ["x"] = 6847,
-            },
             ["Range"] = 10.35,
             ["Waypoint"] = 38147,
             ["TT"] = {
@@ -15066,10 +12562,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [21]
         {
-            ["Trigger"] = {
-                ["y"] = 1719.5,
-                ["x"] = 6851.8,
-            },
             ["Range"] = 7.68,
             ["Waypoint"] = 38147,
             ["TT"] = {
@@ -15078,10 +12570,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [22]
         {
-            ["Trigger"] = {
-                ["y"] = 1755,
-                ["x"] = 6844.2,
-            },
             ["Range"] = 9.36,
             ["Waypoint"] = 38147,
             ["TT"] = {
@@ -15090,10 +12578,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [23]
         {
-            ["Trigger"] = {
-                ["y"] = 1820.7,
-                ["x"] = 6850.8,
-            },
             ["Range"] = 8.23,
             ["Waypoint"] = 38147,
             ["TT"] = {
@@ -15130,10 +12614,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [27]
         {
-            ["Trigger"] = {
-                ["y"] = 2161.1,
-                ["x"] = 7035.5,
-            },
             ["Qpart"] = {
                 [38235] = {
                     ["2"] = "2",
@@ -15146,10 +12626,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [28]
         {
-            ["Trigger"] = {
-                ["y"] = 2131.1,
-                ["x"] = 7095.3,
-            },
             ["Range"] = 6,
             ["Waypoint"] = 38225,
             ["TT"] = {
@@ -15158,10 +12634,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [29]
         {
-            ["Trigger"] = {
-                ["y"] = 2105.9,
-                ["x"] = 7082.3,
-            },
             ["Qpart"] = {
                 [38225] = {
                     ["1"] = "1",
@@ -15174,10 +12646,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [30]
         {
-            ["Trigger"] = {
-                ["y"] = 2197.8,
-                ["x"] = 7191.8,
-            },
             ["Qpart"] = {
                 [38235] = {
                     ["3"] = "3",
@@ -15190,10 +12658,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [31]
         {
-            ["Trigger"] = {
-                ["y"] = 2385.6,
-                ["x"] = 7195,
-            },
             ["Qpart"] = {
                 [38235] = {
                     ["1"] = "1",
@@ -15206,10 +12670,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [32]
         {
-            ["Trigger"] = {
-                ["y"] = 2476.1,
-                ["x"] = 7018.7,
-            },
             ["Range"] = 86.88,
             ["Waypoint"] = 38235,
             ["TT"] = {
@@ -15246,10 +12706,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [36]
         {
-            ["Trigger"] = {
-                ["y"] = 2458.9,
-                ["x"] = 6614.1,
-            },
             ["Qpart"] = {
                 [39354] = {
                     ["1"] = "1",
@@ -15262,10 +12718,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [37]
         {
-            ["Trigger"] = {
-                ["y"] = 2531.5,
-                ["x"] = 6852.6,
-            },
             ["Qpart"] = {
                 [39354] = {
                     ["2"] = "2",
@@ -15311,10 +12763,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2612.5,
-                ["x"] = 6745.6,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 2612.5,
@@ -15340,10 +12788,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [44]
         {
-            ["Trigger"] = {
-                ["y"] = 2636.3,
-                ["x"] = 6504,
-            },
             ["Range"] = 38.25,
             ["Waypoint"] = 38641,
             ["TT"] = {
@@ -15352,10 +12796,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [45]
         {
-            ["Trigger"] = {
-                ["y"] = 2676.1,
-                ["x"] = 6486.1,
-            },
             ["Range"] = 30.97,
             ["Waypoint"] = 38641,
             ["TT"] = {
@@ -15364,10 +12804,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [46]
         {
-            ["Trigger"] = {
-                ["y"] = 2875.3,
-                ["x"] = 6562.3,
-            },
             ["Range"] = 24.79,
             ["Waypoint"] = 38641,
             ["TT"] = {
@@ -15376,10 +12812,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [47]
         {
-            ["Trigger"] = {
-                ["y"] = 2888.6,
-                ["x"] = 6706.7,
-            },
             ["Range"] = 24.97,
             ["Waypoint"] = 38641,
             ["TT"] = {
@@ -15412,10 +12844,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2986.1,
-                ["x"] = 6336.2,
-            },
             ["Fillers"] = {
                 [38655] = {
                     ["1"] = "1",
@@ -15428,10 +12856,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [51]
         {
-            ["Trigger"] = {
-                ["y"] = 2986.1,
-                ["x"] = 6336.2,
-            },
             ["Qpart"] = {
                 [38655] = {
                     ["1"] = "1",
@@ -15463,10 +12887,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [54]
         {
-            ["Trigger"] = {
-                ["y"] = 2845.6,
-                ["x"] = 6599.3,
-            },
             ["Range"] = 33.9,
             ["Waypoint"] = 38663,
             ["TT"] = {
@@ -15475,10 +12895,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [55]
         {
-            ["Trigger"] = {
-                ["y"] = 2772.1,
-                ["x"] = 6564.3,
-            },
             ["Range"] = 19.07,
             ["Waypoint"] = 38663,
             ["TT"] = {
@@ -15511,10 +12927,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2633.5,
-                ["x"] = 6716.3,
-            },
             ["Range"] = 8.59,
             ["TT"] = {
                 ["y"] = 2633.5,
@@ -15541,10 +12953,6 @@ if (APR.Faction == "Horde") then
         }, -- [61]
         {
             ["ExtraActionB"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2719.3,
-                ["x"] = 6100.7,
-            },
             ["Qpart"] = {
                 [38582] = {
                     ["1"] = "1",
@@ -15557,10 +12965,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [62]
         {
-            ["Trigger"] = {
-                ["y"] = 2904.1,
-                ["x"] = 5939.3,
-            },
             ["Qpart"] = {
                 [38582] = {
                     ["2"] = "2",
@@ -15573,10 +12977,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [63]
         {
-            ["Trigger"] = {
-                ["y"] = 2880.1,
-                ["x"] = 5898.5,
-            },
             ["Range"] = 15.82,
             ["Waypoint"] = 38582,
             ["TT"] = {
@@ -15585,10 +12985,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [64]
         {
-            ["Trigger"] = {
-                ["y"] = 2831.4,
-                ["x"] = 5899.2,
-            },
             ["Qpart"] = {
                 [38582] = {
                     ["3"] = "3",
@@ -15601,10 +12997,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [65]
         {
-            ["Trigger"] = {
-                ["y"] = 2898.5,
-                ["x"] = 5911.8,
-            },
             ["Range"] = 13.21,
             ["Waypoint"] = 38582,
             ["TT"] = {
@@ -15613,10 +13005,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [66]
         {
-            ["Trigger"] = {
-                ["y"] = 2896.8,
-                ["x"] = 5967.6,
-            },
             ["Range"] = 12.75,
             ["Waypoint"] = 38582,
             ["TT"] = {
@@ -15643,10 +13031,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [69]
         {
-            ["Trigger"] = {
-                ["y"] = 2746.1,
-                ["x"] = 5971.5,
-            },
             ["Range"] = 17.45,
             ["Waypoint"] = 38753,
             ["TT"] = {
@@ -15655,10 +13039,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [70]
         {
-            ["Trigger"] = {
-                ["y"] = 2782.1,
-                ["x"] = 5909.1,
-            },
             ["Range"] = 15.88,
             ["Waypoint"] = 38753,
             ["TT"] = {
@@ -15667,10 +13047,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [71]
         {
-            ["Trigger"] = {
-                ["y"] = 2891.6,
-                ["x"] = 5894.7,
-            },
             ["Qpart"] = {
                 [38753] = {
                     ["1"] = "1",
@@ -15721,10 +13097,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [76]
         {
-            ["Trigger"] = {
-                ["y"] = 3108.5,
-                ["x"] = 5857,
-            },
             ["Waypoint"] = 41890,
             ["Range"] = 15.85,
             ["TT"] = {
@@ -15739,10 +13111,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3123.5,
-                ["x"] = 5918.5,
-            },
             ["Fillers"] = {
                 [38671] = {
                     ["1"] = "1",
@@ -15762,10 +13130,6 @@ if (APR.Faction == "Horde") then
                 [41890] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3134.1,
-                ["x"] = 5912.3,
             },
             ["Fillers"] = {
                 [38671] = {
@@ -15808,10 +13172,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [81]
         {
-            ["Trigger"] = {
-                ["y"] = 3119.8,
-                ["x"] = 5921.1,
-            },
             ["Qpart"] = {
                 [38671] = {
                     ["1"] = "1",
@@ -15847,10 +13207,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [84]
         {
-            ["Trigger"] = {
-                ["y"] = 3310,
-                ["x"] = 5952,
-            },
             ["Qpart"] = {
                 [38675] = {
                     ["1"] = "1",
@@ -15883,10 +13239,6 @@ if (APR.Faction == "Horde") then
         }, -- [87]
         {
             ["Waypoint"] = 41749,
-            ["Trigger"] = {
-                ["y"] = 3596.6,
-                ["x"] = 5945.6,
-            },
             ["Fillers"] = {
                 [38684] = {
                     ["1"] = "1",
@@ -15900,10 +13252,6 @@ if (APR.Faction == "Horde") then
         }, -- [88]
         {
             ["Waypoint"] = 41749,
-            ["Trigger"] = {
-                ["y"] = 3664.1,
-                ["x"] = 5921.8,
-            },
             ["Fillers"] = {
                 [38684] = {
                     ["1"] = "1",
@@ -15917,10 +13265,6 @@ if (APR.Faction == "Horde") then
         }, -- [89]
         {
             ["Waypoint"] = 41749,
-            ["Trigger"] = {
-                ["y"] = 3669.5,
-                ["x"] = 5879.8,
-            },
             ["Fillers"] = {
                 [38684] = {
                     ["1"] = "1",
@@ -15938,10 +13282,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3668.4,
-                ["x"] = 5820.8,
-            },
             ["Fillers"] = {
                 [38684] = {
                     ["1"] = "1",
@@ -15954,10 +13294,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [91]
         {
-            ["Trigger"] = {
-                ["y"] = 3623.1,
-                ["x"] = 5937,
-            },
             ["Qpart"] = {
                 [38684] = {
                     ["1"] = "1",
@@ -15989,10 +13325,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [94]
         {
-            ["Trigger"] = {
-                ["y"] = 3360.5,
-                ["x"] = 6008.6,
-            },
             ["Qpart"] = {
                 [43702] = {
                     ["1"] = "1",
@@ -16023,10 +13355,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [97]
         {
-            ["Trigger"] = {
-                ["y"] = 3370.8,
-                ["x"] = 5975.5,
-            },
             ["Waypoint"] = 41763,
             ["Range"] = 112.21,
             ["TT"] = {
@@ -16035,10 +13363,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [98]
         {
-            ["Trigger"] = {
-                ["y"] = 3351.9,
-                ["x"] = 5989,
-            },
             ["Qpart"] = {
                 [43241] = {
                     ["1"] = "1",
@@ -16051,10 +13375,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [99]
         {
-            ["Trigger"] = {
-                ["y"] = 3609.8,
-                ["x"] = 6135.5,
-            },
             ["Qpart"] = {
                 [41763] = {
                     ["1"] = "1",
@@ -16073,10 +13393,6 @@ if (APR.Faction == "Horde") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3746.9,
-                ["x"] = 6167.3,
-            },
             ["Fillers"] = {
                 [38748] = {
                     ["1"] = "1",
@@ -16094,10 +13410,6 @@ if (APR.Faction == "Horde") then
                     ["4"] = "4",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3769.1,
-                ["x"] = 6349.2,
-            },
             ["Fillers"] = {
                 [38748] = {
                     ["1"] = "1",
@@ -16110,10 +13422,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [102]
         {
-            ["Trigger"] = {
-                ["y"] = 3769.1,
-                ["x"] = 6349.2,
-            },
             ["Qpart"] = {
                 [38748] = {
                     ["1"] = "1",
@@ -16126,10 +13434,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [103]
         {
-            ["Trigger"] = {
-                ["y"] = 3575.6,
-                ["x"] = 6388.8,
-            },
             ["Qpart"] = {
                 [41763] = {
                     ["5"] = "5",
@@ -16166,10 +13470,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3548.5,
-                ["x"] = 6420.6,
-            },
             ["Range"] = 3.73,
             ["TT"] = {
                 ["y"] = 3548.5,
@@ -16177,10 +13477,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [107]
         {
-            ["Trigger"] = {
-                ["y"] = 2913.4,
-                ["x"] = 6642.8,
-            },
             ["Qpart"] = {
                 [38743] = {
                     ["2"] = "2",
@@ -16267,10 +13563,6 @@ if (APR.Faction == "Horde") then
         }, -- [5]
         {
             ["Waypoint"] = 38644,
-            ["Trigger"] = {
-                ["y"] = 2569.1,
-                ["x"] = 7485.5,
-            },
             ["Fillers"] = {
                 [38645] = {
                     ["1"] = "1",
@@ -16290,10 +13582,6 @@ if (APR.Faction == "Horde") then
         }, -- [6]
         {
             ["Waypoint"] = 38644,
-            ["Trigger"] = {
-                ["y"] = 2557.1,
-                ["x"] = 7487.6,
-            },
             ["Fillers"] = {
                 [38645] = {
                     ["1"] = "1",
@@ -16318,10 +13606,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2571.1,
-                ["x"] = 7506.3,
-            },
             ["Fillers"] = {
                 [38645] = {
                     ["1"] = "1",
@@ -16353,10 +13637,6 @@ if (APR.Faction == "Horde") then
             ["ButtonSpellId"] = {
                 [186052] = "38646-1",
             },
-            ["Trigger"] = {
-                ["y"] = 2817.1,
-                ["x"] = 7564.7,
-            },
             ["Button"] = {
                 ["38646-1"] = 127030,
             },
@@ -16376,10 +13656,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Trigger"] = {
-                ["y"] = 2876.9,
-                ["x"] = 7622.3,
-            },
             ["Qpart"] = {
                 [39117] = {
                     ["1"] = "1",
@@ -16415,10 +13691,6 @@ if (APR.Faction == "Horde") then
             ["ButtonSpellId"] = {
                 [186052] = "38646-1",
             },
-            ["Trigger"] = {
-                ["y"] = 2719.1,
-                ["x"] = 7494.5,
-            },
             ["Button"] = {
                 ["38646-1"] = 127030,
             },
@@ -16439,10 +13711,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = 2797.9,
-                ["x"] = 7271,
-            },
             ["Qpart"] = {
                 [38644] = {
                     ["4"] = "4",
@@ -16480,10 +13748,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2799.1,
-                ["x"] = 7267.2,
-            },
             ["Range"] = 6.64,
             ["TT"] = {
                 ["y"] = 2799.1,
@@ -16509,10 +13773,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = 3018.1,
-                ["x"] = 7353.7,
-            },
             ["Qpart"] = {
                 [38718] = {
                     ["1"] = "1",
@@ -16544,10 +13804,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [23]
         {
-            ["Trigger"] = {
-                ["y"] = 3023.4,
-                ["x"] = 7463,
-            },
             ["Range"] = 11.14,
             ["Waypoint"] = 38715,
             ["TT"] = {
@@ -16556,10 +13812,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [24]
         {
-            ["Trigger"] = {
-                ["y"] = 3039.1,
-                ["x"] = 7457.6,
-            },
             ["Range"] = 12.34,
             ["Waypoint"] = 38715,
             ["TT"] = {
@@ -16572,10 +13824,6 @@ if (APR.Faction == "Horde") then
                 [38715] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3054.1,
-                ["x"] = 7407.2,
             },
             ["Fillers"] = {
                 [38716] = {
@@ -16594,10 +13842,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3071.5,
-                ["x"] = 7374.7,
-            },
             ["Fillers"] = {
                 [38716] = {
                     ["1"] = "1",
@@ -16614,10 +13858,6 @@ if (APR.Faction == "Horde") then
                 [38715] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2902.3,
-                ["x"] = 7347.8,
             },
             ["Fillers"] = {
                 [38716] = {
@@ -16636,10 +13876,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2894.9,
-                ["x"] = 7355.3,
-            },
             ["Fillers"] = {
                 [38716] = {
                     ["1"] = "1",
@@ -16656,10 +13892,6 @@ if (APR.Faction == "Horde") then
                 [38715] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3040.8,
-                ["x"] = 7260.6,
             },
             ["Fillers"] = {
                 [38716] = {
@@ -16678,10 +13910,6 @@ if (APR.Faction == "Horde") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3075.3,
-                ["x"] = 7289.8,
-            },
             ["Fillers"] = {
                 [38716] = {
                     ["1"] = "1",
@@ -16694,10 +13922,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [31]
         {
-            ["Trigger"] = {
-                ["y"] = 3070.4,
-                ["x"] = 7289,
-            },
             ["Qpart"] = {
                 [38716] = {
                     ["1"] = "1",
@@ -16729,10 +13953,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [34]
         {
-            ["Trigger"] = {
-                ["y"] = 3117.6,
-                ["x"] = 7147.8,
-            },
             ["Waypoint"] = 38717,
             ["Range"] = 5.52,
             ["TT"] = {
@@ -16741,10 +13961,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [35]
         {
-            ["Trigger"] = {
-                ["y"] = 3149,
-                ["x"] = 7148.7,
-            },
             ["Waypoint"] = 38717,
             ["Range"] = 6.16,
             ["TT"] = {
@@ -16753,10 +13969,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [36]
         {
-            ["Trigger"] = {
-                ["y"] = 3183.6,
-                ["x"] = 7161.8,
-            },
             ["Waypoint"] = 38717,
             ["Range"] = 5.24,
             ["TT"] = {
@@ -16765,10 +13977,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [37]
         {
-            ["Trigger"] = {
-                ["y"] = 3258.5,
-                ["x"] = 7277.7,
-            },
             ["Qpart"] = {
                 [38717] = {
                     ["1"] = "1",
@@ -16781,10 +13989,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [38]
         {
-            ["Trigger"] = {
-                ["y"] = 3297.3,
-                ["x"] = 7336.6,
-            },
             ["Waypoint"] = 38717,
             ["Range"] = 5.48,
             ["TT"] = {
@@ -16793,10 +13997,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [39]
         {
-            ["Trigger"] = {
-                ["y"] = 3310.8,
-                ["x"] = 7370.6,
-            },
             ["Waypoint"] = 38717,
             ["Range"] = 8.59,
             ["TT"] = {
@@ -16824,10 +14024,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [42]
         {
-            ["Trigger"] = {
-                ["y"] = 3362.1,
-                ["x"] = 7354.2,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 8.63,
             ["TT"] = {
@@ -16854,10 +14050,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [45]
         {
-            ["Trigger"] = {
-                ["y"] = 3405.1,
-                ["x"] = 7414.2,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 5.91,
             ["TT"] = {
@@ -16872,10 +14064,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3393.1,
-                ["x"] = 7427.3,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 3393.1,
@@ -16883,10 +14071,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [47]
         {
-            ["Trigger"] = {
-                ["y"] = 3401.1,
-                ["x"] = 7406.3,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 5.31,
             ["TT"] = {
@@ -16895,10 +14079,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [48]
         {
-            ["Trigger"] = {
-                ["y"] = 3383.6,
-                ["x"] = 7397.6,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 5.9,
             ["TT"] = {
@@ -16913,10 +14093,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3369.1,
-                ["x"] = 7408.3,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = 3369.1,
@@ -16924,10 +14100,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [50]
         {
-            ["Trigger"] = {
-                ["y"] = 3407.8,
-                ["x"] = 7381.8,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 4.8,
             ["TT"] = {
@@ -16936,10 +14108,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [51]
         {
-            ["Trigger"] = {
-                ["y"] = 3429.1,
-                ["x"] = 7369.3,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 5.02,
             ["TT"] = {
@@ -16954,10 +14122,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3400.6,
-                ["x"] = 7316.8,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = 3400.6,
@@ -16965,10 +14129,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [53]
         {
-            ["Trigger"] = {
-                ["y"] = 3413.1,
-                ["x"] = 7329.3,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 6.13,
             ["TT"] = {
@@ -16977,10 +14137,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [54]
         {
-            ["Trigger"] = {
-                ["y"] = 3445.8,
-                ["x"] = 7308.3,
-            },
             ["Qpart"] = {
                 [38721] = {
                     ["1"] = "1",
@@ -16993,10 +14149,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [55]
         {
-            ["Trigger"] = {
-                ["y"] = 3093,
-                ["x"] = 7459.2,
-            },
             ["Waypoint"] = 38719,
             ["Range"] = 12.73,
             ["TT"] = {
@@ -17042,10 +14194,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 4218.8,
-                ["x"] = 2993.6,
-            },
             ["Qpart"] = {
                 [38358] = {
                     ["1"] = "1",
@@ -17086,10 +14234,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 4422.3,
-                ["x"] = 2744.8,
-            },
             ["Fillers"] = {
                 [38361] = {
                     ["1"] = "1",
@@ -17107,10 +14251,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 4414.6,
-                ["x"] = 2612.3,
-            },
             ["Fillers"] = {
                 [38361] = {
                     ["1"] = "1",
@@ -17123,10 +14263,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 4411.6,
-                ["x"] = 2650.8,
-            },
             ["Qpart"] = {
                 [38361] = {
                     ["1"] = "1",
@@ -17139,10 +14275,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 4481.6,
-                ["x"] = 2473.1,
-            },
             ["Qpart"] = {
                 [38360] = {
                     ["3"] = "3",
@@ -17174,10 +14306,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 4335.1,
-                ["x"] = 2597.1,
-            },
             ["Qpart"] = {
                 [38362] = {
                     ["1"] = "1",
@@ -17199,10 +14327,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 4055.1,
-                ["x"] = 2911.1,
-            },
             ["Waypoint"] = 38362,
             ["Range"] = 27.99,
             ["TT"] = {
@@ -17248,10 +14372,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Trigger"] = {
-                ["y"] = 3962,
-                ["x"] = 3100.1,
-            },
             ["Qpart"] = {
                 [38308] = {
                     ["1"] = "1",
@@ -17282,10 +14402,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 3890.3,
-                ["x"] = 2995.1,
-            },
             ["Qpart"] = {
                 [38317] = {
                     ["1"] = "1",
@@ -17298,10 +14414,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Trigger"] = {
-                ["y"] = 3845.5,
-                ["x"] = 3091.6,
-            },
             ["Waypoint"] = 38317,
             ["Range"] = 47.46,
             ["TT"] = {
@@ -17310,10 +14422,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 3748.1,
-                ["x"] = 3061.1,
-            },
             ["Qpart"] = {
                 [38317] = {
                     ["2"] = "2",
@@ -17353,10 +14461,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = 3512.3,
-                ["x"] = 2607.1,
-            },
             ["Qpart"] = {
                 [38331] = {
                     ["1"] = "1",
@@ -17394,10 +14498,6 @@ if (APR.Faction == "Horde") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3321.1,
-                ["x"] = 2403.8,
-            },
             ["Fillers"] = {
                 [38442] = {
                     ["1"] = "1",
@@ -17420,10 +14520,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3394,
-                ["x"] = 2585.8,
-            },
             ["Fillers"] = {
                 [38442] = {
                     ["1"] = "1",
@@ -17445,10 +14541,6 @@ if (APR.Faction == "Horde") then
                 [39590] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3603.6,
-                ["x"] = 2434.9,
             },
             ["Fillers"] = {
                 [38442] = {
@@ -17484,10 +14576,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 3561.8,
-                ["x"] = 2456.3,
-            },
             ["Qpart"] = {
                 [39595] = {
                     ["1"] = "1",
@@ -17531,10 +14619,6 @@ if (APR.Faction == "Horde") then
                     ["4"] = "4",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3565.3,
-                ["x"] = 2210.1,
-            },
             ["Fillers"] = {
                 [38442] = {
                     ["1"] = "1",
@@ -17551,10 +14635,6 @@ if (APR.Faction == "Horde") then
                 [39591] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3443.4,
-                ["x"] = 2103.6,
             },
             ["Fillers"] = {
                 [38442] = {
@@ -17573,10 +14653,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3412.8,
-                ["x"] = 2177.1,
-            },
             ["Fillers"] = {
                 [38442] = {
                     ["1"] = "1",
@@ -17589,10 +14665,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 3350.1,
-                ["x"] = 2157.6,
-            },
             ["Range"] = 32.3,
             ["Waypoint"] = 39592,
             ["TT"] = {
@@ -17606,10 +14678,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3340.6,
-                ["x"] = 2246.3,
-            },
             ["Fillers"] = {
                 [38442] = {
                     ["1"] = "1",
@@ -17622,10 +14690,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Trigger"] = {
-                ["y"] = 3333.6,
-                ["x"] = 2209.9,
-            },
             ["Qpart"] = {
                 [39592] = {
                     ["1"] = "1",
@@ -17643,10 +14707,6 @@ if (APR.Faction == "Horde") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3391.6,
-                ["x"] = 2202.9,
-            },
             ["Fillers"] = {
                 [38442] = {
                     ["1"] = "1",
@@ -17659,10 +14719,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 3406.5,
-                ["x"] = 2215.1,
-            },
             ["Qpart"] = {
                 [38442] = {
                     ["1"] = "1",
@@ -17695,10 +14751,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = 3446.5,
-                ["x"] = 2267.3,
-            },
             ["Waypoint"] = 39594,
             ["Range"] = 15.3,
             ["TT"] = {
@@ -17707,10 +14759,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Trigger"] = {
-                ["y"] = 3452.9,
-                ["x"] = 2175.9,
-            },
             ["Waypoint"] = 39594,
             ["Range"] = 18.81,
             ["TT"] = {
@@ -17719,10 +14767,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [11]
         {
-            ["Trigger"] = {
-                ["y"] = 3544.1,
-                ["x"] = 2163.8,
-            },
             ["Qpart"] = {
                 [39594] = {
                     ["1"] = "1",
@@ -17735,10 +14779,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = 3507.3,
-                ["x"] = 2166.4,
-            },
             ["Qpart"] = {
                 [39594] = {
                     ["2"] = "2",
@@ -17751,10 +14791,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 3445.5,
-                ["x"] = 2188.1,
-            },
             ["Waypoint"] = 39594,
             ["Range"] = 16.39,
             ["TT"] = {
@@ -17787,10 +14823,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3443.6,
-                ["x"] = 2344.8,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 3443.6,
@@ -17861,10 +14893,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [24]
         {
-            ["Trigger"] = {
-                ["y"] = 2553.1,
-                ["x"] = 2375.9,
-            },
             ["Qpart"] = {
                 [38613] = {
                     ["1"] = "1",
@@ -17882,10 +14910,6 @@ if (APR.Faction == "Horde") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2599.9,
-                ["x"] = 2383.1,
-            },
             ["Fillers"] = {
                 [38374] = {
                     ["1"] = "1",
@@ -17898,10 +14922,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [26]
         {
-            ["Trigger"] = {
-                ["y"] = 2603.6,
-                ["x"] = 2489.5,
-            },
             ["Waypoint"] = 38614,
             ["Range"] = 12.39,
             ["TT"] = {
@@ -17910,10 +14930,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [27]
         {
-            ["Trigger"] = {
-                ["y"] = 2590.1,
-                ["x"] = 2484.4,
-            },
             ["Qpart"] = {
                 [38614] = {
                     ["1"] = "1",
@@ -17930,10 +14946,6 @@ if (APR.Faction == "Horde") then
                 [38614] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2531.5,
-                ["x"] = 2604.8,
             },
             ["Fillers"] = {
                 [38374] = {
@@ -17976,10 +14988,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2551.6,
-                ["x"] = 2497.9,
-            },
             ["Fillers"] = {
                 [38374] = {
                     ["1"] = "1",
@@ -18020,10 +15028,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2384.3,
-                ["x"] = 2339.6,
-            },
             ["Fillers"] = {
                 [38374] = {
                     ["1"] = "1",
@@ -18036,10 +15040,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 2357.6,
-                ["x"] = 2385.4,
-            },
             ["Qpart"] = {
                 [38617] = {
                     ["2"] = "2",
@@ -18070,10 +15070,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 2299.6,
-                ["x"] = 2344.6,
-            },
             ["Qpart"] = {
                 [38618] = {
                     ["1"] = "1",
@@ -18086,10 +15082,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 2180.6,
-                ["x"] = 2438.1,
-            },
             ["Qpart"] = {
                 [38618] = {
                     ["2"] = "2",
@@ -18127,10 +15119,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2134.5,
-                ["x"] = 2374.8,
-            },
             ["Fillers"] = {
                 [40568] = {
                     ["1"] = "1",
@@ -18144,10 +15132,6 @@ if (APR.Faction == "Horde") then
         }, -- [11]
         {
             ["Waypoint"] = 38413,
-            ["Trigger"] = {
-                ["y"] = 2096.3,
-                ["x"] = 2193.1,
-            },
             ["Fillers"] = {
                 [40568] = {
                     ["1"] = "1",
@@ -18165,10 +15149,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2037.5,
-                ["x"] = 2187.1,
-            },
             ["Fillers"] = {
                 [40568] = {
                     ["1"] = "1",
@@ -18182,10 +15162,6 @@ if (APR.Faction == "Horde") then
         }, -- [13]
         {
             ["Waypoint"] = 38413,
-            ["Trigger"] = {
-                ["y"] = 2080.5,
-                ["x"] = 2191.3,
-            },
             ["Fillers"] = {
                 [40568] = {
                     ["1"] = "1",
@@ -18202,10 +15178,6 @@ if (APR.Faction == "Horde") then
                 [38413] = {
                     ["4"] = "4",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2003.9,
-                ["x"] = 2383.6,
             },
             ["Fillers"] = {
                 [40568] = {
@@ -18224,10 +15196,6 @@ if (APR.Faction == "Horde") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2058.4,
-                ["x"] = 2474.4,
-            },
             ["Fillers"] = {
                 [40568] = {
                     ["1"] = "1",
@@ -18240,10 +15208,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = 2058.5,
-                ["x"] = 2472.6,
-            },
             ["Qpart"] = {
                 [40568] = {
                     ["1"] = "1",
@@ -18256,10 +15220,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 2011.2,
-                ["x"] = 2566,
-            },
             ["Waypoint"] = 40568,
             ["Range"] = 19.95,
             ["TT"] = {
@@ -18268,10 +15228,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [18]
         {
-            ["Trigger"] = {
-                ["y"] = 2023.8,
-                ["x"] = 2604.5,
-            },
             ["Qpart"] = {
                 [38414] = {
                     ["1"] = "1",
@@ -18285,10 +15241,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = 2009.9,
-                ["x"] = 2556.4,
-            },
             ["Waypoint"] = 40568,
             ["Range"] = 16.09,
             ["TT"] = {
@@ -18323,10 +15275,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 1980,
-                ["x"] = 2550.8,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 1980,
@@ -18340,10 +15288,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2045.2,
-                ["x"] = 2662,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 2045.2,
@@ -18369,10 +15313,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [26]
         {
-            ["Trigger"] = {
-                ["y"] = 2083,
-                ["x"] = 2641.3,
-            },
             ["Qpart"] = {
                 [38624] = {
                     ["1"] = "1",
@@ -18385,10 +15325,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [27]
         {
-            ["Trigger"] = {
-                ["y"] = 2050.4,
-                ["x"] = 2581.1,
-            },
             ["Qpart"] = {
                 [38624] = {
                     ["2"] = "2",
@@ -18437,10 +15373,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [32]
         {
-            ["Trigger"] = {
-                ["y"] = 3189.1,
-                ["x"] = 1513.7,
-            },
             ["Qpart"] = {
                 [39804] = {
                     ["1"] = "1",
@@ -18490,10 +15422,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [37]
         {
-            ["Trigger"] = {
-                ["y"] = 3002.4,
-                ["x"] = 1121.4,
-            },
             ["Qpart"] = {
                 [39788] = {
                     ["1"] = "1",
@@ -18530,10 +15458,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 3088.6,
-                ["x"] = 973,
-            },
             ["Qpart"] = {
                 [38808] = {
                     ["1"] = "1",
@@ -18579,10 +15503,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3376.9,
-                ["x"] = 1273.2,
-            },
             ["Button"] = {
                 ["39791-1"] = 128772,
             },
@@ -18602,10 +15522,6 @@ if (APR.Faction == "Horde") then
                 [39791] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3407.6,
-                ["x"] = 1154.4,
             },
             ["Button"] = {
                 ["39791-1"] = 128772,
@@ -18627,10 +15543,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3514.1,
-                ["x"] = 1114.8,
-            },
             ["Button"] = {
                 ["39791-1"] = 128772,
             },
@@ -18645,10 +15557,6 @@ if (APR.Faction == "Horde") then
                 [39791] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3514.1,
-                ["x"] = 1114.8,
             },
             ["Button"] = {
                 ["39791-1"] = 128772,
@@ -18689,10 +15597,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 3468,
-                ["x"] = 965.7,
-            },
             ["Qpart"] = {
                 [38816] = {
                     ["1"] = "1",
@@ -18731,10 +15635,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 3532.9,
-                ["x"] = 888.4,
-            },
             ["Qpart"] = {
                 [38815] = {
                     ["1"] = "1",
@@ -18765,10 +15665,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 3568.6,
-                ["x"] = 799.6,
-            },
             ["Waypoint"] = 38818,
             ["Range"] = 24.18,
             ["TT"] = {
@@ -18777,10 +15673,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 3626.8,
-                ["x"] = 791.9,
-            },
             ["Qpart"] = {
                 [38818] = {
                     ["1"] = "1",
@@ -18815,10 +15707,6 @@ if (APR.Faction == "Horde") then
                 [39837] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 365,
-                ["x"] = 412.6,
             },
             ["Fillers"] = {
                 [38343] = {
@@ -18859,10 +15747,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 445.7,
-                ["x"] = 411.6,
-            },
             ["Fillers"] = {
                 [38343] = {
                     ["1"] = "1",
@@ -18885,10 +15769,6 @@ if (APR.Faction == "Horde") then
             },
         },             -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 449.8,
-                ["x"] = 480.1,
-            },
             ["Range"] = 15.08,
             ["Waypoint"] = 38347,
             ["TT"] = {
@@ -18897,10 +15777,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 446,
-                ["x"] = 523.7,
-            },
             ["Range"] = 11.65,
             ["Waypoint"] = 38347,
             ["TT"] = {
@@ -18909,10 +15785,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 452.7,
-                ["x"] = 565.1,
-            },
             ["Range"] = 11.12,
             ["Waypoint"] = 38347,
             ["TT"] = {
@@ -18939,10 +15811,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 446.1,
-                ["x"] = 695.9,
-            },
             ["Range"] = 14.1,
             ["Waypoint"] = 39848,
             ["TT"] = {
@@ -18951,10 +15819,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 487.8,
-                ["x"] = 720,
-            },
             ["Qpart"] = {
                 [39848] = {
                     ["1"] = "1",
@@ -18973,10 +15837,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 490.3,
-                ["x"] = 721.7,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = 490.3,
@@ -19025,10 +15885,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 338.5,
-                ["x"] = 767,
-            },
             ["Range"] = 17.99,
             ["Waypoint"] = 39849,
             ["TT"] = {
@@ -19037,10 +15893,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = 278.6,
-                ["x"] = 839.6,
-            },
             ["Range"] = 12.1,
             ["Waypoint"] = 39849,
             ["TT"] = {
@@ -19053,10 +15905,6 @@ if (APR.Faction == "Horde") then
                 [39849] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 230.6,
-                ["x"] = 862.1,
             },
             ["Fillers"] = {
                 [38343] = {
@@ -19099,10 +15947,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 231.9,
-                ["x"] = 378.3,
-            },
             ["Fillers"] = {
                 [39851] = {
                     ["1"] = "1",
@@ -19118,10 +15962,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = 138,
-                ["x"] = 530.2,
-            },
             ["Range"] = 13.81,
             ["Waypoint"] = 39850,
             ["TT"] = {
@@ -19134,10 +15974,6 @@ if (APR.Faction == "Horde") then
                 [39850] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 110.3,
-                ["x"] = 451.3,
             },
             ["Fillers"] = {
                 [39851] = {
@@ -19159,10 +15995,6 @@ if (APR.Faction == "Horde") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 118,
-                ["x"] = 706.5,
-            },
             ["Fillers"] = {
                 [39851] = {
                     ["1"] = "1",
@@ -19182,10 +16014,6 @@ if (APR.Faction == "Horde") then
                 [39851] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 118,
-                ["x"] = 705.6,
             },
             ["Fillers"] = {
                 [38343] = {
@@ -19228,10 +16056,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 212.3,
-                ["x"] = 586.4,
-            },
             ["Fillers"] = {
                 [38343] = {
                     ["1"] = "1",
@@ -19262,10 +16086,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [28]
         {
-            ["Trigger"] = {
-                ["y"] = 227.8,
-                ["x"] = 586.7,
-            },
             ["Qpart"] = {
                 [38343] = {
                     ["1"] = "1",
@@ -19284,10 +16104,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 488.7,
-                ["x"] = 720.2,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = 488.7,
@@ -19313,10 +16129,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [32]
         {
-            ["Trigger"] = {
-                ["y"] = 3219.3,
-                ["x"] = 1554.5,
-            },
             ["Qpart"] = {
                 [40078] = {
                     ["1"] = "1",
@@ -19406,10 +16218,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2415.5,
-                ["x"] = 1659.2,
-            },
             ["Fillers"] = {
                 [38873] = {
                     ["1"] = "1",
@@ -19438,10 +16246,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2402.1,
-                ["x"] = 1705,
-            },
             ["Button"] = {
                 ["39385-2"] = 128287,
             },
@@ -19452,10 +16256,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 2371.1,
-                ["x"] = 1727.5,
-            },
             ["Qpart"] = {
                 [38873] = {
                     ["1"] = "1",
@@ -19491,10 +16291,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 2610.1,
-                ["x"] = 1726.2,
-            },
             ["Waypoint"] = 39154,
             ["Range"] = 13.24,
             ["TT"] = {
@@ -19546,10 +16342,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2692.1,
-                ["x"] = 1636.3,
-            },
             ["Fillers"] = {
                 [38939] = {
                     ["1"] = "1",
@@ -19586,10 +16378,6 @@ if (APR.Faction == "Horde") then
                     ["4"] = "4",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2599.1,
-                ["x"] = 1475.5,
-            },
             ["Fillers"] = {
                 [38939] = {
                     ["1"] = "1",
@@ -19606,10 +16394,6 @@ if (APR.Faction == "Horde") then
                 [39155] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2597.9,
-                ["x"] = 1527.3,
             },
             ["Fillers"] = {
                 [38939] = {
@@ -19628,10 +16412,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2488,
-                ["x"] = 1525.9,
-            },
             ["Fillers"] = {
                 [38939] = {
                     ["1"] = "1",
@@ -19648,10 +16428,6 @@ if (APR.Faction == "Horde") then
                 [39155] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2486.5,
-                ["x"] = 1473.4,
             },
             ["Fillers"] = {
                 [38939] = {
@@ -19671,10 +16447,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2543.4,
-                ["x"] = 1452.4,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 2543.4,
@@ -19700,10 +16472,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 2542.4,
-                ["x"] = 1301.5,
-            },
             ["Qpart"] = {
                 [38882] = {
                     ["1"] = "1",
@@ -19753,10 +16521,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 2946.4,
-                ["x"] = 1238.9,
-            },
             ["Qpart"] = {
                 [40002] = {
                     ["1"] = "1",
@@ -19769,10 +16533,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 2878.6,
-                ["x"] = 1212.5,
-            },
             ["Qpart"] = {
                 [40002] = {
                     ["2"] = "2",
@@ -19809,10 +16569,6 @@ if (APR.Faction == "Horde") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2557.1,
-                ["x"] = 1165.3,
-            },
             ["Fillers"] = {
                 [39998] = {
                     ["1"] = "1",
@@ -19835,10 +16591,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2469.3,
-                ["x"] = 1061,
-            },
             ["Button"] = {
                 ["40003-3"] = 129161,
             },
@@ -19853,10 +16605,6 @@ if (APR.Faction == "Horde") then
                 [40004] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2520.4,
-                ["x"] = 1082.3,
             },
             ["Fillers"] = {
                 [39998] = {
@@ -19880,10 +16628,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2597.8,
-                ["x"] = 986.7,
-            },
             ["Button"] = {
                 ["40003-2"] = 129161,
             },
@@ -19898,10 +16642,6 @@ if (APR.Faction == "Horde") then
                 [40004] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2631.6,
-                ["x"] = 1025.3,
             },
             ["Fillers"] = {
                 [39998] = {
@@ -19919,10 +16659,6 @@ if (APR.Faction == "Horde") then
                 [40004] = {
                     ["4"] = "4",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 2675.3,
-                ["x"] = 890.2,
             },
             ["Fillers"] = {
                 [39998] = {
@@ -19946,10 +16682,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2713.4,
-                ["x"] = 967.4,
-            },
             ["Button"] = {
                 ["40003-1"] = 129161,
             },
@@ -19960,10 +16692,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 2710.3,
-                ["x"] = 979.6,
-            },
             ["Qpart"] = {
                 [39998] = {
                     ["1"] = "1",
@@ -20001,10 +16729,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 2491,
-                ["x"] = 962.2,
-            },
             ["Range"] = 11.83,
             ["TT"] = {
                 ["y"] = 2491,
@@ -20046,10 +16770,6 @@ if (APR.Faction == "Horde") then
     ---- Highmountain ----
     APR.RouteQuestStepList["650-Highmountain"] = {
         {
-            ["Trigger"] = {
-                ["y"] = 4117.1,
-                ["x"] = 4332.6,
-            },
             ["Waypoint"] = 38907,
             ["Range"] = 10.79,
             ["TT"] = {
@@ -20058,10 +16778,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 4062.8,
-                ["x"] = 4324.6,
-            },
             ["Waypoint"] = 38907,
             ["Range"] = 9.87,
             ["TT"] = {
@@ -20077,10 +16793,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 4063,
-                ["x"] = 4325.2,
-            },
             ["Waypoint"] = 38907,
             ["Range"] = 10.67,
             ["TT"] = {
@@ -20089,10 +16801,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 4101.1,
-                ["x"] = 4357.6,
-            },
             ["Waypoint"] = 38907,
             ["Range"] = 8.65,
             ["TT"] = {
@@ -20144,10 +16852,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 4208.1,
-                ["x"] = 4698.3,
-            },
             ["Fillers"] = {
                 [39490] = {
                     ["1"] = "1",
@@ -20164,10 +16868,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 4255.7,
-                ["x"] = 4646.5,
-            },
             ["Qpart"] = {
                 [39490] = {
                     ["1"] = "1",
@@ -20236,10 +16936,6 @@ if (APR.Faction == "Horde") then
                 [39277] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3987.9,
-                ["x"] = 4666.3,
             },
             ["Button"] = {
                 ["39277-1"] = 127988,
@@ -20331,10 +17027,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3935.5,
-                ["x"] = 5039.6,
-            },
             ["Button"] = {
                 ["39277-1"] = 127988,
             },
@@ -20384,10 +17076,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 4167.3,
-                ["x"] = 5038.8,
-            },
             ["Qpart"] = {
                 [39488] = {
                     ["1"] = "1",
@@ -20422,10 +17110,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 4153.6,
-                ["x"] = 5116.3,
-            },
             ["Waypoint"] = 39487,
             ["Range"] = 11.44,
             ["TT"] = {
@@ -20434,10 +17118,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 4195,
-                ["x"] = 5114,
-            },
             ["Waypoint"] = 39487,
             ["Range"] = 10.42,
             ["TT"] = {
@@ -20446,10 +17126,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 4274.2,
-                ["x"] = 5102.7,
-            },
             ["Qpart"] = {
                 [39487] = {
                     ["1"] = "1",
@@ -20480,10 +17156,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Trigger"] = {
-                ["y"] = 4174.1,
-                ["x"] = 5048.8,
-            },
             ["Waypoint"] = 39498,
             ["Range"] = 11.62,
             ["TT"] = {
@@ -20492,10 +17164,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [11]
         {
-            ["Trigger"] = {
-                ["y"] = 4144.5,
-                ["x"] = 5021.3,
-            },
             ["Waypoint"] = 39498,
             ["Range"] = 9.39,
             ["TT"] = {
@@ -20504,10 +17172,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = 4111.6,
-                ["x"] = 4987.6,
-            },
             ["Waypoint"] = 39498,
             ["Range"] = 10.56,
             ["TT"] = {
@@ -20516,10 +17180,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 4071.9,
-                ["x"] = 4976.8,
-            },
             ["Waypoint"] = 39498,
             ["Range"] = 7.48,
             ["TT"] = {
@@ -20555,10 +17215,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 3672.5,
-                ["x"] = 4869.8,
-            },
             ["Qpart"] = {
                 [42104] = {
                     ["1"] = "1",
@@ -20572,10 +17228,6 @@ if (APR.Faction == "Horde") then
             ["ExtraActionB"] = 1,
         }, -- [18]
         {
-            ["Trigger"] = {
-                ["y"] = 3731.4,
-                ["x"] = 4953.1,
-            },
             ["Waypoint"] = 42104,
             ["Range"] = 9.57,
             ["TT"] = {
@@ -20608,10 +17260,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3738.1,
-                ["x"] = 4891,
-            },
             ["Fillers"] = {
                 [39026] = {
                     ["1"] = "1",
@@ -20628,10 +17276,6 @@ if (APR.Faction == "Horde") then
                 [39025] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3651.6,
-                ["x"] = 4912,
             },
             ["Fillers"] = {
                 [39026] = {
@@ -20650,10 +17294,6 @@ if (APR.Faction == "Horde") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3578,
-                ["x"] = 4838.8,
-            },
             ["Fillers"] = {
                 [39026] = {
                     ["1"] = "1",
@@ -20666,10 +17306,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 3578,
-                ["x"] = 4838.8,
-            },
             ["Qpart"] = {
                 [39026] = {
                     ["1"] = "1",
@@ -20701,10 +17337,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = 3519.3,
-                ["x"] = 4616.2,
-            },
             ["Qpart"] = {
                 [39043] = {
                     ["1"] = "1",
@@ -20736,10 +17368,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = 3463.4,
-                ["x"] = 4492.1,
-            },
             ["Qpart"] = {
                 [39027] = {
                     ["1"] = "1",
@@ -20752,10 +17380,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 3533,
-                ["x"] = 4639.8,
-            },
             ["Range"] = 9.13,
             ["Waypoint"] = 39027,
             ["TT"] = {
@@ -20764,10 +17388,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = 3550.9,
-                ["x"] = 4697.6,
-            },
             ["Range"] = 10.25,
             ["Waypoint"] = 39027,
             ["TT"] = {
@@ -20776,10 +17396,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [15]
         {
-            ["Trigger"] = {
-                ["y"] = 3541.1,
-                ["x"] = 4743.8,
-            },
             ["Range"] = 11.02,
             ["Waypoint"] = 39027,
             ["TT"] = {
@@ -20788,10 +17404,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = 3548.9,
-                ["x"] = 4769.8,
-            },
             ["Qpart"] = {
                 [39027] = {
                     ["2"] = "2",
@@ -20822,10 +17434,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = 4028.3,
-                ["x"] = 4543.6,
-            },
             ["Qpart"] = {
                 [38909] = {
                     ["1"] = "1",
@@ -20838,10 +17446,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = 4081.9,
-                ["x"] = 4385.1,
-            },
             ["Qpart"] = {
                 [38909] = {
                     ["2"] = "2",
@@ -20874,10 +17478,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [23]
         {
-            ["Trigger"] = {
-                ["y"] = 4052.1,
-                ["x"] = 4342.5,
-            },
             ["Waypoint"] = 40515,
             ["Range"] = 7.41,
             ["TT"] = {
@@ -20910,10 +17510,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 4057.9,
-                ["x"] = 4321.8,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 4057.9,
@@ -20939,10 +17535,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 4127.6,
-                ["x"] = 4398.3,
-            },
             ["Waypoint"] = 40520,
             ["Range"] = 8.69,
             ["TT"] = {
@@ -20951,10 +17543,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 4188.7,
-                ["x"] = 4405.3,
-            },
             ["Waypoint"] = 40520,
             ["Range"] = 8.14,
             ["TT"] = {
@@ -20963,10 +17551,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Trigger"] = {
-                ["y"] = 4252.5,
-                ["x"] = 4470.2,
-            },
             ["Qpart"] = {
                 [40520] = {
                     ["1"] = "1",
@@ -20979,10 +17563,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 4443.7,
-                ["x"] = 4498.1,
-            },
             ["Qpart"] = {
                 [40520] = {
                     ["3"] = "3",
@@ -20995,10 +17575,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 4383.8,
-                ["x"] = 4410.5,
-            },
             ["Waypoint"] = 40520,
             ["Range"] = 17.71,
             ["TT"] = {
@@ -21007,10 +17583,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 4411.5,
-                ["x"] = 4299,
-            },
             ["Waypoint"] = 40520,
             ["Range"] = 20.12,
             ["TT"] = {
@@ -21029,10 +17601,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = 4428.7,
-                ["x"] = 4154.3,
-            },
             ["Waypoint"] = 39134,
             ["Range"] = 17.21,
             ["TT"] = {
@@ -21042,10 +17610,6 @@ if (APR.Faction == "Horde") then
         }, -- [10]
         {
             ["Waypoint"] = 39134,
-            ["Trigger"] = {
-                ["y"] = 4487.3,
-                ["x"] = 4048.6,
-            },
             ["Fillers"] = {
                 [39133] = {
                     ["1"] = "1",
@@ -21059,10 +17623,6 @@ if (APR.Faction == "Horde") then
         }, -- [11]
         {
             ["Waypoint"] = 39134,
-            ["Trigger"] = {
-                ["y"] = 4464.8,
-                ["x"] = 4007.3,
-            },
             ["Fillers"] = {
                 [39133] = {
                     ["1"] = "1",
@@ -21076,10 +17636,6 @@ if (APR.Faction == "Horde") then
         }, -- [12]
         {
             ["Waypoint"] = 39134,
-            ["Trigger"] = {
-                ["y"] = 4393.2,
-                ["x"] = 3958.4,
-            },
             ["Fillers"] = {
                 [39133] = {
                     ["1"] = "1",
@@ -21097,10 +17653,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 4399.3,
-                ["x"] = 3879.1,
-            },
             ["Fillers"] = {
                 [39133] = {
                     ["1"] = "1",
@@ -21113,10 +17665,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = 4401.2,
-                ["x"] = 3874.1,
-            },
             ["Qpart"] = {
                 [39133] = {
                     ["1"] = "1",
@@ -21139,10 +17687,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = 4323.3,
-                ["x"] = 4223.7,
-            },
             ["Waypoint"] = 40520,
             ["Range"] = 13.29,
             ["TT"] = {
@@ -21151,10 +17695,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 4335.2,
-                ["x"] = 4260.8,
-            },
             ["Qpart"] = {
                 [40520] = {
                     ["2"] = "2",
@@ -21167,10 +17707,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [18]
         {
-            ["Trigger"] = {
-                ["y"] = 4191.7,
-                ["x"] = 4406,
-            },
             ["Waypoint"] = 40520,
             ["Range"] = 7.25,
             ["TT"] = {
@@ -21179,10 +17715,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = 4129.5,
-                ["x"] = 4398.8,
-            },
             ["Waypoint"] = 40520,
             ["Range"] = 10.59,
             ["TT"] = {
@@ -21215,10 +17747,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 4058.8,
-                ["x"] = 4321.1,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 4058.8,
@@ -21253,10 +17781,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 4032.6,
-                ["x"] = 4373.8,
-            },
             ["Waypoint"] = 38916,
             ["Range"] = 5.82,
             ["TT"] = {
@@ -21265,10 +17789,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 4017.1,
-                ["x"] = 4358.1,
-            },
             ["Waypoint"] = 38916,
             ["Range"] = 10.09,
             ["TT"] = {
@@ -21277,10 +17797,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Trigger"] = {
-                ["y"] = 4023,
-                ["x"] = 4355.8,
-            },
             ["Qpart"] = {
                 [42622] = {
                     ["1"] = "1",
@@ -21313,10 +17829,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 3867,
-                ["x"] = 4516.8,
-            },
             ["Qpart"] = {
                 [39575] = {
                     ["1"] = "1",
@@ -21353,10 +17865,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3552.1,
-                ["x"] = 4376.6,
-            },
             ["Fillers"] = {
                 [39576] = {
                     ["1"] = "1",
@@ -21374,10 +17882,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 3640,
-                ["x"] = 4275.8,
-            },
             ["Fillers"] = {
                 [39576] = {
                     ["1"] = "1",
@@ -21394,10 +17898,6 @@ if (APR.Faction == "Horde") then
                 [40219] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3513.1,
-                ["x"] = 4292.6,
             },
             ["Fillers"] = {
                 [39576] = {
@@ -21429,10 +17929,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 3530.6,
-                ["x"] = 4277.8,
-            },
             ["Qpart"] = {
                 [39576] = {
                     ["1"] = "1",
@@ -21445,10 +17941,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 3431.1,
-                ["x"] = 4303.3,
-            },
             ["Qpart"] = {
                 [39578] = {
                     ["1"] = "1",
@@ -21461,10 +17953,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = 3421.3,
-                ["x"] = 4265.5,
-            },
             ["Qpart"] = {
                 [39578] = {
                     ["2"] = "2",
@@ -21495,10 +17983,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = 3395.6,
-                ["x"] = 4213,
-            },
             ["Qpart"] = {
                 [39577] = {
                     ["1"] = "1",
@@ -21511,10 +17995,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 3413.9,
-                ["x"] = 4191.8,
-            },
             ["Qpart"] = {
                 [39577] = {
                     ["2"] = "2",
@@ -21527,10 +18007,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = 3422,
-                ["x"] = 4200.5,
-            },
             ["Qpart"] = {
                 [39577] = {
                     ["3"] = "3",
@@ -21561,10 +18037,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 3329.4,
-                ["x"] = 4281.6,
-            },
             ["Waypoint"] = 39579,
             ["Range"] = 30.57,
             ["TT"] = {
@@ -21573,10 +18045,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [18]
         {
-            ["Trigger"] = {
-                ["y"] = 3209.1,
-                ["x"] = 4220.8,
-            },
             ["Waypoint"] = 39579,
             ["Range"] = 26.17,
             ["TT"] = {
@@ -21585,10 +18053,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = 3037.4,
-                ["x"] = 4241.2,
-            },
             ["Waypoint"] = 39579,
             ["Range"] = 13.46,
             ["TT"] = {
@@ -21658,10 +18122,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 4828.2,
-                ["x"] = 3669.1,
-            },
             ["Fillers"] = {
                 [39768] = {
                     ["1"] = "1",
@@ -21674,10 +18134,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Trigger"] = {
-                ["y"] = 4828.2,
-                ["x"] = 3669.1,
-            },
             ["Qpart"] = {
                 [39768] = {
                     ["1"] = "1",
@@ -21709,10 +18165,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 4876,
-                ["x"] = 3791.4,
-            },
             ["Waypoint"] = 39769,
             ["Range"] = 10.94,
             ["TT"] = {
@@ -21721,10 +18173,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 4923.8,
-                ["x"] = 3836.6,
-            },
             ["Waypoint"] = 39769,
             ["Range"] = 11.86,
             ["TT"] = {
@@ -21733,10 +18181,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = 4966.8,
-                ["x"] = 3805.4,
-            },
             ["Waypoint"] = 39769,
             ["Range"] = 18.19,
             ["TT"] = {
@@ -21763,10 +18207,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = 4960.2,
-                ["x"] = 3780.3,
-            },
             ["Qpart"] = {
                 [40339] = {
                     ["1"] = "1",
@@ -21785,10 +18225,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 2,
-            ["Trigger"] = {
-                ["y"] = 4959.6,
-                ["x"] = 3779.9,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 4959.6,
@@ -21802,10 +18238,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 2,
-            ["Trigger"] = {
-                ["y"] = 4959.6,
-                ["x"] = 3779.9,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 4959.6,
@@ -21819,10 +18251,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 4959.6,
-                ["x"] = 3779.9,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 4959.6,
@@ -21836,10 +18264,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 2,
-            ["Trigger"] = {
-                ["y"] = 4959.6,
-                ["x"] = 3779.9,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 4959.6,
@@ -21853,10 +18277,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 2,
-            ["Trigger"] = {
-                ["y"] = 4959.6,
-                ["x"] = 3779.9,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 4959.6,
@@ -21882,10 +18302,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 4959.8,
-                ["x"] = 3779.6,
-            },
             ["Qpart"] = {
                 [40345] = {
                     ["1"] = "1",
@@ -21904,10 +18320,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 4959.6,
-                ["x"] = 3779.9,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 4959.6,
@@ -21921,10 +18333,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 4959.6,
-                ["x"] = 3779.9,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 4959.6,
@@ -21932,10 +18340,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 4959.6,
-                ["x"] = 3779.9,
-            },
             ["Qpart"] = {
                 [40345] = {
                     ["4"] = "4",
@@ -21954,10 +18358,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 4959.6,
-                ["x"] = 3779.9,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 4959.6,
@@ -21965,10 +18365,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Trigger"] = {
-                ["y"] = 4939.5,
-                ["x"] = 3805.6,
-            },
             ["Qpart"] = {
                 [40345] = {
                     ["6"] = "6",
@@ -21981,10 +18377,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [11]
         {
-            ["Trigger"] = {
-                ["y"] = 4962.1,
-                ["x"] = 3836.6,
-            },
             ["Waypoint"] = 40345,
             ["Range"] = 11.78,
             ["TT"] = {
@@ -21993,10 +18385,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = 4961.1,
-                ["x"] = 3886,
-            },
             ["Waypoint"] = 40345,
             ["Range"] = 8.56,
             ["TT"] = {
@@ -22005,10 +18393,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 4952,
-                ["x"] = 3934.6,
-            },
             ["Waypoint"] = 40345,
             ["Range"] = 11.13,
             ["TT"] = {
@@ -22023,10 +18407,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 4977,
-                ["x"] = 3900.3,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 4977,
@@ -22034,10 +18414,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [15]
         {
-            ["Trigger"] = {
-                ["y"] = 4976.2,
-                ["x"] = 3900.5,
-            },
             ["Qpart"] = {
                 [40345] = {
                     ["8"] = "8",
@@ -22050,10 +18426,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = 4965.3,
-                ["x"] = 3837.6,
-            },
             ["Waypoint"] = 40345,
             ["Range"] = 13.26,
             ["TT"] = {
@@ -22080,10 +18452,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Trigger"] = {
-                ["y"] = 5010.3,
-                ["x"] = 3769,
-            },
             ["Waypoint"] = 39772,
             ["Range"] = 9.29,
             ["TT"] = {
@@ -22092,10 +18460,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = 5029.6,
-                ["x"] = 3787.1,
-            },
             ["Qpart"] = {
                 [39772] = {
                     ["1"] = "1",
@@ -22108,10 +18472,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [21]
         {
-            ["Trigger"] = {
-                ["y"] = 4989.6,
-                ["x"] = 3784.8,
-            },
             ["Waypoint"] = 39772,
             ["Range"] = 15.63,
             ["TT"] = {
@@ -22120,10 +18480,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [22]
         {
-            ["Trigger"] = {
-                ["y"] = 4946.2,
-                ["x"] = 3827.6,
-            },
             ["Waypoint"] = 39772,
             ["Range"] = 9.45,
             ["TT"] = {
@@ -22132,10 +18488,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [23]
         {
-            ["Trigger"] = {
-                ["y"] = 4904.8,
-                ["x"] = 3825.4,
-            },
             ["Waypoint"] = 39772,
             ["Range"] = 8.1,
             ["TT"] = {
@@ -22144,10 +18496,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [24]
         {
-            ["Trigger"] = {
-                ["y"] = 4873,
-                ["x"] = 3793.1,
-            },
             ["Waypoint"] = 39772,
             ["Range"] = 11.5,
             ["TT"] = {
@@ -22171,10 +18519,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 4691.6,
-                ["x"] = 3890.9,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 4691.6,
@@ -22182,10 +18526,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [27]
         {
-            ["Trigger"] = {
-                ["y"] = 4692.5,
-                ["x"] = 3889.3,
-            },
             ["Qpart"] = {
                 [39318] = {
                     ["2"] = "2",
@@ -22217,10 +18557,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 4961.8,
-                ["x"] = 4123.7,
-            },
             ["Qpart"] = {
                 [38910] = {
                     ["1"] = "1",
@@ -22238,10 +18574,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 4922.7,
-                ["x"] = 4172.7,
-            },
             ["Qpart"] = {
                 [39317] = {
                     ["1"] = "1",
@@ -22278,10 +18610,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 5393.3,
-                ["x"] = 3977.3,
-            },
             ["Fillers"] = {
                 [39429] = {
                     ["1"] = "1",
@@ -22295,10 +18623,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 5365.7,
-                ["x"] = 4071.6,
-            },
             ["Waypoint"] = 39429,
             ["Range"] = 41.79,
             ["TT"] = {
@@ -22311,10 +18635,6 @@ if (APR.Faction == "Horde") then
                 [39321] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 5448.8,
-                ["x"] = 4143.6,
             },
             ["Fillers"] = {
                 [39429] = {
@@ -22329,10 +18649,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 5377.7,
-                ["x"] = 4109.7,
-            },
             ["Waypoint"] = 39429,
             ["Range"] = 36.17,
             ["TT"] = {
@@ -22341,10 +18657,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 5306.8,
-                ["x"] = 4171.7,
-            },
             ["Waypoint"] = 39429,
             ["Range"] = 44.51,
             ["TT"] = {
@@ -22357,10 +18669,6 @@ if (APR.Faction == "Horde") then
                 [39321] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 5293.6,
-                ["x"] = 4114.3,
             },
             ["Fillers"] = {
                 [39429] = {
@@ -22375,10 +18683,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 5293.8,
-                ["x"] = 4117.3,
-            },
             ["Qpart"] = {
                 [39429] = {
                     ["1"] = "1",
@@ -22411,10 +18715,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [11]
         {
-            ["Trigger"] = {
-                ["y"] = 5082,
-                ["x"] = 4412.7,
-            },
             ["Qpart"] = {
                 [39322] = {
                     ["1"] = "1",
@@ -22474,10 +18774,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 5321.2,
-                ["x"] = 4932.8,
-            },
             ["Qpart"] = {
                 [39873] = {
                     ["1"] = "1",
@@ -22495,10 +18791,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 5642.2,
-                ["x"] = 4777,
-            },
             ["Fillers"] = {
                 [39371] = {
                     ["1"] = "1",
@@ -22514,10 +18806,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 5639.8,
-                ["x"] = 4784.3,
-            },
             ["Qpart"] = {
                 [39373] = {
                     ["1"] = "1",
@@ -22561,10 +18849,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 5336.1,
-                ["x"] = 4919.8,
-            },
             ["Qpart"] = {
                 [39374] = {
                     ["1"] = "1",
@@ -22595,10 +18879,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 5391.3,
-                ["x"] = 5031.3,
-            },
             ["Waypoint"] = 39455,
             ["Range"] = 17.44,
             ["TT"] = {
@@ -22607,10 +18887,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = 5308.6,
-                ["x"] = 4998,
-            },
             ["Qpart"] = {
                 [39455] = {
                     ["1"] = "1",
@@ -22623,10 +18899,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Trigger"] = {
-                ["y"] = 5314.2,
-                ["x"] = 4986.5,
-            },
             ["Qpart"] = {
                 [39455] = {
                     ["2"] = "2",
@@ -22657,10 +18929,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 5243.8,
-                ["x"] = 4999.3,
-            },
             ["Waypoint"] = 39860,
             ["Range"] = 14.06,
             ["TT"] = {
@@ -22669,10 +18937,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = 5191.7,
-                ["x"] = 5075.7,
-            },
             ["Waypoint"] = 39860,
             ["Range"] = 12.11,
             ["TT"] = {
@@ -22681,10 +18945,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [15]
         {
-            ["Trigger"] = {
-                ["y"] = 5116.2,
-                ["x"] = 5070.6,
-            },
             ["Qpart"] = {
                 [39860] = {
                     ["1"] = "1",
@@ -22697,10 +18957,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = 5116.2,
-                ["x"] = 5070.6,
-            },
             ["Qpart"] = {
                 [39860] = {
                     ["2"] = "2",
@@ -22737,10 +18993,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 5115.3,
-                ["x"] = 5071.7,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = 5115.3,
@@ -22773,10 +19025,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 5376.8,
-                ["x"] = 4611.3,
-            },
             ["Fillers"] = {
                 [39588] = {
                     ["1"] = "1",
@@ -22796,10 +19044,6 @@ if (APR.Faction == "Horde") then
                 [39391] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 5624.8,
-                ["x"] = 4613,
             },
             ["Fillers"] = {
                 [39588] = {
@@ -22821,10 +19065,6 @@ if (APR.Faction == "Horde") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 5662.7,
-                ["x"] = 4486.1,
-            },
             ["Fillers"] = {
                 [39588] = {
                     ["1"] = "1",
@@ -22840,10 +19080,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 5662.5,
-                ["x"] = 4484.5,
-            },
             ["Qpart"] = {
                 [39425] = {
                     ["1"] = "1",
@@ -22859,10 +19095,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Trigger"] = {
-                ["y"] = 5460.8,
-                ["x"] = 4507.8,
-            },
             ["Range"] = 15.54,
             ["Waypoint"] = 39391,
             ["TT"] = {
@@ -22891,10 +19123,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 5613.6,
-                ["x"] = 4292.3,
-            },
             ["Range"] = 51.14,
             ["Waypoint"] = 39426,
             ["TT"] = {
@@ -22903,10 +19131,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 5679.1,
-                ["x"] = 4252.6,
-            },
             ["Qpart"] = {
                 [42373] = {
                     ["1"] = "1",
@@ -22919,10 +19143,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Trigger"] = {
-                ["y"] = 5715.5,
-                ["x"] = 4227.5,
-            },
             ["Waypoint"] = 39426,
             ["Range"] = 21.52,
             ["TT"] = {
@@ -22931,10 +19151,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 5833.6,
-                ["x"] = 4191.2,
-            },
             ["Qpart"] = {
                 [39426] = {
                     ["1"] = "1",
@@ -22965,10 +19181,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Trigger"] = {
-                ["y"] = 5768.6,
-                ["x"] = 4678.7,
-            },
             ["Waypoint"] = 40229,
             ["Range"] = 18.81,
             ["TT"] = {
@@ -23004,10 +19216,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 5874.3,
-                ["x"] = 4517.8,
-            },
             ["Qpart"] = {
                 [39440] = {
                     ["1"] = "1",
@@ -23020,10 +19228,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = 5839,
-                ["x"] = 4518.3,
-            },
             ["Qpart"] = {
                 [39440] = {
                     ["2"] = "2",
@@ -23057,10 +19261,6 @@ if (APR.Faction == "Horde") then
         }, -- [12]
         {
             ["Waypoint"] = 39439,
-            ["Trigger"] = {
-                ["y"] = 5897.8,
-                ["x"] = 4481.3,
-            },
             ["Fillers"] = {
                 [39437] = {
                     ["1"] = "1",
@@ -23077,10 +19277,6 @@ if (APR.Faction == "Horde") then
                 [39439] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 5869.3,
-                ["x"] = 4397.6,
             },
             ["Fillers"] = {
                 [39437] = {
@@ -23099,10 +19295,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 5794.1,
-                ["x"] = 4413.8,
-            },
             ["Fillers"] = {
                 [39437] = {
                     ["1"] = "1",
@@ -23119,10 +19311,6 @@ if (APR.Faction == "Horde") then
                 [39439] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 5803.1,
-                ["x"] = 4508.3,
             },
             ["Fillers"] = {
                 [39437] = {
@@ -23141,10 +19329,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 5766.7,
-                ["x"] = 4547.1,
-            },
             ["Fillers"] = {
                 [39437] = {
                     ["1"] = "1",
@@ -23157,10 +19341,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 5768,
-                ["x"] = 4546.1,
-            },
             ["Qpart"] = {
                 [39437] = {
                     ["1"] = "1",
@@ -23200,10 +19380,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Trigger"] = {
-                ["y"] = 4057.6,
-                ["x"] = 4275.1,
-            },
             ["Qpart"] = {
                 [42596] = {
                     ["1"] = "1",
@@ -23225,10 +19401,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 4114,
-                ["x"] = 4340.3,
-            },
             ["Waypoint"] = 39580,
             ["Range"] = 7.9,
             ["TT"] = {
@@ -23255,10 +19427,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 4098.8,
-                ["x"] = 4429.8,
-            },
             ["Waypoint"] = 39456,
             ["Range"] = 10.3,
             ["TT"] = {
@@ -23274,10 +19442,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 39456,
-            ["Trigger"] = {
-                ["y"] = 4124.1,
-                ["x"] = 4475.1,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 4124.1,
@@ -23292,10 +19456,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 39387,
-            ["Trigger"] = {
-                ["y"] = 4192.8,
-                ["x"] = 4408.3,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = 4192.8,
@@ -23322,10 +19482,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 4114,
-                ["x"] = 4341.8,
-            },
             ["Waypoint"] = 40217,
             ["Range"] = 10.37,
             ["TT"] = {
@@ -23334,10 +19490,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 4125.2,
-                ["x"] = 4330.6,
-            },
             ["Waypoint"] = 40217,
             ["Range"] = 9.26,
             ["TT"] = {
@@ -23392,10 +19544,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 4475.1,
-                ["x"] = 4761.8,
-            },
             ["Range"] = 67.94,
             ["TT"] = {
                 ["y"] = 4475.1,
@@ -23431,10 +19579,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 4501.6,
-                ["x"] = 4867.3,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = 4501.6,
@@ -23443,10 +19587,6 @@ if (APR.Faction == "Horde") then
         }, -- [1]
         {
             ["Waypoint"] = 39123,
-            ["Trigger"] = {
-                ["y"] = 4590.2,
-                ["x"] = 4864.5,
-            },
             ["Fillers"] = {
                 [39123] = {
                     ["1"] = "1",
@@ -23460,10 +19600,6 @@ if (APR.Faction == "Horde") then
         }, -- [2]
         {
             ["Waypoint"] = 39123,
-            ["Trigger"] = {
-                ["y"] = 4687.7,
-                ["x"] = 4962.1,
-            },
             ["Fillers"] = {
                 [39123] = {
                     ["1"] = "1",
@@ -23477,10 +19613,6 @@ if (APR.Faction == "Horde") then
         }, -- [3]
         {
             ["Waypoint"] = 39123,
-            ["Trigger"] = {
-                ["y"] = 4742.6,
-                ["x"] = 5062,
-            },
             ["Fillers"] = {
                 [39123] = {
                     ["1"] = "1",
@@ -23498,10 +19630,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 4926.2,
-                ["x"] = 5076.3,
-            },
             ["Fillers"] = {
                 [39123] = {
                     ["1"] = "1",
@@ -23517,10 +19645,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 4687.2,
-                ["x"] = 4986,
-            },
             ["Qpart"] = {
                 [39123] = {
                     ["1"] = "1",
@@ -23533,10 +19657,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 4713.1,
-                ["x"] = 4791.5,
-            },
             ["Qpart"] = {
                 [39124] = {
                     ["1"] = "1",
@@ -23577,10 +19697,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Trigger"] = {
-                ["y"] = 4660.3,
-                ["x"] = 5009.8,
-            },
             ["Range"] = 20.37,
             ["Waypoint"] = 39867,
             ["TT"] = {
@@ -23589,10 +19705,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = 4646.3,
-                ["x"] = 5038.8,
-            },
             ["Qpart"] = {
                 [39867] = {
                     ["1"] = "1",
@@ -23613,10 +19725,6 @@ if (APR.Faction == "Horde") then
             ["ButtonSpellId"] = {
                 [195071] = "40228-1",
             },
-            ["Trigger"] = {
-                ["y"] = 4846.8,
-                ["x"] = 4608.3,
-            },
             ["Button"] = {
                 ["40228-1"] = 130074,
             },
@@ -23627,10 +19735,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 4956.8,
-                ["x"] = 4461,
-            },
             ["Qpart"] = {
                 [39178] = {
                     ["1"] = "1",
@@ -23662,10 +19766,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 4653.2,
-                ["x"] = 4471.6,
-            },
             ["Fillers"] = {
                 [40316] = {
                     ["1"] = "1",
@@ -23692,10 +19792,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Trigger"] = {
-                ["y"] = 4702.3,
-                ["x"] = 4355.2,
-            },
             ["Qpart"] = {
                 [40316] = {
                     ["1"] = "1",
@@ -23761,10 +19857,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 4181.5,
-                ["x"] = 3828.8,
-            },
             ["Fillers"] = {
                 [39777] = {
                     ["1"] = "1",
@@ -23781,10 +19873,6 @@ if (APR.Faction == "Horde") then
                 [39776] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 4205.3,
-                ["x"] = 3948.1,
             },
             ["Fillers"] = {
                 [39777] = {
@@ -23803,10 +19891,6 @@ if (APR.Faction == "Horde") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 4285.3,
-                ["x"] = 3875.6,
-            },
             ["Fillers"] = {
                 [39777] = {
                     ["1"] = "1",
@@ -23824,10 +19908,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 4273.3,
-                ["x"] = 3976.1,
-            },
             ["Fillers"] = {
                 [39777] = {
                     ["1"] = "1",
@@ -23840,10 +19920,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = 4272.8,
-                ["x"] = 3971.5,
-            },
             ["Qpart"] = {
                 [39777] = {
                     ["1"] = "1",
@@ -23882,10 +19958,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3801.5,
-                ["x"] = 3921.6,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 3801.5,
@@ -23899,10 +19971,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3689.8,
-                ["x"] = 3920.6,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 3689.8,
@@ -23916,10 +19984,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 3821.6,
-                ["x"] = 4013.6,
-            },
             ["Range"] = 0.61,
             ["TT"] = {
                 ["y"] = 3821.6,
@@ -23945,10 +20009,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = 3863.8,
-                ["x"] = 3890.6,
-            },
             ["Qpart"] = {
                 [42512] = {
                     ["1"] = "1",
@@ -23979,10 +20039,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 3932,
-                ["x"] = 3930.4,
-            },
             ["Qpart"] = {
                 [40594] = {
                     ["1"] = "1",
@@ -23995,10 +20051,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [18]
         {
-            ["Trigger"] = {
-                ["y"] = 3971.6,
-                ["x"] = 3922.6,
-            },
             ["Qpart"] = {
                 [40594] = {
                     ["2"] = "2",
@@ -24029,10 +20081,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [21]
         {
-            ["Trigger"] = {
-                ["y"] = 3662.6,
-                ["x"] = 3928.8,
-            },
             ["Qpart"] = {
                 [39780] = {
                     ["1"] = "1",
@@ -24045,10 +20093,6 @@ if (APR.Faction == "Horde") then
             },
         }, -- [22]
         {
-            ["Trigger"] = {
-                ["y"] = 3647.1,
-                ["x"] = 3930.6,
-            },
             ["Qpart"] = {
                 [39780] = {
                     ["2"] = "2",
@@ -24103,10 +20147,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1032.7,
-            ["x"] = 3111.3,
-        },
         ["Qpart"] = {
             [40077] = {
                 ["1"] = "1",
@@ -24119,10 +20159,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1002.2,
-            ["x"] = 2958.1,
-        },
         ["Qpart"] = {
             [40077] = {
                 ["2"] = "2",
@@ -24158,10 +20194,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1026.8,
-            ["x"] = 2848.5,
-        },
         ["Fillers"] = {
             [39279] = {
                 ["1"] = "1",
@@ -24174,10 +20206,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1016.9,
-            ["x"] = 2850.1,
-        },
         ["Qpart"] = {
             [40378] = {
                 ["2"] = "2",
@@ -24194,10 +20222,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             [40378] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 824.4,
-            ["x"] = 2757.8,
         },
         ["Fillers"] = {
             [39279] = {
@@ -24241,10 +20265,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 756.7,
-            ["x"] = 2562.6,
-        },
         ["Fillers"] = {
             [39279] = {
                 ["1"] = "1",
@@ -24262,10 +20282,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 784.1,
-            ["x"] = 2558.1,
-        },
         ["Fillers"] = {
             [39279] = {
                 ["1"] = "1",
@@ -24282,10 +20298,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             [38759] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 746.2,
-            ["x"] = 2468.6,
         },
         ["Fillers"] = {
             [39279] = {
@@ -24305,10 +20317,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 759.2,
-            ["x"] = 2403.9,
-        },
         ["Fillers"] = {
             [39279] = {
                 ["1"] = "1",
@@ -24325,10 +20333,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             [40379] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 773.7,
-            ["x"] = 2390.6,
         },
         ["Fillers"] = {
             [39279] = {
@@ -24347,10 +20351,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 593.9,
-            ["x"] = 2433.6,
-        },
         ["Fillers"] = {
             [39279] = {
                 ["1"] = "1",
@@ -24363,10 +20363,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 630.1,
-            ["x"] = 2346.8,
-        },
         ["Treasure"] = 39971,
         ["Range"] = 0.75,
         ["TT"] = {
@@ -24379,10 +20375,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             [38759] = {
                 ["4"] = "4",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 878.7,
-            ["x"] = 2583.9,
         },
         ["Fillers"] = {
             [39279] = {
@@ -24400,10 +20392,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             [38759] = {
                 ["5"] = "5",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 908.9,
-            ["x"] = 2474.6,
         },
         ["Fillers"] = {
             [39279] = {
@@ -24437,10 +20425,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1062,
-            ["x"] = 2580,
-        },
         ["Qpart"] = {
             [39050] = {
                 ["1"] = "1",
@@ -24477,10 +20461,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1586.5,
-            ["x"] = 2709.5,
-        },
         ["Fillers"] = {
             [39279] = {
                 ["1"] = "1",
@@ -24499,10 +20479,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1588.4,
-            ["x"] = 2543.4,
-        },
         ["Fillers"] = {
             [39279] = {
                 ["1"] = "1",
@@ -24520,10 +20496,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1613.5,
-            ["x"] = 2519.4,
-        },
         ["Fillers"] = {
             [39279] = {
                 ["1"] = "1",
@@ -24536,10 +20508,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1512,
-            ["x"] = 2533.6,
-        },
         ["Qpart"] = {
             [39279] = {
                 ["1"] = "1",
@@ -24552,10 +20520,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1351.5,
-            ["x"] = 2226.5,
-        },
         ["Waypoint"] = 38766,
         ["Range"] = 77.41,
         ["TT"] = {
@@ -24564,10 +20528,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1495.4,
-            ["x"] = 1961.2,
-        },
         ["Waypoint"] = 38766,
         ["Range"] = 55.3,
         ["TT"] = {
@@ -24601,10 +20561,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1423,
-            ["x"] = 1810.3,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1423,
@@ -24618,10 +20574,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1401.7,
-            ["x"] = 1746.5,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1401.7,
@@ -24635,10 +20587,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1418,
-            ["x"] = 1702,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 1418,
@@ -24670,10 +20618,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1267.3,
-            ["x"] = 1635.3,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1267.3,
@@ -24681,10 +20625,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [14]
     {
-        ["Trigger"] = {
-            ["y"] = 1249.3,
-            ["x"] = 1637.2,
-        },
         ["Qpart"] = {
             [39262] = {
                 ["2"] = "2",
@@ -24715,10 +20655,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1193.3,
-            ["x"] = 1674.5,
-        },
         ["Waypoint"] = 39495,
         ["Range"] = 16.96,
         ["TT"] = {
@@ -24727,10 +20663,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1103.4,
-            ["x"] = 1613.3,
-        },
         ["Qpart"] = {
             [39495] = {
                 ["1"] = "1",
@@ -24764,10 +20696,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
     },
     {
         ["Waypoint"] = 38727,
-        ["Trigger"] = {
-            ["y"] = 1270.3,
-            ["x"] = 1451,
-        },
         ["Fillers"] = {
             [38819] = {
                 ["1"] = "1",
@@ -24785,10 +20713,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1355.9,
-            ["x"] = 1436,
-        },
         ["Fillers"] = {
             [38819] = {
                 ["1"] = "1",
@@ -24802,10 +20726,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
     },
     {
         ["Waypoint"] = 38727,
-        ["Trigger"] = {
-            ["y"] = 1296,
-            ["x"] = 1247,
-        },
         ["Fillers"] = {
             [38819] = {
                 ["1"] = "1",
@@ -24819,10 +20739,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
     },
     {
         ["Waypoint"] = 38727,
-        ["Trigger"] = {
-            ["y"] = 1431.5,
-            ["x"] = 1122.4,
-        },
         ["Fillers"] = {
             [38819] = {
                 ["1"] = "1",
@@ -24840,10 +20756,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1549,
-            ["x"] = 1222,
-        },
         ["Fillers"] = {
             [38819] = {
                 ["1"] = "1",
@@ -24857,10 +20769,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
     },
     {
         ["Waypoint"] = 38725,
-        ["Trigger"] = {
-            ["y"] = 1648.7,
-            ["x"] = 1212.2,
-        },
         ["Fillers"] = {
             [38819] = {
                 ["1"] = "1",
@@ -24896,10 +20804,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1872.3,
-            ["x"] = 1145.5,
-        },
         ["Fillers"] = {
             [38819] = {
                 ["1"] = "1",
@@ -24913,10 +20817,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
     }, -- [10]
     {
         ["Waypoint"] = 38727,
-        ["Trigger"] = {
-            ["y"] = 1756.4,
-            ["x"] = 1300.8,
-        },
         ["Fillers"] = {
             [38819] = {
                 ["1"] = "1",
@@ -24934,10 +20834,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1816.2,
-            ["x"] = 1543.5,
-        },
         ["Fillers"] = {
             [38819] = {
                 ["1"] = "1",
@@ -24950,10 +20846,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = 1815.7,
-            ["x"] = 1543.8,
-        },
         ["Qpart"] = {
             [38819] = {
                 ["1"] = "1",
@@ -24986,10 +20878,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1456.4,
-            ["x"] = 1762,
-        },
         ["Qpart"] = {
             [40051] = {
                 ["1"] = "1",
@@ -25030,10 +20918,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             },
         },
         ["Gossip"] = 39516,
-        ["Trigger"] = {
-            ["y"] = 1455.3,
-            ["x"] = 1764.9,
-        },
         ["Range"] = 8.68,
         ["TT"] = {
             ["y"] = 1455.3,
@@ -25048,10 +20932,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1460.5,
-            ["x"] = 1773.7,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1460.5,
@@ -25089,10 +20969,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             },
         },
         ["Gossip"] = 39516,
-        ["Trigger"] = {
-            ["y"] = 1456,
-            ["x"] = 1763.8,
-        },
         ["Range"] = 14.23,
         ["TT"] = {
             ["y"] = 1456,
@@ -25107,10 +20983,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1460.5,
-            ["x"] = 1773.5,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1460.5,
@@ -25144,10 +21016,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1453,
-            ["x"] = 1688.5,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 1453,
@@ -25173,10 +21041,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1561.5,
-            ["x"] = 1413.7,
-        },
         ["Qpart"] = {
             [38728] = {
                 ["1"] = "1",
@@ -25189,10 +21053,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1566.7,
-            ["x"] = 1417.2,
-        },
         ["Qpart"] = {
             [38728] = {
                 ["2"] = "2",
@@ -25223,10 +21083,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1629.5,
-            ["x"] = 1414.8,
-        },
         ["Qpart"] = {
             [38729] = {
                 ["1"] = "1",
@@ -25257,10 +21113,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4314.6,
-            ["x"] = -590.7,
-        },
         ["Qpart"] = {
             [38672] = {
                 ["1"] = "1",
@@ -25273,10 +21125,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4337.8,
-            ["x"] = -590.3,
-        },
         ["Qpart"] = {
             [38672] = {
                 ["2"] = "2",
@@ -25316,10 +21164,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 4326.8,
-            ["x"] = -549.3,
-        },
         ["Fillers"] = {
             [39742] = {
                 ["1"] = "1",
@@ -25332,10 +21176,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4329,
-            ["x"] = -491.3,
-        },
         ["Qpart"] = {
             [39742] = {
                 ["1"] = "1",
@@ -25348,10 +21188,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4322.8,
-            ["x"] = -318.4,
-        },
         ["Waypoint"] = 38690,
         ["Range"] = 20.61,
         ["TT"] = {
@@ -25380,10 +21216,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["BreadCrum"] = 38723,
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 4051.3,
-            ["x"] = -297.4,
-        },
         ["Qpart"] = {
             [38723] = {
                 ["1"] = "1",
@@ -25418,10 +21250,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["BreadCrum"] = 40253,
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 4051.3,
-            ["x"] = -297.4,
-        },
         ["Qpart"] = {
             [40253] = {
                 ["1"] = "1",
@@ -25455,10 +21283,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4314.8,
-            ["x"] = -298.2,
-        },
         ["Waypoint"] = 39682,
         ["Range"] = 22.35,
         ["TT"] = {
@@ -25467,10 +21291,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4369.8,
-            ["x"] = -230,
-        },
         ["Waypoint"] = 39682,
         ["Range"] = 21.69,
         ["TT"] = {
@@ -25479,10 +21299,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4386.3,
-            ["x"] = -345.8,
-        },
         ["Waypoint"] = 39682,
         ["Range"] = 28.08,
         ["TT"] = {
@@ -25491,10 +21307,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4437.5,
-            ["x"] = -283.3,
-        },
         ["Qpart"] = {
             [39682] = {
                 ["1"] = "1",
@@ -25536,10 +21348,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["BreadCrum"] = 39683,
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4658.3,
-            ["x"] = -451.2,
-        },
         ["Qpart"] = {
             [39683] = {
                 ["1"] = "1",
@@ -25563,10 +21371,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["BreadCrum"] = 40254,
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4658.3,
-            ["x"] = -451.2,
-        },
         ["Qpart"] = {
             [40254] = {
                 ["1"] = "1",
@@ -25580,10 +21384,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["BreadCrum"] = 40254,
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 4514.8,
-            ["x"] = -455.4,
-        },
         ["Waypoint"] = 39684,
         ["Range"] = 15.38,
         ["TT"] = {
@@ -25592,10 +21392,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = 4451,
-            ["x"] = -533,
-        },
         ["Waypoint"] = 39684,
         ["Range"] = 21.19,
         ["TT"] = {
@@ -25604,10 +21400,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = 4452,
-            ["x"] = -643.8,
-        },
         ["Qpart"] = {
             [39684] = {
                 ["1"] = "1",
@@ -25620,10 +21412,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [13]
     {
-        ["Trigger"] = {
-            ["y"] = 4439.5,
-            ["x"] = -559.7,
-        },
         ["Waypoint"] = 39685,
         ["Range"] = 8.74,
         ["TT"] = {
@@ -25632,10 +21420,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [14]
     {
-        ["Trigger"] = {
-            ["y"] = 4404,
-            ["x"] = -537.7,
-        },
         ["Waypoint"] = 39685,
         ["Range"] = 14.64,
         ["TT"] = {
@@ -25644,10 +21428,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4345.8,
-            ["x"] = -468.3,
-        },
         ["Waypoint"] = 39685,
         ["Range"] = 16.23,
         ["TT"] = {
@@ -25656,10 +21436,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4251.6,
-            ["x"] = -450.4,
-        },
         ["Qpart"] = {
             [39685] = {
                 ["1"] = "1",
@@ -25713,10 +21489,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4480.7,
-            ["x"] = -440.2,
-        },
         ["Qpart"] = {
             [39686] = {
                 ["1"] = "1",
@@ -25747,10 +21519,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4295.8,
-            ["x"] = -451.4,
-        },
         ["Qpart"] = {
             [40373] = {
                 ["1"] = "1",
@@ -25769,10 +21537,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 4283.5,
-            ["x"] = -451.2,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 4283.5,
@@ -25799,10 +21563,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["BreadCrum"] = 39688,
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4190,
-            ["x"] = -460.4,
-        },
         ["Waypoint"] = 39688,
         ["Range"] = 17,
         ["TT"] = {
@@ -25812,10 +21572,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["BreadCrum"] = 39688,
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4185.7,
-            ["x"] = -626.8,
-        },
         ["Qpart"] = {
             [39688] = {
                 ["1"] = "1",
@@ -25829,10 +21585,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["BreadCrum"] = 39688,
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4185.3,
-            ["x"] = -744.5,
-        },
         ["Waypoint"] = 39688,
         ["Range"] = 18.65,
         ["TT"] = {
@@ -25862,10 +21614,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["BreadCrum"] = 40256,
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4190,
-            ["x"] = -460.4,
-        },
         ["Waypoint"] = 40256,
         ["Range"] = 17,
         ["TT"] = {
@@ -25875,10 +21623,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["BreadCrum"] = 40256,
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4185.7,
-            ["x"] = -626.8,
-        },
         ["Qpart"] = {
             [40256] = {
                 ["1"] = "1",
@@ -25892,10 +21636,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["BreadCrum"] = 40256,
     },
     {
-        ["Trigger"] = {
-            ["y"] = 4185.3,
-            ["x"] = -744.5,
-        },
         ["Waypoint"] = 40256,
         ["Range"] = 18.65,
         ["TT"] = {

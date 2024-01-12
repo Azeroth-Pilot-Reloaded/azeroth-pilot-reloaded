@@ -13,10 +13,6 @@ if (APR.Faction == "Alliance") then
             },
             {
                 ["NoArrows"] = 1,
-                ["Trigger"] = {
-                    ["y"] = 6694.7,
-                    ["x"] = -4736.4,
-                },
                 ["Qpart"] = {
                     [56775] = {
                         ["1"] = "1",
@@ -54,10 +50,6 @@ if (APR.Faction == "Alliance") then
                     [58209] = {
                         ["1"] = "1",
                     },
-                },
-                ["Trigger"] = {
-                    ["y"] = 6732.6,
-                    ["x"] = -4354.8,
                 },
                 ["RaidIcon"] = 157051,
                 ["Range"] = 2.85,
@@ -107,10 +99,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -359.8,
-                    ["x"] = -2563.2,
-                },
                 ["Qpart"] = {
                     [55122] = {
                         ["1"] = "1",
@@ -149,10 +137,6 @@ if (APR.Faction == "Alliance") then
                 ["Button"] = {
                     ["54951-2"] = 168410,
                 },
-                ["Trigger"] = {
-                    ["y"] = -447.9,
-                    ["x"] = -2605.5,
-                },
                 ["RaidIcon"] = 156612,
                 ["Range"] = 0.75,
                 ["TT"] = {
@@ -169,10 +153,6 @@ if (APR.Faction == "Alliance") then
                 ["Button"] = {
                     ["54951-3"] = 168410,
                 },
-                ["Trigger"] = {
-                    ["y"] = -428.7,
-                    ["x"] = -2593.7,
-                },
                 ["RaidIcon"] = 156610,
                 ["Range"] = 0.61,
                 ["TT"] = {
@@ -188,10 +168,6 @@ if (APR.Faction == "Alliance") then
                 },
                 ["Button"] = {
                     ["54951-1"] = 168410,
-                },
-                ["Trigger"] = {
-                    ["y"] = -420.4,
-                    ["x"] = -2599.5,
                 },
                 ["RaidIcon"] = 156609,
                 ["Range"] = 0.69,
@@ -219,10 +195,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -273.9,
-                    ["x"] = -2493,
-                },
                 ["Qpart"] = {
                     [54952] = {
                         ["1"] = "1",
@@ -253,10 +225,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -182.4,
-                    ["x"] = -2498.7,
-                },
                 ["Qpart"] = {
                     [55174] = {
                         ["1"] = "1",
@@ -269,10 +237,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -247.4,
-                    ["x"] = -2490.5,
-                },
                 ["Qpart"] = {
                     [55174] = {
                         ["2"] = "2",
@@ -306,10 +270,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "DRUID"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -211,
-                    ["x"] = -2522,
-                },
                 ["Qpart"] = {
                     [59254] = {
                         ["1"] = "1",
@@ -364,10 +324,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "HUNTER"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -170,
-                    ["x"] = -2574.5,
-                },
                 ["Qpart"] = {
                     [59342] = {
                         ["2"] = "2",
@@ -402,10 +358,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "MAGE"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -196.7,
-                    ["x"] = -2464.7,
-                },
                 ["Qpart"] = {
                     [59254] = {
                         ["1"] = "1",
@@ -446,10 +398,6 @@ if (APR.Faction == "Alliance") then
                         ["2"] = "2",
                     },
                 },
-                ["Trigger"] = {
-                    ["y"] = -194,
-                    ["x"] = -2481.4,
-                },
                 ["RaidIcon"] = 164577,
                 ["Range"] = 0.69,
                 ["TT"] = {
@@ -480,10 +428,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "PALADIN"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -211,
-                    ["x"] = -2522,
-                },
                 ["Qpart"] = {
                     [59254] = {
                         ["1"] = "1",
@@ -518,10 +462,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "PRIEST"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -221.5,
-                    ["x"] = -2478.7,
-                },
                 ["Qpart"] = {
                     [59254] = {
                         ["1"] = "1",
@@ -556,10 +496,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "ROGUE"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -224.2,
-                    ["x"] = -2524,
-                },
                 ["Qpart"] = {
                     [59254] = {
                         ["1"] = "1",
@@ -614,10 +550,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "SHAMAN"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -207.2,
-                    ["x"] = -2471.9,
-                },
                 ["Qpart"] = {
                     [59254] = {
                         ["1"] = "1",
@@ -652,10 +584,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "WARLOCK"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -221.5,
-                    ["x"] = -2478.7,
-                },
                 ["Qpart"] = {
                     [59254] = {
                         ["1"] = "1",
@@ -690,10 +618,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "WARRIOR"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -196.7,
-                    ["x"] = -2464.7,
-                },
                 ["Qpart"] = {
                     [59254] = {
                         ["1"] = "1",
@@ -747,10 +671,6 @@ if (APR.Faction == "Alliance") then
             },
             {
                 ["Waypoint"] = 55186,
-                ["Trigger"] = {
-                    ["y"] = -77,
-                    ["x"] = -2641.2,
-                },
                 ["Fillers"] = {
                     [55184] = {
                         ["1"] = "1",
@@ -764,10 +684,6 @@ if (APR.Faction == "Alliance") then
             },
             {
                 ["Waypoint"] = 55186,
-                ["Trigger"] = {
-                    ["y"] = 45.1,
-                    ["x"] = -2577.2,
-                },
                 ["Fillers"] = {
                     [55184] = {
                         ["1"] = "1",
@@ -790,10 +706,6 @@ if (APR.Faction == "Alliance") then
                         ["1"] = "1",
                     },
                 },
-                ["Trigger"] = {
-                    ["y"] = 15.6,
-                    ["x"] = -2512.5,
-                },
                 ["RaidIcon"] = 151091,
                 ["Range"] = 0.69,
                 ["TT"] = {
@@ -802,10 +714,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 43.1,
-                    ["x"] = -2559.2,
-                },
                 ["Qpart"] = {
                     [55184] = {
                         ["1"] = "1",
@@ -818,10 +726,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 49.1,
-                    ["x"] = -2496.7,
-                },
                 ["Range"] = 15.09,
                 ["Waypoint"] = 55186,
                 ["TT"] = {
@@ -854,10 +758,6 @@ if (APR.Faction == "Alliance") then
                         ["1"] = "1",
                     },
                 },
-                ["Trigger"] = {
-                    ["y"] = 108.3,
-                    ["x"] = -2413.5,
-                },
                 ["RaidIcon"] = 156518,
                 ["Range"] = 0.75,
                 ["TT"] = {
@@ -889,10 +789,6 @@ if (APR.Faction == "Alliance") then
                         ["1"] = "1",
                     },
                 },
-                ["Trigger"] = {
-                    ["y"] = 118.8,
-                    ["x"] = -2440.4,
-                },
                 ["Button"] = {
                     ["56034-1"] = 170557,
                 },
@@ -921,10 +817,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 115.3,
-                    ["x"] = -2428.2,
-                },
                 ["Qpart"] = {
                     [55879] = {
                         ["1"] = "1",
@@ -937,10 +829,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 213.1,
-                    ["x"] = -2300.5,
-                },
                 ["Qpart"] = {
                     [55879] = {
                         ["2"] = "2",
@@ -957,10 +845,6 @@ if (APR.Faction == "Alliance") then
                     [55879] = {
                         ["3"] = "3",
                     },
-                },
-                ["Trigger"] = {
-                    ["y"] = 244.1,
-                    ["x"] = -2245.5,
                 },
                 ["RaidIcon"] = 162817,
                 ["Range"] = 0.75,
@@ -979,10 +863,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 231.8,
-                    ["x"] = -2279.7,
-                },
                 ["Waypoint"] = 55194,
                 ["Range"] = 3.3,
                 ["TT"] = {
@@ -1005,10 +885,6 @@ if (APR.Faction == "Alliance") then
                         ["1"] = "1",
                         ["2"] = "2",
                     },
-                },
-                ["Trigger"] = {
-                    ["y"] = 187.3,
-                    ["x"] = -2284.2,
                 },
                 ["RaidIcon"] = 156800,
                 ["Range"] = 0.75,
@@ -1066,10 +942,6 @@ if (APR.Faction == "Alliance") then
             },
             {
                 ["Waypoint"] = 55763,
-                ["Trigger"] = {
-                    ["y"] = 492.1,
-                    ["x"] = -2423.9,
-                },
                 ["Fillers"] = {
                     [55764] = {
                         ["1"] = "1",
@@ -1091,10 +963,6 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Gossip"] = 1,
-                ["Trigger"] = {
-                    ["y"] = 496.1,
-                    ["x"] = -2353.5,
-                },
                 ["Fillers"] = {
                     [55764] = {
                         ["1"] = "1",
@@ -1111,10 +979,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 496.1,
-                    ["x"] = -2507.5,
-                },
                 ["Qpart"] = {
                     [55764] = {
                         ["1"] = "1",
@@ -1160,10 +1024,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 313.8,
-                    ["x"] = -2460.5,
-                },
                 ["Qpart"] = {
                     [54933] = {
                         ["1"] = "1",
@@ -1176,10 +1036,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 325.3,
-                    ["x"] = -2495.4,
-                },
                 ["Qpart"] = {
                     [54933] = {
                         ["2"] = "2",
@@ -1192,10 +1048,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 291.6,
-                    ["x"] = -2513.2,
-                },
                 ["Qpart"] = {
                     [54933] = {
                         ["3"] = "3",
@@ -1208,10 +1060,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 280,
-                    ["x"] = -2473.5,
-                },
                 ["Qpart"] = {
                     [54933] = {
                         ["4"] = "4",
@@ -1261,10 +1109,6 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Gossip"] = 1,
-                ["Trigger"] = {
-                    ["y"] = 183.8,
-                    ["x"] = -2285.5,
-                },
                 ["RaidIcon"] = 156886,
                 ["Range"] = 0.75,
                 ["TT"] = {
@@ -1274,10 +1118,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "HUNTER"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 237.8,
-                    ["x"] = -2283.9,
-                },
                 ["Qpart"] = {
                     [59355] = {
                         ["2"] = "2",
@@ -1291,10 +1131,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "HUNTER"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 270,
-                    ["x"] = -2270.7,
-                },
                 ["Qpart"] = {
                     [59355] = {
                         ["3"] = "3",
@@ -1328,10 +1164,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "HUNTER"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 228.8,
-                    ["x"] = -2273,
-                },
                 ["Qpart"] = {
                     [59356] = {
                         ["1"] = "1",
@@ -1365,10 +1197,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "HUNTER"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 189.4,
-                    ["x"] = -2289.2,
-                },
                 ["Qpart"] = {
                     [60168] = {
                         ["1"] = "1",
@@ -1388,10 +1216,6 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Gossip"] = 2,
-                ["Trigger"] = {
-                    ["y"] = 188.6,
-                    ["x"] = -2290.7,
-                },
                 ["RaidIcon"] = 161666,
                 ["Range"] = 0.69,
                 ["TT"] = {
@@ -1407,10 +1231,6 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Gossip"] = 1,
-                ["Trigger"] = {
-                    ["y"] = 188.8,
-                    ["x"] = -2290,
-                },
                 ["Range"] = 0.75,
                 ["TT"] = {
                     ["y"] = 188.8,
@@ -1440,10 +1260,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "MAGE"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 310.3,
-                    ["x"] = -2274.7,
-                },
                 ["Qpart"] = {
                     [59352] = {
                         ["1"] = "1",
@@ -1483,10 +1299,6 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Gossip"] = 1,
-                ["Trigger"] = {
-                    ["y"] = 184.1,
-                    ["x"] = -2286.2,
-                },
                 ["Range"] = 0.75,
                 ["TT"] = {
                     ["y"] = 184.1,
@@ -1495,10 +1307,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "MAGE"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 178.9,
-                    ["x"] = -2332.2,
-                },
                 ["Qpart"] = {
                     [59354] = {
                         ["2"] = "2",
@@ -1539,10 +1347,6 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Gossip"] = 1,
-                ["Trigger"] = {
-                    ["y"] = 317.5,
-                    ["x"] = -2297.5,
-                },
                 ["RaidIcon"] = 164835,
                 ["Range"] = 0.75,
                 ["TT"] = {
@@ -1577,10 +1381,6 @@ if (APR.Faction == "Alliance") then
                         ["1"] = "1",
                     },
                 },
-                ["Trigger"] = {
-                    ["y"] = 309,
-                    ["x"] = -2325.7,
-                },
                 ["RaidIcon"] = 164868,
                 ["Range"] = 0.75,
                 ["TT"] = {
@@ -1611,10 +1411,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "PALADIN"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 347.5,
-                    ["x"] = -2398.5,
-                },
                 ["Range"] = 12.06,
                 ["Waypoint"] = 58923,
                 ["TT"] = {
@@ -1624,10 +1420,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "PALADIN"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 313.5,
-                    ["x"] = -2444.2,
-                },
                 ["Range"] = 8.18,
                 ["Waypoint"] = 58923,
                 ["TT"] = {
@@ -1643,10 +1435,6 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Gossip"] = 1,
-                ["Trigger"] = {
-                    ["y"] = 257.5,
-                    ["x"] = -2464.7,
-                },
                 ["RaidIcon"] = 162998,
                 ["Range"] = 0.75,
                 ["TT"] = {
@@ -1676,10 +1464,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "PALADIN"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 258.5,
-                    ["x"] = -2463.7,
-                },
                 ["Qpart"] = {
                     [58946] = {
                         ["1"] = "1",
@@ -1693,10 +1477,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "PALADIN"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 246.6,
-                    ["x"] = -2450,
-                },
                 ["Qpart"] = {
                     [58946] = {
                         ["2"] = "2",
@@ -1731,10 +1511,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "PRIEST"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 221.9,
-                    ["x"] = -2415.2,
-                },
                 ["Qpart"] = {
                     [58953] = {
                         ["1"] = "1",
@@ -1768,10 +1544,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "PRIEST"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 228.1,
-                    ["x"] = -2419.7,
-                },
                 ["Qpart"] = {
                     [58960] = {
                         ["1"] = "1",
@@ -1812,10 +1584,6 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Gossip"] = 1,
-                ["Trigger"] = {
-                    ["y"] = 168.9,
-                    ["x"] = -2061.7,
-                },
                 ["RaidIcon"] = 162972,
                 ["Range"] = 0.69,
                 ["TT"] = {
@@ -1825,10 +1593,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "ROGUE"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 185,
-                    ["x"] = -2038.6,
-                },
                 ["Qpart"] = {
                     [58917] = {
                         ["2"] = "2",
@@ -1862,10 +1626,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "ROGUE"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 175.5,
-                    ["x"] = -2063.5,
-                },
                 ["Qpart"] = {
                     [58933] = {
                         ["1"] = "1",
@@ -1883,10 +1643,6 @@ if (APR.Faction == "Alliance") then
                     [58933] = {
                         ["2"] = "2",
                     },
-                },
-                ["Trigger"] = {
-                    ["y"] = 270.7,
-                    ["x"] = -2159.2,
                 },
                 ["RaidIcon"] = 163036,
                 ["Range"] = 0.69,
@@ -1918,10 +1674,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "SHAMAN"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 276.1,
-                    ["x"] = -2288.9,
-                },
                 ["Qpart"] = {
                     [59002] = {
                         ["1"] = "1",
@@ -1935,10 +1687,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "SHAMAN"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 180.9,
-                    ["x"] = -2284,
-                },
                 ["Qpart"] = {
                     [59002] = {
                         ["2"] = "2",
@@ -1952,10 +1700,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "SHAMAN"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 148,
-                    ["x"] = -2352.7,
-                },
                 ["Qpart"] = {
                     [59002] = {
                         ["3"] = "3",
@@ -1990,10 +1734,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "WARLOCK"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 354.6,
-                    ["x"] = -2344.5,
-                },
                 ["Range"] = 11.53,
                 ["Waypoint"] = 58962,
                 ["TT"] = {
@@ -2009,10 +1749,6 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Gossip"] = 1,
-                ["Trigger"] = {
-                    ["y"] = 398.8,
-                    ["x"] = -2295.2,
-                },
                 ["RaidIcon"] = 163209,
                 ["Range"] = 0.75,
                 ["TT"] = {
@@ -2022,10 +1758,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "WARLOCK"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 399.8,
-                    ["x"] = -2296.7,
-                },
                 ["Qpart"] = {
                     [58962] = {
                         ["2"] = "2",
@@ -2043,10 +1775,6 @@ if (APR.Faction == "Alliance") then
                     [58962] = {
                         ["3"] = "3",
                     },
-                },
-                ["Trigger"] = {
-                    ["y"] = 399.8,
-                    ["x"] = -2296.7,
                 },
                 ["Button"] = {
                     ["58962-3"] = 174947,
@@ -2080,10 +1808,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "WARRIOR"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 272.8,
-                    ["x"] = -2331.5,
-                },
                 ["Range"] = 20.09,
                 ["Waypoint"] = 58914,
                 ["TT"] = {
@@ -2093,10 +1817,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "WARRIOR"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 352.8,
-                    ["x"] = -2346.9,
-                },
                 ["Range"] = 10.6,
                 ["Waypoint"] = 58914,
                 ["TT"] = {
@@ -2130,10 +1850,6 @@ if (APR.Faction == "Alliance") then
                     [58915] = {
                         ["1"] = "1",
                     },
-                },
-                ["Trigger"] = {
-                    ["y"] = 355.8,
-                    ["x"] = -2257.4,
                 },
                 ["RaidIcon"] = 162948,
                 ["Range"] = 0.61,
@@ -2173,10 +1889,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 71,
-                    ["x"] = -2240,
-                },
                 ["Qpart"] = {
                     [55639] = {
                         ["1"] = "1",
@@ -2189,10 +1901,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 83.3,
-                    ["x"] = -2214.2,
-                },
                 ["Waypoint"] = 55639,
                 ["Range"] = 7.92,
                 ["TT"] = {
@@ -2206,10 +1914,6 @@ if (APR.Faction == "Alliance") then
                         ["2"] = "2",
                     },
                 },
-                ["Trigger"] = {
-                    ["y"] = 72.5,
-                    ["x"] = -2127.5,
-                },
                 ["RaidIcon"] = 156900,
                 ["Range"] = 0.69,
                 ["TT"] = {
@@ -2218,10 +1922,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 75.3,
-                    ["x"] = -2134.5,
-                },
                 ["Qpart"] = {
                     [55639] = {
                         ["3"] = "3",
@@ -2254,10 +1954,6 @@ if (APR.Faction == "Alliance") then
                 ["Class"] = "DRUID"
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 323.1,
-                    ["x"] = -2053,
-                },
                 ["Qpart"] = {
                     [59350] = {
                         ["1"] = "1",
@@ -2305,10 +2001,6 @@ if (APR.Faction == "Alliance") then
                         ["1"] = "1",
                     },
                 },
-                ["Trigger"] = {
-                    ["y"] = 205.1,
-                    ["x"] = -2058.4,
-                },
                 ["RaidIcon"] = 153266,
                 ["Range"] = 0.61,
                 ["TT"] = {
@@ -2326,10 +2018,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 217.4,
-                    ["x"] = -2060.4,
-                },
                 ["Waypoint"] = 56344,
                 ["Range"] = 17.88,
                 ["TT"] = {
@@ -2338,10 +2026,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 219.6,
-                    ["x"] = -2128,
-                },
                 ["Waypoint"] = 56344,
                 ["Range"] = 20.92,
                 ["TT"] = {
@@ -2374,10 +2058,6 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Gossip"] = 1,
-                ["Trigger"] = {
-                    ["y"] = 324.6,
-                    ["x"] = -2176.5,
-                },
                 ["RaidIcon"] = 156943,
                 ["Range"] = 0.69,
                 ["TT"] = {
@@ -2386,10 +2066,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 457.3,
-                    ["x"] = -2044.8,
-                },
                 ["Qpart"] = {
                     [55981] = {
                         ["2"] = "2",
@@ -2402,10 +2078,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 575.4,
-                    ["x"] = -2063,
-                },
                 ["Qpart"] = {
                     [55981] = {
                         ["3"] = "3",
@@ -2418,10 +2090,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 586.4,
-                    ["x"] = -2062.5,
-                },
                 ["Qpart"] = {
                     [55981] = {
                         ["4"] = "4",
@@ -2434,10 +2102,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 619,
-                    ["x"] = -2076.2,
-                },
                 ["Waypoint"] = 55981,
                 ["Range"] = 11.9,
                 ["TT"] = {
@@ -2466,10 +2130,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 616.5,
-                    ["x"] = -2012.4,
-                },
                 ["Range"] = 27.27,
                 ["Waypoint"] = 55990,
                 ["TT"] = {
@@ -2482,10 +2142,6 @@ if (APR.Faction == "Alliance") then
                     [55990] = {
                         ["2"] = "2",
                     },
-                },
-                ["Trigger"] = {
-                    ["y"] = 592.5,
-                    ["x"] = -2009.4,
                 },
                 ["RaidIcon"] = 153582,
                 ["Range"] = 0.69,
@@ -2508,10 +2164,6 @@ if (APR.Faction == "Alliance") then
                         ["1"] = "1",
                     },
                 },
-                ["Trigger"] = {
-                    ["y"] = 659.4,
-                    ["x"] = -2127,
-                },
                 ["RaidIcon"] = 153583,
                 ["Range"] = 0.75,
                 ["TT"] = {
@@ -2524,10 +2176,6 @@ if (APR.Faction == "Alliance") then
                     [55990] = {
                         ["3"] = "3",
                     },
-                },
-                ["Trigger"] = {
-                    ["y"] = 511.7,
-                    ["x"] = -1965,
                 },
                 ["Fillers"] = {
                     [55989] = {
@@ -2549,10 +2197,6 @@ if (APR.Faction == "Alliance") then
                         ["1"] = "1",
                     },
                 },
-                ["Trigger"] = {
-                    ["y"] = 505.7,
-                    ["x"] = -2039.5,
-                },
                 ["Fillers"] = {
                     [55988] = {
                         ["1"] = "1",
@@ -2565,10 +2209,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 608.9,
-                    ["x"] = -2085.2,
-                },
                 ["Qpart"] = {
                     [55988] = {
                         ["1"] = "1",
@@ -2591,10 +2231,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 708.9,
-                    ["x"] = -1869.5,
-                },
                 ["Qpart"] = {
                     [55990] = {
                         ["4"] = "4",
@@ -2625,10 +2261,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 709,
-                    ["x"] = -1869,
-                },
                 ["Qpart"] = {
                     [55992] = {
                         ["1"] = "1",
@@ -2659,10 +2291,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = 698.6,
-                    ["x"] = -1882.6,
-                },
                 ["Qpart"] = {
                     [55991] = {
                         ["1"] = "1",
@@ -2693,10 +2321,6 @@ if (APR.Faction == "Alliance") then
                 ["Gossip"] = 1,
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -8843,
-                    ["x"] = 610.4,
-                },
                 ["Range"] = 6.45,
                 ["Waypoint"] = 34398,
                 ["TT"] = {
@@ -2715,10 +2339,6 @@ if (APR.Faction == "Alliance") then
             },
 
             {
-                ["Trigger"] = {
-                    ["y"] = -8769.9,
-                    ["x"] = 606.3,
-                },
                 ["Range"] = 6.45,
                 ["Waypoint"] = 34398,
                 ["TT"] = {
@@ -2727,10 +2347,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -8745.7,
-                    ["x"] = 557.5,
-                },
                 ["Range"] = 6.45,
                 ["Waypoint"] = 34398,
                 ["TT"] = {
@@ -2739,10 +2355,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -8610.4,
-                    ["x"] = 516.1,
-                },
                 ["Range"] = 6.45,
                 ["Waypoint"] = 34398,
                 ["TT"] = {
@@ -2751,10 +2363,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -8541.5,
-                    ["x"] = 503,
-                },
                 ["Range"] = 6.45,
                 ["Waypoint"] = 34398,
                 ["TT"] = {
@@ -2763,10 +2371,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             {
-                ["Trigger"] = {
-                    ["y"] = -8333.8,
-                    ["x"] = 648,
-                },
                 ["Range"] = 6.45,
                 ["Waypoint"] = 34398,
                 ["TT"] = {
