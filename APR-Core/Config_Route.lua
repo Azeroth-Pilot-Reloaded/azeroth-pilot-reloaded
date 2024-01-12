@@ -13,6 +13,9 @@ local lineColor = { 105 / 255, 105 / 255, 105 / 255, 0.4 }
 local customPathListeWidget = nil
 local tabRouteListWidget = nil
 local currentTabName = nil
+
+local notSkippableRoute = { "01-10 Exile's Reach", "Goblin - Lost Isles", "Dracthyr Start", "Pandaren Start",
+    "Allied Death Knight Start", "Death Knight Start", "Demon Hunter Start" }
 ---------------------------------------------------------------------------------------
 ------------------------- Config functionality for Route ------------------------------
 ---------------------------------------------------------------------------------------
@@ -624,7 +627,7 @@ function APR.routeconfig:GetStartingZonePrefab()
     if Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
         tinsert(APRCustomPath[APR.PlayerID], "01-10 Exile's Reach")
     elseif not APRZoneCompleted[APR.PlayerID]["01-10 Exile's Reach"] then
-        --NEUTRAL
+        --Not skipable starting zone
         if APR.Level >= 58 and APR.ClassId == APR.Classes["Dracthyr"] then
             tinsert(APRCustomPath[APR.PlayerID], "Dracthyr Start")
         elseif APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then -- Allied DK
@@ -633,28 +636,25 @@ function APR.routeconfig:GetStartingZonePrefab()
             tinsert(APRCustomPath[APR.PlayerID], "Death Knight Start")
         elseif APR.ClassId == APR.Classes["Demon Hunter"] then
             tinsert(APRCustomPath[APR.PlayerID], "Demon Hunter Start")
-        elseif APR.Level < 10 then
-            -- Neutral
-            if (APR.Race == "Pandaren") then
-                tinsert(APRCustomPath[APR.PlayerID], "Pandaren Start")
-                -- HORDE
-            elseif (APR.Race == "Orc") then
+        elseif (APR.Race == "Pandaren") then
+            tinsert(APRCustomPath[APR.PlayerID], "Pandaren Start")
+        elseif (APR.Race == "Goblin") then
+            tinsert(APRCustomPath[APR.PlayerID], "Goblin Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Goblin - Lost Isles")
+        elseif APR.Level < 10 then -- Skipable starting zone
+            -- HORDE
+            if (APR.Race == "Orc") then
                 tinsert(APRCustomPath[APR.PlayerID], "Orc Start")
                 tinsert(APRCustomPath[APR.PlayerID], "Durotar")
             elseif (APR.Race == "Tauren") then
-                tinsert(APRCustomPath[APR.PlayerID], "Tauren Start")
-                -- missing part 2
+                tinsert(APRCustomPath[APR.PlayerID], "Tauren Start") -- missing part 2
             elseif (APR.Race == "Troll") then
                 tinsert(APRCustomPath[APR.PlayerID], "Troll Start")
                 tinsert(APRCustomPath[APR.PlayerID], "Durotar")
             elseif (APR.Race == "Scourge") then --Undead
                 tinsert(APRCustomPath[APR.PlayerID], "Scourge Start")
             elseif (APR.Race == "BloodElf") then
-                tinsert(APRCustomPath[APR.PlayerID], "Blood Elf Start")
-                -- missing part 2
-            elseif (APR.Race == "Goblin") then
-                tinsert(APRCustomPath[APR.PlayerID], "Goblin Start")
-                tinsert(APRCustomPath[APR.PlayerID], "Goblin - Lost Isles")
+                tinsert(APRCustomPath[APR.PlayerID], "Blood Elf Start") -- missing part 2
                 -- ALLIANCE
             elseif (APR.Race == "NightElf") then
                 tinsert(APRCustomPath[APR.PlayerID], "Night Elf Start")
@@ -829,8 +829,6 @@ APR.routeconfig.eventFrame:SetScript("OnEvent", function(self, event, ...)
         local arg1, _ = ...;
         APR.Level = arg1
         if not IsTableEmpty(APRCustomPath[APR.PlayerID]) then
-            local notSkippableRoute = { "01-10 Exile's Reach", "Goblin - Lost Isles", "Dracthyr Start", "Pandaren Start",
-                "Allied Death Knight Start", "Death Knight Start", "Demon Hunter Start" }
             local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
             if Contains(notSkippableRoute, currentRouteName) then
                 return

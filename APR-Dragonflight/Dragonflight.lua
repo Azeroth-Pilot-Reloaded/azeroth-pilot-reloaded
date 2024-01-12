@@ -20,10 +20,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 3535.9,
             ["x"] = -1427.5,
         },
-        ["Trigger"] = {
-            ["y"] = 3535.9,
-            ["x"] = -1427.5,
-        },
         ["Range"] = 1,
         ["Gossip"] = 3,
         ["ETA"] = 50,
@@ -56,10 +52,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 3542.3,
             ["x"] = -1430.1,
         },
-        ["Trigger"] = {
-            ["y"] = 3542.3,
-            ["x"] = -1430.1,
-        },
         ["Range"] = 1,
         ["Gossip"] = 3,
     },
@@ -70,10 +62,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 3204.3,
-            ["x"] = -1027.2,
-        },
-        ["Trigger"] = {
             ["y"] = 3204.3,
             ["x"] = -1027.2,
         },
@@ -109,10 +97,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2992.0,
             ["x"] = -968.1,
         },
-        ["Trigger"] = {
-            ["y"] = 2992.0,
-            ["x"] = -968.1,
-        },
         ["Range"] = 110,
         ["Fillers"] = { [65989] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "WHELPS_ARE_CONVENIENTLY_MARKED_ON_YOUR_MAP",
@@ -124,10 +108,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2992.0,
-            ["x"] = -968.1,
-        },
-        ["Trigger"] = {
             ["y"] = 2992.0,
             ["x"] = -968.1,
         },
@@ -159,10 +139,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["x"] = -633.9,
         },
         ["Fillers"] = { [65994] = { ["1"] = "1", }, },
-        ["Trigger"] = {
-            ["y"] = 3486.2,
-            ["x"] = -633.9,
-        },
         ["Range"] = 5,
     },
     { -- Step 14
@@ -172,10 +148,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 3524.4,
-            ["x"] = -639.1,
-        },
-        ["Trigger"] = {
             ["y"] = 3524.4,
             ["x"] = -639.1,
         },
@@ -210,10 +182,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 3603.2,
             ["x"] = -494.6,
         },
-        ["Trigger"] = {
-            ["y"] = 3603.2,
-            ["x"] = -494.6,
-        },
         ["Range"] = 25,
         ["Fillers"] = { [65994] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "JUMP_DOWN_USE_GOBLIN_GLIDER",
@@ -223,10 +191,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["TT"] = {
             ["y"] = 3621.8,
             ["x"] = -467.5,
-        },
-        ["Trigger"] = {
-            ["y"] = 3600.2,
-            ["x"] = -474.9,
         },
         ["Range"] = 20,
         ["Fillers"] = { [65994] = { ["1"] = "1", }, },
@@ -240,10 +204,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["TT"] = {
             ["y"] = 3621.8,
             ["x"] = -467.5,
-        },
-        ["Trigger"] = {
-            ["y"] = 3600.2,
-            ["x"] = -474.9,
         },
         ["Range"] = 20,
         ["Fillers"] = { [65994] = { ["1"] = "1", }, },
@@ -260,10 +220,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 3598.8,
             ["x"] = -375.5,
         },
-        ["Trigger"] = {
-            ["y"] = 3598.8,
-            ["x"] = -375.5,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [65994] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "CONSULT_KAVIA",
@@ -277,10 +233,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         },
         ["Range"] = 10,
         ["Fillers"] = { [65994] = { ["1"] = "1", }, },
-        ["Trigger"] = {
-            ["y"] = 3672.0,
-            ["x"] = -370.7,
-        },
     },
     { -- Step 22
         ["Qpart"] = {
@@ -291,10 +243,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["TT"] = {
             ["y"] = 3807.2,
             ["x"] = -365.5,
-        },
-        ["Trigger"] = {
-            ["y"] = 3799,
-            ["x"] = -383.8,
         },
         ["Range"] = 20,
         ["Fillers"] = { [65994] = { ["1"] = "1", }, },
@@ -316,10 +264,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 3836.6,
             ["x"] = -406.3,
         },
-        ["Trigger"] = {
-            ["y"] = 3836.6,
-            ["x"] = -406.3,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [65994] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "CONSULT_LEFT",
@@ -332,10 +276,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 3811.4,
-            ["x"] = -539.4,
-        },
-        ["Trigger"] = {
             ["y"] = 3811.4,
             ["x"] = -539.4,
         },
@@ -352,10 +292,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         },
         ["Range"] = 20,
         ["Fillers"] = { [65994] = { ["1"] = "1", }, },
-        ["Trigger"] = {
-            ["y"] = 3593.7,
-            ["x"] = -479.0,
-        },
     },
     { -- Step 27
         ["Waypoint"] = 65993,
@@ -366,10 +302,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["Range"] = 10,
         ["Fillers"] = { [65994] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "UP_RAMP",
-        ["Trigger"] = {
-            ["y"] = 3599.3,
-            ["x"] = -367.5,
-        },
     },
     { -- Step 28
         ["Done"] = {
@@ -403,10 +335,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 3587.2,
             ["x"] = -446.5,
         },
-        ["Trigger"] = {
-            ["y"] = 3587.2,
-            ["x"] = -446.5,
-        },
         ["Range"] = 256,
     },
     { -- Step 31
@@ -429,10 +357,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 3640.5,
-            ["x"] = -54.2,
-        },
-        ["Trigger"] = {
             ["y"] = 3640.5,
             ["x"] = -54.2,
         },
@@ -462,10 +386,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 3541.4,
             ["x"] = -79.3,
         },
-        ["Trigger"] = {
-            ["y"] = 3541.4,
-            ["x"] = -79.3,
-        },
         ["Range"] = 290,
         ["Button"] = {
             ["65996-1"] = 193917,
@@ -478,10 +398,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 3736.3,
-            ["x"] = 267.8,
-        },
-        ["Trigger"] = {
             ["y"] = 3736.3,
             ["x"] = 267.8,
         },
@@ -512,10 +428,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 4045.7,
-            ["x"] = 252.2,
-        },
-        ["Trigger"] = {
             ["y"] = 4045.7,
             ["x"] = 252.2,
         },
@@ -558,10 +470,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 4075.9,
             ["x"] = 154.9,
         },
-        ["Trigger"] = {
-            ["y"] = 4075.9,
-            ["x"] = 154.9,
-        },
         ["Range"] = 25,
     },
     { -- Step 43
@@ -572,10 +480,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["MobId"] = 195915,
         },
         ["TT"] = {
-            ["y"] = 4075.9,
-            ["x"] = 154.9,
-        },
-        ["Trigger"] = {
             ["y"] = 4075.9,
             ["x"] = 154.9,
         },
@@ -599,10 +503,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 4152.9,
             ["x"] = 180.6,
         },
-        ["Trigger"] = {
-            ["y"] = 4152.9,
-            ["x"] = 180.6,
-        },
         ["Range"] = 165,
         ["Fillers"] = { [66000] = { ["1"] = "1", }, [65998] = { ["1"] = "1", ["2"] = "2", }, },
     },
@@ -613,10 +513,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 4152.9,
-            ["x"] = 180.6,
-        },
-        ["Trigger"] = {
             ["y"] = 4152.9,
             ["x"] = 180.6,
         },
@@ -631,10 +527,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 4152.9,
-            ["x"] = 180.6,
-        },
-        ["Trigger"] = {
             ["y"] = 4152.9,
             ["x"] = 180.6,
         },
@@ -668,10 +560,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 4199.5,
             ["x"] = 166.6,
         },
-        ["Trigger"] = {
-            ["y"] = 4199.5,
-            ["x"] = 166.6,
-        },
         ["Range"] = 10,
         ["ExtraLineText"] = "MEET_SENDRAX_BY_RITUAL_SITE_SPEAK_HER_WHEN_READY",
     },
@@ -682,10 +570,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 4199.5,
-            ["x"] = 166.6,
-        },
-        ["Trigger"] = {
             ["y"] = 4199.5,
             ["x"] = 166.6,
         },
@@ -704,10 +588,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 4223.1,
             ["x"] = 113.5,
         },
-        ["Trigger"] = {
-            ["y"] = 4223.1,
-            ["x"] = 113.5,
-        },
         ["Range"] = 5,
         ["ExtraLineText"] = "GRAB_EGG",
     },
@@ -718,10 +598,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 3735.7,
-            ["x"] = 267.4,
-        },
-        ["Trigger"] = {
             ["y"] = 3735.7,
             ["x"] = 267.4,
         },
@@ -744,10 +620,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 3657.8,
-            ["x"] = 536.8,
-        },
-        ["Trigger"] = {
             ["y"] = 3657.8,
             ["x"] = 536.8,
         },
@@ -790,10 +662,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1495.1,
             ["x"] = -312.5,
         },
-        ["Trigger"] = {
-            ["y"] = 1495.1,
-            ["x"] = -312.5,
-        },
         ["Range"] = 20,
         ["ExtraLineText"] = "RIDE_MAJORDOMO_SELISTRA_RUBY_LIFESHRINE",
         ["Gossip"] = 1,
@@ -806,10 +674,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1488.0,
-            ["x"] = -319.0,
-        },
-        ["Trigger"] = {
             ["y"] = 1488.0,
             ["x"] = -319.0,
         },
@@ -847,10 +711,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1433.3,
             ["x"] = -188.6,
         },
-        ["Trigger"] = {
-            ["y"] = 1433.3,
-            ["x"] = -188.6,
-        },
         ["Range"] = 5,
         ["Gossip"] = 1,
         ["GossipOptionID"] = 55288,
@@ -865,10 +725,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1519.4,
             ["x"] = -83.3,
         },
-        ["Trigger"] = {
-            ["y"] = 1519.4,
-            ["x"] = -83.3,
-        },
         ["Range"] = 5,
         ["Gossip"] = 1,
         ["GossipOptionID"] = 55289,
@@ -876,10 +732,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
     { -- Step 64
         ["GetFP"] = 2807,
         ["TT"] = {
-            ["y"] = 1749.1,
-            ["x"] = 41.9,
-        },
-        ["Trigger"] = {
             ["y"] = 1749.1,
             ["x"] = 41.9,
         },
@@ -895,10 +747,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1801.0,
             ["x"] = -2.4,
         },
-        ["Trigger"] = {
-            ["y"] = 1801.0,
-            ["x"] = -2.4,
-        },
         ["Range"] = 5,
         ["Gossip"] = 1,
         ["GossipOptionID"] = 55643,
@@ -911,10 +759,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1818.4,
             ["x"] = 39.3,
         },
-        ["Trigger"] = {
-            ["y"] = 1818.4,
-            ["x"] = 39.3,
-        },
         ["Range"] = 5,
     },
     { -- Step 67
@@ -924,10 +768,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1818.4,
-            ["x"] = 39.3,
-        },
-        ["Trigger"] = {
             ["y"] = 1818.4,
             ["x"] = 39.3,
         },
@@ -945,10 +785,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1818.4,
-            ["x"] = 39.3,
-        },
-        ["Trigger"] = {
             ["y"] = 1818.4,
             ["x"] = 39.3,
         },
@@ -989,10 +825,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1813.8,
             ["x"] = 54.5,
         },
-        ["Trigger"] = {
-            ["y"] = 1813.8,
-            ["x"] = 54.5,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "MOUNT_ON_YOUR_DRAGON",
     },
@@ -1006,10 +838,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1822.4,
             ["x"] = 51.6,
         },
-        ["Trigger"] = {
-            ["y"] = 2216.1,
-            ["x"] = 68.1,
-        },
         ["Range"] = 50,
         ["ExtraLineText"] = "MOVE_EDGE_POINT_YOUR_CAMERA_AT_FIRST_RING_AND_WALK_OFF_EDGE_DO_NOT_JUMP",
     },
@@ -1020,10 +848,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2216.1,
-            ["x"] = 68.1,
-        },
-        ["Trigger"] = {
             ["y"] = 2216.1,
             ["x"] = 68.1,
         },
@@ -1054,10 +878,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1813.8,
             ["x"] = 54.5,
         },
-        ["Trigger"] = {
-            ["y"] = 1813.8,
-            ["x"] = 54.5,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "MOUNT_ON_YOUR_DRAGON",
     },
@@ -1071,10 +891,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1822.4,
             ["x"] = 51.6,
         },
-        ["Trigger"] = {
-            ["y"] = 2216.1,
-            ["x"] = 68.1,
-        },
         ["Range"] = 50,
         ["ExtraLineText"] = "MOVE_EDGE_POINT_YOUR_CAMERA_AT_FIRST_RING_AND_WALK_OFF_EDGE_DO_NOT_JUMP",
     },
@@ -1085,10 +901,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2216.1,
-            ["x"] = 68.1,
-        },
-        ["Trigger"] = {
             ["y"] = 2216.1,
             ["x"] = 68.1,
         },
@@ -1119,10 +931,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2228.3,
             ["x"] = 70.4,
         },
-        ["Trigger"] = {
-            ["y"] = 2228.3,
-            ["x"] = 70.4,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "MOUNT_ON_YOUR_DRAGON",
     },
@@ -1136,10 +944,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1822.4,
             ["x"] = 51.6,
         },
-        ["Trigger"] = {
-            ["y"] = 2216.1,
-            ["x"] = 68.1,
-        },
         ["Range"] = 50,
         ["ExtraLineText"] = "MOVE_EDGE_POINT_YOUR_CAMERA_AT_FIRST_RING_AND_WALK_OFF_EDGE_DO_NOT_JUMP",
     },
@@ -1150,10 +954,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2216.1,
-            ["x"] = 68.1,
-        },
-        ["Trigger"] = {
             ["y"] = 2216.1,
             ["x"] = 68.1,
         },
@@ -1198,10 +998,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1822.3,
             ["x"] = 49.2,
         },
-        ["Trigger"] = {
-            ["y"] = 1822.3,
-            ["x"] = 49.2,
-        },
         ["Range"] = 5,
         ["ExtraLineText"] = "SPEAK_WITH_CELORMU_START_RACE",
         ["Gossip"] = 1,
@@ -1216,10 +1012,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
         ["TT"] = {
             ["y"] = 1822.3,
             ["x"] = 49.2,
-        },
-        ["Trigger"] = {
-            ["y"] = 2446.0,
-            ["x"] = -1342.1,
         },
         ["Range"] = 20,
         ["ExtraLineText"] =
@@ -1253,10 +1045,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2290.5,
             ["x"] = -1258.5,
         },
-        ["Trigger"] = {
-            ["y"] = 2290.5,
-            ["x"] = -1258.5,
-        },
         ["Range"] = 1,
     },
     { -- Step 92
@@ -1266,10 +1054,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2279.7,
-            ["x"] = -1252.5,
-        },
-        ["Trigger"] = {
             ["y"] = 2279.7,
             ["x"] = -1252.5,
         },
@@ -1304,10 +1088,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2309.4,
             ["x"] = -1277.1,
         },
-        ["Trigger"] = {
-            ["y"] = 2309.4,
-            ["x"] = -1277.1,
-        },
         ["Range"] = 5,
         ["ExtraLineText"] = "GET_DRAGON_GLYPH_FLOATING_IN_SKY_BY_FLYING_THROUGH_IT",
     },
@@ -1321,10 +1101,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2341.5,
             ["x"] = -1295.2,
         },
-        ["Trigger"] = {
-            ["y"] = 2341.5,
-            ["x"] = -1295.2,
-        },
         ["Range"] = 1,
         ["ExtraLineText"] = "SPEAK_WITH_LITHRAGOSA",
     },
@@ -1335,10 +1111,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2341.5,
-            ["x"] = -1295.2,
-        },
-        ["Trigger"] = {
             ["y"] = 2341.5,
             ["x"] = -1295.2,
         },
@@ -1357,10 +1129,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2341.5,
             ["x"] = -1295.2,
         },
-        ["Trigger"] = {
-            ["y"] = 2341.5,
-            ["x"] = -1295.2,
-        },
         ["Range"] = 1,
         ["ExtraLineText"] = "LEAN_TAKE_THE_SKIES_SKILL",
     },
@@ -1371,10 +1139,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2602.8,
-            ["x"] = -1190.0,
-        },
-        ["Trigger"] = {
             ["y"] = 2602.8,
             ["x"] = -1190.0,
         },
@@ -1410,10 +1174,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2415.8,
             ["x"] = -1331.0,
         },
-        ["Trigger"] = {
-            ["y"] = 2338.9,
-            ["x"] = -1351.7,
-        },
         ["Range"] = 5,
         ["ExtraLineText"] = "HOP_ON_RELASTRASZA",
     },
@@ -1427,20 +1187,12 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2335.3,
             ["x"] = -1349.0,
         },
-        ["Trigger"] = {
-            ["y"] = 2335.3,
-            ["x"] = -1349.0,
-        },
         ["Range"] = 5,
         ["ETA"] = 20,
     },
     { -- Step 104
         ["Waypoint"] = 66115,
         ["TT"] = {
-            ["y"] = 1717.6,
-            ["x"] = -253.0,
-        },
-        ["Trigger"] = {
             ["y"] = 1717.6,
             ["x"] = -253.0,
         },
@@ -1457,10 +1209,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1717.4,
             ["x"] = -260.0,
         },
-        ["Trigger"] = {
-            ["y"] = 1717.4,
-            ["x"] = -260.0,
-        },
         ["Range"] = 1,
         ["ExtraLineText"] = "SPEAK_MOTHER_ELION",
         ["Gossip"] = 1,
@@ -1473,10 +1221,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1625.1,
-            ["x"] = -353.3,
-        },
-        ["Trigger"] = {
             ["y"] = 1625.1,
             ["x"] = -353.3,
         },
@@ -1513,10 +1257,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1570.8,
             ["x"] = -218.9,
         },
-        ["Trigger"] = {
-            ["y"] = 1570.8,
-            ["x"] = -218.9,
-        },
         ["Range"] = 5,
         ["ExtraLineText"] = "HOP_ON_RUBY_WHELPLING",
     },
@@ -1529,10 +1269,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1550.1,
-            ["x"] = -242.2,
-        },
-        ["Trigger"] = {
             ["y"] = 1550.1,
             ["x"] = -242.2,
         },
@@ -1575,10 +1311,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1509.0,
             ["x"] = -93.8,
         },
-        ["Trigger"] = {
-            ["y"] = 1509.0,
-            ["x"] = -93.8,
-        },
         ["Range"] = 10,
     },
     { -- Step 115
@@ -1606,10 +1338,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1335.3,
-            ["x"] = -84.6,
-        },
-        ["Trigger"] = {
             ["y"] = 1335.3,
             ["x"] = -84.6,
         },
@@ -1641,10 +1369,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1222.9,
-            ["x"] = -102.7,
-        },
-        ["Trigger"] = {
             ["y"] = 1222.9,
             ["x"] = -102.7,
         },
@@ -1688,10 +1412,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1047.0,
             ["x"] = 175.9,
         },
-        ["Trigger"] = {
-            ["y"] = 1047.0,
-            ["x"] = 175.9,
-        },
         ["Range"] = 5,
         ["Fillers"] = { [66117] = { ["1"] = "1", }, [66122] = { ["2"] = "2", }, },
         ["ExtraLineText"] = "RESCUE_BRONZE_EGG",
@@ -1703,10 +1423,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1065.7,
-            ["x"] = 267.8,
-        },
-        ["Trigger"] = {
             ["y"] = 1065.7,
             ["x"] = 267.8,
         },
@@ -1724,10 +1440,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 940.3,
             ["x"] = 241.0,
         },
-        ["Trigger"] = {
-            ["y"] = 940.3,
-            ["x"] = 241.0,
-        },
         ["Range"] = 5,
         ["Fillers"] = { [66117] = { ["1"] = "1", }, [66122] = { ["2"] = "2", }, [66960] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "RESCUE_EMERALD_EGG",
@@ -1742,10 +1454,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 998.7,
             ["x"] = 282,
         },
-        ["Trigger"] = {
-            ["y"] = 998.7,
-            ["x"] = 282,
-        },
         ["Range"] = 45,
         ["Fillers"] = { [66117] = { ["1"] = "1", }, [66122] = { ["2"] = "2", }, },
     },
@@ -1756,10 +1464,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 942.0,
-            ["x"] = 79.2,
-        },
-        ["Trigger"] = {
             ["y"] = 942.0,
             ["x"] = 79.2,
         },
@@ -1777,10 +1481,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1039.0,
             ["x"] = 212.0,
         },
-        ["Trigger"] = {
-            ["y"] = 1039.0,
-            ["x"] = 212.0,
-        },
         ["Range"] = 225,
         ["Fillers"] = { [66117] = { ["1"] = "1", }, },
         ["Button"] = {
@@ -1794,10 +1494,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1039.0,
-            ["x"] = 212.0,
-        },
-        ["Trigger"] = {
             ["y"] = 1039.0,
             ["x"] = 212.0,
         },
@@ -1837,10 +1533,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 956.7,
-            ["x"] = 376,
-        },
-        ["Trigger"] = {
             ["y"] = 956.7,
             ["x"] = 376,
         },
@@ -1901,10 +1593,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 939.9,
             ["x"] = 832.6,
         },
-        ["Trigger"] = {
-            ["y"] = 939.9,
-            ["x"] = 832.6,
-        },
         ["Range"] = 5,
     },
     { -- Step 141
@@ -1914,10 +1602,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1002.2,
-            ["x"] = 1030.9,
-        },
-        ["Trigger"] = {
             ["y"] = 1002.2,
             ["x"] = 1030.9,
         },
@@ -1937,10 +1621,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1024.2,
             ["x"] = 1152.5,
         },
-        ["Trigger"] = {
-            ["y"] = 1024.2,
-            ["x"] = 1152.5,
-        },
         ["Range"] = 20,
         ["Button"] = {
             ["66524-2"] = 192465,
@@ -1953,10 +1633,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1196.1,
-            ["x"] = 1140.3,
-        },
-        ["Trigger"] = {
             ["y"] = 1196.1,
             ["x"] = 1140.3,
         },
@@ -2002,10 +1678,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1074.8,
             ["x"] = 1600.5,
         },
-        ["Trigger"] = {
-            ["y"] = 1074.8,
-            ["x"] = 1600.5,
-        },
         ["Range"] = 20,
         ["Fillers"] = { [66526] = { ["1"] = "1", }, },
         ["Button"] = {
@@ -2019,10 +1691,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1052,
-            ["x"] = 1582.4,
-        },
-        ["Trigger"] = {
             ["y"] = 1052,
             ["x"] = 1582.4,
         },
@@ -2040,10 +1708,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1052,
-            ["x"] = 1582.4,
-        },
-        ["Trigger"] = {
             ["y"] = 1052,
             ["x"] = 1582.4,
         },
@@ -2086,10 +1750,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 936.1,
             ["x"] = 1548.4,
         },
-        ["Trigger"] = {
-            ["y"] = 936.1,
-            ["x"] = 1548.4,
-        },
         ["Range"] = 1,
         ["ExtraLineText"] = "WALK_OVER_SPRING",
     },
@@ -2100,10 +1760,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 900.9,
-            ["x"] = 1562.0,
-        },
-        ["Trigger"] = {
             ["y"] = 900.9,
             ["x"] = 1562.0,
         },
@@ -2141,10 +1797,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 928.6,
             ["x"] = 1555.8,
         },
-        ["Trigger"] = {
-            ["y"] = 928.6,
-            ["x"] = 1555.8,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "INVESTIGATE_CHARRED_FORECLAW",
     },
@@ -2158,10 +1810,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 907.2,
             ["x"] = 1534.5,
         },
-        ["Trigger"] = {
-            ["y"] = 907.2,
-            ["x"] = 1534.5,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "INVESTIGATE_SEVERED_SPINE",
     },
@@ -2172,10 +1820,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 902.2,
-            ["x"] = 1512.7,
-        },
-        ["Trigger"] = {
             ["y"] = 902.2,
             ["x"] = 1512.7,
         },
@@ -2210,10 +1854,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 925.6,
             ["x"] = 1553.8,
         },
-        ["Trigger"] = {
-            ["y"] = 925.6,
-            ["x"] = 1553.8,
-        },
         ["Range"] = 5,
         ["ExtraLineText"] = "WAIT_FOR_DERVISHIAN_BE_IN_FRONT_OF_YOU_TO_TAKE_PICTURE",
     },
@@ -2233,10 +1873,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1199.7,
-            ["x"] = 971.4,
-        },
-        ["Trigger"] = {
             ["y"] = 1199.7,
             ["x"] = 971.4,
         },
@@ -2290,10 +1926,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1819.5,
             ["x"] = 1267.0,
         },
-        ["Trigger"] = {
-            ["y"] = 1819.5,
-            ["x"] = 1267.0,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
         ["GossipOptionID"] = 107399,
@@ -2331,10 +1963,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1847.5,
             ["x"] = 1283.5,
         },
-        ["Trigger"] = {
-            ["y"] = 1847.5,
-            ["x"] = 1283.5,
-        },
         ["Range"] = 2,
     },
     { -- Step 174
@@ -2344,10 +1972,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1851.2,
-            ["x"] = 1271.0,
-        },
-        ["Trigger"] = {
             ["y"] = 1851.2,
             ["x"] = 1271.0,
         },
@@ -2368,10 +1992,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1809.5,
             ["x"] = 1235.7,
         },
-        ["Trigger"] = {
-            ["y"] = 1809.5,
-            ["x"] = 1235.7,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [66078] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "TALK_WITH_FORGEMASTER_BAZENTUS",
@@ -2381,10 +2001,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
     { -- Step 176
         ["Waypoint"] = 66048,
         ["TT"] = {
-            ["y"] = 1830.0,
-            ["x"] = 1164.4,
-        },
-        ["Trigger"] = {
             ["y"] = 1830.0,
             ["x"] = 1164.4,
         },
@@ -2402,10 +2018,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1793.0,
             ["x"] = 1163.7,
         },
-        ["Trigger"] = {
-            ["y"] = 1793.0,
-            ["x"] = 1163.7,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [66078] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "TALK_WITH_ARCHIVIST_EDRES_WAIT_FOR_HER_DIALOG_COMPLETE",
@@ -2416,10 +2028,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
     { -- Step 178
         ["Waypoint"] = 66048,
         ["TT"] = {
-            ["y"] = 1771.8,
-            ["x"] = 1255.9,
-        },
-        ["Trigger"] = {
             ["y"] = 1771.8,
             ["x"] = 1255.9,
         },
@@ -2437,10 +2045,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1686.1,
             ["x"] = 1280.3,
         },
-        ["Trigger"] = {
-            ["y"] = 1686.1,
-            ["x"] = 1280.3,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [66078] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "TALK_WITH_TALONSTALKER_KAVLA_THEN_USE_TELESCOPE",
@@ -2455,10 +2059,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1794.3,
-            ["x"] = 1248.5,
-        },
-        ["Trigger"] = {
             ["y"] = 1794.3,
             ["x"] = 1248.5,
         },
@@ -2498,10 +2098,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1724.5,
             ["x"] = 1818.2,
         },
-        ["Trigger"] = {
-            ["y"] = 1724.5,
-            ["x"] = 1818.2,
-        },
         ["Range"] = 10,
         ["Fillers"] = { [65956] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "KILL_PIERCER_GIGRA",
@@ -2519,10 +2115,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1810.0,
             ["x"] = 1876.9,
         },
-        ["Trigger"] = {
-            ["y"] = 1810.0,
-            ["x"] = 1876.9,
-        },
         ["Range"] = 25,
         ["Fillers"] = { [65956] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "KILL_OLPHIS_MOLTEN",
@@ -2537,10 +2129,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2142.6,
             ["x"] = 1815.3,
         },
-        ["Trigger"] = {
-            ["y"] = 2142.6,
-            ["x"] = 1815.3,
-        },
         ["Range"] = 10,
         ["Fillers"] = { [65956] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "KILL_MODAK_FLAMESPIT",
@@ -2552,10 +2140,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1866.0,
-            ["x"] = 1831.0,
-        },
-        ["Trigger"] = {
             ["y"] = 1866.0,
             ["x"] = 1831.0,
         },
@@ -2590,10 +2174,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2112.0,
             ["x"] = 1939.5,
         },
-        ["Trigger"] = {
-            ["y"] = 2112.0,
-            ["x"] = 1939.5,
-        },
         ["Range"] = 5,
         ["Gossip"] = 1,
         ["GossipOptionID"] = 55405,
@@ -2604,10 +2184,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2078.9,
             ["x"] = 2018.0,
         },
-        ["Trigger"] = {
-            ["y"] = 2118.8,
-            ["x"] = 2192.0,
-        },
         ["Range"] = 5,
     },
     { -- Step 191
@@ -2617,10 +2193,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2135.9,
-            ["x"] = 2223.3,
-        },
-        ["Trigger"] = {
             ["y"] = 2135.9,
             ["x"] = 2223.3,
         },
@@ -2646,10 +2218,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2243.1,
             ["x"] = 2328.6,
         },
-        ["Trigger"] = {
-            ["y"] = 2243.1,
-            ["x"] = 2328.6,
-        },
         ["Range"] = 5,
         ["Fillers"] = { [65939] = { ["3"] = "3", }, },
         ["ExtraLineText"] = "RIDE_WRATHION_TOP",
@@ -2666,10 +2234,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2183.1,
             ["x"] = 2515.6,
         },
-        ["Trigger"] = {
-            ["y"] = 2183.1,
-            ["x"] = 2515.6,
-        },
         ["Range"] = 5,
         ["Fillers"] = { [65939] = { ["3"] = "3", }, },
     },
@@ -2680,10 +2244,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2127.1,
-            ["x"] = 2304.0,
-        },
-        ["Trigger"] = {
             ["y"] = 2127.1,
             ["x"] = 2304.0,
         },
@@ -2701,10 +2261,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2355.5,
             ["x"] = 2435.1,
         },
-        ["Trigger"] = {
-            ["y"] = 2355.5,
-            ["x"] = 2435.1,
-        },
         ["Range"] = 5,
         ["Fillers"] = { [65939] = { ["3"] = "3", }, },
         ["ExtraLineText"] = "RIDE_YOUR_DRAGON_OR_WRATHION_NEXT_ARBALEST",
@@ -2719,10 +2275,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2329.3,
             ["x"] = 2506.7,
         },
-        ["Trigger"] = {
-            ["y"] = 2329.3,
-            ["x"] = 2506.7,
-        },
         ["Range"] = 5,
         ["Fillers"] = { [65939] = { ["3"] = "3", }, },
         ["RaidIcon"] = 186592,
@@ -2734,10 +2286,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2289.4,
-            ["x"] = 2537.8,
-        },
-        ["Trigger"] = {
             ["y"] = 2289.4,
             ["x"] = 2537.8,
         },
@@ -2772,10 +2320,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2042.7,
             ["x"] = 2477.4,
         },
-        ["Trigger"] = {
-            ["y"] = 2042.7,
-            ["x"] = 2477.4,
-        },
         ["Range"] = 5,
         ["Gossip"] = 1,
         ["GossipOptionID"] = 55423,
@@ -2787,10 +2331,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2009.5,
-            ["x"] = 2455.6,
-        },
-        ["Trigger"] = {
             ["y"] = 2009.5,
             ["x"] = 2455.6,
         },
@@ -2824,10 +2364,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2130.6,
             ["x"] = 2484.6,
         },
-        ["Trigger"] = {
-            ["y"] = 2130.6,
-            ["x"] = 2484.6,
-        },
         ["Range"] = 10,
         ["Fillers"] = { [66055] = { ["2"] = "2", }, },
         ["ExtraLineText"] = "ENTER_MOUNTAIN",
@@ -2839,10 +2375,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2281.5,
-            ["x"] = 2692.3,
-        },
-        ["Trigger"] = {
             ["y"] = 2281.5,
             ["x"] = 2692.3,
         },
@@ -2877,10 +2409,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2133.9,
             ["x"] = 2690.3,
         },
-        ["Trigger"] = {
-            ["y"] = 2133.9,
-            ["x"] = 2690.3,
-        },
         ["Range"] = 10,
     },
     { -- Step 210
@@ -2890,10 +2418,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2121.6,
-            ["x"] = 2662.6,
-        },
-        ["Trigger"] = {
             ["y"] = 2121.6,
             ["x"] = 2662.6,
         },
@@ -2928,10 +2452,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2129.1,
             ["x"] = 2692.8,
         },
-        ["Trigger"] = {
-            ["y"] = 2129.1,
-            ["x"] = 2692.8,
-        },
         ["Range"] = 5,
         ["ExtraLineText"] = "PLACE_FRAGMENTS",
     },
@@ -2942,10 +2462,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2129.1,
-            ["x"] = 2692.8,
-        },
-        ["Trigger"] = {
             ["y"] = 2129.1,
             ["x"] = 2692.8,
         },
@@ -2980,10 +2496,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2042.9,
             ["x"] = 2477.6,
         },
-        ["Trigger"] = {
-            ["y"] = 2042.9,
-            ["x"] = 2477.6,
-        },
         ["Range"] = 5,
         ["Gossip"] = 1,
         ["GossipOptionID"] = 56143,
@@ -2998,10 +2510,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2062.4,
             ["x"] = 2494.6,
         },
-        ["Trigger"] = {
-            ["y"] = 2062.4,
-            ["x"] = 2494.6,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "RIDE_WRATHION_THRONE",
     },
@@ -3012,10 +2520,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2360.0,
-            ["x"] = 2639.3,
-        },
-        ["Trigger"] = {
             ["y"] = 2360.0,
             ["x"] = 2639.3,
         },
@@ -3059,10 +2563,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2438.3,
             ["x"] = 2660.5,
         },
-        ["Trigger"] = {
-            ["y"] = 2438.3,
-            ["x"] = 2660.5,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "TALK_LEFT_AND_RIGHT",
         ["Gossip"] = 1,
@@ -3075,10 +2575,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2470.8,
-            ["x"] = 2551.3,
-        },
-        ["Trigger"] = {
             ["y"] = 2470.8,
             ["x"] = 2551.3,
         },
@@ -3097,10 +2593,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2381.5,
             ["x"] = 2651.6,
         },
-        ["Trigger"] = {
-            ["y"] = 2381.5,
-            ["x"] = 2651.6,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "TALK_ARCHIVIST_EDRESS_TWICE",
         ["Gossip"] = 1,
@@ -3113,10 +2605,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2381.5,
-            ["x"] = 2651.6,
-        },
-        ["Trigger"] = {
             ["y"] = 2381.5,
             ["x"] = 2651.6,
         },
@@ -3135,10 +2623,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 2296.8,
             ["x"] = 2710.1,
         },
-        ["Trigger"] = {
-            ["y"] = 2296.8,
-            ["x"] = 2710.1,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "TALK_FORGEMASTER_BAZENTUS",
         ["Gossip"] = 1,
@@ -3151,10 +2635,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 2241.6,
-            ["x"] = 2715.6,
-        },
-        ["Trigger"] = {
             ["y"] = 2241.6,
             ["x"] = 2715.6,
         },
@@ -3200,10 +2680,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1838.0,
             ["x"] = 1157.7,
         },
-        ["Trigger"] = {
-            ["y"] = 1838.0,
-            ["x"] = 1157.7,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "SPEAK_WITH_SABELLIAN",
         ["Gossip"] = 1,
@@ -3216,10 +2692,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1817.7,
-            ["x"] = 513.6,
-        },
-        ["Trigger"] = {
             ["y"] = 1817.7,
             ["x"] = 513.6,
         },
@@ -3274,10 +2746,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             ["y"] = 1717.4,
             ["x"] = -260.2,
         },
-        ["Trigger"] = {
-            ["y"] = 1717.4,
-            ["x"] = -260.2,
-        },
         ["Range"] = 30,
         ["ExtraLineText"] = "CLEAN_SHRINE",
     },
@@ -3324,10 +2792,6 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 1487.5,
-            ["x"] = -319.5,
-        },
-        ["Trigger"] = {
             ["y"] = 1487.5,
             ["x"] = -319.5,
         },
@@ -3426,10 +2890,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = 71.5,
             ["x"] = 886.0,
         },
-        ["Trigger"] = {
-            ["y"] = 71.5,
-            ["x"] = 886.0,
-        },
         ["Range"] = 45,
     },
     { -- Step 4
@@ -3478,10 +2938,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = 143.4,
             ["x"] = 325.8,
         },
-        ["Trigger"] = {
-            ["y"] = 143.4,
-            ["x"] = 325.8,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
         ["GossipOptionID"] = 56190,
@@ -3523,10 +2979,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = 369.1,
             ["x"] = 335.0,
         },
-        ["Trigger"] = {
-            ["y"] = 369.1,
-            ["x"] = 335.0,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [65802] = { ["1"] = "1", ["2"] = "2", }, },
         ["ExtraLineText"] = "LOOT_CAMP_PROVISIONS_MARKED_ON_YOUR_MINIMAP_FERALBLOOM_PODS_ARE_AROUND_THE_CAMP",
@@ -3541,10 +2993,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = 160.0,
             ["x"] = 432.1,
         },
-        ["Trigger"] = {
-            ["y"] = 160.0,
-            ["x"] = 432.1,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [65802] = { ["1"] = "1", ["2"] = "2", }, },
         ["ExtraLineText"] = "LOOT_CAMP_PROVISIONS_MARKED_ON_YOUR_MINIMAP_FERALBLOOM_PODS_ARE_AROUND_THE_CAMP",
@@ -3554,10 +3002,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             65950,
         },
         ["TT"] = {
-            ["y"] = 159.1,
-            ["x"] = 428.0,
-        },
-        ["Trigger"] = {
             ["y"] = 159.1,
             ["x"] = 428.0,
         },
@@ -3575,10 +3019,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = 115.5,
             ["x"] = 464.0,
         },
-        ["Trigger"] = {
-            ["y"] = 115.5,
-            ["x"] = 464.0,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [65802] = { ["1"] = "1", ["2"] = "2", }, },
         ["ExtraLineText"] = "LOOT_CAMP_PROVISIONS_MARKED_ON_YOUR_MINIMAP_FERALBLOOM_PODS_ARE_AROUND_THE_CAMP",
@@ -3592,10 +3032,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 80.9,
-            ["x"] = 326.3,
-        },
-        ["Trigger"] = {
             ["y"] = 80.9,
             ["x"] = 326.3,
         },
@@ -3616,19 +3052,11 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = 167.9,
             ["x"] = 398.3,
         },
-        ["Trigger"] = {
-            ["y"] = 167.9,
-            ["x"] = 398.3,
-        },
         ["Range"] = 225,
     },
     { -- Step 18
         ["GetFP"] = 2790,
         ["TT"] = {
-            ["y"] = 204.9,
-            ["x"] = 361.8,
-        },
-        ["Trigger"] = {
             ["y"] = 204.9,
             ["x"] = 361.8,
         },
@@ -3662,10 +3090,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = 223.6,
             ["x"] = 521.7,
         },
-        ["Trigger"] = {
-            ["y"] = 223.6,
-            ["x"] = 521.7,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "YOU_DO_NOT_HAVE_RIDE_WITH_CARAVAN_OR_WAIT_FOR_IT",
         ["Gossip"] = 1,
@@ -3688,10 +3112,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -132.5,
-            ["x"] = 638.7,
-        },
-        ["Trigger"] = {
             ["y"] = -132.5,
             ["x"] = 638.7,
         },
@@ -3743,10 +3163,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -129.9,
             ["x"] = 718.7,
         },
-        ["Trigger"] = {
-            ["y"] = -129.9,
-            ["x"] = 718.7,
-        },
         ["Range"] = 2,
     },
     { -- Step 30
@@ -3756,10 +3172,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -137,
-            ["x"] = 641.1,
-        },
-        ["Trigger"] = {
             ["y"] = -137,
             ["x"] = 641.1,
         },
@@ -3777,10 +3189,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -137,
             ["x"] = 641.1,
         },
-        ["Trigger"] = {
-            ["y"] = -137,
-            ["x"] = 641.1,
-        },
         ["Range"] = 250,
     },
     { -- Step 32
@@ -3790,10 +3198,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -214.3,
-            ["x"] = 505.5,
-        },
-        ["Trigger"] = {
             ["y"] = -214.3,
             ["x"] = 505.5,
         },
@@ -3843,10 +3247,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -158.3,
-            ["x"] = 610.7,
-        },
-        ["Trigger"] = {
             ["y"] = -158.3,
             ["x"] = 610.7,
         },
@@ -3908,10 +3308,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -201.4,
             ["x"] = 495.2,
         },
-        ["Trigger"] = {
-            ["y"] = -201.4,
-            ["x"] = 495.2,
-        },
         ["Range"] = 2,
     },
     { -- Step 44
@@ -3969,10 +3365,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -366.0,
             ["x"] = 933.7,
         },
-        ["Trigger"] = {
-            ["y"] = -366.0,
-            ["x"] = 933.7,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "INSIDE_CAVE",
     },
@@ -3983,10 +3375,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -179.6,
-            ["x"] = 949.2,
-        },
-        ["Trigger"] = {
             ["y"] = -179.6,
             ["x"] = 949.2,
         },
@@ -4049,10 +3437,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -498.3,
             ["x"] = 1548,
         },
-        ["Trigger"] = {
-            ["y"] = -498.3,
-            ["x"] = 1548,
-        },
         ["Range"] = 225,
     },
     { -- Step 57
@@ -4083,10 +3467,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -495.1,
             ["x"] = 1521.8,
         },
-        ["Trigger"] = {
-            ["y"] = -495.1,
-            ["x"] = 1521.8,
-        },
         ["Range"] = 2,
         ["Gossip"] = 3,
         ["GossipOptionID"] = 64063,
@@ -4098,10 +3478,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -477.2,
-            ["x"] = 1524.5,
-        },
-        ["Trigger"] = {
             ["y"] = -477.2,
             ["x"] = 1524.5,
         },
@@ -4189,10 +3565,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -352.3,
             ["x"] = 2049.6,
         },
-        ["Trigger"] = {
-            ["y"] = -352.3,
-            ["x"] = 2049.6,
-        },
         ["Range"] = 70,
         ["ExtraLineText"] = "LOOT_SWEETSUCKLE_BLOOMS_AROUND_HOUSE_AND_COMBINE_5_OF_THEM",
     },
@@ -4203,10 +3575,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -280.6,
-            ["x"] = 2062,
-        },
-        ["Trigger"] = {
             ["y"] = -280.6,
             ["x"] = 2062,
         },
@@ -4268,10 +3636,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = 641.7,
             ["x"] = 2004.5,
         },
-        ["Trigger"] = {
-            ["y"] = 641.7,
-            ["x"] = 2004.5,
-        },
         ["Range"] = 125,
         ["Fillers"] = { [65892] = { ["1"] = "1", }, [65893] = { ["1"] = "1", }, },
     },
@@ -4285,10 +3649,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = 641.7,
             ["x"] = 2004.5,
         },
-        ["Trigger"] = {
-            ["y"] = 641.7,
-            ["x"] = 2004.5,
-        },
         ["Range"] = 125,
         ["Fillers"] = { [65892] = { ["1"] = "1", }, },
     },
@@ -4299,10 +3659,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 641.7,
-            ["x"] = 2004.5,
-        },
-        ["Trigger"] = {
             ["y"] = 641.7,
             ["x"] = 2004.5,
         },
@@ -4355,10 +3711,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -485.6,
             ["x"] = 2324.1,
         },
-        ["Trigger"] = {
-            ["y"] = -485.6,
-            ["x"] = 2324.1,
-        },
         ["Range"] = 2,
     },
     { -- Step 84
@@ -4368,10 +3720,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -475.3,
-            ["x"] = 2341.5,
-        },
-        ["Trigger"] = {
             ["y"] = -475.3,
             ["x"] = 2341.5,
         },
@@ -4387,10 +3735,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -462.0,
             ["x"] = 2329.9,
         },
-        ["Trigger"] = {
-            ["y"] = -462.0,
-            ["x"] = 2329.9,
-        },
         ["Range"] = 2,
     },
     { -- Step 86
@@ -4400,10 +3744,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -475.3,
-            ["x"] = 2341.5,
-        },
-        ["Trigger"] = {
             ["y"] = -475.3,
             ["x"] = 2341.5,
         },
@@ -4422,10 +3762,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -465.7,
             ["x"] = 2325.0,
         },
-        ["Trigger"] = {
-            ["y"] = -465.7,
-            ["x"] = 2325.0,
-        },
         ["Range"] = 2,
     },
     { -- Step 88
@@ -4435,10 +3771,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -475.3,
-            ["x"] = 2341.5,
-        },
-        ["Trigger"] = {
             ["y"] = -475.3,
             ["x"] = 2341.5,
         },
@@ -4457,10 +3789,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -490.6,
             ["x"] = 2348.1,
         },
-        ["Trigger"] = {
-            ["y"] = -490.6,
-            ["x"] = 2348.1,
-        },
         ["Range"] = 2,
     },
     { -- Step 90
@@ -4470,10 +3798,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -475.3,
-            ["x"] = 2341.5,
-        },
-        ["Trigger"] = {
             ["y"] = -475.3,
             ["x"] = 2341.5,
         },
@@ -4492,10 +3816,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -475.3,
             ["x"] = 2341.5,
         },
-        ["Trigger"] = {
-            ["y"] = -475.3,
-            ["x"] = 2341.5,
-        },
         ["Range"] = 2,
     },
     { -- Step 92
@@ -4505,10 +3825,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -461.1,
-            ["x"] = 2361.1,
-        },
-        ["Trigger"] = {
             ["y"] = -461.1,
             ["x"] = 2361.1,
         },
@@ -4524,10 +3840,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -453.1,
-            ["x"] = 2341.1,
-        },
-        ["Trigger"] = {
             ["y"] = -453.1,
             ["x"] = 2341.1,
         },
@@ -4570,10 +3882,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -689,
             ["x"] = 2315,
         },
-        ["Trigger"] = {
-            ["y"] = -689,
-            ["x"] = 2315,
-        },
         ["Range"] = 20,
         ["Gossip"] = 1,
         ["GossipOptionID"] = 55277,
@@ -4607,10 +3915,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -574.4,
             ["x"] = 2166.6,
         },
-        ["Trigger"] = {
-            ["y"] = -574.4,
-            ["x"] = 2166.6,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
         ["GossipOptionID"] = 56528,
@@ -4622,10 +3926,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -574.4,
-            ["x"] = 2166.6,
-        },
-        ["Trigger"] = {
             ["y"] = -574.4,
             ["x"] = 2166.6,
         },
@@ -4660,10 +3960,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -620.0,
             ["x"] = 2198.6,
         },
-        ["Trigger"] = {
-            ["y"] = -620.0,
-            ["x"] = 2198.6,
-        },
         ["Range"] = 2,
         ["Gossip"] = 4,
     },
@@ -4692,10 +3988,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -491.2,
-            ["x"] = 2254.6,
-        },
-        ["Trigger"] = {
             ["y"] = -491.2,
             ["x"] = 2254.6,
         },
@@ -4740,10 +4032,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -563.7,
             ["x"] = 2408.3,
         },
-        ["Trigger"] = {
-            ["y"] = -563.7,
-            ["x"] = 2408.3,
-        },
         ["Range"] = 20,
     },
     { -- Step 112
@@ -4753,10 +4041,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -532.2,
-            ["x"] = 2324.6,
-        },
-        ["Trigger"] = {
             ["y"] = -532.2,
             ["x"] = 2324.6,
         },
@@ -4865,10 +4149,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1893.5,
             ["x"] = 4003.5,
         },
-        ["Trigger"] = {
-            ["y"] = -1893.5,
-            ["x"] = 4003.5,
-        },
         ["Range"] = 20,
     },
     { -- Step 124
@@ -4878,10 +4158,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1885.0,
-            ["x"] = 4015.8,
-        },
-        ["Trigger"] = {
             ["y"] = -1885.0,
             ["x"] = 4015.8,
         },
@@ -4922,10 +4198,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1968.8,
             ["x"] = 4139.1,
         },
-        ["Trigger"] = {
-            ["y"] = -1968.8,
-            ["x"] = 4139.1,
-        },
         ["Range"] = 75,
     },
     { -- Step 128
@@ -4954,10 +4226,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1968.8,
-            ["x"] = 4139.1,
-        },
-        ["Trigger"] = {
             ["y"] = -1968.8,
             ["x"] = 4139.1,
         },
@@ -4993,10 +4261,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -2061.5,
             ["x"] = 4467.0,
         },
-        ["Trigger"] = {
-            ["y"] = -2061.5,
-            ["x"] = 4467.0,
-        },
         ["Range"] = 10,
         ["ExtraLineText"] = "KILL_CATHAN_AND_USE_ZORIGS_TOTEM_OF_RESPITE_ON_THEIR_CORPSE",
         ["Button"] = {
@@ -5011,10 +4275,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -2169.4,
-            ["x"] = 4467.4,
-        },
-        ["Trigger"] = {
             ["y"] = -2169.4,
             ["x"] = 4467.4,
         },
@@ -5035,10 +4295,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -2203.1,
             ["x"] = 4310.4,
         },
-        ["Trigger"] = {
-            ["y"] = -2203.1,
-            ["x"] = 4310.4,
-        },
         ["Range"] = 33,
         ["ExtraLineText"] = "KILL_DIHAR_AND_USE_ZORIGS_TOTEM_OF_RESPITE_ON_THEIR_CORPSE",
         ["Button"] = {
@@ -5053,10 +4309,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -2154.0,
-            ["x"] = 4369.8,
-        },
-        ["Trigger"] = {
             ["y"] = -2154.0,
             ["x"] = 4369.8,
         },
@@ -5096,10 +4348,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -2171.5,
             ["x"] = 4449.7,
         },
-        ["Trigger"] = {
-            ["y"] = -2171.5,
-            ["x"] = 4449.7,
-        },
         ["Range"] = 15,
     },
     { -- Step 140
@@ -5112,10 +4360,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -2163.4,
             ["x"] = 4466.8,
         },
-        ["Trigger"] = {
-            ["y"] = -2163.4,
-            ["x"] = 4466.8,
-        },
         ["Range"] = 2,
     },
     { -- Step 141
@@ -5125,10 +4369,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -2187.1,
-            ["x"] = 4437.1,
-        },
-        ["Trigger"] = {
             ["y"] = -2187.1,
             ["x"] = 4437.1,
         },
@@ -5153,10 +4393,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1582.4,
             ["x"] = 3977.5,
         },
-        ["Trigger"] = {
-            ["y"] = -1582.4,
-            ["x"] = 3977.5,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
         ["GossipOptionID"] = 55139,
@@ -5168,10 +4404,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1477.8,
-            ["x"] = 3906.6,
-        },
-        ["Trigger"] = {
             ["y"] = -1477.8,
             ["x"] = 3906.6,
         },
@@ -5199,10 +4431,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1373.0,
             ["x"] = 3829.1,
         },
-        ["Trigger"] = {
-            ["y"] = -1373.0,
-            ["x"] = 3829.1,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
         ["GossipOptionID"] = 56252,
@@ -5214,10 +4442,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1424.5,
-            ["x"] = 3735.1,
-        },
-        ["Trigger"] = {
             ["y"] = -1424.5,
             ["x"] = 3735.1,
         },
@@ -5253,10 +4477,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1268.7,
             ["x"] = 3334.3,
         },
-        ["Trigger"] = {
-            ["y"] = -1268.7,
-            ["x"] = 3334.3,
-        },
         ["Range"] = 191,
     },
     { -- Step 151
@@ -5266,10 +4486,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1221.1,
-            ["x"] = 2761.6,
-        },
-        ["Trigger"] = {
             ["y"] = -1221.1,
             ["x"] = 2761.6,
         },
@@ -5303,10 +4519,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1079.7,
             ["x"] = 3084.6,
         },
-        ["Trigger"] = {
-            ["y"] = -1079.7,
-            ["x"] = 3084.6,
-        },
         ["Range"] = 10,
         ["Gossip"] = 1,
         ["GossipOptionID"] = 56476,
@@ -5314,10 +4526,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
     { -- Step 155
         ["Waypoint"] = 66687,
         ["TT"] = {
-            ["y"] = -993.7,
-            ["x"] = 3531.3,
-        },
-        ["Trigger"] = {
             ["y"] = -993.7,
             ["x"] = 3531.3,
         },
@@ -5334,19 +4542,11 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1112.6,
             ["x"] = 3521.1,
         },
-        ["Trigger"] = {
-            ["y"] = -1112.6,
-            ["x"] = 3521.1,
-        },
         ["Range"] = 88,
     },
     { -- Step 157
         ["Waypoint"] = 66687,
         ["TT"] = {
-            ["y"] = -993.7,
-            ["x"] = 3531.3,
-        },
-        ["Trigger"] = {
             ["y"] = -993.7,
             ["x"] = 3531.3,
         },
@@ -5363,10 +4563,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -965.6,
             ["x"] = 3624.5,
         },
-        ["Trigger"] = {
-            ["y"] = -965.6,
-            ["x"] = 3624.5,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [66687] = { ["2"] = "2", }, },
     },
@@ -5377,10 +4573,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -927.9,
-            ["x"] = 3596.4,
-        },
-        ["Trigger"] = {
             ["y"] = -927.9,
             ["x"] = 3596.4,
         },
@@ -5423,10 +4615,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1497.7,
             ["x"] = 3781.1,
         },
-        ["Trigger"] = {
-            ["y"] = -1497.7,
-            ["x"] = 3781.1,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "INSIDE_CAVE",
     },
@@ -5440,10 +4628,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1501.7,
             ["x"] = 3776.2,
         },
-        ["Trigger"] = {
-            ["y"] = -1501.7,
-            ["x"] = 3776.2,
-        },
         ["Range"] = 1,
         ["ExtraLineText"] = "PICK_UP_TORCH",
     },
@@ -5454,10 +4638,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1501.7,
-            ["x"] = 3776.2,
-        },
-        ["Trigger"] = {
             ["y"] = -1501.7,
             ["x"] = 3776.2,
         },
@@ -5478,10 +4658,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1496.0,
             ["x"] = 3786.7,
         },
-        ["Trigger"] = {
-            ["y"] = -1496.0,
-            ["x"] = 3786.7,
-        },
         ["Range"] = 1,
         ["ExtraLineText"] = "PICK_UP_SPEAR",
     },
@@ -5492,10 +4668,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1496.0,
-            ["x"] = 3786.7,
-        },
-        ["Trigger"] = {
             ["y"] = -1496.0,
             ["x"] = 3786.7,
         },
@@ -5516,10 +4688,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1493.9,
             ["x"] = 3787.8,
         },
-        ["Trigger"] = {
-            ["y"] = -1493.9,
-            ["x"] = 3787.8,
-        },
         ["Range"] = 1,
         ["ExtraLineText"] = "PICK_UP_BOW",
     },
@@ -5530,10 +4698,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1493.9,
-            ["x"] = 3787.8,
-        },
-        ["Trigger"] = {
             ["y"] = -1493.9,
             ["x"] = 3787.8,
         },
@@ -5608,10 +4772,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1480.9,
             ["x"] = 4024.5,
         },
-        ["Trigger"] = {
-            ["y"] = -1480.9,
-            ["x"] = 4024.5,
-        },
         ["Range"] = 50,
     },
     { -- Step 177
@@ -5642,10 +4802,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1699.3,
             ["x"] = 3443.8,
         },
-        ["Trigger"] = {
-            ["y"] = -1699.3,
-            ["x"] = 3443.8,
-        },
         ["Range"] = 10,
     },
     { -- Step 180
@@ -5655,10 +4811,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1707.2,
-            ["x"] = 3446.5,
-        },
-        ["Trigger"] = {
             ["y"] = -1707.2,
             ["x"] = 3446.5,
         },
@@ -5675,10 +4827,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1772.0,
             ["x"] = 3297.2,
         },
-        ["Trigger"] = {
-            ["y"] = -1772.0,
-            ["x"] = 3297.2,
-        },
         ["Range"] = 20,
     },
     { -- Step 182
@@ -5688,10 +4836,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1772.0,
-            ["x"] = 3297.2,
-        },
-        ["Trigger"] = {
             ["y"] = -1772.0,
             ["x"] = 3297.2,
         },
@@ -5705,10 +4849,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1770.1,
-            ["x"] = 3085.4,
-        },
-        ["Trigger"] = {
             ["y"] = -1770.1,
             ["x"] = 3085.4,
         },
@@ -5744,10 +4884,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -2055.1,
             ["x"] = 3114.1,
         },
-        ["Trigger"] = {
-            ["y"] = -2055.1,
-            ["x"] = 3114.1,
-        },
         ["Range"] = 10,
         ["Fillers"] = { [66225] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "LOOT_RETREAT_ORDERS_FROM_SHELA_WINDBINDER",
@@ -5759,10 +4895,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1986.0,
-            ["x"] = 3027.8,
-        },
-        ["Trigger"] = {
             ["y"] = -1986.0,
             ["x"] = 3027.8,
         },
@@ -5833,10 +4965,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1982.1,
             ["x"] = 2415.9,
         },
-        ["Trigger"] = {
-            ["y"] = -1982.1,
-            ["x"] = 2415.9,
-        },
         ["Range"] = 3,
         ["Fillers"] = { [66242] = { ["1"] = "1", ["2"] = "2", }, [66256] = { ["1"] = "1", ["2"] = "2", }, },
         ["ExtraLineText"] = "DESTROY_FIRST_WAGON",
@@ -5845,10 +4973,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
     { -- Step 195
         ["Waypoint"] = 69968,
         ["TT"] = {
-            ["y"] = -1955.3,
-            ["x"] = 2292.6,
-        },
-        ["Trigger"] = {
             ["y"] = -1955.3,
             ["x"] = 2292.6,
         },
@@ -5863,10 +4987,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1955.3,
-            ["x"] = 2292.6,
-        },
-        ["Trigger"] = {
             ["y"] = -1955.3,
             ["x"] = 2292.6,
         },
@@ -5885,10 +5005,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1886.3,
             ["x"] = 2336.1,
         },
-        ["Trigger"] = {
-            ["y"] = -1886.3,
-            ["x"] = 2336.1,
-        },
         ["Range"] = 3,
         ["Fillers"] = { [66242] = { ["1"] = "1", ["2"] = "2", }, [66256] = { ["1"] = "1", ["2"] = "2", }, },
         ["ExtraLineText"] = "DESTROY_SECOND_WAGON",
@@ -5904,10 +5020,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1701.6,
             ["x"] = 2364.0,
         },
-        ["Trigger"] = {
-            ["y"] = -1701.6,
-            ["x"] = 2364.0,
-        },
         ["Range"] = 3,
         ["Fillers"] = { [66242] = { ["1"] = "1", ["2"] = "2", }, [66256] = { ["1"] = "1", ["2"] = "2", }, },
         ["ExtraLineText"] = "DESTROY_THIRD_WAGON",
@@ -5920,10 +5032,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1944.5,
-            ["x"] = 2142.4,
-        },
-        ["Trigger"] = {
             ["y"] = -1944.5,
             ["x"] = 2142.4,
         },
@@ -5944,10 +5052,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1881.9,
-            ["x"] = 2296.7,
-        },
-        ["Trigger"] = {
             ["y"] = -1881.9,
             ["x"] = 2296.7,
         },
@@ -5984,10 +5088,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1856.0,
             ["x"] = 2239.8,
         },
-        ["Trigger"] = {
-            ["y"] = -1856.0,
-            ["x"] = 2239.8,
-        },
         ["Range"] = 50,
     },
     { -- Step 204
@@ -6015,10 +5115,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -472.1,
-            ["x"] = 2275.3,
-        },
-        ["Trigger"] = {
             ["y"] = -472.1,
             ["x"] = 2275.3,
         },
@@ -6054,10 +5150,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -472.1,
             ["x"] = 2275.3,
         },
-        ["Trigger"] = {
-            ["y"] = -472.1,
-            ["x"] = 2275.3,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
         ["ETA"] = 50,
@@ -6072,10 +5164,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -472.1,
             ["x"] = 2275.3,
         },
-        ["Trigger"] = {
-            ["y"] = -472.1,
-            ["x"] = 2275.3,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -6086,10 +5174,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -628.1,
-            ["x"] = 1289.9,
-        },
-        ["Trigger"] = {
             ["y"] = -628.1,
             ["x"] = 1289.9,
         },
@@ -6123,10 +5207,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -644.1,
             ["x"] = 1119.3,
         },
-        ["Trigger"] = {
-            ["y"] = -652.5,
-            ["x"] = 1148.9,
-        },
         ["Range"] = 135,
     },
     { -- Step 215
@@ -6136,10 +5216,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -641.7,
-            ["x"] = 1054.0,
-        },
-        ["Trigger"] = {
             ["y"] = -641.7,
             ["x"] = 1054.0,
         },
@@ -6174,10 +5250,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -645.2,
             ["x"] = 1010.7,
         },
-        ["Trigger"] = {
-            ["y"] = -645.2,
-            ["x"] = 1010.7,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -6209,10 +5281,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1120.0,
             ["x"] = 1341.2,
         },
-        ["Trigger"] = {
-            ["y"] = -1120.0,
-            ["x"] = 1341.2,
-        },
         ["Range"] = 30,
         ["ExtraLineText"] = "FIND_GREEN_DRAGONS",
     },
@@ -6226,10 +5294,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1120.0,
             ["x"] = 1341.2,
         },
-        ["Trigger"] = {
-            ["y"] = -1120.0,
-            ["x"] = 1341.2,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "SPEAK_KHANAM_MATRA",
         ["Gossip"] = 1,
@@ -6237,10 +5301,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
     { -- Step 223
         ["GetFP"] = 2798,
         ["TT"] = {
-            ["y"] = -1501.9,
-            ["x"] = 727.7,
-        },
-        ["Trigger"] = {
             ["y"] = -1501.9,
             ["x"] = 727.7,
         },
@@ -6283,10 +5343,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1545.8,
             ["x"] = 712.6,
         },
-        ["Trigger"] = {
-            ["y"] = -1545.8,
-            ["x"] = 712.6,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "BUY_DICED_MEAT",
         ["Gossip"] = 1,
@@ -6298,10 +5354,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1584.7,
-            ["x"] = 682.9,
-        },
-        ["Trigger"] = {
             ["y"] = -1584.7,
             ["x"] = 682.9,
         },
@@ -6333,10 +5385,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1878.0,
-            ["x"] = 650.9,
-        },
-        ["Trigger"] = {
             ["y"] = -1878.0,
             ["x"] = 650.9,
         },
@@ -6376,10 +5424,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1584.0,
             ["x"] = 688.6,
         },
-        ["Trigger"] = {
-            ["y"] = -1584.0,
-            ["x"] = 688.6,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -6393,10 +5437,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1545.5,
             ["x"] = 712.6,
         },
-        ["Trigger"] = {
-            ["y"] = -1545.5,
-            ["x"] = 712.6,
-        },
         ["Range"] = 2,
         ["Gossip"] = 2,
     },
@@ -6407,10 +5447,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1502.3,
-            ["x"] = 727.9,
-        },
-        ["Trigger"] = {
             ["y"] = -1502.3,
             ["x"] = 727.9,
         },
@@ -6445,10 +5481,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1646.7,
             ["x"] = 459.0,
         },
-        ["Trigger"] = {
-            ["y"] = -1646.7,
-            ["x"] = 459.0,
-        },
         ["Range"] = 10,
     },
     { -- Step 239
@@ -6458,10 +5490,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1646.7,
-            ["x"] = 459.0,
-        },
-        ["Trigger"] = {
             ["y"] = -1646.7,
             ["x"] = 459.0,
         },
@@ -6492,10 +5520,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1820.8,
-            ["x"] = 379.7,
-        },
-        ["Trigger"] = {
             ["y"] = -1820.8,
             ["x"] = 379.7,
         },
@@ -6539,10 +5563,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1139.0,
             ["x"] = 1344.4,
         },
-        ["Trigger"] = {
-            ["y"] = -1139.0,
-            ["x"] = 1344.4,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "TAKE_DRAGON",
         ["Gossip"] = 1,
@@ -6575,20 +5595,12 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1490.4,
             ["x"] = 4563.0,
         },
-        ["Trigger"] = {
-            ["y"] = -1490.4,
-            ["x"] = 4563.0,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
     { -- Step 250
         ["GetFP"] = 2796,
         ["TT"] = {
-            ["y"] = -1490.4,
-            ["x"] = 4563.0,
-        },
-        ["Trigger"] = {
             ["y"] = -1490.4,
             ["x"] = 4563.0,
         },
@@ -6601,10 +5613,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1390.8,
-            ["x"] = 4535.6,
-        },
-        ["Trigger"] = {
             ["y"] = -1390.8,
             ["x"] = 4535.6,
         },
@@ -6621,10 +5629,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1369.0,
             ["x"] = 4620.1,
         },
-        ["Trigger"] = {
-            ["y"] = -1369.0,
-            ["x"] = 4620.1,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -6638,10 +5642,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1428.4,
             ["x"] = 4604.8,
         },
-        ["Trigger"] = {
-            ["y"] = -1428.4,
-            ["x"] = 4604.8,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -6652,10 +5652,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1621.0,
-            ["x"] = 4551.2,
-        },
-        ["Trigger"] = {
             ["y"] = -1621.0,
             ["x"] = 4551.2,
         },
@@ -6690,10 +5686,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -905.7,
             ["x"] = 4736.2,
         },
-        ["Trigger"] = {
-            ["y"] = -905.7,
-            ["x"] = 4736.2,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -6704,10 +5696,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -813.2,
-            ["x"] = 4873.1,
-        },
-        ["Trigger"] = {
             ["y"] = -813.2,
             ["x"] = 4873.1,
         },
@@ -6724,10 +5712,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -601.7,
             ["x"] = 4839.3,
         },
-        ["Trigger"] = {
-            ["y"] = -601.7,
-            ["x"] = 4839.3,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -6738,10 +5722,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -623.7,
-            ["x"] = 4880.8,
-        },
-        ["Trigger"] = {
             ["y"] = -623.7,
             ["x"] = 4880.8,
         },
@@ -6777,10 +5757,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -592.5,
             ["x"] = 4943.5,
         },
-        ["Trigger"] = {
-            ["y"] = -592.5,
-            ["x"] = 4943.5,
-        },
         ["Range"] = 3,
         ["Fillers"] = { [66333] = { ["1"] = "1", }, [66421] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "DESTROY_FIRST_BALLISTA",
@@ -6793,10 +5769,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -520.5,
-            ["x"] = 4976.7,
-        },
-        ["Trigger"] = {
             ["y"] = -520.5,
             ["x"] = 4976.7,
         },
@@ -6815,10 +5787,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -484.1,
             ["x"] = 4893.4,
         },
-        ["Trigger"] = {
-            ["y"] = -484.1,
-            ["x"] = 4893.4,
-        },
         ["Range"] = 3,
         ["Fillers"] = { [66333] = { ["1"] = "1", }, [66421] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "DESTROY_THIRD_BALLISTA",
@@ -6831,10 +5799,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -590.5,
-            ["x"] = 4948.6,
-        },
-        ["Trigger"] = {
             ["y"] = -590.5,
             ["x"] = 4948.6,
         },
@@ -6872,10 +5836,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -571.7,
             ["x"] = 5003.8,
         },
-        ["Trigger"] = {
-            ["y"] = -571.7,
-            ["x"] = 5003.8,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [66421] = { ["1"] = "1", }, },
     },
@@ -6886,10 +5846,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -475.7,
-            ["x"] = 5067.3,
-        },
-        ["Trigger"] = {
             ["y"] = -475.7,
             ["x"] = 5067.3,
         },
@@ -6906,10 +5862,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
         ["TT"] = {
             ["y"] = -473.0,
             ["x"] = 5138.3,
-        },
-        ["Trigger"] = {
-            ["y"] = -477.3,
-            ["x"] = 5199.2,
         },
         ["Range"] = 2,
         ["Fillers"] = { [66421] = { ["1"] = "1", }, },
@@ -6931,10 +5883,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -345.2,
-            ["x"] = 4939.5,
-        },
-        ["Trigger"] = {
             ["y"] = -345.2,
             ["x"] = 4939.5,
         },
@@ -6960,10 +5908,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -488.6,
             ["x"] = 4896.3,
         },
-        ["Trigger"] = {
-            ["y"] = -488.6,
-            ["x"] = 4896.3,
-        },
         ["Range"] = 250,
         ["ExtraLineText"] = "BONUS_OBJECTIVE",
     },
@@ -6986,10 +5930,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -307.3,
             ["x"] = 4859.6,
         },
-        ["Trigger"] = {
-            ["y"] = -307.3,
-            ["x"] = 4859.6,
-        },
         ["Range"] = 2,
     },
     { -- Step 278
@@ -6999,10 +5939,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -577.0,
-            ["x"] = 5124.6,
-        },
-        ["Trigger"] = {
             ["y"] = -577.0,
             ["x"] = 5124.6,
         },
@@ -7016,10 +5952,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -607.9,
-            ["x"] = 5085.1,
-        },
-        ["Trigger"] = {
             ["y"] = -607.9,
             ["x"] = 5085.1,
         },
@@ -7074,10 +6006,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1147.7,
             ["x"] = 5134.8,
         },
-        ["Trigger"] = {
-            ["y"] = -1147.7,
-            ["x"] = 5134.8,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "CHOOSE_FIRST_HUNT_GIVE_SPEAR_MERITHRA",
         ["Gossip"] = 1,
@@ -7090,10 +6018,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1156.2,
-            ["x"] = 5128.9,
-        },
-        ["Trigger"] = {
             ["y"] = -1156.2,
             ["x"] = 5128.9,
         },
@@ -7111,10 +6035,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             ["y"] = -1151.7,
             ["x"] = 5131.2,
         },
-        ["Trigger"] = {
-            ["y"] = -1151.7,
-            ["x"] = 5131.2,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "CHOOSE_BLOOD_GIVE_BLOOD_MERITHRA",
         ["Gossip"] = 3,
@@ -7126,10 +6046,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1152.8,
-            ["x"] = 5145.7,
-        },
-        ["Trigger"] = {
             ["y"] = -1152.8,
             ["x"] = 5145.7,
         },
@@ -7165,10 +6081,6 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
     { -- Step 291
         ["GetFP"] = 2793,
         ["TT"] = {
-            ["y"] = -2572.0,
-            ["x"] = 1393.9,
-        },
-        ["Trigger"] = {
             ["y"] = -2572.0,
             ["x"] = 1393.9,
         },
@@ -7246,10 +6158,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3518.1,
             ["x"] = 987.4,
         },
-        ["Trigger"] = {
-            ["y"] = -3518.1,
-            ["x"] = 987.4,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "EXAMINE_FLASK",
     },
@@ -7263,10 +6171,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3528.4,
             ["x"] = 985.2,
         },
-        ["Trigger"] = {
-            ["y"] = -3528.4,
-            ["x"] = 985.2,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "EXAMINE_TEAPOT",
     },
@@ -7277,10 +6181,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3568.3,
-            ["x"] = 1004.5,
-        },
-        ["Trigger"] = {
             ["y"] = -3568.3,
             ["x"] = 1004.5,
         },
@@ -7324,10 +6224,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3529.9,
             ["x"] = 1007.5,
         },
-        ["Trigger"] = {
-            ["y"] = -3529.9,
-            ["x"] = 1007.5,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -7338,10 +6234,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3533.4,
-            ["x"] = 1009.2,
-        },
-        ["Trigger"] = {
             ["y"] = -3533.4,
             ["x"] = 1009.2,
         },
@@ -7358,10 +6250,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3580.4,
             ["x"] = 1074.5,
         },
-        ["Trigger"] = {
-            ["y"] = -3580.4,
-            ["x"] = 1074.5,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "DISPELL_TOY_BOAT",
     },
@@ -7372,10 +6260,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3635.9,
-            ["x"] = 1158.2,
-        },
-        ["Trigger"] = {
             ["y"] = -3635.9,
             ["x"] = 1158.2,
         },
@@ -7437,10 +6321,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3811.4,
             ["x"] = 480.3,
         },
-        ["Trigger"] = {
-            ["y"] = -3811.4,
-            ["x"] = 480.3,
-        },
         ["Range"] = 75,
         ["Fillers"] = { [67035] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "ARCANE_DEVICES_CAN_BE_SEEN_ON_MINIMAP",
@@ -7452,10 +6332,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3811.4,
-            ["x"] = 480.3,
-        },
-        ["Trigger"] = {
             ["y"] = -3811.4,
             ["x"] = 480.3,
         },
@@ -7498,20 +6374,12 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3746.9,
             ["x"] = 450.6,
         },
-        ["Trigger"] = {
-            ["y"] = -3746.9,
-            ["x"] = 450.6,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "SHOOT_DRAGONS_USING_ARCANE_BLASTER",
     },
     { -- Step 25
         ["GetFP"] = 2774,
         ["TT"] = {
-            ["y"] = -3798.6,
-            ["x"] = 408.3,
-        },
-        ["Trigger"] = {
             ["y"] = -3798.6,
             ["x"] = 408.3,
         },
@@ -7555,10 +6423,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3742.5,
             ["x"] = 486.3,
         },
-        ["Trigger"] = {
-            ["y"] = -3742.5,
-            ["x"] = 486.3,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -7572,10 +6436,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3750.0,
             ["x"] = 490.6,
         },
-        ["Trigger"] = {
-            ["y"] = -3750.0,
-            ["x"] = 490.6,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "LOOT_BAG",
     },
@@ -7586,10 +6446,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3692.4,
-            ["x"] = 272.6,
-        },
-        ["Trigger"] = {
             ["y"] = -3692.4,
             ["x"] = 272.6,
         },
@@ -7620,10 +6476,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3744.9,
-            ["x"] = 462.1,
-        },
-        ["Trigger"] = {
             ["y"] = -3744.9,
             ["x"] = 462.1,
         },
@@ -7671,10 +6523,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4657.5,
             ["x"] = 337.0,
         },
-        ["Trigger"] = {
-            ["y"] = -4657.5,
-            ["x"] = 337.0,
-        },
         ["Range"] = 225,
         ["Fillers"] = { [65914] = { ["1"] = "1", ["2"] = "2", }, },
     },
@@ -7686,10 +6534,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -4657.5,
-            ["x"] = 337.0,
-        },
-        ["Trigger"] = {
             ["y"] = -4657.5,
             ["x"] = 337.0,
         },
@@ -7732,10 +6576,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4858.6,
             ["x"] = 548.7,
         },
-        ["Trigger"] = {
-            ["y"] = -4858.6,
-            ["x"] = 548.7,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "BUILD_BOAT",
     },
@@ -7767,10 +6607,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4862.7,
             ["x"] = 573.9,
         },
-        ["Trigger"] = {
-            ["y"] = -4862.7,
-            ["x"] = 573.9,
-        },
         ["Range"] = 75,
         ["ExtraLineText"] = "FISHES_CAN_BE_SEEN_ON_MINIMAP",
     },
@@ -7781,10 +6617,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -4859.6,
-            ["x"] = 542.1,
-        },
-        ["Trigger"] = {
             ["y"] = -4859.6,
             ["x"] = 542.1,
         },
@@ -7827,10 +6659,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -5101.0,
             ["x"] = 427.5,
         },
-        ["Trigger"] = {
-            ["y"] = -5101.0,
-            ["x"] = 427.5,
-        },
         ["Range"] = 75,
         ["Fillers"] = { [65928] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "FREEZING_WATERS_CAN_BE_SEEN_ON_MINIMAP",
@@ -7842,10 +6670,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -5101.0,
-            ["x"] = 427.5,
-        },
-        ["Trigger"] = {
             ["y"] = -5101.0,
             ["x"] = 427.5,
         },
@@ -7897,10 +6721,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4938.8,
             ["x"] = 1015.5,
         },
-        ["Trigger"] = {
-            ["y"] = -4938.8,
-            ["x"] = 1015.5,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "USE_CRYSTAL_PYLON",
     },
@@ -7941,10 +6761,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -5216.8,
             ["x"] = 1063.4,
         },
-        ["Trigger"] = {
-            ["y"] = -5216.8,
-            ["x"] = 1063.4,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "SEARCH_BAG",
         ["Button"] = {
@@ -7958,10 +6774,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -5300.3,
-            ["x"] = 1183.5,
-        },
-        ["Trigger"] = {
             ["y"] = -5300.3,
             ["x"] = 1183.5,
         },
@@ -7981,10 +6793,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -5447.0,
             ["x"] = 1009.7,
         },
-        ["Trigger"] = {
-            ["y"] = -5447.0,
-            ["x"] = 1009.7,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [65702] = { ["1"] = "1", }, },
         ["Button"] = {
@@ -7998,10 +6806,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -5348.8,
-            ["x"] = 1128.9,
-        },
-        ["Trigger"] = {
             ["y"] = -5348.8,
             ["x"] = 1128.9,
         },
@@ -8044,10 +6848,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -5302.3,
             ["x"] = 1185.4,
         },
-        ["Trigger"] = {
-            ["y"] = -5302.3,
-            ["x"] = 1185.4,
-        },
         ["Range"] = 3,
         ["ExtraLineText"] = "SEARCH_BAG",
         ["Button"] = {
@@ -8061,10 +6861,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -5300.3,
-            ["x"] = 1183.5,
-        },
-        ["Trigger"] = {
             ["y"] = -5300.3,
             ["x"] = 1183.5,
         },
@@ -8112,10 +6908,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -5404.7,
             ["x"] = 1150.2,
         },
-        ["Trigger"] = {
-            ["y"] = -5404.7,
-            ["x"] = 1150.2,
-        },
         ["Range"] = 75,
         ["Fillers"] = { [65752] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "UNSTABLE_ARCANE_CAN_BE_SEEN_ON_MINIMAP",
@@ -8127,10 +6919,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -5404.7,
-            ["x"] = 1150.2,
-        },
-        ["Trigger"] = {
             ["y"] = -5404.7,
             ["x"] = 1150.2,
         },
@@ -8176,10 +6964,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -5513.3,
             ["x"] = 1199.5,
         },
-        ["Trigger"] = {
-            ["y"] = -5513.3,
-            ["x"] = 1199.5,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -8216,19 +7000,11 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -5341.8,
             ["x"] = 1457.9,
         },
-        ["Trigger"] = {
-            ["y"] = -5341.8,
-            ["x"] = 1457.9,
-        },
         ["Range"] = 2,
     },
     { -- Step 83
         ["UseFlightPath"] = 65855,
         ["TT"] = {
-            ["y"] = -5341.8,
-            ["x"] = 1457.9,
-        },
-        ["Trigger"] = {
             ["y"] = -5341.8,
             ["x"] = 1457.9,
         },
@@ -8274,10 +7050,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3847.6,
             ["x"] = 304.0,
         },
-        ["Trigger"] = {
-            ["y"] = -3847.6,
-            ["x"] = 304.0,
-        },
         ["Range"] = 2,
     },
     { -- Step 88
@@ -8308,10 +7080,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3830.9,
             ["x"] = 292.3,
         },
-        ["Trigger"] = {
-            ["y"] = -3830.9,
-            ["x"] = 292.3,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -8322,10 +7090,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3858.4,
-            ["x"] = 363.3,
-        },
-        ["Trigger"] = {
             ["y"] = -3858.4,
             ["x"] = 363.3,
         },
@@ -8343,10 +7107,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3901.1,
             ["x"] = 482.6,
         },
-        ["Trigger"] = {
-            ["y"] = -3901.1,
-            ["x"] = 482.6,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "INSIDE_HOUSE",
         ["Gossip"] = 1,
@@ -8358,10 +7118,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3729.9,
-            ["x"] = 483.5,
-        },
-        ["Trigger"] = {
             ["y"] = -3729.9,
             ["x"] = 483.5,
         },
@@ -8379,10 +7135,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3729.1,
             ["x"] = 403.5,
         },
-        ["Trigger"] = {
-            ["y"] = -3729.1,
-            ["x"] = 403.5,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -8396,10 +7148,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3696.1,
             ["x"] = 448.5,
         },
-        ["Trigger"] = {
-            ["y"] = -3696.1,
-            ["x"] = 448.5,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -8410,10 +7158,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3746.6,
-            ["x"] = 515.6,
-        },
-        ["Trigger"] = {
             ["y"] = -3746.6,
             ["x"] = 515.6,
         },
@@ -8454,10 +7198,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3611.1,
-            ["x"] = 1656.2,
-        },
-        ["Trigger"] = {
             ["y"] = -3611.1,
             ["x"] = 1656.2,
         },
@@ -8512,10 +7252,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3443.0,
             ["x"] = 1619.8,
         },
-        ["Trigger"] = {
-            ["y"] = -3443.0,
-            ["x"] = 1619.8,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [65866] = { ["1"] = "1", }, [65868] = { ["1"] = "1", }, },
     },
@@ -8526,10 +7262,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3291.0,
-            ["x"] = 1689.4,
-        },
-        ["Trigger"] = {
             ["y"] = -3291.0,
             ["x"] = 1689.4,
         },
@@ -8547,10 +7279,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3332.5,
             ["x"] = 1797.9,
         },
-        ["Trigger"] = {
-            ["y"] = -3332.5,
-            ["x"] = 1797.9,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [65866] = { ["1"] = "1", }, [65868] = { ["1"] = "1", }, },
     },
@@ -8561,10 +7289,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3361.0,
-            ["x"] = 1649.7,
-        },
-        ["Trigger"] = {
             ["y"] = -3361.0,
             ["x"] = 1649.7,
         },
@@ -8581,19 +7305,11 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3361.0,
             ["x"] = 1649.7,
         },
-        ["Trigger"] = {
-            ["y"] = -3361.0,
-            ["x"] = 1649.7,
-        },
         ["Range"] = 2,
     },
     { -- Step 110
         ["Waypoint"] = 67173,
         ["TT"] = {
-            ["y"] = -3283.1,
-            ["x"] = 1485.0,
-        },
-        ["Trigger"] = {
             ["y"] = -3283.1,
             ["x"] = 1485.0,
         },
@@ -8606,10 +7322,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3283.1,
-            ["x"] = 1485.0,
-        },
-        ["Trigger"] = {
             ["y"] = -3283.1,
             ["x"] = 1485.0,
         },
@@ -8690,10 +7402,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3135.6,
             ["x"] = 1805.5,
         },
-        ["Trigger"] = {
-            ["y"] = -3135.6,
-            ["x"] = 1805.5,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [65872] = { ["1"] = "1", }, [65871] = { ["1"] = "1", ["2"] = "2", }, },
     },
@@ -8704,10 +7412,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3071.4,
-            ["x"] = 1843.7,
-        },
-        ["Trigger"] = {
             ["y"] = -3071.4,
             ["x"] = 1843.7,
         },
@@ -8724,10 +7428,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -2869.1,
             ["x"] = 1792.7,
         },
-        ["Trigger"] = {
-            ["y"] = -2869.1,
-            ["x"] = 1792.7,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [65872] = { ["1"] = "1", }, [65871] = { ["1"] = "1", ["2"] = "2", }, },
     },
@@ -8738,10 +7438,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -2932.4,
-            ["x"] = 1723.8,
-        },
-        ["Trigger"] = {
             ["y"] = -2932.4,
             ["x"] = 1723.8,
         },
@@ -8759,10 +7455,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -2956.8,
             ["x"] = 1778.7,
         },
-        ["Trigger"] = {
-            ["y"] = -2956.8,
-            ["x"] = 1778.7,
-        },
         ["Range"] = 75,
         ["Fillers"] = { [65872] = { ["1"] = "1", }, },
     },
@@ -8773,10 +7465,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -2956.8,
-            ["x"] = 1778.7,
-        },
-        ["Trigger"] = {
             ["y"] = -2956.8,
             ["x"] = 1778.7,
         },
@@ -8864,10 +7552,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3448.7,
             ["x"] = 2371.0,
         },
-        ["Trigger"] = {
-            ["y"] = -3448.7,
-            ["x"] = 2371.0,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -8878,10 +7562,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3301.0,
-            ["x"] = 2385.0,
-        },
-        ["Trigger"] = {
             ["y"] = -3301.0,
             ["x"] = 2385.0,
         },
@@ -8940,10 +7620,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -2653.1,
             ["x"] = 3409.1,
         },
-        ["Trigger"] = {
-            ["y"] = -2653.1,
-            ["x"] = 3409.1,
-        },
         ["Range"] = 2,
     },
     { -- Step 141
@@ -8993,10 +7669,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -2835.6,
             ["x"] = 4046.0,
         },
-        ["Trigger"] = {
-            ["y"] = -2835.6,
-            ["x"] = 4046.0,
-        },
         ["Range"] = 25,
     },
     { -- Step 146
@@ -9006,10 +7678,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -2925.6,
-            ["x"] = 3793.3,
-        },
-        ["Trigger"] = {
             ["y"] = -2925.6,
             ["x"] = 3793.3,
         },
@@ -9024,10 +7692,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -2911.1,
-            ["x"] = 3695.0,
-        },
-        ["Trigger"] = {
             ["y"] = -2911.1,
             ["x"] = 3695.0,
         },
@@ -9052,10 +7716,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -2835.3,
             ["x"] = 3171.6,
         },
-        ["Trigger"] = {
-            ["y"] = -2835.3,
-            ["x"] = 3171.6,
-        },
         ["Range"] = 200,
         ["Fillers"] = { [66838] = { ["1"] = "1", }, },
     },
@@ -9066,10 +7726,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -2835.3,
-            ["x"] = 3171.6,
-        },
-        ["Trigger"] = {
             ["y"] = -2835.3,
             ["x"] = 3171.6,
         },
@@ -9131,10 +7787,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -2639.0,
             ["x"] = 3450.0,
         },
-        ["Trigger"] = {
-            ["y"] = -2639.0,
-            ["x"] = 3450.0,
-        },
         ["Range"] = 180,
         ["ExtraLineText"] = "WATERFALLS_CAN_BE_SEEN_ON_YOUR_MINIMAP",
         ["Button"] = {
@@ -9157,10 +7809,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -2977.3,
-            ["x"] = 3577.5,
-        },
-        ["Trigger"] = {
             ["y"] = -2977.3,
             ["x"] = 3577.5,
         },
@@ -9195,10 +7843,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -2823.1,
             ["x"] = 3613.0,
         },
-        ["Trigger"] = {
-            ["y"] = -2823.1,
-            ["x"] = 3613.0,
-        },
         ["Range"] = 2,
     },
     { -- Step 162
@@ -9226,10 +7870,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -2700.1,
-            ["x"] = 3453.3,
-        },
-        ["Trigger"] = {
             ["y"] = -2700.1,
             ["x"] = 3453.3,
         },
@@ -9266,10 +7906,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3611.6,
             ["x"] = 3439.0,
         },
-        ["Trigger"] = {
-            ["y"] = -3611.6,
-            ["x"] = 3439.0,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [65841] = { ["1"] = "1", }, },
         ["Gossip"] = 1,
@@ -9284,10 +7920,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3448.8,
             ["x"] = 3486.6,
         },
-        ["Trigger"] = {
-            ["y"] = -3448.8,
-            ["x"] = 3486.6,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [65841] = { ["1"] = "1", }, },
         ["Gossip"] = 1,
@@ -9299,10 +7931,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3612.8,
-            ["x"] = 3578.9,
-        },
-        ["Trigger"] = {
             ["y"] = -3612.8,
             ["x"] = 3578.9,
         },
@@ -9360,10 +7988,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3693.6,
             ["x"] = 3548.9,
         },
-        ["Trigger"] = {
-            ["y"] = -3693.6,
-            ["x"] = 3548.9,
-        },
         ["Range"] = 125,
         ["Fillers"] = { [65841] = { ["1"] = "1", }, [65844] = { ["1"] = "1", ["2"] = "2", }, [65846] = { ["1"] = "1", }, },
         ["Button"] = {
@@ -9381,10 +8005,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3693.6,
             ["x"] = 3548.9,
         },
-        ["Trigger"] = {
-            ["y"] = -3693.6,
-            ["x"] = 3548.9,
-        },
         ["Range"] = 125,
         ["Fillers"] = { [65846] = { ["1"] = "1", }, [65841] = { ["1"] = "1", }, },
     },
@@ -9398,10 +8018,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3693.6,
             ["x"] = 3548.9,
         },
-        ["Trigger"] = {
-            ["y"] = -3693.6,
-            ["x"] = 3548.9,
-        },
         ["Range"] = 125,
         ["Fillers"] = { [65841] = { ["1"] = "1", }, },
     },
@@ -9412,10 +8028,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3693.6,
-            ["x"] = 3548.9,
-        },
-        ["Trigger"] = {
             ["y"] = -3693.6,
             ["x"] = 3548.9,
         },
@@ -9468,10 +8080,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3628.8,
             ["x"] = 3670.3,
         },
-        ["Trigger"] = {
-            ["y"] = -3628.8,
-            ["x"] = 3670.3,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "SPEAK_KALECGOS",
         ["Gossip"] = 1,
@@ -9483,10 +8091,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3628.8,
-            ["x"] = 3670.3,
-        },
-        ["Trigger"] = {
             ["y"] = -3628.8,
             ["x"] = 3670.3,
         },
@@ -9503,10 +8107,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3694.0,
             ["x"] = 3792.0,
         },
-        ["Trigger"] = {
-            ["y"] = -3694.0,
-            ["x"] = 3792.0,
-        },
         ["Range"] = 50,
         ["ExtraLineText"] = "TAKE_OUT_3_BRACKENHIDE_PUTRIFIERS",
     },
@@ -9517,10 +8117,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3694.0,
-            ["x"] = 3792.0,
-        },
-        ["Trigger"] = {
             ["y"] = -3694.0,
             ["x"] = 3792.0,
         },
@@ -9555,10 +8151,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3794.1,
             ["x"] = 3820.8,
         },
-        ["Trigger"] = {
-            ["y"] = -3794.1,
-            ["x"] = 3820.8,
-        },
         ["Range"] = 2,
     },
     { -- Step 189
@@ -9571,19 +8163,11 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3780.3,
             ["x"] = 3805.6,
         },
-        ["Trigger"] = {
-            ["y"] = -3780.3,
-            ["x"] = 3805.6,
-        },
         ["Range"] = 20,
     },
     { -- Step 190
         ["Waypoint"] = 65847,
         ["TT"] = {
-            ["y"] = -3736.9,
-            ["x"] = 3852.6,
-        },
-        ["Trigger"] = {
             ["y"] = -3736.9,
             ["x"] = 3852.6,
         },
@@ -9615,10 +8199,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3957.0,
-            ["x"] = 3615.6,
-        },
-        ["Trigger"] = {
             ["y"] = -3957.0,
             ["x"] = 3615.6,
         },
@@ -9671,10 +8251,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4456.5,
             ["x"] = 4085.9,
         },
-        ["Trigger"] = {
-            ["y"] = -4456.5,
-            ["x"] = 4085.9,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "TALK_DRAKE_SCHOLAR",
         ["RaidIcon"] = 196544,
@@ -9686,10 +8262,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -4448.8,
-            ["x"] = 4059.1,
-        },
-        ["Trigger"] = {
             ["y"] = -4448.8,
             ["x"] = 4059.1,
         },
@@ -9707,10 +8279,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4470.5,
             ["x"] = 4057.3,
         },
-        ["Trigger"] = {
-            ["y"] = -4470.5,
-            ["x"] = 4057.3,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "TALK_MOUNT_SUPPLIER",
         ["RaidIcon"] = 186462,
@@ -9718,10 +8286,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
     { -- Step 201
         ["GetFP"] = 2775,
         ["TT"] = {
-            ["y"] = -4466.3,
-            ["x"] = 4047.3,
-        },
-        ["Trigger"] = {
             ["y"] = -4466.3,
             ["x"] = 4047.3,
         },
@@ -9734,10 +8298,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -4452.3,
-            ["x"] = 4025.8,
-        },
-        ["Trigger"] = {
             ["y"] = -4452.3,
             ["x"] = 4025.8,
         },
@@ -9755,10 +8315,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4518.8,
             ["x"] = 3983.7,
         },
-        ["Trigger"] = {
-            ["y"] = -4518.8,
-            ["x"] = 3983.7,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "CLICK_HANDCRAFTED_BOAT",
         ["TrigText"] = "2/4",
@@ -9770,10 +8326,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -4561.8,
-            ["x"] = 3979.5,
-        },
-        ["Trigger"] = {
             ["y"] = -4561.8,
             ["x"] = 3979.5,
         },
@@ -9791,10 +8343,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4579.6,
             ["x"] = 4137.8,
         },
-        ["Trigger"] = {
-            ["y"] = -4579.6,
-            ["x"] = 4137.8,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "CLICK_ORNAMENTED_SHIELD",
         ["TrigText"] = "3/4",
@@ -9802,10 +8350,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
     { -- Step 206
         ["Waypoint"] = 66213,
         ["TT"] = {
-            ["y"] = -4508.3,
-            ["x"] = 4097.8,
-        },
-        ["Trigger"] = {
             ["y"] = -4508.3,
             ["x"] = 4097.8,
         },
@@ -9817,10 +8361,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             66213,
         },
         ["TT"] = {
-            ["y"] = -4512.5,
-            ["x"] = 4141.8,
-        },
-        ["Trigger"] = {
             ["y"] = -4512.5,
             ["x"] = 4141.8,
         },
@@ -9837,10 +8377,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4508.4,
             ["x"] = 4142.2,
         },
-        ["Trigger"] = {
-            ["y"] = -4508.4,
-            ["x"] = 4142.2,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -9849,10 +8385,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             66213,
         },
         ["TT"] = {
-            ["y"] = -4512.5,
-            ["x"] = 4141.8,
-        },
-        ["Trigger"] = {
             ["y"] = -4512.5,
             ["x"] = 4141.8,
         },
@@ -9868,20 +8400,12 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4516.6,
             ["x"] = 4134.3,
         },
-        ["Trigger"] = {
-            ["y"] = -4516.6,
-            ["x"] = 4134.3,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "CLICK_STONE_SCULPTURE",
     },
     { -- Step 211
         ["Waypoint"] = 66213,
         ["TT"] = {
-            ["y"] = -4508.3,
-            ["x"] = 4097.8,
-        },
-        ["Trigger"] = {
             ["y"] = -4508.3,
             ["x"] = 4097.8,
         },
@@ -9895,10 +8419,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -4453.5,
-            ["x"] = 4065.9,
-        },
-        ["Trigger"] = {
             ["y"] = -4453.5,
             ["x"] = 4065.9,
         },
@@ -9950,10 +8470,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4329.0,
             ["x"] = 4340.0,
         },
-        ["Trigger"] = {
-            ["y"] = -4329.0,
-            ["x"] = 4340.0,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -9982,10 +8498,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -4518.6,
-            ["x"] = 3985.6,
-        },
-        ["Trigger"] = {
             ["y"] = -4518.6,
             ["x"] = 3985.6,
         },
@@ -10019,10 +8531,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -4200.3,
-            ["x"] = 4705.8,
-        },
-        ["Trigger"] = {
             ["y"] = -4200.3,
             ["x"] = 4705.8,
         },
@@ -10074,10 +8582,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4039.3,
             ["x"] = 4380.6,
         },
-        ["Trigger"] = {
-            ["y"] = -4039.3,
-            ["x"] = 4380.6,
-        },
         ["Range"] = 56,
         ["Fillers"] = { [66154] = { ["1"] = "1", }, [66164] = { ["1"] = "1", }, },
     },
@@ -10091,10 +8595,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4066.5,
             ["x"] = 4390.5,
         },
-        ["Trigger"] = {
-            ["y"] = -4066.5,
-            ["x"] = 4390.5,
-        },
         ["Range"] = 68,
         ["Fillers"] = { [66154] = { ["1"] = "1", }, },
     },
@@ -10105,10 +8605,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -4070.7,
-            ["x"] = 4376.8,
-        },
-        ["Trigger"] = {
             ["y"] = -4070.7,
             ["x"] = 4376.8,
         },
@@ -10160,10 +8656,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4143.7,
             ["x"] = 4662.2,
         },
-        ["Trigger"] = {
-            ["y"] = -4143.7,
-            ["x"] = 4662.2,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "ACTIVATE_SCANNER",
     },
@@ -10204,10 +8696,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4012.6,
             ["x"] = 4473.7,
         },
-        ["Trigger"] = {
-            ["y"] = -4012.6,
-            ["x"] = 4473.7,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [66232] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "FIRST_CLUE",
@@ -10219,10 +8707,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3925.5,
-            ["x"] = 4404.2,
-        },
-        ["Trigger"] = {
             ["y"] = -3925.5,
             ["x"] = 4404.2,
         },
@@ -10240,10 +8724,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3806.4,
             ["x"] = 4410.2,
         },
-        ["Trigger"] = {
-            ["y"] = -3806.4,
-            ["x"] = 4410.2,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [66232] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "THIRD_CLUE",
@@ -10258,10 +8738,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3919.4,
             ["x"] = 4338.2,
         },
-        ["Trigger"] = {
-            ["y"] = -3919.4,
-            ["x"] = 4338.2,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [66232] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "FOURTH_CLUE",
@@ -10273,10 +8749,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3944.9,
-            ["x"] = 4415.8,
-        },
-        ["Trigger"] = {
             ["y"] = -3944.9,
             ["x"] = 4415.8,
         },
@@ -10307,10 +8779,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3914.3,
-            ["x"] = 4277.6,
-        },
-        ["Trigger"] = {
             ["y"] = -3914.3,
             ["x"] = 4277.6,
         },
@@ -10363,10 +8831,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4522.6,
             ["x"] = 4051.6,
         },
-        ["Trigger"] = {
-            ["y"] = -4522.6,
-            ["x"] = 4051.6,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -10377,10 +8841,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -4568.8,
-            ["x"] = 4060.1,
-        },
-        ["Trigger"] = {
             ["y"] = -4568.8,
             ["x"] = 4060.1,
         },
@@ -10415,10 +8875,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -4586.7,
             ["x"] = 3738.6,
         },
-        ["Trigger"] = {
-            ["y"] = -4586.7,
-            ["x"] = 3738.6,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -10447,10 +8903,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -4507.7,
-            ["x"] = 3668.9,
-        },
-        ["Trigger"] = {
             ["y"] = -4507.7,
             ["x"] = 3668.9,
         },
@@ -10506,10 +8958,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -5500.8,
             ["x"] = 1195.9,
         },
-        ["Trigger"] = {
-            ["y"] = -5500.8,
-            ["x"] = 1195.9,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -10537,10 +8985,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -5390.8,
             ["x"] = 1327.9,
         },
-        ["Trigger"] = {
-            ["y"] = -5390.8,
-            ["x"] = 1327.9,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "GO_ON_TOP_OF_ARCHIVES_AND_DRAGONFLY_CAMP_NOWHERE",
         ["SpellButton"] = {
@@ -10559,10 +9003,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
     { -- Step 268
         ["GetFP"] = 2784,
         ["TT"] = {
-            ["y"] = -5184.8,
-            ["x"] = -1414.0,
-        },
-        ["Trigger"] = {
             ["y"] = -5184.8,
             ["x"] = -1414.0,
         },
@@ -10605,10 +9045,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -5247.8,
             ["x"] = -1680.9,
         },
-        ["Trigger"] = {
-            ["y"] = -5247.8,
-            ["x"] = -1680.9,
-        },
         ["Range"] = 125,
         ["Fillers"] = { [66352] = { ["1"] = "1", }, },
         ["Button"] = {
@@ -10622,10 +9058,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -5249.1,
-            ["x"] = -1672.5,
-        },
-        ["Trigger"] = {
             ["y"] = -5249.1,
             ["x"] = -1672.5,
         },
@@ -10689,10 +9121,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -5333.8,
             ["x"] = -1646.0,
         },
-        ["Trigger"] = {
-            ["y"] = -5333.8,
-            ["x"] = -1646.0,
-        },
         ["Range"] = 50,
         ["ExtraLineText"] = "CLUES_CAN_BE_SEEN_ON_YOUR_MINIMAP",
     },
@@ -10721,10 +9149,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -5374.0,
-            ["x"] = -1613.0,
-        },
-        ["Trigger"] = {
             ["y"] = -5374.0,
             ["x"] = -1613.0,
         },
@@ -10781,10 +9205,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -5397.1,
             ["x"] = -1917.5,
         },
-        ["Trigger"] = {
-            ["y"] = -5397.1,
-            ["x"] = -1917.5,
-        },
         ["Range"] = 2,
     },
     { -- Step 288
@@ -10812,10 +9232,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -5311.1,
-            ["x"] = -1971.0,
-        },
-        ["Trigger"] = {
             ["y"] = -5311.1,
             ["x"] = -1971.0,
         },
@@ -10870,10 +9286,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3810.6,
             ["x"] = -958.5,
         },
-        ["Trigger"] = {
-            ["y"] = -3810.6,
-            ["x"] = -958.5,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "PULL_OUT_SPEAR",
     },
@@ -10884,10 +9296,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3815.5,
-            ["x"] = -951.2,
-        },
-        ["Trigger"] = {
             ["y"] = -3815.5,
             ["x"] = -951.2,
         },
@@ -10904,10 +9312,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3811.1,
             ["x"] = -957.6,
         },
-        ["Trigger"] = {
-            ["y"] = -3811.1,
-            ["x"] = -957.6,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "BUILD_CAMPFIRE",
     },
@@ -10918,10 +9322,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3811.1,
-            ["x"] = -957.6,
-        },
-        ["Trigger"] = {
             ["y"] = -3811.1,
             ["x"] = -957.6,
         },
@@ -10957,10 +9357,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3978.1,
             ["x"] = -860.1,
         },
-        ["Trigger"] = {
-            ["y"] = -3978.1,
-            ["x"] = -860.1,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "COMPLETES_WHEN_YOU_GET_CLOSE",
     },
@@ -10992,10 +9388,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3998.5,
             ["x"] = -823.2,
         },
-        ["Trigger"] = {
-            ["y"] = -3998.5,
-            ["x"] = -823.2,
-        },
         ["Range"] = 75,
         ["Fillers"] = { [66718] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "SHAMANS_CAN_BE_SEEN_ON_YOUR_MINIMAP",
@@ -11007,10 +9399,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -4200.2,
-            ["x"] = -804.1,
-        },
-        ["Trigger"] = {
             ["y"] = -4200.2,
             ["x"] = -804.1,
         },
@@ -11026,10 +9414,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3998.5,
-            ["x"] = -823.2,
-        },
-        ["Trigger"] = {
             ["y"] = -3998.5,
             ["x"] = -823.2,
         },
@@ -11063,10 +9447,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3972.1,
             ["x"] = -848.0,
         },
-        ["Trigger"] = {
-            ["y"] = -3972.1,
-            ["x"] = -848.0,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "PLACE_TOTEMS",
     },
@@ -11077,10 +9457,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3869.6,
-            ["x"] = -872.2,
-        },
-        ["Trigger"] = {
             ["y"] = -3869.6,
             ["x"] = -872.2,
         },
@@ -11124,10 +9500,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -2796.5,
             ["x"] = -1648.7,
         },
-        ["Trigger"] = {
-            ["y"] = -2796.5,
-            ["x"] = -1648.7,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "COMPLETES_WHEN_YOU_ARE_CLOSE_BUBBLE",
     },
@@ -11164,10 +9536,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -2769.8,
             ["x"] = -1692.0,
         },
-        ["Trigger"] = {
-            ["y"] = -2769.8,
-            ["x"] = -1692.0,
-        },
         ["Range"] = 2,
     },
     { -- Step 319
@@ -11177,10 +9545,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -2784.6,
-            ["x"] = -1699.0,
-        },
-        ["Trigger"] = {
             ["y"] = -2784.6,
             ["x"] = -1699.0,
         },
@@ -11202,10 +9566,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3335.4,
             ["x"] = -2135.6,
         },
-        ["Trigger"] = {
-            ["y"] = -3335.4,
-            ["x"] = -2135.6,
-        },
         ["Range"] = 25,
     },
     { -- Step 322
@@ -11215,10 +9575,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3335.4,
-            ["x"] = -2135.6,
-        },
-        ["Trigger"] = {
             ["y"] = -3335.4,
             ["x"] = -2135.6,
         },
@@ -11271,10 +9627,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3727.6,
             ["x"] = -2441.1,
         },
-        ["Trigger"] = {
-            ["y"] = -3727.6,
-            ["x"] = -2441.1,
-        },
         ["Range"] = 2,
         ["Fillers"] = { [65944] = { ["1"] = "1", }, [65943] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "LAVA_ORBS_CAN_BE_SEEN_ON_MINIMAP_KILL_AND_LOOT_RUVIN_STONEGRINDER",
@@ -11289,10 +9641,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3624.7,
             ["x"] = -2397.1,
         },
-        ["Trigger"] = {
-            ["y"] = -3624.7,
-            ["x"] = -2397.1,
-        },
         ["Range"] = 200,
         ["Fillers"] = { [65943] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "LAVA_ORBS_CAN_BE_SEEN_ON_MINIMAP",
@@ -11304,10 +9652,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3624.7,
-            ["x"] = -2397.1,
-        },
-        ["Trigger"] = {
             ["y"] = -3624.7,
             ["x"] = -2397.1,
         },
@@ -11368,10 +9712,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3685.6,
             ["x"] = -2724.1,
         },
-        ["Trigger"] = {
-            ["y"] = -3685.6,
-            ["x"] = -2724.1,
-        },
         ["Range"] = 75,
         ["Fillers"] = { [65958] = { ["1"] = "1", }, },
         ["ExtraLineText"] = "KIRIN_TOR_MAGES_CAN_BE_SEEN_ON_MINIMAP",
@@ -11386,10 +9726,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3685.6,
-            ["x"] = -2724.1,
-        },
-        ["Trigger"] = {
             ["y"] = -3685.6,
             ["x"] = -2724.1,
         },
@@ -11435,10 +9771,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3758.6,
             ["x"] = -2952.0,
         },
-        ["Trigger"] = {
-            ["y"] = -3758.6,
-            ["x"] = -2952.0,
-        },
         ["Range"] = 2,
         ["ExtraLineText"] = "LAVA_BEACONS_CAN_BE_SEEN_ON_MINIMAP",
     },
@@ -11467,10 +9799,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3577.0,
-            ["x"] = -3117.4,
-        },
-        ["Trigger"] = {
             ["y"] = -3577.0,
             ["x"] = -3117.4,
         },
@@ -11504,10 +9832,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3281.0,
             ["x"] = -3002.0,
         },
-        ["Trigger"] = {
-            ["y"] = -3281.0,
-            ["x"] = -3002.0,
-        },
         ["Range"] = 3,
         ["ExtraLineText"] = "ENTER_DISC",
     },
@@ -11518,10 +9842,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3281.0,
-            ["x"] = -3002.0,
-        },
-        ["Trigger"] = {
             ["y"] = -3281.0,
             ["x"] = -3002.0,
         },
@@ -11538,10 +9858,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -3281.0,
             ["x"] = -3002.0,
         },
-        ["Trigger"] = {
-            ["y"] = -3281.0,
-            ["x"] = -3002.0,
-        },
         ["Range"] = 20,
         ["ExtraLineText"] = "DISPELL_STORMS",
     },
@@ -11552,10 +9868,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -3281.0,
-            ["x"] = -3002.0,
-        },
-        ["Trigger"] = {
             ["y"] = -3281.0,
             ["x"] = -3002.0,
         },
@@ -11601,10 +9913,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -5504.3,
             ["x"] = 1195.4,
         },
-        ["Trigger"] = {
-            ["y"] = -5504.3,
-            ["x"] = 1195.4,
-        },
         ["Range"] = 2,
         ["Gossip"] = 1,
     },
@@ -11632,10 +9940,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             ["y"] = -5342.1,
             ["x"] = 1457.9,
         },
-        ["Trigger"] = {
-            ["y"] = -5342.1,
-            ["x"] = 1457.9,
-        },
         ["Range"] = 2,
         ["Name"] = "Pinewood Post, Ohn'ahran Plains",
         ["NodeID"] = 2798,
@@ -11648,10 +9952,6 @@ APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
             },
         },
         ["TT"] = {
-            ["y"] = 338.8,
-            ["x"] = -1099.5,
-        },
-        ["Trigger"] = {
             ["y"] = 338.8,
             ["x"] = -1099.5,
         },

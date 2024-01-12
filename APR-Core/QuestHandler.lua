@@ -2,7 +2,6 @@ local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 
-local APR_ArrowUpdateNr = 0
 local ETAStep = 0
 local Updateblock = 0
 local APRGOSSIPCOUNT = 0
@@ -1099,11 +1098,11 @@ local function APR_LoopBookingFunc()
         end
     end
 
-    if APR_ArrowUpdateNr >= APR.settings.profile.arrowFPS then
+    if APR.Arrow.UpdateFreq >= APR.settings.profile.arrowFPS then
         APR.Arrow:CalculPosition()
-        APR_ArrowUpdateNr = 0
+        APR.Arrow.UpdateFreq = 0
     else
-        APR_ArrowUpdateNr = APR_ArrowUpdateNr + 1
+        APR.Arrow.UpdateFreq = APR.Arrow.UpdateFreq + 1
     end
 end
 

@@ -28,10 +28,6 @@ if (APR.Race == "Tauren") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = -3033,
-                ["x"] = -536.3,
-            },
             ["Qpart"] = {
                 [14452] = {
                     ["1"] = "1",
@@ -62,10 +58,6 @@ if (APR.Race == "Tauren") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = -3082.9,
-                ["x"] = -621.8,
-            },
             ["Qpart"] = {
                 [24852] = {
                     ["1"] = "1",
@@ -115,10 +107,6 @@ if (APR.Race == "Tauren") then
             },
         }, -- [11]
         {
-            ["Trigger"] = {
-                ["y"] = -3388,
-                ["x"] = -367.5,
-            },
             ["Qpart"] = {
                 [14456] = {
                     ["1"] = "1",
@@ -159,10 +147,6 @@ if (APR.Race == "Tauren") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -3355.5,
-                ["x"] = -228.9,
-            },
             ["Fillers"] = {
                 [14459] = {
                     ["1"] = "1",
@@ -182,10 +166,6 @@ if (APR.Race == "Tauren") then
                 [14461] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -3387,
-                ["x"] = -207.7,
             },
             ["Fillers"] = {
                 [14459] = {
@@ -207,10 +187,6 @@ if (APR.Race == "Tauren") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -3402.7,
-                ["x"] = -265.2,
-            },
             ["Fillers"] = {
                 [14459] = {
                     ["1"] = "1",
@@ -226,10 +202,6 @@ if (APR.Race == "Tauren") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = -3384,
-                ["x"] = -243.7,
-            },
             ["Qpart"] = {
                 [14459] = {
                     ["1"] = "1",
@@ -266,10 +238,6 @@ if (APR.Race == "Tauren") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -3127.5,
-                ["x"] = -35.2,
-            },
             ["RaidIcon"] = 36712,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -301,10 +269,6 @@ if (APR.Race == "Tauren") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -2907.5,
-                ["x"] = -253.9,
-            },
             ["Button"] = {
                 ["24861-1"] = 50465,
             },
@@ -333,10 +297,6 @@ if (APR.Race == "Tauren") then
             },
         }, -- [26]
         {
-            ["Trigger"] = {
-                ["y"] = -2976,
-                ["x"] = -114.1,
-            },
             ["Range"] = 14.19,
             ["Waypoint"] = 23733,
             ["TT"] = {
@@ -345,10 +305,6 @@ if (APR.Race == "Tauren") then
             },
         }, -- [27]
         {
-            ["Trigger"] = {
-                ["y"] = -2907.2,
-                ["x"] = -47,
-            },
             ["Range"] = 13.17,
             ["Waypoint"] = 23733,
             ["TT"] = {
@@ -357,10 +313,6 @@ if (APR.Race == "Tauren") then
             },
         }, -- [28]
         {
-            ["Trigger"] = {
-                ["y"] = -2903.9,
-                ["x"] = 18.8,
-            },
             ["Range"] = 8.83,
             ["Waypoint"] = 23733,
             ["TT"] = {
@@ -369,10 +321,6 @@ if (APR.Race == "Tauren") then
             },
         }, -- [29]
         {
-            ["Trigger"] = {
-                ["y"] = -2919,
-                ["x"] = 14,
-            },
             ["Range"] = 13.83,
             ["Waypoint"] = 23733,
             ["TT"] = {
@@ -402,10 +350,6 @@ if (APR.Race == "Tauren") then
             ["Waypoint"] = 24215,
             ["Button"] = {
                 ["24215-0"] = 49652,
-            },
-            ["Trigger"] = {
-                ["y"] = -2343.7,
-                ["x"] = -401.4,
             },
             ["ExtraLineText"] = "DRINK_WATER_VISION",
             ["Range"] = 24.62,
@@ -457,10 +401,6 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = -463.7,
-                ["x"] = -4281.8,
-            },
             ["Qpart"] = {
                 [25126] = {
                     ["1"] = "1",
@@ -504,10 +444,6 @@ elseif (APR.Race == "Orc") then
                 [25172] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -711.3,
-                ["x"] = -4269.5,
             },
             ["Fillers"] = {
                 [25136] = {
@@ -592,10 +528,6 @@ elseif (APR.Race == "Orc") then
             ["Button"] = {
                 ["37446-1"] = 16114,
             },
-            ["Trigger"] = {
-                ["y"] = -563.5,
-                ["x"] = -4097.9,
-            },
             ["RaidIcon"] = 3281,
             ["Range"] = 0.61,
             ["TT"] = {
@@ -661,10 +593,6 @@ elseif (APR.Race == "Orc") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -406.7,
-                ["x"] = -4095.2,
-            },
             ["Button"] = {
                 ["37446-1"] = 16114,
             },
@@ -712,10 +640,6 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -252.7,
-                ["x"] = -4332,
-            },
             ["Qpart"] = {
                 [25131] = {
                     ["1"] = "1",
@@ -747,10 +671,6 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [23]
         {
-            ["Trigger"] = {
-                ["y"] = -178.5,
-                ["x"] = -4358.9,
-            },
             ["Range"] = 10.62,
             ["Waypoint"] = 25135,
             ["TT"] = {
@@ -759,10 +679,6 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [24]
         {
-            ["Trigger"] = {
-                ["y"] = -136.2,
-                ["x"] = -4365.8,
-            },
             ["Range"] = 10.61,
             ["Waypoint"] = 25135,
             ["TT"] = {
@@ -775,10 +691,6 @@ elseif (APR.Race == "Orc") then
                 [25135] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -87.4,
-                ["x"] = -4274.4,
             },
             ["Fillers"] = {
                 [25132] = {
@@ -793,10 +705,6 @@ elseif (APR.Race == "Orc") then
         }, -- [26]
         {
             ["Waypoint"] = 25132,
-            ["Trigger"] = {
-                ["y"] = -149,
-                ["x"] = -4258.3,
-            },
             ["Fillers"] = {
                 [25132] = {
                     ["1"] = "1",
@@ -819,10 +727,6 @@ elseif (APR.Race == "Orc") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -77.1,
-                ["x"] = -4205.7,
-            },
             ["RaidIcon"] = 3183,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -831,10 +735,6 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [28]
         {
-            ["Trigger"] = {
-                ["y"] = -146.9,
-                ["x"] = -4245.4,
-            },
             ["Qpart"] = {
                 [25132] = {
                     ["1"] = "1",
@@ -847,10 +747,6 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [29]
         {
-            ["Trigger"] = {
-                ["y"] = -143.7,
-                ["x"] = -4363.4,
-            },
             ["Range"] = 10.95,
             ["Waypoint"] = 25132,
             ["TT"] = {
@@ -878,10 +774,6 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [32]
         {
-            ["Trigger"] = {
-                ["y"] = -603,
-                ["x"] = -4595.7,
-            },
             ["Range"] = 17.6,
             ["Waypoint"] = 25133,
             ["TT"] = {
@@ -890,10 +782,6 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [33]
         {
-            ["Trigger"] = {
-                ["y"] = -775,
-                ["x"] = -4890.7,
-            },
             ["GetFP"] = 536,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -944,10 +832,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = -1172.3,
-                ["x"] = -5450,
-            },
             ["Qpart"] = {
                 [24639] = {
                     ["1"] = "1",
@@ -978,10 +862,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = -1145.4,
-                ["x"] = -5340,
-            },
             ["Qpart"] = {
                 [24641] = {
                     ["1"] = "1",
@@ -1018,10 +898,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -1143,
-                ["x"] = -5429.8,
-            },
             ["RaidIcon"] = 39062,
             ["Range"] = 0.61,
             ["TT"] = {
@@ -1034,10 +910,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 [24642] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1143.5,
-                ["x"] = -5417.4,
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.69,
@@ -1065,10 +937,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = -1242.6,
-                ["x"] = -5543,
-            },
             ["Waypoint"] = 24643,
             ["Range"] = 18.75,
             ["TT"] = {
@@ -1077,10 +945,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = -1288,
-                ["x"] = -5569.3,
-            },
             ["Waypoint"] = 24643,
             ["Range"] = 7.75,
             ["TT"] = {
@@ -1135,10 +999,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -1331,
-                ["x"] = -5397.7,
-            },
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
@@ -1183,10 +1043,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24623-1"] = 52283,
             },
-            ["Trigger"] = {
-                ["y"] = -1353.5,
-                ["x"] = -5154.5,
-            },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -1202,10 +1058,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 [24623] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1352.1,
-                ["x"] = -5156.7,
             },
             ["Button"] = {
                 ["24623-1"] = 52283,
@@ -1250,10 +1102,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24626-1"] = 50053,
             },
-            ["Trigger"] = {
-                ["y"] = -1549.5,
-                ["x"] = -5314.3,
-            },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
             ["TT"] = {
@@ -1262,10 +1110,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -1299,
-                ["x"] = -5452.2,
-            },
             ["Qpart"] = {
                 [24626] = {
                     ["2"] = "2",
@@ -1296,10 +1140,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 1329.7,
-                ["x"] = -5558.9,
-            },
             ["Qpart"] = {
                 [25037] = {
                     ["1"] = "1",
@@ -1323,10 +1163,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
-            ["Trigger"] = {
-                ["y"] = -1201,
-                ["x"] = -5608.5,
-            },
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
             ["TT"] = {
@@ -1362,10 +1198,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -706.5,
-                ["x"] = -5599.4,
-            },
             ["Button"] = {
                 ["24813-1"] = 52065,
             },
@@ -1395,10 +1227,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = -814.7,
-                ["x"] = -5606.4,
-            },
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
             ["TT"] = {
@@ -1413,10 +1241,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -741.8,
-                ["x"] = -5614.9,
-            },
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -1429,10 +1253,6 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 [24814] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -710.3,
-                ["x"] = -5582.4,
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
@@ -1509,10 +1329,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = -1126.5,
-                ["x"] = -5506.7,
-            },
             ["Qpart"] = {
                 [24777] = {
                     ["1"] = "1",
@@ -1543,10 +1359,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = -1098,
-                ["x"] = -5633.8,
-            },
             ["Qpart"] = {
                 [24779] = {
                     ["1"] = "1",
@@ -1583,10 +1395,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -1158.5,
-                ["x"] = -5528.9,
-            },
             ["RaidIcon"] = 39062,
             ["Range"] = 0.61,
             ["TT"] = {
@@ -1599,10 +1407,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 [24780] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1147.9,
-                ["x"] = -5529.7,
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.61,
@@ -1630,10 +1434,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = -1289,
-                ["x"] = -5569.3,
-            },
             ["Range"] = 5.92,
             ["Waypoint"] = 24781,
             ["TT"] = {
@@ -1688,10 +1488,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -1331,
-                ["x"] = -5397.7,
-            },
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
@@ -1736,10 +1532,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24623-1"] = 52283,
             },
-            ["Trigger"] = {
-                ["y"] = -1353.5,
-                ["x"] = -5154.5,
-            },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -1755,10 +1547,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 [24623] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1352.1,
-                ["x"] = -5156.7,
             },
             ["Button"] = {
                 ["24623-1"] = 52283,
@@ -1803,10 +1591,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24626-1"] = 50053,
             },
-            ["Trigger"] = {
-                ["y"] = -1549.5,
-                ["x"] = -5314.3,
-            },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
             ["TT"] = {
@@ -1815,10 +1599,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -1299,
-                ["x"] = -5452.2,
-            },
             ["Qpart"] = {
                 [24626] = {
                     ["2"] = "2",
@@ -1849,10 +1629,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 1329.7,
-                ["x"] = -5558.9,
-            },
             ["Qpart"] = {
                 [25037] = {
                     ["1"] = "1",
@@ -1876,10 +1652,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
-            ["Trigger"] = {
-                ["y"] = -1201,
-                ["x"] = -5608.5,
-            },
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
             ["TT"] = {
@@ -1915,10 +1687,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -706.5,
-                ["x"] = -5599.4,
-            },
             ["Button"] = {
                 ["24813-1"] = 52065,
             },
@@ -1948,10 +1716,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = -814.7,
-                ["x"] = -5606.4,
-            },
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
             ["TT"] = {
@@ -1966,10 +1730,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -741.8,
-                ["x"] = -5614.9,
-            },
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -1982,10 +1742,6 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 [24814] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -710.3,
-                ["x"] = -5582.4,
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
@@ -2080,10 +1836,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -1059.5,
-                ["x"] = -5375.5,
-            },
             ["Qpart"] = {
                 [24773] = {
                     ["1"] = "1",
@@ -2120,10 +1872,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -1142.5,
-                ["x"] = -5430,
-            },
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -2136,10 +1884,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 [24774] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1145,
-                ["x"] = -5416.3,
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.69,
@@ -2167,10 +1911,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = -1287.8,
-                ["x"] = -5568.5,
-            },
             ["Range"] = 8.7,
             ["Waypoint"] = 24775,
             ["TT"] = {
@@ -2225,10 +1965,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -1331,
-                ["x"] = -5397.7,
-            },
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
@@ -2273,10 +2009,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24623-1"] = 52283,
             },
-            ["Trigger"] = {
-                ["y"] = -1353.5,
-                ["x"] = -5154.5,
-            },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -2292,10 +2024,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 [24623] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1352.1,
-                ["x"] = -5156.7,
             },
             ["Button"] = {
                 ["24623-1"] = 52283,
@@ -2340,10 +2068,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24626-1"] = 50053,
             },
-            ["Trigger"] = {
-                ["y"] = -1549.5,
-                ["x"] = -5314.3,
-            },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
             ["TT"] = {
@@ -2352,10 +2076,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -1299,
-                ["x"] = -5452.2,
-            },
             ["Qpart"] = {
                 [24626] = {
                     ["2"] = "2",
@@ -2386,10 +2106,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 1329.7,
-                ["x"] = -5558.9,
-            },
             ["Qpart"] = {
                 [25037] = {
                     ["1"] = "1",
@@ -2413,10 +2129,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
-            ["Trigger"] = {
-                ["y"] = -1201,
-                ["x"] = -5608.5,
-            },
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
             ["TT"] = {
@@ -2452,10 +2164,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -706.5,
-                ["x"] = -5599.4,
-            },
             ["Button"] = {
                 ["24813-1"] = 52065,
             },
@@ -2485,10 +2193,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = -814.7,
-                ["x"] = -5606.4,
-            },
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
             ["TT"] = {
@@ -2503,10 +2207,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -741.8,
-                ["x"] = -5614.9,
-            },
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -2519,10 +2219,6 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 [24814] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -710.3,
-                ["x"] = -5582.4,
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
@@ -2617,10 +2313,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -1059.5,
-                ["x"] = -5375.5,
-            },
             ["Qpart"] = {
                 [24773] = {
                     ["1"] = "1",
@@ -2657,10 +2349,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -1142.5,
-                ["x"] = -5430,
-            },
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -2673,10 +2361,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 [24774] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1145,
-                ["x"] = -5416.3,
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.69,
@@ -2704,10 +2388,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = -1287.8,
-                ["x"] = -5568.5,
-            },
             ["Range"] = 8.7,
             ["Waypoint"] = 24775,
             ["TT"] = {
@@ -2779,10 +2459,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -1075,
-                ["x"] = -5624.3,
-            },
             ["Qpart"] = {
                 [24785] = {
                     ["1"] = "1",
@@ -2819,10 +2495,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -1158.4,
-                ["x"] = -5529.9,
-            },
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -2835,10 +2507,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 [24786] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1149,
-                ["x"] = -5527.7,
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.61,
@@ -2866,10 +2534,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [27]
         {
-            ["Trigger"] = {
-                ["y"] = -1288.4,
-                ["x"] = -5568.3,
-            },
             ["Range"] = 6.09,
             ["Waypoint"] = 24787,
             ["TT"] = {
@@ -2924,10 +2588,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -1331,
-                ["x"] = -5397.7,
-            },
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
@@ -2972,10 +2632,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24623-1"] = 52283,
             },
-            ["Trigger"] = {
-                ["y"] = -1353.5,
-                ["x"] = -5154.5,
-            },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -2991,10 +2647,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 [24623] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1352.1,
-                ["x"] = -5156.7,
             },
             ["Button"] = {
                 ["24623-1"] = 52283,
@@ -3039,10 +2691,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24626-1"] = 50053,
             },
-            ["Trigger"] = {
-                ["y"] = -1549.5,
-                ["x"] = -5314.3,
-            },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
             ["TT"] = {
@@ -3051,10 +2699,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -1299,
-                ["x"] = -5452.2,
-            },
             ["Qpart"] = {
                 [24626] = {
                     ["2"] = "2",
@@ -3085,10 +2729,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 1329.7,
-                ["x"] = -5558.9,
-            },
             ["Qpart"] = {
                 [25037] = {
                     ["1"] = "1",
@@ -3112,10 +2752,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
-            ["Trigger"] = {
-                ["y"] = -1201,
-                ["x"] = -5608.5,
-            },
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
             ["TT"] = {
@@ -3151,10 +2787,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -706.5,
-                ["x"] = -5599.4,
-            },
             ["Button"] = {
                 ["24813-1"] = 52065,
             },
@@ -3184,10 +2816,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = -814.7,
-                ["x"] = -5606.4,
-            },
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
             ["TT"] = {
@@ -3202,10 +2830,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -741.8,
-                ["x"] = -5614.9,
-            },
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -3218,10 +2842,6 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 [24814] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -710.3,
-                ["x"] = -5582.4,
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
@@ -3298,10 +2918,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = -1162,
-                ["x"] = -5405.9,
-            },
             ["Qpart"] = {
                 [24759] = {
                     ["1"] = "1",
@@ -3332,10 +2948,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = -1144.5,
-                ["x"] = -5333.4,
-            },
             ["Qpart"] = {
                 [24761] = {
                     ["1"] = "1",
@@ -3372,10 +2984,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -1142.9,
-                ["x"] = -5429,
-            },
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -3388,10 +2996,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 [24762] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1145,
-                ["x"] = -5416.4,
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.69,
@@ -3419,10 +3023,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = -1288.4,
-                ["x"] = -5569,
-            },
             ["Range"] = 7.77,
             ["Waypoint"] = 24763,
             ["TT"] = {
@@ -3477,10 +3077,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -1331,
-                ["x"] = -5397.7,
-            },
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
@@ -3525,10 +3121,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24623-1"] = 52283,
             },
-            ["Trigger"] = {
-                ["y"] = -1353.5,
-                ["x"] = -5154.5,
-            },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -3544,10 +3136,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 [24623] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1352.1,
-                ["x"] = -5156.7,
             },
             ["Button"] = {
                 ["24623-1"] = 52283,
@@ -3592,10 +3180,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24626-1"] = 50053,
             },
-            ["Trigger"] = {
-                ["y"] = -1549.5,
-                ["x"] = -5314.3,
-            },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
             ["TT"] = {
@@ -3604,10 +3188,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -1299,
-                ["x"] = -5452.2,
-            },
             ["Qpart"] = {
                 [24626] = {
                     ["2"] = "2",
@@ -3638,10 +3218,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 1329.7,
-                ["x"] = -5558.9,
-            },
             ["Qpart"] = {
                 [25037] = {
                     ["1"] = "1",
@@ -3665,10 +3241,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
-            ["Trigger"] = {
-                ["y"] = -1201,
-                ["x"] = -5608.5,
-            },
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
             ["TT"] = {
@@ -3704,10 +3276,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -706.5,
-                ["x"] = -5599.4,
-            },
             ["Button"] = {
                 ["24813-1"] = 52065,
             },
@@ -3737,10 +3305,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = -814.7,
-                ["x"] = -5606.4,
-            },
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
             ["TT"] = {
@@ -3755,10 +3319,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -741.8,
-                ["x"] = -5614.9,
-            },
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -3771,10 +3331,6 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 [24814] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -710.3,
-                ["x"] = -5582.4,
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
@@ -3851,10 +3407,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = -1156.8,
-                ["x"] = -5584,
-            },
             ["Qpart"] = {
                 [24751] = {
                     ["1"] = "1",
@@ -3885,10 +3437,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = -1110.5,
-                ["x"] = -5628.7,
-            },
             ["Qpart"] = {
                 [24753] = {
                     ["1"] = "1",
@@ -3925,10 +3473,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 37137,
-            ["Trigger"] = {
-                ["y"] = -1157.9,
-                ["x"] = -5529.9,
-            },
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -3941,10 +3485,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 [24754] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1149.5,
-                ["x"] = -5527.7,
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.69,
@@ -3972,10 +3512,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = -1288.5,
-                ["x"] = -5569.8,
-            },
             ["Range"] = 5.29,
             ["Waypoint"] = 24755,
             ["TT"] = {
@@ -4030,10 +3566,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -1331,
-                ["x"] = -5397.7,
-            },
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
@@ -4078,10 +3610,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24623-1"] = 52283,
             },
-            ["Trigger"] = {
-                ["y"] = -1353.5,
-                ["x"] = -5154.5,
-            },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -4097,10 +3625,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 [24623] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1352.1,
-                ["x"] = -5156.7,
             },
             ["Button"] = {
                 ["24623-1"] = 52283,
@@ -4145,10 +3669,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24626-1"] = 50053,
             },
-            ["Trigger"] = {
-                ["y"] = -1549.5,
-                ["x"] = -5314.3,
-            },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
             ["TT"] = {
@@ -4157,10 +3677,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -1299,
-                ["x"] = -5452.2,
-            },
             ["Qpart"] = {
                 [24626] = {
                     ["2"] = "2",
@@ -4191,10 +3707,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 1329.7,
-                ["x"] = -5558.9,
-            },
             ["Qpart"] = {
                 [25037] = {
                     ["1"] = "1",
@@ -4218,10 +3730,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
-            ["Trigger"] = {
-                ["y"] = -1201,
-                ["x"] = -5608.5,
-            },
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
             ["TT"] = {
@@ -4257,10 +3765,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -706.5,
-                ["x"] = -5599.4,
-            },
             ["Button"] = {
                 ["24813-1"] = 52065,
             },
@@ -4290,10 +3794,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = -814.7,
-                ["x"] = -5606.4,
-            },
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
             ["TT"] = {
@@ -4308,10 +3808,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -741.8,
-                ["x"] = -5614.9,
-            },
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -4324,10 +3820,6 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 [24814] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -710.3,
-                ["x"] = -5582.4,
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
@@ -4404,10 +3896,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = -1125.9,
-                ["x"] = -5395,
-            },
             ["Qpart"] = {
                 [26273] = {
                     ["1"] = "1",
@@ -4438,10 +3926,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = -1134.4,
-                ["x"] = -5337.2,
-            },
             ["Qpart"] = {
                 [26275] = {
                     ["1"] = "1",
@@ -4478,10 +3962,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -1142.8,
-                ["x"] = -5429,
-            },
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -4494,10 +3974,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 [26276] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1144.3,
-                ["x"] = -5415.7,
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.61,
@@ -4525,10 +4001,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = -1287.6,
-                ["x"] = -5567.8,
-            },
             ["Range"] = 5.91,
             ["Waypoint"] = 26277,
             ["TT"] = {
@@ -4583,10 +4055,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -1331,
-                ["x"] = -5397.7,
-            },
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
@@ -4631,10 +4099,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24623-1"] = 52283,
             },
-            ["Trigger"] = {
-                ["y"] = -1353.5,
-                ["x"] = -5154.5,
-            },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -4650,10 +4114,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 [24623] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1352.1,
-                ["x"] = -5156.7,
             },
             ["Button"] = {
                 ["24623-1"] = 52283,
@@ -4698,10 +4158,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24626-1"] = 50053,
             },
-            ["Trigger"] = {
-                ["y"] = -1549.5,
-                ["x"] = -5314.3,
-            },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
             ["TT"] = {
@@ -4710,10 +4166,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -1299,
-                ["x"] = -5452.2,
-            },
             ["Qpart"] = {
                 [24626] = {
                     ["2"] = "2",
@@ -4744,10 +4196,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 1329.7,
-                ["x"] = -5558.9,
-            },
             ["Qpart"] = {
                 [25037] = {
                     ["1"] = "1",
@@ -4771,10 +4219,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
-            ["Trigger"] = {
-                ["y"] = -1201,
-                ["x"] = -5608.5,
-            },
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
             ["TT"] = {
@@ -4810,10 +4254,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -706.5,
-                ["x"] = -5599.4,
-            },
             ["Button"] = {
                 ["24813-1"] = 52065,
             },
@@ -4843,10 +4283,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = -814.7,
-                ["x"] = -5606.4,
-            },
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
             ["TT"] = {
@@ -4861,10 +4297,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -741.8,
-                ["x"] = -5614.9,
-            },
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -4877,10 +4309,6 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 [24814] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -710.3,
-                ["x"] = -5582.4,
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
@@ -4957,10 +4385,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = -1127.8,
-                ["x"] = -5440.4,
-            },
             ["Qpart"] = {
                 [31158] = {
                     ["1"] = "1",
@@ -4991,10 +4415,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = -1046,
-                ["x"] = -5368.9,
-            },
             ["Qpart"] = {
                 [31160] = {
                     ["1"] = "1",
@@ -5031,10 +4451,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -1144,
-                ["x"] = -5428.9,
-            },
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -5047,10 +4463,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 [31161] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1144,
-                ["x"] = -5415.4,
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.69,
@@ -5078,10 +4490,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = -1288.3,
-                ["x"] = -5569.2,
-            },
             ["Range"] = 6.36,
             ["Waypoint"] = 31163,
             ["TT"] = {
@@ -5136,10 +4544,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -1331,
-                ["x"] = -5397.7,
-            },
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
@@ -5184,10 +4588,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24623-1"] = 52283,
             },
-            ["Trigger"] = {
-                ["y"] = -1353.5,
-                ["x"] = -5154.5,
-            },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -5203,10 +4603,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 [24623] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1352.1,
-                ["x"] = -5156.7,
             },
             ["Button"] = {
                 ["24623-1"] = 52283,
@@ -5251,10 +4647,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24626-1"] = 50053,
             },
-            ["Trigger"] = {
-                ["y"] = -1549.5,
-                ["x"] = -5314.3,
-            },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
             ["TT"] = {
@@ -5263,10 +4655,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -1299,
-                ["x"] = -5452.2,
-            },
             ["Qpart"] = {
                 [24626] = {
                     ["2"] = "2",
@@ -5297,10 +4685,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 1329.7,
-                ["x"] = -5558.9,
-            },
             ["Qpart"] = {
                 [25037] = {
                     ["1"] = "1",
@@ -5324,10 +4708,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
-            ["Trigger"] = {
-                ["y"] = -1201,
-                ["x"] = -5608.5,
-            },
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
             ["TT"] = {
@@ -5363,10 +4743,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -706.5,
-                ["x"] = -5599.4,
-            },
             ["Button"] = {
                 ["24813-1"] = 52065,
             },
@@ -5396,10 +4772,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = -814.7,
-                ["x"] = -5606.4,
-            },
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
             ["TT"] = {
@@ -5414,10 +4786,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -741.8,
-                ["x"] = -5614.9,
-            },
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -5430,10 +4798,6 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 [24814] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -710.3,
-                ["x"] = -5582.4,
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
@@ -5510,10 +4874,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [3]
         {
-            ["Trigger"] = {
-                ["y"] = -1166.8,
-                ["x"] = -5548.9,
-            },
             ["Qpart"] = {
                 [24765] = {
                     ["1"] = "1",
@@ -5544,10 +4904,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [6]
         {
-            ["Trigger"] = {
-                ["y"] = -1254.5,
-                ["x"] = -5430.5,
-            },
             ["Qpart"] = {
                 [24767] = {
                     ["1"] = "1",
@@ -5584,10 +4940,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -1159,
-                ["x"] = -5529.5,
-            },
             ["RaidIcon"] = 39062,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -5600,10 +4952,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 [24768] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1149.8,
-                ["x"] = -5527.2,
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.61,
@@ -5631,10 +4979,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = -1288.3,
-                ["x"] = -5569.2,
-            },
             ["Range"] = 6.21,
             ["Waypoint"] = 24769,
             ["TT"] = {
@@ -5689,10 +5033,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = -1331,
-                ["x"] = -5397.7,
-            },
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
             ["TT"] = {
@@ -5737,10 +5077,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24623-1"] = 52283,
             },
-            ["Trigger"] = {
-                ["y"] = -1353.5,
-                ["x"] = -5154.5,
-            },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -5756,10 +5092,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 [24623] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -1352.1,
-                ["x"] = -5156.7,
             },
             ["Button"] = {
                 ["24623-1"] = 52283,
@@ -5804,10 +5136,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["Button"] = {
                 ["24626-1"] = 50053,
             },
-            ["Trigger"] = {
-                ["y"] = -1549.5,
-                ["x"] = -5314.3,
-            },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
             ["TT"] = {
@@ -5816,10 +5144,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = -1299,
-                ["x"] = -5452.2,
-            },
             ["Qpart"] = {
                 [24626] = {
                     ["2"] = "2",
@@ -5850,10 +5174,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 1329.7,
-                ["x"] = -5558.9,
-            },
             ["Qpart"] = {
                 [25037] = {
                     ["1"] = "1",
@@ -5877,10 +5197,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 25035,
             ["RaidIcon"] = 38989,
-            ["Trigger"] = {
-                ["y"] = -1201,
-                ["x"] = -5608.5,
-            },
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
             ["TT"] = {
@@ -5916,10 +5232,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -706.5,
-                ["x"] = -5599.4,
-            },
             ["Button"] = {
                 ["24813-1"] = 52065,
             },
@@ -5949,10 +5261,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [16]
         {
-            ["Trigger"] = {
-                ["y"] = -814.7,
-                ["x"] = -5606.4,
-            },
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
             ["TT"] = {
@@ -5967,10 +5275,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -741.8,
-                ["x"] = -5614.9,
-            },
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -5983,10 +5287,6 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 [24814] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -710.3,
-                ["x"] = -5582.4,
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
@@ -6073,10 +5373,6 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 20,
-            ["Trigger"] = {
-                ["y"] = -8422.8,
-                ["x"] = 1175,
-            },
             ["TT"] = {
                 ["y"] = -8422.8,
                 ["x"] = 1175,
@@ -6085,10 +5381,6 @@ elseif (APR.Race == "Goblin") then
         {
             ["Waypoint"] = 14069,
             ["Range"] = 25.83,
-            ["Trigger"] = {
-                ["y"] = -8441.3,
-                ["x"] = 1249.3,
-            },
             ["TT"] = {
                 ["y"] = -8441.3,
                 ["x"] = 1249.3,
@@ -6155,10 +5447,6 @@ elseif (APR.Race == "Goblin") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -8418.5,
-                ["x"] = 1340.5,
-            },
             ["Button"] = {
                 ["14071-1"] = 46856,
             },
@@ -6169,10 +5457,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = -8506.5,
-                ["x"] = 1343.5,
-            },
             ["Qpart"] = {
                 [14071] = {
                     ["2"] = "2",
@@ -6185,10 +5469,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = -8176.4,
-                ["x"] = 1314,
-            },
             ["Qpart"] = {
                 [14071] = {
                     ["4"] = "4",
@@ -6201,10 +5481,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = -8066.9,
-                ["x"] = 1483,
-            },
             ["Qpart"] = {
                 [14071] = {
                     ["3"] = "3",
@@ -6287,10 +5563,6 @@ elseif (APR.Race == "Goblin") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -8403,
-                ["x"] = 1518.9,
-            },
             ["Fillers"] = {
                 [24488] = {
                     ["1"] = "1",
@@ -6308,10 +5580,6 @@ elseif (APR.Race == "Goblin") then
                     ["4"] = "4",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -8468,
-                ["x"] = 1566.5,
-            },
             ["Fillers"] = {
                 [24488] = {
                     ["1"] = "1",
@@ -6324,10 +5592,6 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = -8431,
-                ["x"] = 1655.5,
-            },
             ["Qpart"] = {
                 [14070] = {
                     ["3"] = "3",
@@ -6344,10 +5608,6 @@ elseif (APR.Race == "Goblin") then
                 [14070] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -8360.8,
-                ["x"] = 1631.8,
             },
             ["Fillers"] = {
                 [24488] = {
@@ -6388,10 +5648,6 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -8230,
-                ["x"] = 1621,
-            },
             ["Fillers"] = {
                 [24488] = {
                     ["1"] = "1",
@@ -6411,10 +5667,6 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -8142.2,
-                ["x"] = 1658.2,
-            },
             ["Fillers"] = {
                 [24488] = {
                     ["1"] = "1",
@@ -6434,10 +5686,6 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -8143.8,
-                ["x"] = 1583.7,
-            },
             ["Fillers"] = {
                 [24488] = {
                     ["1"] = "1",
@@ -6477,10 +5725,6 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -8230,
-                ["x"] = 1621,
-            },
             ["Fillers"] = {
                 [24488] = {
                     ["1"] = "1",
@@ -6500,10 +5744,6 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -8142.2,
-                ["x"] = 1658.2,
-            },
             ["Fillers"] = {
                 [24488] = {
                     ["1"] = "1",
@@ -6523,10 +5763,6 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = -8143.8,
-                ["x"] = 1583.7,
-            },
             ["Fillers"] = {
                 [24488] = {
                     ["1"] = "1",
@@ -6539,10 +5775,6 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = -8143.7,
-                ["x"] = 1581.3,
-            },
             ["Qpart"] = {
                 [24488] = {
                     ["1"] = "1",
@@ -6573,10 +5805,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [32]
         {
-            ["Trigger"] = {
-                ["y"] = -8251,
-                ["x"] = 1485.5,
-            },
             ["Qpart"] = {
                 [24502] = {
                     ["1"] = "1",
@@ -6608,10 +5836,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [35]
         {
-            ["Trigger"] = {
-                ["y"] = -8250.5,
-                ["x"] = 1484.8,
-            },
             ["Qpart"] = {
                 [24503] = {
                     ["1"] = "1",
@@ -6678,10 +5902,6 @@ elseif (APR.Race == "Goblin") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -8446.7,
-                ["x"] = 1329.9,
-            },
             ["Range"] = 11.23,
             ["TT"] = {
                 ["y"] = -8446.7,
@@ -6725,10 +5945,6 @@ elseif (APR.Race == "Goblin") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -8446.7,
-                ["x"] = 1329.9,
-            },
             ["Range"] = 11.23,
             ["TT"] = {
                 ["y"] = -8446.7,
@@ -6755,10 +5971,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [43]
         {
-            ["Trigger"] = {
-                ["y"] = -8443.3,
-                ["x"] = 1327.3,
-            },
             ["Qpart"] = {
                 [14115] = {
                     ["1"] = "1",
@@ -6858,10 +6070,6 @@ elseif (APR.Race == "Goblin") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -8443,
-                ["x"] = 1227.8,
-            },
             ["Button"] = {
                 ["14124-1"] = 48768,
             },
@@ -6887,10 +6095,6 @@ elseif (APR.Race == "Goblin") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -8372.3,
-                ["x"] = 1729.7,
-            },
             ["Fillers"] = {
                 [14121] = {
                     ["1"] = "1",
@@ -6907,10 +6111,6 @@ elseif (APR.Race == "Goblin") then
                 [14123] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -8006.7,
-                ["x"] = 1860,
             },
             ["Fillers"] = {
                 [14121] = {
@@ -6929,10 +6129,6 @@ elseif (APR.Race == "Goblin") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -8047.3,
-                ["x"] = 1956,
-            },
             ["Fillers"] = {
                 [14121] = {
                     ["1"] = "1",
@@ -6950,10 +6146,6 @@ elseif (APR.Race == "Goblin") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -8147.3,
-                ["x"] = 1903.5,
-            },
             ["Fillers"] = {
                 [14121] = {
                     ["1"] = "1",
@@ -6966,10 +6158,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [59]
         {
-            ["Trigger"] = {
-                ["y"] = -8133.7,
-                ["x"] = 1759.4,
-            },
             ["Qpart"] = {
                 [14121] = {
                     ["1"] = "1",
@@ -7018,10 +6206,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [64]
         {
-            ["Trigger"] = {
-                ["y"] = -8420.7,
-                ["x"] = 1371.5,
-            },
             ["Qpart"] = {
                 [14125] = {
                     ["1"] = "1",
@@ -7034,10 +6218,6 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = -8402.8,
-                ["x"] = 1371.5,
-            },
             ["Qpart"] = {
                 [14125] = {
                     ["2"] = "2",
@@ -7050,10 +6230,6 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = -8425.3,
-                ["x"] = 1372.4,
-            },
             ["Waypoint"] = 14125,
             ["Range"] = 4.29,
             ["TT"] = {
@@ -7062,10 +6238,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [67]
         {
-            ["Trigger"] = {
-                ["y"] = -8419.7,
-                ["x"] = 1364.2,
-            },
             ["Waypoint"] = 14125,
             ["Range"] = 5.04,
             ["TT"] = {
@@ -7074,10 +6246,6 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = -8408.3,
-                ["x"] = 1362.8,
-            },
             ["Qpart"] = {
                 [14125] = {
                     ["3"] = "3",
@@ -7090,10 +6258,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [69]
         {
-            ["Trigger"] = {
-                ["y"] = -8422,
-                ["x"] = 1327,
-            },
             ["Qpart"] = {
                 [14125] = {
                     ["4"] = "4",
@@ -7158,10 +6322,6 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 535.4,
-                ["x"] = 3273.3,
-            },
             ["Qpart"] = {
                 [14001] = {
                     ["1"] = "1",
@@ -7212,10 +6372,6 @@ elseif (APR.Race == "Goblin") then
                 [14014] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 648.7,
-                ["x"] = 3126.1,
             },
             ["Button"] = {
                 ["14019-1"] = 49028,
@@ -7279,10 +6435,6 @@ elseif (APR.Race == "Goblin") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 566.7,
-                ["x"] = 2945.1,
-            },
             ["Button"] = {
                 ["14031-1"] = 49887,
             },
@@ -7298,10 +6450,6 @@ elseif (APR.Race == "Goblin") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 572.2,
-                ["x"] = 2911.5,
-            },
             ["Button"] = {
                 ["14031-2"] = 49887,
             },
@@ -7312,10 +6460,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 576.7,
-                ["x"] = 2921.3,
-            },
             ["Qpart"] = {
                 [14021] = {
                     ["1"] = "1",
@@ -7328,10 +6472,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = 614.5,
-                ["x"] = 2853.5,
-            },
             ["Qpart"] = {
                 [14031] = {
                     ["3"] = "3",
@@ -7344,10 +6484,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [15]
         {
-            ["Trigger"] = {
-                ["y"] = 658.1,
-                ["x"] = 2946.1,
-            },
             ["Range"] = 10.78,
             ["Waypoint"] = 14031,
             ["TT"] = {
@@ -7360,10 +6496,6 @@ elseif (APR.Race == "Goblin") then
                 [14031] = {
                     ["4"] = "4",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 653.7,
-                ["x"] = 2962.3,
             },
             ["Button"] = {
                 ["14031-4"] = 49887,
@@ -7384,10 +6516,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [18]
         {
-            ["Trigger"] = {
-                ["y"] = 586.4,
-                ["x"] = 2959,
-            },
             ["Range"] = 11.45,
             ["Waypoint"] = 14021,
             ["TT"] = {
@@ -7426,10 +6554,6 @@ elseif (APR.Race == "Goblin") then
         {
             ["Waypoint"] = 14234,
             ["Range"] = 20,
-            ["Trigger"] = {
-                ["y"] = 448.5,
-                ["x"] = 2952.1,
-            },
             ["TT"] = {
                 ["y"] = 448.5,
                 ["x"] = 2952.1,
@@ -7438,10 +6562,6 @@ elseif (APR.Race == "Goblin") then
         {
             ["Waypoint"] = 14234,
             ["Range"] = 20,
-            ["Trigger"] = {
-                ["y"] = 452.7,
-                ["x"] = 2827.3,
-            },
             ["TT"] = {
                 ["y"] = 452.7,
                 ["x"] = 2827.3,
@@ -7488,10 +6608,6 @@ elseif (APR.Race == "Goblin") then
                 [14236] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 602.7,
-                ["x"] = 2784.6,
             },
             ["Button"] = {
                 ["14236-1"] = 49108,
@@ -7541,10 +6657,6 @@ elseif (APR.Race == "Goblin") then
         {
             ["Waypoint"] = 14237,
             ["Range"] = 20,
-            ["Trigger"] = {
-                ["y"] = 584,
-                ["x"] = 2771.5,
-            },
             ["TT"] = {
                 ["y"] = 584,
                 ["x"] = 2771.5,
@@ -7553,10 +6665,6 @@ elseif (APR.Race == "Goblin") then
         {
             ["Waypoint"] = 14237,
             ["Range"] = 31.16,
-            ["Trigger"] = {
-                ["y"] = 708.3,
-                ["x"] = 2882.1,
-            },
             ["TT"] = {
                 ["y"] = 708.3,
                 ["x"] = 2882.1,
@@ -7565,10 +6673,6 @@ elseif (APR.Race == "Goblin") then
         {
             ["Waypoint"] = 14237,
             ["Range"] = 31.16,
-            ["Trigger"] = {
-                ["y"] = 772.4,
-                ["x"] = 2885.6,
-            },
             ["TT"] = {
                 ["y"] = 772.4,
                 ["x"] = 2885.6,
@@ -7597,10 +6701,6 @@ elseif (APR.Race == "Goblin") then
                 [14238] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 878,
-                ["x"] = 2882.6,
             },
             ["Button"] = {
                 ["14238-1"] = 49611,
@@ -7648,10 +6748,6 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 910.9,
-                ["x"] = 3296.3,
-            },
             ["Qpart"] = {
                 [14241] = {
                     ["1"] = "1",
@@ -7682,10 +6778,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [4]
         {
-            ["Trigger"] = {
-                ["y"] = 992.9,
-                ["x"] = 3850.8,
-            },
             ["Qpart"] = {
                 [14242] = {
                     ["1"] = "1",
@@ -7716,10 +6808,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 973.2,
-                ["x"] = 3818.4,
-            },
             ["Range"] = 7.36,
             ["Waypoint"] = 14326,
             ["TT"] = {
@@ -7728,10 +6816,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 982.7,
-                ["x"] = 3812.8,
-            },
             ["Range"] = 5.75,
             ["Waypoint"] = 14326,
             ["TT"] = {
@@ -7758,10 +6842,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [11]
         {
-            ["Trigger"] = {
-                ["y"] = 1053.3,
-                ["x"] = 3859.3,
-            },
             ["Qpart"] = {
                 [14243] = {
                     ["1"] = "1",
@@ -7816,10 +6896,6 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 876.2,
-                ["x"] = 2747.1,
-            },
             ["Range"] = 0.69,
             ["TT"] = {
                 ["y"] = 876.2,
@@ -7845,10 +6921,6 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 914.7,
-                ["x"] = 2331,
-            },
             ["Qpart"] = {
                 [14245] = {
                     ["1"] = "1",
@@ -7902,17 +6974,13 @@ elseif (APR.Race == "Goblin") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 933.1,
-                ["x"] = 2327.5,
-            },
             ["Button"] = {
                 ["24671-1"] = 52712,
             },
-            ["Range"] = 93.6,
+            ["Range"] = 30,
             ["TT"] = {
-                ["y"] = 933.1,
-                ["x"] = 2327.5,
+                ["y"] = 955.3,
+                ["x"] = 2298.7,
             },
         }, -- [8]
         {
@@ -7938,10 +7006,6 @@ elseif (APR.Race == "Goblin") then
                 [24741] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 860.9,
-                ["x"] = 2116.1,
             },
             ["Button"] = {
                 ["24741-1"] = 50232,
@@ -7971,10 +7035,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 1199.3,
-                ["x"] = 2325.4,
-            },
             ["Qpart"] = {
                 [24744] = {
                     ["1"] = "1",
@@ -8005,10 +7065,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [8]
         {
-            ["Trigger"] = {
-                ["y"] = 846.9,
-                ["x"] = 2482.8,
-            },
             ["Qpart"] = {
                 [24816] = {
                     ["1"] = "1",
@@ -8039,10 +7095,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [11]
         {
-            ["Trigger"] = {
-                ["y"] = 916,
-                ["x"] = 2413.9,
-            },
             ["Qpart"] = {
                 [24817] = {
                     ["1"] = "1",
@@ -8055,10 +7107,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = 916,
-                ["x"] = 2413.9,
-            },
             ["Qpart"] = {
                 [24817] = {
                     ["2"] = "2",
@@ -8089,10 +7137,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [15]
         {
-            ["Trigger"] = {
-                ["y"] = 893,
-                ["x"] = 2164,
-            },
             ["Range"] = 28.66,
             ["Waypoint"] = 24856,
             ["TT"] = {
@@ -8120,10 +7164,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [18]
         {
-            ["Trigger"] = {
-                ["y"] = 469.8,
-                ["x"] = 1934,
-            },
             ["Qpart"] = {
                 [24859] = {
                     ["1"] = "1",
@@ -8163,10 +7203,6 @@ elseif (APR.Race == "Goblin") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 373.3,
-                ["x"] = 1680.8,
-            },
             ["Button"] = {
                 ["24864-1"] = 4560,
             },
@@ -8195,10 +7231,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 136.1,
-                ["x"] = 1939.2,
-            },
             ["Qpart"] = {
                 [24868] = {
                     ["1"] = "1",
@@ -8247,10 +7279,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [10]
         {
-            ["Trigger"] = {
-                ["y"] = 922.9,
-                ["x"] = 2320.9,
-            },
             ["Qpart"] = {
                 [24901] = {
                     ["1"] = "1",
@@ -8281,10 +7309,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 888.7,
-                ["x"] = 2161.5,
-            },
             ["Range"] = 17.3,
             ["Waypoint"] = 24924,
             ["TT"] = {
@@ -8313,10 +7337,6 @@ elseif (APR.Race == "Goblin") then
         }, -- [16]
         {
             ["Waypoint"] = 24925,
-            ["Trigger"] = {
-                ["y"] = 844.2,
-                ["x"] = 1722.5,
-            },
             ["Fillers"] = {
                 [24925] = {
                     ["1"] = "1",
@@ -8330,10 +7350,6 @@ elseif (APR.Race == "Goblin") then
         }, -- [17]
         {
             ["Waypoint"] = 24925,
-            ["Trigger"] = {
-                ["y"] = 845.6,
-                ["x"] = 1681.7,
-            },
             ["Fillers"] = {
                 [24925] = {
                     ["1"] = "1",
@@ -8347,10 +7363,6 @@ elseif (APR.Race == "Goblin") then
         }, -- [18]
         {
             ["Waypoint"] = 24925,
-            ["Trigger"] = {
-                ["y"] = 790.7,
-                ["x"] = 1560.4,
-            },
             ["Fillers"] = {
                 [24925] = {
                     ["1"] = "1",
@@ -8368,10 +7380,6 @@ elseif (APR.Race == "Goblin") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 817.7,
-                ["x"] = 1543.5,
-            },
             ["Fillers"] = {
                 [24925] = {
                     ["1"] = "1",
@@ -8384,10 +7392,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [20]
         {
-            ["Trigger"] = {
-                ["y"] = 815.5,
-                ["x"] = 1544,
-            },
             ["Qpart"] = {
                 [24925] = {
                     ["1"] = "1",
@@ -8470,10 +7474,6 @@ elseif (APR.Race == "Goblin") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1460.5,
-                ["x"] = 1729,
-            },
             ["Fillers"] = {
                 [24942] = {
                     ["1"] = "1",
@@ -8490,10 +7490,6 @@ elseif (APR.Race == "Goblin") then
                 [24945] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1670.2,
-                ["x"] = 1694.7,
             },
             ["Fillers"] = {
                 [24942] = {
@@ -8515,10 +7511,6 @@ elseif (APR.Race == "Goblin") then
                     ["3"] = "3",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1294.3,
-                ["x"] = 1512.2,
-            },
             ["Fillers"] = {
                 [24942] = {
                     ["1"] = "1",
@@ -8539,10 +7531,6 @@ elseif (APR.Race == "Goblin") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1269,
-                ["x"] = 1513.8,
-            },
             ["Fillers"] = {
                 [24942] = {
                     ["1"] = "1",
@@ -8555,10 +7543,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [32]
         {
-            ["Trigger"] = {
-                ["y"] = 1368.2,
-                ["x"] = 1549.5,
-            },
             ["Qpart"] = {
                 [24942] = {
                     ["1"] = "1",
@@ -8596,10 +7580,6 @@ elseif (APR.Race == "Goblin") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1464.9,
-                ["x"] = 2045.3,
-            },
             ["Button"] = {
                 ["24952-1"] = 52032,
             },
@@ -8628,10 +7608,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [38]
         {
-            ["Trigger"] = {
-                ["y"] = 1568.5,
-                ["x"] = 1326,
-            },
             ["Qpart"] = {
                 [24954] = {
                     ["1"] = "1",
@@ -8666,10 +7642,6 @@ elseif (APR.Race == "Goblin") then
                 [24958] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1280.8,
-                ["x"] = 1173.9,
             },
             ["Button"] = {
                 ["24958-1"] = 52043,
@@ -8740,10 +7712,6 @@ elseif (APR.Race == "Goblin") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1593,
-                ["x"] = 2922,
-            },
             ["Fillers"] = {
                 [25058] = {
                     ["1"] = "1",
@@ -8766,10 +7734,6 @@ elseif (APR.Race == "Goblin") then
                 [25093] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1858.9,
-                ["x"] = 2992.5,
             },
             ["Button"] = {
                 ["25058-1"] = 52280,
@@ -8797,10 +7761,6 @@ elseif (APR.Race == "Goblin") then
             ["Button"] = {
                 ["25058-1"] = 52280,
             },
-            ["Trigger"] = {
-                ["y"] = 2042,
-                ["x"] = 2874.4,
-            },
             ["Fillers"] = {
                 [25058] = {
                     ["1"] = "1",
@@ -8823,10 +7783,6 @@ elseif (APR.Race == "Goblin") then
                 [25024] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1871.8,
-                ["x"] = 2875.9,
             },
             ["Button"] = {
                 ["25058-1"] = 52280,
@@ -8881,10 +7837,6 @@ elseif (APR.Race == "Goblin") then
             },
             ["ExtraLineText"] = "TALK_SASSY",
             ["Gossip"] = 38872,
-            ["Trigger"] = {
-                ["y"] = 1619.5,
-                ["x"] = 2697.9,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 1619.5,
@@ -8892,10 +7844,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [5]
         {
-            ["Trigger"] = {
-                ["y"] = 1824.5,
-                ["x"] = 2954.6,
-            },
             ["Qpart"] = {
                 [25066] = {
                     ["1"] = "1",
@@ -8980,10 +7928,6 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 1797.3,
-                ["x"] = 1941,
-            },
             ["Range"] = 8.94,
             ["Waypoint"] = 25109,
             ["TT"] = {
@@ -8992,10 +7936,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [10]
         {
-            ["Trigger"] = {
-                ["y"] = 1810,
-                ["x"] = 1923.2,
-            },
             ["Range"] = 8.9,
             ["Waypoint"] = 25109,
             ["TT"] = {
@@ -9004,10 +7944,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [11]
         {
-            ["Trigger"] = {
-                ["y"] = 1836.7,
-                ["x"] = 1913.2,
-            },
             ["Range"] = 9.37,
             ["Waypoint"] = 25109,
             ["TT"] = {
@@ -9016,10 +7952,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [12]
         {
-            ["Trigger"] = {
-                ["y"] = 1811.5,
-                ["x"] = 1898.9,
-            },
             ["Range"] = 9.71,
             ["Waypoint"] = 25109,
             ["TT"] = {
@@ -9028,10 +7960,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [13]
         {
-            ["Trigger"] = {
-                ["y"] = 1777.5,
-                ["x"] = 1946.5,
-            },
             ["Range"] = 12.97,
             ["Waypoint"] = 25109,
             ["TT"] = {
@@ -9040,10 +7968,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = 1770.5,
-                ["x"] = 1976.7,
-            },
             ["Range"] = 15.14,
             ["Waypoint"] = 25109,
             ["TT"] = {
@@ -9070,10 +7994,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [17]
         {
-            ["Trigger"] = {
-                ["y"] = 1770.4,
-                ["x"] = 1942,
-            },
             ["Qpart"] = {
                 [25110] = {
                     ["1"] = "1",
@@ -9115,10 +8035,6 @@ elseif (APR.Race == "Goblin") then
                     ["4"] = "4",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1827,
-                ["x"] = 1810.2,
-            },
             ["Button"] = {
                 ["25122-2"] = 52484,
             },
@@ -9138,10 +8054,6 @@ elseif (APR.Race == "Goblin") then
                 [25122] = {
                     ["4"] = "4",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1763.5,
-                ["x"] = 1811.2,
             },
             ["Button"] = {
                 ["25122-1"] = 52484,
@@ -9163,10 +8075,6 @@ elseif (APR.Race == "Goblin") then
                     ["4"] = "4",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 1914.2,
-                ["x"] = 1808.4,
-            },
             ["Button"] = {
                 ["25122-3"] = 52484,
             },
@@ -9181,10 +8089,6 @@ elseif (APR.Race == "Goblin") then
                 [25123] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1913.2,
-                ["x"] = 1853.3,
             },
             ["Fillers"] = {
                 [25122] = {
@@ -9205,10 +8109,6 @@ elseif (APR.Race == "Goblin") then
                 [25122] = {
                     ["4"] = "4",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 1912.8,
-                ["x"] = 1860.5,
             },
             ["Button"] = {
                 ["25122-4"] = 52484,
@@ -9239,10 +8139,6 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 1911.7,
-                ["x"] = 1817.5,
-            },
             ["Range"] = 13.55,
             ["Waypoint"] = 25125,
             ["TT"] = {
@@ -9288,10 +8184,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [7]
         {
-            ["Trigger"] = {
-                ["y"] = 2308.8,
-                ["x"] = 1950.8,
-            },
             ["Qpart"] = {
                 [25200] = {
                     ["1"] = "1",
@@ -9335,10 +8227,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [11]
         {
-            ["Trigger"] = {
-                ["y"] = 2483.3,
-                ["x"] = 2090.5,
-            },
             ["Qpart"] = {
                 [25204] = {
                     ["1"] = "1",
@@ -9375,10 +8263,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [14]
         {
-            ["Trigger"] = {
-                ["y"] = 2487.1,
-                ["x"] = 2063.4,
-            },
             ["Qpart"] = {
                 [25207] = {
                     ["1"] = "1",
@@ -9442,10 +8326,6 @@ elseif (APR.Race == "Goblin") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 2064.6,
-                ["x"] = 2591.1,
-            },
             ["Fillers"] = {
                 [25214] = {
                     ["1"] = "1",
@@ -9458,10 +8338,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [21]
         {
-            ["Trigger"] = {
-                ["y"] = 2058.3,
-                ["x"] = 2591,
-            },
             ["Qpart"] = {
                 [25214] = {
                     ["1"] = "1",
@@ -9493,10 +8369,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [24]
         {
-            ["Trigger"] = {
-                ["y"] = 2124,
-                ["x"] = 2404.5,
-            },
             ["Qpart"] = {
                 [25251] = {
                     ["1"] = "1",
@@ -9509,10 +8381,6 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [25]
         {
-            ["Trigger"] = {
-                ["y"] = 2280.9,
-                ["x"] = 2421.4,
-            },
             ["Qpart"] = {
                 [25251] = {
                     ["2"] = "2",
@@ -9598,10 +8466,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -990.8,
-            ["x"] = -4933.9,
-        },
         ["Qpart"] = {
             [25170] = {
                 ["1"] = "1",
@@ -9614,10 +8478,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [3]
     {
-        ["Trigger"] = {
-            ["y"] = -1002,
-            ["x"] = -4741.9,
-        },
         ["Qpart"] = {
             [25167] = {
                 ["1"] = "1",
@@ -9677,10 +8537,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
     },
     {
         ["Waypoint"] = 25169,
-        ["Trigger"] = {
-            ["y"] = -983.5,
-            ["x"] = -4661.7,
-        },
         ["Fillers"] = {
             [25165] = {
                 ["1"] = "1",
@@ -9700,10 +8556,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
     }, -- [10]
     {
         ["Waypoint"] = 25169,
-        ["Trigger"] = {
-            ["y"] = -1015.3,
-            ["x"] = -4617.7,
-        },
         ["Fillers"] = {
             [25168] = {
                 ["1"] = "1",
@@ -9720,10 +8572,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
             [25169] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1065,
-            ["x"] = -4599.5,
         },
         ["Fillers"] = {
             [25168] = {
@@ -9742,10 +8590,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -923.2,
-            ["x"] = -4497.2,
-        },
         ["Fillers"] = {
             [25168] = {
                 ["1"] = "1",
@@ -9759,10 +8603,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
     }, -- [13]
     {
         ["Waypoint"] = 25169,
-        ["Trigger"] = {
-            ["y"] = -1012.5,
-            ["x"] = -4492.3,
-        },
         ["Fillers"] = {
             [25168] = {
                 ["1"] = "1",
@@ -9776,10 +8616,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
     }, -- [14]
     {
         ["Waypoint"] = 25169,
-        ["Trigger"] = {
-            ["y"] = -1026.8,
-            ["x"] = -4448.8,
-        },
         ["Fillers"] = {
             [25168] = {
                 ["1"] = "1",
@@ -9797,10 +8633,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -973.3,
-            ["x"] = -4417,
-        },
         ["Fillers"] = {
             [25168] = {
                 ["1"] = "1",
@@ -9813,10 +8645,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [16]
     {
-        ["Trigger"] = {
-            ["y"] = -980.8,
-            ["x"] = -4650.9,
-        },
         ["Waypoint"] = 25169,
         ["Range"] = 20.18,
         ["TT"] = {
@@ -9829,10 +8657,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
             [25165] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -866.3,
-            ["x"] = -4767.3,
         },
         ["Button"] = {
             ["25165-1"] = 52505,
@@ -9866,10 +8690,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
     {
         ["Waypoint"] = 25169,
         ["ExtraLineText"] = "TALK_JHASH",
-        ["Trigger"] = {
-            ["y"] = -606.2,
-            ["x"] = -4724.3,
-        },
         ["RaidIcon"] = 10676,
         ["Range"] = 39.7,
         ["TT"] = {
@@ -9914,10 +8734,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [25]
     {
-        ["Trigger"] = {
-            ["y"] = 262,
-            ["x"] = -4824.7,
-        },
         ["Waypoint"] = 25173,
         ["Range"] = 11.68,
         ["TT"] = {
@@ -9927,10 +8743,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
     }, -- [26]
     {
         ["Waypoint"] = 25173,
-        ["Trigger"] = {
-            ["y"] = -245.7,
-            ["x"] = -5079.4,
-        },
         ["Fillers"] = {
             [25176] = {
                 ["1"] = "1",
@@ -9952,10 +8764,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -247,
-            ["x"] = -5119,
-        },
         ["Fillers"] = {
             [25176] = {
                 ["1"] = "1",
@@ -9972,10 +8780,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [28]
     {
-        ["Trigger"] = {
-            ["y"] = -245.5,
-            ["x"] = -5076,
-        },
         ["Qpart"] = {
             [25176] = {
                 ["1"] = "1",
@@ -10056,10 +8860,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [35]
     {
-        ["Trigger"] = {
-            ["y"] = 121,
-            ["x"] = -5105.4,
-        },
         ["Qpart"] = {
             [25178] = {
                 ["1"] = "1",
@@ -10106,10 +8906,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [39]
     {
-        ["Trigger"] = {
-            ["y"] = 333.6,
-            ["x"] = -4631.5,
-        },
         ["Waypoint"] = 25232,
         ["Range"] = 13.96,
         ["TT"] = {
@@ -10142,10 +8938,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Dontskipvid"] = 1,
-        ["Trigger"] = {
-            ["y"] = 385.5,
-            ["x"] = -4581.7,
-        },
         ["Button"] = {
             ["25187-1"] = 52514,
         },
@@ -10162,10 +8954,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Dontskipvid"] = 1,
-        ["Trigger"] = {
-            ["y"] = 385.5,
-            ["x"] = -4581.7,
-        },
         ["Button"] = {
             ["25187-2"] = 52514,
         },
@@ -10182,10 +8970,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Dontskipvid"] = 1,
-        ["Trigger"] = {
-            ["y"] = 385.5,
-            ["x"] = -4581.7,
-        },
         ["Button"] = {
             ["25187-3"] = 52514,
         },
@@ -10202,10 +8986,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Dontskipvid"] = 1,
-        ["Trigger"] = {
-            ["y"] = 385.5,
-            ["x"] = -4581.7,
-        },
         ["Button"] = {
             ["25187-4"] = 52514,
         },
@@ -10243,10 +9023,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [49]
     {
-        ["Trigger"] = {
-            ["y"] = 93.8,
-            ["x"] = -4368.2,
-        },
         ["Qpart"] = {
             [25190] = {
                 ["1"] = "1",
@@ -10278,10 +9054,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [52]
     {
-        ["Trigger"] = {
-            ["y"] = -98.6,
-            ["x"] = -3987.7,
-        },
         ["Qpart"] = {
             [25192] = {
                 ["1"] = "1",
@@ -10313,10 +9085,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [55]
     {
-        ["Trigger"] = {
-            ["y"] = 116.9,
-            ["x"] = -3818.9,
-        },
         ["Qpart"] = {
             [25194] = {
                 ["1"] = "1",
@@ -10352,10 +9120,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 732.6,
-            ["x"] = -3839.2,
-        },
         ["RaidIcon"] = 39385,
         ["Range"] = 52.21,
         ["TT"] = {
@@ -10382,10 +9146,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [61]
     {
-        ["Trigger"] = {
-            ["y"] = 582.2,
-            ["x"] = -4071.2,
-        },
         ["Qpart"] = {
             [25193] = {
                 ["1"] = "1",
@@ -10416,10 +9176,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [64]
     {
-        ["Trigger"] = {
-            ["y"] = 428.8,
-            ["x"] = -4847.4,
-        },
         ["Range"] = 29.49,
         ["Waypoint"] = 25232,
         ["TT"] = {
@@ -10428,10 +9184,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 792.6,
-            ["x"] = -4754.8,
-        },
         ["Qpart"] = {
             [25232] = {
                 ["1"] = "1",
@@ -10472,10 +9224,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [69]
     {
-        ["Trigger"] = {
-            ["y"] = 1054.4,
-            ["x"] = -4521,
-        },
         ["Waypoint"] = 834,
         ["Range"] = 21.83,
         ["TT"] = {
@@ -10484,10 +9232,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [70]
     {
-        ["Trigger"] = {
-            ["y"] = 846.1,
-            ["x"] = -4695.4,
-        },
         ["Qpart"] = {
             [835] = {
                 ["1"] = "1",
@@ -10541,10 +9285,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Gossip"] = 34398,
-        ["Trigger"] = {
-            ["y"] = 1286.5,
-            ["x"] = -4336,
-        },
         ["RaidIcon"] = 39380,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -10557,10 +9297,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
             [25205] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1237.8,
-            ["x"] = -4728.5,
         },
         ["RaidIcon"] = 39365,
         ["Range"] = 1.46,
@@ -10588,10 +9324,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = 1137.5,
-            ["x"] = -3997,
-        },
         ["Qpart"] = {
             [25206] = {
                 ["1"] = "1",
@@ -10615,10 +9347,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 869.5,
-            ["x"] = -4187.7,
-        },
         ["RaidIcon"] = 3203,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -10627,10 +9355,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 897,
-            ["x"] = -4118.9,
-        },
         ["Qpart"] = {
             [25236] = {
                 ["1"] = "1",
@@ -10708,10 +9432,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1024.7,
-            ["x"] = -5084.4,
-        },
         ["RaidIcon"] = 39353,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -10725,10 +9445,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1011.2,
-            ["x"] = -5115.7,
-        },
         ["RaidIcon"] = 39351,
         ["Range"] = 0.61,
         ["TT"] = {
@@ -10741,10 +9457,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
             [25259] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 982.2,
-            ["x"] = -5104.2,
         },
         ["RaidIcon"] = 39352,
         ["Range"] = 0.69,
@@ -10765,10 +9477,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1462.8,
-            ["x"] = -4874,
-        },
         ["Waypoint"] = 25262,
         ["Range"] = 12.99,
         ["TT"] = {
@@ -10777,10 +9485,6 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = 1497.7,
-            ["x"] = -4836.7,
-        },
         ["Qpart"] = {
             [25262] = {
                 ["1"] = "1",
@@ -10859,10 +9563,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -4.1,
-            ["x"] = -3617.5,
-        },
         ["Fillers"] = {
             [844] = {
                 ["1"] = "1",
@@ -10916,10 +9616,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [8]
     {
-        ["Trigger"] = {
-            ["y"] = -175.5,
-            ["x"] = -3610.2,
-        },
         ["Waypoint"] = 5041,
         ["Range"] = 19.92,
         ["TT"] = {
@@ -10938,10 +9634,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -288.5,
-            ["x"] = -3490.2,
-        },
         ["RaidIcon"] = 3438,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -10950,10 +9642,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [10]
     {
-        ["Trigger"] = {
-            ["y"] = -188.7,
-            ["x"] = -3597.2,
-        },
         ["Waypoint"] = 872,
         ["Range"] = 14.22,
         ["TT"] = {
@@ -10962,10 +9650,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [11]
     {
-        ["Trigger"] = {
-            ["y"] = 220.8,
-            ["x"] = -3540,
-        },
         ["Qpart"] = {
             [844] = {
                 ["1"] = "1",
@@ -11012,10 +9696,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 256,
-            ["x"] = -3494.7,
-        },
         ["RaidIcon"] = 34258,
         ["Range"] = 4.23,
         ["TT"] = {
@@ -11069,10 +9749,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [21]
     {
-        ["Trigger"] = {
-            ["y"] = 203.6,
-            ["x"] = -2799.5,
-        },
         ["Qpart"] = {
             [13973] = {
                 ["1"] = "1",
@@ -11094,10 +9770,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 267.3,
-            ["x"] = -3048.5,
-        },
         ["Button"] = {
             ["13961-1"] = 46722,
         },
@@ -11131,10 +9803,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [13963] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 286.1,
-            ["x"] = -3049,
         },
         ["RaidIcon"] = 34523,
         ["Range"] = 0.69,
@@ -11207,10 +9875,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -50.3,
-            ["x"] = -3375.2,
-        },
         ["RaidIcon"] = 34543,
         ["Range"] = 48.88,
         ["TT"] = {
@@ -11253,10 +9917,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 221.5,
-            ["x"] = -2935.5,
-        },
         ["RaidIcon"] = 34578,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -11341,10 +10001,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 89.9,
-            ["x"] = -1943,
-        },
         ["Fillers"] = {
             [848] = {
                 ["1"] = "1",
@@ -11373,10 +10029,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 19.6,
-            ["x"] = -1713,
-        },
         ["RaidIcon"] = 3394,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -11385,10 +10037,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [45]
     {
-        ["Trigger"] = {
-            ["y"] = 24.6,
-            ["x"] = -1858.4,
-        },
         ["Qpart"] = {
             [848] = {
                 ["1"] = "1",
@@ -11432,10 +10080,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 605.2,
-            ["x"] = -1343.1,
-        },
         ["Qpart"] = {
             [875] = {
                 ["1"] = "1",
@@ -11483,10 +10127,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 788.4,
-            ["x"] = -1351,
-        },
         ["RaidIcon"] = 3452,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -11522,10 +10162,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 659.2,
-            ["x"] = -2204.7,
-        },
         ["Qpart"] = {
             [29090] = {
                 ["1"] = "1",
@@ -11561,10 +10197,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1024.8,
-            ["x"] = -3082.9,
-        },
         ["RaidIcon"] = 3445,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -11595,10 +10227,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [863] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1104.9,
-            ["x"] = -3096.5,
         },
         ["RaidIcon"] = 3439,
         ["Range"] = 176,
@@ -11637,10 +10265,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [19]
     {
-        ["Trigger"] = {
-            ["y"] = 1072.5,
-            ["x"] = -3135.9,
-        },
         ["Qpart"] = {
             [29087] = {
                 ["1"] = "1",
@@ -11665,10 +10289,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [24]
     {
-        ["Trigger"] = {
-            ["y"] = 1069.7,
-            ["x"] = -3139.7,
-        },
         ["Qpart"] = {
             [29089] = {
                 ["1"] = "1",
@@ -11681,10 +10301,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [25]
     {
-        ["Trigger"] = {
-            ["y"] = 856.7,
-            ["x"] = -2931.5,
-        },
         ["Qpart"] = {
             [29088] = {
                 ["1"] = "1",
@@ -11715,10 +10331,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [23]
     {
-        ["Trigger"] = {
-            ["y"] = 842.6,
-            ["x"] = -2687,
-        },
         ["Qpart"] = {
             [29022] = {
                 ["2"] = "2",
@@ -11731,10 +10343,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 842.6,
-            ["x"] = -2675.4,
-        },
         ["Qpart"] = {
             [29022] = {
                 ["3"] = "3",
@@ -11747,10 +10355,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 831,
-            ["x"] = -2678.9,
-        },
         ["Qpart"] = {
             [29022] = {
                 ["1"] = "1",
@@ -11785,10 +10389,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [29023] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 910.7,
-            ["x"] = -2731.4,
         },
         ["RaidIcon"] = 3471,
         ["Range"] = 0.69,
@@ -11881,10 +10481,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [15]
     {
-        ["Trigger"] = {
-            ["y"] = 659.2,
-            ["x"] = -2225.7,
-        },
         ["Qpart"] = {
             [29027] = {
                 ["1"] = "1",
@@ -11953,10 +10549,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 1077.4,
-            ["x"] = -3621.2,
-        },
         ["Range"] = 28.89,
         ["Waypoint"] = 14006,
         ["TT"] = {
@@ -11966,10 +10558,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     }, -- [23]
     {
         ["Waypoint"] = 14006,
-        ["Trigger"] = {
-            ["y"] = 1311.5,
-            ["x"] = -3587.5,
-        },
         ["Fillers"] = {
             [29015] = {
                 ["1"] = "1",
@@ -11989,10 +10577,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [14006] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1341.5,
-            ["x"] = -3576,
         },
         ["Button"] = {
             ["14006-1"] = 11147,
@@ -12024,10 +10608,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [27]
     {
-        ["Trigger"] = {
-            ["y"] = 1143.5,
-            ["x"] = -3368.7,
-        },
         ["Qpart"] = {
             [29094] = {
                 ["1"] = "1",
@@ -12049,10 +10629,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [29]
     {
-        ["Trigger"] = {
-            ["y"] = -520.3,
-            ["x"] = -2470.5,
-        },
         ["Qpart"] = {
             [903] = {
                 ["1"] = "1",
@@ -12128,10 +10704,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 126.8,
-            ["x"] = -2540.2,
-        },
         ["Button"] = {
             ["881-1"] = 10327,
         },
@@ -12183,10 +10755,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1105.8,
-            ["x"] = -2556.7,
-        },
         ["Button"] = {
             ["905-2"] = 5165,
         },
@@ -12202,10 +10770,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1055.8,
-            ["x"] = -2587.5,
-        },
         ["Button"] = {
             ["905-3"] = 5165,
         },
@@ -12220,10 +10784,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [905] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1068,
-            ["x"] = -2651.2,
         },
         ["Button"] = {
             ["905-1"] = 5165,
@@ -12253,10 +10813,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = -1191.3,
-            ["x"] = -2919,
-        },
         ["Qpart"] = {
             [13995] = {
                 ["1"] = "1",
@@ -12280,10 +10836,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1192.5,
-            ["x"] = -2990.2,
-        },
         ["Button"] = {
             ["13998-1"] = 46789,
         },
@@ -12298,10 +10850,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [14072] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1238,
-            ["x"] = -3015.5,
         },
         ["ExtraLineText"] = "SEARCH_CENTAUR_TENTS",
         ["Range"] = 153.44,
@@ -12335,10 +10883,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1210.8,
-            ["x"] = -2725.2,
-        },
         ["RaidIcon"] = 34846,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -12356,10 +10900,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [12]
     {
-        ["Trigger"] = {
-            ["y"] = -1288.9,
-            ["x"] = -3172.2,
-        },
         ["Range"] = 17.03,
         ["Waypoint"] = 13988,
         ["TT"] = {
@@ -12372,10 +10912,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [13988] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1478.5,
-            ["x"] = -3294.2,
         },
         ["Button"] = {
             ["13988-1"] = 46782,
@@ -12411,10 +10947,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1274.8,
-            ["x"] = -3013.2,
-        },
         ["Fillers"] = {
             [880] = {
                 ["1"] = "1",
@@ -12427,10 +10959,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [17]
     {
-        ["Trigger"] = {
-            ["y"] = -1274.8,
-            ["x"] = -3013.2,
-        },
         ["Qpart"] = {
             [880] = {
                 ["1"] = "1",
@@ -12517,10 +11045,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [26]
     {
-        ["Trigger"] = {
-            ["y"] = -802.7,
-            ["x"] = -1946,
-        },
         ["Waypoint"] = 852,
         ["Range"] = 49.25,
         ["TT"] = {
@@ -12533,10 +11057,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [852] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -973.5,
-            ["x"] = -2136.5,
         },
         ["Fillers"] = {
             [855] = {
@@ -12551,10 +11071,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [28]
     {
-        ["Trigger"] = {
-            ["y"] = -989.8,
-            ["x"] = -2117.7,
-        },
         ["Qpart"] = {
             [855] = {
                 ["1"] = "1",
@@ -12592,10 +11108,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["ExtraLineText"] = "KILL_CENTAURS",
-        ["Trigger"] = {
-            ["y"] = -273.3,
-            ["x"] = -1871.3,
-        },
         ["RaidIcon"] = 9456,
         ["Range"] = 0.61,
         ["TT"] = {
@@ -12692,10 +11204,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1051.1,
-            ["x"] = -3645.9,
-        },
         ["Fillers"] = {
             [891] = {
                 ["3"] = "3",
@@ -12709,10 +11217,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [42]
     {
-        ["Trigger"] = {
-            ["y"] = -858.8,
-            ["x"] = -3754.2,
-        },
         ["Waypoint"] = 14034,
         ["Range"] = 15.87,
         ["TT"] = {
@@ -12739,10 +11243,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [45]
     {
-        ["Trigger"] = {
-            ["y"] = -874.8,
-            ["x"] = -3562.9,
-        },
         ["Waypoint"] = 865,
         ["Range"] = 16.25,
         ["TT"] = {
@@ -12751,10 +11251,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [46]
     {
-        ["Trigger"] = {
-            ["y"] = -845.5,
-            ["x"] = -3549.9,
-        },
         ["Waypoint"] = 865,
         ["Range"] = 15.23,
         ["TT"] = {
@@ -12767,10 +11263,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [865] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -371.4,
-            ["x"] = -3512.5,
         },
         ["RaidIcon"] = 34829,
         ["Range"] = 0.75,
@@ -12789,10 +11281,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [49]
     {
-        ["Trigger"] = {
-            ["y"] = -1049.4,
-            ["x"] = -3697,
-        },
         ["Waypoint"] = 891,
         ["Range"] = 20.13,
         ["TT"] = {
@@ -12805,10 +11293,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [891] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1427.4,
-            ["x"] = -3851.5,
         },
         ["Fillers"] = {
             [891] = {
@@ -12852,10 +11336,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Gossip"] = 2,
-        ["Trigger"] = {
-            ["y"] = -1453.8,
-            ["x"] = -3815,
-        },
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -1453.8,
@@ -12877,10 +11357,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1316,
-            ["x"] = -3784.2,
-        },
         ["Fillers"] = {
             [891] = {
                 ["3"] = "3",
@@ -12897,10 +11373,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [891] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1465,
-            ["x"] = -3878.7,
         },
         ["Fillers"] = {
             [891] = {
@@ -12921,10 +11393,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["Button"] = {
             ["14038-1"] = 46829,
-        },
-        ["Trigger"] = {
-            ["y"] = -1456.4,
-            ["x"] = -3970.4,
         },
         ["Fillers"] = {
             [891] = {
@@ -12957,10 +11425,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [60]
     {
-        ["Trigger"] = {
-            ["y"] = -1613.1,
-            ["x"] = -3851.7,
-        },
         ["Qpart"] = {
             [14042] = {
                 ["1"] = "1",
@@ -12985,10 +11449,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [887] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1609.4,
-            ["x"] = -4270.9,
         },
         ["RaidIcon"] = 34750,
         ["Range"] = 0.69,
@@ -13031,10 +11491,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1667.4,
-            ["x"] = -4216.9,
-        },
         ["RaidIcon"] = 34747,
         ["Range"] = 0.61,
         ["TT"] = {
@@ -13070,10 +11526,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [14057] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1609.1,
-            ["x"] = -4271.4,
         },
         ["Fillers"] = {
             [887] = {
@@ -13115,10 +11567,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [70]
     {
-        ["Trigger"] = {
-            ["y"] = -1644.3,
-            ["x"] = -4230.5,
-        },
         ["Qpart"] = {
             [887] = {
                 ["1"] = "1",
@@ -13135,10 +11583,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [14063] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1648.9,
-            ["x"] = -4383.9,
         },
         ["Button"] = {
             ["14063-1"] = 46838,
@@ -13189,10 +11633,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [76]
     {
-        ["Trigger"] = {
-            ["y"] = -1059,
-            ["x"] = -3561.2,
-        },
         ["Range"] = 11.49,
         ["Waypoint"] = 14050,
         ["TT"] = {
@@ -13201,10 +11641,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [77]
     {
-        ["Trigger"] = {
-            ["y"] = -1109.4,
-            ["x"] = -3568.7,
-        },
         ["Range"] = 18.64,
         ["Waypoint"] = 14050,
         ["TT"] = {
@@ -13213,10 +11649,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [78]
     {
-        ["Trigger"] = {
-            ["y"] = -1160.3,
-            ["x"] = -3602.2,
-        },
         ["Qpart"] = {
             [14050] = {
                 ["1"] = "1",
@@ -13229,10 +11661,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [79]
     {
-        ["Trigger"] = {
-            ["y"] = -847.7,
-            ["x"] = -3546.9,
-        },
         ["Range"] = 17.65,
         ["Waypoint"] = 14066,
         ["TT"] = {
@@ -13241,10 +11669,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [80]
     {
-        ["Trigger"] = {
-            ["y"] = -761,
-            ["x"] = -3587.5,
-        },
         ["Qpart"] = {
             [14066] = {
                 ["1"] = "1",
@@ -13284,10 +11708,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [94]
     {
-        ["Trigger"] = {
-            ["y"] = -521.3,
-            ["x"] = -3453.5,
-        },
         ["Qpart"] = {
             [869] = {
                 ["1"] = "1",
@@ -13332,10 +11752,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -441.7,
-            ["x"] = -3459,
-        },
         ["Button"] = {
             ["14068-1"] = 46853,
         },
@@ -13357,10 +11773,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -504.5,
-            ["x"] = -3415.4,
-        },
         ["Button"] = {
             ["14068-1"] = 46853,
         },
@@ -13371,10 +11783,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -441.8,
-            ["x"] = -3458.9,
-        },
         ["Qpart"] = {
             [14067] = {
                 ["1"] = "1",
@@ -13393,10 +11801,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -441.7,
-            ["x"] = -3459,
-        },
         ["Fillers"] = {
             [14067] = {
                 ["1"] = "1",
@@ -13420,10 +11824,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [14068] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -504.5,
-            ["x"] = -3415.4,
         },
         ["Fillers"] = {
             [14067] = {
@@ -13477,10 +11877,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [84]
     {
-        ["Trigger"] = {
-            ["y"] = -705,
-            ["x"] = -3987,
-        },
         ["Qpart"] = {
             [26769] = {
                 ["1"] = "1",
@@ -13518,10 +11914,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -381,
-            ["x"] = -2688.7,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -381,
@@ -13529,10 +11921,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = -381.9,
-            ["x"] = -2679.2,
-        },
         ["Qpart"] = {
             [29109] = {
                 ["2"] = "2",
@@ -13563,10 +11951,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 348.7,
-            ["x"] = -2514.5,
-        },
         ["Waypoint"] = 29110,
         ["Range"] = 19.41,
         ["TT"] = {
@@ -13575,10 +11959,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = 399.3,
-            ["x"] = -2393.5,
-        },
         ["Waypoint"] = 29110,
         ["Range"] = 21.65,
         ["TT"] = {
@@ -13605,10 +11985,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = 324,
-            ["x"] = -2238.2,
-        },
         ["Qpart"] = {
             [29112] = {
                 ["1"] = "1",
@@ -13645,10 +12021,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 293.8,
-            ["x"] = -2529.2,
-        },
         ["RaidIcon"] = 52207,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -13661,10 +12033,6 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             [29111] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 294.7,
-            ["x"] = -2544,
         },
         ["RaidIcon"] = 52314,
         ["Range"] = 0.69,
@@ -13699,10 +12067,6 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
     },
     {
         ["Waypoint"] = 24504,
-        ["Trigger"] = {
-            ["y"] = -425.7,
-            ["x"] = -1161.6,
-        },
         ["Fillers"] = {
             [24504] = {
                 ["1"] = "1",
@@ -13715,10 +12079,6 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         },
     },
     {
-        ["Trigger"] = {
-            ["y"] = -516.8,
-            ["x"] = -1269.1,
-        },
         ["Qpart"] = {
             [24504] = {
                 ["1"] = "1",
@@ -13789,10 +12149,6 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -485.4,
-            ["x"] = -1402,
-        },
         ["RaidIcon"] = 37157,
         ["Range"] = 0.69,
         ["TT"] = {
@@ -13827,10 +12183,6 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -492.2,
-            ["x"] = -1399,
-        },
         ["Range"] = 24.41,
         ["TT"] = {
             ["y"] = -492.2,
@@ -13886,10 +12238,6 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -551.5,
-            ["x"] = -1592.3,
-        },
         ["RaidIcon"] = 37216,
         ["Range"] = 24.84,
         ["TT"] = {
@@ -13903,10 +12251,6 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -506.8,
-            ["x"] = -1530,
-        },
         ["Fillers"] = {
             [24514] = {
                 ["1"] = "1",
@@ -13919,10 +12263,6 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         },
     }, -- [5]
     {
-        ["Trigger"] = {
-            ["y"] = -910.5,
-            ["x"] = -1747.5,
-        },
         ["Qpart"] = {
             [24514] = {
                 ["1"] = "1",

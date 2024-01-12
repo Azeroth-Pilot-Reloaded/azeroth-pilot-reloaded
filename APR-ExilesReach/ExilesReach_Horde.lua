@@ -11,10 +11,6 @@ if (APR.Faction == "Horde") then
             ["NoArrows"] = 1,
         },
         {
-            ["Trigger"] = {
-                ["y"] = -10731.3,
-                ["x"] = -1398.3,
-            },
             ["Qpart"] = {
                 [59926] = {
                     ["1"] = "1",
@@ -52,10 +48,6 @@ if (APR.Faction == "Horde") then
                 [59927] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = -10308.3,
-                ["x"] = 1905.5,
             },
             ["RaidIcon"] = 166814,
             ["Range"] = 2.15,
@@ -105,10 +97,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = -365.9,
-                ["x"] = -2561.9,
-            },
             ["Qpart"] = {
                 [59929] = {
                     ["1"] = "1",
@@ -147,7 +135,6 @@ if (APR.Faction == "Horde") then
             ["Button"] = {
                 ["59930-2"] = 168410,
             },
-            ["Trigger"] = { ["y"] = -447.5, ["x"] = -2605.7, },
             ["RaidIcon"] = 166786,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -164,10 +151,6 @@ if (APR.Faction == "Horde") then
             ["Button"] = {
                 ["59930-3"] = 168410,
             },
-            ["Trigger"] = {
-                ["y"] = -428.4,
-                ["x"] = -2593.7,
-            },
             ["RaidIcon"] = 166791,
             ["Range"] = 0.61,
             ["TT"] = {
@@ -183,10 +166,6 @@ if (APR.Faction == "Horde") then
             },
             ["Button"] = {
                 ["59930-1"] = 168410,
-            },
-            ["Trigger"] = {
-                ["y"] = -420.4,
-                ["x"] = -2599.7,
             },
             ["RaidIcon"] = 166796,
             ["Range"] = 0.69,
@@ -215,10 +194,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = -247.9,
-                ["x"] = -2492.9,
-            },
             ["Qpart"] = {
                 [59931] = {
                     ["1"] = "1",
@@ -249,10 +224,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = -184,
-                ["x"] = -2477.5,
-            },
             ["Qpart"] = {
                 [59932] = {
                     ["1"] = "1",
@@ -265,10 +236,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = -247.2,
-                ["x"] = -2490.4,
-            },
             ["Qpart"] = {
                 [59932] = {
                     ["2"] = "2",
@@ -302,10 +269,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "DRUID"
         },
         {
-            ["Trigger"] = {
-                ["y"] = -235.4,
-                ["x"] = -2482.5,
-            },
             ["Qpart"] = {
                 [59933] = {
                     ["1"] = "1",
@@ -340,10 +303,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "HUNTER"
         },
         {
-            ["Trigger"] = {
-                ["y"] = -170,
-                ["x"] = -2574.5,
-            },
             ["Qpart"] = {
                 [59937] = {
                     ["2"] = "2",
@@ -378,10 +337,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "MAGE"
         },
         {
-            ["Trigger"] = {
-                ["y"] = -235.4,
-                ["x"] = -2482.5,
-            },
             ["Qpart"] = {
                 [59933] = {
                     ["1"] = "1",
@@ -422,10 +377,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -194,
-                ["x"] = -2481.4,
-            },
             ["RaidIcon"] = 164577,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -456,10 +407,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "PALADIN"
         },
         {
-            ["Trigger"] = {
-                ["y"] = -235.4,
-                ["x"] = -2482.5,
-            },
             ["Qpart"] = {
                 [59933] = {
                     ["1"] = "1",
@@ -494,10 +441,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "PRIEST"
         },
         {
-            ["Trigger"] = {
-                ["y"] = -235.4,
-                ["x"] = -2482.5,
-            },
             ["Qpart"] = {
                 [59933] = {
                     ["1"] = "1",
@@ -532,10 +475,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "ROGUE"
         },
         {
-            ["Trigger"] = {
-                ["y"] = -235.4,
-                ["x"] = -2482.5,
-            },
             ["Qpart"] = {
                 [59933] = {
                     ["1"] = "1",
@@ -570,10 +509,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "SHAMAN"
         },
         {
-            ["Trigger"] = {
-                ["y"] = -235.4,
-                ["x"] = -2482.5,
-            },
             ["Qpart"] = {
                 [59933] = {
                     ["1"] = "1",
@@ -608,10 +543,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "WARLOCK"
         },
         {
-            ["Trigger"] = {
-                ["y"] = -235.4,
-                ["x"] = -2482.5,
-            },
             ["Qpart"] = {
                 [59933] = {
                     ["1"] = "1",
@@ -646,10 +577,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "WARRIOR"
         },
         {
-            ["Trigger"] = {
-                ["y"] = -235.4,
-                ["x"] = -2482.5,
-            },
             ["Qpart"] = {
                 [59933] = {
                     ["1"] = "1",
@@ -703,10 +630,6 @@ if (APR.Faction == "Horde") then
         },
         {
             ["Waypoint"] = 59938,
-            ["Trigger"] = {
-                ["y"] = -76.9,
-                ["x"] = -2641.2,
-            },
             ["Fillers"] = {
                 [59939] = {
                     ["1"] = "1",
@@ -720,10 +643,6 @@ if (APR.Faction == "Horde") then
         },
         {
             ["Waypoint"] = 59938,
-            ["Trigger"] = {
-                ["y"] = 43.5,
-                ["x"] = -2578.2,
-            },
             ["Fillers"] = {
                 [59939] = {
                     ["1"] = "1",
@@ -746,10 +665,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 16.1,
-                ["x"] = -2513,
-            },
             ["RaidIcon"] = 151091,
             ["Range"] = 0.61,
             ["TT"] = {
@@ -758,10 +673,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 50.6,
-                ["x"] = -2581,
-            },
             ["Qpart"] = {
                 [59939] = {
                     ["1"] = "1",
@@ -793,10 +704,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 107.8,
-                ["x"] = -2412.5,
-            },
             ["Qpart"] = {
                 [59940] = {
                     ["1"] = "1",
@@ -832,10 +739,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 134.6,
-                ["x"] = -2444.4,
-            },
             ["Button"] = {
                 ["59941-1"] = 178051,
             },
@@ -864,10 +767,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 108.5,
-                ["x"] = -2414.2,
-            },
             ["Qpart"] = {
                 [59942] = {
                     ["1"] = "1",
@@ -880,10 +779,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 108.5,
-                ["x"] = -2414.2,
-            },
             ["Qpart"] = {
                 [59942] = {
                     ["2"] = "2",
@@ -900,10 +795,6 @@ if (APR.Faction == "Horde") then
                 [59942] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 244.1,
-                ["x"] = -2243.4,
             },
             ["RaidIcon"] = 162817,
             ["Range"] = 0.61,
@@ -923,10 +814,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 231.8,
-                ["x"] = -2275.5,
-            },
             ["Range"] = 8.65,
             ["Waypoint"] = 59950,
             ["TT"] = {
@@ -949,10 +836,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 179.4,
-                ["x"] = -2292,
             },
             ["RaidIcon"] = 167213,
             ["Range"] = 0.69,
@@ -1005,10 +888,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 496.1,
-                ["x"] = -2354.2,
-            },
             ["Fillers"] = {
                 [59945] = {
                     ["1"] = "1",
@@ -1031,10 +910,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 466.3,
-                ["x"] = -2518.9,
-            },
             ["Range"] = 38.88,
             ["TT"] = {
                 ["y"] = 466.3,
@@ -1071,10 +946,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 313.7,
-                ["x"] = -2460.4,
-            },
             ["Qpart"] = {
                 [54933] = {
                     ["1"] = "1",
@@ -1087,10 +958,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 325.3,
-                ["x"] = -2495.5,
-            },
             ["Qpart"] = {
                 [54933] = {
                     ["2"] = "2",
@@ -1103,10 +970,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 291.3,
-                ["x"] = -2513.2,
-            },
             ["Qpart"] = {
                 [54933] = {
                     ["3"] = "3",
@@ -1119,10 +982,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 279.8,
-                ["x"] = -2473.5,
-            },
             ["Qpart"] = {
                 [54933] = {
                     ["4"] = "4",
@@ -1181,10 +1040,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 85,
-                ["x"] = -2228,
-            },
             ["Qpart"] = {
                 [59949] = {
                     ["1"] = "1",
@@ -1197,10 +1052,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 82.9,
-                ["x"] = -2213.5,
-            },
             ["Range"] = 6.36,
             ["Waypoint"] = 59949,
             ["TT"] = {
@@ -1214,10 +1065,6 @@ if (APR.Faction == "Horde") then
                     ["2"] = "2",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 72.5,
-                ["x"] = -2126.7,
-            },
             ["RaidIcon"] = 156900,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -1226,10 +1073,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 75.3,
-                ["x"] = -2134,
-            },
             ["Qpart"] = {
                 [59949] = {
                     ["3"] = "3",
@@ -1263,10 +1106,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "DRUID"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 323.1,
-                ["x"] = -2053,
-            },
             ["Qpart"] = {
                 [59951] = {
                     ["1"] = "1",
@@ -1307,10 +1146,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 183.8,
-                ["x"] = -2285.5,
-            },
             ["RaidIcon"] = 156886,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -1320,10 +1155,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "HUNTER"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 237.8,
-                ["x"] = -2283.9,
-            },
             ["Qpart"] = {
                 [59952] = {
                     ["2"] = "2",
@@ -1337,10 +1168,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "HUNTER"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 270,
-                ["x"] = -2270.7,
-            },
             ["Qpart"] = {
                 [59952] = {
                     ["3"] = "3",
@@ -1374,10 +1201,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "HUNTER"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 228.8,
-                ["x"] = -2273,
-            },
             ["Qpart"] = {
                 [59953] = {
                     ["1"] = "1",
@@ -1411,10 +1234,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "HUNTER"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 189.4,
-                ["x"] = -2289.2,
-            },
             ["Qpart"] = {
                 [60162] = {
                     ["1"] = "1",
@@ -1434,10 +1253,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 2,
-            ["Trigger"] = {
-                ["y"] = 188.6,
-                ["x"] = -2290.7,
-            },
             ["RaidIcon"] = 161666,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -1453,10 +1268,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 188.8,
-                ["x"] = -2290,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 188.8,
@@ -1486,10 +1297,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "MAGE"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 310.3,
-                ["x"] = -2274.7,
-            },
             ["Qpart"] = {
                 [59954] = {
                     ["1"] = "1",
@@ -1529,10 +1336,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 184.1,
-                ["x"] = -2286.2,
-            },
             ["Range"] = 0.75,
             ["TT"] = {
                 ["y"] = 184.1,
@@ -1541,10 +1344,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "MAGE"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 178.9,
-                ["x"] = -2332.2,
-            },
             ["Qpart"] = {
                 [59955] = {
                     ["2"] = "2",
@@ -1585,10 +1384,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 317.5,
-                ["x"] = -2297.5,
-            },
             ["RaidIcon"] = 164835,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -1623,10 +1418,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 309,
-                ["x"] = -2325.7,
-            },
             ["RaidIcon"] = 164868,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -1657,10 +1448,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "PALADIN"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 347.5,
-                ["x"] = -2398.5,
-            },
             ["Range"] = 12.06,
             ["Waypoint"] = 59958,
             ["TT"] = {
@@ -1670,10 +1457,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "PALADIN"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 313.5,
-                ["x"] = -2444.2,
-            },
             ["Range"] = 8.18,
             ["Waypoint"] = 59958,
             ["TT"] = {
@@ -1689,10 +1472,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 257.5,
-                ["x"] = -2464.7,
-            },
             ["RaidIcon"] = 162998,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -1722,10 +1501,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "PALADIN"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 258.5,
-                ["x"] = -2463.7,
-            },
             ["Qpart"] = {
                 [60174] = {
                     ["1"] = "1",
@@ -1739,10 +1514,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "PALADIN"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 246.6,
-                ["x"] = -2450,
-            },
             ["Qpart"] = {
                 [60174] = {
                     ["2"] = "2",
@@ -1782,10 +1553,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 223.3,
-                ["x"] = -2415.2,
-            },
             ["RaidIcon"] = 167188,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -1815,10 +1582,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "PRIEST"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 227.8,
-                ["x"] = -2421.7,
-            },
             ["Qpart"] = {
                 [59965] = {
                     ["1"] = "1",
@@ -1859,10 +1622,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 168.9,
-                ["x"] = -2061.7,
-            },
             ["RaidIcon"] = 162972,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -1872,10 +1631,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "ROGUE"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 185,
-                ["x"] = -2038.6,
-            },
             ["Qpart"] = {
                 [59967] = {
                     ["2"] = "2",
@@ -1909,10 +1664,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "ROGUE"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 175.5,
-                ["x"] = -2063.5,
-            },
             ["Qpart"] = {
                 [59968] = {
                     ["1"] = "1",
@@ -1930,10 +1681,6 @@ if (APR.Faction == "Horde") then
                 [59968] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 270.7,
-                ["x"] = -2159.2,
             },
             ["RaidIcon"] = 163036,
             ["Range"] = 0.69,
@@ -1965,10 +1712,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "SHAMAN"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 276.1,
-                ["x"] = -2288.9,
-            },
             ["Qpart"] = {
                 [59969] = {
                     ["1"] = "1",
@@ -1982,10 +1725,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "SHAMAN"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 180.9,
-                ["x"] = -2284,
-            },
             ["Qpart"] = {
                 [59969] = {
                     ["2"] = "2",
@@ -1999,10 +1738,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "SHAMAN"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 148,
-                ["x"] = -2352.7,
-            },
             ["Qpart"] = {
                 [59969] = {
                     ["3"] = "3",
@@ -2037,10 +1772,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "WARLOCK"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 354.6,
-                ["x"] = -2344.5,
-            },
             ["Range"] = 11.53,
             ["Waypoint"] = 59970,
             ["TT"] = {
@@ -2056,10 +1787,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 398.8,
-                ["x"] = -2295.2,
-            },
             ["RaidIcon"] = 163209,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -2069,10 +1796,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "WARLOCK"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 399.8,
-                ["x"] = -2296.7,
-            },
             ["Qpart"] = {
                 [59970] = {
                     ["2"] = "2",
@@ -2090,10 +1813,6 @@ if (APR.Faction == "Horde") then
                 [59970] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 399.8,
-                ["x"] = -2296.7,
             },
             ["Button"] = {
                 ["59970-3"] = 174947,
@@ -2127,10 +1846,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "WARRIOR"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 272.8,
-                ["x"] = -2331.5,
-            },
             ["Range"] = 20.09,
             ["Waypoint"] = 59971,
             ["TT"] = {
@@ -2140,10 +1855,6 @@ if (APR.Faction == "Horde") then
             ["Class"] = "WARRIOR"
         },
         {
-            ["Trigger"] = {
-                ["y"] = 352.8,
-                ["x"] = -2346.9,
-            },
             ["Range"] = 10.6,
             ["Waypoint"] = 59971,
             ["TT"] = {
@@ -2177,10 +1888,6 @@ if (APR.Faction == "Horde") then
                 [59972] = {
                     ["1"] = "1",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 355.8,
-                ["x"] = -2257.4,
             },
             ["RaidIcon"] = 162948,
             ["Range"] = 0.61,
@@ -2225,10 +1932,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 205.1,
-                ["x"] = -2058.4,
-            },
             ["RaidIcon"] = 153266,
             ["Range"] = 0.61,
             ["TT"] = {
@@ -2246,10 +1949,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 217.4,
-                ["x"] = -2060.4,
-            },
             ["Waypoint"] = 59975,
             ["Range"] = 17.88,
             ["TT"] = {
@@ -2258,10 +1957,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 219.6,
-                ["x"] = -2128,
-            },
             ["Waypoint"] = 59975,
             ["Range"] = 20.92,
             ["TT"] = {
@@ -2294,10 +1989,6 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Gossip"] = 1,
-            ["Trigger"] = {
-                ["y"] = 324.6,
-                ["x"] = -2176.5,
-            },
             ["RaidIcon"] = 156943,
             ["Range"] = 0.69,
             ["TT"] = {
@@ -2306,10 +1997,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 457.3,
-                ["x"] = -2044.8,
-            },
             ["Qpart"] = {
                 [59978] = {
                     ["2"] = "2",
@@ -2322,10 +2009,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 575.4,
-                ["x"] = -2063,
-            },
             ["Qpart"] = {
                 [59978] = {
                     ["3"] = "3",
@@ -2338,10 +2021,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 586.4,
-                ["x"] = -2062.5,
-            },
             ["Qpart"] = {
                 [59978] = {
                     ["4"] = "4",
@@ -2354,10 +2033,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 619,
-                ["x"] = -2076.2,
-            },
             ["Waypoint"] = 59978,
             ["Range"] = 11.9,
             ["TT"] = {
@@ -2366,10 +2041,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 699,
-                ["x"] = -1893.6,
-            },
             ["Qpart"] = {
                 [59978] = {
                     ["6"] = "6",
@@ -2402,10 +2073,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 616.5,
-                ["x"] = -2012.4,
-            },
             ["Range"] = 27.27,
             ["Waypoint"] = 59981,
             ["TT"] = {
@@ -2418,10 +2085,6 @@ if (APR.Faction == "Horde") then
                 [59981] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 592.5,
-                ["x"] = -2009.4,
             },
             ["RaidIcon"] = 153582,
             ["Range"] = 0.69,
@@ -2444,10 +2107,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 659.4,
-                ["x"] = -2127,
-            },
             ["RaidIcon"] = 153583,
             ["Range"] = 0.75,
             ["TT"] = {
@@ -2460,10 +2119,6 @@ if (APR.Faction == "Horde") then
                 [59981] = {
                     ["3"] = "3",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 511.7,
-                ["x"] = -1965,
             },
             ["Fillers"] = {
                 [59980] = {
@@ -2488,10 +2143,6 @@ if (APR.Faction == "Horde") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = 505.7,
-                ["x"] = -2039.5,
-            },
             ["Range"] = 59.07,
             ["TT"] = {
                 ["y"] = 505.7,
@@ -2509,10 +2160,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 708.9,
-                ["x"] = -1869.5,
-            },
             ["Qpart"] = {
                 [59981] = {
                     ["4"] = "4",
@@ -2543,10 +2190,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 709,
-                ["x"] = -1869,
-            },
             ["Qpart"] = {
                 [59984] = {
                     ["1"] = "1",
@@ -2577,10 +2220,6 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["Trigger"] = {
-                ["y"] = 698.6,
-                ["x"] = -1882.6,
-            },
             ["Qpart"] = {
                 [59985] = {
                     ["1"] = "1",

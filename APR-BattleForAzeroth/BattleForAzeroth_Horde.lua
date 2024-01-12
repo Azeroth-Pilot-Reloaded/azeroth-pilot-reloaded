@@ -23,10 +23,6 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
             51443,
             60361,
         },
-        ["Trigger"] = {
-            ["y"] = 1659.8,
-            ["x"] = -4347.9,
-        },
         ["Range"] = 7.73,
         ["TT"] = {
             ["y"] = 1659.8,
@@ -34,10 +30,6 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
         },
     },
     { -- Step 4
-        ["Trigger"] = {
-            ["y"] = 1610.3,
-            ["x"] = -4375.5,
-        },
         ["Waypoint"] = 51443,
         ["Range"] = 11.65,
         ["TT"] = {
@@ -46,10 +38,6 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
         },
     },
     { -- Step 5
-        ["Trigger"] = {
-            ["y"] = 1573.7,
-            ["x"] = -4432.7,
-        },
         ["Waypoint"] = 51443,
         ["Range"] = 7.36,
         ["TT"] = {
@@ -66,10 +54,6 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
         ["QpartDB"] = {
             51443,
             60361,
-        },
-        ["Trigger"] = {
-            ["y"] = 1577,
-            ["x"] = -4455.2,
         },
         ["Range"] = 0.69,
         ["TT"] = {
@@ -100,10 +84,6 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
         },
     },
     { -- Step 9
-        ["Trigger"] = {
-            ["y"] = 1578.4,
-            ["x"] = -4455.3,
-        },
         ["Qpart"] = {
             [50769] = {
                 ["1"] = "1",
@@ -117,10 +97,6 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
     },
     { -- Step 10
         ["ExtraLineText"] = "SCENARIO",
-        ["Trigger"] = {
-            ["y"] = 1517.4,
-            ["x"] = -4394.8,
-        },
         ["Qpart"] = {
             [50769] = {
                 ["2"] = "2",
@@ -162,10 +138,6 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2199,
-            ["x"] = 802.7,
-        },
         ["RaidIcon"] = 132661,
         ["Range"] = 90.35,
         ["TT"] = {
@@ -192,10 +164,6 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
         },
     },
     { -- Step 6
-        ["Trigger"] = {
-            ["y"] = -1804.0,
-            ["x"] = 803.2,
-        },
         ["Qpart"] = {
             [46930] = {
                 ["1"] = "1",
@@ -215,10 +183,6 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1099.9,
-            ["x"] = 837.7,
-        },
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -1099.9,
@@ -245,10 +209,6 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
     },
     { -- Step 10
         ["SayTriggerStartH"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1096.5,
-            ["x"] = 816.6,
-        },
         ["ExtraLineText"] = "FOLLOW_ZOLANI",
         ["Waypoint"] = 46931,
         ["Range"] = 5,
@@ -259,10 +219,6 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
     },
     { -- Step 11
         ["SayTriggerStartH"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1126.4,
-            ["x"] = 852.2,
-        },
         ["ExtraLineText"] = "USE_ELEVATOR",
         ["Waypoint"] = 46931,
         ["Range"] = 2,
@@ -273,10 +229,6 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
     },
     { -- Step 12
         ["SayTriggerStartH"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1111.7,
-            ["x"] = 819.7,
-        },
         ["Waypoint"] = 46931,
         ["Range"] = 5,
         ["TT"] = {
@@ -285,10 +237,6 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
         },
     },
     { -- Step 13
-        ["Trigger"] = {
-            ["y"] = -1005.3,
-            ["x"] = 805.7,
-        },
 
         ["Qpart"] = {
             [46931] = {
@@ -302,10 +250,6 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
         },
     },
     { -- Step 14
-        ["Trigger"] = {
-            ["y"] = -1124.8,
-            ["x"] = 804.7,
-        },
         ["Qpart"] = {
             [46931] = {
                 ["3"] = "3",
@@ -318,10 +262,6 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
         },
     },
     { -- Step 15
-        ["Trigger"] = {
-            ["y"] = -1124.3,
-            ["x"] = 775.9,
-        },
         ["Qpart"] = {
             [46931] = {
                 ["4"] = "4",
@@ -334,10 +274,6 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
         },
     },
     { -- Step 16
-        ["Trigger"] = {
-            ["y"] = -1124.0,
-            ["x"] = 832.9,
-        },
         ["Qpart"] = {
             [46931] = {
                 ["5"] = "5",
@@ -350,10 +286,6 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
         },
     },
     { -- Step 17
-        ["Trigger"] = {
-            ["y"] = -1124.9,
-            ["x"] = 812.4,
-        },
         ["Range"] = 5.14,
         ["Waypoint"] = 46931,
         ["TT"] = {
@@ -362,10 +294,6 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
         },
     },
     { -- Step 18
-        ["Trigger"] = {
-            ["y"] = -1090.7,
-            ["x"] = 814,
-        },
         ["Range"] = 5.21,
         ["Waypoint"] = 46931,
         ["TT"] = {
@@ -426,10 +354,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         ["GossipOptionID"] = 47953,
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = -1138.9,
-            ["x"] = 815.9,
-        },
         ["Waypoint"] = 49615,
         ["Range"] = 5,
         ["TT"] = {
@@ -439,10 +363,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 4
         ["ExtraLineText"] = "UP_ELEVATOR",
-        ["Trigger"] = {
-            ["y"] = -1126.1,
-            ["x"] = 852.4,
-        },
         ["Waypoint"] = 49615,
         ["Range"] = 5,
         ["TT"] = {
@@ -452,10 +372,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 5
         ["ExtraLineText"] = "UP_ELEVATOR",
-        ["Trigger"] = {
-            ["y"] = -1101.5,
-            ["x"] = 836.5,
-        },
         ["Waypoint"] = 49615,
         ["Range"] = 5,
         ["TT"] = {
@@ -491,10 +407,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = -1072.4,
             ["x"] = 804.9,
         },
-        ["Trigger"] = {
-            ["y"] = -1072.4,
-            ["x"] = 804.9,
-        },
         ["Range"] = 5,
     },
     { -- [step 9
@@ -504,10 +416,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -459.2,
-            ["x"] = 394.2,
-        },
-        ["Trigger"] = {
             ["y"] = -459.2,
             ["x"] = 394.2,
         },
@@ -542,10 +450,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 13
-        ["Trigger"] = {
-            ["y"] = -453.2,
-            ["x"] = 297.5,
-        },
         ["Waypoint"] = 49489,
         ["Range"] = 17.54,
         ["TT"] = {
@@ -567,10 +471,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -480.9,
-            ["x"] = 207.3,
-        },
         ["Fillers"] = {
             [49491] = {
                 ["1"] = "1",
@@ -587,10 +487,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 15
-        ["Trigger"] = {
-            ["y"] = -451.2,
-            ["x"] = 297.8,
-        },
         ["Waypoint"] = 49489,
         ["Range"] = 10.7,
         ["TT"] = {
@@ -612,10 +508,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -259.9,
-            ["x"] = 366.8,
-        },
         ["Fillers"] = {
             [49490] = {
                 ["1"] = "1",
@@ -632,10 +524,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 17
-        ["Trigger"] = {
-            ["y"] = -259.9,
-            ["x"] = 361.5,
-        },
         ["Qpart"] = {
             [49491] = {
                 ["1"] = "1",
@@ -680,10 +568,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 21
-        ["Trigger"] = {
-            ["y"] = -201.7,
-            ["x"] = 388.6,
-        },
         ["Qpart"] = {
             [49492] = {
                 ["1"] = "1",
@@ -696,10 +580,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 22
-        ["Trigger"] = {
-            ["y"] = -205.2,
-            ["x"] = 338.8,
-        },
         ["Qpart"] = {
             [49492] = {
                 ["2"] = "2",
@@ -712,10 +592,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 23
-        ["Trigger"] = {
-            ["y"] = -221,
-            ["x"] = 285.6,
-        },
         ["Qpart"] = {
             [49492] = {
                 ["3"] = "3",
@@ -784,10 +660,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -143.9,
-            ["x"] = 217.6,
-        },
         ["Button"] = {
             ["49493-1"] = 155458,
         },
@@ -812,10 +684,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -216.2,
-            ["x"] = 198.4,
-        },
         ["Button"] = {
             ["49493-1"] = 155458,
         },
@@ -833,10 +701,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
 
     { -- Step 29
-        ["Trigger"] = {
-            ["y"] = -253.7,
-            ["x"] = 173.6,
-        },
         ["Waypoint"] = 49494,
         ["Range"] = 15.26,
         ["TT"] = {
@@ -865,10 +729,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 32
-        ["Trigger"] = {
-            ["y"] = -373.5,
-            ["x"] = 133.4,
-        },
         ["Qpart"] = {
             [49495] = {
                 ["1"] = "1",
@@ -881,10 +741,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 33
-        ["Trigger"] = {
-            ["y"] = -349.3,
-            ["x"] = 137,
-        },
         ["Qpart"] = {
             [49495] = {
                 ["2"] = "2",
@@ -897,10 +753,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 34
-        ["Trigger"] = {
-            ["y"] = -350.2,
-            ["x"] = 137.8,
-        },
         ["Qpart"] = {
             [49495] = {
                 ["3"] = "3",
@@ -913,10 +765,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 35
-        ["Trigger"] = {
-            ["y"] = -384.4,
-            ["x"] = 162.1,
-        },
         ["Qpart"] = {
             [49495] = {
                 ["4"] = "4",
@@ -947,10 +795,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 38
-        ["Trigger"] = {
-            ["y"] = -352.2,
-            ["x"] = 155.6,
-        },
         ["Qpart"] = {
             [49905] = {
                 ["1"] = "1",
@@ -965,10 +809,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
 
     { -- Step 39
         ["Bloodlust"] = 1,
-        ["Trigger"] = {
-            ["y"] = -364.4,
-            ["x"] = 152.1,
-        },
         ["Qpart"] = {
             [49905] = {
                 ["2"] = "2",
@@ -1011,10 +851,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = -1139.1,
             ["x"] = 810.6,
         },
-        ["Trigger"] = {
-            ["y"] = -1139.1,
-            ["x"] = 810.6,
-        },
         ["Range"] = 5,
         ["ExtraLineText"] = "UP_ELEVATOR",
     },
@@ -1024,20 +860,12 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = -1126.1,
             ["x"] = 852.4,
         },
-        ["Trigger"] = {
-            ["y"] = -1126.1,
-            ["x"] = 852.4,
-        },
         ["Range"] = 5,
         ["ExtraLineText"] = "UP_ELEVATOR",
     },
     { -- Step 45
         ["Waypoint"] = 49615,
         ["TT"] = {
-            ["y"] = -1101.5,
-            ["x"] = 836.5,
-        },
-        ["Trigger"] = {
             ["y"] = -1101.5,
             ["x"] = 836.5,
         },
@@ -1067,10 +895,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
 
 
     { -- Step 48
-        ["Trigger"] = {
-            ["y"] = -1101.5,
-            ["x"] = 836.5,
-        },
         ["Waypoint"] = 50835,
         ["Range"] = 5.42,
         ["TT"] = {
@@ -1080,10 +904,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 49
         ["ExtraLineText"] = "DOWN_ELEVATOR",
-        ["Trigger"] = {
-            ["y"] = -1126.1,
-            ["x"] = 852.4,
-        },
         ["Waypoint"] = 50835,
         ["Range"] = 2.33,
         ["TT"] = {
@@ -1093,10 +913,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 50
         ["ExtraLineText"] = "DOWN_ELEVATOR",
-        ["Trigger"] = {
-            ["y"] = -1110.7,
-            ["x"] = 819.6,
-        },
         ["Waypoint"] = 50835,
         ["Range"] = 5.33,
         ["TT"] = {
@@ -1106,10 +922,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
 
     { -- Step 51
-        ["Trigger"] = {
-            ["y"] = -1049.3,
-            ["x"] = 802.9,
-        },
         ["Waypoint"] = 50835,
         ["Range"] = 5.33,
         ["TT"] = {
@@ -1128,10 +940,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 53
-        ["Trigger"] = {
-            ["y"] = -1950.9,
-            ["x"] = 744.5,
-        },
         ["Waypoint"] = 50835,
         ["Range"] = 10,
         ["TT"] = {
@@ -1173,10 +981,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 57
-        ["Trigger"] = {
-            ["y"] = -1801.5,
-            ["x"] = 1026,
-        },
         ["Waypoint"] = 48452,
         ["Range"] = 9,
         ["TT"] = {
@@ -1186,10 +990,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 58
         ["ExtraLineText"] = "JUMP_OFF_BRIDGE",
-        ["Trigger"] = {
-            ["y"] = -1826.9,
-            ["x"] = 1024,
-        },
         ["Waypoint"] = 48452,
         ["Range"] = 13.72,
         ["TT"] = {
@@ -1204,10 +1004,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -1822.6,
-            ["x"] = 998.4,
-        },
-        ["Trigger"] = {
             ["y"] = -1822.6,
             ["x"] = 998.4,
         },
@@ -1228,17 +1024,9 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = -1811.1,
             ["x"] = 1034.7,
         },
-        ["Trigger"] = {
-            ["y"] = -1811.1,
-            ["x"] = 1034.7,
-        },
         ["Range"] = 88,
     },
     { -- Step 61
-        ["Trigger"] = {
-            ["y"] = -1734.1,
-            ["x"] = 1014.1,
-        },
         ["Waypoint"] = 48452,
         ["Range"] = 8.95,
         ["TT"] = {
@@ -1272,10 +1060,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1760.9,
-            ["x"] = 935.2,
-        },
         ["Fillers"] = {
             [46926] = {
                 ["1"] = "1",
@@ -1288,10 +1072,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 65
-        ["Trigger"] = {
-            ["y"] = -1874,
-            ["x"] = 775.7,
-        },
         ["Range"] = 10.45,
         ["Waypoint"] = 46846,
         ["TT"] = {
@@ -1311,10 +1091,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1971,
-            ["x"] = 761.2,
-        },
         ["Fillers"] = {
             [46926] = {
                 ["1"] = "1",
@@ -1327,10 +1103,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 67
-        ["Trigger"] = {
-            ["y"] = -1954,
-            ["x"] = 758.4,
-        },
         ["Range"] = 8,
         ["Waypoint"] = 46846,
         ["TT"] = {
@@ -1340,10 +1112,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 68
         ["ExtraLineText"] = "JUMP_OFF",
-        ["Trigger"] = {
-            ["y"] = -1948.9,
-            ["x"] = 679.7,
-        },
         ["Range"] = 16.2,
         ["Waypoint"] = 46846,
         ["TT"] = {
@@ -1358,10 +1126,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1972.9,
-            ["x"] = 691.7,
-        },
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -1972.9,
@@ -1374,10 +1138,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 70
-        ["Trigger"] = {
-            ["y"] = -1941.5,
-            ["x"] = 793,
-        },
         ["Range"] = 9.66,
         ["Waypoint"] = 46926,
         ["TT"] = {
@@ -1386,10 +1146,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 71
-        ["Trigger"] = {
-            ["y"] = -1856.1,
-            ["x"] = 805.2,
-        },
         ["Qpart"] = {
             [46926] = {
                 ["1"] = "1",
@@ -1434,10 +1190,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 74
-        ["Trigger"] = {
-            ["y"] = -1740.8,
-            ["x"] = 810.5,
-        },
         ["Range"] = 9.66,
         ["Waypoint"] = 46929,
         ["TT"] = {
@@ -1456,10 +1208,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1649.8,
-            ["x"] = 898.9,
-        },
         ["Fillers"] = {
             [46929] = {
                 ["2"] = "2",
@@ -1475,10 +1223,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 76
-        ["Trigger"] = {
-            ["y"] = -1724,
-            ["x"] = 858.2,
-        },
         ["Qpart"] = {
             [46929] = {
                 ["2"] = "2",
@@ -1496,10 +1240,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 77
-        ["Trigger"] = {
-            ["y"] = -1728.4,
-            ["x"] = 751.7,
-        },
         ["Waypoint"] = 46927,
         ["Range"] = 18,
         ["Fillers"] = {
@@ -1516,10 +1256,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 78
-        ["Trigger"] = {
-            ["y"] = -1782.8,
-            ["x"] = 631.7,
-        },
         ["Waypoint"] = 46927,
         ["Range"] = 25,
         ["TT"] = {
@@ -1542,10 +1278,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1903,
-            ["x"] = 629.1,
-        },
         ["Fillers"] = {
             [46929] = {
                 ["1"] = "1",
@@ -1561,10 +1293,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 80
-        ["Trigger"] = {
-            ["y"] = -1784.6,
-            ["x"] = 629,
-        },
         ["Qpart"] = {
             [46929] = {
                 ["1"] = "1",
@@ -1582,10 +1310,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 81
-        ["Trigger"] = {
-            ["y"] = -1769,
-            ["x"] = 632.6,
-        },
         ["Waypoint"] = 46927,
         ["Range"] = 5,
         ["TT"] = {
@@ -1594,10 +1318,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 82
-        ["Trigger"] = {
-            ["y"] = -1731.0,
-            ["x"] = 790.4,
-        },
         ["Waypoint"] = 46927,
         ["Range"] = 5,
         ["TT"] = {
@@ -1639,10 +1359,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         ["ExtraLineText"] = "TALK_TO_NPC_TO_RIDE_BOAT",
         ["Waypoint"] = 49284,
         ["Range"] = 5,
-        ["Trigger"] = {
-            ["y"] = -2059.1,
-            ["x"] = 723.1,
-        },
         ["TT"] = {
             ["y"] = -2059.1,
             ["x"] = 723.1,
@@ -1650,10 +1366,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 86
         ["ExtraLineText"] = "TAKE_BOAT_TO_SEEKERS_OUTPOST",
-        ["Trigger"] = {
-            ["y"] = -2304.5,
-            ["x"] = -253.2,
-        },
         ["GetFP"] = 2075,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -1683,10 +1395,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2264.7,
-            ["x"] = -314.8,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -2264.7,
@@ -1698,10 +1406,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [49285] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -2241.9,
-            ["x"] = -355.4,
         },
         ["Fillers"] = {
             [49315] = {
@@ -1720,10 +1424,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2412.7,
-            ["x"] = -484.2,
-        },
         ["Fillers"] = {
             [49315] = {
                 ["1"] = "1",
@@ -1740,10 +1440,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [49285] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -2277.2,
-            ["x"] = -475.5,
         },
         ["Fillers"] = {
             [49315] = {
@@ -1762,10 +1458,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2178,
-            ["x"] = -438,
-        },
         ["Fillers"] = {
             [49315] = {
                 ["1"] = "1",
@@ -1782,10 +1474,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [49284] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -2123.2,
-            ["x"] = -553.3,
         },
         ["Fillers"] = {
             [49315] = {
@@ -1834,10 +1522,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1994.9,
-            ["x"] = -584.8,
-        },
         ["Fillers"] = {
             [49315] = {
                 ["1"] = "1",
@@ -1854,10 +1538,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [49286] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -2058.2,
-            ["x"] = -523.5,
         },
         ["Fillers"] = {
             [49315] = {
@@ -1895,10 +1575,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2333,
-            ["x"] = -549.3,
-        },
         ["Fillers"] = {
             [49315] = {
                 ["1"] = "1",
@@ -1919,10 +1595,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2373.5,
-            ["x"] = -649.7,
-        },
         ["Fillers"] = {
             [49288] = {
                 ["1"] = "1",
@@ -1940,10 +1612,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [49287] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -2369,
-            ["x"] = -810.8,
         },
         ["Fillers"] = {
             [49288] = {
@@ -1963,10 +1631,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["4"] = "4",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2252.4,
-            ["x"] = -833.3,
-        },
         ["Fillers"] = {
             [49288] = {
                 ["1"] = "1",
@@ -1979,10 +1643,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 104
-        ["Trigger"] = {
-            ["y"] = -2256,
-            ["x"] = -827.3,
-        },
         ["Qpart"] = {
             [49288] = {
                 ["1"] = "1",
@@ -2020,10 +1680,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2086,
-            ["x"] = -772.3,
-        },
         ["Button"] = {
             ["49289-1"] = 157539,
         },
@@ -2053,10 +1709,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 110
         ["ExtraLineText"] = "PORTAL_WILL_APPEAR",
-        ["Trigger"] = {
-            ["y"] = -2089,
-            ["x"] = -657,
-        },
         ["Done"] = {
             51407,
         },
@@ -2082,10 +1734,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["Gossip"] = 999,
-        ["Trigger"] = {
-            ["y"] = -2399.4,
-            ["x"] = -171.9,
-        },
         ["Range"] = 14.12,
         ["TT"] = {
             ["y"] = -2399.4,
@@ -2097,10 +1745,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [50331] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1203.6,
-            ["x"] = -1175,
         },
         ["Range"] = 14.12,
         ["TT"] = {
@@ -2133,10 +1777,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1159.6,
-            ["x"] = -1104.8,
-        },
         ["Fillers"] = {
             [48014] = {
                 ["1"] = "1",
@@ -2153,10 +1793,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [48015] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1062,
-            ["x"] = -1124.9,
         },
         ["Fillers"] = {
             [48014] = {
@@ -2175,10 +1811,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1127.8,
-            ["x"] = -1060.9,
-        },
         ["Fillers"] = {
             [48014] = {
                 ["1"] = "1",
@@ -2191,10 +1823,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 119
-        ["Trigger"] = {
-            ["y"] = -1063.5,
-            ["x"] = -1124.9,
-        },
         ["Qpart"] = {
             [48014] = {
                 ["1"] = "1",
@@ -2229,10 +1857,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
 
     { -- Step 122
         ["ExtraLineText"] = "USE_FLIGHTPATH",
-        ["Trigger"] = {
-            ["y"] = -955.7,
-            ["x"] = -1057.9,
-        },
         ["GetFP"] = 2066,
         ["Waypoint"] = 49969,
         ["Range"] = 6.58,
@@ -2251,10 +1875,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [49969] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -712.2,
-            ["x"] = -917.7,
         },
         ["Button"] = {
             ["48025-1"] = 151859,
@@ -2276,10 +1896,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -693.8,
-            ["x"] = -1032.1,
-        },
         ["Button"] = {
             ["48025-2"] = 151859,
         },
@@ -2299,10 +1915,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [49969] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -821.3,
-            ["x"] = -1177.1,
         },
         ["Button"] = {
             ["48025-3"] = 151859,
@@ -2324,10 +1936,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -871.2,
-            ["x"] = -1357,
-        },
         ["Button"] = {
             ["48025-5"] = 151859,
         },
@@ -2342,10 +1950,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [48025] = {
                 ["4"] = "4",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -945,
-            ["x"] = -1208.9,
         },
         ["Fillers"] = {
             [49969] = {
@@ -2362,10 +1966,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 128
-        ["Trigger"] = {
-            ["y"] = -750,
-            ["x"] = -933.3,
-        },
         ["Qpart"] = {
             [49969] = {
                 ["1"] = "1",
@@ -2396,10 +1996,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 131
-        ["Trigger"] = {
-            ["y"] = -1116,
-            ["x"] = -1370,
-        },
         ["Qpart"] = {
             [48026] = {
                 ["1"] = "1",
@@ -2413,10 +2009,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
 
     { -- Step 132
-        ["Trigger"] = {
-            ["y"] = -1116,
-            ["x"] = -1370,
-        },
         ["Qpart"] = {
             [48026] = {
                 ["1"] = "1",
@@ -2467,10 +2059,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 137
-        ["Trigger"] = {
-            ["y"] = -1168.5,
-            ["x"] = -1005.8,
-        },
         ["Waypoint"] = 50881,
         ["Range"] = 17.66,
         ["TT"] = {
@@ -2479,10 +2067,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 138
-        ["Trigger"] = {
-            ["y"] = -1279.3,
-            ["x"] = -932.2,
-        },
         ["Waypoint"] = 50881,
         ["Range"] = 27.69,
         ["TT"] = {
@@ -2516,10 +2100,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1496.1,
-            ["x"] = -782.3,
-        },
         ["Fillers"] = {
             [51248] = {
                 ["1"] = "1",
@@ -2542,10 +2122,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [51247] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1589,
-            ["x"] = -774.2,
         },
         ["Fillers"] = {
             [51248] = {
@@ -2570,10 +2146,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1537.3,
-            ["x"] = -599.5,
-        },
         ["Fillers"] = {
             [51248] = {
                 ["1"] = "1",
@@ -2592,10 +2164,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 144
-        ["Trigger"] = {
-            ["y"] = -1534.8,
-            ["x"] = -601,
-        },
         ["Qpart"] = {
             [51248] = {
                 ["1"] = "1",
@@ -2641,10 +2209,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1851.3,
-            ["x"] = -1058.3,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -1851.3,
@@ -2671,10 +2235,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 150
-        ["Trigger"] = {
-            ["y"] = -1046.8,
-            ["x"] = 800.4,
-        },
         ["Waypoint"] = 51539,
         ["Range"] = 6.46,
         ["TT"] = {
@@ -2683,10 +2243,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 151
-        ["Trigger"] = {
-            ["y"] = -1093,
-            ["x"] = 814.9,
-        },
         ["Waypoint"] = 51539,
         ["Range"] = 4.73,
         ["TT"] = {
@@ -2705,10 +2261,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 153
         ["ExtraLineText"] = "USE_ELEVATOR",
-        ["Trigger"] = {
-            ["y"] = -1126.3,
-            ["x"] = 854.6,
-        },
         ["Waypoint"] = 50881,
         ["Range"] = 3.76,
         ["TT"] = {
@@ -2718,10 +2270,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 154
         ["ExtraLineText"] = "USE_ELEVATOR",
-        ["Trigger"] = {
-            ["y"] = -1126.4,
-            ["x"] = 851.2,
-        },
         ["Waypoint"] = 50881,
         ["Range"] = 3.76,
         ["TT"] = {
@@ -2731,10 +2279,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 155
         ["ExtraLineText"] = "USE_ELEVATOR",
-        ["Trigger"] = {
-            ["y"] = -1101.5,
-            ["x"] = 835.5,
-        },
         ["Waypoint"] = 50881,
         ["Range"] = 3.76,
         ["TT"] = {
@@ -2743,10 +2287,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 156
-        ["Trigger"] = {
-            ["y"] = -1103.7,
-            ["x"] = 815.1,
-        },
         ["Waypoint"] = 50881,
         ["Range"] = 3.76,
         ["TT"] = {
@@ -2788,10 +2328,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -664.8,
-            ["x"] = 887.1,
-        },
         ["Button"] = {
             ["47423-1"] = 152627,
         },
@@ -2827,10 +2363,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 163
-        ["Trigger"] = {
-            ["y"] = -481.5,
-            ["x"] = 721,
-        },
         ["Qpart"] = {
             [47433] = {
                 ["2"] = "2",
@@ -2843,10 +2375,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 164
-        ["Trigger"] = {
-            ["y"] = -376.9,
-            ["x"] = 575.7,
-        },
         ["Qpart"] = {
             [47433] = {
                 ["3"] = "3",
@@ -2878,10 +2406,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 167
-        ["Trigger"] = {
-            ["y"] = -606.8,
-            ["x"] = 1003.6,
-        },
         ["Qpart"] = {
             [47435] = {
                 ["1"] = "1",
@@ -2916,10 +2440,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 170
-        ["Trigger"] = {
-            ["y"] = -470.9,
-            ["x"] = 994.7,
-        },
         ["Qpart"] = {
             [47437] = {
                 ["1"] = "1",
@@ -2932,10 +2452,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 171
-        ["Trigger"] = {
-            ["y"] = -414.5,
-            ["x"] = 1047.4,
-        },
         ["Waypoint"] = 47437,
         ["Range"] = 3.89,
         ["TT"] = {
@@ -2945,10 +2461,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
 
     { -- Step 172
-        ["Trigger"] = {
-            ["y"] = -401,
-            ["x"] = 1034.7,
-        },
         ["Waypoint"] = 47437,
         ["Range"] = 4.3,
         ["TT"] = {
@@ -2957,10 +2469,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 173
-        ["Trigger"] = {
-            ["y"] = -424.9,
-            ["x"] = 1008.2,
-        },
         ["Waypoint"] = 47437,
         ["Range"] = 5.64,
         ["TT"] = {
@@ -2969,10 +2477,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 174
-        ["Trigger"] = {
-            ["y"] = -426.9,
-            ["x"] = 962.5,
-        },
         ["Qpart"] = {
             [47437] = {
                 ["2"] = "2",
@@ -2985,10 +2489,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 175
-        ["Trigger"] = {
-            ["y"] = -471.8,
-            ["x"] = 960.6,
-        },
         ["Waypoint"] = 47437,
         ["Range"] = 4.11,
         ["TT"] = {
@@ -2997,10 +2497,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 176
-        ["Trigger"] = {
-            ["y"] = -498.9,
-            ["x"] = 926.7,
-        },
         ["Waypoint"] = 47437,
         ["Range"] = 4.04,
         ["TT"] = {
@@ -3009,10 +2505,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 177
-        ["Trigger"] = {
-            ["y"] = -568.3,
-            ["x"] = 963.4,
-        },
         ["Qpart"] = {
             [47437] = {
                 ["3"] = "3",
@@ -3025,10 +2517,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 178
-        ["Trigger"] = {
-            ["y"] = -560,
-            ["x"] = 917.7,
-        },
         ["Waypoint"] = 47437,
         ["Range"] = 8.08,
         ["TT"] = {
@@ -3055,10 +2543,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 181
-        ["Trigger"] = {
-            ["y"] = -488.4,
-            ["x"] = 913.7,
-        },
         ["Waypoint"] = 47422,
         ["Range"] = 10.08,
         ["TT"] = {
@@ -3069,10 +2553,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
 
     { -- Step 182
         ["ExtraLineText"] = "TOTEM_DAMAGE_BUFF",
-        ["Trigger"] = {
-            ["y"] = -401.8,
-            ["x"] = 979.9,
-        },
         ["Qpart"] = {
             [47422] = {
                 ["1"] = "1",
@@ -3105,10 +2585,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     { -- Step 185
         ["ExtraLineText"] = "LOA_INFO_1",
         ["ExtraLineText2"] = "LOA_INFO_2",
-        ["Trigger"] = {
-            ["y"] = -433.2,
-            ["x"] = 1012.6,
-        },
         ["Qpart"] = {
             [47438] = {
                 ["1"] = "1",
@@ -3141,10 +2617,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 188
         ["PickedLoa"] = 1,
-        ["Trigger"] = {
-            ["y"] = -448.9,
-            ["x"] = 1014.7,
-        },
         ["Qpart"] = {
             [47440] = {
                 ["1"] = "1",
@@ -3158,10 +2630,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 189
         ["PickedLoa"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1361.3,
-            ["x"] = -320.7,
-        },
         ["Waypoint"] = 47440,
         ["Range"] = 4.88,
         ["TT"] = {
@@ -3171,10 +2639,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 190
         ["PickedLoa"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1401.3,
-            ["x"] = -338.5,
-        },
         ["Qpart"] = {
             [47440] = {
                 ["2"] = "2",
@@ -3188,10 +2652,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 191
         ["PickedLoa"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1397.9,
-            ["x"] = -366.8,
-        },
         ["Qpart"] = {
             [47440] = {
                 ["3"] = "3",
@@ -3237,10 +2697,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 195
         ["PickedLoa"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1047.5,
-            ["x"] = 799.2,
-        },
         ["Waypoint"] = 47432,
         ["Range"] = 11.03,
         ["TT"] = {
@@ -3250,10 +2706,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 196
         ["PickedLoa"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1107.4,
-            ["x"] = 791.4,
-        },
         ["Waypoint"] = 47432,
         ["Range"] = 7.35,
         ["TT"] = {
@@ -3274,10 +2726,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     { -- Step 198
         ["ExtraLineText"] = "UP_ELEVATOR",
         ["PickedLoa"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1125.1,
-            ["x"] = 754.9,
-        },
         ["Waypoint"] = 47432,
         ["Range"] = 3.59,
         ["TT"] = {
@@ -3288,10 +2736,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     { -- Step 199
         ["ExtraLineText"] = "UP_ELEVATOR",
         ["PickedLoa"] = 1,
-        ["Trigger"] = {
-            ["y"] = -1101.5,
-            ["x"] = 790.2,
-        },
         ["Waypoint"] = 47432,
         ["Range"] = 6.54,
         ["TT"] = {
@@ -3324,10 +2768,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     { -- Step 202
         ["UseGlider"] = 1,
         ["PickedLoa"] = 2,
-        ["Trigger"] = {
-            ["y"] = -353.7,
-            ["x"] = 1226.9,
-        },
         ["Range"] = 38.05,
         ["Waypoint"] = 47439,
         ["TT"] = {
@@ -3343,10 +2783,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -440.7,
-            ["x"] = 1631.5,
-        },
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = -440.7,
@@ -3363,10 +2799,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 205
         ["PickedLoa"] = 2,
-        ["Trigger"] = {
-            ["y"] = -1136.5,
-            ["x"] = 801.7,
-        },
         ["Waypoint"] = 47439,
         ["Range"] = 7.35,
         ["TT"] = {
@@ -3386,10 +2818,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 207
         ["PickedLoa"] = 2,
-        ["Trigger"] = {
-            ["y"] = -1108.1,
-            ["x"] = 790.7,
-        },
         ["Waypoint"] = 47439,
         ["Range"] = 7.35,
         ["TT"] = {
@@ -3399,10 +2827,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 208
         ["PickedLoa"] = 2,
-        ["Trigger"] = {
-            ["y"] = -1050.6,
-            ["x"] = 801.2,
-        },
         ["Waypoint"] = 47439,
         ["Range"] = 7.35,
         ["TT"] = {
@@ -3447,20 +2871,12 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = -891.0,
             ["x"] = 805.9,
         },
-        ["Trigger"] = {
-            ["y"] = -891.0,
-            ["x"] = 805.9,
-        },
         ["Range"] = 10,
         ["PickedLoa"] = 2,
     },
     { -- [step 213
         ["Waypoint"] = 48897,
         ["TT"] = {
-            ["y"] = -946.6,
-            ["x"] = 759.0,
-        },
-        ["Trigger"] = {
             ["y"] = -946.6,
             ["x"] = 759.0,
         },
@@ -3473,20 +2889,12 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = -965.4,
             ["x"] = 798.7,
         },
-        ["Trigger"] = {
-            ["y"] = -965.4,
-            ["x"] = 798.7,
-        },
         ["Range"] = 10,
         ["PickedLoa"] = 2,
     },
     { -- [step 215
         ["Waypoint"] = 48897,
         ["TT"] = {
-            ["y"] = -1021.6,
-            ["x"] = 778.7,
-        },
-        ["Trigger"] = {
             ["y"] = -1021.6,
             ["x"] = 778.7,
         },
@@ -3499,10 +2907,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = -1053.0,
             ["x"] = 804.8,
         },
-        ["Trigger"] = {
-            ["y"] = -1053.0,
-            ["x"] = 804.8,
-        },
         ["Range"] = 10,
         ["PickedLoa"] = 2,
     },
@@ -3512,20 +2916,12 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = -1126.3,
             ["x"] = 757.6,
         },
-        ["Trigger"] = {
-            ["y"] = -1126.3,
-            ["x"] = 757.6,
-        },
         ["Range"] = 10,
         ["PickedLoa"] = 2,
     },
     { -- [step 218
         ["Waypoint"] = 48897,
         ["TT"] = {
-            ["y"] = -1101.5,
-            ["x"] = 790.2,
-        },
-        ["Trigger"] = {
             ["y"] = -1101.5,
             ["x"] = 790.2,
         },
@@ -3558,10 +2954,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -700.7,
-            ["x"] = 374,
-        },
         ["Button"] = {
             ["49810-1"] = 155911,
         },
@@ -3582,10 +2974,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [49810] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -835.5,
-            ["x"] = 285.5,
         },
         ["Button"] = {
             ["49810-2"] = 155911,
@@ -3623,10 +3011,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 225
-        ["Trigger"] = {
-            ["y"] = -641.5,
-            ["x"] = 372.8,
-        },
         ["Qpart"] = {
             [50154] = {
                 ["1"] = "1",
@@ -3643,10 +3027,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
 
     { -- Step 226
-        ["Trigger"] = {
-            ["y"] = -970.8,
-            ["x"] = 344.5,
-        },
         ["Qpart"] = {
             [49801] = {
                 ["1"] = "1",
@@ -3685,10 +3065,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -683.3,
-            ["x"] = 371.3,
-        },
         ["Button"] = {
             ["50074-1"] = 156475,
         },
@@ -3699,10 +3075,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 230
-        ["Trigger"] = {
-            ["y"] = -821.8,
-            ["x"] = 292,
-        },
         ["Qpart"] = {
             [50150] = {
                 ["2"] = "2",
@@ -3715,10 +3087,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 231
-        ["Trigger"] = {
-            ["y"] = -816,
-            ["x"] = 269.7,
-        },
         ["Qpart"] = {
             [50150] = {
                 ["1"] = "1",
@@ -3757,10 +3125,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = -618.3,
-            ["x"] = 285,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = -618.3,
@@ -3786,10 +3150,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 237
-        ["Trigger"] = {
-            ["y"] = -613.5,
-            ["x"] = 283.5,
-        },
         ["Qpart"] = {
             [50268] = {
                 ["1"] = "1",
@@ -3825,10 +3185,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -710,
-            ["x"] = 372.6,
-        },
         ["Button"] = {
             ["49870-1"] = 156867,
         },
@@ -3839,10 +3195,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 241
-        ["Trigger"] = {
-            ["y"] = -989.3,
-            ["x"] = 269.6,
-        },
         ["Qpart"] = {
             [49870] = {
                 ["2"] = "2",
@@ -3855,10 +3207,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 242
-        ["Trigger"] = {
-            ["y"] = -994.8,
-            ["x"] = 214,
-        },
         ["Qpart"] = {
             [49870] = {
                 ["3"] = "3",
@@ -3871,10 +3219,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 243
-        ["Trigger"] = {
-            ["y"] = -938.5,
-            ["x"] = 311.5,
-        },
         ["Range"] = 15.65,
         ["Waypoint"] = 49870,
         ["TT"] = {
@@ -3883,10 +3227,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 244
-        ["Trigger"] = {
-            ["y"] = -773.3,
-            ["x"] = 299.8,
-        },
         ["Range"] = 44.2,
         ["Waypoint"] = 49870,
         ["TT"] = {
@@ -3913,10 +3253,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 247
-        ["Trigger"] = {
-            ["y"] = -817.3,
-            ["x"] = 275.3,
-        },
         ["Qpart"] = {
             [50297] = {
                 ["1"] = "1",
@@ -3929,10 +3265,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 248
-        ["Trigger"] = {
-            ["y"] = -824.8,
-            ["x"] = 279.8,
-        },
         ["Qpart"] = {
             [50297] = {
                 ["2"] = "2",
@@ -3954,10 +3286,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 250
-        ["Trigger"] = {
-            ["y"] = -881.3,
-            ["x"] = 138.8,
-        },
         ["Range"] = 35.07,
         ["Waypoint"] = 50538,
         ["TT"] = {
@@ -3984,10 +3312,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 253
-        ["Trigger"] = {
-            ["y"] = -1047,
-            ["x"] = 174.9,
-        },
         ["Range"] = 20.58,
         ["Waypoint"] = 47226,
         ["TT"] = {
@@ -3996,10 +3320,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 254
-        ["Trigger"] = {
-            ["y"] = -1129.5,
-            ["x"] = 160.8,
-        },
         ["Range"] = 19.15,
         ["Waypoint"] = 47226,
         ["TT"] = {
@@ -4008,10 +3328,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 255
-        ["Trigger"] = {
-            ["y"] = -1097.4,
-            ["x"] = 87.3,
-        },
         ["Range"] = 13.69,
         ["Waypoint"] = 47226,
         ["TT"] = {
@@ -4040,10 +3356,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 258
-        ["Trigger"] = {
-            ["y"] = -1048.0,
-            ["x"] = 18.3,
-        },
         ["Range"] = 6.28,
         ["GetFP"] = 1966,
         ["TT"] = {
@@ -4097,10 +3409,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 263
-        ["Trigger"] = {
-            ["y"] = -875,
-            ["x"] = -118.5,
-        },
         ["Waypoint"] = 51980,
         ["Range"] = 15.83,
         ["TT"] = {
@@ -4110,10 +3418,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 264
         ["ExtraLineText"] = "ASSULT_SKIP",
-        ["Trigger"] = {
-            ["y"] = -722.3,
-            ["x"] = 28.5,
-        },
         ["Qpart"] = {
             [51980] = {
                 ["1"] = "1",
@@ -4139,10 +3443,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -898.7,
-            ["x"] = -311.7,
-        },
         ["Range"] = 12.95,
         ["TT"] = {
             ["y"] = -898.7,
@@ -4159,10 +3459,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -865.3,
-            ["x"] = -288.4,
-        },
-        ["Trigger"] = {
             ["y"] = -865.3,
             ["x"] = -288.4,
         },
@@ -4200,10 +3496,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 270
-        ["Trigger"] = {
-            ["y"] = -1023.6,
-            ["x"] = 22.1,
-        },
         ["Waypoint"] = 51990,
         ["Range"] = 15.83,
         ["TT"] = {
@@ -4212,10 +3504,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 271
-        ["Trigger"] = {
-            ["y"] = -1003.7,
-            ["x"] = -78.8,
-        },
         ["Waypoint"] = 51990,
         ["Range"] = 15.83,
         ["TT"] = {
@@ -4224,10 +3512,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 272
-        ["Trigger"] = {
-            ["y"] = -775.2,
-            ["x"] = -82.5,
-        },
         ["Waypoint"] = 51990,
         ["Range"] = 15.83,
         ["TT"] = {
@@ -4236,10 +3520,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 273
-        ["Trigger"] = {
-            ["y"] = -560.1,
-            ["x"] = -32.5,
-        },
         ["Waypoint"] = 51990,
         ["Range"] = 15.83,
         ["TT"] = {
@@ -4254,10 +3534,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["TT"] = {
-            ["y"] = -497.9,
-            ["x"] = 28.0,
-        },
-        ["Trigger"] = {
             ["y"] = -497.9,
             ["x"] = 28.0,
         },
@@ -4278,17 +3554,9 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = -497.9,
             ["x"] = 28.0,
         },
-        ["Trigger"] = {
-            ["y"] = -497.9,
-            ["x"] = 28.0,
-        },
         ["Range"] = 160,
     },
     { -- Step 276
-        ["Trigger"] = {
-            ["y"] = -560.1,
-            ["x"] = -32.5,
-        },
         ["Waypoint"] = 51990,
         ["Range"] = 15.83,
         ["TT"] = {
@@ -4298,10 +3566,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
 
     { -- Step 277
-        ["Trigger"] = {
-            ["y"] = -775.2,
-            ["x"] = -82.5,
-        },
         ["Waypoint"] = 51990,
         ["Range"] = 15.83,
         ["TT"] = {
@@ -4310,10 +3574,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 278
-        ["Trigger"] = {
-            ["y"] = -882.7,
-            ["x"] = -127,
-        },
         ["Waypoint"] = 51990,
         ["Range"] = 15.83,
         ["TT"] = {
@@ -4322,10 +3582,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 279
-        ["Trigger"] = {
-            ["y"] = -1023.6,
-            ["x"] = 22.1,
-        },
         ["Waypoint"] = 51990,
         ["Range"] = 15.83,
         ["TT"] = {
@@ -4413,19 +3669,11 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = -1093.9,
             ["x"] = -192.8,
         },
-        ["Trigger"] = {
-            ["y"] = -1093.9,
-            ["x"] = -192.8,
-        },
         ["Range"] = 20,
     },
     { -- [step 288
         ["Waypoint"] = 47261,
         ["TT"] = {
-            ["y"] = -1065.9,
-            ["x"] = -242.2,
-        },
-        ["Trigger"] = {
             ["y"] = -1065.9,
             ["x"] = -242.2,
         },
@@ -4437,10 +3685,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = -1132.2,
             ["x"] = -252.8,
         },
-        ["Trigger"] = {
-            ["y"] = -1132.2,
-            ["x"] = -252.8,
-        },
         ["Range"] = 20,
     },
     { -- [step 290
@@ -4449,19 +3693,11 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = -1256.1,
             ["x"] = -180.6,
         },
-        ["Trigger"] = {
-            ["y"] = -1256.1,
-            ["x"] = -180.6,
-        },
         ["Range"] = 20,
     },
     { -- [step 291
         ["Waypoint"] = 47261,
         ["TT"] = {
-            ["y"] = -1249.4,
-            ["x"] = 16.7,
-        },
-        ["Trigger"] = {
             ["y"] = -1249.4,
             ["x"] = 16.7,
         },
@@ -4539,10 +3775,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 299
         ["ExtraLineText"] = "FLY_GREAT_SEAL",
-        ["Trigger"] = {
-            ["y"] = -1047.4,
-            ["x"] = 17.3,
-        },
         ["UseFlightPath"] = 49122,
         ["ETA"] = 40,
         ["Name"] = "The Great Seal",
@@ -4553,10 +3785,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         }
     },
     { -- Step 300
-        ["Trigger"] = {
-            ["y"] = -1047.5,
-            ["x"] = 802.7,
-        },
         ["Waypoint"] = 49122,
         ["Range"] = 7.86,
         ["TT"] = {
@@ -4565,10 +3793,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 301
-        ["Trigger"] = {
-            ["y"] = -1110.6,
-            ["x"] = 820.4,
-        },
         ["Waypoint"] = 49122,
         ["Range"] = 8.48,
         ["TT"] = {
@@ -4578,10 +3802,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 302
         ["ExtraLineText"] = "UP_ELEVATOR",
-        ["Trigger"] = {
-            ["y"] = -1125.6,
-            ["x"] = 854.2,
-        },
         ["Waypoint"] = 49122,
         ["Range"] = 4.07,
         ["TT"] = {
@@ -4592,10 +3812,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
 
     { -- Step 303
         ["ExtraLineText"] = "UP_ELEVATOR",
-        ["Trigger"] = {
-            ["y"] = -1121.2,
-            ["x"] = 840.7,
-        },
         ["Waypoint"] = 49122,
         ["Range"] = 4.07,
         ["TT"] = {
@@ -4604,10 +3820,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 304
-        ["Trigger"] = {
-            ["y"] = -1101,
-            ["x"] = 833.2,
-        },
         ["Waypoint"] = 49122,
         ["Range"] = 5,
         ["TT"] = {
@@ -4616,10 +3828,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 305
-        ["Trigger"] = {
-            ["y"] = -1102.0,
-            ["x"] = 820.1,
-        },
         ["Waypoint"] = 49122,
         ["Range"] = 4.07,
         ["TT"] = {
@@ -4648,10 +3856,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 308
-        ["Trigger"] = {
-            ["y"] = -1140.5,
-            ["x"] = 1292.3,
-        },
         ["Qpart"] = {
             [51072] = {
                 ["1"] = "1",
@@ -4664,10 +3868,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 309
-        ["Trigger"] = {
-            ["y"] = -1304,
-            ["x"] = 1288.5,
-        },
         ["Qpart"] = {
             [51071] = {
                 ["1"] = "1",
@@ -4708,10 +3908,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 313
-        ["Trigger"] = {
-            ["y"] = -1545,
-            ["x"] = 1290.8,
-        },
         ["Waypoint"] = 49919,
         ["Range"] = 30.55,
         ["TT"] = {
@@ -4722,10 +3918,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     { -- Step 314
         ["Waypoint"] = 49919,
         ["TT"] = {
-            ["y"] = -1645,
-            ["x"] = 1359.7,
-        },
-        ["Trigger"] = {
             ["y"] = -1645,
             ["x"] = 1359.7,
         },
@@ -4755,10 +3947,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1698.5,
-            ["x"] = 1460,
-        },
         ["Fillers"] = {
             [49918] = {
                 ["1"] = "1",
@@ -4776,10 +3964,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [49922] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -1511,
-            ["x"] = 1741.5,
         },
         ["Fillers"] = {
             [49919] = {
@@ -4808,10 +3992,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 319
-        ["Trigger"] = {
-            ["y"] = -1553.9,
-            ["x"] = 1689.5,
-        },
         ["Qpart"] = {
             [49918] = {
                 ["1"] = "1",
@@ -4843,10 +4023,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
 
     { -- Step 322
-        ["Trigger"] = {
-            ["y"] = -1550.5,
-            ["x"] = 1245,
-        },
         ["Waypoint"] = 49122,
         ["Range"] = 55,
         ["TT"] = {
@@ -4855,10 +4031,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 323
-        ["Trigger"] = {
-            ["y"] = -1584,
-            ["x"] = 1276.8,
-        },
         ["Waypoint"] = 49122,
         ["Range"] = 21.67,
         ["TT"] = {
@@ -4867,10 +4039,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 324
-        ["Trigger"] = {
-            ["y"] = -1861.5,
-            ["x"] = 1535,
-        },
         ["Waypoint"] = 49122,
         ["Range"] = 21.67,
         ["TT"] = {
@@ -4879,10 +4047,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 325
-        ["Trigger"] = {
-            ["y"] = -2023.3,
-            ["x"] = 1630.5,
-        },
         ["GetFP"] = 2009,
         ["Range"] = 5.0,
         ["TT"] = {
@@ -4924,10 +4088,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2025.6,
-            ["x"] = 1852,
-        },
         ["Fillers"] = {
             [49145] = {
                 ["1"] = "1",
@@ -4959,10 +4119,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2143.9,
-            ["x"] = 1833,
-        },
         ["Button"] = {
             ["49145-1"] = 153524,
         },
@@ -4986,10 +4142,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2112.5,
-            ["x"] = 1750.3,
-        },
         ["Button"] = {
             ["49145-1"] = 153524,
         },
@@ -5009,10 +4161,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2112.7,
-            ["x"] = 1751.5,
-        },
         ["Button"] = {
             ["49145-1"] = 153524,
         },
@@ -5023,10 +4171,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 333
-        ["Trigger"] = {
-            ["y"] = -2030.6,
-            ["x"] = 1715.3,
-        },
         ["Waypoint"] = 49144,
         ["Range"] = 18.47,
         ["TT"] = {
@@ -5063,10 +4207,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["TrigText"] = "1/5",
-        ["Trigger"] = {
-            ["y"] = -2109.2,
-            ["x"] = 1713.8,
-        },
         ["Fillers"] = {
             [49148] = {
                 ["1"] = "1",
@@ -5085,10 +4225,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["TrigText"] = "2/5",
-        ["Trigger"] = {
-            ["y"] = -2178.2,
-            ["x"] = 1650.2,
-        },
         ["Fillers"] = {
             [49148] = {
                 ["1"] = "1",
@@ -5110,10 +4246,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["TrigText"] = "3/5",
-        ["Trigger"] = {
-            ["y"] = -2209.7,
-            ["x"] = 1751.5,
-        },
         ["Fillers"] = {
             [49148] = {
                 ["1"] = "1",
@@ -5135,10 +4267,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["TrigText"] = "4/5",
-        ["Trigger"] = {
-            ["y"] = -2294.7,
-            ["x"] = 1695.2,
-        },
         ["Fillers"] = {
             [49148] = {
                 ["1"] = "1",
@@ -5159,10 +4287,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2258.9,
-            ["x"] = 1637.7,
-        },
         ["Fillers"] = {
             [49148] = {
                 ["1"] = "1",
@@ -5178,10 +4302,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 341
-        ["Trigger"] = {
-            ["y"] = -2420.2,
-            ["x"] = 1664.2,
-        },
         ["Waypoint"] = 49147,
         ["Range"] = 15.03,
         ["TT"] = {
@@ -5204,10 +4324,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["TrigText"] = "5/5",
-        ["Trigger"] = {
-            ["y"] = -2388,
-            ["x"] = 1692.2,
-        },
         ["Fillers"] = {
             [49148] = {
                 ["1"] = "1",
@@ -5225,10 +4341,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -2370,
-            ["x"] = 1820.3,
-        },
         ["Fillers"] = {
             [49148] = {
                 ["1"] = "1",
@@ -5244,10 +4356,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 344
-        ["Trigger"] = {
-            ["y"] = -2374.7,
-            ["x"] = 1815.2,
-        },
         ["Qpart"] = {
             [49149] = {
                 ["1"] = "1",
@@ -5283,10 +4391,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 347
-        ["Trigger"] = {
-            ["y"] = -2266.5,
-            ["x"] = 1469.4,
-        },
         ["Waypoint"] = 49309,
         ["Range"] = 11.1,
         ["TT"] = {
@@ -5295,10 +4399,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 348
-        ["Trigger"] = {
-            ["y"] = -2304.2,
-            ["x"] = 1465.2,
-        },
         ["Qpart"] = {
             [49309] = {
                 ["1"] = "1",
@@ -5329,10 +4429,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 351
-        ["Trigger"] = {
-            ["y"] = -2250.7,
-            ["x"] = 1522,
-        },
         ["Qpart"] = {
             [49310] = {
                 ["1"] = "1",
@@ -5371,10 +4467,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 355
-        ["Trigger"] = {
-            ["y"] = -1049.9,
-            ["x"] = 808.7,
-        },
         ["Waypoint"] = 47509,
         ["Range"] = 8.68,
         ["TT"] = {
@@ -5408,10 +4500,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = -605.5,
             ["x"] = 1042,
         },
-        ["Trigger"] = {
-            ["y"] = -605.5,
-            ["x"] = 1042,
-        },
         ["Range"] = 16.56,
         ["Fillers"] = {
             [47897] = {
@@ -5425,10 +4513,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -597.2,
-            ["x"] = 988.1,
-        },
         ["Fillers"] = {
             [47897] = {
                 ["1"] = "1",
@@ -5441,10 +4525,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 360
-        ["Trigger"] = {
-            ["y"] = -605,
-            ["x"] = 994.4,
-        },
         ["Qpart"] = {
             [47897] = {
                 ["1"] = "1",
@@ -5477,10 +4557,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 363
-        ["Trigger"] = {
-            ["y"] = -438.5,
-            ["x"] = 1030.3,
-        },
         ["Range"] = 12.12,
         ["Waypoint"] = 47518,
         ["TT"] = {
@@ -5494,10 +4570,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 364
-        ["Trigger"] = {
-            ["y"] = -414.5,
-            ["x"] = 1045.7,
-        },
         ["Range"] = 7.16,
         ["Waypoint"] = 47518,
         ["TT"] = {
@@ -5511,10 +4583,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 365
-        ["Trigger"] = {
-            ["y"] = -402.4,
-            ["x"] = 1034,
-        },
         ["Range"] = 4.97,
         ["Waypoint"] = 47518,
         ["TT"] = {
@@ -5528,10 +4596,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 366
-        ["Trigger"] = {
-            ["y"] = -478,
-            ["x"] = 953.6,
-        },
         ["Range"] = 5.23,
         ["Waypoint"] = 47518,
         ["TT"] = {
@@ -5545,10 +4609,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 367
-        ["Trigger"] = {
-            ["y"] = -498.4,
-            ["x"] = 926.1,
-        },
         ["Range"] = 5.38,
         ["Waypoint"] = 47518,
         ["TT"] = {
@@ -5562,10 +4622,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 368
-        ["Trigger"] = {
-            ["y"] = -567.8,
-            ["x"] = 919.4,
-        },
         ["Range"] = 9.15,
         ["Waypoint"] = 47518,
         ["TT"] = {
@@ -5579,10 +4635,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 369
-        ["Trigger"] = {
-            ["y"] = -510.8,
-            ["x"] = 913.5,
-        },
         ["Range"] = 8.96,
         ["Waypoint"] = 47518,
         ["TT"] = {
@@ -5596,10 +4648,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 370
-        ["Trigger"] = {
-            ["y"] = -401.3,
-            ["x"] = 983.1,
-        },
         ["Qpart"] = {
             [47520] = {
                 ["1"] = "1",
@@ -5634,10 +4682,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 373
-        ["Trigger"] = {
-            ["y"] = -448.4,
-            ["x"] = 1014.2,
-        },
         ["Qpart"] = {
             [47521] = {
                 ["1"] = "1",
@@ -5669,10 +4713,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 376
-        ["Trigger"] = {
-            ["y"] = -402.9,
-            ["x"] = 1436.3,
-        },
         ["Range"] = 13.17,
         ["Waypoint"] = 47963,
         ["TT"] = {
@@ -5686,10 +4726,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 377
-        ["Trigger"] = {
-            ["y"] = -434.4,
-            ["x"] = 1394.4,
-        },
         ["Range"] = 12.29,
         ["Waypoint"] = 47963,
         ["TT"] = {
@@ -5707,10 +4743,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [47963] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -463.5,
-            ["x"] = 1303.7,
         },
         ["Fillers"] = {
             [47527] = {
@@ -5738,10 +4770,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 380
-        ["Trigger"] = {
-            ["y"] = -426.7,
-            ["x"] = 1419.7,
-        },
         ["Range"] = 14.64,
         ["Waypoint"] = 47522,
         ["TT"] = {
@@ -5755,10 +4783,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 381
-        ["Trigger"] = {
-            ["y"] = -433.5,
-            ["x"] = 1615.8,
-        },
         ["Qpart"] = {
             [47522] = {
                 ["1"] = "1",
@@ -5804,10 +4828,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 384
-        ["Trigger"] = {
-            ["y"] = -391.9,
-            ["x"] = 1594.8,
-        },
         ["Range"] = 16.34,
         ["Waypoint"] = 47528,
         ["TT"] = {
@@ -5821,10 +4841,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 385
-        ["Trigger"] = {
-            ["y"] = -253.4,
-            ["x"] = 1670,
-        },
         ["Range"] = 6.81,
         ["Waypoint"] = 47528,
         ["TT"] = {
@@ -5838,10 +4854,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 386
-        ["Trigger"] = {
-            ["y"] = -194,
-            ["x"] = 1720.9,
-        },
         ["Qpart"] = {
             [47528] = {
                 ["1"] = "1",
@@ -5860,10 +4872,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 387
-        ["Trigger"] = {
-            ["y"] = -252.4,
-            ["x"] = 1668.4,
-        },
         ["Range"] = 12.93,
         ["Waypoint"] = 47528,
         ["TT"] = {
@@ -5877,10 +4885,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 388
-        ["Trigger"] = {
-            ["y"] = -269.2,
-            ["x"] = 1653,
-        },
         ["Qpart"] = {
             [47527] = {
                 ["1"] = "1",
@@ -5902,10 +4906,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 390
-        ["Trigger"] = {
-            ["y"] = -103.3,
-            ["x"] = 1502.8,
-        },
         ["GetFP"] = 2045,
         ["Range"] = 5.0,
         ["TT"] = {
@@ -5935,10 +4935,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2.5,
-            ["x"] = 1789.8,
-        },
         ["Range"] = 0.75,
         ["TrigText"] = "1/4",
         ["TT"] = {
@@ -5961,10 +4957,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 394
-        ["Trigger"] = {
-            ["y"] = 64.1,
-            ["x"] = 1799.3,
-        },
         ["Qpart"] = {
             [49681] = {
                 ["1"] = "1",
@@ -5992,10 +4984,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 93.4,
-            ["x"] = 1816.3,
-        },
         ["Range"] = 0.75,
         ["TrigText"] = "2/4",
         ["TT"] = {
@@ -6013,10 +5001,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [49679] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 83.2,
-            ["x"] = 1848.5,
         },
         ["Range"] = 0.75,
         ["TrigText"] = "3/4",
@@ -6036,10 +5020,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 21.8,
-            ["x"] = 1891.5,
-        },
         ["Range"] = 0.75,
         ["TrigText"] = "4/4",
         ["TT"] = {
@@ -6048,10 +5028,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 398
-        ["Trigger"] = {
-            ["y"] = -109,
-            ["x"] = 1871.5,
-        },
         ["Qpart"] = {
             [49681] = {
                 ["2"] = "2",
@@ -6069,10 +5045,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 399
-        ["Trigger"] = {
-            ["y"] = -91,
-            ["x"] = 1899.7,
-        },
         ["Waypoint"] = 49678,
         ["Range"] = 7.88,
         ["TT"] = {
@@ -6086,10 +5058,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 400
-        ["Trigger"] = {
-            ["y"] = -108.4,
-            ["x"] = 1885.4,
-        },
         ["Qpart"] = {
             [49680] = {
                 ["1"] = "1",
@@ -6117,10 +5085,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 402
-        ["Trigger"] = {
-            ["y"] = -93.9,
-            ["x"] = 1558.2,
-        },
         ["Range"] = 16.96,
         ["Waypoint"] = 49768,
         ["TT"] = {
@@ -6129,10 +5093,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 403
-        ["Trigger"] = {
-            ["y"] = -149.7,
-            ["x"] = 1473,
-        },
         ["Waypoint"] = 49768,
         ["Range"] = 17.43,
         ["TT"] = {
@@ -6141,10 +5101,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 404
-        ["Trigger"] = {
-            ["y"] = -166.9,
-            ["x"] = 1409.5,
-        },
         ["Waypoint"] = 49768,
         ["Range"] = 13.39,
         ["TT"] = {
@@ -6154,10 +5110,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 405
         ["UseGlider"] = 1,
-        ["Trigger"] = {
-            ["y"] = -153.7,
-            ["x"] = 1336.4,
-        },
         ["Waypoint"] = 49768,
         ["Range"] = 19.09,
         ["TT"] = {
@@ -6167,10 +5119,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 406
         ["UseGlider"] = 1,
-        ["Trigger"] = {
-            ["y"] = 119,
-            ["x"] = 353.2,
-        },
         ["Waypoint"] = 49768,
         ["Range"] = 27.13,
         ["TT"] = {
@@ -6179,10 +5127,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 407
-        ["Trigger"] = {
-            ["y"] = 162.1,
-            ["x"] = 273.2,
-        },
         ["Waypoint"] = 49768,
         ["Range"] = 19.43,
         ["TT"] = {
@@ -6191,10 +5135,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 408
-        ["Trigger"] = {
-            ["y"] = 317.8,
-            ["x"] = 195.5,
-        },
         ["Waypoint"] = 49768,
         ["Range"] = 20.75,
         ["TT"] = {
@@ -6203,10 +5143,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 409
-        ["Trigger"] = {
-            ["y"] = 386.3,
-            ["x"] = 106.8,
-        },
         ["GetFP"] = 1965,
         ["Range"] = 5.0,
         ["TT"] = {
@@ -6259,10 +5195,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 133.9,
-            ["x"] = -269.3,
-        },
         ["Fillers"] = {
             [47584] = {
                 ["1"] = "1",
@@ -6283,10 +5215,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 202.9,
-            ["x"] = -339.4,
-        },
         ["Fillers"] = {
             [47584] = {
                 ["1"] = "1",
@@ -6302,10 +5230,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 416
-        ["Trigger"] = {
-            ["y"] = 40.7,
-            ["x"] = -289.7,
-        },
         ["Waypoint"] = 50466,
         ["Range"] = 29.59,
         ["TT"] = {
@@ -6318,10 +5242,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [50466] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -113.1,
-            ["x"] = -288.8,
         },
         ["Fillers"] = {
             [47584] = {
@@ -6342,10 +5262,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [47585] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -33.8,
-            ["x"] = -29.4,
         },
         ["Fillers"] = {
             [47584] = {
@@ -6368,10 +5284,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -41.3,
-            ["x"] = 482.8,
-        },
         ["Fillers"] = {
             [47584] = {
                 ["1"] = "1",
@@ -6387,10 +5299,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 420
-        ["Trigger"] = {
-            ["y"] = -28,
-            ["x"] = 37.2,
-        },
         ["Qpart"] = {
             [47584] = {
                 ["1"] = "1",
@@ -6445,10 +5353,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 425
-        ["Trigger"] = {
-            ["y"] = 386.8,
-            ["x"] = 107.7,
-        },
         ["Waypoint"] = 47586,
         ["Range"] = 12.66,
         ["TT"] = {
@@ -6461,10 +5365,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [47586] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 292.1,
-            ["x"] = 424.2,
         },
         ["Fillers"] = {
             [50178] = {
@@ -6483,10 +5383,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 366.5,
-            ["x"] = 506.3,
-        },
         ["Fillers"] = {
             [50178] = {
                 ["1"] = "1",
@@ -6503,10 +5399,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [47586] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 428.2,
-            ["x"] = 435.8,
         },
         ["Fillers"] = {
             [50178] = {
@@ -6538,10 +5430,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 431
-        ["Trigger"] = {
-            ["y"] = 484.3,
-            ["x"] = 375.6,
-        },
         ["Qpart"] = {
             [47587] = {
                 ["1"] = "1",
@@ -6563,10 +5451,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 433
-        ["Trigger"] = {
-            ["y"] = 349,
-            ["x"] = 375.1,
-        },
         ["Qpart"] = {
             [50178] = {
                 ["1"] = "1",
@@ -6579,10 +5463,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 434
-        ["Trigger"] = {
-            ["y"] = 284.2,
-            ["x"] = -248,
-        },
         ["Waypoint"] = 51101,
         ["Range"] = 7.57,
         ["TT"] = {
@@ -6592,10 +5472,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 435
         ["UseGlider"] = 1,
-        ["Trigger"] = {
-            ["y"] = 183.6,
-            ["x"] = -380.8,
-        },
         ["Waypoint"] = 51101,
         ["Range"] = 63.82,
         ["TT"] = {
@@ -6604,10 +5480,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 436
-        ["Trigger"] = {
-            ["y"] = 283,
-            ["x"] = -735.2,
-        },
         ["Waypoint"] = 51101,
         ["Range"] = 63.82,
         ["TT"] = {
@@ -6616,10 +5488,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 437
-        ["Trigger"] = {
-            ["y"] = 455,
-            ["x"] = -803.7,
-        },
         ["Waypoint"] = 51101,
         ["Range"] = 37.12,
         ["TT"] = {
@@ -6652,10 +5520,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 471.7,
-            ["x"] = -763.6,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 471.7,
@@ -6669,10 +5533,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 471.7,
-            ["x"] = -763.6,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 471.7,
@@ -6708,10 +5568,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 445
-        ["Trigger"] = {
-            ["y"] = 514.5,
-            ["x"] = -838,
-        },
         ["GetFP"] = 1975,
         ["Range"] = 11.57,
         ["TT"] = {
@@ -6724,10 +5580,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [47735] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 632.5,
-            ["x"] = -940,
         },
         ["Fillers"] = {
             [50235] = {
@@ -6748,10 +5600,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [47735] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 447.3,
-            ["x"] = -1043.5,
         },
         ["Fillers"] = {
             [50235] = {
@@ -6794,10 +5642,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = 537.4,
             ["x"] = -1005.9,
         },
-        ["Trigger"] = {
-            ["y"] = 537.4,
-            ["x"] = -1005.9,
-        },
         ["Range"] = 168,
         ["Fillers"] = {
             [47739] = {
@@ -6810,10 +5654,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [47733] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 235.1,
-            ["x"] = -938.3,
         },
         ["Fillers"] = {
             [47739] = {
@@ -6832,10 +5672,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 160.6,
-            ["x"] = -1019,
-        },
         ["Fillers"] = {
             [47739] = {
                 ["1"] = "1",
@@ -6848,10 +5684,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 452
-        ["Trigger"] = {
-            ["y"] = 333.8,
-            ["x"] = -961.8,
-        },
         ["Qpart"] = {
             [47739] = {
                 ["1"] = "1",
@@ -6864,10 +5696,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 453
-        ["Trigger"] = {
-            ["y"] = 462.3,
-            ["x"] = -801.5,
-        },
         ["Waypoint"] = 47739,
         ["Range"] = 31.64,
         ["TT"] = {
@@ -6911,10 +5739,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 471.7,
-            ["x"] = -763.6,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 471.7,
@@ -6929,10 +5753,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 479.7,
-            ["x"] = -769.5,
-        },
         ["Range"] = 5,
         ["TT"] = {
             ["y"] = 479.7,
@@ -6958,10 +5778,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 461
-        ["Trigger"] = {
-            ["y"] = 473,
-            ["x"] = -777.5,
-        },
         ["Range"] = 8.7,
         ["Waypoint"] = 47738,
         ["TT"] = {
@@ -6970,10 +5786,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 462
-        ["Trigger"] = {
-            ["y"] = 633.2,
-            ["x"] = -794.5,
-        },
         ["Qpart"] = {
             [47738] = {
                 ["1"] = "1",
@@ -6993,10 +5805,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         ["Gossip"] = 1,
         ["GossipOptionID"] = 48358,
-        ["Trigger"] = {
-            ["y"] = 633,
-            ["x"] = -808,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 633,
@@ -7005,10 +5813,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 464
         ["ETA"] = 69,
-        ["Trigger"] = {
-            ["y"] = 632.1,
-            ["x"] = -801.8,
-        },
         ["Qpart"] = {
             [47738] = {
                 ["3"] = "3",
@@ -7021,10 +5825,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 465
-        ["Trigger"] = {
-            ["y"] = 473.8,
-            ["x"] = -776.2,
-        },
         ["Range"] = 12.72,
         ["Waypoint"] = 47738,
         ["TT"] = {
@@ -7033,10 +5833,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 466
-        ["Trigger"] = {
-            ["y"] = 474.8,
-            ["x"] = -759.5,
-        },
         ["Qpart"] = {
             [47738] = {
                 ["4"] = "4",
@@ -7069,10 +5865,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 469
-        ["Trigger"] = {
-            ["y"] = 223,
-            ["x"] = -1128.5,
-        },
         ["Range"] = 9.46,
         ["Waypoint"] = 51679,
         ["TT"] = {
@@ -7081,10 +5873,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 470
-        ["Trigger"] = {
-            ["y"] = 229.1,
-            ["x"] = -1135,
-        },
         ["Range"] = 7.07,
         ["Waypoint"] = 51679,
         ["TT"] = {
@@ -7093,10 +5881,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 471
-        ["Trigger"] = {
-            ["y"] = 238.1,
-            ["x"] = -1154,
-        },
         ["Range"] = 4.73,
         ["Waypoint"] = 51678,
         ["TT"] = {
@@ -7105,10 +5889,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 472
-        ["Trigger"] = {
-            ["y"] = 264.3,
-            ["x"] = -1167.9,
-        },
         ["Qpart"] = {
             [51679] = {
                 ["1"] = "1",
@@ -7127,10 +5907,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 264.3,
-            ["x"] = -1167.9,
-        },
         ["Fillers"] = {
             [47742] = {
                 ["1"] = "1",
@@ -7144,10 +5920,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 474
         ["ExtraLineText"] = "TOP_BOAT",
-        ["Trigger"] = {
-            ["y"] = 271.3,
-            ["x"] = -1170.8,
-        },
         ["Qpart"] = {
             [51678] = {
                 ["1"] = "1",
@@ -7165,10 +5937,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 475
-        ["Trigger"] = {
-            ["y"] = 270.5,
-            ["x"] = -1170.5,
-        },
         ["Qpart"] = {
             [47742] = {
                 ["1"] = "1",
@@ -7201,10 +5969,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 478
-        ["Trigger"] = {
-            ["y"] = 251.6,
-            ["x"] = -699.8,
-        },
         ["Range"] = 60.93,
         ["Waypoint"] = 47737,
         ["TT"] = {
@@ -7238,10 +6002,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 31,
-            ["x"] = -406.5,
-        },
         ["Fillers"] = {
             [47736] = {
                 ["1"] = "1",
@@ -7262,10 +6022,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 86.7,
-            ["x"] = -537.3,
-        },
         ["Fillers"] = {
             [47736] = {
                 ["1"] = "1",
@@ -7281,10 +6037,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 483
-        ["Trigger"] = {
-            ["y"] = 12.5,
-            ["x"] = -472.7,
-        },
         ["Range"] = 12.33,
         ["Waypoint"] = 47740,
         ["TT"] = {
@@ -7306,10 +6058,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -73.4,
-            ["x"] = -529.7,
-        },
         ["Fillers"] = {
             [47736] = {
                 ["1"] = "1",
@@ -7325,10 +6073,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 485
-        ["Trigger"] = {
-            ["y"] = -75.9,
-            ["x"] = -531.7,
-        },
         ["Qpart"] = {
             [47736] = {
                 ["1"] = "1",
@@ -7363,10 +6107,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 488
-        ["Trigger"] = {
-            ["y"] = 70,
-            ["x"] = -651.5,
-        },
         ["Qpart"] = {
             [47734] = {
                 ["1"] = "1",
@@ -7379,10 +6119,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 489
-        ["Trigger"] = {
-            ["y"] = -111,
-            ["x"] = -648.5,
-        },
         ["Qpart"] = {
             [47734] = {
                 ["2"] = "2",
@@ -7414,10 +6150,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 492
         ["ExtraLineText"] = "REDUCED_DAMAGE_INFO_1",
-        ["Trigger"] = {
-            ["y"] = -21.4,
-            ["x"] = -717.8,
-        },
         ["Qpart"] = {
             [47741] = {
                 ["1"] = "1",
@@ -7430,10 +6162,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 493
-        ["Trigger"] = {
-            ["y"] = -24.7,
-            ["x"] = -725.7,
-        },
         ["Qpart"] = {
             [47741] = {
                 ["2"] = "2",
@@ -7451,20 +6179,12 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             ["y"] = -27.1,
             ["x"] = -727.2,
         },
-        ["Trigger"] = {
-            ["y"] = -27.1,
-            ["x"] = -727.2,
-        },
         ["Range"] = 0.5,
         ["Gossip"] = 1,
         ["GossipOptionID"] = 47761,
         ["ExtraLineText"] = "TALK_KING_RASTAKHAN",
     },
     { -- Step 495
-        ["Trigger"] = {
-            ["y"] = -159.7,
-            ["x"] = -574.2,
-        },
         ["Waypoint"] = 47741,
         ["Range"] = 20.85,
         ["TT"] = {
@@ -7473,10 +6193,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 496
-        ["Trigger"] = {
-            ["y"] = -277.4,
-            ["x"] = -378.8,
-        },
         ["Waypoint"] = 47741,
         ["Range"] = 27.85,
         ["TT"] = {
@@ -7512,10 +6228,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         ["NodeID"] = 1959,
     },
     { -- Step 500
-        ["Trigger"] = {
-            ["y"] = -1049,
-            ["x"] = 801.2,
-        },
         ["Waypoint"] = 51111,
         ["Range"] = 13.01,
         ["TT"] = {
@@ -7543,10 +6255,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         ["LeaveQuest"] = 52210,
     },
     { -- Step 503
-        ["Trigger"] = {
-            ["y"] = -1052.6,
-            ["x"] = 809.2,
-        },
         ["LeaveQuest"] = 52210,
         ["Range"] = 8.86,
         ["Waypoint"] = 49421,
@@ -7579,10 +6287,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     { -- Step 506
         ["ExtraLineText"] = "RUN_FOREST_RUN",
         ["LeaveQuest"] = 52210,
-        ["Trigger"] = {
-            ["y"] = -878.8,
-            ["x"] = 1229.3,
-        },
         ["Range"] = 14.92,
         ["Waypoint"] = 49965,
         ["TT"] = {
@@ -7592,10 +6296,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 507
         ["LeaveQuest"] = 52210,
-        ["Trigger"] = {
-            ["y"] = -891,
-            ["x"] = 1331,
-        },
         ["Range"] = 10.86,
         ["Waypoint"] = 49965,
         ["TT"] = {
@@ -7604,10 +6304,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 508
-        ["Trigger"] = {
-            ["y"] = -1160,
-            ["x"] = 1411.8,
-        },
         ["LeaveQuest"] = 52210,
         ["Range"] = 20.73,
         ["Waypoint"] = 49965,
@@ -7618,10 +6314,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 509
         ["LeaveQuest"] = 52210,
-        ["Trigger"] = {
-            ["y"] = -1217.1,
-            ["x"] = 1443.7,
-        },
         ["Range"] = 8.37,
         ["Waypoint"] = 49965,
         ["TT"] = {
@@ -7631,10 +6323,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
     { -- Step 510
         ["LeaveQuest"] = 52210,
-        ["Trigger"] = {
-            ["y"] = -1154.5,
-            ["x"] = 1542.7,
-        },
         ["Range"] = 19.01,
         ["Waypoint"] = 49965,
         ["TT"] = {
@@ -7643,10 +6331,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 511
-        ["Trigger"] = {
-            ["y"] = -1121.1,
-            ["x"] = 1540.4,
-        },
         ["Qpart"] = {
             [49965] = {
                 ["1"] = "1",
@@ -7678,10 +6362,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 514
-        ["Trigger"] = {
-            ["y"] = -1135.6,
-            ["x"] = 1495.4,
-        },
         ["Range"] = 8.28,
         ["GetFP"] = 2027,
         ["TT"] = {
@@ -7695,10 +6375,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -1032,
-            ["x"] = 1578.7,
-        },
         ["Fillers"] = {
             [49422] = {
                 ["1"] = "1",
@@ -7711,10 +6387,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 516
-        ["Trigger"] = {
-            ["y"] = -999.7,
-            ["x"] = 1498.5,
-        },
         ["Range"] = 9.41,
         ["Waypoint"] = 49424,
         ["TT"] = {
@@ -7728,10 +6400,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 517
-        ["Trigger"] = {
-            ["y"] = -959.2,
-            ["x"] = 1502.7,
-        },
         ["Range"] = 8.69,
         ["Waypoint"] = 49422,
         ["TT"] = {
@@ -7750,10 +6418,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -911.3,
-            ["x"] = 1561.5,
-        },
         ["Fillers"] = {
             [49422] = {
                 ["1"] = "1",
@@ -7766,10 +6430,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 519
-        ["Trigger"] = {
-            ["y"] = -912.8,
-            ["x"] = 1504,
-        },
         ["Range"] = 7.77,
         ["Waypoint"] = 49422,
         ["TT"] = {
@@ -7783,10 +6443,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 520
-        ["Trigger"] = {
-            ["y"] = -868.7,
-            ["x"] = 1501.5,
-        },
         ["Range"] = 6.69,
         ["Waypoint"] = 49422,
         ["TT"] = {
@@ -7805,10 +6461,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = -843.8,
-            ["x"] = 1584.8,
-        },
         ["Fillers"] = {
             [49422] = {
                 ["1"] = "1",
@@ -7821,10 +6473,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 522
-        ["Trigger"] = {
-            ["y"] = -844.2,
-            ["x"] = 1575.5,
-        },
         ["Qpart"] = {
             [49422] = {
                 ["1"] = "1",
@@ -7856,10 +6504,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 525
-        ["Trigger"] = {
-            ["y"] = -760,
-            ["x"] = 1508,
-        },
         ["Qpart"] = {
             [49425] = {
                 ["1"] = "1",
@@ -7872,10 +6516,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 526
-        ["Trigger"] = {
-            ["y"] = -824.7,
-            ["x"] = 1528.7,
-        },
         ["Qpart"] = {
             [49425] = {
                 ["2"] = "2",
@@ -7897,10 +6537,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 528
-        ["Trigger"] = {
-            ["y"] = -850,
-            ["x"] = 2152.6,
-        },
         ["Qpart"] = {
             [49426] = {
                 ["1"] = "1",
@@ -7920,10 +6556,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         ["Gossip"] = 1,
         ["GossipOptionID"] = 48457,
-        ["Trigger"] = {
-            ["y"] = -850.5,
-            ["x"] = 2149.1,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = -850.5,
@@ -7938,10 +6570,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         ["Gossip"] = 101,
         ["GossipOptionID"] = 48876,
-        ["Trigger"] = {
-            ["y"] = -848.7,
-            ["x"] = 2158.8,
-        },
         ["Range"] = 6.69,
         ["TT"] = {
             ["y"] = -848.7,
@@ -7949,10 +6577,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 531
-        ["Trigger"] = {
-            ["y"] = -754,
-            ["x"] = 2144.6,
-        },
         ["Waypoint"] = 49426,
         ["Range"] = 8,
         ["TT"] = {
@@ -7965,10 +6589,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [49426] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = -743.7,
-            ["x"] = 2093.9,
         },
         ["Range"] = 0.09,
         ["TT"] = {
@@ -8004,10 +6624,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         ["LeaveQuest"] = 49901,
     },
     { -- Step 536
-        ["Trigger"] = {
-            ["y"] = -1137.5,
-            ["x"] = 810.6,
-        },
         ["Waypoint"] = 50963,
         ["Range"] = 4.36,
         ["TT"] = {
@@ -8056,10 +6672,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 541
-        ["Trigger"] = {
-            ["y"] = -1052.8,
-            ["x"] = 801.7,
-        },
         ["Waypoint"] = 47103,
         ["Range"] = 5.68,
         ["TT"] = {
@@ -8093,10 +6705,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         ["Gossip"] = 2,
         ["GossipOptionID"] = 48274,
-        ["Trigger"] = {
-            ["y"] = -1034.9,
-            ["x"] = 751.9,
-        },
         ["Range"] = 5.69,
         ["TT"] = {
             ["y"] = -1034.9,
@@ -8149,10 +6757,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     { -- Step 3
         ["ClearZP"] = 1,
         ["ExtraLineText"] = "CLICK_BUFFS_IN_ZONE",
-        ["Trigger"] = {
-            ["y"] = 727.7,
-            ["x"] = 967.2,
-        },
         ["Qpart"] = {
             [47105] = {
                 ["1"] = "1",
@@ -8193,10 +6797,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 719.4,
-            ["x"] = 901.4,
-        },
         ["Button"] = {
             ["47130-1"] = 154724,
         },
@@ -8233,10 +6833,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 9
         ["Bloodlust"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1015.9,
-            ["x"] = 1084.5,
-        },
         ["Qpart"] = {
             [47262] = {
                 ["1"] = "1",
@@ -8273,10 +6869,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1122,
-            ["x"] = 1053.5,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1122,
@@ -8284,10 +6876,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 13
-        ["Trigger"] = {
-            ["y"] = 818.2,
-            ["x"] = 1349.7,
-        },
         ["Range"] = 12.9,
         ["Waypoint"] = 47263,
         ["TT"] = {
@@ -8329,10 +6917,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 757.5,
-            ["x"] = 1390.2,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 757.5,
@@ -8344,10 +6928,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [47188] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 757.5,
-            ["x"] = 1390.2,
         },
         ["Range"] = 0.75,
         ["TT"] = {
@@ -8374,10 +6954,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 21
-        ["Trigger"] = {
-            ["y"] = 791.2,
-            ["x"] = 1405.9,
-        },
         ["GetFP"] = 1953,
         ["Range"] = 0.91,
         ["TT"] = {
@@ -8401,10 +6977,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 805.9,
-            ["x"] = 1406.2,
-        },
         ["Range"] = 5,
         ["TT"] = {
             ["y"] = 805.9,
@@ -8438,10 +7010,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [48573] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 827.1,
-            ["x"] = 1481.2,
         },
         ["Button"] = {
             ["48573-1"] = 152596,
@@ -8493,10 +7061,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 516,
-            ["x"] = 1655,
-        },
         ["Button"] = {
             ["48576-1"] = 152610,
         },
@@ -8520,10 +7084,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [48577] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 516,
-            ["x"] = 1639.4,
         },
         ["Button"] = {
             ["48576-1"] = 152610,
@@ -8568,10 +7128,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 839.1,
-            ["x"] = 1935.9,
-        },
         ["Fillers"] = {
             [48584] = {
                 ["1"] = "1",
@@ -8600,10 +7156,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [48590] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 954.4,
-            ["x"] = 1785.7,
         },
         ["Fillers"] = {
             [48584] = {
@@ -8634,10 +7186,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1028,
-            ["x"] = 1815.5,
-        },
         ["Fillers"] = {
             [48584] = {
                 ["1"] = "1",
@@ -8666,10 +7214,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [48584] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 848,
-            ["x"] = 1932.2,
         },
         ["Fillers"] = {
             [48588] = {
@@ -8721,10 +7265,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 39
-        ["Trigger"] = {
-            ["y"] = 951,
-            ["x"] = 2079.4,
-        },
         ["Qpart"] = {
             [48591] = {
                 ["1"] = "1",
@@ -8756,10 +7296,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 41
-        ["Trigger"] = {
-            ["y"] = 1161,
-            ["x"] = 2008,
-        },
         ["Qpart"] = {
             [51089] = {
                 ["1"] = "1",
@@ -8777,10 +7313,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 42
-        ["Trigger"] = {
-            ["y"] = 994.7,
-            ["x"] = 1918.7,
-        },
         ["Qpart"] = {
             [48588] = {
                 ["1"] = "1",
@@ -8793,10 +7325,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 43
-        ["Trigger"] = {
-            ["y"] = 1252,
-            ["x"] = 1367.2,
-        },
         ["Qpart"] = {
             [47241] = {
                 ["1"] = "1",
@@ -8809,10 +7337,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 44
-        ["Trigger"] = {
-            ["y"] = 1318.5,
-            ["x"] = 1475.9,
-        },
         ["Qpart"] = {
             [47241] = {
                 ["2"] = "2",
@@ -8843,10 +7367,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [48468] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1344,
-            ["x"] = 1339.2,
         },
         ["Button"] = {
             ["48468-1"] = 153178,
@@ -8898,10 +7418,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         ["ButtonCooldown"] = {
             [256697] = 5,
         },
-        ["Trigger"] = {
-            ["y"] = 1513.4,
-            ["x"] = 1377.8,
-        },
         ["Fillers"] = {
             [48479] = {
                 ["1"] = "1",
@@ -8918,10 +7434,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [48478] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1622.4,
-            ["x"] = 1434.2,
         },
         ["Button"] = {
             ["48478-3"] = 154130,
@@ -8949,10 +7461,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1707,
-            ["x"] = 1293.8,
-        },
         ["Button"] = {
             ["48478-1"] = 154130,
         },
@@ -8974,10 +7482,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 52
-        ["Trigger"] = {
-            ["y"] = 1698.5,
-            ["x"] = 1323.4,
-        },
         ["Qpart"] = {
             [48479] = {
                 ["1"] = "1",
@@ -9009,10 +7513,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 55
-        ["Trigger"] = {
-            ["y"] = 1510.8,
-            ["x"] = 1319.2,
-        },
         ["Waypoint"] = 48480,
         ["Range"] = 11.67,
         ["TT"] = {
@@ -9022,10 +7522,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         ["LeaveQuest"] = 52210,
     },
     { -- Step 56
-        ["Trigger"] = {
-            ["y"] = 1515,
-            ["x"] = 1231.7,
-        },
         ["Qpart"] = {
             [48480] = {
                 ["1"] = "1",
@@ -9047,10 +7543,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 58
-        ["Trigger"] = {
-            ["y"] = 1476.7,
-            ["x"] = 1574,
-        },
         ["Qpart"] = {
             [47241] = {
                 ["3"] = "3",
@@ -9081,10 +7573,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 61
-        ["Trigger"] = {
-            ["y"] = 1768,
-            ["x"] = 1422.5,
-        },
         ["Qpart"] = {
             [47244] = {
                 ["1"] = "1",
@@ -9115,10 +7603,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 64
-        ["Trigger"] = {
-            ["y"] = 2028,
-            ["x"] = 1336,
-        },
         ["GetFP"] = 1954,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -9127,10 +7611,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 65
-        ["Trigger"] = {
-            ["y"] = 2028,
-            ["x"] = 1336,
-        },
         ["Qpart"] = {
             [49278] = {
                 ["1"] = "1",
@@ -9168,10 +7648,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1997,
-            ["x"] = 1367.4,
-        },
         ["Range"] = 9.46,
         ["TT"] = {
             ["y"] = 1997,
@@ -9185,10 +7661,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1991.5,
-            ["x"] = 1365.7,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 1991.5,
@@ -9229,10 +7701,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1700.3,
-            ["x"] = 1820.3,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1700.3,
@@ -9240,10 +7708,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 74
-        ["Trigger"] = {
-            ["y"] = 1702.8,
-            ["x"] = 1819.2,
-        },
         ["Qpart"] = {
             [48854] = {
                 ["2"] = "2",
@@ -9281,10 +7745,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1703.4,
-            ["x"] = 1816,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 1703.4,
@@ -9296,10 +7756,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [48825] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1468.4,
-            ["x"] = 1709.9,
         },
         ["Fillers"] = {
             [48823] = {
@@ -9329,10 +7785,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [48823] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1480,
-            ["x"] = 1714.3,
         },
         ["Fillers"] = {
             [48852] = {
@@ -9382,10 +7834,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1705.5,
-            ["x"] = 1822.3,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1705.5,
@@ -9406,10 +7854,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1528.5,
-            ["x"] = 1899.9,
-        },
         ["Button"] = {
             ["48855-1"] = 153483,
         },
@@ -9427,10 +7871,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [48855] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1523.5,
-            ["x"] = 1892.2,
         },
         ["Button"] = {
             ["48855-1"] = 153483,
@@ -9467,10 +7907,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1506.8,
-            ["x"] = 1792.7,
-        },
         ["Fillers"] = {
             [48852] = {
                 ["1"] = "1",
@@ -9483,10 +7919,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 88
-        ["Trigger"] = {
-            ["y"] = 1507.5,
-            ["x"] = 1801.5,
-        },
         ["Qpart"] = {
             [48852] = {
                 ["1"] = "1",
@@ -9543,10 +7975,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1600.3,
-            ["x"] = 2314.1,
-        },
         ["Fillers"] = {
             [49776] = {
                 ["1"] = "1",
@@ -9568,10 +7996,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1761.9,
-            ["x"] = 2326.6,
-        },
         ["Fillers"] = {
             [49776] = {
                 ["1"] = "1",
@@ -9593,10 +8017,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1858,
-            ["x"] = 2207.5,
-        },
         ["Fillers"] = {
             [49776] = {
                 ["1"] = "1",
@@ -9612,10 +8032,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 96
-        ["Trigger"] = {
-            ["y"] = 1784,
-            ["x"] = 2295,
-        },
         ["Qpart"] = {
             [49774] = {
                 ["1"] = "1",
@@ -9657,10 +8073,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1664.3,
-            ["x"] = 2178.3,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1664.3,
@@ -9695,10 +8107,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1690.8,
-            ["x"] = 2162.4,
-        },
         ["Button"] = {
             ["49780-1"] = 156480,
         },
@@ -9728,10 +8136,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 105
-        ["Trigger"] = {
-            ["y"] = 1658.7,
-            ["x"] = 2176.1,
-        },
         ["Qpart"] = {
             [49781] = {
                 ["1"] = "1",
@@ -9762,10 +8166,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 108
-        ["Trigger"] = {
-            ["y"] = 1995.5,
-            ["x"] = 1943.3,
-        },
         ["Qpart"] = {
             [48492] = {
                 ["1"] = "1",
@@ -9784,10 +8184,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1995,
-            ["x"] = 1944.7,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 1995,
@@ -9822,10 +8218,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2083.6,
-            ["x"] = 2007.4,
-        },
         ["Fillers"] = {
             [48497] = {
                 ["1"] = "1",
@@ -9844,10 +8236,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2110.6,
-            ["x"] = 2072.6,
-        },
         ["Fillers"] = {
             [48497] = {
                 ["1"] = "1",
@@ -9865,10 +8253,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [48496] = {
                 ["4"] = "4",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2199.5,
-            ["x"] = 2049.6,
         },
         ["Fillers"] = {
             [48497] = {
@@ -9893,10 +8277,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 116
 
-        ["Trigger"] = {
-            ["y"] = 2191.4,
-            ["x"] = 2078,
-        },
         ["Waypoint"] = 48498,
         ["Range"] = 6.94,
         ["TT"] = {
@@ -9910,10 +8290,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [48498] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2207.5,
-            ["x"] = 2109.6,
         },
         ["Fillers"] = {
             [48497] = {
@@ -9933,10 +8309,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2177.3,
-            ["x"] = 2005.7,
-        },
         ["Fillers"] = {
             [48497] = {
                 ["1"] = "1",
@@ -9950,10 +8322,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 119
 
-        ["Trigger"] = {
-            ["y"] = 2175.1,
-            ["x"] = 2013,
-        },
         ["Qpart"] = {
             [48497] = {
                 ["1"] = "1",
@@ -9995,10 +8363,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2269.8,
-            ["x"] = 2089.1,
-        },
         ["Range"] = 36.75,
         ["TT"] = {
             ["y"] = 2269.8,
@@ -10028,10 +8392,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     { -- Step 125
         ["ExtraActionB"] = 1,
 
-        ["Trigger"] = {
-            ["y"] = 2242.6,
-            ["x"] = 2058.3,
-        },
         ["Qpart"] = {
             [48499] = {
                 ["1"] = "1",
@@ -10046,10 +8406,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     { -- Step 126
         ["ExtraActionB"] = 1,
 
-        ["Trigger"] = {
-            ["y"] = 2144.9,
-            ["x"] = 2012,
-        },
         ["Qpart"] = {
             [48499] = {
                 ["2"] = "2",
@@ -10078,10 +8434,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1910,
-            ["x"] = 1746.2,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1910,
@@ -10108,10 +8460,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 131
-        ["Trigger"] = {
-            ["y"] = 1909,
-            ["x"] = 1704.5,
-        },
         ["Waypoint"] = 48801,
         ["Range"] = 4.5,
         ["TT"] = {
@@ -10126,10 +8474,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1887,
-            ["x"] = 1592.5,
-        },
         ["Range"] = 0.97,
         ["TT"] = {
             ["y"] = 1887,
@@ -10143,10 +8487,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1786.4,
-            ["x"] = 1809.8,
-        },
         ["Fillers"] = {
             [48890] = {
                 ["1"] = "1",
@@ -10165,10 +8505,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2010,
-            ["x"] = 1789.7,
-        },
         ["Fillers"] = {
             [48890] = {
                 ["1"] = "1",
@@ -10181,10 +8517,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 135
-        ["Trigger"] = {
-            ["y"] = 1979.5,
-            ["x"] = 1764.4,
-        },
         ["Qpart"] = {
             [48890] = {
                 ["1"] = "1",
@@ -10230,10 +8562,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1801,
-            ["x"] = 1679.5,
-        },
         ["Button"] = {
             ["49078-1"] = 153012,
         },
@@ -10263,10 +8591,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1797.8,
-            ["x"] = 1732.5,
-        },
         ["Button"] = {
             ["49078-1"] = 153012,
         },
@@ -10287,10 +8611,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [48800] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1944.2,
-            ["x"] = 1822.9,
         },
         ["Fillers"] = {
             [49078] = {
@@ -10320,10 +8640,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [49078] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1928.8,
-            ["x"] = 1813.9,
         },
         ["Fillers"] = {
             [49406] = {
@@ -10371,10 +8687,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1904.4,
-            ["x"] = 1758.3,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1904.4,
@@ -10382,10 +8694,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 145
-        ["Trigger"] = {
-            ["y"] = 1830.8,
-            ["x"] = 1807.8,
-        },
         ["Qpart"] = {
             [49079] = {
                 ["2"] = "2",
@@ -10417,10 +8725,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 148
         ["Bloodlust"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1900.5,
-            ["x"] = 1891.5,
-        },
         ["Qpart"] = {
             [49081] = {
                 ["1"] = "1",
@@ -10451,10 +8755,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 151
-        ["Trigger"] = {
-            ["y"] = 1891.9,
-            ["x"] = 1803.9,
-        },
         ["Qpart"] = {
             [49082] = {
                 ["1"] = "1",
@@ -10472,10 +8772,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1857,
-            ["x"] = 1644.3,
-        },
         ["Range"] = 40.16,
         ["TT"] = {
             ["y"] = 1857,
@@ -10489,10 +8785,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1991.9,
-            ["x"] = 1364.5,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1991.9,
@@ -10527,10 +8819,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 157
-        ["Trigger"] = {
-            ["y"] = 2385.3,
-            ["x"] = 1367.4,
-        },
         ["Qpart"] = {
             [47880] = {
                 ["1"] = "1",
@@ -10543,10 +8831,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 158
-        ["Trigger"] = {
-            ["y"] = 2411.6,
-            ["x"] = 1367,
-        },
         ["Qpart"] = {
             [47880] = {
                 ["2"] = "2",
@@ -10559,10 +8843,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 159
-        ["Trigger"] = {
-            ["y"] = 2503.1,
-            ["x"] = 1371,
-        },
         ["Waypoint"] = 47880,
         ["Range"] = 10.08,
         ["TT"] = {
@@ -10591,10 +8871,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 162
-        ["Trigger"] = {
-            ["y"] = 2574.4,
-            ["x"] = 1368.4,
-        },
         ["Waypoint"] = 49348,
         ["Range"] = 13.95,
         ["TT"] = {
@@ -10625,10 +8901,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2482.6,
-            ["x"] = 1549.5,
-        },
         ["Fillers"] = {
             [47491] = {
                 ["1"] = "1",
@@ -10648,10 +8920,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [47247] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2476.5,
-            ["x"] = 1162,
         },
         ["Fillers"] = {
             [49348] = {
@@ -10696,10 +8964,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2426.8,
-            ["x"] = 1209.5,
-        },
         ["Range"] = 102.71,
         ["TT"] = {
             ["y"] = 2426.8,
@@ -10715,10 +8979,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 168
-        ["Trigger"] = {
-            ["y"] = 2423.9,
-            ["x"] = 1367.5,
-        },
         ["Range"] = 3.35,
         ["Waypoint"] = 49432,
         ["TT"] = {
@@ -10743,10 +9003,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2303.6,
-            ["x"] = 1367.7,
-        },
         ["Fillers"] = {
             [47491] = {
                 ["1"] = "1",
@@ -10765,10 +9021,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 170
-        ["Trigger"] = {
-            ["y"] = 2305.4,
-            ["x"] = 1365,
-        },
         ["Qpart"] = {
             [49432] = {
                 ["2"] = "2",
@@ -10781,10 +9033,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 171
-        ["Trigger"] = {
-            ["y"] = 2428.9,
-            ["x"] = 1367,
-        },
         ["Range"] = 14.25,
         ["Waypoint"] = 47248,
         ["TT"] = {
@@ -10804,10 +9052,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 172
-        ["Trigger"] = {
-            ["y"] = 2517,
-            ["x"] = 1326.5,
-        },
         ["Range"] = 7.71,
         ["Waypoint"] = 47248,
         ["TT"] = {
@@ -10832,10 +9076,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2598.6,
-            ["x"] = 1326,
-        },
         ["Fillers"] = {
             [47491] = {
                 ["1"] = "1",
@@ -10854,10 +9094,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 174
-        ["Trigger"] = {
-            ["y"] = 2518.6,
-            ["x"] = 1326.5,
-        },
         ["Range"] = 6.77,
         ["Waypoint"] = 47248,
         ["TT"] = {
@@ -10902,10 +9138,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2549.9,
-            ["x"] = 1518.5,
-        },
         ["Fillers"] = {
             [48934] = {
                 ["1"] = "1",
@@ -10926,10 +9158,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2481.9,
-            ["x"] = 1210.9,
-        },
         ["Range"] = 102.71,
         ["TT"] = {
             ["y"] = 2481.9,
@@ -10937,10 +9165,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 178
-        ["Trigger"] = {
-            ["y"] = 2588.1,
-            ["x"] = 1367.7,
-        },
         ["Range"] = 8.99,
         ["Waypoint"] = 49348,
         ["TT"] = {
@@ -10976,10 +9200,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2475.5,
-            ["x"] = 1367,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 2475.5,
@@ -10987,10 +9207,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 182
-        ["Trigger"] = {
-            ["y"] = 2470.9,
-            ["x"] = 1369.9,
-        },
         ["Qpart"] = {
             [47249] = {
                 ["2"] = "2",
@@ -11021,10 +9237,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 185
-        ["Trigger"] = {
-            ["y"] = 2448.9,
-            ["x"] = 1402.2,
-        },
         ["Waypoint"] = 47250,
         ["Range"] = 11.31,
         ["TT"] = {
@@ -11033,10 +9245,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 186
-        ["Trigger"] = {
-            ["y"] = 2412.3,
-            ["x"] = 1401.5,
-        },
         ["Waypoint"] = 47250,
         ["Range"] = 8.96,
         ["TT"] = {
@@ -11045,10 +9253,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 187
-        ["Trigger"] = {
-            ["y"] = 2377.6,
-            ["x"] = 1375.4,
-        },
         ["Waypoint"] = 47250,
         ["Range"] = 12.15,
         ["TT"] = {
@@ -11081,10 +9285,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1986.4,
-            ["x"] = 1376.3,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1986.4,
@@ -11110,10 +9310,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 193
-        ["Trigger"] = {
-            ["y"] = 1953.8,
-            ["x"] = 1352.5,
-        },
         ["Waypoint"] = 49064,
         ["Range"] = 15.25,
         ["TT"] = {
@@ -11128,10 +9324,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2146.8,
-            ["x"] = 523.6,
-        },
         ["Range"] = 01,
         ["TT"] = {
             ["y"] = 2146.8,
@@ -11160,10 +9352,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2345.9,
-            ["x"] = 677.7,
-        },
         ["Button"] = {
             ["47924-1"] = 151849,
         },
@@ -11181,10 +9369,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 197
 
-        ["Trigger"] = {
-            ["y"] = 2345.9,
-            ["x"] = 677.7,
-        },
         ["Qpart"] = {
             [47996] = {
                 ["1"] = "1",
@@ -11225,10 +9409,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2361.9,
-            ["x"] = 863.6,
-        },
         ["Fillers"] = {
             [47998] = {
                 ["1"] = "1",
@@ -11247,10 +9427,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2280.9,
-            ["x"] = 788,
-        },
         ["Fillers"] = {
             [47998] = {
                 ["1"] = "1",
@@ -11264,10 +9440,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 202
 
-        ["Trigger"] = {
-            ["y"] = 2190.1,
-            ["x"] = 818.5,
-        },
         ["Range"] = 21.44,
         ["Waypoint"] = 47998,
         ["TT"] = {
@@ -11286,10 +9458,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [47919] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2183.3,
-            ["x"] = 839.4,
         },
         ["Fillers"] = {
             [47998] = {
@@ -11310,10 +9478,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2154.6,
-            ["x"] = 849.7,
-        },
         ["Fillers"] = {
             [47998] = {
                 ["1"] = "1",
@@ -11327,10 +9491,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 205
 
-        ["Trigger"] = {
-            ["y"] = 2162.6,
-            ["x"] = 849.2,
-        },
         ["Qpart"] = {
             [47998] = {
                 ["1"] = "1",
@@ -11355,10 +9515,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 207
-        ["Trigger"] = {
-            ["y"] = 2542.9,
-            ["x"] = 520.7,
-        },
         ["Qpart"] = {
             [49064] = {
                 ["2"] = "2",
@@ -11395,10 +9551,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2593.1,
-            ["x"] = 475.1,
-        },
         ["Range"] = 1,
         ["TT"] = {
             ["y"] = 2593.1,
@@ -11426,10 +9578,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 213
-        ["Trigger"] = {
-            ["y"] = 2658.9,
-            ["x"] = 365,
-        },
         ["Waypoint"] = 49070,
         ["Range"] = 9.51,
         ["TT"] = {
@@ -11445,10 +9593,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [49070] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2754.3,
-            ["x"] = 319.3,
         },
         ["Button"] = {
             ["49071-1"] = 153024,
@@ -11478,10 +9622,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [49070] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2893.6,
-            ["x"] = 241,
         },
         ["Button"] = {
             ["49071-1"] = 153024,
@@ -11525,10 +9665,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2594.6,
-            ["x"] = 475.2,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 2594.6,
@@ -11567,10 +9703,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2667,
-            ["x"] = 176,
-        },
         ["Button"] = {
             ["49125-1"] = 160559,
         },
@@ -11597,10 +9729,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2669,
-            ["x"] = 179.4,
-        },
         ["Button"] = {
             ["49125-1"] = 160559,
         },
@@ -11617,10 +9745,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 223
-        ["Trigger"] = {
-            ["y"] = 2599.3,
-            ["x"] = 225.9,
-        },
         ["Qpart"] = {
             [51689] = {
                 ["1"] = "1",
@@ -11652,10 +9776,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 226
         ["ExtraActionB"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2934.9,
-            ["x"] = 64.7,
-        },
         ["Qpart"] = {
             [49126] = {
                 ["1"] = "1",
@@ -11668,10 +9788,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 227
-        ["Trigger"] = {
-            ["y"] = 2934.9,
-            ["x"] = 64.7,
-        },
         ["Qpart"] = {
             [49126] = {
                 ["2"] = "2",
@@ -11704,10 +9820,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 230
-        ["Trigger"] = {
-            ["y"] = 2913.5,
-            ["x"] = 449,
-        },
         ["Qpart"] = {
             [49130] = {
                 ["1"] = "1",
@@ -11746,10 +9858,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 233
-        ["Trigger"] = {
-            ["y"] = 2654.3,
-            ["x"] = 368.2,
-        },
         ["Range"] = 21.44,
         ["Waypoint"] = 49136,
         ["TT"] = {
@@ -11760,10 +9868,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     { -- Step 234
         ["Bloodlust"] = 1,
         ["Immuneatstart"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2895.1,
-            ["x"] = 241.3,
-        },
         ["Qpart"] = {
             [49136] = {
                 ["1"] = "1",
@@ -11798,10 +9902,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [49160] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2592.8,
-            ["x"] = 478,
         },
         ["Button"] = {
             ["49160-1"] = 153131,
@@ -11843,10 +9943,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2137,
-            ["x"] = 519.7,
-        },
         ["Range"] = 0.75,
         ["TrigText"] = "1/3",
         ["TT"] = {
@@ -11861,10 +9957,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1910.3,
-            ["x"] = 282.7,
-        },
         ["Range"] = 0.75,
         ["TrigText"] = "2/3",
         ["TT"] = {
@@ -11879,10 +9971,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1856.5,
-            ["x"] = 91.9,
-        },
         ["Range"] = 0.75,
         ["TrigText"] = "3/3",
         ["TT"] = {
@@ -11919,10 +10007,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 246
-        ["Trigger"] = {
-            ["y"] = 2348.6,
-            ["x"] = 396.2,
-        },
         ["Qpart"] = {
             [52477] = {
                 ["1"] = "1",
@@ -11953,10 +10037,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 249
 
-        ["Trigger"] = {
-            ["y"] = 1994.2,
-            ["x"] = -70.8,
-        },
         ["Range"] = 5.87,
         ["GetFP"] = 1955,
         ["TT"] = {
@@ -11965,10 +10045,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 250
-        ["Trigger"] = {
-            ["y"] = 1991.9,
-            ["x"] = -151.9,
-        },
         ["Qpart"] = {
             [47245] = {
                 ["1"] = "1",
@@ -11981,10 +10057,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 251
-        ["Trigger"] = {
-            ["y"] = 1892.7,
-            ["x"] = -156.4,
-        },
         ["Qpart"] = {
             [47525] = {
                 ["1"] = "1",
@@ -12035,10 +10107,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1726.5,
-            ["x"] = -144.2,
-        },
         ["Fillers"] = {
             [48402] = {
                 ["1"] = "1",
@@ -12054,10 +10122,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 256
-        ["Trigger"] = {
-            ["y"] = 1726,
-            ["x"] = -136.4,
-        },
         ["Qpart"] = {
             [48402] = {
                 ["1"] = "1",
@@ -12073,10 +10137,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 257
-        ["Trigger"] = {
-            ["y"] = 1653.4,
-            ["x"] = -397,
-        },
         ["Waypoint"] = 48402,
         ["Range"] = 14.18,
         ["TT"] = {
@@ -12105,10 +10165,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 260
-        ["Trigger"] = {
-            ["y"] = 1543.2,
-            ["x"] = -502.9,
-        },
         ["Qpart"] = {
             [47623] = {
                 ["1"] = "1",
@@ -12121,10 +10177,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 261
-        ["Trigger"] = {
-            ["y"] = 1543.5,
-            ["x"] = -502.9,
-        },
         ["Qpart"] = {
             [47623] = {
                 ["2"] = "2",
@@ -12156,10 +10208,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 264
-        ["Trigger"] = {
-            ["y"] = 1652.9,
-            ["x"] = -409.2,
-        },
         ["Waypoint"] = 47622,
         ["Range"] = 13.48,
         ["TT"] = {
@@ -12175,10 +10223,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [47622] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1853.9,
-            ["x"] = -419.8,
         },
         ["Button"] = {
             ["47622-1"] = 151237,
@@ -12218,10 +10262,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1643.5,
-            ["x"] = -722.7,
-        },
         ["Button"] = {
             ["48090-3"] = 158071,
         },
@@ -12243,10 +10283,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [48090] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1573.3,
-            ["x"] = -878.8,
         },
         ["Fillers"] = {
             [48093] = {
@@ -12275,10 +10311,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1604.9,
-            ["x"] = -1033.5,
-        },
         ["Fillers"] = {
             [48093] = {
                 ["1"] = "1",
@@ -12296,10 +10328,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [48090] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1764.9,
-            ["x"] = -774.7,
         },
         ["Fillers"] = {
             [48093] = {
@@ -12323,10 +10351,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 271
 
-        ["Trigger"] = {
-            ["y"] = 1763.4,
-            ["x"] = -780.5,
-        },
         ["Qpart"] = {
             [48093] = {
                 ["1"] = "1",
@@ -12351,10 +10375,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 273
 
-        ["Trigger"] = {
-            ["y"] = 1591.5,
-            ["x"] = -574.8,
-        },
         ["Range"] = 8.69,
         ["Waypoint"] = 47622,
         ["TT"] = {
@@ -12364,10 +10384,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 274
 
-        ["Trigger"] = {
-            ["y"] = 1606.9,
-            ["x"] = -545.3,
-        },
         ["Range"] = 7.96,
         ["Waypoint"] = 47622,
         ["TT"] = {
@@ -12377,10 +10393,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 275
 
-        ["Trigger"] = {
-            ["y"] = 1609.3,
-            ["x"] = -511.4,
-        },
         ["Range"] = 30.7,
         ["Waypoint"] = 47622,
         ["TT"] = {
@@ -12408,10 +10420,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 278
-        ["Trigger"] = {
-            ["y"] = 1556.3,
-            ["x"] = -518.5,
-        },
         ["Qpart"] = {
             [47540] = {
                 ["1"] = "1",
@@ -12442,10 +10450,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 281
-        ["Trigger"] = {
-            ["y"] = 1629.8,
-            ["x"] = -288.4,
-        },
         ["Waypoint"] = 47696,
         ["Range"] = 24.61,
         ["TT"] = {
@@ -12454,10 +10458,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 282
-        ["Trigger"] = {
-            ["y"] = 1558.4,
-            ["x"] = -88.5,
-        },
         ["Waypoint"] = 47696,
         ["Range"] = 19.23,
         ["TT"] = {
@@ -12473,10 +10473,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1557.5,
-            ["x"] = -88.5,
-        },
         ["Range"] = 21.93,
         ["TT"] = {
             ["y"] = 1557.5,
@@ -12541,10 +10537,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 290
 
-        ["Trigger"] = {
-            ["y"] = 2028.5,
-            ["x"] = -49.3,
-        },
         ["Waypoint"] = 50934,
         ["Range"] = 13.13,
         ["TT"] = {
@@ -12554,10 +10546,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 291
 
-        ["Trigger"] = {
-            ["y"] = 1849.5,
-            ["x"] = 100.7,
-        },
         ["Waypoint"] = 50934,
         ["Range"] = 10.99,
         ["TT"] = {
@@ -12592,10 +10580,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1765.5,
-            ["x"] = 85.2,
-        },
         ["Button"] = {
             ["49366-1"] = 153676,
         },
@@ -12629,10 +10613,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 297
 
-        ["Trigger"] = {
-            ["y"] = 1652.9,
-            ["x"] = 160.3,
-        },
         ["Qpart"] = {
             [49370] = {
                 ["1"] = "1",
@@ -12667,10 +10647,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 300
 
-        ["Trigger"] = {
-            ["y"] = 1679,
-            ["x"] = 182.3,
-        },
         ["Qpart"] = {
             [49378] = {
                 ["1"] = "1",
@@ -12697,10 +10673,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1623.4,
-            ["x"] = 180.3,
-        },
         ["Button"] = {
             ["49380-2"] = 153678,
         },
@@ -12716,10 +10688,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [49377] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1524.4,
-            ["x"] = 182.4,
         },
         ["Fillers"] = {
             [49378] = {
@@ -12750,10 +10718,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1571.4,
-            ["x"] = 268.7,
-        },
         ["Button"] = {
             ["49380-3"] = 153678,
         },
@@ -12769,10 +10733,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [49380] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1655,
-            ["x"] = 285.2,
         },
         ["Fillers"] = {
             [49379] = {
@@ -12793,10 +10753,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 305
 
-        ["Trigger"] = {
-            ["y"] = 1588.2,
-            ["x"] = 220.6,
-        },
         ["Qpart"] = {
             [49380] = {
                 ["3"] = "3",
@@ -12839,10 +10795,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 308
 
-        ["Trigger"] = {
-            ["y"] = 1631,
-            ["x"] = -216.7,
-        },
         ["Range"] = 34.95,
         ["Waypoint"] = 49382,
         ["TT"] = {
@@ -12852,10 +10804,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 309
 
-        ["Trigger"] = {
-            ["y"] = 1644.9,
-            ["x"] = -379.2,
-        },
         ["Range"] = 15.99,
         ["Waypoint"] = 49382,
         ["TT"] = {
@@ -12865,10 +10813,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 310
 
-        ["Trigger"] = {
-            ["y"] = 1549.7,
-            ["x"] = -508.9,
-        },
         ["Qpart"] = {
             [49382] = {
                 ["1"] = "1",
@@ -12891,10 +10835,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 312
-        ["Trigger"] = {
-            ["y"] = 1657.9,
-            ["x"] = -404.8,
-        },
         ["Range"] = 5,
         ["Waypoint"] = 47631,
         ["TT"] = {
@@ -12903,10 +10843,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 313
-        ["Trigger"] = {
-            ["y"] = 2165.5,
-            ["x"] = -470.5,
-        },
         ["Qpart"] = {
             [47631] = {
                 ["1"] = "1",
@@ -12938,10 +10874,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 316
-        ["Trigger"] = {
-            ["y"] = 2265,
-            ["x"] = -640.7,
-        },
         ["Waypoint"] = 47597,
         ["Range"] = 15.23,
         ["TT"] = {
@@ -12971,10 +10903,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2240.9,
-            ["x"] = -718.5,
-        },
         ["Button"] = {
             ["47599-1"] = 151363,
         },
@@ -12997,10 +10925,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [47756] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2395.8,
-            ["x"] = -752.8,
         },
         ["Button"] = {
             ["47599-1"] = 151363,
@@ -13025,10 +10949,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2384.6,
-            ["x"] = -597.8,
-        },
         ["Button"] = {
             ["47599-1"] = 151363,
         },
@@ -13043,10 +10963,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [47599] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2384.6,
-            ["x"] = -597.8,
         },
         ["Fillers"] = {
             [47756] = {
@@ -13063,10 +10979,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 321
-        ["Trigger"] = {
-            ["y"] = 2333.1,
-            ["x"] = -711.7,
-        },
         ["Qpart"] = {
             [47756] = {
                 ["1"] = "1",
@@ -13079,10 +10991,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 322
-        ["Trigger"] = {
-            ["y"] = 2589.8,
-            ["x"] = -860,
-        },
         ["Range"] = 9.39,
         ["Waypoint"] = 47597,
         ["TT"] = {
@@ -13112,10 +11020,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 325
-        ["Trigger"] = {
-            ["y"] = 2592.1,
-            ["x"] = -869.5,
-        },
         ["GetFP"] = 1956,
         ["Range"] = 2,
         ["TT"] = {
@@ -13128,10 +11032,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [47596] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2568,
-            ["x"] = -711.2,
         },
         ["Fillers"] = {
             [47598] = {
@@ -13151,10 +11051,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2641.8,
-            ["x"] = -686.3,
-        },
         ["Fillers"] = {
             [47598] = {
                 ["1"] = "1",
@@ -13171,10 +11067,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [47596] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2643.3,
-            ["x"] = -631,
         },
         ["Fillers"] = {
             [47598] = {
@@ -13193,10 +11085,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2748.1,
-            ["x"] = -732,
-        },
         ["Fillers"] = {
             [47598] = {
                 ["1"] = "1",
@@ -13209,10 +11097,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 330
-        ["Trigger"] = {
-            ["y"] = 2748.1,
-            ["x"] = -728.8,
-        },
         ["Qpart"] = {
             [47598] = {
                 ["1"] = "1",
@@ -13245,10 +11129,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 333
-        ["Trigger"] = {
-            ["y"] = 2616,
-            ["x"] = -833.2,
-        },
         ["Qpart"] = {
             [47601] = {
                 ["1"] = "1",
@@ -13261,10 +11141,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 334
-        ["Trigger"] = {
-            ["y"] = 2616.5,
-            ["x"] = -831.3,
-        },
         ["Qpart"] = {
             [47601] = {
                 ["3"] = "3",
@@ -13302,10 +11178,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2609.6,
-            ["x"] = -825,
-        },
         ["Range"] = 01,
         ["TT"] = {
             ["y"] = 2609.6,
@@ -13313,10 +11185,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 338
-        ["Trigger"] = {
-            ["y"] = 2047,
-            ["x"] = -94.5,
-        },
         ["Qpart"] = {
             [47602] = {
                 ["2"] = "2",
@@ -13347,10 +11215,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 341
-        ["Trigger"] = {
-            ["y"] = 2167.1,
-            ["x"] = -70.7,
-        },
         ["Qpart"] = {
             [49932] = {
                 ["1"] = "1",
@@ -13363,10 +11227,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 342
-        ["Trigger"] = {
-            ["y"] = 2167.1,
-            ["x"] = -70.7,
-        },
         ["Qpart"] = {
             [49932] = {
                 ["2"] = "2",
@@ -13379,10 +11239,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 343
-        ["Trigger"] = {
-            ["y"] = 2166.4,
-            ["x"] = -69.4,
-        },
         ["Qpart"] = {
             [49932] = {
                 ["3"] = "3",
@@ -13420,10 +11276,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2135.8,
-            ["x"] = -188.2,
-        },
         ["Fillers"] = {
             [49938] = {
                 ["1"] = "1",
@@ -13444,10 +11296,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2347.8,
-            ["x"] = -29.5,
-        },
         ["Fillers"] = {
             [49938] = {
                 ["1"] = "1",
@@ -13463,10 +11311,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 348
-        ["Trigger"] = {
-            ["y"] = 2345.9,
-            ["x"] = -32,
-        },
         ["Qpart"] = {
             [49938] = {
                 ["1"] = "1",
@@ -13523,10 +11367,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2349.1,
-            ["x"] = -219.5,
-        },
         ["Button"] = {
             ["49941-1"] = 156528,
         },
@@ -13570,10 +11410,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2399.6,
-            ["x"] = -262.8,
-        },
         ["Button"] = {
             ["49956-1"] = 156542,
         },
@@ -13616,10 +11452,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2500.6,
-            ["x"] = -365.6,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 2500.6,
@@ -13627,10 +11459,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 359
-        ["Trigger"] = {
-            ["y"] = 2500.6,
-            ["x"] = -365.6,
-        },
         ["Qpart"] = {
             [49980] = {
                 ["2"] = "2",
@@ -13661,10 +11489,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 362
-        ["Trigger"] = {
-            ["y"] = 2464.8,
-            ["x"] = -328.9,
-        },
         ["Qpart"] = {
             [49985] = {
                 ["1"] = "1",
@@ -13695,10 +11519,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 365
-        ["Trigger"] = {
-            ["y"] = 2026.5,
-            ["x"] = -48.5,
-        },
         ["Waypoint"] = 49569,
         ["Range"] = 13.34,
         ["TT"] = {
@@ -13713,10 +11533,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1948.0,
-            ["x"] = -6.2,
-        },
         ["Range"] = 0.61,
         ["TT"] = {
             ["y"] = 1948.0,
@@ -13725,10 +11541,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 367
         ["ETA"] = 150,
-        ["Trigger"] = {
-            ["y"] = 1950,
-            ["x"] = -5,
-        },
         ["Qpart"] = {
             [49569] = {
                 ["2"] = "2",
@@ -13741,10 +11553,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 368
-        ["Trigger"] = {
-            ["y"] = 687.2,
-            ["x"] = 1348.2,
-        },
         ["Waypoint"] = 49569,
         ["Range"] = 12.73,
         ["TT"] = {
@@ -13780,10 +11588,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 372
-        ["Trigger"] = {
-            ["y"] = 814.1,
-            ["x"] = 1378.5,
-        },
         ["Qpart"] = {
             [50076] = {
                 ["1"] = "1",
@@ -13797,10 +11601,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 373
         ["ETA"] = 33,
-        ["Trigger"] = {
-            ["y"] = 806.4,
-            ["x"] = 1378,
-        },
         ["Qpart"] = {
             [50076] = {
                 ["2"] = "2",
@@ -13831,10 +11631,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 376
-        ["Trigger"] = {
-            ["y"] = 819.1,
-            ["x"] = 1347.8,
-        },
         ["Waypoint"] = 50138,
         ["Range"] = 14.37,
         ["TT"] = {
@@ -13843,10 +11639,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 377
-        ["Trigger"] = {
-            ["y"] = 845,
-            ["x"] = 1372,
-        },
         ["Waypoint"] = 50138,
         ["Range"] = 7.12,
         ["TT"] = {
@@ -13855,10 +11647,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 378
-        ["Trigger"] = {
-            ["y"] = 990.2,
-            ["x"] = 1223.9,
-        },
         ["Qpart"] = {
             [50138] = {
                 ["1"] = "1",
@@ -13880,10 +11668,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 380
-        ["Trigger"] = {
-            ["y"] = 991.9,
-            ["x"] = 1216.8,
-        },
         ["Qpart"] = {
             [50138] = {
                 ["2"] = "2",
@@ -13899,10 +11683,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 381
-        ["Trigger"] = {
-            ["y"] = 1123.5,
-            ["x"] = 1097.5,
-        },
         ["Qpart"] = {
             [50138] = {
                 ["3"] = "3",
@@ -13945,10 +11725,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1174,
-            ["x"] = 1103.5,
-        },
         ["Button"] = {
             ["50079-1"] = 156847,
         },
@@ -13974,10 +11750,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [50081] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1238.5,
-            ["x"] = 1123,
         },
         ["Button"] = {
             ["50079-2"] = 156847,
@@ -14005,10 +11777,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1287,
-            ["x"] = 1127.2,
-        },
         ["Button"] = {
             ["50079-3"] = 156847,
         },
@@ -14025,10 +11793,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 387
-        ["Trigger"] = {
-            ["y"] = 1291.5,
-            ["x"] = 1130.5,
-        },
         ["Qpart"] = {
             [50081] = {
                 ["1"] = "1",
@@ -14066,10 +11830,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1392.3,
-            ["x"] = 1081.3,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1392.3,
@@ -14077,10 +11837,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 391
-        ["Trigger"] = {
-            ["y"] = 1421.3,
-            ["x"] = 1058.5,
-        },
         ["Qpart"] = {
             [50082] = {
                 ["2"] = "2",
@@ -14122,10 +11878,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 395
 
-        ["Trigger"] = {
-            ["y"] = 1589.7,
-            ["x"] = 997.7,
-        },
         ["Qpart"] = {
             [50083] = {
                 ["1"] = "1",
@@ -14139,10 +11891,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 396
 
-        ["Trigger"] = {
-            ["y"] = 1640.3,
-            ["x"] = 934.7,
-        },
         ["Range"] = 7.51,
         ["Waypoint"] = 50083,
         ["TT"] = {
@@ -14152,10 +11900,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 397
 
-        ["Trigger"] = {
-            ["y"] = 1643.4,
-            ["x"] = 948.5,
-        },
         ["Range"] = 5.83,
         ["Waypoint"] = 50083,
         ["TT"] = {
@@ -14169,10 +11913,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             [50083] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1637.5,
-            ["x"] = 973.4,
         },
         ["Button"] = {
             ["50083-2"] = 156868,
@@ -14210,10 +11950,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1654.5,
-            ["x"] = 905.6,
-        },
         ["Fillers"] = {
             [50080] = {
                 ["1"] = "1",
@@ -14236,10 +11972,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 402
 
-        ["Trigger"] = {
-            ["y"] = 1709.3,
-            ["x"] = 1027.5,
-        },
         ["Qpart"] = {
             [50080] = {
                 ["1"] = "1",
@@ -14253,10 +11985,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 403
 
-        ["Trigger"] = {
-            ["y"] = 1652.9,
-            ["x"] = 1058,
-        },
         ["Waypoint"] = 50085,
         ["Range"] = 19,
         ["TT"] = {
@@ -14276,10 +12004,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 405
 
-        ["Trigger"] = {
-            ["y"] = 1508.2,
-            ["x"] = 1061.5,
-        },
         ["Waypoint"] = 52073,
         ["Range"] = 25.81,
         ["TT"] = {
@@ -14294,10 +12018,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1403.2,
-            ["x"] = 1072.8,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1403.2,
@@ -14311,10 +12031,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1403.2,
-            ["x"] = 1072.8,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1403.2,
@@ -14341,10 +12057,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 410
         ["Bloodlust"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1498.4,
-            ["x"] = 786.2,
-        },
         ["Qpart"] = {
             [50087] = {
                 ["1"] = "1",
@@ -14377,10 +12089,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     { -- Step 413
         ["ExtraLineText"] = "TALK_ROKHAN_RIDE_DOWN",
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1482.4,
-            ["x"] = 792.9,
-        },
         ["Range"] = 14.61,
         ["Waypoint"] = 51244,
         ["TT"] = {
@@ -14389,10 +12097,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 414
-        ["Trigger"] = {
-            ["y"] = 1050.3,
-            ["x"] = 642.7,
-        },
         ["Range"] = 27.39,
         ["Waypoint"] = 51244,
         ["TT"] = {
@@ -14421,10 +12125,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 417
         ["ExtraLineText"] = "TALK_ROKHAN_RIDE_ZULJAN",
-        ["Trigger"] = {
-            ["y"] = 1239.9,
-            ["x"] = 735.1,
-        },
         ["Range"] = 5,
         ["Waypoint"] = 50808,
         ["TT"] = {
@@ -14449,10 +12149,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
 --end of Nazmir start of Vol'dun
 APR.RouteQuestStepList["862-Zuldazar-2"] = {
     { -- Step 1
-        ["Trigger"] = {
-            ["y"] = -1047.5,
-            ["x"] = 802.7,
-        },
         ["Range"] = 5,
         ["Waypoint"] = 50808,
         ["TT"] = {
@@ -14501,10 +12197,6 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
         },
     },
     { -- Step 6
-        ["Trigger"] = {
-            ["y"] = -1046.8,
-            ["x"] = 800.9,
-        },
         ["Range"] = 5,
         ["Waypoint"] = 47313,
         ["TT"] = {
@@ -14513,10 +12205,6 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
         },
     },
     { -- Step 7
-        ["Trigger"] = {
-            ["y"] = -1018.2,
-            ["x"] = 778.2,
-        },
         ["Range"] = 5,
         ["Waypoint"] = 47313,
         ["TT"] = {
@@ -14525,10 +12213,6 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
         },
     },
     { -- Step 8
-        ["Trigger"] = {
-            ["y"] = -964.5,
-            ["x"] = 799.7,
-        },
         ["QpartPart"] = {
             [47313] = {
                 ["1"] = "1",
@@ -14543,10 +12227,6 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
         },
     },
     { -- Step 9
-        ["Trigger"] = {
-            ["y"] = -961.9,
-            ["x"] = 753.6,
-        },
         ["Range"] = 5,
         ["Waypoint"] = 47313,
         ["TT"] = {
@@ -14555,10 +12235,6 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
         },
     },
     { -- Step 10
-        ["Trigger"] = {
-            ["y"] = -1001.6,
-            ["x"] = 744.7,
-        },
         ["Waypoint"] = 47313,
         ["Range"] = 6.93,
         ["TT"] = {
@@ -14567,10 +12243,6 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
         },
     },
     { -- Step 11
-        ["Trigger"] = {
-            ["y"] = -966.5,
-            ["x"] = 741.4,
-        },
         ["QpartPart"] = {
             [47313] = {
                 ["1"] = "1",
@@ -14585,10 +12257,6 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
         },
     },
     { -- Step 12
-        ["Trigger"] = {
-            ["y"] = -963.4,
-            ["x"] = 676.5,
-        },
         ["Waypoint"] = 47313,
         ["Range"] = 6.93,
         ["TT"] = {
@@ -14597,10 +12265,6 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
         },
     },
     { -- Step 13
-        ["Trigger"] = {
-            ["y"] = -936.3,
-            ["x"] = 683.1,
-        },
         ["QpartPart"] = {
             [47313] = {
                 ["1"] = "1",
@@ -14615,10 +12279,6 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
         },
     },
     { -- Step 14
-        ["Trigger"] = {
-            ["y"] = -878,
-            ["x"] = 711.2,
-        },
         ["Waypoint"] = 47313,
         ["Range"] = 9.14,
         ["TT"] = {
@@ -14666,10 +12326,6 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
         },
     },
     { -- Step 19
-        ["Trigger"] = {
-            ["y"] = -859,
-            ["x"] = 799.6,
-        },
         ["Qpart"] = {
             [47315] = {
                 ["1"] = "1",
@@ -14683,10 +12339,6 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
     },
     { -- Step 20
         ["ETA"] = 99,
-        ["Trigger"] = {
-            ["y"] = -661,
-            ["x"] = 789.1,
-        },
         ["Qpart"] = {
             [47315] = {
                 ["2"] = "2",
@@ -14725,10 +12377,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     { -- Step 3
         ["ClearZP"] = 1,
         ["ExtraLineText"] = "WEAPON_PICK_DOESNT_MATTER",
-        ["Trigger"] = {
-            ["y"] = 2673.6,
-            ["x"] = 2197.1,
-        },
         ["Qpart"] = {
             [51357] = {
                 ["1"] = "1",
@@ -14761,10 +12409,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 6
-        ["Trigger"] = {
-            ["y"] = 2648.5,
-            ["x"] = 2243.9,
-        },
         ["Waypoint"] = 49676,
         ["Range"] = 8.78,
         ["TT"] = {
@@ -14773,10 +12417,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 7
-        ["Trigger"] = {
-            ["y"] = 2688.8,
-            ["x"] = 2267.8,
-        },
         ["Waypoint"] = 49676,
         ["Range"] = 5.61,
         ["TT"] = {
@@ -14789,10 +12429,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [49676] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2797.5,
-            ["x"] = 2283.4,
         },
         ["Fillers"] = {
             [47327] = {
@@ -14811,10 +12447,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2852,
-            ["x"] = 2355.4,
-        },
         ["Fillers"] = {
             [47327] = {
                 ["1"] = "1",
@@ -14831,10 +12463,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [49676] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2804.4,
-            ["x"] = 2475.1,
         },
         ["Fillers"] = {
             [47327] = {
@@ -14866,10 +12494,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 13
-        ["Trigger"] = {
-            ["y"] = 2857.1,
-            ["x"] = 2539.6,
-        },
         ["Qpart"] = {
             [49677] = {
                 ["1"] = "1",
@@ -14887,10 +12511,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 14
-        ["Trigger"] = {
-            ["y"] = 2857.1,
-            ["x"] = 2539.6,
-        },
         ["Qpart"] = {
             [47327] = {
                 ["1"] = "1",
@@ -14922,10 +12542,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 17
-        ["Trigger"] = {
-            ["y"] = 2769,
-            ["x"] = 2595.9,
-        },
         ["Qpart"] = {
             [51364] = {
                 ["1"] = "1",
@@ -14938,10 +12554,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 18
-        ["Trigger"] = {
-            ["y"] = 2768.5,
-            ["x"] = 2597.1,
-        },
         ["Qpart"] = {
             [51364] = {
                 ["2"] = "2",
@@ -14955,10 +12567,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 19
         ["ExtraLineText"] = "EXTRA_ACTION_BUTTON_NOT_NEEDED",
-        ["Trigger"] = {
-            ["y"] = 2044.9,
-            ["x"] = 2798,
-        },
         ["ETA"] = 72,
         ["Qpart"] = {
             [51364] = {
@@ -14999,10 +12607,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 23
-        ["Trigger"] = {
-            ["y"] = 2100.3,
-            ["x"] = 2809.9,
-        },
         ["GetFP"] = 2117,
         ["Range"] = 3.37,
         ["TT"] = {
@@ -15030,10 +12634,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [47319] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2116,
-            ["x"] = 2973.1,
         },
         ["Range"] = 18.73,
         ["TT"] = {
@@ -15075,10 +12675,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2044.3,
-            ["x"] = 2818.3,
-        },
         ["Button"] = {
             ["47320-1"] = 150759,
         },
@@ -15114,10 +12710,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2126.6,
-            ["x"] = 2890.5,
-        },
         ["Range"] = 0.75,
         ["TrigText"] = "1/4",
         ["TT"] = {
@@ -15130,10 +12722,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [47316] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2342.9,
-            ["x"] = 2852.6,
         },
         ["Range"] = 0.75,
         ["TrigText"] = "2/4",
@@ -15148,10 +12736,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2230.5,
-            ["x"] = 3093.1,
-        },
         ["Range"] = 0.75,
         ["TrigText"] = "3/4",
         ["TT"] = {
@@ -15164,10 +12748,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [47316] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2439.1,
-            ["x"] = 3094.3,
         },
         ["Range"] = 0.75,
         ["TrigText"] = "4/4",
@@ -15192,10 +12772,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2507.4,
-            ["x"] = 2959.3,
-        },
         ["Fillers"] = {
             [50755] = {
                 ["1"] = "1",
@@ -15215,10 +12791,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [47317] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2549.5,
-            ["x"] = 2968.5,
         },
         ["Fillers"] = {
             [50755] = {
@@ -15240,10 +12812,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2554.6,
-            ["x"] = 2847.5,
-        },
         ["Fillers"] = {
             [50755] = {
                 ["1"] = "1",
@@ -15264,10 +12832,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2494,
-            ["x"] = 2778.5,
-        },
         ["Fillers"] = {
             [50755] = {
                 ["1"] = "1",
@@ -15283,10 +12847,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 41
-        ["Trigger"] = {
-            ["y"] = 2501.4,
-            ["x"] = 2784.5,
-        },
         ["Qpart"] = {
             [50755] = {
                 ["1"] = "1",
@@ -15338,10 +12898,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2043.5,
-            ["x"] = 2818.1,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 2043.2,
@@ -15349,10 +12905,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 46
-        ["Trigger"] = {
-            ["y"] = 1344,
-            ["x"] = 3051.1,
-        },
         ["Qpart"] = {
             [47959] = {
                 ["2"] = "2",
@@ -15404,10 +12956,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1400.2,
-            ["x"] = 3325.6,
-        },
         ["Fillers"] = {
             [48550] = {
                 ["1"] = "1",
@@ -15420,10 +12968,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 51
-        ["Trigger"] = {
-            ["y"] = 1396.7,
-            ["x"] = 3318.1,
-        },
         ["Qpart"] = {
             [48550] = {
                 ["1"] = "1",
@@ -15470,10 +13014,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1257.5,
-            ["x"] = 3050.6,
-        },
         ["Button"] = {
             ["48551-1"] = 152630,
         },
@@ -15497,10 +13037,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1071.9,
-            ["x"] = 3084.1,
-        },
         ["Button"] = {
             ["48551-1"] = 152630,
         },
@@ -15518,10 +13054,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [48551] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1071.9,
-            ["x"] = 3084.1,
         },
         ["Button"] = {
             ["48551-1"] = 152630,
@@ -15553,10 +13085,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 59
-        ["Trigger"] = {
-            ["y"] = 1227.7,
-            ["x"] = 3025.3,
-        },
         ["Waypoint"] = 48554,
         ["Range"] = 8.68,
         ["TT"] = {
@@ -15565,10 +13093,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 60
-        ["Trigger"] = {
-            ["y"] = 1294.9,
-            ["x"] = 2993.3,
-        },
         ["Waypoint"] = 48554,
         ["Range"] = 8.86,
         ["TT"] = {
@@ -15577,10 +13101,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 61
-        ["Trigger"] = {
-            ["y"] = 1295.5,
-            ["x"] = 2960.5,
-        },
         ["Waypoint"] = 48554,
         ["Range"] = 13.27,
         ["TT"] = {
@@ -15589,10 +13109,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 62
-        ["Trigger"] = {
-            ["y"] = 1262.5,
-            ["x"] = 2929.8,
-        },
         ["Waypoint"] = 48554,
         ["Range"] = 15.05,
         ["TT"] = {
@@ -15601,10 +13117,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 63
-        ["Trigger"] = {
-            ["y"] = 1193,
-            ["x"] = 2919.9,
-        },
         ["Qpart"] = {
             [48554] = {
                 ["1"] = "1",
@@ -15617,10 +13129,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 64
-        ["Trigger"] = {
-            ["y"] = 1196.4,
-            ["x"] = 2919.9,
-        },
         ["Qpart"] = {
             [48554] = {
                 ["2"] = "2",
@@ -15667,10 +13175,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1337.8,
-            ["x"] = 3065.5,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1337.8,
@@ -15678,10 +13182,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 69
-        ["Trigger"] = {
-            ["y"] = 286,
-            ["x"] = 3089.8,
-        },
         ["Qpart"] = {
             [48684] = {
                 ["2"] = "2",
@@ -15735,10 +13235,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 74
-        ["Trigger"] = {
-            ["y"] = 287.3,
-            ["x"] = 3031.1,
-        },
         ["LeaveQuest"] = 49040,
         ["GetFP"] = 2118,
         ["Range"] = 10.72,
@@ -15756,10 +13252,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 75
-        ["Trigger"] = {
-            ["y"] = 422.2,
-            ["x"] = 2944.1,
-        },
         ["Waypoint"] = 48993,
         ["Range"] = 9.27,
         ["TT"] = {
@@ -15776,10 +13268,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 76
-        ["Trigger"] = {
-            ["y"] = 430.3,
-            ["x"] = 2897.6,
-        },
         ["Waypoint"] = 48993,
         ["Range"] = 6.13,
         ["TT"] = {
@@ -15800,10 +13288,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [48993] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 544.6,
-            ["x"] = 2869.5,
         },
         ["Fillers"] = {
             [48991] = {
@@ -15827,10 +13311,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [48992] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 504.3,
-            ["x"] = 2889,
         },
         ["Range"] = 21.98,
         ["TT"] = {
@@ -15866,10 +13346,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 551.7,
-            ["x"] = 3136.3,
-        },
         ["Fillers"] = {
             [48888] = {
                 ["1"] = "1",
@@ -15887,10 +13363,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 551.7,
-            ["x"] = 3136,
-        },
         ["Fillers"] = {
             [48888] = {
                 ["1"] = "1",
@@ -15903,10 +13375,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 83
-        ["Trigger"] = {
-            ["y"] = 525.1,
-            ["x"] = 3134.1,
-        },
         ["Qpart"] = {
             [48888] = {
                 ["1"] = "1",
@@ -15944,10 +13412,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
         ["Gossip"] = 3,
-        ["Trigger"] = {
-            ["y"] = 237.1,
-            ["x"] = 3066.9,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 237.1,
@@ -15973,10 +13437,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 89
-        ["Trigger"] = {
-            ["y"] = 184.4,
-            ["x"] = 3066.6,
-        },
         ["Qpart"] = {
             [48715] = {
                 ["1"] = "1",
@@ -16007,10 +13467,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 92
-        ["Trigger"] = {
-            ["y"] = 193.6,
-            ["x"] = 3062.4,
-        },
         ["Waypoint"] = 48987,
         ["Range"] = 7.74,
         ["TT"] = {
@@ -16019,10 +13475,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 93
-        ["Trigger"] = {
-            ["y"] = 267.1,
-            ["x"] = 3075.9,
-        },
         ["Waypoint"] = 48987,
         ["Range"] = 11.03,
         ["TT"] = {
@@ -16038,10 +13490,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 95
-        ["Trigger"] = {
-            ["y"] = 366.3,
-            ["x"] = 3082.3,
-        },
         ["Waypoint"] = 48987,
         ["Range"] = 16.03,
         ["TT"] = {
@@ -16051,10 +13499,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 96
         ["UseGlider"] = 1,
-        ["Trigger"] = {
-            ["y"] = 691.6,
-            ["x"] = 3037.5,
-        },
         ["Waypoint"] = 48987,
         ["Range"] = 51.77,
         ["TT"] = {
@@ -16082,10 +13526,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 99
-        ["Trigger"] = {
-            ["y"] = 814.4,
-            ["x"] = 3084,
-        },
         ["Qpart"] = {
             [48988] = {
                 ["1"] = "1",
@@ -16122,10 +13562,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 102
         ["RaidIcon"] = 127989,
-        ["Trigger"] = {
-            ["y"] = 741.4,
-            ["x"] = 3107.4,
-        },
         ["Waypoint"] = 48889,
         ["Range"] = 6.95,
         ["TT"] = {
@@ -16134,10 +13570,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 103
-        ["Trigger"] = {
-            ["y"] = 718.2,
-            ["x"] = 3125,
-        },
         ["Qpart"] = {
             [48889] = {
                 ["1"] = "1",
@@ -16178,10 +13610,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 107
-        ["Trigger"] = {
-            ["y"] = 268.8,
-            ["x"] = 3075.5,
-        },
         ["Waypoint"] = 48996,
         ["Range"] = 11.47,
         ["TT"] = {
@@ -16191,10 +13619,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 108
         ["ExtraActionB"] = 1,
-        ["Trigger"] = {
-            ["y"] = 203.9,
-            ["x"] = 3067.1,
-        },
         ["Qpart"] = {
             [48996] = {
                 ["1"] = "1",
@@ -16225,10 +13649,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 111
-        ["Trigger"] = {
-            ["y"] = 152.1,
-            ["x"] = 3066.9,
-        },
         ["Qpart"] = {
             [50913] = {
                 ["1"] = "1",
@@ -16285,10 +13705,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 282.5,
-            ["x"] = 3099.1,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 282.5,
@@ -16296,10 +13712,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 117
-        ["Trigger"] = {
-            ["y"] = 596.6,
-            ["x"] = 3426.4,
-        },
         ["Qpart"] = {
             [48896] = {
                 ["2"] = "2",
@@ -16313,10 +13725,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 118
-        ["Trigger"] = {
-            ["y"] = 596.6,
-            ["x"] = 3426.4,
-        },
         ["Qpart"] = {
             [48896] = {
                 ["3"] = "3",
@@ -16347,10 +13755,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 121
-        ["Trigger"] = {
-            ["y"] = 817.7,
-            ["x"] = 3503.6,
-        },
         ["Waypoint"] = 47716,
         ["Range"] = 11.68,
         ["TT"] = {
@@ -16359,10 +13763,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 122
-        ["Trigger"] = {
-            ["y"] = 882.7,
-            ["x"] = 3513,
-        },
         ["Qpart"] = {
             [47716] = {
                 ["1"] = "1",
@@ -16417,10 +13817,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 915.6,
-            ["x"] = 3731.3,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 915.6,
@@ -16430,10 +13826,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     { -- Step 127
         ["ETA"] = 81,
         ["SpecialETAHide"] = 1,
-        ["Trigger"] = {
-            ["y"] = 890.1,
-            ["x"] = 3699.4,
-        },
         ["GetFP"] = 2143,
         ["Range"] = 5.91,
         ["TT"] = {
@@ -16450,10 +13842,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 129
-        ["Trigger"] = {
-            ["y"] = 977.1,
-            ["x"] = 3733.9,
-        },
         ["Qpart"] = {
             [51573] = {
                 ["2"] = "2",
@@ -16504,10 +13892,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 134
-        ["Trigger"] = {
-            ["y"] = 836.9,
-            ["x"] = 3747.1,
-        },
         ["Waypoint"] = 48530,
         ["Range"] = 10.91,
         ["TT"] = {
@@ -16516,10 +13900,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 135
-        ["Trigger"] = {
-            ["y"] = 837.9,
-            ["x"] = 3788.8,
-        },
         ["Waypoint"] = 48530,
         ["Range"] = 9.72,
         ["TT"] = {
@@ -16564,10 +13944,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1034.9,
-            ["x"] = 3971.8,
-        },
         ["Button"] = {
             ["48532-1"] = 152570,
         },
@@ -16590,10 +13966,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 992.1,
-            ["x"] = 3935.6,
-        },
         ["Button"] = {
             ["48532-1"] = 152570,
         },
@@ -16614,10 +13986,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [48533] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 939.5,
-            ["x"] = 3806.1,
         },
         ["Button"] = {
             ["48533-1"] = 152572,
@@ -16663,10 +14031,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 144
-        ["Trigger"] = {
-            ["y"] = 833.7,
-            ["x"] = 3755.5,
-        },
         ["Range"] = 10.15,
         ["Waypoint"] = 48655,
         ["TT"] = {
@@ -16693,10 +14057,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 147
-        ["Trigger"] = {
-            ["y"] = 738.6,
-            ["x"] = 3732.1,
-        },
         ["Range"] = 6.15,
         ["Waypoint"] = 48655,
         ["TT"] = {
@@ -16724,10 +14084,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 150
-        ["Trigger"] = {
-            ["y"] = 592.5,
-            ["x"] = 3730.6,
-        },
         ["Waypoint"] = 48534,
         ["Range"] = 11.36,
         ["TT"] = {
@@ -16744,10 +14100,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 151
-        ["Trigger"] = {
-            ["y"] = 510.1,
-            ["x"] = 3768.6,
-        },
         ["Qpart"] = {
             [48534] = {
                 ["1"] = "1",
@@ -16768,10 +14120,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 152
-        ["Trigger"] = {
-            ["y"] = 594.9,
-            ["x"] = 3727.1,
-        },
         ["Qpart"] = {
             [48657] = {
                 ["1"] = "1",
@@ -16797,10 +14145,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 154
-        ["Trigger"] = {
-            ["y"] = 737,
-            ["x"] = 3729.1,
-        },
         ["Waypoint"] = 48534,
         ["Range"] = 11.23,
         ["TT"] = {
@@ -16809,10 +14153,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 155
-        ["Trigger"] = {
-            ["y"] = 740.7,
-            ["x"] = 3664.6,
-        },
         ["Waypoint"] = 48534,
         ["Range"] = 8.69,
         ["TT"] = {
@@ -16821,10 +14161,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 156
-        ["Trigger"] = {
-            ["y"] = 755.9,
-            ["x"] = 3664.6,
-        },
         ["Waypoint"] = 48534,
         ["Range"] = 10.13,
         ["TT"] = {
@@ -16833,10 +14169,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 157
-        ["Trigger"] = {
-            ["y"] = 765.6,
-            ["x"] = 3707.9,
-        },
         ["Waypoint"] = 48534,
         ["Range"] = 7.98,
         ["TT"] = {
@@ -16845,10 +14177,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 158
-        ["Trigger"] = {
-            ["y"] = 810.2,
-            ["x"] = 3735.3,
-        },
         ["Waypoint"] = 48534,
         ["Range"] = 11.59,
         ["TT"] = {
@@ -16857,10 +14185,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 159
-        ["Trigger"] = {
-            ["y"] = 837.2,
-            ["x"] = 3789.1,
-        },
         ["Waypoint"] = 48534,
         ["Range"] = 13.34,
         ["TT"] = {
@@ -16878,10 +14202,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 161
-        ["Trigger"] = {
-            ["y"] = 836.1,
-            ["x"] = 3786.1,
-        },
         ["Waypoint"] = 51668,
         ["Range"] = 12.48,
         ["TT"] = {
@@ -16900,10 +14220,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 163
         ["BuyMerchant"] = 160499,
-        ["Trigger"] = {
-            ["y"] = 870.7,
-            ["x"] = 3767.9,
-        },
         ["Qpart"] = {
             [48846] = {
                 ["1"] = "1",
@@ -16922,10 +14238,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 843.7,
-            ["x"] = 3744.1,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 843.7,
@@ -16953,10 +14265,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 167
-        ["Trigger"] = {
-            ["y"] = 885.2,
-            ["x"] = 3946.6,
-        },
         ["Range"] = 8.84,
         ["Waypoint"] = 48850,
         ["TT"] = {
@@ -16978,10 +14286,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 886.1,
-            ["x"] = 3909.9,
-        },
         ["Fillers"] = {
             [48790] = {
                 ["1"] = "1",
@@ -16997,10 +14301,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 169
-        ["Trigger"] = {
-            ["y"] = 886,
-            ["x"] = 3921.4,
-        },
         ["Qpart"] = {
             [51602] = {
                 ["1"] = "1",
@@ -17042,10 +14342,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 878.4,
-            ["x"] = 3734.1,
-        },
         ["Range"] = 19.64,
         ["TT"] = {
             ["y"] = 878.4,
@@ -17075,10 +14371,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [51668] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 979.7,
-            ["x"] = 3733,
         },
         ["Button"] = {
             ["51668-1"] = 160525,
@@ -17117,10 +14409,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 1
-        ["Trigger"] = {
-            ["y"] = 920.7,
-            ["x"] = 3526.5,
-        },
         ["Fillers"] = {
             [48314] = {
                 ["1"] = "1",
@@ -17137,10 +14425,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 1
-        ["Trigger"] = {
-            ["y"] = 971.7,
-            ["x"] = 3509.1,
-        },
         ["Range"] = 11.59,
         ["Waypoint"] = 51161,
         ["TT"] = {
@@ -17149,10 +14433,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 1
-        ["Trigger"] = {
-            ["y"] = 1004.2,
-            ["x"] = 3475.6,
-        },
         ["Qpart"] = {
             [51161] = {
                 ["1"] = "1",
@@ -17209,10 +14489,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 1
-        ["Trigger"] = {
-            ["y"] = 1124.4,
-            ["x"] = 4246.3,
-        },
         ["Waypoint"] = 51162,
         ["Range"] = 9.22,
         ["TT"] = {
@@ -17221,10 +14497,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 1
-        ["Trigger"] = {
-            ["y"] = 1121.9,
-            ["x"] = 4270.3,
-        },
         ["Qpart"] = {
             [51162] = {
                 ["1"] = "1",
@@ -17246,10 +14518,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 1
-        ["Trigger"] = {
-            ["y"] = 777.9,
-            ["x"] = 4044.8,
-        },
         ["Waypoint"] = 48324,
         ["Range"] = 16.87,
         ["TT"] = {
@@ -17283,10 +14551,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 461.3,
-            ["x"] = 4362.3,
-        },
         ["Button"] = {
             ["51053-1"] = 159747,
         },
@@ -17318,10 +14582,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 1
 
-        ["Trigger"] = {
-            ["y"] = 531.6,
-            ["x"] = 4275.3,
-        },
         ["Qpart"] = {
             [51054] = {
                 ["1"] = "1",
@@ -17361,10 +14621,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 792.1,
-            ["x"] = 4175.2,
-        },
         ["Fillers"] = {
             [47647] = {
                 ["1"] = "1",
@@ -17378,10 +14634,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 2
 
-        ["Trigger"] = {
-            ["y"] = 758.5,
-            ["x"] = 4192.3,
-        },
         ["Waypoint"] = 51056,
         ["Range"] = 13.23,
         ["TT"] = {
@@ -17400,10 +14652,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [51056] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 793.7,
-            ["x"] = 4234.3,
         },
         ["Button"] = {
             ["51056-1"] = 159757,
@@ -17426,10 +14674,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 799.4,
-            ["x"] = 4295.5,
-        },
         ["Fillers"] = {
             [47647] = {
                 ["1"] = "1",
@@ -17443,10 +14687,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 2
 
-        ["Trigger"] = {
-            ["y"] = 864.7,
-            ["x"] = 4285.3,
-        },
         ["Waypoint"] = 51055,
         ["Range"] = 9.65,
         ["TT"] = {
@@ -17466,10 +14706,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 836.5,
-            ["x"] = 4330.6,
-        },
         ["Fillers"] = {
             [47647] = {
                 ["1"] = "1",
@@ -17488,10 +14724,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 915.2,
-            ["x"] = 4249.8,
-        },
         ["Button"] = {
             ["51056-2"] = 159757,
         },
@@ -17509,10 +14741,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     { -- Step 2
         ["UseGlider"] = 1,
 
-        ["Trigger"] = {
-            ["y"] = 632.2,
-            ["x"] = 4194.5,
-        },
         ["Range"] = 11.64,
         ["Waypoint"] = 51056,
         ["TT"] = {
@@ -17570,10 +14798,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 647.1,
-            ["x"] = 4378,
-        },
         ["Fillers"] = {
             [51057] = {
                 ["1"] = "1",
@@ -17607,10 +14831,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 813.7,
-            ["x"] = 4349.2,
-        },
         ["Fillers"] = {
             [49138] = {
                 ["1"] = "1",
@@ -17643,10 +14863,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [47499] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 799,
-            ["x"] = 4440.1,
         },
         ["Fillers"] = {
             [49138] = {
@@ -17689,10 +14905,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 742.4,
-            ["x"] = 4525.7,
-        },
         ["Button"] = {
             ["51057-1"] = 159774,
         },
@@ -17722,10 +14934,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [51057] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 742.4,
-            ["x"] = 4525.7,
         },
         ["Button"] = {
             ["51057-1"] = 159774,
@@ -17759,10 +14967,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 742.4,
-            ["x"] = 4525.7,
-        },
         ["Button"] = {
             ["51057-1"] = 159774,
         },
@@ -17775,10 +14979,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 2
 
-        ["Trigger"] = {
-            ["y"] = 735.5,
-            ["x"] = 4527.3,
-        },
         ["Qpart"] = {
             [47647] = {
                 ["1"] = "1",
@@ -17837,10 +15037,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 956.2,
-            ["x"] = 3558.1,
-        },
         ["Qpart"] = {
             [48314] = {
                 ["1"] = "1",
@@ -17856,10 +15052,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 908.7,
-            ["x"] = 3511.1,
-        },
         ["Waypoint"] = 48314,
         ["Range"] = 33.53,
         ["TT"] = {
@@ -17893,10 +15085,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 899.2,
-            ["x"] = 3484.6,
-        },
         ["Button"] = {
             ["50770-1"] = 158678,
         },
@@ -17925,10 +15113,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 926.5,
-            ["x"] = 3514.1,
-        },
         ["Range"] = 10.76,
         ["Waypoint"] = 50539,
         ["TT"] = {
@@ -17937,10 +15121,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 972.7,
-            ["x"] = 3497.6,
-        },
         ["Range"] = 5.71,
         ["Waypoint"] = 50539,
         ["TT"] = {
@@ -17949,10 +15129,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 927.7,
-            ["x"] = 3491.1,
-        },
         ["Range"] = 8.15,
         ["Waypoint"] = 50539,
         ["TT"] = {
@@ -17961,10 +15137,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 968.9,
-            ["x"] = 3469.3,
-        },
         ["Range"] = 15.35,
         ["Waypoint"] = 50539,
         ["TT"] = {
@@ -17982,10 +15154,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 1036.5,
-            ["x"] = 3463.3,
-        },
         ["Qpart"] = {
             [50536] = {
                 ["1"] = "1",
@@ -18016,10 +15184,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 934.2,
-            ["x"] = 3415.5,
-        },
         ["Qpart"] = {
             [50536] = {
                 ["2"] = "2",
@@ -18032,10 +15196,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 873,
-            ["x"] = 3360.8,
-        },
         ["Qpart"] = {
             [50536] = {
                 ["3"] = "3",
@@ -18048,10 +15208,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 931.7,
-            ["x"] = 3302.1,
-        },
         ["Qpart"] = {
             [50536] = {
                 ["4"] = "4",
@@ -18064,10 +15220,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 966.4,
-            ["x"] = 3317.8,
-        },
         ["Range"] = 11.47,
         ["Waypoint"] = 48315,
         ["TT"] = {
@@ -18076,10 +15228,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 1000.1,
-            ["x"] = 3289.1,
-        },
         ["Range"] = 13.25,
         ["Waypoint"] = 48315,
         ["TT"] = {
@@ -18093,10 +15241,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1014.1,
-            ["x"] = 3294.1,
-        },
         ["TrigText"] = "1/2",
         ["Range"] = 0.75,
         ["TT"] = {
@@ -18105,10 +15249,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 1071.8,
-            ["x"] = 3263.6,
-        },
         ["Range"] = 11.22,
         ["Waypoint"] = 48315,
         ["TT"] = {
@@ -18121,10 +15261,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [48315] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 1053,
-            ["x"] = 3213.4,
         },
         ["Range"] = 0.69,
         ["TrigText"] = "2/2",
@@ -18152,10 +15288,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 967.9,
-            ["x"] = 3400.5,
-        },
         ["Range"] = 21.47,
         ["Waypoint"] = 50536,
         ["TT"] = {
@@ -18164,10 +15296,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 1015.7,
-            ["x"] = 3465,
-        },
         ["Range"] = 5.48,
         ["Waypoint"] = 50536,
         ["TT"] = {
@@ -18203,10 +15331,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 1005.2,
-            ["x"] = 3461.8,
-        },
         ["Waypoint"] = 48871,
         ["Range"] = 11.34,
         ["TT"] = {
@@ -18215,10 +15339,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 972.9,
-            ["x"] = 3399.6,
-        },
         ["Qpart"] = {
             [48872] = {
                 ["1"] = "1",
@@ -18234,10 +15354,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 1005.7,
-            ["x"] = 3462.1,
-        },
         ["Waypoint"] = 48871,
         ["Range"] = 8.75,
         ["TT"] = {
@@ -18265,10 +15381,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 967.9,
-            ["x"] = 3398.5,
-        },
         ["Waypoint"] = 50535,
         ["Range"] = 8.13,
         ["TT"] = {
@@ -18277,10 +15389,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 841.6,
-            ["x"] = 3392.5,
-        },
         ["Waypoint"] = 50535,
         ["Range"] = 9.54,
         ["TT"] = {
@@ -18289,10 +15397,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 853.9,
-            ["x"] = 3359.6,
-        },
         ["Qpart"] = {
             [50535] = {
                 ["1"] = "1",
@@ -18305,10 +15409,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 1008.6,
-            ["x"] = 3464.8,
-        },
         ["Waypoint"] = 50535,
         ["Range"] = 7.43,
         ["TT"] = {
@@ -18326,10 +15426,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 918.5,
-            ["x"] = 3512.6,
-        },
         ["Waypoint"] = 50561,
         ["Range"] = 17.43,
         ["TT"] = {
@@ -18347,10 +15443,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 910.7,
-            ["x"] = 3501.1,
-        },
         ["Qpart"] = {
             [47324] = {
                 ["1"] = "1",
@@ -18398,10 +15490,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 1976.9,
-            ["x"] = 4646,
-        },
         ["Fillers"] = {
             [50641] = {
                 ["1"] = "1",
@@ -18419,10 +15507,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 1978.4,
-            ["x"] = 4648.6,
-        },
         ["Qpart"] = {
             [50641] = {
                 ["1"] = "1",
@@ -18440,10 +15524,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 1883.3,
-            ["x"] = 4762,
-        },
         ["Waypoint"] = 49327,
         ["Range"] = 20.71,
         ["TT"] = {
@@ -18493,10 +15573,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 1950.7,
-            ["x"] = 4812.8,
-        },
         ["Range"] = 0.75,
         ["TT"] = {
             ["y"] = 1950.7,
@@ -18522,10 +15598,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 1953.4,
-            ["x"] = 4873.3,
-        },
         ["Waypoint"] = 50656,
         ["Range"] = 5.42,
         ["TT"] = {
@@ -18534,10 +15606,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 2
-        ["Trigger"] = {
-            ["y"] = 2052,
-            ["x"] = 4806.6,
-        },
         ["GetFP"] = 2162,
         ["Range"] = 2.8,
         ["TT"] = {
@@ -18564,10 +15632,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2052.5,
-            ["x"] = 3486.8,
-        },
         ["Fillers"] = {
             [49001] = {
                 ["1"] = "1",
@@ -18584,10 +15648,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 2
 
-        ["Trigger"] = {
-            ["y"] = 2056.1,
-            ["x"] = 3499.3,
-        },
         ["Qpart"] = {
             [49001] = {
                 ["1"] = "1",
@@ -18641,10 +15701,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2321.6,
-            ["x"] = 3402.5,
-        },
         ["Button"] = {
             ["48331-1"] = 154051,
         },
@@ -18656,10 +15712,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 2
 
-        ["Trigger"] = {
-            ["y"] = 2321.3,
-            ["x"] = 3528.1,
-        },
         ["Waypoint"] = 49139,
         ["Range"] = 11.63,
         ["TT"] = {
@@ -18693,10 +15745,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2381.1,
-            ["x"] = 3552.5,
-        },
         ["Button"] = {
             ["48331-1"] = 154051,
         },
@@ -18715,10 +15763,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [48335] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2359,
-            ["x"] = 3540.8,
         },
         ["Button"] = {
             ["48331-1"] = 154051,
@@ -18753,10 +15797,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 2
 
-        ["Trigger"] = {
-            ["y"] = 2309,
-            ["x"] = 3532.6,
-        },
         ["Waypoint"] = 48330,
         ["Range"] = 12.49,
         ["TT"] = {
@@ -18766,10 +15806,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 2
 
-        ["Trigger"] = {
-            ["y"] = 2442.8,
-            ["x"] = 3470.1,
-        },
         ["Qpart"] = {
             [48330] = {
                 ["1"] = "1",
@@ -18813,10 +15849,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         ["SpecialETAHide"] = 1,
         ["ETA"] = 79,
         ["RaidIcon"] = 135172,
-        ["Trigger"] = {
-            ["y"] = 2792.9,
-            ["x"] = 3769.6,
-        },
         ["Range"] = 16.48,
         ["Waypoint"] = 50745,
         ["TT"] = {
@@ -18826,10 +15858,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 2
         ["SpecialETAHide"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2793.6,
-            ["x"] = 3730.4,
-        },
         ["Range"] = 9.57,
         ["Waypoint"] = 50745,
         ["TT"] = {
@@ -18839,10 +15867,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 2
         ["SpecialETAHide"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2769,
-            ["x"] = 3683.1,
-        },
         ["Range"] = 13.93,
         ["Waypoint"] = 50745,
         ["TT"] = {
@@ -18852,10 +15876,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 2
         ["SpecialETAHide"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2758.6,
-            ["x"] = 3626,
-        },
         ["Range"] = 18.17,
         ["Waypoint"] = 50745,
         ["TT"] = {
@@ -18865,10 +15885,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 2
         ["SpecialETAHide"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2753.1,
-            ["x"] = 3498.3,
-        },
         ["Range"] = 14.89,
         ["Waypoint"] = 50745,
         ["TT"] = {
@@ -18878,10 +15894,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 3
         ["SpecialETAHide"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2738,
-            ["x"] = 3467.9,
-        },
         ["Range"] = 4.91,
         ["GetFP"] = 2111,
         ["TT"] = {
@@ -18891,10 +15903,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 3
         ["SpecialETAHide"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2730,
-            ["x"] = 3426.9,
-        },
         ["Range"] = 5.58,
         ["Waypoint"] = 50745,
         ["TT"] = {
@@ -18922,10 +15930,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2732.6,
-            ["x"] = 3429.3,
-        },
         ["Waypoint"] = 49664,
         ["Range"] = 7.77,
         ["TT"] = {
@@ -18934,10 +15938,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2778.1,
-            ["x"] = 3507.5,
-        },
         ["Waypoint"] = 49664,
         ["Range"] = 13.86,
         ["TT"] = {
@@ -18980,10 +15980,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2875.9,
-            ["x"] = 3388.1,
-        },
         ["Button"] = {
             ["49666-1"] = 158884,
         },
@@ -19010,10 +16006,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 2875.6,
-            ["x"] = 3386.6,
-        },
         ["Button"] = {
             ["49666-1"] = 158884,
         },
@@ -19030,10 +16022,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2802.1,
-            ["x"] = 3478,
-        },
         ["Waypoint"] = 49665,
         ["Range"] = 8.78,
         ["TT"] = {
@@ -19070,10 +16058,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2775.6,
-            ["x"] = 3505,
-        },
         ["Range"] = 12.14,
         ["Waypoint"] = 50746,
         ["TT"] = {
@@ -19082,10 +16066,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2730.3,
-            ["x"] = 3425.8,
-        },
         ["Range"] = 6.54,
         ["Waypoint"] = 50746,
         ["TT"] = {
@@ -19114,10 +16094,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2770.1,
-            ["x"] = 3370.1,
-        },
         ["Range"] = 11.7,
         ["Waypoint"] = 49668,
         ["TT"] = {
@@ -19130,10 +16106,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [49668] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2834.3,
-            ["x"] = 3238.1,
         },
         ["Button"] = {
             ["49668-1"] = 158896,
@@ -19156,10 +16128,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["2"] = "2",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2827.6,
-            ["x"] = 3130.1,
-        },
         ["Button"] = {
             ["49668-2"] = 158896,
         },
@@ -19180,10 +16148,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [49668] = {
                 ["3"] = "3",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2823.4,
-            ["x"] = 3041.5,
         },
         ["Button"] = {
             ["49668-3"] = 158896,
@@ -19229,10 +16193,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2769.1,
-            ["x"] = 2883.1,
-        },
         ["Waypoint"] = 50757,
         ["Range"] = 10.46,
         ["TT"] = {
@@ -19246,10 +16206,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2788.9,
-            ["x"] = 2896.6,
-        },
         ["Waypoint"] = 50757,
         ["Range"] = 8.29,
         ["TT"] = {
@@ -19268,10 +16224,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2830.6,
-            ["x"] = 2977.3,
-        },
         ["Fillers"] = {
             [50757] = {
                 ["1"] = "1",
@@ -19284,10 +16236,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2851.1,
-            ["x"] = 2880.1,
-        },
         ["Waypoint"] = 50757,
         ["Range"] = 17.44,
         ["TT"] = {
@@ -19301,10 +16249,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2880.4,
-            ["x"] = 2893.8,
-        },
         ["Waypoint"] = 50757,
         ["Range"] = 11.25,
         ["TT"] = {
@@ -19323,10 +16267,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 2939.3,
-            ["x"] = 2922.9,
-        },
         ["Fillers"] = {
             [50757] = {
                 ["1"] = "1",
@@ -19339,10 +16279,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2936.1,
-            ["x"] = 2923.1,
-        },
         ["Qpart"] = {
             [50757] = {
                 ["1"] = "1",
@@ -19374,10 +16310,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2739.1,
-            ["x"] = 2928.6,
-        },
         ["Qpart"] = {
             [50749] = {
                 ["1"] = "1",
@@ -19390,10 +16322,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2807.9,
-            ["x"] = 3016.1,
-        },
         ["Waypoint"] = 50749,
         ["Range"] = 33.72,
         ["TT"] = {
@@ -19402,10 +16330,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2819.6,
-            ["x"] = 3281.9,
-        },
         ["Waypoint"] = 50749,
         ["Range"] = 27.42,
         ["TT"] = {
@@ -19414,10 +16338,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2774,
-            ["x"] = 3335.1,
-        },
         ["Waypoint"] = 50749,
         ["Range"] = 27.01,
         ["TT"] = {
@@ -19426,10 +16346,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2728.6,
-            ["x"] = 3427.3,
-        },
         ["Range"] = 7.83,
         ["Waypoint"] = 50749,
         ["TT"] = {
@@ -19448,10 +16364,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2731.9,
-            ["x"] = 3423.6,
-        },
         ["Waypoint"] = 50748,
         ["Range"] = 9.39,
         ["TT"] = {
@@ -19460,10 +16372,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2771.1,
-            ["x"] = 3357,
-        },
         ["Waypoint"] = 50748,
         ["Range"] = 12.57,
         ["TT"] = {
@@ -19472,10 +16380,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2741.8,
-            ["x"] = 3313.1,
-        },
         ["Waypoint"] = 50748,
         ["Range"] = 12.46,
         ["TT"] = {
@@ -19484,10 +16388,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2667.1,
-            ["x"] = 3399.1,
-        },
         ["Waypoint"] = 50748,
         ["Range"] = 19.45,
         ["TT"] = {
@@ -19504,10 +16404,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2637.6,
-            ["x"] = 3353.1,
-        },
         ["Waypoint"] = 48329,
         ["Range"] = 18.52,
         ["TT"] = {
@@ -19524,10 +16420,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2583.4,
-            ["x"] = 3348.3,
-        },
         ["Waypoint"] = 48329,
         ["Range"] = 8.95,
         ["TT"] = {
@@ -19544,10 +16436,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2546.3,
-            ["x"] = 3413.6,
-        },
         ["Waypoint"] = 48329,
         ["Range"] = 8.95,
         ["TT"] = {
@@ -19589,10 +16477,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2531.1,
-            ["x"] = 3424.5,
-        },
         ["Qpart"] = {
             [48329] = {
                 ["1"] = "1",
@@ -19613,10 +16497,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2610.6,
-            ["x"] = 3338.4,
-        },
         ["Qpart"] = {
             [49141] = {
                 ["1"] = "1",
@@ -19632,10 +16512,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2620.1,
-            ["x"] = 3433.6,
-        },
         ["Range"] = 14.48,
         ["Waypoint"] = 49141,
         ["TT"] = {
@@ -19644,10 +16520,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2559.6,
-            ["x"] = 3419.5,
-        },
         ["Range"] = 7.15,
         ["Waypoint"] = 49141,
         ["TT"] = {
@@ -19672,10 +16544,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [49002] = {
                 ["1"] = "1",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 2568.1,
-            ["x"] = 3478.3,
         },
         ["Button"] = {
             ["49002-1"] = 154893,
@@ -19712,10 +16580,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2551.4,
-            ["x"] = 3478.6,
-        },
         ["Qpart"] = {
             [49003] = {
                 ["1"] = "1",
@@ -19728,10 +16592,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 2861.3,
-            ["x"] = 3505.6,
-        },
         ["Qpart"] = {
             [49003] = {
                 ["3"] = "3",
@@ -19769,10 +16629,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["1"] = "1",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3043.4,
-            ["x"] = 3290.1,
-        },
         ["Fillers"] = {
             [50750] = {
                 ["1"] = "1",
@@ -19789,10 +16645,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [50752] = {
                 ["2"] = "2",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 3124.6,
-            ["x"] = 3266.8,
         },
         ["Fillers"] = {
             [50750] = {
@@ -19811,10 +16663,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 ["3"] = "3",
             },
         },
-        ["Trigger"] = {
-            ["y"] = 3149.6,
-            ["x"] = 3403,
-        },
         ["Fillers"] = {
             [50750] = {
                 ["1"] = "1",
@@ -19831,10 +16679,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [50752] = {
                 ["4"] = "4",
             },
-        },
-        ["Trigger"] = {
-            ["y"] = 3229.9,
-            ["x"] = 3314.6,
         },
         ["Fillers"] = {
             [50750] = {
@@ -19873,10 +16717,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
         ["Gossip"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3034,
-            ["x"] = 3151.1,
-        },
         ["Range"] = 0.69,
         ["TT"] = {
             ["y"] = 3034,
@@ -19885,10 +16725,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 3
         ["Bloodlust"] = 1,
-        ["Trigger"] = {
-            ["y"] = 3128,
-            ["x"] = 3151.1,
-        },
         ["Qpart"] = {
             [50550] = {
                 ["2"] = "2",
@@ -19919,10 +16755,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 3139.3,
-            ["x"] = 3087.1,
-        },
         ["Qpart"] = {
             [50805] = {
                 ["1"] = "1",
@@ -19945,10 +16777,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 1926,
-            ["x"] = 4851.7,
-        },
         ["Range"] = 6.69,
         ["Waypoint"] = 50751,
         ["TT"] = {
@@ -19957,10 +16785,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 1927.5,
-            ["x"] = 4881.8,
-        },
         ["Range"] = 7.74,
         ["Waypoint"] = 50751,
         ["TT"] = {
@@ -19969,10 +16793,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Trigger"] = {
-            ["y"] = 1950.7,
-            ["x"] = 4868.1,
-        },
         ["Range"] = 8.15,
         ["Waypoint"] = 50751,
         ["TT"] = {

@@ -344,7 +344,7 @@ function APR.map:AddMapPins()
         local mapStepDisplayed = 0
         local minimapStepDisplayed = 0
         for stepIndex, steps in pairs(APR.RouteQuestStepList[APR.ActiveRoute]) do
-            if steps["TT"] and (stepIndex >= CurStep) and (stepIndex <= CurStep + math.max(mapshowNextStepsCount, minimapshowNextStepsCount)) then
+            if steps.TT and (stepIndex >= CurStep) and (stepIndex <= CurStep + math.max(mapshowNextStepsCount, minimapshowNextStepsCount)) then
                 if not self.pinlist[stepIndex] then
                     self.pinlist[stepIndex] = self:CreatePin(stepIndex, steps, APR.settings.profile.mapshowNextStepsSize,
                         APR.settings.profile.mapshowNextStepsColor)
@@ -354,8 +354,8 @@ function APR.map:AddMapPins()
                         APR.settings.profile.minimapshowNextStepsSize, APR.settings.profile.minimapshowNextStepsColor)
                 end
 
-                local x, y = APR:GetPlayerMapPos(needDisplayWorldPin and mapID or playermapID, steps["TT"]["y"],
-                    steps["TT"]["x"])
+                local x, y = APR:GetPlayerMapPos(needDisplayWorldPin and mapID or playermapID, steps.TT.y,
+                    steps.TT.x)
                 if x and y then
                     if APR.settings.profile.mapshowNextSteps and needDisplayWorldPin then
                         if mapshowNextStepsCount > mapStepDisplayed then

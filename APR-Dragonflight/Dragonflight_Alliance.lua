@@ -17,10 +17,6 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["Trigger"] = {
-                ["y"] = -8308.9,
-                ["x"] = 336.3,
-            },
             ["Gossip"] = 1,
         },
         { -- Step 4
@@ -48,10 +44,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -8426.9,
                 ["x"] = 608.6,
             },
-            ["Trigger"] = {
-                ["y"] = -8426.9,
-                ["x"] = 608.6,
-            },
             ["Range"] = 2,
             ["ExtraLineText"] = "RECRUIT_ARTISANS",
             ["Gossip"] = 1,
@@ -63,10 +55,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -8805.9,
-                ["x"] = 622.4,
-            },
-            ["Trigger"] = {
                 ["y"] = -8805.9,
                 ["x"] = 622.4,
             },
@@ -84,10 +72,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -8776.5,
                 ["x"] = 838.6,
             },
-            ["Trigger"] = {
-                ["y"] = -8776.5,
-                ["x"] = 838.6,
-            },
             ["Range"] = 2,
             ["Gossip"] = 1,
         },
@@ -98,10 +82,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -8521.4,
-                ["x"] = 1058.5,
-            },
-            ["Trigger"] = {
                 ["y"] = -8521.4,
                 ["x"] = 1058.5,
             },
@@ -146,10 +126,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -8646,
                 ["x"] = 1323.4,
             },
-            ["Trigger"] = {
-                ["y"] = -8646,
-                ["x"] = 1323.4,
-            },
             ["Range"] = 2,
             ["Gossip"] = 1,
         },
@@ -177,10 +153,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -8640.6,
                 ["x"] = 1328.2,
             },
-            ["Trigger"] = {
-                ["y"] = -8640.6,
-                ["x"] = 1328.2,
-            },
             ["Range"] = 10,
             ["ExtraLineText"] = "WAIT_FOR_SHIP",
         },
@@ -194,10 +166,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -8640.6,
                 ["x"] = 1328.2,
             },
-            ["Trigger"] = {
-                ["y"] = -8640.6,
-                ["x"] = 1328.2,
-            },
             ["Range"] = 0.5,
             ["ExtraLineText"] = "WAIT_FOR_SHIP",
         },
@@ -206,10 +174,6 @@ if (APR.Faction == "Alliance") then
                 [67700] = {
                     ["2"] = "2",
                 },
-            },
-            ["Trigger"] = {
-                ["y"] = 3895.3,
-                ["x"] = -1792.7,
             },
         },
         { -- Step 20
@@ -230,10 +194,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -8640.6,
-                ["x"] = 1328.2,
-            },
-            ["Trigger"] = {
                 ["y"] = -8640.6,
                 ["x"] = 1328.2,
             },
@@ -286,10 +246,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 3584.3,
                 ["x"] = -2012.9,
             },
-            ["Trigger"] = {
-                ["y"] = 3584.3,
-                ["x"] = -2012.9,
-            },
             ["Range"] = 5,
             ["Fillers"] = { [70123] = { ["1"] = "1", }, [70124] = { ["1"] = "1", }, },
         },
@@ -300,10 +256,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 3453.1,
-                ["x"] = -1972.4,
-            },
-            ["Trigger"] = {
                 ["y"] = 3453.1,
                 ["x"] = -1972.4,
             },
@@ -320,10 +272,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 3491.6,
                 ["x"] = -1693.5,
             },
-            ["Trigger"] = {
-                ["y"] = 3491.6,
-                ["x"] = -1693.5,
-            },
             ["Range"] = 10,
             ["Fillers"] = { [70123] = { ["1"] = "1", }, [70124] = { ["1"] = "1", }, },
         },
@@ -337,10 +285,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 3571.0,
                 ["x"] = -1830.2,
             },
-            ["Trigger"] = {
-                ["y"] = 3571.0,
-                ["x"] = -1830.2,
-            },
             ["Range"] = 180,
         },
         { -- Step 10
@@ -350,10 +294,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 3571.0,
-                ["x"] = -1830.2,
-            },
-            ["Trigger"] = {
                 ["y"] = 3571.0,
                 ["x"] = -1830.2,
             },
@@ -387,10 +327,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 3581.5,
                 ["x"] = -1455.9,
             },
-            ["Trigger"] = {
-                ["y"] = 3581.5,
-                ["x"] = -1455.9,
-            },
             ["Range"] = 5,
             ["ExtraLineText"] = "CHOOSE_WHY_ARENT_DRAGONS_HERE_MEET_US",
             ["Gossip"] = 1,
@@ -421,10 +357,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 3552.0,
-                ["x"] = -1452.5,
-            },
-            ["Trigger"] = {
                 ["y"] = 3552.0,
                 ["x"] = -1452.5,
             },
@@ -573,10 +505,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 3587.0,
                 ["x"] = -1401.7,
             },
-            ["Trigger"] = {
-                ["y"] = 3587.0,
-                ["x"] = -1401.7,
-            },
             ["Range"] = 5,
             ["ExtraLineText"] = "CLICK_SURVEYORS_DISC",
         },
@@ -587,10 +515,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 3587.0,
-                ["x"] = -1401.7,
-            },
-            ["Trigger"] = {
                 ["y"] = 3587.0,
                 ["x"] = -1401.7,
             },
@@ -607,10 +531,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 3587.0,
                 ["x"] = -1401.7,
             },
-            ["Trigger"] = {
-                ["y"] = 3587.0,
-                ["x"] = -1401.7,
-            },
             ["Range"] = 5,
             ["ExtraLineText"] = "PRESS_2",
         },
@@ -621,10 +541,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 3587.0,
-                ["x"] = -1401.7,
-            },
-            ["Trigger"] = {
                 ["y"] = 3587.0,
                 ["x"] = -1401.7,
             },
@@ -668,10 +584,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 3478.8,
                 ["x"] = -1435.5,
             },
-            ["Trigger"] = {
-                ["y"] = 3478.8,
-                ["x"] = -1435.5,
-            },
             ["Range"] = 5,
             ["Gossip"] = 2,
             ["RaidIcon"] = 193393,
@@ -686,10 +598,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 3479.0,
                 ["x"] = -1432.9,
             },
-            ["Trigger"] = {
-                ["y"] = 3479.0,
-                ["x"] = -1432.9,
-            },
             ["Range"] = 1,
             ["ExtraLineText"] = "CLICK_BOOK_CHOICES_DONT_MATTER",
             ["Gossip"] = 1,
@@ -697,10 +605,6 @@ if (APR.Faction == "Alliance") then
         { -- Step 31
             ["GetFP"] = 2805,
             ["TT"] = {
-                ["y"] = 3508.2,
-                ["x"] = -1411.7,
-            },
-            ["Trigger"] = {
                 ["y"] = 3508.2,
                 ["x"] = -1411.7,
             },
@@ -716,10 +620,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 3556.1,
                 ["x"] = -1378.8,
             },
-            ["Trigger"] = {
-                ["y"] = 3556.1,
-                ["x"] = -1378.8,
-            },
             ["Range"] = 5,
             ["ExtraLineText"] = "CLICK_STONE_TABLET",
         },
@@ -730,10 +630,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 3680.3,
-                ["x"] = -1602.4,
-            },
-            ["Trigger"] = {
                 ["y"] = 3680.3,
                 ["x"] = -1602.4,
             },
@@ -768,10 +664,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 3582.1,
                 ["x"] = -1456.0,
             },
-            ["Trigger"] = {
-                ["y"] = 3582.1,
-                ["x"] = -1456.0,
-            },
             ["Range"] = 1,
             ["ExtraLineText"] = "SPEAK_SENDRAX_SEND_SIGNAL_FLARES",
             ["Gossip"] = 1,
@@ -779,10 +671,6 @@ if (APR.Faction == "Alliance") then
         { -- Step 37
             ["Waypoint"] = 66112,
             ["TT"] = {
-                ["y"] = 3418.8,
-                ["x"] = -1379.0,
-            },
-            ["Trigger"] = {
                 ["y"] = 3418.8,
                 ["x"] = -1379.0,
             },
@@ -796,10 +684,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 3281.2,
-                ["x"] = -1327.9,
-            },
-            ["Trigger"] = {
                 ["y"] = 3281.2,
                 ["x"] = -1327.9,
             },
@@ -818,10 +702,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 3618.9,
                 ["x"] = -1165.1,
             },
-            ["Trigger"] = {
-                ["y"] = 3618.9,
-                ["x"] = -1165.1,
-            },
             ["Range"] = 10,
             ["Fillers"] = { [69965] = { ["1"] = "1", }, [66111] = { ["1"] = "1", }, },
             ["ExtraLineText"] = "ITEM_DROPS_FROM_BARON_ASHFLOW_AT_TOP_OF_THE_LAVA_FLOW",
@@ -837,10 +717,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 3448.3,
                 ["x"] = -1313.7,
             },
-            ["Trigger"] = {
-                ["y"] = 3448.3,
-                ["x"] = -1313.7,
-            },
             ["Range"] = 200,
         },
         { -- Step 41
@@ -850,10 +726,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 3448.3,
-                ["x"] = -1313.7,
-            },
-            ["Trigger"] = {
                 ["y"] = 3448.3,
                 ["x"] = -1313.7,
             },
@@ -912,10 +784,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 338.8,
                 ["x"] = -1099.5,
             },
-            ["Trigger"] = {
-                ["y"] = 338.8,
-                ["x"] = -1099.5,
-            },
             ["Range"] = 2,
             ["ExtraLineText"] = "GET_INSIDE_AND_USE_PORTAL_TOP",
         },
@@ -944,10 +812,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 306.5,
-                ["x"] = -1042.4,
-            },
-            ["Trigger"] = {
                 ["y"] = 306.5,
                 ["x"] = -1042.4,
             },
@@ -991,10 +855,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 313.3,
                 ["x"] = -1061.9,
             },
-            ["Trigger"] = {
-                ["y"] = 313.3,
-                ["x"] = -1061.9,
-            },
             ["ExtraLineText"] = "USE_REVEALING_DRAGONS_EYE",
             ["Button"] = {
                 ["66163-1"] = 198859,
@@ -1007,10 +867,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 186.6,
-                ["x"] = -880.5,
-            },
-            ["Trigger"] = {
                 ["y"] = 186.6,
                 ["x"] = -880.5,
             },
@@ -1028,10 +884,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 118.3,
                 ["x"] = -1058.4,
             },
-            ["Trigger"] = {
-                ["y"] = 118.3,
-                ["x"] = -1058.4,
-            },
             ["Range"] = 2,
             ["Fillers"] = { [66163] = { ["2"] = "2", }, },
             ["ExtraLineText"] = "INSIDE_BANK",
@@ -1046,10 +898,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 54.5,
                 ["x"] = -701.7,
             },
-            ["Trigger"] = {
-                ["y"] = 54.5,
-                ["x"] = -701.7,
-            },
             ["Range"] = 2,
             ["Fillers"] = { [66163] = { ["2"] = "2", }, },
             ["ExtraLineText"] = "ON_TOP_OF_BOX",
@@ -1061,10 +909,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 99.4,
-                ["x"] = -918.4,
-            },
-            ["Trigger"] = {
                 ["y"] = 99.4,
                 ["x"] = -918.4,
             },
@@ -1109,10 +953,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1366.2,
                 ["x"] = -511.3,
             },
-            ["Trigger"] = {
-                ["y"] = -1366.2,
-                ["x"] = -511.3,
-            },
             ["Range"] = 2,
             ["ExtraLineText"] = "FLY_GUARDIAN_VELOMIR",
         },
@@ -1123,10 +963,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1366.2,
-                ["x"] = -511.3,
-            },
-            ["Trigger"] = {
                 ["y"] = -1366.2,
                 ["x"] = -511.3,
             },
@@ -1170,10 +1006,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1493.0,
                 ["x"] = -550.2,
             },
-            ["Trigger"] = {
-                ["y"] = -1493.0,
-                ["x"] = -550.2,
-            },
             ["Range"] = 125,
             ["Fillers"] = { [66169] = { ["1"] = "1", }, },
             ["ExtraLineText"] = "VELOMIRS_UNITS_ARE_MARKED_ON_MINIMAP",
@@ -1186,10 +1018,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1493.0,
-                ["x"] = -550.2,
-            },
-            ["Trigger"] = {
                 ["y"] = -1493.0,
                 ["x"] = -550.2,
             },
@@ -1253,10 +1081,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1428.9,
                 ["x"] = -819.5,
             },
-            ["Trigger"] = {
-                ["y"] = -1428.9,
-                ["x"] = -819.5,
-            },
             ["Range"] = 200,
             ["Fillers"] = { [66248] = { ["1"] = "1", }, [66245] = { ["1"] = "1", }, },
         },
@@ -1270,10 +1094,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1428.9,
                 ["x"] = -819.5,
             },
-            ["Trigger"] = {
-                ["y"] = -1428.9,
-                ["x"] = -819.5,
-            },
             ["Range"] = 200,
             ["Fillers"] = { [66245] = { ["1"] = "1", }, },
         },
@@ -1284,10 +1104,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1428.9,
-                ["x"] = -819.5,
-            },
-            ["Trigger"] = {
                 ["y"] = -1428.9,
                 ["x"] = -819.5,
             },
@@ -1339,10 +1155,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1459.9,
                 ["x"] = -1020 - 2,
             },
-            ["Trigger"] = {
-                ["y"] = -1459.9,
-                ["x"] = -1020 - 2,
-            },
             ["Range"] = 2,
             ["ExtraLineText"] = "SHOOT_DRAGONS",
         },
@@ -1353,10 +1165,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1459.9,
-                ["x"] = -1020 - 2,
-            },
-            ["Trigger"] = {
                 ["y"] = -1459.9,
                 ["x"] = -1020 - 2,
             },
@@ -1391,10 +1199,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1563.0,
                 ["x"] = -987.0,
             },
-            ["Trigger"] = {
-                ["y"] = -1563.0,
-                ["x"] = -987.0,
-            },
             ["Range"] = 2,
             ["Gossip"] = 1,
         },
@@ -1426,10 +1230,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1639.2,
                 ["x"] = -941.9,
             },
-            ["Trigger"] = {
-                ["y"] = -1639.2,
-                ["x"] = -941.9,
-            },
             ["Range"] = 2,
         },
         { -- Step 43
@@ -1456,10 +1256,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 164.0,
                 ["x"] = -902.5,
             },
-            ["Trigger"] = {
-                ["y"] = 164.0,
-                ["x"] = -902.5,
-            },
             ["Range"] = 2,
         },
         { -- Step 46
@@ -1472,10 +1268,6 @@ if (APR.Faction == "Alliance") then
         { -- Step 47
             ["Waypoint"] = 66252,
             ["TT"] = {
-                ["y"] = 338.3,
-                ["x"] = -1099.7,
-            },
-            ["Trigger"] = {
                 ["y"] = 338.3,
                 ["x"] = -1099.7,
             },
@@ -1511,10 +1303,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1120.5,
                 ["x"] = -2699.0,
             },
-            ["Trigger"] = {
-                ["y"] = -1120.5,
-                ["x"] = -2699.0,
-            },
             ["Range"] = 2,
             ["Gossip"] = 1,
         },
@@ -1530,10 +1318,6 @@ if (APR.Faction == "Alliance") then
         { -- Step 52
             ["GetFP"] = 2816,
             ["TT"] = {
-                ["y"] = -1127.2,
-                ["x"] = -2716.1,
-            },
-            ["Trigger"] = {
                 ["y"] = -1127.2,
                 ["x"] = -2716.1,
             },
@@ -1555,10 +1339,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -899.2,
-                ["x"] = -2446.5,
-            },
-            ["Trigger"] = {
                 ["y"] = -899.2,
                 ["x"] = -2446.5,
             },
@@ -1594,10 +1374,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1016.9,
                 ["x"] = -2266.5,
             },
-            ["Trigger"] = {
-                ["y"] = -1016.9,
-                ["x"] = -2266.5,
-            },
             ["Range"] = 5,
         },
         { -- Step 58
@@ -1607,10 +1383,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -980.1,
-                ["x"] = -2221.0,
-            },
-            ["Trigger"] = {
                 ["y"] = -980.1,
                 ["x"] = -2221.0,
             },
@@ -1624,10 +1396,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -980.1,
-                ["x"] = -2221.0,
-            },
-            ["Trigger"] = {
                 ["y"] = -980.1,
                 ["x"] = -2221.0,
             },
@@ -1671,10 +1439,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1012.2,
                 ["x"] = -2391.5,
             },
-            ["Trigger"] = {
-                ["y"] = -1012.2,
-                ["x"] = -2391.5,
-            },
             ["Range"] = 125,
             ["Fillers"] = { [66082] = { ["1"] = "1", }, },
         },
@@ -1685,10 +1449,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1012.2,
-                ["x"] = -2391.5,
-            },
-            ["Trigger"] = {
                 ["y"] = -1012.2,
                 ["x"] = -2391.5,
             },
@@ -1731,10 +1491,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1084.3,
                 ["x"] = -2718.0,
             },
-            ["Trigger"] = {
-                ["y"] = -1084.3,
-                ["x"] = -2718.0,
-            },
             ["Range"] = 2,
             ["Gossip"] = 1,
         },
@@ -1745,10 +1501,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1085.0,
-                ["x"] = -2718.8,
-            },
-            ["Trigger"] = {
                 ["y"] = -1085.0,
                 ["x"] = -2718.8,
             },
@@ -1764,10 +1516,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1085.0,
                 ["x"] = -2718.8,
             },
-            ["Trigger"] = {
-                ["y"] = -1085.0,
-                ["x"] = -2718.8,
-            },
             ["Range"] = 2,
         },
         { -- Step 71
@@ -1777,10 +1525,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1085.0,
-                ["x"] = -2718.8,
-            },
-            ["Trigger"] = {
                 ["y"] = -1085.0,
                 ["x"] = -2718.8,
             },
@@ -1824,10 +1568,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1072.5,
                 ["x"] = -2810.0,
             },
-            ["Trigger"] = {
-                ["y"] = -1072.5,
-                ["x"] = -2810.0,
-            },
             ["Range"] = 2,
             ["Fillers"] = { [66084] = { ["1"] = "1", }, },
         },
@@ -1838,10 +1578,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1147.9,
-                ["x"] = -2937.8,
-            },
-            ["Trigger"] = {
                 ["y"] = -1147.9,
                 ["x"] = -2937.8,
             },
@@ -1859,10 +1595,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1147.7,
                 ["x"] = -2957.4,
             },
-            ["Trigger"] = {
-                ["y"] = -1147.7,
-                ["x"] = -2957.4,
-            },
             ["Range"] = 2,
             ["Fillers"] = { [66084] = { ["1"] = "1", }, },
         },
@@ -1873,10 +1605,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1005.0,
-                ["x"] = -2953.1,
-            },
-            ["Trigger"] = {
                 ["y"] = -1005.0,
                 ["x"] = -2953.1,
             },
@@ -1893,10 +1621,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1005.0,
                 ["x"] = -2953.1,
             },
-            ["Trigger"] = {
-                ["y"] = -1005.0,
-                ["x"] = -2953.1,
-            },
             ["Range"] = 2,
             ["Fillers"] = { [66084] = { ["1"] = "1", }, },
             ["Gossip"] = 1,
@@ -1908,10 +1632,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1090.4,
-                ["x"] = -2891.1,
-            },
-            ["Trigger"] = {
                 ["y"] = -1090.4,
                 ["x"] = -2891.1,
             },
@@ -1954,10 +1674,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1385.4,
                 ["x"] = -2660.1,
             },
-            ["Trigger"] = {
-                ["y"] = -1385.4,
-                ["x"] = -2660.1,
-            },
             ["Range"] = 225,
             ["SpellButton"] = {
                 ["66087-1"] = 376679,
@@ -1988,10 +1704,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1308.0,
-                ["x"] = -2913.4,
-            },
-            ["Trigger"] = {
                 ["y"] = -1308.0,
                 ["x"] = -2913.4,
             },
@@ -2044,10 +1756,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1401.0,
                 ["x"] = -2811.1,
             },
-            ["Trigger"] = {
-                ["y"] = -1401.0,
-                ["x"] = -2811.1,
-            },
             ["Range"] = 2,
             ["Fillers"] = { [65947] = { ["1"] = "1", }, [66646] = { ["1"] = "1", }, },
         },
@@ -2058,10 +1766,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1226.7,
-                ["x"] = -3024.6,
-            },
-            ["Trigger"] = {
                 ["y"] = -1226.7,
                 ["x"] = -3024.6,
             },
@@ -2081,10 +1785,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1286.9,
-                ["x"] = -2902.9,
-            },
-            ["Trigger"] = {
                 ["y"] = -1286.9,
                 ["x"] = -2902.9,
             },
@@ -2136,10 +1836,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1422.7,
                 ["x"] = -3014.4,
             },
-            ["Trigger"] = {
-                ["y"] = -1422.7,
-                ["x"] = -3014.4,
-            },
             ["Range"] = 2,
             ["SpellButton"] = {
                 ["65938-1"] = 372959,
@@ -2152,10 +1848,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1450.0,
-                ["x"] = -3017.6,
-            },
-            ["Trigger"] = {
                 ["y"] = -1450.0,
                 ["x"] = -3017.6,
             },
@@ -2190,10 +1882,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1308.0,
                 ["x"] = -2913.4,
             },
-            ["Trigger"] = {
-                ["y"] = -1308.0,
-                ["x"] = -2913.4,
-            },
             ["Range"] = 2,
             ["Gossip"] = 6,
         },
@@ -2225,10 +1913,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1312.9,
                 ["x"] = -2975.5,
             },
-            ["Trigger"] = {
-                ["y"] = -1312.9,
-                ["x"] = -2975.5,
-            },
             ["Range"] = 2,
             ["Gossip"] = 1,
         },
@@ -2239,10 +1923,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1363.8,
-                ["x"] = -2907.1,
-            },
-            ["Trigger"] = {
                 ["y"] = -1363.8,
                 ["x"] = -2907.1,
             },
@@ -2259,10 +1939,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1339.5,
                 ["x"] = -2885.6,
             },
-            ["Trigger"] = {
-                ["y"] = -1339.5,
-                ["x"] = -2885.6,
-            },
             ["Range"] = 2,
             ["Gossip"] = 1,
         },
@@ -2273,10 +1949,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1358.4,
-                ["x"] = -2961.0,
-            },
-            ["Trigger"] = {
                 ["y"] = -1358.4,
                 ["x"] = -2961.0,
             },
@@ -2320,10 +1992,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1344.9,
                 ["x"] = -2938.6,
             },
-            ["Trigger"] = {
-                ["y"] = -1344.9,
-                ["x"] = -2938.6,
-            },
             ["Range"] = 2,
             ["ExtraLineText"] = "USE_PORTAL",
         },
@@ -2364,10 +2032,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1202.3,
                 ["x"] = -2626.3,
             },
-            ["Trigger"] = {
-                ["y"] = -1202.3,
-                ["x"] = -2626.3,
-            },
             ["Range"] = 2,
             ["Button"] = {
                 ["66029-1"] = 192749,
@@ -2380,10 +2044,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1093.0,
-                ["x"] = -2617.6,
-            },
-            ["Trigger"] = {
                 ["y"] = -1093.0,
                 ["x"] = -2617.6,
             },
@@ -2400,10 +2060,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1093.0,
-                ["x"] = -2617.6,
-            },
-            ["Trigger"] = {
                 ["y"] = -1093.0,
                 ["x"] = -2617.6,
             },
@@ -2483,10 +2139,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -1334.2,
                 ["x"] = -2953.8,
             },
-            ["Trigger"] = {
-                ["y"] = -1334.2,
-                ["x"] = -2953.8,
-            },
             ["Range"] = 2,
         },
         { -- Step 128
@@ -2526,10 +2178,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 3260.6,
                 ["x"] = 170.6,
             },
-            ["Trigger"] = {
-                ["y"] = 3260.6,
-                ["x"] = 170.6,
-            },
             ["Range"] = 2,
         },
         { -- Step 132
@@ -2539,10 +2187,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 3130.0,
-                ["x"] = 224.1,
-            },
-            ["Trigger"] = {
                 ["y"] = 3130.0,
                 ["x"] = 224.1,
             },
@@ -2556,10 +2200,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 3130.0,
-                ["x"] = 224.1,
-            },
-            ["Trigger"] = {
                 ["y"] = 3130.0,
                 ["x"] = 224.1,
             },
@@ -2602,10 +2242,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 3118.1,
                 ["x"] = 273.5,
             },
-            ["Trigger"] = {
-                ["y"] = 3118.1,
-                ["x"] = 273.5,
-            },
             ["Range"] = 2,
             ["ExtraLineText"] = "ENTER_PLANE",
         },
@@ -2634,10 +2270,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 3102.9,
-                ["x"] = 277.3,
-            },
-            ["Trigger"] = {
                 ["y"] = 3102.9,
                 ["x"] = 277.3,
             },
@@ -2678,10 +2310,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1341.5,
-                ["x"] = -2948.3,
-            },
-            ["Trigger"] = {
                 ["y"] = -1341.5,
                 ["x"] = -2948.3,
             },
@@ -2734,10 +2362,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -949.1,
                 ["x"] = 7409.8,
             },
-            ["Trigger"] = {
-                ["y"] = -949.1,
-                ["x"] = 7409.8,
-            },
             ["Range"] = 2,
             ["Button"] = {
                 ["66039-1"] = 192749,
@@ -2771,10 +2395,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -946.7,
                 ["x"] = 7407.1,
             },
-            ["Trigger"] = {
-                ["y"] = -946.7,
-                ["x"] = 7407.1,
-            },
             ["Range"] = 2,
             ["Gossip"] = 1,
         },
@@ -2785,10 +2405,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -1356.7,
-                ["x"] = -2964.0,
-            },
-            ["Trigger"] = {
                 ["y"] = -1356.7,
                 ["x"] = -2964.0,
             },
@@ -2826,10 +2442,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 308.2,
-                ["x"] = -1041.0,
-            },
-            ["Trigger"] = {
                 ["y"] = 308.2,
                 ["x"] = -1041.0,
             },
@@ -2872,10 +2484,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 5787.2,
                 ["x"] = -3073.3,
             },
-            ["Trigger"] = {
-                ["y"] = 5787.2,
-                ["x"] = -3073.3,
-            },
             ["Range"] = 1,
             ["ExtraLineText"] = "INTERACT_WITH_DERVISHIAN",
             ["RaidIcon"] = 181494,
@@ -2887,10 +2495,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 5779.8349609375,
-                ["x"] = -3038.6650390625,
-            },
-            ["Trigger"] = {
                 ["y"] = 5779.8349609375,
                 ["x"] = -3038.6650390625,
             },
@@ -2908,20 +2512,12 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 5820.435059,
                 ["x"] = -3077.706055,
             },
-            ["Trigger"] = {
-                ["y"] = 5820.435059,
-                ["x"] = -3077.706055,
-            },
             ["Range"] = 1,
             ["ExtraLineText"] = "CLICK_ON_BONES_ON_THE_BED",
         },
         { -- Step 5
             ["Waypoint"] = 64864,
             ["TT"] = {
-                ["y"] = 5806.732421875,
-                ["x"] = -3065.5263671875,
-            },
-            ["Trigger"] = {
                 ["y"] = 5806.732421875,
                 ["x"] = -3065.5263671875,
             },
@@ -2933,19 +2529,11 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 5804.7026367188,
                 ["x"] = -2982.3325195312,
             },
-            ["Trigger"] = {
-                ["y"] = 5804.7026367188,
-                ["x"] = -2982.3325195312,
-            },
             ["Range"] = 5,
         },
         { -- Step 7
             ["Waypoint"] = 64864,
             ["TT"] = {
-                ["y"] = 5812.169921875,
-                ["x"] = -2928.8276367188,
-            },
-            ["Trigger"] = {
                 ["y"] = 5812.169921875,
                 ["x"] = -2928.8276367188,
             },
@@ -2958,10 +2546,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 5800.20752,
-                ["x"] = -2905.881348,
-            },
-            ["Trigger"] = {
                 ["y"] = 5800.20752,
                 ["x"] = -2905.881348,
             },
@@ -3002,10 +2586,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 5862.2,
                 ["x"] = -2945.5,
             },
-            ["Trigger"] = {
-                ["y"] = 5862.2,
-                ["x"] = -2945.5,
-            },
             ["Range"] = 1,
             ["ExtraLineText"] = "BONUS_BUFF_INTERACT_WITH_CRYSTAL_KEY_AND_PLACE_IT_INTO_THE_CRYSTAL_FOCUS_NEXT_IT",
         },
@@ -3029,10 +2609,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 5919.8325195312,
                 ["x"] = -3046.0600585938,
             },
-            ["Trigger"] = {
-                ["y"] = 5919.8325195312,
-                ["x"] = -3046.0600585938,
-            },
             ["Range"] = 1,
             ["Fillers"] = { [64863] = { ["1"] = "1", }, },
             ["ExtraLineText"] = "RUN_AWAY_WHEN_THEY_HIT_40_THEYRE_SPLIT_INTO_TWO_SMALL_ADDS",
@@ -3044,10 +2620,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 5957.025390625,
-                ["x"] = -2928.71875,
-            },
-            ["Trigger"] = {
                 ["y"] = 5957.025390625,
                 ["x"] = -2928.71875,
             },
@@ -3065,10 +2637,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6027.7124023438,
                 ["x"] = -2977.982421875,
             },
-            ["Trigger"] = {
-                ["y"] = 6027.7124023438,
-                ["x"] = -2977.982421875,
-            },
             ["Range"] = 1,
             ["Fillers"] = { [64863] = { ["1"] = "1", }, },
             ["ExtraLineText"] = "RUN_AWAY_WHEN_THEY_HIT_40_THEYRE_SPLIT_INTO_TWO_SMALL_ADDS",
@@ -3083,20 +2651,12 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 5955.4301757812,
                 ["x"] = -2952.6437988281,
             },
-            ["Trigger"] = {
-                ["y"] = 5955.4301757812,
-                ["x"] = -2952.6437988281,
-            },
             ["Range"] = 20,
             ["ExtraLineText"] = "RUN_AWAY_WHEN_THEY_HIT_40_THEYRE_SPLIT_INTO_TWO_SMALL_ADDS",
         },
         { -- Step 18
             ["Waypoint"] = 64865,
             ["TT"] = {
-                ["y"] = 6001.3950195312,
-                ["x"] = -2988.53125,
-            },
-            ["Trigger"] = {
                 ["y"] = 6001.3950195312,
                 ["x"] = -2988.53125,
             },
@@ -3133,10 +2693,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6102.3,
                 ["x"] = -3221.8,
             },
-            ["Trigger"] = {
-                ["y"] = 6102.3,
-                ["x"] = -3221.8,
-            },
             ["Range"] = 15,
             ["ExtraLineText"] = "GLIDE_DOWN",
         },
@@ -3147,10 +2703,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6116.8876953125,
-                ["x"] = -3137.6274414062,
-            },
-            ["Trigger"] = {
                 ["y"] = 6116.8876953125,
                 ["x"] = -3137.6274414062,
             },
@@ -3170,10 +2722,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6033.3671875,
                 ["x"] = -3200.1586914062,
             },
-            ["Trigger"] = {
-                ["y"] = 6033.3671875,
-                ["x"] = -3200.1586914062,
-            },
             ["Range"] = 5,
             ["SpellButton"] = {
                 ["64866-2"] = 361469,
@@ -3187,10 +2735,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6035.3974609375,
-                ["x"] = -3238.4387207031,
-            },
-            ["Trigger"] = {
                 ["y"] = 6035.3974609375,
                 ["x"] = -3238.4387207031,
             },
@@ -3210,10 +2754,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6087.59765625,
                 ["x"] = -3253.2290039062,
             },
-            ["Trigger"] = {
-                ["y"] = 6087.59765625,
-                ["x"] = -3253.2290039062,
-            },
             ["Range"] = 5,
             ["SpellButton"] = {
                 ["64866-2"] = 361469,
@@ -3227,10 +2767,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6101.2275390625,
-                ["x"] = -3190.2624511719,
-            },
-            ["Trigger"] = {
                 ["y"] = 6101.2275390625,
                 ["x"] = -3190.2624511719,
             },
@@ -3268,10 +2804,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6322.498046875,
                 ["x"] = -3278.3500976562,
             },
-            ["Trigger"] = {
-                ["y"] = 6322.498046875,
-                ["x"] = -3278.3500976562,
-            },
             ["Range"] = 1,
             ["ExtraLineText"] = "MAKE_SURE_COMPLETE_THIS_STEP_BEFORE_KILLING_DRAGON",
         },
@@ -3282,10 +2814,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6322.498046875,
-                ["x"] = -3278.3500976562,
-            },
-            ["Trigger"] = {
                 ["y"] = 6322.498046875,
                 ["x"] = -3278.3500976562,
             },
@@ -3329,10 +2857,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6397.9243164062,
                 ["x"] = -3287.5322265625,
             },
-            ["Trigger"] = {
-                ["y"] = 6397.9243164062,
-                ["x"] = -3287.5322265625,
-            },
             ["Range"] = 1,
             ["ExtraLineText"] = "RESET_COOLDOWN_BY_CLICKING_ON_THE_FIRE_BREATH_INFUSERS",
             ["ExtraLineText2"] = "HOLD_IT_UNTIL_YOU_REACH_LAST_EMPOWEREMENT_SECTION",
@@ -3347,10 +2871,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6397.9243164062,
-                ["x"] = -3287.5322265625,
-            },
-            ["Trigger"] = {
                 ["y"] = 6397.9243164062,
                 ["x"] = -3287.5322265625,
             },
@@ -3371,10 +2891,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6534.99609375,
                 ["x"] = -3332.0173339844,
             },
-            ["Trigger"] = {
-                ["y"] = 6534.99609375,
-                ["x"] = -3332.0173339844,
-            },
             ["Range"] = 1,
         },
         { -- Step 37
@@ -3384,10 +2900,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6464.109375,
-                ["x"] = -3304.62109375,
-            },
-            ["Trigger"] = {
                 ["y"] = 6464.109375,
                 ["x"] = -3304.62109375,
             },
@@ -3444,10 +2956,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6463.748046875,
                 ["x"] = -3313.3012695312,
             },
-            ["Trigger"] = {
-                ["y"] = 6463.748046875,
-                ["x"] = -3313.3012695312,
-            },
             ["Range"] = 2,
             ["ExtraLineText"] = "USE_BUTTON_TELEPORT_RIGHT_INFRONT_OF_THE_NPC",
             ["Button"] = {
@@ -3464,10 +2972,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6463.748046875,
                 ["x"] = -3313.3012695312,
             },
-            ["Trigger"] = {
-                ["y"] = 6463.748046875,
-                ["x"] = -3313.3012695312,
-            },
             ["Range"] = 2,
             ["ExtraLineText2"] = "CAST_SOAR",
             ["SpellButton"] = {
@@ -3481,10 +2985,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6687.2573242188,
-                ["x"] = -3470.6259765625,
-            },
-            ["Trigger"] = {
                 ["y"] = 6687.2573242188,
                 ["x"] = -3470.6259765625,
             },
@@ -3514,10 +3014,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6634.4541015625,
                 ["x"] = -3223.517578125,
             },
-            ["Trigger"] = {
-                ["y"] = 6634.4541015625,
-                ["x"] = -3223.517578125,
-            },
             ["Range"] = 1,
             ["ExtraLineText"] = "USE_BUTTON_TELEPORT_RIGHT_INFRONT_OF_THE_NPC",
             ["Button"] = {
@@ -3531,10 +3027,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6609.6796875,
-                ["x"] = -3038.25390625,
-            },
-            ["Trigger"] = {
                 ["y"] = 6609.6796875,
                 ["x"] = -3038.25390625,
             },
@@ -3554,10 +3046,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6463.9287109375,
                 ["x"] = -3312.7587890625,
             },
-            ["Trigger"] = {
-                ["y"] = 6463.9287109375,
-                ["x"] = -3312.7587890625,
-            },
             ["Range"] = 1,
             ["ExtraLineText2"] = "CAST_SOAR",
             ["SpellButton"] = {
@@ -3571,10 +3059,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6862.6655273438,
-                ["x"] = -3531.6574707031,
-            },
-            ["Trigger"] = {
                 ["y"] = 6862.6655273438,
                 ["x"] = -3531.6574707031,
             },
@@ -3616,10 +3100,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6464.109,
                 ["x"] = -3312.7587890625,
             },
-            ["Trigger"] = {
-                ["y"] = 6464.109,
-                ["x"] = -3312.7587890625,
-            },
             ["Range"] = 1,
             ["ExtraLineText2"] = "CAST_SOAR",
             ["SpellButton"] = {
@@ -3655,10 +3135,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6917.8193359375,
-                ["x"] = -3088.9775390625,
-            },
-            ["Trigger"] = {
                 ["y"] = 6917.8193359375,
                 ["x"] = -3088.9775390625,
             },
@@ -3702,10 +3178,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 7236.998046875,
                 ["x"] = -2597.1850585938,
             },
-            ["Trigger"] = {
-                ["y"] = 7236.998046875,
-                ["x"] = -2597.1850585938,
-            },
             ["Range"] = 1,
             ["ExtraActionB"] = 1,
         },
@@ -3746,10 +3218,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 7062.84765625,
                 ["x"] = -3055.0712890625,
             },
-            ["Trigger"] = {
-                ["y"] = 7062.84765625,
-                ["x"] = -3055.0712890625,
-            },
             ["Range"] = 30,
             ["Fillers"] = { [65074] = { ["1"] = "1", }, },
             ["ExtraLineText"] = "JUMP_AND_FLY",
@@ -3764,19 +3232,11 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 7057.96484375,
                 ["x"] = -2949.826171875,
             },
-            ["Trigger"] = {
-                ["y"] = 7057.96484375,
-                ["x"] = -2949.826171875,
-            },
             ["Range"] = 30,
         },
         { -- Step 64
             ["Waypoint"] = 65074,
             ["TT"] = {
-                ["y"] = 7190.877441406,
-                ["x"] = -2658.5036621094,
-            },
-            ["Trigger"] = {
                 ["y"] = 7190.877441406,
                 ["x"] = -2658.5036621094,
             },
@@ -3823,10 +3283,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 7260.4975585938,
                 ["x"] = -2775.4125976562,
             },
-            ["Trigger"] = {
-                ["y"] = 7260.4975585938,
-                ["x"] = -2775.4125976562,
-            },
             ["Range"] = 1,
             ["Fillers"] = { [65307] = { ["2"] = "2", }, },
             ["SpellButton"] = {
@@ -3843,10 +3299,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 7260.4975585938,
                 ["x"] = -2775.4125976562,
             },
-            ["Trigger"] = {
-                ["y"] = 7260.4975585938,
-                ["x"] = -2775.4125976562,
-            },
             ["Range"] = 5,
             ["SpellButton"] = {
                 ["65307-2"] = 361469,
@@ -3855,10 +3307,6 @@ if (APR.Faction == "Alliance") then
         { -- Step 70
             ["Waypoint"] = 65307,
             ["TT"] = {
-                ["y"] = 7185.271484375,
-                ["x"] = -2799.0112304688,
-            },
-            ["Trigger"] = {
                 ["y"] = 7185.271484375,
                 ["x"] = -2799.0112304688,
             },
@@ -3874,10 +3322,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 7170.8046875,
                 ["x"] = -2802.2661132812,
             },
-            ["Trigger"] = {
-                ["y"] = 7170.8046875,
-                ["x"] = -2802.2661132812,
-            },
             ["Range"] = 15,
             ["Fillers"] = { [65307] = { ["1"] = "1", }, },
             ["SpellButton"] = {
@@ -3887,10 +3331,6 @@ if (APR.Faction == "Alliance") then
         { -- Step 72
             ["Waypoint"] = 65307,
             ["TT"] = {
-                ["y"] = 7105.5244140625,
-                ["x"] = -2751.8137207031,
-            },
-            ["Trigger"] = {
                 ["y"] = 7105.5244140625,
                 ["x"] = -2751.8137207031,
             },
@@ -3906,10 +3346,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 7104.6201171875,
                 ["x"] = -2693.7661132812,
             },
-            ["Trigger"] = {
-                ["y"] = 7104.6201171875,
-                ["x"] = -2693.7661132812,
-            },
             ["Range"] = 15,
             ["Fillers"] = { [65307] = { ["1"] = "1", }, },
             ["SpellButton"] = {
@@ -3922,10 +3358,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 7174.2407226562,
                 ["x"] = -2690.240234375,
             },
-            ["Trigger"] = {
-                ["y"] = 7174.2407226562,
-                ["x"] = -2690.240234375,
-            },
             ["Fillers"] = { [65307] = { ["1"] = "1", }, },
         },
         { -- Step 75
@@ -3935,10 +3367,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 7191.419921875,
-                ["x"] = -2659.0463867188,
-            },
-            ["Trigger"] = {
                 ["y"] = 7191.419921875,
                 ["x"] = -2659.0463867188,
             },
@@ -3971,10 +3399,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 7258.6987304688,
                 ["x"] = -2533.205078125,
             },
-            ["Trigger"] = {
-                ["y"] = 7258.6987304688,
-                ["x"] = -2533.205078125,
-            },
             ["Range"] = 1,
             ["ExtraLineText"] = "USE_ITEM_ON_COOLDOWN_REDUCE_TOXICITY",
             ["Button"] = {
@@ -3988,10 +3412,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 7349.6083984375,
-                ["x"] = -2438.0048828125,
-            },
-            ["Trigger"] = {
                 ["y"] = 7349.6083984375,
                 ["x"] = -2438.0048828125,
             },
@@ -4012,10 +3432,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 7326.6005859375,
                 ["x"] = -2420.7150878906,
             },
-            ["Trigger"] = {
-                ["y"] = 7326.6005859375,
-                ["x"] = -2420.7150878906,
-            },
             ["Range"] = 2,
             ["ExtraLineText"] = "USE_ITEM_ON_COOLDOWN_REDUCE_TOXICITY",
             ["Button"] = {
@@ -4033,10 +3449,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 7297.9931640625,
                 ["x"] = -2365.3100585938,
             },
-            ["Trigger"] = {
-                ["y"] = 7297.9931640625,
-                ["x"] = -2365.3100585938,
-            },
             ["Range"] = 2,
             ["ExtraLineText"] = "USE_ITEM_ON_COOLDOWN_REDUCE_TOXICITY",
             ["Button"] = {
@@ -4047,10 +3459,6 @@ if (APR.Faction == "Alliance") then
         { -- Step 82
             ["Waypoint"] = 66324,
             ["TT"] = {
-                ["y"] = 7310.103515625,
-                ["x"] = -2397.08984375,
-            },
-            ["Trigger"] = {
                 ["y"] = 7310.103515625,
                 ["x"] = -2397.08984375,
             },
@@ -4069,10 +3477,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 7337.89453125,
                 ["x"] = -2389.6000976562,
             },
-            ["Trigger"] = {
-                ["y"] = 7337.89453125,
-                ["x"] = -2389.6000976562,
-            },
             ["Range"] = 5,
             ["ExtraLineText"] = "ONLY_USE_ITEM_STAY_AT_LIKE_5060",
             ["ExtraLineText2"] = "PLACE_CRYSTAL_KEY_IN_THE_CRYSTAL_LOCK",
@@ -4083,10 +3487,6 @@ if (APR.Faction == "Alliance") then
         { -- Step 84
             ["Waypoint"] = 66324,
             ["TT"] = {
-                ["y"] = 7321.607421875,
-                ["x"] = -2413.6101074219,
-            },
-            ["Trigger"] = {
                 ["y"] = 7321.607421875,
                 ["x"] = -2413.6101074219,
             },
@@ -4114,10 +3514,6 @@ if (APR.Faction == "Alliance") then
         { -- Step 87
             ["Waypoint"] = 65075,
             ["TT"] = {
-                ["y"] = 7151.8173828125,
-                ["x"] = -2653.3500976562,
-            },
-            ["Trigger"] = {
                 ["y"] = 7151.8173828125,
                 ["x"] = -2653.3500976562,
             },
@@ -4192,10 +3588,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6417.6352539062,
                 ["x"] = -4049.4736328125,
             },
-            ["Trigger"] = {
-                ["y"] = 6417.6352539062,
-                ["x"] = -4049.4736328125,
-            },
             ["Range"] = 2,
             ["Fillers"] = { [65050] = { ["1"] = "1", }, [65049] = { ["1"] = "1", }, },
         },
@@ -4209,10 +3601,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6520.3486328125,
                 ["x"] = -4051.1010742188,
             },
-            ["Trigger"] = {
-                ["y"] = 6520.3486328125,
-                ["x"] = -4051.1010742188,
-            },
             ["Range"] = 2,
             ["Fillers"] = { [65050] = { ["1"] = "1", }, [65049] = { ["1"] = "1", }, },
         },
@@ -4223,10 +3611,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6304.2529296875,
-                ["x"] = -4222.53125,
-            },
-            ["Trigger"] = {
                 ["y"] = 6304.2529296875,
                 ["x"] = -4222.53125,
             },
@@ -4247,10 +3631,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6316.0068359375,
                 ["x"] = -4093.4162597656,
             },
-            ["Trigger"] = {
-                ["y"] = 6316.0068359375,
-                ["x"] = -4093.4162597656,
-            },
             ["Range"] = 30,
             ["Fillers"] = { [65050] = { ["1"] = "1", }, },
         },
@@ -4261,10 +3641,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6479.2993164062,
-                ["x"] = -4131.9340820312,
-            },
-            ["Trigger"] = {
                 ["y"] = 6479.2993164062,
                 ["x"] = -4131.9340820312,
             },
@@ -4297,10 +3673,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6478.9375,
-                ["x"] = -4305.8046875,
-            },
-            ["Trigger"] = {
                 ["y"] = 6478.9375,
                 ["x"] = -4305.8046875,
             },
@@ -4363,10 +3735,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6463.0244140625,
                 ["x"] = -3316.013671875,
             },
-            ["Trigger"] = {
-                ["y"] = 6463.0244140625,
-                ["x"] = -3316.013671875,
-            },
             ["Range"] = 1,
             ["ExtraLineText"] = "CHOOSE_DEVASTATION_DPS_OR_PRESERVATION_HEAL",
         },
@@ -4420,10 +3788,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6934.0942382812,
                 ["x"] = -3578.8549804688,
             },
-            ["Trigger"] = {
-                ["y"] = 6934.0942382812,
-                ["x"] = -3578.8549804688,
-            },
             ["Range"] = 5,
             ["ExtraLineText"] = "USE_EMERALD_BLOSSOM_AND_LIVING_FLAME_HEAL_NPCS_AND_KILL_ENEMIES",
         },
@@ -4456,10 +3820,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6863.931640625,
                 ["x"] = -3375.4174804688,
             },
-            ["Trigger"] = {
-                ["y"] = 6863.931640625,
-                ["x"] = -3375.4174804688,
-            },
             ["Range"] = 2,
             ["ExtraLineText"] = "IMMEDIATELY_START_RUNNING_AND_GET_WRATHION",
             ["ExtraLineText2"] = "SPAMMING_SPACE_IS_FASTER_THAN_WALKING_NORMALLY",
@@ -4474,10 +3834,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6878.9404296875,
                 ["x"] = -3395.21875,
             },
-            ["Trigger"] = {
-                ["y"] = 6878.9404296875,
-                ["x"] = -3395.21875,
-            },
             ["Range"] = 2,
         },
         { -- Step 117
@@ -4487,10 +3843,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6866.462890625,
-                ["x"] = -3377.31640625,
-            },
-            ["Trigger"] = {
                 ["y"] = 6866.462890625,
                 ["x"] = -3377.31640625,
             },
@@ -4526,10 +3878,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6778.2163085938,
                 ["x"] = -3346.6650390625,
             },
-            ["Trigger"] = {
-                ["y"] = 6778.2163085938,
-                ["x"] = -3346.6650390625,
-            },
             ["Range"] = 2,
             ["ExtraLineText"] = "AVOID_PULLING_MOBS",
         },
@@ -4540,10 +3888,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6814.3828125,
-                ["x"] = -3272.3427734375,
-            },
-            ["Trigger"] = {
                 ["y"] = 6814.3828125,
                 ["x"] = -3272.3427734375,
             },
@@ -4581,18 +3925,10 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6539.8784179688,
                 ["x"] = -3233.5537109375,
             },
-            ["Trigger"] = {
-                ["y"] = 6539.8784179688,
-                ["x"] = -3233.5537109375,
-            },
         },
         { -- Step 125
             ["Waypoint"] = 65100,
             ["TT"] = {
-                ["y"] = 6427.9428710938,
-                ["x"] = -3265.8325195312,
-            },
-            ["Trigger"] = {
                 ["y"] = 6427.9428710938,
                 ["x"] = -3265.8325195312,
             },
@@ -4608,10 +3944,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 6427.0385742188,
                 ["x"] = -3281.8361816406,
             },
-            ["Trigger"] = {
-                ["y"] = 6427.0385742188,
-                ["x"] = -3281.8361816406,
-            },
             ["Range"] = 1,
         },
         { -- Step 127
@@ -4621,10 +3953,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6527.0390625,
-                ["x"] = -3279.1240234375,
-            },
-            ["Trigger"] = {
                 ["y"] = 6527.0390625,
                 ["x"] = -3279.1240234375,
             },
@@ -4638,10 +3966,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = 6495.7548828125,
-                ["x"] = -3376.5024414062,
-            },
-            ["Trigger"] = {
                 ["y"] = 6495.7548828125,
                 ["x"] = -3376.5024414062,
             },
@@ -4697,10 +4021,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -8895.279296875,
                 ["x"] = 634.72015380859,
             },
-            ["Trigger"] = {
-                ["y"] = -8895.279296875,
-                ["x"] = 634.72015380859,
-            },
             ["Range"] = 2,
             ["Zone"] = 84,
         },
@@ -4711,10 +4031,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -8833.1923828125,
-                ["x"] = 652.61645507812,
-            },
-            ["Trigger"] = {
                 ["y"] = -8833.1923828125,
                 ["x"] = 652.61645507812,
             },
@@ -4731,10 +4047,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -9004.857421875,
                 ["x"] = 870.67279052734,
             },
-            ["Trigger"] = {
-                ["y"] = -9004.857421875,
-                ["x"] = 870.67279052734,
-            },
             ["Range"] = 2,
             ["Zone"] = 84,
         },
@@ -4745,10 +4057,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -8156.03125,
-                ["x"] = 812.64025878906,
-            },
-            ["Trigger"] = {
                 ["y"] = -8156.03125,
                 ["x"] = 812.64025878906,
             },
@@ -4805,10 +4113,6 @@ if (APR.Faction == "Alliance") then
                 ["y"] = -8309.1630859375,
                 ["x"] = 335.69622802734,
             },
-            ["Trigger"] = {
-                ["y"] = -8309.1630859375,
-                ["x"] = 335.69622802734,
-            },
             ["Range"] = 1,
             ["Zone"] = 84,
         },
@@ -4819,10 +4123,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -8273.138671875,
-                ["x"] = 287.56744384766,
-            },
-            ["Trigger"] = {
                 ["y"] = -8273.138671875,
                 ["x"] = 287.56744384766,
             },
@@ -4837,10 +4137,6 @@ if (APR.Faction == "Alliance") then
                 },
             },
             ["TT"] = {
-                ["y"] = -8273.138671875,
-                ["x"] = 287.56744384766,
-            },
-            ["Trigger"] = {
                 ["y"] = -8273.138671875,
                 ["x"] = 287.56744384766,
             },
