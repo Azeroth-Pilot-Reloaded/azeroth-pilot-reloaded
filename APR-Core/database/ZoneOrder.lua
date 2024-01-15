@@ -2539,6 +2539,9 @@
             { continent = 13,   nextContinent = 1978, nextZone = 2112, portalKey = "Valdrakken",              closestTaxiNode = "Stormwind, Elwynn" },
 
             { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "The Exodar" },
+            { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Exodar",                  closestTaxiNode = "Darnassus, Teldrassil" },
+            { continent = 12,   nextContinent = 12,   nextZone = 103,  portalKey = "Exodar" },
+            { continent = 12,   nextContinent = 101,  nextZone = 530,  portalKey = "DarkPortal BC" },
             { continent = 101,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Shattrath, Terokkar Forest" },
             { continent = 101,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind DarkPortal",    closestTaxiNode = "Hellfire Peninsula, The Dark Portal" },
             { continent = 113,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Dalaran" },
@@ -2604,7 +2607,7 @@
     },
     ["ExtensionRouteMaps"] = { -- MapID for each Categorie
         ["Alliance"] = {
-            Vanilla = { 14, 15, 17, 22, 23, 26, 27, 32, 36, 37, 47, 48, 49, 51, 52, 56, 57, 62, 63, 64, 65, 66, 69, 70, 71, 77, 78, 81, 83, 84, 97, 106, 124, 179, 181, 199, 202, 224, 249, 1409, 1726, 1727, 1728 },
+            Vanilla = { 14, 15, 17, 22, 23, 26, 27, 32, 36, 37, 47, 48, 49, 51, 52, 56, 57, 62, 63, 64, 65, 66, 69, 70, 71, 77, 78, 81, 83, 84, 97, 106, 124, 179, 181, 199, 202, 224, 249, 460, 1409, 1726, 1727, 1728 },
             TheBurningCrusade = {},
             WrathOfTheLichKing = { 1602, 2297 },
             Cataclysm = {},

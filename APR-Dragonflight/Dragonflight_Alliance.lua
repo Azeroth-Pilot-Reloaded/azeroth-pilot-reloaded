@@ -1153,7 +1153,7 @@ if (APR.Faction == "Alliance") then
             },
             ["Coord"] = {
                 ["y"] = -1459.9,
-                ["x"] = -1020 - 2,
+                ["x"] = -1020.2,
             },
             ["Range"] = 2,
             ["ExtraLineText"] = "SHOOT_DRAGONS",
@@ -1166,7 +1166,7 @@ if (APR.Faction == "Alliance") then
             },
             ["Coord"] = {
                 ["y"] = -1459.9,
-                ["x"] = -1020 - 2,
+                ["x"] = -1020.2,
             },
             ["Range"] = 2,
             ["ExtraLineText"] = "SHOOT_DRAGONS",
