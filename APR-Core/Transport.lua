@@ -64,7 +64,7 @@ function APR.transport:GetMeToRightZone()
         else
             local posY, posX = UnitPosition("player")
             local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY = self:ClosestTaxi(posX, posY)
-            local _, objectiveTaxiName, _, _ = self:ClosestTaxi(step.TT.x, step.TT.y)
+            local _, objectiveTaxiName, _, _ = self:ClosestTaxi(step.Coord.x, step.Coord.y)
             if playerTaxiNodeId ~= objectiveTaxiName then
                 APR.currentStep:AddExtraLineText("FLY_TO_" .. objectiveTaxiName, L["FLY_TO"] .. " " .. objectiveTaxiName)
                 APR.currentStep:AddExtraLineText("CLOSEST_FP" .. playerTaxiName,

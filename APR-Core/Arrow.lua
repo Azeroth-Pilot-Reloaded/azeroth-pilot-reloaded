@@ -114,17 +114,17 @@ local function CheckDistance()
             local curStepIndex = CurStep
             local distance = 0
             while true do
-                local oldx, oldy = stepList[curStepIndex].TT.x, stepList[curStepIndex].TT.y
+                local oldx, oldy = stepList[curStepIndex].Coord.x, stepList[curStepIndex].Coord.y
                 curStepIndex = curStepIndex + 1
                 local step = stepList[curStepIndex]
                 if (step and step["Waypoint"]) then
-                    local newx, newy = step.TT.x, step.TT.y
+                    local newx, newy = step.Coord.x, step.Coord.y
                     local deltaX, deltaY = oldx - newx, newy - oldy
                     local subDistance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
                     distance = distance + subDistance
                 else
-                    if (step and step.TT) then
-                        local newx, newy = step.TT.x, step.TT.y
+                    if (step and step.Coord) then
+                        local newx, newy = step.Coord.x, step.Coord.y
                         local deltaX, deltaY = oldx - newx, newy - oldy
                         local subDistance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
                         distance = distance + subDistance
@@ -142,10 +142,10 @@ function APR.Arrow:SetQPTT()
         print("Function: APR_SetQPTT()")
     end
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    if (APR.Arrow.currentStep ~= CurStep and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep].TT and CheckIsInRouteZone()) then
+    if (APR.Arrow.currentStep ~= CurStep and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep].Coord and CheckIsInRouteZone()) then
         APR.ArrowActive = true
-        APR.ArrowActive_X = APR.RouteQuestStepList[APR.ActiveRoute][CurStep].TT.x
-        APR.ArrowActive_Y = APR.RouteQuestStepList[APR.ActiveRoute][CurStep].TT.y
+        APR.ArrowActive_X = APR.RouteQuestStepList[APR.ActiveRoute][CurStep].Coord.x
+        APR.ArrowActive_Y = APR.RouteQuestStepList[APR.ActiveRoute][CurStep].Coord.y
         APR.Arrow.currentStep = CurStep
     end
 end
