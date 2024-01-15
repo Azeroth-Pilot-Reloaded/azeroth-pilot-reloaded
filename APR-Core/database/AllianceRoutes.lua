@@ -3,11 +3,10 @@ if (APR.Faction == "Alliance") then
         ["01-10 Exile's Reach"] = 1409,
         ["Dwarf Start"] = 27,
         ["Human Start"] = 37,
-        ["Gnome Start"] = 27,
+        ["Gnome Start"] = 30,
         ["Draenei Start"] = 97,
         ["Night Elf Start"] = 57,
         ["Worgen Start"] = 179,
-        ["Pandaren Start"] = 378,
         ["Demon Hunter Start"] = 672,
         ["Death Knight Start"] = 23,
         ["Allied Death Knight Start"] = 2297,
@@ -195,8 +194,6 @@ if (APR.Faction == "Alliance") then
         APR.RouteList.Vanilla["A_Allied_Icecrown Citadel"] = "Allied Death Knight Start"
     elseif (APR.ClassId == APR.Classes["Death Knight"]) then
         APR.RouteList.Vanilla["A23-ScarletEnclave"] = "Death Knight Start"
-    elseif (APR.Race == "Pandaren") then
-        APR.RouteList.Vanilla["378-WanderingIsle"] = "Pandaren Start"
     elseif (APR.Race == "Dracthyr") then
         APR.RouteList.Dragonflight["2118-DracthyrStart-A"] = "Dracthyr Start"
     end

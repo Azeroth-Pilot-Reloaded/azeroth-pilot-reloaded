@@ -15,7 +15,7 @@ local tabRouteListWidget = nil
 local currentTabName = nil
 
 local notSkippableRoute = { "01-10 Exile's Reach", "Goblin - Lost Isles", "Dracthyr Start", "Pandaren Start",
-    "Allied Death Knight Start", "Death Knight Start", "Demon Hunter Start" }
+    "Allied Death Knight Start", "Death Knight Start", "Demon Hunter Start", "Worgen Start" }
 ---------------------------------------------------------------------------------------
 ------------------------- Config functionality for Route ------------------------------
 ---------------------------------------------------------------------------------------
@@ -45,7 +45,11 @@ local function GetConfigOptionTable()
                 func = function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetWODPrefab()
-                end
+                end,
+                hidden = function()
+                    return not next(APR.RouteList.WarlordsOfDraenor)
+                end,
+
             },
             BFA_prefab = {
                 order = 1.2,
@@ -55,7 +59,10 @@ local function GetConfigOptionTable()
                 func = function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetBFAPrefab()
-                end
+                end,
+                hidden = function()
+                    return not next(APR.RouteList.BattleForAzeroth)
+                end,
             },
             SL_prefab = {
                 order = 1.3,
@@ -65,6 +72,9 @@ local function GetConfigOptionTable()
                 func = function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetSLPrefab()
+                end,
+                hidden = function()
+                    return APR.Level < 48 or not next(APR.RouteList.Shadowlands)
                 end
             },
             DF_prefab = {
@@ -77,8 +87,8 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetDFPrefab()
                 end,
                 hidden = function()
-                    return APR.Level < 58
-                end,
+                    return APR.Level < 58 or not next(APR.RouteList.Dragonflight)
+                end
             },
             reset_custom_path = {
                 order = 1.5,
@@ -641,6 +651,8 @@ function APR.routeconfig:GetStartingZonePrefab()
         elseif (APR.Race == "Goblin") then
             tinsert(APRCustomPath[APR.PlayerID], "Goblin Start")
             tinsert(APRCustomPath[APR.PlayerID], "Goblin - Lost Isles")
+        elseif (APR.Race == "Worgen") then
+            tinsert(APRCustomPath[APR.PlayerID], "Worgen Start")
         elseif APR.Level < 10 then -- Skipable starting zone
             -- HORDE
             if (APR.Race == "Orc") then
@@ -670,8 +682,7 @@ function APR.routeconfig:GetStartingZonePrefab()
                 tinsert(APRCustomPath[APR.PlayerID], "Human Start")
             elseif (APR.Race == "Gnome") then
                 tinsert(APRCustomPath[APR.PlayerID], "Gnome Start")
-            elseif (APR.Race == "Worgen") then
-                tinsert(APRCustomPath[APR.PlayerID], "Worgen Start")
+                tinsert(APRCustomPath[APR.PlayerID], "Dun Morogh")
             end
         end
     end
