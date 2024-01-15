@@ -73,6 +73,7 @@ function APR.changelog:SetChangeLog()
         "#Bugs",
         "- Fix starting zone for goblin, Night Elf",
         "- Fix non skipable starting zone",
+        "- Fix neutral starting zone",
 
         "#Route",
         "- New Gender step option (for the goblin route for now)",
