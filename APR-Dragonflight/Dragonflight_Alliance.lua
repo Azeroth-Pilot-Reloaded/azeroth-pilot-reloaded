@@ -40,7 +40,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8426.9,
                 ["x"] = 608.6,
             },
@@ -54,7 +54,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8805.9,
                 ["x"] = 622.4,
             },
@@ -68,7 +68,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8776.5,
                 ["x"] = 838.6,
             },
@@ -81,7 +81,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8521.4,
                 ["x"] = 1058.5,
             },
@@ -93,7 +93,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66589,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8640.6,
                 ["x"] = 1328.2,
             },
@@ -102,7 +102,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 72240,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8640.6,
                 ["x"] = 1328.2,
             },
@@ -111,7 +111,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66596,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8646,
                 ["x"] = 1323.4,
             },
@@ -122,7 +122,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8646,
                 ["x"] = 1323.4,
             },
@@ -133,7 +133,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66596,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8644.4,
                 ["x"] = 1324.4,
             },
@@ -142,14 +142,14 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 67700,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8640.6,
                 ["x"] = 1328.2,
             },
         },
         { -- Step 17
             ["Waypoint"] = 67700,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8640.6,
                 ["x"] = 1328.2,
             },
@@ -162,7 +162,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8640.6,
                 ["x"] = 1328.2,
             },
@@ -193,7 +193,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8640.6,
                 ["x"] = 1328.2,
             },
@@ -204,7 +204,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 67700,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3676.8,
                 ["x"] = -1898.5,
             },
@@ -213,7 +213,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 70122,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3676.8,
                 ["x"] = -1898.5,
             },
@@ -222,7 +222,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 70123,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3678.4,
                 ["x"] = -1901.0,
             },
@@ -231,7 +231,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 70124,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3676.3,
                 ["x"] = -1896.0,
             },
@@ -242,7 +242,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3584.3,
                 ["x"] = -2012.9,
             },
@@ -255,7 +255,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3453.1,
                 ["x"] = -1972.4,
             },
@@ -268,7 +268,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3491.6,
                 ["x"] = -1693.5,
             },
@@ -281,7 +281,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3571.0,
                 ["x"] = -1830.2,
             },
@@ -293,7 +293,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3571.0,
                 ["x"] = -1830.2,
             },
@@ -303,7 +303,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 70122,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3583.6,
                 ["x"] = -1459.9,
             },
@@ -312,7 +312,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 70125,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3583.6,
                 ["x"] = -1459.9,
             },
@@ -323,7 +323,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3581.5,
                 ["x"] = -1455.9,
             },
@@ -335,7 +335,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 70125,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3581.5,
                 ["x"] = -1455.9,
             },
@@ -344,7 +344,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 72293,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3581.8,
                 ["x"] = -1456.2,
             },
@@ -356,7 +356,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3552.0,
                 ["x"] = -1452.5,
             },
@@ -368,7 +368,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 72293,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3552.0,
                 ["x"] = -1452.5,
             },
@@ -378,7 +378,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 72266,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3552.0,
                 ["x"] = -1452.5,
             },
@@ -390,7 +390,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 72267,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3552.0,
                 ["x"] = -1452.5,
             },
@@ -402,7 +402,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 72268,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3552.0,
                 ["x"] = -1452.5,
             },
@@ -414,7 +414,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 72269,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3552.0,
                 ["x"] = -1452.5,
             },
@@ -426,7 +426,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 72266,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3581.8,
                 ["x"] = -1456.2,
             },
@@ -436,7 +436,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 69911,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3581.5,
                 ["x"] = -1455.9,
             },
@@ -445,7 +445,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 70123,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3541.6,
                 ["x"] = -1469.2,
             },
@@ -454,7 +454,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 67053,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3534.3,
                 ["x"] = -1467.8,
             },
@@ -463,7 +463,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 70124,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3544.3,
                 ["x"] = -1447.8,
             },
@@ -472,7 +472,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 67053,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3612.6,
                 ["x"] = -1438.4,
             },
@@ -481,7 +481,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 70135,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3612.6,
                 ["x"] = -1438.4,
             },
@@ -490,7 +490,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66101,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3591.7,
                 ["x"] = -1397.9,
             },
@@ -501,7 +501,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3587.0,
                 ["x"] = -1401.7,
             },
@@ -514,7 +514,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3587.0,
                 ["x"] = -1401.7,
             },
@@ -527,7 +527,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3587.0,
                 ["x"] = -1401.7,
             },
@@ -540,7 +540,7 @@ if (APR.Faction == "Alliance") then
                     ["4"] = "4",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3587.0,
                 ["x"] = -1401.7,
             },
@@ -551,7 +551,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66101,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3591.7,
                 ["x"] = -1397.9,
             },
@@ -560,7 +560,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 69965,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3539.8,
                 ["x"] = -1442.4,
             },
@@ -569,7 +569,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66112,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3529.3,
                 ["x"] = -1437.9,
             },
@@ -580,7 +580,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3478.8,
                 ["x"] = -1435.5,
             },
@@ -594,7 +594,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3479.0,
                 ["x"] = -1432.9,
             },
@@ -604,7 +604,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 31
             ["GetFP"] = 2805,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3508.2,
                 ["x"] = -1411.7,
             },
@@ -616,7 +616,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3556.1,
                 ["x"] = -1378.8,
             },
@@ -629,7 +629,7 @@ if (APR.Faction == "Alliance") then
                     ["4"] = "4",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3680.3,
                 ["x"] = -1602.4,
             },
@@ -640,7 +640,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 69911,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3582.1,
                 ["x"] = -1456.0,
             },
@@ -649,7 +649,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 69912,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3582.1,
                 ["x"] = -1456.0,
             },
@@ -660,7 +660,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3582.1,
                 ["x"] = -1456.0,
             },
@@ -670,7 +670,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 37
             ["Waypoint"] = 66112,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3418.8,
                 ["x"] = -1379.0,
             },
@@ -683,7 +683,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3281.2,
                 ["x"] = -1327.9,
             },
@@ -698,7 +698,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3618.9,
                 ["x"] = -1165.1,
             },
@@ -713,7 +713,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3448.3,
                 ["x"] = -1313.7,
             },
@@ -725,7 +725,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3448.3,
                 ["x"] = -1313.7,
             },
@@ -735,7 +735,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66112,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3529.3,
                 ["x"] = -1437.9,
             },
@@ -744,7 +744,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 69965,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3539.8,
                 ["x"] = -1442.4,
             },
@@ -753,7 +753,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 70135,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3534.4,
                 ["x"] = -1467.4,
             },
@@ -762,7 +762,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 69912,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3537.5,
                 ["x"] = -1424.7,
             },
@@ -780,7 +780,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 338.8,
                 ["x"] = -1099.5,
             },
@@ -791,7 +791,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66244,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 306.5,
                 ["x"] = -1042.4,
             },
@@ -800,7 +800,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66159,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 306.5,
                 ["x"] = -1042.4,
             },
@@ -811,7 +811,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 306.5,
                 ["x"] = -1042.4,
             },
@@ -822,7 +822,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66159,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 306.5,
                 ["x"] = -1042.4,
             },
@@ -831,7 +831,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66163,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 313.3,
                 ["x"] = -1061.9,
             },
@@ -840,7 +840,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66166,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 313.3,
                 ["x"] = -1061.9,
             },
@@ -851,7 +851,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 313.3,
                 ["x"] = -1061.9,
             },
@@ -866,7 +866,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 186.6,
                 ["x"] = -880.5,
             },
@@ -880,7 +880,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 118.3,
                 ["x"] = -1058.4,
             },
@@ -894,7 +894,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 54.5,
                 ["x"] = -701.7,
             },
@@ -908,7 +908,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 99.4,
                 ["x"] = -918.4,
             },
@@ -920,7 +920,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66163,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 191.1,
                 ["x"] = -994.1,
             },
@@ -929,7 +929,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66166,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 191.1,
                 ["x"] = -994.1,
             },
@@ -938,7 +938,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66167,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 191.1,
                 ["x"] = -994.1,
             },
@@ -949,7 +949,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1366.2,
                 ["x"] = -511.3,
             },
@@ -962,7 +962,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1366.2,
                 ["x"] = -511.3,
             },
@@ -973,7 +973,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66167,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1366.2,
                 ["x"] = -511.3,
             },
@@ -982,7 +982,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66169,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1366.2,
                 ["x"] = -511.3,
             },
@@ -991,7 +991,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66246,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1366.2,
                 ["x"] = -511.3,
             },
@@ -1002,7 +1002,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1493.0,
                 ["x"] = -550.2,
             },
@@ -1017,7 +1017,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1493.0,
                 ["x"] = -550.2,
             },
@@ -1027,7 +1027,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66169,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1401.9,
                 ["x"] = -691.2,
             },
@@ -1036,7 +1036,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66246,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1401.9,
                 ["x"] = -691.2,
             },
@@ -1046,7 +1046,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66245,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1401.9,
                 ["x"] = -691.2,
             },
@@ -1056,7 +1056,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66247,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1414.0,
                 ["x"] = -713.7,
             },
@@ -1066,7 +1066,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66248,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1424.0,
                 ["x"] = -784.6,
             },
@@ -1077,7 +1077,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1428.9,
                 ["x"] = -819.5,
             },
@@ -1090,7 +1090,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1428.9,
                 ["x"] = -819.5,
             },
@@ -1103,7 +1103,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1428.9,
                 ["x"] = -819.5,
             },
@@ -1113,7 +1113,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66247,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1401.9,
                 ["x"] = -691.2,
             },
@@ -1122,7 +1122,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66248,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1401.9,
                 ["x"] = -691.2,
             },
@@ -1131,7 +1131,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66245,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1401.9,
                 ["x"] = -691.2,
             },
@@ -1140,7 +1140,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66249,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1401.9,
                 ["x"] = -691.2,
             },
@@ -1151,7 +1151,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1459.9,
                 ["x"] = -1020 - 2,
             },
@@ -1164,7 +1164,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1459.9,
                 ["x"] = -1020 - 2,
             },
@@ -1175,7 +1175,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66249,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1563.0,
                 ["x"] = -987.0,
             },
@@ -1184,7 +1184,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66250,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1563.0,
                 ["x"] = -987.0,
             },
@@ -1195,7 +1195,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1563.0,
                 ["x"] = -987.0,
             },
@@ -1206,7 +1206,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66250,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1539.8,
                 ["x"] = -946.7,
             },
@@ -1215,7 +1215,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66251,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1539.8,
                 ["x"] = -946.7,
             },
@@ -1226,7 +1226,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1639.2,
                 ["x"] = -941.9,
             },
@@ -1236,7 +1236,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66251,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1539.8,
                 ["x"] = -946.7,
             },
@@ -1245,14 +1245,14 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66252,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1539.8,
                 ["x"] = -946.7,
             },
         },
         { -- Step 45
             ["Waypoint"] = 1,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 164.0,
                 ["x"] = -902.5,
             },
@@ -1260,14 +1260,14 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 46
             ["SetHS"] = 66252,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 200.9,
                 ["x"] = -887.5,
             },
         },
         { -- Step 47
             ["Waypoint"] = 66252,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 338.3,
                 ["x"] = -1099.7,
             },
@@ -1278,7 +1278,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66252,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 261.3,
                 ["x"] = -1012.9,
             },
@@ -1288,7 +1288,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66320,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 267.6,
                 ["x"] = -1085.0,
             },
@@ -1299,7 +1299,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1120.5,
                 ["x"] = -2699.0,
             },
@@ -1310,14 +1310,14 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66320,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1120.5,
                 ["x"] = -2699.0,
             },
         },
         { -- Step 52
             ["GetFP"] = 2816,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1127.2,
                 ["x"] = -2716.1,
             },
@@ -1327,7 +1327,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66080,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1112.5,
                 ["x"] = -2705.4,
             },
@@ -1338,7 +1338,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -899.2,
                 ["x"] = -2446.5,
             },
@@ -1349,7 +1349,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66080,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -899.2,
                 ["x"] = -2446.5,
             },
@@ -1359,7 +1359,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 70136,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -899.2,
                 ["x"] = -2446.5,
             },
@@ -1370,7 +1370,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1016.9,
                 ["x"] = -2266.5,
             },
@@ -1382,7 +1382,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -980.1,
                 ["x"] = -2221.0,
             },
@@ -1395,7 +1395,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -980.1,
                 ["x"] = -2221.0,
             },
@@ -1406,7 +1406,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 70136,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -899.2,
                 ["x"] = -2446.5,
             },
@@ -1415,7 +1415,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66081,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -899.2,
                 ["x"] = -2446.5,
             },
@@ -1424,7 +1424,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66082,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -899.2,
                 ["x"] = -2446.5,
             },
@@ -1435,7 +1435,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1012.2,
                 ["x"] = -2391.5,
             },
@@ -1448,7 +1448,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1012.2,
                 ["x"] = -2391.5,
             },
@@ -1458,7 +1458,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66081,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1120.5,
                 ["x"] = -2699.0,
             },
@@ -1467,7 +1467,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66082,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1120.5,
                 ["x"] = -2699.0,
             },
@@ -1476,7 +1476,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66083,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1111.8,
                 ["x"] = -2705.8,
             },
@@ -1487,7 +1487,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1084.3,
                 ["x"] = -2718.0,
             },
@@ -1500,7 +1500,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1085.0,
                 ["x"] = -2718.8,
             },
@@ -1512,7 +1512,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1085.0,
                 ["x"] = -2718.8,
             },
@@ -1524,7 +1524,7 @@ if (APR.Faction == "Alliance") then
                     ["4"] = "4",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1085.0,
                 ["x"] = -2718.8,
             },
@@ -1535,7 +1535,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66083,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1111.8,
                 ["x"] = -2705.8,
             },
@@ -1544,7 +1544,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66084,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1111.8,
                 ["x"] = -2705.8,
             },
@@ -1553,7 +1553,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66085,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1120.0,
                 ["x"] = -2698.6,
             },
@@ -1564,7 +1564,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1072.5,
                 ["x"] = -2810.0,
             },
@@ -1577,7 +1577,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1147.9,
                 ["x"] = -2937.8,
             },
@@ -1591,7 +1591,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1147.7,
                 ["x"] = -2957.4,
             },
@@ -1604,7 +1604,7 @@ if (APR.Faction == "Alliance") then
                     ["4"] = "4",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1005.0,
                 ["x"] = -2953.1,
             },
@@ -1617,7 +1617,7 @@ if (APR.Faction == "Alliance") then
                     ["5"] = "5",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1005.0,
                 ["x"] = -2953.1,
             },
@@ -1631,7 +1631,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1090.4,
                 ["x"] = -2891.1,
             },
@@ -1641,7 +1641,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66084,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1111.8,
                 ["x"] = -2705.8,
             },
@@ -1650,7 +1650,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66085,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1120.0,
                 ["x"] = -2698.6,
             },
@@ -1659,7 +1659,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66087,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1117.3,
                 ["x"] = -2708.0,
             },
@@ -1670,7 +1670,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1385.4,
                 ["x"] = -2660.1,
             },
@@ -1683,7 +1683,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66087,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1117.3,
                 ["x"] = -2708.0,
             },
@@ -1692,7 +1692,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65935,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1112.7,
                 ["x"] = -2705.6,
             },
@@ -1703,7 +1703,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1308.0,
                 ["x"] = -2913.4,
             },
@@ -1714,7 +1714,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65935,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1308.0,
                 ["x"] = -2913.4,
             },
@@ -1723,7 +1723,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65947,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1308.0,
                 ["x"] = -2913.4,
             },
@@ -1732,7 +1732,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65948,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1308.0,
                 ["x"] = -2913.4,
             },
@@ -1741,7 +1741,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66646,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1373.0,
                 ["x"] = -2911.3,
             },
@@ -1752,7 +1752,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1401.0,
                 ["x"] = -2811.1,
             },
@@ -1765,7 +1765,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1226.7,
                 ["x"] = -3024.6,
             },
@@ -1784,7 +1784,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1286.9,
                 ["x"] = -2902.9,
             },
@@ -1794,7 +1794,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65948,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1308.0,
                 ["x"] = -2913.4,
             },
@@ -1803,7 +1803,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65947,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1308.0,
                 ["x"] = -2913.4,
             },
@@ -1812,7 +1812,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66646,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1373.0,
                 ["x"] = -2911.3,
             },
@@ -1821,7 +1821,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65938,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1308.0,
                 ["x"] = -2913.4,
             },
@@ -1832,7 +1832,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1422.7,
                 ["x"] = -3014.4,
             },
@@ -1847,7 +1847,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1450.0,
                 ["x"] = -3017.6,
             },
@@ -1858,7 +1858,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65938,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1308.0,
                 ["x"] = -2913.4,
             },
@@ -1867,7 +1867,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65962,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1308.0,
                 ["x"] = -2913.4,
             },
@@ -1878,7 +1878,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1308.0,
                 ["x"] = -2913.4,
             },
@@ -1889,7 +1889,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65962,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1358.4,
                 ["x"] = -2961.0,
             },
@@ -1898,7 +1898,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 70040,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1358.4,
                 ["x"] = -2961.0,
             },
@@ -1909,7 +1909,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1312.9,
                 ["x"] = -2975.5,
             },
@@ -1922,7 +1922,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1363.8,
                 ["x"] = -2907.1,
             },
@@ -1935,7 +1935,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1339.5,
                 ["x"] = -2885.6,
             },
@@ -1948,7 +1948,7 @@ if (APR.Faction == "Alliance") then
                     ["4"] = "4",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1358.4,
                 ["x"] = -2961.0,
             },
@@ -1959,7 +1959,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 70040,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1358.4,
                 ["x"] = -2961.0,
             },
@@ -1968,7 +1968,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66028,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1358.4,
                 ["x"] = -2961.0,
             },
@@ -1977,7 +1977,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66029,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1358.4,
                 ["x"] = -2961.0,
             },
@@ -1988,7 +1988,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1344.9,
                 ["x"] = -2938.6,
             },
@@ -1999,7 +1999,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66028,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1341.3,
                 ["x"] = -2937.1,
             },
@@ -2008,7 +2008,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66030,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1341.3,
                 ["x"] = -2937.1,
             },
@@ -2017,7 +2017,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66031,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1332.3,
                 ["x"] = -2945.3,
             },
@@ -2028,7 +2028,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1202.3,
                 ["x"] = -2626.3,
             },
@@ -2043,7 +2043,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1093.0,
                 ["x"] = -2617.6,
             },
@@ -2059,7 +2059,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1093.0,
                 ["x"] = -2617.6,
             },
@@ -2069,7 +2069,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66030,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1341.3,
                 ["x"] = -2937.1,
             },
@@ -2078,7 +2078,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66031,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1332.3,
                 ["x"] = -2945.3,
             },
@@ -2087,7 +2087,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66032,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1341.3,
                 ["x"] = -2937.1,
             },
@@ -2096,7 +2096,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66032,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1359.2,
                 ["x"] = -2961.9,
             },
@@ -2106,7 +2106,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66029,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1359.2,
                 ["x"] = -2961.9,
             },
@@ -2115,7 +2115,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 72519,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1359.2,
                 ["x"] = -2961.9,
             },
@@ -2124,7 +2124,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66033,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1359.2,
                 ["x"] = -2961.9,
             },
@@ -2135,7 +2135,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1334.2,
                 ["x"] = -2953.8,
             },
@@ -2145,7 +2145,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66033,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3101.4,
                 ["x"] = 272.0,
             },
@@ -2154,7 +2154,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66035,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3101.4,
                 ["x"] = 272.0,
             },
@@ -2163,7 +2163,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66036,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3108.0,
                 ["x"] = 263.5,
             },
@@ -2174,7 +2174,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3260.6,
                 ["x"] = 170.6,
             },
@@ -2186,7 +2186,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3130.0,
                 ["x"] = 224.1,
             },
@@ -2199,7 +2199,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3130.0,
                 ["x"] = 224.1,
             },
@@ -2209,7 +2209,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66036,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3107.9,
                 ["x"] = 263.2,
             },
@@ -2218,7 +2218,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66035,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3101.9,
                 ["x"] = 271.5,
             },
@@ -2227,7 +2227,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 70373,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3107.9,
                 ["x"] = 263.2,
             },
@@ -2238,7 +2238,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3118.1,
                 ["x"] = 273.5,
             },
@@ -2249,7 +2249,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 70373,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3107.9,
                 ["x"] = 263.2,
             },
@@ -2258,7 +2258,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66037,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3101.9,
                 ["x"] = 271.5,
             },
@@ -2269,7 +2269,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 3102.9,
                 ["x"] = 277.3,
             },
@@ -2280,7 +2280,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 72519,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1359.0,
                 ["x"] = -2961.6,
             },
@@ -2289,7 +2289,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66037,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1359.0,
                 ["x"] = -2961.6,
             },
@@ -2298,7 +2298,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66660,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1359.0,
                 ["x"] = -2961.6,
             },
@@ -2309,7 +2309,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1341.5,
                 ["x"] = -2948.3,
             },
@@ -2320,7 +2320,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66660,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 15534.9,
                 ["x"] = 15512.9,
             },
@@ -2329,7 +2329,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66038,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 15534.9,
                 ["x"] = 15512.9,
             },
@@ -2338,7 +2338,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66038,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1309.7,
                 ["x"] = 7427.0,
             },
@@ -2347,7 +2347,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66039,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1309.7,
                 ["x"] = 7427.0,
             },
@@ -2358,7 +2358,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -949.1,
                 ["x"] = 7409.8,
             },
@@ -2371,7 +2371,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66039,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -946.7,
                 ["x"] = 7407.1,
             },
@@ -2380,7 +2380,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66040,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -946.7,
                 ["x"] = 7407.1,
             },
@@ -2391,7 +2391,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -946.7,
                 ["x"] = 7407.1,
             },
@@ -2404,7 +2404,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1356.7,
                 ["x"] = -2964.0,
             },
@@ -2415,7 +2415,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66040,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1359.0,
                 ["x"] = -2962.0,
             },
@@ -2424,7 +2424,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66221,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1359.0,
                 ["x"] = -2962.0,
             },
@@ -2441,7 +2441,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 308.2,
                 ["x"] = -1041.0,
             },
@@ -2453,7 +2453,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66221,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 308.2,
                 ["x"] = -1041.0,
             },
@@ -2469,7 +2469,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 64864,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5787.2,
                 ["x"] = -3073.3,
             },
@@ -2480,7 +2480,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5787.2,
                 ["x"] = -3073.3,
             },
@@ -2494,7 +2494,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5779.8349609375,
                 ["x"] = -3038.6650390625,
             },
@@ -2508,7 +2508,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5820.435059,
                 ["x"] = -3077.706055,
             },
@@ -2517,7 +2517,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 5
             ["Waypoint"] = 64864,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5806.732421875,
                 ["x"] = -3065.5263671875,
             },
@@ -2525,7 +2525,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 6
             ["Waypoint"] = 64864,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5804.7026367188,
                 ["x"] = -2982.3325195312,
             },
@@ -2533,7 +2533,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 7
             ["Waypoint"] = 64864,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5812.169921875,
                 ["x"] = -2928.8276367188,
             },
@@ -2545,7 +2545,7 @@ if (APR.Faction == "Alliance") then
                     ["4"] = "4",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5800.20752,
                 ["x"] = -2905.881348,
             },
@@ -2557,7 +2557,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 64864,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5808.617676,
                 ["x"] = -2914.254883,
             },
@@ -2566,7 +2566,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 64865,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5808.617676,
                 ["x"] = -2914.254883,
             },
@@ -2575,14 +2575,14 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 64863,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5815.142578125,
                 ["x"] = -2915.9951171875,
             },
         },
         { -- Step 12
             ["Waypoint"] = 66010,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5862.2,
                 ["x"] = -2945.5,
             },
@@ -2593,7 +2593,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66010,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5859.7299804688,
                 ["x"] = -2972.6538085938,
             },
@@ -2605,7 +2605,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5919.8325195312,
                 ["x"] = -3046.0600585938,
             },
@@ -2619,7 +2619,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5957.025390625,
                 ["x"] = -2928.71875,
             },
@@ -2633,7 +2633,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6027.7124023438,
                 ["x"] = -2977.982421875,
             },
@@ -2647,7 +2647,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5955.4301757812,
                 ["x"] = -2952.6437988281,
             },
@@ -2656,7 +2656,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 18
             ["Waypoint"] = 64865,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6001.3950195312,
                 ["x"] = -2988.53125,
             },
@@ -2667,7 +2667,7 @@ if (APR.Faction == "Alliance") then
                 64863,
                 64865,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5971.2348632812,
                 ["x"] = -3033.5537109375,
             },
@@ -2677,7 +2677,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 64866,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 5975.4399414062,
                 ["x"] = -3054.5424804688,
             },
@@ -2689,7 +2689,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6102.3,
                 ["x"] = -3221.8,
             },
@@ -2702,7 +2702,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6116.8876953125,
                 ["x"] = -3137.6274414062,
             },
@@ -2718,7 +2718,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6033.3671875,
                 ["x"] = -3200.1586914062,
             },
@@ -2734,7 +2734,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6035.3974609375,
                 ["x"] = -3238.4387207031,
             },
@@ -2750,7 +2750,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6087.59765625,
                 ["x"] = -3253.2290039062,
             },
@@ -2766,7 +2766,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6101.2275390625,
                 ["x"] = -3190.2624511719,
             },
@@ -2780,7 +2780,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 64866,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6137.1875,
                 ["x"] = -3230.2827148438,
             },
@@ -2789,7 +2789,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 64871,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6136.0278320312,
                 ["x"] = -3234.1975097656,
             },
@@ -2800,7 +2800,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6322.498046875,
                 ["x"] = -3278.3500976562,
             },
@@ -2813,7 +2813,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6322.498046875,
                 ["x"] = -3278.3500976562,
             },
@@ -2823,7 +2823,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 64871,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6393.9462890625,
                 ["x"] = -3304.0788574219,
             },
@@ -2833,7 +2833,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 64872,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6393.9462890625,
                 ["x"] = -3304.0788574219,
             },
@@ -2842,7 +2842,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65615,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6396.296875,
                 ["x"] = -3296.2124023438,
             },
@@ -2853,7 +2853,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6397.9243164062,
                 ["x"] = -3287.5322265625,
             },
@@ -2870,7 +2870,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6397.9243164062,
                 ["x"] = -3287.5322265625,
             },
@@ -2887,7 +2887,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6534.99609375,
                 ["x"] = -3332.0173339844,
             },
@@ -2899,7 +2899,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6464.109375,
                 ["x"] = -3304.62109375,
             },
@@ -2914,7 +2914,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 64872,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6394.126953125,
                 ["x"] = -3304.3500976562,
             },
@@ -2924,7 +2924,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65615,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6396.658203125,
                 ["x"] = -3295.94140625,
             },
@@ -2932,7 +2932,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 40
             ["SetHS"] = 64873,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6406.78515625,
                 ["x"] = -3277.767578125,
             },
@@ -2941,7 +2941,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 64873,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6402.083984375,
                 ["x"] = -3308.1474609375,
             },
@@ -2952,7 +2952,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6463.748046875,
                 ["x"] = -3313.3012695312,
             },
@@ -2968,7 +2968,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6463.748046875,
                 ["x"] = -3313.3012695312,
             },
@@ -2984,7 +2984,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6687.2573242188,
                 ["x"] = -3470.6259765625,
             },
@@ -2994,7 +2994,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65909,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6884.9072265625,
                 ["x"] = -3242.5048828125,
             },
@@ -3010,7 +3010,7 @@ if (APR.Faction == "Alliance") then
                     ["4"] = "4",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6634.4541015625,
                 ["x"] = -3223.517578125,
             },
@@ -3026,7 +3026,7 @@ if (APR.Faction == "Alliance") then
                     ["5"] = "5",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6609.6796875,
                 ["x"] = -3038.25390625,
             },
@@ -3042,7 +3042,7 @@ if (APR.Faction == "Alliance") then
                     ["6"] = "6",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6463.9287109375,
                 ["x"] = -3312.7587890625,
             },
@@ -3058,7 +3058,7 @@ if (APR.Faction == "Alliance") then
                     ["7"] = "7",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6862.6655273438,
                 ["x"] = -3531.6574707031,
             },
@@ -3072,7 +3072,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 64873,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6464.109375,
                 ["x"] = -3312.758,
             },
@@ -3081,7 +3081,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65036,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6464.109375,
                 ["x"] = -3312.7587890625,
             },
@@ -3096,7 +3096,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6464.109,
                 ["x"] = -3312.7587890625,
             },
@@ -3110,7 +3110,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65036,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6400.275390625,
                 ["x"] = -3299.7387695312,
             },
@@ -3123,7 +3123,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65060,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6400.275390625,
                 ["x"] = -3299.7387695312,
             },
@@ -3134,7 +3134,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6917.8193359375,
                 ["x"] = -3088.9775390625,
             },
@@ -3149,7 +3149,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65060,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7220.171875,
                 ["x"] = -2610.2211914062,
             },
@@ -3163,7 +3163,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65063,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7220.171875,
                 ["x"] = -2610.2211914062,
             },
@@ -3174,7 +3174,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7236.998046875,
                 ["x"] = -2597.1850585938,
             },
@@ -3185,7 +3185,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65063,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7161.220703125,
                 ["x"] = -2644.669921875,
             },
@@ -3194,7 +3194,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65073,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7161.220703125,
                 ["x"] = -2644.669921875,
             },
@@ -3203,7 +3203,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65074,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7162.6669921875,
                 ["x"] = -2648.4675292969,
             },
@@ -3214,7 +3214,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7062.84765625,
                 ["x"] = -3055.0712890625,
             },
@@ -3228,7 +3228,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7057.96484375,
                 ["x"] = -2949.826171875,
             },
@@ -3236,7 +3236,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 64
             ["Waypoint"] = 65074,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7190.877441406,
                 ["x"] = -2658.5036621094,
             },
@@ -3250,7 +3250,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65074,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7162.486328125,
                 ["x"] = -2648.7387695312,
             },
@@ -3259,7 +3259,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65073,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7161.220703,
                 ["x"] = -2644.398926,
             },
@@ -3268,7 +3268,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65307,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7161.220703,
                 ["x"] = -2644.398926,
             },
@@ -3279,7 +3279,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7260.4975585938,
                 ["x"] = -2775.4125976562,
             },
@@ -3295,7 +3295,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7260.4975585938,
                 ["x"] = -2775.4125976562,
             },
@@ -3306,7 +3306,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 70
             ["Waypoint"] = 65307,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7185.271484375,
                 ["x"] = -2799.0112304688,
             },
@@ -3318,7 +3318,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 71
             ["Waypoint"] = 65307,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7170.8046875,
                 ["x"] = -2802.2661132812,
             },
@@ -3330,7 +3330,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 72
             ["Waypoint"] = 65307,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7105.5244140625,
                 ["x"] = -2751.8137207031,
             },
@@ -3342,7 +3342,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 73
             ["Waypoint"] = 65307,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7104.6201171875,
                 ["x"] = -2693.7661132812,
             },
@@ -3354,7 +3354,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 74
             ["Waypoint"] = 65307,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7174.2407226562,
                 ["x"] = -2690.240234375,
             },
@@ -3366,7 +3366,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7191.419921875,
                 ["x"] = -2659.0463867188,
             },
@@ -3375,7 +3375,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65307,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7160.8588867188,
                 ["x"] = -2644.1274414062,
             },
@@ -3384,7 +3384,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66324,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7160.8588867188,
                 ["x"] = -2644.1274414062,
             },
@@ -3395,7 +3395,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7258.6987304688,
                 ["x"] = -2533.205078125,
             },
@@ -3411,7 +3411,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7349.6083984375,
                 ["x"] = -2438.0048828125,
             },
@@ -3428,7 +3428,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7326.6005859375,
                 ["x"] = -2420.7150878906,
             },
@@ -3445,7 +3445,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7297.9931640625,
                 ["x"] = -2365.3100585938,
             },
@@ -3458,7 +3458,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 82
             ["Waypoint"] = 66324,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7310.103515625,
                 ["x"] = -2397.08984375,
             },
@@ -3473,7 +3473,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7337.89453125,
                 ["x"] = -2389.6000976562,
             },
@@ -3486,7 +3486,7 @@ if (APR.Faction == "Alliance") then
         },
         { -- Step 84
             ["Waypoint"] = 66324,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7321.607421875,
                 ["x"] = -2413.6101074219,
             },
@@ -3497,7 +3497,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66324,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7161.220703125,
                 ["x"] = -2644.3989257812,
             },
@@ -3506,14 +3506,14 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65075,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7161.220703125,
                 ["x"] = -2644.3989257812,
             },
         },
         { -- Step 87
             ["Waypoint"] = 65075,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 7151.8173828125,
                 ["x"] = -2653.3500976562,
             },
@@ -3523,7 +3523,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65075,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6400.0947265625,
                 ["x"] = -3300.0102539062,
             },
@@ -3532,7 +3532,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65045,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6400.0947265625,
                 ["x"] = -3300.0102539062,
             },
@@ -3541,7 +3541,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 72263,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6397.0205078125,
                 ["x"] = -3329.0336914062,
             },
@@ -3550,7 +3550,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65045,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6342.58984375,
                 ["x"] = -4010.4135742188,
             },
@@ -3564,7 +3564,7 @@ if (APR.Faction == "Alliance") then
                 65049,
                 65050,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6342.58984375,
                 ["x"] = -4010.4135742188,
             },
@@ -3573,7 +3573,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65046,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6337.8876953125,
                 ["x"] = -4008.5148925781,
             },
@@ -3584,7 +3584,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6417.6352539062,
                 ["x"] = -4049.4736328125,
             },
@@ -3597,7 +3597,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6520.3486328125,
                 ["x"] = -4051.1010742188,
             },
@@ -3610,7 +3610,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6304.2529296875,
                 ["x"] = -4222.53125,
             },
@@ -3627,7 +3627,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6316.0068359375,
                 ["x"] = -4093.4162597656,
             },
@@ -3640,7 +3640,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6479.2993164062,
                 ["x"] = -4131.9340820312,
             },
@@ -3652,7 +3652,7 @@ if (APR.Faction == "Alliance") then
                 65049,
                 65050,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6384.1811523438,
                 ["x"] = -4254.267578125,
             },
@@ -3661,7 +3661,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65052,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6384.1811523438,
                 ["x"] = -4254.267578125,
             },
@@ -3672,7 +3672,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6478.9375,
                 ["x"] = -4305.8046875,
             },
@@ -3683,7 +3683,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65052,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6530.4750976562,
                 ["x"] = -4303.0927734375,
             },
@@ -3692,7 +3692,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65057,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6530.4750976562,
                 ["x"] = -4303.0927734375,
             },
@@ -3702,7 +3702,7 @@ if (APR.Faction == "Alliance") then
             ["Button"] = {
                 ["22345678-1"] = 6948,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6400.0947265625,
                 ["x"] = -3299.4672851562,
             },
@@ -3711,7 +3711,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65057,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6400.0947265625,
                 ["x"] = -3299.4672851562,
             },
@@ -3720,7 +3720,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65701,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6463.0244140625,
                 ["x"] = -3316.013671875,
             },
@@ -3731,7 +3731,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6463.0244140625,
                 ["x"] = -3316.013671875,
             },
@@ -3742,7 +3742,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65701,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6463.0244140625,
                 ["x"] = 3316.013671875,
             },
@@ -3751,7 +3751,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65084,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6463.0244140625,
                 ["x"] = 3316.013671875,
             },
@@ -3760,7 +3760,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65084,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6996.662109375,
                 ["x"] = -3638.5297851562,
             },
@@ -3773,7 +3773,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65087,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6996.662109375,
                 ["x"] = -3638.5297851562,
             },
@@ -3784,7 +3784,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6934.0942382812,
                 ["x"] = -3578.8549804688,
             },
@@ -3795,7 +3795,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65087,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6986.3549804688,
                 ["x"] = -3628.4936523438,
             },
@@ -3804,7 +3804,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65097,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6921.6171875,
                 ["x"] = -3567.4624023438,
             },
@@ -3816,7 +3816,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6863.931640625,
                 ["x"] = -3375.4174804688,
             },
@@ -3830,7 +3830,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6878.9404296875,
                 ["x"] = -3395.21875,
             },
@@ -3842,7 +3842,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6866.462890625,
                 ["x"] = -3377.31640625,
             },
@@ -3854,7 +3854,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65087,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6864.8354492188,
                 ["x"] = -3375.9599609375,
             },
@@ -3863,7 +3863,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65098,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6864.8354492188,
                 ["x"] = -3375.9599609375,
             },
@@ -3874,7 +3874,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6778.2163085938,
                 ["x"] = -3346.6650390625,
             },
@@ -3887,7 +3887,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6814.3828125,
                 ["x"] = -3272.3427734375,
             },
@@ -3901,7 +3901,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65098,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6701.181640625,
                 ["x"] = -3230.5698242188,
             },
@@ -3910,7 +3910,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65100,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6701.181640625,
                 ["x"] = -3230.5698242188,
             },
@@ -3921,14 +3921,14 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6539.8784179688,
                 ["x"] = -3233.5537109375,
             },
         },
         { -- Step 125
             ["Waypoint"] = 65100,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6427.9428710938,
                 ["x"] = -3265.8325195312,
             },
@@ -3940,7 +3940,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6427.0385742188,
                 ["x"] = -3281.8361816406,
             },
@@ -3952,7 +3952,7 @@ if (APR.Faction == "Alliance") then
                     ["4"] = "4",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6527.0390625,
                 ["x"] = -3279.1240234375,
             },
@@ -3965,7 +3965,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6495.7548828125,
                 ["x"] = -3376.5024414062,
             },
@@ -3976,7 +3976,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65100,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 6508.775390625,
                 ["x"] = -3310.8601074219,
             },
@@ -3985,7 +3985,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65286,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -9089.4833984375,
                 ["x"] = 415.72698974609,
             },
@@ -3995,7 +3995,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65286,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -9093.880859375,
                 ["x"] = 415.72698974609,
             },
@@ -4005,7 +4005,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66513,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -9093.880859375,
                 ["x"] = 415.72698974609,
             },
@@ -4017,7 +4017,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8895.279296875,
                 ["x"] = 634.72015380859,
             },
@@ -4030,7 +4030,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8833.1923828125,
                 ["x"] = 652.61645507812,
             },
@@ -4043,7 +4043,7 @@ if (APR.Faction == "Alliance") then
                     ["4"] = "4",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -9004.857421875,
                 ["x"] = 870.67279052734,
             },
@@ -4056,7 +4056,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8156.03125,
                 ["x"] = 812.64025878906,
             },
@@ -4067,7 +4067,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66513,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8307.6572265625,
                 ["x"] = 334.13244628906,
             },
@@ -4077,7 +4077,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 66577,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8309.1630859375,
                 ["x"] = 335.69622802734,
             },
@@ -4087,7 +4087,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 66577,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8309.1630859375,
                 ["x"] = 335.69622802734,
             },
@@ -4097,7 +4097,7 @@ if (APR.Faction == "Alliance") then
             ["PickUp"] = {
                 65101,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8309.1630859375,
                 ["x"] = 335.69622802734,
             },
@@ -4109,7 +4109,7 @@ if (APR.Faction == "Alliance") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8309.1630859375,
                 ["x"] = 335.69622802734,
             },
@@ -4122,7 +4122,7 @@ if (APR.Faction == "Alliance") then
                     ["2"] = "2",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8273.138671875,
                 ["x"] = 287.56744384766,
             },
@@ -4136,7 +4136,7 @@ if (APR.Faction == "Alliance") then
                     ["3"] = "3",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8273.138671875,
                 ["x"] = 287.56744384766,
             },
@@ -4148,7 +4148,7 @@ if (APR.Faction == "Alliance") then
             ["Done"] = {
                 65101,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8273.486328125,
                 ["x"] = 288.08868408203,
             },

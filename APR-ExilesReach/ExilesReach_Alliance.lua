@@ -5,7 +5,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     56775,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 6680.1,
                     ["x"] = -4828.4,
                 },
@@ -19,14 +19,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 5.65,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 6694.2,
                     ["x"] = -4740.5,
                 },
             },
             {
                 ["NoArrows"] = 1,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 6711,
                     ["x"] = -4558.5,
                 },
@@ -39,7 +39,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     58209,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 6725.8,
                     ["x"] = -4449,
                 },
@@ -53,14 +53,14 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 157051,
                 ["Range"] = 2.85,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 6732.3,
                     ["x"] = -4357.8,
                 },
             },
             {
                 ["NoArrows"] = 1,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 6759,
                     ["x"] = -4103,
                 },
@@ -73,14 +73,14 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     58208,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 6763,
                     ["x"] = -4028.5,
                 },
             },
             {
                 ["NoArrows"] = 1,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 6777.3,
                     ["x"] = -3868.5,
                 },
@@ -93,7 +93,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55122,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -434.7,
                     ["x"] = -2610.5,
                 },
@@ -105,13 +105,13 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 24.31,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -359.8,
                     ["x"] = -2563.2,
                 },
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -434.7,
                     ["x"] = -2610.4,
                 },
@@ -123,7 +123,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     54951,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -434.7,
                     ["x"] = -2610.4,
                 },
@@ -139,7 +139,7 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 156612,
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -447.9,
                     ["x"] = -2605.5,
                 },
@@ -155,7 +155,7 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 156610,
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -428.7,
                     ["x"] = -2593.7,
                 },
@@ -171,13 +171,13 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 156609,
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -420.4,
                     ["x"] = -2599.5,
                 },
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -434.4,
                     ["x"] = -2610.4,
                 },
@@ -189,7 +189,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     54952,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -434.4,
                     ["x"] = -2610.4,
                 },
@@ -201,13 +201,13 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -273.9,
                     ["x"] = -2493,
                 },
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -245.2,
                     ["x"] = -2491.5,
                 },
@@ -219,7 +219,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55174,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -249.2,
                     ["x"] = -2492,
                 },
@@ -231,7 +231,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 38.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -182.4,
                     ["x"] = -2498.7,
                 },
@@ -243,13 +243,13 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -247.4,
                     ["x"] = -2490.5,
                 },
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -244.7,
                     ["x"] = -2491.7,
                 },
@@ -263,7 +263,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59254,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -247.7,
                     ["x"] = -2492.7,
                 },
@@ -276,14 +276,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -211,
                     ["x"] = -2522,
                 },
                 ["Class"] = "DRUID"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -248.9,
                     ["x"] = -2491.5,
                 },
@@ -297,14 +297,14 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55173,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -245,
                     ["x"] = -2491.5,
                 },
                 ["Class"] = "HUNTER"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -141,
                     ["x"] = -2638.9,
                 },
@@ -317,7 +317,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59342,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -141,
                     ["x"] = -2638.9,
                 },
@@ -330,14 +330,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 64.18,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -170,
                     ["x"] = -2574.5,
                 },
                 ["Class"] = "HUNTER"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -140.7,
                     ["x"] = -2638.9,
                 },
@@ -351,7 +351,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59254,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -247.7,
                     ["x"] = -2492.7,
                 },
@@ -364,14 +364,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -196.7,
                     ["x"] = -2464.7,
                 },
                 ["Class"] = "MAGE"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -248.9,
                     ["x"] = -2491.5,
                 },
@@ -385,7 +385,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59339,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -248,
                     ["x"] = -2492.4,
                 },
@@ -400,14 +400,14 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 164577,
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -194,
                     ["x"] = -2481.4,
                 },
                 ["Class"] = "MONK"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -249.2,
                     ["x"] = -2492,
                 },
@@ -421,7 +421,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59254,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -247.7,
                     ["x"] = -2492.7,
                 },
@@ -434,14 +434,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -211,
                     ["x"] = -2522,
                 },
                 ["Class"] = "PALADIN"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -248.9,
                     ["x"] = -2491.5,
                 },
@@ -455,7 +455,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59254,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -247.7,
                     ["x"] = -2492.7,
                 },
@@ -468,14 +468,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -221.5,
                     ["x"] = -2478.7,
                 },
                 ["Class"] = "PRIEST"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -248.9,
                     ["x"] = -2491.5,
                 },
@@ -489,7 +489,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59254,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -247.7,
                     ["x"] = -2492.7,
                 },
@@ -502,14 +502,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -224.2,
                     ["x"] = -2524,
                 },
                 ["Class"] = "ROGUE"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -248.9,
                     ["x"] = -2491.5,
                 },
@@ -522,14 +522,14 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55173,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -245,
                     ["x"] = -2491.5,
                 },
                 ["Class"] = "ROGUE"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -141,
                     ["x"] = -2638.9,
                 },
@@ -543,7 +543,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59254,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -247.7,
                     ["x"] = -2492.7,
                 },
@@ -556,14 +556,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -207.2,
                     ["x"] = -2471.9,
                 },
                 ["Class"] = "SHAMAN"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -248.9,
                     ["x"] = -2491.5,
                 },
@@ -577,7 +577,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59254,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -247.7,
                     ["x"] = -2492.7,
                 },
@@ -590,14 +590,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -221.5,
                     ["x"] = -2478.7,
                 },
                 ["Class"] = "WARLOCK"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -248.9,
                     ["x"] = -2491.5,
                 },
@@ -611,7 +611,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59254,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -247.7,
                     ["x"] = -2492.7,
                 },
@@ -624,14 +624,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -196.7,
                     ["x"] = -2464.7,
                 },
                 ["Class"] = "WARRIOR"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -248.9,
                     ["x"] = -2491.5,
                 },
@@ -645,13 +645,13 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55173,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -245,
                     ["x"] = -2491.5,
                 },
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -141,
                     ["x"] = -2638.9,
                 },
@@ -664,7 +664,7 @@ if (APR.Faction == "Alliance") then
                     55186,
                     55184,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -140.7,
                     ["x"] = -2638.9,
                 },
@@ -677,7 +677,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 15.15,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -77,
                     ["x"] = -2641.2,
                 },
@@ -690,7 +690,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 10.87,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 45.1,
                     ["x"] = -2577.2,
                 },
@@ -708,7 +708,7 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 151091,
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 15.6,
                     ["x"] = -2512.5,
                 },
@@ -720,7 +720,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 19.19,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 43.1,
                     ["x"] = -2559.2,
                 },
@@ -728,13 +728,13 @@ if (APR.Faction == "Alliance") then
             {
                 ["Range"] = 15.09,
                 ["Waypoint"] = 55186,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 49.1,
                     ["x"] = -2496.7,
                 },
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 100.7,
                     ["x"] = -2419.4,
                 },
@@ -747,7 +747,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55193,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 101.4,
                     ["x"] = -2417.5,
                 },
@@ -760,13 +760,13 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 156518,
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 108.3,
                     ["x"] = -2413.5,
                 },
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 101.7,
                     ["x"] = -2417.7,
                 },
@@ -778,7 +778,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     56034,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 101.7,
                     ["x"] = -2417.7,
                 },
@@ -793,7 +793,7 @@ if (APR.Faction == "Alliance") then
                     ["56034-1"] = 170557,
                 },
                 ["Range"] = 29.47,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 118.8,
                     ["x"] = -2440.4,
                 },
@@ -802,7 +802,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     56034,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 103.3,
                     ["x"] = -2420.4,
                 },
@@ -811,7 +811,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55879,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 103.3,
                     ["x"] = -2420.4,
                 },
@@ -823,7 +823,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 115.3,
                     ["x"] = -2428.2,
                 },
@@ -835,7 +835,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 33.81,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 212.6,
                     ["x"] = -2300.7,
                 },
@@ -848,7 +848,7 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 162817,
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 244.1,
                     ["x"] = -2245.5,
                 },
@@ -857,7 +857,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     55879,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 231.5,
                     ["x"] = -2296.4,
                 },
@@ -865,7 +865,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Waypoint"] = 55194,
                 ["Range"] = 3.3,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 231.8,
                     ["x"] = -2279.7,
                 },
@@ -874,7 +874,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55194,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 187,
                     ["x"] = -2288,
                 },
@@ -888,7 +888,7 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 156800,
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 187.3,
                     ["x"] = -2284.2,
                 },
@@ -897,7 +897,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     55194,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 187.1,
                     ["x"] = -2288.4,
                 },
@@ -906,7 +906,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55965,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 192.3,
                     ["x"] = -2310.5,
                 },
@@ -915,7 +915,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55196,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 254.1,
                     ["x"] = -2327.7,
                 },
@@ -924,7 +924,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     55196,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 392.6,
                     ["x"] = -2439.7,
                 },
@@ -935,7 +935,7 @@ if (APR.Faction == "Alliance") then
                     55881,
                     55764,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 391.8,
                     ["x"] = -2441.4,
                 },
@@ -951,7 +951,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 8.77,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 492.1,
                     ["x"] = -2423.9,
                 },
@@ -973,7 +973,7 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 153211,
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 496.1,
                     ["x"] = -2353.5,
                 },
@@ -989,7 +989,7 @@ if (APR.Faction == "Alliance") then
                 },
                 ["Gossip"] = 1,
                 ["Range"] = 54.1,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 496.1,
                     ["x"] = -2507.5,
                 },
@@ -1000,7 +1000,7 @@ if (APR.Faction == "Alliance") then
                     55764,
                     55881,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 392.3,
                     ["x"] = -2441.5,
                 },
@@ -1009,7 +1009,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55882,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 392.7,
                     ["x"] = -2439.7,
                 },
@@ -1018,7 +1018,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     54933,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 302.3,
                     ["x"] = -2485.7,
                 },
@@ -1030,7 +1030,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 313.8,
                     ["x"] = -2460.5,
                 },
@@ -1042,7 +1042,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 325.3,
                     ["x"] = -2495.4,
                 },
@@ -1054,7 +1054,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 291.6,
                     ["x"] = -2513.2,
                 },
@@ -1066,7 +1066,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 280,
                     ["x"] = -2473.5,
                 },
@@ -1075,7 +1075,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     54933,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 302.2,
                     ["x"] = -2484.7,
                 },
@@ -1084,7 +1084,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     55882,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 186.9,
                     ["x"] = -2288.7,
                 },
@@ -1096,7 +1096,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59355,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 188.1,
                     ["x"] = -2290.9,
                 },
@@ -1111,7 +1111,7 @@ if (APR.Faction == "Alliance") then
                 ["Gossip"] = 1,
                 ["RaidIcon"] = 156886,
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 183.8,
                     ["x"] = -2285.5,
                 },
@@ -1124,7 +1124,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 237.8,
                     ["x"] = -2283.9,
                 },
@@ -1137,7 +1137,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 270,
                     ["x"] = -2270.7,
                 },
@@ -1147,7 +1147,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     59355,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 187.8,
                     ["x"] = -2290.5,
                 },
@@ -1157,7 +1157,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59356,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 187.8,
                     ["x"] = -2290.5,
                 },
@@ -1170,7 +1170,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 18.66,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 228.8,
                     ["x"] = -2273,
                 },
@@ -1180,7 +1180,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     59356,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 188.6,
                     ["x"] = -2290,
                 },
@@ -1190,7 +1190,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     60168,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 188.6,
                     ["x"] = -2290,
                 },
@@ -1203,7 +1203,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 189.4,
                     ["x"] = -2289.2,
                 },
@@ -1218,7 +1218,7 @@ if (APR.Faction == "Alliance") then
                 ["Gossip"] = 2,
                 ["RaidIcon"] = 161666,
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 188.6,
                     ["x"] = -2290.7,
                 },
@@ -1232,7 +1232,7 @@ if (APR.Faction == "Alliance") then
                 },
                 ["Gossip"] = 1,
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 188.8,
                     ["x"] = -2290,
                 },
@@ -1242,7 +1242,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     60168,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 188.8,
                     ["x"] = -2290,
                 },
@@ -1253,7 +1253,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59352,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 183.5,
                     ["x"] = -2285.7,
                 },
@@ -1266,14 +1266,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 310.3,
                     ["x"] = -2274.7,
                 },
                 ["Class"] = "MAGE"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 182.9,
                     ["x"] = -2286.2,
                 },
@@ -1286,7 +1286,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59354,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 184.1,
                     ["x"] = -2286.2,
                 },
@@ -1300,7 +1300,7 @@ if (APR.Faction == "Alliance") then
                 },
                 ["Gossip"] = 1,
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 184.1,
                     ["x"] = -2286.2,
                 },
@@ -1313,14 +1313,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 178.9,
                     ["x"] = -2332.2,
                 },
                 ["Class"] = "MAGE"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 183.8,
                     ["x"] = -2286,
                 },
@@ -1334,7 +1334,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59347,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 179.6,
                     ["x"] = -2281.2,
                 },
@@ -1349,14 +1349,14 @@ if (APR.Faction == "Alliance") then
                 ["Gossip"] = 1,
                 ["RaidIcon"] = 164835,
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 317.5,
                     ["x"] = -2297.5,
                 },
                 ["Class"] = "MONK"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 318.3,
                     ["x"] = -2298.5,
                 },
@@ -1369,7 +1369,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59349,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 318.3,
                     ["x"] = -2298.5,
                 },
@@ -1383,14 +1383,14 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 164868,
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 309,
                     ["x"] = -2325.7,
                 },
                 ["Class"] = "MONK"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 186.6,
                     ["x"] = -2288.7,
                 },
@@ -1404,7 +1404,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     58923,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 187.6,
                     ["x"] = -2279,
                 },
@@ -1413,7 +1413,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Range"] = 12.06,
                 ["Waypoint"] = 58923,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 347.5,
                     ["x"] = -2398.5,
                 },
@@ -1422,7 +1422,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Range"] = 8.18,
                 ["Waypoint"] = 58923,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 313.5,
                     ["x"] = -2444.2,
                 },
@@ -1437,14 +1437,14 @@ if (APR.Faction == "Alliance") then
                 ["Gossip"] = 1,
                 ["RaidIcon"] = 162998,
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 257.5,
                     ["x"] = -2464.7,
                 },
                 ["Class"] = "PALADIN"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 257.5,
                     ["x"] = -2464.7,
                 },
@@ -1457,7 +1457,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     58946,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 257.5,
                     ["x"] = -2464.7,
                 },
@@ -1470,7 +1470,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 258.5,
                     ["x"] = -2463.7,
                 },
@@ -1483,14 +1483,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 246.6,
                     ["x"] = -2450,
                 },
                 ["Class"] = "PALADIN"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 256.6,
                     ["x"] = -2464.5,
                 },
@@ -1504,7 +1504,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     58953,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 187.8,
                     ["x"] = -2279.5,
                 },
@@ -1517,14 +1517,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 221.9,
                     ["x"] = -2415.2,
                 },
                 ["Class"] = "PRIEST"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 221.9,
                     ["x"] = -2415.2,
                 },
@@ -1537,7 +1537,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     58960,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 221.9,
                     ["x"] = -2415.2,
                 },
@@ -1550,14 +1550,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 5.28,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 228.1,
                     ["x"] = -2419.7,
                 },
                 ["Class"] = "PRIEST"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 223.4,
                     ["x"] = -2415.5,
                 },
@@ -1571,7 +1571,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     58917,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 187.9,
                     ["x"] = -2279.4,
                 },
@@ -1586,7 +1586,7 @@ if (APR.Faction == "Alliance") then
                 ["Gossip"] = 1,
                 ["RaidIcon"] = 162972,
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 168.9,
                     ["x"] = -2061.7,
                 },
@@ -1599,14 +1599,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 9.76,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 185,
                     ["x"] = -2038.6,
                 },
                 ["Class"] = "ROGUE"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 168.6,
                     ["x"] = -2061.5,
                 },
@@ -1619,7 +1619,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     58933,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 168.6,
                     ["x"] = -2061.5,
                 },
@@ -1632,7 +1632,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 175.5,
                     ["x"] = -2063.5,
                 },
@@ -1646,14 +1646,14 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 163036,
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 270.7,
                     ["x"] = -2159.2,
                 },
                 ["Class"] = "ROGUE"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 187.4,
                     ["x"] = -2279.7,
                 },
@@ -1667,7 +1667,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59002,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 179.6,
                     ["x"] = -2286.7,
                 },
@@ -1680,7 +1680,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 10.81,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 276.1,
                     ["x"] = -2288.9,
                 },
@@ -1693,7 +1693,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 180.9,
                     ["x"] = -2284,
                 },
@@ -1706,14 +1706,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 23.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 148,
                     ["x"] = -2352.7,
                 },
                 ["Class"] = "SHAMAN"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 179.8,
                     ["x"] = -2286.9,
                 },
@@ -1727,7 +1727,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     58962,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 187.6,
                     ["x"] = -2279.2,
                 },
@@ -1736,7 +1736,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Range"] = 11.53,
                 ["Waypoint"] = 58962,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 354.6,
                     ["x"] = -2344.5,
                 },
@@ -1751,7 +1751,7 @@ if (APR.Faction == "Alliance") then
                 ["Gossip"] = 1,
                 ["RaidIcon"] = 163209,
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 398.8,
                     ["x"] = -2295.2,
                 },
@@ -1764,7 +1764,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 399.8,
                     ["x"] = -2296.7,
                 },
@@ -1780,14 +1780,14 @@ if (APR.Faction == "Alliance") then
                     ["58962-3"] = 174947,
                 },
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 399.8,
                     ["x"] = -2296.7,
                 },
                 ["Class"] = "WARLOCK"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 409.5,
                     ["x"] = -2297.2,
                 },
@@ -1801,7 +1801,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     58914,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 188.1,
                     ["x"] = -2279.4,
                 },
@@ -1810,7 +1810,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Range"] = 20.09,
                 ["Waypoint"] = 58914,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 272.8,
                     ["x"] = -2331.5,
                 },
@@ -1819,14 +1819,14 @@ if (APR.Faction == "Alliance") then
             {
                 ["Range"] = 10.6,
                 ["Waypoint"] = 58914,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 352.8,
                     ["x"] = -2346.9,
                 },
                 ["Class"] = "WARRIOR"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 355.8,
                     ["x"] = -2257.4,
                 },
@@ -1839,7 +1839,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     58915,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 355.8,
                     ["x"] = -2257.4,
                 },
@@ -1853,14 +1853,14 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 162948,
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 355.8,
                     ["x"] = -2257.4,
                 },
                 ["Class"] = "WARRIOR"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 187.8,
                     ["x"] = -2279.5,
                 },
@@ -1874,7 +1874,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     55965,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 90.3,
                     ["x"] = -2248.9,
                 },
@@ -1883,7 +1883,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55639,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 92.5,
                     ["x"] = -2246.5,
                 },
@@ -1895,7 +1895,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 70.21,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 71,
                     ["x"] = -2240,
                 },
@@ -1903,7 +1903,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Waypoint"] = 55639,
                 ["Range"] = 7.92,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 83.3,
                     ["x"] = -2214.2,
                 },
@@ -1916,7 +1916,7 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 156900,
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 72.5,
                     ["x"] = -2127.5,
                 },
@@ -1928,7 +1928,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 75.3,
                     ["x"] = -2134.5,
                 },
@@ -1937,7 +1937,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     55639,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 186,
                     ["x"] = -2288.7,
                 },
@@ -1947,7 +1947,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     59350,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 184,
                     ["x"] = -2287.7,
                 },
@@ -1960,14 +1960,14 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 323.1,
                     ["x"] = -2053,
                 },
                 ["Class"] = "DRUID"
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 324,
                     ["x"] = -2056.2,
                 },
@@ -1981,7 +1981,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     56344,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 186,
                     ["x"] = -2288.7,
                 },
@@ -1990,7 +1990,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     56839,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 211.5,
                     ["x"] = -2168,
                 },
@@ -2003,7 +2003,7 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 153266,
                 ["Range"] = 0.61,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 205.1,
                     ["x"] = -2058.4,
                 },
@@ -2012,7 +2012,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     56839,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 280.8,
                     ["x"] = -1986.5,
                 },
@@ -2020,7 +2020,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Waypoint"] = 56344,
                 ["Range"] = 17.88,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 217.4,
                     ["x"] = -2060.4,
                 },
@@ -2028,7 +2028,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Waypoint"] = 56344,
                 ["Range"] = 20.92,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 219.6,
                     ["x"] = -2128,
                 },
@@ -2037,7 +2037,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     56344,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 323.5,
                     ["x"] = -2174.7,
                 },
@@ -2046,7 +2046,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55981,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 323.5,
                     ["x"] = -2174.7,
                 },
@@ -2060,7 +2060,7 @@ if (APR.Faction == "Alliance") then
                 ["Gossip"] = 1,
                 ["RaidIcon"] = 156943,
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 324.6,
                     ["x"] = -2176.5,
                 },
@@ -2072,7 +2072,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 457.3,
                     ["x"] = -2044.8,
                 },
@@ -2084,7 +2084,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 575.4,
                     ["x"] = -2063,
                 },
@@ -2096,7 +2096,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 586.4,
                     ["x"] = -2062.5,
                 },
@@ -2104,7 +2104,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Waypoint"] = 55981,
                 ["Range"] = 11.9,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 619,
                     ["x"] = -2076.2,
                 },
@@ -2113,7 +2113,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     55981,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 704.2,
                     ["x"] = -1876.8,
                 },
@@ -2124,7 +2124,7 @@ if (APR.Faction == "Alliance") then
                     55990,
                     55989,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 703.9,
                     ["x"] = -1877.6,
                 },
@@ -2132,7 +2132,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Range"] = 27.27,
                 ["Waypoint"] = 55990,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 616.5,
                     ["x"] = -2012.4,
                 },
@@ -2145,7 +2145,7 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 153582,
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 592.5,
                     ["x"] = -2009.4,
                 },
@@ -2166,7 +2166,7 @@ if (APR.Faction == "Alliance") then
                 },
                 ["RaidIcon"] = 153583,
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 659.4,
                     ["x"] = -2127,
                 },
@@ -2186,7 +2186,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 511.7,
                     ["x"] = -1965,
                 },
@@ -2203,7 +2203,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 59.07,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 505.7,
                     ["x"] = -2039.5,
                 },
@@ -2215,13 +2215,13 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 49.21,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 608.9,
                     ["x"] = -2085.2,
                 },
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 704.2,
                     ["x"] = -1879.3,
                 },
@@ -2237,13 +2237,13 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 5.99,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 708.9,
                     ["x"] = -1869.5,
                 },
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 709,
                     ["x"] = -1869,
                 },
@@ -2255,7 +2255,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55992,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 709,
                     ["x"] = -1869,
                 },
@@ -2267,13 +2267,13 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.69,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 709,
                     ["x"] = -1869,
                 },
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 713.5,
                     ["x"] = -1858.5,
                 },
@@ -2285,7 +2285,7 @@ if (APR.Faction == "Alliance") then
                 ["PickUp"] = {
                     55991,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 713.5,
                     ["x"] = -1858.5,
                 },
@@ -2297,7 +2297,7 @@ if (APR.Faction == "Alliance") then
                     },
                 },
                 ["Range"] = 0.75,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = 698.6,
                     ["x"] = -1882.6,
                 },
@@ -2306,14 +2306,14 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     55991,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -9055,
                     ["x"] = 442,
                 },
             },
             {
                 ["ExitTutorial"] = 62567,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -9055,
                     ["x"] = 442,
                 },
@@ -2323,13 +2323,13 @@ if (APR.Faction == "Alliance") then
             {
                 ["Range"] = 6.45,
                 ["Waypoint"] = 34398,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -8843,
                     ["x"] = 610.4,
                 },
             },
             {
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -8867.5,
                     ["x"] = 673.2,
                 },
@@ -2341,7 +2341,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Range"] = 6.45,
                 ["Waypoint"] = 34398,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -8769.9,
                     ["x"] = 606.3,
                 },
@@ -2349,7 +2349,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Range"] = 6.45,
                 ["Waypoint"] = 34398,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -8745.7,
                     ["x"] = 557.5,
                 },
@@ -2357,7 +2357,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Range"] = 6.45,
                 ["Waypoint"] = 34398,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -8610.4,
                     ["x"] = 516.1,
                 },
@@ -2365,7 +2365,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Range"] = 6.45,
                 ["Waypoint"] = 34398,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -8541.5,
                     ["x"] = 503,
                 },
@@ -2373,7 +2373,7 @@ if (APR.Faction == "Alliance") then
             {
                 ["Range"] = 6.45,
                 ["Waypoint"] = 34398,
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -8333.8,
                     ["x"] = 648,
                 },
@@ -2382,7 +2382,7 @@ if (APR.Faction == "Alliance") then
                 ["Done"] = {
                     62567,
                 },
-                ["TT"] = {
+                ["Coord"] = {
                     ["y"] = -8196.3,
                     ["x"] = 745.9,
                 },

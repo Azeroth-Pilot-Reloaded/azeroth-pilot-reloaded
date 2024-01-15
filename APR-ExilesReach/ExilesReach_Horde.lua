@@ -4,7 +4,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59926,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -10762,
                 ["x"] = -1546.8,
             },
@@ -18,13 +18,13 @@ if (APR.Faction == "Horde") then
             },
             ["NoArrows"] = 1,
             ["Range"] = 10.08,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -10731.5,
                 ["x"] = -1400.5,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -10338.5,
                 ["x"] = 1675,
             },
@@ -37,7 +37,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59927,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -10312.5,
                 ["x"] = 1806,
             },
@@ -51,14 +51,14 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 166814,
             ["Range"] = 2.15,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -10308.7,
                 ["x"] = 1903.2,
             },
             ["NoArrows"] = 1,
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -10244.8,
                 ["x"] = 2102.6,
             },
@@ -72,13 +72,13 @@ if (APR.Faction == "Horde") then
                 59928,
             },
             ["NoArrows"] = 1,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -10210.3,
                 ["x"] = 2171.6,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -10143.7,
                 ["x"] = 2283.6,
             },
@@ -91,7 +91,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59929,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -434.7,
                 ["x"] = -2610.2,
             },
@@ -103,13 +103,13 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 38.11,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -365.9,
                 ["x"] = -2561.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -434.4,
                 ["x"] = -2610.2,
             },
@@ -121,7 +121,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59930,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -434.4,
                 ["x"] = -2610.2,
             },
@@ -137,7 +137,7 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 166786,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -447.5,
                 ["x"] = -2605.7,
             },
@@ -153,7 +153,7 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 166791,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -428.4,
                 ["x"] = -2593.7,
             },
@@ -169,7 +169,7 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 166796,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -420.4,
                 ["x"] = -2599.7,
             },
@@ -179,7 +179,7 @@ if (APR.Faction == "Horde") then
                 59930,
             },
             ["RaidIcon"] = 166782,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -434.8,
                 ["x"] = -2610.4,
             },
@@ -188,7 +188,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59931,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -434.8,
                 ["x"] = -2610.4,
             },
@@ -200,13 +200,13 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -247.9,
                 ["x"] = -2492.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -245.5,
                 ["x"] = -2491.2,
             },
@@ -218,7 +218,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59932,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -248.5,
                 ["x"] = -2492.5,
             },
@@ -230,7 +230,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 37.96,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -184,
                 ["x"] = -2477.5,
             },
@@ -242,13 +242,13 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -247.2,
                 ["x"] = -2490.4,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -245,
                 ["x"] = -2491.5,
             },
@@ -262,7 +262,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59933,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -249,
                 ["x"] = -2492,
             },
@@ -275,14 +275,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -235.4,
                 ["x"] = -2482.5,
             },
             ["Class"] = "DRUID"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -248.9,
                 ["x"] = -2492,
             },
@@ -296,7 +296,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59937,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -141,
                 ["x"] = -2638.9,
             },
@@ -309,14 +309,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 64.18,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -170,
                 ["x"] = -2574.5,
             },
             ["Class"] = "HUNTER"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -140.7,
                 ["x"] = -2638.9,
             },
@@ -330,7 +330,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59933,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -249,
                 ["x"] = -2492,
             },
@@ -343,14 +343,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -235.4,
                 ["x"] = -2482.5,
             },
             ["Class"] = "MAGE"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -248.9,
                 ["x"] = -2492,
             },
@@ -364,7 +364,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59934,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -248,
                 ["x"] = -2492.4,
             },
@@ -379,14 +379,14 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 164577,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -194,
                 ["x"] = -2481.4,
             },
             ["Class"] = "MONK"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -249.2,
                 ["x"] = -2492,
             },
@@ -400,7 +400,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59933,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -249,
                 ["x"] = -2492,
             },
@@ -413,14 +413,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -235.4,
                 ["x"] = -2482.5,
             },
             ["Class"] = "PALADIN"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -248.9,
                 ["x"] = -2492,
             },
@@ -434,7 +434,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59933,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -249,
                 ["x"] = -2492,
             },
@@ -447,14 +447,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -235.4,
                 ["x"] = -2482.5,
             },
             ["Class"] = "PRIEST"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -248.9,
                 ["x"] = -2492,
             },
@@ -468,7 +468,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59933,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -249,
                 ["x"] = -2492,
             },
@@ -481,14 +481,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -235.4,
                 ["x"] = -2482.5,
             },
             ["Class"] = "ROGUE"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -248.9,
                 ["x"] = -2492,
             },
@@ -502,7 +502,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59933,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -249,
                 ["x"] = -2492,
             },
@@ -515,14 +515,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -235.4,
                 ["x"] = -2482.5,
             },
             ["Class"] = "SHAMAN"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -248.9,
                 ["x"] = -2492,
             },
@@ -536,7 +536,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59933,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -249,
                 ["x"] = -2492,
             },
@@ -549,14 +549,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -235.4,
                 ["x"] = -2482.5,
             },
             ["Class"] = "WARLOCK"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -248.9,
                 ["x"] = -2492,
             },
@@ -570,7 +570,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59933,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -249,
                 ["x"] = -2492,
             },
@@ -583,14 +583,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -235.4,
                 ["x"] = -2482.5,
             },
             ["Class"] = "WARRIOR"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -248.9,
                 ["x"] = -2492,
             },
@@ -604,13 +604,13 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59935,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -245,
                 ["x"] = -2491.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -141.2,
                 ["x"] = -2638.4,
             },
@@ -623,7 +623,7 @@ if (APR.Faction == "Horde") then
                 59938,
                 59939,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -141.2,
                 ["x"] = -2638.4,
             },
@@ -636,7 +636,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 14.94,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -76.9,
                 ["x"] = -2641.2,
             },
@@ -649,7 +649,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 16.13,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 43.5,
                 ["x"] = -2578.2,
             },
@@ -667,7 +667,7 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 151091,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 16.1,
                 ["x"] = -2513,
             },
@@ -679,13 +679,13 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 65.49,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 50.5,
                 ["x"] = -2580.5,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 101,
                 ["x"] = -2419,
             },
@@ -698,7 +698,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59940,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 101.3,
                 ["x"] = -2417.9,
             },
@@ -710,13 +710,13 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 107.8,
                 ["x"] = -2412.5,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 101,
                 ["x"] = -2417.5,
             },
@@ -728,7 +728,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59941,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 101,
                 ["x"] = -2417.5,
             },
@@ -743,13 +743,13 @@ if (APR.Faction == "Horde") then
                 ["59941-1"] = 178051,
             },
             ["Range"] = 28.36,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 134.6,
                 ["x"] = -2444.4,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 103.4,
                 ["x"] = -2420.4,
             },
@@ -761,7 +761,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59942,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 101.2,
                 ["x"] = -2417.7,
             },
@@ -773,7 +773,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 108.5,
                 ["x"] = -2414.2,
             },
@@ -785,7 +785,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 170.21,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 108.5,
                 ["x"] = -2414.2,
             },
@@ -798,7 +798,7 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 162817,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 244.1,
                 ["x"] = -2243.4,
             },
@@ -808,7 +808,7 @@ if (APR.Faction == "Horde") then
                 59942,
             },
             ["RaidIcon"] = 167128,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 231.1,
                 ["x"] = -2296.2,
             },
@@ -816,7 +816,7 @@ if (APR.Faction == "Horde") then
         {
             ["Range"] = 8.65,
             ["Waypoint"] = 59950,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 231.8,
                 ["x"] = -2275.5,
             },
@@ -825,7 +825,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59950,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 186.6,
                 ["x"] = -2282.5,
             },
@@ -839,13 +839,13 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 167213,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 179.4,
                 ["x"] = -2292,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 186.4,
                 ["x"] = -2282.5,
             },
@@ -857,13 +857,13 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59943,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 257.7,
                 ["x"] = -2337,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 391.5,
                 ["x"] = -2443.2,
             },
@@ -877,7 +877,7 @@ if (APR.Faction == "Horde") then
                 59944,
                 59946,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 392.3,
                 ["x"] = -2441.7,
             },
@@ -895,7 +895,7 @@ if (APR.Faction == "Horde") then
             },
             ["Gossip"] = 1,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 496.1,
                 ["x"] = -2354.2,
             },
@@ -911,13 +911,13 @@ if (APR.Faction == "Horde") then
             },
             ["Gossip"] = 1,
             ["Range"] = 38.88,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 466.3,
                 ["x"] = -2518.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 392.3,
                 ["x"] = -2442.2,
             },
@@ -931,7 +931,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59947,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 392.7,
                 ["x"] = -2439.7,
             },
@@ -940,7 +940,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 54933,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 302.7,
                 ["x"] = -2485.5,
             },
@@ -952,7 +952,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 313.7,
                 ["x"] = -2460.4,
             },
@@ -964,7 +964,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 325.3,
                 ["x"] = -2495.5,
             },
@@ -976,7 +976,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 291.3,
                 ["x"] = -2513.2,
             },
@@ -988,13 +988,13 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 279.8,
                 ["x"] = -2473.5,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 301.8,
                 ["x"] = -2485.7,
             },
@@ -1003,7 +1003,7 @@ if (APR.Faction == "Horde") then
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 186.1,
                 ["x"] = -2282.4,
             },
@@ -1015,7 +1015,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59948,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 161.1,
                 ["x"] = -2307.2,
             },
@@ -1025,7 +1025,7 @@ if (APR.Faction == "Horde") then
                 59948,
             },
             ["RaidIcon"] = 167225,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 92.5,
                 ["x"] = -2246.4,
             },
@@ -1034,7 +1034,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59949,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 92.5,
                 ["x"] = -2246.4,
             },
@@ -1046,7 +1046,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 17.9,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 85,
                 ["x"] = -2228,
             },
@@ -1054,7 +1054,7 @@ if (APR.Faction == "Horde") then
         {
             ["Range"] = 6.36,
             ["Waypoint"] = 59949,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 82.9,
                 ["x"] = -2213.5,
             },
@@ -1067,7 +1067,7 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 156900,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 72.5,
                 ["x"] = -2126.7,
             },
@@ -1079,13 +1079,13 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 75.3,
                 ["x"] = -2134,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 186.5,
                 ["x"] = -2282.5,
             },
@@ -1099,7 +1099,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59951,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 184,
                 ["x"] = -2287.7,
             },
@@ -1112,14 +1112,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 323.1,
                 ["x"] = -2053,
             },
             ["Class"] = "DRUID"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 324,
                 ["x"] = -2056.2,
             },
@@ -1133,7 +1133,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59952,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 188.1,
                 ["x"] = -2290.9,
             },
@@ -1148,7 +1148,7 @@ if (APR.Faction == "Horde") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 156886,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 183.8,
                 ["x"] = -2285.5,
             },
@@ -1161,7 +1161,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 237.8,
                 ["x"] = -2283.9,
             },
@@ -1174,7 +1174,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 270,
                 ["x"] = -2270.7,
             },
@@ -1184,7 +1184,7 @@ if (APR.Faction == "Horde") then
             ["Done"] = {
                 59952,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 187.8,
                 ["x"] = -2290.5,
             },
@@ -1194,7 +1194,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59953,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 187.8,
                 ["x"] = -2290.5,
             },
@@ -1207,7 +1207,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 18.66,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 228.8,
                 ["x"] = -2273,
             },
@@ -1217,7 +1217,7 @@ if (APR.Faction == "Horde") then
             ["Done"] = {
                 59953,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 188.6,
                 ["x"] = -2290,
             },
@@ -1227,7 +1227,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 60162,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 188.6,
                 ["x"] = -2290,
             },
@@ -1240,7 +1240,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 189.4,
                 ["x"] = -2289.2,
             },
@@ -1255,7 +1255,7 @@ if (APR.Faction == "Horde") then
             ["Gossip"] = 2,
             ["RaidIcon"] = 161666,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 188.6,
                 ["x"] = -2290.7,
             },
@@ -1269,7 +1269,7 @@ if (APR.Faction == "Horde") then
             },
             ["Gossip"] = 1,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 188.8,
                 ["x"] = -2290,
             },
@@ -1279,7 +1279,7 @@ if (APR.Faction == "Horde") then
             ["Done"] = {
                 60162,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 188.8,
                 ["x"] = -2290,
             },
@@ -1290,7 +1290,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59954,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 183.5,
                 ["x"] = -2285.7,
             },
@@ -1303,14 +1303,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 310.3,
                 ["x"] = -2274.7,
             },
             ["Class"] = "MAGE"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 182.9,
                 ["x"] = -2286.2,
             },
@@ -1323,7 +1323,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59955,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 184.1,
                 ["x"] = -2286.2,
             },
@@ -1337,7 +1337,7 @@ if (APR.Faction == "Horde") then
             },
             ["Gossip"] = 1,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 184.1,
                 ["x"] = -2286.2,
             },
@@ -1350,14 +1350,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 178.9,
                 ["x"] = -2332.2,
             },
             ["Class"] = "MAGE"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 183.8,
                 ["x"] = -2286,
             },
@@ -1371,7 +1371,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59956,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 179.6,
                 ["x"] = -2281.2,
             },
@@ -1386,14 +1386,14 @@ if (APR.Faction == "Horde") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 164835,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 317.5,
                 ["x"] = -2297.5,
             },
             ["Class"] = "MONK"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 318.3,
                 ["x"] = -2298.5,
             },
@@ -1406,7 +1406,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59957,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 318.3,
                 ["x"] = -2298.5,
             },
@@ -1420,14 +1420,14 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 164868,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 309,
                 ["x"] = -2325.7,
             },
             ["Class"] = "MONK"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 186.6,
                 ["x"] = -2288.7,
             },
@@ -1441,7 +1441,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59958,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 187.6,
                 ["x"] = -2279,
             },
@@ -1450,7 +1450,7 @@ if (APR.Faction == "Horde") then
         {
             ["Range"] = 12.06,
             ["Waypoint"] = 59958,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 347.5,
                 ["x"] = -2398.5,
             },
@@ -1459,7 +1459,7 @@ if (APR.Faction == "Horde") then
         {
             ["Range"] = 8.18,
             ["Waypoint"] = 59958,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 313.5,
                 ["x"] = -2444.2,
             },
@@ -1474,14 +1474,14 @@ if (APR.Faction == "Horde") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 162998,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 257.5,
                 ["x"] = -2464.7,
             },
             ["Class"] = "PALADIN"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 257.5,
                 ["x"] = -2464.7,
             },
@@ -1494,7 +1494,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 60174,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 257.5,
                 ["x"] = -2464.7,
             },
@@ -1507,7 +1507,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 258.5,
                 ["x"] = -2463.7,
             },
@@ -1520,14 +1520,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 246.6,
                 ["x"] = -2450,
             },
             ["Class"] = "PALADIN"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 256.6,
                 ["x"] = -2464.5,
             },
@@ -1541,7 +1541,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59961,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 184.1,
                 ["x"] = -2277.5,
             },
@@ -1555,14 +1555,14 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 167188,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 223.3,
                 ["x"] = -2415.2,
             },
             ["Class"] = "PRIEST"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 223.3,
                 ["x"] = -2415.2,
             },
@@ -1575,7 +1575,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59965,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 223.3,
                 ["x"] = -2415.2,
             },
@@ -1588,14 +1588,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 5.29,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 227.8,
                 ["x"] = -2421.7,
             },
             ["Class"] = "PRIEST"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 224.1,
                 ["x"] = -2415.2,
             },
@@ -1609,7 +1609,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59967,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 187.9,
                 ["x"] = -2279.4,
             },
@@ -1624,7 +1624,7 @@ if (APR.Faction == "Horde") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 162972,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 168.9,
                 ["x"] = -2061.7,
             },
@@ -1637,14 +1637,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 9.76,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 185,
                 ["x"] = -2038.6,
             },
             ["Class"] = "ROGUE"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 168.6,
                 ["x"] = -2061.5,
             },
@@ -1657,7 +1657,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59968,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 168.6,
                 ["x"] = -2061.5,
             },
@@ -1670,7 +1670,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 175.5,
                 ["x"] = -2063.5,
             },
@@ -1684,14 +1684,14 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 163036,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 270.7,
                 ["x"] = -2159.2,
             },
             ["Class"] = "ROGUE"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 187.4,
                 ["x"] = -2279.7,
             },
@@ -1705,7 +1705,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59969,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 179.6,
                 ["x"] = -2286.7,
             },
@@ -1718,7 +1718,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 10.81,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 276.1,
                 ["x"] = -2288.9,
             },
@@ -1731,7 +1731,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 180.9,
                 ["x"] = -2284,
             },
@@ -1744,14 +1744,14 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 23.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 148,
                 ["x"] = -2352.7,
             },
             ["Class"] = "SHAMAN"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 179.8,
                 ["x"] = -2286.9,
             },
@@ -1765,7 +1765,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59970,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 187.6,
                 ["x"] = -2279.2,
             },
@@ -1774,7 +1774,7 @@ if (APR.Faction == "Horde") then
         {
             ["Range"] = 11.53,
             ["Waypoint"] = 59970,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 354.6,
                 ["x"] = -2344.5,
             },
@@ -1789,7 +1789,7 @@ if (APR.Faction == "Horde") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 163209,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 398.8,
                 ["x"] = -2295.2,
             },
@@ -1802,7 +1802,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 399.8,
                 ["x"] = -2296.7,
             },
@@ -1818,14 +1818,14 @@ if (APR.Faction == "Horde") then
                 ["59970-3"] = 174947,
             },
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 399.8,
                 ["x"] = -2296.7,
             },
             ["Class"] = "WARLOCK"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 409.5,
                 ["x"] = -2297.2,
             },
@@ -1839,7 +1839,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59971,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 188.1,
                 ["x"] = -2279.4,
             },
@@ -1848,7 +1848,7 @@ if (APR.Faction == "Horde") then
         {
             ["Range"] = 20.09,
             ["Waypoint"] = 59971,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 272.8,
                 ["x"] = -2331.5,
             },
@@ -1857,14 +1857,14 @@ if (APR.Faction == "Horde") then
         {
             ["Range"] = 10.6,
             ["Waypoint"] = 59971,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 352.8,
                 ["x"] = -2346.9,
             },
             ["Class"] = "WARRIOR"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 355.8,
                 ["x"] = -2257.4,
             },
@@ -1877,7 +1877,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59972,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 355.8,
                 ["x"] = -2257.4,
             },
@@ -1891,14 +1891,14 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 162948,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 355.8,
                 ["x"] = -2257.4,
             },
             ["Class"] = "WARRIOR"
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 187.8,
                 ["x"] = -2279.5,
             },
@@ -1912,7 +1912,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59975,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 186.1,
                 ["x"] = -2284,
             },
@@ -1921,7 +1921,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 56839,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 211.5,
                 ["x"] = -2168,
             },
@@ -1934,7 +1934,7 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 153266,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 205.1,
                 ["x"] = -2058.4,
             },
@@ -1943,7 +1943,7 @@ if (APR.Faction == "Horde") then
             ["Done"] = {
                 56839,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 280.8,
                 ["x"] = -1986.5,
             },
@@ -1951,7 +1951,7 @@ if (APR.Faction == "Horde") then
         {
             ["Waypoint"] = 59975,
             ["Range"] = 17.88,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 217.4,
                 ["x"] = -2060.4,
             },
@@ -1959,7 +1959,7 @@ if (APR.Faction == "Horde") then
         {
             ["Waypoint"] = 59975,
             ["Range"] = 20.92,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 219.6,
                 ["x"] = -2128,
             },
@@ -1968,7 +1968,7 @@ if (APR.Faction == "Horde") then
             ["Done"] = {
                 59975,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 323.5,
                 ["x"] = -2174.7,
             },
@@ -1977,7 +1977,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59978,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 323.5,
                 ["x"] = -2174.7,
             },
@@ -1991,7 +1991,7 @@ if (APR.Faction == "Horde") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 156943,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 324.6,
                 ["x"] = -2176.5,
             },
@@ -2003,7 +2003,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 457.3,
                 ["x"] = -2044.8,
             },
@@ -2015,7 +2015,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 575.4,
                 ["x"] = -2063,
             },
@@ -2027,7 +2027,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 586.4,
                 ["x"] = -2062.5,
             },
@@ -2035,7 +2035,7 @@ if (APR.Faction == "Horde") then
         {
             ["Waypoint"] = 59978,
             ["Range"] = 11.9,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 619,
                 ["x"] = -2076.2,
             },
@@ -2047,7 +2047,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 699,
                 ["x"] = -1893.6,
             },
@@ -2056,7 +2056,7 @@ if (APR.Faction == "Horde") then
             ["Done"] = {
                 59978,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 704.2,
                 ["x"] = -1876.8,
             },
@@ -2067,7 +2067,7 @@ if (APR.Faction == "Horde") then
                 59980,
                 59979,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 703.9,
                 ["x"] = -1877.6,
             },
@@ -2075,7 +2075,7 @@ if (APR.Faction == "Horde") then
         {
             ["Range"] = 27.27,
             ["Waypoint"] = 59981,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 616.5,
                 ["x"] = -2012.4,
             },
@@ -2088,7 +2088,7 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 153582,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 592.5,
                 ["x"] = -2009.4,
             },
@@ -2109,7 +2109,7 @@ if (APR.Faction == "Horde") then
             },
             ["RaidIcon"] = 153583,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 659.4,
                 ["x"] = -2127,
             },
@@ -2129,7 +2129,7 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 511.7,
                 ["x"] = -1965,
             },
@@ -2144,13 +2144,13 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 59.07,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 505.7,
                 ["x"] = -2039.5,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 704.2,
                 ["x"] = -1879.3,
             },
@@ -2166,13 +2166,13 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 5.99,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 708.9,
                 ["x"] = -1869.5,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 709,
                 ["x"] = -1869,
             },
@@ -2184,7 +2184,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59984,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 709,
                 ["x"] = -1869,
             },
@@ -2196,13 +2196,13 @@ if (APR.Faction == "Horde") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 709,
                 ["x"] = -1869,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 713.5,
                 ["x"] = -1858.5,
             },
@@ -2214,7 +2214,7 @@ if (APR.Faction == "Horde") then
             ["PickUp"] = {
                 59985,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 713.5,
                 ["x"] = -1858.5,
             },
@@ -2227,7 +2227,7 @@ if (APR.Faction == "Horde") then
             },
             ["ETA"] = 75,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 698.6,
                 ["x"] = -1882.6,
             },
@@ -2236,14 +2236,14 @@ if (APR.Faction == "Horde") then
             ["Done"] = {
                 59985,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1465,
                 ["x"] = -4419.2,
             },
         },
         {
             ["ExitTutorial"] = 62568,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1465,
                 ["x"] = -4419.2,
             },
@@ -2251,7 +2251,7 @@ if (APR.Faction == "Horde") then
             ["Gossip"] = 2,
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1573.9,
                 ["x"] = -4438.4,
             },
@@ -2263,7 +2263,7 @@ if (APR.Faction == "Horde") then
                 62568,
             },
             ["RaidIcon"] = 167032,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1558.2,
                 ["x"] = -4215.9,
             },

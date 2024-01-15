@@ -4,7 +4,7 @@ if (APR.Race == "Tauren") then
             ["PickUp"] = {
                 14449,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -2909.9,
                 ["x"] = -256.3,
             },
@@ -13,7 +13,7 @@ if (APR.Race == "Tauren") then
             ["Done"] = {
                 14449,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3015.2,
                 ["x"] = -463.3,
             },
@@ -22,7 +22,7 @@ if (APR.Race == "Tauren") then
             ["PickUp"] = {
                 14452,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3015.2,
                 ["x"] = -463.3,
             },
@@ -34,7 +34,7 @@ if (APR.Race == "Tauren") then
                 },
             },
             ["Range"] = 45.47,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3033,
                 ["x"] = -536.3,
             },
@@ -43,7 +43,7 @@ if (APR.Race == "Tauren") then
             ["Done"] = {
                 14452,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3014.9,
                 ["x"] = -463.4,
             },
@@ -52,7 +52,7 @@ if (APR.Race == "Tauren") then
             ["PickUp"] = {
                 24852,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3014.9,
                 ["x"] = -463.4,
             },
@@ -64,7 +64,7 @@ if (APR.Race == "Tauren") then
                 },
             },
             ["Range"] = 23.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3082.9,
                 ["x"] = -621.8,
             },
@@ -73,7 +73,7 @@ if (APR.Race == "Tauren") then
             ["Done"] = {
                 24852,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3015,
                 ["x"] = -463.2,
             },
@@ -82,7 +82,7 @@ if (APR.Race == "Tauren") then
             ["PickUp"] = {
                 14458,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3015,
                 ["x"] = -463.2,
             },
@@ -91,7 +91,7 @@ if (APR.Race == "Tauren") then
             ["Done"] = {
                 14458,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3172.9,
                 ["x"] = -311.8,
             },
@@ -101,7 +101,7 @@ if (APR.Race == "Tauren") then
                 14456,
                 14455,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3172.9,
                 ["x"] = -311.8,
             },
@@ -116,7 +116,7 @@ if (APR.Race == "Tauren") then
                 },
             },
             ["Range"] = 41.82,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3388,
                 ["x"] = -367.5,
             },
@@ -126,7 +126,7 @@ if (APR.Race == "Tauren") then
                 14456,
                 14455,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3171.7,
                 ["x"] = -312.3,
             },
@@ -136,7 +136,7 @@ if (APR.Race == "Tauren") then
                 14461,
                 14459,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3171.7,
                 ["x"] = -312.3,
             },
@@ -156,7 +156,7 @@ if (APR.Race == "Tauren") then
                 ["14461-1"] = 49539,
             },
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3355.5,
                 ["x"] = -228.9,
             },
@@ -176,7 +176,7 @@ if (APR.Race == "Tauren") then
                 ["14461-2"] = 49539,
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3387,
                 ["x"] = -207.7,
             },
@@ -196,7 +196,7 @@ if (APR.Race == "Tauren") then
                 ["14461-3"] = 49539,
             },
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3402.7,
                 ["x"] = -265.2,
             },
@@ -208,7 +208,7 @@ if (APR.Race == "Tauren") then
                 },
             },
             ["Range"] = 32.4,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3384,
                 ["x"] = -243.7,
             },
@@ -218,7 +218,7 @@ if (APR.Race == "Tauren") then
                 14461,
                 14459,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3171.4,
                 ["x"] = -312.3,
             },
@@ -227,7 +227,7 @@ if (APR.Race == "Tauren") then
             ["PickUp"] = {
                 14460,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3171.4,
                 ["x"] = -312.3,
             },
@@ -240,7 +240,7 @@ if (APR.Race == "Tauren") then
             },
             ["RaidIcon"] = 36712,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -3127.5,
                 ["x"] = -35.2,
             },
@@ -249,7 +249,7 @@ if (APR.Race == "Tauren") then
             ["Done"] = {
                 14460,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -2909,
                 ["x"] = -256.2,
             },
@@ -258,7 +258,7 @@ if (APR.Race == "Tauren") then
             ["PickUp"] = {
                 24861,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -2909,
                 ["x"] = -256.2,
             },
@@ -273,7 +273,7 @@ if (APR.Race == "Tauren") then
                 ["24861-1"] = 50465,
             },
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -2907.5,
                 ["x"] = -253.9,
             },
@@ -282,7 +282,7 @@ if (APR.Race == "Tauren") then
             ["Done"] = {
                 24861,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -2909.7,
                 ["x"] = -255.8,
             },
@@ -291,7 +291,7 @@ if (APR.Race == "Tauren") then
             ["PickUp"] = {
                 23733,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -2909.7,
                 ["x"] = -255.8,
             },
@@ -299,7 +299,7 @@ if (APR.Race == "Tauren") then
         {
             ["Range"] = 14.19,
             ["Waypoint"] = 23733,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -2976,
                 ["x"] = -114.1,
             },
@@ -307,7 +307,7 @@ if (APR.Race == "Tauren") then
         {
             ["Range"] = 13.17,
             ["Waypoint"] = 23733,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -2907.2,
                 ["x"] = -47,
             },
@@ -315,7 +315,7 @@ if (APR.Race == "Tauren") then
         {
             ["Range"] = 8.83,
             ["Waypoint"] = 23733,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -2903.9,
                 ["x"] = 18.8,
             },
@@ -323,13 +323,13 @@ if (APR.Race == "Tauren") then
         {
             ["Range"] = 13.83,
             ["Waypoint"] = 23733,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -2919,
                 ["x"] = 14,
             },
         }, -- [30]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -2933,
                 ["x"] = -41.5,
             },
@@ -341,7 +341,7 @@ if (APR.Race == "Tauren") then
             ["PickUp"] = {
                 24215,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -2933,
                 ["x"] = -41.5,
             },
@@ -353,7 +353,7 @@ if (APR.Race == "Tauren") then
             },
             ["ExtraLineText"] = "DRINK_WATER_VISION",
             ["Range"] = 24.62,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -2933,
                 ["x"] = -40.5,
             },
@@ -362,7 +362,7 @@ if (APR.Race == "Tauren") then
             ["Done"] = {
                 24215,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -2333,
                 ["x"] = -392.5,
             },
@@ -377,13 +377,13 @@ elseif (APR.Race == "Orc") then
             ["PickUp"] = {
                 25152,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -615.5,
                 ["x"] = -4251.2,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -596.5,
                 ["x"] = -4247.8,
             },
@@ -395,7 +395,7 @@ elseif (APR.Race == "Orc") then
             ["PickUp"] = {
                 25126,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -596.5,
                 ["x"] = -4247.8,
             },
@@ -407,13 +407,13 @@ elseif (APR.Race == "Orc") then
                 },
             },
             ["Range"] = 23.15,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -463.7,
                 ["x"] = -4281.8,
             },
         }, -- [4]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -597,
                 ["x"] = -4248.3,
             },
@@ -425,7 +425,7 @@ elseif (APR.Race == "Orc") then
             ["PickUp"] = {
                 25172,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -597,
                 ["x"] = -4248.3,
             },
@@ -434,7 +434,7 @@ elseif (APR.Race == "Orc") then
             ["PickUp"] = {
                 25136,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -562.2,
                 ["x"] = -4221.4,
             },
@@ -451,7 +451,7 @@ elseif (APR.Race == "Orc") then
                 },
             },
             ["Range"] = 38.02,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -711.3,
                 ["x"] = -4269.5,
             },
@@ -465,7 +465,7 @@ elseif (APR.Race == "Orc") then
             ["Done"] = {
                 25172,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -597.3,
                 ["x"] = -4247.4,
             },
@@ -474,7 +474,7 @@ elseif (APR.Race == "Orc") then
             ["PickUp"] = {
                 25127,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -597.3,
                 ["x"] = -4248,
             },
@@ -483,7 +483,7 @@ elseif (APR.Race == "Orc") then
             ["PickUp"] = {
                 37446,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -569.3,
                 ["x"] = -4264,
             },
@@ -503,7 +503,7 @@ elseif (APR.Race == "Orc") then
                     ["1"] = "1",
                 },
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -397.8,
                 ["x"] = -4109.3,
             },
@@ -530,7 +530,7 @@ elseif (APR.Race == "Orc") then
             },
             ["RaidIcon"] = 3281,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -563.5,
                 ["x"] = -4097.9,
             },
@@ -553,7 +553,7 @@ elseif (APR.Race == "Orc") then
             ["Done"] = {
                 25129,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -397.5,
                 ["x"] = -4108.4,
             },
@@ -576,7 +576,7 @@ elseif (APR.Race == "Orc") then
             ["Button"] = {
                 ["37446-1"] = 16114,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -397.5,
                 ["x"] = -4108.4,
             },
@@ -597,13 +597,13 @@ elseif (APR.Race == "Orc") then
                 ["37446-1"] = 16114,
             },
             ["Range"] = 92.79,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -406.7,
                 ["x"] = -4095.2,
             },
         }, -- [16]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -569.3,
                 ["x"] = -4264.9,
             },
@@ -612,7 +612,7 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [17]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -597,
                 ["x"] = -4248.3,
             },
@@ -622,7 +622,7 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [18]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -561.3,
                 ["x"] = -4221.4,
             },
@@ -634,7 +634,7 @@ elseif (APR.Race == "Orc") then
             ["PickUp"] = {
                 25131,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -570.3,
                 ["x"] = -4259.8,
             },
@@ -646,13 +646,13 @@ elseif (APR.Race == "Orc") then
                 },
             },
             ["Range"] = 62.65,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -252.7,
                 ["x"] = -4332,
             },
         }, -- [21]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -569.8,
                 ["x"] = -4260.4,
             },
@@ -665,7 +665,7 @@ elseif (APR.Race == "Orc") then
                 25132,
                 25135,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -570.5,
                 ["x"] = -4262.4,
             },
@@ -673,7 +673,7 @@ elseif (APR.Race == "Orc") then
         {
             ["Range"] = 10.62,
             ["Waypoint"] = 25135,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -178.5,
                 ["x"] = -4358.9,
             },
@@ -681,7 +681,7 @@ elseif (APR.Race == "Orc") then
         {
             ["Range"] = 10.61,
             ["Waypoint"] = 25135,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -136.2,
                 ["x"] = -4365.8,
             },
@@ -698,7 +698,7 @@ elseif (APR.Race == "Orc") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -87.4,
                 ["x"] = -4274.4,
             },
@@ -711,7 +711,7 @@ elseif (APR.Race == "Orc") then
                 },
             },
             ["Range"] = 14.73,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -149,
                 ["x"] = -4258.3,
             },
@@ -729,7 +729,7 @@ elseif (APR.Race == "Orc") then
             },
             ["RaidIcon"] = 3183,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -77.1,
                 ["x"] = -4205.7,
             },
@@ -741,7 +741,7 @@ elseif (APR.Race == "Orc") then
                 },
             },
             ["Range"] = 71.22,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -146.9,
                 ["x"] = -4245.4,
             },
@@ -749,13 +749,13 @@ elseif (APR.Race == "Orc") then
         {
             ["Range"] = 10.95,
             ["Waypoint"] = 25132,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -143.7,
                 ["x"] = -4363.4,
             },
         }, -- [30]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -570.8,
                 ["x"] = -4261.8,
             },
@@ -768,7 +768,7 @@ elseif (APR.Race == "Orc") then
             ["PickUp"] = {
                 25133,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -569.5,
                 ["x"] = -4261.2,
             },
@@ -776,7 +776,7 @@ elseif (APR.Race == "Orc") then
         {
             ["Range"] = 17.6,
             ["Waypoint"] = 25133,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -603,
                 ["x"] = -4595.7,
             },
@@ -784,13 +784,13 @@ elseif (APR.Race == "Orc") then
         {
             ["GetFP"] = 536,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -775,
                 ["x"] = -4890.7,
             },
         }, -- [34]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -825,
                 ["x"] = -4920.4,
             },
@@ -808,13 +808,13 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24607,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1168.5,
                 ["x"] = -5263.8,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1170.9,
                 ["x"] = -5440.8,
             },
@@ -826,7 +826,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24639,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1170.9,
                 ["x"] = -5440.4,
             },
@@ -838,13 +838,13 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 18.39,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1172.3,
                 ["x"] = -5450,
             },
         }, -- [4]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1171,
                 ["x"] = -5440.4,
             },
@@ -856,7 +856,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24641,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1171,
                 ["x"] = -5440.4,
             },
@@ -868,7 +868,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 28.64,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1145.4,
                 ["x"] = -5340,
             },
@@ -877,7 +877,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["Done"] = {
                 24641,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1170.5,
                 ["x"] = -5441.3,
             },
@@ -886,7 +886,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24642,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1170.5,
                 ["x"] = -5441.3,
             },
@@ -900,7 +900,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 39062,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1143,
                 ["x"] = -5429.8,
             },
@@ -913,7 +913,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1143.5,
                 ["x"] = -5417.4,
             },
@@ -922,7 +922,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["Done"] = {
                 24642,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1158,
                 ["x"] = -5420.4,
             },
@@ -931,7 +931,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24643,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1158,
                 ["x"] = -5420.4,
             },
@@ -939,7 +939,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 24643,
             ["Range"] = 18.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1242.6,
                 ["x"] = -5543,
             },
@@ -947,7 +947,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 24643,
             ["Range"] = 7.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1288,
                 ["x"] = -5569.3,
             },
@@ -956,7 +956,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["Done"] = {
                 24643,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.5,
                 ["x"] = -5603,
             },
@@ -965,7 +965,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.5,
                 ["x"] = -5603,
             },
@@ -975,7 +975,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25037,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.5,
                 ["x"] = -5583.7,
             },
@@ -984,7 +984,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["Done"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -993,7 +993,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -1001,7 +1001,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
@@ -1010,7 +1010,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["Done"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1550,
                 ["x"] = -5314.5,
             },
@@ -1021,7 +1021,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5315,
             },
@@ -1045,7 +1045,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1353.5,
                 ["x"] = -5154.5,
             },
@@ -1063,13 +1063,13 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 ["24623-1"] = 52283,
             },
             ["Range"] = 51.65,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1352.1,
                 ["x"] = -5156.7,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1548.3,
                 ["x"] = -5316.8,
             },
@@ -1083,7 +1083,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24626,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -1104,7 +1104,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -1116,13 +1116,13 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1299,
                 ["x"] = -5452.2,
             },
         }, -- [6]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.1,
                 ["x"] = -5517.7,
             },
@@ -1134,7 +1134,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25035,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1329.6,
                 ["x"] = -5556.4,
             },
@@ -1146,13 +1146,13 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 50.23,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1329.7,
                 ["x"] = -5558.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.4,
                 ["x"] = -5584.7,
             },
@@ -1165,13 +1165,13 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["RaidIcon"] = 38989,
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331.3,
                 ["x"] = -5558.3,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -1184,7 +1184,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -1202,13 +1202,13 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
                 ["24813-1"] = 52065,
             },
             ["Range"] = 45.15,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -706.5,
                 ["x"] = -5599.4,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -1221,7 +1221,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24814,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -1229,7 +1229,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
         {
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
             },
@@ -1243,7 +1243,7 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -741.8,
                 ["x"] = -5614.9,
             },
@@ -1256,20 +1256,20 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -710.3,
                 ["x"] = -5582.4,
             },
         }, -- [19]
         {
             ["UseHS"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -722.5,
                 ["x"] = -5591,
             },
         }, -- [20]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
@@ -1281,13 +1281,13 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25073,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -825.5,
                 ["x"] = -4919.8,
             },
@@ -1305,13 +1305,13 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24776,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1168.5,
                 ["x"] = -5264.8,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1127.4,
                 ["x"] = -5509.8,
             },
@@ -1323,7 +1323,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24777,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1127.4,
                 ["x"] = -5509.8,
             },
@@ -1335,13 +1335,13 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 22.9,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1126.5,
                 ["x"] = -5506.7,
             },
         }, -- [4]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1127.3,
                 ["x"] = -5509.2,
             },
@@ -1353,7 +1353,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24779,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1127.3,
                 ["x"] = -5509.2,
             },
@@ -1365,13 +1365,13 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 18.65,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1098,
                 ["x"] = -5633.8,
             },
         }, -- [7]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1127.8,
                 ["x"] = -5509.9,
             },
@@ -1383,7 +1383,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24780,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1127.8,
                 ["x"] = -5509.9,
             },
@@ -1397,7 +1397,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 39062,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1158.5,
                 ["x"] = -5528.9,
             },
@@ -1410,13 +1410,13 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1147.9,
                 ["x"] = -5529.7,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1136.5,
                 ["x"] = -5524.9,
             },
@@ -1428,7 +1428,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24781,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1136.5,
                 ["x"] = -5524.9,
             },
@@ -1436,13 +1436,13 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
         {
             ["Range"] = 5.92,
             ["Waypoint"] = 24781,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1289,
                 ["x"] = -5569.3,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
@@ -1454,7 +1454,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
@@ -1464,7 +1464,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25037,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.5,
                 ["x"] = -5583.7,
             },
@@ -1473,7 +1473,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["Done"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -1482,7 +1482,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -1490,7 +1490,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
@@ -1499,7 +1499,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["Done"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1550,
                 ["x"] = -5314.5,
             },
@@ -1510,7 +1510,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5315,
             },
@@ -1534,7 +1534,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1353.5,
                 ["x"] = -5154.5,
             },
@@ -1552,13 +1552,13 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 ["24623-1"] = 52283,
             },
             ["Range"] = 51.65,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1352.1,
                 ["x"] = -5156.7,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1548.3,
                 ["x"] = -5316.8,
             },
@@ -1572,7 +1572,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24626,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -1593,7 +1593,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -1605,13 +1605,13 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1299,
                 ["x"] = -5452.2,
             },
         }, -- [6]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.1,
                 ["x"] = -5517.7,
             },
@@ -1623,7 +1623,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25035,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1329.6,
                 ["x"] = -5556.4,
             },
@@ -1635,13 +1635,13 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 50.23,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1329.7,
                 ["x"] = -5558.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.4,
                 ["x"] = -5584.7,
             },
@@ -1654,13 +1654,13 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["RaidIcon"] = 38989,
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331.3,
                 ["x"] = -5558.3,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -1673,7 +1673,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -1691,13 +1691,13 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
                 ["24813-1"] = 52065,
             },
             ["Range"] = 45.15,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -706.5,
                 ["x"] = -5599.4,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -1710,7 +1710,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24814,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -1718,7 +1718,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
         {
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
             },
@@ -1732,7 +1732,7 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -741.8,
                 ["x"] = -5614.9,
             },
@@ -1745,20 +1745,20 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -710.3,
                 ["x"] = -5582.4,
             },
         }, -- [19]
         {
             ["UseHS"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -722.5,
                 ["x"] = -5591,
             },
         }, -- [20]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
@@ -1770,13 +1770,13 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25073,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -825.5,
                 ["x"] = -4919.8,
             },
@@ -1794,13 +1794,13 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24770,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1168.5,
                 ["x"] = -5264.4,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.6,
                 ["x"] = -5446.8,
             },
@@ -1812,13 +1812,13 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24771,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.6,
                 ["x"] = -5446.8,
             },
         }, -- [3]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.8,
                 ["x"] = -5446,
             },
@@ -1830,7 +1830,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24773,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.8,
                 ["x"] = -5446,
             },
@@ -1842,13 +1842,13 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 21.52,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1059.5,
                 ["x"] = -5375.5,
             },
         }, -- [6]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1124.5,
                 ["x"] = -5445.5,
             },
@@ -1860,7 +1860,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24774,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.3,
                 ["x"] = -5446,
             },
@@ -1874,7 +1874,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1142.5,
                 ["x"] = -5430,
             },
@@ -1887,13 +1887,13 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1145,
                 ["x"] = -5416.3,
             },
         }, -- [10]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1145.9,
                 ["x"] = -5428.9,
             },
@@ -1905,7 +1905,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24775,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1145.9,
                 ["x"] = -5428.9,
             },
@@ -1913,13 +1913,13 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
         {
             ["Range"] = 8.7,
             ["Waypoint"] = 24775,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1287.8,
                 ["x"] = -5568.5,
             },
         }, -- [13]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.4,
                 ["x"] = -5602.9,
             },
@@ -1931,7 +1931,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.4,
                 ["x"] = -5602.9,
             },
@@ -1941,7 +1941,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25037,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.5,
                 ["x"] = -5583.7,
             },
@@ -1950,7 +1950,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["Done"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -1959,7 +1959,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -1967,7 +1967,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
@@ -1976,7 +1976,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["Done"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1550,
                 ["x"] = -5314.5,
             },
@@ -1987,7 +1987,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5315,
             },
@@ -2011,7 +2011,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1353.5,
                 ["x"] = -5154.5,
             },
@@ -2029,13 +2029,13 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 ["24623-1"] = 52283,
             },
             ["Range"] = 51.65,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1352.1,
                 ["x"] = -5156.7,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1548.3,
                 ["x"] = -5316.8,
             },
@@ -2049,7 +2049,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24626,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -2070,7 +2070,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -2082,13 +2082,13 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1299,
                 ["x"] = -5452.2,
             },
         }, -- [6]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.1,
                 ["x"] = -5517.7,
             },
@@ -2100,7 +2100,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25035,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1329.6,
                 ["x"] = -5556.4,
             },
@@ -2112,13 +2112,13 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 50.23,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1329.7,
                 ["x"] = -5558.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.4,
                 ["x"] = -5584.7,
             },
@@ -2131,13 +2131,13 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["RaidIcon"] = 38989,
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331.3,
                 ["x"] = -5558.3,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -2150,7 +2150,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -2168,13 +2168,13 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
                 ["24813-1"] = 52065,
             },
             ["Range"] = 45.15,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -706.5,
                 ["x"] = -5599.4,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -2187,7 +2187,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24814,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -2195,7 +2195,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
         {
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
             },
@@ -2209,7 +2209,7 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -741.8,
                 ["x"] = -5614.9,
             },
@@ -2222,20 +2222,20 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -710.3,
                 ["x"] = -5582.4,
             },
         }, -- [19]
         {
             ["UseHS"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -722.5,
                 ["x"] = -5591,
             },
         }, -- [20]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
@@ -2247,13 +2247,13 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25073,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -825.5,
                 ["x"] = -4919.8,
             },
@@ -2271,13 +2271,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24770,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1168.5,
                 ["x"] = -5264.4,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.6,
                 ["x"] = -5446.8,
             },
@@ -2289,13 +2289,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24771,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.6,
                 ["x"] = -5446.8,
             },
         }, -- [3]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.8,
                 ["x"] = -5446,
             },
@@ -2307,7 +2307,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24773,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.8,
                 ["x"] = -5446,
             },
@@ -2319,13 +2319,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 21.52,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1059.5,
                 ["x"] = -5375.5,
             },
         }, -- [6]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1124.5,
                 ["x"] = -5445.5,
             },
@@ -2337,7 +2337,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24774,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.3,
                 ["x"] = -5446,
             },
@@ -2351,7 +2351,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1142.5,
                 ["x"] = -5430,
             },
@@ -2364,13 +2364,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1145,
                 ["x"] = -5416.3,
             },
         }, -- [10]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1145.9,
                 ["x"] = -5428.9,
             },
@@ -2382,7 +2382,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24775,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1145.9,
                 ["x"] = -5428.9,
             },
@@ -2390,13 +2390,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
         {
             ["Range"] = 8.7,
             ["Waypoint"] = 24775,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1287.8,
                 ["x"] = -5568.5,
             },
         }, -- [13]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.4,
                 ["x"] = -5602.9,
             },
@@ -2408,7 +2408,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.4,
                 ["x"] = -5602.9,
             },
@@ -2417,13 +2417,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24782,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1168.1,
                 ["x"] = -5264.8,
             },
         }, -- [16]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1117.8,
                 ["x"] = -5539.8,
             },
@@ -2435,13 +2435,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24783,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1117.8,
                 ["x"] = -5539.8,
             },
         }, -- [18]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1117.6,
                 ["x"] = -5539.5,
             },
@@ -2453,7 +2453,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24785,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1117.6,
                 ["x"] = -5539.5,
             },
@@ -2465,13 +2465,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 30.7,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1075,
                 ["x"] = -5624.3,
             },
         }, -- [21]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1117.8,
                 ["x"] = -5539.4,
             },
@@ -2483,7 +2483,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24786,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1117.8,
                 ["x"] = -5539.4,
             },
@@ -2497,7 +2497,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1158.4,
                 ["x"] = -5529.9,
             },
@@ -2510,13 +2510,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1149,
                 ["x"] = -5527.7,
             },
         }, -- [25]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1137,
                 ["x"] = -5527.8,
             },
@@ -2528,7 +2528,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24787,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1137,
                 ["x"] = -5527.8,
             },
@@ -2536,13 +2536,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
         {
             ["Range"] = 6.09,
             ["Waypoint"] = 24787,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1288.4,
                 ["x"] = -5568.3,
             },
         }, -- [28]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.4,
                 ["x"] = -5603.2,
             },
@@ -2554,7 +2554,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.4,
                 ["x"] = -5603.2,
             },
@@ -2564,7 +2564,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25037,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.5,
                 ["x"] = -5583.7,
             },
@@ -2573,7 +2573,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["Done"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -2582,7 +2582,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -2590,7 +2590,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
@@ -2599,7 +2599,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["Done"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1550,
                 ["x"] = -5314.5,
             },
@@ -2610,7 +2610,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5315,
             },
@@ -2634,7 +2634,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1353.5,
                 ["x"] = -5154.5,
             },
@@ -2652,13 +2652,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 ["24623-1"] = 52283,
             },
             ["Range"] = 51.65,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1352.1,
                 ["x"] = -5156.7,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1548.3,
                 ["x"] = -5316.8,
             },
@@ -2672,7 +2672,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24626,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -2693,7 +2693,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -2705,13 +2705,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1299,
                 ["x"] = -5452.2,
             },
         }, -- [6]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.1,
                 ["x"] = -5517.7,
             },
@@ -2723,7 +2723,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25035,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1329.6,
                 ["x"] = -5556.4,
             },
@@ -2735,13 +2735,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 50.23,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1329.7,
                 ["x"] = -5558.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.4,
                 ["x"] = -5584.7,
             },
@@ -2754,13 +2754,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["RaidIcon"] = 38989,
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331.3,
                 ["x"] = -5558.3,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -2773,7 +2773,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -2791,13 +2791,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
                 ["24813-1"] = 52065,
             },
             ["Range"] = 45.15,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -706.5,
                 ["x"] = -5599.4,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -2810,7 +2810,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24814,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -2818,7 +2818,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
         {
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
             },
@@ -2832,7 +2832,7 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -741.8,
                 ["x"] = -5614.9,
             },
@@ -2845,20 +2845,20 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -710.3,
                 ["x"] = -5582.4,
             },
         }, -- [19]
         {
             ["UseHS"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -722.5,
                 ["x"] = -5591,
             },
         }, -- [20]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
@@ -2870,13 +2870,13 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25073,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -825.5,
                 ["x"] = -4919.8,
             },
@@ -2894,13 +2894,13 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24758,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1168.1,
                 ["x"] = -5264.7,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1159.4,
                 ["x"] = -5396.3,
             },
@@ -2912,7 +2912,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24759,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1159.4,
                 ["x"] = -5396.3,
             },
@@ -2924,13 +2924,13 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 11.14,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1162,
                 ["x"] = -5405.9,
             },
         }, -- [4]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1160,
                 ["x"] = -5395.8,
             },
@@ -2942,7 +2942,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24761,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1160,
                 ["x"] = -5395.8,
             },
@@ -2954,13 +2954,13 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 19.97,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1144.5,
                 ["x"] = -5333.4,
             },
         }, -- [7]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1160.6,
                 ["x"] = -5396.4,
             },
@@ -2972,7 +2972,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24762,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1160.6,
                 ["x"] = -5396.4,
             },
@@ -2986,7 +2986,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1142.9,
                 ["x"] = -5429,
             },
@@ -2999,13 +2999,13 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1145,
                 ["x"] = -5416.4,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1151.6,
                 ["x"] = -5407.4,
             },
@@ -3017,7 +3017,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24763,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1151.6,
                 ["x"] = -5407.4,
             },
@@ -3025,13 +3025,13 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
         {
             ["Range"] = 7.77,
             ["Waypoint"] = 24763,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1288.4,
                 ["x"] = -5569,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.1,
                 ["x"] = -5603,
             },
@@ -3043,7 +3043,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.1,
                 ["x"] = -5603,
             },
@@ -3053,7 +3053,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25037,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.5,
                 ["x"] = -5583.7,
             },
@@ -3062,7 +3062,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["Done"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -3071,7 +3071,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -3079,7 +3079,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
@@ -3088,7 +3088,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["Done"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1550,
                 ["x"] = -5314.5,
             },
@@ -3099,7 +3099,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5315,
             },
@@ -3123,7 +3123,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1353.5,
                 ["x"] = -5154.5,
             },
@@ -3141,13 +3141,13 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 ["24623-1"] = 52283,
             },
             ["Range"] = 51.65,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1352.1,
                 ["x"] = -5156.7,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1548.3,
                 ["x"] = -5316.8,
             },
@@ -3161,7 +3161,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24626,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -3182,7 +3182,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -3194,13 +3194,13 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1299,
                 ["x"] = -5452.2,
             },
         }, -- [6]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.1,
                 ["x"] = -5517.7,
             },
@@ -3212,7 +3212,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25035,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1329.6,
                 ["x"] = -5556.4,
             },
@@ -3224,13 +3224,13 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 50.23,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1329.7,
                 ["x"] = -5558.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.4,
                 ["x"] = -5584.7,
             },
@@ -3243,13 +3243,13 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["RaidIcon"] = 38989,
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331.3,
                 ["x"] = -5558.3,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -3262,7 +3262,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -3280,13 +3280,13 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
                 ["24813-1"] = 52065,
             },
             ["Range"] = 45.15,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -706.5,
                 ["x"] = -5599.4,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -3299,7 +3299,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24814,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -3307,7 +3307,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
         {
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
             },
@@ -3321,7 +3321,7 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -741.8,
                 ["x"] = -5614.9,
             },
@@ -3334,20 +3334,20 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -710.3,
                 ["x"] = -5582.4,
             },
         }, -- [19]
         {
             ["UseHS"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -722.5,
                 ["x"] = -5591,
             },
         }, -- [20]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
@@ -3359,13 +3359,13 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25073,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -825.5,
                 ["x"] = -4919.8,
             },
@@ -3383,13 +3383,13 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24750,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1168.5,
                 ["x"] = -5264.5,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1151.4,
                 ["x"] = -5569.3,
             },
@@ -3401,7 +3401,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24751,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1151.4,
                 ["x"] = -5569.3,
             },
@@ -3413,13 +3413,13 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 19.52,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1156.8,
                 ["x"] = -5584,
             },
         }, -- [4]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1151.4,
                 ["x"] = -5569.7,
             },
@@ -3431,7 +3431,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24753,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1151.4,
                 ["x"] = -5569.7,
             },
@@ -3443,13 +3443,13 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 25,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1110.5,
                 ["x"] = -5628.7,
             },
         }, -- [7]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1151.5,
                 ["x"] = -5569.3,
             },
@@ -3461,7 +3461,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24754,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1151.5,
                 ["x"] = -5569.3,
             },
@@ -3475,7 +3475,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["Gossip"] = 37137,
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1157.9,
                 ["x"] = -5529.9,
             },
@@ -3488,13 +3488,13 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1149.5,
                 ["x"] = -5527.7,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1145.6,
                 ["x"] = -5542.4,
             },
@@ -3506,7 +3506,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24755,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1145.6,
                 ["x"] = -5542.4,
             },
@@ -3514,13 +3514,13 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
         {
             ["Range"] = 5.29,
             ["Waypoint"] = 24755,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1288.5,
                 ["x"] = -5569.8,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.5,
                 ["x"] = -5602.9,
             },
@@ -3532,7 +3532,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.5,
                 ["x"] = -5602.9,
             },
@@ -3542,7 +3542,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25037,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.5,
                 ["x"] = -5583.7,
             },
@@ -3551,7 +3551,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["Done"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -3560,7 +3560,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -3568,7 +3568,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
@@ -3577,7 +3577,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["Done"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1550,
                 ["x"] = -5314.5,
             },
@@ -3588,7 +3588,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5315,
             },
@@ -3612,7 +3612,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1353.5,
                 ["x"] = -5154.5,
             },
@@ -3630,13 +3630,13 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 ["24623-1"] = 52283,
             },
             ["Range"] = 51.65,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1352.1,
                 ["x"] = -5156.7,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1548.3,
                 ["x"] = -5316.8,
             },
@@ -3650,7 +3650,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24626,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -3671,7 +3671,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -3683,13 +3683,13 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1299,
                 ["x"] = -5452.2,
             },
         }, -- [6]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.1,
                 ["x"] = -5517.7,
             },
@@ -3701,7 +3701,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25035,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1329.6,
                 ["x"] = -5556.4,
             },
@@ -3713,13 +3713,13 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 50.23,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1329.7,
                 ["x"] = -5558.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.4,
                 ["x"] = -5584.7,
             },
@@ -3732,13 +3732,13 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["RaidIcon"] = 38989,
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331.3,
                 ["x"] = -5558.3,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -3751,7 +3751,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -3769,13 +3769,13 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                 ["24813-1"] = 52065,
             },
             ["Range"] = 45.15,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -706.5,
                 ["x"] = -5599.4,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -3788,7 +3788,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24814,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -3796,7 +3796,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
         {
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
             },
@@ -3810,7 +3810,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -741.8,
                 ["x"] = -5614.9,
             },
@@ -3823,20 +3823,20 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -710.3,
                 ["x"] = -5582.4,
             },
         }, -- [19]
         {
             ["UseHS"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -722.5,
                 ["x"] = -5591,
             },
         }, -- [20]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
@@ -3848,13 +3848,13 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25073,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -825.5,
                 ["x"] = -4919.8,
             },
@@ -3872,13 +3872,13 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 26272,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1168.5,
                 ["x"] = -5264.4,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.9,
                 ["x"] = -5395,
             },
@@ -3890,7 +3890,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 26273,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.9,
                 ["x"] = -5395,
             },
@@ -3902,13 +3902,13 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 15.98,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.9,
                 ["x"] = -5395,
             },
         }, -- [4]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1126.8,
                 ["x"] = -5394.9,
             },
@@ -3920,7 +3920,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 26275,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1126.8,
                 ["x"] = -5394.9,
             },
@@ -3932,13 +3932,13 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 20.54,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1134.4,
                 ["x"] = -5337.2,
             },
         }, -- [7]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.8,
                 ["x"] = -5394.5,
             },
@@ -3950,7 +3950,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 26276,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1125.8,
                 ["x"] = -5394.5,
             },
@@ -3964,7 +3964,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1142.8,
                 ["x"] = -5429,
             },
@@ -3977,13 +3977,13 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1144.3,
                 ["x"] = -5415.7,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1149.1,
                 ["x"] = -5407.9,
             },
@@ -3995,7 +3995,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 26277,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1149.1,
                 ["x"] = -5407.9,
             },
@@ -4003,13 +4003,13 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
         {
             ["Range"] = 5.91,
             ["Waypoint"] = 26277,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1287.6,
                 ["x"] = -5567.8,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.5,
                 ["x"] = -5602.9,
             },
@@ -4021,7 +4021,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.5,
                 ["x"] = -5602.9,
             },
@@ -4031,7 +4031,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25037,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.5,
                 ["x"] = -5583.7,
             },
@@ -4040,7 +4040,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["Done"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -4049,7 +4049,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -4057,7 +4057,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
@@ -4066,7 +4066,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["Done"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1550,
                 ["x"] = -5314.5,
             },
@@ -4077,7 +4077,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5315,
             },
@@ -4101,7 +4101,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1353.5,
                 ["x"] = -5154.5,
             },
@@ -4119,13 +4119,13 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 ["24623-1"] = 52283,
             },
             ["Range"] = 51.65,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1352.1,
                 ["x"] = -5156.7,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1548.3,
                 ["x"] = -5316.8,
             },
@@ -4139,7 +4139,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24626,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -4160,7 +4160,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -4172,13 +4172,13 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1299,
                 ["x"] = -5452.2,
             },
         }, -- [6]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.1,
                 ["x"] = -5517.7,
             },
@@ -4190,7 +4190,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25035,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1329.6,
                 ["x"] = -5556.4,
             },
@@ -4202,13 +4202,13 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 50.23,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1329.7,
                 ["x"] = -5558.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.4,
                 ["x"] = -5584.7,
             },
@@ -4221,13 +4221,13 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["RaidIcon"] = 38989,
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331.3,
                 ["x"] = -5558.3,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -4240,7 +4240,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -4258,13 +4258,13 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
                 ["24813-1"] = 52065,
             },
             ["Range"] = 45.15,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -706.5,
                 ["x"] = -5599.4,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -4277,7 +4277,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24814,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -4285,7 +4285,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
         {
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
             },
@@ -4299,7 +4299,7 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -741.8,
                 ["x"] = -5614.9,
             },
@@ -4312,20 +4312,20 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -710.3,
                 ["x"] = -5582.4,
             },
         }, -- [19]
         {
             ["UseHS"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -722.5,
                 ["x"] = -5591,
             },
         }, -- [20]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
@@ -4337,13 +4337,13 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25073,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -825.5,
                 ["x"] = -4919.8,
             },
@@ -4361,13 +4361,13 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 31159,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1167.9,
                 ["x"] = -5264.8,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1148.8,
                 ["x"] = -5440.9,
             },
@@ -4379,7 +4379,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 31158,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1148.6,
                 ["x"] = -5440.3,
             },
@@ -4391,13 +4391,13 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 13.56,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1127.8,
                 ["x"] = -5440.4,
             },
         }, -- [4]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1148,
                 ["x"] = -5440.4,
             },
@@ -4409,7 +4409,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 31160,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1148,
                 ["x"] = -5440.4,
             },
@@ -4421,13 +4421,13 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 19.96,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1046,
                 ["x"] = -5368.9,
             },
         }, -- [7]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1149,
                 ["x"] = -5440.7,
             },
@@ -4439,7 +4439,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 31161,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1149,
                 ["x"] = -5440.7,
             },
@@ -4453,7 +4453,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1144,
                 ["x"] = -5428.9,
             },
@@ -4466,13 +4466,13 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1144,
                 ["x"] = -5415.4,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1151,
                 ["x"] = -5429,
             },
@@ -4484,7 +4484,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 31163,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1151,
                 ["x"] = -5429,
             },
@@ -4492,13 +4492,13 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
         {
             ["Range"] = 6.36,
             ["Waypoint"] = 31163,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1288.3,
                 ["x"] = -5569.2,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.4,
                 ["x"] = -5602.9,
             },
@@ -4510,7 +4510,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.4,
                 ["x"] = -5602.9,
             },
@@ -4520,7 +4520,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25037,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.5,
                 ["x"] = -5583.7,
             },
@@ -4529,7 +4529,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["Done"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -4538,7 +4538,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -4546,7 +4546,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
@@ -4555,7 +4555,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["Done"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1550,
                 ["x"] = -5314.5,
             },
@@ -4566,7 +4566,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5315,
             },
@@ -4590,7 +4590,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1353.5,
                 ["x"] = -5154.5,
             },
@@ -4608,13 +4608,13 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 ["24623-1"] = 52283,
             },
             ["Range"] = 51.65,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1352.1,
                 ["x"] = -5156.7,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1548.3,
                 ["x"] = -5316.8,
             },
@@ -4628,7 +4628,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24626,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -4649,7 +4649,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -4661,13 +4661,13 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1299,
                 ["x"] = -5452.2,
             },
         }, -- [6]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.1,
                 ["x"] = -5517.7,
             },
@@ -4679,7 +4679,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25035,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1329.6,
                 ["x"] = -5556.4,
             },
@@ -4691,13 +4691,13 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 50.23,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1329.7,
                 ["x"] = -5558.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.4,
                 ["x"] = -5584.7,
             },
@@ -4710,13 +4710,13 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["RaidIcon"] = 38989,
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331.3,
                 ["x"] = -5558.3,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -4729,7 +4729,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -4747,13 +4747,13 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
                 ["24813-1"] = 52065,
             },
             ["Range"] = 45.15,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -706.5,
                 ["x"] = -5599.4,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -4766,7 +4766,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24814,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -4774,7 +4774,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
         {
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
             },
@@ -4788,7 +4788,7 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -741.8,
                 ["x"] = -5614.9,
             },
@@ -4801,20 +4801,20 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -710.3,
                 ["x"] = -5582.4,
             },
         }, -- [19]
         {
             ["UseHS"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -722.5,
                 ["x"] = -5591,
             },
         }, -- [20]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
@@ -4826,13 +4826,13 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25073,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -825.5,
                 ["x"] = -4919.8,
             },
@@ -4850,13 +4850,13 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24764,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1168.6,
                 ["x"] = -5264.5,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1175,
                 ["x"] = -5539.9,
             },
@@ -4868,7 +4868,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24765,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1175,
                 ["x"] = -5539.9,
             },
@@ -4880,13 +4880,13 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 10.97,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1166.8,
                 ["x"] = -5548.9,
             },
         }, -- [4]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1174.8,
                 ["x"] = -5540.3,
             },
@@ -4898,7 +4898,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24767,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1174.8,
                 ["x"] = -5540.3,
             },
@@ -4910,13 +4910,13 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 20.25,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1254.5,
                 ["x"] = -5430.5,
             },
         }, -- [7]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1175.1,
                 ["x"] = -5539.9,
             },
@@ -4928,7 +4928,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24768,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1175.1,
                 ["x"] = -5539.9,
             },
@@ -4942,7 +4942,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 39062,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1159,
                 ["x"] = -5529.5,
             },
@@ -4955,13 +4955,13 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38142,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1149.8,
                 ["x"] = -5527.2,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1157.9,
                 ["x"] = -5532.7,
             },
@@ -4973,7 +4973,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24769,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1157.9,
                 ["x"] = -5532.7,
             },
@@ -4981,13 +4981,13 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
         {
             ["Range"] = 6.21,
             ["Waypoint"] = 24769,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1288.3,
                 ["x"] = -5569.2,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.8,
                 ["x"] = -5602.9,
             },
@@ -4999,7 +4999,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.8,
                 ["x"] = -5602.9,
             },
@@ -5009,7 +5009,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25037,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.5,
                 ["x"] = -5583.7,
             },
@@ -5018,7 +5018,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["Done"] = {
                 25064,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -5027,7 +5027,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.5,
                 ["x"] = -5517.7,
             },
@@ -5035,7 +5035,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
         {
             ["Waypoint"] = 24622,
             ["Range"] = 13.41,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331,
                 ["x"] = -5397.7,
             },
@@ -5044,7 +5044,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["Done"] = {
                 24622,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1550,
                 ["x"] = -5314.5,
             },
@@ -5055,7 +5055,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 24624,
                 24625, -- [3]
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5315,
             },
@@ -5079,7 +5079,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 39072,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1353.5,
                 ["x"] = -5154.5,
             },
@@ -5097,13 +5097,13 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 ["24623-1"] = 52283,
             },
             ["Range"] = 51.65,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1352.1,
                 ["x"] = -5156.7,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1548.3,
                 ["x"] = -5316.8,
             },
@@ -5117,7 +5117,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24626,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -5138,7 +5138,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38002,
             ["Range"] = 77.86,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1549.5,
                 ["x"] = -5314.3,
             },
@@ -5150,13 +5150,13 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1299,
                 ["x"] = -5452.2,
             },
         }, -- [6]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1291.1,
                 ["x"] = -5517.7,
             },
@@ -5168,7 +5168,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25035,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1329.6,
                 ["x"] = -5556.4,
             },
@@ -5180,13 +5180,13 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 },
             },
             ["Range"] = 50.23,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1329.7,
                 ["x"] = -5558.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1281.4,
                 ["x"] = -5584.7,
             },
@@ -5199,13 +5199,13 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["RaidIcon"] = 38989,
             ["ExtraLineText"] = "TALK_JORNUN",
             ["Range"] = 28.7,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1331.3,
                 ["x"] = -5558.3,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -5218,7 +5218,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -803,
                 ["x"] = -5555.3,
             },
@@ -5236,13 +5236,13 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
                 ["24813-1"] = 52065,
             },
             ["Range"] = 45.15,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -706.5,
                 ["x"] = -5599.4,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -5255,7 +5255,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 24814,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -801.8,
                 ["x"] = -5555.7,
             },
@@ -5263,7 +5263,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
         {
             ["Range"] = 14.91,
             ["Waypoint"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -814.7,
                 ["x"] = -5606.4,
             },
@@ -5277,7 +5277,7 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["Gossip"] = 1,
             ["RaidIcon"] = 38225,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -741.8,
                 ["x"] = -5614.9,
             },
@@ -5290,20 +5290,20 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
             ["RaidIcon"] = 38306,
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -710.3,
                 ["x"] = -5582.4,
             },
         }, -- [19]
         {
             ["UseHS"] = 24814,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -722.5,
                 ["x"] = -5591,
             },
         }, -- [20]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
@@ -5315,13 +5315,13 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             ["PickUp"] = {
                 25073,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -1317.6,
                 ["x"] = -5602.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -825.5,
                 ["x"] = -4919.8,
             },
@@ -5339,13 +5339,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14138,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.3,
                 ["x"] = 1366.4,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8402.5,
                 ["x"] = 1316.5,
             },
@@ -5358,7 +5358,7 @@ elseif (APR.Race == "Goblin") then
                 14069,
                 14075,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8402.5,
                 ["x"] = 1316.5,
             },
@@ -5373,7 +5373,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 20,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8422.8,
                 ["x"] = 1175,
             },
@@ -5381,13 +5381,13 @@ elseif (APR.Race == "Goblin") then
         {
             ["Waypoint"] = 14069,
             ["Range"] = 25.83,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8441.3,
                 ["x"] = 1249.3,
             },
         }, -- [5]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8403,
                 ["x"] = 1315.4,
             },
@@ -5400,13 +5400,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25473,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8401.7,
                 ["x"] = 1313.8,
             },
         }, -- [7]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.3,
                 ["x"] = 1365.9,
             },
@@ -5418,13 +5418,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 28349,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.3,
                 ["x"] = 1365.9,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8419.8,
                 ["x"] = 1342.2,
             },
@@ -5436,7 +5436,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14071,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8419.8,
                 ["x"] = 1342.2,
             },
@@ -5451,7 +5451,7 @@ elseif (APR.Race == "Goblin") then
                 ["14071-1"] = 46856,
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8418.5,
                 ["x"] = 1340.5,
             },
@@ -5463,7 +5463,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8506.5,
                 ["x"] = 1343.5,
             },
@@ -5475,7 +5475,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8176.4,
                 ["x"] = 1314,
             },
@@ -5487,13 +5487,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8066.9,
                 ["x"] = 1483,
             },
         }, -- [15]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8419.3,
                 ["x"] = 1340.8,
             },
@@ -5505,7 +5505,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24567,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8419.3,
                 ["x"] = 1340.5,
             },
@@ -5514,7 +5514,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14070,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.8,
                 ["x"] = 1367.2,
             },
@@ -5524,7 +5524,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 26712,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.8,
                 ["x"] = 1367.2,
             },
@@ -5534,13 +5534,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 26711,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.8,
                 ["x"] = 1367.2,
             },
         },
         { -- [18]
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8251.2,
                 ["x"] = 1469.5,
             },
@@ -5552,7 +5552,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24488,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8251.3,
                 ["x"] = 1469.7,
             },
@@ -5569,7 +5569,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8403,
                 ["x"] = 1518.9,
             },
@@ -5586,7 +5586,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8468,
                 ["x"] = 1566.5,
             },
@@ -5598,7 +5598,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8431,
                 ["x"] = 1655.5,
             },
@@ -5615,7 +5615,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8360.8,
                 ["x"] = 1631.8,
             },
@@ -5625,7 +5625,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 26711,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8375.2,
                 ["x"] = 1724.8,
             },
@@ -5635,7 +5635,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14110,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8375,
                 ["x"] = 1722.8,
             },
@@ -5654,7 +5654,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8230,
                 ["x"] = 1621,
             },
@@ -5673,7 +5673,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8142.2,
                 ["x"] = 1658.2,
             },
@@ -5692,7 +5692,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8143.8,
                 ["x"] = 1583.7,
             },
@@ -5702,7 +5702,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 26712,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8375.2,
                 ["x"] = 1724.8,
             },
@@ -5712,7 +5712,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14109,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8375,
                 ["x"] = 1722.8,
             },
@@ -5731,7 +5731,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8230,
                 ["x"] = 1621,
             },
@@ -5750,7 +5750,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8142.2,
                 ["x"] = 1658.2,
             },
@@ -5769,7 +5769,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8143.8,
                 ["x"] = 1583.7,
             },
@@ -5781,13 +5781,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 43.68,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8143.7,
                 ["x"] = 1581.3,
             },
         }, -- [30]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8248.5,
                 ["x"] = 1470.7,
             },
@@ -5799,7 +5799,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24502,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8248.5,
                 ["x"] = 1469.9,
             },
@@ -5812,13 +5812,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 8.01,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8251,
                 ["x"] = 1485.5,
             },
         }, -- [33]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8250.5,
                 ["x"] = 1484.8,
             },
@@ -5830,7 +5830,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24503,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8250.5,
                 ["x"] = 1484.8,
             },
@@ -5842,13 +5842,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8250.5,
                 ["x"] = 1484.8,
             },
         }, -- [36]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8248.8,
                 ["x"] = 1471.5,
             },
@@ -5860,7 +5860,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24520,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8248.8,
                 ["x"] = 1471.5,
             },
@@ -5870,7 +5870,7 @@ elseif (APR.Race == "Goblin") then
                 24520,
                 14070,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.8,
                 ["x"] = 1367.2,
             },
@@ -5880,7 +5880,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 14110,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.8,
                 ["x"] = 1367.2,
             },
@@ -5890,7 +5890,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14153,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.8,
                 ["x"] = 1367,
             },
@@ -5903,7 +5903,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 11.23,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8446.7,
                 ["x"] = 1329.9,
             },
@@ -5913,7 +5913,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 14153,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.3,
                 ["x"] = 1366.4,
             },
@@ -5923,7 +5923,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 14109,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.8,
                 ["x"] = 1367.2,
             },
@@ -5933,7 +5933,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14113,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.8,
                 ["x"] = 1367,
             },
@@ -5946,7 +5946,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 11.23,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8446.7,
                 ["x"] = 1329.9,
             },
@@ -5956,7 +5956,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 14113,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.3,
                 ["x"] = 1366.4,
             },
@@ -5965,7 +5965,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14115,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.3,
                 ["x"] = 1366.4,
             },
@@ -5977,13 +5977,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 10.3,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8443.3,
                 ["x"] = 1327.3,
             },
         }, -- [44]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.5,
                 ["x"] = 1366.4,
             },
@@ -5995,13 +5995,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14116,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.5,
                 ["x"] = 1365.7,
             },
         }, -- [46]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423,
                 ["x"] = 1363.3,
             },
@@ -6014,13 +6014,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14120,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423,
                 ["x"] = 1363.3,
             },
         }, -- [48]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8424.7,
                 ["x"] = 1323.8,
             },
@@ -6032,7 +6032,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14122,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8424.7,
                 ["x"] = 1323.8,
             },
@@ -6041,7 +6041,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14123,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8418.5,
                 ["x"] = 1331.8,
             },
@@ -6050,7 +6050,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14121,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8435.3,
                 ["x"] = 1318.5,
             },
@@ -6059,7 +6059,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14124,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8431,
                 ["x"] = 1278.3,
             },
@@ -6074,13 +6074,13 @@ elseif (APR.Race == "Goblin") then
                 ["14124-1"] = 48768,
             },
             ["Range"] = 29.42,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8443,
                 ["x"] = 1227.8,
             },
         }, -- [54]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8430,
                 ["x"] = 1277.7,
             },
@@ -6101,7 +6101,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8372.3,
                 ["x"] = 1729.7,
             },
@@ -6118,7 +6118,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8006.7,
                 ["x"] = 1860,
             },
@@ -6135,7 +6135,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8047.3,
                 ["x"] = 1956,
             },
@@ -6152,7 +6152,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8147.3,
                 ["x"] = 1903.5,
             },
@@ -6164,13 +6164,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 59.92,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8133.7,
                 ["x"] = 1759.4,
             },
         }, -- [60]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8391.3,
                 ["x"] = 1338.5,
             },
@@ -6179,7 +6179,7 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [61]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8423.2,
                 ["x"] = 1322.5,
             },
@@ -6188,7 +6188,7 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [62]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8433.8,
                 ["x"] = 1317.8,
             },
@@ -6200,7 +6200,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14125,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8425.5,
                 ["x"] = 1322.5,
             },
@@ -6212,7 +6212,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8420.7,
                 ["x"] = 1371.5,
             },
@@ -6224,7 +6224,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8402.8,
                 ["x"] = 1371.5,
             },
@@ -6232,7 +6232,7 @@ elseif (APR.Race == "Goblin") then
         {
             ["Waypoint"] = 14125,
             ["Range"] = 4.29,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8425.3,
                 ["x"] = 1372.4,
             },
@@ -6240,7 +6240,7 @@ elseif (APR.Race == "Goblin") then
         {
             ["Waypoint"] = 14125,
             ["Range"] = 5.04,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8419.7,
                 ["x"] = 1364.2,
             },
@@ -6252,7 +6252,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8408.3,
                 ["x"] = 1362.8,
             },
@@ -6264,7 +6264,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8422,
                 ["x"] = 1327,
             },
@@ -6273,7 +6273,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 14125,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8420.2,
                 ["x"] = 1325,
             },
@@ -6282,7 +6282,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14126,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8424.3,
                 ["x"] = 1323.7,
             },
@@ -6292,7 +6292,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 14126,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -8425.5,
                 ["x"] = 1322.8,
             },
@@ -6302,7 +6302,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 14126,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = -7852.7,
                 ["x"] = 1846.5,
             },
@@ -6316,7 +6316,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14001,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 535.2,
                 ["x"] = 3273.4,
             },
@@ -6328,7 +6328,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 14.85,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 535.4,
                 ["x"] = 3273.3,
             },
@@ -6337,7 +6337,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 14001,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 607.5,
                 ["x"] = 3125.6,
             },
@@ -6346,7 +6346,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14014,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 607.5,
                 ["x"] = 3125.6,
             },
@@ -6356,7 +6356,7 @@ elseif (APR.Race == "Goblin") then
                 14019,
                 14473,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 642.9,
                 ["x"] = 3124.5,
             },
@@ -6377,13 +6377,13 @@ elseif (APR.Race == "Goblin") then
                 ["14019-1"] = 49028,
             },
             ["Range"] = 33.93,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 648.7,
                 ["x"] = 3126.1,
             },
         }, -- [6]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 643.4,
                 ["x"] = 3124.1,
             },
@@ -6393,7 +6393,7 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [7]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 607.7,
                 ["x"] = 3125.5,
             },
@@ -6405,13 +6405,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14248,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 607.7,
                 ["x"] = 3125.5,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 495.5,
                 ["x"] = 2972.3,
             },
@@ -6424,7 +6424,7 @@ elseif (APR.Race == "Goblin") then
                 14031,
                 14021,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 495.5,
                 ["x"] = 2972.3,
             },
@@ -6439,7 +6439,7 @@ elseif (APR.Race == "Goblin") then
                 ["14031-1"] = 49887,
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 566.7,
                 ["x"] = 2945.1,
             },
@@ -6454,7 +6454,7 @@ elseif (APR.Race == "Goblin") then
                 ["14031-2"] = 49887,
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 572.2,
                 ["x"] = 2911.5,
             },
@@ -6466,7 +6466,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 13.25,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 576.7,
                 ["x"] = 2921.3,
             },
@@ -6478,7 +6478,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 614.5,
                 ["x"] = 2853.5,
             },
@@ -6486,7 +6486,7 @@ elseif (APR.Race == "Goblin") then
         {
             ["Range"] = 10.78,
             ["Waypoint"] = 14031,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 658.1,
                 ["x"] = 2946.1,
             },
@@ -6501,7 +6501,7 @@ elseif (APR.Race == "Goblin") then
                 ["14031-4"] = 49887,
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 653.7,
                 ["x"] = 2962.3,
             },
@@ -6510,7 +6510,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14233,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 651.6,
                 ["x"] = 2973.6,
             },
@@ -6518,13 +6518,13 @@ elseif (APR.Race == "Goblin") then
         {
             ["Range"] = 11.45,
             ["Waypoint"] = 14021,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 586.4,
                 ["x"] = 2959,
             },
         }, -- [19]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 495.8,
                 ["x"] = 2972.3,
             },
@@ -6537,7 +6537,7 @@ elseif (APR.Race == "Goblin") then
                 14031,
                 14233,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 607.4,
                 ["x"] = 3125.1,
             },
@@ -6546,7 +6546,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14234,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 607.4,
                 ["x"] = 3125.1,
             },
@@ -6554,7 +6554,7 @@ elseif (APR.Race == "Goblin") then
         {
             ["Waypoint"] = 14234,
             ["Range"] = 20,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 448.5,
                 ["x"] = 2952.1,
             },
@@ -6562,13 +6562,13 @@ elseif (APR.Race == "Goblin") then
         {
             ["Waypoint"] = 14234,
             ["Range"] = 20,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 452.7,
                 ["x"] = 2827.3,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 533.5,
                 ["x"] = 2686.1,
             },
@@ -6580,7 +6580,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14235,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 533.5,
                 ["x"] = 2686.1,
             },
@@ -6589,7 +6589,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 14235,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 603.4,
                 ["x"] = 2785.1,
             },
@@ -6598,7 +6598,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14236,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 602.7,
                 ["x"] = 2784.6,
             },
@@ -6613,7 +6613,7 @@ elseif (APR.Race == "Goblin") then
                 ["14236-1"] = 49108,
             },
             ["Range"] = 19.16,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 602.7,
                 ["x"] = 2784.6,
             },
@@ -6622,7 +6622,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 14236,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 602.9,
                 ["x"] = 2783.6,
             },
@@ -6631,7 +6631,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14303,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 602.9,
                 ["x"] = 2783.6,
             },
@@ -6640,7 +6640,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 14303,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 533.5,
                 ["x"] = 2686,
             },
@@ -6649,7 +6649,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14237,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 533.5,
                 ["x"] = 2686,
             },
@@ -6657,7 +6657,7 @@ elseif (APR.Race == "Goblin") then
         {
             ["Waypoint"] = 14237,
             ["Range"] = 20,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 584,
                 ["x"] = 2771.5,
             },
@@ -6665,7 +6665,7 @@ elseif (APR.Race == "Goblin") then
         {
             ["Waypoint"] = 14237,
             ["Range"] = 31.16,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 708.3,
                 ["x"] = 2882.1,
             },
@@ -6673,7 +6673,7 @@ elseif (APR.Race == "Goblin") then
         {
             ["Waypoint"] = 14237,
             ["Range"] = 31.16,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 772.4,
                 ["x"] = 2885.6,
             },
@@ -6682,7 +6682,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 14237,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 869.4,
                 ["x"] = 2821.6,
             },
@@ -6691,7 +6691,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14238,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 869.4,
                 ["x"] = 2821.6,
             },
@@ -6706,7 +6706,7 @@ elseif (APR.Race == "Goblin") then
                 ["14238-1"] = 49611,
             },
             ["Range"] = 24.33,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 878,
                 ["x"] = 2882.6,
             },
@@ -6715,7 +6715,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 14238,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 869.2,
                 ["x"] = 2821,
             },
@@ -6724,7 +6724,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14240,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 867.9,
                 ["x"] = 2822,
             },
@@ -6733,7 +6733,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 14240,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1079.9,
                 ["x"] = 3242.1,
             },
@@ -6742,7 +6742,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14241,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1080.4,
                 ["x"] = 3241.9,
             },
@@ -6754,13 +6754,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 49.4,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 910.9,
                 ["x"] = 3296.3,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 848.7,
                 ["x"] = 3334.6,
             },
@@ -6772,7 +6772,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14242,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 834.1,
                 ["x"] = 3340.3,
             },
@@ -6784,13 +6784,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 992.9,
                 ["x"] = 3850.8,
             },
         }, -- [5]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 992.7,
                 ["x"] = 3850.9,
             },
@@ -6802,7 +6802,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14326,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 992.7,
                 ["x"] = 3850.9,
             },
@@ -6810,7 +6810,7 @@ elseif (APR.Race == "Goblin") then
         {
             ["Range"] = 7.36,
             ["Waypoint"] = 14326,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 973.2,
                 ["x"] = 3818.4,
             },
@@ -6818,13 +6818,13 @@ elseif (APR.Race == "Goblin") then
         {
             ["Range"] = 5.75,
             ["Waypoint"] = 14326,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 982.7,
                 ["x"] = 3812.8,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 982.4,
                 ["x"] = 3821.6,
             },
@@ -6836,7 +6836,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14243,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 995.4,
                 ["x"] = 3830.8,
             },
@@ -6848,13 +6848,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 92.02,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1044,
                 ["x"] = 3858.1,
             },
         }, -- [12]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 873.2,
                 ["x"] = 2762.6,
             },
@@ -6866,13 +6866,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14445,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 873.2,
                 ["x"] = 2762.6,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 848.5,
                 ["x"] = 2757.3,
             },
@@ -6884,7 +6884,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14244,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 848.5,
                 ["x"] = 2757.3,
             },
@@ -6897,13 +6897,13 @@ elseif (APR.Race == "Goblin") then
             },
             ["Gossip"] = 1,
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 876.2,
                 ["x"] = 2747.1,
             },
         }, -- [18]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 944.2,
                 ["x"] = 2373.1,
             },
@@ -6915,7 +6915,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 14245,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 944.2,
                 ["x"] = 2373.1,
             },
@@ -6927,13 +6927,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 914.7,
                 ["x"] = 2331,
             },
         }, -- [3]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 932.5,
                 ["x"] = 2336,
             },
@@ -6945,13 +6945,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 27139,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 932.5,
                 ["x"] = 2336,
             },
         }, -- [5]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 918.6,
                 ["x"] = 2336.8,
             },
@@ -6963,7 +6963,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24671,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 918.6,
                 ["x"] = 2336.8,
             },
@@ -6978,13 +6978,13 @@ elseif (APR.Race == "Goblin") then
                 ["24671-1"] = 52712,
             },
             ["Range"] = 30,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 955.3,
                 ["x"] = 2298.7,
             },
         }, -- [8]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 918.7,
                 ["x"] = 2336.5,
             },
@@ -6996,7 +6996,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24741,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 929.2,
                 ["x"] = 2341.1,
             },
@@ -7011,13 +7011,13 @@ elseif (APR.Race == "Goblin") then
                 ["24741-1"] = 50232,
             },
             ["Range"] = 79.74,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 860.9,
                 ["x"] = 2116.1,
             },
         }, -- [3]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 930,
                 ["x"] = 2341.1,
             },
@@ -7029,7 +7029,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24744,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 918.9,
                 ["x"] = 2336.8,
             },
@@ -7041,13 +7041,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1199.3,
                 ["x"] = 2325.4,
             },
         }, -- [6]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 918.9,
                 ["x"] = 2337,
             },
@@ -7059,7 +7059,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24816,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 918.9,
                 ["x"] = 2337,
             },
@@ -7071,13 +7071,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 62.46,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 846.9,
                 ["x"] = 2482.8,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 908.4,
                 ["x"] = 2340,
             },
@@ -7089,7 +7089,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24817,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 908.4,
                 ["x"] = 2340,
             },
@@ -7101,7 +7101,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 916,
                 ["x"] = 2413.9,
             },
@@ -7113,13 +7113,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 15.78,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 916,
                 ["x"] = 2413.9,
             },
         }, -- [13]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 917.9,
                 ["x"] = 2337.1,
             },
@@ -7131,7 +7131,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24856,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 917.9,
                 ["x"] = 2337.1,
             },
@@ -7139,13 +7139,13 @@ elseif (APR.Race == "Goblin") then
         {
             ["Range"] = 28.66,
             ["Waypoint"] = 24856,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 893,
                 ["x"] = 2164,
             },
         }, -- [16]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 679.5,
                 ["x"] = 2027.8,
             },
@@ -7158,7 +7158,7 @@ elseif (APR.Race == "Goblin") then
                 24858,
                 24859,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 679.9,
                 ["x"] = 2026.8,
             },
@@ -7173,13 +7173,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 116.05,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 469.8,
                 ["x"] = 1934,
             },
         }, -- [19]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 678.7,
                 ["x"] = 2027.3,
             },
@@ -7192,7 +7192,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24864,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 679.5,
                 ["x"] = 2027.2,
             },
@@ -7207,13 +7207,13 @@ elseif (APR.Race == "Goblin") then
                 ["24864-1"] = 4560,
             },
             ["Range"] = 96.96,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 373.3,
                 ["x"] = 1680.8,
             },
         }, -- [3]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 679.7,
                 ["x"] = 2027,
             },
@@ -7225,7 +7225,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24868,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 679.7,
                 ["x"] = 2027,
             },
@@ -7237,13 +7237,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 136.1,
                 ["x"] = 1939.2,
             },
         }, -- [6]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 679,
                 ["x"] = 2026.8,
             },
@@ -7255,13 +7255,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24897,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 679,
                 ["x"] = 2026.8,
             },
         }, -- [8]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 928.2,
                 ["x"] = 2344.6,
             },
@@ -7273,7 +7273,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24901,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 927.9,
                 ["x"] = 2344.1,
             },
@@ -7285,13 +7285,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 922.9,
                 ["x"] = 2320.9,
             },
         }, -- [11]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 927.7,
                 ["x"] = 2344.1,
             },
@@ -7303,7 +7303,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24924,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 927.4,
                 ["x"] = 2343.4,
             },
@@ -7311,13 +7311,13 @@ elseif (APR.Race == "Goblin") then
         {
             ["Range"] = 17.3,
             ["Waypoint"] = 24924,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 888.7,
                 ["x"] = 2161.5,
             },
         }, -- [14]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 716.1,
                 ["x"] = 1830.4,
             },
@@ -7330,7 +7330,7 @@ elseif (APR.Race == "Goblin") then
                 24925,
                 24929,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 716.1,
                 ["x"] = 1830.4,
             },
@@ -7343,7 +7343,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 19.98,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 844.2,
                 ["x"] = 1722.5,
             },
@@ -7356,7 +7356,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 16.38,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 845.6,
                 ["x"] = 1681.7,
             },
@@ -7369,7 +7369,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 20.19,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 790.7,
                 ["x"] = 1560.4,
             },
@@ -7386,7 +7386,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 817.7,
                 ["x"] = 1543.5,
             },
@@ -7398,13 +7398,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 100.58,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 815.5,
                 ["x"] = 1544,
             },
         }, -- [21]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 715.2,
                 ["x"] = 1830.5,
             },
@@ -7417,13 +7417,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24937,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 715.2,
                 ["x"] = 1830.8,
             },
         }, -- [23]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 927.9,
                 ["x"] = 2343.8,
             },
@@ -7435,13 +7435,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24940,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 927.9,
                 ["x"] = 2343.8,
             },
         }, -- [25]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1464.2,
                 ["x"] = 2045,
             },
@@ -7453,7 +7453,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24942,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1464.2,
                 ["x"] = 2045,
             },
@@ -7463,7 +7463,7 @@ elseif (APR.Race == "Goblin") then
                 24945,
                 24946,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1459.3,
                 ["x"] = 2045.9,
             },
@@ -7480,7 +7480,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.61,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1460.5,
                 ["x"] = 1729,
             },
@@ -7500,7 +7500,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1670.2,
                 ["x"] = 1694.7,
             },
@@ -7520,7 +7520,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1294.3,
                 ["x"] = 1512.2,
             },
@@ -7537,7 +7537,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 10.65,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1269,
                 ["x"] = 1513.8,
             },
@@ -7549,7 +7549,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 57.89,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1366.8,
                 ["x"] = 1547.5,
             },
@@ -7560,7 +7560,7 @@ elseif (APR.Race == "Goblin") then
                 24946,
                 24942, -- [3]
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1460,
                 ["x"] = 2046.7,
             },
@@ -7569,7 +7569,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24952,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1464.9,
                 ["x"] = 2045.3,
             },
@@ -7584,7 +7584,7 @@ elseif (APR.Race == "Goblin") then
                 ["24952-1"] = 52032,
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1464.9,
                 ["x"] = 2045.3,
             },
@@ -7593,7 +7593,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 24952,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1483.9,
                 ["x"] = 1271.9,
             },
@@ -7602,7 +7602,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24954,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1483.9,
                 ["x"] = 1271.9,
             },
@@ -7614,7 +7614,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 73.88,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1568.5,
                 ["x"] = 1326,
             },
@@ -7623,7 +7623,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 24954,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1483.9,
                 ["x"] = 1271.5,
             },
@@ -7632,7 +7632,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 24958,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1483.9,
                 ["x"] = 1271.5,
             },
@@ -7647,7 +7647,7 @@ elseif (APR.Race == "Goblin") then
                 ["24958-1"] = 52043,
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1280.8,
                 ["x"] = 1173.9,
             },
@@ -7656,7 +7656,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 24958,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1164.5,
                 ["x"] = 1094.3,
             },
@@ -7665,7 +7665,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25023,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1149.4,
                 ["x"] = 1120,
             },
@@ -7674,7 +7674,7 @@ elseif (APR.Race == "Goblin") then
             ["Done"] = {
                 25023,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1583.5,
                 ["x"] = 2722.6,
             },
@@ -7683,7 +7683,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25024,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1583.5,
                 ["x"] = 2722.6,
             },
@@ -7692,7 +7692,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25093,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1576.5,
                 ["x"] = 2746.5,
             },
@@ -7701,7 +7701,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25058,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1619.5,
                 ["x"] = 2697.9,
             },
@@ -7724,7 +7724,7 @@ elseif (APR.Race == "Goblin") then
                 ["25058-1"] = 52280,
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1593,
                 ["x"] = 2922,
             },
@@ -7747,7 +7747,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1858.9,
                 ["x"] = 2992.5,
             },
@@ -7770,7 +7770,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2042,
                 ["x"] = 2874.4,
             },
@@ -7788,13 +7788,13 @@ elseif (APR.Race == "Goblin") then
                 ["25058-1"] = 52280,
             },
             ["Range"] = 103.38,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1871.8,
                 ["x"] = 2875.9,
             },
         }, -- [4]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1619.8,
                 ["x"] = 2697.5,
             },
@@ -7803,7 +7803,7 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1583.5,
                 ["x"] = 2722.5,
             },
@@ -7812,7 +7812,7 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1575.7,
                 ["x"] = 2747,
             },
@@ -7824,7 +7824,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25066,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1620,
                 ["x"] = 2698,
             },
@@ -7838,7 +7838,7 @@ elseif (APR.Race == "Goblin") then
             ["ExtraLineText"] = "TALK_SASSY",
             ["Gossip"] = 38872,
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1619.5,
                 ["x"] = 2697.9,
             },
@@ -7850,13 +7850,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 145.07,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1824.5,
                 ["x"] = 2954.6,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1620,
                 ["x"] = 2697.8,
             },
@@ -7868,13 +7868,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25098,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1620,
                 ["x"] = 2697.8,
             },
         }, -- [3]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1583,
                 ["x"] = 2722.6,
             },
@@ -7886,13 +7886,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25099,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1583,
                 ["x"] = 2722.6,
             },
         }, -- [5]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1714.4,
                 ["x"] = 2858.3,
             },
@@ -7904,13 +7904,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25100,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1715.4,
                 ["x"] = 2842.4,
             },
         }, -- [7]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1829.9,
                 ["x"] = 1959,
             },
@@ -7922,7 +7922,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25109,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1829.9,
                 ["x"] = 1959,
             },
@@ -7930,7 +7930,7 @@ elseif (APR.Race == "Goblin") then
         {
             ["Range"] = 8.94,
             ["Waypoint"] = 25109,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1797.3,
                 ["x"] = 1941,
             },
@@ -7938,7 +7938,7 @@ elseif (APR.Race == "Goblin") then
         {
             ["Range"] = 8.9,
             ["Waypoint"] = 25109,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1810,
                 ["x"] = 1923.2,
             },
@@ -7946,7 +7946,7 @@ elseif (APR.Race == "Goblin") then
         {
             ["Range"] = 9.37,
             ["Waypoint"] = 25109,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1836.7,
                 ["x"] = 1913.2,
             },
@@ -7954,7 +7954,7 @@ elseif (APR.Race == "Goblin") then
         {
             ["Range"] = 9.71,
             ["Waypoint"] = 25109,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1811.5,
                 ["x"] = 1898.9,
             },
@@ -7962,7 +7962,7 @@ elseif (APR.Race == "Goblin") then
         {
             ["Range"] = 12.97,
             ["Waypoint"] = 25109,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1777.5,
                 ["x"] = 1946.5,
             },
@@ -7970,13 +7970,13 @@ elseif (APR.Race == "Goblin") then
         {
             ["Range"] = 15.14,
             ["Waypoint"] = 25109,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1770.5,
                 ["x"] = 1976.7,
             },
         }, -- [15]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1781.4,
                 ["x"] = 1983.5,
             },
@@ -7988,7 +7988,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25110,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1781.4,
                 ["x"] = 1983.5,
             },
@@ -8000,13 +8000,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 27.27,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1770.4,
                 ["x"] = 1942,
             },
         }, -- [18]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1780.4,
                 ["x"] = 1983.2,
             },
@@ -8019,7 +8019,7 @@ elseif (APR.Race == "Goblin") then
                 25122,
                 25123,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1780.4,
                 ["x"] = 1983.2,
             },
@@ -8039,7 +8039,7 @@ elseif (APR.Race == "Goblin") then
                 ["25122-2"] = 52484,
             },
             ["Range"] = 0.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1827,
                 ["x"] = 1810.2,
             },
@@ -8059,7 +8059,7 @@ elseif (APR.Race == "Goblin") then
                 ["25122-1"] = 52484,
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1763.5,
                 ["x"] = 1811.2,
             },
@@ -8079,7 +8079,7 @@ elseif (APR.Race == "Goblin") then
                 ["25122-3"] = 52484,
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1914.2,
                 ["x"] = 1808.4,
             },
@@ -8099,7 +8099,7 @@ elseif (APR.Race == "Goblin") then
                 ["25122-4"] = 52484,
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1913.2,
                 ["x"] = 1853.3,
             },
@@ -8114,13 +8114,13 @@ elseif (APR.Race == "Goblin") then
                 ["25122-4"] = 52484,
             },
             ["Range"] = 36.56,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1912.8,
                 ["x"] = 1860.5,
             },
         }, -- [5]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1888,
                 ["x"] = 1824.3,
             },
@@ -8133,7 +8133,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25125,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1888,
                 ["x"] = 1824.3,
             },
@@ -8141,13 +8141,13 @@ elseif (APR.Race == "Goblin") then
         {
             ["Range"] = 13.55,
             ["Waypoint"] = 25125,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 1911.7,
                 ["x"] = 1817.5,
             },
         }, -- [3]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2059.4,
                 ["x"] = 1842.5,
             },
@@ -8159,13 +8159,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25184,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2068.8,
                 ["x"] = 1845.4,
             },
         }, -- [5]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2371,
                 ["x"] = 1929,
             },
@@ -8178,7 +8178,7 @@ elseif (APR.Race == "Goblin") then
                 25200,
                 25201,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2371.4,
                 ["x"] = 1928.8,
             },
@@ -8193,13 +8193,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 60.83,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2308.8,
                 ["x"] = 1950.8,
             },
         }, -- [8]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2370.8,
                 ["x"] = 1927.8,
             },
@@ -8212,7 +8212,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25204,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2370.8,
                 ["x"] = 1927.8,
             },
@@ -8221,7 +8221,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25202,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2370.4,
                 ["x"] = 1945,
             },
@@ -8239,13 +8239,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 71.69,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2483.3,
                 ["x"] = 2090.5,
             },
         }, -- [12]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2487.1,
                 ["x"] = 2063.4,
             },
@@ -8257,7 +8257,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25207,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2487.1,
                 ["x"] = 2063.4,
             },
@@ -8269,13 +8269,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2487.1,
                 ["x"] = 2063.4,
             },
         }, -- [15]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2369.4,
                 ["x"] = 1935.3,
             },
@@ -8288,13 +8288,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25213,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2367.1,
                 ["x"] = 1934.7,
             },
         }, -- [17]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2119.6,
                 ["x"] = 2414.1,
             },
@@ -8306,7 +8306,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25244,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2119.6,
                 ["x"] = 2414.1,
             },
@@ -8315,7 +8315,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25214,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2120.4,
                 ["x"] = 2404.1,
             },
@@ -8332,7 +8332,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2064.6,
                 ["x"] = 2591.1,
             },
@@ -8344,13 +8344,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 93.07,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2058.3,
                 ["x"] = 2591,
             },
         },
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2120.5,
                 ["x"] = 2408.6,
             },
@@ -8363,7 +8363,7 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25251,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2119.9,
                 ["x"] = 2412.9,
             },
@@ -8375,7 +8375,7 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2124,
                 ["x"] = 2404.5,
             },
@@ -8387,13 +8387,13 @@ elseif (APR.Race == "Goblin") then
                 },
             },
             ["Range"] = 0.75,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2280.9,
                 ["x"] = 2421.4,
             },
         }, -- [26]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2121.9,
                 ["x"] = 2413.6,
             },
@@ -8405,13 +8405,13 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25265,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2278.6,
                 ["x"] = 2460.6,
             },
         }, -- [28]
         {
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2358.8,
                 ["x"] = 2479.8,
             },
@@ -8423,14 +8423,14 @@ elseif (APR.Race == "Goblin") then
             ["PickUp"] = {
                 25266,
             },
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2358.8,
                 ["x"] = 2479.8,
             },
         }, -- [30]
         {
             ["Gossip"] = 1,
-            ["TT"] = {
+            ["Coord"] = {
                 ["y"] = 2388.3,
                 ["x"] = 2462.1,
             },
@@ -8451,7 +8451,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25170,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -847.8,
             ["x"] = -4908.5,
         },
@@ -8460,7 +8460,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25167,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -824,
             ["x"] = -4920.8,
         },
@@ -8472,7 +8472,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 48.84,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -990.8,
             ["x"] = -4933.9,
         },
@@ -8485,7 +8485,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 72.3,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1002,
             ["x"] = -4741.9,
         },
@@ -8494,7 +8494,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Done"] = {
             25170,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -846.5,
             ["x"] = -4908.3,
         },
@@ -8503,7 +8503,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25165,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -846.5,
             ["x"] = -4908.3,
         },
@@ -8512,7 +8512,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Done"] = {
             25167,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -824.3,
             ["x"] = -4920.2,
         },
@@ -8521,7 +8521,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25168,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -824.3,
             ["x"] = -4920.2,
         },
@@ -8530,7 +8530,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25169,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -837.7,
             ["x"] = -4892.8,
         },
@@ -8549,7 +8549,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             ["25165-1"] = 52505,
         },
         ["Range"] = 15.15,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -983.5,
             ["x"] = -4661.7,
         },
@@ -8562,7 +8562,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 24.79,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1015.3,
             ["x"] = -4617.7,
         },
@@ -8579,7 +8579,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1065,
             ["x"] = -4599.5,
         },
@@ -8596,7 +8596,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -923.2,
             ["x"] = -4497.2,
         },
@@ -8609,7 +8609,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 23.14,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1012.5,
             ["x"] = -4492.3,
         },
@@ -8622,7 +8622,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 16.16,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1026.8,
             ["x"] = -4448.8,
         },
@@ -8639,7 +8639,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 0.75,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -973.3,
             ["x"] = -4417,
         },
@@ -8647,7 +8647,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
     {
         ["Waypoint"] = 25169,
         ["Range"] = 20.18,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -980.8,
             ["x"] = -4650.9,
         },
@@ -8662,7 +8662,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             ["25165-1"] = 52505,
         },
         ["Range"] = 42.34,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -866.3,
             ["x"] = -4767.3,
         },
@@ -8673,7 +8673,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             25168,
             25165, -- [3]
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -834.5,
             ["x"] = -4910.3,
         },
@@ -8682,7 +8682,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25171,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -824.3,
             ["x"] = -4920.4,
         },
@@ -8692,7 +8692,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["ExtraLineText"] = "TALK_JHASH",
         ["RaidIcon"] = 10676,
         ["Range"] = 39.7,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -820.7,
             ["x"] = -4880.4,
         },
@@ -8701,7 +8701,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25232,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 287.2,
             ["x"] = -4724.8,
         },
@@ -8710,7 +8710,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Done"] = {
             25171,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 275.2,
             ["x"] = -4708.7,
         },
@@ -8719,7 +8719,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25173,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 275.2,
             ["x"] = -4708.7,
         },
@@ -8728,7 +8728,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25176,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 288.3,
             ["x"] = -4769.8,
         },
@@ -8736,7 +8736,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
     {
         ["Waypoint"] = 25173,
         ["Range"] = 11.68,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 262,
             ["x"] = -4824.7,
         },
@@ -8753,7 +8753,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 11.41,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -245.7,
             ["x"] = -5079.4,
         },
@@ -8774,7 +8774,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -247,
             ["x"] = -5119,
         },
@@ -8790,7 +8790,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 122.34,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -245.5,
             ["x"] = -5076,
         },
@@ -8799,7 +8799,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Done"] = {
             25176,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 288.8,
             ["x"] = -4770.4,
         },
@@ -8808,7 +8808,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Done"] = {
             25176,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 288.8,
             ["x"] = -4770.4,
         },
@@ -8817,7 +8817,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Done"] = {
             25173,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 273.8,
             ["x"] = -4707.5,
         },
@@ -8826,7 +8826,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25177,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 273.8,
             ["x"] = -4707.5,
         },
@@ -8835,7 +8835,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25178,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 288,
             ["x"] = -4770.3,
         },
@@ -8854,7 +8854,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
         ["RaidIcon"] = 39270,
         ["ExtraLineText"] = "CLICK_INJURED_GRUNT",
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 103.8,
             ["x"] = -5062.4,
         },
@@ -8872,7 +8872,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 118.2,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 121,
             ["x"] = -5105.4,
         },
@@ -8881,7 +8881,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Done"] = {
             25178,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 288.8,
             ["x"] = -4768.9,
         },
@@ -8890,7 +8890,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25227,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 288.8,
             ["x"] = -4768.9,
         },
@@ -8900,7 +8900,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             25177,
             25179,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 274,
             ["x"] = -4708.2,
         },
@@ -8908,7 +8908,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
     {
         ["Waypoint"] = 25232,
         ["Range"] = 13.96,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 333.6,
             ["x"] = -4631.5,
         },
@@ -8917,7 +8917,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Done"] = {
             25227,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 392.3,
             ["x"] = -4584.4,
         },
@@ -8926,7 +8926,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25187,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 392.3,
             ["x"] = -4584.4,
         },
@@ -8942,7 +8942,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             ["25187-1"] = 52514,
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 385.5,
             ["x"] = -4581.7,
         },
@@ -8958,7 +8958,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             ["25187-2"] = 52514,
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 385.5,
             ["x"] = -4581.7,
         },
@@ -8974,7 +8974,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             ["25187-3"] = 52514,
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 385.5,
             ["x"] = -4581.7,
         },
@@ -8990,7 +8990,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             ["25187-4"] = 52514,
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 385.5,
             ["x"] = -4581.7,
         },
@@ -8999,7 +8999,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Done"] = {
             25187,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 392.8,
             ["x"] = -4583.9,
         },
@@ -9008,7 +9008,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25188,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 392.7,
             ["x"] = -4583.9,
         },
@@ -9017,7 +9017,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25190,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 49.2,
             ["x"] = -4219.3,
         },
@@ -9030,7 +9030,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 88.34,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 93.8,
             ["x"] = -4368.2,
         },
@@ -9039,7 +9039,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Done"] = {
             25190,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 49.7,
             ["x"] = -4218.7,
         },
@@ -9048,7 +9048,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25192,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 49.7,
             ["x"] = -4218.7,
         },
@@ -9061,13 +9061,13 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 104.05,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -98.6,
             ["x"] = -3987.7,
         },
     }, -- [53]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 49.7,
             ["x"] = -4220.4,
         },
@@ -9079,7 +9079,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25194,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 350.7,
             ["x"] = -3856.7,
         },
@@ -9091,13 +9091,13 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 145.95,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 116.9,
             ["x"] = -3818.9,
         },
     }, -- [56]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 349.8,
             ["x"] = -3857.7,
         },
@@ -9109,7 +9109,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25195,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 349.8,
             ["x"] = -3857.7,
         },
@@ -9122,7 +9122,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
         ["RaidIcon"] = 39385,
         ["Range"] = 52.21,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 732.6,
             ["x"] = -3839.2,
         },
@@ -9131,7 +9131,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Done"] = {
             25195,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 349.8,
             ["x"] = -3857,
         },
@@ -9140,7 +9140,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25193,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 729.5,
             ["x"] = -4255.9,
         },
@@ -9152,7 +9152,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 80.75,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 582.2,
             ["x"] = -4071.2,
         },
@@ -9161,7 +9161,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Done"] = {
             25188,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 729.7,
             ["x"] = -4256.4,
         },
@@ -9170,7 +9170,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Done"] = {
             25188,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 392.3,
             ["x"] = -4583.9,
         },
@@ -9178,7 +9178,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
     {
         ["Range"] = 29.49,
         ["Waypoint"] = 25232,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 428.8,
             ["x"] = -4847.4,
         },
@@ -9190,13 +9190,13 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 19.65,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 792.6,
             ["x"] = -4754.8,
         },
     },
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 287.7,
             ["x"] = -4724.9,
         },
@@ -9208,7 +9208,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25196,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 287.7,
             ["x"] = -4724.9,
         },
@@ -9218,7 +9218,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             834,
             835,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 999.7,
             ["x"] = -4413.8,
         },
@@ -9226,7 +9226,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
     {
         ["Waypoint"] = 834,
         ["Range"] = 21.83,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1054.4,
             ["x"] = -4521,
         },
@@ -9241,7 +9241,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 78.2,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 846.1,
             ["x"] = -4695.4,
         },
@@ -9251,13 +9251,13 @@ APR.RouteQuestStepList["1-Durotar"] = {
             834,
             835,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 999.6,
             ["x"] = -4413.8,
         },
     }, -- [72]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1288.9,
             ["x"] = -4341.4,
         },
@@ -9271,7 +9271,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             25260,
             25236, -- [3]
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1288.7,
             ["x"] = -4338.7,
         },
@@ -9287,7 +9287,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Gossip"] = 34398,
         ["RaidIcon"] = 39380,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1286.5,
             ["x"] = -4336,
         },
@@ -9300,13 +9300,13 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
         ["RaidIcon"] = 39365,
         ["Range"] = 1.46,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1238.4,
             ["x"] = -4727.9,
         },
     }, -- [3]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1286.5,
             ["x"] = -4335.9,
         },
@@ -9318,7 +9318,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25206,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1288,
             ["x"] = -4341.4,
         },
@@ -9330,7 +9330,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 95.48,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1137.5,
             ["x"] = -3997,
         },
@@ -9349,7 +9349,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Gossip"] = 1,
         ["RaidIcon"] = 3203,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 869.5,
             ["x"] = -4187.7,
         },
@@ -9362,13 +9362,13 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
         ["RaidIcon"] = 39464,
         ["Range"] = 105.6,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 897,
             ["x"] = -4118.9,
         },
     }, -- [7]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1288,
             ["x"] = -4341.4,
         },
@@ -9382,13 +9382,13 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25261,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1288.4,
             ["x"] = -4340.8,
         },
     },
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1103,
             ["x"] = -4945.5,
         },
@@ -9401,13 +9401,13 @@ APR.RouteQuestStepList["1-Durotar"] = {
             25262,
             25256,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1097.8,
             ["x"] = -4947.3,
         },
     }, -- [3]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 992,
             ["x"] = -5072.4,
         },
@@ -9421,7 +9421,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             25257,
             25258, -- [3]
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 991.7,
             ["x"] = -5073.7,
         },
@@ -9434,7 +9434,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
         ["RaidIcon"] = 39353,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1024.7,
             ["x"] = -5084.4,
         },
@@ -9447,7 +9447,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
         ["RaidIcon"] = 39351,
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1011.2,
             ["x"] = -5115.7,
         },
@@ -9460,7 +9460,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
         ["RaidIcon"] = 39352,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 982.2,
             ["x"] = -5104.2,
         },
@@ -9471,7 +9471,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             25257,
             25258, -- [3]
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 991.9,
             ["x"] = -5072.9,
         },
@@ -9479,7 +9479,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
     {
         ["Waypoint"] = 25262,
         ["Range"] = 12.99,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1462.8,
             ["x"] = -4874,
         },
@@ -9491,7 +9491,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             },
         },
         ["Range"] = 24.56,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1497.7,
             ["x"] = -4836.7,
         },
@@ -9500,7 +9500,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Done"] = {
             25262,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1102.7,
             ["x"] = -4944.2,
         },
@@ -9509,7 +9509,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["PickUp"] = {
             25263,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1102.2,
             ["x"] = -4945.9,
         },
@@ -9524,7 +9524,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             871,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 301.8,
             ["x"] = -3685.2,
         },
@@ -9533,7 +9533,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             844,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 325.3,
             ["x"] = -3669.5,
         },
@@ -9548,7 +9548,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 68,
             ["x"] = -3645.4,
         },
@@ -9569,7 +9569,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 36.15,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -4.1,
             ["x"] = -3617.5,
         },
@@ -9578,7 +9578,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             13878,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 65.5,
             ["x"] = -3649.4,
         },
@@ -9592,7 +9592,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             871,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 302.1,
             ["x"] = -3685.9,
         },
@@ -9601,7 +9601,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             872,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 302.1,
             ["x"] = -3685.9,
         },
@@ -9610,7 +9610,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             5041,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 326.2,
             ["x"] = -3669.4,
         },
@@ -9618,7 +9618,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Waypoint"] = 5041,
         ["Range"] = 19.92,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -175.5,
             ["x"] = -3610.2,
         },
@@ -9636,7 +9636,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 3438,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -288.5,
             ["x"] = -3490.2,
         },
@@ -9644,7 +9644,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Waypoint"] = 872,
         ["Range"] = 14.22,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -188.7,
             ["x"] = -3597.2,
         },
@@ -9656,13 +9656,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 98.01,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 220.8,
             ["x"] = -3540,
         },
     }, -- [12]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 325.3,
             ["x"] = -3670.7,
         },
@@ -9672,7 +9672,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [13]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 301.5,
             ["x"] = -3685.7,
         },
@@ -9684,7 +9684,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             13949,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 325.7,
             ["x"] = -3670,
         },
@@ -9698,7 +9698,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Gossip"] = 1,
         ["RaidIcon"] = 34258,
         ["Range"] = 4.23,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 319.6,
             ["x"] = -3649,
         },
@@ -9707,7 +9707,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             13949,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 267.3,
             ["x"] = -3052.9,
         },
@@ -9716,7 +9716,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             13961,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 267.2,
             ["x"] = -3048.5,
         },
@@ -9725,7 +9725,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             899,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 238.6,
             ["x"] = -2967.7,
         },
@@ -9734,7 +9734,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             13975,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 221,
             ["x"] = -2937,
         },
@@ -9743,7 +9743,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             13973,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 236,
             ["x"] = -2901.4,
         },
@@ -9758,7 +9758,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 69.11,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 203.6,
             ["x"] = -2799.5,
         },
@@ -9775,7 +9775,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["ExtraLineText"] = "NET_PILLAGER",
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 267.3,
             ["x"] = -3048.5,
         },
@@ -9784,7 +9784,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             13961,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 266.7,
             ["x"] = -3048,
         },
@@ -9793,7 +9793,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             13963,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 266.7,
             ["x"] = -3048,
         },
@@ -9806,13 +9806,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 34523,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 286.1,
             ["x"] = -3049,
         },
     }, -- [26]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 267.1,
             ["x"] = -3049.5,
         },
@@ -9825,13 +9825,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             13968,
             13969,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 266.8,
             ["x"] = -3048.7,
         },
     }, -- [28]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 239.9,
             ["x"] = -2966.7,
         },
@@ -9840,7 +9840,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [29]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 244.5,
             ["x"] = -2899,
         },
@@ -9852,7 +9852,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             13969,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -77.3,
             ["x"] = -3130,
         },
@@ -9861,7 +9861,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             13970,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -77.3,
             ["x"] = -3130,
         },
@@ -9877,7 +9877,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 34543,
         ["Range"] = 48.88,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -50.3,
             ["x"] = -3375.2,
         },
@@ -9886,7 +9886,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             13970,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -77.6,
             ["x"] = -3129.7,
         },
@@ -9895,13 +9895,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             13971,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -77.6,
             ["x"] = -3129.7,
         },
     }, -- [35]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 270.1,
             ["x"] = -3053.4,
         },
@@ -9919,7 +9919,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Gossip"] = 1,
         ["RaidIcon"] = 34578,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 221.5,
             ["x"] = -2935.5,
         },
@@ -9929,7 +9929,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             903,
             845,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -481.2,
             ["x"] = -2669.4,
         },
@@ -9938,7 +9938,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             870,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -437,
             ["x"] = -2640.7,
         },
@@ -9947,13 +9947,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             848,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -424.4,
             ["x"] = -2591.5,
         },
     }, -- [40]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -473.8,
             ["x"] = -2595,
         },
@@ -9976,7 +9976,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 38,
             ["x"] = -1985.5,
         },
@@ -9990,7 +9990,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 53.7,
             ["x"] = -1953.5,
         },
@@ -10010,7 +10010,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 89.9,
             ["x"] = -1943,
         },
@@ -10031,7 +10031,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 3394,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 19.6,
             ["x"] = -1713,
         },
@@ -10046,13 +10046,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 74.98,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 24.6,
             ["x"] = -1858.4,
         },
     }, -- [46]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 54.9,
             ["x"] = -1954.5,
         },
@@ -10061,7 +10061,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [47]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 35.7,
             ["x"] = -1985.4,
         },
@@ -10074,7 +10074,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             875,
             867,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 51,
             ["x"] = -1554.5,
         },
@@ -10089,7 +10089,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 125.16,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 605.2,
             ["x"] = -1343.1,
         },
@@ -10098,7 +10098,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             875,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 578.6,
             ["x"] = -1321.1,
         },
@@ -10107,7 +10107,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             867,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 665.7,
             ["x"] = -1313.6,
         },
@@ -10116,7 +10116,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             876,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 662.9,
             ["x"] = -1314.5,
         },
@@ -10129,7 +10129,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 3452,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 788.4,
             ["x"] = -1351,
         },
@@ -10138,7 +10138,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             876,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 52.1,
             ["x"] = -1554.6,
         },
@@ -10147,7 +10147,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             29095,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 52.1,
             ["x"] = -1554.6,
         },
@@ -10156,7 +10156,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             29090,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 848.9,
             ["x"] = -2344.2,
         },
@@ -10168,7 +10168,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 91.77,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 659.2,
             ["x"] = -2204.7,
         },
@@ -10177,7 +10177,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             29090,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 850,
             ["x"] = -2345.7,
         },
@@ -10186,7 +10186,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             858,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1110,
             ["x"] = -3103,
         },
@@ -10199,7 +10199,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 3445,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1024.8,
             ["x"] = -3082.9,
         },
@@ -10208,7 +10208,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             858,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1109.8,
             ["x"] = -3104,
         },
@@ -10217,7 +10217,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             863,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1109.8,
             ["x"] = -3104,
         },
@@ -10230,7 +10230,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 3439,
         ["Range"] = 176,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1106.4,
             ["x"] = -3095,
         },
@@ -10239,7 +10239,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             863,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1142.2,
             ["x"] = -3376.5,
         },
@@ -10249,7 +10249,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             29086,
             29021,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1141,
             ["x"] = -3376.4,
         },
@@ -10259,7 +10259,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             29087,
             29088,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1168.8,
             ["x"] = -3388.2,
         },
@@ -10274,13 +10274,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 62.97,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1072.5,
             ["x"] = -3135.9,
         },
     }, -- [20]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1100.9,
             ["x"] = -3107.7,
         },
@@ -10295,7 +10295,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.75,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1069.7,
             ["x"] = -3139.7,
         },
@@ -10307,13 +10307,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 93.29,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 856.7,
             ["x"] = -2931.5,
         },
     }, -- [21]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 831.9,
             ["x"] = -2691.9,
         },
@@ -10325,7 +10325,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             29022,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 827.7,
             ["x"] = -2688.2,
         },
@@ -10337,7 +10337,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.75,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 842.6,
             ["x"] = -2687,
         },
@@ -10349,7 +10349,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 842.6,
             ["x"] = -2675.4,
         },
@@ -10361,7 +10361,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 831,
             ["x"] = -2678.9,
         },
@@ -10370,7 +10370,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             29022,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 826.5,
             ["x"] = -2687,
         },
@@ -10379,7 +10379,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             29023,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 826.5,
             ["x"] = -2687,
         },
@@ -10392,7 +10392,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 3471,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 910.7,
             ["x"] = -2731.4,
         },
@@ -10401,7 +10401,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             29023,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 827,
             ["x"] = -2685.7,
         },
@@ -10410,7 +10410,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             29024,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 827,
             ["x"] = -2685.7,
         },
@@ -10420,7 +10420,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             29086,
             29024,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1140.9,
             ["x"] = -3375.5,
         },
@@ -10429,7 +10429,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14003,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1140.9,
             ["x"] = -3375.5,
         },
@@ -10439,7 +10439,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             29089,
             29088,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1169,
             ["x"] = -3388.7,
         },
@@ -10448,7 +10448,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             14003,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1161.5,
             ["x"] = -3398.2,
         },
@@ -10457,7 +10457,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             29026,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1161,
             ["x"] = -3397.7,
         },
@@ -10466,7 +10466,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             29026,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 858.7,
             ["x"] = -2346.9,
         },
@@ -10475,7 +10475,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             29027,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 858.7,
             ["x"] = -2346.9,
         },
@@ -10487,7 +10487,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 95.05,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 659.2,
             ["x"] = -2225.7,
         },
@@ -10496,7 +10496,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             29027,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 858.2,
             ["x"] = -2347.5,
         },
@@ -10505,7 +10505,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14004,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 858.6,
             ["x"] = -2347.7,
         },
@@ -10516,7 +10516,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 9316,
         ["ExtraLineText"] = "FLY_BACK",
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 858.4,
             ["x"] = -2347.2,
         },
@@ -10525,7 +10525,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             14004,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1141.2,
             ["x"] = -3376.2,
         },
@@ -10534,7 +10534,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14006,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1141.4,
             ["x"] = -3376.2,
         },
@@ -10543,7 +10543,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             29015,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1160.7,
             ["x"] = -3397.2,
         },
@@ -10551,7 +10551,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Range"] = 28.89,
         ["Waypoint"] = 14006,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1077.4,
             ["x"] = -3621.2,
         },
@@ -10564,7 +10564,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 44.41,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1311.5,
             ["x"] = -3587.5,
         },
@@ -10582,13 +10582,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["14006-1"] = 11147,
         },
         ["Range"] = 77.03,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1341.5,
             ["x"] = -3575.9,
         },
     }, -- [25]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1151,
             ["x"] = -3388.4,
         },
@@ -10602,7 +10602,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             29094,
         },
         ["RaidIcon"] = 3442,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1141.8,
             ["x"] = -3377.2,
         },
@@ -10614,13 +10614,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.75,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1143.5,
             ["x"] = -3368.7,
         },
     }, -- [28]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 51.1,
             ["x"] = -1556,
         },
@@ -10638,13 +10638,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 106.31,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -520.3,
             ["x"] = -2470.5,
         },
     }, -- [49]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -424.4,
             ["x"] = -2591.5,
         },
@@ -10656,13 +10656,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             13998,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -424.4,
             ["x"] = -2591.5,
         },
     }, -- [51]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -436.5,
             ["x"] = -2640.9,
         },
@@ -10674,13 +10674,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             13988,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -436.5,
             ["x"] = -2640.9,
         },
     }, -- [53]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -481.7,
             ["x"] = -2670.2,
         },
@@ -10693,7 +10693,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             881,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -481.7,
             ["x"] = -2670.2,
         },
@@ -10708,7 +10708,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["881-1"] = 10327,
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 126.8,
             ["x"] = -2540.2,
         },
@@ -10717,7 +10717,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             29095,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -473,
             ["x"] = -2595.7,
         },
@@ -10726,7 +10726,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             29109,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -473,
             ["x"] = -2595.7,
         },
@@ -10735,7 +10735,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             881,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -481.7,
             ["x"] = -2669.9,
         },
@@ -10744,7 +10744,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             905,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -481.7,
             ["x"] = -2669.9,
         },
@@ -10759,7 +10759,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["905-2"] = 5165,
         },
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1105.8,
             ["x"] = -2556.7,
         },
@@ -10774,7 +10774,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["905-3"] = 5165,
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1055.8,
             ["x"] = -2587.5,
         },
@@ -10789,7 +10789,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["905-1"] = 5165,
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1068,
             ["x"] = -2651.2,
         },
@@ -10798,7 +10798,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             13995,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1201,
             ["x"] = -2957.4,
         },
@@ -10807,7 +10807,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14072,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1192.6,
             ["x"] = -2968.9,
         },
@@ -10820,7 +10820,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1191.3,
             ["x"] = -2919,
         },
@@ -10840,7 +10840,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["13998-1"] = 46789,
         },
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1192.5,
             ["x"] = -2990.2,
         },
@@ -10853,13 +10853,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["ExtraLineText"] = "SEARCH_CENTAUR_TENTS",
         ["Range"] = 153.44,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1238,
             ["x"] = -3015.5,
         },
     }, -- [8]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1193.5,
             ["x"] = -2970,
         },
@@ -10872,7 +10872,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             851,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1193.5,
             ["x"] = -2970,
         },
@@ -10885,13 +10885,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 34846,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1210.8,
             ["x"] = -2725.2,
         },
     }, -- [11]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1192.5,
             ["x"] = -2969.5,
         },
@@ -10902,7 +10902,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Range"] = 17.03,
         ["Waypoint"] = 13988,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1288.9,
             ["x"] = -3172.2,
         },
@@ -10917,13 +10917,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["13988-1"] = 46782,
         },
         ["Range"] = 0.75,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1478.5,
             ["x"] = -3294.2,
         },
     }, -- [14]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1446.8,
             ["x"] = -3281.7,
         },
@@ -10936,7 +10936,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             877,
             880,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1446.5,
             ["x"] = -3282.2,
         },
@@ -10953,7 +10953,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1274.8,
             ["x"] = -3013.2,
         },
@@ -10965,13 +10965,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 66.49,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1274.8,
             ["x"] = -3013.2,
         },
     }, -- [18]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -480.2,
             ["x"] = -2670,
         },
@@ -10983,13 +10983,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             13991,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -480.2,
             ["x"] = -2670,
         },
     }, -- [20]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -436.3,
             ["x"] = -2640,
         },
@@ -10999,7 +10999,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [21]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -424.5,
             ["x"] = -2591.4,
         },
@@ -11011,7 +11011,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             13999,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -424.5,
             ["x"] = -2591.4,
         },
@@ -11020,13 +11020,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14073,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -473.5,
             ["x"] = -2595.5,
         },
     }, -- [24]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -306.9,
             ["x"] = -1970.3,
         },
@@ -11039,7 +11039,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             852,
             855,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -306.8,
             ["x"] = -1971,
         },
@@ -11047,7 +11047,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Waypoint"] = 852,
         ["Range"] = 49.25,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -802.7,
             ["x"] = -1946,
         },
@@ -11065,7 +11065,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 3396,
         ["Range"] = 84.31,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -973.5,
             ["x"] = -2136.5,
         },
@@ -11077,7 +11077,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 91.94,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -989.8,
             ["x"] = -2117.7,
         },
@@ -11087,7 +11087,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             855,
             852,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -306,
             ["x"] = -1970.8,
         },
@@ -11096,7 +11096,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             4021,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -306,
             ["x"] = -1970.8,
         },
@@ -11110,7 +11110,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["ExtraLineText"] = "KILL_CENTAURS",
         ["RaidIcon"] = 9456,
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -273.3,
             ["x"] = -1871.3,
         },
@@ -11119,13 +11119,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             4021,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -306.8,
             ["x"] = -1971.5,
         },
     }, -- [33]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -978,
             ["x"] = -3639.7,
         },
@@ -11137,7 +11137,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14066,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -978,
             ["x"] = -3639.7,
         },
@@ -11146,7 +11146,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             865,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -929,
             ["x"] = -3696.5,
         },
@@ -11155,7 +11155,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             895,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -918.5,
             ["x"] = -3720.2,
         },
@@ -11165,7 +11165,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             14034,
             14045,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -837.2,
             ["x"] = -3729,
         },
@@ -11175,7 +11175,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             887,
             14052,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -985.8,
             ["x"] = -3797.2,
         },
@@ -11184,13 +11184,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             891,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1024.3,
             ["x"] = -3687.2,
         },
     }, -- [40]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1053.9,
             ["x"] = -3649.7,
         },
@@ -11211,7 +11211,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 34754,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1051.1,
             ["x"] = -3645.9,
         },
@@ -11219,7 +11219,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Waypoint"] = 14034,
         ["Range"] = 15.87,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -858.8,
             ["x"] = -3754.2,
         },
@@ -11228,7 +11228,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             14034,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -836.3,
             ["x"] = -3728.9,
         },
@@ -11237,7 +11237,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14038,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -836.3,
             ["x"] = -3728.9,
         },
@@ -11245,7 +11245,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Waypoint"] = 865,
         ["Range"] = 16.25,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -874.8,
             ["x"] = -3562.9,
         },
@@ -11253,7 +11253,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Waypoint"] = 865,
         ["Range"] = 15.23,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -845.5,
             ["x"] = -3549.9,
         },
@@ -11266,7 +11266,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 34829,
         ["Range"] = 0.75,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -371.4,
             ["x"] = -3512.5,
         },
@@ -11275,7 +11275,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             865,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -927.8,
             ["x"] = -3697,
         },
@@ -11283,7 +11283,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Waypoint"] = 891,
         ["Range"] = 20.13,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1047.9,
             ["x"] = -3696,
         },
@@ -11301,7 +11301,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 34752,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1427.4,
             ["x"] = -3851.5,
         },
@@ -11315,7 +11315,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             14045,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1453.4,
             ["x"] = -3815.7,
         },
@@ -11324,7 +11324,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14046,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1453.5,
             ["x"] = -3815.2,
         },
@@ -11337,7 +11337,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["Gossip"] = 2,
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1453.8,
             ["x"] = -3815,
         },
@@ -11346,7 +11346,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14049,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1453.8,
             ["x"] = -3815,
         },
@@ -11363,7 +11363,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1316,
             ["x"] = -3784.2,
         },
@@ -11380,7 +11380,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1465,
             ["x"] = -3878.7,
         },
@@ -11401,7 +11401,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["ExtraLineText"] = "UNDERNEATH",
         ["Range"] = 7.23,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1456.4,
             ["x"] = -3970.4,
         },
@@ -11410,7 +11410,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             14038,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1454.8,
             ["x"] = -3966.7,
         },
@@ -11419,7 +11419,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14042,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1446.6,
             ["x"] = -3965.5,
         },
@@ -11434,7 +11434,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 178.26,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1613.1,
             ["x"] = -3851.7,
         },
@@ -11452,7 +11452,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 34750,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1609.4,
             ["x"] = -4270.9,
         },
@@ -11466,7 +11466,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             14052,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1690.5,
             ["x"] = -4236.3,
         },
@@ -11475,7 +11475,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14056,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1690.5,
             ["x"] = -4236.3,
         },
@@ -11493,7 +11493,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 34747,
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1667.4,
             ["x"] = -4216.9,
         },
@@ -11507,7 +11507,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             14056,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1690.6,
             ["x"] = -4235.4,
         },
@@ -11516,7 +11516,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14057,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1690.3,
             ["x"] = -4235.4,
         },
@@ -11533,7 +11533,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.75,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1609.1,
             ["x"] = -4271.4,
         },
@@ -11547,7 +11547,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             14057,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1690.4,
             ["x"] = -4236,
         },
@@ -11561,7 +11561,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1690.4,
             ["x"] = -4236,
         },
@@ -11573,7 +11573,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 27.25,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1644.3,
             ["x"] = -4230.5,
         },
@@ -11588,13 +11588,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["14063-1"] = 46838,
         },
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1648.9,
             ["x"] = -4383.9,
         },
     }, -- [72]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1023.3,
             ["x"] = -3687.7,
         },
@@ -11603,7 +11603,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [73]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -985.2,
             ["x"] = -3796.7,
         },
@@ -11613,7 +11613,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [74]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -836.5,
             ["x"] = -3727.7,
         },
@@ -11627,7 +11627,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14050,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -836.5,
             ["x"] = -3727.7,
         },
@@ -11635,7 +11635,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Range"] = 11.49,
         ["Waypoint"] = 14050,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1059,
             ["x"] = -3561.2,
         },
@@ -11643,7 +11643,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Range"] = 18.64,
         ["Waypoint"] = 14050,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1109.4,
             ["x"] = -3568.7,
         },
@@ -11655,7 +11655,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -1160.3,
             ["x"] = -3602.2,
         },
@@ -11663,7 +11663,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Range"] = 17.65,
         ["Waypoint"] = 14066,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -847.7,
             ["x"] = -3546.9,
         },
@@ -11675,13 +11675,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -761,
             ["x"] = -3587.5,
         },
     }, -- [81]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -761,
             ["x"] = -3587.5,
         },
@@ -11693,7 +11693,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             869,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -762.5,
             ["x"] = -3592.5,
         },
@@ -11702,7 +11702,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14068,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -612.3,
             ["x"] = -3361.5,
         },
@@ -11714,13 +11714,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -521.3,
             ["x"] = -3453.5,
         },
     }, -- [89]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -521.3,
             ["x"] = -3453.5,
         },
@@ -11732,7 +11732,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             14067,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -521.3,
             ["x"] = -3453.5,
         },
@@ -11756,7 +11756,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["14068-1"] = 46853,
         },
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -441.7,
             ["x"] = -3459,
         },
@@ -11777,7 +11777,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["14068-1"] = 46853,
         },
         ["Range"] = 106.81,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -504.5,
             ["x"] = -3415.4,
         },
@@ -11790,7 +11790,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 143.82,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -441.8,
             ["x"] = -3458.9,
         },
@@ -11814,7 +11814,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["14068-1"] = 46853,
         },
         ["Range"] = 0.61,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -441.7,
             ["x"] = -3459,
         },
@@ -11835,13 +11835,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ["14068-1"] = 46853,
         },
         ["Range"] = 106.81,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -504.5,
             ["x"] = -3415.4,
         },
     },
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -612.8,
             ["x"] = -3361.2,
         },
@@ -11850,7 +11850,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [3]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -979,
             ["x"] = -3639.2,
         },
@@ -11859,7 +11859,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [4]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -836.2,
             ["x"] = -3727.9,
         },
@@ -11871,7 +11871,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             26769,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -836.2,
             ["x"] = -3727.9,
         },
@@ -11883,7 +11883,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -705,
             ["x"] = -3987,
         },
@@ -11892,7 +11892,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             26769,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1167.9,
             ["x"] = -3389,
         },
@@ -11901,7 +11901,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["UseFlightPath"] = 29109,
         ["Name"] = "The Crossroads, Northern Barrens",
         ["NodeID"] = 25,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1155.4,
             ["x"] = -3377.2,
         },
@@ -11915,7 +11915,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["Gossip"] = 1,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -381,
             ["x"] = -2688.7,
         },
@@ -11927,13 +11927,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -381.9,
             ["x"] = -2679.2,
         },
     }, -- [6]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 294.2,
             ["x"] = -2528.9,
         },
@@ -11945,7 +11945,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             29110,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 294.5,
             ["x"] = -2528.5,
         },
@@ -11953,7 +11953,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Waypoint"] = 29110,
         ["Range"] = 19.41,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 348.7,
             ["x"] = -2514.5,
         },
@@ -11961,7 +11961,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Waypoint"] = 29110,
         ["Range"] = 21.65,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 399.3,
             ["x"] = -2393.5,
         },
@@ -11970,7 +11970,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             29110,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 308.8,
             ["x"] = -2157.2,
         },
@@ -11979,7 +11979,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             29112,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 308.8,
             ["x"] = -2157.2,
         },
@@ -11991,7 +11991,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             },
         },
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 324,
             ["x"] = -2238.2,
         },
@@ -12000,7 +12000,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             29112,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 294.6,
             ["x"] = -2530.2,
         },
@@ -12009,7 +12009,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["PickUp"] = {
             29111,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 294.6,
             ["x"] = -2530.2,
         },
@@ -12023,7 +12023,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Gossip"] = 1,
         ["RaidIcon"] = 52207,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 293.8,
             ["x"] = -2529.2,
         },
@@ -12036,7 +12036,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["RaidIcon"] = 52314,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 294.7,
             ["x"] = -2544,
         },
@@ -12045,7 +12045,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Done"] = {
             29111,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = 1231.5,
             ["x"] = -2240.2,
         },
@@ -12060,7 +12060,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         ["PickUp"] = {
             24504,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -454.3,
             ["x"] = -971.8,
         },
@@ -12073,7 +12073,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             },
         },
         ["Range"] = 15.13,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -425.7,
             ["x"] = -1161.6,
         },
@@ -12085,13 +12085,13 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             },
         },
         ["Range"] = 76.7,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -516.8,
             ["x"] = -1269.1,
         },
     }, -- [3]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -617.8,
             ["x"] = -1419.3,
         },
@@ -12103,7 +12103,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         ["PickUp"] = {
             24505,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -617.8,
             ["x"] = -1419.3,
         },
@@ -12113,7 +12113,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             25284,
             24512,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -617,
             ["x"] = -1434,
         },
@@ -12130,7 +12130,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
                 ["1"] = "1",
             },
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -482.9,
             ["x"] = -1395.5,
         },
@@ -12151,7 +12151,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         },
         ["RaidIcon"] = 37157,
         ["Range"] = 0.69,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -485.4,
             ["x"] = -1402,
         },
@@ -12168,7 +12168,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         ["Done"] = {
             24513,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -484.3,
             ["x"] = -1396.6,
         },
@@ -12184,13 +12184,13 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         },
         ["Gossip"] = 1,
         ["Range"] = 24.41,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -492.2,
             ["x"] = -1399,
         },
     }, -- [7]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -617,
             ["x"] = -1433.8,
         },
@@ -12200,7 +12200,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         },
     }, -- [8]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -801.5,
             ["x"] = -1570,
         },
@@ -12213,7 +12213,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             24514,
             24515,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -800.8,
             ["x"] = -1568.5,
         },
@@ -12222,7 +12222,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         ["PickUp"] = {
             24517,
         },
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -778.7,
             ["x"] = -1580.4,
         },
@@ -12240,7 +12240,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         },
         ["RaidIcon"] = 37216,
         ["Range"] = 24.84,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -551.5,
             ["x"] = -1592.3,
         },
@@ -12257,7 +12257,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             },
         },
         ["Range"] = 52.75,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -506.8,
             ["x"] = -1530,
         },
@@ -12269,13 +12269,13 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             },
         },
         ["Range"] = 89.34,
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -910.5,
             ["x"] = -1747.5,
         },
     }, -- [6]
     {
-        ["TT"] = {
+        ["Coord"] = {
             ["y"] = -789.5,
             ["x"] = -1574.8,
         },
