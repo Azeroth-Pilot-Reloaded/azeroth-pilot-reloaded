@@ -24,6 +24,7 @@ helpers/StepHelper.lua
 
 database\AllianceRoutes.lua
 database\HordeRoutes.lua
+database\NeutralRoutes.lua
 database\Portals.lua
 database\TaxiNodes.lua
 database\ZoneOrder.lua

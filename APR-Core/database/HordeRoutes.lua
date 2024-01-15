@@ -9,7 +9,6 @@ if (APR.Faction == "Horde") then
         ["Goblin Start"] = 194,
         ["Goblin - Lost Isles"] = 174,
         ["Demon Hunter Start"] = 672,
-        ["Pandaren Start"] = 378,
         ["Durotar"] = 1,
         ["Death Knight Start"] = 23,
         ["Allied Death Knight Start"] = 2297,
@@ -172,8 +171,6 @@ if (APR.Faction == "Horde") then
         APR.RouteList.Vanilla["H_Allied_Icecrown Citadel"] = "Allied Death Knight Start"
     elseif (APR.ClassId == APR.Classes["Death Knight"]) then
         APR.RouteList.Vanilla["H23-ScarletEnclave"] = "Death Knight Start"
-    elseif (APR.Race == "Pandaren") then
-        APR.RouteList.Vanilla["378-WanderingIsle"] = "Pandaren Start"
     elseif (APR.ClassId == APR.Classes["Demon Hunter"]) then
         APR.RouteList.Vanilla["672-Mardum"] = "Demon Hunter Start"
     elseif (APR.Race == "Dracthyr") then
