@@ -69,6 +69,18 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "BETA-v3.1.5", "2024-01-15" },
+        "#Bugs",
+        "- Fix starting zone for goblin, Night Elf",
+        "- Fix non skipable starting zone",
+
+        "#Route",
+        "- New Gender step option (for the goblin route for now)",
+        "- Change CRange step to Waypoint",
+        "- Change AreaTriggerZ step to ZoneStepTrigger",
+        "- Change TT step to Coord",
+        "- Remove all the Trigger step",
+
         { "BETA-v3.1.4", "2024-01-10" },
         "#Bugs",
         "- Fix no quest/item button on the current step",
@@ -128,7 +140,7 @@ function APR.changelog:SetChangeLog()
         "- Rework - transport logic",
         "- Fix bunch of tiny stuff in code",
 
-        { "v3.0.3", "2023-11-14" },
+        { "v3.0.3",      "2023-11-14" },
         "#Features",
         "- Glichy dotted line replaced by normal line (but you can now change color, transparency and size)",
         "- Add color and size option for the next steps icons on map and minimap",

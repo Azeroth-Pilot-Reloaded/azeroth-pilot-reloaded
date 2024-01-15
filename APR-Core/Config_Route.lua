@@ -592,9 +592,9 @@ function APR.routeconfig:InitRouteConfig()
             SetCustomPathListFrame(customPathListeWidget, "custom_path_area")
             SetRouteListTab(tabRouteListWidget, currentTabName)
             APR.settings:OpenSettings(L["ROUTE"])
-            -- to trigger the frame
-            APR.BookingList["UpdateMapId"] = true
         end
+        -- to trigger the frame
+        APR.BookingList["UpdateMapId"] = true
     end)
     InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)
     InitDialogControlFrame("RouteListFrame", CreateRouteTableFrame, SetRouteListTab)
@@ -658,6 +658,7 @@ function APR.routeconfig:GetStartingZonePrefab()
                 -- ALLIANCE
             elseif (APR.Race == "NightElf") then
                 tinsert(APRCustomPath[APR.PlayerID], "Night Elf Start")
+                tinsert(APRCustomPath[APR.PlayerID], "Teldrassil")
             elseif (APR.Race == "Draenei") then
                 tinsert(APRCustomPath[APR.PlayerID], "Draenei Start")
                 tinsert(APRCustomPath[APR.PlayerID], "Azuremyst Isle")

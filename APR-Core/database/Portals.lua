@@ -6,6 +6,14 @@ APR.Portals = {
                 x = -11576.5,
                 y = -4053,
             },
+            ["Exodar"] = {
+                x = 2506.6,
+                y = 9656.3,
+            },
+            ["DarkPortal BC"] = {
+                x = 2510.3,
+                y = 9661.5,
+            },
         },
         -- Eastern Kingdom
         [13] = {
@@ -32,10 +40,6 @@ APR.Portals = {
             ["StormshieldWoD"] = {
                 x = 887.7,
                 y = -9060.3,
-            },
-            ["DarkPorta"] = {
-                x = 869.8,
-                y = -9007.5,
             },
             ["AzsunaLegion"] = {
                 x = 909.6,

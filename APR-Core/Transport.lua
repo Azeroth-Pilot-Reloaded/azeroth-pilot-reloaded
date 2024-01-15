@@ -14,7 +14,7 @@ function APR.transport:GetMeToRightZone()
         print("Function: APR.transport:GetMeToRightZone()")
     end
 
-    if IsInInstance() then
+    if IsInInstance() or not APRCustomPath[APR.PlayerID] then
         return
     end
 

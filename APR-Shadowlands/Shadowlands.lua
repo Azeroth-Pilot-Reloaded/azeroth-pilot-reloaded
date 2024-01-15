@@ -1422,7 +1422,6 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
         },
     },
     --	{
-    -
     --		["GetFP"] = 2395,
     --		["Range"] = 0.75,
     --		["Coord"] = {
@@ -9791,7 +9790,6 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     --		},
     --	},
     --	["Gossip"] = 1,
-    -
     --	["RaidIcon"] = 169031,
     --	["Range"] = 0.61,
     --	["Coord"] = {
@@ -19107,7 +19105,6 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     },
     --	{
-    -
     --		["GetFP"] = 2395,
     --		["Range"] = 0.75,
     --		["Coord"] = {
@@ -27002,7 +26999,6 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
     --		},
     --	},
     --	["Gossip"] = 1,
-    -
     --	["RaidIcon"] = 169031,
     --	["Range"] = 0.61,
     --	["Coord"] = {
@@ -30994,7 +30990,6 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
     }, -- [241]
     --{
     --	["Waypoint"] = 57724,
-    -
     --	["ExtraLineText"] = "ENTER_MIRROR",
     --	["Range"] = 12.25,
     --	["Coord"] = {
@@ -33302,7 +33297,6 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     },
     --	{
-    -
     --		["GetFP"] = 2395,
     --		["Range"] = 0.75,
     --		["Coord"] = {
@@ -41196,7 +41190,6 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
     --		},
     --	},
     --	["Gossip"] = 1,
-    -
     --	["RaidIcon"] = 169031,
     --	["Range"] = 0.61,
     --	["Coord"] = {
@@ -45188,7 +45181,6 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
     }, -- [241]
     --{
     --	["Waypoint"] = 57724,
-    -
     --	["ExtraLineText"] = "ENTER_MIRROR",
     --	["Range"] = 12.25,
     --	["Coord"] = {
