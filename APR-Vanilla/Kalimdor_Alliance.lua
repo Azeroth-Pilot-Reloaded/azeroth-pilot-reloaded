@@ -520,6 +520,9 @@ APR.RouteQuestStepList["A97-AmmenVale"] = {
                 ["1"] = "1",
             },
         },
+        ["Button"] = {
+            ["37444-1"] = 22962,
+        },
         ["Range"] = 15.97,
         ["Coord"] = {
             ["y"] = -4458.9,

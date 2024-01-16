@@ -5519,15 +5519,18 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     },
     {
+        ["Done"] = {
+            88,
+        },
         ["Coord"] = {
             ["y"] = -9895,
             ["x"] = 332.8,
         },
-        ["Done"] = {
-            88,
-        },
     },
     {
+        ["Done"] = {
+            85,
+        },
         ["Fillers"] = {
             [47] = {
                 ["1"] = "1",
@@ -5535,9 +5538,6 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             [60] = {
                 ["1"] = "1",
             },
-        },
-        ["Done"] = {
-            85,
         },
         ["Coord"] = {
             ["y"] = -9923.2,
