@@ -2555,16 +2555,6 @@ APR.TaxiNodes = {
                 y = -7865.9301757812,
                 Name = "Chiselgrip, Burning Steppes",
             },
-            [1421] = {
-                x = 0,
-                y = 0,
-                Name = "Shadowmoon Valley 6.0:Jp3 - Darktide Roost - Bottom Of Hill",
-            },
-            [1422] = {
-                x = 0,
-                y = 0,
-                Name = "Shadowmoon Valley 6.0:JP3 - Darktide Roost - Top of Hill",
-            },
             [2172] = {
                 x = 0,
                 y = 0,
@@ -2577,16 +2567,6 @@ APR.TaxiNodes = {
             },
         },
         [101] = {
-            [1350] = {
-                x = -1029.6500244141,
-                y = 966.91802978516,
-                Name = "Shadowmoon Valley 6.0 - Observatory (JP3)",
-            },
-            [1351] = {
-                x = -1029.6500244141,
-                y = 966.91802978516,
-                Name = "Shadowmoon Valley 6.0 - Ironhorde POI (JP3)",
-            },
             [1384] = {
                 x = -788.89099121094,
                 y = 1526.3800048828,

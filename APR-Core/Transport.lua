@@ -32,8 +32,10 @@ function APR.transport:GetMeToRightZone()
 
     _G.UpdateQuestAndStep()
     -- //TODO: verifier si on veut accepter les autres zones ou si on veut check que la main pour le fly
-    if CheckIsInRouteZone() and isSameContinent then
+    if CheckIsInRouteZone() and isSameContinent and APR.Arrow.Distance < 4000 then
         APR.IsInRouteZone = true
+        -- To avoid unwanted auto taxi
+        APR.transport.wrongZoneDestTaxiName = nil
         return
     else
         APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
@@ -58,7 +60,7 @@ function APR.transport:GetMeToRightZone()
             " - " .. L["DESTINATION"] .. ": " .. mapInfo.name .. ", " .. parentMapInfo.name .. " (" .. mapID .. ")"
         APR.currentStep:AddExtraLineText("DESTINATION", destinationText)
         -- Hide the arrow
-        APR.ArrowActive = false
+        APR.Arrow.Active = false
         if not isSameContinent then
             self:SwitchContinent(currentContinent, nextContinent, mapID)
         else
@@ -66,12 +68,13 @@ function APR.transport:GetMeToRightZone()
             local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY = self:ClosestTaxi(posX, posY)
             local _, objectiveTaxiName, _, _ = self:ClosestTaxi(step.Coord.x, step.Coord.y)
             if playerTaxiNodeId ~= objectiveTaxiName then
+                APR.transport.wrongZoneDestTaxiName = objectiveTaxiName
                 APR.currentStep:AddExtraLineText("FLY_TO_" .. objectiveTaxiName, L["FLY_TO"] .. " " .. objectiveTaxiName)
                 APR.currentStep:AddExtraLineText("CLOSEST_FP" .. playerTaxiName,
                     L["CLOSEST_FP"] .. ": " .. playerTaxiName)
-                APR.ArrowActive = true
-                APR.ArrowActive_X = playerTaxiX
-                APR.ArrowActive_Y = playerTaxiY
+                APR.Arrow.Active = true
+                APR.Arrow.x = playerTaxiX
+                APR.Arrow.y = playerTaxiY
             else
                 local zoneEntryMapID, zoneEntryX, zoneEntryY = self:GetZoneMoveOrder(mapID, playerMapInfo)
 
@@ -79,16 +82,16 @@ function APR.transport:GetMeToRightZone()
                     local zoneEntryMapInfo = C_Map.GetMapInfo(zoneEntryMapID)
                     APR.currentStep:AddExtraLineText("GO_TO" .. zoneEntryMapInfo.name,
                         L["GO_TO"] .. ": " .. zoneEntryMapInfo.name)
-                    APR.ArrowActive = true
-                    APR.ArrowActive_X = zoneEntryX
-                    APR.ArrowActive_Y = zoneEntryY
+                    APR.Arrow.Active = true
+                    APR.Arrow.x = zoneEntryX
+                    APR.Arrow.y = zoneEntryY
                 else
                     APR.currentStep:AddExtraLineText("ERROR_PATH_NOT_FOUND", L["ERROR"] ..
                         " - " .. L["PATH_NOT_FOUND"] .. " " .. mapInfo.name .. " (" .. mapID .. ")")
                     APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. mapInfo.name)
-                    APR.ArrowActive = false
-                    APR.ArrowActive_X = 0
-                    APR.ArrowActive_Y = 0
+                    APR.Arrow.Active = false
+                    APR.Arrow.x = 0
+                    APR.Arrow.y = 0
                 end
             end
         end
@@ -183,9 +186,9 @@ end
 ---@param nodeId number the wanted zone ID to reach in the nextContinent
 function APR.transport:SwitchContinent(CurContinent, nextContinent, nextZone)
     local function setArrowActive(x, y)
-        APR.ArrowActive = true
-        APR.ArrowActive_X = x
-        APR.ArrowActive_Y = y
+        APR.Arrow.Active = true
+        APR.Arrow.x = x
+        APR.Arrow.y = y
     end
 
     local function handlePortals(portalMappings)
@@ -219,10 +222,10 @@ function APR.transport:SwitchContinent(CurContinent, nextContinent, nextZone)
         end
     end
 
-    local function handleTaxi(closestTaxiName, destTaxiName, destNodeId)
+    local function handleTaxi(closestTaxiName, destTaxiName)
         APR.currentStep:AddExtraLineText("FLY_TO_" .. destTaxiName, L["FLY_TO"] .. " " .. destTaxiName)
         APR.currentStep:AddExtraLineText("CLOSEST_FP" .. closestTaxiName, L["CLOSEST_FP"] .. ": " .. closestTaxiName)
-        APR.transport.switchContinentTaxiNodeId = destNodeId
+        APR.transport.wrongZoneDestTaxiName = destTaxiName
     end
 
     -- Portal
@@ -261,7 +264,7 @@ function APR.transport:SwitchContinent(CurContinent, nextContinent, nextZone)
             setArrowActive(portalPosition.x, portalPosition.y)
         end
     else
-        handleTaxi(playerTaxiName, portalTaxiName, portalTaxiNodeId)
+        handleTaxi(playerTaxiName, portalTaxiName)
         setArrowActive(playerTaxiX, playerTaxiY)
     end
 end
@@ -306,9 +309,9 @@ function APR.transport:ClosestTaxi(posX, posY)
     local neutralNodeId, neutralName, neutralX, neutralY, neutralDistance = findClosestTaxi("Neutral")
 
     if neutralDistance < closestDistance then
-        return neutralNodeId, neutralName, neutralX, neutralY
+        return neutralNodeId, (APRTaxiNodes[APR.PlayerID][neutralNodeId] or neutralName), neutralX, neutralY
     else
-        return closestNodeId, closestName, closestX, closestY
+        return closestNodeId, (APRTaxiNodes[APR.PlayerID][closestNodeId] or closestName), closestX, closestY
     end
 end
 
@@ -354,22 +357,21 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
         --------------- Auto Flight----------------
         -------------------------------------------
         if steps then
-            if steps.UseFlightPath then
+            if steps.UseFlightPath or APR.transport.wrongZoneDestTaxiName then
                 if APR.transport.CurrentTaxiNode.nodeID == APR.transport.StepTaxiNode.nodeId then
                     NextQuestStep()
                 elseif not IsModifierKeyDown() then
-                    for i = 1, _G.NumTaxiNodes() do
-                        if _G.TaxiNodeName(i) == APR.transport.StepTaxiNode.name then
+                    for taxiIndex = 1, _G.NumTaxiNodes() do
+                        local name = _G.TaxiNodeName(taxiIndex)
+                        if name == APR.transport.StepTaxiNode.name or name == APR.transport.wrongZoneDestTaxiName then
                             if APR.settings.profile.autoFlight then
-                                TakeTaxiNode(Nodetotake)
+                                TakeTaxiNode(taxiIndex)
                             end
                             break
                         end
                     end
                 end
             end
-        elseif APR.transport.switchContinentTaxiNodeId and not IsModifierKeyDown() then
-            TakeTaxiNode(APR.transport.switchContinentTaxiNodeId)
         end
     elseif event == "PLAYER_CONTROL_LOST" and UnitOnTaxi("player") then
         if steps and steps.ETA then
@@ -388,6 +390,6 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
             UpdateNextStep()
         end
         -- reset
-        APR.transport.switchContinentTaxiNodeId = nil
+        APR.transport.wrongZoneDestTaxiName = nil
     end
 end)
