@@ -1224,28 +1224,19 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     if (event == "UNIT_AURA") then
         local arg1, arg2, arg3, arg4 = ...;
-        if (arg1 == "player" and steps and steps["Debuffcount"]) then
-            for i = 1, 20 do
-                local _, _, count, _, _, _, _, _, _, spellId = UnitBuff("player", i)
-                if (spellId and count) then
-                    if (spellId == 69704 and count == 5) then
-                        _G.NextQuestStep()
-                    end
-                end
-            end
-        end
+
         if (APR.SweatBuff[1] or APR.SweatBuff[2] or APR.SweatBuff[3]) then
             local gotbuff1 = false
             local gotbuff2 = false
             local gotbuff3 = false
             for i = 1, 20 do
-                local _, _, _, _, _, _, _, _, _, spellId = UnitBuff("player", i)
+                local aura = C_UnitAuras.GetAuraDataByIndex("player", i)
 
-                if (spellId == 311103) then
+                if (aura.spellId == 311103) then
                     gotbuff1 = true
-                elseif (spellId == 311107) then
+                elseif (aura.spellId == 311107) then
                     gotbuff2 = true
-                elseif (spellId == 311058) then
+                elseif (aura.spellId == 311058) then
                     gotbuff3 = true
                 end
             end
