@@ -69,6 +69,13 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "BETA-v3.1.7", "2024-01-16" },
+        "#Features",
+        "- Add Wrong Zone logic if you're to far away from objective",
+
+        "#Bugs",
+        "- Fix Auto Flightpath",
+
         { "BETA-v3.1.6", "2024-01-16" },
         "#Bugs",
         "- Fix starting zone for gnome, human and dreanei",
@@ -145,7 +152,7 @@ function APR.changelog:SetChangeLog()
         "- Rework - transport logic",
         "- Fix bunch of tiny stuff in code",
 
-        { "v3.0.3", "2023-11-14" },
+        { "v3.0.3",      "2023-11-14" },
         "#Features",
         "- Glichy dotted line replaced by normal line (but you can now change color, transparency and size)",
         "- Add color and size option for the next steps icons on map and minimap",
