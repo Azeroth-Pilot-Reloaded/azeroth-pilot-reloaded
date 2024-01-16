@@ -1,7 +1,6 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
-local DF = _G["DetailsFramework"]
 
 -- Initialize APR current step module
 APR.currentStep = APR:NewModule("CurrentStep")
