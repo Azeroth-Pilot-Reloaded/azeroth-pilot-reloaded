@@ -680,6 +680,7 @@ function APR.routeconfig:GetStartingZonePrefab()
                 tinsert(APRCustomPath[APR.PlayerID], "Dun Morogh")
             elseif (APR.Race == "Human") then
                 tinsert(APRCustomPath[APR.PlayerID], "Human Start")
+                tinsert(APRCustomPath[APR.PlayerID], "Elwynn Forest")
             elseif (APR.Race == "Gnome") then
                 tinsert(APRCustomPath[APR.PlayerID], "Gnome Start")
                 tinsert(APRCustomPath[APR.PlayerID], "Dun Morogh")
