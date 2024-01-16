@@ -1,5 +1,4 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-local DF = _G["DetailsFramework"]
 
 APR = {}
 APR = _G.LibStub("AceAddon-3.0"):NewAddon(APR, "APR", "AceEvent-3.0")
