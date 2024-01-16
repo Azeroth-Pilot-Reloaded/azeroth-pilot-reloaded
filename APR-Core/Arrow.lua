@@ -5,11 +5,14 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 -- Initialize module
 APR.Arrow = APR:NewModule("Arrow")
 
-APR.Arrow.currentStep = 0
-APR.Arrow.UpdateFreq = 0
-APR.ArrowActive = false
-APR.ArrowActive_X = 0
-APR.ArrowActive_Y = 0
+APR.Arrow = {
+    currentStep = 0,
+    UpdateFreq = 0,
+    Active = false,
+    x = 0,
+    y = 0,
+    Distance = 0
+}
 
 ---------------------------------------------------------------------------------------
 ----------------------------------- Arrow Frames --------------------------------------
@@ -76,8 +79,8 @@ APR.ArrowFrame.Button:SetScript("OnMouseDown", function(self, button)
     APR.ArrowFrame.Button:Hide()
     print("APR: " .. L["SKIP_WAYPOINT"])
     _G.NextQuestStep()
-    APR.ArrowActive_X = 0
-    APR.ArrowActive_Y = 0
+    APR.Arrow.x = 0
+    APR.Arrow.y = 0
 end)
 
 local t = APR.ArrowFrame.Button:CreateTexture(nil, "BACKGROUND")
@@ -143,9 +146,9 @@ function APR.Arrow:SetQPTT()
     end
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     if (APR.Arrow.currentStep ~= CurStep and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep].Coord and CheckIsInRouteZone()) then
-        APR.ArrowActive = true
-        APR.ArrowActive_X = APR.RouteQuestStepList[APR.ActiveRoute][CurStep].Coord.x
-        APR.ArrowActive_Y = APR.RouteQuestStepList[APR.ActiveRoute][CurStep].Coord.y
+        APR.Arrow.Active = true
+        APR.Arrow.x = APR.RouteQuestStepList[APR.ActiveRoute][CurStep].Coord.x
+        APR.Arrow.y = APR.RouteQuestStepList[APR.ActiveRoute][CurStep].Coord.y
         APR.Arrow.currentStep = CurStep
     end
 end
@@ -158,7 +161,7 @@ function APR.Arrow:CalculPosition()
         return
     end
 
-    if not APR.settings.profile.showArrow or not APR.ArrowActive or APR.ArrowActive_X == 0 or IsInInstance() or C_PetBattles.IsInBattle() then
+    if not APR.settings.profile.showArrow or not APR.Arrow.Active or APR.Arrow.x == 0 or IsInInstance() or C_PetBattles.IsInBattle() then
         APR.ArrowFrame:Hide()
         return
     end
@@ -181,16 +184,23 @@ function APR.Arrow:CalculPosition()
     APR.ArrowFrame:Show()
     APR.ArrowFrame.Button:Hide()
 
-    local x, y = APR.ArrowActive_X, APR.ArrowActive_Y -- step TT
+    local x, y = APR.Arrow.x, APR.Arrow.y -- step TT
     local deltaX, deltaY = playerX - x, y - playerY
     local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
     local angle = math.atan2(-deltaX, deltaY) - GetPlayerFacing()
     local perc = math.abs((math.pi - math.abs(angle)) / math.pi)
 
+    -- Set global distance for transport
+    APR.Arrow.Distance = distance
+    if distance >= 4000 then
+        APR.BookingList["UpdateMapId"] = true
+        return
+    end
+
     if questStep.Waypoint or questStep.Range then
         local range = questStep.Range
         if distance < range then
-            APR.ArrowActive_X = 0
+            APR.Arrow.x = 0
             if questStep.Waypoint then
                 APR.Arrow.currentStep = 0
                 _G.NextQuestStep()

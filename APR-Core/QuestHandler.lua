@@ -809,7 +809,7 @@ local function APR_UpdateStep()
         APR.SetButton()
         if (steps["ZoneDone"] or (APR.ActiveRoute == 862 and APRData[APR.PlayerID]["HordeD"] and APRData[APR.PlayerID]["HordeD"] == 1)) then
             APR.currentStep:Disable()
-            APR.ArrowActive = false
+            APR.Arrow.Active = false
         end
         APR.BookingList["SetQPTT"] = true
         APR.questOrderList:AddStepFromRoute()

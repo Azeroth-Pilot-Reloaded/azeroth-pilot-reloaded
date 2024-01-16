@@ -184,8 +184,8 @@ function APR.map:UpdateMinimapLine()
         return
     end
 
-    if APR.ArrowActive and APR.ArrowActive_X ~= 0 then
-        PositionMinimapLine(APR.ArrowActive_X, APR.ArrowActive_Y)
+    if APR.Arrow.Active and APR.Arrow.x ~= 0 then
+        PositionMinimapLine(APR.Arrow.x, APR.Arrow.y)
         return
     end
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
@@ -221,8 +221,8 @@ function APR.map:UpdateLine()
             local playerPos = C_Map.GetPlayerMapPosition(mapID, "player")
 
             local ox, oy
-            if APR.ArrowActive and APR.ArrowActive_X ~= 0 then
-                ox, oy = APR:GetPlayerMapPos(mapID, APR.ArrowActive_Y, APR.ArrowActive_X)
+            if APR.Arrow.Active and APR.Arrow.x ~= 0 then
+                ox, oy = APR:GetPlayerMapPos(mapID, APR.Arrow.y, APR.Arrow.x)
             else
                 ox, oy = APR:GetPlayerMapPos(mapID, steps.Coord.y, steps.Coord.x)
             end
