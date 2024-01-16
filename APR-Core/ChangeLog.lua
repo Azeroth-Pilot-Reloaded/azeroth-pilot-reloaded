@@ -69,6 +69,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "BETA-v3.1.6", "2024-01-16" },
+        "#Bugs",
+        "- Fix starting zone for gnome, human and dreanei",
+
         { "BETA-v3.1.5", "2024-01-15" },
         "#Bugs",
         "- Fix starting zone for goblin, Night Elf",
@@ -141,7 +145,7 @@ function APR.changelog:SetChangeLog()
         "- Rework - transport logic",
         "- Fix bunch of tiny stuff in code",
 
-        { "v3.0.3",      "2023-11-14" },
+        { "v3.0.3", "2023-11-14" },
         "#Features",
         "- Glichy dotted line replaced by normal line (but you can now change color, transparency and size)",
         "- Add color and size option for the next steps icons on map and minimap",
