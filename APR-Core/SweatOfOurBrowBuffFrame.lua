@@ -158,18 +158,17 @@ end
 
 function APR.CheckSweatBuffz()
     for i = 1, 20 do
-        local name, icon, count, debuffType, duration, expirationTime, unitCaster, isStealable, nameplateShowPersonal, spellId =
-            UnitBuff("player", i)
-        if (spellId and name) then
-            if (spellId == 311103) then
+        local aura = C_UnitAuras.GetAuraDataByIndex("player", i)
+        if (aura.spellId and aura.name) then
+            if (aura.spellId == 311103) then
                 APR.SweatBuff[1] = true
                 APR.SweatOfOurBrowBuffFrame.Traps.texture:SetColorTexture(0.1, 0.5, 0.1, 1)
             end
-            if (spellId == 311107) then
+            if (aura.spellId == 311107) then
                 APR.SweatBuff[2] = true
                 APR.SweatOfOurBrowBuffFrame.Traps2.texture:SetColorTexture(0.1, 0.5, 0.1, 1)
             end
-            if (spellId == 311058) then
+            if (aura.spellId == 311058) then
                 APR.SweatBuff[3] = true
                 APR.SweatOfOurBrowBuffFrame.Traps3.texture:SetColorTexture(0.1, 0.5, 0.1, 1)
             end
