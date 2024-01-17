@@ -249,8 +249,8 @@ APR.Portals = {
                 y = 1422.3,
             },
             ["DarkPortal Talk"] = {
-                x = -4499.2,
-                y = 1435.2,
+                x = -4500.3,
+                y = 1434.8,
             },
             ["AzsunaLegion"] = {
                 x = -4484.9,

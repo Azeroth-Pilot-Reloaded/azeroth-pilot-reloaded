@@ -114,6 +114,10 @@ local function CreateMapButton(parentFrame, itemID)
 end
 
 function APR.heirloom:AddHeirloomIcons()
+    local player = UnitPosition("player")
+    if not player or APR.settings.profile.heirloomWarning then
+        return
+    end
     local heirlooms = {
         {
             -- icon = "interface\\icons\\inv_misc_map09",

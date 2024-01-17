@@ -54,6 +54,7 @@ function APR.settings:InitializeSettings()
             currentStepScale = 1,
             currentStepbackgroundColorAlpha = { 0, 0, 0, 0.4 },
             currentStepAttachFrameToQuestLog = false,
+            currentStepQuestButtonPositionRight = false,
             -- quest order list
             questOrderListFrame = {},
             showQuestOrderList = false,
@@ -303,8 +304,30 @@ function APR.settings:createBlizzOptions()
                                 self.profile.currentStepAttachFrameToQuestLog
                         end,
                     },
-                    currentStepScale = {
+                    currentStepQuestButtonPositionRight = {
                         order = 5.3,
+                        type = "select",
+                        name = L["CURRENT_STEP_QUEST_BUTTON_POSITION"],
+                        desc = L["CURRENT_STEP_QUEST_BUTTON_POSITION_DESC"],
+                        width = optionsWidth,
+                        values = {
+                            [false] = L["LEFT"],
+                            [true] = L["RIGHT"]
+                        },
+                        get = function(info)
+                            return GetProfileOption(info)
+                        end,
+                        set = function(info, value)
+                            SetProfileOption(info, value)
+                            -- Force Rerender
+                            APR.BookingList["UpdateMapId"] = true
+                        end,
+                        disabled = function()
+                            return not self.profile.currentStepShow
+                        end,
+                    },
+                    currentStepScale = {
+                        order = 5.4,
                         type = "range",
                         name = L["QLIST_SCALE"],
                         desc = L["QLIST_SCALE_DESC"],
@@ -325,7 +348,7 @@ function APR.settings:createBlizzOptions()
                     },
                     resetCurrentStepPosition = {
                         name = L['RESET_CURRENT_STEP_FRAME_POSITION'],
-                        order = 5.4,
+                        order = 5.5,
                         type = 'execute',
                         width = "full",
                         func = function()

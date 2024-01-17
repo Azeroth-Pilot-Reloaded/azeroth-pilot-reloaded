@@ -580,6 +580,13 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
     FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
 end
 
+local function PositionStepButtons(container, button)
+    if APR.settings.profile.currentStepQuestButtonPositionRight then
+        button:SetPoint("LEFT", container, "RIGHT", 5, 0)
+    else
+        button:SetPoint("RIGHT", container, "LEFT", -5, 0)
+    end
+end
 -- Button management
 --- Create a icon button next to the quest/text step
 --- @param questsListKey string the questsList key (questId-index)
@@ -616,7 +623,7 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
     local IconButton = CreateFrame("Button", "$parentIconButton", container,
         "SecureActionButtonTemplate, BackdropTemplate")
     IconButton:SetSize(25, 25)
-    IconButton:SetPoint("RIGHT", container, "LEFT", -5, 0)
+    PositionStepButtons(container, IconButton)
     IconButton:SetNormalTexture(iconTexture)
     IconButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
     IconButton:RegisterForClicks("AnyUp", "AnyDown")
