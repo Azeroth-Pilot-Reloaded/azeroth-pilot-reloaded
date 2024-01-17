@@ -69,51 +69,7 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "BETA-v3.1.7", "2024-01-16" },
-        "#Features",
-        "- Add Wrong Zone logic if you're to far away from objective",
-
-        "#Bugs",
-        "- Fix Auto Flightpath",
-
-        { "BETA-v3.1.6", "2024-01-16" },
-        "#Bugs",
-        "- Fix starting zone for gnome, human and dreanei",
-
-        { "BETA-v3.1.5", "2024-01-15" },
-        "#Bugs",
-        "- Fix starting zone for goblin, Night Elf",
-        "- Fix non skipable starting zone",
-        "- Fix neutral starting zone",
-
-        "#Route",
-        "- New Gender step option (for the goblin route for now)",
-        "- Change CRange step to Waypoint",
-        "- Change AreaTriggerZ step to ZoneStepTrigger",
-        "- Change TT step to Coord",
-        "- Remove all the Trigger step",
-
-        { "BETA-v3.1.4", "2024-01-10" },
-        "#Bugs",
-        "- Fix no quest/item button on the current step",
-        "- Fix starting zone for Troll, Orc, Blood Elf, Undead",
-        "- Fix missing map line on switch continent",
-        "- Fix wrong coord for some zone with the minimap line + coord frame",
-
-        "#Route",
-        "- New Grind step option (to ask to grind to lvl XX)",
-
-        { "BETA-v3.1.3", "2024-01-06" },
-        "#Bugs",
-        "- Fix auto open of the route option on zone code step",
-        "- Fix empty route for Durotar (Horde) and Stranglethorn (Alliance)",
-        "- Fix/Add requirement to select some routes (SL, DF, starting zone)",
-        "- Remove Demon Hunter starting zone in the route selection for everyone (only available for DH)",
-        "- Fix the detection of the closest portal",
-
-        { "BETA-v3.1.2", "2024-01-05" },
-        "- Fix deployment issue",
-        { "BETA-v3.1.0", "2024-01-04" },
+        { "v3.1.0", "2024-01-17" },
         "#Features",
         "- Rework of the route selection and custom path",
         "    - Each element has its own tab with more options than before",
@@ -129,6 +85,7 @@ function APR.changelog:SetChangeLog()
         "    - For changing continents, if no path is available, then we redirect to the capital",
         "    - We have added all the Taxis according to factions",
         "    - We have added portals in our DB to change continents",
+        "    - We switch to the wrong zone logic if we are too far away from the target (4000 yards/meters)",
         "- Addition of the Heirloom frame",
         "    - Button to use available Taxi cards",
         "    - Button to open the Heirloom item frame",
@@ -137,8 +94,11 @@ function APR.changelog:SetChangeLog()
         "- Added a shortcut to open routes in the menu of the current step",
         "- Add QOL command to toggle qol (/apr qol)",
         "- Auto open/close the taxiMap on Flightpath step",
+        "- Change Quest Order List resize key to resize right botton icon",
+        "- Add option to select the position of the Current step quest button (left or right)",
 
         "#Bugs",
+        "- Fix Auto Flightpath",
         "- Fix lua error from switching continent",
         "- Fix AddonLoad API for 10.2",
         "- Fix gap in Apr blizzard option on first load",
@@ -147,12 +107,32 @@ function APR.changelog:SetChangeLog()
         "- Fix same saved variable for same character name",
         "- Fix transport error for instance",
         "- Fix transport missing wanted zone in current step durring wrong zone message",
+        "- Fix no quest/item button on the current step",
+        "- Fix starting zone for Goblin, Night Elf, Gnome, Human, Dreanei, Troll, Orc, Blood Elf, Undead",
+
+        "#Route",
+        "- New Grind step option (to ask to grind to lvl XX)",
+        "- New Gender step option (for the goblin route for now)",
+        "- Change CRange step to Waypoint",
+        "- Change AreaTriggerZ step to ZoneStepTrigger",
+        "- Change TT step to Coord",
+        "- Remove all the Trigger step",
 
         "#Dev/Debug",
         "- Rework - transport logic",
+        "- Deleting DF lib",
+        "- Update DeBuff/Aura with the new 10.2.5 API",
+        "- Fix wrong coord for some zone with the minimap line + coord frame",
         "- Fix bunch of tiny stuff in code",
 
-        { "v3.0.3",      "2023-11-14" },
+        "#WoW",
+        "- Upgrading TOC Interface to 10.2.5",
+
+        "#Localization",
+        "- French 100% ( Neogeekmo )",
+        "- German 73.22% ( Kamian )",
+
+        { "v3.0.3", "2023-11-14" },
         "#Features",
         "- Glichy dotted line replaced by normal line (but you can now change color, transparency and size)",
         "- Add color and size option for the next steps icons on map and minimap",
