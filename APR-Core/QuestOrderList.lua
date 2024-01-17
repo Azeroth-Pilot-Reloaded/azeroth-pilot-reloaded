@@ -20,7 +20,7 @@ local FRAME_DATA_HEIGHT = -5
 
 local QuestOrderListFrame = CreateFrame("Frame", "QuestOrderListPanel", UIParent, "BackdropTemplate")
 QuestOrderListFrame:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
-QuestOrderListFrame:SetFrameStrata("LOW")
+QuestOrderListFrame:SetFrameStrata("MEDIUM")
 QuestOrderListFrame:SetClampedToScreen(true)
 QuestOrderListFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 QuestOrderListFrame:SetBackdrop({
@@ -35,11 +35,7 @@ QuestOrderListFrame:SetResizable(true)
 QuestOrderListFrame:SetResizeBounds(FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
 QuestOrderListFrame:RegisterForDrag("LeftButton")
 QuestOrderListFrame:SetScript("OnDragStart", function(self, button)
-    if IsModifierKeyDown() then
-        self:StartSizing("BOTTOMRIGHT")
-    else
-        self:StartMoving()
-    end
+    self:StartMoving()
 end)
 QuestOrderListFrame:SetScript("OnDragStop", function(self)
     self:StopMovingOrSizing()
@@ -85,6 +81,25 @@ closeButton:SetScript("OnClick", function()
     QuestOrderListPanel:Hide()
     APR.settings.profile.showQuestOrderList = false
 end)
+
+local resizeButton = CreateFrame("Button", "QuestOrderListFrameResizeHandle", QuestOrderListFrame)
+resizeButton:SetSize(16, 16)
+resizeButton:SetPoint("BOTTOMRIGHT", QuestOrderListFrame, "BOTTOMRIGHT", -15, -2)
+resizeButton:EnableMouse(true)
+resizeButton:SetNormalTexture("Interface/CHATFRAME/UI-ChatIM-SizeGrabber-Up")
+resizeButton:SetHighlightTexture("Interface/CHATFRAME/UI-ChatIM-SizeGrabber-Highlight")
+
+resizeButton:SetScript("OnMouseDown", function(self, button)
+    if button == "LeftButton" then
+        QuestOrderListFrame:StartSizing("BOTTOMRIGHT")
+    end
+end)
+resizeButton:SetScript("OnMouseUp", function(self, button)
+    QuestOrderListFrame:StopMovingOrSizing()
+    LibWindow.SavePosition(QuestOrderListPanel)
+    APR.questOrderList:UpdateFrameContents()
+end)
+
 
 ---------------------------------------------------------------------------------------
 -------------------------- Function Quest Order List Frames ---------------------------
