@@ -46,11 +46,6 @@ APR.TaxiNodes = {
                 y = 3547.1999511719,
                 Name = "Bilgewater Harbor, Azshara",
             },
-            [48] = {
-                x = -321.18099975586,
-                y = 5123.509765625,
-                Name = "Bloodvenom Post, Felwood [DISABLED in 4.x]",
-            },
             [53] = {
                 x = -4611.1201171875,
                 y = 6813.0600585938,
@@ -672,11 +667,6 @@ APR.TaxiNodes = {
                 y = 4130.6201171875,
                 Name = "Coldarra Ledge, Coldarra",
             },
-            [235] = {
-                x = 6651.83984375,
-                y = 3575.5600585938,
-                Name = "Transitus Shield, Coldarra (NOT USED)",
-            },
             [236] = {
                 x = 7085.5400390625,
                 y = 4026.9499511719,
@@ -1135,11 +1125,6 @@ APR.TaxiNodes = {
                 x = -2403.4699707031,
                 y = 7793.6098632812,
                 Name = "Nighthaven, Moonglade",
-            },
-            [64] = {
-                x = -3880.6398925781,
-                y = 2721.9899902344,
-                Name = "Talrendis Point, Azshara (NEVER in 4.x)",
             },
             [65] = {
                 x = -1874.2800292969,
@@ -2138,21 +2123,6 @@ APR.TaxiNodes = {
     },
     ["Neutral"] = {
         [12] = {
-            [34] = {
-                x = -5824.2900390625,
-                y = -1965.1700439453,
-                Name = "Transport, Booty Bay",
-            },
-            [35] = {
-                x = -4649.2001953125,
-                y = 1320.0699462891,
-                Name = "Transport, Orgrimmar",
-            },
-            [54] = {
-                x = 3284,
-                y = -4203.8701171875,
-                Name = "Transport, Feathermoon",
-            },
             [79] = {
                 x = -1541.1300048828,
                 y = -7548.0498046875,
@@ -2163,11 +2133,6 @@ APR.TaxiNodes = {
                 y = -894.59002685547,
                 Name = "Ratchet, Northern Barrens",
             },
-            [90] = {
-                x = 0,
-                y = 0,
-                Name = "Transport, Undercity",
-            },
             [166] = {
                 x = -1324.5100097656,
                 y = 3972.8400878906,
@@ -2177,11 +2142,6 @@ APR.TaxiNodes = {
                 x = -3226.0500488281,
                 y = -4566.2299804688,
                 Name = "Mudsprocket, Dustwallow Marsh",
-            },
-            [206] = {
-                x = 2427.2900390625,
-                y = -4348.009765625,
-                Name = "Transport, Feathermoon (NE Ship)",
             },
             [347] = {
                 x = -2250.8999023438,
@@ -2207,11 +2167,6 @@ APR.TaxiNodes = {
                 x = -1.51999998093,
                 y = -2936.1398925781,
                 Name = "Mulgore - Red Cloud Mesa: To Bloodhoof",
-            },
-            [374] = {
-                x = -388.45001220703,
-                y = -2333.3898925781,
-                Name = "Mulgore - Red Cloud Mesa: To Bloodhoof (End)",
             },
             [386] = {
                 x = -1095.2399902344,
@@ -2290,31 +2245,6 @@ APR.TaxiNodes = {
             },
         },
         [13] = {
-            [24] = {
-                x = -2222.3000488281,
-                y = -6666,
-                Name = "Generic, World Target 002",
-            },
-            [46] = {
-                x = -547.85998535156,
-                y = -986.42999267578,
-                Name = "Transport, Southshore",
-            },
-            [47] = {
-                x = 235.42999267578,
-                y = -12418.76953125,
-                Name = "Transport, Grom'gol",
-            },
-            [50] = {
-                x = 0,
-                y = 0,
-                Name = "Transport, Menethil Harbor",
-            },
-            [51] = {
-                x = 0,
-                y = 0,
-                Name = "Transport, Auberdine",
-            },
             [78] = {
                 x = -3399.9299316406,
                 y = 3133.3100585938,
@@ -2344,16 +2274,6 @@ APR.TaxiNodes = {
                 x = -3693.3200683594,
                 y = 1876.4000244141,
                 Name = "Crown Guard Tower, Eastern Plaguelands",
-            },
-            [88] = {
-                x = -11194.740234375,
-                y = -4284.009765625,
-                Name = "Transport, Exodar",
-            },
-            [89] = {
-                x = 0,
-                y = 0,
-                Name = "Transport, Theramore",
             },
             [111] = {
                 x = -7883.0698242188,
@@ -2425,60 +2345,15 @@ APR.TaxiNodes = {
                 y = 0,
                 Name = "Borean Tundra, Naglevar",
             },
-            [241] = {
-                x = 0,
-                y = 0,
-                Name = "Transport, Valiance Keep",
-            },
-            [264] = {
-                x = 0,
-                y = 0,
-                Name = "Transport, Auberdine (NEW)",
-            },
-            [265] = {
-                x = 0,
-                y = 0,
-                Name = "Transport, Theramore (NEW)",
-            },
-            [266] = {
-                x = 0,
-                y = 0,
-                Name = "Transport, Menethil (NEW)",
-            },
-            [293] = {
-                x = 1101.8499755859,
-                y = -8341.08984375,
-                Name = "Flavor - Stormwind Harbor - Stop",
-            },
-            [299] = {
-                x = 0,
-                y = 0,
-                Name = "Transport: Menethil <-> Valgarde",
-            },
-            [300] = {
-                x = 0,
-                y = 0,
-                Name = "Transport, Stormwind",
-            },
             [315] = {
                 x = -5666.91015625,
                 y = 2352.3701171875,
                 Name = "Acherus: The Ebon Hold",
             },
-            [348] = {
-                x = 0,
-                y = 0,
-                Name = "Transport: Thunder Bluff <-> Org (Zep)",
-            },
             [352] = {
                 x = 0,
                 y = 0,
                 Name = "Isle of Conquest - Gunships",
-            },
-            [375] = {
-                x = 0,
-                y = 0,
-                Name = "Transport, Gadgetzan",
             },
             [376] = {
                 x = 0,
@@ -2489,11 +2364,6 @@ APR.TaxiNodes = {
                 x = 0,
                 y = 0,
                 Name = "Icecrown Dungeon - Gunships",
-            },
-            [380] = {
-                x = 0,
-                y = 0,
-                Name = "Icecrown Raid - Saurfang's Ship (Start)",
             },
             [383] = {
                 x = -2694.4799804688,
@@ -2709,45 +2579,10 @@ APR.TaxiNodes = {
             },
         },
         [113] = {
-            [165] = {
-                x = 0,
-                y = 0,
-                Name = "Transport, Northrend 2",
-            },
-            [175] = {
-                x = -5066.1801757812,
-                y = 784.89001464844,
-                Name = "Transport, Howling Fjord",
-            },
-            [178] = {
-                x = 0,
-                y = 0,
-                Name = "Transport, Borean Tundra",
-            },
-            [218] = {
-                x = -3819.6000976562,
-                y = 690.98999023438,
-                Name = "Transport, Howling Fjord (Gondola, Top)",
-            },
-            [219] = {
-                x = -2906.169921875,
-                y = 607.96002197266,
-                Name = "Transport, Howling Fjord (Gondola, Bottom)",
-            },
             [226] = {
                 x = 6661.6401367188,
                 y = 3575.4399414062,
                 Name = "Transitus Shield, Coldarra",
-            },
-            [230] = {
-                x = 889.80999755859,
-                y = 2690.2600097656,
-                Name = "Transport, Tuskarr 01",
-            },
-            [231] = {
-                x = 897.63000488281,
-                y = 2690.330078125,
-                Name = "Transport, Tuskarr 02",
             },
             [237] = {
                 x = 6590.740234375,
@@ -2903,21 +2738,6 @@ APR.TaxiNodes = {
                 x = -335.95001220703,
                 y = 8472.4599609375,
                 Name = "Bouldercrag's Refuge, The Storm Peaks",
-            },
-            [328] = {
-                x = 1140.2800292969,
-                y = 7501.6499023438,
-                Name = "Transport, Icecrown Airship (A)",
-            },
-            [329] = {
-                x = 1724.5899658203,
-                y = 7561.8100585938,
-                Name = "Transport, Icecrown Airship (H)",
-            },
-            [330] = {
-                x = 1477.7199707031,
-                y = 7489.6401367188,
-                Name = "Transport, Icecrown (Target)",
             },
             [331] = {
                 x = -4118.2299804688,
@@ -3228,11 +3048,6 @@ APR.TaxiNodes = {
                 y = 3891.9499511719,
                 Name = "Stonehoof Watch, Highmountain",
             },
-            [1815] = {
-                x = 7225.4501953125,
-                y = 4074.3200683594,
-                Name = "The Dreamgrove, Val'sharah (Druids Only)",
-            },
             [1837] = {
                 x = 6656.8598632812,
                 y = -1403.6300048828,
@@ -3417,21 +3232,6 @@ APR.TaxiNodes = {
                 x = 9823.4697265625,
                 y = 4983.2998046875,
                 Name = "Triumvirate's End, Eredath",
-            },
-            [1985] = {
-                x = 1403.3499755859,
-                y = 359.2799987793,
-                Name = "[Hidden] Argus Ground Points Hub (Ground TP out to here, TP to Vindicaar from here)",
-            },
-            [1986] = {
-                x = 1397.6300048828,
-                y = 348.875,
-                Name = "[Hidden] Argus Vindicaar Ground Hub (Vindicaar TP out to here, TP to ground from here)",
-            },
-            [1987] = {
-                x = 1392.5200195312,
-                y = 338.65798950195,
-                Name = "[Hidden] Argus Vindicaar No Load Hub (Vindicaar No Load transition goes through here)",
             },
             [1988] = {
                 x = 8798.4296875,
@@ -3671,11 +3471,6 @@ APR.TaxiNodes = {
                 y = 4464.5297851562,
                 Name = "Progenitor Console",
             },
-            [2557] = {
-                x = 6835.4501953125,
-                y = 4464.3999023438,
-                Name = "[Hidden] The Maw - Outdoor - Cocyrus Oribos Teleport Dest",
-            },
             [2558] = {
                 x = -1839.0999755859,
                 y = 2489.25,
@@ -3760,16 +3555,6 @@ APR.TaxiNodes = {
                 x = -4871.9501953125,
                 y = -2943.6298828125,
                 Name = "Hero's Rest, Bastion",
-            },
-            [2627] = {
-                x = -5707.75,
-                y = -1745.0300292969,
-                Name = "[Hidden] 9.0 Bastion Ground Points Hub (Ground TP out to here, TP to Sanctum from here)",
-            },
-            [2628] = {
-                x = -5714.6899414062,
-                y = -1737.8199462891,
-                Name = "[Hidden] 9.0 Bastion Ground Hub (Sanctum TP out to here, TP to ground from here)",
             },
             [2630] = {
                 x = -4643.759765625,
@@ -3876,12 +3661,6 @@ APR.TaxiNodes = {
                 y = -3204.3999023438,
                 Name = "Interior Locus",
             },
-            [2732] = {
-                x = -1.85938000679,
-                y = -3231.1398925781,
-                Name =
-                "[HIDDEN] - 9.2 Resonant Peaks - Teleport Network - Hidden Hub (Connects all Nodes to each other without unique paths) (MAH/JDA)",
-            },
             [2733] = {
                 x = 174.40600585938,
                 y = -2813.669921875,
@@ -3968,17 +3747,6 @@ APR.TaxiNodes = {
                 x = -1394.9499511719,
                 y = 2348.8898925781,
                 Name = "Rebuff Lookout, The Waking Shores",
-            },
-            [2740] = {
-                x = 0,
-                y = 0,
-                Name =
-                "10.0 Construction - Teleport Network - Hidden Hub (Connects all Nodes to each other without unique paths) (JDA)",
-            },
-            [2741] = {
-                x = 86.55729675293,
-                y = 3094.9899902344,
-                Name = "Skytop Lookout (QD), The Waking Shores",
             },
             [2752] = {
                 x = -393,
@@ -4175,11 +3943,6 @@ APR.TaxiNodes = {
                 y = -1094.8599853516,
                 Name = "Eon's Fringe, Thaldraszus",
             },
-            [2835] = {
-                x = 745.96002197266,
-                y = 942.03601074219,
-                Name = "[Hidden] 10.0 Travel Network - Destination Input",
-            },
             [2836] = {
                 x = -3201.7900390625,
                 y = 1474.6999511719,
@@ -4214,11 +3977,6 @@ APR.TaxiNodes = {
                 x = 882.83801269531,
                 y = 568.22302246094,
                 Name = "Rubyscale Outpost, The Waking Shores",
-            },
-            [2843] = {
-                x = 746.02600097656,
-                y = 941.30401611328,
-                Name = "[Hidden] 10.0 Travel Network - Destination Output",
             },
             [2847] = {
                 x = 2047.5100097656,
