@@ -45881,18 +45881,27 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
 }
 APR.RouteQuestStepList["84-IntroQline"] = {
     {
+        ["PickUp"] = {
+            60545
+        },
+        ["Coord"] = {
+            ["y"] = -8490.8,
+            ["x"] = 390.6,
+        },
+        ["Zone"] = 84
+    },
+    {
         ["Qpart"] = {
             [60545] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 1,
         ["RaidIcon"] = 171789,
-        ["Range"] = 0.69,
         ["Coord"] = {
             ["y"] = -8490.8,
             ["x"] = 390.6,
         },
+        ["Zone"] = 84
     },
     {
         ["Qpart"] = {
@@ -45905,6 +45914,7 @@ APR.RouteQuestStepList["84-IntroQline"] = {
             ["y"] = -8482.8,
             ["x"] = 384.7,
         },
+        ["Zone"] = 84
     },
     {
         ["Qpart"] = {
@@ -46076,18 +46086,27 @@ APR.RouteQuestStepList["84-IntroQline"] = {
 }
 APR.RouteQuestStepList["85-IntroQline"] = {
     {
+        ["PickUp"] = {
+            61874
+        },
+        ["Coord"] = {
+            ["y"] = 1599,
+            ["x"] = -4382.5,
+        },
+        ["Zone"] = 85
+    },
+    {
         ["Qpart"] = {
             [61874] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 1,
         ["RaidIcon"] = 171791,
-        ["Range"] = 0.69,
         ["Coord"] = {
             ["y"] = 1599,
             ["x"] = -4382.5,
         },
+        ["Zone"] = 85
     },
     {
         ["Qpart"] = {
@@ -46100,6 +46119,7 @@ APR.RouteQuestStepList["85-IntroQline"] = {
             ["y"] = 1580.9,
             ["x"] = -4360.2,
         },
+        ["Zone"] = 85
     },
     {
         ["Qpart"] = {

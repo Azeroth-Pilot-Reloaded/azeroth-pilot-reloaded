@@ -60,7 +60,7 @@ if (APR.Faction == "Alliance") then
         ["BFA02 - Tiragarde Sound"] = 895,
         ["BFA04 - Stormsong Valley"] = 942,
         ["BFA03 - Dustvar"] = 896,
-        ["SL - Intro"] = 84,
+        ["SL - Intro"] = 118,
         ["SL01 - The Maw"] = 1648,
         ["SL02 - Oribos"] = 1670,
         ["SL03 - Bastion"] = 1533,
