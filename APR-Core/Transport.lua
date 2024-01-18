@@ -5,6 +5,7 @@ APR.transport = APR:NewModule("Transport")
 
 APR.transport.CurrentTaxiNode = {}
 APR.transport.StepTaxiNode = {}
+APR.transport.IsInRouteZone = false
 
 --- Guide the player to the right zone / continent / taxi / position
 function APR.transport:GetMeToRightZone()
@@ -31,8 +32,8 @@ function APR.transport:GetMeToRightZone()
     local isSameContinent, nextContinent = self:IsSameContinent(mapID)
 
     _G.UpdateQuestAndStep()
-    -- //TODO: verifier si on veut accepter les autres zones ou si on veut check que la main pour le fly
-    if CheckIsInRouteZone() and isSameContinent and APR.Arrow.Distance < 4000 then
+    APR.transport.IsInRouteZone = CheckIsInRouteZone()
+    if APR.transport.IsInRouteZone and isSameContinent and APR.Arrow.Distance < APR.Arrow.MaxDistanceWrongZone then
         APR.IsInRouteZone = true
         -- To avoid unwanted auto taxi
         APR.transport.wrongZoneDestTaxiName = nil
@@ -196,6 +197,9 @@ function APR.transport:SwitchContinent(CurContinent, nextContinent, nextZone)
         local closestPortalPosition = nil
         local closestDistance = nil
         local playerY, playerX = UnitPosition("player")
+        if not playerY or not playerX then
+            return
+        end
 
         for _, portal in ipairs(portalMappings) do
             if CurContinent == portal.continent and (nextContinent == portal.nextContinent or nextZone == portal.nextZone) then
