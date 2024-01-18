@@ -118,11 +118,12 @@ function CheckIsInRouteZone()
         return false
     end
 
-    if APR:IsInExpansionRouteMaps(routeZoneMapIDs, currentMapID) or (step and step.Zone == currentMapID) then
+    if APR:IsInExpansionRouteMaps(routeZoneMapIDs, parentMapID) or (step and step.Zone == parentMapID) or
+        APR:IsInExpansionRouteMaps(routeZoneMapIDs, currentMapID) or (step and step.Zone == currentMapID) then
         return true
     end
 
-    if parentMapID and (APR:IsInExpansionRouteMaps(routeZoneMapIDs, parentMapID) or (step and step.Zone == parentMapID)) then
+    if parentMapID then
         local childrenMap = C_Map.GetMapChildrenInfo(parentMapID)
         if not childrenMap then
             return false

@@ -12,6 +12,7 @@ APR.changelog = APR:NewModule("ChangeLog")
 local ChangeLogFrame = CreateFrame("Frame", "ChangeLogFrame", UIParent, "BackdropTemplate")
 ChangeLogFrame:SetSize(600, 500)
 ChangeLogFrame:SetPoint("CENTER", 0, 0)
+ChangeLogFrame:SetFrameStrata("FULLSCREEN")
 ChangeLogFrame:SetBackdrop({
     bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
     tile = true,
