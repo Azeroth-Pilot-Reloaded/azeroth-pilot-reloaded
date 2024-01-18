@@ -72,14 +72,14 @@ function APR:OnInitialize()
     -- Init coordinate frame for dev
     APR.coordinate:PartyFrameOnInit()
 
+    -- Init route selection frame
+    APR.RouteSelection:RouteSelectionOnInit()
+
     -- Init Changelog frame
     APR.changelog:OnInit()
 
     -- Init heirloom frame
     APR.heirloom:HeirloomOnInit()
-
-    -- Init route selection frame
-    APR.RouteSelection:RouteSelectionOnInit()
 
     -- APR Global Variables, UI oriented
     BINDING_HEADER_APR = APR.title -- Header text for APR's main frame

@@ -77,6 +77,8 @@ function APR.settings:InitializeSettings()
             mapshowNextStepsColor = { 80 / 255, 200 / 255, 120 / 255, 0.8 },
             mapshowNextStepsCount = 2,
             mapshowNextStepsSize = 16,
+            mapshowNextStepsTextScale = 1,
+            mapshowNextStepsColorText = { 1, 209 / 255, 0, 1 },
             -- minimap
             minimap = { minimapPos = 250 },
             enableMinimapButton = true,
@@ -87,6 +89,8 @@ function APR.settings:InitializeSettings()
             minimapshowNextStepsColor = { 80 / 255, 200 / 255, 120 / 255, 0.8 },
             minimapshowNextStepsCount = 2,
             minimapshowNextStepsSize = 16,
+            minimapshowNextStepsTextScale = 1,
+            minimapshowNextStepsColorText = { 1, 209 / 255, 0, 1 },
             -- Heirloom
             heirloomFrame = {},
             heirloomWarning = false,
@@ -802,7 +806,7 @@ function APR.settings:createBlizzOptions()
                         order = 3,
                         type = "group",
                         inline = true,
-                        name = L["COLOR"],
+                        name = L["COLOR_FONT"],
                         args = {
                             mapMinimapSameColor = {
                                 order = 9.30,
@@ -861,6 +865,32 @@ function APR.settings:createBlizzOptions()
                                     end
                                 end,
                             },
+                            mapshowNextStepsColorText = {
+                                order = 9.33,
+                                type = "color",
+                                name = L["MAP_STEP_ICON_TEXT_COLOR"],
+                                hasAlpha = true,
+                                get = function()
+                                    return unpack(self.profile.mapshowNextStepsColorText)
+                                end,
+                                set = function(info, r, g, b, a)
+                                    SetProfileOption(info, { r, g, b, a })
+                                    APR.map:UpdateMapIconsStyle()
+                                    if self.profile.mapMinimapSameColor then
+                                        APR.map:UpdateMiniMapIconsStyle()
+                                        self.profile.minimapshowNextStepsColorText = self.profile
+                                            .mapshowNextStepsColorText
+                                    end
+                                end,
+                                disabled = function()
+                                    if self.profile.mapMinimapSameColor then
+                                        return not self.profile.mapshowNextSteps and
+                                            not self.profile.minimapshowNextSteps
+                                    else
+                                        return not self.profile.mapshowNextSteps
+                                    end
+                                end,
+                            },
                             showMiniMapLineColor = {
                                 order = 9.31,
                                 type = "color",
@@ -899,7 +929,63 @@ function APR.settings:createBlizzOptions()
                                     return self.profile.mapMinimapSameColor
                                 end,
                             },
-
+                            minimapshowNextStepsColorText = {
+                                order = 9.33,
+                                type = "color",
+                                name = L["MINIMAP_STEP_ICON_TEXT_COLOR"],
+                                hasAlpha = true,
+                                get = function()
+                                    return unpack(self.profile.minimapshowNextStepsColorText)
+                                end,
+                                set = function(info, r, g, b, a)
+                                    SetProfileOption(info, { r, g, b, a })
+                                    APR.map:UpdateMiniMapIconsStyle()
+                                end,
+                                disabled = function()
+                                    return not self.profile.minimapshowNextSteps
+                                end,
+                                hidden = function()
+                                    return self.profile.mapMinimapSameColor
+                                end,
+                            },
+                            blank_font = {
+                                order = 10,
+                                type = "description",
+                                name = "",
+                                width = "full",
+                            },
+                            mapshowNextStepsTextScale = {
+                                order = 11.1,
+                                type = "range",
+                                name = L["MAP_STEP_ICON_TEXT_SIZE"],
+                                min = 0.01,
+                                max = 2,
+                                step = 0.01,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.map:UpdateMiniMapIconsStyle()
+                                end,
+                                disabled = function()
+                                    return not self.profile.mapshowNextSteps
+                                end,
+                            },
+                            minimapshowNextStepsTextScale = {
+                                order = 11.2,
+                                type = "range",
+                                name = L["MINIMAP_STEP_ICON_TEXT_SIZE"],
+                                min = 0.01,
+                                max = 2,
+                                step = 0.01,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.map:UpdateMiniMapIconsStyle()
+                                end,
+                                disabled = function()
+                                    return not self.profile.minimapshowNextSteps
+                                end,
+                            },
 
                         }
                     }
