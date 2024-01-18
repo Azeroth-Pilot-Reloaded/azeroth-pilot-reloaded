@@ -629,6 +629,7 @@ function APR.routeconfig:GetSpeedRunPrefab()
     self:GetStartingZonePrefab()
     if APR.Level < 58 then
         self:GetWODPrefab()
+        self:GetSLPrefab()
     end
     self:GetDFPrefab()
 end
@@ -850,13 +851,13 @@ APR.routeconfig.eventFrame:SetScript("OnEvent", function(self, event, ...)
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetSpeedRunPrefab()
                 end)
-            elseif APR.Level == 50 then
-                APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_SL"], function()
-                    APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetSLPrefab()
-                    APR.routeconfig:GetDFPrefab()
-                end)
-            elseif APR.Level == 60 then
+                -- elseif APR.Level == 50 then
+                --     APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_SL"], function()
+                --         APRCustomPath[APR.PlayerID] = {}
+                --         APR.routeconfig:GetSLPrefab()
+                --         APR.routeconfig:GetDFPrefab()
+                --     end)
+            elseif APR.Level == 58 or APR.Level == 60 then
                 APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_DF"], function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetDFPrefab()
