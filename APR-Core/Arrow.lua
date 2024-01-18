@@ -11,7 +11,8 @@ APR.Arrow = {
     Active = false,
     x = 0,
     y = 0,
-    Distance = 0
+    Distance = 0,
+    MaxDistanceWrongZone = 4000
 }
 
 ---------------------------------------------------------------------------------------
@@ -192,12 +193,12 @@ function APR.Arrow:CalculPosition()
 
     -- Set global distance for transport
     APR.Arrow.Distance = distance
-    if distance >= 4000 then
+    if distance >= APR.Arrow.MaxDistanceWrongZone then
         APR.BookingList["UpdateMapId"] = true
         return
     end
 
-    if questStep.Waypoint or questStep.Range then
+    if (questStep.Waypoint or questStep.Range) and APR.transport.IsInRouteZone then
         local range = questStep.Range
         if distance < range then
             APR.Arrow.x = 0
