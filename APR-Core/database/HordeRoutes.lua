@@ -40,7 +40,7 @@ if (APR.Faction == "Horde") then
         ["BFA04 - Nazmir"] = 863,
         ["BFA05 - Naz-end Vol-begin"] = 862,
         ["BFA06 - Vol'dun"] = 864,
-        ["SL - Intro"] = 85,
+        ["SL - Intro"] = 118,
         ["SL01 - The Maw"] = 1648,
         ["SL02 - Oribos"] = 1670,
         ["SL03 - Bastion"] = 1533,

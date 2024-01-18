@@ -28,12 +28,9 @@ function APR.transport:GetMeToRightZone()
         return
     end
 
-    local currentContinent = APR:GetContinent()
-    local isSameContinent, nextContinent = self:IsSameContinent(mapID)
-
     _G.UpdateQuestAndStep()
     APR.transport.IsInRouteZone = CheckIsInRouteZone()
-    if APR.transport.IsInRouteZone and isSameContinent and APR.Arrow.Distance < APR.Arrow.MaxDistanceWrongZone then
+    if APR.transport.IsInRouteZone and APR.Arrow.Distance < APR.Arrow.MaxDistanceWrongZone then
         APR.IsInRouteZone = true
         -- To avoid unwanted auto taxi
         APR.transport.wrongZoneDestTaxiName = nil
@@ -62,6 +59,8 @@ function APR.transport:GetMeToRightZone()
         APR.currentStep:AddExtraLineText("DESTINATION", destinationText)
         -- Hide the arrow
         APR.Arrow.Active = false
+        local currentContinent = APR:GetContinent()
+        local isSameContinent, nextContinent = self:IsSameContinent(mapID)
         if not isSameContinent then
             self:SwitchContinent(currentContinent, nextContinent, mapID)
         else
