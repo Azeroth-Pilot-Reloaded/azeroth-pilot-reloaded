@@ -70,6 +70,16 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.1.1", "2024-01-18" },
+        "#Features",
+        "- Added font color and scale selection for map/minimap icon (map & minimap option)",
+        "- Added SL to speedrun to avoid missing lvl for DF",
+
+        "#Bugs",
+        "- Fix wrong zone message when you are in your Garrison for Wod route",
+        "- Fix CheckIsInRouteZone for continent and Zone step option",
+        "- Fix no arrow/wrong line for wrong zone on range step",
+
         { "v3.1.0", "2024-01-17" },
         "#Features",
         "- Rework of the route selection and custom path",
