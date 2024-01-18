@@ -256,7 +256,7 @@ end
 ---------------------------------------------------------------------------------------
 APR.map.pinlist = {}
 APR.map.minimapPinlist = {}
-function APR.map:CreatePin(index, step, size, color)
+function APR.map:CreatePin(index, step, size, color, textColor, textScale)
     local pinFrame = CreateFrame("Button", nil, UIParent, "BackdropTemplate")
     pinFrame:SetFrameLevel(16000)
     pinFrame:SetSize(size, size)
@@ -271,6 +271,8 @@ function APR.map:CreatePin(index, step, size, color)
     pinFrame.text = pinFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalCenter")
     pinFrame.text:SetPoint("CENTER", pinFrame, "CENTER", 0, 0)
     pinFrame.text:SetText(index)
+    pinFrame.text:SetTextColor(unpack(textColor))
+    pinFrame.text:SetTextScale(textScale)
 
     -- GameTooltip
     -- pinFrame:SetScript("OnEnter", function(self)
@@ -292,6 +294,8 @@ function APR.map:UpdateMapIconsStyle()
     for _, pin in pairs(self.pinlist) do
         pin:SetSize(APR.settings.profile.mapshowNextStepsSize, APR.settings.profile.mapshowNextStepsSize)
         pin.icon:SetVertexColor(unpack(APR.settings.profile.mapshowNextStepsColor))
+        pin.text:SetTextColor(unpack(APR.settings.profile.mapshowNextStepsColorText))
+        pin.text:SetTextScale(APR.settings.profile.mapshowNextStepsTextScale)
     end
 end
 
@@ -299,6 +303,8 @@ function APR.map:UpdateMiniMapIconsStyle()
     for _, pin in pairs(self.minimapPinlist) do
         pin:SetSize(APR.settings.profile.minimapshowNextStepsSize, APR.settings.profile.minimapshowNextStepsSize)
         pin.icon:SetVertexColor(unpack(APR.settings.profile.minimapshowNextStepsColor))
+        pin.text:SetTextColor(unpack(APR.settings.profile.minimapshowNextStepsColorText))
+        pin.text:SetTextScale(APR.settings.profile.minimapshowNextStepsTextScale)
     end
 end
 
@@ -347,11 +353,14 @@ function APR.map:AddMapPins()
             if steps.Coord and (stepIndex >= CurStep) and (stepIndex <= CurStep + math.max(mapshowNextStepsCount, minimapshowNextStepsCount)) then
                 if not self.pinlist[stepIndex] then
                     self.pinlist[stepIndex] = self:CreatePin(stepIndex, steps, APR.settings.profile.mapshowNextStepsSize,
-                        APR.settings.profile.mapshowNextStepsColor)
+                        APR.settings.profile.mapshowNextStepsColor, APR.settings.profile.mapshowNextStepsColorText,
+                        APR.settings.profile.mapshowNextStepsTextScale)
                 end
                 if not self.minimapPinlist[stepIndex] then
                     self.minimapPinlist[stepIndex] = self:CreatePin(stepIndex, steps,
-                        APR.settings.profile.minimapshowNextStepsSize, APR.settings.profile.minimapshowNextStepsColor)
+                        APR.settings.profile.minimapshowNextStepsSize, APR.settings.profile.minimapshowNextStepsColor,
+                        APR.settings.profile.minimapshowNextStepsColorText,
+                        APR.settings.profile.minimapshowNextStepsTextScale)
                 end
 
                 local x, y = APR:GetPlayerMapPos(needDisplayWorldPin and mapID or playermapID, steps.Coord.y,
