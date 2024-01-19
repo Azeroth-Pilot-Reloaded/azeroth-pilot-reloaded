@@ -74,7 +74,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetSLPrefab()
                 end,
                 hidden = function()
-                    return APR.Level < 48 or not next(APR.RouteList.Shadowlands)
+                    return not next(APR.RouteList.Shadowlands)
                 end
             },
             DF_prefab = {
@@ -612,9 +612,7 @@ function APR.routeconfig:InitRouteConfig()
 end
 
 function IsRouteDisabled(tab, routeName)
-    if string.find(tab, "Shadowlands") and APR.Level < 48 then
-        return true
-    elseif string.find(tab, "Dragonflight") and APR.Level < 58 then
+    if string.find(tab, "Dragonflight") and APR.Level < 58 then
         return true
     elseif routeName == "01-10 Exile's Reach" and not Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
         return true
@@ -811,7 +809,7 @@ function APR.routeconfig:LoadRouteAddonFile(tabName)
 end
 
 function APR.routeconfig:HasRouteInCustomPaht()
-    if not next(APRCustomPath[APR.PlayerID]) then
+    if APRCustomPath[APR.PlayerID] and not next(APRCustomPath[APR.PlayerID]) then
         return false
     end
     return true
@@ -821,7 +819,7 @@ function APR.routeconfig:CheckIsCustomPathEmpty()
     if (APR.settings.profile.debug) then
         print("Function: APR.routeconfig:CheckIsCustomPathEmpty()")
     end
-    if APRCustomPath[APR.PlayerID] and not next(APRCustomPath[APR.PlayerID]) then
+    if not self:HasRouteInCustomPaht() then
         APR.ActiveRoute = nil
         APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
 
@@ -851,12 +849,6 @@ APR.routeconfig.eventFrame:SetScript("OnEvent", function(self, event, ...)
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetSpeedRunPrefab()
                 end)
-                -- elseif APR.Level == 50 then
-                --     APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_SL"], function()
-                --         APRCustomPath[APR.PlayerID] = {}
-                --         APR.routeconfig:GetSLPrefab()
-                --         APR.routeconfig:GetDFPrefab()
-                --     end)
             elseif APR.Level == 58 or APR.Level == 60 then
                 APR.questionDialog:CreateQuestionPopup(L["RESET_ROUTE_FOR_DF"], function()
                     APRCustomPath[APR.PlayerID] = {}

@@ -291,9 +291,9 @@ local function APR_UpdateStep()
             -- if (APR.RouteList.BattleForAzeroth[APR.ActiveRoute]) then
             --     checkChromieTimeline(15)
             -- end
-            -- if (APR.RouteList.Shadowlands[APR.ActiveRoute]) then
-            --     checkChromieTimeline(14)
-            -- end
+            if (APR.RouteList.Shadowlands[APR.ActiveRoute]) then
+                checkChromieTimeline(14)
+            end
         end
         -- Check for ExtraLineText
         for key, value in pairs(steps) do
