@@ -179,8 +179,8 @@ if (APR.Faction == "Horde") then
 
     -- Lumbermill Wod route
     if C_QuestLog.IsQuestFlaggedCompleted(34992) then
-        APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = "WOD04 - Gorgrond"
+        APR.RouteList.WarlordsOfDraenor["543-DesMephisto-Gorgrond-Lumbermill"] = "WOD04 - Gorgrond"
     else
-        APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = "WOD04 - Gorgrond"
+        APR.RouteList.WarlordsOfDraenor["543-DesMephisto-Gorgrond-p1"] = "WOD04 - Gorgrond"
     end
 end

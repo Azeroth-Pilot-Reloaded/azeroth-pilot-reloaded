@@ -200,8 +200,8 @@ if (APR.Faction == "Alliance") then
 
     -- Lumbermill Wod route
     if C_QuestLog.IsQuestFlaggedCompleted(35049) then
-        APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = "WOD04 - Gorgrond"
+        APR.RouteList.WarlordsOfDraenor["A543-DesMephisto-Gorgrond-Lumbermill"] = "WOD04 - Gorgrond"
     else
-        APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = "WOD04 - Gorgrond"
+        APR.RouteList.WarlordsOfDraenor["A543-DesMephisto-Gorgrond"] = "WOD04 - Gorgrond"
     end
 end
