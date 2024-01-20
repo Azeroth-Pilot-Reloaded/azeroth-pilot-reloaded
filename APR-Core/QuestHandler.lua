@@ -1073,7 +1073,7 @@ local function APR_UpdateMapId()
 end
 
 
-local function APR_LoopBookingFunc()
+local function APR_LoopBookingFunc() -- Main loop
     if not APR.settings.profile.enableAddon then
         return
     end
@@ -1151,11 +1151,6 @@ function APR_UpdQuestThing()
     end
 end
 
-local function APR_ZoneResetQnumb()
-    APR.Arrow.currentStep = 0
-    APR.Arrow:SetQPTT()
-end
-
 APR.LoopBooking = CreateFrame("frame")
 APR.LoopBooking:SetScript("OnUpdate", APR_LoopBookingFunc)
 
@@ -1216,8 +1211,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     if (event == "REQUEST_CEMETERY_LIST_RESPONSE") then
         APR.BookingList["UpdateMapId"] = true
-        C_Timer.After(1, APR_ZoneResetQnumb)
-        C_Timer.After(1, UpdateQuestAndStep)
+        APR.Arrow.currentStep = 0
+        APR.Arrow:SetQPTT()
     end
     if (event == "QUEST_LOG_UPDATE") then
         C_Timer.After(0.2, APR_UpdQuestThing)
@@ -1621,7 +1616,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     if (event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA") then
         APR.Arrow.currentStep = 0
-        C_Timer.After(3, APR_ZoneResetQnumb)
+        APR.Arrow:SetQPTT()
         APR.BookingList["UpdateMapId"] = true
     end
     if (event == "GOSSIP_CLOSED") then
