@@ -1083,6 +1083,11 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Boat"] = 1,
         ["Name"] = "Southwind Station, Tiragarde Sound",
         ["NodeID"] = 2055,
+        ["ZoneStepTrigger"] = {
+            ["x"] = 41.04169845581,
+            ["y"] = -145.05700683594,
+            ["Range"] = 15,
+        }
     },
     {
         -- [step 78
@@ -1302,6 +1307,11 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Boat"] = 1,
         ["Name"] = "Anglepoint Wharf, Tiragarde Sound",
         ["NodeID"] = 2052,
+        ["ZoneStepTrigger"] = {
+            ["x"] = 1861.5400390625,
+            ["y"] = 790.83697509766,
+            ["Range"] = 15,
+        }
     },
     {
         -- [step 92
@@ -2876,6 +2886,11 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Boat"] = 1,
         ["Name"] = "Firebreaker Expedition, Tiragarde Sound",
         ["NodeID"] = 2054,
+        ["ZoneStepTrigger"] = {
+            ["x"] = 252.16700744629,
+            ["y"] = 801.13500976563,
+            ["Range"] = 15,
+        }
     },
     {
         -- [step 206
@@ -5062,6 +5077,11 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Boat"] = 1,
         ["Name"] = "Eastpoint Station, Tiragarde Sound",
         ["NodeID"] = 2104,
+        ["ZoneStepTrigger"] = {
+            ["x"] = -548.875,
+            ["y"] = 125.77600097656,
+            ["Range"] = 15,
+        }
     },
     {
         -- [step
