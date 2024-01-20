@@ -5,12 +5,9 @@ APR.transport = APR:NewModule("Transport")
 
 APR.transport.CurrentTaxiNode = {}
 APR.transport.StepTaxiNode = {}
-APR.transport.IsInRouteZone = false
 
 --- Guide the player to the right zone / continent / taxi / position
 function APR.transport:GetMeToRightZone()
-    -- reset the is in route bool
-    APR.IsInRouteZone = false
     if (APR.settings.profile.debug) then
         print("Function: APR.transport:GetMeToRightZone()")
     end
@@ -29,13 +26,15 @@ function APR.transport:GetMeToRightZone()
     end
 
     _G.UpdateQuestAndStep()
-    APR.transport.IsInRouteZone = CheckIsInRouteZone()
-    if APR.transport.IsInRouteZone and APR.Arrow.Distance < APR.Arrow.MaxDistanceWrongZone then
+    local farAway = APR.Arrow.Distance > APR.Arrow.MaxDistanceWrongZone
+    if CheckIsInRouteZone() and not farAway then
         APR.IsInRouteZone = true
         -- To avoid unwanted auto taxi
         APR.transport.wrongZoneDestTaxiName = nil
         return
     else
+        -- reset the is in route bool
+        APR.IsInRouteZone = false
         APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
         local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
         if not CurStep then
@@ -54,7 +53,13 @@ function APR.transport:GetMeToRightZone()
             return
         end
 
-        local destinationText = L["WRONG_ZONE"] ..
+        local reason = ""
+        if farAway then
+            reason = L["TOO_FAR_AWAY"]
+        else
+            reason = L["WRONG_ZONE"]
+        end
+        local destinationText = reason ..
             " - " .. L["DESTINATION"] .. ": " .. mapInfo.name .. ", " .. parentMapInfo.name .. " (" .. mapID .. ")"
         APR.currentStep:AddExtraLineText("DESTINATION", destinationText)
         -- Hide the arrow
@@ -63,6 +68,7 @@ function APR.transport:GetMeToRightZone()
         local isSameContinent, nextContinent = self:IsSameContinent(mapID)
         if not isSameContinent then
             self:SwitchContinent(currentContinent, nextContinent, mapID)
+            return
         else
             local posY, posX = UnitPosition("player")
             local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY = self:ClosestTaxi(posX, posY)
@@ -72,9 +78,7 @@ function APR.transport:GetMeToRightZone()
                 APR.currentStep:AddExtraLineText("FLY_TO_" .. objectiveTaxiName, L["FLY_TO"] .. " " .. objectiveTaxiName)
                 APR.currentStep:AddExtraLineText("CLOSEST_FP" .. playerTaxiName,
                     L["CLOSEST_FP"] .. ": " .. playerTaxiName)
-                APR.Arrow.Active = true
-                APR.Arrow.x = playerTaxiX
-                APR.Arrow.y = playerTaxiY
+                APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
             else
                 local zoneEntryMapID, zoneEntryX, zoneEntryY = self:GetZoneMoveOrder(mapID, playerMapInfo)
 
@@ -82,24 +86,16 @@ function APR.transport:GetMeToRightZone()
                     local zoneEntryMapInfo = C_Map.GetMapInfo(zoneEntryMapID)
                     APR.currentStep:AddExtraLineText("GO_TO" .. zoneEntryMapInfo.name,
                         L["GO_TO"] .. ": " .. zoneEntryMapInfo.name)
-                    APR.Arrow.Active = true
-                    APR.Arrow.x = zoneEntryX
-                    APR.Arrow.y = zoneEntryY
+                    APR.Arrow:SetArrowActive(true, zoneEntryX, zoneEntryY)
                 else
                     APR.currentStep:AddExtraLineText("ERROR_PATH_NOT_FOUND", L["ERROR"] ..
                         " - " .. L["PATH_NOT_FOUND"] .. " " .. mapInfo.name .. " (" .. mapID .. ")")
                     APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. mapInfo.name)
-                    APR.Arrow.Active = false
-                    APR.Arrow.x = 0
-                    APR.Arrow.y = 0
+                    APR.Arrow:SetArrowActive(false, 0, 0)
                 end
             end
         end
     end
-
-    -- if not APR.IsInRouteZone then
-    --     C_Timer.After(3, self:GetMeToRightZone())
-    -- end
 end
 
 --- Get Route zone mapID and name
@@ -185,12 +181,6 @@ end
 ---@param nextContinent number the wanted reachable contient map ID
 ---@param nodeId number the wanted zone ID to reach in the nextContinent
 function APR.transport:SwitchContinent(CurContinent, nextContinent, nextZone)
-    local function setArrowActive(x, y)
-        APR.Arrow.Active = true
-        APR.Arrow.x = x
-        APR.Arrow.y = y
-    end
-
     local function handlePortals(portalMappings)
         local closestPortal = nil
         local closestPortalPosition = nil
@@ -259,16 +249,16 @@ function APR.transport:SwitchContinent(CurContinent, nextContinent, nextZone)
         if APR.Faction == "Alliance" and CurContinent == 13 and (posY > -8981.3 and posX < 866.7) then
             APR.currentStep:AddExtraLineText("GO_PORTAL_ROOM", L["GO_PORTAL_ROOM"])
             local portalRoom = APR.Portals["Alliance"][CurContinent]["StormwindPortalRoom"]
-            setArrowActive(portalRoom.x, portalRoom.y)
+            APR.Arrow:SetArrowActive(true, portalRoom.x, portalRoom.y)
         else
             local extraText = portal.extraText or "USE_PORTAL_TO"
             APR.currentStep:AddExtraLineText(portal.portalKey,
                 L[extraText] .. " " .. C_Map.GetMapInfo(portal.nextZone).name)
-            setArrowActive(portalPosition.x, portalPosition.y)
+            APR.Arrow:SetArrowActive(true, portalPosition.x, portalPosition.y)
         end
     else
         handleTaxi(playerTaxiName, portalTaxiName)
-        setArrowActive(playerTaxiX, playerTaxiY)
+        APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
     end
 end
 
@@ -318,12 +308,14 @@ function APR.transport:ClosestTaxi(posX, posY)
     end
 end
 
-APR_Transport_EventFrame = CreateFrame("Frame")
-APR_Transport_EventFrame:RegisterEvent("TAXIMAP_OPENED")
-APR_Transport_EventFrame:RegisterEvent("PLAYER_CONTROL_LOST")
-APR_Transport_EventFrame:RegisterEvent("PLAYER_LEAVING_WORLD")
-APR_Transport_EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
-APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
+APR.transport.eventFrame = CreateFrame("Frame")
+APR.transport.eventFrame:RegisterEvent("TAXIMAP_OPENED")
+APR.transport.eventFrame:RegisterEvent("PLAYER_CONTROL_LOST")
+APR.transport.eventFrame:RegisterEvent("ZONE_CHANGED")
+APR.transport.eventFrame:RegisterEvent("ZONE_CHANGED_INDOORS")
+APR.transport.eventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+APR.transport.eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
     local steps = APR.ActiveRoute and GetSteps(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
     if APR.settings.profile.showEvent then
         print("EVENT: Transport - ", event)
@@ -331,8 +323,11 @@ APR_Transport_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if not APR.settings.profile.enableAddon then
         return
     end
-    if (event == "PLAYER_ENTERING_WORLD") then
-        if (APR.IsInRouteZone) then
+    if event == "ZONE_CHANGED"
+        or event == "ZONE_CHANGED_INDOORS"
+        or event == "ZONE_CHANGED_NEW_AREA"
+        or event == "PLAYER_ENTERING_WORLD" then
+        if APR.IsInRouteZone then
             APR.transport:GetMeToRightZone()
         end
     elseif (event == "TAXIMAP_OPENED") then

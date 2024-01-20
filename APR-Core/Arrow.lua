@@ -147,9 +147,8 @@ function APR.Arrow:SetQPTT()
     end
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     if (APR.Arrow.currentStep ~= CurStep and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep].Coord and CheckIsInRouteZone()) then
-        APR.Arrow.Active = true
-        APR.Arrow.x = APR.RouteQuestStepList[APR.ActiveRoute][CurStep].Coord.x
-        APR.Arrow.y = APR.RouteQuestStepList[APR.ActiveRoute][CurStep].Coord.y
+        self:SetArrowActive(true, APR.RouteQuestStepList[APR.ActiveRoute][CurStep].Coord.x,
+            APR.RouteQuestStepList[APR.ActiveRoute][CurStep].Coord.y)
         APR.Arrow.currentStep = CurStep
     end
 end
@@ -185,7 +184,7 @@ function APR.Arrow:CalculPosition()
     APR.ArrowFrame:Show()
     APR.ArrowFrame.Button:Hide()
 
-    local x, y = APR.Arrow.x, APR.Arrow.y -- step TT
+    local x, y = APR.Arrow.x, APR.Arrow.y
     local deltaX, deltaY = playerX - x, y - playerY
     local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
     local angle = math.atan2(-deltaX, deltaY) - GetPlayerFacing()
@@ -198,7 +197,7 @@ function APR.Arrow:CalculPosition()
         return
     end
 
-    if (questStep.Waypoint or questStep.Range) and APR.transport.IsInRouteZone then
+    if (questStep.Waypoint or questStep.Range) and APR.IsInRouteZone then
         local range = questStep.Range
         if distance < range then
             APR.Arrow.x = 0
@@ -223,4 +222,10 @@ function APR.Arrow:CalculPosition()
     local row = math.floor(cell / 9)
     APR.ArrowFrame.arrow:SetTexCoord((col * 56) / 512, ((col + 1) * 56) / 512, (row * 42) / 512, ((row + 1) * 42) / 512)
     APR.ArrowFrame.distance:SetText(math.floor(distance + CheckDistance()) .. " " .. L["YARDS"])
+end
+
+function APR.Arrow:SetArrowActive(isActive, x, y)
+    APR.Arrow.Active = isActive
+    APR.Arrow.x = x
+    APR.Arrow.y = y
 end
