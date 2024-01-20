@@ -179,12 +179,11 @@ function APR.map:RemoveMinimapLine()
 end
 
 function APR.map:UpdateMinimapLine()
-    if not APR.settings.profile.enableAddon or not APR.settings.profile.showMiniMapLine or IsInInstance() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.showMiniMapLine or IsInInstance() or APR.Arrow.x == 0 then
         self:RemoveMinimapLine()
         return
     end
-
-    if APR.Arrow.Active and APR.Arrow.x ~= 0 then
+    if APR.Arrow.Active then
         PositionMinimapLine(APR.Arrow.x, APR.Arrow.y)
         return
     end
@@ -203,7 +202,7 @@ function APR.map:RemoveMapLine()
 end
 
 function APR.map:UpdateLine()
-    if not APR.settings.profile.enableAddon or not APR.settings.profile.showMapLine or not WorldMapFrame:IsShown() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.showMapLine or not WorldMapFrame:IsShown() or APR.Arrow.x == 0 then
         self:RemoveMapLine()
         return
     end
@@ -221,7 +220,7 @@ function APR.map:UpdateLine()
             local playerPos = C_Map.GetPlayerMapPosition(mapID, "player")
 
             local ox, oy
-            if APR.Arrow.Active and APR.Arrow.x ~= 0 then
+            if APR.Arrow.Active then
                 ox, oy = APR:GetPlayerMapPos(mapID, APR.Arrow.y, APR.Arrow.x)
             else
                 ox, oy = APR:GetPlayerMapPos(mapID, steps.Coord.y, steps.Coord.x)
