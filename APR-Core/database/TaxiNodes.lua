@@ -519,113 +519,6 @@ APR.TaxiNodes = {
                 Name = "Shattered Landing, Blasted Lands",
             },
         },
-        [101] = {
-            [1386] = {
-                x = 6180.8598632812,
-                y = 5988.6801757812,
-                Name = "Wor'gol, Frostfire Ridge",
-            },
-            [1387] = {
-                x = 6012.5400390625,
-                y = 6754.5600585938,
-                Name = "Bladespire Citadel, Frostfire Ridge",
-            },
-            [1388] = {
-                x = 5560.169921875,
-                y = 7879.5698242188,
-                Name = "Throm'Var, Frostfire Ridge",
-            },
-            [1390] = {
-                x = 5052.4399414062,
-                y = 6157.5600585938,
-                Name = "Stonefang Outpost, Frostfire Ridge",
-            },
-            [1395] = {
-                x = 2394.8898925781,
-                y = 5789.5698242188,
-                Name = "Thunder Pass, Frostfire Ridge",
-            },
-            [1396] = {
-                x = 4342.5498046875,
-                y = 6600,
-                Name = "Darkspear's Edge, Frostfire Ridge",
-            },
-            [1408] = {
-                x = -3942.2399902344,
-                y = 5356.2299804688,
-                Name = "Warspear, Ashran",
-            },
-            [1432] = {
-                x = 4564.83984375,
-                y = 5578.9399414062,
-                Name = "Frostwall Garrison, Frostfire Ridge",
-            },
-            [1441] = {
-                x = 2166.8701171875,
-                y = 4008.8601074219,
-                Name = "Frostwolf Overlook, Talador",
-            },
-            [1442] = {
-                x = 1304.3399658203,
-                y = 5815.509765625,
-                Name = "Beastwatch, Gorgrond",
-            },
-            [1443] = {
-                x = 1609.2700195312,
-                y = 3258.830078125,
-                Name = "Vol'jin's Pride, Talador",
-            },
-            [1445] = {
-                x = 2525.7399902344,
-                y = 2808.7900390625,
-                Name = "Durotan's Grasp, Talador",
-            },
-            [1454] = {
-                x = 2581.5300292969,
-                y = 1731.0899658203,
-                Name = "Exarch's Refuge, Talador",
-            },
-            [1487] = {
-                x = 2285.5500488281,
-                y = -368.20098876953,
-                Name = "Axefall, Spires of Arak",
-            },
-            [1504] = {
-                x = 4584.5498046875,
-                y = 3235.7299804688,
-                Name = "Wor'var, Nagrand",
-            },
-            [1505] = {
-                x = 6500.3798828125,
-                y = 3102.8100585938,
-                Name = "Riverside Post, Nagrand",
-            },
-            [1512] = {
-                x = 1188.0699462891,
-                y = 4641.6201171875,
-                Name = "Bastion Rise, Gorgrond",
-            },
-            [1514] = {
-                x = 1687.5500488281,
-                y = 4837.6298828125,
-                Name = "Evermorn Springs, Gorgrond",
-            },
-            [1559] = {
-                x = 3004.0900878906,
-                y = 5830.8598632812,
-                Name = "Wolf's Stand, Frostfire Ridge",
-            },
-            [1621] = {
-                x = -1465.3100585938,
-                y = 4307.91015625,
-                Name = "Vol'mar, Tanaan Jungle",
-            },
-            [1644] = {
-                x = 1216.6199951172,
-                y = 3979.3000488281,
-                Name = "The Iron Front, Tanaan Jungle",
-            },
-        },
         [113] = {
             [190] = {
                 x = -4544.2998046875,
@@ -793,6 +686,113 @@ APR.TaxiNodes = {
                 x = -4608.5600585938,
                 y = -404.95001220703,
                 Name = "Huojin Landing, Timeless Isle",
+            },
+        },
+        [572] = {
+            [1386] = {
+                x = 6180.8598632812,
+                y = 5988.6801757812,
+                Name = "Wor'gol, Frostfire Ridge",
+            },
+            [1387] = {
+                x = 6012.5400390625,
+                y = 6754.5600585938,
+                Name = "Bladespire Citadel, Frostfire Ridge",
+            },
+            [1388] = {
+                x = 5560.169921875,
+                y = 7879.5698242188,
+                Name = "Throm'Var, Frostfire Ridge",
+            },
+            [1390] = {
+                x = 5052.4399414062,
+                y = 6157.5600585938,
+                Name = "Stonefang Outpost, Frostfire Ridge",
+            },
+            [1395] = {
+                x = 2394.8898925781,
+                y = 5789.5698242188,
+                Name = "Thunder Pass, Frostfire Ridge",
+            },
+            [1396] = {
+                x = 4342.5498046875,
+                y = 6600,
+                Name = "Darkspear's Edge, Frostfire Ridge",
+            },
+            [1408] = {
+                x = -3942.2399902344,
+                y = 5356.2299804688,
+                Name = "Warspear, Ashran",
+            },
+            [1432] = {
+                x = 4564.83984375,
+                y = 5578.9399414062,
+                Name = "Frostwall Garrison, Frostfire Ridge",
+            },
+            [1441] = {
+                x = 2166.8701171875,
+                y = 4008.8601074219,
+                Name = "Frostwolf Overlook, Talador",
+            },
+            [1442] = {
+                x = 1304.3399658203,
+                y = 5815.509765625,
+                Name = "Beastwatch, Gorgrond",
+            },
+            [1443] = {
+                x = 1609.2700195312,
+                y = 3258.830078125,
+                Name = "Vol'jin's Pride, Talador",
+            },
+            [1445] = {
+                x = 2525.7399902344,
+                y = 2808.7900390625,
+                Name = "Durotan's Grasp, Talador",
+            },
+            [1454] = {
+                x = 2581.5300292969,
+                y = 1731.0899658203,
+                Name = "Exarch's Refuge, Talador",
+            },
+            [1487] = {
+                x = 2285.5500488281,
+                y = -368.20098876953,
+                Name = "Axefall, Spires of Arak",
+            },
+            [1504] = {
+                x = 4584.5498046875,
+                y = 3235.7299804688,
+                Name = "Wor'var, Nagrand",
+            },
+            [1505] = {
+                x = 6500.3798828125,
+                y = 3102.8100585938,
+                Name = "Riverside Post, Nagrand",
+            },
+            [1512] = {
+                x = 1188.0699462891,
+                y = 4641.6201171875,
+                Name = "Bastion Rise, Gorgrond",
+            },
+            [1514] = {
+                x = 1687.5500488281,
+                y = 4837.6298828125,
+                Name = "Evermorn Springs, Gorgrond",
+            },
+            [1559] = {
+                x = 3004.0900878906,
+                y = 5830.8598632812,
+                Name = "Wolf's Stand, Frostfire Ridge",
+            },
+            [1621] = {
+                x = -1465.3100585938,
+                y = 4307.91015625,
+                Name = "Vol'mar, Tanaan Jungle",
+            },
+            [1644] = {
+                x = 1216.6199951172,
+                y = 3979.3000488281,
+                Name = "The Iron Front, Tanaan Jungle",
             },
         },
         [619] = {
@@ -1584,123 +1584,6 @@ APR.TaxiNodes = {
                 Name = "Shattered Beachhead, Blasted Lands",
             },
         },
-        [101] = {
-            [1381] = {
-                x = -792.36102294922,
-                y = 918.26397705078,
-                Name = "Embaari Village, Shadowmoon Valley",
-            },
-            [1382] = {
-                x = -459.20001220703,
-                y = 195.23599243164,
-                Name = "Twilight Glade, Shadowmoon Valley",
-            },
-            [1383] = {
-                x = -1710.4499511719,
-                y = 602.69799804688,
-                Name = "Path of the Light, Shadowmoon Valley",
-            },
-            [1420] = {
-                x = -3840.4699707031,
-                y = 3685.1499023438,
-                Name = "Stormshield (Alliance), Ashran",
-            },
-            [1447] = {
-                x = 1669.4000244141,
-                y = 3576.8100585938,
-                Name = "Fort Wrynn (Alliance), Talador",
-            },
-            [1448] = {
-                x = 2062,
-                y = 3407.7299804688,
-                Name = "Redemption Rise, Talador",
-            },
-            [1451] = {
-                x = 1059.2199707031,
-                y = 2171.8200683594,
-                Name = "Anchorite's Sojourn, Talador",
-            },
-            [1453] = {
-                x = 2561.3500976562,
-                y = 1696.5,
-                Name = "Exarch's Refuge, Talador",
-            },
-            [1467] = {
-                x = -1555.75,
-                y = 128.56900024414,
-                Name = "The Draakorium, Shadowmoon Valley",
-            },
-            [1468] = {
-                x = -1666.4300537109,
-                y = 1240.1999511719,
-                Name = "Elodor (Alliance), Shadowmoon Valley",
-            },
-            [1476] = {
-                x = 219.46699523926,
-                y = 1866.5600585938,
-                Name = "Lunarfall (Alliance), Shadowmoon Valley",
-            },
-            [1493] = {
-                x = 2316.9699707031,
-                y = -1117.4499511719,
-                Name = "Southport, Spires of Arak",
-            },
-            [1506] = {
-                x = 5700.6298828125,
-                y = 2594.25,
-                Name = "Telaari Station, Nagrand",
-            },
-            [1507] = {
-                x = 5755.580078125,
-                y = 3384.169921875,
-                Name = "Yrel's Watch, Nagrand",
-            },
-            [1511] = {
-                x = 1274.5600585938,
-                y = 4552.2700195312,
-                Name = "Bastion Rise, Gorgrond",
-            },
-            [1518] = {
-                x = -174.75500488281,
-                y = 6456.1000976562,
-                Name = "Wildwood Wash, Gorgrond",
-            },
-            [1519] = {
-                x = 746.23400878906,
-                y = 6352.580078125,
-                Name = "Highpass, Gorgrond",
-            },
-            [1523] = {
-                x = 1271.0500488281,
-                y = 5412.8500976562,
-                Name = "Deeproot, Gorgrond",
-            },
-            [1528] = {
-                x = 2163.6398925781,
-                y = 5724.259765625,
-                Name = "Iron Siegeworks, Frostfire Ridge",
-            },
-            [1556] = {
-                x = -2449.7299804688,
-                y = 407.0419921875,
-                Name = "Tranquil Court, Shadowmoon Valley",
-            },
-            [1567] = {
-                x = -2448.75,
-                y = 405.78799438477,
-                Name = "Temple of Karabor, Shadowmoon Valley",
-            },
-            [1620] = {
-                x = -1311.7199707031,
-                y = 3875.2199707031,
-                Name = "Lion's Watch, Tanaan Jungle",
-            },
-            [1645] = {
-                x = 1183.75,
-                y = 4074.9699707031,
-                Name = "The Iron Front, Tanaan Jungle",
-            },
-        },
         [113] = {
             [183] = {
                 x = -5010.9702148438,
@@ -1818,6 +1701,123 @@ APR.TaxiNodes = {
                 x = -4639.1201171875,
                 y = -901.36999511719,
                 Name = "Tushui Landing, Timeless Isle",
+            },
+        },
+        [572] = {
+            [1381] = {
+                x = -792.36102294922,
+                y = 918.26397705078,
+                Name = "Embaari Village, Shadowmoon Valley",
+            },
+            [1382] = {
+                x = -459.20001220703,
+                y = 195.23599243164,
+                Name = "Twilight Glade, Shadowmoon Valley",
+            },
+            [1383] = {
+                x = -1710.4499511719,
+                y = 602.69799804688,
+                Name = "Path of the Light, Shadowmoon Valley",
+            },
+            [1420] = {
+                x = -3840.4699707031,
+                y = 3685.1499023438,
+                Name = "Stormshield (Alliance), Ashran",
+            },
+            [1447] = {
+                x = 1669.4000244141,
+                y = 3576.8100585938,
+                Name = "Fort Wrynn (Alliance), Talador",
+            },
+            [1448] = {
+                x = 2062,
+                y = 3407.7299804688,
+                Name = "Redemption Rise, Talador",
+            },
+            [1451] = {
+                x = 1059.2199707031,
+                y = 2171.8200683594,
+                Name = "Anchorite's Sojourn, Talador",
+            },
+            [1453] = {
+                x = 2561.3500976562,
+                y = 1696.5,
+                Name = "Exarch's Refuge, Talador",
+            },
+            [1467] = {
+                x = -1555.75,
+                y = 128.56900024414,
+                Name = "The Draakorium, Shadowmoon Valley",
+            },
+            [1468] = {
+                x = -1666.4300537109,
+                y = 1240.1999511719,
+                Name = "Elodor (Alliance), Shadowmoon Valley",
+            },
+            [1476] = {
+                x = 219.46699523926,
+                y = 1866.5600585938,
+                Name = "Lunarfall (Alliance), Shadowmoon Valley",
+            },
+            [1493] = {
+                x = 2316.9699707031,
+                y = -1117.4499511719,
+                Name = "Southport, Spires of Arak",
+            },
+            [1506] = {
+                x = 5700.6298828125,
+                y = 2594.25,
+                Name = "Telaari Station, Nagrand",
+            },
+            [1507] = {
+                x = 5755.580078125,
+                y = 3384.169921875,
+                Name = "Yrel's Watch, Nagrand",
+            },
+            [1511] = {
+                x = 1274.5600585938,
+                y = 4552.2700195312,
+                Name = "Bastion Rise, Gorgrond",
+            },
+            [1518] = {
+                x = -174.75500488281,
+                y = 6456.1000976562,
+                Name = "Wildwood Wash, Gorgrond",
+            },
+            [1519] = {
+                x = 746.23400878906,
+                y = 6352.580078125,
+                Name = "Highpass, Gorgrond",
+            },
+            [1523] = {
+                x = 1271.0500488281,
+                y = 5412.8500976562,
+                Name = "Deeproot, Gorgrond",
+            },
+            [1528] = {
+                x = 2163.6398925781,
+                y = 5724.259765625,
+                Name = "Iron Siegeworks, Frostfire Ridge",
+            },
+            [1556] = {
+                x = -2449.7299804688,
+                y = 407.0419921875,
+                Name = "Tranquil Court, Shadowmoon Valley",
+            },
+            [1567] = {
+                x = -2448.75,
+                y = 405.78799438477,
+                Name = "Temple of Karabor, Shadowmoon Valley",
+            },
+            [1620] = {
+                x = -1311.7199707031,
+                y = 3875.2199707031,
+                Name = "Lion's Watch, Tanaan Jungle",
+            },
+            [1645] = {
+                x = 1183.75,
+                y = 4074.9699707031,
+                Name = "The Iron Front, Tanaan Jungle",
             },
         },
         [619] = {
@@ -2436,148 +2436,6 @@ APR.TaxiNodes = {
                 Name = "Disable Taxi Paths - Destination - RRB",
             },
         },
-        [101] = {
-            [1384] = {
-                x = -788.89099121094,
-                y = 1526.3800048828,
-                Name = "Exile's Rise, Shadowmoon Valley",
-            },
-            [1389] = {
-                x = 4358.41015625,
-                y = 7399.4501953125,
-                Name = "Bloodmaul Slag Mines, Frostfire Ridge",
-            },
-            [1440] = {
-                x = 1040.1500244141,
-                y = 3418.7800292969,
-                Name = "Zangarra, Talador",
-            },
-            [1450] = {
-                x = 2777,
-                y = 2727.1599121094,
-                Name = "Shattrath City, Talador",
-            },
-            [1452] = {
-                x = 3318.5200195312,
-                y = 1378.4000244141,
-                Name = "Retribution Point, Talador",
-            },
-            [1462] = {
-                x = 1634.4699707031,
-                y = 2158.6499023438,
-                Name = "Terokkar Refuge, Talador",
-            },
-            [1475] = {
-                x = -671.42401123047,
-                y = -799.67401123047,
-                Name = "Socrethar's Rise, Shadowmoon Valley",
-            },
-            [1502] = {
-                x = 4783.080078125,
-                y = 3040.7800292969,
-                Name = "The Ring of Trials, Nagrand",
-            },
-            [1503] = {
-                x = 5131.4501953125,
-                y = 3918.7900390625,
-                Name = "Throne of the Elements, Nagrand",
-            },
-            [1508] = {
-                x = 1880.1199951172,
-                y = -398.9880065918,
-                Name = "Veil Terokk, Spires of Arak",
-            },
-            [1509] = {
-                x = 926.62200927734,
-                y = -335.45098876953,
-                Name = "Talon Watch, Spires of Arak",
-            },
-            [1510] = {
-                x = 993.09002685547,
-                y = -1579.1400146484,
-                Name = "Pinchwhistle Gearworks, Spires of Arak",
-            },
-            [1513] = {
-                x = 2442.7299804688,
-                y = 387.5419921875,
-                Name = "Apexis Excavation, Spires of Arak",
-            },
-            [1515] = {
-                x = 1544.6300048828,
-                y = 128.61500549316,
-                Name = "Crow's Crook, Spires of Arak",
-            },
-            [1520] = {
-                x = 1316.0400390625,
-                y = 6593.4301757812,
-                Name = "Breaker's Crown, Gorgrond",
-            },
-            [1524] = {
-                x = 1544.2399902344,
-                y = 8486.150390625,
-                Name = "Iron Docks, Gorgrond",
-            },
-            [1529] = {
-                x = -1739.3000488281,
-                y = -974.125,
-                Name = "Darktide Roost, Shadowmoon Valley",
-            },
-            [1539] = {
-                x = 1829.0500488281,
-                y = 7596.2001953125,
-                Name = "Skysea Ridge, Gorgrond",
-            },
-            [1568] = {
-                x = 404.73999023438,
-                y = 7093.6000976562,
-                Name = "Everbloom Wilds, Gorgrond",
-            },
-            [1569] = {
-                x = 701.43902587891,
-                y = 676.42401123047,
-                Name = "Akeeta's Hovel, Shadowmoon Valley",
-            },
-            [1572] = {
-                x = 6430.1499023438,
-                y = 3761.2600097656,
-                Name = "Rilzit's Holdfast, Nagrand",
-            },
-            [1573] = {
-                x = 6507.3901367188,
-                y = 2053.6599121094,
-                Name = "Nivek's Overlook, Nagrand",
-            },
-            [1574] = {
-                x = 5776.1899414062,
-                y = 3676.0400390625,
-                Name = "Joz's Rylaks, Nagrand",
-            },
-            [1580] = {
-                x = -560.48999023438,
-                y = 8018.08984375,
-                Name = "Everbloom Overlook, Gorgrond",
-            },
-            [1643] = {
-                x = 335.0539855957,
-                y = 4569.4399414062,
-                Name = "Aktar's Post, Tanaan Jungle",
-            },
-            [1646] = {
-                x = -762.55200195313,
-                y = 3475.2800292969,
-                Name = "Vault of the Earth, Tanaan Jungle",
-            },
-            [1647] = {
-                x = -574.69299316406,
-                y = 4457.5400390625,
-                Name = "Malo's Lookout, Tanaan Jungle",
-            },
-            [1648] = {
-                x = 157.93099975586,
-                y = 3728.3798828125,
-                Name = "Sha'naari Refuge, Tanaan Jungle",
-            },
-        },
         [113] = {
             [226] = {
                 x = 6661.6401367188,
@@ -2935,6 +2793,148 @@ APR.TaxiNodes = {
                 x = 1492.8100585938,
                 y = 685.71002197266,
                 Name = "Mistfall Village, Vale of Eternal Blossoms",
+            },
+        },
+        [572] = {
+            [1384] = {
+                x = -788.89099121094,
+                y = 1526.3800048828,
+                Name = "Exile's Rise, Shadowmoon Valley",
+            },
+            [1389] = {
+                x = 4358.41015625,
+                y = 7399.4501953125,
+                Name = "Bloodmaul Slag Mines, Frostfire Ridge",
+            },
+            [1440] = {
+                x = 1040.1500244141,
+                y = 3418.7800292969,
+                Name = "Zangarra, Talador",
+            },
+            [1450] = {
+                x = 2777,
+                y = 2727.1599121094,
+                Name = "Shattrath City, Talador",
+            },
+            [1452] = {
+                x = 3318.5200195312,
+                y = 1378.4000244141,
+                Name = "Retribution Point, Talador",
+            },
+            [1462] = {
+                x = 1634.4699707031,
+                y = 2158.6499023438,
+                Name = "Terokkar Refuge, Talador",
+            },
+            [1475] = {
+                x = -671.42401123047,
+                y = -799.67401123047,
+                Name = "Socrethar's Rise, Shadowmoon Valley",
+            },
+            [1502] = {
+                x = 4783.080078125,
+                y = 3040.7800292969,
+                Name = "The Ring of Trials, Nagrand",
+            },
+            [1503] = {
+                x = 5131.4501953125,
+                y = 3918.7900390625,
+                Name = "Throne of the Elements, Nagrand",
+            },
+            [1508] = {
+                x = 1880.1199951172,
+                y = -398.9880065918,
+                Name = "Veil Terokk, Spires of Arak",
+            },
+            [1509] = {
+                x = 926.62200927734,
+                y = -335.45098876953,
+                Name = "Talon Watch, Spires of Arak",
+            },
+            [1510] = {
+                x = 993.09002685547,
+                y = -1579.1400146484,
+                Name = "Pinchwhistle Gearworks, Spires of Arak",
+            },
+            [1513] = {
+                x = 2442.7299804688,
+                y = 387.5419921875,
+                Name = "Apexis Excavation, Spires of Arak",
+            },
+            [1515] = {
+                x = 1544.6300048828,
+                y = 128.61500549316,
+                Name = "Crow's Crook, Spires of Arak",
+            },
+            [1520] = {
+                x = 1316.0400390625,
+                y = 6593.4301757812,
+                Name = "Breaker's Crown, Gorgrond",
+            },
+            [1524] = {
+                x = 1544.2399902344,
+                y = 8486.150390625,
+                Name = "Iron Docks, Gorgrond",
+            },
+            [1529] = {
+                x = -1739.3000488281,
+                y = -974.125,
+                Name = "Darktide Roost, Shadowmoon Valley",
+            },
+            [1539] = {
+                x = 1829.0500488281,
+                y = 7596.2001953125,
+                Name = "Skysea Ridge, Gorgrond",
+            },
+            [1568] = {
+                x = 404.73999023438,
+                y = 7093.6000976562,
+                Name = "Everbloom Wilds, Gorgrond",
+            },
+            [1569] = {
+                x = 701.43902587891,
+                y = 676.42401123047,
+                Name = "Akeeta's Hovel, Shadowmoon Valley",
+            },
+            [1572] = {
+                x = 6430.1499023438,
+                y = 3761.2600097656,
+                Name = "Rilzit's Holdfast, Nagrand",
+            },
+            [1573] = {
+                x = 6507.3901367188,
+                y = 2053.6599121094,
+                Name = "Nivek's Overlook, Nagrand",
+            },
+            [1574] = {
+                x = 5776.1899414062,
+                y = 3676.0400390625,
+                Name = "Joz's Rylaks, Nagrand",
+            },
+            [1580] = {
+                x = -560.48999023438,
+                y = 8018.08984375,
+                Name = "Everbloom Overlook, Gorgrond",
+            },
+            [1643] = {
+                x = 335.0539855957,
+                y = 4569.4399414062,
+                Name = "Aktar's Post, Tanaan Jungle",
+            },
+            [1646] = {
+                x = -762.55200195313,
+                y = 3475.2800292969,
+                Name = "Vault of the Earth, Tanaan Jungle",
+            },
+            [1647] = {
+                x = -574.69299316406,
+                y = 4457.5400390625,
+                Name = "Malo's Lookout, Tanaan Jungle",
+            },
+            [1648] = {
+                x = 157.93099975586,
+                y = 3728.3798828125,
+                Name = "Sha'naari Refuge, Tanaan Jungle",
             },
         },
         [619] = {
