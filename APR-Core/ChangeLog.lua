@@ -70,6 +70,18 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.1.2", "2024-01-20" },
+        "#Bugs",
+        "- Fix missing gorgrond route in WOD ",
+        "- Fix Dreanor taxis that causes the error 404",
+        "- Remove of the condition for selecting SL routes",
+        "- Add the SL timeline for SL routes",
+        "- Add a 'Too far away' message instead of 'wrong zone' if the distance is more than 4000",
+        "- Add events for detecting zone change for transport",
+        "- Remove of the line when the addon cannot find the route (error 404)",
+        "- Fix of the detection of Boats in BFA",
+
+
         { "v3.1.1", "2024-01-18" },
         "#Features",
         "- Added font color and scale selection for map/minimap icon (map & minimap option)",
