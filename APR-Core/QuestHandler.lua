@@ -14,21 +14,22 @@ APR.ProgressbarIgnore = {
 
 -- //TODO create Spell DB
 local APR_HSSpellIDs = {
-    [8690] = 1,
-    [298068] = 1,
-    [278559] = 1,
-    [278244] = 1,
-    [286331] = 1,
-    [286353] = 1,
-    [94719] = 1,
-    [285424] = 1,
-    [286031] = 1,
-    [285362] = 1,
-    [136508] = 1,
-    [75136] = 1,
-    [39937] = 1,
-    [231504] = 1,
-    [308742] = 1,
+    556,
+    8690,
+    298068,
+    278559,
+    278244,
+    286331,
+    286353,
+    94719,
+    285424,
+    286031,
+    285362,
+    136508,
+    75136,
+    39937,
+    231504,
+    308742,
 }
 
 -- //TODO create step option for emote
@@ -45,98 +46,98 @@ local APR_GigglingBasket = {
 -- //TODO check what is that shit
 local APR_BonusObj = {
     ---- WoD Bonus Obj ----
-    [36473] = 1,
-    [36500] = 1,
-    [36504] = 1,
-    [34724] = 1,
-    [36564] = 1,
-    [34496] = 1,
-    [36603] = 1,
-    [35881] = 1,
-    [37422] = 1,
-    [34667] = 1,
-    [36480] = 1,
-    [36563] = 1,
-    [36520] = 1,
-    [35237] = 1,
-    [34639] = 1,
-    [34660] = 1,
-    [36792] = 1,
-    [35649] = 1,
-    [36660] = 1,
+    36473,
+    36500,
+    36504,
+    34724,
+    36564,
+    34496,
+    36603,
+    35881,
+    37422,
+    34667,
+    36480,
+    36563,
+    36520,
+    35237,
+    34639,
+    34660,
+    36792,
+    35649,
+    36660,
     ---- Legion Bonus Obj ----
-    [36811] = 1,
-    [37466] = 1,
-    [37779] = 1,
-    [37965] = 1,
-    [37963] = 1,
-    [37495] = 1,
-    [39393] = 1,
-    [38842] = 1,
-    [43241] = 1,
-    [38748] = 1,
-    [38716] = 1,
-    [39274] = 1,
-    [39576] = 1,
-    [39317] = 1,
-    [39371] = 1,
-    [42373] = 1,
-    [40316] = 1,
-    [38442] = 1,
-    [38343] = 1,
-    [38939] = 1,
-    [39998] = 1,
-    [38374] = 1,
-    [39119] = 1,
-    [9785] = 1,
+    36811,
+    37466,
+    37779,
+    37965,
+    37963,
+    37495,
+    39393,
+    38842,
+    43241,
+    38748,
+    38716,
+    39274,
+    39576,
+    39317,
+    39371,
+    42373,
+    40316,
+    38442,
+    38343,
+    38939,
+    39998,
+    38374,
+    39119,
+    9785,
     ---- Duskwood ----
-    [26623] = 1,
+    26623,
     ---- Hillsbrad Foothills ----
-    [28489] = 1,
+    28489,
     --- DH Start Area ----
-    [39279] = 1,
-    [39742] = 1,
+    39279,
+    39742,
     ---- BFA Bonus Obj ----
-    [50005] = 1,
-    [50009] = 1,
-    [50080] = 1,
-    [50448] = 1,
-    [50133] = 1,
-    [51534] = 1,
-    [50779] = 1,
-    [49739] = 1,
-    [51689] = 1,
-    [50497] = 1,
-    [48093] = 1,
-    [47996] = 1,
-    [48934] = 1,
-    [48852] = 1,
-    [49406] = 1,
-    [48588] = 1,
-    [47756] = 1,
-    [49529] = 1,
-    [49300] = 1,
-    [47797] = 1,
-    [49315] = 1,
-    [50178] = 1,
-    [49918] = 1,
-    [47527] = 1,
-    [47647] = 1,
-    [51900] = 1,
-    [50805] = 1,
-    [48474] = 1,
-    [48525] = 1,
-    [45972] = 1,
-    [47969] = 1,
-    [48181] = 1,
-    [48680] = 1,
-    [50091] = 1,
+    50005,
+    50009,
+    50080,
+    50448,
+    50133,
+    51534,
+    50779,
+    49739,
+    51689,
+    50497,
+    48093,
+    47996,
+    48934,
+    48852,
+    49406,
+    48588,
+    47756,
+    49529,
+    49300,
+    47797,
+    49315,
+    50178,
+    49918,
+    47527,
+    47647,
+    51900,
+    50805,
+    48474,
+    48525,
+    45972,
+    47969,
+    48181,
+    48680,
+    50091,
     ---- Shadowlands ----
-    [60840] = 1,
-    [59211] = 1,
-    [62732] = 1,
-    [62735] = 1,
-    [59015] = 1,
+    60840,
+    59211,
+    62732,
+    62735,
+    59015,
 }
 
 APR.BreadCrumSkips = {}
@@ -490,7 +491,7 @@ local function APR_UpdateStep()
                 for APR_index2, APR_value2 in pairs(APR_value) do
                     Total = Total + 1
                     local qid = APR_index .. "-" .. APR_index2
-                    if (C_QuestLog.IsQuestFlaggedCompleted(APR_index) or ((UnitLevel("player") == APR.MaxLevel) and APR_BonusObj[APR_index]) or APRData[APR.PlayerID]["BonusSkips"][APR_index] or APR.BreadCrumSkips[APR_index]) then
+                    if (C_QuestLog.IsQuestFlaggedCompleted(APR_index) or ((UnitLevel("player") == APR.MaxLevel) and Contains(APR_BonusObj, APR_index)) or APRData[APR.PlayerID]["BonusSkips"][APR_index] or APR.BreadCrumSkips[APR_index]) then
                         Flagged = Flagged + 1
                     elseif (APR.ActiveQuests[qid] and APR.ActiveQuests[qid] == "C") then
                         Flagged = Flagged + 1
@@ -525,7 +526,7 @@ local function APR_UpdateStep()
                         end
                     elseif (not APR.ActiveQuests[APR_index] and not MissingQs[APR_index]) then
                         if (APR.IsInRouteZone) then
-                            if (APR_BonusObj[APR_index]) then
+                            if Contains(APR_BonusObj, APR_index) then
                                 APR.currentStep:UpdateQuestSteps(APR_index, L["DO_BONUS_OBJECTIVE"] ..
                                     ": " .. APR_index, APR_index2)
                                 MissingQs[APR_index] = 1
@@ -743,7 +744,8 @@ local function APR_UpdateStep()
                         end
                     elseif not MissingQs[questId] then
                         if APR.IsInRouteZone then
-                            local questTextToAdd = APR_BonusObj[questId] and (L["DO_BONUS_OBJECTIVE"] .. ": " .. questId) or
+                            local questTextToAdd = Contains(APR_BonusObj, APR_index) and
+                                (L["DO_BONUS_OBJECTIVE"] .. ": " .. questId) or
                                 (L["ERROR"] .. " - " .. L["MISSING_Q"] .. ": " .. questId)
                             APR.currentStep:UpdateQuestSteps(questId, questTextToAdd, objectiveId)
                             MissingQs[questId] = 1
@@ -807,10 +809,6 @@ local function APR_UpdateStep()
 
         -- Set Quest Item Button
         APR.SetButton()
-        if (steps["ZoneDone"] or (APR.ActiveRoute == 862 and APRData[APR.PlayerID]["HordeD"] and APRData[APR.PlayerID]["HordeD"] == 1)) then
-            APR.currentStep:Disable()
-            APR.Arrow.Active = false
-        end
         APR.BookingList["SetQPTT"] = true
         APR.questOrderList:AddStepFromRoute()
         -- set Progress bar with the right total
@@ -1552,7 +1550,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         local arg1, arg2, arg3, arg4, arg5 = ...
 
         if (arg1 == "player") and steps then
-            if (APR_HSSpellIDs[arg3] and steps.UseHS) or (steps.SpellTrigger and arg3 == steps.SpellTrigger) then
+            if (Contains(APR_HSSpellIDs, arg3) and steps.UseHS) or (steps.SpellTrigger and arg3 == steps.SpellTrigger) then
                 _G.UpdateNextStep()
             end
             if steps.Button then

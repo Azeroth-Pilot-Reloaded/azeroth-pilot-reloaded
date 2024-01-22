@@ -335,7 +335,7 @@ function APR.questOrderList:AddStepFromRoute()
                         local questObjectiveId = questID .. '-' .. objectiveIndex
                         -- //TODO Remove or add APR_BonusObj from quest handler
                         local questFlagged = C_QuestLog.IsQuestFlaggedCompleted(questID) or
-                            (isMaxLevel and APR_BonusObj and APR_BonusObj[questID]) or
+                            (isMaxLevel and APR_BonusObj and Contains(APR_BonusObj, APR_index)) or
                             APRData[APR.PlayerID]["BonusSkips"][questID]
                         if questFlagged or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
                             flagged = flagged + 1

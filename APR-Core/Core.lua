@@ -14,17 +14,22 @@ APR.ClassLocalName, APR.ClassName, APR.ClassId = UnitClass("player")
 APR.Gender = UnitSex("player")
 APR.MaxLevel = 70
 APR.PlayerID = APR.Username .. "-" .. APR.UserID
+-- APR.Season = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() // For classic
+
 
 -- Quest
 APR.RouteList = {}
 APR.RouteQuestStepList = {}
 
 function APR:OnInitialize()
+    local GetAddOnMetadata = C_AddOns and C_AddOns.GetAddOnMetadata or _G.GetAddOnMetadata
+
     -- Init on TOC
-    APR.title = C_AddOns.GetAddOnMetadata("APR", "Title")
-    APR.version = C_AddOns.GetAddOnMetadata("APR", "Version")
-    APR.github = C_AddOns.GetAddOnMetadata("APR", "X-Github")
-    APR.discord = C_AddOns.GetAddOnMetadata("APR", "X-Discord")
+    APR.title = GetAddOnMetadata("APR", "Title")
+    APR.version = GetAddOnMetadata("APR", "Version")
+    APR.github = GetAddOnMetadata("APR", "X-Github")
+    APR.discord = GetAddOnMetadata("APR", "X-Discord")
+    APR.interfaceVersion = select(4, GetBuildInfo())
 
     APR.ActiveQuests = {}
 

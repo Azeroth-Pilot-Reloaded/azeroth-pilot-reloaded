@@ -54,8 +54,6 @@ function APR.heirloom:HeirloomOnInit()
     -- Set default display
     self:SetDefaultDisplay()
     self:RefreshFrameAnchor()
-
-    APR.heirloom:AddHeirloomIcons()
 end
 
 function APR.heirloom:SetDefaultDisplay()
@@ -70,6 +68,8 @@ function APR.heirloom:RefreshFrameAnchor()
         HeirloomPanel:Hide()
         return
     end
+
+    APR.heirloom:AddHeirloomIcons()
     HeirloomPanel:EnableMouse(true)
     LibWindow.RestorePosition(HeirloomPanel)
     HeirloomPanel:Show()
@@ -220,11 +220,3 @@ function APR.heirloom:AddHeirloomIcons()
     end
     HeirloomFrame:SetSize(250, (elementsCount > 4 and 55 or 0) + (-yOffset))
 end
-
-APR.heirloom.EventFrame = CreateFrame("Frame")
-APR.heirloom.EventFrame:RegisterEvent("ADDON_LOADED")
-APR.heirloom.EventFrame:SetScript("OnEvent", function(self, event, ...)
-    if event == "ADDON_LOADED" then
-        APR.heirloom:AddHeirloomIcons()
-    end
-end)
