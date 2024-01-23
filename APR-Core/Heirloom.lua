@@ -114,8 +114,8 @@ local function CreateMapButton(parentFrame, itemID)
 end
 
 function APR.heirloom:AddHeirloomIcons()
-    local player = UnitPosition("player")
-    if not player or APR.settings.profile.heirloomWarning then
+    local mapId = C_Map.GetBestMapForUnit("player")
+    if not mapId or APR.settings.profile.heirloomWarning then
         return
     end
     local heirlooms = {
