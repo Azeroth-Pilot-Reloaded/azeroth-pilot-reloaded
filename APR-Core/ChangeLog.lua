@@ -70,6 +70,17 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.1.4", "2024-01-23" },
+        "#Bugs",
+        "- Fix false wrong zone for Horde - WOD01 - Orgrimmar",
+        "- Add Skip waypoint arrow button for UseHS step",
+        "- Fix auto gossip for step with only GossipOptionID",
+        "- Fix gossip option for Shadowland - SL - Intro",
+        "- Fix missing heirloom in garrison",
+
+        "#Localization",
+        "- German 99% ( Kamian )",
+
         { "v3.1.3", "2024-01-23" },
         "#Bugs",
         "- Fix Error Lua : Set Texture on first load of the game",
@@ -247,13 +258,6 @@ function APR.changelog:SetChangeLog()
         "#Localization",
         "- French 100% ( Neogeekmo )",
         "- German 63.03% ( Kamian )",
-
-        { "v2.4.5", "2023-09-06" },
-        "#WoW",
-        "- Update APR to be sync with the last WoW Interface Version (10.1.7)",
-        "#Localization",
-        "- English -> Fix missing key due to V3 code",
-        "- German -> Thanks to Kamian for starting the translation (27.59%)"
     }
 
     local changelog = "|cFFF1F1F1|c33ecc00f" .. APR.title .. "|r"
