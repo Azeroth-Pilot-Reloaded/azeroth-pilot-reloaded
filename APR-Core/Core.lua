@@ -157,6 +157,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
             APR_QidsTimer:Play()
             APR:PrintInfo("APR " .. L["LOADED"])
             APR_LoadInTimer:Stop()
+            APR.heirloom:RefreshFrameAnchor()
         end)
         APR_LoadInTimer:Play()
 
