@@ -18305,7 +18305,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 27373,
+        ["Gossip"] = 1,
         ["Range"] = 0.69,
         ["Coord"] = {
             ["y"] = 1915,
@@ -18930,7 +18930,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 27373,
+        ["Gossip"] = 1,
         ["Range"] = 0.69,
         ["Coord"] = {
             ["y"] = 1842.8,
@@ -20004,7 +20004,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 27373,
+        ["Gossip"] = 1,
         ["Range"] = 0.69,
         ["Coord"] = {
             ["y"] = 2561,

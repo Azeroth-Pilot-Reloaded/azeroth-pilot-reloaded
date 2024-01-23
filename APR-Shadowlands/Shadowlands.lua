@@ -267,7 +267,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.75,
         ["Coord"] = {
             ["y"] = 4733.2,
@@ -293,7 +293,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.75,
         ["Coord"] = {
             ["y"] = 4732.5,
@@ -319,7 +319,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
                 ["3"] = "3",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.75,
         ["Coord"] = {
             ["y"] = 4740,
@@ -683,7 +683,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["RaidIcon"] = 165918,
         ["Range"] = 0.75,
         ["Coord"] = {
@@ -1021,7 +1021,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 52684,
         ["Range"] = 0.69,
         ["Coord"] = {
             ["y"] = -1920.9,
@@ -1066,7 +1066,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 53751,
         ["Range"] = 86.28,
         ["Coord"] = {
             ["y"] = -1918.1,
@@ -1079,7 +1079,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 34398,
+        ["GossipOptionID"] = 52950,
         ["RaidIcon"] = 167486,
         ["Range"] = 0.69,
         ["Coord"] = {
@@ -1121,7 +1121,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
                 ["4"] = "4",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 52951,
         ["Range"] = 0.61,
         ["Coord"] = {
             ["y"] = -1836.3,
@@ -1208,7 +1208,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
                 ["3"] = "3",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.69,
         ["Coord"] = {
             ["y"] = -1835,
@@ -1274,7 +1274,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
                 ["4"] = "4",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 53876,
         ["RaidIcon"] = 174564,
         ["Range"] = 0.75,
         ["Coord"] = {
@@ -1323,7 +1323,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 51612,
         ["RaidIcon"] = 164173,
         ["Range"] = 0.69,
         ["Coord"] = {
@@ -1356,7 +1356,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 53752,
         ["Range"] = 0.69,
         ["Coord"] = {
             ["y"] = -1917.5,
@@ -1371,6 +1371,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
         },
         ["Gossip"] = 1,
         ["RaidIcon"] = 167424,
+        ["ETA"] = 73,
         ["Range"] = 0.75,
         ["Coord"] = {
             ["y"] = -1922.1,
@@ -4171,7 +4172,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 3433398,
+        ["Gossip"] = 2,
         ["RaidIcon"] = 166663,
         ["Range"] = 100.69,
         ["Coord"] = {
@@ -4769,7 +4770,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         },
     }, -- [19]
     {
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Qpart"] = {
             [60056] = {
                 ["1"] = "1",
@@ -9424,7 +9425,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["RaidIcon"] = 169031,
         ["Range"] = 0.61,
         ["Coord"] = {
@@ -12198,7 +12199,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.61,
         ["Coord"] = {
             ["y"] = -6526.4,
@@ -17337,7 +17338,7 @@ APR.RouteQuestStepList["1525-Z14-Revendreth-Story"] = {
             ["y"] = -1422.3,
             ["x"] = 6587.3,
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
     }, -- [20]
     {
         ["Qpart"] = {
@@ -17978,7 +17979,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.75,
         ["Coord"] = {
             ["y"] = 4733.2,
@@ -18004,7 +18005,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.75,
         ["Coord"] = {
             ["y"] = 4732.5,
@@ -18030,7 +18031,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["3"] = "3",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.75,
         ["Coord"] = {
             ["y"] = 4740,
@@ -18394,7 +18395,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["RaidIcon"] = 165918,
         ["Range"] = 0.75,
         ["Coord"] = {
@@ -18727,7 +18728,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 52684,
         ["Range"] = 0.69,
         ["Coord"] = {
             ["y"] = -1920.9,
@@ -18772,7 +18773,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 53751,
         ["Range"] = 86.28,
         ["Coord"] = {
             ["y"] = -1918.1,
@@ -18785,7 +18786,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 34398,
+        ["GossipOptionID"] = 52950,
         ["RaidIcon"] = 167486,
         ["Range"] = 0.69,
         ["Coord"] = {
@@ -18827,7 +18828,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["4"] = "4",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 52951,
         ["Range"] = 0.61,
         ["Coord"] = {
             ["y"] = -1836.3,
@@ -18914,7 +18915,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["3"] = "3",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.69,
         ["Coord"] = {
             ["y"] = -1835,
@@ -18980,7 +18981,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["4"] = "4",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 53876,
         ["RaidIcon"] = 174564,
         ["Range"] = 0.75,
         ["Coord"] = {
@@ -19029,7 +19030,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 51612,
         ["RaidIcon"] = 164173,
         ["Range"] = 0.69,
         ["Coord"] = {
@@ -19062,7 +19063,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 53752,
         ["Range"] = 0.69,
         ["Coord"] = {
             ["y"] = -1917.5,
@@ -19077,6 +19078,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
         ["Gossip"] = 1,
         ["RaidIcon"] = 167424,
+        ["ETA"] = 73,
         ["Range"] = 0.75,
         ["Coord"] = {
             ["y"] = -1922.1,
@@ -21580,7 +21582,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 3433398,
+        ["Gossip"] = 2,
         ["RaidIcon"] = 166663,
         ["Range"] = 100.69,
         ["Coord"] = {
@@ -22178,7 +22180,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         },
     }, -- [19]
     {
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Qpart"] = {
             [60056] = {
                 ["1"] = "1",
@@ -26656,7 +26658,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["RaidIcon"] = 169031,
         ["Range"] = 0.61,
         ["Coord"] = {
@@ -27663,7 +27665,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.61,
         ["Coord"] = {
             ["y"] = -6526.4,
@@ -31566,7 +31568,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
             ["y"] = -1422.3,
             ["x"] = 6587.3,
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
     }, -- [20]
     {
         ["Qpart"] = {
@@ -32193,7 +32195,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.75,
         ["Coord"] = {
             ["y"] = 4733.2,
@@ -32219,7 +32221,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.75,
         ["Coord"] = {
             ["y"] = 4732.5,
@@ -32245,7 +32247,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["3"] = "3",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.75,
         ["Coord"] = {
             ["y"] = 4740,
@@ -32609,7 +32611,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["RaidIcon"] = 165918,
         ["Range"] = 0.75,
         ["Coord"] = {
@@ -32942,7 +32944,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 52684,
         ["Range"] = 0.69,
         ["Coord"] = {
             ["y"] = -1920.9,
@@ -32987,7 +32989,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 53751,
         ["Range"] = 86.28,
         ["Coord"] = {
             ["y"] = -1918.1,
@@ -33000,7 +33002,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 34398,
+        ["GossipOptionID"] = 52950,
         ["RaidIcon"] = 167486,
         ["Range"] = 0.69,
         ["Coord"] = {
@@ -33042,7 +33044,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["4"] = "4",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 52951,
         ["Range"] = 0.61,
         ["Coord"] = {
             ["y"] = -1836.3,
@@ -33129,7 +33131,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["3"] = "3",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.69,
         ["Coord"] = {
             ["y"] = -1835,
@@ -33195,7 +33197,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["4"] = "4",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 53876,
         ["RaidIcon"] = 174564,
         ["Range"] = 0.75,
         ["Coord"] = {
@@ -33244,7 +33246,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 51612,
         ["RaidIcon"] = 164173,
         ["Range"] = 0.69,
         ["Coord"] = {
@@ -33277,7 +33279,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 1,
+        ["GossipOptionID"] = 53752,
         ["Range"] = 0.69,
         ["Coord"] = {
             ["y"] = -1917.5,
@@ -33292,6 +33294,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
         ["Gossip"] = 1,
         ["RaidIcon"] = 167424,
+        ["ETA"] = 73,
         ["Range"] = 0.75,
         ["Coord"] = {
             ["y"] = -1922.1,
@@ -35794,7 +35797,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 3433398,
+        ["Gossip"] = 2,
         ["RaidIcon"] = 166663,
         ["Range"] = 100.69,
         ["Coord"] = {
@@ -36392,7 +36395,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         },
     }, -- [19]
     {
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Qpart"] = {
             [60056] = {
                 ["1"] = "1",
@@ -40870,7 +40873,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["RaidIcon"] = 169031,
         ["Range"] = 0.61,
         ["Coord"] = {
@@ -41877,7 +41880,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["Range"] = 0.61,
         ["Coord"] = {
             ["y"] = -6526.4,
@@ -45780,7 +45783,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
             ["y"] = -1422.3,
             ["x"] = 6587.3,
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
     }, -- [20]
     {
         ["Qpart"] = {
