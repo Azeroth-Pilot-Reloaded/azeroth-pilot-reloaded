@@ -70,6 +70,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.1.3", "2024-01-23" },
+        "#Bugs",
+        "- Fix Error Lua : Set Texture on first load of the game",
+
         { "v3.1.2", "2024-01-20" },
         "#Bugs",
         "- Fix missing gorgrond route in WOD ",
