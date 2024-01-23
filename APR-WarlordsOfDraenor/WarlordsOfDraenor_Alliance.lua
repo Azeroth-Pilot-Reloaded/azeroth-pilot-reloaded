@@ -12,6 +12,7 @@ APR.RouteQuestStepList["A84-DesMephisto-Stormwind-War"] = {
         },
     },
     {
+        ["ExtraLineText"] = "HS_STORMWIND_OR_WALK",
         ["UseHS"] = 34398,
         ["Coord"] = {
             ["y"] = -8867.5,
@@ -49,7 +50,7 @@ APR.RouteQuestStepList["A84-DesMephisto-Stormwind-War"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 34398,
+        ["GossipOptionID"] = 51033,
         ["RaidIcon"] = 149626,
         ["Range"] = 0.69,
         ["Coord"] = {
@@ -71,7 +72,7 @@ APR.RouteQuestStepList["A84-DesMephisto-Stormwind-War"] = {
                 ["2"] = "2",
             },
         },
-        ["Gossip"] = 34398,
+        ["GossipOptionID"] = 43231,
         ["RaidIcon"] = 78423,
         ["Range"] = 0.75,
         ["Coord"] = {

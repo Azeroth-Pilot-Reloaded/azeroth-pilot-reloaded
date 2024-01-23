@@ -64,6 +64,14 @@ APR.RouteQuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
         },
     },
     {
+        ["Waypoint"] = 34398,
+        ["Range"] = 10,
+        ["Coord"] = {
+            ["y"] = -11582.7,
+            ["x"] = -3529.4,
+        },
+    },
+    {
         --9
         ["Qpart"] = {
             [34398] = {
@@ -77,6 +85,7 @@ APR.RouteQuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
             ["y"] = -11810,
             ["x"] = -3204.5,
         },
+        ["Zone"] = 17
     },
     { --10
         ["ZoneDoneSave"] = 1,
