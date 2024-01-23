@@ -1359,7 +1359,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         -- GOSSIP
         if (APR.settings.profile.autoGossip) then
             -- GOSSIP HARDCODED
-            if (steps and steps["Gossip"]) then
+            if (steps and (steps["Gossip"] or steps["GossipOptionID"])) then
                 if (steps["Gossip"] == 27373 or steps["Gossip"] == 34398) then
                     C_GossipInfo.SelectOptionByIndex(1)
                     _G.NextQuestStep()
