@@ -3472,7 +3472,7 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
                     ["1"] = "1",
                 },
             },
-            ["Gossip"] = 37137,
+            ["GossipOptionID"] = 37137,
             ["RaidIcon"] = 39062,
             ["Range"] = 0.69,
             ["Coord"] = {
@@ -9284,7 +9284,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
                 ["1"] = "1",
             },
         },
-        ["Gossip"] = 34398,
+        ["Gossip"] = 1,
         ["RaidIcon"] = 39380,
         ["Range"] = 0.69,
         ["Coord"] = {
