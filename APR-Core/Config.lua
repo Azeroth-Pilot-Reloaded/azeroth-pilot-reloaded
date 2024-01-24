@@ -45,7 +45,7 @@ function APR.settings:InitializeSettings()
             autoGossip = true,
             autoVendor = false,
             autoRepair = false,
-            autoSkipCutScene = false,
+            autoSkipCutScene = true,
             autoFlight = true,
             -- current step
             currentStepFrame = {},
@@ -559,7 +559,6 @@ function APR.settings:createBlizzOptions()
                         width = "full",
                         get = GetProfileOption,
                         set = SetProfileOption,
-                        disabled = true -- wait for a change on blizz side
                     },
                     autoFlight = {
                         order = 8.2,
