@@ -704,7 +704,7 @@ local function APR_UpdateStep()
                         end
                     elseif not MissingQs[questId] then
                         if APR.IsInRouteZone then
-                            local questTextToAdd = Contains(APR_BonusObj, APR_index) and
+                            local questTextToAdd = Contains(APR_BonusObj, questId) and
                                 (L["DO_BONUS_OBJECTIVE"] .. ": " .. questId) or
                                 (L["ERROR"] .. " - " .. L["MISSING_Q"] .. ": " .. questId)
                             APR.currentStep:UpdateQuestSteps(questId, questTextToAdd, objectiveId)
@@ -814,12 +814,12 @@ function APR.SetButton()
     elseif steps.UseGarrisonHS then
         APR.currentStep:AddStepButton(steps.UseGarrisonHS .. "-" .. "UseGarrisonHS", 110560)
     elseif steps.Button then
-        for APR_index, APR_value in pairs(steps.Button) do
-            APR.currentStep:AddStepButton(APR_index, APR_value, 'item')
+        for questID, itemID in pairs(steps.Button) do
+            APR.currentStep:AddStepButton(questID, itemID, 'item')
         end
     elseif steps.SpellButton then
-        for APR_index, APR_value in pairs(steps.SpellButton) do
-            APR.currentStep:AddStepButton(APR_index, APR_value, 'spell')
+        for questID, spellID in pairs(steps.SpellButton) do
+            APR.currentStep:AddStepButton(questID, spellID, 'spell')
         end
     end
 end

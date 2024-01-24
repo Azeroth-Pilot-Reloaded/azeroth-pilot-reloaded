@@ -574,9 +574,6 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ButtonSpellId = {
-            [159904] = "34427-1",
-        },
         Button = {
             ["34427-1"] = 110799,
         },
@@ -1737,9 +1734,6 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
                 2,
             },
         },
-        ButtonSpellId = {
-            [161384] = "34461-2",
-        },
         Button = {
             ["34461-2"] = 111956,
         },
@@ -2120,9 +2114,6 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             [33526] = {
                 1,
             },
-        },
-        ButtonSpellId = {
-            [151088] = "33526-1",
         },
         Button = {
             ["33526-1"] = 107279,
@@ -5066,9 +5057,6 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
                 1,
             },
         },
-        ButtonSpellId = {
-            [170555] = "33593-1",
-        },
         Button = {
             ["33593-1"] = 115534,
         },
@@ -7390,9 +7378,6 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
             [33593] = {
                 1,
             },
-        },
-        ButtonSpellId = {
-            [170555] = "33593-1",
         },
         Button = {
             ["33593-1"] = 115534,

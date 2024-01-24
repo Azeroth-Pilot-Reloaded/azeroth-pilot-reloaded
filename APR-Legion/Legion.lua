@@ -5253,9 +5253,6 @@ if (APR.Faction == "Alliance") then
                     1,
                 },
             },
-            ButtonSpellId = {
-                [186052] = "38646-1",
-            },
             Button = {
                 ["38646-1"] = 127030,
             },
@@ -5306,9 +5303,6 @@ if (APR.Faction == "Alliance") then
                 [38646] = {
                     1,
                 },
-            },
-            ButtonSpellId = {
-                [186052] = "38646-1",
             },
             Button = {
                 ["38646-1"] = 127030,
@@ -7816,9 +7810,6 @@ if (APR.Faction == "Alliance") then
                     3,
                 },
             },
-            ButtonSpellId = {
-                [186745] = "39060-3",
-            },
             Button = {
                 ["39060-3"] = 127295,
             },
@@ -7833,9 +7824,6 @@ if (APR.Faction == "Alliance") then
                 [39060] = {
                     2,
                 },
-            },
-            ButtonSpellId = {
-                [186745] = "39060-2",
             },
             Fillers = {
                 [39061] = {
@@ -7873,9 +7861,6 @@ if (APR.Faction == "Alliance") then
                 [39060] = {
                     1,
                 },
-            },
-            ButtonSpellId = {
-                [186745] = "39060-1",
             },
             Fillers = {
                 [39061] = {
@@ -13634,9 +13619,6 @@ if (APR.Faction == "Horde") then
                     1,
                 },
             },
-            ButtonSpellId = {
-                [186052] = "38646-1",
-            },
             Button = {
                 ["38646-1"] = 127030,
             },
@@ -13687,9 +13669,6 @@ if (APR.Faction == "Horde") then
                 [38646] = {
                     1,
                 },
-            },
-            ButtonSpellId = {
-                [186052] = "38646-1",
             },
             Button = {
                 ["38646-1"] = 127030,
@@ -19721,9 +19700,6 @@ if (APR.Faction == "Horde") then
                 [40228] = {
                     1,
                 },
-            },
-            ButtonSpellId = {
-                [195071] = "40228-1",
             },
             Button = {
                 ["40228-1"] = 130074,

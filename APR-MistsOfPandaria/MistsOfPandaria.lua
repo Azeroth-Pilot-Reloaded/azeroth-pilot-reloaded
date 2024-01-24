@@ -380,9 +380,6 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
                 1,
             },
         },
-        ButtonSpellId = {
-            [106299] = "29523-1",
-        },
         Button = {
             ["29523-1"] = 72109,
         },
@@ -552,9 +549,6 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
             [29422] = {
                 1,
             },
-        },
-        ButtonSpellId = {
-            [102522] = "29422-1",
         },
         Button = {
             ["29422-1"] = 72583,
