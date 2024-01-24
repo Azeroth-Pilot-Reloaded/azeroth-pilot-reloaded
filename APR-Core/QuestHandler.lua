@@ -129,18 +129,6 @@ local APR_BonusObj = {
     59015,
 }
 
-APR.BreadCrumSkips = {}
-
-function APR.ChkBreadcrums(qids)
-    if (qids and APR.Breadcrums and APR.Breadcrums[qids]) then
-        for APR_index, APR_value in pairs(APR.Breadcrums[qids]) do
-            if ((APR.ActiveQuests[APR_value] or C_QuestLog.IsQuestFlaggedCompleted(APR_value) == true) and (not APR.ActiveQuests[qids])) then
-                APR.BreadCrumSkips[qids] = qids
-            end
-        end
-    end
-end
-
 local function APR_LeaveQuest(QuestIDs)
     C_QuestLog.SetSelectedQuest(QuestIDs)
     C_QuestLog.AbandonQuest()
@@ -157,9 +145,9 @@ local function APR_QAskPopWanted()
         steps = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
     end
 
-    local Qid = steps["QaskPopup"]
+    local Qid = steps["Group"].QuestId
     if not C_QuestLog.IsQuestFlaggedCompleted(Qid) and not steps["QuestLineSkip"] then
-        local SugGroupNr = steps["Group"]
+        local SugGroupNr = steps["Group"].Number
         local dialogText = L["OPTIONAL"] .. " - " .. L["SUGGESTED_PLAYERS"] .. ": " .. SugGroupNr
 
         APR.questionDialog:CreateQuestionPopup(
@@ -380,9 +368,6 @@ local function APR_UpdateStep()
             end
             return
         end
-        if (steps["BreadCrum"]) then
-            APR.ChkBreadcrums(steps["BreadCrum"])
-        end
         if (C_QuestLog.IsQuestFlaggedCompleted(47440) == true) then
             APRData[APR.PlayerID]["LoaPick"] = 1
         elseif (C_QuestLog.IsQuestFlaggedCompleted(47439) == true) then
@@ -395,20 +380,6 @@ local function APR_UpdateStep()
             for _, questID in pairs(steps["LeaveQuests"]) do
                 APR_LeaveQuest(questID)
             end
-        end
-        if (steps["ZoneDoneSave"]) then
-            local index, currentRouteName = next(APRCustomPath[APR.PlayerID])
-
-            -- Force reset heirloom to show heirloom taximap (not avalaible in exile reach)
-            if currentRouteName == "01-10 Exile's Reach" then
-                APR.settings.profile.heirloomWarning = false
-                APR.heirloom:RefreshFrameAnchor()
-            end
-            APRZoneCompleted[APR.PlayerID][currentRouteName] = true
-            tremove(APRCustomPath[APR.PlayerID], index)
-            APR.routeconfig:CheckIsCustomPathEmpty()
-            APR.routeconfig:SendMessage("APR_Custom_Path_Update")
-            APR.BookingList["UpdateMapId"] = true
         end
         if (steps["SpecialLeaveVehicle"]) then
             C_Timer.After(1, APR_ExitVhicle)
@@ -453,77 +424,77 @@ local function APR_UpdateStep()
                 return
             end
         end
-        if (steps["Qpart"]) then
-            local IdList = steps["Qpart"]
+        if (steps.Qpart) then
+            local IdList = steps.Qpart
             if (steps["QpartDB"]) then
-                local ZeIDi = 0
-                for hz = 1, getn(steps["QpartDB"]) do
-                    local ZeQID = steps["QpartDB"][hz]
-                    if (C_QuestLog.IsQuestFlaggedCompleted(ZeQID) or APR.ActiveQuests[ZeQID]) then
-                        ZeIDi = ZeQID
+                local wantedQuestId = 0
+                for index = 1, getn(steps["QpartDB"]) do
+                    local qPartDBQuestId = steps["QpartDB"][index]
+                    if (C_QuestLog.IsQuestFlaggedCompleted(qPartDBQuestId) or APR.ActiveQuests[qPartDBQuestId]) then
+                        wantedQuestId = qPartDBQuestId
                         break
                     end
                 end
                 local newList = {}
-                for APR_index, APR_value in pairs(IdList) do
-                    newList = APR_value
+                for _, questID in pairs(IdList) do
+                    newList = questID
                     break
                 end
                 IdList = nil
                 IdList = {}
-                IdList[ZeIDi] = newList
+                IdList[wantedQuestId] = newList
             end
 
             local Flagged = 0
             local Total = 0
-            for APR_index, APR_value in pairs(IdList) do
-                for APR_index2, APR_value2 in pairs(APR_value) do
+            for questID, objectives in pairs(IdList) do
+                for _, objectiveIndex in pairs(objectives) do
                     Total = Total + 1
-                    local qid = APR_index .. "-" .. APR_index2
-                    if (C_QuestLog.IsQuestFlaggedCompleted(APR_index) or ((UnitLevel("player") == APR.MaxLevel) and Contains(APR_BonusObj, APR_index)) or APRData[APR.PlayerID]["BonusSkips"][APR_index] or APR.BreadCrumSkips[APR_index]) then
+                    local qid = questID .. "-" .. objectiveIndex
+                    if (C_QuestLog.IsQuestFlaggedCompleted(questID) or ((UnitLevel("player") == APR.MaxLevel) and Contains(APR_BonusObj, questID)) or APRData[APR.PlayerID]["BonusSkips"][questID]) then
                         Flagged = Flagged + 1
                     elseif (APR.ActiveQuests[qid] and APR.ActiveQuests[qid] == "C") then
                         Flagged = Flagged + 1
                     elseif (APR.ActiveQuests[qid]) then
                         if (APR.IsInRouteZone) then
-                            local ZeTExt
+                            local text
                             -- //TODO: WWWWWWWWWWWWWTTTTTTTTTTTTTTFFFFFFFFFFFFFFF ???
                             if (APR.ActiveQuests["57713-4"] and UIWidgetTopCenterContainerFrame and UIWidgetTopCenterContainerFrame["widgetFrames"]) then
-                                for APR_index2, APR_value2 in PairsByKeys(UIWidgetTopCenterContainerFrame["widgetFrames"]) do
+                                for APR_index2, _ in PairsByKeys(UIWidgetTopCenterContainerFrame["widgetFrames"]) do
                                     if (UIWidgetTopCenterContainerFrame["widgetFrames"][APR_index2]["Text"]) then
-                                        ZeTExt = UIWidgetTopCenterContainerFrame["widgetFrames"][APR_index2]["Text"]
+                                        text = UIWidgetTopCenterContainerFrame["widgetFrames"][APR_index2]["Text"]
                                             :GetText()
-                                        if (string.find(ZeTExt, "(%d+)(.*)")) then
-                                            local _, _, ZeTExt2 = string.find(ZeTExt, "(%d+)(.*)")
-                                            ZeTExt = ZeTExt2
+                                        if (string.find(text, "(%d+)(.*)")) then
+                                            local _, _, matchedText = string.find(text, "(%d+)(.*)")
+                                            text = matchedText
                                         end
                                     end
                                 end
                             end
 
-                            local checkpbar = C_QuestLog.GetQuestObjectives(APR_index)
-                            if (not string.find(APR.ActiveQuests[qid], "(.*)(%d+)(.*)") and checkpbar and checkpbar[tonumber(APR_index2)] and checkpbar[tonumber(APR_index2)]["type"] and checkpbar[tonumber(APR_index2)]["type"] == "progressbar") then
-                                APR.currentStep:UpdateQuestSteps(APR_index,
-                                    "(" .. GetQuestProgressBarPercent(APR_index) .. "%) " .. APR.ActiveQuests[qid],
-                                    APR_index2)
-                            elseif (ZeTExt) then
-                                APR.currentStep:UpdateQuestSteps(APR_index, ZeTExt .. "% - " .. APR.ActiveQuests[qid],
-                                    APR_index2)
+                            local checkpbar = C_QuestLog.GetQuestObjectives(questID)
+                            if (not string.find(APR.ActiveQuests[qid], "(.*)(%d+)(.*)") and checkpbar and checkpbar[tonumber(objectiveIndex)] and checkpbar[tonumber(objectiveIndex)]["type"] and checkpbar[tonumber(objectiveIndex)]["type"] == "progressbar") then
+                                APR.currentStep:UpdateQuestSteps(questID,
+                                    "(" .. GetQuestProgressBarPercent(questID) .. "%) " .. APR.ActiveQuests[qid],
+                                    objectiveIndex)
+                            elseif (text) then
+                                APR.currentStep:UpdateQuestSteps(questID, text .. "% - " .. APR.ActiveQuests[qid],
+                                    objectiveIndex)
                             else
-                                APR.currentStep:UpdateQuestSteps(APR_index, APR.ActiveQuests[qid], APR_index2)
+                                APR.currentStep:UpdateQuestSteps(questID, APR.ActiveQuests[qid], objectiveIndex)
                             end
                         end
-                    elseif (not APR.ActiveQuests[APR_index] and not MissingQs[APR_index]) then
+                    elseif (not APR.ActiveQuests[questID] and not MissingQs[questID]) then
                         if (APR.IsInRouteZone) then
-                            if Contains(APR_BonusObj, APR_index) then
-                                APR.currentStep:UpdateQuestSteps(APR_index, L["DO_BONUS_OBJECTIVE"] ..
-                                    ": " .. APR_index, APR_index2)
-                                MissingQs[APR_index] = 1
+                            if Contains(APR_BonusObj, questID) then
+                                APR.currentStep:UpdateQuestSteps(questID, L["DO_BONUS_OBJECTIVE"] ..
+                                    ": " .. questID, objectiveIndex)
+                                MissingQs[questID] = 1
                             else
-                                APR.currentStep:UpdateQuestSteps(APR_index, L["ERROR"] ..
+                                APR.currentStep:UpdateQuestSteps(questID, L["ERROR"] ..
                                     " - " .. L["MISSING_Q"] ..
-                                    ": " .. APR_index, APR_index2)
-                                MissingQs[APR_index] = 1
+                                    ": " .. questID, objectiveIndex)
+                                MissingQs[questID] = 1
                             end
                         end
                     end
@@ -559,10 +530,10 @@ local function APR_UpdateStep()
                 local pickupLeft = #IdList
                 local Flagged = 0
                 for _, questID in ipairs(IdList) do
-                    if not (APR.ActiveQuests[questID] or C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.BreadCrumSkips[questID]) then
+                    if not (APR.ActiveQuests[questID] or C_QuestLog.IsQuestFlaggedCompleted(questID)) then
                         pickupLeft = pickupLeft - 1
                     end
-                    if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] or APR.BreadCrumSkips[questID] then
+                    if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] then
                         Flagged = Flagged + 1
                     end
                 end
@@ -579,7 +550,7 @@ local function APR_UpdateStep()
             end
         elseif (steps["Waypoint"]) then
             IdList = steps["Waypoint"]
-            if (C_QuestLog.IsQuestFlaggedCompleted(IdList) or APR.BreadCrumSkips[IdList]) then
+            if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
                 if (APR.settings.profile.debug) then
                     print("APR.UpdateStep:Waypoint:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                 end
@@ -627,7 +598,7 @@ local function APR_UpdateStep()
                 if APR.ActiveQuests[questID] then
                     questLeft = questLeft - 1
                 end
-                if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.BreadCrumSkips[questID] then
+                if C_QuestLog.IsQuestFlaggedCompleted(questID) then
                     Flagged = Flagged + 1
                 end
             end
@@ -707,8 +678,8 @@ local function APR_UpdateStep()
                 _G.UpdateNextStep()
                 return
             end
-        elseif (steps["QaskPopup"]) then
-            if (C_QuestLog.IsQuestFlaggedCompleted(steps["QaskPopup"])) then
+        elseif (steps["Group"]) then
+            if (C_QuestLog.IsQuestFlaggedCompleted(steps["Group"].QuestId)) then
                 _G.UpdateNextStep()
                 return
             else
@@ -720,7 +691,7 @@ local function APR_UpdateStep()
             local Total = 0
             local HasTriggerTextValid = false
             for questId, objectives in pairs(IdList) do
-                for objectiveId, _ in pairs(objectives) do
+                for _, objectiveId in pairs(objectives) do
                     Total = Total + 1
                     local qid = questId .. "-" .. objectiveId
                     local questText = APR.ActiveQuests[qid]
@@ -770,10 +741,10 @@ local function APR_UpdateStep()
                 end
             end
         end
-        if steps["Fillers"] then
-            local IdList = steps["Fillers"]
+        if steps.Fillers then
+            local IdList = steps.Fillers
             for questId, objectives in pairs(IdList) do
-                for objectiveId, _ in pairs(objectives) do
+                for _, objectiveId in pairs(objectives) do
                     local qid = questId .. "-" .. objectiveId
                     if C_QuestLog.IsQuestFlaggedCompleted(questId) == false and not APRData[APR.PlayerID]["BonusSkips"][questId] then
                         if APR.ActiveQuests[qid] and APR.ActiveQuests[qid] ~= "C" and APR.IsInRouteZone then
@@ -788,12 +759,26 @@ local function APR_UpdateStep()
                 end
             end
         end
-        if steps["Grind"] then
-            if APR.Level < steps["Grind"] then
-                APR.currentStep:AddExtraLineText("GRIND", L["GRIND"] .. " " .. steps["Grind"])
+        if steps.Grind then
+            if APR.Level < steps.Grind then
+                APR.currentStep:AddExtraLineText("GRIND", L.Grind .. " " .. steps.Grind)
             else
                 _G.UpdateNextStep()
             end
+        end
+        if (steps.ZoneDoneSave) then
+            local index, currentRouteName = next(APRCustomPath[APR.PlayerID])
+
+            -- Force reset heirloom to show heirloom taximap (not avalaible in exile reach)
+            if currentRouteName == "01-10 Exile's Reach" then
+                APR.settings.profile.heirloomWarning = false
+                APR.heirloom:RefreshFrameAnchor()
+            end
+            APRZoneCompleted[APR.PlayerID][currentRouteName] = true
+            tremove(APRCustomPath[APR.PlayerID], index)
+            APR.routeconfig:CheckIsCustomPathEmpty()
+            APR.routeconfig:SendMessage("APR_Custom_Path_Update")
+            APR.BookingList["UpdateMapId"] = true
         end
 
         -- Set Quest Item Button
@@ -847,7 +832,7 @@ function APR.CheckWaypointText()
         ["Boat"] = L["USE_BOAT"],
         ["PickUp"] = L["ACCEPT_Q"],
         ["Done"] = L["TURN_IN_Q"],
-        ["Qpart"] = L["COMPLETE_Q"],
+        Qpart = L["COMPLETE_Q"],
         ["SetHS"] = L["SET_HEARTHSTONE"],
         ["QpartPart"] = L["COMPLETE_Q"]
     }
@@ -991,8 +976,8 @@ local function APR_QuestStepIds()
     local steps = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
     if steps["PickUp"] then
         return steps["PickUp"], "PickUp"
-    elseif steps["Qpart"] then
-        return steps["Qpart"], "Qpart"
+    elseif steps.Qpart then
+        return steps.Qpart, "Qpart"
     elseif steps["Done"] then
         return steps["Done"], "Done"
     end
@@ -1199,7 +1184,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "REQUEST_CEMETERY_LIST_RESPONSE") then
         APR.BookingList["UpdateMapId"] = true
         APR.Arrow.currentStep = 0
-        APR.Arrow:SetQPTT()
+        APR.BookingList["SetQPTT"] = true
     end
     if (event == "QUEST_LOG_UPDATE") then
         C_Timer.After(0.2, APR_UpdQuestThing)
@@ -1595,7 +1580,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     if (event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA") then
         APR.Arrow.currentStep = 0
-        APR.Arrow:SetQPTT()
+        APR.BookingList["SetQPTT"] = true
         APR.BookingList["UpdateMapId"] = true
     end
     if (event == "GOSSIP_CLOSED") then

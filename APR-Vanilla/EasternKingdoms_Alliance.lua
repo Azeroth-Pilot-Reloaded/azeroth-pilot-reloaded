@@ -10,9 +10,9 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [24469] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 34.15,
@@ -49,14 +49,14 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [24471] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [24470] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ButtonSpellId"] = {
@@ -72,9 +72,9 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [24470] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 69.27,
@@ -146,14 +146,14 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24474] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [24477] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -163,14 +163,14 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [15]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24474] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [24477] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -180,14 +180,14 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [16]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24474] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [24477] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -197,9 +197,9 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [17]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24477] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 135.68,
@@ -237,15 +237,15 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [21]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24486] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [24475] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 51.58,
@@ -255,10 +255,10 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [22]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24475] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 118.3,
@@ -323,17 +323,17 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [29]
     {
-        ["Qpart"] = {
+        Qpart = {
             [3361] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [24489] = {
-                ["3"] = "3",
+                3,
             },
             [182] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -343,14 +343,14 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [30]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24489] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [182] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -360,17 +360,17 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [31]
     {
-        ["Qpart"] = {
+        Qpart = {
             [3361] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [24489] = {
-                ["2"] = "2",
+                2,
             },
             [182] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -380,14 +380,14 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [32]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24489] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [182] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -397,17 +397,17 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [33]
     {
-        ["Qpart"] = {
+        Qpart = {
             [3361] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [24489] = {
-                ["1"] = "1",
+                1,
             },
             [182] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -417,14 +417,14 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [34]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24489] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [182] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -434,9 +434,9 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [35]
     {
-        ["Qpart"] = {
+        Qpart = {
             [182] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 78.93,
@@ -469,8 +469,8 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         ["Waypoint"] = 218,
         ["Fillers"] = {
             [218] = {
-                ["3"] = "3",
-                ["4"] = "4",
+                3,
+                4,
             },
         },
         ["Range"] = 11.32,
@@ -483,8 +483,8 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         ["Waypoint"] = 218,
         ["Fillers"] = {
             [218] = {
-                ["3"] = "3",
-                ["4"] = "4",
+                3,
+                4,
             },
         },
         ["Range"] = 11.66,
@@ -497,8 +497,8 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         ["Waypoint"] = 218,
         ["Fillers"] = {
             [218] = {
-                ["3"] = "3",
-                ["4"] = "4",
+                3,
+                4,
             },
         },
         ["Range"] = 9.73,
@@ -511,8 +511,8 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         ["Waypoint"] = 218,
         ["Fillers"] = {
             [218] = {
-                ["3"] = "3",
-                ["4"] = "4",
+                3,
+                4,
             },
         },
         ["Range"] = 10.68,
@@ -522,15 +522,15 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [42]
     {
-        ["Qpart"] = {
+        Qpart = {
             [218] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [218] = {
-                ["3"] = "3",
-                ["4"] = "4",
+                3,
+                4,
             },
         },
         ["Range"] = 6.57,
@@ -540,15 +540,15 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [43]
     {
-        ["Qpart"] = {
+        Qpart = {
             [218] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [218] = {
-                ["3"] = "3",
-                ["4"] = "4",
+                3,
+                4,
             },
         },
         ["Range"] = 0.75,
@@ -558,10 +558,10 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [44]
     {
-        ["Qpart"] = {
+        Qpart = {
             [218] = {
-                ["3"] = "3",
-                ["4"] = "4",
+                3,
+                4,
             },
         },
         ["Range"] = 97.7,
@@ -633,11 +633,11 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
     }, -- [52]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24492] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -693,9 +693,9 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             28762,
             29078,
         },
-        ["Qpart"] = {
+        Qpart = {
             [28766] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 53.65,
@@ -756,9 +756,9 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             28759,
             29079,
         },
-        ["Qpart"] = {
+        Qpart = {
             [28774] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 36.43,
@@ -883,9 +883,9 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28797] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["QpartDB"] = {
@@ -906,14 +906,14 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
         ["Fillers"] = {
             [28813] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28813] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["QpartDB"] = {
@@ -1030,12 +1030,12 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
     }, -- [18]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26389] = {
-                ["1"] = "1",
+                1,
             },
             [26391] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -1083,9 +1083,9 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
     }, -- [23]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26390] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -1137,9 +1137,9 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27670] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 39.44,
@@ -1185,9 +1185,9 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27671] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -1236,9 +1236,9 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27635] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -1266,9 +1266,9 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27674] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -1473,9 +1473,9 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         },
     }, -- [21]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26208] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -1521,9 +1521,9 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         },
     }, -- [26]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26222] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 43.62,
@@ -1569,15 +1569,15 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         },
     }, -- [31]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26264] = {
-                ["1"] = "1",
+                1,
             },
             [26265] = {
-                ["1"] = "1",
+                1,
             },
             [26205] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 79.6,
@@ -1642,12 +1642,12 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         },
     }, -- [38]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26285] = {
-                ["1"] = "1",
+                1,
             },
             [26284] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 88.93,
@@ -1676,10 +1676,10 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         },
     }, -- [41]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26318] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -1734,12 +1734,12 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         },
     }, -- [47]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26333] = {
-                ["1"] = "1",
+                1,
             },
             [26331] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -1789,9 +1789,9 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         },
     }, -- [52]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26342] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -1822,10 +1822,10 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         },
     }, -- [55]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26364] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Gossip"] = 1,
@@ -1945,15 +1945,15 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [14094] = {
-                ["1"] = "1",
+                1,
             },
             [14093] = {
-                ["1"] = "1",
+                1,
             },
             [14098] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 92.14,
@@ -2049,7 +2049,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         ["Waypoint"] = 14157,
         ["Fillers"] = {
             [24930] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 9.1,
@@ -2062,7 +2062,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         ["Waypoint"] = 14157,
         ["Fillers"] = {
             [24930] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 6.54,
@@ -2117,9 +2117,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [23]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14154] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -2147,9 +2147,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [26]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24930] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 17.23,
@@ -2212,9 +2212,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [33]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14204] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -2279,9 +2279,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [40]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14293] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -2327,9 +2327,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [45]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14212] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 48.13,
@@ -2357,9 +2357,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [48]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14218] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -2405,9 +2405,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [53]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14222] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 19.62,
@@ -2542,12 +2542,12 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14347] = {
-                ["1"] = "1",
+                1,
             },
             [14348] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -2633,14 +2633,14 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [22]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14368] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [14369] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -2650,14 +2650,14 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [23]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14368] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [14369] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -2667,14 +2667,14 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [24]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14368] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [14369] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -2684,14 +2684,14 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [25]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14382] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [14369] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -2701,14 +2701,14 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [26]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14382] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [14369] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -2746,9 +2746,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [30]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14386] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -2805,9 +2805,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [36]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14395] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 75.52,
@@ -2873,9 +2873,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [43]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14416] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 67.22,
@@ -2913,14 +2913,14 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [47]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14404] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [14412] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -2930,14 +2930,14 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [48]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14404] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [14412] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -2947,14 +2947,14 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [49]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14404] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [14412] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -2964,9 +2964,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [50]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14412] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -3004,9 +3004,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [54]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14399] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -3034,9 +3034,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [57]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14400] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -3064,9 +3064,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [60]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14401] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -3139,9 +3139,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [24438] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -3169,9 +3169,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [68]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24468] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 73.4,
@@ -3199,14 +3199,14 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [71]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24472] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [24472] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -3216,9 +3216,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [72]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24472] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 83.77,
@@ -3273,12 +3273,12 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [78]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24484] = {
-                ["1"] = "1",
+                1,
             },
             [24495] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 100.75,
@@ -3307,9 +3307,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [81]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24501] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -3355,9 +3355,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [86]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24616] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3415,12 +3415,12 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [92]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24627] = {
-                ["1"] = "1",
+                1,
             },
             [24628] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 129.94,
@@ -3449,9 +3449,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [95]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24646] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3482,11 +3482,11 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [98]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24593] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -3558,9 +3558,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [106]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24592] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -3570,9 +3570,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [107]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24592] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3624,9 +3624,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [112]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24675] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 58.14,
@@ -3647,7 +3647,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         ["Waypoint"] = 24674,
         ["Fillers"] = {
             [24575] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 16.46,
@@ -3657,14 +3657,14 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [115]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24674] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [24575] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -3674,9 +3674,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [116]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24575] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 112.07,
@@ -3706,11 +3706,11 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [119]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24676] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["Range"] = 38.57,
@@ -3738,9 +3738,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [122]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24904] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -3766,9 +3766,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24904] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -3796,9 +3796,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [24902] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 38507,
@@ -3845,10 +3845,10 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [24920] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["RaidIcon"] = 38615,
@@ -3911,9 +3911,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24602] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 71.87,
@@ -3941,9 +3941,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24679] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3992,11 +3992,11 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [24681] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["RaidIcon"] = 38150,
@@ -4025,9 +4025,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26706] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -4087,9 +4087,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [12619] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -4099,9 +4099,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [12619] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -4132,9 +4132,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [12842] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -4162,9 +4162,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [12848] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -4213,12 +4213,12 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [16]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12641] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
         },
         ["Range"] = 5.33,
@@ -4343,9 +4343,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [30]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12733] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -4364,15 +4364,15 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [32]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12679] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [12678] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 47.32,
@@ -4382,10 +4382,10 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [33]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12678] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 47.19,
@@ -4395,9 +4395,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [34]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12680] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 6.33,
@@ -4415,9 +4415,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [36]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12680] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 8.28,
@@ -4453,9 +4453,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [40]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12687] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 7.83,
@@ -4528,9 +4528,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [48]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12698] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -4579,9 +4579,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [53]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12701] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 9.18,
@@ -4745,15 +4745,15 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [72]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12716] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [12722] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -4787,15 +4787,15 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [76]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12716] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [12722] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -4805,19 +4805,19 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [77]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12719] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Fillers"] = {
             [12722] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [12716] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.69,
@@ -4827,13 +4827,13 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [78]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12716] = {
-                ["3"] = "3",
+                3,
             },
             [12722] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 27.4,
@@ -4913,9 +4913,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [87]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12720] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -4980,9 +4980,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [94]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12724] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 9.52,
@@ -5028,9 +5028,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [99]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12727] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 5.03,
@@ -5076,9 +5076,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [104]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28649] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 6.65,
@@ -5124,9 +5124,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [109]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12754] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -5139,9 +5139,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [110]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12754] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 7.38,
@@ -5257,10 +5257,10 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [123]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12779] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Button"] = {
@@ -5325,9 +5325,9 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [130]
     {
-        ["Qpart"] = {
+        Qpart = {
             [12801] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 35.57,
@@ -5390,10 +5390,10 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         },
     }, -- [137]
     {
-        ["Qpart"] = {
+        Qpart = {
             [13166] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 10.18,
@@ -5486,10 +5486,10 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
         ["Fillers"] = {
             [47] = {
-                ["1"] = "1",
+                1,
             },
             [60] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -5507,9 +5507,9 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [88] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -5533,10 +5533,10 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
         ["Fillers"] = {
             [47] = {
-                ["1"] = "1",
+                1,
             },
             [60] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -5554,9 +5554,9 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [86] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 44.05,
@@ -5568,10 +5568,10 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
     {
         ["Fillers"] = {
             [47] = {
-                ["1"] = "1",
+                1,
             },
             [60] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -5594,10 +5594,10 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
     {
         ["Fillers"] = {
             [47] = {
-                ["1"] = "1",
+                1,
             },
             [60] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -5627,17 +5627,17 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     }, -- [17]
     {
-        ["Qpart"] = {
+        Qpart = {
             [87] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [47] = {
-                ["1"] = "1",
+                1,
             },
             [60] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -5649,10 +5649,10 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
     {
         ["Fillers"] = {
             [47] = {
-                ["1"] = "1",
+                1,
             },
             [60] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -5708,17 +5708,17 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     }, -- [24]
     {
-        ["Qpart"] = {
+        Qpart = {
             [62] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [47] = {
-                ["1"] = "1",
+                1,
             },
             [60] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -5728,12 +5728,12 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     }, -- [25]
     {
-        ["Qpart"] = {
+        Qpart = {
             [47] = {
-                ["1"] = "1",
+                1,
             },
             [60] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 49.79,
@@ -5789,9 +5789,9 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     }, -- [31]
     {
-        ["Qpart"] = {
+        Qpart = {
             [112] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 36.62,
@@ -5809,9 +5809,9 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     }, -- [33]
     {
-        ["Qpart"] = {
+        Qpart = {
             [76] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -5901,14 +5901,14 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     }, -- [43]
     {
-        ["Qpart"] = {
+        Qpart = {
             [176] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [11] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -5918,9 +5918,9 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     }, -- [44]
     {
-        ["Qpart"] = {
+        Qpart = {
             [11] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 98.62,
@@ -5978,9 +5978,9 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     }, -- [50]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26152] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -6040,11 +6040,11 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
     {
         ["Fillers"] = {
             [52] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [5545] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -6067,10 +6067,10 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
     {
         ["Fillers"] = {
             [46] = {
-                ["1"] = "1",
+                1,
             },
             [5545] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -6091,14 +6091,14 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     }, -- [60]
     {
-        ["Qpart"] = {
+        Qpart = {
             [46] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [5545] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 52.29,
@@ -6108,9 +6108,9 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     }, -- [61]
     {
-        ["Qpart"] = {
+        Qpart = {
             [83] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 88.39,
@@ -6120,15 +6120,15 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     }, -- [62]
     {
-        ["Qpart"] = {
+        Qpart = {
             [5545] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [52] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 71.35,
@@ -6138,10 +6138,10 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     }, -- [63]
     {
-        ["Qpart"] = {
+        Qpart = {
             [52] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 102.03,
@@ -6189,9 +6189,9 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
     }, -- [68]
     {
-        ["Qpart"] = {
+        Qpart = {
             [147] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -6234,12 +6234,12 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26209] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
         },
         ["Range"] = 39.85,
@@ -6268,9 +6268,9 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26213] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 52.86,
@@ -6280,9 +6280,9 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26214] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 58.75,
@@ -6353,7 +6353,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         ["Waypoint"] = 26228,
         ["Fillers"] = {
             [26229] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 12.28,
@@ -6366,7 +6366,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         ["Waypoint"] = 26228,
         ["Fillers"] = {
             [26229] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 10.87,
@@ -6376,14 +6376,14 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26228] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26229] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -6399,7 +6399,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         ["Waypoint"] = 26228,
         ["Fillers"] = {
             [26229] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 13.15,
@@ -6409,9 +6409,9 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [16]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26229] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 110.58,
@@ -6440,9 +6440,9 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [19]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26232] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -6497,12 +6497,12 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [25]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26237] = {
-                ["1"] = "1",
+                1,
             },
             [26241] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 70.33,
@@ -6512,14 +6512,14 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [26]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26241] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [26241] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 44.98,
@@ -6529,9 +6529,9 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [27]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26241] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 71.54,
@@ -6623,17 +6623,17 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [37]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26271] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26286] = {
-                ["1"] = "1",
+                1,
             },
             [26287] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -6646,12 +6646,12 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [38]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26286] = {
-                ["1"] = "1",
+                1,
             },
             [26287] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 43.67,
@@ -6682,15 +6682,15 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [41]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26288] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [26288] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -6700,10 +6700,10 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [42]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26288] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 124.45,
@@ -6731,9 +6731,9 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [45]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26290] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -6809,10 +6809,10 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [53]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26295] = {
-                ["1"] = "1",
-                ["4"] = "4",
+                1,
+                4,
             },
         },
         ["Range"] = 0.69,
@@ -6822,9 +6822,9 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [54]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26295] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -6842,9 +6842,9 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [56]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26295] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["ExtraLineText"] = "UPSTAIRS",
@@ -6873,9 +6873,9 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [59]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26297] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -7009,9 +7009,9 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [75]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26320] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -7117,15 +7117,15 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [87]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26349] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26348] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -7137,8 +7137,8 @@ APR.RouteQuestStepList["A52-Westfall"] = {
     {
         ["Fillers"] = {
             [26348] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Done"] = {
@@ -7159,9 +7159,9 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [90]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26347] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 151.36,
@@ -7216,10 +7216,10 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [96]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26348] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 80.53,
@@ -7267,9 +7267,9 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
     }, -- [101]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26322] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -7303,12 +7303,12 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27592] = {
-                ["1"] = "1",
+                1,
             },
             [27587] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -7358,15 +7358,15 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27536] = {
-                ["1"] = "1",
+                1,
             },
             [27663] = {
-                ["1"] = "1",
+                1,
             },
             [27656] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 255.64,
@@ -7423,12 +7423,12 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27599] = {
-                ["1"] = "1",
+                1,
             },
             [27598] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 78.95,
@@ -7457,11 +7457,11 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [16]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27600] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["Gossip"] = 1,
@@ -7518,9 +7518,9 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [21]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27691] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 124.75,
@@ -7556,9 +7556,9 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [25]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27757] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -7586,9 +7586,9 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [28]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27818] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 79.37,
@@ -7634,9 +7634,9 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [33]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27694] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 39.78,
@@ -7746,9 +7746,9 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [46]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27705] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -7800,9 +7800,9 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [52]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27768] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -7862,9 +7862,9 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [59]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27773] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -7947,12 +7947,12 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [68]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27860] = {
-                ["1"] = "1",
+                1,
             },
             [27840] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 82.43,
@@ -7962,14 +7962,14 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [69]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27822] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [27821] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 71.17,
@@ -7979,9 +7979,9 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [70]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27821] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 66.62,
@@ -8031,15 +8031,15 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [75]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27845] = {
-                ["1"] = "1",
+                1,
             },
             [27843] = {
-                ["1"] = "1",
+                1,
             },
             [27795] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -8071,12 +8071,12 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [78]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27875] = {
-                ["1"] = "1",
+                1,
             },
             [27876] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 162.76,
@@ -8106,9 +8106,9 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [81]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27904] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 88.77,
@@ -8118,9 +8118,9 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [82]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27902] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 94.31,
@@ -8149,9 +8149,9 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [85]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24913] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -8200,12 +8200,12 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
     }, -- [90]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27849] = {
-                ["1"] = "1",
+                1,
             },
             [27851] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 47.12,
@@ -8249,9 +8249,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25710] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -8289,15 +8289,15 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25712] = {
-                ["1"] = "1",
+                1,
             },
             [25713] = {
-                ["1"] = "1",
+                1,
             },
             [25711] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -8321,9 +8321,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25715] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -8352,12 +8352,12 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25709] = {
-                ["1"] = "1",
+                1,
             },
             [25708] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -8408,9 +8408,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [16]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25716] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 121.3,
@@ -8465,9 +8465,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [22]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26158] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -8477,9 +8477,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [23]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26158] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -8516,13 +8516,13 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [27]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26172] = {
-                ["1"] = "1",
+                1,
             },
             [26159] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 123.69,
@@ -8559,9 +8559,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [31]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26160] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -8616,9 +8616,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [37]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26167] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -8636,9 +8636,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [39]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26169] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -8648,9 +8648,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [40]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26168] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -8687,10 +8687,10 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [44]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25703] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 139.8,
@@ -8719,14 +8719,14 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [47]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25706] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [25705] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 58.07,
@@ -8736,14 +8736,14 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [48]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25706] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Fillers"] = {
             [25705] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 67.85,
@@ -8753,13 +8753,13 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [49]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25706] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [25705] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 69.95,
@@ -8851,17 +8851,17 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [59]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26173] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [26164] = {
-                ["1"] = "1",
+                1,
             },
             [26165] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -8871,17 +8871,17 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [60]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26173] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26164] = {
-                ["1"] = "1",
+                1,
             },
             [26165] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -8891,17 +8891,17 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [61]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26173] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [26164] = {
-                ["1"] = "1",
+                1,
             },
             [26165] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -8911,12 +8911,12 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [62]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26164] = {
-                ["1"] = "1",
+                1,
             },
             [26165] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 267.7,
@@ -8963,9 +8963,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [67]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26174] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -9043,9 +9043,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [76]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26161] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -9079,9 +9079,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [80]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26161] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.61,
@@ -9107,9 +9107,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [83]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26161] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.69,
@@ -9169,9 +9169,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [90]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26162] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -9207,9 +9207,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [94]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26170] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -9255,9 +9255,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [99]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26171] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -9270,9 +9270,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [100]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26171] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Button"] = {
@@ -9344,12 +9344,12 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [108]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26184] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
         },
         ["Range"] = 209.04,
@@ -9395,9 +9395,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [113]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26186] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 121.8,
@@ -9425,9 +9425,9 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         },
     }, -- [116]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26187] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -9473,16 +9473,16 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28174] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [28172] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
         },
         ["Range"] = 130.43,
@@ -9513,17 +9513,17 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [28179] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [28177] = {
-                ["1"] = "1",
+                1,
             },
             [28178] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 42.98,
@@ -9533,12 +9533,12 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [28178] = {
-                ["1"] = "1",
+                1,
             },
             [28177] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 155.05,
@@ -9595,14 +9595,14 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28181] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [28181] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -9612,14 +9612,14 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28181] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [28181] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -9629,14 +9629,14 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28182] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [28181] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -9646,9 +9646,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [15]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28181] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 116.39,
@@ -9695,9 +9695,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [20]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28184] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 137.97,
@@ -9753,9 +9753,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [26]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28202] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 28202,
@@ -9766,9 +9766,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [27]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28202] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -9799,15 +9799,15 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28225] = {
-                ["1"] = "1",
+                1,
             },
             [28226] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
         },
         ["Range"] = 110.58,
@@ -9836,9 +9836,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [28227] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 7.54,
@@ -9877,14 +9877,14 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [28246] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [28245] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -9897,14 +9897,14 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [28246] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [28245] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -9918,14 +9918,14 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [28246] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [28245] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -9947,9 +9947,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28245] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 119.19,
@@ -9977,9 +9977,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28252] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -10046,9 +10046,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [28266] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -10078,12 +10078,12 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28279] = {
-                ["1"] = "1",
+                1,
             },
             [28278] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -10171,14 +10171,14 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [22]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28312] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [28415] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 48671,
@@ -10189,9 +10189,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [23]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28415] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 48671,
@@ -10202,9 +10202,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [24]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28311] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 121.31,
@@ -10214,9 +10214,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [25]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28313] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -10260,14 +10260,14 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [29]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28315] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [28314] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -10277,14 +10277,14 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [30]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28315] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [28314] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -10294,14 +10294,14 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [31]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28315] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Fillers"] = {
             [28314] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -10311,14 +10311,14 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [32]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28315] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [28314] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -10339,7 +10339,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
     {
         ["Fillers"] = {
             [28314] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -10351,9 +10351,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [35]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28314] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 181.64,
@@ -10560,9 +10560,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [59]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28320] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -10609,9 +10609,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [64]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28321] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -10661,9 +10661,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [70]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28321] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -10697,9 +10697,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
     }, -- [74]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28321] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.69,
@@ -10784,9 +10784,9 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [384] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["ExtraLineText"] = "BUY_MALT_OFF_INNKEEPER",
@@ -10844,7 +10844,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         ["Waypoint"] = 384,
         ["Fillers"] = {
             [384] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 21.75,
@@ -10854,13 +10854,13 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25724] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [315] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 66.96,
@@ -10870,9 +10870,9 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [384] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 184.68,
@@ -10907,7 +10907,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         ["Waypoint"] = 384,
         ["Fillers"] = {
             [25667] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 18.5,
@@ -10917,18 +10917,18 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [15]
     {
-        ["Qpart"] = {
+        Qpart = {
             [313] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [25667] = {
-                ["1"] = "1",
+                1,
             },
             [25668] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -10938,18 +10938,18 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [16]
     {
-        ["Qpart"] = {
+        Qpart = {
             [313] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [25667] = {
-                ["1"] = "1",
+                1,
             },
             [25668] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -10959,18 +10959,18 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [17]
     {
-        ["Qpart"] = {
+        Qpart = {
             [313] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [25667] = {
-                ["1"] = "1",
+                1,
             },
             [25668] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -11033,9 +11033,9 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [24]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25792] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ButtonSpellId"] = {
@@ -11043,7 +11043,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
         ["Fillers"] = {
             [412] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11056,9 +11056,9 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [25]
     {
-        ["Qpart"] = {
+        Qpart = {
             [412] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 68.23,
@@ -11121,9 +11121,9 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [32]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25839] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -11153,17 +11153,17 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [35]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25841] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [25840] = {
-                ["2"] = "2",
+                2,
             },
             [28868] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ButtonSpellId"] = {
@@ -11180,17 +11180,17 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [36]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25840] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [25840] = {
-                ["2"] = "2",
+                2,
             },
             [28868] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11203,9 +11203,9 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [37]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25841] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["ButtonSpellId"] = {
@@ -11213,10 +11213,10 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
         ["Fillers"] = {
             [25840] = {
-                ["2"] = "2",
+                2,
             },
             [28868] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11230,12 +11230,12 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [38]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28868] = {
-                ["1"] = "1",
+                1,
             },
             [25840] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["ButtonSpellId"] = {
@@ -11297,9 +11297,9 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [44]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25932] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -11352,9 +11352,9 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [50]
     {
-        ["Qpart"] = {
+        Qpart = {
             [314] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -11373,9 +11373,9 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [52]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25905] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraLineText"] = "USE_WHISTLE_ON_RAMS",
@@ -11443,11 +11443,11 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         ["Waypoint"] = 25937,
         ["Fillers"] = {
             [432] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [433] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11460,9 +11460,9 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [60]
     {
-        ["Qpart"] = {
+        Qpart = {
             [433] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ButtonSpellId"] = {
@@ -11470,11 +11470,11 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
         ["Fillers"] = {
             [432] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [25937] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11488,17 +11488,17 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [61]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25937] = {
-                ["1"] = "1",
+                1,
             },
             [432] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [432] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 126.84,
@@ -11508,9 +11508,9 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [62]
     {
-        ["Qpart"] = {
+        Qpart = {
             [432] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 54.47,
@@ -11583,12 +11583,12 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [70]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25979] = {
-                ["1"] = "1",
+                1,
             },
             [25978] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 74.5,
@@ -11617,14 +11617,14 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [73]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25997] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [25997] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -11634,9 +11634,9 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
     }, -- [74]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25997] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 83.92,
@@ -11688,9 +11688,9 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26855] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -11777,12 +11777,12 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26146] = {
-                ["1"] = "1",
+                1,
             },
             [26145] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 95.53,
@@ -11871,8 +11871,8 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         ["Waypoint"] = 26148,
         ["Fillers"] = {
             [26147] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 15.42,
@@ -11885,8 +11885,8 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         ["Waypoint"] = 26148,
         ["Fillers"] = {
             [26147] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 10.15,
@@ -11899,8 +11899,8 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         ["Waypoint"] = 26148,
         ["Fillers"] = {
             [26147] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 15.43,
@@ -11913,8 +11913,8 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         ["Waypoint"] = 26148,
         ["Fillers"] = {
             [26147] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 18.17,
@@ -11927,8 +11927,8 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         ["Waypoint"] = 26148,
         ["Fillers"] = {
             [26147] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 15.5,
@@ -11938,15 +11938,15 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [28]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26148] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26147] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -11956,10 +11956,10 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [29]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26147] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 134.02,
@@ -12084,13 +12084,13 @@ APR.RouteQuestStepList["A48-LochModan"] = {
     {
         ["Fillers"] = {
             [25118] = {
-                ["1"] = "1",
+                1,
             },
             [26860] = {
-                ["1"] = "1",
+                1,
             },
             [26842] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -12111,20 +12111,20 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [45]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26843] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [25118] = {
-                ["1"] = "1",
+                1,
             },
             [26842] = {
-                ["1"] = "1",
+                1,
             },
             [26860] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -12136,13 +12136,13 @@ APR.RouteQuestStepList["A48-LochModan"] = {
     {
         ["Fillers"] = {
             [25118] = {
-                ["1"] = "1",
+                1,
             },
             [26860] = {
-                ["1"] = "1",
+                1,
             },
             [26842] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -12163,18 +12163,18 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [49]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26844] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Fillers"] = {
             [25118] = {
-                ["1"] = "1",
+                1,
             },
             [26860] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 94.72,
@@ -12186,10 +12186,10 @@ APR.RouteQuestStepList["A48-LochModan"] = {
     {
         ["Fillers"] = {
             [25118] = {
-                ["1"] = "1",
+                1,
             },
             [26860] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -12215,10 +12215,10 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         ["Waypoint"] = 26846,
         ["Fillers"] = {
             [25118] = {
-                ["1"] = "1",
+                1,
             },
             [26860] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 12.11,
@@ -12228,17 +12228,17 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26845] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26863] = {
-                ["1"] = "1",
+                1,
             },
             [26846] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -12248,12 +12248,12 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26863] = {
-                ["1"] = "1",
+                1,
             },
             [26846] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 88.17,
@@ -12273,10 +12273,10 @@ APR.RouteQuestStepList["A48-LochModan"] = {
     {
         ["Fillers"] = {
             [25118] = {
-                ["1"] = "1",
+                1,
             },
             [26860] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -12299,17 +12299,17 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25118] = {
-                ["1"] = "1",
+                1,
             },
             [26860] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26842] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 98.17,
@@ -12319,9 +12319,9 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [47]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26842] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 88.42,
@@ -12363,9 +12363,9 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [13648] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -12435,9 +12435,9 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26928] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 69.61,
@@ -12447,12 +12447,12 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26929] = {
-                ["1"] = "1",
+                1,
             },
             [26932] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 88.1,
@@ -12482,9 +12482,9 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26868] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraLineText"] = "CANNERY_BAG_DISGUISE",
@@ -12531,9 +12531,9 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [309] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -12590,7 +12590,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         ["Waypoint"] = 26961,
         ["Fillers"] = {
             [26961] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 12.15,
@@ -12611,7 +12611,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         ["Waypoint"] = 26961,
         ["Fillers"] = {
             [26961] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 10.06,
@@ -12626,7 +12626,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
         ["Fillers"] = {
             [26961] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -12635,14 +12635,14 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [13650] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26961] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -12652,14 +12652,14 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [13650] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [26961] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -12669,14 +12669,14 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [13650] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [26961] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -12686,9 +12686,9 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26961] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 94.48,
@@ -12795,9 +12795,9 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [25]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27031] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 64.89,
@@ -12812,10 +12812,10 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
         ["Fillers"] = {
             [27030] = {
-                ["1"] = "1",
+                1,
             },
             [27025] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -12824,12 +12824,12 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27030] = {
-                ["1"] = "1",
+                1,
             },
             [27025] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 136.88,
@@ -12844,10 +12844,10 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
         ["Fillers"] = {
             [27028] = {
-                ["1"] = "1",
+                1,
             },
             [27016] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -12856,12 +12856,12 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27028] = {
-                ["1"] = "1",
+                1,
             },
             [27016] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 135.75,
@@ -12987,7 +12987,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         ["Waypoint"] = 27032,
         ["Fillers"] = {
             [27026] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 29.73,
@@ -13000,7 +13000,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         ["Waypoint"] = 27032,
         ["Fillers"] = {
             [27026] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 15.78,
@@ -13036,9 +13036,9 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27036] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -13128,9 +13128,9 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [22]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27035] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 44724,
@@ -13178,12 +13178,12 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     }, -- [27]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27077] = {
-                ["1"] = "1",
+                1,
             },
             [27075] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 88.03,
@@ -13220,9 +13220,9 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27078] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -13293,12 +13293,12 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25395] = {
-                ["1"] = "1",
+                1,
             },
             [25211] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -13371,15 +13371,15 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25721] = {
-                ["1"] = "1",
+                1,
             },
             [25722] = {
-                ["1"] = "1",
+                1,
             },
             [25723] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 88.4,
@@ -13411,14 +13411,14 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25726] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [25725] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 46.71,
@@ -13446,14 +13446,14 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [15]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25727] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [25725] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -13463,9 +13463,9 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [16]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25725] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 74.87,
@@ -13498,8 +13498,8 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         ["Waypoint"] = 25733,
         ["Fillers"] = {
             [25733] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 21.32,
@@ -13509,18 +13509,18 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [20]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25734] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [25733] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [25735] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -13542,17 +13542,17 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [22]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25733] = {
-                ["2"] = "2",
+                2,
             },
             [25735] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [25733] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 92.34,
@@ -13562,9 +13562,9 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [23]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25733] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 64.07,
@@ -13621,9 +13621,9 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25926] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 70.62,
@@ -13633,9 +13633,9 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26120] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 58.68,
@@ -13665,12 +13665,12 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25939] = {
-                ["1"] = "1",
+                1,
             },
             [25927] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -13746,9 +13746,9 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26127] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 41.76,
@@ -13776,9 +13776,9 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26128] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -13825,15 +13825,15 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25853] = {
-                ["1"] = "1",
+                1,
             },
             [25849] = {
-                ["1"] = "1",
+                1,
             },
             [25850] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 47.08,
@@ -13879,14 +13879,14 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26189] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26189] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -13975,9 +13975,9 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25780] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -14063,9 +14063,9 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [22]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25815] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -14109,12 +14109,12 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [26]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25800] = {
-                ["1"] = "1",
+                1,
             },
             [25820] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 58.57,
@@ -14177,8 +14177,8 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
         ["Fillers"] = {
             [25801] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
     }, -- [2]
@@ -14192,8 +14192,8 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
         ["Fillers"] = {
             [25801] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
     }, -- [3]
@@ -14207,8 +14207,8 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
         ["Fillers"] = {
             [25801] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
     },
@@ -14222,8 +14222,8 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
         ["Fillers"] = {
             [25801] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
     },
@@ -14237,8 +14237,8 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
         ["Fillers"] = {
             [25801] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
     },
@@ -14270,10 +14270,10 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25817] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 27.91,
@@ -14301,9 +14301,9 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25818] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -14331,10 +14331,10 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [15]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25801] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 76.98,
@@ -14400,17 +14400,17 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25854] = {
-                ["1"] = "1",
+                1,
             },
             [25864] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [25856] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 125.77,
@@ -14420,9 +14420,9 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25856] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 204.4,
@@ -14454,9 +14454,9 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25857] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -14466,12 +14466,12 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25855] = {
-                ["1"] = "1",
+                1,
             },
             [25865] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 138.18,
@@ -14502,12 +14502,12 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25866] = {
-                ["1"] = "1",
+                1,
             },
             [25867] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 67.53,
@@ -14536,9 +14536,9 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25868] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -14611,9 +14611,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26039] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 73.28,
@@ -14649,9 +14649,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26041] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.61,
@@ -14682,7 +14682,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         ["Waypoint"] = 26041,
         ["Fillers"] = {
             [26110] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 33.29,
@@ -14692,9 +14692,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26110] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraLineText"] = "FIND_CURIER",
@@ -14705,10 +14705,10 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26035] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 202.39,
@@ -14754,9 +14754,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [19]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26116] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 2713,
@@ -14785,9 +14785,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [22]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26041] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.61,
@@ -14824,9 +14824,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [26]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26093] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 59.59,
@@ -14836,9 +14836,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [27]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26041] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -14856,10 +14856,10 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [29]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26079] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -14909,9 +14909,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [35]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26024] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -14989,10 +14989,10 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [44]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26055] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 105.23,
@@ -15020,9 +15020,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [47]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26050] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 2768,
@@ -15051,9 +15051,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [50]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26051] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraLineText"] = "EQUIP_GOGGLES",
@@ -15100,9 +15100,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [55]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26628] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -15165,9 +15165,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [62]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26042] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 2611,
@@ -15186,9 +15186,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [64]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26036] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 2793,
@@ -15225,9 +15225,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [68]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26095] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 71.48,
@@ -15298,9 +15298,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [76]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26037] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 2570,
@@ -15329,11 +15329,11 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [79]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26038] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -15352,9 +15352,9 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
     }, -- [81]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26049] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -15392,12 +15392,12 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26547] = {
-                ["1"] = "1",
+                1,
             },
             [26546] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ButtonSpellId"] = {
@@ -15461,14 +15461,14 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26483] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26462] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -15478,9 +15478,9 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26462] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 58.1,
@@ -15506,12 +15506,12 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26485] = {
-                ["1"] = "1",
+                1,
             },
             [26486] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 332.28,
@@ -15571,7 +15571,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         ["Waypoint"] = 26485,
         ["Fillers"] = {
             [26491] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 13.85,
@@ -15581,17 +15581,17 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [18]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26490] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26491] = {
-                ["1"] = "1",
+                1,
             },
             [26492] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -15601,12 +15601,12 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [19]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26492] = {
-                ["1"] = "1",
+                1,
             },
             [26491] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 71.98,
@@ -15660,14 +15660,14 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         ["Waypoint"] = 26485,
         ["Fillers"] = {
             [26523] = {
-                ["1"] = "1",
+                1,
             },
             [26497] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [26521] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -15683,14 +15683,14 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         ["Waypoint"] = 26485,
         ["Fillers"] = {
             [26523] = {
-                ["1"] = "1",
+                1,
             },
             [26521] = {
-                ["1"] = "1",
+                1,
             },
             [26497] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Button"] = {
@@ -15706,14 +15706,14 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         ["Waypoint"] = 26485,
         ["Fillers"] = {
             [26523] = {
-                ["1"] = "1",
+                1,
             },
             [26521] = {
-                ["1"] = "1",
+                1,
             },
             [26497] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Button"] = {
@@ -15729,14 +15729,14 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         ["Waypoint"] = 26485,
         ["Fillers"] = {
             [26523] = {
-                ["1"] = "1",
+                1,
             },
             [26521] = {
-                ["1"] = "1",
+                1,
             },
             [26497] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Button"] = {
@@ -15749,21 +15749,21 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [28]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26518] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26523] = {
-                ["1"] = "1",
+                1,
             },
             [26521] = {
-                ["1"] = "1",
+                1,
             },
             [26497] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Button"] = {
@@ -15776,16 +15776,16 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [29]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26523] = {
-                ["1"] = "1",
+                1,
             },
             [26521] = {
-                ["1"] = "1",
+                1,
             },
             [26497] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["ButtonSpellId"] = {
@@ -15832,18 +15832,18 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [33]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26515] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26524] = {
-                ["1"] = "1",
+                1,
             },
             [26498] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -15853,13 +15853,13 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [34]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26524] = {
-                ["1"] = "1",
+                1,
             },
             [26498] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 171.8,
@@ -15880,10 +15880,10 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [36]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26516] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 54.74,
@@ -15893,9 +15893,9 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [37]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26517] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 45.28,
@@ -15933,14 +15933,14 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [41]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26526] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26525] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -15950,9 +15950,9 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [42]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26525] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 152.35,
@@ -16000,14 +16000,14 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [47]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27626] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [27625] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -16017,14 +16017,14 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [48]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27626] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [27625] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -16034,9 +16034,9 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [49]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27626] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -16046,9 +16046,9 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [50]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27625] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 106.99,
@@ -16078,14 +16078,14 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [53]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26528] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26641] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -16095,9 +16095,9 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [54]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26641] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 111.79,
@@ -16127,14 +16127,14 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [57]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26643] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -16144,9 +16144,9 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [58]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26643] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 67.1,
@@ -16175,9 +16175,9 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [61]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26530] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -16213,9 +16213,9 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [65]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26531] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ButtonSpellId"] = {
@@ -16231,9 +16231,9 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [66]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26531] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["ButtonSpellId"] = {
@@ -16249,9 +16249,9 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [67]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26531] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["ButtonSpellId"] = {
@@ -16285,9 +16285,9 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
     }, -- [70]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26532] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -16331,18 +16331,18 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27161] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Fillers"] = {
             [27159] = {
-                ["1"] = "1",
+                1,
             },
             [27160] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -16355,17 +16355,17 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27161] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [27159] = {
-                ["1"] = "1",
+                1,
             },
             [27160] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -16378,12 +16378,12 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27159] = {
-                ["1"] = "1",
+                1,
             },
             [27160] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 77.38,
@@ -16439,9 +16439,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27163] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -16451,9 +16451,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [15]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27164] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -16466,9 +16466,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [16]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27162] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 7.38,
@@ -16549,12 +16549,12 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [26]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27166] = {
-                ["1"] = "1",
+                1,
             },
             [27167] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 130.82,
@@ -16592,9 +16592,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27168] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -16607,9 +16607,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27169] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -16706,10 +16706,10 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [15]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27171] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 20.65,
@@ -16798,9 +16798,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [24]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27173] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 30.75,
@@ -16836,9 +16836,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [27]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27174] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -16919,15 +16919,15 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26999] = {
-                ["3"] = "3",
-                ["4"] = "4",
+                3,
+                4,
             },
         },
         ["Fillers"] = {
             [26953] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 74.19,
@@ -16937,13 +16937,13 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26999] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [26953] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 120.6,
@@ -16953,9 +16953,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26956] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 31.37,
@@ -16965,9 +16965,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26956] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 24.88,
@@ -16977,9 +16977,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26956] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 23.87,
@@ -17051,9 +17051,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
     }, -- [12]
     {
         ["ExtraLineText"] = "NPC_ZENKIKI",
-        ["Qpart"] = {
+        Qpart = {
             [26954] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -17109,12 +17109,12 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27199] = {
-                ["1"] = "1",
+                1,
             },
             [27198] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 72.04,
@@ -17178,12 +17178,12 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27202] = {
-                ["1"] = "1",
+                1,
             },
             [27201] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 50.44,
@@ -17236,9 +17236,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27204] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -17323,9 +17323,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
     }, -- [3]
     {
         ["InVehicle"] = 1,
-        ["Qpart"] = {
+        Qpart = {
             [27000] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 7.83,
@@ -17335,9 +17335,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27013] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 54.42,
@@ -17385,9 +17385,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
     },
     {
         ["InVehicle"] = 2,
-        ["Qpart"] = {
+        Qpart = {
             [27001] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 12.1,
@@ -17397,13 +17397,13 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27012] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [27011] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 88.21,
@@ -17490,9 +17490,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27156] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -17644,9 +17644,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [18]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27157] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -17680,9 +17680,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [22]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27151] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 69.25,
@@ -17718,10 +17718,10 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27152] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 8.9,
@@ -17781,9 +17781,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27153] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Gossip"] = 1,
@@ -17794,9 +17794,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27153] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Gossip"] = 1,
@@ -17816,9 +17816,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27153] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -17829,9 +17829,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [15]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27153] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
@@ -17868,9 +17868,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [19]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27154] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -17962,9 +17962,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27053] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -17992,10 +17992,10 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27017] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 6.81,
@@ -18041,14 +18041,14 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27054] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26955] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 16.31,
@@ -18076,9 +18076,9 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26955] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 165.01,
@@ -18088,12 +18088,12 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27055] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
         },
         ["Range"] = 43.06,
@@ -18179,9 +18179,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27368] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 24.27,
@@ -18209,9 +18209,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27369] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 24.08,
@@ -18239,9 +18239,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27371] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 25.71,
@@ -18269,9 +18269,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27372] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 70.55,
@@ -18300,9 +18300,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [16]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27373] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -18313,9 +18313,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [17]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27373] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 100.69,
@@ -18371,9 +18371,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     },
     {
         ["ExtraLineText"] = "NPC_TOP_TOWER",
-        ["Qpart"] = {
+        Qpart = {
             [27381] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -18417,9 +18417,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27432] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -18432,7 +18432,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         ["Waypoint"] = 27383,
         ["Fillers"] = {
             [27382] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 92.67,
@@ -18444,7 +18444,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         ["Fillers"] = {
             [27382] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -18499,9 +18499,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     },
     {
         ["ExtraLineText"] = "LOOT_PAMELA_HEAD",
-        ["Qpart"] = {
+        Qpart = {
             [27384] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 28.71,
@@ -18511,9 +18511,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27392] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -18542,9 +18542,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27382] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 73.38,
@@ -18638,9 +18638,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27388] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -18651,9 +18651,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27387] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -18663,9 +18663,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27387] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -18696,10 +18696,10 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         ["Fillers"] = {
             [27420] = {
-                ["1"] = "1",
+                1,
             },
             [27389] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -18716,15 +18716,15 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         ["Fillers"] = {
             [27420] = {
-                ["1"] = "1",
+                1,
             },
             [27389] = {
-                ["1"] = "1",
+                1,
             },
         },
-        ["Qpart"] = {
+        Qpart = {
             [27421] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Button"] = {
@@ -18741,10 +18741,10 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         ["Fillers"] = {
             [27420] = {
-                ["1"] = "1",
+                1,
             },
             [27389] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -18759,17 +18759,17 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27421] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [27420] = {
-                ["1"] = "1",
+                1,
             },
             [27389] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -18786,10 +18786,10 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         ["Fillers"] = {
             [27420] = {
-                ["1"] = "1",
+                1,
             },
             [27389] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Waypoint"] = 27420,
@@ -18804,9 +18804,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27421] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -18821,12 +18821,12 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27389] = {
-                ["1"] = "1",
+                1,
             },
             [27420] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -18850,10 +18850,10 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27388] = {
-                ["3"] = "3",
-                ["2"] = "2",
+                3,
+                2,
             },
         },
         ["Range"] = 8.17,
@@ -18883,9 +18883,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27390] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -18925,9 +18925,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27448] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -18938,9 +18938,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27448] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ETA"] = 120,
@@ -19015,11 +19015,11 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27450] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["Range"] = 47.32,
@@ -19029,13 +19029,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27451] = {
-                ["1"] = "1",
+                1,
             },
             [27452] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Button"] = {
@@ -19075,9 +19075,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27453] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -19100,9 +19100,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     },
     {
         ["ExtraLineText"] = "USE_DISGUISE",
-        ["Qpart"] = {
+        Qpart = {
             [27454] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -19115,9 +19115,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27454] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -19237,9 +19237,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         ["Button"] = {
             ["27464-1"] = 61309,
         },
-        ["Qpart"] = {
+        Qpart = {
             [27464] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 15.62,
@@ -19276,9 +19276,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27456] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 62.75,
@@ -19314,9 +19314,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27460] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 58.16,
@@ -19366,21 +19366,21 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27614] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
             [27615] = {
-                ["1"] = "1",
+                1,
             },
             [27616] = {
-                ["1"] = "1",
+                1,
             },
             [27619] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 14.98,
@@ -19487,9 +19487,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [20]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27612] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -19515,9 +19515,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [23]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27612] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -19575,9 +19575,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [30]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27613] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -19632,9 +19632,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [36]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27620] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -19694,15 +19694,15 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [43]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27458] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [27465] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -19712,13 +19712,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27467] = {
-                ["1"] = "1",
+                1,
             },
             [27465] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 51.02,
@@ -19819,10 +19819,10 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27487] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 38.99,
@@ -19832,9 +19832,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27477] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 19.73,
@@ -19847,7 +19847,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         ["Waypoint"] = 27479,
         ["Fillers"] = {
             [27479] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 26.41,
@@ -19857,14 +19857,14 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27481] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [27479] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -19892,14 +19892,14 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27482] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [27479] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -19921,9 +19921,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27479] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 48.66,
@@ -19969,9 +19969,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [17]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27488] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -19999,9 +19999,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [20]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27489] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -20012,9 +20012,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [21]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27489] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ETA"] = 107,
@@ -20078,9 +20078,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27523] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -20102,9 +20102,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27521] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 69.5,
@@ -20114,11 +20114,11 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27522] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["Range"] = 73.49,
@@ -20204,13 +20204,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
         ["Fillers"] = {
             [27539] = {
-                ["1"] = "1",
+                1,
             },
             [27528] = {
-                ["1"] = "1",
+                1,
             },
             [27529] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -20218,13 +20218,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         ["Waypoint"] = 27525,
         ["Fillers"] = {
             [27539] = {
-                ["1"] = "1",
+                1,
             },
             [27528] = {
-                ["1"] = "1",
+                1,
             },
             [27529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -20237,20 +20237,20 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27525] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [27539] = {
-                ["1"] = "1",
+                1,
             },
             [27528] = {
-                ["1"] = "1",
+                1,
             },
             [27529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -20268,13 +20268,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
         ["Fillers"] = {
             [27539] = {
-                ["1"] = "1",
+                1,
             },
             [27528] = {
-                ["1"] = "1",
+                1,
             },
             [27529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -20289,13 +20289,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         ["Waypoint"] = 27525,
         ["Fillers"] = {
             [27539] = {
-                ["1"] = "1",
+                1,
             },
             [27528] = {
-                ["1"] = "1",
+                1,
             },
             [27529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -20308,20 +20308,20 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27525] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [27539] = {
-                ["1"] = "1",
+                1,
             },
             [27528] = {
-                ["1"] = "1",
+                1,
             },
             [27529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -20345,13 +20345,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
         ["Fillers"] = {
             [27539] = {
-                ["1"] = "1",
+                1,
             },
             [27528] = {
-                ["1"] = "1",
+                1,
             },
             [27529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -20368,13 +20368,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
         ["Fillers"] = {
             [27539] = {
-                ["1"] = "1",
+                1,
             },
             [27528] = {
-                ["1"] = "1",
+                1,
             },
             [27529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -20390,13 +20390,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
         ["Fillers"] = {
             [27539] = {
-                ["1"] = "1",
+                1,
             },
             [27528] = {
-                ["1"] = "1",
+                1,
             },
             [27529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -20404,9 +20404,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27526] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -20416,13 +20416,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
         ["Fillers"] = {
             [27539] = {
-                ["1"] = "1",
+                1,
             },
             [27528] = {
-                ["1"] = "1",
+                1,
             },
             [27529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -20439,13 +20439,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
         ["Fillers"] = {
             [27539] = {
-                ["1"] = "1",
+                1,
             },
             [27528] = {
-                ["1"] = "1",
+                1,
             },
             [27529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -20462,13 +20462,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
         ["Fillers"] = {
             [27539] = {
-                ["1"] = "1",
+                1,
             },
             [27528] = {
-                ["1"] = "1",
+                1,
             },
             [27529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -20476,15 +20476,15 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27539] = {
-                ["1"] = "1",
+                1,
             },
             [27528] = {
-                ["1"] = "1",
+                1,
             },
             [27529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -20566,7 +20566,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         ["Waypoint"] = 27534,
         ["Fillers"] = {
             [27533] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 6.66,
@@ -20608,9 +20608,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27534] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -20620,9 +20620,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27533] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 31.09,
@@ -20642,14 +20642,14 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27531] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [27531] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -20660,17 +20660,17 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     },
     {
         ["ExtraLineText"] = "PLACE_LIGHTWELLS",
-        ["Qpart"] = {
+        Qpart = {
             [27530] = {
-                ["1"] = "1",
+                1,
             },
             [27531] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [27531] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -20683,9 +20683,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27531] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 66.98,
@@ -20826,17 +20826,17 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26667] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26623] = {
-                ["1"] = "1",
+                1,
             },
             [26688] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -20846,14 +20846,14 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26688] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26623] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 43.31,
@@ -20863,15 +20863,15 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26620] = {
-                ["1"] = "1",
+                1,
             },
             [26618] = {
-                ["1"] = "1",
+                1,
             },
             [26623] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 61.15,
@@ -21042,9 +21042,9 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     }, -- [18]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26645] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 12.75,
@@ -21054,9 +21054,9 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     }, -- [19]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26684] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 6.4,
@@ -21066,14 +21066,14 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     }, -- [20]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26669] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26689] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -21083,9 +21083,9 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     }, -- [21]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26689] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 21.43,
@@ -21322,13 +21322,13 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     }, -- [18]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26686] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [26661] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 53.82,
@@ -21342,8 +21342,8 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         ["Range"] = 13.95,
         ["Fillers"] = {
             [26690] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Coord"] = {
@@ -21356,8 +21356,8 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         ["Range"] = 12.43,
         ["Fillers"] = {
             [26690] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Coord"] = {
@@ -21370,8 +21370,8 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         ["Range"] = 8.69,
         ["Fillers"] = {
             [26690] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Coord"] = {
@@ -21380,15 +21380,15 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     }, -- [22]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26670] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26690] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.61,
@@ -21398,10 +21398,10 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     }, -- [23]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26690] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 33.41,
@@ -21651,14 +21651,14 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26717] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26707] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -21668,9 +21668,9 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26707] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 27.37,
@@ -21680,14 +21680,14 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26680] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [25235] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -21701,7 +21701,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         ["Range"] = 11.95,
         ["Fillers"] = {
             [25235] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -21714,7 +21714,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         ["Range"] = 9.11,
         ["Fillers"] = {
             [25235] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -21723,14 +21723,14 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26685] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [25235] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -21740,9 +21740,9 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25235] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 36.18,
@@ -21825,14 +21825,14 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26720] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26777] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -21846,9 +21846,9 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26777] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -21889,9 +21889,9 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
     }, -- [3]
     {
         ["ETA"] = 65,
-        ["Qpart"] = {
+        Qpart = {
             [26760] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -21940,7 +21940,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         ["Range"] = 13.37,
         ["Fillers"] = {
             [26778] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -21953,7 +21953,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         ["Range"] = 13.64,
         ["Fillers"] = {
             [26778] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -21966,7 +21966,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         ["Range"] = 3.35,
         ["Fillers"] = {
             [26778] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -21979,7 +21979,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         ["Range"] = 2.87,
         ["Fillers"] = {
             [26778] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -21992,7 +21992,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         ["Range"] = 2.8,
         ["Fillers"] = {
             [26778] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -22001,15 +22001,15 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26723] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
         ["Fillers"] = {
             [26778] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -22027,14 +22027,14 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
         ["Fillers"] = {
             [26778] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26778] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 41.79,
@@ -22044,9 +22044,9 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26721] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 69.13,
@@ -22119,9 +22119,9 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26787] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 94.16,
@@ -22265,9 +22265,9 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     }, -- [26]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26754] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -22411,14 +22411,14 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26674] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26677] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -22431,9 +22431,9 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26677] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 25.94,
@@ -22520,9 +22520,9 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26727] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -22575,17 +22575,17 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26503] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26504] = {
-                ["1"] = "1",
+                1,
             },
             [26506] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -22595,19 +22595,19 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26503] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [26506] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
             [26504] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -22617,19 +22617,19 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26503] = {
-                ["2"] = "2",
+                2,
             },
             [26504] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26506] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -22639,11 +22639,11 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26506] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["Range"] = 66.04,
@@ -22691,9 +22691,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26508] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 24.36,
@@ -22747,14 +22747,14 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26510] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26511] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -22764,9 +22764,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26511] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 29.67,
@@ -22854,10 +22854,10 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
         ["Fillers"] = {
             [26514] = {
-                ["1"] = "1",
+                1,
             },
             [26513] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 32.12,
@@ -22867,14 +22867,14 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     }, -- [19]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26514] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26513] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 150.69,
@@ -22910,20 +22910,20 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     }, -- [20]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26519] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26514] = {
-                ["1"] = "1",
+                1,
             },
             [26513] = {
-                ["1"] = "1",
+                1,
             },
             [26544] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -22951,9 +22951,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     }, -- [23]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26544] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 47.59,
@@ -22989,19 +22989,19 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     }, -- [24]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26545] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
         ["Fillers"] = {
             [26514] = {
-                ["1"] = "1",
+                1,
             },
             [26513] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -23010,17 +23010,17 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26514] = {
-                ["1"] = "1",
+                1,
             },
             [26513] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26520] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -23034,9 +23034,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
     }, -- [25]
     {
         ["ExtraLineText"] = "USE_ORB_CANYON_ETTIN",
-        ["Qpart"] = {
+        Qpart = {
             [26520] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -23102,9 +23102,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26509] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 13.93,
@@ -23252,15 +23252,15 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26571] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Fillers"] = {
             [26570] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 8.5,
@@ -23288,9 +23288,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26587] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -23329,10 +23329,10 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         ["Waypoint"] = 26560,
         ["Fillers"] = {
             [26570] = {
-                ["1"] = "1",
+                1,
             },
             [26569] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 29.88,
@@ -23342,17 +23342,17 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26560] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26570] = {
-                ["1"] = "1",
+                1,
             },
             [26569] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -23365,10 +23365,10 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         ["Waypoint"] = 26560,
         ["Fillers"] = {
             [26570] = {
-                ["1"] = "1",
+                1,
             },
             [26569] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 24.16,
@@ -23380,10 +23380,10 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
     {
         ["Fillers"] = {
             [26570] = {
-                ["1"] = "1",
+                1,
             },
             [26569] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -23404,18 +23404,18 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     }, -- [18]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26561] = {
-                ["1"] = "1",
+                1,
             },
             [26573] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Fillers"] = {
             [26570] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -23446,10 +23446,10 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         ["Waypoint"] = 26562,
         ["Fillers"] = {
             [26569] = {
-                ["1"] = "1",
+                1,
             },
             [26570] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 12.73,
@@ -23462,10 +23462,10 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         ["Waypoint"] = 26562,
         ["Fillers"] = {
             [26569] = {
-                ["1"] = "1",
+                1,
             },
             [26570] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 15.26,
@@ -23478,10 +23478,10 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         ["Waypoint"] = 26562,
         ["Fillers"] = {
             [26569] = {
-                ["1"] = "1",
+                1,
             },
             [26570] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 15.47,
@@ -23491,18 +23491,18 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     }, -- [24]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26562] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Fillers"] = {
             [26569] = {
-                ["1"] = "1",
+                1,
             },
             [26570] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -23530,12 +23530,12 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     }, -- [27]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26570] = {
-                ["1"] = "1",
+                1,
             },
             [26569] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 37.96,
@@ -23672,9 +23672,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     }, -- [40]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26616] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 9.46,
@@ -23713,9 +23713,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26637] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 44.84,
@@ -23725,13 +23725,13 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26636] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [26638] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 66.35,
@@ -23780,9 +23780,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26646] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraLineText"] = "GET_KEY_CAVE",
@@ -23796,9 +23796,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26646] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -23832,9 +23832,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         ["Button"] = {
             ["26651-1"] = 60385,
         },
-        ["Qpart"] = {
+        Qpart = {
             [26651] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -23847,9 +23847,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         ["Button"] = {
             ["26651-1"] = 60385,
         },
-        ["Qpart"] = {
+        Qpart = {
             [26651] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.61,
@@ -23937,14 +23937,14 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26693] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26692] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 10.83,
@@ -23976,7 +23976,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         ["Range"] = 11.9,
         ["Fillers"] = {
             [26692] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -23985,14 +23985,14 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26694] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26692] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 13.91,
@@ -24002,9 +24002,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26692] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 21.7,
@@ -24049,9 +24049,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26708] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 5.19,
@@ -24079,9 +24079,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26713] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -24091,9 +24091,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26713] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 6.04,
@@ -24121,9 +24121,9 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26714] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -24174,12 +24174,12 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27774] = {
-                ["1"] = "1",
+                1,
             },
             [27775] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 57.43,
@@ -24209,9 +24209,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27776] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -24253,12 +24253,12 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27765] = {
-                ["1"] = "1",
+                1,
             },
             [27766] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 167.01,
@@ -24287,9 +24287,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27770] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -24317,9 +24317,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [16]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27771] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -24391,9 +24391,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [24]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27789] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -24403,9 +24403,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [25]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27789] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.61,
@@ -24415,9 +24415,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [26]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27789] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.69,
@@ -24427,9 +24427,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [27]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27789] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Range"] = 0.61,
@@ -24484,9 +24484,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [33]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27823] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 56.63,
@@ -24546,9 +24546,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [40]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27824] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -24567,12 +24567,12 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [42]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27792] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
         },
         ["Range"] = 27.72,
@@ -24635,9 +24635,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [49]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27709] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -24674,9 +24674,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [53]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27693] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -24704,9 +24704,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [56]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27793] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -24717,9 +24717,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [57]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27793] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
@@ -24810,9 +24810,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [67]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27713] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Dontskipvid"] = 1,
@@ -24823,9 +24823,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [68]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27713] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Dontskipvid"] = 1,
@@ -24856,9 +24856,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [71]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27714] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Dontskipvid"] = 1,
@@ -24869,9 +24869,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [72]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27714] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Dontskipvid"] = 1,
@@ -24882,9 +24882,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [73]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27714] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Dontskipvid"] = 1,
@@ -24915,9 +24915,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [76]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27715] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Dontskipvid"] = 1,
@@ -24928,9 +24928,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [77]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27715] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Dontskipvid"] = 1,
@@ -24941,9 +24941,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [78]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27715] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Dontskipvid"] = 1,
@@ -24954,9 +24954,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [79]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27715] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Dontskipvid"] = 1,
@@ -25041,18 +25041,18 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [88]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27828] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [27835] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [27834] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -25085,7 +25085,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         ["Waypoint"] = 27825,
         ["Fillers"] = {
             [27833] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 8.73,
@@ -25095,10 +25095,10 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [92]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27825] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 37.56,
@@ -25108,9 +25108,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [93]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27833] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 102.13,
@@ -25138,14 +25138,14 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [96]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27829] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [27829] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -25155,9 +25155,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [97]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27829] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 131.99,
@@ -25185,14 +25185,14 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [100]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27830] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [27830] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.75,
@@ -25202,14 +25202,14 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [101]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27830] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [27830] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.75,
@@ -25219,9 +25219,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [102]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27830] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 55.57,
@@ -25249,14 +25249,14 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [105]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27831] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [27831] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -25266,9 +25266,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         },
     }, -- [106]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27831] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 52.62,
@@ -25315,9 +25315,9 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         ["Dontskipvid"] = 1,
     }, -- [111]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27858] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Dontskipvid"] = 1,
@@ -25391,17 +25391,17 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27963] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [27956] = {
-                ["1"] = "1",
+                1,
             },
             [27960] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 47270,
@@ -25412,12 +25412,12 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27956] = {
-                ["1"] = "1",
+                1,
             },
             [27960] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 66.45,
@@ -25461,10 +25461,10 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         ["Waypoint"] = 27962,
         ["Fillers"] = {
             [27958] = {
-                ["1"] = "1",
+                1,
             },
             [27961] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 17.59,
@@ -25482,9 +25482,9 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27962] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -25494,12 +25494,12 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27958] = {
-                ["1"] = "1",
+                1,
             },
             [27961] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 98.37,
@@ -25518,9 +25518,9 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [27959] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 67.17,
@@ -25539,9 +25539,9 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27964] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraLineText"] = "KILL_DARK_IRONS",
@@ -25651,18 +25651,18 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [25]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27977] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Fillers"] = {
             [27981] = {
-                ["1"] = "1",
+                1,
             },
             [27976] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -25684,9 +25684,9 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [27]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27983] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 104.04,
@@ -25705,14 +25705,14 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [29]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27976] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [27981] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -25725,14 +25725,14 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [30]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28099] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [27981] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -25745,14 +25745,14 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [31]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27980] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [27981] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -25765,9 +25765,9 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [32]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27981] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -25838,7 +25838,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         ["Waypoint"] = 27982,
         ["Fillers"] = {
             [27982] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 19.34,
@@ -25851,7 +25851,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         ["Waypoint"] = 27982,
         ["Fillers"] = {
             [27982] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 23.75,
@@ -25864,7 +25864,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         ["Waypoint"] = 27982,
         ["Fillers"] = {
             [27982] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 20.86,
@@ -25879,10 +25879,10 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
         ["Fillers"] = {
             [27979] = {
-                ["1"] = "1",
+                1,
             },
             [27982] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -25891,18 +25891,18 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [43]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27984] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [27979] = {
-                ["1"] = "1",
+                1,
             },
             [27982] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -25917,10 +25917,10 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
     {
         ["Fillers"] = {
             [27979] = {
-                ["1"] = "1",
+                1,
             },
             [27982] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -25941,17 +25941,17 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [46]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27985] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [27979] = {
-                ["1"] = "1",
+                1,
             },
             [27982] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -25973,12 +25973,12 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [48]
     {
-        ["Qpart"] = {
+        Qpart = {
             [27979] = {
-                ["1"] = "1",
+                1,
             },
             [27982] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -26071,20 +26071,20 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [58]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28029] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [28028] = {
-                ["1"] = "1",
+                1,
             },
             [28032] = {
-                ["1"] = "1",
+                1,
             },
             [28030] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -26094,20 +26094,20 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [59]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28029] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Fillers"] = {
             [28028] = {
-                ["1"] = "1",
+                1,
             },
             [28032] = {
-                ["1"] = "1",
+                1,
             },
             [28030] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -26117,17 +26117,17 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [60]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28028] = {
-                ["1"] = "1",
+                1,
             },
             [28030] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [28032] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 44.75,
@@ -26147,9 +26147,9 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     },             -- [62]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28032] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 46.3,
@@ -26159,9 +26159,9 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [63]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28029] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -26171,9 +26171,9 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [64]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28029] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -26228,9 +26228,9 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [70]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28034] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -26286,9 +26286,9 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [76]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28052] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 2941,
@@ -26322,10 +26322,10 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         ["Waypoint"] = 28056,
         ["Fillers"] = {
             [28054] = {
-                ["1"] = "1",
+                1,
             },
             [28055] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 18.31,
@@ -26338,10 +26338,10 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         ["Waypoint"] = 28056,
         ["Fillers"] = {
             [28054] = {
-                ["1"] = "1",
+                1,
             },
             [28055] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 8.39,
@@ -26351,19 +26351,19 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [81]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28056] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [28055] = {
-                ["1"] = "1",
+                1,
             },
             [28054] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -26373,12 +26373,12 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [82]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28055] = {
-                ["1"] = "1",
+                1,
             },
             [28054] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 42.65,
@@ -26416,9 +26416,9 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [86]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28057] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 28.23,
@@ -26446,10 +26446,10 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [89]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28060] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.61,
@@ -26505,7 +26505,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         ["Waypoint"] = 28061,
         ["Fillers"] = {
             [28061] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 22.15,
@@ -26515,14 +26515,14 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [96]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28062] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [28061] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -26553,9 +26553,9 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
     }, -- [99]
     {
-        ["Qpart"] = {
+        Qpart = {
             [28061] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 13.15,
@@ -26640,14 +26640,14 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26735] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26732] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -26657,14 +26657,14 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26735] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [26732] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -26674,9 +26674,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26732] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 43.07,
@@ -26720,11 +26720,11 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26736] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["Range"] = 0.61,
@@ -26734,12 +26734,12 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26733] = {
-                ["1"] = "1",
+                1,
             },
             [26739] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 67.12,
@@ -26779,14 +26779,14 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26737] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26734] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -26804,14 +26804,14 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [16]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26737] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [26734] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -26829,14 +26829,14 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [18]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26737] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [26734] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -26846,14 +26846,14 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [19]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26737] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Fillers"] = {
             [26734] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -26963,9 +26963,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [31]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26343] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -26993,9 +26993,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [34]
     {
-        ["Qpart"] = {
+        Qpart = {
             [185] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 63.92,
@@ -27026,7 +27026,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         ["Waypoint"] = 26737,
         ["Fillers"] = {
             [190] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 20.6,
@@ -27044,9 +27044,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [39]
     {
-        ["Qpart"] = {
+        Qpart = {
             [190] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 72.27,
@@ -27074,9 +27074,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [42]
     {
-        ["Qpart"] = {
+        Qpart = {
             [186] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 55.26,
@@ -27086,9 +27086,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [43]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26763] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 101.32,
@@ -27116,9 +27116,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [46]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26344] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 70.09,
@@ -27128,9 +27128,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [47]
     {
-        ["Qpart"] = {
+        Qpart = {
             [187] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 26.47,
@@ -27158,9 +27158,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [50]
     {
-        ["Qpart"] = {
+        Qpart = {
             [188] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 729,
@@ -27171,12 +27171,12 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [51]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26744] = {
-                ["1"] = "1",
+                1,
             },
             [26742] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -27195,9 +27195,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [53]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26729] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -27228,9 +27228,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [56]
     {
-        ["Qpart"] = {
+        Qpart = {
             [194] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -27258,9 +27258,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [59]
     {
-        ["Qpart"] = {
+        Qpart = {
             [191] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 39.21,
@@ -27355,14 +27355,14 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [69]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26743] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
             [26746] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 114.3,
@@ -27372,9 +27372,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [70]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26730] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 51.14,
@@ -27384,9 +27384,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [71]
     {
-        ["Qpart"] = {
+        Qpart = {
             [195] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 53.14,
@@ -27414,9 +27414,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [74]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26345] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -27426,14 +27426,14 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [75]
     {
-        ["Qpart"] = {
+        Qpart = {
             [196] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [192] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 75.14,
@@ -27461,14 +27461,14 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [78]
     {
-        ["Qpart"] = {
+        Qpart = {
             [197] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [192] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 730,
@@ -27479,9 +27479,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [79]
     {
-        ["Qpart"] = {
+        Qpart = {
             [192] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 30.48,
@@ -27509,9 +27509,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [82]
     {
-        ["Qpart"] = {
+        Qpart = {
             [193] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 728,
@@ -27548,9 +27548,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [86]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26782] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -27568,9 +27568,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [88]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26781] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 818,
@@ -27701,10 +27701,10 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         ["Waypoint"] = 26747,
         ["Fillers"] = {
             [26751] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
         },
         ["Range"] = 12.98,
@@ -27717,10 +27717,10 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         ["Waypoint"] = 26747,
         ["Fillers"] = {
             [26751] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
         },
         ["Range"] = 15.5,
@@ -27730,17 +27730,17 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [104]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26747] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26751] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -27750,12 +27750,12 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [105]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26751] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
         },
         ["Range"] = 106.25,
@@ -27765,9 +27765,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [106]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26731] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -27780,9 +27780,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [107]
     {
-        ["Qpart"] = {
+        Qpart = {
             [208] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 731,
@@ -27884,9 +27884,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [118]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26772] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 51.43,
@@ -27914,9 +27914,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [121]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26773] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -27971,17 +27971,17 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [127]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26774] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26780] = {
-                ["1"] = "1",
+                1,
             },
             [26779] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -27991,12 +27991,12 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [128]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26780] = {
-                ["1"] = "1",
+                1,
             },
             [26779] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 92.05,
@@ -28026,9 +28026,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [131]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26775] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -28040,9 +28040,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [132]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26775] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
@@ -28053,9 +28053,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [133]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26775] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Gossip"] = 1,
@@ -28066,9 +28066,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
     }, -- [134]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26775] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Range"] = 0.61,
@@ -28166,7 +28166,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Waypoint"] = 26823,
         ["Fillers"] = {
             [26822] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 15.38,
@@ -28176,14 +28176,14 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26823] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26822] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -28193,9 +28193,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [26822] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 72.7,
@@ -28246,8 +28246,8 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Waypoint"] = 26823,
         ["Fillers"] = {
             [26818] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 17.99,
@@ -28260,7 +28260,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Waypoint"] = 26823,
         ["Fillers"] = {
             [26819] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 18.37,
@@ -28273,10 +28273,10 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Waypoint"] = 26823,
         ["Fillers"] = {
             [26819] = {
-                ["1"] = "1",
+                1,
             },
             [26820] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 15.98,
@@ -28286,17 +28286,17 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [16]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26817] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26819] = {
-                ["1"] = "1",
+                1,
             },
             [26820] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -28306,12 +28306,12 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [17]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26819] = {
-                ["1"] = "1",
+                1,
             },
             [26820] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 61.59,
@@ -28321,10 +28321,10 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [18]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26818] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -28353,7 +28353,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Waypoint"] = 26819,
         ["Fillers"] = {
             [26818] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 29.19,
@@ -28406,7 +28406,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Waypoint"] = 26809,
         ["Fillers"] = {
             [26818] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 17.43,
@@ -28416,14 +28416,14 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [27]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26809] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26815] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -28433,9 +28433,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [28]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26809] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -28448,7 +28448,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Waypoint"] = 26809,
         ["Fillers"] = {
             [26815] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 20.46,
@@ -28460,7 +28460,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
     {
         ["Fillers"] = {
             [26818] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Done"] = {
@@ -28494,7 +28494,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
         ["Fillers"] = {
             [26815] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -28503,9 +28503,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [34]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26815] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 63.69,
@@ -28533,9 +28533,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [37]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26811] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -28563,9 +28563,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [40]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26812] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -28593,9 +28593,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [43]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26813] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -28623,9 +28623,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [46]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26814] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -28689,9 +28689,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [53]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26816] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 70.48,
@@ -28819,9 +28819,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [68]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26599] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 1492,
@@ -28850,9 +28850,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [71]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26604] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 61.3,
@@ -28880,12 +28880,12 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [74]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26605] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
         },
         ["Range"] = 85.79,
@@ -28913,9 +28913,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [77]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26606] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 1559,
@@ -28943,9 +28943,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [80]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26593] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 82.97,
@@ -28955,9 +28955,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [81]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26597] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -28995,9 +28995,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [85]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26600] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 2664,
@@ -29044,9 +29044,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [90]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26600] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["RaidIcon"] = 2491,
@@ -29178,7 +29178,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         ["Waypoint"] = 26602,
         ["Fillers"] = {
             [26614] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 34.8,
@@ -29188,9 +29188,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [105]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26595] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.61,
@@ -29200,9 +29200,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [106]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26595] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Gossip"] = 1,
@@ -29214,9 +29214,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [107]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26595] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -29226,9 +29226,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [108]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26602] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -29239,15 +29239,15 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [109]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26612] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [26612] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -29257,18 +29257,18 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [110]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26612] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Fillers"] = {
             [26614] = {
-                ["1"] = "1",
+                1,
             },
             [26612] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -29278,10 +29278,10 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [111]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26612] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 118.39,
@@ -29291,9 +29291,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [112]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26614] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 97.46,
@@ -29390,9 +29390,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [123]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26601] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -29454,9 +29454,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [130]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26630] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Gossip"] = 1,
@@ -29467,9 +29467,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [131]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26630] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
@@ -29481,9 +29481,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [132]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26630] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -29581,9 +29581,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [143]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26633] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -29593,9 +29593,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [144]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26634] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 66.17,
@@ -29605,9 +29605,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [145]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26635] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -29655,9 +29655,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [150]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26647] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -29694,9 +29694,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [154]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26649] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -29708,9 +29708,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [155]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26648] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -29770,14 +29770,14 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [161]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26662] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26664] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 43659,
@@ -29796,17 +29796,17 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [163]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26663] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26664] = {
-                ["1"] = "1",
+                1,
             },
             [26613] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -29816,18 +29816,18 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [164]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26663] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [26613] = {
-                ["1"] = "1",
+                1,
             },
             [26664] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -29837,18 +29837,18 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [165]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26662] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [26664] = {
-                ["1"] = "1",
+                1,
             },
             [26613] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -29858,18 +29858,18 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [166]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26663] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [26613] = {
-                ["1"] = "1",
+                1,
             },
             [26664] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -29888,12 +29888,12 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [168]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26664] = {
-                ["1"] = "1",
+                1,
             },
             [26613] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -29912,9 +29912,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [170]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26662] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Gossip"] = 1,
@@ -30050,17 +30050,17 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [185]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26695] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [26700] = {
-                ["1"] = "1",
+                1,
             },
             [26699] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -30070,12 +30070,12 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [186]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26700] = {
-                ["1"] = "1",
+                1,
             },
             [26699] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 108.14,
@@ -30105,10 +30105,10 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [189]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26697] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["RaidIcon"] = 737,
@@ -30146,9 +30146,9 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
     }, -- [193]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26703] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 2546,

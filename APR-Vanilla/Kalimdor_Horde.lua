@@ -28,9 +28,9 @@ if (APR.Race == "Tauren") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14452] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 45.47,
@@ -58,9 +58,9 @@ if (APR.Race == "Tauren") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24852] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 23.61,
@@ -107,12 +107,12 @@ if (APR.Race == "Tauren") then
             },
         }, -- [11]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14456] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [14455] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 41.82,
@@ -142,14 +142,14 @@ if (APR.Race == "Tauren") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14461] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [14459] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -162,14 +162,14 @@ if (APR.Race == "Tauren") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14461] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [14459] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -182,14 +182,14 @@ if (APR.Race == "Tauren") then
             },
         }, -- [16]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14461] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [14459] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -202,9 +202,9 @@ if (APR.Race == "Tauren") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14459] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 32.4,
@@ -233,9 +233,9 @@ if (APR.Race == "Tauren") then
             },
         }, -- [20]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14460] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["RaidIcon"] = 36712,
@@ -264,9 +264,9 @@ if (APR.Race == "Tauren") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24861] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -401,9 +401,9 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25126] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 23.15,
@@ -440,14 +440,14 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25172] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25136] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 38.02,
@@ -459,7 +459,7 @@ elseif (APR.Race == "Orc") then
         {
             ["Fillers"] = {
                 [25136] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -494,13 +494,13 @@ elseif (APR.Race == "Orc") then
             },
             ["Fillers"] = {
                 [25136] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37446] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [25127] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -509,20 +509,20 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25129] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25136] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37446] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [25127] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -538,13 +538,13 @@ elseif (APR.Race == "Orc") then
         {
             ["Fillers"] = {
                 [25136] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37446] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [25127] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -564,13 +564,13 @@ elseif (APR.Race == "Orc") then
             },
             ["Fillers"] = {
                 [25136] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37446] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [25127] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -582,15 +582,15 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25136] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37446] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [25127] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -640,9 +640,9 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [20]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25131] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 62.65,
@@ -687,14 +687,14 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [25]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25135] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25132] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -707,7 +707,7 @@ elseif (APR.Race == "Orc") then
             ["Waypoint"] = 25132,
             ["Fillers"] = {
                 [25132] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 14.73,
@@ -717,14 +717,14 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [27]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25132] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [25132] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["RaidIcon"] = 3183,
@@ -735,9 +735,9 @@ elseif (APR.Race == "Orc") then
             },
         }, -- [28]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25132] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 71.22,
@@ -832,9 +832,9 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24639] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 18.39,
@@ -862,9 +862,9 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24641] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 28.64,
@@ -892,9 +892,9 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24642] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -906,9 +906,9 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24642] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38142,
@@ -1027,17 +1027,17 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24625] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -1051,12 +1051,12 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -1089,14 +1089,14 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -1110,9 +1110,9 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -1140,9 +1140,9 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 50.23,
@@ -1190,12 +1190,12 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24812] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24813] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -1235,9 +1235,9 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -1249,9 +1249,9 @@ elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38306,
@@ -1329,9 +1329,9 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24777] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 22.9,
@@ -1359,9 +1359,9 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24779] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 18.65,
@@ -1389,9 +1389,9 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24780] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -1403,9 +1403,9 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24780] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38142,
@@ -1516,17 +1516,17 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24625] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -1540,12 +1540,12 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -1578,14 +1578,14 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -1599,9 +1599,9 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -1629,9 +1629,9 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 50.23,
@@ -1679,12 +1679,12 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24812] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24813] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -1724,9 +1724,9 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -1738,9 +1738,9 @@ elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38306,
@@ -1836,9 +1836,9 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24773] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 21.52,
@@ -1866,9 +1866,9 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24774] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -1880,9 +1880,9 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24774] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38142,
@@ -1993,17 +1993,17 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24625] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -2017,12 +2017,12 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -2055,14 +2055,14 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -2076,9 +2076,9 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -2106,9 +2106,9 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 50.23,
@@ -2156,12 +2156,12 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24812] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24813] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -2201,9 +2201,9 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -2215,9 +2215,9 @@ elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38306,
@@ -2313,9 +2313,9 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24773] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 21.52,
@@ -2343,9 +2343,9 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24774] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -2357,9 +2357,9 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24774] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38142,
@@ -2459,9 +2459,9 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [20]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24785] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 30.7,
@@ -2489,9 +2489,9 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24786] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -2503,9 +2503,9 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [24]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24786] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38142,
@@ -2616,17 +2616,17 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24625] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -2640,12 +2640,12 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -2678,14 +2678,14 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -2699,9 +2699,9 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -2729,9 +2729,9 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 50.23,
@@ -2779,12 +2779,12 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24812] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24813] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -2824,9 +2824,9 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -2838,9 +2838,9 @@ elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38306,
@@ -2918,9 +2918,9 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24759] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 11.14,
@@ -2948,9 +2948,9 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24761] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 19.97,
@@ -2978,9 +2978,9 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24762] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -2992,9 +2992,9 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24762] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38142,
@@ -3105,17 +3105,17 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24625] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -3129,12 +3129,12 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -3167,14 +3167,14 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -3188,9 +3188,9 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -3218,9 +3218,9 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 50.23,
@@ -3268,12 +3268,12 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24812] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24813] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -3313,9 +3313,9 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -3327,9 +3327,9 @@ elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38306,
@@ -3407,9 +3407,9 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24751] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 19.52,
@@ -3437,9 +3437,9 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24753] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 25,
@@ -3467,9 +3467,9 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24754] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["GossipOptionID"] = 37137,
@@ -3481,9 +3481,9 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24754] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38142,
@@ -3594,17 +3594,17 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24625] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -3618,12 +3618,12 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -3656,14 +3656,14 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -3677,9 +3677,9 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -3707,9 +3707,9 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 50.23,
@@ -3757,12 +3757,12 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24812] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24813] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -3802,9 +3802,9 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -3816,9 +3816,9 @@ elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38306,
@@ -3896,9 +3896,9 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [26273] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 15.98,
@@ -3926,9 +3926,9 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [26275] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 20.54,
@@ -3956,9 +3956,9 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [26276] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -3970,9 +3970,9 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [26276] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38142,
@@ -4083,17 +4083,17 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24625] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -4107,12 +4107,12 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -4145,14 +4145,14 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -4166,9 +4166,9 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -4196,9 +4196,9 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 50.23,
@@ -4246,12 +4246,12 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24812] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24813] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -4291,9 +4291,9 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -4305,9 +4305,9 @@ elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38306,
@@ -4385,9 +4385,9 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [31158] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 13.56,
@@ -4415,9 +4415,9 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [31160] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 19.96,
@@ -4445,9 +4445,9 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [31161] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -4459,9 +4459,9 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [31161] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38142,
@@ -4572,17 +4572,17 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24625] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -4596,12 +4596,12 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -4634,14 +4634,14 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -4655,9 +4655,9 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -4685,9 +4685,9 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 50.23,
@@ -4735,12 +4735,12 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24812] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24813] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -4780,9 +4780,9 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -4794,9 +4794,9 @@ elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38306,
@@ -4874,9 +4874,9 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24765] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 10.97,
@@ -4904,9 +4904,9 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24767] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 20.25,
@@ -4934,9 +4934,9 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24768] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -4948,9 +4948,9 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24768] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38142,
@@ -5061,17 +5061,17 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24625] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -5085,12 +5085,12 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24624] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24623] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -5123,14 +5123,14 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -5144,9 +5144,9 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24626] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -5174,9 +5174,9 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 50.23,
@@ -5224,12 +5224,12 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24812] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24813] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -5269,9 +5269,9 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -5283,9 +5283,9 @@ elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24814] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["RaidIcon"] = 38306,
@@ -5364,12 +5364,12 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14069] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [14075] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 20,
@@ -5442,9 +5442,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [11]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14071] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -5457,9 +5457,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14071] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.61,
@@ -5469,9 +5469,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14071] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 0.69,
@@ -5481,9 +5481,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14071] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.69,
@@ -5558,14 +5558,14 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [20]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14070] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [24488] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -5575,14 +5575,14 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [21]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14070] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Fillers"] = {
                 [24488] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5592,9 +5592,9 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14070] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.69,
@@ -5604,14 +5604,14 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14070] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [24488] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5642,15 +5642,15 @@ elseif (APR.Race == "Goblin") then
         }, -- [26]
         {
             ["Gender"] = 3,
-            ["Qpart"] = {
+            Qpart = {
                 [14110] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
             ["Fillers"] = {
                 [24488] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.61,
@@ -5661,15 +5661,15 @@ elseif (APR.Race == "Goblin") then
         }, -- [27]
         {
             ["Gender"] = 3,
-            ["Qpart"] = {
+            Qpart = {
                 [14110] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
             ["Fillers"] = {
                 [24488] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5680,15 +5680,15 @@ elseif (APR.Race == "Goblin") then
         }, -- [28]
         {
             ["Gender"] = 3,
-            ["Qpart"] = {
+            Qpart = {
                 [14110] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Gossip"] = 1,
             ["Fillers"] = {
                 [24488] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5719,15 +5719,15 @@ elseif (APR.Race == "Goblin") then
         }, -- [26]
         {
             ["Gender"] = 2,
-            ["Qpart"] = {
+            Qpart = {
                 [14109] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
             ["Fillers"] = {
                 [24488] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.61,
@@ -5738,15 +5738,15 @@ elseif (APR.Race == "Goblin") then
         }, -- [27]
         {
             ["Gender"] = 2,
-            ["Qpart"] = {
+            Qpart = {
                 [14109] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
             ["Fillers"] = {
                 [24488] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5757,15 +5757,15 @@ elseif (APR.Race == "Goblin") then
         }, -- [28]
         {
             ["Gender"] = 2,
-            ["Qpart"] = {
+            Qpart = {
                 [14109] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Gossip"] = 1,
             ["Fillers"] = {
                 [24488] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5775,9 +5775,9 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24488] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 43.68,
@@ -5805,10 +5805,10 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [32]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24502] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 8.01,
@@ -5836,9 +5836,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [35]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24503] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -5897,9 +5897,9 @@ elseif (APR.Race == "Goblin") then
         }, -- [40]
         {
             ["Gender"] = 3,
-            ["Qpart"] = {
+            Qpart = {
                 [14153] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 11.23,
@@ -5940,9 +5940,9 @@ elseif (APR.Race == "Goblin") then
         }, -- [40]
         {
             ["Gender"] = 2,
-            ["Qpart"] = {
+            Qpart = {
                 [14113] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 11.23,
@@ -5971,9 +5971,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [43]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14115] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 10.3,
@@ -6065,9 +6065,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [53]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14124] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -6089,15 +6089,15 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [55]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14122] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Fillers"] = {
                 [14121] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6107,14 +6107,14 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [56]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14123] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [14121] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.61,
@@ -6124,14 +6124,14 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [57]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14123] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [14121] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -6141,14 +6141,14 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [58]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14123] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [14121] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -6158,9 +6158,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [59]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14121] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 59.92,
@@ -6206,9 +6206,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [64]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14125] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -6218,9 +6218,9 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14125] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -6246,9 +6246,9 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14125] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.69,
@@ -6258,9 +6258,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [69]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14125] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 0.69,
@@ -6322,9 +6322,9 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14001] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 14.85,
@@ -6362,15 +6362,15 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14019] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [14473] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [14014] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -6430,9 +6430,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [11]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14031] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -6445,9 +6445,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14031] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Button"] = {
@@ -6460,9 +6460,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14021] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 13.25,
@@ -6472,9 +6472,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14031] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.75,
@@ -6492,9 +6492,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [16]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14031] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Button"] = {
@@ -6604,9 +6604,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [26]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14236] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -6697,9 +6697,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [34]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14238] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -6748,9 +6748,9 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14241] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 49.4,
@@ -6778,9 +6778,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14242] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6842,9 +6842,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [11]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14243] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 92.02,
@@ -6890,9 +6890,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [16]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14244] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -6921,9 +6921,9 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [14245] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -6969,9 +6969,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24671] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -7002,9 +7002,9 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24741] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -7035,9 +7035,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24744] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7065,9 +7065,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24816] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 62.46,
@@ -7095,9 +7095,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [11]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24817] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7107,9 +7107,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24817] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 15.78,
@@ -7164,12 +7164,12 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24859] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24858] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 116.05,
@@ -7198,9 +7198,9 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24864] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -7231,9 +7231,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24868] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -7279,9 +7279,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24901] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7339,7 +7339,7 @@ elseif (APR.Race == "Goblin") then
             ["Waypoint"] = 24925,
             ["Fillers"] = {
                 [24925] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 19.98,
@@ -7352,7 +7352,7 @@ elseif (APR.Race == "Goblin") then
             ["Waypoint"] = 24925,
             ["Fillers"] = {
                 [24925] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 16.38,
@@ -7365,7 +7365,7 @@ elseif (APR.Race == "Goblin") then
             ["Waypoint"] = 24925,
             ["Fillers"] = {
                 [24925] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 20.19,
@@ -7375,14 +7375,14 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [19]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24929] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [24925] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -7392,9 +7392,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [20]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24925] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 100.58,
@@ -7469,14 +7469,14 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [28]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24945] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [24942] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.61,
@@ -7486,17 +7486,17 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [29]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24945] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [24942] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24946] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7506,17 +7506,17 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [30]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24945] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [24942] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [24946] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7526,14 +7526,14 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [31]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24946] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [24942] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 10.65,
@@ -7543,9 +7543,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [32]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24942] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 57.89,
@@ -7575,9 +7575,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [35]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24952] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -7608,9 +7608,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [38]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24954] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 73.88,
@@ -7638,9 +7638,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [41]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [24958] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -7707,17 +7707,17 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [48]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25093] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25058] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [25024] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -7730,9 +7730,9 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25093] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Button"] = {
@@ -7740,10 +7740,10 @@ elseif (APR.Race == "Goblin") then
             },
             ["Fillers"] = {
                 [25058] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [25024] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7753,9 +7753,9 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25093] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Button"] = {
@@ -7763,10 +7763,10 @@ elseif (APR.Race == "Goblin") then
             },
             ["Fillers"] = {
                 [25058] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [25024] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7776,12 +7776,12 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25058] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [25024] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -7830,9 +7830,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25066] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["ExtraLineText"] = "TALK_SASSY",
@@ -7844,9 +7844,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25066] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 145.07,
@@ -7994,9 +7994,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25110] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 27.27,
@@ -8025,14 +8025,14 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [20]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25122] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [25122] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Button"] = {
@@ -8045,14 +8045,14 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25122] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25122] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Button"] = {
@@ -8065,14 +8065,14 @@ elseif (APR.Race == "Goblin") then
             },
         },
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25122] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [25122] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Button"] = {
@@ -8085,14 +8085,14 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25123] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25122] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Button"] = {
@@ -8105,9 +8105,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25122] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Button"] = {
@@ -8184,12 +8184,12 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25200] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [25201] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 60.83,
@@ -8227,15 +8227,15 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [11]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25204] = {
-                    ["1"] = "1",
-                    ["4"] = "4",
-                    ["3"] = "3",
-                    ["2"] = "2",
+                    1,
+                    4,
+                    3,
+                    2,
                 },
                 [25202] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 71.69,
@@ -8263,9 +8263,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25207] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -8321,14 +8321,14 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [20]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25244] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [25214] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -8338,9 +8338,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [21]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25214] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 93.07,
@@ -8369,9 +8369,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [24]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25251] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -8381,9 +8381,9 @@ elseif (APR.Race == "Goblin") then
             },
         }, -- [25]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [25251] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -8466,9 +8466,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25170] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 48.84,
@@ -8478,10 +8478,10 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25167] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 72.3,
@@ -8539,10 +8539,10 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Waypoint"] = 25169,
         ["Fillers"] = {
             [25165] = {
-                ["1"] = "1",
+                1,
             },
             [25168] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -8558,7 +8558,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Waypoint"] = 25169,
         ["Fillers"] = {
             [25168] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 24.79,
@@ -8568,14 +8568,14 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [11]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25169] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [25168] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -8585,14 +8585,14 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25169] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [25168] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -8605,7 +8605,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Waypoint"] = 25169,
         ["Fillers"] = {
             [25168] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 23.14,
@@ -8618,7 +8618,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Waypoint"] = 25169,
         ["Fillers"] = {
             [25168] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 16.16,
@@ -8628,14 +8628,14 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [15]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25169] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [25168] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -8653,9 +8653,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [17]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25165] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -8745,11 +8745,11 @@ APR.RouteQuestStepList["1-Durotar"] = {
         ["Waypoint"] = 25173,
         ["Fillers"] = {
             [25176] = {
-                ["1"] = "1",
+                1,
             },
             [25173] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 11.41,
@@ -8759,18 +8759,18 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [27]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25173] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [25176] = {
-                ["1"] = "1",
+                1,
             },
             [25173] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -8780,13 +8780,13 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [28]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25176] = {
-                ["1"] = "1",
+                1,
             },
             [25173] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 122.34,
@@ -8846,10 +8846,10 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
         ["Fillers"] = {
             [25178] = {
-                ["1"] = "1",
+                1,
             },
             [25177] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 39270,
@@ -8860,15 +8860,15 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [35]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25178] = {
-                ["1"] = "1",
+                1,
             },
             [25179] = {
-                ["1"] = "1",
+                1,
             },
             [25177] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 118.2,
@@ -8932,9 +8932,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [42]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25187] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Dontskipvid"] = 1,
@@ -8948,9 +8948,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [43]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25187] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Dontskipvid"] = 1,
@@ -8964,9 +8964,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [44]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25187] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Dontskipvid"] = 1,
@@ -8980,9 +8980,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [45]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25187] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Dontskipvid"] = 1,
@@ -9023,10 +9023,10 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [49]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25190] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 88.34,
@@ -9054,10 +9054,10 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [52]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25192] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 104.05,
@@ -9085,9 +9085,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [55]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25194] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 145.95,
@@ -9115,9 +9115,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [58]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25195] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 39385,
@@ -9146,9 +9146,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [61]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25193] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 80.75,
@@ -9184,9 +9184,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25232] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 19.65,
@@ -9232,12 +9232,12 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [70]
     {
-        ["Qpart"] = {
+        Qpart = {
             [835] = {
-                ["1"] = "1",
+                1,
             },
             [834] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 78.2,
@@ -9279,9 +9279,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
     -- Outside Orgri Start
 
     {
-        ["Qpart"] = {
+        Qpart = {
             [25205] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -9293,9 +9293,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25205] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 39365,
@@ -9324,9 +9324,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [5]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25206] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 95.48,
@@ -9336,14 +9336,14 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [6]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25260] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [25236] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -9355,9 +9355,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [25236] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 39464,
@@ -9427,9 +9427,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [5]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25258] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 39353,
@@ -9440,9 +9440,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [6]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25257] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 39351,
@@ -9453,9 +9453,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [7]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25259] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 39352,
@@ -9485,9 +9485,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
     }, -- [10]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25262] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 24.56,
@@ -9545,7 +9545,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["RaidIcon"] = 34284,
         ["Fillers"] = {
             [844] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -9554,18 +9554,18 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [871] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [13878] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [844] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 36.15,
@@ -9586,7 +9586,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Fillers"] = {
             [844] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -9624,14 +9624,14 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [872] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
             [5041] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 3438,
@@ -9650,9 +9650,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [11]
     {
-        ["Qpart"] = {
+        Qpart = {
             [844] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 98.01,
@@ -9690,9 +9690,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [15]
     {
-        ["Qpart"] = {
+        Qpart = {
             [13949] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -9749,12 +9749,12 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [21]
     {
-        ["Qpart"] = {
+        Qpart = {
             [13973] = {
-                ["1"] = "1",
+                1,
             },
             [899] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 69.11,
@@ -9764,9 +9764,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [13961] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -9799,9 +9799,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [25]
     {
-        ["Qpart"] = {
+        Qpart = {
             [13963] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 34523,
@@ -9867,12 +9867,12 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [32]
     {
-        ["Qpart"] = {
+        Qpart = {
             [13968] = {
-                ["1"] = "1",
+                1,
             },
             [13970] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 34543,
@@ -9911,9 +9911,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [36]
     {
-        ["Qpart"] = {
+        Qpart = {
             [13975] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -9967,13 +9967,13 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["Fillers"] = {
             [845] = {
-                ["1"] = "1",
+                1,
             },
             [903] = {
-                ["1"] = "1",
+                1,
             },
             [848] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -9987,7 +9987,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["Fillers"] = {
             [848] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -9996,17 +9996,17 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [43]
     {
-        ["Qpart"] = {
+        Qpart = {
             [870] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [848] = {
-                ["1"] = "1",
+                1,
             },
             [13992] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -10016,17 +10016,17 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [44]
     {
-        ["Qpart"] = {
+        Qpart = {
             [850] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [13992] = {
-                ["1"] = "1",
+                1,
             },
             [848] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 3394,
@@ -10037,12 +10037,12 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [45]
     {
-        ["Qpart"] = {
+        Qpart = {
             [848] = {
-                ["1"] = "1",
+                1,
             },
             [13992] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 74.98,
@@ -10080,12 +10080,12 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [875] = {
-                ["1"] = "1",
+                1,
             },
             [867] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 125.16,
@@ -10122,9 +10122,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [5]
     {
-        ["Qpart"] = {
+        Qpart = {
             [876] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 3452,
@@ -10162,9 +10162,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [29090] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 91.77,
@@ -10192,9 +10192,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [858] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 3445,
@@ -10223,9 +10223,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [15]
     {
-        ["Qpart"] = {
+        Qpart = {
             [863] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 3439,
@@ -10265,12 +10265,12 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [19]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29087] = {
-                ["1"] = "1",
+                1,
             },
             [29086] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 62.97,
@@ -10289,9 +10289,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [24]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29089] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -10301,9 +10301,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [25]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29088] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 93.29,
@@ -10331,9 +10331,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [23]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29022] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -10343,9 +10343,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [29022] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.69,
@@ -10355,9 +10355,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [29022] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -10385,9 +10385,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [5]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29023] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 3471,
@@ -10481,9 +10481,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [15]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29027] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 95.05,
@@ -10560,7 +10560,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         ["Waypoint"] = 14006,
         ["Fillers"] = {
             [29015] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 44.41,
@@ -10570,12 +10570,12 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [24]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29015] = {
-                ["1"] = "1",
+                1,
             },
             [14006] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -10608,9 +10608,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [27]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29094] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -10629,12 +10629,12 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [29]
     {
-        ["Qpart"] = {
+        Qpart = {
             [903] = {
-                ["1"] = "1",
+                1,
             },
             [845] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 106.31,
@@ -10699,9 +10699,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [55]
     {
-        ["Qpart"] = {
+        Qpart = {
             [881] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -10750,9 +10750,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [4]
     {
-        ["Qpart"] = {
+        Qpart = {
             [905] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Button"] = {
@@ -10765,9 +10765,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [905] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Button"] = {
@@ -10780,9 +10780,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [905] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -10813,10 +10813,10 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [5]
     {
-        ["Qpart"] = {
+        Qpart = {
             [13995] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.61,
@@ -10826,14 +10826,14 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [6]
     {
-        ["Qpart"] = {
+        Qpart = {
             [13998] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [14072] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -10846,9 +10846,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [7]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14072] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraLineText"] = "SEARCH_CENTAUR_TENTS",
@@ -10878,9 +10878,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [10]
     {
-        ["Qpart"] = {
+        Qpart = {
             [851] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 34846,
@@ -10908,9 +10908,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [13988] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -10942,14 +10942,14 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [16]
     {
-        ["Qpart"] = {
+        Qpart = {
             [877] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [880] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -10959,9 +10959,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [17]
     {
-        ["Qpart"] = {
+        Qpart = {
             [880] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 66.49,
@@ -11053,14 +11053,14 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [27]
     {
-        ["Qpart"] = {
+        Qpart = {
             [852] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [855] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 3396,
@@ -11071,9 +11071,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [28]
     {
-        ["Qpart"] = {
+        Qpart = {
             [855] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 91.94,
@@ -11102,9 +11102,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [31]
     {
-        ["Qpart"] = {
+        Qpart = {
             [4021] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraLineText"] = "KILL_CENTAURS",
@@ -11199,14 +11199,14 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [41]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14034] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [891] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["RaidIcon"] = 34754,
@@ -11259,9 +11259,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [47]
     {
-        ["Qpart"] = {
+        Qpart = {
             [865] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 34829,
@@ -11289,14 +11289,14 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [50]
     {
-        ["Qpart"] = {
+        Qpart = {
             [891] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [891] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["RaidIcon"] = 34752,
@@ -11309,7 +11309,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Fillers"] = {
             [891] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Done"] = {
@@ -11330,9 +11330,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [53]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14046] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 2,
@@ -11352,14 +11352,14 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [55]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14049] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [891] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.61,
@@ -11369,14 +11369,14 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [56]
     {
-        ["Qpart"] = {
+        Qpart = {
             [891] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [891] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.61,
@@ -11386,9 +11386,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [57]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14038] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11396,7 +11396,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["Fillers"] = {
             [891] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["ExtraLineText"] = "UNDERNEATH",
@@ -11425,12 +11425,12 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [60]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14042] = {
-                ["1"] = "1",
+                1,
             },
             [891] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 178.26,
@@ -11440,14 +11440,14 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [61]
     {
-        ["Qpart"] = {
+        Qpart = {
             [895] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [887] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 34750,
@@ -11460,7 +11460,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Fillers"] = {
             [887] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -11481,14 +11481,14 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [64]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14056] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [887] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 34747,
@@ -11501,7 +11501,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Fillers"] = {
             [887] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -11522,14 +11522,14 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [67]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14057] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [887] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -11541,7 +11541,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     {
         ["Fillers"] = {
             [887] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -11558,7 +11558,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         ["Fillers"] = {
             [887] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -11567,9 +11567,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [70]
     {
-        ["Qpart"] = {
+        Qpart = {
             [887] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 27.25,
@@ -11579,9 +11579,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [71]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14063] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11649,9 +11649,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [78]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14050] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -11669,9 +11669,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [80]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14066] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -11708,9 +11708,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [94]
     {
-        ["Qpart"] = {
+        Qpart = {
             [869] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -11738,18 +11738,18 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [91]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14067] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [14067] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [14068] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11762,15 +11762,15 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [14068] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [14067] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Button"] = {
@@ -11783,10 +11783,10 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [14067] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 143.82,
@@ -11796,18 +11796,18 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [93]
     {
-        ["Qpart"] = {
+        Qpart = {
             [14067] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [14067] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [14068] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11820,15 +11820,15 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [14068] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [14067] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Button"] = {
@@ -11877,9 +11877,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [84]
     {
-        ["Qpart"] = {
+        Qpart = {
             [26769] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -11908,9 +11908,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     }, -- [87]
 
     {
-        ["Qpart"] = {
+        Qpart = {
             [29109] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -11921,9 +11921,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [5]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29109] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -11985,9 +11985,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [5]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29112] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -12015,9 +12015,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     }, -- [8]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29111] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -12029,9 +12029,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [29111] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["RaidIcon"] = 52314,
@@ -12069,7 +12069,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         ["Waypoint"] = 24504,
         ["Fillers"] = {
             [24504] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 15.13,
@@ -12079,9 +12079,9 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [24504] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 76.7,
@@ -12124,10 +12124,10 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         },
         ["Fillers"] = {
             [25284] = {
-                ["1"] = "1",
+                1,
             },
             [24512] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -12136,17 +12136,17 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [24513] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [25284] = {
-                ["1"] = "1",
+                1,
             },
             [24512] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 37157,
@@ -12159,10 +12159,10 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
     {
         ["Fillers"] = {
             [25284] = {
-                ["1"] = "1",
+                1,
             },
             [24512] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -12174,12 +12174,12 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [25284] = {
-                ["1"] = "1",
+                1,
             },
             [24512] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -12228,14 +12228,14 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24517] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [24517] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["RaidIcon"] = 37216,
@@ -12246,14 +12246,14 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         },
     }, -- [4]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24517] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [24514] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 52.75,
@@ -12263,9 +12263,9 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         },
     }, -- [5]
     {
-        ["Qpart"] = {
+        Qpart = {
             [24514] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 89.34,

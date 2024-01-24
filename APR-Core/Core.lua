@@ -32,8 +32,6 @@ function APR:OnInitialize()
     APR.interfaceVersion = select(4, GetBuildInfo())
 
     APR.ActiveQuests = {}
-
-    APR.Breadcrums = {}
     APR.IsInRouteZone = false
 
     -- BookingList

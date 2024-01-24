@@ -12,9 +12,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 3
-            ["Qpart"] = {
+            Qpart = {
                 [66577] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -35,9 +35,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 7
-            ["Qpart"] = {
+            Qpart = {
                 [66589] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -49,9 +49,9 @@ if (APR.Faction == "Alliance") then
             ["Gossip"] = 1,
         },
         { -- Step 8
-            ["Qpart"] = {
+            Qpart = {
                 [66589] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -63,9 +63,9 @@ if (APR.Faction == "Alliance") then
             ["Gossip"] = 1,
         },
         { -- Step 9
-            ["Qpart"] = {
+            Qpart = {
                 [72240] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -76,9 +76,9 @@ if (APR.Faction == "Alliance") then
             ["Gossip"] = 1,
         },
         { -- Step 10
-            ["Qpart"] = {
+            Qpart = {
                 [66589] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -117,9 +117,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 14
-            ["Qpart"] = {
+            Qpart = {
                 [66596] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -157,9 +157,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "WAIT_FOR_SHIP",
         },
         { -- Step 18
-            ["Qpart"] = {
+            Qpart = {
                 [67700] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -170,9 +170,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "WAIT_FOR_SHIP",
         },
         { -- Step 19
-            ["Qpart"] = {
+            Qpart = {
                 [67700] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
         },
@@ -188,9 +188,9 @@ if (APR.Faction == "Alliance") then
 
     APR.RouteQuestStepList["DF03A-2022-WakingShores"] = {
         { -- Step 1
-            ["Qpart"] = {
+            Qpart = {
                 [67700] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -237,9 +237,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 6
-            ["Qpart"] = {
+            Qpart = {
                 [70122] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -247,12 +247,12 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2012.9,
             },
             ["Range"] = 5,
-            ["Fillers"] = { [70123] = { ["1"] = "1", }, [70124] = { ["1"] = "1", }, },
+            ["Fillers"] = { [70123] = { 1, }, [70124] = { 1, }, },
         },
         { -- Step 7
-            ["Qpart"] = {
+            Qpart = {
                 [70122] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -260,12 +260,12 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -1972.4,
             },
             ["Range"] = 10,
-            ["Fillers"] = { [70123] = { ["1"] = "1", }, [70124] = { ["1"] = "1", }, },
+            ["Fillers"] = { [70123] = { 1, }, [70124] = { 1, }, },
         },
         { -- Step 8
-            ["Qpart"] = {
+            Qpart = {
                 [70122] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -273,12 +273,12 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -1693.5,
             },
             ["Range"] = 10,
-            ["Fillers"] = { [70123] = { ["1"] = "1", }, [70124] = { ["1"] = "1", }, },
+            ["Fillers"] = { [70123] = { 1, }, [70124] = { 1, }, },
         },
         { -- Step 9
-            ["Qpart"] = {
+            Qpart = {
                 [70123] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -288,9 +288,9 @@ if (APR.Faction == "Alliance") then
             ["Range"] = 180,
         },
         { -- Step 10
-            ["Qpart"] = {
+            Qpart = {
                 [70124] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -318,9 +318,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 13
-            ["Qpart"] = {
+            Qpart = {
                 [70125] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -351,9 +351,9 @@ if (APR.Faction == "Alliance") then
             ["HasAchievement"] = 16326,
         },
         { -- [step X
-            ["Qpart"] = {
+            Qpart = {
                 [72293] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -496,9 +496,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 22
-            ["Qpart"] = {
+            Qpart = {
                 [66101] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -509,9 +509,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "CLICK_SURVEYORS_DISC",
         },
         { -- Step 23
-            ["Qpart"] = {
+            Qpart = {
                 [66101] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -522,9 +522,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "PRESS_1",
         },
         { -- Step 24
-            ["Qpart"] = {
+            Qpart = {
                 [66101] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -535,9 +535,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "PRESS_2",
         },
         { -- Step 25
-            ["Qpart"] = {
+            Qpart = {
                 [66101] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Coord"] = {
@@ -575,9 +575,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 29
-            ["Qpart"] = {
+            Qpart = {
                 [69911] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -589,9 +589,9 @@ if (APR.Faction == "Alliance") then
             ["RaidIcon"] = 193393,
         },
         { -- Step 30
-            ["Qpart"] = {
+            Qpart = {
                 [69911] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -611,9 +611,9 @@ if (APR.Faction == "Alliance") then
             ["Range"] = 1,
         },
         { -- Step 32
-            ["Qpart"] = {
+            Qpart = {
                 [69911] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -624,9 +624,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "CLICK_STONE_TABLET",
         },
         { -- Step 33
-            ["Qpart"] = {
+            Qpart = {
                 [69911] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Coord"] = {
@@ -655,9 +655,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 36
-            ["Qpart"] = {
+            Qpart = {
                 [69912] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -678,9 +678,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "HEAD_CAVE",
         },
         { -- Step 38
-            ["Qpart"] = {
+            Qpart = {
                 [66112] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -688,14 +688,14 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -1327.9,
             },
             ["Range"] = 10,
-            ["Fillers"] = { [69965] = { ["1"] = "1", }, [66111] = { ["1"] = "1", }, },
+            ["Fillers"] = { [69965] = { 1, }, [66111] = { 1, }, },
             ["ExtraLineText"] = "ITEM_DROPS_FROM_BARON_CRUSTCORE_AT_BACK_OF_THE_CAVE",
             ["RaidIcon"] = 192266,
         },
         { -- Step 39
-            ["Qpart"] = {
+            Qpart = {
                 [66112] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -703,14 +703,14 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -1165.1,
             },
             ["Range"] = 10,
-            ["Fillers"] = { [69965] = { ["1"] = "1", }, [66111] = { ["1"] = "1", }, },
+            ["Fillers"] = { [69965] = { 1, }, [66111] = { 1, }, },
             ["ExtraLineText"] = "ITEM_DROPS_FROM_BARON_ASHFLOW_AT_TOP_OF_THE_LAVA_FLOW",
             ["RaidIcon"] = 192274,
         },
         { -- Step 40
-            ["Qpart"] = {
+            Qpart = {
                 [69965] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -720,9 +720,9 @@ if (APR.Faction == "Alliance") then
             ["Range"] = 200,
         },
         { -- Step 41
-            ["Qpart"] = {
+            Qpart = {
                 [70135] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -775,9 +775,9 @@ if (APR.Faction == "Alliance") then
     -- Thaldraszus
     APR.RouteQuestStepList["DF06A-2025-Thaldraszus"] = {
         { -- Step 1
-            ["Qpart"] = {
+            Qpart = {
                 [66244] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -806,9 +806,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 4
-            ["Qpart"] = {
+            Qpart = {
                 [66159] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -846,9 +846,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 8
-            ["Qpart"] = {
+            Qpart = {
                 [66163] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -861,9 +861,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 9
-            ["Qpart"] = {
+            Qpart = {
                 [66166] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -871,13 +871,13 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -880.5,
             },
             ["Range"] = 2,
-            ["Fillers"] = { [66163] = { ["2"] = "2", }, },
+            ["Fillers"] = { [66163] = { 2, }, },
             ["ExtraLineText"] = "INSIDE_INN",
         },
         { -- Step 10
-            ["Qpart"] = {
+            Qpart = {
                 [66166] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -885,13 +885,13 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -1058.4,
             },
             ["Range"] = 2,
-            ["Fillers"] = { [66163] = { ["2"] = "2", }, },
+            ["Fillers"] = { [66163] = { 2, }, },
             ["ExtraLineText"] = "INSIDE_BANK",
         },
         { -- Step 11
-            ["Qpart"] = {
+            Qpart = {
                 [66166] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -899,13 +899,13 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -701.7,
             },
             ["Range"] = 2,
-            ["Fillers"] = { [66163] = { ["2"] = "2", }, },
+            ["Fillers"] = { [66163] = { 2, }, },
             ["ExtraLineText"] = "ON_TOP_OF_BOX",
         },
         { -- Step 12
-            ["Qpart"] = {
+            Qpart = {
                 [66163] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -944,9 +944,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 16
-            ["Qpart"] = {
+            Qpart = {
                 [66167] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -957,9 +957,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "FLY_GUARDIAN_VELOMIR",
         },
         { -- Step 17
-            ["Qpart"] = {
+            Qpart = {
                 [66167] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -997,9 +997,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 21
-            ["Qpart"] = {
+            Qpart = {
                 [66246] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1007,14 +1007,14 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -550.2,
             },
             ["Range"] = 125,
-            ["Fillers"] = { [66169] = { ["1"] = "1", }, },
+            ["Fillers"] = { [66169] = { 1, }, },
             ["ExtraLineText"] = "VELOMIRS_UNITS_ARE_MARKED_ON_MINIMAP",
             ["Gossip"] = 1,
         },
         { -- Step 22
-            ["Qpart"] = {
+            Qpart = {
                 [66169] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1072,9 +1072,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 28
-            ["Qpart"] = {
+            Qpart = {
                 [66247] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1082,12 +1082,12 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -819.5,
             },
             ["Range"] = 200,
-            ["Fillers"] = { [66248] = { ["1"] = "1", }, [66245] = { ["1"] = "1", }, },
+            ["Fillers"] = { [66248] = { 1, }, [66245] = { 1, }, },
         },
         { -- Step 29
-            ["Qpart"] = {
+            Qpart = {
                 [66248] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1095,12 +1095,12 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -819.5,
             },
             ["Range"] = 200,
-            ["Fillers"] = { [66245] = { ["1"] = "1", }, },
+            ["Fillers"] = { [66245] = { 1, }, },
         },
         { -- Step 30
-            ["Qpart"] = {
+            Qpart = {
                 [66245] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1146,9 +1146,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 35
-            ["Qpart"] = {
+            Qpart = {
                 [66249] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1159,9 +1159,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "SHOOT_DRAGONS",
         },
         { -- Step 36
-            ["Qpart"] = {
+            Qpart = {
                 [66249] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -1190,9 +1190,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 39
-            ["Qpart"] = {
+            Qpart = {
                 [66250] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1221,9 +1221,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 42
-            ["Qpart"] = {
+            Qpart = {
                 [66251] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1294,9 +1294,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 50
-            ["Qpart"] = {
+            Qpart = {
                 [66320] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1333,9 +1333,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 54
-            ["Qpart"] = {
+            Qpart = {
                 [66080] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1365,9 +1365,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 57
-            ["Qpart"] = {
+            Qpart = {
                 [70136] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -1377,9 +1377,9 @@ if (APR.Faction == "Alliance") then
             ["Range"] = 5,
         },
         { -- Step 58
-            ["Qpart"] = {
+            Qpart = {
                 [70136] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -1390,9 +1390,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "INSIDE_CAVE",
         },
         { -- Step 59
-            ["Qpart"] = {
+            Qpart = {
                 [70136] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1430,9 +1430,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 63
-            ["Qpart"] = {
+            Qpart = {
                 [66081] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1440,12 +1440,12 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2391.5,
             },
             ["Range"] = 125,
-            ["Fillers"] = { [66082] = { ["1"] = "1", }, },
+            ["Fillers"] = { [66082] = { 1, }, },
         },
         { -- Step 64
-            ["Qpart"] = {
+            Qpart = {
                 [66082] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1482,9 +1482,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 68
-            ["Qpart"] = {
+            Qpart = {
                 [66083] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1495,9 +1495,9 @@ if (APR.Faction == "Alliance") then
             ["Gossip"] = 1,
         },
         { -- Step 69
-            ["Qpart"] = {
+            Qpart = {
                 [66083] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -1507,9 +1507,9 @@ if (APR.Faction == "Alliance") then
             ["Range"] = 2,
         },
         { -- Step 70
-            ["Qpart"] = {
+            Qpart = {
                 [66083] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -1519,9 +1519,9 @@ if (APR.Faction == "Alliance") then
             ["Range"] = 2,
         },
         { -- Step 71
-            ["Qpart"] = {
+            Qpart = {
                 [66083] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Coord"] = {
@@ -1559,9 +1559,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 75
-            ["Qpart"] = {
+            Qpart = {
                 [66085] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1569,12 +1569,12 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2810.0,
             },
             ["Range"] = 2,
-            ["Fillers"] = { [66084] = { ["1"] = "1", }, },
+            ["Fillers"] = { [66084] = { 1, }, },
         },
         { -- Step 76
-            ["Qpart"] = {
+            Qpart = {
                 [66085] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -1582,13 +1582,13 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2937.8,
             },
             ["Range"] = 2,
-            ["Fillers"] = { [66084] = { ["1"] = "1", }, },
+            ["Fillers"] = { [66084] = { 1, }, },
             ["Gossip"] = 1,
         },
         { -- Step 77
-            ["Qpart"] = {
+            Qpart = {
                 [66085] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -1596,12 +1596,12 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2957.4,
             },
             ["Range"] = 2,
-            ["Fillers"] = { [66084] = { ["1"] = "1", }, },
+            ["Fillers"] = { [66084] = { 1, }, },
         },
         { -- Step 78
-            ["Qpart"] = {
+            Qpart = {
                 [66085] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Coord"] = {
@@ -1609,12 +1609,12 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2953.1,
             },
             ["Range"] = 2,
-            ["Fillers"] = { [66084] = { ["1"] = "1", }, },
+            ["Fillers"] = { [66084] = { 1, }, },
         },
         { -- Step 79
-            ["Qpart"] = {
+            Qpart = {
                 [66085] = {
-                    ["5"] = "5",
+                    5,
                 },
             },
             ["Coord"] = {
@@ -1622,13 +1622,13 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2953.1,
             },
             ["Range"] = 2,
-            ["Fillers"] = { [66084] = { ["1"] = "1", }, },
+            ["Fillers"] = { [66084] = { 1, }, },
             ["Gossip"] = 1,
         },
         { -- Step 80
-            ["Qpart"] = {
+            Qpart = {
                 [66084] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1665,9 +1665,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 84
-            ["Qpart"] = {
+            Qpart = {
                 [66087] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1698,9 +1698,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 87
-            ["Qpart"] = {
+            Qpart = {
                 [65935] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1747,9 +1747,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 92
-            ["Qpart"] = {
+            Qpart = {
                 [65948] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1757,12 +1757,12 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2811.1,
             },
             ["Range"] = 2,
-            ["Fillers"] = { [65947] = { ["1"] = "1", }, [66646] = { ["1"] = "1", }, },
+            ["Fillers"] = { [65947] = { 1, }, [66646] = { 1, }, },
         },
         { -- Step 93
-            ["Qpart"] = {
+            Qpart = {
                 [65948] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -1770,18 +1770,18 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -3024.6,
             },
             ["Range"] = 2,
-            ["Fillers"] = { [65947] = { ["1"] = "1", }, [66646] = { ["1"] = "1", }, },
+            ["Fillers"] = { [65947] = { 1, }, [66646] = { 1, }, },
         },
         { -- Step 94
-            ["Qpart"] = {
+            Qpart = {
                 [65947] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [66646] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [65948] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -1827,9 +1827,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 99
-            ["Qpart"] = {
+            Qpart = {
                 [65938] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1842,9 +1842,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 100
-            ["Qpart"] = {
+            Qpart = {
                 [65938] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -1873,9 +1873,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 103
-            ["Qpart"] = {
+            Qpart = {
                 [65962] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1904,9 +1904,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 106
-            ["Qpart"] = {
+            Qpart = {
                 [70040] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -1917,9 +1917,9 @@ if (APR.Faction == "Alliance") then
             ["Gossip"] = 1,
         },
         { -- Step 107
-            ["Qpart"] = {
+            Qpart = {
                 [70040] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1930,9 +1930,9 @@ if (APR.Faction == "Alliance") then
             ["Gossip"] = 1,
         },
         { -- Step 108
-            ["Qpart"] = {
+            Qpart = {
                 [70040] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -1943,9 +1943,9 @@ if (APR.Faction == "Alliance") then
             ["Gossip"] = 1,
         },
         { -- Step 109
-            ["Qpart"] = {
+            Qpart = {
                 [70040] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Coord"] = {
@@ -1983,9 +1983,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 113
-            ["Qpart"] = {
+            Qpart = {
                 [66028] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2023,9 +2023,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 117
-            ["Qpart"] = {
+            Qpart = {
                 [66029] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2038,9 +2038,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 118
-            ["Qpart"] = {
+            Qpart = {
                 [66031] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2048,15 +2048,15 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2617.6,
             },
             ["Range"] = 2,
-            ["Fillers"] = { [66030] = { ["1"] = "1", }, },
+            ["Fillers"] = { [66030] = { 1, }, },
             ["SpellButton"] = {
                 ["66031-1"] = 372520,
             },
         },
         { -- Step 119
-            ["Qpart"] = {
+            Qpart = {
                 [66030] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2130,9 +2130,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 127
-            ["Qpart"] = {
+            Qpart = {
                 [66033] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2169,9 +2169,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 131
-            ["Qpart"] = {
+            Qpart = {
                 [72519] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2181,9 +2181,9 @@ if (APR.Faction == "Alliance") then
             ["Range"] = 2,
         },
         { -- Step 132
-            ["Qpart"] = {
+            Qpart = {
                 [66035] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2194,9 +2194,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "MOTES_CAN_BE_SEEN_ON_MINIMAP",
         },
         { -- Step 133
-            ["Qpart"] = {
+            Qpart = {
                 [66036] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2233,9 +2233,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 137
-            ["Qpart"] = {
+            Qpart = {
                 [70373] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2264,9 +2264,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 140
-            ["Qpart"] = {
+            Qpart = {
                 [66037] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2304,9 +2304,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 144
-            ["Qpart"] = {
+            Qpart = {
                 [66660] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2353,9 +2353,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 149
-            ["Qpart"] = {
+            Qpart = {
                 [66039] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2386,9 +2386,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 152
-            ["Qpart"] = {
+            Qpart = {
                 [66040] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2399,9 +2399,9 @@ if (APR.Faction == "Alliance") then
             ["Gossip"] = 1,
         },
         { -- Step 153
-            ["Qpart"] = {
+            Qpart = {
                 [66040] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -2436,9 +2436,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 157
-            ["Qpart"] = {
+            Qpart = {
                 [66221] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2475,9 +2475,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 2
-            ["Qpart"] = {
+            Qpart = {
                 [64864] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2489,9 +2489,9 @@ if (APR.Faction == "Alliance") then
             ["RaidIcon"] = 181494,
         },
         { -- Step 3
-            ["Qpart"] = {
+            Qpart = {
                 [64864] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -2503,9 +2503,9 @@ if (APR.Faction == "Alliance") then
             ["RaidIcon"] = 181680,
         },
         { -- Step 4
-            ["Qpart"] = {
+            Qpart = {
                 [64864] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -2540,9 +2540,9 @@ if (APR.Faction == "Alliance") then
             ["Range"] = 5,
         },
         { -- Step 8
-            ["Qpart"] = {
+            Qpart = {
                 [64864] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Coord"] = {
@@ -2600,9 +2600,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "BONUS_BUFF_PICK_UP_MYSTERIOUS_WAND_ON_THE_TABLE",
         },
         { -- Step 14
-            ["Qpart"] = {
+            Qpart = {
                 [64865] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2610,13 +2610,13 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -3046.0600585938,
             },
             ["Range"] = 1,
-            ["Fillers"] = { [64863] = { ["1"] = "1", }, },
+            ["Fillers"] = { [64863] = { 1, }, },
             ["ExtraLineText"] = "RUN_AWAY_WHEN_THEY_HIT_40_THEYRE_SPLIT_INTO_TWO_SMALL_ADDS",
         },
         { -- Step 15
-            ["Qpart"] = {
+            Qpart = {
                 [64865] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -2624,13 +2624,13 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2928.71875,
             },
             ["Range"] = 1,
-            ["Fillers"] = { [64863] = { ["1"] = "1", }, },
+            ["Fillers"] = { [64863] = { 1, }, },
             ["ExtraLineText"] = "RUN_AWAY_WHEN_THEY_HIT_40_THEYRE_SPLIT_INTO_TWO_SMALL_ADDS",
         },
         { -- Step 16
-            ["Qpart"] = {
+            Qpart = {
                 [64865] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -2638,13 +2638,13 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2977.982421875,
             },
             ["Range"] = 1,
-            ["Fillers"] = { [64863] = { ["1"] = "1", }, },
+            ["Fillers"] = { [64863] = { 1, }, },
             ["ExtraLineText"] = "RUN_AWAY_WHEN_THEY_HIT_40_THEYRE_SPLIT_INTO_TWO_SMALL_ADDS",
         },
         { -- Step 17
-            ["Qpart"] = {
+            Qpart = {
                 [64863] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2684,9 +2684,9 @@ if (APR.Faction == "Alliance") then
             ["Range"] = 1,
         },
         { -- Step 21
-            ["Qpart"] = {
+            Qpart = {
                 [64866] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2699,7 +2699,7 @@ if (APR.Faction == "Alliance") then
         { -- Step 22
             ["QpartPart"] = {
                 [64866] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -2715,7 +2715,7 @@ if (APR.Faction == "Alliance") then
         { -- Step 23
             ["QpartPart"] = {
                 [64866] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -2731,7 +2731,7 @@ if (APR.Faction == "Alliance") then
         { -- Step 24
             ["QpartPart"] = {
                 [64866] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -2747,7 +2747,7 @@ if (APR.Faction == "Alliance") then
         { -- Step 25
             ["QpartPart"] = {
                 [64866] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -2763,7 +2763,7 @@ if (APR.Faction == "Alliance") then
         { -- Step 26
             ["QpartPart"] = {
                 [64866] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -2795,9 +2795,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 29
-            ["Qpart"] = {
+            Qpart = {
                 [64871] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2808,9 +2808,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "MAKE_SURE_COMPLETE_THIS_STEP_BEFORE_KILLING_DRAGON",
         },
         { -- Step 30
-            ["Qpart"] = {
+            Qpart = {
                 [64871] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -2848,9 +2848,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 34
-            ["Qpart"] = {
+            Qpart = {
                 [64872] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -2865,9 +2865,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 35
-            ["Qpart"] = {
+            Qpart = {
                 [64872] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -2882,9 +2882,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 36
-            ["Qpart"] = {
+            Qpart = {
                 [65615] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2894,9 +2894,9 @@ if (APR.Faction == "Alliance") then
             ["Range"] = 1,
         },
         { -- Step 37
-            ["Qpart"] = {
+            Qpart = {
                 [64872] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2947,9 +2947,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 42
-            ["Qpart"] = {
+            Qpart = {
                 [64873] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -2963,9 +2963,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 43
-            ["Qpart"] = {
+            Qpart = {
                 [64873] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -2979,9 +2979,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 44
-            ["Qpart"] = {
+            Qpart = {
                 [64873] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -3005,9 +3005,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 46
-            ["Qpart"] = {
+            Qpart = {
                 [64873] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Coord"] = {
@@ -3021,9 +3021,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 47
-            ["Qpart"] = {
+            Qpart = {
                 [64873] = {
-                    ["5"] = "5",
+                    5,
                 },
             },
             ["Coord"] = {
@@ -3037,9 +3037,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 48
-            ["Qpart"] = {
+            Qpart = {
                 [64873] = {
-                    ["6"] = "6",
+                    6,
                 },
             },
             ["Coord"] = {
@@ -3053,9 +3053,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 49
-            ["Qpart"] = {
+            Qpart = {
                 [64873] = {
-                    ["7"] = "7",
+                    7,
                 },
             },
             ["Coord"] = {
@@ -3091,9 +3091,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 52
-            ["Qpart"] = {
+            Qpart = {
                 [65036] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3129,9 +3129,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 55
-            ["Qpart"] = {
+            Qpart = {
                 [65060] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3169,9 +3169,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 58
-            ["Qpart"] = {
+            Qpart = {
                 [65063] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3209,9 +3209,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 62
-            ["Qpart"] = {
+            Qpart = {
                 [65073] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3219,13 +3219,13 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -3055.0712890625,
             },
             ["Range"] = 30,
-            ["Fillers"] = { [65074] = { ["1"] = "1", }, },
+            ["Fillers"] = { [65074] = { 1, }, },
             ["ExtraLineText"] = "JUMP_AND_FLY",
         },
         { -- Step 63
-            ["Qpart"] = {
+            Qpart = {
                 [65074] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3274,9 +3274,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 68
-            ["Qpart"] = {
+            Qpart = {
                 [65307] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -3284,15 +3284,15 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2775.4125976562,
             },
             ["Range"] = 1,
-            ["Fillers"] = { [65307] = { ["2"] = "2", }, },
+            ["Fillers"] = { [65307] = { 2, }, },
             ["SpellButton"] = {
                 ["65307-3"] = 361469,
             },
         },
         { -- Step 69
-            ["Qpart"] = {
+            Qpart = {
                 [65307] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -3311,7 +3311,7 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2799.0112304688,
             },
             ["Range"] = 15,
-            ["Fillers"] = { [65307] = { ["1"] = "1", }, },
+            ["Fillers"] = { [65307] = { 1, }, },
             ["SpellButton"] = {
                 ["65307-1"] = 361469,
             },
@@ -3323,7 +3323,7 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2802.2661132812,
             },
             ["Range"] = 15,
-            ["Fillers"] = { [65307] = { ["1"] = "1", }, },
+            ["Fillers"] = { [65307] = { 1, }, },
             ["SpellButton"] = {
                 ["65307-1"] = 361469,
             },
@@ -3335,7 +3335,7 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2751.8137207031,
             },
             ["Range"] = 15,
-            ["Fillers"] = { [65307] = { ["1"] = "1", }, },
+            ["Fillers"] = { [65307] = { 1, }, },
             ["SpellButton"] = {
                 ["65307-1"] = 361469,
             },
@@ -3347,7 +3347,7 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2693.7661132812,
             },
             ["Range"] = 15,
-            ["Fillers"] = { [65307] = { ["1"] = "1", }, },
+            ["Fillers"] = { [65307] = { 1, }, },
             ["SpellButton"] = {
                 ["65307-1"] = 361469,
             },
@@ -3358,12 +3358,12 @@ if (APR.Faction == "Alliance") then
                 ["y"] = 7174.2407226562,
                 ["x"] = -2690.240234375,
             },
-            ["Fillers"] = { [65307] = { ["1"] = "1", }, },
+            ["Fillers"] = { [65307] = { 1, }, },
         },
         { -- Step 75
-            ["Qpart"] = {
+            Qpart = {
                 [65307] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3390,9 +3390,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 78
-            ["Qpart"] = {
+            Qpart = {
                 [66324] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -3408,7 +3408,7 @@ if (APR.Faction == "Alliance") then
         { -- Step 79
             ["QpartPart"] = {
                 [66324] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3425,7 +3425,7 @@ if (APR.Faction == "Alliance") then
         { -- Step 80
             ["QpartPart"] = {
                 [66324] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3442,7 +3442,7 @@ if (APR.Faction == "Alliance") then
         { -- Step 81
             ["QpartPart"] = {
                 [66324] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3463,14 +3463,14 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -2397.08984375,
             },
             ["Range"] = 1,
-            ["Fillers"] = { [66324] = { ["3"] = "3", }, },
+            ["Fillers"] = { [66324] = { 3, }, },
             ["ExtraLineText"] = "USE_ITEM_ON_COOLDOWN_REDUCE_TOXICITY",
             ["ExtraLineText2"] = "PICK_UP_CRYSTAL_KEY_ON_THE_GROUND",
         },
         { -- Step 83
-            ["Qpart"] = {
+            Qpart = {
                 [66324] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -3579,9 +3579,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 94
-            ["Qpart"] = {
+            Qpart = {
                 [65046] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3589,12 +3589,12 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -4049.4736328125,
             },
             ["Range"] = 2,
-            ["Fillers"] = { [65050] = { ["1"] = "1", }, [65049] = { ["1"] = "1", }, },
+            ["Fillers"] = { [65050] = { 1, }, [65049] = { 1, }, },
         },
         { -- Step 95
-            ["Qpart"] = {
+            Qpart = {
                 [65046] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -3602,12 +3602,12 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -4051.1010742188,
             },
             ["Range"] = 2,
-            ["Fillers"] = { [65050] = { ["1"] = "1", }, [65049] = { ["1"] = "1", }, },
+            ["Fillers"] = { [65050] = { 1, }, [65049] = { 1, }, },
         },
         { -- Step 96
-            ["Qpart"] = {
+            Qpart = {
                 [65046] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -3615,16 +3615,16 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -4222.53125,
             },
             ["Range"] = 2,
-            ["Fillers"] = { [65050] = { ["1"] = "1", }, [65049] = { ["1"] = "1", }, },
+            ["Fillers"] = { [65050] = { 1, }, [65049] = { 1, }, },
             ["ExtraLineText2"] = "CAST_SOAR_AND_FOLLOW_ARROW",
             ["SpellButton"] = {
                 ["65046-2"] = 369536,
             },
         },
         { -- Step 97
-            ["Qpart"] = {
+            Qpart = {
                 [65049] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3632,12 +3632,12 @@ if (APR.Faction == "Alliance") then
                 ["x"] = -4093.4162597656,
             },
             ["Range"] = 30,
-            ["Fillers"] = { [65050] = { ["1"] = "1", }, },
+            ["Fillers"] = { [65050] = { 1, }, },
         },
         { -- Step 98
-            ["Qpart"] = {
+            Qpart = {
                 [65050] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3667,9 +3667,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 101
-            ["Qpart"] = {
+            Qpart = {
                 [65052] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3726,9 +3726,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 107
-            ["Qpart"] = {
+            Qpart = {
                 [65701] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3779,9 +3779,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 112
-            ["Qpart"] = {
+            Qpart = {
                 [65087] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3811,9 +3811,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "IMMEDIATELY_START_RUNNING_AND_GET_WRATHION",
         },
         { -- Step 115
-            ["Qpart"] = {
+            Qpart = {
                 [65097] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3825,9 +3825,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText2"] = "SPAMMING_SPACE_IS_FASTER_THAN_WALKING_NORMALLY",
         },
         { -- Step 116
-            ["Qpart"] = {
+            Qpart = {
                 [65097] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -3837,9 +3837,9 @@ if (APR.Faction == "Alliance") then
             ["Range"] = 2,
         },
         { -- Step 117
-            ["Qpart"] = {
+            Qpart = {
                 [65097] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -3869,9 +3869,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 120
-            ["Qpart"] = {
+            Qpart = {
                 [65098] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3882,9 +3882,9 @@ if (APR.Faction == "Alliance") then
             ["ExtraLineText"] = "AVOID_PULLING_MOBS",
         },
         { -- Step 121
-            ["Qpart"] = {
+            Qpart = {
                 [65098] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -3916,9 +3916,9 @@ if (APR.Faction == "Alliance") then
             },
         },
         { -- Step 124
-            ["Qpart"] = {
+            Qpart = {
                 [65100] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3935,9 +3935,9 @@ if (APR.Faction == "Alliance") then
             ["Range"] = 5,
         },
         { -- Step 126
-            ["Qpart"] = {
+            Qpart = {
                 [65100] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -3947,9 +3947,9 @@ if (APR.Faction == "Alliance") then
             ["Range"] = 1,
         },
         { -- Step 127
-            ["Qpart"] = {
+            Qpart = {
                 [65100] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Coord"] = {
@@ -3960,9 +3960,9 @@ if (APR.Faction == "Alliance") then
             ["Gossip"] = 1,
         },
         { -- Step 128
-            ["Qpart"] = {
+            Qpart = {
                 [65100] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -4012,9 +4012,9 @@ if (APR.Faction == "Alliance") then
             ["Zone"] = 37,
         },
         { -- Step 133
-            ["Qpart"] = {
+            Qpart = {
                 [66513] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -4025,9 +4025,9 @@ if (APR.Faction == "Alliance") then
             ["Zone"] = 84,
         },
         { -- Step 134
-            ["Qpart"] = {
+            Qpart = {
                 [66513] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -4038,9 +4038,9 @@ if (APR.Faction == "Alliance") then
             ["Zone"] = 84,
         },
         { -- Step 135
-            ["Qpart"] = {
+            Qpart = {
                 [66513] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Coord"] = {
@@ -4051,9 +4051,9 @@ if (APR.Faction == "Alliance") then
             ["Zone"] = 84,
         },
         { -- Step 136
-            ["Qpart"] = {
+            Qpart = {
                 [66513] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
@@ -4104,9 +4104,9 @@ if (APR.Faction == "Alliance") then
             ["Zone"] = 84,
         },
         { -- Step 141
-            ["Qpart"] = {
+            Qpart = {
                 [65101] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -4117,9 +4117,9 @@ if (APR.Faction == "Alliance") then
             ["Zone"] = 84,
         },
         { -- Step 142
-            ["Qpart"] = {
+            Qpart = {
                 [65101] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -4131,9 +4131,9 @@ if (APR.Faction == "Alliance") then
             ["Zone"] = 84,
         },
         { -- Step 143
-            ["Qpart"] = {
+            Qpart = {
                 [65101] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Coord"] = {
