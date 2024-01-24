@@ -51,10 +51,10 @@ function GetTargetID(unit)
 end
 
 function CheckDenyNPC(steps)
-    if (steps and steps["DenyNPC"]) then
+    if (steps and steps.DenyNPC) then
         local npc_id, name = GetTargetID(), UnitName("target")
         if (npc_id and name) then
-            if (npc_id == steps["DenyNPC"]) then
+            if (npc_id == steps.DenyNPC) then
                 C_GossipInfo.CloseGossip()
                 C_Timer.After(0.3, APR_CloseQuest)
                 print("APR: " .. L["NOT_YET"])
