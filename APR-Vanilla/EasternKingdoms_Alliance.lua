@@ -20,7 +20,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6277.4,
             x = 347.5,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = -6227.8,
@@ -29,7 +29,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         Done = {
             24469,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             24470,
@@ -126,7 +126,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         Done = {
             24473,
         },
-    }, -- [12]
+    },
     {
         PickUp = {
             24474,
@@ -135,7 +135,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6093.9,
             x = 374.3,
         },
-    }, -- [13]
+    },
     {
         PickUp = {
             24477,
@@ -144,7 +144,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6104.4,
             x = 384.5,
         },
-    }, -- [14]
+    },
     {
         Qpart = {
             [24474] = {
@@ -161,7 +161,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6141.8,
             x = 321.8,
         },
-    }, -- [15]
+    },
     {
         Qpart = {
             [24474] = {
@@ -178,7 +178,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6143.4,
             x = 431.3,
         },
-    }, -- [16]
+    },
     {
         Qpart = {
             [24474] = {
@@ -195,7 +195,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6148.4,
             x = 594.5,
         },
-    }, -- [17]
+    },
     {
         Qpart = {
             [24477] = {
@@ -207,7 +207,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6150.5,
             x = 594.7,
         },
-    }, -- [18]
+    },
     {
         Range = 16.52,
         Waypoint = 24474,
@@ -215,7 +215,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6158.2,
             x = 391.8,
         },
-    }, -- [19]
+    },
     {
         Coord = {
             y = -6105,
@@ -223,19 +223,19 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
         Done = {
             24477,
-            24474, -- [2]
+            24474,
         },
-    },             -- [20]
+    },
     {
         PickUp = {
             24475,
-            24486, -- [2]
+            24486,
         },
         Coord = {
             y = -6105.3,
             x = 384.8,
         },
-    }, -- [21]
+    },
     {
         Qpart = {
             [24486] = {
@@ -253,7 +253,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6274,
             x = 490.5,
         },
-    }, -- [22]
+    },
     {
         Qpart = {
             [24475] = {
@@ -266,7 +266,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6299.9,
             x = 535.7,
         },
-    }, -- [23]
+    },
     {
         Range = 17.58,
         Waypoint = 24475,
@@ -274,7 +274,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6167,
             x = 386.3,
         },
-    }, -- [24]
+    },
     {
         Coord = {
             y = -6106,
@@ -282,9 +282,9 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
         Done = {
             24475,
-            24486, -- [2]
+            24486,
         },
-    },             -- [25]
+    },
     {
         PickUp = {
             24487,
@@ -293,7 +293,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6106,
             x = 386.1,
         },
-    }, -- [26]
+    },
     {
         Coord = {
             y = -6362.4,
@@ -302,17 +302,17 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         Done = {
             24487,
         },
-    }, -- [27]
+    },
     {
         PickUp = {
             182,
-            24489, -- [2]
+            24489,
         },
         Coord = {
             y = -6366.4,
             x = 565.1,
         },
-    }, -- [28]
+    },
     {
         PickUp = {
             3361,
@@ -321,7 +321,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6369.8,
             x = 574.2,
         },
-    }, -- [29]
+    },
     {
         Qpart = {
             [3361] = {
@@ -341,7 +341,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6374.3,
             x = 774.2,
         },
-    }, -- [30]
+    },
     {
         Qpart = {
             [24489] = {
@@ -358,7 +358,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6396.2,
             x = 778.7,
         },
-    }, -- [31]
+    },
     {
         Qpart = {
             [3361] = {
@@ -378,7 +378,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6503.3,
             x = 680.9,
         },
-    }, -- [32]
+    },
     {
         Qpart = {
             [24489] = {
@@ -395,7 +395,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6512.2,
             x = 688.4,
         },
-    }, -- [33]
+    },
     {
         Qpart = {
             [3361] = {
@@ -415,7 +415,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6479.5,
             x = 505.8,
         },
-    }, -- [34]
+    },
     {
         Qpart = {
             [24489] = {
@@ -432,7 +432,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6486.9,
             x = 505.8,
         },
-    }, -- [35]
+    },
     {
         Qpart = {
             [182] = {
@@ -444,7 +444,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6486.9,
             x = 505.8,
         },
-    }, -- [36]
+    },
     {
         Coord = {
             y = -6367.8,
@@ -452,10 +452,10 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         },
         Done = {
             3361,
-            182,   -- [2]
-            24489, -- [3]
+            182,
+            24489,
         },
-    },             -- [37]
+    },
     {
         PickUp = {
             218,
@@ -464,7 +464,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6362.7,
             x = 567.7,
         },
-    }, -- [38]
+    },
     {
         Waypoint = 218,
         Fillers = {
@@ -478,7 +478,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6494.9,
             x = 484.8,
         },
-    }, -- [39]
+    },
     {
         Waypoint = 218,
         Fillers = {
@@ -492,7 +492,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6535.9,
             x = 467.5,
         },
-    }, -- [40]
+    },
     {
         Waypoint = 218,
         Fillers = {
@@ -506,7 +506,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6514.2,
             x = 420.3,
         },
-    }, -- [41]
+    },
     {
         Waypoint = 218,
         Fillers = {
@@ -520,7 +520,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6468.3,
             x = 374.3,
         },
-    }, -- [42]
+    },
     {
         Qpart = {
             [218] = {
@@ -538,7 +538,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6496.4,
             x = 331.3,
         },
-    }, -- [43]
+    },
     {
         Qpart = {
             [218] = {
@@ -556,7 +556,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6501.9,
             x = 305.2,
         },
-    }, -- [44]
+    },
     {
         Qpart = {
             [218] = {
@@ -569,7 +569,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6500.2,
             x = 309,
         },
-    }, -- [45]
+    },
     {
         Range = 14.36,
         Waypoint = 218,
@@ -577,7 +577,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6529,
             x = 469.1,
         },
-    }, -- [46]
+    },
     {
         Coord = {
             y = -6363.2,
@@ -586,7 +586,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         Done = {
             218,
         },
-    }, -- [47]
+    },
     {
         PickUp = {
             24490,
@@ -595,7 +595,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6362.9,
             x = 567.6,
         },
-    }, -- [48]
+    },
     {
         Coord = {
             y = -6248.4,
@@ -604,7 +604,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         Done = {
             24490,
         },
-    }, -- [49]
+    },
     {
         PickUp = {
             24491,
@@ -613,7 +613,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6248.4,
             x = 135.6,
         },
-    }, -- [50]
+    },
     {
         Coord = {
             y = -6245.4,
@@ -622,7 +622,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         Done = {
             24491,
         },
-    }, -- [51]
+    },
     {
         PickUp = {
             24492,
@@ -631,7 +631,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6245.4,
             x = 305.8,
         },
-    }, -- [52]
+    },
     {
         Qpart = {
             [24492] = {
@@ -645,7 +645,7 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
             y = -6114.7,
             x = 379.3,
         },
-    }, -- [53]
+    },
     {
         Coord = {
             y = -6245.4,
@@ -654,10 +654,10 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
         Done = {
             24492,
         },
-    }, -- [54]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Northshire
 APR.RouteQuestStepList["A37-NorthshireHuman"] = {
@@ -667,8 +667,8 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
         PickUpDB = {
             28766,
-            28763, -- [2]
-            28767, -- [3]
+            28763,
+            28767,
             28764,
             28757,
             28765,
@@ -684,8 +684,8 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
     {
         QpartDB = {
             28766,
-            28763, -- [2]
-            28767, -- [3]
+            28763,
+            28767,
             28764,
             28757,
             28765,
@@ -703,7 +703,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             y = -8857.3,
             x = -81.6,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = -8912.8,
@@ -711,8 +711,8 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
         DoneDB = {
             28766,
-            28763, -- [2]
-            28767, -- [3]
+            28763,
+            28767,
             28764,
             28757,
             28765,
@@ -723,15 +723,15 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         Done = {
             28766,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             28774,
         },
         PickUpDB = {
             31140,
-            28769, -- [2]
-            28770, -- [3]
+            28769,
+            28770,
             28771,
             28772,
             28773,
@@ -747,8 +747,8 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
     {
         QpartDB = {
             31140,
-            28769, -- [2]
-            28770, -- [3]
+            28769,
+            28770,
             28771,
             28772,
             28773,
@@ -774,8 +774,8 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
         DoneDB = {
             31140,
-            28769, -- [2]
-            28770, -- [3]
+            28769,
+            28770,
             28771,
             28772,
             28773,
@@ -797,8 +797,8 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
         PickUpDB = {
             28780,
-            31143, -- [2]
-            28784, -- [3]
+            31143,
+            28784,
             28785,
             28786,
             28787,
@@ -826,8 +826,8 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
     {
         DoneDB = {
             28780,
-            31143, -- [2]
-            28784, -- [3]
+            31143,
+            28784,
             28785,
             28786,
             28787,
@@ -853,8 +853,8 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
         PickUpDB = {
             31144,
-            28791, -- [2]
-            28792, -- [3]
+            28791,
+            28792,
             28793,
             28794,
             28795,
@@ -869,8 +869,8 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
         PickUpDB = {
             28806,
-            28808, -- [2]
-            28809, -- [3]
+            28808,
+            28809,
             28810,
             28811,
             28812,
@@ -881,7 +881,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             y = -8820.3,
             x = -149,
         },
-    }, -- [12]
+    },
     {
         Qpart = {
             [28797] = {
@@ -890,8 +890,8 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
         QpartDB = {
             31144,
-            28791, -- [2]
-            28792, -- [3]
+            28791,
+            28792,
             28793,
             28794,
             28795,
@@ -909,7 +909,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
                 1,
             },
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [28813] = {
@@ -918,8 +918,8 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
         QpartDB = {
             28806,
-            28808, -- [2]
-            28809, -- [3]
+            28808,
+            28809,
             28810,
             28811,
             28812,
@@ -931,19 +931,19 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             y = -8754.2,
             x = -163.7,
         },
-    }, -- [13]
+    },
     {
         Coord = {
             y = -8824.5,
             x = -153.5,
         },
         Done = {
-            28797, -- [2]
+            28797,
         },
         DoneDB = {
             31144,
-            28791, -- [2]
-            28792, -- [3]
+            28791,
+            28792,
             28793,
             28794,
             28795,
@@ -951,7 +951,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             28797,
             29081,
         },
-    }, -- [14]
+    },
     {
         Coord = {
             y = -8824.5,
@@ -962,15 +962,15 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
         DoneDB = {
             28806,
-            28808, -- [2]
-            28809, -- [3]
+            28808,
+            28809,
             28810,
             28811,
             28812,
             28813,
             29082,
         },
-    }, -- [14]
+    },
     {
         PickUp = {
             28823,
@@ -981,8 +981,8 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
         PickUpDB = {
             31145,
-            28817, -- [2]
-            28819, -- [3]
+            28817,
+            28819,
             28821,
             28823,
             29083,
@@ -990,7 +990,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             28820,
             28818,
         },
-    }, -- [15]
+    },
     {
         Coord = {
             y = -8912.8,
@@ -1001,8 +1001,8 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
         DoneDB = {
             31145,
-            28817, -- [2]
-            28819, -- [3]
+            28817,
+            28819,
             28821,
             28823,
             29083,
@@ -1010,7 +1010,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             28820,
             28818,
         },
-    }, -- [16]
+    },
     {
         PickUp = {
             26389,
@@ -1019,7 +1019,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             y = -8912.8,
             x = -137.2,
         },
-    }, -- [17]
+    },
     {
         PickUp = {
             26391,
@@ -1028,7 +1028,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             y = -8922.8,
             x = -135.2,
         },
-    }, -- [18]
+    },
     {
         Qpart = {
             [26389] = {
@@ -1046,7 +1046,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             y = -9067.3,
             x = -315.9,
         },
-    }, -- [19]
+    },
     {
         Coord = {
             y = -8918.2,
@@ -1054,9 +1054,9 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         },
         Done = {
             26389,
-            26391, -- [2]
+            26391,
         },
-    },             -- [20]
+    },
     {
         PickUp = {
             26390,
@@ -1065,7 +1065,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             y = -8913.8,
             x = -136.5,
         },
-    }, -- [21]
+    },
     {
         Range = 8.83,
         Waypoint = 26390,
@@ -1073,7 +1073,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             y = -8870.3,
             x = -148.7,
         },
-    }, -- [22]
+    },
     {
         Range = 10.49,
         Waypoint = 26390,
@@ -1081,7 +1081,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             y = -8839.3,
             x = -178.2,
         },
-    }, -- [23]
+    },
     {
         Qpart = {
             [26390] = {
@@ -1093,7 +1093,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             y = -8883.3,
             x = -440,
         },
-    }, -- [24]
+    },
     {
         Coord = {
             y = -8912.8,
@@ -1102,7 +1102,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
         Done = {
             26390,
         },
-    }, -- [25]
+    },
     {
         PickUp = {
             54,
@@ -1111,7 +1111,7 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             y = -8913,
             x = -136.4,
         },
-    }, -- [26]
+    },
     {
         PickUp = {
             37112,
@@ -1120,10 +1120,10 @@ APR.RouteQuestStepList["A37-NorthshireHuman"] = {
             y = -9072.8,
             x = -39.3,
         },
-    }, -- [27]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- New Tinkertown
 APR.RouteQuestStepList["A27-NewTinkertown"] = {
@@ -1147,7 +1147,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -4986.9,
             x = 783.1,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = -4984.2,
@@ -1156,7 +1156,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             27670,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             28167,
@@ -1246,7 +1246,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5172.8,
             x = 736.5,
         },
-    }, -- [12]
+    },
     {
         Coord = {
             y = -5172.3,
@@ -1255,7 +1255,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             27635,
         },
-    }, -- [13]
+    },
     {
         PickUp = {
             27674,
@@ -1264,7 +1264,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5172.3,
             x = 692,
         },
-    }, -- [14]
+    },
     {
         Qpart = {
             [27674] = {
@@ -1277,7 +1277,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5181.3,
             x = 687.1,
         },
-    }, -- [15]
+    },
     {
         Coord = {
             y = -5200.3,
@@ -1286,7 +1286,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             27674,
         },
-    }, -- [16]
+    },
     {
         PickUp = {
             26197,
@@ -1471,7 +1471,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5130.4,
             x = 489,
         },
-    }, -- [21]
+    },
     {
         Qpart = {
             [26208] = {
@@ -1483,7 +1483,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5137.4,
             x = 494,
         },
-    }, -- [22]
+    },
     {
         Coord = {
             y = -5132.8,
@@ -1492,7 +1492,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             26208,
         },
-    }, -- [23]
+    },
     {
         PickUp = {
             26566,
@@ -1501,7 +1501,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5132.8,
             x = 491.6,
         },
-    }, -- [24]
+    },
     {
         Coord = {
             y = -5072.9,
@@ -1510,7 +1510,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             26566,
         },
-    }, -- [25]
+    },
     {
         PickUp = {
             26222,
@@ -1519,7 +1519,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5072.9,
             x = 456.8,
         },
-    }, -- [26]
+    },
     {
         Qpart = {
             [26222] = {
@@ -1531,7 +1531,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5120.8,
             x = 481.2,
         },
-    }, -- [27]
+    },
     {
         Coord = {
             y = -5072.7,
@@ -1540,7 +1540,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             26222,
         },
-    }, -- [28]
+    },
     {
         PickUp = {
             26205,
@@ -1549,7 +1549,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5072.7,
             x = 456.2,
         },
-    }, -- [29]
+    },
     {
         PickUp = {
             26264,
@@ -1558,7 +1558,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5054.7,
             x = 480.3,
         },
-    }, -- [30]
+    },
     {
         PickUp = {
             26265,
@@ -1567,7 +1567,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5222.7,
             x = 499.7,
         },
-    }, -- [31]
+    },
     {
         Qpart = {
             [26264] = {
@@ -1585,7 +1585,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5337.3,
             x = 498.3,
         },
-    }, -- [32]
+    },
     {
         Coord = {
             y = -5222.4,
@@ -1594,7 +1594,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             26265,
         },
-    }, -- [33]
+    },
     {
         Coord = {
             y = -5072.4,
@@ -1603,7 +1603,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             26205,
         },
-    }, -- [34]
+    },
     {
         Coord = {
             y = -5054.4,
@@ -1612,7 +1612,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             26264,
         },
-    }, -- [35]
+    },
     {
         PickUp = {
             26316,
@@ -1621,7 +1621,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5139.8,
             x = 496.2,
         },
-    }, -- [36]
+    },
     {
         Coord = {
             y = -5530.8,
@@ -1630,17 +1630,17 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             26316,
         },
-    }, -- [37]
+    },
     {
         PickUp = {
             26285,
-            26284, -- [2]
+            26284,
         },
         Coord = {
             y = -5530.8,
             x = 516.9,
         },
-    }, -- [38]
+    },
     {
         Qpart = {
             [26285] = {
@@ -1655,7 +1655,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5592.5,
             x = 473.2,
         },
-    }, -- [39]
+    },
     {
         Coord = {
             y = -5531,
@@ -1663,9 +1663,9 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         },
         Done = {
             26285,
-            26284, -- [2]
+            26284,
         },
-    },             -- [40]
+    },
     {
         PickUp = {
             26318,
@@ -1674,7 +1674,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5531,
             x = 517,
         },
-    }, -- [41]
+    },
     {
         Qpart = {
             [26318] = {
@@ -1687,7 +1687,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5523,
             x = 708.7,
         },
-    }, -- [42]
+    },
     {
         Coord = {
             y = -5530.9,
@@ -1696,7 +1696,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             26318,
         },
-    }, -- [43]
+    },
     {
         PickUp = {
             26329,
@@ -1705,7 +1705,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5531.2,
             x = 516.5,
         },
-    }, -- [44]
+    },
     {
         Coord = {
             y = -5130.5,
@@ -1714,7 +1714,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             26329,
         },
-    }, -- [45]
+    },
     {
         PickUp = {
             26331,
@@ -1723,7 +1723,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5130.5,
             x = 488.5,
         },
-    }, -- [46]
+    },
     {
         PickUp = {
             26333,
@@ -1732,7 +1732,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5141.9,
             x = 499.1,
         },
-    }, -- [47]
+    },
     {
         Qpart = {
             [26333] = {
@@ -1750,7 +1750,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5004.2,
             x = 162.9,
         },
-    }, -- [48]
+    },
     {
         Coord = {
             y = -5136.9,
@@ -1758,9 +1758,9 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         },
         Done = {
             26331,
-            26333, -- [2]
+            26333,
         },
-    },             -- [49]
+    },
     {
         PickUp = {
             26339,
@@ -1769,7 +1769,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5140.7,
             x = 502.8,
         },
-    }, -- [50]
+    },
     {
         Coord = {
             y = -5379,
@@ -1778,7 +1778,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             26339,
         },
-    }, -- [51]
+    },
     {
         PickUp = {
             26342,
@@ -1787,7 +1787,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5379,
             x = 305.1,
         },
-    }, -- [52]
+    },
     {
         Qpart = {
             [26342] = {
@@ -1802,7 +1802,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5317.2,
             x = 188.5,
         },
-    }, -- [53]
+    },
     {
         Coord = {
             y = -5378.9,
@@ -1811,7 +1811,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             26342,
         },
-    }, -- [54]
+    },
     {
         PickUp = {
             26364,
@@ -1820,7 +1820,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5378.9,
             x = 304.8,
         },
-    }, -- [55]
+    },
     {
         Qpart = {
             [26364] = {
@@ -1837,7 +1837,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
             y = -5313.7,
             x = 150.6,
         },
-    }, -- [56]
+    },
     {
         Coord = {
             y = -5379,
@@ -1846,7 +1846,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
         Done = {
             26364,
         },
-    }, -- [57]
+    },
     {
         PickUp = {
             26373,
@@ -1885,7 +1885,7 @@ APR.RouteQuestStepList["A27-NewTinkertown"] = {
     },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Gilneas
 APR.RouteQuestStepList["A179-Gilneas"] = {
@@ -1906,7 +1906,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1405,
             x = 1447,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             14091,
@@ -1915,7 +1915,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1405,
             x = 1447,
         },
-    }, -- [3]
+    },
     {
         Done = {
             14091,
@@ -1928,7 +1928,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
     {
         PickUp = {
             14093,
-            14098, -- [2]
+            14098,
         },
         Coord = {
             y = -1437.6,
@@ -1974,7 +1974,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
     {
         Done = {
             14093,
-            14098, -- [2]
+            14098,
         },
         Coord = {
             y = -1438.3,
@@ -2007,7 +2007,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1632.6,
             x = 1304.4,
         },
-    }, -- [12]
+    },
     {
         Done = {
             14265,
@@ -2016,7 +2016,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1687.8,
             x = 1333,
         },
-    }, -- [13]
+    },
     {
         PickUp = {
             14286,
@@ -2025,7 +2025,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1687.8,
             x = 1332.4,
         },
-    }, -- [14]
+    },
     {
         Done = {
             14286,
@@ -2034,17 +2034,17 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1766.1,
             x = 1348.5,
         },
-    }, -- [15]
+    },
     {
         PickUp = {
             24930,
-            14157, -- [2]
+            14157,
         },
         Coord = {
             y = -1766,
             x = 1350.2,
         },
-    }, -- [16]
+    },
     {
         Waypoint = 14157,
         Fillers = {
@@ -2057,7 +2057,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1731.1,
             x = 1401.4,
         },
-    }, -- [17]
+    },
     {
         Waypoint = 14157,
         Fillers = {
@@ -2070,7 +2070,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1740.4,
             x = 1419.9,
         },
-    }, -- [18]
+    },
     {
         Done = {
             14157,
@@ -2079,7 +2079,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1754.1,
             x = 1418.8,
         },
-    }, -- [19]
+    },
     {
         PickUp = {
             28850,
@@ -2088,7 +2088,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1754.1,
             x = 1418.8,
         },
-    }, -- [20]
+    },
     {
         Waypoint = 28850,
         ExtraLineText = "UPSTAIRS",
@@ -2097,7 +2097,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1716.5,
             x = 1457,
         },
-    }, -- [21]
+    },
     {
         Coord = {
             y = -1678.6,
@@ -2106,7 +2106,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             28850,
         },
-    }, -- [22]
+    },
     {
         PickUp = {
             14154,
@@ -2115,7 +2115,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1679.4,
             x = 1442.5,
         },
-    }, -- [23]
+    },
     {
         Qpart = {
             [14154] = {
@@ -2127,7 +2127,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1679.4,
             x = 1442.5,
         },
-    }, -- [24]
+    },
     {
         Coord = {
             y = -1679.4,
@@ -2136,7 +2136,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14154,
         },
-    }, -- [25]
+    },
     {
         PickUp = {
             26129,
@@ -2145,7 +2145,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1679.4,
             x = 1442.7,
         },
-    }, -- [26]
+    },
     {
         Qpart = {
             [24930] = {
@@ -2157,7 +2157,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1717.6,
             x = 1405.5,
         },
-    }, -- [27]
+    },
     {
         Coord = {
             y = -1766,
@@ -2165,9 +2165,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
         Done = {
             26129,
-            24930, -- [2]
+            24930,
         },
-    },             -- [28]
+    },
     {
         PickUp = {
             14159,
@@ -2176,7 +2176,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1766.8,
             x = 1349,
         },
-    }, -- [29]
+    },
     {
         Range = 8.39,
         Waypoint = 14159,
@@ -2184,7 +2184,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1790.3,
             x = 1438.9,
         },
-    }, -- [30]
+    },
     {
         Range = 4.01,
         Waypoint = 14159,
@@ -2192,7 +2192,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1788.5,
             x = 1427.3,
         },
-    }, -- [31]
+    },
     {
         Coord = {
             y = -1812.8,
@@ -2201,7 +2201,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14159,
         },
-    }, -- [32]
+    },
     {
         PickUp = {
             14204,
@@ -2210,7 +2210,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1789,
             x = 1427.5,
         },
-    }, -- [33]
+    },
     {
         Qpart = {
             [14204] = {
@@ -2225,7 +2225,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1786.4,
             x = 1481.2,
         },
-    }, -- [34]
+    },
     {
         Coord = {
             y = -1789.3,
@@ -2234,7 +2234,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14204,
         },
-    }, -- [35]
+    },
     {
         PickUp = {
             14214,
@@ -2243,7 +2243,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1789.3,
             x = 1427.8,
         },
-    }, -- [36]
+    },
     {
         Range = 4.25,
         Waypoint = 14214,
@@ -2251,7 +2251,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1791.4,
             x = 1439.4,
         },
-    }, -- [37]
+    },
     {
         Range = 7.48,
         Waypoint = 14214,
@@ -2259,7 +2259,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1800,
             x = 1432.3,
         },
-    }, -- [38]
+    },
     {
         Coord = {
             y = -1802.9,
@@ -2268,7 +2268,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14214,
         },
-    }, -- [39]
+    },
     {
         PickUp = {
             14293,
@@ -2277,7 +2277,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1802.4,
             x = 1403.8,
         },
-    }, -- [40]
+    },
     {
         Qpart = {
             [14293] = {
@@ -2289,7 +2289,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1675.5,
             x = 1346.7,
         },
-    }, -- [41]
+    },
     {
         Coord = {
             y = -1785,
@@ -2298,7 +2298,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14293,
         },
-    }, -- [42]
+    },
     {
         PickUp = {
             14294,
@@ -2307,7 +2307,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1784,
             x = 1437.7,
         },
-    }, -- [43]
+    },
     {
         Coord = {
             y = -1739.1,
@@ -2316,7 +2316,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14294,
         },
-    }, -- [44]
+    },
     {
         PickUp = {
             14212,
@@ -2325,7 +2325,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1735.9,
             x = 1656.7,
         },
-    }, -- [45]
+    },
     {
         Qpart = {
             [14212] = {
@@ -2337,7 +2337,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1737.5,
             x = 1655,
         },
-    }, -- [46]
+    },
     {
         Coord = {
             y = -1539.4,
@@ -2346,7 +2346,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14212,
         },
-    }, -- [47]
+    },
     {
         PickUp = {
             14218,
@@ -2355,7 +2355,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1539.4,
             x = 1573.2,
         },
-    }, -- [48]
+    },
     {
         Qpart = {
             [14218] = {
@@ -2367,7 +2367,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1529,
             x = 1588.5,
         },
-    }, -- [49]
+    },
     {
         Coord = {
             y = -1540.4,
@@ -2376,7 +2376,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14218,
         },
-    }, -- [50]
+    },
     {
         PickUp = {
             14221,
@@ -2385,7 +2385,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1539.9,
             x = 1573.4,
         },
-    }, -- [51]
+    },
     {
         Coord = {
             y = -1619.8,
@@ -2394,7 +2394,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14221,
         },
-    }, -- [52]
+    },
     {
         PickUp = {
             14222,
@@ -2403,7 +2403,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1619.1,
             x = 1498.7,
         },
-    }, -- [53]
+    },
     {
         Qpart = {
             [14222] = {
@@ -2415,7 +2415,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1568.1,
             x = 1548.8,
         },
-    }, -- [54]
+    },
     {
         Coord = {
             y = -1619.3,
@@ -2424,7 +2424,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14222,
         },
-    }, -- [55]
+    },
     {
         PickUp = {
             14375,
@@ -2442,7 +2442,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1818.1,
             x = 2295.1,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             14313,
@@ -2451,7 +2451,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1839.1,
             x = 2291.8,
         },
-    }, -- [3]
+    },
     {
         Range = 5.47,
         Waypoint = 14313,
@@ -2530,17 +2530,17 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14336,
         },
-    }, -- [12]
+    },
     {
         PickUp = {
             14347,
-            14348, -- [2]
+            14348,
         },
         Coord = {
             y = -1927.5,
             x = 2317.9,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [14347] = {
@@ -2558,7 +2558,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1991.4,
             x = 2332.1,
         },
-    }, -- [14]
+    },
     {
         Coord = {
             y = -1926.8,
@@ -2566,9 +2566,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
         Done = {
             14347,
-            14348, -- [2]
+            14348,
         },
-    },             -- [15]
+    },
     {
         PickUp = {
             14366,
@@ -2577,7 +2577,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1926.1,
             x = 2322.6,
         },
-    }, -- [16]
+    },
     {
         Coord = {
             y = -1862,
@@ -2586,7 +2586,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14366,
         },
-    }, -- [17]
+    },
     {
         PickUp = {
             14367,
@@ -2595,7 +2595,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1862,
             x = 2263.6,
         },
-    }, -- [18]
+    },
     {
         Range = 7.65,
         Waypoint = 14367,
@@ -2603,7 +2603,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1882,
             x = 2545.1,
         },
-    }, -- [19]
+    },
     {
         Range = 5.96,
         Waypoint = 14367,
@@ -2611,7 +2611,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1873.5,
             x = 2550.6,
         },
-    }, -- [20]
+    },
     {
         Coord = {
             y = -1874,
@@ -2620,18 +2620,18 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14367,
         },
-    }, -- [21]
+    },
     {
         PickUp = {
             14382,
-            14369, -- [2]
-            14368, -- [3]
+            14369,
+            14368,
         },
         Coord = {
             y = -1874.5,
             x = 2530.3,
         },
-    }, -- [22]
+    },
     {
         Qpart = {
             [14368] = {
@@ -2648,7 +2648,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1933.5,
             x = 2542,
         },
-    }, -- [23]
+    },
     {
         Qpart = {
             [14368] = {
@@ -2665,7 +2665,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1987,
             x = 2509.5,
         },
-    }, -- [24]
+    },
     {
         Qpart = {
             [14368] = {
@@ -2682,7 +2682,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1930.5,
             x = 2562.6,
         },
-    }, -- [25]
+    },
     {
         Qpart = {
             [14382] = {
@@ -2699,7 +2699,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2100.7,
             x = 2691.4,
         },
-    }, -- [26]
+    },
     {
         Qpart = {
             [14382] = {
@@ -2716,7 +2716,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2199.7,
             x = 2592.9,
         },
-    }, -- [27]
+    },
     {
         Range = 5.83,
         Waypoint = 14382,
@@ -2724,7 +2724,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1880.5,
             x = 2546.4,
         },
-    }, -- [28]
+    },
     {
         Coord = {
             y = -1874.8,
@@ -2732,10 +2732,10 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
         Done = {
             14382,
-            14369, -- [2]
-            14368, -- [3]
+            14369,
+            14368,
         },
-    },             -- [29]
+    },
     {
         PickUp = {
             14386,
@@ -2744,7 +2744,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1874,
             x = 2529.8,
         },
-    }, -- [30]
+    },
     {
         Qpart = {
             [14386] = {
@@ -2759,7 +2759,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1950.8,
             x = 2700,
         },
-    }, -- [31]
+    },
     {
         Range = 5.59,
         Waypoint = 14386,
@@ -2767,7 +2767,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1880,
             x = 2546.3,
         },
-    }, -- [32]
+    },
     {
         Coord = {
             y = -1874.1,
@@ -2776,7 +2776,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14386,
         },
-    }, -- [33]
+    },
     {
         PickUp = {
             14396,
@@ -2785,7 +2785,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1873.6,
             x = 2530.3,
         },
-    }, -- [34]
+    },
     {
         Coord = {
             y = -1897.1,
@@ -2794,7 +2794,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14396,
         },
-    }, -- [35]
+    },
     {
         PickUp = {
             14395,
@@ -2803,7 +2803,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1897.1,
             x = 2526.5,
         },
-    }, -- [36]
+    },
     {
         Qpart = {
             [14395] = {
@@ -2815,7 +2815,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1966.8,
             x = 2568.6,
         },
-    }, -- [37]
+    },
     {
         Coord = {
             y = -1897.5,
@@ -2824,7 +2824,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14395,
         },
-    }, -- [38]
+    },
     {
         PickUp = {
             14397,
@@ -2833,7 +2833,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1897.1,
             x = 2527.1,
         },
-    }, -- [39]
+    },
     {
         Coord = {
             y = -1901,
@@ -2842,18 +2842,18 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14397,
         },
-    }, -- [40]
+    },
     {
         PickUp = {
             14406,
-            14398, -- [2]
-            14403, -- [3]
+            14398,
+            14403,
         },
         Coord = {
             y = -1901,
             x = 2256.1,
         },
-    }, -- [41]
+    },
     {
         Coord = {
             y = -2059.5,
@@ -2862,7 +2862,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14406,
         },
-    }, -- [42]
+    },
     {
         PickUp = {
             14416,
@@ -2871,7 +2871,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2059.5,
             x = 2254.5,
         },
-    }, -- [43]
+    },
     {
         Qpart = {
             [14416] = {
@@ -2883,7 +2883,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2171.4,
             x = 2182.3,
         },
-    }, -- [44]
+    },
     {
         Coord = {
             y = -2059.5,
@@ -2892,7 +2892,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14416,
         },
-    }, -- [45]
+    },
     {
         Coord = {
             y = -2299.4,
@@ -2901,17 +2901,17 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14403,
         },
-    }, -- [46]
+    },
     {
         PickUp = {
             14404,
-            14412, -- [2]
+            14412,
         },
         Coord = {
             y = -2299.4,
             x = 2279.1,
         },
-    }, -- [47]
+    },
     {
         Qpart = {
             [14404] = {
@@ -2928,7 +2928,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2336,
             x = 2259,
         },
-    }, -- [48]
+    },
     {
         Qpart = {
             [14404] = {
@@ -2945,7 +2945,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2361.2,
             x = 2262,
         },
-    }, -- [49]
+    },
     {
         Qpart = {
             [14404] = {
@@ -2962,7 +2962,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2347.5,
             x = 2303.3,
         },
-    }, -- [50]
+    },
     {
         Qpart = {
             [14412] = {
@@ -2974,7 +2974,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2310.2,
             x = 2281.3,
         },
-    }, -- [51]
+    },
     {
         Coord = {
             y = -2299.7,
@@ -2982,9 +2982,9 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
         Done = {
             14412,
-            14404, -- [2]
+            14404,
         },
-    },             -- [52]
+    },
     {
         Coord = {
             y = -2117,
@@ -2993,7 +2993,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14398,
         },
-    }, -- [53]
+    },
     {
         PickUp = {
             14399,
@@ -3002,7 +3002,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2116.2,
             x = 2417.1,
         },
-    }, -- [54]
+    },
     {
         Qpart = {
             [14399] = {
@@ -3014,7 +3014,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2155.7,
             x = 2372.4,
         },
-    }, -- [55]
+    },
     {
         Coord = {
             y = -2116.5,
@@ -3023,7 +3023,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14399,
         },
-    }, -- [56]
+    },
     {
         PickUp = {
             14400,
@@ -3032,7 +3032,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2116.5,
             x = 2417,
         },
-    }, -- [57]
+    },
     {
         Qpart = {
             [14400] = {
@@ -3044,7 +3044,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2116.5,
             x = 2432.1,
         },
-    }, -- [58]
+    },
     {
         Coord = {
             y = -2116.7,
@@ -3053,7 +3053,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14400,
         },
-    }, -- [59]
+    },
     {
         PickUp = {
             14401,
@@ -3062,7 +3062,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2116.7,
             x = 2416.3,
         },
-    }, -- [60]
+    },
     {
         Qpart = {
             [14401] = {
@@ -3074,7 +3074,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2102.5,
             x = 2334,
         },
-    }, -- [61]
+    },
     {
         Coord = {
             y = -2116.5,
@@ -3083,7 +3083,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14401,
         },
-    }, -- [62]
+    },
     {
         PickUp = {
             14402,
@@ -3092,7 +3092,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2116.5,
             x = 2417.1,
         },
-    }, -- [63]
+    },
     {
         Coord = {
             y = -1900.8,
@@ -3101,7 +3101,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14402,
         },
-    }, -- [64]
+    },
     {
         Coord = {
             y = -1583,
@@ -3119,7 +3119,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1583,
             x = 2554.6,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = -1517.1,
@@ -3128,7 +3128,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             14466,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             24438,
@@ -3149,7 +3149,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1669.4,
             x = 2531.6,
         },
-    }, -- [66]
+    },
     {
         Coord = {
             y = -2221.4,
@@ -3158,7 +3158,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             24438,
         },
-    }, -- [67]
+    },
     {
         PickUp = {
             24468,
@@ -3167,7 +3167,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2221.2,
             x = 1810.4,
         },
-    }, -- [68]
+    },
     {
         Qpart = {
             [24468] = {
@@ -3179,7 +3179,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2030.6,
             x = 1775.5,
         },
-    }, -- [69]
+    },
     {
         Done = {
             24468,
@@ -3188,7 +3188,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2221.5,
             x = 1810.7,
         },
-    }, -- [70]
+    },
     {
         PickUp = {
             24472,
@@ -3197,7 +3197,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2221.2,
             x = 1810.5,
         },
-    }, -- [71]
+    },
     {
         Qpart = {
             [24472] = {
@@ -3214,7 +3214,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2282,
             x = 1969,
         },
-    }, -- [72]
+    },
     {
         Qpart = {
             [24472] = {
@@ -3226,7 +3226,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2337.4,
             x = 1925.3,
         },
-    }, -- [73]
+    },
     {
         Done = {
             24472,
@@ -3235,7 +3235,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2221.5,
             x = 1810.5,
         },
-    }, -- [74]
+    },
     {
         PickUp = {
             24483,
@@ -3244,7 +3244,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2220.4,
             x = 1810.4,
         },
-    }, -- [75]
+    },
     {
         Done = {
             24483,
@@ -3253,7 +3253,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2457,
             x = 1556.7,
         },
-    }, -- [76]
+    },
     {
         PickUp = {
             24484,
@@ -3262,7 +3262,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2457,
             x = 1556.7,
         },
-    }, -- [77]
+    },
     {
         PickUp = {
             24495,
@@ -3271,7 +3271,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2459.5,
             x = 1545.2,
         },
-    }, -- [78]
+    },
     {
         Qpart = {
             [24484] = {
@@ -3286,17 +3286,17 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2433.5,
             x = 1365.8,
         },
-    }, -- [79]
+    },
     {
         Done = {
             24484,
-            24495, -- [2]
+            24495,
         },
         Coord = {
             y = -2456.7,
             x = 1553.4,
         },
-    }, -- [80]
+    },
     {
         PickUp = {
             24501,
@@ -3305,7 +3305,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2456.9,
             x = 1557,
         },
-    }, -- [81]
+    },
     {
         Qpart = {
             [24501] = {
@@ -3317,7 +3317,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2248,
             x = 1291.9,
         },
-    }, -- [82]
+    },
     {
         Done = {
             24501,
@@ -3326,7 +3326,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2457,
             x = 1557,
         },
-    }, -- [83]
+    },
     {
         PickUp = {
             24578,
@@ -3335,7 +3335,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2459.2,
             x = 1545.5,
         },
-    }, -- [84]
+    },
     {
         Done = {
             24578,
@@ -3344,7 +3344,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2272.7,
             x = 1447.2,
         },
-    }, -- [85]
+    },
     {
         PickUp = {
             24616,
@@ -3353,7 +3353,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2272.7,
             x = 1447.2,
         },
-    }, -- [86]
+    },
     {
         Qpart = {
             [24616] = {
@@ -3368,7 +3368,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2237.5,
             x = 1433.5,
         },
-    }, -- [87]
+    },
     {
         Done = {
             24616,
@@ -3377,7 +3377,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2272,
             x = 1447.5,
         },
-    }, -- [88]
+    },
     {
         PickUp = {
             24617,
@@ -3386,7 +3386,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2272,
             x = 1447.5,
         },
-    }, -- [89]
+    },
     {
         Done = {
             24617,
@@ -3395,7 +3395,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2069.7,
             x = 1279.3,
         },
-    }, -- [90]
+    },
     {
         PickUp = {
             24627,
@@ -3404,7 +3404,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2069.7,
             x = 1279.3,
         },
-    }, -- [91]
+    },
     {
         PickUp = {
             24628,
@@ -3413,7 +3413,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2064.2,
             x = 1261,
         },
-    }, -- [92]
+    },
     {
         Qpart = {
             [24627] = {
@@ -3428,17 +3428,17 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2096.5,
             x = 1512,
         },
-    }, -- [93]
+    },
     {
         Done = {
             24627,
-            24628, -- [2]
+            24628,
         },
         Coord = {
             y = -2067.9,
             x = 1270,
         },
-    }, -- [94]
+    },
     {
         PickUp = {
             24646,
@@ -3447,7 +3447,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2068,
             x = 1277.9,
         },
-    }, -- [95]
+    },
     {
         Qpart = {
             [24646] = {
@@ -3462,7 +3462,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2119,
             x = 1630.5,
         },
-    }, -- [96]
+    },
     {
         Done = {
             24646,
@@ -3471,7 +3471,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2069.2,
             x = 1279,
         },
-    }, -- [97]
+    },
     {
         PickUp = {
             24593,
@@ -3480,7 +3480,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2069.2,
             x = 1279,
         },
-    }, -- [98]
+    },
     {
         Qpart = {
             [24593] = {
@@ -3494,7 +3494,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2068.2,
             x = 1266.5,
         },
-    }, -- [99]
+    },
     {
         Done = {
             24593,
@@ -3503,7 +3503,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2069.2,
             x = 1277.4,
         },
-    }, -- [100]
+    },
     {
         PickUp = {
             24673,
@@ -3512,7 +3512,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2069.2,
             x = 1278,
         },
-    }, -- [101]
+    },
     {
         Done = {
             24673,
@@ -3521,7 +3521,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2457.7,
             x = 1557.2,
         },
-    }, -- [102]
+    },
     {
         PickUp = {
             24672,
@@ -3530,7 +3530,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2457.7,
             x = 1557.2,
         },
-    }, -- [103]
+    },
     {
         Done = {
             24672,
@@ -3539,7 +3539,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2212.4,
             x = 1152,
         },
-    }, -- [104]
+    },
     {
         PickUp = {
             24592,
@@ -3548,7 +3548,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2212.4,
             x = 1152.2,
         },
-    }, -- [105]
+    },
     {
         Waypoint = 24592,
         Range = 19.72,
@@ -3556,7 +3556,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2039,
             x = 946.1,
         },
-    }, -- [106]
+    },
     {
         Qpart = {
             [24592] = {
@@ -3568,7 +3568,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1921,
             x = 984.6,
         },
-    }, -- [107]
+    },
     {
         Qpart = {
             [24592] = {
@@ -3583,7 +3583,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2097,
             x = 774.6,
         },
-    }, -- [108]
+    },
     {
         Done = {
             24592,
@@ -3592,7 +3592,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2042,
             x = 978.7,
         },
-    }, -- [109]
+    },
     {
         PickUp = {
             24677,
@@ -3601,7 +3601,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2042.8,
             x = 978.1,
         },
-    }, -- [110]
+    },
     {
         Done = {
             24677,
@@ -3611,18 +3611,18 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -2041.5,
             x = 977.2,
         },
-    }, -- [111]
+    },
     {
         PickUp = {
             24575,
-            24675, -- [2]
-            24674, -- [3]
+            24675,
+            24674,
         },
         Coord = {
             y = -1368.8,
             x = 1213.4,
         },
-    }, -- [112]
+    },
     {
         Qpart = {
             [24675] = {
@@ -3634,7 +3634,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1436.8,
             x = 1019.2,
         },
-    }, -- [113]
+    },
     {
         Range = 7.05,
         Waypoint = 24674,
@@ -3642,7 +3642,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1188,
             x = 1035.5,
         },
-    }, -- [114]
+    },
     {
         Waypoint = 24674,
         Fillers = {
@@ -3655,7 +3655,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1059,
             x = 986,
         },
-    }, -- [115]
+    },
     {
         Qpart = {
             [24674] = {
@@ -3672,7 +3672,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1210.9,
             x = 910.4,
         },
-    }, -- [116]
+    },
     {
         Qpart = {
             [24575] = {
@@ -3684,7 +3684,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1199.1,
             x = 909.4,
         },
-    }, -- [117]
+    },
     {
         Coord = {
             y = -1369.9,
@@ -3692,10 +3692,10 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         },
         Done = {
             24575,
-            24675, -- [2]
-            24674, -- [3]
+            24675,
+            24674,
         },
-    },             -- [118]
+    },
     {
         PickUp = {
             24676,
@@ -3704,7 +3704,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1368.4,
             x = 1211,
         },
-    }, -- [119]
+    },
     {
         Qpart = {
             [24676] = {
@@ -3718,7 +3718,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1152,
             x = 1139.5,
         },
-    }, -- [120]
+    },
     {
         Done = {
             24676,
@@ -3727,7 +3727,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1368.8,
             x = 1210.5,
         },
-    }, -- [121]
+    },
     {
         PickUp = {
             24904,
@@ -3736,7 +3736,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1368.8,
             x = 1210.5,
         },
-    }, -- [122]
+    },
     {
         Qpart = {
             [24904] = {
@@ -3756,7 +3756,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1799.5,
             x = 1537.8,
         },
-    }, -- [2]
+    },
     {
         Range = 17.6,
         Waypoint = 24904,
@@ -3764,7 +3764,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1738.5,
             x = 1635,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [24904] = {
@@ -3857,7 +3857,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1667,
             x = 1664.7,
         },
-    }, -- [12]
+    },
     {
         Coord = {
             y = -1645,
@@ -3866,7 +3866,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             24920,
         },
-    }, -- [13]
+    },
     {
         PickUp = {
             24678,
@@ -3875,7 +3875,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1645,
             x = 1646.8,
         },
-    }, -- [14]
+    },
     {
         Range = 5.23,
         Waypoint = 24678,
@@ -3883,7 +3883,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1646.1,
             x = 1631,
         },
-    }, -- [15]
+    },
     {
         Range = 4.39,
         Waypoint = 24678,
@@ -3891,7 +3891,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1641.6,
             x = 1636.7,
         },
-    }, -- [16]
+    },
     {
         Coord = {
             y = -1727.5,
@@ -3909,7 +3909,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1727.5,
             x = 1872.4,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [24602] = {
@@ -3930,7 +3930,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             24602,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             24679,
@@ -3939,7 +3939,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1726.8,
             x = 1872.9,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [24679] = {
@@ -4035,7 +4035,7 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
             y = -1289.6,
             x = 2126.6,
         },
-    }, -- [12]
+    },
     {
         Coord = {
             y = -1299.3,
@@ -4044,10 +4044,10 @@ APR.RouteQuestStepList["A179-Gilneas"] = {
         Done = {
             26706,
         },
-    }, -- [13]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Plaguelands: The Scarlet Enclave
 APR.RouteQuestStepList["A23-ScarletEnclave"] = {
@@ -4067,7 +4067,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2413.1,
             x = -5618.9,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = 2487.5,
@@ -4076,7 +4076,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12593,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             12619,
@@ -4175,7 +4175,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2461.1,
             x = -5592.2,
         },
-    }, -- [12]
+    },
     {
         Coord = {
             y = 2484.4,
@@ -4184,7 +4184,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12848,
         },
-    }, -- [13]
+    },
     {
         PickUp = {
             12636,
@@ -4193,7 +4193,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2476.6,
             x = -5561.2,
         },
-    }, -- [14]
+    },
     {
         Coord = {
             y = 2346.3,
@@ -4202,7 +4202,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12636,
         },
-    }, -- [15]
+    },
     {
         PickUp = {
             12641,
@@ -4211,7 +4211,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2346.6,
             x = -5670.8,
         },
-    }, -- [16]
+    },
     {
         Qpart = {
             [12641] = {
@@ -4226,7 +4226,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2322.1,
             x = -5661.3,
         },
-    }, -- [17]
+    },
     {
         Coord = {
             y = 2345.3,
@@ -4235,7 +4235,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12641,
         },
-    }, -- [18]
+    },
     {
         PickUp = {
             12657,
@@ -4244,7 +4244,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2346.1,
             x = -5670.7,
         },
-    }, -- [19]
+    },
     {
         Range = 3.97,
         Waypoint = 12657,
@@ -4252,7 +4252,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2387.6,
             x = -5642,
         },
-    }, -- [20]
+    },
     {
         Coord = {
             y = 2460.3,
@@ -4261,7 +4261,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12657,
         },
-    }, -- [21]
+    },
     {
         PickUp = {
             12850,
@@ -4270,7 +4270,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2460.3,
             x = -5593.5,
         },
-    }, -- [22]
+    },
     {
         Waypoint = 12850,
         Range = 7.62,
@@ -4278,7 +4278,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2386.8,
             x = -5632.3,
         },
-    }, -- [23]
+    },
     {
         Done = {
             12850,
@@ -4287,7 +4287,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2359.1,
             x = -5663.8,
         },
-    }, -- [24]
+    },
     {
         PickUp = {
             12670,
@@ -4296,7 +4296,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2354.3,
             x = -5660.2,
         },
-    }, -- [25]
+    },
     {
         Done = {
             12670,
@@ -4305,7 +4305,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2326.8,
             x = -5658.9,
         },
-    }, -- [26]
+    },
     {
         PickUp = {
             12678,
@@ -4314,7 +4314,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2372.5,
             x = -5700.9,
         },
-    }, -- [27]
+    },
     {
         PickUp = {
             12680,
@@ -4323,7 +4323,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2350.6,
             x = -5697.8,
         },
-    }, -- [28]
+    },
     {
         PickUp = {
             12679,
@@ -4332,7 +4332,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2312.6,
             x = -5731.9,
         },
-    }, -- [29]
+    },
     {
         PickUp = {
             12733,
@@ -4341,7 +4341,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2361.5,
             x = -5774.5,
         },
-    }, -- [30]
+    },
     {
         Qpart = {
             [12733] = {
@@ -4354,7 +4354,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2392.9,
             x = -5742.8,
         },
-    }, -- [31]
+    },
     {
         Range = 26.24,
         Waypoint = 12678,
@@ -4362,7 +4362,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2284.1,
             x = -5662.3,
         },
-    }, -- [32]
+    },
     {
         Qpart = {
             [12679] = {
@@ -4380,7 +4380,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2012.3,
             x = -5821.7,
         },
-    }, -- [33]
+    },
     {
         Qpart = {
             [12678] = {
@@ -4393,7 +4393,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2132.1,
             x = -5785.7,
         },
-    }, -- [34]
+    },
     {
         Qpart = {
             [12680] = {
@@ -4405,7 +4405,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2171,
             x = -5810.4,
         },
-    }, -- [35]
+    },
     {
         Range = 28.23,
         Waypoint = 12680,
@@ -4413,7 +4413,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2207.6,
             x = -5671.8,
         },
-    }, -- [36]
+    },
     {
         Qpart = {
             [12680] = {
@@ -4425,7 +4425,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2357.5,
             x = -5705.9,
         },
-    }, -- [37]
+    },
     {
         Coord = {
             y = 2346.1,
@@ -4434,7 +4434,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12680,
         },
-    }, -- [38]
+    },
     {
         PickUp = {
             12687,
@@ -4443,7 +4443,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2338.3,
             x = -5687.3,
         },
-    }, -- [39]
+    },
     {
         Range = 24.04,
         Waypoint = 12687,
@@ -4451,7 +4451,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2231.5,
             x = -5658,
         },
-    }, -- [40]
+    },
     {
         Qpart = {
             [12687] = {
@@ -4463,7 +4463,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2170.9,
             x = -5736.4,
         },
-    }, -- [41]
+    },
     {
         Coord = {
             y = 2342.4,
@@ -4472,7 +4472,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12687,
         },
-    }, -- [42]
+    },
     {
         Coord = {
             y = 2371.5,
@@ -4481,7 +4481,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12678,
         },
-    }, -- [43]
+    },
     {
         Coord = {
             y = 2307.3,
@@ -4490,7 +4490,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12679,
         },
-    }, -- [44]
+    },
     {
         Coord = {
             y = 2360.9,
@@ -4499,7 +4499,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12733,
         },
-    }, -- [45]
+    },
     {
         PickUp = {
             12697,
@@ -4508,7 +4508,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2371.6,
             x = -5700.5,
         },
-    }, -- [46]
+    },
     {
         Coord = {
             y = 2349,
@@ -4517,7 +4517,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12697,
         },
-    }, -- [47]
+    },
     {
         PickUp = {
             12698,
@@ -4526,7 +4526,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2349,
             x = -5757.8,
         },
-    }, -- [48]
+    },
     {
         Qpart = {
             [12698] = {
@@ -4541,7 +4541,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2435.8,
             x = -5889.4,
         },
-    }, -- [49]
+    },
     {
         Done = {
             12698,
@@ -4550,7 +4550,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2350.5,
             x = -5758.4,
         },
-    }, -- [50]
+    },
     {
         PickUp = {
             12700,
@@ -4559,7 +4559,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2350.5,
             x = -5758.4,
         },
-    }, -- [51]
+    },
     {
         Done = {
             12700,
@@ -4568,7 +4568,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2371.1,
             x = -5701.2,
         },
-    }, -- [52]
+    },
     {
         PickUp = {
             12701,
@@ -4577,7 +4577,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2371.1,
             x = -5701.2,
         },
-    }, -- [53]
+    },
     {
         Qpart = {
             [12701] = {
@@ -4589,7 +4589,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2391.6,
             x = -5897.9,
         },
-    }, -- [54]
+    },
     {
         Done = {
             12701,
@@ -4598,7 +4598,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2371.6,
             x = -5700.4,
         },
-    }, -- [55]
+    },
     {
         PickUp = {
             12706,
@@ -4607,7 +4607,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2371.3,
             x = -5700.9,
         },
-    }, -- [56]
+    },
     {
         Waypoint = 12706,
         Range = 5.95,
@@ -4615,7 +4615,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2403.1,
             x = -5727.4,
         },
-    }, -- [57]
+    },
     {
         Done = {
             12706,
@@ -4624,7 +4624,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2460.1,
             x = -5593.4,
         },
-    }, -- [58]
+    },
     {
         PickUp = {
             12714,
@@ -4633,7 +4633,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2460.1,
             x = -5593.4,
         },
-    }, -- [59]
+    },
     {
         Waypoint = 12714,
         Range = 8.12,
@@ -4641,7 +4641,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2326.5,
             x = -5659,
         },
-    }, -- [60]
+    },
     {
         Done = {
             12714,
@@ -4650,7 +4650,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2316.1,
             x = -5736.9,
         },
-    }, -- [61]
+    },
     {
         PickUp = {
             12715,
@@ -4659,7 +4659,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2316.1,
             x = -5736.9,
         },
-    }, -- [62]
+    },
     {
         PickUp = {
             12716,
@@ -4668,7 +4668,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1982.8,
             x = -5815.4,
         },
-    }, -- [63]
+    },
     {
         Range = 7.73,
         Waypoint = 12715,
@@ -4676,7 +4676,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1863.8,
             x = -5770.2,
         },
-    }, -- [64]
+    },
     {
         Range = 4.27,
         Waypoint = 12715,
@@ -4684,7 +4684,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1864,
             x = -5742.9,
         },
-    }, -- [65]
+    },
     {
         Range = 4.6,
         Waypoint = 12715,
@@ -4692,7 +4692,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1877.5,
             x = -5744.9,
         },
-    }, -- [66]
+    },
     {
         Coord = {
             y = 1879.9,
@@ -4701,7 +4701,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12715,
         },
-    }, -- [67]
+    },
     {
         PickUp = {
             12719,
@@ -4710,7 +4710,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1879.8,
             x = -5764.4,
         },
-    }, -- [68]
+    },
     {
         PickUp = {
             12722,
@@ -4719,7 +4719,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1877.2,
             x = -5775.9,
         },
-    }, -- [69]
+    },
     {
         Range = 4.46,
         Waypoint = 12722,
@@ -4727,7 +4727,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1876.9,
             x = -5742.8,
         },
-    }, -- [70]
+    },
     {
         Range = 3.73,
         Waypoint = 12722,
@@ -4735,7 +4735,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1862.2,
             x = -5743.4,
         },
-    }, -- [71]
+    },
     {
         Range = 7.08,
         Waypoint = 12722,
@@ -4743,7 +4743,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1859.9,
             x = -5768,
         },
-    }, -- [72]
+    },
     {
         Qpart = {
             [12716] = {
@@ -4761,7 +4761,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1817,
             x = -6008.8,
         },
-    }, -- [73]
+    },
     {
         Range = 11.45,
         Waypoint = 12716,
@@ -4769,7 +4769,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1727.4,
             x = -5872.3,
         },
-    }, -- [74]
+    },
     {
         Range = 6.59,
         Waypoint = 12716,
@@ -4777,7 +4777,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1769.4,
             x = -5876.9,
         },
-    }, -- [75]
+    },
     {
         Range = 4.16,
         Waypoint = 12716,
@@ -4785,7 +4785,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1774.2,
             x = -5867.9,
         },
-    }, -- [76]
+    },
     {
         Qpart = {
             [12716] = {
@@ -4803,7 +4803,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1785,
             x = -5874.4,
         },
-    }, -- [77]
+    },
     {
         Qpart = {
             [12719] = {
@@ -4825,7 +4825,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1588.4,
             x = -5707.4,
         },
-    }, -- [78]
+    },
     {
         Qpart = {
             [12716] = {
@@ -4841,7 +4841,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1584.2,
             x = -5707.2,
         },
-    }, -- [79]
+    },
     {
         Range = 8.48,
         Waypoint = 12719,
@@ -4849,7 +4849,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1860.9,
             x = -5767.8,
         },
-    }, -- [80]
+    },
     {
         Range = 3.96,
         Waypoint = 12719,
@@ -4857,7 +4857,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1864.8,
             x = -5743.4,
         },
-    }, -- [81]
+    },
     {
         Coord = {
             y = 1879.5,
@@ -4866,7 +4866,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12719,
         },
-    }, -- [82]
+    },
     {
         PickUp = {
             12720,
@@ -4875,7 +4875,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1879.5,
             x = -5764.4,
         },
-    }, -- [83]
+    },
     {
         Coord = {
             y = 1876.8,
@@ -4884,7 +4884,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12722,
         },
-    }, -- [84]
+    },
     {
         Coord = {
             y = 1983.4,
@@ -4893,7 +4893,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12716,
         },
-    }, -- [85]
+    },
     {
         PickUp = {
             12717,
@@ -4902,7 +4902,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1983.4,
             x = -5815.4,
         },
-    }, -- [86]
+    },
     {
         Coord = {
             y = 1989.8,
@@ -4911,7 +4911,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12717,
         },
-    }, -- [87]
+    },
     {
         Qpart = {
             [12720] = {
@@ -4926,7 +4926,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1731,
             x = -5831.7,
         },
-    }, -- [88]
+    },
     {
         Coord = {
             y = 1879.4,
@@ -4935,7 +4935,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12720,
         },
-    }, -- [89]
+    },
     {
         PickUp = {
             12723,
@@ -4944,7 +4944,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1879.4,
             x = -5764.2,
         },
-    }, -- [90]
+    },
     {
         Range = 34.96,
         Waypoint = 12723,
@@ -4952,7 +4952,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1754.3,
             x = -5814.4,
         },
-    }, -- [91]
+    },
     {
         Coord = {
             y = 1403.8,
@@ -4961,7 +4961,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12723,
         },
-    }, -- [92]
+    },
     {
         PickUp = {
             12724,
@@ -4970,7 +4970,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1403.8,
             x = -5826.5,
         },
-    }, -- [93]
+    },
     {
         Range = 15.06,
         Waypoint = 12724,
@@ -4978,7 +4978,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1649.3,
             x = -5976.4,
         },
-    }, -- [94]
+    },
     {
         Qpart = {
             [12724] = {
@@ -4990,7 +4990,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1649.3,
             x = -6017.7,
         },
-    }, -- [95]
+    },
     {
         Coord = {
             y = 1404.5,
@@ -4999,7 +4999,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12724,
         },
-    }, -- [96]
+    },
     {
         PickUp = {
             12725,
@@ -5008,7 +5008,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1399,
             x = -5826.5,
         },
-    }, -- [97]
+    },
     {
         Coord = {
             y = 1654,
@@ -5017,7 +5017,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12725,
         },
-    }, -- [98]
+    },
     {
         PickUp = {
             12727,
@@ -5026,7 +5026,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1654,
             x = -6039.9,
         },
-    }, -- [99]
+    },
     {
         Qpart = {
             [12727] = {
@@ -5038,7 +5038,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1648.4,
             x = -6040.4,
         },
-    }, -- [100]
+    },
     {
         Coord = {
             y = 1398,
@@ -5047,7 +5047,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12727,
         },
-    }, -- [101]
+    },
     {
         PickUp = {
             12738,
@@ -5056,7 +5056,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1398,
             x = -5826.8,
         },
-    }, -- [102]
+    },
     {
         Coord = {
             y = 1375.8,
@@ -5065,7 +5065,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12738,
         },
-    }, -- [103]
+    },
     {
         PickUp = {
             28649,
@@ -5074,7 +5074,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1375.8,
             x = -5713.9,
         },
-    }, -- [104]
+    },
     {
         Qpart = {
             [28649] = {
@@ -5086,7 +5086,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1328.7,
             x = -5753.2,
         },
-    }, -- [105]
+    },
     {
         Coord = {
             y = 1370.4,
@@ -5095,7 +5095,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             28649,
         },
-    }, -- [106]
+    },
     {
         PickUp = {
             12751,
@@ -5104,7 +5104,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1370.4,
             x = -5720.5,
         },
-    }, -- [107]
+    },
     {
         Coord = {
             y = 1398.9,
@@ -5113,7 +5113,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12751,
         },
-    }, -- [108]
+    },
     {
         PickUp = {
             12754,
@@ -5122,7 +5122,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1403.3,
             x = -5826.4,
         },
-    }, -- [109]
+    },
     {
         Qpart = {
             [12754] = {
@@ -5137,7 +5137,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1506.2,
             x = -5983.7,
         },
-    }, -- [110]
+    },
     {
         Qpart = {
             [12754] = {
@@ -5149,7 +5149,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1509.2,
             x = -5982.3,
         },
-    }, -- [111]
+    },
     {
         Coord = {
             y = 1403,
@@ -5158,7 +5158,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12754,
         },
-    }, -- [112]
+    },
     {
         PickUp = {
             12755,
@@ -5167,7 +5167,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1403.7,
             x = -5826.9,
         },
-    }, -- [113]
+    },
     {
         Range = 23.39,
         Waypoint = 12755,
@@ -5175,7 +5175,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1296.4,
             x = -6055,
         },
-    }, -- [114]
+    },
     {
         Coord = {
             y = 1320.4,
@@ -5184,7 +5184,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12755,
         },
-    }, -- [115]
+    },
     {
         PickUp = {
             12756,
@@ -5193,7 +5193,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1320.4,
             x = -6122.7,
         },
-    }, -- [116]
+    },
     {
         Coord = {
             y = 1404,
@@ -5202,7 +5202,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12756,
         },
-    }, -- [117]
+    },
     {
         PickUp = {
             12757,
@@ -5211,7 +5211,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 1404,
             x = -5826.4,
         },
-    }, -- [118]
+    },
     {
         Coord = {
             y = 1400.3,
@@ -5220,7 +5220,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12757,
         },
-    }, -- [119]
+    },
     {
         PickUp = {
             12778,
@@ -5229,7 +5229,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2459.5,
             x = -5594.4,
         },
-    }, -- [120]
+    },
     {
         Range = 8.93,
         Waypoint = 12778,
@@ -5237,7 +5237,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2349.3,
             x = -5695,
         },
-    }, -- [121]
+    },
     {
         Coord = {
             y = 2312.3,
@@ -5246,7 +5246,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12778,
         },
-    }, -- [122]
+    },
     {
         PickUp = {
             12779,
@@ -5255,7 +5255,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2312.3,
             x = -5740.3,
         },
-    }, -- [123]
+    },
     {
         Qpart = {
             [12779] = {
@@ -5271,7 +5271,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2312,
             x = -5740.7,
         },
-    }, -- [124]
+    },
     {
         Coord = {
             y = 2311.4,
@@ -5280,7 +5280,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12779,
         },
-    }, -- [125]
+    },
     {
         PickUp = {
             12800,
@@ -5289,7 +5289,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2311.4,
             x = -5740.8,
         },
-    }, -- [126]
+    },
     {
         Range = 26.3,
         Waypoint = 12800,
@@ -5297,7 +5297,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2576.5,
             x = -5539,
         },
-    }, -- [127]
+    },
     {
         Range = 33.13,
         Waypoint = 12800,
@@ -5305,7 +5305,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2680,
             x = -5311.9,
         },
-    }, -- [128]
+    },
     {
         Coord = {
             y = 2448.5,
@@ -5314,7 +5314,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12800,
         },
-    }, -- [129]
+    },
     {
         PickUp = {
             12801,
@@ -5323,7 +5323,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2448.5,
             x = -5126.2,
         },
-    }, -- [130]
+    },
     {
         Qpart = {
             [12801] = {
@@ -5335,7 +5335,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2271.3,
             x = -5291.4,
         },
-    }, -- [131]
+    },
     {
         Coord = {
             y = 2263.1,
@@ -5344,7 +5344,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             12801,
         },
-    }, -- [132]
+    },
     {
         PickUp = {
             13165,
@@ -5353,7 +5353,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2263.1,
             x = -5284.4,
         },
-    }, -- [133]
+    },
     {
         Coord = {
             y = 2267.4,
@@ -5362,7 +5362,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             13165,
         },
-    }, -- [134]
+    },
     {
         Coord = {
             y = 2376.1,
@@ -5371,7 +5371,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             13165,
         },
-    }, -- [135]
+    },
     {
         PickUp = {
             13166,
@@ -5380,7 +5380,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2376.1,
             x = -5650.2,
         },
-    }, -- [136]
+    },
     {
         Range = 8.99,
         Waypoint = 13166,
@@ -5388,7 +5388,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2393.5,
             x = -5634.9,
         },
-    }, -- [137]
+    },
     {
         Qpart = {
             [13166] = {
@@ -5401,7 +5401,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2434.3,
             x = -5609.3,
         },
-    }, -- [138]
+    },
     {
         Range = 5.88,
         Waypoint = 13166,
@@ -5409,7 +5409,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2389.6,
             x = -5642.8,
         },
-    }, -- [139]
+    },
     {
         Coord = {
             y = 2376.5,
@@ -5418,7 +5418,7 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         Done = {
             13166,
         },
-    }, -- [140]
+    },
     {
         PickUp = {
             13188,
@@ -5427,10 +5427,10 @@ APR.RouteQuestStepList["A23-ScarletEnclave"] = {
             y = 2376.5,
             x = -5649.5,
         },
-    }, -- [141]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Elwynn Forest
 APR.RouteQuestStepList["A37-ElwynnForest"] = {
@@ -5451,17 +5451,17 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9461.7,
             x = 32,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             40,
-            47, -- [2]
+            47,
         },
         Coord = {
             y = -9495,
             x = 72.5,
         },
-    }, -- [3]
+    },
     {
         Coord = {
             y = -9465,
@@ -5564,7 +5564,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9957.8,
             x = 93,
         },
-    }, -- [12]
+    },
     {
         Fillers = {
             [47] = {
@@ -5581,7 +5581,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9889,
             x = 338.5,
         },
-    }, -- [13]
+    },
     {
         PickUp = {
             84,
@@ -5590,7 +5590,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9889,
             x = 338.5,
         },
-    }, -- [14]
+    },
     {
         Fillers = {
             [47] = {
@@ -5607,7 +5607,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9923.3,
             x = 38.9,
         },
-    }, -- [15]
+    },
     {
         PickUp = {
             87,
@@ -5616,7 +5616,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9923.2,
             x = 39,
         },
-    }, -- [16]
+    },
     {
         PickUp = {
             106,
@@ -5625,7 +5625,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -10013,
             x = 38.4,
         },
-    }, -- [17]
+    },
     {
         Qpart = {
             [87] = {
@@ -5645,7 +5645,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9805.7,
             x = 143.1,
         },
-    }, -- [18]
+    },
     {
         Fillers = {
             [47] = {
@@ -5662,7 +5662,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9889,
             x = 339.3,
         },
-    }, -- [19]
+    },
     {
         Coord = {
             y = -9929.5,
@@ -5671,7 +5671,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         Done = {
             106,
         },
-    }, -- [20]
+    },
     {
         PickUp = {
             111,
@@ -5680,7 +5680,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9929.8,
             x = 500,
         },
-    }, -- [21]
+    },
     {
         Coord = {
             y = -9880.3,
@@ -5689,7 +5689,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         Done = {
             111,
         },
-    }, -- [22]
+    },
     {
         PickUp = {
             107,
@@ -5698,7 +5698,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9880.7,
             x = 323.3,
         },
-    }, -- [23]
+    },
     {
         Range = 6.99,
         Waypoint = 62,
@@ -5706,7 +5706,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9847.7,
             x = 181.9,
         },
-    }, -- [24]
+    },
     {
         Qpart = {
             [62] = {
@@ -5726,7 +5726,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9791.3,
             x = 152,
         },
-    }, -- [25]
+    },
     {
         Qpart = {
             [47] = {
@@ -5741,7 +5741,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9791.3,
             x = 152,
         },
-    }, -- [26]
+    },
     {
         Done = {
             47,
@@ -5750,7 +5750,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9496,
             x = 73.7,
         },
-    }, -- [27]
+    },
     {
         Done = {
             62,
@@ -5759,7 +5759,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9465,
             x = 74.5,
         },
-    }, -- [28]
+    },
     {
         PickUp = {
             76,
@@ -5768,17 +5768,17 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9465,
             x = 74.5,
         },
-    }, -- [29]
+    },
     {
         Done = {
             107,
-            60, -- [2]
+            60,
         },
         Coord = {
             y = -9461.3,
             x = 31.3,
         },
-    }, -- [30]
+    },
     {
         PickUp = {
             112,
@@ -5787,7 +5787,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9461.3,
             x = 31.3,
         },
-    }, -- [31]
+    },
     {
         Qpart = {
             [112] = {
@@ -5799,7 +5799,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9477.7,
             x = -226.9,
         },
-    }, -- [32]
+    },
     {
         Waypoint = 76,
         Range = 12.54,
@@ -5807,7 +5807,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9190,
             x = -605.5,
         },
-    }, -- [33]
+    },
     {
         Qpart = {
             [76] = {
@@ -5819,7 +5819,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9096.5,
             x = -565.2,
         },
-    }, -- [34]
+    },
     {
         Waypoint = 76,
         Range = 10.82,
@@ -5827,7 +5827,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9189.5,
             x = -606.5,
         },
-    }, -- [35]
+    },
     {
         Done = {
             76,
@@ -5836,7 +5836,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9464.8,
             x = 74.3,
         },
-    }, -- [36]
+    },
     {
         PickUp = {
             239,
@@ -5845,7 +5845,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9464.5,
             x = 74.4,
         },
-    }, -- [37]
+    },
     {
         Done = {
             112,
@@ -5854,7 +5854,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9461.8,
             x = 31.3,
         },
-    }, -- [38]
+    },
     {
         PickUp = {
             114,
@@ -5863,7 +5863,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9461.8,
             x = 31.3,
         },
-    }, -- [39]
+    },
     {
         Done = {
             114,
@@ -5872,7 +5872,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -10013.5,
             x = 38.4,
         },
-    }, -- [40]
+    },
     {
         Done = {
             239,
@@ -5881,7 +5881,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9661.8,
             x = 695.2,
         },
-    }, -- [41]
+    },
     {
         PickUp = {
             11,
@@ -5890,7 +5890,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9661.8,
             x = 695.2,
         },
-    }, -- [42]
+    },
     {
         PickUp = {
             176,
@@ -5899,7 +5899,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9667.5,
             x = 683.6,
         },
-    }, -- [43]
+    },
     {
         Qpart = {
             [176] = {
@@ -5916,7 +5916,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -10131.3,
             x = 675.9,
         },
-    }, -- [44]
+    },
     {
         Qpart = {
             [11] = {
@@ -5928,7 +5928,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9989,
             x = 622.9,
         },
-    }, -- [45]
+    },
     {
         Done = {
             11,
@@ -5937,7 +5937,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9660.8,
             x = 695.2,
         },
-    }, -- [46]
+    },
     {
         Done = {
             176,
@@ -5946,7 +5946,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9465,
             x = 74.5,
         },
-    }, -- [47]
+    },
     {
         Done = {
             35,
@@ -5955,19 +5955,19 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9610,
             x = -1031.1,
         },
-    }, -- [48]
+    },
     {
         PickUp = {
             37,
-            52,    -- [2]
-            26152, -- [3]
+            52,
+            26152,
             46,
         },
         Coord = {
             y = -9611.2,
             x = -1032.5,
         },
-    }, -- [49]
+    },
     {
         PickUp = {
             83,
@@ -5976,7 +5976,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9529.5,
             x = -1221.8,
         },
-    }, -- [50]
+    },
     {
         Qpart = {
             [26152] = {
@@ -5988,7 +5988,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9494.5,
             x = -1195.3,
         },
-    }, -- [51]
+    },
     {
         DroppableQuest = {
             Text = "James Clark",
@@ -6000,7 +6000,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9494.2,
             x = -1193.4,
         },
-    }, -- [52]
+    },
     {
         PickUp = {
             5545,
@@ -6009,7 +6009,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9469.3,
             x = -1288.1,
         },
-    }, -- [53]
+    },
     {
         Coord = {
             y = -9468.3,
@@ -6018,7 +6018,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         Done = {
             123,
         },
-    }, -- [54]
+    },
     {
         PickUp = {
             147,
@@ -6027,7 +6027,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9468,
             x = -1305,
         },
-    }, -- [55]
+    },
     {
         Coord = {
             y = -9468,
@@ -6036,7 +6036,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         Done = {
             26152,
         },
-    }, -- [56]
+    },
     {
         Fillers = {
             [52] = {
@@ -6054,7 +6054,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9335.5,
             x = -986.5,
         },
-    }, -- [57]
+    },
     {
         PickUp = {
             45,
@@ -6063,7 +6063,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9335.5,
             x = -986.5,
         },
-    }, -- [58]
+    },
     {
         Fillers = {
             [46] = {
@@ -6080,7 +6080,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9223.3,
             x = -1235.4,
         },
-    }, -- [59]
+    },
     {
         PickUp = {
             71,
@@ -6089,7 +6089,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9224.7,
             x = -1234.1,
         },
-    }, -- [60]
+    },
     {
         Qpart = {
             [46] = {
@@ -6106,7 +6106,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9228.3,
             x = -1202.4,
         },
-    }, -- [61]
+    },
     {
         Qpart = {
             [83] = {
@@ -6118,7 +6118,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9118.5,
             x = -1056.4,
         },
-    }, -- [62]
+    },
     {
         Qpart = {
             [5545] = {
@@ -6136,7 +6136,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9321.3,
             x = -1247,
         },
-    }, -- [63]
+    },
     {
         Qpart = {
             [52] = {
@@ -6149,7 +6149,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9555.2,
             x = -1500.5,
         },
-    }, -- [64]
+    },
     {
         Coord = {
             y = -9469.7,
@@ -6158,7 +6158,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         Done = {
             5545,
         },
-    }, -- [65]
+    },
     {
         Coord = {
             y = -9529.5,
@@ -6167,7 +6167,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         Done = {
             83,
         },
-    }, -- [66]
+    },
     {
         Coord = {
             y = -9609.8,
@@ -6175,10 +6175,10 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         },
         Done = {
             52,
-            71, -- [2]
-            46, -- [3]
+            71,
+            46,
         },
-    },          -- [67]
+    },
     {
         PickUp = {
             59,
@@ -6187,7 +6187,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9609.8,
             x = -1032,
         },
-    }, -- [68]
+    },
     {
         Qpart = {
             [147] = {
@@ -6199,7 +6199,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
             y = -9805.3,
             x = -927,
         },
-    }, -- [69]
+    },
     {
         Coord = {
             y = -9528.3,
@@ -6208,7 +6208,7 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         Done = {
             59,
         },
-    }, -- [70]
+    },
     {
         Coord = {
             y = -9467.8,
@@ -6217,10 +6217,10 @@ APR.RouteQuestStepList["A37-ElwynnForest"] = {
         Done = {
             147,
         },
-    }, -- [71]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Westfall
 APR.RouteQuestStepList["A52-Westfall"] = {
@@ -6247,7 +6247,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -9822.3,
             x = 986.2,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = -9849.2,
@@ -6256,11 +6256,11 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         Done = {
             26209,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             26214,
-            26213, -- [2]
+            26213,
         },
         Coord = {
             y = -9849.2,
@@ -6310,7 +6310,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
         Done = {
             26214,
-            26213, -- [2]
+            26213,
         },
     },
     {
@@ -6334,7 +6334,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
     {
         PickUp = {
             26229,
-            26228, -- [2]
+            26228,
         },
         Coord = {
             y = -9854.5,
@@ -6348,7 +6348,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -9972.5,
             x = 1385.2,
         },
-    }, -- [12]
+    },
     {
         Waypoint = 26228,
         Fillers = {
@@ -6361,7 +6361,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -9986.3,
             x = 1457.8,
         },
-    }, -- [13]
+    },
     {
         Waypoint = 26228,
         Fillers = {
@@ -6374,7 +6374,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -9920,
             x = 1443.9,
         },
-    }, -- [14]
+    },
     {
         Qpart = {
             [26228] = {
@@ -6394,7 +6394,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -9844.3,
             x = 1399.5,
         },
-    }, -- [15]
+    },
     {
         Waypoint = 26228,
         Fillers = {
@@ -6407,7 +6407,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -9984.5,
             x = 1458.4,
         },
-    }, -- [16]
+    },
     {
         Qpart = {
             [26229] = {
@@ -6419,7 +6419,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -9991.8,
             x = 1459.5,
         },
-    }, -- [17]
+    },
     {
         Coord = {
             y = -9854,
@@ -6427,9 +6427,9 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
         Done = {
             26228,
-            26229, -- [2]
+            26229,
         },
-    },             -- [18]
+    },
     {
         PickUp = {
             26232,
@@ -6438,7 +6438,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -9852.7,
             x = 1278.7,
         },
-    }, -- [19]
+    },
     {
         Qpart = {
             [26232] = {
@@ -6450,7 +6450,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -9857.7,
             x = 1329.3,
         },
-    }, -- [20]
+    },
     {
         Coord = {
             y = -9854.7,
@@ -6459,7 +6459,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         Done = {
             26232,
         },
-    }, -- [21]
+    },
     {
         PickUp = {
             26236,
@@ -6468,7 +6468,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -9855,
             x = 1276.3,
         },
-    }, -- [22]
+    },
     {
         Coord = {
             y = -10128.8,
@@ -6477,7 +6477,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         Done = {
             26236,
         },
-    }, -- [23]
+    },
     {
         PickUp = {
             26237,
@@ -6486,7 +6486,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10127.8,
             x = 1055.7,
         },
-    }, -- [24]
+    },
     {
         PickUp = {
             26241,
@@ -6495,7 +6495,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10111.8,
             x = 1042.5,
         },
-    }, -- [25]
+    },
     {
         Qpart = {
             [26237] = {
@@ -6510,7 +6510,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10161.8,
             x = 1118.2,
         },
-    }, -- [26]
+    },
     {
         Qpart = {
             [26241] = {
@@ -6527,7 +6527,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10022.7,
             x = 1307.5,
         },
-    }, -- [27]
+    },
     {
         Qpart = {
             [26241] = {
@@ -6539,7 +6539,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10074.7,
             x = 1032.5,
         },
-    }, -- [28]
+    },
     {
         Coord = {
             y = -10128,
@@ -6548,7 +6548,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         Done = {
             26237,
         },
-    }, -- [29]
+    },
     {
         Coord = {
             y = -10111.7,
@@ -6557,7 +6557,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         Done = {
             26241,
         },
-    }, -- [30]
+    },
     {
         PickUp = {
             26270,
@@ -6566,7 +6566,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10128.2,
             x = 1055.5,
         },
-    }, -- [31]
+    },
     {
         Coord = {
             y = -10108.3,
@@ -6575,7 +6575,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         Done = {
             26270,
         },
-    }, -- [32]
+    },
     {
         PickUp = {
             26266,
@@ -6584,7 +6584,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10109,
             x = 1040.5,
         },
-    }, -- [33]
+    },
     {
         PickUp = {
             26371,
@@ -6593,7 +6593,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10504.5,
             x = 1043.5,
         },
-    }, -- [34]
+    },
     {
         Coord = {
             y = -10499,
@@ -6602,7 +6602,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         Done = {
             26266,
         },
-    }, -- [35]
+    },
     {
         PickUp = {
             26271,
@@ -6611,17 +6611,17 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10499,
             x = 1023.2,
         },
-    }, -- [36]
+    },
     {
         PickUp = {
             26286,
-            26287, -- [2]
+            26287,
         },
         Coord = {
             y = -10508.8,
             x = 1043.7,
         },
-    }, -- [37]
+    },
     {
         Qpart = {
             [26271] = {
@@ -6644,7 +6644,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10577.2,
             x = 1241.5,
         },
-    }, -- [38]
+    },
     {
         Qpart = {
             [26286] = {
@@ -6659,7 +6659,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10432.5,
             x = 1108.2,
         },
-    }, -- [39]
+    },
     {
         Coord = {
             y = -10503.5,
@@ -6667,20 +6667,20 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
         Done = {
             26286,
-            26287, -- [2]
-            26271, -- [3]
+            26287,
+            26271,
         },
-    },             -- [40]
+    },
     {
         PickUp = {
             26288,
-            26289, -- [2]
+            26289,
         },
         Coord = {
             y = -10510.8,
             x = 1044,
         },
-    }, -- [41]
+    },
     {
         Qpart = {
             [26288] = {
@@ -6698,7 +6698,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11182,
             x = 838.2,
         },
-    }, -- [42]
+    },
     {
         Qpart = {
             [26288] = {
@@ -6711,7 +6711,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11179.2,
             x = 839.5,
         },
-    }, -- [43]
+    },
     {
         Coord = {
             y = -11042.8,
@@ -6720,7 +6720,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         Done = {
             26289,
         },
-    }, -- [44]
+    },
     {
         PickUp = {
             26290,
@@ -6729,7 +6729,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11042.8,
             x = 626.4,
         },
-    }, -- [45]
+    },
     {
         Qpart = {
             [26290] = {
@@ -6744,7 +6744,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11132,
             x = 551.7,
         },
-    }, -- [46]
+    },
     {
         Coord = {
             y = -11042.3,
@@ -6753,7 +6753,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         Done = {
             26290,
         },
-    }, -- [47]
+    },
     {
         PickUp = {
             26291,
@@ -6762,7 +6762,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11042.3,
             x = 626.7,
         },
-    }, -- [48]
+    },
     {
         Coord = {
             y = -10509.5,
@@ -6770,9 +6770,9 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
         Done = {
             26288,
-            26291, -- [2]
+            26291,
         },
-    },             -- [49]
+    },
     {
         PickUp = {
             26292,
@@ -6781,7 +6781,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10512,
             x = 1047,
         },
-    }, -- [50]
+    },
     {
         Done = {
             26292,
@@ -6790,7 +6790,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10895.5,
             x = 1543.3,
         },
-    }, -- [51]
+    },
     {
         PickUp = {
             26295,
@@ -6799,7 +6799,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10895.7,
             x = 1543,
         },
-    }, -- [52]
+    },
     {
         Waypoint = 26295,
         Range = 5.23,
@@ -6807,7 +6807,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10960.2,
             x = 1538,
         },
-    }, -- [53]
+    },
     {
         Qpart = {
             [26295] = {
@@ -6820,7 +6820,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10952.8,
             x = 1567,
         },
-    }, -- [54]
+    },
     {
         Qpart = {
             [26295] = {
@@ -6832,7 +6832,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11030,
             x = 1502.5,
         },
-    }, -- [55]
+    },
     {
         Waypoint = 26295,
         Range = 6.17,
@@ -6840,7 +6840,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10998.3,
             x = 1493.4,
         },
-    }, -- [56]
+    },
     {
         Qpart = {
             [26295] = {
@@ -6853,7 +6853,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10952.7,
             x = 1496.3,
         },
-    }, -- [57]
+    },
     {
         Done = {
             26295,
@@ -6862,7 +6862,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10895.3,
             x = 1543.8,
         },
-    }, -- [58]
+    },
     {
         PickUp = {
             26297,
@@ -6871,7 +6871,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10895.3,
             x = 1543.8,
         },
-    }, -- [59]
+    },
     {
         Qpart = {
             [26297] = {
@@ -6883,7 +6883,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11019.8,
             x = 1483.4,
         },
-    }, -- [60]
+    },
     {
         Done = {
             26297,
@@ -6892,7 +6892,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10895.8,
             x = 1543.3,
         },
-    }, -- [61]
+    },
     {
         PickUp = {
             26319,
@@ -6901,7 +6901,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10895.8,
             x = 1543.4,
         },
-    }, -- [62]
+    },
     {
         Done = {
             26319,
@@ -6910,7 +6910,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10916.5,
             x = 1514,
         },
-    }, -- [63]
+    },
     {
         PickUp = {
             26320,
@@ -6919,7 +6919,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10916.5,
             x = 1514,
         },
-    }, -- [64]
+    },
     {
         Waypoint = 26295,
         Range = 5.85,
@@ -6927,7 +6927,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11080.3,
             x = 1527.3,
         },
-    }, -- [65]
+    },
     {
         Waypoint = 26295,
         Range = 5.58,
@@ -6935,7 +6935,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11076.5,
             x = 1499.8,
         },
-    }, -- [66]
+    },
     {
         Waypoint = 26320,
         Range = 4.6,
@@ -6943,7 +6943,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11096.8,
             x = 1514.4,
         },
-    }, -- [67]
+    },
     {
         Waypoint = 26320,
         Range = 9.76,
@@ -6951,7 +6951,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11104.3,
             x = 1495,
         },
-    }, -- [68]
+    },
     {
         Waypoint = 26320,
         Range = 5.8,
@@ -6959,7 +6959,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11127.7,
             x = 1480.9,
         },
-    }, -- [69]
+    },
     {
         Waypoint = 26320,
         Range = 6.95,
@@ -6967,7 +6967,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11138.5,
             x = 1515,
         },
-    }, -- [70]
+    },
     {
         Waypoint = 26320,
         Range = 7.83,
@@ -6975,7 +6975,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11187.8,
             x = 1578.3,
         },
-    }, -- [71]
+    },
     {
         Waypoint = 26320,
         Range = 9.92,
@@ -6983,7 +6983,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11233.7,
             x = 1558.5,
         },
-    }, -- [72]
+    },
     {
         Waypoint = 26320,
         Range = 8.16,
@@ -6991,7 +6991,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11253.7,
             x = 1576.3,
         },
-    }, -- [73]
+    },
     {
         Waypoint = 26320,
         Range = 8.98,
@@ -6999,7 +6999,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11227.8,
             x = 1604.2,
         },
-    }, -- [74]
+    },
     {
         Waypoint = 26320,
         Range = 11.73,
@@ -7007,7 +7007,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11213.2,
             x = 1645.3,
         },
-    }, -- [75]
+    },
     {
         Qpart = {
             [26320] = {
@@ -7023,7 +7023,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11206,
             x = 1676.7,
         },
-    }, -- [76]
+    },
     {
         Range = 7.07,
         Waypoint = 26320,
@@ -7031,7 +7031,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11230.8,
             x = 1599.7,
         },
-    }, -- [77]
+    },
     {
         Range = 9.61,
         Waypoint = 26320,
@@ -7039,7 +7039,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11253.3,
             x = 1570.9,
         },
-    }, -- [78]
+    },
     {
         Range = 8.81,
         Waypoint = 26320,
@@ -7047,7 +7047,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11200.8,
             x = 1573,
         },
-    }, -- [79]
+    },
     {
         Range = 10.78,
         Waypoint = 26320,
@@ -7055,7 +7055,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11140.8,
             x = 1544,
         },
-    }, -- [80]
+    },
     {
         Range = 8.85,
         Waypoint = 26320,
@@ -7063,7 +7063,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11109.8,
             x = 1501.5,
         },
-    }, -- [81]
+    },
     {
         Range = 9.43,
         Waypoint = 26320,
@@ -7071,7 +7071,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11096.2,
             x = 1524.5,
         },
-    }, -- [82]
+    },
     {
         Range = 6.88,
         Waypoint = 26320,
@@ -7079,7 +7079,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11133.5,
             x = 1493.8,
         },
-    }, -- [83]
+    },
     {
         Range = 7.58,
         Waypoint = 26320,
@@ -7087,7 +7087,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11101,
             x = 1491,
         },
-    }, -- [84]
+    },
     {
         Range = 8.83,
         Waypoint = 26320,
@@ -7095,7 +7095,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11069.8,
             x = 1527.4,
         },
-    }, -- [85]
+    },
     {
         Coord = {
             y = -11398.3,
@@ -7104,18 +7104,18 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         Done = {
             26371,
         },
-    }, -- [86]
+    },
     {
         PickUp = {
             26348,
-            26349, -- [2]
-            26347, -- [3]
+            26349,
+            26347,
         },
         Coord = {
             y = -11397,
             x = 1949.5,
         },
-    }, -- [87]
+    },
     {
         Qpart = {
             [26349] = {
@@ -7133,7 +7133,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11358.8,
             x = 1798.4,
         },
-    }, -- [88]
+    },
     {
         Fillers = {
             [26348] = {
@@ -7148,7 +7148,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10513.7,
             x = 2110.1,
         },
-    }, -- [89]
+    },
     {
         PickUp = {
             26354,
@@ -7157,7 +7157,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10512.8,
             x = 2109.1,
         },
-    }, -- [90]
+    },
     {
         Qpart = {
             [26347] = {
@@ -7169,7 +7169,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10399.3,
             x = 1659.4,
         },
-    }, -- [91]
+    },
     {
         Coord = {
             y = -10515.5,
@@ -7178,7 +7178,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         Done = {
             26354,
         },
-    }, -- [92]
+    },
     {
         PickUp = {
             26355,
@@ -7187,7 +7187,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10513.3,
             x = 1598.7,
         },
-    }, -- [93]
+    },
     {
         Coord = {
             y = -9797.3,
@@ -7196,7 +7196,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         Done = {
             26355,
         },
-    }, -- [94]
+    },
     {
         PickUp = {
             26356,
@@ -7205,7 +7205,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -9797.3,
             x = 1594.8,
         },
-    }, -- [95]
+    },
     {
         Coord = {
             y = -9793.8,
@@ -7214,7 +7214,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         Done = {
             26356,
         },
-    }, -- [96]
+    },
     {
         Qpart = {
             [26348] = {
@@ -7227,7 +7227,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -11107.3,
             x = 2026.2,
         },
-    }, -- [97]
+    },
     {
         Coord = {
             y = -11397.5,
@@ -7235,10 +7235,10 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         },
         Done = {
             26348,
-            26349, -- [2]
-            26347, -- [3]
+            26349,
+            26347,
         },
-    },             -- [98]
+    },
     {
         UseFlightPath = 26320,
         Name = "Sentinel Hill, Westfall",
@@ -7247,7 +7247,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10875.8,
             x = 1543.2,
         },
-    }, -- [99]
+    },
     {
         Coord = {
             y = -10512.3,
@@ -7256,7 +7256,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
         Done = {
             26320,
         },
-    }, -- [100]
+    },
     {
         PickUp = {
             26322,
@@ -7265,7 +7265,7 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10512.3,
             x = 1047.3,
         },
-    }, -- [101]
+    },
     {
         Qpart = {
             [26322] = {
@@ -7277,10 +7277,10 @@ APR.RouteQuestStepList["A52-Westfall"] = {
             y = -10511.3,
             x = 1051.3,
         },
-    }, -- [102]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Swamp of Sorrows
 APR.RouteQuestStepList["A51-SwampofSorrows"] = {
@@ -7301,7 +7301,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -9688.3,
             x = -3928,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [27592] = {
@@ -7319,7 +7319,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -9633.2,
             x = -4091.2,
         },
-    }, -- [3]
+    },
     {
         Done = {
             27592,
@@ -7341,7 +7341,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
     {
         PickUp = {
             27656,
-            27536, -- [2]
+            27536,
         },
         Coord = {
             y = -9783,
@@ -7387,7 +7387,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
     {
         Done = {
             27656,
-            27536, -- [2]
+            27536,
         },
         Coord = {
             y = -9783.8,
@@ -7411,17 +7411,17 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10206.3,
             x = -4188.4,
         },
-    }, -- [12]
+    },
     {
         PickUp = {
             27599,
-            27598, -- [2]
+            27598,
         },
         Coord = {
             y = -10206.3,
             x = -4188.4,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [27599] = {
@@ -7436,17 +7436,17 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10006.3,
             x = -4353.3,
         },
-    }, -- [14]
+    },
     {
         Done = {
             27599,
-            27598, -- [2]
+            27598,
         },
         Coord = {
             y = -10206.5,
             x = -4188.4,
         },
-    }, -- [15]
+    },
     {
         PickUp = {
             27600,
@@ -7455,7 +7455,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10206.3,
             x = -4188.8,
         },
-    }, -- [16]
+    },
     {
         Qpart = {
             [27600] = {
@@ -7481,7 +7481,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10206,
             x = -4188.5,
         },
-    }, -- [17]
+    },
     {
         PickUp = {
             27740,
@@ -7490,7 +7490,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10206.7,
             x = -4188.3,
         },
-    }, -- [18]
+    },
     {
         Waypoint = 27740,
         Range = 118.46,
@@ -7498,7 +7498,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10222.8,
             x = -4158.8,
         },
-    }, -- [19]
+    },
     {
         Done = {
             27740,
@@ -7507,7 +7507,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10814.8,
             x = -3813.2,
         },
-    }, -- [20]
+    },
     {
         PickUp = {
             27691,
@@ -7516,7 +7516,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10814.7,
             x = -3813,
         },
-    }, -- [21]
+    },
     {
         Qpart = {
             [27691] = {
@@ -7528,7 +7528,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -11001.5,
             x = -4115.4,
         },
-    }, -- [22]
+    },
     {
         Done = {
             27691,
@@ -7537,7 +7537,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10814.5,
             x = -3813.5,
         },
-    }, -- [23]
+    },
     {
         PickUp = {
             27757,
@@ -7546,7 +7546,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10814.3,
             x = -3813.2,
         },
-    }, -- [24]
+    },
     {
         Waypoint = 27757,
         Range = 13.86,
@@ -7554,7 +7554,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10793.7,
             x = -3743,
         },
-    }, -- [25]
+    },
     {
         Qpart = {
             [27757] = {
@@ -7566,7 +7566,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10969.8,
             x = -3664.9,
         },
-    }, -- [26]
+    },
     {
         Done = {
             27757,
@@ -7575,7 +7575,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10815.3,
             x = -3813.9,
         },
-    }, -- [27]
+    },
     {
         PickUp = {
             27818,
@@ -7584,7 +7584,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10815.3,
             x = -3813.9,
         },
-    }, -- [28]
+    },
     {
         Qpart = {
             [27818] = {
@@ -7596,7 +7596,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10884.5,
             x = -3937.9,
         },
-    }, -- [29]
+    },
     {
         Done = {
             27818,
@@ -7605,7 +7605,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10814.8,
             x = -3813,
         },
-    }, -- [30]
+    },
     {
         PickUp = {
             27869,
@@ -7614,7 +7614,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10814.8,
             x = -3813,
         },
-    }, -- [31]
+    },
     {
         Done = {
             27869,
@@ -7623,7 +7623,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10445.7,
             x = -3824,
         },
-    }, -- [32]
+    },
     {
         PickUp = {
             27694,
@@ -7632,7 +7632,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10445.7,
             x = -3824,
         },
-    }, -- [33]
+    },
     {
         Qpart = {
             [27694] = {
@@ -7644,7 +7644,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10528,
             x = -3776,
         },
-    }, -- [34]
+    },
     {
         Done = {
             27694,
@@ -7653,7 +7653,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10446.5,
             x = -3823.4,
         },
-    }, -- [35]
+    },
     {
         PickUp = {
             27704,
@@ -7662,7 +7662,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10446.5,
             x = -3823.4,
         },
-    }, -- [36]
+    },
     {
         Waypoint = 27704,
         Range = 6.45,
@@ -7670,7 +7670,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10405.5,
             x = -3832.7,
         },
-    }, -- [37]
+    },
     {
         Waypoint = 27704,
         Range = 6.72,
@@ -7678,7 +7678,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10406.3,
             x = -3817.5,
         },
-    }, -- [38]
+    },
     {
         Waypoint = 27704,
         Range = 7.35,
@@ -7686,7 +7686,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10434.3,
             x = -3819,
         },
-    }, -- [39]
+    },
     {
         Waypoint = 27704,
         Range = 7.6,
@@ -7694,7 +7694,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10382.8,
             x = -3841.5,
         },
-    }, -- [40]
+    },
     {
         Waypoint = 27704,
         Range = 7.03,
@@ -7702,7 +7702,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10264.2,
             x = -3872.7,
         },
-    }, -- [41]
+    },
     {
         Done = {
             27704,
@@ -7711,7 +7711,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10279.5,
             x = -3945,
         },
-    }, -- [42]
+    },
     {
         PickUp = {
             27705,
@@ -7720,7 +7720,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10279.5,
             x = -3945,
         },
-    }, -- [43]
+    },
     {
         Waypoint = 27704,
         Range = 7.96,
@@ -7728,7 +7728,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10306.5,
             x = -3961.2,
         },
-    }, -- [44]
+    },
     {
         Waypoint = 27704,
         Range = 5.56,
@@ -7736,7 +7736,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10313.7,
             x = -3918.5,
         },
-    }, -- [45]
+    },
     {
         Waypoint = 27704,
         Range = 7.84,
@@ -7744,7 +7744,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10331.5,
             x = -3911,
         },
-    }, -- [46]
+    },
     {
         Qpart = {
             [27705] = {
@@ -7756,7 +7756,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10359,
             x = -3956.7,
         },
-    }, -- [47]
+    },
     {
         Done = {
             27705,
@@ -7765,7 +7765,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10359,
             x = -3956.7,
         },
-    }, -- [48]
+    },
     {
         PickUp = {
             27768,
@@ -7774,7 +7774,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10359,
             x = -3956.7,
         },
-    }, -- [49]
+    },
     {
         Waypoint = 27704,
         Range = 6.05,
@@ -7782,7 +7782,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10326.8,
             x = -3911.2,
         },
-    }, -- [50]
+    },
     {
         Waypoint = 27704,
         Range = 6.56,
@@ -7790,7 +7790,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10312.5,
             x = -3920.2,
         },
-    }, -- [51]
+    },
     {
         Waypoint = 27704,
         Range = 7.11,
@@ -7798,7 +7798,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10335.3,
             x = -4014.5,
         },
-    }, -- [52]
+    },
     {
         Qpart = {
             [27768] = {
@@ -7810,7 +7810,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10306.5,
             x = -4026,
         },
-    }, -- [53]
+    },
     {
         Done = {
             27768,
@@ -7819,7 +7819,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10306.5,
             x = -4026,
         },
-    }, -- [54]
+    },
     {
         PickUp = {
             27773,
@@ -7828,7 +7828,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10306.5,
             x = -4026,
         },
-    }, -- [55]
+    },
     {
         Waypoint = 27704,
         Range = 7.99,
@@ -7836,7 +7836,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10344.7,
             x = -4024.2,
         },
-    }, -- [56]
+    },
     {
         Waypoint = 27704,
         Range = 7.64,
@@ -7844,7 +7844,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10366.3,
             x = -4012.4,
         },
-    }, -- [57]
+    },
     {
         Waypoint = 27704,
         Range = 7.88,
@@ -7852,7 +7852,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10378.5,
             x = -4062.2,
         },
-    }, -- [58]
+    },
     {
         Waypoint = 27704,
         Range = 8.43,
@@ -7860,7 +7860,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10270,
             x = -4089.9,
         },
-    }, -- [59]
+    },
     {
         Qpart = {
             [27773] = {
@@ -7872,7 +7872,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10230,
             x = -4003.4,
         },
-    }, -- [60]
+    },
     {
         Done = {
             27773,
@@ -7881,7 +7881,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10230,
             x = -4003.4,
         },
-    }, -- [61]
+    },
     {
         PickUp = {
             27914,
@@ -7890,7 +7890,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10449.5,
             x = -3823,
         },
-    }, -- [62]
+    },
     {
         Done = {
             27914,
@@ -7899,7 +7899,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10447.3,
             x = -3822.7,
         },
-    }, -- [63]
+    },
     {
         PickUp = {
             27870,
@@ -7908,7 +7908,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10446.8,
             x = -3823.4,
         },
-    }, -- [64]
+    },
     {
         Waypoint = 27870,
         Range = 7.85,
@@ -7916,7 +7916,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10440.3,
             x = -3795,
         },
-    }, -- [65]
+    },
     {
         Done = {
             27870,
@@ -7925,27 +7925,27 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10139.5,
             x = -3791.5,
         },
-    }, -- [66]
+    },
     {
         PickUp = {
             27822,
-            27821, -- [2]
+            27821,
         },
         Coord = {
             y = -10140,
             x = -3791.5,
         },
-    }, -- [67]
+    },
     {
         PickUp = {
             27840,
-            27860, -- [2]
+            27860,
         },
         Coord = {
             y = -10146.3,
             x = -3833.9,
         },
-    }, -- [68]
+    },
     {
         Qpart = {
             [27860] = {
@@ -7960,7 +7960,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -9978.7,
             x = -3607.4,
         },
-    }, -- [69]
+    },
     {
         Qpart = {
             [27822] = {
@@ -7977,7 +7977,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10374.3,
             x = -3367,
         },
-    }, -- [70]
+    },
     {
         Qpart = {
             [27821] = {
@@ -7989,7 +7989,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10280.3,
             x = -3563.5,
         },
-    }, -- [71]
+    },
     {
         Coord = {
             y = -10140.5,
@@ -7997,20 +7997,20 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
         Done = {
             27822,
-            27821, -- [2]
+            27821,
         },
-    },             -- [72]
+    },
     {
         PickUp = {
             27845,
-            27795, -- [2]
-            27843, -- [3]
+            27795,
+            27843,
         },
         Coord = {
             y = -10140.5,
             x = -3792,
         },
-    }, -- [73]
+    },
     {
         Coord = {
             y = -10146.8,
@@ -8018,9 +8018,9 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
         Done = {
             27840,
-            27860, -- [2]
+            27860,
         },
-    },             -- [74]
+    },
     {
         PickUp = {
             27918,
@@ -8029,7 +8029,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10146.8,
             x = -3834.2,
         },
-    }, -- [75]
+    },
     {
         Qpart = {
             [27845] = {
@@ -8050,7 +8050,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10337.8,
             x = -3506.5,
         },
-    }, -- [76]
+    },
     {
         Coord = {
             y = -10096.7,
@@ -8059,17 +8059,17 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         Done = {
             27918,
         },
-    }, -- [77]
+    },
     {
         PickUp = {
             27875,
-            27876, -- [2]
+            27876,
         },
         Coord = {
             y = -10096.7,
             x = -2754.5,
         },
-    }, -- [78]
+    },
     {
         Qpart = {
             [27875] = {
@@ -8084,7 +8084,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10283,
             x = -2951.7,
         },
-    }, -- [79]
+    },
     {
         Coord = {
             y = -10096.5,
@@ -8092,19 +8092,19 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
         Done = {
             27875,
-            27876, -- [2]
+            27876,
         },
-    },             -- [80]
+    },
     {
         PickUp = {
             27904,
-            27902, -- [2]
+            27902,
         },
         Coord = {
             y = -10096.8,
             x = -2754.5,
         },
-    }, -- [81]
+    },
     {
         Qpart = {
             [27904] = {
@@ -8116,7 +8116,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10151.8,
             x = -2497.9,
         },
-    }, -- [82]
+    },
     {
         Qpart = {
             [27902] = {
@@ -8128,7 +8128,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10538.5,
             x = -2538.7,
         },
-    }, -- [83]
+    },
     {
         Coord = {
             y = -10098.2,
@@ -8136,9 +8136,9 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
         Done = {
             27902,
-            27904, -- [2]
+            27904,
         },
-    },             -- [84]
+    },
     {
         PickUp = {
             24913,
@@ -8147,7 +8147,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10097.3,
             x = -2754.5,
         },
-    }, -- [85]
+    },
     {
         Qpart = {
             [24913] = {
@@ -8159,7 +8159,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10099,
             x = -2755,
         },
-    }, -- [86]
+    },
     {
         Coord = {
             y = -10096.5,
@@ -8168,7 +8168,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         Done = {
             24913,
         },
-    }, -- [87]
+    },
     {
         UseFlightPath = 27795,
         Name = "Marshtide Watch, Swamp of Sorrows",
@@ -8177,7 +8177,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10114,
             x = -2852.9,
         },
-    }, -- [88]
+    },
     {
         Coord = {
             y = -10140.3,
@@ -8185,20 +8185,20 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
         Done = {
             27845,
-            27843, -- [2]
-            27795, -- [3]
+            27843,
+            27795,
         },
-    },             -- [89]
+    },
     {
         PickUp = {
             27849,
-            27851, -- [2]
+            27851,
         },
         Coord = {
             y = -10140.3,
             x = -3792.5,
         },
-    }, -- [90]
+    },
     {
         Qpart = {
             [27849] = {
@@ -8213,7 +8213,7 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
             y = -10440.7,
             x = -3275.9,
         },
-    }, -- [91]
+    },
     {
         Coord = {
             y = -10140,
@@ -8221,12 +8221,12 @@ APR.RouteQuestStepList["A51-SwampofSorrows"] = {
         },
         Done = {
             27849,
-            27851, -- [2]
+            27851,
         },
-    },             -- [92]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Blasted Lands
 APR.RouteQuestStepList["A17-BlastedLands"] = {
@@ -8247,7 +8247,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11037.8,
             x = -3444.7,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [25710] = {
@@ -8259,7 +8259,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11018,
             x = -3276.7,
         },
-    }, -- [3]
+    },
     {
         Done = {
             25710,
@@ -8272,7 +8272,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
     {
         PickUp = {
             25711,
-            25712, -- [2]
+            25712,
         },
         Coord = {
             y = -10910.8,
@@ -8312,8 +8312,8 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
     {
         Done = {
             25712,
-            25713, -- [2]
-            25711, -- [3]
+            25713,
+            25711,
         },
         Coord = {
             y = -10919.2,
@@ -8344,7 +8344,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
     {
         PickUp = {
             25709,
-            25708, -- [2]
+            25708,
         },
         Coord = {
             y = -11037,
@@ -8368,17 +8368,17 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11438.8,
             x = -3685,
         },
-    }, -- [12]
+    },
     {
         Done = {
             25709,
-            25708, -- [2]
+            25708,
         },
         Coord = {
             y = -11038,
             x = -3445,
         },
-    }, -- [13]
+    },
     {
         PickUp = {
             25714,
@@ -8387,7 +8387,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11037.7,
             x = -3445.2,
         },
-    }, -- [14]
+    },
     {
         Done = {
             25714,
@@ -8397,7 +8397,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -10994,
             x = -3507.7,
         },
-    }, -- [15]
+    },
     {
         PickUp = {
             25716,
@@ -8406,7 +8406,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -10994.3,
             x = -3507,
         },
-    }, -- [16]
+    },
     {
         Qpart = {
             [25716] = {
@@ -8418,7 +8418,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11391.7,
             x = -3421.2,
         },
-    }, -- [17]
+    },
     {
         Done = {
             25716,
@@ -8428,7 +8428,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -10994.3,
             x = -3506.7,
         },
-    }, -- [18]
+    },
     {
         PickUp = {
             26157,
@@ -8437,7 +8437,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -10994.3,
             x = -3506.7,
         },
-    }, -- [19]
+    },
     {
         Waypoint = 26157,
         Range = 8.59,
@@ -8445,7 +8445,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11304.8,
             x = -3416.5,
         },
-    }, -- [20]
+    },
     {
         Done = {
             26157,
@@ -8454,7 +8454,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11219.5,
             x = -3490.9,
         },
-    }, -- [21]
+    },
     {
         PickUp = {
             26158,
@@ -8463,7 +8463,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11219.5,
             x = -3490.9,
         },
-    }, -- [22]
+    },
     {
         Qpart = {
             [26158] = {
@@ -8475,7 +8475,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11216,
             x = -3509,
         },
-    }, -- [23]
+    },
     {
         Qpart = {
             [26158] = {
@@ -8487,7 +8487,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11312.8,
             x = -3441.5,
         },
-    }, -- [24]
+    },
     {
         Done = {
             26158,
@@ -8496,17 +8496,17 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11218.8,
             x = -3492.4,
         },
-    }, -- [25]
+    },
     {
         PickUp = {
             26172,
-            26159, -- [2]
+            26159,
         },
         Coord = {
             y = -11219.2,
             x = -3492.5,
         },
-    }, -- [26]
+    },
     {
         Waypoint = 26172,
         Range = 18.79,
@@ -8514,7 +8514,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11215.5,
             x = -3509,
         },
-    }, -- [27]
+    },
     {
         Qpart = {
             [26172] = {
@@ -8530,7 +8530,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11215,
             x = -3227.2,
         },
-    }, -- [28]
+    },
     {
         Waypoint = 26172,
         Range = 8.69,
@@ -8538,17 +8538,17 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11312.8,
             x = -3442.7,
         },
-    }, -- [29]
+    },
     {
         Done = {
             26172,
-            26159, -- [2]
+            26159,
         },
         Coord = {
             y = -11223.8,
             x = -3485.4,
         },
-    }, -- [30]
+    },
     {
         PickUp = {
             26160,
@@ -8557,7 +8557,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11224.3,
             x = -3484.2,
         },
-    }, -- [31]
+    },
     {
         Qpart = {
             [26160] = {
@@ -8570,7 +8570,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11224.3,
             x = -3484.2,
         },
-    }, -- [32]
+    },
     {
         Done = {
             26160,
@@ -8579,18 +8579,18 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11222.5,
             x = -3484.2,
         },
-    }, -- [33]
+    },
     {
         PickUp = {
             26168,
-            26169, -- [2]
-            26167, -- [3]
+            26169,
+            26167,
         },
         Coord = {
             y = -11223.2,
             x = -3484,
         },
-    }, -- [34]
+    },
     {
         Waypoint = 26167,
         Range = 15.19,
@@ -8598,7 +8598,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11215.5,
             x = -3509,
         },
-    }, -- [35]
+    },
     {
         Waypoint = 26167,
         Range = 5.49,
@@ -8606,7 +8606,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11299,
             x = -3423.2,
         },
-    }, -- [36]
+    },
     {
         Waypoint = 26167,
         Range = 6.91,
@@ -8614,7 +8614,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11272.8,
             x = -3451.2,
         },
-    }, -- [37]
+    },
     {
         Qpart = {
             [26167] = {
@@ -8626,7 +8626,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11237.2,
             x = -3448.7,
         },
-    }, -- [38]
+    },
     {
         Waypoint = 26169,
         Range = 9.67,
@@ -8634,7 +8634,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11304.5,
             x = -3418,
         },
-    }, -- [39]
+    },
     {
         Qpart = {
             [26169] = {
@@ -8646,7 +8646,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11448.5,
             x = -3794.4,
         },
-    }, -- [40]
+    },
     {
         Qpart = {
             [26168] = {
@@ -8658,7 +8658,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11742,
             x = -3873.4,
         },
-    }, -- [41]
+    },
     {
         PickUp = {
             25702,
@@ -8667,7 +8667,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11742.2,
             x = -3873.5,
         },
-    }, -- [42]
+    },
     {
         Done = {
             25702,
@@ -8676,7 +8676,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12047.5,
             x = -3794,
         },
-    }, -- [43]
+    },
     {
         PickUp = {
             25703,
@@ -8685,7 +8685,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12047.5,
             x = -3794,
         },
-    }, -- [44]
+    },
     {
         Qpart = {
             [25703] = {
@@ -8698,7 +8698,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12326.3,
             x = -3708.2,
         },
-    }, -- [45]
+    },
     {
         Done = {
             25703,
@@ -8707,17 +8707,17 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12047.8,
             x = -3794.7,
         },
-    }, -- [46]
+    },
     {
         PickUp = {
             25706,
-            25705, -- [2]
+            25705,
         },
         Coord = {
             y = -12047.8,
             x = -3794.7,
         },
-    }, -- [47]
+    },
     {
         Qpart = {
             [25706] = {
@@ -8734,7 +8734,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12394.8,
             x = -3639.4,
         },
-    }, -- [48]
+    },
     {
         Qpart = {
             [25706] = {
@@ -8751,7 +8751,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12431.5,
             x = -3395.7,
         },
-    }, -- [49]
+    },
     {
         Qpart = {
             [25706] = {
@@ -8767,7 +8767,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12048.2,
             x = -3444.5,
         },
-    }, -- [50]
+    },
     {
         Waypoint = 25705,
         Range = 22.37,
@@ -8775,17 +8775,17 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12143,
             x = -3442,
         },
-    }, -- [51]
+    },
     {
         Done = {
             25705,
-            25706, -- [2]
+            25706,
         },
         Coord = {
             y = -12046.5,
             x = -3794,
         },
-    }, -- [52]
+    },
     {
         Waypoint = 26168,
         Range = 11.91,
@@ -8793,18 +8793,18 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11313,
             x = -3442.5,
         },
-    }, -- [53]
+    },
     {
         Done = {
             26168,
-            26169, -- [2]
-            26167, -- [3]
+            26169,
+            26167,
         },
         Coord = {
             y = -11224.3,
             x = -3483.7,
         },
-    }, -- [54]
+    },
     {
         PickUp = {
             26163,
@@ -8813,7 +8813,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11224.3,
             x = -3483.7,
         },
-    }, -- [55]
+    },
     {
         Waypoint = 26163,
         Range = 13.67,
@@ -8821,7 +8821,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11215.5,
             x = -3509,
         },
-    }, -- [56]
+    },
     {
         Done = {
             26163,
@@ -8830,17 +8830,17 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11793.2,
             x = -3212.7,
         },
-    }, -- [57]
+    },
     {
         PickUp = {
             26164,
-            26165, -- [2]
+            26165,
         },
         Coord = {
             y = -11793.2,
             x = -3212.7,
         },
-    }, -- [58]
+    },
     {
         PickUp = {
             26173,
@@ -8849,7 +8849,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11814.7,
             x = -3193.7,
         },
-    }, -- [59]
+    },
     {
         Qpart = {
             [26173] = {
@@ -8869,7 +8869,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11614.3,
             x = -3070.9,
         },
-    }, -- [60]
+    },
     {
         Qpart = {
             [26173] = {
@@ -8889,7 +8889,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11750.5,
             x = -2802,
         },
-    }, -- [61]
+    },
     {
         Qpart = {
             [26173] = {
@@ -8909,7 +8909,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11637,
             x = -3389.2,
         },
-    }, -- [62]
+    },
     {
         Qpart = {
             [26164] = {
@@ -8924,17 +8924,17 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11726.3,
             x = -3182.7,
         },
-    }, -- [63]
+    },
     {
         Done = {
             26164,
-            26165, -- [2]
+            26165,
         },
         Coord = {
             y = -11793.7,
             x = -3212,
         },
-    }, -- [64]
+    },
     {
         PickUp = {
             26166,
@@ -8943,7 +8943,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11793.7,
             x = -3212,
         },
-    }, -- [65]
+    },
     {
         Done = {
             26173,
@@ -8952,7 +8952,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11815.5,
             x = -3195,
         },
-    }, -- [66]
+    },
     {
         PickUp = {
             26174,
@@ -8961,7 +8961,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11815.5,
             x = -3195,
         },
-    }, -- [67]
+    },
     {
         Qpart = {
             [26174] = {
@@ -8973,7 +8973,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11804,
             x = -3168.5,
         },
-    }, -- [68]
+    },
     {
         Done = {
             26174,
@@ -8982,7 +8982,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11814.5,
             x = -3195.4,
         },
-    }, -- [69]
+    },
     {
         PickUp = {
             26175,
@@ -8991,7 +8991,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11814.5,
             x = -3195.4,
         },
-    }, -- [70]
+    },
     {
         Waypoint = 26166,
         Range = 12.23,
@@ -8999,7 +8999,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11312.8,
             x = -3442.7,
         },
-    }, -- [71]
+    },
     {
         Done = {
             26166,
@@ -9008,7 +9008,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11224.7,
             x = -3483.2,
         },
-    }, -- [72]
+    },
     {
         PickUp = {
             26161,
@@ -9017,7 +9017,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11224.7,
             x = -3483.2,
         },
-    }, -- [73]
+    },
     {
         Waypoint = 26161,
         Range = 15.9,
@@ -9025,7 +9025,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11215.8,
             x = -3508.2,
         },
-    }, -- [74]
+    },
     {
         Waypoint = 26161,
         Range = 22.28,
@@ -9033,7 +9033,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11349.8,
             x = -2923.9,
         },
-    }, -- [75]
+    },
     {
         Waypoint = 26161,
         Range = 15.15,
@@ -9041,7 +9041,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11333.7,
             x = -2845,
         },
-    }, -- [76]
+    },
     {
         Qpart = {
             [26161] = {
@@ -9053,7 +9053,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11241,
             x = -2903.5,
         },
-    }, -- [77]
+    },
     {
         Waypoint = 26161,
         Range = 12.34,
@@ -9061,7 +9061,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11331.8,
             x = -2843,
         },
-    }, -- [78]
+    },
     {
         Waypoint = 26161,
         Range = 17.95,
@@ -9069,7 +9069,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11394.8,
             x = -2715.2,
         },
-    }, -- [79]
+    },
     {
         Waypoint = 26161,
         Range = 8.46,
@@ -9077,7 +9077,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11391.5,
             x = -2675.7,
         },
-    }, -- [80]
+    },
     {
         Qpart = {
             [26161] = {
@@ -9089,7 +9089,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11489.5,
             x = -2657.7,
         },
-    }, -- [81]
+    },
     {
         Waypoint = 26161,
         Range = 7.33,
@@ -9097,7 +9097,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11391.2,
             x = -2678,
         },
-    }, -- [82]
+    },
     {
         Waypoint = 26161,
         Range = 4.91,
@@ -9105,7 +9105,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11395.5,
             x = -2710,
         },
-    }, -- [83]
+    },
     {
         Qpart = {
             [26161] = {
@@ -9117,7 +9117,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11546,
             x = -2913.5,
         },
-    }, -- [84]
+    },
     {
         Waypoint = 26161,
         Range = 14.7,
@@ -9125,7 +9125,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11313,
             x = -3442.5,
         },
-    }, -- [85]
+    },
     {
         Done = {
             26161,
@@ -9134,7 +9134,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11221.8,
             x = -3486.9,
         },
-    }, -- [86]
+    },
     {
         PickUp = {
             26162,
@@ -9143,7 +9143,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11221.8,
             x = -3486.9,
         },
-    }, -- [87]
+    },
     {
         Waypoint = 26162,
         Range = 14.8,
@@ -9151,7 +9151,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11216,
             x = -3509,
         },
-    }, -- [88]
+    },
     {
         Waypoint = 26162,
         Range = 21.87,
@@ -9159,7 +9159,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11458.2,
             x = -2664.9,
         },
-    }, -- [89]
+    },
     {
         Waypoint = 26162,
         Range = 21.51,
@@ -9167,7 +9167,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11348.5,
             x = -2560.5,
         },
-    }, -- [90]
+    },
     {
         Qpart = {
             [26162] = {
@@ -9179,7 +9179,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11276.7,
             x = -2547.5,
         },
-    }, -- [91]
+    },
     {
         Waypoint = 26162,
         Range = 8.99,
@@ -9187,7 +9187,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11313.8,
             x = -3442.2,
         },
-    }, -- [92]
+    },
     {
         Done = {
             26162,
@@ -9196,7 +9196,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11220.2,
             x = -3476.4,
         },
-    }, -- [93]
+    },
     {
         PickUp = {
             26170,
@@ -9205,7 +9205,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11222.7,
             x = -3488.5,
         },
-    }, -- [94]
+    },
     {
         Qpart = {
             [26170] = {
@@ -9218,7 +9218,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11222.7,
             x = -3488.5,
         },
-    }, -- [95]
+    },
     {
         Done = {
             26170,
@@ -9227,7 +9227,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11219.8,
             x = -3476,
         },
-    }, -- [96]
+    },
     {
         PickUp = {
             26171,
@@ -9236,7 +9236,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11219.8,
             x = -3476,
         },
-    }, -- [97]
+    },
     {
         Waypoint = 26171,
         Range = 13.31,
@@ -9244,7 +9244,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11215.8,
             x = -3509,
         },
-    }, -- [98]
+    },
     {
         Waypoint = 26171,
         ExtraLineText = "SPEAK_DEATHLY_USHER",
@@ -9253,7 +9253,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11116,
             x = -2897.7,
         },
-    }, -- [99]
+    },
     {
         Qpart = {
             [26171] = {
@@ -9268,7 +9268,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11235.3,
             x = -2838.7,
         },
-    }, -- [100]
+    },
     {
         Qpart = {
             [26171] = {
@@ -9283,7 +9283,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11235.5,
             x = -2836,
         },
-    }, -- [101]
+    },
     {
         Waypoint = 26171,
         Range = 14.99,
@@ -9291,7 +9291,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11183.8,
             x = -2838.2,
         },
-    }, -- [102]
+    },
     {
         Done = {
             26171,
@@ -9300,7 +9300,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11793.5,
             x = -3212.7,
         },
-    }, -- [103]
+    },
     {
         Waypoint = 26175,
         Range = 46.88,
@@ -9308,7 +9308,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11571.7,
             x = -3429.4,
         },
-    }, -- [104]
+    },
     {
         Waypoint = 26175,
         Range = 26.49,
@@ -9316,7 +9316,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11777,
             x = -3775,
         },
-    }, -- [105]
+    },
     {
         Waypoint = 26175,
         Range = 59.14,
@@ -9324,7 +9324,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11963.5,
             x = -3825.5,
         },
-    }, -- [106]
+    },
     {
         Done = {
             26175,
@@ -9333,7 +9333,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12711.5,
             x = -2890.9,
         },
-    }, -- [107]
+    },
     {
         PickUp = {
             26184,
@@ -9342,7 +9342,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12711.5,
             x = -2890.9,
         },
-    }, -- [108]
+    },
     {
         Qpart = {
             [26184] = {
@@ -9357,7 +9357,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12239.3,
             x = -2491.5,
         },
-    }, -- [109]
+    },
     {
         Coord = {
             y = -12712,
@@ -9366,7 +9366,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         Done = {
             26184,
         },
-    }, -- [110]
+    },
     {
         PickUp = {
             26185,
@@ -9375,7 +9375,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12712,
             x = -2891.4,
         },
-    }, -- [111]
+    },
     {
         Coord = {
             y = -12654,
@@ -9384,7 +9384,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         Done = {
             26185,
         },
-    }, -- [112]
+    },
     {
         PickUp = {
             26186,
@@ -9393,7 +9393,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12653,
             x = -2893.2,
         },
-    }, -- [113]
+    },
     {
         Qpart = {
             [26186] = {
@@ -9405,7 +9405,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -11960.3,
             x = -2577.2,
         },
-    }, -- [114]
+    },
     {
         Coord = {
             y = -12711.5,
@@ -9414,7 +9414,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         Done = {
             26186,
         },
-    }, -- [115]
+    },
     {
         PickUp = {
             26187,
@@ -9423,7 +9423,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12711.5,
             x = -2891.4,
         },
-    }, -- [116]
+    },
     {
         Qpart = {
             [26187] = {
@@ -9438,7 +9438,7 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
             y = -12236.3,
             x = -2466.7,
         },
-    }, -- [117]
+    },
     {
         Coord = {
             y = -12711.2,
@@ -9447,10 +9447,10 @@ APR.RouteQuestStepList["A17-BlastedLands"] = {
         Done = {
             26187,
         },
-    }, -- [118]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Burning Steppes
 APR.RouteQuestStepList["A36-BurningSteppes"] = {
@@ -9471,7 +9471,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -8061.8,
             x = -1000.3,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [28174] = {
@@ -9490,7 +9490,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -8352.3,
             x = -1239.4,
         },
-    }, -- [3]
+    },
     {
         Coord = {
             y = -8070.3,
@@ -9498,14 +9498,14 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
         Done = {
             28174,
-            28172, -- [2]
+            28172,
         },
     },
     {
         PickUp = {
             28178,
-            28179, -- [2]
-            28177, -- [3]
+            28179,
+            28177,
         },
         Coord = {
             y = -8077.9,
@@ -9554,8 +9554,8 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
         Done = {
             28178,
-            28179, -- [2]
-            28177, -- [3]
+            28179,
+            28177,
         },
     },
     {
@@ -9587,13 +9587,13 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
     {
         PickUp = {
             28182,
-            28181, -- [2]
+            28181,
         },
         Coord = {
             y = -7736.5,
             x = -728.5,
         },
-    }, -- [12]
+    },
     {
         Qpart = {
             [28181] = {
@@ -9610,7 +9610,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7656.4,
             x = -633,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [28181] = {
@@ -9627,7 +9627,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7634.4,
             x = -626.3,
         },
-    }, -- [14]
+    },
     {
         Qpart = {
             [28182] = {
@@ -9644,7 +9644,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7606.9,
             x = -777,
         },
-    }, -- [15]
+    },
     {
         Qpart = {
             [28181] = {
@@ -9656,7 +9656,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7609.7,
             x = -774.5,
         },
-    }, -- [16]
+    },
     {
         Coord = {
             y = -7735.9,
@@ -9664,9 +9664,9 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
         Done = {
             28182,
-            28181, -- [2]
+            28181,
         },
-    },             -- [17]
+    },
     {
         PickUp = {
             28183,
@@ -9675,7 +9675,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7736.2,
             x = -728.5,
         },
-    }, -- [18]
+    },
     {
         Coord = {
             y = -8078.9,
@@ -9684,7 +9684,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28183,
         },
-    }, -- [19]
+    },
     {
         PickUp = {
             28184,
@@ -9693,7 +9693,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -8079.3,
             x = -1008,
         },
-    }, -- [20]
+    },
     {
         Qpart = {
             [28184] = {
@@ -9705,7 +9705,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -8116.9,
             x = -1523.1,
         },
-    }, -- [21]
+    },
     {
         Coord = {
             y = -7910.9,
@@ -9714,17 +9714,17 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28184,
         },
-    }, -- [22]
+    },
     {
         PickUp = {
             28225,
-            28226, -- [2]
+            28226,
         },
         Coord = {
             y = -7910.9,
             x = -1939.5,
         },
-    }, -- [23]
+    },
     {
         PickUp = {
             28254,
@@ -9733,7 +9733,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7950.7,
             x = -1926.5,
         },
-    }, -- [24]
+    },
     {
         Coord = {
             y = -7957.8,
@@ -9742,7 +9742,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28254,
         },
-    }, -- [25]
+    },
     {
         PickUp = {
             28202,
@@ -9751,7 +9751,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7957.8,
             x = -1897,
         },
-    }, -- [26]
+    },
     {
         Qpart = {
             [28202] = {
@@ -9764,7 +9764,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7955.9,
             x = -1900.1,
         },
-    }, -- [27]
+    },
     {
         Qpart = {
             [28202] = {
@@ -9797,7 +9797,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7951.3,
             x = -1926,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [28225] = {
@@ -9815,11 +9815,11 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7756.8,
             x = -2096.5,
         },
-    }, -- [3]
+    },
     {
         Done = {
             28225,
-            28226, -- [2]
+            28226,
         },
         Coord = {
             y = -7911.5,
@@ -9869,7 +9869,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
     {
         PickUp = {
             28245,
-            28246, -- [2]
+            28246,
         },
         Coord = {
             y = -8071,
@@ -9936,7 +9936,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -8248.3,
             x = -1733,
         },
-    }, -- [13]
+    },
     {
         Coord = {
             y = -8252.5,
@@ -9945,7 +9945,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28246,
         },
-    }, -- [14]
+    },
     {
         Qpart = {
             [28245] = {
@@ -9966,7 +9966,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28245,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             28252,
@@ -9975,7 +9975,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -8071.4,
             x = -1892,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [28252] = {
@@ -10066,17 +10066,17 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28266,
         },
-    }, -- [12]
+    },
     {
         PickUp = {
             28278,
-            28279, -- [2]
+            28279,
         },
         Coord = {
             y = -7692.9,
             x = -1431.5,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [28279] = {
@@ -10095,7 +10095,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7758.2,
             x = -1574.5,
         },
-    }, -- [14]
+    },
     {
         Coord = {
             y = -7786.3,
@@ -10104,7 +10104,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28279,
         },
-    }, -- [15]
+    },
     {
         PickUp = {
             28286,
@@ -10113,7 +10113,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7786.3,
             x = -1524.8,
         },
-    }, -- [16]
+    },
     {
         Coord = {
             y = -7692.8,
@@ -10122,7 +10122,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28278,
         },
-    }, -- [17]
+    },
     {
         Coord = {
             y = -7950.2,
@@ -10131,7 +10131,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28286,
         },
-    }, -- [18]
+    },
     {
         PickUp = {
             28310,
@@ -10140,7 +10140,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7949.7,
             x = -1923.4,
         },
-    }, -- [19]
+    },
     {
         Coord = {
             y = -8412.3,
@@ -10149,7 +10149,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28310,
         },
-    }, -- [20]
+    },
     {
         PickUp = {
             28415,
@@ -10158,18 +10158,18 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -8412,
             x = -2730,
         },
-    }, -- [21]
+    },
     {
         PickUp = {
             28313,
-            28311, -- [2]
-            28312, -- [3]
+            28311,
+            28312,
         },
         Coord = {
             y = -8395.3,
             x = -2784.2,
         },
-    }, -- [22]
+    },
     {
         Qpart = {
             [28312] = {
@@ -10187,7 +10187,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -8390.2,
             x = -2520,
         },
-    }, -- [23]
+    },
     {
         Qpart = {
             [28415] = {
@@ -10200,7 +10200,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -8300.7,
             x = -2491.4,
         },
-    }, -- [24]
+    },
     {
         Qpart = {
             [28311] = {
@@ -10212,7 +10212,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7913.4,
             x = -2408,
         },
-    }, -- [25]
+    },
     {
         Qpart = {
             [28313] = {
@@ -10227,7 +10227,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7597.9,
             x = -2566.9,
         },
-    }, -- [26]
+    },
     {
         Coord = {
             y = -8396,
@@ -10235,21 +10235,21 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         },
         Done = {
             28313,
-            28311, -- [2]
-            28312, -- [3]
+            28311,
+            28312,
         },
-    },             -- [27]
+    },
     {
         PickUp = {
             28316,
-            28314, -- [2]
-            28315, -- [3]
+            28314,
+            28315,
         },
         Coord = {
             y = -8398,
             x = -2782.2,
         },
-    }, -- [28]
+    },
     {
         Coord = {
             y = -8412.3,
@@ -10258,7 +10258,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28415,
         },
-    }, -- [29]
+    },
     {
         Qpart = {
             [28315] = {
@@ -10275,7 +10275,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -8240,
             x = -2510.2,
         },
-    }, -- [30]
+    },
     {
         Qpart = {
             [28315] = {
@@ -10292,7 +10292,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -8054.7,
             x = -2978.9,
         },
-    }, -- [31]
+    },
     {
         Qpart = {
             [28315] = {
@@ -10309,7 +10309,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7764.4,
             x = -2851,
         },
-    }, -- [32]
+    },
     {
         Qpart = {
             [28315] = {
@@ -10326,7 +10326,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7561.3,
             x = -2744.4,
         },
-    }, -- [33]
+    },
     {
         Coord = {
             y = -7561.2,
@@ -10335,7 +10335,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28315,
         },
-    }, -- [34]
+    },
     {
         Fillers = {
             [28314] = {
@@ -10349,7 +10349,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7647,
             x = -3052.5,
         },
-    }, -- [35]
+    },
     {
         Qpart = {
             [28314] = {
@@ -10361,7 +10361,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7770.2,
             x = -2857.7,
         },
-    }, -- [36]
+    },
     {
         Coord = {
             y = -7947,
@@ -10370,7 +10370,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28314,
         },
-    }, -- [37]
+    },
     {
         PickUp = {
             28326,
@@ -10379,7 +10379,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7947,
             x = -2886.2,
         },
-    }, -- [38]
+    },
     {
         Coord = {
             y = -8395.3,
@@ -10388,18 +10388,18 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28326,
         },
-    }, -- [39]
+    },
     {
         PickUp = {
             28319,
-            28317, -- [2]
-            28318, -- [3]
+            28317,
+            28318,
         },
         Coord = {
             y = -8395.3,
             x = -2784.7,
         },
-    }, -- [40]
+    },
     {
         Range = 19.8,
         Waypoint = 28317,
@@ -10407,7 +10407,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7976.9,
             x = -2512.5,
         },
-    }, -- [41]
+    },
     {
         Waypoint = 28317,
         ExtraLineText = "USE_DISGUISE",
@@ -10416,7 +10416,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7956.4,
             x = -2531.5,
         },
-    }, -- [42]
+    },
     {
         Coord = {
             y = -7835.7,
@@ -10425,7 +10425,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28317,
         },
-    }, -- [43]
+    },
     {
         Range = 9,
         Waypoint = 28319,
@@ -10433,7 +10433,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7878,
             x = -2526.4,
         },
-    }, -- [44]
+    },
     {
         Range = 6.85,
         Waypoint = 28319,
@@ -10441,7 +10441,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7939.4,
             x = -2535.7,
         },
-    }, -- [45]
+    },
     {
         Range = 9.44,
         Waypoint = 28319,
@@ -10449,7 +10449,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7967,
             x = -2517.5,
         },
-    }, -- [46]
+    },
     {
         Range = 13.37,
         Waypoint = 28319,
@@ -10457,7 +10457,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7774.3,
             x = -2485,
         },
-    }, -- [47]
+    },
     {
         Range = 14.78,
         Waypoint = 28319,
@@ -10465,7 +10465,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7782.2,
             x = -2550.2,
         },
-    }, -- [48]
+    },
     {
         Range = 12.39,
         Waypoint = 28319,
@@ -10473,7 +10473,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7913.3,
             x = -2630.2,
         },
-    }, -- [49]
+    },
     {
         Coord = {
             y = -7886.3,
@@ -10482,7 +10482,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28319,
         },
-    }, -- [50]
+    },
     {
         Range = 7.69,
         Waypoint = 28318,
@@ -10490,7 +10490,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7910.4,
             x = -2634.2,
         },
-    }, -- [51]
+    },
     {
         Range = 10.76,
         Waypoint = 28318,
@@ -10498,7 +10498,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7890.3,
             x = -2609.5,
         },
-    }, -- [52]
+    },
     {
         Range = 13.63,
         Waypoint = 28318,
@@ -10506,7 +10506,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7785.9,
             x = -2703,
         },
-    }, -- [53]
+    },
     {
         Range = 5.52,
         Waypoint = 28318,
@@ -10514,7 +10514,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7807.4,
             x = -2655.7,
         },
-    }, -- [54]
+    },
     {
         Coord = {
             y = -7978.2,
@@ -10523,7 +10523,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28318,
         },
-    }, -- [55]
+    },
     {
         PickUp = {
             28327,
@@ -10532,7 +10532,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7977.2,
             x = -2674.4,
         },
-    }, -- [56]
+    },
     {
         Range = 15.14,
         Waypoint = 28327,
@@ -10540,7 +10540,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7784.9,
             x = -2699.7,
         },
-    }, -- [57]
+    },
     {
         Coord = {
             y = -8395,
@@ -10549,7 +10549,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28327,
         },
-    }, -- [58]
+    },
     {
         PickUp = {
             28320,
@@ -10558,7 +10558,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -8395.3,
             x = -2781,
         },
-    }, -- [59]
+    },
     {
         Qpart = {
             [28320] = {
@@ -10573,7 +10573,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7924.4,
             x = -2616.5,
         },
-    }, -- [60]
+    },
     {
         Coord = {
             y = -8395.3,
@@ -10582,7 +10582,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28320,
         },
-    }, -- [61]
+    },
     {
         PickUp = {
             28321,
@@ -10591,7 +10591,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -8395.5,
             x = -2784.9,
         },
-    }, -- [62]
+    },
     {
         Range = 32.83,
         Waypoint = 28321,
@@ -10599,7 +10599,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7970,
             x = -2512.5,
         },
-    }, -- [63]
+    },
     {
         Range = 7.35,
         Waypoint = 28321,
@@ -10607,7 +10607,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7930.3,
             x = -2536.7,
         },
-    }, -- [64]
+    },
     {
         Qpart = {
             [28321] = {
@@ -10619,7 +10619,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7836.2,
             x = -2560.5,
         },
-    }, -- [65]
+    },
     {
         Range = 9.36,
         Waypoint = 28321,
@@ -10627,7 +10627,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7950.4,
             x = -2531.9,
         },
-    }, -- [66]
+    },
     {
         Range = 6.13,
         Waypoint = 28321,
@@ -10635,7 +10635,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7965.8,
             x = -2504.4,
         },
-    }, -- [67]
+    },
     {
         Range = 12.71,
         Waypoint = 28321,
@@ -10643,7 +10643,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7771.2,
             x = -2486.5,
         },
-    }, -- [68]
+    },
     {
         Range = 15.14,
         Waypoint = 28321,
@@ -10651,7 +10651,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7783.9,
             x = -2547.9,
         },
-    }, -- [69]
+    },
     {
         Range = 11.61,
         Waypoint = 28321,
@@ -10659,7 +10659,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7914.7,
             x = -2630,
         },
-    }, -- [70]
+    },
     {
         Qpart = {
             [28321] = {
@@ -10671,7 +10671,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7887.5,
             x = -2659.7,
         },
-    }, -- [71]
+    },
     {
         Range = 12.56,
         Waypoint = 28321,
@@ -10679,7 +10679,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7906.4,
             x = -2620.4,
         },
-    }, -- [72]
+    },
     {
         Range = 21.49,
         Waypoint = 28321,
@@ -10687,7 +10687,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7785.7,
             x = -2700,
         },
-    }, -- [73]
+    },
     {
         Range = 6.75,
         Waypoint = 28321,
@@ -10695,7 +10695,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7813.3,
             x = -2649.7,
         },
-    }, -- [74]
+    },
     {
         Qpart = {
             [28321] = {
@@ -10707,7 +10707,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7976.9,
             x = -2674.9,
         },
-    }, -- [75]
+    },
     {
         Range = 9.12,
         Waypoint = 28321,
@@ -10715,7 +10715,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7807.9,
             x = -2651.4,
         },
-    }, -- [76]
+    },
     {
         Range = 11.05,
         Waypoint = 28321,
@@ -10723,7 +10723,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -7788.9,
             x = -2697.7,
         },
-    }, -- [77]
+    },
     {
         Coord = {
             y = -8395.3,
@@ -10732,7 +10732,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28321,
         },
-    }, -- [78]
+    },
     {
         PickUp = {
             28322,
@@ -10741,7 +10741,7 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
             y = -8395.3,
             x = -2785,
         },
-    }, -- [79]
+    },
     {
         Coord = {
             y = -8397.8,
@@ -10750,10 +10750,10 @@ APR.RouteQuestStepList["A36-BurningSteppes"] = {
         Done = {
             28322,
         },
-    }, -- [80]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- 7-16 Kharanos
 APR.RouteQuestStepList["A27-Kharanos"] = {
@@ -10773,7 +10773,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5583.9,
             x = -510.4,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             6387,
@@ -10782,7 +10782,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5594.9,
             x = -541.3,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [384] = {
@@ -10880,29 +10880,29 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5595.5,
             x = -486.9,
         },
-    }, -- [12]
+    },
     {
         Done = {
             25724,
-            315, -- [2]
-            384, -- [3]
+            315,
+            384,
         },
         Coord = {
             y = -5617.2,
             x = -499.7,
         },
-    }, -- [13]
+    },
     {
         PickUp = {
             25667,
-            25668, -- [2]
-            313,   -- [3]
+            25668,
+            313,
         },
         Coord = {
             y = -5643.5,
             x = -492.4,
         },
-    }, -- [14]
+    },
     {
         Waypoint = 384,
         Fillers = {
@@ -10915,7 +10915,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5669.3,
             x = -291.5,
         },
-    }, -- [15]
+    },
     {
         Qpart = {
             [313] = {
@@ -10936,7 +10936,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5475.8,
             x = -228.5,
         },
-    }, -- [16]
+    },
     {
         Qpart = {
             [313] = {
@@ -10957,7 +10957,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5501.4,
             x = -271.3,
         },
-    }, -- [17]
+    },
     {
         Qpart = {
             [313] = {
@@ -10978,7 +10978,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5387.4,
             x = -277.9,
         },
-    }, -- [18]
+    },
     {
         Waypoint = 313,
         Range = 15.38,
@@ -10986,7 +10986,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5513,
             x = -225.4,
         },
-    }, -- [19]
+    },
     {
         Waypoint = 313,
         Range = 26.44,
@@ -10994,7 +10994,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5664.9,
             x = -293.9,
         },
-    }, -- [20]
+    },
     {
         Waypoint = 313,
         Range = 18.97,
@@ -11002,18 +11002,18 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5621.8,
             x = -390,
         },
-    }, -- [21]
+    },
     {
         Done = {
             25667,
-            25668, -- [2]
-            313,   -- [3]
+            25668,
+            313,
         },
         Coord = {
             y = -5643.4,
             x = -492.2,
         },
-    }, -- [22]
+    },
     {
         PickUp = {
             25792,
@@ -11022,7 +11022,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5645.3,
             x = -492.8,
         },
-    }, -- [23]
+    },
     {
         PickUp = {
             412,
@@ -11031,7 +11031,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5636,
             x = -470.9,
         },
-    }, -- [24]
+    },
     {
         Qpart = {
             [25792] = {
@@ -11054,7 +11054,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5849.7,
             x = -666,
         },
-    }, -- [25]
+    },
     {
         Qpart = {
             [412] = {
@@ -11066,7 +11066,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5831.4,
             x = -667.3,
         },
-    }, -- [26]
+    },
     {
         Coord = {
             y = -5645.4,
@@ -11075,7 +11075,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         Done = {
             25792,
         },
-    }, -- [27]
+    },
     {
         Coord = {
             y = -5636.2,
@@ -11084,7 +11084,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         Done = {
             412,
         },
-    }, -- [28]
+    },
     {
         PickUp = {
             25838,
@@ -11093,7 +11093,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5644.9,
             x = -492.4,
         },
-    }, -- [29]
+    },
     {
         Range = 13.92,
         Waypoint = 25838,
@@ -11101,7 +11101,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5569.3,
             x = -502.8,
         },
-    }, -- [30]
+    },
     {
         Coord = {
             y = -5478.9,
@@ -11110,7 +11110,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         Done = {
             25838,
         },
-    }, -- [31]
+    },
     {
         PickUp = {
             25839,
@@ -11119,7 +11119,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5478.7,
             x = -645.7,
         },
-    }, -- [32]
+    },
     {
         Qpart = {
             [25839] = {
@@ -11131,7 +11131,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5461.9,
             x = -640.5,
         },
-    }, -- [33]
+    },
     {
         Coord = {
             y = -5694.4,
@@ -11140,18 +11140,18 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         Done = {
             25839,
         },
-    }, -- [34]
+    },
     {
         PickUp = {
             25841,
-            25840, -- [2]
-            28868, -- [3]
+            25840,
+            28868,
         },
         Coord = {
             y = -5695.4,
             x = -924.3,
         },
-    }, -- [35]
+    },
     {
         Qpart = {
             [25841] = {
@@ -11178,7 +11178,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5705.4,
             x = -1024.5,
         },
-    }, -- [36]
+    },
     {
         Qpart = {
             [25840] = {
@@ -11201,7 +11201,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5760.7,
             x = -986.5,
         },
-    }, -- [37]
+    },
     {
         Qpart = {
             [25841] = {
@@ -11228,7 +11228,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5810.4,
             x = -955.8,
         },
-    }, -- [38]
+    },
     {
         Qpart = {
             [28868] = {
@@ -11249,7 +11249,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5750.2,
             x = -959.8,
         },
-    }, -- [39]
+    },
     {
         Coord = {
             y = -5696.2,
@@ -11257,10 +11257,10 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
         Done = {
             25841,
-            25840, -- [2]
-            28868, -- [3]
+            25840,
+            28868,
         },
-    },             -- [40]
+    },
     {
         PickUp = {
             25882,
@@ -11269,7 +11269,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5694.3,
             x = -923.5,
         },
-    }, -- [41]
+    },
     {
         Range = 31.58,
         Waypoint = 25882,
@@ -11277,7 +11277,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5616.9,
             x = -1169.5,
         },
-    }, -- [42]
+    },
     {
         Coord = {
             y = -5538.2,
@@ -11286,7 +11286,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         Done = {
             25882,
         },
-    }, -- [43]
+    },
     {
         PickUp = {
             25932,
@@ -11295,7 +11295,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5538.4,
             x = -1310.5,
         },
-    }, -- [44]
+    },
     {
         Qpart = {
             [25932] = {
@@ -11307,7 +11307,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5542.4,
             x = -1310.5,
         },
-    }, -- [45]
+    },
     {
         Coord = {
             y = -5538,
@@ -11316,7 +11316,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         Done = {
             25932,
         },
-    }, -- [46]
+    },
     {
         PickUp = {
             25905,
@@ -11325,7 +11325,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5536.8,
             x = -1323.1,
         },
-    }, -- [47]
+    },
     {
         PickUp = {
             314,
@@ -11334,7 +11334,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5513.8,
             x = -1304.5,
         },
-    }, -- [48]
+    },
     {
         Range = 4.5,
         Waypoint = 314,
@@ -11342,7 +11342,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5524.9,
             x = -1271.3,
         },
-    }, -- [49]
+    },
     {
         Range = 8.4,
         Waypoint = 314,
@@ -11350,7 +11350,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5535.5,
             x = -1255.8,
         },
-    }, -- [50]
+    },
     {
         Qpart = {
             [314] = {
@@ -11362,7 +11362,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5426.7,
             x = -1259.5,
         },
-    }, -- [51]
+    },
     {
         Coord = {
             y = -5513.2,
@@ -11371,7 +11371,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         Done = {
             314,
         },
-    }, -- [52]
+    },
     {
         Qpart = {
             [25905] = {
@@ -11384,7 +11384,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5786.4,
             x = -1241.5,
         },
-    }, -- [53]
+    },
     {
         Coord = {
             y = -5536.9,
@@ -11393,7 +11393,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         Done = {
             25905,
         },
-    }, -- [54]
+    },
     {
         PickUp = {
             25933,
@@ -11402,7 +11402,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5538.2,
             x = -1311,
         },
-    }, -- [55]
+    },
     {
         PickUp = {
             25937,
@@ -11411,7 +11411,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5672.9,
             x = -1593.3,
         },
-    }, -- [56]
+    },
     {
         PickUp = {
             433,
@@ -11420,7 +11420,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5714,
             x = -1579.4,
         },
-    }, -- [57]
+    },
     {
         Coord = {
             y = -5726,
@@ -11429,7 +11429,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         Done = {
             25933,
         },
-    }, -- [58]
+    },
     {
         PickUp = {
             432,
@@ -11438,7 +11438,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5726,
             x = -1599.5,
         },
-    }, -- [59]
+    },
     {
         Waypoint = 25937,
         Fillers = {
@@ -11458,7 +11458,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5741,
             x = -1675.1,
         },
-    }, -- [60]
+    },
     {
         Qpart = {
             [433] = {
@@ -11486,7 +11486,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5622.4,
             x = -1678,
         },
-    }, -- [61]
+    },
     {
         Qpart = {
             [25937] = {
@@ -11506,7 +11506,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5607,
             x = -1683.8,
         },
-    }, -- [62]
+    },
     {
         Qpart = {
             [432] = {
@@ -11518,7 +11518,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5798.9,
             x = -1626.1,
         },
-    }, -- [63]
+    },
     {
         Coord = {
             y = -5714.3,
@@ -11527,7 +11527,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         Done = {
             433,
         },
-    }, -- [64]
+    },
     {
         Coord = {
             y = -5725.8,
@@ -11536,7 +11536,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         Done = {
             432,
         },
-    }, -- [65]
+    },
     {
         Coord = {
             y = -5672.9,
@@ -11545,7 +11545,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         Done = {
             25937,
         },
-    }, -- [66]
+    },
     {
         PickUp = {
             25986,
@@ -11554,7 +11554,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5714,
             x = -1579.5,
         },
-    }, -- [67]
+    },
     {
         Range = 17.1,
         Waypoint = 25986,
@@ -11562,7 +11562,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5638,
             x = -1526.9,
         },
-    }, -- [68]
+    },
     {
         Coord = {
             y = -5520.4,
@@ -11571,17 +11571,17 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         Done = {
             25986,
         },
-    }, -- [69]
+    },
     {
         PickUp = {
             25978,
-            25979, -- [2]
+            25979,
         },
         Coord = {
             y = -5520.3,
             x = -1915.8,
         },
-    }, -- [70]
+    },
     {
         Qpart = {
             [25979] = {
@@ -11596,7 +11596,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5642,
             x = -1979.6,
         },
-    }, -- [71]
+    },
     {
         Coord = {
             y = -5519.7,
@@ -11604,9 +11604,9 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         },
         Done = {
             25978,
-            25979, -- [2]
+            25979,
         },
-    },             -- [72]
+    },
     {
         PickUp = {
             25997,
@@ -11615,7 +11615,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5521.4,
             x = -1920,
         },
-    }, -- [73]
+    },
     {
         Qpart = {
             [25997] = {
@@ -11632,7 +11632,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5932,
             x = -2034.4,
         },
-    }, -- [74]
+    },
     {
         Qpart = {
             [25997] = {
@@ -11644,7 +11644,7 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             y = -5914,
             x = -2036.5,
         },
-    }, -- [75]
+    },
     {
         Coord = {
             y = -5521.2,
@@ -11653,10 +11653,10 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
         Done = {
             25997,
         },
-    }, -- [76]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- 16-29 Loch Modan
 APR.RouteQuestStepList["A48-LochModan"] = {
@@ -11677,7 +11677,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         Done = {
             26854,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             26855,
@@ -11686,7 +11686,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5578.4,
             x = -2154.4,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [26855] = {
@@ -11753,7 +11753,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
     {
         PickUp = {
             26146,
-            26145, -- [2]
+            26145,
         },
         Coord = {
             y = -5866.5,
@@ -11767,7 +11767,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5786,
             x = -2635.7,
         },
-    }, -- [12]
+    },
     {
         Waypoint = 26146,
         Range = 21.97,
@@ -11775,7 +11775,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5715,
             x = -2788.7,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [26146] = {
@@ -11790,7 +11790,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5859.2,
             x = -2891.2,
         },
-    }, -- [14]
+    },
     {
         Waypoint = 26146,
         Range = 20.88,
@@ -11798,7 +11798,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5762.7,
             x = -2831.2,
         },
-    }, -- [15]
+    },
     {
         Waypoint = 26146,
         Range = 30.16,
@@ -11806,7 +11806,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5711.4,
             x = -2763,
         },
-    }, -- [16]
+    },
     {
         Waypoint = 26146,
         Range = 17.57,
@@ -11814,27 +11814,27 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5792.3,
             x = -2633.2,
         },
-    }, -- [17]
+    },
     {
         Done = {
             26146,
-            26145, -- [2]
+            26145,
         },
         Coord = {
             y = -5866.5,
             x = -2637.4,
         },
-    }, -- [18]
+    },
     {
         PickUp = {
             26148,
-            26147, -- [2]
+            26147,
         },
         Coord = {
             y = -5866.5,
             x = -2637.4,
         },
-    }, -- [19]
+    },
     {
         Waypoint = 26148,
         Range = 14.01,
@@ -11842,7 +11842,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5789.2,
             x = -2634.2,
         },
-    }, -- [20]
+    },
     {
         Waypoint = 26148,
         Range = 17.61,
@@ -11850,7 +11850,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5710.4,
             x = -2742,
         },
-    }, -- [21]
+    },
     {
         Waypoint = 26148,
         Range = 17.14,
@@ -11858,7 +11858,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5768.4,
             x = -2840.7,
         },
-    }, -- [22]
+    },
     {
         Waypoint = 26148,
         Range = 12.12,
@@ -11866,7 +11866,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5761.4,
             x = -2904.9,
         },
-    }, -- [23]
+    },
     {
         Waypoint = 26148,
         Fillers = {
@@ -11880,7 +11880,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5676.8,
             x = -2967.5,
         },
-    }, -- [24]
+    },
     {
         Waypoint = 26148,
         Fillers = {
@@ -11894,7 +11894,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5588.3,
             x = -2977.9,
         },
-    }, -- [25]
+    },
     {
         Waypoint = 26148,
         Fillers = {
@@ -11908,7 +11908,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5582.3,
             x = -2948.5,
         },
-    }, -- [26]
+    },
     {
         Waypoint = 26148,
         Fillers = {
@@ -11922,7 +11922,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5618.9,
             x = -2912.4,
         },
-    }, -- [27]
+    },
     {
         Waypoint = 26148,
         Fillers = {
@@ -11936,7 +11936,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5622.2,
             x = -2977.5,
         },
-    }, -- [28]
+    },
     {
         Qpart = {
             [26148] = {
@@ -11954,7 +11954,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5611.9,
             x = -2939.2,
         },
-    }, -- [29]
+    },
     {
         Qpart = {
             [26147] = {
@@ -11967,7 +11967,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5646.7,
             x = -2960.5,
         },
-    }, -- [30]
+    },
     {
         Waypoint = 26148,
         Range = 21.23,
@@ -11975,7 +11975,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5760,
             x = -2905.2,
         },
-    }, -- [31]
+    },
     {
         Waypoint = 26148,
         Range = 42.52,
@@ -11983,7 +11983,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5708.8,
             x = -2759.9,
         },
-    }, -- [32]
+    },
     {
         Waypoint = 26148,
         Range = 23.49,
@@ -11991,17 +11991,17 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5793,
             x = -2632.9,
         },
-    }, -- [33]
+    },
     {
         Done = {
             26148,
-            26147, -- [2]
+            26147,
         },
         Coord = {
             y = -5867.7,
             x = -2637.2,
         },
-    }, -- [34]
+    },
     {
         PickUp = {
             26176,
@@ -12010,7 +12010,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5867.2,
             x = -2638.5,
         },
-    }, -- [35]
+    },
     {
         Waypoint = 26176,
         Range = 22.76,
@@ -12018,7 +12018,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5787.8,
             x = -2635.7,
         },
-    }, -- [36]
+    },
     {
         GetFP = 8,
         Range = 0.75,
@@ -12026,7 +12026,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5424.5,
             x = -2929.7,
         },
-    }, -- [37]
+    },
     {
         Done = {
             26176,
@@ -12035,17 +12035,17 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5344,
             x = -2960.4,
         },
-    }, -- [38]
+    },
     {
         PickUp = {
             26842,
-            13636, -- [2]
+            13636,
         },
         Coord = {
             y = -5343.9,
             x = -2960.2,
         },
-    }, -- [39]
+    },
     {
         PickUp = {
             26860,
@@ -12054,7 +12054,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5390.9,
             x = -2953.7,
         },
-    }, -- [40]
+    },
     {
         Waypoint = 26842,
         Range = 11.32,
@@ -12062,7 +12062,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5291.7,
             x = -2984.9,
         },
-    }, -- [41]
+    },
     {
         PickUp = {
             25118,
@@ -12071,7 +12071,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5276.2,
             x = -2970,
         },
-    }, -- [42]
+    },
     {
         PickUp = {
             13648,
@@ -12080,7 +12080,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5342.4,
             x = -3022.2,
         },
-    }, -- [43]
+    },
     {
         Fillers = {
             [25118] = {
@@ -12100,7 +12100,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -4817.3,
             x = -2695.4,
         },
-    }, -- [44]
+    },
     {
         PickUp = {
             26843,
@@ -12109,7 +12109,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -4817.3,
             x = -2695.4,
         },
-    }, -- [45]
+    },
     {
         Qpart = {
             [26843] = {
@@ -12132,7 +12132,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5064.3,
             x = -2708.7,
         },
-    }, -- [46]
+    },
     {
         Fillers = {
             [25118] = {
@@ -12152,7 +12152,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -4817.2,
             x = -2695.5,
         },
-    }, -- [48]
+    },
     {
         PickUp = {
             26844,
@@ -12161,7 +12161,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -4817.2,
             x = -2695.5,
         },
-    }, -- [49]
+    },
     {
         Qpart = {
             [26844] = {
@@ -12182,7 +12182,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -4804.8,
             x = -2956.5,
         },
-    }, -- [50]
+    },
     {
         Fillers = {
             [25118] = {
@@ -12203,14 +12203,14 @@ APR.RouteQuestStepList["A48-LochModan"] = {
     {
         PickUp = {
             26846,
-            26845, -- [2]
-            26863, -- [3]
+            26845,
+            26863,
         },
         Coord = {
             y = -4817,
             x = -2695.2,
         },
-    }, -- [2]
+    },
     {
         Waypoint = 26846,
         Fillers = {
@@ -12226,7 +12226,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -4822.2,
             x = -2968.5,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [26845] = {
@@ -12281,8 +12281,8 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
         Done = {
             26846,
-            26863, -- [2]
-            26845, -- [3]
+            26863,
+            26845,
         },
         Coord = {
             y = -4815.9,
@@ -12317,7 +12317,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5015,
             x = -2918.5,
         },
-    }, -- [47]
+    },
     {
         Qpart = {
             [26842] = {
@@ -12337,7 +12337,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5532.4,
             x = -2922,
         },
-    }, -- [2]
+    },
     {
         Range = 10.81,
         Waypoint = 13648,
@@ -12345,7 +12345,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5557.8,
             x = -2923.2,
         },
-    }, -- [3]
+    },
     {
         Range = 11.91,
         Waypoint = 13648,
@@ -12390,8 +12390,8 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
         Done = {
             26860,
-            25118, -- [2]
-            26842, -- [3]
+            25118,
+            26842,
             26864,
             13648,
             13656,
@@ -12414,17 +12414,17 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5389.9,
             x = -2953,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             26928,
-            26929, -- [2]
+            26929,
         },
         Coord = {
             y = -5389.9,
             x = -2953,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             26932,
@@ -12468,8 +12468,8 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
         Done = {
             26928,
-            26929, -- [2]
-            26932, -- [3]
+            26929,
+            26932,
         },
     },
     {
@@ -12529,7 +12529,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5701.2,
             x = -3548.5,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [309] = {
@@ -12541,7 +12541,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5700.9,
             x = -3547,
         },
-    }, -- [3]
+    },
     {
         Range = 15.31,
         Waypoint = 13655,
@@ -12558,7 +12558,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5832.9,
             x = -3694.2,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = -5700.9,
@@ -12667,7 +12667,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5693.4,
             x = -3998.2,
         },
-    }, -- [12]
+    },
     {
         Qpart = {
             [13650] = {
@@ -12684,7 +12684,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5591,
             x = -3928.4,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [26961] = {
@@ -12696,7 +12696,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5589.9,
             x = -3930,
         },
-    }, -- [14]
+    },
     {
         Coord = {
             y = -5705.5,
@@ -12704,9 +12704,9 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
         Done = {
             26961,
-            13650, -- [2]
+            13650,
         },
-    },             -- [15]
+    },
     {
         PickUp = {
             13647,
@@ -12715,7 +12715,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5712.9,
             x = -3784,
         },
-    }, -- [16]
+    },
     {
         Range = 25.73,
         Waypoint = 13647,
@@ -12723,7 +12723,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5479.4,
             x = -3819.7,
         },
-    }, -- [17]
+    },
     {
         Range = 42.07,
         Waypoint = 13647,
@@ -12731,7 +12731,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5460.8,
             x = -3984.7,
         },
-    }, -- [18]
+    },
     {
         Range = 28.89,
         Waypoint = 13647,
@@ -12739,7 +12739,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5625.8,
             x = -4317.3,
         },
-    }, -- [19]
+    },
     {
         PickUp = {
             27025,
@@ -12748,7 +12748,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5653.7,
             x = -4277.4,
         },
-    }, -- [20]
+    },
     {
         Coord = {
             y = -5621.9,
@@ -12757,17 +12757,17 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         Done = {
             13647,
         },
-    }, -- [21]
+    },
     {
         PickUp = {
             27028,
-            27030, -- [2]
+            27030,
         },
         Coord = {
             y = -5621.5,
             x = -4248.7,
         },
-    }, -- [22]
+    },
     {
         PickUp = {
             27016,
@@ -12776,7 +12776,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5690.8,
             x = -4295.9,
         },
-    }, -- [23]
+    },
     {
         GetFP = 555,
         Range = 0.61,
@@ -12784,7 +12784,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5665.7,
             x = -4252.2,
         },
-    }, -- [24]
+    },
     {
         PickUp = {
             27031,
@@ -12793,7 +12793,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5677.8,
             x = -4246.2,
         },
-    }, -- [25]
+    },
     {
         Qpart = {
             [27031] = {
@@ -12822,7 +12822,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5147.8,
             x = -4011.7,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [27030] = {
@@ -12837,7 +12837,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5260.2,
             x = -4009.7,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             13660,
@@ -12869,7 +12869,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5194.7,
             x = -3543.9,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             13655,
@@ -12878,7 +12878,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5204.4,
             x = -3134.5,
         },
-    }, -- [3]
+    },
     {
         Coord = {
             y = -5339.7,
@@ -12886,8 +12886,8 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
         Done = {
             13659,
-            13660, -- [2]
-            13657, -- [3]
+            13660,
+            13657,
             13658,
             13655,
         },
@@ -12900,7 +12900,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5339.7,
             x = -3019.7,
         },
-    }, -- [3]
+    },
     {
         Coord = {
             y = -5339.7,
@@ -12936,7 +12936,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5677.3,
             x = -4246.3,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = -5656,
@@ -12945,7 +12945,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         Done = {
             27025,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             27026,
@@ -12971,7 +12971,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
         Done = {
             27028,
-            27030, -- [2]
+            27030,
         },
     },
     {
@@ -13034,7 +13034,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5890.9,
             x = -3959.5,
         },
-    }, -- [12]
+    },
     {
         Qpart = {
             [27036] = {
@@ -13046,7 +13046,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5439.9,
             x = -4189.2,
         },
-    }, -- [13]
+    },
     {
         Range = 24.99,
         Waypoint = 27026,
@@ -13054,7 +13054,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5616.9,
             x = -4306.3,
         },
-    }, -- [14]
+    },
     {
         Coord = {
             y = -5653.5,
@@ -13063,7 +13063,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         Done = {
             27026,
         },
-    }, -- [15]
+    },
     {
         Coord = {
             y = -5689.4,
@@ -13072,7 +13072,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         Done = {
             27036,
         },
-    }, -- [16]
+    },
     {
         PickUp = {
             27037,
@@ -13081,7 +13081,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5689.2,
             x = -4295.8,
         },
-    }, -- [17]
+    },
     {
         Coord = {
             y = -5675.2,
@@ -13090,7 +13090,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         Done = {
             27037,
         },
-    }, -- [18]
+    },
     {
         Coord = {
             y = -5677.7,
@@ -13099,7 +13099,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         Done = {
             27033,
         },
-    }, -- [19]
+    },
     {
         PickUp = {
             27034,
@@ -13108,7 +13108,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5677.7,
             x = -4246,
         },
-    }, -- [20]
+    },
     {
         Coord = {
             y = -5021.5,
@@ -13117,7 +13117,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         Done = {
             27034,
         },
-    }, -- [21]
+    },
     {
         PickUp = {
             27035,
@@ -13126,7 +13126,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5021.5,
             x = -3607.5,
         },
-    }, -- [22]
+    },
     {
         Qpart = {
             [27035] = {
@@ -13139,7 +13139,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -4924.4,
             x = -3387.7,
         },
-    }, -- [23]
+    },
     {
         Coord = {
             y = -5022.9,
@@ -13148,7 +13148,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         Done = {
             27035,
         },
-    }, -- [24]
+    },
     {
         PickUp = {
             27074,
@@ -13157,7 +13157,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -5022.9,
             x = -3607.5,
         },
-    }, -- [25]
+    },
     {
         Coord = {
             y = -4976.5,
@@ -13166,17 +13166,17 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         Done = {
             27074,
         },
-    }, -- [26]
+    },
     {
         PickUp = {
             27075,
-            27077, -- [2]
+            27077,
         },
         Coord = {
             y = -4976.9,
             x = -3762.4,
         },
-    }, -- [27]
+    },
     {
         Qpart = {
             [27077] = {
@@ -13199,9 +13199,9 @@ APR.RouteQuestStepList["A48-LochModan"] = {
         },
         Done = {
             27077,
-            27075, -- [2]
+            27075,
         },
-    },             -- [2]
+    },
     {
         PickUp = {
             27078,
@@ -13210,7 +13210,7 @@ APR.RouteQuestStepList["A48-LochModan"] = {
             y = -4977.2,
             x = -3761.5,
         },
-    }, -- [3]
+    },
     {
         Range = 14.28,
         Waypoint = 27078,
@@ -13278,14 +13278,14 @@ APR.RouteQuestStepList["A48-LochModan"] = {
     },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- 29-38 Wetlands
 APR.RouteQuestStepList["A56-Wetlands"] = {
     {
         PickUp = {
             25211,
-            25395, -- [2]
+            25395,
         },
         Coord = {
             y = -4330.7,
@@ -13306,17 +13306,17 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -4196.5,
             x = -2366.5,
         },
-    }, -- [2]
+    },
     {
         Done = {
             25395,
-            25211, -- [2]
+            25211,
         },
         Coord = {
             y = -4330.4,
             x = -2453.5,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             25770,
@@ -13391,8 +13391,8 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
     {
         Done = {
             25721,
-            25722, -- [2]
-            25723, -- [3]
+            25722,
+            25723,
         },
         Coord = {
             y = -4120.4,
@@ -13402,14 +13402,14 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
     {
         PickUp = {
             25727,
-            25725, -- [2]
-            25726, -- [3]
+            25725,
+            25726,
         },
         Coord = {
             y = -4120,
             x = -2773.5,
         },
-    }, -- [12]
+    },
     {
         Qpart = {
             [25726] = {
@@ -13426,7 +13426,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -4194.9,
             x = -2674.5,
         },
-    }, -- [13]
+    },
     {
         Coord = {
             y = -4116.7,
@@ -13435,7 +13435,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         Done = {
             25726,
         },
-    }, -- [14]
+    },
     {
         PickUp = {
             25734,
@@ -13444,7 +13444,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -4116.7,
             x = -2765.7,
         },
-    }, -- [15]
+    },
     {
         Qpart = {
             [25727] = {
@@ -13461,7 +13461,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -4297.2,
             x = -3021.2,
         },
-    }, -- [16]
+    },
     {
         Qpart = {
             [25725] = {
@@ -13473,7 +13473,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -4208.4,
             x = -2897.2,
         },
-    }, -- [17]
+    },
     {
         Coord = {
             y = -4120.4,
@@ -13481,19 +13481,19 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
         Done = {
             25727,
-            25725, -- [2]
+            25725,
         },
-    },             -- [18]
+    },
     {
         PickUp = {
             25735,
-            25733, -- [2]
+            25733,
         },
         Coord = {
             y = -4122.8,
             x = -2775,
         },
-    }, -- [19]
+    },
     {
         Waypoint = 25733,
         Fillers = {
@@ -13507,7 +13507,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3893,
             x = -2570.5,
         },
-    }, -- [20]
+    },
     {
         Qpart = {
             [25734] = {
@@ -13528,7 +13528,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3968.2,
             x = -2367.2,
         },
-    }, -- [21]
+    },
     {
         Coord = {
             y = -3957,
@@ -13540,7 +13540,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             MobId = 41167,
             Qid = 25736,
         },
-    }, -- [22]
+    },
     {
         Qpart = {
             [25733] = {
@@ -13560,7 +13560,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3855.5,
             x = -2400.7,
         },
-    }, -- [23]
+    },
     {
         Qpart = {
             [25733] = {
@@ -13572,7 +13572,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3933.5,
             x = -2668.2,
         },
-    }, -- [24]
+    },
     {
         Coord = {
             y = -4119.9,
@@ -13580,11 +13580,11 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
         Done = {
             25733,
-            25734, -- [2]
-            25735, -- [3]
+            25734,
+            25735,
             25736,
         },
-    }, -- [25]
+    },
     {
         PickUp = {
             25777,
@@ -13593,7 +13593,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -4119.2,
             x = -2770.7,
         },
-    }, -- [26]
+    },
     {
         GetFP = 552,
         Range = 5.91,
@@ -13610,7 +13610,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3263.5,
             x = -2719.7,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             26120,
@@ -13647,23 +13647,23 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
     {
         Done = {
             25926,
-            26120, -- [2]
+            26120,
         },
         Coord = {
             y = -3253,
             x = -2721.2,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             25939,
-            25927, -- [2]
+            25927,
         },
         Coord = {
             y = -3252.4,
             x = -2721.2,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [25939] = {
@@ -13685,7 +13685,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
     {
         Done = {
             25927,
-            25939, -- [2]
+            25939,
         },
         Coord = {
             y = -3253.2,
@@ -13726,7 +13726,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -2650.5,
             x = -2448.7,
         },
-    }, -- [2]
+    },
     {
         Done = {
             26327,
@@ -13735,7 +13735,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -2621.5,
             x = -2433.4,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             26127,
@@ -13816,14 +13816,14 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
     {
         PickUp = {
             25853,
-            25849, -- [2]
-            25850, -- [3]
+            25849,
+            25850,
         },
         Coord = {
             y = -3238,
             x = -1993,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [25853] = {
@@ -13849,7 +13849,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3206.9,
             x = -1872,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = -3237.9,
@@ -13857,10 +13857,10 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
         Done = {
             25853,
-            25849, -- [2]
-            25850, -- [3]
+            25849,
+            25850,
         },
-    },             -- [3]
+    },
     {
         PickUp = {
             26189,
@@ -13930,7 +13930,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         Done = {
             26195,
         },
-    }, -- [2]
+    },
     {
         UseFlightPath = 25777,
         Name = "Whelgar's Retreat, Wetlands",
@@ -13973,7 +13973,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3682,
             x = -824.5,
         },
-    }, -- [12]
+    },
     {
         Qpart = {
             [25780] = {
@@ -13985,7 +13985,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3733.5,
             x = -799,
         },
-    }, -- [13]
+    },
     {
         Coord = {
             y = -3684,
@@ -13994,7 +13994,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         Done = {
             25780,
         },
-    }, -- [14]
+    },
     {
         Waypoint = 25800,
         Range = 19.65,
@@ -14002,7 +14002,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3708.2,
             x = -850.8,
         },
-    }, -- [15]
+    },
     {
         PickUp = {
             25800,
@@ -14011,7 +14011,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3739.7,
             x = -847.8,
         },
-    }, -- [16]
+    },
     {
         PickUp = {
             25820,
@@ -14020,7 +14020,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3743,
             x = -879.2,
         },
-    }, -- [17]
+    },
     {
         PickUp = {
             25815,
@@ -14029,7 +14029,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3794.2,
             x = -841.8,
         },
-    }, -- [18]
+    },
     {
         Waypoint = 25815,
         Range = 4.92,
@@ -14037,7 +14037,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3802,
             x = -834,
         },
-    }, -- [19]
+    },
     {
         Waypoint = 25815,
         Range = 5.8,
@@ -14045,7 +14045,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3834.2,
             x = -830.3,
         },
-    }, -- [20]
+    },
     {
         Waypoint = 25815,
         Range = 2.86,
@@ -14053,7 +14053,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3836.4,
             x = -838.8,
         },
-    }, -- [21]
+    },
     {
         Waypoint = 25815,
         Range = 4.05,
@@ -14061,7 +14061,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3850,
             x = -837.5,
         },
-    }, -- [22]
+    },
     {
         Qpart = {
             [25815] = {
@@ -14073,7 +14073,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3846.2,
             x = -826.2,
         },
-    }, -- [23]
+    },
     {
         Done = {
             25815,
@@ -14082,7 +14082,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3792.2,
             x = -841,
         },
-    }, -- [24]
+    },
     {
         PickUp = {
             25816,
@@ -14091,7 +14091,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3792.2,
             x = -841,
         },
-    }, -- [25]
+    },
     {
         GetFP = 7,
         Range = 0.75,
@@ -14107,7 +14107,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3793,
             x = -890.8,
         },
-    }, -- [26]
+    },
     {
         Qpart = {
             [25800] = {
@@ -14122,7 +14122,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3797.2,
             x = -984.5,
         },
-    }, -- [27]
+    },
     {
         Waypoint = 25820,
         Range = 19.29,
@@ -14130,7 +14130,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3798.2,
             x = -891.8,
         },
-    }, -- [28]
+    },
     {
         Done = {
             25800,
@@ -14139,17 +14139,17 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3741.7,
             x = -849,
         },
-    }, -- [29]
+    },
     {
         PickUp = {
             25801,
-            25802, -- [2]
+            25802,
         },
         Coord = {
             y = -3741.7,
             x = -849,
         },
-    }, -- [30]
+    },
     {
         Done = {
             25820,
@@ -14158,7 +14158,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3743.2,
             x = -877.3,
         },
-    }, -- [31]
+    },
     {
         Waypoint = 25802,
         Range = 25.06,
@@ -14181,7 +14181,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
                 2,
             },
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             25803,
@@ -14196,7 +14196,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
                 2,
             },
         },
-    }, -- [3]
+    },
     {
         Done = {
             25803,
@@ -14299,7 +14299,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -2957.9,
             x = -1018.7,
         },
-    }, -- [12]
+    },
     {
         Qpart = {
             [25818] = {
@@ -14311,7 +14311,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -2802.7,
             x = -1011.5,
         },
-    }, -- [13]
+    },
     {
         Done = {
             25818,
@@ -14320,7 +14320,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -2809.4,
             x = -983.8,
         },
-    }, -- [14]
+    },
     {
         PickUp = {
             25819,
@@ -14329,7 +14329,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -2809.4,
             x = -983.8,
         },
-    }, -- [15]
+    },
     {
         Qpart = {
             [25801] = {
@@ -14342,7 +14342,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3259.7,
             x = -996.8,
         },
-    }, -- [16]
+    },
     {
         Waypoint = 25805,
         Range = 18.33,
@@ -14354,13 +14354,13 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
     {
         Done = {
             25801,
-            25805, -- [2]
+            25805,
         },
         Coord = {
             y = -3739.5,
             x = -847.8,
         },
-    }, -- [2]
+    },
     {
         Done = {
             25819,
@@ -14369,7 +14369,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3816.5,
             x = -827.3,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             26980,
@@ -14387,18 +14387,18 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -2866.7,
             x = -1502.4,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             25856,
-            25854, -- [2]
-            25864, -- [3]
+            25854,
+            25864,
         },
         Coord = {
             y = -2869.7,
             x = -1497.4,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [25854] = {
@@ -14434,8 +14434,8 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
     {
         Done = {
             25856,
-            25854, -- [2]
-            25864, -- [3]
+            25854,
+            25864,
         },
         Coord = {
             y = -2868.7,
@@ -14445,8 +14445,8 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
     {
         PickUp = {
             25865,
-            25857, -- [2]
-            25855, -- [3]
+            25857,
+            25855,
         },
         Coord = {
             y = -2871.5,
@@ -14483,8 +14483,8 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
     {
         Done = {
             25865,
-            25857, -- [2]
-            25855, -- [3]
+            25857,
+            25855,
         },
         Coord = {
             y = -2869.4,
@@ -14494,7 +14494,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
     {
         PickUp = {
             25866,
-            25867, -- [2]
+            25867,
         },
         Coord = {
             y = -2867,
@@ -14515,7 +14515,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -3072.7,
             x = -2211.7,
         },
-    }, -- [12]
+    },
     {
         Coord = {
             y = -2865.9,
@@ -14523,9 +14523,9 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         },
         Done = {
             25866,
-            25867, -- [2]
+            25867,
         },
-    },             -- [13]
+    },
     {
         PickUp = {
             25868,
@@ -14534,7 +14534,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -2867,
             x = -1502.8,
         },
-    }, -- [14]
+    },
     {
         Qpart = {
             [25868] = {
@@ -14546,7 +14546,7 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
             y = -2753.5,
             x = -2094.2,
         },
-    }, -- [15]
+    },
     {
         Coord = {
             y = -2866.9,
@@ -14555,10 +14555,10 @@ APR.RouteQuestStepList["A56-Wetlands"] = {
         Done = {
             25868,
         },
-    }, -- [16]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Arathi Highlands
 APR.RouteQuestStepList["A14-ArathiHighlands"] = {
@@ -14579,21 +14579,21 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1273.9,
             x = -2516.2,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             26024,
-            26079, -- [2]
+            26079,
         },
         Coord = {
             y = -1278.5,
             x = -2523.7,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             26336,
-            26035, -- [3]
+            26035,
             26341,
         },
         Coord = {
@@ -14677,7 +14677,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1425,
             x = -3032.9,
         },
-    }, -- [12]
+    },
     {
         Waypoint = 26041,
         Fillers = {
@@ -14690,7 +14690,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1558.1,
             x = -3061.5,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [26110] = {
@@ -14703,7 +14703,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1629.3,
             x = -2860.9,
         },
-    }, -- [14]
+    },
     {
         Qpart = {
             [26035] = {
@@ -14716,7 +14716,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1835.3,
             x = -3316.7,
         },
-    }, -- [15]
+    },
     {
         Done = {
             26110,
@@ -14725,7 +14725,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1424.9,
             x = -3033,
         },
-    }, -- [16]
+    },
     {
         PickUp = {
             26114,
@@ -14734,7 +14734,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1424.9,
             x = -3033,
         },
-    }, -- [17]
+    },
     {
         Done = {
             26114,
@@ -14743,7 +14743,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1426.5,
             x = -3035.5,
         },
-    }, -- [18]
+    },
     {
         PickUp = {
             26116,
@@ -14752,7 +14752,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1426.5,
             x = -3035.5,
         },
-    }, -- [19]
+    },
     {
         Qpart = {
             [26116] = {
@@ -14765,7 +14765,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1402.5,
             x = -3070.4,
         },
-    }, -- [20]
+    },
     {
         Done = {
             26116,
@@ -14774,7 +14774,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1425.1,
             x = -3032.7,
         },
-    }, -- [21]
+    },
     {
         PickUp = {
             26117,
@@ -14783,7 +14783,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1425.1,
             x = -3032.7,
         },
-    }, -- [22]
+    },
     {
         Qpart = {
             [26041] = {
@@ -14795,7 +14795,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1350.4,
             x = -2740.4,
         },
-    }, -- [23]
+    },
     {
         Done = {
             26117,
@@ -14804,7 +14804,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1250.5,
             x = -2510.5,
         },
-    }, -- [24]
+    },
     {
         Done = {
             26035,
@@ -14813,7 +14813,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1280,
             x = -2528.9,
         },
-    }, -- [25]
+    },
     {
         PickUp = {
             26036,
@@ -14822,7 +14822,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1280,
             x = -2528.9,
         },
-    }, -- [26]
+    },
     {
         Qpart = {
             [26093] = {
@@ -14834,7 +14834,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -822.8,
             x = -2032.8,
         },
-    }, -- [27]
+    },
     {
         Qpart = {
             [26041] = {
@@ -14846,7 +14846,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -855.3,
             x = -1784.5,
         },
-    }, -- [28]
+    },
     {
         Range = 25.64,
         Waypoint = 26079,
@@ -14854,7 +14854,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1335.9,
             x = -1831.6,
         },
-    }, -- [29]
+    },
     {
         Qpart = {
             [26079] = {
@@ -14867,7 +14867,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1700.6,
             x = -1803,
         },
-    }, -- [30]
+    },
     {
         Range = 9.89,
         Waypoint = 26024,
@@ -14875,7 +14875,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1660.8,
             x = -1804.3,
         },
-    }, -- [31]
+    },
     {
         Range = 12.98,
         Waypoint = 26024,
@@ -14883,7 +14883,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1621.5,
             x = -1806.3,
         },
-    }, -- [32]
+    },
     {
         Range = 13.32,
         Waypoint = 26024,
@@ -14891,7 +14891,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1578.6,
             x = -1812.5,
         },
-    }, -- [33]
+    },
     {
         Range = 13.65,
         Waypoint = 26024,
@@ -14899,7 +14899,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1601.8,
             x = -1918.4,
         },
-    }, -- [34]
+    },
     {
         Range = 4.85,
         Waypoint = 26024,
@@ -14907,7 +14907,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1624.5,
             x = -1938.8,
         },
-    }, -- [35]
+    },
     {
         Qpart = {
             [26024] = {
@@ -14919,7 +14919,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1639.6,
             x = -1938.5,
         },
-    }, -- [36]
+    },
     {
         Range = 18.59,
         Waypoint = 26041,
@@ -14927,7 +14927,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1557.6,
             x = -1805.6,
         },
-    }, -- [37]
+    },
     {
         Range = 17.65,
         Waypoint = 26041,
@@ -14935,7 +14935,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1465,
             x = -1806.6,
         },
-    }, -- [38]
+    },
     {
         Coord = {
             y = -1509.8,
@@ -14944,7 +14944,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         Done = {
             26041,
         },
-    }, -- [39]
+    },
     {
         PickUp = {
             26042,
@@ -14953,7 +14953,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1509.8,
             x = -2169.2,
         },
-    }, -- [40]
+    },
     {
         Range = 25.76,
         Waypoint = 26336,
@@ -14961,7 +14961,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1704.1,
             x = -1988.3,
         },
-    }, -- [41]
+    },
     {
         Range = 35,
         Waypoint = 26336,
@@ -14969,7 +14969,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1885.8,
             x = -2013.4,
         },
-    }, -- [42]
+    },
     {
         PickUp = {
             26055,
@@ -14978,7 +14978,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -2071.7,
             x = -2090,
         },
-    }, -- [43]
+    },
     {
         Coord = {
             y = -2085.7,
@@ -14987,7 +14987,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         Done = {
             26336,
         },
-    }, -- [44]
+    },
     {
         Qpart = {
             [26055] = {
@@ -15000,7 +15000,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -2238,
             x = -1641.5,
         },
-    }, -- [45]
+    },
     {
         Coord = {
             y = -2072.7,
@@ -15009,7 +15009,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         Done = {
             26055,
         },
-    }, -- [46]
+    },
     {
         PickUp = {
             26050,
@@ -15018,7 +15018,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -2066.2,
             x = -2085.5,
         },
-    }, -- [47]
+    },
     {
         Qpart = {
             [26050] = {
@@ -15031,7 +15031,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -2069,
             x = -2106,
         },
-    }, -- [48]
+    },
     {
         Coord = {
             y = -2064,
@@ -15040,7 +15040,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         Done = {
             26050,
         },
-    }, -- [49]
+    },
     {
         PickUp = {
             26051,
@@ -15049,7 +15049,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -2064,
             x = -2084.4,
         },
-    }, -- [50]
+    },
     {
         Qpart = {
             [26051] = {
@@ -15062,7 +15062,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -2233.9,
             x = -1662.3,
         },
-    }, -- [51]
+    },
     {
         Coord = {
             y = -2063.5,
@@ -15071,7 +15071,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         Done = {
             26051,
         },
-    }, -- [52]
+    },
     {
         PickUp = {
             26052,
@@ -15080,7 +15080,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -2063.5,
             x = -2084.7,
         },
-    }, -- [53]
+    },
     {
         Coord = {
             y = -2084.4,
@@ -15089,7 +15089,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         Done = {
             26052,
         },
-    }, -- [54]
+    },
     {
         PickUp = {
             26628,
@@ -15098,7 +15098,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -2084.4,
             x = -2029.5,
         },
-    }, -- [55]
+    },
     {
         Qpart = {
             [26628] = {
@@ -15110,7 +15110,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -2086.2,
             x = -2028.9,
         },
-    }, -- [56]
+    },
     {
         Coord = {
             y = -2086.2,
@@ -15119,7 +15119,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         Done = {
             26628,
         },
-    }, -- [57]
+    },
     {
         Range = 19.08,
         Waypoint = 26042,
@@ -15127,7 +15127,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -2042.1,
             x = -2093.2,
         },
-    }, -- [58]
+    },
     {
         Range = 25.25,
         Waypoint = 26042,
@@ -15135,7 +15135,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1876.9,
             x = -2015,
         },
-    }, -- [59]
+    },
     {
         Range = 22.58,
         Waypoint = 26042,
@@ -15143,7 +15143,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1691.1,
             x = -2001.5,
         },
-    }, -- [60]
+    },
     {
         Coord = {
             y = -1273.8,
@@ -15151,10 +15151,10 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
         Done = {
             26024,
-            26079, -- [2]
-            26093, -- [3]
+            26079,
+            26093,
         },
-    },             -- [61]
+    },
     {
         PickUp = {
             26095,
@@ -15163,7 +15163,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1273.8,
             x = -2516.4,
         },
-    }, -- [62]
+    },
     {
         Qpart = {
             [26042] = {
@@ -15176,7 +15176,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1696,
             x = -2645.7,
         },
-    }, -- [63]
+    },
     {
         Range = 10.98,
         Waypoint = 26036,
@@ -15184,7 +15184,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1980.6,
             x = -2793,
         },
-    }, -- [64]
+    },
     {
         Qpart = {
             [26036] = {
@@ -15197,7 +15197,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -2096.9,
             x = -2836.7,
         },
-    }, -- [65]
+    },
     {
         Coord = {
             y = -1528.3,
@@ -15206,7 +15206,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         Done = {
             26042,
         },
-    }, -- [66]
+    },
     {
         PickUp = {
             26346,
@@ -15215,7 +15215,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1510.9,
             x = -2170.7,
         },
-    }, -- [67]
+    },
     {
         Range = 22.5,
         Waypoint = 26095,
@@ -15223,7 +15223,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1460.1,
             x = -1805,
         },
-    }, -- [68]
+    },
     {
         Qpart = {
             [26095] = {
@@ -15235,7 +15235,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1633.5,
             x = -1841.6,
         },
-    }, -- [69]
+    },
     {
         Range = 36.88,
         Waypoint = 26095,
@@ -15243,7 +15243,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1373.1,
             x = -1826,
         },
-    }, -- [70]
+    },
     {
         Coord = {
             y = -1277.9,
@@ -15251,20 +15251,20 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         },
         Done = {
             26036,
-            26346, -- [2]
-            26095, -- [3]
+            26346,
+            26095,
         },
-    },             -- [71]
+    },
     {
         PickUp = {
             26049,
-            26037, -- [2]
+            26037,
         },
         Coord = {
             y = -1277.1,
             x = -2526.2,
         },
-    }, -- [72]
+    },
     {
         Range = 27.88,
         Waypoint = 26037,
@@ -15272,7 +15272,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1346.1,
             x = -1843.6,
         },
-    }, -- [73]
+    },
     {
         Range = 18.22,
         Waypoint = 26037,
@@ -15280,7 +15280,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1568.1,
             x = -1794.4,
         },
-    }, -- [74]
+    },
     {
         Range = 15.25,
         Waypoint = 26037,
@@ -15288,7 +15288,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1599,
             x = -1744.6,
         },
-    }, -- [75]
+    },
     {
         Range = 13.51,
         Waypoint = 26037,
@@ -15296,7 +15296,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1692.9,
             x = -1739.6,
         },
-    }, -- [76]
+    },
     {
         Qpart = {
             [26037] = {
@@ -15309,7 +15309,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1746,
             x = -1582.8,
         },
-    }, -- [77]
+    },
     {
         Coord = {
             y = -1746.4,
@@ -15318,7 +15318,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         Done = {
             26037,
         },
-    }, -- [78]
+    },
     {
         PickUp = {
             26038,
@@ -15327,7 +15327,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1746.4,
             x = -1581,
         },
-    }, -- [79]
+    },
     {
         Qpart = {
             [26038] = {
@@ -15341,7 +15341,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -1776.8,
             x = -1512.6,
         },
-    }, -- [80]
+    },
     {
         Coord = {
             y = -1279.9,
@@ -15350,7 +15350,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
         Done = {
             26038,
         },
-    }, -- [81]
+    },
     {
         Qpart = {
             [26049] = {
@@ -15365,7 +15365,7 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
             y = -945,
             x = -3118.2,
         },
-    }, -- [83]
+    },
     {
         Coord = {
             y = -943.5,
@@ -15377,14 +15377,14 @@ APR.RouteQuestStepList["A14-ArathiHighlands"] = {
     },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- The Hinterlands
 APR.RouteQuestStepList["A26-TheHinterlands"] = {
     {
         PickUp = {
             26546,
-            26547, -- [2]
+            26547,
         },
         Coord = {
             y = 331.8,
@@ -15411,7 +15411,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 98.3,
             x = -2297,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = 332,
@@ -15419,9 +15419,9 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
         Done = {
             26547,
-            26546, -- [2]
+            26546,
         },
-    },             -- [3]
+    },
     {
         PickUp = {
             26548,
@@ -15451,8 +15451,8 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
     {
         PickUp = {
             26483,
-            26462, -- [2]
-            26485, -- [3]
+            26462,
+            26485,
             26486,
         },
         Coord = {
@@ -15519,7 +15519,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -152.2,
             x = -4573.4,
         },
-    }, -- [12]
+    },
     {
         Range = 24.48,
         Waypoint = 26485,
@@ -15527,7 +15527,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -97.5,
             x = -4525.4,
         },
-    }, -- [13]
+    },
     {
         Range = 28.56,
         Waypoint = 26485,
@@ -15535,7 +15535,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -227.9,
             x = -4362.2,
         },
-    }, -- [14]
+    },
     {
         Range = 38.46,
         Waypoint = 26485,
@@ -15543,7 +15543,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -159.4,
             x = -4292.9,
         },
-    }, -- [15]
+    },
     {
         Coord = {
             y = 330.8,
@@ -15551,22 +15551,22 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
         Done = {
             26462,
-            26486, -- [2]
-            26485, -- [3]
+            26486,
+            26485,
             26483,
         },
-    }, -- [16]
+    },
     {
         PickUp = {
             26492,
-            26490, -- [2]
-            26491, -- [3]
+            26490,
+            26491,
         },
         Coord = {
             y = 330.2,
             x = -4127.4,
         },
-    }, -- [17]
+    },
     {
         Waypoint = 26485,
         Fillers = {
@@ -15579,7 +15579,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 474.8,
             x = -3785,
         },
-    }, -- [18]
+    },
     {
         Qpart = {
             [26490] = {
@@ -15599,7 +15599,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 399.8,
             x = -3787.7,
         },
-    }, -- [19]
+    },
     {
         Qpart = {
             [26492] = {
@@ -15614,7 +15614,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 392.8,
             x = -3785.4,
         },
-    }, -- [20]
+    },
     {
         Coord = {
             y = 329.8,
@@ -15622,10 +15622,10 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
         Done = {
             26492,
-            26490, -- [2]
-            26491, -- [3]
+            26490,
+            26491,
         },
-    },             -- [21]
+    },
     {
         PickUp = {
             26496,
@@ -15634,7 +15634,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 329.8,
             x = -4127.7,
         },
-    }, -- [22]
+    },
     {
         Coord = {
             y = -69.9,
@@ -15643,19 +15643,19 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         Done = {
             26496,
         },
-    }, -- [23]
+    },
     {
         PickUp = {
             26497,
-            26523, -- [2]
-            26521, -- [3]
+            26523,
+            26521,
             26518,
         },
         Coord = {
             y = -72.1,
             x = -4031.7,
         },
-    }, -- [24]
+    },
     {
         Waypoint = 26485,
         Fillers = {
@@ -15678,7 +15678,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -290.9,
             x = -4142.4,
         },
-    }, -- [25]
+    },
     {
         Waypoint = 26485,
         Fillers = {
@@ -15701,7 +15701,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -284.3,
             x = -4185.9,
         },
-    }, -- [26]
+    },
     {
         Waypoint = 26485,
         Fillers = {
@@ -15724,7 +15724,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -339.2,
             x = -4187.7,
         },
-    }, -- [27]
+    },
     {
         Waypoint = 26485,
         Fillers = {
@@ -15747,7 +15747,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -333,
             x = -4090,
         },
-    }, -- [28]
+    },
     {
         Qpart = {
             [26518] = {
@@ -15774,7 +15774,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -199.5,
             x = -4082.9,
         },
-    }, -- [29]
+    },
     {
         Qpart = {
             [26523] = {
@@ -15799,7 +15799,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -298.9,
             x = -4120.3,
         },
-    }, -- [30]
+    },
     {
         Waypoint = 26518,
         Range = 27.07,
@@ -15807,30 +15807,30 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -175.4,
             x = -4133.9,
         },
-    }, -- [31]
+    },
     {
         Done = {
             26497,
-            26523, -- [2]
-            26521, -- [3]
+            26523,
+            26521,
             26518,
         },
         Coord = {
             y = -71.5,
             x = -4032,
         },
-    }, -- [32]
+    },
     {
         PickUp = {
             26498,
-            26524, -- [2]
-            26515, -- [3]
+            26524,
+            26515,
         },
         Coord = {
             y = -71.5,
             x = -4032,
         },
-    }, -- [33]
+    },
     {
         Qpart = {
             [26515] = {
@@ -15851,7 +15851,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -464.3,
             x = -3968.2,
         },
-    }, -- [34]
+    },
     {
         Qpart = {
             [26524] = {
@@ -15867,18 +15867,18 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -439.9,
             x = -4004.7,
         },
-    }, -- [35]
+    },
     {
         Done = {
             26498,
-            26524, -- [2]
-            26515, -- [3]
+            26524,
+            26515,
         },
         Coord = {
             y = -71.4,
             x = -4031.2,
         },
-    }, -- [36]
+    },
     {
         Qpart = {
             [26516] = {
@@ -15891,7 +15891,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -369.3,
             x = -3904,
         },
-    }, -- [37]
+    },
     {
         Qpart = {
             [26517] = {
@@ -15903,27 +15903,27 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -530.8,
             x = -3868,
         },
-    }, -- [38]
+    },
     {
         Done = {
             26516,
-            26517, -- [2]
+            26517,
         },
         Coord = {
             y = -72,
             x = -4031.5,
         },
-    }, -- [39]
+    },
     {
         PickUp = {
             26526,
-            26525, -- [2]
+            26525,
         },
         Coord = {
             y = -73.5,
             x = -4028,
         },
-    }, -- [40]
+    },
     {
         Waypoint = 26526,
         Range = 21.17,
@@ -15931,7 +15931,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -544,
             x = -3844.7,
         },
-    }, -- [41]
+    },
     {
         Qpart = {
             [26526] = {
@@ -15948,7 +15948,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -751.8,
             x = -3787,
         },
-    }, -- [42]
+    },
     {
         Qpart = {
             [26525] = {
@@ -15960,17 +15960,17 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -749,
             x = -3787.2,
         },
-    }, -- [43]
+    },
     {
         Done = {
             26526,
-            26525, -- [2]
+            26525,
         },
         Coord = {
             y = -71.4,
             x = -4028.5,
         },
-    }, -- [44]
+    },
     {
         PickUp = {
             27725,
@@ -15979,7 +15979,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -68.9,
             x = -4037.9,
         },
-    }, -- [45]
+    },
     {
         Done = {
             27725,
@@ -15988,17 +15988,17 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 375.1,
             x = -2812.5,
         },
-    }, -- [46]
+    },
     {
         PickUp = {
             27625,
-            27626, -- [2]
+            27626,
         },
         Coord = {
             y = 375.1,
             x = -2812.5,
         },
-    }, -- [47]
+    },
     {
         Qpart = {
             [27626] = {
@@ -16015,7 +16015,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 265,
             x = -2803.7,
         },
-    }, -- [48]
+    },
     {
         Qpart = {
             [27626] = {
@@ -16032,7 +16032,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 218.4,
             x = -2715,
         },
-    }, -- [49]
+    },
     {
         Qpart = {
             [27626] = {
@@ -16044,7 +16044,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 284.1,
             x = -2674.7,
         },
-    }, -- [50]
+    },
     {
         Qpart = {
             [27625] = {
@@ -16056,7 +16056,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 283.8,
             x = -2674.7,
         },
-    }, -- [51]
+    },
     {
         Coord = {
             y = 374.8,
@@ -16064,19 +16064,19 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         },
         Done = {
             27625,
-            27626, -- [2]
+            27626,
         },
-    },             -- [52]
+    },
     {
         PickUp = {
             26641,
-            26528, -- [2]
+            26528,
         },
         Coord = {
             y = 259,
             x = -2756,
         },
-    }, -- [53]
+    },
     {
         Qpart = {
             [26528] = {
@@ -16093,7 +16093,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 469.6,
             x = -3326.5,
         },
-    }, -- [54]
+    },
     {
         Qpart = {
             [26641] = {
@@ -16105,27 +16105,27 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 469.6,
             x = -3326.5,
         },
-    }, -- [55]
+    },
     {
         Done = {
             26641,
-            26528, -- [2]
+            26528,
         },
         Coord = {
             y = 259,
             x = -2756,
         },
-    }, -- [56]
+    },
     {
         PickUp = {
             26643,
-            26529, -- [2]
+            26529,
         },
         Coord = {
             y = 259.6,
             x = -2755.5,
         },
-    }, -- [57]
+    },
     {
         Qpart = {
             [26529] = {
@@ -16142,7 +16142,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 130.3,
             x = -3479.2,
         },
-    }, -- [58]
+    },
     {
         Qpart = {
             [26643] = {
@@ -16154,17 +16154,17 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 130.3,
             x = -3479.2,
         },
-    }, -- [59]
+    },
     {
         Done = {
             26643,
-            26529, -- [2]
+            26529,
         },
         Coord = {
             y = 259.7,
             x = -2755.7,
         },
-    }, -- [60]
+    },
     {
         PickUp = {
             26530,
@@ -16173,7 +16173,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 259.2,
             x = -2755.5,
         },
-    }, -- [61]
+    },
     {
         Qpart = {
             [26530] = {
@@ -16185,7 +16185,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -271.7,
             x = -3439,
         },
-    }, -- [62]
+    },
     {
         Done = {
             26530,
@@ -16194,7 +16194,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 258.8,
             x = -2756,
         },
-    }, -- [63]
+    },
     {
         PickUp = {
             26531,
@@ -16203,7 +16203,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = 258.8,
             x = -2756,
         },
-    }, -- [64]
+    },
     {
         Waypoint = 26531,
         Range = 26.66,
@@ -16211,7 +16211,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -189,
             x = -2951.2,
         },
-    }, -- [65]
+    },
     {
         Qpart = {
             [26531] = {
@@ -16229,7 +16229,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -258.7,
             x = -2811.5,
         },
-    }, -- [66]
+    },
     {
         Qpart = {
             [26531] = {
@@ -16247,7 +16247,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -487.5,
             x = -2827,
         },
-    }, -- [67]
+    },
     {
         Qpart = {
             [26531] = {
@@ -16265,7 +16265,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -369.7,
             x = -3000.9,
         },
-    }, -- [68]
+    },
     {
         Coord = {
             y = -272.5,
@@ -16274,7 +16274,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         Done = {
             26531,
         },
-    }, -- [69]
+    },
     {
         PickUp = {
             26532,
@@ -16283,7 +16283,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -273.4,
             x = -2897.7,
         },
-    }, -- [70]
+    },
     {
         Qpart = {
             [26532] = {
@@ -16295,7 +16295,7 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             y = -332.4,
             x = -2893.7,
         },
-    }, -- [71]
+    },
     {
         Coord = {
             y = 331.6,
@@ -16304,18 +16304,18 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
         Done = {
             26532,
         },
-    }, -- [72]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Western Plaguelands
 APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
     {
         PickUp = {
             27161,
-            27159, -- [2]
-            27160, -- [3]
+            27159,
+            27160,
         },
         Coord = {
             y = 1350,
@@ -16329,7 +16329,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1373.7,
             x = -1278.8,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [27161] = {
@@ -16353,7 +16353,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1480,
             x = -1413.8,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [27161] = {
@@ -16395,8 +16395,8 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
     {
         Done = {
             27161,
-            27159, -- [2]
-            27160, -- [3]
+            27159,
+            27160,
         },
         Coord = {
             y = 1352.5,
@@ -16406,8 +16406,8 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
     {
         PickUp = {
             27164,
-            27162, -- [2]
-            27163, -- [3]
+            27162,
+            27163,
         },
         Coord = {
             y = 1351.7,
@@ -16421,7 +16421,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1345.9,
             x = -1475.4,
         },
-    }, -- [12]
+    },
     {
         Waypoint = 27163,
         Range = 9.52,
@@ -16429,7 +16429,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1383.3,
             x = -1480.3,
         },
-    }, -- [13]
+    },
     {
         Waypoint = 27163,
         Range = 7.45,
@@ -16437,7 +16437,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1368.7,
             x = -1461.8,
         },
-    }, -- [14]
+    },
     {
         Qpart = {
             [27163] = {
@@ -16449,7 +16449,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1386.5,
             x = -1454,
         },
-    }, -- [15]
+    },
     {
         Qpart = {
             [27164] = {
@@ -16464,7 +16464,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1379.3,
             x = -1523.9,
         },
-    }, -- [16]
+    },
     {
         Qpart = {
             [27162] = {
@@ -16476,18 +16476,18 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1279.9,
             x = -1531,
         },
-    }, -- [17]
+    },
     {
         Done = {
             27164,
-            27162, -- [2]
-            27163, -- [3]
+            27162,
+            27163,
         },
         Coord = {
             y = 1347.5,
             x = -1348,
         },
-    }, -- [18]
+    },
     {
         PickUp = {
             27165,
@@ -16496,7 +16496,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1347.5,
             x = -1348,
         },
-    }, -- [19]
+    },
     {
         Waypoint = 27165,
         Range = 32.97,
@@ -16504,7 +16504,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1159.8,
             x = -1150.6,
         },
-    }, -- [21]
+    },
     {
         Waypoint = 27165,
         Range = 28.15,
@@ -16512,7 +16512,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1109,
             x = -1185.9,
         },
-    }, -- [22]
+    },
     {
         Waypoint = 27165,
         Range = 38.58,
@@ -16520,7 +16520,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1049.8,
             x = -1369.3,
         },
-    }, -- [23]
+    },
     {
         Done = {
             27165,
@@ -16529,7 +16529,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 958.7,
             x = -1418.6,
         },
-    }, -- [24]
+    },
     {
         PickUp = {
             27166,
@@ -16538,7 +16538,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 958.7,
             x = -1418.6,
         },
-    }, -- [25]
+    },
     {
         PickUp = {
             27167,
@@ -16547,7 +16547,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 956.2,
             x = -1419,
         },
-    }, -- [26]
+    },
     {
         Qpart = {
             [27166] = {
@@ -16562,11 +16562,11 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1079,
             x = -1210,
         },
-    }, -- [27]
+    },
     {
         Done = {
             27166,
-            27167, -- [2]
+            27167,
         },
         Coord = {
             y = 957.7,
@@ -16581,7 +16581,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 957.9,
             x = -1418.8,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27168,
@@ -16590,7 +16590,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 967.2,
             x = -1447.5,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [27168] = {
@@ -16678,7 +16678,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1047.4,
             x = -1928,
         },
-    }, -- [12]
+    },
     {
         Waypoint = 27170,
         Range = 6.15,
@@ -16686,7 +16686,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1060.2,
             x = -1929.9,
         },
-    }, -- [13]
+    },
     {
         Done = {
             27170,
@@ -16695,7 +16695,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1061.2,
             x = -1896,
         },
-    }, -- [14]
+    },
     {
         PickUp = {
             27171,
@@ -16704,7 +16704,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1061.2,
             x = -1896,
         },
-    }, -- [15]
+    },
     {
         Qpart = {
             [27171] = {
@@ -16717,7 +16717,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1061.2,
             x = -1896,
         },
-    }, -- [16]
+    },
     {
         Done = {
             27168,
@@ -16726,7 +16726,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 966.9,
             x = -1450,
         },
-    }, -- [17]
+    },
     {
         Done = {
             27171,
@@ -16735,7 +16735,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 958.6,
             x = -1419.1,
         },
-    }, -- [18]
+    },
     {
         PickUp = {
             27172,
@@ -16744,17 +16744,17 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 958.6,
             x = -1419.1,
         },
-    }, -- [19]
+    },
     {
         PickUp = {
             27683,
-            27175, -- [2]
+            27175,
         },
         Coord = {
             y = 971.2,
             x = -1429.6,
         },
-    }, -- [20]
+    },
     {
         GetFP = 66,
         Range = 0.69,
@@ -16770,7 +16770,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1328,
             x = -1787.5,
         },
-    }, -- [21]
+    },
     {
         Waypoint = 27172,
         Range = 24.08,
@@ -16778,7 +16778,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1354,
             x = -1789,
         },
-    }, -- [22]
+    },
     {
         Done = {
             27172,
@@ -16787,7 +16787,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1513.2,
             x = -1897.3,
         },
-    }, -- [23]
+    },
     {
         PickUp = {
             27173,
@@ -16796,7 +16796,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1513.2,
             x = -1897.3,
         },
-    }, -- [24]
+    },
     {
         Qpart = {
             [27173] = {
@@ -16817,7 +16817,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1512.8,
             x = -1896.6,
         },
-    }, -- [25]
+    },
     {
         PickUp = {
             27174,
@@ -16826,7 +16826,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1512.8,
             x = -1896.6,
         },
-    }, -- [26]
+    },
     {
         Waypoint = 27174,
         Range = 8.11,
@@ -16834,7 +16834,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1508,
             x = -1886.5,
         },
-    }, -- [27]
+    },
     {
         Qpart = {
             [27174] = {
@@ -16847,7 +16847,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1481.5,
             x = -1905.5,
         },
-    }, -- [28]
+    },
     {
         Waypoint = 27174,
         Range = 5.06,
@@ -16855,7 +16855,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1508.5,
             x = -1887.6,
         },
-    }, -- [29]
+    },
     {
         Done = {
             27174,
@@ -16864,7 +16864,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1513,
             x = -1898.1,
         },
-    }, -- [30]
+    },
     {
         Done = {
             27175,
@@ -16873,7 +16873,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1793.2,
             x = -1702,
         },
-    }, -- [31]
+    },
     {
         PickUp = {
             26999,
@@ -16882,7 +16882,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1793.2,
             x = -1702,
         },
-    }, -- [32]
+    },
     {
         PickUp = {
             26953,
@@ -16891,7 +16891,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1796.3,
             x = -1685.4,
         },
-    }, -- [33]
+    },
     {
         PickUp = {
             26956,
@@ -16900,7 +16900,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1793,
             x = -1670.5,
         },
-    }, -- [34]
+    },
     {
         PickUp = {
             27197,
@@ -16909,7 +16909,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1854.8,
             x = -1754.3,
         },
-    }, -- [35]
+    },
     {
         GetFP = 651,
         Range = 5.91,
@@ -16951,7 +16951,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1647.8,
             x = -2051.5,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [26956] = {
@@ -16963,7 +16963,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1804.3,
             x = -1575.4,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [26956] = {
@@ -17048,7 +17048,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1842.8,
             x = -1919.1,
         },
-    }, -- [12]
+    },
     {
         ExtraLineText = "NPC_ZENKIKI",
         Qpart = {
@@ -17061,7 +17061,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1825.3,
             x = -1902.3,
         },
-    }, -- [13]
+    },
     {
         Done = {
             26954,
@@ -17070,7 +17070,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1796.8,
             x = -1685,
         },
-    }, -- [14]
+    },
     {
         Coord = {
             y = 1870.4,
@@ -17098,7 +17098,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1375.7,
             x = -1297.5,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27198,
@@ -17107,7 +17107,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1383.4,
             x = -1305.5,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [27199] = {
@@ -17131,7 +17131,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1386.2,
             x = -1307,
         },
-    }, -- [2]
+    },
     {
         Done = {
             27199,
@@ -17140,7 +17140,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1375.4,
             x = -1298.9,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             27205,
@@ -17226,7 +17226,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1335.8,
             x = -1288.4,
         },
-    }, -- [12]
+    },
     {
         Waypoint = 27204,
         Range = 6.57,
@@ -17234,7 +17234,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1312.8,
             x = -1307,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [27204] = {
@@ -17246,7 +17246,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1302,
             x = -1319.5,
         },
-    }, -- [14]
+    },
     {
         Done = {
             27204,
@@ -17255,7 +17255,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1376,
             x = -1298.8,
         },
-    }, -- [15]
+    },
     {
         PickUp = {
             27206,
@@ -17264,7 +17264,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1376,
             x = -1298.8,
         },
-    }, -- [16]
+    },
     {
         Coord = {
             y = 1373.5,
@@ -17311,7 +17311,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2439.4,
             x = -1652.4,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27013,
@@ -17320,7 +17320,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2452.1,
             x = -1661.6,
         },
-    }, -- [3]
+    },
     {
         InVehicle = 1,
         Qpart = {
@@ -17363,7 +17363,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2439.3,
             x = -1652,
         },
-    }, -- [2]
+    },
     {
         Done = {
             27013,
@@ -17372,11 +17372,11 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2453.1,
             x = -1661.8,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             27011,
-            27012, -- [2]
+            27012,
         },
         Coord = {
             y = 2453.1,
@@ -17429,17 +17429,17 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2439.6,
             x = -1652.6,
         },
-    }, -- [2]
+    },
     {
         Done = {
             27012,
-            27011, -- [2]
+            27011,
         },
         Coord = {
             y = 2447.6,
             x = -1670.3,
         },
-    }, -- [3]
+    },
     {
         Waypoint = 27002,
         Range = 28.62,
@@ -17471,7 +17471,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2782.9,
             x = -1546.6,
         },
-    }, -- [2]
+    },
     {
         GetFP = 672,
         Range = 5.91,
@@ -17510,7 +17510,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2910.6,
             x = -1440.4,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27157,
@@ -17519,7 +17519,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2910.6,
             x = -1440.4,
         },
-    }, -- [3]
+    },
     {
         Waypoint = 27002,
         Range = 7.15,
@@ -17592,7 +17592,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2939.5,
             x = -1414.3,
         },
-    }, -- [12]
+    },
     {
         Done = {
             27002,
@@ -17601,7 +17601,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2944.9,
             x = -1389.3,
         },
-    }, -- [13]
+    },
     {
         PickUp = {
             27151,
@@ -17610,7 +17610,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2937.6,
             x = -1397.3,
         },
-    }, -- [14]
+    },
     {
         Waypoint = 27157,
         Range = 26.73,
@@ -17618,7 +17618,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2918.1,
             x = -1442.9,
         },
-    }, -- [15]
+    },
     {
         Waypoint = 27157,
         Range = 15.13,
@@ -17626,7 +17626,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 3019.6,
             x = -1553.6,
         },
-    }, -- [16]
+    },
     {
         Waypoint = 27157,
         Range = 8.39,
@@ -17634,7 +17634,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 3055.1,
             x = -1547.5,
         },
-    }, -- [17]
+    },
     {
         Waypoint = 27157,
         Range = 7.13,
@@ -17642,7 +17642,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 3075.1,
             x = -1530.1,
         },
-    }, -- [18]
+    },
     {
         Qpart = {
             [27157] = {
@@ -17654,7 +17654,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 3098.1,
             x = -1543,
         },
-    }, -- [19]
+    },
     {
         Waypoint = 27157,
         Range = 16.58,
@@ -17662,7 +17662,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 3011.6,
             x = -1554.5,
         },
-    }, -- [20]
+    },
     {
         Waypoint = 27151,
         Range = 16.24,
@@ -17670,7 +17670,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2790.3,
             x = -1624.9,
         },
-    }, -- [21]
+    },
     {
         Waypoint = 27151,
         Range = 20.35,
@@ -17678,7 +17678,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2747,
             x = -1664.4,
         },
-    }, -- [22]
+    },
     {
         Qpart = {
             [27151] = {
@@ -17699,7 +17699,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2678.1,
             x = -1916.8,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27152,
@@ -17708,7 +17708,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2678.1,
             x = -1916.8,
         },
-    }, -- [3]
+    },
     {
         Waypoint = 27152,
         Range = 24.75,
@@ -17792,7 +17792,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2845,
             x = -1395,
         },
-    }, -- [12]
+    },
     {
         Qpart = {
             [27153] = {
@@ -17805,7 +17805,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2872.5,
             x = -1461.6,
         },
-    }, -- [13]
+    },
     {
         Done = {
             27157,
@@ -17814,7 +17814,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2910.8,
             x = -1440.3,
         },
-    }, -- [14]
+    },
     {
         Qpart = {
             [27153] = {
@@ -17827,7 +17827,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2979.1,
             x = -1490.9,
         },
-    }, -- [15]
+    },
     {
         Qpart = {
             [27153] = {
@@ -17840,7 +17840,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 3010,
             x = -1509.8,
         },
-    }, -- [16]
+    },
     {
         Done = {
             27153,
@@ -17849,7 +17849,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 3008,
             x = -1510.5,
         },
-    }, -- [17]
+    },
     {
         PickUp = {
             27154,
@@ -17858,7 +17858,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 3008,
             x = -1510.5,
         },
-    }, -- [18]
+    },
     {
         Waypoint = 27154,
         Range = 16.07,
@@ -17866,7 +17866,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2850.1,
             x = -1529.1,
         },
-    }, -- [19]
+    },
     {
         Qpart = {
             [27154] = {
@@ -17880,7 +17880,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2839.3,
             x = -1553.5,
         },
-    }, -- [20]
+    },
     {
         Done = {
             27154,
@@ -17889,7 +17889,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2839.6,
             x = -1552.9,
         },
-    }, -- [21]
+    },
     {
         PickUp = {
             27155,
@@ -17898,7 +17898,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2839.6,
             x = -1552.9,
         },
-    }, -- [22]
+    },
     {
         Waypoint = 27155,
         Range = 12.26,
@@ -17906,7 +17906,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2929.5,
             x = -1417.5,
         },
-    }, -- [23]
+    },
     {
         Done = {
             27155,
@@ -17915,7 +17915,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2942.9,
             x = -1390,
         },
-    }, -- [24]
+    },
     {
         Coord = {
             y = 2838.1,
@@ -17943,7 +17943,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1860,
             x = -1760.4,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27053,
@@ -17952,7 +17952,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1793.4,
             x = -1701.9,
         },
-    }, -- [3]
+    },
     {
         Waypoint = 27053,
         Range = 25.09,
@@ -18021,7 +18021,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1793,
             x = -1701.5,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27054,
@@ -18030,7 +18030,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1793,
             x = -1701.5,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             26955,
@@ -18065,7 +18065,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
         Done = {
             27054,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27055,
@@ -18074,7 +18074,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2004.2,
             x = -2432.9,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [26955] = {
@@ -18101,7 +18101,7 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 2287.1,
             x = -2322.2,
         },
-    }, -- [2]
+    },
     {
         Waypoint = 26955,
         Range = 36.52,
@@ -18127,17 +18127,17 @@ APR.RouteQuestStepList["A22-WesternPlaguelands"] = {
             y = 1796.5,
             x = -1684.4,
         },
-    }, -- [2]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Eastern Plaguelands
 APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         PickUp = {
             27370,
-            27367, -- [2]
+            27367,
         },
         Coord = {
             y = 1916.7,
@@ -18159,7 +18159,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2466,
             x = -2470.7,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = 2736,
@@ -18168,7 +18168,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         Done = {
             27367,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             27368,
@@ -18258,7 +18258,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         Done = {
             27371,
         },
-    }, -- [12]
+    },
     {
         PickUp = {
             27372,
@@ -18267,7 +18267,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1570.4,
             x = -3029.5,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [27372] = {
@@ -18279,7 +18279,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1757.9,
             x = -2992,
         },
-    }, -- [14]
+    },
     {
         Coord = {
             y = 1917.4,
@@ -18287,9 +18287,9 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         },
         Done = {
             27372,
-            27369, -- [2]
+            27369,
         },
-    },             -- [15]
+    },
     {
         PickUp = {
             27373,
@@ -18298,7 +18298,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1917.4,
             x = -2650.7,
         },
-    }, -- [16]
+    },
     {
         Qpart = {
             [27373] = {
@@ -18311,7 +18311,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1915,
             x = -2640.9,
         },
-    }, -- [17]
+    },
     {
         Qpart = {
             [27373] = {
@@ -18324,7 +18324,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1915,
             x = -2640.9,
         },
-    }, -- [17]
+    },
     {
         Done = {
             27373,
@@ -18342,7 +18342,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1872.4,
             x = -3698.4,
         },
-    }, -- [2]
+    },
     {
         GetFP = 87,
         Range = 5.91,
@@ -18440,7 +18440,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1589.2,
             x = -3505,
         },
-    }, -- [2]
+    },
     {
         Fillers = {
             [27382] = {
@@ -18454,11 +18454,11 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1455,
             x = -3595.7,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             27384,
-            27392, -- [2]
+            27392,
         },
         Coord = {
             y = 1454.8,
@@ -18509,7 +18509,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1435.9,
             x = -3667,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [27392] = {
@@ -18525,7 +18525,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         Done = {
             27392,
-            27384, -- [2]
+            27384,
         },
         Coord = {
             y = 1455.4,
@@ -18540,7 +18540,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1454.8,
             x = -3595.7,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [27382] = {
@@ -18561,7 +18561,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         Done = {
             27432,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = 1854.3,
@@ -18570,7 +18570,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         Done = {
             27381,
         },
-    }, -- [3]
+    },
     {
         Coord = {
             y = 1853.7,
@@ -18611,8 +18611,8 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         PickUp = {
             27389,
-            27387, -- [2]
-            27388, -- [3]
+            27387,
+            27388,
         },
         Coord = {
             y = 1875,
@@ -18661,7 +18661,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1760,
             x = -3890.2,
         },
-    }, -- [12]
+    },
     {
         Qpart = {
             [27387] = {
@@ -18673,7 +18673,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2085.6,
             x = -3792.2,
         },
-    }, -- [13]
+    },
     {
         Done = {
             27544,
@@ -18682,17 +18682,17 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2176,
             x = -3505.5,
         },
-    }, -- [14]
+    },
     {
         PickUp = {
             27420,
-            27421, -- [2]
+            27421,
         },
         Coord = {
             y = 2175.9,
             x = -3505.4,
         },
-    }, -- [15]
+    },
     {
         Fillers = {
             [27420] = {
@@ -18737,7 +18737,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2511.4,
             x = -3641.2,
         },
-    }, -- [2]
+    },
     {
         Fillers = {
             [27420] = {
@@ -18757,7 +18757,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2528.1,
             x = -3778.2,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [27421] = {
@@ -18842,7 +18842,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         Done = {
             27420,
-            27421, -- [2]
+            27421,
         },
         Coord = {
             y = 2176.9,
@@ -18861,18 +18861,18 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1873.4,
             x = -3194.2,
         },
-    }, -- [2]
+    },
     {
         Done = {
             27389,
-            27387, -- [2]
-            27388, -- [3]
+            27387,
+            27388,
         },
         Coord = {
             y = 1875.7,
             x = -3707.9,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             27390,
@@ -18975,17 +18975,17 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2278.5,
             x = -4419.9,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27451,
-            27452, -- [2]
+            27452,
         },
         Coord = {
             y = 2237,
             x = -4431.4,
         },
-    }, -- [3]
+    },
     {
         ExtraLineText = "NPC_TOP_TOWER",
         PickUp = {
@@ -19064,7 +19064,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2062.4,
             x = -4510.2,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27453,
@@ -19073,7 +19073,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2062.4,
             x = -4510.2,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [27453] = {
@@ -19145,7 +19145,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2257.4,
             x = -4457.4,
         },
-    }, -- [2]
+    },
     {
         Waypoint = 27455,
         Range = 43.83,
@@ -19153,7 +19153,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2162.3,
             x = -4982.4,
         },
-    }, -- [3]
+    },
     {
         Waypoint = 27455,
         Range = 20.55,
@@ -19214,7 +19214,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2306.9,
             x = -5344,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27464,
@@ -19223,7 +19223,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2306.9,
             x = -5344,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             27456,
@@ -19256,7 +19256,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2307.1,
             x = -5344.4,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             27465,
@@ -19286,7 +19286,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2088.5,
             x = -5216.2,
         },
-    }, -- [12]
+    },
     {
         Waypoint = 27459,
         Range = 40.76,
@@ -19303,7 +19303,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1693.5,
             x = -5214.9,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27460,
@@ -19312,7 +19312,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1693.5,
             x = -5214.9,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [27460] = {
@@ -19337,7 +19337,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         PickUp = {
             27461,
-            27462, -- [2]
+            27462,
         },
         Coord = {
             y = 1571.5,
@@ -19356,8 +19356,8 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         PickUp = {
             27614,
-            27615, -- [2]
-            27619, -- [3]
+            27615,
+            27619,
             27616,
         },
         Coord = {
@@ -19392,8 +19392,8 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         Done = {
             27614,
-            27615, -- [2]
-            27616, -- [3]
+            27615,
+            27616,
             27619,
         },
         Coord = {
@@ -19418,7 +19418,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1679.7,
             x = -5353.9,
         },
-    }, -- [12]
+    },
     {
         Done = {
             27461,
@@ -19427,17 +19427,17 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1739.5,
             x = -5378.9,
         },
-    }, -- [13]
+    },
     {
         PickUp = {
             27612,
-            27613, -- [2]
+            27613,
         },
         Coord = {
             y = 1739.5,
             x = -5378.9,
         },
-    }, -- [14]
+    },
     {
         Waypoint = 27613,
         Range = 6.31,
@@ -19445,7 +19445,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1746.3,
             x = -5403.3,
         },
-    }, -- [15]
+    },
     {
         Waypoint = 27613,
         Range = 6.3,
@@ -19453,7 +19453,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1769.8,
             x = -5414.9,
         },
-    }, -- [16]
+    },
     {
         Waypoint = 27613,
         Range = 4.98,
@@ -19461,7 +19461,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1787,
             x = -5420.4,
         },
-    }, -- [17]
+    },
     {
         Waypoint = 27613,
         Range = 4.49,
@@ -19469,7 +19469,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1772.8,
             x = -5427.2,
         },
-    }, -- [18]
+    },
     {
         Waypoint = 27613,
         Range = 5.86,
@@ -19477,7 +19477,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1776.5,
             x = -5414.3,
         },
-    }, -- [19]
+    },
     {
         Waypoint = 27613,
         Range = 4.47,
@@ -19485,7 +19485,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1788.9,
             x = -5416.9,
         },
-    }, -- [20]
+    },
     {
         Qpart = {
             [27612] = {
@@ -19497,7 +19497,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1796.5,
             x = -5425,
         },
-    }, -- [21]
+    },
     {
         Waypoint = 27613,
         Range = 7.6,
@@ -19505,7 +19505,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1760,
             x = -5413.7,
         },
-    }, -- [22]
+    },
     {
         Waypoint = 27613,
         Range = 6.16,
@@ -19513,7 +19513,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1749,
             x = -5424.4,
         },
-    }, -- [23]
+    },
     {
         Qpart = {
             [27612] = {
@@ -19525,7 +19525,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1745,
             x = -5453,
         },
-    }, -- [24]
+    },
     {
         Waypoint = 27613,
         Range = 5.2,
@@ -19533,7 +19533,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1747.9,
             x = -5427.4,
         },
-    }, -- [25]
+    },
     {
         Waypoint = 27613,
         Range = 4.3,
@@ -19541,7 +19541,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1760.8,
             x = -5427.2,
         },
-    }, -- [26]
+    },
     {
         Waypoint = 27613,
         Range = 4.95,
@@ -19549,7 +19549,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1766.9,
             x = -5417.2,
         },
-    }, -- [27]
+    },
     {
         Waypoint = 27613,
         Range = 6.62,
@@ -19557,7 +19557,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1745.4,
             x = -5408.3,
         },
-    }, -- [28]
+    },
     {
         Waypoint = 27613,
         Range = 4.73,
@@ -19565,7 +19565,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1750,
             x = -5427.8,
         },
-    }, -- [29]
+    },
     {
         Waypoint = 27613,
         Range = 4.58,
@@ -19573,7 +19573,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1767,
             x = -5419.4,
         },
-    }, -- [30]
+    },
     {
         Qpart = {
             [27613] = {
@@ -19585,17 +19585,17 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1751.3,
             x = -5416.4,
         },
-    }, -- [31]
+    },
     {
         Done = {
             27612,
-            27613, -- [2]
+            27613,
         },
         Coord = {
             y = 1740.2,
             x = -5378,
         },
-    }, -- [32]
+    },
     {
         PickUp = {
             27617,
@@ -19604,7 +19604,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1740.2,
             x = -5378,
         },
-    }, -- [33]
+    },
     {
         Done = {
             27617,
@@ -19613,7 +19613,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1678.7,
             x = -5354,
         },
-    }, -- [34]
+    },
     {
         PickUp = {
             27620,
@@ -19622,7 +19622,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1679,
             x = -5354,
         },
-    }, -- [35]
+    },
     {
         Waypoint = 27620,
         Range = 7.74,
@@ -19630,7 +19630,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1607,
             x = -5533.9,
         },
-    }, -- [36]
+    },
     {
         Qpart = {
             [27620] = {
@@ -19642,7 +19642,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1571.5,
             x = -5603.4,
         },
-    }, -- [37]
+    },
     {
         Waypoint = 27620,
         Range = 38.25,
@@ -19650,7 +19650,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1732,
             x = -5274,
         },
-    }, -- [38]
+    },
     {
         Waypoint = 27620,
         Range = 31.84,
@@ -19658,7 +19658,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1787.4,
             x = -5188.8,
         },
-    }, -- [39]
+    },
     {
         Waypoint = 27620,
         Range = 24.38,
@@ -19666,7 +19666,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 1825,
             x = -5164.8,
         },
-    }, -- [40]
+    },
     {
         Waypoint = 27620,
         Range = 23.05,
@@ -19674,7 +19674,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2253.1,
             x = -5254.4,
         },
-    }, -- [41]
+    },
     {
         Done = {
             27620,
@@ -19683,7 +19683,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2303.1,
             x = -5336.5,
         },
-    }, -- [42]
+    },
     {
         Done = {
             27456,
@@ -19692,7 +19692,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2309.9,
             x = -5261.9,
         },
-    }, -- [43]
+    },
     {
         Qpart = {
             [27458] = {
@@ -19726,7 +19726,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2708.5,
             x = -5348.4,
         },
-    }, -- [2]
+    },
     {
         Done = {
             27458,
@@ -19739,13 +19739,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         Done = {
             27467,
-            27465, -- [2]
+            27465,
         },
         Coord = {
             y = 2304,
             x = -5341.9,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27466,
@@ -19754,7 +19754,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2298.6,
             x = -5340.9,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             27457,
@@ -19793,13 +19793,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         Done = {
             27457,
-            27466, -- [2]
+            27466,
         },
         Coord = {
             y = 2556.9,
             x = -4764.9,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27481,
@@ -19808,7 +19808,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2550.1,
             x = -4749.4,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             27487,
@@ -19919,7 +19919,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 3458.3,
             x = -4999.3,
         },
-    }, -- [12]
+    },
     {
         Qpart = {
             [27479] = {
@@ -19931,7 +19931,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 3448.6,
             x = -4991.9,
         },
-    }, -- [13]
+    },
     {
         Done = {
             27487,
@@ -19940,7 +19940,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2556.8,
             x = -4764.8,
         },
-    }, -- [14]
+    },
     {
         Done = {
             27477,
@@ -19949,7 +19949,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2546.4,
             x = -4767.9,
         },
-    }, -- [15]
+    },
     {
         PickUp = {
             27488,
@@ -19958,7 +19958,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2544.9,
             x = -4768.2,
         },
-    }, -- [16]
+    },
     {
         Done = {
             27479,
@@ -19967,7 +19967,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2511.8,
             x = -4762.7,
         },
-    }, -- [17]
+    },
     {
         Qpart = {
             [27488] = {
@@ -19979,7 +19979,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 3049.1,
             x = -4926.9,
         },
-    }, -- [18]
+    },
     {
         Done = {
             27488,
@@ -19988,7 +19988,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2543.1,
             x = -4769.3,
         },
-    }, -- [19]
+    },
     {
         PickUp = {
             27489,
@@ -19997,7 +19997,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2543.1,
             x = -4769.3,
         },
-    }, -- [20]
+    },
     {
         Qpart = {
             [27489] = {
@@ -20010,7 +20010,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2561,
             x = -4770.7,
         },
-    }, -- [21]
+    },
     {
         Qpart = {
             [27489] = {
@@ -20023,7 +20023,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2561,
             x = -4770.7,
         },
-    }, -- [21]
+    },
     {
         Done = {
             27489,
@@ -20041,7 +20041,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 3162.8,
             x = -4320.4,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             27521,
@@ -20050,7 +20050,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 3179,
             x = -4304,
         },
-    }, -- [3]
+    },
     {
         GetFP = 85,
         Range = 5.91,
@@ -20076,7 +20076,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 3086.1,
             x = -4224.2,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [27523] = {
@@ -20091,7 +20091,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2840.9,
             x = -4146.5,
         },
-    }, -- [3]
+    },
     {
         Done = {
             27523,
@@ -20180,18 +20180,18 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 3137,
             x = -3399,
         },
-    }, -- [12]
+    },
     {
         PickUp = {
             27539,
-            27528, -- [2]
-            27529, -- [3]
+            27528,
+            27529,
         },
         Coord = {
             y = 3141,
             x = -3401.4,
         },
-    }, -- [13]
+    },
     {
         Waypoint = 27525,
         Range = 14.61,
@@ -20235,7 +20235,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 3161.3,
             x = -3500.9,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [27525] = {
@@ -20261,7 +20261,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 3175.8,
             x = -3475.2,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             27551,
@@ -20337,7 +20337,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         Done = {
             27551,
-            27525, -- [2]
+            27525,
         },
         Coord = {
             y = 3136.5,
@@ -20380,7 +20380,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         Button = {
             ["27528-1"] = 61369,
         },
-    }, -- [2]
+    },
     {
         Waypoint = 27526,
         Range = 12.08,
@@ -20402,7 +20402,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         Button = {
             ["27528-1"] = 61369,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [27526] = {
@@ -20499,8 +20499,8 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         Done = {
             27539,
-            27528, -- [2]
-            27529, -- [3]
+            27528,
+            27529,
         },
         Coord = {
             y = 3143.3,
@@ -20515,7 +20515,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 3143.3,
             x = -3402.2,
         },
-    }, -- [2]
+    },
     {
         GetFP = 84,
         Range = 5.91,
@@ -20536,7 +20536,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         PickUp = {
             27531,
-            27535, -- [2]
+            27535,
         },
         Coord = {
             y = 2952.1,
@@ -20555,13 +20555,13 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         PickUp = {
             27533,
-            27534, -- [2]
+            27534,
         },
         Coord = {
             y = 2934.1,
             x = -2744.9,
         },
-    }, -- [2]
+    },
     {
         Waypoint = 27534,
         Fillers = {
@@ -20574,7 +20574,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2946.3,
             x = -2865.2,
         },
-    }, -- [3]
+    },
     {
         Waypoint = 27534,
         Range = 5.39,
@@ -20590,7 +20590,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2981.8,
             x = -2877,
         },
-    }, -- [2]
+    },
     {
         Waypoint = 27534,
         Range = 3.22,
@@ -20598,7 +20598,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
             y = 2972.6,
             x = -2873,
         },
-    }, -- [3]
+    },
     {
         Waypoint = 27534,
         Range = 6.07,
@@ -20634,7 +20634,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
     {
         Done = {
             27533,
-            27534, -- [2]
+            27534,
         },
         Coord = {
             y = 2934.3,
@@ -20711,7 +20711,7 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         Done = {
             27530,
         },
-    }, -- [12]
+    },
     {
         Coord = {
             y = 2304.6,
@@ -20723,10 +20723,10 @@ APR.RouteQuestStepList["A23-EasternPlaguelands"] = {
         Button = {
             ["27527"] = 61379,
         },
-    }, -- [13]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Duskwood
 APR.RouteQuestStepList["A47-Duskwood"] = {
@@ -20755,7 +20755,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10580.8,
             x = -1200,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             26618,
@@ -20794,7 +20794,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
     {
         PickUp = {
             26620,
-            26623, -- [2]
+            26623,
         },
         Coord = {
             y = -10499.5,
@@ -20844,7 +20844,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10445.8,
             x = -820.2,
         },
-    }, -- [12]
+    },
     {
         Qpart = {
             [26688] = {
@@ -20861,7 +20861,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10471.8,
             x = -859.7,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [26620] = {
@@ -20879,7 +20879,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10122.3,
             x = -911.3,
         },
-    }, -- [14]
+    },
     {
         Waypoint = 26620,
         Range = 7.25,
@@ -20896,7 +20896,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10499,
             x = -1157.4,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = -10561.3,
@@ -20905,11 +20905,11 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         Done = {
             26618,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             26627,
-            26645, -- [2]
+            26645,
         },
         Coord = {
             y = -10560.5,
@@ -20986,7 +20986,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10349.8,
             x = -1527,
         },
-    }, -- [12]
+    },
     {
         Range = 12.39,
         Waypoint = 26653,
@@ -20994,7 +20994,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10549.8,
             x = -1207,
         },
-    }, -- [13]
+    },
     {
         Range = 7.8,
         Waypoint = 26653,
@@ -21002,7 +21002,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10533,
             x = -1202.4,
         },
-    }, -- [14]
+    },
     {
         Coord = {
             y = -10531.7,
@@ -21011,7 +21011,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         Done = {
             26653,
         },
-    }, -- [15]
+    },
     {
         PickUp = {
             26652,
@@ -21020,7 +21020,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10531.7,
             x = -1213.1,
         },
-    }, -- [16]
+    },
     {
         Coord = {
             y = -10779.5,
@@ -21028,19 +21028,19 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         },
         Done = {
             26652,
-            26683, -- [2]
+            26683,
         },
-    },             -- [17]
+    },
     {
         PickUp = {
             26684,
-            26654, -- [2]
+            26654,
         },
         Coord = {
             y = -10779.5,
             x = -1377.9,
         },
-    }, -- [18]
+    },
     {
         Qpart = {
             [26645] = {
@@ -21052,7 +21052,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10779.8,
             x = -1364.4,
         },
-    }, -- [19]
+    },
     {
         Qpart = {
             [26684] = {
@@ -21064,7 +21064,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10996.2,
             x = -1333.8,
         },
-    }, -- [20]
+    },
     {
         Qpart = {
             [26669] = {
@@ -21081,7 +21081,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11092.3,
             x = -963.5,
         },
-    }, -- [21]
+    },
     {
         Qpart = {
             [26689] = {
@@ -21093,7 +21093,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11063.8,
             x = -929.2,
         },
-    }, -- [22]
+    },
     {
         Waypoint = 26684,
         Range = 68.02,
@@ -21101,7 +21101,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10930,
             x = -691.8,
         },
-    }, -- [23]
+    },
     {
         PickUp = {
             25235,
@@ -21110,17 +21110,17 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10922.2,
             x = -385.7,
         },
-    }, -- [24]
+    },
     {
         PickUp = {
             26707,
-            26717, -- [2]
+            26717,
         },
         Coord = {
             y = -10930,
             x = -379.9,
         },
-    }, -- [25]
+    },
     {
         Waypoint = 26684,
         Range = 37.63,
@@ -21128,7 +21128,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11161.2,
             x = -377.8,
         },
-    }, -- [26]
+    },
     {
         Waypoint = 26684,
         Range = 15.86,
@@ -21144,7 +21144,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11384.8,
             x = -286.2,
         },
-    }, -- [2]
+    },
     {
         Waypoint = 26684,
         Range = 18.13,
@@ -21152,7 +21152,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11365.5,
             x = -211.2,
         },
-    }, -- [3]
+    },
     {
         Coord = {
             y = -11340,
@@ -21180,7 +21180,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10570.3,
             x = -1313.9,
         },
-    }, -- [2]
+    },
     {
         Waypoint = 26654,
         Range = 10.88,
@@ -21188,7 +21188,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10534.7,
             x = -1201.6,
         },
-    }, -- [3]
+    },
     {
         Done = {
             26654,
@@ -21268,7 +21268,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10534.3,
             x = -1376,
         },
-    }, -- [12]
+    },
     {
         Done = {
             26655,
@@ -21277,7 +21277,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10352.5,
             x = -1527.3,
         },
-    }, -- [13]
+    },
     {
         PickUp = {
             26660,
@@ -21286,7 +21286,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10352.5,
             x = -1527.3,
         },
-    }, -- [14]
+    },
     {
         Waypoint = 26660,
         Range = 7.49,
@@ -21294,7 +21294,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10546.2,
             x = -1160.5,
         },
-    }, -- [15]
+    },
     {
         Done = {
             26660,
@@ -21303,7 +21303,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10519.8,
             x = -1163,
         },
-    }, -- [16]
+    },
     {
         PickUp = {
             26661,
@@ -21312,7 +21312,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10519.8,
             x = -1163,
         },
-    }, -- [17]
+    },
     {
         Waypoint = 26686,
         Range = 34.08,
@@ -21320,7 +21320,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10652.5,
             x = -1194.8,
         },
-    }, -- [18]
+    },
     {
         Qpart = {
             [26686] = {
@@ -21336,7 +21336,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10970.8,
             x = -1276.6,
         },
-    }, -- [19]
+    },
     {
         Waypoint = 26670,
         Range = 13.95,
@@ -21350,7 +21350,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11061.2,
             x = -1136.3,
         },
-    }, -- [20]
+    },
     {
         Waypoint = 26670,
         Range = 12.43,
@@ -21364,7 +21364,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11099.8,
             x = -1150.6,
         },
-    }, -- [21]
+    },
     {
         Waypoint = 26670,
         Range = 8.69,
@@ -21378,7 +21378,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11123.7,
             x = -1169.5,
         },
-    }, -- [22]
+    },
     {
         Qpart = {
             [26670] = {
@@ -21396,7 +21396,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11141.8,
             x = -1154,
         },
-    }, -- [23]
+    },
     {
         Qpart = {
             [26690] = {
@@ -21409,7 +21409,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11029,
             x = -1129.9,
         },
-    }, -- [24]
+    },
     {
         Waypoint = 26690,
         Range = 11.81,
@@ -21426,7 +21426,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10580.3,
             x = -1198.5,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             26691,
@@ -21435,7 +21435,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10580.3,
             x = -1198.5,
         },
-    }, -- [3]
+    },
     {
         Done = {
             26691,
@@ -21513,7 +21513,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10550.8,
             x = -1226.5,
         },
-    }, -- [12]
+    },
     {
         Done = {
             26671,
@@ -21522,7 +21522,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10512,
             x = -1300.8,
         },
-    }, -- [13]
+    },
     {
         PickUp = {
             26672,
@@ -21531,7 +21531,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10512,
             x = -1300.8,
         },
-    }, -- [14]
+    },
     {
         Waypoint = 26676,
         Range = 9.8,
@@ -21539,7 +21539,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10536.3,
             x = -1366.5,
         },
-    }, -- [15]
+    },
     {
         Waypoint = 26676,
         Range = 13.28,
@@ -21547,7 +21547,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10432.3,
             x = -1490.3,
         },
-    }, -- [16]
+    },
     {
         Done = {
             26676,
@@ -21556,7 +21556,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10350.5,
             x = -1526.4,
         },
-    }, -- [17]
+    },
     {
         PickUp = {
             26680,
@@ -21565,7 +21565,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10350.5,
             x = -1526.4,
         },
-    }, -- [18]
+    },
     {
         Waypoint = 26672,
         Range = 14.45,
@@ -21573,7 +21573,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10549,
             x = -1205.8,
         },
-    }, -- [19]
+    },
     {
         Waypoint = 26672,
         Range = 6.05,
@@ -21581,7 +21581,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10532.8,
             x = -1201.5,
         },
-    }, -- [20]
+    },
     {
         Done = {
             26672,
@@ -21590,7 +21590,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10531.5,
             x = -1212.4,
         },
-    }, -- [21]
+    },
     {
         PickUp = {
             26674,
@@ -21599,7 +21599,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10531.5,
             x = -1212.4,
         },
-    }, -- [22]
+    },
     {
         Waypoint = 26717,
         Range = 11.41,
@@ -21607,7 +21607,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10550.8,
             x = -1209.1,
         },
-    }, -- [23]
+    },
     {
         Waypoint = 26717,
         Range = 19.79,
@@ -21615,7 +21615,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10524.3,
             x = -1260.5,
         },
-    }, -- [24]
+    },
     {
         Coord = {
             y = -10513.3,
@@ -21641,7 +21641,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11343.5,
             x = -381.4,
         },
-    }, -- [2]
+    },
     {
         Waypoint = 26717,
         Range = 20.22,
@@ -21666,7 +21666,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11115,
             x = -511.8,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [26707] = {
@@ -21678,7 +21678,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11082.8,
             x = -503.5,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [26680] = {
@@ -21708,7 +21708,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11107.7,
             x = -89.5,
         },
-    }, -- [2]
+    },
     {
         Waypoint = 25235,
         Range = 9.11,
@@ -21721,7 +21721,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -11188.8,
             x = -157.7,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [26685] = {
@@ -21754,7 +21754,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
     {
         Done = {
             26707,
-            26717, -- [2]
+            26717,
         },
         Coord = {
             y = -10929.7,
@@ -21769,7 +21769,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10929.3,
             x = -378.4,
         },
-    }, -- [2]
+    },
     {
         Done = {
             25235,
@@ -21778,7 +21778,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10922.5,
             x = -383.9,
         },
-    }, -- [3]
+    },
     {
         Waypoint = 26719,
         Range = 11.31,
@@ -21790,7 +21790,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
     {
         PickUp = {
             26777,
-            26838, -- [2]
+            26838,
         },
         Coord = {
             y = -10757.2,
@@ -21859,7 +21859,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10981,
             x = 245,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = -10757.7,
@@ -21877,7 +21877,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         Done = {
             26720,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             26760,
@@ -21886,7 +21886,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10754.5,
             x = 339.1,
         },
-    }, -- [3]
+    },
     {
         ETA = 65,
         Qpart = {
@@ -21926,7 +21926,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10756.5,
             x = 293.8,
         },
-    }, -- [2]
+    },
     {
         GetFP = 622,
         Range = 0.61,
@@ -21947,7 +21947,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10725.2,
             x = 293.3,
         },
-    }, -- [3]
+    },
     {
         Waypoint = 26778,
         Range = 13.64,
@@ -22063,7 +22063,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         Done = {
             26778,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = -10766.7,
@@ -22072,7 +22072,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
         Done = {
             26721,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             26787,
@@ -22147,7 +22147,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10353.8,
             x = 200.6,
         },
-    }, -- [12]
+    },
     {
         Waypoint = 26753,
         Range = 5.55,
@@ -22155,7 +22155,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10343,
             x = 188.1,
         },
-    }, -- [13]
+    },
     {
         Waypoint = 26753,
         Range = 9.29,
@@ -22163,7 +22163,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10330.5,
             x = 146.5,
         },
-    }, -- [14]
+    },
     {
         Waypoint = 26753,
         Range = 7.97,
@@ -22171,7 +22171,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10285,
             x = 148.6,
         },
-    }, -- [15]
+    },
     {
         Waypoint = 26753,
         Range = 7.48,
@@ -22179,7 +22179,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10222.5,
             x = 197.6,
         },
-    }, -- [16]
+    },
     {
         Done = {
             26753,
@@ -22188,7 +22188,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10210.8,
             x = 283.8,
         },
-    }, -- [17]
+    },
     {
         PickUp = {
             26722,
@@ -22197,7 +22197,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10210.8,
             x = 283.8,
         },
-    }, -- [18]
+    },
     {
         Waypoint = 26722,
         Range = 6.28,
@@ -22205,7 +22205,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10195.7,
             x = 285.8,
         },
-    }, -- [19]
+    },
     {
         Waypoint = 26722,
         Range = 5.49,
@@ -22213,7 +22213,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10196.3,
             x = 311.1,
         },
-    }, -- [20]
+    },
     {
         Waypoint = 26722,
         Range = 6.2,
@@ -22221,7 +22221,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10166,
             x = 330.5,
         },
-    }, -- [21]
+    },
     {
         Done = {
             26722,
@@ -22230,7 +22230,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10172.3,
             x = 346.5,
         },
-    }, -- [22]
+    },
     {
         PickUp = {
             26754,
@@ -22239,7 +22239,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10172.3,
             x = 346.5,
         },
-    }, -- [23]
+    },
     {
         Waypoint = 26754,
         Range = 6.45,
@@ -22247,7 +22247,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10190.3,
             x = 354.1,
         },
-    }, -- [24]
+    },
     {
         Waypoint = 26754,
         Range = 6.45,
@@ -22255,7 +22255,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10227.2,
             x = 346.8,
         },
-    }, -- [25]
+    },
     {
         Waypoint = 26754,
         Range = 5.01,
@@ -22263,7 +22263,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10227.8,
             x = 366.5,
         },
-    }, -- [26]
+    },
     {
         Qpart = {
             [26754] = {
@@ -22278,7 +22278,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10278.8,
             x = 380.3,
         },
-    }, -- [27]
+    },
     {
         Waypoint = 26754,
         Range = 5.58,
@@ -22286,7 +22286,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10406,
             x = 420.2,
         },
-    }, -- [28]
+    },
     {
         Waypoint = 26754,
         Range = 4.62,
@@ -22294,7 +22294,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10413.5,
             x = 403.5,
         },
-    }, -- [29]
+    },
     {
         Done = {
             26754,
@@ -22303,7 +22303,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10760.8,
             x = 338.2,
         },
-    }, -- [30]
+    },
     {
         Done = {
             26787,
@@ -22339,7 +22339,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10561.3,
             x = -1127,
         },
-    }, -- [2]
+    },
     {
         Done = {
             26793,
@@ -22348,7 +22348,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10576,
             x = -1126.5,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             26794,
@@ -22429,7 +22429,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10368.5,
             x = -1254.9,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [26677] = {
@@ -22441,7 +22441,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10336.8,
             x = -1264,
         },
-    }, -- [12]
+    },
     {
         Waypoint = 26674,
         Range = 7.49,
@@ -22458,7 +22458,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10511.5,
             x = -1301.5,
         },
-    }, -- [2]
+    },
     {
         Waypoint = 26677,
         Range = 11.08,
@@ -22466,7 +22466,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
             y = -10532.7,
             x = -1373.3,
         },
-    }, -- [3]
+    },
     {
         Waypoint = 26677,
         Range = 16.75,
@@ -22542,7 +22542,7 @@ APR.RouteQuestStepList["A47-Duskwood"] = {
     },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Redridge Mountauns ----
 APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
@@ -22563,7 +22563,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9632.7,
             x = -1881,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             26503,
@@ -22573,7 +22573,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9623.5,
             x = -1872,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [26503] = {
@@ -22668,7 +22668,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         },
         Done = {
             26504,
-            26503, -- [2]
+            26503,
         },
     },
     {
@@ -22701,7 +22701,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9357,
             x = -2176.7,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = -9350.5,
@@ -22710,10 +22710,10 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         Done = {
             26508,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
-            26511, -- [2]
+            26511,
         },
         Coord = {
             y = -9216,
@@ -22800,7 +22800,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         Done = {
             26510,
         },
-    }, -- [12]
+    },
     {
         PickUp = {
             26512,
@@ -22809,7 +22809,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9218.2,
             x = -2220.9,
         },
-    }, -- [13]
+    },
     {
         Range = 12.72,
         Waypoint = 26512,
@@ -22817,7 +22817,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9248.8,
             x = -2210.7,
         },
-    }, -- [14]
+    },
     {
         PickUp = {
             26513,
@@ -22826,7 +22826,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9281.8,
             x = -2296.2,
         },
-    }, -- [15]
+    },
     {
         Coord = {
             y = -9188.8,
@@ -22835,7 +22835,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         Done = {
             26512,
         },
-    }, -- [16]
+    },
     {
         PickUp = {
             26514,
@@ -22844,7 +22844,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9188.8,
             x = -2307.5,
         },
-    }, -- [17]
+    },
     {
         DropQuest = 26519,
         DroppableQuest = {
@@ -22865,7 +22865,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9050.7,
             x = -2402.2,
         },
-    }, -- [19]
+    },
     {
         Qpart = {
             [26514] = {
@@ -22882,7 +22882,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9050.7,
             x = -2402.2,
         },
-    }, -- [21]
+    },
     {
         Coord = {
             y = -9050.7,
@@ -22908,7 +22908,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8975.7,
             x = -2014,
         },
-    }, -- [20]
+    },
     {
         Qpart = {
             [26519] = {
@@ -22931,7 +22931,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8831.8,
             x = -1939.9,
         },
-    }, -- [21]
+    },
     {
         Coord = {
             y = -8832.5,
@@ -22940,7 +22940,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         Done = {
             26519,
         },
-    }, -- [22]
+    },
     {
         PickUp = {
             26520,
@@ -22949,7 +22949,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8832.5,
             x = -1937.8,
         },
-    }, -- [23]
+    },
     {
         Qpart = {
             [26544] = {
@@ -22970,7 +22970,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8882.5,
             x = -1924.6,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             26545,
@@ -22979,7 +22979,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8882.5,
             x = -1924.6,
         },
-    }, -- [3]
+    },
     {
         Range = 14.94,
         Waypoint = 26520,
@@ -22987,7 +22987,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8990,
             x = -2018.5,
         },
-    }, -- [24]
+    },
     {
         Qpart = {
             [26545] = {
@@ -23031,7 +23031,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9022.2,
             x = -2056.5,
         },
-    }, -- [25]
+    },
     {
         ExtraLineText = "USE_ORB_CANYON_ETTIN",
         Qpart = {
@@ -23047,16 +23047,16 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9272.2,
             x = -2286.5,
         },
-    }, -- [26]
+    },
     {
         Done = {
-            26513, -- [2]
+            26513,
         },
         Coord = {
             y = -9280.8,
             x = -2296,
         },
-    }, -- [27]
+    },
     {
         Waypoint = 26545,
         Range = 19.65,
@@ -23068,7 +23068,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
     {
         Done = {
             26545,
-            26520, -- [2]
+            26520,
         },
         Coord = {
             y = -9217.8,
@@ -23091,7 +23091,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9248.7,
             x = -2209.2,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             26509,
@@ -23100,7 +23100,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9245.8,
             x = -2047.1,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [26509] = {
@@ -23179,7 +23179,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9246.8,
             x = -2210.9,
         },
-    }, -- [12]
+    },
     {
         Done = {
             26568,
@@ -23188,17 +23188,17 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9211.8,
             x = -2214.7,
         },
-    }, -- [13]
+    },
     {
         PickUp = {
             26586,
-            26571, -- [2]
+            26571,
         },
         Coord = {
             y = -9211.8,
             x = -2214.7,
         },
-    }, -- [14]
+    },
     {
         Range = 9.79,
         Waypoint = 26586,
@@ -23210,13 +23210,13 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
     {
         PickUp = {
             26570,
-            26569, -- [2]
+            26569,
         },
         Coord = {
             y = -9276.3,
             x = -2241,
         },
-    }, -- [2]
+    },
     {
         Range = 42.53,
         Waypoint = 26571,
@@ -23224,7 +23224,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9170,
             x = -2411.2,
         },
-    }, -- [3]
+    },
     {
         Range = 29.39,
         Waypoint = 26571,
@@ -23315,7 +23315,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         Done = {
             26587,
         },
-    }, -- [12]
+    },
     {
         PickUp = {
             26560,
@@ -23324,7 +23324,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9226.3,
             x = -2697.5,
         },
-    }, -- [13]
+    },
     {
         Waypoint = 26560,
         Fillers = {
@@ -23340,7 +23340,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8955.5,
             x = -2594.4,
         },
-    }, -- [14]
+    },
     {
         Qpart = {
             [26560] = {
@@ -23360,7 +23360,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8699.7,
             x = -2599.5,
         },
-    }, -- [15]
+    },
     {
         Waypoint = 26560,
         Fillers = {
@@ -23376,7 +23376,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8782.5,
             x = -2469.2,
         },
-    }, -- [16]
+    },
     {
         Fillers = {
             [26570] = {
@@ -23393,7 +23393,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8718.8,
             x = -2341.7,
         },
-    }, -- [17]
+    },
     {
         PickUp = {
             26561,
@@ -23402,7 +23402,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8716.7,
             x = -2344.4,
         },
-    }, -- [18]
+    },
     {
         Qpart = {
             [26561] = {
@@ -23423,7 +23423,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8693.7,
             x = -2162.5,
         },
-    }, -- [19]
+    },
     {
         Done = {
             26561,
@@ -23432,7 +23432,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8693.3,
             x = -2146.2,
         },
-    }, -- [20]
+    },
     {
         PickUp = {
             26562,
@@ -23441,7 +23441,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8694.5,
             x = -2156,
         },
-    }, -- [21]
+    },
     {
         Waypoint = 26562,
         Fillers = {
@@ -23457,7 +23457,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8745.3,
             x = -2174.2,
         },
-    }, -- [22]
+    },
     {
         Waypoint = 26562,
         Fillers = {
@@ -23473,7 +23473,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8761.8,
             x = -2256.4,
         },
-    }, -- [23]
+    },
     {
         Waypoint = 26562,
         Fillers = {
@@ -23489,7 +23489,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8818,
             x = -2214,
         },
-    }, -- [24]
+    },
     {
         Qpart = {
             [26562] = {
@@ -23510,7 +23510,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8823.8,
             x = -2189.2,
         },
-    }, -- [25]
+    },
     {
         Coord = {
             y = -8807.3,
@@ -23519,7 +23519,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
         Done = {
             26562,
         },
-    }, -- [26]
+    },
     {
         PickUp = {
             26563,
@@ -23528,7 +23528,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8807.3,
             x = -2204.9,
         },
-    }, -- [27]
+    },
     {
         Qpart = {
             [26570] = {
@@ -23543,7 +23543,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8674.5,
             x = -2298.5,
         },
-    }, -- [28]
+    },
     {
         Waypoint = 26573,
         Range = 19.62,
@@ -23559,7 +23559,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8675.3,
             x = -2294.9,
         },
-    }, -- [2]
+    },
     {
         Waypoint = 26573,
         Range = 27.53,
@@ -23575,17 +23575,17 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -8952.2,
             x = -2594.7,
         },
-    }, -- [2]
+    },
     {
         Done = {
             26570,
-            26569, -- [2]
+            26569,
         },
         Coord = {
             y = -9276.5,
             x = -2241.2,
         },
-    }, -- [30]
+    },
     {
         Waypoint = 26563,
         Range = 9.6,
@@ -23593,17 +23593,17 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9246,
             x = -2211.4,
         },
-    }, -- [31]
+    },
     {
         Done = {
             26573,
-            26563, -- [2]
+            26563,
         },
         Coord = {
             y = -9213.2,
             x = -2214,
         },
-    }, -- [32]
+    },
     {
         PickUp = {
             26607,
@@ -23612,7 +23612,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9213.2,
             x = -2214,
         },
-    }, -- [33]
+    },
     {
         Waypoint = 26607,
         Range = 8.75,
@@ -23620,7 +23620,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9249.3,
             x = -2210.7,
         },
-    }, -- [34]
+    },
     {
         Waypoint = 26607,
         Range = 11.61,
@@ -23628,7 +23628,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9247,
             x = -2148.5,
         },
-    }, -- [35]
+    },
     {
         Waypoint = 26607,
         Range = 4.56,
@@ -23636,7 +23636,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9208,
             x = -2153.2,
         },
-    }, -- [36]
+    },
     {
         Waypoint = 26607,
         Range = 6.01,
@@ -23644,7 +23644,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9191.3,
             x = -2145.5,
         },
-    }, -- [37]
+    },
     {
         Done = {
             26607,
@@ -23653,7 +23653,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9200.5,
             x = -2154.9,
         },
-    }, -- [38]
+    },
     {
         PickUp = {
             26616,
@@ -23662,7 +23662,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9200.5,
             x = -2154.9,
         },
-    }, -- [39]
+    },
     {
         Waypoint = 26616,
         Range = 8.32,
@@ -23670,7 +23670,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9250.2,
             x = -2148.2,
         },
-    }, -- [40]
+    },
     {
         Qpart = {
             [26616] = {
@@ -23682,7 +23682,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9298.5,
             x = -2360.5,
         },
-    }, -- [41]
+    },
     {
         GetFP = 615,
         Range = 5.91,
@@ -23703,15 +23703,15 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
     {
         PickUp = {
             26636,
-            26637, -- [2]
-            26638, -- [3]
+            26637,
+            26638,
             26639,
         },
         Coord = {
             y = -9461.8,
             x = -2827.7,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [26637] = {
@@ -23723,7 +23723,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9468.3,
             x = -2707.5,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [26636] = {
@@ -23761,8 +23761,8 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
     {
         Done = {
             26636,
-            26637, -- [2]
-            26638, -- [3]
+            26637,
+            26638,
             26640,
         },
         Coord = {
@@ -23818,7 +23818,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9527.8,
             x = -3262.2,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             26651,
@@ -23827,7 +23827,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9527.8,
             x = -3262.2,
         },
-    }, -- [3]
+    },
     {
         Button = {
             ["26651-1"] = 60385,
@@ -23910,7 +23910,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9637,
             x = -3473,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             26692,
@@ -23919,7 +23919,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9637.2,
             x = -3469.4,
         },
-    }, -- [3]
+    },
     {
         GetFP = 596,
         Range = 5.91,
@@ -23952,7 +23952,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9023.3,
             x = -3214,
         },
-    }, -- [2]
+    },
     {
         Done = {
             26693,
@@ -23961,7 +23961,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9011.5,
             x = -3213.5,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             26694,
@@ -24028,11 +24028,11 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9490.5,
             x = -3478.5,
         },
-    }, -- [2]
+    },
     {
         Done = {
             26692,
-            26694, -- [2]
+            26694,
         },
         Coord = {
             y = -9639.3,
@@ -24059,7 +24059,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9646.5,
             x = -3454.7,
         },
-    }, -- [2]
+    },
     {
         Done = {
             26708,
@@ -24068,7 +24068,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9141.8,
             x = -3038,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             26713,
@@ -24101,7 +24101,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9470.2,
             x = -2971.7,
         },
-    }, -- [2]
+    },
     {
         Done = {
             26713,
@@ -24110,7 +24110,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
             y = -9462.5,
             x = -2974.2,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             26714,
@@ -24143,7 +24143,7 @@ APR.RouteQuestStepList["A49-RedridgeMountauns"] = {
     },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Badlands
 APR.RouteQuestStepList["A15-Badlands"] = {
@@ -24164,7 +24164,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6633.7,
             x = -3875.7,
         },
-    }, -- [2]
+    },
     {
         GetFP = 635,
         Range = 0.69,
@@ -24172,7 +24172,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6570,
             x = -3877,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [27774] = {
@@ -24191,7 +24191,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
     {
         Done = {
             27774,
-            27775, -- [2]
+            27775,
         },
         Coord = {
             y = -6635.2,
@@ -24201,7 +24201,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
     {
         PickUp = {
             27764,
-            27776, -- [2]
+            27776,
         },
         Coord = {
             y = -6636.9,
@@ -24245,7 +24245,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
     {
         PickUp = {
             27765,
-            27766, -- [2]
+            27766,
         },
         Coord = {
             y = -6988.4,
@@ -24270,13 +24270,13 @@ APR.RouteQuestStepList["A15-Badlands"] = {
     {
         Done = {
             27765,
-            27766, -- [2]
+            27766,
         },
         Coord = {
             y = -6989,
             x = -3940.5,
         },
-    }, -- [12]
+    },
     {
         PickUp = {
             27770,
@@ -24285,7 +24285,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6989,
             x = -3940.5,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [27770] = {
@@ -24297,7 +24297,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6988.4,
             x = -3940.2,
         },
-    }, -- [14]
+    },
     {
         Done = {
             27770,
@@ -24306,7 +24306,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6988.4,
             x = -3940.2,
         },
-    }, -- [15]
+    },
     {
         PickUp = {
             27771,
@@ -24315,7 +24315,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6988.4,
             x = -3940.2,
         },
-    }, -- [16]
+    },
     {
         Qpart = {
             [27771] = {
@@ -24327,7 +24327,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7016.3,
             x = -3923.5,
         },
-    }, -- [17]
+    },
     {
         Done = {
             27771,
@@ -24336,7 +24336,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6988.5,
             x = -3940.9,
         },
-    }, -- [18]
+    },
     {
         PickUp = {
             27769,
@@ -24345,7 +24345,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6988.5,
             x = -3940.9,
         },
-    }, -- [19]
+    },
     {
         Done = {
             27769,
@@ -24354,7 +24354,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6991.4,
             x = -3944.2,
         },
-    }, -- [20]
+    },
     {
         PickUp = {
             27772,
@@ -24363,7 +24363,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6991.4,
             x = -3944.2,
         },
-    }, -- [21]
+    },
     {
         Waypoint = 27772,
         Range = 50.38,
@@ -24371,7 +24371,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6760.8,
             x = -3758.5,
         },
-    }, -- [22]
+    },
     {
         Done = {
             27772,
@@ -24380,7 +24380,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7005.7,
             x = -3339.4,
         },
-    }, -- [23]
+    },
     {
         PickUp = {
             27789,
@@ -24389,7 +24389,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7005.5,
             x = -3339.5,
         },
-    }, -- [24]
+    },
     {
         Qpart = {
             [27789] = {
@@ -24401,7 +24401,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7053.2,
             x = -3418.7,
         },
-    }, -- [25]
+    },
     {
         Qpart = {
             [27789] = {
@@ -24413,7 +24413,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7053.2,
             x = -3418.7,
         },
-    }, -- [26]
+    },
     {
         Qpart = {
             [27789] = {
@@ -24425,7 +24425,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7053.9,
             x = -3418.7,
         },
-    }, -- [27]
+    },
     {
         Qpart = {
             [27789] = {
@@ -24437,7 +24437,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7053.3,
             x = -3417.7,
         },
-    }, -- [28]
+    },
     {
         Done = {
             27789,
@@ -24446,7 +24446,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7008.9,
             x = -3347,
         },
-    }, -- [29]
+    },
     {
         PickUp = {
             27791,
@@ -24455,7 +24455,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7005.9,
             x = -3341.7,
         },
-    }, -- [30]
+    },
     {
         Done = {
             27791,
@@ -24464,17 +24464,17 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6609.9,
             x = -3415,
         },
-    }, -- [31]
+    },
     {
         PickUp = {
             27823,
-            27792, -- [2]
+            27792,
         },
         Coord = {
             y = -6610.7,
             x = -3417.7,
         },
-    }, -- [32]
+    },
     {
         GetFP = 633,
         Range = 0.69,
@@ -24482,7 +24482,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6594.8,
             x = -3406.2,
         },
-    }, -- [33]
+    },
     {
         Qpart = {
             [27823] = {
@@ -24494,7 +24494,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6422.7,
             x = -3373.7,
         },
-    }, -- [34]
+    },
     {
         Done = {
             27823,
@@ -24503,7 +24503,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6610.4,
             x = -3420.7,
         },
-    }, -- [35]
+    },
     {
         PickUp = {
             27824,
@@ -24512,7 +24512,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6610.4,
             x = -3420.7,
         },
-    }, -- [36]
+    },
     {
         Waypoint = 27824,
         Range = 8.67,
@@ -24520,7 +24520,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6388.7,
             x = -3147.5,
         },
-    }, -- [37]
+    },
     {
         Waypoint = 27824,
         Range = 6.76,
@@ -24528,7 +24528,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6395.4,
             x = -3122.5,
         },
-    }, -- [38]
+    },
     {
         Waypoint = 27824,
         Range = 6.18,
@@ -24536,7 +24536,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6376.8,
             x = -3092,
         },
-    }, -- [39]
+    },
     {
         Waypoint = 27824,
         Range = 4.85,
@@ -24544,7 +24544,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6364.4,
             x = -3091.2,
         },
-    }, -- [40]
+    },
     {
         Qpart = {
             [27824] = {
@@ -24556,7 +24556,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6366.8,
             x = -3131.2,
         },
-    }, -- [41]
+    },
     {
         Done = {
             27824,
@@ -24565,7 +24565,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6610.7,
             x = -3421,
         },
-    }, -- [42]
+    },
     {
         Qpart = {
             [27792] = {
@@ -24580,7 +24580,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7084.9,
             x = -3615.2,
         },
-    }, -- [43]
+    },
     {
         Done = {
             27792,
@@ -24589,17 +24589,17 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6609.3,
             x = -3414,
         },
-    }, -- [44]
+    },
     {
         PickUp = {
             27797,
-            27796, -- [2]
+            27796,
         },
         Coord = {
             y = -6609,
             x = -3414.2,
         },
-    }, -- [45]
+    },
     {
         Waypoint = 27796,
         Range = 16.45,
@@ -24607,7 +24607,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6824.2,
             x = -3449.7,
         },
-    }, -- [46]
+    },
     {
         Waypoint = 27796,
         Range = 4.92,
@@ -24615,7 +24615,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6943.9,
             x = -3424.2,
         },
-    }, -- [47]
+    },
     {
         Done = {
             27797,
@@ -24624,7 +24624,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6895.4,
             x = -3376,
         },
-    }, -- [48]
+    },
     {
         PickUp = {
             27709,
@@ -24633,7 +24633,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6895.4,
             x = -3376,
         },
-    }, -- [49]
+    },
     {
         Qpart = {
             [27709] = {
@@ -24645,7 +24645,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6901,
             x = -3392.7,
         },
-    }, -- [50]
+    },
     {
         Done = {
             27709,
@@ -24654,7 +24654,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6919.5,
             x = -3394.9,
         },
-    }, -- [51]
+    },
     {
         Done = {
             27796,
@@ -24663,7 +24663,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6969.4,
             x = -3446.7,
         },
-    }, -- [52]
+    },
     {
         PickUp = {
             27693,
@@ -24672,7 +24672,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6969.4,
             x = -3446.7,
         },
-    }, -- [53]
+    },
     {
         Qpart = {
             [27693] = {
@@ -24684,7 +24684,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6970.7,
             x = -3444.4,
         },
-    }, -- [54]
+    },
     {
         Done = {
             27693,
@@ -24693,7 +24693,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6972.2,
             x = -3446.2,
         },
-    }, -- [55]
+    },
     {
         PickUp = {
             27793,
@@ -24702,7 +24702,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6971.4,
             x = -3445.5,
         },
-    }, -- [56]
+    },
     {
         Qpart = {
             [27793] = {
@@ -24715,7 +24715,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6932,
             x = -3445.7,
         },
-    }, -- [57]
+    },
     {
         Qpart = {
             [27793] = {
@@ -24728,7 +24728,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6910.7,
             x = -3444.7,
         },
-    }, -- [58]
+    },
     {
         Done = {
             27793,
@@ -24737,7 +24737,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6911.8,
             x = -3442.4,
         },
-    }, -- [59]
+    },
     {
         PickUp = {
             27912,
@@ -24746,7 +24746,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6911.8,
             x = -3442.4,
         },
-    }, -- [60]
+    },
     {
         Done = {
             27912,
@@ -24755,7 +24755,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6942.5,
             x = -3445.2,
         },
-    }, -- [61]
+    },
     {
         PickUp = {
             27794,
@@ -24764,7 +24764,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6942.5,
             x = -3445.2,
         },
-    }, -- [62]
+    },
     {
         Waypoint = 27794,
         Range = 11.74,
@@ -24772,7 +24772,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6761.9,
             x = -3454.2,
         },
-    }, -- [63]
+    },
     {
         Waypoint = 27794,
         Range = 17.58,
@@ -24780,7 +24780,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6773.4,
             x = -3400.4,
         },
-    }, -- [64]
+    },
     {
         Done = {
             27794,
@@ -24789,7 +24789,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7007,
             x = -3338.4,
         },
-    }, -- [65]
+    },
     {
         PickUp = {
             27826,
@@ -24798,7 +24798,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7008.4,
             x = -3335,
         },
-    }, -- [66]
+    },
     {
         PickUp = {
             27713,
@@ -24808,7 +24808,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7127.4,
             x = -2707,
         },
-    }, -- [67]
+    },
     {
         Qpart = {
             [27713] = {
@@ -24821,7 +24821,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6912.9,
             x = -2954.5,
         },
-    }, -- [68]
+    },
     {
         Qpart = {
             [27713] = {
@@ -24834,7 +24834,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6749.3,
             x = -3186.2,
         },
-    }, -- [69]
+    },
     {
         Done = {
             27713,
@@ -24844,7 +24844,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7128.2,
             x = -2706.2,
         },
-    }, -- [70]
+    },
     {
         PickUp = {
             27714,
@@ -24854,7 +24854,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7133,
             x = -2708.9,
         },
-    }, -- [71]
+    },
     {
         Qpart = {
             [27714] = {
@@ -24867,7 +24867,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7125.9,
             x = -2713.4,
         },
-    }, -- [72]
+    },
     {
         Qpart = {
             [27714] = {
@@ -24880,7 +24880,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6895.5,
             x = -2982.2,
         },
-    }, -- [73]
+    },
     {
         Qpart = {
             [27714] = {
@@ -24893,7 +24893,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6830.8,
             x = -2612,
         },
-    }, -- [74]
+    },
     {
         Done = {
             27714,
@@ -24903,7 +24903,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             x = -2708,
         },
         Dontskipvid = 1,
-    }, -- [75]
+    },
     {
         PickUp = {
             27715,
@@ -24913,7 +24913,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7130.8,
             x = -2706.5,
         },
-    }, -- [76]
+    },
     {
         Qpart = {
             [27715] = {
@@ -24926,7 +24926,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7129.9,
             x = -2709.7,
         },
-    }, -- [77]
+    },
     {
         Qpart = {
             [27715] = {
@@ -24939,7 +24939,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6755.4,
             x = -3188.2,
         },
-    }, -- [78]
+    },
     {
         Qpart = {
             [27715] = {
@@ -24952,7 +24952,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6658.5,
             x = -3110,
         },
-    }, -- [79]
+    },
     {
         Qpart = {
             [27715] = {
@@ -24965,7 +24965,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6658.5,
             x = -3110,
         },
-    }, -- [80]
+    },
     {
         Done = {
             27715,
@@ -24975,7 +24975,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             x = -2706.5,
         },
         Dontskipvid = 1,
-    }, -- [81]
+    },
     {
         GetFP = 634,
         Range = 0.61,
@@ -24983,7 +24983,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7036.2,
             x = -2568.2,
         },
-    }, -- [82]
+    },
     {
         Done = {
             27826,
@@ -24992,7 +24992,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7035.7,
             x = -2553,
         },
-    }, -- [83]
+    },
     {
         PickUp = {
             27827,
@@ -25001,7 +25001,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7035.7,
             x = -2553,
         },
-    }, -- [84]
+    },
     {
         PickUp = {
             27833,
@@ -25010,7 +25010,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7027.7,
             x = -2540.7,
         },
-    }, -- [85]
+    },
     {
         PickUp = {
             27825,
@@ -25019,7 +25019,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6993.4,
             x = -2542.2,
         },
-    }, -- [86]
+    },
     {
         Done = {
             27827,
@@ -25028,18 +25028,18 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6999.9,
             x = -2533.4,
         },
-    }, -- [87]
+    },
     {
         PickUp = {
             27834,
-            27835, -- [2]
-            27828, -- [3]
+            27835,
+            27828,
         },
         Coord = {
             y = -7003.7,
             x = -2535,
         },
-    }, -- [88]
+    },
     {
         Qpart = {
             [27828] = {
@@ -25060,18 +25060,18 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6974.5,
             x = -2485.9,
         },
-    }, -- [89]
+    },
     {
         Done = {
             27828,
-            27835, -- [2]
-            27834, -- [3]
+            27835,
+            27834,
         },
         Coord = {
             y = -6994.5,
             x = -2471.5,
         },
-    }, -- [90]
+    },
     {
         PickUp = {
             27829,
@@ -25080,7 +25080,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6993.8,
             x = -2471.5,
         },
-    }, -- [91]
+    },
     {
         Waypoint = 27825,
         Fillers = {
@@ -25093,7 +25093,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7307.5,
             x = -2269.4,
         },
-    }, -- [92]
+    },
     {
         Qpart = {
             [27825] = {
@@ -25106,7 +25106,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7401.3,
             x = -2281.7,
         },
-    }, -- [93]
+    },
     {
         Qpart = {
             [27833] = {
@@ -25118,7 +25118,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7185.3,
             x = -2359.5,
         },
-    }, -- [94]
+    },
     {
         Done = {
             27833,
@@ -25127,7 +25127,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -7026.5,
             x = -2539.2,
         },
-    }, -- [95]
+    },
     {
         Done = {
             27825,
@@ -25136,7 +25136,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6994.9,
             x = -2540.9,
         },
-    }, -- [96]
+    },
     {
         Qpart = {
             [27829] = {
@@ -25153,7 +25153,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6787.5,
             x = -2711.5,
         },
-    }, -- [97]
+    },
     {
         Qpart = {
             [27829] = {
@@ -25165,7 +25165,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6786.5,
             x = -2711.2,
         },
-    }, -- [98]
+    },
     {
         Done = {
             27829,
@@ -25174,7 +25174,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6761.9,
             x = -2825.7,
         },
-    }, -- [99]
+    },
     {
         PickUp = {
             27830,
@@ -25183,7 +25183,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6761.9,
             x = -2825.7,
         },
-    }, -- [100]
+    },
     {
         Qpart = {
             [27830] = {
@@ -25200,7 +25200,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6859.9,
             x = -2416,
         },
-    }, -- [101]
+    },
     {
         Qpart = {
             [27830] = {
@@ -25217,7 +25217,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6736.4,
             x = -2376.7,
         },
-    }, -- [102]
+    },
     {
         Qpart = {
             [27830] = {
@@ -25229,7 +25229,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6752.7,
             x = -2391.5,
         },
-    }, -- [103]
+    },
     {
         Done = {
             27830,
@@ -25238,7 +25238,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6810.3,
             x = -2403.5,
         },
-    }, -- [104]
+    },
     {
         PickUp = {
             27831,
@@ -25247,7 +25247,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6810.3,
             x = -2403.5,
         },
-    }, -- [105]
+    },
     {
         Qpart = {
             [27831] = {
@@ -25264,7 +25264,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6666.8,
             x = -2201.7,
         },
-    }, -- [106]
+    },
     {
         Qpart = {
             [27831] = {
@@ -25276,7 +25276,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6666.8,
             x = -2201.7,
         },
-    }, -- [107]
+    },
     {
         Done = {
             27831,
@@ -25285,7 +25285,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6630.7,
             x = -2194.2,
         },
-    }, -- [108]
+    },
     {
         PickUp = {
             27832,
@@ -25294,7 +25294,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6630.7,
             x = -2194.2,
         },
-    }, -- [109]
+    },
     {
         Done = {
             27832,
@@ -25303,7 +25303,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6537.3,
             x = -2392,
         },
-    }, -- [110]
+    },
     {
         PickUp = {
             27858,
@@ -25313,7 +25313,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             x = -2388.7,
         },
         Dontskipvid = 1,
-    }, -- [111]
+    },
     {
         Qpart = {
             [27858] = {
@@ -25326,7 +25326,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6533.8,
             x = -2388,
         },
-    }, -- [112]
+    },
     {
         Done = {
             27858,
@@ -25336,7 +25336,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             x = -2388,
         },
         Dontskipvid = 1,
-    }, -- [113]
+    },
     {
         PickUp = {
             27930,
@@ -25345,7 +25345,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6533.8,
             x = -2388,
         },
-    }, -- [114]
+    },
     {
         Coord = {
             y = -6470.5,
@@ -25354,7 +25354,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         Done = {
             27930,
         },
-    }, -- [115]
+    },
     {
         PickUp = {
             27859,
@@ -25363,7 +25363,7 @@ APR.RouteQuestStepList["A15-Badlands"] = {
             y = -6533.8,
             x = -2388,
         },
-    }, -- [114]
+    },
     {
         Coord = {
             y = -6470.5,
@@ -25372,18 +25372,18 @@ APR.RouteQuestStepList["A15-Badlands"] = {
         Done = {
             27859,
         },
-    }, -- [115]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Searing Gorge
 APR.RouteQuestStepList["A32-SearingGorge"] = {
     {
         PickUp = {
             27956,
-            27963, -- [2]
-            27960, -- [3]
+            27963,
+            27960,
         },
         Coord = {
             y = -6892.2,
@@ -25410,7 +25410,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6996.4,
             x = -1707.9,
         },
-    }, -- [2]
+    },
     {
         Qpart = {
             [27956] = {
@@ -25425,7 +25425,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7001.9,
             x = -1737.9,
         },
-    }, -- [3]
+    },
     {
         Coord = {
             y = -6892.3,
@@ -25433,15 +25433,15 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
         Done = {
             27956,
-            27963, -- [2]
-            27960, -- [3]
+            27963,
+            27960,
         },
     },
     {
         PickUp = {
             27962,
-            27961, -- [2]
-            27958, -- [3]
+            27961,
+            27958,
             27964,
         },
         Coord = {
@@ -25528,7 +25528,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7072.4,
             x = -1658.9,
         },
-    }, -- [12]
+    },
     {
         Coord = {
             y = -7070.3,
@@ -25537,7 +25537,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         Done = {
             27959,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [27964] = {
@@ -25550,7 +25550,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6765,
             x = -1532,
         },
-    }, -- [14]
+    },
     {
         Range = 15.88,
         Waypoint = 27964,
@@ -25558,7 +25558,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6669.4,
             x = -1750.4,
         },
-    }, -- [15]
+    },
     {
         Coord = {
             y = -6892.5,
@@ -25566,11 +25566,11 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
         Done = {
             27962,
-            27961, -- [2]
-            27958, -- [3]
+            27961,
+            27958,
             27964,
         },
-    }, -- [16]
+    },
     {
         PickUp = {
             27965,
@@ -25579,7 +25579,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6892.5,
             x = -1854,
         },
-    }, -- [17]
+    },
     {
         Range = 75.75,
         Waypoint = 27965,
@@ -25587,7 +25587,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6600.9,
             x = -1724.8,
         },
-    }, -- [18]
+    },
     {
         Range = 14.45,
         Waypoint = 27965,
@@ -25595,7 +25595,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6552.4,
             x = -1195.5,
         },
-    }, -- [19]
+    },
     {
         GetFP = 74,
         Range = 0.69,
@@ -25603,7 +25603,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6558.4,
             x = -1168.8,
         },
-    }, -- [20]
+    },
     {
         PickUp = {
             27980,
@@ -25612,7 +25612,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6496.7,
             x = -1164.9,
         },
-    }, -- [21]
+    },
     {
         Coord = {
             y = -6500.4,
@@ -25621,7 +25621,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         Done = {
             27965,
         },
-    }, -- [22]
+    },
     {
         PickUp = {
             28099,
@@ -25630,7 +25630,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6500.4,
             x = -1173.5,
         },
-    }, -- [23]
+    },
     {
         PickUp = {
             27977,
@@ -25639,17 +25639,17 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6518.8,
             x = -1142,
         },
-    }, -- [24]
+    },
     {
         PickUp = {
             27976,
-            27981, -- [2]
+            27981,
         },
         Coord = {
             y = -6514.4,
             x = -1180.4,
         },
-    }, -- [25]
+    },
     {
         Qpart = {
             [27977] = {
@@ -25673,7 +25673,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6692.7,
             x = -1328.3,
         },
-    }, -- [26]
+    },
     {
         PickUp = {
             27983,
@@ -25682,7 +25682,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6693.2,
             x = -1334,
         },
-    }, -- [27]
+    },
     {
         Qpart = {
             [27983] = {
@@ -25694,7 +25694,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6694.4,
             x = -1358.5,
         },
-    }, -- [28]
+    },
     {
         Done = {
             27983,
@@ -25703,7 +25703,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6818.8,
             x = -1216,
         },
-    }, -- [29]
+    },
     {
         Qpart = {
             [27976] = {
@@ -25723,7 +25723,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6717.3,
             x = -1239.9,
         },
-    }, -- [30]
+    },
     {
         Qpart = {
             [28099] = {
@@ -25743,7 +25743,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6703.3,
             x = -1217.9,
         },
-    }, -- [31]
+    },
     {
         Qpart = {
             [27980] = {
@@ -25763,7 +25763,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6829.2,
             x = -931,
         },
-    }, -- [32]
+    },
     {
         Qpart = {
             [27981] = {
@@ -25778,17 +25778,17 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7056.5,
             x = -968.5,
         },
-    }, -- [33]
+    },
     {
         Done = {
             27976,
-            27981, -- [2]
+            27981,
         },
         Coord = {
             y = -6514.5,
             x = -1179.5,
         },
-    }, -- [34]
+    },
     {
         Done = {
             27977,
@@ -25797,7 +25797,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6523.9,
             x = -1151.3,
         },
-    }, -- [35]
+    },
     {
         PickUp = {
             27982,
@@ -25806,7 +25806,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6523.9,
             x = -1151.3,
         },
-    }, -- [36]
+    },
     {
         Done = {
             27980,
@@ -25815,7 +25815,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6495.5,
             x = -1164.4,
         },
-    }, -- [37]
+    },
     {
         Done = {
             28099,
@@ -25824,7 +25824,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6501.2,
             x = -1173.5,
         },
-    }, -- [38]
+    },
     {
         PickUp = {
             27979,
@@ -25833,7 +25833,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6514.9,
             x = -1180.6,
         },
-    }, -- [39]
+    },
     {
         Waypoint = 27982,
         Fillers = {
@@ -25846,7 +25846,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6579,
             x = -872.3,
         },
-    }, -- [40]
+    },
     {
         Waypoint = 27982,
         Fillers = {
@@ -25859,7 +25859,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6512.3,
             x = -881,
         },
-    }, -- [41]
+    },
     {
         Waypoint = 27982,
         Fillers = {
@@ -25872,7 +25872,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6474.3,
             x = -933.5,
         },
-    }, -- [42]
+    },
     {
         PickUp = {
             27984,
@@ -25889,7 +25889,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6490.3,
             x = -980.3,
         },
-    }, -- [43]
+    },
     {
         Qpart = {
             [27984] = {
@@ -25913,7 +25913,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6490.3,
             x = -980.3,
         },
-    }, -- [44]
+    },
     {
         Fillers = {
             [27979] = {
@@ -25930,7 +25930,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6490.3,
             x = -980.3,
         },
-    }, -- [45]
+    },
     {
         PickUp = {
             27985,
@@ -25939,7 +25939,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6490.3,
             x = -980.3,
         },
-    }, -- [46]
+    },
     {
         Qpart = {
             [27985] = {
@@ -25962,7 +25962,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6625.9,
             x = -836.7,
         },
-    }, -- [47]
+    },
     {
         Done = {
             27985,
@@ -25971,7 +25971,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6625.9,
             x = -836.8,
         },
-    }, -- [48]
+    },
     {
         Qpart = {
             [27979] = {
@@ -25989,7 +25989,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6631.7,
             x = -648.3,
         },
-    }, -- [49]
+    },
     {
         Coord = {
             y = -6520.8,
@@ -25997,9 +25997,9 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
         Done = {
             27979,
-            27982, -- [2]
+            27982,
         },
-    },             -- [50]
+    },
     {
         PickUp = {
             27986,
@@ -26008,7 +26008,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6514.8,
             x = -1180.3,
         },
-    }, -- [51]
+    },
     {
         Range = 31.21,
         Waypoint = 27986,
@@ -26016,7 +26016,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6928.3,
             x = -1031,
         },
-    }, -- [52]
+    },
     {
         Range = 14.06,
         Waypoint = 27986,
@@ -26024,7 +26024,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7041.9,
             x = -1179.9,
         },
-    }, -- [53]
+    },
     {
         Range = 12.61,
         Waypoint = 27986,
@@ -26032,7 +26032,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7089,
             x = -1256.6,
         },
-    }, -- [54]
+    },
     {
         GetFP = 673,
         Range = 0.69,
@@ -26040,7 +26040,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7123.2,
             x = -1238.5,
         },
-    }, -- [55]
+    },
     {
         Coord = {
             y = -7109.4,
@@ -26049,18 +26049,18 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         Done = {
             27986,
         },
-    }, -- [56]
+    },
     {
         PickUp = {
             28028,
-            28029, -- [2]
-            28030, -- [3]
+            28029,
+            28030,
         },
         Coord = {
             y = -7109.4,
             x = -1202.5,
         },
-    }, -- [57]
+    },
     {
         PickUp = {
             28032,
@@ -26069,7 +26069,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7124.8,
             x = -1189.9,
         },
-    }, -- [58]
+    },
     {
         Qpart = {
             [28029] = {
@@ -26092,7 +26092,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7006.3,
             x = -1303.8,
         },
-    }, -- [59]
+    },
     {
         Qpart = {
             [28029] = {
@@ -26115,7 +26115,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6914.8,
             x = -1438.8,
         },
-    }, -- [60]
+    },
     {
         Qpart = {
             [28028] = {
@@ -26135,7 +26135,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7024.5,
             x = -1375.3,
         },
-    }, -- [61]
+    },
     {
         Coord = {
             y = -7109.4,
@@ -26143,9 +26143,9 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
         Done = {
             28028,
-            28030, -- [2]
+            28030,
         },
-    },             -- [62]
+    },
     {
         Qpart = {
             [28032] = {
@@ -26157,7 +26157,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7111.3,
             x = -1083.6,
         },
-    }, -- [63]
+    },
     {
         Qpart = {
             [28029] = {
@@ -26169,7 +26169,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7001.4,
             x = -1118.8,
         },
-    }, -- [64]
+    },
     {
         Qpart = {
             [28029] = {
@@ -26181,7 +26181,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6909.4,
             x = -1066.6,
         },
-    }, -- [65]
+    },
     {
         Coord = {
             y = -7125,
@@ -26190,7 +26190,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         Done = {
             28032,
         },
-    }, -- [66]
+    },
     {
         Coord = {
             y = -7108.9,
@@ -26199,7 +26199,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         Done = {
             28029,
         },
-    }, -- [67]
+    },
     {
         PickUp = {
             28033,
@@ -26208,7 +26208,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7108.9,
             x = -1202.5,
         },
-    }, -- [68]
+    },
     {
         Coord = {
             y = -7109.5,
@@ -26217,7 +26217,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         Done = {
             28033,
         },
-    }, -- [69]
+    },
     {
         PickUp = {
             28034,
@@ -26226,7 +26226,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7109.5,
             x = -1210,
         },
-    }, -- [70]
+    },
     {
         Qpart = {
             [28034] = {
@@ -26239,7 +26239,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7113.9,
             x = -1228.6,
         },
-    }, -- [71]
+    },
     {
         Coord = {
             y = -7109.4,
@@ -26248,7 +26248,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         Done = {
             28034,
         },
-    }, -- [72]
+    },
     {
         PickUp = {
             28035,
@@ -26257,7 +26257,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7109.4,
             x = -1202.6,
         },
-    }, -- [73]
+    },
     {
         UseFlightPath = 28035,
         Name = "Thorium Point, Searing Gorge",
@@ -26266,7 +26266,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -7122.4,
             x = -1237.8,
         },
-    }, -- [74]
+    },
     {
         Coord = {
             y = -6499.9,
@@ -26275,7 +26275,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         Done = {
             28035,
         },
-    }, -- [75]
+    },
     {
         PickUp = {
             28052,
@@ -26284,7 +26284,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6500.4,
             x = -1173.5,
         },
-    }, -- [76]
+    },
     {
         Qpart = {
             [28052] = {
@@ -26297,7 +26297,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6557.9,
             x = -1168.9,
         },
-    }, -- [77]
+    },
     {
         Coord = {
             y = -6867.5,
@@ -26306,18 +26306,18 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         Done = {
             28052,
         },
-    }, -- [78]
+    },
     {
         PickUp = {
             28055,
-            28056, -- [2]
-            28054, -- [3]
+            28056,
+            28054,
         },
         Coord = {
             y = -6868.4,
             x = -1233.9,
         },
-    }, -- [79]
+    },
     {
         Waypoint = 28056,
         Fillers = {
@@ -26333,7 +26333,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6778.2,
             x = -1172.5,
         },
-    }, -- [80]
+    },
     {
         Waypoint = 28056,
         Fillers = {
@@ -26349,7 +26349,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6747.8,
             x = -1152.1,
         },
-    }, -- [81]
+    },
     {
         Qpart = {
             [28056] = {
@@ -26371,7 +26371,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6478.9,
             x = -1243.3,
         },
-    }, -- [82]
+    },
     {
         Qpart = {
             [28055] = {
@@ -26386,7 +26386,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6546.4,
             x = -1229.1,
         },
-    }, -- [83]
+    },
     {
         Coord = {
             y = -6526.3,
@@ -26394,10 +26394,10 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         },
         Done = {
             28055,
-            28056, -- [2]
-            28054, -- [3]
+            28056,
+            28054,
         },
-    },             -- [84]
+    },
     {
         PickUp = {
             28057,
@@ -26406,7 +26406,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6525.8,
             x = -1298.6,
         },
-    }, -- [85]
+    },
     {
         Range = 8.83,
         Waypoint = 28057,
@@ -26414,7 +26414,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6558.9,
             x = -1270.6,
         },
-    }, -- [86]
+    },
     {
         Qpart = {
             [28057] = {
@@ -26426,7 +26426,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6550.9,
             x = -1338.3,
         },
-    }, -- [87]
+    },
     {
         Coord = {
             y = -6612.4,
@@ -26435,7 +26435,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         Done = {
             28057,
         },
-    }, -- [88]
+    },
     {
         PickUp = {
             28060,
@@ -26444,7 +26444,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6612.2,
             x = -1265.6,
         },
-    }, -- [89]
+    },
     {
         Qpart = {
             [28060] = {
@@ -26457,7 +26457,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6633.4,
             x = -1234.9,
         },
-    }, -- [90]
+    },
     {
         Range = 9.8,
         Waypoint = 28060,
@@ -26465,7 +26465,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6628.9,
             x = -1261,
         },
-    }, -- [91]
+    },
     {
         Range = 9.66,
         Waypoint = 28060,
@@ -26473,7 +26473,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6730.8,
             x = -1383.6,
         },
-    }, -- [92]
+    },
     {
         Range = 6.28,
         Waypoint = 28060,
@@ -26481,7 +26481,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6751.4,
             x = -1373.3,
         },
-    }, -- [93]
+    },
     {
         Coord = {
             y = -6680.4,
@@ -26490,17 +26490,17 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         Done = {
             28060,
         },
-    }, -- [94]
+    },
     {
         PickUp = {
             28062,
-            28061, -- [2]
+            28061,
         },
         Coord = {
             y = -6680.4,
             x = -1438,
         },
-    }, -- [95]
+    },
     {
         Waypoint = 28061,
         Fillers = {
@@ -26513,7 +26513,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6496.4,
             x = -1382.9,
         },
-    }, -- [96]
+    },
     {
         Qpart = {
             [28062] = {
@@ -26533,7 +26533,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6543.2,
             x = -1278,
         },
-    }, -- [97]
+    },
     {
         Coord = {
             y = -6543.5,
@@ -26542,7 +26542,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         Done = {
             28062,
         },
-    }, -- [98]
+    },
     {
         PickUp = {
             28064,
@@ -26551,7 +26551,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6543.5,
             x = -1277.8,
         },
-    }, -- [99]
+    },
     {
         Qpart = {
             [28061] = {
@@ -26563,7 +26563,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6450.4,
             x = -1321.1,
         },
-    }, -- [100]
+    },
     {
         Coord = {
             y = -6437.3,
@@ -26572,7 +26572,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         Done = {
             28061,
         },
-    }, -- [101]
+    },
     {
         Range = 25.95,
         Waypoint = 28064,
@@ -26580,7 +26580,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6631.9,
             x = -1463,
         },
-    }, -- [102]
+    },
     {
         Range = 10.6,
         Waypoint = 28064,
@@ -26588,7 +26588,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6739.5,
             x = -1378.9,
         },
-    }, -- [103]
+    },
     {
         Range = 9.38,
         Waypoint = 28064,
@@ -26596,7 +26596,7 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
             y = -6799,
             x = -1386.6,
         },
-    }, -- [104]
+    },
     {
         Coord = {
             y = -6500.8,
@@ -26605,10 +26605,10 @@ APR.RouteQuestStepList["A32-SearingGorge"] = {
         Done = {
             28064,
         },
-    }, -- [105]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- Northern Stranglethorn
 APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
@@ -26629,7 +26629,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11309,
             x = -187.2,
         },
-    }, -- [2]
+    },
     {
         PickUp = {
             26735,
@@ -26638,7 +26638,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11297,
             x = -206,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [26735] = {
@@ -26704,15 +26704,15 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
         Done = {
             26738,
-            26732, -- [2]
-            26735, -- [3]
+            26732,
+            26735,
         },
     },
     {
         PickUp = {
             26739,
-            26733, -- [2]
-            26736, -- [3]
+            26733,
+            26736,
         },
         Coord = {
             y = -11309.3,
@@ -26755,21 +26755,21 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
         Done = {
             26736,
-            26733, -- [2]
-            26739, -- [3]
+            26733,
+            26739,
         },
-    },             -- [12]
+    },
     {
         PickUp = {
             26744,
-            26737, -- [2]
-            26734, -- [3]
+            26737,
+            26734,
         },
         Coord = {
             y = -11307.3,
             x = -195.7,
         },
-    }, -- [13]
+    },
     {
         Range = 11.63,
         Waypoint = 26737,
@@ -26777,7 +26777,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11526.7,
             x = -678.7,
         },
-    }, -- [14]
+    },
     {
         Qpart = {
             [26737] = {
@@ -26794,7 +26794,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11473.3,
             x = -868.5,
         },
-    }, -- [15]
+    },
     {
         Range = 7.03,
         Waypoint = 26737,
@@ -26802,7 +26802,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11510.5,
             x = -853.8,
         },
-    }, -- [16]
+    },
     {
         Qpart = {
             [26737] = {
@@ -26819,7 +26819,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11400.8,
             x = -815.8,
         },
-    }, -- [17]
+    },
     {
         Range = 7.3,
         Waypoint = 26737,
@@ -26827,7 +26827,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11503,
             x = -845.5,
         },
-    }, -- [18]
+    },
     {
         Qpart = {
             [26737] = {
@@ -26844,7 +26844,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11485.3,
             x = -952.2,
         },
-    }, -- [19]
+    },
     {
         Qpart = {
             [26737] = {
@@ -26861,7 +26861,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11337.2,
             x = -964.5,
         },
-    }, -- [20]
+    },
     {
         Range = 17.72,
         Waypoint = 26737,
@@ -26869,7 +26869,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11520.3,
             x = -691.3,
         },
-    }, -- [21]
+    },
     {
         Coord = {
             y = -11311.5,
@@ -26877,9 +26877,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
         Done = {
             26737,
-            26734, -- [2]
+            26734,
         },
-    },             -- [22]
+    },
     {
         PickUp = {
             26729,
@@ -26888,7 +26888,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11301.7,
             x = -208,
         },
-    }, -- [23]
+    },
     {
         PickUp = {
             26742,
@@ -26897,7 +26897,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11345.2,
             x = -221,
         },
-    }, -- [24]
+    },
     {
         Coord = {
             y = -11647.2,
@@ -26906,17 +26906,17 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26740,
         },
-    }, -- [25]
+    },
     {
         PickUp = {
             26763,
-            26343, -- [2]
+            26343,
         },
         Coord = {
             y = -11652.3,
             x = -44.8,
         },
-    }, -- [26]
+    },
     {
         PickUp = {
             583,
@@ -26925,7 +26925,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11623.3,
             x = -69.5,
         },
-    }, -- [27]
+    },
     {
         Coord = {
             y = -11643.3,
@@ -26934,7 +26934,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             583,
         },
-    }, -- [28]
+    },
     {
         PickUp = {
             194,
@@ -26943,7 +26943,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11643,
             x = -67.4,
         },
-    }, -- [29]
+    },
     {
         PickUp = {
             185,
@@ -26952,7 +26952,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11635,
             x = -79.9,
         },
-    }, -- [30]
+    },
     {
         PickUp = {
             190,
@@ -26961,7 +26961,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11625.8,
             x = -48.3,
         },
-    }, -- [31]
+    },
     {
         Qpart = {
             [26343] = {
@@ -26973,7 +26973,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11559.8,
             x = -97.4,
         },
-    }, -- [32]
+    },
     {
         Coord = {
             y = -11656.8,
@@ -26982,7 +26982,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26343,
         },
-    }, -- [33]
+    },
     {
         PickUp = {
             26344,
@@ -26991,7 +26991,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11656.8,
             x = -45.5,
         },
-    }, -- [34]
+    },
     {
         Qpart = {
             [185] = {
@@ -27003,7 +27003,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11652.8,
             x = 57.6,
         },
-    }, -- [35]
+    },
     {
         Coord = {
             y = -11759.2,
@@ -27012,7 +27012,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             185,
         },
-    }, -- [36]
+    },
     {
         PickUp = {
             186,
@@ -27021,7 +27021,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11759.2,
             x = -18.5,
         },
-    }, -- [37]
+    },
     {
         Waypoint = 26737,
         Fillers = {
@@ -27034,7 +27034,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11780,
             x = -95,
         },
-    }, -- [38]
+    },
     {
         Range = 12.92,
         Waypoint = 26737,
@@ -27042,7 +27042,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11733.2,
             x = -182.9,
         },
-    }, -- [39]
+    },
     {
         Qpart = {
             [190] = {
@@ -27054,7 +27054,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11631.8,
             x = -455.9,
         },
-    }, -- [40]
+    },
     {
         Coord = {
             y = -11684.8,
@@ -27063,7 +27063,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             190,
         },
-    }, -- [41]
+    },
     {
         PickUp = {
             191,
@@ -27072,7 +27072,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11684.8,
             x = -508.7,
         },
-    }, -- [42]
+    },
     {
         Qpart = {
             [186] = {
@@ -27084,7 +27084,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11777.5,
             x = -733.8,
         },
-    }, -- [43]
+    },
     {
         Qpart = {
             [26763] = {
@@ -27096,7 +27096,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12015.3,
             x = -666.8,
         },
-    }, -- [44]
+    },
     {
         Coord = {
             y = -11797.7,
@@ -27105,7 +27105,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             186,
         },
-    }, -- [45]
+    },
     {
         PickUp = {
             187,
@@ -27114,7 +27114,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11797.7,
             x = -679,
         },
-    }, -- [46]
+    },
     {
         Qpart = {
             [26344] = {
@@ -27126,7 +27126,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11970.3,
             x = -414.3,
         },
-    }, -- [47]
+    },
     {
         Qpart = {
             [187] = {
@@ -27138,7 +27138,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11975.8,
             x = 138.1,
         },
-    }, -- [48]
+    },
     {
         Coord = {
             y = -11957.3,
@@ -27147,7 +27147,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             187,
         },
-    }, -- [49]
+    },
     {
         PickUp = {
             188,
@@ -27156,7 +27156,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11957.3,
             x = 186.6,
         },
-    }, -- [50]
+    },
     {
         Qpart = {
             [188] = {
@@ -27169,7 +27169,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11911.3,
             x = 165.6,
         },
-    }, -- [51]
+    },
     {
         Qpart = {
             [26744] = {
@@ -27184,7 +27184,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12024.7,
             x = 364.8,
         },
-    }, -- [52]
+    },
     {
         PickUp = {
             26745,
@@ -27193,7 +27193,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11991.5,
             x = 328.7,
         },
-    }, -- [53]
+    },
     {
         Qpart = {
             [26729] = {
@@ -27208,7 +27208,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12146.3,
             x = 856.2,
         },
-    }, -- [54]
+    },
     {
         Coord = {
             y = -12186.8,
@@ -27217,7 +27217,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26729,
         },
-    }, -- [55]
+    },
     {
         PickUp = {
             26730,
@@ -27226,7 +27226,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12184.5,
             x = 910,
         },
-    }, -- [56]
+    },
     {
         Qpart = {
             [194] = {
@@ -27238,7 +27238,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11858.7,
             x = 540.5,
         },
-    }, -- [57]
+    },
     {
         Coord = {
             y = -11842.5,
@@ -27247,7 +27247,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             194,
         },
-    }, -- [58]
+    },
     {
         PickUp = {
             195,
@@ -27256,7 +27256,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11842.5,
             x = 610.7,
         },
-    }, -- [59]
+    },
     {
         Qpart = {
             [191] = {
@@ -27268,7 +27268,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11740.5,
             x = 382.3,
         },
-    }, -- [60]
+    },
     {
         Coord = {
             y = -11600.2,
@@ -27277,7 +27277,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             191,
         },
-    }, -- [61]
+    },
     {
         PickUp = {
             192,
@@ -27286,7 +27286,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11600.2,
             x = 393.7,
         },
-    }, -- [62]
+    },
     {
         Coord = {
             y = -11653.2,
@@ -27294,19 +27294,19 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
         Done = {
             26763,
-            26344, -- [2]
+            26344,
         },
-    },             -- [63]
+    },
     {
         PickUp = {
             26345,
-            26765, -- [2]
+            26765,
         },
         Coord = {
             y = -11653.2,
             x = -42.3,
         },
-    }, -- [64]
+    },
     {
         Coord = {
             y = -11635.7,
@@ -27315,7 +27315,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             188,
         },
-    }, -- [65]
+    },
     {
         Coord = {
             y = -11347.8,
@@ -27324,7 +27324,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26742,
         },
-    }, -- [66]
+    },
     {
         PickUp = {
             26743,
@@ -27333,7 +27333,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11347.8,
             x = -222,
         },
-    }, -- [67]
+    },
     {
         Coord = {
             y = -11310.3,
@@ -27341,10 +27341,10 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
         Done = {
             26765,
-            26745, -- [2]
-            26744, -- [3]
+            26745,
+            26744,
         },
-    },             -- [68]
+    },
     {
         PickUp = {
             26746,
@@ -27353,7 +27353,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11306.5,
             x = -189.5,
         },
-    }, -- [69]
+    },
     {
         Qpart = {
             [26743] = {
@@ -27370,7 +27370,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11786.5,
             x = 146.1,
         },
-    }, -- [70]
+    },
     {
         Qpart = {
             [26730] = {
@@ -27382,7 +27382,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12085.5,
             x = 36.4,
         },
-    }, -- [71]
+    },
     {
         Qpart = {
             [195] = {
@@ -27394,7 +27394,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12243,
             x = -153,
         },
-    }, -- [72]
+    },
     {
         Coord = {
             y = -12251.8,
@@ -27403,7 +27403,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             195,
         },
-    }, -- [73]
+    },
     {
         PickUp = {
             196,
@@ -27412,7 +27412,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12251.8,
             x = -16,
         },
-    }, -- [74]
+    },
     {
         Qpart = {
             [26345] = {
@@ -27424,7 +27424,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12446.7,
             x = -289.5,
         },
-    }, -- [75]
+    },
     {
         Qpart = {
             [196] = {
@@ -27441,7 +27441,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12348,
             x = -522.8,
         },
-    }, -- [76]
+    },
     {
         Coord = {
             y = -12292.8,
@@ -27450,7 +27450,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             196,
         },
-    }, -- [77]
+    },
     {
         PickUp = {
             197,
@@ -27459,7 +27459,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12292.8,
             x = -501.4,
         },
-    }, -- [78]
+    },
     {
         Qpart = {
             [197] = {
@@ -27477,7 +27477,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12586.3,
             x = -804.7,
         },
-    }, -- [79]
+    },
     {
         Qpart = {
             [192] = {
@@ -27489,7 +27489,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12166.8,
             x = -971.5,
         },
-    }, -- [80]
+    },
     {
         Coord = {
             y = -12363,
@@ -27498,7 +27498,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             192,
         },
-    }, -- [81]
+    },
     {
         PickUp = {
             193,
@@ -27507,7 +27507,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12366.5,
             x = -792.2,
         },
-    }, -- [82]
+    },
     {
         Qpart = {
             [193] = {
@@ -27520,7 +27520,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12263,
             x = -959.8,
         },
-    }, -- [83]
+    },
     {
         GetFP = 193,
         Range = 0.69,
@@ -27528,16 +27528,16 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12822.8,
             x = -414.2,
         },
-    }, -- [84]
+    },
     {
         PickUp = {
-            26782, -- [2]
+            26782,
         },
         Coord = {
             y = -12828.5,
             x = -443.3,
         },
-    }, -- [85]
+    },
     {
         PickUp = {
             26781,
@@ -27546,7 +27546,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12844.8,
             x = -437.8,
         },
-    }, -- [86]
+    },
     {
         Qpart = {
             [26782] = {
@@ -27558,7 +27558,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12496.5,
             x = -1011.7,
         },
-    }, -- [87]
+    },
     {
         Range = 17.41,
         Waypoint = 26781,
@@ -27566,7 +27566,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12353.3,
             x = -969.3,
         },
-    }, -- [88]
+    },
     {
         Qpart = {
             [26781] = {
@@ -27579,7 +27579,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12348,
             x = -1153.5,
         },
-    }, -- [89]
+    },
     {
         Range = 10.24,
         Waypoint = 26782,
@@ -27587,7 +27587,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12358,
             x = -985.8,
         },
-    }, -- [90]
+    },
     {
         Coord = {
             y = -12836,
@@ -27595,9 +27595,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
         Done = {
             26781,
-            26782, -- [2]
+            26782,
         },
-    },             -- [91]
+    },
     {
         UseFlightPath = 26746,
         Name = "Rebel Camp, Stranglethorn Vale",
@@ -27606,7 +27606,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12822.5,
             x = -413.8,
         },
-    }, -- [92]
+    },
     {
         Coord = {
             y = -11345.5,
@@ -27615,7 +27615,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26743,
         },
-    }, -- [93]
+    },
     {
         Coord = {
             y = -11301.2,
@@ -27624,7 +27624,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26730,
         },
-    }, -- [94]
+    },
     {
         PickUp = {
             26731,
@@ -27633,7 +27633,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11301.2,
             x = -208.5,
         },
-    }, -- [95]
+    },
     {
         Coord = {
             y = -11305.8,
@@ -27642,7 +27642,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26746,
         },
-    }, -- [96]
+    },
     {
         PickUp = {
             26747,
@@ -27651,7 +27651,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11305.8,
             x = -189.5,
         },
-    }, -- [97]
+    },
     {
         PickUp = {
             26751,
@@ -27660,7 +27660,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11309.8,
             x = -204,
         },
-    }, -- [98]
+    },
     {
         Coord = {
             y = -11626.8,
@@ -27669,7 +27669,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             193,
         },
-    }, -- [99]
+    },
     {
         Coord = {
             y = -11652,
@@ -27678,7 +27678,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             197,
         },
-    }, -- [100]
+    },
     {
         PickUp = {
             208,
@@ -27687,7 +27687,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11652,
             x = -59.8,
         },
-    }, -- [101]
+    },
     {
         Coord = {
             y = -11658.8,
@@ -27696,7 +27696,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26345,
         },
-    }, -- [102]
+    },
     {
         Waypoint = 26747,
         Fillers = {
@@ -27712,7 +27712,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11636.5,
             x = 710.7,
         },
-    }, -- [103]
+    },
     {
         Waypoint = 26747,
         Fillers = {
@@ -27728,7 +27728,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11606.5,
             x = 652.7,
         },
-    }, -- [104]
+    },
     {
         Qpart = {
             [26747] = {
@@ -27748,7 +27748,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11513.3,
             x = 725.5,
         },
-    }, -- [105]
+    },
     {
         Qpart = {
             [26751] = {
@@ -27763,7 +27763,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11633.7,
             x = 635.6,
         },
-    }, -- [106]
+    },
     {
         Qpart = {
             [26731] = {
@@ -27778,7 +27778,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12128.3,
             x = 961.5,
         },
-    }, -- [107]
+    },
     {
         Qpart = {
             [208] = {
@@ -27791,7 +27791,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12604.5,
             x = -210,
         },
-    }, -- [108]
+    },
     {
         UseFlightPath = 208,
         Name = "Rebel Camp, Stranglethorn Vale",
@@ -27800,7 +27800,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12822.5,
             x = -413.7,
         },
-    }, -- [109]
+    },
     {
         Coord = {
             y = -11305.3,
@@ -27808,9 +27808,9 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
         Done = {
             26751,
-            26731, -- [2]
+            26731,
         },
-    },             -- [110]
+    },
     {
         Coord = {
             y = -11305.5,
@@ -27819,7 +27819,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26747,
         },
-    }, -- [111]
+    },
     {
         PickUp = {
             26748,
@@ -27828,7 +27828,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11306.3,
             x = -191.2,
         },
-    }, -- [112]
+    },
     {
         Coord = {
             y = -11306.3,
@@ -27837,7 +27837,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26748,
         },
-    }, -- [113]
+    },
     {
         PickUp = {
             26749,
@@ -27846,7 +27846,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11305.3,
             x = -189,
         },
-    }, -- [114]
+    },
     {
         Coord = {
             y = -11648,
@@ -27855,7 +27855,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             208,
         },
-    }, -- [115]
+    },
     {
         UseFlightPath = 26749,
         Name = "Fort Livingston, Stranglethorn",
@@ -27864,7 +27864,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11341.3,
             x = -218.4,
         },
-    }, -- [116]
+    },
     {
         Coord = {
             y = -12840.2,
@@ -27873,7 +27873,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26749,
         },
-    }, -- [117]
+    },
     {
         PickUp = {
             26772,
@@ -27882,7 +27882,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12840.2,
             x = -447,
         },
-    }, -- [118]
+    },
     {
         Qpart = {
             [26772] = {
@@ -27894,7 +27894,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12720,
             x = -749.8,
         },
-    }, -- [119]
+    },
     {
         Coord = {
             y = -12840.3,
@@ -27903,7 +27903,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26772,
         },
-    }, -- [120]
+    },
     {
         PickUp = {
             26773,
@@ -27912,7 +27912,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12840.3,
             x = -446.3,
         },
-    }, -- [121]
+    },
     {
         Qpart = {
             [26773] = {
@@ -27925,7 +27925,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12841.2,
             x = -446.7,
         },
-    }, -- [122]
+    },
     {
         Coord = {
             y = -12841.5,
@@ -27934,7 +27934,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26773,
         },
-    }, -- [123]
+    },
     {
         PickUp = {
             26774,
@@ -27943,7 +27943,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12841.5,
             x = -446.3,
         },
-    }, -- [124]
+    },
     {
         PickUp = {
             26780,
@@ -27952,7 +27952,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12838.8,
             x = -437.9,
         },
-    }, -- [125]
+    },
     {
         PickUp = {
             26779,
@@ -27961,7 +27961,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12843,
             x = -416.9,
         },
-    }, -- [126]
+    },
     {
         Range = 19.55,
         Waypoint = 26774,
@@ -27969,7 +27969,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12791.7,
             x = -514.8,
         },
-    }, -- [127]
+    },
     {
         Qpart = {
             [26774] = {
@@ -27989,7 +27989,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -13055.5,
             x = -845.3,
         },
-    }, -- [128]
+    },
     {
         Qpart = {
             [26780] = {
@@ -28004,7 +28004,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12970.7,
             x = -746.8,
         },
-    }, -- [129]
+    },
     {
         Coord = {
             y = -12840,
@@ -28012,10 +28012,10 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         },
         Done = {
             26780,
-            26779, -- [2]
-            26774, -- [3]
+            26779,
+            26774,
         },
-    },             -- [130]
+    },
     {
         PickUp = {
             26775,
@@ -28024,7 +28024,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12841.2,
             x = -446.8,
         },
-    }, -- [131]
+    },
     {
         Qpart = {
             [26775] = {
@@ -28038,7 +28038,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12841.2,
             x = -446.8,
         },
-    }, -- [132]
+    },
     {
         Qpart = {
             [26775] = {
@@ -28051,7 +28051,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12236.7,
             x = -1819.1,
         },
-    }, -- [133]
+    },
     {
         Qpart = {
             [26775] = {
@@ -28064,7 +28064,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12041.8,
             x = -1650.8,
         },
-    }, -- [134]
+    },
     {
         Qpart = {
             [26775] = {
@@ -28076,7 +28076,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -11914.7,
             x = -1281,
         },
-    }, -- [135]
+    },
     {
         Coord = {
             y = -12840.8,
@@ -28085,7 +28085,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26775,
         },
-    }, -- [136]
+    },
     {
         PickUp = {
             26776,
@@ -28094,7 +28094,7 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
             y = -12840.5,
             x = -446.2,
         },
-    }, -- [137]
+    },
     {
         Coord = {
             y = -12842.3,
@@ -28103,10 +28103,10 @@ APR.RouteQuestStepList["A224-NorthernStranglethorn"] = {
         Done = {
             26776,
         },
-    }, -- [138]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }
 --- The Cape of Stranglethorn
 APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
@@ -28127,7 +28127,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13633.2,
             x = -54,
         },
-    }, -- [2]
+    },
     {
         Coord = {
             y = -13619.8,
@@ -28136,7 +28136,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26825,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             26823,
@@ -28227,21 +28227,21 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
         Done = {
             26822,
-            26823, -- [2]
+            26823,
         },
-    },             -- [12]
+    },
     {
         PickUp = {
             26819,
-            26820, -- [2]
-            26818, -- [3]
+            26820,
+            26818,
             26817,
         },
         Coord = {
             y = -13623,
             x = -74.4,
         },
-    }, -- [13]
+    },
     {
         Waypoint = 26823,
         Fillers = {
@@ -28255,7 +28255,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13628.3,
             x = 356.3,
         },
-    }, -- [14]
+    },
     {
         Waypoint = 26823,
         Fillers = {
@@ -28268,7 +28268,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13694.5,
             x = 494,
         },
-    }, -- [15]
+    },
     {
         Waypoint = 26823,
         Fillers = {
@@ -28284,7 +28284,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13849,
             x = 489.3,
         },
-    }, -- [16]
+    },
     {
         Qpart = {
             [26817] = {
@@ -28304,7 +28304,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13806.2,
             x = 376.1,
         },
-    }, -- [17]
+    },
     {
         Qpart = {
             [26819] = {
@@ -28319,7 +28319,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13801.8,
             x = 528.1,
         },
-    }, -- [18]
+    },
     {
         Qpart = {
             [26818] = {
@@ -28332,7 +28332,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13165.3,
             x = 426.5,
         },
-    }, -- [19]
+    },
     {
         Range = 21.69,
         Waypoint = 26819,
@@ -28340,7 +28340,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13675.8,
             x = 484.3,
         },
-    }, -- [20]
+    },
     {
         Range = 24.06,
         Waypoint = 26819,
@@ -28348,7 +28348,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13633.3,
             x = 348.7,
         },
-    }, -- [21]
+    },
     {
         Waypoint = 26819,
         Fillers = {
@@ -28361,7 +28361,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13660,
             x = 86,
         },
-    }, -- [22]
+    },
     {
         Coord = {
             y = -13623.8,
@@ -28369,21 +28369,21 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
         Done = {
             26819,
-            26817, -- [2]
-            26820, -- [3]
+            26817,
+            26820,
             26818,
         },
-    }, -- [23]
+    },
     {
         PickUp = {
             26808,
-            26815, -- [2]
+            26815,
         },
         Coord = {
             y = -13623.8,
             x = -74.3,
         },
-    }, -- [24]
+    },
     {
         Coord = {
             y = -13627.5,
@@ -28392,7 +28392,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26808,
         },
-    }, -- [25]
+    },
     {
         PickUp = {
             26809,
@@ -28401,7 +28401,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13627.5,
             x = -87.5,
         },
-    }, -- [26]
+    },
     {
         Waypoint = 26809,
         Fillers = {
@@ -28414,7 +28414,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13454,
             x = 61.6,
         },
-    }, -- [27]
+    },
     {
         Qpart = {
             [26809] = {
@@ -28431,7 +28431,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13343,
             x = -30.3,
         },
-    }, -- [28]
+    },
     {
         Qpart = {
             [26809] = {
@@ -28443,7 +28443,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13648.8,
             x = -319.3,
         },
-    }, -- [29]
+    },
     {
         Waypoint = 26809,
         Fillers = {
@@ -28456,7 +28456,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13446.3,
             x = 76,
         },
-    }, -- [30]
+    },
     {
         Fillers = {
             [26818] = {
@@ -28470,7 +28470,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13626.5,
             x = -86.4,
         },
-    }, -- [31]
+    },
     {
         PickUp = {
             26810,
@@ -28479,7 +28479,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13626.5,
             x = -86.4,
         },
-    }, -- [32]
+    },
     {
         Range = 21.65,
         Waypoint = 26810,
@@ -28487,7 +28487,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13554,
             x = -161.2,
         },
-    }, -- [33]
+    },
     {
         PickUp = {
             26603,
@@ -28501,7 +28501,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13745,
             x = -352.4,
         },
-    }, -- [34]
+    },
     {
         Qpart = {
             [26815] = {
@@ -28513,7 +28513,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13657.7,
             x = -307.4,
         },
-    }, -- [35]
+    },
     {
         Coord = {
             y = -13679.5,
@@ -28522,7 +28522,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26810,
         },
-    }, -- [36]
+    },
     {
         PickUp = {
             26811,
@@ -28531,7 +28531,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13679.5,
             x = -305.5,
         },
-    }, -- [37]
+    },
     {
         Qpart = {
             [26811] = {
@@ -28543,7 +28543,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13680.3,
             x = -305.9,
         },
-    }, -- [38]
+    },
     {
         Coord = {
             y = -11991.5,
@@ -28552,7 +28552,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26811,
         },
-    }, -- [39]
+    },
     {
         PickUp = {
             26812,
@@ -28561,7 +28561,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -11991.5,
             x = -1475,
         },
-    }, -- [40]
+    },
     {
         Qpart = {
             [26812] = {
@@ -28573,7 +28573,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -12218,
             x = -1462.8,
         },
-    }, -- [41]
+    },
     {
         Coord = {
             y = -12218,
@@ -28582,7 +28582,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26812,
         },
-    }, -- [42]
+    },
     {
         PickUp = {
             26813,
@@ -28591,7 +28591,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -12215.5,
             x = -1460.8,
         },
-    }, -- [43]
+    },
     {
         Qpart = {
             [26813] = {
@@ -28603,7 +28603,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -12228.3,
             x = -1450.9,
         },
-    }, -- [44]
+    },
     {
         Coord = {
             y = -11983,
@@ -28612,7 +28612,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26813,
         },
-    }, -- [45]
+    },
     {
         PickUp = {
             26814,
@@ -28621,7 +28621,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -11983,
             x = -1622.1,
         },
-    }, -- [46]
+    },
     {
         Qpart = {
             [26814] = {
@@ -28633,7 +28633,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -12027.3,
             x = -1705,
         },
-    }, -- [47]
+    },
     {
         Coord = {
             y = -13619.8,
@@ -28642,17 +28642,17 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26815,
         },
-    }, -- [48]
+    },
     {
         PickUp = {
             26824,
-            26816, -- [2]
+            26816,
         },
         Coord = {
             y = -13619.8,
             x = -73.3,
         },
-    }, -- [49]
+    },
     {
         Coord = {
             y = -13627.3,
@@ -28661,7 +28661,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26814,
         },
-    }, -- [50]
+    },
     {
         Coord = {
             y = -13633.5,
@@ -28670,7 +28670,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26824,
         },
-    }, -- [51]
+    },
     {
         PickUp = {
             26821,
@@ -28679,7 +28679,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13633,
             x = -70.5,
         },
-    }, -- [52]
+    },
     {
         Range = 17.25,
         Waypoint = 26816,
@@ -28687,7 +28687,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13555.3,
             x = -152.2,
         },
-    }, -- [53]
+    },
     {
         Qpart = {
             [26816] = {
@@ -28699,7 +28699,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13634,
             x = -315,
         },
-    }, -- [54]
+    },
     {
         Range = 16.13,
         Waypoint = 26816,
@@ -28707,7 +28707,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13554,
             x = -159.5,
         },
-    }, -- [55]
+    },
     {
         Coord = {
             y = -13620,
@@ -28716,7 +28716,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26816,
         },
-    }, -- [56]
+    },
     {
         Waypoint = 26821,
         Range = 35.72,
@@ -28724,7 +28724,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13676.8,
             x = 89,
         },
-    }, -- [57]
+    },
     {
         Waypoint = 26821,
         Range = 48.25,
@@ -28732,7 +28732,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13921.5,
             x = 276.3,
         },
-    }, -- [58]
+    },
     {
         Waypoint = 26821,
         Range = 25,
@@ -28740,7 +28740,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14222.2,
             x = 258.5,
         },
-    }, -- [59]
+    },
     {
         Waypoint = 26821,
         Range = 13.69,
@@ -28748,7 +28748,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14248,
             x = 331.5,
         },
-    }, -- [60]
+    },
     {
         Waypoint = 26821,
         Range = 13.65,
@@ -28756,7 +28756,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14301.5,
             x = 437.8,
         },
-    }, -- [61]
+    },
     {
         PickUp = {
             26597,
@@ -28765,7 +28765,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14433.2,
             x = 456.3,
         },
-    }, -- [62]
+    },
     {
         Done = {
             26821,
@@ -28774,7 +28774,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14441,
             x = 434.3,
         },
-    }, -- [63]
+    },
     {
         PickUp = {
             26593,
@@ -28783,7 +28783,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14448.5,
             x = 452.1,
         },
-    }, -- [64]
+    },
     {
         PickUp = {
             26599,
@@ -28792,7 +28792,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14299.7,
             x = 518.1,
         },
-    }, -- [65]
+    },
     {
         Waypoint = 26597,
         Range = 9.39,
@@ -28800,7 +28800,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14302.2,
             x = 438.3,
         },
-    }, -- [66]
+    },
     {
         Waypoint = 26597,
         Range = 11.86,
@@ -28808,7 +28808,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14248.8,
             x = 332,
         },
-    }, -- [67]
+    },
     {
         Waypoint = 26599,
         ExtraLineText = "GORLASH_PATROLLS",
@@ -28817,7 +28817,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14347.8,
             x = 48.7,
         },
-    }, -- [68]
+    },
     {
         Qpart = {
             [26599] = {
@@ -28830,7 +28830,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14054.5,
             x = -168.5,
         },
-    }, -- [69]
+    },
     {
         Done = {
             26603,
@@ -28839,7 +28839,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14597,
             x = -236.7,
         },
-    }, -- [70]
+    },
     {
         PickUp = {
             26604,
@@ -28848,7 +28848,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14597,
             x = -236.7,
         },
-    }, -- [71]
+    },
     {
         Qpart = {
             [26604] = {
@@ -28860,7 +28860,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14582,
             x = -168.2,
         },
-    }, -- [72]
+    },
     {
         Done = {
             26604,
@@ -28869,7 +28869,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14596.3,
             x = -238,
         },
-    }, -- [73]
+    },
     {
         PickUp = {
             26605,
@@ -28878,7 +28878,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14596.3,
             x = -238,
         },
-    }, -- [74]
+    },
     {
         Qpart = {
             [26605] = {
@@ -28893,7 +28893,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14601.8,
             x = -380.4,
         },
-    }, -- [75]
+    },
     {
         Done = {
             26605,
@@ -28902,7 +28902,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14597,
             x = -237.2,
         },
-    }, -- [76]
+    },
     {
         PickUp = {
             26606,
@@ -28911,7 +28911,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14597,
             x = -237.2,
         },
-    }, -- [77]
+    },
     {
         Qpart = {
             [26606] = {
@@ -28924,7 +28924,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14699.5,
             x = -382.8,
         },
-    }, -- [78]
+    },
     {
         Done = {
             26606,
@@ -28933,7 +28933,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14597.2,
             x = -236.2,
         },
-    }, -- [79]
+    },
     {
         Waypoint = 26597,
         Range = 35.74,
@@ -28941,7 +28941,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14167.3,
             x = 235.6,
         },
-    }, -- [80]
+    },
     {
         Qpart = {
             [26593] = {
@@ -28953,7 +28953,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13935.2,
             x = 97,
         },
-    }, -- [81]
+    },
     {
         Qpart = {
             [26597] = {
@@ -28965,7 +28965,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13740.2,
             x = -26.9,
         },
-    }, -- [82]
+    },
     {
         Waypoint = 26597,
         Range = 12.34,
@@ -28973,27 +28973,27 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14247,
             x = 333.5,
         },
-    }, -- [83]
+    },
     {
         Done = {
             26593,
-            26599, -- [2]
+            26599,
         },
         Coord = {
             y = -14300,
             x = 513,
         },
-    }, -- [84]
+    },
     {
         PickUp = {
             26594,
-            26600, -- [2]
+            26600,
         },
         Coord = {
             y = -14300,
             x = 513,
         },
-    }, -- [85]
+    },
     {
         Qpart = {
             [26600] = {
@@ -29006,7 +29006,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14331.3,
             x = 420.1,
         },
-    }, -- [86]
+    },
     {
         PickUp = {
             26609,
@@ -29015,7 +29015,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14410.2,
             x = 428.3,
         },
-    }, -- [87]
+    },
     {
         Done = {
             26597,
@@ -29024,7 +29024,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14432.8,
             x = 458,
         },
-    }, -- [88]
+    },
     {
         Done = {
             26594,
@@ -29033,7 +29033,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14448.8,
             x = 450.2,
         },
-    }, -- [89]
+    },
     {
         PickUp = {
             26595,
@@ -29042,7 +29042,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14448.8,
             x = 450.2,
         },
-    }, -- [90]
+    },
     {
         Qpart = {
             [26600] = {
@@ -29055,7 +29055,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14462.5,
             x = 491.6,
         },
-    }, -- [91]
+    },
     {
         Done = {
             26600,
@@ -29064,7 +29064,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14300.3,
             x = 517.5,
         },
-    }, -- [92]
+    },
     {
         PickUp = {
             26602,
@@ -29073,7 +29073,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14300.3,
             x = 517.5,
         },
-    }, -- [93]
+    },
     {
         DroppableQuest = {
             Text = "\"Good-Boy\" Bruce",
@@ -29085,7 +29085,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14126.8,
             x = 477.1,
         },
-    }, -- [94]
+    },
     {
         Done = {
             26609,
@@ -29094,7 +29094,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14125.8,
             x = 479.6,
         },
-    }, -- [95]
+    },
     {
         PickUp = {
             26610,
@@ -29103,7 +29103,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14125.8,
             x = 479.6,
         },
-    }, -- [96]
+    },
     {
         Waypoint = 26610,
         Range = 12.02,
@@ -29111,7 +29111,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14244,
             x = 331.5,
         },
-    }, -- [97]
+    },
     {
         Done = {
             26610,
@@ -29120,7 +29120,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14410.5,
             x = 428.1,
         },
-    }, -- [98]
+    },
     {
         PickUp = {
             26611,
@@ -29129,17 +29129,17 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14410.3,
             x = 428.3,
         },
-    }, -- [99]
+    },
     {
         Done = {
             26617,
-            26611, -- [2]
+            26611,
         },
         Coord = {
             y = -14441.5,
             x = 486,
         },
-    }, -- [100]
+    },
     {
         PickUp = {
             26612,
@@ -29148,7 +29148,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14440,
             x = 484.3,
         },
-    }, -- [101]
+    },
     {
         PickUp = {
             26614,
@@ -29157,7 +29157,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14396,
             x = 397.8,
         },
-    }, -- [102]
+    },
     {
         Waypoint = 26602,
         Range = 12.99,
@@ -29165,7 +29165,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14295.5,
             x = 435.5,
         },
-    }, -- [103]
+    },
     {
         Waypoint = 26602,
         Range = 18.61,
@@ -29173,7 +29173,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14245.7,
             x = 324.6,
         },
-    }, -- [104]
+    },
     {
         Waypoint = 26602,
         Fillers = {
@@ -29186,7 +29186,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14298.5,
             x = 95.8,
         },
-    }, -- [105]
+    },
     {
         Qpart = {
             [26595] = {
@@ -29198,7 +29198,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14041.2,
             x = -117.9,
         },
-    }, -- [106]
+    },
     {
         Qpart = {
             [26595] = {
@@ -29212,7 +29212,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13875.8,
             x = -98.9,
         },
-    }, -- [107]
+    },
     {
         Qpart = {
             [26595] = {
@@ -29224,7 +29224,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -13820.3,
             x = -240.2,
         },
-    }, -- [108]
+    },
     {
         Qpart = {
             [26602] = {
@@ -29237,7 +29237,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14653.8,
             x = 146,
         },
-    }, -- [109]
+    },
     {
         Qpart = {
             [26612] = {
@@ -29255,7 +29255,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14678,
             x = 501.3,
         },
-    }, -- [110]
+    },
     {
         Qpart = {
             [26612] = {
@@ -29276,7 +29276,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14611.3,
             x = 334.2,
         },
-    }, -- [111]
+    },
     {
         Qpart = {
             [26612] = {
@@ -29289,7 +29289,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14622,
             x = 340.8,
         },
-    }, -- [112]
+    },
     {
         Qpart = {
             [26614] = {
@@ -29301,7 +29301,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14694.8,
             x = 483.2,
         },
-    }, -- [113]
+    },
     {
         Waypoint = 26602,
         Range = 49.19,
@@ -29309,7 +29309,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14308.3,
             x = 132.6,
         },
-    }, -- [114]
+    },
     {
         Waypoint = 26602,
         Range = 17.65,
@@ -29317,7 +29317,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14248.2,
             x = 328.7,
         },
-    }, -- [115]
+    },
     {
         Done = {
             26602,
@@ -29326,7 +29326,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14300.7,
             x = 517,
         },
-    }, -- [116]
+    },
     {
         PickUp = {
             26601,
@@ -29335,7 +29335,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14300.7,
             x = 517,
         },
-    }, -- [117]
+    },
     {
         Waypoint = 26614,
         Range = 11.02,
@@ -29343,7 +29343,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14315.3,
             x = 441.8,
         },
-    }, -- [118]
+    },
     {
         Done = {
             26614,
@@ -29352,7 +29352,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14395,
             x = 396.3,
         },
-    }, -- [119]
+    },
     {
         Done = {
             26595,
@@ -29361,7 +29361,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14448,
             x = 450.8,
         },
-    }, -- [120]
+    },
     {
         PickUp = {
             26613,
@@ -29370,7 +29370,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14457.8,
             x = 502.7,
         },
-    }, -- [121]
+    },
     {
         Done = {
             26612,
@@ -29379,7 +29379,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14439.2,
             x = 484.8,
         },
-    }, -- [122]
+    },
     {
         PickUp = {
             26624,
@@ -29388,7 +29388,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14439.2,
             x = 484.8,
         },
-    }, -- [123]
+    },
     {
         Qpart = {
             [26601] = {
@@ -29400,7 +29400,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14237,
             x = 735.7,
         },
-    }, -- [124]
+    },
     {
         Done = {
             26624,
@@ -29409,7 +29409,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14003.8,
             x = 379,
         },
-    }, -- [125]
+    },
     {
         PickUp = {
             26629,
@@ -29418,7 +29418,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14003.8,
             x = 379,
         },
-    }, -- [126]
+    },
     {
         Waypoint = 26629,
         Range = 34.12,
@@ -29426,7 +29426,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14210.5,
             x = 256.6,
         },
-    }, -- [127]
+    },
     {
         Waypoint = 26629,
         Range = 14.08,
@@ -29434,7 +29434,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14250,
             x = 333.3,
         },
-    }, -- [128]
+    },
     {
         Done = {
             26601,
@@ -29443,7 +29443,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14300,
             x = 517.9,
         },
-    }, -- [129]
+    },
     {
         PickUp = {
             26630,
@@ -29452,7 +29452,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14443.8,
             x = 488.1,
         },
-    }, -- [130]
+    },
     {
         Qpart = {
             [26630] = {
@@ -29465,7 +29465,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14403,
             x = 400.1,
         },
-    }, -- [131]
+    },
     {
         Qpart = {
             [26630] = {
@@ -29479,7 +29479,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14335.7,
             x = 425,
         },
-    }, -- [132]
+    },
     {
         Qpart = {
             [26630] = {
@@ -29492,7 +29492,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14443.2,
             x = 487.1,
         },
-    }, -- [133]
+    },
     {
         Done = {
             26630,
@@ -29501,7 +29501,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14442.8,
             x = 487.8,
         },
-    }, -- [134]
+    },
     {
         Waypoint = 26629,
         Range = 9.7,
@@ -29509,7 +29509,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14305,
             x = 437.8,
         },
-    }, -- [135]
+    },
     {
         Waypoint = 26629,
         Range = 11.9,
@@ -29517,7 +29517,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14245.5,
             x = 325.8,
         },
-    }, -- [136]
+    },
     {
         Done = {
             26629,
@@ -29526,7 +29526,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14004.2,
             x = 379.3,
         },
-    }, -- [137]
+    },
     {
         PickUp = {
             26631,
@@ -29535,7 +29535,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14004.2,
             x = 379.3,
         },
-    }, -- [138]
+    },
     {
         Waypoint = 26631,
         Range = 41.39,
@@ -29543,7 +29543,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14307,
             x = 133.1,
         },
-    }, -- [139]
+    },
     {
         Done = {
             26631,
@@ -29552,7 +29552,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14927.8,
             x = 358.1,
         },
-    }, -- [140]
+    },
     {
         PickUp = {
             26633,
@@ -29561,7 +29561,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14927.3,
             x = 355.8,
         },
-    }, -- [141]
+    },
     {
         PickUp = {
             26635,
@@ -29570,7 +29570,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14971.3,
             x = 350.2,
         },
-    }, -- [142]
+    },
     {
         PickUp = {
             26634,
@@ -29579,7 +29579,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14935.8,
             x = 354.2,
         },
-    }, -- [143]
+    },
     {
         Qpart = {
             [26633] = {
@@ -29591,7 +29591,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14948.3,
             x = 345.1,
         },
-    }, -- [144]
+    },
     {
         Qpart = {
             [26634] = {
@@ -29603,7 +29603,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14694.7,
             x = 477,
         },
-    }, -- [145]
+    },
     {
         Qpart = {
             [26635] = {
@@ -29615,18 +29615,18 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -15063.3,
             x = 301.3,
         },
-    }, -- [146]
+    },
     {
         Done = {
             26633,
-            26634, -- [2]
-            26635, -- [3]
+            26634,
+            26635,
         },
         Coord = {
             y = -14953,
             x = 350.2,
         },
-    }, -- [147]
+    },
     {
         PickUp = {
             26644,
@@ -29635,7 +29635,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14928.3,
             x = 356.2,
         },
-    }, -- [148]
+    },
     {
         Done = {
             26644,
@@ -29644,7 +29644,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -15024.5,
             x = 266.3,
         },
-    }, -- [149]
+    },
     {
         PickUp = {
             26647,
@@ -29653,7 +29653,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -15015.7,
             x = 270,
         },
-    }, -- [150]
+    },
     {
         Qpart = {
             [26647] = {
@@ -29665,7 +29665,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14987.3,
             x = 257.7,
         },
-    }, -- [151]
+    },
     {
         PickUp = {
             26648,
@@ -29674,7 +29674,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14996.8,
             x = 273.8,
         },
-    }, -- [152]
+    },
     {
         Done = {
             26647,
@@ -29683,7 +29683,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -15015.8,
             x = 270.3,
         },
-    }, -- [153]
+    },
     {
         PickUp = {
             26649,
@@ -29692,7 +29692,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -15015.8,
             x = 270.3,
         },
-    }, -- [154]
+    },
     {
         Qpart = {
             [26649] = {
@@ -29706,7 +29706,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14875.3,
             x = 297,
         },
-    }, -- [155]
+    },
     {
         Qpart = {
             [26648] = {
@@ -29721,7 +29721,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14604.5,
             x = -305.9,
         },
-    }, -- [156]
+    },
     {
         Done = {
             26648,
@@ -29730,7 +29730,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14765.7,
             x = -187.7,
         },
-    }, -- [157]
+    },
     {
         Done = {
             26649,
@@ -29739,7 +29739,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -15015.2,
             x = 267.6,
         },
-    }, -- [158]
+    },
     {
         PickUp = {
             26650,
@@ -29748,7 +29748,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -15022.3,
             x = 265.7,
         },
-    }, -- [159]
+    },
     {
         Done = {
             26650,
@@ -29757,18 +29757,18 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14923,
             x = 124.3,
         },
-    }, -- [160]
+    },
     {
         PickUp = {
             26663,
-            26664, -- [2]
-            26662, -- [3]
+            26664,
+            26662,
         },
         Coord = {
             y = -14923,
             x = 124.3,
         },
-    }, -- [161]
+    },
     {
         Qpart = {
             [26662] = {
@@ -29786,7 +29786,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14921,
             x = 85.8,
         },
-    }, -- [162]
+    },
     {
         Range = 4.46,
         Waypoint = 26663,
@@ -29794,7 +29794,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14920,
             x = 65,
         },
-    }, -- [163]
+    },
     {
         Qpart = {
             [26663] = {
@@ -29814,7 +29814,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14924,
             x = 112.7,
         },
-    }, -- [164]
+    },
     {
         Qpart = {
             [26663] = {
@@ -29835,7 +29835,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14983,
             x = 263,
         },
-    }, -- [165]
+    },
     {
         Qpart = {
             [26662] = {
@@ -29856,7 +29856,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14996,
             x = 263.5,
         },
-    }, -- [166]
+    },
     {
         Qpart = {
             [26663] = {
@@ -29877,7 +29877,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14956.2,
             x = 344.2,
         },
-    }, -- [167]
+    },
     {
         Coord = {
             y = -14956.8,
@@ -29886,7 +29886,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26663,
         },
-    }, -- [168]
+    },
     {
         Qpart = {
             [26664] = {
@@ -29901,7 +29901,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14946.8,
             x = 350,
         },
-    }, -- [169]
+    },
     {
         Coord = {
             y = -14946.8,
@@ -29910,7 +29910,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26664,
         },
-    }, -- [170]
+    },
     {
         Qpart = {
             [26662] = {
@@ -29923,7 +29923,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14969.3,
             x = 353.8,
         },
-    }, -- [171]
+    },
     {
         Coord = {
             y = -14969.3,
@@ -29932,7 +29932,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26662,
         },
-    }, -- [172]
+    },
     {
         PickUp = {
             26665,
@@ -29941,7 +29941,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14955.5,
             x = 353.3,
         },
-    }, -- [173]
+    },
     {
         Range = 29.96,
         Waypoint = 26665,
@@ -29949,7 +29949,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14293.8,
             x = 140.5,
         },
-    }, -- [174]
+    },
     {
         Range = 11.5,
         Waypoint = 26665,
@@ -29957,7 +29957,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14253,
             x = 333.3,
         },
-    }, -- [175]
+    },
     {
         Range = 10.26,
         Waypoint = 26665,
@@ -29965,7 +29965,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14298,
             x = 437.3,
         },
-    }, -- [176]
+    },
     {
         Coord = {
             y = -14458.2,
@@ -29974,7 +29974,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26613,
         },
-    }, -- [177]
+    },
     {
         Coord = {
             y = -14438.7,
@@ -29983,7 +29983,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26665,
         },
-    }, -- [178]
+    },
     {
         PickUp = {
             26678,
@@ -29992,7 +29992,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14439,
             x = 484.2,
         },
-    }, -- [179]
+    },
     {
         Coord = {
             y = -14443,
@@ -30001,7 +30001,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26678,
         },
-    }, -- [180]
+    },
     {
         PickUp = {
             26679,
@@ -30010,7 +30010,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14443.5,
             x = 504.6,
         },
-    }, -- [181]
+    },
     {
         Coord = {
             y = -14439.8,
@@ -30019,17 +30019,17 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26679,
         },
-    }, -- [182]
+    },
     {
         PickUp = {
             26695,
-            26698, -- [2]
+            26698,
         },
         Coord = {
             y = -14439.8,
             x = 484.2,
         },
-    }, -- [183]
+    },
     {
         Coord = {
             y = -14436.8,
@@ -30038,17 +30038,17 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26698,
         },
-    }, -- [184]
+    },
     {
         PickUp = {
             26700,
-            26699, -- [2]
+            26699,
         },
         Coord = {
             y = -14436.8,
             x = 470.2,
         },
-    }, -- [185]
+    },
     {
         Qpart = {
             [26695] = {
@@ -30068,7 +30068,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14335,
             x = 428,
         },
-    }, -- [186]
+    },
     {
         Qpart = {
             [26700] = {
@@ -30083,7 +30083,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14356.3,
             x = 421.5,
         },
-    }, -- [187]
+    },
     {
         Coord = {
             y = -14438.8,
@@ -30091,10 +30091,10 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         },
         Done = {
             26699,
-            26700, -- [2]
-            26695, -- [3]
+            26700,
+            26695,
         },
-    },             -- [188]
+    },
     {
         PickUp = {
             26697,
@@ -30103,7 +30103,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14438.8,
             x = 484,
         },
-    }, -- [189]
+    },
     {
         Qpart = {
             [26697] = {
@@ -30117,7 +30117,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14448.8,
             x = 514.2,
         },
-    }, -- [190]
+    },
     {
         Coord = {
             y = -14439,
@@ -30126,7 +30126,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26697,
         },
-    }, -- [191]
+    },
     {
         PickUp = {
             26703,
@@ -30135,7 +30135,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14439,
             x = 483.6,
         },
-    }, -- [192]
+    },
     {
         Waypoint = 26703,
         RaidIcon = 737,
@@ -30144,7 +30144,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14449,
             x = 514.7,
         },
-    }, -- [193]
+    },
     {
         Qpart = {
             [26703] = {
@@ -30157,7 +30157,7 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
             y = -14272,
             x = 700.9,
         },
-    }, -- [194]
+    },
     {
         Coord = {
             y = -14439,
@@ -30166,8 +30166,8 @@ APR.RouteQuestStepList["A224-TheCapeofStranglethorn"] = {
         Done = {
             26703,
         },
-    }, -- [195]
+    },
     {
         ZoneDoneSave = 1,
-    }, -- [2]
+    },
 }

@@ -1,6 +1,6 @@
 -- Orgrimmar part of intro
 APR.RouteQuestStepList["1-Orgrimmar"] = {
-    { -- Step 2
+    {
         PickUp = {
             51443,
         },
@@ -13,7 +13,7 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
             y = 1598.5,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [51443] = {
                 1,
@@ -29,7 +29,7 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
             y = 1659.8,
         },
     },
-    { -- Step 4
+    {
         Waypoint = 51443,
         Range = 11.65,
         Coord = {
@@ -37,7 +37,7 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
             y = 1610.3,
         },
     },
-    { -- Step 5
+    {
         Waypoint = 51443,
         Range = 7.36,
         Coord = {
@@ -45,7 +45,7 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
             y = 1573.7,
         },
     },
-    { -- Step 6
+    {
         Qpart = {
             [51443] = {
                 2,
@@ -61,7 +61,7 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
             y = 1577,
         },
     },
-    { -- Step 7
+    {
         Done = {
             51443,
         },
@@ -74,7 +74,7 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
             y = 1577.3,
         },
     },
-    { -- Step 8
+    {
         PickUp = {
             50769,
         },
@@ -83,7 +83,7 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
             y = 1577.3,
         },
     },
-    { -- Step 9
+    {
         Qpart = {
             [50769] = {
                 1,
@@ -95,7 +95,7 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
             y = 1578.4,
         },
     },
-    { -- Step 10
+    {
         ExtraLineText = "SCENARIO",
         Qpart = {
             [50769] = {
@@ -108,13 +108,13 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
             y = 1517.4,
         },
     },
-    { -- [Step 11
+    {
         ZoneDoneSave = 1,
     },
 }
 -- Zuldazar part of intro
 APR.RouteQuestStepList["862-Zuldazar"] = {
-    { -- Step 1
+    {
         Done = {
             50769,
         },
@@ -123,7 +123,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -2162.2,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             46957,
         },
@@ -132,7 +132,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -2144.9,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [46957] = {
                 1,
@@ -145,7 +145,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1808.7,
         },
     },
-    { -- Step 4
+    {
         Done = {
             46957,
         },
@@ -154,7 +154,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1808.7,
         },
     },
-    { -- Step 5
+    {
         PickUp = {
             46930,
         },
@@ -163,7 +163,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1808.7,
         },
     },
-    { -- Step 6
+    {
         Qpart = {
             [46930] = {
                 1,
@@ -176,7 +176,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1804.0,
         },
     },
-    { -- Step 7
+    {
         Qpart = {
             [46930] = {
                 2,
@@ -189,7 +189,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1099.9,
         },
     },
-    { -- Step 8
+    {
         Done = {
             46930,
         },
@@ -198,7 +198,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1063.5,
         },
     },
-    { -- Step 9
+    {
         PickUp = {
             46931,
         },
@@ -207,7 +207,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1063.5,
         },
     },
-    { -- Step 10
+    {
         SayTriggerStartH = 1,
         ExtraLineText = "FOLLOW_ZOLANI",
         Waypoint = 46931,
@@ -217,7 +217,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1096.5,
         },
     },
-    { -- Step 11
+    {
         SayTriggerStartH = 1,
         ExtraLineText = "USE_ELEVATOR",
         Waypoint = 46931,
@@ -227,7 +227,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1126.4,
         },
     },
-    { -- Step 12
+    {
         SayTriggerStartH = 1,
         Waypoint = 46931,
         Range = 5,
@@ -236,7 +236,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1111.7,
         },
     },
-    { -- Step 13
+    {
 
         Qpart = {
             [46931] = {
@@ -249,7 +249,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1005.3,
         },
     },
-    { -- Step 14
+    {
         Qpart = {
             [46931] = {
                 3,
@@ -261,7 +261,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1124.8,
         },
     },
-    { -- Step 15
+    {
         Qpart = {
             [46931] = {
                 4,
@@ -273,7 +273,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1124.3,
         },
     },
-    { -- Step 16
+    {
         Qpart = {
             [46931] = {
                 5,
@@ -285,7 +285,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1124.0,
         },
     },
-    { -- Step 17
+    {
         Range = 5.14,
         Waypoint = 46931,
         Coord = {
@@ -293,7 +293,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1124.9,
         },
     },
-    { -- Step 18
+    {
         Range = 5.21,
         Waypoint = 46931,
         Coord = {
@@ -301,7 +301,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1090.7,
         },
     },
-    { -- Step 19
+    {
         Coord = {
             x = 818.5,
             y = -1120.0,
@@ -310,7 +310,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             46931,
         },
     },
-    { -- Step 20
+    {
         PickUp = {
             47514,
         },
@@ -320,7 +320,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1119,
         },
     },
-    { -- Step 21
+    {
         Done = {
             47514,
         },
@@ -329,13 +329,13 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             y = -1119,
         },
     },
-    { -- [Step 22
+    {
         ZoneDoneSave = 1,
     },
 }
 -- Zuldazar
 APR.RouteQuestStepList["862-Zuldazar-1"] = {
-    { -- [Step 1
+    {
         PickUp = {
             49615,
         },
@@ -344,7 +344,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1120.3,
         },
     },
-    { -- Step 2
+    {
         SetHS = 49615,
         Coord = {
             x = 805.7,
@@ -353,7 +353,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Gossip = 1,
         GossipOptionID = 47953,
     },
-    { -- Step 3
+    {
         Waypoint = 49615,
         Range = 5,
         Coord = {
@@ -361,7 +361,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1138.9,
         },
     },
-    { -- Step 4
+    {
         ExtraLineText = "UP_ELEVATOR",
         Waypoint = 49615,
         Range = 5,
@@ -370,7 +370,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1126.1,
         },
     },
-    { -- Step 5
+    {
         ExtraLineText = "UP_ELEVATOR",
         Waypoint = 49615,
         Range = 5,
@@ -379,7 +379,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1101.5,
         },
     },
-    { -- Step 6
+    {
         Done = {
             49615,
         },
@@ -388,7 +388,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1135,
         },
     },
-    { -- Step 7
+    {
         PickUp = {
             49488,
         },
@@ -397,7 +397,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1134.8,
         },
     },
-    { -- [step 8
+    {
         Qpart = {
             [49488] = {
                 1,
@@ -409,7 +409,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Range = 5,
     },
-    { -- [step 9
+    {
         Qpart = {
             [49488] = {
                 2,
@@ -421,7 +421,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Range = 5,
     },
-    { -- [step 10
+    {
         Done = {
             49488,
         },
@@ -430,7 +430,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -458.2,
         },
     },
-    { -- Step 11
+    {
         PickUp = {
             49489,
             49490,
@@ -440,7 +440,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -458.2,
         },
     },
-    { -- Step 12
+    {
         PickUp = {
             49491,
         },
@@ -449,7 +449,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -412.9,
         },
     },
-    { -- Step 13
+    {
         Waypoint = 49489,
         Range = 17.54,
         Coord = {
@@ -465,7 +465,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 14
+    {
         QpartPart = {
             [49489] = {
                 1,
@@ -486,7 +486,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -480.9,
         },
     },
-    { -- Step 15
+    {
         Waypoint = 49489,
         Range = 10.7,
         Coord = {
@@ -502,7 +502,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 16
+    {
         QpartPart = {
             [49489] = {
                 1,
@@ -523,7 +523,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -259.9,
         },
     },
-    { -- Step 17
+    {
         Qpart = {
             [49491] = {
                 1,
@@ -538,7 +538,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -259.9,
         },
     },
-    { -- Step 18
+    {
         Coord = {
             x = 399.8,
             y = -226.5,
@@ -548,7 +548,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 19
+    {
         Coord = {
             x = 390.8,
             y = -215.4,
@@ -558,7 +558,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             49490,
         },
     },
-    { -- Step 20
+    {
         PickUp = {
             49492,
         },
@@ -567,7 +567,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -215.4,
         },
     },
-    { -- Step 21
+    {
         Qpart = {
             [49492] = {
                 1,
@@ -579,7 +579,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -201.7,
         },
     },
-    { -- Step 22
+    {
         Qpart = {
             [49492] = {
                 2,
@@ -591,7 +591,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -205.2,
         },
     },
-    { -- Step 23
+    {
         Qpart = {
             [49492] = {
                 3,
@@ -603,7 +603,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -221,
         },
     },
-    { -- Step 24
+    {
         ETA = 19,
         Coord = {
             x = 263.2,
@@ -613,7 +613,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             49492,
         },
     },
-    { -- Step 25
+    {
         PickUp = {
             49493,
             49494,
@@ -623,7 +623,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -231.5,
         },
     },
-    { -- Step 26
+    {
         PickUp = {
             51663,
         },
@@ -646,7 +646,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             [257795] = 3,
         },
     },
-    { -- Step 27
+    {
         Qpart = {
             [49494] = {
                 1,
@@ -675,7 +675,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -143.9,
         },
     },
-    { -- Step 28
+    {
         Qpart = {
             [51663] = {
                 1,
@@ -700,7 +700,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 29
+    {
         Waypoint = 49494,
         Range = 15.26,
         Coord = {
@@ -708,7 +708,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -253.7,
         },
     },
-    { -- Step 30
+    {
         Done = {
             49493,
             49494,
@@ -719,7 +719,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -323.7,
         },
     },
-    { -- Step 31
+    {
         PickUp = {
             49495,
         },
@@ -728,7 +728,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -323.7,
         },
     },
-    { -- Step 32
+    {
         Qpart = {
             [49495] = {
                 1,
@@ -740,7 +740,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -373.5,
         },
     },
-    { -- Step 33
+    {
         Qpart = {
             [49495] = {
                 2,
@@ -752,7 +752,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -349.3,
         },
     },
-    { -- Step 34
+    {
         Qpart = {
             [49495] = {
                 3,
@@ -764,7 +764,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -350.2,
         },
     },
-    { -- Step 35
+    {
         Qpart = {
             [49495] = {
                 4,
@@ -776,7 +776,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -384.4,
         },
     },
-    { -- Step 36
+    {
         Done = {
             49495,
         },
@@ -785,7 +785,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -324.7,
         },
     },
-    { -- Step 37
+    {
         PickUp = {
             49905,
         },
@@ -794,7 +794,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -324.7,
         },
     },
-    { -- Step 38
+    {
         Qpart = {
             [49905] = {
                 1,
@@ -807,7 +807,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 39
+    {
         Bloodlust = 1,
         Qpart = {
             [49905] = {
@@ -820,7 +820,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -362.4,
         },
     },
-    { -- Step 40
+    {
         Done = {
             49905,
         },
@@ -829,7 +829,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -342.5,
         },
     },
-    { -- Step 41
+    {
         PickUp = {
             49663,
         },
@@ -838,14 +838,14 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -342.5,
         },
     },
-    { -- Step 42
+    {
         UseHS = 49810,
         Coord = {
             x = 157.5,
             y = -342.5,
         },
     },
-    { -- Step 43
+    {
         Waypoint = 49615,
         Coord = {
             x = 810.6,
@@ -854,7 +854,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Range = 5,
         ExtraLineText = "UP_ELEVATOR",
     },
-    { -- Step 44
+    {
         Waypoint = 49615,
         Coord = {
             x = 852.4,
@@ -863,7 +863,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Range = 5,
         ExtraLineText = "UP_ELEVATOR",
     },
-    { -- Step 45
+    {
         Waypoint = 49615,
         Coord = {
             x = 836.5,
@@ -872,7 +872,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Range = 5,
         ExtraLineText = "UP_ELEVATOR",
     },
-    { -- Step 46
+    {
         Done = {
             49663,
         },
@@ -881,7 +881,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1134.5,
         },
     },
-    { -- Step 47
+    {
         PickUp = {
             47445,
             50835,
@@ -894,7 +894,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
 
 
 
-    { -- Step 48
+    {
         Waypoint = 50835,
         Range = 5.42,
         Coord = {
@@ -902,7 +902,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1101.5,
         },
     },
-    { -- Step 49
+    {
         ExtraLineText = "DOWN_ELEVATOR",
         Waypoint = 50835,
         Range = 2.33,
@@ -911,7 +911,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1126.1,
         },
     },
-    { -- Step 50
+    {
         ExtraLineText = "DOWN_ELEVATOR",
         Waypoint = 50835,
         Range = 5.33,
@@ -921,7 +921,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 51
+    {
         Waypoint = 50835,
         Range = 5.33,
         Coord = {
@@ -929,7 +929,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1049.3,
         },
     },
-    { -- Step 52
+    {
         UseFlightPath = 50835,
         ETA = 38,
         Name = "Port of Zandalar, Zuldazar",
@@ -939,7 +939,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1035.4,
         },
     },
-    { -- Step 53
+    {
         Waypoint = 50835,
         Range = 10,
         Coord = {
@@ -947,7 +947,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1950.9,
         },
     },
-    { -- Step 54
+    {
         Coord = {
             x = 803.2,
             y = -1858.9,
@@ -956,7 +956,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             50835,
         },
     },
-    { -- Step 55
+    {
         PickUp = {
             46926,
             46846,
@@ -966,7 +966,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1855,
         },
     },
-    { -- Step 56
+    {
         PickUp = {
             48452,
         },
@@ -980,7 +980,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 57
+    {
         Waypoint = 48452,
         Range = 9,
         Coord = {
@@ -988,7 +988,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1801.5,
         },
     },
-    { -- Step 58
+    {
         ExtraLineText = "JUMP_OFF_BRIDGE",
         Waypoint = 48452,
         Range = 13.72,
@@ -997,7 +997,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1826.9,
         },
     },
-    { -- Step 59
+    {
         Qpart = {
             [48452] = {
                 2,
@@ -1014,7 +1014,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 60
+    {
         Qpart = {
             [48452] = {
                 1,
@@ -1026,7 +1026,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Range = 88,
     },
-    { -- Step 61
+    {
         Waypoint = 48452,
         Range = 8.95,
         Coord = {
@@ -1035,7 +1035,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 62
+    {
         Done = {
             48452,
         },
@@ -1044,7 +1044,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1804.8,
         },
     },
-    { -- Step 63
+    {
         PickUp = {
             48454,
         },
@@ -1053,7 +1053,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1803.4,
         },
     },
-    { -- Step 64
+    {
         Qpart = {
             [46846] = {
                 3,
@@ -1071,7 +1071,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1760.9,
         },
     },
-    { -- Step 65
+    {
         Range = 10.45,
         Waypoint = 46846,
         Coord = {
@@ -1084,7 +1084,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 66
+    {
         Qpart = {
             [46846] = {
                 1,
@@ -1102,7 +1102,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1971,
         },
     },
-    { -- Step 67
+    {
         Range = 8,
         Waypoint = 46846,
         Coord = {
@@ -1110,7 +1110,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1954,
         },
     },
-    { -- Step 68
+    {
         ExtraLineText = "JUMP_OFF",
         Range = 16.2,
         Waypoint = 46846,
@@ -1119,7 +1119,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1948.9,
         },
     },
-    { -- Step 69
+    {
         Qpart = {
             [46846] = {
                 2,
@@ -1137,7 +1137,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 70
+    {
         Range = 9.66,
         Waypoint = 46926,
         Coord = {
@@ -1145,7 +1145,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1941.5,
         },
     },
-    { -- Step 71
+    {
         Qpart = {
             [46926] = {
                 1,
@@ -1157,7 +1157,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1856.1,
         },
     },
-    { -- Step 72
+    {
         Coord = {
             x = 805.2,
             y = -1856.1,
@@ -1173,7 +1173,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 73
+    {
         PickUp = {
             46928,
             46927,
@@ -1189,7 +1189,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 74
+    {
         Range = 9.66,
         Waypoint = 46929,
         Coord = {
@@ -1202,7 +1202,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 75
+    {
         Qpart = {
             [46928] = {
                 1,
@@ -1222,7 +1222,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1649.8,
         },
     },
-    { -- Step 76
+    {
         Qpart = {
             [46929] = {
                 2,
@@ -1239,7 +1239,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 77
+    {
         Waypoint = 46927,
         Range = 18,
         Fillers = {
@@ -1255,7 +1255,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1728.4,
         },
     },
-    { -- Step 78
+    {
         Waypoint = 46927,
         Range = 25,
         Coord = {
@@ -1271,7 +1271,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 79
+    {
         Bloodlust = 1,
         Qpart = {
             [46927] = {
@@ -1292,7 +1292,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1903,
         },
     },
-    { -- Step 80
+    {
         Qpart = {
             [46929] = {
                 1,
@@ -1309,7 +1309,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 81
+    {
         Waypoint = 46927,
         Range = 5,
         Coord = {
@@ -1317,7 +1317,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1769,
         },
     },
-    { -- Step 82
+    {
         Waypoint = 46927,
         Range = 5,
         Coord = {
@@ -1325,7 +1325,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1731.0,
         },
     },
-    { -- Step 83
+    {
         Done = {
             46928,
             46927,
@@ -1341,7 +1341,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 84
+    {
         PickUp = {
             50881,
         },
@@ -1355,7 +1355,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 85
+    {
         ExtraLineText = "TALK_TO_NPC_TO_RIDE_BOAT",
         Waypoint = 49284,
         Range = 5,
@@ -1364,7 +1364,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2059.1,
         },
     },
-    { -- Step 86
+    {
         ExtraLineText = "TAKE_BOAT_TO_SEEKERS_OUTPOST",
         GetFP = 2075,
         Range = 5.91,
@@ -1373,7 +1373,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2304.5,
         },
     },
-    { -- Step 87
+    {
         ExtraLineText = "GIVERS_AROUND_AREA",
         PickUp = {
             49284,
@@ -1384,7 +1384,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2304.5,
         },
     },
-    { -- Step 88
+    {
         Qpart = {
             [49284] = {
                 1,
@@ -1401,7 +1401,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2264.7,
         },
     },
-    { -- Step 89
+    {
         Qpart = {
             [49285] = {
                 1,
@@ -1418,7 +1418,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2241.9,
         },
     },
-    { -- Step 90
+    {
         Qpart = {
             [49285] = {
                 2,
@@ -1435,7 +1435,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2412.7,
         },
     },
-    { -- Step 91
+    {
         Qpart = {
             [49285] = {
                 3,
@@ -1452,7 +1452,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2277.2,
         },
     },
-    { -- Step 92
+    {
         Qpart = {
             [49284] = {
                 2,
@@ -1469,7 +1469,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2178,
         },
     },
-    { -- Step 93
+    {
         Qpart = {
             [49284] = {
                 3,
@@ -1486,7 +1486,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2123.2,
         },
     },
-    { -- Step 94
+    {
         Coord = {
             x = -524.3,
             y = -2063,
@@ -1501,7 +1501,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             49284,
         },
     },
-    { -- Step 95
+    {
         PickUp = {
             49286,
         },
@@ -1515,7 +1515,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2063,
         },
     },
-    { -- Step 96
+    {
         ExtraLineText = "INSIDE_CAVE",
         Qpart = {
             [49286] = {
@@ -1533,7 +1533,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1994.9,
         },
     },
-    { -- Step 97
+    {
         Qpart = {
             [49286] = {
                 2,
@@ -1550,7 +1550,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2058.2,
         },
     },
-    { -- Step 98
+    {
         Coord = {
             x = -523.2,
             y = -2059.7,
@@ -1559,7 +1559,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             49286,
         },
     },
-    { -- Step 99
+    {
         PickUp = {
             49287,
             49288,
@@ -1569,7 +1569,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2059.7,
         },
     },
-    { -- Step 100
+    {
         Qpart = {
             [49287] = {
                 1,
@@ -1589,7 +1589,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2333,
         },
     },
-    { -- Step 101
+    {
         Qpart = {
             [49287] = {
                 2,
@@ -1607,7 +1607,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 102
+    {
         Qpart = {
             [49287] = {
                 3,
@@ -1624,7 +1624,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2369,
         },
     },
-    { -- Step 103
+    {
         ExtraLineText = "BEWARE_TWO_LEVEL",
         Qpart = {
             [49287] = {
@@ -1642,7 +1642,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2252.4,
         },
     },
-    { -- Step 104
+    {
         Qpart = {
             [49288] = {
                 1,
@@ -1654,7 +1654,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2256,
         },
     },
-    { -- Step 105
+    {
         Coord = {
             x = -657.2,
             y = -2088.7,
@@ -1664,7 +1664,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             49288,
         },
     },
-    { -- Step 106
+    {
         PickUp = {
             49289,
         },
@@ -1673,7 +1673,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2088.2,
         },
     },
-    { -- Step 107
+    {
         Qpart = {
             [49289] = {
                 1,
@@ -1689,7 +1689,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2086,
         },
     },
-    { -- Step 108
+    {
         Coord = {
             x = -656.5,
             y = -2089.5,
@@ -1698,7 +1698,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             49289,
         },
     },
-    { -- Step 109
+    {
         PickUp = {
             51407,
         },
@@ -1707,7 +1707,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2089.2,
         },
     },
-    { -- Step 110
+    {
         ExtraLineText = "PORTAL_WILL_APPEAR",
         Done = {
             51407,
@@ -1717,7 +1717,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2281.5,
         }
     },
-    { -- Step 111
+    {
         PickUp = {
             50331,
         },
@@ -1727,7 +1727,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 112
+    {
         Qpart = {
             [50331] = {
                 1,
@@ -1740,7 +1740,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2399.4,
         },
     },
-    { -- Step 113
+    {
         Qpart = {
             [50331] = {
                 1,
@@ -1752,7 +1752,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1203.6,
         },
     },
-    { -- Step 114
+    {
         Coord = {
             x = -1175,
             y = -1203.6,
@@ -1761,7 +1761,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             50331,
         },
     },
-    { -- Step 115
+    {
         PickUp = {
             48015,
             48014,
@@ -1771,7 +1771,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1203.6,
         },
     },
-    { -- Step 116
+    {
         Qpart = {
             [48015] = {
                 1,
@@ -1788,7 +1788,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1159.6,
         },
     },
-    { -- Step 117
+    {
         Qpart = {
             [48015] = {
                 3,
@@ -1805,7 +1805,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1062,
         },
     },
-    { -- Step 118
+    {
         Qpart = {
             [48015] = {
                 2,
@@ -1822,7 +1822,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1127.8,
         },
     },
-    { -- Step 119
+    {
         Qpart = {
             [48014] = {
                 1,
@@ -1834,7 +1834,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1063.5,
         },
     },
-    { -- Step 120
+    {
         Coord = {
             x = -993.8,
             y = -1000.8,
@@ -1844,7 +1844,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             48014,
         },
     },
-    { -- Step 121
+    {
         PickUp = {
             49969,
             48025,
@@ -1855,7 +1855,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 122
+    {
         ExtraLineText = "USE_FLIGHTPATH",
         GetFP = 2066,
         Waypoint = 49969,
@@ -1865,7 +1865,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -955.7,
         },
     },
-    { -- Step 123
+    {
         Qpart = {
             [48025] = {
                 1,
@@ -1885,7 +1885,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -712.2,
         },
     },
-    { -- Step 124
+    {
         Qpart = {
             [48025] = {
                 2,
@@ -1905,7 +1905,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -693.8,
         },
     },
-    { -- Step 125
+    {
         Qpart = {
             [48025] = {
                 3,
@@ -1925,7 +1925,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -821.3,
         },
     },
-    { -- Step 126
+    {
         Qpart = {
             [48025] = {
                 5,
@@ -1945,7 +1945,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -871.2,
         },
     },
-    { -- Step 127
+    {
         Qpart = {
             [48025] = {
                 4,
@@ -1965,7 +1965,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -945,
         },
     },
-    { -- Step 128
+    {
         Qpart = {
             [49969] = {
                 1,
@@ -1977,7 +1977,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -945,
         },
     },
-    { -- Step 129
+    {
         Coord = {
             x = -1293.6,
             y = -1006.5,
@@ -1986,7 +1986,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             49969,
         },
     },
-    { -- Step 130
+    {
         PickUp = {
             48026,
         },
@@ -1995,7 +1995,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1006.5,
         },
     },
-    { -- Step 131
+    {
         Qpart = {
             [48026] = {
                 1,
@@ -2008,7 +2008,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 132
+    {
         Qpart = {
             [48026] = {
                 1,
@@ -2020,7 +2020,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1116,
         },
     },
-    { -- Step 133
+    {
         ExtraLineText = "BENEATH_HANDIN",
         Coord = {
             x = -1370.5,
@@ -2030,7 +2030,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             48026,
         },
     },
-    { -- Step 134
+    {
         PickUp = {
             51538,
         },
@@ -2039,7 +2039,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1116.6,
         },
     },
-    { -- Step 135
+    {
         Coord = {
             x = -992.7,
             y = -997.3,
@@ -2049,7 +2049,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             51538,
         },
     },
-    { -- Step 136
+    {
         PickUp = {
             51539,
         },
@@ -2058,7 +2058,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -997.3,
         },
     },
-    { -- Step 137
+    {
         Waypoint = 50881,
         Range = 17.66,
         Coord = {
@@ -2066,7 +2066,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1168.5,
         },
     },
-    { -- Step 138
+    {
         Waypoint = 50881,
         Range = 27.69,
         Coord = {
@@ -2074,7 +2074,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1279.3,
         },
     },
-    { -- Step 139
+    {
         PickUp = {
             51246,
             51247,
@@ -2084,7 +2084,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1358.9,
         },
     },
-    { -- Step 140
+    {
         PickUp = {
             51249,
             51248,
@@ -2094,7 +2094,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1370.3,
         },
     },
-    { -- Step 141
+    {
         Qpart = {
             [51247] = {
                 2,
@@ -2117,7 +2117,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1496.1,
         },
     },
-    { -- Step 142
+    {
         Qpart = {
             [51247] = {
                 1,
@@ -2140,7 +2140,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1589,
         },
     },
-    { -- Step 143
+    {
         Qpart = {
             [51247] = {
                 3,
@@ -2163,7 +2163,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1537.3,
         },
     },
-    { -- Step 144
+    {
         Qpart = {
             [51248] = {
                 1,
@@ -2181,7 +2181,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1534.8,
         },
     },
-    { -- Step 145
+    {
         Done = {
             51248,
             51247,
@@ -2193,7 +2193,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1370.3,
         },
     },
-    { -- Step 146
+    {
         PickUp = {
             51286,
         },
@@ -2202,7 +2202,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1359.9,
         },
     },
-    { -- Step 147
+    {
         Qpart = {
             [51286] = {
                 1,
@@ -2215,7 +2215,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1851.3,
         },
     },
-    { -- Step 148
+    {
         Done = {
             51286,
         },
@@ -2224,7 +2224,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1359.9,
         },
     },
-    { -- Step 149
+    {
         UseFlightPath = 51539,
         ETA = 71,
         Name = "The Great Seal",
@@ -2234,7 +2234,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -956.3,
         },
     },
-    { -- Step 150
+    {
         Waypoint = 51539,
         Range = 6.46,
         Coord = {
@@ -2242,7 +2242,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1046.8,
         },
     },
-    { -- Step 151
+    {
         Waypoint = 51539,
         Range = 4.73,
         Coord = {
@@ -2250,7 +2250,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1093,
         },
     },
-    { -- Step 152
+    {
         Done = {
             51539,
         },
@@ -2259,7 +2259,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1124.4,
         },
     },
-    { -- Step 153
+    {
         ExtraLineText = "USE_ELEVATOR",
         Waypoint = 50881,
         Range = 3.76,
@@ -2268,7 +2268,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1126.3,
         },
     },
-    { -- Step 154
+    {
         ExtraLineText = "USE_ELEVATOR",
         Waypoint = 50881,
         Range = 3.76,
@@ -2277,7 +2277,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1126.4,
         },
     },
-    { -- Step 155
+    {
         ExtraLineText = "USE_ELEVATOR",
         Waypoint = 50881,
         Range = 3.76,
@@ -2286,7 +2286,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1101.5,
         },
     },
-    { -- Step 156
+    {
         Waypoint = 50881,
         Range = 3.76,
         Coord = {
@@ -2294,7 +2294,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1103.7,
         },
     },
-    { -- Step 157
+    {
         Done = {
             50881,
         },
@@ -2303,7 +2303,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1134.1,
         },
     },
-    { -- Step 158
+    {
         UseGlider = 1,
         Coord = {
             x = 936.6,
@@ -2313,7 +2313,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             47445,
         },
     },
-    { -- Step 159
+    {
         PickUp = {
             47423,
         },
@@ -2322,7 +2322,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -712.7,
         },
     },
-    { -- Step 160
+    {
         Qpart = {
             [47423] = {
                 1,
@@ -2343,7 +2343,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -664.8,
         },
     },
-    { -- Step 161
+    {
         Coord = {
             x = 752.2,
             y = -486.4,
@@ -2353,7 +2353,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 162
+    {
         PickUp = {
             47433,
         },
@@ -2362,7 +2362,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -486.4,
         },
     },
-    { -- Step 163
+    {
         Qpart = {
             [47433] = {
                 2,
@@ -2374,7 +2374,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -481.5,
         },
     },
-    { -- Step 164
+    {
         Qpart = {
             [47433] = {
                 3,
@@ -2386,7 +2386,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -383.3,
         },
     },
-    { -- Step 165
+    {
         Done = {
             47433,
         },
@@ -2395,7 +2395,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -623.7,
         },
     },
-    { -- Step 166
+    {
         PickUp = {
             47435,
             47434,
@@ -2405,7 +2405,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -597.5,
         },
     },
-    { -- Step 167
+    {
         Qpart = {
             [47435] = {
                 1,
@@ -2420,7 +2420,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -606.8,
         },
     },
-    { -- Step 168
+    {
         Done = {
             47435,
             47434,
@@ -2430,7 +2430,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -474.7,
         },
     },
-    { -- Step 169
+    {
         PickUp = {
             47437,
         },
@@ -2439,7 +2439,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -474.7,
         },
     },
-    { -- Step 170
+    {
         Qpart = {
             [47437] = {
                 1,
@@ -2451,7 +2451,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -470.9,
         },
     },
-    { -- Step 171
+    {
         Waypoint = 47437,
         Range = 3.89,
         Coord = {
@@ -2460,7 +2460,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 172
+    {
         Waypoint = 47437,
         Range = 4.3,
         Coord = {
@@ -2468,7 +2468,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -401,
         },
     },
-    { -- Step 173
+    {
         Waypoint = 47437,
         Range = 5.64,
         Coord = {
@@ -2476,7 +2476,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -424.9,
         },
     },
-    { -- Step 174
+    {
         Qpart = {
             [47437] = {
                 2,
@@ -2488,7 +2488,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -426.9,
         },
     },
-    { -- Step 175
+    {
         Waypoint = 47437,
         Range = 4.11,
         Coord = {
@@ -2496,7 +2496,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -471.8,
         },
     },
-    { -- Step 176
+    {
         Waypoint = 47437,
         Range = 4.04,
         Coord = {
@@ -2504,7 +2504,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -498.9,
         },
     },
-    { -- Step 177
+    {
         Qpart = {
             [47437] = {
                 3,
@@ -2516,7 +2516,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -568.3,
         },
     },
-    { -- Step 178
+    {
         Waypoint = 47437,
         Range = 8.08,
         Coord = {
@@ -2524,7 +2524,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -560,
         },
     },
-    { -- Step 179
+    {
         Done = {
             47437,
         },
@@ -2533,7 +2533,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -507.4,
         },
     },
-    { -- Step 180
+    {
         PickUp = {
             47422,
         },
@@ -2542,7 +2542,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -507.4,
         },
     },
-    { -- Step 181
+    {
         Waypoint = 47422,
         Range = 10.08,
         Coord = {
@@ -2551,7 +2551,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 182
+    {
         ExtraLineText = "TOTEM_DAMAGE_BUFF",
         Qpart = {
             [47422] = {
@@ -2564,7 +2564,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -404.4,
         },
     },
-    { -- Step 183
+    {
         Done = {
             47422,
         },
@@ -2573,7 +2573,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -432.8,
         },
     },
-    { -- Step 184
+    {
         PickUp = {
             47438,
         },
@@ -2582,7 +2582,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -432.8,
         },
     },
-    { -- Step 185
+    {
         ExtraLineText = "LOA_INFO_1",
         ExtraLineText2 = "LOA_INFO_2",
         Qpart = {
@@ -2596,7 +2596,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -433.2,
         },
     },
-    { -- Step 186
+    {
         Done = {
             47438,
         },
@@ -2605,7 +2605,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -432.3,
         },
     },
-    { -- Step 187
+    {
         PickedLoa = 1,
         PickUp = {
             47440,
@@ -2615,7 +2615,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -438.8,
         },
     },
-    { -- Step 188
+    {
         PickedLoa = 1,
         Qpart = {
             [47440] = {
@@ -2628,7 +2628,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -448.9,
         },
     },
-    { -- Step 189
+    {
         PickedLoa = 1,
         Waypoint = 47440,
         Range = 4.88,
@@ -2637,7 +2637,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1361.3,
         },
     },
-    { -- Step 190
+    {
         PickedLoa = 1,
         Qpart = {
             [47440] = {
@@ -2650,7 +2650,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1401.3,
         },
     },
-    { -- Step 191
+    {
         PickedLoa = 1,
         Qpart = {
             [47440] = {
@@ -2664,7 +2664,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 192
+    {
         PickedLoa = 1,
         Done = {
             47440,
@@ -2675,7 +2675,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -893,
         },
     },
-    { -- Step 193
+    {
         PickedLoa = 1,
         PickUp = {
             47432,
@@ -2685,7 +2685,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -893,
         },
     },
-    { -- Step 194
+    {
         PickedLoa = 1,
         PickUp = {
             49768,
@@ -2695,7 +2695,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1038,
         },
     },
-    { -- Step 195
+    {
         PickedLoa = 1,
         Waypoint = 47432,
         Range = 11.03,
@@ -2704,7 +2704,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1047.5,
         },
     },
-    { -- Step 196
+    {
         PickedLoa = 1,
         Waypoint = 47432,
         Range = 7.35,
@@ -2713,7 +2713,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1107.4,
         },
     },
-    { -- Step 197
+    {
         PickedLoa = 1,
         PickUp = {
             50538,
@@ -2723,7 +2723,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1124.5,
         },
     },
-    { -- Step 198
+    {
         ExtraLineText = "UP_ELEVATOR",
         PickedLoa = 1,
         Waypoint = 47432,
@@ -2733,7 +2733,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1125.1,
         },
     },
-    { -- Step 199
+    {
         ExtraLineText = "UP_ELEVATOR",
         PickedLoa = 1,
         Waypoint = 47432,
@@ -2743,7 +2743,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1101.5,
         },
     },
-    { -- Step 200
+    {
         PickedLoa = 1,
         Done = {
             47432,
@@ -2755,7 +2755,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
     },
 
 
-    { -- Step 201
+    {
         PickedLoa = 2,
         PickUp = {
             47439,
@@ -2765,7 +2765,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -432.9,
         },
     },
-    { -- Step 202
+    {
         UseGlider = 1,
         PickedLoa = 2,
         Range = 38.05,
@@ -2775,7 +2775,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -353.7,
         },
     },
-    { -- Step 203
+    {
         PickedLoa = 2,
         Qpart = {
             [47439] = {
@@ -2789,7 +2789,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -440.7,
         },
     },
-    { -- Step 204
+    {
         PickedLoa = 2,
         UseHS = 47439,
         Coord = {
@@ -2797,7 +2797,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -440.7,
         },
     },
-    { -- Step 205
+    {
         PickedLoa = 2,
         Waypoint = 47439,
         Range = 7.35,
@@ -2806,7 +2806,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1136.5,
         },
     },
-    { -- Step 206
+    {
         PickedLoa = 2,
         PickUp = {
             50538,
@@ -2816,7 +2816,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1124.5,
         },
     },
-    { -- Step 207
+    {
         PickedLoa = 2,
         Waypoint = 47439,
         Range = 7.35,
@@ -2825,7 +2825,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1108.1,
         },
     },
-    { -- Step 208
+    {
         PickedLoa = 2,
         Waypoint = 47439,
         Range = 7.35,
@@ -2834,7 +2834,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1050.6,
         },
     },
-    { -- Step 209
+    {
         PickedLoa = 2,
         PickUp = {
             49768,
@@ -2844,7 +2844,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1038,
         },
     },
-    { -- Step 210
+    {
         ExtraLineText = "DO_NOT_USE_GLIDER",
         PickedLoa = 2,
         Done = {
@@ -2855,7 +2855,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -891.3,
         },
     },
-    { -- Step 211
+    {
         PickedLoa = 2,
         PickUp = {
             48897,
@@ -2865,7 +2865,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -891.3,
         },
     },
-    { -- [step 212
+    {
         Waypoint = 48897,
         Coord = {
             x = 805.9,
@@ -2874,7 +2874,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Range = 10,
         PickedLoa = 2,
     },
-    { -- [step 213
+    {
         Waypoint = 48897,
         Coord = {
             x = 759.0,
@@ -2883,7 +2883,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Range = 10,
         PickedLoa = 2,
     },
-    { -- [step 214
+    {
         Waypoint = 48897,
         Coord = {
             x = 798.7,
@@ -2892,7 +2892,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Range = 10,
         PickedLoa = 2,
     },
-    { -- [step 215
+    {
         Waypoint = 48897,
         Coord = {
             x = 778.7,
@@ -2901,7 +2901,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Range = 10,
         PickedLoa = 2,
     },
-    { -- [step 216
+    {
         Waypoint = 48897,
         Coord = {
             x = 804.8,
@@ -2910,7 +2910,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Range = 10,
         PickedLoa = 2,
     },
-    { -- [step 217
+    {
         Waypoint = 48897,
         Coord = {
             x = 757.6,
@@ -2919,7 +2919,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Range = 10,
         PickedLoa = 2,
     },
-    { -- [step 218
+    {
         Waypoint = 48897,
         Coord = {
             x = 790.2,
@@ -2928,7 +2928,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Range = 6.54,
         PickedLoa = 2,
     },
-    { -- [Step 219
+    {
         Done = {
             48897,
         },
@@ -2938,7 +2938,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         PickedLoa = 2,
     },
-    { -- Step 220
+    {
         UseGlider = 1,
         PickUp = {
             49810,
@@ -2948,7 +2948,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -615.2,
         },
     },
-    { -- Step 221
+    {
         Qpart = {
             [49810] = {
                 1,
@@ -2969,7 +2969,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -700.7,
         },
     },
-    { -- Step 222
+    {
         Qpart = {
             [49810] = {
                 2,
@@ -2990,7 +2990,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -835.5,
         },
     },
-    { -- Step 223
+    {
         Done = {
             49810,
         },
@@ -2999,7 +2999,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -615,
         },
     },
-    { -- Step 224
+    {
         PickUp = {
             49814,
             50154,
@@ -3010,7 +3010,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -615,
         },
     },
-    { -- Step 225
+    {
         Qpart = {
             [50154] = {
                 1,
@@ -3026,7 +3026,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 226
+    {
         Qpart = {
             [49801] = {
                 1,
@@ -3038,7 +3038,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -970.8,
         },
     },
-    { -- Step 227
+    {
         Coord = {
             x = 286,
             y = -618.8,
@@ -3049,7 +3049,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             50154,
         },
     },
-    { -- Step 228
+    {
         PickUp = {
             50074,
             50150,
@@ -3059,7 +3059,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -618.8,
         },
     },
-    { -- Step 229
+    {
         Qpart = {
             [50074] = {
                 1,
@@ -3074,7 +3074,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -683.3,
         },
     },
-    { -- Step 230
+    {
         Qpart = {
             [50150] = {
                 2,
@@ -3086,7 +3086,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -821.8,
         },
     },
-    { -- Step 231
+    {
         Qpart = {
             [50150] = {
                 1,
@@ -3098,7 +3098,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -816,
         },
     },
-    { -- Step 232
+    {
         Done = {
             50150,
             50074,
@@ -3108,7 +3108,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -618.7,
         },
     },
-    { -- Step 233
+    {
         PickUp = {
             50252,
         },
@@ -3117,7 +3117,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -619.3,
         },
     },
-    { -- Step 234
+    {
         Qpart = {
             [50252] = {
                 1,
@@ -3131,7 +3131,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -618.3,
         },
     },
-    { -- Step 235
+    {
         Coord = {
             x = 284.5,
             y = -617,
@@ -3140,7 +3140,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             50252,
         },
     },
-    { -- Step 236
+    {
         PickUp = {
             50268,
         },
@@ -3149,7 +3149,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -620,
         },
     },
-    { -- Step 237
+    {
         Qpart = {
             [50268] = {
                 1,
@@ -3161,7 +3161,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -613.5,
         },
     },
-    { -- Step 238
+    {
         Coord = {
             x = 287.7,
             y = -619.8,
@@ -3170,7 +3170,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             50268,
         },
     },
-    { -- Step 239
+    {
         PickUp = {
             49870,
         },
@@ -3179,7 +3179,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -619.8,
         },
     },
-    { -- Step 240
+    {
         Qpart = {
             [49870] = {
                 1,
@@ -3194,7 +3194,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -710,
         },
     },
-    { -- Step 241
+    {
         Qpart = {
             [49870] = {
                 2,
@@ -3206,7 +3206,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -989.3,
         },
     },
-    { -- Step 242
+    {
         Qpart = {
             [49870] = {
                 3,
@@ -3218,7 +3218,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -994.8,
         },
     },
-    { -- Step 243
+    {
         Range = 15.65,
         Waypoint = 49870,
         Coord = {
@@ -3226,7 +3226,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -938.5,
         },
     },
-    { -- Step 244
+    {
         Range = 44.2,
         Waypoint = 49870,
         Coord = {
@@ -3234,7 +3234,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -773.3,
         },
     },
-    { -- Step 245
+    {
         Coord = {
             x = 284.3,
             y = -618,
@@ -3243,7 +3243,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             49870,
         },
     },
-    { -- Step 246
+    {
         PickUp = {
             50297,
         },
@@ -3252,7 +3252,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -618,
         },
     },
-    { -- Step 247
+    {
         Qpart = {
             [50297] = {
                 1,
@@ -3264,7 +3264,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -817.3,
         },
     },
-    { -- Step 248
+    {
         Qpart = {
             [50297] = {
                 2,
@@ -3276,7 +3276,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -824.8,
         },
     },
-    { -- Step 249
+    {
         Coord = {
             x = 284.8,
             y = -617.8,
@@ -3285,7 +3285,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             50297,
         },
     },
-    { -- Step 250
+    {
         Range = 35.07,
         Waypoint = 50538,
         Coord = {
@@ -3293,7 +3293,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -881.3,
         },
     },
-    { -- Step 251
+    {
         Coord = {
             x = 161.5,
             y = -945.2,
@@ -3302,7 +3302,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             50538,
         },
     },
-    { -- Step 252
+    {
         PickUp = {
             47226,
         },
@@ -3311,7 +3311,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -951.7,
         },
     },
-    { -- Step 253
+    {
         Range = 20.58,
         Waypoint = 47226,
         Coord = {
@@ -3319,7 +3319,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1047,
         },
     },
-    { -- Step 254
+    {
         Range = 19.15,
         Waypoint = 47226,
         Coord = {
@@ -3327,7 +3327,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1129.5,
         },
     },
-    { -- Step 255
+    {
         Range = 13.69,
         Waypoint = 47226,
         Coord = {
@@ -3336,7 +3336,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 256
+    {
         Coord = {
             x = 55.7,
             y = -1019.8,
@@ -3345,7 +3345,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             47226,
         },
     },
-    { -- Step 257
+    {
         PickUp = {
             47259,
             48527,
@@ -3355,7 +3355,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1019.8,
         },
     },
-    { -- Step 258
+    {
         Range = 6.28,
         GetFP = 1966,
         Coord = {
@@ -3363,7 +3363,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1048.0,
         },
     },
-    { -- Step 259
+    {
         Qpart = {
             [47259] = {
                 1,
@@ -3378,7 +3378,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1068.8,
         },
     },
-    { -- Step 260
+    {
         Coord = {
             x = 55.4,
             y = -1018.5,
@@ -3388,7 +3388,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             48527,
         },
     },
-    { -- Step 261
+    {
         PickUp = {
             47311,
             47272,
@@ -3398,7 +3398,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1020.8,
         },
     },
-    { -- Step 262
+    {
         PickUp = {
             47312,
             51980,
@@ -3408,7 +3408,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -917.3,
         },
     },
-    { -- Step 263
+    {
         Waypoint = 51980,
         Range = 15.83,
         Coord = {
@@ -3416,7 +3416,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -875,
         },
     },
-    { -- Step 264
+    {
         ExtraLineText = "ASSULT_SKIP",
         Qpart = {
             [51980] = {
@@ -3429,7 +3429,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -722.3,
         },
     },
-    { -- Step 265
+    {
         Qpart = {
             [47312] = {
                 1,
@@ -3449,7 +3449,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -898.7,
         },
     },
-    { -- [step 266
+    {
         Qpart = {
             [47272] = {
                 1,
@@ -3464,7 +3464,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Range = 125,
     },
-    { -- Step 267
+    {
         Done = {
             47312,
             51980,
@@ -3475,7 +3475,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         ExtraLineText = "ASSULT_SKIP2",
     },
-    { -- Step 268
+    {
         Done = {
             47311,
             47272,
@@ -3485,7 +3485,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1021.6,
         },
     },
-    { -- Step 269
+    {
         PickUp = {
             51990,
             51998,
@@ -3495,7 +3495,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1021.6,
         },
     },
-    { -- Step 270
+    {
         Waypoint = 51990,
         Range = 15.83,
         Coord = {
@@ -3503,7 +3503,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1023.6,
         },
     },
-    { -- Step 271
+    {
         Waypoint = 51990,
         Range = 15.83,
         Coord = {
@@ -3511,7 +3511,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1003.7,
         },
     },
-    { -- Step 272
+    {
         Waypoint = 51990,
         Range = 15.83,
         Coord = {
@@ -3519,7 +3519,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -775.2,
         },
     },
-    { -- Step 273
+    {
         Waypoint = 51990,
         Range = 15.83,
         Coord = {
@@ -3527,7 +3527,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -560.1,
         },
     },
-    { -- Step 274
+    {
         Qpart = {
             [51990] = {
                 1,
@@ -3544,7 +3544,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Range = 160,
     },
-    { -- Step 275
+    {
         Qpart = {
             [51998] = {
                 1,
@@ -3556,7 +3556,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Range = 160,
     },
-    { -- Step 276
+    {
         Waypoint = 51990,
         Range = 15.83,
         Coord = {
@@ -3565,7 +3565,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 277
+    {
         Waypoint = 51990,
         Range = 15.83,
         Coord = {
@@ -3573,7 +3573,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -775.2,
         },
     },
-    { -- Step 278
+    {
         Waypoint = 51990,
         Range = 15.83,
         Coord = {
@@ -3581,7 +3581,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -882.7,
         },
     },
-    { -- Step 279
+    {
         Waypoint = 51990,
         Range = 15.83,
         Coord = {
@@ -3589,7 +3589,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1023.6,
         },
     },
-    { -- Step 280
+    {
         Done = {
             51990,
             51998,
@@ -3599,7 +3599,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1021.6,
         },
     },
-    { -- Step 281
+    {
         PickUp = {
             47418,
         },
@@ -3608,7 +3608,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1021.6,
         },
     },
-    { -- Step 282
+    {
         Qpart = {
             [47418] = {
                 1,
@@ -3620,7 +3620,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1015.9,
         },
     },
-    { -- Step 283
+    {
         Done = {
             47418,
         },
@@ -3629,7 +3629,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1021.6,
         },
     },
-    { -- Step 284
+    {
         PickUp = {
             47261,
         },
@@ -3638,7 +3638,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1021.6,
         },
     },
-    { -- Step 285
+    {
         Qpart = {
             [47261] = {
                 1,
@@ -3651,7 +3651,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1072.5,
         },
     },
-    { -- Step 286
+    {
         Qpart = {
             [47261] = {
                 2,
@@ -3663,7 +3663,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Range = 1,
     },
-    { -- [step 287
+    {
         Waypoint = 47261,
         Coord = {
             x = -192.8,
@@ -3671,7 +3671,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Range = 20,
     },
-    { -- [step 288
+    {
         Waypoint = 47261,
         Coord = {
             x = -242.2,
@@ -3679,7 +3679,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Range = 20,
     },
-    { -- [step 289
+    {
         Waypoint = 47261,
         Coord = {
             x = -252.8,
@@ -3687,7 +3687,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Range = 20,
     },
-    { -- [step 290
+    {
         Waypoint = 47261,
         Coord = {
             x = -180.6,
@@ -3695,7 +3695,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Range = 20,
     },
-    { -- [step 291
+    {
         Waypoint = 47261,
         Coord = {
             x = 16.7,
@@ -3703,7 +3703,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Range = 20,
     },
-    { -- Step 292
+    {
         Done = {
             47261,
         },
@@ -3713,7 +3713,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 293
+    {
         PickUp = {
             48581,
         },
@@ -3722,7 +3722,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1072.3,
         },
     },
-    { -- Step 294
+    {
         Qpart = {
             [48581] = {
                 1,
@@ -3734,7 +3734,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1148.9,
         },
     },
-    { -- Step 295
+    {
         Done = {
             48581,
         },
@@ -3743,7 +3743,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1019.1,
         },
     },
-    { -- Step 296
+    {
         PickUp = {
             47310,
         },
@@ -3752,7 +3752,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1019.1,
         },
     },
-    { -- Step 297
+    {
         Qpart = {
             [47310] = {
                 1,
@@ -3764,7 +3764,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -996.7,
         },
     },
-    { -- Step 298
+    {
         Done = {
             47310,
         },
@@ -3773,7 +3773,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1019.1,
         },
     },
-    { -- Step 299
+    {
         ExtraLineText = "FLY_GREAT_SEAL",
         UseFlightPath = 49122,
         ETA = 40,
@@ -3784,7 +3784,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1047.4,
         }
     },
-    { -- Step 300
+    {
         Waypoint = 49122,
         Range = 7.86,
         Coord = {
@@ -3792,7 +3792,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1047.5,
         },
     },
-    { -- Step 301
+    {
         Waypoint = 49122,
         Range = 8.48,
         Coord = {
@@ -3800,7 +3800,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1110.6,
         },
     },
-    { -- Step 302
+    {
         ExtraLineText = "UP_ELEVATOR",
         Waypoint = 49122,
         Range = 4.07,
@@ -3810,7 +3810,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 303
+    {
         ExtraLineText = "UP_ELEVATOR",
         Waypoint = 49122,
         Range = 4.07,
@@ -3819,7 +3819,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1121.2,
         },
     },
-    { -- Step 304
+    {
         Waypoint = 49122,
         Range = 5,
         Coord = {
@@ -3827,7 +3827,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1101,
         },
     },
-    { -- Step 305
+    {
         Waypoint = 49122,
         Range = 4.07,
         Coord = {
@@ -3835,7 +3835,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1102.0,
         },
     },
-    { -- Step 306
+    {
         PickUp = {
             49122,
         },
@@ -3844,7 +3844,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1134.5,
         },
     },
-    { -- Step 307
+    {
         UseGlider = 1,
         PickUp = {
             51072,
@@ -3855,7 +3855,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1184.3,
         },
     },
-    { -- Step 308
+    {
         Qpart = {
             [51072] = {
                 1,
@@ -3867,7 +3867,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1140.5,
         },
     },
-    { -- Step 309
+    {
         Qpart = {
             [51071] = {
                 1,
@@ -3879,7 +3879,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1304,
         },
     },
-    { -- Step 310
+    {
         Coord = {
             x = 1339.5,
             y = -1468.8,
@@ -3889,7 +3889,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             51072,
         },
     },
-    { -- Step 311
+    {
         PickUp = {
             49919,
             49922,
@@ -3900,14 +3900,14 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    {                  -- Step 312
+    {
         SetHS = 49919, -- Village in the Vines
         Coord = {
             x = 1369.7,
             y = -1509.8,
         },
     },
-    { -- Step 313
+    {
         Waypoint = 49919,
         Range = 30.55,
         Coord = {
@@ -3915,7 +3915,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1545,
         },
     },
-    { -- Step 314
+    {
         Waypoint = 49919,
         Coord = {
             x = 1359.7,
@@ -3923,7 +3923,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Range = 23.84,
     },
-    { -- Step 315
+    {
         PickUp = {
             49920,
         },
@@ -3937,7 +3937,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 316
+    {
         ExtraLineText = "KAJAMITE",
         Qpart = {
             [49920] = {
@@ -3958,7 +3958,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1698.5,
         },
     },
-    { -- Step 317
+    {
         ExtraLineText = "KAJAMITE",
         Qpart = {
             [49922] = {
@@ -3982,7 +3982,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1511,
         },
     },
-    { -- Step 318
+    {
         Done = {
             49920,
         },
@@ -3991,7 +3991,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1577.8,
         },
     },
-    { -- Step 319
+    {
         Qpart = {
             [49918] = {
                 1,
@@ -4003,7 +4003,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1553.9,
         },
     },
-    {                  -- Step 320
+    {
         UseHS = 49919, -- to Village in the Vines
         HSSteps = 4,
         Coord = {
@@ -4011,7 +4011,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1553.9,
         },
     },
-    { -- Step 321
+    {
         Done = {
             49919,
             49922,
@@ -4022,7 +4022,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 322
+    {
         Waypoint = 49122,
         Range = 55,
         Coord = {
@@ -4030,7 +4030,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1550.5,
         },
     },
-    { -- Step 323
+    {
         Waypoint = 49122,
         Range = 21.67,
         Coord = {
@@ -4038,7 +4038,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1584,
         },
     },
-    { -- Step 324
+    {
         Waypoint = 49122,
         Range = 21.67,
         Coord = {
@@ -4046,7 +4046,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1861.5,
         },
     },
-    { -- Step 325
+    {
         GetFP = 2009,
         Range = 5.0,
         Coord = {
@@ -4054,7 +4054,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2023.3,
         },
     },
-    { -- Step 326
+    {
         Done = {
             49122,
         },
@@ -4063,7 +4063,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2030.8,
         },
     },
-    { -- Step 327
+    {
         PickUp = {
             49144,
             49145,
@@ -4073,7 +4073,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2030.4,
         },
     },
-    { -- Step 328
+    {
         PickUp = {
             49146,
         },
@@ -4082,7 +4082,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2031.9,
         },
     },
-    { -- Step 329
+    {
         Qpart = {
             [49146] = {
                 1,
@@ -4105,7 +4105,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2025.6,
         },
     },
-    { -- Step 330
+    {
         Qpart = {
             [49146] = {
                 3,
@@ -4128,7 +4128,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2143.9,
         },
     },
-    { -- Step 331
+    {
         Qpart = {
             [49146] = {
                 2,
@@ -4152,7 +4152,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 332
+    {
         Qpart = {
             [49145] = {
                 1,
@@ -4170,7 +4170,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2112.7,
         },
     },
-    { -- Step 333
+    {
         Waypoint = 49144,
         Range = 18.47,
         Coord = {
@@ -4178,7 +4178,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2030.6,
         },
     },
-    { -- Step 334
+    {
         Done = {
             49145,
             49144,
@@ -4189,7 +4189,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2029,
         },
     },
-    { -- Step 335
+    {
         PickUp = {
             49148,
             49147,
@@ -4200,7 +4200,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2029.5,
         },
     },
-    { -- Step 336
+    {
         QpartPart = {
             [49149] = {
                 1,
@@ -4218,7 +4218,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2109.2,
         },
     },
-    { -- Step 337
+    {
         QpartPart = {
             [49149] = {
                 1,
@@ -4239,7 +4239,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2178.2,
         },
     },
-    { -- Step 338
+    {
         QpartPart = {
             [49149] = {
                 1,
@@ -4260,7 +4260,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2209.7,
         },
     },
-    { -- Step 339
+    {
         QpartPart = {
             [49149] = {
                 1,
@@ -4281,7 +4281,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2294.7,
         },
     },
-    { -- Step 340
+    {
         Qpart = {
             [49147] = {
                 1,
@@ -4301,7 +4301,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2258.9,
         },
     },
-    { -- Step 341
+    {
         Waypoint = 49147,
         Range = 15.03,
         Coord = {
@@ -4317,7 +4317,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 342
+    {
         QpartPart = {
             [49149] = {
                 1,
@@ -4335,7 +4335,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2388,
         },
     },
-    { -- Step 343
+    {
         Qpart = {
             [49147] = {
                 2,
@@ -4355,7 +4355,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2370,
         },
     },
-    { -- Step 344
+    {
         Qpart = {
             [49149] = {
                 1,
@@ -4370,7 +4370,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2374.7,
         },
     },
-    { -- Step 345
+    {
         Done = {
             49148,
             49147,
@@ -4381,7 +4381,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2258.5,
         },
     },
-    { -- Step 346
+    {
         PickUp = {
             49309,
         },
@@ -4390,7 +4390,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2258.5,
         },
     },
-    { -- Step 347
+    {
         Waypoint = 49309,
         Range = 11.1,
         Coord = {
@@ -4398,7 +4398,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2266.5,
         },
     },
-    { -- Step 348
+    {
         Qpart = {
             [49309] = {
                 1,
@@ -4410,7 +4410,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2305.2,
         },
     },
-    { -- Step 349
+    {
         Done = {
             49309,
         },
@@ -4419,7 +4419,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2258,
         },
     },
-    { -- Step 350
+    {
         PickUp = {
             49310,
         },
@@ -4428,7 +4428,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2258,
         },
     },
-    { -- Step 351
+    {
         Qpart = {
             [49310] = {
                 1,
@@ -4440,7 +4440,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -2250.7,
         },
     },
-    { -- Step 352
+    {
         Coord = {
             x = 819.2,
             y = -1124.5,
@@ -4449,7 +4449,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             49310,
         },
     },
-    { -- Step 353
+    {
         PickUp = {
             51101,
             47509,
@@ -4459,14 +4459,14 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1125.6,
         },
     },
-    { -- Step 354
+    {
         SetHS = 47509,
         Coord = {
             x = 805.7,
             y = -1125.5,
         },
     },
-    { -- Step 355
+    {
         Waypoint = 47509,
         Range = 8.68,
         Coord = {
@@ -4474,7 +4474,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1049.9,
         },
     },
-    { -- Step 356
+    {
         UseGlider = 1,
         Done = {
             47509,
@@ -4484,7 +4484,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -667.3,
         },
     },
-    { -- Step 357
+    {
         PickUp = {
             47897,
             47915,
@@ -4494,7 +4494,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -667.3,
         },
     },
-    { -- Step 358
+    {
         Waypoint = 47915,
         Coord = {
             x = 1042,
@@ -4507,7 +4507,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 359
+    {
         Qpart = {
             [47915] = {
                 1,
@@ -4524,7 +4524,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -596.5,
         },
     },
-    { -- Step 360
+    {
         Qpart = {
             [47897] = {
                 1,
@@ -4536,7 +4536,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -605,
         },
     },
-    { -- Step 361
+    {
         Coord = {
             x = 1105,
             y = -520.5,
@@ -4546,7 +4546,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             47915,
         },
     },
-    { -- Step 362
+    {
         PickUp = {
             47520,
             47518,
@@ -4556,7 +4556,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -520.5,
         },
     },
-    { -- Step 363
+    {
         Range = 12.12,
         Waypoint = 47518,
         Coord = {
@@ -4569,7 +4569,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 364
+    {
         Range = 7.16,
         Waypoint = 47518,
         Coord = {
@@ -4582,7 +4582,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 365
+    {
         Range = 4.97,
         Waypoint = 47518,
         Coord = {
@@ -4595,7 +4595,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 366
+    {
         Range = 5.23,
         Waypoint = 47518,
         Coord = {
@@ -4608,7 +4608,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 367
+    {
         Range = 5.38,
         Waypoint = 47518,
         Coord = {
@@ -4621,7 +4621,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 368
+    {
         Range = 9.15,
         Waypoint = 47518,
         Coord = {
@@ -4634,7 +4634,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 369
+    {
         Range = 8.96,
         Waypoint = 47518,
         Coord = {
@@ -4647,7 +4647,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 370
+    {
         Qpart = {
             [47520] = {
                 1,
@@ -4662,7 +4662,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -400.2,
         },
     },
-    { -- Step 371
+    {
         Coord = {
             x = 982.4,
             y = -400.9,
@@ -4672,7 +4672,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             47518,
         },
     },
-    { -- Step 372
+    {
         PickUp = {
             47521,
         },
@@ -4681,7 +4681,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -439.3,
         },
     },
-    { -- Step 373
+    {
         Qpart = {
             [47521] = {
                 1,
@@ -4693,7 +4693,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -448.4,
         },
     },
-    { -- Step 374
+    {
         Coord = {
             x = 1419.2,
             y = -292.9,
@@ -4702,7 +4702,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             47521,
         },
     },
-    { -- Step 375
+    {
         PickUp = {
             47522,
             47963,
@@ -4712,7 +4712,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -290.7,
         },
     },
-    { -- Step 376
+    {
         Range = 13.17,
         Waypoint = 47963,
         Coord = {
@@ -4725,7 +4725,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 377
+    {
         Range = 12.29,
         Waypoint = 47963,
         Coord = {
@@ -4738,7 +4738,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 378
+    {
         Qpart = {
             [47963] = {
                 1,
@@ -4755,7 +4755,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -463.5,
         },
     },
-    { -- Step 379
+    {
         Coord = {
             x = 1298,
             y = -467.5,
@@ -4769,7 +4769,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 380
+    {
         Range = 14.64,
         Waypoint = 47522,
         Coord = {
@@ -4782,7 +4782,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 381
+    {
         Qpart = {
             [47522] = {
                 1,
@@ -4799,7 +4799,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 382
+    {
         Coord = {
             x = 1613,
             y = -430.8,
@@ -4813,7 +4813,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 383
+    {
         PickUp = {
             47528,
         },
@@ -4827,7 +4827,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 384
+    {
         Range = 16.34,
         Waypoint = 47528,
         Coord = {
@@ -4840,7 +4840,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 385
+    {
         Range = 6.81,
         Waypoint = 47528,
         Coord = {
@@ -4853,7 +4853,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 386
+    {
         Qpart = {
             [47528] = {
                 1,
@@ -4871,7 +4871,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 387
+    {
         Range = 12.93,
         Waypoint = 47528,
         Coord = {
@@ -4884,7 +4884,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 388
+    {
         Qpart = {
             [47527] = {
                 1,
@@ -4896,7 +4896,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -269.2,
         },
     },
-    { -- Step 389
+    {
         Coord = {
             x = 1601.4,
             y = -133,
@@ -4905,7 +4905,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             47528,
         },
     },
-    { -- Step 390
+    {
         GetFP = 2045,
         Range = 5.0,
         Coord = {
@@ -4913,7 +4913,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -103.3,
         },
     },
-    { -- Step 391
+    {
         PickUp = {
             49679,
             49678,
@@ -4924,7 +4924,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -33.8,
         },
     },
-    { -- Step 392
+    {
         QpartPart = {
             [49678] = {
                 1,
@@ -4942,7 +4942,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 2.5,
         },
     },
-    { -- Step 393
+    {
         PickUp = {
             49681,
         },
@@ -4956,7 +4956,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 394
+    {
         Qpart = {
             [49681] = {
                 1,
@@ -4973,7 +4973,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 395
+    {
         QpartPart = {
             [49678] = {
                 1,
@@ -4991,7 +4991,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 93.4,
         },
     },
-    { -- Step 396
+    {
         QpartPart = {
             [49678] = {
                 1,
@@ -5009,7 +5009,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 83.2,
         },
     },
-    { -- Step 397
+    {
         QpartPart = {
             [49678] = {
                 1,
@@ -5027,7 +5027,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 21.8,
         },
     },
-    { -- Step 398
+    {
         Qpart = {
             [49681] = {
                 2,
@@ -5044,7 +5044,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 399
+    {
         Waypoint = 49678,
         Range = 7.88,
         Coord = {
@@ -5057,7 +5057,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 400
+    {
         Qpart = {
             [49680] = {
                 1,
@@ -5072,7 +5072,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -108.4,
         },
     },
-    { -- Step 401
+    {
         Done = {
             49679,
             49678,
@@ -5084,7 +5084,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -35.3,
         },
     },
-    { -- Step 402
+    {
         Range = 16.96,
         Waypoint = 49768,
         Coord = {
@@ -5092,7 +5092,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -93.9,
         },
     },
-    { -- Step 403
+    {
         Waypoint = 49768,
         Range = 17.43,
         Coord = {
@@ -5100,7 +5100,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -149.7,
         },
     },
-    { -- Step 404
+    {
         Waypoint = 49768,
         Range = 13.39,
         Coord = {
@@ -5108,7 +5108,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -166.9,
         },
     },
-    { -- Step 405
+    {
         UseGlider = 1,
         Waypoint = 49768,
         Range = 19.09,
@@ -5117,7 +5117,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -153.7,
         },
     },
-    { -- Step 406
+    {
         UseGlider = 1,
         Waypoint = 49768,
         Range = 27.13,
@@ -5126,7 +5126,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 119,
         },
     },
-    { -- Step 407
+    {
         Waypoint = 49768,
         Range = 19.43,
         Coord = {
@@ -5134,7 +5134,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 162.1,
         },
     },
-    { -- Step 408
+    {
         Waypoint = 49768,
         Range = 20.75,
         Coord = {
@@ -5142,7 +5142,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 317.8,
         },
     },
-    { -- Step 409
+    {
         GetFP = 1965,
         Range = 5.0,
         Coord = {
@@ -5150,7 +5150,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 386.3,
         },
     },
-    { -- Step 410
+    {
         PickUp = {
             47706,
             51091,
@@ -5160,7 +5160,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 368.8,
         },
     },
-    { -- Step 411
+    {
         Done = {
             49768,
         },
@@ -5169,7 +5169,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 378.7,
         },
     },
-    { -- Step 412
+    {
         PickUp = {
             47584,
             50466,
@@ -5180,7 +5180,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 380.7,
         },
     },
-    { -- Step 413
+    {
         PickUp = {
             47585,
         },
@@ -5189,7 +5189,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 284.2,
         },
     },
-    { -- Step 414
+    {
         Qpart = {
             [47585] = {
                 1,
@@ -5209,7 +5209,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 133.9,
         },
     },
-    { -- Step 415
+    {
         Qpart = {
             [47706] = {
                 1,
@@ -5229,7 +5229,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 199.6,
         },
     },
-    { -- Step 416
+    {
         Waypoint = 50466,
         Range = 29.59,
         Coord = {
@@ -5237,7 +5237,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 40.7,
         },
     },
-    { -- Step 417
+    {
         Qpart = {
             [50466] = {
                 1,
@@ -5257,7 +5257,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -113.1,
         },
     },
-    { -- Step 418
+    {
         Qpart = {
             [47585] = {
                 2,
@@ -5277,7 +5277,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -33.8,
         },
     },
-    { -- Step 419
+    {
         Qpart = {
             [51091] = {
                 1,
@@ -5298,7 +5298,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -41.3,
         },
     },
-    { -- Step 420
+    {
         Qpart = {
             [47584] = {
                 1,
@@ -5313,7 +5313,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -28,
         },
     },
-    { -- Step 421
+    {
         Done = {
             47583,
         },
@@ -5322,7 +5322,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 313.8,
         },
     },
-    { -- Step 422
+    {
         Done = {
             47584,
         },
@@ -5331,7 +5331,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 362.1,
         },
     },
-    { -- Step 423
+    {
         Done = {
             47585,
             50466,
@@ -5343,7 +5343,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 383.6,
         },
     },
-    { -- Step 424
+    {
         PickUp = {
             47586,
         },
@@ -5352,7 +5352,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 383.6,
         },
     },
-    { -- Step 425
+    {
         Waypoint = 47586,
         Range = 12.66,
         Coord = {
@@ -5360,7 +5360,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 386.8,
         },
     },
-    { -- Step 426
+    {
         Qpart = {
             [47586] = {
                 1,
@@ -5377,7 +5377,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 292.1,
         },
     },
-    { -- Step 427
+    {
         Qpart = {
             [47586] = {
                 2,
@@ -5394,7 +5394,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 366.5,
         },
     },
-    { -- Step 428
+    {
         Qpart = {
             [47586] = {
                 3,
@@ -5411,7 +5411,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 428.2,
         },
     },
-    { -- Step 429
+    {
         Done = {
             47586,
         },
@@ -5420,7 +5420,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 469.6,
         },
     },
-    { -- Step 430
+    {
         PickUp = {
             47587,
         },
@@ -5429,7 +5429,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 469,
         },
     },
-    { -- Step 431
+    {
         Qpart = {
             [47587] = {
                 1,
@@ -5441,7 +5441,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 484.3,
         },
     },
-    { -- Step 432
+    {
         Done = {
             47587,
         },
@@ -5450,7 +5450,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 469,
         },
     },
-    { -- Step 433
+    {
         Qpart = {
             [50178] = {
                 1,
@@ -5462,7 +5462,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 349,
         },
     },
-    { -- Step 434
+    {
         Waypoint = 51101,
         Range = 7.57,
         Coord = {
@@ -5470,7 +5470,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 284.2,
         },
     },
-    { -- Step 435
+    {
         UseGlider = 1,
         Waypoint = 51101,
         Range = 63.82,
@@ -5479,7 +5479,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 183.6,
         },
     },
-    { -- Step 436
+    {
         Waypoint = 51101,
         Range = 63.82,
         Coord = {
@@ -5487,7 +5487,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 283,
         },
     },
-    { -- Step 437
+    {
         Waypoint = 51101,
         Range = 37.12,
         Coord = {
@@ -5495,7 +5495,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 455,
         },
     },
-    { -- Step 438
+    {
         Done = {
             51101,
         },
@@ -5504,7 +5504,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 463.7,
         },
     },
-    { -- Step 439
+    {
         PickUp = {
             51680,
         },
@@ -5513,7 +5513,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 463.7,
         },
     },
-    { -- Step 440
+    {
         Qpart = {
             [51680] = {
                 1,
@@ -5526,7 +5526,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 471.7,
         },
     },
-    { -- Step 441
+    {
         Qpart = {
             [51680] = {
                 2,
@@ -5539,7 +5539,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 471.7,
         },
     },
-    { -- Step 442
+    {
         Done = {
             51680,
         },
@@ -5548,7 +5548,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 471.7,
         },
     },
-    { -- Step 443
+    {
         PickUp = {
             47735,
             47739,
@@ -5558,7 +5558,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 471.7,
         },
     },
-    { -- Step 444
+    {
         PickUp = {
             50235,
         },
@@ -5567,7 +5567,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 462.8,
         },
     },
-    { -- Step 445
+    {
         GetFP = 1975,
         Range = 11.57,
         Coord = {
@@ -5575,7 +5575,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 514.5,
         },
     },
-    { -- Step 446
+    {
         Qpart = {
             [47735] = {
                 2,
@@ -5595,7 +5595,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 632.5,
         },
     },
-    { -- Step 447
+    {
         Qpart = {
             [47735] = {
                 1,
@@ -5615,7 +5615,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 447.3,
         },
     },
-    { -- Step 448
+    {
         PickUp = {
             47733,
         },
@@ -5632,7 +5632,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 449
+    {
         Qpart = {
             [50235] = {
                 1,
@@ -5649,7 +5649,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 450
+    {
         Qpart = {
             [47733] = {
                 1,
@@ -5666,7 +5666,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 235.1,
         },
     },
-    { -- Step 451
+    {
         Qpart = {
             [47735] = {
                 3,
@@ -5683,7 +5683,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 160.6,
         },
     },
-    { -- Step 452
+    {
         Qpart = {
             [47739] = {
                 1,
@@ -5695,7 +5695,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 333.8,
         },
     },
-    { -- Step 453
+    {
         Waypoint = 47739,
         Range = 31.64,
         Coord = {
@@ -5703,7 +5703,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 462.3,
         },
     },
-    { -- Step 454
+    {
         Done = {
             50235,
             47733,
@@ -5713,7 +5713,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 464.1,
         },
     },
-    { -- Step 455
+    {
         Done = {
             47739,
             47735,
@@ -5723,7 +5723,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 471.7,
         },
     },
-    { -- Step 456
+    {
         PickUp = {
             51677,
         },
@@ -5732,7 +5732,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 471.7,
         },
     },
-    { -- Step 457
+    {
         Qpart = {
             [51677] = {
                 1,
@@ -5745,7 +5745,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 471.7,
         },
     },
-    { -- Step 458
+    {
         ExtraLineText = "JOLS_COMMANDS",
         Qpart = {
             [51677] = {
@@ -5759,7 +5759,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 479.7,
         },
     },
-    { -- Step 459
+    {
         Done = {
             51677,
         },
@@ -5768,7 +5768,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 471.7,
         },
     },
-    { -- Step 460
+    {
         PickUp = {
             47738,
         },
@@ -5777,7 +5777,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 471.7,
         },
     },
-    { -- Step 461
+    {
         Range = 8.7,
         Waypoint = 47738,
         Coord = {
@@ -5785,7 +5785,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 473,
         },
     },
-    { -- Step 462
+    {
         Qpart = {
             [47738] = {
                 1,
@@ -5797,7 +5797,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 633.2,
         },
     },
-    { -- Step 463
+    {
         Qpart = {
             [47738] = {
                 2,
@@ -5811,7 +5811,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 633,
         },
     },
-    { -- Step 464
+    {
         ETA = 69,
         Qpart = {
             [47738] = {
@@ -5824,7 +5824,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 632.1,
         },
     },
-    { -- Step 465
+    {
         Range = 12.72,
         Waypoint = 47738,
         Coord = {
@@ -5832,7 +5832,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 473.8,
         },
     },
-    { -- Step 466
+    {
         Qpart = {
             [47738] = {
                 4,
@@ -5844,7 +5844,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 474.8,
         },
     },
-    { -- Step 467
+    {
         Coord = {
             x = -778.8,
             y = 469.7,
@@ -5853,7 +5853,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             47738,
         },
     },
-    { -- Step 468
+    {
         PickUp = {
             51678,
             47742,
@@ -5864,7 +5864,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 469.7,
         },
     },
-    { -- Step 469
+    {
         Range = 9.46,
         Waypoint = 51679,
         Coord = {
@@ -5872,7 +5872,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 223,
         },
     },
-    { -- Step 470
+    {
         Range = 7.07,
         Waypoint = 51679,
         Coord = {
@@ -5880,7 +5880,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 229.1,
         },
     },
-    { -- Step 471
+    {
         Range = 4.73,
         Waypoint = 51678,
         Coord = {
@@ -5888,7 +5888,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 238.1,
         },
     },
-    { -- Step 472
+    {
         Qpart = {
             [51679] = {
                 1,
@@ -5900,7 +5900,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 264.3,
         },
     },
-    { -- Step 473
+    {
         Qpart = {
             [51679] = {
                 2,
@@ -5918,7 +5918,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 264.3,
         },
     },
-    { -- Step 474
+    {
         ExtraLineText = "TOP_BOAT",
         Qpart = {
             [51678] = {
@@ -5936,7 +5936,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 475
+    {
         Qpart = {
             [47742] = {
                 1,
@@ -5948,7 +5948,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 270.5,
         },
     },
-    { -- Step 476
+    {
         Coord = {
             x = -780.5,
             y = 468.2,
@@ -5959,7 +5959,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             47742,
         },
     },
-    { -- Step 477
+    {
         PickUp = {
             47737,
         },
@@ -5968,7 +5968,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 468.2,
         },
     },
-    { -- Step 478
+    {
         Range = 60.93,
         Waypoint = 47737,
         Coord = {
@@ -5976,7 +5976,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 251.6,
         },
     },
-    { -- Step 479
+    {
         Coord = {
             x = -384.3,
             y = 192.5,
@@ -5985,7 +5985,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             47737,
         },
     },
-    { -- Step 480
+    {
         PickUp = {
             47736,
             47740,
@@ -5996,7 +5996,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
 
-    { -- Step 481
+    {
         Qpart = {
             [47740] = {
                 1,
@@ -6016,7 +6016,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 31,
         },
     },
-    { -- Step 482
+    {
         Qpart = {
             [47740] = {
                 3,
@@ -6036,7 +6036,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 86.7,
         },
     },
-    { -- Step 483
+    {
         Range = 12.33,
         Waypoint = 47740,
         Coord = {
@@ -6052,7 +6052,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 484
+    {
         Qpart = {
             [47740] = {
                 2,
@@ -6072,7 +6072,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -73.4,
         },
     },
-    { -- Step 485
+    {
         Qpart = {
             [47736] = {
                 1,
@@ -6087,7 +6087,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -75.9,
         },
     },
-    { -- Step 486
+    {
         Done = {
             47740,
             47736,
@@ -6097,7 +6097,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -26.9,
         },
     },
-    { -- Step 487
+    {
         PickUp = {
             47734,
         },
@@ -6106,7 +6106,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -26.9,
         },
     },
-    { -- Step 488
+    {
         Qpart = {
             [47734] = {
                 1,
@@ -6118,7 +6118,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = 70,
         },
     },
-    { -- Step 489
+    {
         Qpart = {
             [47734] = {
                 2,
@@ -6130,7 +6130,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -111,
         },
     },
-    { -- Step 490
+    {
         Coord = {
             x = -627,
             y = -28.4,
@@ -6139,7 +6139,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             47734,
         },
     },
-    { -- Step 491
+    {
         PickUp = {
             47741,
         },
@@ -6148,7 +6148,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -28.4,
         },
     },
-    { -- Step 492
+    {
         ExtraLineText = "REDUCED_DAMAGE_INFO_1",
         Qpart = {
             [47741] = {
@@ -6161,7 +6161,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -21.4,
         },
     },
-    { -- Step 493
+    {
         Qpart = {
             [47741] = {
                 2,
@@ -6173,7 +6173,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -24.7,
         },
     },
-    { -- Step 494
+    {
         Waypoint = 47741,
         Coord = {
             x = -727.2,
@@ -6184,7 +6184,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         GossipOptionID = 47761,
         ExtraLineText = "TALK_KING_RASTAKHAN",
     },
-    { -- Step 495
+    {
         Waypoint = 47741,
         Range = 20.85,
         Coord = {
@@ -6192,7 +6192,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -159.7,
         },
     },
-    { -- Step 496
+    {
         Waypoint = 47741,
         Range = 27.85,
         Coord = {
@@ -6200,7 +6200,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -277.4,
         },
     },
-    { -- Step 497
+    {
         Done = {
             47741,
         },
@@ -6209,7 +6209,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -305.7,
         },
     },
-    { -- Step 498
+    {
         PickUp = {
             51111,
         },
@@ -6218,7 +6218,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -306.9,
         },
     },
-    { -- Step 499
+    {
         Coord = {
             x = -280.4,
             y = -290.7,
@@ -6227,7 +6227,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Name = "The Great Seal",
         NodeID = 1959,
     },
-    { -- Step 500
+    {
         Waypoint = 51111,
         Range = 13.01,
         Coord = {
@@ -6235,7 +6235,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1049,
         },
     },
-    { -- Step 501
+    {
         Done = {
             51111,
         },
@@ -6244,7 +6244,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1124.5,
         },
     },
-    { -- Step 502
+    {
         PickUp = {
             49421,
         },
@@ -6254,7 +6254,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         LeaveQuest = 52210,
     },
-    { -- Step 503
+    {
         LeaveQuest = 52210,
         Range = 8.86,
         Waypoint = 49421,
@@ -6263,7 +6263,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1052.6,
         },
     },
-    { -- Step 504
+    {
         UseGlider = 1,
         LeaveQuest = 52210,
         Coord = {
@@ -6274,7 +6274,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             49421,
         },
     },
-    { -- Step 505
+    {
         PickUp = {
             49965,
         },
@@ -6284,7 +6284,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -771.3,
         },
     },
-    { -- Step 506
+    {
         ExtraLineText = "RUN_FOREST_RUN",
         LeaveQuest = 52210,
         Range = 14.92,
@@ -6294,7 +6294,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -878.8,
         },
     },
-    { -- Step 507
+    {
         LeaveQuest = 52210,
         Range = 10.86,
         Waypoint = 49965,
@@ -6303,7 +6303,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -891,
         },
     },
-    { -- Step 508
+    {
         LeaveQuest = 52210,
         Range = 20.73,
         Waypoint = 49965,
@@ -6312,7 +6312,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1160,
         },
     },
-    { -- Step 509
+    {
         LeaveQuest = 52210,
         Range = 8.37,
         Waypoint = 49965,
@@ -6321,7 +6321,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1217.1,
         },
     },
-    { -- Step 510
+    {
         LeaveQuest = 52210,
         Range = 19.01,
         Waypoint = 49965,
@@ -6330,7 +6330,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1154.5,
         },
     },
-    { -- Step 511
+    {
         Qpart = {
             [49965] = {
                 1,
@@ -6342,7 +6342,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1121.1,
         },
     },
-    { -- Step 512
+    {
         Coord = {
             x = 1540,
             y = -1121.3,
@@ -6351,7 +6351,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             49965,
         },
     },
-    { -- Step 513
+    {
         PickUp = {
             49422,
             49424,
@@ -6361,7 +6361,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1122.6,
         },
     },
-    { -- Step 514
+    {
         Range = 8.28,
         GetFP = 2027,
         Coord = {
@@ -6369,7 +6369,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1135.6,
         },
     },
-    { -- Step 515
+    {
         Qpart = {
             [49424] = {
                 3,
@@ -6386,7 +6386,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1032,
         },
     },
-    { -- Step 516
+    {
         Range = 9.41,
         Waypoint = 49424,
         Coord = {
@@ -6399,7 +6399,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 517
+    {
         Range = 8.69,
         Waypoint = 49422,
         Coord = {
@@ -6412,7 +6412,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 518
+    {
         Qpart = {
             [49424] = {
                 2,
@@ -6429,7 +6429,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -911.3,
         },
     },
-    { -- Step 519
+    {
         Range = 7.77,
         Waypoint = 49422,
         Coord = {
@@ -6442,7 +6442,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 520
+    {
         Range = 6.69,
         Waypoint = 49422,
         Coord = {
@@ -6455,7 +6455,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             },
         },
     },
-    { -- Step 521
+    {
         Qpart = {
             [49424] = {
                 1,
@@ -6472,7 +6472,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -843.8,
         },
     },
-    { -- Step 522
+    {
         Qpart = {
             [49422] = {
                 1,
@@ -6484,7 +6484,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -844.2,
         },
     },
-    { -- Step 523
+    {
         Coord = {
             x = 1508,
             y = -763.8,
@@ -6494,7 +6494,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             49424,
         },
     },
-    { -- Step 524
+    {
         PickUp = {
             49425,
         },
@@ -6503,7 +6503,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -764.8,
         },
     },
-    { -- Step 525
+    {
         Qpart = {
             [49425] = {
                 1,
@@ -6515,7 +6515,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -760,
         },
     },
-    { -- Step 526
+    {
         Qpart = {
             [49425] = {
                 2,
@@ -6527,7 +6527,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -820.5,
         },
     },
-    { -- Step 527
+    {
         Coord = {
             x = 2009.5,
             y = -838.5,
@@ -6536,7 +6536,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             49425,
         },
     },
-    { -- Step 528
+    {
         Qpart = {
             [49426] = {
                 1,
@@ -6548,7 +6548,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -850,
         },
     },
-    { -- Step 529
+    {
         Qpart = {
             [49426] = {
                 2,
@@ -6562,7 +6562,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -850.5,
         },
     },
-    { -- Step 530
+    {
         Qpart = {
             [49426] = {
                 3,
@@ -6576,7 +6576,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -848.7,
         },
     },
-    { -- Step 531
+    {
         Waypoint = 49426,
         Range = 8,
         Coord = {
@@ -6584,7 +6584,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -754,
         },
     },
-    { -- Step 532
+    {
         Qpart = {
             [49426] = {
                 3,
@@ -6596,7 +6596,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -743.7,
         },
     },
-    { -- Step 533
+    {
         Coord = {
             x = 2093.9,
             y = -743.7,
@@ -6605,7 +6605,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             49426,
         },
     },
-    { -- Step 534
+    {
         PickUp = {
             50963,
         },
@@ -6615,7 +6615,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -743.7,
         },
     },
-    { -- Step 535
+    {
         UseHS = 50963,
         Coord = {
             x = 2093.9,
@@ -6623,7 +6623,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         LeaveQuest = 49901,
     },
-    { -- Step 536
+    {
         Waypoint = 50963,
         Range = 4.36,
         Coord = {
@@ -6631,7 +6631,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1137.5,
         },
     },
-    { -- Step 537
+    {
         Done = {
             50963,
         },
@@ -6642,7 +6642,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1120.4,
         },
     },
-    { -- Step 538
+    {
         PickUp = {
             47512,
         },
@@ -6653,7 +6653,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1122.8,
         },
     },
-    { -- Step 539
+    {
         Done = {
             47512,
         },
@@ -6662,7 +6662,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1120.5,
         },
     },
-    { -- Step 540
+    {
         PickUp = {
             47103,
         },
@@ -6671,7 +6671,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1120.9,
         },
     },
-    { -- Step 541
+    {
         Waypoint = 47103,
         Range = 5.68,
         Coord = {
@@ -6679,7 +6679,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1052.8,
         },
     },
-    { -- Step 542
+    {
         Done = {
             47103,
         },
@@ -6688,7 +6688,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1037.4,
         },
     },
-    { -- Step 543
+    {
         PickUp = {
             48535,
         },
@@ -6697,7 +6697,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1037.6,
         },
     },
-    { -- Step 544
+    {
         Qpart = {
             [48535] = {
                 1,
@@ -6711,7 +6711,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
             y = -1034.9,
         },
     },
-    { -- Step 545
+    {
         UseGlider = 1,
         Coord = {
             x = 1188.2,
@@ -6722,13 +6722,13 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Zone = 863,
     },
-    { -- [Step 546
+    {
         ZoneDoneSave = 1,
     },
 }
 -- Nazmir
 APR.RouteQuestStepList["863-Nazmir"] = {
-    { -- Step 1
+    {
         Done = {
             48535,
         },
@@ -6741,7 +6741,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             49901,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             47105,
         },
@@ -6754,7 +6754,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             49901,
         },
     },
-    { -- Step 3
+    {
         ExtraLineText = "CLICK_BUFFS_IN_ZONE",
         Qpart = {
             [47105] = {
@@ -6767,7 +6767,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 727.7,
         },
     },
-    { -- Step 4
+    {
         ExtraLineText = "CLICK_BUFFS_IN_ZONE",
         Done = {
             47105,
@@ -6777,7 +6777,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 735.2,
         },
     },
-    { -- Step 5
+    {
         PickUp = {
             47130,
             47264,
@@ -6787,7 +6787,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 733.2,
         },
     },
-    { -- Step 6
+    {
         Qpart = {
             [47130] = {
                 1,
@@ -6811,7 +6811,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 719.4,
         },
     },
-    { -- Step 7
+    {
         Coord = {
             x = 1048.3,
             y = 908.6,
@@ -6821,7 +6821,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             47130,
         },
     },
-    { -- Step 8
+    {
         PickUp = {
             47262,
         },
@@ -6830,7 +6830,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 908.6,
         },
     },
-    { -- Step 9
+    {
         Bloodlust = 1,
         Qpart = {
             [47262] = {
@@ -6843,7 +6843,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1015.9,
         },
     },
-    { -- Step 10
+    {
         Coord = {
             x = 1072.5,
             y = 1038,
@@ -6852,7 +6852,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             47262,
         },
     },
-    { -- Step 11
+    {
         PickUp = {
             47263,
         },
@@ -6861,7 +6861,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1038,
         },
     },
-    { -- Step 12
+    {
         Qpart = {
             [47263] = {
                 1,
@@ -6874,7 +6874,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1122,
         },
     },
-    { -- Step 13
+    {
         Range = 12.9,
         Waypoint = 47263,
         Coord = {
@@ -6882,7 +6882,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 818.2,
         },
     },
-    { -- Step 14
+    {
         PickUp = {
             51089,
         },
@@ -6891,7 +6891,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 726.9,
         },
     },
-    { -- Step 15
+    {
         Coord = {
             x = 1390,
             y = 758.1,
@@ -6900,7 +6900,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             47263,
         },
     },
-    { -- Step 16
+    {
         PickUp = {
             47188,
         },
@@ -6909,7 +6909,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 757.5,
         },
     },
-    { -- Step 17
+    {
         Gossip = 101,
         Qpart = {
             [47188] = {
@@ -6922,7 +6922,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 757.5,
         },
     },
-    { -- Step 18
+    {
         Qpart = {
             [47188] = {
                 1,
@@ -6934,7 +6934,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 757.5,
         },
     },
-    { -- Step 19
+    {
         Coord = {
             x = 1390.2,
             y = 757.5,
@@ -6943,7 +6943,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             47188,
         },
     },
-    { -- Step 20
+    {
         PickUp = {
             47241,
         },
@@ -6952,7 +6952,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 757.5,
         },
     },
-    { -- Step 21
+    {
         GetFP = 1953,
         Range = 0.91,
         Coord = {
@@ -6960,7 +6960,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 791.2,
         },
     },
-    { -- Step 22
+    {
         PickUp = {
             48669,
         },
@@ -6969,7 +6969,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 805.9,
         },
     },
-    { -- Step 23
+    {
         Qpart = {
             [48669] = {
                 1,
@@ -6982,7 +6982,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 805.9,
         },
     },
-    { -- Step 24
+    {
         Coord = {
             x = 1407,
             y = 805.4,
@@ -6991,7 +6991,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             48669,
         },
     },
-    { -- Step 25
+    {
         PickUp = {
             48573,
             48574,
@@ -7001,7 +7001,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 805.4,
         },
     },
-    { -- Step 26
+    {
         Qpart = {
             [48574] = {
                 1,
@@ -7025,7 +7025,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 827.1,
         },
     },
-    { -- Step 27
+    {
         Coord = {
             x = 1656.4,
             y = 776.2,
@@ -7035,7 +7035,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             48574,
         },
     },
-    { -- Step 28
+    {
         PickUp = {
             48578,
             48577,
@@ -7046,7 +7046,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 776.1,
         },
     },
-    { -- Step 29
+    {
         Qpart = {
             [48578] = {
                 1,
@@ -7075,7 +7075,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 516,
         },
     },
-    { -- Step 30
+    {
         Qpart = {
             [48576] = {
                 1,
@@ -7099,7 +7099,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 516,
         },
     },
-    { -- Step 31
+    {
         UseGlider = 1,
         Done = {
             48578,
@@ -7111,7 +7111,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 775.6,
         },
     },
-    { -- Step 32
+    {
         PickUp = {
             48584,
             48590,
@@ -7121,7 +7121,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 775.4,
         },
     },
-    { -- Step 33
+    {
         Qpart = {
             [48590] = {
                 3,
@@ -7150,7 +7150,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 839.1,
         },
     },
-    { -- Step 34
+    {
         Qpart = {
             [48590] = {
                 1,
@@ -7179,7 +7179,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 954.4,
         },
     },
-    { -- Step 35
+    {
         Qpart = {
             [48590] = {
                 2,
@@ -7208,7 +7208,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1028,
         },
     },
-    { -- Step 36
+    {
         Qpart = {
             [48584] = {
                 1,
@@ -7234,7 +7234,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 848,
         },
     },
-    { -- Step 37
+    {
         Coord = {
             x = 1935.7,
             y = 983.6,
@@ -7249,7 +7249,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 38
+    {
         PickUp = {
             48591,
         },
@@ -7263,7 +7263,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 39
+    {
         Qpart = {
             [48591] = {
                 1,
@@ -7280,7 +7280,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 951,
         },
     },
-    { -- Step 40
+    {
         Coord = {
             x = 1935.9,
             y = 984,
@@ -7294,7 +7294,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 41
+    {
         Qpart = {
             [51089] = {
                 1,
@@ -7311,7 +7311,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 42
+    {
         Qpart = {
             [48588] = {
                 1,
@@ -7323,7 +7323,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 994.7,
         },
     },
-    { -- Step 43
+    {
         Qpart = {
             [47241] = {
                 1,
@@ -7335,7 +7335,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1252,
         },
     },
-    { -- Step 44
+    {
         Qpart = {
             [47241] = {
                 2,
@@ -7347,7 +7347,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1318.5,
         },
     },
-    { -- Step 45
+    {
         PickUp = {
             48468,
             48473,
@@ -7357,7 +7357,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1403.3,
         },
     },
-    { -- Step 46
+    {
         Qpart = {
             [48473] = {
                 1,
@@ -7382,7 +7382,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1344,
         },
     },
-    { -- Step 47
+    {
         Coord = {
             x = 1401.9,
             y = 1428.5,
@@ -7392,7 +7392,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             48473,
         },
     },
-    { -- Step 48
+    {
         PickUp = {
             48478,
             48479,
@@ -7402,7 +7402,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1428.5,
         },
     },
-    { -- Step 49
+    {
         Qpart = {
             [48478] = {
                 2,
@@ -7428,7 +7428,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1513.4,
         },
     },
-    { -- Step 50
+    {
         Qpart = {
             [48478] = {
                 3,
@@ -7454,7 +7454,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1622.4,
         },
     },
-    { -- Step 51
+    {
         Qpart = {
             [48478] = {
                 1,
@@ -7480,7 +7480,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1707,
         },
     },
-    { -- Step 52
+    {
         Qpart = {
             [48479] = {
                 1,
@@ -7492,7 +7492,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1698.5,
         },
     },
-    { -- Step 53
+    {
         Done = {
             48479,
             48478,
@@ -7502,7 +7502,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1428.8,
         },
     },
-    { -- Step 54
+    {
         PickUp = {
             48480,
         },
@@ -7511,7 +7511,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1428.8,
         },
     },
-    { -- Step 55
+    {
         Waypoint = 48480,
         Range = 11.67,
         Coord = {
@@ -7520,7 +7520,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         LeaveQuest = 52210,
     },
-    { -- Step 56
+    {
         Qpart = {
             [48480] = {
                 1,
@@ -7532,7 +7532,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1515,
         },
     },
-    { -- Step 57
+    {
         Done = {
             48480,
         },
@@ -7541,7 +7541,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1429,
         },
     },
-    { -- Step 58
+    {
         Qpart = {
             [47241] = {
                 3,
@@ -7553,7 +7553,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1476.7,
         },
     },
-    { -- Step 59
+    {
         Done = {
             47241,
         },
@@ -7562,7 +7562,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1638.5,
         },
     },
-    { -- Step 60
+    {
         PickUp = {
             47244,
         },
@@ -7571,7 +7571,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1638.5,
         },
     },
-    { -- Step 61
+    {
         Qpart = {
             [47244] = {
                 1,
@@ -7583,7 +7583,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1768,
         },
     },
-    { -- Step 62
+    {
         Done = {
             47244,
         },
@@ -7592,7 +7592,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1991.7,
         },
     },
-    { -- Step 63
+    {
         PickUp = {
             49278,
         },
@@ -7601,7 +7601,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1991.7,
         },
     },
-    { -- Step 64
+    {
         GetFP = 1954,
         Range = 5.91,
         Coord = {
@@ -7609,7 +7609,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2028,
         },
     },
-    { -- Step 65
+    {
         Qpart = {
             [49278] = {
                 1,
@@ -7621,7 +7621,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2028,
         },
     },
-    { -- Step 66
+    {
         Done = {
             49278,
         },
@@ -7630,7 +7630,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1992,
         },
     },
-    { -- Step 67
+    {
         PickUp = {
             49440,
             47868,
@@ -7640,7 +7640,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1990.8,
         },
     },
-    { -- Step 68
+    {
         Qpart = {
             [49440] = {
                 1,
@@ -7653,7 +7653,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1997,
         },
     },
-    { -- Step 69
+    {
         Qpart = {
             [49440] = {
                 2,
@@ -7666,7 +7666,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1991.5,
         },
     },
-    { -- Step 70
+    {
         Coord = {
             x = 1364.5,
             y = 1991,
@@ -7675,7 +7675,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             49440,
         },
     },
-    { -- Step 71
+    {
         PickUp = {
             48699,
         },
@@ -7684,7 +7684,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1991,
         },
     },
-    { -- Step 72
+    {
         PickUp = {
             48854,
         },
@@ -7693,7 +7693,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1700.3,
         },
     },
-    { -- Step 73
+    {
         Qpart = {
             [48854] = {
                 1,
@@ -7706,7 +7706,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1700.3,
         },
     },
-    { -- Step 74
+    {
         Qpart = {
             [48854] = {
                 2,
@@ -7718,7 +7718,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1702.8,
         },
     },
-    { -- Step 75
+    {
         Coord = {
             x = 1816,
             y = 1703.7,
@@ -7727,7 +7727,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             48854,
         },
     },
-    { -- Step 76
+    {
         PickUp = {
             48823,
             48825,
@@ -7737,7 +7737,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1703.9,
         },
     },
-    { -- Step 77
+    {
         Qpart = {
             [48823] = {
                 1,
@@ -7750,7 +7750,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1703.4,
         },
     },
-    { -- Step 78
+    {
         Qpart = {
             [48825] = {
                 1,
@@ -7779,7 +7779,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1468.4,
         },
     },
-    { -- Step 79
+    {
         Qpart = {
             [48823] = {
                 2,
@@ -7805,7 +7805,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1480,
         },
     },
-    { -- Step 80
+    {
         Done = {
             48823,
             48825,
@@ -7815,7 +7815,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1703.7,
         },
     },
-    { -- Step 81
+    {
         PickUp = {
             48857,
             48856,
@@ -7826,7 +7826,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1704,
         },
     },
-    { -- Step 82
+    {
         Qpart = {
             [48857] = {
                 1,
@@ -7839,7 +7839,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1705.5,
         },
     },
-    { -- Step 83
+    {
         Qpart = {
             [48857] = {
                 2,
@@ -7862,7 +7862,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1528.5,
         },
     },
-    { -- Step 84
+    {
         Qpart = {
             [48856] = {
                 1,
@@ -7880,7 +7880,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1523.5,
         },
     },
-    { -- Step 85
+    {
         Coord = {
             x = 1819.9,
             y = 1702.2,
@@ -7891,7 +7891,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             48855,
         },
     },
-    { -- Step 86
+    {
         PickUp = {
             48869,
         },
@@ -7900,7 +7900,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1702.2,
         },
     },
-    { -- Step 87
+    {
         Qpart = {
             [48869] = {
                 1,
@@ -7917,7 +7917,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1506.8,
         },
     },
-    { -- Step 88
+    {
         Qpart = {
             [48852] = {
                 1,
@@ -7929,7 +7929,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1507.5,
         },
     },
-    { -- Step 89
+    {
         Coord = {
             x = 1819.5,
             y = 1702,
@@ -7938,7 +7938,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             48869,
         },
     },
-    { -- Step 90
+    {
         PickUp = {
             50933,
         },
@@ -7947,7 +7947,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1705.3,
         },
     },
-    { -- Step 91
+    {
         Done = {
             50933,
         },
@@ -7956,7 +7956,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1664.4,
         },
     },
-    { -- Step 92
+    {
         PickUp = {
             49777,
             49776,
@@ -7967,7 +7967,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1665.8,
         },
     },
-    { -- Step 93
+    {
         Qpart = {
             [49777] = {
                 1,
@@ -7988,7 +7988,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1600.3,
         },
     },
-    { -- Step 94
+    {
         Qpart = {
             [49777] = {
                 3,
@@ -8009,7 +8009,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1761.9,
         },
     },
-    { -- Step 95
+    {
         Qpart = {
             [49777] = {
                 2,
@@ -8030,7 +8030,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1858,
         },
     },
-    { -- Step 96
+    {
         Qpart = {
             [49774] = {
                 1,
@@ -8045,7 +8045,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1784,
         },
     },
-    { -- Step 97
+    {
         Coord = {
             x = 2179.1,
             y = 1665.5,
@@ -8056,7 +8056,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             49777,
         },
     },
-    { -- Step 98
+    {
         PickUp = {
             49778,
         },
@@ -8065,7 +8065,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1665.5,
         },
     },
-    { -- Step 99
+    {
         Qpart = {
             [49778] = {
                 1,
@@ -8078,7 +8078,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1664.3,
         },
     },
-    { -- Step 100
+    {
         Coord = {
             x = 2180.1,
             y = 1667.2,
@@ -8087,7 +8087,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             49778,
         },
     },
-    { -- Step 101
+    {
         PickUp = {
             49780,
             49779,
@@ -8097,7 +8097,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1665.9,
         },
     },
-    { -- Step 102
+    {
         Qpart = {
             [49779] = {
                 1,
@@ -8115,7 +8115,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1690.8,
         },
     },
-    { -- Step 103
+    {
         Done = {
             49780,
             49779,
@@ -8125,7 +8125,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1666,
         },
     },
-    { -- Step 104
+    {
         PickUp = {
             49781,
         },
@@ -8134,7 +8134,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1666,
         },
     },
-    { -- Step 105
+    {
         Qpart = {
             [49781] = {
                 1,
@@ -8146,7 +8146,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1658.7,
         },
     },
-    { -- Step 106
+    {
         Done = {
             49781,
         },
@@ -8155,7 +8155,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1704.7,
         },
     },
-    { -- Step 107
+    {
         PickUp = {
             48492,
         },
@@ -8164,7 +8164,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1995.2,
         },
     },
-    { -- Step 108
+    {
         Qpart = {
             [48492] = {
                 1,
@@ -8176,7 +8176,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1995.5,
         },
     },
-    { -- Step 109
+    {
         Qpart = {
             [48492] = {
                 2,
@@ -8189,7 +8189,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1995,
         },
     },
-    { -- Step 110
+    {
 
         Coord = {
             x = 1943.5,
@@ -8199,7 +8199,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             48492,
         },
     },
-    { -- Step 111
+    {
 
         PickUp = {
             48496,
@@ -8210,7 +8210,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1994.3,
         },
     },
-    { -- Step 112
+    {
 
         Qpart = {
             [48496] = {
@@ -8228,7 +8228,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2083.6,
         },
     },
-    { -- Step 113
+    {
 
         Qpart = {
             [48496] = {
@@ -8246,7 +8246,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2110.6,
         },
     },
-    { -- Step 114
+    {
 
         Qpart = {
             [48496] = {
@@ -8264,7 +8264,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2199.5,
         },
     },
-    { -- Step 115
+    {
 
         PickUp = {
             48498,
@@ -8274,7 +8274,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2198.4,
         },
     },
-    { -- Step 116
+    {
 
         Waypoint = 48498,
         Range = 6.94,
@@ -8283,7 +8283,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2191.4,
         },
     },
-    { -- Step 117
+    {
 
         Qpart = {
             [48498] = {
@@ -8301,7 +8301,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2207.5,
         },
     },
-    { -- Step 118
+    {
 
         Qpart = {
             [48496] = {
@@ -8319,7 +8319,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2177.3,
         },
     },
-    { -- Step 119
+    {
 
         Qpart = {
             [48497] = {
@@ -8332,7 +8332,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2175.1,
         },
     },
-    { -- Step 120
+    {
 
         Done = {
             48497,
@@ -8344,7 +8344,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2266.1,
         },
     },
-    { -- Step 121
+    {
 
         PickUp = {
             49479,
@@ -8354,7 +8354,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2266.1,
         },
     },
-    { -- Step 122
+    {
 
         Qpart = {
             [49479] = {
@@ -8368,7 +8368,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2269.8,
         },
     },
-    { -- Step 123
+    {
 
         Done = {
             49479,
@@ -8378,7 +8378,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2266.5,
         },
     },
-    { -- Step 124
+    {
 
         PickUp = {
             48499,
@@ -8388,7 +8388,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2267,
         },
     },
-    { -- Step 125
+    {
         ExtraActionB = 1,
 
         Qpart = {
@@ -8402,7 +8402,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2242.6,
         },
     },
-    { -- Step 126
+    {
         ExtraActionB = 1,
 
         Qpart = {
@@ -8416,7 +8416,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2144.9,
         },
     },
-    { -- Step 127
+    {
 
         Done = {
             48499,
@@ -8426,7 +8426,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2266,
         },
     },
-    { -- Step 128
+    {
         Qpart = {
             [48699] = {
                 1,
@@ -8439,7 +8439,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1910,
         },
     },
-    { -- Step 129
+    {
         Done = {
             48699,
         },
@@ -8448,7 +8448,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1923,
         },
     },
-    { -- Step 130
+    {
         PickUp = {
             48801,
             48890,
@@ -8458,7 +8458,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1923,
         },
     },
-    { -- Step 131
+    {
         Waypoint = 48801,
         Range = 4.5,
         Coord = {
@@ -8466,7 +8466,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1909,
         },
     },
-    { -- Step 132
+    {
         Qpart = {
             [48801] = {
                 2,
@@ -8479,7 +8479,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1887,
         },
     },
-    { -- Step 133
+    {
         Qpart = {
             [48801] = {
                 3,
@@ -8497,7 +8497,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1786.4,
         },
     },
-    { -- Step 134
+    {
         Qpart = {
             [48801] = {
                 1,
@@ -8515,7 +8515,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2010,
         },
     },
-    { -- Step 135
+    {
         Qpart = {
             [48890] = {
                 1,
@@ -8527,7 +8527,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1979.5,
         },
     },
-    { -- Step 136
+    {
         Done = {
             48890,
             48801,
@@ -8537,7 +8537,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1923.4,
         },
     },
-    { -- Step 137
+    {
         PickUp = {
             49078,
             48800,
@@ -8547,7 +8547,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1924,
         },
     },
-    { -- Step 138
+    {
         Qpart = {
             [48800] = {
                 1,
@@ -8576,7 +8576,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1801,
         },
     },
-    { -- Step 139
+    {
         Qpart = {
             [48800] = {
                 3,
@@ -8605,7 +8605,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1797.8,
         },
     },
-    { -- Step 140
+    {
         Qpart = {
             [48800] = {
                 2,
@@ -8634,7 +8634,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1944.2,
         },
     },
-    { -- Step 141
+    {
         Qpart = {
             [49078] = {
                 1,
@@ -8660,7 +8660,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1928.8,
         },
     },
-    { -- Step 142
+    {
         Done = {
             48800,
             49078,
@@ -8670,7 +8670,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1923.4,
         },
     },
-    { -- Step 143
+    {
         PickUp = {
             49079,
         },
@@ -8679,7 +8679,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1923.4,
         },
     },
-    { -- Step 144
+    {
         Qpart = {
             [49079] = {
                 1,
@@ -8692,7 +8692,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1904.4,
         },
     },
-    { -- Step 145
+    {
         Qpart = {
             [49079] = {
                 2,
@@ -8704,7 +8704,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1833.4,
         },
     },
-    { -- Step 146
+    {
         Done = {
             49079,
         },
@@ -8713,7 +8713,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1888.5,
         },
     },
-    { -- Step 147
+    {
         PickUp = {
             49081,
         },
@@ -8722,7 +8722,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1888.4,
         },
     },
-    { -- Step 148
+    {
         Bloodlust = 1,
         Qpart = {
             [49081] = {
@@ -8735,7 +8735,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1900.5,
         },
     },
-    { -- Step 149
+    {
         Done = {
             49081,
         },
@@ -8744,7 +8744,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1888.4,
         },
     },
-    { -- Step 150
+    {
         PickUp = {
             49082,
         },
@@ -8753,7 +8753,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1888.4,
         },
     },
-    { -- Step 151
+    {
         Qpart = {
             [49082] = {
                 1,
@@ -8765,7 +8765,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1891.9,
         },
     },
-    { -- Step 152
+    {
         Qpart = {
             [49406] = {
                 1,
@@ -8777,7 +8777,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1857,
         },
     },
-    { -- Step 153
+    {
         Qpart = {
             [49082] = {
                 2,
@@ -8790,7 +8790,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1991.9,
         },
     },
-    { -- Step 154
+    {
         Done = {
             49082,
         },
@@ -8799,7 +8799,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1991.3,
         },
     },
-    { -- Step 155
+    {
         Done = {
             47868,
         },
@@ -8808,7 +8808,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2386.1,
         },
     },
-    { -- Step 156
+    {
         PickUp = {
             47880,
         },
@@ -8817,7 +8817,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2385.3,
         },
     },
-    { -- Step 157
+    {
         Qpart = {
             [47880] = {
                 1,
@@ -8829,7 +8829,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2385.3,
         },
     },
-    { -- Step 158
+    {
         Qpart = {
             [47880] = {
                 2,
@@ -8841,7 +8841,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2411.6,
         },
     },
-    { -- Step 159
+    {
         Waypoint = 47880,
         Range = 10.08,
         Coord = {
@@ -8849,7 +8849,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2503.1,
         },
     },
-    { -- Step 160
+    {
         Done = {
             47880,
         },
@@ -8858,7 +8858,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2663.1,
         },
     },
-    { -- Step 161
+    {
         PickUp = {
             47491,
             47247,
@@ -8869,7 +8869,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2663.1,
         },
     },
-    { -- Step 162
+    {
         Waypoint = 49348,
         Range = 13.95,
         Coord = {
@@ -8877,7 +8877,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2574.4,
         },
     },
-    { -- Step 163
+    {
         PickUp = {
             47248,
         },
@@ -8894,7 +8894,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 164
+    {
         Qpart = {
             [47247] = {
                 2,
@@ -8914,7 +8914,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2482.6,
         },
     },
-    { -- Step 165
+    {
         Qpart = {
             [47247] = {
                 1,
@@ -8937,7 +8937,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2476.5,
         },
     },
-    { -- Step 166
+    {
         PickUp = {
             49432,
         },
@@ -8957,7 +8957,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 167
+    {
         Qpart = {
             [49348] = {
                 1,
@@ -8977,7 +8977,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 168
+    {
         Range = 3.35,
         Waypoint = 49432,
         Coord = {
@@ -8996,7 +8996,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 169
+    {
         Qpart = {
             [49432] = {
                 1,
@@ -9019,7 +9019,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2303.6,
         },
     },
-    { -- Step 170
+    {
         Qpart = {
             [49432] = {
                 2,
@@ -9031,7 +9031,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2305.4,
         },
     },
-    { -- Step 171
+    {
         Range = 14.25,
         Waypoint = 47248,
         Coord = {
@@ -9050,7 +9050,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 172
+    {
         Range = 7.71,
         Waypoint = 47248,
         Coord = {
@@ -9069,7 +9069,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 173
+    {
         Qpart = {
             [47248] = {
                 1,
@@ -9092,7 +9092,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2598.6,
         },
     },
-    { -- Step 174
+    {
         Range = 6.77,
         Waypoint = 47248,
         Coord = {
@@ -9111,7 +9111,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 175
+    {
         Coord = {
             x = 1521.3,
             y = 2568.5,
@@ -9131,7 +9131,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 176
+    {
         Qpart = {
             [47491] = {
                 1,
@@ -9148,7 +9148,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2549.9,
         },
     },
-    { -- Step 177
+    {
         Qpart = {
             [49348] = {
                 1,
@@ -9163,7 +9163,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2481.9,
         },
     },
-    { -- Step 178
+    {
         Range = 8.99,
         Waypoint = 49348,
         Coord = {
@@ -9171,7 +9171,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2588.1,
         },
     },
-    { -- Step 179
+    {
         Coord = {
             x = 1368.4,
             y = 2662,
@@ -9183,7 +9183,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             47491,
         },
     },
-    { -- Step 180
+    {
         PickUp = {
             47249,
         },
@@ -9192,7 +9192,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2662,
         },
     },
-    { -- Step 181
+    {
         Qpart = {
             [47249] = {
                 1,
@@ -9205,7 +9205,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2475.5,
         },
     },
-    { -- Step 182
+    {
         Qpart = {
             [47249] = {
                 2,
@@ -9217,7 +9217,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2470.9,
         },
     },
-    { -- Step 183
+    {
         Coord = {
             x = 1368.7,
             y = 2469.6,
@@ -9226,7 +9226,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             47249,
         },
     },
-    { -- Step 184
+    {
         PickUp = {
             47250,
         },
@@ -9235,7 +9235,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2469.6,
         },
     },
-    { -- Step 185
+    {
         Waypoint = 47250,
         Range = 11.31,
         Coord = {
@@ -9243,7 +9243,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2448.9,
         },
     },
-    { -- Step 186
+    {
         Waypoint = 47250,
         Range = 8.96,
         Coord = {
@@ -9251,7 +9251,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2412.3,
         },
     },
-    { -- Step 187
+    {
         Waypoint = 47250,
         Range = 12.15,
         Coord = {
@@ -9259,7 +9259,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2377.6,
         },
     },
-    { -- Step 188
+    {
         Coord = {
             x = 1370.3,
             y = 1991.3,
@@ -9268,7 +9268,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             47250,
         },
     },
-    { -- Step 189
+    {
         PickUp = {
             49185,
         },
@@ -9277,7 +9277,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1986.4,
         },
     },
-    { -- Step 190
+    {
         Qpart = {
             [49185] = {
                 1,
@@ -9290,7 +9290,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1986.4,
         },
     },
-    { -- Step 191
+    {
         Done = {
             49185,
         },
@@ -9299,7 +9299,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1987.2,
         },
     },
-    { -- Step 192
+    {
         PickUp = {
             49064,
         },
@@ -9308,7 +9308,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1987.2,
         },
     },
-    { -- Step 193
+    {
         Waypoint = 49064,
         Range = 15.25,
         Coord = {
@@ -9316,7 +9316,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1953.8,
         },
     },
-    { -- Step 194
+    {
         Qpart = {
             [49064] = {
                 1,
@@ -9329,7 +9329,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2146.8,
         },
     },
-    { -- Step 195
+    {
 
         PickUp = {
             47924,
@@ -9339,7 +9339,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2240.6,
         },
     },
-    { -- Step 196
+    {
 
         Qpart = {
             [47924] = {
@@ -9366,7 +9366,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2345.9,
         },
     },
-    { -- Step 197
+    {
 
         Qpart = {
             [47996] = {
@@ -9379,7 +9379,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2345.9,
         },
     },
-    { -- Step 198
+    {
 
         Done = {
             47924,
@@ -9389,7 +9389,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2364.3,
         },
     },
-    { -- Step 199
+    {
 
         PickUp = {
             47998,
@@ -9401,7 +9401,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2364.3,
         },
     },
-    { -- Step 200
+    {
 
         Qpart = {
             [47919] = {
@@ -9419,7 +9419,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2361.9,
         },
     },
-    { -- Step 201
+    {
 
         Qpart = {
             [47919] = {
@@ -9437,7 +9437,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2280.9,
         },
     },
-    { -- Step 202
+    {
 
         Range = 21.44,
         Waypoint = 47998,
@@ -9451,7 +9451,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 203
+    {
 
         Qpart = {
             [47919] = {
@@ -9469,7 +9469,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2183.3,
         },
     },
-    { -- Step 204
+    {
 
         Qpart = {
             [47925] = {
@@ -9488,7 +9488,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2154.6,
         },
     },
-    { -- Step 205
+    {
 
         Qpart = {
             [47998] = {
@@ -9501,7 +9501,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2162.6,
         },
     },
-    { -- Step 206
+    {
 
         Coord = {
             x = 513.2,
@@ -9513,7 +9513,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             47919,
         },
     },
-    { -- Step 207
+    {
         Qpart = {
             [49064] = {
                 2,
@@ -9525,7 +9525,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2542.9,
         },
     },
-    { -- Step 208
+    {
         Done = {
             49064,
         },
@@ -9534,7 +9534,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2593.1,
         },
     },
-    { -- Step 209
+    {
         PickUp = {
             49067,
         },
@@ -9543,7 +9543,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2593.1,
         },
     },
-    { -- Step 210
+    {
         Qpart = {
             [49067] = {
                 1,
@@ -9556,7 +9556,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2593.1,
         },
     },
-    { -- Step 211
+    {
         Done = {
             49067,
         },
@@ -9565,7 +9565,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2592.5,
         },
     },
-    { -- Step 212
+    {
         PickUp = {
             49070,
             49071,
@@ -9576,7 +9576,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2592.5,
         },
     },
-    { -- Step 213
+    {
         Waypoint = 49070,
         Range = 9.51,
         Coord = {
@@ -9584,7 +9584,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2658.9,
         },
     },
-    { -- Step 214
+    {
         Qpart = {
             [49071] = {
                 1,
@@ -9608,7 +9608,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2754.3,
         },
     },
-    { -- Step 215
+    {
         Qpart = {
             [49080] = {
                 1,
@@ -9637,7 +9637,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2893.6,
         },
     },
-    { -- Step 216
+    {
         Coord = {
             x = 476.3,
             y = 2594.6,
@@ -9648,7 +9648,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             49080,
         },
     },
-    { -- Step 217
+    {
         PickUp = {
             49120,
         },
@@ -9657,7 +9657,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2594.6,
         },
     },
-    { -- Step 218
+    {
         Qpart = {
             [49120] = {
                 1,
@@ -9670,7 +9670,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2594.6,
         },
     },
-    { -- Step 219
+    {
         Done = {
             49120,
         },
@@ -9679,7 +9679,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2594.6,
         },
     },
-    { -- Step 220
+    {
         PickUp = {
             49125,
         },
@@ -9688,7 +9688,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2594.6,
         },
     },
-    { -- Step 221
+    {
         Qpart = {
             [49125] = {
                 2,
@@ -9717,7 +9717,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2667,
         },
     },
-    { -- Step 222
+    {
         Qpart = {
             [49125] = {
                 1,
@@ -9743,7 +9743,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2669,
         },
     },
-    { -- Step 223
+    {
         Qpart = {
             [51689] = {
                 1,
@@ -9755,7 +9755,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2599.3,
         },
     },
-    { -- Step 224
+    {
         Done = {
             49125,
         },
@@ -9764,7 +9764,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2898.6,
         },
     },
-    { -- Step 225
+    {
         PickUp = {
             49126,
         },
@@ -9773,7 +9773,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2900.1,
         },
     },
-    { -- Step 226
+    {
         ExtraActionB = 1,
         Qpart = {
             [49126] = {
@@ -9786,7 +9786,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2934.9,
         },
     },
-    { -- Step 227
+    {
         Qpart = {
             [49126] = {
                 2,
@@ -9798,7 +9798,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2934.9,
         },
     },
-    { -- Step 228
+    {
         Done = {
             49126,
         },
@@ -9807,7 +9807,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 3044.9,
         },
     },
-    { -- Step 229
+    {
         PickUp = {
             49130,
             49132,
@@ -9818,7 +9818,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 3043.4,
         },
     },
-    { -- Step 230
+    {
         Qpart = {
             [49130] = {
                 1,
@@ -9836,7 +9836,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2913.5,
         },
     },
-    { -- Step 231
+    {
         Done = {
             49130,
             49132,
@@ -9847,7 +9847,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2591.8,
         },
     },
-    { -- Step 232
+    {
         PickUp = {
             49136,
         },
@@ -9856,7 +9856,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2591.8,
         },
     },
-    { -- Step 233
+    {
         Range = 21.44,
         Waypoint = 49136,
         Coord = {
@@ -9864,7 +9864,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2654.3,
         },
     },
-    { -- Step 234
+    {
         Bloodlust = 1,
         Qpart = {
             [49136] = {
@@ -9877,7 +9877,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2895.1,
         },
     },
-    { -- Step 235
+    {
         Done = {
             49136,
         },
@@ -9886,7 +9886,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2593.4,
         },
     },
-    { -- Step 236
+    {
         PickUp = {
             49160,
         },
@@ -9895,7 +9895,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2592.8,
         },
     },
-    { -- Step 237
+    {
         Qpart = {
             [49160] = {
                 1,
@@ -9916,7 +9916,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2592.8,
         },
     },
-    { -- Step 238
+    {
         Done = {
             49160,
         },
@@ -9925,7 +9925,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2591.1,
         },
     },
-    { -- Step 239
+    {
         PickUp = {
             49902,
         },
@@ -9934,7 +9934,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2591.1,
         },
     },
-    { -- Step 240
+    {
         QpartPart = {
             [49902] = {
                 1,
@@ -9948,7 +9948,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2137,
         },
     },
-    { -- Step 241
+    {
         QpartPart = {
             [49902] = {
                 1,
@@ -9962,7 +9962,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1910.3,
         },
     },
-    { -- Step 242
+    {
         QpartPart = {
             [49902] = {
                 1,
@@ -9976,7 +9976,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1856.5,
         },
     },
-    { -- Step 243
+    {
         Coord = {
             x = -93.5,
             y = 2045.7,
@@ -9985,7 +9985,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             49902,
         },
     },
-    { -- Step 244
+    {
         PickUp = {
             47245,
             47525,
@@ -9995,7 +9995,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2048.6,
         },
     },
-    { -- Step 245
+    {
         PickUp = {
             52477,
         },
@@ -10004,7 +10004,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2096.6,
         },
     },
-    { -- Step 246
+    {
         Qpart = {
             [52477] = {
                 1,
@@ -10016,7 +10016,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2348.6,
         },
     },
-    { -- Step 247
+    {
         Done = {
             52477,
         },
@@ -10025,7 +10025,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2059.4,
         },
     },
-    { -- Step 248
+    {
         ExtraLineText = "WAIT_FOR_NPC",
         SetHS = 47245,
         Coord = {
@@ -10033,7 +10033,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2062,
         },
     },
-    { -- Step 249
+    {
 
         Range = 5.87,
         GetFP = 1955,
@@ -10042,7 +10042,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1994.2,
         },
     },
-    { -- Step 250
+    {
         Qpart = {
             [47245] = {
                 1,
@@ -10054,7 +10054,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1991.9,
         },
     },
-    { -- Step 251
+    {
         Qpart = {
             [47525] = {
                 1,
@@ -10066,7 +10066,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1892.7,
         },
     },
-    { -- Step 252
+    {
         Coord = {
             x = -156.4,
             y = 1892.7,
@@ -10075,7 +10075,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             47525,
         },
     },
-    { -- Step 253
+    {
         PickUp = {
             47659,
             47660,
@@ -10085,7 +10085,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1892.7,
         },
     },
-    { -- Step 254
+    {
         PickUp = {
             48402,
         },
@@ -10099,7 +10099,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 255
+    {
         Qpart = {
             [47659] = {
                 1,
@@ -10119,7 +10119,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1726.5,
         },
     },
-    { -- Step 256
+    {
         Qpart = {
             [48402] = {
                 1,
@@ -10134,7 +10134,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1726,
         },
     },
-    { -- Step 257
+    {
         Waypoint = 48402,
         Range = 14.18,
         Coord = {
@@ -10142,7 +10142,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1653.4,
         },
     },
-    { -- Step 258
+    {
         Done = {
             47660,
             47659,
@@ -10153,7 +10153,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1550,
         },
     },
-    { -- Step 259
+    {
         PickUp = {
             47623,
         },
@@ -10162,7 +10162,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1550,
         },
     },
-    { -- Step 260
+    {
         Qpart = {
             [47623] = {
                 1,
@@ -10174,7 +10174,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1543.2,
         },
     },
-    { -- Step 261
+    {
         Qpart = {
             [47623] = {
                 2,
@@ -10186,7 +10186,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1543.5,
         },
     },
-    { -- Step 262
+    {
         Done = {
             47623,
         },
@@ -10195,7 +10195,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1546.5,
         },
     },
-    { -- Step 263
+    {
         PickUp = {
             47621,
             47622,
@@ -10205,7 +10205,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1546.5,
         },
     },
-    { -- Step 264
+    {
         Waypoint = 47622,
         Range = 13.48,
         Coord = {
@@ -10213,7 +10213,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1652.9,
         },
     },
-    { -- Step 265
+    {
         Qpart = {
             [47621] = {
                 1,
@@ -10237,7 +10237,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1853.9,
         },
     },
-    { -- Step 266
+    {
 
         PickUp = {
             48090,
@@ -10248,7 +10248,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1664.8,
         },
     },
-    { -- Step 267
+    {
 
         Qpart = {
             [48090] = {
@@ -10275,7 +10275,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1643.5,
         },
     },
-    { -- Step 268
+    {
 
         Qpart = {
             [48090] = {
@@ -10302,7 +10302,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1573.3,
         },
     },
-    { -- Step 269
+    {
 
         Qpart = {
             [48092] = {
@@ -10320,7 +10320,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1604.9,
         },
     },
-    { -- Step 270
+    {
 
         Qpart = {
             [48090] = {
@@ -10347,7 +10347,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1764.9,
         },
     },
-    { -- Step 271
+    {
 
         Qpart = {
             [48093] = {
@@ -10360,7 +10360,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1763.4,
         },
     },
-    { -- Step 272
+    {
 
         Coord = {
             x = -637.2,
@@ -10371,7 +10371,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             48092,
         },
     },
-    { -- Step 273
+    {
 
         Range = 8.69,
         Waypoint = 47622,
@@ -10380,7 +10380,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1591.5,
         },
     },
-    { -- Step 274
+    {
 
         Range = 7.96,
         Waypoint = 47622,
@@ -10389,7 +10389,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1606.9,
         },
     },
-    { -- Step 275
+    {
 
         Range = 30.7,
         Waypoint = 47622,
@@ -10398,7 +10398,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1609.3,
         },
     },
-    { -- Step 276
+    {
         Coord = {
             x = -511.7,
             y = 1551,
@@ -10408,7 +10408,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             47622,
         },
     },
-    { -- Step 277
+    {
         PickUp = {
             47540,
         },
@@ -10417,7 +10417,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1551,
         },
     },
-    { -- Step 278
+    {
         Qpart = {
             [47540] = {
                 1,
@@ -10429,7 +10429,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1556.3,
         },
     },
-    { -- Step 279
+    {
         Done = {
             47540,
         },
@@ -10438,7 +10438,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1550,
         },
     },
-    { -- Step 280
+    {
         PickUp = {
             47696,
         },
@@ -10447,7 +10447,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1550,
         },
     },
-    { -- Step 281
+    {
         Waypoint = 47696,
         Range = 24.61,
         Coord = {
@@ -10455,7 +10455,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1629.8,
         },
     },
-    { -- Step 282
+    {
         Waypoint = 47696,
         Range = 19.23,
         Coord = {
@@ -10463,7 +10463,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1558.4,
         },
     },
-    { -- Step 283
+    {
         Qpart = {
             [47696] = {
                 3,
@@ -10477,7 +10477,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1557.5,
         },
     },
-    { -- Step 284
+    {
         Done = {
             47696,
         },
@@ -10486,7 +10486,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1548.3,
         },
     },
-    { -- Step 285
+    {
         PickUp = {
             47697,
         },
@@ -10495,7 +10495,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1543.7,
         },
     },
-    { -- Step 286
+    {
         UseHS = 47697,
         Coord = {
             x = -503.5,
@@ -10505,7 +10505,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             ["22345678-1"] = 6948,
         },
     },
-    { -- Step 287
+    {
         Done = {
             47697,
             47245,
@@ -10515,7 +10515,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2047.5,
         },
     },
-    { -- Step 288
+    {
         PickUp = {
             47631,
         },
@@ -10524,7 +10524,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2046.3,
         },
     },
-    { -- Step 289
+    {
         PickUp = {
             50934,
         },
@@ -10533,7 +10533,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2057.6,
         },
     },
-    { -- Step 290
+    {
 
         Waypoint = 50934,
         Range = 13.13,
@@ -10542,7 +10542,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2028.5,
         },
     },
-    { -- Step 291
+    {
 
         Waypoint = 50934,
         Range = 10.99,
@@ -10551,7 +10551,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1849.5,
         },
     },
-    { -- Step 292
+    {
 
         Done = {
             50934,
@@ -10561,7 +10561,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1765.8,
         },
     },
-    { -- Step 293
+    {
 
         PickUp = {
             49366,
@@ -10571,7 +10571,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1765.4,
         },
     },
-    { -- Step 294
+    {
 
         Qpart = {
             [49366] = {
@@ -10587,7 +10587,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1765.5,
         },
     },
-    { -- Step 295
+    {
 
         Done = {
             49366,
@@ -10597,7 +10597,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1682.2,
         },
     },
-    { -- Step 296
+    {
 
         PickUp = {
             49370,
@@ -10609,7 +10609,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1682.2,
         },
     },
-    { -- Step 297
+    {
 
         Qpart = {
             [49370] = {
@@ -10622,7 +10622,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1652.9,
         },
     },
-    { -- Step 298
+    {
 
         Done = {
             49370,
@@ -10632,7 +10632,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1651.8,
         },
     },
-    { -- Step 299
+    {
 
         PickUp = {
             49378,
@@ -10643,7 +10643,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1651.8,
         },
     },
-    { -- Step 300
+    {
 
         Qpart = {
             [49378] = {
@@ -10656,7 +10656,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1679,
         },
     },
-    { -- Step 301
+    {
 
         Qpart = {
             [49380] = {
@@ -10680,7 +10680,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1623.4,
         },
     },
-    { -- Step 302
+    {
 
         Qpart = {
             [49377] = {
@@ -10701,7 +10701,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1524.4,
         },
     },
-    { -- Step 303
+    {
 
         Qpart = {
             [49380] = {
@@ -10725,7 +10725,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1571.4,
         },
     },
-    { -- Step 304
+    {
 
         Qpart = {
             [49380] = {
@@ -10749,7 +10749,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1655,
         },
     },
-    { -- Step 305
+    {
 
         Qpart = {
             [49380] = {
@@ -10768,7 +10768,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1588.2,
         },
     },
-    { -- Step 306
+    {
 
         Coord = {
             x = 128.6,
@@ -10781,7 +10781,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             49377,
         },
     },
-    { -- Step 307
+    {
 
         PickUp = {
             49382,
@@ -10791,7 +10791,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1681.3,
         },
     },
-    { -- Step 308
+    {
 
         Range = 34.95,
         Waypoint = 49382,
@@ -10800,7 +10800,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1631,
         },
     },
-    { -- Step 309
+    {
 
         Range = 15.99,
         Waypoint = 49382,
@@ -10809,7 +10809,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1644.9,
         },
     },
-    { -- Step 310
+    {
 
         Qpart = {
             [49382] = {
@@ -10822,7 +10822,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1549.7,
         },
     },
-    { -- Step 311
+    {
 
         Coord = {
             x = -508.9,
@@ -10832,7 +10832,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             49382,
         },
     },
-    { -- Step 312
+    {
         Range = 5,
         Waypoint = 47631,
         Coord = {
@@ -10840,7 +10840,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1657.9,
         },
     },
-    { -- Step 313
+    {
         Qpart = {
             [47631] = {
                 1,
@@ -10852,7 +10852,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2165.5,
         },
     },
-    { -- Step 314
+    {
         Coord = {
             x = -470,
             y = 2165,
@@ -10861,7 +10861,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             47631,
         },
     },
-    { -- Step 315
+    {
         PickUp = {
             47597,
             47599,
@@ -10871,7 +10871,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2161.5,
         },
     },
-    { -- Step 316
+    {
         Waypoint = 47597,
         Range = 15.23,
         Coord = {
@@ -10887,7 +10887,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             },
         },
     },
-    { -- Step 317
+    {
         Qpart = {
             [47597] = {
                 2,
@@ -10910,7 +10910,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2240.9,
         },
     },
-    { -- Step 318
+    {
         Qpart = {
             [47597] = {
                 3,
@@ -10933,7 +10933,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2395.8,
         },
     },
-    { -- Step 319
+    {
         Qpart = {
             [47597] = {
                 1,
@@ -10956,7 +10956,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2384.6,
         },
     },
-    { -- Step 320
+    {
         Qpart = {
             [47599] = {
                 1,
@@ -10976,7 +10976,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2384.6,
         },
     },
-    { -- Step 321
+    {
         Qpart = {
             [47756] = {
                 1,
@@ -10988,7 +10988,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2333.1,
         },
     },
-    { -- Step 322
+    {
         Range = 9.39,
         Waypoint = 47597,
         Coord = {
@@ -10996,7 +10996,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2589.8,
         },
     },
-    { -- Step 323
+    {
         Coord = {
             x = -879.8,
             y = 2573.1,
@@ -11006,7 +11006,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             47599,
         },
     },
-    { -- Step 324
+    {
         PickUp = {
             47711,
             47596,
@@ -11017,7 +11017,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2571.1,
         },
     },
-    { -- Step 325
+    {
         GetFP = 1956,
         Range = 2,
         Coord = {
@@ -11025,7 +11025,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2592.1,
         },
     },
-    { -- Step 326
+    {
         Qpart = {
             [47596] = {
                 2,
@@ -11042,7 +11042,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2568,
         },
     },
-    { -- Step 327
+    {
         Bloodlust = 1,
         Qpart = {
             [47711] = {
@@ -11060,7 +11060,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2642.5,
         },
     },
-    { -- Step 328
+    {
         Qpart = {
             [47596] = {
                 1,
@@ -11077,7 +11077,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2643.3,
         },
     },
-    { -- Step 329
+    {
         Qpart = {
             [47596] = {
                 3,
@@ -11094,7 +11094,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2748.1,
         },
     },
-    { -- Step 330
+    {
         Qpart = {
             [47598] = {
                 1,
@@ -11106,7 +11106,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2748.1,
         },
     },
-    { -- Step 331
+    {
         Coord = {
             x = -877.2,
             y = 2572.6,
@@ -11117,7 +11117,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             47598,
         },
     },
-    { -- Step 332
+    {
         PickUp = {
             47601,
         },
@@ -11126,7 +11126,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2572.6,
         },
     },
-    { -- Step 333
+    {
         Qpart = {
             [47601] = {
                 1,
@@ -11138,7 +11138,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2616,
         },
     },
-    { -- Step 334
+    {
         Qpart = {
             [47601] = {
                 3,
@@ -11151,7 +11151,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2616.5,
         },
     },
-    { -- Step 335
+    {
         Coord = {
             x = -827.5,
             y = 2613.1,
@@ -11160,7 +11160,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             47601,
         },
     },
-    { -- Step 336
+    {
         PickUp = {
             47602,
         },
@@ -11169,7 +11169,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2613.1,
         },
     },
-    { -- Step 337
+    {
         Qpart = {
             [47602] = {
                 1,
@@ -11182,7 +11182,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2609.6,
         },
     },
-    { -- Step 338
+    {
         Qpart = {
             [47602] = {
                 2,
@@ -11194,7 +11194,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2047,
         },
     },
-    { -- Step 339
+    {
         Done = {
             47602,
         },
@@ -11203,7 +11203,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2047.8,
         },
     },
-    { -- Step 340
+    {
         PickUp = {
             49932,
         },
@@ -11212,7 +11212,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2056.9,
         },
     },
-    { -- Step 341
+    {
         Qpart = {
             [49932] = {
                 1,
@@ -11224,7 +11224,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2167.1,
         },
     },
-    { -- Step 342
+    {
         Qpart = {
             [49932] = {
                 2,
@@ -11236,7 +11236,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2167.1,
         },
     },
-    { -- Step 343
+    {
         Qpart = {
             [49932] = {
                 3,
@@ -11248,7 +11248,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2166.4,
         },
     },
-    { -- Step 344
+    {
         Done = {
             49932,
         },
@@ -11257,7 +11257,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2165.1,
         },
     },
-    { -- Step 345
+    {
         PickUp = {
             49937,
             49935,
@@ -11268,7 +11268,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2165.1,
         },
     },
-    { -- Step 346
+    {
         Qpart = {
             [49935] = {
                 1,
@@ -11288,7 +11288,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2135.8,
         },
     },
-    { -- Step 347
+    {
         Qpart = {
             [49935] = {
                 2,
@@ -11308,7 +11308,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2347.8,
         },
     },
-    { -- Step 348
+    {
         Qpart = {
             [49938] = {
                 1,
@@ -11323,7 +11323,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2345.9,
         },
     },
-    { -- Step 349
+    {
         Done = {
             49937,
             49935,
@@ -11334,7 +11334,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2295.8,
         },
     },
-    { -- Step 350
+    {
         PickUp = {
             49941,
             49949,
@@ -11344,7 +11344,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2295.8,
         },
     },
-    { -- Step 351
+    {
         PickUp = {
             49950,
         },
@@ -11353,7 +11353,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2340.1,
         },
     },
-    { -- Step 352
+    {
         Qpart = {
             [49949] = {
                 1,
@@ -11374,7 +11374,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2349.1,
         },
     },
-    { -- Step 353
+    {
         Done = {
             49949,
             49941,
@@ -11385,7 +11385,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2298.1,
         },
     },
-    { -- Step 354
+    {
         PickUp = {
             49955,
             49957,
@@ -11396,7 +11396,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2298.1,
         },
     },
-    { -- Step 355
+    {
         Qpart = {
             [49955] = {
                 1,
@@ -11423,7 +11423,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2399.6,
         },
     },
-    { -- Step 356
+    {
         Done = {
             49955,
             49957,
@@ -11434,7 +11434,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2499.4,
         },
     },
-    { -- Step 357
+    {
         PickUp = {
             49980,
         },
@@ -11443,7 +11443,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2500.6,
         },
     },
-    { -- Step 358
+    {
         Qpart = {
             [49980] = {
                 1,
@@ -11456,7 +11456,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2500.6,
         },
     },
-    { -- Step 359
+    {
         Qpart = {
             [49980] = {
                 2,
@@ -11468,7 +11468,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2500.6,
         },
     },
-    { -- Step 360
+    {
         Done = {
             49980,
         },
@@ -11477,7 +11477,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2500.6,
         },
     },
-    { -- Step 361
+    {
         PickUp = {
             49985,
         },
@@ -11486,7 +11486,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2500.6,
         },
     },
-    { -- Step 362
+    {
         Qpart = {
             [49985] = {
                 1,
@@ -11498,7 +11498,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2464.8,
         },
     },
-    { -- Step 363
+    {
         Done = {
             49985,
         },
@@ -11507,7 +11507,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2048.8,
         },
     },
-    { -- Step 364
+    {
         PickUp = {
             49569,
         },
@@ -11516,7 +11516,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2048.5,
         },
     },
-    { -- Step 365
+    {
         Waypoint = 49569,
         Range = 13.34,
         Coord = {
@@ -11524,7 +11524,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 2026.5,
         },
     },
-    { -- Step 366
+    {
         Qpart = {
             [49569] = {
                 1,
@@ -11537,7 +11537,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1948.0,
         },
     },
-    { -- Step 367
+    {
         ETA = 150,
         Qpart = {
             [49569] = {
@@ -11550,7 +11550,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1950,
         },
     },
-    { -- Step 368
+    {
         Waypoint = 49569,
         Range = 12.73,
         Coord = {
@@ -11558,7 +11558,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 687.2,
         },
     },
-    { -- Step 369
+    {
         Done = {
             51089,
         },
@@ -11567,7 +11567,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 730.5,
         },
     },
-    { -- Step 370
+    {
         Done = {
             49569,
         },
@@ -11576,7 +11576,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 791.2,
         },
     },
-    { -- Step 371
+    {
         PickUp = {
             50076,
         },
@@ -11585,7 +11585,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 790.6,
         },
     },
-    { -- Step 372
+    {
         Qpart = {
             [50076] = {
                 1,
@@ -11597,7 +11597,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 814.1,
         },
     },
-    { -- Step 373
+    {
         ETA = 33,
         Qpart = {
             [50076] = {
@@ -11610,7 +11610,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 806.4,
         },
     },
-    { -- Step 374
+    {
         Done = {
             50076,
         },
@@ -11619,7 +11619,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 806.1,
         },
     },
-    { -- Step 375
+    {
         PickUp = {
             50138,
         },
@@ -11628,7 +11628,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 806.1,
         },
     },
-    { -- Step 376
+    {
         Waypoint = 50138,
         Range = 14.37,
         Coord = {
@@ -11636,7 +11636,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 819.1,
         },
     },
-    { -- Step 377
+    {
         Waypoint = 50138,
         Range = 7.12,
         Coord = {
@@ -11644,7 +11644,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 845,
         },
     },
-    { -- Step 378
+    {
         Qpart = {
             [50138] = {
                 1,
@@ -11656,7 +11656,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 990.2,
         },
     },
-    { -- Step 379
+    {
         PickUp = {
             50078,
         },
@@ -11665,7 +11665,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 990.2,
         },
     },
-    { -- Step 380
+    {
         Qpart = {
             [50138] = {
                 2,
@@ -11680,7 +11680,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 991.9,
         },
     },
-    { -- Step 381
+    {
         Qpart = {
             [50138] = {
                 3,
@@ -11692,7 +11692,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1123.5,
         },
     },
-    { -- Step 382
+    {
         Done = {
             50138,
             50078,
@@ -11702,7 +11702,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1124,
         },
     },
-    { -- Step 383
+    {
         PickUp = {
             50079,
             50081,
@@ -11712,7 +11712,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1129.9,
         },
     },
-    { -- Step 384
+    {
         Qpart = {
             [50079] = {
                 1,
@@ -11738,7 +11738,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1174,
         },
     },
-    { -- Step 385
+    {
         Qpart = {
             [50079] = {
                 2,
@@ -11764,7 +11764,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1238.5,
         },
     },
-    { -- Step 386
+    {
         Qpart = {
             [50079] = {
                 3,
@@ -11790,7 +11790,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1287,
         },
     },
-    { -- Step 387
+    {
         Qpart = {
             [50081] = {
                 1,
@@ -11802,7 +11802,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1291.5,
         },
     },
-    { -- Step 388
+    {
         Done = {
             50079,
             50081,
@@ -11812,7 +11812,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1324.4,
         },
     },
-    { -- Step 389
+    {
         PickUp = {
             50082,
         },
@@ -11821,7 +11821,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1324.4,
         },
     },
-    { -- Step 390
+    {
         Qpart = {
             [50082] = {
                 1,
@@ -11834,7 +11834,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1392.3,
         },
     },
-    { -- Step 391
+    {
         Qpart = {
             [50082] = {
                 2,
@@ -11846,7 +11846,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1421.3,
         },
     },
-    { -- Step 392
+    {
         Done = {
             50082,
         },
@@ -11855,7 +11855,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1408.8,
         },
     },
-    { -- Step 393
+    {
         PickUp = {
             52073,
         },
@@ -11864,7 +11864,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1408.8,
         },
     },
-    { -- Step 394
+    {
 
         PickUp = {
             50083,
@@ -11874,7 +11874,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1474,
         },
     },
-    { -- Step 395
+    {
 
         Qpart = {
             [50083] = {
@@ -11887,7 +11887,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1589.7,
         },
     },
-    { -- Step 396
+    {
 
         Range = 7.51,
         Waypoint = 50083,
@@ -11896,7 +11896,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1640.3,
         },
     },
-    { -- Step 397
+    {
 
         Range = 5.83,
         Waypoint = 50083,
@@ -11905,7 +11905,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1643.4,
         },
     },
-    { -- Step 398
+    {
 
         Qpart = {
             [50083] = {
@@ -11921,7 +11921,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1637.5,
         },
     },
-    { -- Step 399
+    {
 
         Coord = {
             x = 911.7,
@@ -11931,7 +11931,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             50083,
         },
     },
-    { -- Step 400
+    {
 
         PickUp = {
             50085,
@@ -11941,7 +11941,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1652.5,
         },
     },
-    { -- Step 401
+    {
 
         Qpart = {
             [50085] = {
@@ -11968,7 +11968,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1654.5,
         },
     },
-    { -- Step 402
+    {
 
         Qpart = {
             [50080] = {
@@ -11981,7 +11981,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1709.3,
         },
     },
-    { -- Step 403
+    {
 
         Waypoint = 50085,
         Range = 19,
@@ -11990,7 +11990,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1652.9,
         },
     },
-    { -- Step 404
+    {
 
         Done = {
             50085,
@@ -12000,7 +12000,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1634.2,
         },
     },
-    { -- Step 405
+    {
 
         Waypoint = 52073,
         Range = 25.81,
@@ -12009,7 +12009,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1508.2,
         },
     },
-    { -- Step 406
+    {
         Qpart = {
             [52073] = {
                 1,
@@ -12022,7 +12022,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1403.2,
         },
     },
-    { -- Step 407
+    {
         Qpart = {
             [52073] = {
                 2,
@@ -12035,7 +12035,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1403.2,
         },
     },
-    { -- Step 408
+    {
         Coord = {
             x = 853.1,
             y = 1525.5,
@@ -12044,7 +12044,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             52073,
         },
     },
-    { -- Step 409
+    {
         PickUp = {
             50087,
         },
@@ -12053,7 +12053,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1525.5,
         },
     },
-    { -- Step 410
+    {
         Bloodlust = 1,
         Qpart = {
             [50087] = {
@@ -12066,7 +12066,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1498.4,
         },
     },
-    { -- Step 411
+    {
         Coord = {
             x = 804.2,
             y = 1480.9,
@@ -12075,7 +12075,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             50087,
         },
     },
-    { -- Step 412
+    {
         PickUp = {
             51244,
         },
@@ -12084,7 +12084,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1482.4,
         },
     },
-    { -- Step 413
+    {
         ExtraLineText = "TALK_ROKHAN_RIDE_DOWN",
         Gossip = 1,
         Range = 14.61,
@@ -12094,7 +12094,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1482.4,
         },
     },
-    { -- Step 414
+    {
         Range = 27.39,
         Waypoint = 51244,
         Coord = {
@@ -12102,7 +12102,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 1050.3,
         },
     },
-    { -- Step 415
+    {
         Coord = {
             x = 738.7,
             y = 1237.4,
@@ -12111,7 +12111,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             51244,
         },
     },
-    { -- Step 416
+    {
         PickUp = {
             50808,
         },
@@ -12121,7 +12121,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         LeaveQuest = 51302,
     },
-    { -- Step 417
+    {
         ExtraLineText = "TALK_ROKHAN_RIDE_ZULJAN",
         Range = 5,
         Waypoint = 50808,
@@ -12131,7 +12131,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         LeaveQuest = 51302,
     },
-    { -- Step 418
+    {
         UseFlightPath = 50808,
         Name = "The Great Seal",
         NodeID = 1959,
@@ -12140,13 +12140,13 @@ APR.RouteQuestStepList["863-Nazmir"] = {
             y = 791.5,
         },
     },
-    { -- [Step 419
+    {
         ZoneDoneSave = 1
     },
 }
 --end of Nazmir start of Vol'dun
 APR.RouteQuestStepList["862-Zuldazar-2"] = {
-    { -- Step 1
+    {
         Range = 5,
         Waypoint = 50808,
         Coord = {
@@ -12154,7 +12154,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -1047.5,
         },
     },
-    { -- Step 2
+    {
         Coord = {
             x = 818.6,
             y = -1124.3,
@@ -12164,7 +12164,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
         },
         LeaveQuest = 52210,
     },
-    { -- Step 3
+    {
         PickUp = {
             47513,
 
@@ -12175,7 +12175,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
         },
         LeaveQuest = 47199,
     },
-    { -- Step 4
+    {
         Coord = {
             x = 819,
             y = -1120,
@@ -12185,7 +12185,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
         },
         LeaveQuest = 52210,
     },
-    { -- Step 5
+    {
         PickUp = {
             47313,
         },
@@ -12194,7 +12194,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -1119.6,
         },
     },
-    { -- Step 6
+    {
         Range = 5,
         Waypoint = 47313,
         Coord = {
@@ -12202,7 +12202,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -1046.8,
         },
     },
-    { -- Step 7
+    {
         Range = 5,
         Waypoint = 47313,
         Coord = {
@@ -12210,7 +12210,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -1018.2,
         },
     },
-    { -- Step 8
+    {
         QpartPart = {
             [47313] = {
                 1,
@@ -12224,7 +12224,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -964.5,
         },
     },
-    { -- Step 9
+    {
         Range = 5,
         Waypoint = 47313,
         Coord = {
@@ -12232,7 +12232,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -961.9,
         },
     },
-    { -- Step 10
+    {
         Waypoint = 47313,
         Range = 6.93,
         Coord = {
@@ -12240,7 +12240,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -1001.6,
         },
     },
-    { -- Step 11
+    {
         QpartPart = {
             [47313] = {
                 1,
@@ -12254,7 +12254,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -966.5,
         },
     },
-    { -- Step 12
+    {
         Waypoint = 47313,
         Range = 6.93,
         Coord = {
@@ -12262,7 +12262,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -963.4,
         },
     },
-    { -- Step 13
+    {
         QpartPart = {
             [47313] = {
                 1,
@@ -12276,7 +12276,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -934.7,
         },
     },
-    { -- Step 14
+    {
         Waypoint = 47313,
         Range = 9.14,
         Coord = {
@@ -12284,7 +12284,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -878,
         },
     },
-    { -- Step 15
+    {
         Done = {
             47313,
         },
@@ -12293,7 +12293,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -859.3,
         },
     },
-    { -- Step 16
+    {
         PickUp = {
             47314,
         },
@@ -12302,7 +12302,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -859.3,
         },
     },
-    { -- Step 17
+    {
         ETA = 40,
         ExtraLineText = "TALK_ROKHAN_RIDE_ZULJAN",
         --RaidIcon = 122320,
@@ -12314,7 +12314,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -857.5,
         },
     },
-    { -- Step 18
+    {
         PickUp = {
             47315,
         },
@@ -12323,7 +12323,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -857.2,
         },
     },
-    { -- Step 19
+    {
         Qpart = {
             [47315] = {
                 1,
@@ -12335,7 +12335,7 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -859,
         },
     },
-    { -- Step 20
+    {
         ETA = 99,
         Qpart = {
             [47315] = {
@@ -12348,13 +12348,13 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
             y = -675.7,
         },
     },
-    { -- [Step 22
+    {
         ZoneDoneSave = 1
     },
 }
 -- Vol'dun
 APR.RouteQuestStepList["864-Vol'dun"] = {
-    { -- Step 1
+    {
         Done = {
             47315,
         },
@@ -12363,7 +12363,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2673.5,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             51357,
         },
@@ -12372,7 +12372,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2673.5,
         },
     },
-    { -- Step 3
+    {
         ExtraLineText = "WEAPON_PICK_DOESNT_MATTER",
         Qpart = {
             [51357] = {
@@ -12386,7 +12386,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
 
     },
-    { -- Step 4
+    {
         Done = {
             51357,
         },
@@ -12395,7 +12395,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2673.5,
         },
     },
-    { -- Step 5
+    {
         PickUp = {
             47327,
             49676,
@@ -12405,7 +12405,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2673.5,
         },
     },
-    { -- Step 6
+    {
         Waypoint = 49676,
         Range = 8.78,
         Coord = {
@@ -12413,7 +12413,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2648.5,
         },
     },
-    { -- Step 7
+    {
         Waypoint = 49676,
         Range = 5.61,
         Coord = {
@@ -12421,7 +12421,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2688.8,
         },
     },
-    { -- Step 8
+    {
         Qpart = {
             [49676] = {
                 1,
@@ -12438,7 +12438,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2797.5,
         },
     },
-    { -- Step 9
+    {
         Qpart = {
             [49676] = {
                 2,
@@ -12455,7 +12455,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2852,
         },
     },
-    { -- Step 10
+    {
         Qpart = {
             [49676] = {
                 3,
@@ -12472,7 +12472,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2804.4,
         },
     },
-    { -- Step 11
+    {
         Coord = {
             x = 2495.1,
             y = 2831.6,
@@ -12481,7 +12481,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             49676,
         },
     },
-    { -- Step 12
+    {
         PickUp = {
             49677,
         },
@@ -12490,7 +12490,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2831.6,
         },
     },
-    { -- Step 13
+    {
         Qpart = {
             [49677] = {
                 1,
@@ -12507,7 +12507,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2857.1,
         },
     },
-    { -- Step 14
+    {
         Qpart = {
             [47327] = {
                 1,
@@ -12519,7 +12519,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2857.1,
         },
     },
-    { -- Step 15
+    {
         Coord = {
             x = 2541.6,
             y = 2878.8,
@@ -12529,7 +12529,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             49677,
         },
     },
-    { -- Step 16
+    {
         PickUp = {
             51364,
         },
@@ -12538,7 +12538,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2878.8,
         },
     },
-    { -- Step 17
+    {
         Qpart = {
             [51364] = {
                 1,
@@ -12550,7 +12550,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2769,
         },
     },
-    { -- Step 18
+    {
         Qpart = {
             [51364] = {
                 2,
@@ -12562,7 +12562,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2768.5,
         },
     },
-    { -- Step 19
+    {
         ExtraLineText = "EXTRA_ACTION_BUTTON_NOT_NEEDED",
         ETA = 72,
         Qpart = {
@@ -12576,7 +12576,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2044.9,
         },
     },
-    { -- Step 20
+    {
         Done = {
             51364,
         },
@@ -12585,7 +12585,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2042.5,
         },
     },
-    { -- Step 21
+    {
         PickUp = {
             47319,
         },
@@ -12594,7 +12594,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2042.5,
         },
     },
-    { -- Step 22
+    {
         PickUp = {
             51574,
         },
@@ -12603,7 +12603,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2043,
         },
     },
-    { -- Step 23
+    {
         GetFP = 2117,
         Range = 3.37,
         Coord = {
@@ -12611,7 +12611,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2100.3,
         },
     },
-    { -- Step 24
+    {
         PickUp = {
             50739,
         },
@@ -12620,7 +12620,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2140.9,
         },
     },
-    { -- Step 25
+    {
         Qpart = {
             [50739] = {
                 1,
@@ -12638,7 +12638,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2116,
         },
     },
-    { -- Step 26
+    {
         Done = {
             50739,
         },
@@ -12647,7 +12647,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2140.9,
         },
     },
-    { -- Step 27
+    {
         Done = {
             51574,
             47319,
@@ -12657,7 +12657,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2042.8,
         },
     },
-    { -- Step 28
+    {
         PickUp = {
             47320,
         },
@@ -12666,7 +12666,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2044.4,
         },
     },
-    { -- Step 29
+    {
         Qpart = {
             [47320] = {
                 1,
@@ -12681,7 +12681,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2044.3,
         },
     },
-    { -- Step 30
+    {
         Done = {
             47320,
         },
@@ -12690,7 +12690,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2044.4,
         },
     },
-    { -- Step 31
+    {
         PickUp = {
             47321,
             47317,
@@ -12701,7 +12701,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2043.9,
         },
     },
-    { -- Step 32
+    {
         QpartPart = {
             [47316] = {
                 1,
@@ -12714,7 +12714,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2126.6,
         },
     },
-    { -- Step 33
+    {
         QpartPart = {
             [47316] = {
                 1,
@@ -12727,7 +12727,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2342.9,
         },
     },
-    { -- Step 34
+    {
         QpartPart = {
             [47316] = {
                 1,
@@ -12740,7 +12740,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2230.5,
         },
     },
-    { -- Step 35
+    {
         QpartPart = {
             [47316] = {
                 1,
@@ -12753,7 +12753,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2439.1,
         },
     },
-    { -- Step 36
+    {
         PickUp = {
             47322,
             50755,
@@ -12763,7 +12763,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2410.4,
         },
     },
-    { -- Step 37
+    {
         Qpart = {
             [47322] = {
                 2,
@@ -12783,7 +12783,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2507.4,
         },
     },
-    { -- Step 38
+    {
         Qpart = {
             [47317] = {
                 1,
@@ -12803,7 +12803,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2549.5,
         },
     },
-    { -- Step 39
+    {
         Qpart = {
             [47322] = {
                 1,
@@ -12823,7 +12823,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2554.6,
         },
     },
-    { -- Step 40
+    {
         Qpart = {
             [47317] = {
                 2,
@@ -12843,7 +12843,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2494,
         },
     },
-    { -- Step 41
+    {
         Qpart = {
             [50755] = {
                 1,
@@ -12858,7 +12858,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2501.4,
         },
     },
-    { -- Step 42
+    {
         Done = {
             50755,
             47322,
@@ -12868,7 +12868,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2410.8,
         },
     },
-    { -- Step 43
+    {
         Done = {
             47321,
             47317,
@@ -12879,7 +12879,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2043,
         },
     },
-    { -- Step 44
+    {
         PickUp = {
             47959,
         },
@@ -12888,7 +12888,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2043.5,
         },
     },
-    { -- Step 45
+    {
         Qpart = {
             [47959] = {
                 1,
@@ -12901,7 +12901,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2043.2,
         },
     },
-    { -- Step 46
+    {
         Qpart = {
             [47959] = {
                 2,
@@ -12914,7 +12914,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1344,
         },
     },
-    { -- Step 47
+    {
         Done = {
             47959,
         },
@@ -12923,7 +12923,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1316.8,
         },
     },
-    { -- Step 48
+    {
         PickUp = {
             48549,
             48550,
@@ -12933,7 +12933,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1316.9,
         },
     },
-    { -- Step 49
+    {
         PickUp = {
             51829,
         },
@@ -12947,7 +12947,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 50
+    {
         Qpart = {
             [48549] = {
                 1,
@@ -12964,7 +12964,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1400.2,
         },
     },
-    { -- Step 51
+    {
         Qpart = {
             [48550] = {
                 1,
@@ -12976,7 +12976,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1396.7,
         },
     },
-    { -- Step 52
+    {
         UseGlider = 1,
         Coord = {
             x = 3020.5,
@@ -12986,7 +12986,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             51829,
         },
     },
-    { -- Step 53
+    {
         PickUp = {
             48551,
             48553,
@@ -12997,7 +12997,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1187.5,
         },
     },
-    { -- Step 54
+    {
         Qpart = {
             [48553] = {
                 1,
@@ -13020,7 +13020,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1257.5,
         },
     },
-    { -- Step 55
+    {
         Qpart = {
             [48553] = {
                 2,
@@ -13043,7 +13043,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1071.9,
         },
     },
-    { -- Step 56
+    {
         Qpart = {
             [48555] = {
                 1,
@@ -13061,7 +13061,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1071.9,
         },
     },
-    { -- Step 57
+    {
         Done = {
             48551,
             48553,
@@ -13072,7 +13072,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1187.3,
         },
     },
-    { -- Step 58
+    {
         PickUp = {
             48554,
         },
@@ -13081,7 +13081,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1187.3,
         },
     },
-    { -- Step 59
+    {
         Waypoint = 48554,
         Range = 8.68,
         Coord = {
@@ -13089,7 +13089,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1227.7,
         },
     },
-    { -- Step 60
+    {
         Waypoint = 48554,
         Range = 8.86,
         Coord = {
@@ -13097,7 +13097,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1294.9,
         },
     },
-    { -- Step 61
+    {
         Waypoint = 48554,
         Range = 13.27,
         Coord = {
@@ -13105,7 +13105,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1295.5,
         },
     },
-    { -- Step 62
+    {
         Waypoint = 48554,
         Range = 15.05,
         Coord = {
@@ -13113,7 +13113,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1262.5,
         },
     },
-    { -- Step 63
+    {
         Qpart = {
             [48554] = {
                 1,
@@ -13125,7 +13125,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1193,
         },
     },
-    { -- Step 64
+    {
         Qpart = {
             [48554] = {
                 2,
@@ -13137,7 +13137,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1196.4,
         },
     },
-    { -- Step 65
+    {
         Done = {
             48554,
         },
@@ -13146,7 +13146,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1188.3,
         },
     },
-    { -- Step 66
+    {
         Coord = {
             x = 3063.6,
             y = 1338.3,
@@ -13156,7 +13156,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             48549,
         },
     },
-    { -- Step 67
+    {
         PickUp = {
             48684,
         },
@@ -13165,7 +13165,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1337.8,
         },
     },
-    { -- Step 68
+    {
         Qpart = {
             [48684] = {
                 1,
@@ -13178,7 +13178,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1337.8,
         },
     },
-    { -- Step 69
+    {
         Qpart = {
             [48684] = {
                 2,
@@ -13191,7 +13191,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 286,
         },
     },
-    { -- Step 70
+    {
         Done = {
             48684,
         },
@@ -13200,7 +13200,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 285.5,
         },
     },
-    { -- Step 71
+    {
         PickUp = {
             48895,
         },
@@ -13209,7 +13209,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 285.3,
         },
     },
-    { -- Step 72
+    {
         Done = {
             48895,
         },
@@ -13219,7 +13219,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 238.5,
         },
     },
-    { -- Step 73
+    {
         PickUp = {
             48992,
             48991,
@@ -13231,7 +13231,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 238.5,
         },
     },
-    { -- Step 74
+    {
         LeaveQuest = 49040,
         GetFP = 2118,
         Range = 10.72,
@@ -13248,7 +13248,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 75
+    {
         Waypoint = 48993,
         Range = 9.27,
         Coord = {
@@ -13264,7 +13264,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 76
+    {
         Waypoint = 48993,
         Range = 6.13,
         Coord = {
@@ -13280,7 +13280,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 77
+    {
         Qpart = {
             [48993] = {
                 1,
@@ -13300,7 +13300,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 544.6,
         },
     },
-    { -- Step 78
+    {
         Qpart = {
             [48991] = {
                 1,
@@ -13315,7 +13315,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 504.3,
         },
     },
-    { -- Step 79
+    {
         Done = {
             48992,
             48991,
@@ -13326,7 +13326,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 237.9,
         },
     },
-    { -- Step 80
+    {
         PickUp = {
             48888,
             48887,
@@ -13336,7 +13336,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 237.9,
         },
     },
-    { -- Step 81
+    {
         ExtraLineText = "DOTS_EXPIRE",
         Qpart = {
             [48887] = {
@@ -13354,7 +13354,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 551.7,
         },
     },
-    { -- Step 82
+    {
         Qpart = {
             [48887] = {
                 2,
@@ -13371,7 +13371,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 551.7,
         },
     },
-    { -- Step 83
+    {
         Qpart = {
             [48888] = {
                 1,
@@ -13383,7 +13383,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 525.2,
         },
     },
-    { -- Step 84
+    {
         Done = {
             48888,
             48887,
@@ -13393,7 +13393,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 237.1,
         },
     },
-    { -- Step 85
+    {
         PickUp = {
             48894,
         },
@@ -13402,7 +13402,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 237.1,
         },
     },
-    { -- Step 86
+    {
         Qpart = {
             [48894] = {
                 1,
@@ -13415,7 +13415,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 237.1,
         },
     },
-    { -- Step 87
+    {
         Done = {
             48894,
         },
@@ -13424,7 +13424,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 238.1,
         },
     },
-    { -- Step 88
+    {
         PickUp = {
             48715,
         },
@@ -13433,7 +13433,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 241.5,
         },
     },
-    { -- Step 89
+    {
         Qpart = {
             [48715] = {
                 1,
@@ -13445,7 +13445,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 184.4,
         },
     },
-    { -- Step 90
+    {
         Done = {
             48715,
         },
@@ -13454,7 +13454,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 176.1,
         },
     },
-    { -- Step 91
+    {
         PickUp = {
             48987,
         },
@@ -13463,7 +13463,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 188.6,
         },
     },
-    { -- Step 92
+    {
         Waypoint = 48987,
         Range = 7.74,
         Coord = {
@@ -13471,7 +13471,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 193.6,
         },
     },
-    { -- Step 93
+    {
         Waypoint = 48987,
         Range = 11.03,
         Coord = {
@@ -13479,14 +13479,14 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 267.1,
         },
     },
-    { -- Step 94
+    {
         SetHS = 48987,
         Coord = {
             x = 3151.6,
             y = 260.7,
         },
     },
-    { -- Step 95
+    {
         Waypoint = 48987,
         Range = 16.03,
         Coord = {
@@ -13494,7 +13494,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 366.3,
         },
     },
-    { -- Step 96
+    {
         UseGlider = 1,
         Waypoint = 48987,
         Range = 51.77,
@@ -13503,7 +13503,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 691.6,
         },
     },
-    { -- Step 97
+    {
         Done = {
             48987,
         },
@@ -13512,7 +13512,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 760.9,
         },
     },
-    { -- Step 98
+    {
         PickUp = {
             48988,
             49005,
@@ -13522,7 +13522,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 760.9,
         },
     },
-    { -- Step 99
+    {
         Qpart = {
             [48988] = {
                 1,
@@ -13538,7 +13538,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 814.4,
         },
     },
-    { -- Step 100
+    {
         Done = {
             48988,
             49005,
@@ -13548,7 +13548,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 761.2,
         },
     },
-    { -- Step 101
+    {
         PickUp = {
             48889,
         },
@@ -13557,7 +13557,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 761.2,
         },
     },
-    { -- Step 102
+    {
         RaidIcon = 127989,
         Waypoint = 48889,
         Range = 6.95,
@@ -13566,7 +13566,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 741.4,
         },
     },
-    { -- Step 103
+    {
         Qpart = {
             [48889] = {
                 1,
@@ -13578,7 +13578,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 718.2,
         },
     },
-    { -- Step 104
+    {
         Done = {
             48889,
         },
@@ -13587,7 +13587,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 712.5,
         },
     },
-    { -- Step 105
+    {
         PickUp = {
             48996,
         },
@@ -13596,7 +13596,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 712.5,
         },
     },
-    { -- Step 106
+    {
         UseHS = 48996,
         Coord = {
             x = 3128.1,
@@ -13606,7 +13606,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             ["22345678-1"] = 6948,
         },
     },
-    { -- Step 107
+    {
         Waypoint = 48996,
         Range = 11.47,
         Coord = {
@@ -13614,7 +13614,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 268.8,
         },
     },
-    { -- Step 108
+    {
         ExtraActionB = 1,
         Qpart = {
             [48996] = {
@@ -13627,7 +13627,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 203.9,
         },
     },
-    { -- Step 109
+    {
         Done = {
             48996,
         },
@@ -13636,7 +13636,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 178.6,
         },
     },
-    { -- Step 110
+    {
         PickUp = {
             50913,
         },
@@ -13645,7 +13645,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 180.6,
         },
     },
-    { -- Step 111
+    {
         Qpart = {
             [50913] = {
                 1,
@@ -13657,7 +13657,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 152.1,
         },
     },
-    { -- Step 112
+    {
         Done = {
             50913,
         },
@@ -13666,7 +13666,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 177.8,
         },
     },
-    { -- Step 113
+    {
         PickUp = {
             47874,
         },
@@ -13675,7 +13675,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 175.6,
         },
     },
-    { -- Step 114
+    {
         RaidIcon = 130667,
         Coord = {
             x = 3093.1,
@@ -13686,7 +13686,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             47874,
         },
     },
-    { -- Step 115
+    {
         PickUp = {
             48896,
         },
@@ -13695,7 +13695,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 284.8,
         },
     },
-    { -- Step 116
+    {
         Qpart = {
             [48896] = {
                 1,
@@ -13708,7 +13708,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 282.5,
         },
     },
-    { -- Step 117
+    {
         Qpart = {
             [48896] = {
                 2,
@@ -13721,7 +13721,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 596.6,
         },
     },
-    { -- Step 118
+    {
         Qpart = {
             [48896] = {
                 3,
@@ -13733,7 +13733,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 596.6,
         },
     },
-    { -- Step 119
+    {
         Done = {
             48896,
         },
@@ -13742,7 +13742,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 609.2,
         },
     },
-    { -- Step 120
+    {
         PickUp = {
             47716,
         },
@@ -13751,7 +13751,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 609.2,
         },
     },
-    { -- Step 121
+    {
         Waypoint = 47716,
         Range = 11.68,
         Coord = {
@@ -13759,7 +13759,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 817.7,
         },
     },
-    { -- Step 122
+    {
         Qpart = {
             [47716] = {
                 1,
@@ -13771,7 +13771,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 882.7,
         },
     },
-    { -- Step 123
+    {
         Done = {
             47716,
         },
@@ -13780,7 +13780,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 901.2,
         },
     },
-    { -- Step 124
+    {
         PickUp = {
             48314,
             48313,
@@ -13790,7 +13790,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 903.9,
         },
     },
-    { -- Step 125
+    {
         PickUp = {
             51573,
         },
@@ -13807,7 +13807,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 915.6,
         },
     },
-    { -- Step 126
+    {
         Qpart = {
             [51573] = {
                 1,
@@ -13820,7 +13820,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 915.6,
         },
     },
-    { -- Step 127
+    {
         ETA = 81,
         SpecialETAHide = 1,
         GetFP = 2143,
@@ -13830,7 +13830,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 890.1,
         },
     },
-    { -- Step 128
+    {
         SpecialETAHide = 1,
         SetHS = 51573,
         Coord = {
@@ -13838,7 +13838,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 865.7,
         },
     },
-    { -- Step 129
+    {
         Qpart = {
             [51573] = {
                 2,
@@ -13850,7 +13850,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 977.1,
         },
     },
-    { -- Step 130
+    {
         Done = {
             51573,
         },
@@ -13859,7 +13859,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 969.2,
         },
     },
-    { -- Step 131
+    {
         PickUp = {
             48529,
             48530,
@@ -13869,7 +13869,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 970.4,
         },
     },
-    { -- Step 132
+    {
         Done = {
             48529,
         },
@@ -13878,7 +13878,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 850.5,
         },
     },
-    { -- Step 133
+    {
         PickUp = {
             48531,
             48533,
@@ -13888,7 +13888,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 850.5,
         },
     },
-    { -- Step 134
+    {
         Waypoint = 48530,
         Range = 10.91,
         Coord = {
@@ -13896,7 +13896,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 836.9,
         },
     },
-    { -- Step 135
+    {
         Waypoint = 48530,
         Range = 9.72,
         Coord = {
@@ -13904,7 +13904,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 837.9,
         },
     },
-    { -- Step 136
+    {
         Done = {
             48530,
         },
@@ -13913,7 +13913,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 877.1,
         },
     },
-    { -- Step 137
+    {
         PickUp = {
             48532,
         },
@@ -13922,7 +13922,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 877.1,
         },
     },
-    { -- Step 138
+    {
         PickUp = {
             48585,
         },
@@ -13951,7 +13951,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [251267] = 5,
         },
     },
-    { -- Step 139
+    {
         Qpart = {
             [48532] = {
                 1,
@@ -13978,7 +13978,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 992.1,
         },
     },
-    { -- Step 140
+    {
         Qpart = {
             [48533] = {
                 1,
@@ -13999,7 +13999,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 939.5,
         },
     },
-    { -- Step 141
+    {
         Coord = {
             x = 3734,
             y = 915,
@@ -14008,7 +14008,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             48585,
         },
     },
-    { -- Step 142
+    {
         Coord = {
             x = 3713,
             y = 850.1,
@@ -14018,7 +14018,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             48533,
         },
     },
-    { -- Step 143
+    {
         PickUp = {
             48655,
         },
@@ -14027,7 +14027,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 850.1,
         },
     },
-    { -- Step 144
+    {
         Range = 10.15,
         Waypoint = 48655,
         Coord = {
@@ -14035,7 +14035,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 833.7,
         },
     },
-    { -- Step 145
+    {
         Coord = {
             x = 3820.4,
             y = 875.9,
@@ -14044,7 +14044,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             48532,
         },
     },
-    { -- Step 146
+    {
         PickUp = {
             48534,
         },
@@ -14053,7 +14053,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 876,
         },
     },
-    { -- Step 147
+    {
         Range = 6.15,
         Waypoint = 48655,
         Coord = {
@@ -14061,7 +14061,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 738.6,
         },
     },
-    { -- Step 148
+    {
         Coord = {
             x = 3734,
             y = 765.7,
@@ -14070,7 +14070,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             48655,
         },
     },
-    { -- Step 149
+    {
         PickUp = {
             48656,
             48657,
@@ -14080,7 +14080,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 765.7,
         },
     },
-    { -- Step 150
+    {
         Waypoint = 48534,
         Range = 11.36,
         Coord = {
@@ -14096,7 +14096,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 151
+    {
         Qpart = {
             [48534] = {
                 1,
@@ -14116,7 +14116,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 152
+    {
         Qpart = {
             [48657] = {
                 1,
@@ -14131,7 +14131,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 594.9,
         },
     },
-    { -- Step 153
+    {
         Coord = {
             x = 3736.4,
             y = 765.5,
@@ -14141,7 +14141,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             48657,
         },
     },
-    { -- Step 154
+    {
         Waypoint = 48534,
         Range = 11.23,
         Coord = {
@@ -14149,7 +14149,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 737,
         },
     },
-    { -- Step 155
+    {
         Waypoint = 48534,
         Range = 8.69,
         Coord = {
@@ -14157,7 +14157,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 740.7,
         },
     },
-    { -- Step 156
+    {
         Waypoint = 48534,
         Range = 10.13,
         Coord = {
@@ -14165,7 +14165,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 755.9,
         },
     },
-    { -- Step 157
+    {
         Waypoint = 48534,
         Range = 7.98,
         Coord = {
@@ -14173,7 +14173,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 765.6,
         },
     },
-    { -- Step 158
+    {
         Waypoint = 48534,
         Range = 11.59,
         Coord = {
@@ -14181,7 +14181,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 810.2,
         },
     },
-    { -- Step 159
+    {
         Waypoint = 48534,
         Range = 13.34,
         Coord = {
@@ -14189,7 +14189,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 837.2,
         },
     },
-    { -- Step 160
+    {
         Done = {
             48534,
         },
@@ -14198,7 +14198,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 876.4,
         },
     },
-    { -- Step 161
+    {
         Waypoint = 51668,
         Range = 12.48,
         Coord = {
@@ -14206,7 +14206,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 836.1,
         },
     },
-    { -- Step 162
+    {
         PickUp = {
             48846,
         },
@@ -14215,7 +14215,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 842.7,
         },
     },
-    { -- Step 163
+    {
         BuyMerchant = 160499,
         Qpart = {
             [48846] = {
@@ -14228,7 +14228,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 870.7,
         },
     },
-    { -- Step 164
+    {
         Qpart = {
             [48846] = {
                 2,
@@ -14241,7 +14241,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 843.7,
         },
     },
-    { -- Step 165
+    {
         Done = {
             48846,
         },
@@ -14250,7 +14250,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 914.7,
         },
     },
-    { -- Step 166
+    {
         PickUp = {
             51602,
             48790,
@@ -14261,7 +14261,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 914.7,
         },
     },
-    { -- Step 167
+    {
         Range = 8.84,
         Waypoint = 48850,
         Coord = {
@@ -14277,7 +14277,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 168
+    {
         Qpart = {
             [48850] = {
                 1,
@@ -14297,7 +14297,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 886.1,
         },
     },
-    { -- Step 169
+    {
         Qpart = {
             [51602] = {
                 1,
@@ -14312,7 +14312,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 886,
         },
     },
-    { -- Step 170
+    {
         Coord = {
             x = 3733.4,
             y = 915.5,
@@ -14323,7 +14323,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             48850,
         },
     },
-    { -- Step 171
+    {
         PickUp = {
             48847,
         },
@@ -14332,7 +14332,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 915.5,
         },
     },
-    { -- Step 172
+    {
         Qpart = {
             [48847] = {
                 1,
@@ -14345,7 +14345,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 878.4,
         },
     },
-    { -- Step 173
+    {
         Done = {
             48847,
         },
@@ -14354,7 +14354,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 915.7,
         },
     },
-    { -- Step 174
+    {
         PickUp = {
             51668,
         },
@@ -14363,7 +14363,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 915.7,
         },
     },
-    { -- Step 175
+    {
         Qpart = {
             [51668] = {
                 1,
@@ -14378,7 +14378,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 979.7,
         },
     },
-    { -- Step 176
+    {
         Coord = {
             x = 3733.6,
             y = 915.1,
@@ -14387,7 +14387,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             51668,
         },
     },
-    { -- Step 178
+    {
         PickUp = {
             51161,
         },
@@ -14396,7 +14396,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 861.2,
         },
     },
-    { -- Step 179
+    {
         PickUp = {
             51772,
         },
@@ -14405,7 +14405,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 850.7,
         },
     },
-    { -- Step 1
+    {
         Fillers = {
             [48314] = {
                 1,
@@ -14421,7 +14421,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 920.7,
         },
     },
-    { -- Step 1
+    {
         Range = 11.59,
         Waypoint = 51161,
         Coord = {
@@ -14429,7 +14429,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 971.7,
         },
     },
-    { -- Step 1
+    {
         Qpart = {
             [51161] = {
                 1,
@@ -14441,7 +14441,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1004.2,
         },
     },
-    { -- Step 1
+    {
         PickUp = {
             51775,
         },
@@ -14458,7 +14458,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 876.7,
         },
     },
-    { -- Step 1
+    {
         Done = {
             51775,
         },
@@ -14467,7 +14467,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 826.7,
         },
     },
-    { -- Step 1
+    {
         PickUp = {
             48324,
         },
@@ -14476,7 +14476,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 826.7,
         },
     },
-    { -- Step 1
+    {
         PickUp = {
             51162,
         },
@@ -14485,7 +14485,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 842,
         },
     },
-    { -- Step 1
+    {
         Waypoint = 51162,
         Range = 9.22,
         Coord = {
@@ -14493,7 +14493,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1124.4,
         },
     },
-    { -- Step 1
+    {
         Qpart = {
             [51162] = {
                 1,
@@ -14505,7 +14505,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1121.9,
         },
     },
-    { -- Step 1
+    {
         Done = {
             51162,
         },
@@ -14514,7 +14514,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 827,
         },
     },
-    { -- Step 1
+    {
         Waypoint = 48324,
         Range = 16.87,
         Coord = {
@@ -14522,7 +14522,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 777.9,
         },
     },
-    { -- Step 1
+    {
         Done = {
             48324,
         },
@@ -14531,7 +14531,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 546.7,
         },
     },
-    { -- Step 1
+    {
 
         PickUp = {
             51053,
@@ -14541,7 +14541,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 532.7,
         },
     },
-    { -- Step 1
+    {
 
         Qpart = {
             [51053] = {
@@ -14557,7 +14557,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 461.3,
         },
     },
-    { -- Step 1
+    {
 
         Done = {
             51053,
@@ -14567,7 +14567,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 532.4,
         },
     },
-    { -- Step 1
+    {
 
         PickUp = {
             51054,
@@ -14577,7 +14577,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 531.6,
         },
     },
-    { -- Step 1
+    {
 
         Qpart = {
             [51054] = {
@@ -14590,7 +14590,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 531.6,
         },
     },
-    { -- Step 1
+    {
 
         Done = {
             51054,
@@ -14600,7 +14600,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 559.2,
         },
     },
-    { -- Step 2
+    {
 
         PickUp = {
             51055,
@@ -14611,7 +14611,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 559.2,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [51055] = {
@@ -14629,7 +14629,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 792.1,
         },
     },
-    { -- Step 2
+    {
 
         Waypoint = 51056,
         Range = 13.23,
@@ -14643,7 +14643,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [51056] = {
@@ -14664,7 +14664,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 793.7,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [51055] = {
@@ -14682,7 +14682,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 799.4,
         },
     },
-    { -- Step 2
+    {
 
         Waypoint = 51055,
         Range = 9.65,
@@ -14696,7 +14696,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [51055] = {
@@ -14714,7 +14714,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 836.5,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [51056] = {
@@ -14735,7 +14735,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 915.2,
         },
     },
-    { -- Step 2
+    {
         UseGlider = 1,
 
         Range = 11.64,
@@ -14750,7 +14750,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 2
+    {
 
         Coord = {
             x = 4283.1,
@@ -14761,7 +14761,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             51055,
         },
     },
-    { -- Step 2
+    {
 
         PickUp = {
             49138,
@@ -14788,7 +14788,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [268665] = 3,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [47499] = {
@@ -14821,7 +14821,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 647.1,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [47499] = {
@@ -14854,7 +14854,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 813.7,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [47499] = {
@@ -14887,7 +14887,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 799,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [49138] = {
@@ -14917,7 +14917,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 742.4,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [49138] = {
@@ -14947,7 +14947,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 742.4,
         },
     },
-    { -- Step 2
+    {
 
         Done = {
             49138,
@@ -14974,7 +14974,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             [268665] = 3,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [47647] = {
@@ -14999,7 +14999,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 735.5,
         },
     },
-    { -- Step 2
+    {
 
         Done = {
             47499,
@@ -15011,7 +15011,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
         LeaveQuest = 51059,
     },
-    { -- Step 2
+    {
 
         UseHS = 48313,
         Coord = {
@@ -15023,7 +15023,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             ["22345678-1"] = 6948,
         },
     },
-    { -- Step 2
+    {
         Coord = {
             x = 3734.1,
             y = 915.2,
@@ -15033,7 +15033,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             51161,
         },
     },
-    { -- Step 2
+    {
         Qpart = {
             [48314] = {
                 1,
@@ -15048,7 +15048,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 956.2,
         },
     },
-    { -- Step 2
+    {
         Waypoint = 48314,
         Range = 33.53,
         Coord = {
@@ -15056,7 +15056,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 908.7,
         },
     },
-    { -- Step 2
+    {
         Done = {
             48314,
             48313,
@@ -15066,7 +15066,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 904.2,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             50770,
         },
@@ -15075,7 +15075,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 904.2,
         },
     },
-    { -- Step 2
+    {
         SpecialMacro = 1,
         Qpart = {
             [50770] = {
@@ -15091,7 +15091,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 899.2,
         },
     },
-    { -- Step 2
+    {
         Coord = {
             x = 3484.4,
             y = 899.2,
@@ -15100,7 +15100,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             50770,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             50539,
         },
@@ -15109,7 +15109,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 899.2,
         },
     },
-    { -- Step 2
+    {
         Range = 10.76,
         Waypoint = 50539,
         Coord = {
@@ -15117,7 +15117,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 926.5,
         },
     },
-    { -- Step 2
+    {
         Range = 5.71,
         Waypoint = 50539,
         Coord = {
@@ -15125,7 +15125,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 972.7,
         },
     },
-    { -- Step 2
+    {
         Range = 8.15,
         Waypoint = 50539,
         Coord = {
@@ -15133,7 +15133,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 927.7,
         },
     },
-    { -- Step 2
+    {
         Range = 15.35,
         Waypoint = 50539,
         Coord = {
@@ -15141,7 +15141,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 968.9,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             50536,
         },
@@ -15150,7 +15150,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1034,
         },
     },
-    { -- Step 2
+    {
         Qpart = {
             [50536] = {
                 1,
@@ -15162,7 +15162,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1036.5,
         },
     },
-    { -- Step 2
+    {
         Coord = {
             x = 3358.6,
             y = 954.9,
@@ -15171,7 +15171,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             50539,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             48315,
         },
@@ -15180,7 +15180,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 955,
         },
     },
-    { -- Step 2
+    {
         Qpart = {
             [50536] = {
                 2,
@@ -15192,7 +15192,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 934.2,
         },
     },
-    { -- Step 2
+    {
         Qpart = {
             [50536] = {
                 3,
@@ -15204,7 +15204,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 873,
         },
     },
-    { -- Step 2
+    {
         Qpart = {
             [50536] = {
                 4,
@@ -15216,7 +15216,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 931.7,
         },
     },
-    { -- Step 2
+    {
         Range = 11.47,
         Waypoint = 48315,
         Coord = {
@@ -15224,7 +15224,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 966.4,
         },
     },
-    { -- Step 2
+    {
         Range = 13.25,
         Waypoint = 48315,
         Coord = {
@@ -15232,7 +15232,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1000.1,
         },
     },
-    { -- Step 2
+    {
         QpartPart = {
             [48315] = {
                 1,
@@ -15245,7 +15245,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1014.1,
         },
     },
-    { -- Step 2
+    {
         Range = 11.22,
         Waypoint = 48315,
         Coord = {
@@ -15253,7 +15253,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1071.8,
         },
     },
-    { -- Step 2
+    {
         QpartPart = {
             [48315] = {
                 1,
@@ -15266,7 +15266,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1053,
         },
     },
-    { -- Step 2
+    {
         Coord = {
             x = 3358.5,
             y = 955.4,
@@ -15275,7 +15275,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             48315,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             50561,
         },
@@ -15284,7 +15284,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 965.2,
         },
     },
-    { -- Step 2
+    {
         Range = 21.47,
         Waypoint = 50536,
         Coord = {
@@ -15292,7 +15292,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 967.9,
         },
     },
-    { -- Step 2
+    {
         Range = 5.48,
         Waypoint = 50536,
         Coord = {
@@ -15300,7 +15300,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1015.7,
         },
     },
-    { -- Step 2
+    {
         Done = {
             50536,
         },
@@ -15309,7 +15309,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1034.5,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             48871,
         },
@@ -15318,7 +15318,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1034.5,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             48872,
         },
@@ -15327,7 +15327,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1039.9,
         },
     },
-    { -- Step 2
+    {
         Waypoint = 48871,
         Range = 11.34,
         Coord = {
@@ -15335,7 +15335,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1005.2,
         },
     },
-    { -- Step 2
+    {
         Qpart = {
             [48872] = {
                 1,
@@ -15350,7 +15350,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 972.9,
         },
     },
-    { -- Step 2
+    {
         Waypoint = 48871,
         Range = 8.75,
         Coord = {
@@ -15358,7 +15358,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1005.7,
         },
     },
-    { -- Step 2
+    {
         Done = {
             48872,
             48871,
@@ -15368,7 +15368,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1034.3,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             50535,
         },
@@ -15377,7 +15377,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1034.3,
         },
     },
-    { -- Step 2
+    {
         Waypoint = 50535,
         Range = 8.13,
         Coord = {
@@ -15385,7 +15385,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 967.9,
         },
     },
-    { -- Step 2
+    {
         Waypoint = 50535,
         Range = 9.54,
         Coord = {
@@ -15393,7 +15393,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 841.6,
         },
     },
-    { -- Step 2
+    {
         Qpart = {
             [50535] = {
                 1,
@@ -15405,7 +15405,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 853.9,
         },
     },
-    { -- Step 2
+    {
         Waypoint = 50535,
         Range = 7.43,
         Coord = {
@@ -15413,7 +15413,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1008.6,
         },
     },
-    { -- Step 2
+    {
         Done = {
             50535,
         },
@@ -15422,7 +15422,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1034,
         },
     },
-    { -- Step 2
+    {
         Waypoint = 50561,
         Range = 17.43,
         Coord = {
@@ -15430,7 +15430,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 918.5,
         },
     },
-    { -- Step 2
+    {
         Done = {
             50561,
         },
@@ -15439,7 +15439,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 900.1,
         },
     },
-    { -- Step 2
+    {
         Qpart = {
             [47324] = {
                 1,
@@ -15451,7 +15451,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 910.7,
         },
     },
-    { -- Step 2
+    {
         Done = {
             47324,
         },
@@ -15461,7 +15461,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1888.3,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             49334,
             50641,
@@ -15472,7 +15472,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1890.4,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             50818,
         },
@@ -15481,7 +15481,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1856.5,
         },
     },
-    { -- Step 2
+    {
         Qpart = {
             [49334] = {
                 1,
@@ -15503,7 +15503,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1976.9,
         },
     },
-    { -- Step 2
+    {
         Qpart = {
             [50641] = {
                 1,
@@ -15520,7 +15520,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1978.4,
         },
     },
-    { -- Step 2
+    {
         Waypoint = 49327,
         Range = 20.71,
         Coord = {
@@ -15528,7 +15528,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1883.3,
         },
     },
-    { -- Step 2
+    {
         Done = {
             50641,
             49327,
@@ -15538,14 +15538,14 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1891.3,
         },
     },
-    { -- Step 2
+    {
         SetHS = 49340,
         Coord = {
             x = 4859.5,
             y = 1963.7,
         },
     },
-    { -- Step 2
+    {
         Done = {
             49334,
         },
@@ -15554,7 +15554,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1949.9,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             49340,
         },
@@ -15563,7 +15563,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1950.7,
         },
     },
-    { -- Step 2
+    {
         Qpart = {
             [49340] = {
                 1,
@@ -15576,7 +15576,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1950.7,
         },
     },
-    { -- Step 2
+    {
         Done = {
             49340,
         },
@@ -15585,7 +15585,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1951.2,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             49662,
         },
@@ -15594,7 +15594,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1951.2,
         },
     },
-    { -- Step 2
+    {
         Waypoint = 50656,
         Range = 5.42,
         Coord = {
@@ -15602,7 +15602,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1953.4,
         },
     },
-    { -- Step 2
+    {
         GetFP = 2162,
         Range = 2.8,
         Coord = {
@@ -15610,7 +15610,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2052,
         },
     },
-    { -- Step 2
+    {
         ExtraLineText = "MISSING_Q",
         PickUp = {
             48332,
@@ -15622,7 +15622,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2240.6,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [48334] = {
@@ -15643,7 +15643,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2052.5,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [49001] = {
@@ -15659,7 +15659,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2056.1,
         },
     },
-    { -- Step 2
+    {
 
         Done = {
             48332,
@@ -15671,7 +15671,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2241.1,
         },
     },
-    { -- Step 2
+    {
 
         PickUp = {
             48335,
@@ -15683,7 +15683,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2241.3,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [49139] = {
@@ -15707,7 +15707,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2321.6,
         },
     },
-    { -- Step 2
+    {
 
         Waypoint = 49139,
         Range = 11.63,
@@ -15727,7 +15727,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             ["48331-1"] = 154051,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [49139] = {
@@ -15751,7 +15751,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2381.1,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [48331] = {
@@ -15770,7 +15770,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2359,
         },
     },
-    { -- Step 2
+    {
 
         Done = {
             48335,
@@ -15782,7 +15782,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2240,
         },
     },
-    { -- Step 2
+    {
 
         PickUp = {
             48330,
@@ -15792,7 +15792,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2240.8,
         },
     },
-    { -- Step 2
+    {
 
         Waypoint = 48330,
         Range = 12.49,
@@ -15801,7 +15801,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2309,
         },
     },
-    { -- Step 2
+    {
 
         Qpart = {
             [48330] = {
@@ -15814,7 +15814,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2442.8,
         },
     },
-    { -- Step 2
+    {
 
         Done = {
             48330,
@@ -15824,7 +15824,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2240.8,
         },
     },
-    { -- Step 2
+    {
         Done = {
             49662,
         },
@@ -15833,7 +15833,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2713.4,
         },
     },
-    { -- Step 2
+    {
         PickUp = {
             50745,
         },
@@ -15842,7 +15842,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2713.4,
         },
     },
-    { -- Step 2
+    {
         SpecialETAHide = 1,
         ETA = 79,
         RaidIcon = 135172,
@@ -15853,7 +15853,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2792.9,
         },
     },
-    { -- Step 2
+    {
         SpecialETAHide = 1,
         Range = 9.57,
         Waypoint = 50745,
@@ -15862,7 +15862,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2793.6,
         },
     },
-    { -- Step 2
+    {
         SpecialETAHide = 1,
         Range = 13.93,
         Waypoint = 50745,
@@ -15871,7 +15871,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2769,
         },
     },
-    { -- Step 2
+    {
         SpecialETAHide = 1,
         Range = 18.17,
         Waypoint = 50745,
@@ -15880,7 +15880,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2758.6,
         },
     },
-    { -- Step 2
+    {
         SpecialETAHide = 1,
         Range = 14.89,
         Waypoint = 50745,
@@ -15889,7 +15889,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2753.1,
         },
     },
-    { -- Step 3
+    {
         SpecialETAHide = 1,
         Range = 4.91,
         GetFP = 2111,
@@ -15898,7 +15898,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2738,
         },
     },
-    { -- Step 3
+    {
         SpecialETAHide = 1,
         Range = 5.58,
         Waypoint = 50745,
@@ -15907,7 +15907,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2730,
         },
     },
-    { -- Step 3
+    {
         Coord = {
             x = 3422.4,
             y = 2686.6,
@@ -15916,7 +15916,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             50745,
         },
     },
-    { -- Step 3
+    {
         PickUp = {
             49664,
             49667,
@@ -15926,7 +15926,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2682.1,
         },
     },
-    { -- Step 3
+    {
         Waypoint = 49664,
         Range = 7.77,
         Coord = {
@@ -15934,7 +15934,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2732.6,
         },
     },
-    { -- Step 3
+    {
         Waypoint = 49664,
         Range = 13.86,
         Coord = {
@@ -15942,7 +15942,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2778.1,
         },
     },
-    { -- Step 3
+    {
         Done = {
             49664,
         },
@@ -15951,7 +15951,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2829.6,
         },
     },
-    { -- Step 3
+    {
         PickUp = {
             49665,
             49666,
@@ -15961,7 +15961,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2829.6,
         },
     },
-    { -- Step 3
+    {
         ExtraLineText = "USE_BANNER_ON_CORPSES",
         Qpart = {
             [49667] = {
@@ -15992,7 +15992,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2875.9,
         },
     },
-    { -- Step 3
+    {
         ExtraLineText = "USE_BANNER_ON_CORPSES",
         Qpart = {
             [49666] = {
@@ -16018,7 +16018,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2875.6,
         },
     },
-    { -- Step 3
+    {
         Waypoint = 49665,
         Range = 8.78,
         Coord = {
@@ -16026,7 +16026,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2802.1,
         },
     },
-    { -- Step 3
+    {
         Coord = {
             x = 3547.1,
             y = 2829.6,
@@ -16036,7 +16036,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             49666,
         },
     },
-    { -- Step 3
+    {
         PickUp = {
             49668,
         },
@@ -16045,7 +16045,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2829.6,
         },
     },
-    { -- Step 3
+    {
         PickUp = {
             50746,
         },
@@ -16054,7 +16054,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2831.6,
         },
     },
-    { -- Step 3
+    {
         Range = 12.14,
         Waypoint = 50746,
         Coord = {
@@ -16062,7 +16062,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2775.6,
         },
     },
-    { -- Step 3
+    {
         Range = 6.54,
         Waypoint = 50746,
         Coord = {
@@ -16070,7 +16070,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2730.3,
         },
     },
-    { -- Step 3
+    {
         Coord = {
             x = 3421.6,
             y = 2681.6,
@@ -16080,7 +16080,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             49667,
         },
     },
-    { -- Step 3
+    {
         PickUp = {
             49141,
             50748,
@@ -16090,7 +16090,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2682.5,
         },
     },
-    { -- Step 3
+    {
         Range = 11.7,
         Waypoint = 49668,
         Coord = {
@@ -16098,7 +16098,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2770.1,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [49668] = {
                 1,
@@ -16119,7 +16119,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2834.3,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [49668] = {
                 2,
@@ -16140,7 +16140,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2827.6,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [49668] = {
                 3,
@@ -16161,7 +16161,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2823.4,
         },
     },
-    { -- Step 3
+    {
         PickUp = {
             49437,
         },
@@ -16170,7 +16170,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2783.3,
         },
     },
-    { -- Step 3
+    {
         Coord = {
             x = 2914.1,
             y = 2747.3,
@@ -16179,7 +16179,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             49668,
         },
     },
-    { -- Step 3
+    {
         PickUp = {
             49669,
             50757,
@@ -16189,7 +16189,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2748.3,
         },
     },
-    { -- Step 3
+    {
         Waypoint = 50757,
         Range = 10.46,
         Coord = {
@@ -16202,7 +16202,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 3
+    {
         Waypoint = 50757,
         Range = 8.29,
         Coord = {
@@ -16215,7 +16215,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [49437] = {
                 1,
@@ -16232,7 +16232,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2830.6,
         },
     },
-    { -- Step 3
+    {
         Waypoint = 50757,
         Range = 17.44,
         Coord = {
@@ -16245,7 +16245,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 3
+    {
         Waypoint = 50757,
         Range = 11.25,
         Coord = {
@@ -16258,7 +16258,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [49669] = {
                 1,
@@ -16275,7 +16275,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2939.3,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [50757] = {
                 1,
@@ -16287,7 +16287,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2936.1,
         },
     },
-    { -- Step 3
+    {
         Done = {
             50757,
             49669,
@@ -16297,7 +16297,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2747.1,
         },
     },
-    { -- Step 3
+    {
         PickUp = {
             50749,
         },
@@ -16306,7 +16306,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2747.1,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [50749] = {
                 1,
@@ -16318,7 +16318,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2739.1,
         },
     },
-    { -- Step 3
+    {
         Waypoint = 50749,
         Range = 33.72,
         Coord = {
@@ -16326,7 +16326,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2807.9,
         },
     },
-    { -- Step 3
+    {
         Waypoint = 50749,
         Range = 27.42,
         Coord = {
@@ -16334,7 +16334,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2819.6,
         },
     },
-    { -- Step 3
+    {
         Waypoint = 50749,
         Range = 27.01,
         Coord = {
@@ -16342,7 +16342,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2774,
         },
     },
-    { -- Step 3
+    {
         Range = 7.83,
         Waypoint = 50749,
         Coord = {
@@ -16350,7 +16350,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2728.6,
         },
     },
-    { -- Step 3
+    {
         Coord = {
             x = 3420.3,
             y = 2679.5,
@@ -16360,7 +16360,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             49437,
         },
     },
-    { -- Step 3
+    {
         Waypoint = 50748,
         Range = 9.39,
         Coord = {
@@ -16368,7 +16368,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2731.9,
         },
     },
-    { -- Step 3
+    {
         Waypoint = 50748,
         Range = 12.57,
         Coord = {
@@ -16376,7 +16376,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2771.1,
         },
     },
-    { -- Step 3
+    {
         Waypoint = 50748,
         Range = 12.46,
         Coord = {
@@ -16384,7 +16384,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2741.8,
         },
     },
-    { -- Step 3
+    {
         Waypoint = 50748,
         Range = 19.45,
         Coord = {
@@ -16400,7 +16400,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 3
+    {
         Waypoint = 48329,
         Range = 18.52,
         Coord = {
@@ -16416,7 +16416,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 3
+    {
         Waypoint = 48329,
         Range = 8.95,
         Coord = {
@@ -16432,7 +16432,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 3
+    {
         Waypoint = 48329,
         Range = 8.95,
         Coord = {
@@ -16453,7 +16453,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 3
+    {
         DroppableQuest = {
             Text = "Beastbreaker Hakid",
             Qid = 48329,
@@ -16473,7 +16473,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [48329] = {
                 1,
@@ -16493,7 +16493,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             },
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [49141] = {
                 1,
@@ -16508,7 +16508,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2610.6,
         },
     },
-    { -- Step 3
+    {
         Range = 14.48,
         Waypoint = 49141,
         Coord = {
@@ -16516,7 +16516,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2620.1,
         },
     },
-    { -- Step 3
+    {
         Range = 7.15,
         Waypoint = 49141,
         Coord = {
@@ -16524,7 +16524,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2559.6,
         },
     },
-    { -- Step 3
+    {
         PickUp = {
             49002,
         },
@@ -16533,7 +16533,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2579.9,
         },
     },
-    { -- Step 3
+    {
         ExtraLineText = "SPEAR_DOWN_THE_UFO",
         SpecialMacro2 = 1,
         DenyNPC = 129763,
@@ -16557,7 +16557,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2568.1,
         },
     },
-    { -- Step 3
+    {
         Coord = {
             x = 3477.6,
             y = 2553.1,
@@ -16566,7 +16566,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             49002,
         },
     },
-    { -- Step 3
+    {
         Coord = {
             x = 3473.6,
             y = 2562,
@@ -16576,7 +16576,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             50748,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [49003] = {
                 1,
@@ -16588,7 +16588,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2551.4,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [49003] = {
                 3,
@@ -16601,7 +16601,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 2861.6,
         },
     },
-    { -- Step 3
+    {
         Done = {
             49003,
         },
@@ -16610,7 +16610,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 3032.8,
         },
     },
-    { -- Step 3
+    {
         PickUp = {
             50750,
             50752,
@@ -16620,7 +16620,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 3032.8,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [50752] = {
                 1,
@@ -16637,7 +16637,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 3043.4,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [50752] = {
                 2,
@@ -16654,7 +16654,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 3124.6,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [50752] = {
                 3,
@@ -16671,7 +16671,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 3149.6,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [50752] = {
                 4,
@@ -16688,7 +16688,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 3229.9,
         },
     },
-    { -- Step 3
+    {
         Done = {
             50750,
             50752,
@@ -16698,7 +16698,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 3034.4,
         },
     },
-    { -- Step 3
+    {
         PickUp = {
             50550,
         },
@@ -16707,7 +16707,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 3034,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [50550] = {
                 1,
@@ -16720,7 +16720,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 3034,
         },
     },
-    { -- Step 3
+    {
         Bloodlust = 1,
         Qpart = {
             [50550] = {
@@ -16733,7 +16733,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 3128,
         },
     },
-    { -- Step 3
+    {
         Coord = {
             x = 3149.3,
             y = 3080.3,
@@ -16742,7 +16742,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             50550,
         },
     },
-    { -- Step 3
+    {
         PickUp = {
             50751,
         },
@@ -16751,7 +16751,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 3080.3,
         },
     },
-    { -- Step 3
+    {
         Qpart = {
             [50805] = {
                 1,
@@ -16763,7 +16763,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 3139.3,
         },
     },
-    { -- Step 3
+    {
         Button = {
             ["22345678-1"] = 6948,
         },
@@ -16773,7 +16773,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 3080.3,
         },
     },
-    { -- Step 3
+    {
         Range = 6.69,
         Waypoint = 50751,
         Coord = {
@@ -16781,7 +16781,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1926,
         },
     },
-    { -- Step 3
+    {
         Range = 7.74,
         Waypoint = 50751,
         Coord = {
@@ -16789,7 +16789,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1927.5,
         },
     },
-    { -- Step 3
+    {
         Range = 8.15,
         Waypoint = 50751,
         Coord = {
@@ -16797,7 +16797,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1950.7,
         },
     },
-    { -- Step 3
+    {
         Coord = {
             x = 4845.3,
             y = 1950.9,
@@ -16806,7 +16806,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             50751,
         },
     },
-    { -- Step 3
+    {
         PickUp = {
             50617,
         },
@@ -16815,7 +16815,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             y = 1950.9,
         },
     },
-    { -- Step 3
+    {
         ExtraLineText = "ZONE_COMPLETE",
         UseDalaHS = 50703,
         Coord = {
@@ -16826,7 +16826,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             ["12112552-1"] = 140192,
         },
     },
-    { -- [Step 3
+    {
         ZoneDoneSave = 1,
     },
 }
