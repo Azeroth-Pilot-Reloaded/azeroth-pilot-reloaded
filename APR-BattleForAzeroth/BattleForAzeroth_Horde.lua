@@ -1,16 +1,16 @@
 -- Orgrimmar part of intro
 APR.RouteQuestStepList["1-Orgrimmar"] = {
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             51443,
         },
-        ["PickUpDB"] = {
+        PickUpDB = {
             51443,
             60361,
         },
-        ["Coord"] = {
-            ["x"] = -4365.8,
-            ["y"] = 1598.5,
+        Coord = {
+            x = -4365.8,
+            y = 1598.5,
         },
     },
     { -- Step 3
@@ -19,30 +19,30 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
                 1,
             },
         },
-        ["QpartDB"] = {
+        QpartDB = {
             51443,
             60361,
         },
-        ["Range"] = 7.73,
-        ["Coord"] = {
-            ["x"] = -4347.9,
-            ["y"] = 1659.8,
+        Range = 7.73,
+        Coord = {
+            x = -4347.9,
+            y = 1659.8,
         },
     },
     { -- Step 4
-        ["Waypoint"] = 51443,
-        ["Range"] = 11.65,
-        ["Coord"] = {
-            ["x"] = -4375.5,
-            ["y"] = 1610.3,
+        Waypoint = 51443,
+        Range = 11.65,
+        Coord = {
+            x = -4375.5,
+            y = 1610.3,
         },
     },
     { -- Step 5
-        ["Waypoint"] = 51443,
-        ["Range"] = 7.36,
-        ["Coord"] = {
-            ["x"] = -4432.7,
-            ["y"] = 1573.7,
+        Waypoint = 51443,
+        Range = 7.36,
+        Coord = {
+            x = -4432.7,
+            y = 1573.7,
         },
     },
     { -- Step 6
@@ -51,36 +51,36 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
                 2,
             },
         },
-        ["QpartDB"] = {
+        QpartDB = {
             51443,
             60361,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -4455.2,
-            ["y"] = 1577,
+        Range = 0.69,
+        Coord = {
+            x = -4455.2,
+            y = 1577,
         },
     },
     { -- Step 7
-        ["Done"] = {
+        Done = {
             51443,
         },
-        ["DoneDB"] = {
+        DoneDB = {
             51443,
             60361,
         },
-        ["Coord"] = {
-            ["x"] = -4452.4,
-            ["y"] = 1577.3,
+        Coord = {
+            x = -4452.4,
+            y = 1577.3,
         },
     },
     { -- Step 8
-        ["PickUp"] = {
+        PickUp = {
             50769,
         },
-        ["Coord"] = {
-            ["x"] = -4452.4,
-            ["y"] = 1577.3,
+        Coord = {
+            x = -4452.4,
+            y = 1577.3,
         },
     },
     { -- Step 9
@@ -89,47 +89,47 @@ APR.RouteQuestStepList["1-Orgrimmar"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -4455.3,
-            ["y"] = 1578.4,
+        Range = 0.69,
+        Coord = {
+            x = -4455.3,
+            y = 1578.4,
         },
     },
     { -- Step 10
-        ["ExtraLineText"] = "SCENARIO",
+        ExtraLineText = "SCENARIO",
         Qpart = {
             [50769] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -4394.8,
-            ["y"] = 1517.4,
+        Range = 0.75,
+        Coord = {
+            x = -4394.8,
+            y = 1517.4,
         },
     },
     { -- [Step 11
-        ["ZoneDoneSave"] = 1,
+        ZoneDoneSave = 1,
     },
 }
 -- Zuldazar part of intro
 APR.RouteQuestStepList["862-Zuldazar"] = {
     { -- Step 1
-        ["Done"] = {
+        Done = {
             50769,
         },
-        ["Coord"] = {
-            ["x"] = 804.7,
-            ["y"] = -2162.2,
+        Coord = {
+            x = 804.7,
+            y = -2162.2,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             46957,
         },
-        ["Coord"] = {
-            ["x"] = 804.4,
-            ["y"] = -2144.9,
+        Coord = {
+            x = 804.4,
+            y = -2144.9,
         },
     },
     { -- Step 3
@@ -138,29 +138,29 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 132661,
-        ["Range"] = 90.35,
-        ["Coord"] = {
-            ["x"] = 803.7,
-            ["y"] = -1808.7,
+        RaidIcon = 132661,
+        Range = 90.35,
+        Coord = {
+            x = 803.7,
+            y = -1808.7,
         },
     },
     { -- Step 4
-        ["Done"] = {
+        Done = {
             46957,
         },
-        ["Coord"] = {
-            ["x"] = 803.7,
-            ["y"] = -1808.7,
+        Coord = {
+            x = 803.7,
+            y = -1808.7,
         },
     },
     { -- Step 5
-        ["PickUp"] = {
+        PickUp = {
             46930,
         },
-        ["Coord"] = {
-            ["x"] = 803.7,
-            ["y"] = -1808.7,
+        Coord = {
+            x = 803.7,
+            y = -1808.7,
         },
     },
     { -- Step 6
@@ -169,11 +169,11 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Gossip"] = 1,
-        ["Coord"] = {
-            ["x"] = 803.2,
-            ["y"] = -1804.0,
+        Range = 0.69,
+        Gossip = 1,
+        Coord = {
+            x = 803.2,
+            y = -1804.0,
         },
     },
     { -- Step 7
@@ -182,58 +182,58 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = 837.7,
-            ["y"] = -1099.9,
+        Gossip = 1,
+        Range = 0.61,
+        Coord = {
+            x = 837.7,
+            y = -1099.9,
         },
     },
     { -- Step 8
-        ["Done"] = {
+        Done = {
             46930,
         },
-        ["Coord"] = {
-            ["x"] = 806.1,
-            ["y"] = -1063.5,
+        Coord = {
+            x = 806.1,
+            y = -1063.5,
         },
     },
     { -- Step 9
-        ["PickUp"] = {
+        PickUp = {
             46931,
         },
-        ["Coord"] = {
-            ["x"] = 806.1,
-            ["y"] = -1063.5,
+        Coord = {
+            x = 806.1,
+            y = -1063.5,
         },
     },
     { -- Step 10
-        ["SayTriggerStartH"] = 1,
-        ["ExtraLineText"] = "FOLLOW_ZOLANI",
-        ["Waypoint"] = 46931,
-        ["Range"] = 5,
-        ["Coord"] = {
-            ["x"] = 816.6,
-            ["y"] = -1096.5,
+        SayTriggerStartH = 1,
+        ExtraLineText = "FOLLOW_ZOLANI",
+        Waypoint = 46931,
+        Range = 5,
+        Coord = {
+            x = 816.6,
+            y = -1096.5,
         },
     },
     { -- Step 11
-        ["SayTriggerStartH"] = 1,
-        ["ExtraLineText"] = "USE_ELEVATOR",
-        ["Waypoint"] = 46931,
-        ["Range"] = 2,
-        ["Coord"] = {
-            ["x"] = 852.2,
-            ["y"] = -1126.4,
+        SayTriggerStartH = 1,
+        ExtraLineText = "USE_ELEVATOR",
+        Waypoint = 46931,
+        Range = 2,
+        Coord = {
+            x = 852.2,
+            y = -1126.4,
         },
     },
     { -- Step 12
-        ["SayTriggerStartH"] = 1,
-        ["Waypoint"] = 46931,
-        ["Range"] = 5,
-        ["Coord"] = {
-            ["x"] = 819.7,
-            ["y"] = -1111.7,
+        SayTriggerStartH = 1,
+        Waypoint = 46931,
+        Range = 5,
+        Coord = {
+            x = 819.7,
+            y = -1111.7,
         },
     },
     { -- Step 13
@@ -243,10 +243,10 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 805.7,
-            ["y"] = -1005.3,
+        Range = 0.69,
+        Coord = {
+            x = 805.7,
+            y = -1005.3,
         },
     },
     { -- Step 14
@@ -255,10 +255,10 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
                 3,
             },
         },
-        ["Range"] = 1.15,
-        ["Coord"] = {
-            ["x"] = 804.7,
-            ["y"] = -1124.8,
+        Range = 1.15,
+        Coord = {
+            x = 804.7,
+            y = -1124.8,
         },
     },
     { -- Step 15
@@ -267,10 +267,10 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
                 4,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 775.9,
-            ["y"] = -1124.3,
+        Range = 0.69,
+        Coord = {
+            x = 775.9,
+            y = -1124.3,
         },
     },
     { -- Step 16
@@ -279,122 +279,122 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
                 5,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 832.9,
-            ["y"] = -1124.0,
+        Range = 0.69,
+        Coord = {
+            x = 832.9,
+            y = -1124.0,
         },
     },
     { -- Step 17
-        ["Range"] = 5.14,
-        ["Waypoint"] = 46931,
-        ["Coord"] = {
-            ["x"] = 812.4,
-            ["y"] = -1124.9,
+        Range = 5.14,
+        Waypoint = 46931,
+        Coord = {
+            x = 812.4,
+            y = -1124.9,
         },
     },
     { -- Step 18
-        ["Range"] = 5.21,
-        ["Waypoint"] = 46931,
-        ["Coord"] = {
-            ["x"] = 814,
-            ["y"] = -1090.7,
+        Range = 5.21,
+        Waypoint = 46931,
+        Coord = {
+            x = 814,
+            y = -1090.7,
         },
     },
     { -- Step 19
-        ["Coord"] = {
-            ["x"] = 818.5,
-            ["y"] = -1120.0,
+        Coord = {
+            x = 818.5,
+            y = -1120.0,
         },
-        ["Done"] = {
+        Done = {
             46931,
         },
     },
     { -- Step 20
-        ["PickUp"] = {
+        PickUp = {
             47514,
         },
-        ["ExtraLineText"] = "SCOUTING_MAP",
-        ["Coord"] = {
-            ["x"] = 818.9,
-            ["y"] = -1119,
+        ExtraLineText = "SCOUTING_MAP",
+        Coord = {
+            x = 818.9,
+            y = -1119,
         },
     },
     { -- Step 21
-        ["Done"] = {
+        Done = {
             47514,
         },
-        ["Coord"] = {
-            ["x"] = 818.9,
-            ["y"] = -1119,
+        Coord = {
+            x = 818.9,
+            y = -1119,
         },
     },
     { -- [Step 22
-        ["ZoneDoneSave"] = 1,
+        ZoneDoneSave = 1,
     },
 }
 -- Zuldazar
 APR.RouteQuestStepList["862-Zuldazar-1"] = {
     { -- [Step 1
-        ["PickUp"] = {
+        PickUp = {
             49615,
         },
-        ["Coord"] = {
-            ["x"] = 819.2,
-            ["y"] = -1120.3,
+        Coord = {
+            x = 819.2,
+            y = -1120.3,
         },
     },
     { -- Step 2
-        ["SetHS"] = 49615,
-        ["Coord"] = {
-            ["x"] = 805.7,
-            ["y"] = -1125.5,
+        SetHS = 49615,
+        Coord = {
+            x = 805.7,
+            y = -1125.5,
         },
-        ["Gossip"] = 1,
-        ["GossipOptionID"] = 47953,
+        Gossip = 1,
+        GossipOptionID = 47953,
     },
     { -- Step 3
-        ["Waypoint"] = 49615,
-        ["Range"] = 5,
-        ["Coord"] = {
-            ["x"] = 815.9,
-            ["y"] = -1138.9,
+        Waypoint = 49615,
+        Range = 5,
+        Coord = {
+            x = 815.9,
+            y = -1138.9,
         },
     },
     { -- Step 4
-        ["ExtraLineText"] = "UP_ELEVATOR",
-        ["Waypoint"] = 49615,
-        ["Range"] = 5,
-        ["Coord"] = {
-            ["x"] = 852.4,
-            ["y"] = -1126.1,
+        ExtraLineText = "UP_ELEVATOR",
+        Waypoint = 49615,
+        Range = 5,
+        Coord = {
+            x = 852.4,
+            y = -1126.1,
         },
     },
     { -- Step 5
-        ["ExtraLineText"] = "UP_ELEVATOR",
-        ["Waypoint"] = 49615,
-        ["Range"] = 5,
-        ["Coord"] = {
-            ["x"] = 836.5,
-            ["y"] = -1101.5,
+        ExtraLineText = "UP_ELEVATOR",
+        Waypoint = 49615,
+        Range = 5,
+        Coord = {
+            x = 836.5,
+            y = -1101.5,
         },
     },
     { -- Step 6
-        ["Done"] = {
+        Done = {
             49615,
         },
-        ["Coord"] = {
-            ["x"] = 805.5,
-            ["y"] = -1135,
+        Coord = {
+            x = 805.5,
+            y = -1135,
         },
     },
     { -- Step 7
-        ["PickUp"] = {
+        PickUp = {
             49488,
         },
-        ["Coord"] = {
-            ["x"] = 807.6,
-            ["y"] = -1134.8,
+        Coord = {
+            x = 807.6,
+            y = -1134.8,
         },
     },
     { -- [step 8
@@ -403,11 +403,11 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["x"] = 804.9,
-            ["y"] = -1072.4,
+        Coord = {
+            x = 804.9,
+            y = -1072.4,
         },
-        ["Range"] = 5,
+        Range = 5,
     },
     { -- [step 9
         Qpart = {
@@ -415,48 +415,48 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Coord"] = {
-            ["x"] = 394.2,
-            ["y"] = -459.2,
+        Coord = {
+            x = 394.2,
+            y = -459.2,
         },
-        ["Range"] = 5,
+        Range = 5,
     },
     { -- [step 10
-        ["Done"] = {
+        Done = {
             49488,
         },
-        ["Coord"] = {
-            ["x"] = 393.3,
-            ["y"] = -458.2,
+        Coord = {
+            x = 393.3,
+            y = -458.2,
         },
     },
     { -- Step 11
-        ["PickUp"] = {
+        PickUp = {
             49489,
             49490,
         },
-        ["Coord"] = {
-            ["x"] = 394.8,
-            ["y"] = -458.2,
+        Coord = {
+            x = 394.8,
+            y = -458.2,
         },
     },
     { -- Step 12
-        ["PickUp"] = {
+        PickUp = {
             49491,
         },
-        ["Coord"] = {
-            ["x"] = 326.8,
-            ["y"] = -412.9,
+        Coord = {
+            x = 326.8,
+            y = -412.9,
         },
     },
     { -- Step 13
-        ["Waypoint"] = 49489,
-        ["Range"] = 17.54,
-        ["Coord"] = {
-            ["x"] = 297.5,
-            ["y"] = -453.2,
+        Waypoint = 49489,
+        Range = 17.54,
+        Coord = {
+            x = 297.5,
+            y = -453.2,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49491] = {
                 1,
             },
@@ -466,12 +466,12 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 14
-        ["QpartPart"] = {
+        QpartPart = {
             [49489] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49491] = {
                 1,
             },
@@ -479,21 +479,21 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["TrigText"] = "1/2",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 207.3,
-            ["y"] = -480.9,
+        TrigText = "1/2",
+        Range = 0.69,
+        Coord = {
+            x = 207.3,
+            y = -480.9,
         },
     },
     { -- Step 15
-        ["Waypoint"] = 49489,
-        ["Range"] = 10.7,
-        ["Coord"] = {
-            ["x"] = 297.8,
-            ["y"] = -451.2,
+        Waypoint = 49489,
+        Range = 10.7,
+        Coord = {
+            x = 297.8,
+            y = -451.2,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49491] = {
                 1,
             },
@@ -503,12 +503,12 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 16
-        ["QpartPart"] = {
+        QpartPart = {
             [49489] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49490] = {
                 1,
             },
@@ -516,11 +516,11 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["TrigText"] = "2/2",
-        ["Range"] = 5.95,
-        ["Coord"] = {
-            ["x"] = 366.8,
-            ["y"] = -259.9,
+        TrigText = "2/2",
+        Range = 5.95,
+        Coord = {
+            x = 366.8,
+            y = -259.9,
         },
     },
     { -- Step 17
@@ -532,39 +532,39 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 22.26,
-        ["Coord"] = {
-            ["x"] = 361.5,
-            ["y"] = -259.9,
+        Range = 22.26,
+        Coord = {
+            x = 361.5,
+            y = -259.9,
         },
     },
     { -- Step 18
-        ["Coord"] = {
-            ["x"] = 399.8,
-            ["y"] = -226.5,
+        Coord = {
+            x = 399.8,
+            y = -226.5,
         },
-        ["Done"] = {
+        Done = {
             49491,
         },
     },
 
     { -- Step 19
-        ["Coord"] = {
-            ["x"] = 390.8,
-            ["y"] = -215.4,
+        Coord = {
+            x = 390.8,
+            y = -215.4,
         },
-        ["Done"] = {
+        Done = {
             49489,
             49490,
         },
     },
     { -- Step 20
-        ["PickUp"] = {
+        PickUp = {
             49492,
         },
-        ["Coord"] = {
-            ["x"] = 390.8,
-            ["y"] = -215.4,
+        Coord = {
+            x = 390.8,
+            y = -215.4,
         },
     },
     { -- Step 21
@@ -573,10 +573,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 388.6,
-            ["y"] = -201.7,
+        Range = 0.69,
+        Coord = {
+            x = 388.6,
+            y = -201.7,
         },
     },
     { -- Step 22
@@ -585,10 +585,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 338.8,
-            ["y"] = -205.2,
+        Range = 0.75,
+        Coord = {
+            x = 338.8,
+            y = -205.2,
         },
     },
     { -- Step 23
@@ -597,52 +597,52 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 285.6,
-            ["y"] = -221,
+        Range = 0.75,
+        Coord = {
+            x = 285.6,
+            y = -221,
         },
     },
     { -- Step 24
-        ["ETA"] = 19,
-        ["Coord"] = {
-            ["x"] = 263.2,
-            ["y"] = -231.5,
+        ETA = 19,
+        Coord = {
+            x = 263.2,
+            y = -231.5,
         },
-        ["Done"] = {
+        Done = {
             49492,
         },
     },
     { -- Step 25
-        ["PickUp"] = {
+        PickUp = {
             49493,
             49494,
         },
-        ["Coord"] = {
-            ["x"] = 263.2,
-            ["y"] = -231.5,
+        Coord = {
+            x = 263.2,
+            y = -231.5,
         },
     },
     { -- Step 26
-        ["PickUp"] = {
+        PickUp = {
             51663,
         },
-        ["Coord"] = {
-            ["x"] = 184.5,
-            ["y"] = -213,
+        Coord = {
+            x = 184.5,
+            y = -213,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49493] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49493-1"] = 155458,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [257795] = "49493-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [257795] = 3,
         },
     },
@@ -652,7 +652,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [51663] = {
                 1,
             },
@@ -660,19 +660,19 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49493-1"] = 155458,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [257795] = "49493-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [257795] = 3,
         },
-        ["Range"] = 11.15,
-        ["Coord"] = {
-            ["x"] = 217.6,
-            ["y"] = -143.9,
+        Range = 11.15,
+        Coord = {
+            x = 217.6,
+            y = -143.9,
         },
     },
     { -- Step 28
@@ -684,48 +684,48 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49493-1"] = 155458,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [257795] = "49493-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [257795] = 3,
         },
-        ["Range"] = 19.4,
-        ["Coord"] = {
-            ["x"] = 198.4,
-            ["y"] = -216.2,
+        Range = 19.4,
+        Coord = {
+            x = 198.4,
+            y = -216.2,
         },
     },
 
     { -- Step 29
-        ["Waypoint"] = 49494,
-        ["Range"] = 15.26,
-        ["Coord"] = {
-            ["x"] = 173.6,
-            ["y"] = -253.7,
+        Waypoint = 49494,
+        Range = 15.26,
+        Coord = {
+            x = 173.6,
+            y = -253.7,
         },
     },
     { -- Step 30
-        ["Done"] = {
+        Done = {
             49493,
             49494,
             51663,
         },
-        ["Coord"] = {
-            ["x"] = 147.6,
-            ["y"] = -323.7,
+        Coord = {
+            x = 147.6,
+            y = -323.7,
         },
     },
     { -- Step 31
-        ["PickUp"] = {
+        PickUp = {
             49495,
         },
-        ["Coord"] = {
-            ["x"] = 147.6,
-            ["y"] = -323.7,
+        Coord = {
+            x = 147.6,
+            y = -323.7,
         },
     },
     { -- Step 32
@@ -734,10 +734,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 133.4,
-            ["y"] = -373.5,
+        Range = 0.75,
+        Coord = {
+            x = 133.4,
+            y = -373.5,
         },
     },
     { -- Step 33
@@ -746,10 +746,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 137,
-            ["y"] = -349.3,
+        Range = 0.69,
+        Coord = {
+            x = 137,
+            y = -349.3,
         },
     },
     { -- Step 34
@@ -758,10 +758,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 137.8,
-            ["y"] = -350.2,
+        Range = 0.69,
+        Coord = {
+            x = 137.8,
+            y = -350.2,
         },
     },
     { -- Step 35
@@ -770,28 +770,28 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 4,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 162.1,
-            ["y"] = -384.4,
+        Range = 0.69,
+        Coord = {
+            x = 162.1,
+            y = -384.4,
         },
     },
     { -- Step 36
-        ["Done"] = {
+        Done = {
             49495,
         },
-        ["Coord"] = {
-            ["x"] = 147.6,
-            ["y"] = -324.7,
+        Coord = {
+            x = 147.6,
+            y = -324.7,
         },
     },
     { -- Step 37
-        ["PickUp"] = {
+        PickUp = {
             49905,
         },
-        ["Coord"] = {
-            ["x"] = 148.9,
-            ["y"] = -324.7,
+        Coord = {
+            x = 148.9,
+            y = -324.7,
         },
     },
     { -- Step 38
@@ -800,201 +800,201 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 11.64,
-        ["Coord"] = {
-            ["x"] = 155.6,
-            ["y"] = -352.2,
+        Range = 11.64,
+        Coord = {
+            x = 155.6,
+            y = -352.2,
         },
     },
 
     { -- Step 39
-        ["Bloodlust"] = 1,
+        Bloodlust = 1,
         Qpart = {
             [49905] = {
                 2,
             },
         },
-        ["Range"] = 7.91,
-        ["Coord"] = {
-            ["x"] = 152.5,
-            ["y"] = -362.4,
+        Range = 7.91,
+        Coord = {
+            x = 152.5,
+            y = -362.4,
         },
     },
     { -- Step 40
-        ["Done"] = {
+        Done = {
             49905,
         },
-        ["Coord"] = {
-            ["x"] = 157.5,
-            ["y"] = -342.5,
+        Coord = {
+            x = 157.5,
+            y = -342.5,
         },
     },
     { -- Step 41
-        ["PickUp"] = {
+        PickUp = {
             49663,
         },
-        ["Coord"] = {
-            ["x"] = 157.5,
-            ["y"] = -342.5,
+        Coord = {
+            x = 157.5,
+            y = -342.5,
         },
     },
     { -- Step 42
-        ["UseHS"] = 49810,
-        ["Coord"] = {
-            ["x"] = 157.5,
-            ["y"] = -342.5,
+        UseHS = 49810,
+        Coord = {
+            x = 157.5,
+            y = -342.5,
         },
     },
     { -- Step 43
-        ["Waypoint"] = 49615,
-        ["Coord"] = {
-            ["x"] = 810.6,
-            ["y"] = -1139.1,
+        Waypoint = 49615,
+        Coord = {
+            x = 810.6,
+            y = -1139.1,
         },
-        ["Range"] = 5,
-        ["ExtraLineText"] = "UP_ELEVATOR",
+        Range = 5,
+        ExtraLineText = "UP_ELEVATOR",
     },
     { -- Step 44
-        ["Waypoint"] = 49615,
-        ["Coord"] = {
-            ["x"] = 852.4,
-            ["y"] = -1126.1,
+        Waypoint = 49615,
+        Coord = {
+            x = 852.4,
+            y = -1126.1,
         },
-        ["Range"] = 5,
-        ["ExtraLineText"] = "UP_ELEVATOR",
+        Range = 5,
+        ExtraLineText = "UP_ELEVATOR",
     },
     { -- Step 45
-        ["Waypoint"] = 49615,
-        ["Coord"] = {
-            ["x"] = 836.5,
-            ["y"] = -1101.5,
+        Waypoint = 49615,
+        Coord = {
+            x = 836.5,
+            y = -1101.5,
         },
-        ["Range"] = 5,
-        ["ExtraLineText"] = "UP_ELEVATOR",
+        Range = 5,
+        ExtraLineText = "UP_ELEVATOR",
     },
     { -- Step 46
-        ["Done"] = {
+        Done = {
             49663,
         },
-        ["Coord"] = {
-            ["x"] = 806,
-            ["y"] = -1134.5,
+        Coord = {
+            x = 806,
+            y = -1134.5,
         },
     },
     { -- Step 47
-        ["PickUp"] = {
+        PickUp = {
             47445,
             50835,
         },
-        ["Coord"] = {
-            ["x"] = 807.6,
-            ["y"] = -1134.8,
+        Coord = {
+            x = 807.6,
+            y = -1134.8,
         },
     },
 
 
 
     { -- Step 48
-        ["Waypoint"] = 50835,
-        ["Range"] = 5.42,
-        ["Coord"] = {
-            ["x"] = 836.5,
-            ["y"] = -1101.5,
+        Waypoint = 50835,
+        Range = 5.42,
+        Coord = {
+            x = 836.5,
+            y = -1101.5,
         },
     },
     { -- Step 49
-        ["ExtraLineText"] = "DOWN_ELEVATOR",
-        ["Waypoint"] = 50835,
-        ["Range"] = 2.33,
-        ["Coord"] = {
-            ["x"] = 852.4,
-            ["y"] = -1126.1,
+        ExtraLineText = "DOWN_ELEVATOR",
+        Waypoint = 50835,
+        Range = 2.33,
+        Coord = {
+            x = 852.4,
+            y = -1126.1,
         },
     },
     { -- Step 50
-        ["ExtraLineText"] = "DOWN_ELEVATOR",
-        ["Waypoint"] = 50835,
-        ["Range"] = 5.33,
-        ["Coord"] = {
-            ["x"] = 819.6,
-            ["y"] = -1110.7,
+        ExtraLineText = "DOWN_ELEVATOR",
+        Waypoint = 50835,
+        Range = 5.33,
+        Coord = {
+            x = 819.6,
+            y = -1110.7,
         },
     },
 
     { -- Step 51
-        ["Waypoint"] = 50835,
-        ["Range"] = 5.33,
-        ["Coord"] = {
-            ["x"] = 802.9,
-            ["y"] = -1049.3,
+        Waypoint = 50835,
+        Range = 5.33,
+        Coord = {
+            x = 802.9,
+            y = -1049.3,
         },
     },
     { -- Step 52
-        ["UseFlightPath"] = 50835,
-        ["ETA"] = 38,
-        ["Name"] = "Port of Zandalar, Zuldazar",
-        ["NodeID"] = 1957,
-        ["Coord"] = {
-            ["x"] = 751.1,
-            ["y"] = -1035.4,
+        UseFlightPath = 50835,
+        ETA = 38,
+        Name = "Port of Zandalar, Zuldazar",
+        NodeID = 1957,
+        Coord = {
+            x = 751.1,
+            y = -1035.4,
         },
     },
     { -- Step 53
-        ["Waypoint"] = 50835,
-        ["Range"] = 10,
-        ["Coord"] = {
-            ["x"] = 744.5,
-            ["y"] = -1950.9,
+        Waypoint = 50835,
+        Range = 10,
+        Coord = {
+            x = 744.5,
+            y = -1950.9,
         },
     },
     { -- Step 54
-        ["Coord"] = {
-            ["x"] = 803.2,
-            ["y"] = -1858.9,
+        Coord = {
+            x = 803.2,
+            y = -1858.9,
         },
-        ["Done"] = {
+        Done = {
             50835,
         },
     },
     { -- Step 55
-        ["PickUp"] = {
+        PickUp = {
             46926,
             46846,
         },
-        ["Coord"] = {
-            ["x"] = 802.2,
-            ["y"] = -1855,
+        Coord = {
+            x = 802.2,
+            y = -1855,
         },
     },
     { -- Step 56
-        ["PickUp"] = {
+        PickUp = {
             48452,
         },
-        ["Coord"] = {
-            ["x"] = 965.4,
-            ["y"] = -1804,
+        Coord = {
+            x = 965.4,
+            y = -1804,
         },
-        ["Fillers"] = {
+        Fillers = {
             [46926] = {
                 1,
             },
         },
     },
     { -- Step 57
-        ["Waypoint"] = 48452,
-        ["Range"] = 9,
-        ["Coord"] = {
-            ["x"] = 1026,
-            ["y"] = -1801.5,
+        Waypoint = 48452,
+        Range = 9,
+        Coord = {
+            x = 1026,
+            y = -1801.5,
         },
     },
     { -- Step 58
-        ["ExtraLineText"] = "JUMP_OFF_BRIDGE",
-        ["Waypoint"] = 48452,
-        ["Range"] = 13.72,
-        ["Coord"] = {
-            ["x"] = 1024,
-            ["y"] = -1826.9,
+        ExtraLineText = "JUMP_OFF_BRIDGE",
+        Waypoint = 48452,
+        Range = 13.72,
+        Coord = {
+            x = 1024,
+            y = -1826.9,
         },
     },
     { -- Step 59
@@ -1003,12 +1003,12 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Coord"] = {
-            ["x"] = 998.4,
-            ["y"] = -1822.6,
+        Coord = {
+            x = 998.4,
+            y = -1822.6,
         },
-        ["Range"] = 9.75,
-        ["Fillers"] = {
+        Range = 9.75,
+        Fillers = {
             [48452] = {
                 1,
             },
@@ -1020,37 +1020,37 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["x"] = 1034.7,
-            ["y"] = -1811.1,
+        Coord = {
+            x = 1034.7,
+            y = -1811.1,
         },
-        ["Range"] = 88,
+        Range = 88,
     },
     { -- Step 61
-        ["Waypoint"] = 48452,
-        ["Range"] = 8.95,
-        ["Coord"] = {
-            ["x"] = 1014.1,
-            ["y"] = -1734.1,
+        Waypoint = 48452,
+        Range = 8.95,
+        Coord = {
+            x = 1014.1,
+            y = -1734.1,
         },
     },
 
     { -- Step 62
-        ["Done"] = {
+        Done = {
             48452,
         },
-        ["Coord"] = {
-            ["x"] = 965.2,
-            ["y"] = -1804.8,
+        Coord = {
+            x = 965.2,
+            y = -1804.8,
         },
     },
     { -- Step 63
-        ["PickUp"] = {
+        PickUp = {
             48454,
         },
-        ["Coord"] = {
-            ["x"] = 964.7,
-            ["y"] = -1803.4,
+        Coord = {
+            x = 964.7,
+            y = -1803.4,
         },
     },
     { -- Step 64
@@ -1059,26 +1059,26 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Gossip"] = 1,
-        ["Fillers"] = {
+        Gossip = 1,
+        Fillers = {
             [46926] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = 935.2,
-            ["y"] = -1760.9,
+        Range = 0.61,
+        Coord = {
+            x = 935.2,
+            y = -1760.9,
         },
     },
     { -- Step 65
-        ["Range"] = 10.45,
-        ["Waypoint"] = 46846,
-        ["Coord"] = {
-            ["x"] = 775.7,
-            ["y"] = -1874,
+        Range = 10.45,
+        Waypoint = 46846,
+        Coord = {
+            x = 775.7,
+            y = -1874,
         },
-        ["Fillers"] = {
+        Fillers = {
             [46926] = {
                 1,
             },
@@ -1090,33 +1090,33 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Fillers"] = {
+        Gossip = 1,
+        Fillers = {
             [46926] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 761.2,
-            ["y"] = -1971,
+        Range = 0.75,
+        Coord = {
+            x = 761.2,
+            y = -1971,
         },
     },
     { -- Step 67
-        ["Range"] = 8,
-        ["Waypoint"] = 46846,
-        ["Coord"] = {
-            ["x"] = 758.4,
-            ["y"] = -1954,
+        Range = 8,
+        Waypoint = 46846,
+        Coord = {
+            x = 758.4,
+            y = -1954,
         },
     },
     { -- Step 68
-        ["ExtraLineText"] = "JUMP_OFF",
-        ["Range"] = 16.2,
-        ["Waypoint"] = 46846,
-        ["Coord"] = {
-            ["x"] = 679.7,
-            ["y"] = -1948.9,
+        ExtraLineText = "JUMP_OFF",
+        Range = 16.2,
+        Waypoint = 46846,
+        Coord = {
+            x = 679.7,
+            y = -1948.9,
         },
     },
     { -- Step 69
@@ -1125,24 +1125,24 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = 691.7,
-            ["y"] = -1972.9,
+        Gossip = 1,
+        Range = 0.61,
+        Coord = {
+            x = 691.7,
+            y = -1972.9,
         },
-        ["Fillers"] = {
+        Fillers = {
             [46926] = {
                 1,
             },
         },
     },
     { -- Step 70
-        ["Range"] = 9.66,
-        ["Waypoint"] = 46926,
-        ["Coord"] = {
-            ["x"] = 793,
-            ["y"] = -1941.5,
+        Range = 9.66,
+        Waypoint = 46926,
+        Coord = {
+            x = 793,
+            y = -1941.5,
         },
     },
     { -- Step 71
@@ -1151,52 +1151,52 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 325.14,
-        ["Coord"] = {
-            ["x"] = 805.2,
-            ["y"] = -1856.1,
+        Range = 325.14,
+        Coord = {
+            x = 805.2,
+            y = -1856.1,
         },
     },
     { -- Step 72
-        ["Coord"] = {
-            ["x"] = 805.2,
-            ["y"] = -1856.1,
+        Coord = {
+            x = 805.2,
+            y = -1856.1,
         },
-        ["Done"] = {
+        Done = {
             48454,
             46846,
             46926,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48404] = {
                 1,
             },
         },
     },
     { -- Step 73
-        ["PickUp"] = {
+        PickUp = {
             46928,
             46927,
             46929,
         },
-        ["Coord"] = {
-            ["x"] = 802.7,
-            ["y"] = -1857,
+        Coord = {
+            x = 802.7,
+            y = -1857,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48404] = {
                 1,
             },
         },
     },
     { -- Step 74
-        ["Range"] = 9.66,
-        ["Waypoint"] = 46929,
-        ["Coord"] = {
-            ["x"] = 810.5,
-            ["y"] = -1740.8,
+        Range = 9.66,
+        Waypoint = 46929,
+        Coord = {
+            x = 810.5,
+            y = -1740.8,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48404] = {
                 1,
             },
@@ -1208,7 +1208,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [46929] = {
                 2,
             },
@@ -1216,10 +1216,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 15.31,
-        ["Coord"] = {
-            ["x"] = 898.9,
-            ["y"] = -1649.8,
+        Range = 15.31,
+        Coord = {
+            x = 898.9,
+            y = -1649.8,
         },
     },
     { -- Step 76
@@ -1228,21 +1228,21 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Range"] = 63.25,
-        ["Coord"] = {
-            ["x"] = 858.2,
-            ["y"] = -1724,
+        Range = 63.25,
+        Coord = {
+            x = 858.2,
+            y = -1724,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48404] = {
                 1,
             },
         },
     },
     { -- Step 77
-        ["Waypoint"] = 46927,
-        ["Range"] = 18,
-        ["Fillers"] = {
+        Waypoint = 46927,
+        Range = 18,
+        Fillers = {
             [46929] = {
                 1,
             },
@@ -1250,19 +1250,19 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["x"] = 751.7,
-            ["y"] = -1728.4,
+        Coord = {
+            x = 751.7,
+            y = -1728.4,
         },
     },
     { -- Step 78
-        ["Waypoint"] = 46927,
-        ["Range"] = 25,
-        ["Coord"] = {
-            ["x"] = 631.7,
-            ["y"] = -1782.8,
+        Waypoint = 46927,
+        Range = 25,
+        Coord = {
+            x = 631.7,
+            y = -1782.8,
         },
-        ["Fillers"] = {
+        Fillers = {
             [46929] = {
                 1,
             },
@@ -1272,13 +1272,13 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 79
-        ["Bloodlust"] = 1,
+        Bloodlust = 1,
         Qpart = {
             [46927] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [46929] = {
                 1,
             },
@@ -1286,10 +1286,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 10.76,
-        ["Coord"] = {
-            ["x"] = 629.1,
-            ["y"] = -1903,
+        Range = 10.76,
+        Coord = {
+            x = 629.1,
+            y = -1903,
         },
     },
     { -- Step 80
@@ -1298,90 +1298,90 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 26.35,
-        ["Coord"] = {
-            ["x"] = 629,
-            ["y"] = -1784.6,
+        Range = 26.35,
+        Coord = {
+            x = 629,
+            y = -1784.6,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48404] = {
                 1,
             },
         },
     },
     { -- Step 81
-        ["Waypoint"] = 46927,
-        ["Range"] = 5,
-        ["Coord"] = {
-            ["x"] = 632.6,
-            ["y"] = -1769,
+        Waypoint = 46927,
+        Range = 5,
+        Coord = {
+            x = 632.6,
+            y = -1769,
         },
     },
     { -- Step 82
-        ["Waypoint"] = 46927,
-        ["Range"] = 5,
-        ["Coord"] = {
-            ["x"] = 790.4,
-            ["y"] = -1731.0,
+        Waypoint = 46927,
+        Range = 5,
+        Coord = {
+            x = 790.4,
+            y = -1731.0,
         },
     },
     { -- Step 83
-        ["Done"] = {
+        Done = {
             46928,
             46927,
             46929,
         },
-        ["Coord"] = {
-            ["x"] = 801.4,
-            ["y"] = -1856,
+        Coord = {
+            x = 801.4,
+            y = -1856,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48404] = {
                 1,
             },
         },
     },
     { -- Step 84
-        ["PickUp"] = {
+        PickUp = {
             50881,
         },
-        ["Coord"] = {
-            ["x"] = 801.4,
-            ["y"] = -1857.6,
+        Coord = {
+            x = 801.4,
+            y = -1857.6,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48404] = {
                 1,
             },
         },
     },
     { -- Step 85
-        ["ExtraLineText"] = "TALK_TO_NPC_TO_RIDE_BOAT",
-        ["Waypoint"] = 49284,
-        ["Range"] = 5,
-        ["Coord"] = {
-            ["x"] = 723.1,
-            ["y"] = -2059.1,
+        ExtraLineText = "TALK_TO_NPC_TO_RIDE_BOAT",
+        Waypoint = 49284,
+        Range = 5,
+        Coord = {
+            x = 723.1,
+            y = -2059.1,
         },
     },
     { -- Step 86
-        ["ExtraLineText"] = "TAKE_BOAT_TO_SEEKERS_OUTPOST",
-        ["GetFP"] = 2075,
-        ["Range"] = 5.91,
-        ["Coord"] = {
-            ["x"] = -253.2,
-            ["y"] = -2304.5,
+        ExtraLineText = "TAKE_BOAT_TO_SEEKERS_OUTPOST",
+        GetFP = 2075,
+        Range = 5.91,
+        Coord = {
+            x = -253.2,
+            y = -2304.5,
         },
     },
     { -- Step 87
-        ["ExtraLineText"] = "GIVERS_AROUND_AREA",
-        ["PickUp"] = {
+        ExtraLineText = "GIVERS_AROUND_AREA",
+        PickUp = {
             49284,
             49285,
         },
-        ["Coord"] = {
-            ["x"] = -253.2,
-            ["y"] = -2304.5,
+        Coord = {
+            x = -253.2,
+            y = -2304.5,
         },
     },
     { -- Step 88
@@ -1390,15 +1390,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49315] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -314.8,
-            ["y"] = -2264.7,
+        Range = 0.69,
+        Coord = {
+            x = -314.8,
+            y = -2264.7,
         },
     },
     { -- Step 89
@@ -1407,15 +1407,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49315] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = -355.4,
-            ["y"] = -2241.9,
+        Range = 0.61,
+        Coord = {
+            x = -355.4,
+            y = -2241.9,
         },
     },
     { -- Step 90
@@ -1424,15 +1424,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49315] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = -484.2,
-            ["y"] = -2412.7,
+        Range = 0.61,
+        Coord = {
+            x = -484.2,
+            y = -2412.7,
         },
     },
     { -- Step 91
@@ -1441,15 +1441,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49315] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -475.5,
-            ["y"] = -2277.2,
+        Range = 0.69,
+        Coord = {
+            x = -475.5,
+            y = -2277.2,
         },
     },
     { -- Step 92
@@ -1458,15 +1458,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49315] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -438,
-            ["y"] = -2178,
+        Range = 0.69,
+        Coord = {
+            x = -438,
+            y = -2178,
         },
     },
     { -- Step 93
@@ -1475,62 +1475,62 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49315] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -553.3,
-            ["y"] = -2123.2,
+        Range = 0.69,
+        Coord = {
+            x = -553.3,
+            y = -2123.2,
         },
     },
     { -- Step 94
-        ["Coord"] = {
-            ["x"] = -524.3,
-            ["y"] = -2063,
+        Coord = {
+            x = -524.3,
+            y = -2063,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49315] = {
                 1,
             },
         },
-        ["Done"] = {
+        Done = {
             49285,
             49284,
         },
     },
     { -- Step 95
-        ["PickUp"] = {
+        PickUp = {
             49286,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49315] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["x"] = -524.3,
-            ["y"] = -2063,
+        Coord = {
+            x = -524.3,
+            y = -2063,
         },
     },
     { -- Step 96
-        ["ExtraLineText"] = "INSIDE_CAVE",
+        ExtraLineText = "INSIDE_CAVE",
         Qpart = {
             [49286] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49315] = {
                 1,
             },
         },
-        ["Range"] = 19.7,
-        ["Coord"] = {
-            ["x"] = -584.8,
-            ["y"] = -1994.9,
+        Range = 19.7,
+        Coord = {
+            x = -584.8,
+            y = -1994.9,
         },
     },
     { -- Step 97
@@ -1539,34 +1539,34 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49315] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -523.5,
-            ["y"] = -2058.2,
+        Range = 0.69,
+        Coord = {
+            x = -523.5,
+            y = -2058.2,
         },
     },
     { -- Step 98
-        ["Coord"] = {
-            ["x"] = -523.2,
-            ["y"] = -2059.7,
+        Coord = {
+            x = -523.2,
+            y = -2059.7,
         },
-        ["Done"] = {
+        Done = {
             49286,
         },
     },
     { -- Step 99
-        ["PickUp"] = {
+        PickUp = {
             49287,
             49288,
         },
-        ["Coord"] = {
-            ["x"] = -523.2,
-            ["y"] = -2059.7,
+        Coord = {
+            x = -523.2,
+            y = -2059.7,
         },
     },
     { -- Step 100
@@ -1575,7 +1575,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49315] = {
                 1,
             },
@@ -1583,10 +1583,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = -549.3,
-            ["y"] = -2333,
+        Range = 0.61,
+        Coord = {
+            x = -549.3,
+            y = -2333,
         },
     },
     { -- Step 101
@@ -1595,15 +1595,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49288] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = -649.7,
-            ["y"] = -2373.5,
+        Range = 0.61,
+        Coord = {
+            x = -649.7,
+            y = -2373.5,
         },
     },
 
@@ -1613,33 +1613,33 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49288] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -810.8,
-            ["y"] = -2369,
+        Range = 0.69,
+        Coord = {
+            x = -810.8,
+            y = -2369,
         },
     },
     { -- Step 103
-        ["ExtraLineText"] = "BEWARE_TWO_LEVEL",
+        ExtraLineText = "BEWARE_TWO_LEVEL",
         Qpart = {
             [49287] = {
                 4,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49288] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -833.3,
-            ["y"] = -2252.4,
+        Range = 0.69,
+        Coord = {
+            x = -833.3,
+            y = -2252.4,
         },
     },
     { -- Step 104
@@ -1648,29 +1648,29 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 29.68,
-        ["Coord"] = {
-            ["x"] = -827.3,
-            ["y"] = -2256,
+        Range = 29.68,
+        Coord = {
+            x = -827.3,
+            y = -2256,
         },
     },
     { -- Step 105
-        ["Coord"] = {
-            ["x"] = -657.2,
-            ["y"] = -2088.7,
+        Coord = {
+            x = -657.2,
+            y = -2088.7,
         },
-        ["Done"] = {
+        Done = {
             49287,
             49288,
         },
     },
     { -- Step 106
-        ["PickUp"] = {
+        PickUp = {
             49289,
         },
-        ["Coord"] = {
-            ["x"] = -657,
-            ["y"] = -2088.2,
+        Coord = {
+            x = -657,
+            y = -2088.2,
         },
     },
     { -- Step 107
@@ -1680,50 +1680,50 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49289-1"] = 157539,
         },
-        ["Range"] = 15.71,
-        ["Coord"] = {
-            ["x"] = -772.3,
-            ["y"] = -2086,
+        Range = 15.71,
+        Coord = {
+            x = -772.3,
+            y = -2086,
         },
     },
     { -- Step 108
-        ["Coord"] = {
-            ["x"] = -656.5,
-            ["y"] = -2089.5,
+        Coord = {
+            x = -656.5,
+            y = -2089.5,
         },
-        ["Done"] = {
+        Done = {
             49289,
         },
     },
     { -- Step 109
-        ["PickUp"] = {
+        PickUp = {
             51407,
         },
-        ["Coord"] = {
-            ["x"] = -657,
-            ["y"] = -2089.2,
+        Coord = {
+            x = -657,
+            y = -2089.2,
         },
     },
     { -- Step 110
-        ["ExtraLineText"] = "PORTAL_WILL_APPEAR",
-        ["Done"] = {
+        ExtraLineText = "PORTAL_WILL_APPEAR",
+        Done = {
             51407,
         },
-        ["Coord"] = {
-            ["x"] = -262,
-            ["y"] = -2281.5,
+        Coord = {
+            x = -262,
+            y = -2281.5,
         }
     },
     { -- Step 111
-        ["PickUp"] = {
+        PickUp = {
             50331,
         },
-        ["Coord"] = {
-            ["x"] = -261.3,
-            ["y"] = -2280.5,
+        Coord = {
+            x = -261.3,
+            y = -2280.5,
         },
     },
 
@@ -1733,11 +1733,11 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Gossip"] = 999,
-        ["Range"] = 14.12,
-        ["Coord"] = {
-            ["x"] = -171.9,
-            ["y"] = -2399.4,
+        Gossip = 999,
+        Range = 14.12,
+        Coord = {
+            x = -171.9,
+            y = -2399.4,
         },
     },
     { -- Step 113
@@ -1746,29 +1746,29 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 14.12,
-        ["Coord"] = {
-            ["x"] = -1175,
-            ["y"] = -1203.6,
+        Range = 14.12,
+        Coord = {
+            x = -1175,
+            y = -1203.6,
         },
     },
     { -- Step 114
-        ["Coord"] = {
-            ["x"] = -1175,
-            ["y"] = -1203.6,
+        Coord = {
+            x = -1175,
+            y = -1203.6,
         },
-        ["Done"] = {
+        Done = {
             50331,
         },
     },
     { -- Step 115
-        ["PickUp"] = {
+        PickUp = {
             48015,
             48014,
         },
-        ["Coord"] = {
-            ["x"] = -1175,
-            ["y"] = -1203.6,
+        Coord = {
+            x = -1175,
+            y = -1203.6,
         },
     },
     { -- Step 116
@@ -1777,15 +1777,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48014] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -1104.8,
-            ["y"] = -1159.6,
+        Range = 0.69,
+        Coord = {
+            x = -1104.8,
+            y = -1159.6,
         },
     },
     { -- Step 117
@@ -1794,15 +1794,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48014] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -1124.9,
-            ["y"] = -1062,
+        Range = 0.69,
+        Coord = {
+            x = -1124.9,
+            y = -1062,
         },
     },
     { -- Step 118
@@ -1811,15 +1811,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48014] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = -1060.9,
-            ["y"] = -1127.8,
+        Range = 0.61,
+        Coord = {
+            x = -1060.9,
+            y = -1127.8,
         },
     },
     { -- Step 119
@@ -1828,41 +1828,41 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 13.35,
-        ["Coord"] = {
-            ["x"] = -1124.9,
-            ["y"] = -1063.5,
+        Range = 13.35,
+        Coord = {
+            x = -1124.9,
+            y = -1063.5,
         },
     },
     { -- Step 120
-        ["Coord"] = {
-            ["x"] = -993.8,
-            ["y"] = -1000.8,
+        Coord = {
+            x = -993.8,
+            y = -1000.8,
         },
-        ["Done"] = {
+        Done = {
             48015,
             48014,
         },
     },
     { -- Step 121
-        ["PickUp"] = {
+        PickUp = {
             49969,
             48025,
         },
-        ["Coord"] = {
-            ["x"] = -993.8,
-            ["y"] = -1000.5,
+        Coord = {
+            x = -993.8,
+            y = -1000.5,
         },
     },
 
     { -- Step 122
-        ["ExtraLineText"] = "USE_FLIGHTPATH",
-        ["GetFP"] = 2066,
-        ["Waypoint"] = 49969,
-        ["Range"] = 6.58,
-        ["Coord"] = {
-            ["x"] = -1057.9,
-            ["y"] = -955.7,
+        ExtraLineText = "USE_FLIGHTPATH",
+        GetFP = 2066,
+        Waypoint = 49969,
+        Range = 6.58,
+        Coord = {
+            x = -1057.9,
+            y = -955.7,
         },
     },
     { -- Step 123
@@ -1871,18 +1871,18 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49969] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48025-1"] = 151859,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -917.7,
-            ["y"] = -712.2,
+        Range = 0.69,
+        Coord = {
+            x = -917.7,
+            y = -712.2,
         },
     },
     { -- Step 124
@@ -1891,18 +1891,18 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49969] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48025-2"] = 151859,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -1032.1,
-            ["y"] = -693.8,
+        Range = 0.75,
+        Coord = {
+            x = -1032.1,
+            y = -693.8,
         },
     },
     { -- Step 125
@@ -1911,18 +1911,18 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49969] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48025-3"] = 151859,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -1177.1,
-            ["y"] = -821.3,
+        Range = 0.69,
+        Coord = {
+            x = -1177.1,
+            y = -821.3,
         },
     },
     { -- Step 126
@@ -1931,18 +1931,18 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 5,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49969] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48025-5"] = 151859,
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = -1357,
-            ["y"] = -871.2,
+        Range = 0.61,
+        Coord = {
+            x = -1357,
+            y = -871.2,
         },
     },
     { -- Step 127
@@ -1951,18 +1951,18 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 4,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49969] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48025-4"] = 151859,
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = -1208.9,
-            ["y"] = -945,
+        Range = 0.61,
+        Coord = {
+            x = -1208.9,
+            y = -945,
         },
     },
     { -- Step 128
@@ -1971,28 +1971,28 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 18.23,
-        ["Coord"] = {
-            ["x"] = -1208.9,
-            ["y"] = -945,
+        Range = 18.23,
+        Coord = {
+            x = -1208.9,
+            y = -945,
         },
     },
     { -- Step 129
-        ["Coord"] = {
-            ["x"] = -1293.6,
-            ["y"] = -1006.5,
+        Coord = {
+            x = -1293.6,
+            y = -1006.5,
         },
-        ["Done"] = {
+        Done = {
             49969,
         },
     },
     { -- Step 130
-        ["PickUp"] = {
+        PickUp = {
             48026,
         },
-        ["Coord"] = {
-            ["x"] = -1293.6,
-            ["y"] = -1006.5,
+        Coord = {
+            x = -1293.6,
+            y = -1006.5,
         },
     },
     { -- Step 131
@@ -2001,10 +2001,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 5.13,
-        ["Coord"] = {
-            ["x"] = -1370,
-            ["y"] = -1116,
+        Range = 5.13,
+        Coord = {
+            x = -1370,
+            y = -1116,
         },
     },
 
@@ -2014,84 +2014,84 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 6.57,
-        ["Coord"] = {
-            ["x"] = -1370,
-            ["y"] = -1116,
+        Range = 6.57,
+        Coord = {
+            x = -1370,
+            y = -1116,
         },
     },
     { -- Step 133
-        ["ExtraLineText"] = "BENEATH_HANDIN",
-        ["Coord"] = {
-            ["x"] = -1370.5,
-            ["y"] = -1116.6,
+        ExtraLineText = "BENEATH_HANDIN",
+        Coord = {
+            x = -1370.5,
+            y = -1116.6,
         },
-        ["Done"] = {
+        Done = {
             48026,
         },
     },
     { -- Step 134
-        ["PickUp"] = {
+        PickUp = {
             51538,
         },
-        ["Coord"] = {
-            ["x"] = -1370.5,
-            ["y"] = -1116.6,
+        Coord = {
+            x = -1370.5,
+            y = -1116.6,
         },
     },
     { -- Step 135
-        ["Coord"] = {
-            ["x"] = -992.7,
-            ["y"] = -997.3,
+        Coord = {
+            x = -992.7,
+            y = -997.3,
         },
-        ["Done"] = {
+        Done = {
             48025,
             51538,
         },
     },
     { -- Step 136
-        ["PickUp"] = {
+        PickUp = {
             51539,
         },
-        ["Coord"] = {
-            ["x"] = -992.7,
-            ["y"] = -997.3,
+        Coord = {
+            x = -992.7,
+            y = -997.3,
         },
     },
     { -- Step 137
-        ["Waypoint"] = 50881,
-        ["Range"] = 17.66,
-        ["Coord"] = {
-            ["x"] = -1005.8,
-            ["y"] = -1168.5,
+        Waypoint = 50881,
+        Range = 17.66,
+        Coord = {
+            x = -1005.8,
+            y = -1168.5,
         },
     },
     { -- Step 138
-        ["Waypoint"] = 50881,
-        ["Range"] = 27.69,
-        ["Coord"] = {
-            ["x"] = -932.2,
-            ["y"] = -1279.3,
+        Waypoint = 50881,
+        Range = 27.69,
+        Coord = {
+            x = -932.2,
+            y = -1279.3,
         },
     },
     { -- Step 139
-        ["PickUp"] = {
+        PickUp = {
             51246,
             51247,
         },
-        ["Coord"] = {
-            ["x"] = -774.5,
-            ["y"] = -1358.9,
+        Coord = {
+            x = -774.5,
+            y = -1358.9,
         },
     },
     { -- Step 140
-        ["PickUp"] = {
+        PickUp = {
             51249,
             51248,
         },
-        ["Coord"] = {
-            ["x"] = -756.5,
-            ["y"] = -1370.3,
+        Coord = {
+            x = -756.5,
+            y = -1370.3,
         },
     },
     { -- Step 141
@@ -2100,7 +2100,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [51248] = {
                 1,
             },
@@ -2111,10 +2111,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -782.3,
-            ["y"] = -1496.1,
+        Range = 0.75,
+        Coord = {
+            x = -782.3,
+            y = -1496.1,
         },
     },
     { -- Step 142
@@ -2123,7 +2123,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [51248] = {
                 1,
             },
@@ -2134,10 +2134,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -774.2,
-            ["y"] = -1589,
+        Range = 0.69,
+        Coord = {
+            x = -774.2,
+            y = -1589,
         },
     },
     { -- Step 143
@@ -2146,7 +2146,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [51248] = {
                 1,
             },
@@ -2157,10 +2157,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -599.5,
-            ["y"] = -1537.3,
+        Range = 0.69,
+        Coord = {
+            x = -599.5,
+            y = -1537.3,
         },
     },
     { -- Step 144
@@ -2175,31 +2175,31 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 64.1,
-        ["Coord"] = {
-            ["x"] = -601,
-            ["y"] = -1534.8,
+        Range = 64.1,
+        Coord = {
+            x = -601,
+            y = -1534.8,
         },
     },
     { -- Step 145
-        ["Done"] = {
+        Done = {
             51248,
             51247,
             51246,
             51249,
         },
-        ["Coord"] = {
-            ["x"] = -756.3,
-            ["y"] = -1370.3,
+        Coord = {
+            x = -756.3,
+            y = -1370.3,
         },
     },
     { -- Step 146
-        ["PickUp"] = {
+        PickUp = {
             51286,
         },
-        ["Coord"] = {
-            ["x"] = -774.6,
-            ["y"] = -1359.9,
+        Coord = {
+            x = -774.6,
+            y = -1359.9,
         },
     },
     { -- Step 147
@@ -2209,117 +2209,117 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -1058.3,
-            ["y"] = -1851.3,
+        Range = 0.69,
+        Coord = {
+            x = -1058.3,
+            y = -1851.3,
         },
     },
     { -- Step 148
-        ["Done"] = {
+        Done = {
             51286,
         },
-        ["Coord"] = {
-            ["x"] = -774.6,
-            ["y"] = -1359.9,
+        Coord = {
+            x = -774.6,
+            y = -1359.9,
         },
     },
     { -- Step 149
-        ["UseFlightPath"] = 51539,
-        ["ETA"] = 71,
-        ["Name"] = "The Great Seal",
-        ["NodeID"] = 1959,
-        ["Coord"] = {
-            ["x"] = -1058.4,
-            ["y"] = -956.3,
+        UseFlightPath = 51539,
+        ETA = 71,
+        Name = "The Great Seal",
+        NodeID = 1959,
+        Coord = {
+            x = -1058.4,
+            y = -956.3,
         },
     },
     { -- Step 150
-        ["Waypoint"] = 51539,
-        ["Range"] = 6.46,
-        ["Coord"] = {
-            ["x"] = 800.4,
-            ["y"] = -1046.8,
+        Waypoint = 51539,
+        Range = 6.46,
+        Coord = {
+            x = 800.4,
+            y = -1046.8,
         },
     },
     { -- Step 151
-        ["Waypoint"] = 51539,
-        ["Range"] = 4.73,
-        ["Coord"] = {
-            ["x"] = 814.9,
-            ["y"] = -1093,
+        Waypoint = 51539,
+        Range = 4.73,
+        Coord = {
+            x = 814.9,
+            y = -1093,
         },
     },
     { -- Step 152
-        ["Done"] = {
+        Done = {
             51539,
         },
-        ["Coord"] = {
-            ["x"] = 819.5,
-            ["y"] = -1124.4,
+        Coord = {
+            x = 819.5,
+            y = -1124.4,
         },
     },
     { -- Step 153
-        ["ExtraLineText"] = "USE_ELEVATOR",
-        ["Waypoint"] = 50881,
-        ["Range"] = 3.76,
-        ["Coord"] = {
-            ["x"] = 854.6,
-            ["y"] = -1126.3,
+        ExtraLineText = "USE_ELEVATOR",
+        Waypoint = 50881,
+        Range = 3.76,
+        Coord = {
+            x = 854.6,
+            y = -1126.3,
         },
     },
     { -- Step 154
-        ["ExtraLineText"] = "USE_ELEVATOR",
-        ["Waypoint"] = 50881,
-        ["Range"] = 3.76,
-        ["Coord"] = {
-            ["x"] = 851.2,
-            ["y"] = -1126.4,
+        ExtraLineText = "USE_ELEVATOR",
+        Waypoint = 50881,
+        Range = 3.76,
+        Coord = {
+            x = 851.2,
+            y = -1126.4,
         },
     },
     { -- Step 155
-        ["ExtraLineText"] = "USE_ELEVATOR",
-        ["Waypoint"] = 50881,
-        ["Range"] = 3.76,
-        ["Coord"] = {
-            ["x"] = 835.5,
-            ["y"] = -1101.5,
+        ExtraLineText = "USE_ELEVATOR",
+        Waypoint = 50881,
+        Range = 3.76,
+        Coord = {
+            x = 835.5,
+            y = -1101.5,
         },
     },
     { -- Step 156
-        ["Waypoint"] = 50881,
-        ["Range"] = 3.76,
-        ["Coord"] = {
-            ["x"] = 815.1,
-            ["y"] = -1103.7,
+        Waypoint = 50881,
+        Range = 3.76,
+        Coord = {
+            x = 815.1,
+            y = -1103.7,
         },
     },
     { -- Step 157
-        ["Done"] = {
+        Done = {
             50881,
         },
-        ["Coord"] = {
-            ["x"] = 802.7,
-            ["y"] = -1134.1,
+        Coord = {
+            x = 802.7,
+            y = -1134.1,
         },
     },
     { -- Step 158
-        ["UseGlider"] = 1,
-        ["Coord"] = {
-            ["x"] = 936.6,
-            ["y"] = -712.7,
+        UseGlider = 1,
+        Coord = {
+            x = 936.6,
+            y = -712.7,
         },
-        ["Done"] = {
+        Done = {
             47445,
         },
     },
     { -- Step 159
-        ["PickUp"] = {
+        PickUp = {
             47423,
         },
-        ["Coord"] = {
-            ["x"] = 936.6,
-            ["y"] = -712.7,
+        Coord = {
+            x = 936.6,
+            y = -712.7,
         },
     },
     { -- Step 160
@@ -2328,38 +2328,38 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["47423-1"] = 152627,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [251685] = "47423-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [251685] = 5,
         },
-        ["Range"] = 159,
-        ["Coord"] = {
-            ["x"] = 887.1,
-            ["y"] = -664.8,
+        Range = 159,
+        Coord = {
+            x = 887.1,
+            y = -664.8,
         },
     },
     { -- Step 161
-        ["Coord"] = {
-            ["x"] = 752.2,
-            ["y"] = -486.4,
+        Coord = {
+            x = 752.2,
+            y = -486.4,
         },
-        ["Done"] = {
+        Done = {
             47423,
         },
     },
 
     { -- Step 162
-        ["PickUp"] = {
+        PickUp = {
             47433,
         },
-        ["Coord"] = {
-            ["x"] = 752.2,
-            ["y"] = -486.4,
+        Coord = {
+            x = 752.2,
+            y = -486.4,
         },
     },
     { -- Step 163
@@ -2368,10 +2368,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 721,
-            ["y"] = -481.5,
+        Range = 0.75,
+        Coord = {
+            x = 721,
+            y = -481.5,
         },
     },
     { -- Step 164
@@ -2380,29 +2380,29 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Range"] = 207.65,
-        ["Coord"] = {
-            ["x"] = 578.2,
-            ["y"] = -383.3,
+        Range = 207.65,
+        Coord = {
+            x = 578.2,
+            y = -383.3,
         },
     },
     { -- Step 165
-        ["Done"] = {
+        Done = {
             47433,
         },
-        ["Coord"] = {
-            ["x"] = 911.4,
-            ["y"] = -623.7,
+        Coord = {
+            x = 911.4,
+            y = -623.7,
         },
     },
     { -- Step 166
-        ["PickUp"] = {
+        PickUp = {
             47435,
             47434,
         },
-        ["Coord"] = {
-            ["x"] = 989.6,
-            ["y"] = -597.5,
+        Coord = {
+            x = 989.6,
+            y = -597.5,
         },
     },
     { -- Step 167
@@ -2414,29 +2414,29 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 16.32,
-        ["Coord"] = {
-            ["x"] = 1003.6,
-            ["y"] = -606.8,
+        Range = 16.32,
+        Coord = {
+            x = 1003.6,
+            y = -606.8,
         },
     },
     { -- Step 168
-        ["Done"] = {
+        Done = {
             47435,
             47434,
         },
-        ["Coord"] = {
-            ["x"] = 1059.5,
-            ["y"] = -474.7,
+        Coord = {
+            x = 1059.5,
+            y = -474.7,
         },
     },
     { -- Step 169
-        ["PickUp"] = {
+        PickUp = {
             47437,
         },
-        ["Coord"] = {
-            ["x"] = 1059.5,
-            ["y"] = -474.7,
+        Coord = {
+            x = 1059.5,
+            y = -474.7,
         },
     },
     { -- Step 170
@@ -2445,35 +2445,35 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 4.87,
-        ["Coord"] = {
-            ["x"] = 994.7,
-            ["y"] = -470.9,
+        Range = 4.87,
+        Coord = {
+            x = 994.7,
+            y = -470.9,
         },
     },
     { -- Step 171
-        ["Waypoint"] = 47437,
-        ["Range"] = 3.89,
-        ["Coord"] = {
-            ["x"] = 1047.4,
-            ["y"] = -414.5,
+        Waypoint = 47437,
+        Range = 3.89,
+        Coord = {
+            x = 1047.4,
+            y = -414.5,
         },
     },
 
     { -- Step 172
-        ["Waypoint"] = 47437,
-        ["Range"] = 4.3,
-        ["Coord"] = {
-            ["x"] = 1034.7,
-            ["y"] = -401,
+        Waypoint = 47437,
+        Range = 4.3,
+        Coord = {
+            x = 1034.7,
+            y = -401,
         },
     },
     { -- Step 173
-        ["Waypoint"] = 47437,
-        ["Range"] = 5.64,
-        ["Coord"] = {
-            ["x"] = 1008.2,
-            ["y"] = -424.9,
+        Waypoint = 47437,
+        Range = 5.64,
+        Coord = {
+            x = 1008.2,
+            y = -424.9,
         },
     },
     { -- Step 174
@@ -2482,26 +2482,26 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Range"] = 9.43,
-        ["Coord"] = {
-            ["x"] = 962.5,
-            ["y"] = -426.9,
+        Range = 9.43,
+        Coord = {
+            x = 962.5,
+            y = -426.9,
         },
     },
     { -- Step 175
-        ["Waypoint"] = 47437,
-        ["Range"] = 4.11,
-        ["Coord"] = {
-            ["x"] = 960.6,
-            ["y"] = -471.8,
+        Waypoint = 47437,
+        Range = 4.11,
+        Coord = {
+            x = 960.6,
+            y = -471.8,
         },
     },
     { -- Step 176
-        ["Waypoint"] = 47437,
-        ["Range"] = 4.04,
-        ["Coord"] = {
-            ["x"] = 926.7,
-            ["y"] = -498.9,
+        Waypoint = 47437,
+        Range = 4.04,
+        Coord = {
+            x = 926.7,
+            y = -498.9,
         },
     },
     { -- Step 177
@@ -2510,442 +2510,442 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Range"] = 6.07,
-        ["Coord"] = {
-            ["x"] = 963.4,
-            ["y"] = -568.3,
+        Range = 6.07,
+        Coord = {
+            x = 963.4,
+            y = -568.3,
         },
     },
     { -- Step 178
-        ["Waypoint"] = 47437,
-        ["Range"] = 8.08,
-        ["Coord"] = {
-            ["x"] = 917.7,
-            ["y"] = -560,
+        Waypoint = 47437,
+        Range = 8.08,
+        Coord = {
+            x = 917.7,
+            y = -560,
         },
     },
     { -- Step 179
-        ["Done"] = {
+        Done = {
             47437,
         },
-        ["Coord"] = {
-            ["x"] = 912.5,
-            ["y"] = -507.4,
+        Coord = {
+            x = 912.5,
+            y = -507.4,
         },
     },
     { -- Step 180
-        ["PickUp"] = {
+        PickUp = {
             47422,
         },
-        ["Coord"] = {
-            ["x"] = 914.2,
-            ["y"] = -507.4,
+        Coord = {
+            x = 914.2,
+            y = -507.4,
         },
     },
     { -- Step 181
-        ["Waypoint"] = 47422,
-        ["Range"] = 10.08,
-        ["Coord"] = {
-            ["x"] = 913.7,
-            ["y"] = -488.4,
+        Waypoint = 47422,
+        Range = 10.08,
+        Coord = {
+            x = 913.7,
+            y = -488.4,
         },
     },
 
     { -- Step 182
-        ["ExtraLineText"] = "TOTEM_DAMAGE_BUFF",
+        ExtraLineText = "TOTEM_DAMAGE_BUFF",
         Qpart = {
             [47422] = {
                 1,
             },
         },
-        ["Range"] = 20.58,
-        ["Coord"] = {
-            ["x"] = 982.9,
-            ["y"] = -404.4,
+        Range = 20.58,
+        Coord = {
+            x = 982.9,
+            y = -404.4,
         },
     },
     { -- Step 183
-        ["Done"] = {
+        Done = {
             47422,
         },
-        ["Coord"] = {
-            ["x"] = 1019.7,
-            ["y"] = -432.8,
+        Coord = {
+            x = 1019.7,
+            y = -432.8,
         },
     },
     { -- Step 184
-        ["PickUp"] = {
+        PickUp = {
             47438,
         },
-        ["Coord"] = {
-            ["x"] = 1019.7,
-            ["y"] = -432.8,
+        Coord = {
+            x = 1019.7,
+            y = -432.8,
         },
     },
     { -- Step 185
-        ["ExtraLineText"] = "LOA_INFO_1",
-        ["ExtraLineText2"] = "LOA_INFO_2",
+        ExtraLineText = "LOA_INFO_1",
+        ExtraLineText2 = "LOA_INFO_2",
         Qpart = {
             [47438] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1012.6,
-            ["y"] = -433.2,
+        Range = 0.69,
+        Coord = {
+            x = 1012.6,
+            y = -433.2,
         },
     },
     { -- Step 186
-        ["Done"] = {
+        Done = {
             47438,
         },
-        ["Coord"] = {
-            ["x"] = 1019.6,
-            ["y"] = -432.3,
+        Coord = {
+            x = 1019.6,
+            y = -432.3,
         },
     },
     { -- Step 187
-        ["PickedLoa"] = 1,
-        ["PickUp"] = {
+        PickedLoa = 1,
+        PickUp = {
             47440,
         },
-        ["Coord"] = {
-            ["x"] = 1014.1,
-            ["y"] = -438.8,
+        Coord = {
+            x = 1014.1,
+            y = -438.8,
         },
     },
     { -- Step 188
-        ["PickedLoa"] = 1,
+        PickedLoa = 1,
         Qpart = {
             [47440] = {
                 1,
             },
         },
-        ["Range"] = 5.31,
-        ["Coord"] = {
-            ["x"] = 1014.7,
-            ["y"] = -448.9,
+        Range = 5.31,
+        Coord = {
+            x = 1014.7,
+            y = -448.9,
         },
     },
     { -- Step 189
-        ["PickedLoa"] = 1,
-        ["Waypoint"] = 47440,
-        ["Range"] = 4.88,
-        ["Coord"] = {
-            ["x"] = -320.7,
-            ["y"] = -1361.3,
+        PickedLoa = 1,
+        Waypoint = 47440,
+        Range = 4.88,
+        Coord = {
+            x = -320.7,
+            y = -1361.3,
         },
     },
     { -- Step 190
-        ["PickedLoa"] = 1,
+        PickedLoa = 1,
         Qpart = {
             [47440] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -338.5,
-            ["y"] = -1401.3,
+        Range = 0.69,
+        Coord = {
+            x = -338.5,
+            y = -1401.3,
         },
     },
     { -- Step 191
-        ["PickedLoa"] = 1,
+        PickedLoa = 1,
         Qpart = {
             [47440] = {
                 3,
             },
         },
-        ["Range"] = 4.47,
-        ["Coord"] = {
-            ["x"] = -366.8,
-            ["y"] = -1397.9,
+        Range = 4.47,
+        Coord = {
+            x = -366.8,
+            y = -1397.9,
         },
     },
 
     { -- Step 192
-        ["PickedLoa"] = 1,
-        ["Done"] = {
+        PickedLoa = 1,
+        Done = {
             47440,
         },
-        ["ETA"] = 52,
-        ["Coord"] = {
-            ["x"] = 804.5,
-            ["y"] = -893,
+        ETA = 52,
+        Coord = {
+            x = 804.5,
+            y = -893,
         },
     },
     { -- Step 193
-        ["PickedLoa"] = 1,
-        ["PickUp"] = {
+        PickedLoa = 1,
+        PickUp = {
             47432,
         },
-        ["Coord"] = {
-            ["x"] = 804.5,
-            ["y"] = -893,
+        Coord = {
+            x = 804.5,
+            y = -893,
         },
     },
     { -- Step 194
-        ["PickedLoa"] = 1,
-        ["PickUp"] = {
+        PickedLoa = 1,
+        PickUp = {
             49768,
         },
-        ["Coord"] = {
-            ["x"] = 749.1,
-            ["y"] = -1038,
+        Coord = {
+            x = 749.1,
+            y = -1038,
         },
     },
     { -- Step 195
-        ["PickedLoa"] = 1,
-        ["Waypoint"] = 47432,
-        ["Range"] = 11.03,
-        ["Coord"] = {
-            ["x"] = 799.2,
-            ["y"] = -1047.5,
+        PickedLoa = 1,
+        Waypoint = 47432,
+        Range = 11.03,
+        Coord = {
+            x = 799.2,
+            y = -1047.5,
         },
     },
     { -- Step 196
-        ["PickedLoa"] = 1,
-        ["Waypoint"] = 47432,
-        ["Range"] = 7.35,
-        ["Coord"] = {
-            ["x"] = 791.4,
-            ["y"] = -1107.4,
+        PickedLoa = 1,
+        Waypoint = 47432,
+        Range = 7.35,
+        Coord = {
+            x = 791.4,
+            y = -1107.4,
         },
     },
     { -- Step 197
-        ["PickedLoa"] = 1,
-        ["PickUp"] = {
+        PickedLoa = 1,
+        PickUp = {
             50538,
         },
-        ["Coord"] = {
-            ["x"] = 773.6,
-            ["y"] = -1124.5,
+        Coord = {
+            x = 773.6,
+            y = -1124.5,
         },
     },
     { -- Step 198
-        ["ExtraLineText"] = "UP_ELEVATOR",
-        ["PickedLoa"] = 1,
-        ["Waypoint"] = 47432,
-        ["Range"] = 3.59,
-        ["Coord"] = {
-            ["x"] = 754.9,
-            ["y"] = -1125.1,
+        ExtraLineText = "UP_ELEVATOR",
+        PickedLoa = 1,
+        Waypoint = 47432,
+        Range = 3.59,
+        Coord = {
+            x = 754.9,
+            y = -1125.1,
         },
     },
     { -- Step 199
-        ["ExtraLineText"] = "UP_ELEVATOR",
-        ["PickedLoa"] = 1,
-        ["Waypoint"] = 47432,
-        ["Range"] = 6.54,
-        ["Coord"] = {
-            ["x"] = 790.2,
-            ["y"] = -1101.5,
+        ExtraLineText = "UP_ELEVATOR",
+        PickedLoa = 1,
+        Waypoint = 47432,
+        Range = 6.54,
+        Coord = {
+            x = 790.2,
+            y = -1101.5,
         },
     },
     { -- Step 200
-        ["PickedLoa"] = 1,
-        ["Done"] = {
+        PickedLoa = 1,
+        Done = {
             47432,
         },
-        ["Coord"] = {
-            ["x"] = 804.6,
-            ["y"] = -1134.5,
+        Coord = {
+            x = 804.6,
+            y = -1134.5,
         },
     },
 
 
     { -- Step 201
-        ["PickedLoa"] = 2,
-        ["PickUp"] = {
+        PickedLoa = 2,
+        PickUp = {
             47439,
         },
-        ["Coord"] = {
-            ["x"] = 1019.4,
-            ["y"] = -432.9,
+        Coord = {
+            x = 1019.4,
+            y = -432.9,
         },
     },
     { -- Step 202
-        ["UseGlider"] = 1,
-        ["PickedLoa"] = 2,
-        ["Range"] = 38.05,
-        ["Waypoint"] = 47439,
-        ["Coord"] = {
-            ["x"] = 1226.9,
-            ["y"] = -353.7,
+        UseGlider = 1,
+        PickedLoa = 2,
+        Range = 38.05,
+        Waypoint = 47439,
+        Coord = {
+            x = 1226.9,
+            y = -353.7,
         },
     },
     { -- Step 203
-        ["PickedLoa"] = 2,
+        PickedLoa = 2,
         Qpart = {
             [47439] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = 1631.5,
-            ["y"] = -440.7,
+        Gossip = 1,
+        Range = 0.61,
+        Coord = {
+            x = 1631.5,
+            y = -440.7,
         },
     },
     { -- Step 204
-        ["PickedLoa"] = 2,
-        ["UseHS"] = 47439,
-        ["Coord"] = {
-            ["x"] = 1631.5,
-            ["y"] = -440.7,
+        PickedLoa = 2,
+        UseHS = 47439,
+        Coord = {
+            x = 1631.5,
+            y = -440.7,
         },
     },
     { -- Step 205
-        ["PickedLoa"] = 2,
-        ["Waypoint"] = 47439,
-        ["Range"] = 7.35,
-        ["Coord"] = {
-            ["x"] = 801.7,
-            ["y"] = -1136.5,
+        PickedLoa = 2,
+        Waypoint = 47439,
+        Range = 7.35,
+        Coord = {
+            x = 801.7,
+            y = -1136.5,
         },
     },
     { -- Step 206
-        ["PickedLoa"] = 2,
-        ["PickUp"] = {
+        PickedLoa = 2,
+        PickUp = {
             50538,
         },
-        ["Coord"] = {
-            ["x"] = 773.6,
-            ["y"] = -1124.5,
+        Coord = {
+            x = 773.6,
+            y = -1124.5,
         },
     },
     { -- Step 207
-        ["PickedLoa"] = 2,
-        ["Waypoint"] = 47439,
-        ["Range"] = 7.35,
-        ["Coord"] = {
-            ["x"] = 790.7,
-            ["y"] = -1108.1,
+        PickedLoa = 2,
+        Waypoint = 47439,
+        Range = 7.35,
+        Coord = {
+            x = 790.7,
+            y = -1108.1,
         },
     },
     { -- Step 208
-        ["PickedLoa"] = 2,
-        ["Waypoint"] = 47439,
-        ["Range"] = 7.35,
-        ["Coord"] = {
-            ["x"] = 801.2,
-            ["y"] = -1050.6,
+        PickedLoa = 2,
+        Waypoint = 47439,
+        Range = 7.35,
+        Coord = {
+            x = 801.2,
+            y = -1050.6,
         },
     },
     { -- Step 209
-        ["PickedLoa"] = 2,
-        ["PickUp"] = {
+        PickedLoa = 2,
+        PickUp = {
             49768,
         },
-        ["Coord"] = {
-            ["x"] = 749.1,
-            ["y"] = -1038,
+        Coord = {
+            x = 749.1,
+            y = -1038,
         },
     },
     { -- Step 210
-        ["ExtraLineText"] = "DO_NOT_USE_GLIDER",
-        ["PickedLoa"] = 2,
-        ["Done"] = {
+        ExtraLineText = "DO_NOT_USE_GLIDER",
+        PickedLoa = 2,
+        Done = {
             47439,
         },
-        ["Coord"] = {
-            ["x"] = 804.5,
-            ["y"] = -891.3,
+        Coord = {
+            x = 804.5,
+            y = -891.3,
         },
     },
     { -- Step 211
-        ["PickedLoa"] = 2,
-        ["PickUp"] = {
+        PickedLoa = 2,
+        PickUp = {
             48897,
         },
-        ["Coord"] = {
-            ["x"] = 804.5,
-            ["y"] = -891.3,
+        Coord = {
+            x = 804.5,
+            y = -891.3,
         },
     },
     { -- [step 212
-        ["Waypoint"] = 48897,
-        ["Coord"] = {
-            ["x"] = 805.9,
-            ["y"] = -891.0,
+        Waypoint = 48897,
+        Coord = {
+            x = 805.9,
+            y = -891.0,
         },
-        ["Range"] = 10,
-        ["PickedLoa"] = 2,
+        Range = 10,
+        PickedLoa = 2,
     },
     { -- [step 213
-        ["Waypoint"] = 48897,
-        ["Coord"] = {
-            ["x"] = 759.0,
-            ["y"] = -946.6,
+        Waypoint = 48897,
+        Coord = {
+            x = 759.0,
+            y = -946.6,
         },
-        ["Range"] = 10,
-        ["PickedLoa"] = 2,
+        Range = 10,
+        PickedLoa = 2,
     },
     { -- [step 214
-        ["Waypoint"] = 48897,
-        ["Coord"] = {
-            ["x"] = 798.7,
-            ["y"] = -965.4,
+        Waypoint = 48897,
+        Coord = {
+            x = 798.7,
+            y = -965.4,
         },
-        ["Range"] = 10,
-        ["PickedLoa"] = 2,
+        Range = 10,
+        PickedLoa = 2,
     },
     { -- [step 215
-        ["Waypoint"] = 48897,
-        ["Coord"] = {
-            ["x"] = 778.7,
-            ["y"] = -1021.6,
+        Waypoint = 48897,
+        Coord = {
+            x = 778.7,
+            y = -1021.6,
         },
-        ["Range"] = 10,
-        ["PickedLoa"] = 2,
+        Range = 10,
+        PickedLoa = 2,
     },
     { -- [step 216
-        ["Waypoint"] = 48897,
-        ["Coord"] = {
-            ["x"] = 804.8,
-            ["y"] = -1053.0,
+        Waypoint = 48897,
+        Coord = {
+            x = 804.8,
+            y = -1053.0,
         },
-        ["Range"] = 10,
-        ["PickedLoa"] = 2,
+        Range = 10,
+        PickedLoa = 2,
     },
     { -- [step 217
-        ["Waypoint"] = 48897,
-        ["Coord"] = {
-            ["x"] = 757.6,
-            ["y"] = -1126.3,
+        Waypoint = 48897,
+        Coord = {
+            x = 757.6,
+            y = -1126.3,
         },
-        ["Range"] = 10,
-        ["PickedLoa"] = 2,
+        Range = 10,
+        PickedLoa = 2,
     },
     { -- [step 218
-        ["Waypoint"] = 48897,
-        ["Coord"] = {
-            ["x"] = 790.2,
-            ["y"] = -1101.5,
+        Waypoint = 48897,
+        Coord = {
+            x = 790.2,
+            y = -1101.5,
         },
-        ["Range"] = 6.54,
-        ["PickedLoa"] = 2,
+        Range = 6.54,
+        PickedLoa = 2,
     },
     { -- [Step 219
-        ["Done"] = {
+        Done = {
             48897,
         },
-        ["Coord"] = {
-            ["x"] = 806,
-            ["y"] = -1134.5,
+        Coord = {
+            x = 806,
+            y = -1134.5,
         },
-        ["PickedLoa"] = 2,
+        PickedLoa = 2,
     },
     { -- Step 220
-        ["UseGlider"] = 1,
-        ["PickUp"] = {
+        UseGlider = 1,
+        PickUp = {
             49810,
         },
-        ["Coord"] = {
-            ["x"] = 284.3,
-            ["y"] = -615.2,
+        Coord = {
+            x = 284.3,
+            y = -615.2,
         },
     },
     { -- Step 221
@@ -2954,19 +2954,19 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49810-1"] = 155911,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [259041] = "49810-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [259041] = 10,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 374,
-            ["y"] = -700.7,
+        Range = 0.69,
+        Coord = {
+            x = 374,
+            y = -700.7,
         },
     },
     { -- Step 222
@@ -2975,39 +2975,39 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49810-2"] = 155911,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [259041] = "49810-2",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [259041] = 10,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 285.5,
-            ["y"] = -835.5,
+        Range = 0.69,
+        Coord = {
+            x = 285.5,
+            y = -835.5,
         },
     },
     { -- Step 223
-        ["Done"] = {
+        Done = {
             49810,
         },
-        ["Coord"] = {
-            ["x"] = 285.1,
-            ["y"] = -615,
+        Coord = {
+            x = 285.1,
+            y = -615,
         },
     },
     { -- Step 224
-        ["PickUp"] = {
+        PickUp = {
             49814,
             50154,
             49801,
         },
-        ["Coord"] = {
-            ["x"] = 285.1,
-            ["y"] = -615,
+        Coord = {
+            x = 285.1,
+            y = -615,
         },
     },
     { -- Step 225
@@ -3019,10 +3019,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 52.5,
-        ["Coord"] = {
-            ["x"] = 372.8,
-            ["y"] = -641.5,
+        Range = 52.5,
+        Coord = {
+            x = 372.8,
+            y = -641.5,
         },
     },
 
@@ -3032,31 +3032,31 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 34.48,
-        ["Coord"] = {
-            ["x"] = 344.5,
-            ["y"] = -970.8,
+        Range = 34.48,
+        Coord = {
+            x = 344.5,
+            y = -970.8,
         },
     },
     { -- Step 227
-        ["Coord"] = {
-            ["x"] = 286,
-            ["y"] = -618.8,
+        Coord = {
+            x = 286,
+            y = -618.8,
         },
-        ["Done"] = {
+        Done = {
             49814,
             49801,
             50154,
         },
     },
     { -- Step 228
-        ["PickUp"] = {
+        PickUp = {
             50074,
             50150,
         },
-        ["Coord"] = {
-            ["x"] = 286,
-            ["y"] = -618.8,
+        Coord = {
+            x = 286,
+            y = -618.8,
         },
     },
     { -- Step 229
@@ -3065,13 +3065,13 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["50074-1"] = 156475,
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = 371.3,
-            ["y"] = -683.3,
+        Range = 0.61,
+        Coord = {
+            x = 371.3,
+            y = -683.3,
         },
     },
     { -- Step 230
@@ -3080,10 +3080,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 292,
-            ["y"] = -821.8,
+        Range = 0.69,
+        Coord = {
+            x = 292,
+            y = -821.8,
         },
     },
     { -- Step 231
@@ -3092,29 +3092,29 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 269.7,
-            ["y"] = -816,
+        Range = 0.75,
+        Coord = {
+            x = 269.7,
+            y = -816,
         },
     },
     { -- Step 232
-        ["Done"] = {
+        Done = {
             50150,
             50074,
         },
-        ["Coord"] = {
-            ["x"] = 286,
-            ["y"] = -618.7,
+        Coord = {
+            x = 286,
+            y = -618.7,
         },
     },
     { -- Step 233
-        ["PickUp"] = {
+        PickUp = {
             50252,
         },
-        ["Coord"] = {
-            ["x"] = 286.1,
-            ["y"] = -619.3,
+        Coord = {
+            x = 286.1,
+            y = -619.3,
         },
     },
     { -- Step 234
@@ -3124,29 +3124,29 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 285,
-            ["y"] = -618.3,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 285,
+            y = -618.3,
         },
     },
     { -- Step 235
-        ["Coord"] = {
-            ["x"] = 284.5,
-            ["y"] = -617,
+        Coord = {
+            x = 284.5,
+            y = -617,
         },
-        ["Done"] = {
+        Done = {
             50252,
         },
     },
     { -- Step 236
-        ["PickUp"] = {
+        PickUp = {
             50268,
         },
-        ["Coord"] = {
-            ["x"] = 287,
-            ["y"] = -620,
+        Coord = {
+            x = 287,
+            y = -620,
         },
     },
     { -- Step 237
@@ -3155,28 +3155,28 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 283.5,
-            ["y"] = -613.5,
+        Range = 0.75,
+        Coord = {
+            x = 283.5,
+            y = -613.5,
         },
     },
     { -- Step 238
-        ["Coord"] = {
-            ["x"] = 287.7,
-            ["y"] = -619.8,
+        Coord = {
+            x = 287.7,
+            y = -619.8,
         },
-        ["Done"] = {
+        Done = {
             50268,
         },
     },
     { -- Step 239
-        ["PickUp"] = {
+        PickUp = {
             49870,
         },
-        ["Coord"] = {
-            ["x"] = 287.7,
-            ["y"] = -619.8,
+        Coord = {
+            x = 287.7,
+            y = -619.8,
         },
     },
     { -- Step 240
@@ -3185,13 +3185,13 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49870-1"] = 156867,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 372.6,
-            ["y"] = -710,
+        Range = 0.69,
+        Coord = {
+            x = 372.6,
+            y = -710,
         },
     },
     { -- Step 241
@@ -3200,10 +3200,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 269.6,
-            ["y"] = -989.3,
+        Range = 0.75,
+        Coord = {
+            x = 269.6,
+            y = -989.3,
         },
     },
     { -- Step 242
@@ -3212,44 +3212,44 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Range"] = 11.22,
-        ["Coord"] = {
-            ["x"] = 214,
-            ["y"] = -994.8,
+        Range = 11.22,
+        Coord = {
+            x = 214,
+            y = -994.8,
         },
     },
     { -- Step 243
-        ["Range"] = 15.65,
-        ["Waypoint"] = 49870,
-        ["Coord"] = {
-            ["x"] = 311.5,
-            ["y"] = -938.5,
+        Range = 15.65,
+        Waypoint = 49870,
+        Coord = {
+            x = 311.5,
+            y = -938.5,
         },
     },
     { -- Step 244
-        ["Range"] = 44.2,
-        ["Waypoint"] = 49870,
-        ["Coord"] = {
-            ["x"] = 299.8,
-            ["y"] = -773.3,
+        Range = 44.2,
+        Waypoint = 49870,
+        Coord = {
+            x = 299.8,
+            y = -773.3,
         },
     },
     { -- Step 245
-        ["Coord"] = {
-            ["x"] = 284.3,
-            ["y"] = -618,
+        Coord = {
+            x = 284.3,
+            y = -618,
         },
-        ["Done"] = {
+        Done = {
             49870,
         },
     },
     { -- Step 246
-        ["PickUp"] = {
+        PickUp = {
             50297,
         },
-        ["Coord"] = {
-            ["x"] = 284.3,
-            ["y"] = -618,
+        Coord = {
+            x = 284.3,
+            y = -618,
         },
     },
     { -- Step 247
@@ -3258,10 +3258,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 275.3,
-            ["y"] = -817.3,
+        Range = 0.69,
+        Coord = {
+            x = 275.3,
+            y = -817.3,
         },
     },
     { -- Step 248
@@ -3270,97 +3270,97 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 279.8,
-            ["y"] = -824.8,
+        Range = 0.69,
+        Coord = {
+            x = 279.8,
+            y = -824.8,
         },
     },
     { -- Step 249
-        ["Coord"] = {
-            ["x"] = 284.8,
-            ["y"] = -617.8,
+        Coord = {
+            x = 284.8,
+            y = -617.8,
         },
-        ["Done"] = {
+        Done = {
             50297,
         },
     },
     { -- Step 250
-        ["Range"] = 35.07,
-        ["Waypoint"] = 50538,
-        ["Coord"] = {
-            ["x"] = 138.8,
-            ["y"] = -881.3,
+        Range = 35.07,
+        Waypoint = 50538,
+        Coord = {
+            x = 138.8,
+            y = -881.3,
         },
     },
     { -- Step 251
-        ["Coord"] = {
-            ["x"] = 161.5,
-            ["y"] = -945.2,
+        Coord = {
+            x = 161.5,
+            y = -945.2,
         },
-        ["Done"] = {
+        Done = {
             50538,
         },
     },
     { -- Step 252
-        ["PickUp"] = {
+        PickUp = {
             47226,
         },
-        ["Coord"] = {
-            ["x"] = 155.3,
-            ["y"] = -951.7,
+        Coord = {
+            x = 155.3,
+            y = -951.7,
         },
     },
     { -- Step 253
-        ["Range"] = 20.58,
-        ["Waypoint"] = 47226,
-        ["Coord"] = {
-            ["x"] = 174.9,
-            ["y"] = -1047,
+        Range = 20.58,
+        Waypoint = 47226,
+        Coord = {
+            x = 174.9,
+            y = -1047,
         },
     },
     { -- Step 254
-        ["Range"] = 19.15,
-        ["Waypoint"] = 47226,
-        ["Coord"] = {
-            ["x"] = 160.8,
-            ["y"] = -1129.5,
+        Range = 19.15,
+        Waypoint = 47226,
+        Coord = {
+            x = 160.8,
+            y = -1129.5,
         },
     },
     { -- Step 255
-        ["Range"] = 13.69,
-        ["Waypoint"] = 47226,
-        ["Coord"] = {
-            ["x"] = 87.3,
-            ["y"] = -1097.4,
+        Range = 13.69,
+        Waypoint = 47226,
+        Coord = {
+            x = 87.3,
+            y = -1097.4,
         },
     },
 
     { -- Step 256
-        ["Coord"] = {
-            ["x"] = 55.7,
-            ["y"] = -1019.8,
+        Coord = {
+            x = 55.7,
+            y = -1019.8,
         },
-        ["Done"] = {
+        Done = {
             47226,
         },
     },
     { -- Step 257
-        ["PickUp"] = {
+        PickUp = {
             47259,
             48527,
         },
-        ["Coord"] = {
-            ["x"] = 55.7,
-            ["y"] = -1019.8,
+        Coord = {
+            x = 55.7,
+            y = -1019.8,
         },
     },
     { -- Step 258
-        ["Range"] = 6.28,
-        ["GetFP"] = 1966,
-        ["Coord"] = {
-            ["x"] = 18.3,
-            ["y"] = -1048.0,
+        Range = 6.28,
+        GetFP = 1966,
+        Coord = {
+            x = 18.3,
+            y = -1048.0,
         },
     },
     { -- Step 259
@@ -3372,61 +3372,61 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 31.57,
-        ["Coord"] = {
-            ["x"] = -99.4,
-            ["y"] = -1068.8,
+        Range = 31.57,
+        Coord = {
+            x = -99.4,
+            y = -1068.8,
         },
     },
     { -- Step 260
-        ["Coord"] = {
-            ["x"] = 55.4,
-            ["y"] = -1018.5,
+        Coord = {
+            x = 55.4,
+            y = -1018.5,
         },
-        ["Done"] = {
+        Done = {
             47259,
             48527,
         },
     },
     { -- Step 261
-        ["PickUp"] = {
+        PickUp = {
             47311,
             47272,
         },
-        ["Coord"] = {
-            ["x"] = 55.2,
-            ["y"] = -1020.8,
+        Coord = {
+            x = 55.2,
+            y = -1020.8,
         },
     },
     { -- Step 262
-        ["PickUp"] = {
+        PickUp = {
             47312,
             51980,
         },
-        ["Coord"] = {
-            ["x"] = -127.5,
-            ["y"] = -917.3,
+        Coord = {
+            x = -127.5,
+            y = -917.3,
         },
     },
     { -- Step 263
-        ["Waypoint"] = 51980,
-        ["Range"] = 15.83,
-        ["Coord"] = {
-            ["x"] = -118.5,
-            ["y"] = -875,
+        Waypoint = 51980,
+        Range = 15.83,
+        Coord = {
+            x = -118.5,
+            y = -875,
         },
     },
     { -- Step 264
-        ["ExtraLineText"] = "ASSULT_SKIP",
+        ExtraLineText = "ASSULT_SKIP",
         Qpart = {
             [51980] = {
                 1,
             },
         },
-        ["Range"] = 22.92,
-        ["Coord"] = {
-            ["x"] = 28.5,
-            ["y"] = -722.3,
+        Range = 22.92,
+        Coord = {
+            x = 28.5,
+            y = -722.3,
         },
     },
     { -- Step 265
@@ -3435,7 +3435,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47272] = {
                 1,
             },
@@ -3443,10 +3443,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 12.95,
-        ["Coord"] = {
-            ["x"] = -311.7,
-            ["y"] = -898.7,
+        Range = 12.95,
+        Coord = {
+            x = -311.7,
+            y = -898.7,
         },
     },
     { -- [step 266
@@ -3458,73 +3458,73 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["x"] = -288.4,
-            ["y"] = -865.3,
+        Coord = {
+            x = -288.4,
+            y = -865.3,
         },
-        ["Range"] = 125,
+        Range = 125,
     },
     { -- Step 267
-        ["Done"] = {
+        Done = {
             47312,
             51980,
         },
-        ["Coord"] = {
-            ["x"] = -131.2,
-            ["y"] = -913.5,
+        Coord = {
+            x = -131.2,
+            y = -913.5,
         },
-        ["ExtraLineText"] = "ASSULT_SKIP2",
+        ExtraLineText = "ASSULT_SKIP2",
     },
     { -- Step 268
-        ["Done"] = {
+        Done = {
             47311,
             47272,
         },
-        ["Coord"] = {
-            ["x"] = 53.7,
-            ["y"] = -1021.6,
+        Coord = {
+            x = 53.7,
+            y = -1021.6,
         },
     },
     { -- Step 269
-        ["PickUp"] = {
+        PickUp = {
             51990,
             51998,
         },
-        ["Coord"] = {
-            ["x"] = 53.7,
-            ["y"] = -1021.6,
+        Coord = {
+            x = 53.7,
+            y = -1021.6,
         },
     },
     { -- Step 270
-        ["Waypoint"] = 51990,
-        ["Range"] = 15.83,
-        ["Coord"] = {
-            ["x"] = 22.1,
-            ["y"] = -1023.6,
+        Waypoint = 51990,
+        Range = 15.83,
+        Coord = {
+            x = 22.1,
+            y = -1023.6,
         },
     },
     { -- Step 271
-        ["Waypoint"] = 51990,
-        ["Range"] = 15.83,
-        ["Coord"] = {
-            ["x"] = -78.8,
-            ["y"] = -1003.7,
+        Waypoint = 51990,
+        Range = 15.83,
+        Coord = {
+            x = -78.8,
+            y = -1003.7,
         },
     },
     { -- Step 272
-        ["Waypoint"] = 51990,
-        ["Range"] = 15.83,
-        ["Coord"] = {
-            ["x"] = -82.5,
-            ["y"] = -775.2,
+        Waypoint = 51990,
+        Range = 15.83,
+        Coord = {
+            x = -82.5,
+            y = -775.2,
         },
     },
     { -- Step 273
-        ["Waypoint"] = 51990,
-        ["Range"] = 15.83,
-        ["Coord"] = {
-            ["x"] = -32.5,
-            ["y"] = -560.1,
+        Waypoint = 51990,
+        Range = 15.83,
+        Coord = {
+            x = -32.5,
+            y = -560.1,
         },
     },
     { -- Step 274
@@ -3533,16 +3533,16 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["x"] = 28.0,
-            ["y"] = -497.9,
+        Coord = {
+            x = 28.0,
+            y = -497.9,
         },
-        ["Fillers"] = {
+        Fillers = {
             [51998] = {
                 1,
             },
         },
-        ["Range"] = 160,
+        Range = 160,
     },
     { -- Step 275
         Qpart = {
@@ -3550,62 +3550,62 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["x"] = 28.0,
-            ["y"] = -497.9,
+        Coord = {
+            x = 28.0,
+            y = -497.9,
         },
-        ["Range"] = 160,
+        Range = 160,
     },
     { -- Step 276
-        ["Waypoint"] = 51990,
-        ["Range"] = 15.83,
-        ["Coord"] = {
-            ["x"] = -32.5,
-            ["y"] = -560.1,
+        Waypoint = 51990,
+        Range = 15.83,
+        Coord = {
+            x = -32.5,
+            y = -560.1,
         },
     },
 
     { -- Step 277
-        ["Waypoint"] = 51990,
-        ["Range"] = 15.83,
-        ["Coord"] = {
-            ["x"] = -82.5,
-            ["y"] = -775.2,
+        Waypoint = 51990,
+        Range = 15.83,
+        Coord = {
+            x = -82.5,
+            y = -775.2,
         },
     },
     { -- Step 278
-        ["Waypoint"] = 51990,
-        ["Range"] = 15.83,
-        ["Coord"] = {
-            ["x"] = -127,
-            ["y"] = -882.7,
+        Waypoint = 51990,
+        Range = 15.83,
+        Coord = {
+            x = -127,
+            y = -882.7,
         },
     },
     { -- Step 279
-        ["Waypoint"] = 51990,
-        ["Range"] = 15.83,
-        ["Coord"] = {
-            ["x"] = 22.1,
-            ["y"] = -1023.6,
+        Waypoint = 51990,
+        Range = 15.83,
+        Coord = {
+            x = 22.1,
+            y = -1023.6,
         },
     },
     { -- Step 280
-        ["Done"] = {
+        Done = {
             51990,
             51998,
         },
-        ["Coord"] = {
-            ["x"] = 53.7,
-            ["y"] = -1021.6,
+        Coord = {
+            x = 53.7,
+            y = -1021.6,
         },
     },
     { -- Step 281
-        ["PickUp"] = {
+        PickUp = {
             47418,
         },
-        ["Coord"] = {
-            ["x"] = 53.7,
-            ["y"] = -1021.6,
+        Coord = {
+            x = 53.7,
+            y = -1021.6,
         },
     },
     { -- Step 282
@@ -3614,28 +3614,28 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 1,
-        ["Coord"] = {
-            ["x"] = 51.9,
-            ["y"] = -1015.9,
+        Range = 1,
+        Coord = {
+            x = 51.9,
+            y = -1015.9,
         },
     },
     { -- Step 283
-        ["Done"] = {
+        Done = {
             47418,
         },
-        ["Coord"] = {
-            ["x"] = 53.7,
-            ["y"] = -1021.6,
+        Coord = {
+            x = 53.7,
+            y = -1021.6,
         },
     },
     { -- Step 284
-        ["PickUp"] = {
+        PickUp = {
             47261,
         },
-        ["Coord"] = {
-            ["x"] = 53.7,
-            ["y"] = -1021.6,
+        Coord = {
+            x = 53.7,
+            y = -1021.6,
         },
     },
     { -- Step 285
@@ -3644,11 +3644,11 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 1,
-        ["Gossip"] = 1,
-        ["Coord"] = {
-            ["x"] = -6.3,
-            ["y"] = -1072.5,
+        Range = 1,
+        Gossip = 1,
+        Coord = {
+            x = -6.3,
+            y = -1072.5,
         },
     },
     { -- Step 286
@@ -3657,69 +3657,69 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Coord"] = {
-            ["x"] = -140.4,
-            ["y"] = -1164.8,
+        Coord = {
+            x = -140.4,
+            y = -1164.8,
         },
-        ["Range"] = 1,
+        Range = 1,
     },
     { -- [step 287
-        ["Waypoint"] = 47261,
-        ["Coord"] = {
-            ["x"] = -192.8,
-            ["y"] = -1093.9,
+        Waypoint = 47261,
+        Coord = {
+            x = -192.8,
+            y = -1093.9,
         },
-        ["Range"] = 20,
+        Range = 20,
     },
     { -- [step 288
-        ["Waypoint"] = 47261,
-        ["Coord"] = {
-            ["x"] = -242.2,
-            ["y"] = -1065.9,
+        Waypoint = 47261,
+        Coord = {
+            x = -242.2,
+            y = -1065.9,
         },
-        ["Range"] = 20,
+        Range = 20,
     },
     { -- [step 289
-        ["Waypoint"] = 47261,
-        ["Coord"] = {
-            ["x"] = -252.8,
-            ["y"] = -1132.2,
+        Waypoint = 47261,
+        Coord = {
+            x = -252.8,
+            y = -1132.2,
         },
-        ["Range"] = 20,
+        Range = 20,
     },
     { -- [step 290
-        ["Waypoint"] = 47261,
-        ["Coord"] = {
-            ["x"] = -180.6,
-            ["y"] = -1256.1,
+        Waypoint = 47261,
+        Coord = {
+            x = -180.6,
+            y = -1256.1,
         },
-        ["Range"] = 20,
+        Range = 20,
     },
     { -- [step 291
-        ["Waypoint"] = 47261,
-        ["Coord"] = {
-            ["x"] = 16.7,
-            ["y"] = -1249.4,
+        Waypoint = 47261,
+        Coord = {
+            x = 16.7,
+            y = -1249.4,
         },
-        ["Range"] = 20,
+        Range = 20,
     },
     { -- Step 292
-        ["Done"] = {
+        Done = {
             47261,
         },
-        ["Coord"] = {
-            ["x"] = -8.1,
-            ["y"] = -1072.3,
+        Coord = {
+            x = -8.1,
+            y = -1072.3,
         },
     },
 
     { -- Step 293
-        ["PickUp"] = {
+        PickUp = {
             48581,
         },
-        ["Coord"] = {
-            ["x"] = -8.1,
-            ["y"] = -1072.3,
+        Coord = {
+            x = -8.1,
+            y = -1072.3,
         },
     },
     { -- Step 294
@@ -3728,28 +3728,28 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 1,
-        ["Coord"] = {
-            ["x"] = -28.6,
-            ["y"] = -1148.9,
+        Range = 1,
+        Coord = {
+            x = -28.6,
+            y = -1148.9,
         },
     },
     { -- Step 295
-        ["Done"] = {
+        Done = {
             48581,
         },
-        ["Coord"] = {
-            ["x"] = 55.2,
-            ["y"] = -1019.1,
+        Coord = {
+            x = 55.2,
+            y = -1019.1,
         },
     },
     { -- Step 296
-        ["PickUp"] = {
+        PickUp = {
             47310,
         },
-        ["Coord"] = {
-            ["x"] = 55.2,
-            ["y"] = -1019.1,
+        Coord = {
+            x = 55.2,
+            y = -1019.1,
         },
     },
     { -- Step 297
@@ -3758,101 +3758,101 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 1,
-        ["Coord"] = {
-            ["x"] = -64.7,
-            ["y"] = -996.7,
+        Range = 1,
+        Coord = {
+            x = -64.7,
+            y = -996.7,
         },
     },
     { -- Step 298
-        ["Done"] = {
+        Done = {
             47310,
         },
-        ["Coord"] = {
-            ["x"] = 55.2,
-            ["y"] = -1019.1,
+        Coord = {
+            x = 55.2,
+            y = -1019.1,
         },
     },
     { -- Step 299
-        ["ExtraLineText"] = "FLY_GREAT_SEAL",
-        ["UseFlightPath"] = 49122,
-        ["ETA"] = 40,
-        ["Name"] = "The Great Seal",
-        ["NodeID"] = 1959,
-        ["Coord"] = {
-            ["x"] = 17.3,
-            ["y"] = -1047.4,
+        ExtraLineText = "FLY_GREAT_SEAL",
+        UseFlightPath = 49122,
+        ETA = 40,
+        Name = "The Great Seal",
+        NodeID = 1959,
+        Coord = {
+            x = 17.3,
+            y = -1047.4,
         }
     },
     { -- Step 300
-        ["Waypoint"] = 49122,
-        ["Range"] = 7.86,
-        ["Coord"] = {
-            ["x"] = 802.7,
-            ["y"] = -1047.5,
+        Waypoint = 49122,
+        Range = 7.86,
+        Coord = {
+            x = 802.7,
+            y = -1047.5,
         },
     },
     { -- Step 301
-        ["Waypoint"] = 49122,
-        ["Range"] = 8.48,
-        ["Coord"] = {
-            ["x"] = 820.4,
-            ["y"] = -1110.6,
+        Waypoint = 49122,
+        Range = 8.48,
+        Coord = {
+            x = 820.4,
+            y = -1110.6,
         },
     },
     { -- Step 302
-        ["ExtraLineText"] = "UP_ELEVATOR",
-        ["Waypoint"] = 49122,
-        ["Range"] = 4.07,
-        ["Coord"] = {
-            ["x"] = 854.2,
-            ["y"] = -1125.6,
+        ExtraLineText = "UP_ELEVATOR",
+        Waypoint = 49122,
+        Range = 4.07,
+        Coord = {
+            x = 854.2,
+            y = -1125.6,
         },
     },
 
     { -- Step 303
-        ["ExtraLineText"] = "UP_ELEVATOR",
-        ["Waypoint"] = 49122,
-        ["Range"] = 4.07,
-        ["Coord"] = {
-            ["x"] = 840.7,
-            ["y"] = -1121.2,
+        ExtraLineText = "UP_ELEVATOR",
+        Waypoint = 49122,
+        Range = 4.07,
+        Coord = {
+            x = 840.7,
+            y = -1121.2,
         },
     },
     { -- Step 304
-        ["Waypoint"] = 49122,
-        ["Range"] = 5,
-        ["Coord"] = {
-            ["x"] = 833.2,
-            ["y"] = -1101,
+        Waypoint = 49122,
+        Range = 5,
+        Coord = {
+            x = 833.2,
+            y = -1101,
         },
     },
     { -- Step 305
-        ["Waypoint"] = 49122,
-        ["Range"] = 4.07,
-        ["Coord"] = {
-            ["x"] = 820.1,
-            ["y"] = -1102.0,
+        Waypoint = 49122,
+        Range = 4.07,
+        Coord = {
+            x = 820.1,
+            y = -1102.0,
         },
     },
     { -- Step 306
-        ["PickUp"] = {
+        PickUp = {
             49122,
         },
-        ["Coord"] = {
-            ["x"] = 806,
-            ["y"] = -1134.5,
+        Coord = {
+            x = 806,
+            y = -1134.5,
         },
     },
     { -- Step 307
-        ["UseGlider"] = 1,
-        ["PickUp"] = {
+        UseGlider = 1,
+        PickUp = {
             51072,
             51071,
         },
-        ["Coord"] = {
-            ["x"] = 1339.5,
-            ["y"] = -1184.3,
+        Coord = {
+            x = 1339.5,
+            y = -1184.3,
         },
     },
     { -- Step 308
@@ -3861,10 +3861,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 32.82,
-        ["Coord"] = {
-            ["x"] = 1292.3,
-            ["y"] = -1140.5,
+        Range = 32.82,
+        Coord = {
+            x = 1292.3,
+            y = -1140.5,
         },
     },
     { -- Step 309
@@ -3873,72 +3873,72 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 34.95,
-        ["Coord"] = {
-            ["x"] = 1288.5,
-            ["y"] = -1304,
+        Range = 34.95,
+        Coord = {
+            x = 1288.5,
+            y = -1304,
         },
     },
     { -- Step 310
-        ["Coord"] = {
-            ["x"] = 1339.5,
-            ["y"] = -1468.8,
+        Coord = {
+            x = 1339.5,
+            y = -1468.8,
         },
-        ["Done"] = {
+        Done = {
             51071,
             51072,
         },
     },
     { -- Step 311
-        ["PickUp"] = {
+        PickUp = {
             49919,
             49922,
         },
-        ["Coord"] = {
-            ["x"] = 1343.4,
-            ["y"] = -1472,
+        Coord = {
+            x = 1343.4,
+            y = -1472,
         },
     },
 
-    {                      -- Step 312
-        ["SetHS"] = 49919, -- Village in the Vines
-        ["Coord"] = {
-            ["x"] = 1369.7,
-            ["y"] = -1509.8,
+    {                  -- Step 312
+        SetHS = 49919, -- Village in the Vines
+        Coord = {
+            x = 1369.7,
+            y = -1509.8,
         },
     },
     { -- Step 313
-        ["Waypoint"] = 49919,
-        ["Range"] = 30.55,
-        ["Coord"] = {
-            ["x"] = 1290.8,
-            ["y"] = -1545,
+        Waypoint = 49919,
+        Range = 30.55,
+        Coord = {
+            x = 1290.8,
+            y = -1545,
         },
     },
     { -- Step 314
-        ["Waypoint"] = 49919,
-        ["Coord"] = {
-            ["x"] = 1359.7,
-            ["y"] = -1645,
+        Waypoint = 49919,
+        Coord = {
+            x = 1359.7,
+            y = -1645,
         },
-        ["Range"] = 23.84,
+        Range = 23.84,
     },
     { -- Step 315
-        ["PickUp"] = {
+        PickUp = {
             49920,
         },
-        ["Coord"] = {
-            ["x"] = 1460,
-            ["y"] = -1698.5,
+        Coord = {
+            x = 1460,
+            y = -1698.5,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49918] = { -- Bonus Objective
                 1,
             },
         },
     },
     { -- Step 316
-        ["ExtraLineText"] = "KAJAMITE",
+        ExtraLineText = "KAJAMITE",
         Qpart = {
             [49920] = {
                 1,
@@ -3947,25 +3947,25 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49918] = {
                 1,
             },
         },
-        ["Range"] = 34.31,
-        ["Coord"] = {
-            ["x"] = 1460,
-            ["y"] = -1698.5,
+        Range = 34.31,
+        Coord = {
+            x = 1460,
+            y = -1698.5,
         },
     },
     { -- Step 317
-        ["ExtraLineText"] = "KAJAMITE",
+        ExtraLineText = "KAJAMITE",
         Qpart = {
             [49922] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49919] = {
                 1,
             },
@@ -3976,19 +3976,19 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 24.09,
-        ["Coord"] = {
-            ["x"] = 1741.5,
-            ["y"] = -1511,
+        Range = 24.09,
+        Coord = {
+            x = 1741.5,
+            y = -1511,
         },
     },
     { -- Step 318
-        ["Done"] = {
+        Done = {
             49920,
         },
-        ["Coord"] = {
-            ["x"] = 1697.0,
-            ["y"] = -1577.8,
+        Coord = {
+            x = 1697.0,
+            y = -1577.8,
         },
     },
     { -- Step 319
@@ -3997,89 +3997,89 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 63.67,
-        ["Coord"] = {
-            ["x"] = 1689.5,
-            ["y"] = -1553.9,
+        Range = 63.67,
+        Coord = {
+            x = 1689.5,
+            y = -1553.9,
         },
     },
-    {                      -- Step 320
-        ["UseHS"] = 49919, -- to Village in the Vines
-        ["HSSteps"] = 4,
-        ["Coord"] = {
-            ["x"] = 1689.5,
-            ["y"] = -1553.9,
+    {                  -- Step 320
+        UseHS = 49919, -- to Village in the Vines
+        HSSteps = 4,
+        Coord = {
+            x = 1689.5,
+            y = -1553.9,
         },
     },
     { -- Step 321
-        ["Done"] = {
+        Done = {
             49919,
             49922,
         },
-        ["Coord"] = {
-            ["x"] = 1340.7,
-            ["y"] = -1471.4,
+        Coord = {
+            x = 1340.7,
+            y = -1471.4,
         },
     },
 
     { -- Step 322
-        ["Waypoint"] = 49122,
-        ["Range"] = 55,
-        ["Coord"] = {
-            ["x"] = 1245,
-            ["y"] = -1550.5,
+        Waypoint = 49122,
+        Range = 55,
+        Coord = {
+            x = 1245,
+            y = -1550.5,
         },
     },
     { -- Step 323
-        ["Waypoint"] = 49122,
-        ["Range"] = 21.67,
-        ["Coord"] = {
-            ["x"] = 1276.8,
-            ["y"] = -1584,
+        Waypoint = 49122,
+        Range = 21.67,
+        Coord = {
+            x = 1276.8,
+            y = -1584,
         },
     },
     { -- Step 324
-        ["Waypoint"] = 49122,
-        ["Range"] = 21.67,
-        ["Coord"] = {
-            ["x"] = 1535,
-            ["y"] = -1861.5,
+        Waypoint = 49122,
+        Range = 21.67,
+        Coord = {
+            x = 1535,
+            y = -1861.5,
         },
     },
     { -- Step 325
-        ["GetFP"] = 2009,
-        ["Range"] = 5.0,
-        ["Coord"] = {
-            ["x"] = 1630.5,
-            ["y"] = -2023.3,
+        GetFP = 2009,
+        Range = 5.0,
+        Coord = {
+            x = 1630.5,
+            y = -2023.3,
         },
     },
     { -- Step 326
-        ["Done"] = {
+        Done = {
             49122,
         },
-        ["Coord"] = {
-            ["x"] = 1654.2,
-            ["y"] = -2030.8,
+        Coord = {
+            x = 1654.2,
+            y = -2030.8,
         },
     },
     { -- Step 327
-        ["PickUp"] = {
+        PickUp = {
             49144,
             49145,
         },
-        ["Coord"] = {
-            ["x"] = 1657,
-            ["y"] = -2030.4,
+        Coord = {
+            x = 1657,
+            y = -2030.4,
         },
     },
     { -- Step 328
-        ["PickUp"] = {
+        PickUp = {
             49146,
         },
-        ["Coord"] = {
-            ["x"] = 1719,
-            ["y"] = -2031.9,
+        Coord = {
+            x = 1719,
+            y = -2031.9,
         },
     },
     { -- Step 329
@@ -4088,7 +4088,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49145] = {
                 1,
             },
@@ -4096,13 +4096,13 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49145-1"] = 153524,
         },
-        ["Range"] = 5.75,
-        ["Coord"] = {
-            ["x"] = 1852,
-            ["y"] = -2025.6,
+        Range = 5.75,
+        Coord = {
+            x = 1852,
+            y = -2025.6,
         },
     },
     { -- Step 330
@@ -4111,7 +4111,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49145] = {
                 1,
             },
@@ -4119,13 +4119,13 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49145-1"] = 153524,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1833,
-            ["y"] = -2143.9,
+        Range = 0.69,
+        Coord = {
+            x = 1833,
+            y = -2143.9,
         },
     },
     { -- Step 331
@@ -4134,7 +4134,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49145] = {
                 1,
             },
@@ -4142,13 +4142,13 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49145-1"] = 153524,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1750.3,
-            ["y"] = -2112.5,
+        Range = 0.69,
+        Coord = {
+            x = 1750.3,
+            y = -2112.5,
         },
     },
 
@@ -4161,71 +4161,71 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49145-1"] = 153524,
         },
-        ["Range"] = 24.29,
-        ["Coord"] = {
-            ["x"] = 1751.5,
-            ["y"] = -2112.7,
+        Range = 24.29,
+        Coord = {
+            x = 1751.5,
+            y = -2112.7,
         },
     },
     { -- Step 333
-        ["Waypoint"] = 49144,
-        ["Range"] = 18.47,
-        ["Coord"] = {
-            ["x"] = 1715.3,
-            ["y"] = -2030.6,
+        Waypoint = 49144,
+        Range = 18.47,
+        Coord = {
+            x = 1715.3,
+            y = -2030.6,
         },
     },
     { -- Step 334
-        ["Done"] = {
+        Done = {
             49145,
             49144,
             49146,
         },
-        ["Coord"] = {
-            ["x"] = 1652.7,
-            ["y"] = -2029,
+        Coord = {
+            x = 1652.7,
+            y = -2029,
         },
     },
     { -- Step 335
-        ["PickUp"] = {
+        PickUp = {
             49148,
             49147,
             49149,
         },
-        ["Coord"] = {
-            ["x"] = 1653.9,
-            ["y"] = -2029.5,
+        Coord = {
+            x = 1653.9,
+            y = -2029.5,
         },
     },
     { -- Step 336
-        ["QpartPart"] = {
+        QpartPart = {
             [49149] = {
                 1,
             },
         },
-        ["TrigText"] = "1/5",
-        ["Fillers"] = {
+        TrigText = "1/5",
+        Fillers = {
             [49148] = {
                 1,
             },
         },
-        ["Range"] = 0.5,
-        ["Coord"] = {
-            ["x"] = 1713.8,
-            ["y"] = -2109.2,
+        Range = 0.5,
+        Coord = {
+            x = 1713.8,
+            y = -2109.2,
         },
     },
     { -- Step 337
-        ["QpartPart"] = {
+        QpartPart = {
             [49149] = {
                 1,
             },
         },
-        ["TrigText"] = "2/5",
-        ["Fillers"] = {
+        TrigText = "2/5",
+        Fillers = {
             [49148] = {
                 1,
             },
@@ -4233,20 +4233,20 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.5,
-        ["Coord"] = {
-            ["x"] = 1650.2,
-            ["y"] = -2178.2,
+        Range = 0.5,
+        Coord = {
+            x = 1650.2,
+            y = -2178.2,
         },
     },
     { -- Step 338
-        ["QpartPart"] = {
+        QpartPart = {
             [49149] = {
                 1,
             },
         },
-        ["TrigText"] = "3/5",
-        ["Fillers"] = {
+        TrigText = "3/5",
+        Fillers = {
             [49148] = {
                 1,
             },
@@ -4254,20 +4254,20 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.5,
-        ["Coord"] = {
-            ["x"] = 1751.5,
-            ["y"] = -2209.7,
+        Range = 0.5,
+        Coord = {
+            x = 1751.5,
+            y = -2209.7,
         },
     },
     { -- Step 339
-        ["QpartPart"] = {
+        QpartPart = {
             [49149] = {
                 1,
             },
         },
-        ["TrigText"] = "4/5",
-        ["Fillers"] = {
+        TrigText = "4/5",
+        Fillers = {
             [49148] = {
                 1,
             },
@@ -4275,10 +4275,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.5,
-        ["Coord"] = {
-            ["x"] = 1695.2,
-            ["y"] = -2294.7,
+        Range = 0.5,
+        Coord = {
+            x = 1695.2,
+            y = -2294.7,
         },
     },
     { -- Step 340
@@ -4287,7 +4287,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49148] = {
                 1,
             },
@@ -4295,20 +4295,20 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 18.13,
-        ["Coord"] = {
-            ["x"] = 1637.7,
-            ["y"] = -2258.9,
+        Range = 18.13,
+        Coord = {
+            x = 1637.7,
+            y = -2258.9,
         },
     },
     { -- Step 341
-        ["Waypoint"] = 49147,
-        ["Range"] = 15.03,
-        ["Coord"] = {
-            ["x"] = 1664.2,
-            ["y"] = -2420.2,
+        Waypoint = 49147,
+        Range = 15.03,
+        Coord = {
+            x = 1664.2,
+            y = -2420.2,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49148] = {
                 1,
             },
@@ -4318,21 +4318,21 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
     },
     { -- Step 342
-        ["QpartPart"] = {
+        QpartPart = {
             [49149] = {
                 1,
             },
         },
-        ["TrigText"] = "5/5",
-        ["Fillers"] = {
+        TrigText = "5/5",
+        Fillers = {
             [49148] = {
                 1,
             },
         },
-        ["Range"] = 0.06,
-        ["Coord"] = {
-            ["x"] = 1692.2,
-            ["y"] = -2388,
+        Range = 0.06,
+        Coord = {
+            x = 1692.2,
+            y = -2388,
         },
     },
     { -- Step 343
@@ -4341,7 +4341,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49148] = {
                 1,
             },
@@ -4349,10 +4349,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 13.46,
-        ["Coord"] = {
-            ["x"] = 1820.3,
-            ["y"] = -2370,
+        Range = 13.46,
+        Coord = {
+            x = 1820.3,
+            y = -2370,
         },
     },
     { -- Step 344
@@ -4364,38 +4364,38 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 33.69,
-        ["Coord"] = {
-            ["x"] = 1815.2,
-            ["y"] = -2374.7,
+        Range = 33.69,
+        Coord = {
+            x = 1815.2,
+            y = -2374.7,
         },
     },
     { -- Step 345
-        ["Done"] = {
+        Done = {
             49148,
             49147,
             49149,
         },
-        ["Coord"] = {
-            ["x"] = 1512.9,
-            ["y"] = -2258.5,
+        Coord = {
+            x = 1512.9,
+            y = -2258.5,
         },
     },
     { -- Step 346
-        ["PickUp"] = {
+        PickUp = {
             49309,
         },
-        ["Coord"] = {
-            ["x"] = 1512.9,
-            ["y"] = -2258.5,
+        Coord = {
+            x = 1512.9,
+            y = -2258.5,
         },
     },
     { -- Step 347
-        ["Waypoint"] = 49309,
-        ["Range"] = 11.1,
-        ["Coord"] = {
-            ["x"] = 1469.4,
-            ["y"] = -2266.5,
+        Waypoint = 49309,
+        Range = 11.1,
+        Coord = {
+            x = 1469.4,
+            y = -2266.5,
         },
     },
     { -- Step 348
@@ -4404,28 +4404,28 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 9.13,
-        ["Coord"] = {
-            ["x"] = 1465,
-            ["y"] = -2305.2,
+        Range = 9.13,
+        Coord = {
+            x = 1465,
+            y = -2305.2,
         },
     },
     { -- Step 349
-        ["Done"] = {
+        Done = {
             49309,
         },
-        ["Coord"] = {
-            ["x"] = 1511.4,
-            ["y"] = -2258,
+        Coord = {
+            x = 1511.4,
+            y = -2258,
         },
     },
     { -- Step 350
-        ["PickUp"] = {
+        PickUp = {
             49310,
         },
-        ["Coord"] = {
-            ["x"] = 1511.4,
-            ["y"] = -2258,
+        Coord = {
+            x = 1511.4,
+            y = -2258,
         },
     },
     { -- Step 351
@@ -4434,74 +4434,74 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 7.46,
-        ["Coord"] = {
-            ["x"] = 1522,
-            ["y"] = -2250.7,
+        Range = 7.46,
+        Coord = {
+            x = 1522,
+            y = -2250.7,
         },
     },
     { -- Step 352
-        ["Coord"] = {
-            ["x"] = 819.2,
-            ["y"] = -1124.5,
+        Coord = {
+            x = 819.2,
+            y = -1124.5,
         },
-        ["Done"] = {
+        Done = {
             49310,
         },
     },
     { -- Step 353
-        ["PickUp"] = {
+        PickUp = {
             51101,
             47509,
         },
-        ["Coord"] = {
-            ["x"] = 819.7,
-            ["y"] = -1125.6,
+        Coord = {
+            x = 819.7,
+            y = -1125.6,
         },
     },
     { -- Step 354
-        ["SetHS"] = 47509,
-        ["Coord"] = {
-            ["x"] = 805.7,
-            ["y"] = -1125.5,
+        SetHS = 47509,
+        Coord = {
+            x = 805.7,
+            y = -1125.5,
         },
     },
     { -- Step 355
-        ["Waypoint"] = 47509,
-        ["Range"] = 8.68,
-        ["Coord"] = {
-            ["x"] = 808.7,
-            ["y"] = -1049.9,
+        Waypoint = 47509,
+        Range = 8.68,
+        Coord = {
+            x = 808.7,
+            y = -1049.9,
         },
     },
     { -- Step 356
-        ["UseGlider"] = 1,
-        ["Done"] = {
+        UseGlider = 1,
+        Done = {
             47509,
         },
-        ["Coord"] = {
-            ["x"] = 1011.2,
-            ["y"] = -667.3,
+        Coord = {
+            x = 1011.2,
+            y = -667.3,
         },
     },
     { -- Step 357
-        ["PickUp"] = {
+        PickUp = {
             47897,
             47915,
         },
-        ["Coord"] = {
-            ["x"] = 1011.2,
-            ["y"] = -667.3,
+        Coord = {
+            x = 1011.2,
+            y = -667.3,
         },
     },
     { -- Step 358
-        ["Waypoint"] = 47915,
-        ["Coord"] = {
-            ["x"] = 1042,
-            ["y"] = -605.5,
+        Waypoint = 47915,
+        Coord = {
+            x = 1042,
+            y = -605.5,
         },
-        ["Range"] = 16.56,
-        ["Fillers"] = {
+        Range = 16.56,
+        Fillers = {
             [47897] = {
                 1,
             },
@@ -4513,15 +4513,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47897] = {
                 1,
             },
         },
-        ["Range"] = 6.9,
-        ["Coord"] = {
-            ["x"] = 987.4,
-            ["y"] = -596.5,
+        Range = 6.9,
+        Coord = {
+            x = 987.4,
+            y = -596.5,
         },
     },
     { -- Step 360
@@ -4530,118 +4530,118 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 22.6,
-        ["Coord"] = {
-            ["x"] = 994.4,
-            ["y"] = -605,
+        Range = 22.6,
+        Coord = {
+            x = 994.4,
+            y = -605,
         },
     },
     { -- Step 361
-        ["Coord"] = {
-            ["x"] = 1105,
-            ["y"] = -520.5,
+        Coord = {
+            x = 1105,
+            y = -520.5,
         },
-        ["Done"] = {
+        Done = {
             47897,
             47915,
         },
     },
     { -- Step 362
-        ["PickUp"] = {
+        PickUp = {
             47520,
             47518,
         },
-        ["Coord"] = {
-            ["x"] = 1105,
-            ["y"] = -520.5,
+        Coord = {
+            x = 1105,
+            y = -520.5,
         },
     },
     { -- Step 363
-        ["Range"] = 12.12,
-        ["Waypoint"] = 47518,
-        ["Coord"] = {
-            ["x"] = 1030.3,
-            ["y"] = -438.5,
+        Range = 12.12,
+        Waypoint = 47518,
+        Coord = {
+            x = 1030.3,
+            y = -438.5,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47520] = {
                 1,
             },
         },
     },
     { -- Step 364
-        ["Range"] = 7.16,
-        ["Waypoint"] = 47518,
-        ["Coord"] = {
-            ["x"] = 1045.7,
-            ["y"] = -414.5,
+        Range = 7.16,
+        Waypoint = 47518,
+        Coord = {
+            x = 1045.7,
+            y = -414.5,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47520] = {
                 1,
             },
         },
     },
     { -- Step 365
-        ["Range"] = 4.97,
-        ["Waypoint"] = 47518,
-        ["Coord"] = {
-            ["x"] = 1034,
-            ["y"] = -402.4,
+        Range = 4.97,
+        Waypoint = 47518,
+        Coord = {
+            x = 1034,
+            y = -402.4,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47520] = {
                 1,
             },
         },
     },
     { -- Step 366
-        ["Range"] = 5.23,
-        ["Waypoint"] = 47518,
-        ["Coord"] = {
-            ["x"] = 953.6,
-            ["y"] = -478,
+        Range = 5.23,
+        Waypoint = 47518,
+        Coord = {
+            x = 953.6,
+            y = -478,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47520] = {
                 1,
             },
         },
     },
     { -- Step 367
-        ["Range"] = 5.38,
-        ["Waypoint"] = 47518,
-        ["Coord"] = {
-            ["x"] = 926.1,
-            ["y"] = -498.4,
+        Range = 5.38,
+        Waypoint = 47518,
+        Coord = {
+            x = 926.1,
+            y = -498.4,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47520] = {
                 1,
             },
         },
     },
     { -- Step 368
-        ["Range"] = 9.15,
-        ["Waypoint"] = 47518,
-        ["Coord"] = {
-            ["x"] = 919.4,
-            ["y"] = -567.8,
+        Range = 9.15,
+        Waypoint = 47518,
+        Coord = {
+            x = 919.4,
+            y = -567.8,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47520] = {
                 1,
             },
         },
     },
     { -- Step 369
-        ["Range"] = 8.96,
-        ["Waypoint"] = 47518,
-        ["Coord"] = {
-            ["x"] = 913.5,
-            ["y"] = -510.8,
+        Range = 8.96,
+        Waypoint = 47518,
+        Coord = {
+            x = 913.5,
+            y = -510.8,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47520] = {
                 1,
             },
@@ -4656,29 +4656,29 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 12.85,
-        ["Coord"] = {
-            ["x"] = 984.2,
-            ["y"] = -400.2,
+        Range = 12.85,
+        Coord = {
+            x = 984.2,
+            y = -400.2,
         },
     },
     { -- Step 371
-        ["Coord"] = {
-            ["x"] = 982.4,
-            ["y"] = -400.9,
+        Coord = {
+            x = 982.4,
+            y = -400.9,
         },
-        ["Done"] = {
+        Done = {
             47520,
             47518,
         },
     },
     { -- Step 372
-        ["PickUp"] = {
+        PickUp = {
             47521,
         },
-        ["Coord"] = {
-            ["x"] = 1012.7,
-            ["y"] = -439.3,
+        Coord = {
+            x = 1012.7,
+            y = -439.3,
         },
     },
     { -- Step 373
@@ -4687,52 +4687,52 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = 1014.2,
-            ["y"] = -448.4,
+        Range = 0.61,
+        Coord = {
+            x = 1014.2,
+            y = -448.4,
         },
     },
     { -- Step 374
-        ["Coord"] = {
-            ["x"] = 1419.2,
-            ["y"] = -292.9,
+        Coord = {
+            x = 1419.2,
+            y = -292.9,
         },
-        ["Done"] = {
+        Done = {
             47521,
         },
     },
     { -- Step 375
-        ["PickUp"] = {
+        PickUp = {
             47522,
             47963,
         },
-        ["Coord"] = {
-            ["x"] = 1419.7,
-            ["y"] = -290.7,
+        Coord = {
+            x = 1419.7,
+            y = -290.7,
         },
     },
     { -- Step 376
-        ["Range"] = 13.17,
-        ["Waypoint"] = 47963,
-        ["Coord"] = {
-            ["x"] = 1436.3,
-            ["y"] = -402.9,
+        Range = 13.17,
+        Waypoint = 47963,
+        Coord = {
+            x = 1436.3,
+            y = -402.9,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47527] = {
                 1,
             },
         },
     },
     { -- Step 377
-        ["Range"] = 12.29,
-        ["Waypoint"] = 47963,
-        ["Coord"] = {
-            ["x"] = 1394.4,
-            ["y"] = -434.4,
+        Range = 12.29,
+        Waypoint = 47963,
+        Coord = {
+            x = 1394.4,
+            y = -434.4,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47527] = {
                 1,
             },
@@ -4744,39 +4744,39 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47527] = {
                 1,
             },
         },
-        ["Range"] = 14.86,
-        ["Coord"] = {
-            ["x"] = 1303.7,
-            ["y"] = -463.5,
+        Range = 14.86,
+        Coord = {
+            x = 1303.7,
+            y = -463.5,
         },
     },
     { -- Step 379
-        ["Coord"] = {
-            ["x"] = 1298,
-            ["y"] = -467.5,
+        Coord = {
+            x = 1298,
+            y = -467.5,
         },
-        ["Done"] = {
+        Done = {
             47963,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47527] = {
                 1,
             },
         },
     },
     { -- Step 380
-        ["Range"] = 14.64,
-        ["Waypoint"] = 47522,
-        ["Coord"] = {
-            ["x"] = 1419.7,
-            ["y"] = -426.7,
+        Range = 14.64,
+        Waypoint = 47522,
+        Coord = {
+            x = 1419.7,
+            y = -426.7,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47527] = {
                 1,
             },
@@ -4788,66 +4788,66 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 10.65,
-        ["Coord"] = {
-            ["x"] = 1615.8,
-            ["y"] = -433.5,
+        Range = 10.65,
+        Coord = {
+            x = 1615.8,
+            y = -433.5,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47527] = {
                 1,
             },
         },
     },
     { -- Step 382
-        ["Coord"] = {
-            ["x"] = 1613,
-            ["y"] = -430.8,
+        Coord = {
+            x = 1613,
+            y = -430.8,
         },
-        ["Done"] = {
+        Done = {
             47522,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47527] = {
                 1,
             },
         },
     },
     { -- Step 383
-        ["PickUp"] = {
+        PickUp = {
             47528,
         },
-        ["Coord"] = {
-            ["x"] = 1610.7,
-            ["y"] = -432,
+        Coord = {
+            x = 1610.7,
+            y = -432,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47527] = {
                 1,
             },
         },
     },
     { -- Step 384
-        ["Range"] = 16.34,
-        ["Waypoint"] = 47528,
-        ["Coord"] = {
-            ["x"] = 1594.8,
-            ["y"] = -391.9,
+        Range = 16.34,
+        Waypoint = 47528,
+        Coord = {
+            x = 1594.8,
+            y = -391.9,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47527] = {
                 1,
             },
         },
     },
     { -- Step 385
-        ["Range"] = 6.81,
-        ["Waypoint"] = 47528,
-        ["Coord"] = {
-            ["x"] = 1670,
-            ["y"] = -253.4,
+        Range = 6.81,
+        Waypoint = 47528,
+        Coord = {
+            x = 1670,
+            y = -253.4,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47527] = {
                 1,
             },
@@ -4860,25 +4860,25 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Range"] = 11.87,
-        ["Coord"] = {
-            ["x"] = 1720.9,
-            ["y"] = -194,
+        Range = 11.87,
+        Coord = {
+            x = 1720.9,
+            y = -194,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47527] = {
                 1,
             },
         },
     },
     { -- Step 387
-        ["Range"] = 12.93,
-        ["Waypoint"] = 47528,
-        ["Coord"] = {
-            ["x"] = 1668.4,
-            ["y"] = -252.4,
+        Range = 12.93,
+        Waypoint = 47528,
+        Coord = {
+            x = 1668.4,
+            y = -252.4,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47527] = {
                 1,
             },
@@ -4890,67 +4890,67 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 56.49,
-        ["Coord"] = {
-            ["x"] = 1653,
-            ["y"] = -269.2,
+        Range = 56.49,
+        Coord = {
+            x = 1653,
+            y = -269.2,
         },
     },
     { -- Step 389
-        ["Coord"] = {
-            ["x"] = 1601.4,
-            ["y"] = -133,
+        Coord = {
+            x = 1601.4,
+            y = -133,
         },
-        ["Done"] = {
+        Done = {
             47528,
         },
     },
     { -- Step 390
-        ["GetFP"] = 2045,
-        ["Range"] = 5.0,
-        ["Coord"] = {
-            ["x"] = 1502.8,
-            ["y"] = -103.3,
+        GetFP = 2045,
+        Range = 5.0,
+        Coord = {
+            x = 1502.8,
+            y = -103.3,
         },
     },
     { -- Step 391
-        ["PickUp"] = {
+        PickUp = {
             49679,
             49678,
             49680,
         },
-        ["Coord"] = {
-            ["x"] = 1708.7,
-            ["y"] = -33.8,
+        Coord = {
+            x = 1708.7,
+            y = -33.8,
         },
     },
     { -- Step 392
-        ["QpartPart"] = {
+        QpartPart = {
             [49678] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49679] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["TrigText"] = "1/4",
-        ["Coord"] = {
-            ["x"] = 1789.8,
-            ["y"] = 2.5,
+        Range = 0.75,
+        TrigText = "1/4",
+        Coord = {
+            x = 1789.8,
+            y = 2.5,
         },
     },
     { -- Step 393
-        ["PickUp"] = {
+        PickUp = {
             49681,
         },
-        ["Coord"] = {
-            ["x"] = 1799.3,
-            ["y"] = 62.1,
+        Coord = {
+            x = 1799.3,
+            y = 62.1,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49679] = {
                 1,
             },
@@ -4962,69 +4962,69 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1799.3,
-            ["y"] = 64.1,
+        Range = 0.75,
+        Coord = {
+            x = 1799.3,
+            y = 64.1,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49679] = {
                 1,
             },
         },
     },
     { -- Step 395
-        ["QpartPart"] = {
+        QpartPart = {
             [49678] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49679] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["TrigText"] = "2/4",
-        ["Coord"] = {
-            ["x"] = 1816.3,
-            ["y"] = 93.4,
+        Range = 0.75,
+        TrigText = "2/4",
+        Coord = {
+            x = 1816.3,
+            y = 93.4,
         },
     },
     { -- Step 396
-        ["QpartPart"] = {
+        QpartPart = {
             [49678] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49679] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["TrigText"] = "3/4",
-        ["Coord"] = {
-            ["x"] = 1848.5,
-            ["y"] = 83.2,
+        Range = 0.75,
+        TrigText = "3/4",
+        Coord = {
+            x = 1848.5,
+            y = 83.2,
         },
     },
     { -- Step 397
-        ["QpartPart"] = {
+        QpartPart = {
             [49678] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49679] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["TrigText"] = "4/4",
-        ["Coord"] = {
-            ["x"] = 1891.5,
-            ["y"] = 21.8,
+        Range = 0.75,
+        TrigText = "4/4",
+        Coord = {
+            x = 1891.5,
+            y = 21.8,
         },
     },
     { -- Step 398
@@ -5033,25 +5033,25 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1871.5,
-            ["y"] = -109,
+        Range = 0.69,
+        Coord = {
+            x = 1871.5,
+            y = -109,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49679] = {
                 1,
             },
         },
     },
     { -- Step 399
-        ["Waypoint"] = 49678,
-        ["Range"] = 7.88,
-        ["Coord"] = {
-            ["x"] = 1899.7,
-            ["y"] = -91,
+        Waypoint = 49678,
+        Range = 7.88,
+        Coord = {
+            x = 1899.7,
+            y = -91,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49679] = {
                 1,
             },
@@ -5066,127 +5066,127 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 4.7,
-        ["Coord"] = {
-            ["x"] = 1885.4,
-            ["y"] = -108.4,
+        Range = 4.7,
+        Coord = {
+            x = 1885.4,
+            y = -108.4,
         },
     },
     { -- Step 401
-        ["Done"] = {
+        Done = {
             49679,
             49678,
             49680,
             49681,
         },
-        ["Coord"] = {
-            ["x"] = 1706.8,
-            ["y"] = -35.3,
+        Coord = {
+            x = 1706.8,
+            y = -35.3,
         },
     },
     { -- Step 402
-        ["Range"] = 16.96,
-        ["Waypoint"] = 49768,
-        ["Coord"] = {
-            ["x"] = 1558.2,
-            ["y"] = -93.9,
+        Range = 16.96,
+        Waypoint = 49768,
+        Coord = {
+            x = 1558.2,
+            y = -93.9,
         },
     },
     { -- Step 403
-        ["Waypoint"] = 49768,
-        ["Range"] = 17.43,
-        ["Coord"] = {
-            ["x"] = 1473,
-            ["y"] = -149.7,
+        Waypoint = 49768,
+        Range = 17.43,
+        Coord = {
+            x = 1473,
+            y = -149.7,
         },
     },
     { -- Step 404
-        ["Waypoint"] = 49768,
-        ["Range"] = 13.39,
-        ["Coord"] = {
-            ["x"] = 1409.5,
-            ["y"] = -166.9,
+        Waypoint = 49768,
+        Range = 13.39,
+        Coord = {
+            x = 1409.5,
+            y = -166.9,
         },
     },
     { -- Step 405
-        ["UseGlider"] = 1,
-        ["Waypoint"] = 49768,
-        ["Range"] = 19.09,
-        ["Coord"] = {
-            ["x"] = 1336.4,
-            ["y"] = -153.7,
+        UseGlider = 1,
+        Waypoint = 49768,
+        Range = 19.09,
+        Coord = {
+            x = 1336.4,
+            y = -153.7,
         },
     },
     { -- Step 406
-        ["UseGlider"] = 1,
-        ["Waypoint"] = 49768,
-        ["Range"] = 27.13,
-        ["Coord"] = {
-            ["x"] = 353.2,
-            ["y"] = 119,
+        UseGlider = 1,
+        Waypoint = 49768,
+        Range = 27.13,
+        Coord = {
+            x = 353.2,
+            y = 119,
         },
     },
     { -- Step 407
-        ["Waypoint"] = 49768,
-        ["Range"] = 19.43,
-        ["Coord"] = {
-            ["x"] = 273.2,
-            ["y"] = 162.1,
+        Waypoint = 49768,
+        Range = 19.43,
+        Coord = {
+            x = 273.2,
+            y = 162.1,
         },
     },
     { -- Step 408
-        ["Waypoint"] = 49768,
-        ["Range"] = 20.75,
-        ["Coord"] = {
-            ["x"] = 195.5,
-            ["y"] = 317.8,
+        Waypoint = 49768,
+        Range = 20.75,
+        Coord = {
+            x = 195.5,
+            y = 317.8,
         },
     },
     { -- Step 409
-        ["GetFP"] = 1965,
-        ["Range"] = 5.0,
-        ["Coord"] = {
-            ["x"] = 106.8,
-            ["y"] = 386.3,
+        GetFP = 1965,
+        Range = 5.0,
+        Coord = {
+            x = 106.8,
+            y = 386.3,
         },
     },
     { -- Step 410
-        ["PickUp"] = {
+        PickUp = {
             47706,
             51091,
         },
-        ["Coord"] = {
-            ["x"] = 0.7,
-            ["y"] = 368.8,
+        Coord = {
+            x = 0.7,
+            y = 368.8,
         },
     },
     { -- Step 411
-        ["Done"] = {
+        Done = {
             49768,
         },
-        ["Coord"] = {
-            ["x"] = -2.8,
-            ["y"] = 378.7,
+        Coord = {
+            x = -2.8,
+            y = 378.7,
         },
     },
     { -- Step 412
-        ["PickUp"] = {
+        PickUp = {
             47584,
             50466,
             47583,
         },
-        ["Coord"] = {
-            ["x"] = -3.8,
-            ["y"] = 380.7,
+        Coord = {
+            x = -3.8,
+            y = 380.7,
         },
     },
     { -- Step 413
-        ["PickUp"] = {
+        PickUp = {
             47585,
         },
-        ["Coord"] = {
-            ["x"] = -116.1,
-            ["y"] = 284.2,
+        Coord = {
+            x = -116.1,
+            y = 284.2,
         },
     },
     { -- Step 414
@@ -5195,7 +5195,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47584] = {
                 1,
             },
@@ -5203,10 +5203,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -269.3,
-            ["y"] = 133.9,
+        Range = 0.69,
+        Coord = {
+            x = -269.3,
+            y = 133.9,
         },
     },
     { -- Step 415
@@ -5215,7 +5215,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47584] = {
                 1,
             },
@@ -5223,18 +5223,18 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 46.89,
-        ["Coord"] = {
-            ["x"] = -336.8,
-            ["y"] = 199.6,
+        Range = 46.89,
+        Coord = {
+            x = -336.8,
+            y = 199.6,
         },
     },
     { -- Step 416
-        ["Waypoint"] = 50466,
-        ["Range"] = 29.59,
-        ["Coord"] = {
-            ["x"] = -289.7,
-            ["y"] = 40.7,
+        Waypoint = 50466,
+        Range = 29.59,
+        Coord = {
+            x = -289.7,
+            y = 40.7,
         },
     },
     { -- Step 417
@@ -5243,7 +5243,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47584] = {
                 1,
             },
@@ -5251,10 +5251,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 27.4,
-        ["Coord"] = {
-            ["x"] = -288.8,
-            ["y"] = -113.1,
+        Range = 27.4,
+        Coord = {
+            x = -288.8,
+            y = -113.1,
         },
     },
     { -- Step 418
@@ -5263,7 +5263,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47584] = {
                 1,
             },
@@ -5271,10 +5271,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -29.4,
-            ["y"] = -33.8,
+        Range = 0.69,
+        Coord = {
+            x = -29.4,
+            y = -33.8,
         },
     },
     { -- Step 419
@@ -5284,7 +5284,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47584] = {
                 1,
             },
@@ -5292,10 +5292,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 22.98,
-        ["Coord"] = {
-            ["x"] = 482.8,
-            ["y"] = -41.3,
+        Range = 22.98,
+        Coord = {
+            x = 482.8,
+            y = -41.3,
         },
     },
     { -- Step 420
@@ -5307,57 +5307,57 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 28.86,
-        ["Coord"] = {
-            ["x"] = 37.2,
-            ["y"] = -28,
+        Range = 28.86,
+        Coord = {
+            x = 37.2,
+            y = -28,
         },
     },
     { -- Step 421
-        ["Done"] = {
+        Done = {
             47583,
         },
-        ["Coord"] = {
-            ["x"] = -4.9,
-            ["y"] = 313.8,
+        Coord = {
+            x = -4.9,
+            y = 313.8,
         },
     },
     { -- Step 422
-        ["Done"] = {
+        Done = {
             47584,
         },
-        ["Coord"] = {
-            ["x"] = -45.5,
-            ["y"] = 362.1,
+        Coord = {
+            x = -45.5,
+            y = 362.1,
         },
     },
     { -- Step 423
-        ["Done"] = {
+        Done = {
             47585,
             50466,
             51091,
             47706,
         },
-        ["Coord"] = {
-            ["x"] = -2.5,
-            ["y"] = 383.6,
+        Coord = {
+            x = -2.5,
+            y = 383.6,
         },
     },
     { -- Step 424
-        ["PickUp"] = {
+        PickUp = {
             47586,
         },
-        ["Coord"] = {
-            ["x"] = -2.5,
-            ["y"] = 383.6,
+        Coord = {
+            x = -2.5,
+            y = 383.6,
         },
     },
     { -- Step 425
-        ["Waypoint"] = 47586,
-        ["Range"] = 12.66,
-        ["Coord"] = {
-            ["x"] = 107.7,
-            ["y"] = 386.8,
+        Waypoint = 47586,
+        Range = 12.66,
+        Coord = {
+            x = 107.7,
+            y = 386.8,
         },
     },
     { -- Step 426
@@ -5366,15 +5366,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50178] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 424.2,
-            ["y"] = 292.1,
+        Range = 0.75,
+        Coord = {
+            x = 424.2,
+            y = 292.1,
         },
     },
     { -- Step 427
@@ -5383,15 +5383,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50178] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 506.3,
-            ["y"] = 366.5,
+        Range = 0.69,
+        Coord = {
+            x = 506.3,
+            y = 366.5,
         },
     },
     { -- Step 428
@@ -5400,33 +5400,33 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50178] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 435.8,
-            ["y"] = 428.2,
+        Range = 0.75,
+        Coord = {
+            x = 435.8,
+            y = 428.2,
         },
     },
     { -- Step 429
-        ["Done"] = {
+        Done = {
             47586,
         },
-        ["Coord"] = {
-            ["x"] = 340.8,
-            ["y"] = 469.6,
+        Coord = {
+            x = 340.8,
+            y = 469.6,
         },
     },
     { -- Step 430
-        ["PickUp"] = {
+        PickUp = {
             47587,
         },
-        ["Coord"] = {
-            ["x"] = 337.6,
-            ["y"] = 469,
+        Coord = {
+            x = 337.6,
+            y = 469,
         },
     },
     { -- Step 431
@@ -5435,19 +5435,19 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 9.76,
-        ["Coord"] = {
-            ["x"] = 375.6,
-            ["y"] = 484.3,
+        Range = 9.76,
+        Coord = {
+            x = 375.6,
+            y = 484.3,
         },
     },
     { -- Step 432
-        ["Done"] = {
+        Done = {
             47587,
         },
-        ["Coord"] = {
-            ["x"] = 337.6,
-            ["y"] = 469,
+        Coord = {
+            x = 337.6,
+            y = 469,
         },
     },
     { -- Step 433
@@ -5456,61 +5456,61 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 67,
-        ["Coord"] = {
-            ["x"] = 375.1,
-            ["y"] = 349,
+        Range = 67,
+        Coord = {
+            x = 375.1,
+            y = 349,
         },
     },
     { -- Step 434
-        ["Waypoint"] = 51101,
-        ["Range"] = 7.57,
-        ["Coord"] = {
-            ["x"] = -248,
-            ["y"] = 284.2,
+        Waypoint = 51101,
+        Range = 7.57,
+        Coord = {
+            x = -248,
+            y = 284.2,
         },
     },
     { -- Step 435
-        ["UseGlider"] = 1,
-        ["Waypoint"] = 51101,
-        ["Range"] = 63.82,
-        ["Coord"] = {
-            ["x"] = -380.8,
-            ["y"] = 183.6,
+        UseGlider = 1,
+        Waypoint = 51101,
+        Range = 63.82,
+        Coord = {
+            x = -380.8,
+            y = 183.6,
         },
     },
     { -- Step 436
-        ["Waypoint"] = 51101,
-        ["Range"] = 63.82,
-        ["Coord"] = {
-            ["x"] = -735.2,
-            ["y"] = 283,
+        Waypoint = 51101,
+        Range = 63.82,
+        Coord = {
+            x = -735.2,
+            y = 283,
         },
     },
     { -- Step 437
-        ["Waypoint"] = 51101,
-        ["Range"] = 37.12,
-        ["Coord"] = {
-            ["x"] = -803.7,
-            ["y"] = 455,
+        Waypoint = 51101,
+        Range = 37.12,
+        Coord = {
+            x = -803.7,
+            y = 455,
         },
     },
     { -- Step 438
-        ["Done"] = {
+        Done = {
             51101,
         },
-        ["Coord"] = {
-            ["x"] = -781,
-            ["y"] = 463.7,
+        Coord = {
+            x = -781,
+            y = 463.7,
         },
     },
     { -- Step 439
-        ["PickUp"] = {
+        PickUp = {
             51680,
         },
-        ["Coord"] = {
-            ["x"] = -781,
-            ["y"] = 463.7,
+        Coord = {
+            x = -781,
+            y = 463.7,
         },
     },
     { -- Step 440
@@ -5519,11 +5519,11 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -763.6,
-            ["y"] = 471.7,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = -763.6,
+            y = 471.7,
         },
     },
     { -- Step 441
@@ -5532,47 +5532,47 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -763.6,
-            ["y"] = 471.7,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            x = -763.6,
+            y = 471.7,
         },
     },
     { -- Step 442
-        ["Done"] = {
+        Done = {
             51680,
         },
-        ["Coord"] = {
-            ["x"] = -763.6,
-            ["y"] = 471.7,
+        Coord = {
+            x = -763.6,
+            y = 471.7,
         },
     },
     { -- Step 443
-        ["PickUp"] = {
+        PickUp = {
             47735,
             47739,
         },
-        ["Coord"] = {
-            ["x"] = -763.6,
-            ["y"] = 471.7,
+        Coord = {
+            x = -763.6,
+            y = 471.7,
         },
     },
     { -- Step 444
-        ["PickUp"] = {
+        PickUp = {
             50235,
         },
-        ["Coord"] = {
-            ["x"] = -780.7,
-            ["y"] = 462.8,
+        Coord = {
+            x = -780.7,
+            y = 462.8,
         },
     },
     { -- Step 445
-        ["GetFP"] = 1975,
-        ["Range"] = 11.57,
-        ["Coord"] = {
-            ["x"] = -838,
-            ["y"] = 514.5,
+        GetFP = 1975,
+        Range = 11.57,
+        Coord = {
+            x = -838,
+            y = 514.5,
         },
     },
     { -- Step 446
@@ -5581,7 +5581,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50235] = {
                 1,
             },
@@ -5589,10 +5589,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -940,
-            ["y"] = 632.5,
+        Range = 0.69,
+        Coord = {
+            x = -940,
+            y = 632.5,
         },
     },
     { -- Step 447
@@ -5601,7 +5601,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50235] = {
                 1,
             },
@@ -5609,21 +5609,21 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -1043.5,
-            ["y"] = 447.3,
+        Range = 0.69,
+        Coord = {
+            x = -1043.5,
+            y = 447.3,
         },
     },
     { -- Step 448
-        ["PickUp"] = {
+        PickUp = {
             47733,
         },
-        ["Coord"] = {
-            ["x"] = -1006.7,
-            ["y"] = 434.6,
+        Coord = {
+            x = -1006.7,
+            y = 434.6,
         },
-        ["Fillers"] = {
+        Fillers = {
             [50235] = {
                 1,
             },
@@ -5638,12 +5638,12 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["x"] = -1005.9,
-            ["y"] = 537.4,
+        Coord = {
+            x = -1005.9,
+            y = 537.4,
         },
-        ["Range"] = 168,
-        ["Fillers"] = {
+        Range = 168,
+        Fillers = {
             [47739] = {
                 1,
             },
@@ -5655,15 +5655,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47739] = {
                 1,
             },
         },
-        ["Range"] = 20.54,
-        ["Coord"] = {
-            ["x"] = -938.3,
-            ["y"] = 235.1,
+        Range = 20.54,
+        Coord = {
+            x = -938.3,
+            y = 235.1,
         },
     },
     { -- Step 451
@@ -5672,15 +5672,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47739] = {
                 1,
             },
         },
-        ["Range"] = 10.41,
-        ["Coord"] = {
-            ["x"] = -1019,
-            ["y"] = 160.6,
+        Range = 10.41,
+        Coord = {
+            x = -1019,
+            y = 160.6,
         },
     },
     { -- Step 452
@@ -5689,47 +5689,47 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 25.55,
-        ["Coord"] = {
-            ["x"] = -961.8,
-            ["y"] = 333.8,
+        Range = 25.55,
+        Coord = {
+            x = -961.8,
+            y = 333.8,
         },
     },
     { -- Step 453
-        ["Waypoint"] = 47739,
-        ["Range"] = 31.64,
-        ["Coord"] = {
-            ["x"] = -801.5,
-            ["y"] = 462.3,
+        Waypoint = 47739,
+        Range = 31.64,
+        Coord = {
+            x = -801.5,
+            y = 462.3,
         },
     },
     { -- Step 454
-        ["Done"] = {
+        Done = {
             50235,
             47733,
         },
-        ["Coord"] = {
-            ["x"] = -782,
-            ["y"] = 464.1,
+        Coord = {
+            x = -782,
+            y = 464.1,
         },
     },
     { -- Step 455
-        ["Done"] = {
+        Done = {
             47739,
             47735,
         },
-        ["Coord"] = {
-            ["x"] = -763.6,
-            ["y"] = 471.7,
+        Coord = {
+            x = -763.6,
+            y = 471.7,
         },
     },
     { -- Step 456
-        ["PickUp"] = {
+        PickUp = {
             51677,
         },
-        ["Coord"] = {
-            ["x"] = -763.6,
-            ["y"] = 471.7,
+        Coord = {
+            x = -763.6,
+            y = 471.7,
         },
     },
     { -- Step 457
@@ -5738,51 +5738,51 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -763.6,
-            ["y"] = 471.7,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            x = -763.6,
+            y = 471.7,
         },
     },
     { -- Step 458
-        ["ExtraLineText"] = "JOLS_COMMANDS",
+        ExtraLineText = "JOLS_COMMANDS",
         Qpart = {
             [51677] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 5,
-        ["Coord"] = {
-            ["x"] = -769.5,
-            ["y"] = 479.7,
+        Gossip = 1,
+        Range = 5,
+        Coord = {
+            x = -769.5,
+            y = 479.7,
         },
     },
     { -- Step 459
-        ["Done"] = {
+        Done = {
             51677,
         },
-        ["Coord"] = {
-            ["x"] = -763.6,
-            ["y"] = 471.7,
+        Coord = {
+            x = -763.6,
+            y = 471.7,
         },
     },
     { -- Step 460
-        ["PickUp"] = {
+        PickUp = {
             47738,
         },
-        ["Coord"] = {
-            ["x"] = -763.6,
-            ["y"] = 471.7,
+        Coord = {
+            x = -763.6,
+            y = 471.7,
         },
     },
     { -- Step 461
-        ["Range"] = 8.7,
-        ["Waypoint"] = 47738,
-        ["Coord"] = {
-            ["x"] = -777.5,
-            ["y"] = 473,
+        Range = 8.7,
+        Waypoint = 47738,
+        Coord = {
+            x = -777.5,
+            y = 473,
         },
     },
     { -- Step 462
@@ -5791,10 +5791,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = -794.5,
-            ["y"] = 633.2,
+        Range = 0.61,
+        Coord = {
+            x = -794.5,
+            y = 633.2,
         },
     },
     { -- Step 463
@@ -5803,33 +5803,33 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["GossipOptionID"] = 48358,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -808,
-            ["y"] = 633,
+        Gossip = 1,
+        GossipOptionID = 48358,
+        Range = 0.69,
+        Coord = {
+            x = -808,
+            y = 633,
         },
     },
     { -- Step 464
-        ["ETA"] = 69,
+        ETA = 69,
         Qpart = {
             [47738] = {
                 3,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -801.8,
-            ["y"] = 632.1,
+        Range = 0.75,
+        Coord = {
+            x = -801.8,
+            y = 632.1,
         },
     },
     { -- Step 465
-        ["Range"] = 12.72,
-        ["Waypoint"] = 47738,
-        ["Coord"] = {
-            ["x"] = -776.2,
-            ["y"] = 473.8,
+        Range = 12.72,
+        Waypoint = 47738,
+        Coord = {
+            x = -776.2,
+            y = 473.8,
         },
     },
     { -- Step 466
@@ -5838,54 +5838,54 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 4,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -759.5,
-            ["y"] = 474.8,
+        Range = 0.69,
+        Coord = {
+            x = -759.5,
+            y = 474.8,
         },
     },
     { -- Step 467
-        ["Coord"] = {
-            ["x"] = -778.8,
-            ["y"] = 469.7,
+        Coord = {
+            x = -778.8,
+            y = 469.7,
         },
-        ["Done"] = {
+        Done = {
             47738,
         },
     },
     { -- Step 468
-        ["PickUp"] = {
+        PickUp = {
             51678,
             47742,
             51679,
         },
-        ["Coord"] = {
-            ["x"] = -778.8,
-            ["y"] = 469.7,
+        Coord = {
+            x = -778.8,
+            y = 469.7,
         },
     },
     { -- Step 469
-        ["Range"] = 9.46,
-        ["Waypoint"] = 51679,
-        ["Coord"] = {
-            ["x"] = -1128.5,
-            ["y"] = 223,
+        Range = 9.46,
+        Waypoint = 51679,
+        Coord = {
+            x = -1128.5,
+            y = 223,
         },
     },
     { -- Step 470
-        ["Range"] = 7.07,
-        ["Waypoint"] = 51679,
-        ["Coord"] = {
-            ["x"] = -1135,
-            ["y"] = 229.1,
+        Range = 7.07,
+        Waypoint = 51679,
+        Coord = {
+            x = -1135,
+            y = 229.1,
         },
     },
     { -- Step 471
-        ["Range"] = 4.73,
-        ["Waypoint"] = 51678,
-        ["Coord"] = {
-            ["x"] = -1154,
-            ["y"] = 238.1,
+        Range = 4.73,
+        Waypoint = 51678,
+        Coord = {
+            x = -1154,
+            y = 238.1,
         },
     },
     { -- Step 472
@@ -5894,10 +5894,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = -1167.9,
-            ["y"] = 264.3,
+        Range = 0.61,
+        Coord = {
+            x = -1167.9,
+            y = 264.3,
         },
     },
     { -- Step 473
@@ -5907,30 +5907,30 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47742] = {
                 1,
             },
         },
-        ["Range"] = 30.75,
-        ["Coord"] = {
-            ["x"] = -1167.9,
-            ["y"] = 264.3,
+        Range = 30.75,
+        Coord = {
+            x = -1167.9,
+            y = 264.3,
         },
     },
     { -- Step 474
-        ["ExtraLineText"] = "TOP_BOAT",
+        ExtraLineText = "TOP_BOAT",
         Qpart = {
             [51678] = {
                 1,
             },
         },
-        ["Range"] = 4.08,
-        ["Coord"] = {
-            ["x"] = -1170.8,
-            ["y"] = 271.3,
+        Range = 4.08,
+        Coord = {
+            x = -1170.8,
+            y = 271.3,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47742] = {
                 1,
             },
@@ -5942,57 +5942,57 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 17.87,
-        ["Coord"] = {
-            ["x"] = -1170.5,
-            ["y"] = 270.5,
+        Range = 17.87,
+        Coord = {
+            x = -1170.5,
+            y = 270.5,
         },
     },
     { -- Step 476
-        ["Coord"] = {
-            ["x"] = -780.5,
-            ["y"] = 468.2,
+        Coord = {
+            x = -780.5,
+            y = 468.2,
         },
-        ["Done"] = {
+        Done = {
             51679,
             51678,
             47742,
         },
     },
     { -- Step 477
-        ["PickUp"] = {
+        PickUp = {
             47737,
         },
-        ["Coord"] = {
-            ["x"] = -780.5,
-            ["y"] = 468.2,
+        Coord = {
+            x = -780.5,
+            y = 468.2,
         },
     },
     { -- Step 478
-        ["Range"] = 60.93,
-        ["Waypoint"] = 47737,
-        ["Coord"] = {
-            ["x"] = -699.8,
-            ["y"] = 251.6,
+        Range = 60.93,
+        Waypoint = 47737,
+        Coord = {
+            x = -699.8,
+            y = 251.6,
         },
     },
     { -- Step 479
-        ["Coord"] = {
-            ["x"] = -384.3,
-            ["y"] = 192.5,
+        Coord = {
+            x = -384.3,
+            y = 192.5,
         },
-        ["Done"] = {
+        Done = {
             47737,
         },
     },
     { -- Step 480
-        ["PickUp"] = {
+        PickUp = {
             47736,
             47740,
         },
-        ["Coord"] = {
-            ["x"] = -387.7,
-            ["y"] = 188.3,
+        Coord = {
+            x = -387.7,
+            y = 188.3,
         },
     },
 
@@ -6002,7 +6002,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47736] = {
                 1,
             },
@@ -6010,10 +6010,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 9.59,
-        ["Coord"] = {
-            ["x"] = -406.5,
-            ["y"] = 31,
+        Range = 9.59,
+        Coord = {
+            x = -406.5,
+            y = 31,
         },
     },
     { -- Step 482
@@ -6022,7 +6022,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47736] = {
                 1,
             },
@@ -6030,20 +6030,20 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 10.75,
-        ["Coord"] = {
-            ["x"] = -537.3,
-            ["y"] = 86.7,
+        Range = 10.75,
+        Coord = {
+            x = -537.3,
+            y = 86.7,
         },
     },
     { -- Step 483
-        ["Range"] = 12.33,
-        ["Waypoint"] = 47740,
-        ["Coord"] = {
-            ["x"] = -472.7,
-            ["y"] = 12.5,
+        Range = 12.33,
+        Waypoint = 47740,
+        Coord = {
+            x = -472.7,
+            y = 12.5,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47736] = {
                 1,
             },
@@ -6058,7 +6058,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47736] = {
                 1,
             },
@@ -6066,10 +6066,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 8.62,
-        ["Coord"] = {
-            ["x"] = -529.7,
-            ["y"] = -73.4,
+        Range = 8.62,
+        Coord = {
+            x = -529.7,
+            y = -73.4,
         },
     },
     { -- Step 485
@@ -6081,29 +6081,29 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 29.63,
-        ["Coord"] = {
-            ["x"] = -531.7,
-            ["y"] = -75.9,
+        Range = 29.63,
+        Coord = {
+            x = -531.7,
+            y = -75.9,
         },
     },
     { -- Step 486
-        ["Done"] = {
+        Done = {
             47740,
             47736,
         },
-        ["Coord"] = {
-            ["x"] = -623.2,
-            ["y"] = -26.9,
+        Coord = {
+            x = -623.2,
+            y = -26.9,
         },
     },
     { -- Step 487
-        ["PickUp"] = {
+        PickUp = {
             47734,
         },
-        ["Coord"] = {
-            ["x"] = -624.8,
-            ["y"] = -26.9,
+        Coord = {
+            x = -624.8,
+            y = -26.9,
         },
     },
     { -- Step 488
@@ -6112,10 +6112,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 7.95,
-        ["Coord"] = {
-            ["x"] = -651.5,
-            ["y"] = 70,
+        Range = 7.95,
+        Coord = {
+            x = -651.5,
+            y = 70,
         },
     },
     { -- Step 489
@@ -6124,41 +6124,41 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Range"] = 6.06,
-        ["Coord"] = {
-            ["x"] = -648.5,
-            ["y"] = -111,
+        Range = 6.06,
+        Coord = {
+            x = -648.5,
+            y = -111,
         },
     },
     { -- Step 490
-        ["Coord"] = {
-            ["x"] = -627,
-            ["y"] = -28.4,
+        Coord = {
+            x = -627,
+            y = -28.4,
         },
-        ["Done"] = {
+        Done = {
             47734,
         },
     },
     { -- Step 491
-        ["PickUp"] = {
+        PickUp = {
             47741,
         },
-        ["Coord"] = {
-            ["x"] = -627,
-            ["y"] = -28.4,
+        Coord = {
+            x = -627,
+            y = -28.4,
         },
     },
     { -- Step 492
-        ["ExtraLineText"] = "REDUCED_DAMAGE_INFO_1",
+        ExtraLineText = "REDUCED_DAMAGE_INFO_1",
         Qpart = {
             [47741] = {
                 1,
             },
         },
-        ["Range"] = 8.39,
-        ["Coord"] = {
-            ["x"] = -717.8,
-            ["y"] = -21.4,
+        Range = 8.39,
+        Coord = {
+            x = -717.8,
+            y = -21.4,
         },
     },
     { -- Step 493
@@ -6167,167 +6167,167 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Range"] = 0.5,
-        ["Coord"] = {
-            ["x"] = -725.7,
-            ["y"] = -24.7,
+        Range = 0.5,
+        Coord = {
+            x = -725.7,
+            y = -24.7,
         },
     },
     { -- Step 494
-        ["Waypoint"] = 47741,
-        ["Coord"] = {
-            ["x"] = -727.2,
-            ["y"] = -27.1,
+        Waypoint = 47741,
+        Coord = {
+            x = -727.2,
+            y = -27.1,
         },
-        ["Range"] = 0.5,
-        ["Gossip"] = 1,
-        ["GossipOptionID"] = 47761,
-        ["ExtraLineText"] = "TALK_KING_RASTAKHAN",
+        Range = 0.5,
+        Gossip = 1,
+        GossipOptionID = 47761,
+        ExtraLineText = "TALK_KING_RASTAKHAN",
     },
     { -- Step 495
-        ["Waypoint"] = 47741,
-        ["Range"] = 20.85,
-        ["Coord"] = {
-            ["x"] = -574.2,
-            ["y"] = -159.7,
+        Waypoint = 47741,
+        Range = 20.85,
+        Coord = {
+            x = -574.2,
+            y = -159.7,
         },
     },
     { -- Step 496
-        ["Waypoint"] = 47741,
-        ["Range"] = 27.85,
-        ["Coord"] = {
-            ["x"] = -378.8,
-            ["y"] = -277.4,
+        Waypoint = 47741,
+        Range = 27.85,
+        Coord = {
+            x = -378.8,
+            y = -277.4,
         },
     },
     { -- Step 497
-        ["Done"] = {
+        Done = {
             47741,
         },
-        ["Coord"] = {
-            ["x"] = -291.9,
-            ["y"] = -305.7,
+        Coord = {
+            x = -291.9,
+            y = -305.7,
         },
     },
     { -- Step 498
-        ["PickUp"] = {
+        PickUp = {
             51111,
         },
-        ["Coord"] = {
-            ["x"] = -293.9,
-            ["y"] = -306.9,
+        Coord = {
+            x = -293.9,
+            y = -306.9,
         },
     },
     { -- Step 499
-        ["Coord"] = {
-            ["x"] = -280.4,
-            ["y"] = -290.7,
+        Coord = {
+            x = -280.4,
+            y = -290.7,
         },
-        ["UseFlightPath"] = 51111,
-        ["Name"] = "The Great Seal",
-        ["NodeID"] = 1959,
+        UseFlightPath = 51111,
+        Name = "The Great Seal",
+        NodeID = 1959,
     },
     { -- Step 500
-        ["Waypoint"] = 51111,
-        ["Range"] = 13.01,
-        ["Coord"] = {
-            ["x"] = 801.2,
-            ["y"] = -1049,
+        Waypoint = 51111,
+        Range = 13.01,
+        Coord = {
+            x = 801.2,
+            y = -1049,
         },
     },
     { -- Step 501
-        ["Done"] = {
+        Done = {
             51111,
         },
-        ["Coord"] = {
-            ["x"] = 819.4,
-            ["y"] = -1124.5,
+        Coord = {
+            x = 819.4,
+            y = -1124.5,
         },
     },
     { -- Step 502
-        ["PickUp"] = {
+        PickUp = {
             49421,
         },
-        ["Coord"] = {
-            ["x"] = 819.9,
-            ["y"] = -1125,
+        Coord = {
+            x = 819.9,
+            y = -1125,
         },
-        ["LeaveQuest"] = 52210,
+        LeaveQuest = 52210,
     },
     { -- Step 503
-        ["LeaveQuest"] = 52210,
-        ["Range"] = 8.86,
-        ["Waypoint"] = 49421,
-        ["Coord"] = {
-            ["x"] = 809.2,
-            ["y"] = -1052.6,
+        LeaveQuest = 52210,
+        Range = 8.86,
+        Waypoint = 49421,
+        Coord = {
+            x = 809.2,
+            y = -1052.6,
         },
     },
     { -- Step 504
-        ["UseGlider"] = 1,
-        ["LeaveQuest"] = 52210,
-        ["Coord"] = {
-            ["x"] = 1115.5,
-            ["y"] = -771.3,
+        UseGlider = 1,
+        LeaveQuest = 52210,
+        Coord = {
+            x = 1115.5,
+            y = -771.3,
         },
-        ["Done"] = {
+        Done = {
             49421,
         },
     },
     { -- Step 505
-        ["PickUp"] = {
+        PickUp = {
             49965,
         },
-        ["LeaveQuest"] = 52210,
-        ["Coord"] = {
-            ["x"] = 1115.5,
-            ["y"] = -771.3,
+        LeaveQuest = 52210,
+        Coord = {
+            x = 1115.5,
+            y = -771.3,
         },
     },
     { -- Step 506
-        ["ExtraLineText"] = "RUN_FOREST_RUN",
-        ["LeaveQuest"] = 52210,
-        ["Range"] = 14.92,
-        ["Waypoint"] = 49965,
-        ["Coord"] = {
-            ["x"] = 1229.3,
-            ["y"] = -878.8,
+        ExtraLineText = "RUN_FOREST_RUN",
+        LeaveQuest = 52210,
+        Range = 14.92,
+        Waypoint = 49965,
+        Coord = {
+            x = 1229.3,
+            y = -878.8,
         },
     },
     { -- Step 507
-        ["LeaveQuest"] = 52210,
-        ["Range"] = 10.86,
-        ["Waypoint"] = 49965,
-        ["Coord"] = {
-            ["x"] = 1331,
-            ["y"] = -891,
+        LeaveQuest = 52210,
+        Range = 10.86,
+        Waypoint = 49965,
+        Coord = {
+            x = 1331,
+            y = -891,
         },
     },
     { -- Step 508
-        ["LeaveQuest"] = 52210,
-        ["Range"] = 20.73,
-        ["Waypoint"] = 49965,
-        ["Coord"] = {
-            ["x"] = 1411.8,
-            ["y"] = -1160,
+        LeaveQuest = 52210,
+        Range = 20.73,
+        Waypoint = 49965,
+        Coord = {
+            x = 1411.8,
+            y = -1160,
         },
     },
     { -- Step 509
-        ["LeaveQuest"] = 52210,
-        ["Range"] = 8.37,
-        ["Waypoint"] = 49965,
-        ["Coord"] = {
-            ["x"] = 1443.7,
-            ["y"] = -1217.1,
+        LeaveQuest = 52210,
+        Range = 8.37,
+        Waypoint = 49965,
+        Coord = {
+            x = 1443.7,
+            y = -1217.1,
         },
     },
     { -- Step 510
-        ["LeaveQuest"] = 52210,
-        ["Range"] = 19.01,
-        ["Waypoint"] = 49965,
-        ["Coord"] = {
-            ["x"] = 1542.7,
-            ["y"] = -1154.5,
+        LeaveQuest = 52210,
+        Range = 19.01,
+        Waypoint = 49965,
+        Coord = {
+            x = 1542.7,
+            y = -1154.5,
         },
     },
     { -- Step 511
@@ -6336,37 +6336,37 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 2.61,
-        ["Coord"] = {
-            ["x"] = 1540.4,
-            ["y"] = -1121.1,
+        Range = 2.61,
+        Coord = {
+            x = 1540.4,
+            y = -1121.1,
         },
     },
     { -- Step 512
-        ["Coord"] = {
-            ["x"] = 1540,
-            ["y"] = -1121.3,
+        Coord = {
+            x = 1540,
+            y = -1121.3,
         },
-        ["Done"] = {
+        Done = {
             49965,
         },
     },
     { -- Step 513
-        ["PickUp"] = {
+        PickUp = {
             49422,
             49424,
         },
-        ["Coord"] = {
-            ["x"] = 1536.9,
-            ["y"] = -1122.6,
+        Coord = {
+            x = 1536.9,
+            y = -1122.6,
         },
     },
     { -- Step 514
-        ["Range"] = 8.28,
-        ["GetFP"] = 2027,
-        ["Coord"] = {
-            ["x"] = 1495.4,
-            ["y"] = -1135.6,
+        Range = 8.28,
+        GetFP = 2027,
+        Coord = {
+            x = 1495.4,
+            y = -1135.6,
         },
     },
     { -- Step 515
@@ -6375,38 +6375,38 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49422] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1578.7,
-            ["y"] = -1032,
+        Range = 0.69,
+        Coord = {
+            x = 1578.7,
+            y = -1032,
         },
     },
     { -- Step 516
-        ["Range"] = 9.41,
-        ["Waypoint"] = 49424,
-        ["Coord"] = {
-            ["x"] = 1498.5,
-            ["y"] = -999.7,
+        Range = 9.41,
+        Waypoint = 49424,
+        Coord = {
+            x = 1498.5,
+            y = -999.7,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49422] = {
                 1,
             },
         },
     },
     { -- Step 517
-        ["Range"] = 8.69,
-        ["Waypoint"] = 49422,
-        ["Coord"] = {
-            ["x"] = 1502.7,
-            ["y"] = -959.2,
+        Range = 8.69,
+        Waypoint = 49422,
+        Coord = {
+            x = 1502.7,
+            y = -959.2,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49422] = {
                 1,
             },
@@ -6418,38 +6418,38 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49422] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1561.5,
-            ["y"] = -911.3,
+        Range = 0.75,
+        Coord = {
+            x = 1561.5,
+            y = -911.3,
         },
     },
     { -- Step 519
-        ["Range"] = 7.77,
-        ["Waypoint"] = 49422,
-        ["Coord"] = {
-            ["x"] = 1504,
-            ["y"] = -912.8,
+        Range = 7.77,
+        Waypoint = 49422,
+        Coord = {
+            x = 1504,
+            y = -912.8,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49422] = {
                 1,
             },
         },
     },
     { -- Step 520
-        ["Range"] = 6.69,
-        ["Waypoint"] = 49422,
-        ["Coord"] = {
-            ["x"] = 1501.5,
-            ["y"] = -868.7,
+        Range = 6.69,
+        Waypoint = 49422,
+        Coord = {
+            x = 1501.5,
+            y = -868.7,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49422] = {
                 1,
             },
@@ -6461,15 +6461,15 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49422] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1584.8,
-            ["y"] = -843.8,
+        Range = 0.69,
+        Coord = {
+            x = 1584.8,
+            y = -843.8,
         },
     },
     { -- Step 522
@@ -6478,29 +6478,29 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 15.57,
-        ["Coord"] = {
-            ["x"] = 1575.5,
-            ["y"] = -844.2,
+        Range = 15.57,
+        Coord = {
+            x = 1575.5,
+            y = -844.2,
         },
     },
     { -- Step 523
-        ["Coord"] = {
-            ["x"] = 1508,
-            ["y"] = -763.8,
+        Coord = {
+            x = 1508,
+            y = -763.8,
         },
-        ["Done"] = {
+        Done = {
             49422,
             49424,
         },
     },
     { -- Step 524
-        ["PickUp"] = {
+        PickUp = {
             49425,
         },
-        ["Coord"] = {
-            ["x"] = 1508,
-            ["y"] = -764.8,
+        Coord = {
+            x = 1508,
+            y = -764.8,
         },
     },
     { -- Step 525
@@ -6509,10 +6509,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = 1508,
-            ["y"] = -760,
+        Range = 0.61,
+        Coord = {
+            x = 1508,
+            y = -760,
         },
     },
     { -- Step 526
@@ -6521,18 +6521,18 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Range"] = 72.39,
-        ["Coord"] = {
-            ["x"] = 1524.3,
-            ["y"] = -820.5,
+        Range = 72.39,
+        Coord = {
+            x = 1524.3,
+            y = -820.5,
         },
     },
     { -- Step 527
-        ["Coord"] = {
-            ["x"] = 2009.5,
-            ["y"] = -838.5,
+        Coord = {
+            x = 2009.5,
+            y = -838.5,
         },
-        ["Done"] = {
+        Done = {
             49425,
         },
     },
@@ -6542,10 +6542,10 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = 2152.6,
-            ["y"] = -850,
+        Range = 0.61,
+        Coord = {
+            x = 2152.6,
+            y = -850,
         },
     },
     { -- Step 529
@@ -6554,12 +6554,12 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["GossipOptionID"] = 48457,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 2149.1,
-            ["y"] = -850.5,
+        Gossip = 1,
+        GossipOptionID = 48457,
+        Range = 0.69,
+        Coord = {
+            x = 2149.1,
+            y = -850.5,
         },
     },
     { -- Step 530
@@ -6568,20 +6568,20 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Gossip"] = 101,
-        ["GossipOptionID"] = 48876,
-        ["Range"] = 6.69,
-        ["Coord"] = {
-            ["x"] = 2158.8,
-            ["y"] = -848.7,
+        Gossip = 101,
+        GossipOptionID = 48876,
+        Range = 6.69,
+        Coord = {
+            x = 2158.8,
+            y = -848.7,
         },
     },
     { -- Step 531
-        ["Waypoint"] = 49426,
-        ["Range"] = 8,
-        ["Coord"] = {
-            ["x"] = 2144.6,
-            ["y"] = -754,
+        Waypoint = 49426,
+        Range = 8,
+        Coord = {
+            x = 2144.6,
+            y = -754,
         },
     },
     { -- Step 532
@@ -6590,111 +6590,111 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 3,
             },
         },
-        ["Range"] = 0.09,
-        ["Coord"] = {
-            ["x"] = 2093.9,
-            ["y"] = -743.7,
+        Range = 0.09,
+        Coord = {
+            x = 2093.9,
+            y = -743.7,
         },
     },
     { -- Step 533
-        ["Coord"] = {
-            ["x"] = 2093.9,
-            ["y"] = -743.7,
+        Coord = {
+            x = 2093.9,
+            y = -743.7,
         },
-        ["Done"] = {
+        Done = {
             49426,
         },
     },
     { -- Step 534
-        ["PickUp"] = {
+        PickUp = {
             50963,
         },
-        ["LeaveQuest"] = 49901,
-        ["Coord"] = {
-            ["x"] = 2093.9,
-            ["y"] = -743.7,
+        LeaveQuest = 49901,
+        Coord = {
+            x = 2093.9,
+            y = -743.7,
         },
     },
     { -- Step 535
-        ["UseHS"] = 50963,
-        ["Coord"] = {
-            ["x"] = 2093.9,
-            ["y"] = -743.7,
+        UseHS = 50963,
+        Coord = {
+            x = 2093.9,
+            y = -743.7,
         },
-        ["LeaveQuest"] = 49901,
+        LeaveQuest = 49901,
     },
     { -- Step 536
-        ["Waypoint"] = 50963,
-        ["Range"] = 4.36,
-        ["Coord"] = {
-            ["x"] = 810.6,
-            ["y"] = -1137.5,
+        Waypoint = 50963,
+        Range = 4.36,
+        Coord = {
+            x = 810.6,
+            y = -1137.5,
         },
     },
     { -- Step 537
-        ["Done"] = {
+        Done = {
             50963,
         },
-        ["LeaveQuest"] = 52210,
-        ["LeaveQuest"] = 49901,
-        ["Coord"] = {
-            ["x"] = 819.2,
-            ["y"] = -1120.4,
+        LeaveQuest = 52210,
+        LeaveQuest = 49901,
+        Coord = {
+            x = 819.2,
+            y = -1120.4,
         },
     },
     { -- Step 538
-        ["PickUp"] = {
+        PickUp = {
             47512,
         },
-        ["LeaveQuest"] = 52210,
-        ["LeaveQuest"] = 49901,
-        ["Coord"] = {
-            ["x"] = 820,
-            ["y"] = -1122.8,
+        LeaveQuest = 52210,
+        LeaveQuest = 49901,
+        Coord = {
+            x = 820,
+            y = -1122.8,
         },
     },
     { -- Step 539
-        ["Done"] = {
+        Done = {
             47512,
         },
-        ["Coord"] = {
-            ["x"] = 819,
-            ["y"] = -1120.5,
+        Coord = {
+            x = 819,
+            y = -1120.5,
         },
     },
     { -- Step 540
-        ["PickUp"] = {
+        PickUp = {
             47103,
         },
-        ["Coord"] = {
-            ["x"] = 819.2,
-            ["y"] = -1120.9,
+        Coord = {
+            x = 819.2,
+            y = -1120.9,
         },
     },
     { -- Step 541
-        ["Waypoint"] = 47103,
-        ["Range"] = 5.68,
-        ["Coord"] = {
-            ["x"] = 801.7,
-            ["y"] = -1052.8,
+        Waypoint = 47103,
+        Range = 5.68,
+        Coord = {
+            x = 801.7,
+            y = -1052.8,
         },
     },
     { -- Step 542
-        ["Done"] = {
+        Done = {
             47103,
         },
-        ["Coord"] = {
-            ["x"] = 757.7,
-            ["y"] = -1037.4,
+        Coord = {
+            x = 757.7,
+            y = -1037.4,
         },
     },
     { -- Step 543
-        ["PickUp"] = {
+        PickUp = {
             48535,
         },
-        ["Coord"] = {
-            ["x"] = 759,
-            ["y"] = -1037.6,
+        Coord = {
+            x = 759,
+            y = -1037.6,
         },
     },
     { -- Step 544
@@ -6703,89 +6703,88 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
                 1,
             },
         },
-        ["Gossip"] = 2,
-        ["GossipOptionID"] = 48274,
-        ["Range"] = 5.69,
-        ["Coord"] = {
-            ["x"] = 751.9,
-            ["y"] = -1034.9,
+        Gossip = 2,
+        GossipOptionID = 48274,
+        Range = 5.69,
+        Coord = {
+            x = 751.9,
+            y = -1034.9,
         },
     },
     { -- Step 545
-        ["UseGlider"] = 1,
-        ["Coord"] = {
-            ["x"] = 1188.2,
-            ["y"] = 514.5,
+        UseGlider = 1,
+        Coord = {
+            x = 1188.2,
+            y = 514.5,
         },
-        ["Done"] = {
+        Done = {
             48535,
         },
-        ["Zone"] = 863,
+        Zone = 863,
     },
     { -- [Step 546
-        ["ZoneDoneSave"] = 1,
+        ZoneDoneSave = 1,
     },
 }
 -- Nazmir
 APR.RouteQuestStepList["863-Nazmir"] = {
     { -- Step 1
-        ["Done"] = {
+        Done = {
             48535,
         },
-        ["Coord"] = {
-            ["x"] = 1188.2,
-            ["y"] = 514.5,
+        Coord = {
+            x = 1188.2,
+            y = 514.5,
         },
-        ["LeaveQuests"] = {
+        LeaveQuests = {
             52210,
             49901,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             47105,
         },
-        ["Coord"] = {
-            ["x"] = 1188.2,
-            ["y"] = 514.5,
+        Coord = {
+            x = 1188.2,
+            y = 514.5,
         },
-        ["LeaveQuests"] = {
+        LeaveQuests = {
             52210,
             49901,
         },
     },
     { -- Step 3
-        ["ClearZP"] = 1,
-        ["ExtraLineText"] = "CLICK_BUFFS_IN_ZONE",
+        ExtraLineText = "CLICK_BUFFS_IN_ZONE",
         Qpart = {
             [47105] = {
                 1,
             },
         },
-        ["Range"] = 7.2,
-        ["Coord"] = {
-            ["x"] = 967.2,
-            ["y"] = 727.7,
+        Range = 7.2,
+        Coord = {
+            x = 967.2,
+            y = 727.7,
         },
     },
     { -- Step 4
-        ["ExtraLineText"] = "CLICK_BUFFS_IN_ZONE",
-        ["Done"] = {
+        ExtraLineText = "CLICK_BUFFS_IN_ZONE",
+        Done = {
             47105,
         },
-        ["Coord"] = {
-            ["x"] = 965,
-            ["y"] = 735.2,
+        Coord = {
+            x = 965,
+            y = 735.2,
         },
     },
     { -- Step 5
-        ["PickUp"] = {
+        PickUp = {
             47130,
             47264,
         },
-        ["Coord"] = {
-            ["x"] = 966.7,
-            ["y"] = 733.2,
+        Coord = {
+            x = 966.7,
+            y = 733.2,
         },
     },
     { -- Step 6
@@ -6797,69 +6796,69 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["47130-1"] = 154724,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [241992] = "47130-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [241992] = 5,
         },
-        ["Range"] = 34.06,
-        ["Coord"] = {
-            ["x"] = 901.4,
-            ["y"] = 719.4,
+        Range = 34.06,
+        Coord = {
+            x = 901.4,
+            y = 719.4,
         },
     },
     { -- Step 7
-        ["Coord"] = {
-            ["x"] = 1048.3,
-            ["y"] = 908.6,
+        Coord = {
+            x = 1048.3,
+            y = 908.6,
         },
-        ["Done"] = {
+        Done = {
             47264,
             47130,
         },
     },
     { -- Step 8
-        ["PickUp"] = {
+        PickUp = {
             47262,
         },
-        ["Coord"] = {
-            ["x"] = 1048.3,
-            ["y"] = 908.6,
+        Coord = {
+            x = 1048.3,
+            y = 908.6,
         },
     },
     { -- Step 9
-        ["Bloodlust"] = 1,
+        Bloodlust = 1,
         Qpart = {
             [47262] = {
                 1,
             },
         },
-        ["Range"] = 10.37,
-        ["Coord"] = {
-            ["x"] = 1084.5,
-            ["y"] = 1015.9,
+        Range = 10.37,
+        Coord = {
+            x = 1084.5,
+            y = 1015.9,
         },
     },
     { -- Step 10
-        ["Coord"] = {
-            ["x"] = 1072.5,
-            ["y"] = 1038,
+        Coord = {
+            x = 1072.5,
+            y = 1038,
         },
-        ["Done"] = {
+        Done = {
             47262,
         },
     },
     { -- Step 11
-        ["PickUp"] = {
+        PickUp = {
             47263,
         },
-        ["Coord"] = {
-            ["x"] = 1072.5,
-            ["y"] = 1038,
+        Coord = {
+            x = 1072.5,
+            y = 1038,
         },
     },
     { -- Step 12
@@ -6868,59 +6867,59 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1053.5,
-            ["y"] = 1122,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 1053.5,
+            y = 1122,
         },
     },
     { -- Step 13
-        ["Range"] = 12.9,
-        ["Waypoint"] = 47263,
-        ["Coord"] = {
-            ["x"] = 1349.7,
-            ["y"] = 818.2,
+        Range = 12.9,
+        Waypoint = 47263,
+        Coord = {
+            x = 1349.7,
+            y = 818.2,
         },
     },
     { -- Step 14
-        ["PickUp"] = {
+        PickUp = {
             51089,
         },
-        ["Coord"] = {
-            ["x"] = 1368,
-            ["y"] = 726.9,
+        Coord = {
+            x = 1368,
+            y = 726.9,
         },
     },
     { -- Step 15
-        ["Coord"] = {
-            ["x"] = 1390,
-            ["y"] = 758.1,
+        Coord = {
+            x = 1390,
+            y = 758.1,
         },
-        ["Done"] = {
+        Done = {
             47263,
         },
     },
     { -- Step 16
-        ["PickUp"] = {
+        PickUp = {
             47188,
         },
-        ["Coord"] = {
-            ["x"] = 1390.2,
-            ["y"] = 757.5,
+        Coord = {
+            x = 1390.2,
+            y = 757.5,
         },
     },
     { -- Step 17
-        ["Gossip"] = 101,
+        Gossip = 101,
         Qpart = {
             [47188] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1390.2,
-            ["y"] = 757.5,
+        Range = 0.75,
+        Coord = {
+            x = 1390.2,
+            y = 757.5,
         },
     },
     { -- Step 18
@@ -6929,45 +6928,45 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1390.2,
-            ["y"] = 757.5,
+        Range = 0.75,
+        Coord = {
+            x = 1390.2,
+            y = 757.5,
         },
     },
     { -- Step 19
-        ["Coord"] = {
-            ["x"] = 1390.2,
-            ["y"] = 757.5,
+        Coord = {
+            x = 1390.2,
+            y = 757.5,
         },
-        ["Done"] = {
+        Done = {
             47188,
         },
     },
     { -- Step 20
-        ["PickUp"] = {
+        PickUp = {
             47241,
         },
-        ["Coord"] = {
-            ["x"] = 1390.2,
-            ["y"] = 757.5,
+        Coord = {
+            x = 1390.2,
+            y = 757.5,
         },
     },
     { -- Step 21
-        ["GetFP"] = 1953,
-        ["Range"] = 0.91,
-        ["Coord"] = {
-            ["x"] = 1405.9,
-            ["y"] = 791.2,
+        GetFP = 1953,
+        Range = 0.91,
+        Coord = {
+            x = 1405.9,
+            y = 791.2,
         },
     },
     { -- Step 22
-        ["PickUp"] = {
+        PickUp = {
             48669,
         },
-        ["Coord"] = {
-            ["x"] = 1406.2,
-            ["y"] = 805.9,
+        Coord = {
+            x = 1406.2,
+            y = 805.9,
         },
     },
     { -- Step 23
@@ -6976,30 +6975,30 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 5,
-        ["Coord"] = {
-            ["x"] = 1406.2,
-            ["y"] = 805.9,
+        Gossip = 1,
+        Range = 5,
+        Coord = {
+            x = 1406.2,
+            y = 805.9,
         },
     },
     { -- Step 24
-        ["Coord"] = {
-            ["x"] = 1407,
-            ["y"] = 805.4,
+        Coord = {
+            x = 1407,
+            y = 805.4,
         },
-        ["Done"] = {
+        Done = {
             48669,
         },
     },
     { -- Step 25
-        ["PickUp"] = {
+        PickUp = {
             48573,
             48574,
         },
-        ["Coord"] = {
-            ["x"] = 1407,
-            ["y"] = 805.4,
+        Coord = {
+            x = 1407,
+            y = 805.4,
         },
     },
     { -- Step 26
@@ -7011,40 +7010,40 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48573-1"] = 152596,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [251503] = "48573-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [251503] = 5,
         },
-        ["Range"] = 32.45,
-        ["Coord"] = {
-            ["x"] = 1481.2,
-            ["y"] = 827.1,
+        Range = 32.45,
+        Coord = {
+            x = 1481.2,
+            y = 827.1,
         },
     },
     { -- Step 27
-        ["Coord"] = {
-            ["x"] = 1656.4,
-            ["y"] = 776.2,
+        Coord = {
+            x = 1656.4,
+            y = 776.2,
         },
-        ["Done"] = {
+        Done = {
             48573,
             48574,
         },
     },
     { -- Step 28
-        ["PickUp"] = {
+        PickUp = {
             48578,
             48577,
             48576,
         },
-        ["Coord"] = {
-            ["x"] = 1656,
-            ["y"] = 776.1,
+        Coord = {
+            x = 1656,
+            y = 776.1,
         },
     },
     { -- Step 29
@@ -7053,7 +7052,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48576] = {
                 1,
             },
@@ -7061,19 +7060,19 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48576-1"] = 152610,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [251559] = "48576-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [251559] = 5,
         },
-        ["Range"] = 15.15,
-        ["Coord"] = {
-            ["x"] = 1655,
-            ["y"] = 516,
+        Range = 15.15,
+        Coord = {
+            x = 1655,
+            y = 516,
         },
     },
     { -- Step 30
@@ -7085,41 +7084,41 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48576-1"] = 152610,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [251559] = "48576-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [251559] = 5,
         },
-        ["Range"] = 38.31,
-        ["Coord"] = {
-            ["x"] = 1639.4,
-            ["y"] = 516,
+        Range = 38.31,
+        Coord = {
+            x = 1639.4,
+            y = 516,
         },
     },
     { -- Step 31
-        ["UseGlider"] = 1,
-        ["Done"] = {
+        UseGlider = 1,
+        Done = {
             48578,
             48577,
             48576,
         },
-        ["Coord"] = {
-            ["x"] = 1655.7,
-            ["y"] = 775.6,
+        Coord = {
+            x = 1655.7,
+            y = 775.6,
         },
     },
     { -- Step 32
-        ["PickUp"] = {
+        PickUp = {
             48584,
             48590,
         },
-        ["Coord"] = {
-            ["x"] = 1655.4,
-            ["y"] = 775.4,
+        Coord = {
+            x = 1655.4,
+            y = 775.4,
         },
     },
     { -- Step 33
@@ -7128,7 +7127,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48584] = {
                 1,
             },
@@ -7136,19 +7135,19 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48584-1"] = 156618,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [260060] = "48584-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [260060] = 5,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1935.9,
-            ["y"] = 839.1,
+        Range = 0.75,
+        Coord = {
+            x = 1935.9,
+            y = 839.1,
         },
     },
     { -- Step 34
@@ -7157,7 +7156,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48584] = {
                 1,
             },
@@ -7165,19 +7164,19 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48584-1"] = 156618,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [260060] = "48584-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [260060] = 5,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1785.7,
-            ["y"] = 954.4,
+        Range = 0.69,
+        Coord = {
+            x = 1785.7,
+            y = 954.4,
         },
     },
     { -- Step 35
@@ -7186,7 +7185,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48584] = {
                 1,
             },
@@ -7194,19 +7193,19 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48584-1"] = 156618,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [260060] = "48584-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [260060] = 5,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1815.5,
-            ["y"] = 1028,
+        Range = 0.75,
+        Coord = {
+            x = 1815.5,
+            y = 1028,
         },
     },
     { -- Step 36
@@ -7215,50 +7214,50 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48588] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48584-1"] = 156618,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [260060] = "48584-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [260060] = 5,
         },
-        ["Range"] = 55.8,
-        ["Coord"] = {
-            ["x"] = 1932.2,
-            ["y"] = 848,
+        Range = 55.8,
+        Coord = {
+            x = 1932.2,
+            y = 848,
         },
     },
     { -- Step 37
-        ["Coord"] = {
-            ["x"] = 1935.7,
-            ["y"] = 983.6,
+        Coord = {
+            x = 1935.7,
+            y = 983.6,
         },
-        ["Done"] = {
+        Done = {
             48584,
             48590,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48588] = {
                 1,
             },
         },
     },
     { -- Step 38
-        ["PickUp"] = {
+        PickUp = {
             48591,
         },
-        ["Coord"] = {
-            ["x"] = 1935.9,
-            ["y"] = 983.9,
+        Coord = {
+            x = 1935.9,
+            y = 983.9,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48588] = {
                 1,
             },
@@ -7270,26 +7269,26 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48588] = {
                 1,
             },
         },
-        ["Range"] = 14.5,
-        ["Coord"] = {
-            ["x"] = 2079.4,
-            ["y"] = 951,
+        Range = 14.5,
+        Coord = {
+            x = 2079.4,
+            y = 951,
         },
     },
     { -- Step 40
-        ["Coord"] = {
-            ["x"] = 1935.9,
-            ["y"] = 984,
+        Coord = {
+            x = 1935.9,
+            y = 984,
         },
-        ["Done"] = {
+        Done = {
             48591,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48588] = {
                 1,
             },
@@ -7301,12 +7300,12 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 21.46,
-        ["Coord"] = {
-            ["x"] = 2008,
-            ["y"] = 1161,
+        Range = 21.46,
+        Coord = {
+            x = 2008,
+            y = 1161,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48588] = {
                 1,
             },
@@ -7318,10 +7317,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 36.67,
-        ["Coord"] = {
-            ["x"] = 1918.7,
-            ["y"] = 994.7,
+        Range = 36.67,
+        Coord = {
+            x = 1918.7,
+            y = 994.7,
         },
     },
     { -- Step 43
@@ -7330,10 +7329,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1367.2,
-            ["y"] = 1252,
+        Range = 0.69,
+        Coord = {
+            x = 1367.2,
+            y = 1252,
         },
     },
     { -- Step 44
@@ -7342,20 +7341,20 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1475.9,
-            ["y"] = 1318.5,
+        Range = 0.69,
+        Coord = {
+            x = 1475.9,
+            y = 1318.5,
         },
     },
     { -- Step 45
-        ["PickUp"] = {
+        PickUp = {
             48468,
             48473,
         },
-        ["Coord"] = {
-            ["x"] = 1394.3,
-            ["y"] = 1403.3,
+        Coord = {
+            x = 1394.3,
+            y = 1403.3,
         },
     },
     { -- Step 46
@@ -7368,39 +7367,39 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48468-1"] = 153178,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [250353] = "48468-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [250353] = 5,
         },
-        ["Range"] = 22.74,
-        ["Coord"] = {
-            ["x"] = 1339.2,
-            ["y"] = 1344,
+        Range = 22.74,
+        Coord = {
+            x = 1339.2,
+            y = 1344,
         },
     },
     { -- Step 47
-        ["Coord"] = {
-            ["x"] = 1401.9,
-            ["y"] = 1428.5,
+        Coord = {
+            x = 1401.9,
+            y = 1428.5,
         },
-        ["Done"] = {
+        Done = {
             48468,
             48473,
         },
     },
     { -- Step 48
-        ["PickUp"] = {
+        PickUp = {
             48478,
             48479,
         },
-        ["Coord"] = {
-            ["x"] = 1401.9,
-            ["y"] = 1428.5,
+        Coord = {
+            x = 1401.9,
+            y = 1428.5,
         },
     },
     { -- Step 49
@@ -7409,24 +7408,24 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48478-2"] = 154130,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [256697] = "48478-2",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [256697] = 5,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48479] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1377.8,
-            ["y"] = 1513.4,
+        Range = 0.75,
+        Coord = {
+            x = 1377.8,
+            y = 1513.4,
         },
     },
     { -- Step 50
@@ -7435,24 +7434,24 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48478-3"] = 154130,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [256697] = "48478-3",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [256697] = 5,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48479] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1434.2,
-            ["y"] = 1622.4,
+        Range = 0.75,
+        Coord = {
+            x = 1434.2,
+            y = 1622.4,
         },
     },
     { -- Step 51
@@ -7461,24 +7460,24 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48478-1"] = 154130,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [256697] = "48478-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [256697] = 5,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48479] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1293.8,
-            ["y"] = 1707,
+        Range = 0.69,
+        Coord = {
+            x = 1293.8,
+            y = 1707,
         },
     },
     { -- Step 52
@@ -7487,39 +7486,39 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 44.5,
-        ["Coord"] = {
-            ["x"] = 1323.4,
-            ["y"] = 1698.5,
+        Range = 44.5,
+        Coord = {
+            x = 1323.4,
+            y = 1698.5,
         },
     },
     { -- Step 53
-        ["Done"] = {
+        Done = {
             48479,
             48478,
         },
-        ["Coord"] = {
-            ["x"] = 1400,
-            ["y"] = 1428.8,
+        Coord = {
+            x = 1400,
+            y = 1428.8,
         },
     },
     { -- Step 54
-        ["PickUp"] = {
+        PickUp = {
             48480,
         },
-        ["Coord"] = {
-            ["x"] = 1401,
-            ["y"] = 1428.8,
+        Coord = {
+            x = 1401,
+            y = 1428.8,
         },
     },
     { -- Step 55
-        ["Waypoint"] = 48480,
-        ["Range"] = 11.67,
-        ["Coord"] = {
-            ["x"] = 1319.2,
-            ["y"] = 1510.8,
+        Waypoint = 48480,
+        Range = 11.67,
+        Coord = {
+            x = 1319.2,
+            y = 1510.8,
         },
-        ["LeaveQuest"] = 52210,
+        LeaveQuest = 52210,
     },
     { -- Step 56
         Qpart = {
@@ -7527,19 +7526,19 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 10.59,
-        ["Coord"] = {
-            ["x"] = 1231.7,
-            ["y"] = 1515,
+        Range = 10.59,
+        Coord = {
+            x = 1231.7,
+            y = 1515,
         },
     },
     { -- Step 57
-        ["Done"] = {
+        Done = {
             48480,
         },
-        ["Coord"] = {
-            ["x"] = 1402.8,
-            ["y"] = 1429,
+        Coord = {
+            x = 1402.8,
+            y = 1429,
         },
     },
     { -- Step 58
@@ -7548,28 +7547,28 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1574,
-            ["y"] = 1476.7,
+        Range = 0.75,
+        Coord = {
+            x = 1574,
+            y = 1476.7,
         },
     },
     { -- Step 59
-        ["Done"] = {
+        Done = {
             47241,
         },
-        ["Coord"] = {
-            ["x"] = 1523,
-            ["y"] = 1638.5,
+        Coord = {
+            x = 1523,
+            y = 1638.5,
         },
     },
     { -- Step 60
-        ["PickUp"] = {
+        PickUp = {
             47244,
         },
-        ["Coord"] = {
-            ["x"] = 1523,
-            ["y"] = 1638.5,
+        Coord = {
+            x = 1523,
+            y = 1638.5,
         },
     },
     { -- Step 61
@@ -7578,36 +7577,36 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1422.5,
-            ["y"] = 1768,
+        Range = 0.75,
+        Coord = {
+            x = 1422.5,
+            y = 1768,
         },
     },
     { -- Step 62
-        ["Done"] = {
+        Done = {
             47244,
         },
-        ["Coord"] = {
-            ["x"] = 1370.5,
-            ["y"] = 1991.7,
+        Coord = {
+            x = 1370.5,
+            y = 1991.7,
         },
     },
     { -- Step 63
-        ["PickUp"] = {
+        PickUp = {
             49278,
         },
-        ["Coord"] = {
-            ["x"] = 1370.5,
-            ["y"] = 1991.7,
+        Coord = {
+            x = 1370.5,
+            y = 1991.7,
         },
     },
     { -- Step 64
-        ["GetFP"] = 1954,
-        ["Range"] = 5.91,
-        ["Coord"] = {
-            ["x"] = 1336,
-            ["y"] = 2028,
+        GetFP = 1954,
+        Range = 5.91,
+        Coord = {
+            x = 1336,
+            y = 2028,
         },
     },
     { -- Step 65
@@ -7616,29 +7615,29 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 38.31,
-        ["Coord"] = {
-            ["x"] = 1336,
-            ["y"] = 2028,
+        Range = 38.31,
+        Coord = {
+            x = 1336,
+            y = 2028,
         },
     },
     { -- Step 66
-        ["Done"] = {
+        Done = {
             49278,
         },
-        ["Coord"] = {
-            ["x"] = 1370,
-            ["y"] = 1992,
+        Coord = {
+            x = 1370,
+            y = 1992,
         },
     },
     { -- Step 67
-        ["PickUp"] = {
+        PickUp = {
             49440,
             47868,
         },
-        ["Coord"] = {
-            ["x"] = 1366.7,
-            ["y"] = 1990.8,
+        Coord = {
+            x = 1366.7,
+            y = 1990.8,
         },
     },
     { -- Step 68
@@ -7647,11 +7646,11 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 9.46,
-        ["Coord"] = {
-            ["x"] = 1367.4,
-            ["y"] = 1997,
+        Gossip = 1,
+        Range = 9.46,
+        Coord = {
+            x = 1367.4,
+            y = 1997,
         },
     },
     { -- Step 69
@@ -7660,38 +7659,38 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1365.7,
-            ["y"] = 1991.5,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            x = 1365.7,
+            y = 1991.5,
         },
     },
     { -- Step 70
-        ["Coord"] = {
-            ["x"] = 1364.5,
-            ["y"] = 1991,
+        Coord = {
+            x = 1364.5,
+            y = 1991,
         },
-        ["Done"] = {
+        Done = {
             49440,
         },
     },
     { -- Step 71
-        ["PickUp"] = {
+        PickUp = {
             48699,
         },
-        ["Coord"] = {
-            ["x"] = 1364.5,
-            ["y"] = 1991,
+        Coord = {
+            x = 1364.5,
+            y = 1991,
         },
     },
     { -- Step 72
-        ["PickUp"] = {
+        PickUp = {
             48854,
         },
-        ["Coord"] = {
-            ["x"] = 1820.3,
-            ["y"] = 1700.3,
+        Coord = {
+            x = 1820.3,
+            y = 1700.3,
         },
     },
     { -- Step 73
@@ -7700,11 +7699,11 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1820.3,
-            ["y"] = 1700.3,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 1820.3,
+            y = 1700.3,
         },
     },
     { -- Step 74
@@ -7713,29 +7712,29 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1819.2,
-            ["y"] = 1702.8,
+        Range = 0.75,
+        Coord = {
+            x = 1819.2,
+            y = 1702.8,
         },
     },
     { -- Step 75
-        ["Coord"] = {
-            ["x"] = 1816,
-            ["y"] = 1703.7,
+        Coord = {
+            x = 1816,
+            y = 1703.7,
         },
-        ["Done"] = {
+        Done = {
             48854,
         },
     },
     { -- Step 76
-        ["PickUp"] = {
+        PickUp = {
             48823,
             48825,
         },
-        ["Coord"] = {
-            ["x"] = 1819.2,
-            ["y"] = 1703.9,
+        Coord = {
+            x = 1819.2,
+            y = 1703.9,
         },
     },
     { -- Step 77
@@ -7744,11 +7743,11 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1816,
-            ["y"] = 1703.4,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            x = 1816,
+            y = 1703.4,
         },
     },
     { -- Step 78
@@ -7757,7 +7756,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48823] = {
                 2,
             },
@@ -7765,19 +7764,19 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48823-2"] = 152727,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [252718] = "48823-2",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [252718] = 5,
         },
-        ["Range"] = 13.42,
-        ["Coord"] = {
-            ["x"] = 1709.9,
-            ["y"] = 1468.4,
+        Range = 13.42,
+        Coord = {
+            x = 1709.9,
+            y = 1468.4,
         },
     },
     { -- Step 79
@@ -7786,45 +7785,45 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48852] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48823-2"] = 152727,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [252718] = "48823-2",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [252718] = 5,
         },
-        ["Range"] = 25.48,
-        ["Coord"] = {
-            ["x"] = 1714.3,
-            ["y"] = 1480,
+        Range = 25.48,
+        Coord = {
+            x = 1714.3,
+            y = 1480,
         },
     },
     { -- Step 80
-        ["Done"] = {
+        Done = {
             48823,
             48825,
         },
-        ["Coord"] = {
-            ["x"] = 1815.7,
-            ["y"] = 1703.7,
+        Coord = {
+            x = 1815.7,
+            y = 1703.7,
         },
     },
     { -- Step 81
-        ["PickUp"] = {
+        PickUp = {
             48857,
             48856,
             48855,
         },
-        ["Coord"] = {
-            ["x"] = 1818.5,
-            ["y"] = 1704,
+        Coord = {
+            x = 1818.5,
+            y = 1704,
         },
     },
     { -- Step 82
@@ -7833,11 +7832,11 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1822.3,
-            ["y"] = 1705.5,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 1822.3,
+            y = 1705.5,
         },
     },
     { -- Step 83
@@ -7846,7 +7845,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48856] = {
                 1,
             },
@@ -7854,13 +7853,13 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48855-1"] = 153483,
         },
-        ["Range"] = 6.59,
-        ["Coord"] = {
-            ["x"] = 1899.9,
-            ["y"] = 1528.5,
+        Range = 6.59,
+        Coord = {
+            x = 1899.9,
+            y = 1528.5,
         },
     },
     { -- Step 84
@@ -7872,33 +7871,33 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48855-1"] = 153483,
         },
-        ["Range"] = 31.98,
-        ["Coord"] = {
-            ["x"] = 1892.2,
-            ["y"] = 1523.5,
+        Range = 31.98,
+        Coord = {
+            x = 1892.2,
+            y = 1523.5,
         },
     },
     { -- Step 85
-        ["Coord"] = {
-            ["x"] = 1819.9,
-            ["y"] = 1702.2,
+        Coord = {
+            x = 1819.9,
+            y = 1702.2,
         },
-        ["Done"] = {
+        Done = {
             48857,
             48856,
             48855,
         },
     },
     { -- Step 86
-        ["PickUp"] = {
+        PickUp = {
             48869,
         },
-        ["Coord"] = {
-            ["x"] = 1819.9,
-            ["y"] = 1702.2,
+        Coord = {
+            x = 1819.9,
+            y = 1702.2,
         },
     },
     { -- Step 87
@@ -7907,15 +7906,15 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48852] = {
                 1,
             },
         },
-        ["Range"] = 8.15,
-        ["Coord"] = {
-            ["x"] = 1792.7,
-            ["y"] = 1506.8,
+        Range = 8.15,
+        Coord = {
+            x = 1792.7,
+            y = 1506.8,
         },
     },
     { -- Step 88
@@ -7924,48 +7923,48 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 28.78,
-        ["Coord"] = {
-            ["x"] = 1801.5,
-            ["y"] = 1507.5,
+        Range = 28.78,
+        Coord = {
+            x = 1801.5,
+            y = 1507.5,
         },
     },
     { -- Step 89
-        ["Coord"] = {
-            ["x"] = 1819.5,
-            ["y"] = 1702,
+        Coord = {
+            x = 1819.5,
+            y = 1702,
         },
-        ["Done"] = {
+        Done = {
             48869,
         },
     },
     { -- Step 90
-        ["PickUp"] = {
+        PickUp = {
             50933,
         },
-        ["Coord"] = {
-            ["x"] = 1910.8,
-            ["y"] = 1705.3,
+        Coord = {
+            x = 1910.8,
+            y = 1705.3,
         },
     },
     { -- Step 91
-        ["Done"] = {
+        Done = {
             50933,
         },
-        ["Coord"] = {
-            ["x"] = 2180.1,
-            ["y"] = 1664.4,
+        Coord = {
+            x = 2180.1,
+            y = 1664.4,
         },
     },
     { -- Step 92
-        ["PickUp"] = {
+        PickUp = {
             49777,
             49776,
             49774,
         },
-        ["Coord"] = {
-            ["x"] = 2179.3,
-            ["y"] = 1665.8,
+        Coord = {
+            x = 2179.3,
+            y = 1665.8,
         },
     },
     { -- Step 93
@@ -7974,8 +7973,8 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Fillers"] = {
+        Gossip = 1,
+        Fillers = {
             [49776] = {
                 1,
             },
@@ -7983,10 +7982,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 2314.1,
-            ["y"] = 1600.3,
+        Range = 0.69,
+        Coord = {
+            x = 2314.1,
+            y = 1600.3,
         },
     },
     { -- Step 94
@@ -7995,8 +7994,8 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Gossip"] = 1,
-        ["Fillers"] = {
+        Gossip = 1,
+        Fillers = {
             [49776] = {
                 1,
             },
@@ -8004,10 +8003,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 2326.6,
-            ["y"] = 1761.9,
+        Range = 0.69,
+        Coord = {
+            x = 2326.6,
+            y = 1761.9,
         },
     },
     { -- Step 95
@@ -8016,8 +8015,8 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Fillers"] = {
+        Gossip = 1,
+        Fillers = {
             [49776] = {
                 1,
             },
@@ -8025,10 +8024,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 2207.5,
-            ["y"] = 1858,
+        Range = 0.75,
+        Coord = {
+            x = 2207.5,
+            y = 1858,
         },
     },
     { -- Step 96
@@ -8040,30 +8039,30 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 41.99,
-        ["Coord"] = {
-            ["x"] = 2295,
-            ["y"] = 1784,
+        Range = 41.99,
+        Coord = {
+            x = 2295,
+            y = 1784,
         },
     },
     { -- Step 97
-        ["Coord"] = {
-            ["x"] = 2179.1,
-            ["y"] = 1665.5,
+        Coord = {
+            x = 2179.1,
+            y = 1665.5,
         },
-        ["Done"] = {
+        Done = {
             49774,
             49776,
             49777,
         },
     },
     { -- Step 98
-        ["PickUp"] = {
+        PickUp = {
             49778,
         },
-        ["Coord"] = {
-            ["x"] = 2179.1,
-            ["y"] = 1665.5,
+        Coord = {
+            x = 2179.1,
+            y = 1665.5,
         },
     },
     { -- Step 99
@@ -8072,30 +8071,30 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 2178.3,
-            ["y"] = 1664.3,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 2178.3,
+            y = 1664.3,
         },
     },
     { -- Step 100
-        ["Coord"] = {
-            ["x"] = 2180.1,
-            ["y"] = 1667.2,
+        Coord = {
+            x = 2180.1,
+            y = 1667.2,
         },
-        ["Done"] = {
+        Done = {
             49778,
         },
     },
     { -- Step 101
-        ["PickUp"] = {
+        PickUp = {
             49780,
             49779,
         },
-        ["Coord"] = {
-            ["x"] = 2179.3,
-            ["y"] = 1665.9,
+        Coord = {
+            x = 2179.3,
+            y = 1665.9,
         },
     },
     { -- Step 102
@@ -8107,32 +8106,32 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49780-1"] = 156480,
         },
-        ["Range"] = 21.41,
-        ["Coord"] = {
-            ["x"] = 2162.4,
-            ["y"] = 1690.8,
+        Range = 21.41,
+        Coord = {
+            x = 2162.4,
+            y = 1690.8,
         },
     },
     { -- Step 103
-        ["Done"] = {
+        Done = {
             49780,
             49779,
         },
-        ["Coord"] = {
-            ["x"] = 2178.6,
-            ["y"] = 1666,
+        Coord = {
+            x = 2178.6,
+            y = 1666,
         },
     },
     { -- Step 104
-        ["PickUp"] = {
+        PickUp = {
             49781,
         },
-        ["Coord"] = {
-            ["x"] = 2178.6,
-            ["y"] = 1666,
+        Coord = {
+            x = 2178.6,
+            y = 1666,
         },
     },
     { -- Step 105
@@ -8141,28 +8140,28 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 6.37,
-        ["Coord"] = {
-            ["x"] = 2176.1,
-            ["y"] = 1658.7,
+        Range = 6.37,
+        Coord = {
+            x = 2176.1,
+            y = 1658.7,
         },
     },
     { -- Step 106
-        ["Done"] = {
+        Done = {
             49781,
         },
-        ["Coord"] = {
-            ["x"] = 1957.5,
-            ["y"] = 1704.7,
+        Coord = {
+            x = 1957.5,
+            y = 1704.7,
         },
     },
     { -- Step 107
-        ["PickUp"] = {
+        PickUp = {
             48492,
         },
-        ["Coord"] = {
-            ["x"] = 1943,
-            ["y"] = 1995.2,
+        Coord = {
+            x = 1943,
+            y = 1995.2,
         },
     },
     { -- Step 108
@@ -8171,10 +8170,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1943.3,
-            ["y"] = 1995.5,
+        Range = 0.69,
+        Coord = {
+            x = 1943.3,
+            y = 1995.5,
         },
     },
     { -- Step 109
@@ -8183,32 +8182,32 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1944.7,
-            ["y"] = 1995,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            x = 1944.7,
+            y = 1995,
         },
     },
     { -- Step 110
 
-        ["Coord"] = {
-            ["x"] = 1943.5,
-            ["y"] = 1994.3,
+        Coord = {
+            x = 1943.5,
+            y = 1994.3,
         },
-        ["Done"] = {
+        Done = {
             48492,
         },
     },
     { -- Step 111
 
-        ["PickUp"] = {
+        PickUp = {
             48496,
             48497,
         },
-        ["Coord"] = {
-            ["x"] = 1943.5,
-            ["y"] = 1994.3,
+        Coord = {
+            x = 1943.5,
+            y = 1994.3,
         },
     },
     { -- Step 112
@@ -8218,15 +8217,15 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48497] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 2007.4,
-            ["y"] = 2083.6,
+        Range = 0.69,
+        Coord = {
+            x = 2007.4,
+            y = 2083.6,
         },
     },
     { -- Step 113
@@ -8236,15 +8235,15 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48497] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 2072.6,
-            ["y"] = 2110.6,
+        Range = 0.75,
+        Coord = {
+            x = 2072.6,
+            y = 2110.6,
         },
     },
     { -- Step 114
@@ -8254,34 +8253,34 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 4,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48497] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 2049.6,
-            ["y"] = 2199.5,
+        Range = 0.69,
+        Coord = {
+            x = 2049.6,
+            y = 2199.5,
         },
     },
     { -- Step 115
 
-        ["PickUp"] = {
+        PickUp = {
             48498,
         },
-        ["Coord"] = {
-            ["x"] = 2050.3,
-            ["y"] = 2198.4,
+        Coord = {
+            x = 2050.3,
+            y = 2198.4,
         },
     },
     { -- Step 116
 
-        ["Waypoint"] = 48498,
-        ["Range"] = 6.94,
-        ["Coord"] = {
-            ["x"] = 2078,
-            ["y"] = 2191.4,
+        Waypoint = 48498,
+        Range = 6.94,
+        Coord = {
+            x = 2078,
+            y = 2191.4,
         },
     },
     { -- Step 117
@@ -8291,15 +8290,15 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48497] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 2109.6,
-            ["y"] = 2207.5,
+        Range = 0.69,
+        Coord = {
+            x = 2109.6,
+            y = 2207.5,
         },
     },
     { -- Step 118
@@ -8309,15 +8308,15 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48497] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 2005.7,
-            ["y"] = 2177.3,
+        Range = 0.75,
+        Coord = {
+            x = 2005.7,
+            y = 2177.3,
         },
     },
     { -- Step 119
@@ -8327,32 +8326,32 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 36.75,
-        ["Coord"] = {
-            ["x"] = 2013,
-            ["y"] = 2175.1,
+        Range = 36.75,
+        Coord = {
+            x = 2013,
+            y = 2175.1,
         },
     },
     { -- Step 120
 
-        ["Done"] = {
+        Done = {
             48497,
             48496,
             48498,
         },
-        ["Coord"] = {
-            ["x"] = 2088.5,
-            ["y"] = 2266.1,
+        Coord = {
+            x = 2088.5,
+            y = 2266.1,
         },
     },
     { -- Step 121
 
-        ["PickUp"] = {
+        PickUp = {
             49479,
         },
-        ["Coord"] = {
-            ["x"] = 2088.5,
-            ["y"] = 2266.1,
+        Coord = {
+            x = 2088.5,
+            y = 2266.1,
         },
     },
     { -- Step 122
@@ -8362,69 +8361,69 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 36.75,
-        ["Coord"] = {
-            ["x"] = 2089.1,
-            ["y"] = 2269.8,
+        Gossip = 1,
+        Range = 36.75,
+        Coord = {
+            x = 2089.1,
+            y = 2269.8,
         },
     },
     { -- Step 123
 
-        ["Done"] = {
+        Done = {
             49479,
         },
-        ["Coord"] = {
-            ["x"] = 2089.4,
-            ["y"] = 2266.5,
+        Coord = {
+            x = 2089.4,
+            y = 2266.5,
         },
     },
     { -- Step 124
 
-        ["PickUp"] = {
+        PickUp = {
             48499,
         },
-        ["Coord"] = {
-            ["x"] = 2089.3,
-            ["y"] = 2267,
+        Coord = {
+            x = 2089.3,
+            y = 2267,
         },
     },
     { -- Step 125
-        ["ExtraActionB"] = 1,
+        ExtraActionB = 1,
 
         Qpart = {
             [48499] = {
                 1,
             },
         },
-        ["Range"] = 16.62,
-        ["Coord"] = {
-            ["x"] = 2058.3,
-            ["y"] = 2242.6,
+        Range = 16.62,
+        Coord = {
+            x = 2058.3,
+            y = 2242.6,
         },
     },
     { -- Step 126
-        ["ExtraActionB"] = 1,
+        ExtraActionB = 1,
 
         Qpart = {
             [48499] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 2012,
-            ["y"] = 2144.9,
+        Range = 0.69,
+        Coord = {
+            x = 2012,
+            y = 2144.9,
         },
     },
     { -- Step 127
 
-        ["Done"] = {
+        Done = {
             48499,
         },
-        ["Coord"] = {
-            ["x"] = 2089.1,
-            ["y"] = 2266,
+        Coord = {
+            x = 2089.1,
+            y = 2266,
         },
     },
     { -- Step 128
@@ -8433,38 +8432,38 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1746.2,
-            ["y"] = 1910,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 1746.2,
+            y = 1910,
         },
     },
     { -- Step 129
-        ["Done"] = {
+        Done = {
             48699,
         },
-        ["Coord"] = {
-            ["x"] = 1694.9,
-            ["y"] = 1923,
+        Coord = {
+            x = 1694.9,
+            y = 1923,
         },
     },
     { -- Step 130
-        ["PickUp"] = {
+        PickUp = {
             48801,
             48890,
         },
-        ["Coord"] = {
-            ["x"] = 1694.9,
-            ["y"] = 1923,
+        Coord = {
+            x = 1694.9,
+            y = 1923,
         },
     },
     { -- Step 131
-        ["Waypoint"] = 48801,
-        ["Range"] = 4.5,
-        ["Coord"] = {
-            ["x"] = 1704.5,
-            ["y"] = 1909,
+        Waypoint = 48801,
+        Range = 4.5,
+        Coord = {
+            x = 1704.5,
+            y = 1909,
         },
     },
     { -- Step 132
@@ -8473,11 +8472,11 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.97,
-        ["Coord"] = {
-            ["x"] = 1592.5,
-            ["y"] = 1887,
+        Gossip = 1,
+        Range = 0.97,
+        Coord = {
+            x = 1592.5,
+            y = 1887,
         },
     },
     { -- Step 133
@@ -8486,16 +8485,16 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Gossip"] = 1,
-        ["Fillers"] = {
+        Gossip = 1,
+        Fillers = {
             [48890] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1809.8,
-            ["y"] = 1786.4,
+        Range = 0.75,
+        Coord = {
+            x = 1809.8,
+            y = 1786.4,
         },
     },
     { -- Step 134
@@ -8504,16 +8503,16 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Fillers"] = {
+        Gossip = 1,
+        Fillers = {
             [48890] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1789.7,
-            ["y"] = 2010,
+        Range = 0.75,
+        Coord = {
+            x = 1789.7,
+            y = 2010,
         },
     },
     { -- Step 135
@@ -8522,30 +8521,30 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 31.81,
-        ["Coord"] = {
-            ["x"] = 1764.4,
-            ["y"] = 1979.5,
+        Range = 31.81,
+        Coord = {
+            x = 1764.4,
+            y = 1979.5,
         },
     },
     { -- Step 136
-        ["Done"] = {
+        Done = {
             48890,
             48801,
         },
-        ["Coord"] = {
-            ["x"] = 1695.2,
-            ["y"] = 1923.4,
+        Coord = {
+            x = 1695.2,
+            y = 1923.4,
         },
     },
     { -- Step 137
-        ["PickUp"] = {
+        PickUp = {
             49078,
             48800,
         },
-        ["Coord"] = {
-            ["x"] = 1694.4,
-            ["y"] = 1924,
+        Coord = {
+            x = 1694.4,
+            y = 1924,
         },
     },
     { -- Step 138
@@ -8554,7 +8553,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49078] = {
                 1,
             },
@@ -8562,19 +8561,19 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49078-1"] = 153012,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [254104] = "49078-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [254104] = 2,
         },
-        ["Range"] = 4.35,
-        ["Coord"] = {
-            ["x"] = 1679.5,
-            ["y"] = 1801,
+        Range = 4.35,
+        Coord = {
+            x = 1679.5,
+            y = 1801,
         },
     },
     { -- Step 139
@@ -8583,7 +8582,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49078] = {
                 1,
             },
@@ -8591,19 +8590,19 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49078-1"] = 153012,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [254104] = "49078-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [254104] = 2,
         },
-        ["Range"] = 3.3,
-        ["Coord"] = {
-            ["x"] = 1732.5,
-            ["y"] = 1797.8,
+        Range = 3.3,
+        Coord = {
+            x = 1732.5,
+            y = 1797.8,
         },
     },
     { -- Step 140
@@ -8612,7 +8611,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49078] = {
                 1,
             },
@@ -8620,19 +8619,19 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49078-1"] = 153012,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [254104] = "49078-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [254104] = 2,
         },
-        ["Range"] = 4.45,
-        ["Coord"] = {
-            ["x"] = 1822.9,
-            ["y"] = 1944.2,
+        Range = 4.45,
+        Coord = {
+            x = 1822.9,
+            y = 1944.2,
         },
     },
     { -- Step 141
@@ -8641,43 +8640,43 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49406] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49078-1"] = 153012,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [254104] = "49078-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [254104] = 2,
         },
-        ["Range"] = 9.51,
-        ["Coord"] = {
-            ["x"] = 1813.9,
-            ["y"] = 1928.8,
+        Range = 9.51,
+        Coord = {
+            x = 1813.9,
+            y = 1928.8,
         },
     },
     { -- Step 142
-        ["Done"] = {
+        Done = {
             48800,
             49078,
         },
-        ["Coord"] = {
-            ["x"] = 1694,
-            ["y"] = 1923.4,
+        Coord = {
+            x = 1694,
+            y = 1923.4,
         },
     },
     { -- Step 143
-        ["PickUp"] = {
+        PickUp = {
             49079,
         },
-        ["Coord"] = {
-            ["x"] = 1694,
-            ["y"] = 1923.4,
+        Coord = {
+            x = 1694,
+            y = 1923.4,
         },
     },
     { -- Step 144
@@ -8686,11 +8685,11 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1758.3,
-            ["y"] = 1904.4,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 1758.3,
+            y = 1904.4,
         },
     },
     { -- Step 145
@@ -8699,59 +8698,59 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Range"] = 51.91,
-        ["Coord"] = {
-            ["x"] = 1810.5,
-            ["y"] = 1833.4,
+        Range = 51.91,
+        Coord = {
+            x = 1810.5,
+            y = 1833.4,
         },
     },
     { -- Step 146
-        ["Done"] = {
+        Done = {
             49079,
         },
-        ["Coord"] = {
-            ["x"] = 1805.5,
-            ["y"] = 1888.5,
+        Coord = {
+            x = 1805.5,
+            y = 1888.5,
         },
     },
     { -- Step 147
-        ["PickUp"] = {
+        PickUp = {
             49081,
         },
-        ["Coord"] = {
-            ["x"] = 1805.5,
-            ["y"] = 1888.4,
+        Coord = {
+            x = 1805.5,
+            y = 1888.4,
         },
     },
     { -- Step 148
-        ["Bloodlust"] = 1,
+        Bloodlust = 1,
         Qpart = {
             [49081] = {
                 1,
             },
         },
-        ["Range"] = 7.51,
-        ["Coord"] = {
-            ["x"] = 1891.5,
-            ["y"] = 1900.5,
+        Range = 7.51,
+        Coord = {
+            x = 1891.5,
+            y = 1900.5,
         },
     },
     { -- Step 149
-        ["Done"] = {
+        Done = {
             49081,
         },
-        ["Coord"] = {
-            ["x"] = 1805.7,
-            ["y"] = 1888.4,
+        Coord = {
+            x = 1805.7,
+            y = 1888.4,
         },
     },
     { -- Step 150
-        ["PickUp"] = {
+        PickUp = {
             49082,
         },
-        ["Coord"] = {
-            ["x"] = 1805.7,
-            ["y"] = 1888.4,
+        Coord = {
+            x = 1805.7,
+            y = 1888.4,
         },
     },
     { -- Step 151
@@ -8760,10 +8759,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1803.9,
-            ["y"] = 1891.9,
+        Range = 0.75,
+        Coord = {
+            x = 1803.9,
+            y = 1891.9,
         },
     },
     { -- Step 152
@@ -8772,10 +8771,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 40.16,
-        ["Coord"] = {
-            ["x"] = 1644.3,
-            ["y"] = 1857,
+        Range = 40.16,
+        Coord = {
+            x = 1644.3,
+            y = 1857,
         },
     },
     { -- Step 153
@@ -8784,38 +8783,38 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1364.5,
-            ["y"] = 1991.9,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 1364.5,
+            y = 1991.9,
         },
     },
     { -- Step 154
-        ["Done"] = {
+        Done = {
             49082,
         },
-        ["Coord"] = {
-            ["x"] = 1366.2,
-            ["y"] = 1991.3,
+        Coord = {
+            x = 1366.2,
+            y = 1991.3,
         },
     },
     { -- Step 155
-        ["Done"] = {
+        Done = {
             47868,
         },
-        ["Coord"] = {
-            ["x"] = 1367.4,
-            ["y"] = 2386.1,
+        Coord = {
+            x = 1367.4,
+            y = 2386.1,
         },
     },
     { -- Step 156
-        ["PickUp"] = {
+        PickUp = {
             47880,
         },
-        ["Coord"] = {
-            ["x"] = 1367.4,
-            ["y"] = 2385.3,
+        Coord = {
+            x = 1367.4,
+            y = 2385.3,
         },
     },
     { -- Step 157
@@ -8824,10 +8823,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 11.55,
-        ["Coord"] = {
-            ["x"] = 1367,
-            ["y"] = 2385.3,
+        Range = 11.55,
+        Coord = {
+            x = 1367,
+            y = 2385.3,
         },
     },
     { -- Step 158
@@ -8836,57 +8835,57 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1367,
-            ["y"] = 2411.6,
+        Range = 0.69,
+        Coord = {
+            x = 1367,
+            y = 2411.6,
         },
     },
     { -- Step 159
-        ["Waypoint"] = 47880,
-        ["Range"] = 10.08,
-        ["Coord"] = {
-            ["x"] = 1371,
-            ["y"] = 2503.1,
+        Waypoint = 47880,
+        Range = 10.08,
+        Coord = {
+            x = 1371,
+            y = 2503.1,
         },
     },
     { -- Step 160
-        ["Done"] = {
+        Done = {
             47880,
         },
-        ["Coord"] = {
-            ["x"] = 1368,
-            ["y"] = 2663.1,
+        Coord = {
+            x = 1368,
+            y = 2663.1,
         },
     },
     { -- Step 161
-        ["PickUp"] = {
+        PickUp = {
             47491,
             47247,
             49348,
         },
-        ["Coord"] = {
-            ["x"] = 1367.5,
-            ["y"] = 2663.1,
+        Coord = {
+            x = 1367.5,
+            y = 2663.1,
         },
     },
     { -- Step 162
-        ["Waypoint"] = 49348,
-        ["Range"] = 13.95,
-        ["Coord"] = {
-            ["x"] = 1368.4,
-            ["y"] = 2574.4,
+        Waypoint = 49348,
+        Range = 13.95,
+        Coord = {
+            x = 1368.4,
+            y = 2574.4,
         },
     },
     { -- Step 163
-        ["PickUp"] = {
+        PickUp = {
             47248,
         },
-        ["Coord"] = {
-            ["x"] = 1521.7,
-            ["y"] = 2568.9,
+        Coord = {
+            x = 1521.7,
+            y = 2568.9,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47491] = {
                 1,
             },
@@ -8901,7 +8900,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47491] = {
                 1,
             },
@@ -8909,10 +8908,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 9.61,
-        ["Coord"] = {
-            ["x"] = 1549.5,
-            ["y"] = 2482.6,
+        Range = 9.61,
+        Coord = {
+            x = 1549.5,
+            y = 2482.6,
         },
     },
     { -- Step 165
@@ -8921,7 +8920,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49348] = {
                 1,
             },
@@ -8932,21 +8931,21 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 9.81,
-        ["Coord"] = {
-            ["x"] = 1162,
-            ["y"] = 2476.5,
+        Range = 9.81,
+        Coord = {
+            x = 1162,
+            y = 2476.5,
         },
     },
     { -- Step 166
-        ["PickUp"] = {
+        PickUp = {
             49432,
         },
-        ["Coord"] = {
-            ["x"] = 1209.5,
-            ["y"] = 2426.8,
+        Coord = {
+            x = 1209.5,
+            y = 2426.8,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49348] = {
                 1,
             },
@@ -8964,12 +8963,12 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 102.71,
-        ["Coord"] = {
-            ["x"] = 1209.5,
-            ["y"] = 2426.8,
+        Range = 102.71,
+        Coord = {
+            x = 1209.5,
+            y = 2426.8,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47491] = {
                 1,
             },
@@ -8979,13 +8978,13 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 168
-        ["Range"] = 3.35,
-        ["Waypoint"] = 49432,
-        ["Coord"] = {
-            ["x"] = 1367.5,
-            ["y"] = 2423.9,
+        Range = 3.35,
+        Waypoint = 49432,
+        Coord = {
+            x = 1367.5,
+            y = 2423.9,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49348] = {
                 1,
             },
@@ -9003,7 +9002,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47491] = {
                 1,
             },
@@ -9014,10 +9013,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1367.7,
-            ["y"] = 2303.6,
+        Range = 0.69,
+        Coord = {
+            x = 1367.7,
+            y = 2303.6,
         },
     },
     { -- Step 170
@@ -9026,20 +9025,20 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Range"] = 4.27,
-        ["Coord"] = {
-            ["x"] = 1365,
-            ["y"] = 2305.4,
+        Range = 4.27,
+        Coord = {
+            x = 1365,
+            y = 2305.4,
         },
     },
     { -- Step 171
-        ["Range"] = 14.25,
-        ["Waypoint"] = 47248,
-        ["Coord"] = {
-            ["x"] = 1367,
-            ["y"] = 2428.9,
+        Range = 14.25,
+        Waypoint = 47248,
+        Coord = {
+            x = 1367,
+            y = 2428.9,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49348] = {
                 1,
             },
@@ -9052,13 +9051,13 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 172
-        ["Range"] = 7.71,
-        ["Waypoint"] = 47248,
-        ["Coord"] = {
-            ["x"] = 1326.5,
-            ["y"] = 2517,
+        Range = 7.71,
+        Waypoint = 47248,
+        Coord = {
+            x = 1326.5,
+            y = 2517,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49348] = {
                 1,
             },
@@ -9076,7 +9075,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47491] = {
                 1,
             },
@@ -9087,20 +9086,20 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1326,
-            ["y"] = 2598.6,
+        Range = 0.69,
+        Coord = {
+            x = 1326,
+            y = 2598.6,
         },
     },
     { -- Step 174
-        ["Range"] = 6.77,
-        ["Waypoint"] = 47248,
-        ["Coord"] = {
-            ["x"] = 1326.5,
-            ["y"] = 2518.6,
+        Range = 6.77,
+        Waypoint = 47248,
+        Coord = {
+            x = 1326.5,
+            y = 2518.6,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49348] = {
                 1,
             },
@@ -9113,14 +9112,14 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 175
-        ["Coord"] = {
-            ["x"] = 1521.3,
-            ["y"] = 2568.5,
+        Coord = {
+            x = 1521.3,
+            y = 2568.5,
         },
-        ["Done"] = {
+        Done = {
             47248,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49348] = {
                 1,
             },
@@ -9138,15 +9137,15 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48934] = {
                 1,
             },
         },
-        ["Range"] = 34.45,
-        ["Coord"] = {
-            ["x"] = 1518.5,
-            ["y"] = 2549.9,
+        Range = 34.45,
+        Coord = {
+            x = 1518.5,
+            y = 2549.9,
         },
     },
     { -- Step 177
@@ -9158,26 +9157,26 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 102.71,
-        ["Coord"] = {
-            ["x"] = 1210.9,
-            ["y"] = 2481.9,
+        Range = 102.71,
+        Coord = {
+            x = 1210.9,
+            y = 2481.9,
         },
     },
     { -- Step 178
-        ["Range"] = 8.99,
-        ["Waypoint"] = 49348,
-        ["Coord"] = {
-            ["x"] = 1367.7,
-            ["y"] = 2588.1,
+        Range = 8.99,
+        Waypoint = 49348,
+        Coord = {
+            x = 1367.7,
+            y = 2588.1,
         },
     },
     { -- Step 179
-        ["Coord"] = {
-            ["x"] = 1368.4,
-            ["y"] = 2662,
+        Coord = {
+            x = 1368.4,
+            y = 2662,
         },
-        ["Done"] = {
+        Done = {
             49348,
             49432,
             47247,
@@ -9185,12 +9184,12 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
     },
     { -- Step 180
-        ["PickUp"] = {
+        PickUp = {
             47249,
         },
-        ["Coord"] = {
-            ["x"] = 1368.4,
-            ["y"] = 2662,
+        Coord = {
+            x = 1368.4,
+            y = 2662,
         },
     },
     { -- Step 181
@@ -9199,11 +9198,11 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1367,
-            ["y"] = 2475.5,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            x = 1367,
+            y = 2475.5,
         },
     },
     { -- Step 182
@@ -9212,70 +9211,70 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Range"] = 5.63,
-        ["Coord"] = {
-            ["x"] = 1369.9,
-            ["y"] = 2470.9,
+        Range = 5.63,
+        Coord = {
+            x = 1369.9,
+            y = 2470.9,
         },
     },
     { -- Step 183
-        ["Coord"] = {
-            ["x"] = 1368.7,
-            ["y"] = 2469.6,
+        Coord = {
+            x = 1368.7,
+            y = 2469.6,
         },
-        ["Done"] = {
+        Done = {
             47249,
         },
     },
     { -- Step 184
-        ["PickUp"] = {
+        PickUp = {
             47250,
         },
-        ["Coord"] = {
-            ["x"] = 1368.7,
-            ["y"] = 2469.6,
+        Coord = {
+            x = 1368.7,
+            y = 2469.6,
         },
     },
     { -- Step 185
-        ["Waypoint"] = 47250,
-        ["Range"] = 11.31,
-        ["Coord"] = {
-            ["x"] = 1402.2,
-            ["y"] = 2448.9,
+        Waypoint = 47250,
+        Range = 11.31,
+        Coord = {
+            x = 1402.2,
+            y = 2448.9,
         },
     },
     { -- Step 186
-        ["Waypoint"] = 47250,
-        ["Range"] = 8.96,
-        ["Coord"] = {
-            ["x"] = 1401.5,
-            ["y"] = 2412.3,
+        Waypoint = 47250,
+        Range = 8.96,
+        Coord = {
+            x = 1401.5,
+            y = 2412.3,
         },
     },
     { -- Step 187
-        ["Waypoint"] = 47250,
-        ["Range"] = 12.15,
-        ["Coord"] = {
-            ["x"] = 1375.4,
-            ["y"] = 2377.6,
+        Waypoint = 47250,
+        Range = 12.15,
+        Coord = {
+            x = 1375.4,
+            y = 2377.6,
         },
     },
     { -- Step 188
-        ["Coord"] = {
-            ["x"] = 1370.3,
-            ["y"] = 1991.3,
+        Coord = {
+            x = 1370.3,
+            y = 1991.3,
         },
-        ["Done"] = {
+        Done = {
             47250,
         },
     },
     { -- Step 189
-        ["PickUp"] = {
+        PickUp = {
             49185,
         },
-        ["Coord"] = {
-            ["x"] = 1376.3,
-            ["y"] = 1986.4,
+        Coord = {
+            x = 1376.3,
+            y = 1986.4,
         },
     },
     { -- Step 190
@@ -9284,37 +9283,37 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1376.3,
-            ["y"] = 1986.4,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 1376.3,
+            y = 1986.4,
         },
     },
     { -- Step 191
-        ["Done"] = {
+        Done = {
             49185,
         },
-        ["Coord"] = {
-            ["x"] = 1374.9,
-            ["y"] = 1987.2,
+        Coord = {
+            x = 1374.9,
+            y = 1987.2,
         },
     },
     { -- Step 192
-        ["PickUp"] = {
+        PickUp = {
             49064,
         },
-        ["Coord"] = {
-            ["x"] = 1374.9,
-            ["y"] = 1987.2,
+        Coord = {
+            x = 1374.9,
+            y = 1987.2,
         },
     },
     { -- Step 193
-        ["Waypoint"] = 49064,
-        ["Range"] = 15.25,
-        ["Coord"] = {
-            ["x"] = 1352.5,
-            ["y"] = 1953.8,
+        Waypoint = 49064,
+        Range = 15.25,
+        Coord = {
+            x = 1352.5,
+            y = 1953.8,
         },
     },
     { -- Step 194
@@ -9323,21 +9322,21 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 01,
-        ["Coord"] = {
-            ["x"] = 523.6,
-            ["y"] = 2146.8,
+        Gossip = 1,
+        Range = 01,
+        Coord = {
+            x = 523.6,
+            y = 2146.8,
         },
     },
     { -- Step 195
 
-        ["PickUp"] = {
+        PickUp = {
             47924,
         },
-        ["Coord"] = {
-            ["x"] = 549.4,
-            ["y"] = 2240.6,
+        Coord = {
+            x = 549.4,
+            y = 2240.6,
         },
     },
     { -- Step 196
@@ -9347,24 +9346,24 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47996] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["47924-1"] = 151849,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [248193] = "47924-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [248193] = 5,
         },
-        ["Range"] = 28.9,
-        ["Coord"] = {
-            ["x"] = 677.7,
-            ["y"] = 2345.9,
+        Range = 28.9,
+        Coord = {
+            x = 677.7,
+            y = 2345.9,
         },
     },
     { -- Step 197
@@ -9374,32 +9373,32 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 28.9,
-        ["Coord"] = {
-            ["x"] = 677.7,
-            ["y"] = 2345.9,
+        Range = 28.9,
+        Coord = {
+            x = 677.7,
+            y = 2345.9,
         },
     },
     { -- Step 198
 
-        ["Done"] = {
+        Done = {
             47924,
         },
-        ["Coord"] = {
-            ["x"] = 727,
-            ["y"] = 2364.3,
+        Coord = {
+            x = 727,
+            y = 2364.3,
         },
     },
     { -- Step 199
 
-        ["PickUp"] = {
+        PickUp = {
             47998,
             47919,
             47925,
         },
-        ["Coord"] = {
-            ["x"] = 727,
-            ["y"] = 2364.3,
+        Coord = {
+            x = 727,
+            y = 2364.3,
         },
     },
     { -- Step 200
@@ -9409,15 +9408,15 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47998] = {
                 1,
             },
         },
-        ["Range"] = 4.26,
-        ["Coord"] = {
-            ["x"] = 863.6,
-            ["y"] = 2361.9,
+        Range = 4.26,
+        Coord = {
+            x = 863.6,
+            y = 2361.9,
         },
     },
     { -- Step 201
@@ -9427,26 +9426,26 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47998] = {
                 1,
             },
         },
-        ["Range"] = 2.93,
-        ["Coord"] = {
-            ["x"] = 788,
-            ["y"] = 2280.9,
+        Range = 2.93,
+        Coord = {
+            x = 788,
+            y = 2280.9,
         },
     },
     { -- Step 202
 
-        ["Range"] = 21.44,
-        ["Waypoint"] = 47998,
-        ["Coord"] = {
-            ["x"] = 818.5,
-            ["y"] = 2190.1,
+        Range = 21.44,
+        Waypoint = 47998,
+        Coord = {
+            x = 818.5,
+            y = 2190.1,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47998] = {
                 1,
             },
@@ -9459,15 +9458,15 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47998] = {
                 1,
             },
         },
-        ["Range"] = 7.02,
-        ["Coord"] = {
-            ["x"] = 839.4,
-            ["y"] = 2183.3,
+        Range = 7.02,
+        Coord = {
+            x = 839.4,
+            y = 2183.3,
         },
     },
     { -- Step 204
@@ -9477,16 +9476,16 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Fillers"] = {
+        Gossip = 1,
+        Fillers = {
             [47998] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 849.7,
-            ["y"] = 2154.6,
+        Range = 0.69,
+        Coord = {
+            x = 849.7,
+            y = 2154.6,
         },
     },
     { -- Step 205
@@ -9496,19 +9495,19 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 26.22,
-        ["Coord"] = {
-            ["x"] = 849.2,
-            ["y"] = 2162.6,
+        Range = 26.22,
+        Coord = {
+            x = 849.2,
+            y = 2162.6,
         },
     },
     { -- Step 206
 
-        ["Coord"] = {
-            ["x"] = 513.2,
-            ["y"] = 2395.3,
+        Coord = {
+            x = 513.2,
+            y = 2395.3,
         },
-        ["Done"] = {
+        Done = {
             47998,
             47925,
             47919,
@@ -9520,28 +9519,28 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Range"] = 6.76,
-        ["Coord"] = {
-            ["x"] = 520.7,
-            ["y"] = 2542.9,
+        Range = 6.76,
+        Coord = {
+            x = 520.7,
+            y = 2542.9,
         },
     },
     { -- Step 208
-        ["Done"] = {
+        Done = {
             49064,
         },
-        ["Coord"] = {
-            ["x"] = 475.1,
-            ["y"] = 2593.1,
+        Coord = {
+            x = 475.1,
+            y = 2593.1,
         },
     },
     { -- Step 209
-        ["PickUp"] = {
+        PickUp = {
             49067,
         },
-        ["Coord"] = {
-            ["x"] = 475.1,
-            ["y"] = 2593.1,
+        Coord = {
+            x = 475.1,
+            y = 2593.1,
         },
     },
     { -- Step 210
@@ -9550,39 +9549,39 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 1,
-        ["Coord"] = {
-            ["x"] = 475.1,
-            ["y"] = 2593.1,
+        Gossip = 1,
+        Range = 1,
+        Coord = {
+            x = 475.1,
+            y = 2593.1,
         },
     },
     { -- Step 211
-        ["Done"] = {
+        Done = {
             49067,
         },
-        ["Coord"] = {
-            ["x"] = 476.3,
-            ["y"] = 2592.5,
+        Coord = {
+            x = 476.3,
+            y = 2592.5,
         },
     },
     { -- Step 212
-        ["PickUp"] = {
+        PickUp = {
             49070,
             49071,
             49080,
         },
-        ["Coord"] = {
-            ["x"] = 476.3,
-            ["y"] = 2592.5,
+        Coord = {
+            x = 476.3,
+            y = 2592.5,
         },
     },
     { -- Step 213
-        ["Waypoint"] = 49070,
-        ["Range"] = 9.51,
-        ["Coord"] = {
-            ["x"] = 365,
-            ["y"] = 2658.9,
+        Waypoint = 49070,
+        Range = 9.51,
+        Coord = {
+            x = 365,
+            y = 2658.9,
         },
     },
     { -- Step 214
@@ -9594,19 +9593,19 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49071-1"] = 153024,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [254180] = "49071-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [254180] = 5,
         },
-        ["Range"] = 49.83,
-        ["Coord"] = {
-            ["x"] = 319.3,
-            ["y"] = 2754.3,
+        Range = 49.83,
+        Coord = {
+            x = 319.3,
+            y = 2754.3,
         },
     },
     { -- Step 215
@@ -9615,7 +9614,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49071] = {
                 1,
             },
@@ -9623,39 +9622,39 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49071-1"] = 153024,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [254180] = "49071-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [254180] = 5,
         },
-        ["Range"] = 5.04,
-        ["Coord"] = {
-            ["x"] = 241,
-            ["y"] = 2893.6,
+        Range = 5.04,
+        Coord = {
+            x = 241,
+            y = 2893.6,
         },
     },
     { -- Step 216
-        ["Coord"] = {
-            ["x"] = 476.3,
-            ["y"] = 2594.6,
+        Coord = {
+            x = 476.3,
+            y = 2594.6,
         },
-        ["Done"] = {
+        Done = {
             49070,
             49071,
             49080,
         },
     },
     { -- Step 217
-        ["PickUp"] = {
+        PickUp = {
             49120,
         },
-        ["Coord"] = {
-            ["x"] = 475.2,
-            ["y"] = 2594.6,
+        Coord = {
+            x = 475.2,
+            y = 2594.6,
         },
     },
     { -- Step 218
@@ -9664,29 +9663,29 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 475.2,
-            ["y"] = 2594.6,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            x = 475.2,
+            y = 2594.6,
         },
     },
     { -- Step 219
-        ["Done"] = {
+        Done = {
             49120,
         },
-        ["Coord"] = {
-            ["x"] = 475.2,
-            ["y"] = 2594.6,
+        Coord = {
+            x = 475.2,
+            y = 2594.6,
         },
     },
     { -- Step 220
-        ["PickUp"] = {
+        PickUp = {
             49125,
         },
-        ["Coord"] = {
-            ["x"] = 475.2,
-            ["y"] = 2594.6,
+        Coord = {
+            x = 475.2,
+            y = 2594.6,
         },
     },
     { -- Step 221
@@ -9695,7 +9694,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49125] = {
                 1,
             },
@@ -9703,19 +9702,19 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49125-1"] = 160559,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [272476] = "49125-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [272476] = 5,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 176,
-            ["y"] = 2667,
+        Range = 0.75,
+        Coord = {
+            x = 176,
+            y = 2667,
         },
     },
     { -- Step 222
@@ -9724,24 +9723,24 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [51689] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49125-1"] = 160559,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [272476] = "49125-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [272476] = 5,
         },
-        ["Range"] = 12.28,
-        ["Coord"] = {
-            ["x"] = 179.4,
-            ["y"] = 2669,
+        Range = 12.28,
+        Coord = {
+            x = 179.4,
+            y = 2669,
         },
     },
     { -- Step 223
@@ -9750,41 +9749,41 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 149.93,
-        ["Coord"] = {
-            ["x"] = 225.9,
-            ["y"] = 2599.3,
+        Range = 149.93,
+        Coord = {
+            x = 225.9,
+            y = 2599.3,
         },
     },
     { -- Step 224
-        ["Done"] = {
+        Done = {
             49125,
         },
-        ["Coord"] = {
-            ["x"] = 9,
-            ["y"] = 2898.6,
+        Coord = {
+            x = 9,
+            y = 2898.6,
         },
     },
     { -- Step 225
-        ["PickUp"] = {
+        PickUp = {
             49126,
         },
-        ["Coord"] = {
-            ["x"] = -2.5,
-            ["y"] = 2900.1,
+        Coord = {
+            x = -2.5,
+            y = 2900.1,
         },
     },
     { -- Step 226
-        ["ExtraActionB"] = 1,
+        ExtraActionB = 1,
         Qpart = {
             [49126] = {
                 1,
             },
         },
-        ["Range"] = 19.63,
-        ["Coord"] = {
-            ["x"] = 64.7,
-            ["y"] = 2934.9,
+        Range = 19.63,
+        Coord = {
+            x = 64.7,
+            y = 2934.9,
         },
     },
     { -- Step 227
@@ -9793,30 +9792,30 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Range"] = 19.63,
-        ["Coord"] = {
-            ["x"] = 64.7,
-            ["y"] = 2934.9,
+        Range = 19.63,
+        Coord = {
+            x = 64.7,
+            y = 2934.9,
         },
     },
     { -- Step 228
-        ["Done"] = {
+        Done = {
             49126,
         },
-        ["Coord"] = {
-            ["x"] = 374.8,
-            ["y"] = 3044.9,
+        Coord = {
+            x = 374.8,
+            y = 3044.9,
         },
     },
     { -- Step 229
-        ["PickUp"] = {
+        PickUp = {
             49130,
             49132,
             49131,
         },
-        ["Coord"] = {
-            ["x"] = 373.6,
-            ["y"] = 3043.4,
+        Coord = {
+            x = 373.6,
+            y = 3043.4,
         },
     },
     { -- Step 230
@@ -9831,69 +9830,69 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 25.5,
-        ["Coord"] = {
-            ["x"] = 449,
-            ["y"] = 2913.5,
+        Range = 25.5,
+        Coord = {
+            x = 449,
+            y = 2913.5,
         },
     },
     { -- Step 231
-        ["Done"] = {
+        Done = {
             49130,
             49132,
             49131,
         },
-        ["Coord"] = {
-            ["x"] = 476.8,
-            ["y"] = 2591.8,
+        Coord = {
+            x = 476.8,
+            y = 2591.8,
         },
     },
     { -- Step 232
-        ["PickUp"] = {
+        PickUp = {
             49136,
         },
-        ["Coord"] = {
-            ["x"] = 476.8,
-            ["y"] = 2591.8,
+        Coord = {
+            x = 476.8,
+            y = 2591.8,
         },
     },
     { -- Step 233
-        ["Range"] = 21.44,
-        ["Waypoint"] = 49136,
-        ["Coord"] = {
-            ["x"] = 368.2,
-            ["y"] = 2654.3,
+        Range = 21.44,
+        Waypoint = 49136,
+        Coord = {
+            x = 368.2,
+            y = 2654.3,
         },
     },
     { -- Step 234
-        ["Bloodlust"] = 1,
+        Bloodlust = 1,
         Qpart = {
             [49136] = {
                 1,
             },
         },
-        ["Range"] = 8.5,
-        ["Coord"] = {
-            ["x"] = 241.3,
-            ["y"] = 2895.1,
+        Range = 8.5,
+        Coord = {
+            x = 241.3,
+            y = 2895.1,
         },
     },
     { -- Step 235
-        ["Done"] = {
+        Done = {
             49136,
         },
-        ["Coord"] = {
-            ["x"] = 474.8,
-            ["y"] = 2593.4,
+        Coord = {
+            x = 474.8,
+            y = 2593.4,
         },
     },
     { -- Step 236
-        ["PickUp"] = {
+        PickUp = {
             49160,
         },
-        ["Coord"] = {
-            ["x"] = 478,
-            ["y"] = 2592.8,
+        Coord = {
+            x = 478,
+            y = 2592.8,
         },
     },
     { -- Step 237
@@ -9902,107 +9901,107 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49160-1"] = 153131,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [254396] = "49160-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [254396] = 60,
         },
-        ["Range"] = 01,
-        ["Coord"] = {
-            ["x"] = 478,
-            ["y"] = 2592.8,
+        Range = 01,
+        Coord = {
+            x = 478,
+            y = 2592.8,
         },
     },
     { -- Step 238
-        ["Done"] = {
+        Done = {
             49160,
         },
-        ["Coord"] = {
-            ["x"] = 475,
-            ["y"] = 2591.1,
+        Coord = {
+            x = 475,
+            y = 2591.1,
         },
     },
     { -- Step 239
-        ["PickUp"] = {
+        PickUp = {
             49902,
         },
-        ["Coord"] = {
-            ["x"] = 475,
-            ["y"] = 2591.1,
+        Coord = {
+            x = 475,
+            y = 2591.1,
         },
     },
     { -- Step 240
-        ["QpartPart"] = {
+        QpartPart = {
             [49902] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["TrigText"] = "1/3",
-        ["Coord"] = {
-            ["x"] = 519.7,
-            ["y"] = 2137,
+        Gossip = 1,
+        Range = 0.75,
+        TrigText = "1/3",
+        Coord = {
+            x = 519.7,
+            y = 2137,
         },
     },
     { -- Step 241
-        ["QpartPart"] = {
+        QpartPart = {
             [49902] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["TrigText"] = "2/3",
-        ["Coord"] = {
-            ["x"] = 282.7,
-            ["y"] = 1910.3,
+        Gossip = 1,
+        Range = 0.75,
+        TrigText = "2/3",
+        Coord = {
+            x = 282.7,
+            y = 1910.3,
         },
     },
     { -- Step 242
-        ["QpartPart"] = {
+        QpartPart = {
             [49902] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["TrigText"] = "3/3",
-        ["Coord"] = {
-            ["x"] = 91.9,
-            ["y"] = 1856.5,
+        Gossip = 1,
+        Range = 0.75,
+        TrigText = "3/3",
+        Coord = {
+            x = 91.9,
+            y = 1856.5,
         },
     },
     { -- Step 243
-        ["Coord"] = {
-            ["x"] = -93.5,
-            ["y"] = 2045.7,
+        Coord = {
+            x = -93.5,
+            y = 2045.7,
         },
-        ["Done"] = {
+        Done = {
             49902,
         },
     },
     { -- Step 244
-        ["PickUp"] = {
+        PickUp = {
             47245,
             47525,
         },
-        ["Coord"] = {
-            ["x"] = -94,
-            ["y"] = 2048.6,
+        Coord = {
+            x = -94,
+            y = 2048.6,
         },
     },
     { -- Step 245
-        ["PickUp"] = {
+        PickUp = {
             52477,
         },
-        ["Coord"] = {
-            ["x"] = -84.6,
-            ["y"] = 2096.6,
+        Coord = {
+            x = -84.6,
+            y = 2096.6,
         },
     },
     { -- Step 246
@@ -10011,36 +10010,36 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 29.87,
-        ["Coord"] = {
-            ["x"] = 396.2,
-            ["y"] = 2348.6,
+        Range = 29.87,
+        Coord = {
+            x = 396.2,
+            y = 2348.6,
         },
     },
     { -- Step 247
-        ["Done"] = {
+        Done = {
             52477,
         },
-        ["Coord"] = {
-            ["x"] = -110.5,
-            ["y"] = 2059.4,
+        Coord = {
+            x = -110.5,
+            y = 2059.4,
         },
     },
     { -- Step 248
-        ["ExtraLineText"] = "WAIT_FOR_NPC",
-        ["SetHS"] = 47245,
-        ["Coord"] = {
-            ["x"] = -112.4,
-            ["y"] = 2062,
+        ExtraLineText = "WAIT_FOR_NPC",
+        SetHS = 47245,
+        Coord = {
+            x = -112.4,
+            y = 2062,
         },
     },
     { -- Step 249
 
-        ["Range"] = 5.87,
-        ["GetFP"] = 1955,
-        ["Coord"] = {
-            ["x"] = -70.8,
-            ["y"] = 1994.2,
+        Range = 5.87,
+        GetFP = 1955,
+        Coord = {
+            x = -70.8,
+            y = 1994.2,
         },
     },
     { -- Step 250
@@ -10049,10 +10048,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -151.9,
-            ["y"] = 1991.9,
+        Range = 0.69,
+        Coord = {
+            x = -151.9,
+            y = 1991.9,
         },
     },
     { -- Step 251
@@ -10061,40 +10060,40 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -156.4,
-            ["y"] = 1892.7,
+        Range = 0.69,
+        Coord = {
+            x = -156.4,
+            y = 1892.7,
         },
     },
     { -- Step 252
-        ["Coord"] = {
-            ["x"] = -156.4,
-            ["y"] = 1892.7,
+        Coord = {
+            x = -156.4,
+            y = 1892.7,
         },
-        ["Done"] = {
+        Done = {
             47525,
         },
     },
     { -- Step 253
-        ["PickUp"] = {
+        PickUp = {
             47659,
             47660,
         },
-        ["Coord"] = {
-            ["x"] = -155.2,
-            ["y"] = 1892.7,
+        Coord = {
+            x = -155.2,
+            y = 1892.7,
         },
     },
     { -- Step 254
-        ["PickUp"] = {
+        PickUp = {
             48402,
         },
-        ["Coord"] = {
-            ["x"] = -185.5,
-            ["y"] = 1760.8,
+        Coord = {
+            x = -185.5,
+            y = 1760.8,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47660] = {
                 1,
             },
@@ -10106,7 +10105,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48402] = {
                 1,
             },
@@ -10114,10 +10113,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 7.33,
-        ["Coord"] = {
-            ["x"] = -144.2,
-            ["y"] = 1726.5,
+        Range = 7.33,
+        Coord = {
+            x = -144.2,
+            y = 1726.5,
         },
     },
     { -- Step 256
@@ -10129,38 +10128,38 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 20.04,
-        ["Coord"] = {
-            ["x"] = -136.4,
-            ["y"] = 1726,
+        Range = 20.04,
+        Coord = {
+            x = -136.4,
+            y = 1726,
         },
     },
     { -- Step 257
-        ["Waypoint"] = 48402,
-        ["Range"] = 14.18,
-        ["Coord"] = {
-            ["x"] = -397,
-            ["y"] = 1653.4,
+        Waypoint = 48402,
+        Range = 14.18,
+        Coord = {
+            x = -397,
+            y = 1653.4,
         },
     },
     { -- Step 258
-        ["Done"] = {
+        Done = {
             47660,
             47659,
             48402,
         },
-        ["Coord"] = {
-            ["x"] = -509.7,
-            ["y"] = 1550,
+        Coord = {
+            x = -509.7,
+            y = 1550,
         },
     },
     { -- Step 259
-        ["PickUp"] = {
+        PickUp = {
             47623,
         },
-        ["Coord"] = {
-            ["x"] = -509.7,
-            ["y"] = 1550,
+        Coord = {
+            x = -509.7,
+            y = 1550,
         },
     },
     { -- Step 260
@@ -10169,10 +10168,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -502.9,
-            ["y"] = 1543.2,
+        Range = 0.75,
+        Coord = {
+            x = -502.9,
+            y = 1543.2,
         },
     },
     { -- Step 261
@@ -10181,37 +10180,37 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = -502.9,
-            ["y"] = 1543.5,
+        Range = 0.61,
+        Coord = {
+            x = -502.9,
+            y = 1543.5,
         },
     },
     { -- Step 262
-        ["Done"] = {
+        Done = {
             47623,
         },
-        ["Coord"] = {
-            ["x"] = -507.4,
-            ["y"] = 1546.5,
+        Coord = {
+            x = -507.4,
+            y = 1546.5,
         },
     },
     { -- Step 263
-        ["PickUp"] = {
+        PickUp = {
             47621,
             47622,
         },
-        ["Coord"] = {
-            ["x"] = -507.4,
-            ["y"] = 1546.5,
+        Coord = {
+            x = -507.4,
+            y = 1546.5,
         },
     },
     { -- Step 264
-        ["Waypoint"] = 47622,
-        ["Range"] = 13.48,
-        ["Coord"] = {
-            ["x"] = -409.2,
-            ["y"] = 1652.9,
+        Waypoint = 47622,
+        Range = 13.48,
+        Coord = {
+            x = -409.2,
+            y = 1652.9,
         },
     },
     { -- Step 265
@@ -10223,30 +10222,30 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["47622-1"] = 151237,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [246096] = "47622-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [246096] = 3,
         },
-        ["Range"] = 58.44,
-        ["Coord"] = {
-            ["x"] = -419.8,
-            ["y"] = 1853.9,
+        Range = 58.44,
+        Coord = {
+            x = -419.8,
+            y = 1853.9,
         },
     },
     { -- Step 266
 
-        ["PickUp"] = {
+        PickUp = {
             48090,
             48092,
         },
-        ["Coord"] = {
-            ["x"] = -635.5,
-            ["y"] = 1664.8,
+        Coord = {
+            x = -635.5,
+            y = 1664.8,
         },
     },
     { -- Step 267
@@ -10256,24 +10255,24 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48093] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48090-3"] = 158071,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [248921] = "48090-3",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [248921] = 5,
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = -722.7,
-            ["y"] = 1643.5,
+        Range = 0.61,
+        Coord = {
+            x = -722.7,
+            y = 1643.5,
         },
     },
     { -- Step 268
@@ -10283,24 +10282,24 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48093] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48090-1"] = 158071,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [248921] = "48090-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [248921] = 5,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -878.8,
-            ["y"] = 1573.3,
+        Range = 0.69,
+        Coord = {
+            x = -878.8,
+            y = 1573.3,
         },
     },
     { -- Step 269
@@ -10310,15 +10309,15 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48093] = {
                 1,
             },
         },
-        ["Range"] = 7.78,
-        ["Coord"] = {
-            ["x"] = -1033.5,
-            ["y"] = 1604.9,
+        Range = 7.78,
+        Coord = {
+            x = -1033.5,
+            y = 1604.9,
         },
     },
     { -- Step 270
@@ -10328,24 +10327,24 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48093] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48090-2"] = 158071,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [248921] = "48090-2",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [248921] = 5,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -774.7,
-            ["y"] = 1764.9,
+        Range = 0.69,
+        Coord = {
+            x = -774.7,
+            y = 1764.9,
         },
     },
     { -- Step 271
@@ -10355,67 +10354,67 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 50.32,
-        ["Coord"] = {
-            ["x"] = -780.5,
-            ["y"] = 1763.4,
+        Range = 50.32,
+        Coord = {
+            x = -780.5,
+            y = 1763.4,
         },
     },
     { -- Step 272
 
-        ["Coord"] = {
-            ["x"] = -637.2,
-            ["y"] = 1664.3,
+        Coord = {
+            x = -637.2,
+            y = 1664.3,
         },
-        ["Done"] = {
+        Done = {
             48090,
             48092,
         },
     },
     { -- Step 273
 
-        ["Range"] = 8.69,
-        ["Waypoint"] = 47622,
-        ["Coord"] = {
-            ["x"] = -574.8,
-            ["y"] = 1591.5,
+        Range = 8.69,
+        Waypoint = 47622,
+        Coord = {
+            x = -574.8,
+            y = 1591.5,
         },
     },
     { -- Step 274
 
-        ["Range"] = 7.96,
-        ["Waypoint"] = 47622,
-        ["Coord"] = {
-            ["x"] = -545.3,
-            ["y"] = 1606.9,
+        Range = 7.96,
+        Waypoint = 47622,
+        Coord = {
+            x = -545.3,
+            y = 1606.9,
         },
     },
     { -- Step 275
 
-        ["Range"] = 30.7,
-        ["Waypoint"] = 47622,
-        ["Coord"] = {
-            ["x"] = -511.4,
-            ["y"] = 1609.3,
+        Range = 30.7,
+        Waypoint = 47622,
+        Coord = {
+            x = -511.4,
+            y = 1609.3,
         },
     },
     { -- Step 276
-        ["Coord"] = {
-            ["x"] = -511.7,
-            ["y"] = 1551,
+        Coord = {
+            x = -511.7,
+            y = 1551,
         },
-        ["Done"] = {
+        Done = {
             47621,
             47622,
         },
     },
     { -- Step 277
-        ["PickUp"] = {
+        PickUp = {
             47540,
         },
-        ["Coord"] = {
-            ["x"] = -511.7,
-            ["y"] = 1551,
+        Coord = {
+            x = -511.7,
+            y = 1551,
         },
     },
     { -- Step 278
@@ -10424,44 +10423,44 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 8.82,
-        ["Coord"] = {
-            ["x"] = -518.5,
-            ["y"] = 1556.3,
+        Range = 8.82,
+        Coord = {
+            x = -518.5,
+            y = 1556.3,
         },
     },
     { -- Step 279
-        ["Done"] = {
+        Done = {
             47540,
         },
-        ["Coord"] = {
-            ["x"] = -513,
-            ["y"] = 1550,
+        Coord = {
+            x = -513,
+            y = 1550,
         },
     },
     { -- Step 280
-        ["PickUp"] = {
+        PickUp = {
             47696,
         },
-        ["Coord"] = {
-            ["x"] = -513,
-            ["y"] = 1550,
+        Coord = {
+            x = -513,
+            y = 1550,
         },
     },
     { -- Step 281
-        ["Waypoint"] = 47696,
-        ["Range"] = 24.61,
-        ["Coord"] = {
-            ["x"] = -288.4,
-            ["y"] = 1629.8,
+        Waypoint = 47696,
+        Range = 24.61,
+        Coord = {
+            x = -288.4,
+            y = 1629.8,
         },
     },
     { -- Step 282
-        ["Waypoint"] = 47696,
-        ["Range"] = 19.23,
-        ["Coord"] = {
-            ["x"] = -88.5,
-            ["y"] = 1558.4,
+        Waypoint = 47696,
+        Range = 19.23,
+        Coord = {
+            x = -88.5,
+            y = 1558.4,
         },
     },
     { -- Step 283
@@ -10471,105 +10470,105 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 21.93,
-        ["Coord"] = {
-            ["x"] = -88.5,
-            ["y"] = 1557.5,
+        Gossip = 1,
+        Range = 21.93,
+        Coord = {
+            x = -88.5,
+            y = 1557.5,
         },
     },
     { -- Step 284
-        ["Done"] = {
+        Done = {
             47696,
         },
-        ["Coord"] = {
-            ["x"] = -507.8,
-            ["y"] = 1548.3,
+        Coord = {
+            x = -507.8,
+            y = 1548.3,
         },
     },
     { -- Step 285
-        ["PickUp"] = {
+        PickUp = {
             47697,
         },
-        ["Coord"] = {
-            ["x"] = -503.5,
-            ["y"] = 1543.7,
+        Coord = {
+            x = -503.5,
+            y = 1543.7,
         },
     },
     { -- Step 286
-        ["UseHS"] = 47697,
-        ["Coord"] = {
-            ["x"] = -503.5,
-            ["y"] = 1543.7,
+        UseHS = 47697,
+        Coord = {
+            x = -503.5,
+            y = 1543.7,
         },
-        ["Button"] = {
+        Button = {
             ["22345678-1"] = 6948,
         },
     },
     { -- Step 287
-        ["Done"] = {
+        Done = {
             47697,
             47245,
         },
-        ["Coord"] = {
-            ["x"] = -92.6,
-            ["y"] = 2047.5,
+        Coord = {
+            x = -92.6,
+            y = 2047.5,
         },
     },
     { -- Step 288
-        ["PickUp"] = {
+        PickUp = {
             47631,
         },
-        ["Coord"] = {
-            ["x"] = -93,
-            ["y"] = 2046.3,
+        Coord = {
+            x = -93,
+            y = 2046.3,
         },
     },
     { -- Step 289
-        ["PickUp"] = {
+        PickUp = {
             50934,
         },
-        ["Coord"] = {
-            ["x"] = -66.5,
-            ["y"] = 2057.6,
+        Coord = {
+            x = -66.5,
+            y = 2057.6,
         },
     },
     { -- Step 290
 
-        ["Waypoint"] = 50934,
-        ["Range"] = 13.13,
-        ["Coord"] = {
-            ["x"] = -49.3,
-            ["y"] = 2028.5,
+        Waypoint = 50934,
+        Range = 13.13,
+        Coord = {
+            x = -49.3,
+            y = 2028.5,
         },
     },
     { -- Step 291
 
-        ["Waypoint"] = 50934,
-        ["Range"] = 10.99,
-        ["Coord"] = {
-            ["x"] = 100.7,
-            ["y"] = 1849.5,
+        Waypoint = 50934,
+        Range = 10.99,
+        Coord = {
+            x = 100.7,
+            y = 1849.5,
         },
     },
     { -- Step 292
 
-        ["Done"] = {
+        Done = {
             50934,
         },
-        ["Coord"] = {
-            ["x"] = 85.2,
-            ["y"] = 1765.8,
+        Coord = {
+            x = 85.2,
+            y = 1765.8,
         },
     },
     { -- Step 293
 
-        ["PickUp"] = {
+        PickUp = {
             49366,
         },
-        ["Coord"] = {
-            ["x"] = 83.9,
-            ["y"] = 1765.4,
+        Coord = {
+            x = 83.9,
+            y = 1765.4,
         },
     },
     { -- Step 294
@@ -10579,35 +10578,35 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49366-1"] = 153676,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 85.2,
-            ["y"] = 1765.5,
+        Range = 0.69,
+        Coord = {
+            x = 85.2,
+            y = 1765.5,
         },
     },
     { -- Step 295
 
-        ["Done"] = {
+        Done = {
             49366,
         },
-        ["Coord"] = {
-            ["x"] = 129.1,
-            ["y"] = 1682.2,
+        Coord = {
+            x = 129.1,
+            y = 1682.2,
         },
     },
     { -- Step 296
 
-        ["PickUp"] = {
+        PickUp = {
             49370,
             49377,
             49380,
         },
-        ["Coord"] = {
-            ["x"] = 129.1,
-            ["y"] = 1682.2,
+        Coord = {
+            x = 129.1,
+            y = 1682.2,
         },
     },
     { -- Step 297
@@ -10617,31 +10616,31 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 160.3,
-            ["y"] = 1652.9,
+        Range = 0.75,
+        Coord = {
+            x = 160.3,
+            y = 1652.9,
         },
     },
     { -- Step 298
 
-        ["Done"] = {
+        Done = {
             49370,
         },
-        ["Coord"] = {
-            ["x"] = 153.6,
-            ["y"] = 1651.8,
+        Coord = {
+            x = 153.6,
+            y = 1651.8,
         },
     },
     { -- Step 299
 
-        ["PickUp"] = {
+        PickUp = {
             49378,
             49379,
         },
-        ["Coord"] = {
-            ["x"] = 153.6,
-            ["y"] = 1651.8,
+        Coord = {
+            x = 153.6,
+            y = 1651.8,
         },
     },
     { -- Step 300
@@ -10651,10 +10650,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 15.05,
-        ["Coord"] = {
-            ["x"] = 182.3,
-            ["y"] = 1679,
+        Range = 15.05,
+        Coord = {
+            x = 182.3,
+            y = 1679,
         },
     },
     { -- Step 301
@@ -10664,7 +10663,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49378] = {
                 2,
             },
@@ -10672,13 +10671,13 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49380-2"] = 153678,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 180.3,
-            ["y"] = 1623.4,
+        Range = 0.75,
+        Coord = {
+            x = 180.3,
+            y = 1623.4,
         },
     },
     { -- Step 302
@@ -10688,7 +10687,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49378] = {
                 2,
             },
@@ -10696,10 +10695,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 10.53,
-        ["Coord"] = {
-            ["x"] = 182.4,
-            ["y"] = 1524.4,
+        Range = 10.53,
+        Coord = {
+            x = 182.4,
+            y = 1524.4,
         },
     },
     { -- Step 303
@@ -10709,7 +10708,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49379] = {
                 1,
             },
@@ -10717,13 +10716,13 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49380-3"] = 153678,
         },
-        ["Range"] = 8.85,
-        ["Coord"] = {
-            ["x"] = 268.7,
-            ["y"] = 1571.4,
+        Range = 8.85,
+        Coord = {
+            x = 268.7,
+            y = 1571.4,
         },
     },
     { -- Step 304
@@ -10733,7 +10732,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49379] = {
                 1,
             },
@@ -10741,13 +10740,13 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49380-1"] = 153678,
         },
-        ["Range"] = 2.46,
-        ["Coord"] = {
-            ["x"] = 285.2,
-            ["y"] = 1655,
+        Range = 2.46,
+        Coord = {
+            x = 285.2,
+            y = 1655,
         },
     },
     { -- Step 305
@@ -10763,19 +10762,19 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 38.86,
-        ["Coord"] = {
-            ["x"] = 220.6,
-            ["y"] = 1588.2,
+        Range = 38.86,
+        Coord = {
+            x = 220.6,
+            y = 1588.2,
         },
     },
     { -- Step 306
 
-        ["Coord"] = {
-            ["x"] = 128.6,
-            ["y"] = 1681.3,
+        Coord = {
+            x = 128.6,
+            y = 1681.3,
         },
-        ["Done"] = {
+        Done = {
             49379,
             49378,
             49380,
@@ -10784,30 +10783,30 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     },
     { -- Step 307
 
-        ["PickUp"] = {
+        PickUp = {
             49382,
         },
-        ["Coord"] = {
-            ["x"] = 128.6,
-            ["y"] = 1681.3,
+        Coord = {
+            x = 128.6,
+            y = 1681.3,
         },
     },
     { -- Step 308
 
-        ["Range"] = 34.95,
-        ["Waypoint"] = 49382,
-        ["Coord"] = {
-            ["x"] = -216.7,
-            ["y"] = 1631,
+        Range = 34.95,
+        Waypoint = 49382,
+        Coord = {
+            x = -216.7,
+            y = 1631,
         },
     },
     { -- Step 309
 
-        ["Range"] = 15.99,
-        ["Waypoint"] = 49382,
-        ["Coord"] = {
-            ["x"] = -379.2,
-            ["y"] = 1644.9,
+        Range = 15.99,
+        Waypoint = 49382,
+        Coord = {
+            x = -379.2,
+            y = 1644.9,
         },
     },
     { -- Step 310
@@ -10817,28 +10816,28 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -508.9,
-            ["y"] = 1549.7,
+        Range = 0.75,
+        Coord = {
+            x = -508.9,
+            y = 1549.7,
         },
     },
     { -- Step 311
 
-        ["Coord"] = {
-            ["x"] = -508.9,
-            ["y"] = 1549.7,
+        Coord = {
+            x = -508.9,
+            y = 1549.7,
         },
-        ["Done"] = {
+        Done = {
             49382,
         },
     },
     { -- Step 312
-        ["Range"] = 5,
-        ["Waypoint"] = 47631,
-        ["Coord"] = {
-            ["x"] = -404.8,
-            ["y"] = 1657.9,
+        Range = 5,
+        Waypoint = 47631,
+        Coord = {
+            x = -404.8,
+            y = 1657.9,
         },
     },
     { -- Step 313
@@ -10847,39 +10846,39 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 9.68,
-        ["Coord"] = {
-            ["x"] = -470.5,
-            ["y"] = 2165.5,
+        Range = 9.68,
+        Coord = {
+            x = -470.5,
+            y = 2165.5,
         },
     },
     { -- Step 314
-        ["Coord"] = {
-            ["x"] = -470,
-            ["y"] = 2165,
+        Coord = {
+            x = -470,
+            y = 2165,
         },
-        ["Done"] = {
+        Done = {
             47631,
         },
     },
     { -- Step 315
-        ["PickUp"] = {
+        PickUp = {
             47597,
             47599,
         },
-        ["Coord"] = {
-            ["x"] = -476.4,
-            ["y"] = 2161.5,
+        Coord = {
+            x = -476.4,
+            y = 2161.5,
         },
     },
     { -- Step 316
-        ["Waypoint"] = 47597,
-        ["Range"] = 15.23,
-        ["Coord"] = {
-            ["x"] = -640.7,
-            ["y"] = 2265,
+        Waypoint = 47597,
+        Range = 15.23,
+        Coord = {
+            x = -640.7,
+            y = 2265,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47599] = {
                 1,
             },
@@ -10894,7 +10893,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47599] = {
                 1,
             },
@@ -10902,13 +10901,13 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["47599-1"] = 151363,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -718.5,
-            ["y"] = 2240.9,
+        Range = 0.69,
+        Coord = {
+            x = -718.5,
+            y = 2240.9,
         },
     },
     { -- Step 318
@@ -10917,7 +10916,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47599] = {
                 1,
             },
@@ -10925,13 +10924,13 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["47599-1"] = 151363,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -752.8,
-            ["y"] = 2395.8,
+        Range = 0.75,
+        Coord = {
+            x = -752.8,
+            y = 2395.8,
         },
     },
     { -- Step 319
@@ -10940,7 +10939,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47599] = {
                 1,
             },
@@ -10948,13 +10947,13 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["47599-1"] = 151363,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -597.8,
-            ["y"] = 2384.6,
+        Range = 0.69,
+        Coord = {
+            x = -597.8,
+            y = 2384.6,
         },
     },
     { -- Step 320
@@ -10963,18 +10962,18 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47756] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["47599-1"] = 151363,
         },
-        ["Range"] = 35.67,
-        ["Coord"] = {
-            ["x"] = -597.8,
-            ["y"] = 2384.6,
+        Range = 35.67,
+        Coord = {
+            x = -597.8,
+            y = 2384.6,
         },
     },
     { -- Step 321
@@ -10983,47 +10982,47 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 150.62,
-        ["Coord"] = {
-            ["x"] = -711.7,
-            ["y"] = 2333.1,
+        Range = 150.62,
+        Coord = {
+            x = -711.7,
+            y = 2333.1,
         },
     },
     { -- Step 322
-        ["Range"] = 9.39,
-        ["Waypoint"] = 47597,
-        ["Coord"] = {
-            ["x"] = -860,
-            ["y"] = 2589.8,
+        Range = 9.39,
+        Waypoint = 47597,
+        Coord = {
+            x = -860,
+            y = 2589.8,
         },
     },
     { -- Step 323
-        ["Coord"] = {
-            ["x"] = -879.8,
-            ["y"] = 2573.1,
+        Coord = {
+            x = -879.8,
+            y = 2573.1,
         },
-        ["Done"] = {
+        Done = {
             47597,
             47599,
         },
     },
     { -- Step 324
-        ["PickUp"] = {
+        PickUp = {
             47711,
             47596,
             47598,
         },
-        ["Coord"] = {
-            ["x"] = -877,
-            ["y"] = 2571.1,
+        Coord = {
+            x = -877,
+            y = 2571.1,
         },
     },
     { -- Step 325
-        ["GetFP"] = 1956,
-        ["Range"] = 2,
-        ["Coord"] = {
-            ["x"] = -869.5,
-            ["y"] = 2592.1,
+        GetFP = 1956,
+        Range = 2,
+        Coord = {
+            x = -869.5,
+            y = 2592.1,
         },
     },
     { -- Step 326
@@ -11032,33 +11031,33 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47598] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -711.2,
-            ["y"] = 2568,
+        Range = 0.69,
+        Coord = {
+            x = -711.2,
+            y = 2568,
         },
     },
     { -- Step 327
-        ["Bloodlust"] = 1,
+        Bloodlust = 1,
         Qpart = {
             [47711] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47598] = {
                 1,
             },
         },
-        ["Range"] = 9.67,
-        ["Coord"] = {
-            ["x"] = -685.8,
-            ["y"] = 2642.5,
+        Range = 9.67,
+        Coord = {
+            x = -685.8,
+            y = 2642.5,
         },
     },
     { -- Step 328
@@ -11067,15 +11066,15 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47598] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -631,
-            ["y"] = 2643.3,
+        Range = 0.75,
+        Coord = {
+            x = -631,
+            y = 2643.3,
         },
     },
     { -- Step 329
@@ -11084,15 +11083,15 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47598] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -732,
-            ["y"] = 2748.1,
+        Range = 0.69,
+        Coord = {
+            x = -732,
+            y = 2748.1,
         },
     },
     { -- Step 330
@@ -11101,30 +11100,30 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 22.66,
-        ["Coord"] = {
-            ["x"] = -728.8,
-            ["y"] = 2748.1,
+        Range = 22.66,
+        Coord = {
+            x = -728.8,
+            y = 2748.1,
         },
     },
     { -- Step 331
-        ["Coord"] = {
-            ["x"] = -877.2,
-            ["y"] = 2572.6,
+        Coord = {
+            x = -877.2,
+            y = 2572.6,
         },
-        ["Done"] = {
+        Done = {
             47711,
             47596,
             47598,
         },
     },
     { -- Step 332
-        ["PickUp"] = {
+        PickUp = {
             47601,
         },
-        ["Coord"] = {
-            ["x"] = -878.3,
-            ["y"] = 2572.6,
+        Coord = {
+            x = -878.3,
+            y = 2572.6,
         },
     },
     { -- Step 333
@@ -11133,10 +11132,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -833.2,
-            ["y"] = 2616,
+        Range = 0.69,
+        Coord = {
+            x = -833.2,
+            y = 2616,
         },
     },
     { -- Step 334
@@ -11146,28 +11145,28 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -831.3,
-            ["y"] = 2616.5,
+        Range = 0.75,
+        Coord = {
+            x = -831.3,
+            y = 2616.5,
         },
     },
     { -- Step 335
-        ["Coord"] = {
-            ["x"] = -827.5,
-            ["y"] = 2613.1,
+        Coord = {
+            x = -827.5,
+            y = 2613.1,
         },
-        ["Done"] = {
+        Done = {
             47601,
         },
     },
     { -- Step 336
-        ["PickUp"] = {
+        PickUp = {
             47602,
         },
-        ["Coord"] = {
-            ["x"] = -827.5,
-            ["y"] = 2613.1,
+        Coord = {
+            x = -827.5,
+            y = 2613.1,
         },
     },
     { -- Step 337
@@ -11176,11 +11175,11 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 01,
-        ["Coord"] = {
-            ["x"] = -825,
-            ["y"] = 2609.6,
+        Gossip = 1,
+        Range = 01,
+        Coord = {
+            x = -825,
+            y = 2609.6,
         },
     },
     { -- Step 338
@@ -11189,28 +11188,28 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -94.5,
-            ["y"] = 2047,
+        Range = 0.69,
+        Coord = {
+            x = -94.5,
+            y = 2047,
         },
     },
     { -- Step 339
-        ["Done"] = {
+        Done = {
             47602,
         },
-        ["Coord"] = {
-            ["x"] = -94.3,
-            ["y"] = 2047.8,
+        Coord = {
+            x = -94.3,
+            y = 2047.8,
         },
     },
     { -- Step 340
-        ["PickUp"] = {
+        PickUp = {
             49932,
         },
-        ["Coord"] = {
-            ["x"] = -97.1,
-            ["y"] = 2056.9,
+        Coord = {
+            x = -97.1,
+            y = 2056.9,
         },
     },
     { -- Step 341
@@ -11219,10 +11218,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 01,
-        ["Coord"] = {
-            ["x"] = -70.7,
-            ["y"] = 2167.1,
+        Range = 01,
+        Coord = {
+            x = -70.7,
+            y = 2167.1,
         },
     },
     { -- Step 342
@@ -11231,10 +11230,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -70.7,
-            ["y"] = 2167.1,
+        Range = 0.75,
+        Coord = {
+            x = -70.7,
+            y = 2167.1,
         },
     },
     { -- Step 343
@@ -11243,30 +11242,30 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = -69.4,
-            ["y"] = 2166.4,
+        Range = 0.69,
+        Coord = {
+            x = -69.4,
+            y = 2166.4,
         },
     },
     { -- Step 344
-        ["Done"] = {
+        Done = {
             49932,
         },
-        ["Coord"] = {
-            ["x"] = -70,
-            ["y"] = 2165.1,
+        Coord = {
+            x = -70,
+            y = 2165.1,
         },
     },
     { -- Step 345
-        ["PickUp"] = {
+        PickUp = {
             49937,
             49935,
             49938,
         },
-        ["Coord"] = {
-            ["x"] = -70,
-            ["y"] = 2165.1,
+        Coord = {
+            x = -70,
+            y = 2165.1,
         },
     },
     { -- Step 346
@@ -11275,7 +11274,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49938] = {
                 1,
             },
@@ -11283,10 +11282,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -188.2,
-            ["y"] = 2135.8,
+        Range = 0.75,
+        Coord = {
+            x = -188.2,
+            y = 2135.8,
         },
     },
     { -- Step 347
@@ -11295,7 +11294,7 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49938] = {
                 1,
             },
@@ -11303,10 +11302,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -29.5,
-            ["y"] = 2347.8,
+        Range = 0.75,
+        Coord = {
+            x = -29.5,
+            y = 2347.8,
         },
     },
     { -- Step 348
@@ -11318,40 +11317,40 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 32.43,
-        ["Coord"] = {
-            ["x"] = -32,
-            ["y"] = 2345.9,
+        Range = 32.43,
+        Coord = {
+            x = -32,
+            y = 2345.9,
         },
     },
     { -- Step 349
-        ["Done"] = {
+        Done = {
             49937,
             49935,
             49938,
         },
-        ["Coord"] = {
-            ["x"] = -163.6,
-            ["y"] = 2295.8,
+        Coord = {
+            x = -163.6,
+            y = 2295.8,
         },
     },
     { -- Step 350
-        ["PickUp"] = {
+        PickUp = {
             49941,
             49949,
         },
-        ["Coord"] = {
-            ["x"] = -163.6,
-            ["y"] = 2295.8,
+        Coord = {
+            x = -163.6,
+            y = 2295.8,
         },
     },
     { -- Step 351
-        ["PickUp"] = {
+        PickUp = {
             49950,
         },
-        ["Coord"] = {
-            ["x"] = -189.5,
-            ["y"] = 2340.1,
+        Coord = {
+            x = -189.5,
+            y = 2340.1,
         },
     },
     { -- Step 352
@@ -11366,35 +11365,35 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49941-1"] = 156528,
         },
-        ["Range"] = 20.06,
-        ["Coord"] = {
-            ["x"] = -219.5,
-            ["y"] = 2349.1,
+        Range = 20.06,
+        Coord = {
+            x = -219.5,
+            y = 2349.1,
         },
     },
     { -- Step 353
-        ["Done"] = {
+        Done = {
             49949,
             49941,
             49950,
         },
-        ["Coord"] = {
-            ["x"] = -161.7,
-            ["y"] = 2298.1,
+        Coord = {
+            x = -161.7,
+            y = 2298.1,
         },
     },
     { -- Step 354
-        ["PickUp"] = {
+        PickUp = {
             49955,
             49957,
             49956,
         },
-        ["Coord"] = {
-            ["x"] = -161.7,
-            ["y"] = 2298.1,
+        Coord = {
+            x = -161.7,
+            y = 2298.1,
         },
     },
     { -- Step 355
@@ -11409,39 +11408,39 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49956-1"] = 156542,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [259527] = "49956-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [259527] = 2,
         },
-        ["Range"] = 21.05,
-        ["Coord"] = {
-            ["x"] = -262.8,
-            ["y"] = 2399.6,
+        Range = 21.05,
+        Coord = {
+            x = -262.8,
+            y = 2399.6,
         },
     },
     { -- Step 356
-        ["Done"] = {
+        Done = {
             49955,
             49957,
             49956,
         },
-        ["Coord"] = {
-            ["x"] = -361.4,
-            ["y"] = 2499.4,
+        Coord = {
+            x = -361.4,
+            y = 2499.4,
         },
     },
     { -- Step 357
-        ["PickUp"] = {
+        PickUp = {
             49980,
         },
-        ["Coord"] = {
-            ["x"] = -365.6,
-            ["y"] = 2500.6,
+        Coord = {
+            x = -365.6,
+            y = 2500.6,
         },
     },
     { -- Step 358
@@ -11450,11 +11449,11 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -365.6,
-            ["y"] = 2500.6,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = -365.6,
+            y = 2500.6,
         },
     },
     { -- Step 359
@@ -11463,28 +11462,28 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Range"] = 7.31,
-        ["Coord"] = {
-            ["x"] = -365.6,
-            ["y"] = 2500.6,
+        Range = 7.31,
+        Coord = {
+            x = -365.6,
+            y = 2500.6,
         },
     },
     { -- Step 360
-        ["Done"] = {
+        Done = {
             49980,
         },
-        ["Coord"] = {
-            ["x"] = -365.6,
-            ["y"] = 2500.6,
+        Coord = {
+            x = -365.6,
+            y = 2500.6,
         },
     },
     { -- Step 361
-        ["PickUp"] = {
+        PickUp = {
             49985,
         },
-        ["Coord"] = {
-            ["x"] = -365.6,
-            ["y"] = 2500.6,
+        Coord = {
+            x = -365.6,
+            y = 2500.6,
         },
     },
     { -- Step 362
@@ -11493,36 +11492,36 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = -328.9,
-            ["y"] = 2464.8,
+        Range = 0.75,
+        Coord = {
+            x = -328.9,
+            y = 2464.8,
         },
     },
     { -- Step 363
-        ["Done"] = {
+        Done = {
             49985,
         },
-        ["Coord"] = {
-            ["x"] = -94.6,
-            ["y"] = 2048.8,
+        Coord = {
+            x = -94.6,
+            y = 2048.8,
         },
     },
     { -- Step 364
-        ["PickUp"] = {
+        PickUp = {
             49569,
         },
-        ["Coord"] = {
-            ["x"] = -94.9,
-            ["y"] = 2048.5,
+        Coord = {
+            x = -94.9,
+            y = 2048.5,
         },
     },
     { -- Step 365
-        ["Waypoint"] = 49569,
-        ["Range"] = 13.34,
-        ["Coord"] = {
-            ["x"] = -48.5,
-            ["y"] = 2026.5,
+        Waypoint = 49569,
+        Range = 13.34,
+        Coord = {
+            x = -48.5,
+            y = 2026.5,
         },
     },
     { -- Step 366
@@ -11531,59 +11530,59 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = -6.2,
-            ["y"] = 1948.0,
+        Gossip = 1,
+        Range = 0.61,
+        Coord = {
+            x = -6.2,
+            y = 1948.0,
         },
     },
     { -- Step 367
-        ["ETA"] = 150,
+        ETA = 150,
         Qpart = {
             [49569] = {
                 2,
             },
         },
-        ["Range"] = 5.61,
-        ["Coord"] = {
-            ["x"] = -5,
-            ["y"] = 1950,
+        Range = 5.61,
+        Coord = {
+            x = -5,
+            y = 1950,
         },
     },
     { -- Step 368
-        ["Waypoint"] = 49569,
-        ["Range"] = 12.73,
-        ["Coord"] = {
-            ["x"] = 1348.2,
-            ["y"] = 687.2,
+        Waypoint = 49569,
+        Range = 12.73,
+        Coord = {
+            x = 1348.2,
+            y = 687.2,
         },
     },
     { -- Step 369
-        ["Done"] = {
+        Done = {
             51089,
         },
-        ["Coord"] = {
-            ["x"] = 1391,
-            ["y"] = 730.5,
+        Coord = {
+            x = 1391,
+            y = 730.5,
         },
     },
     { -- Step 370
-        ["Done"] = {
+        Done = {
             49569,
         },
-        ["Coord"] = {
-            ["x"] = 1377,
-            ["y"] = 791.2,
+        Coord = {
+            x = 1377,
+            y = 791.2,
         },
     },
     { -- Step 371
-        ["PickUp"] = {
+        PickUp = {
             50076,
         },
-        ["Coord"] = {
-            ["x"] = 1377.2,
-            ["y"] = 790.6,
+        Coord = {
+            x = 1377.2,
+            y = 790.6,
         },
     },
     { -- Step 372
@@ -11592,57 +11591,57 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 1378.5,
-            ["y"] = 814.1,
+        Range = 0.69,
+        Coord = {
+            x = 1378.5,
+            y = 814.1,
         },
     },
     { -- Step 373
-        ["ETA"] = 33,
+        ETA = 33,
         Qpart = {
             [50076] = {
                 2,
             },
         },
-        ["Range"] = 19.19,
-        ["Coord"] = {
-            ["x"] = 1378,
-            ["y"] = 806.4,
+        Range = 19.19,
+        Coord = {
+            x = 1378,
+            y = 806.4,
         },
     },
     { -- Step 374
-        ["Done"] = {
+        Done = {
             50076,
         },
-        ["Coord"] = {
-            ["x"] = 1379.5,
-            ["y"] = 806.1,
+        Coord = {
+            x = 1379.5,
+            y = 806.1,
         },
     },
     { -- Step 375
-        ["PickUp"] = {
+        PickUp = {
             50138,
         },
-        ["Coord"] = {
-            ["x"] = 1379.5,
-            ["y"] = 806.1,
+        Coord = {
+            x = 1379.5,
+            y = 806.1,
         },
     },
     { -- Step 376
-        ["Waypoint"] = 50138,
-        ["Range"] = 14.37,
-        ["Coord"] = {
-            ["x"] = 1347.8,
-            ["y"] = 819.1,
+        Waypoint = 50138,
+        Range = 14.37,
+        Coord = {
+            x = 1347.8,
+            y = 819.1,
         },
     },
     { -- Step 377
-        ["Waypoint"] = 50138,
-        ["Range"] = 7.12,
-        ["Coord"] = {
-            ["x"] = 1372,
-            ["y"] = 845,
+        Waypoint = 50138,
+        Range = 7.12,
+        Coord = {
+            x = 1372,
+            y = 845,
         },
     },
     { -- Step 378
@@ -11651,19 +11650,19 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1223.9,
-            ["y"] = 990.2,
+        Range = 0.75,
+        Coord = {
+            x = 1223.9,
+            y = 990.2,
         },
     },
     { -- Step 379
-        ["PickUp"] = {
+        PickUp = {
             50078,
         },
-        ["Coord"] = {
-            ["x"] = 1223.9,
-            ["y"] = 990.2,
+        Coord = {
+            x = 1223.9,
+            y = 990.2,
         },
     },
     { -- Step 380
@@ -11675,10 +11674,10 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 18.27,
-        ["Coord"] = {
-            ["x"] = 1216.8,
-            ["y"] = 991.9,
+        Range = 18.27,
+        Coord = {
+            x = 1216.8,
+            y = 991.9,
         },
     },
     { -- Step 381
@@ -11687,30 +11686,30 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Range"] = 10.07,
-        ["Coord"] = {
-            ["x"] = 1097.5,
-            ["y"] = 1123.5,
+        Range = 10.07,
+        Coord = {
+            x = 1097.5,
+            y = 1123.5,
         },
     },
     { -- Step 382
-        ["Done"] = {
+        Done = {
             50138,
             50078,
         },
-        ["Coord"] = {
-            ["x"] = 1086.8,
-            ["y"] = 1124,
+        Coord = {
+            x = 1086.8,
+            y = 1124,
         },
     },
     { -- Step 383
-        ["PickUp"] = {
+        PickUp = {
             50079,
             50081,
         },
-        ["Coord"] = {
-            ["x"] = 1085.5,
-            ["y"] = 1129.9,
+        Coord = {
+            x = 1085.5,
+            y = 1129.9,
         },
     },
     { -- Step 384
@@ -11719,24 +11718,24 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50081] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["50079-1"] = 156847,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [261695] = "50079-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [261695] = 5,
         },
-        ["Range"] = 11.83,
-        ["Coord"] = {
-            ["x"] = 1103.5,
-            ["y"] = 1174,
+        Range = 11.83,
+        Coord = {
+            x = 1103.5,
+            y = 1174,
         },
     },
     { -- Step 385
@@ -11745,24 +11744,24 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50081] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["50079-2"] = 156847,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [261695] = "50079-2",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [261695] = 5,
         },
-        ["Range"] = 13.14,
-        ["Coord"] = {
-            ["x"] = 1123,
-            ["y"] = 1238.5,
+        Range = 13.14,
+        Coord = {
+            x = 1123,
+            y = 1238.5,
         },
     },
     { -- Step 386
@@ -11771,24 +11770,24 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50081] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["50079-3"] = 156847,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [261695] = "50079-3",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [261695] = 5,
         },
-        ["Range"] = 11.21,
-        ["Coord"] = {
-            ["x"] = 1127.2,
-            ["y"] = 1287,
+        Range = 11.21,
+        Coord = {
+            x = 1127.2,
+            y = 1287,
         },
     },
     { -- Step 387
@@ -11797,29 +11796,29 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 18.87,
-        ["Coord"] = {
-            ["x"] = 1130.5,
-            ["y"] = 1291.5,
+        Range = 18.87,
+        Coord = {
+            x = 1130.5,
+            y = 1291.5,
         },
     },
     { -- Step 388
-        ["Done"] = {
+        Done = {
             50079,
             50081,
         },
-        ["Coord"] = {
-            ["x"] = 1124.9,
-            ["y"] = 1324.4,
+        Coord = {
+            x = 1124.9,
+            y = 1324.4,
         },
     },
     { -- Step 389
-        ["PickUp"] = {
+        PickUp = {
             50082,
         },
-        ["Coord"] = {
-            ["x"] = 1124.9,
-            ["y"] = 1324.4,
+        Coord = {
+            x = 1124.9,
+            y = 1324.4,
         },
     },
     { -- Step 390
@@ -11828,11 +11827,11 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1081.3,
-            ["y"] = 1392.3,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 1081.3,
+            y = 1392.3,
         },
     },
     { -- Step 391
@@ -11841,38 +11840,38 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Range"] = 11.4,
-        ["Coord"] = {
-            ["x"] = 1058.5,
-            ["y"] = 1421.3,
+        Range = 11.4,
+        Coord = {
+            x = 1058.5,
+            y = 1421.3,
         },
     },
     { -- Step 392
-        ["Done"] = {
+        Done = {
             50082,
         },
-        ["Coord"] = {
-            ["x"] = 1071,
-            ["y"] = 1408.8,
+        Coord = {
+            x = 1071,
+            y = 1408.8,
         },
     },
     { -- Step 393
-        ["PickUp"] = {
+        PickUp = {
             52073,
         },
-        ["Coord"] = {
-            ["x"] = 1071,
-            ["y"] = 1408.8,
+        Coord = {
+            x = 1071,
+            y = 1408.8,
         },
     },
     { -- Step 394
 
-        ["PickUp"] = {
+        PickUp = {
             50083,
         },
-        ["Coord"] = {
-            ["x"] = 1061.9,
-            ["y"] = 1474,
+        Coord = {
+            x = 1061.9,
+            y = 1474,
         },
     },
     { -- Step 395
@@ -11882,28 +11881,28 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 17.7,
-        ["Coord"] = {
-            ["x"] = 997.7,
-            ["y"] = 1589.7,
+        Range = 17.7,
+        Coord = {
+            x = 997.7,
+            y = 1589.7,
         },
     },
     { -- Step 396
 
-        ["Range"] = 7.51,
-        ["Waypoint"] = 50083,
-        ["Coord"] = {
-            ["x"] = 934.7,
-            ["y"] = 1640.3,
+        Range = 7.51,
+        Waypoint = 50083,
+        Coord = {
+            x = 934.7,
+            y = 1640.3,
         },
     },
     { -- Step 397
 
-        ["Range"] = 5.83,
-        ["Waypoint"] = 50083,
-        ["Coord"] = {
-            ["x"] = 948.5,
-            ["y"] = 1643.4,
+        Range = 5.83,
+        Waypoint = 50083,
+        Coord = {
+            x = 948.5,
+            y = 1643.4,
         },
     },
     { -- Step 398
@@ -11913,33 +11912,33 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Button"] = {
+        Button = {
             ["50083-2"] = 156868,
         },
-        ["Range"] = 7.64,
-        ["Coord"] = {
-            ["x"] = 973.4,
-            ["y"] = 1637.5,
+        Range = 7.64,
+        Coord = {
+            x = 973.4,
+            y = 1637.5,
         },
     },
     { -- Step 399
 
-        ["Coord"] = {
-            ["x"] = 911.7,
-            ["y"] = 1652.3,
+        Coord = {
+            x = 911.7,
+            y = 1652.3,
         },
-        ["Done"] = {
+        Done = {
             50083,
         },
     },
     { -- Step 400
 
-        ["PickUp"] = {
+        PickUp = {
             50085,
         },
-        ["Coord"] = {
-            ["x"] = 911.1,
-            ["y"] = 1652.5,
+        Coord = {
+            x = 911.1,
+            y = 1652.5,
         },
     },
     { -- Step 401
@@ -11949,24 +11948,24 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50080] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["50085-1"] = 156931,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [262125] = "50085-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [262125] = 5,
         },
-        ["Range"] = 24.94,
-        ["Coord"] = {
-            ["x"] = 905.6,
-            ["y"] = 1654.5,
+        Range = 24.94,
+        Coord = {
+            x = 905.6,
+            y = 1654.5,
         },
     },
     { -- Step 402
@@ -11976,38 +11975,38 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Range"] = 52.77,
-        ["Coord"] = {
-            ["x"] = 1027.5,
-            ["y"] = 1709.3,
+        Range = 52.77,
+        Coord = {
+            x = 1027.5,
+            y = 1709.3,
         },
     },
     { -- Step 403
 
-        ["Waypoint"] = 50085,
-        ["Range"] = 19,
-        ["Coord"] = {
-            ["x"] = 1058,
-            ["y"] = 1652.9,
+        Waypoint = 50085,
+        Range = 19,
+        Coord = {
+            x = 1058,
+            y = 1652.9,
         },
     },
     { -- Step 404
 
-        ["Done"] = {
+        Done = {
             50085,
         },
-        ["Coord"] = {
-            ["x"] = 1112.9,
-            ["y"] = 1634.2,
+        Coord = {
+            x = 1112.9,
+            y = 1634.2,
         },
     },
     { -- Step 405
 
-        ["Waypoint"] = 52073,
-        ["Range"] = 25.81,
-        ["Coord"] = {
-            ["x"] = 1061.5,
-            ["y"] = 1508.2,
+        Waypoint = 52073,
+        Range = 25.81,
+        Coord = {
+            x = 1061.5,
+            y = 1508.2,
         },
     },
     { -- Step 406
@@ -12016,11 +12015,11 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1072.8,
-            ["y"] = 1403.2,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 1072.8,
+            y = 1403.2,
         },
     },
     { -- Step 407
@@ -12029,299 +12028,299 @@ APR.RouteQuestStepList["863-Nazmir"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 1072.8,
-            ["y"] = 1403.2,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 1072.8,
+            y = 1403.2,
         },
     },
     { -- Step 408
-        ["Coord"] = {
-            ["x"] = 853.1,
-            ["y"] = 1525.5,
+        Coord = {
+            x = 853.1,
+            y = 1525.5,
         },
-        ["Done"] = {
+        Done = {
             52073,
         },
     },
     { -- Step 409
-        ["PickUp"] = {
+        PickUp = {
             50087,
         },
-        ["Coord"] = {
-            ["x"] = 853.1,
-            ["y"] = 1525.5,
+        Coord = {
+            x = 853.1,
+            y = 1525.5,
         },
     },
     { -- Step 410
-        ["Bloodlust"] = 1,
+        Bloodlust = 1,
         Qpart = {
             [50087] = {
                 1,
             },
         },
-        ["Range"] = 7.86,
-        ["Coord"] = {
-            ["x"] = 786.2,
-            ["y"] = 1498.4,
+        Range = 7.86,
+        Coord = {
+            x = 786.2,
+            y = 1498.4,
         },
     },
     { -- Step 411
-        ["Coord"] = {
-            ["x"] = 804.2,
-            ["y"] = 1480.9,
+        Coord = {
+            x = 804.2,
+            y = 1480.9,
         },
-        ["Done"] = {
+        Done = {
             50087,
         },
     },
     { -- Step 412
-        ["PickUp"] = {
+        PickUp = {
             51244,
         },
-        ["Coord"] = {
-            ["x"] = 792.9,
-            ["y"] = 1482.4,
+        Coord = {
+            x = 792.9,
+            y = 1482.4,
         },
     },
     { -- Step 413
-        ["ExtraLineText"] = "TALK_ROKHAN_RIDE_DOWN",
-        ["Gossip"] = 1,
-        ["Range"] = 14.61,
-        ["Waypoint"] = 51244,
-        ["Coord"] = {
-            ["x"] = 792.9,
-            ["y"] = 1482.4,
+        ExtraLineText = "TALK_ROKHAN_RIDE_DOWN",
+        Gossip = 1,
+        Range = 14.61,
+        Waypoint = 51244,
+        Coord = {
+            x = 792.9,
+            y = 1482.4,
         },
     },
     { -- Step 414
-        ["Range"] = 27.39,
-        ["Waypoint"] = 51244,
-        ["Coord"] = {
-            ["x"] = 642.7,
-            ["y"] = 1050.3,
+        Range = 27.39,
+        Waypoint = 51244,
+        Coord = {
+            x = 642.7,
+            y = 1050.3,
         },
     },
     { -- Step 415
-        ["Coord"] = {
-            ["x"] = 738.7,
-            ["y"] = 1237.4,
+        Coord = {
+            x = 738.7,
+            y = 1237.4,
         },
-        ["Done"] = {
+        Done = {
             51244,
         },
     },
     { -- Step 416
-        ["PickUp"] = {
+        PickUp = {
             50808,
         },
-        ["Coord"] = {
-            ["x"] = 735.1,
-            ["y"] = 1239.9,
+        Coord = {
+            x = 735.1,
+            y = 1239.9,
         },
-        ["LeaveQuest"] = 51302,
+        LeaveQuest = 51302,
     },
     { -- Step 417
-        ["ExtraLineText"] = "TALK_ROKHAN_RIDE_ZULJAN",
-        ["Range"] = 5,
-        ["Waypoint"] = 50808,
-        ["Coord"] = {
-            ["x"] = 735.1,
-            ["y"] = 1239.9,
+        ExtraLineText = "TALK_ROKHAN_RIDE_ZULJAN",
+        Range = 5,
+        Waypoint = 50808,
+        Coord = {
+            x = 735.1,
+            y = 1239.9,
         },
-        ["LeaveQuest"] = 51302,
+        LeaveQuest = 51302,
     },
     { -- Step 418
-        ["UseFlightPath"] = 50808,
-        ["Name"] = "The Great Seal",
-        ["NodeID"] = 1959,
-        ["Coord"] = {
-            ["x"] = 1403.8,
-            ["y"] = 791.5,
+        UseFlightPath = 50808,
+        Name = "The Great Seal",
+        NodeID = 1959,
+        Coord = {
+            x = 1403.8,
+            y = 791.5,
         },
     },
     { -- [Step 419
-        ["ZoneDoneSave"] = 1
+        ZoneDoneSave = 1
     },
 }
 --end of Nazmir start of Vol'dun
 APR.RouteQuestStepList["862-Zuldazar-2"] = {
     { -- Step 1
-        ["Range"] = 5,
-        ["Waypoint"] = 50808,
-        ["Coord"] = {
-            ["x"] = 802.7,
-            ["y"] = -1047.5,
+        Range = 5,
+        Waypoint = 50808,
+        Coord = {
+            x = 802.7,
+            y = -1047.5,
         },
     },
     { -- Step 2
-        ["Coord"] = {
-            ["x"] = 818.6,
-            ["y"] = -1124.3,
+        Coord = {
+            x = 818.6,
+            y = -1124.3,
         },
-        ["Done"] = {
+        Done = {
             50808,
         },
-        ["LeaveQuest"] = 52210,
+        LeaveQuest = 52210,
     },
     { -- Step 3
-        ["PickUp"] = {
+        PickUp = {
             47513,
 
         },
-        ["Coord"] = {
-            ["x"] = 818.7,
-            ["y"] = -1120.8,
+        Coord = {
+            x = 818.7,
+            y = -1120.8,
         },
-        ["LeaveQuest"] = 47199,
+        LeaveQuest = 47199,
     },
     { -- Step 4
-        ["Coord"] = {
-            ["x"] = 819,
-            ["y"] = -1120,
+        Coord = {
+            x = 819,
+            y = -1120,
         },
-        ["Done"] = {
+        Done = {
             47513,
         },
-        ["LeaveQuest"] = 52210,
+        LeaveQuest = 52210,
     },
     { -- Step 5
-        ["PickUp"] = {
+        PickUp = {
             47313,
         },
-        ["Coord"] = {
-            ["x"] = 818.9,
-            ["y"] = -1119.6,
+        Coord = {
+            x = 818.9,
+            y = -1119.6,
         },
     },
     { -- Step 6
-        ["Range"] = 5,
-        ["Waypoint"] = 47313,
-        ["Coord"] = {
-            ["x"] = 800.9,
-            ["y"] = -1046.8,
+        Range = 5,
+        Waypoint = 47313,
+        Coord = {
+            x = 800.9,
+            y = -1046.8,
         },
     },
     { -- Step 7
-        ["Range"] = 5,
-        ["Waypoint"] = 47313,
-        ["Coord"] = {
-            ["x"] = 778.2,
-            ["y"] = -1018.2,
+        Range = 5,
+        Waypoint = 47313,
+        Coord = {
+            x = 778.2,
+            y = -1018.2,
         },
     },
     { -- Step 8
-        ["QpartPart"] = {
+        QpartPart = {
             [47313] = {
                 1,
             },
         },
-        ["TrigText"] = "1/3",
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 799.7,
-            ["y"] = -964.5,
+        TrigText = "1/3",
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            x = 799.7,
+            y = -964.5,
         },
     },
     { -- Step 9
-        ["Range"] = 5,
-        ["Waypoint"] = 47313,
-        ["Coord"] = {
-            ["x"] = 753.6,
-            ["y"] = -961.9,
+        Range = 5,
+        Waypoint = 47313,
+        Coord = {
+            x = 753.6,
+            y = -961.9,
         },
     },
     { -- Step 10
-        ["Waypoint"] = 47313,
-        ["Range"] = 6.93,
-        ["Coord"] = {
-            ["x"] = 744.7,
-            ["y"] = -1001.6,
+        Waypoint = 47313,
+        Range = 6.93,
+        Coord = {
+            x = 744.7,
+            y = -1001.6,
         },
     },
     { -- Step 11
-        ["QpartPart"] = {
+        QpartPart = {
             [47313] = {
                 1,
             },
         },
-        ["TrigText"] = "2/3",
-        ["Gossip"] = 1,
-        ["Range"] = 1,
-        ["Coord"] = {
-            ["x"] = 741.4,
-            ["y"] = -966.5,
+        TrigText = "2/3",
+        Gossip = 1,
+        Range = 1,
+        Coord = {
+            x = 741.4,
+            y = -966.5,
         },
     },
     { -- Step 12
-        ["Waypoint"] = 47313,
-        ["Range"] = 6.93,
-        ["Coord"] = {
-            ["x"] = 676.5,
-            ["y"] = -963.4,
+        Waypoint = 47313,
+        Range = 6.93,
+        Coord = {
+            x = 676.5,
+            y = -963.4,
         },
     },
     { -- Step 13
-        ["QpartPart"] = {
+        QpartPart = {
             [47313] = {
                 1,
             },
         },
-        ["TrigText"] = "3/3",
-        ["Gossip"] = 1,
-        ["Range"] = 1,
-        ["Coord"] = {
-            ["x"] = 683.1,
-            ["y"] = -934.7,
+        TrigText = "3/3",
+        Gossip = 1,
+        Range = 1,
+        Coord = {
+            x = 683.1,
+            y = -934.7,
         },
     },
     { -- Step 14
-        ["Waypoint"] = 47313,
-        ["Range"] = 9.14,
-        ["Coord"] = {
-            ["x"] = 711.2,
-            ["y"] = -878,
+        Waypoint = 47313,
+        Range = 9.14,
+        Coord = {
+            x = 711.2,
+            y = -878,
         },
     },
     { -- Step 15
-        ["Done"] = {
+        Done = {
             47313,
         },
-        ["Coord"] = {
-            ["x"] = 760.2,
-            ["y"] = -859.3,
+        Coord = {
+            x = 760.2,
+            y = -859.3,
         },
     },
     { -- Step 16
-        ["PickUp"] = {
+        PickUp = {
             47314,
         },
-        ["Coord"] = {
-            ["x"] = 760.2,
-            ["y"] = -859.3,
+        Coord = {
+            x = 760.2,
+            y = -859.3,
         },
     },
     { -- Step 17
-        ["ETA"] = 40,
-        ["ExtraLineText"] = "TALK_ROKHAN_RIDE_ZULJAN",
-        --["RaidIcon"] = 122320,
-        ["Done"] = {
+        ETA = 40,
+        ExtraLineText = "TALK_ROKHAN_RIDE_ZULJAN",
+        --RaidIcon = 122320,
+        Done = {
             47314,
         },
-        ["Coord"] = {
-            ["x"] = 803.4,
-            ["y"] = -857.5,
+        Coord = {
+            x = 803.4,
+            y = -857.5,
         },
     },
     { -- Step 18
-        ["PickUp"] = {
+        PickUp = {
             47315,
         },
-        ["Coord"] = {
-            ["x"] = 803.4,
-            ["y"] = -857.2,
+        Coord = {
+            x = 803.4,
+            y = -857.2,
         },
     },
     { -- Step 19
@@ -12330,97 +12329,96 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 799.6,
-            ["y"] = -859,
+        Range = 0.75,
+        Coord = {
+            x = 799.6,
+            y = -859,
         },
     },
     { -- Step 20
-        ["ETA"] = 99,
+        ETA = 99,
         Qpart = {
             [47315] = {
                 2,
             },
         },
-        ["Range"] = 176.02,
-        ["Coord"] = {
-            ["x"] = 789.7,
-            ["y"] = -675.7,
+        Range = 176.02,
+        Coord = {
+            x = 789.7,
+            y = -675.7,
         },
     },
     { -- [Step 22
-        ["ZoneDoneSave"] = 1
+        ZoneDoneSave = 1
     },
 }
 -- Vol'dun
 APR.RouteQuestStepList["864-Vol'dun"] = {
     { -- Step 1
-        ["Done"] = {
+        Done = {
             47315,
         },
-        ["Coord"] = {
-            ["x"] = 2194.4,
-            ["y"] = 2673.5,
+        Coord = {
+            x = 2194.4,
+            y = 2673.5,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             51357,
         },
-        ["Coord"] = {
-            ["x"] = 2194.4,
-            ["y"] = 2673.5,
+        Coord = {
+            x = 2194.4,
+            y = 2673.5,
         },
     },
     { -- Step 3
-        ["ClearZP"] = 1,
-        ["ExtraLineText"] = "WEAPON_PICK_DOESNT_MATTER",
+        ExtraLineText = "WEAPON_PICK_DOESNT_MATTER",
         Qpart = {
             [51357] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 2197.1,
-            ["y"] = 2673.6,
+        Range = 0.69,
+        Coord = {
+            x = 2197.1,
+            y = 2673.6,
         },
 
     },
     { -- Step 4
-        ["Done"] = {
+        Done = {
             51357,
         },
-        ["Coord"] = {
-            ["x"] = 2195.1,
-            ["y"] = 2673.5,
+        Coord = {
+            x = 2195.1,
+            y = 2673.5,
         },
     },
     { -- Step 5
-        ["PickUp"] = {
+        PickUp = {
             47327,
             49676,
         },
-        ["Coord"] = {
-            ["x"] = 2195.1,
-            ["y"] = 2673.5,
+        Coord = {
+            x = 2195.1,
+            y = 2673.5,
         },
     },
     { -- Step 6
-        ["Waypoint"] = 49676,
-        ["Range"] = 8.78,
-        ["Coord"] = {
-            ["x"] = 2243.9,
-            ["y"] = 2648.5,
+        Waypoint = 49676,
+        Range = 8.78,
+        Coord = {
+            x = 2243.9,
+            y = 2648.5,
         },
     },
     { -- Step 7
-        ["Waypoint"] = 49676,
-        ["Range"] = 5.61,
-        ["Coord"] = {
-            ["x"] = 2267.8,
-            ["y"] = 2688.8,
+        Waypoint = 49676,
+        Range = 5.61,
+        Coord = {
+            x = 2267.8,
+            y = 2688.8,
         },
     },
     { -- Step 8
@@ -12429,15 +12427,15 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47327] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 2283.4,
-            ["y"] = 2797.5,
+        Range = 0.75,
+        Coord = {
+            x = 2283.4,
+            y = 2797.5,
         },
     },
     { -- Step 9
@@ -12446,15 +12444,15 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47327] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 2355.4,
-            ["y"] = 2852,
+        Range = 0.75,
+        Coord = {
+            x = 2355.4,
+            y = 2852,
         },
     },
     { -- Step 10
@@ -12463,33 +12461,33 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47327] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 2475.1,
-            ["y"] = 2804.4,
+        Range = 0.69,
+        Coord = {
+            x = 2475.1,
+            y = 2804.4,
         },
     },
     { -- Step 11
-        ["Coord"] = {
-            ["x"] = 2495.1,
-            ["y"] = 2831.6,
+        Coord = {
+            x = 2495.1,
+            y = 2831.6,
         },
-        ["Done"] = {
+        Done = {
             49676,
         },
     },
     { -- Step 12
-        ["PickUp"] = {
+        PickUp = {
             49677,
         },
-        ["Coord"] = {
-            ["x"] = 2495.1,
-            ["y"] = 2831.6,
+        Coord = {
+            x = 2495.1,
+            y = 2831.6,
         },
     },
     { -- Step 13
@@ -12498,15 +12496,15 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47327] = {
                 1,
             },
         },
-        ["Range"] = 16.29,
-        ["Coord"] = {
-            ["x"] = 2539.6,
-            ["y"] = 2857.1,
+        Range = 16.29,
+        Coord = {
+            x = 2539.6,
+            y = 2857.1,
         },
     },
     { -- Step 14
@@ -12515,29 +12513,29 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 16.94,
-        ["Coord"] = {
-            ["x"] = 2539.6,
-            ["y"] = 2857.1,
+        Range = 16.94,
+        Coord = {
+            x = 2539.6,
+            y = 2857.1,
         },
     },
     { -- Step 15
-        ["Coord"] = {
-            ["x"] = 2541.6,
-            ["y"] = 2878.8,
+        Coord = {
+            x = 2541.6,
+            y = 2878.8,
         },
-        ["Done"] = {
+        Done = {
             47327,
             49677,
         },
     },
     { -- Step 16
-        ["PickUp"] = {
+        PickUp = {
             51364,
         },
-        ["Coord"] = {
-            ["x"] = 2541.6,
-            ["y"] = 2878.8,
+        Coord = {
+            x = 2541.6,
+            y = 2878.8,
         },
     },
     { -- Step 17
@@ -12546,10 +12544,10 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 2595.9,
-            ["y"] = 2769,
+        Range = 0.75,
+        Coord = {
+            x = 2595.9,
+            y = 2769,
         },
     },
     { -- Step 18
@@ -12558,68 +12556,68 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 2597.1,
-            ["y"] = 2768.5,
+        Range = 0.69,
+        Coord = {
+            x = 2597.1,
+            y = 2768.5,
         },
     },
     { -- Step 19
-        ["ExtraLineText"] = "EXTRA_ACTION_BUTTON_NOT_NEEDED",
-        ["ETA"] = 72,
+        ExtraLineText = "EXTRA_ACTION_BUTTON_NOT_NEEDED",
+        ETA = 72,
         Qpart = {
             [51364] = {
                 3,
             },
         },
-        ["Range"] = 4.35,
-        ["Coord"] = {
-            ["x"] = 2798,
-            ["y"] = 2044.9,
+        Range = 4.35,
+        Coord = {
+            x = 2798,
+            y = 2044.9,
         },
     },
     { -- Step 20
-        ["Done"] = {
+        Done = {
             51364,
         },
-        ["Coord"] = {
-            ["x"] = 2821,
-            ["y"] = 2042.5,
+        Coord = {
+            x = 2821,
+            y = 2042.5,
         },
     },
     { -- Step 21
-        ["PickUp"] = {
+        PickUp = {
             47319,
         },
-        ["Coord"] = {
-            ["x"] = 2821,
-            ["y"] = 2042.5,
+        Coord = {
+            x = 2821,
+            y = 2042.5,
         },
     },
     { -- Step 22
-        ["PickUp"] = {
+        PickUp = {
             51574,
         },
-        ["Coord"] = {
-            ["x"] = 2822.6,
-            ["y"] = 2043,
+        Coord = {
+            x = 2822.6,
+            y = 2043,
         },
     },
     { -- Step 23
-        ["GetFP"] = 2117,
-        ["Range"] = 3.37,
-        ["Coord"] = {
-            ["x"] = 2809.9,
-            ["y"] = 2100.3,
+        GetFP = 2117,
+        Range = 3.37,
+        Coord = {
+            x = 2809.9,
+            y = 2100.3,
         },
     },
     { -- Step 24
-        ["PickUp"] = {
+        PickUp = {
             50739,
         },
-        ["Coord"] = {
-            ["x"] = 2929.1,
-            ["y"] = 2140.9,
+        Coord = {
+            x = 2929.1,
+            y = 2140.9,
         },
     },
     { -- Step 25
@@ -12634,38 +12632,38 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 18.73,
-        ["Coord"] = {
-            ["x"] = 2973.1,
-            ["y"] = 2116,
+        Range = 18.73,
+        Coord = {
+            x = 2973.1,
+            y = 2116,
         },
     },
     { -- Step 26
-        ["Done"] = {
+        Done = {
             50739,
         },
-        ["Coord"] = {
-            ["x"] = 2929.1,
-            ["y"] = 2140.9,
+        Coord = {
+            x = 2929.1,
+            y = 2140.9,
         },
     },
     { -- Step 27
-        ["Done"] = {
+        Done = {
             51574,
             47319,
         },
-        ["Coord"] = {
-            ["x"] = 2822,
-            ["y"] = 2042.8,
+        Coord = {
+            x = 2822,
+            y = 2042.8,
         },
     },
     { -- Step 28
-        ["PickUp"] = {
+        PickUp = {
             47320,
         },
-        ["Coord"] = {
-            ["x"] = 2822.1,
-            ["y"] = 2044.4,
+        Coord = {
+            x = 2822.1,
+            y = 2044.4,
         },
     },
     { -- Step 29
@@ -12674,95 +12672,95 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["47320-1"] = 150759,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 2818.3,
-            ["y"] = 2044.3,
+        Range = 0.75,
+        Coord = {
+            x = 2818.3,
+            y = 2044.3,
         },
     },
     { -- Step 30
-        ["Done"] = {
+        Done = {
             47320,
         },
-        ["Coord"] = {
-            ["x"] = 2818.1,
-            ["y"] = 2044.4,
+        Coord = {
+            x = 2818.1,
+            y = 2044.4,
         },
     },
     { -- Step 31
-        ["PickUp"] = {
+        PickUp = {
             47321,
             47317,
             47316,
         },
-        ["Coord"] = {
-            ["x"] = 2820.4,
-            ["y"] = 2043.9,
+        Coord = {
+            x = 2820.4,
+            y = 2043.9,
         },
     },
     { -- Step 32
-        ["QpartPart"] = {
+        QpartPart = {
             [47316] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["TrigText"] = "1/4",
-        ["Coord"] = {
-            ["x"] = 2890.5,
-            ["y"] = 2126.6,
+        Range = 0.75,
+        TrigText = "1/4",
+        Coord = {
+            x = 2890.5,
+            y = 2126.6,
         },
     },
     { -- Step 33
-        ["QpartPart"] = {
+        QpartPart = {
             [47316] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["TrigText"] = "2/4",
-        ["Coord"] = {
-            ["x"] = 2852.6,
-            ["y"] = 2342.9,
+        Range = 0.75,
+        TrigText = "2/4",
+        Coord = {
+            x = 2852.6,
+            y = 2342.9,
         },
     },
     { -- Step 34
-        ["QpartPart"] = {
+        QpartPart = {
             [47316] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["TrigText"] = "3/4",
-        ["Coord"] = {
-            ["x"] = 3093.1,
-            ["y"] = 2230.5,
+        Range = 0.75,
+        TrigText = "3/4",
+        Coord = {
+            x = 3093.1,
+            y = 2230.5,
         },
     },
     { -- Step 35
-        ["QpartPart"] = {
+        QpartPart = {
             [47316] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["TrigText"] = "4/4",
-        ["Coord"] = {
-            ["x"] = 3094.3,
-            ["y"] = 2439.1,
+        Range = 0.75,
+        TrigText = "4/4",
+        Coord = {
+            x = 3094.3,
+            y = 2439.1,
         },
     },
     { -- Step 36
-        ["PickUp"] = {
+        PickUp = {
             47322,
             50755,
         },
-        ["Coord"] = {
-            ["x"] = 2962.1,
-            ["y"] = 2410.4,
+        Coord = {
+            x = 2962.1,
+            y = 2410.4,
         },
     },
     { -- Step 37
@@ -12771,7 +12769,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50755] = {
                 1,
             },
@@ -12779,10 +12777,10 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 2959.3,
-            ["y"] = 2507.4,
+        Range = 0.75,
+        Coord = {
+            x = 2959.3,
+            y = 2507.4,
         },
     },
     { -- Step 38
@@ -12791,7 +12789,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50755] = {
                 1,
             },
@@ -12799,10 +12797,10 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 2968.5,
-            ["y"] = 2549.5,
+        Range = 0.75,
+        Coord = {
+            x = 2968.5,
+            y = 2549.5,
         },
     },
     { -- Step 39
@@ -12811,7 +12809,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50755] = {
                 1,
             },
@@ -12819,10 +12817,10 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 2847.5,
-            ["y"] = 2554.6,
+        Range = 0.69,
+        Coord = {
+            x = 2847.5,
+            y = 2554.6,
         },
     },
     { -- Step 40
@@ -12831,7 +12829,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50755] = {
                 1,
             },
@@ -12839,10 +12837,10 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 2778.5,
-            ["y"] = 2494,
+        Range = 0.75,
+        Coord = {
+            x = 2778.5,
+            y = 2494,
         },
     },
     { -- Step 41
@@ -12854,40 +12852,40 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 26.04,
-        ["Coord"] = {
-            ["x"] = 2784.5,
-            ["y"] = 2501.4,
+        Range = 26.04,
+        Coord = {
+            x = 2784.5,
+            y = 2501.4,
         },
     },
     { -- Step 42
-        ["Done"] = {
+        Done = {
             50755,
             47322,
         },
-        ["Coord"] = {
-            ["x"] = 2961.6,
-            ["y"] = 2410.8,
+        Coord = {
+            x = 2961.6,
+            y = 2410.8,
         },
     },
     { -- Step 43
-        ["Done"] = {
+        Done = {
             47321,
             47317,
             47316,
         },
-        ["Coord"] = {
-            ["x"] = 2819.6,
-            ["y"] = 2043,
+        Coord = {
+            x = 2819.6,
+            y = 2043,
         },
     },
     { -- Step 44
-        ["PickUp"] = {
+        PickUp = {
             47959,
         },
-        ["Coord"] = {
-            ["x"] = 2818.1,
-            ["y"] = 2043.5,
+        Coord = {
+            x = 2818.1,
+            y = 2043.5,
         },
     },
     { -- Step 45
@@ -12896,11 +12894,11 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 2823.3,
-            ["y"] = 2043.2,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 2823.3,
+            y = 2043.2,
         },
     },
     { -- Step 46
@@ -12909,41 +12907,41 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["ETA"] = 79,
-        ["Range"] = 3.52,
-        ["Coord"] = {
-            ["x"] = 3051.1,
-            ["y"] = 1344,
+        ETA = 79,
+        Range = 3.52,
+        Coord = {
+            x = 3051.1,
+            y = 1344,
         },
     },
     { -- Step 47
-        ["Done"] = {
+        Done = {
             47959,
         },
-        ["Coord"] = {
-            ["x"] = 3081.1,
-            ["y"] = 1316.8,
+        Coord = {
+            x = 3081.1,
+            y = 1316.8,
         },
     },
     { -- Step 48
-        ["PickUp"] = {
+        PickUp = {
             48549,
             48550,
         },
-        ["Coord"] = {
-            ["x"] = 3081.8,
-            ["y"] = 1316.9,
+        Coord = {
+            x = 3081.8,
+            y = 1316.9,
         },
     },
     { -- Step 49
-        ["PickUp"] = {
+        PickUp = {
             51829,
         },
-        ["Coord"] = {
-            ["x"] = 3235.8,
-            ["y"] = 1401.5,
+        Coord = {
+            x = 3235.8,
+            y = 1401.5,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48550] = {
                 1,
             },
@@ -12955,15 +12953,15 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48550] = {
                 1,
             },
         },
-        ["Range"] = 18,
-        ["Coord"] = {
-            ["x"] = 3325.6,
-            ["y"] = 1400.2,
+        Range = 18,
+        Coord = {
+            x = 3325.6,
+            y = 1400.2,
         },
     },
     { -- Step 51
@@ -12972,31 +12970,31 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 30.47,
-        ["Coord"] = {
-            ["x"] = 3318.1,
-            ["y"] = 1396.7,
+        Range = 30.47,
+        Coord = {
+            x = 3318.1,
+            y = 1396.7,
         },
     },
     { -- Step 52
-        ["UseGlider"] = 1,
-        ["Coord"] = {
-            ["x"] = 3020.5,
-            ["y"] = 1186.9,
+        UseGlider = 1,
+        Coord = {
+            x = 3020.5,
+            y = 1186.9,
         },
-        ["Done"] = {
+        Done = {
             51829,
         },
     },
     { -- Step 53
-        ["PickUp"] = {
+        PickUp = {
             48551,
             48553,
             48555,
         },
-        ["Coord"] = {
-            ["x"] = 3021,
-            ["y"] = 1187.5,
+        Coord = {
+            x = 3021,
+            y = 1187.5,
         },
     },
     { -- Step 54
@@ -13005,7 +13003,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48555] = {
                 1,
             },
@@ -13013,13 +13011,13 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48551-1"] = 152630,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 3050.6,
-            ["y"] = 1257.5,
+        Range = 0.69,
+        Coord = {
+            x = 3050.6,
+            y = 1257.5,
         },
     },
     { -- Step 55
@@ -13028,7 +13026,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48555] = {
                 1,
             },
@@ -13036,13 +13034,13 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48551-1"] = 152630,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 3084.1,
-            ["y"] = 1071.9,
+        Range = 0.75,
+        Coord = {
+            x = 3084.1,
+            y = 1071.9,
         },
     },
     { -- Step 56
@@ -13054,65 +13052,65 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48551-1"] = 152630,
         },
-        ["Range"] = 37.87,
-        ["Coord"] = {
-            ["x"] = 3084.1,
-            ["y"] = 1071.9,
+        Range = 37.87,
+        Coord = {
+            x = 3084.1,
+            y = 1071.9,
         },
     },
     { -- Step 57
-        ["Done"] = {
+        Done = {
             48551,
             48553,
             48555,
         },
-        ["Coord"] = {
-            ["x"] = 3021.9,
-            ["y"] = 1187.3,
+        Coord = {
+            x = 3021.9,
+            y = 1187.3,
         },
     },
     { -- Step 58
-        ["PickUp"] = {
+        PickUp = {
             48554,
         },
-        ["Coord"] = {
-            ["x"] = 3021.9,
-            ["y"] = 1187.3,
+        Coord = {
+            x = 3021.9,
+            y = 1187.3,
         },
     },
     { -- Step 59
-        ["Waypoint"] = 48554,
-        ["Range"] = 8.68,
-        ["Coord"] = {
-            ["x"] = 3025.3,
-            ["y"] = 1227.7,
+        Waypoint = 48554,
+        Range = 8.68,
+        Coord = {
+            x = 3025.3,
+            y = 1227.7,
         },
     },
     { -- Step 60
-        ["Waypoint"] = 48554,
-        ["Range"] = 8.86,
-        ["Coord"] = {
-            ["x"] = 2993.3,
-            ["y"] = 1294.9,
+        Waypoint = 48554,
+        Range = 8.86,
+        Coord = {
+            x = 2993.3,
+            y = 1294.9,
         },
     },
     { -- Step 61
-        ["Waypoint"] = 48554,
-        ["Range"] = 13.27,
-        ["Coord"] = {
-            ["x"] = 2960.5,
-            ["y"] = 1295.5,
+        Waypoint = 48554,
+        Range = 13.27,
+        Coord = {
+            x = 2960.5,
+            y = 1295.5,
         },
     },
     { -- Step 62
-        ["Waypoint"] = 48554,
-        ["Range"] = 15.05,
-        ["Coord"] = {
-            ["x"] = 2929.8,
-            ["y"] = 1262.5,
+        Waypoint = 48554,
+        Range = 15.05,
+        Coord = {
+            x = 2929.8,
+            y = 1262.5,
         },
     },
     { -- Step 63
@@ -13121,10 +13119,10 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 7.07,
-        ["Coord"] = {
-            ["x"] = 2919.9,
-            ["y"] = 1193,
+        Range = 7.07,
+        Coord = {
+            x = 2919.9,
+            y = 1193,
         },
     },
     { -- Step 64
@@ -13133,38 +13131,38 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Range"] = 16,
-        ["Coord"] = {
-            ["x"] = 2919.9,
-            ["y"] = 1196.4,
+        Range = 16,
+        Coord = {
+            x = 2919.9,
+            y = 1196.4,
         },
     },
     { -- Step 65
-        ["Done"] = {
+        Done = {
             48554,
         },
-        ["Coord"] = {
-            ["x"] = 3020,
-            ["y"] = 1188.3,
+        Coord = {
+            x = 3020,
+            y = 1188.3,
         },
     },
     { -- Step 66
-        ["Coord"] = {
-            ["x"] = 3063.6,
-            ["y"] = 1338.3,
+        Coord = {
+            x = 3063.6,
+            y = 1338.3,
         },
-        ["Done"] = {
+        Done = {
             48550,
             48549,
         },
     },
     { -- Step 67
-        ["PickUp"] = {
+        PickUp = {
             48684,
         },
-        ["Coord"] = {
-            ["x"] = 3065.5,
-            ["y"] = 1337.8,
+        Coord = {
+            x = 3065.5,
+            y = 1337.8,
         },
     },
     { -- Step 68
@@ -13173,11 +13171,11 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 3065.5,
-            ["y"] = 1337.8,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 3065.5,
+            y = 1337.8,
         },
     },
     { -- Step 69
@@ -13186,62 +13184,62 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["ETA"] = 127,
-        ["Range"] = 11.05,
-        ["Coord"] = {
-            ["x"] = 3089.8,
-            ["y"] = 286,
+        ETA = 127,
+        Range = 11.05,
+        Coord = {
+            x = 3089.8,
+            y = 286,
         },
     },
     { -- Step 70
-        ["Done"] = {
+        Done = {
             48684,
         },
-        ["Coord"] = {
-            ["x"] = 3091.5,
-            ["y"] = 285.5,
+        Coord = {
+            x = 3091.5,
+            y = 285.5,
         },
     },
     { -- Step 71
-        ["PickUp"] = {
+        PickUp = {
             48895,
         },
-        ["Coord"] = {
-            ["x"] = 3090.6,
-            ["y"] = 285.3,
+        Coord = {
+            x = 3090.6,
+            y = 285.3,
         },
     },
     { -- Step 72
-        ["Done"] = {
+        Done = {
             48895,
         },
-        ["LeaveQuest"] = 49040,
-        ["Coord"] = {
-            ["x"] = 3067,
-            ["y"] = 238.5,
+        LeaveQuest = 49040,
+        Coord = {
+            x = 3067,
+            y = 238.5,
         },
     },
     { -- Step 73
-        ["PickUp"] = {
+        PickUp = {
             48992,
             48991,
             48993,
         },
-        ["LeaveQuest"] = 49040,
-        ["Coord"] = {
-            ["x"] = 3067,
-            ["y"] = 238.5,
+        LeaveQuest = 49040,
+        Coord = {
+            x = 3067,
+            y = 238.5,
         },
     },
     { -- Step 74
-        ["LeaveQuest"] = 49040,
-        ["GetFP"] = 2118,
-        ["Range"] = 10.72,
-        ["Coord"] = {
-            ["x"] = 3031.1,
-            ["y"] = 287.3,
+        LeaveQuest = 49040,
+        GetFP = 2118,
+        Range = 10.72,
+        Coord = {
+            x = 3031.1,
+            y = 287.3,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48991] = {
                 1,
             },
@@ -13251,13 +13249,13 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 75
-        ["Waypoint"] = 48993,
-        ["Range"] = 9.27,
-        ["Coord"] = {
-            ["x"] = 2944.1,
-            ["y"] = 422.2,
+        Waypoint = 48993,
+        Range = 9.27,
+        Coord = {
+            x = 2944.1,
+            y = 422.2,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48991] = {
                 1,
             },
@@ -13267,13 +13265,13 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 76
-        ["Waypoint"] = 48993,
-        ["Range"] = 6.13,
-        ["Coord"] = {
-            ["x"] = 2897.6,
-            ["y"] = 430.3,
+        Waypoint = 48993,
+        Range = 6.13,
+        Coord = {
+            x = 2897.6,
+            y = 430.3,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48991] = {
                 1,
             },
@@ -13288,7 +13286,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48991] = {
                 1,
             },
@@ -13296,10 +13294,10 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 17.22,
-        ["Coord"] = {
-            ["x"] = 2869.5,
-            ["y"] = 544.6,
+        Range = 17.22,
+        Coord = {
+            x = 2869.5,
+            y = 544.6,
         },
     },
     { -- Step 78
@@ -13311,49 +13309,49 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 21.98,
-        ["Coord"] = {
-            ["x"] = 2889,
-            ["y"] = 504.3,
+        Range = 21.98,
+        Coord = {
+            x = 2889,
+            y = 504.3,
         },
     },
     { -- Step 79
-        ["Done"] = {
+        Done = {
             48992,
             48991,
             48993,
         },
-        ["Coord"] = {
-            ["x"] = 3067.1,
-            ["y"] = 237.9,
+        Coord = {
+            x = 3067.1,
+            y = 237.9,
         },
     },
     { -- Step 80
-        ["PickUp"] = {
+        PickUp = {
             48888,
             48887,
         },
-        ["Coord"] = {
-            ["x"] = 3067.1,
-            ["y"] = 237.9,
+        Coord = {
+            x = 3067.1,
+            y = 237.9,
         },
     },
     { -- Step 81
-        ["ExtraLineText"] = "DOTS_EXPIRE",
+        ExtraLineText = "DOTS_EXPIRE",
         Qpart = {
             [48887] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48888] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 3136.3,
-            ["y"] = 551.7,
+        Range = 0.75,
+        Coord = {
+            x = 3136.3,
+            y = 551.7,
         },
     },
     { -- Step 82
@@ -13362,15 +13360,15 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48888] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 3136,
-            ["y"] = 551.7,
+        Range = 0.69,
+        Coord = {
+            x = 3136,
+            y = 551.7,
         },
     },
     { -- Step 83
@@ -13379,29 +13377,29 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 15.94,
-        ["Coord"] = {
-            ["x"] = 3134.1,
-            ["y"] = 525.2,
+        Range = 15.94,
+        Coord = {
+            x = 3134.1,
+            y = 525.2,
         },
     },
     { -- Step 84
-        ["Done"] = {
+        Done = {
             48888,
             48887,
         },
-        ["Coord"] = {
-            ["x"] = 3066.9,
-            ["y"] = 237.1,
+        Coord = {
+            x = 3066.9,
+            y = 237.1,
         },
     },
     { -- Step 85
-        ["PickUp"] = {
+        PickUp = {
             48894,
         },
-        ["Coord"] = {
-            ["x"] = 3066.9,
-            ["y"] = 237.1,
+        Coord = {
+            x = 3066.9,
+            y = 237.1,
         },
     },
     { -- Step 86
@@ -13410,29 +13408,29 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Gossip"] = 3,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 3066.9,
-            ["y"] = 237.1,
+        Gossip = 3,
+        Range = 0.69,
+        Coord = {
+            x = 3066.9,
+            y = 237.1,
         },
     },
     { -- Step 87
-        ["Done"] = {
+        Done = {
             48894,
         },
-        ["Coord"] = {
-            ["x"] = 3067.1,
-            ["y"] = 238.1,
+        Coord = {
+            x = 3067.1,
+            y = 238.1,
         },
     },
     { -- Step 88
-        ["PickUp"] = {
+        PickUp = {
             48715,
         },
-        ["Coord"] = {
-            ["x"] = 3068.6,
-            ["y"] = 241.5,
+        Coord = {
+            x = 3068.6,
+            y = 241.5,
         },
     },
     { -- Step 89
@@ -13441,87 +13439,87 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 3.27,
-        ["Coord"] = {
-            ["x"] = 3066.6,
-            ["y"] = 184.4,
+        Range = 3.27,
+        Coord = {
+            x = 3066.6,
+            y = 184.4,
         },
     },
     { -- Step 90
-        ["Done"] = {
+        Done = {
             48715,
         },
-        ["Coord"] = {
-            ["x"] = 3040.1,
-            ["y"] = 176.1,
+        Coord = {
+            x = 3040.1,
+            y = 176.1,
         },
     },
     { -- Step 91
-        ["PickUp"] = {
+        PickUp = {
             48987,
         },
-        ["Coord"] = {
-            ["x"] = 3040.1,
-            ["y"] = 188.6,
+        Coord = {
+            x = 3040.1,
+            y = 188.6,
         },
     },
     { -- Step 92
-        ["Waypoint"] = 48987,
-        ["Range"] = 7.74,
-        ["Coord"] = {
-            ["x"] = 3062.4,
-            ["y"] = 193.6,
+        Waypoint = 48987,
+        Range = 7.74,
+        Coord = {
+            x = 3062.4,
+            y = 193.6,
         },
     },
     { -- Step 93
-        ["Waypoint"] = 48987,
-        ["Range"] = 11.03,
-        ["Coord"] = {
-            ["x"] = 3075.9,
-            ["y"] = 267.1,
+        Waypoint = 48987,
+        Range = 11.03,
+        Coord = {
+            x = 3075.9,
+            y = 267.1,
         },
     },
     { -- Step 94
-        ["SetHS"] = 48987,
-        ["Coord"] = {
-            ["x"] = 3151.6,
-            ["y"] = 260.7,
+        SetHS = 48987,
+        Coord = {
+            x = 3151.6,
+            y = 260.7,
         },
     },
     { -- Step 95
-        ["Waypoint"] = 48987,
-        ["Range"] = 16.03,
-        ["Coord"] = {
-            ["x"] = 3082.3,
-            ["y"] = 366.3,
+        Waypoint = 48987,
+        Range = 16.03,
+        Coord = {
+            x = 3082.3,
+            y = 366.3,
         },
     },
     { -- Step 96
-        ["UseGlider"] = 1,
-        ["Waypoint"] = 48987,
-        ["Range"] = 51.77,
-        ["Coord"] = {
-            ["x"] = 3037.5,
-            ["y"] = 691.6,
+        UseGlider = 1,
+        Waypoint = 48987,
+        Range = 51.77,
+        Coord = {
+            x = 3037.5,
+            y = 691.6,
         },
     },
     { -- Step 97
-        ["Done"] = {
+        Done = {
             48987,
         },
-        ["Coord"] = {
-            ["x"] = 3079,
-            ["y"] = 760.9,
+        Coord = {
+            x = 3079,
+            y = 760.9,
         },
     },
     { -- Step 98
-        ["PickUp"] = {
+        PickUp = {
             48988,
             49005,
         },
-        ["Coord"] = {
-            ["x"] = 3079,
-            ["y"] = 760.9,
+        Coord = {
+            x = 3079,
+            y = 760.9,
         },
     },
     { -- Step 99
@@ -13534,38 +13532,38 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Range"] = 27.77,
-        ["Coord"] = {
-            ["x"] = 3084,
-            ["y"] = 814.4,
+        Range = 27.77,
+        Coord = {
+            x = 3084,
+            y = 814.4,
         },
     },
     { -- Step 100
-        ["Done"] = {
+        Done = {
             48988,
             49005,
         },
-        ["Coord"] = {
-            ["x"] = 3077.9,
-            ["y"] = 761.2,
+        Coord = {
+            x = 3077.9,
+            y = 761.2,
         },
     },
     { -- Step 101
-        ["PickUp"] = {
+        PickUp = {
             48889,
         },
-        ["Coord"] = {
-            ["x"] = 3077.9,
-            ["y"] = 761.2,
+        Coord = {
+            x = 3077.9,
+            y = 761.2,
         },
     },
     { -- Step 102
-        ["RaidIcon"] = 127989,
-        ["Waypoint"] = 48889,
-        ["Range"] = 6.95,
-        ["Coord"] = {
-            ["x"] = 3107.4,
-            ["y"] = 741.4,
+        RaidIcon = 127989,
+        Waypoint = 48889,
+        Range = 6.95,
+        Coord = {
+            x = 3107.4,
+            y = 741.4,
         },
     },
     { -- Step 103
@@ -13574,77 +13572,77 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 12.65,
-        ["Coord"] = {
-            ["x"] = 3125,
-            ["y"] = 718.2,
+        Range = 12.65,
+        Coord = {
+            x = 3125,
+            y = 718.2,
         },
     },
     { -- Step 104
-        ["Done"] = {
+        Done = {
             48889,
         },
-        ["Coord"] = {
-            ["x"] = 3128.1,
-            ["y"] = 712.5,
+        Coord = {
+            x = 3128.1,
+            y = 712.5,
         },
     },
     { -- Step 105
-        ["PickUp"] = {
+        PickUp = {
             48996,
         },
-        ["Coord"] = {
-            ["x"] = 3128.1,
-            ["y"] = 712.5,
+        Coord = {
+            x = 3128.1,
+            y = 712.5,
         },
     },
     { -- Step 106
-        ["UseHS"] = 48996,
-        ["Coord"] = {
-            ["x"] = 3128.1,
-            ["y"] = 712.5,
+        UseHS = 48996,
+        Coord = {
+            x = 3128.1,
+            y = 712.5,
         },
-        ["Button"] = {
+        Button = {
             ["22345678-1"] = 6948,
         },
     },
     { -- Step 107
-        ["Waypoint"] = 48996,
-        ["Range"] = 11.47,
-        ["Coord"] = {
-            ["x"] = 3075.5,
-            ["y"] = 268.8,
+        Waypoint = 48996,
+        Range = 11.47,
+        Coord = {
+            x = 3075.5,
+            y = 268.8,
         },
     },
     { -- Step 108
-        ["ExtraActionB"] = 1,
+        ExtraActionB = 1,
         Qpart = {
             [48996] = {
                 1,
             },
         },
-        ["Range"] = 12.05,
-        ["Coord"] = {
-            ["x"] = 3067.1,
-            ["y"] = 203.9,
+        Range = 12.05,
+        Coord = {
+            x = 3067.1,
+            y = 203.9,
         },
     },
     { -- Step 109
-        ["Done"] = {
+        Done = {
             48996,
         },
-        ["Coord"] = {
-            ["x"] = 3067,
-            ["y"] = 178.6,
+        Coord = {
+            x = 3067,
+            y = 178.6,
         },
     },
     { -- Step 110
-        ["PickUp"] = {
+        PickUp = {
             50913,
         },
-        ["Coord"] = {
-            ["x"] = 3067.1,
-            ["y"] = 180.6,
+        Coord = {
+            x = 3067.1,
+            y = 180.6,
         },
     },
     { -- Step 111
@@ -13653,48 +13651,48 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 3066.9,
-            ["y"] = 152.1,
+        Range = 0.69,
+        Coord = {
+            x = 3066.9,
+            y = 152.1,
         },
     },
     { -- Step 112
-        ["Done"] = {
+        Done = {
             50913,
         },
-        ["Coord"] = {
-            ["x"] = 3065.3,
-            ["y"] = 177.8,
+        Coord = {
+            x = 3065.3,
+            y = 177.8,
         },
     },
     { -- Step 113
-        ["PickUp"] = {
+        PickUp = {
             47874,
         },
-        ["Coord"] = {
-            ["x"] = 3038.8,
-            ["y"] = 175.6,
+        Coord = {
+            x = 3038.8,
+            y = 175.6,
         },
     },
     { -- Step 114
-        ["RaidIcon"] = 130667,
-        ["Coord"] = {
-            ["x"] = 3093.1,
-            ["y"] = 284.8,
+        RaidIcon = 130667,
+        Coord = {
+            x = 3093.1,
+            y = 284.8,
         },
-        ["ETA"] = 53,
-        ["Done"] = {
+        ETA = 53,
+        Done = {
             47874,
         },
     },
     { -- Step 115
-        ["PickUp"] = {
+        PickUp = {
             48896,
         },
-        ["Coord"] = {
-            ["x"] = 3093.1,
-            ["y"] = 284.8,
+        Coord = {
+            x = 3093.1,
+            y = 284.8,
         },
     },
     { -- Step 116
@@ -13703,11 +13701,11 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 3099.1,
-            ["y"] = 282.5,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 3099.1,
+            y = 282.5,
         },
     },
     { -- Step 117
@@ -13716,11 +13714,11 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["ETA"] = 59,
-        ["Range"] = 7.33,
-        ["Coord"] = {
-            ["x"] = 3426.4,
-            ["y"] = 596.6,
+        ETA = 59,
+        Range = 7.33,
+        Coord = {
+            x = 3426.4,
+            y = 596.6,
         },
     },
     { -- Step 118
@@ -13729,36 +13727,36 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 3,
             },
         },
-        ["Range"] = 7.33,
-        ["Coord"] = {
-            ["x"] = 3426.4,
-            ["y"] = 596.6,
+        Range = 7.33,
+        Coord = {
+            x = 3426.4,
+            y = 596.6,
         },
     },
     { -- Step 119
-        ["Done"] = {
+        Done = {
             48896,
         },
-        ["Coord"] = {
-            ["x"] = 3437.1,
-            ["y"] = 609.2,
+        Coord = {
+            x = 3437.1,
+            y = 609.2,
         },
     },
     { -- Step 120
-        ["PickUp"] = {
+        PickUp = {
             47716,
         },
-        ["Coord"] = {
-            ["x"] = 3437.1,
-            ["y"] = 609.2,
+        Coord = {
+            x = 3437.1,
+            y = 609.2,
         },
     },
     { -- Step 121
-        ["Waypoint"] = 47716,
-        ["Range"] = 11.68,
-        ["Coord"] = {
-            ["x"] = 3503.6,
-            ["y"] = 817.7,
+        Waypoint = 47716,
+        Range = 11.68,
+        Coord = {
+            x = 3503.6,
+            y = 817.7,
         },
     },
     { -- Step 122
@@ -13767,36 +13765,36 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 3513,
-            ["y"] = 882.7,
+        Range = 0.69,
+        Coord = {
+            x = 3513,
+            y = 882.7,
         },
     },
     { -- Step 123
-        ["Done"] = {
+        Done = {
             47716,
         },
-        ["Coord"] = {
-            ["x"] = 3483.6,
-            ["y"] = 901.2,
+        Coord = {
+            x = 3483.6,
+            y = 901.2,
         },
     },
     { -- Step 124
-        ["PickUp"] = {
+        PickUp = {
             48314,
             48313,
         },
-        ["Coord"] = {
-            ["x"] = 3484.6,
-            ["y"] = 903.9,
+        Coord = {
+            x = 3484.6,
+            y = 903.9,
         },
     },
     { -- Step 125
-        ["PickUp"] = {
+        PickUp = {
             51573,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48314] = {
                 1,
             },
@@ -13804,9 +13802,9 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["x"] = 3731.3,
-            ["y"] = 915.6,
+        Coord = {
+            x = 3731.3,
+            y = 915.6,
         },
     },
     { -- Step 126
@@ -13815,29 +13813,29 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 3731.3,
-            ["y"] = 915.6,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            x = 3731.3,
+            y = 915.6,
         },
     },
     { -- Step 127
-        ["ETA"] = 81,
-        ["SpecialETAHide"] = 1,
-        ["GetFP"] = 2143,
-        ["Range"] = 5.91,
-        ["Coord"] = {
-            ["x"] = 3699.4,
-            ["y"] = 890.1,
+        ETA = 81,
+        SpecialETAHide = 1,
+        GetFP = 2143,
+        Range = 5.91,
+        Coord = {
+            x = 3699.4,
+            y = 890.1,
         },
     },
     { -- Step 128
-        ["SpecialETAHide"] = 1,
-        ["SetHS"] = 51573,
-        ["Coord"] = {
-            ["x"] = 3757.6,
-            ["y"] = 865.7,
+        SpecialETAHide = 1,
+        SetHS = 51573,
+        Coord = {
+            x = 3757.6,
+            y = 865.7,
         },
     },
     { -- Step 129
@@ -13846,93 +13844,93 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 3733.9,
-            ["y"] = 977.1,
+        Range = 0.75,
+        Coord = {
+            x = 3733.9,
+            y = 977.1,
         },
     },
     { -- Step 130
-        ["Done"] = {
+        Done = {
             51573,
         },
-        ["Coord"] = {
-            ["x"] = 3733.6,
-            ["y"] = 969.2,
+        Coord = {
+            x = 3733.6,
+            y = 969.2,
         },
     },
     { -- Step 131
-        ["PickUp"] = {
+        PickUp = {
             48529,
             48530,
         },
-        ["Coord"] = {
-            ["x"] = 3731.6,
-            ["y"] = 970.4,
+        Coord = {
+            x = 3731.6,
+            y = 970.4,
         },
     },
     { -- Step 132
-        ["Done"] = {
+        Done = {
             48529,
         },
-        ["Coord"] = {
-            ["x"] = 3713.3,
-            ["y"] = 850.5,
+        Coord = {
+            x = 3713.3,
+            y = 850.5,
         },
     },
     { -- Step 133
-        ["PickUp"] = {
+        PickUp = {
             48531,
             48533,
         },
-        ["Coord"] = {
-            ["x"] = 3713.3,
-            ["y"] = 850.5,
+        Coord = {
+            x = 3713.3,
+            y = 850.5,
         },
     },
     { -- Step 134
-        ["Waypoint"] = 48530,
-        ["Range"] = 10.91,
-        ["Coord"] = {
-            ["x"] = 3747.1,
-            ["y"] = 836.9,
+        Waypoint = 48530,
+        Range = 10.91,
+        Coord = {
+            x = 3747.1,
+            y = 836.9,
         },
     },
     { -- Step 135
-        ["Waypoint"] = 48530,
-        ["Range"] = 9.72,
-        ["Coord"] = {
-            ["x"] = 3788.8,
-            ["y"] = 837.9,
+        Waypoint = 48530,
+        Range = 9.72,
+        Coord = {
+            x = 3788.8,
+            y = 837.9,
         },
     },
     { -- Step 136
-        ["Done"] = {
+        Done = {
             48530,
         },
-        ["Coord"] = {
-            ["x"] = 3820.3,
-            ["y"] = 877.1,
+        Coord = {
+            x = 3820.3,
+            y = 877.1,
         },
     },
     { -- Step 137
-        ["PickUp"] = {
+        PickUp = {
             48532,
         },
-        ["Coord"] = {
-            ["x"] = 3820.3,
-            ["y"] = 877.1,
+        Coord = {
+            x = 3820.3,
+            y = 877.1,
         },
     },
     { -- Step 138
-        ["PickUp"] = {
+        PickUp = {
             48585,
         },
-        ["Coord"] = {
-            ["x"] = 3935.6,
-            ["y"] = 992.1,
+        Coord = {
+            x = 3935.6,
+            y = 992.1,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48532] = {
                 1,
             },
@@ -13943,13 +13941,13 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48532-1"] = 152570,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [251267] = "48532-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [251267] = 5,
         },
     },
@@ -13965,19 +13963,19 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48532-1"] = 152570,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [251267] = "48532-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [251267] = 5,
         },
-        ["Range"] = 26.52,
-        ["Coord"] = {
-            ["x"] = 3935.6,
-            ["y"] = 992.1,
+        Range = 26.52,
+        Coord = {
+            x = 3935.6,
+            y = 992.1,
         },
     },
     { -- Step 140
@@ -13986,110 +13984,110 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48533-1"] = 152572,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [251288] = "48533-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [251288] = 2,
         },
-        ["Range"] = 18.77,
-        ["Coord"] = {
-            ["x"] = 3806.1,
-            ["y"] = 939.5,
+        Range = 18.77,
+        Coord = {
+            x = 3806.1,
+            y = 939.5,
         },
     },
     { -- Step 141
-        ["Coord"] = {
-            ["x"] = 3734,
-            ["y"] = 915,
+        Coord = {
+            x = 3734,
+            y = 915,
         },
-        ["Done"] = {
+        Done = {
             48585,
         },
     },
     { -- Step 142
-        ["Coord"] = {
-            ["x"] = 3713,
-            ["y"] = 850.1,
+        Coord = {
+            x = 3713,
+            y = 850.1,
         },
-        ["Done"] = {
+        Done = {
             48531,
             48533,
         },
     },
     { -- Step 143
-        ["PickUp"] = {
+        PickUp = {
             48655,
         },
-        ["Coord"] = {
-            ["x"] = 3713,
-            ["y"] = 850.1,
+        Coord = {
+            x = 3713,
+            y = 850.1,
         },
     },
     { -- Step 144
-        ["Range"] = 10.15,
-        ["Waypoint"] = 48655,
-        ["Coord"] = {
-            ["x"] = 3755.5,
-            ["y"] = 833.7,
+        Range = 10.15,
+        Waypoint = 48655,
+        Coord = {
+            x = 3755.5,
+            y = 833.7,
         },
     },
     { -- Step 145
-        ["Coord"] = {
-            ["x"] = 3820.4,
-            ["y"] = 875.9,
+        Coord = {
+            x = 3820.4,
+            y = 875.9,
         },
-        ["Done"] = {
+        Done = {
             48532,
         },
     },
     { -- Step 146
-        ["PickUp"] = {
+        PickUp = {
             48534,
         },
-        ["Coord"] = {
-            ["x"] = 3819.3,
-            ["y"] = 876,
+        Coord = {
+            x = 3819.3,
+            y = 876,
         },
     },
     { -- Step 147
-        ["Range"] = 6.15,
-        ["Waypoint"] = 48655,
-        ["Coord"] = {
-            ["x"] = 3732.1,
-            ["y"] = 738.6,
+        Range = 6.15,
+        Waypoint = 48655,
+        Coord = {
+            x = 3732.1,
+            y = 738.6,
         },
     },
     { -- Step 148
-        ["Coord"] = {
-            ["x"] = 3734,
-            ["y"] = 765.7,
+        Coord = {
+            x = 3734,
+            y = 765.7,
         },
-        ["Done"] = {
+        Done = {
             48655,
         },
     },
     { -- Step 149
-        ["PickUp"] = {
+        PickUp = {
             48656,
             48657,
         },
-        ["Coord"] = {
-            ["x"] = 3734,
-            ["y"] = 765.7,
+        Coord = {
+            x = 3734,
+            y = 765.7,
         },
     },
     { -- Step 150
-        ["Waypoint"] = 48534,
-        ["Range"] = 11.36,
-        ["Coord"] = {
-            ["x"] = 3730.6,
-            ["y"] = 592.5,
+        Waypoint = 48534,
+        Range = 11.36,
+        Coord = {
+            x = 3730.6,
+            y = 592.5,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48657] = {
                 1,
             },
@@ -14104,12 +14102,12 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 7.87,
-        ["Coord"] = {
-            ["x"] = 3768.6,
-            ["y"] = 510.1,
+        Range = 7.87,
+        Coord = {
+            x = 3768.6,
+            y = 510.1,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48657] = {
                 1,
             },
@@ -14127,107 +14125,107 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 13.63,
-        ["Coord"] = {
-            ["x"] = 3727.1,
-            ["y"] = 594.9,
+        Range = 13.63,
+        Coord = {
+            x = 3727.1,
+            y = 594.9,
         },
     },
     { -- Step 153
-        ["Coord"] = {
-            ["x"] = 3736.4,
-            ["y"] = 765.5,
+        Coord = {
+            x = 3736.4,
+            y = 765.5,
         },
-        ["Done"] = {
+        Done = {
             48656,
             48657,
         },
     },
     { -- Step 154
-        ["Waypoint"] = 48534,
-        ["Range"] = 11.23,
-        ["Coord"] = {
-            ["x"] = 3729.1,
-            ["y"] = 737,
+        Waypoint = 48534,
+        Range = 11.23,
+        Coord = {
+            x = 3729.1,
+            y = 737,
         },
     },
     { -- Step 155
-        ["Waypoint"] = 48534,
-        ["Range"] = 8.69,
-        ["Coord"] = {
-            ["x"] = 3664.6,
-            ["y"] = 740.7,
+        Waypoint = 48534,
+        Range = 8.69,
+        Coord = {
+            x = 3664.6,
+            y = 740.7,
         },
     },
     { -- Step 156
-        ["Waypoint"] = 48534,
-        ["Range"] = 10.13,
-        ["Coord"] = {
-            ["x"] = 3664.6,
-            ["y"] = 755.9,
+        Waypoint = 48534,
+        Range = 10.13,
+        Coord = {
+            x = 3664.6,
+            y = 755.9,
         },
     },
     { -- Step 157
-        ["Waypoint"] = 48534,
-        ["Range"] = 7.98,
-        ["Coord"] = {
-            ["x"] = 3707.9,
-            ["y"] = 765.6,
+        Waypoint = 48534,
+        Range = 7.98,
+        Coord = {
+            x = 3707.9,
+            y = 765.6,
         },
     },
     { -- Step 158
-        ["Waypoint"] = 48534,
-        ["Range"] = 11.59,
-        ["Coord"] = {
-            ["x"] = 3735.3,
-            ["y"] = 810.2,
+        Waypoint = 48534,
+        Range = 11.59,
+        Coord = {
+            x = 3735.3,
+            y = 810.2,
         },
     },
     { -- Step 159
-        ["Waypoint"] = 48534,
-        ["Range"] = 13.34,
-        ["Coord"] = {
-            ["x"] = 3789.1,
-            ["y"] = 837.2,
+        Waypoint = 48534,
+        Range = 13.34,
+        Coord = {
+            x = 3789.1,
+            y = 837.2,
         },
     },
     { -- Step 160
-        ["Done"] = {
+        Done = {
             48534,
         },
-        ["Coord"] = {
-            ["x"] = 3819.6,
-            ["y"] = 876.4,
+        Coord = {
+            x = 3819.6,
+            y = 876.4,
         },
     },
     { -- Step 161
-        ["Waypoint"] = 51668,
-        ["Range"] = 12.48,
-        ["Coord"] = {
-            ["x"] = 3786.1,
-            ["y"] = 836.1,
+        Waypoint = 51668,
+        Range = 12.48,
+        Coord = {
+            x = 3786.1,
+            y = 836.1,
         },
     },
     { -- Step 162
-        ["PickUp"] = {
+        PickUp = {
             48846,
         },
-        ["Coord"] = {
-            ["x"] = 3744.1,
-            ["y"] = 842.7,
+        Coord = {
+            x = 3744.1,
+            y = 842.7,
         },
     },
     { -- Step 163
-        ["BuyMerchant"] = 160499,
+        BuyMerchant = 160499,
         Qpart = {
             [48846] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 3767.9,
-            ["y"] = 870.7,
+        Range = 0.75,
+        Coord = {
+            x = 3767.9,
+            y = 870.7,
         },
     },
     { -- Step 164
@@ -14236,41 +14234,41 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 3744.1,
-            ["y"] = 843.7,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            x = 3744.1,
+            y = 843.7,
         },
     },
     { -- Step 165
-        ["Done"] = {
+        Done = {
             48846,
         },
-        ["Coord"] = {
-            ["x"] = 3733.6,
-            ["y"] = 914.7,
+        Coord = {
+            x = 3733.6,
+            y = 914.7,
         },
     },
     { -- Step 166
-        ["PickUp"] = {
+        PickUp = {
             51602,
             48790,
             48850,
         },
-        ["Coord"] = {
-            ["x"] = 3733.6,
-            ["y"] = 914.7,
+        Coord = {
+            x = 3733.6,
+            y = 914.7,
         },
     },
     { -- Step 167
-        ["Range"] = 8.84,
-        ["Waypoint"] = 48850,
-        ["Coord"] = {
-            ["x"] = 3946.6,
-            ["y"] = 885.2,
+        Range = 8.84,
+        Waypoint = 48850,
+        Coord = {
+            x = 3946.6,
+            y = 885.2,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48790] = {
                 1,
             },
@@ -14285,7 +14283,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48790] = {
                 1,
             },
@@ -14293,10 +14291,10 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 6.4,
-        ["Coord"] = {
-            ["x"] = 3909.9,
-            ["y"] = 886.1,
+        Range = 6.4,
+        Coord = {
+            x = 3909.9,
+            y = 886.1,
         },
     },
     { -- Step 169
@@ -14308,30 +14306,30 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 16.25,
-        ["Coord"] = {
-            ["x"] = 3921.4,
-            ["y"] = 886,
+        Range = 16.25,
+        Coord = {
+            x = 3921.4,
+            y = 886,
         },
     },
     { -- Step 170
-        ["Coord"] = {
-            ["x"] = 3733.4,
-            ["y"] = 915.5,
+        Coord = {
+            x = 3733.4,
+            y = 915.5,
         },
-        ["Done"] = {
+        Done = {
             51602,
             48790,
             48850,
         },
     },
     { -- Step 171
-        ["PickUp"] = {
+        PickUp = {
             48847,
         },
-        ["Coord"] = {
-            ["x"] = 3733.4,
-            ["y"] = 915.5,
+        Coord = {
+            x = 3733.4,
+            y = 915.5,
         },
     },
     { -- Step 172
@@ -14340,29 +14338,29 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 19.64,
-        ["Coord"] = {
-            ["x"] = 3734.1,
-            ["y"] = 878.4,
+        Gossip = 1,
+        Range = 19.64,
+        Coord = {
+            x = 3734.1,
+            y = 878.4,
         },
     },
     { -- Step 173
-        ["Done"] = {
+        Done = {
             48847,
         },
-        ["Coord"] = {
-            ["x"] = 3733.9,
-            ["y"] = 915.7,
+        Coord = {
+            x = 3733.9,
+            y = 915.7,
         },
     },
     { -- Step 174
-        ["PickUp"] = {
+        PickUp = {
             51668,
         },
-        ["Coord"] = {
-            ["x"] = 3733.9,
-            ["y"] = 915.7,
+        Coord = {
+            x = 3733.9,
+            y = 915.7,
         },
     },
     { -- Step 175
@@ -14371,44 +14369,44 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["51668-1"] = 160525,
         },
-        ["Range"] = 8.87,
-        ["Coord"] = {
-            ["x"] = 3733,
-            ["y"] = 979.7,
+        Range = 8.87,
+        Coord = {
+            x = 3733,
+            y = 979.7,
         },
     },
     { -- Step 176
-        ["Coord"] = {
-            ["x"] = 3733.6,
-            ["y"] = 915.1,
+        Coord = {
+            x = 3733.6,
+            y = 915.1,
         },
-        ["Done"] = {
+        Done = {
             51668,
         },
     },
     { -- Step 178
-        ["PickUp"] = {
+        PickUp = {
             51161,
         },
-        ["Coord"] = {
-            ["x"] = 3750.9,
-            ["y"] = 861.2,
+        Coord = {
+            x = 3750.9,
+            y = 861.2,
         },
     },
     { -- Step 179
-        ["PickUp"] = {
+        PickUp = {
             51772,
         },
-        ["Coord"] = {
-            ["x"] = 3713.4,
-            ["y"] = 850.7,
+        Coord = {
+            x = 3713.4,
+            y = 850.7,
         },
     },
     { -- Step 1
-        ["Fillers"] = {
+        Fillers = {
             [48314] = {
                 1,
             },
@@ -14416,19 +14414,19 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 17.19,
-        ["Waypoint"] = 51161,
-        ["Coord"] = {
-            ["x"] = 3526.5,
-            ["y"] = 920.7,
+        Range = 17.19,
+        Waypoint = 51161,
+        Coord = {
+            x = 3526.5,
+            y = 920.7,
         },
     },
     { -- Step 1
-        ["Range"] = 11.59,
-        ["Waypoint"] = 51161,
-        ["Coord"] = {
-            ["x"] = 3509.1,
-            ["y"] = 971.7,
+        Range = 11.59,
+        Waypoint = 51161,
+        Coord = {
+            x = 3509.1,
+            y = 971.7,
         },
     },
     { -- Step 1
@@ -14437,17 +14435,17 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 17.73,
-        ["Coord"] = {
-            ["x"] = 3475.6,
-            ["y"] = 1004.2,
+        Range = 17.73,
+        Coord = {
+            x = 3475.6,
+            y = 1004.2,
         },
     },
     { -- Step 1
-        ["PickUp"] = {
+        PickUp = {
             51775,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48313] = {
                 1,
             },
@@ -14455,44 +14453,44 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["x"] = 3819.4,
-            ["y"] = 876.7,
+        Coord = {
+            x = 3819.4,
+            y = 876.7,
         },
     },
     { -- Step 1
-        ["Done"] = {
+        Done = {
             51775,
         },
-        ["Coord"] = {
-            ["x"] = 4041.6,
-            ["y"] = 826.7,
+        Coord = {
+            x = 4041.6,
+            y = 826.7,
         },
     },
     { -- Step 1
-        ["PickUp"] = {
+        PickUp = {
             48324,
         },
-        ["Coord"] = {
-            ["x"] = 4041.6,
-            ["y"] = 826.7,
+        Coord = {
+            x = 4041.6,
+            y = 826.7,
         },
     },
     { -- Step 1
-        ["PickUp"] = {
+        PickUp = {
             51162,
         },
-        ["Coord"] = {
-            ["x"] = 4042.9,
-            ["y"] = 842,
+        Coord = {
+            x = 4042.9,
+            y = 842,
         },
     },
     { -- Step 1
-        ["Waypoint"] = 51162,
-        ["Range"] = 9.22,
-        ["Coord"] = {
-            ["x"] = 4246.3,
-            ["y"] = 1124.4,
+        Waypoint = 51162,
+        Range = 9.22,
+        Coord = {
+            x = 4246.3,
+            y = 1124.4,
         },
     },
     { -- Step 1
@@ -14501,46 +14499,46 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 9.21,
-        ["Coord"] = {
-            ["x"] = 4270.3,
-            ["y"] = 1121.9,
+        Range = 9.21,
+        Coord = {
+            x = 4270.3,
+            y = 1121.9,
         },
     },
     { -- Step 1
-        ["Done"] = {
+        Done = {
             51162,
         },
-        ["Coord"] = {
-            ["x"] = 4041.5,
-            ["y"] = 827,
+        Coord = {
+            x = 4041.5,
+            y = 827,
         },
     },
     { -- Step 1
-        ["Waypoint"] = 48324,
-        ["Range"] = 16.87,
-        ["Coord"] = {
-            ["x"] = 4044.8,
-            ["y"] = 777.9,
+        Waypoint = 48324,
+        Range = 16.87,
+        Coord = {
+            x = 4044.8,
+            y = 777.9,
         },
     },
     { -- Step 1
-        ["Done"] = {
+        Done = {
             48324,
         },
-        ["Coord"] = {
-            ["x"] = 4274.3,
-            ["y"] = 546.7,
+        Coord = {
+            x = 4274.3,
+            y = 546.7,
         },
     },
     { -- Step 1
 
-        ["PickUp"] = {
+        PickUp = {
             51053,
         },
-        ["Coord"] = {
-            ["x"] = 4275.3,
-            ["y"] = 532.7,
+        Coord = {
+            x = 4275.3,
+            y = 532.7,
         },
     },
     { -- Step 1
@@ -14550,33 +14548,33 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["51053-1"] = 159747,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 4362.3,
-            ["y"] = 461.3,
+        Range = 0.75,
+        Coord = {
+            x = 4362.3,
+            y = 461.3,
         },
     },
     { -- Step 1
 
-        ["Done"] = {
+        Done = {
             51053,
         },
-        ["Coord"] = {
-            ["x"] = 4275.5,
-            ["y"] = 532.4,
+        Coord = {
+            x = 4275.5,
+            y = 532.4,
         },
     },
     { -- Step 1
 
-        ["PickUp"] = {
+        PickUp = {
             51054,
         },
-        ["Coord"] = {
-            ["x"] = 4275.3,
-            ["y"] = 531.6,
+        Coord = {
+            x = 4275.3,
+            y = 531.6,
         },
     },
     { -- Step 1
@@ -14586,31 +14584,31 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 4275.3,
-            ["y"] = 531.6,
+        Range = 0.75,
+        Coord = {
+            x = 4275.3,
+            y = 531.6,
         },
     },
     { -- Step 1
 
-        ["Done"] = {
+        Done = {
             51054,
         },
-        ["Coord"] = {
-            ["x"] = 4284.1,
-            ["y"] = 559.2,
+        Coord = {
+            x = 4284.1,
+            y = 559.2,
         },
     },
     { -- Step 2
 
-        ["PickUp"] = {
+        PickUp = {
             51055,
             51056,
         },
-        ["Coord"] = {
-            ["x"] = 4284.1,
-            ["y"] = 559.2,
+        Coord = {
+            x = 4284.1,
+            y = 559.2,
         },
     },
     { -- Step 2
@@ -14620,26 +14618,26 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47647] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 4175.2,
-            ["y"] = 792.1,
+        Range = 0.75,
+        Coord = {
+            x = 4175.2,
+            y = 792.1,
         },
     },
     { -- Step 2
 
-        ["Waypoint"] = 51056,
-        ["Range"] = 13.23,
-        ["Coord"] = {
-            ["x"] = 4192.3,
-            ["y"] = 758.5,
+        Waypoint = 51056,
+        Range = 13.23,
+        Coord = {
+            x = 4192.3,
+            y = 758.5,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47647] = {
                 1,
             },
@@ -14652,18 +14650,18 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["51056-1"] = 159757,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47647] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 4234.3,
-            ["y"] = 793.7,
+        Range = 0.69,
+        Coord = {
+            x = 4234.3,
+            y = 793.7,
         },
     },
     { -- Step 2
@@ -14673,26 +14671,26 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47647] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 4295.5,
-            ["y"] = 799.4,
+        Range = 0.75,
+        Coord = {
+            x = 4295.5,
+            y = 799.4,
         },
     },
     { -- Step 2
 
-        ["Waypoint"] = 51055,
-        ["Range"] = 9.65,
-        ["Coord"] = {
-            ["x"] = 4285.3,
-            ["y"] = 864.7,
+        Waypoint = 51055,
+        Range = 9.65,
+        Coord = {
+            x = 4285.3,
+            y = 864.7,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47647] = {
                 1,
             },
@@ -14705,15 +14703,15 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47647] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 4330.6,
-            ["y"] = 836.5,
+        Range = 0.75,
+        Coord = {
+            x = 4330.6,
+            y = 836.5,
         },
     },
     { -- Step 2
@@ -14723,30 +14721,30 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Button"] = {
+        Button = {
             ["51056-2"] = 159757,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47647] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 4249.8,
-            ["y"] = 915.2,
+        Range = 0.75,
+        Coord = {
+            x = 4249.8,
+            y = 915.2,
         },
     },
     { -- Step 2
-        ["UseGlider"] = 1,
+        UseGlider = 1,
 
-        ["Range"] = 11.64,
-        ["Waypoint"] = 51056,
-        ["Coord"] = {
-            ["x"] = 4194.5,
-            ["y"] = 632.2,
+        Range = 11.64,
+        Waypoint = 51056,
+        Coord = {
+            x = 4194.5,
+            y = 632.2,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47647] = {
                 1,
             },
@@ -14754,25 +14752,25 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     },
     { -- Step 2
 
-        ["Coord"] = {
-            ["x"] = 4283.1,
-            ["y"] = 559.4,
+        Coord = {
+            x = 4283.1,
+            y = 559.4,
         },
-        ["Done"] = {
+        Done = {
             51056,
             51055,
         },
     },
     { -- Step 2
 
-        ["PickUp"] = {
+        PickUp = {
             49138,
         },
-        ["Coord"] = {
-            ["x"] = 4300.3,
-            ["y"] = 685.1,
+        Coord = {
+            x = 4300.3,
+            y = 685.1,
         },
-        ["Fillers"] = {
+        Fillers = {
             [51057] = {
                 1,
             },
@@ -14780,13 +14778,13 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["51057-1"] = 159774,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [268665] = "51057-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [268665] = 3,
         },
     },
@@ -14797,7 +14795,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [51057] = {
                 1,
             },
@@ -14808,19 +14806,19 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["51057-1"] = 159774,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [268665] = "51057-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [268665] = 3,
         },
-        ["Range"] = 7.81,
-        ["Coord"] = {
-            ["x"] = 4378,
-            ["y"] = 647.1,
+        Range = 7.81,
+        Coord = {
+            x = 4378,
+            y = 647.1,
         },
     },
     { -- Step 2
@@ -14830,7 +14828,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49138] = {
                 1,
             },
@@ -14841,19 +14839,19 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["51057-1"] = 159774,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [268665] = "51057-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [268665] = 3,
         },
-        ["Range"] = 9.07,
-        ["Coord"] = {
-            ["x"] = 4349.2,
-            ["y"] = 813.7,
+        Range = 9.07,
+        Coord = {
+            x = 4349.2,
+            y = 813.7,
         },
     },
     { -- Step 2
@@ -14863,7 +14861,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49138] = {
                 1,
             },
@@ -14874,19 +14872,19 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["51057-1"] = 159774,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [268665] = "51057-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [268665] = 3,
         },
-        ["Range"] = 9.5,
-        ["Coord"] = {
-            ["x"] = 4440.1,
-            ["y"] = 799,
+        Range = 9.5,
+        Coord = {
+            x = 4440.1,
+            y = 799,
         },
     },
     { -- Step 2
@@ -14896,7 +14894,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47647] = {
                 1,
             },
@@ -14904,19 +14902,19 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["51057-1"] = 159774,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [268665] = "51057-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [268665] = 3,
         },
-        ["Range"] = 1.1,
-        ["Coord"] = {
-            ["x"] = 4525.7,
-            ["y"] = 742.4,
+        Range = 1.1,
+        Coord = {
+            x = 4525.7,
+            y = 742.4,
         },
     },
     { -- Step 2
@@ -14926,7 +14924,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [47647] = {
                 1,
             },
@@ -14934,31 +14932,31 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["51057-1"] = 159774,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [268665] = "51057-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [268665] = 3,
         },
-        ["Range"] = 5.1,
-        ["Coord"] = {
-            ["x"] = 4525.7,
-            ["y"] = 742.4,
+        Range = 5.1,
+        Coord = {
+            x = 4525.7,
+            y = 742.4,
         },
     },
     { -- Step 2
 
-        ["Done"] = {
+        Done = {
             49138,
         },
-        ["Coord"] = {
-            ["x"] = 4527.3,
-            ["y"] = 735.5,
+        Coord = {
+            x = 4527.3,
+            y = 735.5,
         },
-        ["Fillers"] = {
+        Fillers = {
             [47647] = {
                 1,
             },
@@ -14966,13 +14964,13 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["51057-1"] = 159774,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [268665] = "51057-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [268665] = 3,
         },
     },
@@ -14986,52 +14984,52 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["51057-1"] = 159774,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [268665] = "51057-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [268665] = 5,
         },
-        ["Range"] = 298.17,
-        ["Coord"] = {
-            ["x"] = 4527.3,
-            ["y"] = 735.5,
+        Range = 298.17,
+        Coord = {
+            x = 4527.3,
+            y = 735.5,
         },
     },
     { -- Step 2
 
-        ["Done"] = {
+        Done = {
             47499,
             51057,
         },
-        ["Coord"] = {
-            ["x"] = 4424.6,
-            ["y"] = 625.7,
+        Coord = {
+            x = 4424.6,
+            y = 625.7,
         },
-        ["LeaveQuest"] = 51059,
+        LeaveQuest = 51059,
     },
     { -- Step 2
 
-        ["UseHS"] = 48313,
-        ["Coord"] = {
-            ["x"] = 4424.6,
-            ["y"] = 625.7,
+        UseHS = 48313,
+        Coord = {
+            x = 4424.6,
+            y = 625.7,
         },
-        ["LeaveQuest"] = 51059,
-        ["Button"] = {
+        LeaveQuest = 51059,
+        Button = {
             ["22345678-1"] = 6948,
         },
     },
     { -- Step 2
-        ["Coord"] = {
-            ["x"] = 3734.1,
-            ["y"] = 915.2,
+        Coord = {
+            x = 3734.1,
+            y = 915.2,
         },
-        ["LeaveQuest"] = 51059,
-        ["Done"] = {
+        LeaveQuest = 51059,
+        Done = {
             51161,
         },
     },
@@ -15044,112 +15042,112 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 61.7,
-        ["Coord"] = {
-            ["x"] = 3558.1,
-            ["y"] = 956.2,
+        Range = 61.7,
+        Coord = {
+            x = 3558.1,
+            y = 956.2,
         },
     },
     { -- Step 2
-        ["Waypoint"] = 48314,
-        ["Range"] = 33.53,
-        ["Coord"] = {
-            ["x"] = 3511.1,
-            ["y"] = 908.7,
+        Waypoint = 48314,
+        Range = 33.53,
+        Coord = {
+            x = 3511.1,
+            y = 908.7,
         },
     },
     { -- Step 2
-        ["Done"] = {
+        Done = {
             48314,
             48313,
         },
-        ["Coord"] = {
-            ["x"] = 3485.5,
-            ["y"] = 904.2,
+        Coord = {
+            x = 3485.5,
+            y = 904.2,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             50770,
         },
-        ["Coord"] = {
-            ["x"] = 3485.5,
-            ["y"] = 904.2,
+        Coord = {
+            x = 3485.5,
+            y = 904.2,
         },
     },
     { -- Step 2
-        ["SpecialMacro"] = 1,
+        SpecialMacro = 1,
         Qpart = {
             [50770] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["50770-1"] = 158678,
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["x"] = 3484.6,
-            ["y"] = 899.2,
+        Range = 0.61,
+        Coord = {
+            x = 3484.6,
+            y = 899.2,
         },
     },
     { -- Step 2
-        ["Coord"] = {
-            ["x"] = 3484.4,
-            ["y"] = 899.2,
+        Coord = {
+            x = 3484.4,
+            y = 899.2,
         },
-        ["Done"] = {
+        Done = {
             50770,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             50539,
         },
-        ["Coord"] = {
-            ["x"] = 3484.4,
-            ["y"] = 899.2,
+        Coord = {
+            x = 3484.4,
+            y = 899.2,
         },
     },
     { -- Step 2
-        ["Range"] = 10.76,
-        ["Waypoint"] = 50539,
-        ["Coord"] = {
-            ["x"] = 3514.1,
-            ["y"] = 926.5,
+        Range = 10.76,
+        Waypoint = 50539,
+        Coord = {
+            x = 3514.1,
+            y = 926.5,
         },
     },
     { -- Step 2
-        ["Range"] = 5.71,
-        ["Waypoint"] = 50539,
-        ["Coord"] = {
-            ["x"] = 3497.6,
-            ["y"] = 972.7,
+        Range = 5.71,
+        Waypoint = 50539,
+        Coord = {
+            x = 3497.6,
+            y = 972.7,
         },
     },
     { -- Step 2
-        ["Range"] = 8.15,
-        ["Waypoint"] = 50539,
-        ["Coord"] = {
-            ["x"] = 3491.1,
-            ["y"] = 927.7,
+        Range = 8.15,
+        Waypoint = 50539,
+        Coord = {
+            x = 3491.1,
+            y = 927.7,
         },
     },
     { -- Step 2
-        ["Range"] = 15.35,
-        ["Waypoint"] = 50539,
-        ["Coord"] = {
-            ["x"] = 3469.3,
-            ["y"] = 968.9,
+        Range = 15.35,
+        Waypoint = 50539,
+        Coord = {
+            x = 3469.3,
+            y = 968.9,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             50536,
         },
-        ["Coord"] = {
-            ["x"] = 3466.6,
-            ["y"] = 1034,
+        Coord = {
+            x = 3466.6,
+            y = 1034,
         },
     },
     { -- Step 2
@@ -15158,28 +15156,28 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 3463.3,
-            ["y"] = 1036.5,
+        Range = 0.75,
+        Coord = {
+            x = 3463.3,
+            y = 1036.5,
         },
     },
     { -- Step 2
-        ["Coord"] = {
-            ["x"] = 3358.6,
-            ["y"] = 954.9,
+        Coord = {
+            x = 3358.6,
+            y = 954.9,
         },
-        ["Done"] = {
+        Done = {
             50539,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             48315,
         },
-        ["Coord"] = {
-            ["x"] = 3359.1,
-            ["y"] = 955,
+        Coord = {
+            x = 3359.1,
+            y = 955,
         },
     },
     { -- Step 2
@@ -15188,10 +15186,10 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 3415.5,
-            ["y"] = 934.2,
+        Range = 0.75,
+        Coord = {
+            x = 3415.5,
+            y = 934.2,
         },
     },
     { -- Step 2
@@ -15200,10 +15198,10 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 3,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 3360.8,
-            ["y"] = 873,
+        Range = 0.75,
+        Coord = {
+            x = 3360.8,
+            y = 873,
         },
     },
     { -- Step 2
@@ -15212,129 +15210,129 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 4,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 3302.1,
-            ["y"] = 931.7,
+        Range = 0.75,
+        Coord = {
+            x = 3302.1,
+            y = 931.7,
         },
     },
     { -- Step 2
-        ["Range"] = 11.47,
-        ["Waypoint"] = 48315,
-        ["Coord"] = {
-            ["x"] = 3317.8,
-            ["y"] = 966.4,
+        Range = 11.47,
+        Waypoint = 48315,
+        Coord = {
+            x = 3317.8,
+            y = 966.4,
         },
     },
     { -- Step 2
-        ["Range"] = 13.25,
-        ["Waypoint"] = 48315,
-        ["Coord"] = {
-            ["x"] = 3289.1,
-            ["y"] = 1000.1,
+        Range = 13.25,
+        Waypoint = 48315,
+        Coord = {
+            x = 3289.1,
+            y = 1000.1,
         },
     },
     { -- Step 2
-        ["QpartPart"] = {
+        QpartPart = {
             [48315] = {
                 1,
             },
         },
-        ["TrigText"] = "1/2",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 3294.1,
-            ["y"] = 1014.1,
+        TrigText = "1/2",
+        Range = 0.75,
+        Coord = {
+            x = 3294.1,
+            y = 1014.1,
         },
     },
     { -- Step 2
-        ["Range"] = 11.22,
-        ["Waypoint"] = 48315,
-        ["Coord"] = {
-            ["x"] = 3263.6,
-            ["y"] = 1071.8,
+        Range = 11.22,
+        Waypoint = 48315,
+        Coord = {
+            x = 3263.6,
+            y = 1071.8,
         },
     },
     { -- Step 2
-        ["QpartPart"] = {
+        QpartPart = {
             [48315] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["TrigText"] = "2/2",
-        ["Coord"] = {
-            ["x"] = 3213.4,
-            ["y"] = 1053,
+        Range = 0.69,
+        TrigText = "2/2",
+        Coord = {
+            x = 3213.4,
+            y = 1053,
         },
     },
     { -- Step 2
-        ["Coord"] = {
-            ["x"] = 3358.5,
-            ["y"] = 955.4,
+        Coord = {
+            x = 3358.5,
+            y = 955.4,
         },
-        ["Done"] = {
+        Done = {
             48315,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             50561,
         },
-        ["Coord"] = {
-            ["x"] = 3359.4,
-            ["y"] = 965.2,
+        Coord = {
+            x = 3359.4,
+            y = 965.2,
         },
     },
     { -- Step 2
-        ["Range"] = 21.47,
-        ["Waypoint"] = 50536,
-        ["Coord"] = {
-            ["x"] = 3400.5,
-            ["y"] = 967.9,
+        Range = 21.47,
+        Waypoint = 50536,
+        Coord = {
+            x = 3400.5,
+            y = 967.9,
         },
     },
     { -- Step 2
-        ["Range"] = 5.48,
-        ["Waypoint"] = 50536,
-        ["Coord"] = {
-            ["x"] = 3465,
-            ["y"] = 1015.7,
+        Range = 5.48,
+        Waypoint = 50536,
+        Coord = {
+            x = 3465,
+            y = 1015.7,
         },
     },
     { -- Step 2
-        ["Done"] = {
+        Done = {
             50536,
         },
-        ["Coord"] = {
-            ["x"] = 3466.4,
-            ["y"] = 1034.5,
+        Coord = {
+            x = 3466.4,
+            y = 1034.5,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             48871,
         },
-        ["Coord"] = {
-            ["x"] = 3466.4,
-            ["y"] = 1034.5,
+        Coord = {
+            x = 3466.4,
+            y = 1034.5,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             48872,
         },
-        ["Coord"] = {
-            ["x"] = 3458.9,
-            ["y"] = 1039.9,
+        Coord = {
+            x = 3458.9,
+            y = 1039.9,
         },
     },
     { -- Step 2
-        ["Waypoint"] = 48871,
-        ["Range"] = 11.34,
-        ["Coord"] = {
-            ["x"] = 3461.8,
-            ["y"] = 1005.2,
+        Waypoint = 48871,
+        Range = 11.34,
+        Coord = {
+            x = 3461.8,
+            y = 1005.2,
         },
     },
     { -- Step 2
@@ -15346,53 +15344,53 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 18.76,
-        ["Coord"] = {
-            ["x"] = 3399.6,
-            ["y"] = 972.9,
+        Range = 18.76,
+        Coord = {
+            x = 3399.6,
+            y = 972.9,
         },
     },
     { -- Step 2
-        ["Waypoint"] = 48871,
-        ["Range"] = 8.75,
-        ["Coord"] = {
-            ["x"] = 3462.1,
-            ["y"] = 1005.7,
+        Waypoint = 48871,
+        Range = 8.75,
+        Coord = {
+            x = 3462.1,
+            y = 1005.7,
         },
     },
     { -- Step 2
-        ["Done"] = {
+        Done = {
             48872,
             48871,
         },
-        ["Coord"] = {
-            ["x"] = 3464.6,
-            ["y"] = 1034.3,
+        Coord = {
+            x = 3464.6,
+            y = 1034.3,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             50535,
         },
-        ["Coord"] = {
-            ["x"] = 3465.9,
-            ["y"] = 1034.3,
+        Coord = {
+            x = 3465.9,
+            y = 1034.3,
         },
     },
     { -- Step 2
-        ["Waypoint"] = 50535,
-        ["Range"] = 8.13,
-        ["Coord"] = {
-            ["x"] = 3398.5,
-            ["y"] = 967.9,
+        Waypoint = 50535,
+        Range = 8.13,
+        Coord = {
+            x = 3398.5,
+            y = 967.9,
         },
     },
     { -- Step 2
-        ["Waypoint"] = 50535,
-        ["Range"] = 9.54,
-        ["Coord"] = {
-            ["x"] = 3392.5,
-            ["y"] = 841.6,
+        Waypoint = 50535,
+        Range = 9.54,
+        Coord = {
+            x = 3392.5,
+            y = 841.6,
         },
     },
     { -- Step 2
@@ -15401,44 +15399,44 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 5.01,
-        ["Coord"] = {
-            ["x"] = 3359.6,
-            ["y"] = 853.9,
+        Range = 5.01,
+        Coord = {
+            x = 3359.6,
+            y = 853.9,
         },
     },
     { -- Step 2
-        ["Waypoint"] = 50535,
-        ["Range"] = 7.43,
-        ["Coord"] = {
-            ["x"] = 3464.8,
-            ["y"] = 1008.6,
+        Waypoint = 50535,
+        Range = 7.43,
+        Coord = {
+            x = 3464.8,
+            y = 1008.6,
         },
     },
     { -- Step 2
-        ["Done"] = {
+        Done = {
             50535,
         },
-        ["Coord"] = {
-            ["x"] = 3466.3,
-            ["y"] = 1034,
+        Coord = {
+            x = 3466.3,
+            y = 1034,
         },
     },
     { -- Step 2
-        ["Waypoint"] = 50561,
-        ["Range"] = 17.43,
-        ["Coord"] = {
-            ["x"] = 3512.6,
-            ["y"] = 918.5,
+        Waypoint = 50561,
+        Range = 17.43,
+        Coord = {
+            x = 3512.6,
+            y = 918.5,
         },
     },
     { -- Step 2
-        ["Done"] = {
+        Done = {
             50561,
         },
-        ["Coord"] = {
-            ["x"] = 3485.3,
-            ["y"] = 900.1,
+        Coord = {
+            x = 3485.3,
+            y = 900.1,
         },
     },
     { -- Step 2
@@ -15447,40 +15445,40 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 3501.1,
-            ["y"] = 910.7,
+        Range = 0.75,
+        Coord = {
+            x = 3501.1,
+            y = 910.7,
         },
     },
     { -- Step 2
-        ["Done"] = {
+        Done = {
             47324,
         },
-        ["ETA"] = 49,
-        ["Coord"] = {
-            ["x"] = 4835.3,
-            ["y"] = 1888.3,
+        ETA = 49,
+        Coord = {
+            x = 4835.3,
+            y = 1888.3,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             49334,
             50641,
             49327,
         },
-        ["Coord"] = {
-            ["x"] = 4835.6,
-            ["y"] = 1890.4,
+        Coord = {
+            x = 4835.6,
+            y = 1890.4,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             50818,
         },
-        ["Coord"] = {
-            ["x"] = 4717.3,
-            ["y"] = 1856.5,
+        Coord = {
+            x = 4717.3,
+            y = 1856.5,
         },
     },
     { -- Step 2
@@ -15489,7 +15487,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50641] = {
                 1,
             },
@@ -15499,10 +15497,10 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 4646,
-            ["y"] = 1976.9,
+        Range = 0.75,
+        Coord = {
+            x = 4646,
+            y = 1976.9,
         },
     },
     { -- Step 2
@@ -15516,53 +15514,53 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Range"] = 12.1,
-        ["Coord"] = {
-            ["x"] = 4648.6,
-            ["y"] = 1978.4,
+        Range = 12.1,
+        Coord = {
+            x = 4648.6,
+            y = 1978.4,
         },
     },
     { -- Step 2
-        ["Waypoint"] = 49327,
-        ["Range"] = 20.71,
-        ["Coord"] = {
-            ["x"] = 4762,
-            ["y"] = 1883.3,
+        Waypoint = 49327,
+        Range = 20.71,
+        Coord = {
+            x = 4762,
+            y = 1883.3,
         },
     },
     { -- Step 2
-        ["Done"] = {
+        Done = {
             50641,
             49327,
         },
-        ["Coord"] = {
-            ["x"] = 4835.6,
-            ["y"] = 1891.3,
+        Coord = {
+            x = 4835.6,
+            y = 1891.3,
         },
     },
     { -- Step 2
-        ["SetHS"] = 49340,
-        ["Coord"] = {
-            ["x"] = 4859.5,
-            ["y"] = 1963.7,
+        SetHS = 49340,
+        Coord = {
+            x = 4859.5,
+            y = 1963.7,
         },
     },
     { -- Step 2
-        ["Done"] = {
+        Done = {
             49334,
         },
-        ["Coord"] = {
-            ["x"] = 4808.8,
-            ["y"] = 1949.9,
+        Coord = {
+            x = 4808.8,
+            y = 1949.9,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             49340,
         },
-        ["Coord"] = {
-            ["x"] = 4812.8,
-            ["y"] = 1950.7,
+        Coord = {
+            x = 4812.8,
+            y = 1950.7,
         },
     },
     { -- Step 2
@@ -15571,57 +15569,57 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 4812.8,
-            ["y"] = 1950.7,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            x = 4812.8,
+            y = 1950.7,
         },
     },
     { -- Step 2
-        ["Done"] = {
+        Done = {
             49340,
         },
-        ["Coord"] = {
-            ["x"] = 4843.8,
-            ["y"] = 1951.2,
+        Coord = {
+            x = 4843.8,
+            y = 1951.2,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             49662,
         },
-        ["Coord"] = {
-            ["x"] = 4843.8,
-            ["y"] = 1951.2,
+        Coord = {
+            x = 4843.8,
+            y = 1951.2,
         },
     },
     { -- Step 2
-        ["Waypoint"] = 50656,
-        ["Range"] = 5.42,
-        ["Coord"] = {
-            ["x"] = 4873.3,
-            ["y"] = 1953.4,
+        Waypoint = 50656,
+        Range = 5.42,
+        Coord = {
+            x = 4873.3,
+            y = 1953.4,
         },
     },
     { -- Step 2
-        ["GetFP"] = 2162,
-        ["Range"] = 2.8,
-        ["Coord"] = {
-            ["x"] = 4806.6,
-            ["y"] = 2052,
+        GetFP = 2162,
+        Range = 2.8,
+        Coord = {
+            x = 4806.6,
+            y = 2052,
         },
     },
     { -- Step 2
-        ["ExtraLineText"] = "MISSING_Q",
-        ["PickUp"] = {
+        ExtraLineText = "MISSING_Q",
+        PickUp = {
             48332,
             48334,
             49001,
         },
-        ["Coord"] = {
-            ["x"] = 3598.9,
-            ["y"] = 2240.6,
+        Coord = {
+            x = 3598.9,
+            y = 2240.6,
         },
     },
     { -- Step 2
@@ -15631,7 +15629,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [49001] = {
                 1,
             },
@@ -15639,10 +15637,10 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 17.41,
-        ["Coord"] = {
-            ["x"] = 3486.8,
-            ["y"] = 2052.5,
+        Range = 17.41,
+        Coord = {
+            x = 3486.8,
+            y = 2052.5,
         },
     },
     { -- Step 2
@@ -15655,34 +15653,34 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 28.12,
-        ["Coord"] = {
-            ["x"] = 3499.3,
-            ["y"] = 2056.1,
+        Range = 28.12,
+        Coord = {
+            x = 3499.3,
+            y = 2056.1,
         },
     },
     { -- Step 2
 
-        ["Done"] = {
+        Done = {
             48332,
             48334,
             49001,
         },
-        ["Coord"] = {
-            ["x"] = 3598.8,
-            ["y"] = 2241.1,
+        Coord = {
+            x = 3598.8,
+            y = 2241.1,
         },
     },
     { -- Step 2
 
-        ["PickUp"] = {
+        PickUp = {
             48335,
             48331,
             49139,
         },
-        ["Coord"] = {
-            ["x"] = 3598.6,
-            ["y"] = 2241.3,
+        Coord = {
+            x = 3598.6,
+            y = 2241.3,
         },
     },
     { -- Step 2
@@ -15692,7 +15690,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48331] = {
                 1,
             },
@@ -15700,24 +15698,24 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48331-1"] = 154051,
         },
-        ["Range"] = 7.66,
-        ["Coord"] = {
-            ["x"] = 3402.5,
-            ["y"] = 2321.6,
+        Range = 7.66,
+        Coord = {
+            x = 3402.5,
+            y = 2321.6,
         },
     },
     { -- Step 2
 
-        ["Waypoint"] = 49139,
-        ["Range"] = 11.63,
-        ["Coord"] = {
-            ["x"] = 3528.1,
-            ["y"] = 2321.3,
+        Waypoint = 49139,
+        Range = 11.63,
+        Coord = {
+            x = 3528.1,
+            y = 2321.3,
         },
-        ["Fillers"] = {
+        Fillers = {
             [48331] = {
                 1,
             },
@@ -15725,7 +15723,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48331-1"] = 154051,
         },
     },
@@ -15736,7 +15734,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [48331] = {
                 1,
             },
@@ -15744,13 +15742,13 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48331-1"] = 154051,
         },
-        ["Range"] = 6.36,
-        ["Coord"] = {
-            ["x"] = 3552.5,
-            ["y"] = 2381.1,
+        Range = 6.36,
+        Coord = {
+            x = 3552.5,
+            y = 2381.1,
         },
     },
     { -- Step 2
@@ -15763,44 +15761,44 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["48331-1"] = 154051,
         },
-        ["Range"] = 27.98,
-        ["Coord"] = {
-            ["x"] = 3540.8,
-            ["y"] = 2359,
+        Range = 27.98,
+        Coord = {
+            x = 3540.8,
+            y = 2359,
         },
     },
     { -- Step 2
 
-        ["Done"] = {
+        Done = {
             48335,
             48331,
             49139,
         },
-        ["Coord"] = {
-            ["x"] = 3599.6,
-            ["y"] = 2240,
+        Coord = {
+            x = 3599.6,
+            y = 2240,
         },
     },
     { -- Step 2
 
-        ["PickUp"] = {
+        PickUp = {
             48330,
         },
-        ["Coord"] = {
-            ["x"] = 3600.1,
-            ["y"] = 2240.8,
+        Coord = {
+            x = 3600.1,
+            y = 2240.8,
         },
     },
     { -- Step 2
 
-        ["Waypoint"] = 48330,
-        ["Range"] = 12.49,
-        ["Coord"] = {
-            ["x"] = 3532.6,
-            ["y"] = 2309,
+        Waypoint = 48330,
+        Range = 12.49,
+        Coord = {
+            x = 3532.6,
+            y = 2309,
         },
     },
     { -- Step 2
@@ -15810,168 +15808,168 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 11.29,
-        ["Coord"] = {
-            ["x"] = 3470.1,
-            ["y"] = 2442.8,
+        Range = 11.29,
+        Coord = {
+            x = 3470.1,
+            y = 2442.8,
         },
     },
     { -- Step 2
 
-        ["Done"] = {
+        Done = {
             48330,
         },
-        ["Coord"] = {
-            ["x"] = 3600.1,
-            ["y"] = 2240.8,
+        Coord = {
+            x = 3600.1,
+            y = 2240.8,
         },
     },
     { -- Step 2
-        ["Done"] = {
+        Done = {
             49662,
         },
-        ["Coord"] = {
-            ["x"] = 3766.1,
-            ["y"] = 2713.4,
+        Coord = {
+            x = 3766.1,
+            y = 2713.4,
         },
     },
     { -- Step 2
-        ["PickUp"] = {
+        PickUp = {
             50745,
         },
-        ["Coord"] = {
-            ["x"] = 3766.1,
-            ["y"] = 2713.4,
+        Coord = {
+            x = 3766.1,
+            y = 2713.4,
         },
     },
     { -- Step 2
-        ["SpecialETAHide"] = 1,
-        ["ETA"] = 79,
-        ["RaidIcon"] = 135172,
-        ["Range"] = 16.48,
-        ["Waypoint"] = 50745,
-        ["Coord"] = {
-            ["x"] = 3769.6,
-            ["y"] = 2792.9,
+        SpecialETAHide = 1,
+        ETA = 79,
+        RaidIcon = 135172,
+        Range = 16.48,
+        Waypoint = 50745,
+        Coord = {
+            x = 3769.6,
+            y = 2792.9,
         },
     },
     { -- Step 2
-        ["SpecialETAHide"] = 1,
-        ["Range"] = 9.57,
-        ["Waypoint"] = 50745,
-        ["Coord"] = {
-            ["x"] = 3730.4,
-            ["y"] = 2793.6,
+        SpecialETAHide = 1,
+        Range = 9.57,
+        Waypoint = 50745,
+        Coord = {
+            x = 3730.4,
+            y = 2793.6,
         },
     },
     { -- Step 2
-        ["SpecialETAHide"] = 1,
-        ["Range"] = 13.93,
-        ["Waypoint"] = 50745,
-        ["Coord"] = {
-            ["x"] = 3683.1,
-            ["y"] = 2769,
+        SpecialETAHide = 1,
+        Range = 13.93,
+        Waypoint = 50745,
+        Coord = {
+            x = 3683.1,
+            y = 2769,
         },
     },
     { -- Step 2
-        ["SpecialETAHide"] = 1,
-        ["Range"] = 18.17,
-        ["Waypoint"] = 50745,
-        ["Coord"] = {
-            ["x"] = 3626,
-            ["y"] = 2758.6,
+        SpecialETAHide = 1,
+        Range = 18.17,
+        Waypoint = 50745,
+        Coord = {
+            x = 3626,
+            y = 2758.6,
         },
     },
     { -- Step 2
-        ["SpecialETAHide"] = 1,
-        ["Range"] = 14.89,
-        ["Waypoint"] = 50745,
-        ["Coord"] = {
-            ["x"] = 3498.3,
-            ["y"] = 2753.1,
+        SpecialETAHide = 1,
+        Range = 14.89,
+        Waypoint = 50745,
+        Coord = {
+            x = 3498.3,
+            y = 2753.1,
         },
     },
     { -- Step 3
-        ["SpecialETAHide"] = 1,
-        ["Range"] = 4.91,
-        ["GetFP"] = 2111,
-        ["Coord"] = {
-            ["x"] = 3467.9,
-            ["y"] = 2738,
+        SpecialETAHide = 1,
+        Range = 4.91,
+        GetFP = 2111,
+        Coord = {
+            x = 3467.9,
+            y = 2738,
         },
     },
     { -- Step 3
-        ["SpecialETAHide"] = 1,
-        ["Range"] = 5.58,
-        ["Waypoint"] = 50745,
-        ["Coord"] = {
-            ["x"] = 3426.9,
-            ["y"] = 2730,
+        SpecialETAHide = 1,
+        Range = 5.58,
+        Waypoint = 50745,
+        Coord = {
+            x = 3426.9,
+            y = 2730,
         },
     },
     { -- Step 3
-        ["Coord"] = {
-            ["x"] = 3422.4,
-            ["y"] = 2686.6,
+        Coord = {
+            x = 3422.4,
+            y = 2686.6,
         },
-        ["Done"] = {
+        Done = {
             50745,
         },
     },
     { -- Step 3
-        ["PickUp"] = {
+        PickUp = {
             49664,
             49667,
         },
-        ["Coord"] = {
-            ["x"] = 3421.4,
-            ["y"] = 2682.1,
+        Coord = {
+            x = 3421.4,
+            y = 2682.1,
         },
     },
     { -- Step 3
-        ["Waypoint"] = 49664,
-        ["Range"] = 7.77,
-        ["Coord"] = {
-            ["x"] = 3429.3,
-            ["y"] = 2732.6,
+        Waypoint = 49664,
+        Range = 7.77,
+        Coord = {
+            x = 3429.3,
+            y = 2732.6,
         },
     },
     { -- Step 3
-        ["Waypoint"] = 49664,
-        ["Range"] = 13.86,
-        ["Coord"] = {
-            ["x"] = 3507.5,
-            ["y"] = 2778.1,
+        Waypoint = 49664,
+        Range = 13.86,
+        Coord = {
+            x = 3507.5,
+            y = 2778.1,
         },
     },
     { -- Step 3
-        ["Done"] = {
+        Done = {
             49664,
         },
-        ["Coord"] = {
-            ["x"] = 3547.1,
-            ["y"] = 2829.6,
+        Coord = {
+            x = 3547.1,
+            y = 2829.6,
         },
     },
     { -- Step 3
-        ["PickUp"] = {
+        PickUp = {
             49665,
             49666,
         },
-        ["Coord"] = {
-            ["x"] = 3547.1,
-            ["y"] = 2829.6,
+        Coord = {
+            x = 3547.1,
+            y = 2829.6,
         },
     },
     { -- Step 3
-        ["ExtraLineText"] = "USE_BANNER_ON_CORPSES",
+        ExtraLineText = "USE_BANNER_ON_CORPSES",
         Qpart = {
             [49667] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Fillers"] = {
+        Gossip = 1,
+        Fillers = {
             [49666] = {
                 1,
             },
@@ -15979,23 +15977,23 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49666-1"] = 158884,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [272019] = "49666-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [272019] = 5,
         },
-        ["Range"] = 11.56,
-        ["Coord"] = {
-            ["x"] = 3388.1,
-            ["y"] = 2875.9,
+        Range = 11.56,
+        Coord = {
+            x = 3388.1,
+            y = 2875.9,
         },
     },
     { -- Step 3
-        ["ExtraLineText"] = "USE_BANNER_ON_CORPSES",
+        ExtraLineText = "USE_BANNER_ON_CORPSES",
         Qpart = {
             [49666] = {
                 1,
@@ -16004,100 +16002,100 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Button"] = {
+        Gossip = 1,
+        Button = {
             ["49666-1"] = 158884,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [272019] = "49666-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [272019] = 5,
         },
-        ["Range"] = 34.99,
-        ["Coord"] = {
-            ["x"] = 3386.6,
-            ["y"] = 2875.6,
+        Range = 34.99,
+        Coord = {
+            x = 3386.6,
+            y = 2875.6,
         },
     },
     { -- Step 3
-        ["Waypoint"] = 49665,
-        ["Range"] = 8.78,
-        ["Coord"] = {
-            ["x"] = 3478,
-            ["y"] = 2802.1,
+        Waypoint = 49665,
+        Range = 8.78,
+        Coord = {
+            x = 3478,
+            y = 2802.1,
         },
     },
     { -- Step 3
-        ["Coord"] = {
-            ["x"] = 3547.1,
-            ["y"] = 2829.6,
+        Coord = {
+            x = 3547.1,
+            y = 2829.6,
         },
-        ["Done"] = {
+        Done = {
             49665,
             49666,
         },
     },
     { -- Step 3
-        ["PickUp"] = {
+        PickUp = {
             49668,
         },
-        ["Coord"] = {
-            ["x"] = 3547.1,
-            ["y"] = 2829.6,
+        Coord = {
+            x = 3547.1,
+            y = 2829.6,
         },
     },
     { -- Step 3
-        ["PickUp"] = {
+        PickUp = {
             50746,
         },
-        ["Coord"] = {
-            ["x"] = 3538.9,
-            ["y"] = 2831.6,
+        Coord = {
+            x = 3538.9,
+            y = 2831.6,
         },
     },
     { -- Step 3
-        ["Range"] = 12.14,
-        ["Waypoint"] = 50746,
-        ["Coord"] = {
-            ["x"] = 3505,
-            ["y"] = 2775.6,
+        Range = 12.14,
+        Waypoint = 50746,
+        Coord = {
+            x = 3505,
+            y = 2775.6,
         },
     },
     { -- Step 3
-        ["Range"] = 6.54,
-        ["Waypoint"] = 50746,
-        ["Coord"] = {
-            ["x"] = 3425.8,
-            ["y"] = 2730.3,
+        Range = 6.54,
+        Waypoint = 50746,
+        Coord = {
+            x = 3425.8,
+            y = 2730.3,
         },
     },
     { -- Step 3
-        ["Coord"] = {
-            ["x"] = 3421.6,
-            ["y"] = 2681.6,
+        Coord = {
+            x = 3421.6,
+            y = 2681.6,
         },
-        ["Done"] = {
+        Done = {
             50746,
             49667,
         },
     },
     { -- Step 3
-        ["PickUp"] = {
+        PickUp = {
             49141,
             50748,
         },
-        ["Coord"] = {
-            ["x"] = 3421.6,
-            ["y"] = 2682.5,
+        Coord = {
+            x = 3421.6,
+            y = 2682.5,
         },
     },
     { -- Step 3
-        ["Range"] = 11.7,
-        ["Waypoint"] = 49668,
-        ["Coord"] = {
-            ["x"] = 3370.1,
-            ["y"] = 2770.1,
+        Range = 11.7,
+        Waypoint = 49668,
+        Coord = {
+            x = 3370.1,
+            y = 2770.1,
         },
     },
     { -- Step 3
@@ -16106,19 +16104,19 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49668-1"] = 158896,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [265957] = "49668-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [265957] = 15,
         },
-        ["Range"] = 10.43,
-        ["Coord"] = {
-            ["x"] = 3238.1,
-            ["y"] = 2834.3,
+        Range = 10.43,
+        Coord = {
+            x = 3238.1,
+            y = 2834.3,
         },
     },
     { -- Step 3
@@ -16127,19 +16125,19 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49668-2"] = 158896,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [265957] = "49668-2",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [265957] = 15,
         },
-        ["Range"] = 13.92,
-        ["Coord"] = {
-            ["x"] = 3130.1,
-            ["y"] = 2827.6,
+        Range = 13.92,
+        Coord = {
+            x = 3130.1,
+            y = 2827.6,
         },
     },
     { -- Step 3
@@ -16148,70 +16146,70 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 3,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49668-3"] = 158896,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [265957] = "49668-3",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [265957] = 15,
         },
-        ["Range"] = 16.88,
-        ["Coord"] = {
-            ["x"] = 3041.5,
-            ["y"] = 2823.4,
+        Range = 16.88,
+        Coord = {
+            x = 3041.5,
+            y = 2823.4,
         },
     },
     { -- Step 3
-        ["PickUp"] = {
+        PickUp = {
             49437,
         },
-        ["Coord"] = {
-            ["x"] = 2988,
-            ["y"] = 2783.3,
+        Coord = {
+            x = 2988,
+            y = 2783.3,
         },
     },
     { -- Step 3
-        ["Coord"] = {
-            ["x"] = 2914.1,
-            ["y"] = 2747.3,
+        Coord = {
+            x = 2914.1,
+            y = 2747.3,
         },
-        ["Done"] = {
+        Done = {
             49668,
         },
     },
     { -- Step 3
-        ["PickUp"] = {
+        PickUp = {
             49669,
             50757,
         },
-        ["Coord"] = {
-            ["x"] = 2914.1,
-            ["y"] = 2748.3,
+        Coord = {
+            x = 2914.1,
+            y = 2748.3,
         },
     },
     { -- Step 3
-        ["Waypoint"] = 50757,
-        ["Range"] = 10.46,
-        ["Coord"] = {
-            ["x"] = 2883.1,
-            ["y"] = 2769.1,
+        Waypoint = 50757,
+        Range = 10.46,
+        Coord = {
+            x = 2883.1,
+            y = 2769.1,
         },
-        ["Fillers"] = {
+        Fillers = {
             [50757] = {
                 1,
             },
         },
     },
     { -- Step 3
-        ["Waypoint"] = 50757,
-        ["Range"] = 8.29,
-        ["Coord"] = {
-            ["x"] = 2896.6,
-            ["y"] = 2788.9,
+        Waypoint = 50757,
+        Range = 8.29,
+        Coord = {
+            x = 2896.6,
+            y = 2788.9,
         },
-        ["Fillers"] = {
+        Fillers = {
             [50757] = {
                 1,
             },
@@ -16223,38 +16221,38 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50757] = {
                 1,
             },
         },
-        ["Range"] = 11.91,
-        ["Coord"] = {
-            ["x"] = 2977.3,
-            ["y"] = 2830.6,
+        Range = 11.91,
+        Coord = {
+            x = 2977.3,
+            y = 2830.6,
         },
     },
     { -- Step 3
-        ["Waypoint"] = 50757,
-        ["Range"] = 17.44,
-        ["Coord"] = {
-            ["x"] = 2880.1,
-            ["y"] = 2851.1,
+        Waypoint = 50757,
+        Range = 17.44,
+        Coord = {
+            x = 2880.1,
+            y = 2851.1,
         },
-        ["Fillers"] = {
+        Fillers = {
             [50757] = {
                 1,
             },
         },
     },
     { -- Step 3
-        ["Waypoint"] = 50757,
-        ["Range"] = 11.25,
-        ["Coord"] = {
-            ["x"] = 2893.8,
-            ["y"] = 2880.4,
+        Waypoint = 50757,
+        Range = 11.25,
+        Coord = {
+            x = 2893.8,
+            y = 2880.4,
         },
-        ["Fillers"] = {
+        Fillers = {
             [50757] = {
                 1,
             },
@@ -16266,15 +16264,15 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50757] = {
                 1,
             },
         },
-        ["Range"] = 12.66,
-        ["Coord"] = {
-            ["x"] = 2922.9,
-            ["y"] = 2939.3,
+        Range = 12.66,
+        Coord = {
+            x = 2922.9,
+            y = 2939.3,
         },
     },
     { -- Step 3
@@ -16283,29 +16281,29 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 31.2,
-        ["Coord"] = {
-            ["x"] = 2923.1,
-            ["y"] = 2936.1,
+        Range = 31.2,
+        Coord = {
+            x = 2923.1,
+            y = 2936.1,
         },
     },
     { -- Step 3
-        ["Done"] = {
+        Done = {
             50757,
             49669,
         },
-        ["Coord"] = {
-            ["x"] = 2913.1,
-            ["y"] = 2747.1,
+        Coord = {
+            x = 2913.1,
+            y = 2747.1,
         },
     },
     { -- Step 3
-        ["PickUp"] = {
+        PickUp = {
             50749,
         },
-        ["Coord"] = {
-            ["x"] = 2913.1,
-            ["y"] = 2747.1,
+        Coord = {
+            x = 2913.1,
+            y = 2747.1,
         },
     },
     { -- Step 3
@@ -16314,86 +16312,86 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 0.99,
-        ["Coord"] = {
-            ["x"] = 2928.6,
-            ["y"] = 2739.1,
+        Range = 0.99,
+        Coord = {
+            x = 2928.6,
+            y = 2739.1,
         },
     },
     { -- Step 3
-        ["Waypoint"] = 50749,
-        ["Range"] = 33.72,
-        ["Coord"] = {
-            ["x"] = 3016.1,
-            ["y"] = 2807.9,
+        Waypoint = 50749,
+        Range = 33.72,
+        Coord = {
+            x = 3016.1,
+            y = 2807.9,
         },
     },
     { -- Step 3
-        ["Waypoint"] = 50749,
-        ["Range"] = 27.42,
-        ["Coord"] = {
-            ["x"] = 3281.9,
-            ["y"] = 2819.6,
+        Waypoint = 50749,
+        Range = 27.42,
+        Coord = {
+            x = 3281.9,
+            y = 2819.6,
         },
     },
     { -- Step 3
-        ["Waypoint"] = 50749,
-        ["Range"] = 27.01,
-        ["Coord"] = {
-            ["x"] = 3335.1,
-            ["y"] = 2774,
+        Waypoint = 50749,
+        Range = 27.01,
+        Coord = {
+            x = 3335.1,
+            y = 2774,
         },
     },
     { -- Step 3
-        ["Range"] = 7.83,
-        ["Waypoint"] = 50749,
-        ["Coord"] = {
-            ["x"] = 3427.3,
-            ["y"] = 2728.6,
+        Range = 7.83,
+        Waypoint = 50749,
+        Coord = {
+            x = 3427.3,
+            y = 2728.6,
         },
     },
     { -- Step 3
-        ["Coord"] = {
-            ["x"] = 3420.3,
-            ["y"] = 2679.5,
+        Coord = {
+            x = 3420.3,
+            y = 2679.5,
         },
-        ["Done"] = {
+        Done = {
             50749,
             49437,
         },
     },
     { -- Step 3
-        ["Waypoint"] = 50748,
-        ["Range"] = 9.39,
-        ["Coord"] = {
-            ["x"] = 3423.6,
-            ["y"] = 2731.9,
+        Waypoint = 50748,
+        Range = 9.39,
+        Coord = {
+            x = 3423.6,
+            y = 2731.9,
         },
     },
     { -- Step 3
-        ["Waypoint"] = 50748,
-        ["Range"] = 12.57,
-        ["Coord"] = {
-            ["x"] = 3357,
-            ["y"] = 2771.1,
+        Waypoint = 50748,
+        Range = 12.57,
+        Coord = {
+            x = 3357,
+            y = 2771.1,
         },
     },
     { -- Step 3
-        ["Waypoint"] = 50748,
-        ["Range"] = 12.46,
-        ["Coord"] = {
-            ["x"] = 3313.1,
-            ["y"] = 2741.8,
+        Waypoint = 50748,
+        Range = 12.46,
+        Coord = {
+            x = 3313.1,
+            y = 2741.8,
         },
     },
     { -- Step 3
-        ["Waypoint"] = 50748,
-        ["Range"] = 19.45,
-        ["Coord"] = {
-            ["x"] = 3399.1,
-            ["y"] = 2667.1,
+        Waypoint = 50748,
+        Range = 19.45,
+        Coord = {
+            x = 3399.1,
+            y = 2667.1,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49141] = {
                 1,
             },
@@ -16403,13 +16401,13 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Waypoint"] = 48329,
-        ["Range"] = 18.52,
-        ["Coord"] = {
-            ["x"] = 3353.1,
-            ["y"] = 2637.6,
+        Waypoint = 48329,
+        Range = 18.52,
+        Coord = {
+            x = 3353.1,
+            y = 2637.6,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49141] = {
                 1,
             },
@@ -16419,13 +16417,13 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Waypoint"] = 48329,
-        ["Range"] = 8.95,
-        ["Coord"] = {
-            ["x"] = 3348.3,
-            ["y"] = 2583.4,
+        Waypoint = 48329,
+        Range = 8.95,
+        Coord = {
+            x = 3348.3,
+            y = 2583.4,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49141] = {
                 1,
             },
@@ -16435,18 +16433,18 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["Waypoint"] = 48329,
-        ["Range"] = 8.95,
-        ["Coord"] = {
-            ["x"] = 3413.6,
-            ["y"] = 2546.3,
+        Waypoint = 48329,
+        Range = 8.95,
+        Coord = {
+            x = 3413.6,
+            y = 2546.3,
         },
-        ["DroppableQuest"] = {
-            ["Text"] = "Beastbreaker Hakid",
-            ["Qid"] = 48329,
-            ["MobId"] = 130603,
+        DroppableQuest = {
+            Text = "Beastbreaker Hakid",
+            Qid = 48329,
+            MobId = 130603,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49141] = {
                 1,
             },
@@ -16456,17 +16454,17 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
     },
     { -- Step 3
-        ["DroppableQuest"] = {
-            ["Text"] = "Beastbreaker Hakid",
-            ["Qid"] = 48329,
-            ["MobId"] = 130603,
+        DroppableQuest = {
+            Text = "Beastbreaker Hakid",
+            Qid = 48329,
+            MobId = 130603,
         },
-        ["DropQuest"] = 48329,
-        ["Coord"] = {
-            ["x"] = 3413.6,
-            ["y"] = 2546.3,
+        DropQuest = 48329,
+        Coord = {
+            x = 3413.6,
+            y = 2546.3,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49141] = {
                 1,
             },
@@ -16481,12 +16479,12 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 3424.5,
-            ["y"] = 2531.1,
+        Range = 0.69,
+        Coord = {
+            x = 3424.5,
+            y = 2531.1,
         },
-        ["Fillers"] = {
+        Fillers = {
             [49141] = {
                 1,
             },
@@ -16504,76 +16502,76 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 30.42,
-        ["Coord"] = {
-            ["x"] = 3338.4,
-            ["y"] = 2610.6,
+        Range = 30.42,
+        Coord = {
+            x = 3338.4,
+            y = 2610.6,
         },
     },
     { -- Step 3
-        ["Range"] = 14.48,
-        ["Waypoint"] = 49141,
-        ["Coord"] = {
-            ["x"] = 3433.6,
-            ["y"] = 2620.1,
+        Range = 14.48,
+        Waypoint = 49141,
+        Coord = {
+            x = 3433.6,
+            y = 2620.1,
         },
     },
     { -- Step 3
-        ["Range"] = 7.15,
-        ["Waypoint"] = 49141,
-        ["Coord"] = {
-            ["x"] = 3419.5,
-            ["y"] = 2559.6,
+        Range = 7.15,
+        Waypoint = 49141,
+        Coord = {
+            x = 3419.5,
+            y = 2559.6,
         },
     },
     { -- Step 3
-        ["PickUp"] = {
+        PickUp = {
             49002,
         },
-        ["Coord"] = {
-            ["x"] = 3480.6,
-            ["y"] = 2579.9,
+        Coord = {
+            x = 3480.6,
+            y = 2579.9,
         },
     },
     { -- Step 3
-        ["ExtraLineText"] = "SPEAR_DOWN_THE_UFO",
-        ["SpecialMacro2"] = 1,
-        ["DenyNPC"] = 129763,
+        ExtraLineText = "SPEAR_DOWN_THE_UFO",
+        SpecialMacro2 = 1,
+        DenyNPC = 129763,
         Qpart = {
             [49002] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["49002-1"] = 154893,
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [257490] = "49002-1",
         },
-        ["ButtonCooldown"] = {
+        ButtonCooldown = {
             [257490] = 5,
         },
-        ["Range"] = 15.79,
-        ["Coord"] = {
-            ["x"] = 3478.3,
-            ["y"] = 2568.1,
+        Range = 15.79,
+        Coord = {
+            x = 3478.3,
+            y = 2568.1,
         },
     },
     { -- Step 3
-        ["Coord"] = {
-            ["x"] = 3477.6,
-            ["y"] = 2553.1,
+        Coord = {
+            x = 3477.6,
+            y = 2553.1,
         },
-        ["Done"] = {
+        Done = {
             49002,
         },
     },
     { -- Step 3
-        ["Coord"] = {
-            ["x"] = 3473.6,
-            ["y"] = 2562,
+        Coord = {
+            x = 3473.6,
+            y = 2562,
         },
-        ["Done"] = {
+        Done = {
             49141,
             50748,
         },
@@ -16584,10 +16582,10 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 3478.6,
-            ["y"] = 2551.4,
+        Range = 0.69,
+        Coord = {
+            x = 3478.6,
+            y = 2551.4,
         },
     },
     { -- Step 3
@@ -16597,29 +16595,29 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Range"] = 219.05,
-        ["Coord"] = {
-            ["x"] = 3511.6,
-            ["y"] = 2861.6,
+        Range = 219.05,
+        Coord = {
+            x = 3511.6,
+            y = 2861.6,
         },
     },
     { -- Step 3
-        ["Done"] = {
+        Done = {
             49003,
         },
-        ["Coord"] = {
-            ["x"] = 3151.6,
-            ["y"] = 3032.8,
+        Coord = {
+            x = 3151.6,
+            y = 3032.8,
         },
     },
     { -- Step 3
-        ["PickUp"] = {
+        PickUp = {
             50750,
             50752,
         },
-        ["Coord"] = {
-            ["x"] = 3151.6,
-            ["y"] = 3032.8,
+        Coord = {
+            x = 3151.6,
+            y = 3032.8,
         },
     },
     { -- Step 3
@@ -16628,15 +16626,15 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50750] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 3290.1,
-            ["y"] = 3043.4,
+        Range = 0.75,
+        Coord = {
+            x = 3290.1,
+            y = 3043.4,
         },
     },
     { -- Step 3
@@ -16645,15 +16643,15 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50750] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 3266.8,
-            ["y"] = 3124.6,
+        Range = 0.69,
+        Coord = {
+            x = 3266.8,
+            y = 3124.6,
         },
     },
     { -- Step 3
@@ -16662,15 +16660,15 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50750] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["x"] = 3403,
-            ["y"] = 3149.6,
+        Range = 0.75,
+        Coord = {
+            x = 3403,
+            y = 3149.6,
         },
     },
     { -- Step 3
@@ -16679,34 +16677,34 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 4,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [50750] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 3314.6,
-            ["y"] = 3229.9,
+        Range = 0.69,
+        Coord = {
+            x = 3314.6,
+            y = 3229.9,
         },
     },
     { -- Step 3
-        ["Done"] = {
+        Done = {
             50750,
             50752,
         },
-        ["Coord"] = {
-            ["x"] = 3151.3,
-            ["y"] = 3034.4,
+        Coord = {
+            x = 3151.3,
+            y = 3034.4,
         },
     },
     { -- Step 3
-        ["PickUp"] = {
+        PickUp = {
             50550,
         },
-        ["Coord"] = {
-            ["x"] = 3151.1,
-            ["y"] = 3034,
+        Coord = {
+            x = 3151.1,
+            y = 3034,
         },
     },
     { -- Step 3
@@ -16715,42 +16713,42 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["x"] = 3151.1,
-            ["y"] = 3034,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            x = 3151.1,
+            y = 3034,
         },
     },
     { -- Step 3
-        ["Bloodlust"] = 1,
+        Bloodlust = 1,
         Qpart = {
             [50550] = {
                 2,
             },
         },
-        ["Range"] = 16.87,
-        ["Coord"] = {
-            ["x"] = 3151.1,
-            ["y"] = 3128,
+        Range = 16.87,
+        Coord = {
+            x = 3151.1,
+            y = 3128,
         },
     },
     { -- Step 3
-        ["Coord"] = {
-            ["x"] = 3149.3,
-            ["y"] = 3080.3,
+        Coord = {
+            x = 3149.3,
+            y = 3080.3,
         },
-        ["Done"] = {
+        Done = {
             50550,
         },
     },
     { -- Step 3
-        ["PickUp"] = {
+        PickUp = {
             50751,
         },
-        ["Coord"] = {
-            ["x"] = 3149.3,
-            ["y"] = 3080.3,
+        Coord = {
+            x = 3149.3,
+            y = 3080.3,
         },
     },
     { -- Step 3
@@ -16759,76 +16757,76 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
                 1,
             },
         },
-        ["Range"] = 22.99,
-        ["Coord"] = {
-            ["x"] = 3087.1,
-            ["y"] = 3139.3,
+        Range = 22.99,
+        Coord = {
+            x = 3087.1,
+            y = 3139.3,
         },
     },
     { -- Step 3
-        ["Button"] = {
+        Button = {
             ["22345678-1"] = 6948,
         },
-        ["UseHS"] = 50751,
-        ["Coord"] = {
-            ["x"] = 3149.3,
-            ["y"] = 3080.3,
+        UseHS = 50751,
+        Coord = {
+            x = 3149.3,
+            y = 3080.3,
         },
     },
     { -- Step 3
-        ["Range"] = 6.69,
-        ["Waypoint"] = 50751,
-        ["Coord"] = {
-            ["x"] = 4851.7,
-            ["y"] = 1926,
+        Range = 6.69,
+        Waypoint = 50751,
+        Coord = {
+            x = 4851.7,
+            y = 1926,
         },
     },
     { -- Step 3
-        ["Range"] = 7.74,
-        ["Waypoint"] = 50751,
-        ["Coord"] = {
-            ["x"] = 4881.8,
-            ["y"] = 1927.5,
+        Range = 7.74,
+        Waypoint = 50751,
+        Coord = {
+            x = 4881.8,
+            y = 1927.5,
         },
     },
     { -- Step 3
-        ["Range"] = 8.15,
-        ["Waypoint"] = 50751,
-        ["Coord"] = {
-            ["x"] = 4868.1,
-            ["y"] = 1950.7,
+        Range = 8.15,
+        Waypoint = 50751,
+        Coord = {
+            x = 4868.1,
+            y = 1950.7,
         },
     },
     { -- Step 3
-        ["Coord"] = {
-            ["x"] = 4845.3,
-            ["y"] = 1950.9,
+        Coord = {
+            x = 4845.3,
+            y = 1950.9,
         },
-        ["Done"] = {
+        Done = {
             50751,
         },
     },
     { -- Step 3
-        ["PickUp"] = {
+        PickUp = {
             50617,
         },
-        ["Coord"] = {
-            ["x"] = 4845.3,
-            ["y"] = 1950.9,
+        Coord = {
+            x = 4845.3,
+            y = 1950.9,
         },
     },
     { -- Step 3
-        ["ExtraLineText"] = "ZONE_COMPLETE",
-        ["UseDalaHS"] = 50703,
-        ["Coord"] = {
-            ["x"] = 4845.3,
-            ["y"] = 1950.9,
+        ExtraLineText = "ZONE_COMPLETE",
+        UseDalaHS = 50703,
+        Coord = {
+            x = 4845.3,
+            y = 1950.9,
         },
-        ["Button"] = {
+        Button = {
             ["12112552-1"] = 140192,
         },
     },
     { -- [Step 3
-        ["ZoneDoneSave"] = 1,
+        ZoneDoneSave = 1,
     },
 }

@@ -1,69 +1,69 @@
 APR.RouteQuestStepList["A84-DesMephisto-Stormwind-War"] = {
     {
-        ["PickUp"] = {
+        PickUp = {
             34398,
         },
-        ["ChromiePick"] = 9,
-        ["Gossip"] = 1,
-        ["RaidIcon"] = 167032,
-        ["Coord"] = {
-            ["y"] = -8196.3,
-            ["x"] = 745.9,
+        ChromiePick = 9,
+        Gossip = 1,
+        RaidIcon = 167032,
+        Coord = {
+            y = -8196.3,
+            x = 745.9,
         },
     },
     {
-        ["ExtraLineText"] = "HS_STORMWIND_OR_WALK",
-        ["UseHS"] = 34398,
-        ["Coord"] = {
-            ["y"] = -8867.5,
-            ["x"] = 673.2,
+        ExtraLineText = "HS_STORMWIND_OR_WALK",
+        UseHS = 34398,
+        Coord = {
+            y = -8867.5,
+            x = 673.2,
         }
     },
     {
-        ["Range"] = 6.45,
-        ["Waypoint"] = 34398,
-        ["Coord"] = {
-            ["y"] = -8824.1,
-            ["x"] = 678.9,
+        Range = 6.45,
+        Waypoint = 34398,
+        Coord = {
+            y = -8824.1,
+            x = 678.9,
         },
     },
     {
-        ["Range"] = 6.45,
-        ["Waypoint"] = 34398,
-        ["Coord"] = {
-            ["y"] = -8848.2,
-            ["x"] = 726.9,
+        Range = 6.45,
+        Waypoint = 34398,
+        Coord = {
+            y = -8848.2,
+            x = 726.9,
         },
     },
     {
-        ["Range"] = 6.45,
-        ["Waypoint"] = 34398,
-        ["Coord"] = {
-            ["y"] = -8973,
-            ["x"] = 774.1,
+        Range = 6.45,
+        Waypoint = 34398,
+        Coord = {
+            y = -8973,
+            x = 774.1,
         },
     },
     {
-        ["ExtraLineText"] = "GO_BLASTEDLANDS",
+        ExtraLineText = "GO_BLASTEDLANDS",
         Qpart = {
             [34398] = {
                 1,
             },
         },
-        ["GossipOptionID"] = 51033,
-        ["RaidIcon"] = 149626,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -9007.3,
-            ["x"] = 873.9,
+        GossipOptionID = 51033,
+        RaidIcon = 149626,
+        Range = 0.69,
+        Coord = {
+            y = -9007.3,
+            x = 873.9,
         },
     },
     {
-        ["Waypoint"] = 34398,
-        ["Range"] = 48.86,
-        ["Coord"] = {
-            ["y"] = -11810,
-            ["x"] = -3205,
+        Waypoint = 34398,
+        Range = 48.86,
+        Coord = {
+            y = -11810,
+            x = -3205,
         },
     }, -- [3]
     {
@@ -72,39 +72,39 @@ APR.RouteQuestStepList["A84-DesMephisto-Stormwind-War"] = {
                 2,
             },
         },
-        ["GossipOptionID"] = 43231,
-        ["RaidIcon"] = 78423,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = -11810,
-            ["x"] = -3205,
+        GossipOptionID = 43231,
+        RaidIcon = 78423,
+        Range = 0.75,
+        Coord = {
+            y = -11810,
+            x = -3205,
         },
     },
     {
-        ["ZoneDoneSave"] = 1,
+        ZoneDoneSave = 1,
     },
 }
 APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
     {
-        ["Done"] = {
+        Done = {
             34398,
         },
-        ["DoneDB"] = {
+        DoneDB = {
             34398,
             36881,
         },
-        ["Coord"] = {
-            ["y"] = 4066.6,
-            ["x"] = -2373.2,
+        Coord = {
+            y = 4066.6,
+            x = -2373.2,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35933,
         },
-        ["Coord"] = {
-            ["y"] = 4067.4,
-            ["x"] = -2373.2,
+        Coord = {
+            y = 4067.4,
+            x = -2373.2,
         },
     },
     {
@@ -113,36 +113,36 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Range"] = 16.05,
-        ["Coord"] = {
-            ["y"] = 4068.1,
-            ["x"] = -2340.2,
+        Range = 16.05,
+        Coord = {
+            y = 4068.1,
+            x = -2340.2,
         },
     }, -- [3]
     {
-        ["Done"] = {
+        Done = {
             35933,
         },
-        ["Coord"] = {
-            ["y"] = 4064.3,
-            ["x"] = -2357,
+        Coord = {
+            y = 4064.3,
+            x = -2357,
         },
     }, -- [4]
     {
-        ["PickUp"] = {
+        PickUp = {
             34392,
         },
-        ["Coord"] = {
-            ["y"] = 4064.3,
-            ["x"] = -2357,
+        Coord = {
+            y = 4064.3,
+            x = -2357,
         },
     }, -- [5]
     {
-        ["Waypoint"] = 34392,
-        ["Range"] = 13.13,
-        ["Coord"] = {
-            ["y"] = 3969.8,
-            ["x"] = -2314.5,
+        Waypoint = 34392,
+        Range = 13.13,
+        Coord = {
+            y = 3969.8,
+            x = -2314.5,
         },
     }, -- [6]
     {
@@ -151,18 +151,18 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3965.8,
-            ["x"] = -2284.7,
+        Range = 0.75,
+        Coord = {
+            y = 3965.8,
+            x = -2284.7,
         },
     }, -- [7]
     {
-        ["Waypoint"] = 34392,
-        ["Range"] = 11.1,
-        ["Coord"] = {
-            ["y"] = 4168.3,
-            ["x"] = -2311,
+        Waypoint = 34392,
+        Range = 11.1,
+        Coord = {
+            y = 4168.3,
+            x = -2311,
         },
     },
     {
@@ -171,52 +171,52 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4167.8,
-            ["x"] = -2282.7,
+        Range = 0.69,
+        Coord = {
+            y = 4167.8,
+            x = -2282.7,
         },
     },
     {
-        ["Waypoint"] = 34392,
-        ["Range"] = 19.12,
-        ["Coord"] = {
-            ["y"] = 4078.8,
-            ["x"] = -2323.2,
+        Waypoint = 34392,
+        Range = 19.12,
+        Coord = {
+            y = 4078.8,
+            x = -2323.2,
         },
     }, -- [10]
     {
-        ["Done"] = {
+        Done = {
             34392,
         },
-        ["Coord"] = {
-            ["y"] = 4067,
-            ["x"] = -2371,
+        Coord = {
+            y = 4067,
+            x = -2371,
         },
     }, -- [11]
     {
-        ["PickUp"] = {
+        PickUp = {
             34393,
         },
-        ["Coord"] = {
-            ["y"] = 4066.1,
-            ["x"] = -2371,
+        Coord = {
+            y = 4066.1,
+            x = -2371,
         },
     }, -- [12]
     {
-        ["Waypoint"] = 34393,
-        ["Range"] = 10.45,
-        ["Coord"] = {
-            ["y"] = 4014.1,
-            ["x"] = -2377.5,
+        Waypoint = 34393,
+        Range = 10.45,
+        Coord = {
+            y = 4014.1,
+            x = -2377.5,
         },
     }, -- [13]
     {
-        ["Waypoint"] = 34393,
-        ["Range"] = 5.99,
-        ["Coord"] = {
-            ["y"] = 4039.9,
-            ["x"] = -2380.4,
+        Waypoint = 34393,
+        Range = 5.99,
+        Coord = {
+            y = 4039.9,
+            x = -2380.4,
         },
     }, -- [14]
     {
@@ -225,10 +225,10 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 4,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 4036.1,
-            ["x"] = -2403.2,
+        Range = 0.61,
+        Coord = {
+            y = 4036.1,
+            x = -2403.2,
         },
     }, -- [15]
     {
@@ -237,10 +237,10 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 3,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4068.1,
-            ["x"] = -2432.7,
+        Range = 0.69,
+        Coord = {
+            y = 4068.1,
+            x = -2432.7,
         },
     }, -- [16]
     {
@@ -249,10 +249,10 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 4098.1,
-            ["x"] = -2403,
+        Range = 0.75,
+        Coord = {
+            y = 4098.1,
+            x = -2403,
         },
     }, -- [17]
     {
@@ -261,96 +261,96 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 5,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4067.3,
-            ["x"] = -2401.7,
+        Range = 0.69,
+        Coord = {
+            y = 4067.3,
+            x = -2401.7,
         },
     }, -- [18]
     {
-        ["Waypoint"] = 34393,
-        ["Range"] = 8.19,
-        ["Coord"] = {
-            ["y"] = 4115.8,
-            ["x"] = -2377,
+        Waypoint = 34393,
+        Range = 8.19,
+        Coord = {
+            y = 4115.8,
+            x = -2377,
         },
     }, -- [19]
     {
-        ["Waypoint"] = 34393,
-        ["Range"] = 6.15,
-        ["Coord"] = {
-            ["y"] = 4108.8,
-            ["x"] = -2422.5,
+        Waypoint = 34393,
+        Range = 6.15,
+        Coord = {
+            y = 4108.8,
+            x = -2422.5,
         },
     }, -- [20]
     {
-        ["Done"] = {
+        Done = {
             34393,
         },
-        ["Coord"] = {
-            ["y"] = 4067.4,
-            ["x"] = -2372,
+        Coord = {
+            y = 4067.4,
+            x = -2372,
         },
     }, -- [21]
     {
-        ["PickUp"] = {
+        PickUp = {
             34420,
         },
-        ["Coord"] = {
-            ["y"] = 4067.4,
-            ["x"] = -2372,
+        Coord = {
+            y = 4067.4,
+            x = -2372,
         },
     }, -- [22]
     {
-        ["Waypoint"] = 34420,
-        ["Range"] = 19.38,
-        ["Coord"] = {
-            ["y"] = 3970.6,
-            ["x"] = -2530.9,
+        Waypoint = 34420,
+        Range = 19.38,
+        Coord = {
+            y = 3970.6,
+            x = -2530.9,
         },
     }, -- [23]
     {
-        ["Done"] = {
+        Done = {
             34420,
         },
-        ["Coord"] = {
-            ["y"] = 3937.6,
-            ["x"] = -2504.9,
+        Coord = {
+            y = 3937.6,
+            x = -2504.9,
         },
     }, -- [24]
     {
-        ["PickUp"] = {
+        PickUp = {
             34422,
         },
-        ["Coord"] = {
-            ["y"] = 3938.1,
-            ["x"] = -2505.2,
+        Coord = {
+            y = 3938.1,
+            x = -2505.2,
         },
     }, -- [25]
     {
-        ["PickUp"] = {
+        PickUp = {
             35242,
         },
-        ["Coord"] = {
-            ["y"] = 3990.6,
-            ["x"] = -2551.2,
+        Coord = {
+            y = 3990.6,
+            x = -2551.2,
         },
-        ["PickUpDB"] = {
+        PickUpDB = {
             35241,
             35242,
         },
     }, -- [26]
     {
-        ["PickUp"] = {
+        PickUp = {
             35240,
         },
-        ["PickUpDB"] = {
+        PickUpDB = {
             35240,
             34421,
         },
-        ["Coord"] = {
-            ["y"] = 3990.6,
-            ["x"] = -2551.2,
+        Coord = {
+            y = 3990.6,
+            x = -2551.2,
         },
     }, -- [26]
     {
@@ -359,14 +359,14 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 2,
             },
         },
-        ["QpartDB"] = {
+        QpartDB = {
             35240,
             34421,
         },
-        ["Button"] = {
+        Button = {
             ["34422-1"] = 113191,
         },
-        ["Fillers"] = {
+        Fillers = {
             [34422] = {
                 1,
             },
@@ -374,10 +374,10 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3974.6,
-            ["x"] = -2635.5,
+        Range = 0.75,
+        Coord = {
+            y = 3974.6,
+            x = -2635.5,
         },
     }, -- [27]
     {
@@ -386,14 +386,14 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["QpartDB"] = {
+        QpartDB = {
             35240,
             34421,
         },
-        ["Button"] = {
+        Button = {
             ["34422-1"] = 113191,
         },
-        ["Fillers"] = {
+        Fillers = {
             [35242] = {
                 1,
             },
@@ -401,14 +401,14 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 3834.6,
-            ["x"] = -2523.4,
+        Range = 0.69,
+        Coord = {
+            y = 3834.6,
+            x = -2523.4,
         },
     }, -- [28]
     {
-        ["Button"] = {
+        Button = {
             ["34422-1"] = 113191,
         },
         Qpart = {
@@ -416,19 +416,19 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35242] = {
                 1,
             },
         },
-        ["Range"] = 53.64,
-        ["Coord"] = {
-            ["y"] = 3834.6,
-            ["x"] = -2523.4,
+        Range = 53.64,
+        Coord = {
+            y = 3834.6,
+            x = -2523.4,
         },
     }, -- [29]
     {
-        ["Button"] = {
+        Button = {
             ["34422-1"] = 113191,
         },
         Qpart = {
@@ -436,70 +436,70 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Range"] = 53.64,
-        ["Coord"] = {
-            ["y"] = 3834.6,
-            ["x"] = -2523.4,
+        Range = 53.64,
+        Coord = {
+            y = 3834.6,
+            x = -2523.4,
         },
-        ["QpartDB"] = {
+        QpartDB = {
             35241,
             35242,
         },
     }, -- [29]
     {
-        ["Waypoint"] = 35240,
-        ["Range"] = 42.2,
-        ["Coord"] = {
-            ["y"] = 3873.8,
-            ["x"] = -2696,
+        Waypoint = 35240,
+        Range = 42.2,
+        Coord = {
+            y = 3873.8,
+            x = -2696,
         },
     }, -- [30]
     {
-        ["Done"] = {
+        Done = {
             35240,
         },
-        ["Coord"] = {
-            ["y"] = 3842.6,
-            ["x"] = -2781.4,
+        Coord = {
+            y = 3842.6,
+            x = -2781.4,
         },
-        ["DoneDB"] = {
+        DoneDB = {
             35240,
             34421,
         },
     }, -- [31]
     {
-        ["Done"] = {
+        Done = {
             35242, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 3842.6,
-            ["x"] = -2781.4,
+        Coord = {
+            y = 3842.6,
+            x = -2781.4,
         },
-        ["DoneDB"] = {
+        DoneDB = {
             35241,
             35242,
         },
     }, -- [31]
     {
-        ["Done"] = {
+        Done = {
             34422,
         },
-        ["Coord"] = {
-            ["y"] = 3842.6,
-            ["x"] = -2781.4,
+        Coord = {
+            y = 3842.6,
+            x = -2781.4,
         },
     }, -- [31]
     {
-        ["PickUp"] = {
+        PickUp = {
             34423,
         },
-        ["PickUpDB"] = {
+        PickUpDB = {
             34423,
             34817,
         },
-        ["Coord"] = {
-            ["y"] = 3841.5,
-            ["x"] = -2777,
+        Coord = {
+            y = 3841.5,
+            x = -2777,
         },
     }, -- [32]
     {
@@ -508,13 +508,13 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 3842.3,
-            ["x"] = -2787,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            y = 3842.3,
+            x = -2787,
         },
-        ["QpartDB"] = {
+        QpartDB = {
             34423,
             34817,
         },
@@ -525,14 +525,14 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 2,
             },
         },
-        ["QpartDB"] = {
+        QpartDB = {
             34423,
             34817,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 3958.8,
-            ["x"] = -2888.9,
+        Range = 0.69,
+        Coord = {
+            y = 3958.8,
+            x = -2888.9,
         },
     }, -- [34]
     {
@@ -541,22 +541,22 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 3,
             },
         },
-        ["Range"] = 65.95,
-        ["Coord"] = {
-            ["y"] = 3957.8,
-            ["x"] = -2887.4,
+        Range = 65.95,
+        Coord = {
+            y = 3957.8,
+            x = -2887.4,
         },
-        ["QpartDB"] = {
+        QpartDB = {
             34423,
             34817,
         },
     }, -- [35]
     {
-        ["Waypoint"] = 34423,
-        ["Range"] = 42.98,
-        ["Coord"] = {
-            ["y"] = 4048.9,
-            ["x"] = -2812.4,
+        Waypoint = 34423,
+        Range = 42.98,
+        Coord = {
+            y = 4048.9,
+            x = -2812.4,
         },
     }, -- [36]
     {
@@ -565,54 +565,54 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 4,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4194.3,
-            ["x"] = -2786.9,
+        Range = 0.69,
+        Coord = {
+            y = 4194.3,
+            x = -2786.9,
         },
-        ["QpartDB"] = {
+        QpartDB = {
             34423,
             34817,
         },
     }, -- [37]
     {
-        ["Done"] = {
+        Done = {
             34423,
         },
-        ["DoneDB"] = {
+        DoneDB = {
             34423,
             34817,
         },
-        ["Coord"] = {
-            ["y"] = 4192.1,
-            ["x"] = -2786.7,
+        Coord = {
+            y = 4192.1,
+            x = -2786.7,
         },
     }, -- [38]
     {
-        ["PickUp"] = {
+        PickUp = {
             34425,
         },
-        ["Coord"] = {
-            ["y"] = 4192.1,
-            ["x"] = -2786.7,
+        Coord = {
+            y = 4192.1,
+            x = -2786.7,
         },
     }, -- [39]
     {
-        ["Done"] = {
+        Done = {
             34425,
         },
-        ["Coord"] = {
-            ["y"] = 4229.7,
-            ["x"] = -2812.2,
+        Coord = {
+            y = 4229.7,
+            x = -2812.2,
         },
     }, -- [40]
     {
-        ["PickUp"] = {
+        PickUp = {
             34478,
         },
-        ["Coord"] = {
-            ["y"] = 4229.7,
-            ["x"] = -2812.2,
+        Coord = {
+            y = 4229.7,
+            x = -2812.2,
         },
     }, -- [41]
     {
@@ -621,34 +621,34 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["ButtonSpellId"] = {
+        ButtonSpellId = {
             [159904] = "34478-1",
         },
-        ["Button"] = {
+        Button = {
             ["34478-1"] = 110799,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 4304,
-            ["x"] = -2728,
+        Range = 0.75,
+        Coord = {
+            y = 4304,
+            x = -2728,
         },
     }, -- [42]
     {
-        ["Done"] = {
+        Done = {
             34478,
         },
-        ["Coord"] = {
-            ["y"] = 4218.2,
-            ["x"] = -2816.2,
+        Coord = {
+            y = 4218.2,
+            x = -2816.2,
         },
     }, -- [43]
     {
-        ["PickUp"] = {
+        PickUp = {
             34429,
         },
-        ["Coord"] = {
-            ["y"] = 4230.6,
-            ["x"] = -2811.7,
+        Coord = {
+            y = 4230.6,
+            x = -2811.7,
         },
     }, -- [44]
     {
@@ -657,10 +657,10 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4394,
-            ["x"] = -2824.7,
+        Range = 0.69,
+        Coord = {
+            y = 4394,
+            x = -2824.7,
         },
     }, -- [45]
     {
@@ -670,124 +670,124 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 2,
             },
         },
-        ["Range"] = 48.24,
-        ["Coord"] = {
-            ["y"] = 4394,
-            ["x"] = -2824.7,
+        Range = 48.24,
+        Coord = {
+            y = 4394,
+            x = -2824.7,
         },
     }, -- [46]
     {
-        ["Done"] = {
+        Done = {
             34429,
         },
-        ["Coord"] = {
-            ["y"] = 4511.7,
-            ["x"] = -2634.7,
+        Coord = {
+            y = 4511.7,
+            x = -2634.7,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             34431,
             34432,
         },
-        ["Coord"] = {
-            ["y"] = 4527.3,
-            ["x"] = -2638.2,
+        Coord = {
+            y = 4527.3,
+            x = -2638.2,
         },
     },
     {
-        ["Waypoint"] = 34431,
-        ["Range"] = 7.65,
-        ["Coord"] = {
-            ["y"] = 4532.3,
-            ["x"] = -2613.5,
+        Waypoint = 34431,
+        Range = 7.65,
+        Coord = {
+            y = 4532.3,
+            x = -2613.5,
         },
     }, -- [3]
     {
-        ["Waypoint"] = 34431,
-        ["Fillers"] = {
+        Waypoint = 34431,
+        Fillers = {
             [34432] = {
                 1,
             },
         },
-        ["Range"] = 6.8,
-        ["Coord"] = {
-            ["y"] = 4526.1,
-            ["x"] = -2593.4,
+        Range = 6.8,
+        Coord = {
+            y = 4526.1,
+            x = -2593.4,
         },
     }, -- [4]
     {
-        ["Waypoint"] = 34431,
-        ["Fillers"] = {
+        Waypoint = 34431,
+        Fillers = {
             [34432] = {
                 1,
             },
         },
-        ["Range"] = 9.81,
-        ["Coord"] = {
-            ["y"] = 4550.3,
-            ["x"] = -2583.2,
+        Range = 9.81,
+        Coord = {
+            y = 4550.3,
+            x = -2583.2,
         },
     }, -- [5]
     {
-        ["Waypoint"] = 34431,
-        ["Fillers"] = {
+        Waypoint = 34431,
+        Fillers = {
             [34432] = {
                 1,
             },
         },
-        ["Range"] = 12.62,
-        ["Coord"] = {
-            ["y"] = 4559.2,
-            ["x"] = -2544.5,
+        Range = 12.62,
+        Coord = {
+            y = 4559.2,
+            x = -2544.5,
         },
     }, -- [6]
     {
-        ["Waypoint"] = 34431,
-        ["Fillers"] = {
+        Waypoint = 34431,
+        Fillers = {
             [34432] = {
                 1,
             },
         },
-        ["Range"] = 15.99,
-        ["Coord"] = {
-            ["y"] = 4619.3,
-            ["x"] = -2499.9,
+        Range = 15.99,
+        Coord = {
+            y = 4619.3,
+            x = -2499.9,
         },
     }, -- [7]
     {
-        ["PickUp"] = {
+        PickUp = {
             34434,
         },
-        ["Coord"] = {
-            ["y"] = 4615.6,
-            ["x"] = -2470.9,
+        Coord = {
+            y = 4615.6,
+            x = -2470.9,
         },
     },
     {
-        ["Waypoint"] = 34431,
-        ["Fillers"] = {
+        Waypoint = 34431,
+        Fillers = {
             [34432] = {
                 1,
             },
         },
-        ["Range"] = 10.04,
-        ["Coord"] = {
-            ["y"] = 4567.7,
-            ["x"] = -2540,
+        Range = 10.04,
+        Coord = {
+            y = 4567.7,
+            x = -2540,
         },
     },
     {
-        ["Waypoint"] = 34431,
-        ["Fillers"] = {
+        Waypoint = 34431,
+        Fillers = {
             [34432] = {
                 1,
             },
         },
-        ["Range"] = 13.86,
-        ["Coord"] = {
-            ["y"] = 4543.3,
-            ["x"] = -2481,
+        Range = 13.86,
+        Coord = {
+            y = 4543.3,
+            x = -2481,
         },
     }, -- [10]
     {
@@ -796,15 +796,15 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34432] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4589.5,
-            ["x"] = -2505,
+        Range = 0.69,
+        Coord = {
+            y = 4589.5,
+            x = -2505,
         },
     }, -- [11]
     {
@@ -813,15 +813,15 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34432] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 4430.2,
-            ["x"] = -2464,
+        Range = 0.75,
+        Coord = {
+            y = 4430.2,
+            x = -2464,
         },
     }, -- [12]
     {
@@ -830,30 +830,30 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Range"] = 60.43,
-        ["Coord"] = {
-            ["y"] = 4429.7,
-            ["x"] = -2465.5,
+        Range = 60.43,
+        Coord = {
+            y = 4429.7,
+            x = -2465.5,
         },
     }, -- [13]
     {
-        ["Done"] = {
+        Done = {
             34432,
             34434,
             34431, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 4519.3,
-            ["x"] = -2496.5,
+        Coord = {
+            y = 4519.3,
+            x = -2496.5,
         },
     }, -- [14]
     {
-        ["PickUp"] = {
+        PickUp = {
             34436,
         },
-        ["Coord"] = {
-            ["y"] = 4517.5,
-            ["x"] = -2495,
+        Coord = {
+            y = 4517.5,
+            x = -2495,
         },
     }, -- [15]
     {
@@ -862,28 +862,28 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4509.7,
-            ["x"] = -2425.4,
+        Range = 0.69,
+        Coord = {
+            y = 4509.7,
+            x = -2425.4,
         },
     }, -- [16]
     {
-        ["Done"] = {
+        Done = {
             34436,
         },
-        ["Coord"] = {
-            ["y"] = 4611,
-            ["x"] = -2246.2,
+        Coord = {
+            y = 4611,
+            x = -2246.2,
         },
     }, -- [47]
     {
-        ["PickUp"] = {
+        PickUp = {
             35019,
         },
-        ["Coord"] = {
-            ["y"] = 4614,
-            ["x"] = -2223.7,
+        Coord = {
+            y = 4614,
+            x = -2223.7,
         },
     }, -- [48]
     {
@@ -892,28 +892,28 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Range"] = 74.22,
-        ["Coord"] = {
-            ["y"] = 4589.7,
-            ["x"] = -2138.7,
+        Range = 74.22,
+        Coord = {
+            y = 4589.7,
+            x = -2138.7,
         },
     },
     {
-        ["Done"] = {
+        Done = {
             35019,
         },
-        ["Coord"] = {
-            ["y"] = 4614,
-            ["x"] = -2223.7,
+        Coord = {
+            y = 4614,
+            x = -2223.7,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             34439,
         },
-        ["Coord"] = {
-            ["y"] = 4613.8,
-            ["x"] = -2246.7,
+        Coord = {
+            y = 4613.8,
+            x = -2246.7,
         },
     }, -- [3]
     {
@@ -923,38 +923,38 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 2,
             },
         },
-        ["Range"] = 79.05,
-        ["Coord"] = {
-            ["y"] = 4599.5,
-            ["x"] = -2132.9,
+        Range = 79.05,
+        Coord = {
+            y = 4599.5,
+            x = -2132.9,
         },
     }, -- [4]
     {
-        ["Done"] = {
+        Done = {
             34439,
         },
-        ["Coord"] = {
-            ["y"] = 4418.6,
-            ["x"] = -2090.2,
+        Coord = {
+            y = 4418.6,
+            x = -2090.2,
         },
     }, -- [5]
     {
-        ["PickUp"] = {
+        PickUp = {
             34442,
         },
-        ["Coord"] = {
-            ["y"] = 4418.6,
-            ["x"] = -2090.2,
+        Coord = {
+            y = 4418.6,
+            x = -2090.2,
         },
     }, -- [6]
     {
-        ["PickUp"] = {
+        PickUp = {
             34987,
             34958,
         },
-        ["Coord"] = {
-            ["y"] = 4367.8,
-            ["x"] = -2114.7,
+        Coord = {
+            y = 4367.8,
+            x = -2114.7,
         },
     }, -- [7]
     {
@@ -963,15 +963,15 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34958] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 4326.8,
-            ["x"] = -2183.7,
+        Range = 0.75,
+        Coord = {
+            y = 4326.8,
+            x = -2183.7,
         },
     },
     {
@@ -980,73 +980,73 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34958] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4366.1,
-            ["x"] = -2115.5,
+        Range = 0.69,
+        Coord = {
+            y = 4366.1,
+            x = -2115.5,
         },
     },
     {
-        ["Done"] = {
+        Done = {
             34987,
         },
-        ["Coord"] = {
-            ["y"] = 4367.1,
-            ["x"] = -2113.9,
+        Coord = {
+            y = 4367.1,
+            x = -2113.9,
         },
     }, -- [10]
     {
-        ["Fillers"] = {
+        Fillers = {
             [34958] = {
                 1,
             },
         },
-        ["Done"] = {
+        Done = {
             34442,
         },
-        ["Coord"] = {
-            ["y"] = 4167.7,
-            ["x"] = -2063.2,
+        Coord = {
+            y = 4167.7,
+            x = -2063.2,
         },
     }, -- [11]
     {
-        ["PickUp"] = {
+        PickUp = {
             34925,
         },
-        ["Coord"] = {
-            ["y"] = 4167.7,
-            ["x"] = -2063.2,
+        Coord = {
+            y = 4167.7,
+            x = -2063.2,
         },
     }, -- [12]
     {
-        ["Waypoint"] = 34925,
-        ["Fillers"] = {
+        Waypoint = 34925,
+        Fillers = {
             [34958] = {
                 1,
             },
         },
-        ["Range"] = 11.9,
-        ["Coord"] = {
-            ["y"] = 4232.8,
-            ["x"] = -2110.5,
+        Range = 11.9,
+        Coord = {
+            y = 4232.8,
+            x = -2110.5,
         },
     }, -- [13]
     {
-        ["Waypoint"] = 34925,
-        ["Fillers"] = {
+        Waypoint = 34925,
+        Fillers = {
             [34958] = {
                 1,
             },
         },
-        ["Range"] = 5.36,
-        ["Coord"] = {
-            ["y"] = 4223.6,
-            ["x"] = -2144.2,
+        Range = 5.36,
+        Coord = {
+            y = 4223.6,
+            x = -2144.2,
         },
     }, -- [14]
     {
@@ -1055,46 +1055,46 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34958] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 4204.3,
-            ["x"] = -2153,
+        Range = 0.75,
+        Coord = {
+            y = 4204.3,
+            x = -2153,
         },
     }, -- [15]
     {
-        ["Waypoint"] = 34925,
-        ["Range"] = 12.99,
-        ["Coord"] = {
-            ["y"] = 4231.8,
-            ["x"] = -2114.2,
+        Waypoint = 34925,
+        Range = 12.99,
+        Coord = {
+            y = 4231.8,
+            x = -2114.2,
         },
     }, -- [16]
     {
-        ["Fillers"] = {
+        Fillers = {
             [34958] = {
                 1,
             },
         },
-        ["Done"] = {
+        Done = {
             34925,
         },
-        ["Coord"] = {
-            ["y"] = 4170.3,
-            ["x"] = -2062,
+        Coord = {
+            y = 4170.3,
+            x = -2062,
         },
     }, -- [17]
     {
-        ["PickUp"] = {
+        PickUp = {
             34437,
         },
-        ["Coord"] = {
-            ["y"] = 4170.3,
-            ["x"] = -2062,
+        Coord = {
+            y = 4170.3,
+            x = -2062,
         },
     }, -- [18]
     {
@@ -1103,37 +1103,37 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Range"] = 39.45,
-        ["Coord"] = {
-            ["y"] = 4253.3,
-            ["x"] = -2077.5,
+        Range = 39.45,
+        Coord = {
+            y = 4253.3,
+            x = -2077.5,
         },
     }, -- [19]
     {
-        ["Done"] = {
+        Done = {
             34958,
         },
-        ["Coord"] = {
-            ["y"] = 4365.2,
-            ["x"] = -2114.7,
+        Coord = {
+            y = 4365.2,
+            x = -2114.7,
         },
     }, -- [20]
     {
-        ["Done"] = {
+        Done = {
             34437,
         },
-        ["Coord"] = {
-            ["y"] = 4418.5,
-            ["x"] = -2090.4,
+        Coord = {
+            y = 4418.5,
+            x = -2090.4,
         },
     }, -- [21]
     {
-        ["PickUp"] = {
+        PickUp = {
             35747,
         },
-        ["Coord"] = {
-            ["y"] = 4382.3,
-            ["x"] = -2092,
+        Coord = {
+            y = 4382.3,
+            x = -2092,
         },
     }, -- [22]
     {
@@ -1142,19 +1142,19 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4365.1,
-            ["x"] = -2115.7,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            y = 4365.1,
+            x = -2115.7,
         },
     }, -- [23]
     {
-        ["Waypoint"] = 35747,
-        ["Range"] = 38,
-        ["Coord"] = {
-            ["y"] = 4212.3,
-            ["x"] = -1978.5,
+        Waypoint = 35747,
+        Range = 38,
+        Coord = {
+            y = 4212.3,
+            x = -1978.5,
         },
     }, -- [24]
     {
@@ -1163,10 +1163,10 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 4069.9,
-            ["x"] = -1951.5,
+        Range = 0.75,
+        Coord = {
+            y = 4069.9,
+            x = -1951.5,
         },
     }, -- [25]
     {
@@ -1175,28 +1175,28 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 3,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4065.1,
-            ["x"] = -2019,
+        Range = 0.69,
+        Coord = {
+            y = 4065.1,
+            x = -2019,
         },
     }, -- [26]
     {
-        ["Done"] = {
+        Done = {
             35747,
         },
-        ["Coord"] = {
-            ["y"] = 4064.6,
-            ["x"] = -2019.5,
+        Coord = {
+            y = 4064.6,
+            x = -2019.5,
         },
     }, -- [27]
     {
-        ["PickUp"] = {
+        PickUp = {
             34445,
         },
-        ["Coord"] = {
-            ["y"] = 4065.3,
-            ["x"] = -2018.5,
+        Coord = {
+            y = 4065.3,
+            x = -2018.5,
         },
     }, -- [28]
     {
@@ -1205,10 +1205,10 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4053.8,
-            ["x"] = -2020.3,
+        Range = 0.69,
+        Coord = {
+            y = 4053.8,
+            x = -2020.3,
         },
     }, -- [29]
     {
@@ -1217,10 +1217,10 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 2,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 4059.1,
-            ["x"] = -2021.5,
+        Range = 0.61,
+        Coord = {
+            y = 4059.1,
+            x = -2021.5,
         },
     }, -- [30]
     {
@@ -1229,28 +1229,28 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 3,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4066.1,
-            ["x"] = -2022.3,
+        Range = 0.69,
+        Coord = {
+            y = 4066.1,
+            x = -2022.3,
         },
     }, -- [31]
     {
-        ["Done"] = {
+        Done = {
             34445,
         },
-        ["Coord"] = {
-            ["y"] = 4064.5,
-            ["x"] = -2019.3,
+        Coord = {
+            y = 4064.5,
+            x = -2019.3,
         },
     }, -- [32]
     {
-        ["PickUp"] = {
+        PickUp = {
             35884,
         },
-        ["Coord"] = {
-            ["y"] = 4064.5,
-            ["x"] = -2019.3,
+        Coord = {
+            y = 4064.5,
+            x = -2019.3,
         },
     }, -- [33]
     {
@@ -1259,42 +1259,42 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 3538.8,
-            ["x"] = -2125,
+        Range = 0.69,
+        Coord = {
+            y = 3538.8,
+            x = -2125,
         },
     }, -- [34]
     {
-        ["Done"] = {
+        Done = {
             35884,
         },
-        ["Coord"] = {
-            ["y"] = 3546.1,
-            ["x"] = -2123.7,
+        Coord = {
+            y = 3546.1,
+            x = -2123.7,
         },
     }, -- [35]
     {
-        ["ZoneDoneSave"] = 1,
+        ZoneDoneSave = 1,
     },
 }
 APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
     {
-        ["Done"] = {
+        Done = {
             34575,
         },
-        ["Coord"] = {
-            ["y"] = 2298.3,
-            ["x"] = 462.8,
+        Coord = {
+            y = 2298.3,
+            x = 462.8,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             34582,
         },
-        ["Coord"] = {
-            ["y"] = 2298.9,
-            ["x"] = 462.2,
+        Coord = {
+            y = 2298.9,
+            x = 462.2,
         },
     },
     {
@@ -1303,28 +1303,28 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1936.7,
-            ["x"] = 339.2,
+        Range = 0.75,
+        Coord = {
+            y = 1936.7,
+            x = 339.2,
         },
     }, -- [3]
     {
-        ["Done"] = {
+        Done = {
             34582,
         },
-        ["Coord"] = {
-            ["y"] = 1936,
-            ["x"] = 339.1,
+        Coord = {
+            y = 1936,
+            x = 339.1,
         },
     }, -- [4]
     {
-        ["PickUp"] = {
+        PickUp = {
             34583,
         },
-        ["Coord"] = {
-            ["y"] = 1936.7,
-            ["x"] = 339.6,
+        Coord = {
+            y = 1936.7,
+            x = 339.6,
         },
     }, -- [5]
     {
@@ -1333,29 +1333,29 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1940,
-            ["x"] = 321.8,
+        Range = 0.69,
+        Coord = {
+            y = 1940,
+            x = 321.8,
         },
     }, -- [6]
     {
-        ["Done"] = {
+        Done = {
             34583,
         },
-        ["Coord"] = {
-            ["y"] = 1937,
-            ["x"] = 323,
+        Coord = {
+            y = 1937,
+            x = 323,
         },
     }, -- [7]
     {
-        ["PickUp"] = {
+        PickUp = {
             34584,
             34616,
         },
-        ["Coord"] = {
-            ["y"] = 1936.9,
-            ["x"] = 322.8,
+        Coord = {
+            y = 1936.9,
+            x = 322.8,
         },
     },
     {
@@ -1367,42 +1367,42 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 138.32,
-        ["Coord"] = {
-            ["y"] = 1779.3,
-            ["x"] = 241,
+        Range = 138.32,
+        Coord = {
+            y = 1779.3,
+            x = 241,
         },
     }, -- [10]
     {
-        ["Done"] = {
+        Done = {
             34584,
             34616,
         },
-        ["Coord"] = {
-            ["y"] = 1936.3,
-            ["x"] = 322.7,
+        Coord = {
+            y = 1936.3,
+            x = 322.7,
         },
     }, -- [11]
     {
-        ["PickUp"] = {
+        PickUp = {
             34585,
         },
-        ["Coord"] = {
-            ["y"] = 1928.5,
-            ["x"] = 331.7,
+        Coord = {
+            y = 1928.5,
+            x = 331.7,
         },
     }, -- [12]
     {
-        ["Waypoint"] = 34585,
-        ["Fillers"] = {
+        Waypoint = 34585,
+        Fillers = {
             [34585] = {
                 1,
             },
         },
-        ["Range"] = 16.56,
-        ["Coord"] = {
-            ["y"] = 1741.4,
-            ["x"] = 268.7,
+        Range = 16.56,
+        Coord = {
+            y = 1741.4,
+            x = 268.7,
         },
     }, -- [13]
     {
@@ -1411,28 +1411,28 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 27.76,
-        ["Coord"] = {
-            ["y"] = 1697.5,
-            ["x"] = 256.8,
+        Range = 27.76,
+        Coord = {
+            y = 1697.5,
+            x = 256.8,
         },
     }, -- [14]
     {
-        ["Done"] = {
+        Done = {
             34585,
         },
-        ["Coord"] = {
-            ["y"] = 1929.5,
-            ["x"] = 332.3,
+        Coord = {
+            y = 1929.5,
+            x = 332.3,
         },
     }, -- [15]
     {
-        ["PickUp"] = {
+        PickUp = {
             34586,
         },
-        ["Coord"] = {
-            ["y"] = 1936.5,
-            ["x"] = 323,
+        Coord = {
+            y = 1936.5,
+            x = 323,
         },
     }, -- [16]
     {
@@ -1441,38 +1441,38 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1936.9,
-            ["x"] = 323.2,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            y = 1936.9,
+            x = 323.2,
         },
     }, -- [17]
     {
-        ["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
-        ["Coord"] = {
-            ["y"] = 1867.4,
-            ["x"] = 264,
+        ExtraLineText = "NO_WAYPOINTS_GARRISON",
+        Coord = {
+            y = 1867.4,
+            x = 264,
         },
-        ["Done"] = {
+        Done = {
             34586, --
         },
     },             -- [17]
     {
-        ["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
-        ["PickUp"] = {
+        ExtraLineText = "NO_WAYPOINTS_GARRISON",
+        PickUp = {
             35176,
             35166,
             35174,
             33359,
         },
-        ["Coord"] = {
-            ["y"] = 1867.4,
-            ["x"] = 264,
+        Coord = {
+            y = 1867.4,
+            x = 264,
         },
     }, -- [18]
     {
-        ["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
+        ExtraLineText = "NO_WAYPOINTS_GARRISON",
         Qpart = {
             [35176] = {
                 1,
@@ -1480,17 +1480,17 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 3,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1848.3,
-            ["x"] = 240.6,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            y = 1848.3,
+            x = 240.6,
         },
     }, -- [20]
 
     {
-        ["Treasure"] = 35279,
-        ["Fillers"] = {
+        Treasure = 35279,
+        Fillers = {
             [35174] = {
                 1,
                 2,
@@ -1499,17 +1499,17 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["ExtraLineText"] = "GO_NORTH_WEST_GARRISON",
+        ExtraLineText = "GO_NORTH_WEST_GARRISON",
         ["ExtraLineText2"] = "TREASURE_NORTH_SHIP",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2340.3,
-            ["x"] = 338.2,
+        Range = 0.75,
+        Coord = {
+            y = 2340.3,
+            x = 338.2,
         },
     },
     {
-        ["Waypoint"] = 35174,
-        ["Fillers"] = {
+        Waypoint = 35174,
+        Fillers = {
             [35174] = {
                 1,
                 2,
@@ -1518,16 +1518,16 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["ExtraLineText"] = "TREASURE_CAVE",
-        ["Range"] = 20.9,
-        ["Coord"] = {
-            ["y"] = 2462.4,
-            ["x"] = 411.6,
+        ExtraLineText = "TREASURE_CAVE",
+        Range = 20.9,
+        Coord = {
+            y = 2462.4,
+            x = 411.6,
         },
     },
     {
-        ["Treasure"] = 35280,
-        ["Fillers"] = {
+        Treasure = 35280,
+        Fillers = {
             [35174] = {
                 1,
                 2,
@@ -1536,15 +1536,15 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 2550.1,
-            ["x"] = 457,
+        Range = 0.69,
+        Coord = {
+            y = 2550.1,
+            x = 457,
         },
     }, -- [3]
     {
-        ["Treasure"] = 34174,
-        ["Fillers"] = {
+        Treasure = 34174,
+        Fillers = {
             [35174] = {
                 1,
                 2,
@@ -1553,10 +1553,10 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2407.1,
-            ["x"] = 491.7,
+        Range = 0.75,
+        Coord = {
+            y = 2407.1,
+            x = 491.7,
         },
     },
     {
@@ -1565,7 +1565,7 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35174] = {
                 2,
             },
@@ -1573,10 +1573,10 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2408.5,
-            ["x"] = 551.5,
+        Range = 0.75,
+        Coord = {
+            y = 2408.5,
+            x = 551.5,
         },
     },
     {
@@ -1588,49 +1588,49 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 112.31,
-        ["Coord"] = {
-            ["y"] = 2408.5,
-            ["x"] = 551.5,
+        Range = 112.31,
+        Coord = {
+            y = 2408.5,
+            x = 551.5,
         },
     }, -- [3]
     {
-        ["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
-        ["Coord"] = {
-            ["y"] = 1866.2,
-            ["x"] = 263.1,
+        ExtraLineText = "NO_WAYPOINTS_GARRISON",
+        Coord = {
+            y = 1866.2,
+            x = 263.1,
         },
-        ["Done"] = {
+        Done = {
             35174,
             35176,
             35166, -- [3]
         },
     },             -- [4]
     {
-        ["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
-        ["PickUp"] = {
+        ExtraLineText = "NO_WAYPOINTS_GARRISON",
+        PickUp = {
             34587,
         },
-        ["Coord"] = {
-            ["y"] = 1833.7,
-            ["x"] = 459.8,
+        Coord = {
+            y = 1833.7,
+            x = 459.8,
         },
     },
     {
-        ["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
+        ExtraLineText = "NO_WAYPOINTS_GARRISON",
         Qpart = {
             [34587] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1833.7,
-            ["x"] = 459.8,
+        Range = 0.75,
+        Coord = {
+            y = 1833.7,
+            x = 459.8,
         },
     }, -- [3]
     {
-        ["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
+        ExtraLineText = "NO_WAYPOINTS_GARRISON",
         Qpart = {
             [34587] = {
                 2,
@@ -1638,85 +1638,85 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 4,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34587-2"] = 111956,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1852.4,
-            ["x"] = 471.1,
+        Range = 0.75,
+        Coord = {
+            y = 1852.4,
+            x = 471.1,
         },
     }, -- [4]
     {
-        ["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
-        ["Done"] = {
+        ExtraLineText = "NO_WAYPOINTS_GARRISON",
+        Done = {
             34587,
         },
-        ["Coord"] = {
-            ["y"] = 1512.3,
-            ["x"] = 311.6,
+        Coord = {
+            y = 1512.3,
+            x = 311.6,
         },
     }, -- [42]
     {
-        ["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
-        ["PickUp"] = {
+        ExtraLineText = "NO_WAYPOINTS_GARRISON",
+        PickUp = {
             34646,
         },
-        ["Coord"] = {
-            ["y"] = 1623.3,
-            ["x"] = 132.5,
+        Coord = {
+            y = 1623.3,
+            x = 132.5,
         },
     }, -- [5]
     {
-        ["ExtraLineText"] = "GO_SOUTH",
+        ExtraLineText = "GO_SOUTH",
         Qpart = {
             [34646] = {
                 1,
             },
         },
-        ["RaidIcon"] = 81776,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1358.3,
-            ["x"] = 264,
+        RaidIcon = 81776,
+        Range = 0.75,
+        Coord = {
+            y = 1358.3,
+            x = 264,
         },
     }, -- [6]
 
     {
-        ["ExtraLineText"] = "GO_SOUTH",
-        ["Done"] = {
+        ExtraLineText = "GO_SOUTH",
+        Done = {
             33359,
         },
-        ["Coord"] = {
-            ["y"] = 1512.3,
-            ["x"] = 311.6,
+        Coord = {
+            y = 1512.3,
+            x = 311.6,
         },
     }, -- [42]
     {
-        ["PickUp"] = {
+        PickUp = {
             33834,
         },
-        ["Coord"] = {
-            ["y"] = 1192.3,
-            ["x"] = 500.7,
+        Coord = {
+            y = 1192.3,
+            x = 500.7,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             33062,
         },
-        ["Coord"] = {
-            ["y"] = 1511.8,
-            ["x"] = 312.8,
+        Coord = {
+            y = 1511.8,
+            x = 312.8,
         },
     }, -- [7]
     {
-        ["PickUp"] = {
+        PickUp = {
             33113,
         },
-        ["Coord"] = {
-            ["y"] = 1565.9,
-            ["x"] = 294,
+        Coord = {
+            y = 1565.9,
+            x = 294,
         },
     },
     {
@@ -1725,18 +1725,18 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1734.4,
-            ["x"] = 721.2,
+        Range = 0.75,
+        Coord = {
+            y = 1734.4,
+            x = 721.2,
         },
     },
     {
-        ["Range"] = 30.63,
-        ["Waypoint"] = 33062,
-        ["Coord"] = {
-            ["y"] = 1890.5,
-            ["x"] = 694.6,
+        Range = 30.63,
+        Waypoint = 33062,
+        Coord = {
+            y = 1890.5,
+            x = 694.6,
         },
     }, -- [10]
     {
@@ -1745,31 +1745,31 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 72783,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1936.7,
-            ["x"] = 807.1,
+        RaidIcon = 72783,
+        Range = 0.75,
+        Coord = {
+            y = 1936.7,
+            x = 807.1,
         },
     }, -- [11]
     {
-        ["Coord"] = {
-            ["y"] = 1536.7,
-            ["x"] = 306.8,
+        Coord = {
+            y = 1536.7,
+            x = 306.8,
         },
-        ["Done"] = {
+        Done = {
             33062,
             33113,
         },
     }, -- [12]
     {
-        ["PickUp"] = {
+        PickUp = {
             33115,
             33120,
         },
-        ["Coord"] = {
-            ["y"] = 1535.5,
-            ["x"] = 304.5,
+        Coord = {
+            y = 1535.5,
+            x = 304.5,
         },
     }, -- [13]
 
@@ -1779,33 +1779,33 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1028.9,
-            ["x"] = 625,
+        Range = 0.75,
+        Coord = {
+            y = 1028.9,
+            x = 625,
         },
     },
     {
-        ["Range"] = 30.69,
-        ["Waypoint"] = 34504,
-        ["Coord"] = {
-            ["y"] = 1181.9,
-            ["x"] = 654.7,
+        Range = 30.69,
+        Waypoint = 34504,
+        Coord = {
+            y = 1181.9,
+            x = 654.7,
         },
     }, -- [3]
     {
-        ["PickUp"] = {
+        PickUp = {
             33419,
         },
-        ["Fillers"] = {
+        Fillers = {
             [34504] = {
                 1,
                 2,
             },
         },
-        ["Coord"] = {
-            ["y"] = 1188.4,
-            ["x"] = 722.2,
+        Coord = {
+            y = 1188.4,
+            x = 722.2,
         },
     }, -- [4]
     {
@@ -1814,16 +1814,16 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34504] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1138.5,
-            ["x"] = 750.9,
+        Range = 0.75,
+        Coord = {
+            y = 1138.5,
+            x = 750.9,
         },
     }, -- [5]
     {
@@ -1832,44 +1832,44 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34504] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1142,
-            ["x"] = 817.4,
+        Range = 0.75,
+        Coord = {
+            y = 1142,
+            x = 817.4,
         },
     }, -- [6]
     {
-        ["Waypoint"] = 33419,
-        ["Fillers"] = {
+        Waypoint = 33419,
+        Fillers = {
             [34504] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 21.02,
-        ["Coord"] = {
-            ["y"] = 1112.3,
-            ["x"] = 850.6,
+        Range = 21.02,
+        Coord = {
+            y = 1112.3,
+            x = 850.6,
         },
     }, -- [7]
     {
-        ["Waypoint"] = 33419,
-        ["Fillers"] = {
+        Waypoint = 33419,
+        Fillers = {
             [34504] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 20.69,
-        ["Coord"] = {
-            ["y"] = 1079.2,
-            ["x"] = 822.2,
+        Range = 20.69,
+        Coord = {
+            y = 1079.2,
+            x = 822.2,
         },
     },
     {
@@ -1878,16 +1878,16 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34504] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1104,
-            ["x"] = 757.6,
+        Range = 0.75,
+        Coord = {
+            y = 1104,
+            x = 757.6,
         },
     },
     {
@@ -1897,27 +1897,27 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 2,
             },
         },
-        ["Range"] = 101.21,
-        ["Coord"] = {
-            ["y"] = 1104,
-            ["x"] = 757.6,
+        Range = 101.21,
+        Coord = {
+            y = 1104,
+            x = 757.6,
         },
     }, -- [10]
     {
-        ["Coord"] = {
-            ["y"] = 1188,
-            ["x"] = 722.9,
+        Coord = {
+            y = 1188,
+            x = 722.9,
         },
-        ["Done"] = {
+        Done = {
             33419,
         },
     }, -- [11]
     {
-        ["Range"] = 55.18,
-        ["Waypoint"] = 33115,
-        ["Coord"] = {
-            ["y"] = 1305,
-            ["x"] = 492.8,
+        Range = 55.18,
+        Waypoint = 33115,
+        Coord = {
+            y = 1305,
+            x = 492.8,
         },
     },
     {
@@ -1926,15 +1926,15 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33120] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1373.2,
-            ["x"] = 671.7,
+        Range = 0.75,
+        Coord = {
+            y = 1373.2,
+            x = 671.7,
         },
     },
     {
@@ -1943,15 +1943,15 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33120] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1566.3,
-            ["x"] = 725.5,
+        Range = 0.75,
+        Coord = {
+            y = 1566.3,
+            x = 725.5,
         },
     }, -- [3]
     {
@@ -1960,15 +1960,15 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33120] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1953.3,
-            ["x"] = 525.2,
+        Range = 0.75,
+        Coord = {
+            y = 1953.3,
+            x = 525.2,
         },
     }, -- [4]
     {
@@ -1977,37 +1977,37 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 256.46,
-        ["Coord"] = {
-            ["y"] = 1766,
-            ["x"] = 563,
+        Range = 256.46,
+        Coord = {
+            y = 1766,
+            x = 563,
         },
     }, -- [5]
     {
-        ["Coord"] = {
-            ["y"] = 1566,
-            ["x"] = 293.8,
+        Coord = {
+            y = 1566,
+            x = 293.8,
         },
-        ["Done"] = {
+        Done = {
             33120,
         },
     }, -- [6]
     {
-        ["Coord"] = {
-            ["y"] = 1512.5,
-            ["x"] = 312.3,
+        Coord = {
+            y = 1512.5,
+            x = 312.3,
         },
-        ["Done"] = {
+        Done = {
             33115,
         },
     }, -- [7]
     {
-        ["PickUp"] = {
+        PickUp = {
             33112,
         },
-        ["Coord"] = {
-            ["y"] = 1511.7,
-            ["x"] = 312.6,
+        Coord = {
+            y = 1511.7,
+            x = 312.6,
         },
     },
     {
@@ -2016,30 +2016,30 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1534,
-            ["x"] = 346.6,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            y = 1534,
+            x = 346.6,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 1512.5,
-            ["x"] = 312.3,
+        Coord = {
+            y = 1512.5,
+            x = 312.3,
         },
-        ["Done"] = {
+        Done = {
             33112,
         },
     }, -- [7]
     {
-        ["PickUp"] = {
+        PickUp = {
             33066,
             33269,
         },
-        ["Coord"] = {
-            ["y"] = 1511.7,
-            ["x"] = 312.6,
+        Coord = {
+            y = 1511.7,
+            x = 312.6,
         },
     },
     {
@@ -2048,30 +2048,30 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33269] = {
                 1,
             },
         },
-        ["RaidIcon"] = 72674,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1252.8,
-            ["x"] = 874.2,
+        RaidIcon = 72674,
+        Range = 0.69,
+        Coord = {
+            y = 1252.8,
+            x = 874.2,
         },
     },
     {
-        ["Treasure"] = 33575,
-        ["Fillers"] = {
+        Treasure = 33575,
+        Fillers = {
             [33269] = {
                 1,
             },
         },
-        ["ExtraLineText"] = "CHEST_INSIDE_HUT",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1292.5,
-            ["x"] = 905.4,
+        ExtraLineText = "CHEST_INSIDE_HUT",
+        Range = 0.75,
+        Coord = {
+            y = 1292.5,
+            x = 905.4,
         },
     },
     {
@@ -2080,16 +2080,16 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33269] = {
                 1,
             },
         },
-        ["RaidIcon"] = 72677,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1445,
-            ["x"] = 869.2,
+        RaidIcon = 72677,
+        Range = 0.75,
+        Coord = {
+            y = 1445,
+            x = 869.2,
         },
     }, -- [3]
     {
@@ -2098,39 +2098,39 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33269] = {
                 1,
             },
         },
-        ["RaidIcon"] = 72647,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1585.3,
-            ["x"] = 1045.5,
+        RaidIcon = 72647,
+        Range = 0.69,
+        Coord = {
+            y = 1585.3,
+            x = 1045.5,
         },
     }, -- [4]
     {
-        ["Fillers"] = {
+        Fillers = {
             [33269] = {
                 1,
             },
         },
-        ["Done"] = {
+        Done = {
             33066,
         },
-        ["Coord"] = {
-            ["y"] = 1385.3,
-            ["x"] = 992,
+        Coord = {
+            y = 1385.3,
+            x = 992,
         },
     }, -- [5]
     {
-        ["PickUp"] = {
+        PickUp = {
             33168,
         },
-        ["Coord"] = {
-            ["y"] = 1385.4,
-            ["x"] = 991.2,
+        Coord = {
+            y = 1385.4,
+            x = 991.2,
         },
     }, -- [6]
     {
@@ -2139,39 +2139,39 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33269] = {
                 1,
             },
         },
-        ["RaidIcon"] = 77488,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1431,
-            ["x"] = 1084.8,
+        RaidIcon = 77488,
+        Range = 0.75,
+        Coord = {
+            y = 1431,
+            x = 1084.8,
         },
     }, -- [7]
     {
-        ["Fillers"] = {
+        Fillers = {
             [33269] = {
                 1,
             },
         },
-        ["Done"] = {
+        Done = {
             33168,
         },
-        ["Coord"] = {
-            ["y"] = 1385.7,
-            ["x"] = 991.4,
+        Coord = {
+            y = 1385.7,
+            x = 991.4,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             33114,
         },
-        ["Coord"] = {
-            ["y"] = 1385.7,
-            ["x"] = 991.4,
+        Coord = {
+            y = 1385.7,
+            x = 991.4,
         },
     },
     {
@@ -2180,31 +2180,31 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["33114-1"] = 109224,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1385.8,
-            ["x"] = 991.9,
+        Range = 0.75,
+        Coord = {
+            y = 1385.8,
+            x = 991.9,
         },
     }, -- [10]
     {
-        ["Coord"] = {
-            ["y"] = 1385.8,
-            ["x"] = 991.9,
+        Coord = {
+            y = 1385.8,
+            x = 991.9,
         },
-        ["Done"] = {
+        Done = {
             33114,
         },
     }, -- [11]
     {
-        ["PickUp"] = {
+        PickUp = {
             33116,
         },
-        ["Coord"] = {
-            ["y"] = 1385.8,
-            ["x"] = 991.9,
+        Coord = {
+            y = 1385.8,
+            x = 991.9,
         },
     }, -- [12]
     {
@@ -2213,18 +2213,18 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33269] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["33116-1"] = 109246,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1310,
-            ["x"] = 1061.5,
+        Range = 0.75,
+        Coord = {
+            y = 1310,
+            x = 1061.5,
         },
     }, -- [13]
     {
@@ -2233,10 +2233,10 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1334.5,
-            ["x"] = 1050.7,
+        Range = 0.69,
+        Coord = {
+            y = 1334.5,
+            x = 1050.7,
         },
     }, -- [14]
     {
@@ -2245,30 +2245,30 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 116.32,
-        ["Coord"] = {
-            ["y"] = 1409.7,
-            ["x"] = 930.7,
+        Range = 116.32,
+        Coord = {
+            y = 1409.7,
+            x = 930.7,
         },
     }, -- [15]
     {
-        ["Coord"] = {
-            ["y"] = 1512,
-            ["x"] = 310.3,
+        Coord = {
+            y = 1512,
+            x = 310.3,
         },
-        ["Done"] = {
+        Done = {
             33269,
             33116,
         },
     }, -- [16]
 
     {
-        ["PickUp"] = {
+        PickUp = {
             33833,
         },
-        ["Coord"] = {
-            ["y"] = 1288.3,
-            ["x"] = 40,
+        Coord = {
+            y = 1288.3,
+            x = 40,
         },
     },
     {
@@ -2277,162 +2277,162 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1466.9,
-            ["x"] = -55.8,
+        Range = 0.69,
+        Coord = {
+            y = 1466.9,
+            x = -55.8,
         },
     },
     {
-        ["Treasure"] = 35677,
-        ["ExtraLineText"] = "IN_WATER",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1498.5,
-            ["x"] = -221,
+        Treasure = 35677,
+        ExtraLineText = "IN_WATER",
+        Range = 0.69,
+        Coord = {
+            y = 1498.5,
+            x = -221,
         },
     }, -- [4]
     {
-        ["Waypoint"] = 33833,
-        ["ExtraLineText"] = "TREASURE_CAVE",
-        ["Range"] = 13.42,
-        ["Coord"] = {
-            ["y"] = 1665,
-            ["x"] = -276.9,
+        Waypoint = 33833,
+        ExtraLineText = "TREASURE_CAVE",
+        Range = 13.42,
+        Coord = {
+            y = 1665,
+            x = -276.9,
         },
     }, -- [5]
     {
-        ["Treasure"] = 33613,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1628,
-            ["x"] = -221.4,
+        Treasure = 33613,
+        Range = 0.69,
+        Coord = {
+            y = 1628,
+            x = -221.4,
         },
     }, -- [6]
     {
-        ["Range"] = 12.34,
-        ["Waypoint"] = 33833,
-        ["Coord"] = {
-            ["y"] = 1664.5,
-            ["x"] = -272.4,
+        Range = 12.34,
+        Waypoint = 33833,
+        Coord = {
+            y = 1664.5,
+            x = -272.4,
         },
     }, -- [7]
     {
-        ["Treasure"] = 33869,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1414.4,
-            ["x"] = -506.8,
+        Treasure = 33869,
+        Range = 0.69,
+        Coord = {
+            y = 1414.4,
+            x = -506.8,
         },
     },
     {
-        ["Range"] = 10.7,
-        ["Waypoint"] = 34836,
-        ["Coord"] = {
-            ["y"] = 1397.3,
-            ["x"] = -741.8,
+        Range = 10.7,
+        Waypoint = 34836,
+        Coord = {
+            y = 1397.3,
+            x = -741.8,
         },
     },
     {
-        ["Range"] = 9.93,
-        ["Waypoint"] = 34836,
-        ["Coord"] = {
-            ["y"] = 1424.4,
-            ["x"] = -746.3,
+        Range = 9.93,
+        Waypoint = 34836,
+        Coord = {
+            y = 1424.4,
+            x = -746.3,
         },
     },
     {
-        ["Range"] = 10.47,
-        ["Waypoint"] = 34836,
-        ["Coord"] = {
-            ["y"] = 1480.4,
-            ["x"] = -713.3,
+        Range = 10.47,
+        Waypoint = 34836,
+        Coord = {
+            y = 1480.4,
+            x = -713.3,
         },
     }, -- [3]
     {
-        ["GetFP"] = 1384,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1526,
-            ["x"] = -783.8,
+        GetFP = 1384,
+        Range = 0.69,
+        Coord = {
+            y = 1526,
+            x = -783.8,
         },
     }, -- [4]
     {
-        ["PickUp"] = {
+        PickUp = {
             34847,
         },
-        ["Coord"] = {
-            ["y"] = 1523,
-            ["x"] = -819.5,
+        Coord = {
+            y = 1523,
+            x = -819.5,
         },
     }, -- [5]
     {
-        ["PickUp"] = {
+        PickUp = {
             34836,
         },
-        ["Coord"] = {
-            ["y"] = 1533.7,
-            ["x"] = -839.5,
+        Coord = {
+            y = 1533.7,
+            x = -839.5,
         },
     }, -- [6]
     {
-        ["Range"] = 10.77,
-        ["Waypoint"] = 34836,
-        ["Coord"] = {
-            ["y"] = 1587,
-            ["x"] = -961.3,
+        Range = 10.77,
+        Waypoint = 34836,
+        Coord = {
+            y = 1587,
+            x = -961.3,
         },
     }, -- [7]
     {
-        ["Waypoint"] = 34847,
-        ["Fillers"] = {
+        Waypoint = 34847,
+        Fillers = {
             [34836] = {
                 1,
             },
         },
-        ["Range"] = 25.24,
-        ["Coord"] = {
-            ["y"] = 1732.5,
-            ["x"] = -1143.5,
+        Range = 25.24,
+        Coord = {
+            y = 1732.5,
+            x = -1143.5,
         },
     },
     {
-        ["Waypoint"] = 34836,
-        ["Fillers"] = {
+        Waypoint = 34836,
+        Fillers = {
             [34836] = {
                 1,
             },
         },
-        ["Range"] = 22.4,
-        ["Coord"] = {
-            ["y"] = 1827.9,
-            ["x"] = -1160.8,
+        Range = 22.4,
+        Coord = {
+            y = 1827.9,
+            x = -1160.8,
         },
     },
     {
-        ["Waypoint"] = 34836,
-        ["Fillers"] = {
+        Waypoint = 34836,
+        Fillers = {
             [34836] = {
                 1,
             },
         },
-        ["Range"] = 13.29,
-        ["Coord"] = {
-            ["y"] = 1972.4,
-            ["x"] = -1111.8,
+        Range = 13.29,
+        Coord = {
+            y = 1972.4,
+            x = -1111.8,
         },
     }, -- [3]
     {
-        ["Waypoint"] = 34836,
-        ["Fillers"] = {
+        Waypoint = 34836,
+        Fillers = {
             [34836] = {
                 1,
             },
         },
-        ["Range"] = 7.35,
-        ["Coord"] = {
-            ["y"] = 2033.5,
-            ["x"] = -962.3,
+        Range = 7.35,
+        Coord = {
+            y = 2033.5,
+            x = -962.3,
         },
     }, -- [4]
     {
@@ -2441,10 +2441,10 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 1987.5,
-            ["x"] = -952,
+        Range = 0.61,
+        Coord = {
+            y = 1987.5,
+            x = -952,
         },
     }, -- [5]
     {
@@ -2454,44 +2454,44 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1988.2,
-            ["x"] = -950.8,
+        Range = 0.69,
+        Coord = {
+            y = 1988.2,
+            x = -950.8,
         },
     }, -- [6]
     {
-        ["Range"] = 7.9,
-        ["Waypoint"] = 34836,
-        ["Coord"] = {
-            ["y"] = 2030.7,
-            ["x"] = -962.8,
+        Range = 7.9,
+        Waypoint = 34836,
+        Coord = {
+            y = 2030.7,
+            x = -962.8,
         },
     }, -- [7]
     {
-        ["Waypoint"] = 34836,
-        ["Fillers"] = {
+        Waypoint = 34836,
+        Fillers = {
             [34836] = {
                 1,
             },
         },
-        ["Range"] = 11.41,
-        ["Coord"] = {
-            ["y"] = 1971.8,
-            ["x"] = -1112.9,
+        Range = 11.41,
+        Coord = {
+            y = 1971.8,
+            x = -1112.9,
         },
     },
     {
-        ["Waypoint"] = 34836,
-        ["Fillers"] = {
+        Waypoint = 34836,
+        Fillers = {
             [34836] = {
                 1,
             },
         },
-        ["Range"] = 26.19,
-        ["Coord"] = {
-            ["y"] = 1827.3,
-            ["x"] = -1155,
+        Range = 26.19,
+        Coord = {
+            y = 1827.3,
+            x = -1155,
         },
     },
     {
@@ -2500,132 +2500,132 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 1,
             },
         },
-        ["Range"] = 41.27,
-        ["Coord"] = {
-            ["y"] = 1743.9,
-            ["x"] = -1152,
+        Range = 41.27,
+        Coord = {
+            y = 1743.9,
+            x = -1152,
         },
     }, -- [10]
     {
-        ["Range"] = 16.85,
-        ["Waypoint"] = 34836,
-        ["Coord"] = {
-            ["y"] = 1593.2,
-            ["x"] = -1108.5,
+        Range = 16.85,
+        Waypoint = 34836,
+        Coord = {
+            y = 1593.2,
+            x = -1108.5,
         },
     }, -- [11]
     {
-        ["Coord"] = {
-            ["y"] = 1533,
-            ["x"] = -839.8,
+        Coord = {
+            y = 1533,
+            x = -839.8,
         },
-        ["Done"] = {
+        Done = {
             34836,
         },
     }, -- [12]
     {
-        ["Coord"] = {
-            ["y"] = 1523.5,
-            ["x"] = -820.3,
+        Coord = {
+            y = 1523.5,
+            x = -820.3,
         },
-        ["Done"] = {
+        Done = {
             34847,
         },
     }, -- [13]
     {
-        ["Range"] = 15.67,
-        ["Waypoint"] = 33833,
-        ["Coord"] = {
-            ["y"] = 1428.9,
-            ["x"] = -842.2,
+        Range = 15.67,
+        Waypoint = 33833,
+        Coord = {
+            y = 1428.9,
+            x = -842.2,
         },
     }, -- [14]
     {
-        ["Treasure"] = 33570,
-        ["ExtraLineText"] = "GO_CAVE",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1562.8,
-            ["x"] = -800.8,
+        Treasure = 33570,
+        ExtraLineText = "GO_CAVE",
+        Range = 0.69,
+        Coord = {
+            y = 1562.8,
+            x = -800.8,
         },
     }, -- [15]
     {
-        ["Done"] = {
+        Done = {
             33833,
         },
-        ["Coord"] = {
-            ["y"] = 976.2,
-            ["x"] = -778.3,
+        Coord = {
+            y = 976.2,
+            x = -778.3,
         },
     },
     {
-        ["GetFP"] = 1381,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 925.9,
-            ["x"] = -791.2,
+        GetFP = 1381,
+        Range = 0.69,
+        Coord = {
+            y = 925.9,
+            x = -791.2,
         },
     },
     {
-        ["Done"] = {
+        Done = {
             33834,
         },
-        ["Coord"] = {
-            ["y"] = 940.5,
-            ["x"] = -740,
+        Coord = {
+            y = 940.5,
+            x = -740,
         },
     }, -- [3]
     {
-        ["Waypoint"] = 35556,
-        ["Range"] = 22.98,
-        ["Coord"] = {
-            ["y"] = 1190.3,
-            ["x"] = -1009.7,
+        Waypoint = 35556,
+        Range = 22.98,
+        Coord = {
+            y = 1190.3,
+            x = -1009.7,
         },
     }, -- [4]
     {
-        ["Waypoint"] = 35556,
-        ["Range"] = 18.5,
-        ["Coord"] = {
-            ["y"] = 1113.8,
-            ["x"] = -1196.6,
+        Waypoint = 35556,
+        Range = 18.5,
+        Coord = {
+            y = 1113.8,
+            x = -1196.6,
         },
     }, -- [5]
     {
-        ["Treasure"] = 33037,
-        ["ExtraLineText"] = "FALSEBOTTOMED_JAR",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1075.5,
-            ["x"] = -1198,
+        Treasure = 33037,
+        ExtraLineText = "FALSEBOTTOMED_JAR",
+        Range = 0.69,
+        Coord = {
+            y = 1075.5,
+            x = -1198,
         },
     }, -- [6]
     {
-        ["PickUp"] = {
+        PickUp = {
             33084,
         },
-        ["Fillers"] = {
+        Fillers = {
             [34496] = {
                 1,
                 2,
             },
         },
-        ["Coord"] = {
-            ["y"] = 1016.2,
-            ["x"] = -1915.5,
+        Coord = {
+            y = 1016.2,
+            x = -1915.5,
         },
     }, -- [7]
     {
-        ["Treasure"] = 36507,
-        ["Fillers"] = {
+        Treasure = 36507,
+        Fillers = {
             [33084] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1165.8,
-            ["x"] = -2218.2,
+        Range = 0.69,
+        Coord = {
+            y = 1165.8,
+            x = -2218.2,
         },
     },
     {
@@ -2638,35 +2638,35 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 2,
             },
         },
-        ["Range"] = 138.31,
-        ["Coord"] = {
-            ["y"] = 1077.3,
-            ["x"] = -1932.4,
+        Range = 138.31,
+        Coord = {
+            y = 1077.3,
+            x = -1932.4,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 1016.5,
-            ["x"] = -1916.1,
+        Coord = {
+            y = 1016.5,
+            x = -1916.1,
         },
-        ["Done"] = {
+        Done = {
             33084,
         },
     }, -- [10]
     {
-        ["Treasure"] = 33568,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 637.1,
-            ["x"] = -1612.5,
+        Treasure = 33568,
+        Range = 0.69,
+        Coord = {
+            y = 637.1,
+            x = -1612.5,
         },
     },
     {
-        ["Range"] = 19.7,
-        ["Waypoint"] = 34728,
-        ["Coord"] = {
-            ["y"] = -31.4,
-            ["x"] = -1631,
+        Range = 19.7,
+        Waypoint = 34728,
+        Coord = {
+            y = -31.4,
+            x = -1631,
         },
     },
     {
@@ -2675,16 +2675,16 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34728] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = -141.7,
-            ["x"] = -1939.6,
+        Range = 0.75,
+        Coord = {
+            y = -141.7,
+            x = -1939.6,
         },
     }, -- [3]
     {
@@ -2694,31 +2694,31 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
                 2,
             },
         },
-        ["Range"] = 46.02,
-        ["Coord"] = {
-            ["y"] = -223.4,
-            ["x"] = -1796.5,
+        Range = 46.02,
+        Coord = {
+            y = -223.4,
+            x = -1796.5,
         },
     }, -- [4]
     {
-        ["DoIHaveFlight"] = 1,
-        ["UseHS"] = 35556,
-        ["Coord"] = {
-            ["y"] = -216.2,
-            ["x"] = -1672.5,
+        DoIHaveFlight = 1,
+        UseHS = 35556,
+        Coord = {
+            y = -216.2,
+            x = -1672.5,
         },
     }, -- [5]
     {
-        ["DoIHaveFlight"] = 1,
-        ["WarMode"] = 35556,
+        DoIHaveFlight = 1,
+        WarMode = 35556,
     },
     {
-        ["UseGarrisonHS"] = 35556,
-        ["Coord"] = {
-            ["y"] = -8780.3,
-            ["x"] = 381.5,
+        UseGarrisonHS = 35556,
+        Coord = {
+            y = -8780.3,
+            x = 381.5,
         },
-        ["LeaveQuests"] = {
+        LeaveQuests = {
             35556,
             33533,
             36632,
@@ -2727,76 +2727,76 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
         },
     }, -- [3]
     {
-        ["ExtraLineText"] = "CALL_BOARD",
-        ["PickUp"] = {
+        ExtraLineText = "CALL_BOARD",
+        PickUp = {
             49564,
         },
-        ["PickUpDB"] = {
+        PickUpDB = {
             35556,
             33533,
             36632,
             49564,
             35033,
         },
-        ["Coord"] = {
-            ["y"] = 1936.5,
-            ["x"] = 323,
+        Coord = {
+            y = 1936.5,
+            x = 323,
         },
     }, -- [16]
     {
-        ["UseFlightPath"] = 49564,
-        ["Name"] = "Wildwood Wash, Gorgrond",
-        ["NodeID"] = 1518,
-        ["Coord"] = {
-            ["y"] = 190.8,
-            ["x"] = -459.8,
+        UseFlightPath = 49564,
+        Name = "Wildwood Wash, Gorgrond",
+        NodeID = 1518,
+        Coord = {
+            y = 190.8,
+            x = -459.8,
         },
     }, -- [40]
     {
-        ["Done"] = {
+        Done = {
             49564,
         },
-        ["DoneDB"] = {
+        DoneDB = {
             35556,
             33533,
             36632,
             49564,
             35033,
         },
-        ["Coord"] = {
-            ["y"] = 6472.7,
-            ["x"] = -165.2,
+        Coord = {
+            y = 6472.7,
+            x = -165.2,
         },
     },
     {
-        ["ZoneDoneSave"] = 1,
+        ZoneDoneSave = 1,
     },
 }
 APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
     {
-        ["Done"] = {
+        Done = {
             49564,
         },
-        ["DoneDB"] = {
+        DoneDB = {
             35556,
             33533,
             36632,
             49564,
             35033,
         },
-        ["Coord"] = {
-            ["y"] = 6472.7,
-            ["x"] = -165.2,
+        Coord = {
+            y = 6472.7,
+            x = -165.2,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35033,
             36495,
         },
-        ["Coord"] = {
-            ["y"] = 6471.5,
-            ["x"] = -164.2,
+        Coord = {
+            y = 6471.5,
+            x = -164.2,
         },
     },
     {
@@ -2805,72 +2805,72 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 6800.2,
-            ["x"] = -170.7,
+        Range = 0.69,
+        Coord = {
+            y = 6800.2,
+            x = -170.7,
         },
     },
     {
-        ["Waypoint"] = 35033,
-        ["Range"] = 8.86,
-        ["Coord"] = {
-            ["y"] = 6784.1,
-            ["x"] = -177,
+        Waypoint = 35033,
+        Range = 8.86,
+        Coord = {
+            y = 6784.1,
+            x = -177,
         },
     }, -- [3]
     {
-        ["Done"] = {
+        Done = {
             35033,
         },
-        ["Coord"] = {
-            ["y"] = 6761.2,
-            ["x"] = -183,
+        Coord = {
+            y = 6761.2,
+            x = -183,
         },
     }, -- [4]
     {
-        ["PickUp"] = {
+        PickUp = {
             35065,
         },
-        ["Coord"] = {
-            ["y"] = 6761.2,
-            ["x"] = -183,
+        Coord = {
+            y = 6761.2,
+            x = -183,
         },
     }, -- [5]
     {
-        ["PickUp"] = {
+        PickUp = {
             35834,
         },
-        ["Coord"] = {
-            ["y"] = 6768.8,
-            ["x"] = -182.7,
+        Coord = {
+            y = 6768.8,
+            x = -182.7,
         },
     }, -- [6]
     {
-        ["PickUp"] = {
+        PickUp = {
             35828,
         },
-        ["Fillers"] = {
+        Fillers = {
             [35834] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["y"] = 6944.3,
-            ["x"] = -246.4,
+        Coord = {
+            y = 6944.3,
+            x = -246.4,
         },
     }, -- [7]
     {
-        ["Waypoint"] = 35065,
-        ["Fillers"] = {
+        Waypoint = 35065,
+        Fillers = {
             [35834] = {
                 1,
             },
         },
-        ["Range"] = 18.88,
-        ["Coord"] = {
-            ["y"] = 6919.8,
-            ["x"] = -147.5,
+        Range = 18.88,
+        Coord = {
+            y = 6919.8,
+            x = -147.5,
         },
     },
     {
@@ -2879,15 +2879,15 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35834] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 7043.7,
-            ["x"] = -98.3,
+        Range = 0.69,
+        Coord = {
+            y = 7043.7,
+            x = -98.3,
         },
     },
     {
@@ -2896,39 +2896,39 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 39.04,
-        ["Coord"] = {
-            ["y"] = 6919.8,
-            ["x"] = -140,
+        Range = 39.04,
+        Coord = {
+            y = 6919.8,
+            x = -140,
         },
     }, -- [10]
     {
-        ["Done"] = {
+        Done = {
             35828,
             35065,
             35834, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 6737.5,
-            ["x"] = -99.5,
+        Coord = {
+            y = 6737.5,
+            x = -99.5,
         },
     }, -- [11]
     {
-        ["PickUp"] = {
+        PickUp = {
             35055,
             35050,
         },
-        ["Coord"] = {
-            ["y"] = 6738.5,
-            ["x"] = -99.3,
+        Coord = {
+            y = 6738.5,
+            x = -99.3,
         },
     }, -- [12]
     {
-        ["Waypoint"] = 36571,
-        ["Range"] = 92.47,
-        ["Coord"] = {
-            ["y"] = 6674.3,
-            ["x"] = 24.8,
+        Waypoint = 36571,
+        Range = 92.47,
+        Coord = {
+            y = 6674.3,
+            x = 24.8,
         },
     }, -- [13]
     {
@@ -2939,10 +2939,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Range"] = 115.16,
-        ["Coord"] = {
-            ["y"] = 6665.2,
-            ["x"] = 6.8,
+        Range = 115.16,
+        Coord = {
+            y = 6665.2,
+            x = 6.8,
         },
     }, -- [14]
     {
@@ -2951,11 +2951,11 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6692.6,
-            ["x"] = 204.9,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            y = 6692.6,
+            x = 204.9,
         },
     }, -- [15]
     {
@@ -2964,19 +2964,19 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6631.8,
-            ["x"] = 348.7,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            y = 6631.8,
+            x = 348.7,
         },
     }, -- [16]
     {
-        ["Treasure"] = 36605,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6540,
-            ["x"] = 338.6,
+        Treasure = 36605,
+        Range = 0.75,
+        Coord = {
+            y = 6540,
+            x = 338.6,
         },
     },
     {
@@ -2985,11 +2985,11 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 3,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6399.2,
-            ["x"] = 562.6,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            y = 6399.2,
+            x = 562.6,
         },
     },
     {
@@ -2998,81 +2998,81 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6313.2,
-            ["x"] = 653.4,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            y = 6313.2,
+            x = 653.4,
         },
     }, -- [3]
     {
-        ["Coord"] = {
-            ["y"] = 6299.3,
-            ["x"] = 695.7,
+        Coord = {
+            y = 6299.3,
+            x = 695.7,
         },
-        ["Done"] = {
+        Done = {
             35050,
             35055,
         },
     }, -- [4]
     {
-        ["SparringRing"] = 128,
-        ["PickUp"] = {
+        SparringRing = 128,
+        PickUp = {
             35063,
         },
-        ["Coord"] = {
-            ["y"] = 6302,
-            ["x"] = 698.4,
+        Coord = {
+            y = 6302,
+            x = 698.4,
         },
     }, -- [5]
     {
-        ["SparringRing"] = 128,
+        SparringRing = 128,
         Qpart = {
             [35063] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6303.3,
-            ["x"] = 696.6,
+        Range = 0.75,
+        Coord = {
+            y = 6303.3,
+            x = 696.6,
         },
     },
     {
-        ["Done"] = {
+        Done = {
             35063,
         },
-        ["Coord"] = {
-            ["y"] = 6331.5,
-            ["x"] = 733.2,
+        Coord = {
+            y = 6331.5,
+            x = 733.2,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35666,
             36432,
         },
-        ["Coord"] = {
-            ["y"] = 6326.1,
-            ["x"] = 708.1,
+        Coord = {
+            y = 6326.1,
+            x = 708.1,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             34704,
         },
-        ["Coord"] = {
-            ["y"] = 6326.7,
-            ["x"] = 745,
+        Coord = {
+            y = 6326.7,
+            x = 745,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35686,
         },
-        ["Coord"] = {
-            ["y"] = 6336.8,
-            ["x"] = 745.6,
+        Coord = {
+            y = 6336.8,
+            x = 745.6,
         },
     }, -- [3]
     {
@@ -3081,35 +3081,35 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 6356.3,
-            ["x"] = 747.7,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            y = 6356.3,
+            x = 747.7,
         },
     }, -- [4]
     {
-        ["Coord"] = {
-            ["y"] = 5955.3,
-            ["x"] = 1284.4,
+        Coord = {
+            y = 5955.3,
+            x = 1284.4,
         },
-        ["Done"] = {
+        Done = {
             35686,
         },
     }, -- [5]
     {
-        ["PickUp"] = {
+        PickUp = {
             35664,
             35693,
         },
-        ["Coord"] = {
-            ["y"] = 5955.3,
-            ["x"] = 1284.4,
+        Coord = {
+            y = 5955.3,
+            x = 1284.4,
         },
     }, -- [6]
     {
-        ["Treasure"] = 36736,
-        ["Fillers"] = {
+        Treasure = 36736,
+        Fillers = {
             [35693] = {
                 1,
             },
@@ -3117,10 +3117,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 6151.8,
-            ["x"] = 1302,
+        Range = 0.61,
+        Coord = {
+            y = 6151.8,
+            x = 1302,
         },
     },
     {
@@ -3132,67 +3132,67 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 89.87,
-        ["Coord"] = {
-            ["y"] = 6096.3,
-            ["x"] = 1385.5,
+        Range = 89.87,
+        Coord = {
+            y = 6096.3,
+            x = 1385.5,
         },
     }, -- [7]
     {
-        ["Coord"] = {
-            ["y"] = 6105.1,
-            ["x"] = 1396,
+        Coord = {
+            y = 6105.1,
+            x = 1396,
         },
-        ["Done"] = {
+        Done = {
             35664,
             35693,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35665,
         },
-        ["Coord"] = {
-            ["y"] = 6105.1,
-            ["x"] = 1396,
+        Coord = {
+            y = 6105.1,
+            x = 1396,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 6157.3,
-            ["x"] = 1571.7,
+        Coord = {
+            y = 6157.3,
+            x = 1571.7,
         },
-        ["Done"] = {
+        Done = {
             34704,
         },
     }, -- [10]
     {
-        ["PickUp"] = {
+        PickUp = {
             34700,
             34699,
             34698, -- [3]
             34702, -- [4]
         },
-        ["Coord"] = {
-            ["y"] = 6156.7,
-            ["x"] = 1573.4,
+        Coord = {
+            y = 6156.7,
+            x = 1573.4,
         },
     }, -- [11]
     {
-        ["Treasure"] = 36729,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6086.5,
-            ["x"] = 1628.9,
+        Treasure = 36729,
+        Range = 0.75,
+        Coord = {
+            y = 6086.5,
+            x = 1628.9,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             34012,
         },
-        ["Coord"] = {
-            ["y"] = 5986.3,
-            ["x"] = 1680.9,
+        Coord = {
+            y = 5986.3,
+            x = 1680.9,
         },
     },
     {
@@ -3201,17 +3201,17 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["ExtraLineText"] = "UPTOP",
-        ["Fillers"] = {
+        ExtraLineText = "UPTOP",
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["RaidIcon"] = 79623,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5978,
-            ["x"] = 1709,
+        RaidIcon = 79623,
+        Range = 0.75,
+        Coord = {
+            y = 5978,
+            x = 1709,
         },
     }, -- [3]
     {
@@ -3220,16 +3220,16 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["RaidIcon"] = 79621,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5954.5,
-            ["x"] = 1754.9,
+        RaidIcon = 79621,
+        Range = 0.75,
+        Coord = {
+            y = 5954.5,
+            x = 1754.9,
         },
     }, -- [4]
     {
@@ -3238,15 +3238,15 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5908.3,
-            ["x"] = 1764.4,
+        Range = 0.75,
+        Coord = {
+            y = 5908.3,
+            x = 1764.4,
         },
     }, -- [5]
     {
@@ -3255,28 +3255,28 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5892.8,
-            ["x"] = 1816.3,
+        Range = 0.75,
+        Coord = {
+            y = 5892.8,
+            x = 1816.3,
         },
     }, -- [6]
     {
-        ["Waypoint"] = 34699,
-        ["Fillers"] = {
+        Waypoint = 34699,
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["Range"] = 6.69,
-        ["Coord"] = {
-            ["y"] = 5950.5,
-            ["x"] = 1853.4,
+        Range = 6.69,
+        Coord = {
+            y = 5950.5,
+            x = 1853.4,
         },
     }, -- [7]
     {
@@ -3285,28 +3285,28 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5924.7,
-            ["x"] = 1865.5,
+        Range = 0.75,
+        Coord = {
+            y = 5924.7,
+            x = 1865.5,
         },
     },
     {
-        ["Waypoint"] = 34699,
-        ["Fillers"] = {
+        Waypoint = 34699,
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["Range"] = 6.59,
-        ["Coord"] = {
-            ["y"] = 6043.7,
-            ["x"] = 1762.5,
+        Range = 6.59,
+        Coord = {
+            y = 6043.7,
+            x = 1762.5,
         },
     },
     {
@@ -3315,41 +3315,41 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6057.3,
-            ["x"] = 1771.4,
+        Range = 0.75,
+        Coord = {
+            y = 6057.3,
+            x = 1771.4,
         },
     }, -- [10]
     {
-        ["Waypoint"] = 34699,
-        ["Fillers"] = {
+        Waypoint = 34699,
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["Range"] = 13.95,
-        ["Coord"] = {
-            ["y"] = 5981,
-            ["x"] = 1882,
+        Range = 13.95,
+        Coord = {
+            y = 5981,
+            x = 1882,
         },
     }, -- [11]
     {
-        ["Waypoint"] = 34699,
-        ["Fillers"] = {
+        Waypoint = 34699,
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["Range"] = 6.58,
-        ["Coord"] = {
-            ["y"] = 5879.6,
-            ["x"] = 1880.3,
+        Range = 6.58,
+        Coord = {
+            y = 5879.6,
+            x = 1880.3,
         },
     }, -- [12]
     {
@@ -3358,90 +3358,90 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["RaidIcon"] = 79626,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5842.5,
-            ["x"] = 1879.4,
+        RaidIcon = 79626,
+        Range = 0.75,
+        Coord = {
+            y = 5842.5,
+            x = 1879.4,
         },
     }, -- [13]
     {
-        ["Treasure"] = 36631,
-        ["ExtraLineText"] = "UPSTAIRS_AND_JUMP",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 5880.8,
-            ["x"] = 1874.5,
+        Treasure = 36631,
+        ExtraLineText = "UPSTAIRS_AND_JUMP",
+        Range = 0.69,
+        Coord = {
+            y = 5880.8,
+            x = 1874.5,
         },
     }, -- [14]
     {
-        ["Waypoint"] = 34699,
-        ["Fillers"] = {
+        Waypoint = 34699,
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["Range"] = 11.17,
-        ["Coord"] = {
-            ["y"] = 5917.8,
-            ["x"] = 1914.5,
+        Range = 11.17,
+        Coord = {
+            y = 5917.8,
+            x = 1914.5,
         },
     }, -- [15]
     {
-        ["Waypoint"] = 34699,
-        ["Fillers"] = {
+        Waypoint = 34699,
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["Range"] = 8.12,
-        ["Coord"] = {
-            ["y"] = 5911.3,
-            ["x"] = 1937,
+        Range = 8.12,
+        Coord = {
+            y = 5911.3,
+            x = 1937,
         },
     }, -- [16]
     {
-        ["Range"] = 11.08,
-        ["Waypoint"] = 34699,
-        ["Coord"] = {
-            ["y"] = 5876.3,
-            ["x"] = 1967,
+        Range = 11.08,
+        Waypoint = 34699,
+        Coord = {
+            y = 5876.3,
+            x = 1967,
         },
     }, -- [17]
     {
-        ["Fillers"] = {
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["Done"] = {
+        Done = {
             34699,
         },
-        ["Coord"] = {
-            ["y"] = 5889.1,
-            ["x"] = 2053.3,
+        Coord = {
+            y = 5889.1,
+            x = 2053.3,
         },
     }, -- [18]
     {
-        ["PickUp"] = {
+        PickUp = {
             34703,
         },
-        ["Coord"] = {
-            ["y"] = 5889.1,
-            ["x"] = 2053.3,
+        Coord = {
+            y = 5889.1,
+            x = 2053.3,
         },
     }, -- [19]
     {
-        ["Range"] = 9.2,
-        ["Waypoint"] = 34703,
-        ["Coord"] = {
-            ["y"] = 5848.6,
-            ["x"] = 2101.1,
+        Range = 9.2,
+        Waypoint = 34703,
+        Coord = {
+            y = 5848.6,
+            x = 2101.1,
         },
     },
     {
@@ -3450,37 +3450,37 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 77020,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 5772.2,
-            ["x"] = 2085.6,
+        RaidIcon = 77020,
+        Range = 0.69,
+        Coord = {
+            y = 5772.2,
+            x = 2085.6,
         },
     },
     {
-        ["Waypoint"] = 34700,
-        ["Fillers"] = {
+        Waypoint = 34700,
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["Range"] = 21.16,
-        ["Coord"] = {
-            ["y"] = 5822.7,
-            ["x"] = 2018.5,
+        Range = 21.16,
+        Coord = {
+            y = 5822.7,
+            x = 2018.5,
         },
     }, -- [3]
     {
-        ["Waypoint"] = 34700,
-        ["Fillers"] = {
+        Waypoint = 34700,
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["Range"] = 9.58,
-        ["Coord"] = {
-            ["y"] = 5797.6,
-            ["x"] = 1995.5,
+        Range = 9.58,
+        Coord = {
+            y = 5797.6,
+            x = 1995.5,
         },
     }, -- [4]
     {
@@ -3489,31 +3489,31 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34012] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5744,
-            ["x"] = 2054.6,
+        Range = 0.75,
+        Coord = {
+            y = 5744,
+            x = 2054.6,
         },
     }, -- [5]
     {
-        ["Range"] = 15.58,
-        ["Waypoint"] = 34700,
-        ["Coord"] = {
-            ["y"] = 5873.3,
-            ["x"] = 1969.2,
+        Range = 15.58,
+        Waypoint = 34700,
+        Coord = {
+            y = 5873.3,
+            x = 1969.2,
         },
     }, -- [6]
     {
-        ["Range"] = 9.97,
-        ["Waypoint"] = 34700,
-        ["Coord"] = {
-            ["y"] = 5917,
-            ["x"] = 1920.2,
+        Range = 9.97,
+        Waypoint = 34700,
+        Coord = {
+            y = 5917,
+            x = 1920.2,
         },
     }, -- [7]
     {
@@ -3522,27 +3522,27 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 83.16,
-        ["Coord"] = {
-            ["y"] = 5980.8,
-            ["x"] = 1775,
+        Range = 83.16,
+        Coord = {
+            y = 5980.8,
+            x = 1775,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 5986,
-            ["x"] = 1681.2,
+        Coord = {
+            y = 5986,
+            x = 1681.2,
         },
-        ["Done"] = {
+        Done = {
             34012,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 6155,
-            ["x"] = 1573.7,
+        Coord = {
+            y = 6155,
+            x = 1573.7,
         },
-        ["Done"] = {
+        Done = {
             34700,
             34702,
             34698, -- [3]
@@ -3550,12 +3550,12 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
         },
     },             -- [10]
     {
-        ["PickUp"] = {
+        PickUp = {
             35137,
         },
-        ["Coord"] = {
-            ["y"] = 6157,
-            ["x"] = 1571,
+        Coord = {
+            y = 6157,
+            x = 1571,
         },
     }, -- [11]
     {
@@ -3564,29 +3564,29 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6233.6,
-            ["x"] = 1447.4,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            y = 6233.6,
+            x = 1447.4,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 6230.5,
-            ["x"] = 1446.5,
+        Coord = {
+            y = 6230.5,
+            x = 1446.5,
         },
-        ["Done"] = {
+        Done = {
             35665,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35730,
         },
-        ["Coord"] = {
-            ["y"] = 6230.5,
-            ["x"] = 1446.5,
+        Coord = {
+            y = 6230.5,
+            x = 1446.5,
         },
     }, -- [3]
     {
@@ -3595,10 +3595,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 6247.3,
-            ["x"] = 1438.5,
+        Range = 0.69,
+        Coord = {
+            y = 6247.3,
+            x = 1438.5,
         },
     }, -- [4]
     {
@@ -3607,29 +3607,29 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 6233.3,
-            ["x"] = 1447.5,
+        Range = 0.61,
+        Coord = {
+            y = 6233.3,
+            x = 1447.5,
         },
     }, -- [5]
     {
-        ["Coord"] = {
-            ["y"] = 6230.7,
-            ["x"] = 1446.2,
+        Coord = {
+            y = 6230.7,
+            x = 1446.2,
         },
-        ["Done"] = {
+        Done = {
             35730,
         },
     }, -- [6]
     {
-        ["PickUp"] = {
+        PickUp = {
             35026,
             35870,
         },
-        ["Coord"] = {
-            ["y"] = 6230.7,
-            ["x"] = 1446.2,
+        Coord = {
+            y = 6230.7,
+            x = 1446.2,
         },
     }, -- [7]
     {
@@ -3641,29 +3641,29 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 73.74,
-        ["Coord"] = {
-            ["y"] = 6327.2,
-            ["x"] = 1503.4,
+        Range = 73.74,
+        Coord = {
+            y = 6327.2,
+            x = 1503.4,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 6594.1,
-            ["x"] = 1316.7,
+        Coord = {
+            y = 6594.1,
+            x = 1316.7,
         },
-        ["Done"] = {
+        Done = {
             35026,
             35870,
         },
     }, -- [10]
     {
-        ["PickUp"] = {
+        PickUp = {
             36508,
         },
-        ["Coord"] = {
-            ["y"] = 6606.3,
-            ["x"] = 1302.5,
+        Coord = {
+            y = 6606.3,
+            x = 1302.5,
         },
     }, -- [11]
     {
@@ -3672,40 +3672,40 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 6606.3,
-            ["x"] = 1302.5,
+        Gossip = 1,
+        Range = 0.61,
+        Coord = {
+            y = 6606.3,
+            x = 1302.5,
         },
     }, -- [12]
     {
-        ["Coord"] = {
-            ["y"] = 6587.7,
-            ["x"] = 1289.7,
+        Coord = {
+            y = 6587.7,
+            x = 1289.7,
         },
-        ["Done"] = {
+        Done = {
             36508,
         },
     }, -- [13]
     {
-        ["PickUp"] = {
+        PickUp = {
             36210,
             36208,
         },
-        ["Coord"] = {
-            ["y"] = 6587.7,
-            ["x"] = 1289.7,
+        Coord = {
+            y = 6587.7,
+            x = 1289.7,
         },
     }, -- [14]
     {
-        ["PickUp"] = {
+        PickUp = {
             35037,
             35934,
         },
-        ["Coord"] = {
-            ["y"] = 6605.8,
-            ["x"] = 1302.2,
+        Coord = {
+            y = 6605.8,
+            x = 1302.2,
         },
     }, -- [15]
     {
@@ -3714,29 +3714,29 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35934] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6623.3,
-            ["x"] = 1144.9,
+        Range = 0.75,
+        Coord = {
+            y = 6623.3,
+            x = 1144.9,
         },
     }, -- [16]
     {
-        ["PickUp"] = {
+        PickUp = {
             35925,
         },
-        ["Fillers"] = {
+        Fillers = {
             [35934] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["y"] = 6750.8,
-            ["x"] = 1164,
+        Coord = {
+            y = 6750.8,
+            x = 1164,
         },
     }, -- [18]
     {
@@ -3745,16 +3745,16 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35934] = {
                 1,
             },
         },
-        ["RaidIcon"] = 83774,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6776.7,
-            ["x"] = 1161.7,
+        RaidIcon = 83774,
+        Range = 0.75,
+        Coord = {
+            y = 6776.7,
+            x = 1161.7,
         },
     }, -- [19]
     {
@@ -3763,51 +3763,51 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 43.83,
-        ["Coord"] = {
-            ["y"] = 6761.3,
-            ["x"] = 1141.5,
+        Range = 43.83,
+        Coord = {
+            y = 6761.3,
+            x = 1141.5,
         },
     }, -- [20]
     {
-        ["Treasure"] = 36610,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6881,
-            ["x"] = 1332,
+        Treasure = 36610,
+        Range = 0.75,
+        Coord = {
+            y = 6881,
+            x = 1332,
         },
     }, -- [21]
     {
-        ["Range"] = 14.4,
-        ["Waypoint"] = 36208,
-        ["Coord"] = {
-            ["y"] = 6821.8,
-            ["x"] = 1429,
+        Range = 14.4,
+        Waypoint = 36208,
+        Coord = {
+            y = 6821.8,
+            x = 1429,
         },
     }, -- [22]
     {
-        ["Waypoint"] = 36208,
-        ["ExtraLineText"] = "INSIDE_CAVE",
-        ["Range"] = 14.67,
-        ["Coord"] = {
-            ["y"] = 6834.1,
-            ["x"] = 1347.3,
+        Waypoint = 36208,
+        ExtraLineText = "INSIDE_CAVE",
+        Range = 14.67,
+        Coord = {
+            y = 6834.1,
+            x = 1347.3,
         },
     }, -- [23]
     {
-        ["Treasure"] = 36651,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6864.5,
-            ["x"] = 1298.4,
+        Treasure = 36651,
+        Range = 0.75,
+        Coord = {
+            y = 6864.5,
+            x = 1298.4,
         },
     }, -- [24]
     {
-        ["Range"] = 20.58,
-        ["Waypoint"] = 36208,
-        ["Coord"] = {
-            ["y"] = 6816.7,
-            ["x"] = 1423.4,
+        Range = 20.58,
+        Waypoint = 36208,
+        Coord = {
+            y = 6816.7,
+            x = 1423.4,
         },
     }, -- [25]
     {
@@ -3819,40 +3819,40 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 63.37,
-        ["Coord"] = {
-            ["y"] = 6715.3,
-            ["x"] = 1383.5,
+        Range = 63.37,
+        Coord = {
+            y = 6715.3,
+            x = 1383.5,
         },
     }, -- [27]
     {
-        ["Coord"] = {
-            ["y"] = 6606.8,
-            ["x"] = 1302,
+        Coord = {
+            y = 6606.8,
+            x = 1302,
         },
-        ["Done"] = {
+        Done = {
             35925,
             35934,
             35037, -- [3]
         },
     },             -- [28]
     {
-        ["Coord"] = {
-            ["y"] = 6587.3,
-            ["x"] = 1289.7,
+        Coord = {
+            y = 6587.3,
+            x = 1289.7,
         },
-        ["Done"] = {
+        Done = {
             36208,
             36210,
         },
     }, -- [29]
     {
-        ["PickUp"] = {
+        PickUp = {
             36209,
         },
-        ["Coord"] = {
-            ["y"] = 6587.3,
-            ["x"] = 1289.7,
+        Coord = {
+            y = 6587.3,
+            x = 1289.7,
         },
     }, -- [30]
     {
@@ -3861,10 +3861,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6571.7,
-            ["x"] = 1231.7,
+        Range = 0.75,
+        Coord = {
+            y = 6571.7,
+            x = 1231.7,
         },
     }, -- [31]
     {
@@ -3873,10 +3873,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 6845,
-            ["x"] = 1321,
+        Range = 0.69,
+        Coord = {
+            y = 6845,
+            x = 1321,
         },
     }, -- [32]
     {
@@ -3885,10 +3885,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 3,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6845.7,
-            ["x"] = 1323.8,
+        Range = 0.75,
+        Coord = {
+            y = 6845.7,
+            x = 1323.8,
         },
     }, -- [33]
     {
@@ -3897,18 +3897,18 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 4,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 7312.5,
-            ["x"] = 1444.4,
+        Range = 0.75,
+        Coord = {
+            y = 7312.5,
+            x = 1444.4,
         },
     }, -- [34]
     {
-        ["Treasure"] = 36618,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 7275,
-            ["x"] = 1494.5,
+        Treasure = 36618,
+        Range = 0.75,
+        Coord = {
+            y = 7275,
+            x = 1494.5,
         },
     }, -- [35]
     {
@@ -3917,11 +3917,11 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 5,
             },
         },
-        ["RaidIcon"] = 84503,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 7284.8,
-            ["x"] = 1537.8,
+        RaidIcon = 84503,
+        Range = 0.69,
+        Coord = {
+            y = 7284.8,
+            x = 1537.8,
         },
     }, -- [36]
     {
@@ -3930,44 +3930,44 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 6,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 7274.2,
-            ["x"] = 1550.5,
+        Range = 0.75,
+        Coord = {
+            y = 7274.2,
+            x = 1550.5,
         },
     }, -- [37]
     {
-        ["Done"] = {
+        Done = {
             36209,
         },
-        ["Coord"] = {
-            ["y"] = 6587.8,
-            ["x"] = 1290.3,
+        Coord = {
+            y = 6587.8,
+            x = 1290.3,
         },
     }, -- [38]
     {
-        ["PickUp"] = {
+        PickUp = {
             36223,
         },
-        ["Coord"] = {
-            ["y"] = 6587.8,
-            ["x"] = 1290.3,
+        Coord = {
+            y = 6587.8,
+            x = 1290.3,
         },
     }, -- [39]
     {
-        ["Range"] = 12.61,
-        ["Waypoint"] = 36432,
-        ["Coord"] = {
-            ["y"] = 6551.2,
-            ["x"] = 1483.8,
+        Range = 12.61,
+        Waypoint = 36432,
+        Coord = {
+            y = 6551.2,
+            x = 1483.8,
         },
     },
     {
-        ["Treasure"] = 36506,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 6703.3,
-            ["x"] = 1655,
+        Treasure = 36506,
+        Range = 0.61,
+        Coord = {
+            y = 6703.3,
+            x = 1655,
         },
     },
     {
@@ -3978,58 +3978,58 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Range"] = 84.11,
-        ["Coord"] = {
-            ["y"] = 6731,
-            ["x"] = 1779.9,
+        Range = 84.11,
+        Coord = {
+            y = 6731,
+            x = 1779.9,
         },
     }, -- [3]
     {
-        ["PickUp"] = {
+        PickUp = {
             35128,
         },
-        ["Coord"] = {
-            ["y"] = 6605.8,
-            ["x"] = 1302.2,
+        Coord = {
+            y = 6605.8,
+            x = 1302.2,
         },
     }, -- [40]
     {
-        ["Waypoint"] = 35128,
-        ["Gossip"] = 1,
-        ["ExtraLineText"] = "FLY_NISHA",
-        ["Range"] = 20.9,
-        ["Coord"] = {
-            ["y"] = 6595.8,
-            ["x"] = 1317.3,
+        Waypoint = 35128,
+        Gossip = 1,
+        ExtraLineText = "FLY_NISHA",
+        Range = 20.9,
+        Coord = {
+            y = 6595.8,
+            x = 1317.3,
         },
     }, -- [41]
     {
-        ["Treasure"] = 36732,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 7046.2,
-            ["x"] = 1454.8,
+        Treasure = 36732,
+        Range = 0.75,
+        Coord = {
+            y = 7046.2,
+            x = 1454.8,
         },
     },
     {
-        ["Waypoint"] = 35128,
-        ["Range"] = 15.66,
-        ["Coord"] = {
-            ["y"] = 6970.7,
-            ["x"] = 1497.8,
+        Waypoint = 35128,
+        Range = 15.66,
+        Coord = {
+            y = 6970.7,
+            x = 1497.8,
         },
     },
     {
-        ["Treasure"] = 35056,
-        ["Fillers"] = {
+        Treasure = 35056,
+        Fillers = {
             [35128] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 7037.3,
-            ["x"] = 1583.5,
+        Range = 0.69,
+        Coord = {
+            y = 7037.3,
+            x = 1583.5,
         },
     }, -- [3]
     {
@@ -4038,24 +4038,24 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["RaidIcon"] = 81043,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 7017.1,
-            ["x"] = 1649.7,
+        RaidIcon = 81043,
+        Range = 0.75,
+        Coord = {
+            y = 7017.1,
+            x = 1649.7,
         },
     },
     {
-        ["Waypoint"] = 35128,
-        ["Fillers"] = {
+        Waypoint = 35128,
+        Fillers = {
             [35128] = {
                 1,
             },
         },
-        ["Range"] = 9.84,
-        ["Coord"] = {
-            ["y"] = 7036,
-            ["x"] = 1617.2,
+        Range = 9.84,
+        Coord = {
+            y = 7036,
+            x = 1617.2,
         },
     }, -- [10]
     {
@@ -4064,17 +4064,17 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Fillers"] = {
+        Gossip = 1,
+        Fillers = {
             [35128] = {
                 1,
             },
         },
-        ["RaidIcon"] = 81213,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6987.5,
-            ["x"] = 1595,
+        RaidIcon = 81213,
+        Range = 0.75,
+        Coord = {
+            y = 6987.5,
+            x = 1595,
         },
     }, -- [11]
     {
@@ -4083,10 +4083,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 6987.8,
-            ["x"] = 1596.7,
+        Range = 0.69,
+        Coord = {
+            y = 6987.8,
+            x = 1596.7,
         },
     }, -- [12]
     {
@@ -4095,19 +4095,19 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 47.16,
-        ["Coord"] = {
-            ["y"] = 7044.6,
-            ["x"] = 1606,
+        Range = 47.16,
+        Coord = {
+            y = 7044.6,
+            x = 1606,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35210,
         },
-        ["Coord"] = {
-            ["y"] = 7039.1,
-            ["x"] = 1635.2,
+        Coord = {
+            y = 7039.1,
+            x = 1635.2,
         },
     },
     {
@@ -4116,30 +4116,30 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 7039.1,
-            ["x"] = 1635.2,
+        Range = 0.75,
+        Coord = {
+            y = 7039.1,
+            x = 1635.2,
         },
     }, -- [3]
     {
-        ["Coord"] = {
-            ["y"] = 6927.3,
-            ["x"] = 1474,
+        Coord = {
+            y = 6927.3,
+            x = 1474,
         },
-        ["Done"] = {
+        Done = {
             35210,
             35128,
             36223, -- [3]
         },
     },             -- [4]
     {
-        ["PickUp"] = {
+        PickUp = {
             35139,
         },
-        ["Coord"] = {
-            ["y"] = 6927.3,
-            ["x"] = 1474,
+        Coord = {
+            y = 6927.3,
+            x = 1474,
         },
     }, -- [5]
     {
@@ -4148,59 +4148,59 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6923.8,
-            ["x"] = 1481.3,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            y = 6923.8,
+            x = 1481.3,
         },
     }, -- [6]
     {
-        ["Coord"] = {
-            ["y"] = 6927.3,
-            ["x"] = 1474.2,
+        Coord = {
+            y = 6927.3,
+            x = 1474.2,
         },
-        ["Done"] = {
+        Done = {
             35139,
         },
     }, -- [7]
     {
-        ["PickUp"] = {
+        PickUp = {
             35702,
         },
-        ["Coord"] = {
-            ["y"] = 6927.3,
-            ["x"] = 1474.2,
+        Coord = {
+            y = 6927.3,
+            x = 1474.2,
         },
     },
     {
-        ["Waypoint"] = 35128,
-        ["Fillers"] = {
+        Waypoint = 35128,
+        Fillers = {
             [36480] = {
                 1,
                 3,
                 2,
             },
         },
-        ["Range"] = 6.94,
-        ["Coord"] = {
-            ["y"] = 7016.7,
-            ["x"] = 1089.3,
+        Range = 6.94,
+        Coord = {
+            y = 7016.7,
+            x = 1089.3,
         },
     },
     {
-        ["Treasure"] = 36203,
-        ["Fillers"] = {
+        Treasure = 36203,
+        Fillers = {
             [36480] = {
                 1,
                 3,
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 7012.3,
-            ["x"] = 1065.7,
+        Range = 0.69,
+        Coord = {
+            y = 7012.3,
+            x = 1065.7,
         },
     }, -- [10]
     {
@@ -4211,26 +4211,26 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Range"] = 142.27,
-        ["Coord"] = {
-            ["y"] = 7003.2,
-            ["x"] = 1258.5,
+        Range = 142.27,
+        Coord = {
+            y = 7003.2,
+            x = 1258.5,
         },
     }, -- [11]
     {
-        ["Range"] = 36.44,
-        ["Waypoint"] = 36432,
-        ["Coord"] = {
-            ["y"] = 7083.3,
-            ["x"] = 1174.2,
+        Range = 36.44,
+        Waypoint = 36432,
+        Coord = {
+            y = 7083.3,
+            x = 1174.2,
         },
     }, -- [12]
     {
-        ["Range"] = 33.49,
-        ["Waypoint"] = 36432,
-        ["Coord"] = {
-            ["y"] = 7101.1,
-            ["x"] = 1095.4,
+        Range = 33.49,
+        Waypoint = 36432,
+        Coord = {
+            y = 7101.1,
+            x = 1095.4,
         },
     }, -- [13]
     {
@@ -4239,10 +4239,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 7149.8,
-            ["x"] = 1035.4,
+        Range = 0.69,
+        Coord = {
+            y = 7149.8,
+            x = 1035.4,
         },
     }, -- [14]
     {
@@ -4251,45 +4251,45 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 7200.2,
-            ["x"] = 1000.1,
+        Range = 0.75,
+        Coord = {
+            y = 7200.2,
+            x = 1000.1,
         },
     }, -- [15]
     {
-        ["Range"] = 17,
-        ["Waypoint"] = 36432,
-        ["Coord"] = {
-            ["y"] = 7182.7,
-            ["x"] = 959,
+        Range = 17,
+        Waypoint = 36432,
+        Coord = {
+            y = 7182.7,
+            x = 959,
         },
     }, -- [16]
     {
-        ["Range"] = 14.15,
-        ["Waypoint"] = 36432,
-        ["Coord"] = {
-            ["y"] = 7161.8,
-            ["x"] = 851.9,
+        Range = 14.15,
+        Waypoint = 36432,
+        Coord = {
+            y = 7161.8,
+            x = 851.9,
         },
     }, -- [17]
     {
-        ["Coord"] = {
-            ["y"] = 6884.3,
-            ["x"] = 1027.7,
+        Coord = {
+            y = 6884.3,
+            x = 1027.7,
         },
-        ["Done"] = {
+        Done = {
             36432,
         },
     }, -- [18]
     {
-        ["PickUp"] = {
+        PickUp = {
             36436,
             36437,
         },
-        ["Coord"] = {
-            ["y"] = 6884.3,
-            ["x"] = 1027.7,
+        Coord = {
+            y = 6884.3,
+            x = 1027.7,
         },
     }, -- [19]
     {
@@ -4298,17 +4298,17 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Fillers"] = {
+        Gossip = 1,
+        Fillers = {
             [36436] = {
                 1,
             },
         },
-        ["RaidIcon"] = 81723,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6999.6,
-            ["x"] = 954.5,
+        RaidIcon = 81723,
+        Range = 0.75,
+        Coord = {
+            y = 6999.6,
+            x = 954.5,
         },
     }, -- [20]
     {
@@ -4317,45 +4317,45 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 50.65,
-        ["Coord"] = {
-            ["y"] = 7006.5,
-            ["x"] = 972.5,
+        Range = 50.65,
+        Coord = {
+            y = 7006.5,
+            x = 972.5,
         },
     }, -- [21]
     {
-        ["Coord"] = {
-            ["y"] = 6977.5,
-            ["x"] = 872.4,
+        Coord = {
+            y = 6977.5,
+            x = 872.4,
         },
-        ["Done"] = {
+        Done = {
             36436,
             36437,
         },
     }, -- [22]
     {
-        ["PickUp"] = {
+        PickUp = {
             36438,
         },
-        ["Coord"] = {
-            ["y"] = 6977.5,
-            ["x"] = 872.4,
+        Coord = {
+            y = 6977.5,
+            x = 872.4,
         },
     }, -- [23]
     {
-        ["Range"] = 15.92,
-        ["Waypoint"] = 36438,
-        ["Coord"] = {
-            ["y"] = 6886.8,
-            ["x"] = 955.2,
+        Range = 15.92,
+        Waypoint = 36438,
+        Coord = {
+            y = 6886.8,
+            x = 955.2,
         },
     }, -- [24]
     {
-        ["Range"] = 18.41,
-        ["Waypoint"] = 36438,
-        ["Coord"] = {
-            ["y"] = 6821.1,
-            ["x"] = 975.2,
+        Range = 18.41,
+        Waypoint = 36438,
+        Coord = {
+            y = 6821.1,
+            x = 975.2,
         },
     }, -- [25]
     {
@@ -4364,37 +4364,37 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 6786.8,
-            ["x"] = 928.5,
+        Range = 0.69,
+        Coord = {
+            y = 6786.8,
+            x = 928.5,
         },
     }, -- [26]
     {
-        ["Coord"] = {
-            ["y"] = 6789.3,
-            ["x"] = 907.2,
+        Coord = {
+            y = 6789.3,
+            x = 907.2,
         },
-        ["Done"] = {
+        Done = {
             36438,
         },
     }, -- [27]
     {
-        ["PickUp"] = {
+        PickUp = {
             36440,
         },
-        ["Coord"] = {
-            ["y"] = 6789.3,
-            ["x"] = 907.2,
+        Coord = {
+            y = 6789.3,
+            x = 907.2,
         },
     }, -- [28]
     {
-        ["PickUp"] = {
+        PickUp = {
             36441,
         },
-        ["Coord"] = {
-            ["y"] = 6777.3,
-            ["x"] = 894.4,
+        Coord = {
+            y = 6777.3,
+            x = 894.4,
         },
     }, -- [29]
     {
@@ -4406,45 +4406,45 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 79.99,
-        ["Coord"] = {
-            ["y"] = 6807,
-            ["x"] = 827.6,
+        Range = 79.99,
+        Coord = {
+            y = 6807,
+            x = 827.6,
         },
     }, -- [30]
     {
-        ["Range"] = 67.42,
-        ["Waypoint"] = 36441,
-        ["Coord"] = {
-            ["y"] = 6795.3,
-            ["x"] = 719.2,
+        Range = 67.42,
+        Waypoint = 36441,
+        Coord = {
+            y = 6795.3,
+            x = 719.2,
         },
     }, -- [31]
     {
-        ["Coord"] = {
-            ["y"] = 6767.1,
-            ["x"] = 744.7,
+        Coord = {
+            y = 6767.1,
+            x = 744.7,
         },
-        ["Done"] = {
+        Done = {
             36440,
             36441,
         },
     }, -- [32]
     {
-        ["PickUp"] = {
+        PickUp = {
             36442,
         },
-        ["Coord"] = {
-            ["y"] = 6767.1,
-            ["x"] = 744.7,
+        Coord = {
+            y = 6767.1,
+            x = 744.7,
         },
     }, -- [33]
     {
-        ["Range"] = 13.19,
-        ["Waypoint"] = 36442,
-        ["Coord"] = {
-            ["y"] = 6766.5,
-            ["x"] = 672.4,
+        Range = 13.19,
+        Waypoint = 36442,
+        Coord = {
+            y = 6766.5,
+            x = 672.4,
         },
     }, -- [34]
     {
@@ -4453,29 +4453,29 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 81749,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6724.5,
-            ["x"] = 630.2,
+        RaidIcon = 81749,
+        Range = 0.75,
+        Coord = {
+            y = 6724.5,
+            x = 630.2,
         },
     }, -- [35]
     {
-        ["Coord"] = {
-            ["y"] = 6999.5,
-            ["x"] = 953.4,
+        Coord = {
+            y = 6999.5,
+            x = 953.4,
         },
-        ["Done"] = {
+        Done = {
             36442,
         },
     }, -- [36]
     {
-        ["PickUp"] = {
+        PickUp = {
             36443,
         },
-        ["Coord"] = {
-            ["y"] = 6999.5,
-            ["x"] = 953.4,
+        Coord = {
+            y = 6999.5,
+            x = 953.4,
         },
     }, -- [37]
     {
@@ -4484,55 +4484,55 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6999.5,
-            ["x"] = 953.4,
+        Range = 0.75,
+        Coord = {
+            y = 6999.5,
+            x = 953.4,
         },
     }, -- [38]
     {
-        ["Coord"] = {
-            ["y"] = 6999.5,
-            ["x"] = 953.4,
+        Coord = {
+            y = 6999.5,
+            x = 953.4,
         },
-        ["Done"] = {
+        Done = {
             36443,
         },
     }, -- [39]
     {
-        ["Done"] = {
+        Done = {
             35666,
         },
-        ["Coord"] = {
-            ["y"] = 6518.7,
-            ["x"] = 216.8,
+        Coord = {
+            y = 6518.7,
+            x = 216.8,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35633,
         },
-        ["Coord"] = {
-            ["y"] = 6518.7,
-            ["x"] = 216.8,
+        Coord = {
+            y = 6518.7,
+            x = 216.8,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35640,
         },
-        ["Fillers"] = {
+        Fillers = {
             [35633] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["y"] = 6434.7,
-            ["x"] = 200,
+        Coord = {
+            y = 6434.7,
+            x = 200,
         },
     }, -- [3]
     {
-        ["Fillers"] = {
+        Fillers = {
             [35633] = {
                 1,
             },
@@ -4540,15 +4540,15 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["DroppableQuest"] = {
-            ["Text"] = "Fungal Lurcher",
-            ["Qid"] = 35642,
-            ["MobId"] = 80714,
+        DroppableQuest = {
+            Text = "Fungal Lurcher",
+            Qid = 35642,
+            MobId = 80714,
         },
-        ["DropQuest"] = 35642,
-        ["Coord"] = {
-            ["y"] = 6432.8,
-            ["x"] = 200.6,
+        DropQuest = 35642,
+        Coord = {
+            y = 6432.8,
+            x = 200.6,
         },
     }, -- [4]
     {
@@ -4560,31 +4560,31 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 74.46,
-        ["Coord"] = {
-            ["y"] = 6358.2,
-            ["x"] = 238.4,
+        Range = 74.46,
+        Coord = {
+            y = 6358.2,
+            x = 238.4,
         },
     }, -- [5]
     {
-        ["Done"] = {
+        Done = {
             35642,
             35640,
             35633, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 6324.8,
-            ["x"] = 303.3,
+        Coord = {
+            y = 6324.8,
+            x = 303.3,
         },
     }, -- [6]
     {
-        ["PickUp"] = {
+        PickUp = {
             35644,
             35645,
         },
-        ["Coord"] = {
-            ["y"] = 6324.8,
-            ["x"] = 303.3,
+        Coord = {
+            y = 6324.8,
+            x = 303.3,
         },
     }, -- [7]
     {
@@ -4596,30 +4596,30 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 56.94,
-        ["Coord"] = {
-            ["y"] = 6321.8,
-            ["x"] = 402.2,
+        Range = 56.94,
+        Coord = {
+            y = 6321.8,
+            x = 402.2,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 6324.3,
-            ["x"] = 303.7,
+        Coord = {
+            y = 6324.3,
+            x = 303.7,
         },
-        ["Done"] = {
+        Done = {
             35644,
             35645,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35647,
             35656,
         },
-        ["Coord"] = {
-            ["y"] = 6324.3,
-            ["x"] = 303.7,
+        Coord = {
+            y = 6324.3,
+            x = 303.7,
         },
     }, -- [10]
     {
@@ -4628,15 +4628,15 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35647] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 6182.2,
-            ["x"] = 248.6,
+        Range = 0.69,
+        Coord = {
+            y = 6182.2,
+            x = 248.6,
         },
     }, -- [11]
     {
@@ -4645,29 +4645,29 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 88.6,
-        ["Coord"] = {
-            ["y"] = 6189,
-            ["x"] = 251.1,
+        Range = 88.6,
+        Coord = {
+            y = 6189,
+            x = 251.1,
         },
     }, -- [13]
     {
-        ["Coord"] = {
-            ["y"] = 6182.8,
-            ["x"] = 244,
+        Coord = {
+            y = 6182.8,
+            x = 244,
         },
-        ["Done"] = {
+        Done = {
             35647,
             35656,
         },
     }, -- [14]
     {
-        ["PickUp"] = {
+        PickUp = {
             35659,
         },
-        ["Coord"] = {
-            ["y"] = 6182.8,
-            ["x"] = 244,
+        Coord = {
+            y = 6182.8,
+            x = 244,
         },
     }, -- [15]
     {
@@ -4676,42 +4676,42 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 86282,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6218,
-            ["x"] = 61.4,
+        RaidIcon = 86282,
+        Range = 0.75,
+        Coord = {
+            y = 6218,
+            x = 61.4,
         },
     },
     {
-        ["Treasure"] = 36628,
-        ["ExtraLineText"] = "TOP_BIG_MUSHROOM",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 6115.8,
-            ["x"] = 211.8,
+        Treasure = 36628,
+        ExtraLineText = "TOP_BIG_MUSHROOM",
+        Range = 0.69,
+        Coord = {
+            y = 6115.8,
+            x = 211.8,
         },
     },
     {
-        ["Treasure"] = 37249,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6031.3,
-            ["x"] = 399.5,
+        Treasure = 37249,
+        Range = 0.75,
+        Coord = {
+            y = 6031.3,
+            x = 399.5,
         },
     }, -- [3]
     {
-        ["Treasure"] = 36509,
-        ["Fillers"] = {
+        Treasure = 36509,
+        Fillers = {
             [36563] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5941.7,
-            ["x"] = 773.6,
+        Range = 0.75,
+        Coord = {
+            y = 5941.7,
+            x = 773.6,
         },
     }, -- [4]
     {
@@ -4721,10 +4721,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Range"] = 95.31,
-        ["Coord"] = {
-            ["y"] = 5925.7,
-            ["x"] = 833.2,
+        Range = 95.31,
+        Coord = {
+            y = 5925.7,
+            x = 833.2,
         },
     }, -- [6]
     {
@@ -4733,16 +4733,16 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [36500] = {
                 1,
                 3,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5684.7,
-            ["x"] = 1024.9,
+        Range = 0.75,
+        Coord = {
+            y = 5684.7,
+            x = 1024.9,
         },
     }, -- [7]
     {
@@ -4752,10 +4752,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 3,
             },
         },
-        ["Range"] = 89.27,
-        ["Coord"] = {
-            ["y"] = 5601.6,
-            ["x"] = 1169,
+        Range = 89.27,
+        Coord = {
+            y = 5601.6,
+            x = 1169,
         },
     },
     {
@@ -4764,16 +4764,16 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [36564] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5715.3,
-            ["x"] = 177.5,
+        Range = 0.75,
+        Coord = {
+            y = 5715.3,
+            x = 177.5,
         },
     },
     {
@@ -4783,10 +4783,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Range"] = 116.81,
-        ["Coord"] = {
-            ["y"] = 5849.8,
-            ["x"] = 164.6,
+        Range = 116.81,
+        Coord = {
+            y = 5849.8,
+            x = 164.6,
         },
     }, -- [3]
     {
@@ -4795,16 +4795,16 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35881] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5164.3,
-            ["x"] = 813.1,
+        Range = 0.75,
+        Coord = {
+            y = 5164.3,
+            x = 813.1,
         },
     },
     {
@@ -4814,67 +4814,67 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Range"] = 129.82,
-        ["Coord"] = {
-            ["y"] = 5264.6,
-            ["x"] = 949.6,
+        Range = 129.82,
+        Coord = {
+            y = 5264.6,
+            x = 949.6,
         },
     }, -- [10]
     {
-        ["Done"] = {
+        Done = {
             35702,
             35137,
             35659, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 6329.8,
-            ["x"] = 734.6,
+        Coord = {
+            y = 6329.8,
+            x = 734.6,
         },
     },
     {
-        ["Waypoint"] = 36495,
-        ["Range"] = 17.72,
-        ["Coord"] = {
-            ["y"] = 5538.8,
-            ["x"] = 859.1,
+        Waypoint = 36495,
+        Range = 17.72,
+        Coord = {
+            y = 5538.8,
+            x = 859.1,
         },
     },
     {
-        ["Treasure"] = 36654,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5530.5,
-            ["x"] = 723.7,
+        Treasure = 36654,
+        Range = 0.75,
+        Coord = {
+            y = 5530.5,
+            x = 723.7,
         },
     }, -- [3]
     {
-        ["Waypoint"] = 34724,
-        ["Range"] = 12.85,
-        ["Coord"] = {
-            ["y"] = 5533.8,
-            ["x"] = 859.6,
+        Waypoint = 34724,
+        Range = 12.85,
+        Coord = {
+            y = 5533.8,
+            x = 859.6,
         },
     }, -- [4]
     {
-        ["Waypoint"] = 34724,
-        ["Range"] = 7.99,
-        ["Coord"] = {
-            ["y"] = 5360,
-            ["x"] = 867.6,
+        Waypoint = 34724,
+        Range = 7.99,
+        Coord = {
+            y = 5360,
+            x = 867.6,
         },
     }, -- [5]
     {
-        ["Waypoint"] = 36495,
-        ["Fillers"] = {
+        Waypoint = 36495,
+        Fillers = {
             [34724] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 9.42,
-        ["Coord"] = {
-            ["y"] = 5311.2,
-            ["x"] = 874,
+        Range = 9.42,
+        Coord = {
+            y = 5311.2,
+            x = 874,
         },
     }, -- [6]
     {
@@ -4883,31 +4883,31 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34724] = {
                 1,
                 2,
             },
         },
-        ["RaidIcon"] = 76496,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 5255.2,
-            ["x"] = 678.7,
+        RaidIcon = 76496,
+        Range = 0.69,
+        Coord = {
+            y = 5255.2,
+            x = 678.7,
         },
     }, -- [7]
     {
-        ["Treasure"] = 34940,
-        ["Fillers"] = {
+        Treasure = 34940,
+        Fillers = {
             [34724] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5232.3,
-            ["x"] = 735.4,
+        Range = 0.75,
+        Coord = {
+            y = 5232.3,
+            x = 735.4,
         },
     },
     {
@@ -4917,68 +4917,68 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Range"] = 36.89,
-        ["Coord"] = {
-            ["y"] = 5285.5,
-            ["x"] = 795.5,
+        Range = 36.89,
+        Coord = {
+            y = 5285.5,
+            x = 795.5,
         },
     },
     {
-        ["Waypoint"] = 36495,
-        ["Range"] = 16.11,
-        ["Coord"] = {
-            ["y"] = 5360,
-            ["x"] = 871.4,
+        Waypoint = 36495,
+        Range = 16.11,
+        Coord = {
+            y = 5360,
+            x = 871.4,
         },
     }, -- [10]
     {
-        ["Treasure"] = 36737,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 5775.7,
-            ["x"] = 1386,
+        Treasure = 36737,
+        Range = 0.69,
+        Coord = {
+            y = 5775.7,
+            x = 1386,
         },
     }, -- [11]
     {
-        ["Treasure"] = 36118,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5747.3,
-            ["x"] = 1474.2,
+        Treasure = 36118,
+        Range = 0.75,
+        Coord = {
+            y = 5747.3,
+            x = 1474.2,
         },
     }, -- [12]
     {
-        ["ExtraLineText"] = "UP_TREE",
-        ["Treasure"] = 35709,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 5543.3,
-            ["x"] = 1454.2,
+        ExtraLineText = "UP_TREE",
+        Treasure = 35709,
+        Range = 0.69,
+        Coord = {
+            y = 5543.3,
+            x = 1454.2,
         },
     }, -- [13]
     {
-        ["Treasure"] = 36170,
-        ["ExtraLineText"] = "LOOT_FEMUR",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5651.5,
-            ["x"] = 1789.3,
+        Treasure = 36170,
+        ExtraLineText = "LOOT_FEMUR",
+        Range = 0.75,
+        Coord = {
+            y = 5651.5,
+            x = 1789.3,
         },
     }, -- [14]
     {
-        ["Treasure"] = 36621,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5415.7,
-            ["x"] = 1765.8,
+        Treasure = 36621,
+        Range = 0.75,
+        Coord = {
+            y = 5415.7,
+            x = 1765.8,
         },
     }, -- [15]
     {
-        ["Treasure"] = 36658,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 5337.7,
-            ["x"] = 1647.5,
+        Treasure = 36658,
+        Range = 0.69,
+        Coord = {
+            y = 5337.7,
+            x = 1647.5,
         },
     }, -- [16]
     {
@@ -4987,30 +4987,30 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [36504] = {
                 1,
                 3,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5192,
-            ["x"] = 1561.5,
+        Range = 0.75,
+        Coord = {
+            y = 5192,
+            x = 1561.5,
         },
     }, -- [17]
     {
-        ["Treasure"] = 36625,
-        ["Fillers"] = {
+        Treasure = 36625,
+        Fillers = {
             [36504] = {
                 3,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5043.7,
-            ["x"] = 1601.4,
+        Range = 0.75,
+        Coord = {
+            y = 5043.7,
+            x = 1601.4,
         },
     }, -- [18]
     {
@@ -5019,15 +5019,15 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [36504] = {
                 1,
             },
         },
-        ["Range"] = 58.06,
-        ["Coord"] = {
-            ["y"] = 5137.3,
-            ["x"] = 1818.7,
+        Range = 58.06,
+        Coord = {
+            y = 5137.3,
+            x = 1818.7,
         },
     }, -- [19]
     {
@@ -5036,32 +5036,32 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 1,
             },
         },
-        ["Range"] = 84.22,
-        ["Coord"] = {
-            ["y"] = 5191.2,
-            ["x"] = 1585.5,
+        Range = 84.22,
+        Coord = {
+            y = 5191.2,
+            x = 1585.5,
         },
     }, -- [20]
     {
-        ["Treasure"] = 36784,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 4783.5,
-            ["x"] = 1326,
+        Treasure = 36784,
+        Range = 0.75,
+        Coord = {
+            y = 4783.5,
+            x = 1326,
         },
     }, -- [21]
     {
-        ["Waypoint"] = 36520,
-        ["Fillers"] = {
+        Waypoint = 36520,
+        Fillers = {
             [36520] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 16.11,
-        ["Coord"] = {
-            ["y"] = 4678.3,
-            ["x"] = 1409.2,
+        Range = 16.11,
+        Coord = {
+            y = 4678.3,
+            x = 1409.2,
         },
     }, -- [22]
     {
@@ -5070,16 +5070,16 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [36520] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 4749.5,
-            ["x"] = 1436,
+        Range = 0.75,
+        Coord = {
+            y = 4749.5,
+            x = 1436,
         },
     }, -- [23]
     {
@@ -5089,50 +5089,50 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
                 2,
             },
         },
-        ["Range"] = 48.4,
-        ["Coord"] = {
-            ["y"] = 4620.3,
-            ["x"] = 1397.5,
+        Range = 48.4,
+        Coord = {
+            y = 4620.3,
+            x = 1397.5,
         },
     }, -- [24]
     {
-        ["Treasure"] = 36604,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4502,
-            ["x"] = 1135,
+        Treasure = 36604,
+        Range = 0.69,
+        Coord = {
+            y = 4502,
+            x = 1135,
         },
     }, -- [25]
     {
-        ["Treasure"] = 36937,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4148.2,
-            ["x"] = 1653,
+        Treasure = 36937,
+        Range = 0.69,
+        Coord = {
+            y = 4148.2,
+            x = 1653,
         },
     },
     {
-        ["ZoneDoneSave"] = 1,
+        ZoneDoneSave = 1,
     },
 }
 APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
     {
-        ["Done"] = {
+        Done = {
             35556,
         },
-        ["Coord"] = {
-            ["y"] = 6472.7,
-            ["x"] = -165.2,
+        Coord = {
+            y = 6472.7,
+            x = -165.2,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35033,
             36495,
         },
-        ["Coord"] = {
-            ["y"] = 6471.5,
-            ["x"] = -164.2,
+        Coord = {
+            y = 6471.5,
+            x = -164.2,
         },
     },
     {
@@ -5141,72 +5141,72 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 6800.2,
-            ["x"] = -170.7,
+        Range = 0.69,
+        Coord = {
+            y = 6800.2,
+            x = -170.7,
         },
     },
     {
-        ["Waypoint"] = 35033,
-        ["Range"] = 8.86,
-        ["Coord"] = {
-            ["y"] = 6784.1,
-            ["x"] = -177,
+        Waypoint = 35033,
+        Range = 8.86,
+        Coord = {
+            y = 6784.1,
+            x = -177,
         },
     }, -- [3]
     {
-        ["Done"] = {
+        Done = {
             35033,
         },
-        ["Coord"] = {
-            ["y"] = 6761.2,
-            ["x"] = -183,
+        Coord = {
+            y = 6761.2,
+            x = -183,
         },
     }, -- [4]
     {
-        ["PickUp"] = {
+        PickUp = {
             35065,
         },
-        ["Coord"] = {
-            ["y"] = 6761.2,
-            ["x"] = -183,
+        Coord = {
+            y = 6761.2,
+            x = -183,
         },
     }, -- [5]
     {
-        ["PickUp"] = {
+        PickUp = {
             35834,
         },
-        ["Coord"] = {
-            ["y"] = 6768.8,
-            ["x"] = -182.7,
+        Coord = {
+            y = 6768.8,
+            x = -182.7,
         },
     }, -- [6]
     {
-        ["PickUp"] = {
+        PickUp = {
             35828,
         },
-        ["Fillers"] = {
+        Fillers = {
             [35834] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["y"] = 6944.3,
-            ["x"] = -246.4,
+        Coord = {
+            y = 6944.3,
+            x = -246.4,
         },
     }, -- [7]
     {
-        ["Waypoint"] = 35065,
-        ["Fillers"] = {
+        Waypoint = 35065,
+        Fillers = {
             [35834] = {
                 1,
             },
         },
-        ["Range"] = 18.88,
-        ["Coord"] = {
-            ["y"] = 6919.8,
-            ["x"] = -147.5,
+        Range = 18.88,
+        Coord = {
+            y = 6919.8,
+            x = -147.5,
         },
     },
     {
@@ -5215,15 +5215,15 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35834] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 7043.7,
-            ["x"] = -98.3,
+        Range = 0.69,
+        Coord = {
+            y = 7043.7,
+            x = -98.3,
         },
     },
     {
@@ -5232,39 +5232,39 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 1,
             },
         },
-        ["Range"] = 39.04,
-        ["Coord"] = {
-            ["y"] = 6919.8,
-            ["x"] = -140,
+        Range = 39.04,
+        Coord = {
+            y = 6919.8,
+            x = -140,
         },
     }, -- [10]
     {
-        ["Done"] = {
+        Done = {
             35828,
             35065,
             35834, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 6737.5,
-            ["x"] = -99.5,
+        Coord = {
+            y = 6737.5,
+            x = -99.5,
         },
     }, -- [11]
     {
-        ["PickUp"] = {
+        PickUp = {
             35055,
             35050,
         },
-        ["Coord"] = {
-            ["y"] = 6738.5,
-            ["x"] = -99.3,
+        Coord = {
+            y = 6738.5,
+            x = -99.3,
         },
     }, -- [12]
     {
-        ["Waypoint"] = 36571,
-        ["Range"] = 92.47,
-        ["Coord"] = {
-            ["y"] = 6674.3,
-            ["x"] = 24.8,
+        Waypoint = 36571,
+        Range = 92.47,
+        Coord = {
+            y = 6674.3,
+            x = 24.8,
         },
     }, -- [13]
     {
@@ -5275,10 +5275,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 2,
             },
         },
-        ["Range"] = 115.16,
-        ["Coord"] = {
-            ["y"] = 6665.2,
-            ["x"] = 6.8,
+        Range = 115.16,
+        Coord = {
+            y = 6665.2,
+            x = 6.8,
         },
     }, -- [14]
     {
@@ -5287,11 +5287,11 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6692.6,
-            ["x"] = 204.9,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            y = 6692.6,
+            x = 204.9,
         },
     }, -- [15]
     {
@@ -5300,19 +5300,19 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6631.8,
-            ["x"] = 348.7,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            y = 6631.8,
+            x = 348.7,
         },
     }, -- [16]
     {
-        ["Treasure"] = 36605,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6540,
-            ["x"] = 338.6,
+        Treasure = 36605,
+        Range = 0.75,
+        Coord = {
+            y = 6540,
+            x = 338.6,
         },
     },
     {
@@ -5321,11 +5321,11 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 3,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6399.2,
-            ["x"] = 562.6,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            y = 6399.2,
+            x = 562.6,
         },
     },
     {
@@ -5334,30 +5334,30 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6313.2,
-            ["x"] = 653.4,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            y = 6313.2,
+            x = 653.4,
         },
     }, -- [3]
     {
-        ["Coord"] = {
-            ["y"] = 6299.3,
-            ["x"] = 695.7,
+        Coord = {
+            y = 6299.3,
+            x = 695.7,
         },
-        ["Done"] = {
+        Done = {
             35050,
             35055,
         },
     }, -- [4]
     {
-        ["PickUp"] = {
+        PickUp = {
             35063,
         },
-        ["Coord"] = {
-            ["y"] = 6302,
-            ["x"] = 698.4,
+        Coord = {
+            y = 6302,
+            x = 698.4,
         },
     }, -- [5]
     {
@@ -5366,19 +5366,19 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6303.3,
-            ["x"] = 696.6,
+        Range = 0.75,
+        Coord = {
+            y = 6303.3,
+            x = 696.6,
         },
     },
     {
-        ["Done"] = {
+        Done = {
             35063,
         },
-        ["Coord"] = {
-            ["y"] = 6331.5,
-            ["x"] = 733.2,
+        Coord = {
+            y = 6331.5,
+            x = 733.2,
         },
     },
     {
@@ -5388,10 +5388,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 2,
             },
         },
-        ["Range"] = 67.81,
-        ["Coord"] = {
-            ["y"] = 6101,
-            ["x"] = 1313.4,
+        Range = 67.81,
+        Coord = {
+            y = 6101,
+            x = 1313.4,
         },
     },
     {
@@ -5400,16 +5400,16 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [36566] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5978.3,
-            ["x"] = 1707.9,
+        Range = 0.75,
+        Coord = {
+            y = 5978.3,
+            x = 1707.9,
         },
     },
     {
@@ -5418,24 +5418,24 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 4,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [36566] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5955.3,
-            ["x"] = 1753.2,
+        Range = 0.75,
+        Coord = {
+            y = 5955.3,
+            x = 1753.2,
         },
     }, -- [3]
     {
-        ["Treasure"] = 36631,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 5880.8,
-            ["x"] = 1874.4,
+        Treasure = 36631,
+        Range = 0.69,
+        Coord = {
+            y = 5880.8,
+            x = 1874.4,
         },
     }, -- [4]
     {
@@ -5444,16 +5444,16 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 5,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [36566] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5842.3,
-            ["x"] = 1879.4,
+        Range = 0.75,
+        Coord = {
+            y = 5842.3,
+            x = 1879.4,
         },
     }, -- [5]
     {
@@ -5463,10 +5463,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 2,
             },
         },
-        ["Range"] = 45.55,
-        ["Coord"] = {
-            ["y"] = 5846.7,
-            ["x"] = 1875.2,
+        Range = 45.55,
+        Coord = {
+            y = 5846.7,
+            x = 1875.2,
         },
     }, -- [6]
     {
@@ -5477,18 +5477,18 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 2,
             },
         },
-        ["Range"] = 105.1,
-        ["Coord"] = {
-            ["y"] = 6467.3,
-            ["x"] = 1787,
+        Range = 105.1,
+        Coord = {
+            y = 6467.3,
+            x = 1787,
         },
     }, -- [7]
     {
-        ["Treasure"] = 36506,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6703.7,
-            ["x"] = 1655.9,
+        Treasure = 36506,
+        Range = 0.75,
+        Coord = {
+            y = 6703.7,
+            x = 1655.9,
         },
     },
     {
@@ -5499,65 +5499,65 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 2,
             },
         },
-        ["Range"] = 66.59,
-        ["Coord"] = {
-            ["y"] = 6646.8,
-            ["x"] = 1190,
+        Range = 66.59,
+        Coord = {
+            y = 6646.8,
+            x = 1190,
         },
     },
     {
-        ["Treasure"] = 36610,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6880.5,
-            ["x"] = 1332.8,
+        Treasure = 36610,
+        Range = 0.75,
+        Coord = {
+            y = 6880.5,
+            x = 1332.8,
         },
     }, -- [10]
     {
-        ["Waypoint"] = 36480,
-        ["Range"] = 22.72,
-        ["Coord"] = {
-            ["y"] = 6824,
-            ["x"] = 1424.5,
+        Waypoint = 36480,
+        Range = 22.72,
+        Coord = {
+            y = 6824,
+            x = 1424.5,
         },
     },
     {
-        ["Treasure"] = 36651,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6864.3,
-            ["x"] = 1297.4,
+        Treasure = 36651,
+        Range = 0.75,
+        Coord = {
+            y = 6864.3,
+            x = 1297.4,
         },
     },
     {
-        ["Waypoint"] = 36480,
-        ["Range"] = 19.77,
-        ["Coord"] = {
-            ["y"] = 6825.3,
-            ["x"] = 1420.9,
+        Waypoint = 36480,
+        Range = 19.77,
+        Coord = {
+            y = 6825.3,
+            x = 1420.9,
         },
     }, -- [3]
     {
-        ["Waypoint"] = 36480,
-        ["Fillers"] = {
+        Waypoint = 36480,
+        Fillers = {
             [36480] = {
                 1,
                 3,
                 2,
             },
         },
-        ["Range"] = 11.97,
-        ["Coord"] = {
-            ["y"] = 7020.3,
-            ["x"] = 1089.8,
+        Range = 11.97,
+        Coord = {
+            y = 7020.3,
+            x = 1089.8,
         },
     }, -- [11]
     {
-        ["Treasure"] = 36203,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 7012.3,
-            ["x"] = 1065.8,
+        Treasure = 36203,
+        Range = 0.75,
+        Coord = {
+            y = 7012.3,
+            x = 1065.8,
         },
     }, -- [12]
     {
@@ -5568,53 +5568,53 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 2,
             },
         },
-        ["Range"] = 41.79,
-        ["Coord"] = {
-            ["y"] = 6989.7,
-            ["x"] = 1164.3,
+        Range = 41.79,
+        Coord = {
+            y = 6989.7,
+            x = 1164.3,
         },
     }, -- [13]
     {
-        ["Treasure"] = 36634,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 7268.1,
-            ["x"] = 1390.9,
+        Treasure = 36634,
+        Range = 0.75,
+        Coord = {
+            y = 7268.1,
+            x = 1390.9,
         },
     }, -- [4]
     {
-        ["Treasure"] = 36521,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 7249.8,
-            ["x"] = 1285.7,
+        Treasure = 36521,
+        Range = 0.75,
+        Coord = {
+            y = 7249.8,
+            x = 1285.7,
         },
     }, -- [5]
     {
-        ["Treasure"] = 36596,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 7213.7,
-            ["x"] = 1036.9,
+        Treasure = 36596,
+        Range = 0.75,
+        Coord = {
+            y = 7213.7,
+            x = 1036.9,
         },
     },
     {
-        ["Done"] = {
+        Done = {
             36432,
         },
-        ["Coord"] = {
-            ["y"] = 6881.6,
-            ["x"] = 1031.4,
+        Coord = {
+            y = 6881.6,
+            x = 1031.4,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             36437,
             36436,
         },
-        ["Coord"] = {
-            ["y"] = 6881.6,
-            ["x"] = 1031.4,
+        Coord = {
+            y = 6881.6,
+            x = 1031.4,
         },
     }, -- [3]
     {
@@ -5623,16 +5623,16 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["Fillers"] = {
+        Gossip = 1,
+        Fillers = {
             [36436] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 7000.8,
-            ["x"] = 952,
+        Range = 0.69,
+        Coord = {
+            y = 7000.8,
+            x = 952,
         },
     }, -- [4]
     {
@@ -5641,37 +5641,37 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 1,
             },
         },
-        ["Range"] = 80.46,
-        ["Coord"] = {
-            ["y"] = 6989.6,
-            ["x"] = 981.4,
+        Range = 80.46,
+        Coord = {
+            y = 6989.6,
+            x = 981.4,
         },
     }, -- [7]
     {
-        ["Waypoint"] = 36437,
-        ["Range"] = 8.75,
-        ["Coord"] = {
-            ["y"] = 6988.3,
-            ["x"] = 887.4,
+        Waypoint = 36437,
+        Range = 8.75,
+        Coord = {
+            y = 6988.3,
+            x = 887.4,
         },
     }, -- [5]
     {
-        ["Done"] = {
+        Done = {
             36437,
             36436,
         },
-        ["Coord"] = {
-            ["y"] = 6973.8,
-            ["x"] = 873.7,
+        Coord = {
+            y = 6973.8,
+            x = 873.7,
         },
     }, -- [6]
     {
-        ["PickUp"] = {
+        PickUp = {
             36439,
         },
-        ["Coord"] = {
-            ["y"] = 6974.8,
-            ["x"] = 874.2,
+        Coord = {
+            y = 6974.8,
+            x = 874.2,
         },
     },
     {
@@ -5680,37 +5680,37 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 6940.3,
-            ["x"] = 796.9,
+        Range = 0.69,
+        Coord = {
+            y = 6940.3,
+            x = 796.9,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 6920.1,
-            ["x"] = 792.9,
+        Coord = {
+            y = 6920.1,
+            x = 792.9,
         },
-        ["Done"] = {
+        Done = {
             36439,
         },
     }, -- [3]
     {
-        ["PickUp"] = {
+        PickUp = {
             36440,
         },
-        ["Coord"] = {
-            ["y"] = 6920.1,
-            ["x"] = 792.9,
+        Coord = {
+            y = 6920.1,
+            x = 792.9,
         },
     }, -- [4]
     {
-        ["PickUp"] = {
+        PickUp = {
             36441,
         },
-        ["Coord"] = {
-            ["y"] = 6864.3,
-            ["x"] = 825.2,
+        Coord = {
+            y = 6864.3,
+            x = 825.2,
         },
     }, -- [5]
     {
@@ -5722,37 +5722,37 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 1,
             },
         },
-        ["Range"] = 95.69,
-        ["Coord"] = {
-            ["y"] = 6864.3,
-            ["x"] = 825.2,
+        Range = 95.69,
+        Coord = {
+            y = 6864.3,
+            x = 825.2,
         },
     }, -- [6]
     {
-        ["Coord"] = {
-            ["y"] = 6768.1,
-            ["x"] = 745,
+        Coord = {
+            y = 6768.1,
+            x = 745,
         },
-        ["Done"] = {
+        Done = {
             36440,
             36441,
         },
     }, -- [7]
     {
-        ["PickUp"] = {
+        PickUp = {
             36442,
         },
-        ["Coord"] = {
-            ["y"] = 6770.3,
-            ["x"] = 745.4,
+        Coord = {
+            y = 6770.3,
+            x = 745.4,
         },
     },
     {
-        ["Waypoint"] = 36442,
-        ["Range"] = 14.19,
-        ["Coord"] = {
-            ["y"] = 6774.8,
-            ["x"] = 681.2,
+        Waypoint = 36442,
+        Range = 14.19,
+        Coord = {
+            y = 6774.8,
+            x = 681.2,
         },
     },
     {
@@ -5761,45 +5761,45 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6726.5,
-            ["x"] = 632,
+        Range = 0.75,
+        Coord = {
+            y = 6726.5,
+            x = 632,
         },
     }, -- [10]
     {
-        ["Done"] = {
+        Done = {
             36442,
         },
-        ["Coord"] = {
-            ["y"] = 7001.2,
-            ["x"] = 953.2,
+        Coord = {
+            y = 7001.2,
+            x = 953.2,
         },
     }, -- [11]
     {
-        ["PickUp"] = {
+        PickUp = {
             36443,
         },
-        ["Coord"] = {
-            ["y"] = 7001,
-            ["x"] = 952.2,
+        Coord = {
+            y = 7001,
+            x = 952.2,
         },
     }, -- [12]
     {
-        ["Done"] = {
+        Done = {
             36443,
         },
-        ["Coord"] = {
-            ["y"] = 7001,
-            ["x"] = 952.2,
+        Coord = {
+            y = 7001,
+            x = 952.2,
         },
     }, -- [13]
     {
-        ["Range"] = 79.74,
-        ["Waypoint"] = 36571,
-        ["Coord"] = {
-            ["y"] = 6625.8,
-            ["x"] = 61.7,
+        Range = 79.74,
+        Waypoint = 36571,
+        Coord = {
+            y = 6625.8,
+            x = 61.7,
         },
     }, -- [14]
     {
@@ -5810,73 +5810,73 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 2,
             },
         },
-        ["Range"] = 136.35,
-        ["Coord"] = {
-            ["y"] = 6628.3,
-            ["x"] = 53.7,
+        Range = 136.35,
+        Coord = {
+            y = 6628.3,
+            x = 53.7,
         },
     }, -- [15]
     {
-        ["Treasure"] = 36605,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6538.7,
-            ["x"] = 337.3,
+        Treasure = 36605,
+        Range = 0.75,
+        Coord = {
+            y = 6538.7,
+            x = 337.3,
         },
     }, -- [16]
     {
-        ["Treasure"] = 36628,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6115.6,
-            ["x"] = 212.3,
+        Treasure = 36628,
+        Range = 0.75,
+        Coord = {
+            y = 6115.6,
+            x = 212.3,
         },
     }, -- [17]
     {
-        ["Treasure"] = 37249,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 6031.1,
-            ["x"] = 399.5,
+        Treasure = 37249,
+        Range = 0.75,
+        Coord = {
+            y = 6031.1,
+            x = 399.5,
         },
     }, -- [18]
     {
-        ["Done"] = {
+        Done = {
             35708,
         },
-        ["Coord"] = {
-            ["y"] = 5692.1,
-            ["x"] = 494,
+        Coord = {
+            y = 5692.1,
+            x = 494,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35652,
             36368,
         },
-        ["Coord"] = {
-            ["y"] = 5690.2,
-            ["x"] = 494.8,
+        Coord = {
+            y = 5690.2,
+            x = 494.8,
         },
     },
     {
-        ["Done"] = {
+        Done = {
             36368,
         },
-        ["Coord"] = {
-            ["y"] = 5670.3,
-            ["x"] = 402.7,
+        Coord = {
+            y = 5670.3,
+            x = 402.7,
         },
     }, -- [3]
     {
-        ["PickUp"] = {
+        PickUp = {
             35651,
             35654,
             35650, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 5670.3,
-            ["x"] = 402.7,
+        Coord = {
+            y = 5670.3,
+            x = 402.7,
         },
     }, -- [4]
     {
@@ -5885,7 +5885,7 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35650] = {
                 1,
             },
@@ -5896,10 +5896,10 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5715.3,
-            ["x"] = 173.3,
+        Range = 0.75,
+        Coord = {
+            y = 5715.3,
+            x = 173.3,
         },
     },
     {
@@ -5914,36 +5914,36 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 1,
             },
         },
-        ["Range"] = 87.84,
-        ["Coord"] = {
-            ["y"] = 5715.3,
-            ["x"] = 170,
+        Range = 87.84,
+        Coord = {
+            y = 5715.3,
+            x = 170,
         },
     },
     {
-        ["Done"] = {
+        Done = {
             35650,
             35652,
             35654, -- [3]
             35651, -- [4]
         },
-        ["Coord"] = {
-            ["y"] = 6064,
-            ["x"] = 100.5,
+        Coord = {
+            y = 6064,
+            x = 100.5,
         },
     }, -- [3]
     {
-        ["Treasure"] = 36509,
-        ["Fillers"] = {
+        Treasure = 36509,
+        Fillers = {
             [36563] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5940.8,
-            ["x"] = 771.1,
+        Range = 0.75,
+        Coord = {
+            y = 5940.8,
+            x = 771.1,
         },
     }, -- [23]
     {
@@ -5953,102 +5953,102 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 2,
             },
         },
-        ["Range"] = 77.87,
-        ["Coord"] = {
-            ["y"] = 5940.8,
-            ["x"] = 771.1,
+        Range = 77.87,
+        Coord = {
+            y = 5940.8,
+            x = 771.1,
         },
     }, -- [24]
     {
-        ["Waypoint"] = 34724,
-        ["Range"] = 14.35,
-        ["Coord"] = {
-            ["y"] = 5356.3,
-            ["x"] = 868.7,
+        Waypoint = 34724,
+        Range = 14.35,
+        Coord = {
+            y = 5356.3,
+            x = 868.7,
         },
     }, -- [27]
     {
-        ["Waypoint"] = 34724,
-        ["Fillers"] = {
+        Waypoint = 34724,
+        Fillers = {
             [34724] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 8.71,
-        ["Coord"] = {
-            ["y"] = 5308.7,
-            ["x"] = 873.2,
+        Range = 8.71,
+        Coord = {
+            y = 5308.7,
+            x = 873.2,
         },
     }, -- [28]
     {
-        ["Waypoint"] = 34724,
-        ["Fillers"] = {
+        Waypoint = 34724,
+        Fillers = {
             [34724] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 10.3,
-        ["Coord"] = {
-            ["y"] = 5281.3,
-            ["x"] = 843.9,
+        Range = 10.3,
+        Coord = {
+            y = 5281.3,
+            x = 843.9,
         },
     }, -- [29]
     {
-        ["Waypoint"] = 34724,
-        ["Fillers"] = {
+        Waypoint = 34724,
+        Fillers = {
             [34724] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 12.59,
-        ["Coord"] = {
-            ["y"] = 5221.3,
-            ["x"] = 826.2,
+        Range = 12.59,
+        Coord = {
+            y = 5221.3,
+            x = 826.2,
         },
     }, -- [30]
     {
-        ["Waypoint"] = 34724,
-        ["Fillers"] = {
+        Waypoint = 34724,
+        Fillers = {
             [34724] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 12.05,
-        ["Coord"] = {
-            ["y"] = 5192.8,
-            ["x"] = 769.5,
+        Range = 12.05,
+        Coord = {
+            y = 5192.8,
+            x = 769.5,
         },
     }, -- [32]
     {
-        ["Waypoint"] = 34724,
-        ["Fillers"] = {
+        Waypoint = 34724,
+        Fillers = {
             [34724] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 10.09,
-        ["Coord"] = {
-            ["y"] = 5207.3,
-            ["x"] = 736.9,
+        Range = 10.09,
+        Coord = {
+            y = 5207.3,
+            x = 736.9,
         },
     }, -- [33]
     {
-        ["Treasure"] = 34940,
-        ["Fillers"] = {
+        Treasure = 34940,
+        Fillers = {
             [34724] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5231.6,
-            ["x"] = 735.5,
+        Range = 0.75,
+        Coord = {
+            y = 5231.6,
+            x = 735.5,
         },
     }, -- [34]
     {
@@ -6057,16 +6057,16 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34724] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 5251.8,
-            ["x"] = 679.1,
+        Range = 0.69,
+        Coord = {
+            y = 5251.8,
+            x = 679.1,
         },
     }, -- [35]
     {
@@ -6076,18 +6076,18 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 2,
             },
         },
-        ["Range"] = 45.3,
-        ["Coord"] = {
-            ["y"] = 5251.3,
-            ["x"] = 673.1,
+        Range = 45.3,
+        Coord = {
+            y = 5251.3,
+            x = 673.1,
         },
     }, -- [36]
     {
-        ["Waypoint"] = 35881,
-        ["Range"] = 13.85,
-        ["Coord"] = {
-            ["y"] = 5360.3,
-            ["x"] = 867.9,
+        Waypoint = 35881,
+        Range = 13.85,
+        Coord = {
+            y = 5360.3,
+            x = 867.9,
         },
     }, -- [37]
     {
@@ -6096,16 +6096,16 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35881] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5163.6,
-            ["x"] = 809.6,
+        Range = 0.75,
+        Coord = {
+            y = 5163.6,
+            x = 809.6,
         },
     }, -- [38]
     {
@@ -6115,86 +6115,86 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 2,
             },
         },
-        ["Range"] = 82.3,
-        ["Coord"] = {
-            ["y"] = 5163.6,
-            ["x"] = 809.6,
+        Range = 82.3,
+        Coord = {
+            y = 5163.6,
+            x = 809.6,
         },
     }, -- [39]
     {
-        ["Treasure"] = 35709,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 5543.3,
-            ["x"] = 1454.4,
+        Treasure = 35709,
+        Range = 0.69,
+        Coord = {
+            y = 5543.3,
+            x = 1454.4,
         },
     },
     {
-        ["Treasure"] = 36118,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 5746.1,
-            ["x"] = 1473.5,
+        Treasure = 36118,
+        Range = 0.69,
+        Coord = {
+            y = 5746.1,
+            x = 1473.5,
         },
     },
     {
-        ["Treasure"] = 36170,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5653,
-            ["x"] = 1789,
+        Treasure = 36170,
+        Range = 0.75,
+        Coord = {
+            y = 5653,
+            x = 1789,
         },
     }, -- [3]
     {
-        ["Treasure"] = 36621,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 5416.2,
-            ["x"] = 1765.5,
+        Treasure = 36621,
+        Range = 0.69,
+        Coord = {
+            y = 5416.2,
+            x = 1765.5,
         },
     }, -- [4]
     {
-        ["Treasure"] = 36658,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 5337.6,
-            ["x"] = 1647.7,
+        Treasure = 36658,
+        Range = 0.75,
+        Coord = {
+            y = 5337.6,
+            x = 1647.7,
         },
     }, -- [5]
     {
-        ["Treasure"] = 36625,
-        ["Fillers"] = {
+        Treasure = 36625,
+        Fillers = {
             [36504] = {
                 1,
                 3,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 5044.3,
-            ["x"] = 1602.8,
+        Range = 0.69,
+        Coord = {
+            y = 5044.3,
+            x = 1602.8,
         },
     }, -- [42]
     {
-        ["Range"] = 58.14,
-        ["Waypoint"] = 36520,
-        ["Coord"] = {
-            ["y"] = 4652.3,
-            ["x"] = 1345.3,
+        Range = 58.14,
+        Waypoint = 36520,
+        Coord = {
+            y = 4652.3,
+            x = 1345.3,
         },
     }, -- [44]
     {
-        ["Waypoint"] = 36520,
-        ["Fillers"] = {
+        Waypoint = 36520,
+        Fillers = {
             [36520] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 22.52,
-        ["Coord"] = {
-            ["y"] = 4671.3,
-            ["x"] = 1410.3,
+        Range = 22.52,
+        Coord = {
+            y = 4671.3,
+            x = 1410.3,
         },
     }, -- [45]
     {
@@ -6203,16 +6203,16 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [36520] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 4750.3,
-            ["x"] = 1432.7,
+        Range = 0.69,
+        Coord = {
+            y = 4750.3,
+            x = 1432.7,
         },
     }, -- [46]
     {
@@ -6222,40 +6222,40 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
                 2,
             },
         },
-        ["Range"] = 58.21,
-        ["Coord"] = {
-            ["y"] = 4750.3,
-            ["x"] = 1432.7,
+        Range = 58.21,
+        Coord = {
+            y = 4750.3,
+            x = 1432.7,
         },
     }, -- [47]
     {
-        ["Treasure"] = 36604,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 4502.7,
-            ["x"] = 1134.9,
+        Treasure = 36604,
+        Range = 0.75,
+        Coord = {
+            y = 4502.7,
+            x = 1134.9,
         },
     }, -- [48]
     {
-        ["Treasure"] = 34232,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3899.5,
-            ["x"] = 1963.4,
+        Treasure = 34232,
+        Range = 0.75,
+        Coord = {
+            y = 3899.5,
+            x = 1963.4,
         },
     },
     {
-        ["ZoneDoneSave"] = 1,
+        ZoneDoneSave = 1,
     },
 }
 APR.RouteQuestStepList["A535-DesMephisto-Talador"] = {
     {
-        ["PickUp"] = {
+        PickUp = {
             34558,
         },
-        ["Coord"] = {
-            ["y"] = 3602.6,
-            ["x"] = 1666.3,
+        Coord = {
+            y = 3602.6,
+            x = 1666.3,
         },
     },
     {
@@ -6265,46 +6265,46 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador"] = {
                 2,
             },
         },
-        ["ExtraLineText"] = "PICK_ARSENAL",
-        ["SparringRing"] = 119,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3607,
-            ["x"] = 1672.5,
+        ExtraLineText = "PICK_ARSENAL",
+        SparringRing = 119,
+        Range = 0.75,
+        Coord = {
+            y = 3607,
+            x = 1672.5,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 3602.3,
-            ["x"] = 1666.5,
+        Coord = {
+            y = 3602.3,
+            x = 1666.5,
         },
-        ["Done"] = {
+        Done = {
             34558,
         },
     }, -- [3]
     {
-        ["PickUp"] = {
+        PickUp = {
             34563,
         },
-        ["Coord"] = {
-            ["y"] = 3601.9,
-            ["x"] = 1667.5,
+        Coord = {
+            y = 3601.9,
+            x = 1667.5,
         },
     }, -- [4]
     {
-        ["GetFP"] = 1447,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 3576.81,
-            ["x"] = 1669.4,
+        GetFP = 1447,
+        Range = 0.69,
+        Coord = {
+            y = 3576.81,
+            x = 1669.4,
         },
     }, -- [4.5]
     {
-        ["Waypoint"] = 34563,
-        ["Range"] = 5,
-        ["Coord"] = {
-            ["y"] = 3608,
-            ["x"] = 1719.4,
+        Waypoint = 34563,
+        Range = 5,
+        Coord = {
+            y = 3608,
+            x = 1719.4,
         },
     }, -- [4.7]
     {
@@ -6313,28 +6313,28 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 3662.3,
-            ["x"] = 1704,
+        Range = 0.69,
+        Coord = {
+            y = 3662.3,
+            x = 1704,
         },
     }, -- [5]
     {
-        ["Coord"] = {
-            ["y"] = 3662.3,
-            ["x"] = 1704,
+        Coord = {
+            y = 3662.3,
+            x = 1704,
         },
-        ["Done"] = {
+        Done = {
             34563,
         },
     }, -- [6]
     {
-        ["PickUp"] = {
+        PickUp = {
             35045,
         },
-        ["Coord"] = {
-            ["y"] = 3662.3,
-            ["x"] = 1704,
+        Coord = {
+            y = 3662.3,
+            x = 1704,
         },
     }, -- [7]
     {
@@ -6343,52 +6343,52 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3629.4,
-            ["x"] = 1652.4,
+        Range = 0.75,
+        Coord = {
+            y = 3629.4,
+            x = 1652.4,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 3630.3,
-            ["x"] = 1651.5,
+        Coord = {
+            y = 3630.3,
+            x = 1651.5,
         },
-        ["Done"] = {
+        Done = {
             35045,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             34571,
             34573,
             34624, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 3630.3,
-            ["x"] = 1651.5,
+        Coord = {
+            y = 3630.3,
+            x = 1651.5,
         },
     }, -- [10]
     {
-        ["Treasure"] = 34232,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 3900.1,
-            ["x"] = 1963.5,
+        Treasure = 34232,
+        Range = 0.61,
+        Coord = {
+            y = 3900.1,
+            x = 1963.5,
         },
     },
     {
-        ["Treasure"] = 33933,
-        ["Fillers"] = {
+        Treasure = 33933,
+        Fillers = {
             [35236] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3950.1,
-            ["x"] = 2325.5,
+        Range = 0.75,
+        Coord = {
+            y = 3950.1,
+            x = 2325.5,
         },
     },
     {
@@ -6398,42 +6398,42 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador"] = {
                 2,
             },
         },
-        ["Range"] = 149.69,
-        ["Coord"] = {
-            ["y"] = 3847.5,
-            ["x"] = 2413.6,
+        Range = 149.69,
+        Coord = {
+            y = 3847.5,
+            x = 2413.6,
         },
     }, -- [3]
     {
-        ["Treasure"] = 34238,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 3290.5,
-            ["x"] = 2413.1,
+        Treasure = 34238,
+        Range = 0.69,
+        Coord = {
+            y = 3290.5,
+            x = 2413.1,
         },
     }, -- [4]
     {
-        ["Treasure"] = 34236,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 3142.6,
-            ["x"] = 2133,
+        Treasure = 34236,
+        Range = 0.69,
+        Coord = {
+            y = 3142.6,
+            x = 2133,
         },
     }, -- [5]
     {
-        ["UseGarrisonHS"] = 34573,
-        ["Coord"] = {
-            ["y"] = 3142.6,
-            ["x"] = 2133,
+        UseGarrisonHS = 34573,
+        Coord = {
+            y = 3142.6,
+            x = 2133,
         },
     }, -- [3]
     {
-        ["PickUp"] = {
+        PickUp = {
             34587,
         },
-        ["Coord"] = {
-            ["y"] = 2066.1,
-            ["x"] = 497.3,
+        Coord = {
+            y = 2066.1,
+            x = 497.3,
         },
     },
     {
@@ -6442,10 +6442,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 2058,
-            ["x"] = 454.3,
+        Range = 0.69,
+        Coord = {
+            y = 2058,
+            x = 454.3,
         },
     },
     {
@@ -6454,13 +6454,13 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador"] = {
                 2,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34587-2"] = 111956,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2010.4,
-            ["x"] = 533.7,
+        Range = 0.75,
+        Coord = {
+            y = 2010.4,
+            x = 533.7,
         },
     }, -- [3]
     {
@@ -6469,10 +6469,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador"] = {
                 3,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1921.4,
-            ["x"] = 486.5,
+        Range = 0.75,
+        Coord = {
+            y = 1921.4,
+            x = 486.5,
         },
     }, -- [4]
     {
@@ -6481,33 +6481,33 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador"] = {
                 4,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1984.5,
-            ["x"] = 466.5,
+        Range = 0.75,
+        Coord = {
+            y = 1984.5,
+            x = 466.5,
         },
     }, -- [5]
     {
-        ["Done"] = {
+        Done = {
             34587,
         },
-        ["Coord"] = {
-            ["y"] = 1984.5,
-            ["x"] = 466.5,
+        Coord = {
+            y = 1984.5,
+            x = 466.5,
         },
     }, -- [6]
     {
-        ["ZoneDoneSave"] = 1,
+        ZoneDoneSave = 1,
     },
 }
 APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
     {
-        ["PickUp"] = {
+        PickUp = {
             34587,
         },
-        ["Coord"] = {
-            ["y"] = 2066.1,
-            ["x"] = 497.3,
+        Coord = {
+            y = 2066.1,
+            x = 497.3,
         },
     },
     {
@@ -6516,10 +6516,10 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 2058,
-            ["x"] = 454.3,
+        Range = 0.69,
+        Coord = {
+            y = 2058,
+            x = 454.3,
         },
     },
     {
@@ -6528,13 +6528,13 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
                 2,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34587-2"] = 111956,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2010.4,
-            ["x"] = 533.7,
+        Range = 0.75,
+        Coord = {
+            y = 2010.4,
+            x = 533.7,
         },
     }, -- [3]
     {
@@ -6543,10 +6543,10 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
                 3,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1921.4,
-            ["x"] = 486.5,
+        Range = 0.75,
+        Coord = {
+            y = 1921.4,
+            x = 486.5,
         },
     }, -- [4]
     {
@@ -6555,28 +6555,28 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
                 4,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1984.5,
-            ["x"] = 466.5,
+        Range = 0.75,
+        Coord = {
+            y = 1984.5,
+            x = 466.5,
         },
     }, -- [5]
     {
-        ["Done"] = {
+        Done = {
             34587,
         },
-        ["Coord"] = {
-            ["y"] = 1984.5,
-            ["x"] = 466.5,
+        Coord = {
+            y = 1984.5,
+            x = 466.5,
         },
     }, -- [6]
     {
-        ["PickUp"] = {
+        PickUp = {
             34646,
         },
-        ["Coord"] = {
-            ["y"] = 1602.2,
-            ["x"] = 139.9,
+        Coord = {
+            y = 1602.2,
+            x = 139.9,
         },
     }, -- [7]
     {
@@ -6585,30 +6585,30 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
                 1,
             },
         },
-        ["ExtraLineText"] = "GO_SOUTH",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1356.2,
-            ["x"] = 263.8,
+        ExtraLineText = "GO_SOUTH",
+        Range = 0.75,
+        Coord = {
+            y = 1356.2,
+            x = 263.8,
         },
     },
     {
-        ["ExtraLineText"] = "NO_WAYPOINTS_GARRISON",
-        ["Coord"] = {
-            ["y"] = 1662,
-            ["x"] = 113,
+        ExtraLineText = "NO_WAYPOINTS_GARRISON",
+        Coord = {
+            y = 1662,
+            x = 113,
         },
-        ["Done"] = {
+        Done = {
             34646,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             34692,
         },
-        ["Coord"] = {
-            ["y"] = 1653.5,
-            ["x"] = 134.1,
+        Coord = {
+            y = 1653.5,
+            x = 134.1,
         },
     },
     {
@@ -6617,175 +6617,175 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1653.5,
-            ["x"] = 134.1,
+        Range = 0.75,
+        Coord = {
+            y = 1653.5,
+            x = 134.1,
         },
     }, -- [3]
     {
-        ["Coord"] = {
-            ["y"] = 1667.7,
-            ["x"] = 144.9,
+        Coord = {
+            y = 1667.7,
+            x = 144.9,
         },
-        ["Done"] = {
+        Done = {
             34692,
         },
     }, -- [4]
 
     {
-        ["Treasure"] = 36879,
-        ["ExtraLineText"] = "LEAVE_GARRISON_SOUTH",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 986.9,
-            ["x"] = 269.3,
+        Treasure = 36879,
+        ExtraLineText = "LEAVE_GARRISON_SOUTH",
+        Range = 0.75,
+        Coord = {
+            y = 986.9,
+            x = 269.3,
         },
     },
     {
-        ["Treasure"] = 33883,
-        ["ExtraLineText"] = "CHEST_INSIDE_BUILDING",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 907.1,
-            ["x"] = 377.1,
+        Treasure = 33883,
+        ExtraLineText = "CHEST_INSIDE_BUILDING",
+        Range = 0.75,
+        Coord = {
+            y = 907.1,
+            x = 377.1,
         },
     }, -- [10]
     {
-        ["Treasure"] = 35919,
-        ["ExtraLineText"] = "DAGGER_DOOR",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 635.7,
-            ["x"] = 259.3,
+        Treasure = 35919,
+        ExtraLineText = "DAGGER_DOOR",
+        Range = 0.75,
+        Coord = {
+            y = 635.7,
+            x = 259.3,
         },
     }, -- [11]
     {
-        ["Treasure"] = 33886,
-        ["ExtraLineText"] = "CHEST_DOWN_HOLE",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 913.5,
-            ["x"] = 174.6,
+        Treasure = 33886,
+        ExtraLineText = "CHEST_DOWN_HOLE",
+        Range = 0.75,
+        Coord = {
+            y = 913.5,
+            x = 174.6,
         },
     }, -- [12]
     {
-        ["Treasure"] = 33569,
-        ["ExtraLineText"] = "HORN_DOWNSTAIRS",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 889.2,
-            ["x"] = 23.3,
+        Treasure = 33569,
+        ExtraLineText = "HORN_DOWNSTAIRS",
+        Range = 0.69,
+        Coord = {
+            y = 889.2,
+            x = 23.3,
         },
     }, -- [13]
     {
-        ["Treasure"] = 33866,
-        ["ExtraLineText"] = "HERB_BAG_DOWNSTAIRS",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 719,
-            ["x"] = -20.2,
+        Treasure = 33866,
+        ExtraLineText = "HERB_BAG_DOWNSTAIRS",
+        Range = 0.69,
+        Coord = {
+            y = 719,
+            x = -20.2,
         },
     }, -- [14]
     {
-        ["Range"] = 10.89,
-        ["Waypoint"] = 33540,
-        ["Coord"] = {
-            ["y"] = 784.6,
-            ["x"] = -144.7,
+        Range = 10.89,
+        Waypoint = 33540,
+        Coord = {
+            y = 784.6,
+            x = -144.7,
         },
     }, -- [15]
     {
-        ["Treasure"] = 33540,
-        ["ExtraLineText"] = "DOWNSTAIRS",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 835.2,
-            ["x"] = -134.2,
+        Treasure = 33540,
+        ExtraLineText = "DOWNSTAIRS",
+        Range = 0.69,
+        Coord = {
+            y = 835.2,
+            x = -134.2,
         },
     }, -- [16]
     {
-        ["Treasure"] = 33573,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 675,
-            ["x"] = -188,
+        Treasure = 33573,
+        Range = 0.69,
+        Coord = {
+            y = 675,
+            x = -188,
         },
     }, -- [17]
     {
-        ["Waypoint"] = 33584,
-        ["ExtraLineText"] = "DOWNSTAIRS",
-        ["Range"] = 7.5,
-        ["Coord"] = {
-            ["y"] = 734.4,
-            ["x"] = -238.5,
+        Waypoint = 33584,
+        ExtraLineText = "DOWNSTAIRS",
+        Range = 7.5,
+        Coord = {
+            y = 734.4,
+            x = -238.5,
         },
     }, -- [18]
     {
-        ["Treasure"] = 33584,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 683.7,
-            ["x"] = -260.8,
+        Treasure = 33584,
+        Range = 0.61,
+        Coord = {
+            y = 683.7,
+            x = -260.8,
         },
     }, -- [19]
     {
-        ["Range"] = 9.59,
-        ["Waypoint"] = 33614,
-        ["Coord"] = {
-            ["y"] = 766.9,
-            ["x"] = -274.7,
+        Range = 9.59,
+        Waypoint = 33614,
+        Coord = {
+            y = 766.9,
+            x = -274.7,
         },
     }, -- [20]
     {
-        ["Treasure"] = 33614,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 738,
-            ["x"] = -309.5,
+        Treasure = 33614,
+        Range = 0.75,
+        Coord = {
+            y = 738,
+            x = -309.5,
         },
     }, -- [21]
     {
-        ["Treasure"] = 33046,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 811.7,
-            ["x"] = -195.4,
+        Treasure = 33046,
+        Range = 0.69,
+        Coord = {
+            y = 811.7,
+            x = -195.4,
         },
     }, -- [22]
     {
-        ["Treasure"] = 33891,
-        ["ExtraLineText"] = "UP_TREE",
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 598.2,
-            ["x"] = -36.2,
+        Treasure = 33891,
+        ExtraLineText = "UP_TREE",
+        Range = 0.61,
+        Coord = {
+            y = 598.2,
+            x = -36.2,
         },
     }, -- [23]
     {
-        ["Treasure"] = 33567,
-        ["ExtraLineText"] = "INSIDE_BUILDING",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 14.6,
-            ["x"] = -244.5,
+        Treasure = 33567,
+        ExtraLineText = "INSIDE_BUILDING",
+        Range = 0.69,
+        Coord = {
+            y = 14.6,
+            x = -244.5,
         },
     }, -- [24]
     {
-        ["Treasure"] = 33041,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = -74,
-            ["x"] = -551.5,
+        Treasure = 33041,
+        Range = 0.61,
+        Coord = {
+            y = -74,
+            x = -551.5,
         },
     }, -- [25]
     {
-        ["PickUp"] = {
+        PickUp = {
             33078,
         },
-        ["Coord"] = {
-            ["y"] = 100.5,
-            ["x"] = -553.8,
+        Coord = {
+            y = 100.5,
+            x = -553.8,
         },
     }, -- [26]
     {
@@ -6794,32 +6794,32 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34076] = {
                 1,
                 3,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 23.2,
-            ["x"] = -712,
+        Range = 0.75,
+        Coord = {
+            y = 23.2,
+            x = -712,
         },
     }, -- [27]
     {
-        ["Treasure"] = 33612,
-        ["Fillers"] = {
+        Treasure = 33612,
+        Fillers = {
             [34076] = {
                 1,
                 3,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 19.2,
-            ["x"] = -711.5,
+        Range = 0.75,
+        Coord = {
+            y = 19.2,
+            x = -711.5,
         },
     }, -- [28]
     {
@@ -6828,32 +6828,32 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34076] = {
                 1,
                 3,
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -41.8,
-            ["x"] = -763.5,
+        Range = 0.69,
+        Coord = {
+            y = -41.8,
+            x = -763.5,
         },
     }, -- [29]
     {
-        ["Treasure"] = 33610,
-        ["Fillers"] = {
+        Treasure = 33610,
+        Fillers = {
             [34076] = {
                 1,
                 3,
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -41,
-            ["x"] = -759.8,
+        Range = 0.69,
+        Coord = {
+            y = -41,
+            x = -759.8,
         },
     }, -- [30]
     {
@@ -6862,32 +6862,32 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34076] = {
                 1,
                 3,
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -49.7,
-            ["x"] = -656.8,
+        Range = 0.69,
+        Coord = {
+            y = -49.7,
+            x = -656.8,
         },
     }, -- [31]
     {
-        ["Treasure"] = 33611,
-        ["Fillers"] = {
+        Treasure = 33611,
+        Fillers = {
             [34076] = {
                 1,
                 3,
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -46.8,
-            ["x"] = -662.3,
+        Range = 0.69,
+        Coord = {
+            y = -46.8,
+            x = -662.3,
         },
     }, -- [32]
     {
@@ -6896,32 +6896,32 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
                 4,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34076] = {
                 1,
                 3,
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -187.9,
-            ["x"] = -711.3,
+        Range = 0.69,
+        Coord = {
+            y = -187.9,
+            x = -711.3,
         },
     }, -- [33]
     {
-        ["Treasure"] = 33384,
-        ["Fillers"] = {
+        Treasure = 33384,
+        Fillers = {
             [34076] = {
                 1,
                 3,
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = -178.5,
-            ["x"] = -711,
+        Range = 0.75,
+        Coord = {
+            y = -178.5,
+            x = -711,
         },
     }, -- [34]
     {
@@ -6932,29 +6932,29 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
                 2,
             },
         },
-        ["Range"] = 162.85,
-        ["Coord"] = {
-            ["y"] = -97.1,
-            ["x"] = -714.5,
+        Range = 162.85,
+        Coord = {
+            y = -97.1,
+            x = -714.5,
         },
     }, -- [35]
     {
-        ["Done"] = {
+        Done = {
             33078,
         },
-        ["Coord"] = {
-            ["y"] = 98.4,
-            ["x"] = -553.5,
+        Coord = {
+            y = 98.4,
+            x = -553.5,
         },
     }, -- [36]
     {
-        ["PickUp"] = {
+        PickUp = {
             34876,
             33077,
         },
-        ["Coord"] = {
-            ["y"] = 199.1,
-            ["x"] = -497.4,
+        Coord = {
+            y = 199.1,
+            x = -497.4,
         },
     }, -- [37]
     {
@@ -6966,46 +6966,46 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 75470,
-        ["Range"] = 129.01,
-        ["Coord"] = {
-            ["y"] = 471.6,
-            ["x"] = -615.5,
+        RaidIcon = 75470,
+        Range = 129.01,
+        Coord = {
+            y = 471.6,
+            x = -615.5,
         },
     }, -- [38]
     {
-        ["Coord"] = {
-            ["y"] = 198.5,
-            ["x"] = -497.9,
+        Coord = {
+            y = 198.5,
+            x = -497.9,
         },
-        ["Done"] = {
+        Done = {
             34876,
             33077,
         },
     }, -- [39]
     {
-        ["UseFlightPath"] = 34624,
-        ["Name"] = "Fort Wrynn (Alliance), Talador",
-        ["NodeID"] = 1447,
-        ["Coord"] = {
-            ["y"] = 190.8,
-            ["x"] = -459.8,
+        UseFlightPath = 34624,
+        Name = "Fort Wrynn (Alliance), Talador",
+        NodeID = 1447,
+        Coord = {
+            y = 190.8,
+            x = -459.8,
         },
     }, -- [40]
     {
-        ["Waypoint"] = 34624,
-        ["Fillers"] = {
+        Waypoint = 34624,
+        Fillers = {
             [34624] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34624-1"] = 111910,
         },
-        ["Range"] = 15.34,
-        ["Coord"] = {
-            ["y"] = 3531.3,
-            ["x"] = 1356.9,
+        Range = 15.34,
+        Coord = {
+            y = 3531.3,
+            x = 1356.9,
         },
     },
     {
@@ -7020,53 +7020,53 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34624-1"] = 111910,
         },
-        ["Range"] = 78.2,
-        ["Coord"] = {
-            ["y"] = 3745.4,
-            ["x"] = 1176,
+        Range = 78.2,
+        Coord = {
+            y = 3745.4,
+            x = 1176,
         },
     },
     {
-        ["Waypoint"] = 34624,
-        ["Range"] = 13.32,
-        ["Coord"] = {
-            ["y"] = 3539.6,
-            ["x"] = 1345.5,
+        Waypoint = 34624,
+        Range = 13.32,
+        Coord = {
+            y = 3539.6,
+            x = 1345.5,
         },
     }, -- [3]
     {
-        ["Done"] = {
+        Done = {
             34571,
             34573,
             34624, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 3629.1,
-            ["x"] = 1652.7,
+        Coord = {
+            y = 3629.1,
+            x = 1652.7,
         },
     }, -- [4]
     {
-        ["ZoneDoneSave"] = 1,
+        ZoneDoneSave = 1,
     },
 }
 APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
     {
-        ["Waypoint"] = 34624,
-        ["Fillers"] = {
+        Waypoint = 34624,
+        Fillers = {
             [34624] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34624-1"] = 111910,
         },
-        ["Range"] = 15.34,
-        ["Coord"] = {
-            ["y"] = 3531.3,
-            ["x"] = 1356.9,
+        Range = 15.34,
+        Coord = {
+            y = 3531.3,
+            x = 1356.9,
         },
     },
     {
@@ -7081,70 +7081,70 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34624-1"] = 111910,
         },
-        ["Range"] = 78.2,
-        ["Coord"] = {
-            ["y"] = 3745.4,
-            ["x"] = 1176,
+        Range = 78.2,
+        Coord = {
+            y = 3745.4,
+            x = 1176,
         },
     },
     {
-        ["Waypoint"] = 34624,
-        ["Range"] = 13.32,
-        ["Coord"] = {
-            ["y"] = 3539.6,
-            ["x"] = 1345.5,
+        Waypoint = 34624,
+        Range = 13.32,
+        Coord = {
+            y = 3539.6,
+            x = 1345.5,
         },
     }, -- [3]
     {
-        ["Done"] = {
+        Done = {
             34571,
             34573,
             34624, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 3629.1,
-            ["x"] = 1652.7,
+        Coord = {
+            y = 3629.1,
+            x = 1652.7,
         },
     }, -- [4]
     {
-        ["PickUp"] = {
+        PickUp = {
             34578,
         },
-        ["Coord"] = {
-            ["y"] = 3629.1,
-            ["x"] = 1652.7,
+        Coord = {
+            y = 3629.1,
+            x = 1652.7,
         },
     }, -- [5]
     {
-        ["PickUp"] = {
+        PickUp = {
             36801,
         },
-        ["Coord"] = {
-            ["y"] = 3603.8,
-            ["x"] = 1682.7,
+        Coord = {
+            y = 3603.8,
+            x = 1682.7,
         },
     }, -- [6]
     {
-        ["PickUp"] = {
+        PickUp = {
             34103,
             34105,
             34104, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 3589.4,
-            ["x"] = 1693.5,
+        Coord = {
+            y = 3589.4,
+            x = 1693.5,
         },
     }, -- [7]
     {
-        ["PickUp"] = {
+        PickUp = {
             34773,
         },
-        ["Coord"] = {
-            ["y"] = 3572.1,
-            ["x"] = 1684.2,
+        Coord = {
+            y = 3572.1,
+            x = 1684.2,
         },
     },
     {
@@ -7154,28 +7154,28 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Range"] = 56.02,
-        ["Coord"] = {
-            ["y"] = 3646.1,
-            ["x"] = 1521,
+        Range = 56.02,
+        Coord = {
+            y = 3646.1,
+            x = 1521,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 3571.3,
-            ["x"] = 1684,
+        Coord = {
+            y = 3571.3,
+            x = 1684,
         },
-        ["Done"] = {
+        Done = {
             34773,
         },
     }, -- [10]
     {
-        ["PickUp"] = {
+        PickUp = {
             34804,
         },
-        ["Coord"] = {
-            ["y"] = 3571.3,
-            ["x"] = 1684,
+        Coord = {
+            y = 3571.3,
+            x = 1684,
         },
     }, -- [11]
     {
@@ -7184,38 +7184,38 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 80058,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 3601.6,
-            ["x"] = 1820,
+        RaidIcon = 80058,
+        Range = 0.61,
+        Coord = {
+            y = 3601.6,
+            x = 1820,
         },
     }, -- [12]
     {
-        ["Coord"] = {
-            ["y"] = 3570.9,
-            ["x"] = 1684.5,
+        Coord = {
+            y = 3570.9,
+            x = 1684.5,
         },
-        ["Done"] = {
+        Done = {
             34804,
         },
     }, -- [13]
     {
-        ["Done"] = {
+        Done = {
             36801,
         },
-        ["Coord"] = {
-            ["y"] = 3401.1,
-            ["x"] = 2075.6,
+        Coord = {
+            y = 3401.1,
+            x = 2075.6,
         },
     }, -- [14]
     {
-        ["PickUp"] = {
+        PickUp = {
             34087,
         },
-        ["Coord"] = {
-            ["y"] = 3401.1,
-            ["x"] = 2075.6,
+        Coord = {
+            y = 3401.1,
+            x = 2075.6,
         },
     }, -- [15]
     {
@@ -7224,39 +7224,39 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3388.3,
-            ["x"] = 2073.5,
+        Range = 0.75,
+        Coord = {
+            y = 3388.3,
+            x = 2073.5,
         },
     }, -- [16]
     {
-        ["Done"] = {
+        Done = {
             34087,
         },
-        ["Coord"] = {
-            ["y"] = 3400.1,
-            ["x"] = 2074.5,
+        Coord = {
+            y = 3400.1,
+            x = 2074.5,
         },
     }, -- [17]
     {
-        ["PickUp"] = {
+        PickUp = {
             34088,
             34090,
             34089, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 3397.9,
-            ["x"] = 2072.6,
+        Coord = {
+            y = 3397.9,
+            x = 2072.6,
         },
     }, -- [18]
     {
-        ["PickUp"] = {
+        PickUp = {
             34091,
         },
-        ["Coord"] = {
-            ["y"] = 3335,
-            ["x"] = 2149.1,
+        Coord = {
+            y = 3335,
+            x = 2149.1,
         },
     }, -- [19]
     {
@@ -7265,18 +7265,18 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34088] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34090-3"] = 109161,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3367.3,
-            ["x"] = 2203.1,
+        Range = 0.75,
+        Coord = {
+            y = 3367.3,
+            x = 2203.1,
         },
     }, -- [20]
     {
@@ -7285,7 +7285,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34088] = {
                 1,
             },
@@ -7293,10 +7293,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 3122.6,
-            ["x"] = 1971.5,
+        Range = 0.61,
+        Coord = {
+            y = 3122.6,
+            x = 1971.5,
         },
     }, -- [21]
     {
@@ -7305,15 +7305,15 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34088] = {
                 1,
             },
         },
-        ["Range"] = 65.67,
-        ["Coord"] = {
-            ["y"] = 3197.8,
-            ["x"] = 1999.8,
+        Range = 65.67,
+        Coord = {
+            y = 3197.8,
+            x = 1999.8,
         },
     }, -- [22]
     {
@@ -7322,18 +7322,18 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34088] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34090-1"] = 109161,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3366,
-            ["x"] = 1870.7,
+        Range = 0.75,
+        Coord = {
+            y = 3366,
+            x = 1870.7,
         },
     }, -- [23]
     {
@@ -7342,10 +7342,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 97.09,
-        ["Coord"] = {
-            ["y"] = 3296.6,
-            ["x"] = 1926.5,
+        Range = 97.09,
+        Coord = {
+            y = 3296.6,
+            x = 1926.5,
         },
     }, -- [24]
     {
@@ -7354,11 +7354,11 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 77387,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 3490.6,
-            ["x"] = 2074.3,
+        RaidIcon = 77387,
+        Range = 0.69,
+        Coord = {
+            y = 3490.6,
+            x = 2074.3,
         },
     }, -- [25]
     {
@@ -7367,10 +7367,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3489,
-            ["x"] = 2068.6,
+        Range = 0.75,
+        Coord = {
+            y = 3489,
+            x = 2068.6,
         },
     }, -- [26]
     {
@@ -7379,33 +7379,33 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 3,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 3400.6,
-            ["x"] = 2070.1,
+        Range = 0.69,
+        Coord = {
+            y = 3400.6,
+            x = 2070.1,
         },
     }, -- [27]
     {
-        ["Done"] = {
+        Done = {
             34088,
             34090,
             34089, -- [3]
             34091, -- [4]
         },
-        ["Coord"] = {
-            ["y"] = 3398.4,
-            ["x"] = 2072.6,
+        Coord = {
+            y = 3398.4,
+            x = 2072.6,
         },
     }, -- [28]
     {
-        ["PickUp"] = {
+        PickUp = {
             34094,
             34959,
             34095, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 3397.8,
-            ["x"] = 2071.8,
+        Coord = {
+            y = 3397.8,
+            x = 2071.8,
         },
     }, -- [29]
     {
@@ -7414,7 +7414,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34094] = {
                 1,
             },
@@ -7422,17 +7422,17 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3348.1,
-            ["x"] = 2463.6,
+        Range = 0.75,
+        Coord = {
+            y = 3348.1,
+            x = 2463.6,
         },
     }, -- [30]
     {
-        ["PickUp"] = {
+        PickUp = {
             33973,
         },
-        ["Fillers"] = {
+        Fillers = {
             [34094] = {
                 1,
             },
@@ -7440,9 +7440,9 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["y"] = 3396.5,
-            ["x"] = 2441.5,
+        Coord = {
+            y = 3396.5,
+            x = 2441.5,
         },
     }, -- [31]
     {
@@ -7451,7 +7451,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34095] = {
                 1,
             },
@@ -7459,15 +7459,15 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 76981,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3462.6,
-            ["x"] = 2432.4,
+        RaidIcon = 76981,
+        Range = 0.75,
+        Coord = {
+            y = 3462.6,
+            x = 2432.4,
         },
     }, -- [32]
     {
-        ["Fillers"] = {
+        Fillers = {
             [34095] = {
                 1,
             },
@@ -7475,12 +7475,12 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Done"] = {
+        Done = {
             33973,
         },
-        ["Coord"] = {
-            ["y"] = 3397.1,
-            ["x"] = 2440,
+        Coord = {
+            y = 3397.1,
+            x = 2440,
         },
     }, -- [33]
     {
@@ -7489,7 +7489,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34095] = {
                 1,
             },
@@ -7497,11 +7497,11 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 77684,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3545,
-            ["x"] = 2595.3,
+        RaidIcon = 77684,
+        Range = 0.75,
+        Coord = {
+            y = 3545,
+            x = 2595.3,
         },
     }, -- [34]
     {
@@ -7513,30 +7513,30 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 94.94,
-        ["Coord"] = {
-            ["y"] = 3334.8,
-            ["x"] = 2467.6,
+        Range = 94.94,
+        Coord = {
+            y = 3334.8,
+            x = 2467.6,
         },
     }, -- [35]
     {
-        ["Coord"] = {
-            ["y"] = 3397.1,
-            ["x"] = 2073.1,
+        Coord = {
+            y = 3397.1,
+            x = 2073.1,
         },
-        ["Done"] = {
+        Done = {
             34094,
             34959,
             34095, -- [3]
         },
     },             -- [36]
     {
-        ["PickUp"] = {
+        PickUp = {
             34096,
         },
-        ["Coord"] = {
-            ["y"] = 3391.6,
-            ["x"] = 2073.4,
+        Coord = {
+            y = 3391.6,
+            x = 2073.4,
         },
     }, -- [37]
     {
@@ -7545,28 +7545,28 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3389.1,
-            ["x"] = 2072.8,
+        Range = 0.75,
+        Coord = {
+            y = 3389.1,
+            x = 2072.8,
         },
     }, -- [38]
     {
-        ["Done"] = {
+        Done = {
             34096,
         },
-        ["Coord"] = {
-            ["y"] = 3391.9,
-            ["x"] = 2072.5,
+        Coord = {
+            y = 3391.9,
+            x = 2072.5,
         },
     }, -- [39]
     {
-        ["PickUp"] = {
+        PickUp = {
             34097,
         },
-        ["Coord"] = {
-            ["y"] = 3391.9,
-            ["x"] = 2072.5,
+        Coord = {
+            y = 3391.9,
+            x = 2072.5,
         },
     }, -- [40]
     {
@@ -7575,10 +7575,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3383.4,
-            ["x"] = 2071.8,
+        Range = 0.75,
+        Coord = {
+            y = 3383.4,
+            x = 2071.8,
         },
     }, -- [41]
     {
@@ -7587,28 +7587,28 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Range"] = 99.53,
-        ["Coord"] = {
-            ["y"] = 2929.8,
-            ["x"] = 2214.5,
+        Range = 99.53,
+        Coord = {
+            y = 2929.8,
+            x = 2214.5,
         },
     }, -- [42]
     {
-        ["Coord"] = {
-            ["y"] = 2905.3,
-            ["x"] = 2186.4,
+        Coord = {
+            y = 2905.3,
+            x = 2186.4,
         },
-        ["Done"] = {
+        Done = {
             34097,
         },
     }, -- [43]
     {
-        ["PickUp"] = {
+        PickUp = {
             34098,
         },
-        ["Coord"] = {
-            ["y"] = 2901.5,
-            ["x"] = 2199.6,
+        Coord = {
+            y = 2901.5,
+            x = 2199.6,
         },
     }, -- [44]
     {
@@ -7617,55 +7617,55 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 75986,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2888.4,
-            ["x"] = 2193.3,
+        RaidIcon = 75986,
+        Range = 0.75,
+        Coord = {
+            y = 2888.4,
+            x = 2193.3,
         },
     }, -- [45]
     {
-        ["Coord"] = {
-            ["y"] = 3401,
-            ["x"] = 2075.5,
+        Coord = {
+            y = 3401,
+            x = 2075.5,
         },
-        ["Done"] = {
+        Done = {
             34098,
         },
     }, -- [46]
     {
-        ["PickUp"] = {
+        PickUp = {
             34963,
         },
-        ["Coord"] = {
-            ["y"] = 3401,
-            ["x"] = 2075.5,
+        Coord = {
+            y = 3401,
+            x = 2075.5,
         },
     }, -- [47]
     {
-        ["Treasure"] = 34235,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 3255.6,
-            ["x"] = 2700.6,
+        Treasure = 34235,
+        Range = 0.75,
+        Coord = {
+            y = 3255.6,
+            x = 2700.6,
         },
     }, -- [48]
     {
-        ["Coord"] = {
-            ["y"] = 2982.3,
-            ["x"] = 2603.1,
+        Coord = {
+            y = 2982.3,
+            x = 2603.1,
         },
-        ["Done"] = {
+        Done = {
             34963,
         },
     }, -- [49]
     {
-        ["PickUp"] = {
+        PickUp = {
             34099,
         },
-        ["Coord"] = {
-            ["y"] = 2982.3,
-            ["x"] = 2603.1,
+        Coord = {
+            y = 2982.3,
+            x = 2603.1,
         },
     }, -- [50]
     {
@@ -7674,28 +7674,28 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 36.02,
-        ["Coord"] = {
-            ["y"] = 3023.3,
-            ["x"] = 2787.6,
+        Range = 36.02,
+        Coord = {
+            y = 3023.3,
+            x = 2787.6,
         },
     }, -- [51]
     {
-        ["Done"] = {
+        Done = {
             34099,
         },
-        ["Coord"] = {
-            ["y"] = 3591.6,
-            ["x"] = 1679.3,
+        Coord = {
+            y = 3591.6,
+            x = 1679.3,
         },
     }, -- [52]
     {
-        ["Done"] = {
+        Done = {
             34105,
         },
-        ["Coord"] = {
-            ["y"] = 3589.1,
-            ["x"] = 1693.4,
+        Coord = {
+            y = 3589.1,
+            x = 1693.4,
         },
     }, -- [53]
     {
@@ -7705,48 +7705,48 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Range"] = 110.19,
-        ["Coord"] = {
-            ["y"] = 3251.5,
-            ["x"] = 860.1,
+        Range = 110.19,
+        Coord = {
+            y = 3251.5,
+            x = 860.1,
         },
     }, -- [54]
     {
-        ["PickUp"] = {
+        PickUp = {
             33740,
             33734,
         },
-        ["Coord"] = {
-            ["y"] = 2889.9,
-            ["x"] = 1476.9,
+        Coord = {
+            y = 2889.9,
+            x = 1476.9,
         },
     }, -- [55]
     {
-        ["Treasure"] = 34261,
-        ["Fillers"] = {
+        Treasure = 34261,
+        Fillers = {
             [33740] = {
                 1,
             },
         },
-        ["ExtraLineText"] = "UNDERNEATH_BRIDGE",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 2784.1,
-            ["x"] = 1321.3,
+        ExtraLineText = "UNDERNEATH_BRIDGE",
+        Range = 0.69,
+        Coord = {
+            y = 2784.1,
+            x = 1321.3,
         },
     }, -- [56]
     {
-        ["PickUp"] = {
+        PickUp = {
             33761,
         },
-        ["Fillers"] = {
+        Fillers = {
             [33740] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["y"] = 2730.4,
-            ["x"] = 1285.2,
+        Coord = {
+            y = 2730.4,
+            x = 1285.2,
         },
     }, -- [57]
     {
@@ -7755,7 +7755,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33740] = {
                 1,
             },
@@ -7765,10 +7765,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2789.9,
-            ["x"] = 1210.7,
+        Range = 0.75,
+        Coord = {
+            y = 2789.9,
+            x = 1210.7,
         },
     }, -- [58]
     {
@@ -7777,7 +7777,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33761] = {
                 1,
                 3,
@@ -7787,15 +7787,15 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2676.9,
-            ["x"] = 1332,
+        Range = 0.75,
+        Coord = {
+            y = 2676.9,
+            x = 1332,
         },
     }, -- [59]
     {
-        ["Treasure"] = 34250,
-        ["Fillers"] = {
+        Treasure = 34250,
+        Fillers = {
             [33761] = {
                 1,
                 3,
@@ -7805,10 +7805,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2651.8,
-            ["x"] = 1315.7,
+        Range = 0.75,
+        Coord = {
+            y = 2651.8,
+            x = 1315.7,
         },
     }, -- [60]
     {
@@ -7817,7 +7817,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33761] = {
                 1,
                 3,
@@ -7827,17 +7827,17 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2721.1,
-            ["x"] = 1188.5,
+        Range = 0.75,
+        Coord = {
+            y = 2721.1,
+            x = 1188.5,
         },
     }, -- [61]
     {
-        ["PickUp"] = {
+        PickUp = {
             33578,
         },
-        ["Fillers"] = {
+        Fillers = {
             [33761] = {
                 1,
                 3,
@@ -7847,9 +7847,9 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["y"] = 2682.6,
-            ["x"] = 1198.5,
+        Coord = {
+            y = 2682.6,
+            x = 1198.5,
         },
     }, -- [62]
     {
@@ -7858,7 +7858,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33761] = {
                 1,
                 3,
@@ -7868,15 +7868,15 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 75302,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 2631.9,
-            ["x"] = 1156.5,
+        RaidIcon = 75302,
+        Range = 0.69,
+        Coord = {
+            y = 2631.9,
+            x = 1156.5,
         },
     }, -- [63]
     {
-        ["Fillers"] = {
+        Fillers = {
             [33761] = {
                 1,
                 3,
@@ -7886,21 +7886,21 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Done"] = {
+        Done = {
             33578,
         },
-        ["Coord"] = {
-            ["y"] = 2682,
-            ["x"] = 1198.8,
+        Coord = {
+            y = 2682,
+            x = 1198.8,
         },
     }, -- [64]
     {
-        ["PickUp"] = {
+        PickUp = {
             33579,
         },
-        ["Coord"] = {
-            ["y"] = 2682,
-            ["x"] = 1198.8,
+        Coord = {
+            y = 2682,
+            x = 1198.8,
         },
     }, -- [65]
     {
@@ -7911,41 +7911,41 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33740] = {
                 1,
             },
         },
-        ["Range"] = 41.57,
-        ["Coord"] = {
-            ["y"] = 2729.1,
-            ["x"] = 1251.3,
+        Range = 41.57,
+        Coord = {
+            y = 2729.1,
+            x = 1251.3,
         },
     }, -- [66]
     {
-        ["Waypoint"] = 33579,
-        ["Fillers"] = {
+        Waypoint = 33579,
+        Fillers = {
             [33740] = {
                 1,
             },
         },
-        ["Range"] = 12.26,
-        ["Coord"] = {
-            ["y"] = 3013.1,
-            ["x"] = 1173.8,
+        Range = 12.26,
+        Coord = {
+            y = 3013.1,
+            x = 1173.8,
         },
     }, -- [67]
     {
-        ["Waypoint"] = 33579,
-        ["Fillers"] = {
+        Waypoint = 33579,
+        Fillers = {
             [33740] = {
                 1,
             },
         },
-        ["Range"] = 9.59,
-        ["Coord"] = {
-            ["y"] = 3033.6,
-            ["x"] = 1030.3,
+        Range = 9.59,
+        Coord = {
+            y = 3033.6,
+            x = 1030.3,
         },
     }, -- [68]
     {
@@ -7954,26 +7954,26 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 110.73,
-        ["Coord"] = {
-            ["y"] = 2946.9,
-            ["x"] = 934.7,
+        Range = 110.73,
+        Coord = {
+            y = 2946.9,
+            x = 934.7,
         },
     }, -- [69]
     {
-        ["Treasure"] = 34260,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 3039.3,
-            ["x"] = 953.7,
+        Treasure = 34260,
+        Range = 0.69,
+        Coord = {
+            y = 3039.3,
+            x = 953.7,
         },
     }, -- [70]
     {
-        ["Waypoint"] = 33579,
-        ["Range"] = 14.41,
-        ["Coord"] = {
-            ["y"] = 3006.9,
-            ["x"] = 1008.9,
+        Waypoint = 33579,
+        Range = 14.41,
+        Coord = {
+            y = 3006.9,
+            x = 1008.9,
         },
     }, -- [71]
     {
@@ -7982,57 +7982,57 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2924.5,
-            ["x"] = 904.6,
+        Range = 0.75,
+        Coord = {
+            y = 2924.5,
+            x = 904.6,
         },
     }, -- [72]
     {
-        ["Done"] = {
+        Done = {
             33579,
         },
-        ["Coord"] = {
-            ["y"] = 2927.5,
-            ["x"] = 905.7,
+        Coord = {
+            y = 2927.5,
+            x = 905.7,
         },
     }, -- [73]
     {
-        ["PickUp"] = {
+        PickUp = {
             33580,
         },
-        ["Coord"] = {
-            ["y"] = 2169.4,
-            ["x"] = 1630,
+        Coord = {
+            y = 2169.4,
+            x = 1630,
         },
     }, -- [74]
     {
-        ["PickUp"] = {
+        PickUp = {
             33582,
         },
-        ["Coord"] = {
-            ["y"] = 2172.9,
-            ["x"] = 1614.9,
+        Coord = {
+            y = 2172.9,
+            x = 1614.9,
         },
     }, -- [75]
     {
-        ["PickUp"] = {
+        PickUp = {
             33581,
         },
-        ["Coord"] = {
-            ["y"] = 2151.3,
-            ["x"] = 1629.5,
+        Coord = {
+            y = 2151.3,
+            x = 1629.5,
         },
     }, -- [76]
     {
-        ["Done"] = {
+        Done = {
             33734,
             33761,
             33740, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 2233.9,
-            ["x"] = 1259,
+        Coord = {
+            y = 2233.9,
+            x = 1259,
         },
     }, -- [77]
     {
@@ -8042,33 +8042,33 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["RaidIcon"] = 79409,
-        ["Range"] = 74.57,
-        ["Coord"] = {
-            ["y"] = 2480.3,
-            ["x"] = 1289.3,
+        RaidIcon = 79409,
+        Range = 74.57,
+        Coord = {
+            y = 2480.3,
+            x = 1289.3,
         },
     }, -- [78]
     {
-        ["Treasure"] = 34248,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 2444,
-            ["x"] = 1241,
+        Treasure = 34248,
+        Range = 0.69,
+        Coord = {
+            y = 2444,
+            x = 1241,
         },
     }, -- [79]
     {
-        ["Treasure"] = 34471,
-        ["ExtraLineText"] = "UNDERNEATH_BRIDGE",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2387.4,
-            ["x"] = 1450,
+        Treasure = 34471,
+        ExtraLineText = "UNDERNEATH_BRIDGE",
+        Range = 0.75,
+        Coord = {
+            y = 2387.4,
+            x = 1450,
         },
     }, -- [80]
     {
-        ["Waypoint"] = 33582,
-        ["Fillers"] = {
+        Waypoint = 33582,
+        Fillers = {
             [33581] = {
                 1,
             },
@@ -8076,10 +8076,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 17.23,
-        ["Coord"] = {
-            ["y"] = 1987.4,
-            ["x"] = 1060.3,
+        Range = 17.23,
+        Coord = {
+            y = 1987.4,
+            x = 1060.3,
         },
     }, -- [81]
     {
@@ -8088,7 +8088,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33581] = {
                 1,
             },
@@ -8096,10 +8096,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1885.4,
-            ["x"] = 1039.2,
+        Range = 0.75,
+        Coord = {
+            y = 1885.4,
+            x = 1039.2,
         },
     }, -- [82]
     {
@@ -8111,46 +8111,46 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 94.21,
-        ["Coord"] = {
-            ["y"] = 1982.8,
-            ["x"] = 1247,
+        Range = 94.21,
+        Coord = {
+            y = 1982.8,
+            x = 1247,
         },
     }, -- [83]
     {
-        ["Done"] = {
+        Done = {
             33581,
             33580,
             33582, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 2158.4,
-            ["x"] = 1623.5,
+        Coord = {
+            y = 2158.4,
+            x = 1623.5,
         },
     }, -- [84]
     {
-        ["Treasure"] = 35964,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2195.5,
-            ["x"] = 1733,
+        Treasure = 35964,
+        Range = 0.75,
+        Coord = {
+            y = 2195.5,
+            x = 1733,
         },
     }, -- [85]
     {
-        ["Treasure"] = 34252,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2522,
-            ["x"] = 2111.9,
+        Treasure = 34252,
+        Range = 0.75,
+        Coord = {
+            y = 2522,
+            x = 2111.9,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             34777,
         },
-        ["Coord"] = {
-            ["y"] = 2397.9,
-            ["x"] = 2411,
+        Coord = {
+            y = 2397.9,
+            x = 2411,
         },
     },
     {
@@ -8160,30 +8160,30 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2334.1,
-            ["x"] = 2414.1,
+        Gossip = 1,
+        Range = 0.75,
+        Coord = {
+            y = 2334.1,
+            x = 2414.1,
         },
     }, -- [3]
     {
-        ["Coord"] = {
-            ["y"] = 2397.8,
-            ["x"] = 2409.9,
+        Coord = {
+            y = 2397.8,
+            x = 2409.9,
         },
-        ["Done"] = {
+        Done = {
             34777,
         },
     }, -- [4]
     {
-        ["PickUp"] = {
+        PickUp = {
             34399,
             34400,
         },
-        ["Coord"] = {
-            ["y"] = 2197.1,
-            ["x"] = 2859.9,
+        Coord = {
+            y = 2197.1,
+            x = 2859.9,
         },
     }, -- [5]
     {
@@ -8192,32 +8192,32 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34400-1"] = 110468,
         },
-        ["Range"] = 40.18,
-        ["Coord"] = {
-            ["y"] = 2313,
-            ["x"] = 2833.1,
+        Range = 40.18,
+        Coord = {
+            y = 2313,
+            x = 2833.1,
         },
     }, -- [6]
     {
-        ["Coord"] = {
-            ["y"] = 2421,
-            ["x"] = 2756.6,
+        Coord = {
+            y = 2421,
+            x = 2756.6,
         },
-        ["Done"] = {
+        Done = {
             34399,
         },
     }, -- [7]
     {
-        ["PickUp"] = {
+        PickUp = {
             34403,
             34406,
         },
-        ["Coord"] = {
-            ["y"] = 2420.4,
-            ["x"] = 2755.4,
+        Coord = {
+            y = 2420.4,
+            x = 2755.4,
         },
     },
     {
@@ -8229,29 +8229,29 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 54.73,
-        ["Coord"] = {
-            ["y"] = 2469.8,
-            ["x"] = 2725.6,
+        Range = 54.73,
+        Coord = {
+            y = 2469.8,
+            x = 2725.6,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 2421.4,
-            ["x"] = 2754.1,
+        Coord = {
+            y = 2421.4,
+            x = 2754.1,
         },
-        ["Done"] = {
+        Done = {
             34403,
             34406,
         },
     }, -- [10]
     {
-        ["PickUp"] = {
+        PickUp = {
             34415,
         },
-        ["Coord"] = {
-            ["y"] = 2421.4,
-            ["x"] = 2754.1,
+        Coord = {
+            y = 2421.4,
+            x = 2754.1,
         },
     }, -- [11]
     {
@@ -8260,29 +8260,29 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 78372,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2440.4,
-            ["x"] = 2602.6,
+        RaidIcon = 78372,
+        Range = 0.75,
+        Coord = {
+            y = 2440.4,
+            x = 2602.6,
         },
     }, -- [12]
     {
-        ["Coord"] = {
-            ["y"] = 2421.6,
-            ["x"] = 2754.6,
+        Coord = {
+            y = 2421.6,
+            x = 2754.6,
         },
-        ["Done"] = {
+        Done = {
             34415,
         },
     }, -- [13]
     {
-        ["PickUp"] = {
+        PickUp = {
             34448,
         },
-        ["Coord"] = {
-            ["y"] = 2421.5,
-            ["x"] = 2754.3,
+        Coord = {
+            y = 2421.5,
+            x = 2754.3,
         },
     }, -- [14]
     {
@@ -8291,12 +8291,12 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["RaidIcon"] = 78513,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 2421.1,
-            ["x"] = 2754.3,
+        Gossip = 1,
+        RaidIcon = 78513,
+        Range = 0.75,
+        Coord = {
+            y = 2421.1,
+            x = 2754.3,
         },
     }, -- [15]
     {
@@ -8305,29 +8305,29 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["RaidIcon"] = 78501,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 2535.6,
-            ["x"] = 2723.6,
+        RaidIcon = 78501,
+        Range = 0.61,
+        Coord = {
+            y = 2535.6,
+            x = 2723.6,
         },
     }, -- [16]
     {
-        ["Done"] = {
+        Done = {
             34448,
         },
-        ["Coord"] = {
-            ["y"] = 2532.9,
-            ["x"] = 2726.1,
+        Coord = {
+            y = 2532.9,
+            x = 2726.1,
         },
     }, -- [17]
     {
-        ["Done"] = {
+        Done = {
             34400,
         },
-        ["Coord"] = {
-            ["y"] = 2196.9,
-            ["x"] = 2858.6,
+        Coord = {
+            y = 2196.9,
+            x = 2858.6,
         },
     }, -- [18]
     {
@@ -8338,18 +8338,18 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Range"] = 103.76,
-        ["Coord"] = {
-            ["y"] = 2008.3,
-            ["x"] = 3301.1,
+        Range = 103.76,
+        Coord = {
+            y = 2008.3,
+            x = 3301.1,
         },
     }, -- [19]
     {
-        ["GetFP"] = 1453,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1695.3,
-            ["x"] = 2567.1,
+        GetFP = 1453,
+        Range = 0.69,
+        Coord = {
+            y = 1695.3,
+            x = 2567.1,
         },
     }, -- [5]
 
@@ -8359,29 +8359,29 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 77431,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1854.4,
-            ["x"] = 1872.5,
+        RaidIcon = 77431,
+        Range = 0.75,
+        Coord = {
+            y = 1854.4,
+            x = 1872.5,
         },
     }, -- [86]
     {
-        ["Done"] = {
+        Done = {
             34578,
         },
-        ["Coord"] = {
-            ["y"] = 1731,
-            ["x"] = 2102.3,
+        Coord = {
+            y = 1731,
+            x = 2102.3,
         },
     }, -- [87]
     {
-        ["PickUp"] = {
+        PickUp = {
             34976,
         },
-        ["Coord"] = {
-            ["y"] = 1731,
-            ["x"] = 2102.3,
+        Coord = {
+            y = 1731,
+            x = 2102.3,
         },
     }, -- [88]
     {
@@ -8390,13 +8390,13 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34976-1"] = 112091,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1684,
-            ["x"] = 2044.3,
+        Range = 0.75,
+        Coord = {
+            y = 1684,
+            x = 2044.3,
         },
     }, -- [89]
     {
@@ -8405,13 +8405,13 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34976-2"] = 112091,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1694,
-            ["x"] = 1928.8,
+        Range = 0.75,
+        Coord = {
+            y = 1694,
+            x = 1928.8,
         },
     }, -- [90]
     {
@@ -8420,13 +8420,13 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 3,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34976-3"] = 112091,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1727,
-            ["x"] = 1855.3,
+        Range = 0.75,
+        Coord = {
+            y = 1727,
+            x = 1855.3,
         },
     }, -- [91]
     {
@@ -8435,30 +8435,30 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 4,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1684.5,
-            ["x"] = 1717,
+        Range = 0.69,
+        Coord = {
+            y = 1684.5,
+            x = 1717,
         },
     }, -- [92]
     {
-        ["Done"] = {
+        Done = {
             34976,
         },
-        ["Coord"] = {
-            ["y"] = 1655,
-            ["x"] = 1681,
+        Coord = {
+            y = 1655,
+            x = 1681,
         },
     }, -- [93]
     {
-        ["PickUp"] = {
+        PickUp = {
             34979,
             34978,
             34977, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 1655,
-            ["x"] = 1681,
+        Coord = {
+            y = 1655,
+            x = 1681,
         },
     }, -- [94]
     {
@@ -8467,7 +8467,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34977] = {
                 1,
             },
@@ -8475,11 +8475,11 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 80294,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1136.9,
-            ["x"] = 1746.8,
+        RaidIcon = 80294,
+        Range = 0.75,
+        Coord = {
+            y = 1136.9,
+            x = 1746.8,
         },
     }, -- [95]
     {
@@ -8488,7 +8488,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34978] = {
                 1,
             },
@@ -8496,11 +8496,11 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 80292,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1367.9,
-            ["x"] = 1831,
+        RaidIcon = 80292,
+        Range = 0.75,
+        Coord = {
+            y = 1367.9,
+            x = 1831,
         },
     }, -- [96]
     {
@@ -8509,7 +8509,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34978] = {
                 1,
             },
@@ -8517,16 +8517,16 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 80295,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1205.5,
-            ["x"] = 1887.2,
+        RaidIcon = 80295,
+        Range = 0.69,
+        Coord = {
+            y = 1205.5,
+            x = 1887.2,
         },
     }, -- [97]
     {
-        ["Treasure"] = 34251,
-        ["Fillers"] = {
+        Treasure = 34251,
+        Fillers = {
             [34978] = {
                 1,
             },
@@ -8534,10 +8534,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1282.3,
-            ["x"] = 1982,
+        Range = 0.69,
+        Coord = {
+            y = 1282.3,
+            x = 1982,
         },
     }, -- [98]
     {
@@ -8549,30 +8549,30 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 109.59,
-        ["Coord"] = {
-            ["y"] = 1275.5,
-            ["x"] = 1773.2,
+        Range = 109.59,
+        Coord = {
+            y = 1275.5,
+            x = 1773.2,
         },
     }, -- [99]
     {
-        ["Done"] = {
+        Done = {
             34979,
             34978,
             34977, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 1268,
-            ["x"] = 1912.9,
+        Coord = {
+            y = 1268,
+            x = 1912.9,
         },
     }, -- [100]
     {
-        ["PickUp"] = {
+        PickUp = {
             34980,
         },
-        ["Coord"] = {
-            ["y"] = 1268,
-            ["x"] = 1912.9,
+        Coord = {
+            y = 1268,
+            x = 1912.9,
         },
     }, -- [101]
     {
@@ -8581,183 +8581,183 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34980-1"] = 112307,
         },
-        ["RaidIcon"] = 80335,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1182.4,
-            ["x"] = 2002.4,
+        RaidIcon = 80335,
+        Range = 0.75,
+        Coord = {
+            y = 1182.4,
+            x = 2002.4,
         },
     }, -- [102]
     {
-        ["Coord"] = {
-            ["y"] = 1179.5,
-            ["x"] = 1987.8,
+        Coord = {
+            y = 1179.5,
+            x = 1987.8,
         },
-        ["Done"] = {
+        Done = {
             34980,
         },
     }, -- [103]
     {
-        ["PickUp"] = {
+        PickUp = {
             34981,
         },
-        ["Coord"] = {
-            ["y"] = 3596.3,
-            ["x"] = 1683.8,
+        Coord = {
+            y = 3596.3,
+            x = 1683.8,
         },
     }, -- [104]
     {
-        ["Coord"] = {
-            ["y"] = 3604.6,
-            ["x"] = 1674,
+        Coord = {
+            y = 3604.6,
+            x = 1674,
         },
-        ["Done"] = {
+        Done = {
             34981,
         },
     }, -- [105]
     {
-        ["Coord"] = {
-            ["y"] = 3589.6,
-            ["x"] = 1693.4,
+        Coord = {
+            y = 3589.6,
+            x = 1693.4,
         },
-        ["Done"] = {
+        Done = {
             34104,
         },
     }, -- [106]
     {
-        ["PickUp"] = {
+        PickUp = {
             34701,
         },
-        ["Coord"] = {
-            ["y"] = 3571.3,
-            ["x"] = 1680.9,
+        Coord = {
+            y = 3571.3,
+            x = 1680.9,
         },
     }, -- [4]
     {
-        ["UseFlightPath"] = 34701,
-        ["Name"] = "Exarch's Refuge, Talador",
-        ["NodeID"] = 1453,
-        ["Coord"] = {
-            ["y"] = 3575.6,
-            ["x"] = 1668.5,
+        UseFlightPath = 34701,
+        Name = "Exarch's Refuge, Talador",
+        NodeID = 1453,
+        Coord = {
+            y = 3575.6,
+            x = 1668.5,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 1738,
-            ["x"] = 2515.6,
+        Coord = {
+            y = 1738,
+            x = 2515.6,
         },
-        ["Done"] = {
+        Done = {
             34701,
         },
     }, -- [6]
 
     {
-        ["PickUp"] = {
+        PickUp = {
             34458,
             34407,
         },
-        ["Coord"] = {
-            ["y"] = 1736.8,
-            ["x"] = 2515.9,
+        Coord = {
+            y = 1736.8,
+            x = 2515.9,
         },
     }, -- [20]
     {
-        ["Treasure"] = 34253,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1776.9,
-            ["x"] = 2539.6,
+        Treasure = 34253,
+        Range = 0.69,
+        Coord = {
+            y = 1776.9,
+            x = 2539.6,
         },
     }, -- [21]
     {
-        ["PickUp"] = {
+        PickUp = {
             33920,
         },
-        ["Coord"] = {
-            ["y"] = 1762,
-            ["x"] = 2463.6,
+        Coord = {
+            y = 1762,
+            x = 2463.6,
         },
     }, -- [22]
     {
-        ["PickUp"] = {
+        PickUp = {
             33917,
         },
-        ["Coord"] = {
-            ["y"] = 1807.8,
-            ["x"] = 2453.4,
+        Coord = {
+            y = 1807.8,
+            x = 2453.4,
         },
     }, -- [23]
     {
-        ["Waypoint"] = 34458,
-        ["Range"] = 9.88,
-        ["Coord"] = {
-            ["y"] = 1843.8,
-            ["x"] = 2340.1,
+        Waypoint = 34458,
+        Range = 9.88,
+        Coord = {
+            y = 1843.8,
+            x = 2340.1,
         },
     }, -- [24]
     {
-        ["Waypoint"] = 34458,
-        ["Range"] = 7.8,
-        ["Coord"] = {
-            ["y"] = 1893.9,
-            ["x"] = 2249.8,
+        Waypoint = 34458,
+        Range = 7.8,
+        Coord = {
+            y = 1893.9,
+            x = 2249.8,
         },
     }, -- [25]
     {
-        ["Waypoint"] = 34458,
-        ["Range"] = 8.27,
-        ["Coord"] = {
-            ["y"] = 1855.7,
-            ["x"] = 2208.3,
+        Waypoint = 34458,
+        Range = 8.27,
+        Coord = {
+            y = 1855.7,
+            x = 2208.3,
         },
     }, -- [26]
     {
-        ["Done"] = {
+        Done = {
             34458,
         },
-        ["Coord"] = {
-            ["y"] = 1897.9,
-            ["x"] = 2129.1,
+        Coord = {
+            y = 1897.9,
+            x = 2129.1,
         },
     }, -- [27]
     {
-        ["PickUp"] = {
+        PickUp = {
             34351,
         },
-        ["Coord"] = {
-            ["y"] = 1897.9,
-            ["x"] = 2129.1,
+        Coord = {
+            y = 1897.9,
+            x = 2129.1,
         },
     }, -- [28]
     {
-        ["Waypoint"] = 34458,
-        ["Fillers"] = {
+        Waypoint = 34458,
+        Fillers = {
             [34351] = {
                 1,
             },
         },
-        ["Range"] = 8.78,
-        ["Coord"] = {
-            ["y"] = 1857.5,
-            ["x"] = 2205.6,
+        Range = 8.78,
+        Coord = {
+            y = 1857.5,
+            x = 2205.6,
         },
     }, -- [29]
     {
-        ["PickUp"] = {
+        PickUp = {
             33530,
         },
-        ["Fillers"] = {
+        Fillers = {
             [34351] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["y"] = 1830.3,
-            ["x"] = 2213.6,
+        Coord = {
+            y = 1830.3,
+            x = 2213.6,
         },
     }, -- [30]
     {
@@ -8766,23 +8766,23 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34351] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1795.8,
-            ["x"] = 2320.1,
+        Range = 0.69,
+        Coord = {
+            y = 1795.8,
+            x = 2320.1,
         },
     }, -- [31]
     {
-        ["Waypoint"] = 34458,
-        ["Range"] = 9.2,
-        ["Coord"] = {
-            ["y"] = 1829.9,
-            ["x"] = 2209.1,
+        Waypoint = 34458,
+        Range = 9.2,
+        Coord = {
+            y = 1829.9,
+            x = 2209.1,
         },
     }, -- [32]
     {
@@ -8791,15 +8791,15 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34351] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1776.7,
-            ["x"] = 2178.1,
+        Range = 0.69,
+        Coord = {
+            y = 1776.7,
+            x = 2178.1,
         },
     }, -- [33]
     {
@@ -8808,29 +8808,29 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34351] = {
                 1,
             },
         },
-        ["RaidIcon"] = 76745,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1726.5,
-            ["x"] = 2150,
+        RaidIcon = 76745,
+        Range = 0.69,
+        Coord = {
+            y = 1726.5,
+            x = 2150,
         },
     }, -- [34]
     {
-        ["Waypoint"] = 34458,
-        ["Fillers"] = {
+        Waypoint = 34458,
+        Fillers = {
             [34351] = {
                 1,
             },
         },
-        ["Range"] = 5.55,
-        ["Coord"] = {
-            ["y"] = 1826,
-            ["x"] = 2205.5,
+        Range = 5.55,
+        Coord = {
+            y = 1826,
+            x = 2205.5,
         },
     }, -- [35]
     {
@@ -8839,26 +8839,26 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 27.98,
-        ["Coord"] = {
-            ["y"] = 1846.4,
-            ["x"] = 2220.6,
+        Range = 27.98,
+        Coord = {
+            y = 1846.4,
+            x = 2220.6,
         },
     }, -- [36]
     {
-        ["Waypoint"] = 34458,
-        ["Range"] = 9.72,
-        ["Coord"] = {
-            ["y"] = 1895.9,
-            ["x"] = 2246.5,
+        Waypoint = 34458,
+        Range = 9.72,
+        Coord = {
+            y = 1895.9,
+            x = 2246.5,
         },
     }, -- [37]
     {
-        ["Waypoint"] = 34458,
-        ["Range"] = 8.81,
-        ["Coord"] = {
-            ["y"] = 1851,
-            ["x"] = 2328.6,
+        Waypoint = 34458,
+        Range = 8.81,
+        Coord = {
+            y = 1851,
+            x = 2328.6,
         },
     }, -- [38]
     {
@@ -8867,7 +8867,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34407] = {
                 1,
             },
@@ -8875,11 +8875,11 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 76876,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1935.5,
-            ["x"] = 2460.3,
+        RaidIcon = 76876,
+        Range = 0.69,
+        Coord = {
+            y = 1935.5,
+            x = 2460.3,
         },
     }, -- [39]
     {
@@ -8888,7 +8888,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34407] = {
                 1,
             },
@@ -8896,10 +8896,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1944.7,
-            ["x"] = 2455.1,
+        Range = 0.75,
+        Coord = {
+            y = 1944.7,
+            x = 2455.1,
         },
     }, -- [40]
     {
@@ -8911,84 +8911,84 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 50.48,
-        ["Coord"] = {
-            ["y"] = 1887,
-            ["x"] = 2485.8,
+        Range = 50.48,
+        Coord = {
+            y = 1887,
+            x = 2485.8,
         },
     }, -- [41]
     {
-        ["Coord"] = {
-            ["y"] = 1807.2,
-            ["x"] = 2452.8,
+        Coord = {
+            y = 1807.2,
+            x = 2452.8,
         },
-        ["Done"] = {
+        Done = {
             33917,
         },
     }, -- [42]
     {
-        ["Coord"] = {
-            ["y"] = 1760.4,
-            ["x"] = 2465.1,
+        Coord = {
+            y = 1760.4,
+            x = 2465.1,
         },
-        ["Done"] = {
+        Done = {
             33920,
         },
     }, -- [43]
     {
-        ["Coord"] = {
-            ["y"] = 1738.8,
-            ["x"] = 2515.8,
+        Coord = {
+            y = 1738.8,
+            x = 2515.8,
         },
-        ["Done"] = {
+        Done = {
             34407,
             33530,
         },
     }, -- [44]
     {
-        ["Coord"] = {
-            ["y"] = 1750.2,
-            ["x"] = 2547.4,
+        Coord = {
+            y = 1750.2,
+            x = 2547.4,
         },
-        ["Done"] = {
+        Done = {
             34351,
         },
     }, -- [45]
     {
-        ["PickUp"] = {
+        PickUp = {
             34452,
         },
-        ["Coord"] = {
-            ["y"] = 1738.8,
-            ["x"] = 2515.1,
+        Coord = {
+            y = 1738.8,
+            x = 2515.1,
         },
     }, -- [46]
     {
-        ["Done"] = {
+        Done = {
             34452,
         },
-        ["Coord"] = {
-            ["y"] = 1366,
-            ["x"] = 2421.6,
+        Coord = {
+            y = 1366,
+            x = 2421.6,
         },
     }, -- [47]
     {
-        ["PickUp"] = {
+        PickUp = {
             33958,
             33967,
         },
-        ["Coord"] = {
-            ["y"] = 1372.7,
-            ["x"] = 2423.1,
+        Coord = {
+            y = 1372.7,
+            x = 2423.1,
         },
     }, -- [48]
     {
-        ["PickUp"] = {
+        PickUp = {
             33969,
         },
-        ["Coord"] = {
-            ["y"] = 1381,
-            ["x"] = 2402.1,
+        Coord = {
+            y = 1381,
+            x = 2402.1,
         },
     }, -- [49]
     {
@@ -8998,15 +8998,15 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Range"] = 81.46,
-        ["Coord"] = {
-            ["y"] = 887.7,
-            ["x"] = 2631.3,
+        Range = 81.46,
+        Coord = {
+            y = 887.7,
+            x = 2631.3,
         },
     }, -- [50]
     {
-        ["Waypoint"] = 33958,
-        ["Fillers"] = {
+        Waypoint = 33958,
+        Fillers = {
             [33967] = {
                 1,
             },
@@ -9014,15 +9014,15 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 24.19,
-        ["Coord"] = {
-            ["y"] = 1098.5,
-            ["x"] = 2200.3,
+        Range = 24.19,
+        Coord = {
+            y = 1098.5,
+            x = 2200.3,
         },
     }, -- [51]
     {
-        ["Waypoint"] = 33958,
-        ["Fillers"] = {
+        Waypoint = 33958,
+        Fillers = {
             [33967] = {
                 1,
             },
@@ -9030,10 +9030,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 13.02,
-        ["Coord"] = {
-            ["y"] = 1074.3,
-            ["x"] = 2059.6,
+        Range = 13.02,
+        Coord = {
+            y = 1074.3,
+            x = 2059.6,
         },
     }, -- [52]
     {
@@ -9042,7 +9042,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33967] = {
                 1,
             },
@@ -9050,11 +9050,11 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 75294,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 978.2,
-            ["x"] = 1921.5,
+        RaidIcon = 75294,
+        Range = 0.61,
+        Coord = {
+            y = 978.2,
+            x = 1921.5,
         },
     }, -- [53]
     {
@@ -9063,7 +9063,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33967] = {
                 1,
             },
@@ -9071,10 +9071,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 975.9,
-            ["x"] = 1912.8,
+        Range = 0.75,
+        Coord = {
+            y = 975.9,
+            x = 1912.8,
         },
     }, -- [54]
     {
@@ -9086,80 +9086,80 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 111.36,
-        ["Coord"] = {
-            ["y"] = 1153.8,
-            ["x"] = 2299.3,
+        Range = 111.36,
+        Coord = {
+            y = 1153.8,
+            x = 2299.3,
         },
     }, -- [55]
     {
-        ["Done"] = {
+        Done = {
             33967,
             33958,
         },
-        ["Coord"] = {
-            ["y"] = 1372.5,
-            ["x"] = 2423,
+        Coord = {
+            y = 1372.5,
+            x = 2423,
         },
     }, -- [56]
     {
-        ["Done"] = {
+        Done = {
             33969,
         },
-        ["Coord"] = {
-            ["y"] = 1381.4,
-            ["x"] = 2401.6,
+        Coord = {
+            y = 1381.4,
+            x = 2401.6,
         },
     }, -- [57]
     {
-        ["PickUp"] = {
+        PickUp = {
             34240,
         },
-        ["Coord"] = {
-            ["y"] = 1366.7,
-            ["x"] = 2420.4,
+        Coord = {
+            y = 1366.7,
+            x = 2420.4,
         },
     }, -- [58]
     {
-        ["Coord"] = {
-            ["y"] = 950,
-            ["x"] = 2827.6,
+        Coord = {
+            y = 950,
+            x = 2827.6,
         },
-        ["Done"] = {
+        Done = {
             34240,
         },
     }, -- [59]
     {
-        ["PickUp"] = {
+        PickUp = {
             34508,
             34013,
         },
-        ["Coord"] = {
-            ["y"] = 950,
-            ["x"] = 2824.8,
+        Coord = {
+            y = 950,
+            x = 2824.8,
         },
     }, -- [60]
     {
-        ["PickUp"] = {
+        PickUp = {
             34234,
         },
-        ["Coord"] = {
-            ["y"] = 959.1,
-            ["x"] = 2830.4,
+        Coord = {
+            y = 959.1,
+            x = 2830.4,
         },
     }, -- [61]
     {
-        ["PickUp"] = {
+        PickUp = {
             33988,
         },
-        ["Fillers"] = {
+        Fillers = {
             [34234] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["y"] = 929.7,
-            ["x"] = 2899.6,
+        Coord = {
+            y = 929.7,
+            x = 2899.6,
         },
     }, -- [62]
     {
@@ -9168,15 +9168,15 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34234] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 938.5,
-            ["x"] = 2897,
+        Range = 0.75,
+        Coord = {
+            y = 938.5,
+            x = 2897,
         },
     }, -- [63]
     {
@@ -9185,15 +9185,15 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34234] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 937.4,
-            ["x"] = 2893.6,
+        Range = 0.69,
+        Coord = {
+            y = 937.4,
+            x = 2893.6,
         },
     }, -- [64]
     {
@@ -9202,7 +9202,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33988] = {
                 2,
             },
@@ -9210,10 +9210,10 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 821.2,
-            ["x"] = 2893.5,
+        Range = 0.69,
+        Coord = {
+            y = 821.2,
+            x = 2893.5,
         },
     }, -- [65]
     {
@@ -9222,7 +9222,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [33988] = {
                 2,
             },
@@ -9230,28 +9230,28 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 895,
-            ["x"] = 3000.6,
+        Range = 0.69,
+        Coord = {
+            y = 895,
+            x = 3000.6,
         },
     }, -- [66]
     {
-        ["Coord"] = {
-            ["y"] = 832.7,
-            ["x"] = 3158.6,
+        Coord = {
+            y = 832.7,
+            x = 3158.6,
         },
-        ["Done"] = {
+        Done = {
             34508,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             33976,
         },
-        ["Coord"] = {
-            ["y"] = 832.7,
-            ["x"] = 3158.6,
+        Coord = {
+            y = 832.7,
+            x = 3158.6,
         },
     },
     {
@@ -9260,11 +9260,11 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 77051,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 817.2,
-            ["x"] = 3180,
+        RaidIcon = 77051,
+        Range = 0.75,
+        Coord = {
+            y = 817.2,
+            x = 3180,
         },
     }, -- [3]
     {
@@ -9273,28 +9273,28 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 816.7,
-            ["x"] = 3180.8,
+        Range = 0.69,
+        Coord = {
+            y = 816.7,
+            x = 3180.8,
         },
     }, -- [4]
     {
-        ["Coord"] = {
-            ["y"] = 831.7,
-            ["x"] = 3159.9,
+        Coord = {
+            y = 831.7,
+            x = 3159.9,
         },
-        ["Done"] = {
+        Done = {
             33976,
         },
     }, -- [5]
     {
-        ["PickUp"] = {
+        PickUp = {
             34326,
         },
-        ["Coord"] = {
-            ["y"] = 831.7,
-            ["x"] = 3159.9,
+        Coord = {
+            y = 831.7,
+            x = 3159.9,
         },
     }, -- [6]
     {
@@ -9306,56 +9306,56 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 81.45,
-        ["Coord"] = {
-            ["y"] = 837.5,
-            ["x"] = 2931.5,
+        Range = 81.45,
+        Coord = {
+            y = 837.5,
+            x = 2931.5,
         },
     }, -- [67]
     {
-        ["Coord"] = {
-            ["y"] = 845.7,
-            ["x"] = 2974,
+        Coord = {
+            y = 845.7,
+            x = 2974,
         },
-        ["Done"] = {
+        Done = {
             33988,
         },
     }, -- [68]
     {
-        ["Coord"] = {
-            ["y"] = 954.1,
-            ["x"] = 2824.8,
+        Coord = {
+            y = 954.1,
+            x = 2824.8,
         },
-        ["Done"] = {
+        Done = {
             34234,
             34013,
         },
     }, -- [69]
     {
-        ["Coord"] = {
-            ["y"] = 1411.5,
-            ["x"] = 3244.4,
+        Coord = {
+            y = 1411.5,
+            x = 3244.4,
         },
-        ["Done"] = {
+        Done = {
             34326,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             34092,
         },
-        ["Coord"] = {
-            ["y"] = 1411.5,
-            ["x"] = 3244.4,
+        Coord = {
+            y = 1411.5,
+            x = 3244.4,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35227,
         },
-        ["Coord"] = {
-            ["y"] = 1404.3,
-            ["x"] = 3274.8,
+        Coord = {
+            y = 1404.3,
+            x = 3274.8,
         },
     }, -- [3]
     {
@@ -9364,16 +9364,16 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35227] = {
                 1,
             },
         },
-        ["RaidIcon"] = 77350,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1106.5,
-            ["x"] = 3479.5,
+        RaidIcon = 77350,
+        Range = 0.75,
+        Coord = {
+            y = 1106.5,
+            x = 3479.5,
         },
     }, -- [4]
     {
@@ -9382,16 +9382,16 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35227] = {
                 1,
             },
         },
-        ["RaidIcon"] = 77349,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1055.8,
-            ["x"] = 3288.4,
+        RaidIcon = 77349,
+        Range = 0.75,
+        Coord = {
+            y = 1055.8,
+            x = 3288.4,
         },
     }, -- [5]
     {
@@ -9400,15 +9400,15 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35227] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 1152.2,
-            ["x"] = 3379.1,
+        Range = 0.69,
+        Coord = {
+            y = 1152.2,
+            x = 3379.1,
         },
     }, -- [6]
     {
@@ -9417,44 +9417,44 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 79.2,
-        ["Coord"] = {
-            ["y"] = 1152.2,
-            ["x"] = 3380.9,
+        Range = 79.2,
+        Coord = {
+            y = 1152.2,
+            x = 3380.9,
         },
     }, -- [7]
     {
-        ["Coord"] = {
-            ["y"] = 1404.2,
-            ["x"] = 3262.1,
+        Coord = {
+            y = 1404.2,
+            x = 3262.1,
         },
-        ["Done"] = {
+        Done = {
             34092,
             35227,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             34157,
             35254,
         },
-        ["Coord"] = {
-            ["y"] = 1404.2,
-            ["x"] = 3275.5,
+        Coord = {
+            y = 1404.2,
+            x = 3275.5,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             34163,
         },
-        ["Fillers"] = {
+        Fillers = {
             [35254] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["y"] = 1273.4,
-            ["x"] = 3612.6,
+        Coord = {
+            y = 1273.4,
+            x = 3612.6,
         },
     }, -- [10]
     {
@@ -9463,15 +9463,15 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35254] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1356.4,
-            ["x"] = 3581.5,
+        Range = 0.75,
+        Coord = {
+            y = 1356.4,
+            x = 3581.5,
         },
     }, -- [11]
     {
@@ -9480,29 +9480,29 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35254] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1255.5,
-            ["x"] = 3709,
+        Range = 0.75,
+        Coord = {
+            y = 1255.5,
+            x = 3709,
         },
     }, -- [12]
     {
-        ["PickUp"] = {
+        PickUp = {
             34164,
         },
-        ["Fillers"] = {
+        Fillers = {
             [35254] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["y"] = 1490.5,
-            ["x"] = 3807.1,
+        Coord = {
+            y = 1490.5,
+            x = 3807.1,
         },
     }, -- [13]
     {
@@ -9511,31 +9511,31 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["ExtraLineText"] = "DEMENTORS_DROPS_BOOKS",
-        ["Fillers"] = {
+        ExtraLineText = "DEMENTORS_DROPS_BOOKS",
+        Fillers = {
             [35254] = {
                 1,
             },
         },
-        ["RaidIcon"] = 77548,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1478.9,
-            ["x"] = 3799.6,
+        RaidIcon = 77548,
+        Range = 0.75,
+        Coord = {
+            y = 1478.9,
+            x = 3799.6,
         },
     }, -- [14]
     {
-        ["Fillers"] = {
+        Fillers = {
             [35254] = {
                 1,
             },
         },
-        ["Done"] = {
+        Done = {
             34164,
         },
-        ["Coord"] = {
-            ["y"] = 1489,
-            ["x"] = 3806.4,
+        Coord = {
+            y = 1489,
+            x = 3806.4,
         },
     }, -- [15]
     {
@@ -9544,24 +9544,24 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35254] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1632.9,
-            ["x"] = 3780.9,
+        Range = 0.75,
+        Coord = {
+            y = 1632.9,
+            x = 3780.9,
         },
     }, -- [16]
     {
-        ["Done"] = {
+        Done = {
             34163,
         },
-        ["Coord"] = {
-            ["y"] = 1632.9,
-            ["x"] = 3780.9,
+        Coord = {
+            y = 1632.9,
+            x = 3780.9,
         },
     }, -- [17]
     {
@@ -9570,36 +9570,36 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 36.63,
-        ["Coord"] = {
-            ["y"] = 1561.7,
-            ["x"] = 3785.6,
+        Range = 36.63,
+        Coord = {
+            y = 1561.7,
+            x = 3785.6,
         },
     }, -- [18]
     {
-        ["Waypoint"] = 34157,
-        ["Range"] = 24.66,
-        ["Coord"] = {
-            ["y"] = 1461.7,
-            ["x"] = 3924.4,
+        Waypoint = 34157,
+        Range = 24.66,
+        Coord = {
+            y = 1461.7,
+            x = 3924.4,
         },
     }, -- [19]
     {
-        ["Done"] = {
+        Done = {
             34157,
         },
-        ["Coord"] = {
-            ["y"] = 1503,
-            ["x"] = 3972.1,
+        Coord = {
+            y = 1503,
+            x = 3972.1,
         },
     }, -- [20]
     {
-        ["PickUp"] = {
+        PickUp = {
             34154,
         },
-        ["Coord"] = {
-            ["y"] = 1503,
-            ["x"] = 3972.1,
+        Coord = {
+            y = 1503,
+            x = 3972.1,
         },
     }, -- [21]
     {
@@ -9608,97 +9608,97 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 1519,
-            ["x"] = 3987.6,
+        Range = 0.75,
+        Coord = {
+            y = 1519,
+            x = 3987.6,
         },
     }, -- [22]
     {
-        ["Coord"] = {
-            ["y"] = 1485.7,
-            ["x"] = 3109.5,
+        Coord = {
+            y = 1485.7,
+            x = 3109.5,
         },
-        ["Done"] = {
+        Done = {
             35254,
         },
     }, -- [23]
     {
-        ["Coord"] = {
-            ["y"] = 1484.5,
-            ["x"] = 3072.1,
+        Coord = {
+            y = 1484.5,
+            x = 3072.1,
         },
-        ["Done"] = {
+        Done = {
             34154,
         },
     }, -- [24]
     {
-        ["PickUp"] = {
+        PickUp = {
             34707,
         },
-        ["Coord"] = {
-            ["y"] = 1486,
-            ["x"] = 3110.6,
+        Coord = {
+            y = 1486,
+            x = 3110.6,
         },
     }, -- [25]
     {
-        ["UseFlightPath"] = 34707,
-        ["Name"] = "Fort Wrynn (Alliance), Talador",
-        ["NodeID"] = 1447,
-        ["Coord"] = {
-            ["y"] = 1377.5,
-            ["x"] = 3323.6,
+        UseFlightPath = 34707,
+        Name = "Fort Wrynn (Alliance), Talador",
+        NodeID = 1447,
+        Coord = {
+            y = 1377.5,
+            x = 3323.6,
         },
     }, -- [7]
 
     {
-        ["Coord"] = {
-            ["y"] = 3571.3,
-            ["x"] = 1680.5,
+        Coord = {
+            y = 3571.3,
+            x = 1680.5,
         },
-        ["Done"] = {
+        Done = {
             34707,
         },
     },
     {
-        ["UseFlightPath"] = 34655,
-        ["Name"] = "Exarch's Refuge, Talador",
-        ["NodeID"] = 1453,
-        ["Coord"] = {
-            ["y"] = 3575.6,
-            ["x"] = 1668.5,
+        UseFlightPath = 34655,
+        Name = "Exarch's Refuge, Talador",
+        NodeID = 1453,
+        Coord = {
+            y = 3575.6,
+            x = 1668.5,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             34655,
         },
-        ["Coord"] = {
-            ["y"] = 655.7,
-            ["x"] = 2385.9,
+        Coord = {
+            y = 655.7,
+            x = 2385.9,
         },
     },
     {
-        ["ZoneDoneSave"] = 1,
+        ZoneDoneSave = 1,
     },
 }
 APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
     {
-        ["PickUp"] = {
+        PickUp = {
             34655,
         },
-        ["Coord"] = {
-            ["y"] = 655.7,
-            ["x"] = 2385.1,
+        Coord = {
+            y = 655.7,
+            x = 2385.1,
         },
     },
     {
-        ["Treasure"] = 36243,
-        ["ExtraLineText"] = "LOOT_BELONGINGS",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 690.6,
-            ["x"] = 2451.3,
+        Treasure = 36243,
+        ExtraLineText = "LOOT_BELONGINGS",
+        Range = 0.75,
+        Coord = {
+            y = 690.6,
+            x = 2451.3,
         },
     },
     {
@@ -9707,31 +9707,31 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["RaidIcon"] = 79519,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = 860.7,
-            ["x"] = 2036.5,
+        Gossip = 1,
+        RaidIcon = 79519,
+        Range = 0.61,
+        Coord = {
+            y = 860.7,
+            x = 2036.5,
         },
     }, -- [3]
     {
-        ["Coord"] = {
-            ["y"] = 860.7,
-            ["x"] = 2036.5,
+        Coord = {
+            y = 860.7,
+            x = 2036.5,
         },
-        ["Done"] = {
+        Done = {
             34655,
         },
     }, -- [4]
     {
-        ["PickUp"] = {
+        PickUp = {
             34657,
             34656,
         },
-        ["Coord"] = {
-            ["y"] = 860.7,
-            ["x"] = 2036.5,
+        Coord = {
+            y = 860.7,
+            x = 2036.5,
         },
     }, -- [5]
     {
@@ -9740,15 +9740,15 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34657] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 772.2,
-            ["x"] = 1959,
+        Range = 0.75,
+        Coord = {
+            y = 772.2,
+            x = 1959,
         },
     }, -- [6]
     {
@@ -9757,15 +9757,15 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34657] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 726.2,
-            ["x"] = 2182.9,
+        Range = 0.69,
+        Coord = {
+            y = 726.2,
+            x = 2182.9,
         },
     }, -- [7]
     {
@@ -9774,29 +9774,29 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 85.28,
-        ["Coord"] = {
-            ["y"] = 772.7,
-            ["x"] = 2052.8,
+        Range = 85.28,
+        Coord = {
+            y = 772.7,
+            x = 2052.8,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 861.1,
-            ["x"] = 2036.3,
+        Coord = {
+            y = 861.1,
+            x = 2036.3,
         },
-        ["Done"] = {
+        Done = {
             34657,
             34656,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             34658,
         },
-        ["Coord"] = {
-            ["y"] = 861.1,
-            ["x"] = 2036.3,
+        Coord = {
+            y = 861.1,
+            x = 2036.3,
         },
     }, -- [10]
     {
@@ -9805,54 +9805,54 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 762.4,
-            ["x"] = 1903.4,
+        Range = 0.75,
+        Coord = {
+            y = 762.4,
+            x = 1903.4,
         },
     }, -- [11]
     {
-        ["Coord"] = {
-            ["y"] = 646,
-            ["x"] = 1930.8,
+        Coord = {
+            y = 646,
+            x = 1930.8,
         },
-        ["Done"] = {
+        Done = {
             34658,
         },
     }, -- [12]
     {
-        ["PickUp"] = {
+        PickUp = {
             34659,
         },
-        ["Coord"] = {
-            ["y"] = 646,
-            ["x"] = 1930.8,
+        Coord = {
+            y = 646,
+            x = 1930.8,
         },
     }, -- [13]
     {
-        ["Treasure"] = 36246,
-        ["ExtraLineText"] = "IN_WATER_PILLAR",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 490.8,
-            ["x"] = 1621.4,
+        Treasure = 36246,
+        ExtraLineText = "IN_WATER_PILLAR",
+        Range = 0.69,
+        Coord = {
+            y = 490.8,
+            x = 1621.4,
         },
     },
     {
-        ["Treasure"] = 36444,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 341.7,
-            ["x"] = 1631.5,
+        Treasure = 36444,
+        Range = 0.69,
+        Coord = {
+            y = 341.7,
+            x = 1631.5,
         },
     },
     {
-        ["Treasure"] = 36247,
-        ["ExtraLineText"] = "UNDERNEATH_BRIDGE",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 223.1,
-            ["x"] = 1606.4,
+        Treasure = 36247,
+        ExtraLineText = "UNDERNEATH_BRIDGE",
+        Range = 0.75,
+        Coord = {
+            y = 223.1,
+            x = 1606.4,
         },
     }, -- [3]
     {
@@ -9861,75 +9861,75 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["RaidIcon"] = 79890,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 116.4,
-            ["x"] = 1553.3,
+        Gossip = 1,
+        RaidIcon = 79890,
+        Range = 0.75,
+        Coord = {
+            y = 116.4,
+            x = 1553.3,
         },
     }, -- [4]
     {
-        ["Done"] = {
+        Done = {
             34659,
         },
-        ["Coord"] = {
-            ["y"] = 116.4,
-            ["x"] = 1553.3,
+        Coord = {
+            y = 116.4,
+            x = 1553.3,
         },
     }, -- [5]
     {
-        ["PickUp"] = {
+        PickUp = {
             34756,
             35636,
         },
-        ["Coord"] = {
-            ["y"] = 116.4,
-            ["x"] = 1553.3,
+        Coord = {
+            y = 116.4,
+            x = 1553.3,
         },
     }, -- [6]
     {
-        ["PickUp"] = {
+        PickUp = {
             34805,
         },
-        ["Coord"] = {
-            ["y"] = 121.8,
-            ["x"] = 1556.8,
+        Coord = {
+            y = 121.8,
+            x = 1556.8,
         },
     }, -- [7]
     {
-        ["Treasure"] = 36361,
-        ["ExtraLineText"] = "IN_HUT",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 143.6,
-            ["x"] = 1776.5,
+        Treasure = 36361,
+        ExtraLineText = "IN_HUT",
+        Range = 0.69,
+        Coord = {
+            y = 143.6,
+            x = 1776.5,
         },
     },
     {
-        ["Treasure"] = 36446,
-        ["ExtraLineText"] = "ON_CHAINED_OUTCAST",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 10.1,
-            ["x"] = 1837.5,
+        Treasure = 36446,
+        ExtraLineText = "ON_CHAINED_OUTCAST",
+        Range = 0.75,
+        Coord = {
+            y = 10.1,
+            x = 1837.5,
         },
     },
     {
-        ["Treasure"] = 36411,
-        ["ExtraLineText"] = "RING_IN_WATER",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -75.3,
-            ["x"] = 1786.8,
+        Treasure = 36411,
+        ExtraLineText = "RING_IN_WATER",
+        Range = 0.69,
+        Coord = {
+            y = -75.3,
+            x = 1786.8,
         },
     }, -- [10]
     {
-        ["Treasure"] = 36445,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -118.9,
-            ["x"] = 1699.3,
+        Treasure = 36445,
+        Range = 0.69,
+        Coord = {
+            y = -118.9,
+            x = 1699.3,
         },
     }, -- [11]
     {
@@ -9938,7 +9938,7 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34756] = {
                 1,
             },
@@ -9946,11 +9946,11 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 80047,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -85.6,
-            ["x"] = 1636.5,
+        RaidIcon = 80047,
+        Range = 0.69,
+        Coord = {
+            y = -85.6,
+            x = 1636.5,
         },
     }, -- [12]
     {
@@ -9959,7 +9959,7 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34756] = {
                 1,
             },
@@ -9967,28 +9967,28 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = -100,
-            ["x"] = 1650.5,
+        Range = 0.61,
+        Coord = {
+            y = -100,
+            x = 1650.5,
         },
     }, -- [13]
     {
-        ["Coord"] = {
-            ["y"] = -98.8,
-            ["x"] = 1634.4,
+        Coord = {
+            y = -98.8,
+            x = 1634.4,
         },
-        ["Done"] = {
+        Done = {
             35636,
         },
     }, -- [14]
     {
-        ["PickUp"] = {
+        PickUp = {
             35668,
         },
-        ["Coord"] = {
-            ["y"] = -98.8,
-            ["x"] = 1634.4,
+        Coord = {
+            y = -98.8,
+            x = 1634.4,
         },
     }, -- [15]
     {
@@ -10000,19 +10000,19 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 173.17,
-        ["Coord"] = {
-            ["y"] = -160.7,
-            ["x"] = 1633.4,
+        Range = 173.17,
+        Coord = {
+            y = -160.7,
+            x = 1633.4,
         },
     }, -- [16]
     {
-        ["Waypoint"] = 35668,
-        ["ExtraLineText"] = "INSIDE_CAVE",
-        ["Range"] = 7.14,
-        ["Coord"] = {
-            ["y"] = -281.8,
-            ["x"] = 1708.3,
+        Waypoint = 35668,
+        ExtraLineText = "INSIDE_CAVE",
+        Range = 7.14,
+        Coord = {
+            y = -281.8,
+            x = 1708.3,
         },
     }, -- [17]
     {
@@ -10021,39 +10021,39 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 82623,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -348,
-            ["x"] = 1753,
+        RaidIcon = 82623,
+        Range = 0.69,
+        Coord = {
+            y = -348,
+            x = 1753,
         },
     }, -- [18]
     {
-        ["Range"] = 8.04,
-        ["Waypoint"] = 35668,
-        ["Coord"] = {
-            ["y"] = -278.3,
-            ["x"] = 1708.5,
+        Range = 8.04,
+        Waypoint = 35668,
+        Coord = {
+            y = -278.3,
+            x = 1708.5,
         },
     }, -- [19]
     {
-        ["Coord"] = {
-            ["y"] = -413,
-            ["x"] = 1738.4,
+        Coord = {
+            y = -413,
+            x = 1738.4,
         },
-        ["Done"] = {
+        Done = {
             34805,
             34756,
             35668, -- [3]
         },
     },             -- [20]
     {
-        ["PickUp"] = {
+        PickUp = {
             35671,
         },
-        ["Coord"] = {
-            ["y"] = -413,
-            ["x"] = 1738.4,
+        Coord = {
+            y = -413,
+            x = 1738.4,
         },
     }, -- [21]
     {
@@ -10062,28 +10062,28 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = -458.9,
-            ["x"] = 1863.3,
+        Range = 0.75,
+        Coord = {
+            y = -458.9,
+            x = 1863.3,
         },
     }, -- [22]
     {
-        ["Coord"] = {
-            ["y"] = -458.9,
-            ["x"] = 1863.3,
+        Coord = {
+            y = -458.9,
+            x = 1863.3,
         },
-        ["Done"] = {
+        Done = {
             35671,
         },
     }, -- [23]
     {
-        ["PickUp"] = {
+        PickUp = {
             35274,
         },
-        ["Coord"] = {
-            ["y"] = -489.2,
-            ["x"] = 1900.4,
+        Coord = {
+            y = -489.2,
+            x = 1900.4,
         },
     }, -- [24]
     {
@@ -10092,57 +10092,57 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["RaidIcon"] = 80153,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -458.9,
-            ["x"] = 1863.7,
+        Gossip = 1,
+        RaidIcon = 80153,
+        Range = 0.69,
+        Coord = {
+            y = -458.9,
+            x = 1863.7,
         },
     }, -- [25]
     {
-        ["Coord"] = {
-            ["y"] = -489,
-            ["x"] = 1901.4,
+        Coord = {
+            y = -489,
+            x = 1901.4,
         },
-        ["Done"] = {
+        Done = {
             35274,
         },
     }, -- [26]
     {
-        ["PickUp"] = {
+        PickUp = {
             35276,
         },
-        ["Coord"] = {
-            ["y"] = -489,
-            ["x"] = 1901.4,
+        Coord = {
+            y = -489,
+            x = 1901.4,
         },
     }, -- [27]
     {
-        ["Treasure"] = 36458,
-        ["ExtraLineText"] = "MINING_PICK",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -836.8,
-            ["x"] = 2221.6,
+        Treasure = 36458,
+        ExtraLineText = "MINING_PICK",
+        Range = 0.69,
+        Coord = {
+            y = -836.8,
+            x = 2221.6,
         },
     }, -- [28]
     {
-        ["Coord"] = {
-            ["y"] = -1059.3,
-            ["x"] = 2258.1,
+        Coord = {
+            y = -1059.3,
+            x = 2258.1,
         },
-        ["Done"] = {
+        Done = {
             35276,
         },
     }, -- [29]
     {
-        ["PickUp"] = {
+        PickUp = {
             35286,
         },
-        ["Coord"] = {
-            ["y"] = -1074.5,
-            ["x"] = 2264.9,
+        Coord = {
+            y = -1074.5,
+            x = 2264.9,
         },
     }, -- [30]
     {
@@ -10152,114 +10152,114 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 2,
             },
         },
-        ["ExtraLineText"] = "BREWERY",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -1074.9,
-            ["x"] = 2275.9,
+        ExtraLineText = "BREWERY",
+        Range = 0.69,
+        Coord = {
+            y = -1074.9,
+            x = 2275.9,
         },
-        ["Brewery"] = 133,
+        Brewery = 133,
     }, -- [31]
     {
-        ["Coord"] = {
-            ["y"] = -1073.3,
-            ["x"] = 2266.1,
+        Coord = {
+            y = -1073.3,
+            x = 2266.1,
         },
-        ["Done"] = {
+        Done = {
             35286,
         },
     }, -- [32]
     {
-        ["PickUp"] = {
+        PickUp = {
             37327,
         },
-        ["Coord"] = {
-            ["y"] = -1073.3,
-            ["x"] = 2264.1,
+        Coord = {
+            y = -1073.3,
+            x = 2264.1,
         },
     }, -- [33]
     {
-        ["PickUp"] = {
+        PickUp = {
             35293,
         },
-        ["Coord"] = {
-            ["y"] = -1067.1,
-            ["x"] = 2270.8,
+        Coord = {
+            y = -1067.1,
+            x = 2270.8,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35619,
         },
-        ["PickUpDB"] = {
+        PickUpDB = {
             35619,
             35620,
             36861,
             36862,
         },
-        ["Coord"] = {
-            ["y"] = -1065.3,
-            ["x"] = 2279.3,
+        Coord = {
+            y = -1065.3,
+            x = 2279.3,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35675,
             35674,
             35676, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = -1107.3,
-            ["x"] = 2290.1,
+        Coord = {
+            y = -1107.3,
+            x = 2290.1,
         },
     }, -- [3]
     {
-        ["PickUp"] = {
+        PickUp = {
             35611,
         },
-        ["Coord"] = {
-            ["y"] = -1050.8,
-            ["x"] = 2246.6,
+        Coord = {
+            y = -1050.8,
+            x = 2246.6,
         },
     }, -- [4]
     {
-        ["Treasure"] = 36418,
-        ["ExtraLineText"] = "IN_HOUSE",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = -950.8,
-            ["x"] = 2473.4,
+        Treasure = 36418,
+        ExtraLineText = "IN_HOUSE",
+        Range = 0.75,
+        Coord = {
+            y = -950.8,
+            x = 2473.4,
         },
     }, -- [5]
     {
-        ["Done"] = {
+        Done = {
             35293,
         },
-        ["Coord"] = {
-            ["y"] = -593.3,
-            ["x"] = 2309.1,
+        Coord = {
+            y = -593.3,
+            x = 2309.1,
         },
     }, -- [6]
     {
-        ["PickUp"] = {
+        PickUp = {
             35329,
         },
-        ["Coord"] = {
-            ["y"] = -593.3,
-            ["x"] = 2309.1,
+        Coord = {
+            y = -593.3,
+            x = 2309.1,
         },
     }, -- [7]
     {
-        ["Treasure"] = 36420,
-        ["Fillers"] = {
+        Treasure = 36420,
+        Fillers = {
             [35329] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -535,
-            ["x"] = 2430.3,
+        Range = 0.69,
+        Coord = {
+            y = -535,
+            x = 2430.3,
         },
     },
     {
@@ -10268,10 +10268,10 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 49.35,
-        ["Coord"] = {
-            ["y"] = -613.3,
-            ["x"] = 2412.1,
+        Range = 49.35,
+        Coord = {
+            y = -613.3,
+            x = 2412.1,
         },
     },
     {
@@ -10280,29 +10280,29 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -592.8,
-            ["x"] = 2319.1,
+        Gossip = 1,
+        Range = 0.69,
+        Coord = {
+            y = -592.8,
+            x = 2319.1,
         },
     }, -- [10]
     {
-        ["Done"] = {
+        Done = {
             35329,
         },
-        ["Coord"] = {
-            ["y"] = -592.8,
-            ["x"] = 2319.1,
+        Coord = {
+            y = -592.8,
+            x = 2319.1,
         },
     }, -- [11]
     {
-        ["PickUp"] = {
+        PickUp = {
             35339,
         },
-        ["Coord"] = {
-            ["y"] = -592.8,
-            ["x"] = 2319.1,
+        Coord = {
+            y = -592.8,
+            x = 2319.1,
         },
     }, -- [12]
     {
@@ -10311,10 +10311,10 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 116.48,
-        ["Coord"] = {
-            ["y"] = -735.3,
-            ["x"] = 2422.3,
+        Range = 116.48,
+        Coord = {
+            y = -735.3,
+            x = 2422.3,
         },
     }, -- [13]
     {
@@ -10323,31 +10323,31 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 2,
             },
         },
-        ["Gossip"] = 1,
-        ["ExtraLineText"] = "UPSTAIRS_BED",
-        ["RaidIcon"] = 82110,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -679.5,
-            ["x"] = 2398.1,
+        Gossip = 1,
+        ExtraLineText = "UPSTAIRS_BED",
+        RaidIcon = 82110,
+        Range = 0.69,
+        Coord = {
+            y = -679.5,
+            x = 2398.1,
         },
     }, -- [14]
     {
-        ["Done"] = {
+        Done = {
             35339,
         },
-        ["Coord"] = {
-            ["y"] = -679.5,
-            ["x"] = 2398.1,
+        Coord = {
+            y = -679.5,
+            x = 2398.1,
         },
     }, -- [15]
     {
-        ["PickUp"] = {
+        PickUp = {
             35353,
         },
-        ["Coord"] = {
-            ["y"] = -679.5,
-            ["x"] = 2398.1,
+        Coord = {
+            y = -679.5,
+            x = 2398.1,
         },
     }, -- [16]
     {
@@ -10356,65 +10356,65 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["ExtraLineText"] = "IN_BASEMENT",
-        ["RaidIcon"] = 82136,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -677.7,
-            ["x"] = 2410.9,
+        ExtraLineText = "IN_BASEMENT",
+        RaidIcon = 82136,
+        Range = 0.69,
+        Coord = {
+            y = -677.7,
+            x = 2410.9,
         },
     }, -- [17]
     {
-        ["Done"] = {
+        Done = {
             35353,
         },
-        ["Coord"] = {
-            ["y"] = -667,
-            ["x"] = 2406.5,
+        Coord = {
+            y = -667,
+            x = 2406.5,
         },
     }, -- [18]
     {
-        ["PickUp"] = {
+        PickUp = {
             35380,
         },
-        ["Coord"] = {
-            ["y"] = -667,
-            ["x"] = 2406.5,
+        Coord = {
+            y = -667,
+            x = 2406.5,
         },
     }, -- [19]
     {
-        ["Waypoint"] = 35380,
-        ["Range"] = 5.71,
-        ["Coord"] = {
-            ["y"] = -769.5,
-            ["x"] = 2421.1,
+        Waypoint = 35380,
+        Range = 5.71,
+        Coord = {
+            y = -769.5,
+            x = 2421.1,
         },
     }, -- [20]
     {
-        ["Done"] = {
+        Done = {
             35380,
         },
-        ["Coord"] = {
-            ["y"] = -789.8,
-            ["x"] = 2396.6,
+        Coord = {
+            y = -789.8,
+            x = 2396.6,
         },
     }, -- [21]
     {
-        ["PickUp"] = {
+        PickUp = {
             35407,
         },
-        ["Coord"] = {
-            ["y"] = -789.8,
-            ["x"] = 2396.6,
+        Coord = {
+            y = -789.8,
+            x = 2396.6,
         },
     }, -- [22]
     {
-        ["PickUp"] = {
+        PickUp = {
             35408,
         },
-        ["Coord"] = {
-            ["y"] = -792.3,
-            ["x"] = 2399.5,
+        Coord = {
+            y = -792.3,
+            x = 2399.5,
         },
     }, -- [23]
     {
@@ -10423,7 +10423,7 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35408] = {
                 1,
             },
@@ -10431,10 +10431,10 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -779,
-            ["x"] = 2474.6,
+        Range = 0.69,
+        Coord = {
+            y = -779,
+            x = 2474.6,
         },
     }, -- [24]
     {
@@ -10446,29 +10446,29 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 87.56,
-        ["Coord"] = {
-            ["y"] = -764,
-            ["x"] = 2441.6,
+        Range = 87.56,
+        Coord = {
+            y = -764,
+            x = 2441.6,
         },
     }, -- [25]
     {
-        ["Done"] = {
+        Done = {
             35407,
             35408,
         },
-        ["Coord"] = {
-            ["y"] = -791.3,
-            ["x"] = 2398.1,
+        Coord = {
+            y = -791.3,
+            x = 2398.1,
         },
     }, -- [26]
     {
-        ["PickUp"] = {
+        PickUp = {
             35482,
         },
-        ["Coord"] = {
-            ["y"] = -791.3,
-            ["x"] = 2398.1,
+        Coord = {
+            y = -791.3,
+            x = 2398.1,
         },
     }, -- [27]
     {
@@ -10477,10 +10477,10 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = -911.8,
-            ["x"] = 2450.3,
+        Range = 0.75,
+        Coord = {
+            y = -911.8,
+            x = 2450.3,
         },
     }, -- [28]
     {
@@ -10489,10 +10489,10 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -915.3,
-            ["x"] = 2450.5,
+        Range = 0.69,
+        Coord = {
+            y = -915.3,
+            x = 2450.5,
         },
     }, -- [29]
     {
@@ -10501,37 +10501,37 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 3,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = -932,
-            ["x"] = 2450.3,
+        Range = 0.75,
+        Coord = {
+            y = -932,
+            x = 2450.3,
         },
     }, -- [30]
     {
-        ["Done"] = {
+        Done = {
             35482,
         },
-        ["Coord"] = {
-            ["y"] = -917.2,
-            ["x"] = 2450.1,
+        Coord = {
+            y = -917.2,
+            x = 2450.1,
         },
     }, -- [31]
     {
-        ["PickUp"] = {
+        PickUp = {
             35549,
         },
-        ["Coord"] = {
-            ["y"] = -908.8,
-            ["x"] = 2448.1,
+        Coord = {
+            y = -908.8,
+            x = 2448.1,
         },
     }, -- [32]
     {
-        ["Done"] = {
+        Done = {
             37327,
         },
-        ["Coord"] = {
-            ["y"] = -591.5,
-            ["x"] = 2021,
+        Coord = {
+            y = -591.5,
+            x = 2021,
         },
     }, -- [33]
     {
@@ -10540,48 +10540,48 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 78.86,
-        ["Coord"] = {
-            ["y"] = -574.7,
-            ["x"] = 2029.8,
+        Range = 78.86,
+        Coord = {
+            y = -574.7,
+            x = 2029.8,
         },
     }, -- [34]
     {
-        ["Done"] = {
+        Done = {
             37296,
         },
-        ["Coord"] = {
-            ["y"] = -592.5,
-            ["x"] = 2021.3,
+        Coord = {
+            y = -592.5,
+            x = 2021.3,
         },
     }, -- [35]
     {
-        ["PickUp"] = {
+        PickUp = {
             37329,
         },
-        ["Coord"] = {
-            ["y"] = -592.5,
-            ["x"] = 2021.3,
+        Coord = {
+            y = -592.5,
+            x = 2021.3,
         },
     }, -- [36]
     {
-        ["Done"] = {
+        Done = {
             35611,
         },
-        ["Coord"] = {
-            ["y"] = -463.3,
-            ["x"] = 1901.5,
+        Coord = {
+            y = -463.3,
+            x = 1901.5,
         },
     }, -- [37]
     {
-        ["PickUp"] = {
+        PickUp = {
             34827,
             34884,
             34998, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = -462.9,
-            ["x"] = 1899.5,
+        Coord = {
+            y = -462.9,
+            x = 1899.5,
         },
     }, -- [38]
     {
@@ -10590,31 +10590,31 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Gossip"] = 1,
-        ["RaidIcon"] = 80233,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -83,
-            ["x"] = 1928.9,
+        Gossip = 1,
+        RaidIcon = 80233,
+        Range = 0.69,
+        Coord = {
+            y = -83,
+            x = 1928.9,
         },
     }, -- [39]
     {
-        ["PickUp"] = {
+        PickUp = {
             34885,
         },
-        ["Coord"] = {
-            ["y"] = -83,
-            ["x"] = 1929.5,
+        Coord = {
+            y = -83,
+            x = 1929.5,
         },
     }, -- [40]
     {
-        ["PickUp"] = {
+        PickUp = {
             34838,
         },
-        ["RaidIcon"] = 80224,
-        ["Coord"] = {
-            ["y"] = -98.4,
-            ["x"] = 1929.2,
+        RaidIcon = 80224,
+        Coord = {
+            y = -98.4,
+            x = 1929.2,
         },
     }, -- [41]
     {
@@ -10623,19 +10623,19 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -98.4,
-            ["x"] = 1929.2,
+        Range = 0.69,
+        Coord = {
+            y = -98.4,
+            x = 1929.2,
         },
     }, -- [42]
     {
-        ["PickUp"] = {
+        PickUp = {
             34886,
         },
-        ["Coord"] = {
-            ["y"] = -98.4,
-            ["x"] = 1929.2,
+        Coord = {
+            y = -98.4,
+            x = 1929.2,
         },
     }, -- [43]
     {
@@ -10644,7 +10644,7 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34885] = {
                 1,
             },
@@ -10652,11 +10652,11 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 80224,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -154.5,
-            ["x"] = 2004,
+        RaidIcon = 80224,
+        Range = 0.69,
+        Coord = {
+            y = -154.5,
+            x = 2004,
         },
     }, -- [44]
     {
@@ -10668,19 +10668,19 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 55.83,
-        ["Coord"] = {
-            ["y"] = -141.5,
-            ["x"] = 1946.5,
+        Range = 55.83,
+        Coord = {
+            y = -141.5,
+            x = 1946.5,
         },
     }, -- [45]
     {
-        ["Done"] = {
+        Done = {
             34886,
         },
-        ["Coord"] = {
-            ["y"] = -100.5,
-            ["x"] = 1930.7,
+        Coord = {
+            y = -100.5,
+            x = 1930.7,
         },
     }, -- [46]
     {
@@ -10689,46 +10689,46 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34827-1"] = 112100,
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -19.8,
-            ["x"] = 1777.9,
+        Range = 0.69,
+        Coord = {
+            y = -19.8,
+            x = 1777.9,
         },
     }, -- [47]
     {
-        ["Done"] = {
+        Done = {
             34827,
         },
-        ["Coord"] = {
-            ["y"] = -20,
-            ["x"] = 1771.9,
+        Coord = {
+            y = -20,
+            x = 1771.9,
         },
     }, -- [48]
     {
-        ["PickUp"] = {
+        PickUp = {
             34828,
             34829,
         },
-        ["Coord"] = {
-            ["y"] = -20,
-            ["x"] = 1771.9,
+        Coord = {
+            y = -20,
+            x = 1771.9,
         },
     }, -- [49]
     {
-        ["PickUp"] = {
+        PickUp = {
             36425,
         },
-        ["Fillers"] = {
+        Fillers = {
             [34829] = {
                 1,
             },
         },
-        ["Coord"] = {
-            ["y"] = 103.9,
-            ["x"] = 1824.5,
+        Coord = {
+            y = 103.9,
+            x = 1824.5,
         },
     }, -- [50]
     {
@@ -10737,7 +10737,7 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [36425] = {
                 1,
             },
@@ -10745,10 +10745,10 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 233.8,
-            ["x"] = 1767.7,
+        Range = 0.75,
+        Coord = {
+            y = 233.8,
+            x = 1767.7,
         },
     }, -- [51]
     {
@@ -10760,29 +10760,29 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 62.49,
-        ["Coord"] = {
-            ["y"] = 160,
-            ["x"] = 1822.3,
+        Range = 62.49,
+        Coord = {
+            y = 160,
+            x = 1822.3,
         },
     }, -- [52]
     {
-        ["Done"] = {
+        Done = {
             34828,
             34829,
         },
-        ["Coord"] = {
-            ["y"] = -20.2,
-            ["x"] = 1772.2,
+        Coord = {
+            y = -20.2,
+            x = 1772.2,
         },
     }, -- [53]
     {
-        ["PickUp"] = {
+        PickUp = {
             34830,
         },
-        ["Coord"] = {
-            ["y"] = -20.2,
-            ["x"] = 1772.2,
+        Coord = {
+            y = -20.2,
+            x = 1772.2,
         },
     }, -- [54]
     {
@@ -10791,32 +10791,32 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["34830-1"] = 112099,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 414.2,
-            ["x"] = 1983.3,
+        Range = 0.75,
+        Coord = {
+            y = 414.2,
+            x = 1983.3,
         },
     }, -- [55]
     {
-        ["Done"] = {
+        Done = {
             34830,
         },
-        ["Coord"] = {
-            ["y"] = 413.8,
-            ["x"] = 1985.9,
+        Coord = {
+            y = 413.8,
+            x = 1985.9,
         },
     }, -- [56]
     {
-        ["PickUp"] = {
+        PickUp = {
             34882,
             34883,
         },
-        ["Coord"] = {
-            ["y"] = 413.8,
-            ["x"] = 1985.9,
+        Coord = {
+            y = 413.8,
+            x = 1985.9,
         },
     }, -- [57]
     {
@@ -10825,29 +10825,29 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [34883] = {
                 1,
             },
         },
-        ["RaidIcon"] = 80509,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = 302.5,
-            ["x"] = 2104.6,
+        RaidIcon = 80509,
+        Range = 0.69,
+        Coord = {
+            y = 302.5,
+            x = 2104.6,
         },
     }, -- [58]
     {
-        ["Treasure"] = 36447,
-        ["Fillers"] = {
+        Treasure = 36447,
+        Fillers = {
             [34883] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 508.3,
-            ["x"] = 2126.8,
+        Range = 0.75,
+        Coord = {
+            y = 508.3,
+            x = 2126.8,
         },
     }, -- [59]
     {
@@ -10856,55 +10856,55 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 81.49,
-        ["Coord"] = {
-            ["y"] = 359.7,
-            ["x"] = 2056.6,
+        Range = 81.49,
+        Coord = {
+            y = 359.7,
+            x = 2056.6,
         },
     }, -- [60]
     {
-        ["Done"] = {
+        Done = {
             34882,
             34883,
         },
-        ["Coord"] = {
-            ["y"] = 415,
-            ["x"] = 1985.8,
+        Coord = {
+            y = 415,
+            x = 1985.8,
         },
     }, -- [61]
     {
-        ["PickUp"] = {
+        PickUp = {
             34942,
             35257,
         },
-        ["Coord"] = {
-            ["y"] = 415.1,
-            ["x"] = 1989.3,
+        Coord = {
+            y = 415.1,
+            x = 1989.3,
         },
     }, -- [62]
     {
-        ["Coord"] = {
-            ["y"] = 392.3,
-            ["x"] = 2447,
+        Coord = {
+            y = 392.3,
+            x = 2447,
         },
-        ["Done"] = {
+        Done = {
             35257,
         },
     }, -- [63]
     {
-        ["PickUp"] = {
+        PickUp = {
             35258,
             35260,
             35259, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = 393.8,
-            ["x"] = 2445.1,
+        Coord = {
+            y = 393.8,
+            x = 2445.1,
         },
     }, -- [64]
     {
-        ["Treasure"] = 36421,
-        ["Fillers"] = {
+        Treasure = 36421,
+        Fillers = {
             [35258] = {
                 1,
             },
@@ -10912,35 +10912,35 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["35260-1"] = 113084,
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 272.3,
-            ["x"] = 2612.6,
+        Range = 0.75,
+        Coord = {
+            y = 272.3,
+            x = 2612.6,
         },
     }, -- [65]
     {
-        ["Waypoint"] = 35259,
-        ["ExtraLineText"] = "INSIDE_CAVE",
-        ["Range"] = 11.1,
-        ["Coord"] = {
-            ["y"] = 241.6,
-            ["x"] = 2609.3,
+        Waypoint = 35259,
+        ExtraLineText = "INSIDE_CAVE",
+        Range = 11.1,
+        Coord = {
+            y = 241.6,
+            x = 2609.3,
         },
     }, -- [66]
     {
-        ["Waypoint"] = 35259,
-        ["Fillers"] = {
+        Waypoint = 35259,
+        Fillers = {
             [35258] = {
                 1,
             },
         },
-        ["Range"] = 15.23,
-        ["Coord"] = {
-            ["y"] = 273.8,
-            ["x"] = 2681.9,
+        Range = 15.23,
+        Coord = {
+            y = 273.8,
+            x = 2681.9,
         },
     }, -- [67]
     {
@@ -10949,33 +10949,33 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35258] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 218.5,
-            ["x"] = 2695.8,
+        Range = 0.75,
+        Coord = {
+            y = 218.5,
+            x = 2695.8,
         },
     }, -- [68]
     {
-        ["Waypoint"] = 35259,
-        ["Fillers"] = {
+        Waypoint = 35259,
+        Fillers = {
             [35258] = {
                 1,
             },
         },
-        ["Range"] = 13.02,
-        ["Coord"] = {
-            ["y"] = 242.1,
-            ["x"] = 2612.1,
+        Range = 13.02,
+        Coord = {
+            y = 242.1,
+            x = 2612.1,
         },
     }, -- [69]
     {
-        ["Waypoint"] = 35259,
-        ["Fillers"] = {
+        Waypoint = 35259,
+        Fillers = {
             [35258] = {
                 1,
             },
@@ -10983,13 +10983,13 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["35260-1"] = 113084,
         },
-        ["Range"] = 12.04,
-        ["Coord"] = {
-            ["y"] = 330.8,
-            ["x"] = 2704.3,
+        Range = 12.04,
+        Coord = {
+            y = 330.8,
+            x = 2704.3,
         },
     }, -- [70]
     {
@@ -10998,7 +10998,7 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 2,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35260] = {
                 1,
             },
@@ -11006,32 +11006,32 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["35260-1"] = 113084,
         },
-        ["RaidIcon"] = 81934,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 347.8,
-            ["x"] = 2736.9,
+        RaidIcon = 81934,
+        Range = 0.75,
+        Coord = {
+            y = 347.8,
+            x = 2736.9,
         },
     }, -- [71]
     {
-        ["Coord"] = {
-            ["y"] = 353.6,
-            ["x"] = 2746.6,
+        Coord = {
+            y = 353.6,
+            x = 2746.6,
         },
-        ["Done"] = {
+        Done = {
             35259,
         },
     }, -- [72]
     {
-        ["PickUp"] = {
+        PickUp = {
             35261,
         },
-        ["Coord"] = {
-            ["y"] = 353.6,
-            ["x"] = 2746.6,
+        Coord = {
+            y = 353.6,
+            x = 2746.6,
         },
     }, -- [73]
     {
@@ -11043,13 +11043,13 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["35260-1"] = 113084,
         },
-        ["Range"] = 81.79,
-        ["Coord"] = {
-            ["y"] = 313.8,
-            ["x"] = 2593.6,
+        Range = 81.79,
+        Coord = {
+            y = 313.8,
+            x = 2593.6,
         },
     }, -- [75]
     {
@@ -11058,29 +11058,29 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 82145,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 161,
-            ["x"] = 2654.5,
+        RaidIcon = 82145,
+        Range = 0.75,
+        Coord = {
+            y = 161,
+            x = 2654.5,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = 89,
-            ["x"] = 2531,
+        Coord = {
+            y = 89,
+            x = 2531,
         },
-        ["Done"] = {
+        Done = {
             35261,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35273,
         },
-        ["Coord"] = {
-            ["y"] = 89,
-            ["x"] = 2531,
+        Coord = {
+            y = 89,
+            x = 2531,
         },
     }, -- [3]
     {
@@ -11090,89 +11090,89 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 2,
             },
         },
-        ["ExtraLineText"] = "USE_CHAIR",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = 89,
-            ["x"] = 2531,
+        ExtraLineText = "USE_CHAIR",
+        Range = 0.75,
+        Coord = {
+            y = 89,
+            x = 2531,
         },
     }, -- [4]
     {
-        ["Coord"] = {
-            ["y"] = 395.5,
-            ["x"] = 2444.6,
+        Coord = {
+            y = 395.5,
+            x = 2444.6,
         },
-        ["Done"] = {
+        Done = {
             35258,
             35260,
             35273, -- [3]
         },
     },             -- [5]
     {
-        ["PickUp"] = {
+        PickUp = {
             35634,
         },
-        ["Coord"] = {
-            ["y"] = 392.6,
-            ["x"] = 2447.3,
+        Coord = {
+            y = 392.6,
+            x = 2447.3,
         },
     }, -- [15]
     {
-        ["Coord"] = {
-            ["y"] = -468.5,
-            ["x"] = 1826.8,
+        Coord = {
+            y = -468.5,
+            x = 1826.8,
         },
-        ["Done"] = {
+        Done = {
             35634,
         },
     }, -- [6]
     {
-        ["Coord"] = {
-            ["y"] = -498.4,
-            ["x"] = 1861.3,
+        Coord = {
+            y = -498.4,
+            x = 1861.3,
         },
-        ["Done"] = {
+        Done = {
             34942,
             34884,
             34885, -- [3]
         },
     },             -- [7]
     {
-        ["PickUp"] = {
+        PickUp = {
             35733,
         },
-        ["Coord"] = {
-            ["y"] = -498.4,
-            ["x"] = 1861.3,
+        Coord = {
+            y = -498.4,
+            x = 1861.3,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = -504.3,
-            ["x"] = 1856.3,
+        Coord = {
+            y = -504.3,
+            x = 1856.3,
         },
-        ["Done"] = {
+        Done = {
             35733,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             35734,
         },
-        ["Coord"] = {
-            ["y"] = -504.3,
-            ["x"] = 1856.3,
+        Coord = {
+            y = -504.3,
+            x = 1856.3,
         },
     }, -- [10]
     {
-        ["Waypoint"] = 35734,
-        ["Gossip"] = 1,
-        ["RaidIcon"] = 82813,
-        ["ExtraLineText"] = "TALK_EFFIGY",
-        ["Range"] = 25,
-        ["Coord"] = {
-            ["y"] = -504.8,
-            ["x"] = 1855.4,
+        Waypoint = 35734,
+        Gossip = 1,
+        RaidIcon = 82813,
+        ExtraLineText = "TALK_EFFIGY",
+        Range = 25,
+        Coord = {
+            y = -504.8,
+            x = 1855.4,
         },
     },
     {
@@ -11181,17 +11181,17 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 3,
             },
         },
-        ["RaidIcon"] = 82950,
-        ["Fillers"] = {
+        RaidIcon = 82950,
+        Fillers = {
             [35734] = {
                 1,
                 2,
             },
         },
-        ["Range"] = 10,
-        ["Coord"] = {
-            ["y"] = -1293.01,
-            ["x"] = 1899,
+        Range = 10,
+        Coord = {
+            y = -1293.01,
+            x = 1899,
         },
     }, -- [11]
     {
@@ -11201,97 +11201,97 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 2,
             },
         },
-        ["Range"] = 298,
-        ["Coord"] = {
-            ["y"] = -1562.5,
-            ["x"] = 1771.7,
+        Range = 298,
+        Coord = {
+            y = -1562.5,
+            x = 1771.7,
         },
     },
     {
-        ["Coord"] = {
-            ["y"] = -501,
-            ["x"] = 1863.9,
+        Coord = {
+            y = -501,
+            x = 1863.9,
         },
-        ["Done"] = {
+        Done = {
             35734,
         },
     }, -- [12]
     {
-        ["PickUp"] = {
+        PickUp = {
             34898,
         },
-        ["Coord"] = {
-            ["y"] = -462.4,
-            ["x"] = 1881.4,
+        Coord = {
+            y = -462.4,
+            x = 1881.4,
         },
     }, -- [13]
     {
-        ["Coord"] = {
-            ["y"] = -1073.5,
-            ["x"] = 2263.6,
+        Coord = {
+            y = -1073.5,
+            x = 2263.6,
         },
-        ["Done"] = {
+        Done = {
             35549,
             37329,
         },
     }, -- [14]
     {
-        ["Treasure"] = 36405,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = -741.5,
-            ["x"] = 1752,
+        Treasure = 36405,
+        Range = 0.61,
+        Coord = {
+            y = -741.5,
+            x = 1752,
         },
     }, -- [22]
     {
-        ["Treasure"] = 36406,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = -826,
-            ["x"] = 1717.9,
+        Treasure = 36406,
+        Range = 0.75,
+        Coord = {
+            y = -826,
+            x = 1717.9,
         },
     }, -- [23]
     {
-        ["Treasure"] = 36403,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -859.2,
-            ["x"] = 1450.9,
+        Treasure = 36403,
+        Range = 0.69,
+        Coord = {
+            y = -859.2,
+            x = 1450.9,
         },
     }, -- [24]
     {
-        ["Treasure"] = 36340,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -1050,
-            ["x"] = 1125.4,
+        Treasure = 36340,
+        Range = 0.69,
+        Coord = {
+            y = -1050,
+            x = 1125.4,
         },
     }, -- [25]
     {
-        ["Treasure"] = 36410,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -1196.8,
-            ["x"] = 986.5,
+        Treasure = 36410,
+        Range = 0.69,
+        Coord = {
+            y = -1196.8,
+            x = 986.5,
         },
     }, -- [26]
     {
-        ["PickUp"] = {
+        PickUp = {
             35079,
             35077,
         },
-        ["Coord"] = {
-            ["y"] = -1562.9,
-            ["x"] = 956.9,
+        Coord = {
+            y = -1562.9,
+            x = 956.9,
         },
     },
     {
-        ["PickUp"] = {
+        PickUp = {
             36179,
         },
-        ["Coord"] = {
-            ["y"] = -1601.3,
-            ["x"] = 890.2,
+        Coord = {
+            y = -1601.3,
+            x = 890.2,
         },
     },
     {
@@ -11306,33 +11306,33 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["35077-1"] = 112683,
         },
-        ["Range"] = 64.02,
-        ["Coord"] = {
-            ["y"] = -1663.5,
-            ["x"] = 822.7,
+        Range = 64.02,
+        Coord = {
+            y = -1663.5,
+            x = 822.7,
         },
     }, -- [3]
     {
-        ["Done"] = {
+        Done = {
             36179,
             35077,
             35079, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = -1563.1,
-            ["x"] = 957.2,
+        Coord = {
+            y = -1563.1,
+            x = 957.2,
         },
     }, -- [4]
     {
-        ["PickUp"] = {
+        PickUp = {
             35080,
         },
-        ["Coord"] = {
-            ["y"] = -1562.5,
-            ["x"] = 956.2,
+        Coord = {
+            y = -1562.5,
+            x = 956.2,
         },
     }, -- [5]
     {
@@ -11341,34 +11341,34 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = -1814.3,
-            ["x"] = 1099,
+        Range = 0.61,
+        Coord = {
+            y = -1814.3,
+            x = 1099,
         },
     }, -- [6]
     {
-        ["Done"] = {
+        Done = {
             35080,
         },
-        ["Coord"] = {
-            ["y"] = -1814.3,
-            ["x"] = 1099,
+        Coord = {
+            y = -1814.3,
+            x = 1099,
         },
     }, -- [7]
     {
-        ["PickUp"] = {
+        PickUp = {
             35082,
             35081,
         },
-        ["Coord"] = {
-            ["y"] = -1814.6,
-            ["x"] = 1100,
+        Coord = {
+            y = -1814.6,
+            x = 1100,
         },
     },
     {
-        ["Treasure"] = 36365,
-        ["Fillers"] = {
+        Treasure = 36365,
+        Fillers = {
             [35081] = {
                 1,
             },
@@ -11376,11 +11376,11 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["ExtraLineText"] = "IN_BOAT",
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -1901.8,
-            ["x"] = 1067.7,
+        ExtraLineText = "IN_BOAT",
+        Range = 0.69,
+        Coord = {
+            y = -1901.8,
+            x = 1067.7,
         },
     },
     {
@@ -11392,66 +11392,66 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 90.61,
-        ["Coord"] = {
-            ["y"] = -1901.8,
-            ["x"] = 1067.7,
+        Range = 90.61,
+        Coord = {
+            y = -1901.8,
+            x = 1067.7,
         },
     }, -- [6]
     {
-        ["Done"] = {
+        Done = {
             35082,
             35081,
         },
-        ["Coord"] = {
-            ["y"] = -1815.1,
-            ["x"] = 1100,
+        Coord = {
+            y = -1815.1,
+            x = 1100,
         },
     }, -- [10]
     {
-        ["PickUp"] = {
+        PickUp = {
             35285,
         },
-        ["Coord"] = {
-            ["y"] = -1815.8,
-            ["x"] = 1100,
+        Coord = {
+            y = -1815.8,
+            x = 1100,
         },
     }, -- [11]
     {
-        ["Treasure"] = 36456,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -2033.9,
-            ["x"] = 993.1,
+        Treasure = 36456,
+        Range = 0.69,
+        Coord = {
+            y = -2033.9,
+            x = 993.1,
         },
     }, -- [12]
     {
-        ["Done"] = {
+        Done = {
             35285,
         },
-        ["Coord"] = {
-            ["y"] = -2346,
-            ["x"] = 1137.7,
+        Coord = {
+            y = -2346,
+            x = 1137.7,
         },
     }, -- [13]
     {
-        ["PickUp"] = {
+        PickUp = {
             35090,
             35089,
             36384, -- [3]
         },
-        ["Coord"] = {
-            ["y"] = -2344.2,
-            ["x"] = 1137,
+        Coord = {
+            y = -2344.2,
+            x = 1137,
         },
     }, -- [14]
     {
-        ["Treasure"] = 36366,
-        ["ExtraLineText"] = "INSIDE_SHACK",
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = -2277.2,
-            ["x"] = 1096.9,
+        Treasure = 36366,
+        ExtraLineText = "INSIDE_SHACK",
+        Range = 0.75,
+        Coord = {
+            y = -2277.2,
+            x = 1096.9,
         },
     }, -- [15]
     {
@@ -11463,13 +11463,13 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["35090-1"] = 112698,
         },
-        ["Range"] = 78.54,
-        ["Coord"] = {
-            ["y"] = -2217.5,
-            ["x"] = 1100.5,
+        Range = 78.54,
+        Coord = {
+            y = -2217.5,
+            x = 1100.5,
         },
     }, -- [16]
     {
@@ -11478,52 +11478,52 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["36384-1"] = 115475,
         },
-        ["RaidIcon"] = 81183,
-        ["Range"] = 56.68,
-        ["Coord"] = {
-            ["y"] = -2153.7,
-            ["x"] = 1160.5,
+        RaidIcon = 81183,
+        Range = 56.68,
+        Coord = {
+            y = -2153.7,
+            x = 1160.5,
         },
     }, -- [17]
     {
-        ["Coord"] = {
-            ["y"] = -2343.4,
-            ["x"] = 1137.5,
+        Coord = {
+            y = -2343.4,
+            x = 1137.5,
         },
-        ["Done"] = {
+        Done = {
             36384,
         },
     }, -- [18]
     {
-        ["Coord"] = {
-            ["y"] = -2365.7,
-            ["x"] = 1118,
+        Coord = {
+            y = -2365.7,
+            x = 1118,
         },
-        ["Done"] = {
+        Done = {
             35089,
             35090,
         },
     }, -- [19]
     {
-        ["PickUp"] = {
+        PickUp = {
             35091,
         },
-        ["Coord"] = {
-            ["y"] = -2365.7,
-            ["x"] = 1118,
+        Coord = {
+            y = -2365.7,
+            x = 1118,
         },
     }, -- [20]
     {
-        ["PickUp"] = {
+        PickUp = {
             35211,
             36428,
         },
-        ["Coord"] = {
-            ["y"] = -2342.9,
-            ["x"] = 1137,
+        Coord = {
+            y = -2342.9,
+            x = 1137,
         },
     }, -- [21]
     {
@@ -11535,18 +11535,18 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [35091] = {
                 1,
             },
         },
-        ["Button"] = {
+        Button = {
             ["36428-1"] = 115533,
         },
-        ["Range"] = 45.6,
-        ["Coord"] = {
-            ["y"] = -2286.7,
-            ["x"] = 1277.7,
+        Range = 45.6,
+        Coord = {
+            y = -2286.7,
+            x = 1277.7,
         },
     }, -- [22]
     {
@@ -11555,38 +11555,38 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 50.12,
-        ["Coord"] = {
-            ["y"] = -2406.5,
-            ["x"] = 1227.8,
+        Range = 50.12,
+        Coord = {
+            y = -2406.5,
+            x = 1227.8,
         },
     }, -- [23]
     {
-        ["Coord"] = {
-            ["y"] = -2341.9,
-            ["x"] = 1138,
+        Coord = {
+            y = -2341.9,
+            x = 1138,
         },
-        ["Done"] = {
+        Done = {
             35211,
             36428,
         },
     }, -- [24]
     {
-        ["Coord"] = {
-            ["y"] = -2366.7,
-            ["x"] = 1116.8,
+        Coord = {
+            y = -2366.7,
+            x = 1116.8,
         },
-        ["Done"] = {
+        Done = {
             35091,
         },
     }, -- [25]
     {
-        ["PickUp"] = {
+        PickUp = {
             35298,
         },
-        ["Coord"] = {
-            ["y"] = -2342.7,
-            ["x"] = 1137.4,
+        Coord = {
+            y = -2342.7,
+            x = 1137.4,
         },
     }, -- [26]
     {
@@ -11595,10 +11595,10 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = -2342.5,
-            ["x"] = 1136,
+        Range = 0.75,
+        Coord = {
+            y = -2342.5,
+            x = 1136,
         },
     }, -- [27]
     {
@@ -11607,18 +11607,18 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 2,
             },
         },
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -2366.9,
-            ["x"] = 1114,
+        Range = 0.69,
+        Coord = {
+            y = -2366.9,
+            x = 1114,
         },
     }, -- [28]
     {
-        ["Coord"] = {
-            ["y"] = -1559.1,
-            ["x"] = 949.1,
+        Coord = {
+            y = -1559.1,
+            x = 949.1,
         },
-        ["Done"] = {
+        Done = {
             35298,
         },
     }, -- [29]
@@ -11628,11 +11628,11 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 82632,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -1416.5,
-            ["x"] = 1448.2,
+        RaidIcon = 82632,
+        Range = 0.69,
+        Coord = {
+            y = -1416.5,
+            x = 1448.2,
         },
     }, -- [30]
     {
@@ -11641,11 +11641,11 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 1,
             },
         },
-        ["RaidIcon"] = 82631,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -1777.4,
-            ["x"] = 1635.7,
+        RaidIcon = 82631,
+        Range = 0.69,
+        Coord = {
+            y = -1777.4,
+            x = 1635.7,
         },
     }, -- [31]
     {
@@ -11654,17 +11654,17 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 5,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [36660] = {
                 1,
                 2,
             },
         },
-        ["RaidIcon"] = 86138,
-        ["Range"] = 0.69,
-        ["Coord"] = {
-            ["y"] = -1730.3,
-            ["x"] = 1620.4,
+        RaidIcon = 86138,
+        Range = 0.69,
+        Coord = {
+            y = -1730.3,
+            x = 1620.4,
         },
     }, -- [32]
     {
@@ -11673,17 +11673,17 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 4,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [36660] = {
                 1,
                 2,
             },
         },
-        ["RaidIcon"] = 86135,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = -1449,
-            ["x"] = 1693,
+        RaidIcon = 86135,
+        Range = 0.75,
+        Coord = {
+            y = -1449,
+            x = 1693,
         },
     }, -- [33]
     {
@@ -11692,17 +11692,17 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 3,
             },
         },
-        ["Fillers"] = {
+        Fillers = {
             [36660] = {
                 1,
                 2,
             },
         },
-        ["RaidIcon"] = 86076,
-        ["Range"] = 0.75,
-        ["Coord"] = {
-            ["y"] = -1244,
-            ["x"] = 1947.4,
+        RaidIcon = 86076,
+        Range = 0.75,
+        Coord = {
+            y = -1244,
+            x = 1947.4,
         },
     }, -- [34]
     {
@@ -11712,29 +11712,29 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 2,
             },
         },
-        ["RaidIcon"] = 86076,
-        ["Range"] = 150.75,
-        ["Coord"] = {
-            ["y"] = -1244,
-            ["x"] = 1947.4,
+        RaidIcon = 86076,
+        Range = 150.75,
+        Coord = {
+            y = -1244,
+            x = 1947.4,
         },
     }, -- [35]
     {
-        ["Done"] = {
+        Done = {
             35674,
         },
-        ["Coord"] = {
-            ["y"] = -1075,
-            ["x"] = 2263.6,
+        Coord = {
+            y = -1075,
+            x = 2263.6,
         },
     }, -- [36]
     {
-        ["Done"] = {
+        Done = {
             35675,
         },
-        ["Coord"] = {
-            ["y"] = -1032.9,
-            ["x"] = 2296.8,
+        Coord = {
+            y = -1032.9,
+            x = 2296.8,
         },
     }, -- [37]
     {
@@ -11746,18 +11746,18 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 2,
             },
         },
-        ["Range"] = 129.84,
-        ["Coord"] = {
-            ["y"] = -401.4,
-            ["x"] = 2672.6,
+        Range = 129.84,
+        Coord = {
+            y = -401.4,
+            x = 2672.6,
         },
     }, -- [38]
     {
-        ["Treasure"] = 36402,
-        ["Range"] = 0.61,
-        ["Coord"] = {
-            ["y"] = -205.4,
-            ["x"] = 2482.1,
+        Treasure = 36402,
+        Range = 0.61,
+        Coord = {
+            y = -205.4,
+            x = 2482.1,
         },
     }, -- [39]
     {
@@ -11771,13 +11771,13 @@ APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
                 6,
             },
         },
-        ["Range"] = 104.41,
-        ["Coord"] = {
-            ["y"] = 296.5,
-            ["x"] = 2844.4,
+        Range = 104.41,
+        Coord = {
+            y = 296.5,
+            x = 2844.4,
         },
     }, -- [40]
     {
-        ["ZoneDoneSave"] = 1,
+        ZoneDoneSave = 1,
     },
 }
