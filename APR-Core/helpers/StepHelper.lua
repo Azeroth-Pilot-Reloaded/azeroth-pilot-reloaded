@@ -68,13 +68,13 @@ function PreviousQuestStep()
         userMapData[activeMap] = userMapData[activeMap] - 1
         local steps = questStepList[userMapData[activeMap]]
 
-        if not ((steps["Faction"] and steps["Faction"] ~= faction) or
-                (steps["Race"] and steps["Race"] ~= race) or
-                (steps["Gender"] and steps["Gender"] ~= gender) or
-                (steps["Class"] and steps["Class"] ~= className) or
-                (steps["HasAchievement"] and not _G.HasAchievement(steps["HasAchievement"])) or
-                (steps["DontHaveAchievement"] and _G.HasAchievement(steps["DontHaveAchievement"])) or
-                steps["Waypoint"]) then
+        if not ((steps.Faction and steps.Faction ~= faction) or
+                (steps.Race and steps.Race ~= race) or
+                (steps.Gender and steps.Gender ~= gender) or
+                (steps.Class and steps.Class ~= className) or
+                (steps.HasAchievement and not _G.HasAchievement(steps.HasAchievement)) or
+                (steps.DontHaveAchievement and _G.HasAchievement(steps.DontHaveAchievement)) or
+                steps.Waypoint) then
             break
         end
     end
@@ -155,7 +155,7 @@ end
 function IsARouteQuest(questId)
     local steps = GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
     if (steps) then
-        if Contains(steps["PickUp"], questId) or Contains(steps["PickUpDB"], questId) then
+        if Contains(steps.PickUp, questId) or Contains(steps.PickUpDB, questId) then
             return true
         end
     end
@@ -165,7 +165,7 @@ end
 function IsPickupStep()
     local steps = GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
     if (steps) then
-        if steps["PickUp"] or steps["PickUpDB"] then
+        if steps.PickUp or steps.PickUpDB then
             return true
         end
     end
