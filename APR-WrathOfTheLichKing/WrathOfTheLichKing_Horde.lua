@@ -42,9 +42,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 5
-            ["Qpart"] = {
+            Qpart = {
                 [12619] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -56,9 +56,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 6
-            ["Qpart"] = {
+            Qpart = {
                 [12619] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -93,9 +93,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 9
-            ["Qpart"] = {
+            Qpart = {
                 [12842] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -127,9 +127,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 12
-            ["Qpart"] = {
+            Qpart = {
                 [12848] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -184,12 +184,12 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 17
-            ["Qpart"] = {
+            Qpart = {
                 [12641] = {
-                    ["4"] = "4",
-                    ["3"] = "3",
-                    ["2"] = "2",
-                    ["1"] = "1",
+                    4,
+                    3,
+                    2,
+                    1,
                 },
             },
             ["Coord"] = {
@@ -331,9 +331,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 31
-            ["Qpart"] = {
+            Qpart = {
                 [12733] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -356,9 +356,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 33
-            ["Qpart"] = {
+            Qpart = {
                 [12679] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -369,17 +369,17 @@ if (APR.Faction == "Horde") then
             ["Range"] = 47.32,
             ["Fillers"] = {
                 [12678] = {
-                    ["2"] = "2",
-                    ["1"] = "1",
+                    2,
+                    1,
                 },
             },
         },
         {
             -- Step 34
-            ["Qpart"] = {
+            Qpart = {
                 [12678] = {
-                    ["2"] = "2",
-                    ["1"] = "1",
+                    2,
+                    1,
                 },
             },
             ["Coord"] = {
@@ -391,9 +391,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 35
-            ["Qpart"] = {
+            Qpart = {
                 [12680] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -415,9 +415,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 37
-            ["Qpart"] = {
+            Qpart = {
                 [12680] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -459,9 +459,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 41
-            ["Qpart"] = {
+            Qpart = {
                 [12687] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -543,9 +543,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 49
-            ["Qpart"] = {
+            Qpart = {
                 [12698] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -600,9 +600,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 54
-            ["Qpart"] = {
+            Qpart = {
                 [12701] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -794,9 +794,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 73
-            ["Qpart"] = {
+            Qpart = {
                 [12716] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -807,8 +807,8 @@ if (APR.Faction == "Horde") then
             ["Range"] = 0.69,
             ["Fillers"] = {
                 [12722] = {
-                    ["2"] = "2",
-                    ["1"] = "1",
+                    2,
+                    1,
                 },
             },
         },
@@ -844,9 +844,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 77
-            ["Qpart"] = {
+            Qpart = {
                 [12716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -857,17 +857,17 @@ if (APR.Faction == "Horde") then
             ["Range"] = 0.75,
             ["Fillers"] = {
                 [12722] = {
-                    ["2"] = "2",
-                    ["1"] = "1",
+                    2,
+                    1,
                 },
             },
         },
         {
             -- Step 78
-            ["Qpart"] = {
+            Qpart = {
                 [12719] = {
-                    ["2"] = "2",
-                    ["1"] = "1",
+                    2,
+                    1,
                 },
             },
             ["Coord"] = {
@@ -878,23 +878,23 @@ if (APR.Faction == "Horde") then
             ["Range"] = 0.69,
             ["Fillers"] = {
                 [12722] = {
-                    ["2"] = "2",
-                    ["1"] = "1",
+                    2,
+                    1,
                 },
                 [12716] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
         },
         {
             -- Step 79
-            ["Qpart"] = {
+            Qpart = {
                 [12716] = {
-                    ["3"] = "3",
+                    3,
                 },
                 [12722] = {
-                    ["2"] = "2",
-                    ["1"] = "1",
+                    2,
+                    1,
                 },
             },
             ["Coord"] = {
@@ -986,9 +986,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 88
-            ["Qpart"] = {
+            Qpart = {
                 [12720] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1063,9 +1063,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 95
-            ["Qpart"] = {
+            Qpart = {
                 [12724] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1117,9 +1117,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 100
-            ["Qpart"] = {
+            Qpart = {
                 [12727] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1179,9 +1179,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 105
-            ["Qpart"] = {
+            Qpart = {
                 [12739] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1249,9 +1249,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 110
-            ["Qpart"] = {
+            Qpart = {
                 [12754] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1266,9 +1266,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 111
-            ["Qpart"] = {
+            Qpart = {
                 [12754] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -1400,10 +1400,10 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 124
-            ["Qpart"] = {
+            Qpart = {
                 [12779] = {
-                    ["2"] = "2",
-                    ["1"] = "1",
+                    2,
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1478,9 +1478,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 131
-            ["Qpart"] = {
+            Qpart = {
                 [12801] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1552,10 +1552,10 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 138
-            ["Qpart"] = {
+            Qpart = {
                 [13166] = {
-                    ["2"] = "2",
-                    ["1"] = "1",
+                    2,
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1634,9 +1634,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 1
-            ["Qpart"] = {
+            Qpart = {
                 [58877] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1668,9 +1668,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 5
-            ["Qpart"] = {
+            Qpart = {
                 [58903] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -1683,9 +1683,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 6
-            ["Qpart"] = {
+            Qpart = {
                 [58903] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Coord"] = {
@@ -1698,9 +1698,9 @@ if (APR.Faction == "Horde") then
         },
         {
             -- Step 7
-            ["Qpart"] = {
+            Qpart = {
                 [58903] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Coord"] = {

@@ -10,9 +10,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [1]
     {
-        ["Qpart"] = {
+        Qpart = {
             [30027] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -40,9 +40,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [5]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29406] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 28.34,
@@ -70,9 +70,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29524] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 16.06,
@@ -148,9 +148,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [11]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29408] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -186,9 +186,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [15]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29409] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -235,14 +235,14 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [20]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29419] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [29424] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -252,9 +252,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [21]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29424] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 54.98,
@@ -291,9 +291,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [25]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29414] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 17.46,
@@ -339,9 +339,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [30]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29417] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 43.04,
@@ -370,14 +370,14 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [33]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29523] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [29418] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ButtonSpellId"] = {
@@ -393,9 +393,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [34]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29418] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 54.44,
@@ -466,9 +466,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [42]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29664] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -478,11 +478,11 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [43]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29664] = {
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                4,
+                3,
+                2,
             },
         },
         ["Range"] = 21.95,
@@ -510,9 +510,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [46]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29421] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -548,9 +548,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [50]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29422] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ButtonSpellId"] = {
@@ -616,9 +616,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [57]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29423] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -690,15 +690,15 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [65]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29663] = {
-                ["1"] = "1",
+                1,
             },
             [29661] = {
-                ["1"] = "1",
+                1,
             },
             [29662] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 55.65,
@@ -771,9 +771,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [73]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29666] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 49.87,
@@ -783,9 +783,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [2]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29677] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -822,9 +822,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29678] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -834,9 +834,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [4]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29678] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Button"] = {
@@ -867,9 +867,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [7]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29679] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 23.85,
@@ -936,10 +936,10 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         ["Waypoint"] = 29770,
         ["Fillers"] = {
             [29769] = {
-                ["1"] = "1",
+                1,
             },
             [29770] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 8.81,
@@ -949,14 +949,14 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [4]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29770] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [29769] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 32.03,
@@ -966,14 +966,14 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [5]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29770] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [29769] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 28.72,
@@ -983,14 +983,14 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [6]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29770] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [29769] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 48.21,
@@ -1000,9 +1000,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [1]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29769] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 89.25,
@@ -1048,14 +1048,14 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [6]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29768] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [29771] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -1065,9 +1065,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [7]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29771] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 29.59,
@@ -1104,9 +1104,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [11]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29772] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -1134,9 +1134,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29774] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -1147,9 +1147,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [15]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29774] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -1280,15 +1280,15 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [9]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29783] = {
-                ["1"] = "1",
+                1,
             },
             [29778] = {
-                ["1"] = "1",
+                1,
             },
             [29777] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 88.99,
@@ -1361,17 +1361,17 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [8]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29780] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [29781] = {
-                ["1"] = "1",
+                1,
             },
             [29779] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -1381,12 +1381,12 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [9]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29781] = {
-                ["1"] = "1",
+                1,
             },
             [29779] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 42,
@@ -1467,9 +1467,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [18]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29785] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -1497,9 +1497,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [21]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29786] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 29.22,
@@ -1535,9 +1535,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [25]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29787] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 21.52,
@@ -1574,12 +1574,12 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [29]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29789] = {
-                ["1"] = "1",
+                1,
             },
             [29788] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 39.63,
@@ -1608,9 +1608,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [3]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29790] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -1638,9 +1638,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [6]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29791] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -1650,9 +1650,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [7]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29791] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 83.33,
@@ -1680,9 +1680,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [10]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29792] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -1692,9 +1692,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [11]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29792] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -1723,12 +1723,12 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [30591] = {
-                ["1"] = "1",
+                1,
             },
             [29795] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 50.45,
@@ -1776,12 +1776,12 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [19]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29793] = {
-                ["1"] = "1",
+                1,
             },
             [30590] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 70.42,
@@ -1830,15 +1830,15 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [24]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29794] = {
-                ["1"] = "1",
+                1,
             },
             [29797] = {
-                ["1"] = "1",
+                1,
             },
             [29665] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 78.06,
@@ -1868,9 +1868,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [27]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29798] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -1922,9 +1922,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [33]
     {
-        ["Qpart"] = {
+        Qpart = {
             [30767] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 99.66,
@@ -1952,9 +1952,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [36]
     {
-        ["Qpart"] = {
+        Qpart = {
             [29799] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 101.28,
@@ -2035,9 +2035,9 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         },
     }, -- [5]
     {
-        ["Qpart"] = {
+        Qpart = {
             [31450] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,

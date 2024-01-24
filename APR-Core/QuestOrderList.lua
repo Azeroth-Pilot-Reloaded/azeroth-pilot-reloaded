@@ -306,7 +306,7 @@ function APR.questOrderList:AddStepFromRoute()
                 local questInfo = {}
                 local Flagged = 0
                 for _, questID in pairs(IdList) do
-                    if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] or APR.BreadCrumSkips[questID] then
+                    if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] then
                         Flagged = Flagged + 1
                     else
                         tinsert(questInfo, { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
@@ -377,8 +377,8 @@ function APR.questOrderList:AddStepFromRoute()
                 local questInfo = { { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) } }
                 local color = C_QuestLog.IsQuestFlaggedCompleted(questID) and "green" or "gray"
                 AddStepFrameWithQuest(stepIndex, L["GET_TREASURE"], questInfo, color)
-            elseif step.QaskPopup then
-                local questID = step.QaskPopup
+            elseif step.Group then
+                local questID = step.Group.QuestId
                 local questInfo = { { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) } }
                 local color = C_QuestLog.IsQuestFlaggedCompleted(questID) and "green" or "gray"
                 AddStepFrameWithQuest(stepIndex, L["GROUP_Q"], questInfo, color)
@@ -387,7 +387,7 @@ function APR.questOrderList:AddStepFromRoute()
                 local questInfo = {}
                 local Flagged = 0
                 for _, questID in pairs(IdList) do
-                    if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.BreadCrumSkips[questID] then
+                    if C_QuestLog.IsQuestFlaggedCompleted(questID) then
                         Flagged = Flagged + 1
                     else
                         tinsert(questInfo, { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })

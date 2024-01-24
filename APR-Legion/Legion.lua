@@ -51,14 +51,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37658] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [37653] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -71,14 +71,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37658] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [37653] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -91,14 +91,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37658] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37653] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -111,9 +111,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37653] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -153,9 +153,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -166,9 +166,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -178,9 +178,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.69,
@@ -190,9 +190,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 0.69,
@@ -202,9 +202,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["5"] = "5",
+                    5,
                 },
             },
             ["Range"] = 0.69,
@@ -214,9 +214,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["6"] = "6",
+                    6,
                 },
             },
             ["Range"] = 0.69,
@@ -226,9 +226,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["7"] = "7",
+                    7,
                 },
             },
             ["Range"] = 0.69,
@@ -238,9 +238,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["8"] = "8",
+                    8,
                 },
             },
             ["Range"] = 0.69,
@@ -250,9 +250,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["9"] = "9",
+                    9,
                 },
             },
             ["Range"] = 0.69,
@@ -299,14 +299,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37656] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [36811] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 52.37,
@@ -316,14 +316,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37450] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [36811] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -333,14 +333,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37450] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [36811] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -350,14 +350,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [16]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37450] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [36811] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 13.4,
@@ -386,9 +386,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [19]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [36811] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 68.66,
@@ -406,9 +406,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [21]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37449] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 15.69,
@@ -418,9 +418,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [22]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37449] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -524,9 +524,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [34]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37853] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 28.22,
@@ -544,9 +544,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [36]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37853] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -574,9 +574,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [39]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37991] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -604,9 +604,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [42]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42271] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 18.55,
@@ -616,9 +616,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [43]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42271] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 8.75,
@@ -628,9 +628,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [44]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42271] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.75,
@@ -677,14 +677,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [49]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37256] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37256] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 17.7,
@@ -694,9 +694,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [50]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37256] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 45.12,
@@ -745,9 +745,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [55]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37492] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["DroppableQuest"] = {
@@ -757,7 +757,7 @@ if (APR.Faction == "Alliance") then
             },
             ["Fillers"] = {
                 [37257] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -767,9 +767,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [56]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37728] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["DroppableQuest"] = {
@@ -779,10 +779,10 @@ if (APR.Faction == "Alliance") then
             },
             ["Fillers"] = {
                 [37257] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37727] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 8.46,
@@ -792,12 +792,12 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [57]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37727] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37257] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["DroppableQuest"] = {
@@ -847,9 +847,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [61]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37497] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -905,9 +905,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [67]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42692] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -933,9 +933,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [70]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42692] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.61,
@@ -961,9 +961,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [73]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42692] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.69,
@@ -997,14 +997,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [77]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37486] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37466] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 14.72,
@@ -1014,14 +1014,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [78]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42693] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37466] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 34.01,
@@ -1050,14 +1050,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [81]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42694] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37466] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -1067,14 +1067,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [82]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42694] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Fillers"] = {
                 [37466] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.61,
@@ -1084,14 +1084,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [83]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42694] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [37466] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 7.47,
@@ -1101,14 +1101,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [84]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42694] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [37466] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -1118,9 +1118,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [85]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37466] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 92.1,
@@ -1157,9 +1157,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [89]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37467] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -1216,9 +1216,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [95]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37736] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 0.75,
@@ -1228,9 +1228,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [96]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37736] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.61,
@@ -1240,14 +1240,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [97]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37736] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [37678] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -1257,14 +1257,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [98]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37736] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [37678] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -1274,9 +1274,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [99]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37678] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 23.8,
@@ -1331,9 +1331,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [105]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42370] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["ExtraActionB"] = 1,
@@ -1362,9 +1362,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [108]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -1374,9 +1374,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [109]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -1386,9 +1386,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [110]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 11.54,
@@ -1398,9 +1398,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [111]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 0.75,
@@ -1410,9 +1410,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [112]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["5"] = "5",
+                    5,
                 },
             },
             ["Range"] = 0.69,
@@ -1422,9 +1422,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [113]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["6"] = "6",
+                    6,
                 },
             },
             ["Range"] = 13.4,
@@ -1434,9 +1434,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [114]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["7"] = "7",
+                    7,
                 },
             },
             ["Range"] = 0.69,
@@ -1446,9 +1446,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [115]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["8"] = "8",
+                    8,
                 },
             },
             ["Range"] = 0.61,
@@ -1458,9 +1458,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [116]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["9"] = "9",
+                    9,
                 },
             },
             ["Range"] = 16.17,
@@ -1488,11 +1488,11 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [119]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37729] = {
-                    ["1"] = "1",
-                    ["3"] = "3",
-                    ["2"] = "2",
+                    1,
+                    3,
+                    2,
                 },
             },
             ["Range"] = 4.66,
@@ -1520,9 +1520,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [122]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37730] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -1559,9 +1559,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [126]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37469] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 16.65,
@@ -1589,9 +1589,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [129]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37530] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -1602,9 +1602,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [130]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37530] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 3.63,
@@ -1614,9 +1614,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [131]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37530] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 14.5,
@@ -1626,9 +1626,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [132]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37530] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 9.37,
@@ -1638,9 +1638,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [133]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37530] = {
-                    ["5"] = "5",
+                    5,
                 },
             },
             ["Range"] = 9.37,
@@ -1650,9 +1650,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [134]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37530] = {
-                    ["6"] = "6",
+                    6,
                 },
             },
             ["Range"] = 9.37,
@@ -1662,9 +1662,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [135]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37530] = {
-                    ["7"] = "7",
+                    7,
                 },
             },
             ["Range"] = 0.69,
@@ -1692,9 +1692,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [138]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37470] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 16.27,
@@ -1713,9 +1713,9 @@ if (APR.Faction == "Alliance") then
             },
         },             -- [140]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37779] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 53.53,
@@ -1743,11 +1743,11 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [143]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42375] = {
-                    ["1"] = "1",
-                    ["3"] = "3",
-                    ["2"] = "2",
+                    1,
+                    3,
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -1777,14 +1777,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [146]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42367] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [42368] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 16.63,
@@ -1794,14 +1794,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [147]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42369] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [42368] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 33.59,
@@ -1811,9 +1811,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [148]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42368] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 82.97,
@@ -1887,9 +1887,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37859] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -1908,9 +1908,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38203] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -1920,9 +1920,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38203] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -1932,9 +1932,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38203] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.75,
@@ -1962,17 +1962,17 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37957] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37859] = {
-                    ["2"] = "2",
+                    2,
                 },
                 [37856] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 17.48,
@@ -1982,12 +1982,12 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37859] = {
-                    ["2"] = "2",
+                    2,
                 },
                 [37856] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 30.1,
@@ -1997,9 +1997,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37957] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 17.27,
@@ -2037,9 +2037,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [19]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37857] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -2078,14 +2078,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37960] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [37959] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -2095,14 +2095,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [24]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37960] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37959] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 14.21,
@@ -2112,9 +2112,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [25]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37959] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 47.36,
@@ -2160,9 +2160,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [30]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37860] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 13.02,
@@ -2173,9 +2173,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [31]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37860] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 15.11,
@@ -2186,9 +2186,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [32]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37860] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 8.71,
@@ -2199,9 +2199,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [33]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37860] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 13.78,
@@ -2245,9 +2245,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [39]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37861] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 13.35,
@@ -2275,9 +2275,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [42]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37862] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -2314,9 +2314,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [46]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38015] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Button"] = {
@@ -2329,14 +2329,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [47]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38015] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38014] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -2349,14 +2349,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [48]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38015] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38014] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -2369,14 +2369,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [49]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38015] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38014] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -2386,9 +2386,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [50]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38014] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 42.91,
@@ -2451,9 +2451,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [57]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42756] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -2463,9 +2463,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [58]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42756] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 2.64,
@@ -2512,9 +2512,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37507] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -2544,9 +2544,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37542] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 4.47,
@@ -2581,9 +2581,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37528] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -2637,9 +2637,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37536] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -2676,9 +2676,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [19]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37538] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
@@ -2732,17 +2732,17 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [25]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38857] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [37565] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37495] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -2755,17 +2755,17 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [26]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38857] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37565] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37495] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -2778,17 +2778,17 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [27]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38857] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [37565] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37495] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -2801,14 +2801,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [28]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37565] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37495] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -2821,9 +2821,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [29]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37495] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 206.6,
@@ -2851,9 +2851,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [32]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37566] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 28.33,
@@ -2914,17 +2914,17 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [39]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37657] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [37657] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42220] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -2934,12 +2934,12 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [40]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42220] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37657] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 35.55,
@@ -3028,9 +3028,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [50]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38460] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 2,
@@ -3059,11 +3059,11 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [53]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38232] = {
-                    ["1"] = "1",
-                    ["3"] = "3",
-                    ["2"] = "2",
+                    1,
+                    3,
+                    2,
                 },
             },
             ["Range"] = 72.62,
@@ -3099,10 +3099,10 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [57]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38237] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Gossip"] = 1,
@@ -3180,9 +3180,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40122] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -3273,14 +3273,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39383] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39393] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 9.68,
@@ -3340,9 +3340,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [19]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39384] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 21.83,
@@ -3370,9 +3370,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [22]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40573] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -3414,9 +3414,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [27]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40573] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 17.85,
@@ -3443,9 +3443,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [30]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39393] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 13.48,
@@ -3483,20 +3483,20 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [34]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42865] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [42884] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42883] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42857] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 9.66,
@@ -3506,15 +3506,15 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [35]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42884] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42883] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42857] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 70.25,
@@ -3571,18 +3571,18 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [41]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42750] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [42748] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42747] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -3608,18 +3608,18 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [44]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42750] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [42748] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42747] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -3645,18 +3645,18 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [47]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42750] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [42748] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42747] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -3666,13 +3666,13 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [48]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42748] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42747] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 48.29,
@@ -3734,9 +3734,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [55]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42751] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 13.93,
@@ -3746,9 +3746,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [56]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42751] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
@@ -3826,12 +3826,12 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [65]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40221] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [40220] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["DroppableQuest"] = {
@@ -3841,7 +3841,7 @@ if (APR.Faction == "Alliance") then
             },
             ["Fillers"] = {
                 [38842] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 22.41,
@@ -3858,14 +3858,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [67]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40220] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38842] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 232.94,
@@ -3875,9 +3875,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [68]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38842] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 252.41,
@@ -3927,7 +3927,7 @@ if (APR.Faction == "Alliance") then
         {
             ["Fillers"] = {
                 [38455] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -3944,7 +3944,7 @@ if (APR.Faction == "Alliance") then
             },
             ["Fillers"] = {
                 [38455] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -3953,14 +3953,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38246] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38455] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -3987,9 +3987,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38455] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 74.35,
@@ -4102,12 +4102,12 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38145] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38144] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 28.47,
@@ -4160,9 +4160,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [19]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38147] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -4232,9 +4232,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [27]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38235] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -4252,9 +4252,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [29]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38225] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -4264,9 +4264,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [30]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38235] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.69,
@@ -4276,9 +4276,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [31]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38235] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -4324,9 +4324,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [36]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39354] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -4336,9 +4336,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [37]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39354] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 22.15,
@@ -4375,9 +4375,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [41]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38377] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -4457,14 +4457,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [50]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38662] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38655] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -4474,9 +4474,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [51]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38655] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 91.24,
@@ -4539,9 +4539,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [58]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38595] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -4571,9 +4571,9 @@ if (APR.Faction == "Alliance") then
         }, -- [61]
         {
             ["ExtraActionB"] = 1,
-            ["Qpart"] = {
+            Qpart = {
                 [38582] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 53.42,
@@ -4583,9 +4583,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [62]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38582] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -4603,9 +4603,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [64]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38582] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.75,
@@ -4665,9 +4665,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [71]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38753] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -4723,18 +4723,18 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [77]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [41708] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
             ["Fillers"] = {
                 [38671] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [41707] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -4744,18 +4744,18 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [78]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [41708] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
             ["Fillers"] = {
                 [38671] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [41707] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -4767,10 +4767,10 @@ if (APR.Faction == "Alliance") then
         {
             ["Fillers"] = {
                 [38671] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [41707] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -4791,12 +4791,12 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [81]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38671] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [41707] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 30.1,
@@ -4826,9 +4826,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [84]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [41724] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -4860,7 +4860,7 @@ if (APR.Faction == "Alliance") then
             ["Waypoint"] = 41893,
             ["Fillers"] = {
                 [38684] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 14.57,
@@ -4873,7 +4873,7 @@ if (APR.Faction == "Alliance") then
             ["Waypoint"] = 41893,
             ["Fillers"] = {
                 [38684] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 11.21,
@@ -4886,7 +4886,7 @@ if (APR.Faction == "Alliance") then
             ["Waypoint"] = 41893,
             ["Fillers"] = {
                 [38684] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 9.73,
@@ -4896,14 +4896,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [90]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [41893] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38684] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -4913,9 +4913,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [91]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38684] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 26.53,
@@ -4944,9 +4944,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [94]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [43702] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 42.64,
@@ -4982,9 +4982,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [98]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [43241] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 96.89,
@@ -4994,10 +4994,10 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [99]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38687] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -5007,14 +5007,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [100]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38687] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38748] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -5024,14 +5024,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [101]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38687] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Fillers"] = {
                 [38748] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5041,9 +5041,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [102]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38748] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 41.43,
@@ -5053,9 +5053,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [103]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38687] = {
-                    ["5"] = "5",
+                    5,
                 },
             },
             ["Range"] = 0.75,
@@ -5083,9 +5083,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [106]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38743] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -5096,9 +5096,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [107]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38743] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 19.82,
@@ -5184,13 +5184,13 @@ if (APR.Faction == "Alliance") then
             ["Waypoint"] = 38644,
             ["Fillers"] = {
                 [38645] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38647] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38646] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 7.94,
@@ -5203,13 +5203,13 @@ if (APR.Faction == "Alliance") then
             ["Waypoint"] = 38644,
             ["Fillers"] = {
                 [38645] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38647] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38646] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 3.27,
@@ -5219,15 +5219,15 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38644] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
             ["Fillers"] = {
                 [38645] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5237,20 +5237,20 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38644] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38645] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38647] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38646] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["ButtonSpellId"] = {
@@ -5275,9 +5275,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39117] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5296,15 +5296,15 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38645] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38647] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38646] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["ButtonSpellId"] = {
@@ -5330,9 +5330,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38644] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 0.75,
@@ -5361,9 +5361,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38691] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -5392,9 +5392,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [20]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38718] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -5439,14 +5439,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [25]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38715] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5456,14 +5456,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [26]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38714] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -5473,14 +5473,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [27]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38715] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -5490,14 +5490,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [28]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38714] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5507,14 +5507,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [29]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38715] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -5524,14 +5524,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [30]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38714] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5541,9 +5541,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [31]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 36.97,
@@ -5596,9 +5596,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [37]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38717] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -5677,9 +5677,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [46]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38719] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Gossip"] = 1,
@@ -5706,9 +5706,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [49]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38719] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -5735,9 +5735,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [52]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38719] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
@@ -5756,9 +5756,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [54]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38721] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5823,17 +5823,17 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38053] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38036] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38052] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5843,17 +5843,17 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38558] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38052] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38036] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -5863,12 +5863,12 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38036] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38052] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 75.5,
@@ -5942,12 +5942,12 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38058] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38059] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 46.49,
@@ -5984,9 +5984,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [16]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38060] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 18.43,
@@ -5996,9 +5996,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38060] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 19.96,
@@ -6053,11 +6053,11 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38331] = {
-                    ["1"] = "1",
-                    ["3"] = "3",
-                    ["2"] = "2",
+                    1,
+                    3,
+                    2,
                 },
             },
             ["Range"] = 36.53,
@@ -6085,14 +6085,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39590] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6107,14 +6107,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39590] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6129,14 +6129,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39590] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6163,14 +6163,14 @@ if (APR.Faction == "Alliance") then
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39595] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 91.91,
@@ -6180,7 +6180,7 @@ if (APR.Faction == "Alliance") then
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
         }, -- [1]
@@ -6206,14 +6206,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39593] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6223,14 +6223,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39591] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6240,14 +6240,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39593] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -6265,14 +6265,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39593] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6282,9 +6282,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39592] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6294,14 +6294,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39593] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -6311,9 +6311,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 75.14,
@@ -6359,9 +6359,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [11]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39594] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6371,9 +6371,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39594] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -6409,9 +6409,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [16]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39597] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -6485,9 +6485,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38318] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6497,14 +6497,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38405] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -6514,14 +6514,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38405] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -6531,14 +6531,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38405] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -6558,7 +6558,7 @@ if (APR.Faction == "Alliance") then
             },
             ["Fillers"] = {
                 [38374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
         }, -- [10]
@@ -6572,9 +6572,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [11]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38410] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 66.87,
@@ -6584,14 +6584,14 @@ if (APR.Faction == "Alliance") then
             },
             ["Fillers"] = {
                 [38374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
         }, -- [12]
         {
             ["Fillers"] = {
                 [38374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -6612,14 +6612,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38342] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -6629,9 +6629,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 72.66,
@@ -6641,9 +6641,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38342] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -6671,9 +6671,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38412] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -6683,9 +6683,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38412] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -6715,14 +6715,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38413] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [40568] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6735,7 +6735,7 @@ if (APR.Faction == "Alliance") then
             ["Waypoint"] = 38413,
             ["Fillers"] = {
                 [40568] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 21.56,
@@ -6745,14 +6745,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38413] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [40568] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -6765,7 +6765,7 @@ if (APR.Faction == "Alliance") then
             ["Waypoint"] = 38413,
             ["Fillers"] = {
                 [40568] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 11.62,
@@ -6775,14 +6775,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38413] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Fillers"] = {
                 [40568] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6792,14 +6792,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38413] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [40568] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6809,9 +6809,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [16]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40568] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 63.79,
@@ -6829,10 +6829,10 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38414] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -6870,9 +6870,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [22]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39652] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -6883,9 +6883,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39652] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
@@ -6914,9 +6914,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [26]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38624] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -6926,9 +6926,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [27]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38624] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 54.27,
@@ -6974,9 +6974,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [32]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39804] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -7023,13 +7023,13 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [37]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39788] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
                 [38778] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 42.36,
@@ -7059,12 +7059,12 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38808] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38810] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 33.3,
@@ -7094,14 +7094,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38811] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [39791] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -7114,14 +7114,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38811] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [39791] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -7134,14 +7134,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38811] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39791] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -7154,9 +7154,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39791] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -7198,15 +7198,15 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38816] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38817] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38823] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 51.58,
@@ -7236,9 +7236,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38815] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7274,9 +7274,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38818] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7304,14 +7304,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39837] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7340,17 +7340,17 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38339] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38324] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 56.22,
@@ -7420,9 +7420,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39848] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -7432,9 +7432,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39848] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
@@ -7465,7 +7465,7 @@ if (APR.Faction == "Alliance") then
         {
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -7502,14 +7502,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39849] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7521,7 +7521,7 @@ if (APR.Faction == "Alliance") then
         {
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -7543,17 +7543,17 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39850] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39851] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7571,17 +7571,17 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [20]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39850] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [39851] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7591,17 +7591,17 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [21]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39850] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [39851] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -7611,14 +7611,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [22]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39851] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 54.4,
@@ -7630,7 +7630,7 @@ if (APR.Faction == "Alliance") then
         {
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -7652,14 +7652,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [25]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39853] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7687,9 +7687,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [28]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 100.4,
@@ -7699,9 +7699,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [29]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39855] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -7730,9 +7730,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [32]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40078] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -7802,7 +7802,7 @@ if (APR.Faction == "Alliance") then
             },
             ["Fillers"] = {
                 [39061] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -7811,9 +7811,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39060] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["ButtonSpellId"] = {
@@ -7829,9 +7829,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39060] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["ButtonSpellId"] = {
@@ -7839,7 +7839,7 @@ if (APR.Faction == "Alliance") then
             },
             ["Fillers"] = {
                 [39061] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -7852,14 +7852,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39472] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39061] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -7869,9 +7869,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39060] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["ButtonSpellId"] = {
@@ -7879,7 +7879,7 @@ if (APR.Faction == "Alliance") then
             },
             ["Fillers"] = {
                 [39061] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -7892,9 +7892,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39061] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 60.44,
@@ -7955,10 +7955,10 @@ if (APR.Faction == "Alliance") then
             },
             ["Fillers"] = {
                 [39063] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39119] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -7967,17 +7967,17 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39063] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39405] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39119] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 22.19,
@@ -8006,9 +8006,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39119] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 73.71,
@@ -8018,9 +8018,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39092] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 0.75,
@@ -8030,9 +8030,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [19]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39092] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.61,
@@ -8042,9 +8042,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [20]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39092] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -8054,9 +8054,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [21]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39092] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -8066,9 +8066,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [22]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39092] = {
-                    ["5"] = "5",
+                    5,
                 },
             },
             ["Gossip"] = 1,
@@ -8097,9 +8097,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39122] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -8136,9 +8136,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40002] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -8148,9 +8148,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40002] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -8179,14 +8179,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40004] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -8196,14 +8196,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40003] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -8216,14 +8216,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40004] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -8233,14 +8233,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40003] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -8253,14 +8253,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40004] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -8270,14 +8270,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [11]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40004] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Fillers"] = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -8287,14 +8287,14 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40003] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -8307,9 +8307,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 67.93,
@@ -8338,9 +8338,9 @@ if (APR.Faction == "Alliance") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40005] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -8436,14 +8436,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37658] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [37653] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -8456,14 +8456,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37658] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [37653] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -8476,14 +8476,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37658] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37653] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -8496,9 +8496,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37653] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -8538,9 +8538,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -8551,9 +8551,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -8563,9 +8563,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.69,
@@ -8575,9 +8575,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 0.69,
@@ -8587,9 +8587,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["5"] = "5",
+                    5,
                 },
             },
             ["Range"] = 0.69,
@@ -8599,9 +8599,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["6"] = "6",
+                    6,
                 },
             },
             ["Range"] = 0.69,
@@ -8611,9 +8611,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["7"] = "7",
+                    7,
                 },
             },
             ["Range"] = 0.69,
@@ -8623,9 +8623,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["8"] = "8",
+                    8,
                 },
             },
             ["Range"] = 0.69,
@@ -8635,9 +8635,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37660] = {
-                    ["9"] = "9",
+                    9,
                 },
             },
             ["Range"] = 0.69,
@@ -8684,14 +8684,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37656] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [36811] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 52.37,
@@ -8701,14 +8701,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37450] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [36811] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -8718,14 +8718,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37450] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [36811] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -8735,14 +8735,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37450] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [36811] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 13.4,
@@ -8771,9 +8771,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [36811] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 68.66,
@@ -8791,9 +8791,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [21]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37449] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 15.69,
@@ -8803,9 +8803,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [22]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37449] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -8909,9 +8909,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [34]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37853] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 28.22,
@@ -8929,9 +8929,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [36]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37853] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -8959,9 +8959,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [39]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37991] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -8989,9 +8989,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [42]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42271] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 18.55,
@@ -9001,9 +9001,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [43]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42271] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 8.75,
@@ -9013,9 +9013,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [44]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42271] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.75,
@@ -9062,14 +9062,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [49]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37256] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37256] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 17.7,
@@ -9079,9 +9079,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [50]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37256] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 45.12,
@@ -9130,9 +9130,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [55]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37492] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["DroppableQuest"] = {
@@ -9142,7 +9142,7 @@ if (APR.Faction == "Horde") then
             },
             ["Fillers"] = {
                 [37257] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -9152,9 +9152,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [56]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37728] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["DroppableQuest"] = {
@@ -9164,10 +9164,10 @@ if (APR.Faction == "Horde") then
             },
             ["Fillers"] = {
                 [37257] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37727] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 8.46,
@@ -9177,12 +9177,12 @@ if (APR.Faction == "Horde") then
             },
         }, -- [57]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37727] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37257] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["DroppableQuest"] = {
@@ -9232,9 +9232,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [61]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37497] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -9290,9 +9290,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [67]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42692] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -9318,9 +9318,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [70]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42692] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.61,
@@ -9346,9 +9346,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [73]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42692] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.69,
@@ -9382,14 +9382,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [77]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37486] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37466] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 14.72,
@@ -9399,14 +9399,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [78]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42693] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37466] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 34.01,
@@ -9435,14 +9435,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [81]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42694] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37466] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -9452,14 +9452,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [82]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42694] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Fillers"] = {
                 [37466] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.61,
@@ -9469,14 +9469,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [83]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42694] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [37466] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 7.47,
@@ -9486,14 +9486,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [84]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42694] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [37466] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -9503,9 +9503,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [85]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37466] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 92.1,
@@ -9542,9 +9542,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [89]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37467] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -9601,9 +9601,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [95]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37736] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 0.75,
@@ -9613,9 +9613,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [96]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37736] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.61,
@@ -9625,14 +9625,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [97]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37736] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [37678] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -9642,14 +9642,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [98]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37736] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [37678] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -9659,9 +9659,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [99]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37678] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 23.8,
@@ -9716,9 +9716,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [105]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42370] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["ExtraActionB"] = 1,
@@ -9747,9 +9747,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [108]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -9759,9 +9759,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [109]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -9771,9 +9771,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [110]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 11.54,
@@ -9783,9 +9783,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [111]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 0.75,
@@ -9795,9 +9795,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [112]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["5"] = "5",
+                    5,
                 },
             },
             ["Range"] = 0.69,
@@ -9807,9 +9807,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [113]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["6"] = "6",
+                    6,
                 },
             },
             ["Range"] = 13.4,
@@ -9819,9 +9819,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [114]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["7"] = "7",
+                    7,
                 },
             },
             ["Range"] = 0.69,
@@ -9831,9 +9831,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [115]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["8"] = "8",
+                    8,
                 },
             },
             ["Range"] = 0.61,
@@ -9843,9 +9843,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [116]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42371] = {
-                    ["9"] = "9",
+                    9,
                 },
             },
             ["Range"] = 16.17,
@@ -9873,11 +9873,11 @@ if (APR.Faction == "Horde") then
             },
         }, -- [119]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37729] = {
-                    ["1"] = "1",
-                    ["3"] = "3",
-                    ["2"] = "2",
+                    1,
+                    3,
+                    2,
                 },
             },
             ["Range"] = 4.66,
@@ -9905,9 +9905,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [122]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37730] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -9944,9 +9944,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [126]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37469] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 16.65,
@@ -9974,9 +9974,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [129]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37530] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -9987,9 +9987,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [130]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37530] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 3.63,
@@ -9999,9 +9999,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [131]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37530] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 14.5,
@@ -10011,9 +10011,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [132]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37530] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 9.37,
@@ -10023,9 +10023,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [133]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37530] = {
-                    ["5"] = "5",
+                    5,
                 },
             },
             ["Range"] = 9.37,
@@ -10035,9 +10035,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [134]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37530] = {
-                    ["6"] = "6",
+                    6,
                 },
             },
             ["Range"] = 9.37,
@@ -10047,9 +10047,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [135]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37530] = {
-                    ["7"] = "7",
+                    7,
                 },
             },
             ["Range"] = 0.69,
@@ -10077,9 +10077,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [138]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37470] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 16.27,
@@ -10098,9 +10098,9 @@ if (APR.Faction == "Horde") then
             },
         },             -- [140]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37779] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 53.53,
@@ -10128,11 +10128,11 @@ if (APR.Faction == "Horde") then
             },
         }, -- [143]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42375] = {
-                    ["1"] = "1",
-                    ["3"] = "3",
-                    ["2"] = "2",
+                    1,
+                    3,
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -10162,14 +10162,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [146]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42367] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [42368] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 16.63,
@@ -10179,14 +10179,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [147]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42369] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [42368] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 33.59,
@@ -10196,9 +10196,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [148]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42368] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 82.97,
@@ -10272,9 +10272,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37859] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -10293,9 +10293,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38203] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -10305,9 +10305,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38203] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -10317,9 +10317,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38203] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.75,
@@ -10347,17 +10347,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37957] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37859] = {
-                    ["2"] = "2",
+                    2,
                 },
                 [37856] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 17.48,
@@ -10367,12 +10367,12 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37859] = {
-                    ["2"] = "2",
+                    2,
                 },
                 [37856] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 30.1,
@@ -10382,9 +10382,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37957] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 17.27,
@@ -10422,9 +10422,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37857] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -10463,14 +10463,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37960] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [37959] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -10480,14 +10480,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [24]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37960] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37959] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 14.21,
@@ -10497,9 +10497,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [25]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37959] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 47.36,
@@ -10545,9 +10545,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [30]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37860] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 13.02,
@@ -10558,9 +10558,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [31]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37860] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 15.11,
@@ -10571,9 +10571,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [32]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37860] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 8.71,
@@ -10584,9 +10584,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [33]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37860] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 13.78,
@@ -10630,9 +10630,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [39]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37861] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 13.35,
@@ -10660,9 +10660,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [42]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37862] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -10699,9 +10699,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [46]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38015] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Button"] = {
@@ -10714,14 +10714,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [47]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38015] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38014] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -10734,14 +10734,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [48]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38015] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38014] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -10754,14 +10754,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [49]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38015] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38014] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -10771,9 +10771,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [50]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38014] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 42.91,
@@ -10836,9 +10836,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [57]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42756] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -10848,9 +10848,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [58]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42756] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 2.64,
@@ -10897,9 +10897,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37507] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -10929,9 +10929,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37542] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 4.47,
@@ -10966,9 +10966,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37528] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -11022,9 +11022,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37536] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -11061,9 +11061,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37538] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
@@ -11117,17 +11117,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [25]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38857] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [37565] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37495] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -11140,17 +11140,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [26]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38857] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37565] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37495] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -11163,17 +11163,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [27]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38857] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [37565] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37495] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -11186,14 +11186,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [28]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37565] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [37495] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -11206,9 +11206,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [29]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37495] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 206.6,
@@ -11236,9 +11236,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [32]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37566] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 28.33,
@@ -11299,17 +11299,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [39]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [37657] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [37657] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42220] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -11319,12 +11319,12 @@ if (APR.Faction == "Horde") then
             },
         }, -- [40]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42220] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [37657] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 35.55,
@@ -11413,9 +11413,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [50]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38460] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 2,
@@ -11444,11 +11444,11 @@ if (APR.Faction == "Horde") then
             },
         }, -- [53]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38232] = {
-                    ["1"] = "1",
-                    ["3"] = "3",
-                    ["2"] = "2",
+                    1,
+                    3,
+                    2,
                 },
             },
             ["Range"] = 72.62,
@@ -11484,10 +11484,10 @@ if (APR.Faction == "Horde") then
             },
         }, -- [57]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38237] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Gossip"] = 1,
@@ -11562,9 +11562,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40122] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -11655,14 +11655,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39383] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39393] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 9.68,
@@ -11722,9 +11722,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39384] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 21.83,
@@ -11752,9 +11752,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [22]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40573] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -11796,9 +11796,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [27]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40573] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 17.85,
@@ -11825,9 +11825,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [30]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39393] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 13.48,
@@ -11865,20 +11865,20 @@ if (APR.Faction == "Horde") then
             },
         }, -- [34]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42865] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [42884] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42883] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42857] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 9.66,
@@ -11888,15 +11888,15 @@ if (APR.Faction == "Horde") then
             },
         }, -- [35]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42884] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42883] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42857] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 70.25,
@@ -11953,18 +11953,18 @@ if (APR.Faction == "Horde") then
             },
         }, -- [41]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42750] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [42748] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42747] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -11990,18 +11990,18 @@ if (APR.Faction == "Horde") then
             },
         }, -- [44]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42750] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [42748] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42747] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -12027,18 +12027,18 @@ if (APR.Faction == "Horde") then
             },
         }, -- [47]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42750] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [42748] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42747] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -12048,13 +12048,13 @@ if (APR.Faction == "Horde") then
             },
         }, -- [48]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42748] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [42747] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 48.29,
@@ -12116,9 +12116,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [55]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42751] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 13.93,
@@ -12128,9 +12128,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [56]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42751] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
@@ -12208,12 +12208,12 @@ if (APR.Faction == "Horde") then
             },
         }, -- [65]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40221] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [40220] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["DroppableQuest"] = {
@@ -12223,7 +12223,7 @@ if (APR.Faction == "Horde") then
             },
             ["Fillers"] = {
                 [38842] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 22.41,
@@ -12240,14 +12240,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [67]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40220] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38842] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 232.94,
@@ -12257,9 +12257,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [68]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38842] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 252.41,
@@ -12309,7 +12309,7 @@ if (APR.Faction == "Horde") then
         {
             ["Fillers"] = {
                 [38455] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -12326,7 +12326,7 @@ if (APR.Faction == "Horde") then
             },
             ["Fillers"] = {
                 [38455] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -12335,14 +12335,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38246] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38455] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -12369,9 +12369,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38455] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 74.35,
@@ -12484,12 +12484,12 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38145] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38144] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 28.47,
@@ -12542,9 +12542,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38147] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -12614,9 +12614,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [27]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38235] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -12634,9 +12634,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [29]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38225] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -12646,9 +12646,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [30]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38235] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.69,
@@ -12658,9 +12658,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [31]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38235] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -12706,9 +12706,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [36]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39354] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -12718,9 +12718,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [37]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39354] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 22.15,
@@ -12757,9 +12757,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [41]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38377] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -12839,14 +12839,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [50]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38662] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38655] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -12856,9 +12856,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [51]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38655] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 91.24,
@@ -12921,9 +12921,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [58]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38595] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -12953,9 +12953,9 @@ if (APR.Faction == "Horde") then
         }, -- [61]
         {
             ["ExtraActionB"] = 1,
-            ["Qpart"] = {
+            Qpart = {
                 [38582] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 53.42,
@@ -12965,9 +12965,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [62]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38582] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -12985,9 +12985,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [64]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38582] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.75,
@@ -13047,9 +13047,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [71]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38753] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -13105,18 +13105,18 @@ if (APR.Faction == "Horde") then
             },
         }, -- [77]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [41890] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
             ["Fillers"] = {
                 [38671] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [41707] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -13126,17 +13126,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [78]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [41890] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38671] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [41707] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -13148,10 +13148,10 @@ if (APR.Faction == "Horde") then
         {
             ["Fillers"] = {
                 [38671] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [41707] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -13172,12 +13172,12 @@ if (APR.Faction == "Horde") then
             },
         }, -- [81]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38671] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [41707] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 30.1,
@@ -13207,9 +13207,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [84]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38675] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -13241,7 +13241,7 @@ if (APR.Faction == "Horde") then
             ["Waypoint"] = 41749,
             ["Fillers"] = {
                 [38684] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 14.57,
@@ -13254,7 +13254,7 @@ if (APR.Faction == "Horde") then
             ["Waypoint"] = 41749,
             ["Fillers"] = {
                 [38684] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 11.21,
@@ -13267,7 +13267,7 @@ if (APR.Faction == "Horde") then
             ["Waypoint"] = 41749,
             ["Fillers"] = {
                 [38684] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 9.73,
@@ -13277,14 +13277,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [90]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [41749] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38684] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -13294,9 +13294,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [91]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38684] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 26.53,
@@ -13325,9 +13325,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [94]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [43702] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 42.64,
@@ -13363,9 +13363,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [98]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [43241] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 96.89,
@@ -13375,10 +13375,10 @@ if (APR.Faction == "Horde") then
             },
         }, -- [99]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [41763] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -13388,14 +13388,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [100]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [41763] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38748] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -13405,14 +13405,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [101]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [41763] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Fillers"] = {
                 [38748] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -13422,9 +13422,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [102]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38748] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 41.43,
@@ -13434,9 +13434,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [103]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [41763] = {
-                    ["5"] = "5",
+                    5,
                 },
             },
             ["Range"] = 0.75,
@@ -13464,9 +13464,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [106]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38743] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -13477,9 +13477,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [107]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38743] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 19.82,
@@ -13565,13 +13565,13 @@ if (APR.Faction == "Horde") then
             ["Waypoint"] = 38644,
             ["Fillers"] = {
                 [38645] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38647] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38646] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 7.94,
@@ -13584,13 +13584,13 @@ if (APR.Faction == "Horde") then
             ["Waypoint"] = 38644,
             ["Fillers"] = {
                 [38645] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38647] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38646] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 3.27,
@@ -13600,15 +13600,15 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38644] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
             ["Fillers"] = {
                 [38645] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -13618,20 +13618,20 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38644] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38645] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38647] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38646] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["ButtonSpellId"] = {
@@ -13656,9 +13656,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39117] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -13677,15 +13677,15 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38645] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38647] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38646] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["ButtonSpellId"] = {
@@ -13711,9 +13711,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38644] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 0.75,
@@ -13742,9 +13742,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38691] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -13773,9 +13773,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [20]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38718] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -13820,14 +13820,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [25]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38715] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -13837,14 +13837,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [26]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38714] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -13854,14 +13854,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [27]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38715] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -13871,14 +13871,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [28]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38714] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -13888,14 +13888,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [29]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38715] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -13905,14 +13905,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [30]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38714] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -13922,9 +13922,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [31]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38716] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 36.97,
@@ -13977,9 +13977,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [37]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38717] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14058,9 +14058,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [46]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38719] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Gossip"] = 1,
@@ -14087,9 +14087,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [49]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38719] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -14116,9 +14116,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [52]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38719] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
@@ -14137,9 +14137,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [54]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38721] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -14194,12 +14194,12 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38358] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38357] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 49.62,
@@ -14229,14 +14229,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38360] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38361] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -14246,14 +14246,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38360] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38361] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14263,9 +14263,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38361] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 69.7,
@@ -14275,9 +14275,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38360] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.69,
@@ -14306,9 +14306,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38362] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -14372,9 +14372,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38308] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14402,9 +14402,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38317] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14422,9 +14422,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38317] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -14461,11 +14461,11 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38331] = {
-                    ["1"] = "1",
-                    ["3"] = "3",
-                    ["2"] = "2",
+                    1,
+                    3,
+                    2,
                 },
             },
             ["Range"] = 6.53,
@@ -14493,14 +14493,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39590] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14515,14 +14515,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39590] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14537,14 +14537,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39590] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14571,14 +14571,14 @@ if (APR.Faction == "Horde") then
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39595] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 91.91,
@@ -14588,7 +14588,7 @@ if (APR.Faction == "Horde") then
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
         }, -- [1]
@@ -14614,14 +14614,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39593] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14631,14 +14631,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39591] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14648,14 +14648,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39593] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -14673,14 +14673,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39593] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14690,9 +14690,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39592] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14702,14 +14702,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39593] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -14719,9 +14719,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38442] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 75.14,
@@ -14767,9 +14767,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [11]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39594] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14779,9 +14779,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39594] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -14817,9 +14817,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39597] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -14893,9 +14893,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [24]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38613] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14905,14 +14905,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [25]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38614] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -14930,9 +14930,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [27]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38614] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14942,14 +14942,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [28]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38614] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -14961,7 +14961,7 @@ if (APR.Faction == "Horde") then
         {
             ["Fillers"] = {
                 [38374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -14983,14 +14983,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [31]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38615] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 109.24,
@@ -15002,7 +15002,7 @@ if (APR.Faction == "Horde") then
         {
             ["Fillers"] = {
                 [38374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -15023,14 +15023,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38617] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -15040,9 +15040,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38617] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -15070,9 +15070,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38618] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -15082,9 +15082,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38618] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -15114,14 +15114,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38413] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [40568] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -15134,7 +15134,7 @@ if (APR.Faction == "Horde") then
             ["Waypoint"] = 38413,
             ["Fillers"] = {
                 [40568] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 21.56,
@@ -15144,14 +15144,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38413] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [40568] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -15164,7 +15164,7 @@ if (APR.Faction == "Horde") then
             ["Waypoint"] = 38413,
             ["Fillers"] = {
                 [40568] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 11.62,
@@ -15174,14 +15174,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38413] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Fillers"] = {
                 [40568] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -15191,14 +15191,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38413] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [40568] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -15208,9 +15208,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40568] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 63.79,
@@ -15228,10 +15228,10 @@ if (APR.Faction == "Horde") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38414] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -15269,9 +15269,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [22]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39652] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -15282,9 +15282,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [23]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39652] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
@@ -15313,9 +15313,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [26]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38624] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -15325,9 +15325,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [27]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38624] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 54.27,
@@ -15373,9 +15373,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [32]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39804] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -15422,13 +15422,13 @@ if (APR.Faction == "Horde") then
             },
         }, -- [37]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39788] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
                 [38778] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 42.36,
@@ -15458,12 +15458,12 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38808] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38810] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 33.3,
@@ -15493,14 +15493,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38811] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [39791] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -15513,14 +15513,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38811] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [39791] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -15533,14 +15533,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38811] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39791] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -15553,9 +15553,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39791] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -15597,15 +15597,15 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38816] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38817] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38823] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 51.58,
@@ -15635,9 +15635,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38815] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -15673,9 +15673,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38818] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -15703,14 +15703,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39837] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -15739,17 +15739,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38339] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38324] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 56.22,
@@ -15819,9 +15819,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39848] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -15831,9 +15831,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39848] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
@@ -15864,7 +15864,7 @@ if (APR.Faction == "Horde") then
         {
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -15901,14 +15901,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39849] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -15920,7 +15920,7 @@ if (APR.Faction == "Horde") then
         {
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -15942,17 +15942,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39850] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39851] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -15970,17 +15970,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [20]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39850] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [39851] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -15990,17 +15990,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [21]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39850] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [39851] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -16010,14 +16010,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [22]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39851] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 54.4,
@@ -16029,7 +16029,7 @@ if (APR.Faction == "Horde") then
         {
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -16051,14 +16051,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [25]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39853] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -16086,9 +16086,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [28]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38343] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 100.4,
@@ -16098,9 +16098,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [29]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39855] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -16129,9 +16129,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [32]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40078] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -16201,10 +16201,10 @@ if (APR.Faction == "Horde") then
             },
             ["Fillers"] = {
                 [38873] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39153] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -16213,17 +16213,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39385] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38873] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39153] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 19.38,
@@ -16233,17 +16233,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39385] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38873] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39153] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -16256,12 +16256,12 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38873] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39153] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 33.57,
@@ -16322,10 +16322,10 @@ if (APR.Faction == "Horde") then
             },
             ["Fillers"] = {
                 [38939] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [38878] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -16334,17 +16334,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38878] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39405] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38939] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 50.05,
@@ -16373,14 +16373,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39155] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Fillers"] = {
                 [38939] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -16390,14 +16390,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39155] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [38939] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -16407,14 +16407,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39155] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [38939] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -16424,14 +16424,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39155] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [38939] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -16441,9 +16441,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39155] = {
-                    ["5"] = "5",
+                    5,
                 },
             },
             ["Gossip"] = 1,
@@ -16472,9 +16472,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38882] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -16521,9 +16521,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40002] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -16533,9 +16533,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40002] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -16564,14 +16564,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40004] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -16581,14 +16581,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40003] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -16601,14 +16601,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40004] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -16618,14 +16618,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40003] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -16638,14 +16638,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40004] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -16655,14 +16655,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [11]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40004] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Fillers"] = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -16672,14 +16672,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40003] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -16692,9 +16692,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39998] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 67.93,
@@ -16723,9 +16723,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40005] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -16847,18 +16847,18 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39491] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39490] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
                 [39272] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -16868,13 +16868,13 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39490] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
                 [39272] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 52.57,
@@ -16924,17 +16924,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39316] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39614] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39277] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -16952,13 +16952,13 @@ if (APR.Faction == "Horde") then
             },
             ["Fillers"] = {
                 [39614] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39277] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39274] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -16972,13 +16972,13 @@ if (APR.Faction == "Horde") then
         {
             ["Fillers"] = {
                 [39614] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39277] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39274] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -16998,13 +16998,13 @@ if (APR.Faction == "Horde") then
             },
             ["Fillers"] = {
                 [39614] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39274] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39277] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -17016,15 +17016,15 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39614] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39274] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39277] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Button"] = {
@@ -17076,12 +17076,12 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39488] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39489] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 22.17,
@@ -17126,9 +17126,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39487] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -17215,9 +17215,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42104] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 52.54,
@@ -17255,14 +17255,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39025] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [39026] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -17272,14 +17272,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39025] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39026] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -17289,14 +17289,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39025] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [39026] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -17306,9 +17306,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39026] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 59.08,
@@ -17337,10 +17337,10 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39043] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 24.59,
@@ -17368,9 +17368,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39027] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -17404,9 +17404,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39027] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -17434,9 +17434,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38909] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -17446,9 +17446,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [20]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38909] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -17504,9 +17504,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [26]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40167] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -17551,9 +17551,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40520] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -17563,9 +17563,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40520] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 3.21,
@@ -17612,7 +17612,7 @@ if (APR.Faction == "Horde") then
             ["Waypoint"] = 39134,
             ["Fillers"] = {
                 [39133] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 9.94,
@@ -17625,7 +17625,7 @@ if (APR.Faction == "Horde") then
             ["Waypoint"] = 39134,
             ["Fillers"] = {
                 [39133] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 13.12,
@@ -17638,7 +17638,7 @@ if (APR.Faction == "Horde") then
             ["Waypoint"] = 39134,
             ["Fillers"] = {
                 [39133] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 9.89,
@@ -17648,14 +17648,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39134] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39133] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -17665,9 +17665,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39133] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 49.46,
@@ -17695,9 +17695,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40520] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.36,
@@ -17741,9 +17741,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [22]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39983] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -17797,11 +17797,11 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42622] = {
-                    ["1"] = "1",
-                    ["3"] = "3",
-                    ["2"] = "2",
+                    1,
+                    3,
+                    2,
                 },
             },
             ["Range"] = 44.01,
@@ -17829,9 +17829,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39575] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 22.01,
@@ -17860,14 +17860,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40219] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39576] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -17877,14 +17877,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40219] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [39576] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -17894,14 +17894,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40219] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [39576] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -17929,9 +17929,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39576] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 72.99,
@@ -17941,9 +17941,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39578] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -17953,9 +17953,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39578] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -17983,9 +17983,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39577] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -17995,9 +17995,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39577] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 8.85,
@@ -18007,9 +18007,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39577] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Range"] = 0.75,
@@ -18117,14 +18117,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39765] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39768] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -18134,9 +18134,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39768] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 25.98,
@@ -18207,9 +18207,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [12]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40339] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -18219,9 +18219,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40339] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 2,
@@ -18232,9 +18232,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40339] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Gossip"] = 2,
@@ -18245,9 +18245,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40339] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Gossip"] = 1,
@@ -18258,9 +18258,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40339] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Gossip"] = 2,
@@ -18271,9 +18271,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40339] = {
-                    ["5"] = "5",
+                    5,
                 },
             },
             ["Gossip"] = 2,
@@ -18302,9 +18302,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40345] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -18314,9 +18314,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40345] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
@@ -18327,9 +18327,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40345] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Gossip"] = 1,
@@ -18340,9 +18340,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40345] = {
-                    ["4"] = "4",
+                    4,
                 },
             },
             ["Range"] = 0.75,
@@ -18352,9 +18352,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40345] = {
-                    ["5"] = "5",
+                    5,
                 },
             },
             ["Gossip"] = 1,
@@ -18365,9 +18365,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40345] = {
-                    ["6"] = "6",
+                    6,
                 },
             },
             ["Range"] = 0.75,
@@ -18401,9 +18401,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40345] = {
-                    ["7"] = "7",
+                    7,
                 },
             },
             ["Gossip"] = 1,
@@ -18414,9 +18414,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40345] = {
-                    ["8"] = "8",
+                    8,
                 },
             },
             ["Range"] = 0.75,
@@ -18460,9 +18460,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [20]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39772] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -18513,9 +18513,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [26]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39318] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -18526,9 +18526,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [27]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39318] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 42.45,
@@ -18557,9 +18557,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [38910] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 83.93,
@@ -18569,14 +18569,14 @@ if (APR.Faction == "Horde") then
             },
             ["Fillers"] = {
                 [39317] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39317] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 356.1,
@@ -18605,15 +18605,15 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39321] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39429] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -18631,15 +18631,15 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39321] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [39429] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -18665,15 +18665,15 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39321] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [39429] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -18683,10 +18683,10 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39429] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Range"] = 58.13,
@@ -18715,9 +18715,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [11]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39322] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -18774,9 +18774,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39873] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -18786,17 +18786,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39372] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39371] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39373] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -18806,12 +18806,12 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39373] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39371] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 119.12,
@@ -18849,9 +18849,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39374] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -18887,9 +18887,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39455] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -18899,9 +18899,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39455] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -18945,9 +18945,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39860] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -18957,9 +18957,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39860] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 32.56,
@@ -18987,9 +18987,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [19]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39381] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -19020,17 +19020,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [22]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39391] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [39588] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39425] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -19040,17 +19040,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39391] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39588] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39425] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -19060,17 +19060,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39391] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [39588] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39425] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -19080,12 +19080,12 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39425] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39588] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 47.5,
@@ -19131,9 +19131,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42373] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 74.43,
@@ -19151,9 +19151,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39426] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -19216,9 +19216,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39440] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -19228,9 +19228,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39440] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.69,
@@ -19263,7 +19263,7 @@ if (APR.Faction == "Horde") then
             ["Waypoint"] = 39439,
             ["Fillers"] = {
                 [39437] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 21.27,
@@ -19273,14 +19273,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [13]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39439] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39437] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -19290,14 +19290,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39439] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [39437] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -19307,14 +19307,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [15]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39439] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [39437] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -19324,14 +19324,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [16]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39438] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39437] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -19341,9 +19341,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39437] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 57.41,
@@ -19380,9 +19380,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [1]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42596] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 47,
@@ -19435,10 +19435,10 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39456] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Gossip"] = 39456,
@@ -19449,10 +19449,10 @@ if (APR.Faction == "Horde") then
             },
         }, -- [8]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39387] = {
-                    ["1"] = "1",
-                    ["2"] = "2",
+                    1,
+                    2,
                 },
             },
             ["Gossip"] = 39387,
@@ -19535,12 +19535,12 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40170] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39859] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -19573,9 +19573,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40216] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -19589,7 +19589,7 @@ if (APR.Faction == "Horde") then
             ["Waypoint"] = 39123,
             ["Fillers"] = {
                 [39123] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 29.42,
@@ -19602,7 +19602,7 @@ if (APR.Faction == "Horde") then
             ["Waypoint"] = 39123,
             ["Fillers"] = {
                 [39123] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 37.38,
@@ -19615,7 +19615,7 @@ if (APR.Faction == "Horde") then
             ["Waypoint"] = 39123,
             ["Fillers"] = {
                 [39123] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 34.29,
@@ -19625,17 +19625,17 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39392] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39123] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [39124] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 116.18,
@@ -19645,9 +19645,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39123] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 62.73,
@@ -19657,14 +19657,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39124] = {
-                    ["1"] = "1",
+                    1,
                 },
                 [40216] = {
-                    ["3"] = "3",
-                    ["2"] = "2",
-                    ["4"] = "4",
+                    3,
+                    2,
+                    4,
                 },
             },
             ["Range"] = 58.49,
@@ -19705,9 +19705,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39867] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -19717,9 +19717,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40228] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["ButtonSpellId"] = {
@@ -19735,9 +19735,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39178] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -19752,7 +19752,7 @@ if (APR.Faction == "Horde") then
             },
             ["Fillers"] = {
                 [40316] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Coord"] = {
@@ -19761,14 +19761,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [7]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39419] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [40316] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -19780,7 +19780,7 @@ if (APR.Faction == "Horde") then
         {
             ["Fillers"] = {
                 [40316] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Done"] = {
@@ -19792,9 +19792,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40316] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 90.96,
@@ -19852,14 +19852,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [2]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39776] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Fillers"] = {
                 [39777] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -19869,14 +19869,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [3]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39776] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39777] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -19886,14 +19886,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [4]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39776] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Fillers"] = {
                 [39777] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.61,
@@ -19903,14 +19903,14 @@ if (APR.Faction == "Horde") then
             },
         }, -- [5]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39862] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Fillers"] = {
                 [39777] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.61,
@@ -19920,9 +19920,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [6]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39777] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 72.5,
@@ -19952,9 +19952,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [9]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42088] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Gossip"] = 1,
@@ -19965,9 +19965,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [10]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42088] = {
-                    ["3"] = "3",
+                    3,
                 },
             },
             ["Gossip"] = 1,
@@ -19978,9 +19978,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [11]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42088] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Gossip"] = 1,
@@ -20009,9 +20009,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [14]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [42512] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -20039,9 +20039,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [17]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40594] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.75,
@@ -20051,9 +20051,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [18]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [40594] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 46.01,
@@ -20081,9 +20081,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [21]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39780] = {
-                    ["1"] = "1",
+                    1,
                 },
             },
             ["Range"] = 0.69,
@@ -20093,9 +20093,9 @@ if (APR.Faction == "Horde") then
             },
         }, -- [22]
         {
-            ["Qpart"] = {
+            Qpart = {
                 [39780] = {
-                    ["2"] = "2",
+                    2,
                 },
             },
             ["Range"] = 0.75,
@@ -20147,9 +20147,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [40077] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 42.55,
@@ -20159,9 +20159,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [40077] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -20189,14 +20189,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [40378] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -20206,9 +20206,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [40378] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -20218,14 +20218,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [40378] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -20237,7 +20237,7 @@ APR.RouteQuestStepList["672-Mardum"] = {
     {
         ["Fillers"] = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Done"] = {
@@ -20260,14 +20260,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [10]
     {
-        ["Qpart"] = {
+        Qpart = {
             [38759] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 69.24,
@@ -20277,14 +20277,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [11]
     {
-        ["Qpart"] = {
+        Qpart = {
             [38759] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -20294,14 +20294,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [38759] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -20311,15 +20311,15 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [40379] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -20329,14 +20329,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [40379] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -20346,14 +20346,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39049] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -20371,14 +20371,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38759] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Fillers"] = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -20388,14 +20388,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38759] = {
-                ["5"] = "5",
+                5,
             },
         },
         ["Fillers"] = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -20425,9 +20425,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39050] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -20456,14 +20456,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38766] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -20473,15 +20473,15 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38765] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -20491,14 +20491,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38765] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -20508,9 +20508,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39279] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 80.95,
@@ -20555,9 +20555,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38813] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
@@ -20568,9 +20568,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38813] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Gossip"] = 1,
@@ -20581,9 +20581,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [10]
     {
-        ["Qpart"] = {
+        Qpart = {
             [38813] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -20612,9 +20612,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [39262] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -20625,9 +20625,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [39262] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -20663,9 +20663,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39495] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -20698,7 +20698,7 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["Waypoint"] = 38727,
         ["Fillers"] = {
             [38819] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 57.33,
@@ -20708,14 +20708,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38727] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [38819] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -20728,7 +20728,7 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["Waypoint"] = 38727,
         ["Fillers"] = {
             [38819] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 66.86,
@@ -20741,7 +20741,7 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["Waypoint"] = 38727,
         ["Fillers"] = {
             [38819] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 68.52,
@@ -20751,14 +20751,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38727] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [38819] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -20771,7 +20771,7 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["Waypoint"] = 38725,
         ["Fillers"] = {
             [38819] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 32.04,
@@ -20799,14 +20799,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [40222] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [38819] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 9.05,
@@ -20819,7 +20819,7 @@ APR.RouteQuestStepList["672-Mardum"] = {
         ["Waypoint"] = 38727,
         ["Fillers"] = {
             [38819] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 44.34,
@@ -20829,14 +20829,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [11]
     {
-        ["Qpart"] = {
+        Qpart = {
             [38727] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [38819] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -20846,9 +20846,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [38819] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 71.09,
@@ -20878,9 +20878,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [40051] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -20906,15 +20906,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 1456.2,
             ["x"] = 1764.8,
         },
-        ["BreadCrum"] = 39516,
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39516] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
         },
         ["Gossip"] = 39516,
@@ -20923,12 +20922,11 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 1455.3,
             ["x"] = 1764.9,
         },
-        ["BreadCrum"] = 39516,
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39516] = {
-                ["5"] = "5",
+                5,
             },
         },
         ["Gossip"] = 1,
@@ -20937,7 +20935,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 1460.5,
             ["x"] = 1773.7,
         },
-        ["BreadCrum"] = 39516,
     },
     {
         ["Done"] = {
@@ -20947,7 +20944,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 1456.4,
             ["x"] = 1764.5,
         },
-        ["BreadCrum"] = 39516,
     },
     {
         ["PickUp"] = {
@@ -20957,15 +20953,14 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 1456.4,
             ["x"] = 1764.4,
         },
-        ["BreadCrum"] = 39515,
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39515] = {
-                ["1"] = "1",
-                ["4"] = "4",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                4,
+                3,
+                2,
             },
         },
         ["Gossip"] = 39516,
@@ -20974,12 +20969,11 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 1456,
             ["x"] = 1763.8,
         },
-        ["BreadCrum"] = 39515,
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39515] = {
-                ["5"] = "5",
+                5,
             },
         },
         ["Gossip"] = 1,
@@ -20988,7 +20982,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 1460.5,
             ["x"] = 1773.5,
         },
-        ["BreadCrum"] = 39515,
     },
     {
         ["Done"] = {
@@ -20998,7 +20991,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 1456.3,
             ["x"] = 1764.5,
         },
-        ["BreadCrum"] = 39515,
     },
     {
         ["PickUp"] = {
@@ -21010,9 +21002,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39663] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -21041,9 +21033,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38728] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -21053,9 +21045,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38728] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 53.11,
@@ -21083,9 +21075,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38729] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -21113,9 +21105,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38672] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -21125,9 +21117,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38672] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -21156,17 +21148,17 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [38690] = {
-                ["1"] = "1",
+                1,
             },
             [38689] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [39742] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 111.65,
@@ -21176,9 +21168,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39742] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 81.17,
@@ -21213,13 +21205,12 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4239.1,
             ["x"] = -292.2,
         },
-        ["BreadCrum"] = 38723,
     }, -- [10]
     {
-        ["Qpart"] = {
+        Qpart = {
             [38723] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 23.35,
@@ -21227,7 +21218,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4051.3,
             ["x"] = -297.4,
         },
-        ["BreadCrum"] = 38723,
     },
     {
         ["Done"] = {
@@ -21237,7 +21227,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4079,
             ["x"] = -306.3,
         },
-        ["BreadCrum"] = 38723,
     },
     {
         ["PickUp"] = {
@@ -21247,13 +21236,12 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4239.1,
             ["x"] = -292.2,
         },
-        ["BreadCrum"] = 40253,
     }, -- [10]
     {
-        ["Qpart"] = {
+        Qpart = {
             [40253] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 23.35,
@@ -21261,7 +21249,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4051.3,
             ["x"] = -297.4,
         },
-        ["BreadCrum"] = 40253,
     },
     {
         ["Done"] = {
@@ -21271,7 +21258,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4079,
             ["x"] = -306.3,
         },
-        ["BreadCrum"] = 40253,
     },
     {
         ["PickUp"] = {
@@ -21307,9 +21293,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39682] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -21345,12 +21331,11 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4457.3,
             ["x"] = -393.7,
         },
-        ["BreadCrum"] = 39683,
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39683] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -21358,7 +21343,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4658.3,
             ["x"] = -451.2,
         },
-        ["BreadCrum"] = 39683,
     }, -- [10]
     {
         ["PickUp"] = {
@@ -21368,12 +21352,11 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4457.3,
             ["x"] = -393.7,
         },
-        ["BreadCrum"] = 40254,
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [40254] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -21381,7 +21364,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4658.3,
             ["x"] = -451.2,
         },
-        ["BreadCrum"] = 40254,
     }, -- [10]
     {
         ["Waypoint"] = 39684,
@@ -21400,9 +21382,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [39684] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 20.25,
@@ -21436,11 +21418,11 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39685] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["Range"] = 34.15,
@@ -21467,7 +21449,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4458.3,
             ["x"] = -393.5,
         },
-        ["BreadCrum"] = 39683,
     },
     {
         ["Done"] = {
@@ -21477,7 +21458,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4458.3,
             ["x"] = -393.5,
         },
-        ["BreadCrum"] = 40254,
     },
     {
         ["PickUp"] = {
@@ -21489,9 +21469,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39686] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -21519,9 +21499,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [40373] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -21531,9 +21511,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [40373] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
@@ -21560,7 +21540,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4283.7,
             ["x"] = -451.2,
         },
-        ["BreadCrum"] = 39688,
     },
     {
         ["Waypoint"] = 39688,
@@ -21569,12 +21548,11 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4190,
             ["x"] = -460.4,
         },
-        ["BreadCrum"] = 39688,
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [39688] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -21582,7 +21560,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4185.7,
             ["x"] = -626.8,
         },
-        ["BreadCrum"] = 39688,
     },
     {
         ["Waypoint"] = 39688,
@@ -21591,7 +21568,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4185.3,
             ["x"] = -744.5,
         },
-        ["BreadCrum"] = 39688,
     },
     {
         ["Done"] = {
@@ -21601,7 +21577,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4161.7,
             ["x"] = -855,
         },
-        ["BreadCrum"] = 39688,
     }, -- [10]
     {
         ["PickUp"] = {
@@ -21611,7 +21586,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4283.7,
             ["x"] = -451.2,
         },
-        ["BreadCrum"] = 40256,
     },
     {
         ["Waypoint"] = 40256,
@@ -21620,12 +21594,11 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4190,
             ["x"] = -460.4,
         },
-        ["BreadCrum"] = 40256,
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [40256] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -21633,7 +21606,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4185.7,
             ["x"] = -626.8,
         },
-        ["BreadCrum"] = 40256,
     },
     {
         ["Waypoint"] = 40256,
@@ -21642,7 +21614,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4185.3,
             ["x"] = -744.5,
         },
-        ["BreadCrum"] = 40256,
     },
     {
         ["Done"] = {
@@ -21652,7 +21623,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4161.7,
             ["x"] = -855,
         },
-        ["BreadCrum"] = 40256,
     }, -- [10]
     {
         ["PickUp"] = {
@@ -21662,7 +21632,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4154.7,
             ["x"] = -867.5,
         },
-        ["BreadCrum"] = 39689,
     }, -- [11]
     {
         ["Done"] = {
@@ -21672,7 +21641,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4154.7,
             ["x"] = -867.5,
         },
-        ["BreadCrum"] = 39689,
     }, -- [12]
     {
         ["PickUp"] = {
@@ -21682,7 +21650,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4154.7,
             ["x"] = -867.5,
         },
-        ["BreadCrum"] = 39690,
     }, -- [11]
     {
         ["Done"] = {
@@ -21692,7 +21659,6 @@ APR.RouteQuestStepList["672-Mardum"] = {
             ["y"] = 4154.7,
             ["x"] = -867.5,
         },
-        ["BreadCrum"] = 39690,
     }, -- [12]
     {
         ["ZoneDoneSave"] = 1,

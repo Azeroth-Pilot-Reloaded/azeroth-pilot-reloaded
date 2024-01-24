@@ -93,9 +93,9 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     {
         -- [step 18
         ["ExtraLineText"] = "LISTEN",
-        ["Qpart"] = {
+        Qpart = {
             [46727] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 3,
@@ -107,9 +107,9 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     {
         -- [step 19
         ["ExtraLineText"] = "CLICK_THE_VISION",
-        ["Qpart"] = {
+        Qpart = {
             [46727] = {
-                ["2"] = "1",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -268,9 +268,9 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     },
     {
         -- [step 36
-        ["Qpart"] = {
+        Qpart = {
             [46728] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -328,9 +328,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 5
-        ["Qpart"] = {
+        Qpart = {
             [47098] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -341,9 +341,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 6
-        ["Qpart"] = {
+        Qpart = {
             [47098] = {
-                ["2"] = "1",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -354,9 +354,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 7
-        ["Qpart"] = {
+        Qpart = {
             [47098] = {
-                ["3"] = "1",
+                3,
             },
         },
         ["Range"] = 0.69,
@@ -367,9 +367,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 8
-        ["Qpart"] = {
+        Qpart = {
             [47098] = {
-                ["4"] = "1",
+                4,
             },
         },
         ["Range"] = 0.69,
@@ -380,9 +380,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 9
-        ["Qpart"] = {
+        Qpart = {
             [47098] = {
-                ["5"] = "1",
+                5,
             },
         },
         ["Range"] = 0.69,
@@ -411,9 +411,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 12
-        ["Qpart"] = {
+        Qpart = {
             [47098] = {
-                ["6"] = "1",
+                6,
             },
         },
         ["Range"] = 0.69,
@@ -460,9 +460,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 17
-        ["Qpart"] = {
+        Qpart = {
             [47098] = {
-                ["7"] = "1",
+                7,
             },
         },
         ["Range"] = 0.69,
@@ -518,9 +518,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 23
-        ["Qpart"] = {
+        Qpart = {
             [47098] = {
-                ["8"] = "1",
+                8,
             },
         },
         ["Range"] = 0.69,
@@ -552,9 +552,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 26
-        ["Qpart"] = {
+        Qpart = {
             [47099] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.83,
@@ -592,9 +592,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 30
-        ["Qpart"] = {
+        Qpart = {
             [47099] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.83,
@@ -641,9 +641,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [11]
     {
         -- [step 35
-        ["Qpart"] = {
+        Qpart = {
             [47099] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.83,
@@ -672,9 +672,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 38
-        ["Qpart"] = {
+        Qpart = {
             [47099] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Range"] = 0.75,
@@ -732,7 +732,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 44
-        ["Qpart"] = {
+        Qpart = {
             [46729] = {
                 1,
             },
@@ -745,7 +745,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 45
-        ["Qpart"] = {
+        Qpart = {
             [46729] = {
                 [2] = 1,
             },
@@ -759,7 +759,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 46
-        ["Qpart"] = {
+        Qpart = {
             [46729] = {
                 [3] = 1,
             },
@@ -832,9 +832,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 53
-        ["Qpart"] = {
+        Qpart = {
             [47186] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -893,9 +893,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 59
-        ["Qpart"] = {
+        Qpart = {
             [47189] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -948,9 +948,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 64
         ["ExtraActionB"] = 1,
-        ["Qpart"] = {
+        Qpart = {
             [47181] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -979,7 +979,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 1071.7,
             ["x"] = -485.3,
         },
-        ["BreadCrum"] = 47485,
     },
     {
         -- [step 67
@@ -1013,7 +1012,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["PickUp"] = {
             51144,
         },
-        ["BreadCrum"] = 51144,
         ["Coord"] = {
             ["y"] = 1140.7,
             ["x"] = -559.7,
@@ -1098,7 +1096,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = -161,
             ["x"] = 40.7,
         },
-        ["BreadCrum"] = 50542,
     },
     {
         -- [step 79
@@ -1119,14 +1116,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = -166.5,
             ["x"] = 102.3,
         },
-        ["BreadCrum"] = 51151,
     },
     {
         -- [step 81
         ["Done"] = {
             50542,
         },
-        ["BreadCrum"] = 50542,
         ["Coord"] = {
             ["y"] = -446.7,
             ["x"] = -19.7,
@@ -1145,17 +1140,17 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 83
-        ["Qpart"] = {
+        Qpart = {
             [49531] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [49897] = {
-                ["1"] = "1",
+                1,
             },
             [49529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -1169,18 +1164,18 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 84
-        ["Qpart"] = {
+        Qpart = {
             [49531] = {
-                ["3"] = "3",
-                ["1"] = "1",
+                3,
+                1,
             },
         },
         ["Fillers"] = {
             [49897] = {
-                ["1"] = "1",
+                1,
             },
             [49529] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -1195,20 +1190,20 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 85
-        ["Qpart"] = {
+        Qpart = {
             [49531] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Fillers"] = {
             [49529] = {
-                ["1"] = "1",
+                1,
             },
             [49897] = {
-                ["1"] = "1",
+                1,
             },
             [49531] = {
-                ["5"] = "5",
+                5,
             },
         },
         ["Button"] = {
@@ -1234,12 +1229,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 87
-        ["Qpart"] = {
+        Qpart = {
             [51426] = {
-                ["1"] = "1",
+                1,
             },
             [51430] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -1264,15 +1259,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 89
-        ["Qpart"] = {
+        Qpart = {
             [49529] = {
-                ["1"] = "1",
+                1,
             },
             [49531] = {
-                ["5"] = "5",
+                5,
             },
             [49897] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -1327,9 +1322,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 93
 
-        ["Qpart"] = {
+        Qpart = {
             [48540] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.75,
@@ -1341,9 +1336,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 94
 
-        ["Qpart"] = {
+        Qpart = {
             [48540] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -1356,9 +1351,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 95
 
-        ["Qpart"] = {
+        Qpart = {
             [48540] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -1394,15 +1389,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 98
 
-        ["Qpart"] = {
+        Qpart = {
             [49268] = {
-                ["1"] = "1",
+                1,
             },
             [48352] = {
-                ["1"] = "1",
+                1,
             },
             [48348] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 27.52,
@@ -1466,18 +1461,17 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 964.7,
             ["x"] = 1834.7,
         },
-        ["BreadCrum"] = 49393,
     }, -- [10]
     {
         -- [step 104
-
-        ["GroupTask"] = 51384,
-        ["Group"] = 3,
+        ["Group"] = {
+            ["Number"] = 3,
+            ["QuestId"] = 51384
+        },
         ["Coord"] = {
             ["y"] = 964.2,
             ["x"] = 1849.2,
         },
-        ["QaskPopup"] = 51384,
     }, -- [12]
     {
         -- [step 105
@@ -1494,15 +1488,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 106
 
-        ["Qpart"] = {
+        Qpart = {
             [48353] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [49292] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -1517,15 +1511,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 107
 
-        ["Qpart"] = {
+        Qpart = {
             [48353] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [49292] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -1540,15 +1534,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 108
 
-        ["Qpart"] = {
+        Qpart = {
             [48353] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [49292] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -1563,9 +1557,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 109
 
-        ["Qpart"] = {
+        Qpart = {
             [49292] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 25.9,
@@ -1601,12 +1595,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 112
         ["ExtraActionB"] = 1,
-        ["Qpart"] = {
+        Qpart = {
             [48355] = {
-                ["1"] = "1",
+                1,
             },
             [48354] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 11.27,
@@ -1651,10 +1645,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [48009] = {
-                ["1"] = "1",
+                1,
             },
             [48356] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -1671,10 +1665,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [48009] = {
-                ["1"] = "1",
+                1,
             },
             [48356] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -1689,33 +1683,33 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [48008] = {
-                ["1"] = "1",
+                1,
             },
             [48009] = {
-                ["1"] = "1",
+                1,
             },
             [48356] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
         -- [step 118
 
-        ["Qpart"] = {
+        Qpart = {
             [49299] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [48008] = {
-                ["1"] = "1",
+                1,
             },
             [48009] = {
-                ["1"] = "1",
+                1,
             },
             [48356] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 8.42,
@@ -1731,13 +1725,13 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Waypoint"] = 48365,
         ["Fillers"] = {
             [48008] = {
-                ["1"] = "1",
+                1,
             },
             [48009] = {
-                ["1"] = "1",
+                1,
             },
             [48356] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -1752,13 +1746,13 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Waypoint"] = 48365,
         ["Fillers"] = {
             [48008] = {
-                ["1"] = "1",
+                1,
             },
             [48009] = {
-                ["1"] = "1",
+                1,
             },
             [48356] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -1773,13 +1767,13 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Waypoint"] = 48365,
         ["Fillers"] = {
             [48008] = {
-                ["1"] = "1",
+                1,
             },
             [48009] = {
-                ["1"] = "1",
+                1,
             },
             [48356] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -1794,13 +1788,13 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Waypoint"] = 48365,
         ["Fillers"] = {
             [48008] = {
-                ["1"] = "1",
+                1,
             },
             [48009] = {
-                ["1"] = "1",
+                1,
             },
             [48356] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -1811,9 +1805,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 123
 
-        ["Qpart"] = {
+        Qpart = {
             [48365] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 6.36,
@@ -1825,15 +1819,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 124
 
-        ["Qpart"] = {
+        Qpart = {
             [48008] = {
-                ["1"] = "1",
+                1,
             },
             [48009] = {
-                ["1"] = "1",
+                1,
             },
             [48356] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 23.05,
@@ -1881,9 +1875,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 128
 
-        ["Qpart"] = {
+        Qpart = {
             [48366] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -1948,20 +1942,20 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 134
 
-        ["Qpart"] = {
+        Qpart = {
             [48368] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [48367] = {
-                ["1"] = "1",
+                1,
             },
             [48370] = {
-                ["1"] = "1",
+                1,
             },
             [49300] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -1973,20 +1967,20 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 135
 
-        ["Qpart"] = {
+        Qpart = {
             [48368] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [48367] = {
-                ["1"] = "1",
+                1,
             },
             [48370] = {
-                ["1"] = "1",
+                1,
             },
             [49300] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -2002,13 +1996,13 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Waypoint"] = 48372,
         ["Fillers"] = {
             [48367] = {
-                ["1"] = "1",
+                1,
             },
             [48370] = {
-                ["1"] = "1",
+                1,
             },
             [49300] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -2019,23 +2013,23 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 137
 
-        ["Qpart"] = {
+        Qpart = {
             [48368] = {
-                ["3"] = "3",
+                3,
             },
             [48372] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [48367] = {
-                ["1"] = "1",
+                1,
             },
             [48370] = {
-                ["1"] = "1",
+                1,
             },
             [49300] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -2050,13 +2044,13 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Range"] = 13.13,
         ["Fillers"] = {
             [48367] = {
-                ["1"] = "1",
+                1,
             },
             [48370] = {
-                ["1"] = "1",
+                1,
             },
             [49300] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Waypoint"] = 48368,
@@ -2068,15 +2062,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 139
 
-        ["Qpart"] = {
+        Qpart = {
             [48367] = {
-                ["1"] = "1",
+                1,
             },
             [48370] = {
-                ["1"] = "1",
+                1,
             },
             [49300] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 51.95,
@@ -2099,9 +2093,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 141
 
-        ["Qpart"] = {
+        Qpart = {
             [51384] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["GroupTask"] = 51384,
@@ -2161,9 +2155,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 146
 
-        ["Qpart"] = {
+        Qpart = {
             [49302] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -2176,9 +2170,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 147
 
-        ["Qpart"] = {
+        Qpart = {
             [49302] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 9.79,
@@ -2190,9 +2184,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 148
 
-        ["Qpart"] = {
+        Qpart = {
             [49302] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 7.33,
@@ -2204,9 +2198,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 149
 
-        ["Qpart"] = {
+        Qpart = {
             [49302] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Gossip"] = 1,
@@ -2219,9 +2213,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 150
 
-        ["Qpart"] = {
+        Qpart = {
             [49302] = {
-                ["5"] = "5",
+                5,
             },
         },
         ["Range"] = 4.5,
@@ -2249,7 +2243,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 968.6,
             ["x"] = 1834.9,
         },
-        ["BreadCrum"] = 49393,
     }, -- [57]
     {
         -- [step 153
@@ -2259,7 +2252,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 989.1,
             ["x"] = 1890.3,
         },
-        ["BreadCrum"] = 49393,
     }, -- [58]
     {
         -- [step 154
@@ -2269,7 +2261,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 1054.4,
             ["x"] = 1937.9,
         },
-        ["BreadCrum"] = 49393,
     }, -- [59]
     {
         -- [step 155
@@ -2279,7 +2270,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 1121,
             ["x"] = 1953,
         },
-        ["BreadCrum"] = 49393,
     }, -- [60]
     {
         -- [step 156
@@ -2299,7 +2289,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Done"] = {
             49393,
         },
-        ["BreadCrum"] = 49393,
     }, -- [63]
     {
         -- [step 158
@@ -2314,13 +2303,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [64]
     {
         -- [step 159
-        ["GroupTask"] = 51368,
-        ["Group"] = 3,
+        ["Group"] = {
+            ["Number"] = 3,
+            ["QuestId"] = 51368
+        },
         ["Coord"] = {
             ["y"] = 1176,
             ["x"] = 1859.9,
         },
-        ["QaskPopup"] = 51368,
     }, -- [66]
     {
         -- [step 160
@@ -2340,11 +2330,11 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49394] = {
-                ["1"] = "1",
+                1,
             },
             [49395] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Button"] = {
@@ -2357,18 +2347,18 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [68]
     {
         -- [step 162
-        ["Qpart"] = {
+        Qpart = {
             [49412] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [49394] = {
-                ["1"] = "1",
+                1,
             },
             [49395] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Button"] = {
@@ -2392,9 +2382,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [70]
     {
         -- [step 164
-        ["Qpart"] = {
+        Qpart = {
             [51368] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["GroupTask"] = 51368,
@@ -2406,13 +2396,13 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [71]
     {
         -- [step 165
-        ["Qpart"] = {
+        Qpart = {
             [49394] = {
-                ["1"] = "1",
+                1,
             },
             [49395] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Button"] = {
@@ -2459,12 +2449,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [76]
     {
         -- [step 169
-        ["Qpart"] = {
+        Qpart = {
             [49710] = {
-                ["1"] = "1",
+                1,
             },
             [49735] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 28.76,
@@ -2505,9 +2495,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [80]
     {
         -- [step 173
-        ["Qpart"] = {
+        Qpart = {
             [49417] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -2538,7 +2528,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 1209.9,
             ["x"] = 1843.5,
         },
-        ["BreadCrum"] = 49418,
     }, -- [83]
     {
         -- [step 176
@@ -2548,7 +2537,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 1279.9,
             ["x"] = 1770.9,
         },
-        ["BreadCrum"] = 49418,
     }, -- [84]
     {
         -- [step 177
@@ -2558,7 +2546,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 1374,
             ["x"] = 1769.2,
         },
-        ["BreadCrum"] = 49418,
     }, -- [85]
     {
         -- [step 178
@@ -2568,7 +2555,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 1450.4,
             ["x"] = 1854.2,
         },
-        ["BreadCrum"] = 49418,
     }, -- [86]
     {
         -- [step 179
@@ -2579,7 +2565,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Done"] = {
             49418,
         },
-        ["BreadCrum"] = 49418,
     }, -- [87]
     {
         -- [step 180
@@ -2594,14 +2579,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [88]
     {
         -- [step 181
-        ["Qpart"] = {
+        Qpart = {
             [49435] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [49433] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -2612,14 +2597,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [89]
     {
         -- [step 182
-        ["Qpart"] = {
+        Qpart = {
             [49435] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [49433] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -2659,14 +2644,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [93]
     {
         -- [step 186
-        ["Qpart"] = {
+        Qpart = {
             [49419] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [49431] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 18.65,
@@ -2677,9 +2662,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [94]
     {
         -- [step 187
-        ["Qpart"] = {
+        Qpart = {
             [49431] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 30.16,
@@ -2710,14 +2695,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [99]
     {
         -- [step 190
-        ["Qpart"] = {
+        Qpart = {
             [49435] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [49433] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -2728,14 +2713,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [96]
     {
         -- [step 191
-        ["Qpart"] = {
+        Qpart = {
             [49435] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Fillers"] = {
             [49433] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -2756,9 +2741,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [98]
     {
         -- [step 193
-        ["Qpart"] = {
+        Qpart = {
             [49433] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 15.74,
@@ -2790,9 +2775,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [102]
     {
         -- [step 196
-        ["Qpart"] = {
+        Qpart = {
             [49439] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 13.73,
@@ -2901,7 +2886,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Done"] = {
             51151,
         },
-        ["BreadCrum"] = 51151,
     }, -- [110]
     {
         -- [step 207
@@ -2909,7 +2893,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             49225,
             49229,
         },
-        ["BreadCrum"] = 49225,
         ["Coord"] = {
             ["y"] = 832.2,
             ["x"] = 333.2,
@@ -2931,7 +2914,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Waypoint"] = 49260,
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -2945,10 +2928,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Waypoint"] = 49260,
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
             [49234] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -2964,7 +2947,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Coord"] = {
@@ -2976,16 +2959,16 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         -- [step 2
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
             [49232] = {
-                ["1"] = "1",
+                1,
             },
             [49234] = {
-                ["1"] = "1",
+                1,
             },
             [49233] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3006,22 +2989,21 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
             [49232] = {
-                ["1"] = "1",
+                1,
             },
             [49234] = {
-                ["1"] = "1",
+                1,
             },
             [49233] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
             ["49233-1"] = 153350,
         },
-        ["BreadCrum"] = 49225,
         ["Done"] = {
             49225,
         },
@@ -3033,16 +3015,16 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
             [49232] = {
-                ["1"] = "1",
+                1,
             },
             [49234] = {
-                ["1"] = "1",
+                1,
             },
             [49233] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3056,9 +3038,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step 2
         ["RaidIcon"] = 128349,
-        ["Qpart"] = {
+        Qpart = {
             [49260] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 11.88,
@@ -3068,16 +3050,16 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
             [49232] = {
-                ["1"] = "1",
+                1,
             },
             [49234] = {
-                ["1"] = "1",
+                1,
             },
             [49233] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3095,16 +3077,16 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
             [49232] = {
-                ["1"] = "1",
+                1,
             },
             [49234] = {
-                ["1"] = "1",
+                1,
             },
             [49233] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3115,16 +3097,16 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         -- [step 2
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
             [49232] = {
-                ["1"] = "1",
+                1,
             },
             [49234] = {
-                ["1"] = "1",
+                1,
             },
             [49233] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3141,16 +3123,16 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         -- [step 2
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
             [49232] = {
-                ["1"] = "1",
+                1,
             },
             [49234] = {
-                ["1"] = "1",
+                1,
             },
             [49233] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3167,16 +3149,16 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         -- [step 2
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
             [49232] = {
-                ["1"] = "1",
+                1,
             },
             [49234] = {
-                ["1"] = "1",
+                1,
             },
             [49233] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3193,16 +3175,16 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         -- [step 2
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
             [49232] = {
-                ["1"] = "1",
+                1,
             },
             [49234] = {
-                ["1"] = "1",
+                1,
             },
             [49233] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3219,16 +3201,16 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         -- [step 2
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
             [49232] = {
-                ["1"] = "1",
+                1,
             },
             [49234] = {
-                ["1"] = "1",
+                1,
             },
             [49233] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3245,16 +3227,16 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         -- [step 2
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
             [49232] = {
-                ["1"] = "1",
+                1,
             },
             [49234] = {
-                ["1"] = "1",
+                1,
             },
             [49233] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3269,20 +3251,20 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Qpart"] = {
+        Qpart = {
             [49232] = {
-                ["1"] = "1",
+                1,
             },
             [49234] = {
-                ["1"] = "1",
+                1,
             },
             [49233] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3296,9 +3278,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [12]
     {
         -- [step 2
-        ["Qpart"] = {
+        Qpart = {
             [49229] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 67.88,
@@ -3361,7 +3343,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Done"] = {
             51144,
         },
-        ["BreadCrum"] = 51144,
         ["Coord"] = {
             ["y"] = 1110,
             ["x"] = 73.3,
@@ -3379,9 +3360,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["GroupTask"] = 51358,
-        ["Group"] = 3,
-        ["QaskPopup"] = 51358,
+        ["Group"] = {
+            ["Number"] = 3,
+            ["QuestId"] = 51358
+        },
         ["Coord"] = {
             ["y"] = 1106.4,
             ["x"] = 29.3,
@@ -3403,7 +3385,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["PickUp"] = {
             50699,
         },
-        ["BreadCrum"] = 50699,
         ["Coord"] = {
             ["y"] = 1118,
             ["x"] = -10.2,
@@ -3420,10 +3401,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Qpart"] = {
+        Qpart = {
             [51358] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["GroupTask"] = 51358,
@@ -3449,7 +3430,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Done"] = {
             50699,
         },
-        ["BreadCrum"] = 50699,
         ["Coord"] = {
             ["y"] = 1295.9,
             ["x"] = -127.1,
@@ -3478,15 +3458,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Qpart"] = {
+        Qpart = {
             [49451] = {
-                ["1"] = "1",
+                1,
             },
             [49465] = {
-                ["1"] = "1",
+                1,
             },
             [49452] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 25.98,
@@ -3568,32 +3548,32 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49454] = {
-                ["1"] = "1",
+                1,
             },
             [49450] = {
-                ["1"] = "1",
+                1,
             },
             [49468] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
         -- [step 2
-        ["Qpart"] = {
+        Qpart = {
             [50058] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [49454] = {
-                ["1"] = "1",
+                1,
             },
             [49450] = {
-                ["1"] = "1",
+                1,
             },
             [49468] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 14.8,
@@ -3614,15 +3594,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step 2
-        ["Qpart"] = {
+        Qpart = {
             [49454] = {
-                ["1"] = "1",
+                1,
             },
             [49468] = {
-                ["1"] = "1",
+                1,
             },
             [49450] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 121.7,
@@ -3654,9 +3634,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [49467] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 17.91,
@@ -3697,12 +3677,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [49]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48557] = {
-                ["1"] = "1",
+                1,
             },
             [49453] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 14.19,
@@ -3791,13 +3771,13 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [48080] = {
-                ["1"] = "1",
+                1,
             },
             [48616] = {
-                ["1"] = "1",
+                1,
             },
             [48077] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3808,13 +3788,13 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         -- [step
         ["Fillers"] = {
             [48080] = {
-                ["1"] = "1",
+                1,
             },
             [48616] = {
-                ["1"] = "1",
+                1,
             },
             [48077] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3829,20 +3809,20 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [59]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48965] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [48080] = {
-                ["1"] = "1",
+                1,
             },
             [48616] = {
-                ["1"] = "1",
+                1,
             },
             [48077] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3861,13 +3841,13 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [48080] = {
-                ["1"] = "1",
+                1,
             },
             [48616] = {
-                ["1"] = "1",
+                1,
             },
             [48077] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3880,15 +3860,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [61]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48080] = {
-                ["1"] = "1",
+                1,
             },
             [48616] = {
-                ["1"] = "1",
+                1,
             },
             [48077] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -3946,15 +3926,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48196] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [48195] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -3988,22 +3968,22 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48196] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [48778] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48597] = {
-                ["1"] = "1",
+                1,
             },
             [48195] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.05,
@@ -4015,22 +3995,22 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48196] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [48778] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48597] = {
-                ["1"] = "1",
+                1,
             },
             [48195] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 17.54,
@@ -4042,9 +4022,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48196] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Range"] = 0.09,
@@ -4054,15 +4034,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [48778] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48597] = {
-                ["1"] = "1",
+                1,
             },
             [48195] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
     }, -- [72]
@@ -4078,37 +4058,37 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [48778] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48597] = {
-                ["1"] = "1",
+                1,
             },
             [48195] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
     }, -- [73]
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48778] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Fillers"] = {
             [48778] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48597] = {
-                ["1"] = "1",
+                1,
             },
             [48195] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -4120,22 +4100,22 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48778] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [48778] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48597] = {
-                ["1"] = "1",
+                1,
             },
             [48195] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 7.63,
@@ -4147,17 +4127,17 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48778] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48597] = {
-                ["1"] = "1",
+                1,
             },
             [48195] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 17.7,
@@ -4223,9 +4203,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [81]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48005] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -4257,9 +4237,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [84]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48005] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -4270,9 +4250,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [85]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48898] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 16.74,
@@ -4292,9 +4272,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [87]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48898] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 15.13,
@@ -4305,12 +4285,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [88]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48902] = {
-                ["1"] = "1",
+                1,
             },
             [48899] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 35.39,
@@ -4321,9 +4301,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [89]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48898] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 16.29,
@@ -4365,9 +4345,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [93]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48903] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -4378,9 +4358,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [94]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48903] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -4391,9 +4371,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [94]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48903] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.75,
@@ -4405,9 +4385,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48903] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Range"] = 0.75,
@@ -4419,9 +4399,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48903] = {
-                ["5"] = "5",
+                5,
             },
         },
         ["Range"] = 0.75,
@@ -4433,9 +4413,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48903] = {
-                ["6"] = "6",
+                6,
             },
         },
         ["Range"] = 0.75,
@@ -4476,14 +4456,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-
-        ["GroupTask"] = 51367,
-        ["Group"] = 3,
+        ["Group"] = {
+            ["Number"] = 3,
+            ["QuestId"] = 51367
+        },
         ["Coord"] = {
             ["y"] = 907.5,
             ["x"] = 1049.4,
         },
-        ["QaskPopup"] = 51367,
     }, -- [104]
     {
         -- [step
@@ -4500,9 +4480,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48005] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Range"] = 0.75,
@@ -4514,9 +4494,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48005] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.75,
@@ -4550,9 +4530,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48004] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -4564,9 +4544,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48004] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 13.15,
@@ -4578,9 +4558,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48004] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 52.56,
@@ -4592,9 +4572,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48004] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Range"] = 52.56,
@@ -4628,9 +4608,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48939] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 13,
@@ -4653,9 +4633,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48087] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -4667,9 +4647,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48087] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -4704,12 +4684,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [48089] = {
-                ["1"] = "1",
+                1,
             },
             [48088] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -4746,9 +4726,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
 
-        ["Qpart"] = {
+        Qpart = {
             [51367] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["GroupTask"] = 51367,
@@ -4790,10 +4770,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [47755] = {
-                ["1"] = "1",
+                1,
             },
             [50009] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -4808,17 +4788,17 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [139]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [50059] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [47755] = {
-                ["1"] = "1",
+                1,
             },
             [50009] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -4838,17 +4818,17 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [140]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [50002] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [50009] = {
-                ["1"] = "1",
+                1,
             },
             [47755] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -4877,10 +4857,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [50009] = {
-                ["1"] = "1",
+                1,
             },
             [47755] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -4904,10 +4884,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [50009] = {
-                ["1"] = "1",
+                1,
             },
             [47755] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -4922,17 +4902,17 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [143]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [50005] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [47755] = {
-                ["1"] = "1",
+                1,
             },
             [50009] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -4962,10 +4942,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [50009] = {
-                ["1"] = "1",
+                1,
             },
             [47755] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -4980,12 +4960,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [145]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [47755] = {
-                ["1"] = "1",
+                1,
             },
             [50009] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 25.58,
@@ -5025,9 +5005,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [148]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [50009] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 34.78,
@@ -5044,7 +5024,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = 684.1,
             ["x"] = 1236.7,
         },
-        ["BreadCrum"] = 49393,
     }, -- [150]
     {
         -- [step
@@ -5088,7 +5067,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Done"] = {
             47485,
         },
-        ["BreadCrum"] = 47485,
         ["Coord"] = {
             ["y"] = 162.6,
             ["x"] = -711.2,
@@ -5131,12 +5109,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
         ["QuestLineSkip"] = 51226,
-        ["Qpart"] = {
+        Qpart = {
             [51226] = {
-                ["1"] = "1",
+                1,
             },
             [49733] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 28.94,
@@ -5202,10 +5180,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49716] = {
-                ["1"] = "1",
+                1,
             },
             [49720] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -5220,28 +5198,28 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49716] = {
-                ["1"] = "1",
+                1,
             },
             [49720] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [10]
     {
         -- [step
         ["QuestLineSkip"] = 51226,
-        ["Qpart"] = {
+        Qpart = {
             [50249] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraActionB"] = 1,
         ["Fillers"] = {
             [49716] = {
-                ["1"] = "1",
+                1,
             },
             [49720] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 16.83,
@@ -5253,9 +5231,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
         ["QuestLineSkip"] = 51226,
-        ["Qpart"] = {
+        Qpart = {
             [50249] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["ExtraActionB"] = 1,
@@ -5266,28 +5244,28 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49716] = {
-                ["1"] = "1",
+                1,
             },
             [49720] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [13]
     {
         -- [step
         ["QuestLineSkip"] = 51226,
-        ["Qpart"] = {
+        Qpart = {
             [50249] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["ExtraActionB"] = 1,
         ["Fillers"] = {
             [49716] = {
-                ["1"] = "1",
+                1,
             },
             [49720] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 22.32,
@@ -5299,18 +5277,18 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         -- [step
         ["QuestLineSkip"] = 51226,
-        ["Qpart"] = {
+        Qpart = {
             [49734] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraActionB"] = 1,
         ["Fillers"] = {
             [49716] = {
-                ["1"] = "1",
+                1,
             },
             [49720] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 12.7,
@@ -5323,12 +5301,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         -- [step
         ["QuestLineSkip"] = 51226,
         ["ExtraActionB"] = 1,
-        ["Qpart"] = {
+        Qpart = {
             [49720] = {
-                ["1"] = "1",
+                1,
             },
             [49716] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 43.96,
@@ -5374,20 +5352,20 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [50573] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [47486] = {
-                ["1"] = "1",
+                1,
             },
             [47488] = {
-                ["1"] = "1",
+                1,
             },
             [47487] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 8.1,
@@ -5398,21 +5376,21 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [50573] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [47486] = {
-                ["1"] = "1",
+                1,
             },
             [47488] = {
-                ["1"] = "1",
+                1,
             },
             [47487] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 9.78,
@@ -5423,15 +5401,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [47486] = {
-                ["1"] = "1",
+                1,
             },
             [47488] = {
-                ["1"] = "1",
+                1,
             },
             [47487] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -5459,7 +5437,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["PickUp"] = {
             50531,
         },
-        ["BreadCrum"] = 50531,
         ["Coord"] = {
             ["y"] = -56.5,
             ["x"] = -804.7,
@@ -5470,7 +5447,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Done"] = {
             50531,
         },
-        ["BreadCrum"] = 50531,
         ["Coord"] = {
             ["y"] = -117.1,
             ["x"] = -639,
@@ -5495,7 +5471,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = -156,
             ["x"] = -618.7,
         },
-        ["BreadCrum"] = 50544,
     },
     {
         -- [step
@@ -5506,14 +5481,13 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = -187.2,
             ["x"] = -625,
         },
-        ["BreadCrum"] = 50349,
     },
     {
         -- [step
         ["Gossip"] = 1,
-        ["Qpart"] = {
+        Qpart = {
             [53041] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -5524,9 +5498,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [53041] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -5573,14 +5547,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = -210.4,
             ["x"] = -628.7,
         },
-        ["BreadCrum"] = 50349,
     },
     {
         -- [step
         ["Done"] = {
             50349,
         },
-        ["BreadCrum"] = 50349,
         ["Coord"] = {
             ["y"] = -451.9,
             ["x"] = -808.3,
@@ -5607,7 +5579,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [50352] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -5621,7 +5593,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [50352] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -5635,20 +5607,20 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [50352] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [50352] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [50352] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -5667,7 +5639,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [50352] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -5681,7 +5653,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [50352] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -5695,7 +5667,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [50352] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -5709,7 +5681,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [50352] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [10]
@@ -5723,15 +5695,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [50352] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [11]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [50351] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -5742,7 +5714,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [50352] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [12]
@@ -5756,7 +5728,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [50352] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [13]
@@ -5770,21 +5742,21 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [50352] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [14]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [50351] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [50352] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -5795,9 +5767,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [50352] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 43.06,
@@ -5888,9 +5860,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [50356] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 19.23,
@@ -5978,7 +5950,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = -448.7,
             ["x"] = -835.8,
         },
-        ["BreadCrum"] = 50544,
     },
     {
         -- [step
@@ -5988,7 +5959,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = -638.7,
             ["x"] = -866,
         },
-        ["BreadCrum"] = 50544,
     },
     {
         -- [step
@@ -5999,7 +5969,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["Done"] = {
             50544,
         },
-        ["BreadCrum"] = 50544,
     },
     {
         -- [step
@@ -6025,13 +5994,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["GroupTask"] = 49069,
-        ["Group"] = 3,
+        ["Group"] = {
+            ["Number"] = 3,
+            ["QuestId"] = 49069
+        },
         ["Coord"] = {
             ["y"] = -926.8,
             ["x"] = -658.2,
         },
-        ["QaskPopup"] = 49069,
     },
     {
         -- [step
@@ -6055,25 +6025,25 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [49069] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["GroupTask"] = 49069,
         ["Fillers"] = {
             [49028] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48874] = {
-                ["1"] = "1",
+                1,
             },
             [48879] = {
-                ["1"] = "1",
+                1,
             },
             [48873] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -6087,21 +6057,21 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48873] = {
-                ["1"] = "1",
+                1,
             },
             [48874] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [48879] = {
-                ["1"] = "1",
+                1,
             },
             [49028] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Button"] = {
@@ -6115,13 +6085,13 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48879] = {
-                ["1"] = "1",
+                1,
             },
             [49028] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 57.52,
@@ -6172,7 +6142,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = -752.7,
             ["x"] = -271.4,
         },
-        ["BreadCrum"] = 49072,
     },
     {
         -- [step
@@ -6186,9 +6155,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [49039] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -6199,9 +6168,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [49039] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.69,
@@ -6212,9 +6181,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [49039] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -6255,14 +6224,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48909] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [49066] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -6273,14 +6242,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48909] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [49066] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -6291,14 +6260,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48909] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [49066] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -6309,14 +6278,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [10]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48909] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Fillers"] = {
             [49066] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -6327,14 +6296,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [11]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [48909] = {
-                ["5"] = "5",
+                5,
             },
         },
         ["Fillers"] = {
             [49066] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 13.69,
@@ -6345,9 +6314,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [12]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [49066] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 39.57,
@@ -6380,9 +6349,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [47489] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -6394,9 +6363,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [13]
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [47489] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.61,
@@ -6407,9 +6376,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     },
     {
         -- [step
-        ["Qpart"] = {
+        Qpart = {
             [47489] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.69,
@@ -6448,9 +6417,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48419] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -6481,9 +6450,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49178] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -6494,9 +6463,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49178] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
@@ -6507,9 +6476,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49178] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Gossip"] = 1,
@@ -6537,17 +6506,17 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49178] = {
-                ["5"] = "5",
+                5,
             },
         },
         ["Fillers"] = {
             [48421] = {
-                ["1"] = "1",
+                1,
             },
             [49230] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -6557,17 +6526,17 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49178] = {
-                ["6"] = "6",
+                6,
             },
         },
         ["Fillers"] = {
             [48421] = {
-                ["1"] = "1",
+                1,
             },
             [49230] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -6586,17 +6555,17 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48419] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [48421] = {
-                ["1"] = "1",
+                1,
             },
             [49230] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 13.68,
@@ -6606,17 +6575,17 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48419] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [49230] = {
-                ["1"] = "1",
+                1,
             },
             [48421] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 11.67,
@@ -6626,17 +6595,17 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49178] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Fillers"] = {
             [48421] = {
-                ["1"] = "1",
+                1,
             },
             [49230] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -6646,10 +6615,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49226] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 15.03,
@@ -6659,12 +6628,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48421] = {
-                ["1"] = "1",
+                1,
             },
             [49230] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 31.78,
@@ -6726,9 +6695,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["x"] = -1147.8,
             ["Range"] = 30,
         },
-        ["Qpart"] = {
+        Qpart = {
             [48505] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 126490,
@@ -6749,19 +6718,19 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [48505] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48516] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [48505] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 14.77,
@@ -6771,14 +6740,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48516] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [48505] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 14.77,
@@ -6788,14 +6757,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48516] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [48505] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 14.77,
@@ -6814,14 +6783,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [48505] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48505] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 16.64,
@@ -6849,9 +6818,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48539] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -6890,15 +6859,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [48558] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48774] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48606] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [12]
@@ -6911,15 +6880,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [48558] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48774] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48606] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [13]
@@ -6932,15 +6901,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [48558] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48774] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48606] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [14]
@@ -6954,35 +6923,35 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [48558] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48774] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48606] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48773] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [48558] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48774] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48606] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 7.05,
@@ -6992,22 +6961,22 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48776] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [48558] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48774] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48606] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 5.62,
@@ -7017,17 +6986,17 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48558] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48774] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [48606] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 50.23,
@@ -7078,16 +7047,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         ["PickUp"] = {
             49290,
         },
-        ["BreadCrum"] = 49290,
         ["Coord"] = {
             ["y"] = -1733.3,
             ["x"] = -924.2,
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49239] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -7114,9 +7082,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49239] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -7145,9 +7113,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49398] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -7158,9 +7126,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49398] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Button"] = {
@@ -7184,7 +7152,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         ["Range"] = 10.09,
         ["Waypoint"] = 49290,
-        ["BreadCrum"] = 49290,
         ["Coord"] = {
             ["y"] = -1853.5,
             ["x"] = -752.2,
@@ -7193,7 +7160,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         ["Range"] = 10.05,
         ["Waypoint"] = 49290,
-        ["BreadCrum"] = 49290,
         ["Coord"] = {
             ["y"] = -1924.1,
             ["x"] = -752.8,
@@ -7202,7 +7168,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         ["Range"] = 6.98,
         ["Waypoint"] = 49290,
-        ["BreadCrum"] = 49290,
         ["Coord"] = {
             ["y"] = -1936.8,
             ["x"] = -742.7,
@@ -7211,7 +7176,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         ["Range"] = 4.12,
         ["Waypoint"] = 49290,
-        ["BreadCrum"] = 49290,
         ["Coord"] = {
             ["y"] = -1937,
             ["x"] = -752.5,
@@ -7220,7 +7184,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         ["Range"] = 7.39,
         ["Waypoint"] = 49290,
-        ["BreadCrum"] = 49290,
         ["Coord"] = {
             ["y"] = -1923.8,
             ["x"] = -750.3,
@@ -7229,7 +7192,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         ["Range"] = 9.76,
         ["Waypoint"] = 49290,
-        ["BreadCrum"] = 49290,
         ["Coord"] = {
             ["y"] = -1926.5,
             ["x"] = -736.5,
@@ -7238,7 +7200,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         ["Range"] = 4.55,
         ["Waypoint"] = 49290,
-        ["BreadCrum"] = 49290,
         ["Coord"] = {
             ["y"] = -1941.5,
             ["x"] = -723.2,
@@ -7249,7 +7210,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = -1937.9,
             ["x"] = -717.3,
         },
-        ["BreadCrum"] = 49290,
         ["Done"] = {
             49290,
         },
@@ -7313,9 +7273,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [47]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49401] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -7326,15 +7286,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [48]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49407] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [49402] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -7353,9 +7313,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [49]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49402] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -7440,9 +7400,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49403] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 6.17,
@@ -7521,12 +7481,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [63]
@@ -7539,19 +7499,19 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [64]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49409] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -7562,12 +7522,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [65]
@@ -7580,12 +7540,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [66]
@@ -7598,12 +7558,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [67]
@@ -7616,12 +7576,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [68]
@@ -7634,12 +7594,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [69]
@@ -7652,12 +7612,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [70]
@@ -7670,12 +7630,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [71]
@@ -7688,12 +7648,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [72]
@@ -7707,12 +7667,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [73]
@@ -7726,19 +7686,19 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [74]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49522] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -7748,12 +7708,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [75]
@@ -7767,12 +7727,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [76]
@@ -7786,12 +7746,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [77]
@@ -7804,12 +7764,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [78]
@@ -7822,12 +7782,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [79]
@@ -7840,19 +7800,19 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [80]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49409] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
@@ -7863,12 +7823,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [81]
@@ -7881,12 +7841,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [82]
@@ -7899,30 +7859,30 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
     }, -- [83]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49409] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -7932,14 +7892,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [84]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49400] = {
-                ["1"] = "1",
+                1,
             },
             [49399] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["Range"] = 20.69,
@@ -7949,9 +7909,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [85]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49409] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Range"] = 0.61,
@@ -7961,9 +7921,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [86]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49409] = {
-                ["5"] = "5",
+                5,
             },
         },
         ["Range"] = 0.69,
@@ -8105,9 +8065,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [102]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49404] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -8117,9 +8077,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [103]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49404] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -8129,9 +8089,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [104]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49404] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 15.52,
@@ -8160,9 +8120,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [107]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49405] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -8173,9 +8133,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     }, -- [108]
     {
         ["ETA"] = 58,
-        ["Qpart"] = {
+        Qpart = {
             [49405] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 50.61,
@@ -8203,11 +8163,11 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [52431] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
+                1,
+                2,
+                3,
             },
         },
         ["Range"] = 8.24,
@@ -8233,14 +8193,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
             ["y"] = -614,
             ["x"] = 469.3,
         },
-        ["BreadCrum"] = 49869,
     },
     {
         ["Coord"] = {
             ["y"] = -713.5,
             ["x"] = 782.7,
         },
-        ["BreadCrum"] = 49869,
         ["Done"] = {
             49869,
         },
@@ -8265,15 +8223,15 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [52787] = {
-                ["1"] = "1",
+                1,
             },
             [52750] = {
-                ["1"] = "1",
+                1,
             },
             [49737] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 20.33,
@@ -8319,9 +8277,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49738] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 8.69,
@@ -8383,10 +8341,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49739] = {
-                ["1"] = "1",
+                1,
             },
             [49736] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -8408,10 +8366,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49739] = {
-                ["1"] = "1",
+                1,
             },
             [49736] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -8425,9 +8383,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49741] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -8437,10 +8395,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49739] = {
-                ["1"] = "1",
+                1,
             },
             [49736] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -8454,9 +8412,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49741] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -8466,10 +8424,10 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49739] = {
-                ["1"] = "1",
+                1,
             },
             [49736] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -8485,12 +8443,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     {
         ["Fillers"] = {
             [49739] = {
-                ["1"] = "1",
+                1,
             },
         },
-        ["Qpart"] = {
+        Qpart = {
             [49736] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -8509,9 +8467,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49741] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 4.96,
@@ -8521,14 +8479,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         ["Fillers"] = {
             [49739] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49741] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Range"] = 43.78,
@@ -8538,9 +8496,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49741] = {
-                ["5"] = "5",
+                5,
             },
         },
         ["Range"] = 4.67,
@@ -8550,9 +8508,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49741] = {
-                ["6"] = "6",
+                6,
             },
         },
         ["Range"] = 62.77,
@@ -8562,14 +8520,14 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49740] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [49739] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 26.07,
@@ -8579,9 +8537,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49739] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 26.07,
@@ -8628,9 +8586,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49741] = {
-                ["5"] = "5",
+                5,
             },
         },
         ["Range"] = 4.67,
@@ -8640,9 +8598,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49741] = {
-                ["6"] = "6",
+                6,
             },
         },
         ["Range"] = 62.77,
@@ -8661,9 +8619,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50110] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -8691,9 +8649,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50795] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -8730,9 +8688,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50787] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -8761,12 +8719,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50789] = {
-                ["1"] = "1",
+                1,
             },
             [50788] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 14.2,
@@ -8795,9 +8753,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50790] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -8807,9 +8765,9 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50790] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 4.18,
@@ -8950,7 +8908,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51490] = {
                 1,
             },
@@ -9008,7 +8966,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     }, -- [10]
     {
         ["ClearZP"] = 1,
-        ["Qpart"] = {
+        Qpart = {
             [49725] = {
                 1,
             },
@@ -9023,7 +8981,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [11]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49725] = {
                 [2] = 1,
             },
@@ -9080,7 +9038,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49706] = {
                 1,
             },
@@ -9132,7 +9090,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49887] = {
                 1,
             },
@@ -9176,7 +9134,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49793] = {
                 [1] = 1,
             },
@@ -9205,7 +9163,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49793] = {
                 [2] = 2,
             },
@@ -9259,7 +9217,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49794] = {
                 1,
             },
@@ -9288,7 +9246,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49793] = {
                 [3] = 3,
             },
@@ -9317,7 +9275,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49791] = {
                 1,
             },
@@ -9362,7 +9320,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49975] = {
                 1,
             },
@@ -9405,7 +9363,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["PickUp"] = {
             51552,
         },
-        ["BreadCrum"] = 51552,
         ["Coord"] = {
             ["y"] = 3026,
             ["x"] = -452.4,
@@ -9415,7 +9372,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["PickUp"] = {
             51582,
         },
-        ["BreadCrum"] = 51582,
         ["Coord"] = {
             ["y"] = 2998.6,
             ["x"] = -423.2,
@@ -9437,7 +9393,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["Done"] = {
             51582,
         },
-        ["BreadCrum"] = 51582,
     },
     {
         ["PickUp"] = {
@@ -9449,7 +9404,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50343] = {
                 1,
             },
@@ -9482,14 +9437,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     {
         ["QpartPart"] = {
             [50070] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "1/5",
         ["Fillers"] = {
             [50359] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -9501,14 +9456,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     {
         ["QpartPart"] = {
             [50070] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "2/5",
         ["Fillers"] = {
             [50359] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -9520,14 +9475,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     {
         ["QpartPart"] = {
             [50070] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "3/5",
         ["Fillers"] = {
             [50359] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -9539,14 +9494,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     {
         ["QpartPart"] = {
             [50070] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "4/5",
         ["Fillers"] = {
             [50359] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -9558,14 +9513,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     {
         ["QpartPart"] = {
             [50070] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "5/5",
         ["Fillers"] = {
             [50359] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -9575,10 +9530,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50359] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 20.69,
@@ -9631,7 +9586,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [11]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50064] = {
                 1,
             },
@@ -9643,7 +9598,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50064] = {
                 [2] = 1,
             },
@@ -9673,9 +9628,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50161] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -9687,7 +9642,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     {
         ["QpartPart"] = {
             [50161] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["TrigText"] = "1/3",
@@ -9698,14 +9653,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50161] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
         ["QpartPart"] = {
             [50161] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["TrigText"] = "2/3",
@@ -9716,14 +9671,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50161] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
         ["QpartPart"] = {
             [50161] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["TrigText"] = "3/3",
@@ -9734,14 +9689,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50161] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50161] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 20.69,
@@ -9778,12 +9733,12 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50162] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50168] = {
                 1,
             },
@@ -9800,7 +9755,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50162] = {
                 1,
             },
@@ -9831,7 +9786,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50504] = {
                 1,
             },
@@ -9864,9 +9819,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50534] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
@@ -9884,9 +9839,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50264] = {
-                ["1"] = "1",
+                1,
             },
             [50493] = {
                 1,
@@ -9957,7 +9912,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50139] = {
                 1,
             },
@@ -9977,7 +9932,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49996] = {
                 1,
             },
@@ -10012,7 +9967,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49997] = {
                 1,
             },
@@ -10025,9 +9980,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49997] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 6.81,
@@ -10063,7 +10018,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [10]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49998] = {
                 1,
             },
@@ -10111,9 +10066,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50594] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -10132,11 +10087,11 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50595] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [50593] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 9.17,
@@ -10146,9 +10101,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50594] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["DroppableQuest"] = {
@@ -10167,11 +10122,11 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50595] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [50593] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 6.62,
@@ -10181,9 +10136,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50594] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["DroppableQuest"] = {
@@ -10202,11 +10157,11 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50595] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [50593] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 6.34,
@@ -10216,13 +10171,13 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50595] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [50593] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -10275,9 +10230,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50609] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -10291,11 +10246,11 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50610] = {
-                ["1"] = "1",
+                1,
             },
             [50608] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 12.55,
@@ -10305,10 +10260,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50609] = {
-                ["3"] = "3",
-                ["2"] = "2",
+                3,
+                2,
             },
         },
         ["Range"] = 3.04,
@@ -10318,11 +10273,11 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50610] = {
-                ["1"] = "1",
+                1,
             },
             [50608] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Button"] = {
@@ -10336,13 +10291,13 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50608] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [50610] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -10382,9 +10337,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     },
     {
         ["ExtraActionB"] = 1,
-        ["Qpart"] = {
+        Qpart = {
             [50611] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -10406,7 +10361,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["PickUp"] = {
             50612,
         },
-        ["BreadCrum"] = 50612,
         ["Coord"] = {
             ["y"] = 3387.4,
             ["x"] = -402.4,
@@ -10417,7 +10371,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["y"] = 3531.6,
             ["x"] = -240.4,
         },
-        ["BreadCrum"] = 50612,
         ["Done"] = {
             50612,
         },
@@ -10442,25 +10395,25 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50777] = {
-                ["1"] = "1",
+                1,
             },
             [50779] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50778] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [50777] = {
-                ["1"] = "1",
+                1,
             },
             [50779] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 14.25,
@@ -10470,19 +10423,19 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50780] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [50779] = {
-                ["1"] = "1",
+                1,
             },
             [50777] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -10492,18 +10445,18 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50778] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [50779] = {
-                ["1"] = "1",
+                1,
             },
             [50777] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 15.45,
@@ -10513,15 +10466,15 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50777] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [50779] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 25.68,
@@ -10550,9 +10503,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [10]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50783] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 11.82,
@@ -10562,9 +10515,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [11]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50779] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 19.87,
@@ -10593,9 +10546,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50784] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["RaidIcon"] = 136650,
@@ -10607,9 +10560,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50784] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -10637,9 +10590,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50781] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -10668,14 +10621,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51320] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [51278] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -10685,14 +10638,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51320] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [51278] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -10702,9 +10655,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51320] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 21.28,
@@ -10714,14 +10667,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [51278] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51278] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 21.28,
@@ -10750,9 +10703,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51319] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -10789,9 +10742,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50824] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 23.15,
@@ -10841,7 +10794,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["Done"] = {
             51552,
         },
-        ["BreadCrum"] = 51552,
     },
     {
         ["PickUp"] = {
@@ -10855,20 +10807,20 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [47]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49745] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [49744] = {
-                ["1"] = "1",
+                1,
             },
             [51534] = {
-                ["1"] = "1",
+                1,
             },
             [49746] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraActionB"] = 1,
@@ -10879,17 +10831,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [48]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49744] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [51534] = {
-                ["1"] = "1",
+                1,
             },
             [49746] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraActionB"] = 1,
@@ -10902,15 +10854,15 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     {
         ["QpartPart"] = {
             [49744] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [51534] = {
-                ["1"] = "1",
+                1,
             },
             [49746] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraActionB"] = 1,
@@ -10922,15 +10874,15 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [50]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49744] = {
-                ["2"] = "2",
+                2,
             },
             [51534] = {
-                ["1"] = "1",
+                1,
             },
             [49746] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraActionB"] = 1,
@@ -10972,9 +10924,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["GroupTask"] = 51217,
-        ["QaskPopup"] = 51217,
-        ["Group"] = 3,
+        ["Group"] = {
+            ["Number"] = 3,
+            ["QuestId"] = 51217
+        },
         ["Coord"] = {
             ["y"] = 3066.1,
             ["x"] = 58.2,
@@ -11000,17 +10953,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50910] = {
-                ["1"] = "1",
+                1,
             },
             [50909] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51159] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -11020,10 +10973,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50910] = {
-                ["1"] = "1",
+                1,
             },
             [50909] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -11037,18 +10990,18 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50910] = {
-                ["1"] = "1",
+                1,
             },
             [50909] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
         ["GroupTask"] = 51217,
-        ["Qpart"] = {
+        Qpart = {
             [51217] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 15.61,
@@ -11058,17 +11011,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50908] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [50910] = {
-                ["1"] = "1",
+                1,
             },
             [50909] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11095,10 +11048,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50910] = {
-                ["1"] = "1",
+                1,
             },
             [50909] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [10]
@@ -11111,10 +11064,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50910] = {
-                ["1"] = "1",
+                1,
             },
             [50909] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [11]
@@ -11127,17 +11080,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50910] = {
-                ["1"] = "1",
+                1,
             },
             [50909] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50908] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Button"] = {
@@ -11156,20 +11109,20 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50910] = {
-                ["1"] = "1",
+                1,
             },
             [50909] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50910] = {
-                ["1"] = "1",
+                1,
             },
             [50909] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 38.89,
@@ -11193,16 +11146,15 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["PickUp"] = {
             51554,
         },
-        ["BreadCrum"] = 51554,
         ["Coord"] = {
             ["y"] = 3066.6,
             ["x"] = 58.2,
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49755] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 7.48,
@@ -11212,9 +11164,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49755] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 7.27,
@@ -11236,7 +11188,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["PickUp"] = {
             50157,
         },
-        ["BreadCrum"] = 50157,
         ["Coord"] = {
             ["y"] = 2648.4,
             ["x"] = 72.2,
@@ -11246,7 +11197,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["PickUp"] = {
             50158,
         },
-        ["BreadCrum"] = 50158,
         ["Coord"] = {
             ["y"] = 2648.4,
             ["x"] = 72.2,
@@ -11265,12 +11215,12 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     },
     {
         ["QuestLineSkip"] = 51310,
-        ["Qpart"] = {
+        Qpart = {
             [51314] = {
-                ["1"] = "1",
+                1,
             },
             [51310] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 56.09,
@@ -11295,7 +11245,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["y"] = 2665.6,
             ["x"] = 414.1,
         },
-        ["BreadCrum"] = 50158,
         ["Done"] = {
             50158,
         },
@@ -11319,25 +11268,25 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50133] = {
-                ["1"] = "1",
+                1,
             },
             [50134] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50135] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [50133] = {
-                ["1"] = "1",
+                1,
             },
             [50134] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 8.41,
@@ -11347,17 +11296,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [10]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50135] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [50133] = {
-                ["1"] = "1",
+                1,
             },
             [50134] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 6.14,
@@ -11367,17 +11316,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50135] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [50133] = {
-                ["1"] = "1",
+                1,
             },
             [50134] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 13.46,
@@ -11387,9 +11336,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50134] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 320.57,
@@ -11399,7 +11348,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50133] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -11414,7 +11363,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50133] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -11428,17 +11377,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50133] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50136] = {
-                ["1"] = "1",
+                1,
             },
             [50133] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 8.45,
@@ -11483,20 +11432,20 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [49886] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraActionB"] = 1,
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49960] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [49886] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 17.71,
@@ -11506,9 +11455,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49886] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 14.98,
@@ -11533,7 +11482,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["y"] = 2396.6,
             ["x"] = 462.3,
         },
-        ["BreadCrum"] = 50157,
         ["Done"] = {
             50157,
         },
@@ -11557,20 +11505,20 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50041] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
         ["QpartPart"] = {
             [50065] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
         ["Fillers"] = {
             [50041] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11583,12 +11531,12 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50041] = {
-                ["1"] = "1",
+                1,
             },
             [50065] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11620,9 +11568,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [48]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50069] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 1.79,
@@ -11632,9 +11580,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [49]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50069] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -11662,9 +11610,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [52]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50088] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -11686,7 +11634,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["PickUp"] = {
             50622,
         },
-        ["BreadCrum"] = 50622,
         ["Coord"] = {
             ["y"] = 2249.6,
             ["x"] = 466.6,
@@ -11696,7 +11643,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["Done"] = {
             50622,
         },
-        ["BreadCrum"] = 50622,
         ["Coord"] = {
             ["y"] = 2722.4,
             ["x"] = 803.2,
@@ -11714,7 +11660,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     }, -- [63]
     {
         ["Waypoint"] = 51554,
-        ["BreadCrum"] = 51554,
         ["Range"] = 13.9,
         ["Coord"] = {
             ["y"] = 2721.8,
@@ -11722,9 +11667,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [64]
     {
-        ["GroupTask"] = 49730,
-        ["QaskPopup"] = 49730,
-        ["Group"] = 3,
+        ["Group"] = {
+            ["Number"] = 3,
+            ["QuestId"] = 49730
+        },
         ["Coord"] = {
             ["y"] = 2820.4,
             ["x"] = 727.6,
@@ -11752,7 +11698,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["Done"] = {
             51554,
         },
-        ["BreadCrum"] = 51554,
         ["Coord"] = {
             ["y"] = 3022.1,
             ["x"] = 904.7,
@@ -11778,19 +11723,19 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50802] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [71]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50674] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [50802] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 14.67,
@@ -11800,12 +11745,12 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [72]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50810] = {
-                ["1"] = "1",
+                1,
             },
             [50802] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 18.02,
@@ -11829,7 +11774,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["PickUp"] = {
             50675,
         },
-        ["BreadCrum"] = 50675,
         ["Coord"] = {
             ["y"] = 3021.9,
             ["x"] = 902.2,
@@ -11838,7 +11782,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     {
         ["Range"] = 5.63,
         ["Waypoint"] = 50675,
-        ["BreadCrum"] = 50675,
         ["Coord"] = {
             ["y"] = 3054.5,
             ["x"] = 845,
@@ -11847,7 +11790,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     {
         ["Range"] = 6.2,
         ["Waypoint"] = 50675,
-        ["BreadCrum"] = 50675,
         ["Coord"] = {
             ["y"] = 3067.9,
             ["x"] = 830.7,
@@ -11858,7 +11800,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["y"] = 3062.6,
             ["x"] = 822.1,
         },
-        ["BreadCrum"] = 50675,
         ["Done"] = {
             50675,
         },
@@ -11876,20 +11817,20 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [79]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50697] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [50696] = {
-                ["1"] = "1",
+                1,
             },
             [50704] = {
-                ["1"] = "1",
+                1,
             },
             [50691] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11910,13 +11851,13 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50696] = {
-                ["1"] = "1",
+                1,
             },
             [50704] = {
-                ["1"] = "1",
+                1,
             },
             [50691] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11932,13 +11873,13 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50696] = {
-                ["1"] = "1",
+                1,
             },
             [50704] = {
-                ["1"] = "1",
+                1,
             },
             [50691] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11946,20 +11887,20 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [82]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50697] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [50696] = {
-                ["1"] = "1",
+                1,
             },
             [50704] = {
-                ["1"] = "1",
+                1,
             },
             [50691] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11975,20 +11916,19 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["PickUp"] = {
             51140,
         },
-        ["BreadCrum"] = 51140,
         ["Coord"] = {
             ["y"] = 3012.3,
             ["x"] = 457.8,
         },
         ["Fillers"] = {
             [50696] = {
-                ["1"] = "1",
+                1,
             },
             [50704] = {
-                ["1"] = "1",
+                1,
             },
             [50691] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -11996,15 +11936,15 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [84]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50696] = {
-                ["1"] = "1",
+                1,
             },
             [50704] = {
-                ["1"] = "1",
+                1,
             },
             [50691] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -12027,9 +11967,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["GroupTask"] = 52876,
-        ["QaskPopup"] = 52876,
-        ["Group"] = 3,
+        ["Group"] = {
+            ["Number"] = 3,
+            ["QuestId"] = 52876
+        },
         ["Coord"] = {
             ["y"] = 3342.3,
             ["x"] = 690.4,
@@ -12062,9 +12003,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51711] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -12083,9 +12024,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51752] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -12096,11 +12037,11 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["ExtraActionB"] = 1,
         ["Fillers"] = {
             [51711] = {
-                ["3"] = "3",
-                ["2"] = "2",
+                3,
+                2,
             },
             [51726] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 5.93,
@@ -12110,13 +12051,13 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51711] = {
-                ["3"] = "3",
-                ["2"] = "2",
+                3,
+                2,
             },
             [51726] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraActionB"] = 1,
@@ -12230,9 +12171,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     },
     {
         ["GroupTask"] = 52876,
-        ["Qpart"] = {
+        Qpart = {
             [52876] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 23.11,
@@ -12242,16 +12183,16 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51728] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
             [51723] = {
-                ["1"] = "1",
+                1,
             },
             [51720] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -12290,9 +12231,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51712] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 12.51,
@@ -12302,11 +12243,11 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51712] = {
-                ["3"] = "3",
-                ["2"] = "2",
-                ["4"] = "4",
+                3,
+                2,
+                4,
             },
         },
         ["Range"] = 17.2,
@@ -12350,7 +12291,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             50704,
             50691,
         },
-        ["BreadCrum"] = 51140,
         ["Coord"] = {
             ["y"] = 3060.9,
             ["x"] = 817.9,
@@ -12375,15 +12315,15 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [97]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50741] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 2,
         ["Fillers"] = {
             [50814] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -12393,15 +12333,15 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [98]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50741] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [50814] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -12429,14 +12369,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [101]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50753] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [50814] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -12458,7 +12398,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50814] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [103]
@@ -12467,21 +12407,20 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             50797,
             50774,
         },
-        ["BreadCrum"] = 50797,
         ["Coord"] = {
             ["y"] = 3108.6,
             ["x"] = 925.7,
         },
     }, -- [104]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50774] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [50814] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 13.25,
@@ -12491,9 +12430,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [105]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50814] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 30.65,
@@ -12507,7 +12446,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["y"] = 3434.3,
             ["x"] = 1034.2,
         },
-        ["BreadCrum"] = 50797,
         ["Done"] = {
             50797,
         },
@@ -12524,17 +12462,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [108]
     {
-        ["Qpart"] = {
+        Qpart = {
             [51343] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [51339] = {
-                ["1"] = "1",
+                1,
             },
             [51352] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -12544,17 +12482,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [109]
     {
-        ["Qpart"] = {
+        Qpart = {
             [51343] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [51339] = {
-                ["1"] = "1",
+                1,
             },
             [51352] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -12564,18 +12502,18 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [110]
     {
-        ["Qpart"] = {
+        Qpart = {
             [51343] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [51339] = {
-                ["1"] = "1",
+                1,
             },
             [51352] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -12585,13 +12523,13 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [111]
     {
-        ["Qpart"] = {
+        Qpart = {
             [51339] = {
-                ["1"] = "1",
+                1,
             },
             [51352] = {
-                ["1"] = "1",
-                ["2"] = "2",
+                1,
+                2,
             },
         },
         ["Range"] = 28.68,
@@ -12664,7 +12602,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [51371] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -12677,19 +12615,19 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [51371] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51221] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [51371] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 16.98,
@@ -12708,17 +12646,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [51371] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51540] = {
-                ["1"] = "1",
+                1,
             },
             [51371] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 17.95,
@@ -12757,9 +12695,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [11]
     {
-        ["Qpart"] = {
+        Qpart = {
             [51427] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -12804,9 +12742,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51545] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraActionB"] = 1,
@@ -12850,12 +12788,12 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51220] = {
-                ["1"] = "1",
+                1,
             },
             [51222] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 32.31,
@@ -12884,9 +12822,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51386] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -12896,9 +12834,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51386] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 42.07,
@@ -12973,17 +12911,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50955] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [50803] = {
-                ["1"] = "1",
+                1,
             },
             [52132] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraActionB"] = 1,
@@ -13003,24 +12941,24 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50803] = {
-                ["1"] = "1",
+                1,
             },
             [52132] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraActionB"] = 1,
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50742] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [52132] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraActionB"] = 1,
@@ -13031,15 +12969,15 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50742] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [52132] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraActionB"] = 1,
@@ -13050,9 +12988,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [52132] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["ExtraActionB"] = 1,
@@ -13063,15 +13001,15 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50742] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [50803] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -13081,14 +13019,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50742] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Fillers"] = {
             [50803] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -13098,9 +13036,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50803] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 48.16,
@@ -13163,20 +13101,20 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50354] = {
-                ["1"] = "1",
+                1,
             },
             [50353] = {
-                ["1"] = "1",
+                1,
             },
             [50111] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
-                ["4"] = "4",
+                1,
+                2,
+                3,
+                4,
 
             },
             [50367] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -13189,9 +13127,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [49]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50353] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["DroppableQuest"] = {
@@ -13201,20 +13139,20 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50354] = {
-                ["1"] = "1",
+                1,
             },
             [50353] = {
-                ["1"] = "1",
+                1,
             },
             [50111] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
-                ["4"] = "4",
+                1,
+                2,
+                3,
+                4,
 
             },
             [50367] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -13227,18 +13165,18 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [50]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50354] = {
-                ["1"] = "1",
+                1,
             },
             [50353] = {
-                ["1"] = "1",
+                1,
             },
             [50111] = {
-                ["1"] = "1",
-                ["2"] = "2",
-                ["3"] = "3",
-                ["4"] = "4",
+                1,
+                2,
+                3,
+                4,
 
             },
         },
@@ -13252,7 +13190,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13263,9 +13201,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     }, -- [51]
     {
         ["GroupTask"] = 49730,
-        ["Qpart"] = {
+        Qpart = {
             [49730] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 17.6,
@@ -13283,7 +13221,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13301,7 +13239,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13322,7 +13260,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13342,7 +13280,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13360,10 +13298,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13382,10 +13320,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13403,10 +13341,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13424,10 +13362,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13439,7 +13377,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     {
         ["QpartPart"] = {
             [50340] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -13450,10 +13388,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13471,10 +13409,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13492,10 +13430,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13513,10 +13451,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13534,10 +13472,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13549,7 +13487,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     {
         ["QpartPart"] = {
             [50340] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13559,10 +13497,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50363] = {
-                ["1"] = "1",
+                1,
             },
             [50367] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "2/5",
@@ -13573,9 +13511,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [65]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50365] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["DroppableQuest"] = {
@@ -13585,10 +13523,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.61,
@@ -13606,10 +13544,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [67]
@@ -13622,10 +13560,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [68]
@@ -13638,10 +13576,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [69]
@@ -13654,25 +13592,25 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [70]
     {
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["QpartPart"] = {
             [50340] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13688,9 +13626,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [71]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50365] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13700,10 +13638,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -13721,10 +13659,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [73]
@@ -13737,17 +13675,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [74]
     {
         ["QpartPart"] = {
             [50340] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13757,10 +13695,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "4/5",
@@ -13779,10 +13717,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [76]
@@ -13795,10 +13733,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [77]
@@ -13811,17 +13749,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [78]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50340] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13831,10 +13769,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -13844,9 +13782,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [79]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50365] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["DroppableQuest"] = {
@@ -13856,10 +13794,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -13869,12 +13807,12 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [80]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50367] = {
-                ["1"] = "1",
+                1,
             },
             [50363] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -13934,9 +13872,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [86]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50368] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -13967,9 +13905,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [89]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50640] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 5.87,
@@ -13998,7 +13936,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["PickUp"] = {
             49818,
         },
-        ["BreadCrum"] = 49818,
         ["Coord"] = {
             ["y"] = 2516.5,
             ["x"] = -32.8,
@@ -14049,9 +13986,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [98]
     {
-        ["GroupTask"] = 51204,
-        ["QaskPopup"] = 51204,
-        ["Group"] = 3,
+        ["Group"] = {
+            ["Number"] = 3,
+            ["QuestId"] = 51204
+        },
         ["Coord"] = {
             ["y"] = 2586.8,
             ["x"] = 1601.7,
@@ -14068,9 +14006,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [99]
     {
-        ["Qpart"] = {
+        Qpart = {
             [51214] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -14080,9 +14018,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [100]
     {
-        ["Qpart"] = {
+        Qpart = {
             [51214] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.75,
@@ -14103,20 +14041,20 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [103]
     {
-        ["Qpart"] = {
+        Qpart = {
             [51214] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [51251] = {
-                ["1"] = "1",
+                1,
             },
             [51205] = {
-                ["1"] = "1",
+                1,
             },
             [51492] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -14129,15 +14067,15 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [104]
     {
-        ["Qpart"] = {
+        Qpart = {
             [51251] = {
-                ["1"] = "1",
+                1,
             },
             [51205] = {
-                ["1"] = "1",
+                1,
             },
             [51492] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -14189,17 +14127,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51200] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [51203] = {
-                ["1"] = "1",
+                1,
             },
             [51215] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -14213,17 +14151,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     },
     {
         ["GroupTask"] = 51204,
-        ["Qpart"] = {
+        Qpart = {
             [51204] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [51203] = {
-                ["1"] = "1",
+                1,
             },
             [51215] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -14236,12 +14174,12 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51203] = {
-                ["1"] = "1",
+                1,
             },
             [51215] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -14282,9 +14220,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51335] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -14294,10 +14232,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51335] = {
-                ["3"] = "3",
-                ["2"] = "2",
+                3,
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -14343,7 +14281,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [51207] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -14370,7 +14308,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [51207] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -14387,10 +14325,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         ["Fillers"] = {
             [51207] = {
-                ["1"] = "1",
+                1,
             },
             [51208] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -14399,17 +14337,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51209] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [51207] = {
-                ["1"] = "1",
+                1,
             },
             [51208] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -14431,12 +14369,12 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51207] = {
-                ["1"] = "1",
+                1,
             },
             [51208] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -14463,7 +14401,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["Done"] = {
             49818,
         },
-        ["BreadCrum"] = 49818,
         ["Coord"] = {
             ["y"] = 2920.1,
             ["x"] = 1630.5,
@@ -14481,17 +14418,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [114]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50616] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [50621] = {
-                ["1"] = "1",
+                1,
             },
             [50614] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 11.86,
@@ -14501,17 +14438,17 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50616] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [50621] = {
-                ["1"] = "1",
+                1,
             },
             [50614] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 6.87,
@@ -14521,12 +14458,12 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50621] = {
-                ["1"] = "1",
+                1,
             },
             [50614] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 25.6,
@@ -14601,18 +14538,18 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50645] = {
-                ["1"] = "1",
+                1,
             },
             [50644] = {
-                ["1"] = "1",
+                1,
             },
             [50649] = {
-                ["1"] = "1",
+                1,
             },
             [50653] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 22.5,
@@ -14662,9 +14599,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50773] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -14692,15 +14629,15 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50672] = {
-                ["1"] = "1",
+                1,
             },
             [50698] = {
-                ["1"] = "1",
+                1,
             },
             [50679] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 18.5,
@@ -14747,14 +14684,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50705] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [50706] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -14767,14 +14704,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50705] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [50706] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -14787,14 +14724,14 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50705] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [50706] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Button"] = {
@@ -14807,9 +14744,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50706] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 29.08,
@@ -14854,9 +14791,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49831] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 17.37,
@@ -14887,7 +14824,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         ["PickUp"] = {
             53045,
         },
-        ["BreadCrum"] = 53045,
         ["Coord"] = {
             ["y"] = 3366.9,
             ["x"] = 1371.7,
@@ -14898,7 +14834,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["y"] = 3071.9,
             ["x"] = 1867.5,
         },
-        ["BreadCrum"] = 53045,
         ["Done"] = {
             53045,
         },
@@ -14913,9 +14848,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50376] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -14926,9 +14861,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50376] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 10.51,
@@ -14938,9 +14873,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50376] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 9.22,
@@ -14968,9 +14903,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50391] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -14981,9 +14916,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50391] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -14993,10 +14928,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [10]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50391] = {
-                ["3"] = "3",
-                ["4"] = "4",
+                3,
+                4,
             },
         },
         ["Range"] = 9.44,
@@ -15006,9 +14941,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [11]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50391] = {
-                ["5"] = "5",
+                5,
             },
         },
         ["Range"] = 47.1,
@@ -15018,9 +14953,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50391] = {
-                ["6"] = "6",
+                6,
             },
         },
         ["Range"] = 25.39,
@@ -15048,9 +14983,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50418] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -15061,9 +14996,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50418] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -15073,9 +15008,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50418] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.69,
@@ -15085,10 +15020,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50418] = {
-                ["6"] = "6",
-                ["4"] = "4",
+                6,
+                4,
             },
         },
         ["Range"] = 3.41,
@@ -15098,10 +15033,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50418] = {
-                ["7"] = "7",
-                ["4"] = "4",
+                7,
+                4,
             },
         },
         ["Range"] = 0.44,
@@ -15111,10 +15046,10 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50418] = {
-                ["5"] = "5",
-                ["4"] = "4",
+                5,
+                4,
             },
         },
         ["Range"] = 3.04,
@@ -15124,9 +15059,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50418] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Range"] = 19.38,
@@ -15154,9 +15089,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [52130] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -15167,9 +15102,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [52130] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Range"] = 0.69,
@@ -15179,9 +15114,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [52130] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -15191,9 +15126,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [52130] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Range"] = 0.75,
@@ -15203,9 +15138,9 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [52130] = {
-                ["5"] = "5",
+                5,
             },
         },
         ["Range"] = 13.9,
@@ -15288,7 +15223,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48622] = {
                 [2] = 1,
             },
@@ -15301,7 +15236,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48622] = {
                 [3] = 1,
             },
@@ -15332,7 +15267,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [47968] = {
                 [2] = 1,
             },
@@ -15362,7 +15297,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [47968] = {
                 [3] = 1,
             },
@@ -15392,7 +15327,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [47968] = {
                 1,
             },
@@ -15494,7 +15429,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [47979] = {
                 1,
             },
@@ -15526,13 +15461,13 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     {
         ["QpartPart"] = {
             [47981] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "1/4",
         ["Fillers"] = {
             [47980] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -15542,14 +15477,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [47979] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [47980] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 9.31,
@@ -15561,13 +15496,13 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     {
         ["QpartPart"] = {
             [47981] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "2/4",
         ["Fillers"] = {
             [47980] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -15579,13 +15514,13 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     {
         ["QpartPart"] = {
             [47981] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "3/4",
         ["Fillers"] = {
             [47980] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -15597,13 +15532,13 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     {
         ["QpartPart"] = {
             [47981] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "4/4",
         ["Fillers"] = {
             [47980] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -15613,9 +15548,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [47980] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 30.79,
@@ -15653,7 +15588,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [47982] = {
                 1,
             },
@@ -15665,7 +15600,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [47982] = {
                 [2] = 1,
             },
@@ -15695,9 +15630,10 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["GroupTask"] = 51547,
-        ["QaskPopup"] = 51547,
-        ["Group"] = 3,
+        ["Group"] = {
+            ["Number"] = 3,
+            ["QuestId"] = 51547
+        },
         ["Coord"] = {
             ["y"] = -79.1,
             ["x"] = 2097.5,
@@ -15724,9 +15660,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["GroupTask"] = 51547,
-        ["Qpart"] = {
+        Qpart = {
             [51547] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 12.77,
@@ -15776,7 +15712,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         ["PickUp"] = {
             48948,
         },
-        ["BreadCrum"] = 48948,
         ["Coord"] = {
             ["y"] = -79.1,
             ["x"] = 2138.6,
@@ -15849,14 +15784,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [47946] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [47947] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -15866,14 +15801,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [47946] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [47947] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -15891,7 +15826,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [47947] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -15905,19 +15840,19 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [47947] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [47948] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [47947] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 9.03,
@@ -15927,14 +15862,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [47946] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Fillers"] = {
             [47947] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -15944,14 +15879,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [47946] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [47947] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -15961,9 +15896,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [47947] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 20.69,
@@ -15994,7 +15929,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [47950] = {
                 1,
             },
@@ -16059,7 +15994,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Qpart"] = {
+        Qpart = {
             [48678] = {
                 1,
             },
@@ -16072,7 +16007,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Qpart"] = {
+        Qpart = {
             [48678] = {
                 [2] = 1,
             },
@@ -16113,13 +16048,13 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48680] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Qpart"] = {
+        Qpart = {
             [48679] = {
                 1,
             },
@@ -16131,13 +16066,13 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48680] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Qpart"] = {
+        Qpart = {
             [48679] = {
                 [2] = 1,
             },
@@ -16149,13 +16084,13 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48680] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Qpart"] = {
+        Qpart = {
             [48680] = {
                 1,
             },
@@ -16188,7 +16123,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Qpart"] = {
+        Qpart = {
             [48682] = {
                 1,
             },
@@ -16211,7 +16146,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Qpart"] = {
+        Qpart = {
             [48683] = {
                 1,
             },
@@ -16224,7 +16159,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48677,
-        ["Qpart"] = {
+        Qpart = {
             [48683] = {
                 [2] = 1,
             },
@@ -16277,7 +16212,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48475,
-        ["Qpart"] = {
+        Qpart = {
             [48475] = {
                 1,
             },
@@ -16295,7 +16230,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48475,
-        ["Qpart"] = {
+        Qpart = {
             [48475] = {
                 [2] = 1,
             },
@@ -16313,7 +16248,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48475,
-        ["Qpart"] = {
+        Qpart = {
             [48475] = {
                 [3] = 1,
             },
@@ -16351,7 +16286,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48475,
-        ["Qpart"] = {
+        Qpart = {
             [48476] = {
                 1,
             },
@@ -16369,7 +16304,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48475,
-        ["Qpart"] = {
+        Qpart = {
             [48474] = {
                 1,
             },
@@ -16402,7 +16337,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48475,
-        ["Qpart"] = {
+        Qpart = {
             [48477] = {
                 1,
             },
@@ -16448,7 +16383,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48283] = {
                 1,
             },
@@ -16489,13 +16424,13 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48110] = {
-                ["1"] = 1,
+                1,
             },
             [48109] = {
-                ["1"] = 1,
-                ["2"] = 2,
+                1,
+                2,
             },
         },
         ["Range"] = 27.01,
@@ -16524,9 +16459,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48111] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -16557,9 +16492,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48170] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 3.89,
@@ -16578,12 +16513,12 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [48]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48113] = {
-                ["1"] = 1,
+                1,
             },
             [49242] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 7.77,
@@ -16602,12 +16537,12 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [50]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48165] = {
-                ["1"] = 1,
+                1,
             },
             [48170] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 19.24,
@@ -16637,9 +16572,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48198] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Gossip"] = 98,
@@ -16652,9 +16587,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["GossipETA"] = 38,
-        ["Qpart"] = {
+        Qpart = {
             [48198] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 1.66,
@@ -16665,9 +16600,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["GossipETA"] = 43,
-        ["Qpart"] = {
+        Qpart = {
             [48198] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["Range"] = 2.23,
@@ -16678,9 +16613,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [56]
     {
         ["GossipETA"] = 40,
-        ["Qpart"] = {
+        Qpart = {
             [48198] = {
-                ["4"] = 1,
+                4,
             },
         },
         ["Range"] = 2.13,
@@ -16755,33 +16690,33 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48881] = {
-                ["1"] = 1,
+                1,
             },
             [48880] = {
-                ["1"] = 1,
+                1,
             },
             [48882] = {
-                ["1"] = 1,
+                1,
             },
             [48904] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [64]
     {
         ["QuestLineSkip"] = 48880,
-        ["Qpart"] = {
+        Qpart = {
             [48881] = {
-                ["1"] = 1,
+                1,
             },
             [48880] = {
-                ["1"] = 1,
+                1,
             },
             [48882] = {
-                ["1"] = 1,
+                1,
             },
             [48904] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 9.45,
@@ -16814,9 +16749,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [67]
     {
         ["QuestLineSkip"] = 48880,
-        ["Qpart"] = {
+        Qpart = {
             [48883] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 6.58,
@@ -16855,12 +16790,12 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [71]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49295] = {
-                ["1"] = 1,
+                1,
             },
             [48518] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 20.08,
@@ -16889,9 +16824,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [74]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48519] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 5.87,
@@ -16927,19 +16862,19 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48525] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [78]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48520] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["Fillers"] = {
             [48525] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 2.06,
@@ -16958,22 +16893,22 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48525] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [80]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48520] = {
                 [2] = 1,
             },
         },
         ["Fillers"] = {
             [48525] = {
-                ["1"] = 1,
+                1,
             },
             [48521] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Button"] = {
@@ -16992,17 +16927,17 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [81]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48520] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Fillers"] = {
             [48525] = {
-                ["1"] = 1,
+                1,
             },
             [48521] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Button"] = {
@@ -17021,9 +16956,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [82]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48521] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Button"] = {
@@ -17042,7 +16977,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48525] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 5.16,
@@ -17064,7 +16999,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48525] = {
-                ["1"] = 1,
+                1,
             },
         },
     },
@@ -17080,7 +17015,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48525] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [85]
@@ -17095,14 +17030,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48525] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [86]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48523] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 2.02,
@@ -17112,14 +17047,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48525] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [87]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48525] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 10.39,
@@ -17137,12 +17072,12 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [89]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48524] = {
-                ["1"] = 1,
+                1,
             },
             [48523] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 6.25,
@@ -17200,9 +17135,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [95]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49259] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 8.81,
@@ -17212,9 +17147,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [96]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49259] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 8.81,
@@ -17317,9 +17252,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [104]
     {
         ["QuestLineSkip"] = 48947,
-        ["Qpart"] = {
+        Qpart = {
             [48181] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 38.47,
@@ -17355,19 +17290,19 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         ["QuestLineSkip"] = 48947,
         ["QpartPart"] = {
             [48182] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "1/4",
         ["Fillers"] = {
             [48179] = {
-                ["1"] = "1",
+                1,
             },
             [52075] = {
-                ["1"] = "1",
+                1,
             },
             [48183] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -17387,32 +17322,32 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48179] = {
-                ["1"] = "1",
+                1,
             },
             [52075] = {
-                ["1"] = "1",
+                1,
             },
             [48183] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [107]
     {
         ["QuestLineSkip"] = 48947,
-        ["Qpart"] = {
+        Qpart = {
             [48180] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [48179] = {
-                ["1"] = "1",
+                1,
             },
             [52075] = {
-                ["1"] = "1",
+                1,
             },
             [48183] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -17425,19 +17360,19 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         ["QuestLineSkip"] = 48947,
         ["QpartPart"] = {
             [48182] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "2/4",
         ["Fillers"] = {
             [48179] = {
-                ["1"] = "1",
+                1,
             },
             [52075] = {
-                ["1"] = "1",
+                1,
             },
             [48183] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -17450,19 +17385,19 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         ["QuestLineSkip"] = 48947,
         ["QpartPart"] = {
             [48182] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "3/4",
         ["Fillers"] = {
             [48179] = {
-                ["1"] = "1",
+                1,
             },
             [52075] = {
-                ["1"] = "1",
+                1,
             },
             [48183] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -17475,19 +17410,19 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         ["QuestLineSkip"] = 48947,
         ["QpartPart"] = {
             [48182] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["TrigText"] = "4/4",
         ["Fillers"] = {
             [48179] = {
-                ["1"] = "1",
+                1,
             },
             [52075] = {
-                ["1"] = "1",
+                1,
             },
             [48183] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -17498,20 +17433,20 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48947,
-        ["Qpart"] = {
+        Qpart = {
             [48182] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [48179] = {
-                ["1"] = "1",
+                1,
             },
             [52075] = {
-                ["1"] = "1",
+                1,
             },
             [48183] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.69,
@@ -17522,7 +17457,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 48947,
-        ["Qpart"] = {
+        Qpart = {
             [48179] = {
                 1,
             },
@@ -17572,7 +17507,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
 
     {
-        ["BreadCrum"] = 48948,
         ["Done"] = {
             48948,
         },
@@ -17593,14 +17527,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["Gossip"] = 1,
-        ["Qpart"] = {
+        Qpart = {
             [48793] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Fillers"] = {
             [48792] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.44,
@@ -17610,14 +17544,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48793] = {
-                ["2"] = "2",
+                2,
             },
         },
         ["Fillers"] = {
             [48792] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.44,
@@ -17627,14 +17561,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48793] = {
-                ["3"] = "3",
+                3,
             },
         },
         ["Fillers"] = {
             [48792] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.44,
@@ -17644,14 +17578,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48793] = {
-                ["4"] = "4",
+                4,
             },
         },
         ["Fillers"] = {
             [48792] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 0.44,
@@ -17671,7 +17605,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48792] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -17685,7 +17619,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48792] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
@@ -17699,14 +17633,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48792] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [10]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48805] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["Range"] = 2.86,
@@ -17716,14 +17650,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48792] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [11]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48804] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["Range"] = 2.74,
@@ -17733,14 +17667,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48792] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48805] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 2.29,
@@ -17750,14 +17684,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48792] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48804] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 2.33,
@@ -17767,14 +17701,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48792] = {
-                ["1"] = "1",
+                1,
             },
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48804] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 4.75,
@@ -17784,14 +17718,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48792] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48805] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 3.16,
@@ -17801,14 +17735,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48792] = {
-                ["1"] = "1",
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48792] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 170.19,
@@ -17838,9 +17772,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48853] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 5.21,
@@ -17850,9 +17784,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48853] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 4.18,
@@ -17898,14 +17832,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48943] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Fillers"] = {
             [48942] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 3.79,
@@ -17915,9 +17849,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48943] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["DroppableQuest"] = {
@@ -17927,10 +17861,10 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48942] = {
-                ["1"] = 1,
+                1,
             },
             [51134] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 4.11,
@@ -17940,9 +17874,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48943] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["DroppableQuest"] = {
@@ -17952,10 +17886,10 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48942] = {
-                ["1"] = 1,
+                1,
             },
             [51134] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 2.99,
@@ -17965,9 +17899,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48943] = {
-                ["4"] = 1,
+                4,
             },
         },
         ["DroppableQuest"] = {
@@ -17977,10 +17911,10 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48942] = {
-                ["1"] = 1,
+                1,
             },
             [51134] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 3.53,
@@ -17990,12 +17924,12 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48942] = {
-                ["1"] = 1,
+                1,
             },
             [51134] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -18010,9 +17944,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [51134] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 59.93,
@@ -18042,9 +17976,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48963] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 7.47,
@@ -18072,9 +18006,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [12]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48944] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -18103,9 +18037,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48945] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["RaidIcon"] = 128113,
@@ -18134,9 +18068,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48946] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 2.99,
@@ -18203,11 +18137,11 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             ["x"] = 2712.8,
         },
     },
-
     {
-        ["GroupTask"] = 52033,
-        ["QaskPopup"] = 52033,
-        ["Group"] = 3,
+        ["Group"] = {
+            ["Number"] = 3,
+            ["QuestId"] = 52033
+        },
         ["Coord"] = {
             ["y"] = -291.8,
             ["x"] = 2753.9,
@@ -18234,9 +18168,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["GroupTask"] = 52033,
-        ["Qpart"] = {
+        Qpart = {
             [52033] = {
-                ["1"] = "1",
+                1,
             },
         },
         ["Range"] = 14.69,
@@ -18282,9 +18216,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49443] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 5.73,
@@ -18294,9 +18228,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49443] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -18306,9 +18240,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49443] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["Range"] = 0.69,
@@ -18356,15 +18290,15 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     {
         ["Fillers"] = {
             [49805] = {
-                ["1"] = 1,
+                1,
             },
             [49804] = {
-                ["1"] = 1,
+                1,
             },
         },
-        ["Qpart"] = {
+        Qpart = {
             [49803] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -18383,9 +18317,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49803] = {
-                ["3"] = 3,
+                3,
             },
         },
         ["Gossip"] = 1,
@@ -18399,10 +18333,10 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [49805] = {
-                ["1"] = 1,
+                1,
             },
             [49804] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -18415,9 +18349,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         ["Button"] = {
             ["49804-1"] = 156518,
         },
-        ["Qpart"] = {
+        Qpart = {
             [49803] = {
-                ["4"] = 4,
+                4,
             },
         },
         ["Gossip"] = 1,
@@ -18428,10 +18362,10 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [49805] = {
-                ["1"] = 1,
+                1,
             },
             [49804] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -18444,9 +18378,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         ["Button"] = {
             ["49804-1"] = 156518,
         },
-        ["Qpart"] = {
+        Qpart = {
             [49803] = {
-                ["5"] = 5,
+                5,
             },
         },
         ["Gossip"] = 1,
@@ -18457,10 +18391,10 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [49805] = {
-                ["1"] = 1,
+                1,
             },
             [49804] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -18482,9 +18416,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
 
     {
         ["Gossip"] = 1,
-        ["Qpart"] = {
+        Qpart = {
             [49806] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 4.06,
@@ -18494,9 +18428,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [48]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49806] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 14.06,
@@ -18515,12 +18449,12 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [49]
 
     {
-        ["Qpart"] = {
+        Qpart = {
             [49804] = {
-                ["1"] = 1,
+                1,
             },
             [49805] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["DroppableQuest"] = {
@@ -18539,9 +18473,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
 
     {
-        ["Qpart"] = {
+        Qpart = {
             [49803] = {
-                ["2"] = 2,
+                2,
             },
         },
         ["Gossip"] = 1,
@@ -18586,9 +18520,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [52]
     {
-        ["Qpart"] = {
+        Qpart = {
             [49807] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Button"] = {
@@ -18608,9 +18542,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["ETA"] = 44,
-        ["Qpart"] = {
+        Qpart = {
             [49807] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Button"] = {
@@ -18700,22 +18634,22 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [48517] = {
-                ["1"] = 1,
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48184] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Fillers"] = {
             [48517] = {
-                ["1"] = 1,
+                1,
             },
             [49898] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 5.49,
@@ -18725,17 +18659,17 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48184] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Fillers"] = {
             [48517] = {
-                ["1"] = 1,
+                1,
             },
             [49898] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 6.69,
@@ -18745,17 +18679,17 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [48184] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["Fillers"] = {
             [49898] = {
-                ["1"] = 1,
+                1,
             },
             [48517] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 3.85,
@@ -18765,17 +18699,17 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [10]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48184] = {
-                ["4"] = 1,
+                4,
             },
         },
         ["Fillers"] = {
             [48517] = {
-                ["1"] = 1,
+                1,
             },
             [49898] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 3.5,
@@ -18785,17 +18719,17 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [11]
     {
-        ["Qpart"] = {
+        Qpart = {
             [48184] = {
-                ["5"] = 1,
+                5,
             },
             [48517] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Fillers"] = {
             [49898] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 5.51,
@@ -18815,7 +18749,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [49898] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [13]
@@ -18829,7 +18763,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [49898] = {
-                ["1"] = 1,
+                1,
             },
         },
     },
@@ -18842,14 +18776,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [49898] = {
-                ["1"] = 1,
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49890] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 3.55,
@@ -18859,19 +18793,19 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [49898] = {
-                ["1"] = 1,
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49890] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Fillers"] = {
             [49898] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 7.99,
@@ -18881,9 +18815,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [49898] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 25.12,
@@ -18946,12 +18880,12 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50001] = {
-                ["1"] = 1,
+                1,
             },
             [50251] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 66.65,
@@ -18983,9 +18917,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50177] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 9.79,
@@ -18997,9 +18931,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [47]
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50177] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 9.79,
@@ -19030,14 +18964,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [49]
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [49939] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 5.24,
@@ -19077,9 +19011,10 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["GroupTask"] = 51390,
-        ["QaskPopup"] = 51390,
-        ["Group"] = 3,
+        ["Group"] = {
+            ["Number"] = 3,
+            ["QuestId"] = 51390
+        },
         ["Coord"] = {
             ["y"] = -1501.8,
             ["x"] = 3756.1,
@@ -19119,7 +19054,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     },
@@ -19133,7 +19068,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [56]
@@ -19147,15 +19082,15 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [57]
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50238] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 6.75,
@@ -19165,7 +19100,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [58]
@@ -19179,7 +19114,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [59]
@@ -19193,15 +19128,15 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [60]
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50903] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Gossip"] = 1,
@@ -19212,7 +19147,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [61]
@@ -19227,7 +19162,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [62]
@@ -19242,7 +19177,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [63]
@@ -19250,11 +19185,11 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     {
         ["QuestLineSkip"] = 49896,
         ["GroupTask"] = 51390,
-        ["Qpart"] = {
+        Qpart = {
             [51390] = {
-                ["1"] = "1",
-                ["3"] = "3",
-                ["2"] = "2",
+                1,
+                3,
+                2,
             },
         },
         ["Range"] = 9.2,
@@ -19275,7 +19210,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [62]
@@ -19290,15 +19225,15 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [64]
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50092] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Button"] = {
@@ -19306,10 +19241,10 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50090] = {
-                ["1"] = 1,
+                1,
             },
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 16.77,
@@ -19329,7 +19264,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [66]
@@ -19344,15 +19279,15 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [67]
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50036] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -19363,15 +19298,15 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [68]
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50036] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 3.79,
@@ -19381,7 +19316,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [69]
@@ -19396,7 +19331,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [70]
@@ -19411,15 +19346,15 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [71]
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50063] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Button"] = {
@@ -19438,7 +19373,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
     }, -- [72]
@@ -19464,9 +19399,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [74]
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50090] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 19.36,
@@ -19477,9 +19412,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [75]
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50090] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 15.8,
@@ -19510,9 +19445,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [76]
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50091] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 51.5,
@@ -19562,16 +19497,16 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50306] = {
-                ["1"] = 1,
-                ["2"] = 2,
+                1,
+                2,
             },
         },
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50266] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 6.36,
@@ -19581,22 +19516,22 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50306] = {
-                ["1"] = 1,
-                ["2"] = 2,
+                1,
+                2,
             },
         },
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50266] = {
-                ["4"] = 1,
+                4,
             },
         },
         ["Fillers"] = {
             [50306] = {
-                ["1"] = 1,
-                ["2"] = 2,
+                1,
+                2,
             },
         },
         ["Range"] = 3.57,
@@ -19607,15 +19542,15 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50266] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["Fillers"] = {
             [50306] = {
-                ["1"] = 1,
-                ["2"] = 2,
+                1,
+                2,
             },
         },
         ["Range"] = 3.13,
@@ -19626,15 +19561,15 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50266] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Fillers"] = {
             [50306] = {
-                ["1"] = 1,
-                ["2"] = 2,
+                1,
+                2,
             },
         },
         ["Range"] = 4.49,
@@ -19645,15 +19580,15 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50266] = {
-                ["5"] = 1,
+                5,
             },
         },
         ["Fillers"] = {
             [50306] = {
-                ["1"] = 1,
-                ["2"] = 2,
+                1,
+                2,
             },
         },
         ["Range"] = 0.69,
@@ -19664,16 +19599,16 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50266] = {
-                ["6"] = 1,
+                6,
             },
         },
         ["Gossip"] = 1,
         ["Fillers"] = {
             [50306] = {
-                ["1"] = 1,
-                ["2"] = 2,
+                1,
+                2,
             },
         },
         ["Range"] = 4.32,
@@ -19684,13 +19619,13 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50306] = {
-                ["1"] = 1,
-                ["2"] = 2,
+                1,
+                2,
             },
             [50265] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 26.68,
@@ -19723,9 +19658,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [11]
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50327] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -19766,9 +19701,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50370] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 3.2,
@@ -19802,17 +19737,17 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50325] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Fillers"] = {
             [50530] = {
-                ["1"] = 1,
+                1,
             },
             [50445] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 4.61,
@@ -19823,17 +19758,17 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50325] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["Fillers"] = {
             [50530] = {
-                ["1"] = 1,
+                1,
             },
             [50445] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 3.67,
@@ -19844,17 +19779,17 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50325] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Fillers"] = {
             [50530] = {
-                ["1"] = 1,
+                1,
             },
             [50445] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 10.52,
@@ -19865,11 +19800,11 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50329] = {
-                ["1"] = 1,
-                ["2"] = 2,
-                ["3"] = 3,
+                1,
+                2,
+                3,
             },
         },
         ["Button"] = {
@@ -19887,10 +19822,10 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50530] = {
-                ["1"] = 1,
+                1,
             },
             [50445] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 13.75,
@@ -19901,12 +19836,12 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50530] = {
-                ["1"] = 1,
+                1,
             },
             [50445] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 56.31,
@@ -19958,9 +19893,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50481] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 6.94,
@@ -20007,9 +19942,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50481] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 12.36,
@@ -20040,9 +19975,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50533] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Button"] = {
@@ -20056,9 +19991,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50533] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 23.36,
@@ -20069,9 +20004,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50533] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["Range"] = 10.52,
@@ -20082,9 +20017,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 49896,
-        ["Qpart"] = {
+        Qpart = {
             [50533] = {
-                ["4"] = 1,
+                4,
             },
         },
         ["Gossip"] = 1,
@@ -20142,9 +20077,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50003] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 2.81,
@@ -20196,9 +20131,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [13]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50149] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -20209,9 +20144,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [14]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50149] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 2.39,
@@ -20221,9 +20156,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50149] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["Range"] = 16.5,
@@ -20233,9 +20168,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50149] = {
-                ["4"] = 1,
+                4,
             },
         },
         ["Range"] = 8.68,
@@ -20245,9 +20180,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50149] = {
-                ["5"] = 1,
+                5,
             },
         },
         ["Range"] = 10.13,
@@ -20295,13 +20230,13 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50173] = {
-                ["1"] = 1,
+                1,
             },
             [50174] = {
-                ["1"] = 1,
+                1,
             },
             [50175] = {
-                ["1"] = 1,
+                1,
             },
         },
     },
@@ -20314,13 +20249,13 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50173] = {
-                ["1"] = 1,
+                1,
             },
             [50174] = {
-                ["1"] = 1,
+                1,
             },
             [50175] = {
-                ["1"] = 1,
+                1,
             },
         },
     },
@@ -20333,26 +20268,26 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50173] = {
-                ["1"] = 1,
+                1,
             },
             [50174] = {
-                ["1"] = 1,
+                1,
             },
             [50175] = {
-                ["1"] = 1,
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50174] = {
-                ["1"] = 1,
+                1,
             },
             [50173] = {
-                ["1"] = 1,
+                1,
             },
             [50175] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 8.61,
@@ -20398,7 +20333,7 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50152] = {
-                ["1"] = 1,
+                1,
             },
         },
     },
@@ -20411,14 +20346,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50152] = {
-                ["1"] = 1,
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50151] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -20429,14 +20364,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50152] = {
-                ["1"] = 1,
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50151] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 3.1,
@@ -20446,14 +20381,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         ["Fillers"] = {
             [50152] = {
-                ["1"] = 1,
+                1,
             },
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50152] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 6.97,
@@ -20490,9 +20425,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50253] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -20503,9 +20438,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50253] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 0.65,
@@ -20515,9 +20450,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50253] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["Range"] = 0.75,
@@ -20527,9 +20462,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50253] = {
-                ["4"] = 1,
+                4,
             },
         },
         ["Range"] = 2.07,
@@ -20558,9 +20493,10 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["GroupTask"] = 51356,
-        ["QaskPopup"] = 51356,
-        ["Group"] = 3,
+        ["Group"] = {
+            ["Number"] = 3,
+            ["QuestId"] = 51356
+        },
         ["Coord"] = {
             ["y"] = 109.2,
             ["x"] = 3499.9,
@@ -20586,17 +20522,17 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50446] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Fillers"] = {
             [50447] = {
-                ["1"] = 1,
+                1,
             },
             [50448] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 5.52,
@@ -20606,17 +20542,17 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50446] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Fillers"] = {
             [50447] = {
-                ["1"] = 1,
+                1,
             },
             [50448] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 6.04,
@@ -20626,17 +20562,17 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50446] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["Fillers"] = {
             [50447] = {
-                ["1"] = 1,
+                1,
             },
             [50448] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 4.65,
@@ -20646,14 +20582,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50447] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Fillers"] = {
             [50448] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 51.18,
@@ -20674,14 +20610,14 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 50449,
-        ["Qpart"] = {
+        Qpart = {
             [50449] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Fillers"] = {
             [50448] = {
-                ["1"] = 1,
+                1,
             },
         },
 
@@ -20693,9 +20629,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 50449,
-        ["Qpart"] = {
+        Qpart = {
             [50448] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 24.82,
@@ -20727,17 +20663,17 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["QuestLineSkip"] = 50449,
-        ["Qpart"] = {
+        Qpart = {
             [50450] = {
-                ["1"] = 1,
+                1,
             },
             [50451] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Fillers"] = {
             [50448] = {
-                ["1"] = 1,
+                1,
             },
         },
 
@@ -20831,17 +20767,17 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50454] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Fillers"] = {
             [50454] = {
-                ["2"] = 1,
+                2,
             },
             [50453] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 6.89,
@@ -20851,12 +20787,12 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50454] = {
-                ["2"] = 1,
+                2,
             },
             [50453] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 20.7,
@@ -20867,9 +20803,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     },
     {
         ["GroupTask"] = 51356,
-        ["Qpart"] = {
+        Qpart = {
             [51356] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 6.69,
@@ -20879,9 +20815,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50754] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 3.83,
@@ -20909,9 +20845,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50758] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 4.21,
@@ -20971,9 +20907,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50759] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Gossip"] = 1,
@@ -20984,9 +20920,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50759] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 0.75,
@@ -21054,9 +20990,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50760] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["AFKTimer"] = {
@@ -21088,9 +21024,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     },
     {
-        ["Qpart"] = {
+        Qpart = {
             [50761] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 27.19,
@@ -21150,9 +21086,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [49]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50762] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 2.77,
@@ -21162,9 +21098,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [50]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50762] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 2.93,
@@ -21174,9 +21110,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [51]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50762] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["Range"] = 0.69,
@@ -21279,12 +21215,12 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
     }, -- [61]
     {
         ["QuestLineSkip"] = 50456,
-        ["Qpart"] = {
+        Qpart = {
             [50456] = {
-                ["1"] = 1,
+                1,
             },
             [50455] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Button"] = {
@@ -21326,9 +21262,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [65]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50457] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 0.75,
@@ -21367,20 +21303,20 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [69]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50583] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Fillers"] = {
             [50585] = {
-                ["1"] = 1,
+                1,
             },
             [50584] = {
-                ["1"] = 1,
+                1,
             },
             [50586] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 6.17,
@@ -21390,20 +21326,20 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [70]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50583] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Fillers"] = {
             [50585] = {
-                ["1"] = 1,
+                1,
             },
             [50584] = {
-                ["1"] = 1,
+                1,
             },
             [50586] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 5.04,
@@ -21413,20 +21349,20 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [71]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50583] = {
-                ["3"] = 1,
+                3,
             },
         },
         ["Fillers"] = {
             [50585] = {
-                ["1"] = 1,
+                1,
             },
             [50584] = {
-                ["1"] = 1,
+                1,
             },
             [50586] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 7.79,
@@ -21436,15 +21372,15 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [72]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50585] = {
-                ["1"] = 1,
+                1,
             },
             [50584] = {
-                ["1"] = 1,
+                1,
             },
             [50586] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 40.96,
@@ -21475,9 +21411,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [75]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50588] = {
-                ["1"] = 1,
+                1,
             },
         },
         ["Range"] = 8.45,
@@ -21487,9 +21423,9 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
     }, -- [76]
     {
-        ["Qpart"] = {
+        Qpart = {
             [50588] = {
-                ["2"] = 1,
+                2,
             },
         },
         ["Range"] = 7.92,

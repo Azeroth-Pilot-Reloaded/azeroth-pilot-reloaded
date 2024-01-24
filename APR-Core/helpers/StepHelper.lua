@@ -8,7 +8,7 @@ function GetStepString(step)
         DropQuest = L["Q_DROP"],
         Qpart = L["Q_PART"],
         Treasure = L["GET_TREASURE"],
-        QaskPopup = L["GROUP_Q"],
+        Group = L["GROUP_Q"],
         Done = L["TURN_IN_Q"],
         Waypoint = L["RUN_WAYPOINT"],
         SetHS = L["SET_HEARTHSTONE"],
