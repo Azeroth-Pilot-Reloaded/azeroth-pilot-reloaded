@@ -26,7 +26,7 @@ if (APR.Race == "Tauren") then
                 y = -3015.2,
                 x = -463.3,
             },
-        }, -- [3]
+        },
         {
             Qpart = {
                 [14452] = {
@@ -38,7 +38,7 @@ if (APR.Race == "Tauren") then
                 y = -3033,
                 x = -536.3,
             },
-        }, -- [4]
+        },
         {
             Done = {
                 14452,
@@ -47,7 +47,7 @@ if (APR.Race == "Tauren") then
                 y = -3014.9,
                 x = -463.4,
             },
-        }, -- [5]
+        },
         {
             PickUp = {
                 24852,
@@ -56,7 +56,7 @@ if (APR.Race == "Tauren") then
                 y = -3014.9,
                 x = -463.4,
             },
-        }, -- [6]
+        },
         {
             Qpart = {
                 [24852] = {
@@ -68,7 +68,7 @@ if (APR.Race == "Tauren") then
                 y = -3082.9,
                 x = -621.8,
             },
-        }, -- [7]
+        },
         {
             Done = {
                 24852,
@@ -77,7 +77,7 @@ if (APR.Race == "Tauren") then
                 y = -3015,
                 x = -463.2,
             },
-        }, -- [8]
+        },
         {
             PickUp = {
                 14458,
@@ -95,7 +95,7 @@ if (APR.Race == "Tauren") then
                 y = -3172.9,
                 x = -311.8,
             },
-        }, -- [10]
+        },
         {
             PickUp = {
                 14456,
@@ -105,7 +105,7 @@ if (APR.Race == "Tauren") then
                 y = -3172.9,
                 x = -311.8,
             },
-        }, -- [11]
+        },
         {
             Qpart = {
                 [14456] = {
@@ -120,7 +120,7 @@ if (APR.Race == "Tauren") then
                 y = -3388,
                 x = -367.5,
             },
-        }, -- [12]
+        },
         {
             Done = {
                 14456,
@@ -130,7 +130,7 @@ if (APR.Race == "Tauren") then
                 y = -3171.7,
                 x = -312.3,
             },
-        }, -- [13]
+        },
         {
             PickUp = {
                 14461,
@@ -140,7 +140,7 @@ if (APR.Race == "Tauren") then
                 y = -3171.7,
                 x = -312.3,
             },
-        }, -- [14]
+        },
         {
             Qpart = {
                 [14461] = {
@@ -160,7 +160,7 @@ if (APR.Race == "Tauren") then
                 y = -3355.5,
                 x = -228.9,
             },
-        }, -- [15]
+        },
         {
             Qpart = {
                 [14461] = {
@@ -180,7 +180,7 @@ if (APR.Race == "Tauren") then
                 y = -3387,
                 x = -207.7,
             },
-        }, -- [16]
+        },
         {
             Qpart = {
                 [14461] = {
@@ -200,7 +200,7 @@ if (APR.Race == "Tauren") then
                 y = -3402.7,
                 x = -265.2,
             },
-        }, -- [17]
+        },
         {
             Qpart = {
                 [14459] = {
@@ -212,7 +212,7 @@ if (APR.Race == "Tauren") then
                 y = -3384,
                 x = -243.7,
             },
-        }, -- [18]
+        },
         {
             Done = {
                 14461,
@@ -222,7 +222,7 @@ if (APR.Race == "Tauren") then
                 y = -3171.4,
                 x = -312.3,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 14460,
@@ -231,7 +231,7 @@ if (APR.Race == "Tauren") then
                 y = -3171.4,
                 x = -312.3,
             },
-        }, -- [20]
+        },
         {
             Qpart = {
                 [14460] = {
@@ -244,7 +244,7 @@ if (APR.Race == "Tauren") then
                 y = -3127.5,
                 x = -35.2,
             },
-        }, -- [21]
+        },
         {
             Done = {
                 14460,
@@ -262,7 +262,7 @@ if (APR.Race == "Tauren") then
                 y = -2909,
                 x = -256.2,
             },
-        }, -- [23]
+        },
         {
             Qpart = {
                 [24861] = {
@@ -277,7 +277,7 @@ if (APR.Race == "Tauren") then
                 y = -2907.5,
                 x = -253.9,
             },
-        }, -- [24]
+        },
         {
             Done = {
                 24861,
@@ -286,7 +286,7 @@ if (APR.Race == "Tauren") then
                 y = -2909.7,
                 x = -255.8,
             },
-        }, -- [25]
+        },
         {
             PickUp = {
                 23733,
@@ -295,7 +295,7 @@ if (APR.Race == "Tauren") then
                 y = -2909.7,
                 x = -255.8,
             },
-        }, -- [26]
+        },
         {
             Range = 14.19,
             Waypoint = 23733,
@@ -303,7 +303,7 @@ if (APR.Race == "Tauren") then
                 y = -2976,
                 x = -114.1,
             },
-        }, -- [27]
+        },
         {
             Range = 13.17,
             Waypoint = 23733,
@@ -311,7 +311,7 @@ if (APR.Race == "Tauren") then
                 y = -2907.2,
                 x = -47,
             },
-        }, -- [28]
+        },
         {
             Range = 8.83,
             Waypoint = 23733,
@@ -319,7 +319,7 @@ if (APR.Race == "Tauren") then
                 y = -2903.9,
                 x = 18.8,
             },
-        }, -- [29]
+        },
         {
             Range = 13.83,
             Waypoint = 23733,
@@ -327,7 +327,7 @@ if (APR.Race == "Tauren") then
                 y = -2919,
                 x = 14,
             },
-        }, -- [30]
+        },
         {
             Coord = {
                 y = -2933,
@@ -336,7 +336,7 @@ if (APR.Race == "Tauren") then
             Done = {
                 23733,
             },
-        }, -- [31]
+        },
         {
             PickUp = {
                 24215,
@@ -345,7 +345,7 @@ if (APR.Race == "Tauren") then
                 y = -2933,
                 x = -41.5,
             },
-        }, -- [32]
+        },
         {
             Waypoint = 24215,
             Button = {
@@ -357,7 +357,7 @@ if (APR.Race == "Tauren") then
                 y = -2933,
                 x = -40.5,
             },
-        }, -- [33]
+        },
         {
             Done = {
                 24215,
@@ -366,7 +366,7 @@ if (APR.Race == "Tauren") then
                 y = -2333,
                 x = -392.5,
             },
-        }, -- [34]
+        },
         {
             ZoneDoneSave = 1,
         },
@@ -399,7 +399,7 @@ elseif (APR.Race == "Orc") then
                 y = -596.5,
                 x = -4247.8,
             },
-        }, -- [3]
+        },
         {
             Qpart = {
                 [25126] = {
@@ -411,7 +411,7 @@ elseif (APR.Race == "Orc") then
                 y = -463.7,
                 x = -4281.8,
             },
-        }, -- [4]
+        },
         {
             Coord = {
                 y = -597,
@@ -420,7 +420,7 @@ elseif (APR.Race == "Orc") then
             Done = {
                 25126,
             },
-        }, -- [5]
+        },
         {
             PickUp = {
                 25172,
@@ -429,7 +429,7 @@ elseif (APR.Race == "Orc") then
                 y = -597,
                 x = -4248.3,
             },
-        }, -- [6]
+        },
         {
             PickUp = {
                 25136,
@@ -438,7 +438,7 @@ elseif (APR.Race == "Orc") then
                 y = -562.2,
                 x = -4221.4,
             },
-        }, -- [7]
+        },
         {
             Qpart = {
                 [25172] = {
@@ -455,7 +455,7 @@ elseif (APR.Race == "Orc") then
                 y = -711.3,
                 x = -4269.5,
             },
-        }, -- [8]
+        },
         {
             Fillers = {
                 [25136] = {
@@ -478,7 +478,7 @@ elseif (APR.Race == "Orc") then
                 y = -597.3,
                 x = -4248,
             },
-        }, -- [10]
+        },
         {
             PickUp = {
                 37446,
@@ -487,7 +487,7 @@ elseif (APR.Race == "Orc") then
                 y = -569.3,
                 x = -4264,
             },
-        }, -- [11]
+        },
         {
             PickUp = {
                 25129,
@@ -507,7 +507,7 @@ elseif (APR.Race == "Orc") then
                 y = -397.8,
                 x = -4109.3,
             },
-        }, -- [12]
+        },
         {
             Qpart = {
                 [25129] = {
@@ -534,7 +534,7 @@ elseif (APR.Race == "Orc") then
                 y = -563.5,
                 x = -4097.9,
             },
-        }, -- [13]
+        },
         {
             Fillers = {
                 [25136] = {
@@ -557,7 +557,7 @@ elseif (APR.Race == "Orc") then
                 y = -397.5,
                 x = -4108.4,
             },
-        }, -- [14]
+        },
         {
             PickUp = {
                 25130,
@@ -580,7 +580,7 @@ elseif (APR.Race == "Orc") then
                 y = -397.5,
                 x = -4108.4,
             },
-        }, -- [15]
+        },
         {
             Qpart = {
                 [25136] = {
@@ -601,7 +601,7 @@ elseif (APR.Race == "Orc") then
                 y = -406.7,
                 x = -4095.2,
             },
-        }, -- [16]
+        },
         {
             Coord = {
                 y = -569.3,
@@ -610,7 +610,7 @@ elseif (APR.Race == "Orc") then
             Done = {
                 37446,
             },
-        }, -- [17]
+        },
         {
             Coord = {
                 y = -597,
@@ -620,7 +620,7 @@ elseif (APR.Race == "Orc") then
                 25127,
                 25130,
             },
-        }, -- [18]
+        },
         {
             Coord = {
                 y = -561.3,
@@ -629,7 +629,7 @@ elseif (APR.Race == "Orc") then
             Done = {
                 25136,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 25131,
@@ -638,7 +638,7 @@ elseif (APR.Race == "Orc") then
                 y = -570.3,
                 x = -4259.8,
             },
-        }, -- [20]
+        },
         {
             Qpart = {
                 [25131] = {
@@ -650,7 +650,7 @@ elseif (APR.Race == "Orc") then
                 y = -252.7,
                 x = -4332,
             },
-        }, -- [21]
+        },
         {
             Coord = {
                 y = -569.8,
@@ -669,7 +669,7 @@ elseif (APR.Race == "Orc") then
                 y = -570.5,
                 x = -4262.4,
             },
-        }, -- [23]
+        },
         {
             Range = 10.62,
             Waypoint = 25135,
@@ -677,7 +677,7 @@ elseif (APR.Race == "Orc") then
                 y = -178.5,
                 x = -4358.9,
             },
-        }, -- [24]
+        },
         {
             Range = 10.61,
             Waypoint = 25135,
@@ -685,7 +685,7 @@ elseif (APR.Race == "Orc") then
                 y = -136.2,
                 x = -4365.8,
             },
-        }, -- [25]
+        },
         {
             Qpart = {
                 [25135] = {
@@ -702,7 +702,7 @@ elseif (APR.Race == "Orc") then
                 y = -87.4,
                 x = -4274.4,
             },
-        }, -- [26]
+        },
         {
             Waypoint = 25132,
             Fillers = {
@@ -715,7 +715,7 @@ elseif (APR.Race == "Orc") then
                 y = -149,
                 x = -4258.3,
             },
-        }, -- [27]
+        },
         {
             Qpart = {
                 [25132] = {
@@ -733,7 +733,7 @@ elseif (APR.Race == "Orc") then
                 y = -77.1,
                 x = -4205.7,
             },
-        }, -- [28]
+        },
         {
             Qpart = {
                 [25132] = {
@@ -745,7 +745,7 @@ elseif (APR.Race == "Orc") then
                 y = -146.9,
                 x = -4245.4,
             },
-        }, -- [29]
+        },
         {
             Range = 10.95,
             Waypoint = 25132,
@@ -753,7 +753,7 @@ elseif (APR.Race == "Orc") then
                 y = -143.7,
                 x = -4363.4,
             },
-        }, -- [30]
+        },
         {
             Coord = {
                 y = -570.8,
@@ -763,7 +763,7 @@ elseif (APR.Race == "Orc") then
                 25132,
                 25135,
             },
-        }, -- [31]
+        },
         {
             PickUp = {
                 25133,
@@ -772,7 +772,7 @@ elseif (APR.Race == "Orc") then
                 y = -569.5,
                 x = -4261.2,
             },
-        }, -- [32]
+        },
         {
             Range = 17.6,
             Waypoint = 25133,
@@ -780,7 +780,7 @@ elseif (APR.Race == "Orc") then
                 y = -603,
                 x = -4595.7,
             },
-        }, -- [33]
+        },
         {
             GetFP = 536,
             Range = 0.69,
@@ -788,7 +788,7 @@ elseif (APR.Race == "Orc") then
                 y = -775,
                 x = -4890.7,
             },
-        }, -- [34]
+        },
         {
             Coord = {
                 y = -825,
@@ -797,7 +797,7 @@ elseif (APR.Race == "Orc") then
             Done = {
                 25133,
             },
-        }, -- [35]
+        },
         {
             ZoneDoneSave = 1,
         },
@@ -830,7 +830,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1170.9,
                 x = -5440.4,
             },
-        }, -- [3]
+        },
         {
             Qpart = {
                 [24639] = {
@@ -842,7 +842,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1172.3,
                 x = -5450,
             },
-        }, -- [4]
+        },
         {
             Coord = {
                 y = -1171,
@@ -851,7 +851,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
             Done = {
                 24639,
             },
-        }, -- [5]
+        },
         {
             PickUp = {
                 24641,
@@ -860,7 +860,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1171,
                 x = -5440.4,
             },
-        }, -- [6]
+        },
         {
             Qpart = {
                 [24641] = {
@@ -872,7 +872,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1145.4,
                 x = -5340,
             },
-        }, -- [7]
+        },
         {
             Done = {
                 24641,
@@ -881,7 +881,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1170.5,
                 x = -5441.3,
             },
-        }, -- [8]
+        },
         {
             PickUp = {
                 24642,
@@ -904,7 +904,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1143,
                 x = -5429.8,
             },
-        }, -- [10]
+        },
         {
             Qpart = {
                 [24642] = {
@@ -917,7 +917,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1143.5,
                 x = -5417.4,
             },
-        }, -- [11]
+        },
         {
             Done = {
                 24642,
@@ -926,7 +926,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1158,
                 x = -5420.4,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24643,
@@ -935,7 +935,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1158,
                 x = -5420.4,
             },
-        }, -- [13]
+        },
         {
             Waypoint = 24643,
             Range = 18.75,
@@ -943,7 +943,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1242.6,
                 x = -5543,
             },
-        }, -- [14]
+        },
         {
             Waypoint = 24643,
             Range = 7.75,
@@ -951,7 +951,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1288,
                 x = -5569.3,
             },
-        }, -- [15]
+        },
         {
             Done = {
                 24643,
@@ -960,7 +960,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1317.5,
                 x = -5603,
             },
-        }, -- [16]
+        },
         {
             PickUp = {
                 25064,
@@ -969,7 +969,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1317.5,
                 x = -5603,
             },
-        }, -- [17]
+        },
         --------- Class Ends ----------
         {
             PickUp = {
@@ -979,7 +979,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1281.5,
                 x = -5583.7,
             },
-        }, -- [18]
+        },
         {
             Done = {
                 25064,
@@ -988,7 +988,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 24622,
@@ -997,7 +997,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [20]
+        },
         {
             Waypoint = 24622,
             Range = 13.41,
@@ -1005,7 +1005,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1331,
                 x = -5397.7,
             },
-        }, -- [21]
+        },
         {
             Done = {
                 24622,
@@ -1019,13 +1019,13 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
             PickUp = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
             Coord = {
                 y = -1549.5,
                 x = -5315,
             },
-        }, -- [23]
+        },
         {
             Qpart = {
                 [24625] = {
@@ -1076,9 +1076,9 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
             Done = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
-        },             -- [3]
+        },
         {
             PickUp = {
                 24626,
@@ -1087,7 +1087,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [4]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -1108,7 +1108,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -1120,7 +1120,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1299,
                 x = -5452.2,
             },
-        }, -- [6]
+        },
         {
             Coord = {
                 y = -1291.1,
@@ -1129,7 +1129,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
             Done = {
                 24626,
             },
-        }, -- [7]
+        },
         {
             PickUp = {
                 25035,
@@ -1138,7 +1138,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1329.6,
                 x = -5556.4,
             },
-        }, -- [8]
+        },
         {
             Qpart = {
                 [25037] = {
@@ -1159,7 +1159,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
             Done = {
                 25037,
             },
-        }, -- [10]
+        },
         {
             Waypoint = 25035,
             RaidIcon = 38989,
@@ -1169,7 +1169,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -1331.3,
                 x = -5558.3,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -803,
@@ -1178,7 +1178,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
             Done = {
                 25035,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24812,
@@ -1188,7 +1188,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -803,
                 x = -5555.3,
             },
-        }, -- [13]
+        },
         {
             Qpart = {
                 [24812] = {
@@ -1206,7 +1206,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -706.5,
                 x = -5599.4,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -801.8,
@@ -1216,7 +1216,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 24814,
@@ -1225,7 +1225,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -801.8,
                 x = -5555.7,
             },
-        }, -- [16]
+        },
         {
             Range = 14.91,
             Waypoint = 24814,
@@ -1233,7 +1233,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -814.7,
                 x = -5606.4,
             },
-        }, -- [17]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -1247,7 +1247,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -741.8,
                 x = -5614.9,
             },
-        }, -- [18]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -1260,14 +1260,14 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
                 y = -710.3,
                 x = -5582.4,
             },
-        }, -- [19]
+        },
         {
             UseHS = 24814,
             Coord = {
                 y = -722.5,
                 x = -5591,
             },
-        }, -- [20]
+        },
         {
             Coord = {
                 y = -1317.6,
@@ -1276,7 +1276,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
             Done = {
                 24814,
             },
-        }, -- [21]
+        },
         {
             PickUp = {
                 25073,
@@ -1294,7 +1294,7 @@ elseif (APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll") then
             Done = {
                 25073,
             },
-        }, -- [23]
+        },
         {
             ZoneDoneSave = 1,
         },
@@ -1327,7 +1327,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1127.4,
                 x = -5509.8,
             },
-        }, -- [3]
+        },
         {
             Qpart = {
                 [24777] = {
@@ -1339,7 +1339,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1126.5,
                 x = -5506.7,
             },
-        }, -- [4]
+        },
         {
             Coord = {
                 y = -1127.3,
@@ -1348,7 +1348,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
             Done = {
                 24777,
             },
-        }, -- [5]
+        },
         {
             PickUp = {
                 24779,
@@ -1357,7 +1357,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1127.3,
                 x = -5509.2,
             },
-        }, -- [6]
+        },
         {
             Qpart = {
                 [24779] = {
@@ -1369,7 +1369,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1098,
                 x = -5633.8,
             },
-        }, -- [7]
+        },
         {
             Coord = {
                 y = -1127.8,
@@ -1378,7 +1378,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
             Done = {
                 24779,
             },
-        }, -- [8]
+        },
         {
             PickUp = {
                 24780,
@@ -1401,7 +1401,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1158.5,
                 x = -5528.9,
             },
-        }, -- [10]
+        },
         {
             Qpart = {
                 [24780] = {
@@ -1414,7 +1414,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1147.9,
                 x = -5529.7,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -1136.5,
@@ -1423,7 +1423,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
             Done = {
                 24780,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24781,
@@ -1432,7 +1432,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1136.5,
                 x = -5524.9,
             },
-        }, -- [13]
+        },
         {
             Range = 5.92,
             Waypoint = 24781,
@@ -1440,7 +1440,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1289,
                 x = -5569.3,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -1317.6,
@@ -1449,7 +1449,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
             Done = {
                 24781,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 25064,
@@ -1458,7 +1458,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1317.6,
                 x = -5602.9,
             },
-        }, -- [16]
+        },
         --------- Class Ends ----------
         {
             PickUp = {
@@ -1468,7 +1468,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1281.5,
                 x = -5583.7,
             },
-        }, -- [18]
+        },
         {
             Done = {
                 25064,
@@ -1477,7 +1477,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 24622,
@@ -1486,7 +1486,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [20]
+        },
         {
             Waypoint = 24622,
             Range = 13.41,
@@ -1494,7 +1494,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1331,
                 x = -5397.7,
             },
-        }, -- [21]
+        },
         {
             Done = {
                 24622,
@@ -1508,13 +1508,13 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
             PickUp = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
             Coord = {
                 y = -1549.5,
                 x = -5315,
             },
-        }, -- [23]
+        },
         {
             Qpart = {
                 [24625] = {
@@ -1565,9 +1565,9 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
             Done = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
-        },             -- [3]
+        },
         {
             PickUp = {
                 24626,
@@ -1576,7 +1576,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [4]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -1597,7 +1597,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -1609,7 +1609,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1299,
                 x = -5452.2,
             },
-        }, -- [6]
+        },
         {
             Coord = {
                 y = -1291.1,
@@ -1618,7 +1618,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
             Done = {
                 24626,
             },
-        }, -- [7]
+        },
         {
             PickUp = {
                 25035,
@@ -1627,7 +1627,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1329.6,
                 x = -5556.4,
             },
-        }, -- [8]
+        },
         {
             Qpart = {
                 [25037] = {
@@ -1648,7 +1648,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
             Done = {
                 25037,
             },
-        }, -- [10]
+        },
         {
             Waypoint = 25035,
             RaidIcon = 38989,
@@ -1658,7 +1658,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -1331.3,
                 x = -5558.3,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -803,
@@ -1667,7 +1667,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
             Done = {
                 25035,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24812,
@@ -1677,7 +1677,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -803,
                 x = -5555.3,
             },
-        }, -- [13]
+        },
         {
             Qpart = {
                 [24812] = {
@@ -1695,7 +1695,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -706.5,
                 x = -5599.4,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -801.8,
@@ -1705,7 +1705,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 24814,
@@ -1714,7 +1714,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -801.8,
                 x = -5555.7,
             },
-        }, -- [16]
+        },
         {
             Range = 14.91,
             Waypoint = 24814,
@@ -1722,7 +1722,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -814.7,
                 x = -5606.4,
             },
-        }, -- [17]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -1736,7 +1736,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -741.8,
                 x = -5614.9,
             },
-        }, -- [18]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -1749,14 +1749,14 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
                 y = -710.3,
                 x = -5582.4,
             },
-        }, -- [19]
+        },
         {
             UseHS = 24814,
             Coord = {
                 y = -722.5,
                 x = -5591,
             },
-        }, -- [20]
+        },
         {
             Coord = {
                 y = -1317.6,
@@ -1765,7 +1765,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
             Done = {
                 24814,
             },
-        }, -- [21]
+        },
         {
             PickUp = {
                 25073,
@@ -1783,7 +1783,7 @@ elseif (APR.ClassId == APR.ClassesHunter and APR.Race == "Troll") then
             Done = {
                 25073,
             },
-        }, -- [23]
+        },
         {
             ZoneDoneSave = 1,
         },
@@ -1816,7 +1816,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1125.6,
                 x = -5446.8,
             },
-        }, -- [3]
+        },
         {
             Coord = {
                 y = -1125.8,
@@ -1825,7 +1825,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
             Done = {
                 24771,
             },
-        }, -- [4]
+        },
         {
             PickUp = {
                 24773,
@@ -1834,7 +1834,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1125.8,
                 x = -5446,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [24773] = {
@@ -1846,7 +1846,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1059.5,
                 x = -5375.5,
             },
-        }, -- [6]
+        },
         {
             Coord = {
                 y = -1124.5,
@@ -1855,7 +1855,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
             Done = {
                 24773,
             },
-        }, -- [7]
+        },
         {
             PickUp = {
                 24774,
@@ -1864,7 +1864,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1125.3,
                 x = -5446,
             },
-        }, -- [8]
+        },
         {
             Qpart = {
                 [24774] = {
@@ -1891,7 +1891,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1145,
                 x = -5416.3,
             },
-        }, -- [10]
+        },
         {
             Coord = {
                 y = -1145.9,
@@ -1900,7 +1900,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
             Done = {
                 24774,
             },
-        }, -- [11]
+        },
         {
             PickUp = {
                 24775,
@@ -1909,7 +1909,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1145.9,
                 x = -5428.9,
             },
-        }, -- [12]
+        },
         {
             Range = 8.7,
             Waypoint = 24775,
@@ -1917,7 +1917,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1287.8,
                 x = -5568.5,
             },
-        }, -- [13]
+        },
         {
             Coord = {
                 y = -1317.4,
@@ -1926,7 +1926,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
             Done = {
                 24775,
             },
-        }, -- [14]
+        },
         {
             PickUp = {
                 25064,
@@ -1935,7 +1935,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1317.4,
                 x = -5602.9,
             },
-        }, -- [15]
+        },
         --------- Class Ends ----------
         {
             PickUp = {
@@ -1945,7 +1945,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1281.5,
                 x = -5583.7,
             },
-        }, -- [18]
+        },
         {
             Done = {
                 25064,
@@ -1954,7 +1954,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 24622,
@@ -1963,7 +1963,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [20]
+        },
         {
             Waypoint = 24622,
             Range = 13.41,
@@ -1971,7 +1971,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1331,
                 x = -5397.7,
             },
-        }, -- [21]
+        },
         {
             Done = {
                 24622,
@@ -1985,13 +1985,13 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
             PickUp = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
             Coord = {
                 y = -1549.5,
                 x = -5315,
             },
-        }, -- [23]
+        },
         {
             Qpart = {
                 [24625] = {
@@ -2042,9 +2042,9 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
             Done = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
-        },             -- [3]
+        },
         {
             PickUp = {
                 24626,
@@ -2053,7 +2053,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [4]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -2074,7 +2074,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -2086,7 +2086,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1299,
                 x = -5452.2,
             },
-        }, -- [6]
+        },
         {
             Coord = {
                 y = -1291.1,
@@ -2095,7 +2095,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
             Done = {
                 24626,
             },
-        }, -- [7]
+        },
         {
             PickUp = {
                 25035,
@@ -2104,7 +2104,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1329.6,
                 x = -5556.4,
             },
-        }, -- [8]
+        },
         {
             Qpart = {
                 [25037] = {
@@ -2125,7 +2125,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
             Done = {
                 25037,
             },
-        }, -- [10]
+        },
         {
             Waypoint = 25035,
             RaidIcon = 38989,
@@ -2135,7 +2135,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -1331.3,
                 x = -5558.3,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -803,
@@ -2144,7 +2144,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
             Done = {
                 25035,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24812,
@@ -2154,7 +2154,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -803,
                 x = -5555.3,
             },
-        }, -- [13]
+        },
         {
             Qpart = {
                 [24812] = {
@@ -2172,7 +2172,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -706.5,
                 x = -5599.4,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -801.8,
@@ -2182,7 +2182,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 24814,
@@ -2191,7 +2191,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -801.8,
                 x = -5555.7,
             },
-        }, -- [16]
+        },
         {
             Range = 14.91,
             Waypoint = 24814,
@@ -2199,7 +2199,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -814.7,
                 x = -5606.4,
             },
-        }, -- [17]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -2213,7 +2213,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -741.8,
                 x = -5614.9,
             },
-        }, -- [18]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -2226,14 +2226,14 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
                 y = -710.3,
                 x = -5582.4,
             },
-        }, -- [19]
+        },
         {
             UseHS = 24814,
             Coord = {
                 y = -722.5,
                 x = -5591,
             },
-        }, -- [20]
+        },
         {
             Coord = {
                 y = -1317.6,
@@ -2242,7 +2242,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
             Done = {
                 24814,
             },
-        }, -- [21]
+        },
         {
             PickUp = {
                 25073,
@@ -2260,7 +2260,7 @@ elseif (APR.ClassId == APR.ClassesRogue and APR.Race == "Troll") then
             Done = {
                 25073,
             },
-        }, -- [23]
+        },
         {
             ZoneDoneSave = 1,
         },
@@ -2293,7 +2293,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1125.6,
                 x = -5446.8,
             },
-        }, -- [3]
+        },
         {
             Coord = {
                 y = -1125.8,
@@ -2302,7 +2302,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             Done = {
                 24771,
             },
-        }, -- [4]
+        },
         {
             PickUp = {
                 24773,
@@ -2311,7 +2311,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1125.8,
                 x = -5446,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [24773] = {
@@ -2323,7 +2323,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1059.5,
                 x = -5375.5,
             },
-        }, -- [6]
+        },
         {
             Coord = {
                 y = -1124.5,
@@ -2332,7 +2332,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             Done = {
                 24773,
             },
-        }, -- [7]
+        },
         {
             PickUp = {
                 24774,
@@ -2341,7 +2341,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1125.3,
                 x = -5446,
             },
-        }, -- [8]
+        },
         {
             Qpart = {
                 [24774] = {
@@ -2368,7 +2368,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1145,
                 x = -5416.3,
             },
-        }, -- [10]
+        },
         {
             Coord = {
                 y = -1145.9,
@@ -2377,7 +2377,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             Done = {
                 24774,
             },
-        }, -- [11]
+        },
         {
             PickUp = {
                 24775,
@@ -2386,7 +2386,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1145.9,
                 x = -5428.9,
             },
-        }, -- [12]
+        },
         {
             Range = 8.7,
             Waypoint = 24775,
@@ -2394,7 +2394,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1287.8,
                 x = -5568.5,
             },
-        }, -- [13]
+        },
         {
             Coord = {
                 y = -1317.4,
@@ -2403,7 +2403,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             Done = {
                 24775,
             },
-        }, -- [14]
+        },
         {
             PickUp = {
                 25064,
@@ -2412,7 +2412,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1317.4,
                 x = -5602.9,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 24782,
@@ -2421,7 +2421,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1168.1,
                 x = -5264.8,
             },
-        }, -- [16]
+        },
         {
             Coord = {
                 y = -1117.8,
@@ -2430,7 +2430,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             Done = {
                 24782,
             },
-        }, -- [17]
+        },
         {
             PickUp = {
                 24783,
@@ -2439,7 +2439,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1117.8,
                 x = -5539.8,
             },
-        }, -- [18]
+        },
         {
             Coord = {
                 y = -1117.6,
@@ -2448,7 +2448,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             Done = {
                 24783,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 24785,
@@ -2457,7 +2457,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1117.6,
                 x = -5539.5,
             },
-        }, -- [20]
+        },
         {
             Qpart = {
                 [24785] = {
@@ -2469,7 +2469,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1075,
                 x = -5624.3,
             },
-        }, -- [21]
+        },
         {
             Coord = {
                 y = -1117.8,
@@ -2487,7 +2487,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1117.8,
                 x = -5539.4,
             },
-        }, -- [23]
+        },
         {
             Qpart = {
                 [24786] = {
@@ -2501,7 +2501,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1158.4,
                 x = -5529.9,
             },
-        }, -- [24]
+        },
         {
             Qpart = {
                 [24786] = {
@@ -2514,7 +2514,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1149,
                 x = -5527.7,
             },
-        }, -- [25]
+        },
         {
             Coord = {
                 y = -1137,
@@ -2523,7 +2523,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             Done = {
                 24786,
             },
-        }, -- [26]
+        },
         {
             PickUp = {
                 24787,
@@ -2532,7 +2532,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1137,
                 x = -5527.8,
             },
-        }, -- [27]
+        },
         {
             Range = 6.09,
             Waypoint = 24787,
@@ -2540,7 +2540,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1288.4,
                 x = -5568.3,
             },
-        }, -- [28]
+        },
         {
             Coord = {
                 y = -1317.4,
@@ -2549,7 +2549,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             Done = {
                 24787,
             },
-        }, -- [29]
+        },
         {
             PickUp = {
                 25064,
@@ -2558,7 +2558,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1317.4,
                 x = -5603.2,
             },
-        }, -- [30]
+        },
         --------- Class Ends ----------
         {
             PickUp = {
@@ -2568,7 +2568,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1281.5,
                 x = -5583.7,
             },
-        }, -- [18]
+        },
         {
             Done = {
                 25064,
@@ -2577,7 +2577,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 24622,
@@ -2586,7 +2586,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [20]
+        },
         {
             Waypoint = 24622,
             Range = 13.41,
@@ -2594,7 +2594,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1331,
                 x = -5397.7,
             },
-        }, -- [21]
+        },
         {
             Done = {
                 24622,
@@ -2608,13 +2608,13 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             PickUp = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
             Coord = {
                 y = -1549.5,
                 x = -5315,
             },
-        }, -- [23]
+        },
         {
             Qpart = {
                 [24625] = {
@@ -2665,9 +2665,9 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             Done = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
-        },             -- [3]
+        },
         {
             PickUp = {
                 24626,
@@ -2676,7 +2676,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [4]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -2697,7 +2697,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -2709,7 +2709,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1299,
                 x = -5452.2,
             },
-        }, -- [6]
+        },
         {
             Coord = {
                 y = -1291.1,
@@ -2718,7 +2718,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             Done = {
                 24626,
             },
-        }, -- [7]
+        },
         {
             PickUp = {
                 25035,
@@ -2727,7 +2727,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1329.6,
                 x = -5556.4,
             },
-        }, -- [8]
+        },
         {
             Qpart = {
                 [25037] = {
@@ -2748,7 +2748,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             Done = {
                 25037,
             },
-        }, -- [10]
+        },
         {
             Waypoint = 25035,
             RaidIcon = 38989,
@@ -2758,7 +2758,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -1331.3,
                 x = -5558.3,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -803,
@@ -2767,7 +2767,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             Done = {
                 25035,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24812,
@@ -2777,7 +2777,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -803,
                 x = -5555.3,
             },
-        }, -- [13]
+        },
         {
             Qpart = {
                 [24812] = {
@@ -2795,7 +2795,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -706.5,
                 x = -5599.4,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -801.8,
@@ -2805,7 +2805,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 24814,
@@ -2814,7 +2814,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -801.8,
                 x = -5555.7,
             },
-        }, -- [16]
+        },
         {
             Range = 14.91,
             Waypoint = 24814,
@@ -2822,7 +2822,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -814.7,
                 x = -5606.4,
             },
-        }, -- [17]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -2836,7 +2836,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -741.8,
                 x = -5614.9,
             },
-        }, -- [18]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -2849,14 +2849,14 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
                 y = -710.3,
                 x = -5582.4,
             },
-        }, -- [19]
+        },
         {
             UseHS = 24814,
             Coord = {
                 y = -722.5,
                 x = -5591,
             },
-        }, -- [20]
+        },
         {
             Coord = {
                 y = -1317.6,
@@ -2865,7 +2865,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             Done = {
                 24814,
             },
-        }, -- [21]
+        },
         {
             PickUp = {
                 25073,
@@ -2883,7 +2883,7 @@ elseif (APR.ClassId == APR.ClassesPriest and APR.Race == "Troll") then
             Done = {
                 25073,
             },
-        }, -- [23]
+        },
         {
             ZoneDoneSave = 1,
         },
@@ -2916,7 +2916,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1159.4,
                 x = -5396.3,
             },
-        }, -- [3]
+        },
         {
             Qpart = {
                 [24759] = {
@@ -2928,7 +2928,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1162,
                 x = -5405.9,
             },
-        }, -- [4]
+        },
         {
             Coord = {
                 y = -1160,
@@ -2937,7 +2937,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
             Done = {
                 24759,
             },
-        }, -- [5]
+        },
         {
             PickUp = {
                 24761,
@@ -2946,7 +2946,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1160,
                 x = -5395.8,
             },
-        }, -- [6]
+        },
         {
             Qpart = {
                 [24761] = {
@@ -2958,7 +2958,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1144.5,
                 x = -5333.4,
             },
-        }, -- [7]
+        },
         {
             Coord = {
                 y = -1160.6,
@@ -2967,7 +2967,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
             Done = {
                 24761,
             },
-        }, -- [8]
+        },
         {
             PickUp = {
                 24762,
@@ -2990,7 +2990,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1142.9,
                 x = -5429,
             },
-        }, -- [10]
+        },
         {
             Qpart = {
                 [24762] = {
@@ -3003,7 +3003,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1145,
                 x = -5416.4,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -1151.6,
@@ -3012,7 +3012,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
             Done = {
                 24762,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24763,
@@ -3021,7 +3021,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1151.6,
                 x = -5407.4,
             },
-        }, -- [13]
+        },
         {
             Range = 7.77,
             Waypoint = 24763,
@@ -3029,7 +3029,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1288.4,
                 x = -5569,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -1317.1,
@@ -3038,7 +3038,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
             Done = {
                 24763,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 25064,
@@ -3047,7 +3047,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1317.1,
                 x = -5603,
             },
-        }, -- [16]
+        },
         --------- Class Ends ----------
         {
             PickUp = {
@@ -3057,7 +3057,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1281.5,
                 x = -5583.7,
             },
-        }, -- [18]
+        },
         {
             Done = {
                 25064,
@@ -3066,7 +3066,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 24622,
@@ -3075,7 +3075,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [20]
+        },
         {
             Waypoint = 24622,
             Range = 13.41,
@@ -3083,7 +3083,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1331,
                 x = -5397.7,
             },
-        }, -- [21]
+        },
         {
             Done = {
                 24622,
@@ -3097,13 +3097,13 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
             PickUp = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
             Coord = {
                 y = -1549.5,
                 x = -5315,
             },
-        }, -- [23]
+        },
         {
             Qpart = {
                 [24625] = {
@@ -3154,9 +3154,9 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
             Done = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
-        },             -- [3]
+        },
         {
             PickUp = {
                 24626,
@@ -3165,7 +3165,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [4]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -3186,7 +3186,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -3198,7 +3198,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1299,
                 x = -5452.2,
             },
-        }, -- [6]
+        },
         {
             Coord = {
                 y = -1291.1,
@@ -3207,7 +3207,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
             Done = {
                 24626,
             },
-        }, -- [7]
+        },
         {
             PickUp = {
                 25035,
@@ -3216,7 +3216,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1329.6,
                 x = -5556.4,
             },
-        }, -- [8]
+        },
         {
             Qpart = {
                 [25037] = {
@@ -3237,7 +3237,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
             Done = {
                 25037,
             },
-        }, -- [10]
+        },
         {
             Waypoint = 25035,
             RaidIcon = 38989,
@@ -3247,7 +3247,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -1331.3,
                 x = -5558.3,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -803,
@@ -3256,7 +3256,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
             Done = {
                 25035,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24812,
@@ -3266,7 +3266,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -803,
                 x = -5555.3,
             },
-        }, -- [13]
+        },
         {
             Qpart = {
                 [24812] = {
@@ -3284,7 +3284,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -706.5,
                 x = -5599.4,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -801.8,
@@ -3294,7 +3294,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 24814,
@@ -3303,7 +3303,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -801.8,
                 x = -5555.7,
             },
-        }, -- [16]
+        },
         {
             Range = 14.91,
             Waypoint = 24814,
@@ -3311,7 +3311,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -814.7,
                 x = -5606.4,
             },
-        }, -- [17]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -3325,7 +3325,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -741.8,
                 x = -5614.9,
             },
-        }, -- [18]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -3338,14 +3338,14 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
                 y = -710.3,
                 x = -5582.4,
             },
-        }, -- [19]
+        },
         {
             UseHS = 24814,
             Coord = {
                 y = -722.5,
                 x = -5591,
             },
-        }, -- [20]
+        },
         {
             Coord = {
                 y = -1317.6,
@@ -3354,7 +3354,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
             Done = {
                 24814,
             },
-        }, -- [21]
+        },
         {
             PickUp = {
                 25073,
@@ -3372,7 +3372,7 @@ elseif (APR.ClassId == APR.ClassesShaman and APR.Race == "Troll") then
             Done = {
                 25073,
             },
-        }, -- [23]
+        },
         {
             ZoneDoneSave = 1,
         },
@@ -3405,7 +3405,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1151.4,
                 x = -5569.3,
             },
-        }, -- [3]
+        },
         {
             Qpart = {
                 [24751] = {
@@ -3417,7 +3417,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1156.8,
                 x = -5584,
             },
-        }, -- [4]
+        },
         {
             Coord = {
                 y = -1151.4,
@@ -3426,7 +3426,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
             Done = {
                 24751,
             },
-        }, -- [5]
+        },
         {
             PickUp = {
                 24753,
@@ -3435,7 +3435,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1151.4,
                 x = -5569.7,
             },
-        }, -- [6]
+        },
         {
             Qpart = {
                 [24753] = {
@@ -3447,7 +3447,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1110.5,
                 x = -5628.7,
             },
-        }, -- [7]
+        },
         {
             Coord = {
                 y = -1151.5,
@@ -3456,7 +3456,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
             Done = {
                 24753,
             },
-        }, -- [8]
+        },
         {
             PickUp = {
                 24754,
@@ -3479,7 +3479,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1157.9,
                 x = -5529.9,
             },
-        }, -- [10]
+        },
         {
             Qpart = {
                 [24754] = {
@@ -3492,7 +3492,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1149.5,
                 x = -5527.7,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -1145.6,
@@ -3501,7 +3501,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
             Done = {
                 24754,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24755,
@@ -3510,7 +3510,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1145.6,
                 x = -5542.4,
             },
-        }, -- [13]
+        },
         {
             Range = 5.29,
             Waypoint = 24755,
@@ -3518,7 +3518,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1288.5,
                 x = -5569.8,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -1317.5,
@@ -3527,7 +3527,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
             Done = {
                 24755,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 25064,
@@ -3536,7 +3536,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1317.5,
                 x = -5602.9,
             },
-        }, -- [16]
+        },
         --------- Class Ends ----------
         {
             PickUp = {
@@ -3546,7 +3546,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1281.5,
                 x = -5583.7,
             },
-        }, -- [18]
+        },
         {
             Done = {
                 25064,
@@ -3555,7 +3555,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 24622,
@@ -3564,7 +3564,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [20]
+        },
         {
             Waypoint = 24622,
             Range = 13.41,
@@ -3572,7 +3572,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1331,
                 x = -5397.7,
             },
-        }, -- [21]
+        },
         {
             Done = {
                 24622,
@@ -3586,13 +3586,13 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
             PickUp = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
             Coord = {
                 y = -1549.5,
                 x = -5315,
             },
-        }, -- [23]
+        },
         {
             Qpart = {
                 [24625] = {
@@ -3643,9 +3643,9 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
             Done = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
-        },             -- [3]
+        },
         {
             PickUp = {
                 24626,
@@ -3654,7 +3654,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [4]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -3675,7 +3675,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -3687,7 +3687,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1299,
                 x = -5452.2,
             },
-        }, -- [6]
+        },
         {
             Coord = {
                 y = -1291.1,
@@ -3696,7 +3696,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
             Done = {
                 24626,
             },
-        }, -- [7]
+        },
         {
             PickUp = {
                 25035,
@@ -3705,7 +3705,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1329.6,
                 x = -5556.4,
             },
-        }, -- [8]
+        },
         {
             Qpart = {
                 [25037] = {
@@ -3726,7 +3726,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
             Done = {
                 25037,
             },
-        }, -- [10]
+        },
         {
             Waypoint = 25035,
             RaidIcon = 38989,
@@ -3736,7 +3736,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -1331.3,
                 x = -5558.3,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -803,
@@ -3745,7 +3745,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
             Done = {
                 25035,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24812,
@@ -3755,7 +3755,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -803,
                 x = -5555.3,
             },
-        }, -- [13]
+        },
         {
             Qpart = {
                 [24812] = {
@@ -3773,7 +3773,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -706.5,
                 x = -5599.4,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -801.8,
@@ -3783,7 +3783,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 24814,
@@ -3792,7 +3792,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -801.8,
                 x = -5555.7,
             },
-        }, -- [16]
+        },
         {
             Range = 14.91,
             Waypoint = 24814,
@@ -3800,7 +3800,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -814.7,
                 x = -5606.4,
             },
-        }, -- [17]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -3814,7 +3814,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -741.8,
                 x = -5614.9,
             },
-        }, -- [18]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -3827,14 +3827,14 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
                 y = -710.3,
                 x = -5582.4,
             },
-        }, -- [19]
+        },
         {
             UseHS = 24814,
             Coord = {
                 y = -722.5,
                 x = -5591,
             },
-        }, -- [20]
+        },
         {
             Coord = {
                 y = -1317.6,
@@ -3843,7 +3843,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
             Done = {
                 24814,
             },
-        }, -- [21]
+        },
         {
             PickUp = {
                 25073,
@@ -3861,7 +3861,7 @@ elseif (APR.ClassId == APR.ClassesMage and APR.Race == "Troll") then
             Done = {
                 25073,
             },
-        }, -- [23]
+        },
         {
             ZoneDoneSave = 1,
         },
@@ -3894,7 +3894,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1125.9,
                 x = -5395,
             },
-        }, -- [3]
+        },
         {
             Qpart = {
                 [26273] = {
@@ -3906,7 +3906,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1125.9,
                 x = -5395,
             },
-        }, -- [4]
+        },
         {
             Coord = {
                 y = -1126.8,
@@ -3915,7 +3915,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
             Done = {
                 26273,
             },
-        }, -- [5]
+        },
         {
             PickUp = {
                 26275,
@@ -3924,7 +3924,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1126.8,
                 x = -5394.9,
             },
-        }, -- [6]
+        },
         {
             Qpart = {
                 [26275] = {
@@ -3936,7 +3936,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1134.4,
                 x = -5337.2,
             },
-        }, -- [7]
+        },
         {
             Coord = {
                 y = -1125.8,
@@ -3945,7 +3945,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
             Done = {
                 26275,
             },
-        }, -- [8]
+        },
         {
             PickUp = {
                 26276,
@@ -3968,7 +3968,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1142.8,
                 x = -5429,
             },
-        }, -- [10]
+        },
         {
             Qpart = {
                 [26276] = {
@@ -3981,7 +3981,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1144.3,
                 x = -5415.7,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -1149.1,
@@ -3990,7 +3990,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
             Done = {
                 26276,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 26277,
@@ -3999,7 +3999,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1149.1,
                 x = -5407.9,
             },
-        }, -- [13]
+        },
         {
             Range = 5.91,
             Waypoint = 26277,
@@ -4007,7 +4007,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1287.6,
                 x = -5567.8,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -1317.5,
@@ -4016,7 +4016,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
             Done = {
                 26277,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 25064,
@@ -4025,7 +4025,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1317.5,
                 x = -5602.9,
             },
-        }, -- [16]
+        },
         --------- Class Ends ----------
         {
             PickUp = {
@@ -4035,7 +4035,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1281.5,
                 x = -5583.7,
             },
-        }, -- [18]
+        },
         {
             Done = {
                 25064,
@@ -4044,7 +4044,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 24622,
@@ -4053,7 +4053,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [20]
+        },
         {
             Waypoint = 24622,
             Range = 13.41,
@@ -4061,7 +4061,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1331,
                 x = -5397.7,
             },
-        }, -- [21]
+        },
         {
             Done = {
                 24622,
@@ -4075,13 +4075,13 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
             PickUp = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
             Coord = {
                 y = -1549.5,
                 x = -5315,
             },
-        }, -- [23]
+        },
         {
             Qpart = {
                 [24625] = {
@@ -4132,9 +4132,9 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
             Done = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
-        },             -- [3]
+        },
         {
             PickUp = {
                 24626,
@@ -4143,7 +4143,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [4]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -4164,7 +4164,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -4176,7 +4176,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1299,
                 x = -5452.2,
             },
-        }, -- [6]
+        },
         {
             Coord = {
                 y = -1291.1,
@@ -4185,7 +4185,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
             Done = {
                 24626,
             },
-        }, -- [7]
+        },
         {
             PickUp = {
                 25035,
@@ -4194,7 +4194,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1329.6,
                 x = -5556.4,
             },
-        }, -- [8]
+        },
         {
             Qpart = {
                 [25037] = {
@@ -4215,7 +4215,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
             Done = {
                 25037,
             },
-        }, -- [10]
+        },
         {
             Waypoint = 25035,
             RaidIcon = 38989,
@@ -4225,7 +4225,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -1331.3,
                 x = -5558.3,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -803,
@@ -4234,7 +4234,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
             Done = {
                 25035,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24812,
@@ -4244,7 +4244,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -803,
                 x = -5555.3,
             },
-        }, -- [13]
+        },
         {
             Qpart = {
                 [24812] = {
@@ -4262,7 +4262,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -706.5,
                 x = -5599.4,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -801.8,
@@ -4272,7 +4272,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 24814,
@@ -4281,7 +4281,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -801.8,
                 x = -5555.7,
             },
-        }, -- [16]
+        },
         {
             Range = 14.91,
             Waypoint = 24814,
@@ -4289,7 +4289,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -814.7,
                 x = -5606.4,
             },
-        }, -- [17]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -4303,7 +4303,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -741.8,
                 x = -5614.9,
             },
-        }, -- [18]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -4316,14 +4316,14 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
                 y = -710.3,
                 x = -5582.4,
             },
-        }, -- [19]
+        },
         {
             UseHS = 24814,
             Coord = {
                 y = -722.5,
                 x = -5591,
             },
-        }, -- [20]
+        },
         {
             Coord = {
                 y = -1317.6,
@@ -4332,7 +4332,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
             Done = {
                 24814,
             },
-        }, -- [21]
+        },
         {
             PickUp = {
                 25073,
@@ -4350,7 +4350,7 @@ elseif (APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll") then
             Done = {
                 25073,
             },
-        }, -- [23]
+        },
         {
             ZoneDoneSave = 1,
         },
@@ -4383,7 +4383,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1148.6,
                 x = -5440.3,
             },
-        }, -- [3]
+        },
         {
             Qpart = {
                 [31158] = {
@@ -4395,7 +4395,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1127.8,
                 x = -5440.4,
             },
-        }, -- [4]
+        },
         {
             Coord = {
                 y = -1148,
@@ -4404,7 +4404,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
             Done = {
                 31158,
             },
-        }, -- [5]
+        },
         {
             PickUp = {
                 31160,
@@ -4413,7 +4413,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1148,
                 x = -5440.4,
             },
-        }, -- [6]
+        },
         {
             Qpart = {
                 [31160] = {
@@ -4425,7 +4425,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1046,
                 x = -5368.9,
             },
-        }, -- [7]
+        },
         {
             Coord = {
                 y = -1149,
@@ -4434,7 +4434,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
             Done = {
                 31160,
             },
-        }, -- [8]
+        },
         {
             PickUp = {
                 31161,
@@ -4457,7 +4457,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1144,
                 x = -5428.9,
             },
-        }, -- [10]
+        },
         {
             Qpart = {
                 [31161] = {
@@ -4470,7 +4470,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1144,
                 x = -5415.4,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -1151,
@@ -4479,7 +4479,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
             Done = {
                 31161,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 31163,
@@ -4488,7 +4488,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1151,
                 x = -5429,
             },
-        }, -- [13]
+        },
         {
             Range = 6.36,
             Waypoint = 31163,
@@ -4496,7 +4496,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1288.3,
                 x = -5569.2,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -1317.4,
@@ -4505,7 +4505,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
             Done = {
                 31163,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 25064,
@@ -4514,7 +4514,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1317.4,
                 x = -5602.9,
             },
-        }, -- [16]
+        },
         --------- Class Ends ----------
         {
             PickUp = {
@@ -4524,7 +4524,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1281.5,
                 x = -5583.7,
             },
-        }, -- [18]
+        },
         {
             Done = {
                 25064,
@@ -4533,7 +4533,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 24622,
@@ -4542,7 +4542,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [20]
+        },
         {
             Waypoint = 24622,
             Range = 13.41,
@@ -4550,7 +4550,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1331,
                 x = -5397.7,
             },
-        }, -- [21]
+        },
         {
             Done = {
                 24622,
@@ -4564,13 +4564,13 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
             PickUp = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
             Coord = {
                 y = -1549.5,
                 x = -5315,
             },
-        }, -- [23]
+        },
         {
             Qpart = {
                 [24625] = {
@@ -4621,9 +4621,9 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
             Done = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
-        },             -- [3]
+        },
         {
             PickUp = {
                 24626,
@@ -4632,7 +4632,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [4]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -4653,7 +4653,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -4665,7 +4665,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1299,
                 x = -5452.2,
             },
-        }, -- [6]
+        },
         {
             Coord = {
                 y = -1291.1,
@@ -4674,7 +4674,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
             Done = {
                 24626,
             },
-        }, -- [7]
+        },
         {
             PickUp = {
                 25035,
@@ -4683,7 +4683,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1329.6,
                 x = -5556.4,
             },
-        }, -- [8]
+        },
         {
             Qpart = {
                 [25037] = {
@@ -4704,7 +4704,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
             Done = {
                 25037,
             },
-        }, -- [10]
+        },
         {
             Waypoint = 25035,
             RaidIcon = 38989,
@@ -4714,7 +4714,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -1331.3,
                 x = -5558.3,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -803,
@@ -4723,7 +4723,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
             Done = {
                 25035,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24812,
@@ -4733,7 +4733,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -803,
                 x = -5555.3,
             },
-        }, -- [13]
+        },
         {
             Qpart = {
                 [24812] = {
@@ -4751,7 +4751,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -706.5,
                 x = -5599.4,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -801.8,
@@ -4761,7 +4761,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 24814,
@@ -4770,7 +4770,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -801.8,
                 x = -5555.7,
             },
-        }, -- [16]
+        },
         {
             Range = 14.91,
             Waypoint = 24814,
@@ -4778,7 +4778,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -814.7,
                 x = -5606.4,
             },
-        }, -- [17]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -4792,7 +4792,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -741.8,
                 x = -5614.9,
             },
-        }, -- [18]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -4805,14 +4805,14 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
                 y = -710.3,
                 x = -5582.4,
             },
-        }, -- [19]
+        },
         {
             UseHS = 24814,
             Coord = {
                 y = -722.5,
                 x = -5591,
             },
-        }, -- [20]
+        },
         {
             Coord = {
                 y = -1317.6,
@@ -4821,7 +4821,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
             Done = {
                 24814,
             },
-        }, -- [21]
+        },
         {
             PickUp = {
                 25073,
@@ -4839,7 +4839,7 @@ elseif (APR.ClassId == APR.ClassesMonk and APR.Race == "Troll") then
             Done = {
                 25073,
             },
-        }, -- [23]
+        },
         {
             ZoneDoneSave = 1,
         },
@@ -4872,7 +4872,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1175,
                 x = -5539.9,
             },
-        }, -- [3]
+        },
         {
             Qpart = {
                 [24765] = {
@@ -4884,7 +4884,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1166.8,
                 x = -5548.9,
             },
-        }, -- [4]
+        },
         {
             Coord = {
                 y = -1174.8,
@@ -4893,7 +4893,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
             Done = {
                 24765,
             },
-        }, -- [5]
+        },
         {
             PickUp = {
                 24767,
@@ -4902,7 +4902,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1174.8,
                 x = -5540.3,
             },
-        }, -- [6]
+        },
         {
             Qpart = {
                 [24767] = {
@@ -4914,7 +4914,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1254.5,
                 x = -5430.5,
             },
-        }, -- [7]
+        },
         {
             Coord = {
                 y = -1175.1,
@@ -4923,7 +4923,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
             Done = {
                 24767,
             },
-        }, -- [8]
+        },
         {
             PickUp = {
                 24768,
@@ -4946,7 +4946,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1159,
                 x = -5529.5,
             },
-        }, -- [10]
+        },
         {
             Qpart = {
                 [24768] = {
@@ -4959,7 +4959,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1149.8,
                 x = -5527.2,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -1157.9,
@@ -4968,7 +4968,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
             Done = {
                 24768,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24769,
@@ -4977,7 +4977,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1157.9,
                 x = -5532.7,
             },
-        }, -- [13]
+        },
         {
             Range = 6.21,
             Waypoint = 24769,
@@ -4985,7 +4985,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1288.3,
                 x = -5569.2,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -1317.8,
@@ -4994,7 +4994,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
             Done = {
                 24769,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 25064,
@@ -5003,7 +5003,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1317.8,
                 x = -5602.9,
             },
-        }, -- [16]
+        },
         --------- Class Ends ----------
         {
             PickUp = {
@@ -5013,7 +5013,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1281.5,
                 x = -5583.7,
             },
-        }, -- [18]
+        },
         {
             Done = {
                 25064,
@@ -5022,7 +5022,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 24622,
@@ -5031,7 +5031,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1291.5,
                 x = -5517.7,
             },
-        }, -- [20]
+        },
         {
             Waypoint = 24622,
             Range = 13.41,
@@ -5039,7 +5039,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1331,
                 x = -5397.7,
             },
-        }, -- [21]
+        },
         {
             Done = {
                 24622,
@@ -5053,13 +5053,13 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
             PickUp = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
             Coord = {
                 y = -1549.5,
                 x = -5315,
             },
-        }, -- [23]
+        },
         {
             Qpart = {
                 [24625] = {
@@ -5110,9 +5110,9 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
             Done = {
                 24623,
                 24624,
-                24625, -- [3]
+                24625,
             },
-        },             -- [3]
+        },
         {
             PickUp = {
                 24626,
@@ -5121,7 +5121,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [4]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -5142,7 +5142,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1549.5,
                 x = -5314.3,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [24626] = {
@@ -5154,7 +5154,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1299,
                 x = -5452.2,
             },
-        }, -- [6]
+        },
         {
             Coord = {
                 y = -1291.1,
@@ -5163,7 +5163,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
             Done = {
                 24626,
             },
-        }, -- [7]
+        },
         {
             PickUp = {
                 25035,
@@ -5172,7 +5172,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1329.6,
                 x = -5556.4,
             },
-        }, -- [8]
+        },
         {
             Qpart = {
                 [25037] = {
@@ -5193,7 +5193,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
             Done = {
                 25037,
             },
-        }, -- [10]
+        },
         {
             Waypoint = 25035,
             RaidIcon = 38989,
@@ -5203,7 +5203,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -1331.3,
                 x = -5558.3,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = -803,
@@ -5212,7 +5212,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
             Done = {
                 25035,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24812,
@@ -5222,7 +5222,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -803,
                 x = -5555.3,
             },
-        }, -- [13]
+        },
         {
             Qpart = {
                 [24812] = {
@@ -5240,7 +5240,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -706.5,
                 x = -5599.4,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = -801.8,
@@ -5250,7 +5250,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 24812,
                 24813,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 24814,
@@ -5259,7 +5259,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -801.8,
                 x = -5555.7,
             },
-        }, -- [16]
+        },
         {
             Range = 14.91,
             Waypoint = 24814,
@@ -5267,7 +5267,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -814.7,
                 x = -5606.4,
             },
-        }, -- [17]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -5281,7 +5281,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -741.8,
                 x = -5614.9,
             },
-        }, -- [18]
+        },
         {
             Qpart = {
                 [24814] = {
@@ -5294,14 +5294,14 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
                 y = -710.3,
                 x = -5582.4,
             },
-        }, -- [19]
+        },
         {
             UseHS = 24814,
             Coord = {
                 y = -722.5,
                 x = -5591,
             },
-        }, -- [20]
+        },
         {
             Coord = {
                 y = -1317.6,
@@ -5310,7 +5310,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
             Done = {
                 24814,
             },
-        }, -- [21]
+        },
         {
             PickUp = {
                 25073,
@@ -5328,7 +5328,7 @@ elseif (APR.ClassId == APR.ClassesDruid and APR.Race == "Troll") then
             Done = {
                 25073,
             },
-        }, -- [23]
+        },
         {
             ZoneDoneSave = 1,
         },
@@ -5362,7 +5362,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8402.5,
                 x = 1316.5,
             },
-        }, -- [3]
+        },
         {
             Qpart = {
                 [14069] = {
@@ -5377,7 +5377,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8422.8,
                 x = 1175,
             },
-        }, -- [4]
+        },
         {
             Waypoint = 14069,
             Range = 25.83,
@@ -5385,7 +5385,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8441.3,
                 x = 1249.3,
             },
-        }, -- [5]
+        },
         {
             Coord = {
                 y = -8403,
@@ -5395,7 +5395,7 @@ elseif (APR.Race == "Goblin") then
                 14069,
                 14075,
             },
-        }, -- [6]
+        },
         {
             PickUp = {
                 25473,
@@ -5404,7 +5404,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8401.7,
                 x = 1313.8,
             },
-        }, -- [7]
+        },
         {
             Coord = {
                 y = -8423.3,
@@ -5413,7 +5413,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 25473,
             },
-        }, -- [8]
+        },
         {
             PickUp = {
                 28349,
@@ -5431,7 +5431,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 28349,
             },
-        }, -- [10]
+        },
         {
             PickUp = {
                 14071,
@@ -5440,7 +5440,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8419.8,
                 x = 1342.2,
             },
-        }, -- [11]
+        },
         {
             Qpart = {
                 [14071] = {
@@ -5455,7 +5455,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8418.5,
                 x = 1340.5,
             },
-        }, -- [12]
+        },
         {
             Qpart = {
                 [14071] = {
@@ -5467,7 +5467,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8506.5,
                 x = 1343.5,
             },
-        }, -- [13]
+        },
         {
             Qpart = {
                 [14071] = {
@@ -5479,7 +5479,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8176.4,
                 x = 1314,
             },
-        }, -- [14]
+        },
         {
             Qpart = {
                 [14071] = {
@@ -5491,7 +5491,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8066.9,
                 x = 1483,
             },
-        }, -- [15]
+        },
         {
             Coord = {
                 y = -8419.3,
@@ -5500,7 +5500,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14071,
             },
-        }, -- [16]
+        },
         {
             PickUp = {
                 24567,
@@ -5509,7 +5509,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8419.3,
                 x = 1340.5,
             },
-        }, -- [17]
+        },
         {
             PickUp = {
                 14070,
@@ -5539,7 +5539,7 @@ elseif (APR.Race == "Goblin") then
                 x = 1367.2,
             },
         },
-        { -- [18]
+        {
             Coord = {
                 y = -8251.2,
                 x = 1469.5,
@@ -5547,7 +5547,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24567,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 24488,
@@ -5556,7 +5556,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8251.3,
                 x = 1469.7,
             },
-        }, -- [20]
+        },
         {
             Qpart = {
                 [14070] = {
@@ -5573,7 +5573,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8403,
                 x = 1518.9,
             },
-        }, -- [21]
+        },
         {
             Qpart = {
                 [14070] = {
@@ -5602,7 +5602,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8431,
                 x = 1655.5,
             },
-        }, -- [23]
+        },
         {
             Qpart = {
                 [14070] = {
@@ -5619,7 +5619,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8360.8,
                 x = 1631.8,
             },
-        }, -- [24]
+        },
         {
             Gender = 3,
             Done = {
@@ -5639,7 +5639,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8375,
                 x = 1722.8,
             },
-        }, -- [26]
+        },
         {
             Gender = 3,
             Qpart = {
@@ -5658,7 +5658,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8230,
                 x = 1621,
             },
-        }, -- [27]
+        },
         {
             Gender = 3,
             Qpart = {
@@ -5677,7 +5677,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8142.2,
                 x = 1658.2,
             },
-        }, -- [28]
+        },
         {
             Gender = 3,
             Qpart = {
@@ -5716,7 +5716,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8375,
                 x = 1722.8,
             },
-        }, -- [26]
+        },
         {
             Gender = 2,
             Qpart = {
@@ -5735,7 +5735,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8230,
                 x = 1621,
             },
-        }, -- [27]
+        },
         {
             Gender = 2,
             Qpart = {
@@ -5754,7 +5754,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8142.2,
                 x = 1658.2,
             },
-        }, -- [28]
+        },
         {
             Gender = 2,
             Qpart = {
@@ -5785,7 +5785,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8143.7,
                 x = 1581.3,
             },
-        }, -- [30]
+        },
         {
             Coord = {
                 y = -8248.5,
@@ -5794,7 +5794,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24488,
             },
-        }, -- [31]
+        },
         {
             PickUp = {
                 24502,
@@ -5803,7 +5803,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8248.5,
                 x = 1469.9,
             },
-        }, -- [32]
+        },
         {
             Qpart = {
                 [24502] = {
@@ -5816,7 +5816,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8251,
                 x = 1485.5,
             },
-        }, -- [33]
+        },
         {
             Coord = {
                 y = -8250.5,
@@ -5825,7 +5825,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24502,
             },
-        }, -- [34]
+        },
         {
             PickUp = {
                 24503,
@@ -5834,7 +5834,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8250.5,
                 x = 1484.8,
             },
-        }, -- [35]
+        },
         {
             Qpart = {
                 [24503] = {
@@ -5846,7 +5846,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8250.5,
                 x = 1484.8,
             },
-        }, -- [36]
+        },
         {
             Coord = {
                 y = -8248.8,
@@ -5855,7 +5855,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24503,
             },
-        }, -- [37]
+        },
         {
             PickUp = {
                 24520,
@@ -5864,7 +5864,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8248.8,
                 x = 1471.5,
             },
-        }, -- [38]
+        },
         {
             Done = {
                 24520,
@@ -5894,7 +5894,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8423.8,
                 x = 1367,
             },
-        }, -- [40]
+        },
         {
             Gender = 3,
             Qpart = {
@@ -5907,7 +5907,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8446.7,
                 x = 1329.9,
             },
-        }, -- [41]
+        },
         {
             Gender = 3,
             Done = {
@@ -5937,7 +5937,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8423.8,
                 x = 1367,
             },
-        }, -- [40]
+        },
         {
             Gender = 2,
             Qpart = {
@@ -5950,7 +5950,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8446.7,
                 x = 1329.9,
             },
-        }, -- [41]
+        },
         {
             Gender = 2,
             Done = {
@@ -5969,7 +5969,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8423.3,
                 x = 1366.4,
             },
-        }, -- [43]
+        },
         {
             Qpart = {
                 [14115] = {
@@ -5981,7 +5981,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8443.3,
                 x = 1327.3,
             },
-        }, -- [44]
+        },
         {
             Coord = {
                 y = -8423.5,
@@ -5990,7 +5990,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14115,
             },
-        }, -- [45]
+        },
         {
             PickUp = {
                 14116,
@@ -5999,7 +5999,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8423.5,
                 x = 1365.7,
             },
-        }, -- [46]
+        },
         {
             Coord = {
                 y = -8423,
@@ -6009,7 +6009,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14116,
             },
-        }, -- [47]
+        },
         {
             PickUp = {
                 14120,
@@ -6018,7 +6018,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8423,
                 x = 1363.3,
             },
-        }, -- [48]
+        },
         {
             Coord = {
                 y = -8424.7,
@@ -6027,7 +6027,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14120,
             },
-        }, -- [49]
+        },
         {
             PickUp = {
                 14122,
@@ -6036,7 +6036,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8424.7,
                 x = 1323.8,
             },
-        }, -- [50]
+        },
         {
             PickUp = {
                 14123,
@@ -6045,7 +6045,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8418.5,
                 x = 1331.8,
             },
-        }, -- [51]
+        },
         {
             PickUp = {
                 14121,
@@ -6054,7 +6054,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8435.3,
                 x = 1318.5,
             },
-        }, -- [52]
+        },
         {
             PickUp = {
                 14124,
@@ -6063,7 +6063,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8431,
                 x = 1278.3,
             },
-        }, -- [53]
+        },
         {
             Qpart = {
                 [14124] = {
@@ -6078,7 +6078,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8443,
                 x = 1227.8,
             },
-        }, -- [54]
+        },
         {
             Coord = {
                 y = -8430,
@@ -6087,7 +6087,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14124,
             },
-        }, -- [55]
+        },
         {
             Qpart = {
                 [14122] = {
@@ -6105,7 +6105,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8372.3,
                 x = 1729.7,
             },
-        }, -- [56]
+        },
         {
             Qpart = {
                 [14123] = {
@@ -6122,7 +6122,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8006.7,
                 x = 1860,
             },
-        }, -- [57]
+        },
         {
             Qpart = {
                 [14123] = {
@@ -6139,7 +6139,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8047.3,
                 x = 1956,
             },
-        }, -- [58]
+        },
         {
             Qpart = {
                 [14123] = {
@@ -6156,7 +6156,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8147.3,
                 x = 1903.5,
             },
-        }, -- [59]
+        },
         {
             Qpart = {
                 [14121] = {
@@ -6168,7 +6168,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8133.7,
                 x = 1759.4,
             },
-        }, -- [60]
+        },
         {
             Coord = {
                 y = -8391.3,
@@ -6177,7 +6177,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14123,
             },
-        }, -- [61]
+        },
         {
             Coord = {
                 y = -8423.2,
@@ -6186,7 +6186,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14122,
             },
-        }, -- [62]
+        },
         {
             Coord = {
                 y = -8433.8,
@@ -6195,7 +6195,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14121,
             },
-        }, -- [63]
+        },
         {
             PickUp = {
                 14125,
@@ -6204,7 +6204,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8425.5,
                 x = 1322.5,
             },
-        }, -- [64]
+        },
         {
             Qpart = {
                 [14125] = {
@@ -6236,7 +6236,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8425.3,
                 x = 1372.4,
             },
-        }, -- [67]
+        },
         {
             Waypoint = 14125,
             Range = 5.04,
@@ -6256,7 +6256,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8408.3,
                 x = 1362.8,
             },
-        }, -- [69]
+        },
         {
             Qpart = {
                 [14125] = {
@@ -6268,7 +6268,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8422,
                 x = 1327,
             },
-        }, -- [70]
+        },
         {
             Done = {
                 14125,
@@ -6277,7 +6277,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8420.2,
                 x = 1325,
             },
-        }, -- [71]
+        },
         {
             PickUp = {
                 14126,
@@ -6286,7 +6286,7 @@ elseif (APR.Race == "Goblin") then
                 y = -8424.3,
                 x = 1323.7,
             },
-        }, -- [72]
+        },
         {
             ExtraLineText = "TALK_SASSY",
             Done = {
@@ -6297,7 +6297,7 @@ elseif (APR.Race == "Goblin") then
                 x = 1322.8,
             },
             Gossip = 38872,
-        }, -- [73]
+        },
         {
             Done = {
                 14126,
@@ -6306,7 +6306,7 @@ elseif (APR.Race == "Goblin") then
                 y = -7852.7,
                 x = 1846.5,
             },
-        }, -- [73]
+        },
         {
             ZoneDoneSave = 1,
         },
@@ -6341,7 +6341,7 @@ elseif (APR.Race == "Goblin") then
                 y = 607.5,
                 x = 3125.6,
             },
-        }, -- [3]
+        },
         {
             PickUp = {
                 14014,
@@ -6350,7 +6350,7 @@ elseif (APR.Race == "Goblin") then
                 y = 607.5,
                 x = 3125.6,
             },
-        }, -- [4]
+        },
         {
             PickUp = {
                 14019,
@@ -6360,7 +6360,7 @@ elseif (APR.Race == "Goblin") then
                 y = 642.9,
                 x = 3124.5,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [14019] = {
@@ -6381,7 +6381,7 @@ elseif (APR.Race == "Goblin") then
                 y = 648.7,
                 x = 3126.1,
             },
-        }, -- [6]
+        },
         {
             Coord = {
                 y = 643.4,
@@ -6391,7 +6391,7 @@ elseif (APR.Race == "Goblin") then
                 14019,
                 14473,
             },
-        }, -- [7]
+        },
         {
             Coord = {
                 y = 607.7,
@@ -6400,7 +6400,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14014,
             },
-        }, -- [8]
+        },
         {
             PickUp = {
                 14248,
@@ -6418,7 +6418,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14248,
             },
-        }, -- [10]
+        },
         {
             PickUp = {
                 14031,
@@ -6428,7 +6428,7 @@ elseif (APR.Race == "Goblin") then
                 y = 495.5,
                 x = 2972.3,
             },
-        }, -- [11]
+        },
         {
             Qpart = {
                 [14031] = {
@@ -6443,7 +6443,7 @@ elseif (APR.Race == "Goblin") then
                 y = 566.7,
                 x = 2945.1,
             },
-        }, -- [12]
+        },
         {
             Qpart = {
                 [14031] = {
@@ -6458,7 +6458,7 @@ elseif (APR.Race == "Goblin") then
                 y = 572.2,
                 x = 2911.5,
             },
-        }, -- [13]
+        },
         {
             Qpart = {
                 [14021] = {
@@ -6470,7 +6470,7 @@ elseif (APR.Race == "Goblin") then
                 y = 576.7,
                 x = 2921.3,
             },
-        }, -- [14]
+        },
         {
             Qpart = {
                 [14031] = {
@@ -6482,7 +6482,7 @@ elseif (APR.Race == "Goblin") then
                 y = 614.5,
                 x = 2853.5,
             },
-        }, -- [15]
+        },
         {
             Range = 10.78,
             Waypoint = 14031,
@@ -6490,7 +6490,7 @@ elseif (APR.Race == "Goblin") then
                 y = 658.1,
                 x = 2946.1,
             },
-        }, -- [16]
+        },
         {
             Qpart = {
                 [14031] = {
@@ -6505,7 +6505,7 @@ elseif (APR.Race == "Goblin") then
                 y = 653.7,
                 x = 2962.3,
             },
-        }, -- [17]
+        },
         {
             PickUp = {
                 14233,
@@ -6514,7 +6514,7 @@ elseif (APR.Race == "Goblin") then
                 y = 651.6,
                 x = 2973.6,
             },
-        }, -- [18]
+        },
         {
             Range = 11.45,
             Waypoint = 14021,
@@ -6522,7 +6522,7 @@ elseif (APR.Race == "Goblin") then
                 y = 586.4,
                 x = 2959,
             },
-        }, -- [19]
+        },
         {
             Coord = {
                 y = 495.8,
@@ -6531,7 +6531,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14021,
             },
-        }, -- [20]
+        },
         {
             Done = {
                 14031,
@@ -6541,7 +6541,7 @@ elseif (APR.Race == "Goblin") then
                 y = 607.4,
                 x = 3125.1,
             },
-        }, -- [21]
+        },
         {
             PickUp = {
                 14234,
@@ -6575,7 +6575,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14234,
             },
-        }, -- [23]
+        },
         {
             PickUp = {
                 14235,
@@ -6584,7 +6584,7 @@ elseif (APR.Race == "Goblin") then
                 y = 533.5,
                 x = 2686.1,
             },
-        }, -- [24]
+        },
         {
             Done = {
                 14235,
@@ -6593,7 +6593,7 @@ elseif (APR.Race == "Goblin") then
                 y = 603.4,
                 x = 2785.1,
             },
-        }, -- [25]
+        },
         {
             PickUp = {
                 14236,
@@ -6602,7 +6602,7 @@ elseif (APR.Race == "Goblin") then
                 y = 602.7,
                 x = 2784.6,
             },
-        }, -- [26]
+        },
         {
             Qpart = {
                 [14236] = {
@@ -6617,7 +6617,7 @@ elseif (APR.Race == "Goblin") then
                 y = 602.7,
                 x = 2784.6,
             },
-        }, -- [27]
+        },
         {
             Done = {
                 14236,
@@ -6626,7 +6626,7 @@ elseif (APR.Race == "Goblin") then
                 y = 602.9,
                 x = 2783.6,
             },
-        }, -- [28]
+        },
         {
             PickUp = {
                 14303,
@@ -6635,7 +6635,7 @@ elseif (APR.Race == "Goblin") then
                 y = 602.9,
                 x = 2783.6,
             },
-        }, -- [29]
+        },
         {
             Done = {
                 14303,
@@ -6644,7 +6644,7 @@ elseif (APR.Race == "Goblin") then
                 y = 533.5,
                 x = 2686,
             },
-        }, -- [30]
+        },
         {
             PickUp = {
                 14237,
@@ -6653,7 +6653,7 @@ elseif (APR.Race == "Goblin") then
                 y = 533.5,
                 x = 2686,
             },
-        }, -- [31]
+        },
         {
             Waypoint = 14237,
             Range = 20,
@@ -6686,7 +6686,7 @@ elseif (APR.Race == "Goblin") then
                 y = 869.4,
                 x = 2821.6,
             },
-        }, -- [33]
+        },
         {
             PickUp = {
                 14238,
@@ -6695,7 +6695,7 @@ elseif (APR.Race == "Goblin") then
                 y = 869.4,
                 x = 2821.6,
             },
-        }, -- [34]
+        },
         {
             Qpart = {
                 [14238] = {
@@ -6710,7 +6710,7 @@ elseif (APR.Race == "Goblin") then
                 y = 878,
                 x = 2882.6,
             },
-        }, -- [35]
+        },
         {
             Done = {
                 14238,
@@ -6719,7 +6719,7 @@ elseif (APR.Race == "Goblin") then
                 y = 869.2,
                 x = 2821,
             },
-        }, -- [36]
+        },
         {
             PickUp = {
                 14240,
@@ -6728,7 +6728,7 @@ elseif (APR.Race == "Goblin") then
                 y = 867.9,
                 x = 2822,
             },
-        }, -- [37]
+        },
         {
             Done = {
                 14240,
@@ -6737,7 +6737,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1079.9,
                 x = 3242.1,
             },
-        }, -- [38]
+        },
         {
             PickUp = {
                 14241,
@@ -6767,7 +6767,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14241,
             },
-        }, -- [3]
+        },
         {
             PickUp = {
                 14242,
@@ -6776,7 +6776,7 @@ elseif (APR.Race == "Goblin") then
                 y = 834.1,
                 x = 3340.3,
             },
-        }, -- [4]
+        },
         {
             Qpart = {
                 [14242] = {
@@ -6788,7 +6788,7 @@ elseif (APR.Race == "Goblin") then
                 y = 992.9,
                 x = 3850.8,
             },
-        }, -- [5]
+        },
         {
             Coord = {
                 y = 992.7,
@@ -6797,7 +6797,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14242,
             },
-        }, -- [6]
+        },
         {
             PickUp = {
                 14326,
@@ -6806,7 +6806,7 @@ elseif (APR.Race == "Goblin") then
                 y = 992.7,
                 x = 3850.9,
             },
-        }, -- [7]
+        },
         {
             Range = 7.36,
             Waypoint = 14326,
@@ -6814,7 +6814,7 @@ elseif (APR.Race == "Goblin") then
                 y = 973.2,
                 x = 3818.4,
             },
-        }, -- [8]
+        },
         {
             Range = 5.75,
             Waypoint = 14326,
@@ -6831,7 +6831,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14326,
             },
-        }, -- [10]
+        },
         {
             PickUp = {
                 14243,
@@ -6840,7 +6840,7 @@ elseif (APR.Race == "Goblin") then
                 y = 995.4,
                 x = 3830.8,
             },
-        }, -- [11]
+        },
         {
             Qpart = {
                 [14243] = {
@@ -6852,7 +6852,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1044,
                 x = 3858.1,
             },
-        }, -- [12]
+        },
         {
             Coord = {
                 y = 873.2,
@@ -6861,7 +6861,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14243,
             },
-        }, -- [13]
+        },
         {
             PickUp = {
                 14445,
@@ -6870,7 +6870,7 @@ elseif (APR.Race == "Goblin") then
                 y = 873.2,
                 x = 2762.6,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = 848.5,
@@ -6879,7 +6879,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14445,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 14244,
@@ -6888,7 +6888,7 @@ elseif (APR.Race == "Goblin") then
                 y = 848.5,
                 x = 2757.3,
             },
-        }, -- [16]
+        },
         {
             Qpart = {
                 [14244] = {
@@ -6901,7 +6901,7 @@ elseif (APR.Race == "Goblin") then
                 y = 876.2,
                 x = 2747.1,
             },
-        }, -- [18]
+        },
         {
             Coord = {
                 y = 944.2,
@@ -6931,7 +6931,7 @@ elseif (APR.Race == "Goblin") then
                 y = 914.7,
                 x = 2331,
             },
-        }, -- [3]
+        },
         {
             Coord = {
                 y = 932.5,
@@ -6940,7 +6940,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 14245,
             },
-        }, -- [4]
+        },
         {
             PickUp = {
                 27139,
@@ -6949,7 +6949,7 @@ elseif (APR.Race == "Goblin") then
                 y = 932.5,
                 x = 2336,
             },
-        }, -- [5]
+        },
         {
             Coord = {
                 y = 918.6,
@@ -6958,7 +6958,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 27139,
             },
-        }, -- [6]
+        },
         {
             PickUp = {
                 24671,
@@ -6967,7 +6967,7 @@ elseif (APR.Race == "Goblin") then
                 y = 918.6,
                 x = 2336.8,
             },
-        }, -- [7]
+        },
         {
             Qpart = {
                 [24671] = {
@@ -6982,7 +6982,7 @@ elseif (APR.Race == "Goblin") then
                 y = 955.3,
                 x = 2298.7,
             },
-        }, -- [8]
+        },
         {
             Coord = {
                 y = 918.7,
@@ -7015,7 +7015,7 @@ elseif (APR.Race == "Goblin") then
                 y = 860.9,
                 x = 2116.1,
             },
-        }, -- [3]
+        },
         {
             Coord = {
                 y = 930,
@@ -7024,7 +7024,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24741,
             },
-        }, -- [4]
+        },
         {
             PickUp = {
                 24744,
@@ -7033,7 +7033,7 @@ elseif (APR.Race == "Goblin") then
                 y = 918.9,
                 x = 2336.8,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [24744] = {
@@ -7045,7 +7045,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1199.3,
                 x = 2325.4,
             },
-        }, -- [6]
+        },
         {
             Coord = {
                 y = 918.9,
@@ -7054,7 +7054,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24744,
             },
-        }, -- [7]
+        },
         {
             PickUp = {
                 24816,
@@ -7063,7 +7063,7 @@ elseif (APR.Race == "Goblin") then
                 y = 918.9,
                 x = 2337,
             },
-        }, -- [8]
+        },
         {
             Qpart = {
                 [24816] = {
@@ -7084,7 +7084,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24816,
             },
-        }, -- [10]
+        },
         {
             PickUp = {
                 24817,
@@ -7093,7 +7093,7 @@ elseif (APR.Race == "Goblin") then
                 y = 908.4,
                 x = 2340,
             },
-        }, -- [11]
+        },
         {
             Qpart = {
                 [24817] = {
@@ -7105,7 +7105,7 @@ elseif (APR.Race == "Goblin") then
                 y = 916,
                 x = 2413.9,
             },
-        }, -- [12]
+        },
         {
             Qpart = {
                 [24817] = {
@@ -7117,7 +7117,7 @@ elseif (APR.Race == "Goblin") then
                 y = 916,
                 x = 2413.9,
             },
-        }, -- [13]
+        },
         {
             Coord = {
                 y = 917.9,
@@ -7126,7 +7126,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24817,
             },
-        }, -- [14]
+        },
         {
             PickUp = {
                 24856,
@@ -7135,7 +7135,7 @@ elseif (APR.Race == "Goblin") then
                 y = 917.9,
                 x = 2337.1,
             },
-        }, -- [15]
+        },
         {
             Range = 28.66,
             Waypoint = 24856,
@@ -7143,7 +7143,7 @@ elseif (APR.Race == "Goblin") then
                 y = 893,
                 x = 2164,
             },
-        }, -- [16]
+        },
         {
             Coord = {
                 y = 679.5,
@@ -7152,7 +7152,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24856,
             },
-        }, -- [17]
+        },
         {
             PickUp = {
                 24858,
@@ -7162,7 +7162,7 @@ elseif (APR.Race == "Goblin") then
                 y = 679.9,
                 x = 2026.8,
             },
-        }, -- [18]
+        },
         {
             Qpart = {
                 [24859] = {
@@ -7177,7 +7177,7 @@ elseif (APR.Race == "Goblin") then
                 y = 469.8,
                 x = 1934,
             },
-        }, -- [19]
+        },
         {
             Coord = {
                 y = 678.7,
@@ -7211,7 +7211,7 @@ elseif (APR.Race == "Goblin") then
                 y = 373.3,
                 x = 1680.8,
             },
-        }, -- [3]
+        },
         {
             Coord = {
                 y = 679.7,
@@ -7220,7 +7220,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24864,
             },
-        }, -- [4]
+        },
         {
             PickUp = {
                 24868,
@@ -7229,7 +7229,7 @@ elseif (APR.Race == "Goblin") then
                 y = 679.7,
                 x = 2027,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [24868] = {
@@ -7241,7 +7241,7 @@ elseif (APR.Race == "Goblin") then
                 y = 136.1,
                 x = 1939.2,
             },
-        }, -- [6]
+        },
         {
             Coord = {
                 y = 679,
@@ -7250,7 +7250,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24868,
             },
-        }, -- [7]
+        },
         {
             PickUp = {
                 24897,
@@ -7259,7 +7259,7 @@ elseif (APR.Race == "Goblin") then
                 y = 679,
                 x = 2026.8,
             },
-        }, -- [8]
+        },
         {
             Coord = {
                 y = 928.2,
@@ -7277,7 +7277,7 @@ elseif (APR.Race == "Goblin") then
                 y = 927.9,
                 x = 2344.1,
             },
-        }, -- [10]
+        },
         {
             Qpart = {
                 [24901] = {
@@ -7289,7 +7289,7 @@ elseif (APR.Race == "Goblin") then
                 y = 922.9,
                 x = 2320.9,
             },
-        }, -- [11]
+        },
         {
             Coord = {
                 y = 927.7,
@@ -7298,7 +7298,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24901,
             },
-        }, -- [12]
+        },
         {
             PickUp = {
                 24924,
@@ -7307,7 +7307,7 @@ elseif (APR.Race == "Goblin") then
                 y = 927.4,
                 x = 2343.4,
             },
-        }, -- [13]
+        },
         {
             Range = 17.3,
             Waypoint = 24924,
@@ -7315,7 +7315,7 @@ elseif (APR.Race == "Goblin") then
                 y = 888.7,
                 x = 2161.5,
             },
-        }, -- [14]
+        },
         {
             Coord = {
                 y = 716.1,
@@ -7324,7 +7324,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24924,
             },
-        }, -- [15]
+        },
         {
             PickUp = {
                 24925,
@@ -7334,7 +7334,7 @@ elseif (APR.Race == "Goblin") then
                 y = 716.1,
                 x = 1830.4,
             },
-        }, -- [16]
+        },
         {
             Waypoint = 24925,
             Fillers = {
@@ -7347,7 +7347,7 @@ elseif (APR.Race == "Goblin") then
                 y = 844.2,
                 x = 1722.5,
             },
-        }, -- [17]
+        },
         {
             Waypoint = 24925,
             Fillers = {
@@ -7360,7 +7360,7 @@ elseif (APR.Race == "Goblin") then
                 y = 845.6,
                 x = 1681.7,
             },
-        }, -- [18]
+        },
         {
             Waypoint = 24925,
             Fillers = {
@@ -7373,7 +7373,7 @@ elseif (APR.Race == "Goblin") then
                 y = 790.7,
                 x = 1560.4,
             },
-        }, -- [19]
+        },
         {
             Qpart = {
                 [24929] = {
@@ -7390,7 +7390,7 @@ elseif (APR.Race == "Goblin") then
                 y = 817.7,
                 x = 1543.5,
             },
-        }, -- [20]
+        },
         {
             Qpart = {
                 [24925] = {
@@ -7402,7 +7402,7 @@ elseif (APR.Race == "Goblin") then
                 y = 815.5,
                 x = 1544,
             },
-        }, -- [21]
+        },
         {
             Coord = {
                 y = 715.2,
@@ -7421,7 +7421,7 @@ elseif (APR.Race == "Goblin") then
                 y = 715.2,
                 x = 1830.8,
             },
-        }, -- [23]
+        },
         {
             Coord = {
                 y = 927.9,
@@ -7430,7 +7430,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24937,
             },
-        }, -- [24]
+        },
         {
             PickUp = {
                 24940,
@@ -7439,7 +7439,7 @@ elseif (APR.Race == "Goblin") then
                 y = 927.9,
                 x = 2343.8,
             },
-        }, -- [25]
+        },
         {
             Coord = {
                 y = 1464.2,
@@ -7448,7 +7448,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 24940,
             },
-        }, -- [26]
+        },
         {
             PickUp = {
                 24942,
@@ -7457,7 +7457,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1464.2,
                 x = 2045,
             },
-        }, -- [27]
+        },
         {
             PickUp = {
                 24945,
@@ -7467,7 +7467,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1459.3,
                 x = 2045.9,
             },
-        }, -- [28]
+        },
         {
             Qpart = {
                 [24945] = {
@@ -7484,7 +7484,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1460.5,
                 x = 1729,
             },
-        }, -- [29]
+        },
         {
             Qpart = {
                 [24945] = {
@@ -7504,7 +7504,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1670.2,
                 x = 1694.7,
             },
-        }, -- [30]
+        },
         {
             Qpart = {
                 [24945] = {
@@ -7524,7 +7524,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1294.3,
                 x = 1512.2,
             },
-        }, -- [31]
+        },
         {
             Qpart = {
                 [24946] = {
@@ -7541,7 +7541,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1269,
                 x = 1513.8,
             },
-        }, -- [32]
+        },
         {
             Qpart = {
                 [24942] = {
@@ -7553,18 +7553,18 @@ elseif (APR.Race == "Goblin") then
                 y = 1366.8,
                 x = 1547.5,
             },
-        }, -- [33]
+        },
         {
             Done = {
                 24945,
                 24946,
-                24942, -- [3]
+                24942,
             },
             Coord = {
                 y = 1460,
                 x = 2046.7,
             },
-        }, -- [34]
+        },
         {
             PickUp = {
                 24952,
@@ -7573,7 +7573,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1464.9,
                 x = 2045.3,
             },
-        }, -- [35]
+        },
         {
             Qpart = {
                 [24952] = {
@@ -7588,7 +7588,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1464.9,
                 x = 2045.3,
             },
-        }, -- [36]
+        },
         {
             Done = {
                 24952,
@@ -7597,7 +7597,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1483.9,
                 x = 1271.9,
             },
-        }, -- [37]
+        },
         {
             PickUp = {
                 24954,
@@ -7606,7 +7606,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1483.9,
                 x = 1271.9,
             },
-        }, -- [38]
+        },
         {
             Qpart = {
                 [24954] = {
@@ -7618,7 +7618,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1568.5,
                 x = 1326,
             },
-        }, -- [39]
+        },
         {
             Done = {
                 24954,
@@ -7627,7 +7627,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1483.9,
                 x = 1271.5,
             },
-        }, -- [40]
+        },
         {
             PickUp = {
                 24958,
@@ -7636,7 +7636,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1483.9,
                 x = 1271.5,
             },
-        }, -- [41]
+        },
         {
             Qpart = {
                 [24958] = {
@@ -7651,7 +7651,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1280.8,
                 x = 1173.9,
             },
-        }, -- [42]
+        },
         {
             Done = {
                 24958,
@@ -7660,7 +7660,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1164.5,
                 x = 1094.3,
             },
-        }, -- [43]
+        },
         {
             PickUp = {
                 25023,
@@ -7669,7 +7669,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1149.4,
                 x = 1120,
             },
-        }, -- [44]
+        },
         {
             Done = {
                 25023,
@@ -7678,7 +7678,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1583.5,
                 x = 2722.6,
             },
-        }, -- [45]
+        },
         {
             PickUp = {
                 25024,
@@ -7687,7 +7687,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1583.5,
                 x = 2722.6,
             },
-        }, -- [46]
+        },
         {
             PickUp = {
                 25093,
@@ -7696,7 +7696,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1576.5,
                 x = 2746.5,
             },
-        }, -- [47]
+        },
         {
             PickUp = {
                 25058,
@@ -7705,7 +7705,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1619.5,
                 x = 2697.9,
             },
-        }, -- [48]
+        },
         {
             Qpart = {
                 [25093] = {
@@ -7774,7 +7774,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2042,
                 x = 2874.4,
             },
-        }, -- [3]
+        },
         {
             Qpart = {
                 [25058] = {
@@ -7792,7 +7792,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1871.8,
                 x = 2875.9,
             },
-        }, -- [4]
+        },
         {
             Coord = {
                 y = 1619.8,
@@ -7819,7 +7819,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 25093,
             },
-        }, -- [3]
+        },
         {
             PickUp = {
                 25066,
@@ -7828,7 +7828,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1620,
                 x = 2698,
             },
-        }, -- [4]
+        },
         {
             Qpart = {
                 [25066] = {
@@ -7842,7 +7842,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1619.5,
                 x = 2697.9,
             },
-        }, -- [5]
+        },
         {
             Qpart = {
                 [25066] = {
@@ -7872,7 +7872,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1620,
                 x = 2697.8,
             },
-        }, -- [3]
+        },
         {
             Coord = {
                 y = 1583,
@@ -7881,7 +7881,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 25098,
             },
-        }, -- [4]
+        },
         {
             PickUp = {
                 25099,
@@ -7890,7 +7890,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1583,
                 x = 2722.6,
             },
-        }, -- [5]
+        },
         {
             Coord = {
                 y = 1714.4,
@@ -7899,7 +7899,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 25099,
             },
-        }, -- [6]
+        },
         {
             PickUp = {
                 25100,
@@ -7908,7 +7908,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1715.4,
                 x = 2842.4,
             },
-        }, -- [7]
+        },
         {
             Coord = {
                 y = 1829.9,
@@ -7917,7 +7917,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 25100,
             },
-        }, -- [8]
+        },
         {
             PickUp = {
                 25109,
@@ -7934,7 +7934,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1797.3,
                 x = 1941,
             },
-        }, -- [10]
+        },
         {
             Range = 8.9,
             Waypoint = 25109,
@@ -7942,7 +7942,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1810,
                 x = 1923.2,
             },
-        }, -- [11]
+        },
         {
             Range = 9.37,
             Waypoint = 25109,
@@ -7950,7 +7950,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1836.7,
                 x = 1913.2,
             },
-        }, -- [12]
+        },
         {
             Range = 9.71,
             Waypoint = 25109,
@@ -7958,7 +7958,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1811.5,
                 x = 1898.9,
             },
-        }, -- [13]
+        },
         {
             Range = 12.97,
             Waypoint = 25109,
@@ -7966,7 +7966,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1777.5,
                 x = 1946.5,
             },
-        }, -- [14]
+        },
         {
             Range = 15.14,
             Waypoint = 25109,
@@ -7974,7 +7974,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1770.5,
                 x = 1976.7,
             },
-        }, -- [15]
+        },
         {
             Coord = {
                 y = 1781.4,
@@ -7983,7 +7983,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 25109,
             },
-        }, -- [16]
+        },
         {
             PickUp = {
                 25110,
@@ -7992,7 +7992,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1781.4,
                 x = 1983.5,
             },
-        }, -- [17]
+        },
         {
             Qpart = {
                 [25110] = {
@@ -8004,7 +8004,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1770.4,
                 x = 1942,
             },
-        }, -- [18]
+        },
         {
             Coord = {
                 y = 1780.4,
@@ -8013,7 +8013,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 25110,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 25122,
@@ -8023,7 +8023,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1780.4,
                 x = 1983.2,
             },
-        }, -- [20]
+        },
         {
             Qpart = {
                 [25122] = {
@@ -8083,7 +8083,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1914.2,
                 x = 1808.4,
             },
-        }, -- [3]
+        },
         {
             Qpart = {
                 [25123] = {
@@ -8103,7 +8103,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1913.2,
                 x = 1853.3,
             },
-        }, -- [4]
+        },
         {
             Qpart = {
                 [25122] = {
@@ -8118,7 +8118,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1912.8,
                 x = 1860.5,
             },
-        }, -- [5]
+        },
         {
             Coord = {
                 y = 1888,
@@ -8145,7 +8145,7 @@ elseif (APR.Race == "Goblin") then
                 y = 1911.7,
                 x = 1817.5,
             },
-        }, -- [3]
+        },
         {
             Coord = {
                 y = 2059.4,
@@ -8154,7 +8154,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 25125,
             },
-        }, -- [4]
+        },
         {
             PickUp = {
                 25184,
@@ -8163,7 +8163,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2068.8,
                 x = 1845.4,
             },
-        }, -- [5]
+        },
         {
             Coord = {
                 y = 2371,
@@ -8172,7 +8172,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 25184,
             },
-        }, -- [6]
+        },
         {
             PickUp = {
                 25200,
@@ -8182,7 +8182,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2371.4,
                 x = 1928.8,
             },
-        }, -- [7]
+        },
         {
             Qpart = {
                 [25200] = {
@@ -8197,7 +8197,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2308.8,
                 x = 1950.8,
             },
-        }, -- [8]
+        },
         {
             Coord = {
                 y = 2370.8,
@@ -8216,7 +8216,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2370.8,
                 x = 1927.8,
             },
-        }, -- [10]
+        },
         {
             PickUp = {
                 25202,
@@ -8225,7 +8225,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2370.4,
                 x = 1945,
             },
-        }, -- [11]
+        },
         {
             Qpart = {
                 [25204] = {
@@ -8243,7 +8243,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2483.3,
                 x = 2090.5,
             },
-        }, -- [12]
+        },
         {
             Coord = {
                 y = 2487.1,
@@ -8252,7 +8252,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 25204,
             },
-        }, -- [13]
+        },
         {
             PickUp = {
                 25207,
@@ -8261,7 +8261,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2487.1,
                 x = 2063.4,
             },
-        }, -- [14]
+        },
         {
             Qpart = {
                 [25207] = {
@@ -8273,7 +8273,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2487.1,
                 x = 2063.4,
             },
-        }, -- [15]
+        },
         {
             Coord = {
                 y = 2369.4,
@@ -8283,7 +8283,7 @@ elseif (APR.Race == "Goblin") then
                 25207,
                 25202,
             },
-        }, -- [16]
+        },
         {
             PickUp = {
                 25213,
@@ -8292,7 +8292,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2367.1,
                 x = 1934.7,
             },
-        }, -- [17]
+        },
         {
             Coord = {
                 y = 2119.6,
@@ -8301,7 +8301,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 25213,
             },
-        }, -- [18]
+        },
         {
             PickUp = {
                 25244,
@@ -8310,7 +8310,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2119.6,
                 x = 2414.1,
             },
-        }, -- [19]
+        },
         {
             PickUp = {
                 25214,
@@ -8319,7 +8319,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2120.4,
                 x = 2404.1,
             },
-        }, -- [20]
+        },
         {
             Qpart = {
                 [25244] = {
@@ -8336,7 +8336,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2064.6,
                 x = 2591.1,
             },
-        }, -- [21]
+        },
         {
             Qpart = {
                 [25214] = {
@@ -8358,7 +8358,7 @@ elseif (APR.Race == "Goblin") then
                 25214,
                 25244,
             },
-        }, -- [23]
+        },
         {
             PickUp = {
                 25251,
@@ -8367,7 +8367,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2119.9,
                 x = 2412.9,
             },
-        }, -- [24]
+        },
         {
             Qpart = {
                 [25251] = {
@@ -8379,7 +8379,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2124,
                 x = 2404.5,
             },
-        }, -- [25]
+        },
         {
             Qpart = {
                 [25251] = {
@@ -8391,7 +8391,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2280.9,
                 x = 2421.4,
             },
-        }, -- [26]
+        },
         {
             Coord = {
                 y = 2121.9,
@@ -8400,7 +8400,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 25251,
             },
-        }, -- [27]
+        },
         {
             PickUp = {
                 25265,
@@ -8409,7 +8409,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2278.6,
                 x = 2460.6,
             },
-        }, -- [28]
+        },
         {
             Coord = {
                 y = 2358.8,
@@ -8418,7 +8418,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 25265,
             },
-        }, -- [29]
+        },
         {
             PickUp = {
                 25266,
@@ -8427,7 +8427,7 @@ elseif (APR.Race == "Goblin") then
                 y = 2358.8,
                 x = 2479.8,
             },
-        }, -- [30]
+        },
         {
             Gossip = 1,
             Coord = {
@@ -8439,7 +8439,7 @@ elseif (APR.Race == "Goblin") then
             Done = {
                 25266,
             },
-        }, -- [29]
+        },
         {
             ZoneDoneSave = 1,
         },
@@ -8476,7 +8476,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -990.8,
             x = -4933.9,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [25167] = {
@@ -8489,7 +8489,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -1002,
             x = -4741.9,
         },
-    }, -- [4]
+    },
     {
         Done = {
             25170,
@@ -8498,7 +8498,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -846.5,
             x = -4908.3,
         },
-    }, -- [5]
+    },
     {
         PickUp = {
             25165,
@@ -8507,7 +8507,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -846.5,
             x = -4908.3,
         },
-    }, -- [6]
+    },
     {
         Done = {
             25167,
@@ -8516,7 +8516,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -824.3,
             x = -4920.2,
         },
-    }, -- [7]
+    },
     {
         PickUp = {
             25168,
@@ -8525,7 +8525,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -824.3,
             x = -4920.2,
         },
-    }, -- [8]
+    },
     {
         PickUp = {
             25169,
@@ -8553,7 +8553,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -983.5,
             x = -4661.7,
         },
-    }, -- [10]
+    },
     {
         Waypoint = 25169,
         Fillers = {
@@ -8566,7 +8566,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -1015.3,
             x = -4617.7,
         },
-    }, -- [11]
+    },
     {
         Qpart = {
             [25169] = {
@@ -8583,7 +8583,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -1065,
             x = -4599.5,
         },
-    }, -- [12]
+    },
     {
         Qpart = {
             [25169] = {
@@ -8600,7 +8600,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -923.2,
             x = -4497.2,
         },
-    }, -- [13]
+    },
     {
         Waypoint = 25169,
         Fillers = {
@@ -8613,7 +8613,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -1012.5,
             x = -4492.3,
         },
-    }, -- [14]
+    },
     {
         Waypoint = 25169,
         Fillers = {
@@ -8626,7 +8626,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -1026.8,
             x = -4448.8,
         },
-    }, -- [15]
+    },
     {
         Qpart = {
             [25169] = {
@@ -8643,7 +8643,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -973.3,
             x = -4417,
         },
-    }, -- [16]
+    },
     {
         Waypoint = 25169,
         Range = 20.18,
@@ -8651,7 +8651,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -980.8,
             x = -4650.9,
         },
-    }, -- [17]
+    },
     {
         Qpart = {
             [25165] = {
@@ -8666,18 +8666,18 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -866.3,
             x = -4767.3,
         },
-    }, -- [18]
+    },
     {
         Done = {
             25169,
             25168,
-            25165, -- [3]
+            25165,
         },
         Coord = {
             y = -834.5,
             x = -4910.3,
         },
-    }, -- [19]
+    },
     {
         PickUp = {
             25171,
@@ -8686,7 +8686,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -824.3,
             x = -4920.4,
         },
-    }, -- [20]
+    },
     {
         Waypoint = 25169,
         ExtraLineText = "TALK_JHASH",
@@ -8696,7 +8696,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -820.7,
             x = -4880.4,
         },
-    }, -- [21]
+    },
     {
         PickUp = {
             25232,
@@ -8714,7 +8714,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 275.2,
             x = -4708.7,
         },
-    }, -- [23]
+    },
     {
         PickUp = {
             25173,
@@ -8723,7 +8723,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 275.2,
             x = -4708.7,
         },
-    }, -- [24]
+    },
     {
         PickUp = {
             25176,
@@ -8732,7 +8732,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 288.3,
             x = -4769.8,
         },
-    }, -- [25]
+    },
     {
         Waypoint = 25173,
         Range = 11.68,
@@ -8740,7 +8740,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 262,
             x = -4824.7,
         },
-    }, -- [26]
+    },
     {
         Waypoint = 25173,
         Fillers = {
@@ -8757,7 +8757,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -245.7,
             x = -5079.4,
         },
-    }, -- [27]
+    },
     {
         Qpart = {
             [25173] = {
@@ -8778,7 +8778,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -247,
             x = -5119,
         },
-    }, -- [28]
+    },
     {
         Qpart = {
             [25176] = {
@@ -8794,7 +8794,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -245.5,
             x = -5076,
         },
-    }, -- [29]
+    },
     {
         Done = {
             25176,
@@ -8803,7 +8803,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 288.8,
             x = -4770.4,
         },
-    }, -- [30]
+    },
     {
         Done = {
             25176,
@@ -8812,7 +8812,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 288.8,
             x = -4770.4,
         },
-    }, -- [31]
+    },
     {
         Done = {
             25173,
@@ -8821,7 +8821,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 273.8,
             x = -4707.5,
         },
-    }, -- [32]
+    },
     {
         PickUp = {
             25177,
@@ -8830,7 +8830,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 273.8,
             x = -4707.5,
         },
-    }, -- [33]
+    },
     {
         PickUp = {
             25178,
@@ -8839,7 +8839,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 288,
             x = -4770.3,
         },
-    }, -- [34]
+    },
     {
         PickUp = {
             25179,
@@ -8858,7 +8858,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 103.8,
             x = -5062.4,
         },
-    }, -- [35]
+    },
     {
         Qpart = {
             [25178] = {
@@ -8876,7 +8876,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 121,
             x = -5105.4,
         },
-    }, -- [36]
+    },
     {
         Done = {
             25178,
@@ -8885,7 +8885,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 288.8,
             x = -4768.9,
         },
-    }, -- [37]
+    },
     {
         PickUp = {
             25227,
@@ -8894,7 +8894,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 288.8,
             x = -4768.9,
         },
-    }, -- [38]
+    },
     {
         Done = {
             25177,
@@ -8904,7 +8904,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 274,
             x = -4708.2,
         },
-    }, -- [39]
+    },
     {
         Waypoint = 25232,
         Range = 13.96,
@@ -8912,7 +8912,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 333.6,
             x = -4631.5,
         },
-    }, -- [40]
+    },
     {
         Done = {
             25227,
@@ -8921,7 +8921,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 392.3,
             x = -4584.4,
         },
-    }, -- [41]
+    },
     {
         PickUp = {
             25187,
@@ -8930,7 +8930,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 392.3,
             x = -4584.4,
         },
-    }, -- [42]
+    },
     {
         Qpart = {
             [25187] = {
@@ -8946,7 +8946,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 385.5,
             x = -4581.7,
         },
-    }, -- [43]
+    },
     {
         Qpart = {
             [25187] = {
@@ -8962,7 +8962,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 385.5,
             x = -4581.7,
         },
-    }, -- [44]
+    },
     {
         Qpart = {
             [25187] = {
@@ -8978,7 +8978,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 385.5,
             x = -4581.7,
         },
-    }, -- [45]
+    },
     {
         Qpart = {
             [25187] = {
@@ -8994,7 +8994,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 385.5,
             x = -4581.7,
         },
-    }, -- [46]
+    },
     {
         Done = {
             25187,
@@ -9003,7 +9003,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 392.8,
             x = -4583.9,
         },
-    }, -- [47]
+    },
     {
         PickUp = {
             25188,
@@ -9012,7 +9012,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 392.7,
             x = -4583.9,
         },
-    }, -- [48]
+    },
     {
         PickUp = {
             25190,
@@ -9021,7 +9021,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 49.2,
             x = -4219.3,
         },
-    }, -- [49]
+    },
     {
         Qpart = {
             [25190] = {
@@ -9034,7 +9034,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 93.8,
             x = -4368.2,
         },
-    }, -- [50]
+    },
     {
         Done = {
             25190,
@@ -9043,7 +9043,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 49.7,
             x = -4218.7,
         },
-    }, -- [51]
+    },
     {
         PickUp = {
             25192,
@@ -9052,7 +9052,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 49.7,
             x = -4218.7,
         },
-    }, -- [52]
+    },
     {
         Qpart = {
             [25192] = {
@@ -9065,7 +9065,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = -98.6,
             x = -3987.7,
         },
-    }, -- [53]
+    },
     {
         Coord = {
             y = 49.7,
@@ -9074,7 +9074,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         Done = {
             25192,
         },
-    }, -- [54]
+    },
     {
         PickUp = {
             25194,
@@ -9083,7 +9083,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 350.7,
             x = -3856.7,
         },
-    }, -- [55]
+    },
     {
         Qpart = {
             [25194] = {
@@ -9095,7 +9095,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 116.9,
             x = -3818.9,
         },
-    }, -- [56]
+    },
     {
         Coord = {
             y = 349.8,
@@ -9104,7 +9104,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         Done = {
             25194,
         },
-    }, -- [57]
+    },
     {
         PickUp = {
             25195,
@@ -9113,7 +9113,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 349.8,
             x = -3857.7,
         },
-    }, -- [58]
+    },
     {
         Qpart = {
             [25195] = {
@@ -9126,7 +9126,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 732.6,
             x = -3839.2,
         },
-    }, -- [59]
+    },
     {
         Done = {
             25195,
@@ -9135,7 +9135,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 349.8,
             x = -3857,
         },
-    }, -- [60]
+    },
     {
         PickUp = {
             25193,
@@ -9144,7 +9144,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 729.5,
             x = -4255.9,
         },
-    }, -- [61]
+    },
     {
         Qpart = {
             [25193] = {
@@ -9156,7 +9156,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 582.2,
             x = -4071.2,
         },
-    }, -- [62]
+    },
     {
         Done = {
             25188,
@@ -9165,7 +9165,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 729.7,
             x = -4256.4,
         },
-    }, -- [63]
+    },
     {
         Done = {
             25188,
@@ -9174,7 +9174,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 392.3,
             x = -4583.9,
         },
-    }, -- [64]
+    },
     {
         Range = 29.49,
         Waypoint = 25232,
@@ -9203,7 +9203,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         Done = {
             25232,
         },
-    }, -- [67]
+    },
     {
         PickUp = {
             25196,
@@ -9222,7 +9222,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 999.7,
             x = -4413.8,
         },
-    }, -- [69]
+    },
     {
         Waypoint = 834,
         Range = 21.83,
@@ -9230,7 +9230,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 1054.4,
             x = -4521,
         },
-    }, -- [70]
+    },
     {
         Qpart = {
             [835] = {
@@ -9245,7 +9245,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 846.1,
             x = -4695.4,
         },
-    }, -- [71]
+    },
     {
         Done = {
             834,
@@ -9255,7 +9255,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 999.6,
             x = -4413.8,
         },
-    }, -- [72]
+    },
     {
         Coord = {
             y = 1288.9,
@@ -9264,18 +9264,18 @@ APR.RouteQuestStepList["1-Durotar"] = {
         Done = {
             25196,
         },
-    }, -- [73]
+    },
     {
         PickUp = {
             25205,
             25260,
-            25236, -- [3]
+            25236,
         },
         Coord = {
             y = 1288.7,
             x = -4338.7,
         },
-    }, -- [74]
+    },
     -- Outside Orgri Start
 
     {
@@ -9304,7 +9304,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 1238.4,
             x = -4727.9,
         },
-    }, -- [3]
+    },
     {
         Coord = {
             y = 1286.5,
@@ -9313,7 +9313,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
         Done = {
             25205,
         },
-    }, -- [4]
+    },
     {
         PickUp = {
             25206,
@@ -9322,7 +9322,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 1288,
             x = -4341.4,
         },
-    }, -- [5]
+    },
     {
         Qpart = {
             [25206] = {
@@ -9334,7 +9334,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 1137.5,
             x = -3997,
         },
-    }, -- [6]
+    },
     {
         Qpart = {
             [25260] = {
@@ -9366,7 +9366,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 897,
             x = -4118.9,
         },
-    }, -- [7]
+    },
     {
         Coord = {
             y = 1288,
@@ -9377,7 +9377,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             25236,
             25260,
         },
-    }, -- [8]
+    },
     {
         PickUp = {
             25261,
@@ -9405,7 +9405,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 1097.8,
             x = -4947.3,
         },
-    }, -- [3]
+    },
     {
         Coord = {
             y = 992,
@@ -9414,18 +9414,18 @@ APR.RouteQuestStepList["1-Durotar"] = {
         Done = {
             25256,
         },
-    }, -- [4]
+    },
     {
         PickUp = {
             25259,
             25257,
-            25258, -- [3]
+            25258,
         },
         Coord = {
             y = 991.7,
             x = -5073.7,
         },
-    }, -- [5]
+    },
     {
         Qpart = {
             [25258] = {
@@ -9438,7 +9438,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 1024.7,
             x = -5084.4,
         },
-    }, -- [6]
+    },
     {
         Qpart = {
             [25257] = {
@@ -9451,7 +9451,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 1011.2,
             x = -5115.7,
         },
-    }, -- [7]
+    },
     {
         Qpart = {
             [25259] = {
@@ -9464,12 +9464,12 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 982.2,
             x = -5104.2,
         },
-    }, -- [8]
+    },
     {
         Done = {
             25259,
             25257,
-            25258, -- [3]
+            25258,
         },
         Coord = {
             y = 991.9,
@@ -9483,7 +9483,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 1462.8,
             x = -4874,
         },
-    }, -- [10]
+    },
     {
         Qpart = {
             [25262] = {
@@ -9495,7 +9495,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 1497.7,
             x = -4836.7,
         },
-    }, -- [11]
+    },
     {
         Done = {
             25262,
@@ -9504,7 +9504,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 1102.7,
             x = -4944.2,
         },
-    }, -- [12]
+    },
     {
         PickUp = {
             25263,
@@ -9513,7 +9513,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             y = 1102.2,
             x = -4945.9,
         },
-    }, -- [13]
+    },
     {
         ZoneDoneSave = 1,
     },
@@ -9552,7 +9552,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 68,
             x = -3645.4,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [871] = {
@@ -9573,7 +9573,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -4.1,
             x = -3617.5,
         },
-    }, -- [4]
+    },
     {
         Done = {
             13878,
@@ -9582,7 +9582,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 65.5,
             x = -3649.4,
         },
-    }, -- [5]
+    },
     {
         Fillers = {
             [844] = {
@@ -9596,7 +9596,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 302.1,
             x = -3685.9,
         },
-    }, -- [6]
+    },
     {
         PickUp = {
             872,
@@ -9605,7 +9605,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 302.1,
             x = -3685.9,
         },
-    }, -- [7]
+    },
     {
         PickUp = {
             5041,
@@ -9614,7 +9614,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 326.2,
             x = -3669.4,
         },
-    }, -- [8]
+    },
     {
         Waypoint = 5041,
         Range = 19.92,
@@ -9640,7 +9640,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -288.5,
             x = -3490.2,
         },
-    }, -- [10]
+    },
     {
         Waypoint = 872,
         Range = 14.22,
@@ -9648,7 +9648,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -188.7,
             x = -3597.2,
         },
-    }, -- [11]
+    },
     {
         Qpart = {
             [844] = {
@@ -9660,7 +9660,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 220.8,
             x = -3540,
         },
-    }, -- [12]
+    },
     {
         Coord = {
             y = 325.3,
@@ -9670,7 +9670,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             844,
             5041,
         },
-    }, -- [13]
+    },
     {
         Coord = {
             y = 301.5,
@@ -9679,7 +9679,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             872,
         },
-    }, -- [14]
+    },
     {
         PickUp = {
             13949,
@@ -9688,7 +9688,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 325.7,
             x = -3670,
         },
-    }, -- [15]
+    },
     {
         Qpart = {
             [13949] = {
@@ -9702,7 +9702,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 319.6,
             x = -3649,
         },
-    }, -- [16]
+    },
     {
         Done = {
             13949,
@@ -9711,7 +9711,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 267.3,
             x = -3052.9,
         },
-    }, -- [17]
+    },
     {
         PickUp = {
             13961,
@@ -9720,7 +9720,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 267.2,
             x = -3048.5,
         },
-    }, -- [18]
+    },
     {
         PickUp = {
             899,
@@ -9729,7 +9729,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 238.6,
             x = -2967.7,
         },
-    }, -- [19]
+    },
     {
         PickUp = {
             13975,
@@ -9738,7 +9738,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 221,
             x = -2937,
         },
-    }, -- [20]
+    },
     {
         PickUp = {
             13973,
@@ -9747,7 +9747,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 236,
             x = -2901.4,
         },
-    }, -- [21]
+    },
     {
         Qpart = {
             [13973] = {
@@ -9779,7 +9779,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 267.3,
             x = -3048.5,
         },
-    }, -- [23]
+    },
     {
         Done = {
             13961,
@@ -9788,7 +9788,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 266.7,
             x = -3048,
         },
-    }, -- [24]
+    },
     {
         PickUp = {
             13963,
@@ -9797,7 +9797,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 266.7,
             x = -3048,
         },
-    }, -- [25]
+    },
     {
         Qpart = {
             [13963] = {
@@ -9810,7 +9810,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 286.1,
             x = -3049,
         },
-    }, -- [26]
+    },
     {
         Coord = {
             y = 267.1,
@@ -9819,7 +9819,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             13963,
         },
-    }, -- [27]
+    },
     {
         PickUp = {
             13968,
@@ -9829,7 +9829,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 266.8,
             x = -3048.7,
         },
-    }, -- [28]
+    },
     {
         Coord = {
             y = 239.9,
@@ -9838,7 +9838,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             899,
         },
-    }, -- [29]
+    },
     {
         Coord = {
             y = 244.5,
@@ -9847,7 +9847,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             13973,
         },
-    }, -- [30]
+    },
     {
         Done = {
             13969,
@@ -9856,7 +9856,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -77.3,
             x = -3130,
         },
-    }, -- [31]
+    },
     {
         PickUp = {
             13970,
@@ -9865,7 +9865,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -77.3,
             x = -3130,
         },
-    }, -- [32]
+    },
     {
         Qpart = {
             [13968] = {
@@ -9881,7 +9881,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -50.3,
             x = -3375.2,
         },
-    }, -- [33]
+    },
     {
         Done = {
             13970,
@@ -9890,7 +9890,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -77.6,
             x = -3129.7,
         },
-    }, -- [34]
+    },
     {
         PickUp = {
             13971,
@@ -9899,7 +9899,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -77.6,
             x = -3129.7,
         },
-    }, -- [35]
+    },
     {
         Coord = {
             y = 270.1,
@@ -9909,7 +9909,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             13971,
             13968,
         },
-    }, -- [36]
+    },
     {
         Qpart = {
             [13975] = {
@@ -9923,7 +9923,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 221.5,
             x = -2935.5,
         },
-    }, -- [37]
+    },
     {
         PickUp = {
             903,
@@ -9933,7 +9933,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -481.2,
             x = -2669.4,
         },
-    }, -- [38]
+    },
     {
         PickUp = {
             870,
@@ -9942,7 +9942,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -437,
             x = -2640.7,
         },
-    }, -- [39]
+    },
     {
         PickUp = {
             848,
@@ -9951,7 +9951,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -424.4,
             x = -2591.5,
         },
-    }, -- [40]
+    },
     {
         Coord = {
             y = -473.8,
@@ -9960,7 +9960,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             13975,
         },
-    }, -- [41]
+    },
     {
         PickUp = {
             850,
@@ -9980,7 +9980,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 38,
             x = -1985.5,
         },
-    }, -- [42]
+    },
     {
         PickUp = {
             13992,
@@ -9994,7 +9994,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 53.7,
             x = -1953.5,
         },
-    }, -- [43]
+    },
     {
         Qpart = {
             [870] = {
@@ -10014,7 +10014,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 89.9,
             x = -1943,
         },
-    }, -- [44]
+    },
     {
         Qpart = {
             [850] = {
@@ -10035,7 +10035,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 19.6,
             x = -1713,
         },
-    }, -- [45]
+    },
     {
         Qpart = {
             [848] = {
@@ -10050,7 +10050,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 24.6,
             x = -1858.4,
         },
-    }, -- [46]
+    },
     {
         Coord = {
             y = 54.9,
@@ -10059,7 +10059,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             13992,
         },
-    }, -- [47]
+    },
     {
         Coord = {
             y = 35.7,
@@ -10068,7 +10068,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             850,
         },
-    }, -- [48]
+    },
     {
         PickUp = {
             875,
@@ -10102,7 +10102,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 578.6,
             x = -1321.1,
         },
-    }, -- [3]
+    },
     {
         Done = {
             867,
@@ -10111,7 +10111,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 665.7,
             x = -1313.6,
         },
-    }, -- [4]
+    },
     {
         PickUp = {
             876,
@@ -10120,7 +10120,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 662.9,
             x = -1314.5,
         },
-    }, -- [5]
+    },
     {
         Qpart = {
             [876] = {
@@ -10133,7 +10133,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 788.4,
             x = -1351,
         },
-    }, -- [6]
+    },
     {
         Done = {
             876,
@@ -10142,7 +10142,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 52.1,
             x = -1554.6,
         },
-    }, -- [7]
+    },
     {
         PickUp = {
             29095,
@@ -10151,7 +10151,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 52.1,
             x = -1554.6,
         },
-    }, -- [8]
+    },
     {
         PickUp = {
             29090,
@@ -10172,7 +10172,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 659.2,
             x = -2204.7,
         },
-    }, -- [10]
+    },
     {
         Done = {
             29090,
@@ -10181,7 +10181,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 850,
             x = -2345.7,
         },
-    }, -- [11]
+    },
     {
         PickUp = {
             858,
@@ -10190,7 +10190,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1110,
             x = -3103,
         },
-    }, -- [12]
+    },
     {
         Qpart = {
             [858] = {
@@ -10203,7 +10203,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1024.8,
             x = -3082.9,
         },
-    }, -- [13]
+    },
     {
         Done = {
             858,
@@ -10212,7 +10212,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1109.8,
             x = -3104,
         },
-    }, -- [14]
+    },
     {
         PickUp = {
             863,
@@ -10221,7 +10221,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1109.8,
             x = -3104,
         },
-    }, -- [15]
+    },
     {
         Qpart = {
             [863] = {
@@ -10234,7 +10234,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1106.4,
             x = -3095,
         },
-    }, -- [16]
+    },
     {
         Done = {
             863,
@@ -10243,7 +10243,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1142.2,
             x = -3376.5,
         },
-    }, -- [17]
+    },
     {
         PickUp = {
             29086,
@@ -10253,7 +10253,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1141,
             x = -3376.4,
         },
-    }, -- [18]
+    },
     {
         PickUp = {
             29087,
@@ -10263,7 +10263,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1168.8,
             x = -3388.2,
         },
-    }, -- [19]
+    },
     {
         Qpart = {
             [29087] = {
@@ -10278,7 +10278,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1072.5,
             x = -3135.9,
         },
-    }, -- [20]
+    },
     {
         Coord = {
             y = 1100.9,
@@ -10287,7 +10287,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             29089,
         },
-    }, -- [24]
+    },
     {
         Qpart = {
             [29089] = {
@@ -10299,7 +10299,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1069.7,
             x = -3139.7,
         },
-    }, -- [25]
+    },
     {
         Qpart = {
             [29088] = {
@@ -10311,7 +10311,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 856.7,
             x = -2931.5,
         },
-    }, -- [21]
+    },
     {
         Coord = {
             y = 831.9,
@@ -10329,7 +10329,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 827.7,
             x = -2688.2,
         },
-    }, -- [23]
+    },
     {
         Qpart = {
             [29022] = {
@@ -10365,7 +10365,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 831,
             x = -2678.9,
         },
-    }, -- [3]
+    },
     {
         Done = {
             29022,
@@ -10374,7 +10374,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 826.5,
             x = -2687,
         },
-    }, -- [4]
+    },
     {
         PickUp = {
             29023,
@@ -10383,7 +10383,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 826.5,
             x = -2687,
         },
-    }, -- [5]
+    },
     {
         Qpart = {
             [29023] = {
@@ -10396,7 +10396,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 910.7,
             x = -2731.4,
         },
-    }, -- [6]
+    },
     {
         Done = {
             29023,
@@ -10405,7 +10405,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 827,
             x = -2685.7,
         },
-    }, -- [7]
+    },
     {
         PickUp = {
             29024,
@@ -10414,7 +10414,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 827,
             x = -2685.7,
         },
-    }, -- [8]
+    },
     {
         Done = {
             29086,
@@ -10433,7 +10433,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1140.9,
             x = -3375.5,
         },
-    }, -- [10]
+    },
     {
         Done = {
             29089,
@@ -10443,7 +10443,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1169,
             x = -3388.7,
         },
-    }, -- [11]
+    },
     {
         Done = {
             14003,
@@ -10452,7 +10452,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1161.5,
             x = -3398.2,
         },
-    }, -- [12]
+    },
     {
         PickUp = {
             29026,
@@ -10461,7 +10461,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1161,
             x = -3397.7,
         },
-    }, -- [13]
+    },
     {
         Done = {
             29026,
@@ -10470,7 +10470,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 858.7,
             x = -2346.9,
         },
-    }, -- [14]
+    },
     {
         PickUp = {
             29027,
@@ -10479,7 +10479,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 858.7,
             x = -2346.9,
         },
-    }, -- [15]
+    },
     {
         Qpart = {
             [29027] = {
@@ -10491,7 +10491,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 659.2,
             x = -2225.7,
         },
-    }, -- [16]
+    },
     {
         Done = {
             29027,
@@ -10500,7 +10500,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 858.2,
             x = -2347.5,
         },
-    }, -- [17]
+    },
     {
         PickUp = {
             14004,
@@ -10509,7 +10509,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 858.6,
             x = -2347.7,
         },
-    }, -- [18]
+    },
     {
         Done = {
             14004,
@@ -10520,7 +10520,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 858.4,
             x = -2347.2,
         },
-    }, -- [19]
+    },
     {
         Done = {
             14004,
@@ -10529,7 +10529,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1141.2,
             x = -3376.2,
         },
-    }, -- [20]
+    },
     {
         PickUp = {
             14006,
@@ -10538,7 +10538,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1141.4,
             x = -3376.2,
         },
-    }, -- [21]
+    },
     {
         PickUp = {
             29015,
@@ -10555,7 +10555,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1077.4,
             x = -3621.2,
         },
-    }, -- [23]
+    },
     {
         Waypoint = 14006,
         Fillers = {
@@ -10568,7 +10568,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1311.5,
             x = -3587.5,
         },
-    }, -- [24]
+    },
     {
         Qpart = {
             [29015] = {
@@ -10586,7 +10586,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1341.5,
             x = -3575.9,
         },
-    }, -- [25]
+    },
     {
         Coord = {
             y = 1151,
@@ -10596,7 +10596,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             29015,
             14006,
         },
-    }, -- [26]
+    },
     {
         PickUp = {
             29094,
@@ -10606,7 +10606,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1141.8,
             x = -3377.2,
         },
-    }, -- [27]
+    },
     {
         Qpart = {
             [29094] = {
@@ -10618,7 +10618,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1143.5,
             x = -3368.7,
         },
-    }, -- [28]
+    },
     {
         Coord = {
             y = 51.1,
@@ -10627,7 +10627,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             29094,
         },
-    }, -- [29]
+    },
     {
         Qpart = {
             [903] = {
@@ -10642,7 +10642,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -520.3,
             x = -2470.5,
         },
-    }, -- [49]
+    },
     {
         Coord = {
             y = -424.4,
@@ -10651,7 +10651,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             848,
         },
-    }, -- [50]
+    },
     {
         PickUp = {
             13998,
@@ -10660,7 +10660,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -424.4,
             x = -2591.5,
         },
-    }, -- [51]
+    },
     {
         Coord = {
             y = -436.5,
@@ -10669,7 +10669,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             870,
         },
-    }, -- [52]
+    },
     {
         PickUp = {
             13988,
@@ -10678,7 +10678,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -436.5,
             x = -2640.9,
         },
-    }, -- [53]
+    },
     {
         Coord = {
             y = -481.7,
@@ -10688,7 +10688,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             845,
             903,
         },
-    }, -- [54]
+    },
     {
         PickUp = {
             881,
@@ -10697,7 +10697,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -481.7,
             x = -2670.2,
         },
-    }, -- [55]
+    },
     {
         Qpart = {
             [881] = {
@@ -10712,7 +10712,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 126.8,
             x = -2540.2,
         },
-    }, -- [56]
+    },
     {
         Done = {
             29095,
@@ -10739,7 +10739,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -481.7,
             x = -2669.9,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             905,
@@ -10748,7 +10748,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -481.7,
             x = -2669.9,
         },
-    }, -- [4]
+    },
     {
         Qpart = {
             [905] = {
@@ -10793,7 +10793,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1068,
             x = -2651.2,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             13995,
@@ -10802,7 +10802,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1201,
             x = -2957.4,
         },
-    }, -- [4]
+    },
     {
         PickUp = {
             14072,
@@ -10811,7 +10811,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1192.6,
             x = -2968.9,
         },
-    }, -- [5]
+    },
     {
         Qpart = {
             [13995] = {
@@ -10824,7 +10824,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1191.3,
             x = -2919,
         },
-    }, -- [6]
+    },
     {
         Qpart = {
             [13998] = {
@@ -10844,7 +10844,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1192.5,
             x = -2990.2,
         },
-    }, -- [7]
+    },
     {
         Qpart = {
             [14072] = {
@@ -10857,7 +10857,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1238,
             x = -3015.5,
         },
-    }, -- [8]
+    },
     {
         Coord = {
             y = -1193.5,
@@ -10876,7 +10876,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1193.5,
             x = -2970,
         },
-    }, -- [10]
+    },
     {
         Qpart = {
             [851] = {
@@ -10889,7 +10889,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1210.8,
             x = -2725.2,
         },
-    }, -- [11]
+    },
     {
         Coord = {
             y = -1192.5,
@@ -10898,7 +10898,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             851,
         },
-    }, -- [12]
+    },
     {
         Range = 17.03,
         Waypoint = 13988,
@@ -10906,7 +10906,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1288.9,
             x = -3172.2,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [13988] = {
@@ -10921,7 +10921,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1478.5,
             x = -3294.2,
         },
-    }, -- [14]
+    },
     {
         Coord = {
             y = -1446.8,
@@ -10930,7 +10930,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             13988,
         },
-    }, -- [15]
+    },
     {
         PickUp = {
             877,
@@ -10940,7 +10940,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1446.5,
             x = -3282.2,
         },
-    }, -- [16]
+    },
     {
         Qpart = {
             [877] = {
@@ -10957,7 +10957,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1274.8,
             x = -3013.2,
         },
-    }, -- [17]
+    },
     {
         Qpart = {
             [880] = {
@@ -10969,7 +10969,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1274.8,
             x = -3013.2,
         },
-    }, -- [18]
+    },
     {
         Coord = {
             y = -480.2,
@@ -10978,7 +10978,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             905,
         },
-    }, -- [19]
+    },
     {
         PickUp = {
             13991,
@@ -10987,7 +10987,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -480.2,
             x = -2670,
         },
-    }, -- [20]
+    },
     {
         Coord = {
             y = -436.3,
@@ -10997,7 +10997,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             877,
             880,
         },
-    }, -- [21]
+    },
     {
         Coord = {
             y = -424.5,
@@ -11015,7 +11015,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -424.5,
             x = -2591.4,
         },
-    }, -- [23]
+    },
     {
         PickUp = {
             14073,
@@ -11024,7 +11024,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -473.5,
             x = -2595.5,
         },
-    }, -- [24]
+    },
     {
         Coord = {
             y = -306.9,
@@ -11033,7 +11033,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             14073,
         },
-    }, -- [25]
+    },
     {
         PickUp = {
             852,
@@ -11043,7 +11043,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -306.8,
             x = -1971,
         },
-    }, -- [26]
+    },
     {
         Waypoint = 852,
         Range = 49.25,
@@ -11051,7 +11051,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -802.7,
             x = -1946,
         },
-    }, -- [27]
+    },
     {
         Qpart = {
             [852] = {
@@ -11069,7 +11069,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -973.5,
             x = -2136.5,
         },
-    }, -- [28]
+    },
     {
         Qpart = {
             [855] = {
@@ -11081,7 +11081,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -989.8,
             x = -2117.7,
         },
-    }, -- [29]
+    },
     {
         Done = {
             855,
@@ -11091,7 +11091,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -306,
             x = -1970.8,
         },
-    }, -- [30]
+    },
     {
         PickUp = {
             4021,
@@ -11100,7 +11100,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -306,
             x = -1970.8,
         },
-    }, -- [31]
+    },
     {
         Qpart = {
             [4021] = {
@@ -11114,7 +11114,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -273.3,
             x = -1871.3,
         },
-    }, -- [32]
+    },
     {
         Done = {
             4021,
@@ -11123,7 +11123,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -306.8,
             x = -1971.5,
         },
-    }, -- [33]
+    },
     {
         Coord = {
             y = -978,
@@ -11132,7 +11132,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             13991,
         },
-    }, -- [34]
+    },
     {
         PickUp = {
             14066,
@@ -11141,7 +11141,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -978,
             x = -3639.7,
         },
-    }, -- [35]
+    },
     {
         PickUp = {
             865,
@@ -11150,7 +11150,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -929,
             x = -3696.5,
         },
-    }, -- [36]
+    },
     {
         PickUp = {
             895,
@@ -11159,7 +11159,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -918.5,
             x = -3720.2,
         },
-    }, -- [37]
+    },
     {
         PickUp = {
             14034,
@@ -11169,7 +11169,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -837.2,
             x = -3729,
         },
-    }, -- [38]
+    },
     {
         PickUp = {
             887,
@@ -11179,7 +11179,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -985.8,
             x = -3797.2,
         },
-    }, -- [39]
+    },
     {
         PickUp = {
             891,
@@ -11188,7 +11188,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1024.3,
             x = -3687.2,
         },
-    }, -- [40]
+    },
     {
         Coord = {
             y = -1053.9,
@@ -11197,7 +11197,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             13999,
         },
-    }, -- [41]
+    },
     {
         Qpart = {
             [14034] = {
@@ -11215,7 +11215,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1051.1,
             x = -3645.9,
         },
-    }, -- [42]
+    },
     {
         Waypoint = 14034,
         Range = 15.87,
@@ -11223,7 +11223,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -858.8,
             x = -3754.2,
         },
-    }, -- [43]
+    },
     {
         Done = {
             14034,
@@ -11232,7 +11232,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -836.3,
             x = -3728.9,
         },
-    }, -- [44]
+    },
     {
         PickUp = {
             14038,
@@ -11241,7 +11241,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -836.3,
             x = -3728.9,
         },
-    }, -- [45]
+    },
     {
         Waypoint = 865,
         Range = 16.25,
@@ -11249,7 +11249,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -874.8,
             x = -3562.9,
         },
-    }, -- [46]
+    },
     {
         Waypoint = 865,
         Range = 15.23,
@@ -11257,7 +11257,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -845.5,
             x = -3549.9,
         },
-    }, -- [47]
+    },
     {
         Qpart = {
             [865] = {
@@ -11270,7 +11270,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -371.4,
             x = -3512.5,
         },
-    }, -- [48]
+    },
     {
         Done = {
             865,
@@ -11279,7 +11279,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -927.8,
             x = -3697,
         },
-    }, -- [49]
+    },
     {
         Waypoint = 891,
         Range = 20.13,
@@ -11287,7 +11287,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1047.9,
             x = -3696,
         },
-    }, -- [50]
+    },
     {
         Qpart = {
             [891] = {
@@ -11305,7 +11305,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1427.4,
             x = -3851.5,
         },
-    }, -- [51]
+    },
     {
         Fillers = {
             [891] = {
@@ -11319,7 +11319,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1453.4,
             x = -3815.7,
         },
-    }, -- [52]
+    },
     {
         PickUp = {
             14046,
@@ -11328,7 +11328,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1453.5,
             x = -3815.2,
         },
-    }, -- [53]
+    },
     {
         Qpart = {
             [14046] = {
@@ -11341,7 +11341,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1453.8,
             x = -3815,
         },
-    }, -- [54]
+    },
     {
         PickUp = {
             14049,
@@ -11350,7 +11350,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1453.8,
             x = -3815,
         },
-    }, -- [55]
+    },
     {
         Qpart = {
             [14049] = {
@@ -11367,7 +11367,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1316,
             x = -3784.2,
         },
-    }, -- [56]
+    },
     {
         Qpart = {
             [891] = {
@@ -11384,7 +11384,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1465,
             x = -3878.7,
         },
-    }, -- [57]
+    },
     {
         Qpart = {
             [14038] = {
@@ -11405,7 +11405,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1456.4,
             x = -3970.4,
         },
-    }, -- [58]
+    },
     {
         Done = {
             14038,
@@ -11414,7 +11414,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1454.8,
             x = -3966.7,
         },
-    }, -- [59]
+    },
     {
         PickUp = {
             14042,
@@ -11423,7 +11423,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1446.6,
             x = -3965.5,
         },
-    }, -- [60]
+    },
     {
         Qpart = {
             [14042] = {
@@ -11438,7 +11438,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1613.1,
             x = -3851.7,
         },
-    }, -- [61]
+    },
     {
         Qpart = {
             [895] = {
@@ -11456,7 +11456,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1609.4,
             x = -4270.9,
         },
-    }, -- [62]
+    },
     {
         Fillers = {
             [887] = {
@@ -11470,7 +11470,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1690.5,
             x = -4236.3,
         },
-    }, -- [63]
+    },
     {
         PickUp = {
             14056,
@@ -11479,7 +11479,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1690.5,
             x = -4236.3,
         },
-    }, -- [64]
+    },
     {
         Qpart = {
             [14056] = {
@@ -11520,7 +11520,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1690.3,
             x = -4235.4,
         },
-    }, -- [67]
+    },
     {
         Qpart = {
             [14057] = {
@@ -11551,7 +11551,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1690.4,
             x = -4236,
         },
-    }, -- [69]
+    },
     {
         PickUp = {
             14063,
@@ -11565,7 +11565,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1690.4,
             x = -4236,
         },
-    }, -- [70]
+    },
     {
         Qpart = {
             [887] = {
@@ -11577,7 +11577,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1644.3,
             x = -4230.5,
         },
-    }, -- [71]
+    },
     {
         Qpart = {
             [14063] = {
@@ -11592,7 +11592,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1648.9,
             x = -4383.9,
         },
-    }, -- [72]
+    },
     {
         Coord = {
             y = -1023.3,
@@ -11601,7 +11601,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             891,
         },
-    }, -- [73]
+    },
     {
         Coord = {
             y = -985.2,
@@ -11611,7 +11611,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             14063,
             887,
         },
-    }, -- [74]
+    },
     {
         Coord = {
             y = -836.5,
@@ -11620,9 +11620,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             14049,
             14042,
-            895, -- [3]
+            895,
         },
-    },           -- [75]
+    },
     {
         PickUp = {
             14050,
@@ -11631,7 +11631,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -836.5,
             x = -3727.7,
         },
-    }, -- [76]
+    },
     {
         Range = 11.49,
         Waypoint = 14050,
@@ -11639,7 +11639,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1059,
             x = -3561.2,
         },
-    }, -- [77]
+    },
     {
         Range = 18.64,
         Waypoint = 14050,
@@ -11647,7 +11647,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1109.4,
             x = -3568.7,
         },
-    }, -- [78]
+    },
     {
         Qpart = {
             [14050] = {
@@ -11659,7 +11659,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -1160.3,
             x = -3602.2,
         },
-    }, -- [79]
+    },
     {
         Range = 17.65,
         Waypoint = 14066,
@@ -11667,7 +11667,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -847.7,
             x = -3546.9,
         },
-    }, -- [80]
+    },
     {
         Qpart = {
             [14066] = {
@@ -11679,7 +11679,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -761,
             x = -3587.5,
         },
-    }, -- [81]
+    },
     {
         Coord = {
             y = -761,
@@ -11688,7 +11688,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             14066,
         },
-    }, -- [82]
+    },
     {
         PickUp = {
             869,
@@ -11697,7 +11697,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -762.5,
             x = -3592.5,
         },
-    }, -- [88]
+    },
     {
         PickUp = {
             14068,
@@ -11706,7 +11706,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -612.3,
             x = -3361.5,
         },
-    }, -- [94]
+    },
     {
         Qpart = {
             [869] = {
@@ -11718,7 +11718,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -521.3,
             x = -3453.5,
         },
-    }, -- [89]
+    },
     {
         Coord = {
             y = -521.3,
@@ -11727,7 +11727,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             869,
         },
-    }, -- [90]
+    },
     {
         PickUp = {
             14067,
@@ -11736,7 +11736,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -521.3,
             x = -3453.5,
         },
-    }, -- [91]
+    },
     {
         Qpart = {
             [14067] = {
@@ -11794,7 +11794,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -441.8,
             x = -3458.9,
         },
-    }, -- [93]
+    },
     {
         Qpart = {
             [14067] = {
@@ -11848,7 +11848,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             14068,
         },
-    }, -- [3]
+    },
     {
         Coord = {
             y = -979,
@@ -11857,7 +11857,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             14067,
         },
-    }, -- [4]
+    },
     {
         Coord = {
             y = -836.2,
@@ -11866,7 +11866,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             14050,
         },
-    }, -- [83]
+    },
     {
         PickUp = {
             26769,
@@ -11875,7 +11875,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -836.2,
             x = -3727.9,
         },
-    }, -- [84]
+    },
     {
         Qpart = {
             [26769] = {
@@ -11887,7 +11887,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -705,
             x = -3987,
         },
-    }, -- [85]
+    },
     {
         Done = {
             26769,
@@ -11896,7 +11896,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1167.9,
             x = -3389,
         },
-    }, -- [86]
+    },
     {
         UseFlightPath = 29109,
         Name = "The Crossroads, Northern Barrens",
@@ -11905,7 +11905,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1155.4,
             x = -3377.2,
         },
-    }, -- [87]
+    },
 
     {
         Qpart = {
@@ -11919,7 +11919,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -381,
             x = -2688.7,
         },
-    }, -- [5]
+    },
     {
         Qpart = {
             [29109] = {
@@ -11931,7 +11931,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = -381.9,
             x = -2679.2,
         },
-    }, -- [6]
+    },
     {
         Coord = {
             y = 294.2,
@@ -11940,7 +11940,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         Done = {
             29109,
         },
-    }, -- [7]
+    },
     {
         PickUp = {
             29110,
@@ -11965,7 +11965,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 399.3,
             x = -2393.5,
         },
-    }, -- [3]
+    },
     {
         Done = {
             29110,
@@ -11974,7 +11974,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 308.8,
             x = -2157.2,
         },
-    }, -- [4]
+    },
     {
         PickUp = {
             29112,
@@ -11983,7 +11983,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 308.8,
             x = -2157.2,
         },
-    }, -- [5]
+    },
     {
         Qpart = {
             [29112] = {
@@ -11995,7 +11995,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 324,
             x = -2238.2,
         },
-    }, -- [6]
+    },
     {
         Done = {
             29112,
@@ -12004,7 +12004,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 294.6,
             x = -2530.2,
         },
-    }, -- [7]
+    },
     {
         PickUp = {
             29111,
@@ -12013,7 +12013,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 294.6,
             x = -2530.2,
         },
-    }, -- [8]
+    },
     {
         Qpart = {
             [29111] = {
@@ -12040,7 +12040,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 294.7,
             x = -2544,
         },
-    }, -- [10]
+    },
     {
         Done = {
             29111,
@@ -12049,7 +12049,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             y = 1231.5,
             x = -2240.2,
         },
-    }, -- [11]
+    },
     {
         ZoneDoneSave = 1,
     },
@@ -12089,7 +12089,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             y = -516.8,
             x = -1269.1,
         },
-    }, -- [3]
+    },
     {
         Coord = {
             y = -617.8,
@@ -12098,7 +12098,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
         Done = {
             24504,
         },
-    }, -- [4]
+    },
     {
         PickUp = {
             24505,
@@ -12107,7 +12107,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             y = -617.8,
             x = -1419.3,
         },
-    }, -- [5]
+    },
     {
         PickUp = {
             25284,
@@ -12117,7 +12117,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             y = -617,
             x = -1434,
         },
-    }, -- [6]
+    },
     {
         PickUp = {
             24513,
@@ -12172,7 +12172,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             y = -484.3,
             x = -1396.6,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [25284] = {
@@ -12188,7 +12188,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             y = -492.2,
             x = -1399,
         },
-    }, -- [7]
+    },
     {
         Coord = {
             y = -617,
@@ -12198,7 +12198,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             24512,
             25284,
         },
-    }, -- [8]
+    },
     {
         Coord = {
             y = -801.5,
@@ -12226,7 +12226,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             y = -778.7,
             x = -1580.4,
         },
-    }, -- [3]
+    },
     {
         Qpart = {
             [24517] = {
@@ -12244,7 +12244,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             y = -551.5,
             x = -1592.3,
         },
-    }, -- [4]
+    },
     {
         Qpart = {
             [24517] = {
@@ -12261,7 +12261,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             y = -506.8,
             x = -1530,
         },
-    }, -- [5]
+    },
     {
         Qpart = {
             [24514] = {
@@ -12273,7 +12273,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             y = -910.5,
             x = -1747.5,
         },
-    }, -- [6]
+    },
     {
         Coord = {
             y = -789.5,
@@ -12283,5 +12283,5 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             24514,
             24517,
         },
-    }, -- [7]
+    },
 }

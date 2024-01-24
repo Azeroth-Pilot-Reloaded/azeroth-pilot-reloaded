@@ -1,5 +1,5 @@
 APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
-    { -- [step 1
+    {
         PickUp = {
             24959,
         },
@@ -8,7 +8,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1704,
         },
     },
-    { -- [step 2
+    {
         Coord = {
             y = 1690.2,
             x = 1675,
@@ -17,7 +17,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             24959,
         },
     },
-    { -- [step 3
+    {
         PickUp = {
             28608,
         },
@@ -26,7 +26,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1675,
         },
     },
-    { -- [step 4
+    {
         Range = 5.68,
         Waypoint = 28608,
         Coord = {
@@ -34,7 +34,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1663.7,
         },
     },
-    { -- [step 5
+    {
         Range = 4.17,
         Waypoint = 28608,
         Coord = {
@@ -42,7 +42,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1665.2,
         },
     },
-    { -- [step 6
+    {
         Range = 5.05,
         Waypoint = 28608,
         Coord = {
@@ -50,7 +50,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1678.7,
         },
     },
-    { -- [step 7
+    {
         Qpart = {
             [28608] = {
                 1,
@@ -63,7 +63,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1693,
         },
     },
-    { -- [step 8
+    {
         Range = 5.55,
         Waypoint = 28608,
         Coord = {
@@ -71,7 +71,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1677.2,
         },
     },
-    { -- [step 9
+    {
         Range = 4.26,
         Waypoint = 28608,
         Coord = {
@@ -79,7 +79,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1663.3,
         },
     },
-    { -- [step 10
+    {
         Coord = {
             y = 1689.7,
             x = 1674.7,
@@ -88,7 +88,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             28608,
         },
     },
-    { -- [step 11
+    {
         PickUp = {
             26799,
         },
@@ -97,7 +97,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1674.5,
         },
     },
-    { -- [step 12
+    {
         PickUp = {
             24960,
         },
@@ -106,7 +106,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1649.4,
         },
     },
-    { -- [step 13
+    {
         Qpart = {
             [24960] = {
                 2,
@@ -125,7 +125,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1641,
         },
     },
-    { -- [step 14
+    {
         Qpart = {
             [24960] = {
                 1,
@@ -143,7 +143,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1666.3,
         },
     },
-    { -- [step 15
+    {
         Qpart = {
             [24960] = {
                 3,
@@ -161,7 +161,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1704.3,
         },
     },
-    { -- [step 16
+    {
         Qpart = {
             [26799] = {
                 1,
@@ -173,7 +173,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1681.4,
         },
     },
-    { -- [step 17
+    {
         Coord = {
             y = 1690.5,
             x = 1675,
@@ -182,7 +182,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             26799,
         },
     },
-    { -- [step 18
+    {
         Coord = {
             y = 1686,
             x = 1649.4,
@@ -191,7 +191,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             24960,
         },
     },
-    { -- [step 19
+    {
         PickUp = {
             25089,
         },
@@ -200,7 +200,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1649.4,
         },
     },
-    { -- [step 20
+    {
         PickUp = {
             26800,
         },
@@ -209,7 +209,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1605.3,
         },
     },
-    { -- [step 21
+    {
         Range = 4.58,
         Waypoint = 26800,
         Coord = {
@@ -217,7 +217,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1615.4,
         },
     },
-    { -- [step 22
+    {
         PickUp = {
             26801,
         },
@@ -226,7 +226,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1639.4,
         },
     },
-    { -- [step 23
+    {
         Qpart = {
             [26800] = {
                 1,
@@ -241,7 +241,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1570,
         },
     },
-    { -- [step 24
+    {
         Coord = {
             y = 1863.7,
             x = 1605.2,
@@ -250,7 +250,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             26800,
         },
     },
-    { -- [step 25
+    {
         Range = 4.56,
         Waypoint = 26801,
         Coord = {
@@ -258,7 +258,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1615.5,
         },
     },
-    { -- [step 26
+    {
         Coord = {
             y = 1843.4,
             x = 1640.3,
@@ -267,7 +267,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             26801,
         },
     },
-    { -- [step 27
+    {
         PickUp = {
             28651,
         },
@@ -276,7 +276,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1639.5,
         },
     },
-    { -- [step 28
+    {
         Coord = {
             y = 1848,
             x = 1639,
@@ -285,7 +285,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             28651,
         },
     },
-    { -- [step 29
+    {
         PickUp = {
             24961,
         },
@@ -294,7 +294,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1639,
         },
     },
-    { -- [step 30
+    {
         Range = 4.65,
         Waypoint = 24961,
         Coord = {
@@ -302,7 +302,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1578.4,
         },
     },
-    { -- [step 31
+    {
         Range = 4.61,
         Waypoint = 24961,
         Coord = {
@@ -310,7 +310,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1572,
         },
     },
-    { -- [step 32
+    {
         Range = 5.15,
         Waypoint = 24961,
         Coord = {
@@ -318,7 +318,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1576.9,
         },
     },
-    { -- [step 33
+    {
         Qpart = {
             [24961] = {
                 1,
@@ -332,7 +332,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1556.5,
         },
     },
-    { -- [step 34
+    {
         Coord = {
             y = 1847.5,
             x = 1638.5,
@@ -341,7 +341,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             24961,
         },
     },
-    { -- [step 35
+    {
         PickUp = {
             28672,
         },
@@ -350,7 +350,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1638.5,
         },
     },
-    { -- [step 36
+    {
         Coord = {
             y = 1996.7,
             x = 1544,
@@ -359,7 +359,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             28672,
         },
     },
-    { -- [step 37
+    {
         PickUp = {
             26802,
         },
@@ -368,7 +368,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1544,
         },
     },
-    { -- [step 38
+    {
         Qpart = {
             [26802] = {
                 1,
@@ -381,7 +381,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1468.5,
         },
     },
-    { -- [step 39
+    {
         Coord = {
             y = 1995.9,
             x = 1543.8,
@@ -390,7 +390,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             26802,
         },
     },
-    { -- [step 40
+    {
         PickUp = {
             24973,
         },
@@ -399,7 +399,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1543.8,
         },
     },
-    { -- [step 41
+    {
         Waypoint = 24961,
         Fillers = {
             [24973] = {
@@ -412,7 +412,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1816.4,
         },
     },
-    { -- [step 42
+    {
         Qpart = {
             [24973] = {
                 2,
@@ -429,7 +429,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1898,
         },
     },
-    { -- [step 43
+    {
         Qpart = {
             [24973] = {
                 1,
@@ -441,7 +441,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1755.7,
         },
     },
-    { -- [step 44
+    {
         Coord = {
             y = 1996.4,
             x = 1543.8,
@@ -450,7 +450,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             24973,
         },
     },
-    { -- [step 45
+    {
         PickUp = {
             24970,
         },
@@ -459,7 +459,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1543.8,
         },
     },
-    { -- [step 46
+    {
         Coord = {
             y = 1963,
             x = 1417.9,
@@ -468,7 +468,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             24970,
         },
     },
-    { -- [step 47
+    {
         PickUp = {
             24971,
         },
@@ -477,7 +477,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1417.9,
         },
     },
-    { -- [step 48
+    {
         Qpart = {
             [24971] = {
                 1,
@@ -495,7 +495,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1384.9,
         },
     },
-    { -- [step 49
+    {
         Qpart = {
             [24971] = {
                 2,
@@ -507,7 +507,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1352.9,
         },
     },
-    { -- [step 50
+    {
         Coord = {
             y = 1843.7,
             x = 1640,
@@ -516,7 +516,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             24971,
         },
     },
-    { -- [step 51
+    {
         PickUp = {
             24972,
         },
@@ -525,7 +525,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1640,
         },
     },
-    { -- [step 52
+    {
         Range = 12.89,
         Waypoint = 24972,
         Coord = {
@@ -533,7 +533,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1278,
         },
     },
-    { -- [step 53
+    {
         Range = 10.49,
         Waypoint = 24972,
         Coord = {
@@ -541,7 +541,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1024.4,
         },
     },
-    { -- [step 54
+    {
         Coord = {
             y = 2221.1,
             x = 1011.4,
@@ -550,7 +550,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             24972,
         },
     },
-    { -- [step 55
+    {
         PickUp = {
             24978,
             24975,
@@ -560,7 +560,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1011.4,
         },
     },
-    { -- [step 56
+    {
         Range = 10.49,
         Waypoint = 24978,
         Coord = {
@@ -568,7 +568,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1243.5,
         },
     },
-    { -- [step 57
+    {
         Qpart = {
             [24978] = {
                 1,
@@ -583,7 +583,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1243.5,
         },
     },
-    { -- [step 58
+    {
         Done = {
             24975,
             24978,
@@ -593,7 +593,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1011.4,
         },
     },
-    { -- [step 59
+    {
         PickUp = {
             24980,
             24976,
@@ -603,7 +603,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1011.4,
         },
     },
-    { -- [step 60
+    {
         ExtraLineText = "UPSTAIRS",
         PickUp = {
             24974,
@@ -613,7 +613,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1011.4,
         },
     },
-    { -- [step 61
+    {
         Qpart = {
             [24976] = {
                 1,
@@ -625,7 +625,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 820.5,
         },
     },
-    { -- [step 62
+    {
         Qpart = {
             [24980] = {
                 1,
@@ -637,7 +637,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1483.8,
         },
     },
-    { -- [step 63
+    {
         Coord = {
             y = 2388.5,
             x = 1483.8,
@@ -649,7 +649,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             Qid = 24979,
         },
     },
-    { -- [step 64
+    {
         ExtraLineText = "UP_TOWER",
         Qpart = {
             [24979] = {
@@ -663,7 +663,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1602.3,
         },
     },
-    { -- [step 65
+    {
         Qpart = {
             [24976] = {
                 3,
@@ -675,7 +675,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1546.2,
         },
     },
-    { -- [step 66
+    {
         Qpart = {
             [24974] = {
                 1,
@@ -690,7 +690,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1434,
         },
     },
-    { -- [step 67
+    {
         Qpart = {
             [24976] = {
                 2,
@@ -702,7 +702,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1333.6,
         },
     },
-    { -- [step 68
+    {
         ExtraLineText = "UPSTAIRS",
         Qpart = {
             [24974] = {
@@ -715,7 +715,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1011.4,
         },
     },
-    { -- [step 69
+    {
         Done = {
             24974,
         },
@@ -724,7 +724,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1011.4,
         },
     },
-    { -- [step 70
+    {
         ExtraLineText = "DOWNSTAIRS",
         Done = {
             24976,
@@ -736,7 +736,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1011.4,
         },
     },
-    { -- [step 71
+    {
         PickUp = {
             24977,
         },
@@ -745,7 +745,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1011.4,
         },
     },
-    { -- [step 72
+    {
         Done = {
             24977,
         },
@@ -754,7 +754,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1014.7,
         },
     },
-    { -- [step 73
+    {
         ExtraLineText = "FROM_GORDO",
         PickUp = {
             25038,
@@ -764,7 +764,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 1020.4,
         },
     },
-    { -- [step 74
+    {
         PickUp = {
             24982,
             25090,
@@ -779,7 +779,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 658.7,
         },
     },
-    { -- [step 75
+    {
         Qpart = {
             [25090] = {
                 1,
@@ -791,7 +791,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 623.6,
         },
     },
-    { -- [step 76
+    {
         Done = {
             25090,
         },
@@ -800,7 +800,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 658.7,
         },
     },
-    { -- [step 77
+    {
         PickUp = {
             6321,
         },
@@ -809,7 +809,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 315.8,
         },
     },
-    { -- [step 78
+    {
         ExtraLineText = "WANDERS",
         Done = {
             25038,
@@ -819,7 +819,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 316.3,
         },
     },
-    { -- [step 79
+    {
         ExtraLineText = "WANDERS",
         PickUp = {
             24990,
@@ -829,7 +829,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 316.3,
         },
     },
-    { -- [step 80
+    {
         PickUp = {
             24981,
             26964,
@@ -839,14 +839,14 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 298.1,
         },
     },
-    { -- [Step 81
+    {
         SetHS = 24982,
         Coord = {
             y = 2285.4,
             x = 282.6,
         },
     },
-    { -- [step 82
+    {
         Done = {
             24982,
         },
@@ -856,7 +856,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 276.8,
         },
     },
-    { -- [step 82
+    {
         PickUp = {
             24983,
         },
@@ -866,7 +866,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 276.8,
         },
     },
-    { -- [step 83
+    {
         Done = {
             6321,
         },
@@ -876,7 +876,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 372.6,
         },
     },
-    { -- [step 84
+    {
         Done = {
             24983,
         },
@@ -891,7 +891,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 74.2,
         },
     },
-    { -- [step 85
+    {
         PickUp = {
             24988,
         },
@@ -900,7 +900,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 84.4,
         },
     },
-    { -- [step 86
+    {
         Qpart = {
             [24981] = {
                 1,
@@ -928,7 +928,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
         },
         Range = 1,
     },
-    { -- [step 87
+    {
         Done = {
             24988,
         },
@@ -937,7 +937,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 84.4,
         },
     },
-    { -- [step 88
+    {
         PickUp = {
             24989,
         },
@@ -946,7 +946,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 74.5,
         },
     },
-    { -- [step 89
+    {
         Done = {
             24989,
         },
@@ -955,7 +955,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 276.8,
         },
     },
-    { -- [step 90
+    {
         Done = {
             24990,
         },
@@ -964,7 +964,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 318.8,
         },
     },
-    { -- [step 91
+    {
         PickUp = {
             24996,
         },
@@ -973,7 +973,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 318.8,
         },
     },
-    { -- [step 92
+    {
         ExtraLineText = "UPSTAIRS",
         Done = {
             24996,
@@ -983,7 +983,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 320.3,
         },
     },
-    { -- [step 93
+    {
         Done = {
             24992,
             24981,
@@ -993,7 +993,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 298,
         },
     },
-    { -- [step 94
+    {
         PickUp = {
             24993,
         },
@@ -1002,7 +1002,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
             x = 298,
         },
     },
-    { -- [step 95
+    {
         ExtraLineText = "STEALTHED",
         Qpart = {
             [24993] = {
@@ -1015,7 +1015,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
         },
         Range = 1,
     },
-    { -- [step 96
+    {
         Done = {
             24993,
         },
@@ -1027,12 +1027,12 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
     {
         Grind = 10,
     },
-    { -- [step 98
+    {
         ZoneDoneSave = 1,
     },
 }
 APR.RouteQuestStepList["DEV-Silverpine"] = {
-    { -- [step 1
+    {
         Waypoint = 26965,
         Range = 22.5,
         Coord = {
@@ -1040,7 +1040,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 653.6,
         },
     },
-    { -- [step 2
+    {
         PickUp = {
             26965,
         },
@@ -1049,7 +1049,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1038.7,
         },
     },
-    { -- [step 3
+    {
         ETA = 170,
         SpecialETAHide = 1,
         GetFP = 645,
@@ -1059,7 +1059,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1017.9,
         },
     },
-    { -- [step 4
+    {
         SpecialETAHide = 1,
         PickUp = {
             28089,
@@ -1069,7 +1069,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1046.9,
         },
     },
-    { -- [step 5
+    {
         Qpart = {
             [26965] = {
                 1,
@@ -1081,7 +1081,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1038.7,
         },
     },
-    { -- [step 6
+    {
         Done = {
             26965,
         },
@@ -1090,7 +1090,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1038.9,
         },
     },
-    { -- [step 7
+    {
         PickUp = {
             26989,
         },
@@ -1099,7 +1099,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1038.9,
         },
     },
-    { -- [step 8
+    {
         PickUp = {
             26995,
         },
@@ -1108,7 +1108,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1085.5,
         },
     },
-    { -- [step 9
+    {
         PickUp = {
             26992,
         },
@@ -1117,7 +1117,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1066.5,
         },
     },
-    { -- [step 10
+    {
         Qpart = {
             [26992] = {
                 1,
@@ -1135,7 +1135,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1043.5,
         },
     },
-    { -- [step 11
+    {
         Done = {
             26989,
         },
@@ -1144,7 +1144,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1039.2,
         },
     },
-    { -- [step 12
+    {
         Done = {
             26995,
         },
@@ -1153,7 +1153,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1086.5,
         },
     },
-    { -- [step 13
+    {
         Done = {
             26992,
         },
@@ -1162,7 +1162,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1066.2,
         },
     },
-    { -- [step 14
+    {
         PickUp = {
             26998,
         },
@@ -1171,7 +1171,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1087,
         },
     },
-    { -- [step 15
+    {
         Qpart = {
             [26998] = {
                 1,
@@ -1184,7 +1184,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1018.6,
         },
     },
-    { -- [step 16
+    {
         Qpart = {
             [26998] = {
                 2,
@@ -1196,7 +1196,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1019.4,
         },
     },
-    { -- [step 17
+    {
         Done = {
             26998,
         },
@@ -1205,7 +1205,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1088,
         },
     },
-    { -- [step 18
+    {
         PickUp = {
             27039,
         },
@@ -1214,7 +1214,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1011.2,
         },
     },
-    { -- [step 19
+    {
         Done = {
             27039,
         },
@@ -1223,7 +1223,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1187,
         },
     },
-    { -- [step 20
+    {
         PickUp = {
             27045,
         },
@@ -1232,7 +1232,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1186.8,
         },
     },
-    { -- [step 21
+    {
         Waypoint = 27045,
         Range = 6.65,
         Coord = {
@@ -1240,7 +1240,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1207.5,
         },
     },
-    { -- [step 22
+    {
         Waypoint = 27045,
         Range = 8.33,
         Coord = {
@@ -1248,7 +1248,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1220.9,
         },
     },
-    { -- [step 23
+    {
         Waypoint = 27045,
         Range = 2.25,
         Coord = {
@@ -1256,7 +1256,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1220.5,
         },
     },
-    { -- [step 24
+    {
         Waypoint = 27045,
         Range = 5.15,
         Coord = {
@@ -1264,7 +1264,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1211,
         },
     },
-    { -- [step 25
+    {
         Waypoint = 27045,
         ExtraLineText = "NOT_SKIP_VIDEO",
         Range = 4.69,
@@ -1273,7 +1273,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1206.5,
         },
     },
-    { -- [step 26
+    {
         Dontskipvid = 1,
         ExtraLineText = "NOT_SKIP_VIDEO",
         Qpart = {
@@ -1287,7 +1287,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1211.7,
         },
     },
-    { -- [step 27
+    {
         Done = {
             27045,
         },
@@ -1296,7 +1296,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1011,
         },
     },
-    { -- [step 28
+    {
         PickUp = {
             27056,
         },
@@ -1305,7 +1305,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1011,
         },
     },
-    { -- [step 29
+    {
         Done = {
             27056,
         },
@@ -1314,7 +1314,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1040.8,
         },
     },
-    { -- [step 30
+    {
         PickUp = {
             27065,
         },
@@ -1323,7 +1323,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1040.8,
         },
     },
-    { -- [step 31
+    {
         GetFP = 681,
         Range = 5.91,
         Coord = {
@@ -1331,7 +1331,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1519.9,
         },
     },
-    { -- [step 32
+    {
         Done = {
             27065,
         },
@@ -1340,7 +1340,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1601.7,
         },
     },
-    { -- [step 33
+    {
         PickUp = {
             27073,
             27069,
@@ -1350,7 +1350,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1602.9,
         },
     },
-    { -- [step 34
+    {
         PickUp = {
             27082,
         },
@@ -1359,7 +1359,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1570.3,
         },
     },
-    { -- [step 35
+    {
         Qpart = {
             [27073] = {
                 1,
@@ -1379,7 +1379,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1806,
         },
     },
-    { -- [step 36
+    {
         Qpart = {
             [27082] = {
                 1,
@@ -1391,7 +1391,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1688.5,
         },
     },
-    { -- [step 37
+    {
         Done = {
             27073,
             27069,
@@ -1401,7 +1401,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1601.8,
         },
     },
-    { -- [step 38
+    {
         PickUp = {
             27095,
             27093,
@@ -1411,7 +1411,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1602.3,
         },
     },
-    { -- [step 39
+    {
         Done = {
             27082,
         },
@@ -1420,7 +1420,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1568.9,
         },
     },
-    { -- [step 40
+    {
         PickUp = {
             27088,
         },
@@ -1429,7 +1429,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1568.9,
         },
     },
-    { -- [step 41
+    {
         Button = {
             ["27088-1"] = 60808,
         },
@@ -1451,7 +1451,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1951.5,
         },
     },
-    { -- [step 42
+    {
         Waypoint = 27093,
         Fillers = {
             [27093] = {
@@ -1467,7 +1467,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1968,
         },
     },
-    { -- [step 43
+    {
         Waypoint = 27093,
         Fillers = {
             [27095] = {
@@ -1483,7 +1483,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1990.7,
         },
     },
-    { -- [step 44
+    {
         Waypoint = 27093,
         Range = 6.21,
         Coord = {
@@ -1499,7 +1499,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             },
         },
     },
-    { -- [step 45
+    {
         Waypoint = 27093,
         Fillers = {
             [27093] = {
@@ -1515,7 +1515,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1991,
         },
     },
-    { -- [step 46
+    {
         PickUp = {
             27094,
         },
@@ -1524,7 +1524,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1958,
         },
     },
-    { -- [step 47
+    {
         Qpart = {
             [27094] = {
                 1,
@@ -1544,7 +1544,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1939.5,
         },
     },
-    { -- [step 48
+    {
         Qpart = {
             [27093] = {
                 1,
@@ -1567,7 +1567,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1910.5,
         },
     },
-    { -- [step 49
+    {
         Done = {
             27095,
         },
@@ -1576,7 +1576,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1917.4,
         },
     },
-    { -- [step 50
+    {
         Qpart = {
             [27088] = {
                 1,
@@ -1591,7 +1591,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1710.2,
         },
     },
-    { -- [step 51
+    {
         Done = {
             27094,
             27093,
@@ -1601,7 +1601,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1602.3,
         },
     },
-    { -- [step 52
+    {
         Done = {
             27088,
         },
@@ -1610,7 +1610,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1570,
         },
     },
-    { -- [step 53
+    {
         PickUp = {
             27096,
         },
@@ -1619,7 +1619,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1602,
         },
     },
-    { -- [step 54
+    {
         Coord = {
             y = 1054.2,
             x = 1520.9,
@@ -1629,7 +1629,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
         Name = "Forsaken High Command, Silverpine Forest",
         NodeID = 645,
     },
-    { -- [step 55
+    {
         Done = {
             27096,
         },
@@ -1638,7 +1638,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1041.5,
         },
     },
-    { -- [step 56
+    {
         PickUp = {
             27097,
         },
@@ -1647,7 +1647,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1041.3,
         },
     },
-    { -- [step 57
+    {
         Waypoint = 27097,
         Range = 43.05,
         Coord = {
@@ -1655,7 +1655,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 730.9,
         },
     },
-    { -- [step 58
+    {
         Qpart = {
             [27097] = {
                 1,
@@ -1667,7 +1667,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 727.1,
         },
     },
-    { -- [step 59
+    {
         Done = {
             27097,
         },
@@ -1676,7 +1676,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 701.7,
         },
     },
-    { -- [step 60
+    {
         PickUp = {
             27099,
         },
@@ -1685,7 +1685,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 701.7,
         },
     },
-    { -- [step 61
+    {
         Dontskipvid = 1,
         Qpart = {
             [27099] = {
@@ -1698,7 +1698,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 689.5,
         },
     },
-    { -- [step 62
+    {
         Done = {
             27099,
         },
@@ -1707,7 +1707,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1041.4,
         },
     },
-    { -- [step 63
+    {
         PickUp = {
             27098,
         },
@@ -1716,7 +1716,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1041.4,
         },
     },
-    { -- [step 64
+    {
         Done = {
             27098,
         },
@@ -1725,7 +1725,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1564.3,
         },
     },
-    { -- [step 65
+    {
         PickUp = {
             27180,
         },
@@ -1734,7 +1734,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1564.3,
         },
     },
-    { -- [step 66
+    {
         GetFP = 10,
         Range = 5.91,
         Coord = {
@@ -1742,7 +1742,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1544,
         },
     },
-    { -- [step 67
+    {
         PickUp = {
             27226,
             27231,
@@ -1752,7 +1752,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1527.9,
         },
     },
-    { -- [step 68
+    {
         Waypoint = 27226,
         Range = 30.2,
         Coord = {
@@ -1760,7 +1760,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1415.4,
         },
     },
-    { -- [step 69
+    {
         Qpart = {
             [27226] = {
                 1,
@@ -1778,7 +1778,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1218.7,
         },
     },
-    { -- [step 70
+    {
         Done = {
             27231,
         },
@@ -1787,7 +1787,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 964.5,
         },
     },
-    { -- [step 71
+    {
         PickUp = {
             27232,
         },
@@ -1796,7 +1796,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 964.5,
         },
     },
-    { -- [step 72
+    {
         Qpart = {
             [27232] = {
                 1,
@@ -1808,7 +1808,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 935,
         },
     },
-    { -- [step 73
+    {
         Waypoint = 27232,
         Range = 21.69,
         Coord = {
@@ -1816,7 +1816,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1081.3,
         },
     },
-    { -- [step 74
+    {
         Waypoint = 27232,
         Range = 47.65,
         Coord = {
@@ -1824,7 +1824,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1314.2,
         },
     },
-    { -- [step 75
+    {
         ExtraLineText = "KILL_BLOODFANG_STALKER",
         PickUp = {
             27181,
@@ -1834,7 +1834,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1419.9,
         },
     },
-    { -- [step 76
+    {
         RaidIcon = 45197,
         Qpart = {
             [27181] = {
@@ -1852,7 +1852,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1450.5,
         },
     },
-    { -- [step 77
+    {
         Done = {
             27181,
         },
@@ -1861,7 +1861,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1524.5,
         },
     },
-    { -- [step 78
+    {
         PickUp = {
             27193,
         },
@@ -1870,7 +1870,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1524.5,
         },
     },
-    { -- [step 79
+    {
         Qpart = {
             [27193] = {
                 1,
@@ -1888,7 +1888,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1525.4,
         },
     },
-    { -- [step 80
+    {
         Done = {
             27193,
         },
@@ -1897,7 +1897,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1526,
         },
     },
-    { -- [step 81
+    {
         PickUp = {
             27194,
         },
@@ -1906,7 +1906,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1526,
         },
     },
-    { -- [step 82
+    {
         RaidIcon = 45197,
         Qpart = {
             [27180] = {
@@ -1919,7 +1919,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1526,
         },
     },
-    { -- [step 83
+    {
         Done = {
             27232,
             27226,
@@ -1929,7 +1929,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1527.3,
         },
     },
-    { -- [step 84
+    {
         Done = {
             27180,
         },
@@ -1938,7 +1938,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1565,
         },
     },
-    { -- [step 85
+    {
         Waypoint = 27194,
         Range = 28.32,
         Coord = {
@@ -1946,7 +1946,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1513,
         },
     },
-    { -- [step 86
+    {
         Waypoint = 27194,
         Range = 28.18,
         Coord = {
@@ -1954,7 +1954,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1409.8,
         },
     },
-    { -- [step 87
+    {
         Waypoint = 27194,
         Range = 18.86,
         Coord = {
@@ -1962,7 +1962,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1129.5,
         },
     },
-    { -- [step 88
+    {
         Done = {
             27194,
         },
@@ -1971,7 +1971,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1103,
         },
     },
-    { -- [step 89
+    {
         PickUp = {
             27195,
         },
@@ -1980,7 +1980,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1103,
         },
     },
-    { -- [step 90
+    {
         ExtraLineText = "SKIP_AFTER_THROWN",
         RaidIcon = 45228,
         Qpart = {
@@ -1994,7 +1994,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1028.8,
         },
     },
-    { -- [step 91
+    {
         Waypoint = 27195,
         Range = 16.33,
         Coord = {
@@ -2002,7 +2002,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1078,
         },
     },
-    { -- [step 92
+    {
         Waypoint = 27195,
         Range = 31.08,
         Coord = {
@@ -2010,7 +2010,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1412.5,
         },
     },
-    { -- [step 93
+    {
         Done = {
             27195,
         },
@@ -2019,7 +2019,7 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1565.5,
         },
     },
-    { -- [step 94
+    {
         PickUp = {
             27290,
         },
@@ -2028,12 +2028,12 @@ APR.RouteQuestStepList["DEV-Silverpine"] = {
             x = 1565.5,
         },
     },
-    { -- [step 95
+    {
         ZoneDoneSave = 1,
     },
 }
 APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
-    { -- [step 1
+    {
         Coord = {
             y = -928.7,
             x = 1632.5,
@@ -2042,7 +2042,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             27290,
         },
     },
-    { -- [step 2
+    {
         PickUp = {
             27342,
         },
@@ -2051,7 +2051,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1632.5,
         },
     },
-    { -- [step 3
+    {
         PickUp = {
             27333,
             27345,
@@ -2061,7 +2061,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1630.4,
         },
     },
-    { -- [step 4
+    {
         GetFP = 646,
         Range = 5.91,
         Coord = {
@@ -2069,7 +2069,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1637.9,
         },
     },
-    { -- [step 5
+    {
         Qpart = {
             [27345] = {
                 1,
@@ -2091,7 +2091,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 2000.5,
         },
     },
-    { -- [step 6
+    {
         DropQuest = 27322,
         Coord = {
             y = -993.5,
@@ -2108,7 +2108,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             },
         },
     },
-    { -- [step 7
+    {
         Qpart = {
             [27333] = {
                 1,
@@ -2120,7 +2120,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1806.5,
         },
     },
-    { -- [step 8
+    {
         Qpart = {
             [27342] = {
                 1,
@@ -2132,7 +2132,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1492.4,
         },
     },
-    { -- [step 9
+    {
         Done = {
             27333,
             27345,
@@ -2144,7 +2144,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1630.8,
         },
     },
-    { -- [step 10
+    {
         PickUp = {
             27349,
         },
@@ -2153,7 +2153,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1630.9,
         },
     },
-    { -- [step 11
+    {
         Qpart = {
             [27349] = {
                 1,
@@ -2165,7 +2165,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1799.5,
         },
     },
-    { -- [step 12
+    {
         Done = {
             27349,
         },
@@ -2174,7 +2174,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1799.5,
         },
     },
-    { -- [step 13
+    {
         PickUp = {
             27350,
         },
@@ -2183,7 +2183,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1799.5,
         },
     },
-    { -- [step 14
+    {
         Done = {
             27350,
         },
@@ -2192,7 +2192,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1375,
         },
     },
-    { -- [step 15
+    {
         PickUp = {
             27364,
         },
@@ -2201,7 +2201,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1375,
         },
     },
-    { -- [step 16
+    {
         PickUp = {
             27360,
         },
@@ -2210,7 +2210,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1375,
         },
     },
-    { -- [step 17
+    {
         Qpart = {
             [27364] = {
                 1,
@@ -2227,7 +2227,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1587.7,
         },
     },
-    { -- [step 18
+    {
         Done = {
             27364,
         },
@@ -2236,7 +2236,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1585,
         },
     },
-    { -- [step 19
+    {
         PickUp = {
             27401,
         },
@@ -2245,7 +2245,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1586.3,
         },
     },
-    { -- [step 20
+    {
         Dontskipvid = 1,
         Qpart = {
             [27401] = {
@@ -2263,7 +2263,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1712.5,
         },
     },
-    { -- [step 21
+    {
         Done = {
             27401,
         },
@@ -2272,7 +2272,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1718.2,
         },
     },
-    { -- [step 22
+    {
         PickUp = {
             27405,
         },
@@ -2281,7 +2281,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1718.2,
         },
     },
-    { -- [step 23
+    {
         Qpart = {
             [27360] = {
                 1,
@@ -2293,7 +2293,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1712.4,
         },
     },
-    { -- [step 24
+    {
         Done = {
             27360,
         },
@@ -2302,7 +2302,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1375.3,
         },
     },
-    { -- [step 25
+    {
         Done = {
             27405,
         },
@@ -2311,7 +2311,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1144.3,
         },
     },
-    { -- [step 26
+    {
         PickUp = {
             27406,
         },
@@ -2320,7 +2320,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1144.3,
         },
     },
-    { -- [step 27
+    {
         Waypoint = 27423,
         Range = 20.87,
         Coord = {
@@ -2328,7 +2328,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 1117.4,
         },
     },
-    { -- [step 28
+    {
         Qpart = {
             [27423] = {
                 1,
@@ -2340,7 +2340,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 951.7,
         },
     },
-    { -- [step 29
+    {
         Done = {
             27423,
         },
@@ -2349,7 +2349,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 971,
         },
     },
-    { -- [step 30
+    {
         Qpart = {
             [27406] = {
                 1,
@@ -2366,7 +2366,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 931.9,
         },
     },
-    { -- [step 31
+    {
         Done = {
             27406,
         },
@@ -2375,7 +2375,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 932.1,
         },
     },
-    { -- [step 32
+    {
         PickUp = {
             27438,
         },
@@ -2384,12 +2384,12 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
             x = 932.7,
         },
     },
-    { -- [step 33
+    {
         ZoneDoneSave = 1,
     },
 }
 APR.RouteQuestStepList["DEV-Silverpine2"] = {
-    { -- [step 1
+    {
         ETA = 132,
         Done = {
             27438,
@@ -2399,7 +2399,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             x = 1276,
         },
     },
-    { -- [step 2
+    {
         PickUp = {
             27472,
         },
@@ -2408,7 +2408,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             x = 1276,
         },
     },
-    { -- [step 3
+    {
         SpecialETAHide = 1,
         ETA = 85,
         GetFP = 654,
@@ -2418,7 +2418,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             x = 1314.5,
         },
     },
-    { -- [step 4
+    {
         Qpart = {
             [27472] = {
                 1,
@@ -2430,7 +2430,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             x = 1271.2,
         },
     },
-    { -- [step 5
+    {
         Done = {
             27472,
         },
@@ -2439,7 +2439,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             x = 1270.8,
         },
     },
-    { -- [step 6
+    {
         PickUp = {
             27474,
         },
@@ -2448,7 +2448,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             x = 1270.8,
         },
     },
-    { -- [step 7
+    {
         PickUp = {
             27475,
         },
@@ -2457,7 +2457,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             x = 1271,
         },
     },
-    { -- [step 8
+    {
         Qpart = {
             [27474] = {
                 1,
@@ -2474,7 +2474,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             x = 783.9,
         },
     },
-    { -- [step 9
+    {
         Qpart = {
             [27475] = {
                 1,
@@ -2486,7 +2486,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             x = 783.9,
         },
     },
-    { -- [step 10
+    {
         Done = {
             27474,
             27475,
@@ -2496,7 +2496,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             x = 1268.4,
         },
     },
-    { -- [step 11
+    {
         PickUp = {
             27476,
         },
@@ -2505,7 +2505,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             x = 1270,
         },
     },
-    { -- [step 12
+    {
         Coord = {
             y = -114.6,
             x = 1313.8,
@@ -2515,7 +2515,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
         Name = "The Sepulcher, Silverpine Forest",
         NodeID = 10,
     },
-    { -- [step 13
+    {
         Range = 8.45,
         Waypoint = 27476,
         Coord = {
@@ -2523,7 +2523,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             x = 1512.2,
         },
     },
-    { -- [step 14
+    {
         Coord = {
             y = 456.8,
             x = 1472.8,
@@ -2532,7 +2532,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             27476,
         },
     },
-    { -- [step 15
+    {
         PickUp = {
             27483,
             27478,
@@ -2542,7 +2542,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             x = 1473.8,
         },
     },
-    { -- [step 16
+    {
         ExtraLineText = "DALARAN_CRATER_PORTAL",
         Waypoint = 27483,
         Range = 5.0,
@@ -2551,12 +2551,12 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
             x = 1465.5,
         },
     },
-    { -- [step 17
+    {
         ZoneDoneSave = 1,
     },
 }
 APR.RouteQuestStepList["DEV-DALARAN_CRATER"] = {
-    { -- [step 1
+    {
         DropQuest = 27480,
         Coord = {
             y = 422,
@@ -2568,7 +2568,7 @@ APR.RouteQuestStepList["DEV-DALARAN_CRATER"] = {
             MobId = 136490,
         },
     },
-    { -- [step 2
+    {
         Qpart = {
             [27483] = {
                 1,
@@ -2586,7 +2586,7 @@ APR.RouteQuestStepList["DEV-DALARAN_CRATER"] = {
             x = 449.1,
         },
     },
-    { -- [step 3
+    {
         ExtraLineText = "DALARAN_CRATER_PORTAL",
         Done = {
             27483,
@@ -2598,12 +2598,12 @@ APR.RouteQuestStepList["DEV-DALARAN_CRATER"] = {
             x = 377.6,
         },
     },
-    { -- [step 4
+    {
         ZoneDoneSave = 1,
     },
 }
 APR.RouteQuestStepList["DEV-Silverpine3"] = {
-    { -- [step 1
+    {
         Done = {
             27483,
             27480,
@@ -2614,7 +2614,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1472.4,
         },
     },
-    { -- [step 2
+    {
         PickUp = {
             27484,
         },
@@ -2623,7 +2623,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1472.4,
         },
     },
-    { -- [step 3
+    {
         Waypoint = 27484,
         Range = 10.42,
         Coord = {
@@ -2631,7 +2631,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1514.9,
         },
     },
-    { -- [step 4
+    {
         Coord = {
             y = 477.3,
             x = 1543.3,
@@ -2641,7 +2641,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
         Name = "The Forsaken Front, Silverpine Forest",
         NodeID = 654,
     },
-    { -- [step 5
+    {
         Done = {
             27484,
         },
@@ -2650,7 +2650,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1270,
         },
     },
-    { -- [step 6
+    {
         PickUp = {
             27512,
         },
@@ -2659,7 +2659,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1270.5,
         },
     },
-    { -- [step 7
+    {
         PickUp = {
             27510,
         },
@@ -2668,7 +2668,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1266.8,
         },
     },
-    { -- [step 8
+    {
         Qpart = {
             [27510] = {
                 1,
@@ -2680,7 +2680,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1092.8,
         },
     },
-    { -- [step 9
+    {
         Waypoint = 27512,
         Range = 22.82,
         Coord = {
@@ -2688,7 +2688,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 923.7,
         },
     },
-    { -- [step 10
+    {
         Waypoint = 27512,
         Range = 12.37,
         Coord = {
@@ -2696,7 +2696,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 910.7,
         },
     },
-    { -- [step 11
+    {
         Done = {
             27512,
         },
@@ -2705,7 +2705,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1017.2,
         },
     },
-    { -- [step 12
+    {
         PickUp = {
             27513,
         },
@@ -2714,7 +2714,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1015.2,
         },
     },
-    { -- [step 13
+    {
         --ExtraLineText = "USE_PORTAL",
         Gossip = 1,
         Qpart = {
@@ -2728,7 +2728,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1013.1,
         },
     },
-    { -- [step 14
+    {
         Done = {
             27513,
         },
@@ -2737,7 +2737,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1011.1,
         },
     },
-    { -- [step 15
+    {
         PickUp = {
             27518,
         },
@@ -2746,7 +2746,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1011.1,
         },
     },
-    { -- [step 16
+    {
         Qpart = {
             [27518] = {
                 1,
@@ -2758,7 +2758,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1066.8,
         },
     },
-    { -- [step 17
+    {
         Done = {
             27510,
         },
@@ -2767,7 +2767,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1261,
         },
     },
-    { -- [step 18
+    {
         Done = {
             27518,
         },
@@ -2776,7 +2776,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1270,
         },
     },
-    { -- [step 19
+    {
         PickUp = {
             27548,
             27547,
@@ -2787,7 +2787,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1271.3,
         },
     },
-    { -- [step 20
+    {
         Qpart = {
             [27550] = {
                 2,
@@ -2810,7 +2810,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1496.7,
         },
     },
-    { -- [step 21
+    {
         Qpart = {
             [27550] = {
                 1,
@@ -2833,7 +2833,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1555,
         },
     },
-    { -- [step 22
+    {
         Qpart = {
             [27550] = {
                 3,
@@ -2856,7 +2856,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1603.7,
         },
     },
-    { -- [step 23
+    {
         Qpart = {
             [27547] = {
                 1,
@@ -2871,7 +2871,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1603.7,
         },
     },
-    { -- [step 24
+    {
         Done = {
             27548,
             27547,
@@ -2882,7 +2882,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1498.3,
         },
     },
-    { -- [step 25
+    {
         Waypoint = 28089,
         Range = 45.55,
         Coord = {
@@ -2890,7 +2890,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 1104.7,
         },
     },
-    { -- [step 26
+    {
         Waypoint = 28089,
         Range = 41.44,
         Coord = {
@@ -2898,7 +2898,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 660.2,
         },
     },
-    { -- [step 27
+    {
         Done = {
             28089,
         },
@@ -2907,7 +2907,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
             x = 429.3,
         },
     },
-    { -- [step 28
+    {
         ZoneDoneSave = 1,
     }
 }
@@ -8477,7 +8477,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             y = 2929.5,
             x = -1417.5,
         },
-    }, -- [23]
+    },
     {
         Done = {
             27155,
@@ -8486,7 +8486,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
             y = 2942.9,
             x = -1390,
         },
-    }, -- [24]
+    },
     {
         Coord = {
             y = 2838.1,
@@ -8751,7 +8751,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
         Done = {
             8325,
         },
-    }, -- [3]
+    },
     {
         PickUp = {
             8326,
@@ -8760,7 +8760,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10352.6,
             x = -6359.5,
         },
-    }, -- [4]
+    },
     {
         Range = 16.4,
         Waypoint = 8326,
@@ -8768,7 +8768,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10388.5,
             x = -6385.3,
         },
-    }, -- [5]
+    },
     {
         Qpart = {
             [8326] = {
@@ -8780,7 +8780,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             x = -6462.2,
             y = 10453.6,
         },
-    }, -- [6]
+    },
     {
         Coord = {
             y = 10352.5,
@@ -8789,7 +8789,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
         Done = {
             8326,
         },
-    }, -- [7]
+    },
     {
         PickUp = {
             8327,
@@ -8798,7 +8798,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10352.5,
             x = -6359.9,
         },
-    }, -- [8]
+    },
     {
         PickUp = {
             37442,
@@ -8817,7 +8817,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10414,
             x = -6372.3,
         },
-    }, -- [10]
+    },
     {
         PickUp = {
             37439,
@@ -8826,7 +8826,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10420.2,
             x = -6317.9,
         },
-    }, -- [11]
+    },
     {
         Fillers = {
             [37439] = {
@@ -8843,7 +8843,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10302.4,
             x = -6228.9,
         },
-    }, -- [12]
+    },
     {
         PickUp = {
             8334,
@@ -8852,7 +8852,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10302.4,
             x = -6228.9,
         },
-    }, -- [13]
+    },
     {
         Qpart = {
             [37439] = {
@@ -8872,7 +8872,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10333.5,
             x = -6270.3,
         },
-    }, -- [14]
+    },
     {
         Fillers = {
             [37440] = {
@@ -8886,7 +8886,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10419.2,
             x = -6317.7,
         },
-    }, -- [15]
+    },
     {
         Qpart = {
             [37443] = {
@@ -8903,7 +8903,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10224.7,
             x = -6343,
         },
-    }, -- [16]
+    },
     {
         Qpart = {
             [37443] = {
@@ -8924,7 +8924,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10093.2,
             x = -6217.2,
         },
-    }, -- [17]
+    },
     {
         Qpart = {
             [37443] = {
@@ -8942,7 +8942,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10295.2,
             x = -6029.9,
         },
-    }, -- [18]
+    },
     {
         Qpart = {
             [37442] = {
@@ -8960,7 +8960,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10404.7,
             x = -5946.7,
         },
-    }, -- [19]
+    },
     {
         Qpart = {
             [8334] = {
@@ -8973,7 +8973,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10309.6,
             x = -6009.7,
         },
-    }, -- [20]
+    },
     {
         Qpart = {
             [37440] = {
@@ -8985,7 +8985,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10336.1,
             x = -6156.5,
         },
-    }, -- [21]
+    },
     {
         Coord = {
             y = 10302.9,
@@ -9003,7 +9003,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10302.9,
             x = -6228.8,
         },
-    }, -- [23]
+    },
     {
         Range = 16.57,
         Waypoint = 37442,
@@ -9011,7 +9011,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10353.2,
             x = -6386.9,
         },
-    }, -- [24]
+    },
     {
         Coord = {
             y = 10377.4,
@@ -9021,7 +9021,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             37442,
             37443,
         },
-    }, -- [25]
+    },
     {
         Coord = {
             y = 10414.4,
@@ -9030,7 +9030,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
         Done = {
             37440,
         },
-    }, -- [26]
+    },
     {
         Range = 11.29,
         Waypoint = 8335,
@@ -9038,7 +9038,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10206.7,
             x = -6096.3,
         },
-    }, -- [27]
+    },
     {
         Qpart = {
             [8335] = {
@@ -9054,7 +9054,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10151.4,
             x = -6005.5,
         },
-    }, -- [28]
+    },
     {
         Coord = {
             y = 10140.6,
@@ -9066,7 +9066,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             MobId = 15298,
             Qid = 8338,
         },
-    }, -- [29]
+    },
     {
         Coord = {
             y = 10302.7,
@@ -9075,7 +9075,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
         Done = {
             8335,
         },
-    }, -- [30]
+    },
     {
         PickUp = {
             8347,
@@ -9084,7 +9084,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 10302.7,
             x = -6228.8,
         },
-    }, -- [31]
+    },
     {
         Coord = {
             y = 10420.2,
@@ -9093,7 +9093,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
         Done = {
             8338,
         },
-    }, -- [32]
+    },
     {
         Coord = {
             y = 9984.5,
@@ -9102,7 +9102,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
         Done = {
             8347,
         },
-    }, -- [33]
+    },
     {
         PickUp = {
             9704,
@@ -9111,7 +9111,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 9984.5,
             x = -6477.9,
         },
-    }, -- [34]
+    },
     {
         Coord = {
             y = 9871.6,
@@ -9120,7 +9120,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
         Done = {
             9704,
         },
-    }, -- [35]
+    },
     {
         PickUp = {
             9705,
@@ -9129,7 +9129,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 9871.6,
             x = -6557.4,
         },
-    }, -- [36]
+    },
     {
         Coord = {
             y = 9984.6,
@@ -9138,7 +9138,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
         Done = {
             9705,
         },
-    }, -- [37]
+    },
     {
         PickUp = {
             8350,
@@ -9147,7 +9147,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
             y = 9984.6,
             x = -6477.7,
         },
-    }, -- [38]
+    },
     {
         Coord = {
             y = 9477.1,
@@ -9156,7 +9156,7 @@ APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
         Done = {
             8350,
         },
-    }, -- [39]
+    },
     {
         ZoneDoneSave = 1,
     },

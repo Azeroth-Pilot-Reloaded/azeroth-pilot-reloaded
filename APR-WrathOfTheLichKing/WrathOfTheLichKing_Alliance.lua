@@ -1,7 +1,7 @@
 if (APR.Faction == "Alliance") then
     APR.RouteQuestStepList["A23-ScarletEnclave"] = {
         {
-            -- Step 1
+
             PickUp = {
                 12593,
             },
@@ -11,7 +11,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 2
+
             Waypoint = 12593,
             Coord = {
                 y = 2413.1,
@@ -21,7 +21,7 @@ if (APR.Faction == "Alliance") then
             Range = 16.93,
         },
         {
-            -- Step 3
+
             Done = {
                 12593,
             },
@@ -31,7 +31,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 4
+
             PickUp = {
                 12619,
             },
@@ -41,7 +41,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 5
+
             Qpart = {
                 [12619] = {
                     1,
@@ -55,7 +55,7 @@ if (APR.Faction == "Alliance") then
             Range = 0.69,
         },
         {
-            -- Step 6
+
             Qpart = {
                 [12619] = {
                     1,
@@ -72,7 +72,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 7
+
             Done = {
                 12619,
             },
@@ -82,7 +82,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 8
+
             PickUp = {
                 12842,
             },
@@ -92,7 +92,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 9
+
             Qpart = {
                 [12842] = {
                     1,
@@ -106,7 +106,7 @@ if (APR.Faction == "Alliance") then
             Range = 0.69,
         },
         {
-            -- Step 10
+
             Done = {
                 12842,
             },
@@ -116,7 +116,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 11
+
             PickUp = {
                 12848,
             },
@@ -126,7 +126,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 12
+
             Qpart = {
                 [12848] = {
                     1,
@@ -143,7 +143,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 13
+
             Done = {
                 12848,
             },
@@ -153,7 +153,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 14
+
             PickUp = {
                 12636,
             },
@@ -163,7 +163,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 15
+
             Done = {
                 12636,
             },
@@ -173,7 +173,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 16
+
             PickUp = {
                 12641,
             },
@@ -183,7 +183,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 17
+
             Qpart = {
                 [12641] = {
                     4,
@@ -200,7 +200,7 @@ if (APR.Faction == "Alliance") then
             Range = 5.33,
         },
         {
-            -- Step 18
+
             Done = {
                 12641,
             },
@@ -210,7 +210,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 19
+
             PickUp = {
                 12657,
             },
@@ -220,7 +220,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 20
+
             Waypoint = 12657,
             Coord = {
                 y = 2387.6,
@@ -230,7 +230,7 @@ if (APR.Faction == "Alliance") then
             Range = 3.97,
         },
         {
-            -- Step 21
+
             Done = {
                 12657,
             },
@@ -240,7 +240,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 22
+
             PickUp = {
                 12850,
             },
@@ -250,7 +250,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 23
+
             Waypoint = 12850,
             Coord = {
                 y = 2386.8,
@@ -260,7 +260,7 @@ if (APR.Faction == "Alliance") then
             Range = 7.62,
         },
         {
-            -- Step 24
+
             Done = {
                 12850,
             },
@@ -270,7 +270,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 25
+
             PickUp = {
                 12670,
             },
@@ -280,7 +280,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 26
+
             Done = {
                 12670,
             },
@@ -290,7 +290,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 27
+
             PickUp = {
                 12678,
             },
@@ -300,7 +300,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 28
+
             PickUp = {
                 12680,
             },
@@ -310,7 +310,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 29
+
             PickUp = {
                 12679,
             },
@@ -320,7 +320,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 30
+
             PickUp = {
                 12733,
             },
@@ -330,7 +330,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 31
+
             Qpart = {
                 [12733] = {
                     1,
@@ -345,7 +345,7 @@ if (APR.Faction == "Alliance") then
             Gossip = 1,
         },
         {
-            -- Step 32
+
             Waypoint = 12678,
             Coord = {
                 y = 2284.1,
@@ -355,7 +355,7 @@ if (APR.Faction == "Alliance") then
             Range = 26.24,
         },
         {
-            -- Step 33
+
             Qpart = {
                 [12679] = {
                     1,
@@ -375,7 +375,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 34
+
             Qpart = {
                 [12678] = {
                     2,
@@ -390,7 +390,7 @@ if (APR.Faction == "Alliance") then
             Range = 47.19,
         },
         {
-            -- Step 35
+
             Qpart = {
                 [12680] = {
                     1,
@@ -404,7 +404,7 @@ if (APR.Faction == "Alliance") then
             Range = 6.33,
         },
         {
-            -- Step 36
+
             Waypoint = 12680,
             Coord = {
                 y = 2207.6,
@@ -414,7 +414,7 @@ if (APR.Faction == "Alliance") then
             Range = 28.23,
         },
         {
-            -- Step 37
+
             Qpart = {
                 [12680] = {
                     1,
@@ -428,7 +428,7 @@ if (APR.Faction == "Alliance") then
             Range = 8.28,
         },
         {
-            -- Step 38
+
             Done = {
                 12680,
             },
@@ -438,7 +438,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 39
+
             PickUp = {
                 12687,
             },
@@ -448,7 +448,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 40
+
             Waypoint = 12687,
             Coord = {
                 y = 2231.5,
@@ -458,7 +458,7 @@ if (APR.Faction == "Alliance") then
             Range = 24.04,
         },
         {
-            -- Step 41
+
             Qpart = {
                 [12687] = {
                     1,
@@ -472,7 +472,7 @@ if (APR.Faction == "Alliance") then
             Range = 7.83,
         },
         {
-            -- Step 42
+
             Done = {
                 12687,
             },
@@ -482,7 +482,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 43
+
             Done = {
                 12678,
             },
@@ -492,7 +492,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 44
+
             Done = {
                 12679,
             },
@@ -502,7 +502,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 45
+
             Done = {
                 12733,
             },
@@ -512,7 +512,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 46
+
             PickUp = {
                 12697,
             },
@@ -522,7 +522,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 47
+
             Done = {
                 12697,
             },
@@ -532,7 +532,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 48
+
             PickUp = {
                 12698,
             },
@@ -542,7 +542,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 49
+
             Qpart = {
                 [12698] = {
                     1,
@@ -559,7 +559,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 50
+
             Done = {
                 12698,
             },
@@ -569,7 +569,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 51
+
             PickUp = {
                 12700,
             },
@@ -579,7 +579,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 52
+
             Done = {
                 12700,
             },
@@ -589,7 +589,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 53
+
             PickUp = {
                 12701,
             },
@@ -599,7 +599,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 54
+
             Qpart = {
                 [12701] = {
                     1,
@@ -613,7 +613,7 @@ if (APR.Faction == "Alliance") then
             Range = 9.18,
         },
         {
-            -- Step 55
+
             Done = {
                 12701,
             },
@@ -623,7 +623,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 56
+
             PickUp = {
                 12706,
             },
@@ -633,7 +633,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 57
+
             Waypoint = 12706,
             Coord = {
                 y = 2403.1,
@@ -643,7 +643,7 @@ if (APR.Faction == "Alliance") then
             Range = 5.95,
         },
         {
-            -- Step 58
+
             Done = {
                 12706,
             },
@@ -653,7 +653,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 59
+
             PickUp = {
                 12714,
             },
@@ -663,7 +663,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 60
+
             Waypoint = 12714,
             Coord = {
                 y = 2326.5,
@@ -673,7 +673,7 @@ if (APR.Faction == "Alliance") then
             Range = 8.12,
         },
         {
-            -- Step 61
+
             Done = {
                 12714,
             },
@@ -683,7 +683,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 62
+
             PickUp = {
                 12715,
             },
@@ -693,7 +693,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 63
+
             PickUp = {
                 12716,
             },
@@ -703,7 +703,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 64
+
             Waypoint = 12715,
             Coord = {
                 y = 1863.8,
@@ -713,7 +713,7 @@ if (APR.Faction == "Alliance") then
             Range = 7.73,
         },
         {
-            -- Step 65
+
             Waypoint = 12715,
             Coord = {
                 y = 1864.0,
@@ -723,7 +723,7 @@ if (APR.Faction == "Alliance") then
             Range = 4.27,
         },
         {
-            -- Step 66
+
             Waypoint = 12715,
             Coord = {
                 y = 1877.5,
@@ -733,7 +733,7 @@ if (APR.Faction == "Alliance") then
             Range = 4.6,
         },
         {
-            -- Step 67
+
             Done = {
                 12715,
             },
@@ -743,7 +743,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 68
+
             PickUp = {
                 12719,
             },
@@ -753,7 +753,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 69
+
             PickUp = {
                 12722,
             },
@@ -763,7 +763,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 70
+
             Waypoint = 12722,
             Coord = {
                 y = 1876.9,
@@ -773,7 +773,7 @@ if (APR.Faction == "Alliance") then
             Range = 4.46,
         },
         {
-            -- Step 71
+
             Waypoint = 12722,
             Coord = {
                 y = 1862.2,
@@ -783,7 +783,7 @@ if (APR.Faction == "Alliance") then
             Range = 3.73,
         },
         {
-            -- Step 72
+
             Waypoint = 12722,
             Coord = {
                 y = 1859.9,
@@ -793,7 +793,7 @@ if (APR.Faction == "Alliance") then
             Range = 7.08,
         },
         {
-            -- Step 73
+
             Qpart = {
                 [12716] = {
                     2,
@@ -813,7 +813,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 74
+
             Waypoint = 12716,
             Coord = {
                 y = 1727.4,
@@ -823,7 +823,7 @@ if (APR.Faction == "Alliance") then
             Range = 11.45,
         },
         {
-            -- Step 75
+
             Waypoint = 12716,
             Coord = {
                 y = 1769.4,
@@ -833,7 +833,7 @@ if (APR.Faction == "Alliance") then
             Range = 6.59,
         },
         {
-            -- Step 76
+
             Waypoint = 12716,
             Coord = {
                 y = 1774.2,
@@ -843,7 +843,7 @@ if (APR.Faction == "Alliance") then
             Range = 4.16,
         },
         {
-            -- Step 77
+
             Qpart = {
                 [12716] = {
                     1,
@@ -863,7 +863,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 78
+
             Qpart = {
                 [12719] = {
                     2,
@@ -887,7 +887,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 79
+
             Qpart = {
                 [12716] = {
                     3,
@@ -905,7 +905,7 @@ if (APR.Faction == "Alliance") then
             Range = 27.4,
         },
         {
-            -- Step 80
+
             Waypoint = 12719,
             Coord = {
                 y = 1860.9,
@@ -915,7 +915,7 @@ if (APR.Faction == "Alliance") then
             Range = 8.48,
         },
         {
-            -- Step 81
+
             Waypoint = 12719,
             Coord = {
                 y = 1864.8,
@@ -925,7 +925,7 @@ if (APR.Faction == "Alliance") then
             Range = 3.96,
         },
         {
-            -- Step 82
+
             Done = {
                 12719,
             },
@@ -935,7 +935,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 83
+
             PickUp = {
                 12720,
             },
@@ -945,7 +945,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 84
+
             Done = {
                 12722,
             },
@@ -955,7 +955,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 85
+
             Done = {
                 12716,
             },
@@ -965,7 +965,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 86
+
             PickUp = {
                 12717,
             },
@@ -975,7 +975,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 87
+
             Done = {
                 12717,
             },
@@ -985,7 +985,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 88
+
             Qpart = {
                 [12720] = {
                     1,
@@ -1002,7 +1002,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 89
+
             Done = {
                 12720,
             },
@@ -1012,7 +1012,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 90
+
             PickUp = {
                 12723,
             },
@@ -1022,7 +1022,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 91
+
             Waypoint = 12723,
             Coord = {
                 y = 1754.3,
@@ -1032,7 +1032,7 @@ if (APR.Faction == "Alliance") then
             Range = 34.96,
         },
         {
-            -- Step 92
+
             Done = {
                 12723,
             },
@@ -1042,7 +1042,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 93
+
             PickUp = {
                 12724,
             },
@@ -1052,7 +1052,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 94
+
             Waypoint = 12724,
             Coord = {
                 y = 1649.3,
@@ -1062,7 +1062,7 @@ if (APR.Faction == "Alliance") then
             Range = 15.06,
         },
         {
-            -- Step 95
+
             Qpart = {
                 [12724] = {
                     1,
@@ -1076,7 +1076,7 @@ if (APR.Faction == "Alliance") then
             Range = 9.52,
         },
         {
-            -- Step 96
+
             Done = {
                 12724,
             },
@@ -1086,7 +1086,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 97
+
             PickUp = {
                 12725,
             },
@@ -1096,7 +1096,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 98
+
             Done = {
                 12725,
             },
@@ -1106,7 +1106,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 99
+
             PickUp = {
                 12727,
             },
@@ -1116,7 +1116,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 100
+
             Qpart = {
                 [12727] = {
                     1,
@@ -1130,7 +1130,7 @@ if (APR.Faction == "Alliance") then
             Range = 5.03,
         },
         {
-            -- Step 101
+
             Done = {
                 12727,
             },
@@ -1140,7 +1140,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 102
+
             PickUp = {
                 12738,
             },
@@ -1150,7 +1150,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 103
+
             Done = {
                 12738,
             },
@@ -1160,7 +1160,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 104
+
             PickUp = {
                 12742,
             },
@@ -1178,7 +1178,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 105
+
             Qpart = {
                 [12742] = {
                     1,
@@ -1200,7 +1200,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 106
+
             Done = {
                 12742,
             },
@@ -1218,7 +1218,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 107
+
             PickUp = {
                 12751,
             },
@@ -1228,7 +1228,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 108
+
             Done = {
                 12751,
             },
@@ -1238,7 +1238,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 109
+
             PickUp = {
                 12754,
             },
@@ -1248,7 +1248,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 110
+
             Qpart = {
                 [12754] = {
                     1,
@@ -1265,7 +1265,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 111
+
             Qpart = {
                 [12754] = {
                     2,
@@ -1279,7 +1279,7 @@ if (APR.Faction == "Alliance") then
             Range = 7.38,
         },
         {
-            -- Step 112
+
             Done = {
                 12754,
             },
@@ -1289,7 +1289,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 113
+
             PickUp = {
                 12755,
             },
@@ -1299,7 +1299,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 114
+
             Waypoint = 12755,
             Coord = {
                 y = 1296.4,
@@ -1309,7 +1309,7 @@ if (APR.Faction == "Alliance") then
             Range = 23.39,
         },
         {
-            -- Step 115
+
             Done = {
                 12755,
             },
@@ -1319,7 +1319,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 116
+
             PickUp = {
                 12756,
             },
@@ -1329,7 +1329,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 117
+
             Done = {
                 12756,
             },
@@ -1339,7 +1339,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 118
+
             PickUp = {
                 12757,
             },
@@ -1349,7 +1349,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 119
+
             Done = {
                 12757,
             },
@@ -1359,7 +1359,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 120
+
             PickUp = {
                 12778,
             },
@@ -1369,7 +1369,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 121
+
             Waypoint = 12778,
             Coord = {
                 y = 2349.3,
@@ -1379,7 +1379,7 @@ if (APR.Faction == "Alliance") then
             Range = 8.93,
         },
         {
-            -- Step 122
+
             Done = {
                 12778,
             },
@@ -1389,7 +1389,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 123
+
             PickUp = {
                 12779,
             },
@@ -1399,7 +1399,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 124
+
             Qpart = {
                 [12779] = {
                     2,
@@ -1417,7 +1417,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 125
+
             Done = {
                 12779,
             },
@@ -1427,7 +1427,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 126
+
             PickUp = {
                 12800,
             },
@@ -1437,7 +1437,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 127
+
             Waypoint = 12800,
             Coord = {
                 y = 2576.5,
@@ -1447,7 +1447,7 @@ if (APR.Faction == "Alliance") then
             Range = 26.3,
         },
         {
-            -- Step 128
+
             Waypoint = 12800,
             Coord = {
                 y = 2680.0,
@@ -1457,7 +1457,7 @@ if (APR.Faction == "Alliance") then
             Range = 33.13,
         },
         {
-            -- Step 129
+
             Done = {
                 12800,
             },
@@ -1467,7 +1467,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 130
+
             PickUp = {
                 12801,
             },
@@ -1477,7 +1477,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 131
+
             Qpart = {
                 [12801] = {
                     1,
@@ -1491,7 +1491,7 @@ if (APR.Faction == "Alliance") then
             Range = 35.57,
         },
         {
-            -- Step 132
+
             Done = {
                 12801,
             },
@@ -1501,7 +1501,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 133
+
             PickUp = {
                 13165,
             },
@@ -1511,7 +1511,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 134
+
             Done = {
                 13165,
             },
@@ -1521,7 +1521,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 135
+
             Done = {
                 13165,
             },
@@ -1531,7 +1531,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 136
+
             PickUp = {
                 13166,
             },
@@ -1541,7 +1541,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 137
+
             Waypoint = 13166,
             Coord = {
                 y = 2393.5,
@@ -1551,7 +1551,7 @@ if (APR.Faction == "Alliance") then
             Range = 8.99,
         },
         {
-            -- Step 138
+
             Qpart = {
                 [13166] = {
                     2,
@@ -1566,7 +1566,7 @@ if (APR.Faction == "Alliance") then
             Range = 10.18,
         },
         {
-            -- Step 139
+
             Waypoint = 13166,
             Coord = {
                 y = 2389.6,
@@ -1576,7 +1576,7 @@ if (APR.Faction == "Alliance") then
             Range = 5.88,
         },
         {
-            -- Step 140
+
             Done = {
                 13166,
             },
@@ -1586,7 +1586,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 141
+
             PickUp = {
                 13188,
             },
@@ -1596,7 +1596,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 142
+
             Waypoint = 13188,
             Coord = {
                 y = 2325.0,
@@ -1607,7 +1607,7 @@ if (APR.Faction == "Alliance") then
             ExtraLineText = "USE_PORTAL_STORMWIND",
         },
         {
-            -- Step 143
+
             Done = {
                 13188,
             },
@@ -1617,13 +1617,13 @@ if (APR.Faction == "Alliance") then
             },
             ExtraLineText = "MAKE_YOUR_WAY_KING_ANDUIN_AT_STORMWIND_KEEP",
         },
-        { -- Step 144
+        {
             ZoneDoneSave = 1,
         },
     }
     APR.RouteQuestStepList["A_Allied_Icecrown Citadel"] = {
         {
-            -- Step 1
+
             PickUp = {
                 58877,
             },
@@ -1633,7 +1633,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 1
+
             Qpart = {
                 [58877] = {
                     1,
@@ -1647,7 +1647,7 @@ if (APR.Faction == "Alliance") then
             Range = 0.5,
         },
         {
-            -- Step 3
+
             Done = {
                 58877,
             },
@@ -1657,7 +1657,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 4
+
             PickUp = {
                 58902,
             },
@@ -1667,7 +1667,7 @@ if (APR.Faction == "Alliance") then
             },
         },
         {
-            -- Step 5
+
             Qpart = {
                 [58902] = {
                     1,
@@ -1682,7 +1682,7 @@ if (APR.Faction == "Alliance") then
             Gossip = 1,
         },
         {
-            -- Step 6
+
             Qpart = {
                 [58902] = {
                     2,
@@ -1697,7 +1697,7 @@ if (APR.Faction == "Alliance") then
             ExtraLineText = "USE_PORTAL",
         },
         {
-            -- Step 7
+
             Qpart = {
                 [58902] = {
                     4,
@@ -1711,7 +1711,7 @@ if (APR.Faction == "Alliance") then
             Range = 0.5,
         },
         {
-            -- Step 8
+
             Done = {
                 58902,
             },
@@ -1720,7 +1720,7 @@ if (APR.Faction == "Alliance") then
                 x = 629.7,
             },
         },
-        { -- Step 9
+        {
             ZoneDoneSave = 1,
         },
     }
