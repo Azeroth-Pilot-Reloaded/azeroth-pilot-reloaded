@@ -251,7 +251,7 @@ if APR.Faction == "Horde" then
         { Qpart = { [59978] = { 1 } },        Gossip = 1,                         RaidIcon = 156943,                  Range = 0.69,                       Coord = { x = -2176.5, y = 324.6 } },
         { Qpart = { [59978] = { 2 } },        Range = 0.69,                       Coord = { x = -2044.8, y = 457.3 } },
         { Qpart = { [59978] = { 3 } },        Range = 0.75,                       Coord = { x = -2063, y = 575.4 } },
-        { Qpart = { [59978] = { 4 } },        Range = 0.75,                       Coord = { x = -2062.5, y = 586.4 } },
+        { Qpart = { [59978] = { 4 } },        Range = 0.75,                       Coord = { x = -2062.5, y = 586.4 }, Emote = "WAVE" },
         { Waypoint = 59978,                   Range = 11.9,                       Coord = { x = -2076.2, y = 619 } },
         { Qpart = { [59978] = { 6 } },        Range = 0.75,                       Coord = { x = -1893.6, y = 699 } },
         { Done = { 59978 },                   Coord = { x = -1876.8, y = 704.2 } },
