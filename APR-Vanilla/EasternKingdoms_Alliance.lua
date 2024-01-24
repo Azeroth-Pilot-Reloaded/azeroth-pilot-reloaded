@@ -59,9 +59,6 @@ APR.RouteQuestStepList["A27-ColdridgeValleyDwarf"] = {
                 1,
             },
         },
-        ButtonSpellId = {
-            [69855] = "24471-1",
-        },
         Button = {
             ["24471-1"] = 49743,
         },
@@ -11038,9 +11035,6 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
                 1,
             },
         },
-        ButtonSpellId = {
-            [77314] = "25792-1",
-        },
         Fillers = {
             [412] = {
                 1,
@@ -11166,9 +11160,6 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
                 1,
             },
         },
-        ButtonSpellId = {
-            [93773] = "28868-1",
-        },
         Button = {
             ["25841-1"] = 56048,
             ["28868-1"] = 67249,
@@ -11208,9 +11199,6 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
                 2,
             },
         },
-        ButtonSpellId = {
-            [77488] = "25841-2",
-        },
         Fillers = {
             [25840] = {
                 2,
@@ -11237,9 +11225,6 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             [25840] = {
                 2,
             },
-        },
-        ButtonSpellId = {
-            [93773] = "28868-1",
         },
         Button = {
             ["28868-1"] = 67249,
@@ -11464,9 +11449,6 @@ APR.RouteQuestStepList["A27-Kharanos"] = {
             [433] = {
                 1,
             },
-        },
-        ButtonSpellId = {
-            [77819] = "433-1",
         },
         Fillers = {
             [432] = {
@@ -15400,9 +15382,6 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
                 1,
             },
         },
-        ButtonSpellId = {
-            [80782] = "26546-1",
-        },
         Button = {
             ["26546-1"] = 58935,
         },
@@ -15787,9 +15766,6 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
                 1,
                 2,
             },
-        },
-        ButtonSpellId = {
-            [79513] = "26521-1",
         },
         Button = {
             ["26521-1"] = 58209,
@@ -16218,9 +16194,6 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
                 1,
             },
         },
-        ButtonSpellId = {
-            [80469] = "26531-1",
-        },
         Button = {
             ["26531-1"] = 58784,
         },
@@ -16236,9 +16209,6 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
                 3,
             },
         },
-        ButtonSpellId = {
-            [80469] = "26531-3",
-        },
         Button = {
             ["26531-3"] = 58784,
         },
@@ -16253,9 +16223,6 @@ APR.RouteQuestStepList["A26-TheHinterlands"] = {
             [26531] = {
                 2,
             },
-        },
-        ButtonSpellId = {
-            [80469] = "26531-2",
         },
         Button = {
             ["26531-2"] = 58784,

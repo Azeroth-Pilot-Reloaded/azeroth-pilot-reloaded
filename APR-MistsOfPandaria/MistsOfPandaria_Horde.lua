@@ -119,9 +119,6 @@ if (APR.Faction == "Horde") then
 					1,
 				},
 			},
-			ButtonSpellId = {
-				[130415] = "31768-1",
-			},
 			Button = {
 				["31768-1"] = 89605,
 			},
@@ -164,9 +161,6 @@ if (APR.Faction == "Horde") then
 					1,
 				},
 			},
-			ButtonSpellId = {
-				[130871] = "31769-1",
-			},
 			Button = {
 				["31769-1"] = 89769,
 			},
@@ -196,9 +190,6 @@ if (APR.Faction == "Horde") then
 				[31769] = {
 					3,
 				},
-			},
-			ButtonSpellId = {
-				[130871] = "31769-3",
 			},
 			Button = {
 				["31769-3"] = 89769,
@@ -659,9 +650,6 @@ if (APR.Faction == "Horde") then
 				},
 			},
 			Gossip = 1,
-			ButtonSpellId = {
-				[129586] = "31777-1",
-			},
 			Button = {
 				["31777-1"] = 89163,
 			},
@@ -1414,9 +1402,6 @@ if (APR.Faction == "Horde") then
 					1,
 				},
 			},
-			ButtonSpellId = {
-				[105999] = "29939-1",
-			},
 			Button = {
 				["29939-1"] = 76262,
 			},
@@ -1531,9 +1516,6 @@ if (APR.Faction == "Horde") then
 					1,
 					2,
 				},
-			},
-			ButtonSpellId = {
-				[113285] = "30460-1",
 			},
 			Button = {
 				["30460-1"] = 79819,
@@ -2192,9 +2174,6 @@ if (APR.Faction == "Horde") then
 				[30655] = {
 					1,
 				},
-			},
-			ButtonSpellId = {
-				[115550] = "30656-2",
 			},
 			Button = {
 				["30656-2"] = 80528,

@@ -639,12 +639,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Button = {
             ["49493-1"] = 155458,
         },
-        ButtonSpellId = {
-            [257795] = "49493-1",
-        },
-        ButtonCooldown = {
-            [257795] = 3,
-        },
     },
     {
         Qpart = {
@@ -663,12 +657,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Button = {
             ["49493-1"] = 155458,
         },
-        ButtonSpellId = {
-            [257795] = "49493-1",
-        },
-        ButtonCooldown = {
-            [257795] = 3,
-        },
         Range = 11.15,
         Coord = {
             x = 217.6,
@@ -686,12 +674,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Button = {
             ["49493-1"] = 155458,
-        },
-        ButtonSpellId = {
-            [257795] = "49493-1",
-        },
-        ButtonCooldown = {
-            [257795] = 3,
         },
         Range = 19.4,
         Coord = {
@@ -2331,12 +2313,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Button = {
             ["47423-1"] = 152627,
         },
-        ButtonSpellId = {
-            [251685] = "47423-1",
-        },
-        ButtonCooldown = {
-            [251685] = 5,
-        },
         Range = 159,
         Coord = {
             x = 887.1,
@@ -2957,12 +2933,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Button = {
             ["49810-1"] = 155911,
         },
-        ButtonSpellId = {
-            [259041] = "49810-1",
-        },
-        ButtonCooldown = {
-            [259041] = 10,
-        },
         Range = 0.69,
         Coord = {
             x = 374,
@@ -2977,12 +2947,6 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         },
         Button = {
             ["49810-2"] = 155911,
-        },
-        ButtonSpellId = {
-            [259041] = "49810-2",
-        },
-        ButtonCooldown = {
-            [259041] = 10,
         },
         Range = 0.69,
         Coord = {
@@ -6635,8 +6599,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         Done = {
             50963,
         },
-        LeaveQuest = 52210,
-        LeaveQuest = 49901,
+        LeaveQuests = { 52210, 49901 },
         Coord = {
             x = 819.2,
             y = -1120.4,
@@ -6646,8 +6609,7 @@ APR.RouteQuestStepList["862-Zuldazar-1"] = {
         PickUp = {
             47512,
         },
-        LeaveQuest = 52210,
-        LeaveQuest = 49901,
+        LeaveQuests = { 52210, 49901 },
         Coord = {
             x = 820,
             y = -1122.8,
@@ -6798,12 +6760,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["47130-1"] = 154724,
-        },
-        ButtonSpellId = {
-            [241992] = "47130-1",
-        },
-        ButtonCooldown = {
-            [241992] = 5,
         },
         Range = 34.06,
         Coord = {
@@ -7013,12 +6969,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["48573-1"] = 152596,
         },
-        ButtonSpellId = {
-            [251503] = "48573-1",
-        },
-        ButtonCooldown = {
-            [251503] = 5,
-        },
         Range = 32.45,
         Coord = {
             x = 1481.2,
@@ -7063,12 +7013,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["48576-1"] = 152610,
         },
-        ButtonSpellId = {
-            [251559] = "48576-1",
-        },
-        ButtonCooldown = {
-            [251559] = 5,
-        },
         Range = 15.15,
         Coord = {
             x = 1655,
@@ -7086,12 +7030,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["48576-1"] = 152610,
-        },
-        ButtonSpellId = {
-            [251559] = "48576-1",
-        },
-        ButtonCooldown = {
-            [251559] = 5,
         },
         Range = 38.31,
         Coord = {
@@ -7138,12 +7076,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["48584-1"] = 156618,
         },
-        ButtonSpellId = {
-            [260060] = "48584-1",
-        },
-        ButtonCooldown = {
-            [260060] = 5,
-        },
         Range = 0.75,
         Coord = {
             x = 1935.9,
@@ -7166,12 +7098,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["48584-1"] = 156618,
-        },
-        ButtonSpellId = {
-            [260060] = "48584-1",
-        },
-        ButtonCooldown = {
-            [260060] = 5,
         },
         Range = 0.69,
         Coord = {
@@ -7196,12 +7122,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["48584-1"] = 156618,
         },
-        ButtonSpellId = {
-            [260060] = "48584-1",
-        },
-        ButtonCooldown = {
-            [260060] = 5,
-        },
         Range = 0.75,
         Coord = {
             x = 1815.5,
@@ -7221,12 +7141,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["48584-1"] = 156618,
-        },
-        ButtonSpellId = {
-            [260060] = "48584-1",
-        },
-        ButtonCooldown = {
-            [260060] = 5,
         },
         Range = 55.8,
         Coord = {
@@ -7370,12 +7284,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["48468-1"] = 153178,
         },
-        ButtonSpellId = {
-            [250353] = "48468-1",
-        },
-        ButtonCooldown = {
-            [250353] = 5,
-        },
         Range = 22.74,
         Coord = {
             x = 1339.2,
@@ -7411,12 +7319,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["48478-2"] = 154130,
         },
-        ButtonSpellId = {
-            [256697] = "48478-2",
-        },
-        ButtonCooldown = {
-            [256697] = 5,
-        },
         Fillers = {
             [48479] = {
                 1,
@@ -7437,12 +7339,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["48478-3"] = 154130,
         },
-        ButtonSpellId = {
-            [256697] = "48478-3",
-        },
-        ButtonCooldown = {
-            [256697] = 5,
-        },
         Fillers = {
             [48479] = {
                 1,
@@ -7462,12 +7358,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["48478-1"] = 154130,
-        },
-        ButtonSpellId = {
-            [256697] = "48478-1",
-        },
-        ButtonCooldown = {
-            [256697] = 5,
         },
         Fillers = {
             [48479] = {
@@ -7767,12 +7657,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["48823-2"] = 152727,
         },
-        ButtonSpellId = {
-            [252718] = "48823-2",
-        },
-        ButtonCooldown = {
-            [252718] = 5,
-        },
         Range = 13.42,
         Coord = {
             x = 1709.9,
@@ -7792,12 +7676,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["48823-2"] = 152727,
-        },
-        ButtonSpellId = {
-            [252718] = "48823-2",
-        },
-        ButtonCooldown = {
-            [252718] = 5,
         },
         Range = 25.48,
         Coord = {
@@ -8564,12 +8442,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["49078-1"] = 153012,
         },
-        ButtonSpellId = {
-            [254104] = "49078-1",
-        },
-        ButtonCooldown = {
-            [254104] = 2,
-        },
         Range = 4.35,
         Coord = {
             x = 1679.5,
@@ -8592,12 +8464,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["49078-1"] = 153012,
-        },
-        ButtonSpellId = {
-            [254104] = "49078-1",
-        },
-        ButtonCooldown = {
-            [254104] = 2,
         },
         Range = 3.3,
         Coord = {
@@ -8622,12 +8488,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["49078-1"] = 153012,
         },
-        ButtonSpellId = {
-            [254104] = "49078-1",
-        },
-        ButtonCooldown = {
-            [254104] = 2,
-        },
         Range = 4.45,
         Coord = {
             x = 1822.9,
@@ -8647,12 +8507,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["49078-1"] = 153012,
-        },
-        ButtonSpellId = {
-            [254104] = "49078-1",
-        },
-        ButtonCooldown = {
-            [254104] = 2,
         },
         Range = 9.51,
         Coord = {
@@ -9354,12 +9208,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["47924-1"] = 151849,
         },
-        ButtonSpellId = {
-            [248193] = "47924-1",
-        },
-        ButtonCooldown = {
-            [248193] = 5,
-        },
         Range = 28.9,
         Coord = {
             x = 677.7,
@@ -9596,12 +9444,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["49071-1"] = 153024,
         },
-        ButtonSpellId = {
-            [254180] = "49071-1",
-        },
-        ButtonCooldown = {
-            [254180] = 5,
-        },
         Range = 49.83,
         Coord = {
             x = 319.3,
@@ -9624,12 +9466,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["49071-1"] = 153024,
-        },
-        ButtonSpellId = {
-            [254180] = "49071-1",
-        },
-        ButtonCooldown = {
-            [254180] = 5,
         },
         Range = 5.04,
         Coord = {
@@ -9705,12 +9541,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["49125-1"] = 160559,
         },
-        ButtonSpellId = {
-            [272476] = "49125-1",
-        },
-        ButtonCooldown = {
-            [272476] = 5,
-        },
         Range = 0.75,
         Coord = {
             x = 176,
@@ -9730,12 +9560,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["49125-1"] = 160559,
-        },
-        ButtonSpellId = {
-            [272476] = "49125-1",
-        },
-        ButtonCooldown = {
-            [272476] = 5,
         },
         Range = 12.28,
         Coord = {
@@ -9903,12 +9727,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["49160-1"] = 153131,
-        },
-        ButtonSpellId = {
-            [254396] = "49160-1",
-        },
-        ButtonCooldown = {
-            [254396] = 60,
         },
         Range = 01,
         Coord = {
@@ -10225,12 +10043,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["47622-1"] = 151237,
         },
-        ButtonSpellId = {
-            [246096] = "47622-1",
-        },
-        ButtonCooldown = {
-            [246096] = 3,
-        },
         Range = 58.44,
         Coord = {
             x = -419.8,
@@ -10263,12 +10075,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["48090-3"] = 158071,
         },
-        ButtonSpellId = {
-            [248921] = "48090-3",
-        },
-        ButtonCooldown = {
-            [248921] = 5,
-        },
         Range = 0.61,
         Coord = {
             x = -722.7,
@@ -10289,12 +10095,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["48090-1"] = 158071,
-        },
-        ButtonSpellId = {
-            [248921] = "48090-1",
-        },
-        ButtonCooldown = {
-            [248921] = 5,
         },
         Range = 0.69,
         Coord = {
@@ -10334,12 +10134,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["48090-2"] = 158071,
-        },
-        ButtonSpellId = {
-            [248921] = "48090-2",
-        },
-        ButtonCooldown = {
-            [248921] = 5,
         },
         Range = 0.69,
         Coord = {
@@ -11411,12 +11205,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["49956-1"] = 156542,
         },
-        ButtonSpellId = {
-            [259527] = "49956-1",
-        },
-        ButtonCooldown = {
-            [259527] = 2,
-        },
         Range = 21.05,
         Coord = {
             x = -262.8,
@@ -11726,12 +11514,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["50079-1"] = 156847,
         },
-        ButtonSpellId = {
-            [261695] = "50079-1",
-        },
-        ButtonCooldown = {
-            [261695] = 5,
-        },
         Range = 11.83,
         Coord = {
             x = 1103.5,
@@ -11752,12 +11534,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         Button = {
             ["50079-2"] = 156847,
         },
-        ButtonSpellId = {
-            [261695] = "50079-2",
-        },
-        ButtonCooldown = {
-            [261695] = 5,
-        },
         Range = 13.14,
         Coord = {
             x = 1123,
@@ -11777,12 +11553,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["50079-3"] = 156847,
-        },
-        ButtonSpellId = {
-            [261695] = "50079-3",
-        },
-        ButtonCooldown = {
-            [261695] = 5,
         },
         Range = 11.21,
         Coord = {
@@ -11955,12 +11725,6 @@ APR.RouteQuestStepList["863-Nazmir"] = {
         },
         Button = {
             ["50085-1"] = 156931,
-        },
-        ButtonSpellId = {
-            [262125] = "50085-1",
-        },
-        ButtonCooldown = {
-            [262125] = 5,
         },
         Range = 24.94,
         Coord = {
@@ -13944,12 +13708,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         Button = {
             ["48532-1"] = 152570,
         },
-        ButtonSpellId = {
-            [251267] = "48532-1",
-        },
-        ButtonCooldown = {
-            [251267] = 5,
-        },
     },
     {
         Qpart = {
@@ -13966,12 +13724,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         Button = {
             ["48532-1"] = 152570,
         },
-        ButtonSpellId = {
-            [251267] = "48532-1",
-        },
-        ButtonCooldown = {
-            [251267] = 5,
-        },
         Range = 26.52,
         Coord = {
             x = 3935.6,
@@ -13986,12 +13738,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
         Button = {
             ["48533-1"] = 152572,
-        },
-        ButtonSpellId = {
-            [251288] = "48533-1",
-        },
-        ButtonCooldown = {
-            [251288] = 2,
         },
         Range = 18.77,
         Coord = {
@@ -14781,12 +14527,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         Button = {
             ["51057-1"] = 159774,
         },
-        ButtonSpellId = {
-            [268665] = "51057-1",
-        },
-        ButtonCooldown = {
-            [268665] = 3,
-        },
     },
     {
 
@@ -14808,12 +14548,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
         Button = {
             ["51057-1"] = 159774,
-        },
-        ButtonSpellId = {
-            [268665] = "51057-1",
-        },
-        ButtonCooldown = {
-            [268665] = 3,
         },
         Range = 7.81,
         Coord = {
@@ -14842,12 +14576,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         Button = {
             ["51057-1"] = 159774,
         },
-        ButtonSpellId = {
-            [268665] = "51057-1",
-        },
-        ButtonCooldown = {
-            [268665] = 3,
-        },
         Range = 9.07,
         Coord = {
             x = 4349.2,
@@ -14875,12 +14603,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         Button = {
             ["51057-1"] = 159774,
         },
-        ButtonSpellId = {
-            [268665] = "51057-1",
-        },
-        ButtonCooldown = {
-            [268665] = 3,
-        },
         Range = 9.5,
         Coord = {
             x = 4440.1,
@@ -14905,12 +14627,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         Button = {
             ["51057-1"] = 159774,
         },
-        ButtonSpellId = {
-            [268665] = "51057-1",
-        },
-        ButtonCooldown = {
-            [268665] = 3,
-        },
         Range = 1.1,
         Coord = {
             x = 4525.7,
@@ -14934,12 +14650,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
         Button = {
             ["51057-1"] = 159774,
-        },
-        ButtonSpellId = {
-            [268665] = "51057-1",
-        },
-        ButtonCooldown = {
-            [268665] = 3,
         },
         Range = 5.1,
         Coord = {
@@ -14967,12 +14677,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         Button = {
             ["51057-1"] = 159774,
         },
-        ButtonSpellId = {
-            [268665] = "51057-1",
-        },
-        ButtonCooldown = {
-            [268665] = 3,
-        },
     },
     {
 
@@ -14986,12 +14690,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
         Button = {
             ["51057-1"] = 159774,
-        },
-        ButtonSpellId = {
-            [268665] = "51057-1",
-        },
-        ButtonCooldown = {
-            [268665] = 5,
         },
         Range = 298.17,
         Coord = {
@@ -15980,12 +15678,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         Button = {
             ["49666-1"] = 158884,
         },
-        ButtonSpellId = {
-            [272019] = "49666-1",
-        },
-        ButtonCooldown = {
-            [272019] = 5,
-        },
         Range = 11.56,
         Coord = {
             x = 3388.1,
@@ -16005,12 +15697,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         Gossip = 1,
         Button = {
             ["49666-1"] = 158884,
-        },
-        ButtonSpellId = {
-            [272019] = "49666-1",
-        },
-        ButtonCooldown = {
-            [272019] = 5,
         },
         Range = 34.99,
         Coord = {
@@ -16107,12 +15793,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         Button = {
             ["49668-1"] = 158896,
         },
-        ButtonSpellId = {
-            [265957] = "49668-1",
-        },
-        ButtonCooldown = {
-            [265957] = 15,
-        },
         Range = 10.43,
         Coord = {
             x = 3238.1,
@@ -16128,12 +15808,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         Button = {
             ["49668-2"] = 158896,
         },
-        ButtonSpellId = {
-            [265957] = "49668-2",
-        },
-        ButtonCooldown = {
-            [265957] = 15,
-        },
         Range = 13.92,
         Coord = {
             x = 3130.1,
@@ -16148,12 +15822,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
         Button = {
             ["49668-3"] = 158896,
-        },
-        ButtonSpellId = {
-            [265957] = "49668-3",
-        },
-        ButtonCooldown = {
-            [265957] = 15,
         },
         Range = 16.88,
         Coord = {
@@ -16544,12 +16212,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         },
         Button = {
             ["49002-1"] = 154893,
-        },
-        ButtonSpellId = {
-            [257490] = "49002-1",
-        },
-        ButtonCooldown = {
-            [257490] = 5,
         },
         Range = 15.79,
         Coord = {

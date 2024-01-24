@@ -4777,12 +4777,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         Button = {
             ["47755-1"] = 151135,
         },
-        ButtonSpellId = {
-            [246282] = "47755-1",
-        },
-        ButtonCooldown = {
-            [246282] = 5,
-        },
     },
     {
 
@@ -4801,12 +4795,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         Button = {
             ["47755-1"] = 151135,
-        },
-        ButtonSpellId = {
-            [246282] = "47755-1",
-        },
-        ButtonCooldown = {
-            [246282] = 5,
         },
         Range = 10.35,
         Coord = {
@@ -4831,12 +4819,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         Button = {
             ["47755-1"] = 151135,
-        },
-        ButtonSpellId = {
-            [246282] = "47755-1",
-        },
-        ButtonCooldown = {
-            [246282] = 5,
         },
         Range = 0.75,
         Coord = {
@@ -4864,12 +4846,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         Button = {
             ["47755-1"] = 151135,
         },
-        ButtonSpellId = {
-            [246282] = "47755-1",
-        },
-        ButtonCooldown = {
-            [246282] = 5,
-        },
     },
     {
 
@@ -4891,12 +4867,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         Button = {
             ["47755-1"] = 151135,
         },
-        ButtonSpellId = {
-            [246282] = "47755-1",
-        },
-        ButtonCooldown = {
-            [246282] = 5,
-        },
     },
     {
 
@@ -4915,12 +4885,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         Button = {
             ["47755-1"] = 151135,
-        },
-        ButtonSpellId = {
-            [246282] = "47755-1",
-        },
-        ButtonCooldown = {
-            [246282] = 5,
         },
         RaidIcon = 131748,
         Range = 21.08,
@@ -4949,12 +4913,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         Button = {
             ["47755-1"] = 151135,
         },
-        ButtonSpellId = {
-            [246282] = "47755-1",
-        },
-        ButtonCooldown = {
-            [246282] = 5,
-        },
     },
     {
 
@@ -4973,12 +4931,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         Button = {
             ["47755-1"] = 151135,
-        },
-        ButtonSpellId = {
-            [246282] = "47755-1",
-        },
-        ButtonCooldown = {
-            [246282] = 5,
         },
     },
     {
@@ -7298,12 +7250,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         Button = {
             ["49402-1"] = 154878,
         },
-        ButtonSpellId = {
-            [257294] = "49402-1",
-        },
-        ButtonCooldown = {
-            [257294] = 1,
-        },
         Range = 7.63,
         Coord = {
             x = -686,
@@ -7318,12 +7264,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         Button = {
             ["49402-1"] = 154878,
-        },
-        ButtonSpellId = {
-            [257294] = "49402-1",
-        },
-        ButtonCooldown = {
-            [257294] = 1,
         },
         Range = 34.95,
         Coord = {
@@ -8348,12 +8288,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         Button = {
             ["49736-1"] = 156520,
         },
-        ButtonSpellId = {
-            [259360] = "49736-1",
-        },
-        ButtonCooldown = {
-            [259360] = 20,
-        },
     },
     {
         Waypoint = 49741,
@@ -8372,12 +8306,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         Button = {
             ["49736-1"] = 156520,
-        },
-        ButtonSpellId = {
-            [259360] = "49736-1",
-        },
-        ButtonCooldown = {
-            [259360] = 20,
         },
     },
     {
@@ -8402,12 +8330,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         Button = {
             ["49736-1"] = 156520,
         },
-        ButtonSpellId = {
-            [259360] = "49736-1",
-        },
-        ButtonCooldown = {
-            [259360] = 20,
-        },
     },
     {
         Qpart = {
@@ -8431,12 +8353,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         Button = {
             ["49736-1"] = 156520,
         },
-        ButtonSpellId = {
-            [259360] = "49736-1",
-        },
-        ButtonCooldown = {
-            [259360] = 20,
-        },
     },
     {
         Fillers = {
@@ -8451,12 +8367,6 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         },
         Button = {
             ["49736-1"] = 156520,
-        },
-        ButtonSpellId = {
-            [259360] = "49736-1",
-        },
-        ButtonCooldown = {
-            [259360] = 20,
         },
         Range = 13.19,
         Coord = {
@@ -9100,12 +9010,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         Button = {
             ["49791-1"] = 155919,
         },
-        ButtonSpellId = {
-            [259044] = "49791-1",
-        },
-        ButtonCooldown = {
-            [259044] = 3,
-        },
         Range = 0.69,
         Coord = {
             x = -329.9,
@@ -9147,12 +9051,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         Button = {
             ["49791-1"] = 155919,
         },
-        ButtonSpellId = {
-            [259044] = "49791-1",
-        },
-        ButtonCooldown = {
-            [259044] = 3,
-        },
         Range = 0.75,
         Coord = {
             x = -247.2,
@@ -9175,12 +9073,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         Button = {
             ["49791-1"] = 155919,
-        },
-        ButtonSpellId = {
-            [259044] = "49791-1",
-        },
-        ButtonCooldown = {
-            [259044] = 3,
         },
         Range = 0.75,
         Coord = {
@@ -9206,12 +9098,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         Button = {
             ["49791-1"] = 155919,
         },
-        ButtonSpellId = {
-            [259044] = "49791-1",
-        },
-        ButtonCooldown = {
-            [259044] = 3,
-        },
     },
     {
         Qpart = {
@@ -9229,12 +9115,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         Button = {
             ["49791-1"] = 155919,
-        },
-        ButtonSpellId = {
-            [259044] = "49791-1",
-        },
-        ButtonCooldown = {
-            [259044] = 3,
         },
         Range = 4.25,
         Coord = {
@@ -9259,12 +9139,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         Button = {
             ["49791-1"] = 155919,
         },
-        ButtonSpellId = {
-            [259044] = "49791-1",
-        },
-        ButtonCooldown = {
-            [259044] = 3,
-        },
         Range = 5.79,
         Coord = {
             x = -449.4,
@@ -9282,12 +9156,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         Button = {
             ["49791-1"] = 155919,
-        },
-        ButtonSpellId = {
-            [259044] = "49791-1",
-        },
-        ButtonCooldown = {
-            [259044] = 3,
         },
         Range = 15.09,
         Coord = {
@@ -9324,12 +9192,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         Button = {
             ["49975-1"] = 157859,
-        },
-        ButtonSpellId = {
-            [259575] = "49975-1",
-        },
-        ButtonCooldown = {
-            [259575] = 30,
         },
         Range = 6.66,
         Coord = {
@@ -10076,12 +9938,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         Button = {
             ["50594-1"] = 158211,
         },
-        ButtonSpellId = {
-            [264859] = "50594-1",
-        },
-        ButtonCooldown = {
-            [264859] = 3,
-        },
         Fillers = {
             [50595] = {
                 1,
@@ -10111,12 +9967,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         Button = {
             ["50594-2"] = 158211,
         },
-        ButtonSpellId = {
-            [264859] = "50594-2",
-        },
-        ButtonCooldown = {
-            [264859] = 3,
-        },
         Fillers = {
             [50595] = {
                 1,
@@ -10145,12 +9995,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         Button = {
             ["50594-3"] = 158211,
-        },
-        ButtonSpellId = {
-            [264859] = "50594-3",
-        },
-        ButtonCooldown = {
-            [264859] = 3,
         },
         Fillers = {
             [50595] = {
@@ -10235,12 +10079,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         Button = {
             ["50608-2"] = 158465,
         },
-        ButtonSpellId = {
-            [265333] = "50608-2",
-        },
-        ButtonCooldown = {
-            [265333] = 3,
-        },
         Fillers = {
             [50610] = {
                 1,
@@ -10280,12 +10118,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         Button = {
             ["50608-2"] = 158465,
         },
-        ButtonSpellId = {
-            [265333] = "50608-2",
-        },
-        ButtonCooldown = {
-            [265333] = 3,
-        },
     },
     {
         Qpart = {
@@ -10299,12 +10131,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         Button = {
             ["50608-2"] = 158465,
-        },
-        ButtonSpellId = {
-            [265333] = "50608-2",
-        },
-        ButtonCooldown = {
-            [265333] = 3,
         },
         Range = 23.17,
         Coord = {
@@ -10708,12 +10534,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         Button = {
             ["51319-1"] = 160056,
         },
-        ButtonSpellId = {
-            [270149] = "51319-1",
-        },
-        ButtonCooldown = {
-            [270149] = 10,
-        },
         Range = 0.61,
         Coord = {
             x = -869.2,
@@ -11024,12 +10844,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         Button = {
             ["50908-1"] = 159144,
         },
-        ButtonSpellId = {
-            [266966] = "50908-1",
-        },
-        ButtonCooldown = {
-            [266966] = 10,
-        },
         Range = 10.59,
         Coord = {
             x = 121,
@@ -11092,12 +10906,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         Button = {
             ["50908-2"] = 159144,
-        },
-        ButtonSpellId = {
-            [266966] = "50908-2",
-        },
-        ButtonCooldown = {
-            [266966] = 10,
         },
         Range = 7.51,
         Coord = {
@@ -12194,12 +12002,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         },
         Button = {
             ["51728-2"] = 160604,
-        },
-        ButtonSpellId = {
-            [273279] = "51728-2",
-        },
-        ButtonCooldown = {
-            [273279] = 5,
         },
         Range = 15.38,
         Coord = {
@@ -14285,14 +14087,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
             ["51207-1"] = 160052,
             ["51209-1"] = 160063,
         },
-        ButtonSpellId = {
-            [270020] = "51207-1",
-            [270163] = "51209-1",
-        },
-        ButtonCooldown = {
-            [270020] = 15,
-            [270163] = 30,
-        },
     },
     {
         PickUp = {
@@ -14350,14 +14144,6 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
         Button = {
             ["51207-1"] = 160052,
             ["51209-1"] = 160063,
-        },
-        ButtonSpellId = {
-            [270020] = "51207-1",
-            [270163] = "51209-1",
-        },
-        ButtonCooldown = {
-            [270020] = 15,
-            [270163] = 30,
         },
         Range = 31.49,
         Coord = {
@@ -16910,12 +16696,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         Button = {
             ["48521-1"] = 152590,
         },
-        ButtonSpellId = {
-            [251385] = "48521-1",
-        },
-        ButtonCooldown = {
-            [251385] = 5,
-        },
         Range = 3.23,
         Coord = {
             x = 1255.7,
@@ -16939,12 +16719,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         Button = {
             ["48521-1"] = 152590,
         },
-        ButtonSpellId = {
-            [251385] = "48521-1",
-        },
-        ButtonCooldown = {
-            [251385] = 5,
-        },
         Range = 2.44,
         Coord = {
             x = 1371.3,
@@ -16959,12 +16733,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         Button = {
             ["48521-1"] = 152590,
-        },
-        ButtonSpellId = {
-            [251385] = "48521-1",
-        },
-        ButtonCooldown = {
-            [251385] = 5,
         },
         DroppableQuest = {
             Text = "Sister Ashwell",
@@ -18524,12 +18292,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         Button = {
             ["49807-1"] = 156532,
         },
-        ButtonSpellId = {
-            [259502] = "49807-1",
-        },
-        ButtonCooldown = {
-            [259502] = 5,
-        },
         Range = 5.55,
         Coord = {
             x = 3188.1,
@@ -18545,12 +18307,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         },
         Button = {
             ["49807-2"] = 156532,
-        },
-        ButtonSpellId = {
-            [259502] = "49807-2",
-        },
-        ButtonCooldown = {
-            [259502] = 5,
         },
         Range = 5.24,
         Coord = {
@@ -19356,12 +19112,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
         Button = {
             ["50063-1"] = 156710,
         },
-        ButtonSpellId = {
-            [260705] = "50063-1",
-        },
-        ButtonCooldown = {
-            [260705] = 5,
-        },
         Range = 17.74,
         Coord = {
             x = 3889.6,
@@ -19807,14 +19557,6 @@ APR.RouteQuestStepList["A896-Dustvar"] = {
             ["50329-1"] = 158175,
             ["50329-2"] = 158175,
             ["50329-3"] = 158175,
-        },
-        ButtonSpellId = {
-            [264218] = "50329-1",
-            [264218] = "50329-2",
-            [264218] = "50329-3",
-        },
-        ButtonCooldown = {
-            [264218] = 5,
         },
         Fillers = {
             [50530] = {

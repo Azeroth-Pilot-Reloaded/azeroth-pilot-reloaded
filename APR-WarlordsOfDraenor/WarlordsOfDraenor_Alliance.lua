@@ -621,9 +621,6 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
                 1,
             },
         },
-        ButtonSpellId = {
-            [159904] = "34478-1",
-        },
         Button = {
             ["34478-1"] = 110799,
         },
@@ -1455,7 +1452,7 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
             x = 264,
         },
         Done = {
-            34586, 
+            34586,
         },
     },
     {
