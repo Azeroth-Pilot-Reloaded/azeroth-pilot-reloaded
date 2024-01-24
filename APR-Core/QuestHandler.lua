@@ -1105,17 +1105,18 @@ local function APR_PopupFunc()
     end
 end
 
-function APR_UpdQuestThing()
+local function DoEmoteStep()
     local npc_id, name = GetTargetID(), UnitName("target")
-    if (npc_id and name) then
-        if (APR.ActiveQuests and APR.ActiveQuests["55981-3"] and APR.ActiveQuests["55981-3"] ~= "C" and npc_id == 153580) then
-            DoEmote("HUG")
-        elseif (APR.ActiveQuests and APR.ActiveQuests["55981-4"] and APR.ActiveQuests["55981-4"] ~= "C" and npc_id == 153580) then
-            DoEmote("WAVE")
-        elseif (APR.ActiveQuests and APR.ActiveQuests["59978-4"] and APR.ActiveQuests["59978-4"] ~= "C" and npc_id == 153580) then
-            DoEmote("WAVE")
+    local step = GetSteps(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
+    if npc_id and name and step and step.Emote then
+        if npc_id == 153580 then
+            DoEmote(step.Emote)
         end
     end
+end
+
+function APR_UpdQuestThing(step)
+    DoEmoteStep()
     _G.UpdateQuestAndStep()
     Updateblock = 0
     if (APR.settings.profile.debug) then
@@ -1234,17 +1235,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             APR.currentStep:UpdateStepButtonCooldowns()
         end
     end
-    if (event == "PLAYER_TARGET_CHANGED") then -- //TODO rework for custom target and action
-        local npc_id, name = GetTargetID(), UnitName("target")
-        if (npc_id and name) then
-            if (APR.ActiveQuests and APR.ActiveQuests["55981-3"] and APR.ActiveQuests["55981-3"] ~= "C" and npc_id == 153580) then
-                DoEmote("HUG")
-            elseif (APR.ActiveQuests and APR.ActiveQuests["55981-4"] and APR.ActiveQuests["55981-4"] ~= "C" and npc_id == 153580) then
-                DoEmote("WAVE")
-            elseif (APR.ActiveQuests and APR.ActiveQuests["59978-4"] and APR.ActiveQuests["59978-4"] ~= "C" and npc_id == 153580) then
-                DoEmote("WAVE")
-            end
-        end
+    if (event == "PLAYER_TARGET_CHANGED") then
+        DoEmoteStep()
     end
     if (event == "CHAT_MSG_COMBAT_XP_GAIN") then
         if (steps and steps.Treasure) then
@@ -1453,7 +1445,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "MERCHANT_SHOW") then
         if IsModifierKeyDown() then return end
         if (steps and steps.BuyMerchant) then
-            C_Timer.After(0.2, APR_BuyMerchFunc(steps.BuyMerchant))
+            APR_BuyMerchFunc(steps.BuyMerchant)
         end
         if (APR.settings.profile.autoRepair) then
             if (CanMerchantRepair()) then
