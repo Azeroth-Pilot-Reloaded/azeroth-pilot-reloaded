@@ -32,17 +32,6 @@ local APR_HSSpellIDs = {
     308742,
 }
 
--- //TODO create step option for emote
--- //TODO create step option for emote + trigger
-local APR_GigglingBasket = {
-    [L["GIGGLING_BASKET_ONE_TIME"]] = "cheer",
-    [L["GIGGLING_BASKET_SPRIGGANS"]] = "flex",
-    [L["GIGGLING_BASKET_MANY"]] = "thank",
-    [L["GIGGLING_BASKET_FAE"]] = "introduce",
-    [L["GIGGLING_BASKET_FEET"]] = "dance",
-    [L["GIGGLING_BASKET_HELP"]] = "praise",
-}
-
 -- //TODO check what is that shit
 local APR_BonusObj = {
     ---- WoD Bonus Obj ----
@@ -1734,14 +1723,28 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             end
         end
     end
-    if (event == "CHAT_MSG_MONSTER_SAY") then -- //TODO rework chat quest message for all languages
-        local arg1, arg2, arg3, arg4 = ...;
+    if (event == "CHAT_MSG_MONSTER_SAY") then
+        local text, arg2, arg3, arg4 = ...;
         local npc_id, name = GetTargetID(), UnitName("target")
-        if (npc_id and name) then
-            if (npc_id == 159477) then
-                if (APR_GigglingBasket[arg1]) then
-                    print("APR: " .. L["DOING_EMOTE"] .. ": " .. APR_GigglingBasket[arg1])
-                    DoEmote(APR_GigglingBasket[arg1])
+        if npc_id and name then
+            if npc_id == 159477 then -- quest 57870
+                local gigglingBasket = {
+                    [L["GIGGLING_BASKET_ONE_TIME"]] = "cheer",
+                    [L["GIGGLING_BASKET_SPRIGGANS"]] = "flex",
+                    [L["GIGGLING_BASKET_MANY"]] = "thank",
+                    [L["GIGGLING_BASKET_FAE"]] = "introduce",
+                    [L["GIGGLING_BASKET_FEET"]] = "dance",
+                    [L["GIGGLING_BASKET_HELP"]] = "praise",
+                }
+                for key, emote in pairs(gigglingBasket) do
+                    local message = L[key]
+                    if string.find(text, message) then
+                        if APR.settings.profile.debug then
+                            print("APR: " .. L["DOING_EMOTE"] .. ": " .. emote)
+                        end
+                        DoEmote(emote)
+                        break
+                    end
                 end
             end
         end
