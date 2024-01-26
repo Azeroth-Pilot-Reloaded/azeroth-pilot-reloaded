@@ -822,6 +822,9 @@ function APR.SetButton()
             APR.currentStep:AddStepButton(questID, spellID, 'spell')
         end
     end
+    
+    -- After doing some count to the current step, it updates the current step. So we need to sync the current cooldown
+    APR.currentStep:UpdateStepButtonCooldowns()
 end
 
 function APR.CheckWaypointText()

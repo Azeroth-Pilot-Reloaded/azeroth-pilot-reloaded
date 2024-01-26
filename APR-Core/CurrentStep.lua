@@ -643,12 +643,12 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
     IconButton:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
 
     IconButton.cooldown = CreateFrame("Cooldown", "$parentCooldown", IconButton, "CooldownFrameTemplate")
-    IconButton.cooldown:SetAllPoints();
+    IconButton.cooldown:SetAllPoints()
     IconButton.cooldown:Hide()
 
     IconButton.itemID = itemID
     IconButton.attribute = attribute
-    if not IconButton == nil then
+    if IconButton then
         container.IconButton = IconButton
     end
 end
@@ -664,7 +664,7 @@ function APR.currentStep:RemoveStepButtonByKey(questsListKey)
     existingButton:Hide()
     existingButton:ClearAllPoints()
     self.questsList[questsListKey] = nil
-end
+end  
 
 function APR.currentStep:UpdateStepButtonCooldowns()
     for id, questContainer in pairs(self.questsList) do
