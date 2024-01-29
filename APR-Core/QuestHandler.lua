@@ -216,9 +216,6 @@ local function APR_UpdateStep()
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     -- Extra liners here
     local MissingQs = {}
-    if (APR.settings.profile.debug) then
-        print("APR_UpdateStep() Step:", CurStep)
-    end
     APR.party:SendGroupMessage()
 
     if (APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep]) then
@@ -822,7 +819,7 @@ function APR.SetButton()
             APR.currentStep:AddStepButton(questID, spellID, 'spell')
         end
     end
-    
+
     -- After doing some count to the current step, it updates the current step. So we need to sync the current cooldown
     APR.currentStep:UpdateStepButtonCooldowns()
 end
@@ -1083,11 +1080,14 @@ end
 
 local function APR_BuyMerchFunc(itemID)
     if not itemID then return end
+    if APR.settings.profile.debug then
+        print("APR_BuyMerchFunc:" .. itemID)
+    end
     for i = 1, GetMerchantNumItems() do
         local id = GetMerchantItemID(i)
         if tonumber(id) == itemID then
             BuyMerchantItem(i)
-            MerchantFrame:Hide()
+            CloseMerchant()
             break
         end
     end
@@ -1108,19 +1108,17 @@ local function APR_PopupFunc()
     end
 end
 
-local function DoEmoteStep()
-    local npc_id, name = GetTargetID(), UnitName("target")
-    local step = GetSteps(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
-    if npc_id and name and step and step.Emote then
+local function DoEmoteStep(step)
+    if step and step.Emote then
+        local npc_id = GetTargetID() or GetTargetID("mouseover")
         if npc_id == 153580 then
             DoEmote(step.Emote)
         end
     end
 end
 
-function APR_UpdQuestThing(step)
-    DoEmoteStep()
-    _G.UpdateQuestAndStep()
+function APR_UpdQuestThing()
+    APR.BookingList["UpdateQuest"] = true
     Updateblock = 0
     if (APR.settings.profile.debug) then
         print("Extra UpdQuestThing")
@@ -1239,7 +1237,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
     end
     if (event == "PLAYER_TARGET_CHANGED") then
-        DoEmoteStep()
+        DoEmoteStep(steps)
     end
     if (event == "CHAT_MSG_COMBAT_XP_GAIN") then
         if (steps and steps.Treasure) then
@@ -1609,104 +1607,91 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if IsModifierKeyDown() then return end
         -- Deny NPC
         CheckDenyNPC(steps)
-        if (GetNumQuestChoices() > 1) then
-            if (APR.settings.profile.autoHandInChoice) then
-                -- Get the player ilvl stuff
-                local APR_GearIlvlList = {}
-                for playerSlot = 0, 18 do
-                    local inventoryitemLink = GetInventoryItemLink("player", playerSlot)
-                    if (inventoryitemLink) then
-                        local _, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc = GetItemInfo(inventoryitemLink)
-                        if (itemQuality == 7) then
-                            itemLevel = GetDetailedItemLevelInfo(inventoryitemLink)
-                        end
-                        if (itemEquipLoc and itemLevel) then
-                            if (itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or
-                                    itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or
-                                    itemEquipLoc == "INVTYPE_WEAPON" or
-                                    itemEquipLoc == "INVTYPE_SHIELD" or
-                                    itemEquipLoc == "INVTYPE_2HWEAPON" or
-                                    itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or
-                                    itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or
-                                    itemEquipLoc == "INVTYPE_HOLDABLE" or
-                                    itemEquipLoc == "INVTYPE_RANGED" or
-                                    itemEquipLoc == "INVTYPE_THROWN" or
-                                    itemEquipLoc == "INVTYPE_RANGEDRIGHT" or
-                                    itemEquipLoc == "INVTYPE_RELIC"
-                                ) then
-                                itemEquipLoc = "INVTYPE_WEAPON"
-                            end
-                            if (APR_GearIlvlList[itemEquipLoc]) then
-                                if (APR_GearIlvlList[itemEquipLoc] > itemLevel) then
-                                    APR_GearIlvlList[itemEquipLoc] = itemLevel
-                                end
-                            else
-                                APR_GearIlvlList[itemEquipLoc] = itemLevel
-                            end
-                        end
-                    end
-                end
 
-                -- Get quest reward ilvl
-                local APRTempGearList = {}  
-                local isCosmetic = false
-                for h = 1, GetNumQuestChoices() do
-                    local questItemLink = GetQuestItemLink("choice", h)
-                    if (questItemLink) then
-                        local _, _, itemQuality, _, _, _, _, _, itemEquipLoc, _, _, classID, subclassID = GetItemInfo(questItemLink)
-                        
-                        -- check if quest reward is classID 4 (armor) and subClassID 5 (cosmetic), then we dont want to pick anything
-                        if classID == 4 and subclassID == 5 then
-                            isCosmetic = true
-                        end
+        local function getItemEquipLoc(itemEquipLoc)
+            local weaponsAndShields = {
+                "INVTYPE_WEAPONOFFHAND",
+                "INVTYPE_WEAPONMAINHAND",
+                "INVTYPE_WEAPON",
+                "INVTYPE_SHIELD",
+                "INVTYPE_2HWEAPON",
+                "INVTYPE_HOLDABLE",
+                "INVTYPE_RANGED",
+                "INVTYPE_THROWN",
+                "INVTYPE_RANGEDRIGHT",
+                "INVTYPE_RELIC"
+            }
+            return Contains(weaponsAndShields, itemEquipLoc) and "INVTYPE_WEAPON" or itemEquipLoc
+        end
 
-                        local ilvl = GetDetailedItemLevelInfo(questItemLink)
-                        if (itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or
-                                itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or
-                                itemEquipLoc == "INVTYPE_WEAPON" or
-                                itemEquipLoc == "INVTYPE_SHIELD" or
-                                itemEquipLoc == "INVTYPE_2HWEAPON" or
-                                itemEquipLoc == "INVTYPE_WEAPONMAINHAND" or
-                                itemEquipLoc == "INVTYPE_WEAPONOFFHAND" or
-                                itemEquipLoc == "INVTYPE_HOLDABLE" or
-                                itemEquipLoc == "INVTYPE_RANGED" or
-                                itemEquipLoc == "INVTYPE_THROWN" or
-                                itemEquipLoc == "INVTYPE_RANGEDRIGHT" or
-                                itemEquipLoc == "INVTYPE_RELIC"
-                            ) then
-                            itemEquipLoc = "INVTYPE_WEAPON"
-                        end
-                        if (APR_GearIlvlList[itemEquipLoc]) then
-                            APRTempGearList[h] = ilvl - APR_GearIlvlList[itemEquipLoc]
-                        end
+        local function getPlayerGearIlvlList()
+            local gearIlvlList = {}
+            for playerSlot = 0, 18 do
+                local inventoryItemLink = GetInventoryItemLink("player", playerSlot)
+                if inventoryItemLink then
+                    local _, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc = GetItemInfo(inventoryItemLink)
+                    if itemQuality == 7 then --Heirloom
+                        itemLevel = GetDetailedItemLevelInfo(inventoryItemLink)
                     end
-                end
-
-                -- Choose the reward
-                local PickOne = 0
-                local PickOne2 = -99999
-                for APR_indexx, APR_valuex in pairs(APRTempGearList) do
-                    if (APR_valuex > PickOne2) then
-                        PickOne = APR_indexx
-                        PickOne2 = APR_valuex
-                    end
-                end
-                if (PickOne > 0) then
-                    if not isCosmetic then
-                        GetQuestReward(PickOne)
+                    if itemEquipLoc and itemLevel then
+                        itemEquipLoc = getItemEquipLoc(itemEquipLoc)
+                        gearIlvlList[itemEquipLoc] = math.min(gearIlvlList[itemEquipLoc] or itemLevel, itemLevel)
                     end
                 end
             end
-        else
-            if (APR.settings.profile.autoHandIn) then
-                local npc_id = GetTargetID()
-                if (npc_id and ((npc_id == 141584) or (npc_id == 142063) or (npc_id == 45400) or (npc_id == 25809) or (npc_id == 87391))) then
-                    return
+            return gearIlvlList
+        end
+
+        local function getQuestRewardIlvlDifference(gearIlvlList)
+            local gearIlvlListDiff = {}
+            local isCosmetic = false
+            for i = 1, GetNumQuestChoices() do
+                local questItemLink = GetQuestItemLink("choice", i)
+                if questItemLink then
+                    local _, _, _, _, _, _, _, _, itemEquipLoc, _, _, classID, subclassID = GetItemInfo(questItemLink)
+
+                    -- check if quest reward is classID 4 (armor) and subClassID 5 (cosmetic), then we dont want to pick anything
+                    if classID == 4 and subclassID == 5 then
+                        isCosmetic = true
+                    end
+                    local itemLevel = GetDetailedItemLevelInfo(questItemLink)
+                    itemEquipLoc = getItemEquipLoc(itemEquipLoc)
+                    if gearIlvlList[itemEquipLoc] then
+                        gearIlvlListDiff[i] = itemLevel - gearIlvlList[itemEquipLoc]
+                    end
                 end
+            end
+            return gearIlvlListDiff, isCosmetic
+        end
+
+        local function chooseQuestReward()
+            local gearIlvlList = getPlayerGearIlvlList()
+            local gearIlvlListDiff, isCosmetic = getQuestRewardIlvlDifference(gearIlvlList)
+
+            local highestIlvlDiff = -99999
+            local choiceIndex = 0
+            for index, ilvlDiff in pairs(gearIlvlListDiff) do
+                if ilvlDiff > highestIlvlDiff then
+                    choiceIndex = index
+                    highestIlvlDiff = ilvlDiff
+                end
+            end
+
+            if choiceIndex > 0 and not isCosmetic then
+                GetQuestReward(choiceIndex)
+            end
+        end
+
+        if GetNumQuestChoices() > 1 and APR.settings.profile.autoHandInChoice then
+            chooseQuestReward()
+        elseif APR.settings.profile.autoHandIn then
+            local npc_id = GetTargetID()
+            if not (npc_id and ((npc_id == 141584) or (npc_id == 142063) or (npc_id == 45400) or (npc_id == 25809) or (npc_id == 87391))) then
                 GetQuestReward(1)
             end
         end
     end
+
     if (event == "CHAT_MSG_MONSTER_SAY") then
         local text, arg2, arg3, arg4 = ...;
         local npc_id, name = GetTargetID(), UnitName("target")
@@ -1757,6 +1742,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 end
             end
         end
+        DoEmoteStep(steps)
     end
     if event == "PET_BATTLE_OPENING_START" or event == "PET_BATTLE_CLOSE" then
         APR.currentStep:RefreshCurrentStepFrameAnchor()

@@ -42,7 +42,7 @@ end
 
 function GetTargetID(unit)
     unit = unit or "target"
-    local target = UnitGUID("target")
+    local target = UnitGUID(unit)
     if (target and string.find(target, "(.*)-(.*)")) then
         local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-", target)
         return tonumber(npc_id)
