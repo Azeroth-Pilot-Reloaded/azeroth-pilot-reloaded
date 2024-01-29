@@ -98,7 +98,7 @@ if APR.Faction == "Horde" then
         { Done = { 59942 },                             RaidIcon = 167128,                  Coord = { x = -2296.2, y = 231.1 } },
         { Range = 8.65,                                 Waypoint = 59950,                   Coord = { x = -2275.5, y = 231.8 } },
         { PickUp = { 59950 },                           Coord = { x = -2282.5, y = 186.6 } },
-        { Qpart = { [59950] = { 1, 2 } },               RaidIcon = 167213,                  Range = 0.69,                      Coord = { x = -2292, y = 179.4 } },
+        { Qpart = { [59950] = { 1, 2 } },               RaidIcon = 167213,                  BuyMerchant = 178120,              Range = 0.69,                      Coord = { x = -2292, y = 179.4 } },
         { Coord = { x = -2282.5, y = 186.4 },           Done = { 59950 } },
         { PickUp = { 59943 },                           Coord = { x = -2337, y = 257.7 } },
         { Coord = { x = -2443.2, y = 391.5 },           Done = { 59943 } },
