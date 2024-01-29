@@ -1536,6 +1536,12 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     if (event == "QUEST_ACCEPTED") then
         local arg1, arg2, arg3, arg4, arg5 = ...;
+        if (APR.settings.profile.autoShareQuestWithFriend) then
+            if CheckIfPartyMemberIsFriend() then
+                C_QuestLog.SetSelectedQuest(arg1)
+                QuestLogPushQuest();
+            end
+        end
         if (APR.settings.profile.debug) then
             print(L["Q_ACCEPTED"] .. ": " .. arg1)
         end
@@ -1773,3 +1779,68 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.party:SendGroupMessage()
     end
 end)
+
+function CheckIfPartyMemberIsFriend()
+
+    -- If Player is NOT in a Group (not instance), do nothing
+    if not IsInGroup("LE_PARTY_CATEGORY_HOME") then
+        return false
+    end
+
+    -- Get FriendLists (WoW and BNet)
+    local FriendListTable = GetFriendsList()
+
+    -- Check if a party member is a BNet or WoW friend
+    for groupindex = 1, 4 do
+        local nameOfPartyMember = UnitName("party"..groupindex)
+        if (nameOfPartyMember) then
+            if IsInTable(FriendListTable, nameOfPartyMember) then
+                return true
+            end
+            groupindex = groupindex + 1
+        end
+    end
+    
+    return false
+end
+
+function GetFriendsList()
+
+    -- Get Number of Friends online (WoW and BNet)
+    local friendsOnlineWoW = C_FriendList.GetNumFriends()
+    local _, friendsOnlineBNet = BNGetNumFriends()
+
+    local FriendListTable = {}
+
+    -- If Friends online, iterate throu them and compare with party members
+    if  friendsOnlineWoW > 0 or friendsOnlineBNet > 0 then
+        local friendsOnlineWoWCounter = 1
+        local friendsOnlineBNetCounter = 1
+
+        while friendsOnlineWoW >= friendsOnlineWoWCounter do
+            if C_FriendList.GetFriendInfoByIndex(friendsOnlineWoWCounter).name then
+                FriendListTable[friendsOnlineWoWCounter] = C_FriendList.GetFriendInfoByIndex(friendsOnlineWoWCounter).name
+            end
+            friendsOnlineWoWCounter = friendsOnlineWoWCounter + 1
+        end
+        
+        while friendsOnlineBNet >= friendsOnlineBNetCounter do
+            if C_BattleNet.GetFriendAccountInfo(friendsOnlineBNetCounter).gameAccountInfo.characterName then
+                FriendListTable[friendsOnlineBNetCounter] = C_BattleNet.GetFriendAccountInfo(friendsOnlineBNetCounter).gameAccountInfo.characterName
+            end
+            friendsOnlineBNetCounter = friendsOnlineBNetCounter + 1
+        end
+
+        return FriendListTable
+    end
+end
+
+function IsInTable(haystack, needle)
+    local inTable = false
+    for key, value in pairs(haystack) do
+        if value == needle then
+            inTable = true
+        end
+    end
+    return inTable
+end

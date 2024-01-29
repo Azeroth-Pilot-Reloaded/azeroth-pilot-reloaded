@@ -47,6 +47,7 @@ function APR.settings:InitializeSettings()
             autoRepair = false,
             autoSkipCutScene = true,
             autoFlight = true,
+            autoShareQuestWithFriend = false,
             -- current step
             currentStepFrame = {},
             currentStepShow = true,
@@ -1014,8 +1015,17 @@ function APR.settings:createBlizzOptions()
                 type = "group",
                 name = L["GROUP"],
                 args = {
-                    showGroup = {
+                    autoShareQuestWithFriend = {
                         order = 11.1,
+                        type = "toggle",
+                        name = L["SHOW_GROUP_SHAREWITHFRIEND"],
+                        desc = L["SHOW_GROUP_SHAREWITHFRIEND_DESC"],
+                        width = "full",
+                        get = GetProfileOption,
+                        set = SetProfileOption,
+                    },
+                    showGroup = {
+                        order = 11.2,
                         type = "toggle",
                         name = L["SHOW_GROUP_PROGRESS"],
                         desc = L["SHOW_GROUP_PROGRESS_DESC"],
@@ -1030,7 +1040,7 @@ function APR.settings:createBlizzOptions()
                         end,
                     },
                     groupScale = {
-                        order = 11.2,
+                        order = 11.3,
                         type = "range",
                         name = L["GROUP_SCALE"],
                         desc = L["GROUP_SCALE_DESC"],
@@ -1050,7 +1060,7 @@ function APR.settings:createBlizzOptions()
                     },
                     resetPartyPosition = {
                         name = L['RESET_CURRENT_STEP_FRAME_POSITION'],
-                        order = 11.3,
+                        order = 11.4,
                         type = 'execute',
                         width = "full",
                         func = function()
