@@ -285,6 +285,7 @@ function APR.questOrderList:AddStepFromRoute()
     if not CurStep then
         return
     end
+    CurStep = CurStep - (APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] or 0)
     -- can't use id from the loop due to faction/race/class/achievement step option
     local stepIndex = 1
     for id, step in pairs(APR.RouteQuestStepList[APR.ActiveRoute]) do
@@ -432,7 +433,6 @@ function APR.questOrderList:AddStepFromRoute()
             stepIndex = stepIndex + 1
         end
     end
-    local curStepDisplayed = CurStep - (APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] or 0)
     -- set current Step indicator
-    SetCurrentStepIndicator(curStepDisplayed)
+    SetCurrentStepIndicator(CurStep)
 end
