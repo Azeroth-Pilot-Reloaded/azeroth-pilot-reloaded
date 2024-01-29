@@ -1514,9 +1514,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             if (Contains(APR_HSSpellIDs, arg3) and steps.UseHS) or (steps.SpellTrigger and arg3 == steps.SpellTrigger) then
                 _G.UpdateNextStep()
             end
-            if steps.Button then
-                APR.currentStep:UpdateStepButtonCooldowns()
-            end
         end
     end
     if (event == "UNIT_SPELLCAST_START") then
