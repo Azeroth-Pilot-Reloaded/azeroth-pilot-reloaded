@@ -1780,7 +1780,7 @@ function CheckIfPartyMemberIsFriend()
     for groupindex = 1, 4 do
         local nameOfPartyMember = UnitName("party"..groupindex)
         if (nameOfPartyMember) then
-            if IsInTable(FriendListTable, nameOfPartyMember) then
+            if Contains(FriendListTable, nameOfPartyMember) then
                 return true
             end
             groupindex = groupindex + 1
@@ -1819,14 +1819,4 @@ function GetFriendsList()
 
         return FriendListTable
     end
-end
-
-function IsInTable(haystack, needle)
-    local inTable = false
-    for key, value in pairs(haystack) do
-        if value == needle then
-            inTable = true
-        end
-    end
-    return inTable
 end
