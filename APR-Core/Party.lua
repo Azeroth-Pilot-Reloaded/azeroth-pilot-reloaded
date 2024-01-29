@@ -265,3 +265,57 @@ function APR.party:UpdateGroupListing(steps, username)
     end
     UpdateGroupStep()
 end
+
+function APR.party:CheckIfPartyMemberIsFriend()
+
+    -- If Player is NOT in a Group (not instance), do nothing
+    if not IsInGroup("LE_PARTY_CATEGORY_HOME") then
+        return false
+    end
+
+    -- Get FriendLists (WoW and BNet)
+    local FriendListTable = GetFriendsList()
+
+    -- Check if a party member is a BNet or WoW friend
+    for groupindex = 1, 4 do
+        local nameOfPartyMember = UnitName("party"..groupindex)
+        if (nameOfPartyMember) then
+            if Contains(FriendListTable, nameOfPartyMember) then
+                return true
+            end
+        end
+    end
+    
+    return false
+end
+
+function APR.party:GetFriendsList()
+
+    -- Get Number of Friends online (WoW and BNet)
+    local friendsOnlineWoW = C_FriendList.GetNumFriends()
+    local _, friendsOnlineBNet = BNGetNumFriends()
+
+    local FriendListTable = {}
+
+    -- If Friends online, iterate throu them and compare with party members
+    if  friendsOnlineWoW > 0 or friendsOnlineBNet > 0 then
+        local friendsOnlineWoWCounter = 1
+        local friendsOnlineBNetCounter = 1
+
+        while friendsOnlineWoW >= friendsOnlineWoWCounter do
+            if C_FriendList.GetFriendInfoByIndex(friendsOnlineWoWCounter).name then
+                FriendListTable[friendsOnlineWoWCounter] = C_FriendList.GetFriendInfoByIndex(friendsOnlineWoWCounter).name
+            end
+            friendsOnlineWoWCounter = friendsOnlineWoWCounter + 1
+        end
+        
+        while friendsOnlineBNet >= friendsOnlineBNetCounter do
+            if C_BattleNet.GetFriendAccountInfo(friendsOnlineBNetCounter).gameAccountInfo.characterName then
+                FriendListTable[friendsOnlineBNetCounter] = C_BattleNet.GetFriendAccountInfo(friendsOnlineBNetCounter).gameAccountInfo.characterName
+            end
+            friendsOnlineBNetCounter = friendsOnlineBNetCounter + 1
+        end
+
+        return FriendListTable
+    end
+end

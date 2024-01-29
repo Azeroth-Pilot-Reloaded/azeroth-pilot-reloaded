@@ -48,6 +48,7 @@ function APR.settings:InitializeSettings()
             autoSkipCutScene = true,
             autoFlight = true,
             autoShareQuestWithFriend = false,
+            firstAutoShareQuestWithFriend = true,
             -- current step
             currentStepFrame = {},
             currentStepShow = true,
