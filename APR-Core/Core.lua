@@ -146,7 +146,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
 
             APR.BookingList["UpdateMapId"] = true
             APR.BookingList["UpdateQuest"] = true
-            APR.BookingList["PrintQStep"] = true
 
             APR.RouteSelection:RefreshFrameAnchor()
             local CQIDs = C_QuestLog.GetAllCompletedQuestIDs()
@@ -174,7 +173,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.ArrowFrame:SetScale(APR.settings.profile.arrowScale)
         APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
             APR.settings.profile.arrowtop)
-
         APR.BookingList["UpdateStep"] = true
     end
 end)
