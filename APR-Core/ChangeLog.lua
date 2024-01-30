@@ -70,6 +70,29 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.1.5", "2024-01-30" },
+        "#Features",
+        "- Auto HandIn Choice will no longer do anything in case of a quest with Comestic rewards",
+        "- Add option to auto share new quests to your friend in group",
+
+        "#Bugs",
+        "- Change GigglingBacket (SL quest) for locales",
+        "- Change Current step frame strata to match Quest order list frame",
+        "- Fix cooldown on quest step button",
+        "- Fix false green waypoint step on Quest order list",
+        "- Fix Chromie timeline message for +60lvl character",
+
+        "#Route",
+        "- Prettier route file to line (it's more compact)",
+        "- Change Qpart and Filler syntax",
+        "- Remove useless syntax from route (ButtonSpellId, ButtonCooldown,...)",
+        "- Add DoEmote step option, with the emote name",
+        "- Add DoEmote for Exile's Reach routes",
+        "- Add Auto buy tabar for Exile's Reach Horde Route",
+
+        "#Localization",
+        "- German 100% ( Kamian )",
+
         { "v3.1.4", "2024-01-23" },
         "#Bugs",
         "- Fix false wrong zone for Horde - WOD01 - Orgrimmar",
