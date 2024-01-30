@@ -228,10 +228,16 @@ local function UpdateGroupStep()
         end
     end
 
-    for _, groupData in pairs(APR.party.GroupListSteps) do
+    local sortedGroup = APR.party.GroupListSteps
+    table.sort(sortedGroup, function(a, b)
+        return string.lower(a.Name) < string.lower(b.Name)
+    end)
+
+
+    for _, groupData in pairs(sortedGroup) do
         if groupData.Step then
             local color = groupData.Step < highestStep and 'red' or
-            'green'                                                         -- //TODO: add other color for player on diff route
+                'green'                                                     -- //TODO: add other color for player on diff route
             APR.party:UpdateTeamMate(groupData.Name, groupData.Step, color) -- //TODO: add a color legend in the footer
         end
     end
@@ -255,7 +261,6 @@ function APR.party:UpdateGroupListing(steps, username)
 end
 
 function APR.party:CheckIfPartyMemberIsFriend()
-
     -- If Player is NOT in a Group (not instance), do nothing
     if not IsInGroup("LE_PARTY_CATEGORY_HOME") then
         return false
@@ -266,19 +271,18 @@ function APR.party:CheckIfPartyMemberIsFriend()
 
     -- Check if a party member is a BNet or WoW friend
     for groupindex = 1, 4 do
-        local nameOfPartyMember = UnitName("party"..groupindex)
+        local nameOfPartyMember = UnitName("party" .. groupindex)
         if (nameOfPartyMember) then
             if Contains(FriendListTable, nameOfPartyMember) then
                 return true
             end
         end
     end
-    
+
     return false
 end
 
 function APR.party:GetFriendsList()
-
     -- Get Number of Friends online (WoW and BNet)
     local friendsOnlineWoW = C_FriendList.GetNumFriends()
     local _, friendsOnlineBNet = BNGetNumFriends()
