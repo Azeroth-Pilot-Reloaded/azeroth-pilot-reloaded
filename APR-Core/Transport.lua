@@ -72,28 +72,31 @@ function APR.transport:GetMeToRightZone()
         else
             local posY, posX = UnitPosition("player")
             local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY = self:ClosestTaxi(posX, posY)
-            local _, objectiveTaxiName, _, _ = self:ClosestTaxi(step.Coord.x, step.Coord.y)
-            if playerTaxiNodeId ~= objectiveTaxiName then
-                APR.transport.wrongZoneDestTaxiName = objectiveTaxiName
-                APR.currentStep:AddExtraLineText("FLY_TO_" .. objectiveTaxiName, L["FLY_TO"] .. " " .. objectiveTaxiName)
-                APR.currentStep:AddExtraLineText("CLOSEST_FP" .. playerTaxiName,
-                    L["CLOSEST_FP"] .. ": " .. playerTaxiName)
-                APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
-            else
-                local zoneEntryMapID, zoneEntryX, zoneEntryY = self:GetZoneMoveOrder(mapID, playerMapInfo)
-
-                if zoneEntryMapID then
-                    local zoneEntryMapInfo = C_Map.GetMapInfo(zoneEntryMapID)
-                    APR.currentStep:AddExtraLineText("GO_TO" .. zoneEntryMapInfo.name,
-                        L["GO_TO"] .. ": " .. zoneEntryMapInfo.name)
-                    APR.Arrow:SetArrowActive(true, zoneEntryX, zoneEntryY)
+            if step.Coord then
+                local _, objectiveTaxiName, _, _ = self:ClosestTaxi(step.Coord.x, step.Coord.y)
+                if playerTaxiNodeId ~= objectiveTaxiName then
+                    APR.transport.wrongZoneDestTaxiName = objectiveTaxiName
+                    APR.currentStep:AddExtraLineText("FLY_TO_" .. objectiveTaxiName,
+                        L["FLY_TO"] .. " " .. objectiveTaxiName)
+                    APR.currentStep:AddExtraLineText("CLOSEST_FP" .. playerTaxiName,
+                        L["CLOSEST_FP"] .. ": " .. playerTaxiName)
+                    APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
+                    return
                 else
-                    APR.currentStep:AddExtraLineText("ERROR_PATH_NOT_FOUND", L["ERROR"] ..
-                        " - " .. L["PATH_NOT_FOUND"] .. " " .. mapInfo.name .. " (" .. mapID .. ")")
-                    APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. mapInfo.name)
-                    APR.Arrow:SetArrowActive(false, 0, 0)
+                    local zoneEntryMapID, zoneEntryX, zoneEntryY = self:GetZoneMoveOrder(mapID, playerMapInfo)
+                    if zoneEntryMapID then
+                        local zoneEntryMapInfo = C_Map.GetMapInfo(zoneEntryMapID)
+                        APR.currentStep:AddExtraLineText("GO_TO" .. zoneEntryMapInfo.name,
+                            L["GO_TO"] .. ": " .. zoneEntryMapInfo.name)
+                        APR.Arrow:SetArrowActive(true, zoneEntryX, zoneEntryY)
+                        return
+                    end
                 end
             end
+            APR.currentStep:AddExtraLineText("ERROR_PATH_NOT_FOUND", L["ERROR"] ..
+                " - " .. L["PATH_NOT_FOUND"] .. " " .. mapInfo.name .. " (" .. mapID .. ")")
+            APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. mapInfo.name)
+            APR.Arrow:SetArrowActive(false, 0, 0)
         end
     end
 end

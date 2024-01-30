@@ -236,7 +236,7 @@ local function APR_UpdateStep()
         end
         if (APR.ActiveRoute) then
             local function checkChromieTimeline(id)
-                if APR.Level >= MaxLevelChromie then
+                if APR.Level >= APR.MaxLevelChromie then
                     return
                 end
                 local chromieExpansionOption = C_ChromieTime.GetChromieTimeExpansionOption(id)
@@ -1537,7 +1537,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     if (event == "QUEST_ACCEPTED") then
         local arg1, arg2, arg3, arg4, arg5 = ...;
-        if APR.settings.profile.firstAutoShareQuestWithFriend then
+        if APR.settings.profile.firstAutoShareQuestWithFriend and arg1 then
             APR.questionDialog:CreateQuestionPopup(L["SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME"], function()
                 APR.settings.profile.autoShareQuestWithFriend = true
                 if APR.party:CheckIfPartyMemberIsFriend() then
@@ -1771,6 +1771,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.RouteSelection:RefreshFrameAnchor()
     end
     if event == "GROUP_JOINED" then
+        APR.party:ShowFrame()
         APR.party:SendGroupMessage()
     end
     if event == "GROUP_LEFT" then
