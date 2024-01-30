@@ -14,7 +14,6 @@ local FRAME_MATE_HOLDER_HEIGHT = -18
 -- Init list
 APR.party.teamList = {}
 APR.party.GroupListSteps = {}
-APR.party.GroupListStepsCount = 1
 APR.party.LastSent = 0
 ---------------------------------------------------------------------------------------
 --------------------------------- Party Frames ----------------------------------------
@@ -214,6 +213,7 @@ function APR.party:IsShowFrame()
 end
 
 function APR.party:SendGroupMessage()
+    -- //TODO: send a serialized object with the route name, current step and the total steps
     if (IsInGroup(LE_PARTY_CATEGORY_HOME) and APRData[APR.PlayerID][APR.ActiveRoute] and (APR.party.LastSent ~= APRData[APR.PlayerID][APR.ActiveRoute]) and not IsInInstance()) then
         C_ChatInfo.SendAddonMessage("APRChat", APRData[APR.PlayerID][APR.ActiveRoute], "PARTY");
         APR.party.LastSent = APRData[APR.PlayerID][APR.ActiveRoute]
@@ -221,48 +221,36 @@ function APR.party:SendGroupMessage()
 end
 
 local function UpdateGroupStep()
-    for i = 1, 5 do
-        local groupData = APR.party.GroupListSteps[i]
-        if groupData then
-            local hasHigherStep = false
+    local highestStep = 0
+    for _, groupData in pairs(APR.party.GroupListSteps) do
+        if groupData.Step then
+            highestStep = math.max(highestStep, groupData.Step)
+        end
+    end
 
-            for y = 1, 5 do
-                local otherGroupData = APR.party.GroupListSteps[y]
-                if otherGroupData and groupData.Step and otherGroupData.Step and otherGroupData.Step > groupData.Step then
-                    hasHigherStep = true
-                    break
-                end
-            end
-
-            local color = hasHigherStep and 'red' or 'green'
-            APR.party:UpdateTeamMate(groupData.Name, groupData.Step, color)
+    for _, groupData in pairs(APR.party.GroupListSteps) do
+        if groupData.Step then
+            local color = groupData.Step < highestStep and 'red' or
+            'green'                                                         -- //TODO: add other color for player on diff route
+            APR.party:UpdateTeamMate(groupData.Name, groupData.Step, color) -- //TODO: add a color legend in the footer
         end
     end
 end
 
-
 function APR.party:UpdateGroupListing(steps, username)
-    if (not APR.party.GroupListSteps[1]) then
-        APR.party.GroupListSteps[1] = {}
-        APR.party.GroupListStepsCount = 1
-        APR.party.GroupListSteps[1].Step = steps
-        APR.party.GroupListSteps[1].Name = APR.Username
+    -- Init the first member with your info
+    if not next(APR.party.GroupListSteps) then
+        APR.party.GroupListSteps[APR.Username] = { Step = steps, Name = APR.Username }
     end
-    if (username ~= APR.Username) then
-        local hasNewMember = true
-        for i, _ in pairs(APR.party.GroupListSteps) do
-            if (APR.party.GroupListSteps[i].Name == username) then
-                APR.party.GroupListSteps[i].Step = steps
-                hasNewMember = false
-            end
-        end
-        if hasNewMember then
-            APR.party.GroupListStepsCount = APR.party.GroupListStepsCount + 1
-            APR.party.GroupListSteps[APR.party.GroupListStepsCount] = {}
-            APR.party.GroupListSteps[APR.party.GroupListStepsCount].Name = username
-            APR.party.GroupListSteps[APR.party.GroupListStepsCount].Step = steps
-        end
+    -- Update or add member
+    if APR.party.GroupListSteps[username] then
+        -- Existing member, updating steps
+        APR.party.GroupListSteps[username].Step = steps
+    else
+        -- new member, added to the list
+        APR.party.GroupListSteps[username] = { Step = steps, Name = username }
     end
+
     UpdateGroupStep()
 end
 

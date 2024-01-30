@@ -1771,6 +1771,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.party:SendGroupMessage()
     end
     if event == "GROUP_LEFT" then
+        -- remove all the teammate then resend name + step to the group
+        -- because wow don't send the username of the leaver
         APR.party:RemoveTeam()
         APR.party:SendGroupMessage()
     end
