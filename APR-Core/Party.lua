@@ -274,7 +274,7 @@ function APR.party:CheckIfPartyMemberIsFriend()
     end
 
     -- Get FriendLists (WoW and BNet)
-    local FriendListTable = GetFriendsList()
+    local FriendListTable = APR.party:GetFriendsList()
 
     -- Check if a party member is a BNet or WoW friend
     for groupindex = 1, 4 do
@@ -297,25 +297,21 @@ function APR.party:GetFriendsList()
 
     local FriendListTable = {}
 
-    -- If Friends online, iterate throu them and compare with party members
-    if  friendsOnlineWoW > 0 or friendsOnlineBNet > 0 then
-        local friendsOnlineWoWCounter = 1
-        local friendsOnlineBNetCounter = 1
-
-        while friendsOnlineWoW >= friendsOnlineWoWCounter do
-            if C_FriendList.GetFriendInfoByIndex(friendsOnlineWoWCounter).name then
-                FriendListTable[friendsOnlineWoWCounter] = C_FriendList.GetFriendInfoByIndex(friendsOnlineWoWCounter).name
-            end
-            friendsOnlineWoWCounter = friendsOnlineWoWCounter + 1
+    -- add WoW friend
+    for i = 1, friendsOnlineWoW do
+        local friendInfo = C_FriendList.GetFriendInfoByIndex(i)
+        if friendInfo and friendInfo.name then
+            tinsert(FriendListTable, friendInfo.name)
         end
-        
-        while friendsOnlineBNet >= friendsOnlineBNetCounter do
-            if C_BattleNet.GetFriendAccountInfo(friendsOnlineBNetCounter).gameAccountInfo.characterName then
-                FriendListTable[friendsOnlineBNetCounter] = C_BattleNet.GetFriendAccountInfo(friendsOnlineBNetCounter).gameAccountInfo.characterName
-            end
-            friendsOnlineBNetCounter = friendsOnlineBNetCounter + 1
-        end
-
-        return FriendListTable
     end
+
+    -- add BNet friend
+    for i = 1, friendsOnlineBNet do
+        local bnetFriendInfo = C_BattleNet.GetFriendAccountInfo(i)
+        if bnetFriendInfo and bnetFriendInfo.gameAccountInfo and bnetFriendInfo.gameAccountInfo.characterName then
+            tinsert(FriendListTable, bnetFriendInfo.gameAccountInfo.characterName)
+        end
+    end
+
+    return FriendListTable
 end

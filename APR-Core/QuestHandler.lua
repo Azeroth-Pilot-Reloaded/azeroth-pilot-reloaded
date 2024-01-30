@@ -1537,11 +1537,15 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if APR.settings.profile.firstAutoShareQuestWithFriend then
             APR.questionDialog:CreateQuestionPopup(L["SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME"], function()
                 APR.settings.profile.autoShareQuestWithFriend = true
+                if APR.party:CheckIfPartyMemberIsFriend() then
+                    C_QuestLog.SetSelectedQuest(arg1)
+                    QuestLogPushQuest();
+                end
             end)
             APR.settings.profile.firstAutoShareQuestWithFriend = false
         end
         if APR.settings.profile.autoShareQuestWithFriend then
-            if CheckIfPartyMemberIsFriend() then
+            if APR.party:CheckIfPartyMemberIsFriend() then
                 C_QuestLog.SetSelectedQuest(arg1)
                 QuestLogPushQuest();
             end
