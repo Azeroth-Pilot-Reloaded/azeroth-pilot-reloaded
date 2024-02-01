@@ -633,24 +633,24 @@ function APR.routeconfig:GetSpeedRunPrefab()
 end
 
 function APR.routeconfig:GetStartingZonePrefab()
-    if Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
+    if APR.ClassId == APR.Classes["Dracthyr"] then
+        tinsert(APRCustomPath[APR.PlayerID], "Dracthyr Start")
+    elseif Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
         tinsert(APRCustomPath[APR.PlayerID], "01-10 Exile's Reach")
-    elseif not APRZoneCompleted[APR.PlayerID]["01-10 Exile's Reach"] then
-        --Not skipable starting zone
-        if APR.Level >= 58 and APR.ClassId == APR.Classes["Dracthyr"] then
-            tinsert(APRCustomPath[APR.PlayerID], "Dracthyr Start")
-        elseif APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then -- Allied DK
+    elseif not (C_QuestLog.IsQuestFlaggedCompleted(59926) or C_QuestLog.IsQuestFlaggedCompleted(56775)) and APR.Level < APR.MinBoostLvl then -- first quest from Exile's Reach + boost
+        --None skipable starting zone
+        if APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then                                                              -- Allied DK
             tinsert(APRCustomPath[APR.PlayerID], "Allied Death Knight Start")
-        elseif APR.ClassId == APR.Classes["Death Knight"] then                      -- DK
+        elseif APR.ClassId == APR.Classes["Death Knight"] then                                                                               -- DK
             tinsert(APRCustomPath[APR.PlayerID], "Death Knight Start")
         elseif APR.ClassId == APR.Classes["Demon Hunter"] then
             tinsert(APRCustomPath[APR.PlayerID], "Demon Hunter Start")
-        elseif (APR.Race == "Pandaren") then
+        elseif APR.Race == "Pandaren" then
             tinsert(APRCustomPath[APR.PlayerID], "Pandaren Start")
-        elseif (APR.Race == "Goblin") then
+        elseif APR.Race == "Goblin" then
             tinsert(APRCustomPath[APR.PlayerID], "Goblin Start")
             tinsert(APRCustomPath[APR.PlayerID], "Goblin - Lost Isles")
-        elseif (APR.Race == "Worgen") then
+        elseif APR.Race == "Worgen" then
             tinsert(APRCustomPath[APR.PlayerID], "Worgen Start")
         elseif APR.Level < 10 then -- Skipable starting zone
             -- HORDE

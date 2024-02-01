@@ -14,6 +14,7 @@ APR.ClassLocalName, APR.ClassName, APR.ClassId = UnitClass("player")
 APR.Gender = UnitSex("player")
 APR.MaxLevel = 70
 APR.MaxLevelChromie = 60
+APR.MinBoostLvl = 60
 APR.PlayerID = APR.Username .. "-" .. APR.UserID
 -- APR.Season = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() // For classic
 
