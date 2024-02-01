@@ -1537,7 +1537,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     if (event == "QUEST_ACCEPTED") then
         local arg1, arg2, arg3, arg4, arg5 = ...;
-        if APR.settings.profile.firstAutoShareQuestWithFriend and arg1 then
+        if APR.settings.profile.firstAutoShareQuestWithFriend and IsInGroup() then
             APR.questionDialog:CreateQuestionPopup(L["SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME"], function()
                 APR.settings.profile.autoShareQuestWithFriend = true
                 if APR.party:CheckIfPartyMemberIsFriend() then
