@@ -1159,7 +1159,7 @@ APR_QH_EventFrame:RegisterEvent("QUEST_LOG_UPDATE")
 APR_QH_EventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
 APR_QH_EventFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
 APR_QH_EventFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
-APR_QH_EventFrame:RegisterEvent("CHAT_MSG_ADDON")
+
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_MONSTER_SAY")
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN")
 APR_QH_EventFrame:RegisterEvent("UNIT_AURA")
@@ -1257,12 +1257,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     if (event == "PLAYER_REGEN_DISABLED") then
         APR.InCombat = true
-    end
-    if (event == "CHAT_MSG_ADDON") then
-        local arg1, arg2, arg3, arg4 = ...;
-        if (arg1 == "APRChat" and arg3 == "PARTY") then
-            APR.party:UpdateGroupListing(tonumber(arg2), TrimPlayerServer(arg4))
-        end
     end
     if (event == "PLAYER_CHOICE_UPDATE") then
         local choiceInfo = C_PlayerChoice.GetCurrentPlayerChoiceInfo()

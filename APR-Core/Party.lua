@@ -4,6 +4,7 @@ local LibWindow = LibStub("LibWindow-1.1")
 
 -- Initialize APR Party  module
 APR.party = APR:NewModule("Party")
+local AceSerializer = _G.LibStub("AceSerializer-3.0")
 
 --Local constant
 local FRAME_WIDTH = 250
@@ -15,6 +16,7 @@ local FRAME_MATE_HOLDER_HEIGHT = -18
 APR.party.teamList = {}
 APR.party.GroupListSteps = {}
 APR.party.LastSent = 0
+
 ---------------------------------------------------------------------------------------
 --------------------------------- Party Frames ----------------------------------------
 ---------------------------------------------------------------------------------------
@@ -131,8 +133,10 @@ local AddTeamMate = function(name, stepIndex, color)
     local fontIndex = container:CreateFontString("fontIndex", "OVERLAY", "GameFontHighlight")
     fontIndex:SetPoint("TOPRIGHT", 0, -2)
     fontIndex:SetText(stepIndex)
-    if (color == 'red') then
+    if color == 'red' then
         fontIndex:SetTextColor(1, 0, 0)
+    elseif color == 'gray' then
+        fontIndex:SetTextColor(105 / 255, 105 / 255, 105 / 255)
     else
         fontIndex:SetTextColor(0, 1, 0)
     end
@@ -151,20 +155,20 @@ local AddTeamMate = function(name, stepIndex, color)
     return container
 end
 
-function APR.party:UpdateTeamMate(name, stepIndex, color)
+function APR.party:UpdateTeamMate(username, currentStep, totalSteps, color)
     if not next(self.teamList) then
         FRAME_MATE_HOLDER_HEIGHT = FRAME_OFFSET
     end
-    local existingContainer = self.teamList[name]
+    local existingContainer = self.teamList[username]
 
     if existingContainer then
         existingContainer:Hide()
         existingContainer:ClearAllPoints()
-        self.teamList[name] = nil
+        self.teamList[username] = nil
     end
-    local container = AddTeamMate(name, stepIndex, color)
+    local container = AddTeamMate(username, currentStep, color)
     container:SetPoint("TOPLEFT", PartyFrame, "TOPLEFT", 0, FRAME_MATE_HOLDER_HEIGHT)
-    self.teamList[name] = container
+    self.teamList[username] = container
     FRAME_MATE_HOLDER_HEIGHT = FRAME_MATE_HOLDER_HEIGHT - container:GetHeight()
     self:ReOrderTeam()
 end
@@ -214,56 +218,6 @@ function APR.party:IsShowFrame()
     return PartyScreenPanel:IsShown()
 end
 
-function APR.party:SendGroupMessage(forceSend)
-    forceSend = forceSend or false
-    -- //TODO: send a serialized object with the route name, current step and the total steps
-    if ((IsInGroup(LE_PARTY_CATEGORY_HOME) and APRData[APR.PlayerID][APR.ActiveRoute] and (self.LastSent ~= APRData[APR.PlayerID][APR.ActiveRoute])) or forceSend) and not IsInInstance() then
-        C_ChatInfo.SendAddonMessage("APRChat", APRData[APR.PlayerID][APR.ActiveRoute], "PARTY");
-        self.LastSent = APRData[APR.PlayerID][APR.ActiveRoute]
-    end
-end
-
-local function UpdateGroupStep()
-    local highestStep = 0
-    for _, groupData in pairs(APR.party.GroupListSteps) do
-        if groupData.Step then
-            highestStep = math.max(highestStep, groupData.Step)
-        end
-    end
-
-    local sortedGroup = APR.party.GroupListSteps
-    table.sort(sortedGroup, function(a, b)
-        return string.lower(a.Name) < string.lower(b.Name)
-    end)
-
-
-    for _, groupData in pairs(sortedGroup) do
-        if groupData.Step then
-            local color = groupData.Step < highestStep and 'red' or
-                'green'                                                     -- //TODO: add other color for player on diff route
-            APR.party:UpdateTeamMate(groupData.Name, groupData.Step, color) -- //TODO: add a color legend in the footer
-        end
-    end
-    APR.party:RefreshPartyFrameAnchor()
-end
-
-function APR.party:UpdateGroupListing(steps, username)
-    -- Init the first member with your info
-    if not next(self.GroupListSteps) then
-        self.GroupListSteps[APR.Username] = { Step = steps, Name = APR.Username }
-    end
-    -- Update or add member
-    if self.GroupListSteps[username] then
-        -- Existing member, updating steps
-        self.GroupListSteps[username].Step = steps
-    else
-        -- new member, added to the list
-        self.GroupListSteps[username] = { Step = steps, Name = username }
-    end
-
-    UpdateGroupStep()
-end
-
 function APR.party:CheckIfPartyMemberIsFriend()
     -- If Player is NOT in a Group (not instance), do nothing
     if not IsInGroup("LE_PARTY_CATEGORY_HOME") then
@@ -311,3 +265,74 @@ function APR.party:GetFriendsList()
 
     return FriendListTable
 end
+
+function APR.party:SendGroupMessage(forceSend)
+    forceSend = forceSend or false
+    if ((IsInGroup(LE_PARTY_CATEGORY_HOME) and APRData[APR.PlayerID][APR.ActiveRoute] and (self.LastSent ~= APRData[APR.PlayerID][APR.ActiveRoute])) or forceSend) and not IsInInstance() then
+        local dataToSend = {
+            route = APR.ActiveRoute,
+            currentStep = APRData[APR.PlayerID][APR.ActiveRoute],
+            totalSteps = APRData[APR.PlayerID][APR.ActiveRoute .. '-TotalSteps'],
+            username = APR.Username
+        }
+        local serializedData = AceSerializer:Serialize(dataToSend)
+        -- Send the serialized data over the addon communication channel
+        C_ChatInfo.SendAddonMessage("APRChat", serializedData, "PARTY")
+        self.LastSent = APRData[APR.PlayerID][APR.ActiveRoute]
+    end
+end
+
+local function UpdateGroupStep(playerData)
+    local highestStep = 0
+    for _, groupData in pairs(APR.party.GroupListSteps) do
+        if groupData.currentStep then
+            highestStep = math.max(highestStep, groupData.currentStep)
+        end
+    end
+
+    local sortedGroup = APR.party.GroupListSteps
+    table.sort(sortedGroup, function(a, b)
+        return string.lower(a.username) < string.lower(b.username)
+    end)
+
+
+    for _, groupData in pairs(sortedGroup) do
+        if groupData.currentStep then
+            local color = playerData.route == APR.ActiveRoute and
+                (groupData.currentStep < highestStep and 'red' or 'green') or                                -- Same route diff step color
+                'gray'                                                                                       -- other route color
+            APR.party:UpdateTeamMate(groupData.username, groupData.currentStep, groupData.totalSteps, color) -- //TODO: add a color legend in the footer
+        end
+    end
+    APR.party:RefreshPartyFrameAnchor()
+end
+
+function APR.party:UpdateGroupListing(message)
+    -- Deserialize the received data
+    local success, dataReceived = AceSerializer:Deserialize(message)
+    local username = dataReceived.username
+    if success then
+        -- Update or add member
+        APR.party.GroupListSteps[username] = dataReceived
+        UpdateGroupStep(dataReceived)
+    else
+        APR.PrintError(dataReceived)
+    end
+end
+
+---------------------------------------------------------------------------------------
+--------------------------------- Party Event -----------------------------------------
+---------------------------------------------------------------------------------------
+
+
+APR.party.EventFrame = CreateFrame("Frame")
+APR.party.EventFrame:RegisterEvent("CHAT_MSG_ADDON")
+APR.party.EventFrame:SetScript("OnEvent", function(self, event, ...)
+    if (event == "CHAT_MSG_ADDON") then
+        local prefix, message, channel = ...;
+        if (prefix == "APRChat" and message and channel == "PARTY") then
+            APR.party:UpdateGroupListing(message)
+        end
+    end
+end
+)
