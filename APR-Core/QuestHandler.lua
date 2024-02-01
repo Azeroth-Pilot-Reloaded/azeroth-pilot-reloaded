@@ -1771,7 +1771,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.RouteSelection:RefreshFrameAnchor()
     end
     if event == "GROUP_JOINED" then
-        APR.party:ShowFrame()
         APR.party:SendGroupMessage()
     end
     if event == "GROUP_LEFT" then

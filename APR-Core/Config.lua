@@ -1035,6 +1035,7 @@ function APR.settings:createBlizzOptions()
                         set = function(info, value)
                             SetProfileOption(info, value)
                             APR.party:RefreshPartyFrameAnchor()
+                            APR.party:SendGroupMessage(true)
                         end,
                         disabled = function()
                             return not self.profile.enableAddon
