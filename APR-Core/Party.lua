@@ -101,10 +101,11 @@ end
 
 function APR.party:RefreshPartyFrameAnchor()
     if (not APR.settings.profile.showGroup or not APR.settings.profile.enableAddon) or not IsInGroup() or C_PetBattles.IsInBattle() then
+        self:RemoveTeam()
         PartyScreenPanel:Hide()
         return
     end
-    APR.party:UpdateFrameScale()
+    self:UpdateFrameScale()
     PartyScreenPanel:EnableMouse(true)
     LibWindow.RestorePosition(PartyScreenPanel)
     PartyScreenPanel:Show()
@@ -177,6 +178,7 @@ function APR.party:ReOrderTeam()
         container:Show()
         FRAME_MATE_HOLDER_HEIGHT = FRAME_MATE_HOLDER_HEIGHT - container:GetHeight()
     end
+    self:RefreshPartyFrameAnchor()
 end
 
 function APR.party:RemoveMateByName(name)
@@ -212,11 +214,12 @@ function APR.party:IsShowFrame()
     return PartyScreenPanel:IsShown()
 end
 
-function APR.party:SendGroupMessage()
+function APR.party:SendGroupMessage(forceSend)
+    forceSend = forceSend or false
     -- //TODO: send a serialized object with the route name, current step and the total steps
-    if (IsInGroup(LE_PARTY_CATEGORY_HOME) and APRData[APR.PlayerID][APR.ActiveRoute] and (APR.party.LastSent ~= APRData[APR.PlayerID][APR.ActiveRoute]) and not IsInInstance()) then
+    if ((IsInGroup(LE_PARTY_CATEGORY_HOME) and APRData[APR.PlayerID][APR.ActiveRoute] and (self.LastSent ~= APRData[APR.PlayerID][APR.ActiveRoute])) or forceSend) and not IsInInstance() then
         C_ChatInfo.SendAddonMessage("APRChat", APRData[APR.PlayerID][APR.ActiveRoute], "PARTY");
-        APR.party.LastSent = APRData[APR.PlayerID][APR.ActiveRoute]
+        self.LastSent = APRData[APR.PlayerID][APR.ActiveRoute]
     end
 end
 
@@ -241,20 +244,21 @@ local function UpdateGroupStep()
             APR.party:UpdateTeamMate(groupData.Name, groupData.Step, color) -- //TODO: add a color legend in the footer
         end
     end
+    APR.party:RefreshPartyFrameAnchor()
 end
 
 function APR.party:UpdateGroupListing(steps, username)
     -- Init the first member with your info
-    if not next(APR.party.GroupListSteps) then
-        APR.party.GroupListSteps[APR.Username] = { Step = steps, Name = APR.Username }
+    if not next(self.GroupListSteps) then
+        self.GroupListSteps[APR.Username] = { Step = steps, Name = APR.Username }
     end
     -- Update or add member
-    if APR.party.GroupListSteps[username] then
+    if self.GroupListSteps[username] then
         -- Existing member, updating steps
-        APR.party.GroupListSteps[username].Step = steps
+        self.GroupListSteps[username].Step = steps
     else
         -- new member, added to the list
-        APR.party.GroupListSteps[username] = { Step = steps, Name = username }
+        self.GroupListSteps[username] = { Step = steps, Name = username }
     end
 
     UpdateGroupStep()
@@ -267,10 +271,10 @@ function APR.party:CheckIfPartyMemberIsFriend()
     end
 
     -- Get FriendLists (WoW and BNet)
-    local FriendListTable = APR.party:GetFriendsList()
+    local FriendListTable = self:GetFriendsList()
 
     -- Check if a party member is a BNet or WoW friend
-    for groupindex = 1, 4 do
+    for groupindex = 1, 5 do
         local nameOfPartyMember = UnitName("party" .. groupindex)
         if (nameOfPartyMember) then
             if Contains(FriendListTable, nameOfPartyMember) then

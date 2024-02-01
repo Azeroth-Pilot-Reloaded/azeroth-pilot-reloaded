@@ -1771,7 +1771,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.RouteSelection:RefreshFrameAnchor()
     end
     if event == "GROUP_JOINED" then
-        APR.party:ShowFrame()
         APR.party:SendGroupMessage()
     end
     if event == "GROUP_LEFT" then
@@ -1779,5 +1778,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         -- because wow don't send the username of the leaver
         APR.party:RemoveTeam()
         APR.party:SendGroupMessage()
+        APR.party:RefreshPartyFrameAnchor()
     end
 end)
