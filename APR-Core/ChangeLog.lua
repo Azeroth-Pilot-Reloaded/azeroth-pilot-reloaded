@@ -70,6 +70,13 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.1.6", "2024-02-02" },
+        "#Bugs",
+        "- Fix wrong starting zone for speedrun prefab route",
+        "- Fix Party Frame displayed condition",
+        "- Add check to portal list before closest taxi for wrong zone transport",
+        "- Only display Auto share quest popup if you are in a group",
+
         { "v3.1.5", "2024-01-30" },
         "#Features",
         "- Auto HandIn Choice will no longer do anything in case of a quest with Comestic rewards",

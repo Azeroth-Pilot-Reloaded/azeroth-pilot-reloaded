@@ -14,6 +14,7 @@ APR.ClassLocalName, APR.ClassName, APR.ClassId = UnitClass("player")
 APR.Gender = UnitSex("player")
 APR.MaxLevel = 70
 APR.MaxLevelChromie = 60
+APR.MinBoostLvl = 60
 APR.PlayerID = APR.Username .. "-" .. APR.UserID
 -- APR.Season = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() // For classic
 
@@ -90,7 +91,8 @@ function APR:OnInitialize()
     _G["BINDING_NAME_" .. "CLICK APRItemButton:LeftButton"] = L["USE_QUEST_ITEM"]
 
     -- Register tot party frame
-    C_ChatInfo.RegisterAddonMessagePrefix("APRChat")
+    C_ChatInfo.RegisterAddonMessagePrefix("APRPartyData")
+    C_ChatInfo.RegisterAddonMessagePrefix("APRPartyDelete")
 end
 
 APR.CoreEventFrame = CreateFrame("Frame")
