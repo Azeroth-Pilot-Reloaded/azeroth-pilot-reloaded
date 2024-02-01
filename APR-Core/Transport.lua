@@ -44,7 +44,8 @@ function APR.transport:GetMeToRightZone()
         if not step then
             return
         end
-        local mapInfo = C_Map.GetMapInfo(mapID)
+        local nextZone = step.Zone or mapID
+        local mapInfo = C_Map.GetMapInfo(nextZone)
         if not mapInfo then
             return
         end
@@ -60,16 +61,21 @@ function APR.transport:GetMeToRightZone()
             reason = L["WRONG_ZONE"]
         end
         local destinationText = reason ..
-            " - " .. L["DESTINATION"] .. ": " .. mapInfo.name .. ", " .. parentMapInfo.name .. " (" .. mapID .. ")"
+            " - " .. L["DESTINATION"] .. ": " .. mapInfo.name .. ", " .. parentMapInfo.name .. " (" .. nextZone .. ")"
         APR.currentStep:AddExtraLineText("DESTINATION", destinationText)
         -- Hide the arrow
         APR.Arrow.Active = false
         local currentContinent = APR:GetContinent()
-        local isSameContinent, nextContinent = self:IsSameContinent(mapID)
+        local isSameContinent, nextContinent = self:IsSameContinent(nextZone)
         if not isSameContinent then
-            self:SwitchContinent(currentContinent, nextContinent, mapID)
+            self:GetPortal(currentContinent, nextContinent, nextZone)
             return
         else
+            local portal = self:GetPortal(currentContinent, nextContinent, nextZone)
+            if portal then
+                --portal found donc need to check the closestTaxi
+                return
+            end
             local posY, posX = UnitPosition("player")
             local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY = self:ClosestTaxi(posX, posY)
             if step.Coord then
@@ -83,7 +89,7 @@ function APR.transport:GetMeToRightZone()
                     APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
                     return
                 else
-                    local zoneEntryMapID, zoneEntryX, zoneEntryY = self:GetZoneMoveOrder(mapID, playerMapInfo)
+                    local zoneEntryMapID, zoneEntryX, zoneEntryY = self:GetZoneMoveOrder(nextZone, playerMapInfo)
                     if zoneEntryMapID then
                         local zoneEntryMapInfo = C_Map.GetMapInfo(zoneEntryMapID)
                         APR.currentStep:AddExtraLineText("GO_TO" .. zoneEntryMapInfo.name,
@@ -183,11 +189,9 @@ end
 ---@param CurContinent number the contient map ID
 ---@param nextContinent number the wanted reachable contient map ID
 ---@param nodeId number the wanted zone ID to reach in the nextContinent
-function APR.transport:SwitchContinent(CurContinent, nextContinent, nextZone)
+function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
     local function handlePortals(portalMappings)
-        local closestPortal = nil
-        local closestPortalPosition = nil
-        local closestDistance = nil
+        local closestPortal, closestPortalPosition, closestDistance = nil, nil, nil
         local playerY, playerX = UnitPosition("player")
         if not playerY or not playerX then
             return
@@ -237,8 +241,8 @@ function APR.transport:SwitchContinent(CurContinent, nextContinent, nextZone)
         end
     end
     if not portalPosition then
-        local nextZoneMapInfo = C_Map.GetMapInfo(nextZone)
-        APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. nextZoneMapInfo.name)
+        -- local nextZoneMapInfo = C_Map.GetMapInfo(nextZone)
+        -- APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. nextZoneMapInfo.name)
         return
     end
 
@@ -263,6 +267,7 @@ function APR.transport:SwitchContinent(CurContinent, nextContinent, nextZone)
         handleTaxi(playerTaxiName, portalTaxiName)
         APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
     end
+    return portal
 end
 
 --- Get Closes TaxiNode

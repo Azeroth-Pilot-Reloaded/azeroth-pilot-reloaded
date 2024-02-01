@@ -12,8 +12,8 @@ APR.RouteQuestStepList["A84-DesMephisto-Stormwind-War"] = {
         Range = 0.69,
         Coord = { y = -9007.3, x = 873.9 }
     },
-    { Waypoint = 34398,            Range = 48.86,          Coord = { y = -11810, x = -3205 } },
-    { Qpart = { [34398] = { 2 } }, GossipOptionID = 43231, RaidIcon = 78423,                 Range = 0.75, Coord = { y = -11810, x = -3205 } },
+    { Waypoint = 34398,            Range = 48.86,          Coord = { y = -11810, x = -3205 }, Zone = 17 },
+    { Qpart = { [34398] = { 2 } }, GossipOptionID = 43231, RaidIcon = 78423,                  Range = 0.75, Coord = { y = -11810, x = -3205 }, Zone = 17 },
     { ZoneDoneSave = 1 }
 }
 APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
