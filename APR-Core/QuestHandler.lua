@@ -192,12 +192,6 @@ local function APR_UpdateStep()
     if (APR.settings.profile.debug) then
         print("Function: APR_UpdateStep()")
     end
-    if (IsInGroup() and APR.settings.profile.showGroup and not IsInInstance()) then
-        APR.party:ShowFrame()
-    elseif (APR.party:IsShowFrame()) then
-        APR.party:RemoveTeam()
-        APR.party:HideFrame()
-    end
     if (APR.ActiveRoute and not APRData[APR.PlayerID][APR.ActiveRoute]) then
         APRData[APR.PlayerID][APR.ActiveRoute] = 1
     end
@@ -216,7 +210,10 @@ local function APR_UpdateStep()
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     -- Extra liners here
     local MissingQs = {}
+
+    -- update for group
     APR.party:SendGroupMessage()
+    APR.party:RefreshPartyFrameAnchor()
 
     if (APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep]) then
         local steps = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
@@ -1159,7 +1156,7 @@ APR_QH_EventFrame:RegisterEvent("QUEST_LOG_UPDATE")
 APR_QH_EventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
 APR_QH_EventFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
 APR_QH_EventFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
-APR_QH_EventFrame:RegisterEvent("CHAT_MSG_ADDON")
+
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_MONSTER_SAY")
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN")
 APR_QH_EventFrame:RegisterEvent("UNIT_AURA")
@@ -1257,12 +1254,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     if (event == "PLAYER_REGEN_DISABLED") then
         APR.InCombat = true
-    end
-    if (event == "CHAT_MSG_ADDON") then
-        local arg1, arg2, arg3, arg4 = ...;
-        if (arg1 == "APRChat" and arg3 == "PARTY") then
-            APR.party:UpdateGroupListing(tonumber(arg2), TrimPlayerServer(arg4))
-        end
     end
     if (event == "PLAYER_CHOICE_UPDATE") then
         local choiceInfo = C_PlayerChoice.GetCurrentPlayerChoiceInfo()
