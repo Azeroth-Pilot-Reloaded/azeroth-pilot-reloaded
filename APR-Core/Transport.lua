@@ -323,6 +323,7 @@ APR.transport.eventFrame:RegisterEvent("ZONE_CHANGED")
 APR.transport.eventFrame:RegisterEvent("ZONE_CHANGED_INDOORS")
 APR.transport.eventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 APR.transport.eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+APR.transport.eventFrame:RegisterEvent("WAYPOINT_UPDATE")
 APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
     local steps = APR.ActiveRoute and GetSteps(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
     if APR.settings.profile.showEvent then
@@ -334,6 +335,7 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
     if event == "ZONE_CHANGED"
         or event == "ZONE_CHANGED_INDOORS"
         or event == "ZONE_CHANGED_NEW_AREA"
+        or event == "WAYPOINT_UPDATE"
         or event == "PLAYER_ENTERING_WORLD" then
         if APR.IsInRouteZone then
             APR.transport:GetMeToRightZone()
