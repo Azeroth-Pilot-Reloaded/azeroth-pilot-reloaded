@@ -1304,23 +1304,32 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (npc_id and ((npc_id == 141584) or (npc_id == 142063) or (npc_id == 25809) or (npc_id == 45400) or (npc_id == 87391))) then
             return
         end
-        ------------------------------------
-        -- FlightPath
-        if steps and (steps.UseFlightPath or steps.GetFP) and not steps.NoAutoFlightMap then
-            local gossipOption = C_GossipInfo.GetOptions()
-            if next(gossipOption) then
-                for _, gossip in pairs(gossipOption) do
-                    if gossip.icon == 132057 then
-                        C_GossipInfo.SelectOption(gossip.gossipOptionID)
+        if steps and APR.settings.profile.autoGossip then
+            local function PickGossipByIcon(iconId)
+                local gossipOption = C_GossipInfo.GetOptions()
+                if next(gossipOption) then
+                    for _, gossip in pairs(gossipOption) do
+                        if gossip.icon == iconId then
+                            C_GossipInfo.SelectOption(gossip.gossipOptionID)
+                        end
                     end
                 end
             end
-        end
-        ------------------------------------
-        -- GOSSIP
-        if (APR.settings.profile.autoGossip) then
+            ------------------------------------
+            -- SetHS
+            if steps.SetHS then
+                PickGossipByIcon(136458)
+            end
+            ------------------------------------
+            -- FlightPath
+            if (steps.UseFlightPath or steps.GetFP) and not steps.NoAutoFlightMap then
+                PickGossipByIcon(132057)
+            end
+            ------------------------------------
+            -- GOSSIP
+
             -- GOSSIP HARDCODED
-            if (steps and (steps.Gossip or steps.GossipOptionID or steps.GossipOptionIDs)) then
+            if steps.Gossip or steps.GossipOptionID or steps.GossipOptionIDs then
                 if (steps.Gossip == 28202) then
                     APRGOSSIPCOUNT = APRGOSSIPCOUNT + 1
                     if (APRGOSSIPCOUNT == 1) then
