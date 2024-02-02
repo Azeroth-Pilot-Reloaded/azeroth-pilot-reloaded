@@ -626,7 +626,8 @@ local function APR_UpdateStep()
             end
         elseif steps.UseHS or steps.UseDalaHS or steps.UseGarrisonHS then
             local questKey, questText, useHSKey
-
+            -- To skip waypoint
+            APR.ArrowFrame.Button:Show()
             if steps.UseHS then
                 questKey = steps.UseHS
                 questText = L["USE_HEARTHSTONE"]
