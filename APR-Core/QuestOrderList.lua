@@ -331,7 +331,7 @@ function APR.questOrderList:AddStepFromRoute()
 
                 local isMaxLevel = UnitLevel("player") == APR.MaxLevel
                 for questID, objectives in pairs(IdList) do
-                    for objectiveIndex, _ in pairs(objectives) do
+                    for _, objectiveIndex in pairs(objectives) do
                         total = total + 1
                         local questObjectiveId = questID .. '-' .. objectiveIndex
                         -- //TODO Remove or add APR_BonusObj from quest handler
@@ -357,7 +357,7 @@ function APR.questOrderList:AddStepFromRoute()
                 local flagged = 0
                 local total = 0
                 for questID, objectives in pairs(IdList) do
-                    for objectiveIndex, _ in pairs(objectives) do
+                    for _, objectiveIndex in pairs(objectives) do
                         total = total + 1
                         local questObjectiveId = questID .. '-' .. objectiveIndex
                         if C_QuestLog.IsQuestFlaggedCompleted(questID) or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
