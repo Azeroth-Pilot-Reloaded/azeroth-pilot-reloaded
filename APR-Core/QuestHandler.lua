@@ -1156,7 +1156,6 @@ APR_QH_EventFrame:RegisterEvent("QUEST_LOG_UPDATE")
 APR_QH_EventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
 APR_QH_EventFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
 APR_QH_EventFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
-
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_MONSTER_SAY")
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN")
 APR_QH_EventFrame:RegisterEvent("UNIT_AURA")
@@ -1320,7 +1319,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         -- GOSSIP
         if (APR.settings.profile.autoGossip) then
             -- GOSSIP HARDCODED
-            if (steps and (steps.Gossip or steps.GossipOptionID)) then
+            if (steps and (steps.Gossip or steps.GossipOptionID or steps.GossipOptionIDs)) then
                 if (steps.Gossip == 28202) then
                     APRGOSSIPCOUNT = APRGOSSIPCOUNT + 1
                     if (APRGOSSIPCOUNT == 1) then
@@ -1363,15 +1362,17 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     if next(info) then
                         if steps.GossipOptionID then
                             C_GossipInfo.SelectOption(steps.GossipOptionID)
+                        elseif steps.GossipOptionIDs then
+                            for _, g in pairs(steps.GossipOptionIDs) do
+                                C_GossipInfo.SelectOption(g)
+                            end
                         else
-                            for i, v in pairs(info) do
+                            for _, v in pairs(info) do
                                 if (v.orderIndex + 1 == steps.Gossip) then
                                     C_GossipInfo.SelectOption(v.gossipOptionID)
                                 end
                             end
                         end
-                    else
-                        C_GossipInfo.SelectOptionByIndex(steps.Gossip)
                     end
                     --CHROMIE
                     if (steps.ChromiePick) then
