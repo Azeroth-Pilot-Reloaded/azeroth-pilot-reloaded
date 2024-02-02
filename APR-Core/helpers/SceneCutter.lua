@@ -35,5 +35,5 @@ APR.SceneCutterEventFrame:SetScript("OnEvent", function(self, event, ...)
             return
         end
     end
-    C_Timer.After(3, CinematicFrame_CancelCinematic)
+    C_Timer.After(0.5, CinematicFrame_CancelCinematic)
 end)
