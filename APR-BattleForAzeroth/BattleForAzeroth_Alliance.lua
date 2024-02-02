@@ -114,8 +114,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         Boat = 1,
         Name = "Southwind Station, Tiragarde Sound",
         NodeID = 2055,
-        x = 41.04169845581,
-        ZoneStepTrigger = { y = -145.05700683594, Range = 15 }
+        ZoneStepTrigger = { x = 41.04169845581, y = -145.05700683594, Range = 15 }
     },
     { PickUp = { 50542 },        Coord = { x = 40.7, y = -161 } },
     { PickUp = { 48070 },        Coord = { x = 85.9, y = -180 } },
@@ -165,8 +164,8 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         Boat = 1,
         Name = "Anglepoint Wharf, Tiragarde Sound",
         NodeID = 2052,
-        x = 1861.5400390625,
-        ZoneStepTrigger = { y = 790.83697509766, Range = 15 }
+
+        ZoneStepTrigger = { x = 1861.5400390625, y = 790.83697509766, Range = 15 }
     },
     { PickUp = { 48540 },                                            Coord = { x = 1850.7, y = 858.2 } },
     { Qpart = { [48540] = { 3 } },                                   Range = 0.75,                     Coord = { x = 1886.4, y = 826.7 } },
@@ -380,8 +379,8 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         Boat = 1,
         Name = "Firebreaker Expedition, Tiragarde Sound",
         NodeID = 2054,
-        x = 252.16700744629,
-        ZoneStepTrigger = { y = 801.13500976563, Range = 15 }
+
+        ZoneStepTrigger = { x = 252.16700744629, y = 801.13500976563, Range = 15 }
     },
     { Coord = { x = 333.2, y = 832.2 }, Done = { 51151 } },
     { PickUp = { 49225, 49229 },        Coord = { x = 333.2, y = 832.2 } },
@@ -709,8 +708,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
         Boat = 1,
         Name = "Eastpoint Station, Tiragarde Sound",
         NodeID = 2104,
-        x = -548.875,
-        ZoneStepTrigger = { y = 125.77600097656, Range = 15 }
+        ZoneStepTrigger = { x = -548.875, y = 125.77600097656, Range = 15 }
     },
     { Done = { 47485 },                 Coord = { x = -711.2, y = 162.6 } },
     { PickUp = { 47486, 47488, 47487 }, Coord = { x = -709.3, y = 163.8 } },
@@ -922,12 +920,12 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     { Done = { 48419 },                             Coord = { x = -1312.5, y = -1448.3 } },
     { PickUp = { 48505 },                           Coord = { x = -1312.5, y = -1448.3 } },
     {
-        ZoneStepTrigger = { x = -1147.8, y = -1284.1, Range = 30 },
         Qpart = { [48505] = { 1 } },
         RaidIcon = 126490,
         Gossip = 1,
         Range = 12.97,
-        Coord = { x = -1310.3, y = -1448.4 }
+        Coord = { x = -1310.3, y = -1448.4 },
+        ZoneStepTrigger = { x = -1147.8, y = -1284.1, Range = 30 },
     },
     { PickUp = { 48516 },          Coord = { x = -1147.8, y = -1284.1 }, Fillers = { [48505] = { 1 } } },
     { Qpart = { [48516] = { 1 } }, Fillers = { [48505] = { 1 } },        Range = 14.77,                      Coord = { x = -1147, y = -1290.1 } },
