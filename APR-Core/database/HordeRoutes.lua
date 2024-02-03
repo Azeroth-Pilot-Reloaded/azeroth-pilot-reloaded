@@ -47,7 +47,7 @@ if (APR.Faction == "Horde") then
         ["SL04 - Oribos"] = 1670,
         ["SL05 - Maldraxxus"] = 1536,
         ["SL06 - Oribos"] = 1670,
-        ["SL07 - The Maw"] = 1543,
+        ["SL07 - The Maw"] = 1960,
         ["SL08 - Oribos"] = 1670,
         ["SL09 - Maldraxxus"] = 1536,
         ["SL10 - Oribos"] = 1670,

@@ -465,7 +465,6 @@ APR.TaxiNodes = {
             [2410] = { x = 237.06799316406, y = 1708.1999511719, Name = "Ashen Strand, Nazjatar" },
             [2483] = { x = -525.21197509766, y = 2112.7900390625, Name = "The Tidal Conflux, Nazjatar" }
         },
-        [1560] = { [1865] = { x = -0.42614099383, y = 41.71569824219, Name = "Boost 2.0 - Alliance - Leave Point" } }
     },
     ["Neutral"] = {
         [12] = {
@@ -488,8 +487,6 @@ APR.TaxiNodes = {
             [557] = { x = -2676.1899414062, y = 4987.8701171875, Name = "Shrine of Aviana, Hyjal" },
             [558] = { x = -1760.5799560547, y = 5163.509765625, Name = "Grove of Aessina, Hyjal" },
             [559] = { x = -3569.8400878906, y = 5584.0600585938, Name = "Nordrassil, Hyjal" },
-            [586] = { x = 1241.3000488281, y = 2186.6899414062, Name = "Justin Test Node 1" },
-            [587] = { x = 1241.3000488281, y = 2186.6899414062, Name = "Justin Test Node 2" },
             [594] = { x = -844.99798583984, y = 6078.509765625, Name = "Whisperwind Grove, Felwood" },
             [595] = { x = -883.80603027344, y = 4734.16015625, Name = "Wildheart Point, Felwood" },
             [616] = { x = -3966.75, y = 4059.3999023438, Name = "Gates of Sothann, Hyjal" },
@@ -515,7 +512,6 @@ APR.TaxiNodes = {
             [160] = { x = 5501.1298828125, y = 2976.0100097656, Name = "Evergrove, Blade's Edge Mountains" },
             [171] = { x = 3650.1799316406, y = -3364.6799316406, Name = "Skettis" },
             [172] = { x = 7322.08984375, y = 2531.1000976562, Name = "Ogri'La" },
-            [197] = { x = 243.03999328613, y = -9148.6201171875, Name = "Test SP2" },
             [205] = { x = -7747.580078125, y = 6789.7900390625, Name = "Zul'Aman, Ghostlands" },
             [213] = { x = -6908.3701171875, y = 13012.700195312, Name = "Shattered Sun Staging Area" },
             [224] = { x = 0, y = 0, Name = "Borean Tundra, Naglevar" },
@@ -808,7 +804,6 @@ APR.TaxiNodes = {
             [2589] = { x = 657.875, y = -7747.3999023438, Name = "Claw's Edge, Ardenweald" },
             [2590] = { x = 798.73297119141, y = -6828.4799804688, Name = "Refugee Camp, Ardenweald" },
             [2591] = { x = 7746.8198242188, y = 4410.7900390625, Name = "Crucible of Souls" },
-            [2594] = { x = 1302.4100341797, y = -1815.6899414062, Name = "9.0 Maw - Oribos - Teleport In" },
             [2625] = { x = -5786.2099609375, y = -1714.8199462891, Name = "Elysian Hold, Bastion" },
             [2626] = { x = -4871.9501953125, y = -2943.6298828125, Name = "Hero's Rest, Bastion" },
             [2630] = { x = -4643.759765625, y = -4101.2001953125, Name = "Aspirant's Rest, Bastion" },
