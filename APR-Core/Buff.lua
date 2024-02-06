@@ -126,7 +126,7 @@ end
 
 function APR.Buff:UpdateBuffIcon(aura)
     for _, container in pairs(self.auras) do
-        if container.spellId == aura.spellId then
+        if aura.spellId and container.spellId == aura.spellId then
             container.texture:SetVertexColor(unpack(APR.Color.white))
             container.auraId = aura.auraInstanceID
             container:SetScript("OnEnter", function(self)
