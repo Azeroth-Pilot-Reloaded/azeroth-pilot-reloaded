@@ -25,6 +25,7 @@ APR.Color = {
     green = { 0, 1, 0 },
     lightGreen = { 80 / 255, 200 / 255, 120 / 255, 0.8 },
     blue = { 0, 87 / 255, 183 / 255 },
+    pink = { 1, 87 / 255, 183 / 255 },
     darkblue = { 0, 0.5, 0.5 },
     gray = { 105 / 255, 105 / 255, 105 / 255 },
     midGray = { 0.5, 0.5, 0.5 },
@@ -58,6 +59,7 @@ function APR:OnInitialize()
     APR.BookUpdAfterCombat = false
 
     -- APR INIT NEW SETTING
+    APR:Love()
     APR.settings:InitializeBlizOptions()
 
     -- APR Saved Data

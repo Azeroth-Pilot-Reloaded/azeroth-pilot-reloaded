@@ -138,3 +138,11 @@ function APR:PrintInfo(infoMessage)
         DEFAULT_CHAT_FRAME:AddMessage(lightBlueColorCode .. "APR: " .. infoMessage .. "|r")
     end
 end
+
+function APR:Love()
+    local currentDate = C_DateAndTime.GetCurrentCalendarTime()
+    if currentDate.month == 2 and currentDate.monthDay == 14 then
+        APR.Color.blue = APR.Color.pink
+        APR.Color.yellow = APR.Color.pink
+    end
+end
