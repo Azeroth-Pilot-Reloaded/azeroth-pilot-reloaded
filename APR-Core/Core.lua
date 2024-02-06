@@ -16,6 +16,22 @@ APR.MaxLevel = 70
 APR.MaxLevelChromie = 60
 APR.MinBoostLvl = 60
 APR.PlayerID = APR.Username .. "-" .. APR.UserID
+APR.Color = {
+    white = { 1, 1, 1 },
+    black = { 0, 0, 0 },
+    red = { 1, 0, 0 },
+    yellow = { 1, 1, 0 },
+    gold = { 1, 209 / 255, 0, 1 },
+    green = { 0, 1, 0 },
+    lightGreen = { 80 / 255, 200 / 255, 120 / 255, 0.8 },
+    blue = { 0, 87 / 255, 183 / 255 },
+    darkblue = { 0, 0.5, 0.5 },
+    gray = { 105 / 255, 105 / 255, 105 / 255 },
+    midGray = { 0.5, 0.5, 0.5 },
+    darkGray = { 0.2, 0.2, 0.2 },
+    defaultBackdrop = { 0, 0, 0, 0.75 },
+    defaultLightBackdrop = { 0, 0, 0, 0.4 }
+}
 -- APR.Season = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() // For classic
 
 
@@ -40,14 +56,6 @@ function APR:OnInitialize()
     APR.BookingList = {}
     APR.InCombat = false
     APR.BookUpdAfterCombat = false
-
-    -- Buff
-    -- //TODO REWORK SweatOfOurBrowBuffFrame
-
-    APR.SweatBuff = {}
-    APR.SweatBuff[1] = false
-    APR.SweatBuff[2] = false
-    APR.SweatBuff[3] = false
 
     -- APR INIT NEW SETTING
     APR.settings:InitializeBlizOptions()
@@ -85,6 +93,9 @@ function APR:OnInitialize()
 
     -- Init heirloom frame
     APR.heirloom:HeirloomOnInit()
+
+    -- Init Buff frame
+    APR.Buff:BuffFrameOnInit()
 
     -- APR Global Variables, UI oriented
     BINDING_HEADER_APR = APR.title -- Header text for APR's main frame

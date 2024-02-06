@@ -31,7 +31,7 @@ CurrentStepFrame:SetBackdrop({
     tile = true,
     tileSize = 16
 })
-CurrentStepFrame:SetBackdropColor(0, 0, 0, 0)
+CurrentStepFrame:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
 
 -- Create the step holder frame
 local CurrentStepFrame_StepHolder = CreateFrame("Frame", "CurrentStepFrame_StepHolder", CurrentStepFrame,
@@ -385,7 +385,7 @@ function APR.currentStep:ProgressBar(key, total, current)
         progressBar:SetSize(155, 20)
         progressBar:SetPoint("BOTTOM", CurrentStepFrameHeader, "BOTTOM", 0, -25)
         progressBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
-        progressBar:SetStatusBarColor(0, 87 / 255, 183 / 255)
+        progressBar:SetStatusBarColor(unpack(APR.Color.blue))
         progressBar:SetMinMaxValues(1, totalSteps)
         progressBar:SetValue(currentStep)
         progressBar:SetBackdrop({
@@ -393,7 +393,7 @@ function APR.currentStep:ProgressBar(key, total, current)
             tile = true,
             tileSize = 16
         })
-        progressBar:SetBackdropColor(0, 0, 0, 0.75)
+        progressBar:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
 
         local progressBarText = progressBar:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
         progressBarText:SetPoint("CENTER", progressBar, "CENTER", 0, 0)
@@ -598,13 +598,8 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
     end
     attribute = attribute or "item"
     local container = self.questsList[questsListKey]
-    if container == nil then
-        local containerId = next(self.questsList) or next(self.questsExtraTextList)
-        if containerId == nil then
-            return
-        else
-            container = self.questsList[containerId]
-        end
+    if not container then
+        return
     end
     local function iconName()
         if attribute == "item" then
@@ -648,9 +643,7 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
 
     IconButton.itemID = itemID
     IconButton.attribute = attribute
-    if IconButton then
-        container.IconButton = IconButton
-    end
+    container.IconButton = IconButton
 end
 
 function APR.currentStep:RemoveStepButtonByKey(questsListKey)
@@ -664,7 +657,7 @@ function APR.currentStep:RemoveStepButtonByKey(questsListKey)
     existingButton:Hide()
     existingButton:ClearAllPoints()
     self.questsList[questsListKey] = nil
-end  
+end
 
 function APR.currentStep:UpdateStepButtonCooldowns()
     for id, questContainer in pairs(self.questsList) do

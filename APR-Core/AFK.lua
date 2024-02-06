@@ -22,11 +22,11 @@ AfkFrame:SetBackdrop({
     tile = true,
     tileSize = 16
 })
-AfkFrame:SetBackdropColor(0, 0, 0, 0.75)
+AfkFrame:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
 
 local bar = candy:New("Interface\\TargetingFrame\\UI-StatusBar", FRAME_WIDTH, FRAME_HEIGHT)
 bar:SetLabel(L["AFK"])
-bar:SetColor(0, 87 / 255, 183 / 255, 1)
+bar:SetColor(unpack(APR.Color.blue))
 bar:SetShadowColor(0, 0, 0, 0.85)
 bar:SetPoint("CENTER", AfkFrame)
 

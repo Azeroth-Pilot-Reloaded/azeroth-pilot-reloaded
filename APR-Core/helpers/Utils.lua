@@ -113,6 +113,14 @@ function TrimPlayerServer(CLPName)
     return CL_First or CLPName
 end
 
+function SplitQuestAndObjective(questID)
+    local id, objective = questID:match("([^%-]+)%-([^%-]+)")
+    if id and objective then
+        return tonumber(id), tonumber(objective)
+    end
+    return tonumber(questID)
+end
+
 --- Display error in chat
 --- @param errorMessage string
 function APR:PrintError(errorMessage)

@@ -79,7 +79,7 @@ end
 function APR.map:OnInit()
     -- Init Minimap Line
     minimapLine = Minimap:CreateLine()
-    minimapLine:SetColorTexture(1, 0, 0)
+    minimapLine:SetColorTexture(unpack(APR.Color.red))
     minimapLine:SetStartPoint("CENTER", Minimap, 0, 0)
     minimapLine:SetEndPoint("CENTER", Minimap, 0, 0)
     minimapLine:SetColorTexture(unpack(APR.settings.profile.showMiniMapLineColor))
