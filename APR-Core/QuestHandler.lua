@@ -225,12 +225,6 @@ local function APR_UpdateStep()
         if (SkipStepCondition(steps)) then
             return
         end
-
-        if (APR.ActiveQuests and APR.ActiveQuests[57867] and APR.ActiveQuests[57867] ~= "C" and APR.IsInRouteZone) then
-            APR.SweatOfOurBrowBuffFrame:Show()
-        else
-            APR.SweatOfOurBrowBuffFrame:Hide()
-        end
         if (APR.ActiveRoute) then
             local function checkChromieTimeline(id)
                 if APR.Level >= APR.MaxLevelChromie then
@@ -349,6 +343,7 @@ local function APR_UpdateStep()
                 end
             end
         end
+        -- //TODO REWORK LOA
         if (steps and steps.LoaPick and steps.LoaPick == 123 and ((APR.ActiveQuests[47440] or C_QuestLog.IsQuestFlaggedCompleted(47440)) or (APR.ActiveQuests[47439] or C_QuestLog.IsQuestFlaggedCompleted(47439)))) then
             _G.UpdateNextStep()
             return
@@ -365,10 +360,16 @@ local function APR_UpdateStep()
             end
             return
         end
-        if (C_QuestLog.IsQuestFlaggedCompleted(47440) == true) then
+        if (C_QuestLog.IsQuestFlaggedCompleted(47440) or C_QuestLog.IsQuestFlaggedCompleted(47439)) then
             APRData[APR.PlayerID].LoaPick = 1
-        elseif (C_QuestLog.IsQuestFlaggedCompleted(47439) == true) then
-            APRData[APR.PlayerID]["LoaPick"] = 2
+        end
+        if steps.Buffs then
+            APR.Buff:RemoveAllBuffIcon()
+            for _, buff in pairs(steps.Buffs) do
+                APR.Buff:AddBuffIcon(buff)
+            end
+        else
+            APR.Buff:RemoveAllBuffIcon()
         end
         if (steps.LeaveQuest) then
             APR_LeaveQuest(steps.LeaveQuest)
@@ -810,12 +811,18 @@ function APR.SetButton()
     elseif steps.UseGarrisonHS then
         APR.currentStep:AddStepButton(steps.UseGarrisonHS .. "-" .. "UseGarrisonHS", 110560)
     elseif steps.Button then
-        for questID, itemID in pairs(steps.Button) do
-            APR.currentStep:AddStepButton(questID, itemID, 'item')
+        for questKey, itemID in pairs(steps.Button) do
+            local questID = select(1, SplitQuestAndObjective(questKey))
+            if not C_QuestLog.ReadyForTurnIn(questID) then
+                APR.currentStep:AddStepButton(questKey, itemID, 'item')
+            end
         end
     elseif steps.SpellButton then
-        for questID, spellID in pairs(steps.SpellButton) do
-            APR.currentStep:AddStepButton(questID, spellID, 'spell')
+        for questKey, spellID in pairs(steps.SpellButton) do
+            local questID = select(1, SplitQuestAndObjective(questKey))
+            if not C_QuestLog.ReadyForTurnIn(questID) then
+                APR.currentStep:AddStepButton(questKey, spellID, 'spell')
+            end
         end
     end
 
@@ -1190,46 +1197,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         C_Timer.After(0.2, APR_UpdQuestThing)
     end
     if (event == "UNIT_AURA") then
-        local arg1, arg2, arg3, arg4 = ...;
-
-        if (APR.SweatBuff[1] or APR.SweatBuff[2] or APR.SweatBuff[3]) then
-            local gotbuff1 = false
-            local gotbuff2 = false
-            local gotbuff3 = false
-            for i = 1, 20 do
-                local aura = C_UnitAuras.GetAuraDataByIndex("player", i)
-
-                if (aura.spellId == 311103) then
-                    gotbuff1 = true
-                elseif (aura.spellId == 311107) then
-                    gotbuff2 = true
-                elseif (aura.spellId == 311058) then
-                    gotbuff3 = true
-                end
-            end
-            if (APR.SweatBuff[1]) then
-                if (not gotbuff1) then
-                    APR.SweatBuff[1] = false
-                    APR.SweatOfOurBrowBuffFrame.Traps.texture:SetColorTexture(0.5, 0.1, 0.1, 1)
-                end
-            end
-            if (APR.SweatBuff[2]) then
-                if (not gotbuff2) then
-                    APR.SweatBuff[2] = false
-                    APR.SweatOfOurBrowBuffFrame.Traps2.texture:SetColorTexture(0.5, 0.1, 0.1, 1)
-                end
-            end
-            if (APR.SweatBuff[3]) then
-                if (not gotbuff3) then
-                    APR.SweatBuff[3] = false
-                    APR.SweatOfOurBrowBuffFrame.Traps3.texture:SetColorTexture(0.5, 0.1, 0.1, 1)
-                end
-            end
-        end
-        if (arg1 == "player" and APR.ActiveQuests and APR.ActiveQuests[57867]) then
-            APR.CheckSweatBuffz()
-            C_Timer.After(2, APR.CheckSweatBuffz)
-        end
         if steps and steps.Button then
             APR.currentStep:UpdateStepButtonCooldowns()
         end
@@ -1769,6 +1736,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.questOrderList:RefreshFrameAnchor()
         APR.heirloom:RefreshFrameAnchor()
         APR.RouteSelection:RefreshFrameAnchor()
+        APR.Buff:RefreshFrameAnchor()
     end
     if event == "GROUP_JOINED" then
         APR.party:SendGroupMessage()

@@ -46,5 +46,4 @@ Map.lua
 AFK.lua
 Heirloom.lua
 RouteSelection.lua
-
-SweatOfOurBrowBuffFrame.lua
+Buff.lua

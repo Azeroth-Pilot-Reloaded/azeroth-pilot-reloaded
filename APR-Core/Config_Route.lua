@@ -9,7 +9,7 @@ local alliance = "Alliance"
 local horde = "Horde"
 
 local optionsWidth = 1.2
-local lineColor = { 105 / 255, 105 / 255, 105 / 255, 0.4 }
+local lineColor = { unpack(APR.Color.gray), 0.4 }
 local customPathListeWidget = nil
 local tabRouteListWidget = nil
 local currentTabName = nil
@@ -533,7 +533,7 @@ function SetRouteListTab(widget, name)
                 end
             end)
             if IsRouteDisabled(name, route.routeName) then
-                nameText:SetTextColor(0.5, 0.5, 0.5)
+                nameText:SetTextColor(unpack(APR.Color.midGray))
                 lineContainer:SetScript("OnMouseDown", nil)
             end
 

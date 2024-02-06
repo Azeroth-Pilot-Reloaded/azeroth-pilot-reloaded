@@ -19,7 +19,7 @@ HeirloomFrame:SetBackdrop({
     tile = true,
     tileSize = 16
 })
-HeirloomFrame:SetBackdropColor(0, 0, 0, 0.4)
+HeirloomFrame:SetBackdropColor(unpack(APR.Color.defaultLightBackdrop))
 
 
 -- Create the body frame

@@ -54,7 +54,7 @@ function APR.settings:InitializeSettings()
             currentStepShow = true,
             currentStepLock = false,
             currentStepScale = 1,
-            currentStepbackgroundColorAlpha = { 0, 0, 0, 0.4 },
+            currentStepbackgroundColorAlpha = APR.Color.defaultLightBackdrop,
             currentStepAttachFrameToQuestLog = false,
             currentStepQuestButtonPositionRight = false,
             -- quest order list
@@ -62,7 +62,7 @@ function APR.settings:InitializeSettings()
             showQuestOrderList = false,
             questOrderListLock = false,
             questOrderListScale = 1,
-            questOrderListbackgroundColorAlpha = { 0, 0, 0, 0.4 },
+            questOrderListbackgroundColorAlpha = APR.Color.defaultLightBackdrop,
             -- arrow
             showArrow = true,
             lockArrow = false,
@@ -73,29 +73,31 @@ function APR.settings:InitializeSettings()
             -- map
             mapMinimapSameColor = true,
             showMapLine = true,
-            showMapLineColor = { 80 / 255, 200 / 255, 120 / 255, 0.8 },
+            showMapLineColor = APR.Color.lightGreen,
             showMapLineThickness = 8,
             mapshowNextSteps = true,
-            mapshowNextStepsColor = { 80 / 255, 200 / 255, 120 / 255, 0.8 },
+            mapshowNextStepsColor = APR.Color.lightGreen,
             mapshowNextStepsCount = 2,
             mapshowNextStepsSize = 16,
             mapshowNextStepsTextScale = 1,
-            mapshowNextStepsColorText = { 1, 209 / 255, 0, 1 },
+            mapshowNextStepsColorText = APR.Color.gold,
             -- minimap
             minimap = { minimapPos = 250 },
             enableMinimapButton = true,
             showMiniMapLine = true,
-            showMiniMapLineColor = { 80 / 255, 200 / 255, 120 / 255, 0.8 },
+            showMiniMapLineColor = APR.Color.lightGreen,
             showMiniMapLineThickness = 2,
             minimapshowNextSteps = true,
-            minimapshowNextStepsColor = { 80 / 255, 200 / 255, 120 / 255, 0.8 },
+            minimapshowNextStepsColor = APR.Color.lightGreen,
             minimapshowNextStepsCount = 2,
             minimapshowNextStepsSize = 16,
             minimapshowNextStepsTextScale = 1,
-            minimapshowNextStepsColorText = { 1, 209 / 255, 0, 1 },
+            minimapshowNextStepsColorText = APR.Color.gold,
             -- Heirloom
             heirloomFrame = {},
             heirloomWarning = false,
+            --buff
+            buffFrame = {},
             -- group
             groupFrame = {},
             showGroup = true,
@@ -304,6 +306,7 @@ function APR.settings:createBlizzOptions()
                         set = function(info, r, g, b, a)
                             SetProfileOption(info, { r, g, b, a })
                             APR.currentStep:UpdateBackgroundColorAlpha()
+                            APR.Buff:UpdateBackgroundColorAlpha()
                         end,
                         disabled = function()
                             return not self.profile.currentStepShow or not self.profile.enableAddon or
@@ -443,7 +446,7 @@ function APR.settings:createBlizzOptions()
                         type = 'execute',
                         width = optionsWidth,
                         func = function()
-                            self.profile.questOrderListbackgroundColorAlpha = { 0, 0, 0, 0.4 }
+                            self.profile.questOrderListbackgroundColorAlpha = APR.Color.defaultLightBackdrop
                             APR.questOrderList:ResetPosition()
                         end,
                         disabled = function()
@@ -1307,8 +1310,9 @@ function APR.settings:CreateMiniMapButton()
                 toggleAddon = "|c33ecc00f " .. L["ENABLE"] .. "|r"
             end
             tooltip:AddLine(APR.title)
-            tooltip:AddLine(L["LEFT_CLICK"] .. ": |cffeda55f" .. L["SHOW_MENU"] .. "|r", 1, 1, 1)
-            tooltip:AddLine(L["RIGHT_CLICK"] .. ": " .. toggleAddon .. "|cffeda55f " .. L["ADDON"] .. "|r", 1, 1, 1)
+            tooltip:AddLine(L["LEFT_CLICK"] .. ": |cffeda55f" .. L["SHOW_MENU"] .. "|r", unpack(APR.Color.white))
+            tooltip:AddLine(L["RIGHT_CLICK"] .. ": " .. toggleAddon .. "|cffeda55f " .. L["ADDON"] .. "|r",
+                unpack(APR.Color.white))
         end
     })
 
@@ -1329,6 +1333,7 @@ function APR.settings:ToggleAddon()
     APR.questOrderList:RefreshFrameAnchor()
     APR.party:RefreshPartyFrameAnchor()
     APR.heirloom:RefreshFrameAnchor()
+    APR.Buff:RefreshFrameAnchor()
     APR.RouteSelection:RefreshFrameAnchor()
     APR.map:ToggleMapPins()
 end

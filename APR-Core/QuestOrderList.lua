@@ -28,7 +28,7 @@ QuestOrderListFrame:SetBackdrop({
     tile = true,
     tileSize = 16
 })
-QuestOrderListFrame:SetBackdropColor(0, 0, 0, 0)
+QuestOrderListFrame:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
 
 QuestOrderListFrame:SetMovable(true)
 QuestOrderListFrame:SetResizable(true)
@@ -155,10 +155,10 @@ local SetCurrentStepIndicator = function(stepindex)
     local container = APR.questOrderList.stepList[stepindex]
     container.indexFont:SetFontObject("GameFontHighlight")
     container.titleFont:SetFontObject("GameFontHighlight")
-    container.indexFont:SetTextColor(1, 1, 0)
-    container.titleFont:SetTextColor(1, 1, 0)
+    container.indexFont:SetTextColor(unpack(APR.Color.yellow))
+    container.titleFont:SetTextColor(unpack(APR.Color.yellow))
     for _, questFont in pairs(container.questFonts) do
-        questFont:SetTextColor(1, 1, 1)
+        questFont:SetTextColor(unpack(APR.Color.white))
     end
 
     local scrollFrame = QuestOrderListFrame_ScrollFrame
@@ -180,11 +180,11 @@ local function CreateTextFont(parent, text, width, color)
     fontString:SetText(text)
     fontString:SetWidth(width)
     if color == "gray" then
-        fontString:SetTextColor(105 / 255, 105 / 255, 105 / 255)
+        fontString:SetTextColor(unpack(APR.Color.gray))
     elseif color == "green" then
-        fontString:SetTextColor(0, 1, 0)
+        fontString:SetTextColor(unpack(APR.Color.green))
     else
-        fontString:SetTextColor(0.2, 0.2, 0.2)
+        fontString:SetTextColor(unpack(APR.Color.darkGray))
     end
     return fontString
 end

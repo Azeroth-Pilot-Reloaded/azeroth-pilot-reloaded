@@ -133,9 +133,9 @@ local AddTeamMate = function(username, currentStep, totalSteps, isSameRoute, col
     fontIndex:SetPoint("TOPRIGHT", 0, -2)
     fontIndex:SetText(isSameRoute and currentStep or '-')
     if color == 'gray' or not isSameRoute then
-        fontIndex:SetTextColor(105 / 255, 105 / 255, 105 / 255)
+        fontIndex:SetTextColor(unpack(APR.Color.gray))
     else
-        fontIndex:SetTextColor(0, 1, 0)
+        fontIndex:SetTextColor(unpack(APR.Color.green))
     end
     fontIndex:SetFontObject("GameFontNormalLarge")
 
@@ -147,7 +147,7 @@ local AddTeamMate = function(username, currentStep, totalSteps, isSameRoute, col
         tile = true,
         tileSize = 16
     })
-    container:SetBackdropColor(0, 0, 0, 0.75)
+    container:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
 
     return container
 end

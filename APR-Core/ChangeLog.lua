@@ -18,7 +18,7 @@ ChangeLogFrame:SetBackdrop({
     tile = true,
     tileSize = 16
 })
-ChangeLogFrame:SetBackdropColor(0, 0, 0, 0.75)
+ChangeLogFrame:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
 ChangeLogFrame:EnableMouse(true)
 
 local CloseButton = CreateFrame("Button", nil, ChangeLogFrame, "UIPanelCloseButton")
