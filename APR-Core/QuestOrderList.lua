@@ -117,7 +117,7 @@ function APR.questOrderList:QuestOrderListFrameOnInit()
 end
 
 function APR.questOrderList:RefreshFrameAnchor()
-    if (not APR.settings.profile.showQuestOrderList or not APR.settings.profile.enableAddon or IsInInstance() or C_PetBattles.IsInBattle()) then
+    if (not APR.settings.profile.showQuestOrderList or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or APR:IsInInstanceQuest()) then
         QuestOrderListPanel:Hide()
         return
     end
@@ -239,6 +239,7 @@ function APR.questOrderList:RemoveSteps()
     end
     self.stepList = {}
     FRAME_DATA_HEIGHT = -5
+    QuestOrderListPanel:Hide()
 end
 
 function APR.questOrderList:UpdateFrameContents()
@@ -272,7 +273,7 @@ function APR.questOrderList:UpdateFrameContents()
 end
 
 function APR.questOrderList:AddStepFromRoute()
-    if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.RouteQuestStepList[APR.ActiveRoute] or IsInInstance() or not APR.routeconfig:HasRouteInCustomPaht() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.RouteQuestStepList[APR.ActiveRoute] or not APR.routeconfig:HasRouteInCustomPaht() or APR:IsInInstanceQuest() then
         self:RemoveSteps()
         return
     end
@@ -286,6 +287,7 @@ function APR.questOrderList:AddStepFromRoute()
     if not CurStep then
         return
     end
+    QuestOrderListPanel:Show()
     CurStep = CurStep - (APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] or 0)
     -- can't use id from the loop due to faction/race/class/achievement step option
     local stepIndex = 1

@@ -146,3 +146,11 @@ function APR:Love()
         APR.Color.yellow = APR.Color.pink
     end
 end
+
+function APR:IsInInstanceQuest()
+    local steps = APR.ActiveRoute and GetSteps(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
+    if steps and IsInInstance() then
+        return not steps.InstanceQuest
+    end
+    return IsInInstance()
+end
