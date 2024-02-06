@@ -70,6 +70,26 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.1.7", "2024-02-06" },
+        "#Features",
+        "- Add Buff frame for mandatory quest step buff (+ remove old sweatOfOurBrowBuff for Sl quest)",
+        "- Add auto gossip for Set HS step",
+
+        "#Bugs",
+        "- Fix Qpart/Qpartpart step details in quest order list",
+        "- Fix wrong distance on waypoint step",
+        "- Recude the Scene cutter timer before cut",
+        "- Fix Boat trigger typo",
+        "- Add Skip waypoint button for use HS step",
+        "- Fix auto handin quest with multiple rewards",
+        "- Fix locales error for Giggling Basket quest emote",
+
+        "#Route",
+        "- Fix all SL route (Gossip, zones, missing steps, waypoint, flight, ...)",
+        "- Add InstanceQuest step option for storyline intance",
+        "- Add Buff step option (with buff frame feature)",
+        "- Add GossipOptionIDs step option for multiple gossip on the same step",
+
         { "v3.1.6", "2024-02-02" },
         "#Bugs",
         "- Fix wrong starting zone for speedrun prefab route",
