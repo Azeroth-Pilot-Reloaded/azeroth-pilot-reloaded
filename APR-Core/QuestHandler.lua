@@ -1292,10 +1292,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             end
             ------------------------------------
             -- GOSSIP
-
-            -- GOSSIP HARDCODED
             if steps.Gossip or steps.GossipOptionID or steps.GossipOptionIDs then
-                if (steps.Gossip == 28202) then
+                if (steps.Gossip == 28202) then -- GOSSIP HARDCODED
                     APRGOSSIPCOUNT = APRGOSSIPCOUNT + 1
                     if (APRGOSSIPCOUNT == 1) then
                         C_GossipInfo.SelectOptionByIndex(1)
@@ -1688,12 +1686,12 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if npc_id and name then
             if npc_id == 159477 then -- quest 57870
                 local gigglingBasket = {
-                    [L["GIGGLING_BASKET_ONE_TIME"]] = "cheer",
-                    [L["GIGGLING_BASKET_SPRIGGANS"]] = "flex",
-                    [L["GIGGLING_BASKET_MANY"]] = "thank",
-                    [L["GIGGLING_BASKET_FAE"]] = "introduce",
-                    [L["GIGGLING_BASKET_FEET"]] = "dance",
-                    [L["GIGGLING_BASKET_HELP"]] = "praise",
+                    ["GIGGLING_BASKET_ONE_TIME"] = "cheer",
+                    ["GIGGLING_BASKET_SPRIGGANS"] = "flex",
+                    ["GIGGLING_BASKET_MANY"] = "thank",
+                    ["GIGGLING_BASKET_FAE"] = "introduce",
+                    ["GIGGLING_BASKET_FEET"] = "dance",
+                    ["GIGGLING_BASKET_HELP"] = "praise",
                 }
                 for key, emote in pairs(gigglingBasket) do
                     local message = L[key]
