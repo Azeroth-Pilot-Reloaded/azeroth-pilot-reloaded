@@ -117,7 +117,7 @@ function APR.questOrderList:QuestOrderListFrameOnInit()
 end
 
 function APR.questOrderList:RefreshFrameAnchor()
-    if (not APR.settings.profile.showQuestOrderList or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or APR:IsInInstanceQuest()) then
+    if (not APR.settings.profile.showQuestOrderList or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not APR:IsInInstanceQuest()) then
         QuestOrderListPanel:Hide()
         return
     end
@@ -273,7 +273,7 @@ function APR.questOrderList:UpdateFrameContents()
 end
 
 function APR.questOrderList:AddStepFromRoute()
-    if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.RouteQuestStepList[APR.ActiveRoute] or not APR.routeconfig:HasRouteInCustomPaht() or APR:IsInInstanceQuest() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.RouteQuestStepList[APR.ActiveRoute] or not APR.routeconfig:HasRouteInCustomPaht() or not APR:IsInInstanceQuest() then
         self:RemoveSteps()
         return
     end

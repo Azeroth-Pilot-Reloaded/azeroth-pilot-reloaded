@@ -758,7 +758,7 @@ local function APR_UpdateStep()
         end
         if steps.Grind then
             if APR.Level < steps.Grind then
-                APR.currentStep:AddExtraLineText("GRIND", L.Grind .. " " .. steps.Grind)
+                APR.currentStep:AddExtraLineText("GRIND", L["GRIND"] .. " " .. steps.Grind)
             else
                 _G.UpdateNextStep()
             end
