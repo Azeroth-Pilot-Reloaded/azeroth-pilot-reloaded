@@ -1703,7 +1703,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     },
     {
         Qpart = { [57865] = { 3 } },
-        Gossip = 1,
+        GossipOptionID = 49621,
         Fillers = { [57866] = { 1 }, [57867] = { 1 }, [57869] = { 1 } },
         Buffs = {
             { spellId = 311103, tooltipMessage = "FRESHLEAF_BUFF" },
@@ -1907,7 +1907,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { y = -6927.3, x = 38.2 }
     },
     { Waypoint = 60905,                    Range = 9.59,                       Coord = { y = -6922.5, x = 8 } },
-    { Qpart = { [60905] = { 2 } },         Gossip = 2,                         RaidIcon = 160962,                  Range = 0.69,                      Coord = { y = -6880.3, x = 31.2 } },
+    { Qpart = { [60905] = { 2 } },         GossipOptionID = 51488,             RaidIcon = 160962,                  Range = 0.69,                      Coord = { y = -6880.3, x = 31.2 } },
     { Done = { 60905 },                    Coord = { y = -6872.7, x = 27.8 } },
     { PickUp = { 58473 },                  Coord = { y = -6872.7, x = 27.8 } },
     { Qpart = { [58473] = { 1 } },         Gossip = 1,                         Range = 0.69,                       Coord = { y = -6872.7, x = 28.8 }, RaidIcon = 160963 },
@@ -1985,7 +1985,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     { Qpart = { [58590] = { 3, 2 } },               Range = 65.42,                                  Coord = { y = -6723.9, x = -53 } },
     { Coord = { y = -6879.3, x = 30.8 },            Done = { 58590, 60578 } },
     { PickUp = { 58593 },                           Coord = { y = -6879.3, x = 30.8 } },
-    { Qpart = { [58593] = { 1 } },                  Gossip = 2,                                     RaidIcon = 160962,                 Range = 0.69,                      Coord = { y = -6879.4, x = 31.8 } },
+    { Qpart = { [58593] = { 1 } },                  GossipOptionID = 51487,                         RaidIcon = 160962,                 Range = 0.69,                      Coord = { y = -6879.4, x = 31.8 } },
     {
         ExtraLineText = "KILL_NPCS_FASTER_YSERA_DIES",
         Qpart = { [58593] = { 2 } },
@@ -2054,7 +2054,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     { Waypoint = 58723,                    Range = 16.41,                      Coord = { y = -6972.5, x = 901.9 } },
     { Waypoint = 58723,                    Range = 11.25,                      Coord = { y = -6911.9, x = 923.2 } },
     { Qpart = { [58723] = { 2 } },         Range = 0.61,                       Coord = { y = -6887.4, x = 1004.2 } },
-    { Qpart = { [58723] = { 3 } },         Gossip = 1,                         RaidIcon = 162968,                  Range = 0.69,                       Coord = { y = -6868.9, x = 1027.5 } },
+    { Qpart = { [58723] = { 3 } },         GossipOptionID = 52271,             RaidIcon = 162968,                  Range = 0.69,                       Coord = { y = -6868.9, x = 1027.5 } },
     { Done = { 58723 },                    Coord = { y = -6869.8, x = 1027.4 } },
     { PickUp = { 58724 },                  Coord = { y = -6869.8, x = 1027.4 } },
     { UseHS = 58724,                       Coord = { y = -6871.2, x = 1030.7 } },
@@ -3994,7 +3994,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
         Coord = { y = -6927.3, x = 38.2 }
     },
     { Waypoint = 60905,                    Range = 9.59,                       Coord = { y = -6922.5, x = 8 } },
-    { Qpart = { [60905] = { 2 } },         Gossip = 2,                         RaidIcon = 160962,                  Range = 0.69,                      Coord = { y = -6880.3, x = 31.2 } },
+    { Qpart = { [60905] = { 2 } },         GossipOptionID = 51488,             RaidIcon = 160962,                  Range = 0.69,                      Coord = { y = -6880.3, x = 31.2 } },
     { Done = { 60905 },                    Coord = { y = -6872.7, x = 27.8 } },
     { PickUp = { 58473 },                  Coord = { y = -6872.7, x = 27.8 } },
     { Qpart = { [58473] = { 1 } },         Gossip = 1,                         Range = 0.69,                       Coord = { y = -6872.7, x = 28.8 }, RaidIcon = 160963 },
@@ -4072,7 +4072,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
     { Qpart = { [58590] = { 3, 2 } },               Range = 65.42,                                  Coord = { y = -6723.9, x = -53 } },
     { Coord = { y = -6879.3, x = 30.8 },            Done = { 58590, 60578 } },
     { PickUp = { 58593 },                           Coord = { y = -6879.3, x = 30.8 } },
-    { Qpart = { [58593] = { 1 } },                  Gossip = 2,                                     RaidIcon = 160962,                 Range = 0.69,                      Coord = { y = -6879.4, x = 31.8 } },
+    { Qpart = { [58593] = { 1 } },                  GossipOptionID = 51487,                         RaidIcon = 160962,                 Range = 0.69,                      Coord = { y = -6879.4, x = 31.8 } },
     {
         ExtraLineText = "KILL_NPCS_FASTER_YSERA_DIES",
         Qpart = { [58593] = { 2 } },
@@ -4141,7 +4141,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
     { Waypoint = 58723,                    Range = 16.41,                      Coord = { y = -6972.5, x = 901.9 } },
     { Waypoint = 58723,                    Range = 11.25,                      Coord = { y = -6911.9, x = 923.2 } },
     { Qpart = { [58723] = { 2 } },         Range = 0.61,                       Coord = { y = -6887.4, x = 1004.2 } },
-    { Qpart = { [58723] = { 3 } },         Gossip = 1,                         RaidIcon = 162968,                   Range = 0.69,                       Coord = { y = -6868.9, x = 1027.5 } },
+    { Qpart = { [58723] = { 3 } },         GossipOptionID = 52271,             RaidIcon = 162968,                   Range = 0.69,                       Coord = { y = -6868.9, x = 1027.5 } },
     { Done = { 58723 },                    Coord = { y = -6869.8, x = 1027.4 } },
     { PickUp = { 58724 },                  Coord = { y = -6869.8, x = 1027.4 } },
     { UseHS = 58724,                       Coord = { y = -6871.2, x = 1030.7 } },
@@ -5899,7 +5899,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
         Coord = { y = -6927.3, x = 38.2 }
     },
     { Waypoint = 60905,                    Range = 9.59,                       Coord = { y = -6922.5, x = 8 } },
-    { Qpart = { [60905] = { 2 } },         Gossip = 2,                         RaidIcon = 160962,                  Range = 0.69,                      Coord = { y = -6880.3, x = 31.2 } },
+    { Qpart = { [60905] = { 2 } },         GossipOptionID = 51488,             RaidIcon = 160962,                  Range = 0.69,                      Coord = { y = -6880.3, x = 31.2 } },
     { Done = { 60905 },                    Coord = { y = -6872.7, x = 27.8 } },
     { PickUp = { 58473 },                  Coord = { y = -6872.7, x = 27.8 } },
     { Qpart = { [58473] = { 1 } },         Gossip = 1,                         Range = 0.69,                       Coord = { y = -6872.7, x = 28.8 }, RaidIcon = 160963 },
@@ -5977,7 +5977,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
     { Qpart = { [58590] = { 3, 2 } },               Range = 65.42,                                  Coord = { y = -6723.9, x = -53 } },
     { Coord = { y = -6879.3, x = 30.8 },            Done = { 58590, 60578 } },
     { PickUp = { 58593 },                           Coord = { y = -6879.3, x = 30.8 } },
-    { Qpart = { [58593] = { 1 } },                  Gossip = 2,                                     RaidIcon = 160962,                 Range = 0.69,                      Coord = { y = -6879.4, x = 31.8 } },
+    { Qpart = { [58593] = { 1 } },                  GossipOptionID = 51487,                         RaidIcon = 160962,                 Range = 0.69,                      Coord = { y = -6879.4, x = 31.8 } },
     {
         ExtraLineText = "KILL_NPCS_FASTER_YSERA_DIES",
         Qpart = { [58593] = { 2 } },
@@ -6046,7 +6046,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
     { Waypoint = 58723,                    Range = 16.41,                      Coord = { y = -6972.5, x = 901.9 } },
     { Waypoint = 58723,                    Range = 11.25,                      Coord = { y = -6911.9, x = 923.2 } },
     { Qpart = { [58723] = { 2 } },         Range = 0.61,                       Coord = { y = -6887.4, x = 1004.2 } },
-    { Qpart = { [58723] = { 3 } },         Gossip = 1,                         RaidIcon = 162968,                   Range = 0.69,                       Coord = { y = -6868.9, x = 1027.5 } },
+    { Qpart = { [58723] = { 3 } },         GossipOptionID = 52271,             RaidIcon = 162968,                   Range = 0.69,                       Coord = { y = -6868.9, x = 1027.5 } },
     { Done = { 58723 },                    Coord = { y = -6869.8, x = 1027.4 } },
     { PickUp = { 58724 },                  Coord = { y = -6869.8, x = 1027.4 } },
     { UseHS = 58724,                       Coord = { y = -6871.2, x = 1030.7 } },

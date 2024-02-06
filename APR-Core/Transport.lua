@@ -381,23 +381,27 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
                 end
             end
         end
-    elseif event == "PLAYER_CONTROL_LOST" and UnitOnTaxi("player") then
-        if steps and steps.ETA then
-            APR.AFK:SetAfkTimer(steps.ETA)
-        elseif APR.transport.CurrentTaxiNode and APR.transport.StepTaxiNode then
-            -- Reccord timer or play if already in the table
-            local timer = APRTaxiNodesTimer
-                [APR.transport.CurrentTaxiNode.name .. "-" .. APR.transport.StepTaxiNode.name]
-            if not timer then
-                APR.AFK.TaxiTimerRecorder:Play()
-            else
-                APR.AFK:SetAfkTimer(timer)
+    elseif event == "PLAYER_CONTROL_LOST" then
+        C_Timer.After(2, function()
+            if UnitOnTaxi("player") then
+                if steps and steps.ETA then
+                    APR.AFK:SetAfkTimer(steps.ETA)
+                elseif next(APR.transport.CurrentTaxiNode) and next(APR.transport.StepTaxiNode) then
+                    -- Reccord timer or play if already in the table
+                    local timer = APRTaxiNodesTimer
+                        [APR.transport.CurrentTaxiNode.name .. "-" .. APR.transport.StepTaxiNode.name]
+                    if not timer then
+                        APR.AFK.TaxiTimerRecorder:Play()
+                    else
+                        APR.AFK:SetAfkTimer(timer)
+                    end
+                end
+                if steps and steps.UseFlightPath and not APR.transport.wrongZoneDestTaxiName then
+                    UpdateNextStep()
+                end
+                -- reset
+                APR.transport.wrongZoneDestTaxiName = nil
             end
-        end
-        if steps and steps.UseFlightPath then
-            UpdateNextStep()
-        end
-        -- reset
-        APR.transport.wrongZoneDestTaxiName = nil
+        end)
     end
 end)
