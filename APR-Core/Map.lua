@@ -179,7 +179,7 @@ function APR.map:RemoveMinimapLine()
 end
 
 function APR.map:UpdateMinimapLine()
-    if not APR.settings.profile.enableAddon or not APR.settings.profile.showMiniMapLine or APR.Arrow.x == 0 or APR:IsInInstanceQuest() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.showMiniMapLine or APR.Arrow.x == 0 or not APR:IsInInstanceQuest() then
         self:RemoveMinimapLine()
         return
     end
@@ -206,7 +206,7 @@ function APR.map:UpdateLine()
         self:RemoveMapLine()
         return
     end
-    if WorldMapFrame:GetMapID() == COSMIC_MAP_ID or WorldMapFrame:GetMapID() == WORLD_MAP_ID or APR:IsInInstanceQuest() then
+    if WorldMapFrame:GetMapID() == COSMIC_MAP_ID or WorldMapFrame:GetMapID() == WORLD_MAP_ID or not APR:IsInInstanceQuest() then
         self:RemoveMapLine()
         return
     end

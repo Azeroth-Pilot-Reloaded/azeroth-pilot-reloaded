@@ -149,8 +149,9 @@ end
 
 function APR:IsInInstanceQuest()
     local steps = APR.ActiveRoute and GetSteps(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
-    if steps and IsInInstance() then
-        return not steps.InstanceQuest
+    local isIntance, type = IsInInstance()
+    if steps and steps.InstanceQuest then
+        return isIntance and type == "scenario"
     end
-    return IsInInstance()
+    return not isIntance
 end

@@ -166,7 +166,7 @@ function APR.Arrow:CalculPosition()
         return
     end
 
-    if not APR.settings.profile.showArrow or not APR.Arrow.Active or APR.Arrow.x == 0 or C_PetBattles.IsInBattle() or APR:IsInInstanceQuest() then
+    if not APR.settings.profile.showArrow or not APR.Arrow.Active or APR.Arrow.x == 0 or C_PetBattles.IsInBattle() or not APR:IsInInstanceQuest() then
         APR.ArrowFrame:Hide()
         return
     end

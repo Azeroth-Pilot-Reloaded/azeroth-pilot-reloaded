@@ -12,16 +12,15 @@ function APR.transport:GetMeToRightZone()
         print("Function: APR.transport:GetMeToRightZone()")
     end
 
-    if APR:IsInInstanceQuest() or not APRCustomPath[APR.PlayerID] then
-        return
-    end
-
     local routeZoneMapIDs, mapID, routeName, expansion = self:GetRouteMapIDsAndName()
     if (routeZoneMapIDs and mapID and routeName) then
         APR.ActiveRoute = routeName
     end
     if not APR.ActiveRoute or not next(APRCustomPath[APR.PlayerID]) then
         APR.routeconfig:CheckIsCustomPathEmpty()
+        return
+    end
+    if not APR:IsInInstanceQuest() or not APRCustomPath[APR.PlayerID] then
         return
     end
 
