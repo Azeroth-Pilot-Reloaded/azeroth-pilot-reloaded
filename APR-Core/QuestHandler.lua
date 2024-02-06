@@ -1668,12 +1668,16 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             end
         end
 
-        if GetNumQuestChoices() > 1 and APR.settings.profile.autoHandInChoice then
-            chooseQuestReward()
-        elseif APR.settings.profile.autoHandIn then
-            local npc_id = GetTargetID()
-            if not (npc_id and ((npc_id == 141584) or (npc_id == 142063) or (npc_id == 45400) or (npc_id == 25809) or (npc_id == 87391))) then
-                GetQuestReward(1)
+        if APR.settings.profile.autoHandIn then
+            if GetNumQuestChoices() > 1 then
+                if APR.settings.profile.autoHandInChoice then
+                    chooseQuestReward()
+                end
+            else
+                local npc_id = GetTargetID()
+                if not (npc_id and ((npc_id == 141584) or (npc_id == 142063) or (npc_id == 45400) or (npc_id == 25809) or (npc_id == 87391))) then
+                    GetQuestReward(1)
+                end
             end
         end
     end
