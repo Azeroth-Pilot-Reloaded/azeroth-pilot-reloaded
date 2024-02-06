@@ -9,7 +9,7 @@ local alliance = "Alliance"
 local horde = "Horde"
 
 local optionsWidth = 1.2
-local lineColor = { unpack(APR.Color.gray), 0.4 }
+local lineColor = APR.Color.grayAlpha
 local customPathListeWidget = nil
 local tabRouteListWidget = nil
 local currentTabName = nil
