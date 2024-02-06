@@ -12,7 +12,7 @@ function APR.transport:GetMeToRightZone()
         print("Function: APR.transport:GetMeToRightZone()")
     end
 
-    if IsInInstance() or not APRCustomPath[APR.PlayerID] then
+    if APR:IsInInstanceQuest() or not APRCustomPath[APR.PlayerID] then
         return
     end
 
