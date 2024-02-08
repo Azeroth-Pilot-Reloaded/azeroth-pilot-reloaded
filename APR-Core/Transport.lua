@@ -116,7 +116,7 @@ function APR.transport:GetRouteMapIDsAndName()
         print("Function: APR.transport:GetRouteMapIDAndName()")
     end
 
-    if not APRCustomPath and not APRCustomPath[APR.PlayerID] then
+    if not APRCustomPath or not APRCustomPath[APR.PlayerID] then
         APR:PrintError('No APRCustomPath')
         return
     end
