@@ -1,5 +1,5 @@
 APR.RouteQuestStepList["1-Orgrimmar"] = {
-    { PickUp = { 51443 },          PickUpDB = { 51443, 60361 },        Coord = { x = -4365.8, y = 1598.5 } },
+    { PickUp = { 51443 },          PickUpDB = { 51443, 60361 },        ChromiePick = 15,                   Gossip = 1,                         RaidIcon = 167032, Coord = { y = 1558.2, x = -4215.9 } },
     { Qpart = { [51443] = { 1 } }, QpartDB = { 51443, 60361 },         Range = 7.73,                       Coord = { x = -4347.9, y = 1659.8 } },
     { Waypoint = 51443,            Range = 11.65,                      Coord = { x = -4375.5, y = 1610.3 } },
     { Waypoint = 51443,            Range = 7.36,                       Coord = { x = -4432.7, y = 1573.7 } },

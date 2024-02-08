@@ -257,9 +257,9 @@ local function APR_UpdateStep()
             -- if (APR.RouteList.Legion[APR.ActiveRoute]) then
             --     checkChromieTimeline(10)
             -- end
-            -- if (APR.RouteList.BattleForAzeroth[APR.ActiveRoute]) then
-            --     checkChromieTimeline(15)
-            -- end
+            if (APR.RouteList.BattleForAzeroth[APR.ActiveRoute]) then
+                checkChromieTimeline(15)
+            end
             if (APR.RouteList.Shadowlands[APR.ActiveRoute]) then
                 checkChromieTimeline(14)
             end
