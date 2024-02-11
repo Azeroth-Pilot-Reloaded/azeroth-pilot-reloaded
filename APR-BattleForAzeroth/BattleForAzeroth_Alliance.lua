@@ -107,8 +107,8 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     { Waypoint = 51426,                  Range = 13.07,                     Coord = { x = -602.8, y = 1099.7 } },
     { Waypoint = 51426,                  Range = 10.65,                     Coord = { x = -595.8, y = 1063 } },
     {
-        Coord = { x = -594.8, y = 1038.2 },
         UseFlightPath = 51426,
+        Coord = { x = -594.8, y = 1038.2 },
         ETA = 100,
         Boat = 1,
         Name = "Southwind Station, Tiragarde Sound",

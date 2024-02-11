@@ -11,7 +11,7 @@ if (APR.Faction == "Horde") then
         ["Demon Hunter Start"] = 672,
         ["Durotar"] = 1,
         ["Death Knight Start"] = 23,
-        ["Allied Death Knight Start"] = 2297,
+        ["Allied Death Knight Start"] = 118,
         ["Northern Barrens"] = 10,
         ["Southern Barrens"] = 199,
         ["Silverpine Forest"] = 21,
@@ -138,7 +138,16 @@ if (APR.Faction == "Horde") then
         ["DF06H-2025-Thaldraszus"] = "DF07 - Thaldraszus",
     }
 
-    if (APR.Race == "Orc") then
+    -- WARNING Class before race
+    if (APR.ClassId == APR.Classes["Demon Hunter"]) then
+        APR.RouteList.Legion["672-Mardum"] = "Demon Hunter Start"
+    elseif (APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23) then
+        APR.RouteList.WrathOfTheLichKing["Allied_Icecrown Citadel"] = "Allied Death Knight Start"
+    elseif (APR.ClassId == APR.Classes["Death Knight"]) then
+        APR.RouteList.WrathOfTheLichKing["ScarletEnclave"] = "Death Knight Start"
+    elseif (APR.Race == "Dracthyr") then
+        APR.RouteList.Dragonflight["2118-DracthyrStart-H"] = "Dracthyr Start"
+    elseif (APR.Race == "Orc") then
         APR.RouteList.Vanilla["1-ValleyOfTrialsOrc"] = "Orc Start"
     elseif (APR.Race == "Tauren") then
         APR.RouteList.Vanilla["7-MulgoreTauren"] = "Tauren Start"
@@ -167,14 +176,6 @@ if (APR.Faction == "Horde") then
     elseif (APR.Race == "Goblin") then
         APR.RouteList.Vanilla["194-Kezan"] = "Goblin Start"
         APR.RouteList.Vanilla["174-LostIsles"] = "Goblin - Lost Isles"
-    elseif (APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23) then
-        APR.RouteList.Vanilla["H_Allied_Icecrown Citadel"] = "Allied Death Knight Start"
-    elseif (APR.ClassId == APR.Classes["Death Knight"]) then
-        APR.RouteList.Vanilla["H23-ScarletEnclave"] = "Death Knight Start"
-    elseif (APR.ClassId == APR.Classes["Demon Hunter"]) then
-        APR.RouteList.Vanilla["672-Mardum"] = "Demon Hunter Start"
-    elseif (APR.Race == "Dracthyr") then
-        APR.RouteList.Dragonflight["2118-DracthyrStart-H"] = "Dracthyr Start"
     end
 
     -- Lumbermill Wod route
