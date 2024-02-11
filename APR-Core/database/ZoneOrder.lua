@@ -1736,7 +1736,7 @@
         ["Alliance"] = {
             Vanilla = { 14, 15, 17, 22, 23, 26, 27, 30, 32, 36, 37, 47, 48, 49, 51, 52, 56, 57, 62, 63, 64, 65, 66, 69, 70, 71, 77, 78, 81, 83, 84, 97, 106, 124, 179, 181, 199, 202, 224, 249, 425, 460, 468, 470, 1409, 1726, 1727, 1728 },
             TheBurningCrusade = {},
-            WrathOfTheLichKing = { 1602, 2297 },
+            WrathOfTheLichKing = { 23, 118, 1602, 2297 },
             Cataclysm = {},
             MistsOfPandaria = { 378 },
             WarlordsOfDraenor = { 17, 84, 535, 539, 542, 543, 577, 578 },
@@ -1748,7 +1748,7 @@
         ["Horde"] = {
             Vanilla = { 1, 7, 10, 18, 21, 22, 23, 25, 85, 94, 124, 174, 175, 194, 199, 217, 462, 463, 464, 465, 466, 467, 530, 648, 1409, 1726, 1727, 1728 },
             TheBurningCrusade = {},
-            WrathOfTheLichKing = { 1602, 2297 },
+            WrathOfTheLichKing = { 23, 118, 1602, 2297 },
             Cataclysm = {},
             MistsOfPandaria = { 371, 378, 379 },
             WarlordsOfDraenor = { 17, 85, 525, 535, 542, 543, 550, 577, 578 },

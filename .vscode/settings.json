@@ -12,5 +12,6 @@
     "[lua]": {
         "editor.defaultFormatter": "sumneko.lua"
     },
-    "Lua.diagnostics.globals": []
+    "Lua.diagnostics.globals": [],
+    "notebook.stickyScroll.enabled": true
 }

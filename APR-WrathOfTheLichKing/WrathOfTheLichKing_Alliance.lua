@@ -1,11 +1,10 @@
 if APR.Faction == "Alliance" then
-    APR.RouteQuestStepList["A23-ScarletEnclave"] = {
+    APR.RouteQuestStepList["ScarletEnclave"] = {
         { PickUp = { 12593 },                   Coord = { y = 2346.0, x = -5671.2 } },
         { Waypoint = 12593,                     Coord = { y = 2413.1, x = -5618.9 }, Range = 16.93 },
         { Done = { 12593 },                     Coord = { y = 2487.5, x = -5573.5 } },
         { PickUp = { 12619 },                   Coord = { y = 2494.5, x = -5577.4 } },
-        { Qpart = { [12619] = { 1 } },          Coord = { y = 2537.4, x = -5602.8 }, Range = 0.69 },
-        { Qpart = { [12619] = { 1 } },          Coord = { y = 2507.1, x = -5562.4 }, Range = 0.69,  Button = { ["12619-1"] = 38607 } },
+        { Qpart = { [12619] = { 1 } },          Coord = { y = 2429.3, x = -5546.4 }, Range = 1,     Button = { ["12619-1"] = 38607 } },
         { Done = { 12619 },                     Coord = { y = 2495.5, x = -5584.0 } },
         { PickUp = { 12842 },                   Coord = { y = 2487.3, x = -5573.4 } },
         { Qpart = { [12842] = { 1 } },          Coord = { y = 2429.3, x = -5546.4 }, Range = 0.69 },
@@ -155,19 +154,29 @@ if APR.Faction == "Alliance" then
         {
             Done = { 13188 },
             Coord = { y = -8363.5, x = 232.8 },
-            ExtraLineText = "MAKE_YOUR_WAY_KING_ANDUIN_AT_STORMWIND_KEEP"
+            ExtraLineText = "MAKE_YOUR_WAY_KING_ANDUIN_AT_STORMWIND_KEEP",
+            Zone = 84
         },
         { ZoneDoneSave = 1 }
     }
-    APR.RouteQuestStepList["A_Allied_Icecrown Citadel"] = {
-        { PickUp = { 58877 },          Coord = { y = 429, x = -2123.4 } },
-        { Qpart = { [58877] = { 1 } }, Coord = { y = 429, x = -2123.4 },   Range = 0.5 },
-        { Done = { 58877 },            Coord = { y = 429, x = -2123.4 } },
-        { PickUp = { 58902 },          Coord = { y = 429, x = -2123.4 } },
-        { Qpart = { [58902] = { 1 } }, Coord = { y = 467.7, x = -2126.8 }, Range = 0.5, Gossip = 1 },
-        { Qpart = { [58902] = { 2 } }, Coord = { y = 529, x = -2124.69 },  Range = 0.5, ExtraLineText = "USE_PORTAL" },
-        { Qpart = { [58902] = { 4 } }, Coord = { y = -8824.4, x = 629.7 }, Range = 0.5 },
-        { Done = { 58902 },            Coord = { y = -8824.4, x = 629.7 } },
+    APR.RouteQuestStepList["Allied_Icecrown Citadel"] = {
+        { PickUp = { 58877 },          Coord = { x = -2123.4, y = 429, } },
+        { Qpart = { [58877] = { 1 } }, Coord = { x = -2123.4, y = 429, },   Range = 0.5 },
+        { Done = { 58877 },            Coord = { x = -2123.4, y = 429, } },
+        { PickUp = { 58902 },          Coord = { x = -2123.4, y = 429, } },
+        { Qpart = { [58902] = { 1 } }, Coord = { x = -2126.8, y = 467.7, }, Range = 0.5, Gossip = 1 },
+        { Qpart = { [58902] = { 2 } }, Coord = { x = -2124.69, y = 529, },  Range = 0.5, ExtraLineText = "USE_PORTAL" },
+        { Waypoint = 58902,            Coord = { x = 434.4, y = -9064.4, }, Range = 15,  Zone = 37 },
+        { Waypoint = 58902,            Coord = { x = 618.7, y = -8836, },   Range = 15,  Zone = 84 },
+        { Waypoint = 58902,            Coord = { x = 606.2, y = -8767.9, }, Range = 15,  Zone = 84 },
+        { Waypoint = 58902,            Coord = { x = 556.1, y = -8744.9, }, Range = 15,  Zone = 84 },
+        { Waypoint = 58902,            Coord = { x = 551.4, y = -8674.2, }, Range = 15,  Zone = 84 },
+        { Waypoint = 58902,            Coord = { x = 513.5, y = -8611.5, }, Range = 15,  Zone = 84 },
+        { Waypoint = 58902,            Coord = { x = 502, y = -8542.6, },   Range = 15,  Zone = 84 },
+        { Waypoint = 58902,            Coord = { x = 623.3, y = -8412, },   Range = 15,  Zone = 84 },
+        { Waypoint = 58902,            Coord = { x = 648.5, y = -8333.5, }, Range = 15,  Zone = 84 },
+        { Qpart = { [58902] = { 4 } }, Coord = { x = 745.3, y = -8196.9, }, Range = 0.5, Zone = 84 },
+        { Done = { 58902 },            Coord = { x = 745.3, y = -8196.9, }, Zone = 84 },
         { ZoneDoneSave = 1 }
     }
 end
