@@ -70,6 +70,13 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.1.8", "2024-02-11" },
+        "#Bugs",
+        "- Fix Lua error sometimes on load with empty custom path",
+        "- Fix BFA route to add Chromie Timeline",
+        "- Fix DK and DH route empty for some races",
+        "- Fix Wrong zone for DK and DH route",
+
         { "v3.1.7", "2024-02-06" },
         "#Features",
         "- Add Buff frame for mandatory quest step buff (+ remove old sweatOfOurBrowBuff for Sl quest)",
