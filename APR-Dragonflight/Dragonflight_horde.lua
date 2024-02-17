@@ -44,8 +44,8 @@ if APR.Faction == "Horde" then
             ExtraLineText = "WAIT_FOR_ZEPPELIN",
             Zone = 1
         },
-        { Qpart = { [65444] = { 2 } }, Coord = { y = 3895.3, x = -1792.7 }, Zone = 1, Range = 5 },
-        { Done = { 65444 },            Coord = { y = 3903.7, x = -1778.3 }, Zone = 1 },
+        { Qpart = { [65444] = { 2 } }, Coord = { y = 3895.3, x = -1792.7 }, Zone = 2022, Range = 5 },
+        { Done = { 65444 },            Coord = { y = 3903.7, x = -1778.3 }, Zone = 2022 },
         { ZoneDoneSave = 1 }
     }
     APR.RouteQuestStepList["DF03H-2022-WakingShores"] = {
