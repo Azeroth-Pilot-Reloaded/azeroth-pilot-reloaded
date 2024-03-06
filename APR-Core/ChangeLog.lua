@@ -70,6 +70,15 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.1.9", "2024-03-06" },
+        "#Bugs",
+        "- Fix DF starting zone with zone step",
+        "- Add coord for all the step of DF alliance starting zone",
+        "- Add Extra Line Text for the Forbidden Cave treasure in WOD",
+        "- Fix route switch for Gordron Lumbermill",
+        "- Remove useless step options (LoadPick/SpecialLeaveVehicle/SpecialFlight)",
+
+
         { "v3.1.8", "2024-02-11" },
         "#Bugs",
         "- Fix Lua error sometimes on load with empty custom path",
