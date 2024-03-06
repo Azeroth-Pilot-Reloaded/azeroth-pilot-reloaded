@@ -1,11 +1,10 @@
 if APR.Faction == "Alliance" then
     APR.RouteQuestStepList["DF01A-84-Stormwind"] = {
-        { Done = { 65436 } },
-        { PickUp = { 66577 } },
-        { Qpart = { [66577] = { 1 } }, Gossip = 1 },
-        { Done = { 66577 } },
-        { PickUp = { 72240 } },
-        { PickUp = { 66589 } },
+        { Done = { 65436 },            Coord = { y = -8309.2, x = 336.3 } },
+        { PickUp = { 66577 },          Coord = { y = -8309.2, x = 336.3 } },
+        { Qpart = { [66577] = { 1 } }, GossipOptionID = 55659,            Coord = { y = -8309.2, x = 336.3 } },
+        { Done = { 66577 },            Coord = { y = -8309.2, x = 336.3 } },
+        { PickUp = { 72240, 66589 },   Coord = { y = -8309.2, x = 336.3 } },
         {
             Qpart = { [66589] = { 1 } },
             Coord = { y = -8426.9, x = 608.6 },
@@ -36,8 +35,8 @@ if APR.Faction == "Alliance" then
         { PickUp = { 67700 },          Coord = { y = -8640.6, x = 1328.2 } },
         { Waypoint = 67700,            Coord = { y = -8640.6, x = 1328.2 }, Range = 10,  ExtraLineText = "WAIT_FOR_SHIP" },
         { Qpart = { [67700] = { 1 } }, Coord = { y = -8640.6, x = 1328.2 }, Range = 0.5, ExtraLineText = "WAIT_FOR_SHIP" },
-        { Qpart = { [67700] = { 2 } } },
-        { Done = { 67700 } },
+        { Qpart = { [67700] = { 2 } }, Zone = 2022},
+        { Done = { 67700 }, Zone = 2022},
         { ZoneDoneSave = 1 }
     }
     APR.RouteQuestStepList["DF03A-2022-WakingShores"] = {
