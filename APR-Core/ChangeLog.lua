@@ -75,7 +75,7 @@ function APR.changelog:SetChangeLog()
         "- Fix DF starting zone with zone step",
         "- Add coord for all the step of DF alliance starting zone",
         "- Add Extra Line Text for the Forbidden Cave treasure in WOD",
-        "- Fix route switch for Gordron Lumbermill",
+        "- Fix route switch for Gorgrond Lumbermill",
         "- Remove useless step options (LoadPick/SpecialLeaveVehicle/SpecialFlight)",
 
 
