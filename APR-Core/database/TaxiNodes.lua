@@ -911,7 +911,8 @@ APR.TaxiNodes = {
             [2902] = { x = 7074.1401367188, y = -1716.3499755859, Name = "Central Encampment, The Emerald Dream" },
             [2903] = { x = 5746.0498046875, y = -1328.3800048828, Name = "Verdant Landing, The Emerald Dream" },
             [2904] = { x = 6754.0698242188, y = -81.62149810791, Name = "Eye of Ysera, The Emerald Dream" },
-            [2905] = { x = 8216.580078125, y = -282.98300170898, Name = "Wellspring Overlook, The Emerald Dream" }
+            [2905] = { x = 8216.580078125, y = -282.98300170898, Name = "Wellspring Overlook, The Emerald Dream" },
+            [2915] = { x = 7073.8500976562, y = -1715.9699707031, Name = "Bel'ameth, Amirdrassil" }
         }
     }
 }

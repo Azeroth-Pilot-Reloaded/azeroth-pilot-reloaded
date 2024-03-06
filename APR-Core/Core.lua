@@ -125,9 +125,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
             APRData[APR.PlayerID]["BonusSkips"] = {}
         end
 
-        if (not APRData[APR.PlayerID]["LoaPick"]) then
-            APRData[APR.PlayerID]["LoaPick"] = 0
-        end
         if (not APRData[APR.PlayerID]["WantedQuestList"]) then
             APRData[APR.PlayerID]["WantedQuestList"] = {}
         end
