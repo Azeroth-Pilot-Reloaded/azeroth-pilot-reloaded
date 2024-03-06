@@ -134,9 +134,6 @@ local function APR_LeaveQuest(QuestIDs)
     C_QuestLog.AbandonQuest()
 end
 
-local function APR_ExitVhicle()
-    VehicleExit()
-end
 
 local function APR_QAskPopWanted()
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
@@ -344,10 +341,7 @@ local function APR_UpdateStep()
             end
         end
         -- //TODO REWORK LOA
-        if (steps and steps.LoaPick and steps.LoaPick == 123 and ((APR.ActiveQuests[47440] or C_QuestLog.IsQuestFlaggedCompleted(47440)) or (APR.ActiveQuests[47439] or C_QuestLog.IsQuestFlaggedCompleted(47439)))) then
-            _G.UpdateNextStep()
-            return
-        elseif (steps.PickedLoa and steps.PickedLoa == 2 and (APR.ActiveQuests[47440] or C_QuestLog.IsQuestFlaggedCompleted(47440))) then
+        if (steps.PickedLoa and steps.PickedLoa == 2 and (APR.ActiveQuests[47440] or C_QuestLog.IsQuestFlaggedCompleted(47440))) then
             _G.UpdateNextStep()
             if (APR.settings.profile.debug) then
                 print("PickedLoa Skip 2 step:" .. CurStep)
@@ -360,9 +354,7 @@ local function APR_UpdateStep()
             end
             return
         end
-        if (C_QuestLog.IsQuestFlaggedCompleted(47440) or C_QuestLog.IsQuestFlaggedCompleted(47439)) then
-            APRData[APR.PlayerID].LoaPick = 1
-        end
+
         if steps.Buffs then
             APR.Buff:RemoveAllBuffIcon()
             for _, buff in pairs(steps.Buffs) do
@@ -379,19 +371,10 @@ local function APR_UpdateStep()
                 APR_LeaveQuest(questID)
             end
         end
-        if (steps.SpecialLeaveVehicle) then
-            C_Timer.After(1, APR_ExitVhicle)
-            C_Timer.After(3, APR_ExitVhicle)
-            C_Timer.After(5, APR_ExitVhicle)
-            C_Timer.After(10, APR_ExitVhicle)
-        end
         if (steps.VehicleExit) then
             VehicleExit()
         end
-        if (steps.SpecialFlight and C_QuestLog.IsQuestFlaggedCompleted(steps.SpecialFlight)) then
-            _G.UpdateNextStep()
-            return
-        end
+
         if (steps.GroupTask and APRData[APR.PlayerID]["WantedQuestList"][steps.GroupTask] and APRData[APR.PlayerID]["WantedQuestList"][steps.GroupTask] == 0) then
             _G.UpdateNextStep()
             return
@@ -1526,9 +1509,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (arg2 and arg2 > 0 and not APR.ActiveQuests[arg2]) then
             APR.BookingList["AddQuest"] = arg2
         end
-        if (steps and steps.LoaPick and steps.LoaPick == 123 and (APR.ActiveQuests[47440] or APR.ActiveQuests[47439])) then
-            _G.UpdateNextStep()
-        end
+
         C_Timer.After(0.2, UpdateQuestAndStep)
         C_Timer.After(3, UpdateQuestAndStep)
     end
