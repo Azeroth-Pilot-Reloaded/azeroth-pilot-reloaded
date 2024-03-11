@@ -31,6 +31,8 @@ function APR.command:SlashCmd(input)
         APR.questOrderList:RefreshFrameAnchor()
     elseif (input == "discord") then
         _G.StaticPopup_Show("Discord_Link")
+    elseif (input == "status") then
+        APR:getStatus()
     elseif (input == "github") then
         _G.StaticPopup_Show("Github_Link")
     elseif (input == "scribe" or input == "writer") then

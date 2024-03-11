@@ -155,3 +155,35 @@ function APR:IsInInstanceQuest()
     end
     return not isIntance
 end
+
+function APR:getStatus()
+    APR.settings:CloseSettings()
+    APR:showStatusReport()
+end
+
+-- Convert a lua table into a lua syntactically correct string
+function APR:tableToString(table, skipKey)
+    local result = "{"
+    for k, v in pairs(table) do
+        if not skipKey then
+            -- Check the key type (ignore any numerical keys - assume its an array)
+            if type(k) == "string" then
+                result = result.."[\""..k.."\"]".."="
+            end
+        end
+        -- Check the value type
+        if type(v) == "table" then
+            result = result..APR:tableToString(v)
+        elseif type(v) == "boolean" then
+            result = result..tostring(v)
+        else
+            result = result.."\""..v.."\""
+        end
+        result = result..","
+    end
+    -- Remove leading commas from the result
+    if result ~= "" then
+        result = result:sub(1, result:len()-1)
+    end
+    return result.."}"
+end

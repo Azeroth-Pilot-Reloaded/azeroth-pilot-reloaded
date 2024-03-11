@@ -181,6 +181,15 @@ function APR.settings:createBlizzOptions()
                     )
                 end
             },
+            statusButton = {
+                order = 1.5,
+                name = "Status",
+                type = "execute",
+                width = 0.75,
+                func = function()
+                    APR:getStatus()
+                end
+            },
             header_Automation = {
                 order = 2,
                 type = "header",
@@ -1363,6 +1372,18 @@ function APR.settings:OpenSettings(name)
             InterfaceOptionsFrame_OpenToCategory(APR.Options)
             if APR.OptionsRoute then
                 InterfaceOptionsFrame_OpenToCategory(APR.OptionsRoute)
+            end
+            return
+        end
+    end
+end
+
+function APR.settings:CloseSettings()
+    if APR.Options then
+        if SettingsPanel then
+            local category = SettingsPanel:GetCategoryList():GetCategory(APR.Options.name)
+            if category then
+                SettingsPanel:Hide()
             end
             return
         end
