@@ -1090,7 +1090,7 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
         Coord = { y = -1120.0, x = 1341.2 },
         Range = 2,
         ExtraLineText = "SPEAK_KHANAM_MATRA",
-        Gossip = 1
+        GossipOptionID = 56207
     },
     { GetFP = 2798,                Coord = { y = -1501.9, x = 727.7 }, Range = 2 },
     { PickUp = { 66681 },          Coord = { y = -1554.8, x = 683.9 } },
