@@ -1,7 +1,6 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
-
 local ETAStep = 0
 local Updateblock = 0
 local APRGOSSIPCOUNT = 0
@@ -10,26 +9,6 @@ local APRGOSSIPCOUNT = 0
 APR.ProgressbarIgnore = {
     ["60520-2"] = 1,
     ["57724-2"] = 1,
-}
-
--- //TODO create Spell DB
-local APR_HSSpellIDs = {
-    556,
-    8690,
-    298068,
-    278559,
-    278244,
-    286331,
-    286353,
-    94719,
-    285424,
-    286031,
-    285362,
-    136508,
-    75136,
-    39937,
-    231504,
-    308742,
 }
 
 -- //TODO check what is that shit
@@ -1460,19 +1439,19 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         local arg1, arg2, arg3, arg4, arg5 = ...
 
         if (arg1 == "player") and steps then
-            if (Contains(APR_HSSpellIDs, arg3) and steps.UseHS) or (steps.SpellTrigger and arg3 == steps.SpellTrigger) then
+            if (Contains(APR.hearthStoneSpellID, arg3) and steps.UseHS) or (steps.SpellTrigger and arg3 == steps.SpellTrigger) then
                 _G.UpdateNextStep()
             end
         end
     end
     if (event == "UNIT_SPELLCAST_START") then
         local arg1, arg2, arg3, arg4, arg5 = ...;
-        if ((arg1 == "player") and (arg3 == 171253)) then
+        if ((arg1 == "player") and (arg3 == APR.garrisonHSSpellID)) then
             if (steps and steps.UseGarrisonHS) then
                 APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
             end
         end
-        if ((arg1 == "player") and (arg3 == 222695)) then
+        if ((arg1 == "player") and (arg3 == APR.dalaHSSpellID)) then
             if (steps and steps.UseDalaHS) then
                 APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
             end
