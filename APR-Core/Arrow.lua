@@ -202,7 +202,7 @@ function APR.Arrow:CalculPosition()
         return
     end
 
-    if (questStep.Waypoint or questStep.Range) and APR.IsInRouteZone then
+    if questStep and (questStep.Waypoint or questStep.Range) and APR.IsInRouteZone then
         local range = questStep.Range
         if distance < range then
             APR.Arrow.x = 0
