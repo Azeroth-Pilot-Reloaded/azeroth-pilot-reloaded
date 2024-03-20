@@ -1,4 +1,4 @@
-## Interface: 100205
+## Interface: 100206
 ## X-Min-Interface: 100205
 
 ## Title: Azeroth Pilot Reloaded - [|cffeda55fWrath of the Lich King|r]
