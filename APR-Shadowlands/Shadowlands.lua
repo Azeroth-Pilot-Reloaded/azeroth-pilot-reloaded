@@ -2877,7 +2877,6 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
     { Qpart = { [57713] = { 5 } },                  Range = 0.69,                          Coord = { y = -4566.3, x = -4943.9 } },
     { Done = { 57713 },                             Coord = { y = -4573.7, x = -4950.3 } },
     { PickUp = { 57908 },                           Coord = { y = -4573.7, x = -4950.3 } },
-    { Coord = { y = -4570.8, x = -5113.9 },         Done = { 57712 } },
     { Done = { 57908 },                             Coord = { y = -4464.4, x = -4868.9 } },
     { PickUp = { 57909, 57288 },                    Coord = { y = -4462.9, x = -4870.4 } },
     {
@@ -4793,7 +4792,6 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
     { Qpart = { [57713] = { 5 } },                  Range = 0.69,                          Coord = { y = -4566.3, x = -4943.9 } },
     { Done = { 57713 },                             Coord = { y = -4573.7, x = -4950.3 } },
     { PickUp = { 57908 },                           Coord = { y = -4573.7, x = -4950.3 } },
-    { Coord = { y = -4570.8, x = -5113.9 },         Done = { 57712 } },
     { Done = { 57908 },                             Coord = { y = -4464.4, x = -4868.9 } },
     { PickUp = { 57909, 57288 },                    Coord = { y = -4462.9, x = -4870.4 } },
     {
