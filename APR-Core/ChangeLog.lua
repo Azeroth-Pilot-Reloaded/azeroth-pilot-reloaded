@@ -70,7 +70,17 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v3.1.9", "2024-03-06" },
+        { "v3.1.10", "2024-03-20" },
+        "#Bugs",
+        "- Fix questStep lua error due to missing data for arrow",
+        "- Add Spell ID hearthStone list with the majority of hearthStones available for UseHS step option",
+        "- Add Gossip Option ID do `Green Dragon Down` quest in Ohn'ahran Plain route",
+        "- Remove non-compaign quest from Shadowlands-StoryOnly",
+
+        "#WoW",
+        "- Update interface addon version to 10.2.6",
+
+        { "v3.1.9",  "2024-03-06" },
         "#Bugs",
         "- Fix DF starting zone with zone step",
         "- Add coord for all the step of DF alliance starting zone",
