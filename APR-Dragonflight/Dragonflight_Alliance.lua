@@ -35,8 +35,8 @@ if APR.Faction == "Alliance" then
         { PickUp = { 67700 },          Coord = { y = -8640.6, x = 1328.2 } },
         { Waypoint = 67700,            Coord = { y = -8640.6, x = 1328.2 }, Range = 10,  ExtraLineText = "WAIT_FOR_SHIP" },
         { Qpart = { [67700] = { 1 } }, Coord = { y = -8640.6, x = 1328.2 }, Range = 0.5, ExtraLineText = "WAIT_FOR_SHIP" },
-        { Qpart = { [67700] = { 2 } }, Zone = 2022},
-        { Done = { 67700 }, Zone = 2022},
+        { Qpart = { [67700] = { 2 } }, Zone = 2022 },
+        { Done = { 67700 },            Zone = 2022 },
         { ZoneDoneSave = 1 }
     }
     APR.RouteQuestStepList["DF03A-2022-WakingShores"] = {
@@ -127,7 +127,7 @@ if APR.Faction == "Alliance" then
         { Done = { 66101 },            Coord = { y = 3591.7, x = -1397.9 } },
         { PickUp = { 69965 },          Coord = { y = 3539.8, x = -1442.4 } },
         { PickUp = { 66112 },          Coord = { y = 3529.3, x = -1437.9 } },
-        { Qpart = { [69911] = { 1 } }, Coord = { y = 3478.8, x = -1435.5 }, Range = 5,             Gossip = 2,                            RaidIcon = 193393 },
+        { Qpart = { [69911] = { 1 } }, Coord = { y = 3478.8, x = -1435.5 }, Range = 5,             GossipOptionID = 55674,                RaidIcon = 193393 },
         {
             Qpart = { [69911] = { 2 } },
             Coord = { y = 3479.0, x = -1432.9 },
@@ -145,7 +145,7 @@ if APR.Faction == "Alliance" then
             Coord = { y = 3582.1, x = -1456.0 },
             Range = 1,
             ExtraLineText = "SPEAK_SENDRAX_SEND_SIGNAL_FLARES",
-            Gossip = 1
+            GossipOptionID = 55637
         },
         { Waypoint = 66112,            Coord = { y = 3418.8, x = -1379.0 }, Range = 10, ExtraLineText = "HEAD_CAVE" },
         {
