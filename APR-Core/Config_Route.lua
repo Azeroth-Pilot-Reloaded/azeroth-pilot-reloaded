@@ -87,7 +87,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetDFPrefab()
                 end,
                 hidden = function()
-                    return APR.Level < 58 or not next(APR.RouteList.Dragonflight)
+                    return APR.Level < 60 or not next(APR.RouteList.Dragonflight)
                 end
             },
             reset_custom_path = {
@@ -612,7 +612,7 @@ function APR.routeconfig:InitRouteConfig()
 end
 
 function IsRouteDisabled(tab, routeName)
-    if string.find(tab, "Dragonflight") and APR.Level < 58 then
+    if string.find(tab, "Dragonflight") and APR.Level < 60 then
         return true
     elseif routeName == "01-10 Exile's Reach" and not Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
         return true
@@ -625,7 +625,7 @@ end
 ---------------------------------------------------------------------------------------
 function APR.routeconfig:GetSpeedRunPrefab()
     self:GetStartingZonePrefab()
-    if APR.Level < 58 then
+    if APR.Level < 60 then
         self:GetWODPrefab()
         self:GetSLPrefab()
     end
