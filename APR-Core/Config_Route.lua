@@ -850,7 +850,7 @@ APR.routeconfig.eventFrame:SetScript("OnEvent", function(self, event, ...)
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetSpeedRunPrefab()
                 end)
-            elseif APR.Level == 58 or APR.Level == 60 then
+            elseif APR.Level == 60 then
                 APR.questionDialog:CreateQuestionPopup(format(L["RESET_ROUTE_FOR_DF"], APR.Level), function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetDFPrefab()
