@@ -87,7 +87,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetDFPrefab()
                 end,
                 hidden = function()
-                    return APR.Level < 60 or not next(APR.RouteList.Dragonflight)
+                    return (APR.Level < 60 and APR.ClassId ~= APR.Classes["Dracthyr"]) or not next(APR.RouteList.Dragonflight)
                 end
             },
             reset_custom_path = {
@@ -612,7 +612,7 @@ function APR.routeconfig:InitRouteConfig()
 end
 
 function IsRouteDisabled(tab, routeName)
-    if string.find(tab, "Dragonflight") and APR.Level < 60 then
+    if string.find(tab, "Dragonflight") and (APR.Level < 60 and APR.ClassId ~= APR.Classes["Dracthyr"]) then
         return true
     elseif routeName == "01-10 Exile's Reach" and not Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
         return true
@@ -625,7 +625,7 @@ end
 ---------------------------------------------------------------------------------------
 function APR.routeconfig:GetSpeedRunPrefab()
     self:GetStartingZonePrefab()
-    if APR.Level < 60 then
+    if APR.Level < 60 and APR.ClassId ~= APR.Classes["Dracthyr"] then
         self:GetWODPrefab()
         self:GetSLPrefab()
     end
@@ -850,7 +850,7 @@ APR.routeconfig.eventFrame:SetScript("OnEvent", function(self, event, ...)
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetSpeedRunPrefab()
                 end)
-            elseif APR.Level == 60 then
+            elseif APR.Level == 60 and APR.ClassId ~= APR.Classes["Dracthyr"] then
                 APR.questionDialog:CreateQuestionPopup(format(L["RESET_ROUTE_FOR_DF"], APR.Level), function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetDFPrefab()
