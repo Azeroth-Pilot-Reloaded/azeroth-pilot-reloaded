@@ -1,8 +1,4 @@
 if (APR.Faction == "Neutral") then
-    APR.RouteMainMapID = {
-        ["Pandaren Start"] = 378,
-    }
-
     APR.RouteList.Vanilla = {}
     APR.RouteList.TheBurningCrusade = {}
     APR.RouteList.WrathOfTheLichKing = {}

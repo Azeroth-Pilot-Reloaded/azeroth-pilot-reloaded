@@ -567,7 +567,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
     { Coord = { y = -1940.4, x = 1390.8 },  Done = { 60056 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["1613-Z3-Oribos-Story"] = {
+APR.RouteQuestStepList["1670-Z3-Oribos-Story"] = {
     { Coord = { y = -1940.4, x = 1390.8 }, Done = { 60056 } },
     { PickUp = { 61096 },                  Coord = { y = -1940.4, x = 1390.8 } },
     { Qpart = { [61096] = { 1 } },         Range = 0.75,                       Coord = { y = -1875.6, x = 1284.7 } },
@@ -1036,7 +1036,7 @@ APR.RouteQuestStepList["1670-Z5-Oribos-Story"] = {
     { Done = { 59897 },                       Coord = { y = 4602.2, x = 6806.3 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["1543-Z6-TheMaw-Story"] = {
+APR.RouteQuestStepList["1960-Z6-TheMaw-Story"] = {
     { Done = { 59897 },                   Coord = { y = 4602.2, x = 6806.3 } },
     { Qpart = { [60972] = { 1 } },        Range = 122.69,                    Coord = { y = 4644.6, x = 7132.2 } },
     { Done = { 60972 },                   Coord = { y = 4717.3, x = 7197.8 } },
@@ -2062,7 +2062,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     { Coord = { y = -1869.8, x = 1286.8 }, Done = { 58724 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["1671-Z11-Oribos-Story"] = {
+APR.RouteQuestStepList["1670-Z11-Oribos-Story"] = {
     { Coord = { y = -1869.5, x = 1286.9 }, Done = { 58724 } },
     { PickUp = { 57025 },                  Coord = { y = -1869.8, x = 1286.8 } },
     { Qpart = { [57025] = { 1 } },         Range = 0.75,                       Coord = { y = -1834, x = 1375.3 } },
@@ -2595,7 +2595,7 @@ APR.RouteQuestStepList["1525-Z14-Revendreth-Story"] = {
     { Done = { 57876 }, Coord = { y = -1941.1, x = 1391.8 }, },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["1671-Z15-Oribos-Story"] = {
+APR.RouteQuestStepList["1670-Z15-Oribos-Story"] = {
     { Done = { 57876 },                    Coord = { y = -1940.9, x = 1390.9 } },
     { Grind = 60 },
     { PickUp = { 57877 },                  Coord = { y = -1940.9, x = 1390.9 } },
@@ -2610,7 +2610,7 @@ APR.RouteQuestStepList["1671-Z15-Oribos-Story"] = {
     { Coord = { y = -1940.6, x = 1390.5 }, Done = { 57878 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
+APR.RouteQuestStepList["1670-Shadowlands-StoryOnly-A"] = {
     { PickUp = { 60545 },                 ChromiePick = 14,                               Gossip = 1,                         RaidIcon = 167032,                 Coord = { y = -8196.3, x = 745.9 }, Zone = 84 },
     { PickUp = { 60545 },                 Coord = { y = -8490.8, x = 390.6 },             Zone = 84 },
     { Qpart = { [60545] = { 1 } },        RaidIcon = 171789,                              Coord = { y = -8490.8, x = 390.6 }, Zone = 84 },
@@ -4525,7 +4525,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-A"] = {
     { Coord = { y = -1940.6, x = 1390.5 }, Done = { 57878 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
+APR.RouteQuestStepList["1670-Shadowlands-StoryOnly-H"] = {
     { PickUp = { 61874 },                 Gossip = 1,                                     RaidIcon = 167032,                   ChromiePick = 14,                  Coord = { y = 1558.2, x = -4215.9 }, Zone = 85 },
     { PickUp = { 61874 },                 Coord = { y = 1599, x = -4382.5 },              Zone = 85 },
     { Qpart = { [61874] = { 1 } },        RaidIcon = 171791,                              Coord = { y = 1599, x = -4382.5 },   Zone = 85 },
@@ -6440,7 +6440,7 @@ APR.RouteQuestStepList["Shadowlands-StoryOnly-H"] = {
     { Coord = { y = -1940.6, x = 1390.5 }, Done = { 57878 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["84-IntroQline"] = {
+APR.RouteQuestStepList["118-IntroQline"] = {
     { PickUp = { 60545 },                 ChromiePick = 14,                   Gossip = 1,                         RaidIcon = 167032,                 Coord = { y = -8196.3, x = 745.9 }, Zone = 84 },
     { PickUp = { 60545 },                 Coord = { y = -8490.8, x = 390.6 }, Zone = 84 },
     { Qpart = { [60545] = { 1 } },        RaidIcon = 171789,                  Coord = { y = -8490.8, x = 390.6 }, Zone = 84 },
@@ -6461,7 +6461,7 @@ APR.RouteQuestStepList["84-IntroQline"] = {
     { Coord = { y = 4154.3, x = 7867.5 }, Done = { 59751 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["85-IntroQline"] = {
+APR.RouteQuestStepList["118-IntroQline"] = {
     { PickUp = { 61874 },                 Gossip = 1,                        RaidIcon = 167032,                   ChromiePick = 14,                  Coord = { y = 1558.2, x = -4215.9 }, Zone = 85 },
     { PickUp = { 61874 },                 Coord = { y = 1599, x = -4382.5 }, Zone = 85 },
     { Qpart = { [61874] = { 1 } },        RaidIcon = 171791,                 Coord = { y = 1599, x = -4382.5 },   Zone = 85 },

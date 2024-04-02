@@ -181,12 +181,12 @@ function HasTaxiNode(nodeID)
     return false
 end
 
-function OverrideDataForLesMecsPasCapablesDeSuivreUneFleche()
+function OverrideRouteData()
     if APR.ActiveRoute and string.match(APR.ActiveRoute, "DesMephisto%-Gorgrond") then
         if C_QuestLog.IsQuestFlaggedCompleted(35049) then
-            APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = nil
-            APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = APR.RouteQuestStepList
-                ["A543-DesMephisto-Gorgrond-Lumbermill"]
+            APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = nil
+            APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = APR.RouteQuestStepList
+                ["543-DesMephisto-Gorgrond-Lumbermill"]
         end
         if C_QuestLog.IsQuestFlaggedCompleted(34992) then
             APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = nil

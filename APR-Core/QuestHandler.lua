@@ -1008,7 +1008,7 @@ local function APR_UpdateMapId()
     if (APR.settings.profile.debug) then
         print("Function: APR_UpdateMapId()")
     end
-    OverrideDataForLesMecsPasCapablesDeSuivreUneFleche() -- Lumbermill Wod route
+    OverrideRouteData() -- Lumbermill Wod route
     APR.BookingList["GetMeToRightZone"] = true
 end
 
@@ -1595,7 +1595,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 local questItemLink = GetQuestItemLink("choice", i)
                 if questItemLink then
                     local _, _, _, _, _, _, _, _, itemEquipLoc, _, _, classID, subclassID = C_Item.GetItemInfo(
-                    questItemLink)
+                        questItemLink)
 
                     -- check if quest reward is classID 4 (armor) and subClassID 5 (cosmetic), then we dont want to pick anything
                     if classID == 4 and subclassID == 5 then

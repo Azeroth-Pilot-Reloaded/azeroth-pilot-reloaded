@@ -1,5 +1,5 @@
 if APR.Faction == "Horde" then
-    APR.RouteQuestStepList["DF01H-85-Orgrimmar"] = {
+    APR.RouteQuestStepList["85-DF01H-Orgrimmar"] = {
         { Done = { 65435 },            Coord = { y = 2046.2, x = -4273.0 }, Zone = 85 },
         { PickUp = { 65437 },          Coord = { y = 2046.2, x = -4273.0 }, Zone = 85 },
         { Qpart = { [65437] = { 1 } }, Coord = { y = 2046.2, x = -4273.0 }, Range = 0.5, Gossip = 1, Zone = 85 },
@@ -48,7 +48,7 @@ if APR.Faction == "Horde" then
         { Done = { 65444 },            Coord = { y = 3903.7, x = -1778.3 }, Zone = 2022 },
         { ZoneDoneSave = 1 }
     }
-    APR.RouteQuestStepList["DF03H-2022-WakingShores"] = {
+    APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
         { Qpart = { [65444] = { 2 } }, Coord = { y = 3895.3, x = -1792.7 }, Range = 5 },
         { Done = { 65444 },            Coord = { y = 3903.7, x = -1778.3 } },
         { PickUp = { 65452 },          Coord = { y = 3903.7, x = -1778.3 } },
@@ -185,7 +185,7 @@ if APR.Faction == "Horde" then
         { Done = { 69912 },            Coord = { y = 3537.5, x = -1424.7 } },
         { ZoneDoneSave = 1 }
     }
-    APR.RouteQuestStepList["DF06H-2025-Thaldraszus"] = {
+    APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
         {
             Qpart = { [66244] = { 1 } },
             Coord = { y = 338.8, x = -1099.5 },

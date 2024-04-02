@@ -1,4 +1,4 @@
-APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
+APR.RouteQuestStepList["57-ShadowglenNightElf"] = {
     { PickUp = { 28713 },                           Coord = { y = 10313.2, x = 830.4 } },
     { Qpart = { [28713] = { 1 } },                  Range = 60.03,                     Coord = { y = 10310.2, x = 845.2 } },
     { Done = { 28713 },                             Coord = { y = 10313.1, x = 830.2 } },
@@ -36,7 +36,7 @@ APR.RouteQuestStepList["A57-ShadowglenNightElf"] = {
     { PickUp = { 2159 },                            Coord = { y = 10215.7, x = 700.7 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A97-AmmenVale"] = {
+APR.RouteQuestStepList["97-AmmenVale"] = {
     { PickUp = { 9279 },                           Coord = { y = -3961.4, x = -13926.8 } },
     { Done = { 9279 },                             Coord = { y = -4038.9, x = -13773.2 } },
     { PickUp = { 9280 },                           Coord = { y = -4038.2, x = -13773.2 } },
@@ -91,7 +91,7 @@ APR.RouteQuestStepList["A97-AmmenVale"] = {
     { PickUp = { 9314 },     Coord = { y = -4260.5, x = -13125 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A97-AzuremystIsle"] = {
+APR.RouteQuestStepList["97-AzuremystIsle"] = {
     { PickUp = { 9314 },                     Coord = { y = -4261, x = -13125.3 } },
     { PickUp = { 9452 },                     Coord = { y = -4265.9, x = -12985 } },
     { Qpart = { [9452] = { 1 } },            Button = { ["9452-1"] = 23654 },      Range = 123.11,                       Coord = { y = -4073.7, x = -12999.2 } },
@@ -188,7 +188,7 @@ APR.RouteQuestStepList["A97-AzuremystIsle"] = {
     { Coord = { y = -4166.9, x = -12417.3 }, Done = { 9602 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A106-BloodmystIsle"] = {
+APR.RouteQuestStepList["106-BloodmystIsle"] = {
     { PickUp = { 9624 },                                               Coord = { y = -2688.9, x = -12145.5 } },
     { PickUp = { 9634 },                                               Coord = { y = -2670.2, x = -12132.3 } },
     { PickUp = { 9663 },                                               Coord = { y = -2662, x = -12130.3 } },
@@ -349,7 +349,7 @@ APR.RouteQuestStepList["A106-BloodmystIsle"] = {
     { Coord = { y = -1250, x = -12656.8 },                             Done = { 9683 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A62-Darkshore"] = {
+APR.RouteQuestStepList["62-Darkshore"] = {
     { PickUp = { 13518 },                           Coord = { y = 7447.3, x = -330.3 } },
     { PickUp = { 13522 },                           Coord = { y = 7370.5, x = -230 } },
     { Qpart = { [13518] = { 4 } },                  Fillers = { [13522] = { 1 } },     Range = 0.69,                      Coord = { y = 7440.3, x = 106.4 } },
@@ -639,7 +639,7 @@ APR.RouteQuestStepList["A62-Darkshore"] = {
     { Qpart = { [13544] = { 1 } },                  Button = { ["13544-1"] = 44888 }, Range = 0.61,                     Coord = { y = 4914.8, x = 89 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A63-Ashenvale"] = {
+APR.RouteQuestStepList["63-Ashenvale"] = {
     { PickUp = { 13594 }, Coord = { y = 3831.8, x = 147.6 } },
     { PickUp = { 26473 }, Coord = { y = 3827.1, x = 157.8 } },
     { PickUp = { 13595 }, Coord = { y = 3742.8, x = 27.3 } },
@@ -934,7 +934,7 @@ APR.RouteQuestStepList["A63-Ashenvale"] = {
     { Coord = { y = 2501.6, x = -1302.9 },          Done = { 13886 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A77-Felwood"] = {
+APR.RouteQuestStepList["77-Felwood"] = {
     { PickUp = { 28148, 27997, 28100 },  Coord = { y = 3989, x = -1307.5 } },
     { Coord = { y = 3856.8, x = -1323 }, Done = { 28100 } },
     { PickUp = { 27989, 27994 },         Coord = { y = 3856.8, x = -1323 } },
@@ -1141,7 +1141,7 @@ APR.RouteQuestStepList["A77-Felwood"] = {
     { Coord = { y = 6821.2, x = -2082 },              Done = { 28338, 28366 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A83-Winterspring"] = {
+APR.RouteQuestStepList["83-Winterspring"] = {
     { PickUp = { 28460, 28464, 28540 }, Coord = { y = 6395.8, x = -2539.4 } },
     { Qpart = { [28540] = { 1 } },      Range = 0.61,                       Coord = { y = 6392.3, x = -2769.9 } },
     { Fillers = { [28460] = { 1 } },    Done = { 28464 },                   Coord = { y = 6843.1, x = -2496 } },
@@ -1321,7 +1321,7 @@ APR.RouteQuestStepList["A83-Winterspring"] = {
     { Coord = { y = 6178.5, x = -4558.7 },               Done = { 28841, 28842 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A65-StonetalonMountains"] = {
+APR.RouteQuestStepList["65-StonetalonMountains"] = {
     { PickUp = { 25607 },                 Coord = { y = 1939, x = -338.4 } },
     { PickUp = { 13913 },                 Coord = { y = 1922.9, x = -323.7 } },
     { Waypoint = 13913,                   Range = 29.19,                     Coord = { y = 2212.5, x = -768 } },
@@ -1542,7 +1542,7 @@ APR.RouteQuestStepList["A65-StonetalonMountains"] = {
     { Coord = { y = 1057.8, x = 1957.5 }, Done = { 25931, 25935, 25934 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A199-SouthernBarrens"] = {
+APR.RouteQuestStepList["199-SouthernBarrens"] = {
     { PickUp = { 24863, 24862 },                    Coord = { y = -238.5, x = -858 } },
     { Qpart = { [24863] = { 1 }, [24862] = { 1 } }, Range = 84.59,                       Coord = { y = -269.3, x = -967.8 } },
     { Coord = { y = -264.8, x = -1236.5 },          Done = { 24863, 24862 } },
@@ -1740,7 +1740,7 @@ APR.RouteQuestStepList["A199-SouthernBarrens"] = {
     { PickUp = { 25182, 25185 },                    Coord = { y = -3663.7, x = -1869.9 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
+APR.RouteQuestStepList["70-DustwallowMarsh"] = {
     { PickUp = { 27216 },                   Coord = { y = -3832.7, x = -4556 } },
     { PickUp = { 27210 },                   Coord = { y = -3820, x = -4563.3 } },
     { Qpart = { [27210] = { 1 } },          Gossip = 1,                          RaidIcon = 23602,                    Range = 125.92,                      Coord = { y = -3784.2, x = -4496.8 } },
@@ -1955,7 +1955,7 @@ APR.RouteQuestStepList["A70-DustwallowMarsh"] = {
     { Coord = { y = -3734.5, x = -4555.5 }, Done = { 27291 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A66-Desolace"] = {
+APR.RouteQuestStepList["66-Desolace"] = {
     { PickUp = { 14384 },              Coord = { y = 175.8, x = 1796 } },
     { Waypoint = 14384,                RaidIcon = 36416,                 ExtraLineText = "USE_MOUNT",      Range = 87.9, Coord = { y = 171.9, x = 1793.9 } },
     { Coord = { y = 127, x = 1233.5 }, Done = { 14384 } },
@@ -2178,7 +2178,7 @@ APR.RouteQuestStepList["A66-Desolace"] = {
     { Done = { 14381 },                  Coord = { y = -978.2, x = 1651.3 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A69-Feralas"] = {
+APR.RouteQuestStepList["69-Feralas"] = {
     { GetFP = 565,                 Range = 0.69,                     Coord = { y = -3141.5, x = 1952.8 } },
     { PickUp = { 25447 },          Coord = { y = -3161, x = 1919.5 } },
     { PickUp = { 25448, 25654 },   Coord = { y = -3192.2, x = 1887 } },
@@ -2354,7 +2354,7 @@ APR.RouteQuestStepList["A69-Feralas"] = {
     { Coord = { y = -4983.3, x = 73.9 },   Done = { 25438 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A64-ThousandNeedles"] = {
+APR.RouteQuestStepList["64-ThousandNeedles"] = {
     { PickUp = { 25486 },                  Coord = { y = -4463.9, x = -540.5 } },
     { Qpart = { [25486] = { 1 } },         Range = 78.79,                       Coord = { y = -4434.9, x = -579.3 } },
     { Coord = { y = -4425.4, x = -705.3 }, Done = { 25486 } },
@@ -2641,7 +2641,7 @@ APR.RouteQuestStepList["A64-ThousandNeedles"] = {
     { Coord = { y = -6155.2, x = -3772.7 }, Done = { 28160 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A71-Tanaris"] = {
+APR.RouteQuestStepList["71-Tanaris"] = {
     { PickUp = { 25067 },          Coord = { y = -7118.7, x = -3797.9 } },
     { Qpart = { [25067] = { 1 } }, Range = 0.75,                        Coord = { y = -7136.5, x = -3787 } },
     { Done = { 25067 },            Coord = { y = -7114.3, x = -3786.2 } },
@@ -2785,7 +2785,7 @@ APR.RouteQuestStepList["A71-Tanaris"] = {
     { Coord = { y = -7115.3, x = -3786.2 },         Done = { 25513 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A78-UnGoroCrater"] = {
+APR.RouteQuestStepList["78-UnGoroCrater"] = {
     { GetFP = 79,                         Range = 0.69,                        Coord = { y = -7548.9, x = -1538.3 } },
     { PickUp = { 24742, 24740 },          Coord = { y = -7505.4, x = -1509.3 } },
     { PickUp = { 24720 },                 Coord = { y = -7507.4, x = -1472 } },
@@ -3007,7 +3007,7 @@ APR.RouteQuestStepList["A78-UnGoroCrater"] = {
     { Coord = { y = -7101.3, x = -2555.7 },         Done = { 24695 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A81-Silithus"] = {
+APR.RouteQuestStepList["81-Silithus"] = {
     { GetFP = 73,                                    Range = 0.69,                       Coord = { y = -6758.3, x = 776.2 } },
     { PickUp = { 9415 },                             Coord = { y = -6763.8, x = 772.4 } },
     { PickUp = { 8283, 8280 },                       Coord = { y = -6844.9, x = 752.6 } },
@@ -3078,7 +3078,7 @@ APR.RouteQuestStepList["A81-Silithus"] = {
     { Coord = { y = -7578.4, x = 198 },              Done = { 8323 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A57-Teldrassil"] = {
+APR.RouteQuestStepList["57-Teldrassil"] = {
     { PickUp = { 488 },           Coord = { y = 9922.2, x = 738.9 } },
     { Qpart = { [488] = { 3 } },  Range = 25.42,                     Coord = { y = 9829.5, x = 754.7 } },
     { Qpart = { [488] = { 2 } },  Fillers = { [488] = { 1 } },       Range = 30.39,                      Coord = { y = 9666.2, x = 580 } },
