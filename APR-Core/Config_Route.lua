@@ -87,7 +87,8 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetDFPrefab()
                 end,
                 hidden = function()
-                    return (APR.Level < 60 and APR.ClassId ~= APR.Classes["Dracthyr"]) or not next(APR.RouteList.Dragonflight)
+                    return (APR.Level < 60 and APR.ClassId ~= APR.Classes["Dracthyr"]) or
+                    not next(APR.RouteList.Dragonflight)
                 end
             },
             reset_custom_path = {
@@ -252,6 +253,20 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         name = "Dragonflight",
+                        dialogControl = "RouteListFrame",
+                    },
+                }
+            },
+            Custom = {
+                order = 13,
+                name = "Custom",
+                type = "group",
+                childGroups = "tree",
+                inline = false,
+                args = {
+                    route = {
+                        type = "input",
+                        name = "Custom",
                         dialogControl = "RouteListFrame",
                     },
                 }

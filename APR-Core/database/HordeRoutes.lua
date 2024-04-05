@@ -69,6 +69,8 @@ if (APR.Faction == "Horde") then
         ["2024-DF05-AzureSpan"] = "DF06 - Azure Span",
         ["2025-DF06H-Thaldraszus"] = "DF07 - Thaldraszus",
     }
+    APR.RouteList.Custom = {}
+
 
     -- WARNING Class before race
     if (APR.ClassId == APR.Classes["Demon Hunter"]) then
