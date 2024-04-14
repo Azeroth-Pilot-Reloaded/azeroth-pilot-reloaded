@@ -178,7 +178,7 @@ APR.RouteQuestStepList["539-DesMephisto-Shadowmoon1"] = {
         Treasure = 35279,
         Fillers = { [35174] = { 1, 2 }, [35166] = { 1 } },
         ExtraLineText = "GO_NORTH_WEST_GARRISON",
-        ["ExtraLineText2"] = "TREASURE_NORTH_SHIP",
+        ExtraLineText2 = "TREASURE_NORTH_SHIP",
         Range = 0.75,
         Coord = { y = 2340.3, x = 338.2 }
     },
