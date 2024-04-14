@@ -70,7 +70,7 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v3.1.12", "2024-04-15" },
+        { "v3.1.11", "2024-04-15" },
         "#Bugs",
         "- Fix Player lvl up dialog message with current lvl",
         "- Update GossipOptionIDs for quest 69911",
