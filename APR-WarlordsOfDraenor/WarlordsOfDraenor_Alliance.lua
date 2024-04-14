@@ -1,4 +1,4 @@
-APR.RouteQuestStepList["A84-DesMephisto-Stormwind-War"] = {
+APR.RouteQuestStepList["84-DesMephisto-Stormwind-War"] = {
     { PickUp = { 34398 },                     ChromiePick = 9,  Gossip = 1,                        RaidIcon = 167032, Coord = { y = -8196.3, x = 745.9 } },
     { ExtraLineText = "HS_STORMWIND_OR_WALK", UseHS = 34398,    Coord = { y = -8867.5, x = 673.2 } },
     { Range = 6.45,                           Waypoint = 34398, Coord = { y = -8824.1, x = 678.9 } },
@@ -16,7 +16,7 @@ APR.RouteQuestStepList["A84-DesMephisto-Stormwind-War"] = {
     { Qpart = { [34398] = { 2 } }, GossipOptionID = 43231, RaidIcon = 78423,                  Range = 0.75, Coord = { y = -11810, x = -3205 }, Zone = 17 },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
+APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
     { Done = { 34398 },            DoneDB = { 34398, 36881 },           Coord = { y = 4066.6, x = -2373.2 } },
     { PickUp = { 35933 },          Coord = { y = 4067.4, x = -2373.2 } },
     { Qpart = { [35933] = { 1 } }, Range = 16.05,                       Coord = { y = 4068.1, x = -2340.2 } },
@@ -148,7 +148,7 @@ APR.RouteQuestStepList["A577-DesMephisto-TanaanJungle"] = {
     { Done = { 35884 },               Coord = { y = 3546.1, x = -2123.7 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
+APR.RouteQuestStepList["539-DesMephisto-Shadowmoon1"] = {
     { Done = { 34575 },                             Coord = { y = 2298.3, x = 462.8 } },
     { PickUp = { 34582 },                           Coord = { y = 2298.9, x = 462.2 } },
     { Qpart = { [34582] = { 1 } },                  Range = 0.75,                            Coord = { y = 1936.7, x = 339.2 } },
@@ -178,7 +178,7 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
         Treasure = 35279,
         Fillers = { [35174] = { 1, 2 }, [35166] = { 1 } },
         ExtraLineText = "GO_NORTH_WEST_GARRISON",
-        ["ExtraLineText2"] = "TREASURE_NORTH_SHIP",
+        ExtraLineText2 = "TREASURE_NORTH_SHIP",
         Range = 0.75,
         Coord = { y = 2340.3, x = 338.2 }
     },
@@ -331,7 +331,7 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon1"] = {
     { Done = { 49564 },      DoneDB = { 35556, 33533, 36632, 49564, 35033 }, Coord = { y = 6472.7, x = -165.2 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
+APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
     { Done = { 49564 },                             DoneDB = { 35556, 33533, 36632, 49564, 35033 }, Coord = { y = 6472.7, x = -165.2 } },
     { PickUp = { 35033, 36495 },                    Coord = { y = 6471.5, x = -164.2 } },
     { Qpart = { [35033] = { 1 } },                  Range = 0.69,                                   Coord = { y = 6800.2, x = -170.7 } },
@@ -588,7 +588,7 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond"] = {
     { Treasure = 36937,               Range = 0.69,                     Coord = { y = 4148.2, x = 1653 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
+APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
     { Done = { 35556 },                             Coord = { y = 6472.7, x = -165.2 } },
     { PickUp = { 35033, 36495 },                    Coord = { y = 6471.5, x = -164.2 } },
     { Qpart = { [35033] = { 1 } },                  Range = 0.69,                        Coord = { y = 6800.2, x = -170.7 } },
@@ -696,7 +696,7 @@ APR.RouteQuestStepList["A543-DesMephisto-Gorgrond-Lumbermill"] = {
     { Treasure = 34232,                                              Range = 0.75,                     Coord = { y = 3899.5, x = 1963.4 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A535-DesMephisto-Talador"] = {
+APR.RouteQuestStepList["535-DesMephisto-Talador"] = {
     { PickUp = { 34558 },                 Coord = { y = 3602.6, x = 1666.3 } },
     {
         Qpart = { [34558] = { 1, 2 } },
@@ -729,7 +729,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador"] = {
     { Done = { 34587 },                   Coord = { y = 1984.5, x = 466.5 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
+APR.RouteQuestStepList["539-DesMephisto-Shadowmoon2"] = {
     { PickUp = { 34587 },                           Coord = { y = 2066.1, x = 497.3 } },
     { Qpart = { [34587] = { 1 } },                  Range = 0.69,                            Coord = { y = 2058, x = 454.3 } },
     { Qpart = { [34587] = { 2 } },                  Button = { ["34587-2"] = 111956 },       Range = 0.75,                     Coord = { y = 2010.4, x = 533.7 } },
@@ -791,7 +791,7 @@ APR.RouteQuestStepList["A539-DesMephisto-Shadowmoon2"] = {
     { Done = { 34571, 34573, 34624 }, Coord = { y = 3629.1, x = 1652.7 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
+APR.RouteQuestStepList["535-DesMephisto-Talador2"] = {
     {
         Waypoint = 34624,
         Fillers = { [34624] = { 1 } },
@@ -1125,7 +1125,7 @@ APR.RouteQuestStepList["A535-DesMephisto-Talador2"] = {
     { PickUp = { 34655 },                 Coord = { y = 655.7, x = 2385.9 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A542-DesMephisto-SpiresOfArak"] = {
+APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
     { PickUp = { 34655 },                Coord = { y = 655.7, x = 2385.1 } },
     { Treasure = 36243,                  ExtraLineText = "LOOT_BELONGINGS",    Range = 0.75,                      Coord = { y = 690.6, x = 2451.3 } },
     { Qpart = { [34655] = { 1 } },       Gossip = 1,                           RaidIcon = 79519,                  Range = 0.61,                     Coord = { y = 860.7, x = 2036.5 } },

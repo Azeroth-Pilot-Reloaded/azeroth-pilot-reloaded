@@ -1,5 +1,5 @@
 if APR.Faction == "Alliance" then
-    APR.RouteQuestStepList["A630-Azsuna"] = {
+    APR.RouteQuestStepList["630-Azsuna"] = {
         { PickUp = { 44137, 38834 },          Coord = { y = -79, x = 6858.4 } },
         { GetFP = 1622,                       Range = 3.91,                      Coord = { y = -123.2, x = 6894.3 } },
         { Coord = { y = -103.4, x = 6961.8 }, Done = { 38834 },                  ["Done2"] = { 44137 } },
@@ -384,7 +384,7 @@ if APR.Faction == "Alliance" then
         { UseDalaHS = 40794,                            Coord = { y = -806.3, x = 6106.8 }, Button = { ["40794-1"] = 140192 } },
         { ZoneDoneSave = 1 }
     }
-    APR.RouteQuestStepList["A641-ValSharah"] = {
+    APR.RouteQuestStepList["641-ValSharah"] = {
         { Coord = { y = 2289.8, x = 6593.2 }, Done = { 39861 } },
         { PickUp = { 40122 },                 Coord = { y = 2289.8, x = 6593.2 } },
         { Qpart = { [40122] = { 1 } },        Gossip = 1,                        Range = 0.75,                      Coord = { y = 2289.8, x = 6593.2 } },
@@ -702,7 +702,7 @@ if APR.Faction == "Alliance" then
         { UseDalaHS = 40794123,        Coord = { y = 3091.3, x = 7457.8 }, Button = { ["40794123-1"] = 140192 } },
         { ZoneDoneSave = 1 }
     }
-    APR.RouteQuestStepList["A634-Stormheim"] = {
+    APR.RouteQuestStepList["634-Stormheim"] = {
         { Done = { 39800 },                        Coord = { y = 3204.6, x = 3078.1 } },
         { PickUp = { 38558, 38053, 38052, 38036 }, Coord = { y = 3210.1, x = 3079.5 } },
         {
@@ -2463,14 +2463,10 @@ APR.RouteQuestStepList["672-Mardum"] = {
     { PickUp = { 40051 },                   Coord = { y = 1454.8, x = 1764 } },
     { Qpart = { [40051] = { 1 } },          Range = 0.75,                      Coord = { y = 1456.4, x = 1762 } },
     { Done = { 40051 },                     Coord = { y = 1456.5, x = 1764.3 } },
-    { PickUp = { 39516 },                   Coord = { y = 1456.2, x = 1764.8 } },
-    { Qpart = { [39516] = { 1, 4, 3, 2 } }, Gossip = 39516,                    Range = 8.68,                      Coord = { y = 1455.3, x = 1764.9 } },
-    { Qpart = { [39516] = { 5 } },          Gossip = 1,                        Range = 0.75,                      Coord = { y = 1460.5, x = 1773.7 } },
-    { Done = { 39516 },                     Coord = { y = 1456.4, x = 1764.5 } },
-    { PickUp = { 39515 },                   Coord = { y = 1456.4, x = 1764.4 } },
-    { Qpart = { [39515] = { 1, 4, 3, 2 } }, Gossip = 39516,                    Range = 14.23,                     Coord = { y = 1456, x = 1763.8 } },
-    { Qpart = { [39515] = { 5 } },          Gossip = 1,                        Range = 0.75,                      Coord = { y = 1460.5, x = 1773.5 } },
-    { Done = { 39515 },                     Coord = { y = 1456.3, x = 1764.5 } },
+    { PickUp = { 39516 },                   PickUpDB = { 39515, 39516 },       Coord = { y = 1456.2, x = 1764.8 } },
+    { Qpart = { [39516] = { 1, 4, 3, 2 } }, QpartDB = { 39515, 39516 },        Gossip = 39516,                    Range = 8.68,                      Coord = { y = 1455.3, x = 1764.9 } },
+    { Qpart = { [39516] = { 5 } },          QpartDB = { 39515, 39516 },        Gossip = 1,                        Range = 0.75,                      Coord = { y = 1460.5, x = 1773.7 } },
+    { Done = { 39516 },                     DoneDB = { 39515, 39516 },         Coord = { y = 1456.4, x = 1764.5 } },
     { PickUp = { 39663 },                   Coord = { y = 1456.4, x = 1764.5 } },
     { Qpart = { [39663] = { 1 } },          Gossip = 1,                        Range = 0.69,                      Coord = { y = 1453, x = 1688.5 } },
     { Done = { 39663 },                     Coord = { y = 1469.9, x = 1411.7 } },

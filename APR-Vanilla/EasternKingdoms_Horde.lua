@@ -1,4 +1,4 @@
-APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
+APR.RouteQuestStepList["465-TirisfalGladesUndead"] = {
     { PickUp = { 24959 },                 Coord = { y = 1700.5, x = 1704 } },
     { Coord = { y = 1690.2, x = 1675 },   Done = { 24959 } },
     { PickUp = { 28608 },                 Coord = { y = 1690.2, x = 1675 } },
@@ -135,7 +135,7 @@ APR.RouteQuestStepList["18-TirisfalGladesUndead"] = {
     { Grind = 10 },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["DEV-Silverpine"] = {
+APR.RouteQuestStepList["21-Silverpine"] = {
     { Waypoint = 26965,                                              Range = 22.5,                      Coord = { y = 1475.2, x = 653.6 } },
     { PickUp = { 26965 },                                            Coord = { y = 1383.5, x = 1038.7 } },
     { ETA = 170,                                                     SpecialETAHide = 1,                GetFP = 645,                       Range = 5.91,                    Coord = { y = 1423.9, x = 1017.9 } },
@@ -331,7 +331,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
     { PickUp = { 27438 },          Coord = { y = -2120.5, x = 932.7 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["DEV-Silverpine2"] = {
+APR.RouteQuestStepList["21-Silverpine2"] = {
     { ETA = 132,                   Done = { 27438 },                  Coord = { y = -184, x = 1276 } },
     { PickUp = { 27472 },          Coord = { y = -184.5, x = 1276 } },
     { SpecialETAHide = 1,          ETA = 85,                          GetFP = 654,                       Range = 5.91,                     Coord = { y = -114.3, x = 1314.5 } },
@@ -356,7 +356,7 @@ APR.RouteQuestStepList["DEV-Silverpine2"] = {
     { ExtraLineText = "DALARAN_CRATER_PORTAL", Waypoint = 27483,                 Range = 5.0,                      Coord = { y = 452.8, x = 1465.5 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["DEV-DALARAN_CRATER"] = {
+APR.RouteQuestStepList["25-DEV-DALARAN_CRATER"] = {
     {
         DropQuest = 27480,
         Coord = { y = 422, x = 115 },
@@ -366,7 +366,7 @@ APR.RouteQuestStepList["DEV-DALARAN_CRATER"] = {
     { ExtraLineText = "DALARAN_CRATER_PORTAL",                       Done = { 27483, 27480, 27478 }, Coord = { y = 294.2, x = 377.6 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["DEV-Silverpine3"] = {
+APR.RouteQuestStepList["21-Silverpine3"] = {
     { Done = { 27483, 27480, 27478 }, Coord = { y = 457, x = 1472.4 } },
     { PickUp = { 27484 },             Coord = { y = 457, x = 1472.4 } },
     { Waypoint = 27484,               Range = 10.42,                  Coord = { y = 479, x = 1514.9 } },
@@ -420,7 +420,7 @@ APR.RouteQuestStepList["DEV-Silverpine3"] = {
     { Done = { 28089 },                             Coord = { y = -571.8, x = 429.3 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["DEV-Hillsbrad"] = {
+APR.RouteQuestStepList["25-Hillsbrad"] = {
     {
         Qpart = { [27483] = { 1 }, [27478] = { 1 } },
         Fillers = { [27480] = { 1 } },
@@ -1060,7 +1060,7 @@ APR.RouteQuestStepList["DEV-Hillsbrad"] = {
     { Done = { 28616 },                    Coord = { y = -17.9, x = -922.8 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
+APR.RouteQuestStepList["22-Western Plaguelands"] = {
     { PickUp = { 26931 },                                 Coord = { y = 1733.8, x = -732.3 } },
     { Qpart = { [26931] = { 1, 3, 2 }, [26934] = { 1 } }, Range = 80.91,                     Coord = { y = 1659, x = -1063.5 } },
     { Done = { 26931 },                                   Coord = { y = 1734, x = -734 } },
@@ -1286,7 +1286,7 @@ APR.RouteQuestStepList["DEV-Western Plaguelands"] = {
     { Done = { 26955 },                     Coord = { y = 1796.5, x = -1684.4 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["94-EversongWoodsBloodElf"] = {
+APR.RouteQuestStepList["467-EversongWoodsBloodElf"] = {
     { PickUp = { 8325 },                    Coord = { y = 10352.2, x = -6359 } },
     { Qpart = { [8325] = { 1 } },           Range = 66.61,                       Coord = { y = 10382.1, x = -6203.1 } },
     { Coord = { y = 10352.6, x = -6359.5 }, Done = { 8325 } },

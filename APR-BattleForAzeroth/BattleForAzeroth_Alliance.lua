@@ -1,4 +1,4 @@
-APR.RouteQuestStepList["A84-Stormwind"] = {
+APR.RouteQuestStepList["84-BFA-Stormwind"] = {
     { PickUp = { 46727 },                 ChromiePick = 15,                   Gossip = 1,                         RaidIcon = 167032,                  Coord = { y = -8196.3, x = 745.9 } },
     { Waypoint = 46727,                   Range = 5,                          Coord = { x = 649, y = -8332 } },
     { Waypoint = 46727,                   Range = 5,                          Coord = { x = 569.9, y = -8473.3 } },
@@ -29,7 +29,7 @@ APR.RouteQuestStepList["A84-Stormwind"] = {
     { Qpart = { [46728] = { 1 } },        Gossip = 1,                         Range = 0.69,                       Coord = { x = 1327.3, y = -8281.3 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
+APR.RouteQuestStepList["895-Tiragarde Sound"] = {
     { Done = { 46728 },                  Coord = { x = -443.2, y = 727.2 } },
     { PickUp = { 51341 },                Coord = { x = -443.3, y = 728.5 } },
     { Done = { 51341 },                  Coord = { x = -2715.3, y = 140.6 } },
@@ -1191,7 +1191,7 @@ APR.RouteQuestStepList["A895-Tiragarde Sound"] = {
     { Done = { 50972 },                             Coord = { x = -486.4, y = 1068 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A942-Stormsong Valley"] = {
+APR.RouteQuestStepList["942-Stormsong Valley"] = {
     { Done = { 51489 },                  Coord = { x = 57.7, y = 1911.7 } },
     { PickUp = { 51490 },                Coord = { x = 57.6, y = 1911.3 } },
     { Qpart = { [51490] = { 1 } },       Gossip = 1,                        Range = 12.37,                    Coord = { x = 69.3, y = 1933.4 } },
@@ -2180,7 +2180,7 @@ APR.RouteQuestStepList["A942-Stormsong Valley"] = {
     },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["A896-Dustvar"] = {
+APR.RouteQuestStepList["896-Dustvar"] = {
     { Waypoint = 48622,                   Range = 13.34,                      Coord = { x = 1859.8, y = -170 } },
     { Waypoint = 48622,                   Range = 7.43,                       Coord = { x = 1877.4, y = -162.2 } },
     { Waypoint = 48622,                   Range = 8.42,                       Coord = { x = 1888.4, y = -131.5 } },

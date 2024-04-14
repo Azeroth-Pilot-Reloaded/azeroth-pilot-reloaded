@@ -1,5 +1,5 @@
 if APR.Race == "Tauren" then
-    APR.RouteQuestStepList["7-MulgoreTauren"] = {
+    APR.RouteQuestStepList["462-MulgoreTauren"] = {
         { PickUp = { 14449 },                           Coord = { y = -2909.9, x = -256.3 } },
         { Done = { 14449 },                             Coord = { y = -3015.2, x = -463.3 } },
         { PickUp = { 14452 },                           Coord = { y = -3015.2, x = -463.3 } },
@@ -128,7 +128,7 @@ elseif APR.Race == "Orc" then
         { ZoneDoneSave = 1 }
     }
 elseif APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll" then
-    APR.RouteQuestStepList["1-EchoIslesTrollWar"] = {
+    APR.RouteQuestStepList["463-EchoIslesTrollWar"] = {
         { PickUp = { 24607 },                   Coord = { y = -1168.5, x = -5263.8 } },
         { Coord = { y = -1170.9, x = -5440.8 }, Done = { 24607 } },
         { PickUp = { 24639 },                   Coord = { y = -1170.9, x = -5440.4 } },
@@ -208,7 +208,7 @@ elseif APR.ClassId == APR.ClassesWarrior and APR.Race == "Troll" then
         { ZoneDoneSave = 1 }
     }
 elseif APR.ClassId == APR.ClassesHunter and APR.Race == "Troll" then
-    APR.RouteQuestStepList["1-EchoIslesTrollHunter"] = {
+    APR.RouteQuestStepList["463-EchoIslesTrollHunter"] = {
         { PickUp = { 24776 },                   Coord = { y = -1168.5, x = -5264.8 } },
         { Coord = { y = -1127.4, x = -5509.8 }, Done = { 24776 } },
         { PickUp = { 24777 },                   Coord = { y = -1127.4, x = -5509.8 } },
@@ -287,7 +287,7 @@ elseif APR.ClassId == APR.ClassesHunter and APR.Race == "Troll" then
         { ZoneDoneSave = 1 }
     }
 elseif APR.ClassId == APR.ClassesRogue and APR.Race == "Troll" then
-    APR.RouteQuestStepList["1-EchoIslesTrollRogue"] = {
+    APR.RouteQuestStepList["463-EchoIslesTrollRogue"] = {
         { PickUp = { 24770 },                   Coord = { y = -1168.5, x = -5264.4 } },
         { Coord = { y = -1125.6, x = -5446.8 }, Done = { 24770 } },
         { PickUp = { 24771 },                   Coord = { y = -1125.6, x = -5446.8 } },
@@ -365,7 +365,7 @@ elseif APR.ClassId == APR.ClassesRogue and APR.Race == "Troll" then
         { ZoneDoneSave = 1 }
     }
 elseif APR.ClassId == APR.ClassesPriest and APR.Race == "Troll" then
-    APR.RouteQuestStepList["1-EchoIslesTrollPriest"] = {
+    APR.RouteQuestStepList["463-EchoIslesTrollPriest"] = {
         { PickUp = { 24770 },                   Coord = { y = -1168.5, x = -5264.4 } },
         { Coord = { y = -1125.6, x = -5446.8 }, Done = { 24770 } },
         { PickUp = { 24771 },                   Coord = { y = -1125.6, x = -5446.8 } },
@@ -458,7 +458,7 @@ elseif APR.ClassId == APR.ClassesPriest and APR.Race == "Troll" then
         { ZoneDoneSave = 1 }
     }
 elseif APR.ClassId == APR.ClassesShaman and APR.Race == "Troll" then
-    APR.RouteQuestStepList["1-EchoIslesTrollShaman"] = {
+    APR.RouteQuestStepList["463-EchoIslesTrollShaman"] = {
         { PickUp = { 24758 },                   Coord = { y = -1168.1, x = -5264.7 } },
         { Coord = { y = -1159.4, x = -5396.3 }, Done = { 24758 } },
         { PickUp = { 24759 },                   Coord = { y = -1159.4, x = -5396.3 } },
@@ -537,7 +537,7 @@ elseif APR.ClassId == APR.ClassesShaman and APR.Race == "Troll" then
         { ZoneDoneSave = 1 }
     }
 elseif APR.ClassId == APR.ClassesMage and APR.Race == "Troll" then
-    APR.RouteQuestStepList["1-EchoIslesTrollMage"] = {
+    APR.RouteQuestStepList["463-EchoIslesTrollMage"] = {
         { PickUp = { 24750 },                   Coord = { y = -1168.5, x = -5264.5 } },
         { Coord = { y = -1151.4, x = -5569.3 }, Done = { 24750 } },
         { PickUp = { 24751 },                   Coord = { y = -1151.4, x = -5569.3 } },
@@ -622,7 +622,7 @@ elseif APR.ClassId == APR.ClassesMage and APR.Race == "Troll" then
         { ZoneDoneSave = 1 }
     }
 elseif APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll" then
-    APR.RouteQuestStepList["1-EchoIslesTrollWarlock"] = {
+    APR.RouteQuestStepList["463-EchoIslesTrollWarlock"] = {
         { PickUp = { 26272 },                   Coord = { y = -1168.5, x = -5264.4 } },
         { Coord = { y = -1125.9, x = -5395 },   Done = { 26272 } },
         { PickUp = { 26273 },                   Coord = { y = -1125.9, x = -5395 } },
@@ -701,7 +701,7 @@ elseif APR.ClassId == APR.ClassesWarlock and APR.Race == "Troll" then
         { ZoneDoneSave = 1 }
     }
 elseif APR.ClassId == APR.ClassesMonk and APR.Race == "Troll" then
-    APR.RouteQuestStepList["1-EchoIslesTrollMonk"] = {
+    APR.RouteQuestStepList["463-EchoIslesTrollMonk"] = {
         { PickUp = { 31159 },                   Coord = { y = -1167.9, x = -5264.8 } },
         { Coord = { y = -1148.8, x = -5440.9 }, Done = { 31159 } },
         { PickUp = { 31158 },                   Coord = { y = -1148.6, x = -5440.3 } },
@@ -780,7 +780,7 @@ elseif APR.ClassId == APR.ClassesMonk and APR.Race == "Troll" then
         { ZoneDoneSave = 1 }
     }
 elseif APR.ClassId == APR.ClassesDruid and APR.Race == "Troll" then
-    APR.RouteQuestStepList["1-EchoIslesTrollDruid"] = {
+    APR.RouteQuestStepList["463-EchoIslesTrollDruid"] = {
         { PickUp = { 24764 },                   Coord = { y = -1168.6, x = -5264.5 } },
         { Coord = { y = -1175, x = -5539.9 },   Done = { 24764 } },
         { PickUp = { 24765 },                   Coord = { y = -1175, x = -5539.9 } },

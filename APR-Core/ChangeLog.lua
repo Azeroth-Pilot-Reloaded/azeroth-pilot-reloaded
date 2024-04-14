@@ -70,6 +70,17 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.1.11", "2024-04-15" },
+        "#Bugs",
+        "- Fix Player lvl up dialog message with current lvl",
+        "- Update GossipOptionIDs for quest 69911",
+        "- Update DF route selection to lvl 60",
+        "- Fix deprecated function from 10.2.6",
+        "- Add Custom route tab for route recorder",
+        "- Fix Legion quests 39515 & 19516",
+        "- Reorder command + add to lowercase",
+        "- Update syntax for ExtraLineText",
+
         { "v3.1.10", "2024-03-20" },
         "#Bugs",
         "- Fix questStep lua error due to missing data for arrow",
@@ -80,7 +91,7 @@ function APR.changelog:SetChangeLog()
         "#WoW",
         "- Update interface addon version to 10.2.6",
 
-        { "v3.1.9",  "2024-03-06" },
+        { "v3.1.9", "2024-03-06" },
         "#Bugs",
         "- Fix DF starting zone with zone step",
         "- Add coord for all the step of DF alliance starting zone",
