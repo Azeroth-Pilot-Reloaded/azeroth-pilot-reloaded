@@ -127,7 +127,7 @@ function APR.transport:GetRouteMapIDsAndName()
             if routeName == currentRouteName then
                 APR.routeconfig:LoadRouteAddonFile(expansion)
                 local mapID = string.match(routeFileName, "^(.-)-")
-                return APR.ZonesData.ExtensionRouteMaps[APR.Faction][expansion], mapID,
+                return APR.ZonesData.ExtensionRouteMaps[APR.Faction][expansion], tonumber(mapID, 10),
                     routeFileName, expansion
             end
         end
