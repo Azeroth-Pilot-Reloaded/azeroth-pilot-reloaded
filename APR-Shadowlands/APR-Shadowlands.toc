@@ -7,4 +7,6 @@
 ## IconTexture: Interface\AddOns\APR-Core\assets\APR_logo
 
 ## RequiredDeps: APR-Core
+Shadowlands_Alliance.lua
+Shadowlands_Horde.lua
 Shadowlands.lua
