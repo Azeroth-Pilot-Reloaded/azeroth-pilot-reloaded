@@ -7,4 +7,6 @@
 ## IconTexture: Interface\AddOns\APR-Core\assets\APR_logo
 
 ## RequiredDeps: APR-Core
+Legion_Alliance.lua
+Legion_Horde.lua
 Legion.lua
