@@ -70,6 +70,14 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.1.13", "2024-04-16" },
+        "#Bugs",
+        "- Add missing faction check in route file",
+
+        { "v3.1.12", "2024-04-15" },
+        "#Bugs",
+        "- Fix bug on  mapID format with new route name format",
+
         { "v3.1.11", "2024-04-15" },
         "#Bugs",
         "- Fix Player lvl up dialog message with current lvl",
