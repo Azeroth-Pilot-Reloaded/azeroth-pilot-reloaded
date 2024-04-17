@@ -60,3 +60,6 @@ APR.hearthStoneSpellID = {
 APR.zuldazarHSSpellID = 267381
 APR.garrisonHSSpellID = 171253
 APR.dalaHSSpellID = 222695
+
+APR.hearthStoneItemId = 6948
+APR.garrisonHSItemID = 110560
