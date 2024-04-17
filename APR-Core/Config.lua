@@ -167,10 +167,19 @@ function APR.settings:createBlizzOptions()
                 order = 1.3,
                 name = "",
                 type = "description",
-                width = 1.35,
+                width = 0.75,
+            },
+            statusButton = {
+                order = 1.4,
+                name = L["STATUS"],
+                type = "execute",
+                width = 0.75,
+                func = function()
+                    APR:getStatus()
+                end
             },
             resetButton = {
-                order = 1.4,
+                order = 1.5,
                 name = L["RESET_SETTINGS"],
                 type = "execute",
                 width = 0.75,
@@ -179,15 +188,6 @@ function APR.settings:createBlizzOptions()
                         nil,
                         function() APR.settings:ResetSettings() end
                     )
-                end
-            },
-            statusButton = {
-                order = 1.5,
-                name = "Status",
-                type = "execute",
-                width = 0.75,
-                func = function()
-                    APR:getStatus()
                 end
             },
             header_Automation = {

@@ -61,9 +61,12 @@ end
 
 function APR:getStatusReportInfos()
     local coordinates
+    local worldCoordinates
     if not IsInInstance() then
         local playerPosition = C_Map.GetPlayerMapPosition(C_Map.GetBestMapForUnit("player"),"player")
-        coordinates = math.ceil(playerPosition.x*10000)/100 .. " " .. math.ceil(playerPosition.y*10000)/100
+        coordinates = APR.coordinate:RoundCoords(playerPosition.x*100, playerPosition.y*100, 2)
+        local worldPosY, worldPosX = UnitPosition("player")
+        worldCoordinates = APR.coordinate:RoundCoords(worldPosX, worldPosY, 2)
     end
 	local currentStep = GetCurrentStepInfo()
 
@@ -78,6 +81,7 @@ function APR:getStatusReportInfos()
 		currentZone = {"Zone", GetRealZoneText() or UNKNOWN},
 		currentContinent = {"Continent", C_Map.GetMapInfo(APR:GetContinent()).name},
 		currentCoords = {"Coordinates", coordinates or INSTANCE},
+		currentWorldCoords = {"World Coordinates", worldCoordinates or INSTANCE},
 		charFaction = {"Faction", APR.Faction},
 		charName = {"Name", APR.Username},
 		charRealm = {"Realm", GetRealmName()},
@@ -202,14 +206,13 @@ function APR:createStatusFrame()
 	LogoTop:SetSize(64, 64)
 	titleLogoFrame.LogoTop = LogoTop
 
-	--CopyButton to export the infos - TODO Styling
+	--CopyButton to export the infos
     local CopyButton = CreateFrame('Button', nil, StatusFrame, "StaticPopupButtonTemplate")
     CopyButton:SetPoint("BOTTOM", 0, 5)
     CopyButton:SetSize(100, 20)
-    CopyButton:SetText("Export Information")
 	local CopyButtonFont = CopyButton:CreateFontString()
 	CopyButtonFont:SetFont(font, 9)
-	CopyButtonFont:SetText("Export Information")
+	CopyButtonFont:SetText(L["STATUS_EXPORT"])
 	CopyButton:SetFontString(CopyButtonFont)
 	CopyButton:HookScript('OnClick', exportStatusReport)
 
@@ -227,7 +230,7 @@ function APR:createStatusStaticContent(StatusFrame)
 	StatusFrame.Section1.Content = APR:createStatusContent(4, 260, StatusFrame.Section1, StatusFrame.Section1.Header)
 	StatusFrame.Section1.Header.Text:SetFormattedText('Addon & Client|r')
 
-	StatusFrame.Section1.Content.Line1.Text:SetFormattedText(statusInfos.aprVersion[1] .. ': |cff' .. APR.HEXColor.green .. '%s|r', statusInfos.aprVersion[2]) --ToDo: Check if Addon outdated
+	StatusFrame.Section1.Content.Line1.Text:SetFormattedText(statusInfos.aprVersion[1] .. ': |cff' .. APR.HEXColor.green .. '%s|r', statusInfos.aprVersion[2])
 	StatusFrame.Section1.Content.Line2.Text:SetFormattedText(statusInfos.wowVersion[1] ..': |cff' .. APR.HEXColor.green .. '%s (build %s)|r', statusInfos.wowVersion[2], statusInfos.wowBuildVersion[2])
 	StatusFrame.Section1.Content.Line3.Text:SetFormattedText(statusInfos.clientLanguage[1] .. ': |cff' .. APR.HEXColor.green .. '%s|r', statusInfos.clientLanguage[2])
 
@@ -255,18 +258,11 @@ function APR:updateStatusFrame()
 
 	StatusFrame.Section2.Content.Line1.Text:SetFormattedText(statusInfos.currentRoute[1] .. ': |cff' .. statusColors.currentRouteColor ..'%s|r', statusInfos.currentRoute[2])
 	StatusFrame.Section2.Content.Line2.Text:SetFormattedText(statusInfos.currentStep[1] .. ': |cff' .. statusColors.currentStepColor ..'%s|r', statusInfos.currentStep[2])
-	StatusFrame.Section2.Content.Line3.Text:SetFormattedText(statusInfos.currentZone[1] .. ': |cff' .. statusColors.currentZoneColor ..'%s|r', statusInfos.currentZone[2])
-	StatusFrame.Section2.Content.Line4.Text:SetFormattedText(statusInfos.currentContinent[1] .. ': |cff4beb2c%s|r', statusInfos.currentContinent[2])
-	StatusFrame.Section2.Content.Line5.Text:SetFormattedText(statusInfos.currentCoords[1] .. ': |cff' .. statusColors.currentCoordsColor .. '%s|r', statusInfos.currentCoords[2])
+	StatusFrame.Section2.Content.Line3.Text:SetFormattedText(statusInfos.currentContinent[1] .. ': |cff' .. statusColors.currentZoneColor ..'%s|r', statusInfos.currentContinent[2])
+	StatusFrame.Section2.Content.Line4.Text:SetFormattedText(statusInfos.currentZone[1] .. ': |cff' .. statusColors.currentZoneColor ..'%s|r', statusInfos.currentZone[2])
+	StatusFrame.Section2.Content.Line5.Text:SetFormattedText(statusInfos.currentCoords[1] .. ': |cff' .. statusColors.currentCoordsColor .. '%s|r', statusInfos.currentCoords[2] .. ", " .. statusInfos.currentWorldCoords[2])
 
 	StatusFrame.Section3.Content.Line3.Text:SetFormattedText(statusInfos.charLevel[1] .. ': |cff' .. APR.HEXColor.green .. '%s|r', statusInfos.charLevel[2])
-end
-
-function APR:getCurrentRouteInfos()
-	local pos = C_Map.GetPlayerMapPosition(C_Map.GetBestMapForUnit("player"),"player")
-	pos = math.ceil(pos.x*10000)/100 .. " " .. math.ceil(pos.y*10000)/100
-
-	return ActiveRoute, CurrentStep, pos, color
 end
 
 function APR:showStatusReport()

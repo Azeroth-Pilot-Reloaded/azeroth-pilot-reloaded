@@ -58,6 +58,7 @@ function APR.command:SlashCmd(input)
         print("|cffeda55f/apr scribe, writer |r- ;)")
         print("|cffeda55f/apr discord |r- " .. L["DISCORD_COMMAND"])
         print("|cffeda55f/apr github |r- " .. L["GITHUB_COMMAND"])
+        print("|cffeda55f/apr status |r- " .. L["STATUS_COMMAND"])
     else
         APR.settings:OpenSettings(APR.title)
     end
