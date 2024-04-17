@@ -766,9 +766,9 @@ function APR.SetButton()
     end
 
     if steps.UseHS then
-        APR.currentStep:AddStepButton(steps.UseHS .. "-" .. "UseHS", 6948)
+        APR.currentStep:AddStepButton(steps.UseHS .. "-" .. "UseHS", APR.hearthStoneItemId)
     elseif steps.UseGarrisonHS then
-        APR.currentStep:AddStepButton(steps.UseGarrisonHS .. "-" .. "UseGarrisonHS", 110560)
+        APR.currentStep:AddStepButton(steps.UseGarrisonHS .. "-" .. "UseGarrisonHS", APR.garrisonHSItemID)
     elseif steps.Button then
         for questKey, itemID in pairs(steps.Button) do
             local questID = select(1, SplitQuestAndObjective(questKey))
@@ -1440,21 +1440,14 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         local arg1, arg2, arg3, arg4, arg5 = ...
 
         if (arg1 == "player") and steps then
-            if (Contains(APR.hearthStoneSpellID, arg3) and steps.UseHS) or (steps.SpellTrigger and arg3 == steps.SpellTrigger) then
+            if (steps.UseGarrisonHS and arg3 == APR.garrisonHSSpellID) then
                 _G.UpdateNextStep()
             end
-        end
-    end
-    if (event == "UNIT_SPELLCAST_START") then
-        local arg1, arg2, arg3, arg4, arg5 = ...;
-        if ((arg1 == "player") and (arg3 == APR.garrisonHSSpellID)) then
-            if (steps and steps.UseGarrisonHS) then
-                APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
+            if (steps.UseDalaHS and arg3 == APR.dalaHSSpellID) then
+                _G.UpdateNextStep()
             end
-        end
-        if ((arg1 == "player") and (arg3 == APR.dalaHSSpellID)) then
-            if (steps and steps.UseDalaHS) then
-                APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
+            if (Contains(APR.hearthStoneSpellID, arg3) and steps.UseHS) or (steps.SpellTrigger and arg3 == steps.SpellTrigger) then
+                _G.UpdateNextStep()
             end
         end
     end
