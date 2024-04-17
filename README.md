@@ -57,6 +57,7 @@
 <li><span style="font-family: arial; font-size: 14px;"><em><strong>/apr reset, r</strong></em> - Resets your steps for your current zone. Useful if you accidentally went off track or skipped way too far ahead.</span></li>
 <li><span style="font-family: arial; font-size: 14px;"><strong><em>/apr forcereset, fr</em></strong> - Resets APR's saved character cache, this is useful if you run into a major issue with syncing, or started questing, deleted the character and remade a new one using the same name.<br /></span></li>
 <li><span style="font-family: arial; font-size: 14px;"><strong><em>/apr skip, s, skippiedoodaa</em></strong> - Skips one step forward in your currently displayed Task/Objective.+<br /></span></li>
+<li><span style="font-size: 14px;"><em><strong>/apr status</strong></em>&nbsp;- Shows the current state of the addon.</span></li>
 <li><span style="font-size: 14px;"><span style="font-family: arial;"><em style="font-family: arial;"><strong>/apr&nbsp;</strong></em><strong style="font-family: arial;">scribe, writer</strong><span style="font-family: arial;">&nbsp;- ;)</span><br /></span></span></li>
 <li><span style="font-size: 14px;"><span style="font-family: arial;"><em><strong>/apr&nbsp;</strong></em><strong>42</strong>&nbsp;- ;)</span></span></li>
 </ul>

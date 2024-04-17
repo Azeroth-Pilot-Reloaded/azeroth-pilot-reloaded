@@ -32,6 +32,8 @@ function APR.command:SlashCmd(input)
         APR.questOrderList:RefreshFrameAnchor()
     elseif (inputText == "discord") then
         _G.StaticPopup_Show("Discord_Link")
+    elseif (inputText == "status") then
+        APR:getStatus()
     elseif (inputText == "github") then
         _G.StaticPopup_Show("Github_Link")
     elseif (inputText == "scribe" or inputText == "writer") then
@@ -50,6 +52,7 @@ function APR.command:SlashCmd(input)
         print("|cffeda55f/apr scribe, writer |r- ;)")
         print("|cffeda55f/apr discord |r- " .. L["DISCORD_COMMAND"])
         print("|cffeda55f/apr github |r- " .. L["GITHUB_COMMAND"])
+        print("|cffeda55f/apr status |r- " .. L["STATUS_COMMAND"])
         print("|cffeda55f/apr qol |r- " .. L["QOL_COMMAND"])
         print("|cffeda55f/apr rollback, rb |r- " .. L["ROLLBACK_COMMAND"])
         print("|cffeda55f/apr route |r- " .. L["ROUTE_COMMAND"])

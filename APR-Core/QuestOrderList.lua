@@ -5,6 +5,7 @@ local LibWindow = LibStub("LibWindow-1.1")
 -- Initialize APR Quest Order List module
 APR.questOrderList = APR:NewModule("QuestOrderList")
 APR.questOrderList.stepList = {}
+APR.currentStep.questID = nil
 
 --Local constant
 local FRAME_WIDTH = 250
@@ -211,6 +212,14 @@ local AddStepFrameWithQuest = function(stepIndex, stepText, questInfo, color)
         local questText = quest.questID .. questName
         local questFont = CreateTextFont(container, questText, FRAME_WIDTH - offset - 10 - 22) -- offset - 10 - scrollbar offset
 
+        if stepIndex == APRData[APR.PlayerID][APR.ActiveRoute] then
+            if string.find(quest.questID, "-") then
+                APR.currentStep.questID = string.sub(quest.questID, 1, string.find(quest.questID, "-")-1)
+            else
+                APR.currentStep.questID = quest.questID
+            end
+        end
+
         questFont:SetPoint("TOPLEFT", container, "TOPLEFT", offset + 10,
             -titleFont:GetStringHeight() - 5 - questFontHeight)
 
@@ -275,6 +284,7 @@ end
 function APR.questOrderList:AddStepFromRoute()
     if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.RouteQuestStepList[APR.ActiveRoute] or not APR.routeconfig:HasRouteInCustomPaht() or not APR:IsInInstanceQuest() then
         self:RemoveSteps()
+        APR.currentStep.questID = nil
         return
     end
     if APR.settings.profile.debug then

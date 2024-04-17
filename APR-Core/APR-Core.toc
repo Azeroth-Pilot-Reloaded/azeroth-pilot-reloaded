@@ -47,3 +47,4 @@ AFK.lua
 Heirloom.lua
 RouteSelection.lua
 Buff.lua
+StatusReport.lua

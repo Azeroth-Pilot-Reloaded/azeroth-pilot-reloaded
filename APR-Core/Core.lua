@@ -34,6 +34,15 @@ APR.Color = {
     defaultBackdrop = { 0, 0, 0, 0.75 },
     defaultLightBackdrop = { 0, 0, 0, 0.4 }
 }
+
+APR.HEXColor = {
+    white = "ffffff",
+    black = "000000",
+    red = "ff3333",
+    green = "00ff00"
+}
+
+APR.wowpatch, APR.wowbuild, APR.wowdate, APR.wowtoc = GetBuildInfo()
 -- APR.Season = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() // For classic
 
 

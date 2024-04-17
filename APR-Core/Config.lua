@@ -167,10 +167,19 @@ function APR.settings:createBlizzOptions()
                 order = 1.3,
                 name = "",
                 type = "description",
-                width = 1.35,
+                width = 0.75,
+            },
+            statusButton = {
+                order = 1.4,
+                name = L["STATUS"],
+                type = "execute",
+                width = 0.75,
+                func = function()
+                    APR:getStatus()
+                end
             },
             resetButton = {
-                order = 1.4,
+                order = 1.5,
                 name = L["RESET_SETTINGS"],
                 type = "execute",
                 width = 0.75,
@@ -1363,6 +1372,18 @@ function APR.settings:OpenSettings(name)
             InterfaceOptionsFrame_OpenToCategory(APR.Options)
             if APR.OptionsRoute then
                 InterfaceOptionsFrame_OpenToCategory(APR.OptionsRoute)
+            end
+            return
+        end
+    end
+end
+
+function APR.settings:CloseSettings()
+    if APR.Options then
+        if SettingsPanel then
+            local category = SettingsPanel:GetCategoryList():GetCategory(APR.Options.name)
+            if category then
+                SettingsPanel:Hide()
             end
             return
         end
