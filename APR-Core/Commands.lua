@@ -7,6 +7,7 @@ function APR.command:SlashCmd(input)
     local inputText = string.lower(input)
     if not APR.settings.profile.enableAddon then
         APR.settings:OpenSettings(APR.title)
+        print(L["ADDON"] .. ' ' .. L["DISABLE"])
     end
     if (inputText == "reset" or inputText == "r") then
         --Command for making the quest rescan on completion and reset, including previously skipped steps
@@ -49,17 +50,17 @@ function APR.command:SlashCmd(input)
     elseif (inputText == "help" or inputText == "h") then
         print(L["COMMAND_LIST"] .. ":")
         print("|cffeda55f/apr coord |r- " .. L["COORD_COMMAND"])
-        print("|cffeda55f/apr scribe, writer |r- ;)")
         print("|cffeda55f/apr discord |r- " .. L["DISCORD_COMMAND"])
+        print("|cffeda55f/apr forcereset, fr |r- " .. L["FORCERESET_COMMAND"])
         print("|cffeda55f/apr github |r- " .. L["GITHUB_COMMAND"])
-        print("|cffeda55f/apr status |r- " .. L["STATUS_COMMAND"])
+        print("|cffeda55f/apr help, h |r- " .. L["HELP_COMMAND"])
         print("|cffeda55f/apr qol |r- " .. L["QOL_COMMAND"])
+        print("|cffeda55f/apr reset, r |r- " .. L["RESET_COMMAND"])
         print("|cffeda55f/apr rollback, rb |r- " .. L["ROLLBACK_COMMAND"])
         print("|cffeda55f/apr route |r- " .. L["ROUTE_COMMAND"])
-        print("|cffeda55f/apr reset, r |r- " .. L["RESET_COMMAND"])
-        print("|cffeda55f/apr forcereset, fr |r- " .. L["FORCERESET_COMMAND"])
+        print("|cffeda55f/apr scribe, writer |r- ;)")
         print("|cffeda55f/apr skip, s, skippiedoodaa |r- " .. L["SKIP_COMMAND"])
-        print("|cffeda55f/apr help, h |r- " .. L["HELP_COMMAND"])
+        print("|cffeda55f/apr status |r- " .. L["STATUS_COMMAND"])
     else
         APR.settings:OpenSettings(APR.title)
     end

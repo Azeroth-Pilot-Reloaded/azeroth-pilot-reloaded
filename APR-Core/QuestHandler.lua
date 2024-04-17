@@ -723,7 +723,6 @@ local function APR_UpdateStep()
             end
         end
         if (steps.ZoneDoneSave) then
-            print("OUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
             local index, currentRouteName = next(APRCustomPath[APR.PlayerID])
 
             -- Force reset heirloom to show heirloom taximap (not avalaible in exile reach)
