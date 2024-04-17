@@ -1,5 +1,5 @@
 if APR.Faction == "Horde" then
-    APR.RouteQuestStepList["ScarletEnclave"] = {
+    APR.RouteQuestStepList["23-ScarletEnclave"] = {
         { PickUp = { 12593 },                   Coord = { y = 2346.0, x = -5671.2 } },
         { Waypoint = 12593,                     Coord = { y = 2413.1, x = -5618.9 }, Range = 16.93 },
         { Done = { 12593 },                     Coord = { y = 2487.5, x = -5573.5 } },
@@ -159,7 +159,7 @@ if APR.Faction == "Horde" then
         },
         { ZoneDoneSave = 1 }
     }
-    APR.RouteQuestStepList["Allied_Icecrown Citadel"] = {
+    APR.RouteQuestStepList["118-Allied_Icecrown Citadel"] = {
         { PickUp = { 58877 },          Coord = { x = -2123.4, y = 429, } },
         { Qpart = { [58877] = { 1 } }, Coord = { x = -2123.4, y = 429, },    Range = 0.5 },
         { Done = { 58877 },            Coord = { x = -2123.4, y = 429, } },

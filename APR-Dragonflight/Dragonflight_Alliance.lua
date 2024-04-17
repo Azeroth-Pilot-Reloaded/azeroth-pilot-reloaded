@@ -1,5 +1,5 @@
 if APR.Faction == "Alliance" then
-    APR.RouteQuestStepList["DF01A-84-Stormwind"] = {
+    APR.RouteQuestStepList["84-DF01A-Stormwind"] = {
         { Done = { 65436 },            Coord = { y = -8309.2, x = 336.3 } },
         { PickUp = { 66577 },          Coord = { y = -8309.2, x = 336.3 } },
         { Qpart = { [66577] = { 1 } }, GossipOptionID = 55659,            Coord = { y = -8309.2, x = 336.3 } },
@@ -35,11 +35,11 @@ if APR.Faction == "Alliance" then
         { PickUp = { 67700 },          Coord = { y = -8640.6, x = 1328.2 } },
         { Waypoint = 67700,            Coord = { y = -8640.6, x = 1328.2 }, Range = 10,  ExtraLineText = "WAIT_FOR_SHIP" },
         { Qpart = { [67700] = { 1 } }, Coord = { y = -8640.6, x = 1328.2 }, Range = 0.5, ExtraLineText = "WAIT_FOR_SHIP" },
-        { Qpart = { [67700] = { 2 } }, Zone = 2022},
-        { Done = { 67700 }, Zone = 2022},
+        { Qpart = { [67700] = { 2 } }, Zone = 2022 },
+        { Done = { 67700 },            Zone = 2022 },
         { ZoneDoneSave = 1 }
     }
-    APR.RouteQuestStepList["DF03A-2022-WakingShores"] = {
+    APR.RouteQuestStepList["2022-DF03A-WakingShores"] = {
         { Qpart = { [67700] = { 1 } }, Coord = { y = -8640.6, x = 1328.2 }, Range = 0.5, ExtraLineText = "WAIT_FOR_SHIP" },
         { Done = { 67700 },            Coord = { y = 3676.8, x = -1898.5 } },
         { PickUp = { 70122 },          Coord = { y = 3676.8, x = -1898.5 } },
@@ -88,28 +88,28 @@ if APR.Faction == "Alliance" then
             PickUp = { 72266 },
             Coord = { y = 3552.0, x = -1452.5 },
             ExtraLineText = "CHOOSE_ZONE",
-            ["ExtraLineText2"] = "CHOOSE_ZONE_DF_WS",
+            ExtraLineText2 = "CHOOSE_ZONE_DF_WS",
             HasAchievement = 16326
         },
         {
             PickUp = { 72267 },
             Coord = { y = 3552.0, x = -1452.5 },
             ExtraLineText = "CHOOSE_ZONE",
-            ["ExtraLineText2"] = "CHOOSE_ZONE_DF_OP",
+            ExtraLineText2 = "CHOOSE_ZONE_DF_OP",
             HasAchievement = 16326
         },
         {
             PickUp = { 72268 },
             Coord = { y = 3552.0, x = -1452.5 },
             ExtraLineText = "CHOOSE_ZONE",
-            ["ExtraLineText2"] = "CHOOSE_ZONE_DF_AS",
+            ExtraLineText2 = "CHOOSE_ZONE_DF_AS",
             HasAchievement = 16326
         },
         {
             PickUp = { 72269 },
             Coord = { y = 3552.0, x = -1452.5 },
             ExtraLineText = "CHOOSE_ZONE",
-            ["ExtraLineText2"] = "CHOOSE_ZONE_DF_THAL",
+            ExtraLineText2 = "CHOOSE_ZONE_DF_THAL",
             HasAchievement = 16326
         },
         { Done = { 72266 },            Coord = { y = 3581.8, x = -1456.2 }, HasAchievement = 16326 },
@@ -127,7 +127,7 @@ if APR.Faction == "Alliance" then
         { Done = { 66101 },            Coord = { y = 3591.7, x = -1397.9 } },
         { PickUp = { 69965 },          Coord = { y = 3539.8, x = -1442.4 } },
         { PickUp = { 66112 },          Coord = { y = 3529.3, x = -1437.9 } },
-        { Qpart = { [69911] = { 1 } }, Coord = { y = 3478.8, x = -1435.5 }, Range = 5,             Gossip = 2,                            RaidIcon = 193393 },
+        { Qpart = { [69911] = { 1 } }, Coord = { y = 3478.8, x = -1435.5 }, Range = 5,             GossipOptionID = 55674,                RaidIcon = 193393 },
         {
             Qpart = { [69911] = { 2 } },
             Coord = { y = 3479.0, x = -1432.9 },
@@ -145,7 +145,7 @@ if APR.Faction == "Alliance" then
             Coord = { y = 3582.1, x = -1456.0 },
             Range = 1,
             ExtraLineText = "SPEAK_SENDRAX_SEND_SIGNAL_FLARES",
-            Gossip = 1
+            GossipOptionID = 55637
         },
         { Waypoint = 66112,            Coord = { y = 3418.8, x = -1379.0 }, Range = 10, ExtraLineText = "HEAD_CAVE" },
         {
@@ -172,7 +172,7 @@ if APR.Faction == "Alliance" then
         { Done = { 69912 },            Coord = { y = 3537.5, x = -1424.7 } },
         { ZoneDoneSave = 1 }
     }
-    APR.RouteQuestStepList["DF06A-2025-Thaldraszus"] = {
+    APR.RouteQuestStepList["2025-DF06A-Thaldraszus"] = {
         {
             Qpart = { [66244] = { 1 } },
             Coord = { y = 338.8, x = -1099.5 },
@@ -554,7 +554,7 @@ if APR.Faction == "Alliance" then
             Coord = { y = 6397.9243164062, x = -3287.5322265625 },
             Range = 1,
             ExtraLineText = "RESET_COOLDOWN_BY_CLICKING_ON_THE_FIRE_BREATH_INFUSERS",
-            ["ExtraLineText2"] = "HOLD_IT_UNTIL_YOU_REACH_LAST_EMPOWEREMENT_SECTION",
+            ExtraLineText2 = "HOLD_IT_UNTIL_YOU_REACH_LAST_EMPOWEREMENT_SECTION",
             SpellButton = { ["64872-3"] = 363898 }
         },
         {
@@ -562,7 +562,7 @@ if APR.Faction == "Alliance" then
             Coord = { y = 6397.9243164062, x = -3287.5322265625 },
             Range = 1,
             ExtraLineText = "RESET_COOLDOWN_BY_CLICKING_ON_THE_FIRE_BREATH_INFUSERS",
-            ["ExtraLineText2"] = "HOLD_IT_UNTIL_YOU_REACH_SECOND_EMPOWEREMENT_SECTION",
+            ExtraLineText2 = "HOLD_IT_UNTIL_YOU_REACH_SECOND_EMPOWEREMENT_SECTION",
             SpellButton = { ["64872-2"] = 363898 }
         },
         { Qpart = { [65615] = { 1 } }, Coord = { y = 6534.99609375, x = -3332.0173339844 },  Range = 1 },
@@ -571,7 +571,7 @@ if APR.Faction == "Alliance" then
             Coord = { y = 6464.109375, x = -3304.62109375 },
             Range = 1,
             ExtraLineText = "RESET_COOLDOWN_BY_CLICKING_ON_THE_FIRE_BREATH_INFUSERS",
-            ["ExtraLineText2"] = "DONT_HOLD_DOWN_BUTTON",
+            ExtraLineText2 = "DONT_HOLD_DOWN_BUTTON",
             SpellButton = { ["64872-1"] = 363898 }
         },
         { Done = { 64872 },            Coord = { y = 6394.126953125, x = -3304.3500976562 }, Range = 1 },
@@ -589,7 +589,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [64873] = { 2 } },
             Coord = { y = 6463.748046875, x = -3313.3012695312 },
             Range = 2,
-            ["ExtraLineText2"] = "CAST_SOAR",
+            ExtraLineText2 = "CAST_SOAR",
             SpellButton = { ["64873-2"] = 369536 }
         },
         { Qpart = { [64873] = { 3 } }, Coord = { y = 6687.2573242188, x = -3470.6259765625 }, Range = 1 },
@@ -597,7 +597,7 @@ if APR.Faction == "Alliance" then
             Done = { 65909 },
             Coord = { y = 6884.9072265625, x = -3242.5048828125 },
             ExtraLineText = "PICK_UP_BAG_OF_ENCHANTED_WIND_FOR_A_MOVEMENT_SPEED_BUFF",
-            ["ExtraLineText2"] = "CAST_SOAR",
+            ExtraLineText2 = "CAST_SOAR",
             SpellButton = { ["65909"] = 369536 }
         },
         {
@@ -611,41 +611,41 @@ if APR.Faction == "Alliance" then
             Qpart = { [64873] = { 5 } },
             Coord = { y = 6609.6796875, x = -3038.25390625 },
             Range = 1,
-            ["ExtraLineText2"] = "CAST_SOAR",
+            ExtraLineText2 = "CAST_SOAR",
             SpellButton = { ["64873-5"] = 369536 }
         },
         {
             Qpart = { [64873] = { 6 } },
             Coord = { y = 6463.9287109375, x = -3312.7587890625 },
             Range = 1,
-            ["ExtraLineText2"] = "CAST_SOAR",
+            ExtraLineText2 = "CAST_SOAR",
             SpellButton = { ["64873-6"] = 369536 }
         },
         {
             Qpart = { [64873] = { 7 } },
             Coord = { y = 6862.6655273438, x = -3531.6574707031 },
             Range = 1,
-            ["ExtraLineText2"] = "CAST_SOAR",
+            ExtraLineText2 = "CAST_SOAR",
             SpellButton = { ["64873-7"] = 369536 }
         },
         { Done = { 64873 },            Coord = { y = 6464.109375, x = -3312.758 } },
         {
             PickUp = { 65036 },
             Coord = { y = 6464.109375, x = -3312.7587890625 },
-            ["ExtraLineText2"] = "CAST_SOAR",
+            ExtraLineText2 = "CAST_SOAR",
             SpellButton = { ["65036"] = 369536 }
         },
         {
             Qpart = { [65036] = { 1 } },
             Coord = { y = 6464.109, x = -3312.7587890625 },
             Range = 1,
-            ["ExtraLineText2"] = "CAST_SOAR",
+            ExtraLineText2 = "CAST_SOAR",
             SpellButton = { ["65036-1"] = 369536 }
         },
         {
             Done = { 65036 },
             Coord = { y = 6400.275390625, x = -3299.7387695312 },
-            ["ExtraLineText2"] = "CAST_SOAR",
+            ExtraLineText2 = "CAST_SOAR",
             SpellButton = { ["65036"] = 369536 }
         },
         { PickUp = { 65060 },          Coord = { y = 6400.275390625, x = -3299.7387695312 } },
@@ -653,7 +653,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [65060] = { 1 } },
             Coord = { y = 6917.8193359375, x = -3088.9775390625 },
             Range = 1,
-            ["ExtraLineText2"] = "CAST_SOAR",
+            ExtraLineText2 = "CAST_SOAR",
             SpellButton = { ["65060-1"] = 369536 },
             Gossip = 1
         },
@@ -661,7 +661,7 @@ if APR.Faction == "Alliance" then
             Done = { 65060 },
             Coord = { y = 7220.171875, x = -2610.2211914062 },
             Range = 1,
-            ["ExtraLineText2"] = "CAST_SOAR",
+            ExtraLineText2 = "CAST_SOAR",
             SpellButton = { ["65060"] = 369536 }
         },
         { PickUp = { 65063 },          Coord = { y = 7220.171875, x = -2610.2211914062 } },
@@ -681,7 +681,7 @@ if APR.Faction == "Alliance" then
             Waypoint = 65074,
             Coord = { y = 7190.877441406, x = -2658.5036621094 },
             Range = 5,
-            ["ExtraLineText2"] = "CAST_SOAR",
+            ExtraLineText2 = "CAST_SOAR",
             SpellButton = { ["65074-1"] = 369536 }
         },
         { Done = { 65074 },            Coord = { y = 7162.486328125, x = -2648.7387695312 } },
@@ -769,14 +769,14 @@ if APR.Faction == "Alliance" then
             Range = 1,
             Fillers = { [66324] = { 3 } },
             ExtraLineText = "USE_ITEM_ON_COOLDOWN_REDUCE_TOXICITY",
-            ["ExtraLineText2"] = "PICK_UP_CRYSTAL_KEY_ON_THE_GROUND"
+            ExtraLineText2 = "PICK_UP_CRYSTAL_KEY_ON_THE_GROUND"
         },
         {
             Qpart = { [66324] = { 3 } },
             Coord = { y = 7337.89453125, x = -2389.6000976562 },
             Range = 5,
             ExtraLineText = "ONLY_USE_ITEM_STAY_AT_LIKE_5060",
-            ["ExtraLineText2"] = "PLACE_CRYSTAL_KEY_IN_THE_CRYSTAL_LOCK",
+            ExtraLineText2 = "PLACE_CRYSTAL_KEY_IN_THE_CRYSTAL_LOCK",
             Button = { ["66324-3"] = 191729 }
         },
         {
@@ -794,7 +794,7 @@ if APR.Faction == "Alliance" then
         {
             Done = { 65045 },
             Coord = { y = 6342.58984375, x = -4010.4135742188 },
-            ["ExtraLineText2"] = "CAST_SOAR_AND_FOLLOW_ARROW",
+            ExtraLineText2 = "CAST_SOAR_AND_FOLLOW_ARROW",
             SpellButton = { ["65045"] = 369536 }
         },
         { PickUp = { 65049, 65050 }, Coord = { y = 6342.58984375, x = -4010.4135742188 } },
@@ -816,7 +816,7 @@ if APR.Faction == "Alliance" then
             Coord = { y = 6304.2529296875, x = -4222.53125 },
             Range = 2,
             Fillers = { [65050] = { 1 }, [65049] = { 1 } },
-            ["ExtraLineText2"] = "CAST_SOAR_AND_FOLLOW_ARROW",
+            ExtraLineText2 = "CAST_SOAR_AND_FOLLOW_ARROW",
             SpellButton = { ["65046-2"] = 369536 }
         },
         {
@@ -850,7 +850,7 @@ if APR.Faction == "Alliance" then
         {
             Done = { 65084 },
             Coord = { y = 6996.662109375, x = -3638.5297851562 },
-            ["ExtraLineText2"] = "CAST_SOAR_AND_FOLLOW_ARROW",
+            ExtraLineText2 = "CAST_SOAR_AND_FOLLOW_ARROW",
             SpellButton = { ["65084"] = 369536 }
         },
         { PickUp = { 65087 }, Coord = { y = 6996.662109375, x = -3638.5297851562 } },
@@ -871,7 +871,7 @@ if APR.Faction == "Alliance" then
             Coord = { y = 6863.931640625, x = -3375.4174804688 },
             Range = 2,
             ExtraLineText = "IMMEDIATELY_START_RUNNING_AND_GET_WRATHION",
-            ["ExtraLineText2"] = "SPAMMING_SPACE_IS_FASTER_THAN_WALKING_NORMALLY"
+            ExtraLineText2 = "SPAMMING_SPACE_IS_FASTER_THAN_WALKING_NORMALLY"
         },
         { Qpart = { [65097] = { 2 } }, Coord = { y = 6878.9404296875, x = -3395.21875 },     Range = 2 },
         {

@@ -1,4 +1,4 @@
-APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
+APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
     { PickUp = { 69914 },          Coord = { y = 3535.9, x = -1427.5 } },
     { Qpart = { [69914] = { 1 } }, Coord = { y = 3535.9, x = -1427.5 }, Range = 1,  Gossip = 3,                              ETA = 50 },
     { Done = { 69914 },            Coord = { y = 3542.3, x = -1430.1 } },
@@ -690,7 +690,7 @@ APR.RouteQuestStepList["DF03N-2022-WakingShores"] = {
     { Done = { 65779 },   Coord = { y = 223.6, x = 933.9 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
+APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
     { Done = { 65779 },            Coord = { y = 223.6, x = 933.9 } },
     { PickUp = { 65780 },          Coord = { y = 223.6, x = 933.9 } },
     { Qpart = { [65780] = { 1 } }, Coord = { y = 71.5, x = 886.0 },  Range = 45 },
@@ -1090,7 +1090,7 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
         Coord = { y = -1120.0, x = 1341.2 },
         Range = 2,
         ExtraLineText = "SPEAK_KHANAM_MATRA",
-        Gossip = 1
+        GossipOptionID = 56207
     },
     { GetFP = 2798,                Coord = { y = -1501.9, x = 727.7 }, Range = 2 },
     { PickUp = { 66681 },          Coord = { y = -1554.8, x = 683.9 } },
@@ -1235,7 +1235,7 @@ APR.RouteQuestStepList["DF04-2023-OhnahranPlains"] = {
     { Done = { 65686 },   Coord = { y = -3511.6, x = 981.7 } },
     { ZoneDoneSave = 1 }
 }
-APR.RouteQuestStepList["DF05-2024-AzureSpan"] = {
+APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
     { Done = { 65686 },            Coord = { y = -3511.6, x = 981.7 } },
     { PickUp = { 66228 },          Coord = { y = -3511.6, x = 981.7 } },
     { PickUp = { 67174 },          Coord = { y = -3531.3, x = 1005.7 } },

@@ -1,8 +1,4 @@
 if (APR.Faction == "Neutral") then
-    APR.RouteMainMapID = {
-        ["Pandaren Start"] = 378,
-    }
-
     APR.RouteList.Vanilla = {}
     APR.RouteList.TheBurningCrusade = {}
     APR.RouteList.WrathOfTheLichKing = {}
@@ -13,6 +9,7 @@ if (APR.Faction == "Neutral") then
     APR.RouteList.BattleForAzeroth = {}
     APR.RouteList.Shadowlands = {}
     APR.RouteList.Dragonflight = {}
+    APR.RouteList.Custom = {}
 
     if (APR.Race == "Pandaren") then
         APR.RouteList.MistsOfPandaria["378-WanderingIsle"] = "Pandaren Start"

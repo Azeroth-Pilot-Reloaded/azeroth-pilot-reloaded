@@ -70,6 +70,35 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.1.13", "2024-04-16" },
+        "#Bugs",
+        "- Add missing faction check in route file",
+
+        { "v3.1.12", "2024-04-15" },
+        "#Bugs",
+        "- Fix bug on  mapID format with new route name format",
+
+        { "v3.1.11", "2024-04-15" },
+        "#Bugs",
+        "- Fix Player lvl up dialog message with current lvl",
+        "- Update GossipOptionIDs for quest 69911",
+        "- Update DF route selection to lvl 60",
+        "- Fix deprecated function from 10.2.6",
+        "- Add Custom route tab for route recorder",
+        "- Fix Legion quests 39515 & 19516",
+        "- Reorder command + add to lowercase",
+        "- Update syntax for ExtraLineText",
+
+        { "v3.1.10", "2024-03-20" },
+        "#Bugs",
+        "- Fix questStep lua error due to missing data for arrow",
+        "- Add Spell ID hearthStone list with the majority of hearthStones available for UseHS step option",
+        "- Add Gossip Option ID do `Green Dragon Down` quest in Ohn'ahran Plain route",
+        "- Remove non-compaign quest from Shadowlands-StoryOnly",
+
+        "#WoW",
+        "- Update interface addon version to 10.2.6",
+
         { "v3.1.9", "2024-03-06" },
         "#Bugs",
         "- Fix DF starting zone with zone step",

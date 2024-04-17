@@ -1,4 +1,4 @@
-## Interface: 100205
+## Interface: 100206
 ## X-Min-Interface: 100205
 
 ## Title: Azeroth Pilot Reloaded - [|cffeda55fShadowlands|r]
@@ -7,4 +7,6 @@
 ## IconTexture: Interface\AddOns\APR-Core\assets\APR_logo
 
 ## RequiredDeps: APR-Core
+Shadowlands_Alliance.lua
+Shadowlands_Horde.lua
 Shadowlands.lua

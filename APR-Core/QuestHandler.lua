@@ -1,7 +1,6 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
-
 local ETAStep = 0
 local Updateblock = 0
 local APRGOSSIPCOUNT = 0
@@ -10,26 +9,6 @@ local APRGOSSIPCOUNT = 0
 APR.ProgressbarIgnore = {
     ["60520-2"] = 1,
     ["57724-2"] = 1,
-}
-
--- //TODO create Spell DB
-local APR_HSSpellIDs = {
-    556,
-    8690,
-    298068,
-    278559,
-    278244,
-    286331,
-    286353,
-    94719,
-    285424,
-    286031,
-    285362,
-    136508,
-    75136,
-    39937,
-    231504,
-    308742,
 }
 
 -- //TODO check what is that shit
@@ -128,13 +107,10 @@ local APR_BonusObj = {
     62735,
     59015,
 }
-
 local function APR_LeaveQuest(QuestIDs)
     C_QuestLog.SetSelectedQuest(QuestIDs)
     C_QuestLog.AbandonQuest()
 end
-
-
 local function APR_QAskPopWanted()
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     local steps
@@ -295,7 +271,7 @@ local function APR_UpdateStep()
             }
             for questID, questInfo in pairs(extraLineQuests) do
                 if APRExtraLine == questID then
-                    local itemCount = GetItemCount(questInfo.itemID)
+                    local itemCount = C_Item.GetItemCount(questInfo.itemID)
                     if itemCount < questInfo.count then
                         APR.currentStep:UpdateQuestSteps(questID,
                             questInfo.description .. " (" .. itemCount .. "/" .. questInfo.count .. ")", questInfo
@@ -316,9 +292,9 @@ local function APR_UpdateStep()
                 local requiredSatyrFleshCount = 10
                 local requiredSatyrSaberCount = 20
 
-                local melonFruitCount = GetItemCount(melonFruitItemID)
-                local satyrFleshCount = GetItemCount(satyrFleshItemID)
-                local satyrSaberCount = GetItemCount(satyrSaberItemID)
+                local melonFruitCount = C_Item.GetItemCount(melonFruitItemID)
+                local satyrFleshCount = C_Item.GetItemCount(satyrFleshItemID)
+                local satyrSaberCount = C_Item.GetItemCount(satyrSaberItemID)
                 if melonFruitCount < requiredMelonFruitCount then
                     APR.currentStep:UpdateQuestSteps(14358,
                         L["LOOT_MELONFRUIT"] .. "( " .. melonFruitCount .. "/" .. requiredMelonFruitCount .. ")",
@@ -747,6 +723,7 @@ local function APR_UpdateStep()
             end
         end
         if (steps.ZoneDoneSave) then
+            print("OUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
             local index, currentRouteName = next(APRCustomPath[APR.PlayerID])
 
             -- Force reset heirloom to show heirloom taximap (not avalaible in exile reach)
@@ -939,7 +916,9 @@ function APR.GliderFunc()
             if (itemID and itemID == 109076) then
                 DerpGot = 1
                 local itemLink = C_Container.GetContainerItemLink(bag, slot)
-                itemName = GetItemInfo(itemLink)
+                local itemID, itemType, itemSubType, itemEquipLoc, icon, classID, subClassID = C_Item.GetItemInfoInstant(
+                    itemLink)
+                itemName = itemEquipLoc
                 break
             end
         end
@@ -1029,7 +1008,7 @@ local function APR_UpdateMapId()
     if (APR.settings.profile.debug) then
         print("Function: APR_UpdateMapId()")
     end
-    OverrideDataForLesMecsPasCapablesDeSuivreUneFleche() -- Lumbermill Wod route
+    OverrideRouteData() -- Lumbermill Wod route
     APR.BookingList["GetMeToRightZone"] = true
 end
 
@@ -1416,7 +1395,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     end
                     if (repairAllCost <= GetMoney() and not guildRepairedItems) then
                         RepairAllItems(false);
-                        print("APR: " .. L["REPAIR_EQUIPEMENT"] .. " " .. GetCoinTextureString(repairAllCost))
+                        print("APR: " ..
+                            L["REPAIR_EQUIPEMENT"] .. " " .. C_CurrencyInfo.GetCoinTextureString(repairAllCost))
                     end
                 end
             end
@@ -1427,7 +1407,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 for bagSlots = 1, C_Container.GetContainerNumSlots(myBags) do
                     local CurrentItemId = C_Container.GetContainerItemID(myBags, bagSlots)
                     if CurrentItemId then
-                        local _, _, itemQuality, _, _, _, _, _, _, _, sellPrice = GetItemInfo(CurrentItemId)
+                        local itemQuality = C_Item.GetItemQualityByID(CurrentItemId)
+                        local _, _, itemQuality, _, _, _, _, _, _, _, sellPrice = C_Item.GetItemInfo(CurrentItemId)
                         local itemInfo = C_Container.GetContainerItemInfo(myBags, bagSlots)
                         if itemQuality == 0 and sellPrice > 0 and itemInfo.stackCount > 0 then
                             APRtotal = APRtotal + (sellPrice * itemInfo.stackCount)
@@ -1437,7 +1418,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 end
             end
             if APRtotal ~= 0 then
-                print("APR:" .. L["ITEM_SOLD"] .. " " .. GetCoinTextureString(APRtotal))
+                print("APR:" .. L["ITEM_SOLD"] .. " " .. C_CurrencyInfo.GetCoinTextureString(APRtotal))
             end
         end
     end
@@ -1460,19 +1441,19 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         local arg1, arg2, arg3, arg4, arg5 = ...
 
         if (arg1 == "player") and steps then
-            if (Contains(APR_HSSpellIDs, arg3) and steps.UseHS) or (steps.SpellTrigger and arg3 == steps.SpellTrigger) then
+            if (Contains(APR.hearthStoneSpellID, arg3) and steps.UseHS) or (steps.SpellTrigger and arg3 == steps.SpellTrigger) then
                 _G.UpdateNextStep()
             end
         end
     end
     if (event == "UNIT_SPELLCAST_START") then
         local arg1, arg2, arg3, arg4, arg5 = ...;
-        if ((arg1 == "player") and (arg3 == 171253)) then
+        if ((arg1 == "player") and (arg3 == APR.garrisonHSSpellID)) then
             if (steps and steps.UseGarrisonHS) then
                 APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
             end
         end
-        if ((arg1 == "player") and (arg3 == 222695)) then
+        if ((arg1 == "player") and (arg3 == APR.dalaHSSpellID)) then
             if (steps and steps.UseDalaHS) then
                 APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
             end
@@ -1594,9 +1575,9 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             for playerSlot = 0, 18 do
                 local inventoryItemLink = GetInventoryItemLink("player", playerSlot)
                 if inventoryItemLink then
-                    local _, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc = GetItemInfo(inventoryItemLink)
+                    local _, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc = C_Item.GetItemInfo(inventoryItemLink)
                     if itemQuality == 7 then --Heirloom
-                        itemLevel = GetDetailedItemLevelInfo(inventoryItemLink)
+                        itemLevel = C_Item.GetDetailedItemLevelInfo(inventoryItemLink)
                     end
                     if itemEquipLoc and itemLevel then
                         itemEquipLoc = getItemEquipLoc(itemEquipLoc)
@@ -1613,13 +1594,14 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             for i = 1, GetNumQuestChoices() do
                 local questItemLink = GetQuestItemLink("choice", i)
                 if questItemLink then
-                    local _, _, _, _, _, _, _, _, itemEquipLoc, _, _, classID, subclassID = GetItemInfo(questItemLink)
+                    local _, _, _, _, _, _, _, _, itemEquipLoc, _, _, classID, subclassID = C_Item.GetItemInfo(
+                        questItemLink)
 
                     -- check if quest reward is classID 4 (armor) and subClassID 5 (cosmetic), then we dont want to pick anything
                     if classID == 4 and subclassID == 5 then
                         isCosmetic = true
                     end
-                    local itemLevel = GetDetailedItemLevelInfo(questItemLink)
+                    local itemLevel = C_Item.GetDetailedItemLevelInfo(questItemLink)
                     itemEquipLoc = getItemEquipLoc(itemEquipLoc)
                     if gearIlvlList[itemEquipLoc] then
                         gearIlvlListDiff[i] = itemLevel - gearIlvlList[itemEquipLoc]
