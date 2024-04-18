@@ -82,7 +82,7 @@ function APR.settings:InitializeSettings()
             mapshowNextStepsTextScale = 1,
             mapshowNextStepsColorText = APR.Color.gold,
             -- minimap
-            minimap = { minimapPos = 250 },
+            minimap = { minimapPos = 300 },
             enableMinimapButton = true,
             showMiniMapLine = true,
             showMiniMapLineColor = APR.Color.lightGreen,
