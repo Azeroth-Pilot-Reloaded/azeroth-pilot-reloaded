@@ -258,7 +258,7 @@ APR.RouteQuestStepList["378-Panda Starting Zone"] = {
     {
         Qpart = { [29523] = { 1 } },
         Zone = 378,
-        Button = { [29522] = 72109 },
+        Button = { ["29523-1"] = 72109 },
         Range = 15,
         Coord = { y = 1229.4000244141, x = 3712.3000488281 }
     },
@@ -285,7 +285,7 @@ APR.RouteQuestStepList["378-Panda Starting Zone"] = {
     {
         Qpart = { [29422] = { 1 } },
         Zone = 378,
-        Button = { [29421] = 72583 },
+        Button = { ["29422-1"] = 72583 },
         Range = 15,
         Coord = { y = 1265.5, x = 3928.9001464844 }
     },
@@ -326,7 +326,7 @@ APR.RouteQuestStepList["378-Panda Starting Zone"] = {
     {
         Qpart = { [29678] = { 1, 2 } },
         Zone = 378,
-        Button = { [29677] = 73791 },
+        Button = { ["29678-1"] = 73791 },
         Range = 15,
         Coord = { y = 1100.3000488281, x = 2853.6000976562 }
     },
