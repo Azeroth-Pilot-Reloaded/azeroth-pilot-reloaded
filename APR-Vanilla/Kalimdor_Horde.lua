@@ -58,8 +58,259 @@ if APR.Faction == "Horde" then
                 Range = 24.62,
                 Coord = { y = -2933, x = -40.5 }
             },
-            { Done = { 24215 }, Coord = { y = -2333, x = -392.5 } },
+            { Done = { 24215 },          Coord = { y = -2333, x = -392.5 } },
+
+            { PickUp = { 14438, 24459 }, Coord = { y = -2334.4001464844, x = -394.5 },           Zone = 7 },
+            { PickUp = { 743 },          Coord = { y = -2396.3000488281, x = -385.10000610352 }, Zone = 7 },
+            { SetHS = 6361,              Zone = 7,                                               Coord = { y = -2363.9001464844, x = -349.39999389648 } },
+            { PickUp = { 26188 },        Zone = 7,                                               Coord = { y = -2227.6000976562, x = -367.39999389648 } },
+            { PickUp = { 6361 },         Coord = { y = -2282.1000976562, x = -307.5 },           Zone = 7 },
+            { GetFP = 402,               Coord = { y = -2301.4001464844, x = -381.60000610352 }, Zone = 7 },
+            { Done = { 6361 },           Coord = { y = -2301.4001464844, x = -381.60000610352 }, Zone = 7 },
+            { PickUp = { 6362 },         Coord = { y = -2301.4001464844, x = -381.60000610352 }, Zone = 7 },
+            { PickUp = { 761 },          Coord = { y = -2305, x = -454 },                        Zone = 7 },
+            { PickUp = { 20440 },        Coord = { y = -2340.4001464844, x = -444.10000610352 }, Zone = 7 },
+            {
+                Qpart = { [14438] = { 1 } },
+                Zone = 7,
+                Fillers = { [20440] = { 1, 2 } },
+                Range = 30,
+                Coord = { y = -2731.4001464844, x = -434.89999389648 }
+            },
+            {
+                Qpart = { [20440] = { 1 } },
+                Zone = 7,
+                Fillers = { [20440] = { 2 }, [761] = { 1 } },
+                Range = 30,
+                Coord = { y = -2547.1000976562, x = -532.10003662109 }
+            },
+            {
+                Qpart = { [20440] = { 2 } },
+                Zone = 7,
+                Fillers = { [761] = { 1 } },
+                Range = 30,
+                Coord = { y = -2414.3000488281, x = -709.5 }
+            },
+            { Done = { 20440 },   Coord = { y = -2342.3000488281, x = -446.10000610352 }, Zone = 7 },
+            { PickUp = { 24440 }, Coord = { y = -2342.3000488281, x = -446.10000610352 }, Zone = 7 },
+            {
+                Qpart = { [24440] = { 1 } },
+                Zone = 7,
+                Button = { ["24440-1"] = 5411 },
+                Fillers = { [761] = { 1 } },
+                Coord = { y = -2541.6000976562, x = -710 }
+            },
+            { Zone = 7,                  Qpart = { [761] = { 1 } }, Range = 30,                                            Coord = { y = -2414.4001464844, x = -709.10003662109 } },
+            { Done = { 24459 },          Zone = 7,                  Coord = { y = -2364.5, x = -904.70001220703 } },
+            { PickUp = { 749 },          Zone = 7,                  Coord = { y = -2364.5, x = -904.70001220703 } },
+            { Done = { 749 },            Zone = 7,                  Coord = { y = -1923.3000488281, x = -714.60003662109 } },
+            { PickUp = { 751 },          Zone = 7,                  Coord = { y = -1923.3000488281, x = -714.60003662109 } },
+            { Done = { 751 },            Zone = 7,                  Coord = { y = -2363.6000976562, x = -905.79998779297 } },
+            { PickUp = { 26179, 26180 }, Zone = 7,                  Coord = { y = -2363.6000976562, x = -905.79998779297 } },
+            {
+                Qpart = { [26179] = { 1 }, [26180] = { 1 } },
+                Zone = 9,
+                Fillers = { [26188] = { 1 } },
+                Range = 30,
+                Coord = { y = -1841.0999755859, x = -1148.9000244141 }
+            },
+            { Fillers = { [26188] = { 1 } }, Zone = 7,                                               Range = 30,                                           Coord = { y = -2152, x = -949.70001220703 } },
+            { Done = { 26179, 26180 },       Zone = 7,                                               Coord = { y = -2362.6000976562, x = -904 } },
+            { Done = { 24440 },              Coord = { y = -2341.8000488281, x = -447.10000610352 }, Zone = 7 },
+            { PickUp = { 24441 },            Coord = { y = -2341.8000488281, x = -447.10000610352 }, Zone = 7 },
+            { Done = { 14438 },              Coord = { y = -2334.4001464844, x = -394.60000610352 }, Zone = 7 },
+            { PickUp = { 14491 },            Coord = { y = -2334.4001464844, x = -394.60000610352 }, Zone = 7 },
+            { Done = { 26188 },              Coord = { y = -2231, x = -364.60000610352 },            Zone = 7 },
+            { Done = { 761 },                Coord = { y = -2304.3000488281, x = -452.60000610352 }, Zone = 7 },
+            { UseFlightPath = 14491,         ETA = 47,                                               Zone = 7,                                             NodeID = 22,                                          Coord = { y = -2249.8000488281, x = -361.5 } },
+            { Done = { 6362 },               Zone = 88,                                              Coord = { y = -1238.7000732422, x = 40.299999237061 } },
+            { PickUp = { 6363 },             Zone = 88,                                              Coord = { y = -1238.7000732422, x = 40.299999237061 } },
+            { Waypoint = 6363,               Range = 5,                                              Zone = 88,                                            Coord = { y = -1206.5, x = 36 } },
+            { Waypoint = 6363,               Range = 5,                                              Zone = 88,                                            Coord = { y = -1189.5999755859, x = 31.200000762939 } },
+            { Waypoint = 6363,               Range = 5,                                              Zone = 88,                                            Coord = { y = -1197.9000244141, x = 23.800001144409 } },
+            { Done = { 6363 },               Zone = 88,                                              Coord = { y = -1198.0999755859, x = 28.39999961853 } },
+            { PickUp = { 6364 },             Zone = 88,                                              Coord = { y = -1198.0999755859, x = 28.39999961853 } },
+            { Waypoint = 6364,               Range = 5,                                              Zone = 88,                                            Coord = { y = -1197.0999755859, x = 31.300001144409 } },
+            {
+                Waypoint = 6364,
+                Range = 5,
+                ExtraLineText = "DOWN_ELEVATOR",
+                Coord = { y = -1305.8000488281, x = 174.60000610352 },
+                Zone = 88
+            },
+            {
+                Waypoint = 6364,
+                Range = 5,
+                ExtraLineText = "DOWN_ELEVATOR",
+                Coord = { y = -1319.5, x = 181.10000610352 },
+                Zone = 88
+            },
+            { Waypoint = 6364, Range = 5, Coord = { y = -1521.0999755859, x = 335.5 }, Zone = 7 },
+            {
+                Qpart = { [743] = { 1 } },
+                Zone = 7,
+                Fillers = { [24441] = { 1, 2 } },
+                Range = 30,
+                Coord = { y = -1717.2000732422, x = 302 }
+            },
+            { Waypoint = 743,  Range = 5, Coord = { y = -1853.2000732422, x = 257.5 }, Fillers = { [24441] = { 1, 2 } }, Zone = 7 },
+            {
+                Qpart = { [14491] = { 1 } },
+                Zone = 7,
+                Fillers = { [24441] = { 1, 2 } },
+                Button = { ["14491-1"] = 49647 },
+                Range = 30,
+                Coord = { y = -1937.3000488281, x = 398.39999389648 }
+            },
+            { Coord = { y = -1713.3000488281, x = -172.19999694824 }, Qpart = { [24441] = { 1, 2 } }, Range = 100,                                           Zone = 7 },
+            { Coord = { y = -2359.9001464844, x = -350.70001220703 }, UseHS = 24441,                  Zone = 7 },
+            { PickUp = { 11129 },                                     Zone = 7,                       Coord = { y = -2100, x = -430.30001831055 } },
+            { Done = { 743 },                                         Zone = 7,                       Coord = { y = -2395.3000488281, x = -384.70001220703 } },
+            { Done = { 14491 },                                       Zone = 7,                       Coord = { y = -2335.9001464844, x = -392 } },
+            { Done = { 24441 },                                       Zone = 7,                       Coord = { y = -2340.6000976562, x = -445.60000610352 } },
+            { PickUp = { 24456 },                                     Zone = 7,                       Coord = { y = -2340.6000976562, x = -445.60000610352 } },
+            { Done = { 6364 },                                        Zone = 7,                       Coord = { y = -2283, x = -308.89999389648 } },
+            { PickUp = { 11129 },                                     Zone = 7,                       Coord = { y = -2100, x = -430.30001831055 } },
+            {
+                Qpart = { [11129] = { 1 } },
+                Zone = 7,
+                Button = { ["11129-1"] = 5411 },
+                ExtraLineText = "KILL_STRIDER_UNTIL_YOU_LOOT_TENDER_STRIDER_MEAT",
+                Coord = { y = -1828.2000732422, x = -241.80000305176 }
+            },
+            {
+                Waypoint = 24457,
+                Range = 5,
+                ExtraLineText = "KILL_STRIDER_UNTIL_YOU_LOOT_TENDER_STRIDER_MEAT",
+                Zone = 7,
+                Coord = { y = -1998.2000732422, x = -336.89999389648 }
+            },
+            { Done = { 24456 },   Zone = 7, Coord = { y = -2339.4001464844, x = -445.60000610352 } },
+            { PickUp = { 24457 }, Zone = 7, Coord = { y = -2339.4001464844, x = -445.60000610352 } },
+            {
+                Qpart = { [11129] = { 1 } },
+                Zone = 7,
+                ExtraLineText = "WAIT_AND_USE_MEAT_WHEN_YOU_SEE_KYLE",
+                Range = 30,
+                Coord = { y = -2248.6000976562, x = -380.39999389648 }
+            },
+            { Done = { 11129 },   Coord = { y = -2100.5, x = -430.10000610352 },          Zone = 7 },
+            { Done = { 24457 },   Coord = { y = -2243.6000976562, x = -403.30001831055 }, Zone = 7 },
+            { PickUp = { 20441 }, Coord = { y = -2243.6000976562, x = -403.30001831055 }, Zone = 7 },
+            {
+                Coord = { y = -2218.6999511719, x = -421.70001220703 },
+                Qpart = { [20441] = { 1 } },
+                Button = { ["20441-1"] = 49652 },
+                ExtraLineText = "DRINK_WATER_VISION",
+                Range = 30,
+                Zone = 7
+            },
+            { Done = { 20441 },      Coord = { y = -799.60003662109, x = -486.80001831055 }, Zone = 7 },
+            { PickUp = { 24523 },    Coord = { y = -799.60003662109, x = -486.80001831055 }, Zone = 7 },
+            { PickUp = { 773, 833 }, Coord = { y = -791.79998779297, x = -493.30001831055 }, Zone = 7 },
+            { PickUp = { 744 },      Coord = { y = -803.40002441406, x = -496 },             Zone = 7 },
+            {
+                Qpart = { [744] = { 1, 2 } },
+                Zone = 7,
+                Fillers = { [24523] = { 1 } },
+                Range = 40,
+                Coord = { y = -732.60003662109, x = -838.79998779297 }
+            },
+            { Fillers = { [24523] = { 1 } },                Done = { 773 },              Coord = { y = -992, x = -1107.2000732422 },            Zone = 7 },
+            {
+                Qpart = { [833] = { 1 } },
+                Zone = 7,
+                Fillers = { [24523] = { 1 } },
+                Range = 30,
+                Coord = { y = -967.79998779297, x = -1073.8000488281 }
+            },
+            { Coord = { y = -963.5, x = -604.40002441406 }, Qpart = { [24523] = { 1 } }, Range = 100,                                           Zone = 7 },
+            { Done = { 744 },                               Zone = 7,                    Coord = { y = -806, x = -499.39999389648 } },
+            { Done = { 833 },                               Zone = 7,                    Coord = { y = -790.79998779297, x = -497.30001831055 } },
+            { Done = { 24523 },                             Zone = 7,                    Coord = { y = -794.5, x = -489.20001220703 } },
+            { PickUp = { 24524 },                           Zone = 7,                    Coord = { y = -794.5, x = -489.20001220703 } },
+            { Waypoint = 24524,                             Range = 5,                   Zone = 7,                                              Coord = { y = -751.10003662109, x = -156.90000915527 } },
+            { Done = { 24524 },                             Zone = 7,                    Coord = { y = -797.90002441406, x = -484.70001220703 } },
+            { PickUp = { 24550 },                           Zone = 7,                    Coord = { y = -797.90002441406, x = -484.70001220703 } },
+            { Waypoint = 24550,                             Range = 5,                   Zone = 7,                                              Coord = { y = -823.29998779297, x = -366.70001220703 } },
+            { Waypoint = 24550,                             Range = 5,                   Zone = 7,                                              Coord = { y = -866.5, x = -256.60000610352 } },
+            {
+                Waypoint = 24550,
+                Range = 5,
+                ExtraLineText = "USE_ELEVATOR",
+                Zone = 7,
+                Coord = { y = -946.90002441406, x = -142.5 }
+            },
+            {
+                Waypoint = 24550,
+                Range = 5,
+                ExtraLineText = "USE_ELEVATOR",
+                Zone = 88,
+                Coord = { y = -1022.4000244141, x = -83 }
+            },
+            {
+                Waypoint = 24550,
+                Range = 5,
+                ExtraLineText = "USE_ELEVATOR",
+                Zone = 88,
+                Coord = { y = -1033.3000488281, x = -58.5 }
+            },
+            { Waypoint = 24550, Range = 5,                                  Coord = { y = -1070.0999755859, x = -24.200000762939 }, Zone = 88 },
+            { Waypoint = 24550, Range = 5,                                  Coord = { y = -1186.9000244141, x = 30.89999961853 },   Zone = 88 },
+            { Waypoint = 24550, Range = 5,                                  Coord = { y = -1197.7000732422, x = 21.39999961853 },   Zone = 88 },
+            { Done = { 24550 }, Coord = { y = -1210.0999755859, x = -111 }, Zone = 88 },
+            {
+                ExtraLineText2 = "OTHERWISE_TAKE_ZEPPLIN",
+                Zone = 88,
+                Waypoint = 1,
+                Range = 5,
+                ExtraLineText = "TAKE_FLY_FOR_ORGRIMMAR_IF_YOU_HAVE_IT",
+                Coord = { y = -1198.9000244141, x = 12.199999809265 }
+            },
+            {
+                Waypoint = 1,
+                Range = 5,
+                ExtraLineText = "OTHERWISE_TAKE_ZEPPLIN",
+                Coord = { y = -1123.4000244141, x = 63.900001525879 },
+                Zone = 88
+            },
+            {
+                Waypoint = 1,
+                Range = 5,
+                ExtraLineText = "OTHERWISE_TAKE_ZEPPLIN",
+                Coord = { y = -1110.5999755859, x = 118.90000152588 },
+                Zone = 88
+            },
+            {
+                Waypoint = 1,
+                Range = 5,
+                ExtraLineText = "OTHERWISE_TAKE_ZEPPLIN",
+                Coord = { y = -1030.8000488281, x = 193.90000915527 },
+                Zone = 88
+            },
+            {
+                Waypoint = 1,
+                Range = 5,
+                ExtraLineText = "OTHERWISE_TAKE_ZEPPLIN",
+                Coord = { y = -1028.3000488281, x = 352.89999389648 },
+                Zone = 88
+            },
+            {
+                ETA = 300,
+                Zone = 88,
+                Waypoint = 1,
+                Range = 5,
+                ExtraLineText = "OTHERWISE_TAKE_ZEPPLIN",
+                Coord = { y = -1026.4000244141, x = 364.89999389648 }
+            },
+            { Waypoint = 1,    Range = 5, Coord = { y = 1736.4000244141, x = -4258 }, Zone = 85 },
+            { Waypoint = 1,    Range = 5, Zone = 85,                                  Coord = { y = 1710.0999755859, x = -4270.5 } },
+            { Waypoint = 1,    Range = 5, Zone = 85,                                  Coord = { y = 1694.0999755859, x = -4278.2001953125 } },
+            { Waypoint = 1,    Range = 5, Zone = 85,                                  Coord = { y = 1642.5999755859, x = -4270.8002929688 } },
+            { Waypoint = 1,    Range = 5, Zone = 85,                                  Coord = { y = 1609.5999755859, x = -4267.8002929688 } },
+            { Waypoint = 1,    Range = 5, Zone = 85,                                  Coord = { y = 1588.5999755859, x = -4213.8002929688 } },
             { ZoneDoneSave = 1 }
+
         }
     elseif APR.Race == "Orc" then
         APR.RouteQuestStepList["1-ValleyOfTrialsOrc"] = {
