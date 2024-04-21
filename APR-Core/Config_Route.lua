@@ -88,7 +88,7 @@ local function GetConfigOptionTable()
                 end,
                 hidden = function()
                     return (APR.Level < 60 and APR.ClassId ~= APR.Classes["Dracthyr"]) or
-                    not next(APR.RouteList.Dragonflight)
+                        not next(APR.RouteList.Dragonflight)
                 end
             },
             reset_custom_path = {
@@ -667,6 +667,19 @@ function APR.routeconfig:GetStartingZonePrefab()
             tinsert(APRCustomPath[APR.PlayerID], "Goblin - Lost Isles")
         elseif APR.Race == "Worgen" then
             tinsert(APRCustomPath[APR.PlayerID], "Worgen Start")
+            -- Allied Race
+        elseif APR.Race == "ZandalariTroll" then
+            tinsert(APRCustomPath[APR.PlayerID], "Zandalari Troll Start")
+        elseif APR.Race == "Vulpera" then
+            tinsert(APRCustomPath[APR.PlayerID], "Vulpera Start")
+        elseif APR.Race == "MagharOrc" then
+            tinsert(APRCustomPath[APR.PlayerID], "Maghar Orc Start")
+        elseif APR.Race == "Nightborne" then
+            tinsert(APRCustomPath[APR.PlayerID], "Nightborne Start")
+        elseif APR.Race == "Nightborne" then
+            tinsert(APRCustomPath[APR.PlayerID], "Nightborne Start")
+        elseif APR.Race == "HighmountainTauren" then
+            tinsert(APRCustomPath[APR.PlayerID], "Highmountain Tauren Start")
         elseif APR.Level < 10 then -- Skipable starting zone
             -- HORDE
             if (APR.Race == "Orc") then

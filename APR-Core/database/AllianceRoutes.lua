@@ -104,7 +104,7 @@ if (APR.Faction == "Alliance") then
     elseif (APR.Race == "NightElf") then
         APR.RouteList.Vanilla["57-ShadowglenNightElf"] = "Night Elf Start"
     elseif (APR.Race == "Draenei") then
-        APR.RouteList.Vanilla["97-AmmenVale"] = "Draenei Start"
+        APR.RouteList.TheBurningCrusade["97-AmmenVale"] = "Draenei Start"
     elseif (APR.Race == "Dwarf") then
         APR.RouteList.Vanilla["27-ColdridgeValleyDwarf"] = "Dwarf Start"
     elseif (APR.Race == "Human") then
@@ -112,7 +112,7 @@ if (APR.Faction == "Alliance") then
     elseif (APR.Race == "Gnome") then
         APR.RouteList.Vanilla["30-NewTinkertown"] = "Gnome Start"
     elseif (APR.Race == "Worgen") then
-        APR.RouteList.Vanilla["179-Gilneas"] = "Worgen Start"
+        APR.RouteList.Cataclysm["179-Gilneas"] = "Worgen Start"
     end
 
     -- Lumbermill Wod route

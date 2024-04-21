@@ -106,10 +106,20 @@ if (APR.Faction == "Horde") then
     elseif (APR.Race == "Scourge") then --Undead
         APR.RouteList.Vanilla["465-TirisfalGladesUndead"] = "Scourge Start"
     elseif (APR.Race == "BloodElf") then
-        APR.RouteList.Vanilla["467-EversongWoodsBloodElf"] = "Blood Elf Start"
+        APR.RouteList.TheBurningCrusade["467-EversongWoodsBloodElf"] = "Blood Elf Start"
     elseif (APR.Race == "Goblin") then
-        APR.RouteList.Vanilla["194-Kezan"] = "Goblin Start"
-        APR.RouteList.Vanilla["174-LostIsles"] = "Goblin - Lost Isles"
+        APR.RouteList.Cataclysm["194-Kezan"] = "Goblin Start"
+        APR.RouteList.Cataclysm["174-LostIsles"] = "Goblin - Lost Isles"
+    elseif APR.Race == "ZandalariTroll" then
+        APR.RouteList.BattleForAzeroth["1165-Zandalari-intro"] = "Zandalari Troll Start"
+    elseif APR.Race == "Vulpera" then
+        APR.RouteList.BattleForAzeroth["85-Vulpera-intro"] = "Vulpera Start"
+    elseif APR.Race == "MagharOrc" then
+        APR.RouteList.BattleForAzeroth["85-MagharOrc-intro"] = "Maghar Orc Start"
+    elseif APR.Race == "Nightborne" then
+        APR.RouteList.Legion["680-Nightborne-intro"] = "Nightborne Start"
+    elseif APR.Race == "HighmountainTauren" then
+        APR.RouteList.Legion["652-HighmountainTauren-intro"] = "Highmountain Tauren Start"
     end
 
     -- Lumbermill Wod route
