@@ -667,7 +667,8 @@ function APR.routeconfig:GetStartingZonePrefab()
             tinsert(APRCustomPath[APR.PlayerID], "Goblin - Lost Isles")
         elseif APR.Race == "Worgen" then
             tinsert(APRCustomPath[APR.PlayerID], "Worgen Start")
-            -- Allied Race
+
+            -- Horde Allied Race
         elseif APR.Race == "ZandalariTroll" then
             tinsert(APRCustomPath[APR.PlayerID], "Zandalari Troll Start")
         elseif APR.Race == "Vulpera" then
@@ -680,6 +681,16 @@ function APR.routeconfig:GetStartingZonePrefab()
             tinsert(APRCustomPath[APR.PlayerID], "Nightborne Start")
         elseif APR.Race == "HighmountainTauren" then
             tinsert(APRCustomPath[APR.PlayerID], "Highmountain Tauren Start")
+
+            -- Alliance Allied Race
+        elseif APR.Race == "VoidElf" then
+            tinsert(APRCustomPath[APR.PlayerID], "Void Elf Start")
+        elseif APR.Race == "LightforgedDraenei" then
+            tinsert(APRCustomPath[APR.PlayerID], "Lightforged Draenei Start")
+        elseif APR.Race == "DarkIronDwarf" then
+            tinsert(APRCustomPath[APR.PlayerID], "DarkIron Dwarf Start")
+        elseif APR.Race == "Mechagnome" then
+            tinsert(APRCustomPath[APR.PlayerID], "Mechagnome Start")
         elseif APR.Level < 10 then -- Skipable starting zone
             -- HORDE
             if (APR.Race == "Orc") then

@@ -113,6 +113,14 @@ if (APR.Faction == "Alliance") then
         APR.RouteList.Vanilla["30-NewTinkertown"] = "Gnome Start"
     elseif (APR.Race == "Worgen") then
         APR.RouteList.Cataclysm["179-Gilneas"] = "Worgen Start"
+    elseif (APR.Race == "VoidElf") then
+        APR.RouteList.Legion["971-VoidElf-intro"] = "Void Elf Start"
+    elseif (APR.Race == "LightforgedDraenei") then
+        APR.RouteList.Legion["940-LightforgedDraenei-intro"] = "Lightforged Draenei Start"
+    elseif (APR.Race == "DarkIronDwarf") then
+        APR.RouteList.BattleForAzeroth["1186-DarkIronDwarf-intro"] = "DarkIron Dwarf Start"
+    elseif (APR.Race == "Mechagnome") then
+        APR.RouteList.BattleForAzeroth["1573-Mechagnome-intro"] = "Mechagnome Start"
     end
 
     -- Lumbermill Wod route

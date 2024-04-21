@@ -30,6 +30,7 @@ if APR.Faction == "Alliance" then
         { Qpart = { [46728] = { 1 } },        Gossip = 1,                         Range = 0.69,                       Coord = { x = 1327.3, y = -8281.3 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["895-Tiragarde Sound"] = {
         { Done = { 46728 },                  Coord = { x = -443.2, y = 727.2 } },
         { PickUp = { 51341 },                Coord = { x = -443.3, y = 728.5 } },
@@ -1192,6 +1193,7 @@ if APR.Faction == "Alliance" then
         { Done = { 50972 },                             Coord = { x = -486.4, y = 1068 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["942-Stormsong Valley"] = {
         { Done = { 51489 },                  Coord = { x = 57.7, y = 1911.7 } },
         { PickUp = { 51490 },                Coord = { x = 57.6, y = 1911.3 } },
@@ -2181,6 +2183,7 @@ if APR.Faction == "Alliance" then
         },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["896-Dustvar"] = {
         { Waypoint = 48622,                   Range = 13.34,                      Coord = { x = 1859.8, y = -170 } },
         { Waypoint = 48622,                   Range = 7.43,                       Coord = { x = 1877.4, y = -162.2 } },
@@ -3101,6 +3104,26 @@ if APR.Faction == "Alliance" then
             Name = "Tradewinds Market, Tiragarde Sound",
             NodeID = 2083
         },
+        { ZoneDoneSave = 1 }
+    }
+
+    APR.RouteQuestStepList["1186-DarkIronDwarf-intro"] = {
+        { PickUp = { 51486 }, Zone = 1186,                 Coord = { y = 1630.8000488281, x = 525.70001220703 } },
+        { Zone = 1186,        Waypoint = 51486,            ExtraLineText = "TAKE_MOLE_MACHINE",                  Range = 2,                                            Coord = { y = 1679.4000244141, x = 486.60000610352 } },
+        { Zone = 84,          Done = { 51486 },            Coord = { y = -8172.8002929688, x = 800.40002441406 } },
+        { PickUp = { 53500 }, RaidIcon = 167032,           Zone = 84,                                            Coord = { y = -8172.8002929688, x = 800.40002441406 } },
+        { Zone = 84,          Qpart = { [53500] = { 1 } }, Range = 30,                                           Coord = { y = -8196.5, x = 747 } },
+        { Zone = 84,          Done = { 53500 },            Coord = { y = -8196.5, x = 747 } },
+        { ZoneDoneSave = 1 }
+    }
+
+    APR.RouteQuestStepList["1573-Mechagnome-intro"] = {
+        { PickUp = { 58146 }, Zone = 1573,                 Coord = { y = 702.90002441406, x = 618.20001220703 } },
+        { Zone = 1573,        Waypoint = 58146,            ExtraLineText = "USE_TELEPORT",                       Range = 2,                                            Coord = { y = 725.90002441406, x = 610.60003662109 } },
+        { Zone = 84,          Done = { 58146 },            Coord = { y = -8173.3999023438, x = 800.20001220703 } },
+        { PickUp = { 58147 }, RaidIcon = 167032,           Zone = 84,                                            Coord = { y = -8173.3999023438, x = 800.20001220703 } },
+        { Zone = 84,          Qpart = { [58147] = { 1 } }, Range = 30,                                           Coord = { y = -8196.2998046875, x = 747.79998779297 } },
+        { Zone = 84,          Done = { 58147 },            Coord = { y = -8198.2001953125, x = 747 } },
         { ZoneDoneSave = 1 }
     }
 end
