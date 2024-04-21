@@ -384,6 +384,7 @@ if APR.Faction == "Alliance" then
         { UseDalaHS = 40794,                            Coord = { y = -806.3, x = 6106.8 }, Button = { ["40794-1"] = 140192 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["641-ValSharah"] = {
         { Coord = { y = 2289.8, x = 6593.2 }, Done = { 39861 } },
         { PickUp = { 40122 },                 Coord = { y = 2289.8, x = 6593.2 } },
@@ -702,6 +703,7 @@ if APR.Faction == "Alliance" then
         { UseDalaHS = 40794123,        Coord = { y = 3091.3, x = 7457.8 }, Button = { ["40794123-1"] = 140192 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["634-Stormheim"] = {
         { Done = { 39800 },                        Coord = { y = 3204.6, x = 3078.1 } },
         { PickUp = { 38558, 38053, 38052, 38036 }, Coord = { y = 3210.1, x = 3079.5 } },
@@ -1018,6 +1020,35 @@ if APR.Faction == "Alliance" then
         { Done = { 40005 },            Coord = { y = 2487.9, x = 944.2 } },
         { PickUp = { 40072 },          Coord = { y = 2499.1, x = 958.2 } },
         { UseDalaHS = 40072,           Coord = { y = 2499.1, x = 958.2 }, Button = { ["40072-1"] = 140192 } },
+        { ZoneDoneSave = 1 }
+    }
+
+    APR.RouteQuestStepList["971-VoidElf-intro"] = {
+        { PickUp = { 49788 }, Zone = 971,                  Coord = { y = 2136.1999511719, x = 3318.8000488281 } },
+        {
+            Zone = 971,
+            Waypoint = 49788,
+            ExtraLineText = "USE_PORTAL_STORMWIND",
+            Range = 2,
+            Coord = { y = 2148.4001464844, x = 3329.4001464844 }
+        },
+        { Zone = 84,          Done = { 49788 },            Coord = { y = -8172.3002929688, x = 799.79998779297 } },
+        { PickUp = { 50305 }, RaidIcon = 167032,           Zone = 84,                                            Coord = { y = -8172.3002929688, x = 799.79998779297 } },
+        { Zone = 84,          Qpart = { [50305] = { 1 } }, Range = 30,                                           Coord = { y = -8196.5, x = 747.70001220703 } },
+        { Zone = 84,          Done = { 50305 },            Coord = { y = -8199.1005859375, x = 747.29998779297 } },
+        { ZoneDoneSave = 1 }
+    }
+
+    APR.RouteQuestStepList["940-LightforgedDraenei-intro"] = {
+        { PickUp = { 49772 },          Coord = { y = 461.89999389648, x = 1451 }, Zone = 940 },
+        { Zone = 940,                  Waypoint = 49772,                          ExtraLineText = "DOWN",                               Range = 5,                                 Coord = { y = 463.80001831055, x = 1473.8000488281 } },
+        { Zone = 941,                  Waypoint = 49772,                          ExtraLineText = "DOWN",                               Range = 5,                                 Coord = { y = 429.70001220703, x = 1453.9000244141 } },
+        { Waypoint = 49772,            Zone = 941,                                Range = 5,                                            Coord = { y = 432.5, x = 1437.7000732422 } },
+        { Zone = 941,                  Waypoint = 49772,                          ExtraLineText = "USE_PORTAL_STORMWIND",               Range = 2,                                 Coord = { y = 499.20001220703, x = 1469 } },
+        { Zone = 84,                   Done = { 49772 },                          Coord = { y = -8172.2001953125, x = 799.79998779297 } },
+        { PickUp = { 50313 },          Zone = 84,                                 Coord = { y = -8172.8002929688, x = 799.90002441406 } },
+        { Qpart = { [50313] = { 1 } }, Zone = 84,                                 RaidIcon = 167032,                                    Range = 30,                                Coord = { y = -8197.1005859375, x = 748.20001220703 } },
+        { Zone = 84,                   Done = { 50313 },                          Coord = { y = -8197.1005859375, x = 748.20001220703 } },
         { ZoneDoneSave = 1 }
     }
 end
