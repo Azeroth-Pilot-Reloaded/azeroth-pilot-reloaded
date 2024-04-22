@@ -3126,4 +3126,18 @@ if APR.Faction == "Alliance" then
         { Zone = 84,          Done = { 58147 },            Coord = { y = -8198.2001953125, x = 747 } },
         { ZoneDoneSave = 1 }
     }
+
+    APR.RouteQuestStepList["1161-KulTiran-intro"] = {
+        { PickUp = { 55142 }, Zone = 1161,                 Coord = { y = 1072.3000488281, x = -483.5 } },
+        { Waypoint = 55142,   Zone = 1161,                 Range = 5,                                   Coord = { y = 1058.9000244141, x = -479.39999389648 } },
+        { Waypoint = 55142,   Zone = 1161,                 Range = 5,                                   Coord = { y = 1079.4000244141, x = -476.89999389648 } },
+        { Waypoint = 55142,   Zone = 1161,                 Range = 5,                                   Coord = { y = 1078.9000244141, x = -504.30001831055 } },
+        { Zone = 1161,        Waypoint = 55142,            ExtraLineText = "USE_PORTAL_STORMWIND",      Range = 5,                                            Coord = { y = 1127.9000244141, x = -532.40002441406 } },
+        { Zone = 1161,        Qpart = { [55142] = { 1 } }, ExtraLineText = "USE_PORTAL_STORMWIND",      Coord = { y = 1133.3000488281, x = -524.90002441406 } },
+        { Zone = 84,          Done = { 55142 },            Coord = { y = -8174.5, x = 799.60003662109 } },
+        { PickUp = { 55146 }, RaidIcon = 167032,           Zone = 84,                                   Coord = { y = -8174.5, x = 799.60003662109 } },
+        { Zone = 84,          Qpart = { [55146] = { 1 } }, Range = 30,                                  Coord = { y = -8195.7998046875, x = 748.10003662109 } },
+        { Zone = 84,          Done = { 55146 },            Coord = { y = -8196.6005859375, x = 748.5 } },
+        { ZoneDoneSave = 1 }
+    }
 end

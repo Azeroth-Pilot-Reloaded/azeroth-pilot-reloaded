@@ -691,6 +691,8 @@ function APR.routeconfig:GetStartingZonePrefab()
             tinsert(APRCustomPath[APR.PlayerID], "DarkIron Dwarf Start")
         elseif APR.Race == "Mechagnome" then
             tinsert(APRCustomPath[APR.PlayerID], "Mechagnome Start")
+        elseif APR.Race == "KulTiran" then
+            tinsert(APRCustomPath[APR.PlayerID], "Kul Tiran Start")
         elseif APR.Level < 10 then -- Skipable starting zone
             -- HORDE
             if (APR.Race == "Orc") then
