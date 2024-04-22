@@ -103,14 +103,14 @@ if (APR.Faction == "Alliance") then
         APR.RouteList.Dragonflight["2118-DracthyrStart-A"] = "Dracthyr Start"
     elseif (APR.Race == "NightElf") then
         APR.RouteList.Vanilla["57-ShadowglenNightElf"] = "Night Elf Start"
-    elseif (APR.Race == "Draenei") then
-        APR.RouteList.TheBurningCrusade["97-AmmenVale"] = "Draenei Start"
     elseif (APR.Race == "Dwarf") then
         APR.RouteList.Vanilla["27-ColdridgeValleyDwarf"] = "Dwarf Start"
     elseif (APR.Race == "Human") then
         APR.RouteList.Vanilla["37-NorthshireHuman"] = "Human Start"
     elseif (APR.Race == "Gnome") then
         APR.RouteList.Vanilla["30-NewTinkertown"] = "Gnome Start"
+    elseif (APR.Race == "Draenei") then
+        APR.RouteList.TheBurningCrusade["97-AmmenVale"] = "Draenei Start"
     elseif (APR.Race == "Worgen") then
         APR.RouteList.Cataclysm["179-Gilneas"] = "Worgen Start"
     elseif (APR.Race == "VoidElf") then
