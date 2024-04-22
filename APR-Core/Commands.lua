@@ -45,7 +45,7 @@ function APR.command:SlashCmd(input)
     elseif inputText == 'route' then
         APR.settings:OpenSettings(L["ROUTE"])
     elseif inputText == '42' then
-        PlaySoundFile("Interface\\Addons\\APR-Core\\assets\\42.mp3")
+        PlaySoundFile("Interface\\Addons\\APR\\APR-Core\\assets\\42.mp3")
         UIErrorsFrame:AddMessage(L["42_COMMAND"], 1.0, 1.0, 0.0, 1.0, UIERRORS_HOLD_TIME)
     elseif (inputText == "help" or inputText == "h") then
         print(L["COMMAND_LIST"] .. ":")
