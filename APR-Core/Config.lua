@@ -1302,7 +1302,7 @@ function APR.settings:CreateMiniMapButton()
 
     local minimapButton = libDataBroker:NewDataObject(APR.title, {
         type = "launcher",
-        icon = "Interface\\AddOns\\APR-Core\\assets\\APR_logo",
+        icon = "Interface\\AddOns\\APR\\APR-Core\\assets\\APR_logo",
         OnClick = function(_, button)
             if button == "RightButton" then
                 self.profile.enableAddon = not self.profile.enableAddon

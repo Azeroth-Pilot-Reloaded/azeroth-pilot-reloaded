@@ -110,16 +110,16 @@ if (APR.Faction == "Horde") then
     elseif (APR.Race == "Goblin") then
         APR.RouteList.Cataclysm["194-Kezan"] = "Goblin Start"
         APR.RouteList.Cataclysm["174-LostIsles"] = "Goblin - Lost Isles"
+    elseif APR.Race == "Nightborne" then
+        APR.RouteList.Legion["680-Nightborne-intro"] = "Nightborne Start"
+    elseif APR.Race == "HighmountainTauren" then
+        APR.RouteList.Legion["652-HighmountainTauren-intro"] = "Highmountain Tauren Start"
     elseif APR.Race == "ZandalariTroll" then
         APR.RouteList.BattleForAzeroth["1165-Zandalari-intro"] = "Zandalari Troll Start"
     elseif APR.Race == "Vulpera" then
         APR.RouteList.BattleForAzeroth["85-Vulpera-intro"] = "Vulpera Start"
     elseif APR.Race == "MagharOrc" then
         APR.RouteList.BattleForAzeroth["85-MagharOrc-intro"] = "Maghar Orc Start"
-    elseif APR.Race == "Nightborne" then
-        APR.RouteList.Legion["680-Nightborne-intro"] = "Nightborne Start"
-    elseif APR.Race == "HighmountainTauren" then
-        APR.RouteList.Legion["652-HighmountainTauren-intro"] = "Highmountain Tauren Start"
     end
 
     -- Lumbermill Wod route
