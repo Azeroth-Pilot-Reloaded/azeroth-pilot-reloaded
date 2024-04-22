@@ -62,6 +62,7 @@ if (APR.Faction == "Alliance") then
         { Coord = { y = -6245.4, x = 305.7 }, Done = { 24492 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["37-NorthshireHuman"] = {
         {
             PickUp = { 28766 },
@@ -168,6 +169,7 @@ if (APR.Faction == "Alliance") then
         { PickUp = { 37112 },                  Coord = { y = -9072.8, x = -39.3 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["30-NewTinkertown"] = {
         { PickUp = { 27670 },                                            Coord = { y = -4983.9, x = 876.1 } },
         { Qpart = { [27670] = { 1 } },                                   Range = 39.44,                                                  Coord = { y = -4986.9, x = 783.1 } },
@@ -255,225 +257,7 @@ if (APR.Faction == "Alliance") then
         { Done = { 26373 },                 Coord = { y = -5645.4, x = -493.3 } },
         { ZoneDoneSave = 1 }
     }
-    APR.RouteQuestStepList["179-Gilneas"] = {
-        { PickUp = { 14078 },                                            Coord = { y = -1447.6, x = 1407.3 } },
-        { Done = { 14078 },                                              Coord = { y = -1405, x = 1447 } },
-        { PickUp = { 14091 },                                            Coord = { y = -1405, x = 1447 } },
-        { Done = { 14091 },                                              Coord = { y = -1437.6, x = 1401.7 } },
-        { PickUp = { 14093, 14098 },                                     Coord = { y = -1437.6, x = 1401.7 } },
-        { PickUp = { 14094 },                                            Coord = { y = -1464.6, x = 1403.7 } },
-        { Qpart = { [14094] = { 1 }, [14093] = { 1 }, [14098] = { 1 } }, Range = 92.14,                      Coord = { y = -1467.9, x = 1403.3 } },
-        { Done = { 14094 },                                              Coord = { y = -1464.9, x = 1403.8 } },
-        { Done = { 14093, 14098 },                                       Coord = { y = -1438.3, x = 1401.7 } },
-        { PickUp = { 14099 },                                            Coord = { y = -1438.3, x = 1401.7 } },
-        { Done = { 14099 },                                              Coord = { y = -1632.6, x = 1304.4 } },
-        { PickUp = { 14265 },                                            Coord = { y = -1632.6, x = 1304.4 } },
-        { Done = { 14265 },                                              Coord = { y = -1687.8, x = 1333 } },
-        { PickUp = { 14286 },                                            Coord = { y = -1687.8, x = 1332.4 } },
-        { Done = { 14286 },                                              Coord = { y = -1766.1, x = 1348.5 } },
-        { PickUp = { 24930, 14157 },                                     Coord = { y = -1766, x = 1350.2 } },
-        { Waypoint = 14157,                                              Fillers = { [24930] = { 1 } },      Range = 9.1,                        Coord = { y = -1731.1, x = 1401.4 } },
-        { Waypoint = 14157,                                              Fillers = { [24930] = { 1 } },      Range = 6.54,                       Coord = { y = -1740.4, x = 1419.9 } },
-        { Done = { 14157 },                                              Coord = { y = -1754.1, x = 1418.8 } },
-        { PickUp = { 28850 },                                            Coord = { y = -1754.1, x = 1418.8 } },
-        { Waypoint = 28850,                                              ExtraLineText = "UPSTAIRS",         Range = 14.05,                      Coord = { y = -1716.5, x = 1457 } },
-        { Coord = { y = -1678.6, x = 1442 },                             Done = { 28850 } },
-        { PickUp = { 14154 },                                            Coord = { y = -1679.4, x = 1442.5 } },
-        { Qpart = { [14154] = { 1 } },                                   Range = 0.61,                       Coord = { y = -1679.4, x = 1442.5 } },
-        { Coord = { y = -1679.4, x = 1442.7 },                           Done = { 14154 } },
-        { PickUp = { 26129 },                                            Coord = { y = -1679.4, x = 1442.7 } },
-        { Qpart = { [24930] = { 1 } },                                   Range = 17.23,                      Coord = { y = -1717.6, x = 1405.5 } },
-        { Coord = { y = -1766, x = 1351.4 },                             Done = { 26129, 24930 } },
-        { PickUp = { 14159 },                                            Coord = { y = -1766.8, x = 1349 } },
-        { Range = 8.39,                                                  Waypoint = 14159,                   Coord = { y = -1790.3, x = 1438.9 } },
-        { Range = 4.01,                                                  Waypoint = 14159,                   Coord = { y = -1788.5, x = 1427.3 } },
-        { Coord = { y = -1812.8, x = 1428.5 },                           Done = { 14159 } },
-        { PickUp = { 14204 },                                            Coord = { y = -1789, x = 1427.5 } },
-        { Qpart = { [14204] = { 1 } },                                   Button = { ["14204-1"] = 48707 },   Range = 31.54,                      Coord = { y = -1786.4, x = 1481.2 } },
-        { Coord = { y = -1789.3, x = 1427.8 },                           Done = { 14204 } },
-        { PickUp = { 14214 },                                            Coord = { y = -1789.3, x = 1427.8 } },
-        { Range = 4.25,                                                  Waypoint = 14214,                   Coord = { y = -1791.4, x = 1439.4 } },
-        { Range = 7.48,                                                  Waypoint = 14214,                   Coord = { y = -1800, x = 1432.3 } },
-        { Coord = { y = -1802.9, x = 1407 },                             Done = { 14214 } },
-        { PickUp = { 14293 },                                            Coord = { y = -1802.4, x = 1403.8 } },
-        { Qpart = { [14293] = { 1 } },                                   Range = 0.69,                       Coord = { y = -1675.5, x = 1346.7 } },
-        { Coord = { y = -1785, x = 1438 },                               Done = { 14293 } },
-        { PickUp = { 14294 },                                            Coord = { y = -1784, x = 1437.7 } },
-        { Coord = { y = -1739.1, x = 1663.9 },                           Done = { 14294 } },
-        { PickUp = { 14212 },                                            Coord = { y = -1735.9, x = 1656.7 } },
-        { Qpart = { [14212] = { 1 } },                                   Range = 48.13,                      Coord = { y = -1737.5, x = 1655 } },
-        { Coord = { y = -1539.4, x = 1573.2 },                           Done = { 14212 } },
-        { PickUp = { 14218 },                                            Coord = { y = -1539.4, x = 1573.2 } },
-        { Qpart = { [14218] = { 1 } },                                   Range = 0.75,                       Coord = { y = -1529, x = 1588.5 } },
-        { Coord = { y = -1540.4, x = 1573.5 },                           Done = { 14218 } },
-        { PickUp = { 14221 },                                            Coord = { y = -1539.9, x = 1573.4 } },
-        { Coord = { y = -1619.8, x = 1498.5 },                           Done = { 14221 } },
-        { PickUp = { 14222 },                                            Coord = { y = -1619.1, x = 1498.7 } },
-        { Qpart = { [14222] = { 1 } },                                   Range = 19.62,                      Coord = { y = -1568.1, x = 1548.8 } },
-        { Coord = { y = -1619.3, x = 1498.5 },                           Done = { 14222 } },
-        { PickUp = { 14375 },                                            Coord = { y = -1818.1, x = 2295.1 } },
-        { Done = { 14375 },                                              Coord = { y = -1818.1, x = 2295.1 } },
-        { PickUp = { 14313 },                                            Coord = { y = -1839.1, x = 2291.8 } },
-        { Range = 5.47,                                                  Waypoint = 14313,                   Coord = { y = -1868, x = 2272.3 } },
-        { Coord = { y = -1859.5, x = 2263.1 },                           Done = { 14313 } },
-        { PickUp = { 14320 },                                            Coord = { y = -1859.5, x = 2263.1 } },
-        { Coord = { y = -1925.5, x = 2408.1 },                           Done = { 14320 } },
-        { PickUp = { 14321 },                                            Coord = { y = -1921.4, x = 2408.6 } },
-        { Coord = { y = -1861.8, x = 2263.4 },                           Done = { 14321 } },
-        { PickUp = { 14336 },                                            Coord = { y = -1861.8, x = 2263.4 } },
-        { Range = 6.22,                                                  Waypoint = 14336,                   Coord = { y = -1900.6, x = 2289.6 } },
-        { Coord = { y = -1926.6, x = 2320.4 },                           Done = { 14336 } },
-        { PickUp = { 14347, 14348 },                                     Coord = { y = -1927.5, x = 2317.9 } },
-        {
-            Qpart = { [14347] = { 1 }, [14348] = { 1 } },
-            Button = { ["14348-1"] = 49202 },
-            Range = 86.25,
-            Coord = { y = -1991.4, x = 2332.1 }
-        },
-        { Coord = { y = -1926.8, x = 2320.1 },          Done = { 14347, 14348 } },
-        { PickUp = { 14366 },                           Coord = { y = -1926.1, x = 2322.6 } },
-        { Coord = { y = -1862, x = 2263.6 },            Done = { 14366 } },
-        { PickUp = { 14367 },                           Coord = { y = -1862, x = 2263.6 } },
-        { Range = 7.65,                                 Waypoint = 14367,                   Coord = { y = -1882, x = 2545.1 } },
-        { Range = 5.96,                                 Waypoint = 14367,                   Coord = { y = -1873.5, x = 2550.6 } },
-        { Coord = { y = -1874, x = 2529 },              Done = { 14367 } },
-        { PickUp = { 14382, 14369, 14368 },             Coord = { y = -1874.5, x = 2530.3 } },
-        { Qpart = { [14368] = { 3 } },                  Fillers = { [14369] = { 1 } },      Range = 0.69,                       Coord = { y = -1933.5, x = 2542 } },
-        { Qpart = { [14368] = { 1 } },                  Fillers = { [14369] = { 1 } },      Range = 0.69,                       Coord = { y = -1987, x = 2509.5 } },
-        { Qpart = { [14368] = { 2 } },                  Fillers = { [14369] = { 1 } },      Range = 0.69,                       Coord = { y = -1930.5, x = 2562.6 } },
-        { Qpart = { [14382] = { 1 } },                  Fillers = { [14369] = { 1 } },      Range = 0.69,                       Coord = { y = -2100.7, x = 2691.4 } },
-        { Qpart = { [14382] = { 2 } },                  Fillers = { [14369] = { 1 } },      Range = 0.69,                       Coord = { y = -2199.7, x = 2592.9 } },
-        { Range = 5.83,                                 Waypoint = 14382,                   Coord = { y = -1880.5, x = 2546.4 } },
-        { Coord = { y = -1874.8, x = 2530.4 },          Done = { 14382, 14369, 14368 } },
-        { PickUp = { 14386 },                           Coord = { y = -1874, x = 2529.8 } },
-        { Qpart = { [14386] = { 1 } },                  Button = { ["14386-1"] = 49240 },   Range = 0.69,                       Coord = { y = -1950.8, x = 2700 } },
-        { Range = 5.59,                                 Waypoint = 14386,                   Coord = { y = -1880, x = 2546.3 } },
-        { Coord = { y = -1874.1, x = 2529 },            Done = { 14386 } },
-        { PickUp = { 14396 },                           Coord = { y = -1873.6, x = 2530.3 } },
-        { Coord = { y = -1897.1, x = 2526.5 },          Done = { 14396 } },
-        { PickUp = { 14395 },                           Coord = { y = -1897.1, x = 2526.5 } },
-        { Qpart = { [14395] = { 1 } },                  Range = 75.52,                      Coord = { y = -1966.8, x = 2568.6 } },
-        { Coord = { y = -1897.5, x = 2526.8 },          Done = { 14395 } },
-        { PickUp = { 14397 },                           Coord = { y = -1897.1, x = 2527.1 } },
-        { Coord = { y = -1901, x = 2256.1 },            Done = { 14397 } },
-        { PickUp = { 14406, 14398, 14403 },             Coord = { y = -1901, x = 2256.1 } },
-        { Coord = { y = -2059.5, x = 2254.5 },          Done = { 14406 } },
-        { PickUp = { 14416 },                           Coord = { y = -2059.5, x = 2254.5 } },
-        { Qpart = { [14416] = { 1 } },                  Range = 67.22,                      Coord = { y = -2171.4, x = 2182.3 } },
-        { Coord = { y = -2059.5, x = 2254.9 },          Done = { 14416 } },
-        { Coord = { y = -2299.4, x = 2279.1 },          Done = { 14403 } },
-        { PickUp = { 14404, 14412 },                    Coord = { y = -2299.4, x = 2279.1 } },
-        { Qpart = { [14404] = { 3 } },                  Fillers = { [14412] = { 1 } },      Range = 0.75,                       Coord = { y = -2336, x = 2259 } },
-        { Qpart = { [14404] = { 1 } },                  Fillers = { [14412] = { 1 } },      Range = 0.75,                       Coord = { y = -2361.2, x = 2262 } },
-        { Qpart = { [14404] = { 2 } },                  Fillers = { [14412] = { 1 } },      Range = 0.69,                       Coord = { y = -2347.5, x = 2303.3 } },
-        { Qpart = { [14412] = { 1 } },                  Range = 0.75,                       Coord = { y = -2310.2, x = 2281.3 } },
-        { Coord = { y = -2299.7, x = 2280.4 },          Done = { 14412, 14404 } },
-        { Coord = { y = -2117, x = 2416.8 },            Done = { 14398 } },
-        { PickUp = { 14399 },                           Coord = { y = -2116.2, x = 2417.1 } },
-        { Qpart = { [14399] = { 1 } },                  Range = 0.75,                       Coord = { y = -2155.7, x = 2372.4 } },
-        { Coord = { y = -2116.5, x = 2417 },            Done = { 14399 } },
-        { PickUp = { 14400 },                           Coord = { y = -2116.5, x = 2417 } },
-        { Qpart = { [14400] = { 1 } },                  Range = 0.69,                       Coord = { y = -2116.5, x = 2432.1 } },
-        { Coord = { y = -2116.7, x = 2416.3 },          Done = { 14400 } },
-        { PickUp = { 14401 },                           Coord = { y = -2116.7, x = 2416.3 } },
-        { Qpart = { [14401] = { 1 } },                  Range = 0.69,                       Coord = { y = -2102.5, x = 2334 } },
-        { Coord = { y = -2116.5, x = 2417.1 },          Done = { 14401 } },
-        { PickUp = { 14402 },                           Coord = { y = -2116.5, x = 2417.1 } },
-        { Coord = { y = -1900.8, x = 2256.1 },          Done = { 14402 } },
-        { Coord = { y = -1583, x = 2554.6 },            Done = { 14465 } },
-        { PickUp = { 14466 },                           Coord = { y = -1583, x = 2554.6 } },
-        { Coord = { y = -1517.1, x = 2608.1 },          Done = { 14466 } },
-        { PickUp = { 24438 },                           Coord = { y = -1517.1, x = 2608.1 } },
-        { Qpart = { [24438] = { 1 } },                  Range = 0.61,                       Coord = { y = -1669.4, x = 2531.6 } },
-        { Coord = { y = -2221.4, x = 1810.5 },          Done = { 24438 } },
-        { PickUp = { 24468 },                           Coord = { y = -2221.2, x = 1810.4 } },
-        { Qpart = { [24468] = { 1 } },                  Range = 73.4,                       Coord = { y = -2030.6, x = 1775.5 } },
-        { Done = { 24468 },                             Coord = { y = -2221.5, x = 1810.7 } },
-        { PickUp = { 24472 },                           Coord = { y = -2221.2, x = 1810.5 } },
-        { Qpart = { [24472] = { 2 } },                  Fillers = { [24472] = { 1 } },      Range = 0.69,                       Coord = { y = -2282, x = 1969 } },
-        { Qpart = { [24472] = { 1 } },                  Range = 83.77,                      Coord = { y = -2337.4, x = 1925.3 } },
-        { Done = { 24472 },                             Coord = { y = -2221.5, x = 1810.5 } },
-        { PickUp = { 24483 },                           Coord = { y = -2220.4, x = 1810.4 } },
-        { Done = { 24483 },                             Coord = { y = -2457, x = 1556.7 } },
-        { PickUp = { 24484 },                           Coord = { y = -2457, x = 1556.7 } },
-        { PickUp = { 24495 },                           Coord = { y = -2459.5, x = 1545.2 } },
-        { Qpart = { [24484] = { 1 }, [24495] = { 1 } }, Range = 100.75,                     Coord = { y = -2433.5, x = 1365.8 } },
-        { Done = { 24484, 24495 },                      Coord = { y = -2456.7, x = 1553.4 } },
-        { PickUp = { 24501 },                           Coord = { y = -2456.9, x = 1557 } },
-        { Qpart = { [24501] = { 1 } },                  Range = 0.75,                       Coord = { y = -2248, x = 1291.9 } },
-        { Done = { 24501 },                             Coord = { y = -2457, x = 1557 } },
-        { PickUp = { 24578 },                           Coord = { y = -2459.2, x = 1545.5 } },
-        { Done = { 24578 },                             Coord = { y = -2272.7, x = 1447.2 } },
-        { PickUp = { 24616 },                           Coord = { y = -2272.7, x = 1447.2 } },
-        { Qpart = { [24616] = { 1 } },                  Button = { ["24616-1"] = 49944 },   Range = 0.69,                       Coord = { y = -2237.5, x = 1433.5 } },
-        { Done = { 24616 },                             Coord = { y = -2272, x = 1447.5 } },
-        { PickUp = { 24617 },                           Coord = { y = -2272, x = 1447.5 } },
-        { Done = { 24617 },                             Coord = { y = -2069.7, x = 1279.3 } },
-        { PickUp = { 24627 },                           Coord = { y = -2069.7, x = 1279.3 } },
-        { PickUp = { 24628 },                           Coord = { y = -2064.2, x = 1261 } },
-        { Qpart = { [24627] = { 1 }, [24628] = { 1 } }, Range = 129.94,                     Coord = { y = -2096.5, x = 1512 } },
-        { Done = { 24627, 24628 },                      Coord = { y = -2067.9, x = 1270 } },
-        { PickUp = { 24646 },                           Coord = { y = -2068, x = 1277.9 } },
-        { Qpart = { [24646] = { 1 } },                  Button = { ["24646-1"] = 50134 },   Range = 0.69,                       Coord = { y = -2119, x = 1630.5 } },
-        { Done = { 24646 },                             Coord = { y = -2069.2, x = 1279 } },
-        { PickUp = { 24593 },                           Coord = { y = -2069.2, x = 1279 } },
-        { Qpart = { [24593] = { 1, 3, 2 } },            Range = 0.75,                       Coord = { y = -2068.2, x = 1266.5 } },
-        { Done = { 24593 },                             Coord = { y = -2069.2, x = 1277.4 } },
-        { PickUp = { 24673 },                           Coord = { y = -2069.2, x = 1278 } },
-        { Done = { 24673 },                             Coord = { y = -2457.7, x = 1557.2 } },
-        { PickUp = { 24672 },                           Coord = { y = -2457.7, x = 1557.2 } },
-        { Done = { 24672 },                             Coord = { y = -2212.4, x = 1152 } },
-        { PickUp = { 24592 },                           Coord = { y = -2212.4, x = 1152.2 } },
-        { Waypoint = 24592,                             Range = 19.72,                      Coord = { y = -2039, x = 946.1 } },
-        { Qpart = { [24592] = { 2 } },                  Range = 0.69,                       Coord = { y = -1921, x = 984.6 } },
-        { Qpart = { [24592] = { 1 } },                  Button = { ["24592-1"] = 50218 },   Range = 0.75,                       Coord = { y = -2097, x = 774.6 } },
-        { Done = { 24592 },                             Coord = { y = -2042, x = 978.7 } },
-        { PickUp = { 24677 },                           Coord = { y = -2042.8, x = 978.1 } },
-        { Done = { 24677 },                             RaidIcon = 38764,                   Coord = { y = -2041.5, x = 977.2 } },
-        { PickUp = { 24575, 24675, 24674 },             Coord = { y = -1368.8, x = 1213.4 } },
-        { Qpart = { [24675] = { 1 } },                  Range = 58.14,                      Coord = { y = -1436.8, x = 1019.2 } },
-        { Range = 7.05,                                 Waypoint = 24674,                   Coord = { y = -1188, x = 1035.5 } },
-        { Waypoint = 24674,                             Fillers = { [24575] = { 1 } },      Range = 16.46,                      Coord = { y = -1059, x = 986 } },
-        { Qpart = { [24674] = { 1 } },                  Fillers = { [24575] = { 1 } },      Range = 0.69,                       Coord = { y = -1210.9, x = 910.4 } },
-        { Qpart = { [24575] = { 1 } },                  Range = 112.07,                     Coord = { y = -1199.1, x = 909.4 } },
-        { Coord = { y = -1369.9, x = 1211.3 },          Done = { 24575, 24675, 24674 } },
-        { PickUp = { 24676 },                           Coord = { y = -1368.4, x = 1211 } },
-        { Qpart = { [24676] = { 1, 3, 2 } },            Range = 38.57,                      Coord = { y = -1152, x = 1139.5 } },
-        { Done = { 24676 },                             Coord = { y = -1368.8, x = 1210.5 } },
-        { PickUp = { 24904 },                           Coord = { y = -1368.8, x = 1210.5 } },
-        { Qpart = { [24904] = { 1 } },                  Range = 0.69,                       Coord = { y = -1723, x = 1397.8 } },
-        { Range = 14.56,                                Waypoint = 24904,                   Coord = { y = -1799.5, x = 1537.8 } },
-        { Range = 17.6,                                 Waypoint = 24904,                   Coord = { y = -1738.5, x = 1635 } },
-        { Qpart = { [24904] = { 2 } },                  Range = 0.75,                       Coord = { y = -1680.6, x = 1611.7 } },
-        { Coord = { y = -1662.9, x = 1591.2 },          Done = { 24904 } },
-        { PickUp = { 24902 },                           Coord = { y = -1663, x = 1592 } },
-        { Qpart = { [24902] = { 1 } },                  RaidIcon = 38507,                   Range = 68.01,                      Coord = { y = -1561.5, x = 1562.4 } },
-        { Coord = { y = -1663.5, x = 1590.5 },          Done = { 24902 } },
-        { PickUp = { 24903 },                           Coord = { y = -1663.5, x = 1590.5 } },
-        { Done = { 24903 },                             Coord = { y = -1644.4, x = 1645.3 } },
-        { PickUp = { 24920 },                           Coord = { y = -1644.4, x = 1645.3 } },
-        { Qpart = { [24920] = { 1, 2 } },               RaidIcon = 38615,                   Range = 348.88,                     Coord = { y = -1667, x = 1664.7 } },
-        { Coord = { y = -1645, x = 1646.8 },            Done = { 24920 } },
-        { PickUp = { 24678 },                           Coord = { y = -1645, x = 1646.8 } },
-        { Range = 5.23,                                 Waypoint = 24678,                   Coord = { y = -1646.1, x = 1631 } },
-        { Range = 4.39,                                 Waypoint = 24678,                   Coord = { y = -1641.6, x = 1636.7 } },
-        { Coord = { y = -1727.5, x = 1872.4 },          Done = { 24678 } },
-        { PickUp = { 24602 },                           Coord = { y = -1727.5, x = 1872.4 } },
-        { Qpart = { [24602] = { 1 } },                  Range = 71.87,                      Coord = { y = -1651.5, x = 1939.8 } },
-        { Coord = { y = -1726.8, x = 1872.9 },          Done = { 24602 } },
-        { PickUp = { 24679 },                           Coord = { y = -1726.8, x = 1872.9 } },
-        { Qpart = { [24679] = { 1 } },                  Button = { ["24679-1"] = 51956 },   Range = 0.69,                       Coord = { y = -1644.3, x = 1904.3 } },
-        { Coord = { y = -1725, x = 1872.5 },            Done = { 24679 } },
-        { PickUp = { 24680 },                           Coord = { y = -1725, x = 1872.5 } },
-        { Coord = { y = -1322.1, x = 2121 },            Done = { 24680 } },
-        { PickUp = { 24681 },                           Coord = { y = -1322.1, x = 2121 } },
-        { Qpart = { [24681] = { 1, 3, 2 } },            RaidIcon = 38150,                   Range = 281.66,                     Coord = { y = -1048.6, x = 2559.3 } },
-        { Coord = { y = -1321.4, x = 2120.8 },          Done = { 24681 } },
-        { PickUp = { 26706 },                           Coord = { y = -1299.1, x = 2129.6 } },
-        { Qpart = { [26706] = { 1 } },                  Range = 0.75,                       Coord = { y = -1289.6, x = 2126.6 } },
-        { Coord = { y = -1299.3, x = 2129.1 },          Done = { 26706 } },
-        { ZoneDoneSave = 1 }
-    }
+
     APR.RouteQuestStepList["A23-23-ScarletEnclave"] = {
         { PickUp = { 12593 },                   Coord = { y = 2346, x = -5671.2 } },
         { Range = 16.93,                        Waypoint = 12593,                   Coord = { y = 2413.1, x = -5618.9 } },
@@ -623,6 +407,7 @@ if (APR.Faction == "Alliance") then
         { PickUp = { 13188 },                              Coord = { y = 2376.5, x = -5649.5 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["37-ElwynnForest"] = {
         { PickUp = { 62 },                          Coord = { y = -9464.5, x = 73.7 } },
         { PickUp = { 60 },                          Coord = { y = -9461.7, x = 32 } },
@@ -701,6 +486,7 @@ if (APR.Faction == "Alliance") then
         { Coord = { y = -9467.8, x = -1304.6 },          Done = { 147 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["52-Westfall"] = {
         { PickUp = { 26209 },                   Coord = { y = -9849.7, x = 915.6 } },
         { Qpart = { [26209] = { 1, 4, 3, 2 } }, Range = 39.85,                     Coord = { y = -9822.3, x = 986.2 } },
@@ -828,6 +614,7 @@ if (APR.Faction == "Alliance") then
         { Qpart = { [26322] = { 1 } },          Range = 0.75,                        Coord = { y = -10511.3, x = 1051.3 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["51-SwampofSorrows"] = {
         { PickUp = { 27587 }, Coord = { y = -9784.3, x = -3915 } },
         { PickUp = { 27592 }, Coord = { y = -9688.3, x = -3928 } },
@@ -934,6 +721,7 @@ if (APR.Faction == "Alliance") then
         { Coord = { y = -10140, x = -3791.7 },          Done = { 27849, 27851 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["17-BlastedLands"] = {
         { PickUp = { 25710 },          Coord = { y = -10915, x = -3394.4 } },
         { PickUp = { 25715 },          Coord = { y = -11037.8, x = -3444.7 } },
@@ -1070,6 +858,7 @@ if (APR.Faction == "Alliance") then
         { Coord = { y = -12711.2, x = -2891 },          Done = { 26187 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["36-BurningSteppes"] = {
         { PickUp = { 28174 },                                       Coord = { y = -8077.9, x = -1008.3 } },
         { PickUp = { 28172 },                                       Coord = { y = -8061.8, x = -1000.3 } },
@@ -1236,6 +1025,7 @@ if (APR.Faction == "Alliance") then
         { Coord = { y = -8397.8, x = -2788.4 }, Done = { 28322 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["27-Kharanos"] = {
         { PickUp = { 384 },                              Coord = { y = -5595.9, x = -503.7 } },
         { Range = 6.96,                                  Waypoint = 384,                           Coord = { y = -5583.9, x = -510.4 } },
@@ -1374,6 +1164,7 @@ if (APR.Faction == "Alliance") then
         { Coord = { y = -5521.2, x = -1920 },           Done = { 25997 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["48-LochModan"] = {
         { PickUp = { 26854 },                                              Coord = { y = -5526, x = -2379.5 } },
         { Coord = { y = -5578.5, x = -2155.2 },                            Done = { 26854 } },
@@ -1538,6 +1329,7 @@ if (APR.Faction == "Alliance") then
         { Coord = { y = -4817.5, x = -2695 },             Done = { 27116 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["56-Wetlands"] = {
         { PickUp = { 25211, 25395 },                                     Coord = { y = -4330.7, x = -2455.2 } },
         { Qpart = { [25395] = { 1 }, [25211] = { 1 } },                  Range = 0.69,                        Coord = { y = -4196.5, x = -2366.5 } },
@@ -1684,6 +1476,7 @@ if (APR.Faction == "Alliance") then
         { Coord = { y = -2866.9, x = -1502.9 },         Done = { 25868 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["14-ArathiHighlands"] = {
         { PickUp = { 26113 },                   Coord = { y = -1256.5, x = -2516.2 } },
         { PickUp = { 26093 },                   Coord = { y = -1273.9, x = -2516.2 } },
@@ -1770,6 +1563,7 @@ if (APR.Faction == "Alliance") then
         { Coord = { y = -943.5, x = -3118 },    Done = { 26049 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["26-TheHinterlands"] = {
         { PickUp = { 26546, 26547 },                    Coord = { y = 331.8, x = -1955.6 } },
         {
@@ -1890,6 +1684,7 @@ if (APR.Faction == "Alliance") then
         { Coord = { y = 331.6, x = -1955.5 },              Done = { 26532 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["22-WesternPlaguelands"] = {
         { PickUp = { 27161, 27159, 27160 }, Coord = { y = 1350, x = -1351 } },
         { GetFP = 650,                      Range = 0.69,                   Coord = { y = 1373.7, x = -1278.8 } },
@@ -2119,6 +1914,7 @@ if (APR.Faction == "Alliance") then
         { Done = { 26955 },                     Coord = { y = 1796.5, x = -1684.4 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["23-EasternPlaguelands"] = {
         { PickUp = { 27370, 27367 },           Coord = { y = 1916.7, x = -2650.5 } },
         { GetFP = 383,                         Range = 0.75,                       Coord = { y = 1940, x = -2694 } },
@@ -2498,6 +2294,7 @@ if (APR.Faction == "Alliance") then
         { Coord = { y = 2304.6, x = -5258 },   Done = { 27527 }, Button = { ["27527"] = 61379 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["47-Duskwood"] = {
         { GetFP = 12,                Range = 0.69,                         Coord = { y = -10513.3, x = -1257.9 } },
         { PickUp = { 26666 },        Coord = { y = -10511.8, x = -1301.1 } },
@@ -2707,6 +2504,7 @@ if (APR.Faction == "Alliance") then
         { Done = { 26727 },            Coord = { y = -10554.3, x = -1106.4 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["49-RedridgeMountauns"] = {
         { PickUp = { 26504 }, Coord = { y = -9620, x = -1890 } },
         { PickUp = { 26506 }, Coord = { y = -9632.7, x = -1881 } },
@@ -2920,6 +2718,7 @@ if (APR.Faction == "Alliance") then
         { Done = { 26714 },                 Coord = { y = -9141.3, x = -3037.4 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["15-Badlands"] = {
         { PickUp = { 27774 },                           Coord = { y = -6638.4, x = -3900.2 } },
         { PickUp = { 27775 },                           Coord = { y = -6633.7, x = -3875.7 } },
@@ -3046,6 +2845,7 @@ if (APR.Faction == "Alliance") then
         { Coord = { y = -6470.5, x = -2478.9 },                                   Done = { 27859 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["32-SearingGorge"] = {
         { PickUp = { 27956, 27963, 27960 },             Coord = { y = -6892.2, x = -1855.8 } },
         {
@@ -3229,6 +3029,7 @@ if (APR.Faction == "Alliance") then
         { Coord = { y = -6500.8, x = -1173.9 }, Done = { 28064 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["224-NorthernStranglethorn"] = {
         { PickUp = { 26732 },          Coord = { y = -11320, x = -193.2 } },
         { PickUp = { 26740 },          Coord = { y = -11309, x = -187.2 } },
@@ -3379,6 +3180,7 @@ if (APR.Faction == "Alliance") then
         { Coord = { y = -12842.3, x = -415.8 },         Done = { 26776 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["224-TheCapeofStranglethorn"] = {
         { PickUp = { 26825 },                           Coord = { y = -13632.5, x = -70.9 } },
         { PickUp = { 26822 },                           Coord = { y = -13633.2, x = -54 } },

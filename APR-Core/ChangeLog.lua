@@ -39,7 +39,7 @@ headerTexture:SetTexture("Interface\\Addons\\APR\\APR-Core\\assets\\header")
 
 local ScrollFrame = CreateFrame("ScrollFrame", "ChangeLogScrollFrame", ChangeLogFrame, "UIPanelScrollFrameTemplate")
 ScrollFrame:SetSize(ChangeLogFrame:GetWidth() - 40, ChangeLogFrame:GetHeight() - 75)
-ScrollFrame:SetPoint("CENTER", 0, -30)
+ScrollFrame:SetPoint("CENTER", -5, -30)
 
 local TextFrame = CreateFrame("Frame", nil, ScrollFrame)
 TextFrame:SetSize(ScrollFrame:GetWidth(), ScrollFrame:GetHeight())
