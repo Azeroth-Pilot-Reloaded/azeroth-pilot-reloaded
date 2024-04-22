@@ -126,11 +126,11 @@ local function APR_QAskPopWanted()
         APR.questionDialog:CreateQuestionPopup(
             dialogText,
             function()
-                APRData[APR.PlayerID]["WantedQuestList"][Qid] = 1
+                APRData[APR.PlayerID].WantedQuestList[Qid] = 1
                 _G.UpdateNextStep()
             end,
             function()
-                APRData[APR.PlayerID]["WantedQuestList"][Qid] = 0
+                APRData[APR.PlayerID].WantedQuestList[Qid] = 0
                 _G.UpdateNextStep()
             end
         )
@@ -351,7 +351,7 @@ local function APR_UpdateStep()
             VehicleExit()
         end
 
-        if (steps.GroupTask and APRData[APR.PlayerID]["WantedQuestList"][steps.GroupTask] and APRData[APR.PlayerID]["WantedQuestList"][steps.GroupTask] == 0) then
+        if (steps.GroupTask and APRData[APR.PlayerID].WantedQuestList[steps.GroupTask] and APRData[APR.PlayerID].WantedQuestList[steps.GroupTask] == 0) then
             _G.UpdateNextStep()
             return
         end
@@ -408,7 +408,7 @@ local function APR_UpdateStep()
                 for _, objectiveIndex in pairs(objectives) do
                     Total = Total + 1
                     local qid = questID .. "-" .. objectiveIndex
-                    if (C_QuestLog.IsQuestFlaggedCompleted(questID) or ((UnitLevel("player") == APR.MaxLevel) and Contains(APR_BonusObj, questID)) or APRData[APR.PlayerID]["BonusSkips"][questID]) then
+                    if (C_QuestLog.IsQuestFlaggedCompleted(questID) or ((UnitLevel("player") == APR.MaxLevel) and Contains(APR_BonusObj, questID)) or APRData[APR.PlayerID].BonusSkips[questID]) then
                         Flagged = Flagged + 1
                     elseif (APR.ActiveQuests[qid] and APR.ActiveQuests[qid] == "C") then
                         Flagged = Flagged + 1
@@ -702,7 +702,7 @@ local function APR_UpdateStep()
             for questId, objectives in pairs(IdList) do
                 for _, objectiveId in pairs(objectives) do
                     local qid = questId .. "-" .. objectiveId
-                    if C_QuestLog.IsQuestFlaggedCompleted(questId) == false and not APRData[APR.PlayerID]["BonusSkips"][questId] then
+                    if C_QuestLog.IsQuestFlaggedCompleted(questId) == false and not APRData[APR.PlayerID].BonusSkips[questId] then
                         if APR.ActiveQuests[qid] and APR.ActiveQuests[qid] ~= "C" and APR.IsInRouteZone then
                             local checkpbar = C_QuestLog.GetQuestObjectives(questId)
                             local questText = APR.ActiveQuests[qid]

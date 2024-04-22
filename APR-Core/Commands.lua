@@ -15,9 +15,8 @@ function APR.command:SlashCmd(input)
         APRData[APR.PlayerID][APR.ActiveRoute] = 1
         C_UI.Reload()
     elseif (inputText == "forcereset" or inputText == "fr") then
-        -- APRData[APR.PlayerID].FirstLoad = true
         APRData[APR.PlayerID] = {}
-        APRZoneCompleted[APR.PlayerID] = nil
+        APRZoneCompleted[APR.PlayerID] = {}
         APRCustomPath[APR.PlayerID] = {}
         C_UI.Reload()
     elseif (inputText == "skip" or inputText == "s" or inputText == "skippiedoodaa") then
@@ -45,7 +44,7 @@ function APR.command:SlashCmd(input)
     elseif inputText == 'route' then
         APR.settings:OpenSettings(L["ROUTE"])
     elseif inputText == '42' then
-        PlaySoundFile("Interface\\Addons\\APR-Core\\assets\\42.mp3")
+        PlaySoundFile("Interface\\Addons\\APR\\APR-Core\\assets\\42.mp3")
         UIErrorsFrame:AddMessage(L["42_COMMAND"], 1.0, 1.0, 0.0, 1.0, UIERRORS_HOLD_TIME)
     elseif (inputText == "help" or inputText == "h") then
         print(L["COMMAND_LIST"] .. ":")

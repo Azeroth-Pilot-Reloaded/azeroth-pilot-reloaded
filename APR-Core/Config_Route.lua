@@ -543,7 +543,6 @@ function SetRouteListTab(widget, name)
             lineContainer:SetScript("OnMouseDown", function(self, button)
                 if button == "RightButton" then
                     tinsert(APRCustomPath[APR.PlayerID], route.routeName)
-                    APR.routeconfig:LoadRouteAddonFile(name)
                     APR.routeconfig:SendMessage("APR_Custom_Path_Update")
                 end
             end)
@@ -727,10 +726,6 @@ function APR.routeconfig:GetStartingZonePrefab()
             end
         end
     end
-    self:LoadRouteAddonFile("WrathOfTheLichKing")
-    self:LoadRouteAddonFile("Legion")
-    self:LoadRouteAddonFile("Shadowlands")
-    self:LoadRouteAddonFile("Dragonflight")
     self:SendMessage("APR_Custom_Path_Update")
 end
 
@@ -753,7 +748,6 @@ function APR.routeconfig:GetWODPrefab()
         tinsert(APRCustomPath[APR.PlayerID], "WOD06 - Spires of Arak")
         tinsert(APRCustomPath[APR.PlayerID], "WOD07 - Nagrand")
     end
-    self:LoadRouteAddonFile("WarlordsOfDraenor")
     self:SendMessage("APR_Custom_Path_Update")
 end
 
@@ -771,7 +765,6 @@ function APR.routeconfig:GetBFAPrefab()
         tinsert(APRCustomPath[APR.PlayerID], "BFA05 - Naz-end Vol-begin")
         tinsert(APRCustomPath[APR.PlayerID], "BFA06 - Vol'dun")
     end
-    self:LoadRouteAddonFile("BattleForAzeroth")
     self:SendMessage("APR_Custom_Path_Update")
 end
 
@@ -794,7 +787,6 @@ function APR.routeconfig:GetSLPrefab()
     tinsert(APRCustomPath[APR.PlayerID], "SL15 - Revendreth")
     tinsert(APRCustomPath[APR.PlayerID], "SL16 - Oribos")
     tinsert(APRCustomPath[APR.PlayerID], "SL - StoryMode Only")
-    self:LoadRouteAddonFile("Shadowlands")
     self:SendMessage("APR_Custom_Path_Update")
 end
 
@@ -814,40 +806,12 @@ function APR.routeconfig:GetDFPrefab()
         tinsert(APRCustomPath[APR.PlayerID], "DF06 - Azure Span")
         tinsert(APRCustomPath[APR.PlayerID], "DF07 - Thaldraszus")
     end
-    self:LoadRouteAddonFile("Dragonflight")
     self:SendMessage("APR_Custom_Path_Update")
 end
 
 ---------------------------------------------------------------------------------------
 ------------------------------ Route config function ----------------------------------
 ---------------------------------------------------------------------------------------
-
---Loads addon if needed for a route
-function APR.routeconfig:LoadRouteAddonFile(tabName)
-    if APRCustomPath[APR.PlayerID] then
-        local function checkAddon(zoneName, addonName)
-            if tabName == zoneName and not C_AddOns.IsAddOnLoaded(addonName) then
-                local loaded, _ = C_AddOns.LoadAddOn(addonName)
-                if not loaded then
-                    C_AddOns.EnableAddOn(addonName, UnitName("player"))
-                    C_AddOns.SaveAddOns()
-                    print("APR: " .. addonName .. " " .. L["DISABLED_ADDON_LIST"])
-                end
-            end
-        end
-        checkAddon("Vanilla", "APR-Vanilla")
-        checkAddon("TheBurningCrusade", "APR-TheBurningCrusade") -- No route
-        checkAddon("WrathOfTheLichKing", "APR-WrathOfTheLichKing")
-        checkAddon("Cataclysm", "APR-Vanilla")                   -- No route
-        checkAddon("MistsOfPandaria", "APR-MistsOfPandaria")
-        checkAddon("WarlordsOfDraenor", "APR-WarlordsOfDraenor")
-        checkAddon("Legion", "APR-Legion")
-        checkAddon("BattleForAzeroth", "APR-BattleForAzeroth")
-        checkAddon("Shadowlands", "APR-ExilesReach")
-        checkAddon("Shadowlands", "APR-Shadowlands")
-        checkAddon("Dragonflight", "APR-Dragonflight")
-    end
-end
 
 function APR.routeconfig:HasRouteInCustomPaht()
     if APRCustomPath[APR.PlayerID] and not next(APRCustomPath[APR.PlayerID]) then

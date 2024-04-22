@@ -3,11 +3,11 @@
 
 ## Title: Azeroth Pilot Reloaded
 ## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.
-## Author: Neogeekmo, Rycia, Pahonix (legacy: zyrrael, Deathmessinger)
-## IconTexture: Interface\AddOns\APR-Core\assets\APR_logo
+## Author: Core: Neogeekmo, Rycia, Kamian | Route: Pahonix, Neogeekmo | Support: NightofStarrs, Pahonix | (legacy: zyrrael, Deathmessinger, 8goldbow)
+## IconTexture: Interface\AddOns\APR\APR-Core\assets\APR_logo
 ## Version: @project-version@
 
-## SavedVariables: APRSettings
+## SavedVariables: APRSettings, APRData, APRCustomPath, APRZoneCompleted, APRTaxiNodes, APRTaxiNodesTimer
 
 ## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.
 ## X-Github: https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded
@@ -15,3 +15,44 @@
 ## X-Curse-Project-ID: 618667
 ## X-WoWI-ID: 26457
 ## X-Wago-ID: XKq9xXKy
+
+APR-Core/libs/embeds.xml
+APR-Core/locales/locales.xml
+
+APR-Core/Core.lua
+
+APR-Core/helpers/Utils.lua
+APR-Core/helpers/classes.lua
+APR-Core/helpers/PlayerPosition.lua
+APR-Core/helpers/SceneCutter.lua
+APR-Core/helpers/CoordinateFrame.lua
+APR-Core/helpers/StepHelper.lua
+
+APR-Core/database\AllianceRoutes.lua
+APR-Core/database\HordeRoutes.lua
+APR-Core/database\NeutralRoutes.lua
+APR-Core/database\Portals.lua
+APR-Core/database\TaxiNodes.lua
+APR-Core/database\ZoneOrder.lua
+
+APR-Core/Config.lua
+APR-Core/Config_Route.lua
+APR-Core/Commands.lua
+APR-Core/ChangeLog.lua
+
+APR-Core/QuestHandler.lua
+APR-Core/Transport.lua
+
+APR-Core/Arrow.lua
+APR-Core/CurrentStep.lua
+APR-Core/QuestionPopUp.lua
+APR-Core/QuestOrderList.lua
+APR-Core/Party.lua
+APR-Core/Map.lua
+APR-Core/AFK.lua
+APR-Core/Heirloom.lua
+APR-Core/RouteSelection.lua
+APR-Core/Buff.lua
+APR-Core/StatusReport.lua
+
+Routes/RouteList.xml
