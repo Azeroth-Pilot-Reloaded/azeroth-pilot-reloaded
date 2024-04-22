@@ -78,6 +78,16 @@ function APR:OnInitialize()
     APRData[APR.PlayerID] = APRData[APR.PlayerID] or {}
     APRData[APR.PlayerID].FirstLoad = APRData[APR.PlayerID].FirstLoad == nil and true or
         APRData[APR.PlayerID].FirstLoad
+    APRData[APR.PlayerID].BonusSkips = APRData[APR.PlayerID].BonusSkips or {}
+    APRData[APR.PlayerID].WantedQuestList = APRData[APR.PlayerID].WantedQuestList or {}
+
+    APRCustomPath = APRCustomPath or {}
+    APRTaxiNodes = APRTaxiNodes or {}
+    APRTaxiNodesTimer = APRTaxiNodesTimer or {}
+    APRZoneCompleted = APRZoneCompleted or {}
+    APRTaxiNodes[APR.PlayerID] = APRTaxiNodes[APR.PlayerID] or {}
+    APRCustomPath[APR.PlayerID] = APRCustomPath[APR.PlayerID] or {}
+    APRZoneCompleted[APR.PlayerID] = APRZoneCompleted[APR.PlayerID] or {}
 
     -- Init current step frame
     APR.currentStep:CurrentStepFrameOnInit()
@@ -130,43 +140,11 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
             return
         end
 
-        if (not APRData[APR.PlayerID]["BonusSkips"]) then
-            APRData[APR.PlayerID]["BonusSkips"] = {}
-        end
-
-        if (not APRData[APR.PlayerID]["WantedQuestList"]) then
-            APRData[APR.PlayerID]["WantedQuestList"] = {}
-        end
-
         APR_LoadInTimer = APR.CoreEventFrame:CreateAnimationGroup()
         APR_LoadInTimer.anim = APR_LoadInTimer:CreateAnimation()
         APR_LoadInTimer.anim:SetDuration(2)
         APR_LoadInTimer:SetLooping("NONE")
         APR_LoadInTimer:SetScript("OnFinished", function(self, event, ...)
-            if (not APRTaxiNodes) then
-                APRTaxiNodes = {}
-            end
-            if (not APRTaxiNodes[APR.PlayerID]) then
-                APRTaxiNodes[APR.PlayerID] = {}
-            end
-
-            if (not APRTaxiNodesTimer) then
-                APRTaxiNodesTimer = {}
-            end
-
-            if (not APRCustomPath) then
-                APRCustomPath = {}
-            end
-            if (not APRCustomPath[APR.PlayerID]) then
-                APRCustomPath[APR.PlayerID] = {}
-            end
-            if (not APRZoneCompleted) then
-                APRZoneCompleted = {}
-            end
-            if (not APRZoneCompleted[APR.PlayerID]) then
-                APRZoneCompleted[APR.PlayerID] = {}
-            end
-
             APR.BookingList["UpdateMapId"] = true
             APR.BookingList["UpdateQuest"] = true
 
