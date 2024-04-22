@@ -188,7 +188,7 @@ function APR:createStatusFrame()
     CloseButton:CreateTexture()
     CloseButton.Texture = CloseButton:CreateTexture(nil, 'OVERLAY')
     CloseButton.Texture:SetAllPoints()
-    CloseButton.Texture:SetTexture("Interface\\AddOns\\APR-Core\\assets\\Close")
+    CloseButton.Texture:SetTexture("Interface\\AddOns\\APR\\APR-Core\\assets\\Close")
     CloseButton:HookScript('OnClick', closeClicked)
 
     --Title logo (drag to move frame)
@@ -199,7 +199,7 @@ function APR:createStatusFrame()
 
     local LogoTop = StatusFrame.TitleLogoFrame:CreateTexture(nil, 'ARTWORK')
     LogoTop:SetPoint('CENTER', titleLogoFrame, 'TOP', 0, -36)
-    LogoTop:SetTexture("Interface\\AddOns\\APR-Core\\assets\\APR_logo")
+    LogoTop:SetTexture("Interface\\AddOns\\APR\\APR-Core\\assets\\APR_logo")
     LogoTop:SetSize(64, 64)
     titleLogoFrame.LogoTop = LogoTop
 

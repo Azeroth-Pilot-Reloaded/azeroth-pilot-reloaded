@@ -78,6 +78,16 @@ function APR:OnInitialize()
     APRData[APR.PlayerID] = APRData[APR.PlayerID] or {}
     APRData[APR.PlayerID].FirstLoad = APRData[APR.PlayerID].FirstLoad == nil and true or
         APRData[APR.PlayerID].FirstLoad
+    APRData[APR.PlayerID].BonusSkips = APRData[APR.PlayerID].BonusSkips or {}
+    APRData[APR.PlayerID].WantedQuestList = APRData[APR.PlayerID].WantedQuestList or {}
+
+    APRCustomPath = APRCustomPath or {}
+    APRTaxiNodes = APRTaxiNodes or {}
+    APRTaxiNodesTimer = APRTaxiNodesTimer or {}
+    APRZoneCompleted = APRZoneCompleted or {}
+    APRTaxiNodes[APR.PlayerID] = APRTaxiNodes[APR.PlayerID] or {}
+    APRCustomPath[APR.PlayerID] = APRCustomPath[APR.PlayerID] or {}
+    APRZoneCompleted[APR.PlayerID] = APRZoneCompleted[APR.PlayerID] or {}
 
     -- Init current step frame
     APR.currentStep:CurrentStepFrameOnInit()
@@ -126,16 +136,8 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
     end
     if (event == "ADDON_LOADED") then
         local arg1, arg2, arg3, arg4, arg5 = ...;
-        if (arg1 ~= "APR-Core") then
+        if (arg1 ~= "APR") then
             return
-        end
-
-        if (not APRData[APR.PlayerID]["BonusSkips"]) then
-            APRData[APR.PlayerID]["BonusSkips"] = {}
-        end
-
-        if (not APRData[APR.PlayerID]["WantedQuestList"]) then
-            APRData[APR.PlayerID]["WantedQuestList"] = {}
         end
 
         APR_LoadInTimer = APR.CoreEventFrame:CreateAnimationGroup()
@@ -143,37 +145,13 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR_LoadInTimer.anim:SetDuration(2)
         APR_LoadInTimer:SetLooping("NONE")
         APR_LoadInTimer:SetScript("OnFinished", function(self, event, ...)
-            if (not APRTaxiNodes) then
-                APRTaxiNodes = {}
-            end
-            if (not APRTaxiNodes[APR.PlayerID]) then
-                APRTaxiNodes[APR.PlayerID] = {}
-            end
-
-            if (not APRTaxiNodesTimer) then
-                APRTaxiNodesTimer = {}
-            end
-
-            if (not APRCustomPath) then
-                APRCustomPath = {}
-            end
-            if (not APRCustomPath[APR.PlayerID]) then
-                APRCustomPath[APR.PlayerID] = {}
-            end
-            if (not APRZoneCompleted) then
-                APRZoneCompleted = {}
-            end
-            if (not APRZoneCompleted[APR.PlayerID]) then
-                APRZoneCompleted[APR.PlayerID] = {}
-            end
-
             APR.BookingList["UpdateMapId"] = true
             APR.BookingList["UpdateQuest"] = true
 
             APR.RouteSelection:RefreshFrameAnchor()
             local CQIDs = C_QuestLog.GetAllCompletedQuestIDs()
-            APRData[APR.PlayerID]["QuestCounter"] = getn(CQIDs)
-            APRData[APR.PlayerID]["QuestCounter2"] = APRData[APR.PlayerID]["QuestCounter"]
+            APRData[APR.PlayerID].QuestCounter = getn(CQIDs)
+            APRData[APR.PlayerID].QuestCounter2 = APRData[APR.PlayerID].QuestCounter
             APR_QidsTimer:Play()
             APR:PrintInfo("APR " .. L["LOADED"])
             APR_LoadInTimer:Stop()
@@ -186,9 +164,9 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR_QidsTimer.anim:SetDuration(1)
         APR_QidsTimer:SetLooping("REPEAT")
         APR_QidsTimer:SetScript("OnLoop", function(self, event, ...)
-            if (APRData[APR.PlayerID]["QuestCounter2"] ~= APRData[APR.PlayerID]["QuestCounter"]) then
+            if (APRData[APR.PlayerID].QuestCounter2 ~= APRData[APR.PlayerID].QuestCounter) then
                 APR.BookingList["UpdateStep"] = true
-                APRData[APR.PlayerID]["QuestCounter"] = APRData[APR.PlayerID]["QuestCounter2"]
+                APRData[APR.PlayerID].QuestCounter = APRData[APR.PlayerID].QuestCounter2
             end
         end)
 

@@ -1,0 +1,42 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..FrameXMLUI.xsd">
+
+    <Script file="Routes/BattleForAzeroth/BattleForAzeroth_Horde.lua"/>
+    <Script file="Routes/BattleForAzeroth/BattleForAzeroth_Alliance.lua"/>
+
+    <Script file="Routes/Cataclysm/Cataclysm_Alliance.lua"/>
+    <Script file="Routes/Cataclysm/Cataclysm_Horde.lua"/>
+
+    <Script file="Routes/Dragonflight/Dragonflight.lua"/>
+    <Script file="Routes/Dragonflight/Dragonflight_Alliance.lua"/>
+    <Script file="Routes/Dragonflight/Dragonflight_horde.lua"/>
+
+    <Script file="Routes/ExilesReach/ExilesReach_Horde.lua"/>
+    <Script file="Routes/ExilesReach/ExilesReach_Alliance.lua"/>
+
+    <Script file="Routes/Legion/Legion_Alliance.lua"/>
+    <Script file="Routes/Legion/Legion_Horde.lua"/>
+    <Script file="Routes/Legion/Legion.lua"/>
+
+    <Script file="Routes/MistsOfPandaria/MistsOfPandaria_Alliance.lua"/>
+    <Script file="Routes/MistsOfPandaria/MistsOfPandaria_Horde.lua"/>
+    <Script file="Routes/MistsOfPandaria/MistsOfPandaria.lua"/>
+
+    <Script file="Routes/Shadowlands/Shadowlands_Alliance.lua"/>
+    <Script file="Routes/Shadowlands/Shadowlands_Horde.lua"/>
+    <Script file="Routes/Shadowlands/Shadowlands.lua"/>
+
+    <Script file="Routes/TheBurningCrusade/TheBurningCrusade_Alliance.lua"/>
+    <Script file="Routes/TheBurningCrusade/TheBurningCrusade_Horde.lua"/>
+
+    <Script file="Routes/Vanilla/EasternKingdoms_Horde.lua"/>
+    <Script file="Routes/Vanilla/EasternKingdoms_Alliance.lua"/>
+    <Script file="Routes/Vanilla/Kalimdor_Horde.lua"/>
+    <Script file="Routes/Vanilla/Kalimdor_Alliance.lua"/>
+
+    <Script file="Routes/WarlordsOfDraenor/WarlordsOfDraenor_Alliance.lua"/>
+    <Script file="Routes/WarlordsOfDraenor/WarlordsOfDraenor_Horde.lua"/>
+
+    <Script file="Routes/WrathOfTheLichKing/WrathOfTheLichKing_Alliance.lua"/>
+    <Script file="Routes/WrathOfTheLichKing/WrathOfTheLichKing_Horde.lua"/>
+
+</Ui>

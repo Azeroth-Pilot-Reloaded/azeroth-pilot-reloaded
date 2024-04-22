@@ -263,7 +263,7 @@ function APR.map:CreatePin(index, step, size, color, textColor, textScale)
     pinFrame:Hide()
 
     pinFrame.icon = pinFrame:CreateTexture(nil, "OVERLAY")
-    pinFrame.icon:SetTexture("Interface\\Addons\\APR-Core\\assets\\Icon.tga")
+    pinFrame.icon:SetTexture("Interface\\Addons\\APR\\APR-Core\\assets\\Icon.tga")
     pinFrame.icon:SetAllPoints(pinFrame)
     pinFrame.icon:SetVertexColor(unpack(color))
 

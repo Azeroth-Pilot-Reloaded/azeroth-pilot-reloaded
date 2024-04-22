@@ -35,7 +35,7 @@ end)
 local headerTexture = headerFrame:CreateTexture(nil, "ARTWORK")
 headerTexture:SetSize(600, 150)
 headerTexture:SetPoint("TOP", headerFrame, "TOP", 0, 0)
-headerTexture:SetTexture("Interface\\Addons\\APR-Core\\assets\\header")
+headerTexture:SetTexture("Interface\\Addons\\APR\\APR-Core\\assets\\header")
 
 local ScrollFrame = CreateFrame("ScrollFrame", "ChangeLogScrollFrame", ChangeLogFrame, "UIPanelScrollFrameTemplate")
 ScrollFrame:SetSize(ChangeLogFrame:GetWidth() - 40, ChangeLogFrame:GetHeight() - 75)
