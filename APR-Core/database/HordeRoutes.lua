@@ -106,7 +106,7 @@ if (APR.Faction == "Horde") then
     elseif (APR.Race == "Scourge") then --Undead
         APR.RouteList.Vanilla["465-TirisfalGladesUndead"] = "Scourge Start"
     elseif (APR.Race == "BloodElf") then
-        APR.RouteList.TheBurningCrusade["467-EversongWoodsBloodElf"] = "Blood Elf Start"
+        APR.RouteList.TheBurningCrusade["467-BloodElf-intro"] = "Blood Elf Start"
     elseif (APR.Race == "Goblin") then
         APR.RouteList.Cataclysm["194-Kezan"] = "Goblin Start"
         APR.RouteList.Cataclysm["174-LostIsles"] = "Goblin - Lost Isles"
