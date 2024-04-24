@@ -107,10 +107,12 @@ local APR_BonusObj = {
     62735,
     59015,
 }
+
 local function APR_LeaveQuest(QuestIDs)
     C_QuestLog.SetSelectedQuest(QuestIDs)
     C_QuestLog.AbandonQuest()
 end
+
 local function APR_QAskPopWanted()
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     local steps
@@ -1010,7 +1012,6 @@ local function APR_UpdateMapId()
     OverrideRouteData() -- Lumbermill Wod route
     APR.BookingList["GetMeToRightZone"] = true
 end
-
 
 local function APR_LoopBookingFunc() -- Main loop
     if not APR.settings.profile.enableAddon then
