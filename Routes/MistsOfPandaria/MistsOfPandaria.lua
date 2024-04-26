@@ -543,6 +543,7 @@ APR.RouteQuestStepList["554-MoP Remix Intro"] = {
     { Done = { 79438 },                                       Coord = { y = -635.10003662109, x = -4718.6000976562 }, Zone = 554 },
     { PickUp = { 79440 },                                     Coord = { y = -635.10003662109, x = -4718.6000976562 }, Zone = 554 },
     { GossipOptionIDs = { 120604 },                           Coord = { y = -630.70001220703, x = -4707.6000976562 }, Zone = 554 },
-    { Done = { 79440 },                                       Coord = { y = -663.70001220703, x = -1479.8000488281 }, Zone = 371 },
+    { Done = { 79440 },                                       Coord = { y = -663.70001220703, x = -1479.8000488281 }, Zone = 371, Faction = "Alliance" },
+    { Done = { 79440 },                                       Coord = { y = 3176.6999511719, x = -698.20001220703 },  Zone = 371, Faction = "Horde" },
     { ZoneDoneSave = 1 }
 }
