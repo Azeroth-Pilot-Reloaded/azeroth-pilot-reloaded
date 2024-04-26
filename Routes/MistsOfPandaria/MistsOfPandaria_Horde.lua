@@ -192,8 +192,10 @@ if APR.Faction == "Horde" then
         { Done = { 29942 },   Coord = { y = 1287.5, x = -437.5 } },
         { PickUp = { 29971 }, Coord = { y = 1289.2, x = -446.4 } },
         { Done = { 29971 },   Coord = { y = 1448, x = -547.3 } },
-        { DenyNPC = 55648,    GetFP = 1017,                      Range = 5.91, Coord = { y = 1689.5, x = 299.5 } }
+        { DenyNPC = 55648,    GetFP = 1017,                      Range = 5.91, Coord = { y = 1689.5, x = 299.5 } },
+        { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["379-Kun-Lai Summit"] = {
         { GetFP = 1017,       Range = 5.91,                     Coord = { y = 1689.5, x = 299.5 } },
         { PickUp = { 31393 }, Coord = { y = 1686.4, x = 331.6 } },
@@ -423,6 +425,7 @@ if APR.Faction == "Horde" then
             Qpart = { [30743] = { 1 }, [30744] = { 1 }, [30742] = { 1 }, [30745] = { 1 } },
             Range = 36.5,
             Coord = { y = 2774, x = 2512.1 }
-        }
+        },
+        { ZoneDoneSave = 1 }
     }
 end

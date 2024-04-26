@@ -16,6 +16,7 @@ if (APR.Faction == "Horde") then
     APR.RouteList.WrathOfTheLichKing = {}
     APR.RouteList.Cataclysm = {}
     APR.RouteList.MistsOfPandaria = {
+        ["554-MoP Remix Intro"] = "MoP Remix - Intro",
         ["371-The Jade Forest"] = "WIP-The Jade Forest",
         ["379-Kun-Lai Summit"] = "WIP-Kun-Lai Summit",
     }
