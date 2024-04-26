@@ -37,8 +37,18 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetSpeedRunPrefab()
                 end
             },
-            WoD_prefab = {
+            Event_prefab = {
                 order = 1.1,
+                name = "MoP Remix",
+                type = "execute",
+                width = optionsWidth,
+                func = function()
+                    APRCustomPath[APR.PlayerID] = {}
+                    APR.routeconfig:GetMoPRemixPrefab()
+                end
+            },
+            WoD_prefab = {
+                order = 1.2,
                 name = "Warlords of Draenor - " .. L["ONLY"],
                 type = "execute",
                 width = optionsWidth,
@@ -52,7 +62,7 @@ local function GetConfigOptionTable()
 
             },
             BFA_prefab = {
-                order = 1.2,
+                order = 1.3,
                 name = "Battle for Azeroth - " .. L["ONLY"],
                 type = "execute",
                 width = optionsWidth,
@@ -65,7 +75,7 @@ local function GetConfigOptionTable()
                 end,
             },
             SL_prefab = {
-                order = 1.3,
+                order = 1.4,
                 name = "Shadowlands - " .. L["ONLY"],
                 type = "execute",
                 width = optionsWidth,
@@ -78,7 +88,7 @@ local function GetConfigOptionTable()
                 end
             },
             DF_prefab = {
-                order = 1.4,
+                order = 1.5,
                 name = "Dragonflight - " .. L["ONLY"],
                 type = "execute",
                 width = optionsWidth,
@@ -92,7 +102,7 @@ local function GetConfigOptionTable()
                 end
             },
             reset_custom_path = {
-                order = 1.5,
+                order = 1.6,
                 name = L["CLEAN_CUSTOM_PATH"],
                 type = "execute",
                 width = optionsWidth,
@@ -805,6 +815,14 @@ function APR.routeconfig:GetDFPrefab()
         tinsert(APRCustomPath[APR.PlayerID], "DF05 - Ohn'Ahran Plains")
         tinsert(APRCustomPath[APR.PlayerID], "DF06 - Azure Span")
         tinsert(APRCustomPath[APR.PlayerID], "DF07 - Thaldraszus")
+    end
+    self:SendMessage("APR_Custom_Path_Update")
+end
+
+function APR.routeconfig:GetMoPRemixPrefab()
+    tinsert(APRCustomPath[APR.PlayerID], "MoP Remix - Introd")
+    if APR.Faction == alliance then
+    elseif APR.Faction == horde then
     end
     self:SendMessage("APR_Custom_Path_Update")
 end
