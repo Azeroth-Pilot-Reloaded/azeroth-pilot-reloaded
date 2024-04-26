@@ -40,7 +40,9 @@ if (APR.Faction == "Alliance") then
     APR.RouteList.TheBurningCrusade = {}
     APR.RouteList.WrathOfTheLichKing = {}
     APR.RouteList.Cataclysm = {}
-    APR.RouteList.MistsOfPandaria = {}
+    APR.RouteList.MistsOfPandaria = {
+        ["554-MoP Remix Intro"] = "MoP Remix - Intro"
+    }
     APR.RouteList.WarlordsOfDraenor = {
         ["84-DesMephisto-Stormwind-War"] = "WOD01 - Stormwind",
         ["577-DesMephisto-TanaanJungle"] = "WOD02 - Tanaan Jungle",
