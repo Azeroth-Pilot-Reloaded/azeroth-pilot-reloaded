@@ -214,7 +214,7 @@ local AddStepFrameWithQuest = function(stepIndex, stepText, questInfo, color)
 
         if stepIndex == APRData[APR.PlayerID][APR.ActiveRoute] then
             if string.find(quest.questID, "-") then
-                APR.currentStep.questID = string.sub(quest.questID, 1, string.find(quest.questID, "-")-1)
+                APR.currentStep.questID = string.sub(quest.questID, 1, string.find(quest.questID, "-") - 1)
             else
                 APR.currentStep.questID = quest.questID
             end
@@ -433,7 +433,7 @@ function APR.questOrderList:AddStepFromRoute()
             elseif step.UseFlightPath then
                 local questID = step.UseFlightPath
                 local questText = step.Boat and L["USE_BOAT"] or L["USE_FLIGHTPATH"]
-                local questInfo = { { questID = APRTaxiNodes[APR.PlayerID][step.NodeID] or step.Name } }
+                local questInfo = { { questID = GetTaxiNodeName(step) } }
                 local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
                 AddStepFrameWithQuest(stepIndex, questText, questInfo, color)
             elseif step.WarMode then
