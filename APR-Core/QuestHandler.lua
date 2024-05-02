@@ -1516,23 +1516,29 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APRGOSSIPCOUNT = 0
     end
     if (event == "QUEST_DETAIL") then -- Fired when the player is given a more detailed view of his quest.
-        if IsModifierKeyDown() then return end
+        if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
         -- Deny NPC
         CheckDenyNPC(steps)
-        local questID = GetQuestID()
         local hasNoRouteMap = not APR.RouteQuestStepList[APR.ActiveRoute]
-        if questID then
-            if not autoAcceptRoute and not autoAccept then
+        local function handleQuestDetail()
+            local questID = GetQuestID()
+            if questID then
+                if QuestGetAutoAccept() then
+                    C_Timer.After(0.2, APR_CloseQuest)
+                elseif (autoAcceptRoute and (IsARouteQuest(questID) or hasNoRouteMap)) or autoAccept then
+                    C_Timer.After(0.2, APR_AcceptQuest)
+                elseif IsPickupStep() then
+                    C_Timer.After(0.2, APR_CloseQuest)
+                    print("APR: " .. L["NOT_YET"])
+                else
+                    -- Retry
+                    C_Timer.After(1, handleQuestDetail)
+                end
                 return
-            elseif (QuestGetAutoAccept()) then
-                C_Timer.After(0.2, APR_CloseQuest)
-            elseif (autoAcceptRoute and (IsARouteQuest(questID) or hasNoRouteMap)) or autoAccept then
-                C_Timer.After(0.2, APR_AcceptQuest)
-            elseif IsPickupStep() then
-                C_Timer.After(0.2, APR_CloseQuest)
-                print("APR: " .. L["NOT_YET"])
             end
+            C_Timer.After(1, handleQuestDetail)
         end
+        handleQuestDetail()
     end
     if (event == "QUEST_PROGRESS") then
         if IsModifierKeyDown() then return end
