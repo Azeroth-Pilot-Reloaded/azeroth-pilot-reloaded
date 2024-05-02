@@ -195,3 +195,28 @@ function OverrideRouteData()
         end
     end
 end
+
+function GetTaxiNodeName(step)
+    -- First, try to get the node name from the player's specific nodes
+    local playerNodes = APRTaxiNodes[APR.PlayerID]
+    if playerNodes and playerNodes[step.NodeID] then
+        return playerNodes[step.NodeID]
+    end
+
+    -- Fallback to the name directly from the step object
+    if step.Name then
+        return step.Name
+    end
+
+    -- Check global faction nodes
+    for _, factionNodes in pairs(APR.TaxiNodes) do
+        for _, continentNode in pairs(factionNodes) do
+            if continentNode[step.NodeID] then
+                return continentNode[step.NodeID].Name
+            end
+        end
+    end
+
+    -- If no name found, return nil
+    return nil
+end
