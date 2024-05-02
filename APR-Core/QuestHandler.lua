@@ -629,7 +629,7 @@ local function APR_UpdateStep()
         elseif (steps.UseFlightPath) then
             if APR.IsInRouteZone then
                 local questText = (steps.Boat and L["USE_BOAT"] or L["USE_FLIGHTPATH"]) ..
-                    ": " .. (APRTaxiNodes[APR.PlayerID][steps.NodeID] or steps.Name)
+                    ": " .. (GetTaxiNodeName(steps))
                 APR.currentStep:UpdateQuestSteps(steps.UseFlightPath, questText, "UseFlightPath")
             end
             if C_QuestLog.IsQuestFlaggedCompleted(steps.UseFlightPath) then
