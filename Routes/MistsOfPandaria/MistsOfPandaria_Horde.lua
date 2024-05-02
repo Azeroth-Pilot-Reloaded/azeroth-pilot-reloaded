@@ -206,7 +206,7 @@ if APR.Faction == "Horde" then
         { Done = { 29967 },                                      Zone = 371,                                            Coord = { y = 1367.4000244141, x = -571.60003662109 } },
         { PickUp = { 30015 },                                    Zone = 371,                                            Coord = { y = 1440, x = -550.5 } },
         { GossipOptionIDs = { 34466 },                           Zone = 371,                                            Coord = { y = 1422.0999755859, x = -490 } },
-        { UseFlightPath = 30015,                                 ETA = 60,                                              Zone = 371,                                            NodeID = 895,                                                                 Coord = { y = 1455.9000244141, x = -512 } },
+        { UseFlightPath = 30015,                                 ETA = 60,                                              Zone = 371,                                            NodeID = 895,                                                                 Coord = { y = 1422.0999755859, x = -490 } },
         { GetFP = 895,                                           Coord = { y = 1500.5, x = -1834.4000244141 },          Zone = 371 },
         { Done = { 30015 },                                      Coord = { y = 1504.7000732422, x = -1817.5999755859 }, Zone = 371 },
         { PickUp = { 31230 },                                    Coord = { y = 1503.4000244141, x = -1841 },            Zone = 371 },
