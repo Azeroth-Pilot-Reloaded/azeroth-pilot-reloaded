@@ -168,22 +168,22 @@ function APR:tableToString(table, skipKey)
         if not skipKey then
             -- Check the key type (ignore any numerical keys - assume its an array)
             if type(k) == "string" then
-                result = result.."[\""..k.."\"]".."="
+                result = result .. "[\"" .. k .. "\"]" .. "="
             end
         end
         -- Check the value type
         if type(v) == "table" then
-            result = result..APR:tableToString(v)
+            result = result .. APR:tableToString(v)
         elseif type(v) == "boolean" then
-            result = result..tostring(v)
+            result = result .. tostring(v)
         else
-            result = result.."\""..v.."\""
+            result = result .. "\"" .. v .. "\""
         end
-        result = result..","
+        result = result .. ","
     end
     -- Remove leading commas from the result
     if result ~= "" then
-        result = result:sub(1, result:len()-1)
+        result = result:sub(1, result:len() - 1)
     end
-    return result.."}"
+    return result .. "}"
 end
