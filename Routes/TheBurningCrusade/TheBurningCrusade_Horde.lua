@@ -64,6 +64,7 @@ if APR.Faction == "Horde" then
         { PickUp = { 9705 },                    Coord = { y = 9871.6, x = -6557.4 } },
         { Done = { 9705 },                      Coord = { y = 9984.6, x = -6477.7 } },
         { PickUp = { 8350 },                    Coord = { y = 9984.6, x = -6477.7 } },
+        { GetFP = 631,                          Zone = 94,                                            Coord = { y = 9501, x = -6790.8002929688, } },
         { Done = { 8350 },                      Coord = { y = 9477.1, x = -6858.2 } },
         { Waypoint = 1,                         Coord = { y = 9473.5, x = -6844.6000976562 },         Range = 5,                                   Zone = 94 },
         { Waypoint = 1,                         Coord = { y = 9490.400390625, x = -6838.8002929688 }, Range = 5,                                   Zone = 94 },
@@ -131,7 +132,7 @@ if APR.Faction == "Horde" then
             Coord = { y = 8968.1005859375, x = -6678.3002929688 }
         },
         {
-            PickUp = { 9144, 9254, 9395 },
+            PickUp = { 9254 },
             RaidIcon = 15397,
             Coord = { y = 8719.400390625, x = -6657.7001953125 },
             Zone = 94
@@ -165,28 +166,32 @@ if APR.Faction == "Horde" then
             Range = 30,
             Coord = { y = 8461.2998046875, x = -6991.7001953125 }
         },
-        { Done = { 9252 },   Zone = 94,        Coord = { y = 8683.2998046875, x = -6798.5 } },
-        { PickUp = { 9253 }, RaidIcon = 16210, Zone = 94,                                            Coord = { y = 8683.2998046875, x = -6798.5 } },
-        { Done = { 9255 },   Zone = 94,        Coord = { y = 8719.1005859375, x = -6658.2001953125 } },
-        { Zone = 94,         RaidIcon = 15403, GetFP = 625,                                          Coord = { y = 8743.6005859375, x = -6657.3999023438 } },
-        { Done = { 8482 },   Zone = 94,        Coord = { y = 9531, x = -6857.8999023438 } },
-        { Zone = 94,         Grind = 10 },
-        { PickUp = { 8483 }, Zone = 94,        Coord = { y = 9530.2001953125, x = -6858.3002929688 } },
+        { Done = { 9252 }, Zone = 94,        Coord = { y = 8683.2998046875, x = -6798.5 } },
+        { Done = { 9255 }, Zone = 94,        Coord = { y = 8719.1005859375, x = -6658.2001953125 } },
+        { Zone = 94,       RaidIcon = 15403, GetFP = 625,                                          Coord = { y = 8743.6005859375, x = -6657.3999023438 } },
         {
-            UseFlightPath = 8483,
+            UseFlightPath = 8482,
+            ETA = 48,
+            NodeID = 631,
+            Zone = 94,
+            Coord = { y = 8743.6005859375, x = -6657.3999023438 }
+        },
+        { Done = { 8482 }, Zone = 94,                                             Coord = { y = 9531, x = -6857.8999023438 } },
+        {
+            UseFlightPath = 9133,
             ETA = 15,
             Zone = 94,
             NodeID = 82,
-            Coord = { y = 9447.2998046875, x = -6780.6000976562 }
+            Coord = { y = 8745.6005859375, x = -6653.2001953125 },
         },
-        { Waypoint = 8483, Coord = { y = 9376.7001953125, x = -7263.2001953125 }, Range = 5, Zone = 94 },
-        { Waypoint = 8483, Coord = { y = 9417.2998046875, x = -7275 },            Range = 5, Zone = 94 },
-        { Waypoint = 8483, Coord = { y = 9421.7001953125, x = -7256.3999023438 }, Range = 5, Zone = 94 },
-        { Waypoint = 8483, Coord = { y = 9458, x = -7256.3002929688 },            Range = 5, Zone = 110 },
-        { Waypoint = 8483, Coord = { y = 9465.7001953125, x = -7277.8999023438 }, Range = 5, Zone = 110 },
-        { Waypoint = 8483, Coord = { y = 9531.7998046875, x = -7242.8999023438 }, Range = 5, Zone = 110 },
-        { Waypoint = 8483, Coord = { y = 9555.900390625, x = -7228.5 },           Range = 5, Zone = 110 },
-        { Waypoint = 8483, Coord = { y = 9568.7001953125, x = -7195.3999023438 }, Range = 5, Zone = 110 },
+        { Waypoint = 9133, Coord = { y = 9376.7001953125, x = -7263.2001953125 }, Range = 5,                                 Zone = 94 },
+        { Waypoint = 9133, Coord = { y = 9417.2998046875, x = -7275 },            Range = 5,                                 Zone = 94 },
+        { Waypoint = 9133, Coord = { y = 9421.7001953125, x = -7256.3999023438 }, Range = 5,                                 Zone = 94 },
+        { Waypoint = 9133, Coord = { y = 9458, x = -7256.3002929688 },            Range = 5,                                 Zone = 110 },
+        { Waypoint = 9133, Coord = { y = 9465.7001953125, x = -7277.8999023438 }, Range = 5,                                 Zone = 110 },
+        { Waypoint = 9133, Coord = { y = 9531.7998046875, x = -7242.8999023438 }, Range = 5,                                 Zone = 110 },
+        { Waypoint = 9133, Coord = { y = 9555.900390625, x = -7228.5 },           Range = 5,                                 Zone = 110 },
+        { Waypoint = 9133, Coord = { y = 9568.7001953125, x = -7195.3999023438 }, Range = 5,                                 Zone = 110 },
         { Done = { 9133 }, Coord = { y = 9580.2998046875, x = -7054.8002929688 }, Zone = 110 },
         {
             Zone = 110,
@@ -286,14 +291,13 @@ if APR.Faction == "Horde" then
             Range = 5,
             Coord = { y = 10003.400390625, x = -7110.1000976562 }
         },
-        { Waypoint = 8483,       Coord = { y = 1437.9000244141, x = -4433.3002929688 }, Range = 5, Zone = 85 },
-        { Waypoint = 8483,       Coord = { y = 1489.4000244141, x = -4417.1000976562 }, Range = 5, Zone = 85 },
-        { Waypoint = 8483,       Coord = { y = 1546.8000488281, x = -4376.8002929688 }, Range = 5, Zone = 85 },
-        { Waypoint = 8483,       Coord = { y = 1615.2000732422, x = -4282.6000976562 }, Range = 5, Zone = 85 },
-        { Waypoint = 8483,       Coord = { y = 1639.4000244141, x = -4270 },            Range = 5, Zone = 85 },
-        { Waypoint = 8483,       Coord = { y = 1606.2000732422, x = -4265.6000976562 }, Range = 5, Zone = 85 },
-        { Waypoint = 8483,       Coord = { y = 1589.5, x = -4215.1000976562 },          Range = 5, Zone = 85 },
-        { LeaveQuests = { 9144 } },
+        { Waypoint = 1,    Coord = { y = 1437.9000244141, x = -4433.3002929688 }, Range = 5, Zone = 85 },
+        { Waypoint = 1,    Coord = { y = 1489.4000244141, x = -4417.1000976562 }, Range = 5, Zone = 85 },
+        { Waypoint = 1,    Coord = { y = 1546.8000488281, x = -4376.8002929688 }, Range = 5, Zone = 85 },
+        { Waypoint = 1,    Coord = { y = 1615.2000732422, x = -4282.6000976562 }, Range = 5, Zone = 85 },
+        { Waypoint = 1,    Coord = { y = 1639.4000244141, x = -4270 },            Range = 5, Zone = 85 },
+        { Waypoint = 1,    Coord = { y = 1606.2000732422, x = -4265.6000976562 }, Range = 5, Zone = 85 },
+        { Waypoint = 1,    Coord = { y = 1589.5, x = -4215.1000976562 },          Range = 5, Zone = 85 },
         { ZoneDoneSave = 1 }
     }
 end
