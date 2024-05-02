@@ -27,7 +27,7 @@ if APR.Faction == "Alliance" then
         { Waypoint = 46728,                   Range = 5,                          Coord = { x = 1003.9, y = -8540 } },
         { Waypoint = 46728,                   ExtraLineText = "JUMP",             Range = 5,                          Coord = { x = 1078.5, y = -8406.7 } },
         { Waypoint = 46728,                   Range = 5,                          Coord = { x = 1229.3, y = -8299.7 } },
-        { Qpart = { [46728] = { 1 } },        Gossip = 1,                         Range = 0.69,                       Coord = { x = 1327.3, y = -8281.3 } },
+        { Qpart = { [46728] = { 1 } },        GossipOptionID = 47617,             Range = 0.69,                       Coord = { x = 1327.3, y = -8281.3 } },
         { ZoneDoneSave = 1 }
     }
 

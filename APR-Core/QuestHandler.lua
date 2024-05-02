@@ -1097,43 +1097,44 @@ APR.LoopBooking = CreateFrame("frame")
 APR.LoopBooking:SetScript("OnUpdate", APR_LoopBookingFunc)
 
 APR_QH_EventFrame = CreateFrame("Frame")
-APR_QH_EventFrame:RegisterEvent("QUEST_REMOVED")
-APR_QH_EventFrame:RegisterEvent("QUEST_ACCEPTED")
-APR_QH_EventFrame:RegisterEvent("UNIT_QUEST_LOG_CHANGED")
-APR_QH_EventFrame:RegisterEvent("ZONE_CHANGED")
-APR_QH_EventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-APR_QH_EventFrame:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
-APR_QH_EventFrame:RegisterEvent("GOSSIP_SHOW")
-APR_QH_EventFrame:RegisterEvent("GOSSIP_CLOSED")
-APR_QH_EventFrame:RegisterEvent("UI_INFO_MESSAGE")
-APR_QH_EventFrame:RegisterEvent("HEARTHSTONE_BOUND")
-APR_QH_EventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
-APR_QH_EventFrame:RegisterEvent("UNIT_SPELLCAST_START")
-APR_QH_EventFrame:RegisterEvent("QUEST_PROGRESS")
-APR_QH_EventFrame:RegisterEvent("QUEST_DETAIL")
-APR_QH_EventFrame:RegisterEvent("QUEST_COMPLETE")
-APR_QH_EventFrame:RegisterEvent("QUEST_FINISHED")
-APR_QH_EventFrame:RegisterEvent("TAXIMAP_OPENED")
-APR_QH_EventFrame:RegisterEvent("MERCHANT_SHOW")
-APR_QH_EventFrame:RegisterEvent("QUEST_GREETING")
-APR_QH_EventFrame:RegisterEvent("ITEM_PUSH")
-APR_QH_EventFrame:RegisterEvent("QUEST_AUTOCOMPLETE")
-APR_QH_EventFrame:RegisterEvent("QUEST_ACCEPT_CONFIRM")
-APR_QH_EventFrame:RegisterEvent("UNIT_ENTERED_VEHICLE")
-APR_QH_EventFrame:RegisterEvent("QUEST_LOG_UPDATE")
-APR_QH_EventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
-APR_QH_EventFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
-APR_QH_EventFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
-APR_QH_EventFrame:RegisterEvent("CHAT_MSG_MONSTER_SAY")
+APR_QH_EventFrame:RegisterEvent("ADVENTURE_MAP_OPEN")
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN")
-APR_QH_EventFrame:RegisterEvent("UNIT_AURA")
-APR_QH_EventFrame:RegisterEvent("PLAYER_CHOICE_UPDATE")
-APR_QH_EventFrame:RegisterEvent("REQUEST_CEMETERY_LIST_RESPONSE")
-APR_QH_EventFrame:RegisterEvent("UPDATE_UI_WIDGET")
-APR_QH_EventFrame:RegisterEvent("PET_BATTLE_OPENING_START")
-APR_QH_EventFrame:RegisterEvent("PET_BATTLE_CLOSE")
+APR_QH_EventFrame:RegisterEvent("CHAT_MSG_MONSTER_SAY")
+APR_QH_EventFrame:RegisterEvent("GOSSIP_CLOSED")
+APR_QH_EventFrame:RegisterEvent("GOSSIP_SHOW")
 APR_QH_EventFrame:RegisterEvent("GROUP_JOINED")
 APR_QH_EventFrame:RegisterEvent("GROUP_LEFT")
+APR_QH_EventFrame:RegisterEvent("HEARTHSTONE_BOUND")
+APR_QH_EventFrame:RegisterEvent("ITEM_PUSH")
+APR_QH_EventFrame:RegisterEvent("MERCHANT_SHOW")
+APR_QH_EventFrame:RegisterEvent("PET_BATTLE_CLOSE")
+APR_QH_EventFrame:RegisterEvent("PET_BATTLE_OPENING_START")
+APR_QH_EventFrame:RegisterEvent("PLAYER_CHOICE_UPDATE")
+APR_QH_EventFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
+APR_QH_EventFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
+APR_QH_EventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
+APR_QH_EventFrame:RegisterEvent("QUEST_ACCEPTED")
+APR_QH_EventFrame:RegisterEvent("QUEST_ACCEPT_CONFIRM")
+APR_QH_EventFrame:RegisterEvent("QUEST_AUTOCOMPLETE")
+APR_QH_EventFrame:RegisterEvent("QUEST_COMPLETE")
+APR_QH_EventFrame:RegisterEvent("QUEST_DETAIL")
+APR_QH_EventFrame:RegisterEvent("QUEST_FINISHED")
+APR_QH_EventFrame:RegisterEvent("QUEST_GREETING")
+APR_QH_EventFrame:RegisterEvent("QUEST_LOG_UPDATE")
+APR_QH_EventFrame:RegisterEvent("QUEST_PROGRESS")
+APR_QH_EventFrame:RegisterEvent("QUEST_REMOVED")
+APR_QH_EventFrame:RegisterEvent("REQUEST_CEMETERY_LIST_RESPONSE")
+APR_QH_EventFrame:RegisterEvent("TAXIMAP_OPENED")
+APR_QH_EventFrame:RegisterEvent("UI_INFO_MESSAGE")
+APR_QH_EventFrame:RegisterEvent("UNIT_AURA")
+APR_QH_EventFrame:RegisterEvent("UNIT_ENTERED_VEHICLE")
+APR_QH_EventFrame:RegisterEvent("UNIT_QUEST_LOG_CHANGED")
+APR_QH_EventFrame:RegisterEvent("UNIT_SPELLCAST_START")
+APR_QH_EventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
+APR_QH_EventFrame:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
+APR_QH_EventFrame:RegisterEvent("UPDATE_UI_WIDGET")
+APR_QH_EventFrame:RegisterEvent("ZONE_CHANGED")
+APR_QH_EventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if APR.settings.profile.showEvent then
@@ -1145,6 +1146,28 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     local autoAccept = APR.settings.profile.autoAccept
     local autoAcceptRoute = APR.settings.profile.autoAcceptQuestRoute
     local steps = GetSteps(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
+
+    if event == "ADVENTURE_MAP_OPEN" then
+        if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
+        if not IsPickupStep then
+            C_AdventureMap.Close();
+            print("APR: " .. L["NOT_YET"])
+            return
+        end
+        C_Timer.After(0.3, function()
+            local numChoices = C_AdventureMap.GetNumZoneChoices()
+            for choiceIndex = 1, numChoices do
+                local questID, textureKit, name, zoneDescription, normalizedX, normalizedY = C_AdventureMap
+                    .GetZoneChoiceInfo(choiceIndex);
+                if AdventureMap_IsQuestValid(questID, normalizedX, normalizedY) then
+                    if steps and (Contains(steps.PickUp, questID) or Contains(steps.PickUpDB, questID)) then
+                        C_AdventureMap.StartQuest(questID)
+                    end
+                end
+            end
+        end)
+    end
+
     if (event == "UPDATE_UI_WIDGET") then
         if (APR.ActiveQuests and APR.ActiveQuests["57713-4"]) then
             APR.BookingList["UpdateStep"] = true
@@ -1532,11 +1555,11 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     print("APR: " .. L["NOT_YET"])
                 else
                     -- Retry
-                    C_Timer.After(1, handleQuestDetail)
+                    C_Timer.After(0.2, handleQuestDetail)
                 end
                 return
             end
-            C_Timer.After(1, handleQuestDetail)
+            C_Timer.After(0.2, handleQuestDetail)
         end
         handleQuestDetail()
     end
