@@ -1154,16 +1154,18 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             print("APR: " .. L["NOT_YET"])
             return
         end
-        local numChoices = C_AdventureMap.GetNumZoneChoices()
-        for choiceIndex = 1, numChoices do
-            local questID, textureKit, name, zoneDescription, normalizedX, normalizedY = C_AdventureMap
-                .GetZoneChoiceInfo(choiceIndex);
-            if AdventureMap_IsQuestValid(questID, normalizedX, normalizedY) then
-                if steps and (Contains(steps.PickUp, questID) or Contains(steps.PickUpDB, questID)) then
-                    C_AdventureMap.StartQuest(questID)
+        C_Timer.After(0.3, function()
+            local numChoices = C_AdventureMap.GetNumZoneChoices()
+            for choiceIndex = 1, numChoices do
+                local questID, textureKit, name, zoneDescription, normalizedX, normalizedY = C_AdventureMap
+                    .GetZoneChoiceInfo(choiceIndex);
+                if AdventureMap_IsQuestValid(questID, normalizedX, normalizedY) then
+                    if steps and (Contains(steps.PickUp, questID) or Contains(steps.PickUpDB, questID)) then
+                        C_AdventureMap.StartQuest(questID)
+                    end
                 end
             end
-        end
+        end)
     end
 
     if (event == "UPDATE_UI_WIDGET") then
@@ -1553,11 +1555,11 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     print("APR: " .. L["NOT_YET"])
                 else
                     -- Retry
-                    C_Timer.After(0.3, handleQuestDetail)
+                    C_Timer.After(0.2, handleQuestDetail)
                 end
                 return
             end
-            C_Timer.After(0.3, handleQuestDetail)
+            C_Timer.After(0.2, handleQuestDetail)
         end
         handleQuestDetail()
     end
