@@ -37,11 +37,10 @@ if (APR.Faction == "Horde") then
     }
     APR.RouteList.BattleForAzeroth = {
         ["85-BFA-Orgrimmar"] = "BFA01 - Intro",
-        ["862-Zuldazar"] = "BFA02 - Intro",
-        ["862-Zuldazar-1"] = "BFA03 - Zuldazar",
-        ["863-Nazmir"] = "BFA04 - Nazmir",
-        ["862-Zuldazar-2"] = "BFA05 - Naz-end Vol-begin",
-        ["864-Vol'dun"] = "BFA06 - Vol'dun",
+        ["862-Zuldazar"] = "BFA02 - Zuldazar",
+        ["863-Nazmir"] = "BFA03 - Nazmir",
+        ["862-Zuldazar-2"] = "BFA04 - Naz-end Vol-begin",
+        ["864-Vol'dun"] = "BFA05 - Vol'dun",
     }
     APR.RouteList.Shadowlands = {
         ["118-IntroQline"] = "SL - Intro",
