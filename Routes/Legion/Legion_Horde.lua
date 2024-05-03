@@ -1380,22 +1380,22 @@ if APR.Faction == "Horde" then
 
     APR.RouteQuestStepList["680-Nightborne-intro"] = {
         { PickUp = { 49933 },          Zone = 680, Coord = { y = 280.30001831055, x = 3362.5 } },
-        { Waypoint = 49933,            Zone = 680, Range = 5,                                            Coord = { y = 258.20001220703, x = 3359.6000976562 } },
-        { Waypoint = 49933,            Zone = 680, Range = 5,                                            Coord = { y = 247.19999694824, x = 3391.8000488281 } },
-        { Waypoint = 49933,            Zone = 680, Range = 5,                                            Coord = { y = 214.10000610352, x = 3426.9001464844 },  ExtraLineText = "USE_ORGRIMMAR_PORTAL", },
+        { Waypoint = 49933,            Zone = 680, Range = 5,                                             Coord = { y = 258.20001220703, x = 3359.6000976562 } },
+        { Waypoint = 49933,            Zone = 680, Range = 5,                                             Coord = { y = 247.19999694824, x = 3391.8000488281 } },
+        { Waypoint = 49933,            Zone = 680, Range = 5,                                             Coord = { y = 214.10000610352, x = 3426.9001464844 }, ExtraLineText = "USE_ORGRIMMAR_PORTAL", },
         { Done = { 49933 },            Zone = 85,  Coord = { y = 1566.5999755859, x = -4192 } },
         { PickUp = { 50303 },          Zone = 85,  Coord = { y = 1566.5999755859, x = -4192 } },
-        { Qpart = { [50303] = { 1 } }, Zone = 85,  Range = 30,                                           Coord = { y = 1555.9000244141, x = -4214.6000976562 }, RaidIcon = 167032, },
+        { Qpart = { [50303] = { 1 } }, Zone = 85,  Coord = { y = 1555.9000244141, x = -4214.6000976562 }, RaidIcon = 167032, },
         { Done = { 50303 },            Zone = 85,  Coord = { y = 1555.9000244141, x = -4214.6000976562 } },
         { ZoneDoneSave = 1 }
     }
 
     APR.RouteQuestStepList["652-HighmountainTauren-intro"] = {
         { PickUp = { 49773 },          Zone = 652, Coord = { y = 4081.1999511719, x = 4388.2001953125 } },
-        { Waypoint = 49773,            Zone = 652, Range = 5,                                            Coord = { y = 4082.1000976562, x = 4411.8002929688 },  ExtraLineText = "USE_ORGRIMMAR_PORTAL", },
+        { Waypoint = 49773,            Zone = 652, Range = 5,                                             Coord = { y = 4082.1000976562, x = 4411.8002929688 }, ExtraLineText = "USE_ORGRIMMAR_PORTAL", },
         { Done = { 49773 },            Zone = 85,  Coord = { y = 1567.2000732422, x = -4192.6000976562 } },
         { PickUp = { 50319 },          Zone = 85,  Coord = { y = 1567.2000732422, x = -4192.6000976562 } },
-        { Qpart = { [50319] = { 1 } }, Zone = 85,  Range = 30,                                           Coord = { y = 1556.9000244141, x = -4213.8002929688 }, RaidIcon = 167032, },
+        { Qpart = { [50319] = { 1 } }, Zone = 85,  Coord = { y = 1556.9000244141, x = -4213.8002929688 }, RaidIcon = 167032, },
         { Done = { 50319 },            Zone = 85,  Coord = { y = 1556.9000244141, x = -4213.8002929688 } },
         { ZoneDoneSave = 1 }
     }
