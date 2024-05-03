@@ -1041,13 +1041,13 @@ if APR.Faction == "Alliance" then
 
     APR.RouteQuestStepList["940-LightforgedDraenei-intro"] = {
         { PickUp = { 49772 },          Coord = { y = 461.89999389648, x = 1451 }, Zone = 940 },
-        { Zone = 940,                  Waypoint = 49772,                          ExtraLineText = "DOWN",                               Range = 5,                                 Coord = { y = 463.80001831055, x = 1473.8000488281 } },
-        { Zone = 941,                  Waypoint = 49772,                          ExtraLineText = "DOWN",                               Range = 5,                                 Coord = { y = 429.70001220703, x = 1453.9000244141 } },
+        { Zone = 940,                  Waypoint = 49772,                          ExtraLineText = "DOWN",                               Range = 5,                                            Coord = { y = 463.80001831055, x = 1473.8000488281 } },
+        { Zone = 941,                  Waypoint = 49772,                          ExtraLineText = "DOWN",                               Range = 5,                                            Coord = { y = 429.70001220703, x = 1453.9000244141 } },
         { Waypoint = 49772,            Zone = 941,                                Range = 5,                                            Coord = { y = 432.5, x = 1437.7000732422 } },
-        { Zone = 941,                  Waypoint = 49772,                          ExtraLineText = "USE_PORTAL_STORMWIND",               Range = 2,                                 Coord = { y = 499.20001220703, x = 1469 } },
+        { Zone = 941,                  Waypoint = 49772,                          ExtraLineText = "USE_PORTAL_STORMWIND",               Range = 2,                                            Coord = { y = 499.20001220703, x = 1469 } },
         { Zone = 84,                   Done = { 49772 },                          Coord = { y = -8172.2001953125, x = 799.79998779297 } },
         { PickUp = { 50313 },          Zone = 84,                                 Coord = { y = -8172.8002929688, x = 799.90002441406 } },
-        { Qpart = { [50313] = { 1 } }, Zone = 84,                                 RaidIcon = 167032,                                    Range = 30,                                Coord = { y = -8197.1005859375, x = 748.20001220703 } },
+        { Qpart = { [50313] = { 1 } }, Zone = 84,                                 RaidIcon = 167032,                                    Coord = { y = -8197.1005859375, x = 748.20001220703 } },
         { Zone = 84,                   Done = { 50313 },                          Coord = { y = -8197.1005859375, x = 748.20001220703 } },
         { ZoneDoneSave = 1 }
     }
