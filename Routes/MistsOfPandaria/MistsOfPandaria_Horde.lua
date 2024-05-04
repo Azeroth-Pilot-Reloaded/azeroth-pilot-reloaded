@@ -1,5 +1,5 @@
 if APR.Faction == "Horde" then
-    APR.RouteQuestStepList["85-MoP Intro"] = {
+    APR.RouteQuestStepList["85-MoP Intro"]        = {
         { ChromiePick = 8,    Zone = 85,                                  PickUp = { 60126 },                        GossipOptionIDs = { 51901, 51902 },                   Coord = { y = 1559, x = -4216 } },
         { Waypoint = 60126,   Zone = 85,                                  Range = 5,                                 Coord = { y = 1589.3000488281, x = -4214.3002929688 } },
         { Waypoint = 60126,   Zone = 85,                                  Range = 5,                                 Coord = { y = 1607.5999755859, x = -4267.3999023438 } },
@@ -622,7 +622,6 @@ if APR.Faction == "Horde" then
         { Coord = { y = 2957, x = -1466.5 }, Qpart = { [29750] = { 1 }, [29752] = { 1 } }, Range = 60,                                Zone = 371 },
         { Done = { 29750, 29751, 29752 },    Zone = 371,                                   Coord = { y = 2953, x = -1637.2000732422 } },
         { PickUp = { 29753, 29756 },         Zone = 371,                                   Coord = { y = 2953, x = -1637.2000732422 } },
-        { Zone = 371,                        Qpart = {},                                   Range = 30,                                Coord = { y = 3078.6999511719, x = -1396.4000244141 } },
         {
             Qpart = { [29753] = { 1 }, [29756] = { 1 } },
             Zone = 371,
