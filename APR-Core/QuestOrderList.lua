@@ -155,6 +155,7 @@ end
 
 local SetCurrentStepIndicator = function(stepindex)
     local container = APR.questOrderList.stepList[stepindex]
+    if not container then return end
     container.indexFont:SetFontObject("GameFontHighlight")
     container.titleFont:SetFontObject("GameFontHighlight")
     container.indexFont:SetTextColor(unpack(APR.Color.yellow))
