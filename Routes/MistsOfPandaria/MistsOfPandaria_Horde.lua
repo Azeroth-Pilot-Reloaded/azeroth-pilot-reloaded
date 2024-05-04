@@ -750,11 +750,11 @@ if APR.Faction == "Horde" then
         { Done = { 29622 },                             Zone = 371,                                            Coord = { y = 2334.1999511719, x = -1454.0999755859 } },
         { PickUp = { 29623 },                           Zone = 371,                                            Coord = { y = 2334.1999511719, x = -1454.0999755859 } },
         {
-            ExtraLineText2 = "PUNCHES,_PRESS_1",
+            ExtraLineText2 = "PUNCHES_PRESS_1",
             Qpart = { [29623] = { 1 } },
-            ExtraLineText3 = "KICKS,_PRESS_2",
+            ExtraLineText3 = "KICKS_PRESS_2",
             Zone = 371,
-            ExtraLineText4 = "GROWLS,_PRESS_3",
+            ExtraLineText4 = "GROWLS_PRESS_3",
             ExtraLineText = "COPY_INSTRUCTOR",
             Range = 15,
             Coord = { y = 2375.8000488281, x = -1436.0999755859 }
