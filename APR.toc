@@ -32,6 +32,7 @@ APR-Core/database\AllianceRoutes.lua
 APR-Core/database\HordeRoutes.lua
 APR-Core/database\NeutralRoutes.lua
 APR-Core/database\Portals.lua
+APR-Core/database\Spells.lua
 APR-Core/database\TaxiNodes.lua
 APR-Core/database\ZoneOrder.lua
 
