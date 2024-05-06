@@ -2,7 +2,8 @@ name: Lua Code Quality
 
 on: 
   pull_request:
-    branches: [ Update-bug-template ]
+    types: [opened, synchronize]
+    branches: [ dev ]
 
 jobs:
   lint-and-format:
@@ -11,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Lua
         uses: leafo/gh-actions-lua@v10.0.0
@@ -36,11 +39,11 @@ jobs:
       - name: Run Stylua
         run: stylua --check .
 
-      - name: Commit changes
+      - name: Commit and push changes
         if: ${{ github.event_name == 'pull_request' }}
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
           git add -u
           git commit -m "Apply Lua code formatting and linting" || echo "No changes to commit"
-          git push
+          git push origin HEAD:${{ github.head_ref }}
