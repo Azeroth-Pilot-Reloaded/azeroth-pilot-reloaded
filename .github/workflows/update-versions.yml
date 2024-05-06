@@ -1,8 +1,9 @@
 name: Update Version Dropdown
 
-on:
-  release:
-    types: [published]
+# on:
+#   release:
+#     types: [published]
+on: [pull_request]
 
 jobs:
   update-versions:
