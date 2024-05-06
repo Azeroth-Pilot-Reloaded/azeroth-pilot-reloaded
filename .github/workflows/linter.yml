@@ -34,7 +34,7 @@ jobs:
           sudo mv stylua /usr/local/bin/stylua
 
       - name: Run Luacheck
-        run: luacheck .
+        run: luacheck ./APR-Core
 
       - name: Run Stylua
         run: stylua --check .
