@@ -41,8 +41,9 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
+          git config user.name "Aldric Ducreux"
+          git config user.email "<>"
           git add -u
-          git commit -m "Apply Lua code formatting and linting" || echo "No changes to commit"
-          git push
+          git commit -am "Apply Lua code formatting and linting" || true
+          git push --set-upstream https://${{ secrets.GIT_TOKEN }}@github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded HEAD:dev
+
