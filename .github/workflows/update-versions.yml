@@ -34,4 +34,4 @@ jobs:
           git config user.email "<>"
           git add .github/ISSUE_TEMPLATE/bug-report.yml
           git commit -am "Update version options in bug-report template" || true
-          git push origin HEAD:dev
+          git push origin HEAD:test
