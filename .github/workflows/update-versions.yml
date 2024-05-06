@@ -33,5 +33,5 @@ jobs:
           git config user.email "<>"
           git add .github/ISSUE_TEMPLATE/bug-report.yml
           git commit -am "Update version options in bug-report template" || true
-          git push https://${{ secrets.GIT_TOKEN }}@github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded.git HEAD:dev
+          git push https://${{ secrets.AZEROTH_PILOT_RELOADED }}@github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded.git HEAD:dev
 
