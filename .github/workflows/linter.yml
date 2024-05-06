@@ -40,10 +40,9 @@ jobs:
         run: stylua --check .
 
       - name: Commit and push changes
-        if: always()
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
           git add -u
           git commit -m "Apply Lua code formatting and linting" || echo "No changes to commit"
-          git push --set-upstream https://${{ secrets.AZEROTH_PILOT_RELOADED }}@github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded HEAD:${{ github.head_ref }}
+          git push
