@@ -8,6 +8,7 @@ on: [pull_request]
 jobs:
   update-versions:
     runs-on: ubuntu-latest
+    environment: APR-Actions
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,4 +34,4 @@ jobs:
           git config user.email "<>"
           git add .github/ISSUE_TEMPLATE/bug-report.yml
           git commit -am "Update version options in bug-report template" || true
-          git push --set-upstream https://${{ secrets.GIT_TOKEN }}@github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded HEAD:dev
+          git push 
