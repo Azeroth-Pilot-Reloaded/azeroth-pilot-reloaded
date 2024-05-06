@@ -1,9 +1,9 @@
 name: Update Version Dropdown
 
-# on:
-#   release:
-#     types: [published]
-on: [pull_request]
+on:
+  release:
+    types: [published]
+
 
 jobs:
   update-versions:
@@ -27,11 +27,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.AZEROTH_PILOT_RELOADED }}
         run: python .github/scripts/update_bug_report_template.py
 
-      - name: Commit files
-        run: |
-          git config user.name "Aldric Ducreux"
-          git config user.email "<>"
-          git add .github/ISSUE_TEMPLATE/bug-report.yml
-          git commit -am "Update version options in bug-report template" || true
-          git push https://${{ secrets.AZEROTH_PILOT_RELOADED }}@github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded.git HEAD:dev
+      # - name: Commit files
+      #   run: |
+      #     git config user.name "Aldric Ducreux"
+      #     git config user.email "<>"
+      #     git add .github/ISSUE_TEMPLATE/bug-report.yml
+      #     git commit -am "Update version options in bug-report template" || true
+      #     git push https://${{ secrets.AZEROTH_PILOT_RELOADED }}@github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded.git HEAD:dev
 
