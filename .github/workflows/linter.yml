@@ -1,9 +1,7 @@
 name: Lua Code Quality
 
-on: 
-  pull_request:
-    types: [opened, synchronize]
-    branches: [ dev ]
+on: [pull_request]
+
 
 jobs:
   lint-and-format:
@@ -24,7 +22,9 @@ jobs:
         uses: leafo/gh-actions-luarocks@v4.3.0
 
       - name: Install Luacheck
-        run: sudo luarocks install luacheck
+        run:  |
+          sudo apt-get install luarocks
+          sudo luarocks install luacheck
 
       - name: Install Stylua
         run: |
@@ -40,7 +40,7 @@ jobs:
         run: stylua --check .
 
       - name: Commit and push changes
-        if: ${{ github.event_name == 'pull_request' }}
+        if: always()
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
