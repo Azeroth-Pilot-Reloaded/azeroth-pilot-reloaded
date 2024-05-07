@@ -1125,7 +1125,6 @@ APR_QH_EventFrame:RegisterEvent("QUEST_ACCEPT_CONFIRM")
 APR_QH_EventFrame:RegisterEvent("QUEST_AUTOCOMPLETE")
 APR_QH_EventFrame:RegisterEvent("QUEST_COMPLETE")
 APR_QH_EventFrame:RegisterEvent("QUEST_DETAIL")
-APR_QH_EventFrame:RegisterEvent("QUEST_FINISHED")
 APR_QH_EventFrame:RegisterEvent("QUEST_GREETING")
 APR_QH_EventFrame:RegisterEvent("QUEST_LOG_UPDATE")
 APR_QH_EventFrame:RegisterEvent("QUEST_PROGRESS")
@@ -1136,7 +1135,6 @@ APR_QH_EventFrame:RegisterEvent("UI_INFO_MESSAGE")
 APR_QH_EventFrame:RegisterEvent("UNIT_AURA")
 APR_QH_EventFrame:RegisterEvent("UNIT_ENTERED_VEHICLE")
 APR_QH_EventFrame:RegisterEvent("UNIT_QUEST_LOG_CHANGED")
-APR_QH_EventFrame:RegisterEvent("UNIT_SPELLCAST_START")
 APR_QH_EventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
 APR_QH_EventFrame:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
 APR_QH_EventFrame:RegisterEvent("UPDATE_UI_WIDGET")
@@ -1175,27 +1173,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end)
     end
 
-    if (event == "UPDATE_UI_WIDGET") then
-        if (APR.ActiveQuests and APR.ActiveQuests["57713-4"]) then
-            APR.BookingList["UpdateStep"] = true
-        end
-    end
-    if (event == "REQUEST_CEMETERY_LIST_RESPONSE") then
-        APR.BookingList["UpdateMapId"] = true
-        APR.Arrow.currentStep = 0
-        APR.BookingList["SetQPTT"] = true
-    end
-    if (event == "QUEST_LOG_UPDATE") then
-        C_Timer.After(0.2, APR_UpdQuestThing)
-    end
-    if (event == "UNIT_AURA") then
-        if steps and steps.Button then
-            APR.currentStep:UpdateStepButtonCooldowns()
-        end
-    end
-    if (event == "PLAYER_TARGET_CHANGED") then
-        DoEmoteStep(steps)
-    end
     if (event == "CHAT_MSG_COMBAT_XP_GAIN") then
         if (steps and steps.Treasure) then
             _G.UpdateQuestAndStep()
@@ -1203,15 +1180,120 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             C_Timer.After(4, UpdateQuestAndStep)
         end
     end
-    if (event == "PLAYER_REGEN_ENABLED") then
-        APR.InCombat = false
-        if (APR.BookUpdAfterCombat) then
-            APR.BookingList["UpdateStep"] = true
+
+    if (event == "CHAT_MSG_MONSTER_SAY") then
+        local text, arg2, arg3, arg4 = ...;
+        local npc_id, name = GetTargetID(), UnitName("target")
+        if npc_id and name then
+            if npc_id == 159477 then -- quest 57870
+                local gigglingBasket = {
+                    ["GIGGLING_BASKET_ONE_TIME"] = "cheer",
+                    ["GIGGLING_BASKET_SPRIGGANS"] = "flex",
+                    ["GIGGLING_BASKET_MANY"] = "thank",
+                    ["GIGGLING_BASKET_FAE"] = "introduce",
+                    ["GIGGLING_BASKET_FEET"] = "dance",
+                    ["GIGGLING_BASKET_HELP"] = "praise",
+                }
+                for key, emote in pairs(gigglingBasket) do
+                    local message = L[key]
+                    if string.find(text, message) then
+                        if APR.settings.profile.debug then
+                            print("APR: " .. L["DOING_EMOTE"] .. ": " .. emote)
+                        end
+                        DoEmote(emote)
+                        break
+                    end
+                end
+            end
         end
     end
-    if (event == "PLAYER_REGEN_DISABLED") then
-        APR.InCombat = true
+
+    if (event == "GOSSIP_CLOSED") then
+        APRGOSSIPCOUNT = 0
     end
+
+    if event == "GROUP_JOINED" then
+        APR.party:SendGroupMessage()
+    end
+
+    if event == "GROUP_LEFT" then
+        -- remove all the teammate then resend name + step to the group
+        -- because wow don't send the username of the leaver
+        APR.party:RemoveTeam()
+        APR.party:SendGroupMessage()
+        APR.party:RefreshPartyFrameAnchor()
+    end
+
+    if (event == "HEARTHSTONE_BOUND") then
+        if (steps and steps.SetHS) then
+            _G.UpdateNextStep()
+        end
+    end
+
+    if (event == "ITEM_PUSH") then
+        APR.BookingList["UpdateStep"] = true
+        C_Timer.After(1, UpdateQuestAndStep)
+    end
+
+    if (event == "MERCHANT_SHOW") then
+        if IsModifierKeyDown() then return end
+        if (steps and steps.BuyMerchant) then
+            APR_BuyMerchFunc(steps.BuyMerchant)
+        end
+        if (APR.settings.profile.autoRepair) then
+            if (CanMerchantRepair()) then
+                local repairAllCost, canRepair = GetRepairAllCost();
+                if (canRepair and repairAllCost > 0) then
+                    local guildRepairedItems = false
+                    if (IsInGuild() and CanGuildBankRepair()) then
+                        local amount = GetGuildBankWithdrawMoney()
+                        local guildBankMoney = GetGuildBankMoney()
+                        amount = amount == -1 and guildBankMoney or min(amount, guildBankMoney)
+                        if (amount >= repairAllCost) then
+                            RepairAllItems(true);
+                            guildRepairedItems = true
+                            DEFAULT_CHAT_FRAME:AddMessage("APR: Equipment has been repaired by your Guild")
+                        end
+                    end
+                    if (repairAllCost <= GetMoney() and not guildRepairedItems) then
+                        RepairAllItems(false);
+                        print("APR: " ..
+                            L["REPAIR_EQUIPEMENT"] .. " " .. C_CurrencyInfo.GetCoinTextureString(repairAllCost))
+                    end
+                end
+            end
+        end
+        if (APR.settings.profile.autoVendor) then
+            local APRtotal = 0
+            for myBags = 0, 4 do
+                for bagSlots = 1, C_Container.GetContainerNumSlots(myBags) do
+                    local CurrentItemId = C_Container.GetContainerItemID(myBags, bagSlots)
+                    if CurrentItemId then
+                        local itemQuality = C_Item.GetItemQualityByID(CurrentItemId)
+                        local _, _, itemQuality, _, _, _, _, _, _, _, sellPrice = C_Item.GetItemInfo(CurrentItemId)
+                        local itemInfo = C_Container.GetContainerItemInfo(myBags, bagSlots)
+                        if itemQuality == 0 and sellPrice > 0 and itemInfo.stackCount > 0 then
+                            APRtotal = APRtotal + (sellPrice * itemInfo.stackCount)
+                            C_Container.UseContainerItem(myBags, bagSlots)
+                        end
+                    end
+                end
+            end
+            if APRtotal ~= 0 then
+                print("APR:" .. L["ITEM_SOLD"] .. " " .. C_CurrencyInfo.GetCoinTextureString(APRtotal))
+            end
+        end
+    end
+
+    if event == "PET_BATTLE_OPENING_START" or event == "PET_BATTLE_CLOSE" then
+        APR.currentStep:RefreshCurrentStepFrameAnchor()
+        APR.party:RefreshPartyFrameAnchor()
+        APR.questOrderList:RefreshFrameAnchor()
+        APR.heirloom:RefreshFrameAnchor()
+        APR.RouteSelection:RefreshFrameAnchor()
+        APR.Buff:RefreshFrameAnchor()
+    end
+
     if (event == "PLAYER_CHOICE_UPDATE") then
         local choiceInfo = C_PlayerChoice.GetCurrentPlayerChoiceInfo()
         if (choiceInfo and steps) then
@@ -1226,29 +1308,187 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             end
         end
     end
-    if (event == "UNIT_ENTERED_VEHICLE") then
+
+    if (event == "PLAYER_REGEN_DISABLED") then
+        APR.InCombat = true
+    end
+
+    if (event == "PLAYER_REGEN_ENABLED") then
+        APR.InCombat = false
+        if (APR.BookUpdAfterCombat) then
+            APR.BookingList["UpdateStep"] = true
+        end
+    end
+
+    if (event == "PLAYER_TARGET_CHANGED") then
+        DoEmoteStep(steps)
+    end
+
+    if (event == "QUEST_ACCEPTED") then
         local arg1, arg2, arg3, arg4, arg5 = ...;
-        if (arg1 == "player") then
-            if (steps and steps.InVehicle) then
-                APR.BookingList["UpdateStep"] = true
+        if APR.settings.profile.firstAutoShareQuestWithFriend and IsInGroup() then
+            APR.questionDialog:CreateQuestionPopup(L["SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME"], function()
+                APR.settings.profile.autoShareQuestWithFriend = true
+                if APR.party:CheckIfPartyMemberIsFriend() then
+                    C_QuestLog.SetSelectedQuest(arg1)
+                    QuestLogPushQuest();
+                end
+            end)
+            APR.settings.profile.firstAutoShareQuestWithFriend = false
+        end
+        if APR.settings.profile.autoShareQuestWithFriend then
+            if APR.party:CheckIfPartyMemberIsFriend() then
+                C_QuestLog.SetSelectedQuest(arg1)
+                QuestLogPushQuest();
             end
         end
-        if (steps and steps.MountVehicle) then
-            _G.NextQuestStep()
+        if (APR.settings.profile.debug) then
+            print(L["Q_ACCEPTED"] .. ": " .. arg1)
         end
-    end
-    if (event == "QUEST_AUTOCOMPLETE") then
-        if IsModifierKeyDown() then return end
-        if (APR.settings.profile.autoHandIn) then
-            APR_PopupFunc()
+        APR.BookingList["UpdateMapId"] = true
+        C_Timer.After(3, APR_UpdateMapId)
+        if (arg2 and arg2 > 0 and not APR.ActiveQuests[arg2]) then
+            APR.BookingList["AddQuest"] = arg2
         end
+
+        C_Timer.After(0.2, UpdateQuestAndStep)
+        C_Timer.After(3, UpdateQuestAndStep)
     end
+
     if (event == "QUEST_ACCEPT_CONFIRM") then -- escort quest
         if IsModifierKeyDown() then return end
         if (autoAccept or autoAcceptRoute) then
             C_Timer.After(0.2, APR_AcceptQuest)
         end
     end
+
+    if (event == "QUEST_AUTOCOMPLETE") then
+        if IsModifierKeyDown() then return end
+        if (APR.settings.profile.autoHandIn) then
+            APR_PopupFunc()
+        end
+    end
+
+    if (event == "QUEST_COMPLETE") then
+        if IsModifierKeyDown() then return end
+        -- Deny NPC
+        CheckDenyNPC(steps)
+
+        local function getItemEquipLoc(itemEquipLoc)
+            local weaponsAndShields = {
+                "INVTYPE_WEAPONOFFHAND",
+                "INVTYPE_WEAPONMAINHAND",
+                "INVTYPE_WEAPON",
+                "INVTYPE_SHIELD",
+                "INVTYPE_2HWEAPON",
+                "INVTYPE_HOLDABLE",
+                "INVTYPE_RANGED",
+                "INVTYPE_THROWN",
+                "INVTYPE_RANGEDRIGHT",
+                "INVTYPE_RELIC"
+            }
+            return Contains(weaponsAndShields, itemEquipLoc) and "INVTYPE_WEAPON" or itemEquipLoc
+        end
+
+        local function getPlayerGearIlvlList()
+            local gearIlvlList = {}
+            for playerSlot = 0, 18 do
+                local inventoryItemLink = GetInventoryItemLink("player", playerSlot)
+                if inventoryItemLink then
+                    local _, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc = C_Item.GetItemInfo(inventoryItemLink)
+                    if itemQuality == 7 then --Heirloom
+                        itemLevel = C_Item.GetDetailedItemLevelInfo(inventoryItemLink)
+                    end
+                    if itemEquipLoc and itemLevel then
+                        itemEquipLoc = getItemEquipLoc(itemEquipLoc)
+                        gearIlvlList[itemEquipLoc] = math.min(gearIlvlList[itemEquipLoc] or itemLevel, itemLevel)
+                    end
+                end
+            end
+            return gearIlvlList
+        end
+
+        local function getQuestRewardIlvlDifference(gearIlvlList)
+            local gearIlvlListDiff = {}
+            local isCosmetic = false
+            for i = 1, GetNumQuestChoices() do
+                local questItemLink = GetQuestItemLink("choice", i)
+                if questItemLink then
+                    local _, _, _, _, _, _, _, _, itemEquipLoc, _, _, classID, subclassID = C_Item.GetItemInfo(
+                        questItemLink)
+
+                    -- check if quest reward is classID 4 (armor) and subClassID 5 (cosmetic), then we dont want to pick anything
+                    if classID == 4 and subclassID == 5 then
+                        isCosmetic = true
+                    end
+                    local itemLevel = C_Item.GetDetailedItemLevelInfo(questItemLink)
+                    itemEquipLoc = getItemEquipLoc(itemEquipLoc)
+                    if gearIlvlList[itemEquipLoc] then
+                        gearIlvlListDiff[i] = itemLevel - gearIlvlList[itemEquipLoc]
+                    end
+                end
+            end
+            return gearIlvlListDiff, isCosmetic
+        end
+
+        local function chooseQuestReward()
+            local gearIlvlList = getPlayerGearIlvlList()
+            local gearIlvlListDiff, isCosmetic = getQuestRewardIlvlDifference(gearIlvlList)
+
+            local highestIlvlDiff = -99999
+            local choiceIndex = 0
+            for index, ilvlDiff in pairs(gearIlvlListDiff) do
+                if ilvlDiff > highestIlvlDiff then
+                    choiceIndex = index
+                    highestIlvlDiff = ilvlDiff
+                end
+            end
+
+            if choiceIndex > 0 and not isCosmetic then
+                GetQuestReward(choiceIndex)
+            end
+        end
+
+        if APR.settings.profile.autoHandIn then
+            if GetNumQuestChoices() > 1 then
+                if APR.settings.profile.autoHandInChoice then
+                    chooseQuestReward()
+                end
+            else
+                local npc_id = GetTargetID()
+                if not (npc_id and ((npc_id == 141584) or (npc_id == 142063) or (npc_id == 45400) or (npc_id == 25809) or (npc_id == 87391))) then
+                    GetQuestReward(1)
+                end
+            end
+        end
+    end
+
+    if (event == "QUEST_DETAIL") then -- Fired when the player is given a more detailed view of his quest.
+        if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
+        -- Deny NPC
+        CheckDenyNPC(steps)
+        local hasNoRouteMap = not APR.RouteQuestStepList[APR.ActiveRoute]
+        local function handleQuestDetail()
+            local questID = GetQuestID()
+            if questID then
+                if QuestGetAutoAccept() then
+                    C_Timer.After(0.2, APR_CloseQuest)
+                elseif (autoAcceptRoute and (IsARouteQuest(questID) or hasNoRouteMap)) or autoAccept then
+                    C_Timer.After(0.2, APR_AcceptQuest)
+                elseif IsPickupStep() then
+                    C_Timer.After(0.2, APR_CloseQuest)
+                    print("APR: " .. L["NOT_YET"])
+                else
+                    -- Retry
+                    C_Timer.After(0.2, handleQuestDetail)
+                end
+                return
+            end
+            C_Timer.After(0.2, handleQuestDetail)
+        end
+        handleQuestDetail()
+    end
+
     if (event == "QUEST_GREETING" or event == "GOSSIP_SHOW") then
         -- Exit function if you press Ctrl/shift/alt key before the
         if IsModifierKeyDown() then return end
@@ -1399,59 +1639,48 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             end
         end
     end
-    if (event == "ITEM_PUSH") then
-        APR.BookingList["UpdateStep"] = true
-        C_Timer.After(1, UpdateQuestAndStep)
+
+    if (event == "QUEST_LOG_UPDATE") then
+        C_Timer.After(0.2, APR_UpdQuestThing)
     end
-    if (event == "MERCHANT_SHOW") then
+
+    if (event == "QUEST_PROGRESS") then
         if IsModifierKeyDown() then return end
-        if (steps and steps.BuyMerchant) then
-            APR_BuyMerchFunc(steps.BuyMerchant)
-        end
-        if (APR.settings.profile.autoRepair) then
-            if (CanMerchantRepair()) then
-                local repairAllCost, canRepair = GetRepairAllCost();
-                if (canRepair and repairAllCost > 0) then
-                    local guildRepairedItems = false
-                    if (IsInGuild() and CanGuildBankRepair()) then
-                        local amount = GetGuildBankWithdrawMoney()
-                        local guildBankMoney = GetGuildBankMoney()
-                        amount = amount == -1 and guildBankMoney or min(amount, guildBankMoney)
-                        if (amount >= repairAllCost) then
-                            RepairAllItems(true);
-                            guildRepairedItems = true
-                            DEFAULT_CHAT_FRAME:AddMessage("APR: Equipment has been repaired by your Guild")
-                        end
-                    end
-                    if (repairAllCost <= GetMoney() and not guildRepairedItems) then
-                        RepairAllItems(false);
-                        print("APR: " ..
-                            L["REPAIR_EQUIPEMENT"] .. " " .. C_CurrencyInfo.GetCoinTextureString(repairAllCost))
-                    end
-                end
-            end
-        end
-        if (APR.settings.profile.autoVendor) then
-            local APRtotal = 0
-            for myBags = 0, 4 do
-                for bagSlots = 1, C_Container.GetContainerNumSlots(myBags) do
-                    local CurrentItemId = C_Container.GetContainerItemID(myBags, bagSlots)
-                    if CurrentItemId then
-                        local itemQuality = C_Item.GetItemQualityByID(CurrentItemId)
-                        local _, _, itemQuality, _, _, _, _, _, _, _, sellPrice = C_Item.GetItemInfo(CurrentItemId)
-                        local itemInfo = C_Container.GetContainerItemInfo(myBags, bagSlots)
-                        if itemQuality == 0 and sellPrice > 0 and itemInfo.stackCount > 0 then
-                            APRtotal = APRtotal + (sellPrice * itemInfo.stackCount)
-                            C_Container.UseContainerItem(myBags, bagSlots)
-                        end
-                    end
-                end
-            end
-            if APRtotal ~= 0 then
-                print("APR:" .. L["ITEM_SOLD"] .. " " .. C_CurrencyInfo.GetCoinTextureString(APRtotal))
-            end
+        -- Deny NPC
+        CheckDenyNPC(steps)
+        if (APR.settings.profile.autoHandIn) then
+            CompleteQuest()
         end
     end
+
+    if (event == "QUEST_REMOVED") then
+        if (APR.settings.profile.debug) then
+            print(L["Q_REMOVED"])
+        end
+        local arg1, arg2, arg3, arg4, arg5 = ...;
+        APR.BookingList["RemoveQuest"] = arg1
+        if (APR.ActiveRoute == arg1) then
+            APR.BookingList["UpdateMapId"] = true
+            APRData[APR.PlayerID][arg1] = nil
+            APR.map:RemoveMapLine()
+        end
+        APRData[APR.PlayerID].QuestCounter2 = APRData[APR.PlayerID].QuestCounter2 + 1
+    end
+
+    if (event == "REQUEST_CEMETERY_LIST_RESPONSE") then
+        APR.BookingList["UpdateMapId"] = true
+        APR.Arrow.currentStep = 0
+        APR.BookingList["SetQPTT"] = true
+    end
+
+    if (event == "TAXIMAP_OPENED") then
+        if IsModifierKeyDown() then return end
+        if (steps and steps.GetFP) then
+            _G.UpdateNextStep()
+            CloseTaxiMap() -- auto Close the taxi map after getting the FP
+        end
+    end
+
     if (event == "UI_INFO_MESSAGE") then
         local arg1, arg2, arg3, arg4, arg5 = ...;
         if Contains({ 280, 281, 282, 283 }, arg1) then
@@ -1460,13 +1689,33 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             end
         end
     end
-    if (event == "TAXIMAP_OPENED") then
-        if IsModifierKeyDown() then return end
-        if (steps and steps.GetFP) then
-            _G.UpdateNextStep()
-            CloseTaxiMap() -- auto Close the taxi map after getting the FP
+
+    if (event == "UNIT_AURA") then
+        if steps and steps.Button then
+            APR.currentStep:UpdateStepButtonCooldowns()
         end
     end
+
+    if (event == "UNIT_ENTERED_VEHICLE") then
+        local arg1, arg2, arg3, arg4, arg5 = ...;
+        if (arg1 == "player") then
+            if (steps and steps.InVehicle) then
+                APR.BookingList["UpdateStep"] = true
+            end
+        end
+        if (steps and steps.MountVehicle) then
+            _G.NextQuestStep()
+        end
+    end
+
+    if (event == "UNIT_QUEST_LOG_CHANGED") then
+        local arg1, arg2, arg3, arg4, arg5 = ...;
+        if (arg1 == "player" and Updateblock == 0) then
+            Updateblock = 1
+            C_Timer.After(1, APR_UpdQuestThing)
+        end
+    end
+
     if event == "UNIT_SPELLCAST_SUCCEEDED" then
         local arg1, arg2, arg3, arg4, arg5 = ...
 
@@ -1482,222 +1731,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             end
         end
     end
-    if (event == "HEARTHSTONE_BOUND") then
-        if (steps and steps.SetHS) then
-            _G.UpdateNextStep()
-        end
-    end
-    if (event == "QUEST_ACCEPTED") then
-        local arg1, arg2, arg3, arg4, arg5 = ...;
-        if APR.settings.profile.firstAutoShareQuestWithFriend and IsInGroup() then
-            APR.questionDialog:CreateQuestionPopup(L["SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME"], function()
-                APR.settings.profile.autoShareQuestWithFriend = true
-                if APR.party:CheckIfPartyMemberIsFriend() then
-                    C_QuestLog.SetSelectedQuest(arg1)
-                    QuestLogPushQuest();
-                end
-            end)
-            APR.settings.profile.firstAutoShareQuestWithFriend = false
-        end
-        if APR.settings.profile.autoShareQuestWithFriend then
-            if APR.party:CheckIfPartyMemberIsFriend() then
-                C_QuestLog.SetSelectedQuest(arg1)
-                QuestLogPushQuest();
-            end
-        end
-        if (APR.settings.profile.debug) then
-            print(L["Q_ACCEPTED"] .. ": " .. arg1)
-        end
-        APR.BookingList["UpdateMapId"] = true
-        C_Timer.After(3, APR_UpdateMapId)
-        if (arg2 and arg2 > 0 and not APR.ActiveQuests[arg2]) then
-            APR.BookingList["AddQuest"] = arg2
-        end
 
-        C_Timer.After(0.2, UpdateQuestAndStep)
-        C_Timer.After(3, UpdateQuestAndStep)
-    end
-    if (event == "QUEST_REMOVED") then
-        if (APR.settings.profile.debug) then
-            print(L["Q_REMOVED"])
-        end
-        local arg1, arg2, arg3, arg4, arg5 = ...;
-        APR.BookingList["RemoveQuest"] = arg1
-        if (APR.ActiveRoute == arg1) then
-            APR.BookingList["UpdateMapId"] = true
-            APRData[APR.PlayerID][arg1] = nil
-            APR.map:RemoveMapLine()
-        end
-        APRData[APR.PlayerID].QuestCounter2 = APRData[APR.PlayerID].QuestCounter2 + 1
-    end
-    if (event == "UNIT_QUEST_LOG_CHANGED") then
-        local arg1, arg2, arg3, arg4, arg5 = ...;
-        if (arg1 == "player" and Updateblock == 0) then
-            Updateblock = 1
-            C_Timer.After(1, APR_UpdQuestThing)
-        end
-    end
-    if (event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA") then
-        APR.Arrow.currentStep = 0
-        APR.BookingList["SetQPTT"] = true
-        APR.BookingList["UpdateMapId"] = true
-    end
-    if (event == "GOSSIP_CLOSED") then
-        APRGOSSIPCOUNT = 0
-    end
-    if (event == "QUEST_DETAIL") then -- Fired when the player is given a more detailed view of his quest.
-        if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
-        -- Deny NPC
-        CheckDenyNPC(steps)
-        local hasNoRouteMap = not APR.RouteQuestStepList[APR.ActiveRoute]
-        local function handleQuestDetail()
-            local questID = GetQuestID()
-            if questID then
-                if QuestGetAutoAccept() then
-                    C_Timer.After(0.2, APR_CloseQuest)
-                elseif (autoAcceptRoute and (IsARouteQuest(questID) or hasNoRouteMap)) or autoAccept then
-                    C_Timer.After(0.2, APR_AcceptQuest)
-                elseif IsPickupStep() then
-                    C_Timer.After(0.2, APR_CloseQuest)
-                    print("APR: " .. L["NOT_YET"])
-                else
-                    -- Retry
-                    C_Timer.After(0.2, handleQuestDetail)
-                end
-                return
-            end
-            C_Timer.After(0.2, handleQuestDetail)
-        end
-        handleQuestDetail()
-    end
-    if (event == "QUEST_PROGRESS") then
-        if IsModifierKeyDown() then return end
-        -- Deny NPC
-        CheckDenyNPC(steps)
-        if (APR.settings.profile.autoHandIn) then
-            CompleteQuest()
-        end
-    end
-    if (event == "QUEST_COMPLETE") then
-        if IsModifierKeyDown() then return end
-        -- Deny NPC
-        CheckDenyNPC(steps)
-
-        local function getItemEquipLoc(itemEquipLoc)
-            local weaponsAndShields = {
-                "INVTYPE_WEAPONOFFHAND",
-                "INVTYPE_WEAPONMAINHAND",
-                "INVTYPE_WEAPON",
-                "INVTYPE_SHIELD",
-                "INVTYPE_2HWEAPON",
-                "INVTYPE_HOLDABLE",
-                "INVTYPE_RANGED",
-                "INVTYPE_THROWN",
-                "INVTYPE_RANGEDRIGHT",
-                "INVTYPE_RELIC"
-            }
-            return Contains(weaponsAndShields, itemEquipLoc) and "INVTYPE_WEAPON" or itemEquipLoc
-        end
-
-        local function getPlayerGearIlvlList()
-            local gearIlvlList = {}
-            for playerSlot = 0, 18 do
-                local inventoryItemLink = GetInventoryItemLink("player", playerSlot)
-                if inventoryItemLink then
-                    local _, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc = C_Item.GetItemInfo(inventoryItemLink)
-                    if itemQuality == 7 then --Heirloom
-                        itemLevel = C_Item.GetDetailedItemLevelInfo(inventoryItemLink)
-                    end
-                    if itemEquipLoc and itemLevel then
-                        itemEquipLoc = getItemEquipLoc(itemEquipLoc)
-                        gearIlvlList[itemEquipLoc] = math.min(gearIlvlList[itemEquipLoc] or itemLevel, itemLevel)
-                    end
-                end
-            end
-            return gearIlvlList
-        end
-
-        local function getQuestRewardIlvlDifference(gearIlvlList)
-            local gearIlvlListDiff = {}
-            local isCosmetic = false
-            for i = 1, GetNumQuestChoices() do
-                local questItemLink = GetQuestItemLink("choice", i)
-                if questItemLink then
-                    local _, _, _, _, _, _, _, _, itemEquipLoc, _, _, classID, subclassID = C_Item.GetItemInfo(
-                        questItemLink)
-
-                    -- check if quest reward is classID 4 (armor) and subClassID 5 (cosmetic), then we dont want to pick anything
-                    if classID == 4 and subclassID == 5 then
-                        isCosmetic = true
-                    end
-                    local itemLevel = C_Item.GetDetailedItemLevelInfo(questItemLink)
-                    itemEquipLoc = getItemEquipLoc(itemEquipLoc)
-                    if gearIlvlList[itemEquipLoc] then
-                        gearIlvlListDiff[i] = itemLevel - gearIlvlList[itemEquipLoc]
-                    end
-                end
-            end
-            return gearIlvlListDiff, isCosmetic
-        end
-
-        local function chooseQuestReward()
-            local gearIlvlList = getPlayerGearIlvlList()
-            local gearIlvlListDiff, isCosmetic = getQuestRewardIlvlDifference(gearIlvlList)
-
-            local highestIlvlDiff = -99999
-            local choiceIndex = 0
-            for index, ilvlDiff in pairs(gearIlvlListDiff) do
-                if ilvlDiff > highestIlvlDiff then
-                    choiceIndex = index
-                    highestIlvlDiff = ilvlDiff
-                end
-            end
-
-            if choiceIndex > 0 and not isCosmetic then
-                GetQuestReward(choiceIndex)
-            end
-        end
-
-        if APR.settings.profile.autoHandIn then
-            if GetNumQuestChoices() > 1 then
-                if APR.settings.profile.autoHandInChoice then
-                    chooseQuestReward()
-                end
-            else
-                local npc_id = GetTargetID()
-                if not (npc_id and ((npc_id == 141584) or (npc_id == 142063) or (npc_id == 45400) or (npc_id == 25809) or (npc_id == 87391))) then
-                    GetQuestReward(1)
-                end
-            end
-        end
-    end
-
-    if (event == "CHAT_MSG_MONSTER_SAY") then
-        local text, arg2, arg3, arg4 = ...;
-        local npc_id, name = GetTargetID(), UnitName("target")
-        if npc_id and name then
-            if npc_id == 159477 then -- quest 57870
-                local gigglingBasket = {
-                    ["GIGGLING_BASKET_ONE_TIME"] = "cheer",
-                    ["GIGGLING_BASKET_SPRIGGANS"] = "flex",
-                    ["GIGGLING_BASKET_MANY"] = "thank",
-                    ["GIGGLING_BASKET_FAE"] = "introduce",
-                    ["GIGGLING_BASKET_FEET"] = "dance",
-                    ["GIGGLING_BASKET_HELP"] = "praise",
-                }
-                for key, emote in pairs(gigglingBasket) do
-                    local message = L[key]
-                    if string.find(text, message) then
-                        if APR.settings.profile.debug then
-                            print("APR: " .. L["DOING_EMOTE"] .. ": " .. emote)
-                        end
-                        DoEmote(emote)
-                        break
-                    end
-                end
-            end
-        end
-    end
     if (event == "UPDATE_MOUSEOVER_UNIT") then
         if (steps and steps.RaidIcon) then
             local guid = UnitGUID("mouseover")
@@ -1724,22 +1758,16 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
         DoEmoteStep(steps)
     end
-    if event == "PET_BATTLE_OPENING_START" or event == "PET_BATTLE_CLOSE" then
-        APR.currentStep:RefreshCurrentStepFrameAnchor()
-        APR.party:RefreshPartyFrameAnchor()
-        APR.questOrderList:RefreshFrameAnchor()
-        APR.heirloom:RefreshFrameAnchor()
-        APR.RouteSelection:RefreshFrameAnchor()
-        APR.Buff:RefreshFrameAnchor()
+
+    if (event == "UPDATE_UI_WIDGET") then
+        if (APR.ActiveQuests and APR.ActiveQuests["57713-4"]) then
+            APR.BookingList["UpdateStep"] = true
+        end
     end
-    if event == "GROUP_JOINED" then
-        APR.party:SendGroupMessage()
-    end
-    if event == "GROUP_LEFT" then
-        -- remove all the teammate then resend name + step to the group
-        -- because wow don't send the username of the leaver
-        APR.party:RemoveTeam()
-        APR.party:SendGroupMessage()
-        APR.party:RefreshPartyFrameAnchor()
+
+    if (event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA") then
+        APR.Arrow.currentStep = 0
+        APR.BookingList["SetQPTT"] = true
+        APR.BookingList["UpdateMapId"] = true
     end
 end)
