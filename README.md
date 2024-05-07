@@ -65,9 +65,6 @@
 <p><img src="https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/c410925a-a3c4-4d7d-8b92-765dbc828c56" alt="Credits" width="1400" height="100" /></p>
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;"><span style="font-size: 12px;"><em><span style="font-family: arial;"><strong>Note:</strong> Names are all based off of user Discord or GitHub aliasas.</span></em></span></p>
-<p style="text-align: center;"><span style="font-size: 16px;"><em><span style="font-family: arial;"><strong>Maintainers</strong></span></em></span></p>
-<p style="text-align: center;"><span style="font-size: 14px;"><em><span style="font-family: arial;"><strong><span style="text-decoration: underline;">Rycia</span> - </strong>Maintainer &amp; Project Manager</span></em></span></p>
-<p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;"><span style="font-size: 16px;"><em><span style="font-family: arial;"><strong>Core Developers</strong></span></em></span></p>
 <p style="text-align: center;"><span style="font-size: 12px;"><em><span style="font-family: arial;">Periodic &amp; consistant contributors to the addon's code.</span></em></span></p>
 <p style="text-align: center;"><span style="font-size: 14px;"><em><span style="font-family: arial;"><strong><span style="text-decoration: underline;">Neogeekmo / Neoldric</span> </strong>- Primary Core Developer &amp; Full-Stack Developer</span></em></span><span style="font-size: 14px;"><em><span style="font-family: arial;"><br /></span></em></span></p>
@@ -75,13 +72,11 @@
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;"><span style="font-size: 16px;"><em><span style="font-family: arial;"><strong>Developers</strong></span></em></span></p>
 <p style="text-align: center;"><span style="font-size: 12px;"><em><span style="font-family: arial;">Occasional contributors to the addon's code.</span></em></span></p>
-<p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><strong><u>Rycia</u></strong> - Developer</span><u></u></em></p>
 <p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><u><strong>8goldbow</strong></u>&nbsp;- Retired Core Developer</span></em></p>
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><span style="font-size: 16px;"><strong>Graphic &amp; UI Designers</strong></span><br /></span></em></p>
 <p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><strong><u>Rycia</u></strong> - Graphic Designer &amp; UI Designer</span></em></p>
 <p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><strong><u>Neogeekmo /&nbsp;Neoldric</u></strong> - UI Designer</span></em></p>
-<p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;"><span style="font-size: 14px;"><em><span style="font-family: arial;"><span style="font-size: 16px;"><strong>Route Designers</strong></span></span></em></span></p>
 <p style="text-align: center;"><span style="font-size: 14px;"><em><span style="font-family: arial;"><span style="text-decoration: underline;"><strong>Pahonix </strong></span>- General Route Designer</span></em></span></p>

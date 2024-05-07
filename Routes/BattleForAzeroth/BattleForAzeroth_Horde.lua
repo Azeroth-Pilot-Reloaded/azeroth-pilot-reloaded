@@ -1974,7 +1974,7 @@ if APR.Faction == "Horde" then
         { Done = { 48534 },                             Coord = { x = 3819.6, y = 876.4 } },
         { Waypoint = 51668,                             Range = 12.48,                    Coord = { x = 3786.1, y = 836.1 } },
         { PickUp = { 48846 },                           Coord = { x = 3744.1, y = 842.7 } },
-        { BuyMerchant = 160499,                         Qpart = { [48846] = { 1 } },      Range = 0.75,                      Coord = { x = 3767.9, y = 870.7 } },
+        { BuyMerchant = { itemID = 160499, count = 1 }, Qpart = { [48846] = { 1 } },      Range = 0.75,                      Coord = { x = 3767.9, y = 870.7 } },
         { Qpart = { [48846] = { 2 } },                  Gossip = 1,                       Range = 0.69,                      Coord = { x = 3744.1, y = 843.7 } },
         { Done = { 48846 },                             Coord = { x = 3733.6, y = 914.7 } },
         { PickUp = { 51602, 48790, 48850 },             Coord = { x = 3733.6, y = 914.7 } },
