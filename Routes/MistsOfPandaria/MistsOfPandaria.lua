@@ -526,7 +526,7 @@ APR.RouteQuestStepList["554-MoP Remix Intro"] = {
     },
     { Done = { 79434, 79437 },                     Coord = { y = -591.60003662109, x = -4699.5 }, Zone = 554 },
     { PickUp = { 79435 },                          Coord = { y = -591.60003662109, x = -4699.5 }, Zone = 554 },
-    { Coord = { y = -624.70001220703, x = -4693 }, Qpart = { [79435] = { 1 } },                   BuyMerchant = 215438, Zone = 554 },
+    { Coord = { y = -624.70001220703, x = -4693 }, Qpart = { [79435] = { 1 } },                   BuyMerchant = { itemID = 215438, count = 1 }, Zone = 554 },
     {
         GossipOptionIDs = { 120769 },
         Qpart = { [79435] = { 2 } },

@@ -704,7 +704,7 @@ if APR.Faction == "Horde" then
         { Done = { 29626 },            Coord = { y = 2548.5, x = -1453 },                     Zone = 371 },
         { PickUp = { 29627 },          Coord = { y = 2548.5, x = -1453 },                     Zone = 371 },
         {
-            BuyMerchant = 72954,
+            BuyMerchant = { itemID = 72954, count = 1 },
             Zone = 371,
             Fillers = { [29627] = { 1 } },
             Qpart = { [29627] = { 2 } },
@@ -714,7 +714,7 @@ if APR.Faction == "Horde" then
             Qpart = { [29627] = { 3 } },
             Zone = 371,
             Fillers = { [29627] = { 1 } },
-            BuyMerchant = 72979,
+            BuyMerchant = { itemID = 72979, count = 3 },
             Coord = { y = 2504.5, x = -1465 }
         },
         { Zone = 371,                                Qpart = { [29627] = { 1 } },                           Range = 60, Coord = { y = 2507.9001464844, x = -1451.3000488281 } },

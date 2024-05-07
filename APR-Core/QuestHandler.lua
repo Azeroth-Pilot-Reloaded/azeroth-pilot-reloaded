@@ -1046,15 +1046,15 @@ local function APR_LoopBookingFunc() -- Main loop
     end
 end
 
-local function APR_BuyMerchFunc(itemID)
-    if not itemID then return end
+local function APR_BuyMerchFunc(BuyMerchant)
+    if not BuyMerchant.itemID then return end
     if APR.settings.profile.debug then
-        print("APR_BuyMerchFunc:" .. itemID)
+        print("APR_BuyMerchFunc:" .. BuyMerchant.itemID)
     end
     for i = 1, GetMerchantNumItems() do
         local id = GetMerchantItemID(i)
-        if tonumber(id) == itemID then
-            BuyMerchantItem(i)
+        if tonumber(id) == BuyMerchant.itemID then
+            BuyMerchantItem(i, BuyMerchant.count or 1)
             CloseMerchant()
             break
         end
