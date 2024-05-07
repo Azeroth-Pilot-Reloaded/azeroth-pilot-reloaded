@@ -1047,19 +1047,26 @@ local function APR_LoopBookingFunc() -- Main loop
 end
 
 local function APR_BuyMerchFunc(BuyMerchant)
-    if not BuyMerchant.itemID then return end
+    if not BuyMerchant or #BuyMerchant == 0 then return end
     if APR.settings.profile.debug then
-        print("APR_BuyMerchFunc:" .. BuyMerchant.itemID)
+        for _, item in ipairs(BuyMerchant) do
+            print("APR_BuyMerchFunc: itemID=" .. item.itemID .. ", quantity=" .. (item.quantity or 1))
+        end
     end
     for i = 1, GetMerchantNumItems() do
         local id = GetMerchantItemID(i)
-        if tonumber(id) == BuyMerchant.itemID then
-            BuyMerchantItem(i, BuyMerchant.count or 1)
-            CloseMerchant()
-            break
+        for _, item in ipairs(BuyMerchant) do
+            if tonumber(id) == item.itemID then
+                BuyMerchantItem(i, item.quantity or 1)
+                if APR.settings.profile.debug then
+                    print("Purchase made: itemID=" .. item.itemID .. ", quantity=" .. (item.quantity or 1))
+                end
+            end
         end
     end
+    CloseMerchant()
 end
+
 
 local function APR_PopupFunc()
     if (GetNumAutoQuestPopUps() > 0) then
