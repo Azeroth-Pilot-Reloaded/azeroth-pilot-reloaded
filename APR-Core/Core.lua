@@ -75,6 +75,7 @@ function APR:OnInitialize()
     -- APR Saved Data
     APRData = APRData or {}
     APRData.NPCList = APRData.NPCList or {}
+    APRData.CustomRoute = APRData.CustomRoute or {}
     APRData[APR.PlayerID] = APRData[APR.PlayerID] or {}
     APRData[APR.PlayerID].FirstLoad = APRData[APR.PlayerID].FirstLoad == nil and true or
         APRData[APR.PlayerID].FirstLoad
@@ -126,6 +127,9 @@ function APR:OnInitialize()
     -- Register tot party frame
     C_ChatInfo.RegisterAddonMessagePrefix("APRPartyData")
     C_ChatInfo.RegisterAddonMessagePrefix("APRPartyDelete")
+
+    -- Load saved custom routes
+    APR:LoadCustomRoutes()
 end
 
 APR.CoreEventFrame = CreateFrame("Frame")
