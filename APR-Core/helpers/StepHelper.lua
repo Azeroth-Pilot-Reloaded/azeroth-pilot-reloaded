@@ -220,3 +220,10 @@ function GetTaxiNodeName(step)
     -- If no name found, return nil
     return nil
 end
+
+function APR:LoadCustomRoutes()
+    for name, steps in pairs(APRData.CustomRoute) do
+        APR.RouteQuestStepList[name] = steps
+        APR.RouteList.Custom[name] = name:match("%d+-(.*)")
+    end
+end
