@@ -454,6 +454,12 @@ function APR.questOrderList:AddStepFromRoute()
                 local questInfo = { { questID = GetTaxiNodeName(step) } }
                 local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
                 AddStepFrameWithQuest(stepIndex, questText, questInfo, color)
+            elseif step.LearnProfession then
+                local spellID = step.LearnProfession
+                local name, _, icon = GetSpellInfo(spellID)
+                local questInfo = { { questID = name } }
+                local color = GetSpellBookItemInfo(GetSpellInfo(spellID)) and "green" or "gray"
+                AddStepFrameWithQuest(stepIndex, L["LEARN_PROFESSION"], questInfo, color)
             elseif step.WarMode then
                 AddStepFrame(stepIndex, L["TURN_ON_WARMODE"], "gray")
             elseif step.Grind then

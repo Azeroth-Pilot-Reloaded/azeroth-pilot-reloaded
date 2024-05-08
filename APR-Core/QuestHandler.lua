@@ -358,6 +358,17 @@ local function APR_UpdateStep()
                 _G.NextQuestStep()
             end
         end
+        if steps.LearnProfession then
+            if (APR.settings.profile.debug) then
+                print("APR.UpdateStep:LearnProfession" .. APRData[APR.PlayerID][APR.ActiveRoute])
+            end
+            local spellID = steps.LearnProfession
+            if GetSpellBookItemInfo(GetSpellInfo(spellID)) then
+                _G.NextQuestStep()
+            end
+            local name, _, icon = GetSpellInfo(spellID)
+            APR.currentStep:AddExtraLineText("LEARN_PROFESSION", format(L["LEARN_PROFESSION_DETAILS"], name))
+        end
         if (steps.LeaveQuest) then
             APR_LeaveQuest(steps.LeaveQuest)
         end
@@ -1109,6 +1120,7 @@ APR_QH_EventFrame:RegisterEvent("GROUP_JOINED")
 APR_QH_EventFrame:RegisterEvent("GROUP_LEFT")
 APR_QH_EventFrame:RegisterEvent("HEARTHSTONE_BOUND")
 APR_QH_EventFrame:RegisterEvent("ITEM_PUSH")
+APR_QH_EventFrame:RegisterEvent("LEARNED_SPELL_IN_TAB")
 APR_QH_EventFrame:RegisterEvent("MERCHANT_SHOW")
 APR_QH_EventFrame:RegisterEvent("PET_BATTLE_CLOSE")
 APR_QH_EventFrame:RegisterEvent("PET_BATTLE_OPENING_START")
@@ -1241,6 +1253,16 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "ITEM_PUSH") then
         APR.BookingList["UpdateStep"] = true
         C_Timer.After(1, UpdateQuestAndStep)
+    end
+    if (event == "LEARNED_SPELL_IN_TAB") then
+        if steps and steps.LearnProfession then
+            local spellID, skillInfoIndex = ...
+            do
+                if spellID == steps.LearnProfession then
+                    UpdateNextStep()
+                end
+            end
+        end
     end
 
     if (event == "MERCHANT_SHOW") then
