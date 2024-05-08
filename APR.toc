@@ -22,6 +22,7 @@ APR-Core/locales/locales.xml
 APR-Core/Core.lua
 
 APR-Core/helpers/Utils.lua
+APR-Core/helpers/BuyMerchant.lua
 APR-Core/helpers/classes.lua
 APR-Core/helpers/PlayerPosition.lua
 APR-Core/helpers/SceneCutter.lua

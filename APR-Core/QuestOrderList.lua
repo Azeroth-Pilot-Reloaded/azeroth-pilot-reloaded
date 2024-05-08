@@ -316,18 +316,35 @@ function APR.questOrderList:AddStepFromRoute()
                 local questID = step.ExitTutorial
                 local color = (C_QuestLog.IsOnQuest(questID) or CurStep > stepIndex) and "green" or "gray"
                 AddStepFrame(stepIndex, L["SKIP_TUTORIAL"], color)
+            elseif step.BuyMerchant and not step.Qpart then
+                local buyMerchant = step.BuyMerchant
+                local questInfo = {}
+                local flagged = 0
+                for _, item in ipairs(buyMerchant) do
+                    if C_QuestLog.IsQuestFlaggedCompleted(item.questID) or CurStep > stepIndex then
+                        flagged = flagged + 1
+                    else
+                        local itemName, _, _, _, _, _, _, _, _, _ = C_Item.GetItemInfo(item.itemID)
+                        tinsert(questInfo, { questID = item.quantity, questName = itemName })
+                    end
+                end
+                if #buyMerchant == flagged then
+                    AddStepFrame(stepIndex, L["BUY"], "green")
+                else
+                    AddStepFrameWithQuest(stepIndex, L["BUY"], questInfo, "gray")
+                end
             elseif step.PickUp then
-                IdList = step.PickUp
+                local idList = step.PickUp
                 local questInfo = {}
                 local Flagged = 0
-                for _, questID in pairs(IdList) do
+                for _, questID in pairs(idList) do
                     if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] then
                         Flagged = Flagged + 1
                     else
                         tinsert(questInfo, { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
                     end
                 end
-                if #IdList == Flagged then
+                if #idList == Flagged then
                     AddStepFrame(stepIndex, L["PICK_UP_Q"], "green")
                 else
                     AddStepFrameWithQuest(stepIndex, L["PICK_UP_Q"], questInfo, "gray")
@@ -338,13 +355,13 @@ function APR.questOrderList:AddStepFromRoute()
                     "gray"
                 AddStepFrame(stepIndex, L["Q_DROP"], color)
             elseif step.Qpart then
-                IdList = step.Qpart
+                local idList = step.Qpart
                 local questInfo = {}
                 local flagged = 0
                 local total = 0
 
                 local isMaxLevel = UnitLevel("player") == APR.MaxLevel
-                for questID, objectives in pairs(IdList) do
+                for questID, objectives in pairs(idList) do
                     for _, objectiveIndex in pairs(objectives) do
                         total = total + 1
                         local questObjectiveId = questID .. '-' .. objectiveIndex
@@ -366,11 +383,11 @@ function APR.questOrderList:AddStepFromRoute()
                     AddStepFrameWithQuest(stepIndex, L["Q_PART"], questInfo, "gray")
                 end
             elseif step.QpartPart then
-                IdList = step.QpartPart
+                local idList = step.QpartPart
                 local questInfo = {}
                 local flagged = 0
                 local total = 0
-                for questID, objectives in pairs(IdList) do
+                for questID, objectives in pairs(idList) do
                     for _, objectiveIndex in pairs(objectives) do
                         total = total + 1
                         local questObjectiveId = questID .. '-' .. objectiveIndex
@@ -398,17 +415,17 @@ function APR.questOrderList:AddStepFromRoute()
                 local color = C_QuestLog.IsQuestFlaggedCompleted(questID) and "green" or "gray"
                 AddStepFrameWithQuest(stepIndex, L["GROUP_Q"], questInfo, color)
             elseif step.Done then
-                IdList = step.Done
+                local idList = step.Done
                 local questInfo = {}
                 local Flagged = 0
-                for _, questID in pairs(IdList) do
+                for _, questID in pairs(idList) do
                     if C_QuestLog.IsQuestFlaggedCompleted(questID) then
                         Flagged = Flagged + 1
                     else
                         tinsert(questInfo, { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
                     end
                 end
-                if #IdList == Flagged then
+                if #idList == Flagged then
                     AddStepFrame(stepIndex, L["TURN_IN_Q"], "green")
                 else
                     AddStepFrameWithQuest(stepIndex, L["TURN_IN_Q"], questInfo, "gray")

@@ -2317,7 +2317,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [25517] = { 1 } },
             Button = { ["25517-1"] = 54746 },
-            ExtraLineText = "BUY_BOTTLE_OF_GROG",
+            BuyMerchant = { { itemID = 54746, quantity = 1, questID = 25517 } },
             RaidIcon = 40832,
             Range = 0.69,
             Coord = { y = -6160, x = -3798.7 }
