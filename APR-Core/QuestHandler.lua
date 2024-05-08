@@ -341,6 +341,23 @@ local function APR_UpdateStep()
         else
             APR.Buff:RemoveAllBuffIcon()
         end
+        if steps.BuyMerchant then
+            if (APR.settings.profile.debug) then
+                print("APR.UpdateStep:BuyMerchant" .. APRData[APR.PlayerID][APR.ActiveRoute])
+            end
+            local flagged = 0
+
+            for _, item in ipairs(steps.BuyMerchant) do
+                if (C_QuestLog.IsQuestFlaggedCompleted(item.questID)) then
+                    flagged = flagged + 1
+                end
+                local itemName, _, _, _, _, _, _, _, _, _ = C_Item.GetItemInfo(item.itemID)
+                APR.currentStep:AddExtraLineText("BUY_ITEM_" .. itemName, format(L["BUY_ITEM"], item.quantity, itemName))
+            end
+            if flagged == #steps.BuyMerchant then
+                _G.NextQuestStep()
+            end
+        end
         if (steps.LeaveQuest) then
             APR_LeaveQuest(steps.LeaveQuest)
         end
@@ -1046,28 +1063,6 @@ local function APR_LoopBookingFunc() -- Main loop
     end
 end
 
-local function APR_BuyMerchFunc(BuyMerchant)
-    if not BuyMerchant or #BuyMerchant == 0 then return end
-    if APR.settings.profile.debug then
-        for _, item in ipairs(BuyMerchant) do
-            print("APR_BuyMerchFunc: itemID=" .. item.itemID .. ", quantity=" .. (item.quantity or 1))
-        end
-    end
-    for i = 1, GetMerchantNumItems() do
-        local id = GetMerchantItemID(i)
-        for _, item in ipairs(BuyMerchant) do
-            if tonumber(id) == item.itemID then
-                BuyMerchantItem(i, item.quantity or 1)
-                if APR.settings.profile.debug then
-                    print("Purchase made: itemID=" .. item.itemID .. ", quantity=" .. (item.quantity or 1))
-                end
-            end
-        end
-    end
-    CloseMerchant()
-end
-
-
 local function APR_PopupFunc()
     if (GetNumAutoQuestPopUps() > 0) then
         local questID, popUpType = GetAutoQuestPopUp(1)
@@ -1106,6 +1101,7 @@ APR.LoopBooking:SetScript("OnUpdate", APR_LoopBookingFunc)
 APR_QH_EventFrame = CreateFrame("Frame")
 APR_QH_EventFrame:RegisterEvent("ADVENTURE_MAP_OPEN")
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN")
+APR_QH_EventFrame:RegisterEvent("CHAT_MSG_LOOT")
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_MONSTER_SAY")
 APR_QH_EventFrame:RegisterEvent("GOSSIP_CLOSED")
 APR_QH_EventFrame:RegisterEvent("GOSSIP_SHOW")
@@ -1181,6 +1177,18 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
     end
 
+    if (event == "CHAT_MSG_LOOT") then
+        if steps and steps.BuyMerchant and not steps.Qpart then
+            local message = ...
+            local itemLink = string.match(message, "|Hitem:.-|h.-|h")
+            local quantity = APR:GetQuantityfromLootMessage(message)
+            if itemLink then
+                local itemID, _, _, _, _, _, _ = C_Item.GetItemInfoInstant(itemLink)
+                APR:UpdatePurchaseTracking(itemID, quantity)
+            end
+        end
+    end
+
     if (event == "CHAT_MSG_MONSTER_SAY") then
         local text, arg2, arg3, arg4 = ...;
         local npc_id, name = GetTargetID(), UnitName("target")
@@ -1238,7 +1246,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "MERCHANT_SHOW") then
         if IsModifierKeyDown() then return end
         if (steps and steps.BuyMerchant) then
-            APR_BuyMerchFunc(steps.BuyMerchant)
+            APR:StartPurchaseTracking(steps.BuyMerchant)
+            APR:BuyMerchFunc(steps.BuyMerchant)
         end
         if (APR.settings.profile.autoRepair) then
             if (CanMerchantRepair()) then

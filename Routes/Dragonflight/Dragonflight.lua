@@ -1096,8 +1096,8 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
     { PickUp = { 66681 },          Coord = { y = -1554.8, x = 683.9 } },
     { PickUp = { 66680 },          Coord = { y = -1554.8, x = 683.9 } },
     { SetHS = 66680,               Coord = { y = -1572.8, x = 660.6 }, ExtraLineText = "PINEWOOD_POST_HS", Gossip = 1 },
-    { Qpart = { [66680] = { 1 } }, Coord = { y = -1545.8, x = 712.6 }, Range = 2,                          ExtraLineText = "BUY_DICED_MEAT", Gossip = 1 },
-    { Qpart = { [66680] = { 2 } }, Coord = { y = -1584.7, x = 682.9 }, Range = 2,                          ExtraLineText = "CLICK_DOG",      Gossip = 1 },
+    { Qpart = { [66680] = { 1 } }, Coord = { y = -1545.8, x = 712.6 }, Range = 2,                          BuyMerchant = { { itemID = 193890, quantity = 1, questID = 66680 } }, Gossip = 1 },
+    { Qpart = { [66680] = { 2 } }, Coord = { y = -1584.7, x = 682.9 }, Range = 2,                          ExtraLineText = "CLICK_DOG",                                         Gossip = 1 },
     {
         DropQuest = 66689,
         DroppableQuest = { Text = "PINEHOOF_DOE", Qid = 66689, MobId = 191496 },
@@ -1648,7 +1648,7 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
         Qpart = { [66223] = { 1 } },
         Coord = { y = -4518.6, x = 3985.6 },
         Range = 2,
-        ExtraLineText = "BUY_7_FRIGIDFISH_FROM_JINKUTUK",
+        BuyMerchant = { { itemID = 192153, quantity = 7, questID = 66223 } },
         Gossip = 1,
         RaidIcon = 193637
     },
