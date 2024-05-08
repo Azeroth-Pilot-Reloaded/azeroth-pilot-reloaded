@@ -12,7 +12,7 @@ function APR.transport:GetMeToRightZone()
         print("Function: APR.transport:GetMeToRightZone()")
     end
 
-    local routeZoneMapIDs, mapID, routeName, expansion = self:GetRouteMapIDsAndName()
+    local routeZoneMapIDs, mapID, routeName, expansion = APR.transport:GetRouteMapIDsAndName()
     if (routeZoneMapIDs and mapID and routeName) then
         APR.ActiveRoute = routeName
     end
@@ -126,7 +126,7 @@ function APR.transport:GetRouteMapIDsAndName()
         for routeFileName, routeName in pairs(routeList) do
             if routeName == currentRouteName then
                 local mapID = string.match(routeFileName, "^(.-)-")
-                return APR.ZonesData.ExtensionRouteMaps[APR.Faction][expansion], tonumber(mapID, 10),
+                return APR.ZonesData.ExtensionRouteMaps[APR.Faction][expansion] or {}, tonumber(mapID, 10),
                     routeFileName, expansion
             end
         end
