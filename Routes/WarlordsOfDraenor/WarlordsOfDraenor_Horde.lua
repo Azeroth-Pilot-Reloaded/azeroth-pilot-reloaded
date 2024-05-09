@@ -418,8 +418,7 @@ if APR.Faction == "Horde" then
             NodeID = 1432,
             Coord = { y = 6599.2, x = 4344.8 }
         },
-        { PickUp = { 36567 },                 Coord = { y = 6597.5, x = 4338.8 } },
-        { PickUp = { 36567 },                 Coord = { y = 5527.1, x = 4750.3 } },
+        { PickUp = { 36567 },                 Coord = { y = 5565.4, x = 4517.3 } },
         { Qpart = { [36567] = { 1 } },        Range = 0.75,                      Coord = { y = 5511.5, x = 4749.3 } },
         { Coord = { y = 5478.7, x = 4779.1 }, Done = { 36567 } },
         { UseFlightPath = 33468,              Name = "Wor'gol, Frostfire Ridge", NodeID = 1386,                     Coord = { y = 5889.3, x = 4580.6 } },
