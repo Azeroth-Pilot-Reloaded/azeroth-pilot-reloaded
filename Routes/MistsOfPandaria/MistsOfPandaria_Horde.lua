@@ -1400,7 +1400,7 @@ if APR.Faction == "Horde" then
         { Coord = { x = 576.29998779297, y = -242.5 },           LearnProfession = 264640, RaidIcon = 64231, Zone = 376 },
         { Coord = { x = 576.29998779297, y = -242.5 },           LearnProfession = 264640, RaidIcon = 64231, Zone = 376 },
         {
-            BuyMerchant = { { count = 5, itemID = 74660, questID = 31281 } },
+            BuyMerchant = { { itemID = 74660, quantity = 5, questID = 31281 } },
             Coord = { x = 575.29998779297, y = -245.60000610352 },
             ExtraLineText = "LEARN_COOKING_PROFESSION_AND_ALL_AVAILABLE_RECIPES",
             ExtraLineText2 = "THEN_BUY_5_PEACHES_AND_CRAFT_5_SLICED_PEACHES",
@@ -1610,9 +1610,9 @@ if APR.Faction == "Horde" then
             Range = 5,
             Zone = 376
         },
-        { Coord = { x = 1174.5, y = -676.40002441406 },          GossipOptionIDs = { 39980 },                              Zone = 376 },
         {
             Coord = { x = 1160.4000244141, y = -722.60003662109 },
+            GossipOptionIDs = { 39980 },
             ExtraLineText = "TALK_TO_NPC_TO_START_QUEST",
             ExtraLineText2 = "KILL_SPIRITS_TO_MAKE_BOSS_APPEAR",
             Qpart = { [30078] = { 3 } },
@@ -1774,7 +1774,7 @@ if APR.Faction == "Horde" then
             ExtraLineText = "TAKE_FREE_FLIGHT",
             GossipOptionIDs = { 40960, 41006 },
             Range = 2,
-            Waypoint = 31393,
+            Waypoint = 29873,
             Zone = 376
         },
         {
@@ -1783,7 +1783,7 @@ if APR.Faction == "Horde" then
             ExtraLineText = "TAKE_FREE_FLIGHT",
             GossipOptionIDs = { 40960, 41006 },
             NodeID = 986,
-            UseFlightPath = 31393,
+            UseFlightPath = 29873,
             Zone = 376
         },
         { Coord = { x = -625.79998779297, y = -331.70001220703 }, Done = { 29873 }, Zone = 418 },
