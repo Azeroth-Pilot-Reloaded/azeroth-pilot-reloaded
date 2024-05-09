@@ -825,6 +825,7 @@ function APR.routeconfig:GetMoPRemixPrefab()
     elseif APR.Faction == horde then
         tinsert(APRCustomPath[APR.PlayerID], "The Jade Forest")
         tinsert(APRCustomPath[APR.PlayerID], "Valley of the four winds")
+        tinsert(APRCustomPath[APR.PlayerID], "Krasarang Wilds")
     end
     self:SendMessage("APR_Custom_Path_Update")
 end
