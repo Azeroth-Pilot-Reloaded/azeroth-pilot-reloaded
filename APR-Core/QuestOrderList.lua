@@ -325,7 +325,7 @@ function APR.questOrderList:AddStepFromRoute()
                         flagged = flagged + 1
                     else
                         local itemName, _, _, _, _, _, _, _, _, _ = C_Item.GetItemInfo(item.itemID)
-                        tinsert(questInfo, { questID = item.quantity, questName = itemName })
+                        tinsert(questInfo, { questID = item.quantity, questName = itemName or UNKNOWN })
                     end
                 end
                 if #buyMerchant == flagged then

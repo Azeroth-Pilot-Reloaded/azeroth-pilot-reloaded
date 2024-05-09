@@ -352,7 +352,9 @@ local function APR_UpdateStep()
                     flagged = flagged + 1
                 end
                 local itemName, _, _, _, _, _, _, _, _, _ = C_Item.GetItemInfo(item.itemID)
-                APR.currentStep:AddExtraLineText("BUY_ITEM_" .. itemName, format(L["BUY_ITEM"], item.quantity, itemName))
+                local name = itemName or UNKNOWN
+                APR.currentStep:AddExtraLineText("BUY_ITEM_" .. name,
+                    format(L["BUY_ITEM"], item.quantity, name))
             end
             if flagged == #steps.BuyMerchant then
                 _G.NextQuestStep()
