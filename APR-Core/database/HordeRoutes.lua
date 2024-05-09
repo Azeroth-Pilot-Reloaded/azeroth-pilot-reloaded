@@ -20,6 +20,7 @@ if (APR.Faction == "Horde") then
         ["85-MoP Intro"] = "MoP - Intro",
         ["371-The Jade Forest"] = "The Jade Forest",
         ["376-Valley of the four winds"] = "Valley of the four winds",
+        ["418-Krasarang Wilds"] = "Krasarang Wilds",
         ["379-Kun-Lai Summit"] = "WIP-Kun-Lai Summit",
     }
     APR.RouteList.WarlordsOfDraenor = {
