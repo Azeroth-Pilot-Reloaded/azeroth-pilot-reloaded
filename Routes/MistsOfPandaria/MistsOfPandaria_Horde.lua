@@ -2485,8 +2485,7 @@ if APR.Faction == "Horde" then
         {
             Coord = { x = 243.60000610352, y = 2543.8000488281 },
             ExtraLineText = "RIDE_YAK",
-            Fillers = { [30491] = { 1 } },
-            Qpart = { [30491] = { 1 } },
+            Qpart = { [30489] = { 1 } },
             Range = 60,
             Zone = 379
         },
@@ -2506,8 +2505,9 @@ if APR.Faction == "Horde" then
         },
         {
             Coord = { x = 474, y = 2559 },
-            ExtraLineText = "ONCE_ON_YAK_BRING_IT_BACK_TO_STABLE_AND_REPEAT_THAT_5_TIMES",
-            Qpart = { [30489] = { 1 }, [30587] = { 1 } },
+            ExtraLineText = "RIDE_YAK",
+            ExtraLineText2 = "ONCE_ON_YAK_BRING_IT_BACK_TO_STABLE_AND_REPEAT_THAT_5_TIMES",
+            Qpart = { [30491] = { 1 }, [30587] = { 1 } },
             Range = 60,
             Zone = 379
         },
