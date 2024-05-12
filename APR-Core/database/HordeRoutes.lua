@@ -22,6 +22,7 @@ if (APR.Faction == "Horde") then
         ["376-Valley of the four winds"] = "Valley of the four winds",
         ["418-Krasarang Wilds"] = "Krasarang Wilds",
         ["379-Kun-Lai Summit"] = "Kun-Lai Summit",
+        ["388-Townlong Steppes"] = "Townlong Steppes",
     }
     APR.RouteList.WarlordsOfDraenor = {
         ["85-DesMephisto-Orgrimmar-p1"] = "WOD01 - Orgrimmar",
