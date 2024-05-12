@@ -821,9 +821,8 @@ end
 
 function APR.routeconfig:GetMoPRemixPrefab()
     tinsert(APRCustomPath[APR.PlayerID], "MoP Remix - Intro")
-    if APR.Faction == alliance then
-    elseif APR.Faction == horde then
-        tinsert(APRCustomPath[APR.PlayerID], "The Jade Forest")
+    tinsert(APRCustomPath[APR.PlayerID], "The Jade Forest")
+if APR.Faction == horde then
         tinsert(APRCustomPath[APR.PlayerID], "Valley of the four winds")
         tinsert(APRCustomPath[APR.PlayerID], "Krasarang Wilds")
         tinsert(APRCustomPath[APR.PlayerID], "Kun-Lai Summit")

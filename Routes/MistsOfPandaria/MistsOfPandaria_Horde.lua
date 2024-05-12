@@ -968,8 +968,7 @@ if APR.Faction == "Horde" then
         { Waypoint = 30499,                          Zone = 371,                  Range = 5,                                            Coord = { y = 994.5, x = -2366.8000488281 } },
         { Waypoint = 30499,                          Zone = 371,                  Range = 5,                                            Coord = { y = 1022.200012207, x = -2272.1999511719 } },
         { Waypoint = 30499,                          Zone = 371,                  Range = 5,                                            Coord = { y = 963.5, x = -2252.9001464844 } },
-        { GossipOptionIDs = { 28345 },               GetFP = 968,                 Zone = 371,                                           Coord = { y = 777.20001220703, x = -2358.9001464844 } },
-        { UseFlightPath = 30499,                     ETA = 84,                    Zone = 371,                                           NodeID = 894,                                         Coord = { y = 777.20001220703, x = -2358.9001464844 } },
+        { GossipOptionIDs = { 28345 },               UseFlightPath = 30499,       ETA = 84,                                             Zone = 371,                                          NodeID = 894, Coord = { y = 777.20001220703, x = -2358.9001464844 } },
         { Done = { 30499 },                          Zone = 371,                  Coord = { y = 1455.4000244141, x = -504.70001220703 } },
         { PickUp = { 30484, 30466 },                 Zone = 371,                  Coord = { y = 1455.4000244141, x = -504.70001220703 } },
         { Coord = { y = 1448.0999755859, x = -513 }, Qpart = { [30466] = { 2 } }, Range = 2,                                            Zone = 371 },
@@ -1026,6 +1025,7 @@ if APR.Faction == "Horde" then
             Coord = { y = 536.29998779297, x = -1656.4000244141 }
         },
         { Done = { 30485 },                 Coord = { y = 529.40002441406, x = -1674.0999755859 }, Zone = 371 },
+
         { PickUp = { 31303 },               Coord = { y = 529.40002441406, x = -1674.0999755859 }, Zone = 371 },
         { GetFP = 1080,                     Coord = { y = 473.39999389648, x = -1569.2000732422 }, Zone = 371 },
         { GossipOptionIDs = { 38770 },      Qpart = { [31303] = { 1 } },                           Coord = { y = 532, x = -1674.3000488281 },            Zone = 371 },
@@ -1068,7 +1068,7 @@ if APR.Faction == "Horde" then
             Coord = { y = 902.29998779297, x = -1901.2000732422 }
         },
         {
-            Qpart = { [30502] = { 1 } },
+            Qpart = { [30502] = { 1 }, [30500] = { 1 } },
             Zone = 371,
             Button = { ["30502-1"] = 80074 },
             ExtraLineText = "PICK_UP_THE_JADE_CHUNKS_AND_USE_THEM_TO_WEAKEN_THE_ELITES",
@@ -3797,6 +3797,7 @@ if APR.Faction == "Horde" then
             Zone = 422
         },
         {
+            ExtraLineText = "USE_WHISTLE_TO_SPAWN_NPC",
             Button = { ["31185-2"] = 85955 },
             Coord = { x = 3719.4001464844, y = -1395.3000488281 },
             Fillers = { [31186] = { 1 }, [31188] = { 1 } },
@@ -3811,6 +3812,7 @@ if APR.Faction == "Horde" then
             Zone = 422
         },
         {
+            ExtraLineText = "USE_WHISTLE_TO_SPAWN_NPC",
             Button = { ["31185-1"] = 85955 },
             Coord = { x = 3667.3000488281, y = -1243.5 },
             Fillers = { [31186] = { 1 }, [31188] = { 1 } },
@@ -3819,6 +3821,7 @@ if APR.Faction == "Horde" then
             Zone = 422
         },
         {
+            ExtraLineText = "USE_WHISTLE_TO_SPAWN_NPC",
             Button = { ["31185-3"] = 85955 },
             Coord = { x = 3991.1999511719, y = -1407.2000732422 },
             Fillers = { [31186] = { 1 }, [31188] = { 1 } },
