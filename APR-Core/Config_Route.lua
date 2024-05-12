@@ -827,6 +827,7 @@ function APR.routeconfig:GetMoPRemixPrefab()
         tinsert(APRCustomPath[APR.PlayerID], "Valley of the four winds")
         tinsert(APRCustomPath[APR.PlayerID], "Krasarang Wilds")
         tinsert(APRCustomPath[APR.PlayerID], "Kun-Lai Summit")
+        tinsert(APRCustomPath[APR.PlayerID], "Townlong Steppes")
     end
     self:SendMessage("APR_Custom_Path_Update")
 end
