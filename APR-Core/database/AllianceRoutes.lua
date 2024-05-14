@@ -44,6 +44,12 @@ if (APR.Faction == "Alliance") then
         ["554-MoP Remix Intro"] = "MoP Remix - Intro",
         ["84-MoP Intro"] = "MoP - Intro",
         ["371-The Jade Forest"] = "The Jade Forest",
+        ["376-Valley of the four winds"] = "Valley of the four winds",
+        ["418-Krasarang Wilds"] = "Krasarang Wilds",
+        ["379-Kun-Lai Summit"] = "Kun-Lai Summit",
+        ["388-Townlong Steppes"] = "Townlong Steppes",
+        ["390-Dread Wastes"]  = "Dread Wastes",
+        ["390-Isle of Thunder"] = "Isle of Thunder",
     }
     APR.RouteList.WarlordsOfDraenor = {
         ["84-DesMephisto-Stormwind-War"] = "WOD01 - Stormwind",
