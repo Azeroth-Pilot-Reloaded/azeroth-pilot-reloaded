@@ -63,7 +63,27 @@ function APR.changelog:OnInit()
     self:SetChangeLog()
     ChangeLogFrame:Hide()
 
+
     if APR.version ~= APR.settings.profile.lastRecordedVersion then
+        if APR.version == "v3.2.0" then
+            APR.questionDialog:CreateQuestionPopup(
+                "APR - New release v3.2.0 detected! Force Reset your addon!",
+                function()
+                    APRData[APR.PlayerID] = {}
+                    APRZoneCompleted[APR.PlayerID] = {}
+                    APRCustomPath[APR.PlayerID] = {}
+                    C_UI.Reload()
+                end,
+                function()
+                    APRData[APR.PlayerID] = {}
+                    APRZoneCompleted[APR.PlayerID] = {}
+                    APRCustomPath[APR.PlayerID] = {}
+                    C_UI.Reload()
+                end,
+                ACCEPT,
+                ACCEPT,
+                false)
+        end
         if APR.settings.profile.showChangeLog then
             self:ShowChangeLog()
         end
@@ -78,6 +98,40 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.2.0",  "2024-05-14" },
+        "#Features",
+        "- Updated the position of the minimap buttons",
+        "- Added auto-retry for auto-accept on PickUp steps",
+        "- Added auto-accept for quests on Adventure Maps",
+        "- Reworked BuyMerchant steps to add multiple purchases and quantities",
+        "- Added a new step option, LearnProfession",
+        "- Creation of a route recording addon for APR (Azeroth Auto Pilot - Route Recorder)",
+
+        "#Bugs",
+        "- Fixed 'Don't Skip Video' step option",
+        "- Fixed a bug where there was no taxi name for UseFlightPath steps",
+        "- Fixed a bug blocking the detection of hearthstone usage",
+        "- Fixed a bug blocking the use of quest buttons since version 102.6",
+        "- Fixed loading custom routes created with APR - Route Recorder",
+
+        "#Routes",
+        "- New Horde Pandaren Starting zone",
+        "- New starting routes for allied races",
+        "- Added part 2 of the Tauren starting zone",
+        "- Added part 2 of the Blood Elf starting zone",
+        "- Added MoP Remix intro route",
+        "- Added prefab button for MoP Remix in route selection",
+        "- Added routes for all MoP zones for the Horde",
+        "- Added MoP intro and Jade Forest routes for the Alliance",
+        "- Added waypoints in the BFA intro scenario route",
+        "- Fixed the end of the Exile's Reach route for the Alliance",
+        "- Added a missing button for quest 31767",
+        "- Fixed coordinates and quest duplication for the Frostfire Ridge route for the Horde",
+
+        "#WoW",
+        "- Merged all route addons into one",
+        "- Updated version for 10.2.7",
+
         { "v3.1.14", "2024-04-17" },
         "#Features",
         "- Add Status Frame (Shows the current state of the addon)",
@@ -116,7 +170,7 @@ function APR.changelog:SetChangeLog()
         "#WoW",
         "- Update interface addon version to 10.2.6",
 
-        { "v3.1.9",  "2024-03-06" },
+        { "v3.1.9", "2024-03-06" },
         "#Bugs",
         "- Fix DF starting zone with zone step",
         "- Add coord for all the step of DF alliance starting zone",
@@ -146,7 +200,7 @@ function APR.changelog:SetChangeLog()
         "- Fix auto handin quest with multiple rewards",
         "- Fix locales error for Giggling Basket quest emote",
 
-        "#Route",
+        "#Routes",
         "- Fix all SL route (Gossip, zones, missing steps, waypoint, flight, ...)",
         "- Add InstanceQuest step option for storyline intance",
         "- Add Buff step option (with buff frame feature)",
@@ -171,7 +225,7 @@ function APR.changelog:SetChangeLog()
         "- Fix false green waypoint step on Quest order list",
         "- Fix Chromie timeline message for +60lvl character",
 
-        "#Route",
+        "#Routes",
         "- Prettier route file to line (it's more compact)",
         "- Change Qpart and Filler syntax",
         "- Remove useless syntax from route (ButtonSpellId, ButtonCooldown,...)",
@@ -260,7 +314,7 @@ function APR.changelog:SetChangeLog()
         "- Fix no quest/item button on the current step",
         "- Fix starting zone for Goblin, Night Elf, Gnome, Human, Dreanei, Troll, Orc, Blood Elf, Undead",
 
-        "#Route",
+        "#Routes",
         "- New Grind step option (to ask to grind to lvl XX)",
         "- New Gender step option (for the goblin route for now)",
         "- Change CRange step to Waypoint",
