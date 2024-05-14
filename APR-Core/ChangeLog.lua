@@ -105,7 +105,7 @@ function APR.changelog:SetChangeLog()
         "- Added auto-accept for quests on Adventure Maps",
         "- Reworked BuyMerchant steps to add multiple purchases and quantities",
         "- Added a new step option, LearnProfession",
-        "- Creation of a route recording addon for APR (Azeroth Auto Pilot - Route Recorder)",
+        "- Creation of a route recording addon for APR (Azeroth Pilot Reloaded - Route Recorder)",
 
         "#Bugs",
         "- Fixed 'Don't Skip Video' step option",
