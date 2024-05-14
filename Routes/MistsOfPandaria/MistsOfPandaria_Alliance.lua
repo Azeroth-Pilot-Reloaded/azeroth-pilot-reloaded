@@ -1149,8 +1149,6 @@ if APR.Faction == "Alliance" then
 
     }
 
-    APR.RouteQuestStepList["388-Townlong Steppes"] = {}
-
     APR.RouteQuestStepList["390-Dread Wastes"] = {}
 
     APR.RouteQuestStepList["390-Isle of Thunder"] = {
