@@ -335,15 +335,38 @@ function APR.questOrderList:AddStepFromRoute()
                 end
             elseif step.PickUp then
                 local idList = step.PickUp
+                local dbList = step.PickUpDB or {}
                 local questInfo = {}
                 local Flagged = 0
-                for _, questID in pairs(idList) do
+
+                local function isQuestCompleted(questID)
                     if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] then
+                        return true
+                    end
+                    return false
+                end
+
+                for _, questID in pairs(idList) do
+                    local questCompleted = false
+
+                    if isQuestCompleted(questID) then
+                        questCompleted = true
+                    else
+                        for _, dbQuestID in pairs(dbList) do
+                            if isQuestCompleted(dbQuestID) then
+                                questCompleted = true
+                                break
+                            end
+                        end
+                    end
+
+                    if questCompleted then
                         Flagged = Flagged + 1
                     else
                         tinsert(questInfo, { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
                     end
                 end
+
                 if #idList == Flagged then
                     AddStepFrame(stepIndex, L["PICK_UP_Q"], "green")
                 else
@@ -356,27 +379,57 @@ function APR.questOrderList:AddStepFromRoute()
                 AddStepFrame(stepIndex, L["Q_DROP"], color)
             elseif step.Qpart then
                 local idList = step.Qpart
+                local dbList = step.QpartDB or {}
                 local questInfo = {}
                 local flagged = 0
                 local total = 0
 
                 local isMaxLevel = UnitLevel("player") == APR.MaxLevel
+
+                local function isObjectiveCompleted(questID, objectiveIndex)
+                    if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                        return true
+                    end
+                    local questObjectiveId = questID .. '-' .. objectiveIndex
+                    -- //TODO Remove or add APR_BonusObj from quest handler
+                    if (isMaxLevel and APR_BonusObj and Contains(APR_BonusObj, APR_index)) or APRData[APR.PlayerID].BonusSkips[questID] then
+                        return true
+                    end
+                    if APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C" then
+                        return true
+                    end
+                    return false
+                end
+
                 for questID, objectives in pairs(idList) do
                     for _, objectiveIndex in pairs(objectives) do
                         total = total + 1
-                        local questObjectiveId = questID .. '-' .. objectiveIndex
-                        -- //TODO Remove or add APR_BonusObj from quest handler
-                        local questFlagged = C_QuestLog.IsQuestFlaggedCompleted(questID) or
-                            (isMaxLevel and APR_BonusObj and Contains(APR_BonusObj, APR_index)) or
-                            APRData[APR.PlayerID].BonusSkips[questID]
-                        if questFlagged or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
+                        local questCompleted = false
+
+                        if isObjectiveCompleted(questID, objectiveIndex) then
+                            questCompleted = true
+                        else
+                            for _, dbQuestID in pairs(dbList) do
+                                if dbQuestID == questID or isObjectiveCompleted(dbQuestID, objectiveIndex) then
+                                    questCompleted = true
+                                    break
+                                end
+                            end
+                        end
+
+                        if questCompleted then
                             flagged = flagged + 1
-                        elseif not APR.ActiveQuests[qid] or not APR.ActiveQuests[questID] then
+                        else
                             tinsert(questInfo,
-                                { questID = questObjectiveId, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                                {
+                                    questID = questID .. '-' .. objectiveIndex,
+                                    questName = C_QuestLog.GetTitleForQuestID(
+                                        questID)
+                                })
                         end
                     end
                 end
+
                 if total == flagged then
                     AddStepFrame(stepIndex, L["Q_PART"], "green")
                 else
@@ -416,15 +469,38 @@ function APR.questOrderList:AddStepFromRoute()
                 AddStepFrameWithQuest(stepIndex, L["GROUP_Q"], questInfo, color)
             elseif step.Done then
                 local idList = step.Done
+                local dbList = step.DoneDB or {}
                 local questInfo = {}
                 local Flagged = 0
-                for _, questID in pairs(idList) do
+
+                local function isQuestCompleted(questID)
                     if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                        return true
+                    end
+                    return false
+                end
+
+                for _, questID in pairs(idList) do
+                    local questCompleted = false
+
+                    if isQuestCompleted(questID) then
+                        questCompleted = true
+                    else
+                        for _, dbQuestID in pairs(dbList) do
+                            if isQuestCompleted(dbQuestID) then
+                                questCompleted = true
+                                break
+                            end
+                        end
+                    end
+
+                    if questCompleted then
                         Flagged = Flagged + 1
                     else
                         tinsert(questInfo, { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
                     end
                 end
+
                 if #idList == Flagged then
                     AddStepFrame(stepIndex, L["TURN_IN_Q"], "green")
                 else
