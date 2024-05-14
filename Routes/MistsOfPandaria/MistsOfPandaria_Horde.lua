@@ -4118,4 +4118,78 @@ if APR.Faction == "Horde" then
         { Coord = { x = 892.5, y = 1698.7000732422 },           SetHS = 1,                   Zone = 391 },
         { ZoneDoneSave = 1 }
     }
+
+    APR.RouteQuestStepList["390-Isle of Thunder"]          = {
+        { Coord = { x = 887.29998779297, y = 1473.4000244141 }, PickUp = { 32678 },          Zone = 390 },
+        { Coord = { x = 888.60003662109, y = 1580.3000488281 }, ETA = 147,                   NodeID = 1055,               UseFlightPath = 32678, Zone = 390 },
+        { Coord = { x = 4161.8999023438, y = 1748.4000244141 }, Done = { 32678 },            Zone = 388 },
+        { Coord = { x = 4161.8999023438, y = 1748.4000244141 }, PickUp = { 32680 },          Zone = 388 },
+        { Coord = { x = 4161.8999023438, y = 1748.4000244141 }, GossipOptionIDs = { 41771 }, Qpart = { [32680] = { 1 } }, Zone = 388 },
+        { Coord = { x = 6481.2001953125, y = 6704.2001953125 }, Done = { 32680 },            ETA = 96,                    Zone = 504 },
+        { Coord = { x = 6473, y = 6708.5 },                     PickUp = { 32212, 32709 },   Zone = 504 },
+        {
+            Coord = { x = 6473, y = 6708.5 },
+            GossipOptionIDs = { 41876 },
+            Qpart = { [32212] = { 1 } },
+            RaidIcon = 70371,
+            Range = 2,
+            Zone = 504
+        },
+        { Coord = { x = 6300.5, y = 7176.8002929688 }, InstanceQuest = true,        Qpart = { [32212] = { 2 } }, Range = 5, Zone = 516 },
+        { Coord = { x = 6309.7001953125, y = 7167.5 }, Done = { 32212 },            Zone = 504 },
+        { Coord = { x = 6309.7001953125, y = 7167.5 }, PickUp = { 32276 },          Zone = 504 },
+        { Coord = { x = 6309.7001953125, y = 7167.5 }, GossipOptionIDs = { 41877 }, Qpart = { [32276] = { 1 } }, Zone = 504 },
+        {
+            Coord = { x = 5390.8999023438, y = 6884.3002929688 },
+            InstanceQuest = true,
+            Qpart = { [32276] = { 2 } },
+            Range = 5,
+            Zone = 516
+        },
+        { Coord = { x = 6309.6000976562, y = 7167.2001953125 }, Done = { 32276 },            ExtraLineText = "USE_GATE",  Zone = 504 },
+        { Coord = { x = 6309.6000976562, y = 7167.2001953125 }, PickUp = { 32277 },          Zone = 504 },
+        { Coord = { x = 6309.6000976562, y = 7167.2001953125 }, GossipOptionIDs = { 41879 }, Qpart = { [32277] = { 1 } }, Zone = 504 },
+        { Coord = { x = 5631, y = 7311.6000976562 },            InstanceQuest = true,        Qpart = { [32277] = { 2 } }, Range = 5, Zone = 517 },
+        { Coord = { x = 6293.2001953125, y = 7250.1000976562 }, Done = { 32277 },            ExtraLineText = "USE_GATE",  Zone = 504 },
+        { Coord = { x = 6294.2001953125, y = 7247.1000976562 }, PickUp = { 32278 },          RaidIcon = 70297,            Zone = 504 },
+        { Coord = { x = 6294.2001953125, y = 7247.1000976562 }, GossipOptionIDs = { 41662 }, Qpart = { [32278] = { 1 } }, Zone = 516 },
+        { Coord = { x = 6309.6000976562, y = 7167.1000976562 }, Done = { 32278 },            ExtraLineText = "USE_GATE",  Zone = 504 },
+        { Coord = { x = 6309.6000976562, y = 7167.1000976562 }, PickUp = { 32279 },          Zone = 504 },
+        {
+            Coord = { x = 6309.6000976562, y = 7167.1000976562 },
+            GossipOptionIDs = { 41878 },
+            Qpart = { [32279] = { 1 } },
+            RaidIcon = 67990,
+            Zone = 504
+        },
+        { Coord = { x = 5183.8999023438, y = 7097 },            InstanceQuest = true, Qpart = { [32279] = { 2 } }, Range = 5, Zone = 516 },
+        { Coord = { x = 6309.7001953125, y = 7166.8999023438 }, Done = { 32279 },     ExtraLineText = "USE_GATE",  Zone = 504 },
+        { Coord = { x = 6044.7001953125, y = 6945.3002929688 }, Range = 5,            Waypoint = 32709,            Zone = 504 },
+        { Coord = { x = 5547, y = 6848.3999023438 },            Range = 5,            Waypoint = 32709,            Zone = 504 },
+        { Coord = { x = 5527.6000976562, y = 6877.5 },          Done = { 32709 },     Zone = 504 },
+        { Coord = { x = 5527.6000976562, y = 6877.5 },          PickUp = { 32707 },   Zone = 504 },
+        {
+            Coord = { x = 5659.3002929688, y = 6427.5 },
+            ExtraLineText = "LOOK_FOR_RARES_AND_TREASURE_CHESTS_ON_ISLAND",
+            Qpart = { [32707] = { 1 } },
+            Range = 600,
+            Zone = 504
+        },
+        { Coord = { x = 5527.6000976562, y = 6877.5 },          Done = { 32707 },               Zone = 504 },
+        { Coord = { x = 5527.6000976562, y = 6877.5 },          PickUp = { 32708 },             Zone = 504 },
+        { Coord = { x = 5397.1000976562, y = 6048.7001953125 }, Range = 5,                      Waypoint = 32708, Zone = 504 },
+        { Coord = { x = 5372.7001953125, y = 5730.5 },          Qpart = { [32708] = { 1, 2 } }, Range = 1,        Zone = 504 },
+        { Coord = { x = 5384.1000976562, y = 5723.5 },          Qpart = { [32708] = { 2 } },    Range = 5,        Zone = 504 },
+        { Coord = { x = 5527.6000976562, y = 6877.5 },          Done = { 32708 },               Zone = 504 },
+        { Coord = { x = 5527.6000976562, y = 6877.5 },          PickUp = { 32641 },             Zone = 504 },
+        {
+            Coord = { x = 5659.3002929688, y = 6427.5 },
+            ExtraLineText = "YOU_NEED_3_SHANZE_RITUAL_STONE_FOR_EACH_OBJECTIVE",
+            Qpart = { [32641] = { 1, 2, 3 } },
+            Range = 600,
+            Zone = 504
+        },
+        { Coord = { x = 5527.6000976562, y = 6877.5 }, Done = { 32641 }, Zone = 504 },
+        { ZoneDoneSave = 1 }
+    }
 end

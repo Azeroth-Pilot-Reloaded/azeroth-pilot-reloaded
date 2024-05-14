@@ -24,6 +24,7 @@ if (APR.Faction == "Horde") then
         ["379-Kun-Lai Summit"] = "Kun-Lai Summit",
         ["388-Townlong Steppes"] = "Townlong Steppes",
         ["390-Dread Wastes"]  = "Dread Wastes",
+        ["390-Isle of Thunder"] = "Isle of Thunder",
     }
     APR.RouteList.WarlordsOfDraenor = {
         ["85-DesMephisto-Orgrimmar-p1"] = "WOD01 - Orgrimmar",
