@@ -1149,8 +1149,6 @@ if APR.Faction == "Alliance" then
 
     }
 
-    APR.RouteQuestStepList["390-Dread Wastes"] = {}
-
     APR.RouteQuestStepList["390-Isle of Thunder"] = {
         { Coord = { x = 353.70001220703, y = 957.79998779297 }, PickUp = { 32679 }, Zone = 390 },
         {
