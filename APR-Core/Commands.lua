@@ -14,6 +14,9 @@ function APR.command:SlashCmd(input)
         print("APR: " .. L["RESET_ZONE"])
         APRData[APR.PlayerID][APR.ActiveRoute] = 1
         C_UI.Reload()
+    elseif inputText == "resetcustom" then
+        APRData.CustomRoute = {}
+        C_UI.Reload()
     elseif (inputText == "forcereset" or inputText == "fr") then
         APRData[APR.PlayerID] = {}
         APRZoneCompleted[APR.PlayerID] = {}
@@ -55,6 +58,7 @@ function APR.command:SlashCmd(input)
         print("|cffeda55f/apr help, h |r- " .. L["HELP_COMMAND"])
         print("|cffeda55f/apr qol |r- " .. L["QOL_COMMAND"])
         print("|cffeda55f/apr reset, r |r- " .. L["RESET_COMMAND"])
+        print("|cffeda55f/apr resetcustom |r- " .. L["RESET_CUSTOM_COMMAND"])
         print("|cffeda55f/apr rollback, rb |r- " .. L["ROLLBACK_COMMAND"])
         print("|cffeda55f/apr route |r- " .. L["ROUTE_COMMAND"])
         print("|cffeda55f/apr scribe, writer |r- ;)")
