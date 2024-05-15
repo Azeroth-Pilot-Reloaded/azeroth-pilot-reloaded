@@ -1237,9 +1237,9 @@ if APR.Faction == "Horde" then
             Range = 5,
             Zone = 418
         },
-        { Done = { 30129 },                 NoArrow = 1,                                     Zone = 418 },
-        { NoArrow = 1,                      PickUp = { 30128 },                              Zone = 418 },
-        { Coord = { x = 344, y = -1252.5 }, Qpart = { [30127] = { 3, 2 }, [30130] = { 1 } }, Range = 100, Zone = 418 },
+        { Done = { 30129 },                 NoArrow = 1,                                        Zone = 418 },
+        { NoArrow = 1,                      PickUp = { 30128 },                                 Zone = 418 },
+        { Coord = { x = 344, y = -1252.5 }, Qpart = { [30127] = { 3, 2, 1 }, [30130] = { 1 } }, Range = 100, Zone = 418 },
         {
             Coord = { x = 515.40002441406, y = -1133.7000732422 },
             GossipOptionIDs = { 39799 },
@@ -1258,25 +1258,27 @@ if APR.Faction == "Horde" then
         { Coord = { x = 116.20000457764, y = -908.60003662109 }, Done = { 30131 },   Zone = 418 },
         { Coord = { x = 116.20000457764, y = -908.60003662109 }, PickUp = { 30132 }, Zone = 418 },
         { Coord = { x = 876, y = -1450.9000244141 },             Done = { 30133 },   Zone = 418 },
-        { Coord = { x = 876, y = -1450.9000244141 },             PickUp = { 30269 }, Zone = 418 },
         {
             Coord = { x = 895.29998779297, y = -1447.4000244141 },
             GossipOptionIDs = { 40208 },
             Qpart = { [30132] = { 1 } },
+            Range = 5,
             Zone = 418
         },
+        { Coord = { x = 876, y = -1450.9000244141 },             PickUp = { 30269 },        Zone = 418 },
         {
             Coord = { x = 895.20001220703, y = -1308.8000488281 },
+            GossipOptionIDs = { 40208 },
             ExtraLineText = "ESCORTS_NPC",
             Range = 1,
-            Waypoint = 30132,
+            Waypoint = 30269,
             Zone = 418
         },
         {
             Coord = { x = 897.29998779297, y = -1234.7000732422 },
             ExtraLineText = "ESCORTS_NPC",
             Qpart = { [30269] = { 1 } },
-            Range = 5,
+            Range = 2,
             Zone = 418
         },
         { Coord = { x = 1044.7000732422, y = -1163.5 },          Done = { 30269 },          Zone = 418 },
@@ -1289,11 +1291,10 @@ if APR.Faction == "Horde" then
             Range = 60,
             Zone = 418
         },
-        { Coord = { x = 1080.4000244141, y = -1269.0999755859 }, Qpart = { [30268] = { 1 } }, Range = 30, Zone = 418 },
-        { Coord = { x = 1044.7000732422, y = -1163.5999755859 }, Done = { 30270, 30694 },     Zone = 418 },
-        { Coord = { x = 1050.5, y = -1193.2000732422 },          Done = { 30268 },            Zone = 418 },
-        { Coord = { x = 1050.5, y = -1193.2000732422 },          PickUp = { 30271 },          Zone = 418 },
-        { Coord = { x = 1045.3000488281, y = -1162.7000732422 }, PickUp = { 30272, 30695 },   Zone = 418 },
+        { Coord = { x = 1080.4000244141, y = -1269.0999755859 }, Qpart = { [30268] = { 1 } },      Range = 30, Zone = 418 },
+        { Coord = { x = 1044.7000732422, y = -1163.5999755859 }, Done = { 30270, 30694 },          Zone = 418 },
+        { Coord = { x = 1050.5, y = -1193.2000732422 },          Done = { 30268 },                 Zone = 418 },
+        { Coord = { x = 1045.3000488281, y = -1162.7000732422 }, PickUp = { 30272, 30695, 30271 }, Zone = 418 },
         {
             Coord = { x = 1179.5, y = -1810 },
             ExtraLineText = "KILL_HAUNTS_NEAR_MONKS_INSPIRE",
@@ -1302,14 +1303,8 @@ if APR.Faction == "Horde" then
             Range = 5,
             Zone = 418
         },
-        {
-            Coord = { x = 939.29998779297, y = -1804.5 },
-            ExtraLineText = "KILL_HAUNTS_NEAR_MONKS_INSPIRE",
-            Fillers = { [30271] = { 1 }, [30272] = { 1 } },
-            Qpart = { [30695] = { 2 } },
-            Range = 5,
-            Zone = 418
-        },
+
+        { Done = { 30695, },                                     NoArrow = 1,        Zone = 418, },
         {
             Coord = { x = 1053.8000488281, y = -1678.7000732422 },
             ExtraLineText = "KILL_HAUNTS_NEAR_MONKS_INSPIRE",
@@ -1317,7 +1312,7 @@ if APR.Faction == "Horde" then
             Range = 60,
             Zone = 418
         },
-        { Done = { 30271, 30272, 30695 },                        NoArrow = 1,        Zone = 418 },
+        { Done = { 30271, 30272 },                               NoArrow = 1,        Zone = 418 },
         { NoArrow = 1,                                           PickUp = { 30273 }, Zone = 418 },
         { Coord = { x = 1053.3000488281, y = -1732.4000244141 }, Range = 5,          Waypoint = 30273, Zone = 418 },
         { Coord = { x = 1053.2000732422, y = -1900.5999755859 }, Range = 5,          Waypoint = 30273, Zone = 418 },
@@ -1326,12 +1321,12 @@ if APR.Faction == "Horde" then
             Coord = { x = 1053.9000244141, y = -1815.5999755859 },
             GossipOptionIDs = { 39489 },
             Qpart = { [30273] = { 1 } },
+            Range = 3,
             Zone = 418
         },
         { Coord = { x = 1052.4000244141, y = -1896.4000244141 }, Range = 5,          Waypoint = 30273, Zone = 418 },
         { Coord = { x = 1053.5, y = -1649.5999755859 },          Done = { 30273 },   Zone = 418 },
         { Coord = { x = 526.10003662109, y = -2465 },            PickUp = { 30667 }, Zone = 418 },
-        { Coord = { x = 516, y = -2495.1000976562 },             PickUp = { 31058 }, Zone = 418 },
         { Coord = { x = 494.5, y = -2493.6000976562 },           GetFP = 993,        Zone = 418 },
         { Coord = { x = 534.60003662109, y = -2513.4001464844 }, PickUp = { 30666 }, Zone = 418 },
         {
@@ -1810,7 +1805,6 @@ if APR.Faction == "Horde" then
             Zone = 379
         },
         { Coord = { x = 374.60000610352, y = 2726.6000976562 }, Done = { 30491 },               Zone = 379 },
-        { Coord = { x = 372.10000610352, y = 2706.9001464844 }, PickUp = { 53435 },             Zone = 379 },
         { Coord = { x = 372.10000610352, y = 2706.9001464844 }, Done = { 30587, 30804, 30489 }, Zone = 379 },
         { Coord = { x = 373.30001831055, y = 2728.8000488281 }, PickUp = { 30492 },             Zone = 379 },
         { Coord = { x = 761.20001220703, y = 3063.6000976562 }, Qpart = { [30492] = { 1 } },    Range = 5, Zone = 379 },
