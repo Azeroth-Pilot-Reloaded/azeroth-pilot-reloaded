@@ -55,11 +55,12 @@ function APR:GetPlayerMapPos(MapID, dx, dy)
     end
 end
 
-function APR:GetPlayerParentMapID()
+function APR:GetPlayerParentMapID(mapType)
+    mapType = mapType or Enum.UIMapType.Zone
     local playerMapId
     local currentMapId = C_Map.GetBestMapForUnit('player')
     if currentMapId and Enum and Enum.UIMapType then
-        playerMapId = MapUtil.GetMapParentInfo(currentMapId, Enum.UIMapType.Zone, true)
+        playerMapId = MapUtil.GetMapParentInfo(currentMapId, mapType, true)
         playerMapId = playerMapId and playerMapId.mapID or currentMapId
     end
     return playerMapId

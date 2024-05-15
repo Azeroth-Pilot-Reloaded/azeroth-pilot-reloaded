@@ -111,18 +111,16 @@ function CheckIsInRouteZone()
         return
     end
     local routeZoneMapIDs, mapid, routeName, expansion = APR.transport:GetRouteMapIDsAndName()
-    local parentMapID = APR:GetPlayerParentMapID()
+    local parentMapID = APR:GetPlayerParentMapID(Enum.UIMapType.Continent)
     local currentMapID = C_Map.GetBestMapForUnit("player")
     local isSameContinent, nextContinent = APR.transport:IsSameContinent(mapid)
     local step = GetSteps(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
-    if not currentMapID then
+    if not currentMapID or not isSameContinent then
         return false
     end
+
     if step and (step.Zone == parentMapID or step.Zone == currentMapID) then
         return true
-    end
-    if not isSameContinent then
-        return false
     end
 
     if APR:IsInExpansionRouteMaps(routeZoneMapIDs, parentMapID) or APR:IsInExpansionRouteMaps(routeZoneMapIDs, currentMapID) then
