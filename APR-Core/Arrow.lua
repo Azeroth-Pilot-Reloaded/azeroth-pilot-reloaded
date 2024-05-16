@@ -114,7 +114,7 @@ local function CheckDistance()
     if CurStep and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep] then
         local step = APR.RouteQuestStepList[APR.ActiveRoute]
         if not step[CurStep].Coord or step[CurStep].NoArrow then
-            return
+            return 0
         end
         -- To skip HS
         if step[CurStep] and (step[CurStep].UseHS or step[CurStep].UseDalaHS or step[CurStep].UseGarrisonHS) then

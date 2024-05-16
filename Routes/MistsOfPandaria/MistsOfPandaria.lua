@@ -854,30 +854,6 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
     },
     { Coord = { x = 462.70001220703, y = -221.19999694824 }, GetFP = 985,              Zone = 376 },
     { Coord = { x = 508.39999389648, y = -217.69999694824 }, PickUp = { 31255 },       PickUpDB = { 31254, 31255 }, Zone = 376 },
-    { Coord = { x = 577.40002441406, y = -245.19999694824 }, Done = { 31486 },         Zone = 376 },
-    { Coord = { x = 577.40002441406, y = -245.19999694824 }, PickUp = { 31281 },       Zone = 376 },
-    { Coord = { x = 576.29998779297, y = -242.5 },           LearnProfession = 264640, RaidIcon = 64231,            Zone = 376 },
-    { Coord = { x = 576.29998779297, y = -242.5 },           LearnProfession = 264640, RaidIcon = 64231,            Zone = 376 },
-    {
-        BuyMerchant = { { itemID = 74660, quantity = 5, questID = 31281 } },
-        Coord = { x = 575.29998779297, y = -245.60000610352 },
-        ExtraLineText = "LEARN_COOKING_PROFESSION_AND_ALL_AVAILABLE_RECIPES",
-        ExtraLineText2 = "THEN_BUY_5_PEACHES_AND_CRAFT_5_SLICED_PEACHES",
-        Qpart = { [31281] = { 1, 2 } },
-        Zone = 376
-    },
-    { Coord = { x = 576.29998779297, y = -242.5 }, Done = { 31281 },   Zone = 376 },
-    { Coord = { x = 576.29998779297, y = -242.5 }, PickUp = { 31302 }, Zone = 376 },
-    {
-        BuyMerchant = { { itemID = 74852, quantity = 5, questID = 31302 }, { itemID = 74851, quantity = 5, questID = 31302 } },
-        Coord = { x = 576.29998779297, y = -242.5 },
-        Qpart = { [31302] = { 1, 2 } },
-        Zone = 376
-    },
-    { Coord = { x = 576.29998779297, y = -242.90000915527 }, Done = { 31302 },            Zone = 376 },
-    { Coord = { x = 637.60003662109, y = -161.19999694824 }, PickUp = { 30252 },          Zone = 376 },
-    { Coord = { x = 636.90002441406, y = -161.19999694824 }, Qpart = { [30252] = { 1 } }, Range = 30, Zone = 376 },
-    { Coord = { x = 610.20001220703, y = -159.40000915527 }, Done = { 30252 },            Zone = 376 },
     { Coord = { x = 548.90002441406, y = 82.900001525879 },  Done = { 30049 },            Zone = 376 },
     { Coord = { x = 548.90002441406, y = 82.900001525879 },  PickUp = { 30051 },          Zone = 376 },
     {
