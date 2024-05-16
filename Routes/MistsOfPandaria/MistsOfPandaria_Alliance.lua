@@ -23,6 +23,7 @@ if APR.Faction == "Alliance" then
         { Coord = { x = -1483, y = -665.70001220703 }, Done = { 29548 }, Zone = 371 },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["371-The Jade Forest"] = {
         { Coord = { x = -1482.8000488281, y = -665.5 },           PickUp = { 31732 },          Zone = 371 },
         {
@@ -1006,6 +1007,7 @@ if APR.Faction == "Alliance" then
         { Done = { 32018 }, Zone = 376,                                Coord = { y = 518, x = -693.60003662109 } },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["418-Krasarang Wilds"] = {
         { Coord = { x = -628.10003662109, y = -332.20001220703 }, PickUp = { 30079 },          Zone = 418 },
         { Coord = { x = -643.79998779297, y = -370.20001220703 }, GetFP = 986,                 Zone = 418 },
@@ -1423,6 +1425,7 @@ if APR.Faction == "Alliance" then
         },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["379-Kun-Lai Summit"] = {
         { Coord = { x = 479.20001220703, y = -260.39999389648 }, PickUp = { 31392 },          Zone = 376 },
         { Coord = { x = 508.39999389648, y = -217.69999694824 }, PickUp = { 31254 },          Zone = 376 },
@@ -1617,7 +1620,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = 1682.3000488281, y = 2338.5 },
             Fillers = { [30650] = { 1 } },
             Qpart = { [30652] = { 1 } },
-            Range = 30,
+            Range = 5,
             Zone = 379
         },
         {
@@ -1652,7 +1655,7 @@ if APR.Faction == "Alliance" then
         {
             Coord = { x = 1853.5, y = 2279.6999511719 },
             Fillers = { [30650] = { 1 } },
-            Qpart = { [30652] = { 1 } },
+            Qpart = { [30652] = { 2 } },
             Range = 5,
             Zone = 379
         },
@@ -1691,17 +1694,17 @@ if APR.Faction == "Alliance" then
             Waypoint = 30488,
             Zone = 379
         },
-        { Coord = { x = 225.69999694824, y = 2503.4001464844 }, Range = 5, Waypoint = 30488, Zone = 381 },
-        { Coord = { x = 198.90000915527, y = 2521.6000976562 }, Range = 5, Waypoint = 30488, Zone = 381 },
-        { Coord = { x = 186.90000915527, y = 2549.6999511719 }, Range = 5, Waypoint = 30488, Zone = 381 },
-        { Coord = { x = 134.19999694824, y = 2518.6000976562 }, Range = 5, Waypoint = 30488, Zone = 381 },
+        { Coord = { x = 225.69999694824, y = 2503.4001464844 }, Range = 5, Waypoint = 30488, Zone = 379 },
+        { Coord = { x = 198.90000915527, y = 2521.6000976562 }, Range = 5, Waypoint = 30488, Zone = 379 },
+        { Coord = { x = 186.90000915527, y = 2549.6999511719 }, Range = 5, Waypoint = 30488, Zone = 379 },
+        { Coord = { x = 134.19999694824, y = 2518.6000976562 }, Range = 5, Waypoint = 30488, Zone = 379 },
         {
             Coord = { x = 149.19999694824, y = 2507.6000976562 },
-            Done = { 30488, 30488 },
+            Done = { 30488 },
             ExtraLineText = "KILL_MOBS_TO_SAVE_NPC",
-            Zone = 381
+            Zone = 379
         },
-        { Coord = { x = 149, y = 2508.9001464844 },             PickUp = { 30491 },      Zone = 381 },
+        { Coord = { x = 149, y = 2508.9001464844 },             PickUp = { 30491 },      Zone = 379 },
         {
             Coord = { x = 243.60000610352, y = 2543.8000488281 },
             ExtraLineText = "RIDE_YAK",
@@ -1719,7 +1722,8 @@ if APR.Faction == "Alliance" then
         {
             Coord = { x = 437.80001831055, y = 2604.5 },
             DropQuest = 30582,
-            DroppableQuest = { MobId = "59335", Qid = 30582, Text = "Spoliateurburilgi" },
+            DroppableQuest = { MobId = "59335", Qid = 30582, Text = "Spoliateur burilgi" },
+            RaidIcon = 59335,
             Range = 45,
             Zone = 379
         },
@@ -1825,6 +1829,8 @@ if APR.Faction == "Alliance" then
         { Coord = { x = 1827.8000488281, y = 3571.9001464844 }, Done = { 30683 },              Zone = 379 },
         { Coord = { x = 1827.8000488281, y = 3571.9001464844 }, PickUp = { 30684 },            Zone = 379 },
         { Coord = { x = 2035.7000732422, y = 3566.8000488281 }, Qpart = { [30684] = { 1 } },   Zone = 379 },
+        { Coord = { x = 2168.1000976562, y = 3531.3000488281 }, Qpart = { [30684] = { 2 } },   Zone = 379 },
+        { Coord = { x = 2136.9001464844, y = 3449.8000488281 }, Qpart = { [30684] = { 3 } },   Zone = 379 },
         { Coord = { x = 2099.1999511719, y = 3488.5 },          Done = { 30684 },              Zone = 379 },
         { Coord = { x = 2099.1999511719, y = 3488.5 },          PickUp = { 30829 },            Zone = 379 },
         {
@@ -1914,54 +1920,54 @@ if APR.Faction == "Alliance" then
             Zone = 379
         },
         { Coord = { x = 1524.2000732422, y = 3675.1000976562 }, Range = 5,                   Waypoint = 30800, Zone = 379 },
-        { Coord = { x = 1557.5, y = 3632.8000488281 },          Range = 5,                   Waypoint = 30800, Zone = 385 },
-        { Coord = { x = 1673.4000244141, y = 3609.6000976562 }, Qpart = { [30800] = { 1 } }, Zone = 385 },
-        { Coord = { x = 1786.0999755859, y = 3644.4001464844 }, Qpart = { [30800] = { 2 } }, Zone = 385 },
+        { Coord = { x = 1557.5, y = 3632.8000488281 },          Range = 5,                   Waypoint = 30800, Zone = 379 },
+        { Coord = { x = 1673.4000244141, y = 3609.6000976562 }, Qpart = { [30800] = { 1 } }, Zone = 379 },
+        { Coord = { x = 1786.0999755859, y = 3644.4001464844 }, Qpart = { [30800] = { 2 } }, Zone = 379 },
         {
             Button = { ["30800"] = 81712 },
             Coord = { x = 1788.4000244141, y = 3636.1000976562 },
             Done = { 30800 },
             ExtraLineText = "USE_THE_TONGUE_BA_SHON_TO_SPAWN_NPC",
-            Zone = 385
+            Zone = 379
         },
         {
             Button = { ["30801"] = 81712 },
             Coord = { x = 1788.4000244141, y = 3636.1000976562 },
             ExtraLineText = "USE_THE_TONGUE_BA_SHON_TO_SPAWN_NPC",
             PickUp = { 30801 },
-            Zone = 385
+            Zone = 379
         },
-        { Coord = { x = 1786, y = 3644.4001464844 },            Qpart = { [30801] = { 1 } }, Zone = 385 },
+        { Coord = { x = 1786, y = 3644.4001464844 },            Qpart = { [30801] = { 1 } }, Zone = 379 },
         {
             Button = { ["30801"] = 81712 },
             Coord = { x = 1788, y = 3639.3000488281 },
             Done = { 30801 },
             ExtraLineText = "USE_THE_TONGUE_BA_SHON_TO_SPAWN_NPC",
-            Zone = 385
+            Zone = 379
         },
         {
             Button = { ["30802"] = 81712 },
             Coord = { x = 1788, y = 3639.3000488281 },
             ExtraLineText = "USE_THE_TONGUE_BA_SHON_TO_SPAWN_NPC",
             PickUp = { 30802 },
-            Zone = 385
+            Zone = 379
         },
-        { Coord = { x = 1683.3000488281, y = 3611.4001464844 }, Qpart = { [30802] = { 1 } }, Range = 30,       Zone = 385 },
-        { Coord = { x = 1560.3000488281, y = 3596.5 },          Range = 5,                   Waypoint = 30802, Zone = 385 },
-        { Coord = { x = 1558.9000244141, y = 3636.6000976562 }, Range = 5,                   Waypoint = 30802, Zone = 385 },
+        { Coord = { x = 1683.3000488281, y = 3611.4001464844 }, Qpart = { [30802] = { 1 } }, Range = 30,       Zone = 379 },
+        { Coord = { x = 1560.3000488281, y = 3596.5 },          Range = 5,                   Waypoint = 30802, Zone = 379 },
+        { Coord = { x = 1558.9000244141, y = 3636.6000976562 }, Range = 5,                   Waypoint = 30802, Zone = 379 },
         {
             Button = { ["30802"] = 81712 },
             Coord = { x = 1685.5999755859, y = 3611.6999511719 },
             Done = { 30802 },
             ExtraLineText = "USE_THE_TONGUE_BA_SHON_TO_SPAWN_NPC",
-            Zone = 385
+            Zone = 379
         },
         {
             Button = { ["30935"] = 81712 },
             Coord = { x = 1685.5999755859, y = 3611.6999511719 },
             ExtraLineText = "USE_THE_TONGUE_BA_SHON_TO_SPAWN_NPC",
             PickUp = { 30935 },
-            Zone = 385
+            Zone = 379
         },
         {
             Coord = { x = 1524.7000732422, y = 3683.1000976562 },
@@ -1979,9 +1985,9 @@ if APR.Faction == "Alliance" then
             Range = 2,
             Zone = 379
         },
-        { Coord = { x = 931.79998779297, y = 4361.3002929688 }, GetFP = 1021,             Zone = 379 },
-        { Coord = { x = 938.60003662109, y = 4404.8999023438 }, Done = { 30935 },         Zone = 379 },
+        { Coord = { x = 938.60003662109, y = 4404.8999023438 }, ETA = 131,                Done = { 30935 },   Zone = 379 },
         { Coord = { x = 938.60003662109, y = 4404.8999023438 }, PickUp = { 30944 },       Zone = 379 },
+        { Coord = { x = 931.79998779297, y = 4361.3002929688 }, GetFP = 1021,             Zone = 379 },
         { Coord = { x = 873.90002441406, y = 4339 },            PickUp = { 30945 },       Zone = 379 },
         { Coord = { x = 851.60003662109, y = 4338.6000976562 }, PickUp = { 30942 },       Zone = 379 },
         { Coord = { x = 886.20001220703, y = 4393.2001953125 }, PickUp = { 30816 },       Zone = 379 },
@@ -2030,7 +2036,7 @@ if APR.Faction == "Alliance" then
         { Coord = { x = 1047.4000244141, y = 4727.5 },          PickUp = { 30819 },             Zone = 379 },
         {
             Coord = { x = 967.90002441406, y = 4428.1000976562 },
-            GossipOptionIDs = { 38591 },
+            GossipOptionIDs = { 38591, 38585, },
             Qpart = { [30942] = { 1 }, [30944] = { 1 } },
             Range = 40,
             Zone = 379
@@ -2080,7 +2086,6 @@ if APR.Faction == "Alliance" then
         { Coord = { x = 939.29998779297, y = 4406.6000976562 }, PickUp = { 31228 }, Zone = 379 },
         {
             Coord = { x = 940.60003662109, y = 4395 },
-            ETA = 32,
             GossipOptionIDs = { 41466 },
             Qpart = { [31228] = { 1 } },
             Zone = 379
@@ -2088,6 +2093,7 @@ if APR.Faction == "Alliance" then
         {
             Coord = { x = 58.600002288818, y = 5235.3002929688 },
             ExtraLineText = "STAY_ON_TABLE_TO_AVOID_ZONE_DEBUFF",
+            ETA = 32,
             Fillers = { [31228] = { 3 } },
             Qpart = { [31228] = { 2 } },
             Range = 5,
@@ -2133,7 +2139,7 @@ if APR.Faction == "Alliance" then
             Fillers = { [30600] = { 1 }, [30604] = { 1, 2 } },
             Qpart = { [30599] = { 1 } },
             Range = 5,
-            Zone = 384
+            Zone = 379
         },
         {
             Coord = { x = 1284.3000488281, y = 2656.3000488281 },
@@ -2191,7 +2197,6 @@ if APR.Faction == "Alliance" then
         { Coord = { x = 2169.9001464844, y = 2709.4001464844 },        SetHS = 30744,                           Zone = 379 },
         { Coord = { x = 2185.8000488281, y = 2711.6999511719 },        PickUp = { 30744, 30745, 30742, 30743 }, Zone = 379 },
         { Coord = { x = 2183, y = 2741.6000976562 },                   Done = { 30692 },                        Zone = 379 },
-        { Coord = { x = 2168, y = 2708.6000976562 },                   SetHS = 30744,                           Zone = 379 },
         {
             Coord = { x = 2492.1999511719, y = 2365.9001464844 },
             ExtraLineText = "GO_INSIDE_CAVE",
@@ -2319,13 +2324,13 @@ if APR.Faction == "Alliance" then
         { Coord = { x = 3007.6000976562, y = 3019.6999511719 }, PickUp = { 30994 },      Zone = 379 },
         {
             Coord = { x = 3006, y = 3020.1999511719 },
-            ETA = 6,
+
             GossipOptionIDs = { 30541 },
             Qpart = { [30994] = { 1 } },
             Range = 30,
             Zone = 379
         },
-        { Coord = { x = 2848.5, y = 3110.8000488281 }, Done = { 30994 },   Zone = 379 },
+        { Coord = { x = 2848.5, y = 3110.8000488281 }, ETA = 6,            Done = { 30994 }, Zone = 379 },
         { Coord = { x = 2848.5, y = 3110.8000488281 }, PickUp = { 30991 }, Zone = 379 },
         {
             Coord = { x = 2835.5, y = 3097 },
@@ -2360,7 +2365,6 @@ if APR.Faction == "Alliance" then
             Done = { 31030 },
             DoneDB = { 31030, 31031 },
             ExtraLineText = "TURN_IN_QUEST_INSIDE_DUNGEON_THEN_EXIT",
-            InstanceQuest = true,
             NoArrow = 1
         },
         { UseHS = 31847,                                        Zone = 379 },
@@ -2381,6 +2385,7 @@ if APR.Faction == "Alliance" then
         { Coord = { x = 2995.1000976562, y = 2363.3000488281 }, GetFP = 1053, Zone = 388 },
         { ZoneDoneSave = 1 }
     }
+
     APR.RouteQuestStepList["390-Isle of Thunder"] = {
         { Coord = { x = 353.70001220703, y = 957.79998779297 }, PickUp = { 32679 }, Zone = 390 },
         {

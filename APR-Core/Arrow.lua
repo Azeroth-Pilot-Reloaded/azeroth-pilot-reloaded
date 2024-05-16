@@ -147,12 +147,18 @@ function APR.Arrow:SetQPTT()
     if not APR.ActiveRoute then
         return
     end
+
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     if not APR.RouteQuestStepList[APR.ActiveRoute] then
         return
     end
     local step = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
-    if (APR.Arrow.currentStep ~= CurStep and step.Coord and CheckIsInRouteZone() and not step.NoArrow) then
+    if step.NoArrow then
+        self:SetArrowActive(false, 0, 0)
+        return
+    end
+
+    if (APR.Arrow.currentStep ~= CurStep and step.Coord and CheckIsInRouteZone()) then
         self:SetArrowActive(true, step.Coord.x, step.Coord.y)
         APR.Arrow.currentStep = CurStep
     end
