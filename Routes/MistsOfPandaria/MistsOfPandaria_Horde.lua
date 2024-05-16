@@ -1640,7 +1640,8 @@ if APR.Faction == "Horde" then
         {
             Coord = { x = 609, y = 2421.4001464844 },
             DropQuest = 30582,
-            DroppableQuest = { MobId = "59718", Qid = 30582, Text = "Spoliateurburilgi" },
+            DroppableQuest = { MobId = "59718", Qid = 30582, Text = "Spoliateur burilgi" },
+            RaidIcon = 59718,
             Range = 15,
             Zone = 379
         },
@@ -1679,7 +1680,7 @@ if APR.Faction == "Horde" then
             Coord = { x = 1648.0999755859, y = 2307 },
             Fillers = { [30655] = { 1 } },
             Qpart = { [30656] = { 1 } },
-            Range = 30,
+            Range = 2,
             Zone = 379
         },
         {
@@ -1764,17 +1765,17 @@ if APR.Faction == "Horde" then
             Waypoint = 30488,
             Zone = 379
         },
-        { Coord = { x = 225.69999694824, y = 2503.4001464844 }, Range = 5, Waypoint = 30488, Zone = 381 },
-        { Coord = { x = 198.90000915527, y = 2521.6000976562 }, Range = 5, Waypoint = 30488, Zone = 381 },
-        { Coord = { x = 186.90000915527, y = 2549.6999511719 }, Range = 5, Waypoint = 30488, Zone = 381 },
-        { Coord = { x = 134.19999694824, y = 2518.6000976562 }, Range = 5, Waypoint = 30488, Zone = 381 },
+        { Coord = { x = 225.69999694824, y = 2503.4001464844 }, Range = 5, Waypoint = 30488, Zone = 379 },
+        { Coord = { x = 198.90000915527, y = 2521.6000976562 }, Range = 5, Waypoint = 30488, Zone = 379 },
+        { Coord = { x = 186.90000915527, y = 2549.6999511719 }, Range = 5, Waypoint = 30488, Zone = 379 },
+        { Coord = { x = 134.19999694824, y = 2518.6000976562 }, Range = 5, Waypoint = 30488, Zone = 379 },
         {
             Coord = { x = 149.19999694824, y = 2507.6000976562 },
             Done = { 30488 },
             ExtraLineText = "KILL_MOBS_TO_SAVE_NPC",
-            Zone = 381
+            Zone = 379
         },
-        { Coord = { x = 149.19999694824, y = 2507.6000976562 }, PickUp = { 30491 },             Zone = 381 },
+        { Coord = { x = 149.19999694824, y = 2507.6000976562 }, PickUp = { 30491 },             Zone = 379 },
         {
             Coord = { x = 243.60000610352, y = 2543.8000488281 },
             ExtraLineText = "RIDE_YAK",
@@ -1977,62 +1978,62 @@ if APR.Faction == "Horde" then
             Zone = 379
         },
         { Coord = { x = 1524.2000732422, y = 3675.1000976562 }, Range = 5, Waypoint = 30800, Zone = 379 },
-        { Coord = { x = 1557.5, y = 3632.8000488281 },          Range = 5, Waypoint = 30800, Zone = 385 },
-        { Coord = { x = 1564.8000488281, y = 3605 },            Range = 5, Waypoint = 30800, Zone = 385 },
+        { Coord = { x = 1557.5, y = 3632.8000488281 },          Range = 5, Waypoint = 30800, Zone = 379 },
+        { Coord = { x = 1564.8000488281, y = 3605 },            Range = 5, Waypoint = 30800, Zone = 379 },
         {
             Coord = { x = 1673.0999755859, y = 3613.6000976562 },
             ExtraLineText = "INTERACT_WITH_SCROLL",
             Range = 2,
             Waypoint = 30800,
-            Zone = 385
+            Zone = 379
         },
-        { Coord = { x = 1673.4000244141, y = 3609.6000976562 }, Qpart = { [30800] = { 1 } }, Zone = 385 },
-        { Coord = { x = 1786.0999755859, y = 3644.4001464844 }, Qpart = { [30800] = { 2 } }, Zone = 385 },
+        { Coord = { x = 1673.4000244141, y = 3609.6000976562 }, Qpart = { [30800] = { 1 } }, Zone = 379 },
+        { Coord = { x = 1786.0999755859, y = 3644.4001464844 }, Qpart = { [30800] = { 2 } }, Zone = 379 },
         {
             Button = { ["30800"] = 81712 },
             Coord = { x = 1788.4000244141, y = 3636.1000976562 },
             Done = { 30800 },
             ExtraLineText = "USE_THE_TONGUE_BA_SHON_TO_SPAWN_NPC",
-            Zone = 385
+            Zone = 379
         },
         {
             Button = { ["30801"] = 81712 },
             Coord = { x = 1788.4000244141, y = 3636.1000976562 },
             ExtraLineText = "USE_THE_TONGUE_BA_SHON_TO_SPAWN_NPC",
             PickUp = { 30801 },
-            Zone = 385
+            Zone = 379
         },
-        { Coord = { x = 1786, y = 3644.4001464844 },            Qpart = { [30801] = { 1 } }, Zone = 385 },
+        { Coord = { x = 1786, y = 3644.4001464844 },            Qpart = { [30801] = { 1 } }, Zone = 379 },
         {
             Button = { ["30801"] = 81712 },
             Coord = { x = 1788, y = 3639.3000488281 },
             Done = { 30801 },
             ExtraLineText = "USE_THE_TONGUE_BA_SHON_TO_SPAWN_NPC",
-            Zone = 385
+            Zone = 379
         },
         {
             Button = { ["30802"] = 81712 },
             Coord = { x = 1788, y = 3639.3000488281 },
             ExtraLineText = "USE_THE_TONGUE_BA_SHON_TO_SPAWN_NPC",
             PickUp = { 30802 },
-            Zone = 385
+            Zone = 379
         },
-        { Coord = { x = 1683.3000488281, y = 3611.4001464844 }, Qpart = { [30802] = { 1 } }, Range = 30,       Zone = 385 },
-        { Coord = { x = 1560.3000488281, y = 3596.5 },          Range = 5,                   Waypoint = 30802, Zone = 385 },
-        { Coord = { x = 1558.9000244141, y = 3636.6000976562 }, Range = 5,                   Waypoint = 30802, Zone = 385 },
+        { Coord = { x = 1683.3000488281, y = 3611.4001464844 }, Qpart = { [30802] = { 1 } }, Range = 30,       Zone = 379 },
+        { Coord = { x = 1560.3000488281, y = 3596.5 },          Range = 5,                   Waypoint = 30802, Zone = 379 },
+        { Coord = { x = 1558.9000244141, y = 3636.6000976562 }, Range = 5,                   Waypoint = 30802, Zone = 379 },
         {
             Button = { ["30802"] = 81712 },
             Coord = { x = 1685.5999755859, y = 3611.6999511719 },
             Done = { 30802 },
             ExtraLineText = "USE_THE_TONGUE_BA_SHON_TO_SPAWN_NPC",
-            Zone = 385
+            Zone = 379
         },
         {
             Button = { ["30935"] = 81712 },
             Coord = { x = 1685.5999755859, y = 3611.6999511719 },
             ExtraLineText = "USE_THE_TONGUE_BA_SHON_TO_SPAWN_NPC",
             PickUp = { 30935 },
-            Zone = 385
+            Zone = 379
         },
         { Coord = { x = 1524.7000732422, y = 3683.1000976562 }, GossipOptionIDs = { 30224 }, Qpart = { [30935] = { 1 } }, Zone = 379 },
         { Coord = { x = 839.20001220703, y = 3766.1999511719 }, Range = 5,                   Waypoint = 30935,            Zone = 379 },
@@ -2045,9 +2046,9 @@ if APR.Faction == "Horde" then
             Range = 2,
             Zone = 379
         },
-        { Coord = { x = 931.79998779297, y = 4361.3002929688 }, GetFP = 1021,             Zone = 379 },
-        { Coord = { x = 938.60003662109, y = 4404.8999023438 }, Done = { 30935 },         Zone = 379 },
+        { Coord = { x = 938.60003662109, y = 4404.8999023438 }, ETA = 131,                Done = { 30935 },   Zone = 379 },
         { Coord = { x = 938.60003662109, y = 4404.8999023438 }, PickUp = { 30944 },       Zone = 379 },
+        { Coord = { x = 931.79998779297, y = 4361.3002929688 }, GetFP = 1021,             Zone = 379 },
         { Coord = { x = 873.90002441406, y = 4339 },            PickUp = { 30945 },       Zone = 379 },
         { Coord = { x = 851.60003662109, y = 4338.6000976562 }, PickUp = { 30942 },       Zone = 379 },
         { Coord = { x = 886.20001220703, y = 4393.2001953125 }, PickUp = { 30816 },       Zone = 379 },
@@ -2096,7 +2097,7 @@ if APR.Faction == "Horde" then
         { Coord = { x = 1047.4000244141, y = 4727.5 },          PickUp = { 30819 },             Zone = 379 },
         {
             Coord = { x = 967.90002441406, y = 4428.1000976562 },
-            GossipOptionIDs = { 38591 },
+            GossipOptionIDs = { 38591, 38585, },
             Qpart = { [30942] = { 1 }, [30944] = { 1 } },
             Range = 40,
             Zone = 379
@@ -2136,13 +2137,14 @@ if APR.Faction == "Horde" then
             Qpart = { [30946] = { 1 } },
             Zone = 379
         },
-        { Coord = { x = 939.29998779297, y = 4406.6000976562 }, Done = { 30946 },   Zone = 379 },
-        { Coord = { x = 939.29998779297, y = 4406.6000976562 }, PickUp = { 31228 }, Zone = 379 },
-        { Coord = { x = 940.60003662109, y = 4395 },            ETA = 32,           GossipOptionIDs = { 41466 }, Qpart = { [31228] = { 1 } }, Zone = 379 },
+        { Coord = { x = 939.29998779297, y = 4406.6000976562 }, Done = { 30946 },            Zone = 379 },
+        { Coord = { x = 939.29998779297, y = 4406.6000976562 }, PickUp = { 31228 },          Zone = 379 },
+        { Coord = { x = 940.60003662109, y = 4395 },            GossipOptionIDs = { 41466 }, Qpart = { [31228] = { 1 } }, Zone = 379 },
         {
             Coord = { x = 58.600002288818, y = 5235.3002929688 },
             ExtraLineText = "STAY_ON_TABLE_TO_AVOID_ZONE_DEBUFF",
             Fillers = { [31228] = { 3 } },
+            ETA = 32,
             Qpart = { [31228] = { 2 } },
             Range = 5,
             Zone = 379
@@ -2163,20 +2165,6 @@ if APR.Faction == "Horde" then
         { Coord = { x = 1607, y = 2787.9001464844 },                   PickUp = { 30602 },               Zone = 379 },
         { Coord = { x = 1766.8000488281, y = 2678.9001464844 },        Qpart = { [30602] = { 1 } },      Zone = 379 },
         { Coord = { x = 1766.8000488281, y = 2678.9001464844 },        PickUp = { 30603 },               Zone = 379 },
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
         { Coord = { x = 1835.8000488281, y = 2560.5 },                 Qpart = { [30603] = { 1 } },      Range = 5,                   Zone = 379 },
         { Coord = { x = 1586.8000488281, y = 2813.6999511719 },        Done = { 30602, 30603 },          Zone = 379 },
         { Coord = { x = 1586.8000488281, y = 2813.6999511719 },        PickUp = { 30599, 30600, 30604 }, Zone = 379 },
@@ -2195,7 +2183,7 @@ if APR.Faction == "Horde" then
             Fillers = { [30600] = { 1 }, [30604] = { 1, 2 } },
             Qpart = { [30599] = { 1 } },
             Range = 5,
-            Zone = 384
+            Zone = 379
         },
         {
             Coord = { x = 1284.3000488281, y = 2656.3000488281 },
@@ -2248,7 +2236,6 @@ if APR.Faction == "Horde" then
         { Coord = { x = 2169.9001464844, y = 2709.4001464844 },        SetHS = 30744,                           Zone = 379 },
         { Coord = { x = 2185.8000488281, y = 2711.6999511719 },        PickUp = { 30744, 30745, 30742, 30743 }, Zone = 379 },
         { Coord = { x = 2183, y = 2741.6000976562 },                   Done = { 30692 },                        Zone = 379 },
-        { Coord = { x = 2168, y = 2708.6000976562 },                   SetHS = 30744,                           Zone = 379 },
         {
             Coord = { x = 2492.1999511719, y = 2365.9001464844 },
             ExtraLineText = "GO_INSIDE_CAVE",
@@ -2366,13 +2353,12 @@ if APR.Faction == "Horde" then
         { Coord = { x = 3007.6000976562, y = 3019.6999511719 }, PickUp = { 30994 },                           Zone = 379 },
         {
             Coord = { x = 3006, y = 3020.1999511719 },
-            ETA = 6,
             GossipOptionIDs = { 30541 },
             Qpart = { [30994] = { 1 } },
             Range = 30,
             Zone = 379
         },
-        { Coord = { x = 2848.5, y = 3110.8000488281 }, Done = { 30994 },   Zone = 379 },
+        { Coord = { x = 2848.5, y = 3110.8000488281 }, ETA = 6,            Done = { 30994 }, Zone = 379 },
         { Coord = { x = 2848.5, y = 3110.8000488281 }, PickUp = { 30991 }, Zone = 379 },
         {
             Coord = { x = 2835.5, y = 3097 },
@@ -2397,7 +2383,6 @@ if APR.Faction == "Horde" then
             Done = { 31030 },
             DoneDB = { 31030, 31031 },
             ExtraLineText = "TURN_IN_QUEST_INSIDE_DUNGEON_THEN_EXIT",
-            InstanceQuest = true,
             NoArrow = 1
         },
         { UseHS = 31847,                                        Zone = 379 },
