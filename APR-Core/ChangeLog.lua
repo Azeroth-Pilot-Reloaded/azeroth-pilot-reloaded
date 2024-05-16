@@ -98,13 +98,13 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v3.2.2",  "2024-05-17" },
+        { "v3.2.2", "2024-05-17" },
         "#Bugs",
         "- Add missing qpart for MoP remix intro",
         "- Jade Forest: Update coords for some steps",
         "- Valley of the four winds: removing of the cooking quest steps",
 
-        { "v3.2.1",  "2024-05-16" },
+        { "v3.2.1", "2024-05-16" },
         "#Bugs",
         "- Fixed wrong zone message for route with only Zone step option",
         "- Fixed quest DB step missing in Quest Order List",
@@ -112,7 +112,7 @@ function APR.changelog:SetChangeLog()
         "#Routes",
         "- Added command to reset all the custom route (/apr resetcustom)",
         "- Support of all MoP zone for both faction",
-        
+
         { "v3.2.0",  "2024-05-14" },
         "#Features",
         "- Updated the position of the minimap buttons",
