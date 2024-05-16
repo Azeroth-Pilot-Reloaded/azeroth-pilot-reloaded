@@ -98,6 +98,15 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.2.1",  "2024-05-16" },
+        "#Bugs",
+        "- Fixed wrong zone message for route with only Zone step option",
+        "- Fixed quest DB step missing in Quest Order List",
+
+        "#Routes",
+        "- Added command to reset all the custom route (/apr resetcustom)",
+        "- Support of all MoP zone for both faction",
+        
         { "v3.2.0",  "2024-05-14" },
         "#Features",
         "- Updated the position of the minimap buttons",
