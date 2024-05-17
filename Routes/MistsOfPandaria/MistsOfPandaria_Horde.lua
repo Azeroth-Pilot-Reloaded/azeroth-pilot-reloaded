@@ -200,6 +200,14 @@ if APR.Faction == "Horde" then
             Coord = { y = 2584.3000488281, x = -489 }
         },
         {
+            Coord = { x = -491.70001220703, y = 2577.4001464844, },
+            Fillers = { [31778] = { 1 }, [31775] = { 1 } },
+            GossipOptionIDs = { 41756, 41782 },
+            Qpart = { [31776] = { 4 }, },
+            Range = 5,
+            Zone = 371,
+        },
+        {
             GossipOptionIDs = { 41756, 41782 },
             Qpart = { [31777] = { 1 } },
             Fillers = { [31778] = { 1 }, [31775] = { 1 } },
