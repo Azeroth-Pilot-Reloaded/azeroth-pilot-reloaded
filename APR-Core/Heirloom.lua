@@ -64,7 +64,7 @@ function APR.heirloom:SetDefaultDisplay()
 end
 
 function APR.heirloom:RefreshFrameAnchor()
-    if APR.settings.profile.heirloomWarning or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() then
+    if APR.settings.profile.heirloomWarning or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or APR:IsMoPRemixCharacter() then
         HeirloomPanel:Hide()
         return
     end
