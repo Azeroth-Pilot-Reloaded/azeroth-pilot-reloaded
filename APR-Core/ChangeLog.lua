@@ -98,6 +98,12 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.2.2",  "2024-05-17" },
+        "#Bugs",
+        "- Add missing qpart for MoP remix intro",
+        "- Jade Forest: Update coords for some steps",
+        "- Valley of the four winds: removing of the cooking quest steps",
+
         { "v3.2.1",  "2024-05-16" },
         "#Bugs",
         "- Fixed wrong zone message for route with only Zone step option",
