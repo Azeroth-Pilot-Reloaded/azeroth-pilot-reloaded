@@ -1554,7 +1554,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             end
             ------------------------------------
             -- FlightPath
-            if (steps.UseFlightPath or steps.GetFP) and not steps.NoAutoFlightMap then
+            if (steps.UseFlightPath or steps.GetFP) and not steps.NoAutoFlightMap and not (steps.GossipOptionID or steps.GossipOptionIDs) then
                 PickGossipByIcon(132057)
             end
             ------------------------------------
