@@ -635,11 +635,11 @@ if APR.Faction == "Horde" then
         { Done = { 29754 },        Zone = 371,                  Coord = { y = 3067.1999511719, x = -1606.8000488281 } },
         { PickUp = { 29755 },      Zone = 371,                  Coord = { y = 3067.1999511719, x = -1606.8000488281 } },
         {
-            ExtraLineText2 = "KILL_COLOSSUS",
-            Qpart = { [29755] = { 1 } },
-            ExtraLineText3 = "THEN_KILL_SHAN_JITONG",
-            Zone = 371,
             ExtraLineText = "THERE_ARE_2_PHASES",
+            ExtraLineText2 = "KILL_COLOSSUS",
+            ExtraLineText3 = "THEN_KILL_SHAN_JITONG",
+            Qpart = { [29755] = { 1 } },
+            Zone = 371,
             Range = 30,
             Coord = { y = 3167.1000976562, x = -1517.2000732422 }
         },

@@ -953,15 +953,15 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         Zone = 376
     },
     {
-        Coord = { x = 569.29998779297, y = -562.10003662109 },
+        Coord = { x = 670.70001220703, y = -495.20001220703 },
         Fillers = { [30029] = { 1 } },
-        Qpart = { [30031] = { 2 } },
+        Qpart = { [30031] = { 1 } },
         Range = 5,
         Zone = 376
     },
-    { Coord = { x = 573.5, y = -596.90002441406 },           Qpart = { [30031] = { 4 } },    Range = 5,  Zone = 376 },
+    { Coord = { x = 569.79998779297, y = -560.20001220703 }, Qpart = { [30031] = { 2 } },    Range = 5,  Zone = 376 },
     {
-        Coord = { x = 607.79998779297, y = -541.70001220703 },
+        Coord = { x = 599.5, y = -592.79998779297 },
         Fillers = { [30029] = { 1 } },
         Qpart = { [30031] = { 4 } },
         Range = 5,
@@ -1031,7 +1031,6 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
     { Coord = { x = 1264, y = -711.40002441406 },   PickUp = { 30078 },               Zone = 376 },
     {
         Coord = { x = 1353.2000732422, y = -753.40002441406 },
-        ExtraLineText = "TALK_TO_NPC_TO_START_QUEST",
         ExtraLineText2 = "FOLLOW_INSTRUCTIONS",
         GossipOptionIDs = { 39238 },
         Qpart = { [30078] = { 1 } },
@@ -1054,11 +1053,11 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         Range = 5,
         Zone = 376
     },
-    { Coord = { x = 1265.5999755859, y = -711.70001220703 }, Done = { 30078 },                                         Zone = 376 },
-    { Coord = { x = 1265.5999755859, y = -711.70001220703 }, PickUp = { 30085 },                                       Zone = 376 },
-    { Coord = { x = 1258.7000732422, y = -691.5 },           PickUp = { 30117 },                                       Zone = 376 },
-    { Done = { 30085 },                                      ExtraLineText = "TURN_IN_QUEST_INSIDE_DUNGEON_THEN_EXIT", InstanceQuest = true },
-    { Coord = { x = 2044.5999755859, y = -1063.2000732422 }, PickUp = { 30183, 30181 },                                Zone = 376 },
+    { Coord = { x = 1265.5999755859, y = -711.70001220703 }, Done = { 30078 },                                        Zone = 376 },
+    { Coord = { x = 1265.5999755859, y = -711.70001220703 }, PickUp = { 30085 },                                      Zone = 376 },
+    { Coord = { x = 1258.7000732422, y = -691.5 },           PickUp = { 30117 },                                      Zone = 376 },
+    { Done = { 30085 },                                      ExtraLineText = "TURN_IN_QUEST_INSIDE_DUNGEON_THEN_EXIT" },
+    { Coord = { x = 2044.5999755859, y = -1063.2000732422 }, PickUp = { 30183, 30181 },                               Zone = 376 },
     {
         Coord = { x = 2159, y = -710.40002441406 },
         Fillers = { [30181] = { 1 } },
@@ -1094,12 +1093,13 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         Coord = { x = 1845.2000732422, y = -851.10003662109 },
         ExtraLineText = "JUMP_INTO_WATER_AND_ENTER_IN_UNDERWATER_CAVE",
         Range = 5,
-        Waypoint = 30186,
+        Waypoint = 29981,
         Zone = 376
     },
     {
         Coord = { x = 1716.9000244141, y = -857.29998779297 },
         GossipOptionIDs = { 40247 },
+        ExtraLineText = "JUMP_INTO_WATER_AND_ENTER_IN_UNDERWATER_CAVE",
         Qpart = { [30186] = { 1 } },
         Zone = 376
     },
@@ -1107,7 +1107,7 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         Coord = { x = 1850.3000488281, y = -850.10003662109 },
         ExtraLineText = "EXIT_CAVE",
         Range = 5,
-        Waypoint = 30186,
+        Waypoint = 29981,
         Zone = 376
     },
     { Coord = { x = 2051.8000488281, y = -1063.2000732422 }, Done = { 30186 },   Zone = 376 },
@@ -1118,19 +1118,19 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
     { Coord = { x = 1911.5, y = -393.39999389648 },          PickUp = { 29982 }, Zone = 376 },
     {
         Coord = { x = 2059.6999511719, y = -376.70001220703 },
-        GossipOptionIDs = { 40509 },
+        GossipOptionIDs = { 40509, 40362, },
         Qpart = { [29982] = { 3 } },
         Zone = 376
     },
     {
         Coord = { x = 2072.6000976562, y = -338.39999389648 },
-        GossipOptionIDs = { 40261 },
+        GossipOptionIDs = { 40261, 40473,},
         Qpart = { [29982] = { 4 } },
         Zone = 376
     },
     {
         Coord = { x = 2172.8000488281, y = -372.70001220703 },
-        GossipOptionIDs = { 40508 },
+        GossipOptionIDs = { 40508,40474, },
         Qpart = { [29982] = { 2 } },
         Zone = 376
     },
