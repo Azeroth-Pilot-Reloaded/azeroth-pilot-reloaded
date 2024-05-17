@@ -256,7 +256,6 @@ if APR.Faction == "Alliance" then
         { Coord = { x = -2663, y = -161.40000915527 }, Done = { 29727 },            Zone = 371 },
         { Coord = { x = -2658.9001464844, y = -149 },  PickUp = { 29903 },          Zone = 371 },
         { Coord = { x = -2666.1000976562, y = -150 },  PickUp = { 29888 },          Zone = 371 },
-        { Coord = { x = -2692.6000976562, y = -266 },  GossipOptionIDs = { 40054 }, Zone = 371 },
         {
             Coord = { x = -2692.6000976562, y = -266 },
             ExtraLineText = "SPEAK_TO_NPC_TO_GIVE_THEM_EQUIPMENT",
