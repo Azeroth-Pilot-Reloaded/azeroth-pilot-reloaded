@@ -112,7 +112,7 @@ function APR.changelog:SetChangeLog()
         "#Routes",
         "- Added command to reset all the custom route (/apr resetcustom)",
         "- Support of all MoP zone for both faction",
-
+        
         { "v3.2.0",  "2024-05-14" },
         "#Features",
         "- Updated the position of the minimap buttons",
