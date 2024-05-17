@@ -310,7 +310,9 @@ function APR.questOrderList:AddStepFromRoute()
                 (not step.Gender or step.Gender == APR.Gender) and
                 (not step.Class or step.Class == APR.ClassName) and
                 (not step.HasAchievement or _G.HasAchievement(step.HasAchievement)) and
-                (not step.DontHaveAchievement or not _G.HasAchievement(step.DontHaveAchievement))
+                (not step.DontHaveAchievement or not _G.HasAchievement(step.DontHaveAchievement)) and
+                (not steps.HasAura or _G.HasAura(steps.HasAura)) and
+                (not steps.DontHaveAura or not _G.HasAura(steps.DontHaveAura))
             ) then
             if step.ExitTutorial then
                 local questID = step.ExitTutorial

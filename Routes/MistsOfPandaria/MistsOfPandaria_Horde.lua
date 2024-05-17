@@ -456,7 +456,7 @@ if APR.Faction == "Horde" then
         { Coord = { y = 1520.8000488281, x = -1808.5999755859 }, Qpart = { [31230] = { 3 } },                           Range = 5,                                            Zone = 371 },
         { Zone = 371,                                            Qpart = { [31230] = { 2 } },                           Range = 2,                                            Coord = { y = 1618.0999755859, x = -1740.3000488281 } },
         { SetHS = 31230,                                         Zone = 371,                                            Coord = { y = 1618.0999755859, x = -1741.0999755859 } },
-        { PickUp = { 32018 },                                    Coord = { y = 1606.7000732422, x = -1744.4000244141 }, Zone = 371 },
+        { PickUp = { 32018 },                                    Coord = { y = 1606.7000732422, x = -1744.4000244141 }, Zone = 371,                                           DontHaveAura = { 424143 } },
         { Coord = { y = 1581.3000488281, x = -1934 },            Qpart = { [31230] = { 1 } },                           Range = 2,                                            Zone = 371 },
         { Zone = 371,                                            Done = { 31230 },                                      Coord = { y = 1505.0999755859, x = -1842 } },
         { PickUp = { 29716 },                                    Zone = 371,                                            Coord = { y = 1505, x = -1807 } },
@@ -1084,7 +1084,7 @@ if APR.Faction == "Horde" then
             Zone = 371
         },
         { Done = { 30648 }, Coord = { y = 527.60003662109, x = -695 }, Zone = 376 },
-        { Done = { 32018 }, Zone = 376,                                Coord = { y = 518, x = -693.60003662109 } },
+        { Done = { 32018 }, Zone = 376,                                Coord = { y = 518, x = -693.60003662109 }, DontHaveAura = { 424143 } },
         { ZoneDoneSave = 1 }
     }
 

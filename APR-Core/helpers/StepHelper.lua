@@ -35,6 +35,11 @@ function HasAchievement(achievementID)
     return completed
 end
 
+function HasAura(spellID)
+    local aura = C_UnitAuras.GetPlayerAuraBySpellID(spellID)
+    return aura ~= nil
+end
+
 function UpdateQuestAndStep()
     APR.BookingList["UpdateQuest"] = true
     APR.BookingList["UpdateStep"] = true
@@ -74,6 +79,8 @@ function PreviousQuestStep()
                 (steps.Class and steps.Class ~= className) or
                 (steps.HasAchievement and not _G.HasAchievement(steps.HasAchievement)) or
                 (steps.DontHaveAchievement and _G.HasAchievement(steps.DontHaveAchievement)) or
+                (steps.HasAura and not _G.HasAura(steps.HasAura)) or
+                (steps.DontHaveAura and _G.HasAura(steps.DontHaveAura)) or
                 steps.Waypoint) then
             break
         end
@@ -94,7 +101,9 @@ function GetTotalSteps(route)
                 (not step.Gender or step.Gender == APR.Gender) and
                 (not step.Class or step.Class == APR.ClassName) and
                 (not step.HasAchievement or _G.HasAchievement(step.HasAchievement)) and
-                (not step.DontHaveAchievement or not _G.HasAchievement(step.DontHaveAchievement))
+                (not step.DontHaveAchievement or not _G.HasAchievement(step.DontHaveAchievement)) and
+                (not steps.HasAura or _G.HasAura(steps.HasAura)) and
+                (not steps.DontHaveAura or not _G.HasAura(steps.DontHaveAura))
             ) then
             stepIndex = stepIndex + 1
         end
