@@ -187,3 +187,8 @@ function APR:tableToString(table, skipKey)
     end
     return result .. "}"
 end
+
+function APR:IsMoPRemixCharacter()
+    local aura = C_UnitAuras.GetPlayerAuraBySpellID(424143)
+    return aura ~= nil
+end
