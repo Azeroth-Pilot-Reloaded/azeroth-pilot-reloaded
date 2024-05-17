@@ -98,6 +98,16 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.2.3", "2024-05-17" },
+        "#Features",
+        "- Added a new step option: HasAura & DontHaveAura",
+        "- Added Mop Remix character detection",
+        "- Disabled Heirloom frame for Mop Remix character",
+
+        "#Bugs",
+        "- Fixed Valley of the four winds route (coord, missing qpart, ...)",
+        "- Fixed auto-gossip on UseFlightPath step for the free flight",
+
         { "v3.2.2", "2024-05-17" },
         "#Bugs",
         "- Add missing qpart for MoP remix intro",
@@ -113,7 +123,7 @@ function APR.changelog:SetChangeLog()
         "- Added command to reset all the custom route (/apr resetcustom)",
         "- Support of all MoP zone for both faction",
 
-        { "v3.2.0",  "2024-05-14" },
+        { "v3.2.0", "2024-05-14" },
         "#Features",
         "- Updated the position of the minimap buttons",
         "- Added auto-retry for auto-accept on PickUp steps",
@@ -185,7 +195,7 @@ function APR.changelog:SetChangeLog()
         "#WoW",
         "- Update interface addon version to 10.2.6",
 
-        { "v3.1.9", "2024-03-06" },
+        { "v3.1.9",  "2024-03-06" },
         "#Bugs",
         "- Fix DF starting zone with zone step",
         "- Add coord for all the step of DF alliance starting zone",
