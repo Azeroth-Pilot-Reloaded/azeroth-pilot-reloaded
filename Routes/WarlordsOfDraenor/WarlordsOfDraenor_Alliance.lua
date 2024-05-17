@@ -1324,7 +1324,7 @@ if APR.Faction == "Alliance" then
             Gossip = 1,
             RaidIcon = 82813,
             ExtraLineText = "TALK_EFFIGY",
-            Range = 25,
+            Range = 5,
             Coord = { y = -504.8, x = 1855.4 }
         },
         {
