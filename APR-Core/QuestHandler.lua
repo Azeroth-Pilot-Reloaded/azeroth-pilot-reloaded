@@ -149,7 +149,9 @@ local function SkipStepCondition(steps)
             (steps.Gender and steps.Gender ~= APR.Gender) or
             (steps.Class and steps.Class ~= APR.ClassName) or
             (steps.HasAchievement and not _G.HasAchievement(steps.HasAchievement)) or
-            (steps.DontHaveAchievement and _G.HasAchievement(steps.DontHaveAchievement))
+            (steps.DontHaveAchievement and _G.HasAchievement(steps.DontHaveAchievement)) or
+            (steps.HasAura and not _G.HasAura(steps.HasAura)) or
+            (steps.DontHaveAura and _G.HasAura(steps.DontHaveAura))
         ) then
         -- Counter for skipper step in the current route
         APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] = (APRData[APR.PlayerID]
