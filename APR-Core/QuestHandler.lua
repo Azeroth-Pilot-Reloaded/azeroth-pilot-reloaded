@@ -1784,18 +1784,19 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                         SetRaidTarget("mouseover", 8)
                     end
                 end
-            elseif (steps and steps.DroppableQuest) then
-                if (UnitGUID("mouseover") and UnitName("mouseover")) then
-                    local targetGUID, targetName = UnitGUID("mouseover"), UnitName("mouseover")
-                    local targetID = select(6, strsplit("-", targetGUID))
-                    if (type == "Creature" and steps.DroppableQuest.MobId == tonumber(targetID)) then
-                        tinsert(APRData.NPCList[targetID], targetName)
-                    end
-                end
-            elseif not IsInInstance() and GetRaidTargetIndex("mouseover") then
-                SetRaidTarget("mouseover", 0)
             end
+        elseif (steps and steps.DroppableQuest) then
+            if (UnitGUID("mouseover") and UnitName("mouseover")) then
+                local targetGUID, targetName = UnitGUID("mouseover"), UnitName("mouseover")
+                local targetID = select(6, strsplit("-", targetGUID))
+                if (type == "Creature" and steps.DroppableQuest.MobId == tonumber(targetID)) then
+                    tinsert(APRData.NPCList[targetID], targetName)
+                end
+            end
+        elseif not IsInInstance() and GetRaidTargetIndex("mouseover") then
+            SetRaidTarget("mouseover", 0)
         end
+
         DoEmoteStep(steps)
     end
 
