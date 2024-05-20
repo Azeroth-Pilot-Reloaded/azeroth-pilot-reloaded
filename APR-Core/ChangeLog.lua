@@ -98,6 +98,15 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.2.4", "2024-05-20" },
+        "#Bugs",
+        "- Fixed Range for The Talon King quest (35734)",
+        "- Fixed some coords for Krasarang Wilds route",
+        "- Fixed some coords for Kun Lai route",
+        "- Removed dialog for DF at lvl 60 on MoP Remix characeter",
+        "- Fixed Extra Line Text order on the current step frame",
+        "- Fixed/Added Quest info and mob name for the Drop Quest step",
+
         { "v3.2.3", "2024-05-17" },
         "#Features",
         "- Added a new step option: HasAura & DontHaveAura",
@@ -123,7 +132,7 @@ function APR.changelog:SetChangeLog()
         "- Added command to reset all the custom route (/apr resetcustom)",
         "- Support of all MoP zone for both faction",
 
-        { "v3.2.0", "2024-05-14" },
+        { "v3.2.0",  "2024-05-14" },
         "#Features",
         "- Updated the position of the minimap buttons",
         "- Added auto-retry for auto-accept on PickUp steps",
@@ -195,7 +204,7 @@ function APR.changelog:SetChangeLog()
         "#WoW",
         "- Update interface addon version to 10.2.6",
 
-        { "v3.1.9",  "2024-03-06" },
+        { "v3.1.9", "2024-03-06" },
         "#Bugs",
         "- Fix DF starting zone with zone step",
         "- Add coord for all the step of DF alliance starting zone",
