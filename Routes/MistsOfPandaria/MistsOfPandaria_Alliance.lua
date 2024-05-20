@@ -2302,13 +2302,12 @@ if APR.Faction == "Alliance" then
         { Coord = { x = 2652.6999511719, y = 3144 },            PickUp = { 30724 },          Zone = 379 },
         {
             Coord = { x = 2677.5, y = 3151.3000488281 },
-            ETA = 14,
             GossipOptionIDs = { 29681 },
             Qpart = { [30724] = { 1 } },
             Range = 30,
             Zone = 379
         },
-        { Coord = { x = 3005.8000488281, y = 3018.5 }, Done = { 30724 },          Zone = 379 },
+        { Coord = { x = 3005.8000488281, y = 3018.5 }, ETA = 14,                  Done = { 30724 }, Zone = 379 },
         { Coord = { x = 3005.8000488281, y = 3018.5 }, PickUp = { 30750, 30751 }, Zone = 379 },
         {
             Coord = { x = 3135.1999511719, y = 3094.9001464844 },
@@ -2320,7 +2319,6 @@ if APR.Faction == "Alliance" then
         { Coord = { x = 3007.6000976562, y = 3019.6999511719 }, PickUp = { 30994 },      Zone = 379 },
         {
             Coord = { x = 3006, y = 3020.1999511719 },
-
             GossipOptionIDs = { 30541 },
             Qpart = { [30994] = { 1 } },
             Range = 30,
