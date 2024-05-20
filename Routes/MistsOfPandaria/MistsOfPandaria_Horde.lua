@@ -1379,7 +1379,6 @@ if APR.Faction == "Horde" then
             Coord = { x = 700.10003662109, y = -2833.4001464844 },
             DropQuest = 30675,
             DroppableQuest = { MobId = 60299, Qid = 30675, Text = "Unga Fish-Getter" },
-            RaidIcon = 60299,
             Range = 30,
             Zone = 418
         },
@@ -1540,12 +1539,12 @@ if APR.Faction == "Horde" then
             Range = 5,
             Zone = 433
         },
-        { Coord = { x = 292.10000610352, y = 1736.5 },          Done = { 31285 },   Zone = 379 },
-        { Coord = { x = 323.30001831055, y = 1717.7000732422 }, GetFP = 1017,       Zone = 379 },
-        { Coord = { x = 361, y = 1745.0999755859 },             PickUp = { 30460 }, Zone = 379 },
-        { Coord = { x = 316.80001831055, y = 1785 },            Done = { 31255 },   Zone = 379 },
-        { Coord = { x = 316.80001831055, y = 1785 },            PickUp = { 30457 }, Zone = 379 },
-        { Coord = { x = 413, y = 1848.3000488281 },             PickUp = { 30459 }, Zone = 379 },
+        { Coord = { x = 292.10000610352, y = 1736.5 }, Done = { 31285 },   Zone = 379 },
+        { Coord = { x = 299.60000610352, y = 1689, },  GetFP = 1017,       Zone = 379 },
+        { Coord = { x = 361, y = 1745.0999755859 },    PickUp = { 30460 }, Zone = 379 },
+        { Coord = { x = 316.80001831055, y = 1785 },   Done = { 31255 },   Zone = 379 },
+        { Coord = { x = 316.80001831055, y = 1785 },   PickUp = { 30457 }, Zone = 379 },
+        { Coord = { x = 413, y = 1848.3000488281 },    PickUp = { 30459 }, Zone = 379 },
         {
             Button = { ["30460-1"] = 79819 },
             Coord = { x = 552.60003662109, y = 1924.2000732422 },
@@ -1643,10 +1642,9 @@ if APR.Faction == "Horde" then
         { Coord = { x = 1195.4000244141, y = 2490.6000976562 }, Qpart = { [30594] = { 1 }, [30595] = { 1 } }, Range = 30, Zone = 379 },
         { Coord = { x = 1108.7000732422, y = 2355 },            Done = { 30595 },                             Zone = 379 },
         {
-            Coord = { x = 609, y = 2421.4001464844 },
+            Coord = { x = 490.80001831055, y = 2513.1999511719, },
             DropQuest = 30582,
             DroppableQuest = { MobId = 59718, Qid = 30582, Text = "Burilgi Despoiler" },
-            RaidIcon = 59718,
             Range = 15,
             Zone = 379
         },

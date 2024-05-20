@@ -725,12 +725,13 @@ local function APR_UpdateStep()
                 if APR.IsInRouteZone then
                     local MobId = questData.MobId
                     local MobName = APRData.NPCList[MobId] or questData.Text
-                    local questText = L["Q_DROP"] .. " - " .. MobName
+                    local questText = format(L["Q_DROP"], MobName)
 
                     APR.currentStep:UpdateQuestSteps(Qid, questText, "DroppableQuest")
                 end
             end
         end
+
         if steps.Fillers then
             local IdList = steps.Fillers
             for questId, objectives in pairs(IdList) do
@@ -1769,26 +1770,24 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 
     if (event == "UPDATE_MOUSEOVER_UNIT") then
         if (steps and steps.RaidIcon) then
-            local guid = UnitGUID("mouseover")
-            if (guid) then
-                local _, _, _, _, _, npc_id, _ = strsplit("-", guid)
-                if (npc_id and tonumber(steps.RaidIcon) == tonumber(npc_id)) then
+            local targetID = UnitGUID("mouseover")
+            if (targetID) then
+                local targetID = select(6, strsplit("-", targetGUID))
+                if (targetID and tonumber(steps.RaidIcon) == tonumber(targetID)) then
                     if (not GetRaidTargetIndex("mouseover")) then
                         SetRaidTarget("mouseover", 8)
                     end
                 end
-            end
-        elseif (steps and steps.DroppableQuest) then
-            if (UnitGUID("mouseover") and UnitName("mouseover")) then
-                local guid, name = UnitGUID("mouseover"), UnitName("mouseover")
-                if (guid) then
-                    local type, _, _, _, _, npc_id, _ = strsplit("-", guid);
-                    if (type == "Creature" and npc_id and name and steps.DroppableQuest.MobId == tonumber(npc_id)) then
-                        if (APRData.NPCList and not APRData.NPCList[tonumber(npc_id)]) then
-                            APRData.NPCList[tonumber(npc_id)] = name
-                        end
+            elseif (steps and steps.DroppableQuest) then
+                if (UnitGUID("mouseover") and UnitName("mouseover")) then
+                    local targetGUID, targetName = UnitGUID("mouseover"), UnitName("mouseover")
+                    local targetID = select(6, strsplit("-", targetGUID))
+                    if (type == "Creature" and steps.DroppableQuest.MobId == tonumber(targetID)) then
+                        tinsert(APRData.NPCList[targetID], targetName)
                     end
                 end
+            elseif not IsInInstance() and GetRaidTargetIndex("mouseover") then
+                SetRaidTarget("mouseover", 0)
             end
         end
         DoEmoteStep(steps)

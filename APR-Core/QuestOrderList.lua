@@ -375,10 +375,15 @@ function APR.questOrderList:AddStepFromRoute()
                     AddStepFrameWithQuest(stepIndex, L["PICK_UP_Q"], questInfo, "gray")
                 end
             elseif step.DropQuest then
-                local questID = step.DropQuest
+                local questData = step.DroppableQuest
+                local questID = questData.Qid
+                local MobId = questData.MobId
+                local MobName = APRData.NPCList[MobId] or questData.Text
+                local questText = format(L["Q_DROP"], MobName)
+                local questInfo = { { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) } }
                 local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID]) and "green" or
                     "gray"
-                AddStepFrame(stepIndex, L["Q_DROP"], color)
+                AddStepFrameWithQuest(stepIndex, questText, questInfo, color)
             elseif step.Qpart then
                 local idList = step.Qpart
                 local dbList = step.QpartDB or {}
