@@ -815,7 +815,6 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         Coord = { x = 111.5, y = 423.60000610352 },
         DropQuest = 29758,
         DroppableQuest = { MobId = 56833, Qid = 29758, Text = "Krosh" },
-        RaidIcon = 56833,
         Fillers = { [29600] = { 1 }, [29757] = { 1 } },
         Zone = 376
     },
@@ -1823,7 +1822,6 @@ APR.RouteQuestStepList["390-Dread Wastes"]             = {
         Coord = { x = 2510.9001464844, y = -737.79998779297 },
         DropQuest = 31023,
         DroppableQuest = { MobId = 61970, Qid = 31023, Text = "Mistblade Ripper" },
-        RaidIcon = 61970,
         Zone = 422
     },
     {
