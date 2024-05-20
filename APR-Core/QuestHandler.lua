@@ -242,14 +242,20 @@ local function APR_UpdateStep()
             end
         end
         -- Check for ExtraLineText
+        local extraLines = {}
         for key, value in pairs(steps) do
             if string.match(key, "ExtraLineText+") and APR.IsInRouteZone then
-                local APRExtraLine = steps[key]
-                if (L[APRExtraLine]) then
-                    APR.currentStep:AddExtraLineText(APRExtraLine, L[APRExtraLine])
-                end
+                table.insert(extraLines, { key = key, text = value })
             end
         end
+        table.sort(extraLines, function(a, b) return a.key < b.key end)
+        for _, line in ipairs(extraLines) do
+            local APRExtraLine = line.text
+            if L[APRExtraLine] then
+                APR.currentStep:AddExtraLineText(APRExtraLine, L[APRExtraLine])
+            end
+        end
+
         -- //TODO REWORK ExtraLine
         if (steps.ExtraLine and APR.IsInRouteZone) then
             local APRExtraLine = steps.ExtraLine
