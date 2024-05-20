@@ -814,7 +814,8 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
     {
         Coord = { x = 111.5, y = 423.60000610352 },
         DropQuest = 29758,
-        DroppableQuest = { MobId = "56833", Qid = 29758, Text = "Krosh" },
+        DroppableQuest = { MobId = 56833, Qid = 29758, Text = "Krosh" },
+        RaidIcon = 56833,
         Fillers = { [29600] = { 1 }, [29757] = { 1 } },
         Zone = 376
     },
@@ -879,7 +880,7 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
     {
         Coord = { x = 425.30001831055, y = 414.39999389648 },
         DropQuest = 30275,
-        DroppableQuest = { MobId = "58755", Qid = 30275, Text = "MèredeMutigueule" },
+        DroppableQuest = { MobId = 58755, Qid = 30275, Text = "Manglemaw's Mother" },
         ExtraLineText = "KILL_BABY_TO_MAKE_MOTHER_APPEAR",
         Zone = 376
     },
@@ -1124,13 +1125,13 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
     },
     {
         Coord = { x = 2072.6000976562, y = -338.39999389648 },
-        GossipOptionIDs = { 40261, 40473,},
+        GossipOptionIDs = { 40261, 40473, },
         Qpart = { [29982] = { 4 } },
         Zone = 376
     },
     {
         Coord = { x = 2172.8000488281, y = -372.70001220703 },
-        GossipOptionIDs = { 40508,40474, },
+        GossipOptionIDs = { 40508, 40474, },
         Qpart = { [29982] = { 2 } },
         Zone = 376
     },
@@ -1821,7 +1822,8 @@ APR.RouteQuestStepList["390-Dread Wastes"]             = {
     {
         Coord = { x = 2510.9001464844, y = -737.79998779297 },
         DropQuest = 31023,
-        DroppableQuest = { MobId = "61970", Qid = 31023, Text = "Eventreurlame-de-brume" },
+        DroppableQuest = { MobId = 61970, Qid = 31023, Text = "Mistblade Ripper" },
+        RaidIcon = 61970,
         Zone = 422
     },
     {
