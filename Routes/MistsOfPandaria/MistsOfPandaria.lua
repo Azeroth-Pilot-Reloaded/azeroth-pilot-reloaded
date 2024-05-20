@@ -1407,6 +1407,7 @@ APR.RouteQuestStepList["388-Townlong Steppes"]         = {
     { Coord = { x = 2515, y = 1323.9000244141 },            Done = { 30887 },                             Zone = 388 },
     { Coord = { x = 2515, y = 1323.9000244141 },            PickUp = { 30888, 30890, 30889 },             Zone = 388 },
     {
+        Button = { ["30888-1"] = 81925 },
         Coord = { x = 2357, y = 1337.8000488281 },
         Fillers = { [30888] = { 1 }, [30889] = { 1 } },
         GossipOptionIDs = { 40590 },
@@ -1414,6 +1415,7 @@ APR.RouteQuestStepList["388-Townlong Steppes"]         = {
         Zone = 388
     },
     {
+        Button = { ["30888-1"] = 81925 },
         Coord = { x = 2410.9001464844, y = 1258.3000488281 },
         Fillers = { [30888] = { 1 }, [30889] = { 1 } },
         GossipOptionIDs = { 37625 },
@@ -1421,6 +1423,7 @@ APR.RouteQuestStepList["388-Townlong Steppes"]         = {
         Zone = 388
     },
     {
+        Button = { ["30888-1"] = 81925 },
         Coord = { x = 2541.4001464844, y = 1105.7000732422 },
         Fillers = { [30888] = { 1 }, [30889] = { 1 } },
         GossipOptionIDs = { 37888 },
@@ -1428,6 +1431,7 @@ APR.RouteQuestStepList["388-Townlong Steppes"]         = {
         Zone = 388
     },
     {
+        Button = { ["30888-1"] = 81925 },
         Coord = { x = 2339.8000488281, y = 1129.0999755859 },
         Fillers = { [30888] = { 1 }, [30889] = { 1 } },
         GossipOptionIDs = { 37889 },
