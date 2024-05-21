@@ -98,10 +98,16 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.2.6", "2024-05-22" },
+        "#Bugs",
+        "- Fixed Isle of Thunder Route",
+        "- Fixed a lua error for RaidIcon Step",
+        "- Fixed a lua error with the Arrow calcul position",
+
         { "v3.2.5", "2024-05-21" },
         "#Bugs",
         "- Fixed Townlong Steppes",
-        
+
         { "v3.2.4", "2024-05-20" },
         "#Bugs",
         "- Fixed Range for The Talon King quest (35734)",
