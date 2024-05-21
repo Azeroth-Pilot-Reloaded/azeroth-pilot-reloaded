@@ -42,10 +42,10 @@ end
 
 function GetTargetID(unit)
     unit = unit or "target"
-    local target = UnitGUID(unit)
-    if (target and string.find(target, "(.*)-(.*)")) then
-        local type, zero, server_id, instance_id, zone_uid, npc_id, spawn_uid = strsplit("-", target)
-        return tonumber(npc_id)
+    local targetGUID = UnitGUID(unit)
+    if targetGUID then
+        local targetID = select(6, strsplit("-", targetGUID))
+        return tonumber(targetID)
     end
     return nil
 end

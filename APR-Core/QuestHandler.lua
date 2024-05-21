@@ -1776,8 +1776,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 
     if (event == "UPDATE_MOUSEOVER_UNIT") then
         if (steps and steps.RaidIcon) then
-            local targetID = UnitGUID("mouseover")
-            if (targetID) then
+            local targetGUID = UnitGUID("mouseover")
+            if (targetGUID) then
                 local targetID = select(6, strsplit("-", targetGUID))
                 if (targetID and tonumber(steps.RaidIcon) == tonumber(targetID)) then
                     if (not GetRaidTargetIndex("mouseover")) then

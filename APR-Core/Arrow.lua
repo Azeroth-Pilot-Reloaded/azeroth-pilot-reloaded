@@ -156,7 +156,7 @@ function APR.Arrow:SetQPTT()
         return
     end
     local step = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
-    if step.NoArrow then
+    if step and step.NoArrow then
         self:SetArrowActive(false, 0, 0)
         return
     end
@@ -198,6 +198,7 @@ function APR.Arrow:CalculPosition()
     APR.ArrowFrame:Show()
     APR.ArrowFrame.Button:Hide()
 
+    if not GetPlayerFacing() then return end
     local x, y = APR.Arrow.x, APR.Arrow.y
     local deltaX, deltaY = playerX - x, y - playerY
     local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5

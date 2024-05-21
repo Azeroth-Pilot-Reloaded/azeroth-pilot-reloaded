@@ -2407,9 +2407,9 @@ if APR.Faction == "Alliance" then
             RaidIcon = 70370,
             Zone = 504
         },
-        { Coord = { x = 4991, y = 6135.5 },                     InstanceQuest = true, Qpart = { [32644] = { 2 } }, Range = 5, Zone = 516 },
-        { Coord = { x = 5039.1000976562, y = 6157.3002929688 }, Done = { 32644 },     Zone = 504 },
-        { Coord = { x = 5039.1000976562, y = 6157.3002929688 }, PickUp = { 32654 },   Zone = 504 },
+        { Coord = { x = 4991, y = 6135.5 },                     Qpart = { [32644] = { 2 } }, Range = 5, Zone = 516 },
+        { Coord = { x = 5039.1000976562, y = 6157.3002929688 }, Done = { 32644 },            Zone = 504 },
+        { Coord = { x = 5039.1000976562, y = 6157.3002929688 }, PickUp = { 32654 },          Zone = 504 },
         {
             Coord = { x = 5039.1000976562, y = 6157.3002929688 },
             GossipOptionIDs = { 41768 },
@@ -2417,9 +2417,9 @@ if APR.Faction == "Alliance" then
             RaidIcon = 67992,
             Zone = 504
         },
-        { Coord = { x = 5391, y = 6884.3999023438 },            InstanceQuest = true, Qpart = { [32654] = { 2 } }, Range = 5, Zone = 516 },
-        { Coord = { x = 5039.3002929688, y = 6157.2001953125 }, Done = { 32654 },     ExtraLineText = "USE_GATE",  Zone = 504 },
-        { Coord = { x = 5039.3002929688, y = 6157.2001953125 }, PickUp = { 32652 },   Zone = 504 },
+        { Coord = { x = 5391, y = 6884.3999023438 },            Qpart = { [32654] = { 2 } }, Range = 5,                  Zone = 516 },
+        { Coord = { x = 5039.3002929688, y = 6157.2001953125 }, Done = { 32654 },            ExtraLineText = "USE_GATE", Zone = 504 },
+        { Coord = { x = 5039.3002929688, y = 6157.2001953125 }, PickUp = { 32652 },          Zone = 504 },
         {
             Coord = { x = 5039.3002929688, y = 6157.2001953125 },
             GossipOptionIDs = { 41767 },
@@ -2429,7 +2429,6 @@ if APR.Faction == "Alliance" then
         },
         {
             Coord = { x = 5636.6000976562, y = 7314.3999023438 },
-            InstanceQuest = true,
             Qpart = { [32652] = { 2 } },
             RaidIcon = 69917,
             Range = 5,
@@ -2441,7 +2440,6 @@ if APR.Faction == "Alliance" then
             Coord = { x = 5040.3002929688, y = 6110.7001953125 },
             ExtraActionB = 1,
             GossipOptionIDs = { 41662 },
-            InstanceQuest = true,
             Qpart = { [32655] = { 1 } },
             RaidIcon = 70297,
             Range = 5,
@@ -2458,7 +2456,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Coord = { x = 5177.7001953125, y = 7104.7001953125 },
-            InstanceQuest = true,
+
             Qpart = { [32656] = { 2 } },
             Range = 5,
             Zone = 516
