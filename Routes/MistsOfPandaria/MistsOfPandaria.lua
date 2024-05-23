@@ -1077,10 +1077,10 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         Zone = 376
     },
     {
-        Coord = { x = 1801.5999755859, y = -1014 },
+        Coord = { x = 1685.7, y = -853.7 },
         ExtraLineText = "FOXES_ARE_INVISIBLE_AROUND_DEERS",
         Qpart = { [30182] = { 1 }, [32038] = { 1 } },
-        Range = 30,
+        Range = 250,
         Zone = 376
     },
     { Coord = { x = 2047.5999755859, y = -1063.2000732422 }, Done = { 30182, 30184 },     Zone = 376 },
