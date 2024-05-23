@@ -856,13 +856,19 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
     { Coord = { x = 508.39999389648, y = -217.69999694824 }, PickUp = { 31255 }, PickUpDB = { 31254, 31255 }, Zone = 376 },
     { Coord = { x = 548.90002441406, y = 82.900001525879 },  Done = { 30049 },   Zone = 376 },
     { Coord = { x = 548.90002441406, y = 82.900001525879 },  PickUp = { 30051 }, Zone = 376 },
+    { 
+        Coord = { x = 548.90002441406, y = 82.900001525879 },  
+        Qpart = { [30051] = { 1 } },   
+        Range = 5, 
+        ExtraLineText = "TALK_NPC", 
+        GossipOptionIDs = { 40623 }, 
+        Zone = 376 
+    },
     {
         Coord = { x = 481.89999389648, y = 209.19999694824 },
-        ExtraLineText = "TALK_NPC",
         Fillers = { [30051] = { 2 } },
-        GossipOptionIDs = { 40623 },
         Qpart = { [32045] = { 1 } },
-        Range = 5,
+        Range = 10,
         Zone = 376
     },
     { Coord = { x = 521, y = 425.30001831055 },             Fillers = { [30051] = { 2 } }, Qpart = { [32045] = { 2 } }, Range = 10, Zone = 376 },
@@ -870,10 +876,10 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         Coord = { x = 662.29998779297, y = 393.10000610352 },
         Fillers = { [30051] = { 2 } },
         Qpart = { [32045] = { 3 } },
-        Range = 30,
+        Range = 10,
         Zone = 376
     },
-    { Coord = { x = 562.90002441406, y = 292.80001831055 }, Qpart = { [30051] = { 2 } },   Range = 30,                  Zone = 376 },
+    { Coord = { x = 562.90002441406, y = 292.80001831055 }, Qpart = { [30051] = { 2 } },   Range = 10,                  Zone = 376 },
     { Done = { 30051 },                                     NoArrow = 1,                   Zone = 376 },
     { NoArrow = 1,                                          PickUp = { 30172 },            Zone = 376 },
     {
