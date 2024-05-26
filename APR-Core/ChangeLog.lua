@@ -65,25 +65,6 @@ function APR.changelog:OnInit()
 
 
     if APR.version ~= APR.settings.profile.lastRecordedVersion then
-        if APR.version == "v3.2.0" then
-            APR.questionDialog:CreateQuestionPopup(
-                "APR - New release v3.2.0 detected! Force Reset your addon!",
-                function()
-                    APRData[APR.PlayerID] = {}
-                    APRZoneCompleted[APR.PlayerID] = {}
-                    APRCustomPath[APR.PlayerID] = {}
-                    C_UI.Reload()
-                end,
-                function()
-                    APRData[APR.PlayerID] = {}
-                    APRZoneCompleted[APR.PlayerID] = {}
-                    APRCustomPath[APR.PlayerID] = {}
-                    C_UI.Reload()
-                end,
-                ACCEPT,
-                ACCEPT,
-                false)
-        end
         if APR.settings.profile.showChangeLog then
             self:ShowChangeLog()
         end
