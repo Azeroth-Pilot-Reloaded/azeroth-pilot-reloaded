@@ -79,6 +79,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.2.8", "2024-05-25" },
+        "#Features",
+        "- Remove force reset with the v3.2.0",
+
         { "v3.2.7", "2024-05-25" },
         "#Bugs",
         "- Fixed Coord and Range for Qpart 30182-1 (Fox Mastery)",
