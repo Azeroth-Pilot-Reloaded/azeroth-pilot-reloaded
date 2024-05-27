@@ -198,7 +198,7 @@ function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
 
         for _, portal in ipairs(portalMappings) do
             if CurContinent == portal.continent and (nextContinent == portal.nextContinent or nextZone == portal.nextZone) then
-                local portalPosition = APR.Portals[APR.Faction][portal.continent][portal.portalKey]
+                local portalPosition = APR.Portals.Coords[APR.Faction][portal.continent][portal.portalKey]
                 local distance = math.sqrt((playerX - portalPosition.x) ^ 2 + (playerY - portalPosition.y) ^ 2)
 
                 if closestDistance == nil or distance < closestDistance then
@@ -215,7 +215,7 @@ function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
     local function handlePortalsCapital(portalMappings, capitalNextContinent, capitalNextZone)
         for _, portal in ipairs(portalMappings) do
             if CurContinent == portal.continent and (capitalNextContinent == portal.nextContinent or capitalNextZone == portal.nextZone) then
-                local portalPosition = APR.Portals[APR.Faction][portal.continent][portal.portalKey]
+                local portalPosition = APR.Portals.Coords[APR.Faction][portal.continent][portal.portalKey]
                 return portal, portalPosition
             end
         end
@@ -228,7 +228,7 @@ function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
     end
 
     -- Portal
-    local portalsDB = APR.ZonesData.SwitchCont[APR.Faction]
+    local portalsDB = APR.Portals.SwitchCont[APR.Faction]
     local portal, portalPosition = handlePortals(portalsDB)
 
     -- If no portal is found, redirect to the default capital
@@ -254,7 +254,7 @@ function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
         -- handle the Alliance portals room
         if APR.Faction == "Alliance" and CurContinent == 13 and (posY > -8981.3 and posX < 866.7) then
             APR.currentStep:AddExtraLineText("GO_PORTAL_ROOM", L["GO_PORTAL_ROOM"])
-            local portalRoom = APR.Portals["Alliance"][CurContinent]["StormwindPortalRoom"]
+            local portalRoom = APR.Portals.Coords["Alliance"][CurContinent]["StormwindPortalRoom"]
             APR.Arrow:SetArrowActive(true, portalRoom.x, portalRoom.y)
         else
             local extraText = portal.extraText or "USE_PORTAL_TO"
