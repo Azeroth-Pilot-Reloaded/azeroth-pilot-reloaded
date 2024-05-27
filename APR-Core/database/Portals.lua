@@ -1,4 +1,5 @@
-APR.Portals = {
+APR.Portals = {}
+APR.Portals.Coords = {
     ["Alliance"] = {
         [12] = {
             ["Stormwind"] = { x = -11576.5, y = -4053 },
@@ -22,7 +23,12 @@ APR.Portals = {
         },
         [101] = { ["Stormwind"] = { x = 5388.7, y = -1893.5 }, ["Stormwind DarkPortal"] = { x = 931.9, y = -274.6 } },
         [113] = { ["Stormwind"] = { x = 720.2, y = 5719.5 } },
-        [424] = { ["Stormwind"] = { x = -1776, y = -311.3 } },
+        [424] = {
+            ["Stormwind Jade Forest"] = { x = -1776, y = -311.3 },
+            ["Stormwind Blossom"] = { x = 176.9, y = 828.6 },
+            ["Isle of Thunder"] = { x = 4222, y = 1928.8 },
+            ["Townlong Steppes"] = { x = 4977.8, y = 6122.6, }
+        },
         [572] = { ["Stormwind"] = { x = -4042.4, y = 3735.5 } },
         [619] = {
             ["Stormwind"] = { x = 4548.5, y = -929.5 },
@@ -77,8 +83,13 @@ APR.Portals = {
             ["DarkPortal BC"] = { x = 55.8, y = 1768.7 }
         },
         [101] = { ["Orgrimmar"] = { x = 5394.1, y = -1898.9 }, ["Orgrimmar DarkPortal"] = { x = 932.3, y = -222.8 } },
-        [113] = { ["Orgrimmar"] = { x = 593.7, y = 5926.2 } },
-        [424] = { ["Orgrimmar"] = { x = -539.3, y = 3000.4 } },
+        [113] = { ["Orgrimmar"] = { x = 593.7, y = 5926.2 }, },
+        [424] = {
+            ["Orgrimmar Jade Forest"] = { x = -539.3, y = 3000.4 },
+            ["Orgrimmar Blossom"] = { x = 873.10003662109, y = 1735 },
+            ["Isle of Thunder"] = { x = 4170.20, y = 1747.5 },
+            ["Townlong Steppes"] = { x = 4170.1000976562, y = 1747.5, }
+        },
         [572] = { ["Orgrimmar"] = { x = -4074.7, y = 5267 } },
         [619] = {
             ["Orgrimmar"] = { x = 4418.6, y = -714.8 },
@@ -101,4 +112,94 @@ APR.Portals = {
         [1550] = { ["Orgrimmar"] = { x = 1539.3, y = -1859.5 }, ["OribosInMaldraxxus"] = { x = -2517.7, y = 2573.5 } },
         [1978] = { ["Orgrimmar"] = { x = -1023, y = 278 } }
     }
+}
+
+APR.Portals.SwitchCont = {
+    ["Alliance"] = {
+        { continent = 13,   nextContinent = 12,   nextZone = 103,  portalKey = "Exodar",                  closestTaxiNode = "Stormwind, Elwynn" },
+        { continent = 13,   nextContinent = 101,  nextZone = 111,  portalKey = "Shattrath",               closestTaxiNode = "Stormwind, Elwynn" },
+        { continent = 13,   nextContinent = 113,  nextZone = 125,  portalKey = "DalaranLichKing",         closestTaxiNode = "Stormwind, Elwynn" },
+        { continent = 13,   nextContinent = 424,  nextZone = 371,  portalKey = "JadeForestMoP",           closestTaxiNode = "Stormwind, Elwynn" },
+        { continent = 13,   nextContinent = 12,   nextZone = 17,   portalKey = "DarkPortal Talk",         closestTaxiNode = "Stormwind, Elwynn",                               extraText = "TALK_TO" },
+        { continent = 13,   nextContinent = 572,  nextZone = 577,  portalKey = "DarkPortal Talk",         closestTaxiNode = "Stormwind, Elwynn",                               extraText = "TALK_TO" },
+        { continent = 13,   nextContinent = 572,  nextZone = 577,  portalKey = "DarkPortal" },
+        { continent = 13,   nextContinent = 572,  nextZone = 622,  portalKey = "StormshieldWoD",          closestTaxiNode = "Stormwind, Elwynn" },
+        { continent = 13,   nextContinent = 619,  nextZone = 630,  portalKey = "AzsunaLegion",            closestTaxiNode = "Stormwind, Elwynn" },
+        { continent = 13,   nextContinent = 876,  nextZone = 1161, portalKey = "BoralusBFA",              closestTaxiNode = "Stormwind, Elwynn" },
+        { continent = 13,   nextContinent = 1550, nextZone = 1670, portalKey = "Oribos",                  closestTaxiNode = "Stormwind, Elwynn" },
+        { continent = 13,   nextContinent = 1978, nextZone = 2112, portalKey = "Valdrakken",              closestTaxiNode = "Stormwind, Elwynn" },
+
+        { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "The Exodar" },
+        { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Exodar",                  closestTaxiNode = "Darnassus, Teldrassil" },
+        { continent = 12,   nextContinent = 12,   nextZone = 103,  portalKey = "Exodar" },
+        { continent = 12,   nextContinent = 101,  nextZone = 530,  portalKey = "DarkPortal BC" },
+        { continent = 101,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Shattrath, Terokkar Forest" },
+        { continent = 101,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind DarkPortal",    closestTaxiNode = "Hellfire Peninsula, The Dark Portal" },
+        { continent = 113,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Dalaran" },
+        { continent = 424,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind Blossom",       closestTaxiNode = "Shrine of Seven Stars, Vale of Eternal Blossoms", extraText = "UPSTAIRS" },
+        { continent = 424,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind Jade Forest",   closestTaxiNode = "Paw'Don Village, Jade Forest" },
+        { continent = 424,  nextContinent = 424,  nextZone = 504,  portalKey = "Isle of Thunder", },
+        { continent = 424,  nextContinent = 424,  nextZone = 388,  portalKey = "Townlong Steppes", },
+        { continent = 572,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Stormshield (Alliance), Ashran" },
+        { continent = 619,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Dalaran" },
+        { continent = 619,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind AzsunaLegion", },
+        { continent = 619,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind Telogrus Rift", },
+        { continent = 619,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind Vindicaar", },
+        { continent = 875,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind", },
+        { continent = 876,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Tradewinds Market, Tiragarde Sound" },
+        { continent = 1550, nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Oribos" },
+        { continent = 1978, nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Valdrakken, Thaldraszus" },
+
+        { continent = 875,  nextContinent = 875,  nextZone = 862,  portalKey = "Zuldazar",                closestTaxiNode = "Xibala, Zuldazar",                                extraText = "TALK_TO" },
+        { continent = 875,  nextContinent = 875,  nextZone = 863,  portalKey = "Nazmir",                  closestTaxiNode = "Fort Victory, Nazmir",                            extraText = "TALK_TO" },
+        { continent = 875,  nextContinent = 875,  nextZone = 864,  portalKey = "Vol'dun",                 closestTaxiNode = "Shatterstone Harbor, Vol'dun",                    extraText = "TALK_TO" },
+        { continent = 876,  nextContinent = 875,  nextZone = 862,  portalKey = "Zuldazar",                closestTaxiNode = "Tradewinds Market, Tiragarde Sound",              extraText = "SAIL_TO" },
+        { continent = 876,  nextContinent = 875,  nextZone = 863,  portalKey = "Nazmir",                  closestTaxiNode = "Tradewinds Market, Tiragarde Sound",              extraText = "SAIL_TO" },
+        { continent = 876,  nextContinent = 875,  nextZone = 864,  portalKey = "Vol'dun",                 closestTaxiNode = "Tradewinds Market, Tiragarde Sound",              extraText = "SAIL_TO" },
+    },
+    ["Horde"] = {
+        { continent = 12,   nextContinent = 13,   nextZone = 224,  portalKey = "STVZep",                 closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "USE_ZEPPELIN_TO" },
+        { continent = 12,   nextContinent = 13,   nextZone = 90,   portalKey = "Undercity",              closestTaxiNode = "Orgrimmar, Durotar" },
+        { continent = 12,   nextContinent = 101,  nextZone = 111,  portalKey = "Shattrath",              closestTaxiNode = "Orgrimmar, Durotar" },
+        { continent = 12,   nextContinent = 113,  nextZone = 126,  portalKey = "DalaranLichKing",        closestTaxiNode = "Orgrimmar, Durotar" },
+        { continent = 12,   nextContinent = 424,  nextZone = 371,  portalKey = "JadeForest",             closestTaxiNode = "Orgrimmar, Durotar" },
+        { continent = 12,   nextContinent = 572,  nextZone = 577,  portalKey = "DarkPortal Talk",        closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "TALK_TO" },
+        { continent = 12,   nextContinent = 12,   nextZone = 17,   portalKey = "DarkPortal Talk",        closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "TALK_TO" },
+        { continent = 12,   nextContinent = 572,  nextZone = 624,  portalKey = "WarspearWoD",            closestTaxiNode = "Orgrimmar, Durotar" },
+        { continent = 12,   nextContinent = 619,  nextZone = 630,  portalKey = "AzsunaLegion",           closestTaxiNode = "Orgrimmar, Durotar" },
+        { continent = 12,   nextContinent = 875,  nextZone = 862,  portalKey = "Zuldazar",               closestTaxiNode = "Orgrimmar, Durotar" },
+        { continent = 12,   nextContinent = 1550, nextZone = 1670, portalKey = "Oribos",                 closestTaxiNode = "Orgrimmar, Durotar" },
+        { continent = 12,   nextContinent = 1978, nextZone = 2112, portalKey = "Valdrakken",             closestTaxiNode = "Orgrimmar, Durotar" },
+
+        { continent = 13,   nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar" },
+        { continent = 13,   nextContinent = 572,  nextZone = 577,  portalKey = "DarkPortal" },
+        { continent = 13,   nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Silvermoon",   closestTaxiNode = "Silvermoon City" },
+        { continent = 13,   nextContinent = 101,  nextZone = 530,  portalKey = "DarkPortal BC" },
+        { continent = 13,   nextContinent = 113,  nextZone = 571,  portalKey = "Howling Fjord" },
+
+        { continent = 101,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Shattrath, Terokkar Forest" },
+        { continent = 101,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar DarkPortal",   closestTaxiNode = "Hellfire Peninsula, The Dark Portal" },
+        { continent = 113,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Dalaran" },
+        { continent = 424,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Blossom",      closestTaxiNode = "Shrine of Two Moons, Vale of Eternal Blossoms", extraText = "UPSTAIRS" },
+        { continent = 424,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Jade Forest",  closestTaxiNode = "Honeydew Village, Jade Forest" },
+        { continent = 424,  nextContinent = 424,  nextZone = 388,  portalKey = "Townlong Steppes", },
+        { continent = 424,  nextContinent = 424,  nextZone = 504,  portalKey = "Isle of Thunder", },
+        { continent = 572,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Warspear, Ashran" },
+        { continent = 619,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Dalaran" },
+        { continent = 619,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Suramar", },
+        { continent = 619,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar AzsunaLegion", },
+        { continent = 619,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Highmountain", },
+        { continent = 875,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Port of Zandalar, Zuldazar" },
+        { continent = 875,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Dazaralor", },
+        { continent = 1550, nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Oribos" },
+        { continent = 1978, nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Valdrakken, Thaldraszus" },
+
+        { continent = 875,  nextContinent = 876,  nextZone = 876,  portalKey = "Drustvar",               closestTaxiNode = "Port of Zandalar, Zuldazar",                    extraText = "SAIL_TO" },
+        { continent = 875,  nextContinent = 876,  nextZone = 942,  portalKey = "StormsongValley",        closestTaxiNode = "Port of Zandalar, Zuldazar",                    extraText = "SAIL_TO" },
+        { continent = 875,  nextContinent = 876,  nextZone = 895,  portalKey = "TiragardeSound",         closestTaxiNode = "Port of Zandalar, Zuldazar",                    extraText = "SAIL_TO" },
+        { continent = 876,  nextContinent = 876,  nextZone = 896,  portalKey = "DrustvarSail",           closestTaxiNode = "Anyport, Drustvar",                             extraText = "TALK_TO" },
+        { continent = 876,  nextContinent = 876,  nextZone = 942,  portalKey = "StormsongValleySail",    closestTaxiNode = "Warfang Hold, Stormsong Valley",                extraText = "TALK_TO" },
+        { continent = 876,  nextContinent = 876,  nextZone = 895,  portalKey = "TiragardeSoundSail",     closestTaxiNode = "Plunder Harbor, Tiragarde Sound",               extraText = "TALK_TO" },
+        { continent = 1550, nextContinent = 1550, nextZone = 1536, portalKey = "OribosInMaldraxxus",     closestTaxiNode = "Theater of Pain, Maldraxxus" },
+    },
 }
