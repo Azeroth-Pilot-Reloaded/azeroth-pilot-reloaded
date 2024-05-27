@@ -1436,8 +1436,20 @@ if APR.Faction == "Alliance" then
             Waypoint = 31286,
             Zone = 433
         },
-        { Coord = { x = 23.89999961853, y = 1121.9000244141 },   Range = 5, Waypoint = 31286, Zone = 433 },
-        { Coord = { x = -52.100002288818, y = 1172.5999755859 }, Range = 5, Waypoint = 31286, Zone = 433 },
+        { 
+            Coord = { x = 23.89999961853, y = 1121.9000244141 },
+            Fillers = { [31286] = { 1 } },
+            Range = 5,
+            Waypoint = 31286,
+            Zone = 433
+            },
+        {
+            Coord = { x = -52.100002288818, y = 1172.5999755859 },
+            Fillers = { [31286] = { 1 } },
+            Range = 5,
+            Waypoint = 31286,
+            Zone = 433
+            },
         {
             Coord = { x = -102.40000152588, y = 1170.5 },
             Fillers = { [31286] = { 1 } },
