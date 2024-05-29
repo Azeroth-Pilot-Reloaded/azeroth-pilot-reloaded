@@ -101,7 +101,6 @@ if APR.Faction == "Alliance" then
             Range = 5,
             Zone = 371
         },
-        { Range = 5,                                              Waypoint = 31743,                      Zone = 371 },
         {
             Button = { ["31743-1"] = 89602 },
             Coord = { x = -1400.5, y = -183.5 },
@@ -258,7 +257,7 @@ if APR.Faction == "Alliance" then
         { Coord = { x = -2666.1000976562, y = -150 },  PickUp = { 29888 },          Zone = 371 },
         {
             Coord = { x = -2692.6000976562, y = -266 },
-            ExtraLineText = "SPEAK_TO_NPC_TO_GIVE_THEM_EQUIPMENT",
+            ExtraLineText1 = "SPEAK_TO_NPC_TO_GIVE_THEM_EQUIPMENT",
             ExtraLineText2 = "DAGGERS_GIVE_DAGGER",
             ExtraLineText3 = "SWORD_GIVE_SHIELD",
             ExtraLineText4 = "RED_STAFF_GIVE_HEALING_PRAYER",
