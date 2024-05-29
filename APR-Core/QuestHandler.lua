@@ -1724,11 +1724,9 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
 
     if (event == "UI_INFO_MESSAGE") then
-        local arg1, arg2, arg3, arg4, arg5 = ...;
-        if Contains({ 280, 281, 282, 283 }, arg1) then
-            if (steps and steps.GetFP) then
-                _G.UpdateNextStep()
-            end
+        local errorType, msg = ...;
+        if steps and steps.GetFP and (msg == _G.ERR_NEWTAXIPATH or msg == _G.ERR_TAXINOPATHS) then
+            _G.UpdateNextStep()
         end
     end
 
