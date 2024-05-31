@@ -79,6 +79,16 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.2.9", "2024-06-01" },
+        "#Features",
+        "- Changed event for GetFP to detect new taxi node",
+
+        "#Bug",
+        "- Added fillers to 31286 cave waypoints (Robbing Robbers of Robbers)",
+        "- Adjust coords for 30624 (It Does You No Good In The Keg)",
+        "- Added MoP portal coord for Isle of thunder to avoid transport module bug",
+        "- Removed useless waypoints in Jade forest route",
+
         { "v3.2.8", "2024-05-25" },
         "#Features",
         "- Remove force reset with the v3.2.0",
