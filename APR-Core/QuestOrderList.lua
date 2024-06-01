@@ -7,7 +7,8 @@ APR.questOrderList = APR:NewModule("QuestOrderList")
 APR.questOrderList.stepList = {}
 APR.questOrderList.questID = nil
 APR.questOrderList.currentStepIndex = nil
-
+APR.questOrderList.updateTimer = nil
+APR.questOrderList.pendingUpdate = false
 
 -- Local constants
 local FRAME_WIDTH = 250
@@ -163,16 +164,17 @@ local function SetCurrentStepIndicator(stepindex)
         questFont:SetTextColor(unpack(APR.Color.white))
     end
 
-    local scrollFrame = QuestOrderListFrame_ScrollFrame
-    if scrollFrame:GetVerticalScrollRange() > 0 then
-        local yOffset = 0
-        for i = 1, stepindex - 1 do
-            local prevContainer = APR.questOrderList.stepList[i]
-            yOffset = yOffset + (prevContainer and prevContainer:GetHeight() or 0)
+    C_Timer.After(0.1, function()
+        local scrollFrame = QuestOrderListFrame_ScrollFrame
+        if scrollFrame:GetVerticalScrollRange() > 0 then
+            local yOffset = 0
+            for i = 1, stepindex - 1 do
+                local prevContainer = APR.questOrderList.stepList[i]
+                yOffset = yOffset + (prevContainer and prevContainer:GetHeight() or 0)
+            end
+            scrollFrame:SetVerticalScroll(yOffset)
         end
-
-        scrollFrame:SetVerticalScroll(yOffset)
-    end
+    end)
 end
 
 local function CreateTextFont(parent, text, width, color)
@@ -301,7 +303,7 @@ function APR.questOrderList:AddStepFromRoute()
 
     -- Store the current step index
     self.currentStepIndex = CurStep
-
+    print('Render AddStepFromRoute')
     -- Clean list
     self:RemoveSteps()
 
@@ -543,4 +545,23 @@ function APR.questOrderList:AddStepFromRoute()
     end
     -- set current Step indicator
     SetCurrentStepIndicator(CurStep)
+end
+
+function APR.questOrderList:DelayedUpdate()
+    if self.updateTimer then
+        self.pendingUpdate = true
+    else
+        self:AddStepFromRoute()
+        self.updateTimer = C_Timer.NewTimer(0.8, function()
+            if self.pendingUpdate then
+                self:AddStepFromRoute()
+                self.pendingUpdate = false
+                self.updateTimer = C_Timer.NewTimer(0.8, function()
+                    self.updateTimer = nil
+                end)
+            else
+                self.updateTimer = nil
+            end
+        end)
+    end
 end

@@ -781,7 +781,7 @@ local function APR_UpdateStep()
         -- Set Quest Item Button
         APR.SetButton()
         APR.BookingList["SetQPTT"] = true
-        APR.questOrderList:AddStepFromRoute()
+        APR.questOrderList:DelayedUpdate()
         -- set Progress bar with the right total
         APR.currentStep:SetProgressBar(CurStep)
     else
