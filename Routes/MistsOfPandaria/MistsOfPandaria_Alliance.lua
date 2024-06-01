@@ -1435,7 +1435,7 @@ if APR.Faction == "Alliance" then
             Waypoint = 31286,
             Zone = 433
         },
-        { 
+        {
             Coord = { x = 23.89999961853, y = 1121.9000244141 },
             Fillers = { [31286] = { 1 } },
             Range = 5,
@@ -1496,6 +1496,7 @@ if APR.Faction == "Alliance" then
         { Coord = { x = 165.90000915527, y = 2408.5 },          PickUp = { 30834 },          Zone = 379 },
         {
             Coord = { x = 204.60000610352, y = 2361.4001464844 },
+            GossipOptionIDs = { 35732 },
             Fillers = { [30468] = { 1 }, [30469] = { 1 }, [30967] = { 1 } },
             Qpart = { [30496] = { 1 } },
             Range = 5,
