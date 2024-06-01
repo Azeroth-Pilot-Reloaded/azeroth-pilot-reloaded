@@ -373,10 +373,10 @@ local function APR_UpdateStep()
                 print("APR.UpdateStep:LearnProfession" .. APRData[APR.PlayerID][APR.ActiveRoute])
             end
             local spellID = steps.LearnProfession
-            if GetSpellBookItemInfo(GetSpellInfo(spellID)) then
+            if IsSpellKnown(spellID) then
                 _G.NextQuestStep()
             end
-            local name, _, icon = GetSpellInfo(spellID)
+            local name = GetSpellInfo(spellID)
             APR.currentStep:AddExtraLineText("LEARN_PROFESSION", format(L["LEARN_PROFESSION_DETAILS"], name))
         end
         if (steps.LeaveQuest) then

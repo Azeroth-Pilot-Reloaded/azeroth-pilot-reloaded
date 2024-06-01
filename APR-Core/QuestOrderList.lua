@@ -5,9 +5,11 @@ local LibWindow = LibStub("LibWindow-1.1")
 -- Initialize APR Quest Order List module
 APR.questOrderList = APR:NewModule("QuestOrderList")
 APR.questOrderList.stepList = {}
-APR.currentStep.questID = nil
+APR.questOrderList.questID = nil
+APR.questOrderList.currentStepIndex = nil
 
---Local constant
+
+-- Local constants
 local FRAME_WIDTH = 250
 local FRAME_HEIGHT = 300
 local FRAME_MIN_WIDTH = FRAME_WIDTH
@@ -35,9 +37,7 @@ QuestOrderListFrame:SetMovable(true)
 QuestOrderListFrame:SetResizable(true)
 QuestOrderListFrame:SetResizeBounds(FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
 QuestOrderListFrame:RegisterForDrag("LeftButton")
-QuestOrderListFrame:SetScript("OnDragStart", function(self, button)
-    self:StartMoving()
-end)
+QuestOrderListFrame:SetScript("OnDragStart", function(self) self:StartMoving() end)
 QuestOrderListFrame:SetScript("OnDragStop", function(self)
     self:StopMovingOrSizing()
     LibWindow.SavePosition(QuestOrderListPanel)
@@ -77,7 +77,7 @@ QuestOrderListFrame_StepHolderHeader.MinimizeButton:Hide()
 
 local closeButton = CreateFrame("Button", "QuestOrderListFrameCloseButton", QuestOrderListFrame, "UIPanelCloseButton")
 closeButton:SetSize(16, 16)
-closeButton:SetPoint("topright", QuestOrderListFrame, "topright", 0, -5)
+closeButton:SetPoint("TOPRIGHT", QuestOrderListFrame, "TOPRIGHT", 0, -5)
 closeButton:SetScript("OnClick", function()
     QuestOrderListPanel:Hide()
     APR.settings.profile.showQuestOrderList = false
@@ -89,7 +89,7 @@ resizeButton:SetPoint("BOTTOMRIGHT", QuestOrderListFrame, "BOTTOMRIGHT", -15, -2
 resizeButton:EnableMouse(true)
 resizeButton:SetNormalTexture("Interface/CHATFRAME/UI-ChatIM-SizeGrabber-Up")
 resizeButton:SetHighlightTexture("Interface/CHATFRAME/UI-ChatIM-SizeGrabber-Highlight")
-resizeButton:SetPushedTexture("Interface/ChatFrame/UI-ChatIM-SizeGrabber-Down")
+resizeButton:SetPushedTexture("Interface/CHATFRAME/UI-ChatIM-SizeGrabber-Down")
 
 resizeButton:SetScript("OnMouseDown", function(self, button)
     if button == "LeftButton" then
@@ -102,7 +102,6 @@ resizeButton:SetScript("OnMouseUp", function(self, button)
     APR.questOrderList:UpdateFrameContents()
 end)
 
-
 ---------------------------------------------------------------------------------------
 -------------------------- Function Quest Order List Frames ---------------------------
 ---------------------------------------------------------------------------------------
@@ -113,7 +112,7 @@ function APR.questOrderList:QuestOrderListFrameOnInit()
     QuestOrderListPanel.RegisteredForLibWindow = true
     QuestOrderListFrame_StepHolderHeader:Show()
     QuestOrderListFrame_StepHolder:Show()
-
+    self.currentStepIndex = nil
     self:RefreshFrameAnchor()
 end
 
@@ -138,7 +137,7 @@ end
 -- Reset the frame position
 function APR.questOrderList:ResetPosition()
     QuestOrderListPanel:ClearAllPoints()
-    QuestOrderListPanel:SetPoint("center", UIParent, "center", 0, 0)
+    QuestOrderListPanel:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
     LibWindow.SavePosition(QuestOrderListPanel)
     QuestOrderListPanel:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
     APR.questOrderList:UpdateBackgroundColorAlpha()
@@ -153,7 +152,7 @@ function APR.questOrderList:UpdateBackgroundColorAlpha(color)
     QuestOrderListFrame:SetBackdropColor(unpack(color or APR.settings.profile.questOrderListbackgroundColorAlpha))
 end
 
-local SetCurrentStepIndicator = function(stepindex)
+local function SetCurrentStepIndicator(stepindex)
     local container = APR.questOrderList.stepList[stepindex]
     if not container then return end
     container.indexFont:SetFontObject("GameFontHighlight")
@@ -192,9 +191,8 @@ local function CreateTextFont(parent, text, width, color)
     return fontString
 end
 
-local AddStepFrameWithQuest = function(stepIndex, stepText, questInfo, color)
+local function AddStepFrameWithQuest(stepIndex, stepText, questInfo, color)
     local container = CreateFrame("Frame", nil, QuestOrderListFrame_ScrollChild, "BackdropTemplate")
-
     local indexStr = tostring(stepIndex)
     local offset = 14 + 7 * string.len(indexStr)
 
@@ -215,34 +213,32 @@ local AddStepFrameWithQuest = function(stepIndex, stepText, questInfo, color)
 
         if stepIndex == APRData[APR.PlayerID][APR.ActiveRoute] then
             if string.find(quest.questID, "-") then
-                APR.currentStep.questID = string.sub(quest.questID, 1, string.find(quest.questID, "-") - 1)
+                APR.questOrderList.questID = string.sub(quest.questID, 1, string.find(quest.questID, "-") - 1)
             else
-                APR.currentStep.questID = quest.questID
+                APR.questOrderList.questID = quest.questID
             end
         end
 
         questFont:SetPoint("TOPLEFT", container, "TOPLEFT", offset + 10,
             -titleFont:GetStringHeight() - 5 - questFontHeight)
-
         questFontHeight = questFontHeight + questFont:GetStringHeight()
         container.questFonts[i] = questFont
     end
 
     container:SetWidth(FRAME_WIDTH)
     container:SetHeight(titleFont:GetStringHeight() + questFontHeight + FRAME_OFFSET)
-
     container:SetPoint("TOPLEFT", QuestOrderListFrame_ScrollChild, "TOPLEFT", 0, FRAME_DATA_HEIGHT)
     APR.questOrderList.stepList[stepIndex] = container
     FRAME_DATA_HEIGHT = FRAME_DATA_HEIGHT - container:GetHeight()
 end
 
-local AddStepFrame = function(stepIndex, stepText, color)
+local function AddStepFrame(stepIndex, stepText, color)
     AddStepFrameWithQuest(stepIndex, stepText, {}, color)
 end
 
 -- Remove all quest steps
 function APR.questOrderList:RemoveSteps()
-    for id, questContainer in pairs(self.stepList) do
+    for _, questContainer in pairs(self.stepList) do
         questContainer:Hide()
         questContainer:ClearAllPoints()
         questContainer = nil
@@ -277,7 +273,7 @@ function APR.questOrderList:UpdateFrameContents()
     end
 
     QuestOrderListFrame_ScrollChild:SetWidth(FRAME_WIDTH)
-    if (contentHeight > 0) then
+    if contentHeight > 0 then
         QuestOrderListFrame_ScrollChild:SetHeight(contentHeight)
     end
 end
@@ -285,19 +281,30 @@ end
 function APR.questOrderList:AddStepFromRoute()
     if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.RouteQuestStepList[APR.ActiveRoute] or not APR.routeconfig:HasRouteInCustomPaht() or not APR:IsInInstanceQuest() then
         self:RemoveSteps()
-        APR.currentStep.questID = nil
+        APR.questOrderList.questID = nil
         return
     end
+
     if APR.settings.profile.debug then
         print("Function: APR.questOrderList:AddStepFromRoute - " .. APR.ActiveRoute)
     end
-    -- Clean list
-    self:RemoveSteps()
 
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     if not CurStep then
         return
     end
+
+    -- Compare the current step index with the stored one
+    if CurStep == self.currentStepIndex then
+        return
+    end
+
+    -- Store the current step index
+    self.currentStepIndex = CurStep
+
+    -- Clean list
+    self:RemoveSteps()
+
     QuestOrderListPanel:Show()
     CurStep = CurStep - (APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] or 0)
     -- can't use id from the loop due to faction/race/class/achievement step option
@@ -326,8 +333,8 @@ function APR.questOrderList:AddStepFromRoute()
                     if C_QuestLog.IsQuestFlaggedCompleted(item.questID) or CurStep > stepIndex then
                         flagged = flagged + 1
                     else
-                        local itemName, _, _, _, _, _, _, _, _, _ = C_Item.GetItemInfo(item.itemID)
-                        tinsert(questInfo, { questID = item.quantity, questName = itemName or UNKNOWN })
+                        local itemName = C_Item.GetItemInfo(item.itemID) or UNKNOWN
+                        table.insert(questInfo, { questID = item.quantity, questName = itemName })
                     end
                 end
                 if #buyMerchant == flagged then
@@ -339,37 +346,30 @@ function APR.questOrderList:AddStepFromRoute()
                 local idList = step.PickUp
                 local dbList = step.PickUpDB or {}
                 local questInfo = {}
-                local Flagged = 0
+                local flagged = 0
 
                 local function isQuestCompleted(questID)
-                    if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] then
-                        return true
-                    end
-                    return false
+                    return C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID]
                 end
 
                 for _, questID in pairs(idList) do
-                    local questCompleted = false
-
                     if isQuestCompleted(questID) then
-                        questCompleted = true
+                        flagged = flagged + 1
                     else
                         for _, dbQuestID in pairs(dbList) do
                             if isQuestCompleted(dbQuestID) then
-                                questCompleted = true
+                                flagged = flagged + 1
                                 break
                             end
                         end
-                    end
-
-                    if questCompleted then
-                        Flagged = Flagged + 1
-                    else
-                        tinsert(questInfo, { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                        if flagged == 0 then
+                            table.insert(questInfo,
+                                { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                        end
                     end
                 end
 
-                if #idList == Flagged then
+                if #idList == flagged then
                     AddStepFrame(stepIndex, L["PICK_UP_Q"], "green")
                 else
                     AddStepFrameWithQuest(stepIndex, L["PICK_UP_Q"], questInfo, "gray")
@@ -399,7 +399,7 @@ function APR.questOrderList:AddStepFromRoute()
                     end
                     local questObjectiveId = questID .. '-' .. objectiveIndex
                     -- //TODO Remove or add APR_BonusObj from quest handler
-                    if (isMaxLevel and APR_BonusObj and Contains(APR_BonusObj, APR_index)) or APRData[APR.PlayerID].BonusSkips[questID] then
+                    if (isMaxLevel and APR_BonusObj and tContains(APR_BonusObj, questObjectiveId)) or APRData[APR.PlayerID].BonusSkips[questID] then
                         return true
                     end
                     if APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C" then
@@ -411,28 +411,23 @@ function APR.questOrderList:AddStepFromRoute()
                 for questID, objectives in pairs(idList) do
                     for _, objectiveIndex in pairs(objectives) do
                         total = total + 1
-                        local questCompleted = false
-
                         if isObjectiveCompleted(questID, objectiveIndex) then
-                            questCompleted = true
+                            flagged = flagged + 1
                         else
                             for _, dbQuestID in pairs(dbList) do
                                 if dbQuestID == questID or isObjectiveCompleted(dbQuestID, objectiveIndex) then
-                                    questCompleted = true
+                                    flagged = flagged + 1
                                     break
                                 end
                             end
-                        end
-
-                        if questCompleted then
-                            flagged = flagged + 1
-                        else
-                            tinsert(questInfo,
-                                {
-                                    questID = questID .. '-' .. objectiveIndex,
-                                    questName = C_QuestLog.GetTitleForQuestID(
-                                        questID)
-                                })
+                            if flagged == 0 then
+                                table.insert(questInfo,
+                                    {
+                                        questID = questID .. '-' .. objectiveIndex,
+                                        questName = C_QuestLog
+                                            .GetTitleForQuestID(questID)
+                                    })
+                            end
                         end
                     end
                 end
@@ -453,8 +448,8 @@ function APR.questOrderList:AddStepFromRoute()
                         local questObjectiveId = questID .. '-' .. objectiveIndex
                         if C_QuestLog.IsQuestFlaggedCompleted(questID) or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
                             flagged = flagged + 1
-                        elseif not APR.ActiveQuests[qid] or not APR.ActiveQuests[questID] then
-                            tinsert(questInfo,
+                        else
+                            table.insert(questInfo,
                                 { questID = questObjectiveId, questName = C_QuestLog.GetTitleForQuestID(questID) })
                         end
                     end
@@ -478,37 +473,30 @@ function APR.questOrderList:AddStepFromRoute()
                 local idList = step.Done
                 local dbList = step.DoneDB or {}
                 local questInfo = {}
-                local Flagged = 0
+                local flagged = 0
 
                 local function isQuestCompleted(questID)
-                    if C_QuestLog.IsQuestFlaggedCompleted(questID) then
-                        return true
-                    end
-                    return false
+                    return C_QuestLog.IsQuestFlaggedCompleted(questID)
                 end
 
                 for _, questID in pairs(idList) do
-                    local questCompleted = false
-
                     if isQuestCompleted(questID) then
-                        questCompleted = true
+                        flagged = flagged + 1
                     else
                         for _, dbQuestID in pairs(dbList) do
                             if isQuestCompleted(dbQuestID) then
-                                questCompleted = true
+                                flagged = flagged + 1
                                 break
                             end
                         end
-                    end
-
-                    if questCompleted then
-                        Flagged = Flagged + 1
-                    else
-                        tinsert(questInfo, { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                        if flagged == 0 then
+                            table.insert(questInfo,
+                                { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                        end
                     end
                 end
 
-                if #idList == Flagged then
+                if #idList == flagged then
                     AddStepFrame(stepIndex, L["TURN_IN_Q"], "green")
                 else
                     AddStepFrameWithQuest(stepIndex, L["TURN_IN_Q"], questInfo, "gray")
@@ -539,9 +527,9 @@ function APR.questOrderList:AddStepFromRoute()
                 AddStepFrameWithQuest(stepIndex, questText, questInfo, color)
             elseif step.LearnProfession then
                 local spellID = step.LearnProfession
-                local name, _, icon = GetSpellInfo(spellID)
+                local name = GetSpellInfo(spellID)
                 local questInfo = { { questID = name } }
-                local color = GetSpellBookItemInfo(GetSpellInfo(spellID)) and "green" or "gray"
+                local color = IsSpellKnown(spellID) and "green" or "gray"
                 AddStepFrameWithQuest(stepIndex, L["LEARN_PROFESSION"], questInfo, color)
             elseif step.WarMode then
                 AddStepFrame(stepIndex, L["TURN_ON_WARMODE"], "gray")
