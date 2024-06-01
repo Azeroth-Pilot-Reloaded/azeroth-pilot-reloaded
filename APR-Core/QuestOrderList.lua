@@ -303,7 +303,7 @@ function APR.questOrderList:AddStepFromRoute()
 
     -- Store the current step index
     self.currentStepIndex = CurStep
-    print('Render AddStepFromRoute')
+
     -- Clean list
     self:RemoveSteps()
 

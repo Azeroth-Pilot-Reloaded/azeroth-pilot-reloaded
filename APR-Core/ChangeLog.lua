@@ -79,6 +79,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.2.10", "2024-06-01" },
+        "#Bug",
+        "- Reduce the number of renderings of the Quest Order Liste Frame to no longer cause freezes",
+
         { "v3.2.9", "2024-06-01" },
         "#Features",
         "- Changed event for GetFP to detect new taxi node",
