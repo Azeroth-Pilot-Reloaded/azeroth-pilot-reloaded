@@ -430,7 +430,7 @@ if APR.Faction == "Horde" then
         { Coord = { x = -546.40002441406, y = 1442.0999755859 }, PickUp = { 29823 },          Zone = 371 },
         {
             Coord = { x = -2026.9000244141, y = 368.89999389648 },
-            ExtraLineText = "NEVER_STOP_RUNNING_AND_CAST_SPELL_ENEMIES_2_SHOTS_YOU",
+            -- ExtraLineText = "NEVER_STOP_RUNNING_AND_CAST_SPELL_ENEMIES_2_SHOTS_YOU",
             GossipOptionIDs = { 39795 },
             Qpart = { [29823] = { 1 } },
             Range = 5,
@@ -466,8 +466,8 @@ if APR.Faction == "Horde" then
             Range = 2,
             Zone = 371
         },
-        { Coord = { x = -571.60003662109, y = 1367.4000244141 }, Done = { 29967 },   Zone = 371 },
-        { Coord = { x = -550.5, y = 1440 },                      PickUp = { 30015 }, Zone = 371 },
+        { Coord = { x = -571.60003662109, y = 1367.4000244141 }, GossipOptionIDs = { 40650 }, Done = { 29967 }, Zone = 371 },
+        { Coord = { x = -550.5, y = 1440 },                      PickUp = { 30015 },          Zone = 371 },
         {
             Coord = { x = -490, y = 1422.0999755859 },
             ETA = 60,
@@ -485,12 +485,11 @@ if APR.Faction == "Horde" then
         { Coord = { x = -1744.4000244141, y = 1606.7000732422 }, DontHaveAura = 424143,                        PickUp = { 32018 }, Zone = 371 },
         { Coord = { x = -1934, y = 1581.3000488281 },            Qpart = { [31230] = { 1 } },                  Range = 2,          Zone = 371 },
         { Coord = { x = -1842, y = 1505.0999755859 },            Done = { 31230 },                             Zone = 371 },
-        { Coord = { x = -1807, y = 1505 },                       PickUp = { 29716 },                           Zone = 371 },
+        { Coord = { x = -1807, y = 1505 },                       PickUp = { 29716, 29717 },                    Zone = 371 },
         { Coord = { x = -1793, y = 1520.2000732422 },            PickUp = { 29865 },                           Zone = 371 },
         { Coord = { x = -1805, y = 1543.2000732422 },            PickUp = { 29866 },                           Zone = 371 },
         { Coord = { x = -1598.7000732422, y = 1371 },            Qpart = { [29865] = { 1 }, [29866] = { 1 } }, Range = 69,         Zone = 371 },
         { Coord = { x = -1389.0999755859, y = 1382.9000244141 }, Range = 5,                                    Waypoint = 29865,   Zone = 371 },
-        { Coord = { x = -1389.0999755859, y = 1382.9000244141 }, PickUp = { 29717 },                           Zone = 371 },
         {
             Coord = { x = -1166.2000732422, y = 1489 },
             GossipOptionIDs = { 39304 },
