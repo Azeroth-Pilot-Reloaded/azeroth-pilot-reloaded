@@ -460,6 +460,7 @@ local function AddStepsFrame(questDesc, extraLineText, noStars)
         tileSize = 16
     })
     container:SetBackdropColor(unpack(APR.settings.profile.currentStepbackgroundColorAlpha))
+    container.font = font
 
     return container
 end
@@ -470,7 +471,7 @@ local function AddExtraLineTextFrame(extraLineText, noStars)
 end
 
 -- Add/Update quest steps
-function APR.currentStep:UpdateQuestSteps(questID, textObjective, objectiveIndex)
+function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex)
     if InCombatLockdown() or not APR.settings.profile.currentStepShow then
         return
     end
@@ -497,6 +498,20 @@ function APR.currentStep:UpdateQuestSteps(questID, textObjective, objectiveIndex
 
     -- to update quest order display
     self:ReOrderQuestSteps()
+end
+
+function APR.currentStep:UpdateQuestStep(questID, textObjective, objectiveIndex)
+    if not APR.settings.profile.currentStepShow then
+        return
+    end
+
+    local questKey = questID .. "-" .. objectiveIndex
+    local existingContainer = self.questsList[questKey]
+
+    if not existingContainer then
+        return
+    end
+    existingContainer.font:SetText('- ' .. textObjective)
 end
 
 local getExtraLineHeight = function()
