@@ -342,8 +342,8 @@ if APR.Faction == "Horde" then
         { GetFP = 1388,                            Range = 0.69,                       Coord = { y = 7885.7, x = 5560.3 } },
         { Done = { 34228, 34227 },                 Coord = { y = 7793.6, x = 5565.3 } },
         { PickUp = { 34229, 34277, 34278, 34230 }, Coord = { y = 7793.7, x = 5563.5 } },
-        { DoIHaveFlight = 1,                       UseHS = 34230,                      Coord = { y = 7798.3, x = 5564.2 } },
-        { DoIHaveFlight = 1,                       WarMode = 34230 },
+        { UseHS = 34230,                           Coord = { y = 7798.3, x = 5564.2 } },
+        { WarMode = 34230 },
         { UseGarrisonHS = 34230,                   Coord = { y = 1799.5, x = -4356.7 } },
         {
             Gossip = 1,

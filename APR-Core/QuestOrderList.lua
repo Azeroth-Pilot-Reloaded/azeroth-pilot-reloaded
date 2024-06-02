@@ -317,10 +317,10 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 (not step.Race or step.Race == APR.Race) and
                 (not step.Gender or step.Gender == APR.Gender) and
                 (not step.Class or step.Class == APR.ClassName) and
-                (not step.HasAchievement or _G.HasAchievement(step.HasAchievement)) and
-                (not step.DontHaveAchievement or not _G.HasAchievement(step.DontHaveAchievement)) and
-                (not step.HasAura or _G.HasAura(step.HasAura)) and
-                (not step.DontHaveAura or not _G.HasAura(step.DontHaveAura))
+                (not step.HasAchievement or APR:HasAchievement(step.HasAchievement)) and
+                (not step.DontHaveAchievement or not APR:HasAchievement(step.DontHaveAchievement)) and
+                (not step.HasAura or APR:HasAura(step.HasAura)) and
+                (not step.DontHaveAura or not APR:HasAura(step.DontHaveAura))
             ) then
             if step.ExitTutorial then
                 local questID = step.ExitTutorial
@@ -400,7 +400,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     end
                     local questObjectiveId = questID .. '-' .. objectiveIndex
                     -- //TODO Remove or add APR_BonusObj from quest handler
-                    if (isMaxLevel and APR_BonusObj and tContains(APR_BonusObj, questObjectiveId)) or APRData[APR.PlayerID].BonusSkips[questID] then
+                    if (isMaxLevel and APR_BonusObj and APR:Contains(APR_BonusObj, questObjectiveId)) or APRData[APR.PlayerID].BonusSkips[questID] then
                         return true
                     end
                     if APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C" then
@@ -518,12 +518,12 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 AddStepFrame(stepIndex, questText, color)
             elseif step.GetFP then
                 local nodeID = step.GetFP
-                local color = (HasTaxiNode(nodeID) or CurStep > stepIndex) and "green" or "gray"
+                local color = (APR:HasTaxiNode(nodeID) or CurStep > stepIndex) and "green" or "gray"
                 AddStepFrame(stepIndex, L["GET_FLIGHTPATH"], color)
             elseif step.UseFlightPath then
                 local questID = step.UseFlightPath
                 local questText = step.Boat and L["USE_BOAT"] or L["USE_FLIGHTPATH"]
-                local questInfo = { { questID = GetTaxiNodeName(step) } }
+                local questInfo = { { questID = APR:GetTaxiNodeName(step) } }
                 local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
                 AddStepFrameWithQuest(stepIndex, questText, questInfo, color)
             elseif step.LearnProfession then

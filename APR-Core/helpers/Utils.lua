@@ -3,15 +3,15 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 --[[
 Return a string with surrounding stars
 
-TextWithStars("hello")          -- "\*\* hello \*\*"
+APR:TextWithStars("hello")          -- "\*\* hello \*\*"
 
-TextWithStars("hello", 3)       -- "\*\*\* hello \*\*\*"
+APR:TextWithStars("hello", 3)       -- "\*\*\* hello \*\*\*"
 
-TextWithStars("hello", 4, true) -- "\*\*\*\* hello"
+APR:TextWithStars("hello", 4, true) -- "\*\*\*\* hello"
 
-TextWithStars("hello", 0)       -- "hello"
+APR:TextWithStars("hello", 0)       -- "hello"
 ]]
-function TextWithStars(text, count, onlyLeft)
+function APR:TextWithStars(text, count, onlyLeft)
     count = count or 2;
 
     if count < 1 then
@@ -29,18 +29,7 @@ function TextWithStars(text, count, onlyLeft)
     return stars .. " " .. text .. " " .. stars;
 end
 
-function CheckRidingSkill(skillID)
-    local mountSkillIDs = { 90265, 34090, 33391, 33388 }
-    for _, skill in pairs(mountSkillIDs) do
-        if (GetSpellBookItemInfo(GetSpellInfo(skill))) then
-            return true
-        elseif (skill == skillID) then
-            return GetSpellBookItemInfo(GetSpellInfo(skillID))
-        end
-    end
-end
-
-function GetTargetID(unit)
+function APR:GetTargetID(unit)
     unit = unit or "target"
     local targetGUID = UnitGUID(unit)
     if targetGUID then
@@ -50,9 +39,9 @@ function GetTargetID(unit)
     return nil
 end
 
-function CheckDenyNPC(steps)
+function APR:CheckDenyNPC(steps)
     if (steps and steps.DenyNPC) then
-        local npc_id, name = GetTargetID(), UnitName("target")
+        local npc_id, name = self:GetTargetID(), UnitName("target")
         if (npc_id and name) then
             if (npc_id == steps.DenyNPC) then
                 C_GossipInfo.CloseGossip()
@@ -67,7 +56,7 @@ end
 ---@param list array list
 ---@param x object object to check if in the list
 ---@return true|false Boolean
-function Contains(list, x)
+function APR:Contains(list, x)
     if list then
         for _, v in pairs(list) do
             if v == x then return true end
@@ -76,7 +65,7 @@ function Contains(list, x)
     return false
 end
 
-function IsTableEmpty(table)
+function APR:IsTableEmpty(table)
     if (table) then
         return next(table) == nil
     end
@@ -108,12 +97,12 @@ function APR_CloseQuest()
     CloseQuest()
 end
 
-function TrimPlayerServer(CLPName)
+function APR:TrimPlayerServer(CLPName)
     local CL_First = string.match(CLPName, "^(.-)-")
     return CL_First or CLPName
 end
 
-function SplitQuestAndObjective(questID)
+function APR:SplitQuestAndObjective(questID)
     local id, objective = questID:match("([^%-]+)%-([^%-]+)")
     if id and objective then
         return tonumber(id), tonumber(objective)
@@ -148,7 +137,7 @@ function APR:Love()
 end
 
 function APR:IsInInstanceQuest()
-    local steps = APR.ActiveRoute and GetSteps(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
+    local steps = APR.ActiveRoute and self:GetSteps(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
     local isIntance, type = IsInInstance()
     if steps and steps.InstanceQuest then
         return isIntance and type == "scenario"

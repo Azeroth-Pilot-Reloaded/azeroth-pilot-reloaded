@@ -1,7 +1,7 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
-function GetStepString(step)
+function APR:GetStepString(step)
     local stepMappings = {
         ExitTutorial = L["SKIP_TUTORIAL"],
         PickUp = L["PICK_UP_Q"],
@@ -30,37 +30,37 @@ function GetStepString(step)
     return ''
 end
 
-function HasAchievement(achievementID)
+function APR:HasAchievement(achievementID)
     local id, name, _, completed = _G.GetAchievementInfo(achievementID)
     return completed
 end
 
-function HasAura(spellID)
+function APR:HasAura(spellID)
     local aura = C_UnitAuras.GetPlayerAuraBySpellID(spellID)
     return aura ~= nil
 end
 
-function UpdateQuestAndStep()
+function APR:UpdateQuestAndStep()
     APR.BookingList["UpdateQuest"] = true
     APR.BookingList["UpdateStep"] = true
 end
 
-function UpdateNextQuest()
+function APR:UpdateNextQuest()
     APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
     APR.BookingList["UpdateQuest"] = true
 end
 
-function UpdateNextStep()
+function APR:UpdateNextStep()
     APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
     APR.BookingList["UpdateStep"] = true
 end
 
-function NextQuestStep()
+function APR:NextQuestStep()
     APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
-    UpdateQuestAndStep()
+    self:UpdateQuestAndStep()
 end
 
-function PreviousQuestStep()
+function APR:PreviousQuestStep()
     local userMapData = APRData[APR.PlayerID]
     local activeMap = APR.ActiveRoute
     local questStepList = APR.RouteQuestStepList[activeMap]
@@ -77,20 +77,20 @@ function PreviousQuestStep()
                 (steps.Race and steps.Race ~= race) or
                 (steps.Gender and steps.Gender ~= gender) or
                 (steps.Class and steps.Class ~= className) or
-                (steps.HasAchievement and not _G.HasAchievement(steps.HasAchievement)) or
-                (steps.DontHaveAchievement and _G.HasAchievement(steps.DontHaveAchievement)) or
-                (steps.HasAura and not _G.HasAura(steps.HasAura)) or
-                (steps.DontHaveAura and _G.HasAura(steps.DontHaveAura)) or
+                (steps.HasAchievement and not self:HasAchievement(steps.HasAchievement)) or
+                (steps.DontHaveAchievement and self:HasAchievement(steps.DontHaveAchievement)) or
+                (steps.HasAura and not self:HasAura(steps.HasAura)) or
+                (steps.DontHaveAura and self:HasAura(steps.DontHaveAura)) or
                 steps.Waypoint) then
             break
         end
     end
 
     -- Update the quest and step
-    UpdateQuestAndStep()
+    self:UpdateQuestAndStep()
 end
 
-function GetTotalSteps(route)
+function APR:GetTotalSteps(route)
     route = route or APR.ActiveRoute
     local stepIndex = 0
     for id, step in pairs(APR.RouteQuestStepList[route]) do
@@ -100,10 +100,10 @@ function GetTotalSteps(route)
                 (not step.Race or step.Race == APR.Race) and
                 (not step.Gender or step.Gender == APR.Gender) and
                 (not step.Class or step.Class == APR.ClassName) and
-                (not step.HasAchievement or _G.HasAchievement(step.HasAchievement)) and
-                (not step.DontHaveAchievement or not _G.HasAchievement(step.DontHaveAchievement)) and
-                (not step.HasAura or _G.HasAura(step.HasAura)) and
-                (not step.DontHaveAura or not _G.HasAura(step.DontHaveAura))
+                (not step.HasAchievement or self:HasAchievement(step.HasAchievement)) and
+                (not step.DontHaveAchievement or not self:HasAchievement(step.DontHaveAchievement)) and
+                (not step.HasAura or self:HasAura(step.HasAura)) and
+                (not step.DontHaveAura or not self:HasAura(step.DontHaveAura))
             ) then
             stepIndex = stepIndex + 1
         end
@@ -112,7 +112,7 @@ function GetTotalSteps(route)
     return stepIndex
 end
 
-function CheckIsInRouteZone()
+function APR:CheckIsInRouteZone()
     if (APR.settings.profile.debug) then
         print("Function: APR step helper- CheckIsInRouteZone()")
     end
@@ -123,7 +123,7 @@ function CheckIsInRouteZone()
     local parentMapID = APR:GetPlayerParentMapID(Enum.UIMapType.Continent)
     local currentMapID = C_Map.GetBestMapForUnit("player")
     local isSameContinent, nextContinent = APR.transport:IsSameContinent(mapid)
-    local step = GetSteps(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
+    local step = self:GetSteps(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
     if not currentMapID or not isSameContinent then
         return false
     end
@@ -152,25 +152,25 @@ function CheckIsInRouteZone()
     return false
 end
 
-function GetSteps(CurStep)
+function APR:GetSteps(CurStep)
     if (CurStep and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute]) then
         return APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
     end
     return nil
 end
 
-function IsARouteQuest(questId)
-    local steps = GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
+function APR:IsARouteQuest(questId)
+    local steps = self:GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
     if (steps) then
-        if Contains(steps.PickUp, questId) or Contains(steps.PickUpDB, questId) then
+        if self:Contains(steps.PickUp, questId) or self:Contains(steps.PickUpDB, questId) then
             return true
         end
     end
     return false
 end
 
-function IsPickupStep()
-    local steps = GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
+function APR:IsPickupStep()
+    local steps = self:GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
     if (steps) then
         if steps.PickUp or steps.PickUpDB then
             return true
@@ -179,7 +179,7 @@ function IsPickupStep()
     return false
 end
 
-function HasTaxiNode(nodeID)
+function APR:HasTaxiNode(nodeID)
     for id, name in pairs(APRTaxiNodes[APR.PlayerID]) do
         if id == nodeID then
             return true
@@ -188,7 +188,7 @@ function HasTaxiNode(nodeID)
     return false
 end
 
-function OverrideRouteData()
+function APR:OverrideRouteData()
     if APR.ActiveRoute and string.match(APR.ActiveRoute, "DesMephisto%-Gorgrond") then
         if C_QuestLog.IsQuestFlaggedCompleted(35049) then
             APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = nil
@@ -203,7 +203,7 @@ function OverrideRouteData()
     end
 end
 
-function GetTaxiNodeName(step)
+function APR:GetTaxiNodeName(step)
     -- First, try to get the node name from the player's specific nodes
     local playerNodes = APRTaxiNodes[APR.PlayerID]
     if playerNodes and playerNodes[step.NodeID] then

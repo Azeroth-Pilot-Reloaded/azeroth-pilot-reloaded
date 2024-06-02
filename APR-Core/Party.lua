@@ -222,7 +222,7 @@ function APR.party:CheckIfPartyMemberIsFriend()
     for groupindex = 1, 5 do
         local nameOfPartyMember = UnitName("party" .. groupindex)
         if (nameOfPartyMember) then
-            if Contains(FriendListTable, nameOfPartyMember) then
+            if APR:Contains(FriendListTable, nameOfPartyMember) then
                 return true
             end
         end

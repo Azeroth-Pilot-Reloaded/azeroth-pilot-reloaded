@@ -11,6 +11,10 @@ APR.currentStep.questsExtraTextList = {}
 -- Height of the quest frame
 APR.currentStep.FrameHeight = 0
 
+-- Save the previous
+APR.currentStep.previousState = {}
+
+
 --Local constant
 local FRAME_WIDTH = 235
 local FRAME_HEADER_OPFFSET = -50
@@ -420,7 +424,7 @@ function APR.currentStep:SetProgressBar(CurStep)
     if APR.ActiveRoute then
         if not APRData[APR.PlayerID]
             [APR.ActiveRoute .. '-TotalSteps'] then
-            _G.GetTotalSteps()
+            APR:GetTotalSteps()
         end
         local curStepDisplayed = CurStep - (APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] or 0)
         APR.currentStep:ProgressBar(APR.ActiveRoute, APRData[APR.PlayerID]
@@ -442,7 +446,7 @@ local function AddStepsFrame(questDesc, extraLineText, noStars)
     font:SetWidth(FRAME_WIDTH)
     font:SetPoint("TOPLEFT", 5, -5)
     if extraLineText then
-        font:SetText(TextWithStars(extraLineText, noStars and 0 or 2))
+        font:SetText(APR:TextWithStars(extraLineText, noStars and 0 or 2))
     else
         font:SetText('- ' .. questDesc)
     end
@@ -685,9 +689,8 @@ function APR.currentStep:UpdateStepButtonCooldowns()
 end
 
 --- Disable Button, Reset ProgressBar and Remove all quest and extra line
-function APR.currentStep:Disable()
+function APR.currentStep:Reset()
     self:ButtonDisable()
     self:ProgressBar()
     self:RemoveQuestStepsAndExtraLineTexts()
-    self:RefreshCurrentStepFrameAnchor()
 end

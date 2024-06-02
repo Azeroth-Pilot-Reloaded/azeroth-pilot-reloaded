@@ -171,7 +171,7 @@ end
 APR.Buff.Event = CreateFrame("Frame")
 APR.Buff.Event:RegisterEvent("UNIT_AURA")
 APR.Buff.Event:SetScript("OnEvent", function(self, event, ...)
-    local steps = GetSteps(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
+    local steps = APR:GetSteps(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
     if event == "UNIT_AURA" then
         local target, info = ...;
         if steps and steps.Buffs then

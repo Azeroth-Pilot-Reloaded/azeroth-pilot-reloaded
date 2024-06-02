@@ -219,7 +219,7 @@ function APR.changelog:SetChangeLog()
         "#WoW",
         "- Update interface addon version to 10.2.6",
 
-        { "v3.1.9",  "2024-03-06" },
+        { "v3.1.9", "2024-03-06" },
         "#Bugs",
         "- Fix DF starting zone with zone step",
         "- Add coord for all the step of DF alliance starting zone",
