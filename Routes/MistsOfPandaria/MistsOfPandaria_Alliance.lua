@@ -385,12 +385,11 @@ if APR.Faction == "Alliance" then
         { PickUp = { 32018 },                                    Coord = { y = 1606.7000732422, x = -1744.4000244141 }, Zone = 371,                                           DontHaveAura = 424143, },
         { Coord = { y = 1581.3000488281, x = -1934 },            Qpart = { [31230] = { 1 } },                           Range = 2,                                            Zone = 371 },
         { Zone = 371,                                            Done = { 31230 },                                      Coord = { y = 1505.0999755859, x = -1842 } },
-        { PickUp = { 29716 },                                    Zone = 371,                                            Coord = { y = 1505, x = -1807 } },
+        { PickUp = { 29716, 29717 },                             Zone = 371,                                            Coord = { y = 1505, x = -1807 } },
         { PickUp = { 29865 },                                    Zone = 371,                                            Coord = { y = 1520.2000732422, x = -1793 } },
         { PickUp = { 29866 },                                    Zone = 371,                                            Coord = { y = 1543.2000732422, x = -1805 } },
         { Coord = { y = 1371, x = -1598.7000732422 },            Qpart = { [29865] = { 1 }, [29866] = { 1 } },          Range = 69,                                           Zone = 371 },
         { Waypoint = 29865,                                      Coord = { y = 1382.9000244141, x = -1389.0999755859 }, Range = 5,                                            Zone = 371 },
-        { PickUp = { 29717 },                                    Coord = { y = 1382.9000244141, x = -1389.0999755859 }, Zone = 371 },
         {
             GossipOptionIDs = { 39304 },
             Qpart = { [29716] = { 1 }, [29717] = { 1 } },
@@ -1441,14 +1440,14 @@ if APR.Faction == "Alliance" then
             Range = 5,
             Waypoint = 31286,
             Zone = 433
-            },
+        },
         {
             Coord = { x = -52.100002288818, y = 1172.5999755859 },
             Fillers = { [31286] = { 1 } },
             Range = 5,
             Waypoint = 31286,
             Zone = 433
-            },
+        },
         {
             Coord = { x = -102.40000152588, y = 1170.5 },
             Fillers = { [31286] = { 1 } },
