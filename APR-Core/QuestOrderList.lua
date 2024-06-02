@@ -132,7 +132,7 @@ function APR.questOrderList:RefreshFrameAnchor()
     APR.questOrderList:UpdateBackgroundColorAlpha()
     LibWindow.RestorePosition(QuestOrderListPanel)
     QuestOrderListPanel:Show()
-    self:AddStepFromRoute()
+    self:AddStepFromRoute(true)
 end
 
 -- Reset the frame position
@@ -280,7 +280,7 @@ function APR.questOrderList:UpdateFrameContents()
     end
 end
 
-function APR.questOrderList:AddStepFromRoute()
+function APR.questOrderList:AddStepFromRoute(forceRendering)
     if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.RouteQuestStepList[APR.ActiveRoute] or not APR.routeconfig:HasRouteInCustomPaht() or not APR:IsInInstanceQuest() then
         self:RemoveSteps()
         APR.questOrderList.questID = nil
@@ -297,13 +297,12 @@ function APR.questOrderList:AddStepFromRoute()
     end
 
     -- Compare the current step index with the stored one
-    if CurStep == self.currentStepIndex then
+    if CurStep == self.currentStepIndex and not forceRendering then
         return
     end
 
     -- Store the current step index
     self.currentStepIndex = CurStep
-
     -- Clean list
     self:RemoveSteps()
 
