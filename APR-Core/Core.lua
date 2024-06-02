@@ -150,7 +150,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR_LoadInTimer:SetLooping("NONE")
         APR_LoadInTimer:SetScript("OnFinished", function(self, event, ...)
             APR.BookingList["UpdateMapId"] = true
-            APR.BookingList["UpdateQuest"] = true
 
             APR.RouteSelection:RefreshFrameAnchor()
             local CQIDs = C_QuestLog.GetAllCompletedQuestIDs()

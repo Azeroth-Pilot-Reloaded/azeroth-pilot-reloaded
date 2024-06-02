@@ -175,12 +175,10 @@ local function APR_UpdateStep()
 
     -- //TODO Return if not in the right zone (check why no data on zone change with the return)
     if APR.IsInRouteZone then
-        if (APR.InCombat) then
+        if APR.InCombat then
             APR.BookUpdAfterCombat = true
         end
-        if (not InCombatLockdown()) then
-            APR.currentStep:Reset()
-        end
+        APR.currentStep:Reset()
     end
 
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
@@ -282,7 +280,7 @@ local function APR_UpdateStep()
                 if APRExtraLine == questID then
                     local itemCount = C_Item.GetItemCount(questInfo.itemID)
                     if itemCount < questInfo.count then
-                        APR.currentStep:UpdateQuestSteps(questID,
+                        APR.currentStep:AddQuestSteps(questID,
                             questInfo.description .. " (" .. itemCount .. "/" .. questInfo.count .. ")", questInfo
                             .itemID)
                     else
@@ -305,17 +303,17 @@ local function APR_UpdateStep()
                 local satyrFleshCount = C_Item.GetItemCount(satyrFleshItemID)
                 local satyrSaberCount = C_Item.GetItemCount(satyrSaberItemID)
                 if melonFruitCount < requiredMelonFruitCount then
-                    APR.currentStep:UpdateQuestSteps(14358,
+                    APR.currentStep:AddQuestSteps(14358,
                         L["LOOT_MELONFRUIT"] .. "( " .. melonFruitCount .. "/" .. requiredMelonFruitCount .. ")",
                         melonFruitItemID)
                 end
                 if satyrFleshCount < requiredSatyrFleshCount then
-                    APR.currentStep:UpdateQuestSteps(14358,
+                    APR.currentStep:AddQuestSteps(14358,
                         L["KILL_SATYR_FLESH"] .. " (" .. satyrFleshCount .. "/" .. requiredSatyrFleshCount .. ")",
                         satyrFleshItemID)
                 end
                 if satyrSaberCount < requiredSatyrSaberCount then
-                    APR.currentStep:UpdateQuestSteps(14358,
+                    APR.currentStep:AddQuestSteps(14358,
                         L["LOOT_SATYR_SABER"] .. " (" .. satyrSaberCount .. "/" .. requiredSatyrSaberCount .. ")",
                         satyrSaberItemID)
                 end
@@ -365,6 +363,7 @@ local function APR_UpdateStep()
             end
             if flagged == #steps.BuyMerchant then
                 APR:NextQuestStep()
+                return
             end
         end
         if steps.LearnProfession then
@@ -374,6 +373,7 @@ local function APR_UpdateStep()
             local spellID = steps.LearnProfession
             if IsSpellKnown(spellID) then
                 APR:NextQuestStep()
+                return
             end
             local name = GetSpellInfo(spellID)
             APR.currentStep:AddExtraLineText("LEARN_PROFESSION", format(L["LEARN_PROFESSION_DETAILS"], name))
@@ -464,24 +464,24 @@ local function APR_UpdateStep()
 
                             local checkpbar = C_QuestLog.GetQuestObjectives(questID)
                             if (not string.find(APR.ActiveQuests[qid], "(.*)(%d+)(.*)") and checkpbar and checkpbar[tonumber(objectiveIndex)] and checkpbar[tonumber(objectiveIndex)].type and checkpbar[tonumber(objectiveIndex)].type == "progressbar") then
-                                APR.currentStep:UpdateQuestSteps(questID,
+                                APR.currentStep:AddQuestSteps(questID,
                                     "(" .. GetQuestProgressBarPercent(questID) .. "%) " .. APR.ActiveQuests[qid],
                                     objectiveIndex)
                             elseif (text) then
-                                APR.currentStep:UpdateQuestSteps(questID, text .. "% - " .. APR.ActiveQuests[qid],
+                                APR.currentStep:AddQuestSteps(questID, text .. "% - " .. APR.ActiveQuests[qid],
                                     objectiveIndex)
                             else
-                                APR.currentStep:UpdateQuestSteps(questID, APR.ActiveQuests[qid], objectiveIndex)
+                                APR.currentStep:AddQuestSteps(questID, APR.ActiveQuests[qid], objectiveIndex)
                             end
                         end
                     elseif (not APR.ActiveQuests[questID] and not MissingQs[questID]) then
                         if (APR.IsInRouteZone) then
                             if APR:Contains(APR_BonusObj, questID) then
-                                APR.currentStep:UpdateQuestSteps(questID, L["DO_BONUS_OBJECTIVE"] ..
+                                APR.currentStep:AddQuestSteps(questID, L["DO_BONUS_OBJECTIVE"] ..
                                     ": " .. questID, objectiveIndex)
                                 MissingQs[questID] = 1
                             else
-                                APR.currentStep:UpdateQuestSteps(questID, L["ERROR"] ..
+                                APR.currentStep:AddQuestSteps(questID, L["ERROR"] ..
                                     " - " .. L["MISSING_Q"] ..
                                     ": " .. questID, objectiveIndex)
                                 MissingQs[questID] = 1
@@ -514,7 +514,7 @@ local function APR_UpdateStep()
                     APR:NextQuestStep()
                     return
                 elseif APR.IsInRouteZone then
-                    APR.currentStep:UpdateQuestSteps(steps.PickUp[1], L["PICK_UP_Q"] .. ": 1", "PickUp")
+                    APR.currentStep:AddQuestSteps(steps.PickUp[1], L["PICK_UP_Q"] .. ": 1", "PickUp")
                 end
             else
                 local pickupLeft = #IdList
@@ -534,7 +534,7 @@ local function APR_UpdateStep()
                     APR:NextQuestStep()
                     return
                 elseif APR.IsInRouteZone then
-                    APR.currentStep:UpdateQuestSteps(steps.PickUp[1],
+                    APR.currentStep:AddQuestSteps(steps.PickUp[1],
                         L["PICK_UP_Q"] .. ": " .. pickupLeft .. "/" .. #IdList, "PickUp")
                 end
             end
@@ -558,7 +558,7 @@ local function APR_UpdateStep()
                 APR:NextQuestStep()
                 return
             elseif APR.IsInRouteZone then
-                APR.currentStep:UpdateQuestSteps(IdList, L["GET_TREASURE"], "Treasure")
+                APR.currentStep:AddQuestSteps(IdList, L["GET_TREASURE"], "Treasure")
             end
         elseif (steps.DropQuest) then
             IdList = steps.DropQuest
@@ -600,7 +600,7 @@ local function APR_UpdateStep()
                 APR:UpdateNextStep()
                 return
             elseif APR.IsInRouteZone then
-                APR.currentStep:UpdateQuestSteps(doneList[1], L["TURN_IN_Q"] .. ": " .. questLeft .. "/" .. #doneList,
+                APR.currentStep:AddQuestSteps(doneList[1], L["TURN_IN_Q"] .. ": " .. questLeft .. "/" .. #doneList,
                     "Done")
             end
         elseif (steps.WarMode) then
@@ -611,7 +611,7 @@ local function APR_UpdateStep()
                 APR:UpdateNextStep()
                 return
             elseif APR.IsInRouteZone then
-                APR.currentStep:UpdateQuestSteps(steps.WarMode, L["TURN_ON_WARMODE"], "WarMode")
+                APR.currentStep:AddQuestSteps(steps.WarMode, L["TURN_ON_WARMODE"], "WarMode")
                 if (C_PvP.IsWarModeDesired() == false and C_PvP.CanToggleWarModeInArea()) then
                     C_PvP.ToggleWarMode()
                     APR.BookingList["UpdateStep"] = true
@@ -634,7 +634,7 @@ local function APR_UpdateStep()
             end
 
             if APR.IsInRouteZone then
-                APR.currentStep:UpdateQuestSteps(questKey, questText, useHSKey)
+                APR.currentStep:AddQuestSteps(questKey, questText, useHSKey)
             end
 
             if C_QuestLog.IsQuestFlaggedCompleted(questKey) then
@@ -643,7 +643,7 @@ local function APR_UpdateStep()
             end
         elseif (steps.SetHS) then
             if APR.IsInRouteZone then
-                APR.currentStep:UpdateQuestSteps(steps.SetHS, L["SET_HEARTHSTONE"], "SetHS")
+                APR.currentStep:AddQuestSteps(steps.SetHS, L["SET_HEARTHSTONE"], "SetHS")
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(steps.SetHS)) then
                 APR:UpdateNextStep()
@@ -651,7 +651,7 @@ local function APR_UpdateStep()
             end
         elseif (steps.GetFP) then
             if APR.IsInRouteZone then
-                APR.currentStep:UpdateQuestSteps(steps.GetFP, L["GET_FLIGHTPATH"], "GetFP")
+                APR.currentStep:AddQuestSteps(steps.GetFP, L["GET_FLIGHTPATH"], "GetFP")
             end
             if APR:HasTaxiNode(steps.GetFP) then
                 APR:UpdateNextStep()
@@ -661,7 +661,7 @@ local function APR_UpdateStep()
             if APR.IsInRouteZone then
                 local questText = (steps.Boat and L["USE_BOAT"] or L["USE_FLIGHTPATH"]) ..
                     ": " .. (APR:GetTaxiNodeName(steps))
-                APR.currentStep:UpdateQuestSteps(steps.UseFlightPath, questText, "UseFlightPath")
+                APR.currentStep:AddQuestSteps(steps.UseFlightPath, questText, "UseFlightPath")
             end
             if C_QuestLog.IsQuestFlaggedCompleted(steps.UseFlightPath) then
                 APR:UpdateNextStep()
@@ -689,14 +689,14 @@ local function APR_UpdateStep()
                         Flagged = Flagged + 1
                     elseif questText then
                         if APR.IsInRouteZone then
-                            APR.currentStep:UpdateQuestSteps(questId, questText, objectiveId)
+                            APR.currentStep:AddQuestSteps(questId, questText, objectiveId)
                         end
                     elseif not MissingQs[questId] then
                         if APR.IsInRouteZone then
                             local questTextToAdd = APR:Contains(APR_BonusObj, questId) and
                                 (L["DO_BONUS_OBJECTIVE"] .. ": " .. questId) or
                                 (L["ERROR"] .. " - " .. L["MISSING_Q"] .. ": " .. questId)
-                            APR.currentStep:UpdateQuestSteps(questId, questTextToAdd, objectiveId)
+                            APR.currentStep:AddQuestSteps(questId, questTextToAdd, objectiveId)
                             MissingQs[questId] = 1
                         end
                     end
@@ -726,7 +726,7 @@ local function APR_UpdateStep()
                     local MobName = APRData.NPCList[MobId] or questData.Text
                     local questText = format(L["Q_DROP"], MobName)
 
-                    APR.currentStep:UpdateQuestSteps(Qid, questText, "DroppableQuest")
+                    APR.currentStep:AddQuestSteps(Qid, questText, "DroppableQuest")
                 end
             end
         end
@@ -743,7 +743,7 @@ local function APR_UpdateStep()
                             if not string.find(questText, "(.*)(%d+)(.*)") and checkpbar and checkpbar[tonumber(objectiveId)] and checkpbar[tonumber(objectiveId)].type and checkpbar[tonumber(objectiveId)].type == "progressbar" then
                                 questText = "(" .. GetQuestProgressBarPercent(questId) .. "%) " .. questText
                             end
-                            APR.currentStep:UpdateQuestSteps(questId, questText, objectiveId)
+                            APR.currentStep:AddQuestSteps(questId, questText, objectiveId)
                         end
                     end
                 end
@@ -754,6 +754,7 @@ local function APR_UpdateStep()
                 APR.currentStep:AddExtraLineText("GRIND", L["GRIND"] .. " " .. steps.Grind)
             else
                 APR:UpdateNextStep()
+                return
             end
         end
         if (steps.ZoneDoneSave) then
@@ -769,6 +770,7 @@ local function APR_UpdateStep()
             APR.routeconfig:CheckIsCustomPathEmpty()
             APR.routeconfig:SendMessage("APR_Custom_Path_Update")
             APR.BookingList["UpdateMapId"] = true
+            return
         end
 
         -- Set Quest Item Button
@@ -851,82 +853,72 @@ function APR.CheckWaypointText()
 end
 
 local function APR_UpdateQuest()
-    if (APR.settings.profile.debug) then
+    if APR.settings.profile.debug then
         print("Function: APR_UpdateQuest()")
     end
 
-    local i = 1
-    local Update = 0
+    local updateStep = false
+    for questIndex = 1, C_QuestLog.GetNumQuestLogEntries() do
+        local questInfo = C_QuestLog.GetInfo(questIndex)
+        if questInfo then
+            local questID = questInfo.questID
+            if questID > 0 and not questInfo.isHeader then
+                local questTitle = C_QuestLog.GetTitleForQuestID(questID)
+                local isQuestComplete = C_QuestLog.IsComplete(questID)
+                local numQuestObjectives = C_QuestLog.GetNumQuestObjectives(questID)
+                local objectiveText = ""
+                local currentObjectiveIndex = 1
 
-    while true do
-        local questInfo = C_QuestLog.GetInfo(i)
-        if not questInfo then
-            break
-        end
-
-        local questID = questInfo.questID
-        if questID > 0 and not questInfo.isHeader then
-            local questTitle = C_QuestLog.GetTitleForQuestID(questID)
-            local isComplete = C_QuestLog.IsComplete(questID)
-            local numObjectives = C_QuestLog.GetNumQuestObjectives(questID)
-
-            if not APR.ActiveQuests[questID] then
-                if (APR.settings.profile.debug) then
-                    print("New Q:" .. questID)
+                if not APR.ActiveQuests[questID] then
+                    if APR.settings.profile.debug then
+                        print("New Q:" .. questID)
+                    end
                 end
-            end
 
-            if not isComplete then
-                isComplete = 0
-                APR.ActiveQuests[questID] = "P"
-            else
-                isComplete = 1
-                APR.ActiveQuests[questID] = "C"
-            end
+                APR.ActiveQuests[questID] = isQuestComplete and "C" or "P"
 
-            if numObjectives == 0 then
-                local objectiveKey = questID .. "-" .. "1"
-                APR.ActiveQuests[objectiveKey] = isComplete == 1 and "C" or questTitle
-            else
-                local questObjectives = C_QuestLog.GetQuestObjectives(questID)
-                for h = 1, numObjectives do
-                    local objective = questObjectives[h]
-                    local finished = objective.finished
-                    local text = objective.text
-                    local objectiveKey = questID .. "-" .. h
+                if numQuestObjectives == 0 then
+                    local objectiveKey = questID .. "-1"
+                    APR.ActiveQuests[objectiveKey] = isQuestComplete and "C" or questTitle
+                else
+                    local questObjectives = C_QuestLog.GetQuestObjectives(questID)
+                    for objectiveIndex, objectiveInfo in ipairs(questObjectives) do
+                        local isObjectiveComplete = objectiveInfo.finished
+                        objectiveText = objectiveInfo.text
+                        currentObjectiveIndex = objectiveIndex
+                        local objectiveKey = questID .. "-" .. objectiveIndex
 
-                    if finished then
-                        if APR.ActiveQuests[objectiveKey] and APR.ActiveQuests[objectiveKey] ~= "C" then
-                            if (APR.settings.profile.debug) then
-                                print("Update: C")
+                        if isObjectiveComplete then
+                            if APR.ActiveQuests[objectiveKey] and APR.ActiveQuests[objectiveKey] ~= "C" then
+                                if APR.settings.profile.debug then
+                                    print("Update: C")
+                                end
                             end
-                            Update = 1
-                        end
-                        APR.ActiveQuests[objectiveKey] = "C"
-                    else
-                        if select(2, GetQuestObjectiveInfo(questID, 1, false)) == "progressbar" and text then
-                            if not APR.ProgressbarIgnore[objectiveKey] then
-                                local progressPercent = tonumber(GetQuestProgressBarPercent(questID))
-                                progressPercent = floor(progressPercent + 0.5)
-                                text = "(" .. progressPercent .. "%) " .. text
+                            APR.ActiveQuests[objectiveKey] = "C"
+                            updateStep = true
+                        else
+                            if select(2, GetQuestObjectiveInfo(questID, objectiveIndex, false)) == "progressbar" and objectiveText then
+                                if not APR.ProgressbarIgnore[objectiveKey] then
+                                    local progressPercent = math.floor(tonumber(GetQuestProgressBarPercent(questID)) +
+                                        0.5)
+                                    objectiveText = "(" .. progressPercent .. "%) " .. objectiveText
+                                end
                             end
-                        end
 
-                        if APR.ActiveQuests[objectiveKey] and APR.ActiveQuests[objectiveKey] ~= text then
-                            if (APR.settings.profile.debug) then
-                                print("Update: " .. text)
+                            if APR.ActiveQuests[objectiveKey] and APR.ActiveQuests[objectiveKey] ~= objectiveText then
+                                if APR.settings.profile.debug then
+                                    print("Update: " .. objectiveText)
+                                end
                             end
-                            Update = 1
+                            APR.ActiveQuests[objectiveKey] = objectiveText
+                            APR.currentStep:UpdateQuestStep(questID, objectiveText, currentObjectiveIndex)
                         end
-                        APR.ActiveQuests[objectiveKey] = text
                     end
                 end
             end
         end
-        i = i + 1
     end
-
-    if (Update == 1) then
+    if updateStep then
         APR.BookingList["UpdateStep"] = true
     end
 end
@@ -1123,7 +1115,6 @@ APR_QH_EventFrame:RegisterEvent("GOSSIP_SHOW")
 APR_QH_EventFrame:RegisterEvent("GROUP_JOINED")
 APR_QH_EventFrame:RegisterEvent("GROUP_LEFT")
 APR_QH_EventFrame:RegisterEvent("HEARTHSTONE_BOUND")
-APR_QH_EventFrame:RegisterEvent("ITEM_PUSH")
 APR_QH_EventFrame:RegisterEvent("LEARNED_SPELL_IN_TAB")
 APR_QH_EventFrame:RegisterEvent("MERCHANT_SHOW")
 APR_QH_EventFrame:RegisterEvent("PET_BATTLE_CLOSE")
@@ -1149,9 +1140,6 @@ APR_QH_EventFrame:RegisterEvent("UNIT_ENTERED_VEHICLE")
 APR_QH_EventFrame:RegisterEvent("UNIT_QUEST_LOG_CHANGED")
 APR_QH_EventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
 APR_QH_EventFrame:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
-APR_QH_EventFrame:RegisterEvent("UPDATE_UI_WIDGET")
-APR_QH_EventFrame:RegisterEvent("ZONE_CHANGED")
-APR_QH_EventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if APR.settings.profile.showEvent then
@@ -1187,9 +1175,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 
     if (event == "CHAT_MSG_COMBAT_XP_GAIN") then
         if (steps and steps.Treasure) then
-            APR:UpdateQuestAndStep()
-            C_Timer.After(2, function() APR:UpdateQuestAndStep() end)
-            C_Timer.After(4, function() APR:UpdateQuestAndStep() end)
+            C_Timer.After(0.2, function() APR:UpdateQuestAndStep() end)
         end
     end
 
@@ -1206,7 +1192,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
 
     if (event == "CHAT_MSG_MONSTER_SAY") then
-        local text, arg2, arg3, arg4 = ...;
+        local text = ...;
         local npc_id, name = APR:GetTargetID(), UnitName("target")
         if npc_id and name then
             if npc_id == 159477 then -- quest 57870
@@ -1254,10 +1240,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
     end
 
-    if (event == "ITEM_PUSH") then
-        APR.BookingList["UpdateStep"] = true
-        C_Timer.After(1, function() APR:UpdateQuestAndStep() end)
-    end
     if (event == "LEARNED_SPELL_IN_TAB") then
         if steps and steps.LearnProfession then
             local spellID, skillInfoIndex = ...
@@ -1360,12 +1342,12 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
 
     if (event == "QUEST_ACCEPTED") then
-        local arg1, arg2, arg3, arg4, arg5 = ...;
+        local questID = ...;
         if APR.settings.profile.firstAutoShareQuestWithFriend and IsInGroup() then
             APR.questionDialog:CreateQuestionPopup(L["SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME"], function()
                 APR.settings.profile.autoShareQuestWithFriend = true
                 if APR.party:CheckIfPartyMemberIsFriend() then
-                    C_QuestLog.SetSelectedQuest(arg1)
+                    C_QuestLog.SetSelectedQuest(questID)
                     QuestLogPushQuest();
                 end
             end)
@@ -1373,21 +1355,14 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
         if APR.settings.profile.autoShareQuestWithFriend then
             if APR.party:CheckIfPartyMemberIsFriend() then
-                C_QuestLog.SetSelectedQuest(arg1)
+                C_QuestLog.SetSelectedQuest(questID)
                 QuestLogPushQuest();
             end
         end
         if (APR.settings.profile.debug) then
-            print(L["Q_ACCEPTED"] .. ": " .. arg1)
+            print(L["Q_ACCEPTED"] .. ": " .. questID)
         end
-        APR.BookingList["UpdateMapId"] = true
-        C_Timer.After(3, APR_UpdateMapId)
-        if (arg2 and arg2 > 0 and not APR.ActiveQuests[arg2]) then
-            APR.BookingList["AddQuest"] = arg2
-        end
-
-        C_Timer.After(0.2, function() APR:UpdateQuestAndStep() end)
-        C_Timer.After(3, function() APR:UpdateQuestAndStep() end)
+        C_Timer.After(0.2, APR_UpdateMapId)
     end
 
     if (event == "QUEST_ACCEPT_CONFIRM") then -- escort quest
@@ -1692,11 +1667,11 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (APR.settings.profile.debug) then
             print(L["Q_REMOVED"])
         end
-        local arg1, arg2, arg3, arg4, arg5 = ...;
-        APR.BookingList["RemoveQuest"] = arg1
-        if (APR.ActiveRoute == arg1) then
+        local questID = ...;
+        APR.BookingList["RemoveQuest"] = questID
+        if (APR.ActiveRoute == questID) then
             APR.BookingList["UpdateMapId"] = true
-            APRData[APR.PlayerID][arg1] = nil
+            APRData[APR.PlayerID][questID] = nil
             APR.map:RemoveMapLine()
         end
         APRData[APR.PlayerID].QuestCounter2 = APRData[APR.PlayerID].QuestCounter2 + 1
@@ -1730,8 +1705,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
 
     if (event == "UNIT_ENTERED_VEHICLE") then
-        local arg1, arg2, arg3, arg4, arg5 = ...;
-        if (arg1 == "player") then
+        local unitTarget = ...;
+        if (unitTarget == "player") then
             if (steps and steps.InVehicle) then
                 APR.BookingList["UpdateStep"] = true
             end
@@ -1742,24 +1717,26 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
 
     if (event == "UNIT_QUEST_LOG_CHANGED") then
-        local arg1, arg2, arg3, arg4, arg5 = ...;
-        if (arg1 == "player" and Updateblock == 0) then
+        local unitTarget = ...;
+        if (unitTarget == "player" and Updateblock == 0) then
             Updateblock = 1
             C_Timer.After(1, APR_UpdQuestThing)
         end
     end
 
     if event == "UNIT_SPELLCAST_SUCCEEDED" then
-        local arg1, arg2, arg3, arg4, arg5 = ...
+        local unitTarget, _, spellID = ...
 
-        if (arg1 == "player") and steps then
-            if (steps.UseGarrisonHS and arg3 == APR.garrisonHSSpellID) then
+        if (unitTarget == "player") and steps then
+            if (steps.UseGarrisonHS and spellID == APR.garrisonHSSpellID) then
                 APR:UpdateNextStep()
+                return
             end
-            if (steps.UseDalaHS and arg3 == APR.dalaHSSpellID) then
+            if (steps.UseDalaHS and spellID == APR.dalaHSSpellID) then
                 APR:UpdateNextStep()
+                return
             end
-            if (APR:Contains(APR.hearthStoneSpellID, arg3) and steps.UseHS) or (steps.SpellTrigger and arg3 == steps.SpellTrigger) then
+            if (APR:Contains(APR.hearthStoneSpellID, spellID) and steps.UseHS) or (steps.SpellTrigger and spellID == steps.SpellTrigger) then
                 APR:UpdateNextStep()
             end
         end
@@ -1789,17 +1766,5 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
 
         DoEmoteStep(steps)
-    end
-
-    if (event == "UPDATE_UI_WIDGET") then
-        if (APR.ActiveQuests and APR.ActiveQuests["57713-4"]) then
-            APR.BookingList["UpdateStep"] = true
-        end
-    end
-
-    if (event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA") then
-        APR.Arrow.currentStep = 0
-        APR.BookingList["SetQPTT"] = true
-        APR.BookingList["UpdateMapId"] = true
     end
 end)

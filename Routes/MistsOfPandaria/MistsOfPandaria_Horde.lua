@@ -398,7 +398,7 @@ if APR.Faction == "Horde" then
             Qpart = { [29941] = { 3 } },
             Zone = 371
         },
-        { Coord = { x = -492, y = 1306.0999755859 },             GossipOptionIDs = { 40186 }, Qpart = { [29941] = { 2 } }, Zone = 371 },
+        { Coord = { x = -449.4, y = 1295.2 },                    GossipOptionIDs = { 40186 }, Qpart = { [29941] = { 2 } }, Zone = 371 },
         { Coord = { x = -523.20001220703, y = 1428.4000244141 }, Done = { 29941 },            Zone = 371 },
         { Coord = { x = -523.20001220703, y = 1428.4000244141 }, PickUp = { 29937 },          Zone = 371 },
         { Coord = { x = -502.5, y = 1456.3000488281 },           PickUp = { 31239 },          Zone = 371 },
