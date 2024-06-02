@@ -140,7 +140,7 @@ if APR.Faction == "Horde" then
         { PickUp = { 29743 },                    Zone = 371,                  Coord = { y = 2836.8000488281, x = -711.5 } },
         {
             GossipOptionIDs = { 40006 },
-            Qpart = { [29743] = { 1 }, [29765] = { 1 } },
+            Qpart = { [29743] = { 1 }, },
             Zone = 371,
             Fillers = { [29765] = { 1, 2, 3, 4 } },
             Coord = { y = 2771.5, x = -597.70001220703 }
