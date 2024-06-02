@@ -5,7 +5,7 @@
 ## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.
 ## Author: Core: Neogeekmo, Rycia, Kamian | Route: Pahonix, Neogeekmo | Support: NightofStarrs, Pahonix | (legacy: zyrrael, Deathmessinger, 8goldbow)
 ## IconTexture: Interface\AddOns\APR\APR-Core\assets\APR_logo
-## Version: v3.2.0
+## Version: @project-version@
 
 ## SavedVariables: APRSettings, APRData, APRCustomPath, APRZoneCompleted, APRTaxiNodes, APRTaxiNodesTimer
 
